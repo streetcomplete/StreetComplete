@@ -1853,7 +1853,9 @@ Dividir agora?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nenhum número de referencia é visível..."</string>
-    <string name="quest_street_side_puzzle_tutorial">"Toque nos pontos de interrogação na ilustração abaixo para selecionar uma resposta para o lado especificado da estrada.  A estrada na ilustração é girada da mesma forma que no mapa no local do alfinete."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_street_side_puzzle_tutorial">"A estrada na ilustração é girada da mesma forma que no mapa no local do alfinete."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"O que pode ser deixado aqui para reciclagem?"</string>
@@ -2074,10 +2076,38 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="link_qwant_maps_description">"Um mapa com locais e direções pesquisáveis"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt; Para exibir o mapa, os blocos de vetor são recuperados de %1$s. Veja a&lt;a href=\"%2$s\"&gt;privacidade&gt;&lt;/a&gt;para obter mais informações.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
+    <string name="quest_board_type_history">"Histórico"</string>
+    <string name="quest_board_type_geology">"Geologia"</string>
+    <string name="quest_board_type_plants">"Plantas"</string>
+    <string name="quest_board_type_wildlife">"Animais selvagens"</string>
+    <string name="quest_board_type_nature">"Natureza (vários tópicos)"</string>
+    <string name="quest_board_type_notice_board">"É um quadro de avisos"</string>
+    <string name="quest_board_type_public_transport">"Transporte público"</string>
+    <string name="quest_board_type_title">"Qual é o tópico deste painel de informações?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Sim, exibido separadamente no mapa"</string>
+    <string name="quest_board_type_map">"É um mapa"</string>
+    <string name="quest_board_type_map_title">"É apenas um mapa e apenas um mapa?"</string>
+    <string name="quest_board_type_map_description">"Se o quadro for sobre um determinado tópico, especifique-o, independentemente de também incluir um mapa. Por exemplo, uma placa de transporte público pode ter um mapa de rotas de ônibus. Se o tópico não estiver listado entre as respostas disponíveis, considere deixar uma nota."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Múltiplas superfícies..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Tem certeza de que é impossível especificar a superfície? Observe a opção de resposta \"Difere ao longo do caminho\", que permite cortar o caminho onde a superfície muda. Use \"Não posso dizer\" se houver uma única superfície, mas não estiver disponível como uma resposta."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Por favor, especifique resumidamente a natureza da superfície aqui, por exemplo \"areia com manchas de paralelepípedos\". O comprimento do texto é limitado a 255 caracteres."</string>
+    <string name="quest_surface_detailed_name_title">"Qual superfície específica a estrada %s tem aqui?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Que superfície específica o quadrado %s tem aqui?"</string>
+    <string name="quest_surface_detailed_title">"Que superfície específica tem este pedaço de estrada?"</string>
+    <string name="quest_surface_detailed_square_title">"Que superfície específica este quadrado tem aqui?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"internacional"</string>
+    <string name="quest_streetName_menuItem_romanized">"em escrita latina"</string>
+    <string name="quest_buildingType_terrace2">"Casas geminadas"</string>
+    <string name="quest_oneway_tutorial">"A estrada na ilustração é girada da mesma forma que no mapa no local do alfinete. Observe a direção indicada."</string>
     <string name="at_housename">"Nome da casa %s:"</string>
     <string name="at_conscription_and_street_number">"Número da conscription %1$s, número de orientação %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Número da conscription %s:"</string>
     <string name="at_housenumber">"número da casa %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Quais são os horários de funcionamento de %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) é acessível por cadeiras de rodas?"</string>
+    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) aceita pagamento em dinheiro?"</string>
 </resources>

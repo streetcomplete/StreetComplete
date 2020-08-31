@@ -1861,9 +1861,7 @@ Chcete cestu rozdělit?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Není tu žádné referenční číslo..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Klepněte na otázníky a vyberte odpověď pro určenou stranu cesty."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Cesta na ilustraci je otočená stejně jako na mapě v místě označení."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Co tu lze recyklovat?"</string>
@@ -2353,6 +2351,22 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_oneway_tutorial">"Cesta na ilustraci je otočená stejně jako na mapě v místě špendlíku. Všimněte si uvedeného směru. "</string>
     <string name="at_housename">"Jméno budovy %s:"</string>
     <string name="at_conscription_and_street_number">"Číslo popisné %1$s, orientační číslo %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Číslo popisné %s:"</string>
     <string name="at_housenumber">"číslo popisné %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Jaká je otevírací doba %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Je tato otevírací doba pro %s stále platná?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Je tato otevírací doba pro %1$s (%2$s) stále platná?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Je tato otevírací doba stále platná (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Přidat dny, kdy je zavřeno"</string>
+    <string name="quest_openingHours_off_day">"Zavřeno"</string>
+    <string name="quest_openingHours_unspecified_range">"Neurčeno"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Má %1$s (%2$s) bezbariérový přístup?"</string>
+    <string name="pref_title_resurvey_intervals">"Intervaly pro ověřování"</string>
+    <string name="resurvey_intervals_less_often">"Ptát se méně často"</string>
+    <string name="resurvey_intervals_default">"Výchozí"</string>
+    <string name="resurvey_intervals_more_often">"Ptát se častěji"</string>
+    <string name="quest_street_side_puzzle_select">"Vyberte ťuknutím"</string>
+    <string name="quest_accepts_cash_type_title">"Přijímá %1$s (%2$s) platbu v hotovosti?"</string>
 </resources>

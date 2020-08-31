@@ -1861,6 +1861,10 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"房屋名称 %s："</string>
     <string name="at_conscription_and_street_number">"征兵（Conscription）号码 %1$s, 定位号码 %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"征兵（Conscription）号码 %s:"</string>
     <string name="at_housenumber">"房屋数量 %s:"</string>
+    <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 的开放时间/营业时间是？"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) 是否可以轮椅无障碍通行？"</string>
 </resources>

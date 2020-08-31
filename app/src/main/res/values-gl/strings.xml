@@ -1859,9 +1859,6 @@ Dividila agora?"</string>
     <string name="quest_ref_answer_noRef">"Ningún número de referencia visíbel..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Preme os signos de interrogación e escolle unha resposta para cada beira da estrada."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Que se pode depositar para reciclar aquí?"</string>
 
     <!-- Fuzzy -->
@@ -2342,6 +2339,11 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_oneway_tutorial">"A estrada na ilustración xira igual que no mapa na localización do pin. Ten en conta a dirección indicada. "</string>
     <string name="at_housename">"Nome da casa %s:"</string>
     <string name="at_conscription_and_street_number">"Número de «conscrición» %1$s, número de «orientación» %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Número de «conscrición» %s:"</string>
     <string name="at_housenumber">"número de edificio %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Cales son os horarios da apertura de %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Podes acceder cara a %1$s (%2$s) nunha cadeira de rodas?"</string>
+    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) acepta pagamentos en efectivo?"</string>
 </resources>

@@ -1833,9 +1833,6 @@
     <string name="quest_ref_answer_noRef">"번호를 찾을 수 없음..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"질문 표시를 터치하고 도로의 주어진 부분에 해당하는 답변을 선택하세요"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"이 수거함에 무엇을 넣을 수 있습니까?"</string>
 
     <!-- Fuzzy -->
@@ -1916,6 +1913,10 @@
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"건물 명칭 %s:"</string>
     <string name="at_conscription_and_street_number">"징병 번호 %1$s, 방위각 %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"징병 번호 %s:"</string>
     <string name="at_housenumber">"건물 번호 %s:"</string>
+    <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 의 개점 시간은 언제입니까?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s)에 휠체어가 들어갈 수 있습니까?"</string>
 </resources>

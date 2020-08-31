@@ -1,3 +1,24 @@
+v23.0-alpha1: |
+  <h3>🚧 Map maintenance</h3>
+  Quest types whose answer is likely to change over the years will be asked again in reasonable
+  intervals. So now you can help not only to complete the map, but also to keep it up-to-date,
+  which is at least as important.
+  <br/><br/>
+  Most prominently, you'll be asked if opening hours are still the same as before and be offered to
+  correct them if they changed, the same with cycle tracks and -lanes on roads.
+  <br/><br/>
+  This feature has been sponsored by the OpenStreetMap Foundation (OSMF) as part of their new
+  <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">microgrants</a> program.
+  You can support the OSMF and other initiatives like these and have a say by <a href="https://join.osmfoundation.org/">becoming a member</a>, if you like.
+
+  <h3>Other Enhancements and Fixes</h3>
+  <ul>
+  <li>Accepts cash quest: Ask for more places (#2019), by @kmpoppe</li>
+  <li>For opening hours, wheelchair access and accepts cash quest, always display the type of place alongside its name (#2012), by @Helium314</li>
+  <li>Recycling container materials: Don't ask for containers close to other containers</li>
+  <li>Fix a few rare crashes</li>
+  </ul>
+
 v22.3: |
   <h3>Fixes</h3>
   <ul>

@@ -1745,9 +1745,7 @@ Découper maintenant ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Aucun numéro de référence visible …"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Appuyez sur les points d'interrogation et sélectionnez une réponse pour le côté donné de la route."</string>
+    <string name="quest_street_side_puzzle_tutorial">"La route de l'illustration est tournée de la même façon que sur la carte, à l'emplacement de la punaise."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Qu'est-ce qui peut être laissé ici pour le recyclage ?"</string>
@@ -2232,6 +2230,23 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_oneway_tutorial">"La route en illustration est pivotée dans la même direction qu'indiquée sur la carte. La direction est indiquée. "</string>
     <string name="at_housename">"Nom de la maison %s:"</string>
     <string name="at_conscription_and_street_number">"Numéro de conscription %1$s, numéro d’orientation %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Numéro de conscription %s:"</string>
     <string name="at_housenumber">"Numéro de rue %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Quelles sont les horaires d’ouverture de %1$s (%2$s) ?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Est-ce que ces horaires d'ouverture pour %s sont toujours correctes ?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Est-ce que ces horaires d'ouverture pour %1$s (%2$s) sont toujours correctes ?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Est-ce que ces horaires d'ouverture sont toujours correctes (%s) ?"</string>
+    <string name="quest_openingHours_add_off_days">"Ajouter des jours de congé"</string>
+    <string name="quest_openingHours_off_day">"Jour de congé"</string>
+    <string name="quest_openingHours_unspecified_range">"Non spécifié"</string>
+    <string name="quest_cycleway_resurvey_title">"Est-ce que c'est toujours la situation des routes cyclables, ici ?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Est-ce que %1$s (%2$s) est accessible aux personnes en fauteuil roulant ?"</string>
+    <string name="pref_title_resurvey_intervals">"Intervalles d'enquête"</string>
+    <string name="resurvey_intervals_less_often">"Demander moins souvent"</string>
+    <string name="resurvey_intervals_default">"Défaut"</string>
+    <string name="resurvey_intervals_more_often">"Demander plus souvent"</string>
+    <string name="quest_street_side_puzzle_select">"Appuyer pour choisir"</string>
+    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accepte-t-il les paiements en espèces ?"</string>
 </resources>

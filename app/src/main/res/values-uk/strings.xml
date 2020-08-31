@@ -1619,5 +1619,9 @@
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"Назва дому %s:"</string>
     <string name="at_conscription_and_street_number">"Наскрізна нумерація %1$s, Номер орієнтації %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Наскрізна нумерація %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Який робочий час для %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Чи доступний заклад %1$s (%2$s) для інвалідних візків?"</string>
 </resources>

@@ -1778,7 +1778,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_postboxRef_title">"Hva er referansenummeret til denne postkassen?"</string>
     <string name="quest_postboxRef_name_title">"Hva er referansenummeret til denne %s-postkassen?"</string>
     <string name="quest_ref_answer_noRef">"Mangler synlig referansenummer..."</string>
-    <string name="quest_street_side_puzzle_tutorial">"Trykk på markørene og velg svar for den aktuelle siden av veien."</string>
     <string name="quest_recycling_materials_title">"Hva kan leveres til resirkulering her?"</string>
     <string name="quest_recycling_materials_note">"Hvis det kan resirkuleres noe her som ikke står som svaralternativ bør det legges til som en merknad."</string>
     <string name="quest_recycling_type_batteries">"Batteri"</string>
@@ -1932,6 +1931,11 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"Husnavn %s:"</string>
     <string name="at_conscription_and_street_number">"Konskripsjonsnummer %1$s, Orienteringsnummer %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Konskripsjonsnummer %s:"</string>
     <string name="at_housenumber">"Husnummer %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Hva er åpningstidene til %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Er %1$s (%2$s) tilgjengelig i rullestol?"</string>
+    <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) imot betaling med kontanter?"</string>
 </resources>

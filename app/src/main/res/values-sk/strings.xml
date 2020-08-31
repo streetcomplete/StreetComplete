@@ -1690,5 +1690,9 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"Názov budovy %s:"</string>
     <string name="at_conscription_and_street_number">"Súpisné číslo %1$s, orientačné číslo %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Súpisné číslo %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Aké má %1$s (%2$s) otváracie hodiny?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Má %1$s (%2$s) bezbariérový prístup?"</string>
 </resources>

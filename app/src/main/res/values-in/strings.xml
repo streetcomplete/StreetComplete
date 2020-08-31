@@ -901,7 +901,6 @@ Pisah sekarang?"</string>
     <string name="quest_postboxRef_title">"Apa nomor referensi kotak pos ini?"</string>
     <string name="quest_postboxRef_name_title">"Apa nomor referensi kotak pos %s ini?"</string>
     <string name="quest_ref_answer_noRef">"Tidak ada nomor referensi terlihat..."</string>
-    <string name="quest_street_side_puzzle_tutorial">"Tekan tanda tanya pada gambar di bawah"</string>
     <string name="quest_recycling_materials_title">"Apa yang tersisa di sini untuk didaur ulang?"</string>
     <string name="quest_recycling_materials_note">"Jika ada yang bisa didaur ulang selain yang bisa dipilih, harap tinggalkan catatan."</string>
     <string name="quest_recycling_type_batteries">"Baterai"</string>
@@ -1103,6 +1102,11 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"Nama rumah %s:"</string>
     <string name="at_conscription_and_street_number">"Nomor rumah %1$s, nomor orientasi %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Nomor rumah %s:"</string>
     <string name="at_housenumber">"nomor rumah %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Jam berapa %1$s (%2$s) buka?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Apakah %1$s (%2$s) ramah kursi roda?"</string>
+    <string name="quest_accepts_cash_type_title">"Apa %1$s (%2$s) menerima pembayaran tunai?"</string>
 </resources>

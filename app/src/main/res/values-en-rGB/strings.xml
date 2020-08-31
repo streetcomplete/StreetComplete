@@ -1794,6 +1794,10 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="quest_buildingType_terrace2">"Terraced houses"</string>
     <string name="at_housename">"house name %s:"</string>
     <string name="at_conscription_and_street_number">"Conscription number %1$s, orientation number %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Conscription number %s:"</string>
     <string name="at_housenumber">"house number %s:"</string>
+    <string name="quest_openingHours_name_type_title">"What are the opening hours of %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Is %1$s (%2$s) wheelchair accessible?"</string>
 </resources>

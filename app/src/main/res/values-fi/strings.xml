@@ -1713,9 +1713,6 @@ Jaetaanko nyt?"</string>
     <string name="quest_ref_answer_noRef">"Ei tunnistenumeroa näkyvillä..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Paina kysymysmerkkiä ja vastaa tien valitun puolen kysymykseen."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Mitä tänne voi jättää kierrätykseen?"</string>
 
     <!-- Fuzzy -->
@@ -2164,6 +2161,11 @@ päiviä"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"Talon nimi %s:"</string>
     <string name="at_conscription_and_street_number">"Rekisterinumero %1$s, suuntausnumero %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Rekisterinumero %s:"</string>
     <string name="at_housenumber">"talon numero %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Mitkä ovat paikan %1$s (%2$s) aukioloajat?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Onko %1$s (%2$s) rullatuolille sopiva?"</string>
+    <string name="quest_accepts_cash_type_title">"Hyväksyykö %1$s (%2$s) käteismaksun?"</string>
 </resources>

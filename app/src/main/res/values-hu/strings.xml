@@ -1851,9 +1851,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_ref_answer_noRef">"Nem látható refernciaszám…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Koppints a kérdőjelekre és jelölj ki egy választ az út adott oldalára."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Miket lehet itthagyni újrahasznosításra?"</string>
 
     <!-- Fuzzy -->
@@ -2335,6 +2332,11 @@ szintek"</string>
     <string name="quest_oneway_tutorial">"Az illusztráción szereplő út úgy van elforgatva, mint a térképen a jelölő helyén. Vedd figyelembe a jelzett irányt."</string>
     <string name="at_housename">"Ház neve %s:"</string>
     <string name="at_conscription_and_street_number">"Helyrajzi szám %1$s, házszám %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Helyrajzi szám %s:"</string>
     <string name="at_housenumber">"házszám %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Mi a nyitvatartása ennek: %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) akadálymentes?"</string>
+    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) elfogad készpénzes fizetést?"</string>
 </resources>

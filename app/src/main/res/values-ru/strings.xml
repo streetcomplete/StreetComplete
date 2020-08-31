@@ -1857,9 +1857,6 @@
     <string name="quest_ref_answer_noRef">"Номер не виден"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Нажмите на знаки вопросов и выберите ответ для данной стороны дороги"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Что здесь можно оставить на переработку?"</string>
 
     <!-- Fuzzy -->
@@ -2285,6 +2282,11 @@
     <string name="quest_streetName_menuItem_romanized">"Латиницей"</string>
     <string name="at_housename">"Название дома %s:"</string>
     <string name="at_conscription_and_street_number">"Сквозная нумерация %1$s, Ориентировочный номер %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Сквозная нумерация %s:"</string>
     <string name="at_housenumber">"номер дома %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Какое время работы у %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Доступно ли %1$s (%2$s) для инвалидных колясок?"</string>
+    <string name="quest_accepts_cash_type_title">"Принимают ли в %1$s (%2$s) оплату наличными?"</string>
 </resources>

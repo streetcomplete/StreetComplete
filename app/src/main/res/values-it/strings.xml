@@ -1855,7 +1855,7 @@ Suddividere?"</string>
     <string name="quest_ref_answer_noRef">"Nessun numero di matricola visibile..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Clicca il punto di domanda e seleziona una risposta per il lato della strada indicato. La strada nell'illustrazione è ruotata come sulla mappa alla posizione della puntina. "</string>
+    <string name="quest_street_side_puzzle_tutorial">"La strada nell'illustrazione è ruotata come sulla mappa alla posizione della puntina. "</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Cosa può essere lasciato qui per la raccolta differenziata?"</string>
@@ -2339,6 +2339,11 @@ riconoscimento"</string>
     <string name="quest_oneway_tutorial">"La strada nell'illustrazione è ruotata come sulla mappa alla posizione della puntina. Attento alla direzione indicata. "</string>
     <string name="at_housename">"Nome della casa %s:"</string>
     <string name="at_conscription_and_street_number">"Numero di coscrizione %1$s, orientamento dei numero %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Numero di coscrizione %s:"</string>
     <string name="at_housenumber">"numero civico %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Quali sono gli orari di apertura di %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) è accessibile con la sedia a rotelle?"</string>
+    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accetta pagamenti in denaro?"</string>
 </resources>

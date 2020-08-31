@@ -1841,7 +1841,7 @@
     <string name="quest_ref_answer_noRef">"看不到編號…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"按住問號，然後選擇道路那一側的答案。插圖中的道路與大頭針位置處的地圖相同方式旋轉..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"插圖中的道路與大頭針位置處的地圖相同方式旋轉..."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"這裡能拿過去那些回收物品？"</string>
@@ -2076,6 +2076,11 @@
     <string name="quest_oneway_tutorial">"此道路在繪製圖面上，倒轉成地圖中錨點的相同方向。須注意相對應的方向。"</string>
     <string name="at_housename">"房屋名稱 %s："</string>
     <string name="at_conscription_and_street_number">"徵兵號碼 %1$s, 定位號碼 %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"徵兵號碼 %s:"</string>
     <string name="at_housenumber">"房屋門牌號碼 %s:"</string>
+    <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 的營業時間是？"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) 是否輪椅通行無阻？"</string>
+    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) 接受現金支付嗎？"</string>
 </resources>

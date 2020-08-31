@@ -1817,9 +1817,6 @@
     <string name="quest_ref_answer_noRef">"بدون شماره پستی قابل مشاهده است ..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"روی علامت سؤال ضربه بزنید و پاسخی را برای آن انتخاب نمایید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"چه موادی را می‌توان در اینجا برای بازیافت قرار داد؟"</string>
 
     <!-- Fuzzy -->
@@ -2265,4 +2262,5 @@
     <string name="quest_surface_detailed_square_name_title">"چه جنس سطح مشخصی در میدان %s وجود دارد؟"</string>
     <string name="quest_surface_detailed_title">"جنس سطح این قسمت از جاده چیست؟"</string>
     <string name="quest_surface_detailed_square_title">"جنس سطح این میدان چیست؟"</string>
+    <string name="quest_openingHours_name_type_title">"ساعت شروع کار %s چیست؟"</string>
 </resources>

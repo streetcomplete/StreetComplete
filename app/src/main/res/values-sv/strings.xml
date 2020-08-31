@@ -1853,7 +1853,7 @@ Dela den nu?"</string>
     <string name="quest_ref_answer_noRef">"Inget referensnummer syns..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Tryck på frågetecknen på illustrationen nedan för att välja ett svar för den givna sidan av vägen. Vägen i illustrationen roteras på samma sätt som på kartan på stiftets plats. "</string>
+    <string name="quest_street_side_puzzle_tutorial">"Vägen i illustrationen roteras på samma sätt som på kartan på stiftets plats."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Vad kan lämnas här för återvinning?"</string>
@@ -2324,6 +2324,11 @@ nivåer"</string>
     <string name="quest_oneway_tutorial">"Vägen i illustrationen roteras på samma sätt som på kartan på stiftets plats. Notera den angivna riktningen. "</string>
     <string name="at_housename">"Husnamn %s:"</string>
     <string name="at_conscription_and_street_number">"Konskriptionsnummer %1$s, Orienteringsnummer %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Konskriptionsnummer %s:"</string>
     <string name="at_housenumber">"husnummer %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Vad har %1$s (%2$s) för öppettider?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Är %1$s (%2$s) tillgänglig med rullstol?"</string>
+    <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) emot kontanter?"</string>
 </resources>

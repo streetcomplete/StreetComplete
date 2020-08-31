@@ -678,6 +678,8 @@ Jetzt aufspalten?"</string>
     <string name="quest_postboxRef_title">"Was ist die Referenznummer dieses Briefkastens?"</string>
     <string name="quest_postboxRef_name_title">"Was ist die Referenznummer dieses %s Briefkastens?"</string>
     <string name="quest_ref_answer_noRef">"Keine Referenznummer sichtbar…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie auf der Karte an der Position des Pins."</string>
     <string name="quest_recycling_materials_title">"Was kann hier entsorgt werden?"</string>
     <string name="quest_recycling_materials_note">"Wenn noch Anderes entsorgt werden kann als man hier angeben kann, bitte hinterlasse stattdessen eine Notiz."</string>
@@ -873,6 +875,11 @@ Erfolge"</string>
     <string name="quest_oneway_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie auf der Karte an der Position des Pins. Beachte die gezeigte Richtung."</string>
     <string name="at_housename">"Hausname %s:"</string>
     <string name="at_conscription_and_street_number">"Konskriptionsnummer %1$s, Orientierungsnummer %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Konskriptionsnummer %s:"</string>
     <string name="at_housenumber">"Hausnummer %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Was sind die Öffnungszeiten von %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Ist %1$s (%2$s) zugänglich für Rollstühle?"</string>
+    <string name="quest_accepts_cash_type_title">"Akzeptiert %1$s (%2$s) Bargeld?"</string>
 </resources>

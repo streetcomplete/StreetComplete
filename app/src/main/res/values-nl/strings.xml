@@ -1862,7 +1862,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_ref_answer_noRef">"Geen referentienummer zichtbaar…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Tik op de vraagtekens en selecteer een antwoord voor die kant van de weg. De weg zoals getoond loopt in dezelfde richting als op de kaart op de plaats van het merkteken."</string>
+    <string name="quest_street_side_puzzle_tutorial">"De weg zoals getoond loopt in dezelfde richting als op de kaart op de plaats van het merkteken."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Wat kan hier achtergelaten worden voor recycling?"</string>
@@ -2333,6 +2333,11 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
 "</string>
     <string name="at_housename">"Naam van het gebouw %s:"</string>
     <string name="at_conscription_and_street_number">"District- of conscriptiegetal %1$s, oriëntatiegetal %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"District- of conscriptiegetal %s:"</string>
     <string name="at_housenumber">"huisnummer %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Wat zijn de openingstijden van %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Is %1$s (%2$s) toegankelijk voor rolstoelen?"</string>
+    <string name="quest_accepts_cash_type_title">"Accepteert %1$s (%2$s) contant geld als betaling?"</string>
 </resources>
