@@ -1,18 +1,33 @@
 package de.westnordost.streetcomplete.quests
 
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.mock
+import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.quests.bikeway.*
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
+import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers
 import java.util.*
 
 class AddCyclewayTest {
 
-    private val questType = AddCycleway(mock(), mock())
+    private lateinit var questType: AddCycleway
+
+    @Before fun setUp() {
+        val r: ResurveyIntervalsStore = mock()
+        on(r.times(ArgumentMatchers.anyInt())).thenAnswer { (it.arguments[0] as Int).toDouble() }
+        on(r.times(ArgumentMatchers.anyDouble())).thenAnswer { (it.arguments[0] as Double) }
+        questType = AddCycleway(mock(), r)
+    }
 
     @Test fun `apply cycleway lane answer`() {
         questType.verifyAnswer(
@@ -357,7 +372,122 @@ class AddCyclewayTest {
         )
     }
 
-    // TODO add test for adding/modifying/deleting oneway:bicycle=no
+    @Test fun `remove oneway bicycle no tag if road is also a oneway for bicycles now`() {
+        questType.verifyAnswer(
+            mapOf(
+                "cycleway:both" to "no",
+                "oneway" to "yes",
+                "oneway:bicycle" to "no"
+            ),
+            bothSidesAnswer(NONE),
+            StringMapEntryModify("cycleway:both","no", "no"),
+            StringMapEntryDelete("oneway:bicycle", "no")
+        )
+    }
 
-    // TODO isApplicableTo
+    @Test fun `isApplicableTo returns null for untagged ways`() {
+        assertNull(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified"
+            ))
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for tagged old ways`() {
+        assertTrue(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway" to "track"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+        assertTrue(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway:left" to "track"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+        assertTrue(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway:right" to "track"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+        assertTrue(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway:both" to "track"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+    }
+
+    @Test fun `isApplicableTo returns false for tagged new ways`() {
+        assertFalse(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway" to "track"
+            ), Date())
+        )!!)
+    }
+
+    @Test fun `isApplicableTo returns false for tagged old ways with unknown cycleway values`() {
+        assertFalse(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway" to "something"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+        assertFalse(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway:left" to "something"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+        assertFalse(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway:right" to "something"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+        assertFalse(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway:both" to "something"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+    }
+
+    @Test fun `isApplicableTo returns false for tagged old ways with unknown cycleway lane values`() {
+
+        assertFalse(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway" to "lane",
+                "cycleway:lane" to "something"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+        assertFalse(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway:left" to "lane",
+                "cycleway:left:lane" to "something"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+        assertFalse(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway:right" to "lane",
+                "cycleway:right:lane" to "something"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+        assertFalse(questType.isApplicableTo(
+            createElement(mapOf(
+                "highway" to "unclassified",
+                "cycleway:both" to "lane",
+                "cycleway:both:lane" to "something"
+            ), "2000-10-10".toCheckDate())
+        )!!)
+    }
+
+    private fun createElement(tags: Map<String, String>, date: Date? = null): Element =
+        OsmNode(0L, 1, 0.0, 0.0, tags, null, date)
 }

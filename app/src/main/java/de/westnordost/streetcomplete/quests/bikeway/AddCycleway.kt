@@ -138,7 +138,7 @@ class AddCycleway(
         if (!tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)) return null
         return olderThan(4).matches(element)
                 && tags.filterKeys { it in KNOWN_CYCLEWAY_KEYS }.values.all { it in KNOWN_CYCLEWAY_VALUES }
-                && tags.filterKeys { it in KNOWN_CYCLEWAY_LANE_VALUES }.values.all { it in KNOWN_CYCLEWAY_LANE_VALUES }
+                && tags.filterKeys { it in KNOWN_CYCLEWAY_LANES_KEYS }.values.all { it in KNOWN_CYCLEWAY_LANE_VALUES }
     }
 
     private fun olderThan(years: Int) =
@@ -229,6 +229,9 @@ class AddCycleway(
                 if (directionValue != null) {
                     changes.addOrModify("$cyclewayKey:oneway", directionValue)
                 }
+                if (changes.getPreviousValue("$cyclewayKey:segregated") == "no") {
+                    changes.modify("$cyclewayKey:segregated", "yes")
+                }
             }
             DUAL_TRACK -> {
                 changes.addOrModify(cyclewayKey, "track")
@@ -274,7 +277,7 @@ class AddCycleway(
             changes.deleteIfPreviously("$cyclewayKey:oneway", "no")
         }
         // clear previous cycleway:segregated=no value
-        if (cycleway != SIDEWALK_EXPLICIT) {
+        if (cycleway != SIDEWALK_EXPLICIT && cycleway != TRACK) {
             changes.deleteIfPreviously("$cyclewayKey:segregated", "no")
         }
         // clear previous sidewalk:bicycle=yes value
