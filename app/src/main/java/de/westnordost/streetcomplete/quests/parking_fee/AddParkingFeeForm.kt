@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
@@ -55,8 +55,8 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewData = loadOpeningHoursData(savedInstanceState)
-        openingHoursAdapter = AddOpeningHoursAdapter(viewData, requireContext(), countryInfo)
+        openingHoursAdapter = AddOpeningHoursAdapter(requireContext(), countryInfo)
+        openingHoursAdapter.rows = loadOpeningHoursData(savedInstanceState).toMutableList()
         openingHoursAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
     }
 
@@ -96,8 +96,8 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
     }
 
     override fun onClickOk() {
-        val times = openingHoursAdapter.createOpeningMonths()
-        if (!times.isEmpty()) {
+        val times = openingHoursAdapter.createOpeningHours()
+        if (times.rules.isNotEmpty()) {
             if(isFeeOnlyAtHours) {
                 applyAnswer(HasFeeAtHours(times))
             } else {
@@ -112,21 +112,22 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         applyAnswer(if(answer) HasFee else HasNoFee)
     }
 
-    private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningMonthsRow> =
+    private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningHoursRow> =
         if (savedInstanceState != null) {
-            serializer.toObject<ArrayList<OpeningMonthsRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA)!!)
+            serializer.toObject<ArrayList<OpeningHoursRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA)!!)
         } else {
-            listOf(OpeningMonthsRow())
+            listOf()
         }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(ArrayList(openingHoursAdapter.monthsRows)))
+        outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(ArrayList(openingHoursAdapter.rows)))
         outState.putBoolean(IS_DEFINING_HOURS, isDefiningHours)
         outState.putBoolean(IS_FEE_ONLY_AT_HOURS, isFeeOnlyAtHours)
     }
 
-    override fun isFormComplete() = isDefiningHours && !openingHoursAdapter.createOpeningMonths().joinToString(";").isEmpty()
+    override fun isFormComplete() =
+        isDefiningHours && openingHoursAdapter.rows.isNotEmpty()
 
     companion object {
         private const val OPENING_HOURS_DATA = "oh_data"

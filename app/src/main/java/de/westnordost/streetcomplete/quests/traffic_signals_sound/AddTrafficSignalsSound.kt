@@ -1,15 +1,25 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_sound
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddTrafficSignalsSound(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
+class AddTrafficSignalsSound(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<Boolean>(o) {
 
-    override val tagFilters =
-        "nodes with highway = crossing and crossing = traffic_signals and !traffic_signals:sound"
+    override val tagFilters = """
+        nodes with highway = crossing and crossing = traffic_signals
+        and (
+          !traffic_signals:sound
+          or traffic_signals:sound = no and traffic_signals:sound older today -${r * 4} years
+          or traffic_signals:sound older today -${r * 8} years
+        )
+    """
+
     override val commitMessage = "Add traffic_signals:sound tag"
     override val wikiLink = "Tag:highway=traffic_signals"
     override val icon = R.drawable.ic_quest_blind_traffic_lights
@@ -19,6 +29,6 @@ class AddTrafficSignalsSound(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQ
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("traffic_signals:sound", if (answer) "yes" else "no")
+        changes.updateWithCheckDate("traffic_signals:sound", if (answer) "yes" else "no")
     }
 }

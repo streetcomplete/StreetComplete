@@ -335,7 +335,14 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     protected fun setButtonsView(resourceId: Int) {
         otherAnswersButton.layoutParams = FlexboxLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+        removeButtonsView()
         activity?.layoutInflater?.inflate(resourceId, buttonPanel)
+    }
+
+    protected fun removeButtonsView() {
+        if (buttonPanel.childCount > 1) {
+            buttonPanel.removeViews(1, buttonPanel.childCount - 1)
+        }
     }
 
     @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {

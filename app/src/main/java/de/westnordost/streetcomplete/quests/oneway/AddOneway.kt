@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGe
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
@@ -36,7 +36,7 @@ class AddOneway(
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
 
-    private val filter by lazy { FiltersParser().parse(tagFilters) }
+    private val filter by lazy { ElementFiltersParser().parse(tagFilters) }
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway_title
 

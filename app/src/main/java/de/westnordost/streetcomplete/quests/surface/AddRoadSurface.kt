@@ -1,17 +1,28 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 
-class AddRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddRoadSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
-        ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")} and !surface
-        and (access !~ private|no or (foot and foot !~ private|no))
+        ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
+         and (
+           !surface
+           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -${r * 4} years
+           or surface older today -${r * 12} years
+         )
+         and (access !~ private|no or (foot and foot !~ private|no))
     """
+    /* ~paved ways are less likely to change the surface type */
+
     override val commitMessage = "Add road surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface
@@ -36,7 +47,7 @@ class AddRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
     override fun createForm() = AddRoadSurfaceForm()
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("surface", answer)
+        changes.updateWithCheckDate("surface", answer)
     }
 
     companion object {

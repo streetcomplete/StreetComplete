@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddWayLit(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddWayLit(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<String>(o) {
 
     /* Using sidewalk as a tell-tale tag for (urban) streets which reached a certain level of
        development. I.e. non-urban streets will usually not even be lit in industrialized
@@ -17,16 +20,22 @@ class AddWayLit(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Stri
     override val tagFilters = """
         ways with
         (
-          highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
-          or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and
           (
-            sidewalk ~ both|left|right|yes|separate
-            or ~source:maxspeed|maxspeed:type|zone:maxspeed|zone:traffic ~ .+:urban
+            (
+              highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
+              or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and
+              (
+                sidewalk ~ both|left|right|yes|separate
+                or ~source:maxspeed|maxspeed:type|zone:maxspeed|zone:traffic ~ .+urban|.+zone
+              )
+              or highway ~ ${LIT_WAYS.joinToString("|")}
+              or highway = path and (foot = designated or bicycle = designated)
+            )
+            and !lit
           )
-          or highway ~ ${LIT_WAYS.joinToString("|")}
-          or highway = path and (foot = designated or bicycle = designated)
+          or highway and lit = no and lit older today -${r * 8} years
+          or highway and lit older today -${r * 16} years
         )
-        and !lit
         and (access !~ private|no or (foot and foot !~ private|no))
     """
 
@@ -50,7 +59,7 @@ class AddWayLit(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Stri
     override fun createForm() = WayLitForm()
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("lit", answer)
+        changes.updateWithCheckDate("lit", answer)
     }
 
     companion object {

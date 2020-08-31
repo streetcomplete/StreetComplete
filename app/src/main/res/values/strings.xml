@@ -55,12 +55,18 @@
     <string name="quest_openingHours_name_title">"What are the opening hours of %s?"</string>
     <string name="quest_openingHours_name_type_title">"What are the opening hours of %1$s (%2$s)?"</string>
     <string name="quest_openingHours_no_name_title">"What are the opening hours of this place? (%s)"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Are these opening hours for %s still correct?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Are these opening hours for %1$s (%2$s) still correct?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Are these opening hours still correct (%s)?"</string>
     <string name="quest_openingHours_start_time">"opening time"</string>
     <string name="quest_openingHours_end_time">"closing time"</string>
     <string name="quest_openingHours_timeSelect_next">Next</string>
     <string name="quest_openingHours_add_months">"Add months"</string>
     <string name="quest_openingHours_add_hours">"Add hours"</string>
     <string name="quest_openingHours_add_weekdays">"Add weekdays"</string>
+    <string name="quest_openingHours_add_off_days">"Add off days"</string>
+    <string name="quest_openingHours_off_day">"Off day"</string>
+    <string name="quest_openingHours_unspecified_range">Not specified"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Select weekdays"</string>
     <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>
@@ -233,6 +239,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_maxspeed_answer_noSign_info_zone">"If there is a sign like this at the main street intersection, you won’t find individual signs within the zone because the speed limit posted there applies to the whole zone."</string>
     <string name="quest_cyclewaySurface_title">"What surface does the cycleway here have?"</string>
     <string name="quest_cycleway_title2">"Is there a cycleway here? What type?"</string>
+    <string name="quest_cycleway_resurvey_title">"Is this still the cycleway situation here?"</string>
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
     <string name="quest_streetLanes_title">"How many lanes does this road have?"</string>
     <string name="quest_streetLanes_description">"If there are no road markings, it has no lanes."</string>
@@ -451,6 +458,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
     <string name="quest_cycleway_value_sidewalk_allowed">none, but cyclists are allowed on sidewalk</string>
     <string name="pref_category_advanced">Advanced</string>
+    <string name="pref_title_resurvey_intervals">Resurvey intervals</string>
+    <string name="resurvey_intervals_less_often">Ask less often</string>
+    <string name="resurvey_intervals_default">Default</string>
+    <string name="resurvey_intervals_more_often">Ask more often</string>
     <string name="pref_title_quests">Quest selection</string>
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
@@ -724,7 +735,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
     <string name="quest_address_street_description">Tap the road it belongs to on the map or enter it without abbreviations in the field below:</string>
-    <string name="quest_street_side_puzzle_tutorial">Tap the question marks on the illustration below to select an answer for the given side of the road. The road in the illustration is rotated the same as on the map at the location of the pin. </string>
+    <string name="quest_street_side_puzzle_tutorial">The road in the illustration is rotated the same as on the map at the location of the pin. </string>
+    <string name="quest_street_side_puzzle_select">Tap to select</string>
     <string name="quest_oneway_tutorial">The road in the illustration is rotated the same as on the map at the location of the pin. Note the indicated direction. </string>
     <string name="quest_recycling_materials_title">What can be left here for recycling?</string>
     <string name="quest_recycling_materials_note">If anything different can be recycled than selectable here, please leave a note instead.</string>

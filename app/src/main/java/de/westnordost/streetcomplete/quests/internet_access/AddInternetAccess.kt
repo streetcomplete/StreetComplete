@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.quests.internet_access
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddInternetAccess(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddInternetAccess(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         nodes, ways, relations with
@@ -13,8 +16,16 @@ class AddInternetAccess(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
           amenity ~ library|community_centre|youth_centre
           or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|camp_site|caravan_site|chalet
         )
-        and !internet_access and !wifi and name
+        and name
+        and (
+          !internet_access
+          or internet_access = yes
+          or internet_access older today -${r * 2} years
+        )
     """
+    /* Asked less often than for example opening hours because this quest is only asked for
+       tendentially larger places which are less likely to change often */
+
     override val commitMessage = "Add internet access"
     override val wikiLink = "Key:internet_access"
     override val icon = R.drawable.ic_quest_wifi
@@ -25,6 +36,6 @@ class AddInternetAccess(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
     override fun createForm() = AddInternetAccessForm()
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("internet_access", answer)
+        changes.updateWithCheckDate("internet_access", answer)
     }
 }

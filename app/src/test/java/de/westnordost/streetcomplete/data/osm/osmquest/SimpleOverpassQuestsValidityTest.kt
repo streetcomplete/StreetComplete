@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.osmquest
 import org.junit.Test
 
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.QuestModule
@@ -14,7 +13,7 @@ class SimpleOverpassQuestsValidityTest {
 
     @Test fun `query valid`() {
         val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
-        val questTypes = QuestModule.questTypeRegistry(OsmNoteQuestType(), mock(), mock(), mock(), mock(), mock()).all
+        val questTypes = QuestModule.questTypeRegistry(OsmNoteQuestType(), mock(), mock(), mock(), mock(), mock(), mock()).all
 
         for (questType in questTypes) {
             if (questType is SimpleOverpassQuestType<*>) {

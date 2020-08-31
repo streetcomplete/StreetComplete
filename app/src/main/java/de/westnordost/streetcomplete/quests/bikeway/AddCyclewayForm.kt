@@ -8,7 +8,7 @@ import java.util.Collections
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
@@ -16,11 +16,12 @@ import de.westnordost.streetcomplete.view.dialogs.ImageListPickerDialog
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 import kotlinx.android.synthetic.main.view_little_compass.*
 
-
 class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
     override val contentPadding = false
+
+    private var isDisplayingPreviousCycleway: Boolean = false
 
     override val otherAnswers: List<OtherAnswer> get() {
         val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout"
@@ -31,9 +32,11 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         return result
     }
 
-    private val likelyNoBicycleContraflow = FiltersParser().parse("""
-            ways with oneway:bicycle != no and
-            (oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified or junction=roundabout)
+    private val likelyNoBicycleContraflow = ElementFiltersParser().parse("""
+            ways with oneway:bicycle != no and (
+                oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+                or junction = roundabout
+            )
         """)
 
     private var streetSideRotater: StreetSideRotater? = null
@@ -55,18 +58,14 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        isDefiningBothSides = savedInstanceState?.getBoolean(DEFINE_BOTH_SIDES)
-                ?: !likelyNoBicycleContraflow.matches(osmElement!!)
-
-        savedInstanceState?.getString(CYCLEWAY_RIGHT)?.let { rightSide = Cycleway.valueOf(it) }
-        savedInstanceState?.getString(CYCLEWAY_LEFT)?.let { leftSide = Cycleway.valueOf(it) }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (savedInstanceState == null) {
+            initStateFromTags()
+        } else {
+            onLoadInstanceState(savedInstanceState)
+        }
 
         puzzleView.listener = { isRight -> showCyclewaySelectionDialog(isRight) }
 
@@ -81,10 +80,37 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             if (isLeftHandTraffic) R.drawable.ic_cycleway_unknown_l
             else                   R.drawable.ic_cycleway_unknown
 
+        val defaultTitleId = R.string.quest_street_side_puzzle_select
+
         puzzleView.setLeftSideImageResource(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
         puzzleView.setRightSideImageResource(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
+        puzzleView.setLeftSideText(resources.getString(leftSide?.getTitleResId() ?: defaultTitleId ))
+        puzzleView.setRightSideText(resources.getString(rightSide?.getTitleResId() ?: defaultTitleId ))
 
         checkIsFormComplete()
+    }
+
+    private fun initStateFromTags() {
+        val countryCode = countryInfo.countryCode
+        val sides = createCyclewaySides(osmElement!!.tags, isLeftHandTraffic)
+        val left = sides?.left?.takeIf { it.isAvailableAsSelection(countryCode) }
+        val right = sides?.right?.takeIf { it.isAvailableAsSelection(countryCode) }
+        val bothSidesWereDefinedBefore = sides?.left != null && sides.right != null
+
+        leftSide = left
+        rightSide = right
+        isDefiningBothSides = bothSidesWereDefinedBefore || !likelyNoBicycleContraflow.matches(osmElement!!)
+
+        // only show as re-survey (yes/no button) if the previous tagging was complete
+        setAsResurvey(isFormComplete())
+    }
+
+    private fun onLoadInstanceState(savedInstanceState: Bundle) {
+        isDefiningBothSides = savedInstanceState.getBoolean(DEFINE_BOTH_SIDES)
+        savedInstanceState.getString(CYCLEWAY_RIGHT)?.let { rightSide = Cycleway.valueOf(it) }
+        savedInstanceState.getString(CYCLEWAY_LEFT)?.let { leftSide = Cycleway.valueOf(it) }
+        isDisplayingPreviousCycleway = savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_CYCLEWAY)
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -92,6 +118,24 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         rightSide?.let { outState.putString(CYCLEWAY_RIGHT, it.name) }
         leftSide?.let { outState.putString(CYCLEWAY_LEFT, it.name) }
         outState.putBoolean(DEFINE_BOTH_SIDES, isDefiningBothSides)
+        outState.putBoolean(IS_DISPLAYING_PREVIOUS_CYCLEWAY, isDisplayingPreviousCycleway)
+
+    }
+
+    private fun setAsResurvey(resurvey: Boolean) {
+        isDisplayingPreviousCycleway = resurvey
+        puzzleView.isEnabled = !resurvey
+        if (resurvey) {
+            setButtonsView(R.layout.quest_buttonpanel_yes_no)
+            requireView().findViewById<View>(R.id.noButton).setOnClickListener {
+                setAsResurvey(false)
+            }
+            requireView().findViewById<View>(R.id.yesButton).setOnClickListener {
+                onClickOk()
+            }
+        } else {
+            removeButtonsView()
+        }
     }
 
     @AnyThread
@@ -138,11 +182,13 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     private fun Cycleway.isDualTrackOrLane() =
         this === Cycleway.DUAL_TRACK || this === Cycleway.DUAL_LANE
 
-    override fun isFormComplete() =
+    override fun isFormComplete() = !isDisplayingPreviousCycleway && (
         if (isDefiningBothSides) leftSide != null && rightSide != null
         else                     leftSide != null || rightSide != null
+    )
 
-    override fun isRejectingClose() = leftSide != null || rightSide != null
+    override fun isRejectingClose() =
+        !isDisplayingPreviousCycleway && (leftSide != null || rightSide != null)
 
     private fun showCyclewaySelectionDialog(isRight: Boolean) {
         val ctx = context ?: return
@@ -150,12 +196,15 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
             val cycleway = selected.value!!
             val iconResId = cycleway.getIconResId(isLeftHandTraffic)
+            val titleResId = resources.getString(cycleway.getTitleResId())
 
             if (isRight) {
                 puzzleView.replaceRightSideImageResource(iconResId)
+                puzzleView.setRightSideText(titleResId)
                 rightSide = cycleway
             } else {
                 puzzleView.replaceLeftSideImageResource(iconResId)
+                puzzleView.setLeftSideText(titleResId)
                 leftSide = cycleway
             }
             checkIsFormComplete()
@@ -163,24 +212,12 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     }
 
     private fun getCyclewayItems(isRight: Boolean): List<Cycleway> {
-        val values = Cycleway.displayValues.toMutableList()
+        val country = countryInfo.countryCode
+        val values = DISPLAYED_CYCLEWAY_ITEMS.filter { it.isAvailableAsSelection(country) }.toMutableList()
         // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
         if (isOneway && isReverseSideRight == isRight) {
             Collections.replaceAll(values, Cycleway.PICTOGRAMS, Cycleway.NONE_NO_ONEWAY)
         }
-        val country = countryInfo.countryCode
-        if ("BE" == country) {
-            // Belgium does not make a difference between continuous and dashed lanes -> so don't tag that difference
-            // also, in Belgium there is a differentiation between the normal lanes and suggestion lanes
-            values.remove(Cycleway.EXCLUSIVE_LANE)
-            values.remove(Cycleway.ADVISORY_LANE)
-            values.add(0, Cycleway.LANE_UNSPECIFIED)
-            values.add(1, Cycleway.SUGGESTION_LANE)
-        } else if ("NL" == country) {
-            // a differentiation between dashed lanes and suggestion lanes only exist in NL and BE
-            values.add(values.indexOf(Cycleway.ADVISORY_LANE) + 1, Cycleway.SUGGESTION_LANE)
-        }
-
         return values
     }
 
@@ -194,5 +231,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         private const val CYCLEWAY_LEFT = "cycleway_left"
         private const val CYCLEWAY_RIGHT = "cycleway_right"
         private const val DEFINE_BOTH_SIDES = "define_both_sides"
+        private const val IS_DISPLAYING_PREVIOUS_CYCLEWAY = "is_displaying_previous_cycleway"
+
     }
 }

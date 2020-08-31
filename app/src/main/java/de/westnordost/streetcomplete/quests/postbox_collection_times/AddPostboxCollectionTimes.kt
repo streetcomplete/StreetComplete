@@ -1,20 +1,27 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
+class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
 
     override val tagFilters = """
         nodes with amenity = post_box
-        and !collection_times
-        and collection_times:signed != no
         and access !~ private|no
+        and collection_times:signed != no
+        and (!collection_times or collection_times older today -${r * 2} years)
     """
+
+    /* Don't ask again for postboxes without signed collection times. This is very unlikely to
+    *  change and problematic to tag clearly with the check date scheme */
+
     override val icon = R.drawable.ic_quest_mail
     override val commitMessage = "Add postbox collection times"
     override val wikiLink = "Key:collection_times"
@@ -58,7 +65,7 @@ class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryApi) : SimpleOverpa
                 changes.add("collection_times:signed", "no")
             }
             is CollectionTimes -> {
-                changes.add("collection_times", answer.times.joinToString(", "))
+                changes.updateWithCheckDate("collection_times", answer.times.joinToString(", "))
             }
         }
     }

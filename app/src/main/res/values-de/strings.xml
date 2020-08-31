@@ -678,7 +678,7 @@ Jetzt aufspalten?"</string>
     <string name="quest_postboxRef_title">"Was ist die Referenznummer dieses Briefkastens?"</string>
     <string name="quest_postboxRef_name_title">"Was ist die Referenznummer dieses %s Briefkastens?"</string>
     <string name="quest_ref_answer_noRef">"Keine Referenznummer sichtbar…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"Tippe auf die Fragezeichen auf der Abbildung um die Antwort für die jeweilige Seite der Straße auszuwählen. Die Straße auf der Abbildung ist genauso gedreht wie auf der Karte an der Position des Pins."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie auf der Karte an der Position des Pins."</string>
     <string name="quest_recycling_materials_title">"Was kann hier entsorgt werden?"</string>
     <string name="quest_recycling_materials_note">"Wenn noch Anderes entsorgt werden kann als man hier angeben kann, bitte hinterlasse stattdessen eine Notiz."</string>
     <string name="quest_recycling_type_batteries">"Batterien"</string>

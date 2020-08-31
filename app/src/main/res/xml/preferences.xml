@@ -28,6 +28,16 @@
             android:widgetLayout="@layout/widget_image_next"
             />
 
+        <ListPreference
+            android:key="quests.resurveyIntervals"
+            android:title="@string/pref_title_resurvey_intervals"
+            android:summary="%s"
+            android:defaultValue="DEFAULT"
+            android:entries="@array/pref_entries_resurvey_intervals"
+            android:entryValues="@array/pref_entryvalues_resurvey_intervals"
+            android:persistent="true"
+            />
+
         <SwitchPreference
             android:key="display.nonQuestionNotes"
             android:title="@string/pref_title_show_notes_not_phrased_as_questions"

@@ -11,7 +11,7 @@ class AddMaxSpeed(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Ma
 
     override val tagFilters = """
         ways with highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
-         and !maxspeed and !maxspeed:forward and !maxspeed:backward
+         and !maxspeed and !maxspeed:advisory and !maxspeed:forward and !maxspeed:backward
          and !source:maxspeed and !zone:maxspeed and !maxspeed:type and !zone:traffic
          and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
          and motor_vehicle !~ private|no

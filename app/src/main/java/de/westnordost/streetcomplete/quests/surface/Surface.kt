@@ -26,15 +26,15 @@ enum class Surface(val item:Item<String>) {
 fun List<Surface>.toItems() = this.map { it.item }
 
 val PAVED_SURFACES = listOf(
-            ASPHALT, CONCRETE, PAVING_STONES,
-            SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
-            WOOD, METAL
-    )
+    ASPHALT, CONCRETE, PAVING_STONES,
+    SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
+    WOOD, METAL
+)
 
 val UNPAVED_SURFACES = listOf(
-            COMPACTED, FINE_GRAVEL, GRAVEL, PEBBLES
-    )
+    COMPACTED, FINE_GRAVEL, GRAVEL, PEBBLES
+)
 
-val GROUND_SURFACES =  listOf(
-            DIRT, GRASS, SAND
-    )
+val GROUND_SURFACES = listOf(
+    DIRT, GRASS, SAND
+)

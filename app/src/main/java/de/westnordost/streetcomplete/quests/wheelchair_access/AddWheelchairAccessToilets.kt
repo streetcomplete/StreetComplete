@@ -1,14 +1,24 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddWheelchairAccessToilets(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddWheelchairAccessToilets(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<String>(o) {
 
-    override val tagFilters =
-        " nodes, ways with  amenity=toilets and access !~ private|customers and !wheelchair"
+    override val tagFilters = """
+        nodes, ways with amenity = toilets 
+         and access !~ private|customers
+         and (
+           !wheelchair
+           or wheelchair != yes and wheelchair older today -${r * 4} years
+           or wheelchair older today -${r * 8} years
+         )
+    """
     override val commitMessage = "Add wheelchair access to toilets"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
@@ -22,6 +32,6 @@ class AddWheelchairAccessToilets(o: OverpassMapDataAndGeometryApi) : SimpleOverp
     override fun createForm() = AddWheelchairAccessToiletsForm()
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("wheelchair", answer)
+        changes.updateWithCheckDate("wheelchair", answer)
     }
 }
