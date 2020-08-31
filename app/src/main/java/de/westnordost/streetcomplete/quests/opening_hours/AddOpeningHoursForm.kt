@@ -66,14 +66,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         if (savedInstanceState != null) {
             onLoadInstanceState(savedInstanceState)
         } else {
-            val oh = osmElement!!.tags!!["opening_hours"]
-            val rows = oh?.toOpeningHoursRules()?.toOpeningHoursRows()
-            if (rows != null) {
-                openingHoursAdapter.rows = rows.toMutableList()
-                setAsResurvey(true)
-            } else {
-                setAsResurvey(false)
-            }
+            initStateFromTags()
         }
 
         openingHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
@@ -109,6 +102,17 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
             popup.show()
         } else {
             openingHoursAdapter.addNewWeekdays()
+        }
+    }
+
+    private fun initStateFromTags() {
+        val oh = osmElement!!.tags!!["opening_hours"]
+        val rows = oh?.toOpeningHoursRules()?.toOpeningHoursRows()
+        if (rows != null) {
+            openingHoursAdapter.rows = rows.toMutableList()
+            setAsResurvey(true)
+        } else {
+            setAsResurvey(false)
         }
     }
 

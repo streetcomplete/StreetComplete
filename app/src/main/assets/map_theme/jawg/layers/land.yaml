@@ -67,7 +67,7 @@ layers:
     buildings:
         data: { source: jawg, layer: building }
         # jawg: there are no 3d building parts
-        filter: { $zoom: { min: 16 } }
+        filter: { $zoom: { min: 16 }, not: { type: no } }
         draw:
             buildings-style:
                 order: 100
