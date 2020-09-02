@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.webkit.URLUtil.isValidUrl
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
