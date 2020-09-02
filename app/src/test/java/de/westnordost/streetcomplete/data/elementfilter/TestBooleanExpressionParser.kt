@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import java.util.Locale
-
 object TestBooleanExpressionParser {
     fun parse(input: String): BooleanExpression<Matcher<String>, String>? {
         val builder = BooleanExpressionBuilder<Matcher<String>, String>()
-        val reader = StringWithCursor(input, Locale.US)
+        val reader = StringWithCursor(input)
         while (!reader.isAtEnd()) {
             when {
                 reader.nextIsAndAdvance('*') -> builder.addAnd()

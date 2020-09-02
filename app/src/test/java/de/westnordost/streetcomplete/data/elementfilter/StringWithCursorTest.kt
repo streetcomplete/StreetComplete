@@ -2,13 +2,11 @@ package de.westnordost.streetcomplete.data.elementfilter
 
 import org.junit.Test
 
-import java.util.Locale
-
 import org.junit.Assert.*
 
 class StringWithCursorTest {
     @Test fun advance() {
-        val x = StringWithCursor("ab", Locale.US)
+        val x = StringWithCursor("ab")
         assertEquals(0, x.cursorPos)
         assertEquals('a', x.advance())
         assertEquals(1, x.cursorPos)
@@ -24,7 +22,7 @@ class StringWithCursorTest {
     }
 
     @Test fun advanceBy() {
-        val x = StringWithCursor("wundertuete", Locale.US)
+        val x = StringWithCursor("wundertuete")
         assertEquals("wunder", x.advanceBy(6))
         assertEquals("", x.advanceBy(0))
         try {
@@ -37,7 +35,7 @@ class StringWithCursorTest {
     }
 
     @Test fun nextIsAndAdvance() {
-        val x = StringWithCursor("test123", Locale.US)
+        val x = StringWithCursor("test123")
         assertTrue(x.nextIsAndAdvance("te"))
         assertEquals(2, x.cursorPos)
         assertFalse(x.nextIsAndAdvance("te"))
@@ -48,7 +46,7 @@ class StringWithCursorTest {
     }
 
     @Test fun nextIsAndAdvanceChar() {
-        val x = StringWithCursor("test123", Locale.US)
+        val x = StringWithCursor("test123")
         assertTrue(x.nextIsAndAdvance('t'))
         assertEquals(1, x.cursorPos)
         assertFalse(x.nextIsAndAdvance('t'))
@@ -58,13 +56,13 @@ class StringWithCursorTest {
     }
 
     @Test fun nextIsAndAdvanceIgnoreCase() {
-        val x = StringWithCursor("test123", Locale.US)
+        val x = StringWithCursor("test123")
         assertTrue(x.nextIsAndAdvanceIgnoreCase("TE"))
         assertTrue(x.nextIsAndAdvanceIgnoreCase("st"))
     }
 
     @Test fun findNext() {
-        val x = StringWithCursor("abc abc", Locale.US)
+        val x = StringWithCursor("abc abc")
         assertEquals("abc abc".length.toLong(), x.findNext("wurst").toLong())
 
         assertEquals(0, x.findNext("abc").toLong())
@@ -73,7 +71,7 @@ class StringWithCursorTest {
     }
 
     @Test fun findNextChar() {
-        val x = StringWithCursor("abc abc", Locale.US)
+        val x = StringWithCursor("abc abc")
         assertEquals("abc abc".length.toLong(), x.findNext('x').toLong())
 
         assertEquals(0, x.findNext('a').toLong())
@@ -82,7 +80,7 @@ class StringWithCursorTest {
     }
 
     @Test fun nextIsChar() {
-        val x = StringWithCursor("abc", Locale.US)
+        val x = StringWithCursor("abc")
         assertTrue(x.nextIs('a'))
         assertFalse(x.nextIs('b'))
         x.advance()
@@ -94,7 +92,7 @@ class StringWithCursorTest {
     }
 
     @Test fun nextIsString() {
-        val x = StringWithCursor("abc", Locale.US)
+        val x = StringWithCursor("abc")
         assertTrue(x.nextIs("abc"))
         assertTrue(x.nextIs("ab"))
         assertFalse(x.nextIs("bc"))
@@ -106,7 +104,7 @@ class StringWithCursorTest {
     }
 
     @Test fun nextMatchesString() {
-        val x = StringWithCursor("abc123", Locale.US)
+        val x = StringWithCursor("abc123")
         assertNotNull(x.nextMatches(Regex("abc[0-9]")))
         assertNotNull(x.nextMatches(Regex("abc[0-9]{3}")))
         assertNull(x.nextMatches(Regex("abc[0-9]{4}")))
@@ -116,7 +114,7 @@ class StringWithCursorTest {
     }
 
     @Test fun nextIsStringIgnoreCase() {
-        val x = StringWithCursor("abc", Locale.US)
+        val x = StringWithCursor("abc")
         assertTrue(x.nextIsIgnoreCase("A"))
         assertTrue(x.nextIsIgnoreCase("a"))
     }

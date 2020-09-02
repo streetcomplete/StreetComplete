@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import java.util.*
 import kotlin.math.min
 
 /** Convenience class to make it easier to go step by step through a string  */
-class StringWithCursor(private val string: String, private val locale: Locale) {
+class StringWithCursor(private val string: String) {
     var cursorPos = 0
         private set
 
@@ -73,7 +72,7 @@ class StringWithCursor(private val string: String, private val locale: Locale) {
     fun nextIs(c: Char): Boolean = c == char
     fun nextIs(str: String): Boolean = string.startsWith(str, cursorPos)
     fun nextIsIgnoreCase(str: String): Boolean =
-        nextIs(str.toLowerCase(locale)) || nextIs(str.toUpperCase(locale))
+        nextIs(str.toLowerCase()) || nextIs(str.toUpperCase())
 
     fun nextMatches(regex: Regex): MatchResult? {
         val match = regex.find(string, cursorPos) ?: return null

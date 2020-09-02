@@ -5,8 +5,6 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.*
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import java.lang.NumberFormatException
 import java.text.ParseException
-import java.util.ArrayList
-import java.util.Locale
 import kotlin.math.min
 
 /**
@@ -19,7 +17,7 @@ import kotlin.math.min
 class ElementFiltersParser {
     fun parse(input: String): ElementFilterExpression {
         // convert all white-spacey things to whitespaces so we do not have to deal with them later
-        val cursor = StringWithCursor(input.replace("\\s".toRegex(), " "), Locale.US)
+        val cursor = StringWithCursor(input.replace("\\s".toRegex(), " "))
 
         return ElementFilterExpression(cursor.parseElementsDeclaration(), cursor.parseTags())
     }
