@@ -13,9 +13,9 @@ import javax.inject.Singleton
     operator fun times(num: Int) = num * multiplier
 
     private val multiplier: Double get() = when(intervalsPreference) {
-        LESS_OFTEN -> 0.5
+        LESS_OFTEN -> 2.0
         DEFAULT -> 1.0
-        MORE_OFTEN -> 2.0
+        MORE_OFTEN -> 0.5
     }
 
     private val intervalsPreference: Prefs.ResurveyIntervals get() =
