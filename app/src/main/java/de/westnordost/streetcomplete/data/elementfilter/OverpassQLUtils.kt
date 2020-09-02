@@ -16,7 +16,7 @@ fun BoundingBox.toOverpassBboxFilter() = "(${toOverpassBbox()})"
 
 private fun BoundingBox.toOverpassBbox(): String {
     val df = NumberFormat.getNumberInstance(Locale.US)
-    df.maximumFractionDigits = 340
+    df.maximumFractionDigits = 7
 
     return df.format(minLatitude) + "," + df.format(minLongitude) + "," +
             df.format(maxLatitude) + "," + df.format(maxLongitude)
