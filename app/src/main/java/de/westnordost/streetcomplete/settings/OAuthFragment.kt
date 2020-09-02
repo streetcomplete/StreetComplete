@@ -164,7 +164,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
         suspend fun awaitOAuthCallback(): String = suspendCoroutine {continutation = it }
 
         override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-            val uri = url.takeIf(::isValidUrl)?.toUri() ?: return false
+            val uri = url?.toUri() ?: return false
             if (!uri.isHierarchical) return false
             if (uri.scheme != callbackScheme || uri.host != callbackHost) return false
             val verifier = uri.getQueryParameter(OAUTH_VERIFIER)
