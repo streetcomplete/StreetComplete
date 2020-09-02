@@ -123,7 +123,13 @@ class AddOpeningHours (
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
-        return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
+        val hasProperName = name != null
+        val hasNonBrandFeatureName = hasFeatureName(tags) && !tags.containsKey("brand")
+        return when {
+            !hasProperName          -> arrayOf(featureName.value.toString())
+            !hasNonBrandFeatureName -> arrayOf(name!!)
+            else                    -> arrayOf(name!!, featureName.value.toString())
+        }
     }
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
@@ -178,8 +184,4 @@ class AddOpeningHours (
 
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
         tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
-}
-
-private fun StringMapChangesBuilder.deleteIfPreviously(key: String, previousValue: String) {
-    if (getPreviousValue(key) == previousValue) delete(key)
 }
