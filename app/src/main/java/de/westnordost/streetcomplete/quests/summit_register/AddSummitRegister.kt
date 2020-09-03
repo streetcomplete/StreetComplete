@@ -21,7 +21,7 @@ class AddSummitRegister(
     private val r: ResurveyIntervalsStore
 ) : OsmElementQuestType<Boolean> {
 
-    override val commitMessage = "Add whatever summit register is present"
+    override val commitMessage = "Add whether summit register is present"
     override val wikiLink = "Key:summit:register"
     override val icon = R.drawable.ic_quest_peak
 
@@ -61,7 +61,7 @@ class AddSummitRegister(
             relation["route"="hiking"];
         )->.hiking;
         node(around.hiking:10)[natural=peak][!"summit:register"][name] -> .summits_with_unknown_status;
-        node(around.hiking:10)["summit:register"][name]${olderThan(8).toOverpassQLString()} -> .summits_with_old_status;
+        node(around.hiking:10)["summit:register"][name]${olderThan(4).toOverpassQLString()} -> .summits_with_old_status;
 
         (.summits_with_unknown_status; .summits_with_old_status;);
 
