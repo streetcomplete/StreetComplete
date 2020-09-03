@@ -23,7 +23,7 @@ class AddSummitRegister(
 
     override val commitMessage = "Add whatever summit register is present"
     override val wikiLink = "Key:summit:register"
-    override val icon = R.drawable.ic_quest_railway //TODO fix blatant placeholder
+    override val icon = R.drawable.ic_quest_peak
 
     override val enabledInCountries = NoCountriesExcept(
         // regions gathered in
