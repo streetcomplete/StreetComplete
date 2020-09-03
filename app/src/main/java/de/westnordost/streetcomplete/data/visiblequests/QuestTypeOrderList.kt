@@ -18,7 +18,7 @@ import javax.inject.Singleton
     /* Is a singleton because it has a in-memory cache that is synchronized with changes made on
        the DB */
 
-    private val orderLists: MutableList<MutableList<String>> by lazy { load() }
+    private var orderLists: MutableList<MutableList<String>> = load()
 
     private val questTypeOrderLists: List<List<QuestType<*>>> get() =
         orderLists.mapNotNull { orderList ->
@@ -51,14 +51,25 @@ import javax.inject.Singleton
         save(orderLists)
     }
 
+    @Synchronized fun reload() {
+        orderLists = load()
+    }
+
     private fun load(): MutableList<MutableList<String>> {
-        val order = prefs.getString(Prefs.QUEST_ORDER, null)
+        val fullorder = prefs.getString(Prefs.QUEST_ORDER, null)?.split("+")
+        val order = fullorder?.getOrNull(prefs.getString(Prefs.QUEST_PRESET,null)?.toIntOrNull() ?: 0)
         return order?.split(DELIM1)?.map { it.split(DELIM2).toMutableList() }?.toMutableList() ?: mutableListOf()
     }
 
     private fun save(lists: List<List<String>>) {
         val joined = lists.joinToString(DELIM1) { it.joinToString(DELIM2) }
-        prefs.edit { putString(Prefs.QUEST_ORDER, if (joined.isNotEmpty()) joined else null) }
+        val fullorder = prefs.getString(Prefs.QUEST_ORDER, null).orEmpty().split("+").toMutableList()
+        val index = prefs.getString(Prefs.QUEST_PRESET,null)?.toIntOrNull() ?: 0
+        while (fullorder.size <= index) {
+            fullorder.add("")
+        }
+        fullorder[index] = joined
+        prefs.edit { putString(Prefs.QUEST_ORDER, fullorder.joinToString("+")) } // in worst case i have sth like "+++", but should work
     }
 
     private fun applyOrderItem(before: QuestType<*>, after: QuestType<*>) {

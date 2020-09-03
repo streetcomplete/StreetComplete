@@ -29,6 +29,16 @@
             />
 
         <ListPreference
+            android:key="quests.preset"
+            android:title="select preset"
+            android:summary="%s"
+            android:defaultValue="0"
+            android:entries="@array/pref_entries_preset_select"
+            android:entryValues="@array/pref_entryvalues_preset_select"
+            android:persistent="true"
+            />
+
+        <ListPreference
             android:key="quests.resurveyIntervals"
             android:title="@string/pref_title_resurvey_intervals"
             android:summary="%s"

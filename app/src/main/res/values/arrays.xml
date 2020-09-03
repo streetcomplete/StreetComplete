@@ -12,6 +12,18 @@
         <item>OFF</item>
     </string-array>
 
+    <string-array name="pref_entries_preset_select" translatable="false">
+        <item>"preset1"</item>
+        <item>"preset2"</item>
+        <item>"preset3"</item>
+    </string-array>
+
+    <string-array name="pref_entryvalues_preset_select" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <string-array name="pref_entries_resurvey_intervals">
         <item>@string/resurvey_intervals_less_often</item>
         <item>@string/resurvey_intervals_default</item>

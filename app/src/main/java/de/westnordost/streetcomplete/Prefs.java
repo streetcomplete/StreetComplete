@@ -31,6 +31,7 @@ public class Prefs
 	// not shown anywhere directly
 	public static final String
 			QUEST_ORDER = "quests.order",
+			QUEST_PRESET = "quests.preset",
 			QUEST_INVALIDATION = "quests.invalidation",
 			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
 			MAP_LATITUDE = "map.latitude",
