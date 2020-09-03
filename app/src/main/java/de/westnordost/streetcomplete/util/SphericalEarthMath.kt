@@ -1,3 +1,5 @@
+@file:Suppress("NonAsciiCharacters")
+
 package de.westnordost.streetcomplete.util
 
 import de.westnordost.osmapi.map.data.BoundingBox
