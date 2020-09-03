@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxC
 import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier
+import de.westnordost.streetcomplete.quests.railway_crossing.AddSummitRegister
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
 import de.westnordost.streetcomplete.quests.recycling_glass.DetermineRecyclingGlass
 import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingContainerMaterials
@@ -177,6 +178,7 @@ object QuestModule
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
         //      the sake of mapping it in case it makes sense later
+        AddSummitRegister(o, r),
         AddCyclewayPartSurface(o, r),
         AddFootwayPartSurface(o, r),
         AddMotorcycleParkingCover(o),
