@@ -891,6 +891,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="at_housenumber">house number %s:</string>
     <string name="quest_summit_register_title">Is there a summit register at %s?</string>
     <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
-    <string name="dialog_tutorial_download">Quest download is also affected by auto-sync option. Use \"%s\" button in the menu to trigger download of quests.</string>
+    <string name="dialog_tutorial_download">With auto-sync off, quests are not downloaded automatically. To do this manually, use the \"%s\" button in the menu at the location you want to download.</string>
 
 </resources>
