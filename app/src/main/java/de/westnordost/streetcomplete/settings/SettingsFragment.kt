@@ -117,9 +117,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
                     val view = LayoutInflater.from(activity).inflate(R.layout.dialog_tutorial_upload, null)
                     val filled = context!!.getString(R.string.action_download)
-                    val edited = context!!.getString(R.string.dialog_tutorial_download)
                     val uploadExplanation = view.findViewById<MaterialTextView>(R.id.tutorialDownloadPanel)
-                    uploadExplanation.text = edited.replace("%s", filled)
+                    uploadExplanation.text = context!!.getString(R.string.dialog_tutorial_download, filled)
                     context?.let {
                         AlertDialog.Builder(it)
                             .setView(view)
