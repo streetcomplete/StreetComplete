@@ -31,8 +31,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 29
-        versionCode 2300
-        versionName "23.0-alpha1"
+        versionCode 2301
+        versionName "23.0-beta1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
