@@ -496,6 +496,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
     <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
     <string name="quest_busStopShelter_covered">Whole stop is covered</string>
+    <string name="quest_busStopBench_tram_name_title">"Does the streetcar stop %s have a bench?"</string>
+    <string name="quest_busStopBench_tram_title">"Does this streetcar stop have a bench?"</string>
+    <string name="quest_busStopBench_title">"Does this bus stop have a bench?"</string>
+    <string name="quest_busStopBench_name_title">"Does the bus stop %s have a bench?"</string>
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
     <string name="quest_religion_for_place_of_worship_name_title">What religion is practiced at %s?</string>

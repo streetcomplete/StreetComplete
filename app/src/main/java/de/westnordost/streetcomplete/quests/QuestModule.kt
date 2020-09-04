@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground
+import de.westnordost.streetcomplete.quests.bus_stop_bench.AddBenchStatusOnBusStop
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
@@ -191,6 +192,7 @@ object QuestModule
         AddBoardType(o),
         AddPowerPolesMaterial(o),
         AddCarWashType(o),
+        AddBenchStatusOnBusStop(o, r),
         AddBenchBackrest(o),
         AddTrafficSignalsButton(o)
     ))
