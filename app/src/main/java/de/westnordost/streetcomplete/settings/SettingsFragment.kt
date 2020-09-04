@@ -119,9 +119,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                     val filled = context!!.getString(R.string.action_download)
                     val edited = context!!.getString(R.string.dialog_tutorial_download)
                     val uploadExplanation = view.findViewById<MaterialTextView>(R.id.tutorialDownloadPanel)
-                    //uploadExplanation.setText(R.string.dialog_tutorial_download)
-                    //uploadExplanation.setText(edited)
-                    uploadExplanation.setText(edited.replace("%s", filled))
+                    uploadExplanation.text = edited.replace("%s", filled)
                     context?.let {
                         AlertDialog.Builder(it)
                             .setView(view)
