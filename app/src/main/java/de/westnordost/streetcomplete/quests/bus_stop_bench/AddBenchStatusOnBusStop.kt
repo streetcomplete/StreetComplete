@@ -20,7 +20,7 @@ class AddBenchStatusOnBusStop(o: OverpassMapDataAndGeometryApi, r: ResurveyInter
         and (!bench or bench older today -${r * 5} years)
     """
 
-    override val commitMessage = "Add whether bus stop has a bench"
+    override val commitMessage = "Add whether a bus stop has a bench"
     override val wikiLink = "Key:bench"
     override val icon = R.drawable.ic_quest_bench_public_transport
 
