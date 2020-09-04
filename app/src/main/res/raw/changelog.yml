@@ -11,8 +11,15 @@ v23.0-alpha1: |
   <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">microgrants</a> program.
   You can support the OSMF and other initiatives like these and have a say by <a href="https://join.osmfoundation.org/">becoming a member</a>, if you like.
 
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is there a summit register at this peak?</i> (#561, #2065) by @matkoniecz</li>
+  <li><i>Is this defibrillator (AED) inside a building?</i> (#2068) by @matkoniecz</li>
+  </ul>
+
   <h3>Other Enhancements and Fixes</h3>
   <ul>
+  <li>Also ask for the opening hours of defilbrilators (#1756, #2066), by @matkoniecz</li>
   <li>Accepts cash quest: Ask for more places (#2019), by @kmpoppe</li>
   <li>For opening hours, wheelchair access and accepts cash quest, always display the type of place alongside its name (#2012), by @Helium314</li>
   <li>Recycling container materials: Don't ask for containers close to other containers</li>
