@@ -17,7 +17,7 @@ class AddBenchStatusOnBusStop(o: OverpassMapDataAndGeometryApi, r: ResurveyInter
           (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
-        and (!bench or bench older today -${r * 5} years)
+        and (!bench or bench older today -${r * 4} years)
     """
 
     override val commitMessage = "Add whether a bus stop has a bench"
