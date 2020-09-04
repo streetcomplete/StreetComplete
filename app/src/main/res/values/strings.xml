@@ -267,7 +267,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
-    <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This house number looks very unusual."</string>
@@ -276,7 +275,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_manySports_confirmation_specific">"Specifically these"</string>
     <string name="quest_manySports_confirmation_generic">"General purpose"</string>
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
-    <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
 	<string name="quest_toiletsFee_title">"Does this restroom require a fee?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this restroom have a baby changing table?"</string>
     <string name="quest_baby_changing_table_title">"Does %s have a baby changing table?"</string>
@@ -495,6 +493,13 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_internet_access_no">No connection</string>
     <string name="quest_busStopShelter_tram_name_title">"Does the streetcar stop %s have a shelter?"</string>
     <string name="quest_busStopShelter_tram_title">"Does this streetcar stop have a shelter?"</string>
+    <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
+    <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
+    <string name="quest_busStopShelter_covered">Whole stop is covered</string>
+    <string name="quest_busStopBench_tram_name_title">"Does the streetcar stop %s have a bench?"</string>
+    <string name="quest_busStopBench_tram_title">"Does this streetcar stop have a bench?"</string>
+    <string name="quest_busStopBench_title">"Does this bus stop have a bench?"</string>
+    <string name="quest_busStopBench_name_title">"Does the bus stop %s have a bench?"</string>
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
     <string name="quest_religion_for_place_of_worship_name_title">What religion is practiced at %s?</string>
@@ -702,7 +707,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="map_application_missing">No other map application installed</string>
     <string name="label_housenumber">house number</string>
     <string name="label_blocknumber">block number</string>
-    <string name="quest_busStopShelter_covered">Whole stop is covered</string>
     <string name="quest_ferry_pedestrian_name_title">Does %s transport pedestrians?</string>
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
     <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
