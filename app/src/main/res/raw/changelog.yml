@@ -26,7 +26,7 @@ v23.0-beta1: |
   <li>For opening hours, wheelchair access and accepts cash quest, always display the type of place alongside its name (#2012), by @Helium314</li>
   <li>Recycling container materials: Don't ask for containers close to other containers</li>
   <li>Fix a few rare crashes</li>
-  <li>Fix sometimes the housenumber quest would appear even if there is a housenumber node inside (#2064)</li>
+  <li>Fix housenumber quest sometimes appearing even if there is a housenumber node inside (#2064)</li>
   </ul>
 
 v22.3: |
