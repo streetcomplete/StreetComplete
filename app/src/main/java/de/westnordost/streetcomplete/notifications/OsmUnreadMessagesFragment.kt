@@ -12,6 +12,7 @@ import android.view.animation.DecelerateInterpolator
 import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toPx
@@ -99,10 +100,7 @@ class OsmUnreadMessagesFragment : DialogFragment(),
             .alpha(1f)
             .translationX(0f).translationY(0f)
             .withEndAction {
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    (mailOpenImageView.drawable as? AnimatedVectorDrawable)?.start()
-                }
+                (mailOpenImageView.drawable as? AnimatedVectorDrawableCompat)?.start()
 
                 mailFrontImageView.animate()
                     .setDuration(100)
