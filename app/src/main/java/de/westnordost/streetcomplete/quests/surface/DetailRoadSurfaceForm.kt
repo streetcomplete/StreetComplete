@@ -14,25 +14,34 @@ import de.westnordost.streetcomplete.view.Item
 
 class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfaceAnswer>() {
 
-    override val items: List<Item<String>>
-        get() = if (osmElement!!.tags["surface"] == "paved")
-            (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES).toItems()
-        else
-            (UNPAVED_SURFACES + GROUND_SURFACES + PAVED_SURFACES).toItems()
+    override val items: List<Item<String>> get() =
+        //if (osmElement!!.tags["surface"] == "paved")
+        (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES).toItems() +
+        Item("paved", R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
+        Item("unpaved", R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf()) +
+        Item("ground", R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, listOf())
 
     override val itemsPerRow = 3
 
     override fun onClickOk(selectedItems: List<String>) {
         // must not happen in isInExplanationMode
-        applyAnswer(SurfaceAnswer(selectedItems.single()))
+        val value = selectedItems.single()
+        if(value == "paved" || value == "unpaved" || value == "ground") {
+            AlertDialog.Builder(requireContext())
+                .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) {
+                    _, _ -> switchToExplanationLayout()
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+            return
+        }
+        super.onClickOk()
+        applyAnswer(SurfaceAnswer(value))
     }
 
     private var isInExplanationMode = false
     private var explanationInput: EditText? = null
-
-    override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_surface_detailed_answer_impossible) { confirmSwitchToNoDetailedTagPossible() }
-    )
 
     private fun setLayout(layoutResourceId: Int) {
         val view = setContentView(layoutResourceId)
@@ -52,10 +61,9 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
     }
 
     override fun onClickOk() {
+        // must be in an explanation mode
         if(isInExplanationMode) {
             applyAnswer(DetailingImpossibleAnswer(explanation))
-        } else {
-            super.onClickOk()
         }
     }
 

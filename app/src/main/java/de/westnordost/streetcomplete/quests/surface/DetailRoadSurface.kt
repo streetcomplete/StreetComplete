@@ -11,9 +11,12 @@ class DetailRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
 
     override val tagFilters = """
         ways with highway ~ ${ALL_ROADS.joinToString("|")}
-        and surface ~ paved|unpaved
-        and !surface:note
-        and segregated != yes
+        and (
+            !surface or (
+            surface ~ paved|unpaved
+            and !surface:note
+            and segregated != yes
+        )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
     override val commitMessage = "More detailed road surfaces"
