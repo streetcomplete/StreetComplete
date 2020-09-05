@@ -131,7 +131,7 @@
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
-    <string name="quest_roofShape_show_more">"Show more…"</string>
+    <string name="quest_roofShape_show_more">"Show more…"</string><!--it is used in generic list, not only for roof shape but rename would break translations-->
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
     <string name="quest_sport_title">"What sport is played here?"</string>
     <string name="quest_sport_answer_multi">"Not any specific sport"</string>
