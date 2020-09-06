@@ -1,24 +1,23 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 
 
-class DetailRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<DetailSurfaceAnswer>(o) {
-
+class RoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<DetailSurfaceAnswer>(o) {
     override val tagFilters = """
-        ways with highway ~ ${ALL_ROADS.joinToString("|")}
-        and (
-                !surface
-            or
-                (
-                surface ~ paved|unpaved
-                and !surface:note
-                and segregated != yes
-                )
+        ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
+        and
+        (
+            !surface
+        or
+            (
+            surface ~ paved|unpaved
+            and !surface:note
+            and segregated != yes
+            )
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
@@ -43,7 +42,7 @@ class DetailRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
         }
     }
 
-    override fun createForm() = DetailRoadSurfaceForm()
+    override fun createForm() = RoadSurfaceForm()
 
     override val isSplitWayEnabled = true
 
@@ -58,5 +57,15 @@ class DetailRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
                 changes.add("surface:note", answer.note)
             }
         }
+    }
+
+    companion object {
+        // well, all roads have surfaces, what I mean is that not all ways with highway key are
+        // "something with a surface"
+        private val ROADS_WITH_SURFACES = arrayOf(
+            // "trunk","trunk_link","motorway","motorway_link", // too much, motorways are almost by definition asphalt (or concrete)
+            "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
+            "unclassified", "residential", "living_street", "pedestrian", "track", "road"
+        )/*"service", */// this is too much, and the information value is very low
     }
 }
