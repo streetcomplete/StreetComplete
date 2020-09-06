@@ -32,14 +32,14 @@ class DetailRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
 
         return if (hasName) {
             if (isSquare)
-                R.string.quest_surface_detailed_square_name_title
+                R.string.quest_streetSurface_square_name_title
             else
-                R.string.quest_surface_detailed_name_title
+                R.string.quest_streetSurface_name_title
         } else {
             if (isSquare)
-                R.string.quest_surface_detailed_square_title
+                R.string.quest_streetSurface_square_title
             else
-                R.string.quest_surface_detailed_title
+                R.string.quest_streetSurface_title
         }
     }
 
@@ -50,10 +50,10 @@ class DetailRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
     override fun applyAnswerTo(answer: DetailSurfaceAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is SurfaceAnswer -> {
-                changes.modify("surface", answer.value)
+                changes.addOrModify("surface", answer.value)
                 changes.deleteIfExists("source:surface")
             }
-            is DetailingImpossibleAnswer -> {
+            is DetailingWhyOnlyGeneric -> {
                 changes.add("surface:note", answer.note)
             }
         }

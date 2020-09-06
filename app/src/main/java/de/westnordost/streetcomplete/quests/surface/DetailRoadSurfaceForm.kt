@@ -8,7 +8,6 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.Item
 
@@ -23,24 +22,8 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
 
     override val itemsPerRow = 3
 
-    override fun onClickOk(selectedItems: List<String>) {
-        // must not happen in isInExplanationMode
-        val value = selectedItems.single()
-        if(value == "paved" || value == "unpaved" || value == "ground") {
-            AlertDialog.Builder(requireContext())
-                .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) {
-                    _, _ -> switchToExplanationLayout()
-                }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
-            return
-        }
-        super.onClickOk()
-        applyAnswer(SurfaceAnswer(value))
-    }
-
     private var isInExplanationMode = false
+    private var switchToExplanationLayout = null
     private var explanationInput: EditText? = null
 
     private fun setLayout(layoutResourceId: Int) {
@@ -61,24 +44,46 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
     }
 
     override fun onClickOk() {
-        // must be in an explanation mode
+        // we need to handle fact that we may be in a separate layout
+        // that is used to input explanation why surface may not be
+        // specified more accurately than just paved/unpaved/ground
         if(isInExplanationMode) {
-            applyAnswer(DetailingImpossibleAnswer(explanation))
+            // clicked in an explanation mode, therefore
+            // user has ready answer prepared that we many use
+            applyAnswer(DetailingWhyOnlyGeneric(selectedGenericSurfaceValue, explanation))
+        } else {
+            // use regular onClickOk call chain
+            // used in typical ImageList quest
+            super.onClickOk()
         }
     }
 
-    private fun confirmSwitchToNoDetailedTagPossible() {
-        AlertDialog.Builder(requireContext())
+    override fun onClickOk(selectedItems: List<String>) {
+        // must not happen in isInExplanationMode
+        // this onClickOk is called when user is selecting images from
+        // list of surfaces
+
+        // this calls comes from onClickOk() in this class,
+        // through onClickOk() AImageListQuestAnswerFragment
+        // that calls onClickOk with parameters - that is
+        // overloaded here
+
+        val value = selectedItems.single()
+        if(value == "paved" || value == "unpaved" || value == "ground") {
+            AlertDialog.Builder(requireContext())
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) {
-                    _, _ -> switchToExplanationLayout()
+                    _, _ -> switchToExplanationLayout(value)
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
-
+            return
+        }
+        applyAnswer(SurfaceAnswer(value))
     }
 
-    private fun switchToExplanationLayout() {
+    private fun switchToExplanationLayout(String value) {
+        selectedGenericSurfaceValue = value
         isInExplanationMode = true
         setLayout(R.layout.quest_surface_detailed_answer_impossible)
     }
