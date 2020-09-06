@@ -1855,7 +1855,7 @@ Suddividere?"</string>
     <string name="quest_ref_answer_noRef">"Nessun numero di matricola visibile..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"La strada nell'illustrazione è ruotata come sulla mappa alla posizione della puntina. "</string>
+    <string name="quest_street_side_puzzle_tutorial">"La strada nell'illustrazione è ruotata come sulla mappa alla posizione della puntina."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Cosa può essere lasciato qui per la raccolta differenziata?"</string>
@@ -2344,6 +2344,18 @@ riconoscimento"</string>
     <string name="at_conscription_number">"Numero di coscrizione %s:"</string>
     <string name="at_housenumber">"numero civico %s:"</string>
     <string name="quest_openingHours_name_type_title">"Quali sono gli orari di apertura di %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"L'orario di apertura di %s è sempre corretto?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"L'orario di apertura di %1$s (%2$s) è sempre corretto?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"L'orario di apertura è sempre corretto (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Aggiungi i giorni di riposo"</string>
+    <string name="quest_openingHours_off_day">"Giorno di riposo"</string>
+    <string name="quest_openingHours_unspecified_range">"Non specificato"</string>
+    <string name="quest_cycleway_resurvey_title">"La situazione della ciclabile qui è sempre la stessa?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) è accessibile con la sedia a rotelle?"</string>
+    <string name="pref_title_resurvey_intervals">"Intervalli di controllo"</string>
+    <string name="resurvey_intervals_less_often">"Chiedi meno spesso"</string>
+    <string name="resurvey_intervals_default">"Predefinito"</string>
+    <string name="resurvey_intervals_more_often">"Chiedi più spesso"</string>
+    <string name="quest_street_side_puzzle_select">"Premi per selezionare"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accetta pagamenti in denaro?"</string>
 </resources>

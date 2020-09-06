@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.cell_labeled_icon_select_right.view.*
+import java.util.*
 
 /** Shows the about screen */
 class AboutFragment : PreferenceFragmentCompat() {
@@ -54,6 +55,15 @@ class AboutFragment : PreferenceFragmentCompat() {
 
         findPreference<Preference>("repository")?.setOnPreferenceClickListener {
             openUrl("https://github.com/westnordost/StreetComplete/")
+        }
+
+        findPreference<Preference>("translate")?.summary = resources.getString(
+            R.string.about_description_translate,
+            Locale.getDefault().displayLanguage,
+            resources.getInteger(R.integer.translation_completeness)
+        )
+        findPreference<Preference>("translate")?.setOnPreferenceClickListener {
+            openUrl("https://poeditor.com/join/project/IE4GC127Ki")
         }
 
         findPreference<Preference>("report_error")?.setOnPreferenceClickListener {

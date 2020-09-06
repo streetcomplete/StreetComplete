@@ -1859,6 +1859,9 @@ Dividila agora?"</string>
     <string name="quest_ref_answer_noRef">"Ningún número de referencia visíbel..."</string>
 
     <!-- Fuzzy -->
+    <string name="quest_street_side_puzzle_tutorial">"A estrada da ilustración é rotada do mesmo xeito que no mapa na localización do marcador."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Que se pode depositar para reciclar aquí?"</string>
 
     <!-- Fuzzy -->
@@ -2344,6 +2347,18 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="at_conscription_number">"Número de «conscrición» %s:"</string>
     <string name="at_housenumber">"número de edificio %s:"</string>
     <string name="quest_openingHours_name_type_title">"Cales son os horarios da apertura de %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Seguen a ser correctos estes horarios de apertura de %s?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Seguen a ser correctos estes horarios de apertura de %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Seguen a ser correctos estes horarios de apertura (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Engadir días pechados"</string>
+    <string name="quest_openingHours_off_day">"Día pechado"</string>
+    <string name="quest_openingHours_unspecified_range">"Sen especificar"</string>
+    <string name="quest_cycleway_resurvey_title">"Segue a ser esta a localización do carril bici?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Podes acceder cara a %1$s (%2$s) nunha cadeira de rodas?"</string>
+    <string name="pref_title_resurvey_intervals">"Intervalos de revisión"</string>
+    <string name="resurvey_intervals_less_often">"Preguntar menos veces"</string>
+    <string name="resurvey_intervals_default">"Predeterminado"</string>
+    <string name="resurvey_intervals_more_often">"Preguntar máis veces"</string>
+    <string name="quest_street_side_puzzle_select">"Premer para seleccionar"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) acepta pagamentos en efectivo?"</string>
 </resources>

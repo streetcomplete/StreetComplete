@@ -338,7 +338,7 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="quest_surface_value_gravel">"żwirowa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_value_paving_stones">"brukowa"</string>
+    <string name="quest_surface_value_paving_stones">"brukowa / płyta chodnikowa"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_pebblestone">"otoczaki"</string>
@@ -1856,6 +1856,9 @@ Podzielić?"</string>
     <string name="quest_ref_answer_noRef">"Nie ma widocznego numeru..."</string>
 
     <!-- Fuzzy -->
+    <string name="quest_street_side_puzzle_tutorial">"Droga na ilustracji jest obrócona w ten sam sposób jak odcinek na mapie pod znaczkiem zadania."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Co można tu zostawić do recyklingu?"</string>
 
     <!-- Fuzzy -->
@@ -2307,8 +2310,31 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="link_qwant_maps_description">"Mapa umożliwiająca wyszukiwanie miejsc i tras"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;By wyświetlić mapę przygotowane dane pobierane są z %1$s. Zobacz ich &lt;a href=\"%2$s\"&gt;politykę prywatności&lt;/a&gt; by uzyskać pełne informacje.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsorzy"</string>
+    <string name="quest_board_type_history">"Historia"</string>
+    <string name="quest_board_type_geology">"Geologia"</string>
+    <string name="quest_board_type_plants">"Rośliny"</string>
+    <string name="quest_board_type_wildlife">"Dzikie zwierzęta i rośliny"</string>
+    <string name="quest_board_type_nature">"Natura (wiele tematów)"</string>
+    <string name="quest_board_type_notice_board">"To jest tablica z ogłoszeniami"</string>
+    <string name="quest_board_type_public_transport">"Transport publiczny"</string>
+    <string name="quest_board_type_title">"Jaki jest temat tej tablicy informacyjnej"</string>
+    <string name="quest_sidewalk_separately_mapped">"Tak, pokazany osobno na mapie"</string>
+    <string name="quest_board_type_map">"To jest mapa"</string>
+    <string name="quest_board_type_map_title">"Czy to jest mapa i tylko mapa?"</string>
+    <string name="quest_board_type_map_description">"Jeśli tablica jest o konkretnym temacie, wybierz go - niezależnie od tego czy pojawia się też mapa. Na przykład tablica o transporcie publicznym może zawierać też mapę tras autobusowych. Jeśli temat nie jest na liście możliwych odpowiedzi, wybierz raczej \"odpowiedź niemożliwa\" i zostaw notatkę."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Różne nawierzchnie..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Czy jesteś pewien że nie jest możliwe podanie nawierzchni? Zauważ że jest opcja \"Zmienia się\" która pozwala na podzielenie na odcinki z różną nawierzchnią. Wybierz \"Odpowiedź niemozliwa\" jeśli jest jedna nawierzchnia która nie jest możliwa do wybrania jako odpowiedź."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Proszę krótko opisz nawierzchnię, na przykład \"piaszczysta z fragmentami kocich łbów\" (jeśli możesz, możesz użyć angielskiego, np \"sandy with patches of cobblestone\"). Długość tekstu ograniczona jest do 255 znaków."</string>
+    <string name="quest_surface_detailed_name_title">"Jaki jest dokładny rodzaj nawierzchni drogi %s w tym miejscu?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Jaki jest dokładny rodzaj nawierzchni placu %s w tym miejscu?"</string>
+    <string name="quest_surface_detailed_title">"Jaki jest dokładny rodzaj nawierzchni drogi w tym miejscu?"</string>
+    <string name="quest_surface_detailed_square_title">"Jaki jest dokładny rodzaj nawierzchni placu w tym miejscu?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"międzynarodowa"</string>
+    <string name="quest_streetName_menuItem_romanized">"w piśmie łacińskim"</string>
+    <string name="quest_buildingType_terrace2">"wiele domów szeregowych"</string>
+    <string name="quest_oneway_tutorial">"Droga na ilustracji jest obrócona w ten sam sposób jak odcinek na mapie pod znaczkiem zadania. Zwróć uwagę na zaznaczony kierunek. "</string>
     <string name="at_housename">"Nazwa budynku %s:"</string>
     <string name="at_conscription_and_street_number">"Numer konskrypcyjny %1$s, numer orientacyjny %2$s:"</string>
 
@@ -2316,6 +2342,25 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="at_conscription_number">"Numer konskrypcyjny %s:"</string>
     <string name="at_housenumber">"Numer domu %s:"</string>
     <string name="quest_openingHours_name_type_title">"Jakie są godziny otwarcia %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Czy te godziny otwarcia dla %s są dalej aktualne?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Czy te godziny otwarcia dla %1$s (%2$s) są dalej aktualne?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Czy te godziny otwarcia są dalej aktualne (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Dodaj dni gdy jest zamknięte"</string>
+    <string name="quest_openingHours_off_day">"Zamknięte"</string>
+    <string name="quest_openingHours_unspecified_range">"Nie podano"</string>
+    <string name="quest_cycleway_resurvey_title">"Czy stan ścieżki rowerowej się zmienił?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Czy %1$s (%2$s) jest dostępne dla osób na wózku inwalidzkim?"</string>
+    <string name="pref_title_resurvey_intervals">"Jak często weryfikować dane?"</string>
+    <string name="resurvey_intervals_less_often">"Pytaj rzadziej"</string>
+    <string name="resurvey_intervals_default">"Domyślny"</string>
+    <string name="resurvey_intervals_more_often">"Pytaj częściej"</string>
+    <string name="quest_street_side_puzzle_select">"Dotknij by wybrać"</string>
     <string name="quest_accepts_cash_type_title">"Czy %1$s (%2$s) akceptuje płatność gotówką?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Czy przystanek tramwajowy %s ma miejsce do siedzenia?"</string>
+    <string name="quest_busStopBench_tram_title">"Czy ten przystanek tramwajowy ma miejsce do siedzenia?"</string>
+    <string name="quest_busStopBench_title">"Czy ten przystanek autonusowy ma miejsce do siedzenia?"</string>
+    <string name="quest_busStopBench_name_title">"Czy przystanek autobusowy %s ma miejsce do siedzenia?"</string>
+    <string name="quest_summit_register_title">"Czy szczyt %s ma księgę gości?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Czy ten defibrylator (AED) jest wewnątrz budynku?"</string>
+    <string name="dialog_tutorial_download">"Z wyłączoną autosynchronizacją zadania nie są automatycznie pobrane. By to zrobić przesuń mapę do interesującej cię lokalizacji i użyj przycisku \"%s\" w menu."</string>
 </resources>
