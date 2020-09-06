@@ -24,7 +24,7 @@ class DetailRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
     """
     override val commitMessage = "More detailed road surfaces"
     override val wikiLink = "Key:surface"
-    override val icon = R.drawable.ic_quest_street_surface_detail
+    override val icon = R.drawable.ic_quest_street_surface
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
@@ -54,6 +54,7 @@ class DetailRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
                 changes.deleteIfExists("source:surface")
             }
             is DetailingWhyOnlyGeneric -> {
+                changes.addOrModify("surface", answer.value)
                 changes.add("surface:note", answer.note)
             }
         }

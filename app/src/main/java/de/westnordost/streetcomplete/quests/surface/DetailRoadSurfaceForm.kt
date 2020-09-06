@@ -23,7 +23,7 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
     override val itemsPerRow = 3
 
     private var isInExplanationMode = false
-    private var switchToExplanationLayout = null
+    private var selectedGenericSurfaceValue : String? = null
     private var explanationInput: EditText? = null
 
     private fun setLayout(layoutResourceId: Int) {
@@ -50,7 +50,7 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
         if(isInExplanationMode) {
             // clicked in an explanation mode, therefore
             // user has ready answer prepared that we many use
-            applyAnswer(DetailingWhyOnlyGeneric(selectedGenericSurfaceValue, explanation))
+            applyAnswer(DetailingWhyOnlyGeneric(selectedGenericSurfaceValue!!, explanation))
         } else {
             // use regular onClickOk call chain
             // used in typical ImageList quest
@@ -82,7 +82,7 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
         applyAnswer(SurfaceAnswer(value))
     }
 
-    private fun switchToExplanationLayout(String value) {
+    private fun switchToExplanationLayout(value: String) {
         selectedGenericSurfaceValue = value
         isInExplanationMode = true
         setLayout(R.layout.quest_surface_detailed_answer_impossible)
