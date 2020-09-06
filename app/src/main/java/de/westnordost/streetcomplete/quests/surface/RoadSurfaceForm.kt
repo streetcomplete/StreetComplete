@@ -16,9 +16,9 @@ class RoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfaceAnsw
     override val items: List<Item<String>> get() =
         //if (osmElement!!.tags["surface"] == "paved")
         (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES).toItems() +
-        Item("paved", R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
-        Item("unpaved", R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf()) +
-        Item("ground", R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, listOf())
+        Item("paved", R.drawable.surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
+        Item("unpaved", R.drawable.surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf()) +
+        Item("ground", R.drawable.surface_ground, R.string.quest_surface_value_ground, null, listOf())
 
     override val itemsPerRow = 3
 
