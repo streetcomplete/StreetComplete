@@ -117,7 +117,7 @@ object QuestModule
         AddRecyclingType(o),
         AddRecyclingContainerMaterials(o, r),
         AddSport(o),
-        RoadSurface(o), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style
+        RoadSurface(o, r), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style
         AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
         AddMaxHeight(o), // OSRM and other routing engines
         AddRailwayCrossingBarrier(o, r), // useful for routing

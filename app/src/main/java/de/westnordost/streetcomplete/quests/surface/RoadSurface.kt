@@ -1,17 +1,21 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 
-class RoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<DetailSurfaceAnswer>(o) {
+class RoadSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore) : SimpleOverpassQuestType<DetailSurfaceAnswer>(o) {
     override val tagFilters = """
         ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
         and
         (
             !surface
+            or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -${r * 4} years
+            or surface older today -${r * 12} years
         or
             (
             surface ~ paved|unpaved
@@ -21,14 +25,14 @@ class RoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<De
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
-    override val commitMessage = "More detailed road surfaces"
+    override val commitMessage = "Add road surface info"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
         val isSquare = tags["area"] == "yes"
-
         return if (hasName) {
             if (isSquare)
                 R.string.quest_streetSurface_square_name_title
@@ -43,8 +47,6 @@ class RoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<De
     }
 
     override fun createForm() = RoadSurfaceForm()
-
-    override val isSplitWayEnabled = true
 
     override fun applyAnswerTo(answer: DetailSurfaceAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
