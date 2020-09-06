@@ -17,7 +17,9 @@ object AchievementsModule {
         "AddAccessibleForPedestrians"        to "AddProhibitedForPedestrians",
         "AddWheelChairAccessPublicTransport" to "AddWheelchairAccessPublicTransport",
         "AddWheelChairAccessToilets"         to "AddWheelchairAccessToilets",
-        "AddSidewalks"                       to "AddSidewalk"
+        "AddSidewalks"                       to "AddSidewalk",
+        "AddRoadSurface"                     to "RoadSurface",
+        "DetailRoadSurface"                  to "RoadSurface"
     )
 
     private val links = listOf(
