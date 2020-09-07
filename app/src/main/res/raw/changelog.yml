@@ -18,13 +18,20 @@ v23.0-beta1: |
   <li><i>Does this bus stop have a bench?</i> (#1079, #2073) by @matkoniecz</li>
   </ul>
 
-  <h3>Other Enhancements and Fixes</h3>
+  <h3>Enhanced Quests</h3>
   <ul>
-  <li>Explain that you have to download manually if auto-sync is off (#1989, #2009, #2070), by @matkoniecz</li>
+  <li>Motorcycle and bicycle parking: Do not accept an input of "0" (#516)</li>
   <li>Also ask for the opening hours of defilbrilators (#1756, #2066), by @matkoniecz</li>
   <li>Accepts cash quest: Ask for more places (#2019), by @kmpoppe</li>
   <li>For opening hours, wheelchair access and accepts cash quest, always display the type of place alongside its name (#2012), by @Helium314</li>
   <li>Recycling container materials: Don't ask for containers close to other containers</li>
+  </ul>
+
+  <h3>Other Enhancements and Fixes</h3>
+  <ul>
+  <li>Explain that you have to download manually if auto-sync is off (#1989, #2009, #2070), by @matkoniecz</li>
+  <li>Show link how to contribute translations in settings (#2079)</li>
+  <li>Improve visibility of highlighted elements on the map (#1769)</li>
   <li>Fix a few rare crashes</li>
   <li>Fix housenumber quest sometimes appearing even if there is a housenumber node inside (#2064)</li>
   </ul>
