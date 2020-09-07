@@ -1,5 +1,5 @@
 global:
-    geometry_color: '#88536dfe' # location color + alpha
+    geometry_color: '#44D14000' # accent color + alpha
 
 textures:
     quests:
