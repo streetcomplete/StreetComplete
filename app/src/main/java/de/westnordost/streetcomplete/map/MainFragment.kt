@@ -429,7 +429,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     //region Location - Request location and update location status
 
     private fun updateLocationAvailability() {
-        if (LocationUtil.isLocationOn(activity)) {
+        if (requireContext().getSystemService<LocationManager>()!!.isLocationEnabledCompat) {
             onLocationIsEnabled()
         } else {
             onLocationIsDisabled()

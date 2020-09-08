@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Point;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -25,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.location.LocationManagerCompat;
 import androidx.core.text.util.LinkifyCompat;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -428,7 +430,8 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void updateLocationAvailability()
 	{
-		if(LocationUtil.isLocationOn(this))
+		LocationManager locationManager = ContextCompat.getSystemService(this, LocationManager.class);
+		if(LocationManagerCompat.isLocationEnabled(locationManager))
 		{
 			questAutoSyncer.startPositionTracking();
 		}
