@@ -2269,7 +2269,7 @@
     <string name="at_conscription_and_street_number">"شماره خدمات وظیفه %1$s, شماره جهت‌یابی %2$s:"</string>
     <string name="at_conscription_number">"شماره خدمات وظیفه %s:"</string>
     <string name="at_housenumber">"شماره خانه %s:"</string>
-    <string name="quest_openingHours_name_type_title">"ساعت شروع کار %s چیست؟"</string>
+    <string name="quest_openingHours_name_type_title">"ساعت شروع کار %1$s (%2$s) چیست؟"</string>
     <string name="quest_openingHours_resurvey_name_title">"آیا ساعات کاری در %s همچنان صحیح است؟"</string>
     <string name="quest_openingHours_resurvey_name_type_title">"آیا ساعات کاری %1$s (%2$s) همچنان تغییر نکرده است؟"</string>
     <string name="quest_openingHours_resurvey_no_name_title">"آیا این ساعات کاری همچنان درست است (%s)؟"</string>

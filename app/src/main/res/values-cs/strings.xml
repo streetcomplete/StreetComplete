@@ -2382,4 +2382,7 @@ Is the situation on this cycleway still the same? -->
     <string name="quest_summit_register_title">"Je na %s vrcholová kniha?"</string>
     <string name="quest_is_defibrillator_inside_title">"Je tento defibrilátor (AED) uvnitř budovy?"</string>
     <string name="dialog_tutorial_download">"Při vypnuté automatické synchronizaci se úkoly nestahují automaticky. Pro jejich manuální stažení použijte v nabídce tlačítko „%s“ na místě, na kterém chcete úkoly stáhnout."</string>
+    <string name="about_title_translate">"Pomozte přeložit tuto aplikaci"</string>
+    <string name="about_description_translate">"%1$s je přeloženo %2$d%%
+"</string>
 </resources>
