@@ -55,7 +55,7 @@ class VerticalLabelView @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         text.let {
-            textPaint.getTextBounds(it, 0, it?.length ?: 0, textBounds)
+            textPaint.getTextBounds(it.orEmpty(), 0, text?.length ?: 0, textBounds)
         }
 
         val desiredWidth = textBounds.height() + paddingLeft + paddingRight
