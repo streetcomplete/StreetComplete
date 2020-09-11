@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="muslim.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg916"
+   version="1.1"
+   viewBox="0 0 96 96"
+   height="96"
+   width="96">
+  <defs
+     id="defs910" />
+  <sodipodi:namedview
+     inkscape:window-maximized="0"
+     inkscape:window-y="184"
+     inkscape:window-x="716"
+     inkscape:window-height="979"
+     inkscape:window-width="1663"
+     units="px"
+     showgrid="true"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="jain"
+     inkscape:document-units="px"
+     inkscape:cy="25.48019"
+     inkscape:cx="65.168036"
+     inkscape:zoom="3.959798"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base">
+    <inkscape:grid
+       spacingy="4"
+       spacingx="4"
+       empspacing="6"
+       id="grid1479"
+       type="xygrid" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata913">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <g
+       id="jain"
+       transform="matrix(3.7795276,0,0,3.7795276,-97.567545,-643.50479)"
+       inkscape:label="#g10740">
+      <g
+         transform="matrix(0.10955535,0,0,0.10955535,24.808533,167.42119)"
+         style="fill:#007f00;fill-opacity:1;stroke:none"
+         id="muslim"
+         inkscape:label="#g10744">
+        <path
+           inkscape:connector-curvature="0"
+           d="M 125.13485,36.187753 C 67.60819,37.282014 21.25984,84.307148 21.259843,142.094 c 0,58.47207 47.465507,105.9375 105.937507,105.9375 27.33767,0 52.26496,-10.38375 71.0625,-27.40625 -13.25294,7.61817 -28.62654,11.96875 -45,11.96875 -49.92978,0 -90.437507,-40.50772 -90.437507,-90.4375 0,-49.929782 40.507727,-90.437497 90.437507,-90.437497 16.50367,0 31.98804,4.425296 45.3125,12.15625 -18.83343,-17.191643 -43.8851,-27.687502 -71.375,-27.6875 -0.68522,0 -1.38037,-0.01297 -2.0625,0 z"
+           id="path1315" />
+        <path
+           style="stroke-width:1"
+           d="m 198.96612,94.232672 -21.51868,29.618858 -34.81946,-11.31374 21.5187,29.61886 -21.5187,29.61888 34.81946,-11.31376 21.51868,29.61888 v -36.61024 l 34.81947,-11.31376 -34.81947,-11.31374 z"
+           id="path3098"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+  </g>
+</svg>

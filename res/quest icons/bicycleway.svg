@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="128.02121"
+   height="128.06923"
+   version="1.1"
+   viewBox="0 0 128.02121 128.06923"
+   id="svg4497">
+  <metadata
+     id="metadata4503">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Tobias Zwick</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4501">
+    <clipPath
+       id="clipPath16-1-0"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-3-2"
+         d="M 0,38 H 38 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath16-1-4-4"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-85-8-0"
+         d="M 0,36 H 36 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath32-8-7"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path34-5-0-1"
+         d="M 11.815,23.013 C 4.2,15.397 -1.265,2.86 0.502,1.093 v 0 c 1.768,-1.768 14.305,3.698 21.92,11.313 v 0 c 7.616,7.615 7.562,11.53 4.243,14.85 v 0 c -1.328,1.328 -2.752,2.133 -4.47,2.133 v 0 c -2.575,0 -5.812,-1.809 -10.38,-6.376" />
+    </clipPath>
+    <clipPath
+       id="clipPath16-1-4-4-0"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-85-8-0-7"
+         d="M 0,36 H 36 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath32-8-7-8"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path34-5-0-1-0"
+         d="M 11.815,23.013 C 4.2,15.397 -1.265,2.86 0.502,1.093 v 0 c 1.768,-1.768 14.305,3.698 21.92,11.313 v 0 c 7.616,7.615 7.562,11.53 4.243,14.85 v 0 c -1.328,1.328 -2.752,2.133 -4.47,2.133 v 0 c -2.575,0 -5.812,-1.809 -10.38,-6.376" />
+    </clipPath>
+    <clipPath
+       id="clipPath44"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path46-1"
+         d="M 7,35 C 5.896,35 5,34.105 5,33 V 33 3 C 5,1.895 5.896,1 7,1 v 0 h 18 c 1.105,0 2,0.895 2,2 v 0 30 c 0,1.105 -0.895,2 -2,2 v 0 z" />
+    </clipPath>
+    <clipPath
+       id="clipPath16-4-5"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-5-7"
+         d="M 0,38 H 38 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath56-9"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path58-7"
+         d="M 0,38 H 38 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath44-2"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path46-1-8"
+         d="M 7,35 C 5.896,35 5,34.105 5,33 V 33 3 C 5,1.895 5.896,1 7,1 v 0 h 18 c 1.105,0 2,0.895 2,2 v 0 30 c 0,1.105 -0.895,2 -2,2 v 0 z" />
+    </clipPath>
+    <clipPath
+       id="clipPath16-1-0-8"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-3-2-0"
+         d="M 0,38 H 38 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath16-1-0-9"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-3-2-1"
+         d="M 0,38 H 38 V 0 H 0 Z" />
+    </clipPath>
+  </defs>
+  <g
+     transform="rotate(30,-152.07107,870.16288)"
+     id="bicycleway">
+    <path
+       d="m -303.99992,63.999782 c 0,35.346 -28.654,63.999998 -64.00002,63.999998 -35.346,0 -64,-28.653998 -64,-63.999998 0,-35.346 28.654,-64 64,-64 35.34602,0 64.00002,28.654 64.00002,64"
+       id="path4485-6-6-77-3"
+       style="fill:#ca72e2;fill-opacity:1;stroke-width:0.2" />
+    <path
+       style="fill:#000000;fill-opacity:0.2;stroke-width:0.2"
+       d="m -332.5446,117.42775 c 2.8261,-1.83677 5.46837,-3.96091 7.96274,-6.20813 l 0.0774,-94.108128 c -2.49462,-2.24753 -4.32864,-4.08901 -8.06897,-5.73369 0,0 0.10064,106.174338 0.0288,106.049948 z"
+       id="path4485-6-6-16-8-0-0-2" />
+    <path
+       style="fill:#999999;fill-opacity:1;stroke-width:0.2"
+       d="m -367.9882,0.03494 c -11.66465,0 -22.59014,3.13589 -32.00781,8.58789 v 110.82422 c 9.41767,5.452 20.34316,8.58789 32.00781,8.58789 11.6437,0 22.55083,-3.12475 31.95703,-8.55859 V 8.59353 c -9.4062,-5.43384 -20.31333,-8.55859 -31.95703,-8.55859 z"
+       id="path4485-6-6-1-3-0" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.2"
+       d="m -335.99992,8.52712 v 110.83204 c 2.80827,-1.62523 5.48255,-3.45379 8,-5.47266 V 13.99978 c -2.51745,-2.01887 -5.19173,-3.84743 -8,-5.47266 z"
+       id="path4485-6-6-7-6-7" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.2"
+       d="m -399.99992,8.52712 c -2.80827,1.62523 -5.48255,3.45379 -8,5.47266 v 99.88672 c 2.51745,2.01887 5.19173,3.84743 8,5.47266 z"
+       id="path4485-6-6-70-4-0" />
+    <g
+       id="g8426"
+       transform="matrix(0.91531707,0,0,0.91531707,-187.21278,-314.43764)"
+       style="stroke:#ffffff;stroke-width:3.27755;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <path
+         id="path8159"
+         d="m -216,424 8.33469,-24.81496 h 8"
+         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:3.27755;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="path8163"
+         d="m -196,424 5,-21"
+         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:3.27755;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="path8165"
+         d="m -191,403 4.87372,-0.01"
+         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:3.27755;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="path8167"
+         d="m -210,407 14,17 h 16 l -11,-17 h -19"
+         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:3.27755;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="m -168.9837,424.06064 a 11.076923,11.076923 0 0 1 -11.07692,11.07692 11.076923,11.076923 0 0 1 -11.07693,-11.07692 11.076923,11.076923 0 0 1 11.07693,-11.07692 11.076923,11.076923 0 0 1 11.07692,11.07692"
+         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.27755;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="path8169" />
+      <path
+         d="m -205.08117,424.06265 a 11.076923,11.076923 0 0 1 -11.07693,11.07693 11.076923,11.076923 0 0 1 -11.07692,-11.07693 11.076923,11.076923 0 0 1 11.07692,-11.07692 11.076923,11.076923 0 0 1 11.07693,11.07692"
+         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.27755;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="path8169-4" />
+    </g>
+    <path
+       d="m -391.48581,11.90315 h 8 v 8 h -8 z"
+       style="opacity:1;vector-effect:none;fill:#ccccff;fill-opacity:0;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect8461" />
+  </g>
+</svg>

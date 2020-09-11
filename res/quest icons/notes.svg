@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="128.02121"
+   height="128.02121"
+   version="1.1"
+   viewBox="0 0 128.02121 128.02121"
+   id="svg4497">
+  <metadata
+     id="metadata4503">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Tobias Zwick</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4501">
+    <clipPath
+       id="clipPath16-1-0"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-3-2"
+         d="M 0,38 H 38 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath16-1-4-4"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-85-8-0"
+         d="M 0,36 H 36 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath32-8-7"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path34-5-0-1"
+         d="M 11.815,23.013 C 4.2,15.397 -1.265,2.86 0.502,1.093 v 0 c 1.768,-1.768 14.305,3.698 21.92,11.313 v 0 c 7.616,7.615 7.562,11.53 4.243,14.85 v 0 c -1.328,1.328 -2.752,2.133 -4.47,2.133 v 0 c -2.575,0 -5.812,-1.809 -10.38,-6.376" />
+    </clipPath>
+    <clipPath
+       id="clipPath16-1-4-4-0"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-85-8-0-7"
+         d="M 0,36 H 36 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath32-8-7-8"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path34-5-0-1-0"
+         d="M 11.815,23.013 C 4.2,15.397 -1.265,2.86 0.502,1.093 v 0 c 1.768,-1.768 14.305,3.698 21.92,11.313 v 0 c 7.616,7.615 7.562,11.53 4.243,14.85 v 0 c -1.328,1.328 -2.752,2.133 -4.47,2.133 v 0 c -2.575,0 -5.812,-1.809 -10.38,-6.376" />
+    </clipPath>
+    <clipPath
+       id="clipPath44"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path46-1"
+         d="M 7,35 C 5.896,35 5,34.105 5,33 V 33 3 C 5,1.895 5.896,1 7,1 v 0 h 18 c 1.105,0 2,0.895 2,2 v 0 30 c 0,1.105 -0.895,2 -2,2 v 0 z" />
+    </clipPath>
+    <clipPath
+       id="clipPath16-4-5"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-5-7"
+         d="M 0,38 H 38 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath56-9"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path58-7"
+         d="M 0,38 H 38 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath44-2"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path46-1-8"
+         d="M 7,35 C 5.896,35 5,34.105 5,33 V 33 3 C 5,1.895 5.896,1 7,1 v 0 h 18 c 1.105,0 2,0.895 2,2 v 0 30 c 0,1.105 -0.895,2 -2,2 v 0 z" />
+    </clipPath>
+    <clipPath
+       id="clipPath16-1-0-8"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-3-2-0"
+         d="M 0,38 H 38 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath16-1-0-9"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path18-3-2-1"
+         d="M 0,38 H 38 V 0 H 0 Z" />
+    </clipPath>
+  </defs>
+  <g
+     id="notes"
+     transform="translate(720.06125,-431.98939)">
+    <path
+       style="fill:#e45f5f;fill-opacity:1;stroke-width:0.2"
+       id="path4485-6-6-3-4-8-5"
+       d="m -600.62501,528 c -17.673,30.61053 -56.81509,41.09863 -87.42564,23.42562 -30.61053,-17.673 -41.09863,-56.8151 -23.42563,-87.42564 17.673,-30.61053 56.81509,-41.09862 87.42562,-23.42562 30.61056,17.67301 41.09865,56.81511 23.42565,87.42564" />
+    <g
+       transform="matrix(1.5630725,0,0,1.6964191,372.22882,-324.20774)"
+       id="g10348-4"
+       style="fill:#000000;fill-opacity:0.2">
+      <g
+         aria-label="?"
+         transform="scale(1.1096568,0.90117952)"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.13294px;line-height:28.7482px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:0.2;stroke:none;stroke-width:1.14993px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="text10273-6">
+        <path
+           d="m -599.02852,549.54946 c -0.0921,-3.23088 0.4447,-6.26743 1.35358,-9.02398 2.60476,-6.8391 11.22005,-10.56349 11.15775,-17.07399 -0.0489,-5.11267 -3.13738,-6.52833 -6.3909,-6.5717 -3.47409,-0.0463 -6.10749,3.43466 -6.61267,7.15643 h -11.89523 c 0.22936,-11.60587 10.87722,-17.33643 18.5079,-17.6223 8.40487,-0.31488 18.56581,7.48513 18.44938,17.00704 -0.0962,7.86872 -5.56701,12.20484 -10.04943,16.32517 -2.69189,2.27871 -3.8106,6.22238 -4.01976,9.80333 z"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:49.0635px;font-family:Roboto;-inkscape-font-specification:'Roboto Bold';fill:#000000;fill-opacity:0.2;stroke-width:1.96887px"
+           id="path10327-4" />
+      </g>
+      <path
+         d="m -652.21401,506.61166 a 6.5267172,5.5192971 0 0 1 -6.52671,5.5193 6.5267172,5.5192971 0 0 1 -6.52672,-5.5193 6.5267172,5.5192971 0 0 1 6.52672,-5.51929 6.5267172,5.5192971 0 0 1 6.52671,5.51929"
+         style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.2;stroke:none;stroke-width:13.8608;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="path10304-0-8-4" />
+    </g>
+    <g
+       transform="matrix(1.5630725,0,0,1.6964191,372.22882,-328.20774)"
+       id="g10348"
+       style="fill:#ffffff;fill-opacity:1">
+      <g
+         aria-label="?"
+         transform="scale(1.1096568,0.90117952)"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.13294px;line-height:28.7482px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.14993px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="text10273">
+        <path
+           d="m -599.02852,549.54946 c -0.0921,-3.23088 0.4447,-6.26743 1.35358,-9.02398 2.60476,-6.8391 11.22005,-10.56349 11.15775,-17.07399 -0.0489,-5.11267 -3.13738,-6.52833 -6.3909,-6.5717 -3.47409,-0.0463 -6.10749,3.43466 -6.61267,7.15643 h -11.89523 c 0.22936,-11.60587 10.87722,-17.33643 18.5079,-17.6223 8.40487,-0.31488 18.56581,7.48513 18.44938,17.00704 -0.0962,7.86872 -5.56701,12.20484 -10.04943,16.32517 -2.69189,2.27871 -3.8106,6.22238 -4.01976,9.80333 z"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:49.0635px;font-family:Roboto;-inkscape-font-specification:'Roboto Bold';fill:#ffffff;fill-opacity:1;stroke-width:1.96887px"
+           id="path10327" />
+      </g>
+      <path
+         d="m -652.21401,506.61166 a 6.5267172,5.5192971 0 0 1 -6.52671,5.5193 6.5267172,5.5192971 0 0 1 -6.52672,-5.5193 6.5267172,5.5192971 0 0 1 6.52672,-5.51929 6.5267172,5.5192971 0 0 1 6.52671,5.51929"
+         style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:13.8608;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="path10304-0-8" />
+    </g>
+  </g>
+</svg>
