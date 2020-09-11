@@ -147,6 +147,7 @@ max weight graphics/
 quest icons/
     apple.svg
     baby.svg                         modified from Twemoji: U+1F6BC
+    beach.svg                        parts taken from beach_volleyball.svg by Adrien Pavie
     beer.svg                         modified from Twemoji: U+1F37A
     bench_poi.svg
     bench_public_transport.svg
@@ -174,7 +175,8 @@ quest icons/
     car_wash.svg                     modified from Twemoji: U+1F698
     car_charger.svg                  parts taken from Twemoji: U+1F698 and U+1F50C
     cash.svg
-    defibrillator.svg                 (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny 
+    christian.svg
+    defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny 
     ferry.svg                        modified from Twemoji: U+26F4
     ferry_pedestrian.svg             modified from Twemoji: U+26F4
     fire_hydrant.svg
@@ -219,10 +221,11 @@ quest icons/
     power.svg
     quest.svg
     railway.svg
-    recycling.svg                     modified from Twemoji: U+267B
-    recycling_container.svg             modified from Twemoji: U+267B
-    recycling_glass.svg                 modified from Twemoji: U+267B
+    recycling.svg                    modified from Twemoji: U+267B
+    recycling_container.svg          modified from Twemoji: U+267B
+    recycling_glass.svg              modified from Twemoji: U+267B
     religion.svg
+    religion_service_times.svg
     restaurant.svg                   modified from Twemoji: U+1F37D
     restaurant_vegan.svg             parts taken from Twemoji: U+1F37D and U+1F955
     restaurant_vegetarian.svg        parts taken from Twemoji: U+1F37D and U+1F955
