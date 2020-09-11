@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 
-class RoadSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore) : SimpleOverpassQuestType<DetailSurfaceAnswer>(o) {
+class AddRoadSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore) : SimpleOverpassQuestType<DetailSurfaceAnswer>(o) {
     override val tagFilters = """
         ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
         and
