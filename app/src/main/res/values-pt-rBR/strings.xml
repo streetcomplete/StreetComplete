@@ -2109,5 +2109,6 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="at_housenumber">"número da casa %s:"</string>
     <string name="quest_openingHours_name_type_title">"Quais são os horários de funcionamento de %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) é acessível por cadeiras de rodas?"</string>
+    <string name="resurvey_intervals_default">"Padrão"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) aceita pagamento em dinheiro?"</string>
 </resources>

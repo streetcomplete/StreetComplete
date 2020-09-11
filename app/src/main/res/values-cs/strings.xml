@@ -1861,6 +1861,8 @@ Chcete cestu rozdělit?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Není tu žádné referenční číslo..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Cesta na ilustraci je otočená stejně jako na mapě v místě označení."</string>
 
     <!-- Fuzzy -->
@@ -2362,6 +2364,10 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_openingHours_add_off_days">"Přidat dny, kdy je zavřeno"</string>
     <string name="quest_openingHours_off_day">"Zavřeno"</string>
     <string name="quest_openingHours_unspecified_range">"Neurčeno"</string>
+
+    <!-- Could this be translated as: 
+Is the situation on this cycleway still the same? -->
+    <string name="quest_cycleway_resurvey_title">"Je to zde stále aktulální situace cyklostezky?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Má %1$s (%2$s) bezbariérový přístup?"</string>
     <string name="pref_title_resurvey_intervals">"Intervaly pro ověřování"</string>
     <string name="resurvey_intervals_less_often">"Ptát se méně často"</string>
@@ -2369,4 +2375,14 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="resurvey_intervals_more_often">"Ptát se častěji"</string>
     <string name="quest_street_side_puzzle_select">"Vyberte ťuknutím"</string>
     <string name="quest_accepts_cash_type_title">"Přijímá %1$s (%2$s) platbu v hotovosti?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Má tramvajová zastávka %s lavičku?"</string>
+    <string name="quest_busStopBench_tram_title">"Má tato tramvajová zastávka lavičku?"</string>
+    <string name="quest_busStopBench_title">"Má tato autobusová zastávka lavičku?"</string>
+    <string name="quest_busStopBench_name_title">"Má autobusová zastávka %s lavičku?"</string>
+    <string name="quest_summit_register_title">"Je na %s vrcholová kniha?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Je tento defibrilátor (AED) uvnitř budovy?"</string>
+    <string name="dialog_tutorial_download">"Při vypnuté automatické synchronizaci se úkoly nestahují automaticky. Pro jejich manuální stažení použijte v nabídce tlačítko „%s“ na místě, na kterém chcete úkoly stáhnout."</string>
+    <string name="about_title_translate">"Pomozte přeložit tuto aplikaci"</string>
+    <string name="about_description_translate">"%1$s je přeloženo %2$d%%
+"</string>
 </resources>

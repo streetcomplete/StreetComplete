@@ -678,8 +678,6 @@ Jetzt aufspalten?"</string>
     <string name="quest_postboxRef_title">"Was ist die Referenznummer dieses Briefkastens?"</string>
     <string name="quest_postboxRef_name_title">"Was ist die Referenznummer dieses %s Briefkastens?"</string>
     <string name="quest_ref_answer_noRef">"Keine Referenznummer sichtbar…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie auf der Karte an der Position des Pins."</string>
     <string name="quest_recycling_materials_title">"Was kann hier entsorgt werden?"</string>
     <string name="quest_recycling_materials_note">"Wenn noch Anderes entsorgt werden kann als man hier angeben kann, bitte hinterlasse stattdessen eine Notiz."</string>
@@ -875,11 +873,28 @@ Erfolge"</string>
     <string name="quest_oneway_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie auf der Karte an der Position des Pins. Beachte die gezeigte Richtung."</string>
     <string name="at_housename">"Hausname %s:"</string>
     <string name="at_conscription_and_street_number">"Konskriptionsnummer %1$s, Orientierungsnummer %2$s:"</string>
-
-    <!-- Fuzzy -->
     <string name="at_conscription_number">"Konskriptionsnummer %s:"</string>
     <string name="at_housenumber">"Hausnummer %s:"</string>
     <string name="quest_openingHours_name_type_title">"Was sind die Öffnungszeiten von %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Stimmen diese Öffnungszeiten für %s immer noch?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Stimmen diese Öffnungszeiten für %1$s (%2$s) noch?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Stimmen diese Öffnungszeiten noch  (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Neuer Ruhetag"</string>
+    <string name="quest_openingHours_off_day">"Ruhetag"</string>
+    <string name="quest_openingHours_unspecified_range">"Nicht angegeben"</string>
+    <string name="quest_cycleway_resurvey_title">"Sind die Radwege immer noch so?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Ist %1$s (%2$s) zugänglich für Rollstühle?"</string>
+    <string name="pref_title_resurvey_intervals">"Überprüfungsintervalle"</string>
+    <string name="resurvey_intervals_less_often">"Seltener fragen"</string>
+    <string name="resurvey_intervals_default">"Standard"</string>
+    <string name="resurvey_intervals_more_often">"Öfter fragen"</string>
+    <string name="quest_street_side_puzzle_select">"Antippen zum Auswählen"</string>
     <string name="quest_accepts_cash_type_title">"Akzeptiert %1$s (%2$s) Bargeld?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Hat die Straßenbahnhaltestelle %s eine Bank?"</string>
+    <string name="quest_busStopBench_tram_title">"Hat diese Straßenbahnhaltestelle eine Bank?"</string>
+    <string name="quest_busStopBench_title">"Hat diese Bushaltestelle eine Bank?"</string>
+    <string name="quest_busStopBench_name_title">"Hat die Haltestelle %s eine Bank?"</string>
+    <string name="quest_summit_register_title">"Gibt es bei %s ein Gipfelbuch?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Befindet sich dieser Defibrillator innerhalb eines Gebäudes?"</string>
+    <string name="dialog_tutorial_download">"Wenn Auto-Sync aus ist werden Aufgaben nicht automatisch heruntergeladen. Um dies manuell zu tun, benutze den \"%s\" Knopf im Menü an der Stelle an der Du sie herunterladen möchtest."</string>
 </resources>

@@ -216,6 +216,7 @@ task downloadPresets {
 static def bcp47LanguageTagToJavaLanguageTag(String bcp47) {
     def locale = Locale.forLanguageTag(bcp47)
     def result = locale.language
+    if (!locale.script.isEmpty()) result += "-" + locale.script
     if (!locale.country.isEmpty()) result += "-" + locale.country
     return result
 }
@@ -256,19 +257,26 @@ static def unescapeUnicode(String str) {
     return out.toString()
 }
 
+static def javaLanguageTagToAndroidResCode(String languageTag) {
+    def locale = Locale.forLanguageTag(languageTag)
+    // scripts not supported by Android resource system
+    if (!locale.script.isEmpty()) return []
+
+    if (languageTag == "nb")    return ["no", "nb"]
+    if (languageTag == "zh-CN") return ["zh"]
+    def withCountry = (~/^([a-z]{2,3})-([A-Z]{2})$/).matcher(languageTag)
+    if (withCountry.matches()) {
+        return [withCountry.group(1) + "-r" + withCountry.group(2)]
+    }
+    return [languageTag]
+}
+
 task pullTranslations {
     doLast {
         def baseUrl = "https://api.poeditor.com/v2"
         def baseParams = "api_token=$POEditorAPIToken&id=97843"
         def exportLanguages = bcp47ExportLanguages.collect { it.toLowerCase(Locale.US) }
         exportLanguages.remove("en") // don't export en, it is the source language
-        def languageToAndroidResCodes = [
-                "nb": ["no", "nb"],
-                "zh-CN": ["zh"],
-                "en-GB": ["en-rGB"],
-                "pt-BR": ["pt-rBR"],
-                "zh-TW": ["zh-rTW"]
-        ]
 
         def languageListConnection = new URL("$baseUrl/languages/list").openConnection()
         def languageCodeToPercentage = []
@@ -283,6 +291,23 @@ task pullTranslations {
         }
 
         languageCodeToPercentage.each { language, percentage ->
+            def javaLanguageTag = bcp47LanguageTagToJavaLanguageTag(language)
+            def androidResCodes = javaLanguageTagToAndroidResCode(javaLanguageTag)
+
+            for (androidResCode in androidResCodes) {
+                // exclude default translation
+                if (androidResCode == "en-rUS") continue
+                def targetFile = new File("app/src/main/res/values-$androidResCode/translation_info.xml")
+                new File(targetFile.getParent()).mkdirs()
+                targetFile.newWriter().withWriter { it << """\
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <resources>
+                      <integer name="translation_completeness">$percentage</integer>
+                    </resources>
+                    """.stripIndent()
+                }
+            }
+
             if (!exportLanguages.contains(language.toLowerCase())) {
                 println("$language (translated $percentage%) SKIPPED")
             } else {
@@ -299,8 +324,6 @@ task pullTranslations {
                     fileUrl = new JsonSlurper().parse(inputStream).result.url
                 }
 
-                def javaLanguageTag = bcp47LanguageTagToJavaLanguageTag(language)
-                def androidResCodes = languageToAndroidResCodes[javaLanguageTag] ?: [javaLanguageTag]
                 def text = new URL(fileUrl).openStream().getText()
                 for (androidResCode in androidResCodes) {
                     def targetFile = "app/src/main/res/values-$androidResCode/strings.xml"

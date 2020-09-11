@@ -777,6 +777,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_title_rate">Rate this app</string>
     <string name="about_summary_rate">on Google Play</string>
     <string name="about_title_donate">Donate</string>
+    <string name="about_title_translate">Help translate this app</string>
+    <string name="about_description_translate">%1$s is translated %2$d%%</string>
     <string name="about_title_sponsors">Sponsors</string>
     <string name="about_summary_donate">Show your appreciation! ❤️</string>
     <string name="about_description_donate">Thank you for considering to support this app! To see current donations and to donate yourself, tap on the respective platform:</string>

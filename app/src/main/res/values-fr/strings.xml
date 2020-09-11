@@ -1745,6 +1745,8 @@ Découper maintenant ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Aucun numéro de référence visible …"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"La route de l'illustration est tournée de la même façon que sur la carte, à l'emplacement de la punaise."</string>
 
     <!-- Fuzzy -->
