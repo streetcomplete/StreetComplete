@@ -1,87 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="taoist.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg916"
-   version="1.1"
-   viewBox="0 0 96 96"
-   height="96"
-   width="96">
-  <defs
-     id="defs910" />
-  <sodipodi:namedview
-     inkscape:window-maximized="0"
-     inkscape:window-y="184"
-     inkscape:window-x="716"
-     inkscape:window-height="979"
-     inkscape:window-width="1663"
-     units="px"
-     showgrid="true"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="px"
-     inkscape:cy="74.119352"
-     inkscape:cx="81.311926"
-     inkscape:zoom="3.959798"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
-     pagecolor="#ffffff"
-     id="base">
-    <inkscape:grid
-       spacingy="4"
-       spacingx="4"
-       empspacing="6"
-       id="grid1479"
-       type="xygrid" />
-  </sodipodi:namedview>
-  <metadata
-     id="metadata913">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     id="layer1"
-     inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
-    <circle
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:4.19046;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
-       id="path12080"
-       cx="48.000008"
-       cy="47.999996"
-       r="41.904762" />
-    <path
-       inkscape:connector-curvature="0"
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.14286;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       d="M 47.999989,6.0952229 A 20.952381,20.952381 0 0 1 68.952369,27.047618 20.952381,20.952381 0 0 1 47.999989,47.999974 20.952381,20.952381 0 0 0 27.047606,68.95237 20.952381,20.952381 0 0 0 47.999989,89.904765 20.952381,20.952381 0 0 0 49.771943,89.816864 41.904763,41.904763 0 0 0 89.904752,47.999974 41.904763,41.904763 0 0 0 47.999989,6.0952229 Z"
-       id="path11959-3" />
-    <circle
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.50835;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       id="path11982-8"
-       cx="48.000008"
-       cy="68.952339"
-       r="7.333334" />
-    <circle
-       transform="scale(-1)"
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.50835;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       id="path11982-8-4"
-       cx="-47.999973"
-       cy="-27.047611"
-       r="7.333334" />
-  </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96" height="96" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <circle cx="48" cy="48" r="41.905" fill="#fff" stroke="#000" stroke-linecap="square" stroke-width="4.1905" style="paint-order:normal"/>
+  <path d="m48 6.0952a20.952 20.952 0 0 1 20.952 20.952 20.952 20.952 0 0 1-20.952 20.952 20.952 20.952 0 0 0-20.952 20.952 20.952 20.952 0 0 0 20.952 20.952 20.952 20.952 0 0 0 1.772-0.087901 41.905 41.905 0 0 0 40.133-41.817 41.905 41.905 0 0 0-41.905-41.905z" style="paint-order:markers fill stroke"/>
+  <circle cx="48" cy="68.952" r="7.3333" fill="#fff" style="paint-order:markers fill stroke"/>
+  <circle transform="scale(-1)" cx="-48" cy="-27.048" r="7.3333" style="paint-order:markers fill stroke"/>
+ </g>
 </svg>
