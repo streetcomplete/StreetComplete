@@ -455,7 +455,8 @@ object AchievementsModule {
                     "AddProhibitedForPedestrians",
                     "AddSidewalk",
                     "AddBusStopName",
-                    "AddBusStopShelter"
+                    "AddBusStopShelter",
+                    "AddBenchStatusOnBusStop"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -499,6 +500,7 @@ object AchievementsModule {
                 listOf(
                     "AddHousenumber",
                     "AddRoadName",
+                    "AddAddressStreet",
                     "AddPostboxRef",
                     "AddPostboxCollectionTimes"
                 )
@@ -586,9 +588,21 @@ object AchievementsModule {
         linksKeys.map { linksById.getValue(it) }
 
     // Quests not mentioned in any achievements:
-    // AddFireHydrantType AddGeneralFee AddSelfServiceLaundry AddReligionToWaysideShrine AddToiletsFee
-    // AddBabyChangingTable AddPlaceName AddReligionToPlaceOfWorship AddRecyclingType
-    // AddRecyclingContainerMaterials AddSport AddOpeningHours AddInternetAccess AddPlaygroundAccess
-    // AddToiletAvailability DetermineRecyclingGlass
 
+
+    // maybe "adventure" - sport/hiking related
+    // AddSport AddSummitRegister AddReligionToWaysideShrine
+
+    // maybe "Citizen" - general quests in town
+    //  AddSelfServiceLaundry AddToiletAvailability AddToiletsFee AddPlaceName
+    // DetermineRecyclingGlass AddRecyclingContainerMaterials AddBabyChangingTable
+    // AddOpeningHours AddPlaygroundAccess AddReligionToPlaceOfWorship
+    // AddRecyclingType AddAcceptsCash
+
+    // maybe "tourist
+    // AddInformationToTourism AddBoardType AddInternetAccess AddGeneralFee
+
+    // maybe "emergency"
+    // AddFireHydrantType AddIsDefibrillatorIndoor
+    //
 }
