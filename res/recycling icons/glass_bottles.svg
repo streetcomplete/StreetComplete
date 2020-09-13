@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="96" height="96" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
  <g transform="matrix(.86272 -.13004 .13004 .86272 -259.83 -876.38)">
   <path d="m152.88 1066.5c3.8138 15.362-2.2592 35.938-0.35438 48.858 0 5.9999 8 7.9999 17 7.9999s17-2 17-7.9999c2.3305-17.401-4.9301-31.41-0.23829-48.36-11.123-5.1748-22.263-3.8151-33.407-0.4978z" fill="#ababab" fill-opacity=".62381" stroke-width="1.0807" style="paint-order:fill markers stroke"/>
   <g transform="translate(22.528 .80731)">

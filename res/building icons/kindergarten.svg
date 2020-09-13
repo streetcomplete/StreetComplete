@@ -1,130 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="kindergarten.svg"
-   width="128"
-   height="128"
-   viewBox="0 0 128 128"
-   version="1.1"
-   id="svg8">
-  <sodipodi:namedview
-     inkscape:snap-bbox="true"
-     inkscape:current-layer="svg8"
-     inkscape:window-maximized="0"
-     inkscape:window-y="0"
-     inkscape:window-x="0"
-     inkscape:cy="76.206896"
-     inkscape:cx="67.561554"
-     inkscape:zoom="7.3502585"
-     showgrid="true"
-     id="namedview20"
-     inkscape:window-height="1254"
-     inkscape:window-width="1658"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0"
-     guidetolerance="10"
-     gridtolerance="10"
-     objecttolerance="10"
-     borderopacity="1"
-     bordercolor="#666666"
-     pagecolor="#ffffff">
-    <inkscape:grid
-       spacingy="4"
-       spacingx="4"
-       empspacing="4"
-       id="grid847"
-       type="xygrid" />
-  </sodipodi:namedview>
-  <defs
-     id="defs2" />
-  <metadata
-     id="metadata5">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     transform="matrix(3.7795275,0,0,3.7795275,1.6975099,-486.51962)"
-     id="kindergarten"
-     inkscape:label="#g5138">
-    <g
-       transform="matrix(0.94267423,0,0,0.94267423,0.72936274,9.9568455)"
-       id="g5119">
-      <rect
-         style="fill:#c1c7ff;fill-opacity:1;stroke:#5961b6;stroke-width:1.5875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-         id="rect5079-4"
-         width="12.7"
-         height="12.7"
-         x="3.175"
-         y="143.54166" />
-      <g
-         aria-label="B"
-         style="font-style:normal;font-weight:normal;font-size:14.6603px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.366507"
-         id="text5073">
-        <path
-           d="m 5.542019,153.20091 c 0.8116005,-0.12765 1.0577502,-0.62848 1.0665933,-1.32429 l 0.049616,-3.90398 c 0.01093,-0.85997 -0.3353166,-1.12532 -1.0665933,-1.31714 l 0.032459,-1.25112 c 2.3577408,-0.14331 7.330775,-0.64201 7.186978,2.10455 -0.06069,1.15925 -0.23018,1.80201 -1.235171,2.05827 1.201063,0.16715 1.884177,1.01174 1.893738,2.22242 0.0268,3.39368 -5.1481928,2.6128 -7.8598619,2.6128 z m 5.064283,-5.44143 c 0.01042,-1.27397 -0.9366064,-1.0414 -1.9508953,-1.0414 l -0.024808,2.34668 c 1.3038378,0.11176 1.9652823,-0.0313 1.9757033,-1.30528 z m 0.665726,4.13752 c -0.0075,-1.39098 -1.4193626,-1.47658 -2.6166213,-1.47658 -0.00498,1.04716 -0.081289,1.7464 0.1040416,2.7141 1.3524567,0.0768 2.5200657,0.15346 2.5125797,-1.23752 z"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Hadassah Friedlaender';-inkscape-font-specification:'Hadassah Friedlaender Bold';fill:#5961b6;fill-opacity:1;stroke-width:0.366507"
-           id="path5105"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cssccscscczcczzccz" />
-      </g>
-    </g>
-    <g
-       transform="matrix(0.94380199,0,0,0.94380199,0.21734585,7.8410856)"
-       id="g5124">
-      <rect
-         style="fill:#d5f7c9;fill-opacity:1;stroke:#468e2d;stroke-width:1.5875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-         id="rect5079-2"
-         width="12.7"
-         height="12.7"
-         x="17.991667"
-         y="145.65833" />
-      <g
-         aria-label="C"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.965px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.349125"
-         id="text5077">
-        <path
-           d="m 20.531474,152.17361 c -0.0074,-2.58213 2.545486,-4.4382 4.074776,-4.66321 1.52929,-0.22501 2.87391,0.25329 3.749903,0.61531 l -0.17729,2.34568 -1.224035,-0.057 c -0.10654,-1.38283 -1.123961,-1.63774 -2.100204,-1.46441 -0.976243,0.17333 -1.768104,1.7501 -1.808528,2.82818 -0.04042,1.07808 0.533736,3.08408 1.945094,3.14502 1.411358,0.0609 2.006415,-0.46546 2.658007,-0.95713 l 0.519386,1.23517 c -0.96622,0.87029 -1.645331,1.29711 -3.562333,1.30504 -1.917001,0.008 -4.067362,-1.7505 -4.074776,-4.33263 z"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Hadassah Friedlaender';-inkscape-font-specification:'Hadassah Friedlaender Bold';fill:#468e2d;fill-opacity:1;stroke-width:0.349125"
-           id="path5102"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="czccczzzccszc" />
-      </g>
-    </g>
-    <g
-       transform="matrix(0.94437215,0,0,0.94437215,0.05373834,9.2336642)"
-       id="g5114">
-      <rect
-         style="fill:#ffc1c1;fill-opacity:1;stroke:#c84747;stroke-width:1.5875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-         id="rect5079"
-         width="12.7"
-         height="12.7"
-         x="9.5250006"
-         y="129.78333" />
-      <g
-         aria-label="A"
-         style="font-style:normal;font-weight:normal;font-size:14.1968px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#c84747;fill-opacity:1;stroke:none;stroke-width:0.354919"
-         id="text5069">
-        <path
-           d="m 20.400647,139.67173 -0.02773,0.95951 -3.585053,0.005 -0.05546,-0.9547 c 1.403083,-0.33853 0.451272,-1.28062 0.119855,-2.22506 H 14.61868 c -0.378422,1.03494 -1.299949,1.95373 -0.02827,2.29935 l -0.05546,0.88041 -3.157867,-0.005 0.0218,-0.95174 c 1.892578,-1.30897 2.207656,-5.56087 3.112978,-7.82639 h 2.801685 c 1.153168,1.84342 1.137504,7.00287 3.087104,7.81862 z m -3.874184,-3.14383 c -0.232974,-1.03312 0.03747,-2.09762 -0.771468,-2.94814 -0.540958,0.90853 -0.576461,1.9153 -0.789706,2.94814 z"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Hadassah Friedlaender';-inkscape-font-specification:'Hadassah Friedlaender Bold';fill:#c84747;fill-opacity:1;stroke-width:0.354919"
-           id="path5108"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccccccccccccccccc" />
-      </g>
-    </g>
-  </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(3.5629 0 0 3.5629 4.4542 -448.89)">
+  <rect x="3.175" y="143.54" width="12.7" height="12.7" fill="#c1c7ff" stroke="#5961b6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5875" style="paint-order:fill markers stroke"/>
+  <path d="m5.542 153.2c0.8116-0.12765 1.0578-0.62848 1.0666-1.3243l0.049616-3.904c0.01093-0.85997-0.33532-1.1253-1.0666-1.3171l0.032459-1.2511c2.3577-0.14331 7.3308-0.64201 7.187 2.1046-0.06069 1.1592-0.23018 1.802-1.2352 2.0583 1.2011 0.16715 1.8842 1.0117 1.8937 2.2224 0.0268 3.3937-5.1482 2.6128-7.8599 2.6128zm5.0643-5.4414c0.01042-1.274-0.93661-1.0414-1.9509-1.0414l-0.024808 2.3467c1.3038 0.11176 1.9653-0.0313 1.9757-1.3053zm0.66573 4.1375c-0.0075-1.391-1.4194-1.4766-2.6166-1.4766-0.00498 1.0472-0.081289 1.7464 0.10404 2.7141 1.3525 0.0768 2.5201 0.15346 2.5126-1.2375z" fill="#5961b6"/>
+ </g>
+ <g transform="matrix(3.5671 0 0 3.5671 2.519 -456.88)">
+  <rect x="17.992" y="145.66" width="12.7" height="12.7" fill="#d5f7c9" stroke="#468e2d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5875" style="paint-order:fill markers stroke"/>
+  <path d="m20.531 152.17c-0.0074-2.5821 2.5455-4.4382 4.0748-4.6632s2.8739 0.25329 3.7499 0.61531l-0.17729 2.3457-1.224-0.057c-0.10654-1.3828-1.124-1.6377-2.1002-1.4644s-1.7681 1.7501-1.8085 2.8282c-0.04042 1.0781 0.53374 3.0841 1.9451 3.145 1.4114 0.0609 2.0064-0.46546 2.658-0.95713l0.51939 1.2352c-0.96622 0.87029-1.6453 1.2971-3.5623 1.305-1.917 8e-3 -4.0674-1.7505-4.0748-4.3326z" fill="#468e2d"/>
+ </g>
+ <g transform="matrix(3.5693 0 0 3.5693 1.9006 -451.62)">
+  <rect x="9.525" y="129.78" width="12.7" height="12.7" fill="#ffc1c1" stroke="#c84747" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5875" style="paint-order:fill markers stroke"/>
+  <path d="m20.401 139.67-0.02773 0.95951-3.5851 5e-3 -0.05546-0.9547c1.4031-0.33853 0.45127-1.2806 0.11986-2.2251h-2.2336c-0.37842 1.0349-1.2999 1.9537-0.02827 2.2994l-0.05546 0.88041-3.1579-5e-3 0.0218-0.95174c1.8926-1.309 2.2077-5.5609 3.113-7.8264h2.8017c1.1532 1.8434 1.1375 7.0029 3.0871 7.8186zm-3.8742-3.1438c-0.23297-1.0331 0.03747-2.0976-0.77147-2.9481-0.54096 0.90853-0.57646 1.9153-0.78971 2.9481z" fill="#c84747"/>
+ </g>
 </svg>
