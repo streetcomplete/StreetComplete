@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
 import de.westnordost.streetcomplete.quests.handrail.AddHandrail
+import de.westnordost.streetcomplete.quests.step_count.AddStepCount
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName
@@ -175,6 +176,7 @@ object QuestModule
         MarkCompletedBuildingConstruction(o, r),
         AddGeneralFee(o),
         AddSelfServiceLaundry(o),
+        AddStepCount(o), // before handrail so the surveyor doesn't need to walk it twice
         AddHandrail(o, r), // for accessibility of pedestrian routing
         AddInformationToTourism(o),
 
