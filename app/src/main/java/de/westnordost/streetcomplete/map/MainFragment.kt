@@ -308,7 +308,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onClickedLocationMarker() {
-        setIsFollowingPosition(true)
+        mapFragment?.followPosition(true)
     }
 
     /* -------------------------- AbstractQuestAnswerFragment.Listener -------------------------- */
@@ -659,7 +659,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onClickLocationPointer() {
-        setIsFollowingPosition(true)
+        mapFragment?.followPosition(true)
     }
 
     /* --------------------------------- Managing bottom sheet  --------------------------------- */

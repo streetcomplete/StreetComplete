@@ -236,8 +236,8 @@ open class LocationAwareMapFragment : MapFragment() {
         return isFollowingPosition
     }
 
-    protected fun followPosition() {
-        if (!shouldCenterCurrentPosition()) return
+    public fun followPosition(forceCenter: Boolean = false) {
+        if (!forceCenter && !shouldCenterCurrentPosition()) return
         val controller = controller ?: return
         val targetPosition = displayedPosition ?: return
         controller.updateCameraPosition(600) {
