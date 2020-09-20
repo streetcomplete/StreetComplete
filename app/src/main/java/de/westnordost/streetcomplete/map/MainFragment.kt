@@ -566,6 +566,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val mapFragment = mapFragment ?: return
         mapFragment.isFollowingPosition = follow
         gpsTrackingButton.isActivated = follow
+        val hideButton = follow && gpsTrackingButton.state !== LocationState.SEARCHING
+        gpsTrackingButton.visibility = if (hideButton) View.INVISIBLE else View.VISIBLE
         if (!follow) setIsCompassMode(false)
     }
 
