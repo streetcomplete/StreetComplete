@@ -13,11 +13,11 @@
 
         <include
             android:id="@+id/tonInputSign"
-            layout="@layout/quest_maxweight_ton"/>
+            layout="@layout/quest_maxweight_ton_sign"/>
 
         <include
             android:id="@+id/poundInputSign"
-            layout="@layout/quest_maxweight_pound"/>
+            layout="@layout/quest_maxweight_pound_sign"/>
 
     </RelativeLayout>
 

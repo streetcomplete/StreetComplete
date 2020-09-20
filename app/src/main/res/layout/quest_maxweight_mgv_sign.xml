@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="112dp"
+    android:layout_height="112dp"
+    android:background="@drawable/background_generic_prohibition_sign"
+    android:padding="18dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_truck"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/mgvTonInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0fff"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                android:textColor="@color/traffic_black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                tools:text="80.4"
+                tools:ignore="SpUsage" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="t"
+                android:textColor="@color/traffic_black"
+                android:textSize="18dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,SpUsage" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
