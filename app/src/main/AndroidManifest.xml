@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FragmentContainerActivity"/>
-        <activity android:name=".settings.AboutActivity"/>
+        <activity android:name=".about.AboutActivity"/>
         <activity android:name=".settings.ShowQuestFormsActivity"
             android:configChanges="orientation|screenSize|uiMode"/>
         <activity
