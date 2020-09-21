@@ -2177,7 +2177,7 @@ Bukatzeko, tentuz ibili: Adi zure inguruneari eta ez sartu jabetza pribatuko ere
     <string name="link_figuregrounder_description">"Sortu hiri edo auzoetako diagrama posterrak"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_first_edit_title">"Lehen erroka ebatzita"</string>
+    <string name="achievement_first_edit_title">"Lehen erronka ebatzita"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"Ongi etorri OpenStreetMap komunitatera! Zure profilaren pantailan, ebatzi duzun erronka mota bakoitzaren informazio gehiago aurkitu dezakezu."</string>
@@ -2250,8 +2250,53 @@ Kontuan izan aplikazio honek eraikin baten zenbakia, behin zein motakoa denean j
     <string name="unread_messages_button">"Ireki sarrera ontzia"</string>
     <string name="action_about2">"Honi buruz"</string>
     <string name="map_btn_menu">"Menua"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;Zure profilean erakusten diren datuak zure OpenStreetMap-eko aportazioen informazio publikoa hartuta prozesatutakoak dira, gero nire zerbitzarian ostatatuta.&lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"Beranduago ere egin dezakezu, profilaren pantailan."</string>
+    <string name="credits_art_contributors_title">"Arte laguntzailea"</string>
+    <string name="credits_projects_contributors_title">"StreetComplete-rentzat egindako proiektuak"</string>
+    <string name="credits_main_contributors_title">"Laguntzaile lagusiak"</string>
+    <string name="stats_are_syncing">"Zure estatistikak oraindik eguneratzen ari gara. Etorri geroxeago ikustera."</string>
+    <string name="user_statistics_filter_by_country">"herrialdeka"</string>
+    <string name="user_statistics_filter_by_quest_type">"galdera motaren arabera"</string>
+    <string name="user_profile_global_rank">"Ranking
+globala"</string>
+    <string name="user_profile_local_rank">"%s-ko
+rankinga"</string>
+    <string name="user_profile_days_active">"Egunak
+aktibo"</string>
+    <string name="user_profile_achievement_levels">"Lorpen
+mailak"</string>
+    <string name="quest_address_street_title">"Zein kaleri dagokio %s etxe-zenbaki horrek?"</string>
+    <string name="quest_address_street_no_named_streets">"Ez dago izena duen kale batekin lotuta"</string>
+    <string name="quest_address_street_place_name_label">"Toki izena:"</string>
+    <string name="quest_address_street_description">"Ukitu mapan zein kale edo bideri dagokion edo idatzi laburdurarik gabe beheko eremuan:"</string>
+    <string name="quest_recycling_type_cooking_oil">"Sukaldeko olioa"</string>
+    <string name="quest_recycling_type_engine_oil">"Motoreen olioa"</string>
+    <string name="link_qwant_maps_description">"Bilatu daitezkeen toki eta helbideen mapa bat"</string>
+    <string name="about_title_sponsors">"Babesleak"</string>
+    <string name="quest_board_type_history">"Historia"</string>
+    <string name="quest_board_type_geology">"Geologia"</string>
+    <string name="quest_board_type_plants">"Landareak"</string>
+    <string name="quest_board_type_wildlife">"Fauna"</string>
+    <string name="quest_board_type_nature">"Natura (hainbat gai)"</string>
+    <string name="quest_board_type_notice_board">"Iragarki-taula bat da"</string>
+    <string name="quest_board_type_public_transport">"Garraio publikoa"</string>
+    <string name="quest_board_type_title">"Zein da argibide-taula honen gaia?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Bai, mapan aparte erakutsita"</string>
+    <string name="quest_board_type_map">"Mapa bat da"</string>
+    <string name="quest_board_type_map_title">"Mapa bat da eta besterik ez?"</string>
+    <string name="quest_board_type_map_description">"Argibide-taula gai konkretu bati buruzkoa bada, zehaztu mesedez, ez du axola mapa bat ere baduen ala ez. Adibidez, garraio publikoko argibide-taula batek autobus mapa bat izan dezake. Gaia ez badago hemen zerrendatuta, agian utzi mezu bat horren ordez."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Hainbat gainazal..."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Mesedez, azaldu laburki nolako gainazala dagoen hemen, adibidez \"hondarra, harrikoxkor zatiekin\". Testuaren luzeera gehienez 255 karakterekoa da."</string>
+    <string name="quest_surface_detailed_name_title">"Zein da %s bidearen gainazala hemen zehazki?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Zehazki zein gainazal du %s plaza honek hemen?"</string>
+    <string name="quest_surface_detailed_title">"Zehazki zein gainazal du bide zati honek?"</string>
+    <string name="quest_surface_detailed_square_title">"Zehazki zein gainazal mota du hemen plaza honek?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"internazionala"</string>
+    <string name="quest_streetName_menuItem_romanized">"latindar alfabetoan"</string>
+    <string name="quest_buildingType_terrace2">"Etxe elkarri atxikiak"</string>
     <string name="at_housename">"Etxearen izena %s:"</string>
     <string name="at_conscription_and_street_number">"Konskripzio zenbakia %1$s, orientazio zenbakia %2$s:"</string>
 
@@ -2259,6 +2304,24 @@ Kontuan izan aplikazio honek eraikin baten zenbakia, behin zein motakoa denean j
     <string name="at_conscription_number">"Konskripzio zenbakia %s:"</string>
     <string name="at_housenumber">"etxe zenbakia %s:"</string>
     <string name="quest_openingHours_name_type_title">"Zein da %1$s (%2$s) (r)en ordutegia?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"%s-ko ordutegi hau oraindik zuzena da?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"%1$s-ko ordutegi hau oraindik zuzena da? (%2$s)"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Ordutegi hau oraindik zuzena da? (%s)"</string>
+    <string name="quest_openingHours_add_off_days">"Itxitako egunak gehitu"</string>
+    <string name="quest_openingHours_off_day">"Itxita dagoen eguna"</string>
+    <string name="quest_openingHours_unspecified_range">"Zehaztu gabe"</string>
+    <string name="quest_cycleway_resurvey_title">"Bizikletentzako bidearen egoerak honela jarraitzen du?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s)  gurpildun aulkientzat irisgarria al da?"</string>
+    <string name="pref_title_resurvey_intervals">"Berraztertze tarteak"</string>
+    <string name="resurvey_intervals_less_often">"Ez galdetu hain sarritan"</string>
+    <string name="resurvey_intervals_default">"Lehenetsia"</string>
+    <string name="resurvey_intervals_more_often">"Galdetu sarriago"</string>
+    <string name="quest_street_side_puzzle_select">"Ukitu hautatzeko"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) (e)k eskudiruz ordaintzea onartzen du?"</string>
+    <string name="quest_busStopBench_tram_name_title">"%s tranbia geltokiak eserlekurik du?"</string>
+    <string name="quest_busStopBench_tram_title">"Tranbia geltoki honek badu eserlekurik?"</string>
+    <string name="quest_busStopBench_title">"Autobus geltoki honek badu eserlekurik?"</string>
+    <string name="quest_busStopBench_name_title">"%s autobus geltokiak eserlekurik du?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Desfibriladore hau (AED) eraikin baten barruan dago?"</string>
+    <string name="about_title_translate">"Lagundu app hau itzultzen"</string>
 </resources>

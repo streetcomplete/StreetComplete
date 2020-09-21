@@ -2272,6 +2272,8 @@
     <string name="about_title_sponsors">"Спонсоры"</string>
     <string name="quest_board_type_history">"История"</string>
     <string name="quest_board_type_geology">"Геология"</string>
+    <string name="quest_board_type_plants">"Растения"</string>
+    <string name="quest_board_type_public_transport">"Общественный транспорт"</string>
     <string name="quest_board_type_map">"Это карта"</string>
     <string name="quest_board_type_map_title">"Это только карта и ничего более?"</string>
     <string name="quest_surface_detailed_answer_impossible">"Различные покрытия..."</string>
@@ -2291,4 +2293,9 @@
     <string name="quest_wheelchairAccess_name_type_title">"Доступно ли %1$s (%2$s) для инвалидных колясок?"</string>
     <string name="resurvey_intervals_default">"По умолчанию"</string>
     <string name="quest_accepts_cash_type_title">"Принимают ли в %1$s (%2$s) оплату наличными?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Есть ли на остановке трамвая %s скамейка?"</string>
+    <string name="quest_busStopBench_tram_title">"На этой остановке трамвая есть скамейка?"</string>
+    <string name="quest_busStopBench_title">"На этой автобусной остановке есть скамейка?"</string>
+    <string name="quest_busStopBench_name_title">"Есть ли на автобусной остановке %s скамейка?"</string>
+    <string name="about_description_translate">"%1$s переведен на %2$d%%"</string>
 </resources>

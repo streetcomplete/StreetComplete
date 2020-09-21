@@ -2284,4 +2284,13 @@
     <string name="resurvey_intervals_more_often">"بیشتر اوقات بپرسید"</string>
     <string name="quest_street_side_puzzle_select">"انتخاب کنید"</string>
     <string name="quest_accepts_cash_type_title">"آیا %1$s (%2$s) پرداخت نقدی را قبول می کند؟"</string>
+    <string name="quest_busStopBench_tram_name_title">"آیا توقفگاه خودرو %s نیمکت دارد؟"</string>
+    <string name="quest_busStopBench_tram_title">"آیا این توقفگاه خودرو نیمکت دارد؟"</string>
+    <string name="quest_busStopBench_title">"آیا این ایستگاه اتوبوس نیمکت دارد؟"</string>
+    <string name="quest_busStopBench_name_title">"آیا ایستگاه اتوبوس %s نیمکت دارد؟"</string>
+    <string name="quest_summit_register_title">"آیا امکان ثبت نام جلسه در %s وجود دارد؟"</string>
+    <string name="quest_is_defibrillator_inside_title">"آیا داخل ساختمان دستگاه شوک الکتریکی موجود است؟"</string>
+    <string name="dialog_tutorial_download">"با خاموش کردن همگام سازی خودکار، جُستارها به طور خودکار بارگیری نمی شوند. برای انجام این کار به صورت دستی، از دکمه \"%s\" در منو مکان دلخواه استفاده کنید."</string>
+    <string name="about_title_translate">"به ترجمه این برنامه کمک کنید"</string>
+    <string name="about_description_translate">"%1$s توسط %2$d%% ترجمه شده است"</string>
 </resources>

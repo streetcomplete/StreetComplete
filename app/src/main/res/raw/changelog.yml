@@ -1,4 +1,4 @@
-v23.0-beta1: |
+v23.0: |
   <h3>🚧 Map maintenance</h3>
   Quest types whose answer is likely to change over the years will be asked again in reasonable
   intervals. So now you can help not only to complete the map, but also to keep it up-to-date,
@@ -30,6 +30,7 @@ v23.0-beta1: |
   <h3>Other Enhancements and Fixes</h3>
   <ul>
   <li>Explain that you have to download manually if auto-sync is off (#1989, #2009, #2070), by @matkoniecz</li>
+  <li>Antialias pointer pin (#2091), by @Plastix</li>
   <li>Show link how to contribute translations in settings (#2079)</li>
   <li>Improve visibility of highlighted elements on the map (#1769)</li>
   <li>Fix a few rare crashes</li>
