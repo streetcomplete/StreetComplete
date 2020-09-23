@@ -43,7 +43,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         }
     )
 
-    private lateinit var openingHoursAdapter: AddOpeningHoursAdapter
+    private lateinit var openingHoursAdapter: RegularOpeningHoursAdapter
 
     private var isDisplayingPreviousOpeningHours: Boolean = false
 
@@ -56,7 +56,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        openingHoursAdapter = AddOpeningHoursAdapter(requireContext(), countryInfo)
+        openingHoursAdapter = RegularOpeningHoursAdapter(requireContext(), countryInfo)
         openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
     }
 
