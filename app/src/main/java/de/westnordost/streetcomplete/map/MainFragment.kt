@@ -310,9 +310,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
-    override fun onClickedLocationMarker() {
-        mapFragment?.followPosition(true)
-    }
+    override fun onClickedLocationMarker() {}
 
     /* -------------------------- AbstractQuestAnswerFragment.Listener -------------------------- */
 
