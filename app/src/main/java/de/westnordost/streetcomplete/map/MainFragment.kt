@@ -233,7 +233,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
-        gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
+        val follow = mapFragment?.isFollowingPosition ?: false
+        val hide = follow && gpsTrackingButton.state !== LocationState.SEARCHING
+        gpsTrackingButton.isActivated = follow
+        gpsTrackingButton.visibility = if (hide) View.INVISIBLE else View.VISIBLE
         updateLocationPointerPin()
     }
 
