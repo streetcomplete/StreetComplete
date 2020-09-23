@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.view
+package de.westnordost.streetcomplete.view.image_select
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
     RecyclerView.Adapter<ItemViewHolder>() {
 
-    var items = listOf<Item<T>>()
+    var items = listOf<DisplayItem<T>>()
     set(value) {
         field = value
         notifyDataSetChanged()

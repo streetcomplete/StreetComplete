@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.view
+package de.westnordost.streetcomplete.view.image_select
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,8 +14,8 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
     var cellLayoutId = R.layout.cell_labeled_image_select
     var groupCellLayoutId = R.layout.cell_panorama_select
 
-    private var _items = mutableListOf<Item<T>>()
-    var items: List<Item<T>>
+    private var _items = mutableListOf<GroupableDisplayItem<T>>()
+    var items: List<GroupableDisplayItem<T>>
     set(value) {
         _items.clear()
         _items.addAll(value)
@@ -27,10 +27,10 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
     }
     get() = _items.toList()
 
-    var selectedItem: Item<T>? = null
+    var selectedItem: GroupableDisplayItem<T>? = null
         private set
 
-    val listeners = mutableListOf<(Item<T>?) -> Unit>()
+    val listeners = mutableListOf<(GroupableDisplayItem<T>?) -> Unit>()
 
     init {
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

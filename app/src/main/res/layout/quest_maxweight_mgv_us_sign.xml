@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="144dp"
+    android:layout_width="112dp"
     android:layout_height="wrap_content"
     android:padding="12dp"
     android:background="@drawable/background_rectangular_sign_white"
@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AXLE WEIGHT LIMIT"
+        android:text="GVM LIMIT"
         android:textStyle="bold"
         android:textSize="18dp"
         android:gravity="center"
@@ -45,5 +45,4 @@
         android:layout_height="wrap_content"
         android:textColor="@color/traffic_black"
         android:background="?android:attr/selectableItemBackground" />
-
 </LinearLayout>

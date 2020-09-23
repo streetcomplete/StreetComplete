@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.view.dialogs
+package de.westnordost.streetcomplete.view.image_select
 
 import android.content.Context
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -6,16 +6,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.ImageSelectAdapter
-import de.westnordost.streetcomplete.view.Item
 
 /** A dialog in which you can one item of a range of items */
 class ImageListPickerDialog<T>(
     context: Context,
-    items: List<Item<T>>,
+    items: List<DisplayItem<T>>,
     cellLayoutId: Int = R.layout.cell_labeled_image_select,
     columns: Int = 2,
-    onSelection: (Item<T>) -> Unit) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+    onSelection: (DisplayItem<T>) -> Unit) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
     init {
         val recyclerView = RecyclerView(context)

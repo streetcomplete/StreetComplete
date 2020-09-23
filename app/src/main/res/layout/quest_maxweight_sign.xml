@@ -1,35 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="112dp"
+    android:layout_height="112dp"
     android:gravity="center"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:layout_width="112dp"
-        android:layout_height="112dp"
-        android:background="@drawable/background_generic_prohibition_sign"
-        android:padding="24dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_truck"
-            android:layout_centerInParent="true"/>
-
-    </RelativeLayout>
+    android:background="@drawable/background_generic_prohibition_sign"
+    android:padding="22dp">
 
     <LinearLayout
-        android:layout_width="80dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/background_rectangular_sign"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:gravity="center">
 
         <me.grantland.widget.AutofitLayout
@@ -46,7 +28,7 @@
                 android:gravity="center"
                 android:inputType="numberDecimal"
                 android:textColor="@color/traffic_black"
-                android:textSize="24dp"
+                android:textSize="56dp"
                 android:textStyle="bold"
                 android:minEms="1"
                 tools:text="8"
@@ -60,7 +42,7 @@
             android:gravity="center"
             android:text="t"
             android:textColor="@color/traffic_black"
-            android:textSize="24dp"
+            android:textSize="40dp"
             android:layout_marginRight="4dp"
             android:layout_marginLeft="4dp"
             android:textStyle="bold"
@@ -68,4 +50,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

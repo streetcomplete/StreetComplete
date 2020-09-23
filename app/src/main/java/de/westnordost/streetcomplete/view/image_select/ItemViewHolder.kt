@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.view
+package de.westnordost.streetcomplete.view.image_select
 
 import android.view.View
 import android.widget.ImageView
@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.R
 
 class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val imageView: ImageView = itemView.findViewById(R.id.imageView)
+    private val imageView: ImageView? = itemView.findViewById(R.id.imageView)
     private val textView: TextView? = itemView.findViewById(R.id.textView)
     private val descriptionView: TextView? = itemView.findViewById(R.id.descriptionView)
 
@@ -27,24 +27,10 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             }
         }
 
-    fun bind(item: Item<*>) {
-        val drawableId = item.drawableId
-        if (drawableId != null)
-            imageView.setImageResource(drawableId)
-        else
-            imageView.setImageDrawable(null)
-
-        val titleId = item.titleId
-        if (titleId != null)
-            textView?.setText(titleId)
-        else
-            textView?.text = null
-
-        val descriptionId = item.descriptionId
-        descriptionView?.isGone = descriptionId == null
-        if (descriptionId != null)
-            descriptionView?.setText(descriptionId)
-        else
-            descriptionView?.text = null
+    fun bind(item: DisplayItem<*>) {
+        imageView?.setImage(item.image)
+        textView?.setText(item.title)
+        descriptionView?.setText(item.description)
+        descriptionView?.isGone = item.description == null
     }
 }
