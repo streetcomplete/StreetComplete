@@ -236,8 +236,7 @@ open class LocationAwareMapFragment : MapFragment() {
         return isFollowingPosition
     }
 
-    protected fun followPosition() {
-        if (!shouldCenterCurrentPosition()) return
+    fun centerCurrentPosition() {
         val controller = controller ?: return
         val targetPosition = displayedPosition ?: return
         controller.updateCameraPosition(600) {
@@ -247,6 +246,11 @@ open class LocationAwareMapFragment : MapFragment() {
                 zoom = 19f
             }
         }
+    }
+
+    protected fun followPosition() {
+        if (!shouldCenterCurrentPosition()) return
+        centerCurrentPosition()
     }
 
     private fun onLocationChanged(location: Location) {
