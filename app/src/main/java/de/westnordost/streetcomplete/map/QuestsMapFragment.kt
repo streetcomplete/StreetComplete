@@ -149,7 +149,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         hideQuestSelectionMarkers()
         removeSelectedQuestPins()
         restoreCameraPosition()
-        followPosition()
+        centerCurrentPositionIfFollowing()
     }
 
     private fun zoomAndMoveToContain(g: ElementGeometry, offset: RectF) {
