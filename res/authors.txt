@@ -337,6 +337,10 @@ roof shape icons/
     skillion_south.svg
     skillion_west.svg
 
+sidewalk graphics/
+    no.svg
+    yes.svg
+
 slow zone graphics/
     slow_zone_us.svg
 
@@ -384,6 +388,11 @@ sport icons/
     table_tennis.svg                 EmojiOne 2: U+1F3D3
     tennis.svg                       EmojiOne 2: U+1F3BE
     volleyball.svg                   EmojiOne 2: U+1F3D0
+
+steps incline graphics/
+    up.svg
+    up_reversed.svg
+    unknown.svg
 
 tutorial graphics/
     checkmark_circle.svg
