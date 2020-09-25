@@ -58,7 +58,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     interface Listener {
         fun onClickedQuest(questGroup: QuestGroup, questId: Long)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
-        fun onClickedLocationMarker()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -115,10 +114,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
                 listener?.onClickedQuest(pickedQuestGroup, pickedQuestId)
             } else {
                 val pickMarkerResult = controller?.pickMarker(x,y)
-
-                if (pickMarkerResult != null && pickMarkerResult.marker == locationMarker) {
-                    listener?.onClickedLocationMarker()
-                } else {
+                if (pickMarkerResult == null) {
                     onClickedMap(x, y)
                 }
             }
@@ -153,7 +149,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         hideQuestSelectionMarkers()
         removeSelectedQuestPins()
         restoreCameraPosition()
-        followPosition()
+        centerCurrentPositionIfFollowing()
     }
 
     private fun zoomAndMoveToContain(g: ElementGeometry, offset: RectF) {
