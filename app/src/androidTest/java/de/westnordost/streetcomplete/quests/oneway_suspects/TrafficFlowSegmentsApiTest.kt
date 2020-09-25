@@ -1,10 +1,10 @@
-package de.westnordost.streetcomplete.quests.oneway
+package de.westnordost.streetcomplete.quests.oneway_suspects
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsApi
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsModule.ONEWAY_API_URL
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsModule.ONEWAY_API_URL
 
 import org.assertj.core.api.Assertions.*
 import org.junit.Assert.assertTrue
