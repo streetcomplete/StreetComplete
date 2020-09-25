@@ -60,7 +60,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
     private fun onClickAddButton(v: View) {
         val rows = collectionTimesAdapter.collectionTimesRows
 
-        val addTimeAvailable = rows.isNotEmpty() && rows.last() is WeekdaysTimesRow
+        val addTimeAvailable = rows.isNotEmpty()
 
         if (addTimeAvailable) {
             val popup = PopupMenu(requireContext(), v)
