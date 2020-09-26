@@ -28,8 +28,8 @@ import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsFor
 import de.westnordost.streetcomplete.quests.localized_name.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.localized_name.AddRoadNameForm
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
-import de.westnordost.streetcomplete.quests.oneway.AddOnewayForm
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsModule
+import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOnewayForm
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsModule
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddCollectionTimesForm
@@ -67,7 +67,7 @@ interface ApplicationComponent {
     fun inject(addRoadNameForm: AddRoadNameForm)
     fun inject(addAddressStreetForm: AddAddressStreetForm)
     fun inject(parkingFeeForm: AddParkingFeeForm)
-    fun inject(addOnewayForm: AddOnewayForm)
+    fun inject(addSuspectedOnewayForm: AddSuspectedOnewayForm)
     fun inject(addCollectionTimesForm: AddCollectionTimesForm)
     fun inject(OAuthFragment: OAuthFragment)
     fun inject(questStatisticsFragment: QuestStatisticsFragment)

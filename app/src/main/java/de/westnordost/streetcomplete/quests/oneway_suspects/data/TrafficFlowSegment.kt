@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.oneway.data
+package de.westnordost.streetcomplete.quests.oneway_suspects.data
 
 import de.westnordost.osmapi.map.data.LatLon
 
