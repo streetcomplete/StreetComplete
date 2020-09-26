@@ -23,7 +23,7 @@ data class OpeningMonthsRow(var months: Months): OpeningHoursRow()
 data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange) : OpeningHoursRow()
 data class OffDaysRow(var weekdays: Weekdays): OpeningHoursRow()
 
-class AddOpeningHoursAdapter(
+class RegularOpeningHoursAdapter(
     private val context: Context,
     private val countryInfo: CountryInfo
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

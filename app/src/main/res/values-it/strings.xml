@@ -1683,10 +1683,10 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="default_disabled_msg_maxspeed">"Questo tipo di compito è disabilitato perché generalmente è richiesto di controllare tutta la strada per cercare i segnali dei limiti di velocità, non solo la sezione evidenziata. Questo potrebbe richiedere molto tempo solo per risolvere un singolo compito."</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests_restore_hidden">"Ripristina le ricerche nascoste"</string>
+    <string name="pref_title_quests_restore_hidden">"Ripristina le missioni nascoste"</string>
 
     <!-- Fuzzy -->
-    <string name="restore_hidden_success">"Ripristinate %d ricerche nascoste"</string>
+    <string name="restore_hidden_success">"Ripristinate %d missioni nascoste"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
     as it may follow the numbering scheme of the building operator. Try to use a generic wording
@@ -2124,7 +2124,7 @@ Infine, ricorda la sicurezza: stai attento dell'ambiente circostante e non entra
     <string name="link_learnosm_description">"Prima volta su OpenStretMap? C'è una guida per principianti"</string>
 
     <!-- Fuzzy -->
-    <string name="link_neis_one_description">"Una grande collezione di statistiche per i contributori di OpenStreetMap, come dove e come hai contribuito, chi c'è vicino a te e molte classifiche."</string>
+    <string name="link_neis_one_description">"Una grande collezione di statistiche per i contributori di OpenStreetMap (dove e come hai contribuito, chi c'è vicino a te, più le classifiche)."</string>
 
     <!-- Fuzzy -->
     <string name="link_welcome_mat_description">"Informazioni generali su OpenStreetMap e come lavorare con OSM come organizzazione"</string>
@@ -2358,4 +2358,13 @@ riconoscimento"</string>
     <string name="resurvey_intervals_more_often">"Chiedi più spesso"</string>
     <string name="quest_street_side_puzzle_select">"Premi per selezionare"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accetta pagamenti in denaro?"</string>
+    <string name="quest_busStopBench_tram_name_title">"La fermata del tram %s ha una panchina?"</string>
+    <string name="quest_busStopBench_tram_title">"Questa fermata del tram ha un panchina?"</string>
+    <string name="quest_busStopBench_title">"Questa fermata del bus ha una panchina?"</string>
+    <string name="quest_busStopBench_name_title">"La fermata del bus %s ha una panchina?"</string>
+    <string name="quest_summit_register_title">"C’è un libro di vetta su %s?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Questo defibrillatore (DAE) è all’interno di un edificio?"</string>
+    <string name="dialog_tutorial_download">"Con auto-sync disabilitato, le missioni non vengono scaricate automaticamente . Per farlo manualmente, usa il pulsante “%s” nel menu nel luogo dove vuoi scaricarle."</string>
+    <string name="about_title_translate">"Aiuta a tradurre questa app"</string>
+    <string name="about_description_translate">"%1$s è tradotto %2$d%%"</string>
 </resources>

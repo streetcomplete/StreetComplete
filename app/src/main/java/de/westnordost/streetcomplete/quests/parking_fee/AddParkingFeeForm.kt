@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.RegularOpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
@@ -32,7 +32,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         OtherAnswer(R.string.quest_fee_answer_hours) { isDefiningHours = true }
     )
 
-    private lateinit var openingHoursAdapter: AddOpeningHoursAdapter
+    private lateinit var openingHoursAdapter: RegularOpeningHoursAdapter
 
     private lateinit var content: ViewGroup
 
@@ -55,7 +55,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        openingHoursAdapter = AddOpeningHoursAdapter(requireContext(), countryInfo)
+        openingHoursAdapter = RegularOpeningHoursAdapter(requireContext(), countryInfo)
         openingHoursAdapter.rows = loadOpeningHoursData(savedInstanceState).toMutableList()
         openingHoursAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
     }

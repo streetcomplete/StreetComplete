@@ -2064,7 +2064,7 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="user_profile_global_rank">"Rank global"</string>
     <string name="user_profile_local_rank">"Rank em %s"</string>
     <string name="user_profile_days_active">"Dias ativos"</string>
-    <string name="user_profile_achievement_levels">"Leveis de conquista"</string>
+    <string name="user_profile_achievement_levels">"Níveis de conquista"</string>
     <string name="quest_address_street_title">"A que rua pertence o número da casa %s?"</string>
     <string name="quest_address_street_no_named_streets">"Não pertence a uma rua nomeada"</string>
     <string name="quest_address_street_place_name_label">"Coloque o nome:"</string>
@@ -2108,7 +2108,12 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="at_conscription_number">"Número da conscription %s:"</string>
     <string name="at_housenumber">"número da casa %s:"</string>
     <string name="quest_openingHours_name_type_title">"Quais são os horários de funcionamento de %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_unspecified_range">"Não especificado"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) é acessível por cadeiras de rodas?"</string>
     <string name="resurvey_intervals_default">"Padrão"</string>
+    <string name="quest_street_side_puzzle_select">"Toque para seleccionar"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) aceita pagamento em dinheiro?"</string>
+    <string name="quest_busStopBench_tram_title">"Essa parada de bonde tem um banco?"</string>
+    <string name="quest_busStopBench_title">"Este ponto de ônibus tem um banco?"</string>
+    <string name="about_title_translate">"Ajude a traduzir esse aplicativo"</string>
 </resources>

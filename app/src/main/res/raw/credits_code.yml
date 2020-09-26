@@ -1,15 +1,33 @@
-- Adrien Pavie
-- Mark Tully
-- Karl Ove Hufthammer
+# contributed many quest(s) and more
 - David Dean
-- Dosenpfand
+- Adrien Pavie
+# contributed quest(s) and more
+- Mark Tully
 - Binnette
+# project-wide enhancements
+- rugk # github readme, other community and documentation stuff
+- Karl Ove Hufthammer # separate en-US from en-GB, other stuff
+- Isira Seneviratne # lint / ktx / compat stuff
+# contributed one quest
+- Dosenpfand
 - Daniel Lublin
 - xuiqzy
 - Map3428
-- smichel17
-- rugk
-- Errol Pais
-- Hsieh Chin Fan
+# enhanced/extended quest(s)
 - Peter Newman
-- Štefan Baebler
+- Richard Finegold
+- Helium314
+- Kai Michael Poppe
+- Daniel Maxweiler
+# small usability fixes and enhancements
+- smichel17 # compass mode stuff, fix on quest
+- Peter Newman
+- Hsieh Chin Fan # usability enhancements
+- Štefan Baebler # optimize bitmaps
+- Peter Storch # adaptive launcher icon
+- Aidan Pieper # antialias pointer pin
+# project setup / lint etc fixes / semi-automatic contribs
+# (ah well, I think linking to github contributors page is fair in this case)
+#- Štefan Baebler
+#- Dave Olsthoorn
+#- TacoTheDank

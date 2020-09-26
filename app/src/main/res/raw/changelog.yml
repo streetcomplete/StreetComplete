@@ -1,4 +1,4 @@
-v23.0-beta1: |
+v23.0: |
   <h3>🚧 Map maintenance</h3>
   Quest types whose answer is likely to change over the years will be asked again in reasonable
   intervals. So now you can help not only to complete the map, but also to keep it up-to-date,
@@ -22,6 +22,7 @@ v23.0-beta1: |
   <ul>
   <li>Motorcycle and bicycle parking: Do not accept an input of "0" (#516)</li>
   <li>Also ask for the opening hours of defilbrilators (#1756, #2066), by @matkoniecz</li>
+  <li>Better picture of paving stones in surface quest (#2088), by @matkoniecz</li>
   <li>Accepts cash quest: Ask for more places (#2019), by @kmpoppe</li>
   <li>For opening hours, wheelchair access and accepts cash quest, always display the type of place alongside its name (#2012), by @Helium314</li>
   <li>Recycling container materials: Don't ask for containers close to other containers</li>
@@ -30,6 +31,7 @@ v23.0-beta1: |
   <h3>Other Enhancements and Fixes</h3>
   <ul>
   <li>Explain that you have to download manually if auto-sync is off (#1989, #2009, #2070), by @matkoniecz</li>
+  <li>Antialias pointer pin (#2091), by @Plastix</li>
   <li>Show link how to contribute translations in settings (#2079)</li>
   <li>Improve visibility of highlighted elements on the map (#1769)</li>
   <li>Fix a few rare crashes</li>

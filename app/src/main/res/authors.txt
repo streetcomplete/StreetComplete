@@ -122,7 +122,8 @@ surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/w
 surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG (Øyvind Holmstad )
 surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami)
 surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
-surface_paving_stones.jpg      CC0               https://commons.wikimedia.org/wiki/File:PUB.DOM.DED.Pixa_AcerPics_Dec.'17_01-12-17_Brick_street_stones_LOW_RES_(25052487258).jpg (MabelAmber)
+surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
+surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_gravel.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Gravel_at_the_top_of_Vidova_gora,_island_of_Bra%C4%8D,_Croatia.jpg (Ante Perkovic)
 surface_fine_gravel.jpg        CC0               https://commons.wikimedia.org/wiki/File:Schottertextur_20160312_1.jpg (Sebastian Rittau)
 surface_grass.jpg              CC-BY-SA 2.0      https://upload.wikimedia.org/wikipedia/commons/d/d9/Footpath_through_the_long_grass_near_Southorpe_Bottom_%28geograph_4621359%29.jpg (Richard Humphrey)
