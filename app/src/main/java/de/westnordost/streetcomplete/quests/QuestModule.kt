@@ -71,6 +71,7 @@ import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sport.AddSport
+import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
 import de.westnordost.streetcomplete.quests.surface.*
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
@@ -178,6 +179,7 @@ object QuestModule
         AddGeneralFee(o),
         AddSelfServiceLaundry(o),
         AddHandrail(o, r), // for accessibility of pedestrian routing
+        AddStepsIncline(o),
         AddInformationToTourism(o),
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
