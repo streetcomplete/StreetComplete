@@ -43,6 +43,7 @@ import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggesti
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
+import de.westnordost.streetcomplete.quests.memorial_type.AddMemorialType
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
@@ -194,7 +195,8 @@ object QuestModule
         AddCarWashType(o),
         AddBenchStatusOnBusStop(o, r),
         AddBenchBackrest(o),
-        AddTrafficSignalsButton(o)
+        AddTrafficSignalsButton(o),
+        AddMemorialType(o)
     ))
 
     @Provides @Singleton fun osmNoteQuestType(): OsmNoteQuestType = OsmNoteQuestType()
