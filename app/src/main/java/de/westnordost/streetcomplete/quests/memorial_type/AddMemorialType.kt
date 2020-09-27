@@ -7,7 +7,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometry
 
 class AddMemorialType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
-    override val tagFilters = "nodes, ways, relations with historic=memorial and (!memorial or memorial=yes)"
+    override val tagFilters = """
+        nodes, ways, relations with 
+          historic=memorial
+          and (!memorial or memorial=yes)
+          and !memorial:type
+    """
     override val commitMessage = "Add memorial type"
     override val wikiLink = "Key:memorial"
     override val icon = R.drawable.ic_quest_memorial_type
