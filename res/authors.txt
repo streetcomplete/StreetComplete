@@ -397,6 +397,11 @@ steps incline graphics/
     up_reversed.svg
     unknown.svg
 
+traffic lights blind features graphics/
+    arrow.svg
+    sound.svg
+    vibration.svg
+
 tutorial graphics/
     checkmark_circle.svg
     logo_osm_magnifier.svg              modified from https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
