@@ -15,7 +15,7 @@ class AddMemorialType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestTyp
     """
     override val commitMessage = "Add memorial type"
     override val wikiLink = "Key:memorial"
-    override val icon = R.drawable.ic_quest_memorial_type
+    override val icon = R.drawable.ic_quest_memorial
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_memorialType_title
 
