@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/quest_traffic_signals_blind_description" />
+
+    <CheckBox
+        android:id="@+id/soundSignalsCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_blind_sound"
+        android:drawablePadding="4dp"
+        app:drawableTint="@color/text"
+        android:text="@string/quest_traffic_signals_blind_sound_signal" />
+
+    <CheckBox
+        android:id="@+id/vibrateCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_blind_vibration"
+        android:drawablePadding="4dp"
+        app:drawableTint="@color/text"
+        android:text="@string/quest_traffic_signals_blind_vibrate" />
+
+    <CheckBox
+        android:id="@+id/arrowCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_blind_arrow"
+        android:drawablePadding="4dp"
+        app:drawableTint="@color/text"
+        android:text="@string/quest_traffic_signals_blind_arrow" />
+
+    <CheckBox
+        android:id="@+id/noneCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_traffic_signals_blind_none" />
+</LinearLayout>

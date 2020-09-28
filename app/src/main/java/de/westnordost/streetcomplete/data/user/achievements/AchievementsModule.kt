@@ -17,6 +17,7 @@ object AchievementsModule {
         "AddWheelChairAccessPublicTransport" to "AddWheelchairAccessPublicTransport",
         "AddWheelChairAccessToilets"         to "AddWheelchairAccessToilets",
         "AddSidewalks"                       to "AddSidewalk",
+        "AddTrafficSignalsSound"             to "AddTrafficSignalsBlindFeatures",
         "AddSuspectedOneway"                 to "AddOneway"
     )
 
@@ -457,9 +458,7 @@ object AchievementsModule {
                     "AddSidewalk",
                     "AddBusStopName",
                     "AddBusStopShelter",
-                    "AddBenchStatusOnBusStop",
-                    "AddStepsIncline",
-                    "AddStepCount"
+                    "AddBenchStatusOnBusStop"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
