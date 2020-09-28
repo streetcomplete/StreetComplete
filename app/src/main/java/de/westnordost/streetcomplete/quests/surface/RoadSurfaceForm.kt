@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.view.Item
 class RoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfaceAnswer>() {
 
     override val items: List<Item<String>> get() =
-        //if (osmElement!!.tags["surface"] == "paved")
+        //if (osmElement!!.tags["surface"] == "paved") - TODO: reimplement or remove
         (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES).toItems() +
         Item("paved", R.drawable.surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
         Item("unpaved", R.drawable.surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf()) +
