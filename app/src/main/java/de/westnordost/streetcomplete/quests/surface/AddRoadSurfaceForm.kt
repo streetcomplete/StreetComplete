@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.Item
 
-class RoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfaceAnswer>() {
+class AddRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfaceAnswer>() {
 
     override val items: List<Item<String>> get() =
         //if (osmElement!!.tags["surface"] == "paved") - TODO: reimplement or remove

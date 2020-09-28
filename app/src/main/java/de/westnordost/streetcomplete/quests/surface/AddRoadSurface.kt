@@ -46,7 +46,7 @@ class AddRoadSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
         }
     }
 
-    override fun createForm() = RoadSurfaceForm()
+    override fun createForm() = AddRoadSurfaceForm()
 
     override fun applyAnswerTo(answer: DetailSurfaceAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
