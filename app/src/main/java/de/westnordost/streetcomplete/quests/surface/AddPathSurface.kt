@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometry
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddPathSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+    : SimpleOverpassQuestType<DetailSurfaceAnswer>(o) {
 
     override val tagFilters = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
@@ -39,7 +39,16 @@ class AddPathSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("surface", answer)
+    override fun applyAnswerTo(answer: DetailSurfaceAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is SurfaceAnswer -> {
+                changes.updateWithCheckDate("surface", answer.value)
+                changes.deleteIfExists("source:surface")
+            }
+            is DetailingWhyOnlyGeneric -> {
+                changes.addOrModify("surface", answer.value)
+                changes.add("surface:note", answer.note)
+            }
+        }
     }
 }
