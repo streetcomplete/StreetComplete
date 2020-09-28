@@ -17,6 +17,7 @@ class AddBenchStatusOnBusStop(o: OverpassMapDataAndGeometryApi, r: ResurveyInter
           (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
+        and (shelter != no or covered != no)
         and (!bench or bench older today -${r * 4} years)
     """
 
