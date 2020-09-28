@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
@@ -51,7 +52,7 @@ class AddRoadSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
     override fun applyAnswerTo(answer: DetailSurfaceAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is SurfaceAnswer -> {
-                changes.addOrModify("surface", answer.value)
+                changes.updateWithCheckDate("surface", answer.value)
                 changes.deleteIfExists("source:surface")
             }
             is DetailingWhyOnlyGeneric -> {
