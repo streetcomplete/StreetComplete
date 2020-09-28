@@ -2338,6 +2338,27 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="at_conscription_number">"District- of conscriptiegetal %s:"</string>
     <string name="at_housenumber">"huisnummer %s:"</string>
     <string name="quest_openingHours_name_type_title">"Wat zijn de openingstijden van %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Zijn de openingstijden voor %s nog steeds correct?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Zijn de openingstijden voor %1$s (%2$s) nog steeds correct?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Zijn deze openingstijden nog steeds correct (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Voeg sluitingsdagen toe"</string>
+    <string name="quest_openingHours_off_day">"Sluitingsdag"</string>
+    <string name="quest_openingHours_unspecified_range">"Niiet gespecificeerd"</string>
+    <string name="quest_cycleway_resurvey_title">"Is dit fietspad nog steeds hier?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Is %1$s (%2$s) toegankelijk voor rolstoelen?"</string>
+    <string name="pref_title_resurvey_intervals">"Heronderzoek interval"</string>
+    <string name="resurvey_intervals_less_often">"Vraag minder vaak"</string>
+    <string name="resurvey_intervals_default">"Standaard"</string>
+    <string name="resurvey_intervals_more_often">"Vraag vaker"</string>
+    <string name="quest_street_side_puzzle_select">"Klik om te selecteren"</string>
     <string name="quest_accepts_cash_type_title">"Accepteert %1$s (%2$s) contant geld als betaling?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Heeft deze halte %s een bank"</string>
+    <string name="quest_busStopBench_tram_title">"Heeft deze halte een bank"</string>
+    <string name="quest_busStopBench_title">"Heeft deze bushalte een bank?"</string>
+    <string name="quest_busStopBench_name_title">"Heeft deze bushalte %s een bank"</string>
+    <string name="quest_summit_register_title">"Is er een topboek op %s?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Is er een defibrilator (AED) in dit gebouw?"</string>
+    <string name="dialog_tutorial_download">"Als automatische synchronisatie is uitgeschakeld, worden vragen niet automatisch gedownload. Om dit handmatig te doen, gebruik je de \"%s\" knop in het menu op de locatie die je wilt downloaden"</string>
+    <string name="about_title_translate">"Help deze App te vertalen"</string>
+    <string name="about_description_translate">"%1$s is vertaald %2$d%%"</string>
 </resources>

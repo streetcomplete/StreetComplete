@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 35.346 0 64 28.654 64 64" fill="#529add" stroke-width=".2"/>
+ <g transform="translate(717 148)" stroke="#000" stroke-opacity=".2">
+  <path d="m-677.01-27.997v-16h24v-16h24v-16h24" fill="none" stroke-width="8"/>
+  <g transform="matrix(.17576 0 0 -.17576 -726.01 -41.002)" fill="#fff" stroke-width="37.486" style="paint-order:stroke fill markers">
+   <g transform="translate(141.01 -18.476)" stroke-opacity=".2">
+    <path d="m194.76 126.55c36.952 73.903 17.047 115.38 40.211 170.02 58.632-44.33 97.712 4.083 84.859-101.74" fill="none" stroke="#000" stroke-linecap="round" stroke-opacity=".2" stroke-width="45.517"/>
+    <path d="m234.97 395.67c-8.121-30.793-2.0045-72.048 3.7364-102.84" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="45.517"/>
+    <path d="m156.45 311.31c-0.38542 43.088 31.247 65.344 78.522 84.365 33.884-28.962 62.717-86.32 107.62-18.782" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".2" stroke-width="45.517"/>
+    <path transform="scale(1,-1)" d="m301.12-483.5a48.632 48.632 0 0 1-48.632 48.632 48.632 48.632 0 0 1-48.632-48.632 48.632 48.632 0 0 1 48.632-48.632 48.632 48.632 0 0 1 48.632 48.632" fill="#000" fill-opacity=".2" stroke="none" style="paint-order:normal"/>
+   </g>
+  </g>
+ </g>
+ <g transform="translate(717 144)">
+  <path d="m-677.01-27.997v-16h24v-16h24v-16h24" fill="none" stroke="#fff" stroke-width="8"/>
+  <g transform="matrix(.17576 0 0 -.17576 -726.01 -41.002)" fill="#fff" style="paint-order:stroke fill markers">
+   <g transform="translate(141.01 -18.476)">
+    <path d="m194.76 126.55c36.952 73.903 17.047 115.38 40.211 170.02 58.632-44.33 97.712 4.083 84.859-101.74" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="45.517"/>
+    <path d="m234.97 395.67c-8.121-30.793-2.0045-72.048 3.7364-102.84" fill="none" stroke="#fff" stroke-width="45.517"/>
+    <path d="m156.45 311.31c-0.38542 43.088 31.247 65.344 78.522 84.365 33.884-28.962 62.717-86.32 107.62-18.782" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="45.517"/>
+    <path transform="scale(1,-1)" d="m301.12-483.5a48.632 48.632 0 0 1-48.632 48.632 48.632 48.632 0 0 1-48.632-48.632 48.632 48.632 0 0 1 48.632-48.632 48.632 48.632 0 0 1 48.632 48.632" fill="#fff" style="paint-order:normal"/>
+   </g>
+  </g>
+ </g>
+</svg>

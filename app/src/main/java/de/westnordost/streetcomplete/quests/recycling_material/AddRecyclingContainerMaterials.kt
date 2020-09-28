@@ -22,7 +22,7 @@ class AddRecyclingContainerMaterials(
 
     override val commitMessage = "Add recycled materials to container"
     override val wikiLink = "Key:recycling"
-    override val icon = R.drawable.ic_quest_recycling_materials
+    override val icon = R.drawable.ic_quest_recycling_container
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         return overpassApi.query(getOverpassQuery(bbox), handler)

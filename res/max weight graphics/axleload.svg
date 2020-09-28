@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(0 -1090.5)">
+  <rect x="2" y="1101.5" width="10" height="20" style="paint-order:normal"/>
+  <rect x="52" y="1101.5" width="10" height="20" style="paint-order:normal"/>
+  <rect x="12" y="1108.5" width="40" height="6" style="paint-order:normal"/>
+  <ellipse cx="32" cy="1111.5" rx="7" ry="7" style="paint-order:normal"/>
+  <path d="m22 1091.5h20l-10 10z"/>
+ </g>
+</svg>

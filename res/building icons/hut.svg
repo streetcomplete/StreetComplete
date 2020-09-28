@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m28 120h72v-44h-72z" fill="#deb486"/>
+ <path d="m20 76c1e-6 -16 44-44 44-44 0 3.8e-5 44 28 44 44z" fill="#95685e"/>
+ <rect x="68" y="84" width="20" height="36" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="40" y="88" width="16" height="16" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="40" y="84" width="16" height="4" fill="#c08268" style="paint-order:stroke markers fill"/>
+</svg>

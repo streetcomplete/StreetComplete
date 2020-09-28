@@ -2344,6 +2344,27 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="at_conscription_number">"Número de «conscripción» %s:"</string>
     <string name="at_housenumber">"número de casa %s:"</string>
     <string name="quest_openingHours_name_type_title">"¿Cuáles son los horarios de apertura de %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"¿Siguen siendo correctos estos horarios de apertura de %s?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"¿Siguen siendo correctos estos horarios de apertura de %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"¿Siguen siendo correctos estos horarios de apertura (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Agregar días"</string>
+    <string name="quest_openingHours_off_day">"Día libre"</string>
+    <string name="quest_openingHours_unspecified_range">"No especificado"</string>
+    <string name="quest_cycleway_resurvey_title">"¿Sigue siendo esta la situación de la ciclovía?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"¿Puedes acceder a %1$s (%2$s) en silla de ruedas?"</string>
+    <string name="pref_title_resurvey_intervals">"Intervalos de nueva encuesta"</string>
+    <string name="resurvey_intervals_less_often">"Preguntar con menos frecuencia"</string>
+    <string name="resurvey_intervals_default">"Por defecto"</string>
+    <string name="resurvey_intervals_more_often">"Preguntar con más frecuencia"</string>
+    <string name="quest_street_side_puzzle_select">"Toca para seleccionar"</string>
     <string name="quest_accepts_cash_type_title">"¿%1$s (%2$s) acepta pagos en efectivo?"</string>
+    <string name="quest_busStopBench_tram_name_title">"¿La parada del tranvía %s tiene un banco?"</string>
+    <string name="quest_busStopBench_tram_title">"¿Esta parada de tranvía tiene banco?"</string>
+    <string name="quest_busStopBench_title">"¿Esta parada de autobús tiene banco?"</string>
+    <string name="quest_busStopBench_name_title">"¿La parada de autobús %s tiene banco?"</string>
+    <string name="quest_summit_register_title">"¿Hay un comprobante de cumbres en %s?"</string>
+    <string name="quest_is_defibrillator_inside_title">"¿Este desfibrilador (AED) está dentro de un edificio?"</string>
+    <string name="dialog_tutorial_download">"Con la sincronización automática desactivada, las misiones no se descargan automáticamente. Para hacer esto manualmente, use el botón \"%s\" del menú en la ubicación en la que desea realizar la descarga."</string>
+    <string name="about_title_translate">"Ayuda a traducir esta app"</string>
+    <string name="about_description_translate">"%1$s tiene traducido el  %2$d%%"</string>
 </resources>

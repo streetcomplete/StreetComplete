@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Outline
+import android.graphics.Paint
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.AttributeSet
@@ -29,6 +30,10 @@ class PointerPinView @JvmOverloads constructor(
 
     private val pointerPin: Drawable = context.resources.getDrawable(R.drawable.quest_pin_pointer)
     private var pointerPinBitmap: Bitmap? = null
+    private val antiAliasPaint: Paint = Paint().apply {
+        isAntiAlias = true
+        isFilterBitmap = true
+    }
 
     /** rotation of the pin in degrees. Similar to rotation, only that the pointy end of the pin
      *  is always located at the edge of the view */
@@ -111,7 +116,7 @@ class PointerPinView @JvmOverloads constructor(
         val r = pinRotation
 
         c.withRotation(r, width/2f, height/2f) {
-            pointerPinBitmap?.let { canvas.drawBitmap(it, 0f, 0f, null) }
+            pointerPinBitmap?.let { canvas.drawBitmap(it, 0f, 0f, antiAliasPaint) }
         }
 
         val icon = pinIconDrawable

@@ -24,7 +24,7 @@ class AddHandrail(overpassApi: OverpassMapDataAndGeometryApi, r: ResurveyInterva
 
     override val commitMessage = "Add whether steps have a handrail"
     override val wikiLink = "Key:handrail"
-    override val icon = R.drawable.ic_quest_handrail
+    override val icon = R.drawable.ic_quest_steps_handrail
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_handrail_title
 

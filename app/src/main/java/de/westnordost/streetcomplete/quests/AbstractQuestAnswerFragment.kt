@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -185,19 +186,22 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
         answers.add(cantSay)
 
-        val way = osmElement as? Way
-        if (way != null) {
-            /* splitting up a closed roundabout can be very complex if it is part of a route
+        val isSplitWayEnabled = (questType as? OsmElementQuestType)?.isSplitWayEnabled == true
+        if (isSplitWayEnabled) {
+            val way = osmElement as? Way
+            if (way != null) {
+                /* splitting up a closed roundabout can be very complex if it is part of a route
                relation, so it is not supported
                https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
             */
-            val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
+                val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
                     way.tags?.get("junction") == "roundabout"
-            if (!isClosedRoundabout && !way.isArea()) {
-                val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
-                    onClickSplitWayAnswer()
+                if (!isClosedRoundabout && !way.isArea()) {
+                    val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
+                        onClickSplitWayAnswer()
+                    }
+                    answers.add(splitWay)
                 }
-                answers.add(splitWay)
             }
         }
         answers.addAll(otherAnswers)

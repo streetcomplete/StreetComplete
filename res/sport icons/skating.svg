@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+ <ellipse cx="15.083" cy="78.131" rx="7.6933" ry="7.5136" fill="#2e2e38" stroke="#8090a8" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="5" style="paint-order:normal"/>
+ <ellipse cx="37.015" cy="78.468" rx="7.6933" ry="7.5136" fill="#2e2e38" stroke="#8090a8" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="5" style="paint-order:normal"/>
+ <ellipse cx="59.233" cy="78.524" rx="7.6933" ry="7.5136" fill="#2e2e38" stroke="#8090a8" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="5" style="paint-order:normal"/>
+ <ellipse cx="81.165" cy="78.524" rx="7.6933" ry="7.5136" fill="#2e2e38" stroke="#8090a8" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="5" style="paint-order:normal"/>
+ <path d="m16.064 80 64.277-0.11754 2.7912-3.4136-15.132-11.72-5.568-1.89e-4 -4.3928 7.6605-20.098-0.030237-4.4534-7.3499-6.3358-0.10356-13.856 11.787z" fill="#2e2e38" fill-rule="evenodd"/>
+ <path d="m84.686 59.855c-0.31956 2.2616-2.6258 5.7492-7.2215 6.8781-22.082-1.2527-66.95 6.3502-65.215-13.797 1.9384-22.513 3.3471-25.074 5.5353-40.891l15.669 1.6745c3.4362-6.5958 16.939-10.26 15.669 1.3236l-0.95152 24.191c10.507 4.6189 18.764 2.108 29.44 9.3961 3.6128 2.8865 7.3941 8.9638 7.0745 11.225z" fill="#9eb3f1" fill-rule="evenodd"/>
+ <circle cx="15.062" cy="78.125" r="2.875" fill="#c0c0c0" style="paint-order:normal"/>
+ <circle cx="37" cy="78.375" r="2.875" fill="#c0c0c0" style="paint-order:normal"/>
+ <circle cx="59.25" cy="78.375" r="2.875" fill="#c0c0c0" style="paint-order:normal"/>
+ <circle cx="81.307" cy="78.567" r="2.875" fill="#c0c0c0" style="paint-order:normal"/>
+ <path d="m50.75 40.75c8.5152 1.2347 17.324 2.1758 23.36 5.8902-1.8907 4.0444-16.729 0.61697-25.36 0.98483z" fill="#bdcbf6" fill-rule="evenodd"/>
+ <path d="m41.169 55.653 7.1192-16.906c3.0247 0.29178 3.4263 0.9905 5.7443 2.4599l-6.5774 15.892z" fill="#696db1" fill-rule="evenodd"/>
+ <path d="m48.241 18.378c-10.605-0.93188-27.895-5.4446-30.888-2.6857-3.164 3.9638-2.6178 16.189-3.7285 24.683 2.981 8.8308 18.767 14.069 18.457 4.4127-0.45632-14.218 4.5917-14.762 16.323-10.902 0.41667-7.2613 2.6562-15.126-0.1643-15.508z" fill="#bdcbf6" fill-rule="evenodd"/>
+ <path d="m50.61 21.918-23.351-2.3051-0.83065 7.3015 22.703 2.0696c1.727-2.8286 1.6987-4.5418 1.4785-7.0659z" fill="#696db1" fill-rule="evenodd"/>
+ <circle cx="26.816" cy="44.552" r="3.6681" fill="#696db1" style="paint-order:normal"/>
+ <path d="m59.03 42.28-1.6794 5.3033" fill="none" stroke="#696db1" stroke-linecap="round" stroke-width="3"/>
+ <path d="m66.237 43.579-1.4249 4.4775" fill="none" stroke="#696db1" stroke-linecap="round" stroke-width="3"/>
+ <path d="m12 55.75c3.9854 2.6462 5.1797 6.0412 18.25 6.25l44 0.49999c6.0122 0.40554 7.3231-1.6633 10.5-2.75-0.85702 5.3879-3.9764 8.0286-9.5 7.75l-45.75-0.48484c-10.5-0.63326-16.428-4.5038-17.5-11.265z" fill="#6d6d85" fill-rule="evenodd"/>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(1.1254 .30154 -.30154 1.1254 -102.96 -1295.6)">
+  <path transform="translate(0 738.52)" d="m396 318v30c0.14504 4.9302 10.979 8.8987 24.084 8.9004 13.104-3e-3 23.771-4.1329 23.916-9.0625 7e-3 -0.0583-2e-3 0.035 0 0v-29.838z" fill="#b45a5a" style="paint-order:normal"/>
+  <path d="m388.59 1057.9c-4.9434 6.5507-4.2946 9.6605-0.60243 15.895l10.837 0.076c1.8952-2.7077 1.0176-4.5583 0.0402-6.3728l-7.1962-0.045c-1.1178-1.384-0.46108-2.2841 0.21218-3.1797h4.2075v-6.373z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#494949" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  <path d="m444.02 1058.1v6.3729h4.52c0.42757 0.6667 0.88453 1.3114 0.0136 2.9519l-7.1962 0.045c-1.4732 1.8531-1.8208 3.9115 0.0402 6.3728l11.014-0.1644c3.7679-6.1857 2.7341-10.546-0.71639-15.668z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#494949" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  <ellipse cx="419.99" cy="1056.5" rx="23.995" ry="9" fill="#5a5a5a" stroke="#8a8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="paint-order:normal"/>
+ </g>
+ <g transform="matrix(.42516 1.5867 -1.5867 .42516 1538.4 -989.13)">
+  <path d="m384 1032.5v18c4.0416 3.9023 8.0401 3.6381 12 0v-18z" fill="#787878"/>
+  <path d="m383.53 1049.6c4.3658 2.9086 9.8301 1.8443 13.305-2.7498" fill="none" stroke="#979797" stroke-width="2"/>
+  <path d="m383.45 1045.1c4.3658 2.9086 9.8926 1.2506 13.367-3.3435" fill="none" stroke="#979797" stroke-width="2"/>
+  <path d="m383.31 1040.5c4.3658 2.9086 9.8301 1.1256 13.305-3.4685" fill="none" stroke="#979797" stroke-width="2"/>
+  <path d="m384 1020.5h12l6 6-6 6h-12l-6-6z" fill="#979797"/>
+  <path d="m378 1032.5v-6l6 6v6z" fill="#b0b0b0"/>
+  <path d="m384 1032.5h12v6h-12z" fill="#8a8a8a"/>
+  <path d="m402 1026.5v6l-6 6v-6z" fill="#6b6b6b"/>
+ </g>
+</svg>

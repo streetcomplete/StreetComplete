@@ -697,8 +697,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Zobacz pełną listę w &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projekcie na POEditor&lt;/a&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"Tłumaczenia"</string>
 
     <!-- Fuzzy -->
@@ -1621,10 +1619,11 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_noteDiscussion_hide2">"ukryte przez %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"W jaki sposób jest chronione to przejście kolejowe?"</string>
+    <string name="quest_railway_crossing_barrier_title">"Jakie zapory ma ten przejazd kolejowy?"</string>
 
+    <!-- Zamiast "To nie jest", powinno być "Nie jest" -->
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"To nie jest"</string>
+    <string name="quest_railway_crossing_barrier_none">"Nie ma"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Załączone do notatki zdjęcia są przesyłane na mój serwer i usuwane kilka dni po zakończeniu. Ich meta-dane są usuwane przed przesłaniem.&lt;/p&gt;"</string>
@@ -2363,4 +2362,6 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="quest_summit_register_title">"Czy szczyt %s ma księgę gości?"</string>
     <string name="quest_is_defibrillator_inside_title">"Czy ten defibrylator (AED) jest wewnątrz budynku?"</string>
     <string name="dialog_tutorial_download">"Z wyłączoną autosynchronizacją zadania nie są automatycznie pobrane. By to zrobić przesuń mapę do interesującej cię lokalizacji i użyj przycisku \"%s\" w menu."</string>
+    <string name="about_title_translate">"Pomóż tłumaczyć aplikację."</string>
+    <string name="about_description_translate">"%1$s jest przetłumaczony w %2$d%%"</string>
 </resources>

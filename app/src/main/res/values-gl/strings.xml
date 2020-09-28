@@ -1814,10 +1814,10 @@ Dividila agora?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"É o baño de %s accesíbel para cadeiras de rodas?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_tram">"Esta parada do tranvía ten pavemento táctil?"</string>
+    <string name="quest_tactilePaving_title_tram">"Esta paraxe do tranvía ten pavemento táctil?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_tram">"A parada do tranvía %s ten pavemento táctil?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"A paraxe do tranvía %s ten pavemento táctil?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Cal é o límite de peso aquí?"</string>
@@ -2361,4 +2361,13 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="resurvey_intervals_more_often">"Preguntar máis veces"</string>
     <string name="quest_street_side_puzzle_select">"Premer para seleccionar"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) acepta pagamentos en efectivo?"</string>
+    <string name="quest_busStopBench_tram_name_title">"A paraxe do tranvía %s ten un asento?"</string>
+    <string name="quest_busStopBench_tram_title">"Esta paraxe do tranvía ten asento?"</string>
+    <string name="quest_busStopBench_title">"Esta paraxe do bus ten asento?"</string>
+    <string name="quest_busStopBench_name_title">"A paraxe do bus %s ten asento? "</string>
+    <string name="quest_summit_register_title">"Hai un rexisto de conferencias en %s?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro dun edificio?"</string>
+    <string name="dialog_tutorial_download">"Coa sincronización automática desactivada, as tarefas non se baixarán de xeito automático. Para facer isto de xeito manual, usa o botón \"%s\" do menú no lugar que desexas baixar."</string>
+    <string name="about_title_translate">"Axuda a traducir esta app"</string>
+    <string name="about_description_translate">"%1$s está traducido %2$d%%"</string>
 </resources>

@@ -429,7 +429,7 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
     <string name="dialog_session_dont_show_again">"Älä enää näytä tälle istunnolle."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Mikä pintamateriaali tässä %s tiessä on?"</string>
+    <string name="quest_streetSurface_name_title">"Mikä päällyste tässä %s tiessä on?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Tämä nopeusrajoitus vaikuttaa epätodennäköiseltä."</string>
@@ -1711,6 +1711,7 @@ Jaetaanko nyt?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ei tunnistenumeroa näkyvillä..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Kuvassa olevaa tie näytetään saman suuntaisesti, kuin karttakin oli."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Mitä tänne voi jättää kierrätykseen?"</string>
@@ -2157,8 +2158,34 @@ päiviä"</string>
     <string name="quest_address_street_description">"Napauta kartalla tietä, jolle se kuuluu tai kirjoitta ilman lyhenteitä alla olevaan kenttään:"</string>
     <string name="quest_recycling_type_cooking_oil">"Keittoöljy"</string>
     <string name="quest_recycling_type_engine_oil">"Moottoriöljy"</string>
+    <string name="link_photon_description">"Erillinen lisäosa nimihakuun, sisältäen haun kirjoittaessa sumean haun periaatteella"</string>
+    <string name="link_graphhopper_description">"Joustava reititysmoottori"</string>
+    <string name="link_qwant_maps_description">"Kartta haettavilla paikoilla ja reitityksillä"</string>
+    <string name="about_title_sponsors">"Tukijat"</string>
+    <string name="quest_board_type_history">"Historia"</string>
+    <string name="quest_board_type_geology">"Geologia"</string>
+    <string name="quest_board_type_plants">"Kasvit"</string>
+    <string name="quest_board_type_nature">"Luonto (useita aiheita)"</string>
+    <string name="quest_board_type_notice_board">"Se on ilmoitustaulu"</string>
+    <string name="quest_board_type_public_transport">"Julkinen liikenne"</string>
+    <string name="quest_board_type_title">"Mikä on tämän ilmoitustaulun aihe?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Kyllä, näytetään erikseen kartalla."</string>
+    <string name="quest_board_type_map">"Se on kartta"</string>
+    <string name="quest_board_type_map_title">"Onko se vain ja ainoastaan kartta?"</string>
+    <string name="quest_board_type_map_description">"Jos taululla on joku tietty aihe, niin tarkenna sitä huolimatta siitä sisältyykö tieto myös kartalle. Esimerkiksi julkisen liikenteen infossa voi olla mukana myös kartta. Jos taulun aihetta ei ole listattu, niin jätä huomautus valinnan sijasta."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Useita pintoja.."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Oletko varma, ettei pintaa pysty määrittelemään tarkemmin? Huomioi, että \"eroaa pitkin matkaa\" mahdollistaa tien katkaiseminen sieltä, missä pinta vaihtuu. Paina \"en osaa sanoa\", jos kyseessä on yksi pintamateriaali, mutta vaihtoehtoa ei ole valittavissa."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Määritä tässä lyhyesti pintamateriaali, esimerkiksi \"hiekkainen sisältäen mukulakiviä\".  Tekstin pituus on rajoitettu 255 merkkiin."</string>
+    <string name="quest_surface_detailed_name_title">"Mikä pinta tällä tiellä %s on tarkemmin?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Mikä päällyste tarkemmin ottaen tällä aukealla %s on?"</string>
+    <string name="quest_surface_detailed_title">"Mikä päällyste tarkemmin ottaen tällä tiellä on?"</string>
+    <string name="quest_surface_detailed_square_title">"Mikä päällyste tarkemmin ottaen tällä aukealla on? "</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"kansainvälinen"</string>
+    <string name="quest_streetName_menuItem_romanized">"Latinalaisin aakosin"</string>
+    <string name="quest_buildingType_terrace2">"Rivitaloja"</string>
+    <string name="quest_oneway_tutorial">"Kuvassa olevaa tietä kierretään samalla tavalla kuin kartalla on sijainnissa.  Huomaa ilmoitettu suunta."</string>
     <string name="at_housename">"Talon nimi %s:"</string>
     <string name="at_conscription_and_street_number">"Rekisterinumero %1$s, suuntausnumero %2$s:"</string>
 
@@ -2166,6 +2193,26 @@ päiviä"</string>
     <string name="at_conscription_number">"Rekisterinumero %s:"</string>
     <string name="at_housenumber">"talon numero %s:"</string>
     <string name="quest_openingHours_name_type_title">"Mitkä ovat paikan %1$s (%2$s) aukioloajat?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Onko nämä aukioloajat %s yhä voimassa?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Onko nämä aukioloajat %1$s (%2$s) yhä voimassa?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Onko nämä aukioloajat yhä voimassa (%s)? "</string>
+    <string name="quest_openingHours_add_off_days">"Lisää kiinniolo päivät"</string>
+    <string name="quest_openingHours_off_day">"Suljettu päivä"</string>
+    <string name="quest_openingHours_unspecified_range">"Ei määritelty"</string>
+    <string name="quest_cycleway_resurvey_title">"Onko täällä edelleen Kiertotie?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Onko %1$s (%2$s) rullatuolille sopiva?"</string>
+    <string name="pref_title_resurvey_intervals">"Uudelleen kyselyn tiheys"</string>
+    <string name="resurvey_intervals_less_often">"Kysy harvemmin"</string>
+    <string name="resurvey_intervals_default">"Oletus"</string>
+    <string name="resurvey_intervals_more_often">"Kysy useammin"</string>
+    <string name="quest_street_side_puzzle_select">"Napauta valitaksesi"</string>
     <string name="quest_accepts_cash_type_title">"Hyväksyykö %1$s (%2$s) käteismaksun?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Onko raitiovaunupysäkillä %s penkki"</string>
+    <string name="quest_busStopBench_tram_title">"Onko raitiovaunupysäkillä penkki?"</string>
+    <string name="quest_busStopBench_title">"Onko bussipysäkillä penkki?"</string>
+    <string name="quest_busStopBench_name_title">"Onko bussipysäkillä %s penkki?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Onko tämä defibrillaattori rakennuksen sisällä?"</string>
+    <string name="dialog_tutorial_download">"Kun automaattinen synkronointi ei ole käytössä, tehtäviä ei ladata automaattisesti. Voit tehdä tämän manuaalisesti käyttämällä \"%s\" -painiketta paikassa, jonka haluat ladata."</string>
+    <string name="about_title_translate">"Auta kääntämään tämä sovellus"</string>
+    <string name="about_description_translate">"%1$s on kääntänyt %2$d%%"</string>
 </resources>

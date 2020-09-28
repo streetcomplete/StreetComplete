@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient5750" x1="27.781" x2="19.844" y1="297" y2="304.94" gradientTransform="matrix(5.178 0 0 5.178 -109.1 -1510)" gradientUnits="userSpaceOnUse" spreadMethod="reflect" xlink:href="#across_round"/>
+  <linearGradient id="across_round">
+   <stop stop-color="#ffcdcd" offset="0"/>
+   <stop stop-color="#e44848" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient5758" x1="26.458" x2="34.396" y1="298.32" y2="295.68" gradientTransform="matrix(5.178 0 0 5.178 -109.1 -1510)" gradientUnits="userSpaceOnUse" xlink:href="#across_round"/>
+ </defs>
+ <g fill-rule="evenodd" stroke-linejoin="bevel">
+  <path d="m7.35 42.97 23.29 23.29v27.4l-23.29-23.29z" fill="#f2eeee" stroke="#916f6f" stroke-linecap="square"/>
+  <path d="m88.18 47.08v27.4l-57.54 19.18v-27.4c-0.89376-11.74 12.53-23.662 28.77-35.62 18.065 1.9035 29.577 6.5727 28.77 16.44z" fill="#e0d8d8" stroke="#916f6f" stroke-linecap="square"/>
+  <path d="m4.61 44.34c2.74-16.44 31.51-36.99 31.51-36.99l24.66 24.66c1.1e-5 -5.2e-5 -28.77 20.55-31.51 36.99z" fill="url(#linearGradient5750)" stroke="#a00" stroke-linecap="square"/>
+  <path d="m62.15 15.57 26.03 26.03c-6.85-6.85-20.55-9.59-27.4-9.59l-24.66-24.66c5.48 0 19.18 1.37 26.03 8.22z" fill="url(#linearGradient5758)" stroke="#a00"/>
+ </g>
+</svg>

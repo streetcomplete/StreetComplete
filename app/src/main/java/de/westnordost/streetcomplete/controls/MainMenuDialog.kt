@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.doOnPreDraw
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.settings.AboutActivity
+import de.westnordost.streetcomplete.about.AboutActivity
 import de.westnordost.streetcomplete.settings.SettingsActivity
 import de.westnordost.streetcomplete.user.UserActivity
 import kotlinx.android.synthetic.main.dialog_main_menu.view.*

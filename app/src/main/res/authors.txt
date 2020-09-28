@@ -1,115 +1,111 @@
 File                           License / Source (if not given, follow link for license info)
 ===============================================================================
 
-bridge_structure_arch.jpg      Public Domain     https://commons.wikimedia.org/wiki/File:Wash_Br_Harlem_water_jeh.JPG
-bridge_structure_tied_arch.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Kovvur_rajamahendravaram_rail_bridge_002.jpg
-bridge_structure_cablestaye... CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Anzac_Bridge_5.jpg
-bridge_structure_truss.jpg     Public Domain     https://commons.wikimedia.org/wiki/File:Columbus_Loup_River_Bridge_from_NW_1.JPG
-bridge_structure_suspension... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2012_Ben_Franklin_Bridge_and_Race_Street_Pier.jpg
-bridge_structure_beam.jpg      CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Little_Bay_Bridges_02.jpg
-bridge_structure_humpback.jpg  CC-BY-SA 1.0      https://commons.wikimedia.org/wiki/File:Gaoliang_Bridge.JPG
-bridge_structure_floating.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Float_bridge.JPG
-bridge_structure_simple_sus... CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Carrick-a-Rede_Rope_Bridge_(12298726585).jpg
-
 bicycle_parking_type_buildi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bike_Storage_(YAUS).jpg
+bicycle_parking_type_locker... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bicycle_lockers_at_Gathurst_railway_station.JPG
 bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Parking_v%C3%A9los_s%C3%A9curis%C3%A9_gare_des_Martres_2015-08-20.JPG
 bicycle_parking_type_stand.jpg CC0               https://commons.wikimedia.org/wiki/File:Bicycle_parking_stand_2.jpg
 bicycle_parking_type_wheel...  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG
-bicycle_parking_type_locker... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bicycle_lockers_at_Gathurst_railway_station.JPG
+
+bridge_structure_arch.jpg      Public Domain     https://commons.wikimedia.org/wiki/File:Wash_Br_Harlem_water_jeh.JPG
+bridge_structure_beam.jpg      CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Little_Bay_Bridges_02.jpg
+bridge_structure_cablestaye... CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Anzac_Bridge_5.jpg
+bridge_structure_floating.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Float_bridge.JPG
+bridge_structure_humpback.jpg  CC-BY-SA 1.0      https://commons.wikimedia.org/wiki/File:Gaoliang_Bridge.JPG
+bridge_structure_simple_sus... CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Carrick-a-Rede_Rope_Bridge_(12298726585).jpg
+bridge_structure_suspension... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2012_Ben_Franklin_Bridge_and_Race_Street_Pier.jpg
+bridge_structure_tied_arch.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Kovvur_rajamahendravaram_rail_bridge_002.jpg
+bridge_structure_truss.jpg     Public Domain     https://commons.wikimedia.org/wiki/File:Columbus_Loup_River_Bridge_from_NW_1.JPG
 
 car_wash_automated.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Carwas.jpg
-car_wash_service.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:US_Navy_110831-N-NT881-079_Sailors_assigned_to_the_guided-missile_submarine_USS_Ohio_(SSGN_726)_and_Navy_Operational_Support_Center_Cincinnati_part.jpg
 car_wash_self_service.jpg      CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2015_K%C5%82odzko,_ul._Dusznicka,_myjnia_samochodowa_02.jpg
+car_wash_service.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:US_Navy_110831-N-NT881-079_Sailors_assigned_to_the_guided-missile_submarine_USS_Ohio_(SSGN_726)_and_Navy_Operational_Support_Center_Cincinnati_part.jpg
 
 crossing_type_signals.jpg      CC0               https://pixabay.com/en/little-green-man-traffic-lights-819851/
-crossing_type_zebra.jpg        CC-BY-SA 1.0      https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
 crossing_type_unmarked.jpg     CC0               own work by Mateusz Konieczny
+crossing_type_zebra.jpg        CC-BY-SA 1.0      https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
 
 fire_hydrant_pillar.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:W%C3%ABntreng,_Hydrant.jpg
-fire_hydrant_wall.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Guentherscheid_Tunnel_Rescue4.jpg
-fire_hydrant_underground.jpg   CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg
 fire_hydrant_pond.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Dry_hydrant.jpg
+fire_hydrant_underground.jpg   CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg
+fire_hydrant_wall.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Guentherscheid_Tunnel_Rescue4.jpg
 
 ic_link_cyclosm.xml            CC-BY-SA          by Lucas Verney
-
 ic_trophy.xml                  SIL OFL 1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
-
-recycling_centre.jpg           Public Domain     http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
-recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
-recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
 
 panorama_path_surface_paved... CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 panorama_path_surface_unpav... CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 
+panorama_surface_ground.jpg    CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
 panorama_surface_paved.jpg     CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
 panorama_surface_unpaved.jpg   CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
-panorama_surface_ground.jpg    CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
-surface_paved.jpg              CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
-surface_unpaved.jpg            CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
-surface_ground.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
 
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
 parking_type_surface.jpg       CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:Car_park2.jpg
 parking_type_underground.jpg   CC0               https://pixabay.com/de/tiefgarage-einfahrt-absch%C3%BCssig-273439/
 
-power_pole_wood.jpg            CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Two_armed_power_pole_1.jpg
-power_pole_steel.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:Steel_tube_pylon.JPG
 power_pole_concrete.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Concrete_utility_pole.jpg
+power_pole_steel.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:Steel_tube_pylon.JPG
+power_pole_wood.jpg            CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Two_armed_power_pole_1.jpg
 
+produce_agave.jpg              CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Agave_americana_R01.jpg
+produce_almond.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Madrigueras_(20578932389)_(cropped).jpg
+produce_apple.jpg              CC0               https://www.pexels.com/photo/close-up-of-fruits-hanging-on-tree-257840/
+produce_apricot.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Apricots.jpg
 produce_areca_nut.jpg          CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Betel_nut_tree.JPG
-produce_tung_nut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Vernicia_fordii5.jpg
-produce_brazil_nut.jpg         CC-BY 2.0         https://commons.wikimedia.org/wiki/File:%22Bertholetia_excelsa%22_Castanha-do-Par%C3%A1_Brazil-nuts_tree_2.jpg
-produce_chili.jpg              CC-BY-SA 3.0      https://de.wikipedia.org/wiki/Datei:Thai_peppers.jpg
-produce_bell_pepper.jpg        CC0               https://pixabay.com/de/paprika-nachtschattengew%C3%A4chs-1539491/
+produce_avocado.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Persea_americana_fruit_2.JPG
 produce_banana.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Musa-sp3.1.jpg
-produce_orange.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:OrangeBloss_wb.jpg
+produce_bell_pepper.jpg        CC0               https://pixabay.com/de/paprika-nachtschattengew%C3%A4chs-1539491/
+produce_blueberry.jpg          Public Domain     https://commons.wikimedia.org/wiki/File:PattsBlueberries.jpg
+produce_brazil_nut.jpg         CC-BY 2.0         https://commons.wikimedia.org/wiki/File:%22Bertholetia_excelsa%22_Castanha-do-Par%C3%A1_Brazil-nuts_tree_2.jpg
+produce_cacao.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG
+produce_cashew.jpg             CC-BY-SA 3.0      https://de.wikipedia.org/wiki/Datei:Cashew_apples.jpg
+produce_cherry.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2_cherries.jpg
+produce_chestnut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Chataigne.JPG
+produce_chili.jpg              CC-BY-SA 3.0      https://de.wikipedia.org/wiki/Datei:Thai_peppers.jpg
+produce_coconut.jpg            CC-BY 2.0         https://www.flickr.com/photos/3336/148713113
+produce_coffee.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bourbon_Coffee.jpg
+produce_cranberry.jpg          CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Ecomare_-_cranberry_in_de_duinen_(cranberry-duinpark-sd).jpg
+produce_date.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Dates005.jpg
+produce_fig.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Grappe_de_figues.jpg
+produce_grape.jpg              CC0               https://pixabay.com/de/weintrauben-rotwein-weinberg-1717387/
+produce_grapefruit.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Grapefruit.ebola.jpeg
+produce_guava.jpg              CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Starr_070519-7147_Psidium_guajava.jpg
+produce_hazelnut.jpg           CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:CORYLUS_AVELLANA_-_SANT_JUST_-_IB-046_(Avellaner).JPG
+produce_hop.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Hopfendolde-mit-hopfengarten.jpg
+produce_jojoba.jpg             CC-BY 2.0         https://de.wikipedia.org/wiki/Datei:Jojoba_Nut_-_Flickr_-_treegrow.jpg
+produce_kiwi.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Actinidia_chinensis4.jpg
+produce_kola_nut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Fruits_of_Cola_nitida.JPG
 produce_lemon.jpg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Limonu.jpg
 produce_lime.jpg               CC-BY 2.0         https://www.flickr.com/photos/tanaka_juuyoh/4918425731
-produce_guava.jpg              CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Starr_070519-7147_Psidium_guajava.jpg
 produce_mango.jpg              CC0               https://pixabay.com/de/mango-mangifera-indica-%C3%BCber-reif-321071/
 produce_mangosteen.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Fruit_of_Garcinia_mangostana.JPG
-produce_coconut.jpg            CC-BY 2.0         https://www.flickr.com/photos/3336/148713113
-produce_apple.jpg              CC0               https://www.pexels.com/photo/close-up-of-fruits-hanging-on-tree-257840/
-produce_grape.jpg              CC0               https://pixabay.com/de/weintrauben-rotwein-weinberg-1717387/
-produce_pineapple.jpg          CC0               https://commons.wikimedia.org/wiki/File:Ananas_jardin_Martinique.jpg
-produce_pear.jpg               Public Domain     https://commons.wikimedia.org/wiki/File:Pears.jpg
-produce_plum.jpg               CC0               https://commons.wikimedia.org/wiki/File:Pflaumen.JPG
-produce_coffee.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bourbon_Coffee.jpg
-produce_peach.jpg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Prunus_persica_-_Peach_Hungary.jpg
-produce_grapefruit.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Grapefruit.ebola.jpeg
-produce_strawberry.jpg         CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Strawberries.JPG
-produce_avocado.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Persea_americana_fruit_2.JPG
-produce_apricot.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Apricots.jpg
-produce_cherry.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2_cherries.jpg
-produce_papaya.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Papaya_BW_1.jpg
-produce_cacao.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG
-produce_walnut.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Juglans_regia_Echte_Walnussfrucht_1.jpg
-produce_palm_oil.jpg           CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Elaeis_guineensis_MS_3467.jpg
-produce_fig.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Grappe_de_figues.jpg
-produce_tea.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Camellia_sinensis_(Boltz_Conservatory).JPG
-produce_almond.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Madrigueras_(20578932389)_(cropped).jpg
-produce_raspberry.jpg          CC0               https://pixabay.com/de/obst-himbeeren-garten-2292701/
-produce_kiwi.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Actinidia_chinensis4.jpg
-produce_blueberry.jpg          Public Domain     https://commons.wikimedia.org/wiki/File:PattsBlueberries.jpg
-produce_pepper.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Piper_nigrum001.JPG
-produce_olive.jpg              CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Olea_europaea_01_by-dpc.jpg
-produce_date.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Dates005.jpg
-produce_rubber.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Latex_-_Hevea_-_Cameroun.JPG
-produce_cashew.jpg             CC-BY-SA 3.0      https://de.wikipedia.org/wiki/Datei:Cashew_apples.jpg
-produce_hop.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Hopfendolde-mit-hopfengarten.jpg
-produce_hazelnut.jpg           CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:CORYLUS_AVELLANA_-_SANT_JUST_-_IB-046_(Avellaner).JPG
-produce_chestnut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Chataigne.JPG
-produce_sisal.jpg              CC-BY 2.0         https://www.flickr.com/photos/agecombahia/5189770130
-produce_pistachio.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Pistacchio_di_Bronte.jpg
-produce_nutmeg.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Myris_fragr_Fr_080112-3290_ltn.jpg
-produce_persimmon.jpg          CC0               https://pixabay.com/de/herbst-persimone-persimmon-1994084/
-produce_vanilla.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Vanilla_pompona_01.jpg
-produce_cranberry.jpg          CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Ecomare_-_cranberry_in_de_duinen_(cranberry-duinpark-sd).jpg
-produce_agave.jpg              CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Agave_americana_R01.jpg
-produce_kola_nut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Fruits_of_Cola_nitida.JPG
 produce_mate.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Yerba_Mate.jpg
-produce_jojoba.jpg             CC-BY 2.0         https://de.wikipedia.org/wiki/Datei:Jojoba_Nut_-_Flickr_-_treegrow.jpg
+produce_nutmeg.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Myris_fragr_Fr_080112-3290_ltn.jpg
+produce_olive.jpg              CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Olea_europaea_01_by-dpc.jpg
+produce_orange.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:OrangeBloss_wb.jpg
+produce_palm_oil.jpg           CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Elaeis_guineensis_MS_3467.jpg
+produce_papaya.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Papaya_BW_1.jpg
+produce_peach.jpg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Prunus_persica_-_Peach_Hungary.jpg
+produce_pear.jpg               Public Domain     https://commons.wikimedia.org/wiki/File:Pears.jpg
+produce_pepper.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Piper_nigrum001.JPG
+produce_persimmon.jpg          CC0               https://pixabay.com/de/herbst-persimone-persimmon-1994084/
+produce_pineapple.jpg          CC0               https://commons.wikimedia.org/wiki/File:Ananas_jardin_Martinique.jpg
+produce_pistachio.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Pistacchio_di_Bronte.jpg
+produce_plum.jpg               CC0               https://commons.wikimedia.org/wiki/File:Pflaumen.JPG
+produce_raspberry.jpg          CC0               https://pixabay.com/de/obst-himbeeren-garten-2292701/
+produce_rubber.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Latex_-_Hevea_-_Cameroun.JPG
+produce_sisal.jpg              CC-BY 2.0         https://www.flickr.com/photos/agecombahia/5189770130
+produce_strawberry.jpg         CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Strawberries.JPG
+produce_tea.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Camellia_sinensis_(Boltz_Conservatory).JPG
 produce_tomato.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Solanum_lycopersicum_%27Cronos%27,_tomaat_%27Cronos%27.jpg
+produce_tung_nut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Vernicia_fordii5.jpg
+produce_vanilla.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Vanilla_pompona_01.jpg
+produce_walnut.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Juglans_regia_Echte_Walnussfrucht_1.jpg
+
+recycling_centre.jpg           Public Domain     http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
+recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
+recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
 
 sliding_envelope.wav           CC0               https://freesound.org/people/MTJohnson/sounds/444431/
 snip.wav                       CC0               https://freesound.org/people/Godowan/sounds/240473/
@@ -119,16 +115,20 @@ surface_cobblestone.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/w
 surface_compacted.jpg          CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321 (Ian Munroe)
 surface_concrete.jpg           CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-29_15_33_15_View_across_Stuyvesant_Avenue_in_Ewing,_New_Jersey,_with_concrete_pavement_likely_dating_to_the_1950s.JPG (Famartin)
 surface_dirt.jpg               CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_road_towards_the_south_and_Ndara_Borehole_in_the_Tsavo_East_National_Park,_Kenya.jpg (CT Cooper)
+surface_fine_gravel.jpg        CC0               https://commons.wikimedia.org/wiki/File:Schottertextur_20160312_1.jpg (Sebastian Rittau)
+surface_grass.jpg              CC-BY-SA 2.0      https://upload.wikimedia.org/wikipedia/commons/d/d9/Footpath_through_the_long_grass_near_Southorpe_Bottom_%28geograph_4621359%29.jpg (Richard Humphrey)
 surface_grass_paver.jpg        Public Domain     https://commons.wikimedia.org/wiki/File:Rasenpflasterstein_1.jpg (Immanuel Giel)
+surface_gravel.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Gravel_at_the_top_of_Vidova_gora,_island_of_Bra%C4%8D,_Croatia.jpg (Ante Perkovic)
+surface_ground.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
+surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
+surface_paved.jpg              CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
+surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
+surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
 surface_pebblestone.jpg        CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg (FrankM)
 surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:2013-08-21_12_04_26_View_south_towards_Barnegat_Lighthouse_along_the_sand_road_to_Barnegat_Inlet_in_Island_Beach_State_Park.jpg (Famartin )
 surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG (Øyvind Holmstad )
+surface_unpaved.jpg            CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
 surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami)
-surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
-surface_paving_stones.jpg      CC0               https://commons.wikimedia.org/wiki/File:PUB.DOM.DED.Pixa_AcerPics_Dec.'17_01-12-17_Brick_street_stones_LOW_RES_(25052487258).jpg (MabelAmber)
-surface_gravel.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Gravel_at_the_top_of_Vidova_gora,_island_of_Bra%C4%8D,_Croatia.jpg (Ante Perkovic)
-surface_fine_gravel.jpg        CC0               https://commons.wikimedia.org/wiki/File:Schottertextur_20160312_1.jpg (Sebastian Rittau)
-surface_grass.jpg              CC-BY-SA 2.0      https://upload.wikimedia.org/wikipedia/commons/d/d9/Footpath_through_the_long_grass_near_Southorpe_Bottom_%28geograph_4621359%29.jpg (Richard Humphrey)
 
 tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/
@@ -140,12 +140,12 @@ tracktype_grade3.jpg           CC0		         https://pixabay.com/en/field-away-n
 tracktype_grade4.jpg           Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
 tracktype_grade5.jpg           CC-BY-SA 4.0  	 https://commons.wikimedia.org/wiki/File:Zandpad_aan_buitenkant_van_het_gebied._Locatie,_Stuttebosch_in_de_lendevallei._Provincie_Friesland_01.jpg
 
-leaf_type_needleleaved.jpg     CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Whitebark_pine_Pinus_albicaulis_needle_clusters.jpg (Jane Richardson)
 leaf_type_broadleaved.jpg      CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Populus_tremuloides_(5002308731).jpg (Matt Lavin)
 leaf_type_mixed.jpg            CC0               https://commons.wikimedia.org/wiki/File:Needleleaved_and_broadleaved_leaves_on_one_image_20190709_181925.jpg (Mateusz Konieczny)
+leaf_type_needleleaved.jpg     CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Whitebark_pine_Pinus_albicaulis_needle_clusters.jpg (Jane Richardson)
 
-tourism_information_office.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tourist_information_shop,_Delft_(2018).jpg (Donald Trung)
 tourism_information_board.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Avon_Valley_Nature_Reserve_Information_Board.jpg (Richard Avery)
-tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/wiki/File:Uh%C5%99%C3%ADn%C4%9Bves,_Nov%C3%A9_n%C3%A1m%C4%9Bst%C3%AD,_informa%C4%8Dn%C3%AD_stojan.jpg (ŠJů)
-tourism_information_map.jpg    CC0               https://commons.wikimedia.org/wiki/File:Myrstigen_track_information_board.jpg (W.carter)
 tourism_information_guidepo... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Swiss_Hiking_Network_-_Guidepost_-_Tannmattegg.jpg (Gubaer)
+tourism_information_map.jpg    CC0               https://commons.wikimedia.org/wiki/File:Myrstigen_track_information_board.jpg (W.carter)
+tourism_information_office.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tourist_information_shop,_Delft_(2018).jpg (Donald Trung)
+tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/wiki/File:Uh%C5%99%C3%ADn%C4%9Bves,_Nov%C3%A9_n%C3%A1m%C4%9Bst%C3%AD,_informa%C4%8Dn%C3%AD_stojan.jpg (ŠJů)

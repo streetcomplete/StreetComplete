@@ -63,11 +63,19 @@ class CollectionTimesAdapter(
         if (position < collectionTimesRows.size) notifyItemChanged(position)
     }
 
-    fun addNew() {
+    fun addNewWeekdays() {
         val isFirst = collectionTimesRows.isEmpty()
         openSetWeekdaysDialog(getWeekdaysSuggestion(isFirst)) { weekdays ->
             openSetTimeDialog(12 * 60) { minutes ->
                 add(weekdays, minutes) }
+        }
+    }
+
+    fun addNewHours() {
+        val rowAbove = if (collectionTimesRows.size > 0) collectionTimesRows[collectionTimesRows.size - 1] else null
+        if (rowAbove == null) return
+        openSetTimeDialog(12 * 60) { minutes ->
+            add(rowAbove.weekdays, minutes)
         }
     }
 

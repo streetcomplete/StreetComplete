@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+ <g fill-rule="evenodd">
+  <path d="m30.483 66.102v27.4l-23.29-23.29-5.5e-6 -30.14" fill="#f2eeee" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m30.483 66.102 57.54-19.18v27.4l-57.54 19.18v-27.4" fill="#e0d8d8" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m37.333 23.633-4.11 21.92-19.18-17.81z" fill="#ffcdcd" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m33.223 45.553 47.95-16.44 9.59 17.81-61.65 20.55z" fill="#fb6d6d" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m29.113 67.472-24.66-24.66 9.59-15.07 19.18 17.81z" fill="#ff9191" stroke="#a00" stroke-linejoin="bevel"/>
+  <path d="m81.173 29.113-23.29-12.33-20.55 6.85-4.11 21.92z" fill="#ffafaf" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m14.043 27.743 49.32-16.44-5.48 5.48-20.55 6.85z" fill="#ff9191" stroke="#a00"/>
+  <path d="m81.173 29.113-17.81-17.81-5.48 5.48z" fill="#ff7d7d" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+ </g>
+</svg>

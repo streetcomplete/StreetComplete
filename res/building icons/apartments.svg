@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m24 120h80v-80l-40-24-40 24z" fill="#deb486"/>
+ <rect x="32" y="52" width="16" height="16" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="56" y="52" width="16" height="16" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="80" y="52" width="16" height="16" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="32" y="88" width="16" height="16" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="56" y="92" width="16" height="28" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="80" y="88" width="16" height="16" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="32" y="84" width="16" height="4" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="80" y="84" width="16" height="4" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="32" y="48" width="16" height="4" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="56" y="48" width="16" height="4" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="80" y="48" width="16" height="4" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <path d="m16 40 8-32h80l8 32z" fill="#c84747"/>
+ <rect x="36" y="4" width="16" height="20" fill="#deb486" style="paint-order:stroke markers fill"/>
+</svg>

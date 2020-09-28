@@ -748,12 +748,12 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="achievements_unlocked_link">"Freigeschalteter Link:"</string>
     <string name="achievements_unlocked_links">"Freigeschaltete Links:"</string>
     <string name="link_category_intro_title">"Einführung"</string>
-    <string name="link_category_intro_description">"Erfahre mehr über OSM und seine Gemeinschaft"</string>
-    <string name="link_category_editors_title">"Mitwirkende"</string>
-    <string name="link_category_editors_description">"Redakteure und andere Möglichkeiten, zu OpenStreetMap beizutragen"</string>
+    <string name="link_category_intro_description">"Erfahre mehr über OSM und ihre Community"</string>
+    <string name="link_category_editors_title">"Beitragen"</string>
+    <string name="link_category_editors_description">"Software um zur OpenStreetMap beizutragen"</string>
     <string name="link_category_maps_title">"Karten"</string>
     <string name="link_category_maps_description">"OpenStreetMap-basierte Karten"</string>
-    <string name="link_category_showcase_title">"Präsentation"</string>
+    <string name="link_category_showcase_title">"Schaukasten"</string>
     <string name="link_category_showcase_description">"OpenStreetMap-basierte Dienste / Apps"</string>
     <string name="link_category_goodies_title">"Goodies"</string>
     <string name="link_category_goodies_description">"Interessantes Kartenmaterial zum Ausprobieren"</string>
@@ -844,7 +844,7 @@ Erfolge"</string>
     <string name="link_photon_description">"Eine eigenständige Erweiterung zu Nominatim, mit fuzzy Suche und Suche während der Eingabe"</string>
     <string name="link_graphhopper_description">"Eine flexible Routing-Engine"</string>
     <string name="link_qwant_maps_description">"Eine Karte mit suchbaren POIs und Routenplaner"</string>
-    <string name="privacy_html_tileserver2">"&lt;p&gt;Um die Karte anzuzeigen werden Vektordaten von %1$s heruntergeladen. Sie deren &lt;a href=\"%2$s\"&gt;Datenschutzbestimmungen&lt;/a&gt; für weitere Informationen ein.&lt;/p&gt;"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;Um die Karte anzuzeigen werden Vektordaten von %1$s heruntergeladen. Siehe deren &lt;a href=\"%2$s\"&gt;Datenschutzbestimmungen&lt;/a&gt; für weitere Informationen ein.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsoren"</string>
     <string name="quest_board_type_history">"Geschichte"</string>
     <string name="quest_board_type_geology">"Geologie"</string>
@@ -897,4 +897,9 @@ Erfolge"</string>
     <string name="quest_summit_register_title">"Gibt es bei %s ein Gipfelbuch?"</string>
     <string name="quest_is_defibrillator_inside_title">"Befindet sich dieser Defibrillator innerhalb eines Gebäudes?"</string>
     <string name="dialog_tutorial_download">"Wenn Auto-Sync aus ist werden Aufgaben nicht automatisch heruntergeladen. Um dies manuell zu tun, benutze den \"%s\" Knopf im Menü an der Stelle an der Du sie herunterladen möchtest."</string>
+    <string name="about_title_translate">"App übersetzen"</string>
+
+    <!-- Was genau wird bei %1$s angezeigt ? -->
+    <string name="about_description_translate">"%1$s ist zu %2$d%% übersetzt
+"</string>
 </resources>

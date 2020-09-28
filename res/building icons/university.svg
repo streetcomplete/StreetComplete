@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <g id="university" transform="matrix(-3.7795 0 0 3.7795 764 -604.55)">
+  <path d="m177.8 176.35v4.2333c0 6.35 16.933 6.35 16.933 0v-4.2333z" fill="#6569aa"/>
+  <path d="m186.27 167.88 14.817 6.35-14.817 6.35-14.817-6.35z" fill="#464fa1"/>
+  <path d="m186.27 174.23-11.642 1.0583v5.2917" fill="none" stroke="#ffc133" stroke-linejoin="round" stroke-width="1.0583"/>
+  <ellipse cx="186.27" cy="174.23" rx="2.1167" ry="1.0583" fill="#5961b6" style="paint-order:markers fill stroke"/>
+  <path d="m174.62 180.58c-0.73178 2.4805-3.175 7.4083 0 7.4083s0.78084-4.8689 0-7.4083z" fill="#ffc133"/>
+  <ellipse cx="174.62" cy="180.57" rx="1.5875" ry="1.5701" fill="#ffc133" style="paint-order:markers fill stroke"/>
+ </g>
+</svg>
