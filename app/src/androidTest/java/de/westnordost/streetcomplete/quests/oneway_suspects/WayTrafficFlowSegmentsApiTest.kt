@@ -1,10 +1,10 @@
-package de.westnordost.streetcomplete.quests.oneway
+package de.westnordost.streetcomplete.quests.oneway_suspects
 
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.WayDao
 import de.westnordost.streetcomplete.data.osm.mapdata.WayMapping
-import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.util.KryoSerializer
 import org.junit.Assert.*
 import org.junit.Before

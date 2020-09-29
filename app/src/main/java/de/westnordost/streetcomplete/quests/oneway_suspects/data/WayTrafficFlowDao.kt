@@ -1,13 +1,13 @@
-package de.westnordost.streetcomplete.quests.oneway.data
+package de.westnordost.streetcomplete.quests.oneway_suspects.data
 
 import android.database.sqlite.SQLiteOpenHelper
 
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable
-import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable.NAME
-import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable.Columns.WAY_ID
-import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable.Columns.IS_FORWARD
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.NAME
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.Columns.WAY_ID
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.Columns.IS_FORWARD
 
 import androidx.core.content.contentValuesOf
 import de.westnordost.streetcomplete.ktx.getInt
