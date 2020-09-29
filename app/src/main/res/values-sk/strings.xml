@@ -1657,9 +1657,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_building_underground_title">"Je táto buda úplne pod zemou?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Sú tu zvukové signály pre nevidiacich?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Čiastočne znamená, že k vstupu vedie najviac jeden schod."</string>
 
     <!-- Fuzzy -->

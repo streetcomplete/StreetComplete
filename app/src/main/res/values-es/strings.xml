@@ -1666,9 +1666,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_building_underground_title">"¿Este edificio está completamente bajo tierra?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"¿Tiene señales sonoras para personas con discapacidad visual?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que no hay más de un escalón para poder entrar."</string>
 
     <!-- Fuzzy -->

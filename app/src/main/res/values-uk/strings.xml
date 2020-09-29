@@ -1607,9 +1607,6 @@
     <string name="quest_building_underground_title">"Чи є ця будівля повністю під землею?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Чи є тут звукові сигнали для сліпих?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Якого типу ця будівля?"</string>
     <string name="pref_title_theme_select">"Оберіть тему"</string>
     <string name="theme_light">"Світла"</string>

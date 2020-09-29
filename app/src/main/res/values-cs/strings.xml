@@ -1670,9 +1670,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_building_underground_title">"Je celá tato budova v podzemí?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Jsou tu zvukové signály pro neslyšící?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Částečně znamená, že v přístupu nebrání více než jeden schod."</string>
 
     <!-- Fuzzy -->

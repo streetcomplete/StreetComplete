@@ -1661,9 +1661,6 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_building_underground_title">"Aquest edifici és completament subterrani?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Hi ha senyals acústics per a cecs aquí?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialment significa que no hi ha més que un esglaó per accedir-hi."</string>
 
     <!-- Fuzzy -->

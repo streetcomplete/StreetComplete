@@ -1545,9 +1545,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_building_underground_title">"Bu bina tamamen yer altında mı?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Burada kör için ses sinyalleri var mı?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Kısmen, erişmek için tek bir adımdan daha fazlası olmadığı anlamına gelir."</string>
 
     <!-- Fuzzy -->

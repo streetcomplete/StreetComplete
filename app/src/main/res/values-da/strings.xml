@@ -1673,9 +1673,6 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_building_underground_title">"Er denne bygning helt underjordisk?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Er der nogen lydsignaler for blinde her?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Delvist betyder, at der ikke er mere end et enkelt trin for at få adgang til det."</string>
 
     <!-- Fuzzy -->

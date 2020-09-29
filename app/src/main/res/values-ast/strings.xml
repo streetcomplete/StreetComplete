@@ -1663,9 +1663,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_building_underground_title">"¿Esti edificiu ta baxo tierra dafechu?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"¿Tien señales sonores pa persones con discapacidá visual?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que nun hai más d'un pasu pa poder entrar."</string>
 
     <!-- Fuzzy -->
