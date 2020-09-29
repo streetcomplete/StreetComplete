@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.quests.surface.Surface.*
 
 class AddPathSurfaceForm : AGroupedImageListQuestAnswerFragment<String, String>() {
