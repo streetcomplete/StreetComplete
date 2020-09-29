@@ -10,6 +10,7 @@ class AddStepCount(overpassApi: OverpassMapDataAndGeometryApi)
 
     override val tagFilters = """
         ways with highway = steps
+         and (!indoor or indoor = no)
          and access !~ private|no
          and (!conveying or conveying = no)
          and !step_count
