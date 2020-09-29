@@ -233,7 +233,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
-        gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
+        val isFollowingPosition = mapFragment?.isFollowingPosition ?: false
+        val isPositionKnown = mapFragment?.displayedLocation != null ?: false
+        gpsTrackingButton.isActivated = isFollowingPosition
+        gpsTrackingButton.visibility = if (isFollowingPosition && isPositionKnown) View.INVISIBLE else View.VISIBLE
         updateLocationPointerPin()
     }
 
@@ -305,10 +308,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
             if (!f.onClickMapAt(position, clickAreaSizeInMeters))
                 f.onClickClose { closeBottomSheet() }
         }
-    }
-
-    override fun onClickedLocationMarker() {
-        setIsFollowingPosition(true)
     }
 
     /* -------------------------- AbstractQuestAnswerFragment.Listener -------------------------- */
@@ -457,7 +456,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onLocationChanged(location: Location) {
-        gpsTrackingButton?.visibility = View.INVISIBLE
+        val isFollowingPosition = mapFragment?.isFollowingPosition ?: false
+        gpsTrackingButton?.visibility = if (isFollowingPosition) View.INVISIBLE else View.VISIBLE
         gpsTrackingButton?.state = LocationState.UPDATING
         updateLocationPointerPin()
     }
@@ -566,9 +566,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val mapFragment = mapFragment ?: return
         mapFragment.isFollowingPosition = follow
         gpsTrackingButton.isActivated = follow
+        val isPositionKnown = mapFragment.displayedLocation != null
+        gpsTrackingButton?.visibility = if (isPositionKnown && follow) View.INVISIBLE else View.VISIBLE
         if (!follow) setIsCompassMode(false)
     }
-
 
     private fun setIsCompassMode(compassMode: Boolean) {
         val mapFragment = mapFragment ?: return
@@ -657,7 +658,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onClickLocationPointer() {
-        setIsFollowingPosition(true)
+        mapFragment?.centerCurrentPosition()
     }
 
     /* --------------------------------- Managing bottom sheet  --------------------------------- */

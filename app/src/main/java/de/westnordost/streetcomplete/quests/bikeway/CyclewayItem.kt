@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.bikeway
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 
 val Cycleway.isSupported get() = when(this) {

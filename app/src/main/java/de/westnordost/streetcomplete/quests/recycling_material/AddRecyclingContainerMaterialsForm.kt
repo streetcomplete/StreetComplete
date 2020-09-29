@@ -6,9 +6,9 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.view.ImageSelectAdapter
-import de.westnordost.streetcomplete.view.Item
-import de.westnordost.streetcomplete.view.dialogs.ImageListPickerDialog
+import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
+import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
 
 class AddRecyclingContainerMaterialsForm
