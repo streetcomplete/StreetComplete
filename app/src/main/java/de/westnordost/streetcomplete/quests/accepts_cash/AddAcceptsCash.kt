@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import java.util.concurrent.FutureTask
 
@@ -70,7 +71,7 @@ class AddAcceptsCash(
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("payment:cash", if(answer) "yes" else "no")
+        changes.add("payment:cash", answer.toYesNo())
     }
     
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =

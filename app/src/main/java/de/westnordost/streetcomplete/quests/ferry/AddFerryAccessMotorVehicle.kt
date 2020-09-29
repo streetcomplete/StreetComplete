@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 
@@ -27,6 +28,6 @@ class AddFerryAccessMotorVehicle(o: OverpassMapDataAndGeometryApi) : SimpleOverp
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("motor_vehicle", if (answer) "yes" else "no")
+        changes.add("motor_vehicle", answer.toYesNo())
     }
 }

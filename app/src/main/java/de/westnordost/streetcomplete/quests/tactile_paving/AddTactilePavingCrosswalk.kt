@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddTactilePavingCrosswalk(
@@ -50,7 +51,7 @@ class AddTactilePavingCrosswalk(
     override fun createForm() = TactilePavingForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("tactile_paving", if (answer) "yes" else "no")
+        changes.add("tactile_paving", answer.toYesNo())
     }
 
     private fun getOverpassQuery(bbox: BoundingBox) = """

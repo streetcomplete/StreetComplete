@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddToiletsFee(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
@@ -18,6 +19,6 @@ class AddToiletsFee(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("fee", if (answer) "yes" else "no")
+        changes.add("fee", answer.toYesNo())
     }
 }

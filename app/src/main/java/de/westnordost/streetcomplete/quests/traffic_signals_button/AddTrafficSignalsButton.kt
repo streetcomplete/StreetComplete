@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddTrafficSignalsButton(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
@@ -19,6 +20,6 @@ class AddTrafficSignalsButton(o: OverpassMapDataAndGeometryApi) : SimpleOverpass
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("button_operated", if (answer) "yes" else "no")
+        changes.add("button_operated", answer.toYesNo())
     }
 }

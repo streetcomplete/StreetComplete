@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddBabyChangingTable(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
@@ -34,6 +35,6 @@ class AddBabyChangingTable(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQue
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("changing_table", if(answer) "yes" else "no")
+        changes.add("changing_table", answer.toYesNo())
     }
 }
