@@ -47,8 +47,9 @@ import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsApi
-import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
+import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
@@ -71,6 +72,7 @@ import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sport.AddSport
+import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
 import de.westnordost.streetcomplete.quests.surface.*
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
@@ -105,7 +107,8 @@ object QuestModule
         // ↓ 2. important data that is used by many data consumers
         AddRoadName(o, roadNameSuggestionsDao),
         AddPlaceName(o, featureDictionaryFuture),
-        AddOneway(o, trafficFlowSegmentsApi, trafficFlowDao),
+        AddOneway(o),
+        AddSuspectedOneway(o, trafficFlowSegmentsApi, trafficFlowDao),
         AddBusStopName(o),
         AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
         AddHousenumber(o),
@@ -178,6 +181,7 @@ object QuestModule
         AddSelfServiceLaundry(o),
         AddStepCount(o), // before handrail so the surveyor doesn't need to walk it twice
         AddHandrail(o, r), // for accessibility of pedestrian routing
+        AddStepsIncline(o),
         AddInformationToTourism(o),
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for

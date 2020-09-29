@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="144dp"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="@drawable/background_rectangular_sign_white"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AXLE WEIGHT LIMIT"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:textColor="@color/traffic_black"
+        tools:ignore="HardcodedText,SpUsage"/>
+
+    <me.grantland.widget.AutofitLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/maxWeightInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#0fff"
+            android:inputType="number"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/traffic_black"
+            android:textSize="36dp"
+            tools:text="8"
+            tools:ignore="SpUsage" />
+
+    </me.grantland.widget.AutofitLayout>
+
+    <Spinner
+        android:id="@+id/weightUnitSelect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/traffic_black"
+        android:background="?android:attr/selectableItemBackground" />
+
+</LinearLayout>

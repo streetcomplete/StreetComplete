@@ -246,6 +246,9 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_streetLanes_answer_noLanes">"It has no marked lanes"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Please estimate how many cars would fit alongside each other on this road."</string>
     <string name="quest_oneway_title">"Is this a one-way street?"</string>
+    <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
+    <string name="quest_oneway2_dir">"Oneway in this direction"</string>
+    <string name="quest_oneway2_no_oneway">"Not a oneway"</string>
     <string name="quest_address_title">"What is the house number of this building?"</string>
     <string name="store_listing_short_description">"OpenStreetMap surveyor app"</string>
     <string name="store_listing_full_description">"Help to improve the OpenStreetMap with StreetComplete!
@@ -667,6 +670,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="action_deselect_all">Deselect all</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
+    <string name="quest_maxweight_select_sign">"Select sign"</string>
     <string name="quest_maxweight_answer_noSign">There is no sign</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
     <string name="quest_maxweight_answer_other_sign">Sign looks different…</string>
@@ -735,6 +739,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
+    <string name="quest_steps_incline_title">Which direction leads upwards for these steps?</string>
+    <string name="quest_steps_incline_up">This way up</string>
     <string name="quest_step_count_title">How may steps are here?</string>
     <string name="quest_address_street_title">What street does the (house) number %s belong to?</string>
     <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
