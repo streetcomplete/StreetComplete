@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.image_select.Item
 
-enum class BuildingType(val item:Item<String>) {
+enum class BuildingType(val item: Item<String>) {
     HOUSE         (Item("house",      R.drawable.ic_building_house,      R.string.quest_buildingType_house, R.string.quest_buildingType_house_description)),
     APARTMENTS    (Item("apartments", R.drawable.ic_building_apartments, R.string.quest_buildingType_apartments, R.string.quest_buildingType_apartments_description)),
     DETACHED      (Item("detached",   R.drawable.ic_building_detached,   R.string.quest_buildingType_detached, R.string.quest_buildingType_detached_description)),
@@ -59,26 +59,40 @@ enum class BuildingType(val item:Item<String>) {
     HANGAR        (Item("hangar",     R.drawable.ic_building_hangar,     R.string.quest_buildingType_hangar, R.string.quest_buildingType_hangar_description)),
     BUNKER        (Item("bunker",     R.drawable.ic_building_bunker,     R.string.quest_buildingType_bunker)),
 
-    RESIDENTIAL   (Item("residential", R.drawable.ic_building_apartments, R.string.quest_buildingType_residential, R.string.quest_buildingType_residential_description,
-        listOf( DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, HOUSE, FARM, HUT, BUNGALOW, HOUSEBOAT, STATIC_CARAVAN, DORMITORY).toItems())),
+    RESIDENTIAL   (
+        Item("residential", R.drawable.ic_building_apartments, R.string.quest_buildingType_residential, R.string.quest_buildingType_residential_description,
+        listOf( DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, HOUSE, FARM, HUT, BUNGALOW, HOUSEBOAT, STATIC_CARAVAN, DORMITORY).toItems())
+    ),
 
-    COMMERCIAL    (Item("commercial", R.drawable.ic_building_office, R.string.quest_buildingType_commercial, R.string.quest_buildingType_commercial_generic_description,
-        listOf( OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK ).toItems())),
+    COMMERCIAL    (
+        Item("commercial", R.drawable.ic_building_office, R.string.quest_buildingType_commercial, R.string.quest_buildingType_commercial_generic_description,
+        listOf( OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK ).toItems())
+    ),
 
-    CIVIC         (Item("civic", R.drawable.ic_building_civic, R.string.quest_buildingType_civic, R.string.quest_buildingType_civic_description,
-        listOf( SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION, TRANSPORTATION, COLLEGE, GOVERNMENT, STADIUM ).toItems())),
+    CIVIC         (
+        Item("civic", R.drawable.ic_building_civic, R.string.quest_buildingType_civic, R.string.quest_buildingType_civic_description,
+        listOf( SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION, TRANSPORTATION, COLLEGE, GOVERNMENT, STADIUM ).toItems())
+    ),
 
-    RELIGIOUS     (Item("religious", R.drawable.ic_building_temple, R.string.quest_buildingType_religious, null,
-        listOf( CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE ).toItems())),
+    RELIGIOUS     (
+        Item("religious", R.drawable.ic_building_temple, R.string.quest_buildingType_religious, null,
+        listOf( CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE ).toItems())
+    ),
 
-    FOR_CARS      (Item(null, R.drawable.ic_building_car, R.string.quest_buildingType_cars, null,
-        listOf( GARAGE, GARAGES, CARPORT, PARKING ).toItems())),
+    FOR_CARS      (
+        Item(null, R.drawable.ic_building_car, R.string.quest_buildingType_cars, null,
+        listOf( GARAGE, GARAGES, CARPORT, PARKING ).toItems())
+    ),
 
-    FOR_FARMS     (Item(null, R.drawable.ic_building_farm, R.string.quest_buildingType_farm, null,
-        listOf( FARM, FARM_AUXILIARY, GREENHOUSE, STORAGE_TANK ).toItems())),
+    FOR_FARMS     (
+        Item(null, R.drawable.ic_building_farm, R.string.quest_buildingType_farm, null,
+        listOf( FARM, FARM_AUXILIARY, GREENHOUSE, STORAGE_TANK ).toItems())
+    ),
 
-    OTHER         (Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, null,
-        listOf( SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER ).toItems()));
+    OTHER         (
+        Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, null,
+        listOf( SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER ).toItems())
+    );
 
     companion object {
         fun getByTag(key: String, value: String): BuildingType? {

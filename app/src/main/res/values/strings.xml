@@ -667,6 +667,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="action_deselect_all">Deselect all</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
+    <string name="quest_maxweight_select_sign">"Select sign"</string>
     <string name="quest_maxweight_answer_noSign">There is no sign</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
     <string name="quest_maxweight_answer_other_sign">Sign looks different…</string>

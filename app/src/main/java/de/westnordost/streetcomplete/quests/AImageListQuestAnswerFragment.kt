@@ -10,8 +10,8 @@ import java.util.ArrayList
 import java.util.LinkedList
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.ImageSelectAdapter
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import kotlinx.android.synthetic.main.quest_generic_list.*
 
 /**
@@ -38,7 +38,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
      *  items do not all fit into one line */
     protected open val moveFavoritesToFront = true
 
-    protected abstract val items: List<Item<I>>
+    protected abstract val items: List<DisplayItem<I>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,11 +96,11 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
 
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
 
-    private fun moveFavouritesToFront(originalList: List<Item<I>>): List<Item<I>> {
-        val result: LinkedList<Item<I>> = LinkedList(originalList)
+    private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
+        val result: LinkedList<DisplayItem<I>> = LinkedList(originalList)
 
         if (result.size > itemsPerRow && moveFavoritesToFront) {
-            favs.moveLastPickedToFront(javaClass.simpleName, result, originalList)
+            favs.moveLastPickedDisplayItemsToFront(javaClass.simpleName, result, originalList)
         }
         return result
     }
