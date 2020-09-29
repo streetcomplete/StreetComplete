@@ -132,8 +132,8 @@
             "terms": "pesce fresco,ittica"
         },
         "railway/milestone": {
-            "name": "Pietra miliare ferroviaria",
-            "terms": "pietra,miliare,marcatore"
+            "name": "Progressiva chilometrica ferroviaria",
+            "terms": "pietra,cippo,miliare,marcatore,distanza,distanziometrica,indicatore,miglio,miglia,chilometro,kilometro"
         },
         "waterway/sanitary_dump_station": {
             "name": "Smaltimento reflui marittimi",
@@ -194,9 +194,6 @@
         "craft/carpenter": {
             "name": "Carpentiere",
             "terms": "carpenteria,legno"
-        },
-        "railway/level_crossing": {
-            "name": "Passaggio a livello (strada)"
         },
         "amenity/restaurant/greek": {
             "name": "Ristorante greco",
@@ -274,7 +271,7 @@
             "terms": "museo,astronomia,osservatorio"
         },
         "office/financial": {
-            "name": "Ufficio Finanziario",
+            "name": "Ufficio finanziario",
             "terms": "finanza,finanziaria,fiduciaria,mag"
         },
         "highway/track": {
@@ -384,7 +381,8 @@
             "terms": "pesci,marino,mare,acqua,acquafan"
         },
         "man_made/manhole": {
-            "name": "Tombino"
+            "name": "Chiusino",
+            "terms": "copertura,coperchio,buco,buca,pozzetto,pozzo,tombino,fognatura,fognario,reflue,telecomunicazione,fibra,cavi"
         },
         "type/site": {
             "name": "Luogo",
@@ -684,7 +682,8 @@
             "terms": "Campo da pallacanestro"
         },
         "seamark/buoy_lateral": {
-            "name": "Boa per canale"
+            "name": "Boa per canale",
+            "terms": "laterale,boa,cevni,canale,marcatore,indicatore,segnalatore,iala"
         },
         "shop/newsagent": {
             "name": "Edicola",
@@ -721,7 +720,8 @@
             "terms": "gate dell'aeroporto,uscita,cancello,imbarco,aeroporto,varco"
         },
         "seamark/beacon_lateral": {
-            "name": "Fanale per canale"
+            "name": "Fanale per canale",
+            "terms": "laterale,fanale,cevni,canale,marcatore,indicatore,segnalatore,iala"
         },
         "man_made/mast/communication/mobile_phone": {
             "name": "Torre telefonica"
@@ -873,7 +873,8 @@
             "terms": "ebreo,ebrea,sinagoga,ebraismo,sionismo"
         },
         "highway/construction": {
-            "name": "Strada chiusa"
+            "name": "Strada chiusa",
+            "terms": "chiusura,costruzione,strada chiusa,lavori in corso,lavori stradali"
         },
         "power/tower": {
             "name": "Traliccio ad alta tensione",
@@ -1027,7 +1028,8 @@
             "terms": "Tappezziere"
         },
         "man_made/manhole/sewer": {
-            "name": "Tombino delle Fognature"
+            "name": "Chiusino per le fognature",
+            "terms": "coperchio,copertura,tombino,scolo,drenaggio,buca,fosso,pozzetto,fogne,reflue,fognature,fornitore"
         },
         "natural/glacier": {
             "name": "Ghiacciaio",
@@ -1757,7 +1759,8 @@
             "name": "Caditoia, Tombino"
         },
         "man_made/manhole/telecom": {
-            "name": "Tombino di una Società di Telecomunicazioni"
+            "name": "Chiusino di una società di telecomunicazioni",
+            "terms": "telecom,openfiber,cavi,fibra,coperchio,tombino,buca,pozzetto,telefonia,telefono,fornitore"
         },
         "public_transport/stop_position_ferry": {
             "name": "Fermata battello"
@@ -1770,7 +1773,7 @@
             "terms": "strada,carreggiata,segnale,cartello,pericolo,triangolo,precedenza,divieto,obbligo"
         },
         "amenity/public_bath": {
-            "name": "Bagni Pubblici",
+            "name": "Bagni pubblici",
             "terms": "bagni,bagno,bagno turco,sorgenti calde,terme,bagni termali,onsen,hammam,vasca delle abluzioni,lavacro"
         },
         "amenity/car_wash": {
@@ -1863,7 +1866,8 @@
             "terms": "fotografia,fotografico,fotografo,foto,diapositive,rullini,macchine fotografiche"
         },
         "office/forestry": {
-            "name": "Ufficio forestale"
+            "name": "Ufficio forestale",
+            "terms": "ranger,foresta,agente forestale"
         },
         "building/static_caravan": {
             "name": "Roulotte stazionaria",
@@ -1874,7 +1878,8 @@
             "terms": "Dondolo a molla"
         },
         "waterway/milestone": {
-            "name": "Pietra miliare acquatica"
+            "name": "Progressiva chilometrica marittima",
+            "terms": "pietra,cippo,miliare,indicatore,paletta,segnale,chilometro,miglio,distanza,distanziometrica,navale,fluviale"
         },
         "leisure/pitch/skateboard": {
             "name": "Skate Park",
@@ -2195,7 +2200,7 @@
         },
         "office/financial_advisor": {
             "name": "Consulente finanziario",
-            "terms": "Consulente finanziario"
+            "terms": "consulente finanziario,borsa,azioni,pensione,gestione finanziaria"
         },
         "shop/bookmaker": {
             "name": "Agenzia di scommesse",
@@ -2334,7 +2339,8 @@
             "terms": "capanno,caccia,postazione"
         },
         "tourism/guest_house": {
-            "name": "Bed & Breakfast"
+            "name": "Bed & Breakfast",
+            "terms": "b&b,bed,breakfast,colazione,notte,nottata,agriturismo,sistemazione,alloggio,camera,dormire"
         },
         "amenity/nightclub/lgbtq": {
             "name": "Discoteca LGBTQ+",
@@ -2459,7 +2465,8 @@
             "name": "Fermata autobus"
         },
         "office/energy_supplier": {
-            "name": "Ufficio azienda fornitrice di energia"
+            "name": "Ufficio azienda fornitrice di energia",
+            "terms": "elettricità,compagnia energetica,servizi energia, servizi gas"
         },
         "amenity/place_of_worship/hindu": {
             "name": "Tempio Hindu",
@@ -2753,7 +2760,12 @@
             "terms": "ottico,optometrista,occhi,occhiali,lenti,laser,visione,vista,diottrie,astigmatismo,miopia"
         },
         "man_made/manhole/power": {
-            "name": "Tombino di una Società di Energia Elettrica"
+            "name": "Chiusino di una società di energia elettrica",
+            "terms": "copertura,coperchio,tombino,buca,pozzetto,energia,elettrico,fornitore"
+        },
+        "building/kindergarten": {
+            "name": "Edificio di un asilo/scuola d'infanzia",
+            "terms": "asilo,infanzia,scuola,materna,nido,prescolastico,mamma,bebè,piccoli,cuccioli"
         },
         "indoor/room": {
             "name": "Stanza",
@@ -2913,10 +2925,6 @@
             "name": "Toelettatura per animali",
             "terms": "cane,gatto,cani,gatti,toilette,toletta,tolettatura,toelettatura,parrucchiere,unghie,shampoo,"
         },
-        "railway/crossing": {
-            "name": "Passaggio a livello (sentiero)",
-            "terms": "passaggio a livello,incrocio ferroviario,attraversamento pedonale"
-        },
         "shop/travel_agency": {
             "name": "Agenzia di viaggi",
             "terms": "Agenzia di viaggi"
@@ -3009,8 +3017,8 @@
             "terms": "distributore automatico,macchinetta"
         },
         "highway/milestone": {
-            "name": "Pietra miliare",
-            "terms": "pietra,cippo,blocco,kilometrico,chilometrico,miliare,miglio,chilometro,kilometro,misura,misurazione"
+            "name": "Segnale di progressiva chilometrica",
+            "terms": "pietra,cippo,blocco,kilometrico,chilometrico,miliare,miglio,chilometro,kilometro,misura,misurazione,distanza,progressiva,distanziometrica,segnale"
         },
         "tourism/information/route_marker": {
             "name": "Segnavia"
@@ -3071,7 +3079,7 @@
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Distributore automatico di ticket per parcheggio",
-            "terms": "distributore automatico,macchinetta,parcheggio,ticket,biglietto"
+            "terms": "distributore automatico,macchinetta,parcheggio,ticket,biglietto,parchimetro,biglietti parcheggio"
         },
         "shop/weapons": {
             "name": "Armeria",
@@ -3210,7 +3218,7 @@
             "terms": "docce,doccia,doccia calda,doccia fredda, doccia pubblica"
         },
         "office/estate_agent": {
-            "name": "Agente Immobiliare",
+            "name": "Agenzia immobiliare",
             "terms": "agenzia immobiliare,immobiliare"
         },
         "traffic_sign/maxspeed": {
@@ -3220,8 +3228,8 @@
             "name": "Mulino ad acqua"
         },
         "amenity/college": {
-            "name": "Area di un College",
-            "terms": "università,accademia"
+            "name": "Area di un’accademia",
+            "terms": "università,accademia,conservatorio,specializzazione,superiore,istruzione,istituto,formazione"
         },
         "shop/toys": {
             "name": "Negozio di giocattoli",
@@ -3480,7 +3488,8 @@
             "name": "Supermercato"
         },
         "office/political_party": {
-            "name": "Ufficio di un partito"
+            "name": "Ufficio di un partito",
+            "terms": "partito,politica,seggio,destra,sinistra,parlamento,votazione,elezione,deputati,senatori"
         },
         "shop/wholesale": {
             "name": "Grossista",
@@ -3652,6 +3661,9 @@
             "name": "Pista di rullaggio",
             "terms": "rullaggio,pista,aeroporto,manovra"
         },
+        "amenity/prep_school": {
+            "terms": "accademico,college,act,sat,ingresso,numero chiuso,compiti,esercizi,matematica,lettura,test,esami,preparazione,tutor,insegnante,scrittura"
+        },
         "seamark/beacon_isolated_danger": {
             "name": "Fanale di pericolo isolato",
             "terms": "fanale,pericolo,isolato,segnale di pericolo isolato,marittimo,nautico,navale,iala,porto"
@@ -3672,7 +3684,8 @@
             "terms": "distributore automatico,macchinetta,biglietti,bus,metro,tram"
         },
         "man_made/manhole/gas": {
-            "name": "Tombino di una Società del Gas"
+            "name": "Chiusino di una società del gas",
+            "terms": "coperchio,copertura,tombino,gas,calore,buco,fosso,pozzetto,fornitore"
         },
         "man_made/embankment": {
             "name": "Terrapieno",
@@ -3728,8 +3741,8 @@
             "terms": "elettronica,componenti elettronici,radioamatori"
         },
         "building/college": {
-            "name": "Edificio di un College",
-            "terms": "università"
+            "name": "Edificio di un’accademia",
+            "terms": "conservatorio,accademia,istruzione,superiore,istituto,formazione"
         },
         "man_made/beacon": {
             "name": "Fanale"
@@ -3991,7 +4004,7 @@
         },
         "aerialway/magic_carpet": {
             "name": "Tapis roulant",
-            "terms": "tappeto scorrevole"
+            "terms": "tappeto,scorrevole,mobile,magico,cintura,cinghia,nastro,snowboard,superficie,trasportatore"
         },
         "amenity/post_box": {
             "name": "Buca delle lettere"
@@ -4015,7 +4028,7 @@
         },
         "man_made/mast": {
             "name": "Palo",
-            "terms": "albero,torre,comunicazione,radio,cellulari,antenna,trasmissioni,tv,televisione,telefoni"
+            "terms": "albero,torre,comunicazione,radio,cellulari,antenna,trasmissioni,tv,televisione,telefoni,pilone,colonna,pilastro"
         },
         "amenity/payment_terminal": {
             "name": "Terminale pagamenti",
@@ -4154,7 +4167,8 @@
             "terms": "Porto turistico"
         },
         "man_made/manhole/water": {
-            "name": "Tombino di una Società dell'Acqua"
+            "name": "Chiusino di una società dell'acqua",
+            "terms": "copertura,coperchio,tombino,potabile,pulita,buca,pozzetto,acqua"
         },
         "craft/tailor": {
             "name": "Sarto"
@@ -4369,6 +4383,10 @@
         "amenity/vehicle_inspection": {
             "name": "Ispezione veicolo"
         },
+        "amenity/kindergarten": {
+            "name": "Area dell'asilo/scuola d'infanzia",
+            "terms": "asilo,infanzia,scuola,materna,nido,prescolastico,mamma,bebè,piccoli,cuccioli"
+        },
         "man_made/tower/observation": {
             "name": "Torre di osservazione"
         },
@@ -4423,10 +4441,6 @@
         "public_transport/platform/monorail": {
             "name": "Banchina monorotaia"
         },
-        "tourism/information/office": {
-            "name": "Ufficio Informazioni Turistiche",
-            "terms": "info,turismo,turistico,informazioni"
-        },
         "shop/alcohol": {
             "name": "Negozio di liquori"
         },
@@ -4452,6 +4466,9 @@
         "shop/motorcycle_repair": {
             "name": "Officina riparazione motocicli",
             "terms": "auto,veicolo,moto,bici,garage,motocicletta,motorino,scooter,riparazione,riparatore,officina,servizio"
+        },
+        "aeroway": {
+            "name": "Infrastruttura aeroportuale"
         },
         "aeroway/terminal": {
             "name": "Terminal aeroportuale",

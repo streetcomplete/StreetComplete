@@ -70,6 +70,9 @@
             "name": "우편집중국",
             "terms": "우편물류센터"
         },
+        "amenity/toilets/disposal/pitlatrine": {
+            "name": "재래식 화장실"
+        },
         "type/restriction/only_right_turn": {
             "name": "우회전 전용"
         },
@@ -180,10 +183,6 @@
         "craft/carpenter": {
             "name": "목수",
             "terms": "목수"
-        },
-        "railway/level_crossing": {
-            "name": "철도 건널목 (도로)",
-            "terms": "철도 건널목 (도로)"
         },
         "amenity/restaurant/greek": {
             "name": "그리스 음식점",
@@ -498,6 +497,9 @@
             "name": "미니 골프",
             "terms": "미니 골프"
         },
+        "man_made/dovecote": {
+            "name": "비둘기장"
+        },
         "man_made/dyke": {
             "name": "제방"
         },
@@ -688,6 +690,10 @@
         "healthcare": {
             "name": "의료 시설",
             "terms": "치료소,의원,병원,의사,질병,건강,기관,수술"
+        },
+        "shop/wigs": {
+            "name": "가발 가게",
+            "terms": "가발 상점"
         },
         "amenity/community_centre": {
             "name": "커뮤니티 센터",
@@ -894,6 +900,9 @@
         },
         "craft/signmaker": {
             "name": "간판공"
+        },
+        "amenity/fast_food/juice": {
+            "name": "주스 패스트푸드"
         },
         "amenity/vending_machine/bread": {
             "name": "빵 자판기"
@@ -1865,6 +1874,9 @@
             "name": "휴게소",
             "terms": "졸음쉼터"
         },
+        "leisure/pitch/horseshoes": {
+            "name": "말굽 구덩이"
+        },
         "amenity/vending_machine/stamps": {
             "name": "우표 자판기"
         },
@@ -2818,10 +2830,6 @@
         "shop/pet_grooming": {
             "name": "애완동물 용품 가게",
             "terms": "애완동물 용품 상점"
-        },
-        "railway/crossing": {
-            "name": "철도 건널목 (인도)",
-            "terms": "철도 건널목 (인도)"
         },
         "shop/travel_agency": {
             "name": "여행사"
@@ -3832,7 +3840,7 @@
             "terms": "자동차,폐품,금속,고철,차량"
         },
         "leisure/pitch/field_hockey": {
-            "name": "필드하키장"
+            "name": "필드 하키장"
         },
         "building/hangar": {
             "name": "격납고 건물"
@@ -4308,9 +4316,6 @@
         },
         "public_transport/platform/monorail": {
             "name": "모노레일 승강장"
-        },
-        "tourism/information/office": {
-            "name": "관광안내소"
         },
         "shop/alcohol": {
             "name": "주류상",

@@ -171,10 +171,6 @@
         "craft/carpenter": {
             "name": "Puuseppä"
         },
-        "railway/level_crossing": {
-            "name": "Moottoriajoneuvoliikenteen tasoristeys",
-            "terms": "tasoristeys, ylityspaikka, rautatie, radanylitys, ajoneuvo, tie, katu, moottoriajoneuvo, ajoneuvo, auto"
-        },
         "amenity/restaurant/greek": {
             "name": "Kreikkalainen ravintola"
         },
@@ -285,6 +281,9 @@
         },
         "amenity/restaurant/french": {
             "name": "Ranskalainen ravintola"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Laivaterminaali"
         },
         "landuse/industrial": {
             "name": "Teollisuusalue"
@@ -953,6 +952,9 @@
         },
         "building/cathedral": {
             "name": "Katedraalirakennus"
+        },
+        "aeroway/jet_bridge": {
+            "name": "Matkustajasilta"
         },
         "office/notary": {
             "name": "Notaari"
@@ -2345,8 +2347,8 @@
             "name": "Hedelmällisyysklinikka"
         },
         "leisure/fitness_station": {
-            "name": "Ulkokuntosali",
-            "terms": "ulko, ulkona, liikunta, urheilu, kuntoilu, kuntolaite, kuntoilulaite, lihaskunto, sali"
+            "name": "Ulkokuntoilulaitteet",
+            "terms": "ulko, ulkona, liikunta, urheilu, kuntoilu, kuntolaite, kuntoilulaite, lihaskunto, sali, ulkokuntosali, ulkokuntoiluvälineet, kuntoiluvälineet"
         },
         "amenity/vending_machine/newspapers": {
             "name": "Lehtiautomaatti"
@@ -2586,10 +2588,6 @@
         },
         "shop/pet_grooming": {
             "name": "Lemmikkihoitola"
-        },
-        "railway/crossing": {
-            "name": "Kävelyn ja pyöräilyn tasoristeys",
-            "terms": "tasoristeys, ylityspaikka, rautatie, radanylitys, jalankulku, pyöräily, jalan, pyörällä, pyörä, polkupyörä, polkupyörien, polkupyörän, pyörien, pyörän, suojatie"
         },
         "shop/travel_agency": {
             "name": "Matkatoimisto"
@@ -3990,10 +3988,6 @@
         "public_transport/platform/monorail": {
             "name": "Kohoradan laituri",
             "terms": "monorail"
-        },
-        "tourism/information/office": {
-            "name": "Matkailuneuvonta",
-            "terms": "info, turismi, matkailu, turisti, neuvonta"
         },
         "shop/alcohol": {
             "name": "Alkoholimyymälä",

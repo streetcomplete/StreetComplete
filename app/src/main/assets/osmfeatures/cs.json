@@ -245,6 +245,10 @@
             "name": "Obratiště s ostrůvkem",
             "terms": "obratiště,smyčka,ostrůvek"
         },
+        "man_made/dovecote": {
+            "name": "Holubník",
+            "terms": "ptactvo,ptáci,holuby,holubník,holub domácí,voliéra,chov holubů"
+        },
         "man_made/dyke": {
             "name": "protipovodňová hráz"
         },
@@ -290,6 +294,10 @@
         "natural/water": {
             "name": "Vodní plocha",
             "terms": "voda,vodstvo,vodní"
+        },
+        "amenity/pub/irish": {
+            "name": "Irský bar",
+            "terms": "Irský klub,Irský bar,Irský pub,hospoda,pivo,bar,Irsko,Irský,Irská,Irská hospoda"
         },
         "embankment": {
             "name": "Násyp"
@@ -345,6 +353,10 @@
         },
         "landuse/greenhouse_horticulture": {
             "name": "skleníky"
+        },
+        "shop/wigs": {
+            "name": "Paruky",
+            "terms": "obchod s parukami,paruky,paruka,tupé,vlásenkář,vlásenkáři,příčesky,příčesek,vlasy"
         },
         "amenity/community_centre": {
             "name": "Komunitní centrum",
@@ -462,6 +474,10 @@
         "amenity/studio/video": {
             "name": "Filmové studio"
         },
+        "amenity/toilets/portable": {
+            "name": "Mobilní toalety",
+            "terms": "toiky,toitoi,toitoiky,toi-toi,Johnny servis,kadibudky,plastové budky,plastové toalety,mobilní toalety,mobilní budka,mobilní záchod,toalety,záchod"
+        },
         "building/church": {
             "name": "Budova kostela",
             "terms": "kostel,chrám,kostelík,katedrála"
@@ -565,7 +581,8 @@
             "name": "sjezdová dráha"
         },
         "highway/footway/unmarked-raised": {
-            "name": "Neoznačený přechod (zvýšený)"
+            "name": "Neoznačený přechod (zvýšený)",
+            "terms": "neoznačený přechod,zklidňování dopravy,zvýšený přechod,zpomalovací pás,vyvýšený pás,vyvýšený přechod,místo pro přecházení,přechod pro chodce,přechod přes ulici"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "Jatka",
@@ -590,6 +607,10 @@
         "barrier/hedge": {
             "name": "Živý plot",
             "terms": "živý plot,keříky,křoví,okrasný plot"
+        },
+        "railway/tram_crossing": {
+            "name": "Přechod přes tramvajovou trať",
+            "terms": "přechod,přejezd,tramvaj,přechod přes koleje,přejezd přes koleje,tramvajová trať,úrovňové křížení,křížení tratě,tramvajový přejezd,tramvajový přechod"
         },
         "building/garages": {
             "name": "Budova garáží",
@@ -934,7 +955,8 @@
             "terms": "budka pro výběr mýta,mýtnice,výběr mýta,mýto,myto,poplatek,vstupné,kasa,pokladna"
         },
         "highway/crossing/unmarked": {
-            "name": "Neoznačený přechod"
+            "name": "Neoznačený přechod",
+            "terms": "neoznačený přechod,přechod,místo pro přecházení,přechod pro chodce,neoznačený přechod pro chodce,přechod přes ulici"
         },
         "craft/stonemason": {
             "name": "Kameník",
@@ -1449,8 +1471,8 @@
             "name": "Sauna"
         },
         "railway/crossing": {
-            "name": "Železniční přejezd (přes cestu)",
-            "terms": "přejezd,přechod,železnice,železniční přejezd,železniční přechod"
+            "name": "Přechod přes železnici",
+            "terms": "přejezd,přechod,železnice,železniční přejezd,železniční přechod,chodník,pěší přechod,pěší přejezd"
         },
         "tourism/artwork/statue": {
             "name": "Pomník"
@@ -2267,8 +2289,8 @@
             "terms": "horská chata,alpská chata,chata,noclehárna,horská bouda,bouda,alpská chata"
         },
         "tourism/information/office": {
-            "name": "Kancelář turistických informací",
-            "terms": "Turistické informační centrum"
+            "name": "Návštěvnické centrum",
+            "terms": "Turistické informační centrum,turistické středisko,informace,turismus,turista,návštěvník,návštěvníci,návštěvnické středisko"
         },
         "shop/fireplace": {
             "name": "prodej krbů a kamen"
@@ -2389,8 +2411,8 @@
             "name": "Panský dům"
         },
         "railway/level_crossing": {
-            "name": "Železniční přejezd (přes silnici)",
-            "terms": "přejezd,přechod,železnice,železniční přejezd,železniční přechod"
+            "name": "Železniční přejezd",
+            "terms": "přejezd,přechod,železnice,železniční přejezd,železniční přechod,křížení se železnicí,závory"
         },
         "man_made/pier": {
             "name": "Molo",
@@ -2799,6 +2821,10 @@
         },
         "indoor/stairs": {
             "name": "Vnitřní schodiště"
+        },
+        "leisure/sports_hall": {
+            "name": "Tělocvična",
+            "terms": "sportovní hala,tělocvična,hřiště,hala pro sport,sport,sportoviště,kryté sportoviště,všesportovní hala"
         },
         "traffic_calming/choker": {
             "name": "Zúžení silnice",
@@ -3446,7 +3472,8 @@
             "terms": "nezisková organizace,neziskovka,nevládní organizace"
         },
         "highway/footway/unmarked": {
-            "name": "Neoznačený přechod"
+            "name": "Neoznačený přechod",
+            "terms": "neoznačený přechod,přechod,místo pro přecházení,přechod pro chodce,neoznačený přechod pro chodce,přechod přes ulici"
         },
         "natural/tree": {
             "name": "Strom",
@@ -3851,6 +3878,10 @@
             "name": "Výroba klíčů",
             "terms": "klíče,klíčník,výroba klíčů,zámečník,zámečnictví"
         },
+        "railway/railway_crossing": {
+            "name": "Kolejové křížení",
+            "terms": "kžížení železnice,úrovňové křížení,křížení tratí,křížení kolejí,křížící se koleje"
+        },
         "leisure/fitness_station/sign": {
             "name": "cedule s návodem ke cvičení",
             "terms": "cedule,návod ke cvičení,návod k posilování,instrukce ke cvičení,instrukce,instruktáž,workout,informace,informační tabule,návod,cvičení,hřiště"
@@ -4042,6 +4073,10 @@
         },
         "shop/tiles": {
             "name": "Obchod s obklady"
+        },
+        "railway/tram_level_crossing": {
+            "name": "Přejezd přes tramvajovou trať",
+            "terms": "přejezd,tramvaj,přejezd přes koleje,tramvajová trať,úrovňové křížení,křížení tratě,tramvajový přejezd"
         },
         "amenity/vending_machine/food": {
             "name": "Jídelní automat"
@@ -4278,6 +4313,10 @@
         "amenity/cafe/coffee_shop": {
             "name": "Občerstvení s kavárnou",
             "terms": "kavárna,občerstvení,rychlé občerstvení,káva,včetně kavárny,horké nápoje,pití,kafe,s kávou"
+        },
+        "highway/toll_gantry": {
+            "name": "Mýtná brána",
+            "terms": "sledování průjezdu,automatická mýtná brána,výběr mýta,dálniční portál,čtecí zařízení,průjezdná mýtná brána,kamera,kamery,SPZ,čtečka SPZ,mýto,placená dálnice,placená silnice,radar"
         },
         "landuse/plant_nursery": {
             "name": "Pěstitelská školka",
@@ -4671,7 +4710,8 @@
             "terms": "prapor,vlajka,stožár,vlajkový stožár"
         },
         "highway/crossing/unmarked-raised": {
-            "name": "Neoznačený přechod (zvýšený)"
+            "name": "Neoznačený přechod (zvýšený)",
+            "terms": "neoznačený přechod,zklidňování dopravy,zvýšený přechod,zpomalovací pás,vyvýšený pás,vyvýšený přechod,místo pro přecházení,přechod pro chodce,přechod přes ulici"
         },
         "tourism/attraction": {
             "name": "Pamětihodnost",
