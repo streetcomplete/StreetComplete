@@ -1,4 +1,8 @@
 v24.0-beta1: |
+  <p>
+  Good News! StreetComplete received a grant from the <a href="https://www.bmbf.de/">German Federal Ministry of Education and Research</a> within the frame of the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a>,
+  spanning over a period of 6 months! For the next few months, my focus is on adding new quest types, starting with this update!
+  </p>
   <h3>New Quests</h3>
   <ul>
   <li><i>Is this a one-way street? In which direction?</i> (#1982, #2122)</li>
