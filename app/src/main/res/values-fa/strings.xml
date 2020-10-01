@@ -2290,4 +2290,17 @@
     <string name="dialog_tutorial_download">"با خاموش کردن همگام سازی خودکار، جُستارها به طور خودکار بارگیری نمی شوند. برای انجام این کار به صورت دستی، از دکمه \"%s\" در منو مکان دلخواه استفاده کنید."</string>
     <string name="about_title_translate">"به ترجمه این برنامه کمک کنید"</string>
     <string name="about_description_translate">"%1$s توسط %2$d%% ترجمه شده است"</string>
+    <string name="quest_oneway2_title">"آیا این خیابان یک طرفه است؟ به کدام سو"</string>
+    <string name="quest_oneway2_dir">"یکطرفه در این مسیر"</string>
+    <string name="quest_oneway2_no_oneway">"یک طرفه نیست"</string>
+    <string name="quest_maxweight_select_sign">"علامت را انتخاب کنید"</string>
+    <string name="quest_traffic_signals_blind_title">"این چراغ راهنمایی چه ویژگی هایی برای نابینایان دارد ، در صورت وجود؟"</string>
+    <string name="quest_traffic_signals_blind_description">"همه موارد اعمال شده را انتخاب کنید. توجه داشته باشید که پیکان و دکمه اغلب در زیر قسمت دکمه چراغ راهنمایی قرار دارند."</string>
+    <string name="quest_traffic_signals_blind_sound_signal">"هشدارهای صوتی که نشانگر زمان عبور مجاز است"</string>
+    <string name="quest_traffic_signals_blind_vibrate">"دکمه ای که هنگام عبور مجاز می لرزد یا موردی دیگر"</string>
+    <string name="quest_traffic_signals_blind_arrow">"فلش لمسی نمایش داده شده از کدام جهت عبور کند"</string>
+    <string name="quest_traffic_signals_blind_none">"در اینجا چنین ویژگی هایی وجود ندارد"</string>
+    <string name="quest_steps_incline_title">"کدام جهت مسیر برای این مراحل به سمت بالا هدایت می شود؟"</string>
+    <string name="quest_steps_incline_up">"این راه بالا"</string>
+    <string name="quest_step_count_title">"چند مرحله اینجا است؟"</string>
 </resources>

@@ -2382,4 +2382,17 @@ Is the situation on this cycleway still the same? -->
     <string name="about_title_translate">"Pomozte přeložit tuto aplikaci"</string>
     <string name="about_description_translate">"%1$s je přeloženo %2$d%%
 "</string>
+    <string name="quest_oneway2_title">"Je tohle jednosměrná ulice? V jakém směru?"</string>
+    <string name="quest_oneway2_dir">"Je jednosměrná v tomto směru"</string>
+    <string name="quest_oneway2_no_oneway">"Není jednosměrná"</string>
+    <string name="quest_maxweight_select_sign">"Vyberte značku"</string>
+    <string name="quest_traffic_signals_blind_title">"Které funkce pro slepé mají tyto semafory, pokud nějaké mají?"</string>
+    <string name="quest_traffic_signals_blind_description">"Vyberte všechny platné možnosti. Pamatujte, že šipka a tlačítko jsou často na spodní straně krabičky s ovládacími tlačítky."</string>
+    <string name="quest_traffic_signals_blind_sound_signal">"zvukové signály indikující, že lze přecházet"</string>
+    <string name="quest_traffic_signals_blind_vibrate">"tlačítko, které vibruje nebo něco podobného, když lze přecházet"</string>
+    <string name="quest_traffic_signals_blind_arrow">"hmatová šipka indikující směr přecházení"</string>
+    <string name="quest_traffic_signals_blind_none">"nejsou tu takové funkce"</string>
+    <string name="quest_steps_incline_title">"Který směr vede na těchto schodech nahoru?"</string>
+    <string name="quest_steps_incline_up">"Toto je směr nahoru"</string>
+    <string name="quest_step_count_title">"Kolik je tu schodů"</string>
 </resources>
