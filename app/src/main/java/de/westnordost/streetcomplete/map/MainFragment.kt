@@ -15,6 +15,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
@@ -97,7 +98,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private var locationWhenOpenedQuest: Location? = null
 
-    private var windowInsets: Rect? = null
+    private var windowInsets: WindowInsets? = null
 
     private var mapFragment: QuestsMapFragment? = null
     private val bottomSheetFragment: Fragment? get() = childFragmentManagerOrNull?.findFragmentByTag(BOTTOM_SHEET)
@@ -163,12 +164,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
                     insets.systemWindowInsetBottom
                 )
             }
-            windowInsets = Rect(
-                insets.systemWindowInsetLeft,
-                insets.systemWindowInsetTop,
-                insets.systemWindowInsetRight,
-                insets.systemWindowInsetBottom
-            )
+            windowInsets = insets
             insets
         }
     }
@@ -662,7 +658,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         var target = mapFragment.getClippedPointOf(displayedPosition) ?: return
         windowInsets?.let {
-            target -= PointF(it.left.toFloat(), it.top.toFloat())
+            target -= PointF(it.systemWindowInsetLeft.toFloat(), it.systemWindowInsetTop.toFloat())
         }
         val intersection = findClosestIntersection(mapControls, target)
         if (intersection != null) {
