@@ -81,7 +81,8 @@ import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
-import de.westnordost.streetcomplete.quests.traffic_signals_blind.AddTrafficSignalsBlindFeatures
+import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
+import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.*
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
@@ -168,7 +169,8 @@ object QuestModule
         AddBabyChangingTable(o), // used by OsmAnd in the object description
         AddBikeParkingCover(o), // used by OsmAnd in the object description
         AddTactilePavingCrosswalk(o, r), // Paving can be completed while waiting to cross
-        AddTrafficSignalsBlindFeatures(o, r), // Sound needs to be done as or after you're crossing
+        AddTrafficSignalsSound(o, r), // Sound needs to be done as or after you're crossing
+        AddTrafficSignalsVibration(o, r),
         AddRoofShape(o),
         AddWheelchairAccessPublicTransport(o, r),
         AddWheelchairAccessOutside(o, r),
