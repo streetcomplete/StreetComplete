@@ -192,6 +192,14 @@ object AchievementsModule {
             null,
             R.string.link_openinframap_description
         ),
+        Link(
+            "indoorequal",
+            "https://indoorequal.org",
+            "indoor=",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_indoorequal,
+            R.string.link_indoorequal_description
+        ),
 
         /* -------------------------------------- Showcase ---------------------------------------*/
         Link(
@@ -612,7 +620,8 @@ object AchievementsModule {
             { lvl -> (lvl + 1)*10 },
             mapOf(
                 1 to links("openstreetbrowser"),
-                2 to links("qwant_maps")
+                2 to links("qwant_maps"),
+                3 to links("indoorequal")
             )
         ),
 

@@ -822,6 +822,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_category_goodies_description">Interesting map-related stuff for you to try out</string>
 
     <string name="link_cyclosm_description">A map for cyclists</string>
+    <string name="link_indoorequal_description">Discover indoor maps of malls, railway stations etc.</string>
     <string name="link_wheelmap_description">A map for finding wheelchair accessible places</string>
     <string name="link_osm_buildings_description">A map that shows the buildings in 3D</string>
     <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
