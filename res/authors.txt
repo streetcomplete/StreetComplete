@@ -162,6 +162,7 @@ quest icons/
     blind_bus.svg                    parts taken from Twemoji: U+1F68D
     blind_pedestrian_crossing.svg
     blind_traffic_lights.svg
+    blind_traffic_lights_sound.svg
     bridge.svg
     building.svg
     building_construction.svg

@@ -17,7 +17,7 @@ object AchievementsModule {
         "AddWheelChairAccessPublicTransport" to "AddWheelchairAccessPublicTransport",
         "AddWheelChairAccessToilets"         to "AddWheelchairAccessToilets",
         "AddSidewalks"                       to "AddSidewalk",
-        "AddTrafficSignalsSound"             to "AddTrafficSignalsBlindFeatures",
+        "AddTrafficSignalsBlindFeatures"     to "AddTrafficSignalsVibration",
         "AddSuspectedOneway"                 to "AddOneway"
     )
 
@@ -526,6 +526,7 @@ object AchievementsModule {
                 listOf(
                     "AddTactilePavingCrosswalk",
                     "AddTrafficSignalsSound",
+                    "AddTrafficSignalsVibration",
                     "AddTactilePavingBusStop"
                 )
             ),
