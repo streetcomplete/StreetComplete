@@ -64,6 +64,14 @@ object AchievementsModule {
             R.drawable.ic_link_neis_one,
             R.string.link_neis_one_description
         ),
+        Link(
+            "thenandnow",
+            "https://mvexel.github.io/thenandnow/",
+            "OSM Then And Now ",
+            LinkCategory.INTRO,
+            null,
+            R.string.link_neis_one_description
+        ),
 
         // TODO not sure where to put these links
         Link(
@@ -363,7 +371,9 @@ object AchievementsModule {
 
                 8 to links("osm-haiku"),
 
-                10 to links("umap")
+                10 to links("umap"),
+
+                12 to links("thenandnow")
             )
         ),
 
