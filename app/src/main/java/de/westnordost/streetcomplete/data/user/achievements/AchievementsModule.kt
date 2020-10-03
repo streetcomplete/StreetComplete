@@ -64,14 +64,6 @@ object AchievementsModule {
             R.drawable.ic_link_neis_one,
             R.string.link_neis_one_description
         ),
-        Link(
-            "thenandnow",
-            "https://mvexel.github.io/thenandnow/",
-            "OSM Then And Now ",
-            LinkCategory.INTRO,
-            null,
-            R.string.link_neis_one_description
-        ),
 
         // TODO not sure where to put these links
         Link(
@@ -333,6 +325,14 @@ object AchievementsModule {
             LinkCategory.GOODIES,
             R.drawable.ic_link_figuregrounder,
             R.string.link_figuregrounder_description
+        ),
+        Link(
+            "thenandnow",
+            "https://mvexel.github.io/thenandnow/",
+            "OSM Then And Now ",
+            LinkCategory.GOODIES,
+            null,
+            R.string.link_neis_one_description
         )
     )
 
