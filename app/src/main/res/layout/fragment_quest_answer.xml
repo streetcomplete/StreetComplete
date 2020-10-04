@@ -29,7 +29,7 @@
                 android:id="@+id/speechBubbleTitleContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/speech_bubble_top"
+                android:background="@drawable/speech_bubble_none"
                 android:orientation="horizontal"
                 android:layoutDirection="locale"
                 android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
@@ -89,6 +89,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
+                    android:layout_marginEnd="@dimen/horizontal_speech_bubble_margin"
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
@@ -97,8 +99,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/speech_bubble_none"
-                        android:layout_marginStart="-2.5dp"
-                        android:layout_marginEnd="-2.5dp"
                         android:layout_marginBottom="4dp"
                         android:elevation="@dimen/speech_bubble_elevation">
 

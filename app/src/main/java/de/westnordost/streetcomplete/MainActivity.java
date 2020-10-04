@@ -142,7 +142,8 @@ public class MainActivity extends AppCompatActivity implements
 		if(savedInstanceState == null)
 		{
 			boolean hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false);
-			if (!hasShownTutorial && !userController.isLoggedIn()) {
+			hasShownTutorial = false;
+		if (!hasShownTutorial && !userController.isLoggedIn()) {
 				getSupportFragmentManager().beginTransaction()
 						.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
 						.add(R.id.fragment_container, new TutorialFragment())

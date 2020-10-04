@@ -11,11 +11,11 @@ import com.mapzen.tangram.geometry.Point
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
@@ -25,16 +25,18 @@ import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.map.tangram.toLngLat
 import de.westnordost.streetcomplete.map.tangram.toTangramGeometry
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.util.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.distanceTo
+import de.westnordost.streetcomplete.util.initialBearingTo
+import de.westnordost.streetcomplete.util.translate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
-import kotlin.math.abs
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.math.roundToLong
+import kotlin.math.*
+
 
 /** Manages a map that shows the quest pins, quest geometry */
 class QuestsMapFragment : LocationAwareMapFragment() {
@@ -45,6 +47,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     // layers
     private var questsLayer: MapData? = null
     private var geometryLayer: MapData? = null
+    private var geometryLayer2: MapData? = null
     private var selectedQuestPinsLayer: MapData? = null
 
     private val questSelectionMarkers: MutableList<Marker> = mutableListOf()
@@ -76,6 +79,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     override fun onMapReady() {
         controller?.setPickRadius(1f)
         geometryLayer = controller?.addDataLayer(GEOMETRY_LAYER)
+        geometryLayer2 = controller?.addDataLayer(GEOMETRY_LAYER_2)
         questsLayer = controller?.addDataLayer(QUESTS_LAYER)
         selectedQuestPinsLayer = controller?.addDataLayer(SELECTED_QUESTS_LAYER)
         questPinLayerManager.questsLayer = questsLayer
@@ -90,6 +94,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     override fun onDestroy() {
         super.onDestroy()
         geometryLayer = null
+        geometryLayer2 = null
         questsLayer = null
         selectedQuestPinsLayer = null
         questSelectionMarkers.clear()
@@ -266,12 +271,77 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     /* ------------------------------  Geometry for current quest ------------------------------- */
 
+    fun highlightSidewalkForQuest(quest: Quest, sidewalkSide: AbstractQuestAnswerFragment.Listener.SidewalkSide) {
+        val questGeometry = quest.geometry
+        if (questGeometry is ElementPolylinesGeometry) {
+            val sidewalkPolyline = if (sidewalkSide == AbstractQuestAnswerFragment.Listener.SidewalkSide.LEFT)
+                questGeometry.polylines.first().translateToLeft(1.0)
+            else
+                questGeometry.polylines.first().translateToRight(1.0)
+
+            val newGeometry = ElementPolylinesGeometry(listOf(sidewalkPolyline), sidewalkPolyline.centerPointOfPolygon())
+            geometryLayer2?.setFeatures(newGeometry.toTangramGeometry())
+            controller?.requestRender()
+        }
+    }
+
     private fun putQuestGeometry(geometry: ElementGeometry) {
         geometryLayer?.setFeatures(geometry.toTangramGeometry())
     }
 
+    private fun List<LatLon>.translateToLeft(distance: Double): List<LatLon> {
+        return translate(distance, 270.0)
+    }
+
+    private fun List<LatLon>.translateToRight(distance: Double): List<LatLon> {
+        return translate(distance, 90.0)
+    }
+
+    private fun List<LatLon>.translate(distance: Double, offsetAngle: Double): List<LatLon> {
+        require(isNotEmpty()) { "list is empty" }
+        val result = mutableListOf<LatLon>()
+
+        val it = iterator()
+        if (!it.hasNext()) {
+            return result
+        }
+
+        var first = it.next()
+        var previousPairAngle : Double? = null
+
+        while (it.hasNext()) {
+            val second = it.next()
+
+            val currentPairAngle = (first.initialBearingTo(second).toFloat() + offsetAngle) % 360.0
+            if (previousPairAngle == null) {
+                result.add(first.translate(distance, currentPairAngle))
+                if (!it.hasNext()) {
+                    result.add(second.translate(distance, currentPairAngle))
+                }
+            } else if (!it.hasNext()) {
+                result.add(first.translate(distance, calcAvgAngle(previousPairAngle, currentPairAngle)))
+                result.add(second.translate(distance, currentPairAngle))
+            } else {
+                result.add(first.translate(distance, calcAvgAngle(previousPairAngle, currentPairAngle)))
+            }
+            previousPairAngle = currentPairAngle
+
+            first = second
+        }
+        return result
+    }
+
+    private fun calcAvgAngle(a1: Double, a2: Double): Double {
+        val a1Rad = Math.toRadians(a1)
+        val a2Rad = Math.toRadians(a2)
+        val x = cos(a1Rad) + cos(a2Rad)
+        val y = sin(a1Rad) + sin(a2Rad)
+        return Math.toDegrees(atan2(y, x))
+    }
+
     private fun removeQuestGeometry() {
         geometryLayer?.clear()
+        geometryLayer2?.clear()
     }
 
     /* -------------------------  Markers for current quest (split way) ------------------------- */
@@ -280,7 +350,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         deleteMarkerForCurrentQuest(pos)
         val marker = controller?.addMarker() ?: return
         marker.setDrawable(R.drawable.crosshair_marker)
-        marker.setStylingFromString("{ style: 'points', color: 'white', size: 48px, order: 2000, collide: false }")
+        marker.setStylingFromString("{ style: 'points', color: 'red', size: 32px, order: 1, collide: false }")
         marker.setPoint(pos)
         markerIds[pos] = marker.markerId
     }
@@ -308,6 +378,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     companion object {
         // see streetcomplete.yaml for the definitions of the below layers
         private const val GEOMETRY_LAYER = "streetcomplete_geometry"
+        private const val GEOMETRY_LAYER_2 = "streetcomplete_geometry_2"
         private const val QUESTS_LAYER = "streetcomplete_quests"
         private const val SELECTED_QUESTS_LAYER = "streetcomplete_selected_quests"
         private const val CLICK_AREA_SIZE_IN_DP = 48

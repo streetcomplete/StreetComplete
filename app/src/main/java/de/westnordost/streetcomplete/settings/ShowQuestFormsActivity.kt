@@ -156,4 +156,9 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
             .setMessage("Skipping quest")
             .show()
     }
+
+    override fun onHighlightSidewalkSide(questId: Long, group: QuestGroup, side: AbstractQuestAnswerFragment.Listener.SidewalkSide) {
+        popQuestForm()
+        // TODO sst
+    }
 }

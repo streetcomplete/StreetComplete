@@ -319,13 +319,27 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/nextButton"
+                android:id="@+id/backButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:textColor="@color/accent"
+                android:text="Back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/next"
-                android:layout_marginTop="16dp"
                 android:layout_below="@id/dotsContainer"
-                android:layout_centerInParent="true"/>
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"/>
+
+            <Button
+                android:id="@+id/nextButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dotsContainer"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/next"
+                android:textColor="@color/accent" />
 
         </RelativeLayout>
 

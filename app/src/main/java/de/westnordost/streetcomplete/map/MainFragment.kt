@@ -350,6 +350,13 @@ class MainFragment : Fragment(R.layout.fragment_main),
         questController.hide(questId, group)
     }
 
+    override fun onHighlightSidewalkSide(questId: Long, group: QuestGroup, sidewalkSide: AbstractQuestAnswerFragment.Listener.SidewalkSide) {
+        val quest = questController.get(questId, group)
+        if (quest != null) {
+            mapFragment?.highlightSidewalkForQuest(quest, sidewalkSide)
+        }
+    }
+
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
 
     override fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>) {

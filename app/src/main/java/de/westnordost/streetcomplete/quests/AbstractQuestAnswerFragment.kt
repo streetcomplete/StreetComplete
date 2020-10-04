@@ -93,6 +93,11 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     open val defaultExpanded = true
 
     interface Listener {
+
+        enum class SidewalkSide{
+            LEFT, RIGHT
+        }
+
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
          * the dialog with which the quest was answered  */
         fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any)
@@ -105,6 +110,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         /** Called when the user chose to skip the quest  */
         fun onSkippedQuest(questId: Long, group: QuestGroup)
+
+        fun onHighlightSidewalkSide(questId: Long, group: QuestGroup, side: SidewalkSide)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 

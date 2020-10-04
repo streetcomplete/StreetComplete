@@ -10,6 +10,10 @@ textures:
         url: images/quest_dot@2x.png
         filtering: mipmap
         density: 5
+    arrow:
+      url: images/oneway_arrow@2x.png
+      filtering: mipmap
+      density: 10
 
 styles:
     quest-selection:
@@ -29,6 +33,11 @@ styles:
     quest-dots:
         base: points
         texture: quest_dot
+        blend: overlay
+        blend_order: 1
+    arrows:
+        base: lines
+        texture: arrow
         blend: overlay
         blend_order: 1
     geometry-lines:
@@ -89,8 +98,8 @@ layers:
         line:
             filter: { type: line }
             draw:
-                geometry-lines:
-                    color: global.geometry_color
+                arrows:
+                    color: '#000000'
                     width: 16px
                     collide: false
                     order: 1000
@@ -114,3 +123,23 @@ layers:
                     size: 32px
                     collide: false
                     order: 1000
+    streetcomplete_geometry_2:
+      data: { source: streetcomplete_geometry_2 }
+      line:
+        filter: { type: line }
+        draw:
+          geometry-lines:
+            color: '#44D140'
+            width: 8px
+            collide: false
+            order: 1000
+            cap: round
+            join: round
+      point:
+        filter: { type: point }
+        draw:
+          geometry-points:
+            color: global.geometry_color
+            size: 8px
+            collide: false
+            order: 1000
