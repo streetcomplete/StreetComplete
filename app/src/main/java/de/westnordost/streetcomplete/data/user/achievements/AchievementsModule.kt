@@ -448,6 +448,9 @@ object AchievementsModule {
                     "AddRoadName",
                     "AddWayLit",
                     "AddHandrail",
+                    "AddStepsIncline",
+                    "AddStepCount",
+                    "AddStepsRamp",
                     "AddFootwayPartSurface",
                     "AddBenchBackrest",
                     "AddTrafficSignalsButton",
@@ -551,7 +554,9 @@ object AchievementsModule {
                     "AddWheelchairAccessToilets",
                     "AddWheelchairAccessToiletsPart",
                     "AddFootwayPartSurface",
-                    "AddPathSurface"
+                    "AddPathSurface",
+                    "AddStepsRamp",
+                    "AddHandrail"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -575,7 +580,8 @@ object AchievementsModule {
                     "AddBikeParkingCover",
                     "AddBikeParkingType",
                     "AddCyclewaySegregation",
-                    "AddPathSurface"
+                    "AddPathSurface",
+                    "AddStepsRamp"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...

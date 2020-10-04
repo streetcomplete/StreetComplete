@@ -741,6 +741,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
+    <string name="quest_steps_ramp_title">Do these steps have a ramp? What kind?</string>
+    <string name="quest_steps_ramp_none">No (usable) ramp</string>
+    <string name="quest_steps_ramp_bicycle">Bicycle ramp</string>
+    <string name="quest_steps_ramp_stroller">Stroller ramp</string>
+    <string name="quest_steps_ramp_wheelchair">Wheelchair ramp</string>
     <string name="quest_steps_incline_title">Which direction leads upwards for these steps?</string>
     <string name="quest_steps_incline_up">This way up</string>
     <string name="quest_step_count_title">How may steps are here?</string>
