@@ -1108,4 +1108,5 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="quest_openingHours_name_type_title">"Jam berapa %1$s (%2$s) buka?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Apakah %1$s (%2$s) ramah kursi roda?"</string>
     <string name="quest_accepts_cash_type_title">"Apa %1$s (%2$s) menerima pembayaran tunai?"</string>
+    <string name="quest_traffic_signals_sound_title">"Apa ada sinyal suara untuk tunanetra di sini?"</string>
 </resources>

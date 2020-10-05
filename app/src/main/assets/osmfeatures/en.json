@@ -783,6 +783,10 @@
             "name": "Photographer",
             "terms": ""
         },
+        "natural/hot_spring": {
+            "name": "Hot Spring",
+            "terms": "geothermal spring,thermal pool"
+        },
         "building/pavilion": {
             "name": "Pavilion Building",
             "terms": "sports"
@@ -1159,6 +1163,10 @@
         "power/plant/source/wind": {
             "name": "Wind Farm",
             "terms": "offshore wind,wind park,wind power plant,wind power station,wind turbines,windmills"
+        },
+        "amenity/lounger": {
+            "name": "Lounger",
+            "terms": "seat,chair,bench"
         },
         "public_transport/platform/trolleybus_point": {
             "name": "Trolleybus Stop",
@@ -3516,6 +3524,10 @@
             "name": "Rehabilitation Facility",
             "terms": "rehab,therapist,therapy"
         },
+        "amenity/boat_storage": {
+            "name": "Boat Storage",
+            "terms": "boathouse,dry dock,marina"
+        },
         "highway/service/drive-through": {
             "name": "Drive-Through",
             "terms": ""
@@ -3679,6 +3691,9 @@
         "building/static_caravan": {
             "name": "Static Mobile Home",
             "terms": "house trailer,manufactured home,mobile home,prefabricated home,residential caravan,static caravan,trailer home"
+        },
+        "disused/amenity": {
+            "name": "Disused Amenity"
         },
         "leisure/pitch/skateboard": {
             "name": "Skate Park",

@@ -2358,4 +2358,5 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="dialog_tutorial_download">"Als automatische synchronisatie is uitgeschakeld, worden vragen niet automatisch gedownload. Om dit handmatig te doen, gebruik je de \"%s\" knop in het menu op de locatie die je wilt downloaden"</string>
     <string name="about_title_translate">"Help deze App te vertalen"</string>
     <string name="about_description_translate">"%1$s is vertaald %2$d%%"</string>
+    <string name="quest_traffic_signals_sound_title">"Zijn er hier geluidsignalen voor blinden?"</string>
 </resources>

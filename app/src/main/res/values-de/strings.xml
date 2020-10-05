@@ -905,13 +905,10 @@ Erfolge"</string>
     <string name="quest_oneway2_dir">"Einbahnstraße in diese Richtung"</string>
     <string name="quest_oneway2_no_oneway">"Keine Einbahnstraße"</string>
     <string name="quest_maxweight_select_sign">"Wähle das Schild"</string>
-    <string name="quest_traffic_signals_blind_title">"Welche Vorrichtungen für Blinde gibt es an dieser Ampel?"</string>
-    <string name="quest_traffic_signals_blind_description">"Wähle alle zutreffenden aus. Beachte, dass der Pfeil und Taster oft auf der Unterseite des Ampelknopfes versteckt sind."</string>
-    <string name="quest_traffic_signals_blind_sound_signal">"akustische Signale wenn es grün wird"</string>
-    <string name="quest_traffic_signals_blind_vibrate">"ein Taster der vibriert oder so wenn es grün wird"</string>
-    <string name="quest_traffic_signals_blind_arrow">"ein ertastbarer Pfeil, der die Richtung in die man gehen muss, weist"</string>
-    <string name="quest_traffic_signals_blind_none">"keine dieser Vorrichtungen"</string>
     <string name="quest_steps_incline_title">"Welche Weg führt auf dieser Treppe nach oben?"</string>
     <string name="quest_steps_incline_up">"Hier nach oben"</string>
     <string name="quest_step_count_title">"Wie viele Stufen hat diese Treppe?"</string>
+    <string name="quest_traffic_signals_sound_title">"Gibt es hier akustische Signale für Sehbehinderte?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Gibt es an dieser Ampel einen Taster für Blinde der signalisiert wenn man über die Straße gehen kann?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Hinweis: Dies ist oft ein vibrierender Taster oder drehender Konus auf der Unterseite des Druckampel-Kastens."</string>
 </resources>

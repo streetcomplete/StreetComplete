@@ -1837,4 +1837,5 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="at_housenumber">"número de porta %s:"</string>
     <string name="quest_openingHours_name_type_title">"Qual o horário de funcionamento de %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) é acessível a cadeira de rodas?"</string>
+    <string name="quest_traffic_signals_sound_title">"Existe aqui sinalização sonora para invisuais?"</string>
 </resources>

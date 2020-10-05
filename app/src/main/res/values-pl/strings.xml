@@ -2358,4 +2358,5 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="about_title_translate">"Pomóż tłumaczyć aplikację."</string>
     <string name="about_description_translate">"%1$s jest przetłumaczony w %2$d%%"</string>
     <string name="quest_oneway2_title">"Czy ta droga jest jednostronna? W którą stronę?"</string>
+    <string name="quest_traffic_signals_sound_title">"Czy są tutaj sygnały dźwiękowe dla niewidomych?"</string>
 </resources>
