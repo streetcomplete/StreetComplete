@@ -18,7 +18,7 @@ class AddBikeParkingCapacityForm : AbstractQuestFormAnswerFragment<Int>() {
         capacityInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
     }
 
-    override fun isFormComplete() = capacity.isNotEmpty()
+    override fun isFormComplete() = capacity.isNotEmpty() && capacity.toInt() > 0
 
     override fun onClickOk() {
         applyAnswer(capacity.toInt())

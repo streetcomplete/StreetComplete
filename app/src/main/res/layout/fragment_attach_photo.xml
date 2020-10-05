@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/takePhotoButton"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@drawable/ic_add_photo_black_24dp"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
+        app:icon="@drawable/ic_add_photo_black_24dp"
+        app:iconPadding="0dp"
+        app:iconGravity="textStart"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:contentDescription="@string/quest_leave_new_note_photo"
         android:layout_centerVertical="true"/>
 
     <TextView
         android:id="@+id/photosAreUsefulExplanation"
         android:layout_toEndOf="@id/takePhotoButton"
+        android:layout_marginStart="8dp"
         android:text="@string/quest_leave_new_note_photos_are_useful"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,6 +33,7 @@
         android:layout_toEndOf="@id/takePhotoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_centerVertical="true"/>
 
 </RelativeLayout>

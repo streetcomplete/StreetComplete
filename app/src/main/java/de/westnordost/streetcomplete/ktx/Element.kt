@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import java.util.ArrayList
 
 fun Element.copy(newId: Long = id, newVersion: Int = version): Element {
@@ -24,7 +24,7 @@ fun Element.isArea(): Boolean {
     }
 }
 
-private val IS_AREA_EXPR = FiltersParser().parse("""
+private val IS_AREA_EXPR = ElementFiltersParser().parse("""
     ways with area = yes or area != no and (
     aeroway
     or amenity

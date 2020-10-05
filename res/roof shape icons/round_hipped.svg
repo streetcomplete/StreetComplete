@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient5031" x1="-19.844" x2="-26.458" y1="401.51" y2="409.45" gradientTransform="matrix(5.178 0 0 5.178 137.5 -2058)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#ffcdcd" offset="0"/>
+   <stop stop-color="#e44848" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient5039" x1="-18.521" x2="-14.552" y1="400.19" y2="408.12" gradientTransform="matrix(5.178 0 0 5.178 137.5 -2058)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+   <stop stop-color="#ffafaf" offset="0"/>
+   <stop stop-color="#e44848" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <path d="m30.64 66.26v27.4l-23.29-23.29v-24.66" fill="#f2eeee" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m30.64 66.26 57.54-19.18v27.4l-57.54 19.18v-27.4" fill="#e0d8d8" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m34.75 21.05c-2.1334 10.977-5.0059 10.994-5.48 46.58l-24.66-24.66c6.85-6.85 19.18-17.81 30.14-21.92z" fill="url(#linearGradient5031)" fill-rule="evenodd" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m34.75 21.05 26.03-8.22c12.389 8.2123 23.23 18.543 30.14 34.25l-61.65 20.55c0.27852-32.941 3.3542-37.288 5.48-46.58z" fill="url(#linearGradient5039)" fill-rule="evenodd" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m90.92 47.08-28.77-23.29-57.54 19.18" fill="none" stroke="#a00" stroke-dasharray="2, 2" stroke-opacity=".50196"/>
+  <path d="m62.15 23.79c0.36132-3.3877 0.16502-6.9565-1.37-10.96" fill="none" stroke="#a00" stroke-dasharray="2, 2" stroke-opacity=".50196"/>
+ </g>
+</svg>

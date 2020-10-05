@@ -1,12 +1,15 @@
 package de.westnordost.streetcomplete.quests.bus_stop_shelter
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.*
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddBusStopShelter(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<BusStopShelterAnswer>(o) {
+class AddBusStopShelter(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<BusStopShelterAnswer>(o) {
 
     override val tagFilters = """
         nodes with 
@@ -15,8 +18,12 @@ class AddBusStopShelter(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
           or
           (highway = bus_stop and public_transport != stop_position)
         )
-        and !shelter and !covered and physically_present != no and naptan:BusStopType != HAR
+        and physically_present != no and naptan:BusStopType != HAR
+        and !covered and (!shelter or shelter older today -${r * 4} years)
     """
+    /* Not asking again if it is covered because it means the stop itself is under a large
+       building or roof building so this won't usually change */
+
     override val commitMessage = "Add bus stop shelter"
     override val wikiLink = "Key:shelter"
     override val icon = R.drawable.ic_quest_bus_stop_shelter
@@ -37,9 +44,12 @@ class AddBusStopShelter(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
 
     override fun applyAnswerTo(answer: BusStopShelterAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            SHELTER -> changes.add("shelter", "yes")
-            NO_SHELTER -> changes.add("shelter", "no")
-            COVERED -> changes.add("covered", "yes")
+            SHELTER -> changes.updateWithCheckDate("shelter", "yes")
+            NO_SHELTER -> changes.updateWithCheckDate("shelter", "no")
+            COVERED -> {
+                changes.deleteIfExists("shelter")
+                changes.add("covered", "yes")
+            }
         }
     }
 }

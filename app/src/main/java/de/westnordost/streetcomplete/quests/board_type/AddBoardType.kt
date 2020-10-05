@@ -7,7 +7,11 @@ import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 
 class AddBoardType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
-    override val tagFilters = "nodes with information=board and access !~ private|no and (!board_type or board_type ~ yes|board)"
+    override val tagFilters = """
+        nodes with information = board
+         and access !~ private|no
+         and (!board_type or board_type ~ yes|board)
+    """
     override val commitMessage = "Add board type"
     override val icon = R.drawable.ic_quest_board_type
 

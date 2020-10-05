@@ -282,6 +282,10 @@
             "name": "Anel de viragem",
             "terms": "inversão de marcha,ilha,manobra,beco,sem saída,sem-saída"
         },
+        "man_made/dovecote": {
+            "name": "Pombal",
+            "terms": "aves,pombos,criação,pombas,rolas"
+        },
         "man_made/dyke": {
             "name": "Dique",
             "terms": "levee,represa,molhe,paradão,inundações,cheias,água"
@@ -333,6 +337,10 @@
         "natural/water": {
             "name": "Água",
             "terms": "depósito,acumulada,acumulação,lago,lagoa,charco,charca,baía,tanque,piscina,reservatório"
+        },
+        "amenity/pub/irish": {
+            "name": "Pub irlandês",
+            "terms": "pub,irlanda,irish"
         },
         "embankment": {
             "name": "Elevação no terreno"
@@ -395,6 +403,10 @@
         "landuse/greenhouse_horticulture": {
             "name": "Área de estufas",
             "terms": "estufa, hortícola, hortícula, horticultura, horticoltura, ortícola, ortícula, orticultura, orticoltura,produção,agricultura,zona,viveiros,flores,legumes,fruta,frutos"
+        },
+        "shop/wigs": {
+            "name": "Loja de perucas",
+            "terms": "perucas,cabelo,extensões,cabeleiras,postiças,postiço"
         },
         "amenity/community_centre": {
             "name": "Centro comunitário",
@@ -516,6 +528,10 @@
             "name": "Fabricante de letreiros",
             "terms": "signmaker, fabricante de reclames, reclame, reclame luminoso,reclamo"
         },
+        "amenity/fast_food/juice": {
+            "name": "Sumos",
+            "terms": "sucos,smoothies,batidos,bebidas,cocktails,shakes"
+        },
         "amenity/vending_machine/bread": {
             "name": "Máquina de venda de pão",
             "terms": "pão,vending,venda"
@@ -523,6 +539,10 @@
         "amenity/studio/video": {
             "name": "Estúdio de cinema",
             "terms": "estúdios,cinema,sétima arte,filme,filmes"
+        },
+        "amenity/toilets/portable": {
+            "name": "Casa de banho portátil",
+            "terms": "banheiro químico,urinol,casa de banho química"
         },
         "building/church": {
             "name": "Edifício de igreja",
@@ -662,6 +682,10 @@
         "barrier/hedge": {
             "name": "Sebe",
             "terms": "Arbusto, Muro de Flores, Muro de Plantas,cerca,cerca viva,cerca-viva"
+        },
+        "railway/tram_crossing": {
+            "name": "Passagem de nível (peões)",
+            "terms": "pedestres,peões,peão,pé,atravessamente,ferroviária,caminhos-de-ferro,caminho-de-ferro,caminho de ferro,passagem,elétrico,bonde"
         },
         "building/garages": {
             "name": "Garagens",
@@ -1457,8 +1481,8 @@
             "terms": "Hamlet, Aldeamento,povoação,localidade"
         },
         "club": {
-            "name": "Clube",
-            "terms": "club, clube, aeromodelismo, radioamador, filatelia, xadrez, astronomia, automobilismo, associação, fã-clube, fã, templo maçónico, maçonaria, maçom, caça, moto clube, nudismo, fotografia, escoteiro, escotismo, hobby, escutismo,escuteiros,escoteiros,associação"
+            "name": "Clube/Associação",
+            "terms": "club, clube, aeromodelismo, radioamador, filatelia, xadrez, astronomia, automobilismo, associação, fã-clube, fã, templo maçónico, maçonaria, maçom, caça, moto clube, nudismo, fotografia, escoteiro, escotismo, hobby, escutismo,escuteiros,escoteiros,grupo,recreativo,desportivo,cultural,social"
         },
         "highway": {
             "name": "Estrada"
@@ -1598,7 +1622,7 @@
             "terms": "carrinho de golfe, carrinhos de golfe, estrada, caminho de golfe"
         },
         "landuse/retail": {
-            "name": "Área de retalho",
+            "name": "Área comercial",
             "terms": "Retalho, Varejo, Compras, Vendas, Retail,comercial,comércio"
         },
         "leisure/picnic_table/chess": {
@@ -1611,7 +1635,7 @@
         },
         "railway/crossing": {
             "name": "Passagem de nível (peões)",
-            "terms": "railway crossing,travessia,ferrovia,atravessar,atravessamento,passadeira,nível,ferroviária,caminho-de-ferro,caminho de ferro,caminhos-de-ferro,pedestres,comboios"
+            "terms": "pedestres,peões,peão,pé,atravessamente,ferroviária,caminhos-de-ferro,caminho-de-ferro,caminho de ferro,passagem"
         },
         "tourism/artwork/statue": {
             "name": "Estátua",
@@ -2525,7 +2549,7 @@
         },
         "tourism/information/office": {
             "name": "Posto de turismo",
-            "terms": "Posto de Turismo, Posto Turístico, Posto de Informação, Posto de Informações"
+            "terms": "posto turístico,posto de informação,informações,centro de informações,turistas,visitantes,viajantes,recepção,receção"
         },
         "shop/fireplace": {
             "name": "Loja de lareiras",
@@ -2622,8 +2646,8 @@
             "terms": "Military, Exército, Marinha, Forças Especiais, Força Aérea, Forças Armadas, Militar, Quartel,tropa,polícia"
         },
         "shop/seafood": {
-            "name": "Loja de marisco",
-            "terms": "seafood,camarão,lagosta,caranguejo,ameijoas,mexilhões,peixes,polvo,lulas,peixe fresco,congelados"
+            "name": "Peixaria",
+            "terms": "peixe,seafood,camarão,lagosta,caranguejo,ameijoas,mexilhões,peixes,polvo,lulas,peixe fresco,congelados,sardinhas,carapau"
         },
         "waterway/sanitary_dump_station": {
             "name": "Escoamento sanitário para embarcações",
@@ -2663,7 +2687,7 @@
         },
         "railway/level_crossing": {
             "name": "Passagem de nível (veículos)",
-            "terms": "railway crossing,travessia,ferrovia,atravessar,atravessamento,nível,ferroviária,caminho-de-ferro,caminho de ferro,caminhos-de-ferro,pedestres,comboios,linha férrea"
+            "terms": "railway crossing,travessia,ferrovia,atravessar,atravessamento,nível,ferroviária,caminho-de-ferro,caminho de ferro,caminhos-de-ferro,comboios,linha férrea,passagem"
         },
         "man_made/pier": {
             "name": "Pontão",
@@ -3117,6 +3141,10 @@
         "indoor/stairs": {
             "name": "Escadas interiores",
             "terms": "degraus,escadaria"
+        },
+        "leisure/sports_hall": {
+            "name": "Pavilhão desportivo",
+            "terms": "Ginásio,pavilhões,polidesportivo,desporto,ginástica,gym,exercícios,educação física"
         },
         "traffic_calming/choker": {
             "name": "Estreitamento de via",
@@ -4293,6 +4321,10 @@
             "name": "Cópia de chaves",
             "terms": "Key Cutter, Chave, Chaves, Duplicador, Cópia,duplicação"
         },
+        "railway/railway_crossing": {
+            "name": "Atravessamento oblíquo ferroviário",
+            "terms": "travessia diamante,junção ferroviária,ferrovia,caminho de ferro,caminho-de-ferro,comboios"
+        },
         "leisure/fitness_station/sign": {
             "name": "Placa de instruções de exercício",
             "terms": "exercício,fitness,elevações,desportivo,físico,física,desporto,manutenção,sinal, instruções"
@@ -4399,7 +4431,7 @@
         },
         "traffic_calming": {
             "name": "Acalmia de tráfego",
-            "terms": "redutor de velocidade, redução de velocidade, redução de velocidade, acalmia, baixa velocidade, diminuir velocidade,"
+            "terms": "redutor de velocidade, redução de velocidade, redução de velocidade, acalmia de trânsito, baixa velocidade, diminuir velocidade"
         },
         "railway/construction": {
             "name": "Ferrovia em construção",
@@ -4512,6 +4544,10 @@
         "shop/tiles": {
             "name": "Loja de azulejos",
             "terms": "Tijoleira, Azulejo, Ladrilho"
+        },
+        "railway/tram_level_crossing": {
+            "name": "Passagem de nível (veículos)",
+            "terms": "railway crossing,travessia,ferrovia,atravessar,atravessamento,nível,ferroviária,caminho-de-ferro,caminho de ferro,caminhos-de-ferro,comboios,linha férrea,passagem,elétrico,bonde"
         },
         "amenity/vending_machine/food": {
             "name": "Máquina de venda de comida",
@@ -4778,6 +4814,10 @@
             "name": "Café",
             "terms": "cafe,café,caffe,caffè,cappuccino,coffee,drip,espresso,latte,macchiato,expresso,starbucks'"
         },
+        "highway/toll_gantry": {
+            "name": "Portagem eletrónica",
+            "terms": "pórtico,toll,taxa,autoestrada,auto-estrada,portagens,cobrança eletrónica"
+        },
         "landuse/plant_nursery": {
             "name": "Viveiro de plantas",
             "terms": "plant nursery, viveiros, viveiro, viveirista, plantas, venda de plantas, árvores, arbustos, flores"
@@ -4843,7 +4883,7 @@
             "terms": "leather,cabedais,cabedal,peles"
         },
         "building/commercial": {
-            "name": "Edifício comercial",
+            "name": "Edifício empresarial",
             "terms": "prédio comercial, edifício comercial, comércio, negócios, escritórios"
         },
         "historic/wreck": {
@@ -4930,7 +4970,7 @@
             "terms": "hangar building,edifício,avião,aviões,helicóptero"
         },
         "landuse/commercial": {
-            "name": "Área comercial",
+            "name": "Área empresarial",
             "terms": "Baixa Comercial,escritórios,lojas,zona comercial,logística,armazéns,armazém,pavilhões,pavilhão"
         },
         "seamark/mooring": {
@@ -5036,6 +5076,9 @@
         },
         "craft/locksmith": {
             "name": "Chaveiro"
+        },
+        "telecom": {
+            "name": "Telecomunicações"
         },
         "place": {
             "name": "Localidade"

@@ -7,13 +7,13 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
-import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 
 class AddMaxHeight(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<MaxHeightAnswer> {
 
-    private val nodeFilter by lazy { FiltersParser().parse("""
+    private val nodeFilter by lazy { ElementFiltersParser().parse("""
         nodes with
         (
           barrier = height_restrictor
@@ -22,7 +22,7 @@ class AddMaxHeight(private val overpassApi: OverpassMapDataAndGeometryApi) : Osm
         and !maxheight and !maxheight:physical
     """)}
 
-    private val wayFilter by lazy { FiltersParser().parse("""
+    private val wayFilter by lazy { ElementFiltersParser().parse("""
         ways with
         (
           highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road

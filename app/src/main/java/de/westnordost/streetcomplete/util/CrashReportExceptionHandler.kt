@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.util
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
+import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
@@ -114,7 +114,7 @@ $stackTrace
 
     private fun sendEmail(activityCtx: Activity, text: String) {
         val intent = Intent(Intent.ACTION_SENDTO)
-        intent.data = Uri.parse("mailto:")
+        intent.data = "mailto:".toUri()
         intent.putExtras(bundleOf(
             Intent.EXTRA_EMAIL to arrayOf(mailReportTo),
             Intent.EXTRA_SUBJECT to ApplicationConstants.USER_AGENT + " Error Report",

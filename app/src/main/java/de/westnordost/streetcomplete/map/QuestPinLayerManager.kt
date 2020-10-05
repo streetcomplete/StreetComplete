@@ -135,13 +135,14 @@ class QuestPinLayerManager @Inject constructor(
             Point(position.toLngLat(), properties)
         }
         synchronized(quests) {
-            if (quests[group] == null) quests[group] = LongSparseArray(256)
-            quests[group]?.put(quest.id!!, points)
+            quests.getOrPut(group, { LongSparseArray(256) }).put(quest.id!!, points)
         }
     }
 
     private fun remove(questId: Long, group: QuestGroup) {
-        quests[group]?.remove(questId)
+        synchronized(quests) {
+            quests[group]?.remove(questId)
+        }
     }
 
     private fun clear() {

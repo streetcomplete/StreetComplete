@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64-35.346 0-64-28.654-64-64s28.654-64 64-64c35.346 0 64 28.654 64 64" fill="#529add" stroke-width=".2"/>
+ <path d="m48 93.375v8l10 4h12l10-4v-8z" fill-opacity=".2" stroke-width=".2"/>
+ <path d="m6.1172 36.68c-3.9184 8.2868-6.1172 17.545-6.1172 27.32 0 15.65 5.6252 29.98 14.953 41.1l37.047-17.1h24l37.047 17.1c9.328-11.12 14.953-25.45 14.953-41.1 0-9.775-2.1988-19.033-6.1172-27.32l-29.883 3.3203h-56z" fill="#ffffdf" fill-opacity=".53333" stroke-width=".2"/>
+ <path d="m40 40 8 48h32l8-48z" fill="#ffffdf" fill-rule="evenodd" stroke="#c1a551" stroke-width="4"/>
+ <path d="m52 40 4 48" fill="none" stroke="#c1a551" stroke-width="4"/>
+ <path d="m76 40-4 48" fill="none" stroke="#c1a551" stroke-width="4"/>
+ <path d="m64 12c-12 4-20 20-32 20v8h64v-8c-12 0-20-16-32-20zm-16 76v8l10 4v27.711c1.9766 0.18389 3.9754 0.28906 6 0.28906s4.0234-0.10517 6-0.28906v-27.711l10-4v-8z" fill="#555" fill-rule="evenodd"/>
+</svg>

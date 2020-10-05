@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/dialog_horizontal_margin">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/dialog_horizontal_margin"
+    android:orientation="vertical">
+    <!--
+    drawableTint is needed as this icon is displayed as a black shape on a white background
+    both in normal and in night mode
+    -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_file_upload_inverted_48dp"
         android:drawablePadding="8dp"
+        app:drawableTint="@color/text"
         android:text="@string/dialog_tutorial_upload"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
-
-</RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        />
+    <TextView
+        android:id="@+id/tutorialDownloadPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_search_48dp"
+        android:drawablePadding="8dp"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
+</LinearLayout>

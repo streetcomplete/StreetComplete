@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <g transform="matrix(2.2588 0 0 2.2588 -.010005 -669.33)" stroke-width="1.6733">
+   <rect x="3.4694" y="315.69" width="19.31" height="2.8839" rx="0" ry="0" fill="#9d9d9d" style="paint-order:stroke fill markers"/>
+   <ellipse cx="13.113" cy="318.31" rx="9.6573" ry="2.9638" fill="#9d9d9d" style="paint-order:stroke fill markers"/>
+   <ellipse cx="13.127" cy="315.6" rx="9.6573" ry="2.9638" fill="#40a2c4" style="paint-order:stroke fill markers"/>
+   <path transform="matrix(.26458 0 0 .26458 0 93.8)" d="m49.045 818.49c-1.9686 0.015-3.9075 0.50019-5.8203 1.4082v5.6055c-10.412 1.6049-18.193 6.9527-18.193 10.396 5e-6 4.088 10.799 7.4024 24.119 7.4024 13.32 0 24.119-3.3143 24.119-7.4024-3e-6 -3.4788-7.7217-8.8999-18.229-10.443v-5.5586c-2.03-0.96799-4.0275-1.4232-5.9961-1.4082z" fill="#237f9f" style="paint-order:stroke fill markers"/>
+   <path d="m12.394 302.96c0.60974-0.36479 0.99062-0.19607 1.3096 0v7.8521c-0.42133 0.20545-0.90347 0.20851-1.3096 0z" fill="#9d9d9d" style="paint-order:stroke fill markers"/>
+   <rect x="11.419" y="298.01" width="3.2078" height="5.8246" rx="1.5049" ry="1.5049" fill="#846354" style="paint-order:stroke fill markers"/>
+  </g>
+  <g transform="matrix(3.0383 0 0 3.0383 23.089 -892.66)" stroke-width="1.244">
+   <rect x="3.4694" y="315.69" width="19.31" height="2.8839" rx="0" ry="0" fill="#9d9d9d" style="paint-order:stroke fill markers"/>
+   <ellipse cx="13.113" cy="318.31" rx="9.6573" ry="2.9638" fill="#9d9d9d" style="paint-order:stroke fill markers"/>
+   <ellipse cx="13.127" cy="315.6" rx="9.6573" ry="2.9638" fill="#dccd30" style="paint-order:stroke fill markers"/>
+   <path transform="matrix(.26458 0 0 .26458 0 93.8)" d="m49.045 818.49c-1.9686 0.015-3.9075 0.50019-5.8203 1.4082v5.6055c-10.412 1.6049-18.193 6.9527-18.193 10.396 5e-6 4.088 10.799 7.4024 24.119 7.4024 13.32 0 24.119-3.3143 24.119-7.4024-3e-6 -3.4788-7.7217-8.8999-18.229-10.443v-5.5586c-2.03-0.96799-4.0275-1.4232-5.9961-1.4082z" fill="#c2b320" style="paint-order:stroke fill markers"/>
+   <path d="m12.394 302.96c0.60974-0.36479 0.99062-0.19607 1.3096 0v7.8521c-0.42133 0.20545-0.90347 0.20851-1.3096 0z" fill="#9d9d9d" style="paint-order:stroke fill markers"/>
+   <rect x="11.419" y="298.01" width="3.2078" height="5.8246" rx="1.1188" ry="1.1188" fill="#846354" style="paint-order:stroke fill markers"/>
+  </g>
+  <g transform="matrix(4.2554 0 0 4.2554 121.87 -1274.9)" stroke-width=".88817">
+   <ellipse cx="-23.242" cy="319.42" rx="3.8301" ry="1.1755" fill="#5d4e45" style="paint-order:stroke fill markers"/>
+   <rect x="-27.067" y="317.65" width="7.6583" height="1.7859" rx="0" ry="0" fill="#5d4e45" style="paint-order:stroke fill markers"/>
+   <ellipse cx="-23.236" cy="317.68" rx="3.8301" ry="1.1755" fill="#7d6a5d" style="paint-order:stroke fill markers"/>
+   <ellipse cx="-23.222" cy="317.57" rx="2.0837" ry=".6395" fill="#5d4e45" style="paint-order:stroke fill markers"/>
+  </g>
+ </g>
+</svg>

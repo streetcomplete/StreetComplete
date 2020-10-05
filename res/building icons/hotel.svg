@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m8 48v64h12v-16h88v16h12v-48h-12v16h-88v-32z" fill="#333" style="paint-order:stroke markers fill"/>
+ <path d="m48 76c7-17 8-20 18-20l30 4s8 3.7e-5 8 16z" fill="#333"/>
+ <circle cx="35.845" cy="64.227" r="11.814" fill="#333" style="paint-order:markers fill stroke"/>
+</svg>

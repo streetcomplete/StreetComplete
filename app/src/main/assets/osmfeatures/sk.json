@@ -2930,6 +2930,9 @@
             "name": "Pásový vlek",
             "terms": "pasovy vlek"
         },
+        "public_transport/station_tram": {
+            "name": "Električková stanica"
+        },
         "emergency/official": {
             "name": "Núdzový vstup oficiálny"
         },
@@ -3183,6 +3186,9 @@
         "tourism/artwork/bust": {
             "name": "Busta"
         },
+        "public_transport/station_train_halt": {
+            "name": "Vlaková stanica (perón / na znamenie)"
+        },
         "emergency/ambulance_station": {
             "name": "Stanovište sanitiek",
             "terms": "stanoviste sanitiek,garaze,garáže,sanitky,sanitka,garaz,garáž"
@@ -3246,9 +3252,6 @@
         },
         "public_transport/platform/monorail": {
             "name": "Nástupište na jednokoľajku"
-        },
-        "tourism/information/office": {
-            "name": "Turistické informačné centrum"
         },
         "shop/alcohol": {
             "name": "Obchod s alkoholom",

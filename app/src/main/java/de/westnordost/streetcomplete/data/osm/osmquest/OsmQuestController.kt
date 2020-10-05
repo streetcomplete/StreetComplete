@@ -138,7 +138,7 @@ import javax.inject.Singleton
            so that they can be created anew as the case may be */
         deletedCount += dao.deleteAll(statusIn = listOf(QuestStatus.REVERT), element = e)
         val addedCount = addNew(added)
-        onUpdated(added = added, deleted = removedIds)
+        onUpdated(added = added.filter { it.id != null }, deleted = removedIds)
 
         return UpdateResult(added = addedCount, deleted = deletedCount)
     }

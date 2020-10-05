@@ -53,13 +53,20 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
     <string name="quest_openingHours_name_title">"What are the opening hours of %s?"</string>
+    <string name="quest_openingHours_name_type_title">"What are the opening hours of %1$s (%2$s)?"</string>
     <string name="quest_openingHours_no_name_title">"What are the opening hours of this place? (%s)"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Are these opening hours for %s still correct?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Are these opening hours for %1$s (%2$s) still correct?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Are these opening hours still correct (%s)?"</string>
     <string name="quest_openingHours_start_time">"opening time"</string>
     <string name="quest_openingHours_end_time">"closing time"</string>
     <string name="quest_openingHours_timeSelect_next">Next</string>
     <string name="quest_openingHours_add_months">"Add months"</string>
     <string name="quest_openingHours_add_hours">"Add hours"</string>
     <string name="quest_openingHours_add_weekdays">"Add weekdays"</string>
+    <string name="quest_openingHours_add_off_days">"Add off days"</string>
+    <string name="quest_openingHours_off_day">"Off day"</string>
+    <string name="quest_openingHours_unspecified_range">Not specified"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Select weekdays"</string>
     <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>
@@ -232,12 +239,16 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_maxspeed_answer_noSign_info_zone">"If there is a sign like this at the main street intersection, you won’t find individual signs within the zone because the speed limit posted there applies to the whole zone."</string>
     <string name="quest_cyclewaySurface_title">"What surface does the cycleway here have?"</string>
     <string name="quest_cycleway_title2">"Is there a cycleway here? What type?"</string>
+    <string name="quest_cycleway_resurvey_title">"Is this still the cycleway situation here?"</string>
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
     <string name="quest_streetLanes_title">"How many lanes does this road have?"</string>
     <string name="quest_streetLanes_description">"If there are no road markings, it has no lanes."</string>
     <string name="quest_streetLanes_answer_noLanes">"It has no marked lanes"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Please estimate how many cars would fit alongside each other on this road."</string>
     <string name="quest_oneway_title">"Is this a one-way street?"</string>
+    <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
+    <string name="quest_oneway2_dir">"Oneway in this direction"</string>
+    <string name="quest_oneway2_no_oneway">"Not a oneway"</string>
     <string name="quest_address_title">"What is the house number of this building?"</string>
     <string name="store_listing_short_description">"OpenStreetMap surveyor app"</string>
     <string name="store_listing_full_description">"Help to improve the OpenStreetMap with StreetComplete!
@@ -259,7 +270,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
-    <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This house number looks very unusual."</string>
@@ -268,7 +278,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_manySports_confirmation_specific">"Specifically these"</string>
     <string name="quest_manySports_confirmation_generic">"General purpose"</string>
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
-    <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
 	<string name="quest_toiletsFee_title">"Does this restroom require a fee?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this restroom have a baby changing table?"</string>
     <string name="quest_baby_changing_table_title">"Does %s have a baby changing table?"</string>
@@ -294,6 +303,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_sport_sepak_takraw">Sepak takraw</string>
     <string name="quest_sport_roller_skating">Roller skating</string>
     <string name="quest_wheelchairAccess_name_title">Is %s wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_name_type_title">Is %1$s (%2$s) wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_bus_station_title">Is this bus station wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_toilets_title">Is this restroom wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_subway_entrance_title">Is this subway entrance wheelchair accessible?</string>
@@ -449,6 +459,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
     <string name="quest_cycleway_value_sidewalk_allowed">none, but cyclists are allowed on sidewalk</string>
     <string name="pref_category_advanced">Advanced</string>
+    <string name="pref_title_resurvey_intervals">Resurvey intervals</string>
+    <string name="resurvey_intervals_less_often">Ask less often</string>
+    <string name="resurvey_intervals_default">Default</string>
+    <string name="resurvey_intervals_more_often">Ask more often</string>
     <string name="pref_title_quests">Quest selection</string>
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
@@ -482,6 +496,13 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_internet_access_no">No connection</string>
     <string name="quest_busStopShelter_tram_name_title">"Does the streetcar stop %s have a shelter?"</string>
     <string name="quest_busStopShelter_tram_title">"Does this streetcar stop have a shelter?"</string>
+    <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
+    <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
+    <string name="quest_busStopShelter_covered">Whole stop is covered</string>
+    <string name="quest_busStopBench_tram_name_title">"Does the streetcar stop %s have a bench?"</string>
+    <string name="quest_busStopBench_tram_title">"Does this streetcar stop have a bench?"</string>
+    <string name="quest_busStopBench_title">"Does this bus stop have a bench?"</string>
+    <string name="quest_busStopBench_name_title">"Does the bus stop %s have a bench?"</string>
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
     <string name="quest_religion_for_place_of_worship_name_title">What religion is practiced at %s?</string>
@@ -649,6 +670,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="action_deselect_all">Deselect all</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
+    <string name="quest_maxweight_select_sign">"Select sign"</string>
     <string name="quest_maxweight_answer_noSign">There is no sign</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
     <string name="quest_maxweight_answer_other_sign">Sign looks different…</string>
@@ -664,6 +686,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_building_underground_title">Is this building completely underground?</string>
     <string name="quest_traffic_signals_sound_title">Are there sound signals for the blind here?</string>
     <string name="quest_traffic_signals_button_title">Do these traffic lights have a button to request a walk signal?</string>
+    <string name="quest_traffic_signals_vibrate_title">Do these traffic lights have a tactile indication for blind people for when it\'s safe to cross?</string>
+    <string name="quest_traffic_signals_vibrate_description">Hint: Often this is a vibrating button or rotating cone on the underside of the traffic light button case.</string>
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">Is this motorcycle parking covered (protected from rain)?</string>
     <string name="default_disabled_msg_maxspeed">This quest type is disabled by default because you are usually required to check the whole street for speed limit signs, not just the highlighted section. This can sometimes be quite the stretch just to solve a single quest.</string>
@@ -689,7 +713,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="map_application_missing">No other map application installed</string>
     <string name="label_housenumber">house number</string>
     <string name="label_blocknumber">block number</string>
-    <string name="quest_busStopShelter_covered">Whole stop is covered</string>
     <string name="quest_ferry_pedestrian_name_title">Does %s transport pedestrians?</string>
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
     <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
@@ -718,11 +741,15 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
+    <string name="quest_steps_incline_title">Which direction leads upwards for these steps?</string>
+    <string name="quest_steps_incline_up">This way up</string>
+    <string name="quest_step_count_title">How may steps are here?</string>
     <string name="quest_address_street_title">What street does the (house) number %s belong to?</string>
     <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
     <string name="quest_address_street_description">Tap the road it belongs to on the map or enter it without abbreviations in the field below:</string>
-    <string name="quest_street_side_puzzle_tutorial">Tap the question marks on the illustration below to select an answer for the given side of the road. The road in the illustration is rotated the same as on the map at the location of the pin. </string>
+    <string name="quest_street_side_puzzle_tutorial">The road in the illustration is rotated the same as on the map at the location of the pin. </string>
+    <string name="quest_street_side_puzzle_select">Tap to select</string>
     <string name="quest_oneway_tutorial">The road in the illustration is rotated the same as on the map at the location of the pin. Note the indicated direction. </string>
     <string name="quest_recycling_materials_title">What can be left here for recycling?</string>
     <string name="quest_recycling_materials_note">If anything different can be recycled than selectable here, please leave a note instead.</string>
@@ -759,6 +786,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_title_rate">Rate this app</string>
     <string name="about_summary_rate">on Google Play</string>
     <string name="about_title_donate">Donate</string>
+    <string name="about_title_translate">Help translate this app</string>
+    <string name="about_description_translate">%1$s is translated %2$d%%</string>
     <string name="about_title_sponsors">Sponsors</string>
     <string name="about_summary_donate">Show your appreciation! ❤️</string>
     <string name="about_description_donate">Thank you for considering to support this app! To see current donations and to donate yourself, tap on the respective platform:</string>
@@ -767,6 +796,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or commercial waste?</string>
 
     <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
+    <string name="quest_accepts_cash_type_title">"Does %1$s (%2$s) accept cash payment?"</string>
     <string name="user_quests_title">Solved Quests</string>
     <string name="user_achievements_title">Achievements</string>
     <string name="user_links_title">Link Collection</string>
@@ -874,6 +904,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="at_conscription_and_street_number">conscription number %1$s, orientation number %2$s:</string>
     <string name="at_conscription_number">conscription number %s:</string>
     <string name="at_housenumber">house number %s:</string>
+    <string name="quest_summit_register_title">Is there a summit register at %s?</string>
+    <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
+    <string name="dialog_tutorial_download">With auto-sync off, quests are not downloaded automatically. To do this manually, use the \"%s\" button in the menu at the location you want to download.</string>
 
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
 </resources>

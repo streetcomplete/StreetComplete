@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.notifications
 
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.animation.DecelerateInterpolator
+import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import de.westnordost.streetcomplete.Injector
@@ -124,7 +124,7 @@ class OsmUnreadMessagesFragment : DialogFragment(),
     }
 
     private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         return tryStartActivity(intent)
     }
 

@@ -19,14 +19,8 @@
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
     <string name="quest_generic_confirmation_title">"شما مطمئن هستید؟"</string>
     <string name="quest_generic_confirmation_yes">"بله مطمئنم"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"بررسی خواهم کرد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_error_field_empty">"شما این قسمت را خالی گذاشته‌اید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"در عوض یک یاداشت می‌گذارید؟"</string>
 
     <!-- بهتر نیست به جای نقشه بردار نقشه کش یا یه عبارت دیگه به کار ببریم؟ به نظرم با توجه به معنی اصلی کلمه در اینجا مناسب نباشه -->
@@ -1623,9 +1617,6 @@
     <string name="quest_building_underground_title">"آیا این ساختمان بطور کامل زیرزمین است؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"آیا در اینجا پارازیت برای امواج وجود دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"اینگونه معنی می دهد که بیشتر از یک راه دسترسی وجود ندارد."</string>
 
     <!-- Fuzzy -->
@@ -1817,7 +1808,7 @@
     <string name="quest_ref_answer_noRef">"بدون شماره پستی قابل مشاهده است ..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"روی علامت سؤال ضربه بزنید و پاسخی را برای آن انتخاب نمایید."</string>
+    <string name="quest_street_side_puzzle_tutorial">"جاده در روی تصویر حول محل سنجاق در نقشه چرخانده شده است."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"چه موادی را می‌توان در اینجا برای بازیافت قرار داد؟"</string>
@@ -2099,7 +2090,7 @@
     <string name="link_openstreetcam_description">"سامانه و برنامه ای برای به اشتراک گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
 
     <!-- Fuzzy -->
-    <string name="link_openrouteservice_wheelchair_description">"ناوبری چرخشی برای معلولان دارای صندلی چرخدار"</string>
+    <string name="link_openrouteservice_wheelchair_description">"مسیریابی پویا برای معلولان با صندلی چرخدار"</string>
 
     <!-- Fuzzy -->
     <string name="link_nominatim_description">"کد جغرافیایی داده های OSM که توسط بسیاری از سامانه های دیگر استفاده می شود"</string>
@@ -2265,4 +2256,46 @@
     <string name="quest_surface_detailed_square_name_title">"چه جنس سطح مشخصی در میدان %s وجود دارد؟"</string>
     <string name="quest_surface_detailed_title">"جنس سطح این قسمت از جاده چیست؟"</string>
     <string name="quest_surface_detailed_square_title">"جنس سطح این میدان چیست؟"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"بین‌المللی"</string>
+    <string name="quest_streetName_menuItem_romanized">"به لاتین"</string>
+    <string name="quest_buildingType_terrace2">"خانه‌های ردیفی"</string>
+    <string name="quest_oneway_tutorial">"جاده در تصویر همانند یک نقشه در مکان سنجاق چرخانده شده است. به جهت مشخص شده توجه کنید."</string>
+    <string name="at_housename">"نام خانه %s:"</string>
+    <string name="at_conscription_and_street_number">"شماره خدمات وظیفه %1$s, شماره جهت‌یابی %2$s:"</string>
+    <string name="at_conscription_number">"شماره خدمات وظیفه %s:"</string>
+    <string name="at_housenumber">"شماره خانه %s:"</string>
+    <string name="quest_openingHours_name_type_title">"ساعت شروع کار %1$s (%2$s) چیست؟"</string>
+    <string name="quest_openingHours_resurvey_name_title">"آیا ساعات کاری در %s همچنان صحیح است؟"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"آیا ساعات کاری %1$s (%2$s) همچنان تغییر نکرده است؟"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"آیا این ساعات کاری همچنان درست است (%s)؟"</string>
+    <string name="quest_openingHours_add_off_days">"افزودن روزهای حراج"</string>
+    <string name="quest_openingHours_off_day">"روز حراج"</string>
+    <string name="quest_openingHours_unspecified_range">"مشخص نشده"</string>
+    <string name="quest_cycleway_resurvey_title">"آیا اینجا هنوز خط دوچرخه سواری وجود دارد؟"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"آیا در %1$s (%2$s) صندلی چرخدار قابل استفاده است؟"</string>
+    <string name="pref_title_resurvey_intervals">"فواصل تکرار بررسی"</string>
+    <string name="resurvey_intervals_less_often">"کمتر بپرسید"</string>
+    <string name="resurvey_intervals_default">"پیشفرض"</string>
+    <string name="resurvey_intervals_more_often">"بیشتر اوقات بپرسید"</string>
+    <string name="quest_street_side_puzzle_select">"انتخاب کنید"</string>
+    <string name="quest_accepts_cash_type_title">"آیا %1$s (%2$s) پرداخت نقدی را قبول می کند؟"</string>
+    <string name="quest_busStopBench_tram_name_title">"آیا توقفگاه خودرو %s نیمکت دارد؟"</string>
+    <string name="quest_busStopBench_tram_title">"آیا این توقفگاه خودرو نیمکت دارد؟"</string>
+    <string name="quest_busStopBench_title">"آیا این ایستگاه اتوبوس نیمکت دارد؟"</string>
+    <string name="quest_busStopBench_name_title">"آیا ایستگاه اتوبوس %s نیمکت دارد؟"</string>
+    <string name="quest_summit_register_title">"آیا امکان ثبت نام جلسه در %s وجود دارد؟"</string>
+    <string name="quest_is_defibrillator_inside_title">"آیا داخل ساختمان دستگاه شوک الکتریکی موجود است؟"</string>
+    <string name="dialog_tutorial_download">"با خاموش کردن همگام سازی خودکار، جُستارها به طور خودکار بارگیری نمی شوند. برای انجام این کار به صورت دستی، از دکمه \"%s\" در منو مکان دلخواه استفاده کنید."</string>
+    <string name="about_title_translate">"به ترجمه این برنامه کمک کنید"</string>
+    <string name="about_description_translate">"%1$s توسط %2$d%% ترجمه شده است"</string>
+    <string name="quest_oneway2_title">"آیا این خیابان یک طرفه است؟ به کدام سو"</string>
+    <string name="quest_oneway2_dir">"یکطرفه در این مسیر"</string>
+    <string name="quest_oneway2_no_oneway">"یک طرفه نیست"</string>
+    <string name="quest_maxweight_select_sign">"علامت را انتخاب کنید"</string>
+    <string name="quest_steps_incline_title">"کدام جهت مسیر برای این مراحل به سمت بالا هدایت می شود؟"</string>
+    <string name="quest_steps_incline_up">"این راه بالا"</string>
+    <string name="quest_step_count_title">"چند مرحله اینجا است؟"</string>
+    <string name="quest_traffic_signals_sound_title">"آیا در اینجا پارازیت برای امواج وجود دارد؟"</string>
 </resources>

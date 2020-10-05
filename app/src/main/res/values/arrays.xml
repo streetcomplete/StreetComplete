@@ -12,6 +12,18 @@
         <item>OFF</item>
     </string-array>
 
+    <string-array name="pref_entries_resurvey_intervals">
+        <item>@string/resurvey_intervals_less_often</item>
+        <item>@string/resurvey_intervals_default</item>
+        <item>@string/resurvey_intervals_more_often</item>
+    </string-array>
+
+    <string-array name="pref_entryvalues_resurvey_intervals" translatable="false">
+        <item>LESS_OFTEN</item>
+        <item>DEFAULT</item>
+        <item>MORE_OFTEN</item>
+    </string-array>
+
     <string-array name="pref_entries_theme_select" translatable="false">
         <item>@string/theme_automatic</item>
         <item>@string/theme_light</item>

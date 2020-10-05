@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.util.TextChangedWatcher
-import de.westnordost.streetcomplete.view.ItemViewHolder
+import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 
 class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {

@@ -24,7 +24,7 @@ fun main() {
         true
     }
 
-    val registry = QuestModule.questTypeRegistry(mock(), overpassMock, mock(), mock(), mock(), mock())
+    val registry = QuestModule.questTypeRegistry(mock(), overpassMock, mock(), mock(), mock(), mock(), mock())
 
     val hamburg = BoundingBox(53.5, 9.9, 53.6, 10.0)
 
@@ -45,7 +45,7 @@ private class TestOverpassMapDataDao {
     var totalWaitTime = 0L
 
     val osm = OsmConnection(
-            "https://overpass.maptime.in/api/",
+            "https://lz4.overpass-api.de/api/",
             "StreetComplete Overpass Query Performance Test",
             null,
             (180 + 4) * 1000)

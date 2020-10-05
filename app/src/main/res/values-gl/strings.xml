@@ -1666,9 +1666,6 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_building_underground_title">"Este edificio está completamente baixo terra?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Hai aquí sinais con aparellos de son para cegos?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Significa que de xeito parcial non hai máis que un só chanzo para entrar."</string>
 
     <!-- Fuzzy -->
@@ -1814,10 +1811,10 @@ Dividila agora?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"É o baño de %s accesíbel para cadeiras de rodas?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_tram">"Esta parada do tranvía ten pavemento táctil?"</string>
+    <string name="quest_tactilePaving_title_tram">"Esta paraxe do tranvía ten pavemento táctil?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_tram">"A parada do tranvía %s ten pavemento táctil?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"A paraxe do tranvía %s ten pavemento táctil?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Cal é o límite de peso aquí?"</string>
@@ -1859,7 +1856,7 @@ Dividila agora?"</string>
     <string name="quest_ref_answer_noRef">"Ningún número de referencia visíbel..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Preme os signos de interrogación e escolle unha resposta para cada beira da estrada."</string>
+    <string name="quest_street_side_puzzle_tutorial">"A estrada da ilustración é rotada do mesmo xeito que no mapa na localización do marcador."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Que se pode depositar para reciclar aquí?"</string>
@@ -2342,6 +2339,40 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_oneway_tutorial">"A estrada na ilustración xira igual que no mapa na localización do pin. Ten en conta a dirección indicada. "</string>
     <string name="at_housename">"Nome da casa %s:"</string>
     <string name="at_conscription_and_street_number">"Número de «conscrición» %1$s, número de «orientación» %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Número de «conscrición» %s:"</string>
     <string name="at_housenumber">"número de edificio %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Cales son os horarios da apertura de %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Seguen a ser correctos estes horarios de apertura de %s?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Seguen a ser correctos estes horarios de apertura de %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Seguen a ser correctos estes horarios de apertura (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Engadir días pechados"</string>
+    <string name="quest_openingHours_off_day">"Día pechado"</string>
+    <string name="quest_openingHours_unspecified_range">"Sen especificar"</string>
+    <string name="quest_cycleway_resurvey_title">"Segue a ser esta a localización do carril bici?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Podes acceder cara a %1$s (%2$s) nunha cadeira de rodas?"</string>
+    <string name="pref_title_resurvey_intervals">"Intervalos de revisión"</string>
+    <string name="resurvey_intervals_less_often">"Preguntar menos veces"</string>
+    <string name="resurvey_intervals_default">"Predeterminado"</string>
+    <string name="resurvey_intervals_more_often">"Preguntar máis veces"</string>
+    <string name="quest_street_side_puzzle_select">"Premer para seleccionar"</string>
+    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) acepta pagamentos en efectivo?"</string>
+    <string name="quest_busStopBench_tram_name_title">"A paraxe do tranvía %s ten un asento?"</string>
+    <string name="quest_busStopBench_tram_title">"Esta paraxe do tranvía ten asento?"</string>
+    <string name="quest_busStopBench_title">"Esta paraxe do bus ten asento?"</string>
+    <string name="quest_busStopBench_name_title">"A paraxe do bus %s ten asento? "</string>
+    <string name="quest_summit_register_title">"Hai un rexisto de conferencias en %s?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro dun edificio?"</string>
+    <string name="dialog_tutorial_download">"Coa sincronización automática desactivada, as tarefas non se baixarán de xeito automático. Para facer isto de xeito manual, usa o botón \"%s\" do menú no lugar que desexas baixar."</string>
+    <string name="about_title_translate">"Axuda a traducir esta app"</string>
+    <string name="about_description_translate">"%1$s está traducido %2$d%%"</string>
+    <string name="quest_oneway2_title">"Esta é unha rúa dun só sentido? En que dirección?"</string>
+    <string name="quest_oneway2_dir">"Nesta dirección"</string>
+    <string name="quest_oneway2_no_oneway">"Non é dun só sentido"</string>
+    <string name="quest_maxweight_select_sign">"Escoller sinal"</string>
+    <string name="quest_steps_incline_title">"Que dirección conduce cara arriba para estes pasos?"</string>
+    <string name="quest_steps_incline_up">"Por este camiño"</string>
+    <string name="quest_step_count_title">"Cantos chanzos hai aquí?"</string>
+    <string name="quest_traffic_signals_sound_title">"Hai aquí sinais con aparellos de son para cegos?"</string>
 </resources>

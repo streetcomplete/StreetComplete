@@ -1670,9 +1670,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_building_underground_title">"Je celá tato budova v podzemí?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Jsou tu zvukové signály pro neslyšící?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Částečně znamená, že v přístupu nebrání více než jeden schod."</string>
 
     <!-- Fuzzy -->
@@ -1863,7 +1860,7 @@ Chcete cestu rozdělit?"</string>
     <string name="quest_ref_answer_noRef">"Není tu žádné referenční číslo..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Klepněte na otázníky a vyberte odpověď pro určenou stranu cesty."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Cesta na ilustraci je otočená stejně jako na mapě v místě označení."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Co tu lze recyklovat?"</string>
@@ -2353,6 +2350,46 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_oneway_tutorial">"Cesta na ilustraci je otočená stejně jako na mapě v místě špendlíku. Všimněte si uvedeného směru. "</string>
     <string name="at_housename">"Jméno budovy %s:"</string>
     <string name="at_conscription_and_street_number">"Číslo popisné %1$s, orientační číslo %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Číslo popisné %s:"</string>
     <string name="at_housenumber">"číslo popisné %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Jaká je otevírací doba %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Je tato otevírací doba pro %s stále platná?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Je tato otevírací doba pro %1$s (%2$s) stále platná?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Je tato otevírací doba stále platná (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Přidat dny, kdy je zavřeno"</string>
+    <string name="quest_openingHours_off_day">"Zavřeno"</string>
+    <string name="quest_openingHours_unspecified_range">"Neurčeno"</string>
+
+    <!-- Could this be translated as: 
+Is the situation on this cycleway still the same? -->
+    <string name="quest_cycleway_resurvey_title">"Je to zde stále aktulální situace cyklostezky?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Má %1$s (%2$s) bezbariérový přístup?"</string>
+    <string name="pref_title_resurvey_intervals">"Intervaly pro ověřování"</string>
+    <string name="resurvey_intervals_less_often">"Ptát se méně často"</string>
+    <string name="resurvey_intervals_default">"Výchozí"</string>
+    <string name="resurvey_intervals_more_often">"Ptát se častěji"</string>
+    <string name="quest_street_side_puzzle_select">"Vyberte ťuknutím"</string>
+    <string name="quest_accepts_cash_type_title">"Přijímá %1$s (%2$s) platbu v hotovosti?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Má tramvajová zastávka %s lavičku?"</string>
+    <string name="quest_busStopBench_tram_title">"Má tato tramvajová zastávka lavičku?"</string>
+    <string name="quest_busStopBench_title">"Má tato autobusová zastávka lavičku?"</string>
+    <string name="quest_busStopBench_name_title">"Má autobusová zastávka %s lavičku?"</string>
+    <string name="quest_summit_register_title">"Je na %s vrcholová kniha?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Je tento defibrilátor (AED) uvnitř budovy?"</string>
+    <string name="dialog_tutorial_download">"Při vypnuté automatické synchronizaci se úkoly nestahují automaticky. Pro jejich manuální stažení použijte v nabídce tlačítko „%s“ na místě, na kterém chcete úkoly stáhnout."</string>
+    <string name="about_title_translate">"Pomozte přeložit tuto aplikaci"</string>
+    <string name="about_description_translate">"%1$s je přeloženo %2$d%%
+"</string>
+    <string name="quest_oneway2_title">"Je tohle jednosměrná ulice? V jakém směru?"</string>
+    <string name="quest_oneway2_dir">"Je jednosměrná v tomto směru"</string>
+    <string name="quest_oneway2_no_oneway">"Není jednosměrná"</string>
+    <string name="quest_maxweight_select_sign">"Vyberte značku"</string>
+    <string name="quest_steps_incline_title">"Který směr vede na těchto schodech nahoru?"</string>
+    <string name="quest_steps_incline_up">"Toto je směr nahoru"</string>
+    <string name="quest_step_count_title">"Kolik je tu schodů"</string>
+    <string name="quest_traffic_signals_sound_title">"Jsou tu zvukové signály pro nevidomé?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Mají tyto semafory hmatovou indikaci pro nevidomé, aby věděli, kdy je bezpečné přejít?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Tip: Často to může být vibrující tlačítko nebo rotující kužel na spodní straně krabičky s ovládacím tlačítkem."</string>
 </resources>

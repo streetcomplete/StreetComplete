@@ -282,6 +282,10 @@
             "name": "Bucle de giro (Isla)",
             "terms": "bucle de giro, cul-de-sac, cul de sac, calle sin salida, callejón sin salida"
         },
+        "man_made/dovecote": {
+            "name": "Palomar",
+            "terms": "pájaros, palomar, palomas, casilleros"
+        },
         "man_made/dyke": {
             "name": "Dique",
             "terms": "dique, banco de inundaciones"
@@ -333,6 +337,10 @@
         "natural/water": {
             "name": "Cuerpo de agua",
             "terms": "río, agua, lago, laguna, albufera, ibón, estanque, embalse, pantano, balsa, cuerpo de agua, aguas, lámina de agua, poza de agua, charca"
+        },
+        "amenity/pub/irish": {
+            "name": "Pub irlandés",
+            "terms": "pub irlandés, bar irlandés"
         },
         "embankment": {
             "name": "Terraplén"
@@ -395,6 +403,10 @@
         "landuse/greenhouse_horticulture": {
             "name": "Horticultura de invernadero",
             "terms": "Horticultura de invernadero, flor, invernadero, horticultura, cultivar, vivero"
+        },
+        "shop/wigs": {
+            "name": "Tienda de pelucas",
+            "terms": "pelo, cabello, extensiones de pelo"
         },
         "amenity/community_centre": {
             "name": "Centro Comunitario",
@@ -461,7 +473,7 @@
             "terms": "cebra, paso de cebra, cruce marcado, paso de peatones, cruce de peatones"
         },
         "leisure/fitness_centre": {
-            "name": "Gimnasio",
+            "name": "Gimnasio / Centro de fitness",
             "terms": "salud, gimnasio, gym, fitness, entrenamiento, ejercicio"
         },
         "highway/corridor": {
@@ -516,6 +528,10 @@
             "name": "Fabricante de carteles",
             "terms": "fabricante, carteles, tiendas, negocios"
         },
+        "amenity/fast_food/juice": {
+            "name": "Comida rápida de jugo",
+            "terms": "café, bebidas, bebidas de frutas, barra de jugos, batidos"
+        },
         "amenity/vending_machine/bread": {
             "name": "Máquina expendedora de pan",
             "terms": "baguette, pan"
@@ -523,6 +539,10 @@
         "amenity/studio/video": {
             "name": "Estudio de cine",
             "terms": "producción de cine, estudio de cine, producción de video, grabación de video, estudio de video"
+        },
+        "amenity/toilets/portable": {
+            "name": "Baño portátil",
+            "terms": "Inodoro portátil,Baños portátiles,Inodoro portable,Baño portable,Baños portables,Inodoro movible,WC portátil,WC químico,WC portable,Baño químico,Baños químicos,Inodoro químico"
         },
         "building/church": {
             "name": "Edificio iglesia",
@@ -662,6 +682,10 @@
         "barrier/hedge": {
             "name": "Seto",
             "terms": "cobertura, seto vivo, seto verde, defensa"
+        },
+        "railway/tram_crossing": {
+            "name": "Tranvía - Cruce peatonal",
+            "terms": "cruce, paso a nivel, paso de tranvía, paso de peatones"
         },
         "building/garages": {
             "name": "Garajes",
@@ -1547,7 +1571,7 @@
             "terms": "antecámara, antesala, atrio, celda, cámara, vestíbulo, sala interior"
         },
         "amenity/fast_food/ice_cream": {
-            "name": "Comida rápida de Helado"
+            "name": "Comida rápida de helado"
         },
         "amenity/polling_station": {
             "name": "Lugar de votación permanente",
@@ -1609,8 +1633,8 @@
             "terms": "baño de vapor, baño turco, vapor, turco"
         },
         "railway/crossing": {
-            "name": "Cruce de ferrocarril (sendero)",
-            "terms": "cruce, tren, ferrocarril, sendero, senda, cruce ferroviario, paso a nivel"
+            "name": "Ferrocarril - Cruce peatonal",
+            "terms": "cruce, paso de vía férrea, paso de peatones, paso a nivel, cruce de ferrocarril, cruce de vías férreas, camino a través del ferrocarril, cruce de trenes"
         },
         "tourism/artwork/statue": {
             "name": "Estatua",
@@ -2523,8 +2547,8 @@
             "terms": "refugio, abrigo, vivac, choza, cabaña, refugio de montaña, refugio alpino, refugio andino"
         },
         "tourism/information/office": {
-            "name": "Oficina de información turística",
-            "terms": "oficina, guía, caseta, puesto, turismo, información turística, información turismo, información cultural, actividad turística, actividad de recreación, actividad de ocio"
+            "name": "Centro de informaciones",
+            "terms": "oficina de información, guía turístico, oficina de turismo, centro de información turística, información turística, centro de visitantes, centro de información para visitantes, centro de bienvenida, centro de informaciones"
         },
         "shop/fireplace": {
             "name": "Tienda de chimenea",
@@ -2661,8 +2685,8 @@
             "terms": "Mansión, nobleza, nobleza, finca, casa solariega"
         },
         "railway/level_crossing": {
-            "name": "Cruce de ferrocarril (carretera)",
-            "terms": "cruce, tren, ferrocarril, carretera, camino, cruce ferroviario, paso a nivel"
+            "name": "Ferrocarril - Cruce vehicular",
+            "terms": "cruce, paso a nivel, cruce de ferrocarril, cruce de vías férreas,  camino a través del ferrocarril, cruce de trenes"
         },
         "man_made/pier": {
             "name": "Embarcadero",
@@ -3116,6 +3140,10 @@
         "indoor/stairs": {
             "name": "Escalera interior",
             "terms": "escalera, hueco de escalera, escalones"
+        },
+        "leisure/sports_hall": {
+            "name": "Gimnasio / Pabellón deportivo",
+            "terms": "pistas de atletismo, gimnasio, pabellón de deportes, pabellón deportivo, recinto deportivo"
         },
         "traffic_calming/choker": {
             "name": "Estrechamiento de calzada",
@@ -3617,7 +3645,7 @@
             "name": "Ribera de río ancho"
         },
         "amenity/fast_food/fish_and_chips": {
-            "name": "Comida rápida de Pescado y papas fritas",
+            "name": "Comida rápida de pescado y papas fritas",
             "terms": "desayuno, cena, comedor, cena, comer, parrilla, almuerzo, mesa, café, cafe, papa fritas"
         },
         "amenity/bicycle_parking/building": {
@@ -4292,6 +4320,10 @@
             "name": "Copista de llaves",
             "terms": "cortador de llaves"
         },
+        "railway/railway_crossing": {
+            "name": "Ferrocarril - Cruce de vía férrea",
+            "terms": "cruce de diamantes, cruce plano, cruce a nivel, cruce de ferrocarril"
+        },
         "leisure/fitness_station/sign": {
             "name": "Cartel de instrucciones de ejercicio",
             "terms": "ejercicio, gimnasio, cartel, señal, instrucciones"
@@ -4511,6 +4543,10 @@
         "shop/tiles": {
             "name": "Tienda de azulejos",
             "terms": "azulejos, azulejos, baldosas, tejas, teselas"
+        },
+        "railway/tram_level_crossing": {
+            "name": "Tranvía - Cruce vehicular",
+            "terms": "cruce, paso a nivel, paso de peatones, cruce de tranvía"
         },
         "amenity/vending_machine/food": {
             "name": "Máquina expendedora de alimentos",
@@ -4777,6 +4813,10 @@
             "name": "Cafetería",
             "terms": "americano, cerveza, café, capuchino, cacao, cafetería, goteo, espresso, bebidas calientes, café con leche, macchiato, té, latte"
         },
+        "highway/toll_gantry": {
+            "name": "Peaje abierto",
+            "terms": "peaje, cámara de matrícula, cámara de placa, cámara de patente, peaje sin efectivo, peaje electrónico, peaje de flujo libre, free flow, telepase, pórtico de peaje, peaje con transpondedor"
+        },
         "landuse/plant_nursery": {
             "name": "Vivero de plantas",
             "terms": "vivero, invernadero, jardinería, plantas"
@@ -5035,6 +5075,9 @@
         },
         "craft/locksmith": {
             "name": "Cerrajero"
+        },
+        "telecom": {
+            "name": "Elemento de telecomunicaciones"
         },
         "place": {
             "name": "Lugar"

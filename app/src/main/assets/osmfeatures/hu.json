@@ -188,10 +188,6 @@
             "name": "Ács",
             "terms": "Tetőfedő, épületasztalos"
         },
-        "railway/level_crossing": {
-            "name": "Vasúti átjáró (közút)",
-            "terms": "vasúti kereszteződés,átkelő,átjáró"
-        },
         "amenity/restaurant/greek": {
             "name": "Görög étterem"
         },
@@ -2685,10 +2681,6 @@
         "shop/pet_grooming": {
             "name": "Állatkozmetikai bolt"
         },
-        "railway/crossing": {
-            "name": "Vasúti átjáró (gyalogos)",
-            "terms": "vasúti kereszteződés,átkelő"
-        },
         "shop/travel_agency": {
             "name": "Utazási iroda",
             "terms": "ibusz,vista,neckermann,nyaralás,last minute,utazás,travel,karthago tours,tours,tui,reisen,otp travel,voyage"
@@ -4126,10 +4118,6 @@
         },
         "public_transport/platform/monorail": {
             "name": "Egysínű vasúti megálló"
-        },
-        "tourism/information/office": {
-            "name": "Tourinform iroda",
-            "terms": "turistainformáció, turistairoda, idegenforgalom"
         },
         "shop/alcohol": {
             "name": "Alkoholüzlet",

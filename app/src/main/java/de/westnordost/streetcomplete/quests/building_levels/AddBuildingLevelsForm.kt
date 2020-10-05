@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.building_levels
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import android.view.View
+import androidx.core.view.isGone
 
 import javax.inject.Inject
 
@@ -42,11 +43,9 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         roofLevelsInput.addTextChangedListener(onTextChangedListener)
 
         val lastPickedStrings = favs.get(javaClass.simpleName)
-        if (lastPickedStrings.isEmpty()) {
-            pickLastButton.visibility = View.GONE
-        } else {
-            pickLastButton.visibility = View.VISIBLE
-
+        val isLastPickedStringsEmpty = lastPickedStrings.isEmpty()
+        pickLastButton.isGone = isLastPickedStringsEmpty
+        if (!isLastPickedStringsEmpty) {
             val favValues = lastPickedStrings.first.split("#")
 
             lastLevelsLabel.text = favValues[0]
@@ -62,7 +61,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
 
     override fun onClickOk() {
         val buildingLevels = levels.toInt()
-        val roofLevels = if(!roofLevels.isEmpty()) roofLevels.toInt() else null
+        val roofLevels = if(roofLevels.isNotEmpty()) roofLevels.toInt() else null
 
         favs.add(javaClass.simpleName,
             listOfNotNull(buildingLevels, roofLevels).joinToString("#"), max = 1)
@@ -77,5 +76,5 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         }
     }
 
-    override fun isFormComplete() = !levels.isEmpty()
+    override fun isFormComplete() = levels.isNotEmpty()
 }

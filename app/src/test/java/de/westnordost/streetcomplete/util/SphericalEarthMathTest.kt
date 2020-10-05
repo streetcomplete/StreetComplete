@@ -551,6 +551,13 @@ class SphericalEarthMathTest {
         assertFalse(p(0.0, 6.0).isInMultipolygon(mp))
     }
 
+    @Test fun issue2064() {
+        val way = createWay218917749()
+        val p = p(13.4486174, 52.4758700)
+        assertFalse(p.isInPolygon(way))
+        assertFalse(p.isInMultipolygon(listOf(way)))
+    }
+
     companion object {
         private val HH = p(10.0, 53.5)
     }
@@ -593,11 +600,11 @@ private fun LatLon.createSquareWithPointsAtCenterOfEdges(l: Double) = listOf(
 )
 
 /*
-     o
+    o
    ╱  ╲
-  o  +   o
+  o  + o
    ╲  ╱
-     o
+    o
 */
 private fun LatLon.createRhombus(l: Double) = listOf(
     p(x, y + l),
@@ -626,9 +633,9 @@ private fun LatLon.createBonbon() = listOf(
 )
 
 /*
-     ╱╲
+    ╱╲
    ╱╱╲ ╲
-   ╲╲__|╱
+   ╲╲_|╱
      ╲╱
 */
 private fun LatLon.createRhombusWithHoleAround() = listOf(
@@ -643,4 +650,32 @@ private fun LatLon.createRhombusWithHoleAround() = listOf(
     p(x, y - 1),
     p(x - 1, y),
     p(x, y + 1)
+)
+
+private fun createWay218917749() = listOf(
+    p(13.4488926, 52.4759134),
+    p(13.4490121, 52.4758463),
+    p(13.4489534, 52.4758081),
+    p(13.4488763, 52.4757578),
+    p(13.4488096, 52.4757548),
+    p(13.4486691, 52.4758216),
+    p(13.4487710, 52.4758997),
+    p(13.4488293, 52.4758721),
+    p(13.4488332, 52.4758709),
+    p(13.4488373, 52.4758700),
+    p(13.4488420, 52.4758699),
+    p(13.4488466, 52.4758701),
+    p(13.4488512, 52.4758709),
+    p(13.4488553, 52.4758722),
+    p(13.4488588, 52.4758740),
+    p(13.4488616, 52.4758761),
+    p(13.4488638, 52.4758784),
+    p(13.4488651, 52.4758807),
+    p(13.4488658, 52.4758831),
+    p(13.4488662, 52.4758855),
+    p(13.4488660, 52.4758879),
+    p(13.4488652, 52.4758902),
+    p(13.4488638, 52.4758926),
+    p(13.4488621, 52.4758946),
+    p(13.4488926, 52.4759134)
 )

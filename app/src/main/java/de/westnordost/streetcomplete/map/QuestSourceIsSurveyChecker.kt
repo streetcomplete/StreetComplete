@@ -3,18 +3,18 @@ package de.westnordost.streetcomplete.map
 import android.content.Context
 import android.location.Location
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.CheckBox
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isGone
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.util.distanceToArcs
 import javax.inject.Inject
 
@@ -30,7 +30,7 @@ class QuestSourceIsSurveyChecker @Inject constructor(
         } else {
             val inner = LayoutInflater.from(context).inflate(R.layout.quest_source_dialog_layout, null, false)
             val checkBox = inner.findViewById<CheckBox>(R.id.checkBoxDontShowAgain)
-            checkBox.visibility = if (timesShown < 1) View.GONE else View.VISIBLE
+            checkBox.isGone = timesShown < 1
 
             AlertDialog.Builder(context)
                 .setTitle(R.string.quest_source_dialog_title)

@@ -12,9 +12,9 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.tagfilters.DEFAULT_MAX_QUESTS
-import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.data.tagfilters.toOverpassBboxFilter
+import de.westnordost.streetcomplete.data.elementfilter.DEFAULT_MAX_QUESTS
+import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.elementfilter.toOverpassBboxFilter
 import de.westnordost.streetcomplete.util.FlattenIterable
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.enclosingBoundingBox

@@ -121,7 +121,7 @@
             "terms": "peixaría, peixería, peixeiro, peixe, marisco"
         },
         "railway/milestone": {
-            "name": "Fito de Vía"
+            "name": "Fito ferroviario"
         },
         "waterway/sanitary_dump_station": {
             "name": "Inodoro para embarcacións"
@@ -176,8 +176,7 @@
             "terms": "carpinteiro, madeira, ebanista"
         },
         "railway/level_crossing": {
-            "name": "Paso a nivel (estrada)",
-            "terms": "paso a nivel, cruzamento ferroviario, paso ferroviario, cruzamento a nivel"
+            "name": "Paso a nivel de estrada"
         },
         "amenity/restaurant/greek": {
             "name": "Restaurante grego"
@@ -399,6 +398,9 @@
         "shop/furniture": {
             "name": "Moblaría"
         },
+        "disused/railway": {
+            "name": "Elemento ferroviario en desuso"
+        },
         "advertising/billboard": {
             "name": "Panel publicitario",
             "terms": "panel, cartel, valo, valado, poste, piar, publicitario, publicidade, carteleira, propaganda"
@@ -409,6 +411,9 @@
         "emergency/phone": {
             "name": "Teléfono de emerxencia",
             "terms": "Teléfono, emerxencias, SOS"
+        },
+        "disused/shop": {
+            "name": "Tenda en desuso"
         },
         "golf/bunker": {
             "name": "Trampa de Area"
@@ -683,7 +688,7 @@
             "terms": "feluxe, borra, borro, charrizo, cisco, parruma, sarrio, cheminea, chaminea, fumeira, fumeiro, fume, chimenea, fogón, hollín, limpiachimenea, limpeza de chemineas, deshollinador"
         },
         "railway/narrow_gauge": {
-            "name": "Vía de tren estreita"
+            "name": "Ferrovía estreita"
         },
         "shop/curtain": {
             "name": "Tenda de cortinas"
@@ -1107,7 +1112,7 @@
             "terms": "escorregadoiro, esvaradoiro, tobogan, tobogán, resbaladilla, rodadeiro, resbalín, deslizadeiro, lizadeiro"
         },
         "leisure/pitch/beachvolleyball": {
-            "name": "Cancha de voley praia"
+            "name": "Cancha de voleibol praia"
         },
         "man_made/street_cabinet": {
             "name": "Armario de telecomunicacións",
@@ -1131,7 +1136,7 @@
             "name": "Pista de carreiras de motocross"
         },
         "railway/preserved": {
-            "name": "Vía de tren histórico"
+            "name": "Ferrovía histórica"
         },
         "man_made/chimney": {
             "name": "Cheminea"
@@ -1674,7 +1679,7 @@
             "terms": "picnic, esparcemento, merendeiro, sitio de picnic, lugar de picnic, zona de picnic"
         },
         "highway/rest_area": {
-            "name": "Área de repouso",
+            "name": "Área de descanso",
             "terms": "área de descanso, apartadeiro, zona de descanso, área de asueto, área de repouso, descanso, asueto, repouso, apartadoiro, area de descanso, area de repouso"
         },
         "leisure/pitch/horseshoes": {
@@ -2092,7 +2097,7 @@
             "name": "Puenting"
         },
         "railway/signal": {
-            "name": "Sinal ferroviaria"
+            "name": "Sinal ferroviario"
         },
         "craft/rigger": {
             "name": "Aparellador",
@@ -2265,7 +2270,7 @@
             "name": "Cemiterio"
         },
         "railway/rail": {
-            "name": "Vía de tren",
+            "name": "Ferrovía",
             "terms": "raíl, carril, camiño de ferro, ferrocarril, ferrovía, liña férrea, riel, tren, rail, vía, vía permanente, vía férrea, via"
         },
         "natural/scree": {
@@ -2280,14 +2285,15 @@
             "name": "Oficina de tecnoloxías da información"
         },
         "railway/disused": {
-            "name": "Vía de tren en desuso"
+            "name": "Ferrovía en desuso",
+            "terms": "carris,ferrovia,fora de servizo,ferroviarias,ferroviarios,camiños de ferro,camiños-de-ferro,liña férrea,comboios,vía de tren, via, via de tren, ferrovia, ferrovía, ferrocarril, liña ferrea, via férrea, vía férrea"
         },
         "amenity/grave_yard": {
             "name": "Camposanto",
             "terms": "cemitero, cementerio, tumbas, panteón"
         },
         "railway/light_rail": {
-            "name": "Vía de tren lixeiro"
+            "name": "Ferrovía de tren lixeiro"
         },
         "office/lawyer/notary": {
             "name": "Notaría"
@@ -2363,6 +2369,9 @@
         "historic/monument": {
             "name": "Monumento"
         },
+        "natural/shrub": {
+            "name": "Arbusto"
+        },
         "type/route/bicycle": {
             "name": "Roteiro ciclista"
         },
@@ -2379,7 +2388,7 @@
             "name": "Lugar histórico"
         },
         "railway/switch": {
-            "name": "Garda Agullas"
+            "name": "Agulla de ferrovía"
         },
         "man_made/tower/communication": {
             "name": "Torre de comunicación",
@@ -2534,6 +2543,9 @@
             "name": "Copiado de chaves",
             "terms": "cerralleiro, chaves, copia"
         },
+        "railway/railway_crossing": {
+            "name": "Paso a nivel oblicuo"
+        },
         "leisure/resort": {
             "name": "Complexo turístico",
             "terms": "resort, complexo turístico, vacacións"
@@ -2554,8 +2566,7 @@
             "terms": "arte, artístico, pintura, escultura"
         },
         "railway/crossing": {
-            "name": "Cruzamento ferroviario (camiño)",
-            "terms": "cruzamento, cruce, tren, ferrocarril, sendeiro, senda, cruzamento ferroviario, paso a nivel"
+            "name": "Paso a nivel peonil"
         },
         "shop/travel_agency": {
             "name": "Axencia de viaxes"
@@ -2661,7 +2672,7 @@
             "terms": "escada, escaleira, valado, cerca, reixa"
         },
         "railway/construction": {
-            "name": "Ferrocarril en construción"
+            "name": "Ferrovía en construción"
         },
         "shop/boutique": {
             "name": "Boutique"
@@ -2730,7 +2741,8 @@
             "name": "Entrada"
         },
         "emergency/fire_hydrant": {
-            "name": "Boca de incendio"
+            "name": "Boca de incendio",
+            "terms": "hydrant, hidrante, boca de incendios, boca de lumes, lumes, incendio, incendios, hidrantes, lume"
         },
         "noexit/yes": {
             "name": "Sen saída"
@@ -3163,7 +3175,8 @@
             "name": "Casa adosada"
         },
         "railway/abandoned": {
-            "name": "Vía de tren abandonada"
+            "name": "Ferrovía abandonada",
+            "terms": "carris,ferrovia,fora de servizo,ferroviarias,ferroviarios,camiños de ferro,camiños-de-ferro,liña férrea,comboios,vía de tren, via, via de tren, ferrovia, ferrovía, ferrocarril, liña ferrea, via férrea, vía férrea, carris,ferrovia,ferroviarias,ferroviarios,camiños de ferro,camiños-de-ferro,liña férrea,comboios,vía de tren, via, via de tren, ferrovia, ferrovía, ferrocarril, liña ferrea, via férrea, vía férrea"
         },
         "type/restriction": {
             "name": "Restrición"
@@ -3522,7 +3535,7 @@
             "name": "Acceso de emerxencia oficial"
         },
         "railway/derail": {
-            "name": "Derailer Ferroviario"
+            "name": "Calzo descarrilador"
         },
         "leisure/bowling_alley": {
             "name": "Birlos",
@@ -3695,7 +3708,7 @@
             "terms": "montacargas, ascensor, elevador"
         },
         "railway/miniature": {
-            "name": "Vía de tren en miniatura"
+            "name": "Ferrovía en miniatura"
         },
         "shop/carpet": {
             "name": "Tenda de alfombras"
@@ -3903,9 +3916,6 @@
         },
         "public_transport/platform/monorail": {
             "name": "Plataforma de monorraíl"
-        },
-        "tourism/information/office": {
-            "name": "Oficina de información turística"
         },
         "shop/alcohol": {
             "name": "Licoraría"

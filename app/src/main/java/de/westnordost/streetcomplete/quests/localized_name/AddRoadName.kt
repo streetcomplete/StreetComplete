@@ -9,9 +9,9 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
-import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.quests.localized_name.data.putRoadNameSuggestion
 
@@ -111,7 +111,7 @@ class AddRoadName(
         private const val ROADS_WITHOUT_NAMES =
                 "way[highway ~ \"^($NAMEABLE_ROADS)$\"][!name][!ref][noname != yes][!junction][area != yes]"
         // this must be the same as above but in tag filter expression syntax
-        private val ROADS_WITHOUT_NAMES_TFE by lazy { FiltersParser().parse(
+        private val ROADS_WITHOUT_NAMES_TFE by lazy { ElementFiltersParser().parse(
                 "ways with highway ~ $NAMEABLE_ROADS and !name and !ref and noname != yes and !junction and area != yes"
         )}
 

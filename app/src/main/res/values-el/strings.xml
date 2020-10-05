@@ -1153,6 +1153,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"Είναι ένα τραπέζι πικνίκ"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Ποια θρησκεία ασκείται σε αυτό το μέρος;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_christian">"Χριστιανισμός"</string>
@@ -1638,6 +1639,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"Επόμενο"</string>
+    <string name="quest_tracktype_title">"Ποια είναι η επιφανειακή σταθερότητα αυτού του δρόμου;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Στερεό"</string>
@@ -1661,9 +1663,6 @@
     <string name="quest_building_underground_title">"Είναι αυτό το κτίριο εντελώς υπόγειο;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Υπάρχουν ηχητικά σήματα για τους τυφλούς εδώ;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Εν μέρει σημαίνει ότι δεν υπάρχει παρά ένα μόνο βήμα για την πρόσβαση σε αυτό"</string>
 
     <!-- Fuzzy -->
@@ -1677,6 +1676,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCoveredStatus_title">"Αυτό το πάρκινγκ μοτοσυκλετών καλύπτεται (προστατεύεται από τη βροχή);"</string>
+    <string name="default_disabled_msg_maxspeed">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή συνήθως απαιτείται να ελέγχετε ολόκληρη την οδό για πινακίδες ορίων ταχύτητας και όχι μόνο για το επισημασμένο τμήμα. Αυτό μπορεί μερικές φορές να είναι αρκετό απλά για να λύσει μια μόνο αναζήτηση."</string>
 
     <!-- Fuzzy -->
     <string name="pref_title_quests_restore_hidden">"Επαναφορά κρυφών αναζητήσεων"</string>
@@ -1731,6 +1731,7 @@
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Δεν έχει εγκατασταθεί άλλη εφαρμογή χάρτη"</string>
+    <string name="pref_title_overpass_url_select">"Αλλαγή διακομιστή Overpass"</string>
 
     <!-- Fuzzy -->
     <string name="pref_title_overpass_url_info">"Απαιτείται επανεκκίνηση της εφαρμογής για να εφαρμοστεί. Μπορεί να παρακάμψει τη λογοκρισία, για παράδειγμα στη Ρωσία."</string>
@@ -1846,9 +1847,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Δεν εμφανίζεται αριθμός αναφοράς..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Χτυπήστε τα ερωτηματικά και επιλέξτε μια απάντηση για τη δεδομένη πλευρά του δρόμου."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Ο δρόμος στην εικόνα περιστρέφεται όπως και στον χάρτη στη θέση της ακίδας."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Τι μπορεί να αφεθεί εδώ για ανακύκλωση;"</string>
@@ -1930,10 +1929,199 @@
 
     <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_name_title">"Ποιά θρησκεία εφαρμόζεται στο%s;"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Σάρωση εδώ"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Συνέχεια της τρέχουσας σάρωσης"</string>
+    <string name="quest_buildingType_garages_description">"Ξεχωριστοί χώροι για διαφορετικούς ιδιοκτήτες / ενοικιαστές"</string>
+    <string name="quest_tourism_information_title">"Τι είδους τουριστικές πληροφορίες είναι αυτές;"</string>
+    <string name="quest_tourism_information_name_title">"Τι είδους τουριστικές πληροφορίες είναι %s;"</string>
+    <string name="quest_tourism_information_office">"Γραφείο τουριστικών πληροφοριών"</string>
+    <string name="quest_tourism_information_board">"Πίνακας πληροφοριών"</string>
+    <string name="quest_tourism_information_terminal">"Τερματικό πληροφοριών"</string>
+    <string name="quest_tourism_information_map">"Χάρτης"</string>
+    <string name="quest_tourism_information_guidepost">"Οδοδείκτης"</string>
+    <string name="quest_recycling_materials_answer_waste">"Είναι για γενικά απόβλητα"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Λοιπόν, αυτό είναι ένα δοχείο για οποιαδήποτε απόβλητα, όπως οικιακά ή εμπορικά απόβλητα;"</string>
+    <string name="quest_accepts_cash_title">"Δέχεται %s πληρωμή σε μετρητά;"</string>
+    <string name="user_profile">"Το Προφίλ μου"</string>
+    <string name="user_login">"Σύνδεση"</string>
+    <string name="user_logout">"Αποσύνδεση"</string>
+    <string name="osm_profile">"Προφίλ OSM
+"</string>
+    <string name="next">"Επόμενο"</string>
+    <string name="letsgo">"Πάμε!"</string>
+    <string name="tutorial_welcome_to_osm">"Καλώς ήρθατε στο OpenStreetMap"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"ο δωρεάν παγκόσμιος χάρτης wiki"</string>
+    <string name="tutorial_intro">"Το StreetComplete διευκολύνει τη συνεισφορά στο OpenStreetMap.
+Αναζητά αυτόματα στοιχεία που λείπουν στην περιοχή σας: λωρίδες ποδηλάτων, αριθμοί σπιτιών, ώρες λειτουργίας και πολλά άλλα…"</string>
+    <string name="tutorial_solving_quests">"Μόλις βρεθούν, τα στοιχεία που λείπουν θα εμφανίζονται στον χάρτη σας ως αποστολές. Μπορείτε να αρχίσετε να τα επιλύετε αμέσως και αργότερα να συνδεθείτε για να δημοσιεύσετε τις απαντήσεις σας."</string>
+    <string name="tutorial_stay_safe">"Όποτε είστε αβέβαιοι, μπορείτε πάντα να απαντήσετε \"Δεν μπορώ να πω\" και να αφήσετε μια σημείωση. Τέλος, θυμηθείτε να παραμείνετε ασφαλείς: Να γνωρίζετε το περιβάλλον σας και να μην εισέρχεστε σε ιδιωτική περιουσία."</string>
+    <string name="tutorial_happy_mapping">"Καλή Χαρτογράφηση!"</string>
+    <string name="achievements_empty">"Δεν έχετε ακόμη επιτεύγματα"</string>
+    <string name="links_empty">"Δεν έχετε ακόμη συνδέσμους"</string>
+    <string name="quests_empty">"Δεν έχετε δημοσιεύσει ακόμη απαντήσεις από αναζήτηση"</string>
+    <string name="unsynced_quests_description">"συν %d δεν έχουν δημοσιευτεί ακόμη αλλαγές."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Έχετε %d μη δημοσιευμένες αλλαγές ακόμη. Πρέπει να συνδεθείτε για να τις ανεβάσετε."</string>
+    <string name="user_quests_title">"Λυμένα Ερωτήματα"</string>
+    <string name="user_achievements_title">"Επιτεύγματα"</string>
+    <string name="user_links_title">"Συλλογή συνδέσμων"</string>
+    <string name="user_profile_title">"Προφίλ"</string>
+    <string name="user_statistics_quest_wiki_link">"Τεκμηρίωση"</string>
+    <string name="achievements_unlocked_link">"Ξεκλείδωτος σύνδεσμος:"</string>
+    <string name="achievements_unlocked_links">"Ξεκλείδωτοι σύνδεσμοι:"</string>
+    <string name="link_category_intro_title">"Εισαγωγή"</string>
+    <string name="link_category_intro_description">"Μάθετε περισσότερα για το OSM και την κοινότητά του"</string>
+    <string name="link_category_editors_title">"Συνεισφορά"</string>
+    <string name="link_category_editors_description">"Επεξεργαστές και άλλοι τρόποι για να συνεισφέρετε στο OpenStreetMap"</string>
+    <string name="link_category_maps_title">"Χάρτες"</string>
+    <string name="link_category_maps_description">"Χάρτες βασισμένοι στο OpenStreetMap"</string>
+    <string name="link_category_showcase_title">"Παρουσίαση"</string>
+    <string name="link_category_showcase_description">"Υπηρεσίες και εφαρμογές που βασίζονται στο OpenStreetMap"</string>
+    <string name="link_category_goodies_title">"Καλούδια"</string>
+    <string name="link_category_goodies_description">"Ενδιαφέροντα σχετικά με το χάρτη πράγματα που μπορείτε να δοκιμάσετε"</string>
+    <string name="link_cyclosm_description">"Ένας χάρτης για ποδηλάτες"</string>
+    <string name="link_wheelmap_description">"Ένας χάρτης για την εύρεση θέσεων προσβάσιμων από αναπηρικά αμαξίδια"</string>
+    <string name="link_osm_buildings_description">"Ένας χάρτης που δείχνει τα κτήρια 3D"</string>
+    <string name="link_openvegemap_description">"Ανακαλύψτε χορτοφαγικά και βίγκαν εστιατόρια στην πόλη σας"</string>
+    <string name="link_touch_mapper_description">"Δημιουργήστε απτούς χάρτες εύκολα για οποιαδήποτε διεύθυνση"</string>
+    <string name="link_mapy_tactile_description">"Απτικοί χάρτες για άτομα με προβλήματα όρασης σε διάφορες κλίμακες"</string>
+    <string name="link_josm_description">"Πλήρως εξοπλισμένο πρόγραμμα επεξεργασίας OSM για τον υπολογιστή. Αυτό είναι το ισχυρό εργαλείο για τακτικούς συνεργάτες."</string>
+    <string name="link_vespucci_description">"Προηγμένος επεξεργαστής OSM για Android"</string>
+    <string name="link_ideditor_description">"Απλό πρόγραμμα επεξεργασίας OSM για το πρόγραμμα περιήγησης. Βελτιστοποιημένο για υπολογιστή ή μεγάλο tablet"</string>
+    <string name="link_umap_description">"Δημιουργήστε χάρτες με προσαρμοσμένα δεδομένα γρήγορα και ενσωματώστε τους στον ιστότοπό σας"</string>
+    <string name="link_opnvkarte_description">"Ένας χάρτης για διαδρομές και στάσεις δημόσιων συγκοινωνιών"</string>
+    <string name="link_pic4review_description">"Συνεισφέρετε στο OSM απλά κοιτάζοντας φωτογραφίες της πόλης σας"</string>
+    <string name="link_wiki_description">"Το wiki είναι το σημείο εκκίνησής σας με οτιδήποτε σχετικό με το OpenStreetMap"</string>
+    <string name="link_learnosm_description">"Είστε νέοι στο OpenStreetMap; Αυτός είναι ένας οδηγός για αρχάριους"</string>
+    <string name="link_neis_one_description">"Μια τεράστια συλλογή στατιστικών για συνεργάτες του OpenStreetMap, όπως πού και πώς συνεισφέρατε, ποιος άλλος είναι γύρω σας καθώς και πίνακες κατάταξης"</string>
+    <string name="link_welcome_mat_description">"Γενικές πληροφορίες σχετικά με το OpenStreetMap και τον τρόπο συνεργασίας με το OSM ως οργανισμό"</string>
+    <string name="link_mapillary_description">"Μια υπηρεσία και μια εφαρμογή για κοινή χρήση φωτογραφιών σε επίπεδο δρόμου, με σαφή άδεια να τις χρησιμοποιείτε για τη συνεισφορά στο OSM"</string>
+    <string name="link_openstreetcam_description">"Μια υπηρεσία και μια εφαρμογή για κοινή χρήση φωτογραφιών σε επίπεδο δρόμου, με σαφή άδεια να τις χρησιμοποιείτε για τη συνεισφορά στο OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Πλοήγηση στροφή με στροφή για χρήστες αναπηρικών αμαξιδίων"</string>
+    <string name="link_nominatim_description">"Ο γεωκωδικοποιητής για δεδομένα OSM, που χρησιμοποιείται από πολλές άλλες υπηρεσίες"</string>
+    <string name="link_city_roads_description">"Δώστε όλους τους δρόμους μιας πόλης, για εκτύπωση σε μπλουζάκια, κούπες,…"</string>
+    <string name="link_myosmatic_description">"Δημιουργήστε εκτυπώσιμους χάρτες πόλεων με λίγα εύκολα βήματα, προαιρετικά με έναν κατάλογο οδών"</string>
+    <string name="link_brouter_description">"Ίσως η καλύτερη μηχανή δρομολόγησης για ποδηλάτες"</string>
+    <string name="link_show_me_the_way_description">"Παρακολουθήστε τροποποιήσεις OSM σε πραγματικό χρόνο"</string>
+    <string name="link_osrm_description">"Η γρηγορότερη μηχανή δρομολόγησης τριγύρω"</string>
+    <string name="link_openrouteservice_description">"Δρομολόγηση για μια ποικιλία οχημάτων και με τα πόδια, το καθένα με προτιμήσεις. Μπορεί επίσης να εμφανίσει ισόχρονες (πρόσβαση σε μια περιοχή σε Χ λεπτά από το σημείο εκκίνησης)."</string>
+    <string name="link_osm_haiku_description">"Χρήση δεδομένων OSM για τη δημιουργία χαϊκού (μια μορφή ιαπωνικής ποίησης)"</string>
+    <string name="link_openinframap_description">"Ένας χάρτης που δείχνει την υποδομή ενέργειας, τηλεπικοινωνιών, φυσικού αερίου και πετρελαίου"</string>
+    <string name="link_openorienteeringmap_description">"Δημιουργήστε εκτυπώσιμους χάρτες για το άθλημα προσανατολισμού orienteering"</string>
+    <string name="link_openstreetbrowser_description">"Ένας χάρτης για να περιηγηθείτε στις λειτουργίες του χάρτη του OpenStreetMap ανά κατηγορία"</string>
+    <string name="link_weeklyosm_description">"Το εβδομαδιαίο ιστολόγιο ειδήσεων σχετικά με το τι συμβαίνει στον κόσμο του OpenStreetMap"</string>
+    <string name="link_figuregrounder_description">"Δημιουργήστε αφίσες διαγράμματος του εδαφικού σχήματος μιας πόλης ή γειτονιάς"</string>
+    <string name="achievement_first_edit_title">"Η Πρώτη Αναζήτηση Επιλύθηκε"</string>
+    <string name="achievement_first_edit_description">"Καλώς ήλθατε στην κοινότητα OpenStreetMap! Στην οθόνη του προφίλ σας, μπορείτε να δείτε περισσότερες πληροφορίες για κάθε τύπο αναζήτησης που επιλύσατε."</string>
+    <string name="achievement_surveyor_title">"Επιθεωρητής"</string>
+    <string name="achievement_surveyor_solved_X">"Επιλύσατε %d αναζητήσεις! Συνεχίστε να ξεκλειδώνετε περισσότερα επιτεύγματα που περιέχουν συνδέσμους προς το OSM και άλλες εφαρμογές και έργα που σχετίζονται με το χάρτη!"</string>
+    <string name="achievement_regular_title">"Τακτικοί "</string>
+    <string name="achievement_regular_description">"Συνεισφέρατε %d ημέρες στο OSM με αυτήν την εφαρμογή! Οι τακτικοί συντελεστές είναι η ραχοκοκαλιά του OSM, ευχαριστώ για την αφοσίωσή σας! ❤"</string>
+    <string name="achievement_bicyclist_title">"Ποδηλάτης"</string>
+    <string name="achievement_bicyclist_solved_X">"Επιλύσατε %d αναζητήσεις που βοηθούν τους ποδηλάτες!"</string>
+    <string name="achievement_wheelchair_title">"Κινητικότητα"</string>
+    <string name="achievement_wheelchair_solved_X">"Επιλύσατε %d αναζητήσεις που βοηθούν τους χρήστες αναπηρικών αμαξιδίων να μετακινούνται στην πόλη!"</string>
+    <string name="achievement_postman_title">"Ταχυδρόμος"</string>
+    <string name="achievement_postman_solved_X">"Βοηθήσατε να εντοπίσετε %d διευθύνσεις! Αυτά τα δεδομένα είναι απαραίτητα όχι μόνο για τον ταχυδρόμο αλλά και για οποιοδήποτε σύστημα πλοήγησης."</string>
+    <string name="achievement_building_title">"Πολυώροφο"</string>
+    <string name="achievement_building_solved_X">"Επιλύσατε %d αποστολές σχετικές με κτήρια. Λάβετε υπόψη ότι αυτή η εφαρμογή ζητά τον αριθμό οικίας ενός κτηρίου μόνο αφού προσδιοριστεί ο τύπος του."</string>
+    <string name="achievement_blind_title">"Έκτη Αίσθηση"</string>
+    <string name="achievement_blind_solved_X">"Επιλύσατε %d αναζητήσεις που είναι ενδιαφέρουσες για άτομα με προβλήματα όρασης."</string>
+    <string name="achievement_pedestrian_title">"Δρομέας"</string>
+    <string name="achievement_pedestrian_solved_X">"Επιλύσατε %d αναζητήσεις που είναι ενδιαφέρουσες για τους ανθρώπους με τα πόδια!"</string>
+    <string name="achievement_veg_title">"Ευγενικός με τα Ζώα"</string>
+    <string name="achievement_veg_solved_X">"Λύσατε %d αναζητήσεις που είναι ενδιαφέρουσες για άτομα που ζουν σε δίαιτα χωρίς κρέας!"</string>
+    <string name="achievement_car_title">"Στο δρόμο"</string>
+    <string name="achievement_car_solved_X">"Επιλύσατε %d αποστολές που βελτιώνουν τις λεπτομέρειες της οδικής υποδομής, τοποθετώντας το δρόμο στο OpenStreetMap!"</string>
+    <string name="unread_messages_message">"Έχετε %d αδιάβαστα μηνύματα στα εισερχόμενά σας"</string>
+    <string name="unread_messages_button">"Ανοίξτε τα Εισερχόμενα"</string>
+    <string name="action_about2">"Σχετικά"</string>
+    <string name="map_btn_menu">"Μενού"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt; Τα δεδομένα που εμφανίζονται στο προφίλ σας συγκεντρώνονται από το δημόσιο διαθέσιμο ιστορικό συνεισφορών στο OpenStreetMap και στη συνέχεια φιλοξενούνται στον διακομιστή μου. &lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"Μπορείτε επίσης να κάνετε αυτό αργότερα στην οθόνη προφίλ."</string>
+    <string name="credits_art_contributors_title">"Συνεισφέροντες εικονογράφηση"</string>
+    <string name="credits_projects_contributors_title">"Έργα που έγιναν για το StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Κύριοι συνεισφέροντες"</string>
+    <string name="stats_are_syncing">"Τα στατιστικά σας συγχρονίζονται ακόμη. Ελέγξτε αυτήν την οθόνη αργότερα."</string>
+    <string name="user_statistics_country_rank">"Κατάταξη σε %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Πύλη Χαρτογράφησης %s"</string>
+    <string name="user_statistics_filter_by_country">"ανά χώρα"</string>
+    <string name="user_statistics_filter_by_quest_type">"ανά τύπο αναζήτησης"</string>
+    <string name="user_profile_global_rank">"Παγκόσμια κατάταξη"</string>
+    <string name="user_profile_local_rank">"Κατάταξη σε %s"</string>
+    <string name="user_profile_days_active">"Ενεργές ημέρες"</string>
+    <string name="user_profile_achievement_levels">"Επίπεδα επιτευγμάτων"</string>
+    <string name="quest_address_street_title">"Σε ποιον δρόμο ανήκει ο αριθμός (σπίτι) %s ;"</string>
+    <string name="quest_address_street_no_named_streets">"Δεν ανήκει σε ονομασμένο δρόμο"</string>
+    <string name="quest_address_street_place_name_label">"Όνομα τοποθεσίας:"</string>
+    <string name="quest_address_street_description">"Πατήστε τον δρόμο στον οποίο ανήκει ο χάρτης ή εισαγάγετέ τον χωρίς συντομογραφίες στο παρακάτω πεδίο:"</string>
+    <string name="quest_recycling_type_cooking_oil">"Μαγειρικό λάδι"</string>
+    <string name="quest_recycling_type_engine_oil">"Λάδι μηχανής"</string>
+    <string name="link_photon_description">"Μια αυτόνομη επέκταση στο Nominatim, με ασαφή αναζήτηση και αναζήτηση - όπως - εσείς - πληκτρολογείτε"</string>
+    <string name="link_graphhopper_description">"Μία ευέλικτη μηχανή δρομολόγησης"</string>
+    <string name="link_qwant_maps_description">"Ένας χάρτης με αναζητήσιμα μέρη και κατευθύνσεις"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt; Για να εμφανιστεί ο χάρτης, τα διανυσματικά πλακίδια ανακτώνται από το %1$s. Ανατρέξτε στην &lt;a href=\"%2$s\"&gt; δήλωση απορρήτου &lt;/a&gt; για περισσότερες πληροφορίες. &lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"Χορηγοί"</string>
+    <string name="quest_board_type_history">"Ιστορία"</string>
+    <string name="quest_board_type_geology">"Γεωλογία"</string>
+    <string name="quest_board_type_plants">"Φυτά"</string>
+    <string name="quest_board_type_wildlife">"Άγρια ζωή"</string>
+    <string name="quest_board_type_nature">"Φύση (πολλαπλά θέματα)"</string>
+    <string name="quest_board_type_notice_board">"Είναι ένας πίνακας ανακοινώσεων"</string>
+    <string name="quest_board_type_public_transport">"Δημόσια συγκοινωνία"</string>
+    <string name="quest_board_type_title">"Ποιο είναι το θέμα αυτού του πίνακα πληροφοριών;"</string>
+    <string name="quest_sidewalk_separately_mapped">"Ναι, εμφανίζεται ξεχωριστά στο χάρτη"</string>
+    <string name="quest_board_type_map">"Είναι ένας χάρτης"</string>
+    <string name="quest_board_type_map_title">"Είναι απλώς ένας χάρτης και μόνο ένας χάρτης;"</string>
+    <string name="quest_board_type_map_description">"Εάν ο πίνακας αφορά ένα συγκεκριμένο θέμα, προσδιορίστε το, ανεξάρτητα από το εάν περιλαμβάνει επίσης έναν χάρτη. Για παράδειγμα, μια δημόσια συγκοινωνία μπορεί να έχει χάρτη διαδρομής λεωφορείου. Εάν το θέμα δεν περιλαμβάνεται στις διαθέσιμες απαντήσεις, σκεφτείτε το ενδεχόμενο να αφήσετε μια σημείωση."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Πολλαπλές επιφάνειες…"</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Είστε βέβαιοι ότι είναι αδύνατο να προσδιορίσετε την επιφάνεια; Σημειώστε την επιλογή απάντησης \"Διαφέρει μέσα στη διαδρομή\" που σας επιτρέπει να κόψετε τον δρόμο με τον οποίο αλλάζει η επιφάνεια. Χρησιμοποιήστε το \"Δεν μπορώ να πω\" εάν υπάρχει μία μόνο επιφάνεια, αλλά δεν είναι διαθέσιμη ως απάντηση."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Προσδιορίστε εν συντομία τη φύση της επιφάνειας εδώ, για παράδειγμα \"αμμώδης με μπαλώματα σε πλακόστρωτο\". Το μήκος του κειμένου περιορίζεται σε 255 χαρακτήρες."</string>
+    <string name="quest_surface_detailed_name_title">"Ποια συγκεκριμένη επιφάνεια έχει ο δρόμος %s εδώ;"</string>
+    <string name="quest_surface_detailed_square_name_title">"Ποια συγκεκριμένη επιφάνεια έχει η πλατεία %s εδώ;"</string>
+    <string name="quest_surface_detailed_title">"Τι συγκεκριμένη επιφάνεια έχει αυτό το κομμάτι δρόμου;"</string>
+    <string name="quest_surface_detailed_square_title">"Τι συγκεκριμένη επιφάνεια έχει αυτή η πλατεία εδώ;"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"διεθνές"</string>
+    <string name="quest_streetName_menuItem_romanized">"σε λατινική γραφή"</string>
+    <string name="quest_buildingType_terrace2">"Σειρά σπιτιών"</string>
+    <string name="quest_oneway_tutorial">"Ο δρόμος στην εικόνα περιστρέφεται όπως και στον χάρτη στη θέση του πείρου. Σημειώστε την υποδεικνυόμενη κατεύθυνση."</string>
     <string name="at_housename">"Όνομα οικίας %s:"</string>
     <string name="at_conscription_and_street_number">"Αριθμός συνταγογράφησης %1$s, Αριθμός προσανατολισμού %2$s:"</string>
+
+    <!-- Fuzzy -->
     <string name="at_conscription_number">"Αριθμός συνταγογράφησης %s:"</string>
     <string name="at_housenumber">"αριθμός σπιτιού %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Ποιές είναι οι ώρες λειτουργίας του %1$s (%2$s);"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Εξακολουθούν να είναι σωστές για το %s αυτές οι ώρες λειτουργίας;"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Εξακολουθούν να είναι σωστές για το %1$s (%2$s)  αυτές οι ώρες λειτουργίας;"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Εξακολουθούν να είναι σωστές αυτές οι ώρες λειτουργίας (%s);"</string>
+    <string name="quest_openingHours_add_off_days">"Προσθέστε ρεπό"</string>
+    <string name="quest_openingHours_off_day">"Ρεπό"</string>
+    <string name="quest_openingHours_unspecified_range">"Δεν διευκρινίζεται"</string>
+    <string name="quest_cycleway_resurvey_title">"Είναι ακόμα αυτή η τοποθεσία του ποδηλατόδρομου εδώ;"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Είναι %1$s (%2$s) προσβάσιμη η αναπηρική πολυθρόνα;"</string>
+    <string name="pref_title_resurvey_intervals">"Διαστήματα επανεξέτασης"</string>
+    <string name="resurvey_intervals_less_often">"Ρωτήστε λιγότερο συχνά"</string>
+    <string name="resurvey_intervals_default">"Προκαθορισμένο"</string>
+    <string name="resurvey_intervals_more_often">"Ρωτήστε πιο συχνά"</string>
+    <string name="quest_street_side_puzzle_select">"Πατήστε για επιλογή"</string>
+    <string name="quest_accepts_cash_type_title">"Δέχεται το %1$s (%2$s) πληρωμή σε μετρητά;"</string>
+    <string name="quest_busStopBench_tram_name_title">"Έχει η στάση του τραμ %s πάγκο;"</string>
+    <string name="quest_busStopBench_tram_title">"Μήπως αυτή η στάση τραμ έχει πάγκο;"</string>
+    <string name="quest_busStopBench_title">"Μήπως αυτή η στάση λεωφορείου έχει πάγκο;"</string>
+    <string name="quest_busStopBench_name_title">"Η στάση λεωφορείου %s έχει πάγκο;"</string>
+    <string name="quest_summit_register_title">"Υπάρχει καταχώρηση κορυφής στο %s;"</string>
+    <string name="quest_is_defibrillator_inside_title">"Είναι αυτός ο απινιδωτής (AED) μέσα σε ένα κτήριο;"</string>
+    <string name="dialog_tutorial_download">"Με τον αυτόματο συγχρονισμό κλειστό, οι αναζητήσεις δεν λαμβάνονται αυτόματα. Για να το κάνετε αυτό χειροκίνητα, χρησιμοποιήστε το κουμπί  \"%s\" στο μενού στη τοποθεσία που θέλετε να κατεβάσετε."</string>
+    <string name="about_title_translate">"Βοηθήστε στη μετάφραση αυτής της εφαρμογής"</string>
+    <string name="about_description_translate">"Το %1$s είναι μεταφρασμένο %2$d%%"</string>
+    <string name="quest_oneway2_title">"Είναι αυτός μονόδρομος; Προς ποια κατεύθυνση;"</string>
+    <string name="quest_oneway2_dir">"Μονόδρομος προς αυτήν την κατεύθυνση"</string>
+    <string name="quest_oneway2_no_oneway">"Όχι μονόδρομος"</string>
+    <string name="quest_maxweight_select_sign">"Επιλέξτε πινακίδα"</string>
+    <string name="quest_steps_incline_title">"Ποια κατεύθυνση οδηγεί προς τα πάνω για αυτά τα βήματα;"</string>
+    <string name="quest_steps_incline_up">"Με αυτόν τον τρόπο"</string>
+    <string name="quest_step_count_title">"Πόσα βήματα είναι εδώ;"</string>
+    <string name="quest_traffic_signals_sound_title">"Υπάρχουν ηχητικά σήματα για τους τυφλούς εδώ;"</string>
 </resources>

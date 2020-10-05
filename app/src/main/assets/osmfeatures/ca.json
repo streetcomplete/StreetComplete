@@ -102,9 +102,6 @@
             "name": "Fuster",
             "terms": "Fuster, Fusteria, Ebenista, Ebenisteria, Tallista"
         },
-        "railway/level_crossing": {
-            "name": "Pas a nivell (carretera)"
-        },
         "amenity/restaurant/greek": {
             "name": "Restaurant grec",
             "terms": "cuina grega"
@@ -1503,9 +1500,6 @@
         "amenity/arts_centre": {
             "name": "Centre artístic"
         },
-        "railway/crossing": {
-            "name": "Pas a nivell (camí)"
-        },
         "shop/travel_agency": {
             "name": "Agència de viatges",
             "terms": "Agència de viatges"
@@ -2234,9 +2228,6 @@
         },
         "tourism/alpine_hut": {
             "name": "Refugi de muntanya"
-        },
-        "tourism/information/office": {
-            "name": "Oficina d'informació turística"
         },
         "shop/alcohol": {
             "name": "Botiga de licors",

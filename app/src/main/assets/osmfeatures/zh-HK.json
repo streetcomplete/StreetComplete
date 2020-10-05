@@ -138,10 +138,6 @@
             "name": "木匠",
             "terms": "木匠,木工"
         },
-        "railway/level_crossing": {
-            "name": "鐵路交滙處 (道路)",
-            "terms": "Railway Crossing (Road), 鐵路交滙處 (道路)"
-        },
         "amenity/restaurant/greek": {
             "name": "希臘式餐廳",
             "terms": "希臘餐廳"
@@ -1936,10 +1932,6 @@
             "name": "美術館",
             "terms": "Arts Center,美術中心,美術館,藝術中心,藝術館"
         },
-        "railway/crossing": {
-            "name": "鐵路交滙處 (路徑)",
-            "terms": "Railway Crossing (Path), 鐵路交滙處 (路徑)"
-        },
         "shop/travel_agency": {
             "name": "旅行社",
             "terms": "Travel Agency,旅行社"
@@ -2885,10 +2877,6 @@
         "tourism/alpine_hut": {
             "name": "高山小屋",
             "terms": "Alpine Hut,高山小屋,高山屋仔"
-        },
-        "tourism/information/office": {
-            "name": "遊客中心",
-            "terms": "Tourist Information Office, 旅客中心, 遊客中心, 旅客諮詢中心"
         },
         "shop/alcohol": {
             "name": "酒類專賣店",

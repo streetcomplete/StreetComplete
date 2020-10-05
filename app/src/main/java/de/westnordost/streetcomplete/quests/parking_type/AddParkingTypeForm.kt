@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.parking_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddParkingTypeForm : AImageListQuestAnswerFragment<String,String>() {
 

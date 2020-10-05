@@ -181,9 +181,6 @@
             "name": "Dailidė",
             "terms": "stalius"
         },
-        "railway/level_crossing": {
-            "name": "Geležinkelio Pervaža (Kelias)"
-        },
         "man_made/pier": {
             "name": "Prieplauka"
         },

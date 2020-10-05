@@ -114,9 +114,6 @@
         "craft/carpenter": {
             "name": "Carpenter"
         },
-        "railway/level_crossing": {
-            "name": "Level Crossing (Road)"
-        },
         "attraction/amusement_ride": {
             "name": "Amusement Ride"
         },
@@ -1706,9 +1703,6 @@
         "shop/pet_grooming": {
             "name": "Pet Grooming Shop"
         },
-        "railway/crossing": {
-            "name": "Level Crossing (Path)"
-        },
         "shop/travel_agency": {
             "name": "Travel Agency"
         },
@@ -2548,9 +2542,6 @@
         },
         "tourism/alpine_hut": {
             "name": "Alpine Hut"
-        },
-        "tourism/information/office": {
-            "name": "Tourist Information Office"
         },
         "shop/alcohol": {
             "name": "Off licence (Alcohol shop)"

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 239 173" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(0 -251.23)">
+  <g transform="matrix(.17706 0 0 -.17706 49.075 383.85)">
+   <path d="m372.84 651.95-235-260v-555h470v555z" fill="#e3decc" fill-rule="evenodd"/>
+   <path d="m372.84 706.95-315-340 40-40 275 300 275-300 40 40z" fill-opacity=".2" fill-rule="evenodd"/>
+   <path d="m372.84 726.95-315-340 40-40 275 300 275-300 40 40z" fill="#c84747" fill-rule="evenodd"/>
+   <rect transform="scale(1,-1)" x="422.84" y="-431.95" width="70" height="70" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="252.84" y="-431.95" width="70" height="70" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="337.84" y="-301.95" width="70" height="85" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="202.84" y="-301.95" width="70" height="85" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="472.84" y="-301.95" width="70" height="85" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="337.84" y="-161.95" width="70" height="85" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="202.84" y="-161.95" width="70" height="85" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="472.84" y="-161.95" width="70" height="85" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="337.84" y="-16.953" width="70" height="85" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="202.84" y="-16.953" width="70" height="85" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="472.84" y="-16.953" width="70" height="85" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="337.84" y="-551.95" width="70" height="70" fill="#fff" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="472.84" y="-301.95" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="337.84" y="-301.95" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="202.84" y="-301.95" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="252.84" y="-431.95" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="422.84" y="-431.95" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="337.84" y="-551.95" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="202.84" y="-161.95" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="337.84" y="-161.95" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="472.84" y="-161.95" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="472.84" y="-16.953" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="337.84" y="-16.953" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="202.84" y="-16.953" width="70" height="20" fill-opacity=".2" style="paint-order:normal"/>
+   <path d="m-42.16 321.95v-15l6e-6 -425v-15h70v15h-55l-6e-6 425h55v15z" fill="#444" style="paint-order:normal"/>
+   <path d="m717.84 746.95v-15h55v-425h-55v-15h70v455z" fill="#444" style="paint-order:normal"/>
+   <path d="m-277.16-193.05c100 0 350 65 415 65v-35c-65 0-315-65-415-65z" fill="#82a04e" fill-rule="evenodd"/>
+   <path d="m607.84 11.953v-40c162.5 28.492 301.26 31.461 465 35v40c-164.43-3.478-303.9-6.6883-465-35z" fill="#82a04e" fill-rule="evenodd"/>
+   <rect transform="scale(1,-1)" x="137.84" y="128.05" width="470" height="35" fill-opacity=".2" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="-327.16" y="193.05" width="25" height="35" fill="#82a04e" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="1097.8" y="-6.9531" width="25" height="235" fill-opacity="0" style="paint-order:normal"/>
+   <rect transform="scale(1,-1)" x="1097.8" y="-46.953" width="25" height="40" fill="#82a04e" style="paint-order:normal"/>
+  </g>
+ </g>
+</svg>
