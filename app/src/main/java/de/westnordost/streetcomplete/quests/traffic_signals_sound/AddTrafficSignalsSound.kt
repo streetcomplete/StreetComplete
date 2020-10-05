@@ -13,7 +13,7 @@ class AddTrafficSignalsSound(o: OverpassMapDataAndGeometryApi, r: ResurveyInterv
     : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = """
-        nodes with highway = crossing and crossing = traffic_signals
+        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals 
         and (
           !$SOUND_SIGNALS
           or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -${r * 4} years

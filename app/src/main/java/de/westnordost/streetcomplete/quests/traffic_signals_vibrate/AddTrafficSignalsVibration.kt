@@ -13,7 +13,7 @@ class AddTrafficSignalsVibration(o: OverpassMapDataAndGeometryApi, r: ResurveyIn
     : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = """
-        nodes with highway = crossing and crossing = traffic_signals
+        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals 
         and (
           !$VIBRATING_BUTTON
           or $VIBRATING_BUTTON = no and $VIBRATING_BUTTON older today -${r * 4} years
