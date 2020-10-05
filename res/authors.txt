@@ -217,6 +217,7 @@ quest icons/
     peak.svg                         (c) 2020 Mateusz Konieczny 
     pedestrian.svg
     pedestrian_crossing.svg
+    pedestrian_crossing_island.svg   (c) 2020 Kai Michael Poppe and Tobias Zwick
     phone.svg
     pitch_surface.svg
     playground.svg
