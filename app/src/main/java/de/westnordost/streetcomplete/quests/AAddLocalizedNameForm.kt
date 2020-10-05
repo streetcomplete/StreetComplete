@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.localized_name
+package de.westnordost.streetcomplete.quests
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toObject
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
 import java.util.*

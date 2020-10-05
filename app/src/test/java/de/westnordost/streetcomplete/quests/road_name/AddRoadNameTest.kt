@@ -1,10 +1,10 @@
-package de.westnordost.streetcomplete.quests.localized_name
+package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.mock
+import de.westnordost.streetcomplete.quests.LocalizedName
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
@@ -100,7 +100,7 @@ class AddRoadNameTest {
     }
 
     // convenience method
-    private fun roadName(vararg names:LocalizedName): RoadName {
+    private fun roadName(vararg names: LocalizedName): RoadName {
         val pointsList = listOf(OsmLatLon(0.0,0.0), OsmLatLon(1.0,1.0))
         return RoadName(names.toList(), 1L, pointsList)
     }

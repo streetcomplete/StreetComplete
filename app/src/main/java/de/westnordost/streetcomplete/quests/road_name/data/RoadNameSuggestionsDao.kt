@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.localized_name.data
+package de.westnordost.streetcomplete.quests.road_name.data
 
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
@@ -11,14 +11,14 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.ktx.getBlob
 import de.westnordost.streetcomplete.ktx.query
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.GEOMETRY
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.MAX_LATITUDE
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.MAX_LONGITUDE
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.MIN_LATITUDE
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.MIN_LONGITUDE
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.NAMES
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.WAY_ID
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.NAME
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.GEOMETRY
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.MAX_LATITUDE
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.MAX_LONGITUDE
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.MIN_LATITUDE
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.MIN_LONGITUDE
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.NAMES
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.WAY_ID
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.NAME
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.util.distanceToArcs

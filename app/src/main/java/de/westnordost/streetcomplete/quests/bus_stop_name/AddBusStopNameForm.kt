@@ -1,9 +1,11 @@
-package de.westnordost.streetcomplete.quests.localized_name
+package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import androidx.appcompat.app.AlertDialog
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
+import de.westnordost.streetcomplete.quests.LocalizedName
 
 
 class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {

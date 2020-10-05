@@ -457,6 +457,7 @@ object AchievementsModule {
                     "AddProhibitedForPedestrians",
                     "AddSidewalk",
                     "AddBusStopName",
+                    "AddBusStopRef",
                     "AddBusStopShelter",
                     "AddBenchStatusOnBusStop",
                     "AddCrossingIsland"

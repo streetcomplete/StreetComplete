@@ -39,9 +39,10 @@ import de.westnordost.streetcomplete.quests.handrail.AddHandrail
 import de.westnordost.streetcomplete.quests.step_count.AddStepCount
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
-import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName
-import de.westnordost.streetcomplete.quests.localized_name.AddRoadName
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
+import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
+import de.westnordost.streetcomplete.quests.road_name.AddRoadName
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
@@ -112,6 +113,7 @@ object QuestModule
         AddOneway(o),
         AddSuspectedOneway(o, trafficFlowSegmentsApi, trafficFlowDao),
         AddBusStopName(o),
+        AddBusStopRef(o),
         AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
         AddHousenumber(o),
         AddAddressStreet(o, roadNameSuggestionsDao),

@@ -1,9 +1,10 @@
-package de.westnordost.streetcomplete.quests.localized_name
+package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 
 class AddBusStopName(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<BusStopNameAnswer>(o) {
 
@@ -14,9 +15,10 @@ class AddBusStopName(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
           or
           (highway = bus_stop and public_transport != stop_position)
         )
-        and !name and noname != yes
+        and !name and noname != yes and name:signed != no
     """
 
+    override val enabledInCountries = AllCountriesExcept("US", "CA")
     override val commitMessage = "Determine bus/tram stop names"
     override val wikiLink = "Tag:public_transport=platform"
     override val icon = R.drawable.ic_quest_bus_stop_name
@@ -32,7 +34,7 @@ class AddBusStopName(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
     override fun applyAnswerTo(answer: BusStopNameAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is NoBusStopName -> {
-                changes.add("noname", "yes")
+                changes.add("name:signed", "no")
             }
             is BusStopName -> {
                 for ((languageTag, name) in answer.localizedNames) {

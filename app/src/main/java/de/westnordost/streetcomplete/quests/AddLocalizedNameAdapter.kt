@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.localized_name
+package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.graphics.Typeface

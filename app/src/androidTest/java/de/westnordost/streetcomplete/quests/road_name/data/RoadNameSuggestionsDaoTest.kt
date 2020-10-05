@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.localized_name.data
+package de.westnordost.streetcomplete.quests.road_name.data
 
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
