@@ -2210,4 +2210,5 @@ päiviä"</string>
     <string name="dialog_tutorial_download">"Kun automaattinen synkronointi ei ole käytössä, tehtäviä ei ladata automaattisesti. Voit tehdä tämän manuaalisesti käyttämällä \"%s\" -painiketta paikassa, jonka haluat ladata."</string>
     <string name="about_title_translate">"Auta kääntämään tämä sovellus"</string>
     <string name="about_description_translate">"%1$s on kääntänyt %2$d%%"</string>
+    <string name="quest_traffic_signals_sound_title">"Onko täällä äänimerkkiä sokeille?"</string>
 </resources>

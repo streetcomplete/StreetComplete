@@ -84,9 +84,6 @@ class AddOpeningHours (
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason"
-            ),
-            "emergency" to arrayOf(
-                "defibrillator"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
             )
@@ -95,7 +92,7 @@ class AddOpeningHours (
           or opening_hours older today -${r * 1} years
         )
         and (access !~ private|no)
-        and (name or brand or noname = yes or emergency=defibrillator)
+        and (name or brand or noname = yes)
         and opening_hours:signed != no
         """.trimIndent()
     )}

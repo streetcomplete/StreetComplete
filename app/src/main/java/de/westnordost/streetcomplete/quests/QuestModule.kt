@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
+import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.defibrillator.AddIsDefibrillatorIndoor
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
@@ -82,7 +83,8 @@ import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
-import de.westnordost.streetcomplete.quests.traffic_signals_blind.AddTrafficSignalsBlindFeatures
+import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
+import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.*
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
@@ -137,6 +139,7 @@ object QuestModule
         AddSidewalk(o), // SLOW QUERY
         AddProhibitedForPedestrians(o), // uses info from AddSidewalk quest, should be after it
         AddCrossingType(o, r),
+        AddCrossingIsland(o),
         AddBuildingLevels(o),
         AddBusStopShelter(o, r), // at least OsmAnd
         AddVegetarian(o, r),
@@ -170,7 +173,8 @@ object QuestModule
         AddBabyChangingTable(o), // used by OsmAnd in the object description
         AddBikeParkingCover(o), // used by OsmAnd in the object description
         AddTactilePavingCrosswalk(o, r), // Paving can be completed while waiting to cross
-        AddTrafficSignalsBlindFeatures(o, r), // Sound needs to be done as or after you're crossing
+        AddTrafficSignalsSound(o, r), // Sound needs to be done as or after you're crossing
+        AddTrafficSignalsVibration(o, r),
         AddRoofShape(o),
         AddWheelchairAccessPublicTransport(o, r),
         AddWheelchairAccessOutside(o, r),

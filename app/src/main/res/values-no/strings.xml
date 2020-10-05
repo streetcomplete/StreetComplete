@@ -1949,4 +1949,5 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_openingHours_name_type_title">"Hva er åpningstidene til %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Er %1$s (%2$s) tilgjengelig i rullestol?"</string>
     <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) imot betaling med kontanter?"</string>
+    <string name="quest_traffic_signals_sound_title">"Er det lydsignal for synshemmede her?"</string>
 </resources>
