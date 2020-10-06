@@ -21,11 +21,6 @@ android {
     testOptions {
         unitTests {
             returnDefaultValues = true
-            all {
-                useJUnit {
-                    excludeCategories "de.westnordost.streetcomplete.IntegrationTests"
-                }
-            }
         }
     }
 
