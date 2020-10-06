@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.steps_incline
 
+import android.content.res.Resources
 import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
@@ -9,10 +10,12 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGe
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.*
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
+import de.westnordost.streetcomplete.view.RotatedCircleDrawable
+import de.westnordost.streetcomplete.view.image_select.*
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 import kotlinx.android.synthetic.main.view_little_compass.*
+import kotlin.math.PI
 
 class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
 
@@ -23,10 +26,15 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
 
     private var selection: StepsIncline? = null
 
+    private var mapRotation: Float = 0f
+    private var wayRotation: Float = 0f
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         savedInstanceState?.getString(SELECTION)?.let { selection = valueOf(it) }
+
+        wayRotation = (elementGeometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,11 +65,12 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
 
     @AnyThread override fun onMapOrientation(rotation: Float, tilt: Float) {
         streetSideRotater?.onMapOrientation(rotation, tilt)
+        mapRotation = (rotation * 180 / PI).toFloat()
     }
 
     private fun showDirectionSelectionDialog() {
         val ctx = context ?: return
-        val items = StepsIncline.values().map { it.toItem() }
+        val items = StepsIncline.values().map { it.toItem(resources, wayRotation + mapRotation) }
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
             val dir = selected.value!!
             puzzleView.replaceRightSideImageResource(dir.iconResId)
@@ -76,7 +85,11 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
     }
 }
 
-private fun StepsIncline.toItem(): Item<StepsIncline> = Item(this, iconResId, titleResId)
+private fun StepsIncline.toItem(resources: Resources, rotation: Float): DisplayItem<StepsIncline> {
+    val drawable = RotatedCircleDrawable(resources.getDrawable(iconResId))
+    drawable.rotation = rotation
+    return Item2(this, DrawableImage(drawable), ResText(titleResId))
+}
 
 private val StepsIncline.titleResId: Int get() = R.string.quest_steps_incline_up
 
