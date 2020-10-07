@@ -745,7 +745,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
     <string name="quest_steps_incline_title">Which direction leads upwards for these steps?</string>
     <string name="quest_steps_incline_up">This way up</string>
-    <string name="quest_step_count_title">How may steps are here?</string>
+    <string name="quest_step_count_title">How many steps are here?</string>
     <string name="quest_address_street_title">What street does the (house) number %s belong to?</string>
     <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
