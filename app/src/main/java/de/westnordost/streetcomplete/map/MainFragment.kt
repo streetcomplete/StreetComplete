@@ -234,7 +234,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onMapInitialized() {
         val isFollowingPosition = mapFragment?.isFollowingPosition ?: false
-        val isPositionKnown = mapFragment?.displayedLocation != null ?: false
+        val isPositionKnown = (mapFragment?.displayedLocation != null)
         gpsTrackingButton.isActivated = isFollowingPosition
         gpsTrackingButton.visibility = if (isFollowingPosition && isPositionKnown) View.INVISIBLE else View.VISIBLE
         updateLocationPointerPin()

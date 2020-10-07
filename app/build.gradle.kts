@@ -1,11 +1,15 @@
+import java.util.Properties
+import java.net.URI
+import java.io.FileInputStream
+
 plugins {
-    id "com.android.application"
-    id "kotlin-android"
-    id "kotlin-android-extensions"
-    id "kotlin-kapt"
+    id("com.android.application")
+    kotlin("android")
+    kotlin("kapt")
+    id("kotlin-android-extensions")
 }
 
-apply from: "updateData.gradle"
+apply(from = "updateData.gradle")
 
 android {
     compileOptions {
@@ -17,13 +21,15 @@ android {
     }
 
     signingConfigs {
-        release
+        create("release") {
+
+        }
     }
 
-    compileSdkVersion = 29
+    compileSdkVersion(29)
     testOptions {
         unitTests {
-            returnDefaultValues = true
+            it.isReturnDefaultValues = true
         }
     }
 
@@ -37,82 +43,87 @@ android {
     }
 
     buildTypes {
-        release {
-            minifyEnabled = true
-            shrinkResources = true
+        getByName("release") {
+            isMinifyEnabled = true
+            isShrinkResources = true
             // don't use proguard-android-optimize.txt, it is too aggressive, it is more trouble than it is worth
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            signingConfig = signingConfigs.release
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
         }
-        debug {
-            minifyEnabled = true
-            shrinkResources = true
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        getByName("debug") {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
         }
     }
 
     lintOptions {
-        disable "MissingTranslation"
-        abortOnError false
+        disable("MissingTranslation")
+        isAbortOnError = false
     }
 }
 
-def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+
+val keystorePropertiesFile = rootProject.file("keystore.properties")
 if (keystorePropertiesFile.exists()) {
-    def props = new Properties()
-    props.load(new FileInputStream(keystorePropertiesFile))
-    android.signingConfigs.release.storeFile = file(props["storeFile"])
-    android.signingConfigs.release.storePassword = props["storePassword"]
-    android.signingConfigs.release.keyAlias = props["keyAlias"]
-    android.signingConfigs.release.keyPassword = props["keyPassword"]
+    val props = Properties()
+    props.load(FileInputStream(keystorePropertiesFile))
+    val releaseSigningConfig = android.signingConfigs.getByName("release")
+    releaseSigningConfig.storeFile = file(props.getProperty("storeFile"))
+    releaseSigningConfig.storePassword = props.getProperty("storePassword")
+    releaseSigningConfig.keyAlias = props.getProperty("keyAlias")
+    releaseSigningConfig.keyPassword = props.getProperty("keyPassword")
 }
 
 repositories {
     mavenLocal()
     jcenter()
-    maven { url "https://jitpack.io" }
+    maven { url = URI("https://jitpack.io") }
 }
 
 configurations {
-    // it"s already included in Android
-    all*.exclude(group: "net.sf.kxml", module: "kxml2")
+    // it's already included in Android
+    all {
+        exclude(group = "net.sf.kxml", module = "kxml2")
+    }
 
-    cleanedAnnotations
-    compile.exclude(group: "org.jetbrains", module:"annotations")
-    compile.exclude(group: "com.intellij", module:"annotations")
-    compile.exclude(group: "org.intellij", module:"annotations")
-}
-
-ext {
-    mockito_version = "2.28.2"
-    kotlinx_version = "1.3.8"
-    dagger_version = "2.14.1"
+    //cleanedAnnotations TODO?
+    compile.configure {
+        exclude(group = "org.jetbrains", module = "annotations")
+        exclude(group = "com.intellij", module = "annotations")
+        exclude(group = "org.intellij", module = "annotations")
+    }
 }
 
 dependencies {
+    val kotlinVersion = "1.4.10"
+    val mockitoVersion = "2.28.2"
+    val kotlinxVersion = "1.3.8"
+    val daggerVersion = "2.14.1"
 
     // debugging
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.4")
 
     // tests
     testImplementation("junit:junit:4.12")
-    testImplementation("org.mockito:mockito-core:$mockito_version")
-    testImplementation("org.mockito:mockito-inline:$mockito_version")
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+    testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:2.8.0")
 
     androidTestImplementation("androidx.test:runner:1.3.0")
     androidTestImplementation("androidx.test:rules:1.3.0")
-    androidTestImplementation("org.mockito:mockito-android:$mockito_version")
+    androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation("org.assertj:assertj-core:2.8.0")
 
     // dependency injection
-    implementation("com.google.dagger:dagger:$dagger_version")
-    kapt("com.google.dagger:dagger-compiler:$dagger_version")
+    implementation("com.google.dagger:dagger:$daggerVersion")
+    kapt("com.google.dagger:dagger-compiler:$daggerVersion")
 
     // Android stuff
     implementation("com.google.android.material:material:1.2.1")
-    implementation("androidx.core:core-ktx:1.3.1")
+    implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.1")
     implementation("androidx.annotation:annotation:1.1.0")
@@ -126,9 +137,9 @@ dependencies {
     implementation("androidx.exifinterface:exifinterface:1.3.0")
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_version")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_version")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxVersion")
 
     // scheduling background jobs
     implementation("androidx.work:work-runtime:2.4.0")
