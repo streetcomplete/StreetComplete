@@ -12,24 +12,19 @@ class AddOnewayTest {
         assertEquals(false, questType.isApplicableTo(createWay(null)))
     }
 
-    @Test fun `applies to road with just one lane`() {
-        assertEquals(true, questType.isApplicableTo(createWay(mapOf(
-            "highway" to "residential",
-            "lanes" to "1"
-        ))))
-    }
-
     @Test fun `applies to slim road`() {
         assertEquals(true, questType.isApplicableTo(createWay(mapOf(
             "highway" to "residential",
-            "width" to "4"
+            "width" to "4",
+            "lanes" to "1"
         ))))
     }
 
     @Test fun `does not apply to wide road`() {
         assertEquals(false, questType.isApplicableTo(createWay(mapOf(
             "highway" to "residential",
-            "width" to "5"
+            "width" to "5",
+            "lanes" to "1"
         ))))
     }
 
@@ -37,6 +32,7 @@ class AddOnewayTest {
         assertEquals(true, questType.isApplicableTo(createWay(mapOf(
             "highway" to "residential",
             "width" to "12",
+            "lanes" to "1",
             "parking:lane:both" to "perpendicular",
             "parking:lane:both:perpendicular" to "on_street"
         ))))
@@ -46,8 +42,17 @@ class AddOnewayTest {
         assertEquals(false, questType.isApplicableTo(createWay(mapOf(
             "highway" to "residential",
             "width" to "13",
+            "lanes" to "1",
             "parking:lane:both" to "perpendicular",
             "parking:lane:both:perpendicular" to "on_street"
+        ))))
+    }
+
+    @Test fun `does not apply to slim road with more than one lane`() {
+        assertEquals(false, questType.isApplicableTo(createWay(mapOf(
+            "highway" to "residential",
+            "width" to "4",
+            "lanes" to "2"
         ))))
     }
 }

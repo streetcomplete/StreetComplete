@@ -21,7 +21,7 @@ class AddOneway(
         ways with highway ~ residential|service|tertiary|unclassified
          and !oneway and area != yes and junction != roundabout 
          and (access !~ private|no or (foot and foot !~ private|no))
-         and (lanes <= 1 or (!lanes and width))
+         and lanes <= 1 and width
     """
     /* should filter out dead end streets, but how? */
 
@@ -38,13 +38,10 @@ class AddOneway(
     override fun isApplicableTo(element: Element): Boolean {
         val tags = element.tags ?: return false
 
-        // if lanes is not set, check if the width of the road minus the space consumed by parking
-        // lanes is quite slim
-        if (!tags.containsKey("lanes")) {
-            val width = tags["width"]?.toFloatOrNull()
-            if (width != null) {
-                if (width > estimateWidthConsumedByParkingLanes(tags) + 4f) return false
-            }
+        // check if the width of the road minus the space consumed by parking lanes is quite slim
+        val width = tags["width"]?.toFloatOrNull()
+        if (width != null) {
+            if (width > estimateWidthConsumedByParkingLanes(tags) + 4f) return false
         }
 
         return filter.matches(element)
