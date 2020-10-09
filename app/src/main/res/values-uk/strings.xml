@@ -1621,4 +1621,5 @@
     <string name="at_conscription_number">"Наскрізна нумерація %s:"</string>
     <string name="quest_openingHours_name_type_title">"Який робочий час для %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Чи доступний заклад %1$s (%2$s) для інвалідних візків?"</string>
+    <string name="quest_traffic_signals_sound_title">"Чи є тут звукові сигнали для сліпих?"</string>
 </resources>

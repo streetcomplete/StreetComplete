@@ -1,0 +1,173 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonParserType
+import groovy.json.JsonSlurper
+
+def bcp47ExportLanguages = [
+        "ast","ca","cs","da","de","el","en","en-AU","en-GB","es","eu","fa","fi","fr","gl","hu","id","it",
+        "ja","ko","lt","ml","nb","no","nl","nn","pl","pt","pt-BR","ru","sk","sv","tr",
+        "uk","zh","zh-CN","zh-HK","zh-TW"
+].toSet()
+
+task updateData(type: Exec) {
+    dependsOn("updatePresets")
+    dependsOn("updateTranslations")
+    // NOTE: would be cleaner if these would be just gradle tasks as well
+    commandLine("python", "copyShopDescriptions.py")
+    commandLine("python", "generateCountryMetadata.py")
+}
+
+/** download iD presets */
+task updatePresets {
+    doLast {
+        def targetDir = "app/src/main/assets/osmfeatures"
+        def presetsUrl = new URL("https://raw.githubusercontent.com/openstreetmap/iD/develop/data/presets/presets.json")
+        def contentsUrl = new URL("https://api.github.com/repos/openstreetmap/iD/contents/dist/locales")
+        new File("$targetDir/presets.json").withOutputStream { it << presetsUrl.openStream() }
+
+        def slurper = new JsonSlurper()
+        slurper.type = JsonParserType.INDEX_OVERLAY
+        slurper.parse(contentsUrl, "UTF-8").each {
+            if(it.type == "file") {
+                def language = it.name.substring(0, it.name.lastIndexOf("."))
+                println(language)
+                if (bcp47ExportLanguages.contains(language)) {
+                    def content = slurper.parse(new URL(it.download_url), "UTF-8")
+                    def presets = content.values()[0]?.presets?.presets
+                    if (presets) {
+                        def json = unescapeUnicode(JsonOutput.prettyPrint(JsonOutput.toJson([presets: presets])))
+                        def javaLanguage = bcp47LanguageTagToJavaLanguageTag(language)
+                        new File("$targetDir/${javaLanguage}.json").write(json, "UTF-8")
+                    }
+                }
+            }
+        }
+    }
+}
+
+/** download translations from POEditor */
+task updateTranslations {
+    doLast {
+        def baseUrl = "https://api.poeditor.com/v2"
+        def baseParams = "api_token=$POEditorAPIToken&id=97843"
+        def exportLanguages = bcp47ExportLanguages.collect { it.toLowerCase(Locale.US) }
+        exportLanguages.remove("en") // don't export en, it is the source language
+
+        // download list of translations and each how complete the translation is
+        def languageListConnection = new URL("$baseUrl/languages/list").openConnection()
+        def languageCodeToPercentage = []
+        languageListConnection.with {
+            doOutput = true
+            requestMethod = "POST"
+            outputStream.withWriter { it << baseParams }
+            def result = new JsonSlurper().parse(inputStream).result
+            languageCodeToPercentage = result.languages.collectEntries {
+                [(it.code.toLowerCase()): it.percentage]
+            }
+        }
+
+        // for each translation...
+        languageCodeToPercentage.each { language, percentage ->
+            def javaLanguageTag = bcp47LanguageTagToJavaLanguageTag(language)
+            def androidResCodes = javaLanguageTagToAndroidResCode(javaLanguageTag)
+
+            // create a metadata file that describes how complete the translation is
+            for (androidResCode in androidResCodes) {
+                // exclude default translation
+                if (androidResCode == "en-rUS") continue
+                def targetFile = new File("app/src/main/res/values-$androidResCode/translation_info.xml")
+                new File(targetFile.getParent()).mkdirs()
+                targetFile.newWriter().withWriter { it << """\
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <resources>
+                      <integer name="translation_completeness">$percentage</integer>
+                    </resources>
+                    """.stripIndent()
+                }
+            }
+
+            if (!exportLanguages.contains(language.toLowerCase())) {
+                println("$language (translated $percentage%) SKIPPED")
+            } else {
+                println("$language (translated $percentage%)")
+
+                // download the translation and save it in the appropriate directory
+                def connection = new URL("$baseUrl/projects/export").openConnection()
+                def fileUrl
+                connection.with {
+                    doOutput = true
+                    requestMethod = "POST"
+                    outputStream.withWriter {
+                        it << "$baseParams&language=${language.toLowerCase()}&type=android_strings&filters=translated"
+                    }
+                    fileUrl = new JsonSlurper().parse(inputStream).result.url
+                }
+
+                def text = new URL(fileUrl).openStream().getText()
+                for (androidResCode in androidResCodes) {
+                    def targetFile = "app/src/main/res/values-$androidResCode/strings.xml"
+                    new File(targetFile).newWriter().withWriter { it << text }
+                }
+            }
+        }
+    }
+}
+
+static def unescapeUnicode(String str) {
+    def out = new StringWriter(str.length())
+    def sz = str.length()
+    def unicode = new StringBuilder(4)
+    def hadSlash = false
+    def inUnicode = false
+
+    for(def i = 0; i < sz; ++i) {
+        def ch = str.charAt(i)
+        if (inUnicode) {
+            unicode.append(ch)
+            if (unicode.length() == 4) {
+                int value = Integer.parseInt(unicode.toString(), 16)
+                out.write((char)value)
+                unicode.setLength(0)
+                inUnicode = false
+                hadSlash = false
+            }
+        } else if (hadSlash) {
+            hadSlash = false
+            if (ch == ('u' as char)) inUnicode = true
+            else {
+                out.write(92)
+                out.write(ch)
+            }
+        } else if (ch == ('\\' as char)) {
+            hadSlash = true
+        } else {
+            out.write(ch)
+        }
+    }
+
+    if (hadSlash) out.write(92)
+    return out.toString()
+}
+
+// Java (and thus also Android) uses some old iso (language) codes. F.e. id -> in etc.
+// so the localized files also need to use the old iso codes
+static def bcp47LanguageTagToJavaLanguageTag(String bcp47) {
+    def locale = Locale.forLanguageTag(bcp47)
+    def result = locale.language
+    if (!locale.script.isEmpty()) result += "-" + locale.script
+    if (!locale.country.isEmpty()) result += "-" + locale.country
+    return result
+}
+
+static def javaLanguageTagToAndroidResCode(String languageTag) {
+    def locale = Locale.forLanguageTag(languageTag)
+    // scripts not supported by Android resource system
+    if (!locale.script.isEmpty()) return []
+
+    if (languageTag == "nb")    return ["no", "nb"]
+    if (languageTag == "zh-CN") return ["zh"]
+    def withCountry = (~/^([a-z]{2,3})-([A-Z]{2})$/).matcher(languageTag)
+    if (withCountry.matches()) {
+        return [withCountry.group(1) + "-r" + withCountry.group(2)]
+    }
+    return [languageTag]
+}

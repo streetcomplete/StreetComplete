@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.localized_name
+package de.westnordost.streetcomplete.quests.road_name
 
 import android.content.DialogInterface
 import android.view.View
@@ -16,7 +16,10 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeomet
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
+import de.westnordost.streetcomplete.quests.AddLocalizedNameAdapter
+import de.westnordost.streetcomplete.quests.LocalizedName
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import java.lang.IllegalStateException
 
 

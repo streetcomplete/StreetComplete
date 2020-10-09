@@ -167,6 +167,7 @@ quest icons/
     blind_bus.svg                    parts taken from Twemoji: U+1F68D
     blind_pedestrian_crossing.svg
     blind_traffic_lights.svg
+    blind_traffic_lights_sound.svg
     bridge.svg
     building.svg
     building_construction.svg
@@ -221,6 +222,7 @@ quest icons/
     peak.svg                         (c) 2020 Mateusz Konieczny 
     pedestrian.svg
     pedestrian_crossing.svg
+    pedestrian_crossing_island.svg   (c) 2020 Kai Michael Poppe and Tobias Zwick
     phone.svg
     pitch_surface.svg
     playground.svg

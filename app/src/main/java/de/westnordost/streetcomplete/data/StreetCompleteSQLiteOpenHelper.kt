@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
 import de.westnordost.streetcomplete.ktx.hasColumn
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
 

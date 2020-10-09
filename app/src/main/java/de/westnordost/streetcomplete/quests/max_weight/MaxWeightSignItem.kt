@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.FrameLayout
-import android.widget.Spinner
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.image_select.BitmapImage
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
@@ -30,10 +28,7 @@ private fun MaxWeightSign.createBitmap(inflater: LayoutInflater): Bitmap {
         ViewGroup.LayoutParams.WRAP_CONTENT,
         ViewGroup.LayoutParams.WRAP_CONTENT
     )
-    val view = inflater.inflate(layoutResourceId, container)
-
-    val maxWeightInput = view.findViewById<EditText>(R.id.maxWeightInput)
-    maxWeightInput.setText("8")
+    inflater.inflate(layoutResourceId, container)
 
     container.measure(
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),

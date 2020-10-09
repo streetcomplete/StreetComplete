@@ -2295,4 +2295,5 @@
     <string name="quest_busStopBench_title">"На этой автобусной остановке есть скамейка?"</string>
     <string name="quest_busStopBench_name_title">"Есть ли на автобусной остановке %s скамейка?"</string>
     <string name="about_description_translate">"%1$s переведен на %2$d%%"</string>
+    <string name="quest_traffic_signals_sound_title">"Есть ли здесь звуковые сигналы для слепых?"</string>
 </resources>

@@ -113,7 +113,7 @@ Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur. Genauer
 Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;eine simple Textdatei&lt;/a&gt; auf meinem Server ab, um zu sehen, ob sie für den Upload gesperrt wurde. Das ist eine Vorsichtsmaßnahme, um Versionen dieser App, die möglicherweise kritische Fehler enthalten, davon abzuhalten, OSM-Daten zu korrumpieren.&lt;br/&gt;
 &lt;/p&gt;"</string>
     <string name="autosync_on">"An"</string>
-    <string name="autosync_only_on_wifi">"Nur mit WLAN"</string>
+    <string name="autosync_only_on_wifi">"Nur bei WLAN"</string>
     <string name="autosync_off">"Aus"</string>
     <string name="quest_streetSurface_title">"Welche Oberfläche hat dieser Straßenabschnitt?"</string>
     <string name="quest_surface_value_paved">"Befestigt (allgemein)"</string>
@@ -283,7 +283,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_cashew_nuts">"Cashewnüsse"</string>
     <string name="produce_cherries">"Kirschen"</string>
     <string name="produce_chestnuts">"Kastanien"</string>
-    <string name="produce_coconuts">"Kokosnuss"</string>
+    <string name="produce_coconuts">"Kokosnüsse"</string>
     <string name="produce_coffee">"Kaffee"</string>
 
     <!-- Nein, Preiselbeeren sind doch keine Cranberren: Nach Wikipediart-Artikel bitte "Großfrüchtige Moosbeere", aber sonst werden sie im Deutschen IMHO auch einfach Cranberries genannt. -->
@@ -292,7 +292,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_figs">"Feigen"</string>
 
     <!-- Nur umgangssprachlich korreckt. Pampelmuse (Citrus maxima) != Grapefruit (Citrus paradisi) -->
-    <string name="produce_grapefruits">"Grapefruit"</string>
+    <string name="produce_grapefruits">"Grapefruits"</string>
     <string name="produce_guavas">"Guaven"</string>
     <string name="produce_hazelnuts">"Haselnüsse"</string>
     <string name="produce_hops">"Hopfen"</string>
@@ -403,7 +403,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest Du drinnen nach den Öffnungszeiten fragen."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"kein, aber Fahrradfahrer dürfen die Straße in beide Richtungen fahren"</string>
     <string name="quest_streetName_answer_noName_question">"Warum hat sie keinen Namen?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"Ist bloß soetwas wie eine Zufahrt"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Ist bloß so etwas wie eine Zufahrt"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Ist nur ein Feld- oder Waldweg"</string>
     <string name="quest_streetName_answer_noName_noname">"Nichts davon, sie hat ganz einfach keinen Namen"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Ist diese Toilette zugänglich für Rollstühle?"</string>
@@ -414,9 +414,9 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="create_new_note_unprecise">"Zoome weiter herein, um eine Notiz zu erstellen"</string>
     <string name="create_new_note_description">"Erstelle hier eine Notiz, um anderen Mappern Bescheid zu geben, dass es hier ein Problem gibt. Die Position der Notiz kann durch Bewegen der Karte angepasst werden:"</string>
     <string name="pref_title_quests_invalidation">"Aufgabencache ungültig machen"</string>
-    <string name="pref_title_quests_invalidation_summary">"Nützlich wenn Du denkst, dass einige Aufgaben veraltet sind"</string>
+    <string name="pref_title_quests_invalidation_summary">"Nützlich, wenn Du denkst, dass einige Aufgaben veraltet sind"</string>
     <string name="invalidate_confirmation">"Ungültig machen"</string>
-    <string name="invalidation_dialog_message">"Wenn der Cache ungültig gemacht wird, werden die Aufgaben das nächste Mal, wenn sie jeweils heruntergeladen werden, aktualisiert. Der Aufgabencache wird automatisch nach einer Woche ungültig gemacht, und sofort, falls sich herausstellt, dass eine Aufgabe die Du beantwortet hast, schon von jemand anderem beantwortet wurde."</string>
+    <string name="invalidation_dialog_message">"Wenn der Cache ungültig gemacht wird, werden die Aufgaben das nächste Mal, wenn sie jeweils heruntergeladen werden, aktualisiert. Der Aufgabencache wird automatisch nach einer Woche ungültig gemacht, und sofort, falls sich herausstellt, dass eine Aufgabe, die Du beantwortet hast, schon von jemand anderem beantwortet wurde."</string>
     <string name="quest_generic_looks_like_this">"Sieht normalerweise so aus:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
@@ -579,7 +579,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="notification_channel_download">"Download"</string>
     <string name="quest_playground_access_title">"Ist dies ein öffentlicher Spielplatz?"</string>
     <string name="quest_segregated_title">"Wie sind der Radweg und Gehweg hier zueinander gelegen?"</string>
-    <string name="dialog_tutorial_upload">"Um deine Änderung manuell hochzuladen, nutze den Knopf in der Werkzeugleiste der so aussieht."</string>
+    <string name="dialog_tutorial_upload">"Um deine Änderungen manuell hochzuladen, nutze den Knopf in der Werkzeugleiste, der so aussieht."</string>
     <string name="quest_segregated_separated">"Getrennt voneinander"</string>
     <string name="quest_segregated_mixed">"Der Weg wird gemeinsam genutzt"</string>
     <string name="quest_maxheight_title">"Was ist die Durchfahrtshöhe hier?"</string>
@@ -703,7 +703,7 @@ Jetzt aufspalten?"</string>
     <string name="about_summary_rate">"auf Google Play"</string>
     <string name="about_title_donate">"Spenden"</string>
     <string name="about_summary_donate">"Zeige dich erkenntlich! ❤️"</string>
-    <string name="about_description_donate">"Danke dass du erwägst, diese App zu unterstützen! Um die laufenden Spenden zu sehen, oder selbst zu spenden, tippe auf die jeweilige Plattform:"</string>
+    <string name="about_description_donate">"Danke, dass du erwägst, diese App zu unterstützen! Um die laufenden Spenden zu sehen oder selbst zu spenden, tippe auf die jeweilige Plattform:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Welcher Religion ist %s gewidmet?"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Hier suchen"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Aktuelle Suche fortsetzen"</string>
@@ -758,7 +758,7 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="link_category_goodies_description">"Interessantes Kartenmaterial zum Ausprobieren"</string>
     <string name="link_cyclosm_description">"Eine Karte für Radfahrer"</string>
     <string name="link_wheelmap_description">"Eine Karte, um barrierefreie Orte zu finden"</string>
-    <string name="link_osm_buildings_description">"eine Karte mit Gebäuden in 3D-Ansicht"</string>
+    <string name="link_osm_buildings_description">"Eine Karte mit Gebäuden in 3D-Ansicht"</string>
     <string name="link_openvegemap_description">"Entdecke vegetarische und vegane Restaurants in deiner Stadt"</string>
     <string name="link_touch_mapper_description">"Einfach Blindenleitsystem-Karten für Adressen erstellen"</string>
     <string name="link_mapy_tactile_description">"Blindenleitsystem-Karten für sehbehinderte Menschen"</string>
@@ -905,13 +905,10 @@ Erfolge"</string>
     <string name="quest_oneway2_dir">"Einbahnstraße in diese Richtung"</string>
     <string name="quest_oneway2_no_oneway">"Keine Einbahnstraße"</string>
     <string name="quest_maxweight_select_sign">"Wähle das Schild"</string>
-    <string name="quest_traffic_signals_blind_title">"Welche Vorrichtungen für Blinde gibt es an dieser Ampel?"</string>
-    <string name="quest_traffic_signals_blind_description">"Wähle alle zutreffenden aus. Beachte, dass der Pfeil und Taster oft auf der Unterseite des Ampelknopfes versteckt sind."</string>
-    <string name="quest_traffic_signals_blind_sound_signal">"akustische Signale wenn es grün wird"</string>
-    <string name="quest_traffic_signals_blind_vibrate">"ein Taster der vibriert oder so wenn es grün wird"</string>
-    <string name="quest_traffic_signals_blind_arrow">"ein ertastbarer Pfeil, der die Richtung in die man gehen muss, weist"</string>
-    <string name="quest_traffic_signals_blind_none">"keine dieser Vorrichtungen"</string>
-    <string name="quest_steps_incline_title">"Welche Weg führt auf dieser Treppe nach oben?"</string>
+    <string name="quest_steps_incline_title">"Welche Richtung führt auf dieser Treppe nach oben?"</string>
     <string name="quest_steps_incline_up">"Hier nach oben"</string>
     <string name="quest_step_count_title">"Wie viele Stufen hat diese Treppe?"</string>
+    <string name="quest_traffic_signals_sound_title">"Gibt es hier akustische Signale für Sehbehinderte?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Gibt es an dieser Ampel einen Taster für Blinde, der signalisiert, wenn man über die Straße gehen kann?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Hinweis: Dies ist oft ein vibrierender Taster oder drehender Konus auf der Unterseite des Druckampel-Kastens."</string>
 </resources>

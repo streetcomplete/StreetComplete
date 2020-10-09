@@ -108,7 +108,7 @@ layers:
                 lines:
                     outline:
                         color: global.road_outline_color
-                        width: function () { return 1/4 * Math.log($zoom); }
+                        width: function () { return 1.5/4 * Math.log($zoom); }
                         order: 31
 
         path-outline:

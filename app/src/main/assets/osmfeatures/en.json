@@ -406,7 +406,7 @@
         },
         "shop/wigs": {
             "name": "Wig Shop",
-            "terms": "hair extentions"
+            "terms": "hair extensions,hair extentions"
         },
         "amenity/community_centre": {
             "name": "Community Center",
@@ -783,6 +783,10 @@
             "name": "Photographer",
             "terms": ""
         },
+        "natural/hot_spring": {
+            "name": "Hot Spring",
+            "terms": "geothermal spring,thermal pool"
+        },
         "building/pavilion": {
             "name": "Pavilion Building",
             "terms": "sports"
@@ -877,7 +881,7 @@
         },
         "building/farm_auxiliary": {
             "name": "Farm Building",
-            "terms": "agriculture,auxilary,chicken coop,farm auxiliary,pigsty,sty"
+            "terms": "agriculture,auxiliary,auxilary,chicken coop,farm auxiliary,pigsty,sty"
         },
         "power/switch": {
             "name": "Power Switch",
@@ -1000,7 +1004,7 @@
         },
         "shop/hardware": {
             "name": "Hardware Store",
-            "terms": ""
+            "terms": "craft,diy,do it yourself,hardware,home improvement,tools"
         },
         "shop/funeral_directors": {
             "name": "Funeral Home",
@@ -1160,6 +1164,10 @@
             "name": "Wind Farm",
             "terms": "offshore wind,wind park,wind power plant,wind power station,wind turbines,windmills"
         },
+        "amenity/lounger": {
+            "name": "Lounger",
+            "terms": "seat,chair,bench"
+        },
         "public_transport/platform/trolleybus_point": {
             "name": "Trolleybus Stop",
             "terms": "bus,electric,platform,public transit,public transportation,streetcar,trackless,tram,trolley,transit,transportation"
@@ -1221,6 +1229,10 @@
         "building/cabin": {
             "name": "Cabin",
             "terms": ""
+        },
+        "amenity/mortuary": {
+            "name": "Morgue",
+            "terms": "crematorium,funeral home,memorial home,morgue,mortuary,undertaker"
         },
         "highway/footway/sidewalk": {
             "name": "Sidewalk",
@@ -1569,7 +1581,7 @@
         },
         "building/kindergarten": {
             "name": "Preschool / Kindergarten Building",
-            "terms": "kindergarden,pre-school"
+            "terms": "kindergarten,kindergarden,pre-school"
         },
         "indoor/room": {
             "name": "Room",
@@ -1577,6 +1589,10 @@
         },
         "amenity/fast_food/ice_cream": {
             "name": "Ice Cream Fast Food"
+        },
+        "public_transport/platform/bus_tram_point": {
+            "name": "Tram & Bus Stop",
+            "terms": "bus,light rail,platform,public transit,public transportation,rail,streetcar,track,tram,transit,transportation,trolley"
         },
         "amenity/polling_station": {
             "name": "Permanent Polling Place",
@@ -2514,7 +2530,7 @@
         },
         "amenity/kindergarten": {
             "name": "Preschool / Kindergarten Grounds",
-            "terms": "kindergarden,pre-school"
+            "terms": "kindergarten,kindergarden,pre-school"
         },
         "craft/carpet_layer": {
             "name": "Carpet Layer",
@@ -2810,7 +2826,7 @@
         },
         "shop/doityourself": {
             "name": "DIY Store",
-            "terms": ""
+            "terms": "craft,diy,do it yourself,hardware,home improvement,tools"
         },
         "amenity/taxi": {
             "name": "Taxi Stand",
@@ -3516,6 +3532,10 @@
             "name": "Rehabilitation Facility",
             "terms": "rehab,therapist,therapy"
         },
+        "amenity/boat_storage": {
+            "name": "Boat Storage",
+            "terms": "boathouse,dry dock,marina"
+        },
         "highway/service/drive-through": {
             "name": "Drive-Through",
             "terms": ""
@@ -3573,7 +3593,7 @@
         },
         "shop/video": {
             "name": "Video Store",
-            "terms": "DVD,VHS,video casette"
+            "terms": "DVD,VHS,video cassette,video casette"
         },
         "amenity/restaurant/thai": {
             "name": "Thai Restaurant",
@@ -3680,6 +3700,9 @@
             "name": "Static Mobile Home",
             "terms": "house trailer,manufactured home,mobile home,prefabricated home,residential caravan,static caravan,trailer home"
         },
+        "disused/amenity": {
+            "name": "Disused Amenity"
+        },
         "leisure/pitch/skateboard": {
             "name": "Skate Park",
             "terms": ""
@@ -3694,7 +3717,7 @@
         },
         "tourism/artwork/graffiti": {
             "name": "Graffiti",
-            "terms": "Street Artwork,Guerilla Artwork,Graffiti Artwork"
+            "terms": "Street Artwork,Guerrilla Artwork,Guerilla Artwork,Graffiti Artwork"
         },
         "power/plant/source/gas": {
             "name": "Gas-Fired Power Plant",
@@ -4176,6 +4199,10 @@
         "office/insurance": {
             "name": "Insurance Office",
             "terms": ""
+        },
+        "golf/clubhouse": {
+            "name": "Golf Clubhouse",
+            "terms": "club house,golf clubhouse,golf house,pro shop"
         },
         "leisure/pitch": {
             "name": "Sport Pitch",
