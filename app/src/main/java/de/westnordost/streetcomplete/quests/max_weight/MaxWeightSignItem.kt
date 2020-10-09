@@ -28,10 +28,7 @@ private fun MaxWeightSign.createBitmap(inflater: LayoutInflater): Bitmap {
         ViewGroup.LayoutParams.WRAP_CONTENT,
         ViewGroup.LayoutParams.WRAP_CONTENT
     )
-    val view = inflater.inflate(layoutResourceId, container)
-
-    val maxWeightInput = view.findViewById<EditText>(R.id.maxWeightInput)
-    maxWeightInput.setText("8")
+    inflater.inflate(layoutResourceId, container)
 
     container.measure(
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),

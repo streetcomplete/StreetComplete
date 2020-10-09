@@ -148,3 +148,4 @@ tourism_information_office.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/w
 tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/wiki/File:Uh%C5%99%C3%ADn%C4%9Bves,_Nov%C3%A9_n%C3%A1m%C4%9Bst%C3%AD,_informa%C4%8Dn%C3%AD_stojan.jpg (ŠJů)
 
 vibrating_button_illustrati... CC-BY 4.0        Tobias Zwick
+vibrating_button_i... (MCC234) CC0              CJ Malone

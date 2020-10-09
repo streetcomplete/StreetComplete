@@ -2124,4 +2124,6 @@
     <string name="quest_steps_incline_up">"Με αυτόν τον τρόπο"</string>
     <string name="quest_step_count_title">"Πόσα βήματα είναι εδώ;"</string>
     <string name="quest_traffic_signals_sound_title">"Υπάρχουν ηχητικά σήματα για τους τυφλούς εδώ;"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Έχουν αυτά τα φανάρια ψηλαφιστή ένδειξη για τυφλούς ότι είναι ασφαλές να διασχίσουν τον δρόμο;"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Συμβουλή: Συχνά πρόκειται για ένα δονούμενο κουμπί ή περιστρεφόμενο κώνο στην κάτω πλευρά της θήκης του κουμπιού του φαναριού."</string>
 </resources>

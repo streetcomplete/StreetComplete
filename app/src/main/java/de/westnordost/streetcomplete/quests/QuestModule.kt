@@ -185,9 +185,9 @@ object QuestModule
         MarkCompletedBuildingConstruction(o, r),
         AddGeneralFee(o),
         AddSelfServiceLaundry(o),
-        AddStepCount(o), // before handrail so the surveyor doesn't need to walk it twice
-        AddHandrail(o, r), // for accessibility of pedestrian routing
-        AddStepsIncline(o),
+        AddStepsIncline(o), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past
+        AddHandrail(o, r), // for accessibility of pedestrian routing, can be gathered when walking past
+        AddStepCount(o), // can only be gathered when walking along this way, also needs the most effort and least useful
         AddInformationToTourism(o),
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for

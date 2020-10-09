@@ -61,7 +61,10 @@ class AddTactilePavingCrosswalk(
         way[highway][access ~ '^(private|no)$']; node(w) -> .private_road_nodes;
         (.exclusive_cycleway_nodes; .private_road_nodes;) -> .excluded;
 
-        node[highway = crossing][foot != no] -> .crossings;
+        (
+            node[highway = traffic_signals][crossing = traffic_signals][foot != no];
+            node[highway = crossing][foot != no];
+        ) -> .crossings;
         
         node.crossings[!tactile_paving] -> .crossings_with_unknown_tactile_paving;
         node.crossings[tactile_paving = no]${olderThan(4).toOverpassQLString()} -> .old_crossings_without_tactile_paving;
