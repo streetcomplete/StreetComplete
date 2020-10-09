@@ -76,14 +76,15 @@ private fun readChangelog(resources: Resources) =
 
 private fun addedLinks(description: String): String {
     return description
-        .replace(Regex("([\\s,(])#([0-9]*)")) { matchResult ->
+        .replace(Regex("([\\s,(])#([0-9]+)")) { matchResult ->
             val s = matchResult.groupValues[1]
             val issue = matchResult.groupValues[2]
             "$s<a href=\"https://github.com/westnordost/StreetComplete/issues/$issue\">#$issue</a>"
         }
-        .replace(Regex("([\\s,(])@(\\w*)")) { matchResult ->
+        .replace(Regex("([\\s,(])@(\\w[\\-\\w]*)([\\s,.\\)]|$)")) { matchResult ->
             val s = matchResult.groupValues[1]
             val contributor = matchResult.groupValues[2]
-            "$s<a href=\"https://github.com/$contributor\">@$contributor</a>"
+            val e = matchResult.groupValues[3]
+            "$s<a href=\"https://github.com/$contributor\">@$contributor</a>$e"
         }
 }
