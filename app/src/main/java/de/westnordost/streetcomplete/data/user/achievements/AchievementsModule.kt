@@ -400,6 +400,25 @@ object AchievementsModule {
         ),
 
         Achievement(
+            "rare",
+            R.drawable.ic_achievement_rare,
+            R.string.achievement_rare_title,
+            R.string.achievement_rare_solved_X,
+            SolvedQuestsOfTypes(listOf(
+                "AddSummitRegister", // 1
+                "AddWheelchairAccessToiletsPart", // 38
+                "AddWheelchairAccessOutside", // 154
+                "AddFerryAccessPedestrian", // 66
+                "AddFerryAccessMotorVehicle", // 103
+                "AddInformationToTourism", // 137
+                "AddBoardType" // 188
+            )),
+            // levels: 3, 9, 18, 30, 45, 63, ...
+            { lvl -> (lvl + 1)*3 },
+            mapOf()
+        ),
+
+        Achievement(
             "car",
             R.drawable.ic_achievement_car,
             R.string.achievement_car_title,
@@ -666,6 +685,7 @@ object AchievementsModule {
                 1 to links("openorienteeringmap")
             )
         )
+
     )
 
     private fun links(vararg linksKeys: String = emptyArray()): List<Link> =
