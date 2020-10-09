@@ -28,6 +28,8 @@ private fun MaxWeightSign.createBitmap(inflater: LayoutInflater): Bitmap {
         ViewGroup.LayoutParams.WRAP_CONTENT,
         ViewGroup.LayoutParams.WRAP_CONTENT
     )
+    inflater.inflate(layoutResourceId, container)
+
     container.measure(
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
