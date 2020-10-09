@@ -81,7 +81,7 @@ private fun addedLinks(description: String): String {
             val issue = matchResult.groupValues[2]
             "$s<a href=\"https://github.com/westnordost/StreetComplete/issues/$issue\">#$issue</a>"
         }
-        .replace(Regex("([\\s,(])@(\\w[\\-\\w]*)([\\s,.\\)]|$)")) { matchResult ->
+        .replace(Regex("([\\s,(])@(\\w[\\-\\w]*)([\\s,.\\)']|$)")) { matchResult ->
             val s = matchResult.groupValues[1]
             val contributor = matchResult.groupValues[2]
             val e = matchResult.groupValues[3]
