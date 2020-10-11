@@ -207,9 +207,4 @@ tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
     targetDir = "$projectDir/src/main/assets/country_metadata"
-    shouldRunAfter(
-        "updateChargingStationOperators",
-        "updateClothesContainerOperators",
-        "updateAtmOperators"
-    )
 }
