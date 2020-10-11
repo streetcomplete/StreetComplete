@@ -15,3 +15,21 @@ allprojects {
         jcenter()
     }
 }
+
+
+tasks.register<UpdateStoreDescriptionsTask>("updateStoreDescriptions") {
+    group = "streetcomplete"
+    targetDir = "$projectDir/metadata"
+    apiToken = properties["POEditorAPIToken"] as String
+}
+
+
+tasks.register("updateStreetCompleteData") {
+    group = "streetcomplete"
+    dependsOn(
+        "app:updatePresets",
+        "app:updateTranslations",
+        "app:updateTranslationCompleteness",
+        "app:generateMetadataByCountry",
+        "updateStoreDescriptions")
+}

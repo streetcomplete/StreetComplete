@@ -1,1 +1,0 @@
-const val KOTLIN_VERSION = "123"

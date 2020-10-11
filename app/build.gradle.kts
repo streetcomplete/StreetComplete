@@ -9,8 +9,6 @@ plugins {
     id("kotlin-android-extensions")
 }
 
-apply(from = "updateData.gradle")
-
 android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -179,3 +177,34 @@ dependencies {
     implementation("ch.poole:OpeningHoursParser:0.22.1")
 }
 
+/** Localizations that should be pulled from POEditor etc. */
+val bcp47ExportLanguages = setOf(
+    "ast","ca","cs","da","de","el","en","en-AU","en-GB","es","eu","fa","fi","fr","gl","hu","id","it",
+    "ja","ko","lt","ml","nb","no","nl","nn","pl","pt","pt-BR","ru","sk","sv","tr",
+    "uk","zh","zh-CN","zh-HK","zh-TW"
+)
+
+tasks.register<UpdatePresetsTask>("updatePresets") {
+    group = "streetcomplete"
+    languageCodes = bcp47ExportLanguages
+    targetDir = "$projectDir/src/main/assets/osmfeatures"
+}
+
+tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
+    group = "streetcomplete"
+    languageCodes = bcp47ExportLanguages
+    apiToken = properties["POEditorAPIToken"] as String
+    targetFiles = { "$projectDir/src/main/res/values-$it/strings.xml" }
+}
+
+tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
+    group = "streetcomplete"
+    apiToken = properties["POEditorAPIToken"] as String
+    targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
+}
+
+tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {
+    group = "streetcomplete"
+    sourceDir = "$rootDir/res/country_metadata"
+    targetDir = "$projectDir/src/main/assets/country_metadata"
+}
