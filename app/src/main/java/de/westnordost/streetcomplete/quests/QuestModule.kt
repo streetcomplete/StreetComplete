@@ -75,6 +75,7 @@ import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
+import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
 import de.westnordost.streetcomplete.quests.surface.*
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
@@ -152,6 +153,7 @@ object QuestModule
         AddMaxWeight(o), // used by OSRM and other routing engines
         AddForestLeafType(o), // used by OSM Carto
         AddBikeParkingType(o), // used by OsmAnd
+        AddStepsRamp(o, r),
         AddWheelchairAccessToilets(o, r), // used by wheelmap, OsmAnd, MAPS.ME
         AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
         AddWheelchairAccessBusiness(o, featureDictionaryFuture), // used by wheelmap, OsmAnd, MAPS.ME
