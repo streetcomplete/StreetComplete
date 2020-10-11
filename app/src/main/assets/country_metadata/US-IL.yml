@@ -1,0 +1,5 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [Chase, Bank of America, Bitcoin of America, Chase Bank, BMO Harris Bank, Harris Bank, CEFCU, Busey Bank,
+   US Bank, Fifth Third Bank, Citibank, Bank of Springfield, PNC, Old Second Bank, Morton Community Bank,
+   INB, Fifth-Third Bank, Express Mart, Banterra Bank, Athena Bitcoin Inc.]
+chargingStationOperators: [Tesla Motors, NRG Energy, Volta, iGo]

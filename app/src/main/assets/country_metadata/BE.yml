@@ -1,9 +1,21 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [BNP Paribas Fortis, KBC, Argenta, BeoBank, ING, Belfius, BNP Paribas, bpost, Bpost, Fortis, AXA, Dexia,
+   De Post, Crelan, Beobank, BNP Parisbas Fortis, bpost bank, Record Bank, Record, Europabank, BNP-Paribas
+      Fortis, Axa, AXA Bank]
+chargingStationOperators: [Allego, Blue Corner, allego, Smoov Allego, Luminus, Ionity EU, The Plugin Company, Tesla, Smoov, PitPoint,
+   Colruyt, Bluecorner, smoov allego, BlueCorner, smoov, charge.brussels, bluecorner, allegro / smoov,
+   Pitpoint Brussels, Partago, ORES, Lidl, Ionity, Eoly, EV-Box, De Lijn, BlueConnect, Allegro]
+clothesContainerOperators: [Vlaams Inzamel Centrum Textiel, Wereld Missie Hulp, Les Petits Riens - Spullenhulp, Terre, Vlaams Internationaal
+      Centrum, IDELUX-Environnement, Curitas n.v., Oxfam, V.H.S. Europ, Curitas, De Kringwinkel, Terre
+      ASBL, Wereldmissiehulp, Caritas n.v., ivio, IVAREM, WMH, Vlaams Inzamelcentrum Textiel, Curitas
+      NV, Rode Kruis, Les Petits Riens, IVIO, Wereldmissiehulp en O.L.V. van zeven Weeën vzw, Wereld-Missiehulp,
+   Terre asbl, TEXTIEL, Salvatorlaanse Hulpactie & Ontwikkelingshulp, Salvatoriaanse Hulpactie & Ontwikkelingshulp,
+   Les Petits Riens-Spullenhulp, Kringwinkel, De Bremberg, Curitas N.V.]
 isAdvisorySpeedLimitKnown: false
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 206
 officialLanguages: [nl, fr, de]
-orchardProduces: [pear, tomato, apple, strawberry, chilli_pepper, sweet_pepper, cherry, raspberry,
-  grape, walnut, hop, plum]
+orchardProduces: [pear, tomato, apple, strawberry, chilli_pepper, sweet_pepper, cherry, raspberry, grape, walnut, hop,
+   plum]
 popularSports: [soccer, tennis, basketball, equestrian, boules]

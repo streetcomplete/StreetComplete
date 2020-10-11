@@ -2344,4 +2344,15 @@ nivåer"</string>
     <string name="quest_busStopBench_name_title">"Har busshållplatsen %s en bänk?"</string>
     <string name="dialog_tutorial_download">"När automatisk synkronisering är inaktiverad hämtas inte uppdrag automatiskt. För att göra detta manuellt, använd knappen \"%s\" i menyn på den plats du vill hämta."</string>
     <string name="about_title_translate">"Hjälp till med översättningen av denna app"</string>
+    <string name="about_description_translate">"%1$s är översatt %2$d%%"</string>
+    <string name="quest_oneway2_title">"Är detta en enkelriktad gata? I vilken riktning?"</string>
+    <string name="quest_oneway2_dir">"Enkelriktad i denna riktning"</string>
+    <string name="quest_oneway2_no_oneway">"Inte enkelriktad"</string>
+    <string name="quest_maxweight_select_sign">"Välj symbol"</string>
+    <string name="quest_steps_incline_title">"Vilken riktning leder uppåt för dessa steg?"</string>
+    <string name="quest_steps_incline_up">"Denna väg upp"</string>
+    <string name="quest_step_count_title">"Hur många steg finns här?"</string>
+    <string name="quest_traffic_signals_sound_title">"Finns det ljudsignaler för blinda här?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Har dessa trafikljus en taktil indikation för blinda människor när det är säkert att korsa?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Tips: Ofta är detta en vibrerande knapp eller en roterande kon på undersidan av trafikljusknappen."</string>
 </resources>

@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Ecobank]
 mobileCountryCode: 642
 officialLanguages: [fr, rn]
 orchardProduces: [banana, tea, coffee]

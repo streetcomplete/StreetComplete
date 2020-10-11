@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [BGFI Bank, Union Gabonaise de Banque, Union Gabonaise des Banques, BICIG, BGFI bank]
 mobileCountryCode: 628
 officialLanguages: [fr, fan]
 orchardProduces: [rubber, banana, pineapple, tomato, cacao, coffee]

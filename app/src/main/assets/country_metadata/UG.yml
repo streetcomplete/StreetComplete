@@ -1,7 +1,12 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Stanbic Bank Uganda, Centenary Rural Development Bank, Crane Bank, Stanbic Bank, Barclays Bank of Uganda,
+   Diamond Trust Bank Uganda, DFCU Bank, Tropical Bank, Orient Bank, Equity Bank Uganda, Barclays, Housing
+      Finance Bank, Ecobank Uganda, Standard Chartered Bank, Finance Trust Bank, Bank of Baroda, KCB Bank
+      Uganda, Bank of Africa-Uganda, Centenary Bank, Stanbic, dfcu Bank, Equity Bank, Cairo International
+      Bank, centenary, United Bank for Africa, Pride Microfinance, NC Bank Uganda, Guaranty Trust Bank,
+   FINCA Uganda, Ecobank, Crane Bank Ltd., Barclays Bank]
 isLeftHandTraffic: true
 mobileCountryCode: 641
 officialLanguages: [sw, en]
-orchardProduces: [banana, coffee, tea, tomato, cacao, pineapple, chilli_pepper, sweet_pepper, pepper,
-  vanilla, sisal]
+orchardProduces: [banana, coffee, tea, tomato, cacao, pineapple, chilli_pepper, sweet_pepper, pepper, vanilla, sisal]
 workweekDays: 6

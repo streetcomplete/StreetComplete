@@ -1,7 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+atmOperators: [Canadia Bank, ABA Bank, ABA, T, Sathapana Bank, Maybank, ANZ Royal, FTB, ATM ABA Bank, Cathay United
+      Bank, BRED Bank, ANZ, ACLEDA Bank, Mekong Bank, MB Bank, anz, Sacombank, RHB, QK4, CAB Bank, Acleda,
+   Aba bank, ATZ, AMK]
+chargingStationOperators: [Green E-Bike]
 mobileCountryCode: 456
 officialLanguages: [km]
-orchardProduces: [banana, coconut, guava, mango, mangosteen, orange, pineapple, rubber, chilli_pepper,
-  sweet_pepper, grapefruit, lemon, lime, pepper, coffee]
+orchardProduces: [banana, coconut, guava, mango, mangosteen, orange, pineapple, rubber, chilli_pepper, sweet_pepper, grapefruit,
+   lemon, lime, pepper, coffee]
 popularReligions: [buddhist, muslim]

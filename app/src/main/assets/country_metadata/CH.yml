@@ -1,9 +1,36 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Raiffeisen, PostFinance, Postfinance, Credit Suisse, UBS, Zürcher Kantonalbank, Raiffeisenbank, ZKB,
+   BCV, Post, Bank Cler, Migros Bank, UBS Switzerland, Valiant, Thurgauer Kantonalbank, La Poste, Graubündner
+      Kantonalbank, Die Post, Raiffeisen Schweiz, Kantonalbank, Luzerner Kantonalbank, BEKB, Valiant Bank,
+   Hypothekarbank Lenzburg, St. Galler Kantonalbank, PostFinance AG, Bity SA, Aargauische Kantonalbank,
+   Poste, Neue Aargauer Bank AG, Die Schweizerische Post, Basler Kantonalbank, BCGE, Zuger Kantonalbank,
+   Schwyzer Kantonalbank, Migrosbank, La Posta, Crédit Suisse, Bank Linth, Neue Aargauer Bank, NAB, Basellandschaftliche
+      Kantonalbank, BCVS, UBS AG, Obwaldner Kantonalbank, Banque Raiffeisen, TKB, Schweizerische Post,
+   Bitcoin Suisse AG, Bezirkssparkasse Uster, Bank Avera Genossenschaft, BKB, BCN, AKB, acrevis, Schaffhauser
+      Kantonalbank, Regiobank, Post Finance, Nidwaldner Kantonalbank, Glarner Kantonalbank, Berner Kantonalbank,
+   Banque Cantonale du Valais, BCF / FKB, AEK, raiffeisen, postfinance, Zürcher Landbank, Walliser Kantonalbank,
+   Valiant Bank AG, Urner Kantonalbank, St.Galler Kantonalbank, SGKB, Raiffeisen Marbach-Rebstein, Raiffeisen
+      AG, Raiffaisen, Raifeisenbank, Raffeisen, PostFinance SA, Post Finace, Kantonal Bank, Graubündner
+      Kanonalbank, Ersparniskasse Schaffhausen, Coop, Clientis, CLER, Bezirkssparkasse Dielsdorf, Bezirks-Sparkasse
+      Dielsdorf (BSKD), Bezirks-Sparkasse Dielsdorf, Berner Kantonalbank AG, Banque Cantonale Vaudoise,
+   Bank Oberaargau, Baloise Bank SoBa, Baloise Bank, BEKB | BCBE, BCJ, BCF, AEK Thun]
+chargingStationOperators: [Tesla, IWB, Repower AG, Lidl, Groupe E, EVite, Tesla Motors Inc., EBL, ALTIS, ABB, easy4you, bike-energy,
+   Altis, m-way, Technische Betriebe Glarus Nord, ESB, EKZ, evpass, Migros, Infovel, Gemeinde Pontresina,
+   CKW, WWZ, IBAarau AG, FHNW, Enerti, Comfort Hotel Egerkingen, my elmo, greenmotion, ewl, evpass.ch,
+   eCarup, Renault, Raiffeisen, Move, Evpass, Eniwa AG, Eniva, Energie 360°, EWN, BKW, Agrola, AEW Energie
+      AG, swisscharge, mway, move, groupe e, groupe, ewz, energie360°, elmoove, ee-en.ch, eCarUp, Werkbetriebe
+      Frauenfeld, Tesla Inc., Tesla Destination Charging, Technische Betriebe Wil, Technische Betriebe
+      Kreuzlingen, Swisscharge, SwissCharge, Socar, SAK, Romande Energie, Repower, RTB Regionale Technische
+      Betriebe, Landi Matzigen, IKEA, Hotel Riverside, GoFast, Garage Keigel, Energie Wasser Bern, Energie
+      360° AG, Elektrizitätswerk Obwalden, Elektra AG, Coop, BerufsBildungBaden, BMW, Axpo AG, Amag, Alpen
+      Energie, AEW, AEK]
+clothesContainerOperators: [Texaid, Ville de Geneve, Contex, coop, TexAid, Coop, Commune de Lutry, texaid, TEXAID, Stadt Bülach,
+   Schweizer Berghilfe, Lidl, Gemeinde Wettingen, Gemeinde Freienbach]
 isAdvisorySpeedLimitKnown: false
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 228
 officialLanguages: [de, fr, it, rm]
-orchardProduces: [apple, grape, tomato, pear, strawberry, apricot, cherry, plum, raspberry, walnut,
-  chilli_pepper, sweet_pepper, kiwi, blueberry, peach, chestnut]
+orchardProduces: [apple, grape, tomato, pear, strawberry, apricot, cherry, plum, raspberry, walnut, chilli_pepper, sweet_pepper,
+   kiwi, blueberry, peach, chestnut]
 popularSports: [soccer, tennis, basketball, shooting, equestrian]

@@ -1,0 +1,4 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [Wells Fargo, US Bank, Bank of America, TCF Bank, Wells Fargo ATM, U.S. Bank, Think Bank, TCF, Community
+      Resource Bank, Bremer Bank, Altra Federal Credit Union]
+chargingStationOperators: [Tesla Motors, ChargePoint Network, ChargePoint]

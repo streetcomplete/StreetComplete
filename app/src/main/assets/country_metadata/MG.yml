@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [BNI, BOA, BMOI, BFV-SG, MCB, BOA Madagascar]
 isLivingStreetKnown: true
 mobileCountryCode: 646
 officialLanguages: [mg, fr]
-orchardProduces: [banana, guava, mango, mangosteen, orange, pineapple, coconut, coffee, tomato, avocado,
-  sisal, grape, grapefruit, cacao, peach, apple, cashew_nut]
+orchardProduces: [banana, guava, mango, mangosteen, orange, pineapple, coconut, coffee, tomato, avocado, sisal, grape,
+   grapefruit, cacao, peach, apple, cashew_nut]

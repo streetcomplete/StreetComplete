@@ -1,7 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Bank of Khartoum, بنك الخرطوم, ATM BOK, بنك فيصل الاسلامي السوداني, بنك امدرمان الوطني, FAISAL ISLAMIC
+      BANK, صراف آلي بنك فيصل الإسلامي, صراف آلي بنك الخرطوم, بنك فيصل الإسلامية السوداني, بنك المزارع
+      التجاري, بنك الخرطوم فرع الكلاكله شرق, بنك الخرطوم Bank of Khartoum, البنك السوداني الفرنسي, Sudanese
+      French Bank, Faisal Islamic Bank ATM, Faisal Islamic Bank]
 firstDayOfWorkweek: Su
 mobileCountryCode: 634
 officialLanguages: [ar, en]
-orchardProduces: [banana, guava, mango, mangosteen, tomato, date, lemon, lime, grapefruit, orange,
-  chilli_pepper, sweet_pepper, pineapple]
+orchardProduces: [banana, guava, mango, mangosteen, tomato, date, lemon, lime, grapefruit, orange, chilli_pepper, sweet_pepper,
+   pineapple]
 popularReligions: [muslim]

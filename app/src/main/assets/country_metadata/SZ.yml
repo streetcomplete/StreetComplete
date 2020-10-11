@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Standard Bank, FNB, Nedbank, First National Bank]
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 653
 officialLanguages: [ss, en]
-orchardProduces: [grapefruit, orange, pineapple, banana, tomato, plum, almond, avocado, date, guava,
-  mango, mangosteen]
+orchardProduces: [grapefruit, orange, pineapple, banana, tomato, plum, almond, avocado, date, guava, mango, mangosteen]

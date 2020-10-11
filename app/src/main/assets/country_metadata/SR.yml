@@ -1,7 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [DSB, Hakrinbank, Republic Bank, De Surinaamsche Bank]
 isLeftHandTraffic: true
 mobileCountryCode: 746
 officialLanguages: [nl]
-orchardProduces: [banana, coconut, orange, grapefruit, guava, mango, mangosteen, tomato, pineapple,
-  cherry, papaya, lemon, lime, coffee, cacao]
+orchardProduces: [banana, coconut, orange, grapefruit, guava, mango, mangosteen, tomato, pineapple, cherry, papaya, lemon,
+   lime, coffee, cacao]
 popularReligions: [christian, hindu, muslim]

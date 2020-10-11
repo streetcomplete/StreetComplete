@@ -1,3 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [State Bank of India, SBI, SBI ATM, ICICI Bank, HDFC, axis bank, HDFC Bank, State Bank of Patiala, PNB
+      ATM, PNB, ICICI, Bank of India, Bank Of India]
 officialLanguages: [pa]
 popularReligions: [sikh, hindu]

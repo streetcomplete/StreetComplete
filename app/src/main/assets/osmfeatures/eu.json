@@ -1,451 +1,451 @@
 {
-    "presets": {
-        "leisure/stadium": {
-            "name": "Estadio"
-        },
-        "amenity/shelter/public_transport": {
-            "name": "Babestutako korridorea"
-        },
-        "amenity/drinking_water": {
-            "name": "Ur edangarria"
-        },
-        "amenity/social_facility": {
-            "name": "Gizarte-instalazio"
-        },
-        "amenity/car_rental": {
-            "name": "Auto Alokairua"
-        },
-        "amenity/internet_cafe": {
-            "name": "Internet kafetegi"
-        },
-        "amenity/monastery": {
-            "name": "Monastegiaren eremu"
-        },
-        "amenity/vending_machine/drinks": {
-            "name": "Edarien makina saltzaile"
-        },
-        "amenity/fast_food": {
-            "name": "Janari azkarra"
-        },
-        "amenity/theatre/type/amphi": {
-            "name": "Anfiteatro"
-        },
-        "amenity/townhall": {
-            "name": "Udaletxe"
-        },
-        "amenity/shelter/picnic_shelter": {
-            "name": "Babestutako piknik-a"
-        },
-        "amenity/bbq": {
-            "name": "Barbakoa/Parrila"
-        },
-        "leisure/swimming_pool": {
-            "name": "Igerileku"
-        },
-        "amenity/recycling": {
-            "name": "Birziklatze"
-        },
-        "amenity/biergarten": {
-            "name": "Biergarten"
-        },
-        "amenity/shelter/lean_to": {
-            "name": "Zintzilikari"
-        },
-        "amenity/ice_cream": {
-            "name": "Izozki denda"
-        },
-        "amenity/vending_machine/elongated_coin": {
-            "name": "Txanpon-makina"
-        },
-        "amenity/library": {
-            "name": "Liburutegi"
-        },
-        "craft/photographic_laboratory": {
-            "name": "Argazki laborategi"
-        },
-        "amenity/vending_machine/coffee": {
-            "name": "Kafe makina saltzaile"
-        },
-        "amenity/dentist": {
-            "name": "Dentista"
-        },
-        "attraction/carousel": {
-            "name": "Zaldiko-maldiko"
-        },
-        "amenity/grit_bin": {
-            "name": "Hare-ontzi"
-        },
-        "amenity/bank": {
-            "name": "Banku"
-        },
-        "leisure/sauna": {
-            "name": "Sauna"
-        },
-        "amenity/vending_machine/cigarettes": {
-            "name": "Zigarro makina saltzaile"
-        },
-        "amenity/social_facility/nursing_home": {
-            "name": "Zahar-egoitza"
-        },
-        "leisure/resort": {
-            "name": "opor-leku"
-        },
-        "amenity/studio": {
-            "name": "Estudio"
-        },
-        "amenity/prison": {
-            "name": "Espetxe"
-        },
-        "amenity/vending_machine/electronics": {
-            "name": "Sistema elektronikoen makina saltzaile"
-        },
-        "craft/plumber": {
-            "name": "Iturgin"
-        },
-        "amenity/hunting_stand": {
-            "name": "Ehiza postua"
-        },
-        "amenity/arts_centre": {
-            "name": "Arte Zentro"
-        },
-        "amenity/restaurant": {
-            "name": "Jatetxe"
-        },
-        "amenity/police": {
-            "name": "Polizia"
-        },
-        "amenity": {
-            "name": "Zerbitzu"
-        },
-        "amenity/bicycle_repair_station": {
-            "name": "Bizikleta konpontzeko tresneriaren postua"
-        },
-        "building/garages": {
-            "name": "Garajeak"
-        },
-        "amenity/fuel": {
-            "name": "Gasolindegi"
-        },
-        "amenity/public_bath": {
-            "name": "Komun publikoak"
-        },
-        "amenity/car_wash": {
-            "name": "Auto garbiketa"
-        },
-        "amenity/charging_station": {
-            "name": "Kargatzeko geltokia"
-        },
-        "amenity/music_school": {
-            "name": "Musika eskola"
-        },
-        "man_made/antenna": {
-            "name": "Antena"
-        },
-        "amenity/community_centre": {
-            "name": "Gizarte Etxe"
-        },
-        "amenity/bureau_de_change": {
-            "name": "Moneta trukea"
-        },
-        "amenity/vending_machine/feminine_hygiene": {
-            "name": "Emakumezkoentzako higiene produktuen makina saltzaile"
-        },
-        "aeroway/aerodrome": {
-            "name": "Aireportu"
-        },
-        "amenity/bicycle_rental": {
-            "name": "Bizikleten Alokairua "
-        },
-        "aeroway/gate": {
-            "name": "Aireportuko ate"
-        },
-        "leisure/sports_centre": {
-            "name": "Kiroldegia/ gunea"
-        },
-        "amenity/post_office": {
-            "name": "Postetxe"
-        },
-        "building/house": {
-            "name": "Etxe"
-        },
-        "address": {
-            "name": "Helbide"
-        },
-        "craft/rigger": {
-            "name": "Aparejadore"
-        },
-        "amenity/shelter/gazebo": {
-            "name": "Begiratoki"
-        },
-        "building/stable": {
-            "name": "Ukuilu"
-        },
-        "amenity/public_bookcase": {
-            "name": "Apalategi publikoa"
-        },
-        "amenity/vending_machine": {
-            "name": "Makina saltzaile"
-        },
-        "amenity/pub": {
-            "name": "Pub"
-        },
-        "building/entrance": {
-            "name": "Sarrera/Irteera"
-        },
-        "amenity/nightclub": {
-            "name": "Klub"
-        },
-        "amenity/school": {
-            "name": "Eskola eremu"
-        },
-        "man_made/breakwater": {
-            "name": "Olatu-orma"
-        },
-        "advertising/column": {
-            "name": "Publizitaterako zutabea"
-        },
-        "amenity/bar": {
-            "name": "Taberna"
-        },
-        "amenity/casino": {
-            "name": "Kasino"
-        },
-        "amenity/coworking_space": {
-            "name": "Coworking espazioa"
-        },
-        "amenity/ranger_station": {
-            "name": "Basozain geltokia"
-        },
-        "barrier/gate": {
-            "name": "Ate"
-        },
-        "amenity/planetarium": {
-            "name": "Planetario"
-        },
-        "man_made/bunker_silo": {
-            "name": "Bunker-siloa"
-        },
-        "amenity/place_of_worship/hindu": {
-            "name": "Tenplu hindua"
-        },
-        "amenity/recycling_container": {
-            "name": "Birziklatze ontzi"
-        },
-        "man_made/chimney": {
-            "name": "Tximinia"
-        },
-        "amenity/food_court": {
-            "name": "Bazkaltzeko eremua"
-        },
-        "leisure/pitch/tennis": {
-            "name": "tenis-zelaia"
-        },
-        "amenity/parking/multi-storey": {
-            "name": "Maila anitzeko aparkaleku"
-        },
-        "barrier/wall": {
-            "name": "Pareta"
-        },
-        "amenity/doctors": {
-            "name": "Mediku"
-        },
-        "amenity/vending_machine/condoms": {
-            "name": "Kondoi makina saltzaile"
-        },
-        "man_made/adit": {
-            "name": "Igarobide"
-        },
-        "amenity/clinic/abortion": {
-            "name": "Abortu klinika"
-        },
-        "amenity/atm": {
-            "name": "ATM"
-        },
-        "amenity/shelter": {
-            "name": "Aterpetxe"
-        },
-        "amenity/courthouse": {
-            "name": "Epaitegi"
-        },
-        "amenity/fire_station": {
-            "name": "Suhiltzaile-etxe"
-        },
-        "leisure/pitch/volleyball": {
-            "name": "boleibol-zelaia"
-        },
-        "amenity/veterinary": {
-            "name": "Albaitari"
-        },
-        "barrier/entrance": {
-            "name": "Sarrera"
-        },
-        "amenity/recycling_centre": {
-            "name": "Birziklatze zentrua"
-        },
-        "club": {
-            "name": "Klub"
-        },
-        "leisure/water_park": {
-            "name": "Ur-parkea"
-        },
-        "amenity/driving_school": {
-            "name": "Auto-eskola"
-        },
-        "amenity/bench": {
-            "name": "Banku"
-        },
-        "area": {
-            "name": "Gune"
-        },
-        "amenity/bus_station": {
-            "name": "Autobus geltoki / Terminal"
-        },
-        "amenity/marketplace": {
-            "name": "Merkatu"
-        },
-        "amenity/toilets": {
-            "name": "Komun"
-        },
-        "amenity/theatre": {
-            "name": "Antzoki"
-        },
-        "amenity/university": {
-            "name": "Unibertsitatearen eremua"
-        },
-        "amenity/social_facility/group_home": {
-            "name": "Zahar-etxe"
-        },
-        "amenity/shower": {
-            "name": "Dutxa"
-        },
-        "amenity/vending_machine/fuel": {
-            "name": "Gas hornigailu"
-        },
-        "amenity/fountain": {
-            "name": "Iturri"
-        },
-        "amenity/place_of_worship": {
-            "name": "Gurtza gune"
-        },
-        "amenity/taxi": {
-            "name": "Taxi postu"
-        },
-        "amenity/college": {
-            "name": "Unibertsitate Eremu"
-        },
-        "amenity/grave_yard": {
-            "name": "Hilerri"
-        },
-        "amenity/smoking_area": {
-            "name": "Erretzeko gune"
-        },
-        "amenity/clinic/fertility": {
-            "name": "Ugalkortasun klinika"
-        },
-        "amenity/embassy": {
-            "name": "Enbaxada"
-        },
-        "craft/photographer": {
-            "name": "Argazkilari"
-        },
-        "leisure/pitch/table_tennis": {
-            "name": "ping-pong mahai"
-        },
-        "amenity/place_of_worship/sikh": {
-            "name": "Tenplu Sikhista "
-        },
-        "amenity/social_facility/food_bank": {
-            "name": "Elikagai-banku"
-        },
-        "amenity/vending_machine/newspapers": {
-            "name": "Egunkarien makina saltzaile"
-        },
-        "amenity/motorcycle_parking": {
-            "name": "Motorren aparkalekua"
-        },
-        "craft/gardener": {
-            "name": "Lorezain"
-        },
-        "amenity/vending_machine/food": {
-            "name": "Janari makina saltzailea"
-        },
-        "line": {
-            "name": "lerro"
-        },
-        "amenity/cafe": {
-            "name": "Kafetegi"
-        },
-        "amenity/boat_rental": {
-            "name": "Ontzi alokairu"
-        },
-        "amenity/place_of_worship/taoist": {
-            "name": "Tenplu Taoista"
-        },
-        "amenity/parking_space": {
-            "name": "Aparkatzeko lekua"
-        },
-        "amenity/childcare": {
-            "name": "Haurtzendegi/ Ume zaintza"
-        },
-        "amenity/bicycle_parking": {
-            "name": "Bizikletentzako Aparkalekua"
-        },
-        "amenity/compressed_air": {
-            "name": "Aire konpromitua"
-        },
-        "craft/painter": {
-            "name": "Margolari"
-        },
-        "amenity/place_of_worship/shinto": {
-            "name": "Xintoismo Santutegia"
-        },
-        "amenity/social_facility/homeless_shelter": {
-            "name": "Etxegabeentzako aterpetxe"
-        },
-        "amenity/clinic": {
-            "name": "Erietxe"
-        },
-        "amenity/place_of_worship/buddhist": {
-            "name": "Tenplu budista"
-        },
-        "amenity/cinema": {
-            "name": "Zinema"
-        },
-        "amenity/clock": {
-            "name": "Ordulari"
-        },
-        "amenity/vending_machine/ice_cream": {
-            "name": "Izozkien makina saltzaile"
-        },
-        "amenity/language_school": {
-            "name": "Hizkuntz eskola"
-        },
-        "amenity/crematorium": {
-            "name": "Errausketa-labe"
-        },
-        "building/garage": {
-            "name": "Garaje"
-        },
-        "amenity/hospital": {
-            "name": "Ospitalearen Eremua"
-        },
-        "building/roof": {
-            "name": "Teilatu"
-        },
-        "leisure/playground": {
-            "name": "Jolastoki"
-        },
-        "amenity/telephone": {
-            "name": "Telefono"
-        },
-        "craft/distillery": {
-            "name": "Destilategi"
-        },
-        "building/dormitory": {
-            "name": "Erresidentzia"
-        },
-        "aeroway/terminal": {
-            "name": "Aireportuko Terminal"
-        }
+  "presets": {
+    "address": {
+      "name": "Helbide"
+    },
+    "advertising/column": {
+      "name": "Publizitaterako zutabea"
+    },
+    "aeroway/aerodrome": {
+      "name": "Aireportu"
+    },
+    "aeroway/gate": {
+      "name": "Aireportuko ate"
+    },
+    "aeroway/terminal": {
+      "name": "Aireportuko Terminal"
+    },
+    "amenity": {
+      "name": "Zerbitzu"
+    },
+    "amenity/arts_centre": {
+      "name": "Arte Zentro"
+    },
+    "amenity/atm": {
+      "name": "ATM"
+    },
+    "amenity/bank": {
+      "name": "Banku"
+    },
+    "amenity/bar": {
+      "name": "Taberna"
+    },
+    "amenity/bbq": {
+      "name": "Barbakoa/Parrila"
+    },
+    "amenity/bench": {
+      "name": "Banku"
+    },
+    "amenity/bicycle_parking": {
+      "name": "Bizikletentzako Aparkalekua"
+    },
+    "amenity/bicycle_rental": {
+      "name": "Bizikleten Alokairua "
+    },
+    "amenity/bicycle_repair_station": {
+      "name": "Bizikleta konpontzeko tresneriaren postua"
+    },
+    "amenity/biergarten": {
+      "name": "Biergarten"
+    },
+    "amenity/boat_rental": {
+      "name": "Ontzi alokairu"
+    },
+    "amenity/bureau_de_change": {
+      "name": "Moneta trukea"
+    },
+    "amenity/bus_station": {
+      "name": "Autobus geltoki / Terminal"
+    },
+    "amenity/cafe": {
+      "name": "Kafetegi"
+    },
+    "amenity/car_rental": {
+      "name": "Auto Alokairua"
+    },
+    "amenity/car_wash": {
+      "name": "Auto garbiketa"
+    },
+    "amenity/casino": {
+      "name": "Kasino"
+    },
+    "amenity/charging_station": {
+      "name": "Kargatzeko geltokia"
+    },
+    "amenity/childcare": {
+      "name": "Haurtzendegi/ Ume zaintza"
+    },
+    "amenity/cinema": {
+      "name": "Zinema"
+    },
+    "amenity/clinic": {
+      "name": "Erietxe"
+    },
+    "amenity/clinic/abortion": {
+      "name": "Abortu klinika"
+    },
+    "amenity/clinic/fertility": {
+      "name": "Ugalkortasun klinika"
+    },
+    "amenity/clock": {
+      "name": "Ordulari"
+    },
+    "amenity/college": {
+      "name": "Unibertsitate Eremu"
+    },
+    "amenity/community_centre": {
+      "name": "Gizarte Etxe"
+    },
+    "amenity/compressed_air": {
+      "name": "Aire konpromitua"
+    },
+    "amenity/courthouse": {
+      "name": "Epaitegi"
+    },
+    "amenity/coworking_space": {
+      "name": "Coworking espazioa"
+    },
+    "amenity/crematorium": {
+      "name": "Errausketa-labe"
+    },
+    "amenity/dentist": {
+      "name": "Dentista"
+    },
+    "amenity/doctors": {
+      "name": "Mediku"
+    },
+    "amenity/drinking_water": {
+      "name": "Ur edangarria"
+    },
+    "amenity/driving_school": {
+      "name": "Auto-eskola"
+    },
+    "amenity/embassy": {
+      "name": "Enbaxada"
+    },
+    "amenity/fast_food": {
+      "name": "Janari azkarra"
+    },
+    "amenity/fire_station": {
+      "name": "Suhiltzaile-etxe"
+    },
+    "amenity/food_court": {
+      "name": "Bazkaltzeko eremua"
+    },
+    "amenity/fountain": {
+      "name": "Iturri"
+    },
+    "amenity/fuel": {
+      "name": "Gasolindegi"
+    },
+    "amenity/grave_yard": {
+      "name": "Hilerri"
+    },
+    "amenity/grit_bin": {
+      "name": "Hare-ontzi"
+    },
+    "amenity/hospital": {
+      "name": "Ospitalearen Eremua"
+    },
+    "amenity/hunting_stand": {
+      "name": "Ehiza postua"
+    },
+    "amenity/ice_cream": {
+      "name": "Izozki denda"
+    },
+    "amenity/internet_cafe": {
+      "name": "Internet kafetegi"
+    },
+    "amenity/language_school": {
+      "name": "Hizkuntz eskola"
+    },
+    "amenity/library": {
+      "name": "Liburutegi"
+    },
+    "amenity/marketplace": {
+      "name": "Merkatu"
+    },
+    "amenity/monastery": {
+      "name": "Monastegiaren eremu"
+    },
+    "amenity/motorcycle_parking": {
+      "name": "Motorren aparkalekua"
+    },
+    "amenity/music_school": {
+      "name": "Musika eskola"
+    },
+    "amenity/nightclub": {
+      "name": "Klub"
+    },
+    "amenity/parking/multi-storey": {
+      "name": "Maila anitzeko aparkaleku"
+    },
+    "amenity/parking_space": {
+      "name": "Aparkatzeko lekua"
+    },
+    "amenity/place_of_worship": {
+      "name": "Gurtza gune"
+    },
+    "amenity/place_of_worship/buddhist": {
+      "name": "Tenplu budista"
+    },
+    "amenity/place_of_worship/hindu": {
+      "name": "Tenplu hindua"
+    },
+    "amenity/place_of_worship/shinto": {
+      "name": "Xintoismo Santutegia"
+    },
+    "amenity/place_of_worship/sikh": {
+      "name": "Tenplu Sikhista "
+    },
+    "amenity/place_of_worship/taoist": {
+      "name": "Tenplu Taoista"
+    },
+    "amenity/planetarium": {
+      "name": "Planetario"
+    },
+    "amenity/police": {
+      "name": "Polizia"
+    },
+    "amenity/post_office": {
+      "name": "Postetxe"
+    },
+    "amenity/prison": {
+      "name": "Espetxe"
+    },
+    "amenity/pub": {
+      "name": "Pub"
+    },
+    "amenity/public_bath": {
+      "name": "Komun publikoak"
+    },
+    "amenity/public_bookcase": {
+      "name": "Apalategi publikoa"
+    },
+    "amenity/ranger_station": {
+      "name": "Basozain geltokia"
+    },
+    "amenity/recycling": {
+      "name": "Birziklatze"
+    },
+    "amenity/recycling_centre": {
+      "name": "Birziklatze zentrua"
+    },
+    "amenity/recycling_container": {
+      "name": "Birziklatze ontzi"
+    },
+    "amenity/restaurant": {
+      "name": "Jatetxe"
+    },
+    "amenity/school": {
+      "name": "Eskola eremu"
+    },
+    "amenity/shelter": {
+      "name": "Aterpetxe"
+    },
+    "amenity/shelter/gazebo": {
+      "name": "Begiratoki"
+    },
+    "amenity/shelter/lean_to": {
+      "name": "Zintzilikari"
+    },
+    "amenity/shelter/picnic_shelter": {
+      "name": "Babestutako piknik-a"
+    },
+    "amenity/shelter/public_transport": {
+      "name": "Babestutako korridorea"
+    },
+    "amenity/shower": {
+      "name": "Dutxa"
+    },
+    "amenity/smoking_area": {
+      "name": "Erretzeko gune"
+    },
+    "amenity/social_facility": {
+      "name": "Gizarte-instalazio"
+    },
+    "amenity/social_facility/food_bank": {
+      "name": "Elikagai-banku"
+    },
+    "amenity/social_facility/group_home": {
+      "name": "Zahar-etxe"
+    },
+    "amenity/social_facility/homeless_shelter": {
+      "name": "Etxegabeentzako aterpetxe"
+    },
+    "amenity/social_facility/nursing_home": {
+      "name": "Zahar-egoitza"
+    },
+    "amenity/studio": {
+      "name": "Estudio"
+    },
+    "amenity/taxi": {
+      "name": "Taxi postu"
+    },
+    "amenity/telephone": {
+      "name": "Telefono"
+    },
+    "amenity/theatre": {
+      "name": "Antzoki"
+    },
+    "amenity/theatre/type/amphi": {
+      "name": "Anfiteatro"
+    },
+    "amenity/toilets": {
+      "name": "Komun"
+    },
+    "amenity/townhall": {
+      "name": "Udaletxe"
+    },
+    "amenity/university": {
+      "name": "Unibertsitatearen eremua"
+    },
+    "amenity/vending_machine": {
+      "name": "Makina saltzaile"
+    },
+    "amenity/vending_machine/cigarettes": {
+      "name": "Zigarro makina saltzaile"
+    },
+    "amenity/vending_machine/coffee": {
+      "name": "Kafe makina saltzaile"
+    },
+    "amenity/vending_machine/condoms": {
+      "name": "Kondoi makina saltzaile"
+    },
+    "amenity/vending_machine/drinks": {
+      "name": "Edarien makina saltzaile"
+    },
+    "amenity/vending_machine/electronics": {
+      "name": "Sistema elektronikoen makina saltzaile"
+    },
+    "amenity/vending_machine/elongated_coin": {
+      "name": "Txanpon-makina"
+    },
+    "amenity/vending_machine/feminine_hygiene": {
+      "name": "Emakumezkoentzako higiene produktuen makina saltzaile"
+    },
+    "amenity/vending_machine/food": {
+      "name": "Janari makina saltzailea"
+    },
+    "amenity/vending_machine/fuel": {
+      "name": "Gas hornigailu"
+    },
+    "amenity/vending_machine/ice_cream": {
+      "name": "Izozkien makina saltzaile"
+    },
+    "amenity/vending_machine/newspapers": {
+      "name": "Egunkarien makina saltzaile"
+    },
+    "amenity/veterinary": {
+      "name": "Albaitari"
+    },
+    "area": {
+      "name": "Gune"
+    },
+    "attraction/carousel": {
+      "name": "Zaldiko-maldiko"
+    },
+    "barrier/entrance": {
+      "name": "Sarrera"
+    },
+    "barrier/gate": {
+      "name": "Ate"
+    },
+    "barrier/wall": {
+      "name": "Pareta"
+    },
+    "building/dormitory": {
+      "name": "Erresidentzia"
+    },
+    "building/entrance": {
+      "name": "Sarrera/Irteera"
+    },
+    "building/garage": {
+      "name": "Garaje"
+    },
+    "building/garages": {
+      "name": "Garajeak"
+    },
+    "building/house": {
+      "name": "Etxe"
+    },
+    "building/roof": {
+      "name": "Teilatu"
+    },
+    "building/stable": {
+      "name": "Ukuilu"
+    },
+    "club": {
+      "name": "Klub"
+    },
+    "craft/distillery": {
+      "name": "Destilategi"
+    },
+    "craft/gardener": {
+      "name": "Lorezain"
+    },
+    "craft/painter": {
+      "name": "Margolari"
+    },
+    "craft/photographer": {
+      "name": "Argazkilari"
+    },
+    "craft/photographic_laboratory": {
+      "name": "Argazki laborategi"
+    },
+    "craft/plumber": {
+      "name": "Iturgin"
+    },
+    "craft/rigger": {
+      "name": "Aparejadore"
+    },
+    "leisure/pitch/table_tennis": {
+      "name": "ping-pong mahai"
+    },
+    "leisure/pitch/tennis": {
+      "name": "tenis-zelaia"
+    },
+    "leisure/pitch/volleyball": {
+      "name": "boleibol-zelaia"
+    },
+    "leisure/playground": {
+      "name": "Jolastoki"
+    },
+    "leisure/resort": {
+      "name": "opor-leku"
+    },
+    "leisure/sauna": {
+      "name": "Sauna"
+    },
+    "leisure/sports_centre": {
+      "name": "Kiroldegia/ gunea"
+    },
+    "leisure/stadium": {
+      "name": "Estadio"
+    },
+    "leisure/swimming_pool": {
+      "name": "Igerileku"
+    },
+    "leisure/water_park": {
+      "name": "Ur-parkea"
+    },
+    "line": {
+      "name": "lerro"
+    },
+    "man_made/adit": {
+      "name": "Igarobide"
+    },
+    "man_made/antenna": {
+      "name": "Antena"
+    },
+    "man_made/breakwater": {
+      "name": "Olatu-orma"
+    },
+    "man_made/bunker_silo": {
+      "name": "Bunker-siloa"
+    },
+    "man_made/chimney": {
+      "name": "Tximinia"
     }
+  }
 }

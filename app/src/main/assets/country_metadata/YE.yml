@@ -1,7 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [كاك بنك, YCB, صراف آلي - بنك اليمن الدولي, بنك اليمن الدولي]
 firstDayOfWorkweek: Su
 mobileCountryCode: 421
 officialLanguages: [ar]
-orchardProduces: [guava, mango, mangosteen, grape, banana, orange, tomato, date, peach, lemon, lime,
-  papaya, coffee, apple, chilli_pepper, sweet_pepper, fig, apricot, pear]
+orchardProduces: [guava, mango, mangosteen, grape, banana, orange, tomato, date, peach, lemon, lime, papaya, coffee, apple,
+   chilli_pepper, sweet_pepper, fig, apricot, pear]
 popularReligions: [muslim]

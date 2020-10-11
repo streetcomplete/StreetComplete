@@ -1335,6 +1335,7 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_house_description">"single-family home"</string>
+    <string name="quest_buildingType_apartments_description">"house for multiple families, may have retail outlets on the ground floor"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"Apartment building"</string>
@@ -1361,12 +1362,14 @@ For instance 1,3 or 2-6."</string>
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Houseboat"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
+    <string name="quest_buildingType_bungalow_description">"small detached house (summer house, holiday cottage, …)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Static caravan"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_commercial">"Commercial building"</string>
+    <string name="quest_buildingType_commercial_generic_description">"building where people work, shop or do any other commercial activities"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_industrial">"Industrial building"</string>

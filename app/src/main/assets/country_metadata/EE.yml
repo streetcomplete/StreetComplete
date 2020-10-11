@@ -1,5 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [ru]
+atmOperators: [Swedbank, SEB, Nordea, Luminor | LHV, Luminor, Sampo/Nordea, LHV, swedbank, Sweedpank, Swedpank, LHV
+      | Luminor, Danske Bank]
+chargingStationOperators: [Elmo, ELMO]
+clothesContainerOperators: [Tallinna Jäätmekeskus]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true

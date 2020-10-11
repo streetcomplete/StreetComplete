@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [La Banque Postale, Crédit Mutuel, BNP Paribas]
 officialLanguages: [fr]
-orchardProduces: [banana, tomato, coconut, orange, lemon, lime, avocado, chilli_pepper, sweet_pepper,
-  guava, mango, mangosteen, pineapple, grapefruit, coffee]
+orchardProduces: [banana, tomato, coconut, orange, lemon, lime, avocado, chilli_pepper, sweet_pepper, guava, mango, mangosteen,
+   pineapple, grapefruit, coffee]

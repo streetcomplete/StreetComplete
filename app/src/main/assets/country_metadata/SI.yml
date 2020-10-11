@@ -1,10 +1,16 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [NLB, NKBM, Abanka, SKB, Nova KBM, Gorenjska banka, Banka Koper, ABanka, UniCredit Bank, Gorenjska Banka,
+   NKBM d.d., Bitnik d.o.o., ABANKA, Delavska hranilnica, Banka Celje, A banka, SKB banka, SKB Banka,
+   PBS, Nova Ljubljanska banka d.d., Nova Ljubljanska Banka, Intesa San Paolo, Bitnik, Addiko bank, Addiko
+      Bank]
+chargingStationOperators: [SODO, Petrol, Elektro Maribor, unknovn, elektro Celje, dravske elektrarne maribor, Renault, Elektro Ljubljana
+      d.d., Elektro Gorenjska, EM]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 293
 officialLanguages: [sl]
-orchardProduces: [grape, apple, pear, tomato, walnut, cherry, peach, plum, hop, persimmon, strawberry,
-  olive, chilli_pepper, sweet_pepper, apricot, kiwi]
+orchardProduces: [grape, apple, pear, tomato, walnut, cherry, peach, plum, hop, persimmon, strawberry, olive, chilli_pepper,
+   sweet_pepper, apricot, kiwi]
 popularReligions: [christian, muslim]
 popularSports: [soccer, basketball, tennis, golf, boules, equestrian]

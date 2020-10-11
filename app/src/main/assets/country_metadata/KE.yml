@@ -1,7 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Standard Chartered, Barclays, KCB ATM, KCB, Standard Chartered Bank, Equity Bank ATM, PesaPoint, Pesa
+      Point, National Bank ATM, Barclays Bank ATM, Equity Bank, Equity ATM, Cooperative Bank, Kenya Commercial
+      Bank, Equity Bank Atm, Cooprative Bank, Cooperative Bank ATM, CFC Stanbic, CBA ATM]
 isLeftHandTraffic: true
 mobileCountryCode: 639
 officialLanguages: [en, sw]
-orchardProduces: [banana, guava, mango, mangosteen, tea, tomato, pineapple, avocado, papaya, coconut,
-  coffee, orange, cashew_nut, sisal, lemon, lime, grapefruit, pear]
+orchardProduces: [banana, guava, mango, mangosteen, tea, tomato, pineapple, avocado, papaya, coconut, coffee, orange, cashew_nut,
+   sisal, lemon, lime, grapefruit, pear]
 popularSports: [golf, soccer, tennis, basketball, cricket]

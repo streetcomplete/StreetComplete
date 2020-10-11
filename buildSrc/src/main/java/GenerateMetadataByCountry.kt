@@ -45,6 +45,7 @@ open class GenerateMetadataByCountry : DefaultTask() {
         val config = YamlConfig().apply {
             writeConfig.setWriteClassname(YamlConfig.WriteClassName.NEVER)
             writeConfig.isFlowStyle = true
+            writeConfig.setEscapeUnicode(false)
         }
         for ((countryCode, byProperty) in result) {
             val targetFile = File(targetDir, "$countryCode.yml")

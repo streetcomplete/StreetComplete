@@ -1,7 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [طريق الشجرة, مصرف الجمهورية, مصرف التجارة والتنمية, AMAN Bank, مصرف شمال افريقيا, مصرف الوحدة, المصرف
+      التجاري الوطني, AL WAHDA Bank]
 firstDayOfWorkweek: Su
 mobileCountryCode: 606
 officialLanguages: [ar]
-orchardProduces: [tomato, olive, date, plum, almond, grape, chilli_pepper, sweet_pepper, apricot, lemon,
-  lime, apple, peach, fig, orange, pear]
+orchardProduces: [tomato, olive, date, plum, almond, grape, chilli_pepper, sweet_pepper, apricot, lemon, lime, apple, peach,
+   fig, orange, pear]
 popularReligions: [muslim]

@@ -1,2 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [RBC, TD Canada Trust, CIBC, Scotiabank, BMO, Bank of Montreal, BMO Bank of Montreal, generic, TD, Alterna,
+   Royal Bank of Canada, President's Choice Financial, Frisco ATMs, Cibc, Canadian Imperial Bank of Commerce]
+chargingStationOperators: [Flo, Tesla, Expressway Ford, Tim Hortons, Fairway Plaza, City of Kitchener, University of Waterloo, Tesla
+      Motors Inc., Tesla Motors, Sun Country, FLO, Electric Circuit, City of Waterloo, City of Stratford,
+   Chargepoint, Cadillac Fairview, Bingemans, Bank of Nova Scotia]
+clothesContainerOperators: [Canadian Diabetes]
 officialLanguages: [en]

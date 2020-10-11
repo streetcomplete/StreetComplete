@@ -1,6 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banco Metropolitano, BANDEC, BPA, Banco Popular de Ahorro, Cajeros Automáticos, Cajero automático, Cajero
+      Automático, Bandec, BPP, BM, Cajeros, Banco metropolitano, Banco de Credito y Comercio, Banco Popular
+      De Ahorro, Banco]
 mobileCountryCode: 368
 officialLanguages: [es]
-orchardProduces: [tomato, guava, mango, mangosteen, banana, papaya, chilli_pepper, sweet_pepper, coconut,
-  pineapple, grapefruit, grape, orange, lemon, lime, coffee, agave, avocado, cacao]
+orchardProduces: [tomato, guava, mango, mangosteen, banana, papaya, chilli_pepper, sweet_pepper, coconut, pineapple, grapefruit,
+   grape, orange, lemon, lime, coffee, agave, avocado, cacao]
 popularSports: [baseball, basketball]

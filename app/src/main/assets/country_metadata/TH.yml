@@ -1,9 +1,19 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en, th-Latn]
+atmOperators: [Bangkok Bank, Siam Commercial Bank, Kasikorn Bank, Krungsri, Krungthai Bank, SCB, KTB, Kasikorn, TMB,
+   Krungthai, ธนาคารกสิกรไทย, ธนาคารไทยพาณิชย์, ธนาคารกรุงไทย, Government Savings Bank, ธนาคารกรุงเทพ,
+   GSB, Krungsri Bank, Kasikornbank, Thanachart Bank, KBank, KBANK, ATM, ธนาคารออมสิน, Bank of Ayudhya,
+   Siam Commercial, Siam City Bank, K-Bank, ธนาคารกรุงศรีอยุธยา, Omsin, Krung Thai Bank, Kasikornthai,
+   ธนาคารธนชาต, ธนาคารทหารไทย, K-bank, Goverment Savings Bank, Thanachart, Baac, Aeon, กสิกรไทย, UOB,
+   Easybank, BBL, ออมสิน, Ktb, Krung Thai, Kasikornthai Bank, CIMB Thai, Bangkok, ธนาคารซีไอเอ็มบีไทย,
+   ธนาคารกรุงไทย (Krungthai Bank), uob, government savings bank, bike park, bangkok bank, atm, Thai Military
+      Bank, TMB Bank, TCAP, Siam Commercial Bank (SCB), SNA, Oomsin, LH Bank, Krungthai Bank ธนาคารกรุงไทย,
+   Krungsri Bay, Krungsri ATM, Krungsiri, Krung Thai Bank (KTB), Kbank, K Bank, Easy Bank, Cimb, Bangkok
+      bank, Bangkok Bank (BBL), BAY, Aomsin Bank, ATM Krungsri]
 isLeftHandTraffic: true
 mobileCountryCode: 520
 officialLanguages: [th]
-orchardProduces: [rubber, guava, mango, mangosteen, pineapple, banana, coconut, grapefruit, papaya,
-  orange, tomato, lemon, lime, grape, tea, areca_nut, coffee, cashew_nut]
+orchardProduces: [rubber, guava, mango, mangosteen, pineapple, banana, coconut, grapefruit, papaya, orange, tomato, lemon,
+   lime, grape, tea, areca_nut, coffee, cashew_nut]
 popularReligions: [buddhist, muslim, chinese_folk, taoist]
 popularSports: [tennis, soccer, golf, basketball, badminton, sepak_takraw]

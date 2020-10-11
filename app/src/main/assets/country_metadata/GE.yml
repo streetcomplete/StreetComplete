@@ -1,8 +1,12 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+atmOperators: [Bank of Georgia, TBC Bank, Liberty Bank, ProCredit Bank, Bank Republic, Tao Private Bank, საქართველოს
+      ბანკი, Cryptomat, Cartu Bank, TBC Bank ATM, VTB Bank, TBC, Procredit Bank, Bank Of Georgia, VTB
+      bank, VTB, Tbc Bank, TBC Bank - თიბისი ბანკი, TBC BANK, Procredit bank, International Bank of Azerbaijan
+      - Georgia]
 isLivingStreetKnown: true
 mobileCountryCode: 282
 officialLanguages: [ka]
-orchardProduces: [grape, tomato, apple, peach, hazelnut, pear, plum, chilli_pepper, sweet_pepper, walnut,
-  cherry, tea, strawberry, lemon, lime, orange, apricot]
+orchardProduces: [grape, tomato, apple, peach, hazelnut, pear, plum, chilli_pepper, sweet_pepper, walnut, cherry, tea,
+   strawberry, lemon, lime, orange, apricot]
 popularSports: [rugby]

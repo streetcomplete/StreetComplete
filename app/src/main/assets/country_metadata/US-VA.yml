@@ -1,0 +1,5 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [Bank of America, Wells Fargo, BB&T, Navy Federal Credit Union, MetaBank, PNC Bank, CapitolOne, Cardtronics,
+   Wachovia, USAA, SunTrust, PNC, Capitol One, Capital One, Blue Eagle Credit Union, Bank Of America]
+chargingStationOperators: [ChargePoint, Volta, Tesla, Tesla Motors, Libbie Mill, Electrify America, Corporate Research Center, Refuge
+      Inn, EVgo]
