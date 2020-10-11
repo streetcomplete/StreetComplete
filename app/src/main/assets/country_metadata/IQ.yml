@@ -1,7 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [ذكية, بطاقة ذكية, Cihan Bank, کەبابی هەرزان, ميدان رمي تبوك, مصرف التنمية الدولي, جامع الامام علي, الوسام,
+   النور, المستقبل, الساحل, الاصدقاء, الإسناد الهندسي, اسامة, QASRE]
+chargingStationOperators: [محطة وزن, محطة كهرباء المعرفة]
 firstDayOfWorkweek: Su
 mobileCountryCode: 418
 officialLanguages: [ar]
-orchardProduces: [date, tomato, grape, apple, chilli_pepper, sweet_pepper, apricot, olive, pear, lemon,
-  lime, plum, fig, orange, walnut, peach, almond]
+orchardProduces: [date, tomato, grape, apple, chilli_pepper, sweet_pepper, apricot, olive, pear, lemon, lime, plum, fig,
+   orange, walnut, peach, almond]
 popularReligions: [muslim]

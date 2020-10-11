@@ -1,0 +1,10 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [Chase, Bank of America, BECU, Wells Fargo, US Bank, KeyBank, Citibank, U.S. Bank, Columbia Bank, Umpqua
+      Bank, HomeStreet Bank, Chase Bank, Cardtronics, Banner Bank, AlaskaUSA Federal Credit Union, iQ
+      Credit Union, Seattle Metropolitan Credit Union, Homestreet Bank, Hantle, Boeing Employees Credit
+      Union, AlaskaUSA, Washington State Employees Credit Union, WECU, Union Bank, Seattle Credit Union,
+   Riverview Community Bank, Red Canoe, Premier, Opus Bank, Key Bank, Heritage Bank, GESA Credit Union,
+   First Financial Northwest Bank, Columbia Credit Union, BECU (Burien Plaza)]
+chargingStationOperators: [Volta, Tesla, Chargepoint, Blink, SemaConnect, GE, Tesla Motors, City of Seattle, ChargePoint, Bellingham
+      Nissan, AV aerovironment]
+clothesContainerOperators: [USAgain]

@@ -1,0 +1,4 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [Westpac, ANZ, Commonwealth Bank, Bankwest, National Australia Bank, BankWest, NAB, nab, Commonwealth,
+   Bank West, Commonwealth Bank of Australia, Bendigo Bank, CBA, DC payments]
+chargingStationOperators: [RAC]

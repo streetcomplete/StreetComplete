@@ -1,10 +1,35 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Raiffeisen, Raiffeisenbank, Volksbank, Sparkasse, Erste Bank, Euronet, Spar, Bank Austria, First Data,
+   BAWAG PSK, BAWAG, Kremser Bank und Sparkassen AG, Sparkasse Oberösterreich, Bawag PSK, Bank Burgenland,
+   Tiroler Sparkasse, Salzburger Sparkasse, Oberbank, DenizBank, BTV, BAWAG P.S.K., Steiermärkische Sparkasse,
+   Steiermärkische Bank, Sparkasse Imst AG, Sparda Bank, Raika, Raiffeisenbank Stockerau eGen, Raiffeisenbank
+      Sillian, Raiffeisen Bank, PSK, Maestro, Hypo Salzburg, Hypo, Cointed GmbH, Bankomat, euronet, Volksbank
+      Kufstein, Spänglerbank, Sparkasse Niederösterreich, Sparkasse Kufstein, SPAR, Raiffeisenkasse, Raiffeisenbank
+      Ybbstal, Raiffeisenbank Mittelburgenland Ost, Raiffeisenbank Amstetten-Ybbs, RLB, Posojilnica Bank
+      eGen, Hypo Tirol, Austrian Anadi Bank]
+chargingStationOperators: [Wien Energie GmbH, SMATRICS, Energie AG, EVN, Energie Steiermark, VLOTTE, Tesla Motors Inc., Smatrics,
+   Wels Strom E-Mobil, Salzburg AG, Kelag, Linz AG, Vorarlberger Kraftwerke, Lebensland Kärnten, TIWAG,
+   SMATRICS GmbH & Co KG, Energie Burgenland, KELAG, ElectroDrive Salzburg GmbH, max.center, Wien Energie,
+   Lidl, ella, Telekom Austria, Ella, ElectroDrive Salzburg, AT*GOE, kelag, be.ENERGISED, Stadtwerke Kitzbühel,
+   Lidl Österreich, Electrodrive Salzburg, AAE Naturstrom, bike-energy, Vorarlberger Kraftwerke AG, VKW
+      Mobilität, Lidl Österreich GmbH, IONITY, Hotel Der Stubaierhof, HGL, Envesta, EVN AG, E-Werke Bad
+      Radkersburg, ÖBB-Infrastruktur, ÖAMTC, smatrics, VLOTTE P&C, VKW Vlotte, Stadtwerke Trofaiach 22
+      kW, Stadtgemeinde Zell am See, Keba, Ionity, IAM – Institut für Technologie und alternative Mobilität,
+   IAM, Gigasport, Gemeinde Podersdorf, EnergieAG, Energie Burgenland AG, ÖBB, vlotte, vkw vlotte, tim,
+   huma eleven, everynear, elektrodrive-tirol.at, da emobil GmbH, Weiss GmbH Kompetent bei Holz, Vlotte-VKW,
+   Turmöl, Turmstrom, Tiwag- Tiroler Wasserkraftwerke AG, Tiwag, Tesla, TU Wien - Enio, TIWAG-Tiroler
+      Wasserkraft AG, Swarovski, Stadtwerke Mürzzuschlag, Stadtwerke Judenburg, Stadtwerke Hartberg, Stadtgemeinde
+      Mank, Stadtgemeinde Friedberg, Stadtgemeinde Ebreichsdorf, Spar, Linz Strom AG, Linz AG Strom, Gemeinde
+      Kreuzstetten, Gemeinde Kirchdorf in Tirol, Gemeinde Eben, Energie Steiermark AG, Energie Graz GmbH
+      & Co KG, ElectroDrive, ELLA, Direkt Holidays GmbH, DEZ, BH Melk, A1]
+clothesContainerOperators: [Humana, Holding Graz, Kolping, Rotes Kreuz, MA 48, Caritas, Linz AG Abfall, MA48, Graz Holding, humana,
+   WAMS, Stadtbetriebe Steyr, Stadt Graz, HUMANA, GVA Baden]
 isAdvisorySpeedLimitKnown: false
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 232
 officialLanguages: [de]
-orchardProduces: [grape, apple, tomato, pear, chilli_pepper, sweet_pepper, strawberry, plum, apricot,
-  cherry, walnut, peach, raspberry, hop]
+orchardProduces: [grape, apple, tomato, pear, chilli_pepper, sweet_pepper, strawberry, plum, apricot, cherry, walnut, peach,
+   raspberry, hop]
 popularSports: [soccer, tennis, equestrian, beachvolleyball]
 regularShoppingDays: 5

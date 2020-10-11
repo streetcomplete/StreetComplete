@@ -1,9 +1,14 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+atmOperators: [ADIB, ADCB, Emirates NBD, Dubai Islamic Bank, Al Hilal, FAB, Union National Bank, NBAD, mashreq, UNION
+      NATIONAL BANK, RAKBANK, HSBC, RAK Bank, RAK BANK, al hilal bank, Sharjah Islamic Bank, Commercial
+      Bank of Dubai, Rak Bank, Mashreq, National Bank of Abu Dhabi, EMIRATES ISLAMIC, CBI, union national
+      bank, nbf, Mashreq Bank, FGB, Emirates Islamic Bank, Emirates Islamic, Dubai Islamic bank, City
+      Bank, Bank of Sharjah, Al Masraf, Al Hilal Bank, Abu Dhabi Distribution Co.]
 firstDayOfWorkweek: Su
 mobileCountryCode: 424
 officialLanguages: [ar]
-orchardProduces: [date, tomato, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper,
-  almond, fig, banana, grape]
+orchardProduces: [date, tomato, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper, almond, fig, banana,
+   grape]
 popularReligions: [muslim]
 popularSports: [tennis, golf]

@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Barclays, Nouvobanq, MCB]
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 633
 officialLanguages: [en, fr, crs]
-orchardProduces: [coconut, banana, tomato, guava, mango, mangosteen, lemon, lime, orange, pineapple,
-  tea, avocado]
+orchardProduces: [coconut, banana, tomato, guava, mango, mangosteen, lemon, lime, orange, pineapple, tea, avocado]

@@ -1,4 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Íslandsbanki, Arion banki, Tomato, Landsbankinn, Landsbanki Íslands, Landsbanki]
+chargingStationOperators: [Orka náttúrunnar, Ísorka, Orka Náttúrunnar]
+clothesContainerOperators: [Sorpa]
 isAdvisorySpeedLimitKnown: false
 isLivingStreetKnown: true
 isSlowZoneKnown: true

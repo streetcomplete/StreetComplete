@@ -4,8 +4,8 @@ isSlowZoneKnown: false
 lengthUnits: [foot and inch]
 mobileCountryCode: 310
 officialLanguages: [en]
-orchardProduces: [tomato, grape, apple, orange, strawberry, almond, peach, lemon, lime, grapefruit,
-  pear, walnut, cranberry, plum, pistachio, blueberry]
+orchardProduces: [tomato, grape, apple, orange, strawberry, almond, peach, lemon, lime, grapefruit, pear, walnut, cranberry,
+   plum, pistachio, blueberry]
 popularReligions: [christian, jewish]
 popularSports: [baseball, tennis, basketball, soccer, golf, american_football]
 speedUnits: [miles per hour]

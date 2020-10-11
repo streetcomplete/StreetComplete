@@ -1,7 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [international]
+atmOperators: [Охридска Банка, Шпаркасе, Шпаркасе Банка Македонија АД Скопје, Стопанска Банка АД - Скопје, Комерцијална
+      Банка, Уни Банка, НЛБ - Тутунска Банка, Охридска банка, Комерцијална Банка АД Скопје, Stopanska
+      Banka, NLB, Halkbank, Стопанска Банка Битола, Central Cooperative Bank]
+chargingStationOperators: [EVN]
 isSlowZoneKnown: true
 mobileCountryCode: 294
 officialLanguages: [mk, sq]
-orchardProduces: [grape, chilli_pepper, sweet_pepper, tomato, apple, plum, olive, peach, pear, strawberry,
-  cherry, walnut, apricot, fig, almond, chestnut]
+orchardProduces: [grape, chilli_pepper, sweet_pepper, tomato, apple, plum, olive, peach, pear, strawberry, cherry, walnut,
+   apricot, fig, almond, chestnut]

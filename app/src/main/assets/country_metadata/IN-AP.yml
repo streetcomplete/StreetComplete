@@ -1,2 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [State Bank, Andhra Bank, ICICI Bank, Axis Bank, sbi, SBI, State Bank of India, SBI ATM, HDFC Bank, Karur
+      Vysya Bank, Indian Bank, Andhra Bank ATM, canara bank, Union Bank, State bank of India, Indian Overseas
+      Bank, IDBI Bank, Canara Bank]
 officialLanguages: [te]

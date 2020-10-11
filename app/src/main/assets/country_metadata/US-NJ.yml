@@ -1,0 +1,4 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [Bank of America, Access to Money, TD Bank, Wells Fargo, PNC, Citibank, ATM Express, ATM, Valley National
+      Bank ATM, Chase, Cardtronics ATM, Cardtronics]
+chargingStationOperators: [Tesla Motors, EVgo]

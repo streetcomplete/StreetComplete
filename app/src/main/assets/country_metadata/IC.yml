@@ -1,0 +1,4 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [Euronet, Santander, Bankia, Banca March, CaixaBank, Caja de Canarias, BBVA, Banco Popular, La Caixa,
+   Deutsche Bank, cajamar, Telebanco, Servired, Popular, Caixa Bank, Banco Santander, 4B]
+chargingStationOperators: [CanariasTeRecarga, Endesa]

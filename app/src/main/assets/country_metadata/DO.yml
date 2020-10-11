@@ -1,7 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banco Popular, Popular, BanReservas, Banreservas, Banco BHD Leon, BHD, Banco de Reservas, Banco BHD León,
+   Banco BHD, Banca Popular, BPD]
 mobileCountryCode: 370
 officialLanguages: [es]
-orchardProduces: [banana, papaya, avocado, coconut, pineapple, tomato, orange, cacao, chilli_pepper,
-  sweet_pepper, lemon, lime, guava, mango, mangosteen, coffee, grapefruit, cashew_nut,
-  rubber]
+orchardProduces: [banana, papaya, avocado, coconut, pineapple, tomato, orange, cacao, chilli_pepper, sweet_pepper, lemon,
+   lime, guava, mango, mangosteen, coffee, grapefruit, cashew_nut, rubber]
 popularSports: [baseball, basketball, tennis]

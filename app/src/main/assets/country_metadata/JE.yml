@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [RBS, HSBC, NatWest]
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 officialLanguages: [en]

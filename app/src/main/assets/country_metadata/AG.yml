@@ -3,6 +3,5 @@ isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 344
 officialLanguages: [en]
-orchardProduces: [guava, mango, mangosteen, tomato, pineapple, lemon, lime, banana, chilli_pepper,
-  sweet_pepper]
+orchardProduces: [guava, mango, mangosteen, tomato, pineapple, lemon, lime, banana, chilli_pepper, sweet_pepper]
 speedUnits: [miles per hour, kilometers per hour]
