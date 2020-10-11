@@ -7,11 +7,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
-import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.*
-
 
 class AddStepsRamp(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<StepsRamp>(o) {
+    : SimpleOverpassQuestType<StepsRampAnswer>(o) {
 
     override val tagFilters = """
         ways with highway = steps
@@ -35,43 +33,27 @@ class AddStepsRamp(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
 
     override fun createForm() = AddStepsRampForm()
 
-    override fun applyAnswerTo(answer: StepsRamp, changes: StringMapChangesBuilder) {
-        // TODO test this
+    override fun applyAnswerTo(answer: StepsRampAnswer, changes: StringMapChangesBuilder) {
         // updating ramp key: We need to take into account other ramp:*=yes values not touched
         // by this app
         val supportedRampKeys = listOf("ramp:wheelchair", "ramp:stroller", "ramp:bicycle")
         val anyUnsupportedRampTagIsYes = changes.getPreviousEntries().filterKeys {
             it.startsWith("ramp:") && !supportedRampKeys.contains(it)
-        }.any { it.value == "yes" }
-        val hasRamp = (answer != NONE || anyUnsupportedRampTagIsYes)
+        }.any { it.value != "no" }
 
+        val hasRamp = (answer.hasRamp() || anyUnsupportedRampTagIsYes)
         changes.updateWithCheckDate("ramp", hasRamp.toYesNo())
 
-        when(answer) {
-            NONE -> {
-                changes.addOrModify("wheelchair", "no")
-                changes.deleteIfExists("ramp:wheelchair")
-                changes.deleteIfExists("ramp:stroller")
-                changes.deleteIfExists("ramp:bicycle")
-            }
-            BICYCLE -> {
-                changes.addOrModify("wheelchair", "no")
-                changes.addOrModify("ramp:wheelchair", "no")
-                changes.addOrModify("ramp:stroller", "no")
-                changes.addOrModify("ramp:bicycle", "yes")
-            }
-            STROLLER -> {
-                changes.addOrModify("wheelchair", "no")
-                changes.addOrModify("ramp:wheelchair", "no")
-                changes.addOrModify("ramp:stroller", "yes")
-                changes.addOrModify("ramp:bicycle", "yes")
-            }
-            WHEELCHAIR -> {
-                changes.addOrModify("wheelchair", "yes")
-                changes.addOrModify("ramp:wheelchair", "yes")
-                changes.addOrModify("ramp:stroller", "yes")
-                changes.addOrModify("ramp:bicycle", "yes")
-            }
-        }
+        changes.applyRampAnswer("bicycle", answer.bicycleRamp)
+        changes.applyRampAnswer("stroller", answer.strollerRamp)
+        changes.applyRampAnswer("wheelchair", answer.wheelchairRamp)
+    }
+}
+
+private fun StringMapChangesBuilder.applyRampAnswer(rampType: String, hasRamp: Boolean) {
+    if (hasRamp) {
+        addOrModify("ramp:$rampType", "yes")
+    } else if(getPreviousValue("ramp:$rampType") == "yes") {
+        delete("ramp:$rampType")
     }
 }
