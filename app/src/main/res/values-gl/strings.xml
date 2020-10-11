@@ -2367,4 +2367,14 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="dialog_tutorial_download">"Coa sincronización automática desactivada, as tarefas non se baixarán de xeito automático. Para facer isto de xeito manual, usa o botón \"%s\" do menú no lugar que desexas baixar."</string>
     <string name="about_title_translate">"Axuda a traducir esta app"</string>
     <string name="about_description_translate">"%1$s está traducido %2$d%%"</string>
+    <string name="quest_oneway2_title">"Esta é unha rúa dun só sentido? En que dirección?"</string>
+    <string name="quest_oneway2_dir">"Nesta dirección"</string>
+    <string name="quest_oneway2_no_oneway">"Non é dun só sentido"</string>
+    <string name="quest_maxweight_select_sign">"Escoller sinal"</string>
+    <string name="quest_steps_incline_title">"Que dirección conduce cara arriba para estes pasos?"</string>
+    <string name="quest_steps_incline_up">"Por este camiño"</string>
+    <string name="quest_step_count_title">"Cantos chanzos hai aquí?"</string>
+    <string name="quest_traffic_signals_sound_title">"Hai aquí sinais con aparellos de son para cegos?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Estes semáforos teñen unha indicación táctil para que indiquen ás persoas con problemas de visión cando é seguro pasar?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Consello: Acotío trátase dun botón que vibra ou un cono xiratorio na parte inferior do botón do semáforo."</string>
 </resources>

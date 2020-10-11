@@ -1,8 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+atmOperators: [NBK, National Bank of Kuwait, Gulf Bank, Burgan Bank]
 firstDayOfWorkweek: Su
 mobileCountryCode: 419
 officialLanguages: [ar]
-orchardProduces: [tomato, date, chilli_pepper, sweet_pepper, strawberry, orange, lemon, lime, grape,
-  olive]
+orchardProduces: [tomato, date, chilli_pepper, sweet_pepper, strawberry, orange, lemon, lime, grape, olive]
 popularReligions: [muslim]

@@ -460,8 +460,10 @@ object AchievementsModule {
                     "AddProhibitedForPedestrians",
                     "AddSidewalk",
                     "AddBusStopName",
+                    "AddBusStopRef",
                     "AddBusStopShelter",
-                    "AddBenchStatusOnBusStop"
+                    "AddBenchStatusOnBusStop",
+                    "AddCrossingIsland"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -530,7 +532,8 @@ object AchievementsModule {
                     "AddTactilePavingCrosswalk",
                     "AddTrafficSignalsSound",
                     "AddTrafficSignalsVibration",
-                    "AddTactilePavingBusStop"
+                    "AddTactilePavingBusStop",
+                    "AddCrossingIsland"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...

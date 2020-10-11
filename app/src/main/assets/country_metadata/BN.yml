@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [BIBD, Baiduri Bank, Standard Chartered, TAIB]
 isLeftHandTraffic: true
 mobileCountryCode: 528
 officialLanguages: [ms, en]
-orchardProduces: [banana, pineapple, chilli_pepper, sweet_pepper, orange, coconut, rubber, tomato,
-  lemon, lime, pepper]
+orchardProduces: [banana, pineapple, chilli_pepper, sweet_pepper, orange, coconut, rubber, tomato, lemon, lime, pepper]
 popularReligions: [muslim]

@@ -1,7 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banco Popular, First Bank, Scotiabank, Oriental Bank, Oriental, Banco Popular de Puerto Rico]
 lengthUnits: [foot and inch, meter]
 officialLanguages: [en]
-orchardProduces: [banana, guava, mango, mangosteen, tomato, orange, papaya, pineapple, coffee, chilli_pepper,
-  sweet_pepper, coconut, grapefruit, avocado, lemon, lime]
+orchardProduces: [banana, guava, mango, mangosteen, tomato, orange, papaya, pineapple, coffee, chilli_pepper, sweet_pepper,
+   coconut, grapefruit, avocado, lemon, lime]
 popularSports: [basketball, tennis, baseball]
 speedUnits: [miles per hour, kilometers per hour]

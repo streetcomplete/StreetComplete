@@ -2120,13 +2120,10 @@
     <string name="quest_oneway2_dir">"Μονόδρομος προς αυτήν την κατεύθυνση"</string>
     <string name="quest_oneway2_no_oneway">"Όχι μονόδρομος"</string>
     <string name="quest_maxweight_select_sign">"Επιλέξτε πινακίδα"</string>
-    <string name="quest_traffic_signals_blind_title">"Ποια χαρακτηριστικά για τους τυφλούς έχουν αυτά τα φανάρια, εάν υπάρχουν;"</string>
-    <string name="quest_traffic_signals_blind_description">"Επιλέξτε όλα όσα ισχύουν. Σημειώστε ότι το βέλος και το κουμπί βρίσκονται συχνά στο κάτω μέρος της θήκης του κουτιού στο φανάρι."</string>
-    <string name="quest_traffic_signals_blind_sound_signal">"ηχητικά σήματα που υποδεικνύουν πότε επιτρέπεται η διέλευση"</string>
-    <string name="quest_traffic_signals_blind_vibrate">"ένα κουμπί που δονείται ή κάτι άμα επιτρέπεται η διέλευση"</string>
-    <string name="quest_traffic_signals_blind_arrow">"βέλος αφής που δείχνει ποια κατεύθυνση είναι η διασταύρωση"</string>
-    <string name="quest_traffic_signals_blind_none">"δεν υπάρχουν τέτοια χαρακτηριστικά εδώ"</string>
     <string name="quest_steps_incline_title">"Ποια κατεύθυνση οδηγεί προς τα πάνω για αυτά τα βήματα;"</string>
     <string name="quest_steps_incline_up">"Με αυτόν τον τρόπο"</string>
     <string name="quest_step_count_title">"Πόσα βήματα είναι εδώ;"</string>
+    <string name="quest_traffic_signals_sound_title">"Υπάρχουν ηχητικά σήματα για τους τυφλούς εδώ;"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Έχουν αυτά τα φανάρια ψηλαφιστή ένδειξη για τυφλούς ότι είναι ασφαλές να διασχίσουν τον δρόμο;"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Συμβουλή: Συχνά πρόκειται για ένα δονούμενο κουμπί ή περιστρεφόμενο κώνο στην κάτω πλευρά της θήκης του κουμπιού του φαναριού."</string>
 </resources>

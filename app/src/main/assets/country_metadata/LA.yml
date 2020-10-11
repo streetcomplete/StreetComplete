@@ -1,7 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en, fr]
+atmOperators: [BCEL, LDB, Joint Development Bank, JDB, Phongsavanh Bank, Lao Development Bank, STB, APB, ANZ, bfl, LaoViet
+      Bank, Indochina Bank, BFL, BCEL ATM, ເເເ, ທຄຕລ, Laoviet Bank, Banque Franco-Lao, BCEL Public]
 mobileCountryCode: 457
 officialLanguages: [lo]
-orchardProduces: [banana, coffee, pineapple, orange, chilli_pepper, sweet_pepper, tea, grapefruit,
-  lemon, lime, guava, mango, mangosteen, nutmeg]
+orchardProduces: [banana, coffee, pineapple, orange, chilli_pepper, sweet_pepper, tea, grapefruit, lemon, lime, guava,
+   mango, mangosteen, nutmeg]
 popularReligions: [buddhist]

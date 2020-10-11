@@ -222,6 +222,8 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_sidewalk_title">"Does this street have a sidewalk?"</string>
     <string name="quest_busStopName_title">"What is the name of this bus stop?"</string>
     <string name="quest_tramStopName_title">"What is the name of this streetcar stop?"</string>
+    <string name="quest_busStopRef_title">"What is the reference number of this bus stop?"</string>
+    <string name="quest_tramStopRef_title">"What is the reference number of this streetcar stop?"</string>
     <string name="quest_maxspeed_title_short2">"What is the speed limit for this street?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"This speed limit looks implausible."</string>
     <string name="quest_maxspeed_answer_sign">"A sign"</string>
@@ -748,7 +750,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_steps_ramp_wheelchair">Wheelchair ramp</string>
     <string name="quest_steps_incline_title">Which direction leads upwards for these steps?</string>
     <string name="quest_steps_incline_up">This way up</string>
-    <string name="quest_step_count_title">How may steps are here?</string>
+    <string name="quest_step_count_title">How many steps are here?</string>
     <string name="quest_address_street_title">What street does the (house) number %s belong to?</string>
     <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
@@ -913,4 +915,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
     <string name="dialog_tutorial_download">With auto-sync off, quests are not downloaded automatically. To do this manually, use the \"%s\" button in the menu at the location you want to download.</string>
 
+    <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
 </resources>

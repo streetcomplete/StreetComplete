@@ -1,11 +1,15 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [ANZ, Westpac, ASB, Bank of New Zealand, Kiwibank, BNZ, ASB Bank, Kiwi Bank, bnz, Quick Cash, Quickcash,
+   KiwiBank, ANZ Bank, anz, TSB Bank, NZCU, NBS]
+chargingStationOperators: [ChargeNet NZ, charge.net.nz, Vector, Orion, ChargeNet, Unison, Charge.net.nz, Vector Limited, Thundergrid,
+   Tesla, Powerco, Network Waitaki, Network Tasman]
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 530
 officialLanguages: [en]
-orchardProduces: [apple, grape, kiwi, tomato, avocado, pear, orange, lemon, lime, strawberry, apricot,
-  blueberry, chilli_pepper, sweet_pepper, cherry, persimmon, peach]
+orchardProduces: [apple, grape, kiwi, tomato, avocado, pear, orange, lemon, lime, strawberry, apricot, blueberry, chilli_pepper,
+   sweet_pepper, cherry, persimmon, peach]
 popularReligions: [christian, hindu, buddhist]
 popularSports: [tennis, bowls, golf, netball, basketball, soccer, rugby, cricket]

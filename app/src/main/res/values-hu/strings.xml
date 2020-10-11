@@ -2330,4 +2330,5 @@ szintek"</string>
     <string name="dialog_tutorial_download">"Ha az automatikus szinkronizálás ki van kapcsolva, a kérdések nem töltődnek le automatikusan. Ha ezt kézzel szeretnéd megtenni, akkor használd a „%s” gombot a menüben a térkép azon helyén, melyet le szeretnél tölteni."</string>
     <string name="about_title_translate">"Segíts lefordítani ezt az alkalmazást"</string>
     <string name="about_description_translate">"%1$s le van fordítva %2$d%%"</string>
+    <string name="quest_traffic_signals_sound_title">"Van itt vakoknak szóló hangjelzés?"</string>
 </resources>

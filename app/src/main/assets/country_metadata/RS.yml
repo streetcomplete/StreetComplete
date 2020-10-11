@@ -1,7 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banca Intesa, Poštanska Štedionica, Eurobank, OTP Bank, Komercijalna banka, Erste bank, AIK Banka, Telenor,
+   Raiffeisen Bank, Raiffeisen, Postanska stedionica, OTP Banka, OTP BANK, Komercijalna Banka, Hypo Alpe
+      Adria, Credit Agricole, Bankomat, Banka Intesa, Bank Intesa, Aik Banka, Addiko bank]
+chargingStationOperators: [putevi srbije]
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 220
 officialLanguages: [sr]
-orchardProduces: [plum, apple, chilli_pepper, sweet_pepper, tomato, grape, raspberry, peach, pear,
-  apricot, strawberry, cherry, walnut, hazelnut, hop]
+orchardProduces: [plum, apple, chilli_pepper, sweet_pepper, tomato, grape, raspberry, peach, pear, apricot, strawberry,
+   cherry, walnut, hazelnut, hop]

@@ -1,4 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [BCEE, BIL, P&T, Raiffeisen, BGL BNP Paribas, Post, S-Bank, Post.lu, Banque Raiffeisen, Banque Internationale
+      à Luxembourg]
+chargingStationOperators: [Chargy, Enovos]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true

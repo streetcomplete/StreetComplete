@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.oneway
 
+import android.content.res.Resources
 import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
@@ -9,10 +10,12 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGe
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
+import de.westnordost.streetcomplete.view.RotatedCircleDrawable
+import de.westnordost.streetcomplete.view.image_select.*
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 import kotlinx.android.synthetic.main.view_little_compass.*
+import kotlin.math.PI
 
 class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
@@ -23,10 +26,15 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
     private var selection: OnewayAnswer? = null
 
+    private var mapRotation: Float = 0f
+    private var wayRotation: Float = 0f
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         savedInstanceState?.getString(SELECTION)?.let { selection = valueOf(it) }
+
+        wayRotation = (elementGeometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,11 +65,12 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
     @AnyThread override fun onMapOrientation(rotation: Float, tilt: Float) {
         streetSideRotater?.onMapOrientation(rotation, tilt)
+        mapRotation = (rotation * 180 / PI).toFloat()
     }
 
     private fun showDirectionSelectionDialog() {
         val ctx = context ?: return
-        val items = OnewayAnswer.values().map { it.toItem() }
+        val items = OnewayAnswer.values().map { it.toItem(resources, wayRotation + mapRotation) }
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 3) { selected ->
             val oneway = selected.value!!
             puzzleView.replaceRightSideImageResource(oneway.iconResId)
@@ -76,7 +85,11 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
     }
 }
 
-private fun OnewayAnswer.toItem(): Item<OnewayAnswer> = Item(this, iconResId, titleResId)
+private fun OnewayAnswer.toItem(resources: Resources, rotation: Float): DisplayItem<OnewayAnswer> {
+    val drawable = RotatedCircleDrawable(resources.getDrawable(iconResId))
+    drawable.rotation = rotation
+    return Item2(this, DrawableImage(drawable), ResText(titleResId))
+}
 
 private val OnewayAnswer.titleResId: Int get() = when(this) {
     FORWARD -> R.string.quest_oneway2_dir

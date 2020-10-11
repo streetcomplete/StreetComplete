@@ -1,2 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [State Bank of India, Axis Bank, SBI, axis bank, SBI ATM, ICICI Bank, sbi, PNB, HDFC, Bank of Baroda,
+   ubi, United Bank Of India ATM, Union Bank of India, PNB ATM, HDFC Bank ATM, Central Bank of India,
+   Axis, AXIS BANK ATM]
 officialLanguages: [bn]

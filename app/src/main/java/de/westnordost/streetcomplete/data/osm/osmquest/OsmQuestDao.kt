@@ -101,7 +101,7 @@ internal class OsmQuestDao @Inject constructor(
             changedBefore: Long? = null
     ): List<OsmQuest> {
         val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
-        return db.query(NAME_MERGED_VIEW, null, qb) { mapping.toObject(it) }
+        return db.query(NAME_MERGED_VIEW, null, qb) { mapping.toObject(it) }.filterNotNull()
     }
 
     fun getAllIds(
@@ -186,14 +186,16 @@ class OsmQuestMapping @Inject constructor(
         private val serializer: Serializer,
         private val questTypeRegistry: QuestTypeRegistry,
         private val elementGeometryMapping: ElementGeometryMapping
-) : ObjectRelationalMapping<OsmQuest> {
+) : ObjectRelationalMapping<OsmQuest?> {
 
-    override fun toContentValues(obj: OsmQuest) =
-        toConstantContentValues(obj) + toUpdatableContentValues(obj)
+    override fun toContentValues(obj: OsmQuest?) =
+        obj?.let { toConstantContentValues(it) + toUpdatableContentValues(it) } ?: contentValuesOf()
 
-    override fun toObject(cursor: Cursor) = OsmQuest(
+    override fun toObject(cursor: Cursor): OsmQuest? {
+        val questType = questTypeRegistry.getByName(cursor.getString(QUEST_TYPE)) ?: return null
+        return OsmQuest(
             cursor.getLong(QUEST_ID),
-            questTypeRegistry.getByName(cursor.getString(QUEST_TYPE)) as OsmElementQuestType<*>,
+            questType as OsmElementQuestType<*>,
             Element.Type.valueOf(cursor.getString(ELEMENT_TYPE)),
             cursor.getLong(ELEMENT_ID),
             valueOf(cursor.getString(QUEST_STATUS)),
@@ -201,7 +203,8 @@ class OsmQuestMapping @Inject constructor(
             cursor.getStringOrNull(CHANGES_SOURCE),
             Date(cursor.getLong(LAST_UPDATE)),
             elementGeometryMapping.toObject(cursor)
-    )
+        )
+    }
 
     fun toUpdatableContentValues(obj: OsmQuest) = contentValuesOf(
         QUEST_STATUS to obj.status.name,

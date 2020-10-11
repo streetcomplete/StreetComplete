@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banco Agrícola, Banco Cuscatlan, Scotiabank, Davivienda, Banco de América Central]
 mobileCountryCode: 706
 officialLanguages: [es]
-orchardProduces: [coconut, apple, coffee, guava, mango, mangosteen, tomato, lemon, lime, avocado, olive,
-  chilli_pepper, sweet_pepper, papaya, orange, pineapple, agave, cashew_nut, tea]
+orchardProduces: [coconut, apple, coffee, guava, mango, mangosteen, tomato, lemon, lime, avocado, olive, chilli_pepper,
+   sweet_pepper, papaya, orange, pineapple, agave, cashew_nut, tea]

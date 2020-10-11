@@ -1,6 +1,25 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banco Macro, Banco de la Nación Argentina, Banco Nación, Macro, Banco Provincia, Banco Santa Fe, Banco
+      Patagonia, Santander Río, Banco de Córdoba, Galicia, Banco Galicia, Santander, Banco Ciudad, NUEVO
+      BANCO DE SANTA FE S.A., HSBC, Banco San Juan, Banco de Corrientes, Banco Credicoop, Nuevo Banco
+      del Chaco, Banco Formosa, Credicoop, Banco de Santiago del Estero, Banco de Formosa, Nuevo Banco
+      de Entre Ríos S.A., ICBC, Supervielle, Banco del Chubut, Banco Santiago del Estero, Banco Provincia
+      de Buenos Aires, Banco Hipotecario, CABAL COOP. LTDA., Banco Supervielle, BBVA, Banco de la Nacion
+      Argentina, BBVA Francés, Patagonia Cajero, Patagonia, Nación, Banelco, BANCO MACRO, Link, Banco
+      de la Provincia de Buenos Aires, Banco Santa Cruz, Banco Provincia de La Pampa S.A., Banco Itaú,
+   Red Link - Punto efectivo, Citibank, Cajero Express, Banco de la Provincia del Neuquén S.A, Banco de
+      Tierra del Fuego, Banco de Entre Ríos, Banco Nación de la República Argentina, Banco Nacion Argentina,
+   Banco Municipal, Banco HSBC, BPN Cajero, Athena Bitcoin Inc., Athena Bitcoin Argentina, ATM BPN Link,
+   macro, link, bancor link, Superville, Red Link, Planta Baldissera, Nuevo Banco del Chaco SA, Link Banco
+      Provincia, Hipotecario, Galicia Cajero, Credicoop Cajero, Cajero Macro, Bancor, Banco de la Provincia
+      del Neuquén S.A., Banco de la Nation, Banco de Santa Fe, Banco de La Pampa, Banco Superville, Banco
+      Santander, Banco Rioja, Banco Provincia del Neuquén S.A., Banco Provincia de La Rioja, Banco Piano,
+   Banco Nacion, Banco Hipotecario S.A., Banco Francés, Banco Corrientes, Banco Comafi, BPN, BERSA, BBVA
+      Banco Francés]
+chargingStationOperators: [Empresa Provincial de la Energía Santa Fe]
+clothesContainerOperators: [Municipalidad de Posadas]
 mobileCountryCode: 722
 officialLanguages: [es]
-orchardProduces: [grape, lemon, lime, orange, apple, pear, tomato, mate, olive, banana, peach, chilli_pepper,
-  sweet_pepper, grapefruit, plum, tea, apricot]
+orchardProduces: [grape, lemon, lime, orange, apple, pear, tomato, mate, olive, banana, peach, chilli_pepper, sweet_pepper,
+   grapefruit, plum, tea, apricot]
 popularSports: [soccer, tennis, basketball, paddle_tennis, field_hockey, rugby]

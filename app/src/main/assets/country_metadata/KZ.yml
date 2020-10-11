@@ -1,7 +1,17 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Народный банк Казахстана, Народный банк, Казкоммерцбанк, '"АО ""Казкоммерцбанк"""', Kazkom, Halyk Bank,
+   Сбербанк, Казкомерцбанк, Казком, '"АО ""Цесна банк"""', Народный Банк, Halyk bank, Халык банк, Сбербанк
+      России, КазКом, Qazkom, Халық банк, Казкоммерцбанк банкомат, KAZKOM, HALYK BANK, Народный банкомат,
+   КазКоммерцБанк, Евразийский банк, Альянс банк, Альянс Банк, АТФ банк, АТФ Банк, ForteBank, Халык Банк,
+   Банкомат Народный банк, Банк России, БТА банкомат, БТА банк, БТА, KAZ KOM, Centercredit, '"АО ""Народный
+      Банк"""', цесна банк, народный банк, Халық банкі, Нурбанк, Народный банк казахстана, Казпочта, Казкомерц
+      банк, Банкомат БТА банка, АльянсБанк, АТФ банкомат, АТФ, АО Казкоммерцбанк, halyk bank, Qazkom банкомат,
+   QIWI, Kazcom, KazCom, KaspiBank, Kaspi bank, Kaspi Bank терминал, Kaspi Bank, Kaspi, HalykBank, Halyk,
+   HALYK bank, Forte bank, Bank RBK, Bank CenterCredit, '"ДБ АО ""Сбербанк"""', '"АО ""Цеснабанк"""',
+   '"АО ""Евразийский банк"""']
 isLivingStreetKnown: true
 mobileCountryCode: 401
 officialLanguages: [kk, ru]
-orchardProduces: [tomato, chilli_pepper, sweet_pepper, apple, grape, apricot, pear, strawberry, plum,
-  peach, walnut, cherry, almond]
+orchardProduces: [tomato, chilli_pepper, sweet_pepper, apple, grape, apricot, pear, strawberry, plum, peach, walnut, cherry,
+   almond]
 popularReligions: [muslim]

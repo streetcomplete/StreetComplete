@@ -1,5 +1,35 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [cy, gd]
+atmOperators: [RBS, Barclays Bank PLC, HSBC, NatWest, Tesco, Barclays, Santander, Cash Zone, Royal Bank of Scotland,
+   Sainsbury's Bank, Lloyds Bank, Sainsbury's, Natwest, Post Office, Halifax, Nationwide, Note Machine,
+   Link, Bank of Ireland, Cashzone, Lloyds, TSB, Yorkshire Bank, Lloyds TSB, Clydesdale Bank, Bank of
+      Scotland, Ulster Bank, Tesco Bank, Danske Bank, Sainsburys, Co-operative Bank, Co-op, NoteMachine,
+   Bank Machine, CashZone, The Co-operative Bank, Co-operative, The Co-operative, Clydesdale, HSBC UK,
+   Asda, First Trust, Co-Operative Bank, Nationwide Building Society, Nat West, Cooperative Bank, Coop,
+   ASDA, cashzone, Sainsbury, HBOS, Alliance & Leicester, Notemachine, National Westminster Bank Plc,
+   Morrisons, Marks & Spencer, LINK, tesco, co-op, The Co-operative Food, Tesco Express, Sainsbury's Finance,
+   HSBC Bank plc, Barclays Bank, natwest, link, barclays, Sainsburys Bank, One Stop, Cooperative, Coop
+      Bank, Co-op Bank, Co-Op, sainsburys, bankmachine, Travelex, The Royal Bank of Scotland, The Co-operative
+      Group, The Co-Operative Bank, Royal Mail, Post Office Money, Post Office Ltd, National Westminster
+      Bank, Lloyds Banking Group, Lloyds Bank plc, DC ATM, BankMachine, Bank of Ireland; Post Office,
+   Bank Of Ireland, Abbey, AIB]
+chargingStationOperators: [Ecotricity, Source London, Pod Point, Tesla Motors Inc., Tesla, Ubitricity, Lancaster City Council, ChargePlace
+      Scotland, Birmingham City Council, evolt, InstaVolt, Chargemaster, CYC, GeniePoint, Polar, Charge
+      Your Car, Booths, Lancaster University, ecotricity, ecars Northern Ireland, Pod-Point, Instavolt,
+   POLAR, Exeter City Council, Charge Place Scotland, Podpoint, PodPoint, Evolt, Chargeplace Scotland,
+   Nissan, EV Driver, pod point, instavolt, chargemaster, Tesco, Rolec, Lancashire County Council, Genie
+      Point, ESB EV Solutions, ChargeMaster, eVolt, Zero Carbon World, Tesla Motors, Shell, SSE, Polar
+      Chargemaster, Lidl, GMEV, Engie, E.on, Charge Master, BP Chargemaster, BP, Asda, www.chargeyourcar.org.uk,
+   vendelectric, tesla_standard, polar, podpoint, engenie, West Point House, Warrington Borough Council,
+   Victory Hall, Vattenfall, University of Sussex, St Modwen Properties, Shell Recharge, Sainsbury's,
+   Polar Plus, Polar Network, Orkney Islands Council, Open University, Nissan West Way Wolverhampton,
+   Milton Park - Pod Point, Milton Park, Eurotunnel, Elektromotive, ESB, Dunston Hall, Chargepoint Genie,
+   ChargePlaceScotland, ChargePlace scotland, Charge your car, Charge your Car, Centro, Bullring, Boot
+      and Shoe, Beech Hill Hotel, 'AutoCharge: EV Pedestal', Allego]
+clothesContainerOperators: [Salvation Army, The Fire Fighters Charity, Brighton & Hove City Council, The Salvation Army, British
+      Heart Foundation, Scope, Rushcliffe Borough Council, Nottingham City Council, Traid, Cystic Fibrosis
+      Trust, South Norfolk Council, Cancer Fund for Children, traid, TRAID, Severn Waste Services, Oxfam,
+   Fife Council]
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
 isLivingStreetKnown: true
@@ -7,8 +37,7 @@ isSlowZoneKnown: true
 lengthUnits: [meter, foot and inch]
 mobileCountryCode: 234
 officialLanguages: [en]
-orchardProduces: [apple, strawberry, tomato, pear, chilli_pepper, sweet_pepper, raspberry, plum, cherry,
-  hop, grape]
+orchardProduces: [apple, strawberry, tomato, pear, chilli_pepper, sweet_pepper, raspberry, plum, cherry, hop, grape]
 popularReligions: [christian, muslim, jewish, hindu, sikh]
 popularSports: [soccer, tennis, bowls, cricket, golf, basketball, rugby]
 speedUnits: [miles per hour]

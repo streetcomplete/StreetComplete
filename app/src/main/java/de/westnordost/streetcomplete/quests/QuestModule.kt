@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
+import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.defibrillator.AddIsDefibrillatorIndoor
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
@@ -38,9 +39,10 @@ import de.westnordost.streetcomplete.quests.handrail.AddHandrail
 import de.westnordost.streetcomplete.quests.step_count.AddStepCount
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
-import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName
-import de.westnordost.streetcomplete.quests.localized_name.AddRoadName
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
+import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
+import de.westnordost.streetcomplete.quests.road_name.AddRoadName
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
@@ -112,6 +114,7 @@ object QuestModule
         AddOneway(o),
         AddSuspectedOneway(o, trafficFlowSegmentsApi, trafficFlowDao),
         AddBusStopName(o),
+        AddBusStopRef(o),
         AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
         AddHousenumber(o),
         AddAddressStreet(o, roadNameSuggestionsDao),
@@ -137,6 +140,7 @@ object QuestModule
         AddSidewalk(o), // SLOW QUERY
         AddProhibitedForPedestrians(o), // uses info from AddSidewalk quest, should be after it
         AddCrossingType(o, r),
+        AddCrossingIsland(o),
         AddBuildingLevels(o),
         AddBusStopShelter(o, r), // at least OsmAnd
         AddVegetarian(o, r),
@@ -183,9 +187,9 @@ object QuestModule
         MarkCompletedBuildingConstruction(o, r),
         AddGeneralFee(o),
         AddSelfServiceLaundry(o),
-        AddStepCount(o), // before handrail so the surveyor doesn't need to walk it twice
-        AddHandrail(o, r), // for accessibility of pedestrian routing
-        AddStepsIncline(o),
+        AddStepsIncline(o), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past
+        AddHandrail(o, r), // for accessibility of pedestrian routing, can be gathered when walking past
+        AddStepCount(o), // can only be gathered when walking along this way, also needs the most effort and least useful
         AddInformationToTourism(o),
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
