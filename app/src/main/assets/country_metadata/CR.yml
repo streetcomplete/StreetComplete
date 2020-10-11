@@ -1,6 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banco de Costa Rica, BCR, Banco Nacional, Banco Popular, BAC, BAC Credomatic, ATH, Scotiabank, HSBC,
+   Cajero BCR, Banco de Costa Rica (BCR), Banco Popular;4B]
+chargingStationOperators: [Estación de Recarga]
 mobileCountryCode: 712
 officialLanguages: [es]
-orchardProduces: [pineapple, banana, orange, coffee, papaya, tomato, guava, mango, mangosteen, lemon,
-  lime, grapefruit, coconut, avocado, strawberry, pepper, chilli_pepper, sweet_pepper,
-  cacao]
+orchardProduces: [pineapple, banana, orange, coffee, papaya, tomato, guava, mango, mangosteen, lemon, lime, grapefruit,
+   coconut, avocado, strawberry, pepper, chilli_pepper, sweet_pepper, cacao]

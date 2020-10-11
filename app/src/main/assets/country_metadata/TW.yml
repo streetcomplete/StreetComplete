@@ -1,8 +1,13 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+atmOperators: [華南銀行, 中華郵政, 國泰世華銀行, 中華郵政股份有限公司, 臺灣銀行, 台新銀行, 郵局, 玉山銀行, 土地銀行, 高雄銀行, 彰化銀行, 中國信託, post, Cathay United Bank,
+   永豐銀行, 合作金庫銀行, 兆豐銀行, 兆豐國際商業銀行, taiwan cooperative, CTBC, 臺灣土地銀行, 聯邦銀行, 玉山商業銀行, 國泰世華商業銀行, 台北富邦銀行, 元大商業銀行,
+   中國信託商業銀行, 上海商銀, Union Bank, First Bank]
+chargingStationOperators: [英屬開曼群島商睿能新動力股份有限公司台灣分公司, 睿能創意股份有限公司, Gogoro Inc., gogoro, Gogoro, Gogoro Taiwan, 台灣城市動力股份有限公司]
+clothesContainerOperators: [高雄市方舟就業服務協會]
 mobileCountryCode: 466
 officialLanguages: [zh]
-orchardProduces: [pineapple, banana, guava, mango, mangosteen, orange, tomato, pear, papaya, areca_nut,
-  grape, grapefruit, persimmon, lemon, lime, chilli_pepper, sweet_pepper, peach, apricot]
+orchardProduces: [pineapple, banana, guava, mango, mangosteen, orange, tomato, pear, papaya, areca_nut, grape, grapefruit,
+   persimmon, lemon, lime, chilli_pepper, sweet_pepper, peach, apricot]
 popularReligions: [chinese_folk, taoist, buddhist, christian]
 popularSports: [basketball, tennis, volleyball, baseball]

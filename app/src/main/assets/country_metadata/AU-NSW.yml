@@ -1,0 +1,5 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [Commonwealth Bank, Westpac, St George, ANZ, NAB, St. George, anz, Newcastle Permanent, redi, commonwealth,
+   RediATM, Redi ATM, IMB, Greater Bank, Commonwealth, CBA, rediATM, nab, Travelex, Cashcard, BitRocket,
+   Anz]
+chargingStationOperators: [NRMA, Chargefox, National Roads and Motorists' Association Limited, Tesla Motors, Evie Networks, Chargepoint]

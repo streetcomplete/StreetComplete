@@ -1938,6 +1938,16 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_recycling_type_cooking_oil">"Matolje"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolje"</string>
     <string name="about_title_sponsors">"Sponsorer"</string>
+    <string name="quest_board_type_history">"Historie"</string>
+    <string name="quest_board_type_geology">"Geologi"</string>
+    <string name="quest_board_type_plants">"Planter"</string>
+    <string name="quest_board_type_nature">"Natur (flere emner)"</string>
+    <string name="quest_board_type_notice_board">"En oppslagstavle"</string>
+    <string name="quest_board_type_public_transport">"Offentlig transport"</string>
+    <string name="quest_board_type_title">"Hva er temaet for oppslagstavla?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Ja, vist separat på et kart"</string>
+    <string name="quest_board_type_map">"Et kart"</string>
+    <string name="quest_board_type_map_title">"Er det bare et kart, og kun et kart?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"Husnavn %s:"</string>
@@ -1947,6 +1957,7 @@ forkortelser i feltet nedenfor:"</string>
     <string name="at_conscription_number">"Konskripsjonsnummer %s:"</string>
     <string name="at_housenumber">"Husnummer %s:"</string>
     <string name="quest_openingHours_name_type_title">"Hva er åpningstidene til %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_unspecified_range">"Ikke spesifisert"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Er %1$s (%2$s) tilgjengelig i rullestol?"</string>
     <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) imot betaling med kontanter?"</string>
     <string name="quest_traffic_signals_sound_title">"Er det lydsignal for synshemmede her?"</string>

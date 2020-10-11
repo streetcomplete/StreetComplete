@@ -1,7 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [CRDB, NMB, NBC, CRDB Bank, crdb, Barclays, nmb, Stanbic Bank, National Microfinance Bank (NMB), FNB,
+   Ecobank, CRDB bank, CRDB BANK, Umoja, Tpb bank, National Bank of Commerce, NMB Bank, NBC Bank, Machochwe
+      Ranger Post, Exim Bank, Barclays Bank]
+chargingStationOperators: [Jaza Energy]
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 640
 officialLanguages: [sw, en]
-orchardProduces: [banana, coconut, tomato, orange, guava, mango, mangosteen, pineapple, cashew_nut,
-  coffee, tea, sisal, lemon, lime, chilli_pepper, sweet_pepper, cacao, pear, grape]
+orchardProduces: [banana, coconut, tomato, orange, guava, mango, mangosteen, pineapple, cashew_nut, coffee, tea, sisal,
+   lemon, lime, chilli_pepper, sweet_pepper, cacao, pear, grape]

@@ -1,0 +1,6 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [Commonwealth Bank, ANZ, NAB, Westpac, Bendigo Bank, Bank of Melbourne, CBA, HSBC, Commonwealth, Next,
+   National Australia Bank, Commonwealth Bank of Australia, Bankwest, Bank West, rediATM, Westpac Bank,
+   St George, RediATM]
+chargingStationOperators: [Chargefox, The District Docklands, Tesla Motors, Tesla, Secure Parking, RACV, Chargepoint]
+clothesContainerOperators: [Southern Cross Recycling, Boots for all]

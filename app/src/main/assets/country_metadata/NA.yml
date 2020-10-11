@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [FNB, Bank Windhoek, Standard Bank, Nedbank, First National Bank, FNB Namibia]
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 649

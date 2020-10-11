@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [St. Kitts Nevis Anguilla National Bank]
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 mobileCountryCode: 356

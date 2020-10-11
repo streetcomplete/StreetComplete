@@ -1,7 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Standard Bank, National Bank, FDH, National Bank of Malawi, NBS Bank, FMB, FDH Bank, Ecobank]
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 650
 officialLanguages: [en, ny]
-orchardProduces: [guava, mango, mangosteen, tomato, banana, pineapple, orange, avocado, papaya, tea,
-  lemon, lime, peach, coffee, tung_nut, apple, pepper, chilli_pepper, sweet_pepper]
+orchardProduces: [guava, mango, mangosteen, tomato, banana, pineapple, orange, avocado, papaya, tea, lemon, lime, peach,
+   coffee, tung_nut, apple, pepper, chilli_pepper, sweet_pepper]

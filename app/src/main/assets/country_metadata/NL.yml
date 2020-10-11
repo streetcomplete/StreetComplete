@@ -1,9 +1,47 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [ING, Rabobank, ABN AMRO, ABN Amro, Geldmaat, ABN-AMRO, ING Bank, SNS, SNS Bank, Rabobank Westelijke Mijnstreek,
+   Rabobank Eindhoven-Veldhoven, Rabobank Roermond-Echt, Rabobank Rijk van Nijmegen, Rabobank Oosterschelde,
+   ABN-Amro, ABN AMRO Bank N.V., Rabobank West Betuwe, Rabobank Rotterdam, Rabobank Maastricht e.o., Rabobank
+      Altena, ING bank, Rabobank Peel Noord, ABN, Rabobank Utrecht en omstreken, Rabobank Amsterdam, Rabobank
+      's-Hertogenbosch en Omstreken, Fortis, Rabobank Waterland en Omstreken, Rabobank Venlo e.o., Rabobank
+      Sneek-ZuidwestFriesland, Rabobank Peelland Zuid, Rabobank Land van Cuijk en Maasduinen, Rabobank
+      Hilversum-Vecht en Plassen, Rabobank Helmond, Rabobank Dommelstreek, Rabo, GWK Travelex, ABNAMRO,
+   Yourcash, Rabobank Weerterland en Cranendonck, Rabobank Walcheren/ Noord-Beveland, Rabobank Venray,
+   Rabobank Twente Oost, Rabobank Noordenveld West Groningen, Rabobank Groene Hart Noord, Rabobank Centraal
+      Zuid-Limburg, Rabobank Breda, Rabobank Bommelerwaard, Rabobank Amerstreek, Rabobank Alkmaar e.o.,
+   RABO, YourCash, Rabobank Zuidwest-Brabant, Rabobank Voorne-Putten Rozenburg, Rabobank Tilburg en omstreken,
+   Rabobank Terneuzen-Sas van Gent, Rabobank Salland, Rabobank Parkstad Limburg, Rabobank Leeuwarden-Noordwest
+      Friesland, Rabobank Hulst, Rabobank Haarlem en Omstreken, Rabobank Drechtsteden, Rabobank Den Haag
+      en omgeving, Rabobank Alblasserwaard Noord en Oost, Rabo Bank, GWK, Rabobank Zuid-Holland Midden,
+   Rabobank West-Brabant Noord, Rabobank Vijfheerenlanden, Rabobank Valkenswaard en Waalre, Rabobank Schagen-Wieringerland,
+   Rabobank Rijn en Veenstromen, Rabobank Ridderkerk Midden-IJsselmonde, Rabobank Randmeren, Rabobank
+      Oss e.o., Rabobank Oost Betuwe, Rabobank Noord-Groningen, Rabobank IJsseldelta, Rabobank Hilvarenbeek-Oisterwijk,
+   Rabobank Gouwestreek, Rabobank De Langstraat, Rabobank De Kempen-West, Rabobank Bergeijk, Rabobank
+      Arnhem en Omstreken, Rabobank Apeldoorn en Omgeving, Maestro, Ing, Abn-Amro, Abn Amro, ABN Amro
+      Bank, rabobank, ing, abn amro, Your Cash, Rabobank Westfriesland-Oost, Rabobank West-Zeeuws-Vlaanderen,
+   Rabobank Vallei en Rijn, Rabobank Vaart en Vechtstreek, Rabobank Utrechtse Heuvelrug, Rabobank Uden
+      Veghel, Rabobank Stad en Midden Groningen, Rabobank Roosendaal-Woensdrecht, Rabobank Regio Den Haag,
+   Rabobank Noordoostpolder-Urk, Rabobank Noordoost Friesland, Rabobank Noord-Holland Noord, Rabobank
+      Noord Gooiland, Rabobank Maashorst, Rabobank Maas en Waal, Rabobank Lopikerwaard, Rabobank Kromme
+      Rijnstreek, Rabobank Kop van Noord-Holland, Rabobank Katwijk, Rabobank Het Haringvliet, Rabobank
+      Het Groene Woud Zuid, Rabobank Graafschap-Zuid, Rabobank De Stellingwerven, Rabobank Borger-Klenckeland,
+   Rabobank Bollenstreek, Rabobank Bodegraven-Woerden, Rabobank Bernheze Maasland, Rabobank Assen-Beilen,
+   Rabobank Assen en Noord-Drenthe, Rabobank Amstel en Vecht, Postbank, Albert Heijn, ABNAmro, ABN Ambro,
+   ABN AMRO Bank]
+chargingStationOperators: [Allego, NUON, Fastned, Nuon, EVBOX, Ecotap, Vattenfall, NewMotion, EVnetNL, Rotterdam Elektrisch, Qbuzz,
+   allego, Pitpoint, Gemeente Rotterdam, gemeente Rotterdam, ecotap, EVBox, EV-Box, Liander, Havendienst
+      Gemeent Alkmaar, e-laad, PitPoint, LastMileSolutions, EVnet, We Drive Solar, Terberg Telecom, New
+      Motion, Mitsubishi Electric, Green Flux, E-laad, Allegro, Agrisnellaad, GreenFlux, Gemeente Delft,
+   Alfen, Gemeente Kerkrade, EV Box, E-bike, Aers Energy, e-laad.nl, Webcompanies.nl, Nuon/Vattenfall,
+   Nuon-Heijmans, Lidl, Ionity, Flow, Essent, Enexis, Delta, All Fixed Green Energy, evnetnl, evnet.nl,
+   The New Motion, Rotterdam elektrisch, Natuurmonumenten, Last Mile Solutions, Evnet, Engie, Eneco, EcoTap,
+   ENGIE, AgriSneltank, '''t Weggeler']
+clothesContainerOperators: [ROVA, Sympany, Leger des Heils ReShare, Leger des Heils, Gemeente Amsterdam, Curitas, Twiddus, Noppes,
+   Leger des heils, hetgoed, Waardlanden, RD4, Opnieuw & Co, HVC]
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 204
 officialLanguages: [nl]
-orchardProduces: [tomato, chilli_pepper, sweet_pepper, pear, apple, strawberry, blueberry, raspberry,
-  plum, cherry, grape]
+orchardProduces: [tomato, chilli_pepper, sweet_pepper, pear, apple, strawberry, blueberry, raspberry, plum, cherry, grape]
 popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian, basketball, field_hockey]

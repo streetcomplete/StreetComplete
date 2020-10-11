@@ -1,0 +1,4 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [Commonwealth Bank, ANZ, RediATM, Bendigo Bank, Westpac, firstpoint, NAB, Bank of Queensland, BOQ, Suncorp,
+   Cashcard, CBA]
+chargingStationOperators: [Meander Valley Council, Huon Valley Council]

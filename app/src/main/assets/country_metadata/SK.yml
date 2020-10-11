@@ -1,8 +1,13 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [VÚB, Slovenská sporiteľňa, Tatra banka, ČSOB, Prima banka, Poštová banka, UniCredit Bank, OTP banka,
+   Euronet, ATM point, ATM Point, Tatra Banka, Prima Banka, OTP Banka]
+chargingStationOperators: [ZSE, GreenWay, ejoin, ZSE Drive, ebajk connect, Slovnaft, Billa, ebajkconnect, VSE, ebajkonnect, Lidl,
+   Greenway, Farmárska reštaurácia, EvMapa, BMW T.O.B.]
+clothesContainerOperators: [Ekocharita, HUMANA, EKOCHARITA, Humana, Nadácia ECO, Ľudia k ľuďom n.o., FCC Trnava, Ekotextil, ECO textil]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 231
 officialLanguages: [sk]
-orchardProduces: [grape, apple, tomato, chilli_pepper, sweet_pepper, peach, strawberry, plum, pear,
-  apricot, hop, cherry, raspberry, walnut, chestnut]
+orchardProduces: [grape, apple, tomato, chilli_pepper, sweet_pepper, peach, strawberry, plum, pear, apricot, hop, cherry,
+   raspberry, walnut, chestnut]

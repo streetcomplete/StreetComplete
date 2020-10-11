@@ -350,6 +350,14 @@ open class MapFragment : Fragment(),
 
     /* ------------------------------- Controlling the map -------------------------------------- */
 
+    public fun adjustToOffsets(oldOffset: RectF, newOffset: RectF) {
+        controller?.screenCenterToLatLon(oldOffset)?.let { pos ->
+            controller?.updateCameraPosition {
+                position = controller?.getLatLonThatCentersLatLon(pos, newOffset)
+            }
+        }
+    }
+
     fun getPositionAt(point: PointF): LatLon? = controller?.screenPositionToLatLon(point)
 
     fun getPointOf(pos: LatLon): PointF? = controller?.latLonToScreenPosition(pos)
@@ -382,10 +390,6 @@ open class MapFragment : Fragment(),
 
     fun getPositionThatCentersPosition(pos: LatLon, offset: RectF): LatLon? {
         return controller?.getLatLonThatCentersLatLon(pos, offset)
-    }
-
-    fun getViewPosition(offset: RectF): LatLon? {
-        return controller?.screenCenterToLatLon(offset)
     }
 
     var show3DBuildings: Boolean = true

@@ -1,7 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [BCI, BIM, Barclays, Millennium BIM, FNB, Standard Bank, StandardBank, Moza, Millennium bim, Millennium
+      Bim]
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 643
 officialLanguages: [pt]
-orchardProduces: [banana, tomato, coconut, cashew_nut, pineapple, papaya, tea, guava, mango, mangosteen,
-  grapefruit, lemon, lime, coffee, sisal, orange]
+orchardProduces: [banana, tomato, coconut, cashew_nut, pineapple, papaya, tea, guava, mango, mangosteen, grapefruit, lemon,
+   lime, coffee, sisal, orange]

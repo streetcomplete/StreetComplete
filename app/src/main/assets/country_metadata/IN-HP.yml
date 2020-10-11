@@ -1,2 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Bank of Baroda, State Bank of India, State Bank ATM, ICICI Bank, State Bank of India ATM, SBI, Punjab
+      National Bank ATM, Punjab National Bank]
 officialLanguages: [hi, en]

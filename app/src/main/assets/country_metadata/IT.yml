@@ -1,9 +1,51 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [de]
+atmOperators: [Poste Italiane, Unicredit, Intesa Sanpaolo, Monte dei Paschi di Siena, Postamat, Poste, Intesa San Paolo,
+   Deutsche Bank, UniCredit, UBI Banca, Carige, Banca Popolare di Milano, Euronet, Credem, Banca Popolare
+      di Sondrio, BNL, Banco di Sardegna, BPM, BCC, Poste italiane, Banca Carige, Unicredit Banca, Banco
+      BPM, Banca Sella, Banca Popolare di Fondi, Banca Popolare Pugliese, Sparkasse, Credito Bergamasco,
+   BPER, Raiffeisen, Credito Valtellinese, Cassa Rurale, Banca Popolare di Novara, Banca Popolare di Lodi,
+   Banca Intesa, UniCredit Banca, Poste Italiane SpA, Monte dei Paschi, Unipol Banca, UBI, Intesa SanPaolo,
+   Cassa di Risparmio di Volterra, Carisbo, Banco Popolare, Banco Desio, Volksbank, Unipol, Credito Artigiano,
+   Bper, Bancoposta, BancoPosta, Banco di Napoli, Banco di Brescia, Banca di Credito Cooperativo, UBI
+      Banca Popolare di Bergamo, Raiffeisenkasse, Posteitaliane, Poste Italiane S.p.A., MPS, Cassa di
+      Risparmio del Veneto, Banca di Credito Cooperativo di Roma, Banca Intesa San Paolo, BPER Banca,
+   PosteItaliane, Poste Italiane Spa, Poste Italiane S.p.a., Friuladria, Crédit Agricole, Credito Siciliano,
+   Credit Agricole, ChiantiBanca, Cassa di Risparmio di Venezia, Cassa Rurale Alta Valsugana, Biverbanca,
+   Banca di Credito Cooperativo Valdostana, Banca di Bologna, Banca di Asti, Banca Tercas, Banca Popolare
+      di Verona, Banca Popolare del Lazio, BCC di Carate Brianza, poste italiane, San Paolo, Euronet Worldwide,
+   Coinwave Srl, Cassa di Risparmio di Firenze, Cassa di Risparmio di Ferrara, Cassa Padana, Bancomat,
+   Banco di Desio, Banca di Imola, Banca di Credito Popolare, Banca di Cividale, Banca delle Marche, Banca
+      Toscana, Banca Popolare dell'Emilia Romagna, Banca Intesa Sanpaolo, Banca Etruria, Banca Apulia
+      S.p.a., Veneto Banca, Unicredito Italiano S.p.A., Unicredit S.p.a., Ubi Banca, UBI banca, UBI Banca
+      Popolare, Südtiroler Sparkasse - Cassa di Risparmio di Bolzano, SanPaolo, Raiffeisenkasse Überetsch
+      - Cassa Raiffeisen Oltradige, Raiffeisenkasse Tirol, Raiffeisenkasse Terlan, Raiffeisenkasse Tauferer-Ahrntal,
+   Raiffeisen Bank, Postomat, Poste Italiane s.p.a., Post Italiane S.p.A, POSTE ITALIANE, Monte dei paschi
+      di Siena, Monte Dei Paschi Di Siena, Intesa Sanpaolo; Cassa di Risparmio di Ascoli Piceno, Intesa
+      Sanpaolo S.p.A., Emilbanca, Deutsche Bank Easy, Deustche Bank, Credito Cooperativo, Cassa di risparmio
+      di Volterra, Cassa di Risparmio di Pistoia e della Lucchesia, Cassa di Risparmio di Pistoia, Cassa
+      di Risparmio di Lucca Pisa Livorno, Cassa Rurale Alto Garda, Carispezia Crédit Agricole, Cariparma,
+   Carige Italia, CaRiGe, CRS, CREDEM, CARIGE, Banco di Sicilia, Banco di Chiavari e della Riviera Ligure,
+   Banco Fiorentino, Bancapulia Spa, Banca di credito cooperativo, Banca di Piacenza, Banca di Credito
+      Cooperativo di Fornacette, Banca di Credito Cooperativo del Belice, Banca di Credito Cooperativo
+      G. Toniolo di S. Cataldo, Banca Popolare pugliese, Banca Popolare di Spoleto, Banca Popolare di
+      Bergamo, Banca Popolare di Bari, Banca Popolare di Ancona, Banca Popolare del Cassinate, Banca Popolare
+      Friuladria, Banca Nazionale del Lavoro, Banca Monte dei Paschi di Siena, Banca Monte Dei Paschi
+      Di Siena, Banca Fideuram, Banca Atestina di Credito Cooperativo, Banca Antonveneta, BNL Gruppo BNP
+      Paribas, BCC di Sesto San Giovanni, BCC Caravaggio]
+chargingStationOperators: [Enel, Enel X, a2a, Alperia, ENEL, Alperia Smart Mobility, Agsm Verona Spa, Tesla Motors Inc., enel x,
+   Evway, ENEL X, Hera / AcegasApsAmga, Duferco, BlueTorino, A22, Tesla, Etraction, SEMM, Enel-X, ENEL
+      drive, Enel Drive, Comune di Firenze, A2A, enel, Lidl, Iren, Emobitaly, E-Moving, Duferco Energia,
+   enelx, alperia, Stazione di ricarica per auto elettriche, IrenGo, Enelx, EnelX, EVBOX, EVAD, ENI, DriWe,
+   Atac, Amag, 'http://www.lampionet.it', evway, enel X, Tesla Motors (Destination Charging), Tesla Motors,
+   SCAME, Repower, LIDL, Enel spa, Enel Distribuzione, Enel  X, ECO fuel, Comune di Vicenza, Comune di
+      Albiate, Charge&Go, COGESER, AcegasApsAmga, ATAC]
+clothesContainerOperators: [Cannone, Caritas Ambrosiana, Humana, UIC, Aamps, Caritas, AMIU, Exodus, Umanitaria Padana onlus, Hera,
+   Cooperativa Sociale Lavoro e Solidarietà, Comune di Vanzago, COSMARI, AMA]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 222
 officialLanguages: [it]
-orchardProduces: [grape, tomato, olive, apple, orange, peach, pear, kiwi, lemon, lime, chilli_pepper,
-  sweet_pepper, apricot, plum, strawberry, hazelnut, almond]
+orchardProduces: [grape, tomato, olive, apple, orange, peach, pear, kiwi, lemon, lime, chilli_pepper, sweet_pepper, apricot,
+   plum, strawberry, hazelnut, almond]

@@ -3,6 +3,6 @@ isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 358
 officialLanguages: [en]
-orchardProduces: [coconut, banana, grapefruit, orange, tomato, lemon, lime, guava, mango, mangosteen,
-  avocado, pepper, cacao, pineapple, nutmeg]
+orchardProduces: [coconut, banana, grapefruit, orange, tomato, lemon, lime, guava, mango, mangosteen, avocado, pepper,
+   cacao, pineapple, nutmeg]
 speedUnits: [miles per hour, kilometers per hour]
