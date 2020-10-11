@@ -183,19 +183,14 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        val mapFragment = mapFragment ?: return
-        /* when rotating the screen and the bottom sheet is open, the view should not rotate around
-           its proper center but around the center of the part of the map that is not occluded by
-           the bottom sheet */
+        val mapFragment = this.mapFragment ?: return
+        /* when rotating the screen and the bottom sheet is open, the view
+           should not rotate around its proper center but around the center
+           of the part of the map that is not occluded by the bottom sheet */
+        val previousOffset = mapOffsetWithOpenBottomSheet
+        updateMapQuestOffsets()
         if (bottomSheetFragment != null) {
-            val currentPos = mapFragment.getViewPosition(mapOffsetWithOpenBottomSheet)
-            updateMapQuestOffsets()
-            if (currentPos != null) {
-                val offsetPos = mapFragment.getPositionThatCentersPosition(currentPos, mapOffsetWithOpenBottomSheet)
-                mapFragment.updateCameraPosition { position = offsetPos }
-            }
-        } else {
-            updateMapQuestOffsets()
+            mapFragment.adjustToOffsets(previousOffset, mapOffsetWithOpenBottomSheet)
         }
         updateLocationPointerPin()
     }
