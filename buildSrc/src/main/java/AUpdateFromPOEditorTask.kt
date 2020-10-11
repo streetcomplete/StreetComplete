@@ -14,20 +14,20 @@ abstract class AUpdateFromPOEditorTask : DefaultTask() {
 
     private val baseParams get() = "api_token=$apiToken&id=97843"
 
-    /** Fetch the localization for the given language code in the given format (type) and do something
+    /** Fetch the localization for the given language code in the given format and do something
      *  with the contents */
-    protected fun <T> fetchLocalization(languageCode: String, type: String, block: (InputStream) -> T): T {
-        val url = URL(fetchLocalizationDownloadUrl(languageCode, type))
+    protected fun <T> fetchLocalization(languageCode: String, format: String, block: (InputStream) -> T): T {
+        val url = URL(fetchLocalizationDownloadUrl(languageCode, format))
         return url.retryingQuotaConnection(null, block)
     }
 
     /** Fetch the download URL for the given language code. Handle quota. */
-    private fun fetchLocalizationDownloadUrl(languageCode: String, type: String): String {
+    private fun fetchLocalizationDownloadUrl(languageCode: String, format: String): String {
         return URL("https://api.poeditor.com/v2/projects/export").retryingQuotaConnection({ connection ->
             connection.doOutput = true
             connection.requestMethod = "POST"
             connection.outputStream.bufferedWriter().use { it.write(
-                "$baseParams&language=${languageCode.toLowerCase(Locale.US)}&type=$type&filters=translated"
+                "$baseParams&language=${languageCode.toLowerCase(Locale.US)}&type=$format&filters=translated"
             ) }
         }) { inputStream ->
             val response = Parser.default().parse(inputStream) as JsonObject
@@ -37,17 +37,19 @@ abstract class AUpdateFromPOEditorTask : DefaultTask() {
 
     /** Fetch language codes of available translations from POEditor API */
     protected fun <T> fetchLocalizations(mapping: (JsonObject) -> T): List<T> {
-        val connection = URL("https://api.poeditor.com/v2/languages/list").openConnection() as HttpURLConnection
-        connection.doOutput = true
-        connection.requestMethod = "POST"
-        connection.outputStream.bufferedWriter().use { it.write(baseParams) }
-        val response = Parser.default().parse(connection.inputStream) as JsonObject
-        return response.obj("result")!!.array<JsonObject>("languages")!!.map {
-            mapping(it)
+        return URL("https://api.poeditor.com/v2/languages/list").retryingQuotaConnection({ connection ->
+            connection.doOutput = true
+            connection.requestMethod = "POST"
+            connection.outputStream.bufferedWriter().use { it.write(baseParams) }
+        }) { inputStream ->
+            val response = Parser.default().parse(inputStream) as JsonObject
+            response.obj("result")!!.array<JsonObject>("languages")!!.map {
+                mapping(it)
+            }
         }
     }
 
-    // this is for patiently waiting for the quota to replenish when querying POEditor API... :-|
+    // this is for waiting and retrying for quota to replenish when querying POEditor API... :-|
     private fun <T> URL.retryingQuotaConnection(setup: ((HttpURLConnection) -> Unit)? = null, block: (InputStream) -> T): T {
         val maxWait = 12
         var i = 0
@@ -63,6 +65,6 @@ abstract class AUpdateFromPOEditorTask : DefaultTask() {
                 return result
             }
         }
-        throw Exception("Waited for too long on POEditor API")
+        throw Exception("POEditor API continues to report http status code 429")
     }
 }
