@@ -35,6 +35,18 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> clothesContainerOperators;
 	List<String> atmOperators;
 
+	public List<String> getChargingStationOperators() {
+		return chargingStationOperators;
+	}
+
+	public List<String> getClothesContainerOperators() {
+		return clothesContainerOperators;
+	}
+
+	public List<String> getAtmOperators() {
+		return atmOperators;
+	}
+
 	public List<String> getLengthUnits()
 	{
 		return lengthUnits;

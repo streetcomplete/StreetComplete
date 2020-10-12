@@ -4,6 +4,9 @@ v25.0-beta1: |
   <li><i>What is the reference number of this bus stop?</i> (#2126)</li>
   <li><i>Do these steps have a ramp? What kind?</i> (#2036)</li>
   <li><i>Does this pedestrian crossing have an island?</i> (#1961,  #2030), by @kmpoppe</li>
+  <li><i>Who is the operator of this ATM?</i> (#203)</li>
+  <li><i>Who is the operator of this charging station?</i> (#911)</li>
+  <li><i>Who accepts donations for this clothing bin?</i> (#570)</li>
   </ul>
 
 v24.1: |
