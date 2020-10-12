@@ -23,7 +23,7 @@ class AddRailwayCrossingBarrier(
     override val wikiLink = "Key:crossing:barrier"
     override val icon = R.drawable.ic_quest_railway
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_railway_crossing_barrier_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_railway_crossing_barrier_title2
 
     override fun createForm() = AddRailwayCrossingBarrierForm()
 
