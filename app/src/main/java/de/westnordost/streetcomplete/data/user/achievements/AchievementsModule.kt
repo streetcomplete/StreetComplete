@@ -440,7 +440,8 @@ object AchievementsModule {
                     "AddMotorcycleParkingCapacity",
                     "AddMotorcycleParkingCover",
                     "AddFerryAccessMotorVehicle",
-                    "AddCarWashType"
+                    "AddCarWashType",
+                    "AddChargingStationOperator"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -642,8 +643,10 @@ object AchievementsModule {
                     "AddPlaceName",
                     "DetermineRecyclingGlass",
                     "AddRecyclingContainerMaterials",
+                    "AddClothingBinOperator",
                     "AddBabyChangingTable",
                     "AddOpeningHours",
+                    "AddAtmOperator",
                     "AddPlaygroundAccess",
                     "AddReligionToPlaceOfWorship",
                     "AddRecyclingType",
