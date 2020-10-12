@@ -192,6 +192,14 @@ object AchievementsModule {
             null,
             R.string.link_openinframap_description
         ),
+        Link(
+            "indoorequal",
+            "https://indoorequal.org",
+            "indoor=",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_indoorequal,
+            R.string.link_indoorequal_description
+        ),
 
         /* -------------------------------------- Showcase ---------------------------------------*/
         Link(
@@ -317,6 +325,14 @@ object AchievementsModule {
             LinkCategory.GOODIES,
             R.drawable.ic_link_figuregrounder,
             R.string.link_figuregrounder_description
+        ),
+        Link(
+            "thenandnow",
+            "https://mvexel.github.io/thenandnow/",
+            "OSM Then And Now ",
+            LinkCategory.GOODIES,
+            null,
+            R.string.link_neis_one_description
         )
     )
 
@@ -348,16 +364,16 @@ object AchievementsModule {
                    and then most of all goodies and general (OSM) showcases */
                 1 to links("wiki"), // most important link
                 2 to links("welcomemat"),
-                3 to links("openstreetbrowser"),
+
                 4 to links("show_me_the_way"),
 
-                5 to links("myosmatic"),
+                6 to links("myosmatic"),
 
-                6 to links("osm-haiku"),
+                8 to links("osm-haiku"),
 
-                8 to links("umap"),
+                10 to links("umap"),
 
-                10 to links("qwant_maps")
+                12 to links("thenandnow")
             )
         ),
 
@@ -381,6 +397,25 @@ object AchievementsModule {
                 5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
                 6 to links("vespucci", "josm") // together because both are full-featured-editors for each their platform
             )
+        ),
+
+        Achievement(
+            "rare",
+            R.drawable.ic_achievement_rare,
+            R.string.achievement_rare_title,
+            R.string.achievement_rare_solved_X,
+            SolvedQuestsOfTypes(listOf(
+                "AddSummitRegister", // 1
+                "AddWheelchairAccessToiletsPart", // 38
+                "AddWheelchairAccessOutside", // 154
+                "AddFerryAccessPedestrian", // 66
+                "AddFerryAccessMotorVehicle", // 103
+                "AddInformationToTourism", // 137
+                "AddBoardType" // 188
+            )),
+            // levels: 3, 9, 18, 30, 45, 63, ...
+            { lvl -> (lvl + 1)*3 },
+            mapOf()
         ),
 
         Achievement(
@@ -469,8 +504,7 @@ object AchievementsModule {
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
-                1 to links("öpnvkarte"),
-                2 to links("openorienteeringmap")
+                1 to links("öpnvkarte")
             )
         ),
 
@@ -593,26 +627,77 @@ object AchievementsModule {
                 1 to links("cyclosm"),
                 2 to links("brouter")
             )
+        ),
+
+        Achievement(
+            "citizen",
+            R.drawable.ic_achievement_citizen,
+            R.string.achievement_citizen_title,
+            R.string.achievement_citizen_solved_X,
+            SolvedQuestsOfTypes(
+                listOf(
+                    "AddSelfServiceLaundry",
+                    "AddToiletAvailability",
+                    "AddToiletsFee",
+                    "AddPlaceName",
+                    "DetermineRecyclingGlass",
+                    "AddRecyclingContainerMaterials",
+                    "AddBabyChangingTable",
+                    "AddOpeningHours",
+                    "AddPlaygroundAccess",
+                    "AddReligionToPlaceOfWorship",
+                    "AddRecyclingType",
+                    "AddAcceptsCash",
+                    // tourist related
+                    "AddInformationToTourism",
+                    "AddBoardType",
+                    "AddInternetAccess",
+                    "AddGeneralFee"
+                )
+            ),
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("openstreetbrowser"),
+                2 to links("qwant_maps"),
+                3 to links("indoorequal")
+            )
+        ),
+
+        Achievement(
+            "outdoors",
+            R.drawable.ic_achievement_outdoors,
+            R.string.achievement_outdoors_title,
+            R.string.achievement_outdoors_solved_X,
+            SolvedQuestsOfTypes(
+                listOf(
+                    "AddSport",
+                    "AddSummitRegister",
+                    "AddReligionToWaysideShrine",
+                    // from pedestrian
+                    "AddPathSurface",
+                    "AddCyclewaySegregation",
+                    "AddCyclewayPartSurface",
+                    "AddFootwayPartSurface",
+                    "AddBenchBackrest",
+                    // information boards
+                    "AddInformationToTourism",
+                    "AddBoardType"
+                )
+            ),
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("openorienteeringmap")
+            )
         )
+
     )
 
     private fun links(vararg linksKeys: String = emptyArray()): List<Link> =
         linksKeys.map { linksById.getValue(it) }
 
     // Quests not mentioned in any achievements:
-
-
-    // maybe "adventure" - sport/hiking related
-    // AddSport AddSummitRegister AddReligionToWaysideShrine
-
-    // maybe "Citizen" - general quests in town
-    //  AddSelfServiceLaundry AddToiletAvailability AddToiletsFee AddPlaceName
-    // DetermineRecyclingGlass AddRecyclingContainerMaterials AddBabyChangingTable
-    // AddOpeningHours AddPlaygroundAccess AddReligionToPlaceOfWorship
-    // AddRecyclingType AddAcceptsCash
-
-    // maybe "tourist
-    // AddInformationToTourism AddBoardType AddInternetAccess AddGeneralFee
 
     // maybe "emergency"
     // AddFireHydrantType AddIsDefibrillatorIndoor

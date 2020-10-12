@@ -831,6 +831,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_category_goodies_description">Interesting map-related stuff for you to try out</string>
 
     <string name="link_cyclosm_description">A map for cyclists</string>
+    <string name="link_indoorequal_description">Discover indoor maps of malls, railway stations etc.</string>
     <string name="link_wheelmap_description">A map for finding wheelchair accessible places</string>
     <string name="link_osm_buildings_description">A map that shows the buildings in 3D</string>
     <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
@@ -845,6 +846,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_wiki_description">The wiki is your starting point to everything related OpenStreetMap</string>
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
     <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
+    <string name="link_thenandnow_description">Curious what progress we made over the years? Compare to how the map looked more than 10 years ago!</string>
     <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
     <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
     <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
@@ -888,6 +890,12 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievement_veg_solved_X">You solved %d quests that are interesting for people living on a no-meat diet!</string>
     <string name="achievement_car_title">On the Road</string>
     <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the "street" in OpenStreetMap!</string>
+    <string name="achievement_rare_title">Treasure Hunt</string>
+    <string name="achievement_rare_solved_X">You found and solved %d quests that are completed really rarely, congratulations!</string>
+    <string name="achievement_citizen_title">Citizen</string>
+    <string name="achievement_citizen_solved_X">You solved %d quests useful for everyday life in town!</string>
+    <string name="achievement_outdoors_title">Outdoors</string>
+    <string name="achievement_outdoors_solved_X">You solved %d quests useful for outdoor-people!</string>
 
     <string name="user_statistics_country_rank">Rank in %2$s: %1$d</string>
     <string name="user_statistics_country_wiki_link">Mapping Portal %s</string>
