@@ -805,7 +805,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
     <string name="quest_accepts_cash_type_title">"Does %1$s (%2$s) accept cash payment?"</string>
 
-    <string name="quest_atm_operator_title">"Who is the operator of this ATM?"</string>
+    <string name="quest_atm_operator_title">"What's the name of the bank for this ATM?"</string>
     <string name="quest_clothes_container_operator_title">"Who accepts donations for this clothing bin?"</string>
     <string name="quest_charging_station_operator_title">"Who is the operator of this charging station?"</string>
 
