@@ -27,7 +27,7 @@ android {
     compileSdkVersion(29)
     testOptions {
         unitTests {
-            it.isReturnDefaultValues = true
+            isReturnDefaultValues = true
         }
     }
 
