@@ -12,7 +12,7 @@ enum class BuildingType(val item: Item<String>) {
     HOTEL         (Item("hotel",      R.drawable.ic_building_hotel,      R.string.quest_buildingType_hotel)),
     DORMITORY     (Item("dormitory",  R.drawable.ic_building_dormitory,  R.string.quest_buildingType_dormitory)),
     HOUSEBOAT     (Item("houseboat",  R.drawable.ic_building_houseboat,  R.string.quest_buildingType_houseboat)),
-    BUNGALOW      (Item("bungalow",   R.drawable.ic_building_bungalow,   R.string.quest_buildingType_bungalow, R.string.quest_buildingType_bungalow_description)),
+    BUNGALOW      (Item("bungalow",   R.drawable.ic_building_bungalow,   R.string.quest_buildingType_bungalow, R.string.quest_buildingType_bungalow_description2)),
     STATIC_CARAVAN(Item("static_caravan", R.drawable.ic_building_static_caravan, R.string.quest_buildingType_static_caravan)),
     HUT           (Item("hut",        R.drawable.ic_building_hut,        R.string.quest_buildingType_hut, R.string.quest_buildingType_hut_description)),
 
