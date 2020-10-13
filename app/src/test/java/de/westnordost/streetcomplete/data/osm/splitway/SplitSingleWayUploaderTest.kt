@@ -304,12 +304,12 @@ class SplitSingleWayUploaderTest {
 
     @Test fun `reuse object id of longest split chunk (= second chunk)`() {
         val elements = doSplit(SplitAtPoint(p[1]))
-        assertEquals(way.id, elements.ways.maxBy { it.nodeIds.size }?.id)
+        assertEquals(way.id, elements.ways.maxByOrNull { it.nodeIds.size }?.id)
     }
 
     @Test fun `reuse object id of longest split chunk (= first chunk)`() {
         val elements = doSplit(SplitAtPoint(p[2]))
-        assertEquals(way.id, elements.ways.maxBy { it.nodeIds.size }?.id)
+        assertEquals(way.id, elements.ways.maxByOrNull { it.nodeIds.size }?.id)
     }
 
     @Test fun `insert all way chunks into relation the way is a member of`() {
