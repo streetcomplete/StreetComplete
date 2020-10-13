@@ -30,6 +30,8 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
     var selectedItem: GroupableDisplayItem<T>? = null
         private set
 
+    private val selectedIndex get() = selectedItem?.let { _items.indexOf(it) } ?: -1
+
     val listeners = mutableListOf<(GroupableDisplayItem<T>?) -> Unit>()
 
     init {
@@ -51,6 +53,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(_items[position])
         holder.isSelected = selectedItem?.let { _items.indexOf(it) == position } == true
+        holder.isGroupExpanded = getGroup(selectedIndex) == position
     }
 
     private fun toggle(index: Int) {
@@ -101,6 +104,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
         for (i in subItems.indices) {
             _items.add(index + i + 1, subItems[i])
         }
+        notifyItemChanged(index)
         notifyItemRangeInserted(index + 1, subItems.size)
     }
 
@@ -110,6 +114,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
         for (i in subItems.indices) {
             _items.removeAt(index + 1)
         }
+        notifyItemChanged(index)
         notifyItemRangeRemoved(index + 1, subItems.size)
     }
 
