@@ -1,0 +1,4 @@
+# Countries in which it is common that any kind of glass (like window glass) can be recycled in
+# normal glass recycling containers
+default: false
+CZ: true # see https://github.com/westnordost/StreetComplete/issues/2123#issuecomment-704785176

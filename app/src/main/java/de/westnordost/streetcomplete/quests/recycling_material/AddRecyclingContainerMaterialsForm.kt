@@ -20,8 +20,12 @@ class AddRecyclingContainerMaterialsForm
         OtherAnswer(R.string.quest_recycling_materials_answer_waste) { confirmJustTrash() }
     )
 
-    override val items = listOf(
-        Item(GLASS_BOTTLES, R.drawable.ic_recycling_glass_bottles, R.string.quest_recycling_type_glass_bottles),
+    override val items get() = listOf(
+        if (isAnyGlassRecycleable) {
+            Item(GLASS, R.drawable.ic_recycling_glass, R.string.quest_recycling_type_any_glass)
+        } else {
+            Item(GLASS_BOTTLES, R.drawable.ic_recycling_glass_bottles, R.string.quest_recycling_type_glass_bottles)
+        },
         Item(PAPER,         R.drawable.ic_recycling_paper,         R.string.quest_recycling_type_paper),
         Item(PLASTIC,       R.drawable.ic_recycling_plastic,       R.string.quest_recycling_type_plastic_generic),
         Item(CANS,          R.drawable.ic_recycling_cans,          R.string.quest_recycling_type_cans),
@@ -42,6 +46,8 @@ class AddRecyclingContainerMaterialsForm
     )
 
     override val maxSelectableItems = -1
+
+    private val isAnyGlassRecycleable get() = countryInfo.isUsuallyAnyGlassRecycleableInContainers
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
