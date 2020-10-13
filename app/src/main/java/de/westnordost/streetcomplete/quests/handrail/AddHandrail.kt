@@ -34,5 +34,10 @@ class AddHandrail(overpassApi: OverpassMapDataAndGeometryApi, r: ResurveyInterva
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.updateWithCheckDate("handrail", answer.toYesNo())
+        if (!answer) {
+            changes.deleteIfExists("handrail:left")
+            changes.deleteIfExists("handrail:right")
+            changes.deleteIfExists("handrail:center")
+        }
     }
 }
