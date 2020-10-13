@@ -156,6 +156,48 @@ class SplitSingleWayUploaderTest {
         )))
     }
 
+    @Test fun `split way copies tags to all resulting elements`() {
+        val tags = mapOf(
+            "highway" to "residential",
+            "surface" to "asphalt"
+        )
+        way = OsmWay(0,1, mutableListOf(0,1,2,3), tags)
+
+        val elements = doSplit(SplitAtPoint(p[1]))
+        for (way in elements.ways) {
+            assertEquals(tags, way.tags)
+        }
+    }
+
+    @Test fun `split way deletes tags that may be wrong after split`() {
+        val tags = mapOf(
+            "highway" to "residential",
+            "surface" to "asphalt",
+            "seats" to "55",
+            "step_count" to "12",
+            "steps" to "4",
+            "capacity" to "33",
+            "parking:lane:both:capacity" to "5",
+            "parking:lane:both:capacity:disabled" to "1",
+            "capacity:fat_persons" to "1",
+            "capacityaspartofaname:yes" to "ok",
+            "aspartofanamecapacity:yes" to "ok",
+        )
+        way = OsmWay(0,1, mutableListOf(0,1,2,3), tags)
+
+        val expectedTags = mapOf(
+            "highway" to "residential",
+            "surface" to "asphalt",
+            "capacityaspartofaname:yes" to "ok",
+            "aspartofanamecapacity:yes" to "ok"
+        )
+
+        val elements = doSplit(SplitAtPoint(p[1]))
+        for (way in elements.ways) {
+            assertEquals(expectedTags, way.tags)
+        }
+    }
+
     @Test fun `split way with one split position at vertex`() {
         val elements = doSplit(SplitAtPoint(p[1]))
         assertTrue(elements.nodes.isEmpty()) // no nodes were added
