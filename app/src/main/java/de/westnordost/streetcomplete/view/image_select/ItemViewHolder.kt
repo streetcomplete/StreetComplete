@@ -12,10 +12,17 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val imageView: ImageView? = itemView.findViewById(R.id.imageView)
     private val textView: TextView? = itemView.findViewById(R.id.textView)
     private val descriptionView: TextView? = itemView.findViewById(R.id.descriptionView)
+    private val dropDownArrowImageView: ImageView? = itemView.findViewById(R.id.dropDownArrowImageView)
 
     var isSelected: Boolean
         get() = itemView.isSelected
         set(value) { itemView.isSelected = value }
+
+    var isGroupExpanded: Boolean = false
+        set(value) {
+            field = value
+            dropDownArrowImageView?.rotation = if (value) 90f else 0f
+        }
 
     var onClickListener: ((index: Int) -> Unit)? = null
         set(value) {
