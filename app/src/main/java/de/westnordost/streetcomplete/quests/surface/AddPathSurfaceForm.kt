@@ -48,8 +48,8 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<String, DetailSurfaceAn
         //if (osmElement!!.tags["surface"] == "paved") - TODO: reimplement or remove
         (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES).toItems() +
             // TODO: have proper images for path (crop from panorama images)
-            Item("paved", R.drawable.surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
-            Item("unpaved", R.drawable.surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf()) +
+            Item("paved", R.drawable.path_surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
+            Item("unpaved", R.drawable.path_surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf()) +
             Item("ground", R.drawable.surface_ground, R.string.quest_surface_value_ground, null, listOf())
 
     // TODO: everything below duplicates AddRoadSurfaceForm...

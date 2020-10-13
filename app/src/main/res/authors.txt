@@ -33,13 +33,6 @@ fire_hydrant_wall.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/w
 ic_link_cyclosm.xml            CC-BY-SA          by Lucas Verney
 ic_trophy.xml                  SIL OFL 1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
 
-panorama_path_surface_paved... CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
-panorama_path_surface_unpav... CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
-
-panorama_surface_ground.jpg    CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
-panorama_surface_paved.jpg     CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
-panorama_surface_unpaved.jpg   CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
-
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
 parking_type_surface.jpg       CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:Car_park2.jpg
 parking_type_underground.jpg   CC0               https://pixabay.com/de/tiefgarage-einfahrt-absch%C3%BCssig-273439/
