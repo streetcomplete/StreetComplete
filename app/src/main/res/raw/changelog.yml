@@ -11,6 +11,10 @@ v25.0-beta1: |
   <h3>Other Enhancements and Fixes</h3>
   <ul>
   <li>new achievement graphics by Judith Gastell (<a href='https://www.artstation.com/melusine'>melusine</a>)</li>
+  <li>For surface quest and building type quest, make categories visually more distinct (#1952, #2000)</li>
+  <li>In the Czech Republic, offer "any glass" option in recycling materials quest (#2123)</li>
+  <li>Improve a few wordings (#2047, #2096)</li>
+  <li>A few fixes (#2145, #2148, ...), thanks @peternewman</li>
   </ul>
 
 v24.1: |
