@@ -1641,9 +1641,6 @@
     <string name="quest_building_underground_title">"이 건물이 완전히 지하에 있습니까?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"여기에 시각 장애인을 위한 음성 신호가 있습니까?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"접근하려면 외길로 가야 한다는 것을 부분적으로 의미합니다."</string>
 
     <!-- Fuzzy -->
@@ -1919,4 +1916,5 @@
     <string name="at_housenumber">"건물 번호 %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 의 개점 시간은 언제입니까?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s)에 휠체어가 들어갈 수 있습니까?"</string>
+    <string name="quest_traffic_signals_sound_title">"여기에 시각 장애인을 위한 음성 신호가 있습니까?"</string>
 </resources>

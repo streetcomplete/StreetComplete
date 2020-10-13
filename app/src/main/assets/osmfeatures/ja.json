@@ -282,6 +282,10 @@
             "name": "転回所(交通島あり)",
             "terms": "転回所"
         },
+        "man_made/dovecote": {
+            "name": "鳩小屋",
+            "terms": "鳩小屋, ハト小屋, ハト, 鳩舎"
+        },
         "man_made/dyke": {
             "name": "堤防",
             "terms": "堤防, 築堤, 土手"
@@ -333,6 +337,10 @@
         "natural/water": {
             "name": "水域",
             "terms": "水域"
+        },
+        "amenity/pub/irish": {
+            "name": "アイリッシュパブ",
+            "terms": "アイリッシュパブ, パブ, 居酒屋"
         },
         "embankment": {
             "name": "土手"
@@ -395,6 +403,10 @@
         "landuse/greenhouse_horticulture": {
             "name": "温室（土地区画）",
             "terms": "温室, ビニールハウス, 農業, 野菜"
+        },
+        "shop/wigs": {
+            "name": "かつら店",
+            "terms": "かつら店, カツラ, 鬘, ウイッグ, 店舗"
         },
         "amenity/community_centre": {
             "name": "コミュニティセンター",
@@ -516,6 +528,10 @@
             "name": "看板屋",
             "terms": "看板屋, 広告サイン制作, 広告"
         },
+        "amenity/fast_food/juice": {
+            "name": "ジュース店",
+            "terms": "ジュース店, ジュース"
+        },
         "amenity/vending_machine/bread": {
             "name": "自販機(パン)",
             "terms": "自販機(パン), パン, 自販機"
@@ -523,6 +539,10 @@
         "amenity/studio/video": {
             "name": "映画スタジオ",
             "terms": "映画スタジオ, フィルムスタジオ, スタジオ"
+        },
+        "amenity/toilets/portable": {
+            "name": "ポータブルトイレ",
+            "terms": "ポータブルトイレ, トイレ, 持ち運び, 移動式"
         },
         "building/church": {
             "name": "教会（建物）",
@@ -662,6 +682,10 @@
         "barrier/hedge": {
             "name": "生垣",
             "terms": "生垣, 障害物, バリア, 植物, 生け垣, 樹木"
+        },
+        "railway/tram_crossing": {
+            "name": "トラム踏切 (歩道)",
+            "terms": "トラム踏切 (歩道), トラム踏切, 踏切"
         },
         "building/garages": {
             "name": "集合車庫（建物、大）",
@@ -1611,7 +1635,7 @@
         },
         "railway/crossing": {
             "name": "踏切 (歩道)",
-            "terms": "踏切 (歩道), 歩行者用踏切"
+            "terms": "踏切,歩行者用踏切, 踏切(歩道)"
         },
         "tourism/artwork/statue": {
             "name": "彫像",
@@ -2525,7 +2549,7 @@
         },
         "tourism/information/office": {
             "name": "観光案内所",
-            "terms": "観光案内所, 案内, ビジターセンター, 観光, インフォメーション"
+            "terms": "観光案内所, ビジターセンター"
         },
         "shop/fireplace": {
             "name": "暖房具店",
@@ -3117,6 +3141,10 @@
         "indoor/stairs": {
             "name": "階段（インドア）",
             "terms": "階段（インドア）, 階段, インドア"
+        },
+        "leisure/sports_hall": {
+            "name": "体育館",
+            "terms": "体育館, ジム, 屋内運動施設, スポーツ"
         },
         "traffic_calming/choker": {
             "name": "チョーカー",
@@ -4293,6 +4321,10 @@
             "name": "合鍵作成（小店舗）",
             "terms": "合鍵作成, 職人, 錠前, カギ, 鍵"
         },
+        "railway/railway_crossing": {
+            "name": "レール交差点",
+            "terms": "レール交差点"
+        },
         "leisure/fitness_station/sign": {
             "name": "運動の説明標識",
             "terms": "運動の説明標識, 運動器具, トレーニング, エクササイズ, 健康遊具"
@@ -4512,6 +4544,10 @@
         "shop/tiles": {
             "name": "タイル店",
             "terms": "タイル店, タイルショップ"
+        },
+        "railway/tram_level_crossing": {
+            "name": "トラム踏切 (車道)",
+            "terms": "トラム踏切 (車道), トラム踏切, 踏切"
         },
         "amenity/vending_machine/food": {
             "name": "食品自販機",
@@ -4778,6 +4814,10 @@
             "name": "コーヒー専門店",
             "terms": "コーヒー専門店, 珈琲専門店, 喫茶店, カフェ, 珈琲, コーヒー"
         },
+        "highway/toll_gantry": {
+            "name": "料金ガントリー",
+            "terms": "料金ガントリー, 自動通行料金徴収装置, 道路通行料, 自動徴収"
+        },
         "landuse/plant_nursery": {
             "name": "育苗所",
             "terms": "育苗所,苗床"
@@ -5036,6 +5076,9 @@
         },
         "craft/locksmith": {
             "name": "錠前師"
+        },
+        "telecom": {
+            "name": "通信サービスの地物"
         },
         "place": {
             "name": "地名"

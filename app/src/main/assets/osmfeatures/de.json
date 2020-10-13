@@ -282,6 +282,10 @@
             "name": "Wendeschleife (Insel)",
             "terms": "Wendeschleife (mit Mittelinsel), Wendekreis mit nicht überfahrbarere Mittelinsel"
         },
+        "man_made/dovecote": {
+            "name": "Taubenschlag",
+            "terms": "Vögel,Tauben,Taubenschlag,Taubenlöcher,Tauben"
+        },
         "man_made/dyke": {
             "name": "Deich",
             "terms": "Deich"
@@ -333,6 +337,10 @@
         "natural/water": {
             "name": "Gewässer",
             "terms": "Gewässer, Wasserfläche, See, Teich, Pond, Pfütze, Wasser"
+        },
+        "amenity/pub/irish": {
+            "name": "Irish Pub",
+            "terms": "Irische Kneipe, Irland, Pub, Bar"
         },
         "embankment": {
             "name": "künstliche Böschung"
@@ -395,6 +403,10 @@
         "landuse/greenhouse_horticulture": {
             "name": "Gewächshäuser",
             "terms": "Gewächshäuser,Glashäuser"
+        },
+        "shop/wigs": {
+            "name": "Perückenladen",
+            "terms": "Haarverlängerung, Perücken, Kunsthaar, Haarersatz, Zweitfrisur"
         },
         "amenity/community_centre": {
             "name": "Gemeindezentrum",
@@ -516,6 +528,10 @@
             "name": "Schilderhersteller/in",
             "terms": "Schilderhersteller, Schildermacher"
         },
+        "amenity/fast_food/juice": {
+            "name": "Juice Fast Food",
+            "terms": "Café,Getränke,Fruchtgetränke,Juicebar,Shakes,Smoothies,Saftbar,Säfte"
+        },
         "amenity/vending_machine/bread": {
             "name": "Brotverkaufsautomat",
             "terms": "Brot, Baguette"
@@ -523,6 +539,10 @@
         "amenity/studio/video": {
             "name": "Filmstudio",
             "terms": "Filmproduktion, Filmstudio, Videoproduktion, Videoaufnahmestudio, Videostudio"
+        },
+        "amenity/toilets/portable": {
+            "name": "Mobile Toilette",
+            "terms": "Toilette, Porta John, Töpfchen, chemische Toilette"
         },
         "building/church": {
             "name": "Kirchengebäude",
@@ -662,6 +682,10 @@
         "barrier/hedge": {
             "name": "Hecke",
             "terms": "Hecke"
+        },
+        "railway/tram_crossing": {
+            "name": "Straßenbahn-Fußweg-Kreuzung",
+            "terms": "Kreuzung, Straßenbahn-Fußweg-Kreuzung, Straßenbahnübergang,Fußgängerüberweg"
         },
         "building/garages": {
             "name": "Mehrfach-/Blockgaragen",
@@ -1609,8 +1633,8 @@
             "terms": "Sauna"
         },
         "railway/crossing": {
-            "name": "Bahnübergang (Weg)",
-            "terms": "Eisenbahnübergang (Fußgänger), Eisenbahnfussgängerkreuzung, Eisenbahnfußgängerübergang"
+            "name": "Eisenbahn-Fußweg-Kreuzung",
+            "terms": "Kreuzung, Eisenbahn-Fußweg-Kreuzung, Bahnübergang, Fußgängerüberweg, Bahnweg"
         },
         "tourism/artwork/statue": {
             "name": "Statue",
@@ -2523,8 +2547,8 @@
             "terms": "Alpenvereinshütte,Berghütte,Schutzhütte,Schutzhaus,Hospiz,"
         },
         "tourism/information/office": {
-            "name": "Tourismusbüro",
-            "terms": "Tourist-Info, Touristeninformationsbüro"
+            "name": "Besucherzentrum",
+            "terms": "Informationsbüro, Reiseleiter, Tourismusbüro, Touristeninformationszentrum, Besucherzentrum, Besucherinformationszentrum, Begrüßungszentrum"
         },
         "shop/fireplace": {
             "name": "Kachelofenladen",
@@ -2661,8 +2685,8 @@
             "terms": "Herrenhaus, Gutshaus, Oberschicht, Adel, Anwesen"
         },
         "railway/level_crossing": {
-            "name": "Bahnübergang (Straße)",
-            "terms": "Eisenbahnkreuzung (Straße), Eisenbahnstraßenkreuzung"
+            "name": "Eisenbahn-Straßen-Kreuzung",
+            "terms": "Kreuzung, Eisenbahn-Straßen-Kreuzung, Bahnübergang, Fußgängerüberweg, Bahnweg"
         },
         "man_made/pier": {
             "name": "Steg",
@@ -2709,7 +2733,7 @@
         },
         "highway/track": {
             "name": "Feld-/Waldweg",
-            "terms": "Wirtschaftsweg, Waldweg, Feldweg, Forststraße"
+            "terms": "Wirtschaftsweg, Waldweg, Feldweg, Forststraße, Vierradantrieb, Quad, Jeep, Offroad"
         },
         "attraction/dark_ride": {
             "name": "Geisterbahn",
@@ -2898,7 +2922,7 @@
             "terms": "Münz-Souvenir-Präge-Automat"
         },
         "type/waterway": {
-            "name": "Wasserweg",
+            "name": "Wasserstraße",
             "terms": "Strom, Fluss, Bach, Graben, Damm, Wehr"
         },
         "emergency/destination": {
@@ -2941,8 +2965,8 @@
             "terms": "Polizei, Polizeistation, Polizeirevier, Polizeiwache, Polizeiinspektion"
         },
         "seamark/buoy_lateral": {
-            "name": "Kanalboje",
-            "terms": "Kanalboje"
+            "name": "Seitliche Tonne",
+            "terms": "Seitliche Tonne"
         },
         "shop/newsagent": {
             "name": "Zeitschriftenhandel",
@@ -2960,8 +2984,8 @@
             "name": "Unterirdische Stromleitung"
         },
         "seamark/beacon_lateral": {
-            "name": "Kanalleuchtfeuer",
-            "terms": "Kanalleuchtfeuer"
+            "name": "Seitliche Tonne",
+            "terms": "Seitliche Tonne, Laterales Seezeichen, Lateraltonne"
         },
         "man_made/mast/communication/mobile_phone": {
             "name": "Mobilfunkmast",
@@ -3115,6 +3139,10 @@
         "indoor/stairs": {
             "name": "Innenstiege",
             "terms": "Stiege, Stufen, Stiegenhaus, Treppe, Treppenhaus,Innentreppe"
+        },
+        "leisure/sports_hall": {
+            "name": "Sporthalle",
+            "terms": "Sportplätze, Fitnessstudio, Sporthalle, Sportstätte, Schulsport, Turnhalle, Turnsaal, Einfeldhalle, Zweifelsfalle, Dreifeldhalle, Mehrfeldhalle, Ballsporthalle"
         },
         "traffic_calming/choker": {
             "name": "Fahrbahnverengung",
@@ -3495,7 +3523,7 @@
             "terms": "Durchfahrtsbedienung, Drive-in, Durchfahrt"
         },
         "waterway": {
-            "name": "Wasserwege..."
+            "name": "Wasserstraßen..."
         },
         "amenity/crematorium": {
             "name": "Krematorium",
@@ -4291,6 +4319,10 @@
             "name": "Schlüsselschneider/in",
             "terms": "Schlüsselschneider, Schlüsselgeschäft"
         },
+        "railway/railway_crossing": {
+            "name": "Eisenbahn-Eisenbahn-Kreuzung",
+            "terms": "Eisenbahn-Diamant-Kreuzung, ebene Eisenbahn-Eisenbahn-Kreuzung"
+        },
         "leisure/fitness_station/sign": {
             "name": "Übungsanleitungstafel",
             "terms": "Übungsanleitungstafel,Übungsanleitung"
@@ -4510,6 +4542,10 @@
         "shop/tiles": {
             "name": "Fliesenhändler",
             "terms": "Fliesenhändler, Fliesengeschäft"
+        },
+        "railway/tram_level_crossing": {
+            "name": "Straßenbahn-Straßen-Kreuzung",
+            "terms": "Kreuzung, Straßenbahn-Straßen-Kreuzung, Straßenbahnkreuzung"
         },
         "amenity/vending_machine/food": {
             "name": "Lebensmittel-Verkaufs-Automat ",
@@ -4776,6 +4812,10 @@
             "name": "Kaffeehaus",
             "terms": "Americano, Gebräu, Kaffee, Café, Cappuccino, Kakao, Tropf, Espresso, heiße Getränke, Latte, Macchiato, Tee, Verlängerter, Brauner"
         },
+        "highway/toll_gantry": {
+            "name": "Mautbrücke",
+            "terms": "Schilderbrücke, Nummernschilderkennung, Kontrollbrücke, Kennzeichenerfassung, Mauterfassung"
+        },
         "landuse/plant_nursery": {
             "name": "Baumschule, Anzucht von Pflanzen",
             "terms": "Baumschule, Anzucht, Anbaufläche, Plantage, Blumen, Sträucher, Rosen, Ziergehölze, Obstgehölze,  Forstpflanzen, Gärtnerei"
@@ -5035,6 +5075,9 @@
         "craft/locksmith": {
             "name": "Schlosser/in"
         },
+        "telecom": {
+            "name": "Telekommunikationsfirma"
+        },
         "place": {
             "name": "Ort"
         },
@@ -5114,7 +5157,7 @@
             "terms": "Vermessungstechniker,Gutachter,Sachverständiger"
         },
         "highway/path": {
-            "name": "Schmaler Weg",
+            "name": "Pfad",
             "terms": "Schmaler Weg, Weg, Gehweg, Wanderweg, Trampelpfad, Pfad, Fahrradweg, Reitweg, Moutainbikestrecke, Viehweg, Rad- und Fußweg, Rad-/Fußweg, Radweg, Fußweg, Gehen, Wandern, Reiten, Viehtreiben, Wanderung, Viehtrieb"
         },
         "indoor/corridor_line": {

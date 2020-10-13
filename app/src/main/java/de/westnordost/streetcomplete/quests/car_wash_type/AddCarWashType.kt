@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.*
 
 class AddCarWashType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<List<CarWashType>>(o) {
@@ -19,7 +20,7 @@ class AddCarWashType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
 
     override fun applyAnswerTo(answer: List<CarWashType>, changes: StringMapChangesBuilder) {
         val isAutomated = answer.contains(AUTOMATED)
-        changes.add("automated", if (isAutomated) "yes" else "no")
+        changes.add("automated", isAutomated.toYesNo())
 
         val hasSelfService = answer.contains(SELF_SERVICE)
         val selfService = when {

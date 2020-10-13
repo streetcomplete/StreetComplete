@@ -1545,9 +1545,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_building_underground_title">"Bu bina tamamen yer altında mı?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Burada kör için ses sinyalleri var mı?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Kısmen, erişmek için tek bir adımdan daha fazlası olmadığı anlamına gelir."</string>
 
     <!-- Fuzzy -->
@@ -1734,4 +1731,5 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="at_housenumber">"ev numarası %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) mekanın çalışma saatleri nedir?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) tekerlekli sandalye ile erişilebilir mi?"</string>
+    <string name="quest_traffic_signals_sound_title">"Burada kör için ses sinyalleri var mı?"</string>
 </resources>

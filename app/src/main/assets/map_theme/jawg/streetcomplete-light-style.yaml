@@ -1,3 +1,4 @@
+# for online testing (e.g. Tangram Play)
 import:
     - global.yaml
     - layers/land.yaml
@@ -7,7 +8,7 @@ import:
 global:
     railway_color: '#99a'
     road_color: '#fff'
-    road_outline_color: '#c99'
+    road_outline_color: '#966'
     path_color: global.road_color
     path_outline_color: '#e0c9b3'
     square_color: global.road_color

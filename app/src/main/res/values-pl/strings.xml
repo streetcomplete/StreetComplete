@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Ustawienia"</string>
 
     <!-- Fuzzy -->
@@ -363,7 +361,7 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="quest_cyclewaySurface_title">"Jaki rodzaj nawierzchni ma ta droga dla rowerów?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_serviceType_title">"Jaki to rodzaj drogi serwisowej?"</string>
+    <string name="quest_serviceType_title">"Jaki to rodzaj drogi dojazdowej?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetLanes_title">"Ile wyznaczonych pasów jezdni ma ta ulica?"</string>
@@ -1662,9 +1660,6 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_building_underground_title">"Czy ten budynek znajduje się całkowicie pod ziemią?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Czy są tutaj sygnały dźwiękowe dla niewidomych?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Częściowo oznacza, że nie ma więcej niż jednego stopnia prowadzącego do obiektu."</string>
 
     <!-- Fuzzy -->
@@ -1789,9 +1784,7 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"Zmienia się..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Jeśli nawierzchnia jest różna w poszczególnych częściach to pierwszym krokiem jest podzielenie drogi na fragmenty. Gdy to się zrobi będzie możliwe odpowiedzenie na to pytanie dla każdego fragmentu z osobna.
+    <string name="quest_split_way_description">"Jeśli sytuacja jest różna w poszczególnych częściach to pierwszym krokiem jest podzielenie drogi na fragmenty. Gdy to się zrobi będzie możliwe odpowiedzenie na to pytanie dla każdego fragmentu z osobna.
 Podzielić?"</string>
 
     <!-- Fuzzy -->
@@ -2364,4 +2357,6 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="dialog_tutorial_download">"Z wyłączoną autosynchronizacją zadania nie są automatycznie pobrane. By to zrobić przesuń mapę do interesującej cię lokalizacji i użyj przycisku \"%s\" w menu."</string>
     <string name="about_title_translate">"Pomóż tłumaczyć aplikację."</string>
     <string name="about_description_translate">"%1$s jest przetłumaczony w %2$d%%"</string>
+    <string name="quest_oneway2_title">"Czy ta droga jest jednostronna? W którą stronę?"</string>
+    <string name="quest_traffic_signals_sound_title">"Czy są tutaj sygnały dźwiękowe dla niewidomych?"</string>
 </resources>

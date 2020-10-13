@@ -1662,9 +1662,6 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="quest_building_underground_title">"Este prédio é totalmente subterrâneo?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Existe sinalização sonora para cegos aqui?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que há não mais do que um único degrau no acesso."</string>
 
     <!-- Fuzzy -->
@@ -2116,4 +2113,5 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="quest_busStopBench_tram_title">"Essa parada de bonde tem um banco?"</string>
     <string name="quest_busStopBench_title">"Este ponto de ônibus tem um banco?"</string>
     <string name="about_title_translate">"Ajude a traduzir esse aplicativo"</string>
+    <string name="quest_traffic_signals_sound_title">"Existe sinalização sonora para cegos aqui?"</string>
 </resources>

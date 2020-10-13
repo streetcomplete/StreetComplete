@@ -127,10 +127,6 @@
             "name": "Marangoz",
             "terms": "Marangoz, Dülger, Doğramacı"
         },
-        "railway/level_crossing": {
-            "name": "Hemzemin Geçit (Yol ile Kesişim)",
-            "terms": "Hemzemin Geçit (Yol ile Kesişim)"
-        },
         "amenity/restaurant/greek": {
             "name": "Yunan Restoranı"
         },
@@ -2107,10 +2103,6 @@
             "name": "Sanat Merkezi",
             "terms": "Sanat Merkezi"
         },
-        "railway/crossing": {
-            "name": "Demiryolu Kavşağı (Patika ile Kesişim)",
-            "terms": "Demiryolu Kavşağı (Patika ile Kesişim)"
-        },
         "shop/travel_agency": {
             "name": "Turizm Acentası",
             "terms": "Turizm Acentası"
@@ -3139,10 +3131,6 @@
         "tourism/alpine_hut": {
             "name": "Dağ Evi",
             "terms": "Dağ Evi, Dağ Kulübesi, Baraka"
-        },
-        "tourism/information/office": {
-            "name": "Turist Bilgi Ofisi",
-            "terms": "Turist Bilgi Ofisi"
         },
         "shop/alcohol": {
             "name": "İçki Dükkanı",

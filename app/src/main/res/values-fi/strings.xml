@@ -828,12 +828,10 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"Pyöräilykaista"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none">"ei mitään"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_shared">"Kaista jaettu muun liikenteen kanssa"</string>
+    <string name="quest_cycleway_value_shared">"Kaista jaettu merkitysti muun liikenteen kanssa"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_bus_lane">"linja-auto kaistalla"</string>
@@ -1517,9 +1515,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Onko tämä rakennus kokonaan maanalainen?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Onko täällä äänimerkkiä sokeille? "</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Osittain tarkoittaa että paikassa on vain yksi askelma, jotta paikkaan voi kulkea."</string>
@@ -2215,4 +2210,5 @@ päiviä"</string>
     <string name="dialog_tutorial_download">"Kun automaattinen synkronointi ei ole käytössä, tehtäviä ei ladata automaattisesti. Voit tehdä tämän manuaalisesti käyttämällä \"%s\" -painiketta paikassa, jonka haluat ladata."</string>
     <string name="about_title_translate">"Auta kääntämään tämä sovellus"</string>
     <string name="about_description_translate">"%1$s on kääntänyt %2$d%%"</string>
+    <string name="quest_traffic_signals_sound_title">"Onko täällä äänimerkkiä sokeille?"</string>
 </resources>

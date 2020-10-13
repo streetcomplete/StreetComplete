@@ -1,145 +1,100 @@
 package de.westnordost.streetcomplete.quests.oneway
 
-import android.util.Log
-
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsApi
-import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
+import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.meta.ALL_ROADS
+import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
+import de.westnordost.streetcomplete.quests.parking_lanes.*
 
 class AddOneway(
-    private val overpassMapDataApi: OverpassMapDataAndGeometryApi,
-    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
-    private val db: WayTrafficFlowDao
+    private val overpassMapDataApi: OverpassMapDataAndGeometryApi
 ) : OsmElementQuestType<OnewayAnswer> {
 
-    private val tagFilters = """
-        ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road
-         and !oneway and junction != roundabout and area != yes
-         and (access !~ private|no or (foot and foot !~ private|no))
-    """
+    /** find all roads */
+    private val allRoadsFilter by lazy { ElementFiltersParser().parse("""
+        ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes
+    """) }
 
-    override val commitMessage =
-        "Add whether this road is a one-way road, this road was marked as likely oneway by improveosm.org"
+    /** find only those roads eligible for asking for oneway */
+    private val tagFilter by lazy { ElementFiltersParser().parse("""
+        ways with highway ~ living_street|residential|service|tertiary|unclassified
+         and !oneway and area != yes and junction != roundabout 
+         and (access !~ private|no or (foot and foot !~ private|no))
+         and lanes <= 1 and width
+    """) }
+
+    override val commitMessage = "Add whether this road is a one-way road because it is quite slim"
     override val wikiLink = "Key:oneway"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
 
-    private val filter by lazy { ElementFiltersParser().parse(tagFilters) }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway2_title
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway_title
-
-    override fun isApplicableTo(element: Element) =
-        filter.matches(element) && db.isForward(element.id) != null
+    override fun isApplicableTo(element: Element): Boolean? = null
+    /* return null because we also want to have a look at the surrounding geometry to filter out
+    *  (some) dead ends */
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        val trafficDirectionMap: Map<Long, List<TrafficFlowSegment>>
-        try {
-            trafficDirectionMap = trafficFlowSegmentsApi.get(bbox)
-        } catch (e: Exception) {
-            Log.e("AddOneway", "Unable to download traffic metadata", e)
-            return false
-        }
+        val query = bbox.toGlobalOverpassBBox() + "\n" + allRoadsFilter.toOverpassQLString() + getQuestPrintStatement()
+        val connectionCountByNodeIds = mutableMapOf<Long, Int>()
+        val onewayCandidates = mutableListOf<Pair<Way, ElementGeometry?>>()
+        val result = overpassMapDataApi.query(query) { element, geometry ->
+            if (element is Way && element.nodeIds.size >= 2) {
+                for (nodeId in element.nodeIds) {
+                    val prevCount = connectionCountByNodeIds[nodeId] ?: 0
+                    connectionCountByNodeIds[nodeId] = prevCount + 1
+                }
 
-        if (trafficDirectionMap.isEmpty()) return true
-
-        val query = "way(id:${trafficDirectionMap.keys.joinToString(",")}); out meta geom;"
-        overpassMapDataApi.query(query) { element, geometry ->
-            fun checkValidAndHandle(element: Element, geometry: ElementGeometry?) {
-                if (geometry == null) return
-                if (geometry !is ElementPolylinesGeometry) return
-                // filter the data as ImproveOSM data may be outdated or catching too much
-                if (!filter.matches(element)) return
-
-                val way = element as? Way ?: return
-                val segments = trafficDirectionMap[way.id] ?: return
-                /* exclude rings because the driving direction can then not be determined reliably
-                   from the improveosm data and the quest should stay simple, i.e not require the
-                   user to input it in those cases. Additionally, whether a ring-road is a oneway or
-                   not is less valuable information (for routing) and many times such a ring will
-                   actually be a roundabout. Oneway information on roundabouts is superfluous.
-                   See #1320 */
-                if (way.nodeIds.last() == way.nodeIds.first()) return
-                /* only create quest if direction can be clearly determined and is the same
-                   direction for all segments belonging to one OSM way (because StreetComplete
-                   cannot split ways up) */
-                val isForward = isForward(geometry.polylines.first(), segments) ?: return
-
-                db.put(way.id, isForward)
-                handler(element, geometry)
+                if (element.tags != null && tagFilter.matches(element)) {
+                    // check if the width of the road minus the space consumed by parking lanes is quite narrow
+                    val width = element.tags["width"]?.toFloatOrNull()
+                    val isNarrow = width != null && width <= estimateWidthConsumedByParkingLanes(element.tags) + 4f
+                    if (isNarrow) {
+                        onewayCandidates.add(element to geometry)
+                    }
+                }
             }
-            checkValidAndHandle(element, geometry)
         }
+        if (!result) return false
 
+        for ((way, geometry) in onewayCandidates) {
+            /* ways that are simply at the border of the download bounding box are treated as if
+               they are dead ends. This is fine though, because it only leads to this quest not
+               showing up for those streets (which is better than the other way round)
+            */
+            val hasConnectionOnBothEnds =
+                (connectionCountByNodeIds[way.nodeIds.first()] ?: 0) > 1 &&
+                (connectionCountByNodeIds[way.nodeIds.last()] ?: 0) > 1
+
+            if (hasConnectionOnBothEnds) {
+                handler(way, geometry)
+            }
+        }
         return true
     }
 
-    /** returns true if all given [trafficFlowSegments] point forward in relation to the
-     *  direction of the OSM [way] and false if they all point backward.
-     *
-     *  If the segments point into different directions or their direction cannot be
-     *  determined. returns null.
-     */
-    private fun isForward(way: List<LatLon>,trafficFlowSegments: List<TrafficFlowSegment>): Boolean? {
-        var result: Boolean? = null
-        for (segment in trafficFlowSegments) {
-            val fromPositionIndex = findClosestPositionIndexOf(way, segment.fromPosition)
-            val toPositionIndex = findClosestPositionIndexOf(way, segment.toPosition)
-
-            if (fromPositionIndex == -1 || toPositionIndex == -1) return null
-            if (fromPositionIndex == toPositionIndex) return null
-
-            val forward = fromPositionIndex < toPositionIndex
-            if (result == null) {
-                result = forward
-            } else if (result != forward) {
-                return null
-            }
-        }
-        return result
-    }
-
-    private fun findClosestPositionIndexOf(positions: List<LatLon>, latlon: LatLon): Int {
-        var shortestDistance = 1.0
-        var result = -1
-        var index = 0
-        for (pos in positions) {
-            val distance = Math.hypot(
-                pos.longitude - latlon.longitude,
-                pos.latitude - latlon.latitude
-            )
-            if (distance < 0.00005 && distance < shortestDistance) {
-                shortestDistance = distance
-                result = index
-            }
-            index++
-        }
-
-        return result
+    private fun estimateWidthConsumedByParkingLanes(tags: Map<String, String>): Float {
+        val sides = createParkingLaneSides(tags) ?: return 0f
+        return (sides.left?.estimatedWidth ?: 0f) + (sides.right?.estimatedWidth ?: 0f)
     }
 
     override fun createForm() = AddOnewayForm()
 
     override fun applyAnswerTo(answer: OnewayAnswer, changes: StringMapChangesBuilder) {
-        if (!answer.isOneway) {
-            changes.add("oneway", "no")
-        } else {
-            changes.add("oneway", if (db.isForward(answer.wayId)!!) "yes" else "-1")
-        }
-    }
-
-    override fun cleanMetadata() {
-        db.deleteUnreferenced()
+        changes.add("oneway", when(answer) {
+            FORWARD -> "yes"
+            BACKWARD -> "-1"
+            NO_ONEWAY -> "no"
+        })
     }
 }

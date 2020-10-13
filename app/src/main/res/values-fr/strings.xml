@@ -1549,9 +1549,6 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="quest_building_underground_title">"Ce bâtiment est-il complètement souterrain ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Y a-t-il des signaux sonores pour les déficients visuels ici ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"\"En partie\" signifie qu'il n'y a qu'une seule marche pour y accéder."</string>
 
     <!-- Fuzzy -->
@@ -2251,4 +2248,47 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="resurvey_intervals_more_often">"Demander plus souvent"</string>
     <string name="quest_street_side_puzzle_select">"Appuyer pour choisir"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accepte-t-il les paiements en espèces ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBench_tram_name_title">"L'arrêt de tramway %s a-t-il un banc ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBench_tram_title">"Cet arrêt de tramway a-t-il un banc ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBench_title">"Cet arrêt de bus a-t-il un banc ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBench_name_title">"L'arrêt de bus %s a-t-il un banc ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_summit_register_title">"Y a-t-il un registre des sommets à %s ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_is_defibrillator_inside_title">"Ce défibrillateur (AED) se trouve-t-il à l'intérieur d'un bâtiment ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="dialog_tutorial_download">"Avec la synchronisation automatique désactivée, les quêtes ne sont pas téléchargées automatiquement. Pour le faire manuellement, utilisez le bouton \"%s\" dans le menu à l'endroit où vous voulez télécharger."</string>
+
+    <!-- Fuzzy -->
+    <string name="about_title_translate">"Aidez à traduire cette application"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_description_translate">"%1$s est traduit à %2$d%%"</string>
+    <string name="quest_oneway2_title">"Est-ce une rue à sens unique ? Dans quelle sens ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_oneway2_dir">"Sens unique dans ce sens"</string>
+    <string name="quest_oneway2_no_oneway">"Pas à sens unique"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_maxweight_select_sign">"Sélectionnez un panneau"</string>
+    <string name="quest_steps_incline_title">"Dans quel sens cet escalier monte-t-il ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_steps_incline_up">"Vers le haut"</string>
+    <string name="quest_step_count_title">"Combien de marches y a-t-il ici ?"</string>
+    <string name="quest_traffic_signals_sound_title">"Y a-t-il des signaux sonores pour les déficients visuels ici ?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Est-ce que ces feux piétons ont un indicateur de traversée en sécurité, pour personnes malvoyantes ?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Aide : c'est souvent un bouton vibrant ou un cône rotatif en dessous du bouton d'appel de feu."</string>
 </resources>

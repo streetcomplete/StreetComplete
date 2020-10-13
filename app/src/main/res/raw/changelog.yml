@@ -1,3 +1,37 @@
+v24.1: |
+  <ul>
+  <li>Less ambiguous interface for one-way and steps inclination quest (#2140)</li>
+  <li>Don't ask for obvious dead end streets if they are one-ways</li>
+  <li>Tactile paving on crossing quest: Ask for more crossings (#2141)</li>
+  <li>Added photo how a special button for the blind at a crossing looks like in the UK (#2127), thanks @CJ-Malone</li>
+  <li>Other small enhancements and fixes</li>
+  </ul>
+
+v24.0: |
+  <p>
+  Good News! StreetComplete received a grant from the <a href="https://www.bmbf.de/">German Federal Ministry of Education and Research</a> within the frame of the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a>,
+  spanning over a period of 6 months! For the next few months, my focus is on adding new quest types, starting with this update!
+  </p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is this a one-way street? In which direction?</i> (#1982, #2122)</li>
+  <li><i>Do these traffic lights have a tactile indication for blind people for when it's safe to cross?</i> (#1330, #2127)</li>
+  <li><i>Which direction leads upwards for these steps?</i> (#1817)</li>
+  <li><i>How may steps are here?</i> (#875)</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Max weight: A range of different max weight signs are now supported (#1880, #2121)</li>
+  <li>Postbox collection times: Can now select more times for the same day (range) (#2108, #2109), by @kmpoppe</li>
+  <li>All pedestrian traffic signals quests: Ask for more crossings (#2130)</li>
+  <li>Building levels: Do not ask for barns and warehouses (#2124), by @Etua</li>
+  </ul>
+  <h3>Other Enhancements and Fixes</h3>
+  <ul>
+  <li>hide GPS button only when the screen follows current position (#1996, #2101, #2110), by @smichel17 and me</li>
+  <li>other small fixes (#2103, ...)</li>
+  </ul>
+
 v23.0: |
   <h3>🚧 Map maintenance</h3>
   Quest types whose answer is likely to change over the years will be asked again in reasonable

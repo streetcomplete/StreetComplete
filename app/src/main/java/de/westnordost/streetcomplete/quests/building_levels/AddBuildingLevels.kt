@@ -35,5 +35,5 @@ private val BUILDINGS_WITH_LEVELS = arrayOf(
     "house","residential","apartments","detached","terrace","dormitory","semi",
     "semidetached_house","bungalow","school","civic","college","university","public",
     "hospital","kindergarten","transportation","train_station", "hotel","retail",
-    "commercial","office","warehouse","industrial","manufacture","parking","farm",
-    "farm_auxiliary","barn","cabin")
+    "commercial","office","industrial","manufacture","parking","farm","farm_auxiliary",
+    "cabin")

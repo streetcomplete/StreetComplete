@@ -1575,9 +1575,6 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_building_underground_title">"Is this building completely underground?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Are there sound signals for the blind here?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Partially means that there is no more than a single step to access it."</string>
 
     <!-- Fuzzy -->
@@ -1800,4 +1797,5 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="at_housenumber">"house number %s:"</string>
     <string name="quest_openingHours_name_type_title">"What are the opening hours of %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Is %1$s (%2$s) wheelchair accessible?"</string>
+    <string name="quest_traffic_signals_sound_title">"Are there sound signals for the blind here?"</string>
 </resources>

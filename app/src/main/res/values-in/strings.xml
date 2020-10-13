@@ -822,7 +822,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_tracktype_grade5">"Lemah"</string>
     <string name="quest_building_underground_name_title">"Apa %s sepenuhnya di bawah tanah?"</string>
     <string name="quest_building_underground_title">"Apa bangunan ini sepenuhnya di bawah tanah?"</string>
-    <string name="quest_traffic_signals_sound_title">"Apa ada sinyal suara untuk tunanetra di sini?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Sebagian berarti tidak ada lebih dari 1 anak tangga untuk melewatinya."</string>
     <string name="quest_wheelchairAccess_outside_title">"Apa tempat ini ramah kursi roda?"</string>
     <string name="quest_traffic_signals_button_title">"Apa lampu merah di sini punya tombol untuk menyeberang?"</string>
@@ -1109,4 +1108,5 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="quest_openingHours_name_type_title">"Jam berapa %1$s (%2$s) buka?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Apakah %1$s (%2$s) ramah kursi roda?"</string>
     <string name="quest_accepts_cash_type_title">"Apa %1$s (%2$s) menerima pembayaran tunai?"</string>
+    <string name="quest_traffic_signals_sound_title">"Apa ada sinyal suara untuk tunanetra di sini?"</string>
 </resources>

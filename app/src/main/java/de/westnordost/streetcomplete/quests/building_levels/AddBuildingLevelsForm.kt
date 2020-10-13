@@ -36,7 +36,10 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val onTextChangedListener = TextChangedWatcher { checkIsFormComplete() }
+        val onTextChangedListener = TextChangedWatcher {
+            checkIsFormComplete()
+            if (isFormComplete()) pickLastButton.visibility = View.GONE
+        }
 
         levelsInput.requestFocus()
         levelsInput.addTextChangedListener(onTextChangedListener)

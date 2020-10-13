@@ -1617,9 +1617,6 @@
     <string name="quest_building_underground_title">"آیا این ساختمان بطور کامل زیرزمین است؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"آیا در اینجا پارازیت برای امواج وجود دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"اینگونه معنی می دهد که بیشتر از یک راه دسترسی وجود ندارد."</string>
 
     <!-- Fuzzy -->
@@ -2093,7 +2090,7 @@
     <string name="link_openstreetcam_description">"سامانه و برنامه ای برای به اشتراک گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
 
     <!-- Fuzzy -->
-    <string name="link_openrouteservice_wheelchair_description">"ناوبری چرخشی برای معلولان دارای صندلی چرخدار"</string>
+    <string name="link_openrouteservice_wheelchair_description">"مسیریابی پویا برای معلولان با صندلی چرخدار"</string>
 
     <!-- Fuzzy -->
     <string name="link_nominatim_description">"کد جغرافیایی داده های OSM که توسط بسیاری از سامانه های دیگر استفاده می شود"</string>
@@ -2293,4 +2290,12 @@
     <string name="dialog_tutorial_download">"با خاموش کردن همگام سازی خودکار، جُستارها به طور خودکار بارگیری نمی شوند. برای انجام این کار به صورت دستی، از دکمه \"%s\" در منو مکان دلخواه استفاده کنید."</string>
     <string name="about_title_translate">"به ترجمه این برنامه کمک کنید"</string>
     <string name="about_description_translate">"%1$s توسط %2$d%% ترجمه شده است"</string>
+    <string name="quest_oneway2_title">"آیا این خیابان یک طرفه است؟ به کدام سو"</string>
+    <string name="quest_oneway2_dir">"یکطرفه در این مسیر"</string>
+    <string name="quest_oneway2_no_oneway">"یک طرفه نیست"</string>
+    <string name="quest_maxweight_select_sign">"علامت را انتخاب کنید"</string>
+    <string name="quest_steps_incline_title">"کدام جهت مسیر برای این مراحل به سمت بالا هدایت می شود؟"</string>
+    <string name="quest_steps_incline_up">"این راه بالا"</string>
+    <string name="quest_step_count_title">"چند مرحله اینجا است؟"</string>
+    <string name="quest_traffic_signals_sound_title">"آیا در اینجا پارازیت برای امواج وجود دارد؟"</string>
 </resources>

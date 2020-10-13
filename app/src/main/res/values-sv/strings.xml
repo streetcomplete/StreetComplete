@@ -1660,9 +1660,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_building_underground_title">"Är byggnaden helt under jord?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Finns det ljudsignaler för blinda här?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Delvis innebär att det inte finns mer än ett enda steg för att komma åt det."</string>
 
     <!-- Fuzzy -->
@@ -2329,6 +2326,22 @@ nivåer"</string>
     <string name="at_conscription_number">"Konskriptionsnummer %s:"</string>
     <string name="at_housenumber">"husnummer %s:"</string>
     <string name="quest_openingHours_name_type_title">"Vad har %1$s (%2$s) för öppettider?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Är dessa öppettider för %s fortfarande korrekta?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Är dessa öppettider för %1$s (%2$s) fortfarande korrekta?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Är dessa öppettider fortfarande korrekta (%s)?"</string>
+    <string name="quest_openingHours_unspecified_range">"Inte angivet"</string>
+    <string name="quest_cycleway_resurvey_title">"Är det fortfarande cykelvägsituationen här?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Är %1$s (%2$s) tillgänglig med rullstol?"</string>
+    <string name="pref_title_resurvey_intervals">"Undersökningsintervall"</string>
+    <string name="resurvey_intervals_less_often">"Fråga mindre ofta"</string>
+    <string name="resurvey_intervals_default">"Standard"</string>
+    <string name="resurvey_intervals_more_often">"Fråga oftare"</string>
+    <string name="quest_street_side_puzzle_select">"Tryck för att välja"</string>
     <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) emot kontanter?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Har spårvagnshållplatsen %s en bänk?"</string>
+    <string name="quest_busStopBench_tram_title">"Har denna spårvagnshållplats en bänk?"</string>
+    <string name="quest_busStopBench_title">"Har denna busshållplats en bänk?"</string>
+    <string name="quest_busStopBench_name_title">"Har busshållplatsen %s en bänk?"</string>
+    <string name="dialog_tutorial_download">"När automatisk synkronisering är inaktiverad hämtas inte uppdrag automatiskt. För att göra detta manuellt, använd knappen \"%s\" i menyn på den plats du vill hämta."</string>
+    <string name="about_title_translate">"Hjälp till med översättningen av denna app"</string>
 </resources>

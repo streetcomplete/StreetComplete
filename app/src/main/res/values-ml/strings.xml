@@ -1638,9 +1638,6 @@
     <string name="quest_building_underground_title">"ഈ കെട്ടിടം മുഴുവനായി ഭൂമിക്കടിയിലാണോ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"ഇവിടെ അന്ധരായവർക്ക് വേണ്ടി ശബ്ദ സന്ദേശങ്ങൾ നൽകുന്നുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"ഇത് ഭാഗികമായി അർത്ഥമാക്കുന്നത് ഇവയെ തിരിച്ചെടുക്കാൻ ഒന്നിൽ കൂടുതൽ വഴികളില്ല എന്നാണ്."</string>
 
     <!-- Fuzzy -->
@@ -1911,4 +1908,5 @@
     <string name="at_conscription_number">"നിർബന്ധിത നമ്പർ %s:"</string>
     <string name="at_housenumber">"വീട്ട് നമ്പർ %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) തുറക്കുന്ന  സമയം എപ്പോഴാണ് ?"</string>
+    <string name="quest_traffic_signals_sound_title">"ഇവിടെ അന്ധരായവർക്ക് വേണ്ടി ശബ്ദ സന്ദേശങ്ങൾ നൽകുന്നുണ്ടോ?\""</string>
 </resources>

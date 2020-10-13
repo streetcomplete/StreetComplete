@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddIsDefibrillatorIndoor(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
@@ -23,6 +24,6 @@ class AddIsDefibrillatorIndoor(o: OverpassMapDataAndGeometryApi) : SimpleOverpas
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("indoor", if (answer) "yes" else "no")
+        changes.add("indoor", answer.toYesNo())
     }
 }

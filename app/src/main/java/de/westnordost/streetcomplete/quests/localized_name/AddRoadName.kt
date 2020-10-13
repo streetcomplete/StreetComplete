@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.localized_name
+package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
@@ -12,8 +12,9 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.quests.localized_name.data.putRoadNameSuggestion
+import de.westnordost.streetcomplete.quests.LocalizedName
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.quests.road_name.data.putRoadNameSuggestion
 
 class AddRoadName(
     private val overpassApi: OverpassMapDataAndGeometryApi,

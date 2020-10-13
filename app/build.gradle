@@ -1,12 +1,16 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-android-extensions"
+    id "kotlin-kapt"
+}
+
+apply from: "updateData.gradle"
 
 android {
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
@@ -15,45 +19,41 @@ android {
     signingConfigs {
         release
     }
-    compileSdkVersion 29
+
+    compileSdkVersion = 29
     testOptions {
         unitTests {
             returnDefaultValues = true
-            all {
-                useJUnit {
-                    excludeCategories 'de.westnordost.streetcomplete.IntegrationTests'
-                }
-            }
         }
     }
 
     defaultConfig {
-        applicationId "de.westnordost.streetcomplete"
-        minSdkVersion 17
-        targetSdkVersion 29
-        versionCode 2302
-        versionName "23.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = "de.westnordost.streetcomplete"
+        minSdkVersion(17)
+        targetSdkVersion(29)
+        versionCode = 2402
+        versionName = "24.1"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
 
+    buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
-            // don't use proguard-android-optimize.txt, it is so aggressive, it is more trouble than it is worth
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            minifyEnabled = true
+            shrinkResources = true
+            // don't use proguard-android-optimize.txt, it is too aggressive, it is more trouble than it is worth
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig = signingConfigs.release
         }
         debug {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            applicationIdSuffix ".debug"
+            minifyEnabled = true
+            shrinkResources = true
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            applicationIdSuffix = ".debug"
         }
     }
 
     lintOptions {
-        disable 'MissingTranslation'
+        disable "MissingTranslation"
         abortOnError false
     }
 }
@@ -62,10 +62,10 @@ def keystorePropertiesFile = rootProject.file("keystore.properties")
 if (keystorePropertiesFile.exists()) {
     def props = new Properties()
     props.load(new FileInputStream(keystorePropertiesFile))
-    android.signingConfigs.release.storeFile = file(props['storeFile'])
-    android.signingConfigs.release.storePassword = props['storePassword']
-    android.signingConfigs.release.keyAlias = props['keyAlias']
-    android.signingConfigs.release.keyPassword = props['keyPassword']
+    android.signingConfigs.release.storeFile = file(props["storeFile"])
+    android.signingConfigs.release.storePassword = props["storePassword"]
+    android.signingConfigs.release.keyAlias = props["keyAlias"]
+    android.signingConfigs.release.keyPassword = props["keyPassword"]
 }
 
 repositories {
@@ -75,265 +75,96 @@ repositories {
 }
 
 configurations {
-    // it's already included in Android
-    all*.exclude group: 'net.sf.kxml', module: 'kxml2'
+    // it"s already included in Android
+    all*.exclude(group: "net.sf.kxml", module: "kxml2")
 
     cleanedAnnotations
-    compile.exclude group: 'org.jetbrains', module:'annotations'
-    compile.exclude group: 'com.intellij', module:'annotations'
-    compile.exclude group: 'org.intellij', module:'annotations'
+    compile.exclude(group: "org.jetbrains", module:"annotations")
+    compile.exclude(group: "com.intellij", module:"annotations")
+    compile.exclude(group: "org.intellij", module:"annotations")
 }
 
 ext {
-    mockito_version = '2.28.2'
-    kotlinx_version = '1.3.8'
-    dagger_version = '2.14.1'
+    mockito_version = "2.28.2"
+    kotlinx_version = "1.3.8"
+    dagger_version = "2.14.1"
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // debugging
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.4")
 
     // tests
-    testImplementation 'junit:junit:4.12'
-    testImplementation "org.mockito:mockito-core:$mockito_version"
-    testImplementation "org.mockito:mockito-inline:$mockito_version"
-    testImplementation 'org.assertj:assertj-core:2.8.0'
+    testImplementation("junit:junit:4.12")
+    testImplementation("org.mockito:mockito-core:$mockito_version")
+    testImplementation("org.mockito:mockito-inline:$mockito_version")
+    testImplementation("org.assertj:assertj-core:2.8.0")
 
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test:rules:1.2.0'
-    androidTestImplementation "org.mockito:mockito-android:$mockito_version"
-    androidTestImplementation 'org.assertj:assertj-core:2.8.0'
+    androidTestImplementation("androidx.test:runner:1.3.0")
+    androidTestImplementation("androidx.test:rules:1.3.0")
+    androidTestImplementation("org.mockito:mockito-android:$mockito_version")
+    androidTestImplementation("org.assertj:assertj-core:2.8.0")
 
     // dependency injection
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation("com.google.dagger:dagger:$dagger_version")
+    kapt("com.google.dagger:dagger-compiler:$dagger_version")
 
     // Android stuff
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.fragment:fragment-ktx:1.2.5'
-    implementation 'androidx.preference:preference-ktx:1.1.1'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.viewpager:viewpager:1.0.0'
-    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation("com.google.android.material:material:1.2.1")
+    implementation("androidx.core:core-ktx:1.3.1")
+    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
+    implementation("androidx.annotation:annotation:1.1.0")
+    implementation("androidx.fragment:fragment-ktx:1.2.5")
+    implementation("androidx.preference:preference-ktx:1.1.1")
+    implementation("androidx.recyclerview:recyclerview:1.1.0")
+    implementation("androidx.viewpager:viewpager:1.0.0")
+    implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
 
     // photos
-    implementation 'androidx.exifinterface:exifinterface:1.2.0'
+    implementation("androidx.exifinterface:exifinterface:1.3.0")
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_version"
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_version")
 
     // scheduling background jobs
-    implementation "androidx.work:work-runtime:2.4.0"
+    implementation("androidx.work:work-runtime:2.4.0")
 
     // finding in which country we are for country-specific logic
-    implementation 'de.westnordost:countryboundaries:1.5'
+    implementation("de.westnordost:countryboundaries:1.5")
     // finding a name for a feature without a name tag
-    implementation 'de.westnordost:osmfeatures-android:1.1'
+    implementation("de.westnordost:osmfeatures-android:1.1")
     // talking with the OSM API
-    implementation 'de.westnordost:osmapi-overpass:1.1'
-    implementation 'de.westnordost:osmapi-map:1.2'
-    implementation 'de.westnordost:osmapi-changesets:1.2'
-    implementation 'de.westnordost:osmapi-notes:1.1'
-    implementation 'de.westnordost:osmapi-user:1.1'
+    implementation("de.westnordost:osmapi-overpass:1.1")
+    implementation("de.westnordost:osmapi-map:1.2")
+    implementation("de.westnordost:osmapi-changesets:1.2")
+    implementation("de.westnordost:osmapi-notes:1.1")
+    implementation("de.westnordost:osmapi-user:1.1")
 
     // widgets
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
-    implementation 'me.grantland:autofittextview:0.2.1'
-    implementation 'org.sufficientlysecure:html-textview:3.9'
-    implementation 'com.duolingo.open:rtl-viewpager:2.0.0'
-    implementation 'com.google.android:flexbox:2.0.1'
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("me.grantland:autofittextview:0.2.1")
+    implementation("org.sufficientlysecure:html-textview:3.9")
+    implementation("com.duolingo.open:rtl-viewpager:2.0.0")
+    implementation("com.google.android:flexbox:2.0.1")
 
     // box2d view
-    implementation 'org.jbox2d:jbox2d-library:2.2.1.1'
+    implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation 'com.esotericsoftware:kryo:4.0.2'
-    implementation 'org.objenesis:objenesis:2.6'
+    implementation("com.esotericsoftware:kryo:4.0.2")
+    implementation("org.objenesis:objenesis:2.6")
 
     // map and location
-    implementation 'com.mapzen.tangram:tangram:0.13.0'
+    implementation("com.mapzen.tangram:tangram:0.13.0")
 
     // config files
-    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.15'
+    implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")
 
     // opening hours parser
-    implementation "ch.poole:OpeningHoursParser:0.22.0"
+    implementation("ch.poole:OpeningHoursParser:0.22.1")
 }
 
-task generateMetadata(type: Exec) {
-    commandLine 'python', 'generateCountryMetadata.py'
-    commandLine 'python', 'copyShopDescriptions.py'
-}
-
-import groovy.json.JsonParserType
-import groovy.json.JsonSlurper
-import groovy.json.JsonOutput
-
-def bcp47ExportLanguages = [
-        "ast","ca","cs","da","de","el","en","en-AU","en-GB","es","eu","fa","fi","fr","gl","hu","id","it",
-        "ja","ko","lt","ml","nb","no","nl","nn","pl","pt","pt-BR","ru","sk","sv","tr",
-        "uk","zh","zh-CN","zh-HK","zh-TW"
-].toSet()
-
-task downloadPresets {
-    doLast {
-        def targetDir = "app/src/main/assets/osmfeatures"
-        def presetsUrl = new URL("https://raw.githubusercontent.com/openstreetmap/iD/develop/data/presets/presets.json")
-        def contentsUrl = new URL("https://api.github.com/repos/openstreetmap/iD/contents/dist/locales")
-        new File("$targetDir/presets.json").withOutputStream { it << presetsUrl.openStream() }
-
-        def slurper = new JsonSlurper()
-        slurper.type = JsonParserType.INDEX_OVERLAY
-        slurper.parse(contentsUrl, "UTF-8").each {
-            if(it.type == "file") {
-                def language = it.name.substring(0, it.name.lastIndexOf("."))
-                println(language)
-                if (bcp47ExportLanguages.contains(language)) {
-                    def content = slurper.parse(new URL(it.download_url), "UTF-8")
-                    def presets = content.values()[0]?.presets?.presets
-                    if (presets) {
-                        def json = unescapeUnicode(JsonOutput.prettyPrint(JsonOutput.toJson([presets: presets])))
-                        def javaLanguage = bcp47LanguageTagToJavaLanguageTag(language)
-                        new File("$targetDir/${javaLanguage}.json").write(json, "UTF-8")
-                    }
-                }
-            }
-        }
-    }
-}
-
-// Java (and thus also Android) uses some old iso (language) codes. F.e. id -> in etc.
-// so the localized files also need to use the old iso codes
-static def bcp47LanguageTagToJavaLanguageTag(String bcp47) {
-    def locale = Locale.forLanguageTag(bcp47)
-    def result = locale.language
-    if (!locale.script.isEmpty()) result += "-" + locale.script
-    if (!locale.country.isEmpty()) result += "-" + locale.country
-    return result
-}
-
-static def unescapeUnicode(String str) {
-    def out = new StringWriter(str.length())
-    def sz = str.length()
-    def unicode = new StringBuilder(4)
-    def hadSlash = false
-    def inUnicode = false
-
-    for(def i = 0; i < sz; ++i) {
-        def ch = str.charAt(i)
-        if (inUnicode) {
-            unicode.append(ch)
-            if (unicode.length() == 4) {
-                int value = Integer.parseInt(unicode.toString(), 16)
-                out.write((char)value)
-                unicode.setLength(0)
-                inUnicode = false
-                hadSlash = false
-            }
-        } else if (hadSlash) {
-            hadSlash = false
-            if (ch == ('u' as char)) inUnicode = true
-            else {
-                out.write(92)
-                out.write(ch)
-            }
-        } else if (ch == ('\\' as char)) {
-            hadSlash = true
-        } else {
-            out.write(ch)
-        }
-    }
-
-    if (hadSlash) out.write(92)
-    return out.toString()
-}
-
-static def javaLanguageTagToAndroidResCode(String languageTag) {
-    def locale = Locale.forLanguageTag(languageTag)
-    // scripts not supported by Android resource system
-    if (!locale.script.isEmpty()) return []
-
-    if (languageTag == "nb")    return ["no", "nb"]
-    if (languageTag == "zh-CN") return ["zh"]
-    def withCountry = (~/^([a-z]{2,3})-([A-Z]{2})$/).matcher(languageTag)
-    if (withCountry.matches()) {
-        return [withCountry.group(1) + "-r" + withCountry.group(2)]
-    }
-    return [languageTag]
-}
-
-task pullTranslations {
-    doLast {
-        def baseUrl = "https://api.poeditor.com/v2"
-        def baseParams = "api_token=$POEditorAPIToken&id=97843"
-        def exportLanguages = bcp47ExportLanguages.collect { it.toLowerCase(Locale.US) }
-        exportLanguages.remove("en") // don't export en, it is the source language
-
-        def languageListConnection = new URL("$baseUrl/languages/list").openConnection()
-        def languageCodeToPercentage = []
-        languageListConnection.with {
-            doOutput = true
-            requestMethod = "POST"
-            outputStream.withWriter { it << baseParams }
-            def result = new JsonSlurper().parse(inputStream).result
-            languageCodeToPercentage = result.languages.collectEntries {
-                [(it.code.toLowerCase()): it.percentage]
-            }
-        }
-
-        languageCodeToPercentage.each { language, percentage ->
-            def javaLanguageTag = bcp47LanguageTagToJavaLanguageTag(language)
-            def androidResCodes = javaLanguageTagToAndroidResCode(javaLanguageTag)
-
-            for (androidResCode in androidResCodes) {
-                // exclude default translation
-                if (androidResCode == "en-rUS") continue
-                def targetFile = new File("app/src/main/res/values-$androidResCode/translation_info.xml")
-                new File(targetFile.getParent()).mkdirs()
-                targetFile.newWriter().withWriter { it << """\
-                    <?xml version="1.0" encoding="utf-8"?>
-                    <resources>
-                      <integer name="translation_completeness">$percentage</integer>
-                    </resources>
-                    """.stripIndent()
-                }
-            }
-
-            if (!exportLanguages.contains(language.toLowerCase())) {
-                println("$language (translated $percentage%) SKIPPED")
-            } else {
-                println("$language (translated $percentage%)")
-
-                def connection = new URL("$baseUrl/projects/export").openConnection()
-                def fileUrl
-                connection.with {
-                    doOutput = true
-                    requestMethod = "POST"
-                    outputStream.withWriter {
-                        it << "$baseParams&language=${language.toLowerCase()}&type=android_strings&filters=translated"
-                    }
-                    fileUrl = new JsonSlurper().parse(inputStream).result.url
-                }
-
-                def text = new URL(fileUrl).openStream().getText()
-                for (androidResCode in androidResCodes) {
-                    def targetFile = "app/src/main/res/values-$androidResCode/strings.xml"
-                    new File(targetFile).newWriter().withWriter { it << text }
-                }
-            }
-        }
-    }
-}
-
-// rather not, otherwise all contributors that want to build need to have installed python and the
-// dependencies I use for these scripts.
-//preBuild.dependsOn(generateMetadata)

@@ -18,7 +18,9 @@ object AchievementsModule {
         "AddWheelChairAccessPublicTransport" to "AddWheelchairAccessPublicTransport",
         "AddWheelChairAccessToilets"         to "AddWheelchairAccessToilets",
         "AddSidewalks"                       to "AddSidewalk",
-        "DetailRoadSurface"                  to "AddRoadSurface"
+        "DetailRoadSurface"                  to "AddRoadSurface",
+        "AddTrafficSignalsBlindFeatures"     to "AddTrafficSignalsVibration",
+        "AddSuspectedOneway"                 to "AddOneway"
     )
 
     private val links = listOf(
@@ -457,8 +459,10 @@ object AchievementsModule {
                     "AddProhibitedForPedestrians",
                     "AddSidewalk",
                     "AddBusStopName",
+                    "AddBusStopRef",
                     "AddBusStopShelter",
-                    "AddBenchStatusOnBusStop"
+                    "AddBenchStatusOnBusStop",
+                    "AddCrossingIsland"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -526,7 +530,9 @@ object AchievementsModule {
                 listOf(
                     "AddTactilePavingCrosswalk",
                     "AddTrafficSignalsSound",
-                    "AddTactilePavingBusStop"
+                    "AddTrafficSignalsVibration",
+                    "AddTactilePavingBusStop",
+                    "AddCrossingIsland"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...

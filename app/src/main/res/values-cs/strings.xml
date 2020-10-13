@@ -1670,9 +1670,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_building_underground_title">"Je celá tato budova v podzemí?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Jsou tu zvukové signály pro neslyšící?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Částečně znamená, že v přístupu nebrání více než jeden schod."</string>
 
     <!-- Fuzzy -->
@@ -2385,4 +2382,14 @@ Is the situation on this cycleway still the same? -->
     <string name="about_title_translate">"Pomozte přeložit tuto aplikaci"</string>
     <string name="about_description_translate">"%1$s je přeloženo %2$d%%
 "</string>
+    <string name="quest_oneway2_title">"Je tohle jednosměrná ulice? V jakém směru?"</string>
+    <string name="quest_oneway2_dir">"Je jednosměrná v tomto směru"</string>
+    <string name="quest_oneway2_no_oneway">"Není jednosměrná"</string>
+    <string name="quest_maxweight_select_sign">"Vyberte značku"</string>
+    <string name="quest_steps_incline_title">"Který směr vede na těchto schodech nahoru?"</string>
+    <string name="quest_steps_incline_up">"Toto je směr nahoru"</string>
+    <string name="quest_step_count_title">"Kolik je tu schodů"</string>
+    <string name="quest_traffic_signals_sound_title">"Jsou tu zvukové signály pro nevidomé?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Mají tyto semafory hmatovou indikaci pro nevidomé, aby věděli, kdy je bezpečné přejít?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Tip: Často to může být vibrující tlačítko nebo rotující kužel na spodní straně krabičky s ovládacím tlačítkem."</string>
 </resources>

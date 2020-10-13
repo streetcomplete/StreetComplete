@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.view.Item
-import de.westnordost.streetcomplete.quests.surface.Surface.*
+import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class AddPathSurfaceForm : AImageListQuestAnswerFragment<String, DetailSurfaceAnswer>() {

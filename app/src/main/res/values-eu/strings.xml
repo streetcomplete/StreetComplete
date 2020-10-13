@@ -1665,9 +1665,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_building_underground_title">"Eraikin hau erabat lur azpian dago?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Itsuentzako soinuzko seinaleak daude hemen?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"'Partziala' esan nahi du ez dagoela urrats bat baino gehiago iristeko."</string>
 
     <!-- Fuzzy -->
@@ -2324,4 +2321,5 @@ mailak"</string>
     <string name="quest_busStopBench_name_title">"%s autobus geltokiak eserlekurik du?"</string>
     <string name="quest_is_defibrillator_inside_title">"Desfibriladore hau (AED) eraikin baten barruan dago?"</string>
     <string name="about_title_translate">"Lagundu app hau itzultzen"</string>
+    <string name="quest_traffic_signals_sound_title">"Itsuentzako soinuzko seinaleak daude hemen?"</string>
 </resources>

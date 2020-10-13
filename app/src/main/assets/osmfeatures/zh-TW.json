@@ -282,6 +282,10 @@
             "name": "迴轉圓環",
             "terms": "迴轉圓環,迴轉道"
         },
+        "man_made/dovecote": {
+            "name": "鴿舍",
+            "terms": "鴿舍"
+        },
         "man_made/dyke": {
             "name": "防洪堤",
             "terms": "堤防"
@@ -332,6 +336,10 @@
         "natural/water": {
             "name": "水",
             "terms": "水體"
+        },
+        "amenity/pub/irish": {
+            "name": "愛爾蘭酒吧",
+            "terms": "愛爾蘭酒吧"
         },
         "embankment": {
             "name": "路堤"
@@ -394,6 +402,10 @@
         "landuse/greenhouse_horticulture": {
             "name": "溫室園藝",
             "terms": "溫室農業"
+        },
+        "shop/wigs": {
+            "name": "假髮專賣店",
+            "terms": "假髮專賣店,假髮店"
         },
         "amenity/community_centre": {
             "name": "社區中心",
@@ -513,6 +525,10 @@
             "name": "招牌製造商",
             "terms": "招牌製造商"
         },
+        "amenity/fast_food/juice": {
+            "name": "果汁速食",
+            "terms": "果汁速食"
+        },
         "amenity/vending_machine/bread": {
             "name": "麵包自動販賣機",
             "terms": "麵包自動販賣機"
@@ -520,6 +536,10 @@
         "amenity/studio/video": {
             "name": "電影製片場",
             "terms": "電影製片場"
+        },
+        "amenity/toilets/portable": {
+            "name": "流動廁所",
+            "terms": "流動廁所"
         },
         "building/church": {
             "name": "教堂建築",
@@ -659,6 +679,10 @@
         "barrier/hedge": {
             "name": "樹籬",
             "terms": "樹籬"
+        },
+        "railway/tram_crossing": {
+            "name": "行人電車平交道",
+            "terms": "行人電車平交道"
         },
         "building/garages": {
             "name": "車庫",
@@ -1603,8 +1627,8 @@
             "terms": "桑拿,芬蘭浴,三溫暖"
         },
         "railway/crossing": {
-            "name": "鐵路平交道（路徑）",
-            "terms": "鐵路平交道,平交道"
+            "name": "行人鐵路平交道",
+            "terms": "行人鐵路平交道"
         },
         "tourism/artwork/statue": {
             "name": "雕像",
@@ -2516,7 +2540,7 @@
             "terms": "高山小屋"
         },
         "tourism/information/office": {
-            "name": "旅遊服務中心",
+            "name": "遊客中心",
             "terms": "遊客中心"
         },
         "shop/fireplace": {
@@ -2652,8 +2676,8 @@
             "terms": "莊園別墅"
         },
         "railway/level_crossing": {
-            "name": "鐵路平交道（道路）",
-            "terms": "鐵路平交道,平交道"
+            "name": "鐵路平交道",
+            "terms": "鐵路平交道"
         },
         "man_made/pier": {
             "name": "碼頭",
@@ -3103,6 +3127,10 @@
         "indoor/stairs": {
             "name": "室內樓梯間",
             "terms": "室內樓梯間"
+        },
+        "leisure/sports_hall": {
+            "name": "體育館",
+            "terms": "體育館"
         },
         "traffic_calming/choker": {
             "name": "交通阻塞",
@@ -4272,6 +4300,10 @@
             "name": "配匙店",
             "terms": "鑰匙店"
         },
+        "railway/railway_crossing": {
+            "name": "鐵路交叉",
+            "terms": "鐵路交叉"
+        },
         "leisure/fitness_station/sign": {
             "name": "運動指示標誌",
             "terms": "運動指示說明"
@@ -4490,6 +4522,10 @@
         "shop/tiles": {
             "name": "磁磚商店",
             "terms": "磁磚商店,磁磚店,瓷磚商店,瓷磚店"
+        },
+        "railway/tram_level_crossing": {
+            "name": "電車平交道",
+            "terms": "電車平交道"
         },
         "amenity/vending_machine/food": {
             "name": "食物販賣機",
@@ -4754,6 +4790,10 @@
             "name": "咖啡廳",
             "terms": "咖啡廳"
         },
+        "highway/toll_gantry": {
+            "name": "開放道路收費",
+            "terms": "開放道路收費,收費門架"
+        },
         "landuse/plant_nursery": {
             "name": "育苗場",
             "terms": "種苗中心"
@@ -5011,6 +5051,9 @@
         },
         "craft/locksmith": {
             "name": "鎖匠"
+        },
+        "telecom": {
+            "name": "電信圖徽"
         },
         "place": {
             "name": "地方"

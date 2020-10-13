@@ -1458,7 +1458,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_buildingType_farm_auxiliary">"Gårdsbygning"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_farm_auxiliary_description">"Enhver bygning på en går som ikke er bolighus"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"Enhver bygning på en gård som ikke er bolighus"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_greenhouse">"Drivhus"</string>
@@ -1618,9 +1618,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_building_underground_title">"Er hele denne bygningen under bakken?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Er det lydsignal for synshemmede her?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Delvis betyr at maksimalt ett trappetrinn må passeres for å komme inn."</string>
 
     <!-- Fuzzy -->
@@ -1778,6 +1775,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_postboxRef_title">"Hva er referansenummeret til denne postkassen?"</string>
     <string name="quest_postboxRef_name_title">"Hva er referansenummeret til denne %s-postkassen?"</string>
     <string name="quest_ref_answer_noRef">"Mangler synlig referansenummer..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Veien på illustrasjonen er rotert likt som på kartet der markøren er plassert. "</string>
     <string name="quest_recycling_materials_title">"Hva kan leveres til resirkulering her?"</string>
     <string name="quest_recycling_materials_note">"Hvis det kan resirkuleres noe her som ikke står som svaralternativ bør det legges til som en merknad."</string>
     <string name="quest_recycling_type_batteries">"Batteri"</string>
@@ -1855,6 +1853,7 @@ Og husk å ta vare på egen sikkerhet: Pass på hvor du setter foten, og gå ald
     <string name="link_category_editors_description">"Redigeringsprogram og andre måter å bidra til OpenStreetMap"</string>
     <string name="link_category_maps_title">"Kart"</string>
     <string name="link_category_maps_description">"Kart bygget på OpenStreetMap"</string>
+    <string name="link_category_showcase_title">"Fremstilling"</string>
     <string name="link_category_showcase_description">"Tjenester og apper bygget på OpenStreetMap"</string>
     <string name="link_category_goodies_title">"Godbiter"</string>
     <string name="link_category_goodies_description">"Interessante kart-relaterte ting du kan teste ut"</string>
@@ -1873,6 +1872,17 @@ Og husk å ta vare på egen sikkerhet: Pass på hvor du setter foten, og gå ald
     <string name="link_wiki_description">"Wikien er et godt utgangspunkt for alt relatert til
 OpenStreetMap"</string>
     <string name="link_learnosm_description">"Uerfaren med OpenStreetMap? Her er en innføring."</string>
+    <string name="link_neis_one_description">"En stor samling med statistikk over OpenStreetMap-bidragsytere, som hvor og hvordan du bidro, hvem andre som har kartlagt rundt deg og topplister."</string>
+    <string name="link_welcome_mat_description">"Generell informasjon om OpenStreetMap og hvordan å samarbeide med OSM som en organisasjon"</string>
+    <string name="link_mapillary_description">"En tjeneste og app for deling av gatebilder tatt av fellesskapet, og gir spesifikk tillatelse til å bruke bildene til kartlegging av OSM"</string>
+    <string name="link_openstreetcam_description">"En tjeneste og app for deling av gatebilder tatt av fellesskapet, og gir spesifikk tillatelse til å bruke bildene til kartlegging av OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Detaljer veibeskrivelse og navigasjon for rullestolbrukere"</string>
+    <string name="link_nominatim_description">"Geokoderen for OSM-data, brukes av mange andre tjenester"</string>
+    <string name="link_city_roads_description">"Gjengi alle veier i en by for å printe på T-skjorter, kopper, ..."</string>
+    <string name="link_myosmatic_description">"Generer printbare bykart via noen få steg, med valgfri stedsoversikt"</string>
+    <string name="link_brouter_description">"Sannsynligvis den beste navigasjonsmotoren for syklister"</string>
+    <string name="link_show_me_the_way_description">"Se OSM-endringer skje i sanntid"</string>
+    <string name="link_osrm_description">"Den raskeste navigasjonsmotoren per nå"</string>
     <string name="link_openinframap_description">"Et kart som viser strøm-, tele- og oljeinfrastruktur"</string>
     <string name="link_openorienteeringmap_description">"Lag orienteringskart for utskrift"</string>
     <string name="link_openstreetbrowser_description">"Et kart for å finne OpenStreetMap-oppføringer basert på kategorier"</string>
@@ -1902,6 +1912,7 @@ Merk at appen bare ber om husnummeret etter at hustypen er angitt."</string>
     <string name="achievement_car_title">"På veien"</string>
     <string name="achievement_car_solved_X">"Du har løst %d oppdrag som forbedrer detaljnivået på gateinformasjonen - slik at OpenStreetMap lever opp til navnet sitt!"</string>
     <string name="unread_messages_message">"Du har %d uleste meldinger i innboksen"</string>
+    <string name="unread_messages_button">"Åpne innboks"</string>
     <string name="action_about2">"Om"</string>
     <string name="map_btn_menu">"Meny"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;Data vist på profilen din blir samlet inn fra offentlig tilgjengelig informasjon fra bidragsloggen din i OpenStreetMap og så lastet opp til tjeneren min.&lt;/p&gt;"</string>
@@ -1938,4 +1949,5 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_openingHours_name_type_title">"Hva er åpningstidene til %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Er %1$s (%2$s) tilgjengelig i rullestol?"</string>
     <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) imot betaling med kontanter?"</string>
+    <string name="quest_traffic_signals_sound_title">"Er det lydsignal for synshemmede her?"</string>
 </resources>

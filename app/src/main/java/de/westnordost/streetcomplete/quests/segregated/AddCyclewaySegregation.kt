@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddCyclewaySegregation(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
@@ -34,6 +35,6 @@ class AddCyclewaySegregation(o: OverpassMapDataAndGeometryApi, r: ResurveyInterv
     override fun createForm() = AddCyclewaySegregationForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("segregated", if(answer) "yes" else "no")
+        changes.updateWithCheckDate("segregated", answer.toYesNo())
     }
 }

@@ -1370,7 +1370,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_openingHours_timeSelect_next">"次"</string>
     <string name="quest_building_underground_name_title">"%s は建物全体が地下にありますか?"</string>
     <string name="quest_building_underground_title">"この建物は全体が地下にありますか?"</string>
-    <string name="quest_traffic_signals_sound_title">"この信号に視覚障害者のための音響装置はありますか?"</string>
     <string name="quest_wheelchairAccess_outside_title">"この場所は車椅子でアクセスできますか?"</string>
     <string name="quest_traffic_signals_button_title">"この信号には歩行者用の押ボタンがありますか?"</string>
     <string name="default_disabled_msg_maxspeed">"このタイプの質問に答えるためには強調表示されている部分だけではなく、通り全域の速度制限標識を確認する必要があるためデフォルトで無効になっています。場合によっては1つの探索を完了するのに非常に労力がかかるでしょう。"</string>
@@ -1455,4 +1454,5 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="at_housenumber">"住居番号 %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) の営業時間はどのくらいですか?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) は車椅子でアクセスできますか?"</string>
+    <string name="quest_traffic_signals_sound_title">"この信号に視覚障害者のための音響装置はありますか?"</string>
 </resources>

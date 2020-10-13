@@ -1663,9 +1663,6 @@
     <string name="quest_building_underground_title">"Είναι αυτό το κτίριο εντελώς υπόγειο;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Υπάρχουν ηχητικά σήματα για τους τυφλούς εδώ;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Εν μέρει σημαίνει ότι δεν υπάρχει παρά ένα μόνο βήμα για την πρόσβαση σε αυτό"</string>
 
     <!-- Fuzzy -->
@@ -2015,6 +2012,7 @@
     <string name="link_figuregrounder_description">"Δημιουργήστε αφίσες διαγράμματος του εδαφικού σχήματος μιας πόλης ή γειτονιάς"</string>
     <string name="achievement_first_edit_title">"Η Πρώτη Αναζήτηση Επιλύθηκε"</string>
     <string name="achievement_first_edit_description">"Καλώς ήλθατε στην κοινότητα OpenStreetMap! Στην οθόνη του προφίλ σας, μπορείτε να δείτε περισσότερες πληροφορίες για κάθε τύπο αναζήτησης που επιλύσατε."</string>
+    <string name="achievement_surveyor_title">"Επιθεωρητής"</string>
     <string name="achievement_surveyor_solved_X">"Επιλύσατε %d αναζητήσεις! Συνεχίστε να ξεκλειδώνετε περισσότερα επιτεύγματα που περιέχουν συνδέσμους προς το OSM και άλλες εφαρμογές και έργα που σχετίζονται με το χάρτη!"</string>
     <string name="achievement_regular_title">"Τακτικοί "</string>
     <string name="achievement_regular_description">"Συνεισφέρατε %d ημέρες στο OSM με αυτήν την εφαρμογή! Οι τακτικοί συντελεστές είναι η ραχοκοκαλιά του OSM, ευχαριστώ για την αφοσίωσή σας! ❤"</string>
@@ -2040,6 +2038,7 @@
     <string name="map_btn_menu">"Μενού"</string>
     <string name="privacy_html_statistics">"&lt;p&gt; Τα δεδομένα που εμφανίζονται στο προφίλ σας συγκεντρώνονται από το δημόσιο διαθέσιμο ιστορικό συνεισφορών στο OpenStreetMap και στη συνέχεια φιλοξενούνται στον διακομιστή μου. &lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"Μπορείτε επίσης να κάνετε αυτό αργότερα στην οθόνη προφίλ."</string>
+    <string name="credits_art_contributors_title">"Συνεισφέροντες εικονογράφηση"</string>
     <string name="credits_projects_contributors_title">"Έργα που έγιναν για το StreetComplete"</string>
     <string name="credits_main_contributors_title">"Κύριοι συνεισφέροντες"</string>
     <string name="stats_are_syncing">"Τα στατιστικά σας συγχρονίζονται ακόμη. Ελέγξτε αυτήν την οθόνη αργότερα."</string>
@@ -2086,6 +2085,7 @@
     <string name="quest_streetName_menuItem_international">"διεθνές"</string>
     <string name="quest_streetName_menuItem_romanized">"σε λατινική γραφή"</string>
     <string name="quest_buildingType_terrace2">"Σειρά σπιτιών"</string>
+    <string name="quest_oneway_tutorial">"Ο δρόμος στην εικόνα περιστρέφεται όπως και στον χάρτη στη θέση του πείρου. Σημειώστε την υποδεικνυόμενη κατεύθυνση."</string>
     <string name="at_housename">"Όνομα οικίας %s:"</string>
     <string name="at_conscription_and_street_number">"Αριθμός συνταγογράφησης %1$s, Αριθμός προσανατολισμού %2$s:"</string>
 
@@ -2116,4 +2116,14 @@
     <string name="dialog_tutorial_download">"Με τον αυτόματο συγχρονισμό κλειστό, οι αναζητήσεις δεν λαμβάνονται αυτόματα. Για να το κάνετε αυτό χειροκίνητα, χρησιμοποιήστε το κουμπί  \"%s\" στο μενού στη τοποθεσία που θέλετε να κατεβάσετε."</string>
     <string name="about_title_translate">"Βοηθήστε στη μετάφραση αυτής της εφαρμογής"</string>
     <string name="about_description_translate">"Το %1$s είναι μεταφρασμένο %2$d%%"</string>
+    <string name="quest_oneway2_title">"Είναι αυτός μονόδρομος; Προς ποια κατεύθυνση;"</string>
+    <string name="quest_oneway2_dir">"Μονόδρομος προς αυτήν την κατεύθυνση"</string>
+    <string name="quest_oneway2_no_oneway">"Όχι μονόδρομος"</string>
+    <string name="quest_maxweight_select_sign">"Επιλέξτε πινακίδα"</string>
+    <string name="quest_steps_incline_title">"Ποια κατεύθυνση οδηγεί προς τα πάνω για αυτά τα βήματα;"</string>
+    <string name="quest_steps_incline_up">"Με αυτόν τον τρόπο"</string>
+    <string name="quest_step_count_title">"Πόσα βήματα είναι εδώ;"</string>
+    <string name="quest_traffic_signals_sound_title">"Υπάρχουν ηχητικά σήματα για τους τυφλούς εδώ;"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Έχουν αυτά τα φανάρια ψηλαφιστή ένδειξη για τυφλούς ότι είναι ασφαλές να διασχίσουν τον δρόμο;"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Συμβουλή: Συχνά πρόκειται για ένα δονούμενο κουμπί ή περιστρεφόμενο κώνο στην κάτω πλευρά της θήκης του κουμπιού του φαναριού."</string>
 </resources>

@@ -1659,9 +1659,6 @@
     <string name="quest_building_underground_title">"這座建物完全在地面以下嗎？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"這裡有引導視障人士用的輔助聲響信號嗎？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"部分意味無法在一步動作下過去。"</string>
 
     <!-- Fuzzy -->
@@ -2083,4 +2080,5 @@
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 的營業時間是？"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) 是否輪椅通行無阻？"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) 接受現金支付嗎？"</string>
+    <string name="quest_traffic_signals_sound_title">"這裡有引導視障人士用的輔助聲響信號嗎？"</string>
 </resources>

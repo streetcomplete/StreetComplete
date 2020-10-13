@@ -1666,9 +1666,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_building_underground_title">"¿Este edificio está completamente bajo tierra?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"¿Tiene señales sonoras para personas con discapacidad visual?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que no hay más de un escalón para poder entrar."</string>
 
     <!-- Fuzzy -->
@@ -1858,6 +1855,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ningún número de referencia visible..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"La carretera de la ilustración está girada al igual que la localización de la chincheta en el mapa. "</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"¿Qué se puede depositar para reciclar aquí?"</string>
@@ -2367,4 +2365,11 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="dialog_tutorial_download">"Con la sincronización automática desactivada, las misiones no se descargan automáticamente. Para hacer esto manualmente, use el botón \"%s\" del menú en la ubicación en la que desea realizar la descarga."</string>
     <string name="about_title_translate">"Ayuda a traducir esta app"</string>
     <string name="about_description_translate">"%1$s tiene traducido el  %2$d%%"</string>
+    <string name="quest_oneway2_title">"¿Es esta una calle de un solo sentido? ¿En qué dirección?"</string>
+    <string name="quest_oneway2_dir">"Dirección única en esta dirección"</string>
+    <string name="quest_oneway2_no_oneway">"No es de una sola dirección"</string>
+    <string name="quest_maxweight_select_sign">"Seleccionar señal"</string>
+    <string name="quest_steps_incline_title">"¿En qué dirección conducen estas escaleras hacia arriba?"</string>
+    <string name="quest_step_count_title">"¿Cuántos escalones hay?"</string>
+    <string name="quest_traffic_signals_sound_title">"¿Tiene señales sonoras para personas con discapacidad visual?"</string>
 </resources>

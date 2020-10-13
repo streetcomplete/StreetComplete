@@ -282,6 +282,10 @@
             "name": "Turning Loop (Island)",
             "terms": "cul-de-sac"
         },
+        "man_made/dovecote": {
+            "name": "Dovecote",
+            "terms": "birds,doocot,dovecot,doves,pigeonholes,pigeons"
+        },
         "man_made/dyke": {
             "name": "Levee",
             "terms": "Dike,Dyke,Floodbank,Stopbank"
@@ -333,6 +337,10 @@
         "natural/water": {
             "name": "Water",
             "terms": ""
+        },
+        "amenity/pub/irish": {
+            "name": "Irish Pub",
+            "terms": "irish pub,irish bar"
         },
         "embankment": {
             "name": "Embankment"
@@ -395,6 +403,10 @@
         "landuse/greenhouse_horticulture": {
             "name": "Greenhouse Horticulture",
             "terms": "flower,greenhouse,horticulture,grow,vivero"
+        },
+        "shop/wigs": {
+            "name": "Wig Shop",
+            "terms": "hair extensions,hair extentions"
         },
         "amenity/community_centre": {
             "name": "Community Center",
@@ -516,6 +528,10 @@
             "name": "Signmaker",
             "terms": ""
         },
+        "amenity/fast_food/juice": {
+            "name": "Juice Fast Food",
+            "terms": "cafe,café,beverages,fruit drinks,juice bar,shakes,smoothies"
+        },
         "amenity/vending_machine/bread": {
             "name": "Bread Vending Machine",
             "terms": "baguette,bread"
@@ -523,6 +539,10 @@
         "amenity/studio/video": {
             "name": "Film Studio",
             "terms": "movie production,movie studio,video production,video recording,video studio"
+        },
+        "amenity/toilets/portable": {
+            "name": "Portable Toilet",
+            "terms": "restroom,privy,porta john,porta potty,portapot,chemical toilet"
         },
         "building/church": {
             "name": "Church Building",
@@ -664,8 +684,8 @@
             "terms": ""
         },
         "railway/tram_crossing": {
-            "name": "Tram Crossing (Path)",
-            "terms": "crossing,grade crossing,level crossing,pedestrian crossing,streetcar crossing,tramway crossing,trolley crossing"
+            "name": "Tram-Path Crossing",
+            "terms": "crossing,grade crossing,level crossing,path tram crossing,pedestrian crossing,streetcar crossing,tram path crossing,tramway crossing,trolley crossing"
         },
         "building/garages": {
             "name": "Garages",
@@ -763,6 +783,10 @@
             "name": "Photographer",
             "terms": ""
         },
+        "natural/hot_spring": {
+            "name": "Hot Spring",
+            "terms": "geothermal spring,thermal pool"
+        },
         "building/pavilion": {
             "name": "Pavilion Building",
             "terms": "sports"
@@ -857,7 +881,7 @@
         },
         "building/farm_auxiliary": {
             "name": "Farm Building",
-            "terms": "agriculture,auxilary,chicken coop,farm auxiliary,pigsty,sty"
+            "terms": "agriculture,auxiliary,auxilary,chicken coop,farm auxiliary,pigsty,sty"
         },
         "power/switch": {
             "name": "Power Switch",
@@ -980,7 +1004,7 @@
         },
         "shop/hardware": {
             "name": "Hardware Store",
-            "terms": ""
+            "terms": "craft,diy,do it yourself,hardware,home improvement,tools"
         },
         "shop/funeral_directors": {
             "name": "Funeral Home",
@@ -1042,7 +1066,7 @@
         },
         "shop/music": {
             "name": "Music Store",
-            "terms": "tape casettes,CDs,compact discs,vinyl records"
+            "terms": "tape cassettes,CDs,compact discs,vinyl records,CD store,casette,casette store"
         },
         "barrier/toll_booth": {
             "name": "Toll Booth",
@@ -1104,6 +1128,10 @@
             "name": "Drop Tower Ride",
             "terms": "theme park,amusement ride,gondola,tower,big drop"
         },
+        "tourism/information/board/welcome_sign": {
+            "name": "Welcome Sign",
+            "terms": "new location"
+        },
         "amenity/driving_school": {
             "name": "Driving School",
             "terms": ""
@@ -1135,6 +1163,10 @@
         "power/plant/source/wind": {
             "name": "Wind Farm",
             "terms": "offshore wind,wind park,wind power plant,wind power station,wind turbines,windmills"
+        },
+        "amenity/lounger": {
+            "name": "Lounger",
+            "terms": "seat,chair,bench"
         },
         "public_transport/platform/trolleybus_point": {
             "name": "Trolleybus Stop",
@@ -1197,6 +1229,10 @@
         "building/cabin": {
             "name": "Cabin",
             "terms": ""
+        },
+        "amenity/mortuary": {
+            "name": "Morgue",
+            "terms": "crematorium,funeral home,memorial home,morgue,mortuary,undertaker"
         },
         "highway/footway/sidewalk": {
             "name": "Sidewalk",
@@ -1545,7 +1581,7 @@
         },
         "building/kindergarten": {
             "name": "Preschool / Kindergarten Building",
-            "terms": "kindergarden,pre-school"
+            "terms": "kindergarten,kindergarden,pre-school"
         },
         "indoor/room": {
             "name": "Room",
@@ -1553,6 +1589,10 @@
         },
         "amenity/fast_food/ice_cream": {
             "name": "Ice Cream Fast Food"
+        },
+        "public_transport/platform/bus_tram_point": {
+            "name": "Tram & Bus Stop",
+            "terms": "bus,light rail,platform,public transit,public transportation,rail,streetcar,track,tram,transit,transportation,trolley"
         },
         "amenity/polling_station": {
             "name": "Permanent Polling Place",
@@ -1614,8 +1654,8 @@
             "terms": ""
         },
         "railway/crossing": {
-            "name": "Railway Crossing (Path)",
-            "terms": "crossing,pedestrian crossing,railroad crossing,level crossing,grade crossing,path through railroad,train crossing"
+            "name": "Railway-Path Crossing",
+            "terms": "crossing,path railway crossing,pedestrian crossing,level crossing,grade crossing,railroad crossing,railway path crossing,path through railroad,train crossing"
         },
         "tourism/artwork/statue": {
             "name": "Statue",
@@ -1943,7 +1983,7 @@
         },
         "shop/supermarket": {
             "name": "Supermarket",
-            "terms": "grocery,store,shop"
+            "terms": "grocery,store,shop,grocery store,market,food market"
         },
         "shop/flooring": {
             "name": "Flooring Supply Shop",
@@ -2122,7 +2162,7 @@
         },
         "landuse/quarry": {
             "name": "Quarry",
-            "terms": ""
+            "terms": "aggregate quarry,open pit mine,sand mine,sand pit,sand quarry,sandpit"
         },
         "public_transport/platform/subway_point": {
             "name": "Subway Stop / Platform"
@@ -2490,7 +2530,7 @@
         },
         "amenity/kindergarten": {
             "name": "Preschool / Kindergarten Grounds",
-            "terms": "kindergarden,pre-school"
+            "terms": "kindergarten,kindergarden,pre-school"
         },
         "craft/carpet_layer": {
             "name": "Carpet Layer",
@@ -2528,8 +2568,8 @@
             "terms": "cabin,climbing hut,lodge,lodging,overnight accommodations,wilderness hut"
         },
         "tourism/information/office": {
-            "name": "Tourist Information Office",
-            "terms": ""
+            "name": "Visitor Center",
+            "terms": "information office,tour guide,tourism office,tourist information center,visitors center,visitors information center,welcome center"
         },
         "shop/fireplace": {
             "name": "Fireplace Store",
@@ -2666,8 +2706,8 @@
             "terms": "Mansion,gentry,nobility,estate"
         },
         "railway/level_crossing": {
-            "name": "Railway Crossing (Road)",
-            "terms": "crossing,railroad crossing,level crossing,grade crossing,road through railroad,train crossing"
+            "name": "Railway-Road Crossing",
+            "terms": "crossing,level crossing,grade crossing,railroad crossing,railway road crossing,road railway crossing,road through railroad,train crossing"
         },
         "man_made/pier": {
             "name": "Pier",
@@ -2786,7 +2826,7 @@
         },
         "shop/doityourself": {
             "name": "DIY Store",
-            "terms": ""
+            "terms": "craft,diy,do it yourself,hardware,home improvement,tools"
         },
         "amenity/taxi": {
             "name": "Taxi Stand",
@@ -2889,10 +2929,6 @@
         "public_transport/stop_position_bus": {
             "name": "Bus Stopping Location",
             "terms": "bus,public transit,public transportation,transit,transportation"
-        },
-        "traffic_sign/city_limit_vertex": {
-            "name": "City Limit Sign",
-            "terms": "town,village,hamlet,boundary,edge,border,road,highway"
         },
         "barrier/cycle_barrier": {
             "name": "Cycle Barrier",
@@ -3035,10 +3071,6 @@
             "name": "Abortion Clinic",
             "terms": ""
         },
-        "traffic_sign/maxspeed_vertex": {
-            "name": "Speed Limit Sign",
-            "terms": "max speed,maximum speed,road,highway"
-        },
         "attraction/animal": {
             "name": "Animal Enclosure",
             "terms": "amphibian,animal park,aquarium,bear,bird,fish,insect,lion,mammal,monkey,penguin,reptile,safari,theme park,tiger,zoo"
@@ -3121,6 +3153,10 @@
         "indoor/stairs": {
             "name": "Indoor Stairwell",
             "terms": "stair,stairs,staircase,stairway,stairwell,steps"
+        },
+        "leisure/sports_hall": {
+            "name": "Gymnasium",
+            "terms": "athletic courts,gym,sports hall,sports venue"
         },
         "traffic_calming/choker": {
             "name": "Traffic Choker",
@@ -3423,7 +3459,7 @@
         },
         "amenity/cafe/bubble_tea": {
             "name": "Bubble Tea Cafe",
-            "terms": "boba,bubble milk tea,pearl milk tea,taiwanese tea drink,tapioca"
+            "terms": "boba,bubble milk tea,pearl milk tea,taiwanese tea drink,tapioca,pearl tea,boba drink"
         },
         "amenity/social_facility/ambulatory_care": {
             "name": "Ambulatory Care",
@@ -3496,6 +3532,10 @@
             "name": "Rehabilitation Facility",
             "terms": "rehab,therapist,therapy"
         },
+        "amenity/boat_storage": {
+            "name": "Boat Storage",
+            "terms": "boathouse,dry dock,marina"
+        },
         "highway/service/drive-through": {
             "name": "Drive-Through",
             "terms": ""
@@ -3553,7 +3593,7 @@
         },
         "shop/video": {
             "name": "Video Store",
-            "terms": "DVD,VHS,video casette"
+            "terms": "DVD,VHS,video cassette,video casette"
         },
         "amenity/restaurant/thai": {
             "name": "Thai Restaurant",
@@ -3660,6 +3700,9 @@
             "name": "Static Mobile Home",
             "terms": "house trailer,manufactured home,mobile home,prefabricated home,residential caravan,static caravan,trailer home"
         },
+        "disused/amenity": {
+            "name": "Disused Amenity"
+        },
         "leisure/pitch/skateboard": {
             "name": "Skate Park",
             "terms": ""
@@ -3674,7 +3717,7 @@
         },
         "tourism/artwork/graffiti": {
             "name": "Graffiti",
-            "terms": "Street Artwork,Guerilla Artwork,Graffiti Artwork"
+            "terms": "Street Artwork,Guerrilla Artwork,Guerilla Artwork,Graffiti Artwork"
         },
         "power/plant/source/gas": {
             "name": "Gas-Fired Power Plant",
@@ -3960,6 +4003,10 @@
             "name": "Red Buoy",
             "terms": "lateral buoy,buoy lateral,cevni,channel marker,iala,lateral mark"
         },
+        "amenity/binoculars": {
+            "name": "Mounted Binoculars",
+            "terms": "observation viewer,optical ranger,spotting scope,sight,spyglass,telescope,tower viewer,viewfinder,viewing stand"
+        },
         "place/island": {
             "name": "Island",
             "terms": "archipelago,atoll,bar,cay,isle,islet,key,reef"
@@ -4021,10 +4068,6 @@
         "amenity/place_of_worship/hindu": {
             "name": "Hindu Temple",
             "terms": "kovil,devasthana,mandir,kshetram,alayam,shrine,temple"
-        },
-        "traffic_sign_vertex": {
-            "name": "Traffic Sign",
-            "terms": "road,highway"
         },
         "natural/stone": {
             "name": "Unattached Stone / Boulder",
@@ -4156,6 +4199,10 @@
         "office/insurance": {
             "name": "Insurance Office",
             "terms": ""
+        },
+        "golf/clubhouse": {
+            "name": "Golf Clubhouse",
+            "terms": "club house,golf clubhouse,golf house,pro shop"
         },
         "leisure/pitch": {
             "name": "Sport Pitch",
@@ -4296,6 +4343,10 @@
         "craft/key_cutter": {
             "name": "Key Cutter",
             "terms": ""
+        },
+        "railway/railway_crossing": {
+            "name": "Railway-Railway Crossing",
+            "terms": "diamond crossing,flat crossing,level junction,railway railway crossing"
         },
         "leisure/fitness_station/sign": {
             "name": "Exercise Instruction Sign",
@@ -4518,8 +4569,8 @@
             "terms": ""
         },
         "railway/tram_level_crossing": {
-            "name": "Tram Crossing (Road)",
-            "terms": "crossing,grade crossing,level crossing,pedestrian crossing,streetcar crossing,tramway crossing,trolley crossing"
+            "name": "Tram-Road Crossing",
+            "terms": "crossing,grade crossing,level crossing,pedestrian crossing,road tram crossing,streetcar crossing,tram road crossing,tramway crossing,trolley crossing"
         },
         "amenity/vending_machine/food": {
             "name": "Food Vending Machine",
@@ -4786,6 +4837,10 @@
             "name": "Coffeehouse",
             "terms": "americano,brew,cafe,café,caffe,caffè,cappuccino,cocoa,coffee shop,drip,espresso,hot drinks,latte,macchiato,tea"
         },
+        "highway/toll_gantry": {
+            "name": "Open Road Toll",
+            "terms": "license plate camera toll,cashless toll,electronic toll,free-flow toll,toll gantry,transponder toll"
+        },
         "landuse/plant_nursery": {
             "name": "Plant Nursery",
             "terms": "flower,garden,grow,vivero"
@@ -4918,7 +4973,7 @@
             "terms": "antiques,coins,collection,collectors,comics,dolls,figurines,numismatics,philately,stamps,thrift"
         },
         "type/route/foot": {
-            "name": "Foot Route",
+            "name": "Walking Route",
             "terms": ""
         },
         "amenity/theatre/type/amphi": {
@@ -5044,6 +5099,9 @@
         },
         "craft/locksmith": {
             "name": "Locksmith"
+        },
+        "telecom": {
+            "name": "Telecom Feature"
         },
         "place": {
             "name": "Place"

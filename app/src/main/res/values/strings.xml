@@ -222,6 +222,8 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_sidewalk_title">"Does this street have a sidewalk?"</string>
     <string name="quest_busStopName_title">"What is the name of this bus stop?"</string>
     <string name="quest_tramStopName_title">"What is the name of this streetcar stop?"</string>
+    <string name="quest_busStopRef_title">"What is the reference number of this bus stop?"</string>
+    <string name="quest_tramStopRef_title">"What is the reference number of this streetcar stop?"</string>
     <string name="quest_maxspeed_title_short2">"What is the speed limit for this street?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"This speed limit looks implausible."</string>
     <string name="quest_maxspeed_answer_sign">"A sign"</string>
@@ -246,6 +248,9 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_streetLanes_answer_noLanes">"It has no marked lanes"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Please estimate how many cars would fit alongside each other on this road."</string>
     <string name="quest_oneway_title">"Is this a one-way street?"</string>
+    <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
+    <string name="quest_oneway2_dir">"Oneway in this direction"</string>
+    <string name="quest_oneway2_no_oneway">"Not a oneway"</string>
     <string name="quest_address_title">"What is the house number of this building?"</string>
     <string name="store_listing_short_description">"OpenStreetMap surveyor app"</string>
     <string name="store_listing_full_description">"Help to improve the OpenStreetMap with StreetComplete!
@@ -667,6 +672,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="action_deselect_all">Deselect all</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
+    <string name="quest_maxweight_select_sign">"Select sign"</string>
     <string name="quest_maxweight_answer_noSign">There is no sign</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
     <string name="quest_maxweight_answer_other_sign">Sign looks different…</string>
@@ -682,6 +688,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_building_underground_title">Is this building completely underground?</string>
     <string name="quest_traffic_signals_sound_title">Are there sound signals for the blind here?</string>
     <string name="quest_traffic_signals_button_title">Do these traffic lights have a button to request a walk signal?</string>
+    <string name="quest_traffic_signals_vibrate_title">Do these traffic lights have a tactile indication for blind people for when it\'s safe to cross?</string>
+    <string name="quest_traffic_signals_vibrate_description">Hint: Often this is a vibrating button or rotating cone on the underside of the traffic light button case.</string>
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">Is this motorcycle parking covered (protected from rain)?</string>
     <string name="default_disabled_msg_maxspeed">This quest type is disabled by default because you are usually required to check the whole street for speed limit signs, not just the highlighted section. This can sometimes be quite the stretch just to solve a single quest.</string>
@@ -735,6 +743,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
+    <string name="quest_steps_incline_title">Which direction leads upwards for these steps?</string>
+    <string name="quest_steps_incline_up">This way up</string>
+    <string name="quest_step_count_title">How many steps are here?</string>
     <string name="quest_address_street_title">What street does the (house) number %s belong to?</string>
     <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
@@ -895,4 +906,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
     <string name="dialog_tutorial_download">With auto-sync off, quests are not downloaded automatically. To do this manually, use the \"%s\" button in the menu at the location you want to download.</string>
 
+    <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
 </resources>

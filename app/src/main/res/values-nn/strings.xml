@@ -1639,9 +1639,6 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
     <string name="quest_building_underground_title">"Er denne bygningen heilt under jorda?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Finst det lydsignal for blinde her?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen."</string>
 
     <!-- Fuzzy -->
@@ -2260,4 +2257,5 @@ Merk at appen berre ber om hus­nummeret etter at hustypen er fastsett."</string
     <string name="quest_openingHours_name_type_title">"Når er %1$s (%2$s) open?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Er %1$s (%2$s) tilgjengeleg med rullestol?"</string>
     <string name="quest_accepts_cash_type_title">"Tek %1$s (%2$s) imot betaling med kontantar?"</string>
+    <string name="quest_traffic_signals_sound_title">"Finst det lydsignal for blinde her?"</string>
 </resources>
