@@ -56,7 +56,7 @@ class AddRoadSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
                 changes.deleteIfExists("source:surface")
             }
             is DetailingWhyOnlyGeneric -> {
-                changes.addOrModify("surface", answer.value)
+                changes.updateWithCheckDate("surface", answer.value)
                 changes.add("surface:note", answer.note)
             }
         }
