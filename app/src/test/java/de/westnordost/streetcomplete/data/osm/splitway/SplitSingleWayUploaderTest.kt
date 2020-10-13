@@ -171,8 +171,6 @@ class SplitSingleWayUploaderTest {
 
     @Test fun `split way deletes tags that may be wrong after split`() {
         val tags = mapOf(
-            "highway" to "residential",
-            "surface" to "asphalt",
             "seats" to "55",
             "step_count" to "12",
             "steps" to "4",
@@ -180,21 +178,28 @@ class SplitSingleWayUploaderTest {
             "parking:lane:both:capacity" to "5",
             "parking:lane:both:capacity:disabled" to "1",
             "capacity:fat_persons" to "1",
-            "capacityaspartofaname:yes" to "ok",
-            "aspartofanamecapacity:yes" to "ok",
+            "incline" to "5.1%"
         )
         way = OsmWay(0,1, mutableListOf(0,1,2,3), tags)
 
-        val expectedTags = mapOf(
-            "highway" to "residential",
-            "surface" to "asphalt",
+        val elements = doSplit(SplitAtPoint(p[1]))
+        for (way in elements.ways) {
+            assertEquals(mapOf<String, String>(), way.tags)
+        }
+    }
+
+    @Test fun `split way does not delets tags that may be wrong after split under certain conditions`() {
+        val tags = mapOf(
             "capacityaspartofaname:yes" to "ok",
-            "aspartofanamecapacity:yes" to "ok"
+            "aspartofanamecapacity:yes" to "ok",
+            "steps" to "yes",
+            "incline" to "up"
         )
+        way = OsmWay(0,1, mutableListOf(0,1,2,3), tags)
 
         val elements = doSplit(SplitAtPoint(p[1]))
         for (way in elements.ways) {
-            assertEquals(expectedTags, way.tags)
+            assertEquals(tags, way.tags)
         }
     }
 

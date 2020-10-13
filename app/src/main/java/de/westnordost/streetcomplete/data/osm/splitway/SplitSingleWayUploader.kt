@@ -341,9 +341,16 @@ private fun Relation.findVias(relationType: String): List<RelationMember> {
  *  be incorrect now */
 private fun MutableMap<String, String>.transformTagsForSplit() {
     remove("step_count")
+
+    // only remove "incline" if it contains a number
+    val inclineNumberRegex = Regex("[0-9]")
+    val inclineValue = get("incline")
+    if (inclineValue != null && inclineNumberRegex.containsMatchIn(inclineValue)) remove("incline")
+
     // only remove if "steps" is a number cause it is apparently also used to denote kind of steps
     if (get("steps")?.toIntOrNull() != null) remove("steps")
     remove("seats")
+
     // remove any capacity: "capacity", "bicycle_parking:capacity", "parking:lane:both:capacity", "parking:lane:right:capacity:disabled" etc.
     val capacityRegex = Regex("^(.*:)?capacity(:.*)?$")
     val keysToDelete = keys.filter { capacityRegex.matches(it) }
