@@ -1,5 +1,6 @@
 global:
     geometry_color: '#44D14000' # accent color + alpha
+    quest_highlighting_color: '#000000'
 
 textures:
     quests:
@@ -99,7 +100,7 @@ layers:
             filter: { type: line }
             draw:
                 arrows:
-                    color: '#000000'
+                    color: global.geometry_color
                     width: 16px
                     collide: false
                     order: 1000
@@ -123,13 +124,13 @@ layers:
                     size: 32px
                     collide: false
                     order: 1000
-    streetcomplete_geometry_2:
+    additional_quest_highlighting_layer:
       data: { source: streetcomplete_geometry_2 }
       line:
         filter: { type: line }
         draw:
           geometry-lines:
-            color: '#44D140'
+            color: global.quest_highlighting_color
             width: 8px
             collide: false
             order: 1000
@@ -139,7 +140,7 @@ layers:
         filter: { type: point }
         draw:
           geometry-points:
-            color: global.geometry_color
+            color: global.quest_highlighting_color
             size: 8px
             collide: false
             order: 1000

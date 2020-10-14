@@ -47,7 +47,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     // layers
     private var questsLayer: MapData? = null
     private var geometryLayer: MapData? = null
-    private var geometryLayer2: MapData? = null
+    private var additionalQuestHighlightingLayer: MapData? = null
     private var selectedQuestPinsLayer: MapData? = null
 
     private val questSelectionMarkers: MutableList<Marker> = mutableListOf()
@@ -62,6 +62,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         fun onClickedQuest(questGroup: QuestGroup, questId: Long)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
     }
+
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
@@ -79,7 +80,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     override fun onMapReady() {
         controller?.setPickRadius(1f)
         geometryLayer = controller?.addDataLayer(GEOMETRY_LAYER)
-        geometryLayer2 = controller?.addDataLayer(GEOMETRY_LAYER_2)
+        additionalQuestHighlightingLayer = controller?.addDataLayer(ADDITIONAL_QUEST_HIGHLIGHTING_LAYER)
         questsLayer = controller?.addDataLayer(QUESTS_LAYER)
         selectedQuestPinsLayer = controller?.addDataLayer(SELECTED_QUESTS_LAYER)
         questPinLayerManager.questsLayer = questsLayer
@@ -94,7 +95,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     override fun onDestroy() {
         super.onDestroy()
         geometryLayer = null
-        geometryLayer2 = null
+        additionalQuestHighlightingLayer = null
         questsLayer = null
         selectedQuestPinsLayer = null
         questSelectionMarkers.clear()
@@ -191,7 +192,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         }.flatten().all {
             val isContained = controller.latLonToScreenPosition(it, p, false)
             isContained && p.x >= offset.left && p.x <= mapView.width - offset.right
-              && p.y >= offset.top  && p.y <= mapView.height - offset.bottom
+                && p.y >= offset.top && p.y <= mapView.height - offset.bottom
         }
     }
 
@@ -271,22 +272,23 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     /* ------------------------------  Geometry for current quest ------------------------------- */
 
+    private fun putQuestGeometry(geometry: ElementGeometry) {
+        geometryLayer?.setFeatures(geometry.toTangramGeometry())
+    }
+
     fun highlightSidewalkForQuest(quest: Quest, sidewalkSide: AbstractQuestAnswerFragment.Listener.SidewalkSide) {
         val questGeometry = quest.geometry
         if (questGeometry is ElementPolylinesGeometry) {
-            val sidewalkPolyline = if (sidewalkSide == AbstractQuestAnswerFragment.Listener.SidewalkSide.LEFT)
-                questGeometry.polylines.first().translateToLeft(1.0)
-            else
-                questGeometry.polylines.first().translateToRight(1.0)
+            val sidewalkPolyline =
+                if (sidewalkSide == AbstractQuestAnswerFragment.Listener.SidewalkSide.LEFT)
+                    questGeometry.polylines.first().translateToLeft(1.0)
+                else
+                    questGeometry.polylines.first().translateToRight(1.0)
 
             val newGeometry = ElementPolylinesGeometry(listOf(sidewalkPolyline), sidewalkPolyline.centerPointOfPolygon())
-            geometryLayer2?.setFeatures(newGeometry.toTangramGeometry())
+            additionalQuestHighlightingLayer?.setFeatures(newGeometry.toTangramGeometry())
             controller?.requestRender()
         }
-    }
-
-    private fun putQuestGeometry(geometry: ElementGeometry) {
-        geometryLayer?.setFeatures(geometry.toTangramGeometry())
     }
 
     private fun List<LatLon>.translateToLeft(distance: Double): List<LatLon> {
@@ -307,7 +309,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         }
 
         var first = it.next()
-        var previousPairAngle : Double? = null
+        var previousPairAngle: Double? = null
 
         while (it.hasNext()) {
             val second = it.next()
@@ -341,7 +343,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     private fun removeQuestGeometry() {
         geometryLayer?.clear()
-        geometryLayer2?.clear()
+        additionalQuestHighlightingLayer?.clear()
     }
 
     /* -------------------------  Markers for current quest (split way) ------------------------- */
@@ -378,7 +380,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     companion object {
         // see streetcomplete.yaml for the definitions of the below layers
         private const val GEOMETRY_LAYER = "streetcomplete_geometry"
-        private const val GEOMETRY_LAYER_2 = "streetcomplete_geometry_2"
+        private const val ADDITIONAL_QUEST_HIGHLIGHTING_LAYER = "additional_quest_highlighting_layer"
         private const val QUESTS_LAYER = "streetcomplete_quests"
         private const val SELECTED_QUESTS_LAYER = "streetcomplete_selected_quests"
         private const val CLICK_AREA_SIZE_IN_DP = 48
