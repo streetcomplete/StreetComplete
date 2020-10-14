@@ -285,16 +285,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onClickedQuest(questGroup: QuestGroup, questId: Long) {
         if (isQuestDetailsCurrentlyDisplayedFor(questId, questGroup)) return
-        val retrieveQuest: () -> Unit = {
-            val quest = questController.get(questId, questGroup)
-            if (quest != null) {
-                showQuestDetails(quest, questGroup)
-            }
-        }
-
         val f = bottomSheetFragment
-        if (f is IsCloseableBottomSheet) f.onClickClose(retrieveQuest)
-        else retrieveQuest()
+        if (f is IsCloseableBottomSheet) f.onClickClose { showQuestDetails(questId, questGroup) }
+        else showQuestDetails(questId, questGroup)
     }
 
     override fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double) {
@@ -677,6 +670,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
         childFragmentManager.popBackStackImmediate(BOTTOM_SHEET, POP_BACK_STACK_INCLUSIVE)
         unfreezeMap()
+
+    private fun showQuestDetails(questId: Long, group: QuestGroup) {
+        val quest = questController.get(questId, group)
+        if (quest != null) {
+            showQuestDetails(quest, group)
+        }
     }
 
     @UiThread private fun showQuestDetails(quest: Quest, group: QuestGroup) {
