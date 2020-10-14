@@ -143,11 +143,16 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         putQuestGeometry(quest.geometry)
     }
 
-    fun endFocusQuest() {
+    /** Clear focus on current quest but do not return to normal view yet */
+    fun clearFocusQuest() {
         removeQuestGeometry()
         clearMarkersForCurrentQuest()
         hideQuestSelectionMarkers()
         removeSelectedQuestPins()
+    }
+
+    fun endFocusQuest() {
+        clearFocusQuest()
         restoreCameraPosition()
         centerCurrentPositionIfFollowing()
     }
