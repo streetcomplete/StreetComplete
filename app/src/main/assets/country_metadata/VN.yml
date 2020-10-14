@@ -1,7 +1,18 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Vietcombank, BIDV, Agribank, Agribank - ATM, Techcombank - ATM, Techcombank, Saigon Bank - ATM, Sacombank,
+   Vietinbank - ATM, Vietinbank, Vietcombank - ATM, BIDV - ATM, ACB, Dong A - ATM, SHB, VietinBank, Saigon
+      Bank, SHB - ATM, BIDV - Pos, HSBC, Eab - ATM, Dongabank - ATM, BIDV - May Pos - ATM, BIDV - Pos
+      - ATM, DongA Bank, Southerbank - ATM, SCB - ATM, Dongabank, HSBC - ATM, Eximbank, Eximbank - ATM,
+   Eab, VIB, Sacombank - ATM, MB Bank, ANZ, Vpbank - ATM, Military Bank - ATM, ACB - ATM, VPBank, Techcom
+      Bank, Ngân hàng TMCP Đông Á, VP Bank, MB, SeABank, Military Bank, Habubank - ATM, ANZ - ATM, Vietin
+      Bank, Vietcom Bank, SeA Bank, OCB - ATM, MHB Bank - ATM, MB - ATM, Bidv, bidv, VietcomBank, Militarybank
+      - ATM, Maritime Bank, Vietbank, Techombank, PG Bank, Navibank - ATM, Msb - ATM, MSB, MHB - ATM,
+   Habubank, Chùa Thiên Tường, BitcoinVN, AgriBank, Abbank - ATM, agribank, Vietinbank - Atm, Vibank
+      - ATM, VIB - ATM, SeABank ATM, SCB, Nasbank - ATM, DongA, Dong A Bank, Bank for Investment and Development
+      of Vietnam]
 mobileCountryCode: 452
 officialLanguages: [vi]
-orchardProduces: [banana, coffee, coconut, rubber, cashew_nut, guava, mango, mangosteen, orange, pineapple,
-  grapefruit, tea, pepper, chilli_pepper, sweet_pepper, grape]
+orchardProduces: [banana, coffee, coconut, rubber, cashew_nut, guava, mango, mangosteen, orange, pineapple, grapefruit,
+   tea, pepper, chilli_pepper, sweet_pepper, grape]
 popularReligions: [chinese_folk, buddhist, christian, caodaism]
 popularSports: [soccer, tennis, badminton, australian_football, sepak_takraw]

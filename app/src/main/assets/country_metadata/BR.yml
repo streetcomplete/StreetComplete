@@ -1,5 +1,12 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banco do Brasil, Banco 24 Horas, Banco24Horas, Bradesco, Caixa, Itaú, Caixa Econômica Federal, Banco
+      24 horas, Santander, Banrisul, Tecnologia Bancária S.A., Banco 24H, Banrisul S.A., Banco24horas,
+   24 Horas, Banco 24h, Banco do Brasil S.A., banco24horas, Banco 24Horas, Saque e Pague, Multibanco,
+   HSBC, 24 horas, BRB, TecBan, Caixa 24h, Caixa 24 Horas, banco 24h, Itau, Caixa Econômica, Caixa Economica
+      Federal, Banese, Banco24h, Banco24, Banco Bradesco, BDN BRADESCO, caixa 24h, Dinho, Caixas eletrônicos
+      da Caixa Econômica Federal, Banco24H, Banco Santander, Banco 24Hrs]
+chargingStationOperators: [Ipiranga, Sat, Petrobras, BR, ipiranga, Taurus, Shell, Petrobrás, EDP]
 mobileCountryCode: 724
 officialLanguages: [pt]
-orchardProduces: [orange, banana, tomato, coffee, coconut, pineapple, guava, mango, mangosteen, grape,
-  cashew_nut, lemon, lime, papaya, apple, mate, cacao, peach]
+orchardProduces: [orange, banana, tomato, coffee, coconut, pineapple, guava, mango, mangosteen, grape, cashew_nut, lemon,
+   lime, papaya, apple, mate, cacao, peach]

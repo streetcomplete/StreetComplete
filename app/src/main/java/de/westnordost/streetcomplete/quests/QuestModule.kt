@@ -53,6 +53,9 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
+import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
+import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
+import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
@@ -75,6 +78,7 @@ import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
+import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
 import de.westnordost.streetcomplete.quests.surface.*
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
@@ -151,6 +155,7 @@ object QuestModule
         AddMaxWeight(o), // used by OSRM and other routing engines
         AddForestLeafType(o), // used by OSM Carto
         AddBikeParkingType(o), // used by OsmAnd
+        AddStepsRamp(o, r),
         AddWheelchairAccessToilets(o, r), // used by wheelmap, OsmAnd, MAPS.ME
         AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
         AddWheelchairAccessBusiness(o, featureDictionaryFuture), // used by wheelmap, OsmAnd, MAPS.ME
@@ -188,6 +193,9 @@ object QuestModule
         AddHandrail(o, r), // for accessibility of pedestrian routing, can be gathered when walking past
         AddStepCount(o), // can only be gathered when walking along this way, also needs the most effort and least useful
         AddInformationToTourism(o),
+        AddAtmOperator(o),
+        AddChargingStationOperator(o),
+        AddClothingBinOperator(o),
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
         //      the sake of mapping it in case it makes sense later

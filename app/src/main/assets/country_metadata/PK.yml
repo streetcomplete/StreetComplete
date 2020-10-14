@@ -1,8 +1,13 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [HBL, UBL, Askari Bank, MCB, Habib Bank Limited, Meezan Bank, HBL ATM, NBP, Dubai Islamic Bank, Allied
+      Bank, ubl, Standard Chartered Bank, JS Bank, Hbl, Faysal Bank, Bank Islami, Bank Alfalah, Bank Al
+      Habib, Allied Bank Limited, Summit Bank, Soneri Bank, National Bank, Meezan Bank Limited, Habib
+      Metro Bank, Habib Bank, ATM, mohsin house, hbl atm, United Bank Limited, UBL ATM, National Bank
+      of Pakistan, NIB Bank, Habib Bank Ltd, Habib Bank ATM, Bank AL Habib, Askari bank, Allied bank]
 isLeftHandTraffic: true
 mobileCountryCode: 410
 officialLanguages: [ur, en, pa]
-orchardProduces: [guava, mango, mangosteen, orange, tomato, apple, date, apricot, chilli_pepper, sweet_pepper,
-  banana, lemon, lime, peach, grape, plum, almond, pear, walnut]
+orchardProduces: [guava, mango, mangosteen, orange, tomato, apple, date, apricot, chilli_pepper, sweet_pepper, banana,
+   lemon, lime, peach, grape, plum, almond, pear, walnut]
 popularReligions: [muslim, hindu, christian]
 popularSports: [cricket, soccer, tennis, field_hockey]

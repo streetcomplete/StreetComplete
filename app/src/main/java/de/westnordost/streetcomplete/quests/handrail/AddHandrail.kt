@@ -18,9 +18,10 @@ class AddHandrail(overpassApi: OverpassMapDataAndGeometryApi, r: ResurveyInterva
          and access !~ private|no
          and (!conveying or conveying = no)
          and (
-           !handrail
+           !handrail and !handrail:center and !handrail:left and !handrail:right
            or handrail = no and handrail older today -${r * 4} years
            or handrail older today -${r * 8} years
+           or older today -${r * 8} years
          )
     """
 
@@ -34,5 +35,10 @@ class AddHandrail(overpassApi: OverpassMapDataAndGeometryApi, r: ResurveyInterva
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.updateWithCheckDate("handrail", answer.toYesNo())
+        if (!answer) {
+            changes.deleteIfExists("handrail:left")
+            changes.deleteIfExists("handrail:right")
+            changes.deleteIfExists("handrail:center")
+        }
     }
 }

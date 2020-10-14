@@ -1,16 +1,16 @@
 {
-    "presets": {
-        "amenity/atm": {
-            "name": "Minibank"
-        },
-        "waterway/river": {
-            "name": "Elv"
-        },
-        "amenity/dentist": {
-            "name": "Tannlege"
-        },
-        "attraction/carousel": {
-            "name": "Karusell"
-        }
+  "presets": {
+    "amenity/atm": {
+      "name": "Minibank"
+    },
+    "amenity/dentist": {
+      "name": "Tannlege"
+    },
+    "attraction/carousel": {
+      "name": "Karusell"
+    },
+    "waterway/river": {
+      "name": "Elv"
     }
+  }
 }

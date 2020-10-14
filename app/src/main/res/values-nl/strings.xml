@@ -2315,7 +2315,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_board_type_map_title">"Is het echt alleen maar een kaart?"</string>
     <string name="quest_board_type_map_description">"Als het bord over een bepaald onderwerp gaat, geef dit dan aan, ongeacht of het ook een kaart bevat. Zo kan een OV-bord een busroutekaart hebben. Als het onderwerp niet tussen de beschikbare antwoorden staat, overweeg dan om een notitie achter te laten."</string>
     <string name="quest_surface_detailed_answer_impossible">"Meerdere soorten bedekkingen"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Weet u zeker dat het onmogelijk is om het bedekking te specificeren? Let op de antwoordoptie \"Verschilt onderweg\" waarmee u de weg kunt snijden waar de bedekking verandert. Gebruik a.u.b. \"Kan niet zeggen\" als er één bedekking is maar het is niet beschikbaar als antwoord."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Weet u zeker dat het onmogelijk is om de bedekking te specificeren? Let op de antwoordoptie \"Verschilt onderweg\" waarmee u de weg kunt splitsen waar de bedekking verandert. Gebruik a.u.b. \"Weet ik niet...\" als er één bedekking is maar die is niet beschikbaar als antwoord."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Geef hier in het kort de aard van de bedekking aan, bijvoorbeeld \"zanderig met geplaveide plekken\". De tekstlengte is hoogstens 255 tekens."</string>
     <string name="quest_surface_detailed_name_title">"Welke specifieke bedekking heeft de weg %s hier?"</string>
     <string name="quest_surface_detailed_square_name_title">"Welke specifieke bedekking heeft het plein %s hier?"</string>
@@ -2324,7 +2324,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"Internationaal"</string>
-    <string name="quest_streetName_menuItem_romanized">"in latijnse tekens"</string>
+    <string name="quest_streetName_menuItem_romanized">"in Latijns schrift"</string>
     <string name="quest_buildingType_terrace2">"Rijtjeshuizen"</string>
     <string name="quest_oneway_tutorial">"De weg in de afbeelding loopt in dezelfde richting als op de kaart op de locatie van de pin. Let op de aangegeven richting.
 "</string>
@@ -2340,7 +2340,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_openingHours_resurvey_no_name_title">"Zijn deze openingstijden nog steeds correct (%s)?"</string>
     <string name="quest_openingHours_add_off_days">"Voeg sluitingsdagen toe"</string>
     <string name="quest_openingHours_off_day">"Sluitingsdag"</string>
-    <string name="quest_openingHours_unspecified_range">"Niiet gespecificeerd"</string>
+    <string name="quest_openingHours_unspecified_range">"Niet gespecificeerd"</string>
     <string name="quest_cycleway_resurvey_title">"Is dit fietspad nog steeds hier?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Is %1$s (%2$s) toegankelijk voor rolstoelen?"</string>
     <string name="pref_title_resurvey_intervals">"Heronderzoek interval"</string>
@@ -2349,14 +2349,23 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="resurvey_intervals_more_often">"Vraag vaker"</string>
     <string name="quest_street_side_puzzle_select">"Klik om te selecteren"</string>
     <string name="quest_accepts_cash_type_title">"Accepteert %1$s (%2$s) contant geld als betaling?"</string>
-    <string name="quest_busStopBench_tram_name_title">"Heeft deze halte %s een bank"</string>
-    <string name="quest_busStopBench_tram_title">"Heeft deze halte een bank"</string>
+    <string name="quest_busStopBench_tram_name_title">"Heeft deze halte %s een bank?"</string>
+    <string name="quest_busStopBench_tram_title">"Heeft deze tramhalte een bank?"</string>
     <string name="quest_busStopBench_title">"Heeft deze bushalte een bank?"</string>
-    <string name="quest_busStopBench_name_title">"Heeft deze bushalte %s een bank"</string>
+    <string name="quest_busStopBench_name_title">"Heeft deze bushalte %s een bank?"</string>
     <string name="quest_summit_register_title">"Is er een topboek op %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Is er een defibrilator (AED) in dit gebouw?"</string>
     <string name="dialog_tutorial_download">"Als automatische synchronisatie is uitgeschakeld, worden vragen niet automatisch gedownload. Om dit handmatig te doen, gebruik je de \"%s\" knop in het menu op de locatie die je wilt downloaden"</string>
     <string name="about_title_translate">"Help deze App te vertalen"</string>
     <string name="about_description_translate">"%1$s is vertaald %2$d%%"</string>
+    <string name="quest_oneway2_title">"Is hier eenrichtingsverkeer? In welke richting?"</string>
+    <string name="quest_oneway2_dir">"Eenrichtingsverkeer in deze richting"</string>
+    <string name="quest_oneway2_no_oneway">"Geen eenrichtingsverkeer"</string>
+    <string name="quest_maxweight_select_sign">"Kies een bord"</string>
+    <string name="quest_steps_incline_title">"In welke richting gaat deze trap naar boven?"</string>
+    <string name="quest_steps_incline_up">"Naar boven in deze richting"</string>
+    <string name="quest_step_count_title">"Hoeveel treden zijn hier?"</string>
     <string name="quest_traffic_signals_sound_title">"Zijn er hier geluidsignalen voor blinden?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Hebben deze stoplichten een voelbare indicatie voor blinden wanneer ze veilig over kunnen steken?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Vaak is dit een trillende knop of ronddraaiende kegel aan de onderkant van de stoplichtknop."</string>
 </resources>

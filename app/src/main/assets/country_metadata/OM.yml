@@ -1,8 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+atmOperators: [Bank Muscat, بنك مسقط, HSBC, NBO, صراف بنك مسقط, Bank Dhofar, bank muscat, بنك ظفار]
 firstDayOfWorkweek: Su
 mobileCountryCode: 422
 officialLanguages: [ar]
-orchardProduces: [date, tomato, banana, guava, mango, mangosteen, chilli_pepper, sweet_pepper, lemon,
-  lime, papaya]
+orchardProduces: [date, tomato, banana, guava, mango, mangosteen, chilli_pepper, sweet_pepper, lemon, lime, papaya]
 popularReligions: [muslim]

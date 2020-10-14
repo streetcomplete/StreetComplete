@@ -1,2 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Desjardins, Banque Laurentienne, Instacoin, RBC, BMO, Banque Nationale, TD Canada Trust, Caisse Desjardins,
+   CIBC, Caisse populaire Desjardins, Banque Scotia, Banque Royale, Banque Manuvie, Caisse Populaire Desjardins
+      d'Amos, Caisse Populaire Desjardins, Banque nationale, Banque de Montréal, BMO Banque de Montréal]
+chargingStationOperators: [Le Circuit Électrique, Circuit Électrique, Flo, Le Circuit électrique, Circuit Electrique, Circuit électrique,
+   Hydro-Québec, Hydro-Quebec, Le circuit électrique, Le Circuite Électrique, Véloasis, Electric Circuit]
 officialLanguages: [fr]

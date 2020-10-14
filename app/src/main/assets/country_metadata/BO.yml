@@ -1,5 +1,13 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banco Mercantil Santa Cruz, Banco Unión, Banco Bisa, Banco Union, BNB, Banco Nacional de Bolivia, Banco
+      BCP, BCP, Banco Fie, Banco BISA, Banco Sol, BancoSol, Banco Ganadero, Banco Fassil, Mercantil Santa
+      Cruz, Banco Económico, Banco de Crédito BCP, Banco Nacional de Bolivia (BNB), Banco FIE, BNB24,
+   Banco Prodem, Banco Economico, Banco de Crédito de Bolivia, Bisa, Banco Mercantil Santa Cruz (BMSC),
+   BISA, mercantil santa cruz, Banco Nacional de Bolivia SA, Banco Ecofuturo, BMSC, Cooperativa Jesús
+      Nazareno, Banco Union S.A., Banco Mercantíl Santa Cruz, Prodem, Mutual La Primera, MERCANTIL SANTA
+      CRUZ, La Primera, Cajero BNB, Banco de Crédito (BCP), Banco de Crédito, Banco Mercantil Santa Cruz
+      S.A., Banco Los Andes ProCredit, Banco Fassil S.A., BMSC - Banco Mercantil Santa Cruz]
 mobileCountryCode: 736
 officialLanguages: [es, qu, ay]
-orchardProduces: [banana, orange, pineapple, chestnut, tomato, peach, lemon, lime, brazil_nut, grape,
-  coffee, papaya, guava, mango, mangosteen, rubber, avocado, chilli_pepper, sweet_pepper]
+orchardProduces: [banana, orange, pineapple, chestnut, tomato, peach, lemon, lime, brazil_nut, grape, coffee, papaya, guava,
+   mango, mangosteen, rubber, avocado, chilli_pepper, sweet_pepper]

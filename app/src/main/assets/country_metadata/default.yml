@@ -4,6 +4,7 @@ isAdvisorySpeedLimitKnown: false
 isLeftHandTraffic: false
 isLivingStreetKnown: false
 isSlowZoneKnown: false
+isUsuallyAnyGlassRecycleableInContainers: false
 lengthUnits: [meter]
 officialLanguages: [en]
 orchardProduces: []

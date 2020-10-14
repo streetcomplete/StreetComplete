@@ -1,7 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [بريد الجزائر, Algérie Poste, بي إن بي باريبا, القرض الشعبي الجزائري, BNP Paribas El Djazaïr, سوسيتيه
+      جنرال, بنك الجزائر الخارجي, الصندوق الوطني للتوفير والاحتياط, CPA, Algérie poste, Algerie Poste,
+   algerie poste, GAB CCP, GAB, CNEP, CCP, Algerie poste]
 firstDayOfWorkweek: Su
 mobileCountryCode: 603
 officialLanguages: [ar, ber, fr]
-orchardProduces: [tomato, date, olive, orange, grape, apple, apricot, pear, peach, fig, plum, lemon,
-  lime, almond, chilli_pepper, sweet_pepper, cherry]
+orchardProduces: [tomato, date, olive, orange, grape, apple, apricot, pear, peach, fig, plum, lemon, lime, almond, chilli_pepper,
+   sweet_pepper, cherry]
 popularReligions: [muslim]

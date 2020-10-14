@@ -1,8 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [ABSA, Standard Bank, FNB, Nedbank, First National Bank, Capitec, Absa, Standard, Standard bank, Standard
+      Bank ATM, ABSA Atm, standard bank, nedbank, STANDARD BANK, Netbank, Nedbank ATM, NEDBANK, Absa Bank,
+   ABSA Bank]
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 655
 officialLanguages: [en, zu, xh, af, st, tn, nso, ts]
-orchardProduces: [grape, orange, apple, tomato, pear, lemon, lime, banana, grapefruit, peach, pineapple,
-  plum, guava, mango, mangosteen, avocado, apricot, chilli_pepper, sweet_pepper]
+orchardProduces: [grape, orange, apple, tomato, pear, lemon, lime, banana, grapefruit, peach, pineapple, plum, guava, mango,
+   mangosteen, avocado, apricot, chilli_pepper, sweet_pepper]
 popularSports: [tennis, soccer, bowls, basketball, golf, cricket, netball, field_hockey, rugby]

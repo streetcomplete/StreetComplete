@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.view.image_select.Item
 class AddRailwayCrossingBarrierForm : AImageListQuestAnswerFragment<String,String>() {
 
     override val items get() = listOf(
-        Item("no", R.drawable.ic_railway_crossing_none, R.string.quest_railway_crossing_barrier_none),
+        Item("no", R.drawable.ic_railway_crossing_none, R.string.quest_railway_crossing_barrier_none2),
         Item("half", if (countryInfo.isLeftHandTraffic) R.drawable.ic_railway_crossing_half_l else R.drawable.ic_railway_crossing_half),
         Item("double_half", R.drawable.ic_railway_crossing_double_half),
         Item("full", if (countryInfo.isLeftHandTraffic) R.drawable.ic_railway_crossing_full_l else R.drawable.ic_railway_crossing_full)

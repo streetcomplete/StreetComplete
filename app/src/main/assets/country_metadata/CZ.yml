@@ -1,9 +1,23 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Česká spořitelna, ČSOB, Komerční banka, Pharro, Euronet, Česká Spořitelna, Raiffeisenbank, KB, Air Bank,
+   GE Money Bank, Komerční Banka, Moneta, UniCredit Bank, Moneta Money Bank, CSOB, AirBank, EuroNet, MONETA
+      Money Bank, GE Money, Česká spořitelna a.s., Poštovní spořitelna, Unicredit Bank, Moneta Bank, Komerční
+      banka a.s., Airbank, ČS, Travelex, Sberbank, Raiffeisen Bank, MONETA Money Bank a.s., Citibank,
+   Air bank, komerční banka, airbank, Raiffeisen bank, Komeční banka, GE Money bank, GE, Fio, Era, České
+      spořitelny, Česká spořitelna a. s., www.wbtcb.com, mBank, UniCreditBank, UniCredit bank, Raiffeisen,
+   Oberbank, OK Point, MONETA, Fio Banka, FIO, ERA, Bankomat České spořitelny, Airbank a.s.]
+chargingStationOperators: [ČEZ, ČEZ (CCS/CHAdeMO/Mennekes type2), PRE, EVMAPA, E.ON (CCS/CHAdeMO/Mennekes), ČEZ (CCS/CHAdeMO/Mennekes
+      typ2), beskolo, EON, E.ON, ČEZ (CCS/CHAdeMO/Mennekes type 2), Tesla, ČEZ (CCS/CHAdeMO and Mennekes
+      type2), evmapa.cz, MOL (CCS/CHAdeMO/Mennekes), CCS/CHAdeMO and Mennekes type2, ČEZ (CCS/CHAdeMO/Mennekes),
+   ČEZ (CCS/CHAdeMO/Menneke type2), VŠB, TS Opava, Město Dačice, Kaufland, InChaNet, EVmapa (Mennekes
+      type 2)]
+clothesContainerOperators: [Textileco, Služby města Český Krumlov s.r.o., SAKO, Město Veltrusy, KLOK.TEX]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+isUsuallyAnyGlassRecycleableInContainers: true
 mobileCountryCode: 230
 officialLanguages: [cs]
-orchardProduces: [apple, grape, tomato, hop, pear, plum, strawberry, cherry, chilli_pepper, sweet_pepper,
-  apricot, peach, walnut, raspberry]
+orchardProduces: [apple, grape, tomato, hop, pear, plum, strawberry, cherry, chilli_pepper, sweet_pepper, apricot, peach,
+   walnut, raspberry]
 popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]

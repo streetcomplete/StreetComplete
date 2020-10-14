@@ -1,5 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [CBE, Government, Dashen Bank, Commercial Bank of Ethiopia, Wegagen Bank, Bank of Abyssinia, cbe, CBE
+      ATM, Zemen Bank, United Bank, Commercial bank of Ethiopia, Awash International Bank, Awash Bank,
+   Addis International Bank]
 mobileCountryCode: 636
 officialLanguages: [am, om, so, ti]
-orchardProduces: [banana, coffee, chilli_pepper, sweet_pepper, guava, mango, mangosteen, avocado, papaya,
-  hop, tomato, orange, tea, pineapple, lemon, lime, grape, pepper, sisal]
+orchardProduces: [banana, coffee, chilli_pepper, sweet_pepper, guava, mango, mangosteen, avocado, papaya, hop, tomato,
+   orange, tea, pineapple, lemon, lime, grape, pepper, sisal]

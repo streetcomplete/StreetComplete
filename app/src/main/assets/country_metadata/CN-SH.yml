@@ -1,2 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en, international]
+atmOperators: [ICBC, SPD Bank, 建设银行, 工商银行, 交通银行BCM ATM, 中国建设银行, 中国工商银行ICBC ATM, 中国邮政储蓄银行, 中国农业银行ABC ATM, 上海银行, China
+      Construction Bank, Bank of China]
+chargingStationOperators: [Tesla Motors Inc.]

@@ -585,7 +585,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_dormitory">Dormitory</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
     <string name="quest_buildingType_bungalow">Bungalow</string>
-    <string name="quest_buildingType_bungalow_description">small detached house (summer house, holiday cottage, …)</string>
+    <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin …)</string>
     <string name="quest_buildingType_static_caravan">Static caravan</string>
 
     <string name="quest_buildingType_commercial">Commercial building</string>
@@ -667,8 +667,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
     <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
-    <string name="quest_railway_crossing_barrier_title">How is this railway crossing protected?</string>
-    <string name="quest_railway_crossing_barrier_none">It\'s not</string>
+    <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
+    <string name="quest_railway_crossing_barrier_none2">No barriers</string>
     <string name="action_deselect_all">Deselect all</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
@@ -743,6 +743,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
+    <string name="quest_steps_ramp_title">Do these steps have a ramp? What kind?</string>
+    <string name="quest_steps_ramp_none">No (usable) ramp</string>
+    <string name="quest_steps_ramp_bicycle">Bicycle ramp</string>
+    <string name="quest_steps_ramp_stroller">Stroller ramp</string>
+    <string name="quest_steps_ramp_wheelchair">Wheelchair ramp</string>
     <string name="quest_steps_incline_title">Which direction leads upwards for these steps?</string>
     <string name="quest_steps_incline_up">This way up</string>
     <string name="quest_step_count_title">How many steps are here?</string>
@@ -799,6 +804,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
     <string name="quest_accepts_cash_type_title">"Does %1$s (%2$s) accept cash payment?"</string>
+
+    <string name="quest_atm_operator_title">"What's the name of the bank for this ATM?"</string>
+    <string name="quest_clothes_container_operator_title">"Who accepts donations for this clothing bin?"</string>
+    <string name="quest_charging_station_operator_title">"Who is the operator of this charging station?"</string>
+
     <string name="user_quests_title">Solved Quests</string>
     <string name="user_achievements_title">Achievements</string>
     <string name="user_links_title">Link Collection</string>
@@ -821,6 +831,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_category_goodies_description">Interesting map-related stuff for you to try out</string>
 
     <string name="link_cyclosm_description">A map for cyclists</string>
+    <string name="link_indoorequal_description">Discover indoor maps of malls, railway stations etc.</string>
     <string name="link_wheelmap_description">A map for finding wheelchair accessible places</string>
     <string name="link_osm_buildings_description">A map that shows the buildings in 3D</string>
     <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
@@ -835,6 +846,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_wiki_description">The wiki is your starting point to everything related OpenStreetMap</string>
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
     <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
+    <string name="link_thenandnow_description">Curious what progress we made over the years? Compare to how the map looked more than 10 years ago!</string>
     <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
     <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
     <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
@@ -878,6 +890,12 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievement_veg_solved_X">You solved %d quests that are interesting for people living on a no-meat diet!</string>
     <string name="achievement_car_title">On the Road</string>
     <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the "street" in OpenStreetMap!</string>
+    <string name="achievement_rare_title">Treasure Hunt</string>
+    <string name="achievement_rare_solved_X">You found and solved %d quests that are completed really rarely, congratulations!</string>
+    <string name="achievement_citizen_title">Citizen</string>
+    <string name="achievement_citizen_solved_X">You solved %d quests useful for everyday life in town!</string>
+    <string name="achievement_outdoors_title">Outdoors</string>
+    <string name="achievement_outdoors_solved_X">You solved %d quests useful for outdoor-people!</string>
 
     <string name="user_statistics_country_rank">Rank in %2$s: %1$d</string>
     <string name="user_statistics_country_wiki_link">Mapping Portal %s</string>

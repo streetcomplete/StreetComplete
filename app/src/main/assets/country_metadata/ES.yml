@@ -1,11 +1,30 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [ca, eu, gl, ast]
 additionalValidHousenumberRegex: s/n
+atmOperators: [Santander, Bankia, BBVA, La Caixa, Banco Santander, Telebanco 4B, Banco Popular, CaixaBank, Euronet,
+   Kutxabank, Sabadell, Caja Rural, Banca March, Unicaja, Cajamar, Banc Sabadell, IberCaja, Banco Sabadell,
+   Liberbank, Abanca, Deutsche Bank, Euro 6000, Caixabank, ABANCA, Servired, Popular, BBK, Telebanco,
+   Ibercaja, Euro6000, Sabadell Atlántico, Kutxa, ING, Caja Duero, Bankinter, BanCaixa, Laboral Kutxa,
+   Caixa Bank, Banco Pastor, euronet, Cajasol, BMN, kutxabank, EspañaDuero, Catalunya Caixa, Cajasur,
+   CAM, Banco de Sabadell, Bancaja, la Caixa, Targo Bank, ING Direct, Euronet Worldwide, Euro Automatic
+      Cash, Caja rural, Caja Madrid, Caja Granada, Caja España, Caja Cantabria, Caixa Galicia, BancaMarch,
+   BANTIERRA, BANKIA, cajamar, bankia, Vital Kutxa, Santander 4B, Sabadell Guipuzcoano, Sa Nostra, Ruralcaja,
+   Cash Zone, CajaSur, Caja Rural de Soria, Caja Rural de Salamanca, Caja Rural de Extremadura, Caixa
+      bank, Caixa Penedès, Caixa Catalunya, Caixa, CAIXABANK, CAI, Banco de Santander, Banco de Andalucía,
+   Banco Sabadell Atlántico, Banco Caixa Geral, 4B]
+chargingStationOperators: [IBIL, Tesla Motors Inc., EDP, Iberdrola, GIC, Viesgo, Feníe Energía, edp, Easycharger, Cargacoches, Urbener,
+   Endesa, Àrea Metropolitana de Barcelona, Wenea, Ionity, Ibil, Fenienergia, EMT, Ajuntament de Vic,
+   Tesla, Fenie Energia, Ajuntament de Lleida, VNG Aparcaments, Serrano Park III, Serrano Park I, Repsol,
+   Parkmusa, Paradores, Mercadona, Ingeteam, EasyCharger, EDP VE, Carrefour, CEPSA, BonArea, Ayuntamiento
+      de Segorbe, Ayuntamiento de Huelva, Ajuntament de les Masies de Voltregà]
+clothesContainerOperators: [Ajuntament de Santa Coloma de Cervelló, UROLA ERDIKO MANKOMUNITATEA, Madre Coraje, Cáritas, Humana, Roba
+      Amiga, Ropa Amiga, Proyecto Lázaro, Madre coraje, Caritas, Ayuntamiento de Zaragoza, Ayuntamiento
+      de Madrid]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 214
 officialLanguages: [es]
-orchardProduces: [olive, grape, tomato, orange, peach, chilli_pepper, sweet_pepper, lemon, lime, apple,
-  banana, strawberry, persimmon, pear, almond, plum, apricot]
+orchardProduces: [olive, grape, tomato, orange, peach, chilli_pepper, sweet_pepper, lemon, lime, apple, banana, strawberry,
+   persimmon, pear, almond, plum, apricot]
 popularSports: [soccer, tennis, basketball, golf, paddle_tennis, pelota]

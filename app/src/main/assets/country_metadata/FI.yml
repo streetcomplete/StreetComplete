@@ -1,4 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Otto, Suomen Automatia Oy, Nosto, Otto., Automatia Pankkiautomaatit Oy, TalletusOtto, Osuuspankki, OTTO,
+   OttoPlus, bittiraha.fi, Nordea, Automatia, atm, Ottopiste, Otto-automaatti, OP, Nokas CMS Oy, Automatia
+      Pankkiautomaatit, Aktia]
+chargingStationOperators: [Virta, Fortum Charge & Drive, Fortum, KSSe, Tesla Motors Inc., K-Lataus, Plugit, Lidl, Fortum Charge&Drive,
+   PlugIt, Motonet, Helen, k-lataus, Virtapiste, Tesla, Helsingin Energia, Charge&Drive]
+clothesContainerOperators: [UFF, Rinki, HSY, Rosk'n roll, Rinki Oy, Suomen Pakkauskierrätys RINKI Oy, Fida]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true

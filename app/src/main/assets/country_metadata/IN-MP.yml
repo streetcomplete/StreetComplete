@@ -1,2 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Axis Bank, State Bank Of India, SBI, State Bank of India, ICICI Bank, SBI Bank, HDFC Bank, Bank of India,
+   Bank of Baroda, SBI ATM, Canara Bank, Punjab National Bank, Union Bank, BOI, UCO Bank, HDFC, Bank of
+      India ATM, ICICI, IDBI Bank, Corporation Bank, Central Bank of India, Bank Of India, Andhra Bank,
+   Oriental Bank of Commerce, Kotak Mahindra Bank, Indian Overseas Bank, Bank of Maharastra, Axis Bank
+      ATM, Punjab National Bank ATM, PNB, ICICI Bank ATM, Central Bank ATM, Allahabad Bank, Yes Bank,
+   Vijaya Bank, IndusInd Bank, Indian Bank, ICICI bank, HDFC Bank ATM, Central Bank Of India, Bank Of
+      Baroda, Union Bank of India, Union Bank ATM, UCO Bank ATM, SVC Bank, PNB Bank, PMC Bank, Kotak Mahindra
+      Bank ATM, Indusind Bank, IDBI, ICICI bank ATM, ICICI ATM, Federal Bank, Dena Bank, DCB Bank, Cosmos
+      Bank, Bank of Maharashtra, Bandhan Bank]
 officialLanguages: [hi]

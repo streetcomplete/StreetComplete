@@ -190,7 +190,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             context?.toast(R.string.quest_split_way_too_imprecise)
             return true
         }
-        val splitWay = splitWayCandidates.minBy { it.pos.distanceTo(position) }!!
+        val splitWay = splitWayCandidates.minByOrNull { it.pos.distanceTo(position) }!!
         val splitPosition = splitWay.pos
 
         // new split point is too close to existing split points
