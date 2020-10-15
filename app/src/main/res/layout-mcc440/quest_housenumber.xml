@@ -14,6 +14,7 @@
         android:padding="8dp"
         android:showDividers="middle|beginning|end"
         android:orientation="horizontal"
+        android:layoutDirection="ltr"
         android:gravity="center"
         >
 
@@ -32,7 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="–"
-            style="@style/BlocknumberEditText"/>
+            style="@style/BlocknumberEditText"
+            tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/houseNumberInput"
@@ -69,6 +71,7 @@
         android:orientation="horizontal"
         android:showDividers="middle"
         android:divider="@drawable/space_16dp"
+        android:layoutDirection="ltr"
         android:layout_margin="8dp">
 
         <TextView
@@ -79,7 +82,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="–"/>
+            android:text="–"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -93,8 +97,9 @@
         android:layout_width="64dp"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         tools:text="ABC"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        tools:ignore="RtlHardcoded" />
 
 </RelativeLayout>
