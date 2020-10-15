@@ -11,7 +11,6 @@ v25.0-beta1: |
   <h3>Enhanced Quests</h3>
   <ul>
   <li>House number quest: Make it faster to collect house numbers in a row (#2131)</li>
-  <li>Surface and building type quest: Make categories visually more distinct (#1952, #2000)</li>
   <li>Recycling materials quest: In the Czech Republic, offer "any glass" option instead of "glass bottles" (#2123)</li>
   <li>Improve a few wordings (#2047, #2096)</li>
   <li>Handrails: Don't ask for places where the information has already been supplied in another way (#2162)</li>
@@ -20,7 +19,14 @@ v25.0-beta1: |
   <ul>
   <li>new achievement graphics by Judith Gastell (<a href='https://www.artstation.com/melusine'>melusine</a>)</li>
   <li>Map style update: Amongst other things, all housenumbers are now displayed again on the map, private roads are displayed as such and 3D buildings can be displayed more detailed</li>
+  </ul>
+
+v24.2: |
+  <ul>
+  <li>Fix crash for the max height quest (#2147)</li>
+  <li>Surface and building type quest: Make categories visually more distinct (#1952, #2000)</li>
   <li>A few fixes (#2145, #2148, #2161...), thanks @peternewman</li>
+  <li>Updated translations</li>
   </ul>
 
 v24.1: |
