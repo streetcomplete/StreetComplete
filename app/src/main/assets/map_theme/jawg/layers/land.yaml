@@ -154,6 +154,7 @@ styles:
     boundary_dashes:
         base: lines
         dash: [1, 2]
+        blend: translucent
     buildings-style:
         base: polygons
         blend: opaque
