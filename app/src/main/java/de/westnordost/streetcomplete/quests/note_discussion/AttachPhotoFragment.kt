@@ -1,37 +1,35 @@
 package de.westnordost.streetcomplete.quests.note_discussion
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
-import androidx.core.content.FileProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.util.ArrayList
-
-import de.westnordost.streetcomplete.R
-
-import android.app.Activity.RESULT_OK
 import android.widget.TextView
+import androidx.core.content.FileProvider
+import androidx.core.net.toUri
+import androidx.core.view.isGone
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.ApplicationConstants.*
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
 import kotlinx.android.synthetic.main.fragment_attach_photo.*
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.util.*
 
 class AttachPhotoFragment : Fragment() {
 
@@ -58,13 +56,9 @@ class AttachPhotoFragment : Fragment() {
     }
 
     private fun updateHintVisibility(){
-        if (imagePaths.isEmpty()) {
-            photosListView?.visibility = View.GONE
-            hintView?.visibility = View.VISIBLE
-        } else {
-            photosListView?.visibility = View.VISIBLE
-            hintView?.visibility = View.GONE
-        }
+        val isImagePathsEmpty = imagePaths.isEmpty()
+        photosListView?.isGone = isImagePathsEmpty
+        hintView?.isGone = !isImagePathsEmpty
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -106,9 +100,9 @@ class AttachPhotoFragment : Fragment() {
                     val photoFile = createImageFile()
                     val photoUri = if (Build.VERSION.SDK_INT > 21) {
                         //Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
-                        FileProvider.getUriForFile(activity!!,getString(R.string.fileprovider_authority),photoFile)
+                        FileProvider.getUriForFile(requireContext(),getString(R.string.fileprovider_authority),photoFile)
                     } else {
-                        Uri.fromFile(photoFile)
+                        photoFile.toUri()
                     }
                     currentImagePath = photoFile.path
                     takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
@@ -158,8 +152,11 @@ class AttachPhotoFragment : Fragment() {
     }
 
     private fun createImageFile(): File {
-        val directory = activity!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile("photo", ".jpg", directory)
+        val directory = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val imageFileName = "photo_" + System.currentTimeMillis() + ".jpg"
+        val file = File(directory, imageFileName)
+        if(!file.createNewFile()) throw IOException("Photo file with exactly the same name already exists")
+        return file
     }
 
     fun deleteImages() {

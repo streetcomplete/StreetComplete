@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient4611" x1="57.944" x2="63.235" y1="308.91" y2="303.61" gradientTransform="matrix(5.178 0 0 5.178 -272.13 -1564.8)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+   <stop stop-color="#ffcdcd" offset="0"/>
+   <stop stop-color="#e44848" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <path d="m7.3501 42.97 23.29 23.29v27.4l-23.29-23.29z" fill="#f2eeee" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m88.18 45.71v28.77l-57.54 19.18v-27.4c-1.37-34.25 57.54-50.69 57.54-20.55z" fill="#e0d8d8" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m59.41 10.09c-20.55-13.7-54.8 13.7-54.8 34.25l24.66 24.66c0-27.4 34.25-47.95 54.8-34.25z" fill="url(#linearGradient4611)" fill-rule="evenodd" stroke="#a00" stroke-linejoin="bevel"/>
+  <path d="m84.07 34.75s6.85 5.48 6.85 13.7" fill="none" stroke="#a00"/>
+  <path d="m90.92 48.45-2.74-2.74c0-8.22-4.11-10.96-4.11-10.96s6.85 5.48 6.85 13.7" fill="#da2a2a" fill-rule="evenodd" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+ </g>
+</svg>

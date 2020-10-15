@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient5716" x1="-28.31" x2="-35.19" y1="357.32" y2="364.73" gradientTransform="matrix(5.178 0 0 5.178 178.44 -1825.2)" gradientUnits="userSpaceOnUse" spreadMethod="reflect" xlink:href="#across_round"/>
+  <linearGradient id="across_round">
+   <stop stop-color="#ffcdcd" offset="0"/>
+   <stop stop-color="#e44848" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient5766" x1="-27.781" x2="-19.844" y1="357.85" y2="355.21" gradientTransform="matrix(5.178 0 0 5.178 178.44 -1825.2)" gradientUnits="userSpaceOnUse" xlink:href="#across_round"/>
+  <linearGradient id="linearGradient5724" x1="-25.929" x2="-24.077" y1="357.85" y2="363.41" gradientTransform="matrix(5.178 0 0 5.178 178.44 -1825.2)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+   <stop stop-color="#ffafaf" offset="0"/>
+   <stop stop-color="#e44848" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <path d="m30.483 66.103v27.4l-23.29-23.29-4.1e-6 -24.66" fill="#f2eeee" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m30.483 66.103 57.54-19.18v27.4l-57.54 19.18v-27.4" fill="#e0d8d8" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m4.4525 42.813c4.11-13.7 43.84-26.03 43.84-26.03s-17.81 36.99-19.18 50.69z" fill="url(#linearGradient5716)" fill-rule="evenodd" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m89.393 44.183c-2.74-5.48-23.29-21.92-23.29-21.92-4.11-4.11-13.7-5.48-17.81-5.4802 8.22 2.7403 36.99 21.92 41.1 27.4z" fill="url(#linearGradient5766)" fill-rule="evenodd" stroke="#a00"/>
+  <path d="m90.763 46.923c-4.11-13.7-42.47-30.14-42.47-30.14s-17.81 36.99-19.18 50.69z" fill="url(#linearGradient5724)" fill-rule="evenodd" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m4.4525 42.813 61.65-20.55 24.66 24.66" fill="none" stroke="#a00" stroke-dasharray="2, 2" stroke-opacity=".50196"/>
+ </g>
+</svg>

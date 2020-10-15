@@ -17,7 +17,7 @@ public class AbbreviationsByLocale
 {
 	private final Context applicationContext;
 
-	private Map<String,Abbreviations> byLanguageAbbreviations = new HashMap<>();
+	private final Map<String,Abbreviations> byLanguageAbbreviations = new HashMap<>();
 
 	@Inject public AbbreviationsByLocale(Context applicationContext)
 	{

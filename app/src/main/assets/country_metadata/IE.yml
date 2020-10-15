@@ -1,4 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Bank of Ireland, AIB, Ulster Bank, Permanent TSB, Euronet, Spar]
+chargingStationOperators: [ESB ecars, easygo.ie, Tesla, Nissan Ireland, Kildare Village, Ionity, Circle K, Dell EMC, Streetcharge,
+   Radisson Blu Hotel, Plugsurfing GmbH]
+clothesContainerOperators: [Cork County Council, Cancer Fund for Children, Textile Recycling Limited]
 isAdvisorySpeedLimitKnown: false
 isLeftHandTraffic: true
 mobileCountryCode: 272

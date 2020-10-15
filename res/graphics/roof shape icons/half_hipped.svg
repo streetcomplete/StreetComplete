@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+ <g fill-rule="evenodd" stroke-linejoin="bevel">
+  <path d="m23.79 47.08 6.85 19.18v27.4l-23.29-23.29-4e-6 -28.77 5.48-8.22z" fill="#f2eeee" stroke="#916f6f" stroke-linecap="square"/>
+  <path d="m30.64 66.26 57.54-19.18v27.4l-57.54 19.18v-27.4" fill="#e0d8d8" stroke="#916f6f" stroke-linecap="square"/>
+  <path d="m90.92 47.08-5.48-19.18-19.18-16.44-36.99 12.33-5.48 24.66 5.48 19.18z" fill="#fb6d6d" stroke="#a00" stroke-linecap="square"/>
+  <path d="m10.09 34.75-5.48 8.2201 2.74-5.1e-5 5.48-8.22h-2.74" fill="#da2a2a" stroke="#a00"/>
+  <path d="m23.79 48.45-13.7-13.7 19.18-10.96z" fill="#ff9191" stroke="#a00"/>
+ </g>
+</svg>

@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Siga-me"</string>
-    <string name="map_attribution_mapzen">"Funciona com %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Contribuidores do OpenStreetMap"</string>
@@ -1315,9 +1314,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_generic_item_confirmation">"Tem a certeza que não consegue determinar de forma precisa?"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Para mostrar o mapa, os mosaicos vetoriais são provenientes de &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. O serviço regista os pedidos de mosaicos para estatísticas anónimas e para detetar problemas, no entanto elimina os registos após alguns dias.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Para alguns desafios, são descarregados dados de terceiros. Em particular, o desafio de sentido único faz consultas a uma API, também alojada em westnordost.de, sobre candidatos possíveis de sentido único.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1372,9 +1368,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_buildingType_semi_detached_description">"par de 2 casas unifamiliares (geminadas)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Casas em banda"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"uma série de casas similares unifamiliares em fila com paredes partilhadas"</string>
 
     <!-- Fuzzy -->
@@ -1386,9 +1379,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Barco-casa"</string>
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"casa pequena separada (casa de verão, férias...)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravana estática"</string>
@@ -1623,12 +1613,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_noteDiscussion_hide2">"Oculto por %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Que barreira tem esta passagem de nível ferroviária?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Não tem"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;As fotografias que anexar a um erro reportado/nota são enviados para o meu servidor e eliminadas após alguns dias após o erro ser resolvido. Os meta-dados das fotografias são eliminados antes do envio.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1663,9 +1647,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Este edifício está totalmente abaixo do solo?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Existe aqui sinalização sonora para invisuais?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que não há mais que um degrau para aceder."</string>
@@ -1837,4 +1818,15 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Estas escadas têm corrimão?"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Nome do edifício %s:"</string>
+    <string name="at_conscription_and_street_number">"Número matricial %1$s, número de orientação %2$s:"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_conscription_number">"Número matricial %s:"</string>
+    <string name="at_housenumber">"número de porta %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Qual o horário de funcionamento de %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) é acessível a cadeira de rodas?"</string>
+    <string name="quest_traffic_signals_sound_title">"Existe aqui sinalização sonora para invisuais?"</string>
 </resources>

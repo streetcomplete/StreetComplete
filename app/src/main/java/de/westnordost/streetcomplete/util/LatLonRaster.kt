@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.util
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
-import java.util.*
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.max

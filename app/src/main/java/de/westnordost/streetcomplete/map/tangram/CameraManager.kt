@@ -77,11 +77,6 @@ class CameraManager(private val c: MapController, private val contentResolver: C
             cancelCameraAnimations(update)
             if (duration == 0L || isAnimationsOff) {
                 applyCameraUpdate(update)
-                // workaround https://github.com/tangrams/tangram-es/issues/2129
-                mainHandler.post {
-                    listener?.onAnimating()
-                    listener?.onAnimationsEnded()
-                }
             } else {
                 animateCameraUpdate(update, duration, interpolator)
             }

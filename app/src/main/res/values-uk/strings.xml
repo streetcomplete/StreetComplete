@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Супроводжувати мене"</string>
-    <string name="map_attribution_mapzen">"За підтримки %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© учасники OpenStreetMap"</string>
@@ -1367,9 +1366,6 @@
     <string name="quest_buildingType_semi_detached_description">"пара двух односімейних домів"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Ряд будинків"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"лінійний ряд подібних односімейних будинків"</string>
 
     <!-- Fuzzy -->
@@ -1381,9 +1377,6 @@
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Дім на воді"</string>
     <string name="quest_buildingType_bungalow">"Бунгало"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"маленький окремий будинок (дача, котедж, ...)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Житловий трейлер"</string>
@@ -1550,6 +1543,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"Туалети"</string>
+    <string name="notification_channel_download">"Завантажити"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Чи є цей майданчик загальнодоступним?"</string>
@@ -1575,12 +1569,6 @@
     <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"Така висота виглядає нереальною. Ви впевнені?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Як охороняється цей залізничний переїзд?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Ніяк"</string>
 
     <!-- Fuzzy -->
     <string name="action_deselect_all">"Зняти вибір з усіх"</string>
@@ -1610,8 +1598,19 @@
     <string name="quest_building_underground_title">"Чи є ця будівля повністю під землею?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Чи є тут звукові сигнали для сліпих?"</string>
+    <string name="quest_buildingType_title">"Якого типу ця будівля?"</string>
+    <string name="pref_title_theme_select">"Оберіть тему"</string>
+    <string name="theme_light">"Світла"</string>
+    <string name="theme_dark">"Темна"</string>
+    <string name="theme_system_default">"Системна"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Назва дому %s:"</string>
+    <string name="at_conscription_and_street_number">"Наскрізна нумерація %1$s, Номер орієнтації %2$s:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_title">"Якого типу ця будівля?"</string>
+    <string name="at_conscription_number">"Наскрізна нумерація %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Який робочий час для %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Чи доступний заклад %1$s (%2$s) для інвалідних візків?"</string>
+    <string name="quest_traffic_signals_sound_title">"Чи є тут звукові сигнали для сліпих?"</string>
 </resources>

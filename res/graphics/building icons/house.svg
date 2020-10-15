@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(3.7795 0 0 3.7795 -5.6895e-6 -990.52)">
+  <path d="m2.4989e-6 293.83 5.2917-1e-5v-10.583l-5.2917-5.2917z" fill="#c4aea0"/>
+  <path d="m0 274.77v4.2333l6.2852 6.4138 2.2461-2.2441z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#ad6262" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+ </g>
+ <g transform="matrix(3.7795 0 0 3.7795 -5.6895e-6 -994.52)">
+  <path d="m7.4083 294.88h17.992v-10.583l-9.525-6.35-8.4667 6.35z" fill="#deb486"/>
+  <rect x="8.4667" y="274.77" width="4.2333" height="6.35" fill="#deb486" style="paint-order:stroke markers fill"/>
+  <rect x="16.933" y="286.42" width="4.2333" height="8.4667" fill="#c08268" style="paint-order:stroke markers fill"/>
+  <rect x="9.525" y="287.48" width="5.2917" height="4.2333" fill="#95685e" style="paint-order:stroke markers fill"/>
+  <rect x="9.525" y="286.42" width="5.2917" height="1.0583" fill="#c08268" style="paint-order:stroke markers fill"/>
+  <path d="m5.2917 285.36 10.583-9.525 11.642 9.525" fill="none" stroke="#c84747" stroke-width="3.175"/>
+ </g>
+ <g>
+  <rect x="96" y="44" width="32" height="76" fill="#c4aea0" style="paint-order:stroke markers fill"/>
+  <rect x="104" y="56" width="16" height="16" fill="#88706b" style="paint-order:stroke markers fill"/>
+  <rect x="104" y="92" width="16" height="16" fill="#88706b" style="paint-order:stroke markers fill"/>
+  <rect x="104" y="88" width="16" height="4" fill="#ae897a" style="paint-order:stroke markers fill"/>
+  <rect x="104" y="52" width="16" height="4" fill="#ae897a" style="paint-order:stroke markers fill"/>
+  <path d="m96 44 8-28 24 3.8e-5v28z" fill="#ad6262"/>
+ </g>
+</svg>

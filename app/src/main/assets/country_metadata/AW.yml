@@ -1,3 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [CMB, RBC, Bancomatico, Arubabank, ArubaBank]
+chargingStationOperators: [Elmar]
 officialLanguages: [nl, pap]
 popularSports: [baseball]

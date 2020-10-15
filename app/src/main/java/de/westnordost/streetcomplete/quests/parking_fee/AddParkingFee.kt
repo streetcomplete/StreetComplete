@@ -1,17 +1,22 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddParkingFee(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<FeeAnswer>(o) {
+class AddParkingFee(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<FeeAnswer>(o) {
 
     override val tagFilters = """
         nodes, ways, relations with amenity = parking
-        and !fee
-        and !fee:conditional
         and access ~ yes|customers|public
+        and (
+            !fee and !fee:conditional
+            or fee older today -${r * 8} years
+        )
     """
     override val commitMessage = "Add whether there is a parking fee"
     override val wikiLink = "Tag:amenity=parking"
@@ -23,15 +28,21 @@ class AddParkingFee(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<
 
     override fun applyAnswerTo(answer: FeeAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            is HasFee   -> changes.add("fee", "yes")
-            is HasNoFee -> changes.add("fee", "no")
+            is HasFee   -> {
+                changes.updateWithCheckDate("fee", "yes")
+                changes.deleteIfExists("fee:conditional")
+            }
+            is HasNoFee -> {
+                changes.updateWithCheckDate("fee", "no")
+                changes.deleteIfExists("fee:conditional")
+            }
             is HasFeeAtHours -> {
-                changes.add("fee", "no")
-                changes.add("fee:conditional", "yes @ (${answer.hours.joinToString(";")})")
+                changes.updateWithCheckDate("fee", "no")
+                changes.addOrModify("fee:conditional", "yes @ (${answer.openingHours})")
             }
             is HasFeeExceptAtHours -> {
-                changes.add("fee", "yes")
-                changes.add("fee:conditional", "no @ (${answer.hours.joinToString(";")})")
+                changes.updateWithCheckDate("fee", "yes")
+                changes.addOrModify("fee:conditional", "no @ (${answer.openingHours})")
             }
         }
     }

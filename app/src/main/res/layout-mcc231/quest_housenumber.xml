@@ -12,8 +12,7 @@
         android:orientation="vertical"
         android:rowCount="2"
         android:columnCount="2"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@id/toggleKeyboardButton"
+        android:layout_centerHorizontal="true"
         >
 
         <TextView
@@ -38,8 +37,9 @@
                 android:textColor="@color/traffic_black"
                 app:backgroundTint="@color/traffic_black"
                 android:background="@drawable/background_housenumber_frame_slovak"
-                android:minHeight="62dp"
-                android:textSize="27dp"
+                android:minHeight="68dp"
+                android:textSize="32dp"
+                android:textColorHint="#2000"
                 android:imeOptions="actionNext"
                 tools:text="1234"
                 android:digits="0123456789.,- /"
@@ -71,7 +71,8 @@
                 app:backgroundTint="@color/traffic_red"
                 android:background="@drawable/background_housenumber_frame_slovak"
                 android:minHeight="62dp"
-                android:textSize="27dp"
+                android:textSize="32dp"
+                android:textColorHint="#2f00"
                 android:imeOptions="actionDone"
                 tools:text="12"
                 android:digits="0123456789.,- /"
@@ -87,8 +88,9 @@
         android:layout_width="64dp"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         tools:text="abc"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        tools:ignore="RtlHardcoded" />
 
 </RelativeLayout>

@@ -5,7 +5,6 @@ import android.animation.LayoutTransition.APPEARING
 import android.animation.LayoutTransition.DISAPPEARING
 import android.animation.TimeAnimator
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,8 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
+import androidx.core.net.toUri
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.R
@@ -117,27 +118,25 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
         achievementIconView.level = level
         achievementTitleText.setText(achievement.title)
 
+        achievementDescriptionText.isGone = achievement.description == null
         if (achievement.description != null) {
-            achievementDescriptionText.visibility = View.VISIBLE
             val arg = achievement.getPointThreshold(level)
             achievementDescriptionText.text = resources.getString(achievement.description, arg)
         } else {
-            achievementDescriptionText.visibility = View.GONE
             achievementDescriptionText.text = ""
         }
 
         val unlockedLinks = achievement.unlockedLinks[level].orEmpty()
-        if (unlockedLinks.isEmpty() || !showLinks) {
-            unlockedLinkTitleText.visibility = View.GONE
-            unlockedLinksList.visibility = View.GONE
+        val hasNoUnlockedLinks = unlockedLinks.isEmpty() || !showLinks
+        unlockedLinkTitleText.isGone = hasNoUnlockedLinks
+        unlockedLinksList.isGone = hasNoUnlockedLinks
+        if (hasNoUnlockedLinks) {
             unlockedLinksList.adapter = null
         } else {
-            unlockedLinkTitleText.visibility = View.VISIBLE
             unlockedLinkTitleText.setText(
                 if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
                 else R.string.achievements_unlocked_links
             )
-            unlockedLinksList.visibility = View.VISIBLE
             unlockedLinksList.adapter = LinksAdapter(unlockedLinks, this::openUrl)
         }
     }
@@ -280,7 +279,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
             *  This icon is in the center at first and should animate up while the dialog becomes
             *  visible. This movement is solved via a (default) layout transition here for which the
             *  APPEARING transition type is disabled because we animate the alpha ourselves. */
-            it.visibility = if (startDelay > 0) View.GONE else View.VISIBLE
+            it.isGone = startDelay > 0
             it.animate()
                 .setStartDelay(startDelay)
                 .withStartAction {
@@ -336,7 +335,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     }
 
     private fun openUrl(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         tryStartActivity(intent)
     }
 

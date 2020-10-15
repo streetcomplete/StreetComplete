@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.ktx.toYesNo
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
+class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = """
         nodes, ways with
@@ -15,13 +19,18 @@ class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryApi) : SimpleOverpass
           or 
           (highway = bus_stop and public_transport != stop_position)
         )
-        and !tactile_paving and physically_present != no and naptan:BusStopType != HAR
+        and physically_present != no and naptan:BusStopType != HAR
+        and (
+          !tactile_paving
+          or tactile_paving = no and tactile_paving older today -${r * 4} years
+          or tactile_paving older today -${r * 8} years
+        )
     """
     override val commitMessage = "Add tactile pavings on bus stops"
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_bus
 
-    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavinBusStop.kt
+    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavingBusStop.kt
     // #750
     override val enabledInCountries = NoCountriesExcept(
             // Europe
@@ -52,6 +61,6 @@ class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryApi) : SimpleOverpass
     override fun createForm() = TactilePavingForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("tactile_paving", if (answer) "yes" else "no")
+        changes.updateWithCheckDate("tactile_paving", answer.toYesNo())
     }
 }

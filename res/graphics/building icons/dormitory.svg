@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(3.2641 0 0 3.2641 -115.27 -842.54)">
+  <path d="m40.217 294.88h21.167v-21.167l-10.583-6.35-10.583 6.35z" fill="#deb486"/>
+  <rect x="42.333" y="276.89" width="4.2333" height="4.2333" fill="#95685e" style="paint-order:stroke markers fill"/>
+  <rect x="48.683" y="276.89" width="4.2333" height="4.2333" fill="#95685e" style="paint-order:stroke markers fill"/>
+  <rect x="55.033" y="276.89" width="4.2333" height="4.2333" fill="#95685e" style="paint-order:stroke markers fill"/>
+  <rect x="42.333" y="286.42" width="4.2333" height="4.2333" fill="#95685e" style="paint-order:stroke markers fill"/>
+  <rect x="48.683" y="287.48" width="4.2333" height="7.4083" fill="#c08268" style="paint-order:stroke markers fill"/>
+  <rect x="55.033" y="286.42" width="4.2333" height="4.2333" fill="#95685e" style="paint-order:stroke markers fill"/>
+  <rect x="42.333" y="285.36" width="4.2333" height="1.0583" fill="#c08268" style="paint-order:stroke markers fill"/>
+  <rect x="55.033" y="285.36" width="4.2333" height="1.0583" fill="#c08268" style="paint-order:stroke markers fill"/>
+  <rect x="42.333" y="275.83" width="4.2333" height="1.0583" fill="#c08268" style="paint-order:stroke markers fill"/>
+  <rect x="48.683" y="275.83" width="4.2333" height="1.0583" fill="#c08268" style="paint-order:stroke markers fill"/>
+  <rect x="55.033" y="275.83" width="4.2333" height="1.0583" fill="#c08268" style="paint-order:stroke markers fill"/>
+  <path d="m38.1 273.72 2.1167-8.4667h21.167l2.1167 8.4667z" fill="#c84747"/>
+  <rect x="43.392" y="264.19" width="4.2333" height="5.2917" fill="#deb486" style="paint-order:stroke markers fill"/>
+ </g>
+ <g transform="matrix(-3.2187 -1.3155 -1.3155 3.2187 904.75 -291.76)">
+  <path d="m177.8 176.35v4.2333c0 6.35 16.933 6.35 16.933 0v-4.2333z" fill="#6569aa"/>
+  <path d="m186.27 167.88 14.817 6.35-14.817 6.35-14.817-6.35z" fill="#464fa1"/>
+  <path d="m186.27 174.23-11.642 1.0583-1.859 4.6083" fill="none" stroke="#ffc133" stroke-linejoin="round" stroke-width="1.0583"/>
+  <ellipse cx="186.27" cy="174.23" rx="2.1167" ry="1.0583" fill="#5961b6" style="paint-order:markers fill stroke"/>
+  <path d="m172.77 179.9c-1.6323 2.006-5.7878 5.6094-2.8588 6.8345 2.9291 1.2252 2.5992-4.1905 2.8588-6.8345z" fill="#ffc133"/>
+  <ellipse transform="rotate(22.699)" cx="228.81" cy="99.281" rx="1.5875" ry="1.5701" fill="#ffc133" style="paint-order:markers fill stroke"/>
+ </g>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m28 112h72v-52l-72-4.3e-5z" fill="#cb9781"/>
+ <rect x="40" y="60" width="48" height="32" fill="#95685e" style="paint-order:normal"/>
+ <path d="m36 100 4-12h48l4 12z" fill="#c4c4c4"/>
+ <rect x="40" y="60" width="48" height="16" ry=".00010429" fill-opacity=".2" style="paint-order:stroke markers fill"/>
+ <path d="m20.667 59.733 11.333-19.733h64l12.667 19.733z" fill="#c84747"/>
+ <path d="m38.267 59.733c8e-6 4.8601-3.9399 8.8-8.8 8.8s-8.8-3.9399-8.8-8.8h17.6z" fill="#9a2e2e" style="paint-order:normal"/>
+ <path d="m55.867 59.733c1e-5 4.8601-3.9399 8.8-8.8 8.8-4.8601 0-8.8-3.9399-8.8-8.8h17.6z" fill="#c8c8c8" style="paint-order:normal"/>
+ <path d="m73.467 59.733c6e-6 4.8601-3.9399 8.8-8.8 8.8s-8.8-3.9399-8.8-8.8h17.6z" fill="#9a2e2e" style="paint-order:normal"/>
+ <path d="m91.067 59.733c7e-6 4.8601-3.9399 8.8-8.8 8.8s-8.8-3.9399-8.8-8.8h17.6z" fill="#c8c8c8" style="paint-order:normal"/>
+ <path d="m108.67 59.733c1e-5 4.8601-3.9399 8.8-8.8 8.8-4.8601 0-8.8-3.9399-8.8-8.8h17.6z" fill="#9a2e2e" style="paint-order:normal"/>
+ <path d="m38.267 59.733 7.7333-19.733h12l-2.1334 19.733z" fill="#fff"/>
+ <path d="m73.467 59.733-3.4667-19.733h12l9.0667 19.733z" fill="#fff"/>
+ <rect x="40" y="28" width="48" height="12" fill="#d6bdb1" style="paint-order:normal"/>
+</svg>

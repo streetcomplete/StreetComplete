@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.controls
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.getSystemService
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
@@ -16,7 +17,10 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /** Fragment that shows the upload button, including upload progress etc. */
@@ -61,14 +65,12 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
     override fun onStart() {
         super.onStart()
         /* Only show the button if autosync is off */
+        uploadButton.isGone = isAutosync
         if (!isAutosync) {
-            uploadButton.visibility = View.VISIBLE
             updateCount()
             updateProgress(uploadController.isUploadInProgress)
             uploadController.addUploadProgressListener(uploadProgressListener)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
-        } else {
-            uploadButton.visibility = View.GONE
         }
     }
 
@@ -114,7 +116,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
     /** Does not necessarily mean that the user has internet. But if he is not connected, he will
       * not have internet  */
     private fun isConnected(): Boolean {
-        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+        val connectivityManager = context?.getSystemService<ConnectivityManager>()
         val activeNetworkInfo = connectivityManager?.activeNetworkInfo
         return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }

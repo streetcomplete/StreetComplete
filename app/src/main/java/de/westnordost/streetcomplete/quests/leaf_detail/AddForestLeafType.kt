@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 
 class AddForestLeafType(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<String> {
     override val commitMessage = "Add leaf type"
@@ -23,10 +23,8 @@ class AddForestLeafType(private val overpassApi: OverpassMapDataAndGeometryApi) 
     private fun getOverpassQuery(bbox: BoundingBox) = """
         ${bbox.toGlobalOverpassBBox()}
         (
-          way[landuse = forest][!leaf_type](if: length()<700.0);
-          relation[landuse = forest][!leaf_type](if: length()<700.0);
-          way[natural = wood][!leaf_type](if: length()<700.0);
-          relation[natural = wood][!leaf_type](if: length()<700.0);
+          wr[landuse = forest][!leaf_type](if: length()<700.0);
+          wr[natural = wood][!leaf_type](if: length()<700.0);
           way[natural = tree_row][!leaf_type](if: length()<700.0);
         );
         ${getQuestPrintStatement()}""".trimIndent()

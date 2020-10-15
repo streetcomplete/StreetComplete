@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.changes
 
 import java.util.ArrayList
-import java.util.NoSuchElementException
 
 /** A diff that can be applied on a map of strings. Use StringMapChangesBuilder to conveniently build
  * it. A StringMapChanges is immutable.  */

@@ -29,7 +29,6 @@
                 android:id="@+id/speechBubbleTitleContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:background="@drawable/speech_bubble_top"
                 android:orientation="horizontal"
                 android:layoutDirection="locale"
@@ -49,7 +48,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/levelLabel"
+                        android:id="@+id/locationLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone"/>
@@ -69,7 +68,7 @@
                     android:scaleType="center"
                     android:src = "@drawable/ic_close_24dp"
                     android:background="?android:attr/actionBarItemBackground"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     android:contentDescription="@string/close"
                     android:padding="16dp"/>
 

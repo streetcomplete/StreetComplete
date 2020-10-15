@@ -27,16 +27,7 @@ class AddBuildingType (o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestTy
     override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags.containsKey("addr:housenumber"))
-            R.string.quest_buildingType_address_title
-        else
-            R.string.quest_buildingType_title
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val addr = tags["addr:housenumber"]
-        return if (addr != null) arrayOf(addr) else arrayOf()
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title
 
     override fun createForm() = AddBuildingTypeForm()
 

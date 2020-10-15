@@ -1,5 +1,5 @@
 global:
-    geometry_color: '#88536dfe' # location color + alpha
+    geometry_color: '#44D14000' # accent color + alpha
 
 textures:
     quests:
@@ -58,7 +58,9 @@ layers:
             draw:
                 quest-icons:
                     interactive: true
-                    priority: function() { return feature.order }
+                    priority: function() { return 1.0 - feature.importance / 100000.0 }
+                    order: function() { return 100000 + feature.importance }
+                    repeat_group: quest_pin
                     size: 66px
                     sprite: function() { return feature.kind }
                     sprite_default: quest
@@ -67,6 +69,8 @@ layers:
             filter: { $zoom: { min: 16 } }
             draw:
                 quest-dots:
+                    priority: 1
+                    order: 1
                     size: 16px
                     collide: false
                     offset: [-2.5px, -22px]
@@ -74,6 +78,9 @@ layers:
             filter: { $zoom: { min: 13, max: 15.999 } }
             draw:
                 quest-dots:
+                    priority: 1
+                    order: 1
+                    repeat_group: quest_dot
                     size: 16px
                     collide: true
                     offset: [-2.5px, -22px]

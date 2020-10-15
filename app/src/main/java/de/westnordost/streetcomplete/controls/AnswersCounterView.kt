@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.controls
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
+import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.view_answers_counter.view.*
 
@@ -17,16 +16,15 @@ class AnswersCounterView @JvmOverloads constructor(
 ) : RelativeLayout(context, attrs, defStyleAttr)  {
 
     var uploadedCount: Int = 0
-        @SuppressLint("SetTextI18n")
         set(value) {
             field = value
-            textView.text = " $value "
+            textView.text = value.toString()
         }
 
     var showProgress: Boolean = false
         set(value) {
             field = value
-            progressView.visibility = if(value) View.VISIBLE else View.INVISIBLE
+            progressView.isInvisible = !value
         }
 
     init {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m64 24c4e-5 0-32 4-40 12v68h79.998l2e-3 -68c-8-8-40-12-40-12z" fill="#9c9c9c" style="paint-order:markers fill stroke"/>
+ <path d="m64 24c-1e-5 1.4e-4 -23.2 5.8636-32 12v68h64l-1e-5 -68c-8-8-32-12-32-12z" fill="#aaa" style="paint-order:markers fill stroke"/>
+ <path d="m64 24s8 4 16 12v68h-32v-68c8-8 16-12 16-12z" fill="#c6c6c6"/>
+ <rect x="20" y="96" width="88" height="8" fill="#6569aa" style="paint-order:markers fill stroke"/>
+ <rect x="20" y="36" width="88" height="8" fill="#6569aa" style="paint-order:markers fill stroke"/>
+ <path d="m40 104v-72" fill="none" stroke="#5c5c5c" stroke-width="6"/>
+ <path d="m52 104-3.7e-5 -72" fill="none" stroke="#5c5c5c" stroke-width="6"/>
+ <path d="m40 88 12 3.8e-5" fill="none" stroke="#5c5c5c" stroke-width="6"/>
+ <path d="m40 72h12" fill="none" stroke="#5c5c5c" stroke-width="6"/>
+ <path d="m40 55h12" fill="none" stroke="#5c5c5c" stroke-width="6"/>
+ <path d="m40 36h12" fill="none" stroke="#5c5c5c" stroke-width="6"/>
+</svg>

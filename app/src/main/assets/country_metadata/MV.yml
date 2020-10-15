@@ -1,8 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Bank of Maldives, BML]
 firstDayOfWorkweek: Su
 isLeftHandTraffic: true
 mobileCountryCode: 472
 officialLanguages: [dv]
-orchardProduces: [banana, papaya, coconut, tomato, chilli_pepper, sweet_pepper, lemon, lime, guava,
-  mango, mangosteen, areca_nut]
+orchardProduces: [banana, papaya, coconut, tomato, chilli_pepper, sweet_pepper, lemon, lime, guava, mango, mangosteen,
+   areca_nut]
 popularReligions: [muslim]

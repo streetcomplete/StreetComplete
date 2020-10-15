@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64s-64-28.654-64-64 28.654-64 64-64 64 28.654 64 64" fill="#529add" stroke-width=".2"/>
+ <path d="m73.556 56.686a15.525 15.525 0 0 1-6.9518 15.381 15.525 15.525 0 0 1-16.879-0.054418 15.525 15.525 0 0 1-6.8521-15.426" fill="none" stroke="#000" stroke-linecap="round" stroke-opacity=".2" stroke-width="6.9997" style="paint-order:normal"/>
+ <path d="m80.783 48.927-17.624-5.9578-11.896 8.2355c-1.7137-4.6796-6.3966-11.189-9.7278-14.632" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".2" stroke-width="8.0001"/>
+ <path d="m34.254 57.98c-3.6246-7.3249-0.87216-13.372 7.3891-21.467" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".2" stroke-width="6.9997"/>
+ <path d="m41.746 19.186a6.806 6.806 0 0 1 0.01898 9.6251 6.806 6.806 0 0 1-9.6251 0.01898 6.806 6.806 0 0 1-0.01898-9.6251 6.806 6.806 0 0 1 9.6251-0.01898" fill-opacity=".2" stroke-opacity=".2" stroke-width=".59891" style="paint-order:normal"/>
+ <path d="m73.604 52.593a15.525 15.525 0 0 1-6.9518 15.381 15.525 15.525 0 0 1-16.879-0.054419 15.525 15.525 0 0 1-6.8521-15.426" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="6.9997" style="paint-order:normal"/>
+ <path d="m80.832 44.835-17.624-5.9578-11.896 8.2355c-1.7137-4.6796-6.3966-11.189-9.7278-14.632" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.0001"/>
+ <path d="m34.195 53.946c-3.6246-7.3249-0.87216-13.372 7.3891-21.467" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.9997"/>
+ <path d="m41.793 15.091a6.806 6.806 0 0 1 0.01898 9.6251 6.806 6.806 0 0 1-9.6251 0.01898 6.806 6.806 0 0 1-0.01898-9.6251 6.806 6.806 0 0 1 9.6251-0.01898" fill="#fff" stroke-width=".599" style="paint-order:normal"/>
+ <path d="m40 120v-16h24v-16h24v-16h24" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="8"/>
+ <path d="m40 116v-16h24v-16h24v-16h24" fill="none" stroke="#fff" stroke-width="8"/>
+</svg>

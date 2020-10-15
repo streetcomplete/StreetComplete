@@ -63,6 +63,7 @@
             android:layout_toLeftOf="@id/upload_button_fragment"
             />
 
+        <!-- note the other compass in quest_street_side_puzzle -->
         <RelativeLayout
             android:id="@+id/compassView"
             android:layout_width="@dimen/map_button_size"
@@ -77,9 +78,11 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/compassNorth"
-                android:textColor="#000"
                 android:layout_alignParentTop="true"
-                android:text="@string/compass_north_one_letter"/>
+                android:text="@string/compass_north_one_letter"
+                android:textColor="#000"
+                android:textSize="12dp"
+            />
 
             <ImageView
                 android:layout_width="wrap_content"

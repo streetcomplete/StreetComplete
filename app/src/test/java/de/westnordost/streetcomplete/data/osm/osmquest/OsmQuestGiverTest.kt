@@ -121,6 +121,17 @@ class OsmQuestGiverTest {
 
         verify(osmQuestController).updateForElement(emptyList(), emptyList(), NODE.type, NODE.id)
     }
+
+    @Test fun `recreate quests`() {
+        val questType2: OsmElementQuestType<*> = mock()
+        osmQuestGiver.recreateQuests(NODE, GEOM, listOf(questType, questType2))
+
+        val expectedQuests = listOf(
+            OsmQuest(questType, NODE.type, NODE.id, GEOM),
+            OsmQuest(questType2, NODE.type, NODE.id, GEOM)
+        )
+        verify(osmQuestController).updateForElement(expectedQuests, emptyList(), NODE.type, NODE.id)
+    }
 }
 
 private val POS = OsmLatLon(10.0, 10.0)

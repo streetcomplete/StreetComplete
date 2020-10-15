@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"跟踪当前位置"</string>
-    <string name="map_attribution_mapzen">"由 %s 提供"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap 贡献者"</string>
@@ -1149,6 +1148,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"这是一个野餐桌"</string>
+    <string name="quest_religion_for_place_of_worship_title">"这个场所所属的宗教信仰是？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_christian">"基督教"</string>
@@ -1315,9 +1315,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_generic_item_confirmation">"你确定无法更精确描述吗？"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;要显示地图，向量图砖由 &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; 取得。服务 log 用在暱名统计之用，找出可能的问题，过几天就会删除。&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;对一些任务来说，需要从第三方下载额外的资料。通常来说，单行道任务需要连线 API，同样放在 westnordost.de，储存可能的单行道。&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1372,9 +1369,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_semi_detached_description">"两个单一家庭房屋"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"排屋"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"一排单一家庭的房屋"</string>
 
     <!-- Fuzzy -->
@@ -1386,9 +1380,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"船屋"</string>
     <string name="quest_buildingType_bungalow">"平房"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"小型附属房屋（夏日房屋、渡假小屋，...）"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"静态大篷车"</string>
@@ -1622,12 +1613,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_noteDiscussion_hide2">"由 %1$s、%2$s 隐藏"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"铁路平交道的保护措施？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"没有"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;附加在笔记中的照片会上传到我的服务器中，在笔记解决之后会被删除。上传前，照片中的元数据会被移除。&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1662,6 +1647,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"这座建筑是否完全位于地下？"</string>
+    <string name="quest_wheelchairAccess_outside_title">"这个地方对轮椅使用者友善吗？"</string>
+    <string name="quest_traffic_signals_button_title">"这些交通灯有按钮供行人发送行走指示吗？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"这里能够停放多少辆摩托车？"</string>
@@ -1671,10 +1658,14 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"默认情况下，此任务类型为禁用状态，因为这通常需要检查整条街道的限速标志，不只是突出显示的部分。有时，仅解决一个任务就可能会很困难。Ingress 可能对此类任务有一定帮助。"</string>
+    <string name="pref_title_quests_restore_hidden">"恢复隐藏任务"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <!-- Fuzzy -->
     <string name="underground">"地下："</string>
+    <string name="quest_sidewalk_value_yes">"人行道"</string>
+    <string name="quest_sidewalk_value_no">"没有人行道"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"这里的路有禁止行人行走吗？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_title">"这栋建筑物的类型是什么?"</string>
@@ -1856,4 +1847,15 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste_description">"所以，这是一个回收任何垃圾的设施，比如袋装的生活垃圾？"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"房屋名称 %s："</string>
+    <string name="at_conscription_and_street_number">"征兵（Conscription）号码 %1$s, 定位号码 %2$s:"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_conscription_number">"征兵（Conscription）号码 %s:"</string>
+    <string name="at_housenumber">"房屋数量 %s:"</string>
+    <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 的开放时间/营业时间是？"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) 是否可以轮椅无障碍通行？"</string>
+    <string name="quest_traffic_signals_sound_title">"这个交通灯带有声音，供盲人使用吗？"</string>
 </resources>

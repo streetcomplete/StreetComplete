@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.core.text.parseAsHtml
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import java.util.*
 import javax.inject.Inject
@@ -108,14 +109,12 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     private fun confirmPossibleAbbreviation(name: String, onConfirmed: () -> Unit) {
-        val title = Html.fromHtml(
-            resources.getString(
-                R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
-                "<i>" + Html.escapeHtml(name) + "</i>"
-            )
-        )
+        val title = resources.getString(
+            R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
+            "<i>" + Html.escapeHtml(name) + "</i>"
+        ).parseAsHtml()
 
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(title)
             .setMessage(R.string.quest_streetName_nameWithAbbreviations_confirmation_description)
             .setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive) { _, _ -> onConfirmed() }

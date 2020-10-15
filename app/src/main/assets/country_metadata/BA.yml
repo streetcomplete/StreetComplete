@@ -1,7 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [UniCredit Bank, Raiffeisen, Unicredit bank, Raiffeisen Bank, Nova Banka, Unicredit Bank, Unicredit, Raiffeisenbank,
+   Raiffeisen bank, Raifefisen Bank dd BIH, NLB, Unicredit banka, UniCredit, Raiffeisen Bank BiH, Komercijalna
+      Banka, Sparkasse, Sberbank, Raiffeisen banka, Raiffeisen Bank dd BIH, NLB Banka, BBI]
+chargingStationOperators: [City]
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 218
 officialLanguages: [bs, hr, sr]
-orchardProduces: [plum, apple, tomato, grape, chilli_pepper, sweet_pepper, raspberry, pear, strawberry,
-  peach, cherry, walnut, chestnut, apricot, avocado, fig]
+orchardProduces: [plum, apple, tomato, grape, chilli_pepper, sweet_pepper, raspberry, pear, strawberry, peach, cherry,
+   walnut, chestnut, apricot, avocado, fig]

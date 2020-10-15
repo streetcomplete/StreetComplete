@@ -1,6 +1,14 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Bancolombia, Davivienda, Servibanca, BBVA, A Toda Hora S.A. (Red Aval), ATH, Banco de Bogota, Colpatria,
+   Banco de Bogotá, Grupo Aval, Banco Popular, Servibanca S.A., Banco Caja Social, Citibank, Av Villas,
+   servibanca, bancolombia, ServiBanca, Caja Social, Banco Agrario, AV Villas, banco popular, banco de
+      bogota, Grupo AVAL, Banco Colombia, Banco Agrario de Colombia, BanColombia, Bacolombia, polv, davivienda,
+   cespo, cajero Bancolombia, cajero BBVA, ath, VIA baloto, Casa Kennedy, Cajero Bancolombia, Cajero,
+   COOMULDESA, CAJERO BANCO POPULAR, BancoBogota, Banco Pichincha, Banco AV Villas, BANCOLOMBIA, A Toda
+      Hora (ATH) S.A.]
+chargingStationOperators: [Codensa, parqueadero, Terpel, Mobil]
 mobileCountryCode: 732
 officialLanguages: [es]
-orchardProduces: [banana, pineapple, coffee, tomato, guava, mango, mangosteen, avocado, lemon, lime,
-  papaya, orange, coconut, cashew_nut, strawberry, cacao, peach, grape]
+orchardProduces: [banana, pineapple, coffee, tomato, guava, mango, mangosteen, avocado, lemon, lime, papaya, orange, coconut,
+   cashew_nut, strawberry, cacao, peach, grape]
 popularSports: [soccer, tennis, basketball, baseball, volleyball]

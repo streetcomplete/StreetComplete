@@ -58,7 +58,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     interface Listener {
         fun onClickedQuest(questGroup: QuestGroup, questId: Long)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
-        fun onClickedLocationMarker()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -115,10 +114,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
                 listener?.onClickedQuest(pickedQuestGroup, pickedQuestId)
             } else {
                 val pickMarkerResult = controller?.pickMarker(x,y)
-
-                if (pickMarkerResult != null && pickMarkerResult.marker == locationMarker) {
-                    listener?.onClickedLocationMarker()
-                } else {
+                if (pickMarkerResult == null) {
                     onClickedMap(x, y)
                 }
             }
@@ -147,13 +143,18 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         putQuestGeometry(quest.geometry)
     }
 
-    fun endFocusQuest() {
+    /** Clear focus on current quest but do not return to normal view yet */
+    fun clearFocusQuest() {
         removeQuestGeometry()
         clearMarkersForCurrentQuest()
         hideQuestSelectionMarkers()
         removeSelectedQuestPins()
+    }
+
+    fun endFocusQuest() {
+        clearFocusQuest()
         restoreCameraPosition()
-        followPosition()
+        centerCurrentPositionIfFollowing()
     }
 
     private fun zoomAndMoveToContain(g: ElementGeometry, offset: RectF) {
@@ -177,13 +178,14 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     private fun screenAreaContains(g: ElementGeometry, offset: RectF): Boolean {
         val controller = controller ?: return false
+        val p = PointF()
         return when (g) {
             is ElementPolylinesGeometry -> g.polylines
             is ElementPolygonsGeometry -> g.polygons
             else -> listOf(listOf(g.center))
         }.flatten().all {
-            val p = controller.latLonToScreenPosition(it)
-            p.x >= offset.left && p.x <= mapView.width - offset.right
+            val isContained = controller.latLonToScreenPosition(it, p, false)
+            isContained && p.x >= offset.left && p.x <= mapView.width - offset.right
               && p.y >= offset.top  && p.y <= mapView.height - offset.bottom
         }
     }

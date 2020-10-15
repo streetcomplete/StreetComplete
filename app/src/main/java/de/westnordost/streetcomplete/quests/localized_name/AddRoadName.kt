@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.localized_name
+package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
@@ -9,11 +9,12 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
-import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.quests.localized_name.data.putRoadNameSuggestion
+import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.quests.LocalizedName
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.quests.road_name.data.putRoadNameSuggestion
 
 class AddRoadName(
     private val overpassApi: OverpassMapDataAndGeometryApi,
@@ -88,18 +89,18 @@ class AddRoadName(
     }
 
     private fun applyAnswerRoadName(answer: RoadName, changes: StringMapChangesBuilder) {
-        for ((languageCode, name) in answer.localizedNames) {
-            if (languageCode.isEmpty()) {
-                changes.addOrModify("name", name)
-            } else {
-                changes.addOrModify("name:$languageCode", name)
+        for ((languageTag, name) in answer.localizedNames) {
+            val key = when (languageTag) {
+                "" -> "name"
+                "international" -> "int_name"
+                else -> "name:$languageTag"
             }
+            changes.addOrModify(key, name)
         }
         // these params are passed from the form only to update the road name suggestions so that
         // newly input street names turn up in the suggestions as well
-        val points = answer.wayGeometry.polylines.first()
-        val roadNameByLanguage = answer.localizedNames.associate { it.languageCode to it.name }
-        roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
+        val roadNameByLanguage = answer.localizedNames.associate { it.languageTag to it.name }
+        roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, answer.wayGeometry)
     }
 
     companion object {
@@ -111,7 +112,7 @@ class AddRoadName(
         private const val ROADS_WITHOUT_NAMES =
                 "way[highway ~ \"^($NAMEABLE_ROADS)$\"][!name][!ref][noname != yes][!junction][area != yes]"
         // this must be the same as above but in tag filter expression syntax
-        private val ROADS_WITHOUT_NAMES_TFE by lazy { FiltersParser().parse(
+        private val ROADS_WITHOUT_NAMES_TFE by lazy { ElementFiltersParser().parse(
                 "ways with highway ~ $NAMEABLE_ROADS and !name and !ref and noname != yes and !junction and area != yes"
         )}
 
@@ -122,4 +123,4 @@ class AddRoadName(
 }
 
 private fun LocalizedName.isRef() =
-    languageCode.isEmpty() && name.matches("[A-Z]{0,3}[ -]?[0-9]{0,5}".toRegex())
+    languageTag.isEmpty() && name.matches("[A-Z]{0,3}[ -]?[0-9]{0,5}".toRegex())

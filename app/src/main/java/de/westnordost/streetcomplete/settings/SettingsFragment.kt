@@ -3,9 +3,12 @@ package de.westnordost.streetcomplete.settings
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.bundleOf
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
@@ -110,9 +113,13 @@ class SettingsFragment : PreferenceFragmentCompat(),
             }
             Prefs.AUTOSYNC -> {
                 if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
+                    val view = LayoutInflater.from(activity).inflate(R.layout.dialog_tutorial_upload, null)
+                    val filled = requireContext().getString(R.string.action_download)
+                    val uploadExplanation = view.findViewById<TextView>(R.id.tutorialDownloadPanel)
+                    uploadExplanation.text = context!!.getString(R.string.dialog_tutorial_download, filled)
                     context?.let {
                         AlertDialog.Builder(it)
-                            .setView(R.layout.dialog_tutorial_upload)
+                            .setView(view)
                             .setPositiveButton(android.R.string.ok, null)
                             .show()
                     }
@@ -129,14 +136,10 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
         if (preference is DialogPreferenceCompat) {
-            fragmentManager?.let {
-                val fragment = preference.createDialog()
-                val bundle = Bundle(1)
-                bundle.putString("key", preference.getKey())
-                fragment.arguments = bundle
-                fragment.setTargetFragment(this, 0)
-                fragment.show(it, "androidx.preference.PreferenceFragment.DIALOG")
-            }
+            val fragment = preference.createDialog()
+            fragment.arguments = bundleOf("key" to preference.key)
+            fragment.setTargetFragment(this, 0)
+            fragment.show(parentFragmentManager, "androidx.preference.PreferenceFragment.DIALOG")
         } else {
             super.onDisplayPreferenceDialog(preference)
         }

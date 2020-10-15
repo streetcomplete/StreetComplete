@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Síguime"</string>
-    <string name="map_attribution_mapzen">"Emplega %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Collaboradores d'OpenStreetMap"</string>
@@ -1321,9 +1320,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_generic_item_confirmation">"¿De xuru que nun pues ser más específicu/a?"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Pa poder amosar el mapa cargamos les distintes porciones en formatu vectorial de &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. El serviciu lleva un rexistru anónimu de los pidimientos con fines estadísticos y de correición d'errores pero esborrámoslos en pasando unos díes.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; En dalgunes misiones, descárguense datos adicionales de terceros. En particular, la busca de cais de sentíu únicu consulta una API, que ta agospiada en westnordost.de, sobre posibles cais de sentíu únicu. &lt;/ p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1378,9 +1374,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_buildingType_semi_detached_description">"par de viviendes unifamiliares"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Casa adosada"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"conxuntu de viviendes unifamiliares adosaes"</string>
 
     <!-- Fuzzy -->
@@ -1392,9 +1385,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Casa flotante"</string>
     <string name="quest_buildingType_bungalow">"Bungaló"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"xalé pequeñu (casa de branu, de vacaciones, ...)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravana"</string>
@@ -1628,12 +1618,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_noteDiscussion_hide2">"Anubrío por %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"¿Cómo ta protexíu esti pasu a nivel?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Nun lo ta"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Les semeyes qu'amiestes a una nota xúbense al mio sirvidor y desaníciense unos díes depués de que la nota se resuelva. Los metadatos esbórrense primero de xubila.&lt;p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1670,9 +1654,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_building_underground_title">"¿Esti edificiu ta baxo tierra dafechu?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"¿Tien señales sonores pa persones con discapacidá visual?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que nun hai más d'un pasu pa poder entrar."</string>
 
     <!-- Fuzzy -->
@@ -1689,4 +1670,14 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"Esti tipu d'entruga ta desactivada de mano porque, pelo xeneral, habría que buscar señales de llende de velocidá en tola cai, non sólo de la seición resaltada. Puede ser demasiáu trabayu pa completar una sola xera."</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Nome de la casa %s:"</string>
+    <string name="at_conscription_and_street_number">"Númberu de «conscripción» %1$s, númberu d'«orientación» %2$s:"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_conscription_number">"Númberu de «conscripción» %s:"</string>
+    <string name="quest_openingHours_name_type_title">"¿Cuálu ye l'horariu d'apertura de %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"¿%1$s (%2$s) ye accesible con siella de ruedes?"</string>
+    <string name="quest_traffic_signals_sound_title">"¿Tien señales sonores pa persones con discapacidá visual?"</string>
 </resources>

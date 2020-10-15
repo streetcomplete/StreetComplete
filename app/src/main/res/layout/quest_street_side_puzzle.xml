@@ -24,40 +24,11 @@
         <de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
             android:id="@+id/puzzleView"
             android:layout_width="match_parent"
-            android:layout_height="112dp"
+            android:layout_height="@dimen/street_side_puzzle_height"
             android:clipChildren="false"
             android:clipToPadding="false"/>
 
-        <RelativeLayout
-            android:id="@+id/compassView"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:background="@drawable/background_white_circle_1dp_stroke"
-            android:textColor="#000"
-            android:padding="4dp"
-            android:layout_margin="8dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/compassNorth"
-                android:layout_alignParentTop="true"
-                android:text="@string/compass_north_one_letter"
-                android:textColor="#000"
-                android:textSize="10dp"/>
-
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/ic_compass_needle_black_24dp"
-                android:tint="#cc3333"
-                android:id="@+id/compassNeedleView"
-                android:layout_below="@+id/compassNorth"
-                />
-        </RelativeLayout>
+        <!-- note the other compass in fragment_main -->
+        <include layout="@layout/view_little_compass"/>
     </RelativeLayout>
 </LinearLayout>

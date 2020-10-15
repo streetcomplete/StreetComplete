@@ -1,3 +1,5 @@
+@file:Suppress("NonAsciiCharacters")
+
 package de.westnordost.streetcomplete.util
 
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -292,12 +294,11 @@ fun LatLon.isInPolygon(polygon: List<LatLon>): Boolean {
             if (lonDiff == 0.0) return true
             // ray crosses polygon boundary. ignore if this intersection was already counted
             // when looking at the last intersection
+            val isIntersectionAtVertex = lat == lat1
             if (lonDiff > 0 && !lastWasIntersectionAtVertex) {
                 oddNumberOfIntersections = !oddNumberOfIntersections
-                lastWasIntersectionAtVertex = intersectionLongitude == lon1
-            } else {
-                lastWasIntersectionAtVertex = false
             }
+            lastWasIntersectionAtVertex = isIntersectionAtVertex
         }
     }
     return oddNumberOfIntersections

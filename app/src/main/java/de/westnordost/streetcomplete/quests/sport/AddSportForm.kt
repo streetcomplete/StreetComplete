@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.sortedBy
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddSportForm : AImageListQuestAnswerFragment<String, List<String>>() {
 
@@ -66,7 +66,7 @@ class AddSportForm : AImageListQuestAnswerFragment<String, List<String>>() {
 
     override fun onClickOk(selectedItems: List<String>) {
         if (selectedItems.size > 3) {
-            AlertDialog.Builder(activity!!)
+            AlertDialog.Builder(requireContext())
                 .setTitle(R.string.quest_sport_manySports_confirmation_title)
                 .setMessage(R.string.quest_sport_manySports_confirmation_description)
                 .setPositiveButton(R.string.quest_manySports_confirmation_specific) { _, _ -> applyAnswer(selectedItems) }

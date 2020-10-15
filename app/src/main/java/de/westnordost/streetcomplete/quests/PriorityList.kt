@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.image_select.Item
 
 fun Collection<Item<String>>.sortedBy(names: Iterable<String>): List<Item<String>> {
     val result = toMutableList()

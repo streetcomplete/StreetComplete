@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Sledovať ma"</string>
-    <string name="map_attribution_mapzen">"Poháňa %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Prispievatelia OpenStreetMap"</string>
@@ -1315,9 +1314,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_generic_item_confirmation">"Ste si istý, že sa to nedá určiť presnejšie?"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Pre zobrazenie mapy sa využívajú dlaždice z &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Táto služba zaznamenáva požiadavky na dlaždice pre účely anonymnej štatistiky a detekciu problémov, ale záznamy maže po pár dňoch.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Dáta pre niektoré úlohy sa sťahujú od tretích strán. Napr. úlohy týkajúce sa jednosmeriek používajú API westnordost.de na zistenie pravdepodobných kandidátov na jednosmerky.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1372,9 +1368,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_buildingType_semi_detached_description">"pár rodinných domov"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Radový dom"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"radová zástavba rodinných domov"</string>
 
     <!-- Fuzzy -->
@@ -1386,9 +1379,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Hausbót"</string>
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"malý samostatný dom (letný dom, prázdninová chata, ...)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Statický karavan"</string>
@@ -1622,12 +1612,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_noteDiscussion_hide2">"Schoval(a) %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Ako je chránený tento železničný priechod."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Nie je"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotky, ktoré priložíte k poznámke sú nahrané na moj server a vymazané pár dní po tom, čo je poznámka označená ako vyriešená. Ich metadáta sú odstránené pre nahraním.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1664,9 +1648,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_building_underground_title">"Je táto buda úplne pod zemou?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Sú tu zvukové signály pre nevidiacich?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Čiastočne znamená, že k vstupu vedie najviac jeden schod."</string>
 
     <!-- Fuzzy -->
@@ -1693,4 +1674,14 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_recycling_type_shoes">"Topánky"</string>
     <string name="quest_recycling_type_electric_appliances">"Elektrické zariadenia"</string>
     <string name="quest_recycling_type_plastic_bottles">"Len plastové fľaše"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Názov budovy %s:"</string>
+    <string name="at_conscription_and_street_number">"Súpisné číslo %1$s, orientačné číslo %2$s:"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_conscription_number">"Súpisné číslo %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Aké má %1$s (%2$s) otváracie hodiny?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Má %1$s (%2$s) bezbariérový prístup?"</string>
+    <string name="quest_traffic_signals_sound_title">"Sú tu zvukové signály pre nevidiacich?"</string>
 </resources>

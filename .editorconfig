@@ -13,7 +13,7 @@ tab_width = 4
 [*.{java,py}]
 indent_style = tab
 
-[*.{kt}]
+[*.kt]
 indent_style = space
 indent_size = 4
 

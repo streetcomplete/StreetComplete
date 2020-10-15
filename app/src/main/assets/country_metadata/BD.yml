@@ -1,8 +1,41 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Dutch-Bangla Bank Limited ATM ডাচ-বাংলা ব্যাংক লিমিটেড এটিএম, DBBL, BRAC Bank Limited ATM ব্র্যাক ব্যাংক
+      লিমিটেড এটিএম, Dutch-Bangla Bank Limited ATM, Rupali Bank ATM, Islami Bank Bangladesh Limited ATM
+      ইসলামী ব্যাংক বাংলাদেশ লিমিটেড এটিএম, ডাচ-বাংলা ব্যাংক লিমিটেড, Trust Bank Limited ATM ট্রাস্ট ব্যাংক
+      লিমিটেডের এটিএম, Dutch Bangla Bank Limited, City Bank, AB Bank, ডাচ-বাংলা ব্যাংক, Prime Bank, Islami
+      Bank Bangladesh Limited, Islami Bank ATM, Eastern Bank ATM, Dutch-Bangla Bank Limited Fast Track,
+   Dutch Bangla Bank Limited (DBBL), DBBL ATM, City Bank ATM সিটি ব্যাংক এটিএম, Eastern Bank Limited ATM
+      ইস্টার্ন ব্যাংক লিমিটেড এটিএম, Eastern Bank Limited, DBBL Fast Track ডিবিবিএল ফাস্ট ট্র্যাক, BRAC
+      Bank Limited, AB Bank Limited ATM এবি ব্যাংক লিমিটেড এটিএম, The City Bank Limited, Mutual Trust
+      Bank Limited ATM মিউচুয়াল ট্রাস্ট ব্যাংক লিমিটেড এটিএম, Islami Bank ATM ইসলামী ব্যাংক এটিএম, EBL,
+   Dutch Bangla Bank (DBBL), DBBL First Track ATM, DBBL First Track, DBBL Fast Track, City Bank Limited
+      ATM সিটি ব্যাংক লিমিটেড এটিএম, BRAC Bank, যমুনা ব্যাংক লিমিটেড, UCB ATM, Trust Bank Limited ATM
+      ট্রাস্ট ব্যাংক লিমিটেড এটিএম, Trust Bank ATM, Prime Bank Limited ATM প্রাইম ব্যাংক লিমিটেড এটিএম,
+   Islami Bank Bangladesh Limited ATM, Dutch-Bangla Bank Limited Fast Track ATM ডাচ-বাংলা ব্যাংক লিমিটেড
+      ফার্স্ট ট্র্যাক এটিএম, Dutch-Bangla Bank Fast Track, Dutch Bangla Bank Fast Track, Dutch Bangla
+      Bank ATM, Dutch Bangla Bank, City Bank ATM, Brac Bank, Bank Asia Limited, Bank Asia ATM, BRAC Bank
+      Ltd, AB Bank Limited, AB Bank ATM, ডাচ-বাংলা ব্যাংক এটিএম, ডাচ বাংলা ব্যাংক, United Commercial Bank
+      Limited ATM ইউনাইটেড কমার্শিয়াল ব্যাংক লিমিটেডের এটিএম, United Commercial Bank Limited ATM ইউনাইটেড
+      কমার্শিয়াল ব্যাংক লিমিটেড এটিএম, United Commercial Bank Limited ATM, UCB ATM ইউসিবি এটিএম, Trust
+      Bank Limited, The City Bank, Standard Chartered Bank ATM, Standard Chartered Bank (SCB), Southeast
+      Bank Limited ATM সাউথইস্ট ব্যাংক লিমিটেডের এটিএম, Southeast Bank Limited ATM সাউথইস্ট ব্যাংক লিমিটেড
+      এটিএম, Southeast Bank Limited ATM, South East Bank Limited, Sonali Bank Limited ATM সোনালী ব্যাংক
+      লিমিটেড এটিএম, Pubali Bank Limited ATM, One Bank Limited, ONE Bank ATM, NCC Bank ATM এনসিসি ব্যাংকের
+      এটিএম, Mutual Trust Bank Limited (MTBL), Mutual Trust Bank, Mercantile Bank, Janata Bank, Jamuna
+      Bank Limited ATM, Jamuna Bank ATM Booth, Islami Bank Bangladesh Limited (IBBL), Islami Bank ATM
+      Booth ইসলামী ব্যাংক এটিএম বুথ, IFIC Bank Limited ATM আইএফআইসি ব্যাংকের এটিএম, IFIC Bank ATM, IFIC
+      Bank, IBBL ATM আইবিবিএল এটিএম, IBBL ATM, Eastern Bank Ltd, Eastern Bank Limited (EBL), Eastern Bank,
+   EXIM Bank Limited ATM এক্সিম ব্যাংক লিমিটেডের এটিএম, EBL ATM ইবিএল এটিএম, Dutch-Bangla Bank Ltd., Dutch-Bangla
+      Bank Limited Fast Track ডাচ-বাংলা ব্যাংক লিমিটেড ফার্স্ট ট্র্যাক, Dutch-Bangla Bank Limited, Dutch-Bangla
+      Bank Fast Track ATM, Dutch-Bangla Bank ATM ডাচ-বাংলা ব্যাংকের এটিএম, Dutch-Bangla Bank ATM, Dutch
+      Bangla Bank Ltd., Dutch Bangla Bank Limited ডাচ বাংলা ব্যাংক লিমিটেড, Dutch Bangla Bank Fast Track
+      ডাচ বাংলা ব্যাংক ফাস্ট ট্র্যাক, Dutch Bangla Bank ATM ডাচ বাংলা ব্যাংক এটিএম, Dhaka Bank Limited
+      ATM, DBBL atm, DBBL ATM ডিবিবিএল এটিএম, City Bank Limited, Brac Bank ATM, Bank Asia Limited ATM
+      ব্যাংক এশিয়া লিমিটেড এটিএম, BRAC Bank ATM]
 firstDayOfWorkweek: Su
 isLeftHandTraffic: true
 mobileCountryCode: 470
 officialLanguages: [bn]
-orchardProduces: [guava, mango, mangosteen, banana, tomato, pineapple, chilli_pepper, sweet_pepper,
-  papaya, areca_nut, coconut, tea, lemon, lime, grapefruit, orange, rubber]
+orchardProduces: [guava, mango, mangosteen, banana, tomato, pineapple, chilli_pepper, sweet_pepper, papaya, areca_nut,
+   coconut, tea, lemon, lime, grapefruit, orange, rubber]
 popularReligions: [muslim, hindu]

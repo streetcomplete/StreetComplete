@@ -1,16 +1,18 @@
 # use app/generateCountryMetadata.py to generate files used by StreetComplete
-# A mapping of additional languages that one can expect to find on a street sign that are not official languages
+# A mapping of additional languages that one can expect to find on a street sign that are not official languages.
+# "Latn" stands for romanization of the name in another script, see ISO 15924
 # Sources:
 # https://wiki.openstreetmap.org/wiki/Multilingual_names
 # https://commons.wikimedia.org/wiki/Category:Street_signs_by_country
 # https://en.wikipedia.org/wiki/Bilingual_sign#Bilingual_signs_around_the_world
-AE: [en]
-AM: [en]
-BG: [en]
-BH: [en]
-CN-SH: [en]
-CN-BJ: [en]
-EG: [en]
+# Street photos (see examples below)
+AE: [en] # https://www.google.de/maps/@25.2669909,55.2950915,3a,19.5y,17.64h,88.15t/data=!3m6!1e1!3m4!1sc7Wi9yd_IDdBhiBuKxDhVA!2e0!7i13312!8i6656
+AM: [en] # https://commons.wikimedia.org/wiki/File:2014_Erywa%C5%84,_Tablice_z_nazw%C4%85_ulicy_i_lampy_uliczne.jpg
+BG: [international] # https://commons.wikimedia.org/wiki/File:Streets_in_Sofia_2009_20090406_063.JPG
+BH: [en] # https://www.google.de/maps/@26.2116518,50.571297,3a,27.8y,3.41h,91.58t/data=!3m8!1e1!3m6!1sAF1QipND-vB6N4Ng0ySOnT5dE6SHYG_be-junMwo6rFa!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipND-vB6N4Ng0ySOnT5dE6SHYG_be-junMwo6rFa%3Dw203-h100-k-no-pi1.7818035-ya41.229305-ro0.24994235-fo100!7i5660!8i2830
+CN-SH: [en, international]
+CN-BJ: [en, international] # https://commons.wikimedia.org/wiki/File:Beijing_(November_2016)_-_087.jpg, https://commons.wikimedia.org/wiki/File:Beijing_(November_2016)_-_494.jpg
+EG: [en] # https://commons.wikimedia.org/wiki/Category:Street_signs_in_Egypt
 EE: [ru]
 # can be removed if osmBoundaries is extended to differenciate between Catalunia, Valencia, Basque,...
 ES: [ca, eu, gl, ast]
@@ -19,30 +21,30 @@ FR: [oc, ca, br]
 # can be removed if osmBoundaries is extended to differenciate between Scotland, Wales,...
 GB: [cy, gd]
 GE: [en]
-GR: [en]
+GR: [international] # https://www.google.de/maps/@37.989912,23.7274585,3a,15y,224.83h,86.89t/data=!3m6!1e1!3m4!1sGCleq5TEDRIyvL-5_dZBbQ!2e0!7i13312!8i6656
 HR: [sr, it]
-IL: [en]
+IL: [en] # https://commons.wikimedia.org/wiki/File:%D7%90%D7%9C%D7%A4%D7%A0%D7%93%D7%A8%D7%99.jpg
 IN: [en]
 IN-PY: [fr]
-IR: [en]
+IR: [en] # https://commons.wikimedia.org/wiki/Category:Street_signs_in_Tehran
 # in South Tyrol only
 IT: [de]
-JP: [en]
-JO: [en]
+JP: [ja-Latn] # https://commons.wikimedia.org/wiki/File:Tokorozawa%26Shin-ome_kaido-2005-8-30.jpg
+JO: [en] # https://commons.wikimedia.org/wiki/File:20100924_madaba38.JPG
 KH: [en]
-KR: [en]
+KR: [ko-Latn] # https://commons.wikimedia.org/wiki/File:Namdaemunsijang-gil_street_sign.JPG
 KW: [en]
+LA: [en, fr] # https://www.google.de/maps/@17.9651302,102.6057742,3a,17.3y,70.97h,86.53t/data=!3m9!1e1!3m7!1sUImjjPNiXRyHaFpwkKsgRw!2e0!7i13312!8i6656!9m2!1b1!2i33
 LB: [fr]
-LK: [en]
+LK: [en] # https://www.google.de/maps/@6.9124955,79.8754351,3a,48.8y,215.69h,90.18t/data=!3m8!1e1!3m6!1sAF1QipMd9tjatI7-bnWf9ouYQOi5DhrL4PYZa-sY7ng!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipMd9tjatI7-bnWf9ouYQOi5DhrL4PYZa-sY7ng%3Dw203-h100-k-no-pi0.48849252-ya108.93028-ro0.7708781-fo100!7i7680!8i3840
 MA: [fr,es]
-MK: [en]
+MK: [international]
 MM: [en]
 MO: [en]
-MY: [en]
 OM: [en]
 QA: [en]
 SA: [en]
 SY: [en]
 TN: [fr]
-TH: [en]
-TW: [en]
+TH: [en, th-Latn] # https://commons.wikimedia.org/wiki/File:Sommai.jpg
+TW: [en] # https://www.google.de/maps/@25.0490149,121.5314991,3a,24.6y,129.11h,70.53t/data=!3m6!1e1!3m4!1s4LB-HId__e4MI7d0YEVong!2e0!7i16384!8i8192

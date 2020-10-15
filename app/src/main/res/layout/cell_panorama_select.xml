@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:padding="2dp"
-                android:background="?android:attr/selectableItemBackground">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="2dp"
+    android:background="?android:attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,5 +34,14 @@
         android:layout_centerHorizontal="true"
         style="@style/ImageSelectLabel"
         android:paddingBottom="8dp"/>
+
+    <ImageView
+        android:id="@+id/dropDownArrowImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_right_white_96dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        app:elevation="8dp"/>
 
 </RelativeLayout>

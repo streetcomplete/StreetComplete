@@ -1,21 +1,24 @@
 package de.westnordost.streetcomplete.quests.construction
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
+import java.util.*
 
-open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDataAndGeometryApi)
-    : OsmElementQuestType<Boolean> {
+class MarkCompletedHighwayConstruction(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<Boolean>(o) {
 
+    override val tagFilters = """
+        ways with highway = construction
+         and (!opening_date or opening_date < today)
+         and older today -${r * 2} weeks
+    """
     override val commitMessage = "Determine whether construction is now completed"
     override val wikiLink = "Tag:highway=construction"
     override val icon = R.drawable.ic_quest_road_construction
@@ -34,27 +37,6 @@ open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDat
         }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
-
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpass.query(getOverpassQuery(bbox), handler)
-    }
-
-    /** @return overpass query string to get streets marked as under construction but excluding ones
-     * - with invalid construction tag
-     * - with tagged opening date that is in future
-     * - recently edited (includes adding/updating check_date tags)
-     */
-    private fun getOverpassQuery(bbox: BoundingBox): String {
-        val tagFilter = "highway = construction"
-
-        return bbox.toGlobalOverpassBBox() + """
-            way[$tagFilter]${isNotInFuture("opening_date")} -> .with_unknown_state;
-            way[$tagFilter]${hasRecentlyBeenEdited(14)} -> .recently_edited;
-            (.with_unknown_state; - .recently_edited;);
-        """.trimIndent() + "\n" + getQuestPrintStatement()
-    }
-
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
@@ -63,7 +45,7 @@ open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDat
             changes.modify("highway", value)
             deleteTagsDescribingConstruction(changes)
         } else {
-            changes.addOrModify(SURVEY_MARK_KEY, getCurrentDateString())
+            changes.addOrModify(SURVEY_MARK_KEY, Date().toCheckDateString())
         }
     }
 }

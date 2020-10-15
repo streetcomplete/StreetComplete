@@ -15,7 +15,8 @@ public class Prefs
 			KEEP_SCREEN_ON = "display.keepScreenOn",
 			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown",
 			THEME_SELECT = "theme.select",
-			OVERPASS_URL = "overpass_url";
+			OVERPASS_URL = "overpass_url",
+			RESURVEY_INTERVALS = "quests.resurveyIntervals";
 
 
 	public static final String
@@ -56,7 +57,12 @@ public class Prefs
 		AUTO(AppCompatDelegate.MODE_NIGHT_AUTO),
 		SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
 
-		public int appCompatNightMode;
+		public final int appCompatNightMode;
 		Theme(int appCompatNightMode) { this.appCompatNightMode = appCompatNightMode; }
+	}
+
+	public enum ResurveyIntervals
+	{
+		LESS_OFTEN, DEFAULT, MORE_OFTEN
 	}
 }

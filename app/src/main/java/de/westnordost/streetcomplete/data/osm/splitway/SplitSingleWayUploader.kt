@@ -93,7 +93,8 @@ class SplitSingleWayUploader @Inject constructor(private val mapDataApi: MapData
            previous way. The chunk with the most nodes is selected for this.
            This is the same behavior as JOSM and Vespucci. */
         val indexOfChunkToKeep = nodesChunks.indexOfMaxBy { it.size }
-        val tags = originalWay.tags?.toMap()
+        val tags = originalWay.tags?.toMutableMap()
+        tags?.transformTagsForSplit()
         var newWayId = -1L
         return nodesChunks.mapIndexed { index, nodes ->
             if(index == indexOfChunkToKeep) {
@@ -333,5 +334,27 @@ private fun Relation.findVias(relationType: String): List<RelationMember> {
             nodesAndWays.filter { it.role == "sign" }
         }
         else -> nodesAndWays.filter { it.role == "via" }
+    }
+}
+
+/** transform the tags because some tags shouldn't be carried over to the new ways as they may
+ *  be incorrect now */
+private fun MutableMap<String, String>.transformTagsForSplit() {
+    remove("step_count")
+
+    // only remove "incline" if it contains a number
+    val inclineNumberRegex = Regex("[0-9]")
+    val inclineValue = get("incline")
+    if (inclineValue != null && inclineNumberRegex.containsMatchIn(inclineValue)) remove("incline")
+
+    // only remove if "steps" is a number cause it is apparently also used to denote kind of steps
+    if (get("steps")?.toIntOrNull() != null) remove("steps")
+    remove("seats")
+
+    // remove any capacity: "capacity", "bicycle_parking:capacity", "parking:lane:both:capacity", "parking:lane:right:capacity:disabled" etc.
+    val capacityRegex = Regex("^(.*:)?capacity(:.*)?$")
+    val keysToDelete = keys.filter { capacityRegex.matches(it) }
+    for (key in keysToDelete) {
+        remove(key)
     }
 }

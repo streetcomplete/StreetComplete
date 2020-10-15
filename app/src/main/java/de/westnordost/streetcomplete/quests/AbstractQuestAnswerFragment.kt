@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.ContextWrapper
-import androidx.annotation.AnyThread
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -14,29 +13,31 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.PopupMenu
+import androidx.annotation.AnyThread
+import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
+import androidx.core.text.parseAsHtml
+import androidx.core.view.isGone
 import com.google.android.flexbox.FlexboxLayout
-
-import java.lang.ref.WeakReference
-import java.util.Locale
-
-import javax.inject.Inject
-
 import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.ktx.isArea
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import java.lang.ref.WeakReference
+import java.util.*
 import java.util.concurrent.FutureTask
+import javax.inject.Inject
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), IsShowingQuestDetails {
@@ -145,12 +146,10 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
 
-        val levelLabelText = getLevelLabelText()
+        val levelLabelText = getLocationLabelText()
+        locationLabel.isGone = levelLabelText == null
         if (levelLabelText != null) {
-            levelLabel.visibility = View.VISIBLE
-            levelLabel.text = levelLabelText
-        } else {
-            levelLabel.visibility = View.GONE
+            locationLabel.text = levelLabelText
         }
 
         // no content? -> hide the content container
@@ -187,26 +186,35 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
         answers.add(cantSay)
 
-        val way = osmElement as? Way
-        if (way != null) {
-            /* splitting up a closed roundabout can be very complex if it is part of a route
+        val isSplitWayEnabled = (questType as? OsmElementQuestType)?.isSplitWayEnabled == true
+        if (isSplitWayEnabled) {
+            val way = osmElement as? Way
+            if (way != null) {
+                /* splitting up a closed roundabout can be very complex if it is part of a route
                relation, so it is not supported
                https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
             */
-            val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
+                val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
                     way.tags?.get("junction") == "roundabout"
-            if (!isClosedRoundabout && !way.isArea()) {
-                val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
-                    onClickSplitWayAnswer()
+                if (!isClosedRoundabout && !way.isArea()) {
+                    val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
+                        onClickSplitWayAnswer()
+                    }
+                    answers.add(splitWay)
                 }
-                answers.add(splitWay)
             }
         }
         answers.addAll(otherAnswers)
         return answers
     }
 
-    private fun getLevelLabelText(): String? {
+    private fun getLocationLabelText(): CharSequence? {
+        // prefer to show the level if both are present because it is a more precise indication
+        // where it is supposed to be
+        return getLevelLabelText() ?: getHouseNumberLabelText()
+    }
+
+    private fun getLevelLabelText(): CharSequence? {
         val tags = osmElement?.tags ?: return null
         /* prefer addr:floor etc. over level as level is rather an index than how the floor is
            denominated in the building and thus may (sometimes) not coincide with it. E.g.
@@ -218,6 +226,31 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         val tunnel = tags["tunnel"]
         if(tunnel != null && tunnel == "yes" || tags["location"] == "underground") {
             return resources.getString(R.string.underground)
+        }
+        return null
+    }
+
+    private fun getHouseNumberLabelText(): CharSequence? {
+        val tags = osmElement?.tags ?: return null
+
+        val houseName = tags["addr:housename"]
+        val conscriptionNumber = tags["addr:conscriptionnumber"]
+        val streetNumber = tags["addr:streetnumber"]
+        val houseNumber = tags["addr:housenumber"]
+
+        if (houseName != null) {
+            return resources.getString(R.string.at_housename, "<i>" + Html.escapeHtml(houseName) + "</i>")
+                .parseAsHtml()
+        }
+        if (conscriptionNumber != null) {
+            if (streetNumber != null) {
+                return resources.getString(R.string.at_conscription_and_street_number, conscriptionNumber, streetNumber)
+            } else {
+                return resources.getString(R.string.at_conscription_number, conscriptionNumber)
+            }
+        }
+        if (houseNumber != null) {
+            return resources.getString(R.string.at_housenumber, houseNumber)
         }
         return null
     }
@@ -306,7 +339,14 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     protected fun setButtonsView(resourceId: Int) {
         otherAnswersButton.layoutParams = FlexboxLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+        removeButtonsView()
         activity?.layoutInflater?.inflate(resourceId, buttonPanel)
+    }
+
+    protected fun removeButtonsView() {
+        if (buttonPanel.childCount > 1) {
+            buttonPanel.removeViews(1, buttonPanel.childCount - 1)
+        }
     }
 
     @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {

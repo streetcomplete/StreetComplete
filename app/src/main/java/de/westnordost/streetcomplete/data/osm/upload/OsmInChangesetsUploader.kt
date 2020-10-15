@@ -45,7 +45,7 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
             try {
                 val uploadedElements = uploadSingle(quest)
                 for (element in uploadedElements) {
-                    updateElement(element)
+                    updateElement(element, quest)
                 }
                 uploadedQuestTypes.add(quest.osmElementQuestType)
                 onUploadSuccessful(quest)
@@ -81,7 +81,7 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
      *                ElementDao (or a controller in front of it) that takes care of that.
      *
      * This will remove the dependencies to  elementGeometryDB, questGiver etc */
-    private fun updateElement(newElement: Element) {
+    protected open fun updateElement(newElement: Element, quest: T) {
         val geometry = createGeometry(newElement)
         if (geometry != null) {
             elementGeometryDB.put(ElementGeometryEntry(newElement.type, newElement.id, geometry))

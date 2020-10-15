@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 35.346 0 64 28.654 64 64" fill="#9bbe55" stroke-width=".2"/>
+ <path d="m16.977 32.057v8.9316h3v5h88v-5h3v-8.9316z" fill-opacity=".2" style="paint-order:stroke markers fill"/>
+ <path d="m15.977 95.998h96v6h-96z" fill-opacity=".2" style="paint-order:stroke markers fill"/>
+ <path d="m25.977 41.998h12v40h-12z" fill="#f7f7f7" style="paint-order:stroke markers fill"/>
+ <path d="m19.977 81.998h88v8h-88z" fill="#d9d9d9" style="paint-order:stroke markers fill"/>
+ <path d="m15.977 89.998h96v8h-96z" fill="#bbb" style="paint-order:stroke markers fill"/>
+ <path d="m26.977 46.998v30h10v-30z" fill-opacity="0"/>
+ <path d="m90.977 46.998v30h10v-30z" fill-opacity="0"/>
+ <path d="m46.977 46.998v30h10v-30z" fill-opacity="0"/>
+ <path d="m70.977 46.998v30h10v-30z" fill-opacity="0"/>
+ <path d="m19.977 33.998h88v8h-88z" fill="#d9d9d9" style="paint-order:stroke markers fill"/>
+ <path d="m19.977 29.998v4h88v-4l-44-20z" fill="#f3f3f3" stroke="#bbb" stroke-width="6"/>
+ <path d="m89.977 41.998h12v40h-12z" fill="#f7f7f7" style="paint-order:stroke markers fill"/>
+ <path d="m69.977 41.998h12v40h-12z" fill="#f7f7f7" style="paint-order:stroke markers fill"/>
+ <path d="m45.977 41.998h12v40h-12z" fill="#f7f7f7" style="paint-order:stroke markers fill"/>
+</svg>

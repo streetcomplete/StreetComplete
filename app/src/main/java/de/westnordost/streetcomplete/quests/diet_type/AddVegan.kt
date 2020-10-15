@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.quests.diet_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddVegan(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddVegan(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         nodes, ways with 
@@ -13,7 +16,10 @@ class AddVegan(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Strin
           amenity ~ restaurant|cafe|fast_food and diet:vegetarian ~ yes|only 
           or amenity = ice_cream
         )
-        and name and !diet:vegan
+        and name and (
+          !diet:vegan 
+          or diet:vegan != only and diet:vegan older today -${r * 2} years
+        )
     """
     override val commitMessage = "Add vegan diet type"
     override val wikiLink = "Key:diet"
@@ -25,6 +31,6 @@ class AddVegan(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Strin
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_vegan)
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("diet:vegan", answer)
+        changes.updateWithCheckDate("diet:vegan", answer)
     }
 }

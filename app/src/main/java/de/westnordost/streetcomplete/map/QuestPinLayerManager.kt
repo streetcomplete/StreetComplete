@@ -128,20 +128,21 @@ class QuestPinLayerManager @Inject constructor(
             val properties = mapOf(
                 "type" to "point",
                 "kind" to questIconName,
-                "order" to getQuestDrawOrder(quest).toString(),
+                "importance" to getQuestImportance(quest).toString(),
                 MARKER_QUEST_GROUP to group.name,
                 MARKER_QUEST_ID to quest.id!!.toString()
             )
             Point(position.toLngLat(), properties)
         }
         synchronized(quests) {
-            if (quests[group] == null) quests[group] = LongSparseArray(256)
-            quests[group]?.put(quest.id!!, points)
+            quests.getOrPut(group, { LongSparseArray(256) }).put(quest.id!!, points)
         }
     }
 
     private fun remove(questId: Long, group: QuestGroup) {
-        quests[group]?.remove(questId)
+        synchronized(quests) {
+            quests[group]?.remove(questId)
+        }
     }
 
     private fun clear() {
@@ -181,19 +182,14 @@ class QuestPinLayerManager @Inject constructor(
         }
     }
 
-    private fun getQuestDrawOrder(quest: Quest): Int {
-        /* priority is decided by
-           - primarily by quest type to allow quest prioritization
-           - for quests of the same type - influenced by quest id,
-             this is done to reduce chance that as user zoom in a quest disappears,
-             especially in case where disappearing quest is one that user selected to solve
-             main priority part - values fit into Integer, but with as large steps as possible */
+    /** returns values from 0 to 100000, the higher the number, the more important */
+    private fun getQuestImportance(quest: Quest): Int {
         val questTypeOrder = questTypeOrders[quest.type] ?: 0
-        val freeValuesForEachQuest = Int.MAX_VALUE / questTypeOrders.size
+        val freeValuesForEachQuest = 100000 / questTypeOrders.size
         /* quest ID is used to add values unique to each quest to make ordering consistent
            freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int */
-        val hopefullyUniqueValueForQuest = (quest.id!! % freeValuesForEachQuest).toInt()
-        return questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
+        val hopefullyUniqueValueForQuest = ((quest.id?: 0) % freeValuesForEachQuest).toInt()
+        return 100000 - questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
     }
 
     companion object {

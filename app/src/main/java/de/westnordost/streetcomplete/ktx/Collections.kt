@@ -32,7 +32,7 @@ inline fun <T> List<T>.findNext(index: Int, predicate: (T) -> Boolean): T? {
     return null
 }
 
-/** Iterate through the given list in pairs */
+/** Iterate through the given list in pairs (advancing each one item, not two) */
 inline fun <T> Iterable<T>.forEachPair(predicate: (first: T, second: T) -> Unit) {
     val it = iterator()
     if (!it.hasNext()) return
@@ -70,3 +70,6 @@ inline fun <T> Iterable<T>.sumByFloat(selector: (T) -> Float): Float {
     }
     return sum
 }
+
+fun <T> Collection<T>.containsExactlyInAnyOrder(other: Collection<T>): Boolean =
+    other.size == size && containsAll(other)

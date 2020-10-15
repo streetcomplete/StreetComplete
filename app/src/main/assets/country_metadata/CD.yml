@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Rawbank, RawBank, Raw Bank, BIAC]
 mobileCountryCode: 630
 officialLanguages: [fr, mkw, ln, lua, sw]
-orchardProduces: [banana, guava, mango, mangosteen, papaya, pineapple, orange, avocado, tomato, chilli_pepper,
-  sweet_pepper, coffee, rubber, grapefruit, lemon, lime, cacao, tea]
+orchardProduces: [banana, guava, mango, mangosteen, papaya, pineapple, orange, avocado, tomato, chilli_pepper, sweet_pepper,
+   coffee, rubber, grapefruit, lemon, lime, cacao, tea]

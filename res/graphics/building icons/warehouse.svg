@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m12 100h104v-36l-52-28-52 24z" fill="#b75858"/>
+ <path d="m8 64 56-28 56 28" fill="none" stroke="#333" stroke-width="12.008"/>
+ <path d="m47.898 72h32.045v28h-32.045z" fill="#aaa" style="paint-order:stroke markers fill"/>
+ <path d="m52 76h24v4h-24z" fill="#808080" style="paint-order:stroke markers fill"/>
+ <path d="m52 84h24v4h-24z" fill="#808080" style="paint-order:stroke markers fill"/>
+ <path d="m52 92h23.937l0.06259 4h-24z" fill="#808080" style="paint-order:stroke markers fill"/>
+ <path d="m24 72h12v16h-12z" fill="#aaa" style="paint-order:normal"/>
+ <path d="m24 72h12v4h-12z" fill="#808080" style="paint-order:normal"/>
+ <path d="m92 72h12v16h-12z" fill="#aaa" style="paint-order:normal"/>
+ <path d="m92 72h12v4h-12z" fill="#808080" style="paint-order:normal"/>
+</svg>

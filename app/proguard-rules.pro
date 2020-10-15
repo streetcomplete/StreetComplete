@@ -8,13 +8,10 @@
 -dontnote org.apache.commons.codec.**
 -dontnote org.apache.http.**
 
-# JTS
-# (we don't use the AWT part of JTS)
--dontwarn java.awt.**
-
 # tangram
 # let's just keep everything
 -keep class com.mapzen.tangram.** { *; }
+-keep class com.mapzen.tangram.* { *; }
 
 # kryo
 -dontwarn java.beans.**
@@ -22,22 +19,25 @@
 -dontwarn sun.misc.**
 -dontwarn java.lang.invoke.SerializedLambda
 # let's just keep everything
+-keep class * implements java.io.Serializable { *; }
 -keep class com.esotericsoftware.kryo.** { *; }
+-keep class com.esotericsoftware.kryo.* { *; }
 
 # Lifecycle
--keep public class android.arch.lifecycle.** {
+-keep public class androidx.lifecycle.* {
     public protected *;
 }
--keepclassmembers class ** {
-    @android.arch.lifecycle.OnLifecycleEvent public *;
+-keepclassmembers class * {
+    @androidx.lifecycle.OnLifecycleEvent public *;
 }
 
-# evernote/android-job
--dontwarn com.evernote.android.job.gcm.**
--dontwarn com.evernote.android.job.GcmAvailableHelper
+# CountryInfo filled via reflection
+-keep class de.westnordost.streetcomplete.data.meta.CountryInfo { *; }
 
--keep public class com.evernote.android.job.v21.PlatformJobService
--keep public class com.evernote.android.job.v14.PlatformAlarmService
--keep public class com.evernote.android.job.v14.PlatformAlarmReceiver
--keep public class com.evernote.android.job.JobBootReceiver
--keep public class com.evernote.android.job.JobRescheduleService
+# just leave my stuff alone
+-keep class de.westnordost.* { *; }
+
+# see https://github.com/westnordost/StreetComplete/issues/2003
+-keepclassmembers class * implements android.os.Parcelable {
+        public static final ** CREATOR;
+}

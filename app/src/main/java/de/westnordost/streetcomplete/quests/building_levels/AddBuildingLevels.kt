@@ -20,14 +20,8 @@ class AddBuildingLevels(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
     override fun getTitle(tags: Map<String, String>) =
         when {
             tags.containsKey("building:part") -> R.string.quest_buildingLevels_title_buildingPart
-            tags.containsKey("addr:housenumber") -> R.string.quest_buildingLevels_address_title
             else -> R.string.quest_buildingLevels_title
         }
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val addr = tags["addr:housenumber"]
-        return if (addr != null) arrayOf(addr) else arrayOf()
-    }
 
     override fun createForm() = AddBuildingLevelsForm()
 
@@ -41,5 +35,5 @@ private val BUILDINGS_WITH_LEVELS = arrayOf(
     "house","residential","apartments","detached","terrace","dormitory","semi",
     "semidetached_house","bungalow","school","civic","college","university","public",
     "hospital","kindergarten","transportation","train_station", "hotel","retail",
-    "commercial","office","warehouse","industrial","manufacture","parking","farm",
-    "farm_auxiliary","barn","cabin")
+    "commercial","office","industrial","manufacture","parking","farm","farm_auxiliary",
+    "cabin")

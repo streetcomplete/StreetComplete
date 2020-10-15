@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Segueix-me"</string>
-    <string name="map_attribution_mapzen">"Funciona amb %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Col·laboradors de l'OpenStreetMap"</string>
@@ -936,7 +935,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_address_answer_house_name">"Cap número de casa però un nom…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_house_name_label">"Nom de la casa"</string>
+    <string name="quest_address_house_name_label">"Nom de la casa:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"nivell en la teulada"</string>
@@ -1319,10 +1318,6 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_generic_item_confirmation">"Esteu segur que no podeu determinar-ho de forma més concreta?"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Per a mostrar el mapa, s'obtenen tessel·les vectorials des de &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. El servei enregistra les peticions de tessel·les per a estadístiques anònimes i per a detectar problemes, però suprimeix els registres pocs dies després.&lt;/p&gt;
-"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Per a algunes missions, es baixen dades addicionals de tercers. En concret, la consulta de «oneway» consulta una API, també allotjada a westnordost.de, sobre possibles candidats per a «oneways». &lt;/ P&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1377,9 +1372,6 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_buildingType_semi_detached_description">"dues cases unifamiliars"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Cada adossada"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"un filera de cases unifamiliars similars"</string>
 
     <!-- Fuzzy -->
@@ -1391,9 +1383,6 @@ Per example 1,3 o 2-6."</string>
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Casa flotant"</string>
     <string name="quest_buildingType_bungalow">"Bungalou"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"petita casa unifamiliar aïllada (casa d'estiu, casa de vacances, ...)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravana estàtica"</string>
@@ -1627,12 +1616,6 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_noteDiscussion_hide2">"Ocult per %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Com està protegit aquest pas de vies?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"No ho està"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Les fotografies que adjunteu s'envien al meu servidor i se suprimeixen uns dies després que la nota s'ha resolt. Les metadades dels fitxers s'eliminen abans de pujar-los.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1667,9 +1650,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Aquest edifici és completament subterrani?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Hi ha senyals acústics per a cecs aquí?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialment significa que no hi ha més que un esglaó per accedir-hi."</string>
@@ -1798,7 +1778,7 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_generic_answer_differs_along_the_way">"Canvia al llarg de la via..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Si varia al llarg de la via, el primer pas és dividir la via. Després de fer-ho, es pot respondre la missió per a cada tram separadament. Tingueu en compte que les missions per als trams poden aparèixer molt més tard. Voleu dividir-la ara?"</string>
+    <string name="quest_split_way_description">"Si varia al llarg de la via, el primer pas és dividir la via. Després de fer-ho, es pot respondre la missió per a cada tram separadament. Voleu dividir-la ara?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Toqueu en la via per a dividir-la en els punts on la resposta varia. Intenteu de ser tan precís com sigui possible, podeu apropar-vos-hi com és habitual."</string>
@@ -1859,9 +1839,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Toqueu les marques i seleccioneu una resposta per al costat de la via indicat."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Què es pot deixar aquí per a reciclar?"</string>
@@ -1994,4 +1971,16 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="link_category_maps_title">"Mapes"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Nom de la casa %s:"</string>
+    <string name="at_conscription_and_street_number">"Número de circumscripció %1$s, nombre d'orientació %2$s:"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_conscription_number">"Número de circumscripció %s:"</string>
+    <string name="at_housenumber">"número de casa %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Quin és l'horari d'obertura de %1$s (%2$s)?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Es pot accedir a %1$s (%2$s) amb cadira de rodes?"</string>
+    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accepta pagaments en metàl·lic?"</string>
+    <string name="quest_traffic_signals_sound_title">"Hi ha senyals acústics per a cecs aquí?"</string>
 </resources>

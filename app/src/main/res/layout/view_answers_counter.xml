@@ -5,7 +5,6 @@
     tools:parentTag="android.widget.RelativeLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingRight="32dp"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:background="#666">
@@ -40,12 +39,15 @@
         android:textAppearance="@style/TextAppearance.BigBody"
         android:textStyle="bold"
         android:textColor="#fff"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_marginLeft="-8dp"
         tools:scaleX="1.6"
         tools:scaleY="1.6"
         android:shadowColor="#000"
         android:shadowRadius="8"
         android:shadowDy="2"
-        tools:text=" 1234 "
+        tools:text="1583"
         tools:ignore="RtlHardcoded"/>
 
 </merge>

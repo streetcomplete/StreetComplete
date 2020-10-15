@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
@@ -17,7 +19,9 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -33,6 +37,8 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
     @Inject internal lateinit var prefs: SharedPreferences
 
     private val showQuestFormAdapter: ShowQuestFormAdapter = ShowQuestFormAdapter()
+
+    private var currentQuestType: QuestType<*>? = null
 
     init {
         Injector.applicationComponent.inject(this)
@@ -57,11 +63,16 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
 
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
-            questFormContainer.visibility = View.GONE
-            supportFragmentManager.popBackStack()
+            popQuestForm()
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun popQuestForm() {
+        questFormContainer.visibility = View.GONE
+        supportFragmentManager.popBackStack()
+        currentQuestType = null
     }
 
     inner class ShowQuestFormAdapter: ListAdapter<QuestType<*>>() {
@@ -109,15 +120,40 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         val args = AbstractQuestAnswerFragment.createArguments(quest, QuestGroup.OSM, element, 0f, 0f)
         f.arguments = args
 
+        currentQuestType = questType
+
         questFormContainer.visibility = View.VISIBLE
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.questForm, f)
-            .addToBackStack(null)
-            .commit()
+        supportFragmentManager.commit {
+            replace(R.id.questForm, f)
+            addToBackStack(null)
+        }
     }
 
-    override fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any) { onBackPressed() }
-    override fun onComposeNote(questId: Long, group: QuestGroup, questTitle: String) { onBackPressed() }
-    override fun onSplitWay(osmQuestId: Long) { onBackPressed() }
-    override fun onSkippedQuest(questId: Long, group: QuestGroup) { onBackPressed() }
+    override fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any) {
+        val builder = StringMapChangesBuilder(mapOf())
+        (currentQuestType as? OsmElementQuestType<Any>)?.applyAnswerTo(answer, builder)
+        val tagging = builder.create().changes.joinToString("\n")
+        AlertDialog.Builder(this)
+            .setMessage("Tagging\n$tagging")
+            .show()
+        popQuestForm()
+    }
+    override fun onComposeNote(questId: Long, group: QuestGroup, questTitle: String) {
+        popQuestForm()
+        AlertDialog.Builder(this)
+            .setMessage("Composing note")
+            .show()
+    }
+    override fun onSplitWay(osmQuestId: Long) {
+        popQuestForm()
+        AlertDialog.Builder(this)
+            .setMessage("Splitting way")
+            .show()
+    }
+    override fun onSkippedQuest(questId: Long, group: QuestGroup) {
+        popQuestForm()
+        AlertDialog.Builder(this)
+            .setMessage("Skipping quest")
+            .show()
+    }
 }

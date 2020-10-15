@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 
@@ -25,9 +26,9 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
 import de.westnordost.streetcomplete.ktx.hasColumn
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable
-import de.westnordost.streetcomplete.quests.oneway.AddOneway
-import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable
+import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
 
 @Singleton class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {
@@ -150,7 +151,7 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         // all oneway quest data was invalidated on version 11
         if (oldVersion < 11 && newVersion >= 11) {
             val where = OsmQuestTable.Columns.QUEST_TYPE + " = ?"
-            val args = arrayOf(AddOneway::class.java.simpleName)
+            val args = arrayOf(AddSuspectedOneway::class.java.simpleName)
             db.delete(OsmQuestTable.NAME, where, args)
             db.delete(UndoOsmQuestTable.NAME, where, args)
             db.delete(WayTrafficFlowTable.NAME, null, null)
@@ -174,9 +175,35 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         if (oldVersion < 14 && newVersion >= 14) {
             db.execSQL(CountryStatisticsTable.CREATE)
         }
+
+        if (oldVersion < 15 && newVersion >= 15) {
+            db.execSQL("""
+                ALTER TABLE ${OsmQuestSplitWayTable.NAME}
+                ADD COLUMN ${OsmQuestSplitWayTable.Columns.QUEST_TYPES_ON_WAY} text;
+                """.trimIndent()
+            )
+        }
+
+        if (oldVersion < 16 && newVersion >= 16) {
+            /* there was an indication that relations downloaded and serialized with v22.0-beta1 and
+               v22.0 might have corrupt relation members. So to be on the safe side, we better clean
+               ALL the relations currently in the store. See #2014
+             */
+            db.execSQL("""
+                DELETE FROM ${OsmQuestTable.NAME} 
+                WHERE ${OsmQuestTable.Columns.ELEMENT_TYPE} = "${Element.Type.RELATION.name}"
+            """.trimIndent())
+            db.execSQL("""
+                DELETE FROM ${UndoOsmQuestTable.NAME} 
+                WHERE ${UndoOsmQuestTable.Columns.ELEMENT_TYPE} = "${Element.Type.RELATION.name}"
+            """.trimIndent())
+            db.execSQL("""
+                DELETE FROM ${RelationTable.NAME} 
+            """.trimIndent())
+        }
         // for later changes to the DB
         // ...
     }
 }
 
-private const val DB_VERSION = 14
+private const val DB_VERSION = 16
