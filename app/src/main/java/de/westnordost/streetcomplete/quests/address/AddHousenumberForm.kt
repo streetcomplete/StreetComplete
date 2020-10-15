@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.address
+package de.westnordost.streetcomplete.quests.housenumber
 
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -238,7 +238,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    private fun createAnswer():HousenumberAnswer? =
+    private fun createAnswer(): HousenumberAnswer? =
         if (houseNameInput != null) {
             houseNameInput?.nonEmptyInput?.let { HouseName(it) }
         }
