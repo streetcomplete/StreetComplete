@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -41,12 +40,26 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             tools:text="33"
+            android:textColorHint="#2fff"
             android:digits="0123456789.,- /"
             style="@style/BlocknumberEditText"
             android:minWidth="54dp"
             />
 
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="56dp"
+        android:layout_height="0dp"
+        android:layout_toRightOf="@+id/houseAndBlockNumberContainer"
+        android:layout_alignTop="@+id/houseAndBlockNumberContainer"
+        android:layout_alignBottom="@+id/houseAndBlockNumberContainer"
+        android:layout_marginLeft="8dp"
+        tools:ignore="RtlHardcoded">
+
+        <include layout="@layout/view_plus_minus_control"/>
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
