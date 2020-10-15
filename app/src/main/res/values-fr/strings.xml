@@ -2237,8 +2237,8 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_openingHours_resurvey_name_title">"Est-ce que ces horaires d'ouverture pour %s sont toujours correctes ?"</string>
     <string name="quest_openingHours_resurvey_name_type_title">"Est-ce que ces horaires d'ouverture pour %1$s (%2$s) sont toujours correctes ?"</string>
     <string name="quest_openingHours_resurvey_no_name_title">"Est-ce que ces horaires d'ouverture sont toujours correctes (%s) ?"</string>
-    <string name="quest_openingHours_add_off_days">"Ajouter des jours de congé"</string>
-    <string name="quest_openingHours_off_day">"Jour de congé"</string>
+    <string name="quest_openingHours_add_off_days">"Ajouter des jours de fermeture"</string>
+    <string name="quest_openingHours_off_day">"Jour de fermeture"</string>
     <string name="quest_openingHours_unspecified_range">"Non spécifié"</string>
     <string name="quest_cycleway_resurvey_title">"Est-ce que c'est toujours la situation des routes cyclables, ici ?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Est-ce que %1$s (%2$s) est accessible aux personnes en fauteuil roulant ?"</string>
@@ -2275,7 +2275,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Fuzzy -->
     <string name="about_description_translate">"%1$s est traduit à %2$d%%"</string>
-    <string name="quest_oneway2_title">"Est-ce une rue à sens unique ? Dans quelle sens ?"</string>
+    <string name="quest_oneway2_title">"Est-ce une rue à sens unique ? Dans quel sens ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_oneway2_dir">"Sens unique dans ce sens"</string>
@@ -2286,7 +2286,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_steps_incline_title">"Dans quel sens cet escalier monte-t-il ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_steps_incline_up">"Vers le haut"</string>
+    <string name="quest_steps_incline_up">"Dans ce sens"</string>
     <string name="quest_step_count_title">"Combien de marches y a-t-il ici ?"</string>
     <string name="quest_traffic_signals_sound_title">"Y a-t-il des signaux sonores pour les déficients visuels ici ?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Est-ce que ces feux piétons ont un indicateur de traversée en sécurité, pour personnes malvoyantes ?"</string>

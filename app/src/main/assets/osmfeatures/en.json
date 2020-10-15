@@ -564,6 +564,10 @@
             "name": "Dip",
             "terms": "speed,slow"
         },
+        "man_made/tower/cooling": {
+            "name": "Cooling Tower",
+            "terms": "power plant"
+        },
         "power/transformer": {
             "name": "Transformer",
             "terms": ""
