@@ -4,7 +4,7 @@
 AR:
   - Empresa Provincial de la Energía Santa Fe # 2
 AT:
-  - Wien Energie GmbH # 409
+  - Wien Energie GmbH # 410
   - SMATRICS # 61
   - Energie AG # 56
   - EVN # 44
@@ -367,8 +367,8 @@ DE:
   - Stromnetz Hamburg # 503
   - Stadtwerke München # 377
   - EnBW # 341
-  - innogy # 195
-  - RWE # 155
+  - innogy # 194
+  - RWE # 156
   - Allego # 116
   - RWE-Effizienz # 79
   - allego # 78
@@ -377,9 +377,9 @@ DE:
   - LEW # 57
   - EWE # 55
   - SWU Stadtwerke Ulm/Neu-Ulm GmbH # 50
+  - Tesla # 46
   - EnBW Energie Baden-Württemberg AG # 46
   - Kaufland # 45
-  - Tesla # 44
   - NEW # 43
   - be emobil # 41
   - Tank & Rast # 41
@@ -444,6 +444,7 @@ DE:
   - Porsche # 14
   - DREWAG - Stadtwerke Dresden # 14
   - Bayernwerk AG # 14
+  - eon # 13
   - e-on Drive # 13
   - VGS mbH # 13
   - Süwag # 13
@@ -455,7 +456,6 @@ DE:
   - Ikea # 13
   - Audi AG # 13
   - swb # 12
-  - eon # 12
   - Stadtwerke Pforzheim # 12
   - Stadtwerke Heide # 12
   - Pfalzwerke # 12
@@ -590,18 +590,18 @@ FI:
   - Helsingin Energia # 2
   - Charge&Drive # 2
 FX:
-  - Bouygues Énergies et Services # 836
-  - Izivia # 590
+  - Bouygues Énergies et Services # 841
+  - Izivia # 591
   - Freshmile # 401
   - Clem # 124
   - Sodetrel Mobilité # 115
   - Mouv Élec Var # 110
-  - Sodetrel # 102
+  - Sodetrel # 101
   - SEDI # 97
   - EneRSIEIL # 95
   - SDE35 # 88
   - Sorégies # 77
-  - SDEY # 70
+  - SDEY # 71
   - Mobive # 70
   - SYANE # 68
   - SDE07 # 68
@@ -655,6 +655,7 @@ FX:
   - E. Leclerc # 6
   - DBT # 6
   - BeLib # 6
+  - Syndicat Départemental d’Énergie # 5
   - SIEEEN # 5
   - Intermarché # 5
   - CAPP # 5
@@ -664,9 +665,9 @@ GB:
   - Pod Point # 33
   - Tesla Motors Inc. # 27
   - Tesla # 25
+  - ChargePlace Scotland # 22
   - Ubitricity # 21
   - Lancaster City Council # 20
-  - ChargePlace Scotland # 20
   - Birmingham City Council # 20
   - evolt # 19
   - InstaVolt # 16
@@ -734,6 +735,7 @@ GB:
   - Nissan West Way Wolverhampton # 2
   - Milton Park - Pod Point # 2
   - Milton Park # 2
+  - Kendal College # 2
   - Eurotunnel # 2
   - Elektromotive # 2
   - ESB # 2
@@ -768,9 +770,9 @@ HR:
   - MOL Plugee # 2
   - Eurokod # 2
 HU:
-  - NKM Mobilitás Kft. # 101
+  - NKM Mobilitás Kft. # 113
+  - MOL Nyrt. # 45
   - ELMŰ # 40
-  - MOL Nyrt. # 35
   - e-Mobi # 12
   - E-On # 12
   - Penny Market # 7
@@ -846,10 +848,12 @@ IT:
   - enel # 4
   - Lidl # 4
   - Iren # 4
+  - Enel Distribuzione # 4
   - Emobitaly # 4
   - E-Moving # 4
   - Duferco Energia # 4
   - enelx # 3
+  - enel X # 3
   - alperia # 3
   - Stazione di ricarica per auto elettriche # 3
   - IrenGo # 3
@@ -863,14 +867,12 @@ IT:
   - Amag # 3
   - http://www.lampionet.it # 2
   - evway # 2
-  - enel X # 2
   - Tesla Motors (Destination Charging) # 2
   - Tesla Motors # 2
   - SCAME # 2
   - Repower # 2
   - LIDL # 2
   - Enel spa # 2
-  - Enel Distribuzione # 2
   - Enel  X # 2
   - ECO fuel # 2
   - Comune di Vicenza # 2
@@ -898,7 +900,7 @@ LT:
   - Iginitis group # 2
   - Elinta Charge # 2
 LU:
-  - Chargy # 273
+  - Chargy # 280
   - Enovos # 2
 LV:
   - CSDD # 9
@@ -924,13 +926,13 @@ NL:
   - ecotap # 11
   - EVBox # 11
   - EV-Box # 10
+  - We Drive Solar # 9
   - Liander # 9
   - Havendienst Gemeent Alkmaar # 9
   - e-laad # 8
   - PitPoint # 8
   - LastMileSolutions # 8
   - EVnet # 7
-  - We Drive Solar # 6
   - Terberg Telecom # 6
   - New Motion # 6
   - Mitsubishi Electric # 6
@@ -992,6 +994,7 @@ NO:
   - Orkdal kommune # 9
   - BKK Nett AS # 8
   - Akershus fylkeskommune # 8
+  - Atea # 7
   - Østfold fylkeskommune # 6
   - ladeinorge.no # 6
   - Sveio kommune # 6
@@ -1120,14 +1123,15 @@ PT:
   - Mobi.E # 51
   - Tesla # 36
   - Rede Piloto # 25
+  - KLC # 22
   - GalpGeste # 16
-  - KLC # 15
+  - EDP Comercial # 16
   - Mobi-e # 14
   - Galp Power # 14
-  - EDP Comercial # 13
+  - Prio.E # 12
   - Mobie # 11
   - EV Power # 11
-  - Prio.E # 9
+  - Galp Geste # 9
   - Mobiletric # 7
   - Powerdot # 6
   - Tesla Motors Inc. # 4
@@ -1142,7 +1146,7 @@ PT:
   - Mobi.e # 2
   - Mobi-E # 2
   - MOBI.e # 2
-  - Galp Geste # 2
+  - Emel # 2
   - EMACOM # 2
 PY:
   - Petropar # 2
@@ -1238,7 +1242,7 @@ SK:
   - EvMapa # 2
   - BMW T.O.B. # 2
 TR:
-  - SHARZ # 137
+  - SHARZ # 136
   - VOLTRUN # 28
   - ZES # 21
   - Sharz # 7
@@ -1486,6 +1490,7 @@ US-WA:
   - AV aerovironment # 2
 US-WI:
   - MG&E # 3
+  - Tesla Motors # 2
 US-WV:
   - Tesla Motors # 2
 US-WY:

@@ -1,11 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [OTP, OTP Bank, Erste Bank, K&H, Euronet, Erste, K&H Bank, OTP Bank Nyrt., CIB, Erste Bank Hungary Zrt.,
    UniCredit Bank, MagNet Magyar Közösségi Bank Zrt., Takarékszövetkezet, OTP Nyrt., otpbank, OTP bank,
-   Unicredit Bank, Takarékbank, OTP Bank Zrt., FHB Bank, ERSTE Bank, CIB Bank, CIB Bank Zrt., otp, Raiffeisen
-      Bank, MKB Bank, MKB, Budapest Bank, VÚB, UniCredit, Otp NyRt., Otp Bank Nyrt., Otp, K&H Bank Zrt.,
-   Euronet Worldwide, Duna Takarék, Takarék Bank, Slovenská sporiteľňa, Raiffeisen Bank Zrt., Pannon Takarék
-      Bank, K&H bank, Erste bank, ERSTE, Duna Takarék Bank, B3 Takarék]
-chargingStationOperators: [NKM Mobilitás Kft., ELMŰ, MOL Nyrt., e-Mobi, E-On, Penny Market, e-mobi, Elektromobilitás Nonprofit Kft.,
+   Unicredit Bank, Takarékbank, OTP Bank Zrt., FHB Bank, ERSTE Bank, CIB Bank, Raiffeisen Bank, CIB Bank
+      Zrt., otp, MKB Bank, MKB, Budapest Bank, VÚB, UniCredit, Otp NyRt., Otp Bank Nyrt., Otp, K&H Bank
+      Zrt., Euronet Worldwide, Duna Takarék, Takarék Bank, Slovenská sporiteľňa, Raiffeisen Bank Zrt.,
+   Pannon Takarék Bank, K&H bank, Erste bank, ERSTE, Duna Takarék Bank, B3 Takarék]
+chargingStationOperators: [NKM Mobilitás Kft., MOL Nyrt., ELMŰ, e-Mobi, E-On, Penny Market, e-mobi, Elektromobilitás Nonprofit Kft.,
    e-Mobi Elekrtomobilitás Nonprofit Kft., evopro, NKM, Lidl, Evopro, emobi, e.on, NISSAN, ÉMÁSZ, eTank,
    e-mobi.hu, XVIII. kerület, Tesla Motors, Porsche Hungária Kft, Lidl Magyarország Kereskedelmi Bt.,
    LUKOIL Magyarország Kft., IKEA, E-mobi, ABB]

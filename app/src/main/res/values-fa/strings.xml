@@ -1341,9 +1341,6 @@
     <string name="quest_buildingType_bungalow">"خانه‌های ییلاقی"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"خانه کوچک (خانه تابستانی، کلبه تعطیلات، ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"کاروان ثابت"</string>
 
     <!-- Fuzzy -->
@@ -1573,12 +1570,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"پنهان شده توسط %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"ایمنی این تقاطع راه‌آهن چگونه است؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"هیچکدام"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;تصاویری که به یک یادداشت اضافه می‌کنید به سرور من آپلود می‌شوند و چند روز بعد از حل یاداشت حذف می‌شوند . متا داده‌های آنها قبل از آپلود حذف می شوند.&lt;/p&gt;"</string>

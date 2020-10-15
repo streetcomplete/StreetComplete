@@ -1359,9 +1359,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_bungalow">"Bungaló"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"önállóan álló, kis ház (nyári lak, hétvégi ház stb.)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Rögzített lakókocsi"</string>
 
     <!-- Fuzzy -->
@@ -1591,12 +1588,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Elrejtette %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Hogyan van biztosítva ez a vasúti átjáró?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Nincs biztosítva"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;A jegyzethez csatolt fényképek a mi szerverünkre kerülnek feltöltésre; metaadataikat a feltöltés előtt eltávolítjuk. A jegyzet megoldása után pár nappal a fényképek törlődnek.&lt;/p&gt;"</string>

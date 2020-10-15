@@ -35,11 +35,11 @@ atmOperators: [Poste Italiane, Unicredit, Intesa Sanpaolo, Monte dei Paschi di S
       Paribas, BCC di Sesto San Giovanni, BCC Caravaggio]
 chargingStationOperators: [Enel, Enel X, a2a, Alperia, ENEL, Alperia Smart Mobility, Agsm Verona Spa, Tesla Motors Inc., enel x,
    Evway, ENEL X, Hera / AcegasApsAmga, Duferco, BlueTorino, A22, Tesla, Etraction, SEMM, Enel-X, ENEL
-      drive, Enel Drive, Comune di Firenze, A2A, enel, Lidl, Iren, Emobitaly, E-Moving, Duferco Energia,
-   enelx, alperia, Stazione di ricarica per auto elettriche, IrenGo, Enelx, EnelX, EVBOX, EVAD, ENI, DriWe,
-   Atac, Amag, 'http://www.lampionet.it', evway, enel X, Tesla Motors (Destination Charging), Tesla Motors,
-   SCAME, Repower, LIDL, Enel spa, Enel Distribuzione, Enel  X, ECO fuel, Comune di Vicenza, Comune di
-      Albiate, Charge&Go, COGESER, AcegasApsAmga, ATAC]
+      drive, Enel Drive, Comune di Firenze, A2A, enel, Lidl, Iren, Enel Distribuzione, Emobitaly, E-Moving,
+   Duferco Energia, enelx, enel X, alperia, Stazione di ricarica per auto elettriche, IrenGo, Enelx, EnelX,
+   EVBOX, EVAD, ENI, DriWe, Atac, Amag, 'http://www.lampionet.it', evway, Tesla Motors (Destination Charging),
+   Tesla Motors, SCAME, Repower, LIDL, Enel spa, Enel  X, ECO fuel, Comune di Vicenza, Comune di Albiate,
+   Charge&Go, COGESER, AcegasApsAmga, ATAC]
 clothesContainerOperators: [Cannone, Caritas Ambrosiana, Humana, UIC, Aamps, Caritas, AMIU, Exodus, Umanitaria Padana onlus, Hera,
    Cooperativa Sociale Lavoro e Solidarietà, Comune di Vanzago, COSMARI, AMA]
 isAdvisorySpeedLimitKnown: true

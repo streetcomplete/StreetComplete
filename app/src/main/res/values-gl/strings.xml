@@ -1390,9 +1390,6 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_buildingType_bungalow">"Bungaló"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"pequena casa unifamiliar (casa de verán, casa de vacación, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravana estática"</string>
 
     <!-- Fuzzy -->
@@ -1622,12 +1619,6 @@ Por exemplo 1,3 ou 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Agochado por %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"De que xeito está protexido este paso a nivel?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Non o está"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;As imaxes que achegues cara unha nota son subidas ó meu servidor e eliminadas algúns días despois de que a nota fora resolta. Os metadatos son eliminados antes da subida.&lt;/p&gt;"</string>

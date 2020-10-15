@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Ameriabank, Unibank, VTB, ABB, ACBA, Armbusinessbank, HSBC, Ardshinbank, Ararat Bank, ВТБ, Converse Bank,
-   ArmEconomBank, ArmBusinessBank, Areximbank, Araratbank, AEB, Հայբիզնեսբանկ, Ակբա, VTB Bank, VTB Armenia,
+atmOperators: [Ameriabank, Unibank, VTB, ABB, ACBA, Armbusinessbank, HSBC, Ardshinbank, ВТБ, Converse Bank, ArmEconomBank,
+   ArmBusinessBank, Areximbank, Araratbank, Ararat Bank, AEB, Հայբիզնեսբանկ, Ակբա, VTB Bank, VTB Armenia,
    UniBank, Ameria Bank, AcbaCreditAgricole, ASHIB]
 isLivingStreetKnown: true
 mobileCountryCode: 283

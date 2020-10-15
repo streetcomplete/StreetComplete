@@ -1382,9 +1382,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_bungalow">"平房"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"小型附属房屋（夏日房屋、渡假小屋，...）"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"静态大篷车"</string>
 
     <!-- Fuzzy -->
@@ -1614,12 +1611,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"由 %1$s、%2$s 隐藏"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"铁路平交道的保护措施？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"没有"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;附加在笔记中的照片会上传到我的服务器中，在笔记解决之后会被删除。上传前，照片中的元数据会被移除。&lt;/p&gt;"</string>

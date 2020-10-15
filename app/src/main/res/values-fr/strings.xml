@@ -1263,9 +1263,6 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"petite maison détachée de plain-pied"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"mobile-home"</string>
 
     <!-- Fuzzy -->
@@ -1504,12 +1501,6 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Caché par %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Comment ce passage à niveau est-il protégé ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Il ne l'est pas"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt; Les photos que vous joignez à une note sont téléversées sur mon serveur et supprimées quelques jours après la résolution de cette note. Leurs méta-données sont effacées avant le téléversement.&lt;/p&gt;"</string>

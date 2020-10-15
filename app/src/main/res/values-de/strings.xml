@@ -509,7 +509,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_dormitory">"Wohnheim"</string>
     <string name="quest_buildingType_houseboat">"Hausboot"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
-    <string name="quest_buildingType_bungalow_description">"kleines, freistehendes Haus (Gartenhaus, Ferienhaus)"</string>
     <string name="quest_buildingType_static_caravan">"Feststehender Wohnwagen"</string>
     <string name="quest_buildingType_commercial">"Gewerbliches Gebäude"</string>
     <string name="quest_buildingType_commercial_generic_description">"Gebäude, in dem Leute arbeiten, einkaufen oder anderen gewerblichen Aktivitäten nachgehen"</string>
@@ -593,8 +592,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_noteDiscussion_closed2">"Geschlossen von %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Wieder geöffnet von %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Verborgen von %1$s, %2$s"</string>
-    <string name="quest_railway_crossing_barrier_title">"Wie ist dieser Bahnübergang beschrankt?"</string>
-    <string name="quest_railway_crossing_barrier_none">"Gar nicht"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotos, die an Notizen angehängt werden, werden auf meinen Server hochgeladen und einige Tage, nachdem die Notiz geschlossen wurde, gelöscht. Ihre Metadaten werden vor dem Hochladen entfernt.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Alle abwählen"</string>
     <string name="quest_buildingType_retail_description">"inklusive Gebäude für Restaurants, Cafés, …"</string>
@@ -911,4 +908,26 @@ Erfolge"</string>
     <string name="quest_traffic_signals_sound_title">"Gibt es hier akustische Signale für Sehbehinderte?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Gibt es an dieser Ampel einen Taster für Blinde, der signalisiert, wenn man über die Straße gehen kann?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Hinweis: Dies ist oft ein vibrierender Taster oder drehender Konus auf der Unterseite des Druckampel-Kastens."</string>
+    <string name="quest_busStopRef_title">"Was ist die Referenznummer dieser Bushaltestelle?"</string>
+    <string name="quest_tramStopRef_title">"Was ist die Referenznummer dieser Straßenbahnhaltestelle?"</string>
+    <string name="quest_buildingType_bungalow_description2">"kleines, freistehendes Haus (Gartenhaus, Ferienhaus oder -hütte)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Wie ist dieser Bahnübergang beschrankt?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Nicht beschrankt"</string>
+    <string name="quest_steps_ramp_title">"Hat diese Treppe eine Rampe? Was für eine?"</string>
+    <string name="quest_steps_ramp_none">"Keine (nutzbare) Rampe"</string>
+    <string name="quest_steps_ramp_bicycle">"Rampe für Fahrräder"</string>
+    <string name="quest_steps_ramp_stroller">"Rampe für Kinderwägen"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rampe für Rollstühle"</string>
+    <string name="quest_atm_operator_title">"Zu welcher Bank gehört dieser Geldautomat?"</string>
+    <string name="quest_clothes_container_operator_title">"Wer sammelt Altkleider mit diesem Container?"</string>
+    <string name="quest_charging_station_operator_title">"Wer ist der Betreiber dieser Ladestation?"</string>
+    <string name="link_indoorequal_description">"Entdecke Karten für den Innenbereich von Einkaufszentren, Bahnhöfe usw."</string>
+    <string name="link_thenandnow_description">"Neugierig, was für einen Fortschritt wir über die Jahre gemacht haben? Vergleiche wie die Karte von vor über 10 Jahren ausgesehen hat!"</string>
+    <string name="achievement_rare_title">"Schatzsuche"</string>
+    <string name="achievement_rare_solved_X">"Du hast %d sehr seltene Aufgaben gefunden und gelöst, gratuliere!"</string>
+    <string name="achievement_citizen_title">"Bürger"</string>
+    <string name="achievement_citizen_solved_X">"Du hast %d Aufgaben gelöst, die nützlich für den Alltag in der Stadt sind!"</string>
+    <string name="achievement_outdoors_title">"In der freien Natur"</string>
+    <string name="achievement_outdoors_solved_X">"Du hast %d Aufgaben gelöst, die nützlich für Menschen in der freien Natur sind!"</string>
+    <string name="quest_pedestrian_crossing_island">"Gibt es bei diesem Fußgängerüberweg eine Verkehrsinsel?"</string>
 </resources>

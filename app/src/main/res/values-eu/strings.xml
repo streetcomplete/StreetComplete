@@ -1389,9 +1389,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"isolatutako etxe txikia (udarako etxea, oporretarako basetxea, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Karabana estatikoa"</string>
 
     <!-- Fuzzy -->
@@ -1621,12 +1618,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"%1$s(e)k ezkutatuta, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Nola dago trenbide gurutze hau babestuta?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Ez dago babestuta"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Ohar batetara gehitzen dituzun argazkiak nire zerbitzarira igotzen dira eta oharra ebatzi eta egun batzuetara ezabatzen dira. Igo aurretik metadatuak kentzen zaizkie.&lt;/p&gt;"</string>

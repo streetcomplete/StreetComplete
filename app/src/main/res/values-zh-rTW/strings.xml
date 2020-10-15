@@ -1382,9 +1382,6 @@
     <string name="quest_buildingType_bungalow">"平房"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"小型附屬房屋（夏日房屋、渡假小屋，...）"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"靜態大篷車"</string>
 
     <!-- Fuzzy -->
@@ -1614,12 +1611,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"由 %1$s、%2$s 隱藏"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"鐵路平交道的保護措施？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"沒有"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;你附加在註記的照片會上傳到我的伺服器，有一天會在註記解決之後刪除，meta-data 會在上傳前移除。&lt;/p&gt;

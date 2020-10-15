@@ -1241,9 +1241,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_buildingType_bungalow">"Vapaa-ajan asunto"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"Pieni erillistalo (kesämökki, vapaa-ajan asunto, ..)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Asuntovaunu"</string>
 
     <!-- Fuzzy -->
@@ -1473,12 +1470,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"%1$s, %2$s piilottanut"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Miten raiteen ylitys on suojattu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Ei ole"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Liittämäsi kuvat ladataan palvelimelleni ja poistetaan muutamien päivien sisällä huomatuksen ratkaisusta. Kuvien  metadata poistetaan ennen latausta.&lt;/p&gt;"</string>

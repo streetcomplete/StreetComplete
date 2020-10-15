@@ -1365,9 +1365,6 @@
     <string name="quest_buildingType_bungalow">"방갈로"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"작게 따로 떨어져 있는 집(여름 별장, 휴가용 별장, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"고정된 이동식 주택"</string>
 
     <!-- Fuzzy -->
@@ -1597,12 +1594,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"%1$s, %2$s가 숨김"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"이 철도 건널목이 어떻게 보호되고 있습니까?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"보호되지 않음"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;참고에 첨부한 사진은 StreetComplete 서버로 업로드되며, 참고가 해결되면 수일 후에 삭제됩니다. 사진의 메타데이터는 업로드하기 전에 삭제됩니다.&lt;/p&gt;"</string>

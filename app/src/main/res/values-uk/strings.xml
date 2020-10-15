@@ -1379,9 +1379,6 @@
     <string name="quest_buildingType_bungalow">"Бунгало"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"маленький окремий будинок (дача, котедж, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Житловий трейлер"</string>
 
     <!-- Fuzzy -->
@@ -1572,12 +1569,6 @@
     <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"Така висота виглядає нереальною. Ви впевнені?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Як охороняється цей залізничний переїзд?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Ніяк"</string>
 
     <!-- Fuzzy -->
     <string name="action_deselect_all">"Зняти вибір з усіх"</string>

@@ -1381,9 +1381,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"casa pequena separada (casa de verão, férias...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravana estática"</string>
 
     <!-- Fuzzy -->
@@ -1614,12 +1611,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Oculto por %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Que barreira tem esta passagem de nível ferroviária?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Não tem"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;As fotografias que anexar a um erro reportado/nota são enviados para o meu servidor e eliminadas após alguns dias após o erro ser resolvido. Os meta-dados das fotografias são eliminados antes do envio.&lt;/p&gt;"</string>

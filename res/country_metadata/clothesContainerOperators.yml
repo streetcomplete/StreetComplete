@@ -95,7 +95,7 @@ DE:
   - ALBA Braunschweig GmbH # 106
   - Humana # 104
   - Stadtreinigung Hamburg # 97
-  - Malteser # 96
+  - Malteser # 97
   - Stadt Karlsruhe # 70
   - AHE;Deutsches Rotes Kreuz # 64
   - Abfallwirtschaftsgesellschaft Wuppertal # 53
@@ -130,8 +130,8 @@ DE:
   - Diakoniewerk Essen # 16
   - Bayerisches Rotes Kreuz # 15
   - Retextil Recycling International # 14
-  - Isevtex # 14
   - Abfall- und Wertstofflogistik Neuss GmbH (AWL) # 14
+  - Isevtex # 13
   - AWISTA # 13
   - AHG alpha Handelskontor # 13
   - AHA # 13
@@ -185,6 +185,7 @@ DE:
   - Awista # 6
   - ZVO # 5
   - Wittmann # 5
+  - USB # 5
   - TEXAID Collection GmbH # 5
   - Stadtreiniger Kassel # 5
   - Sehbehinderten Selbsthilfe Kurpfalz-Odenwald e.V. # 5
@@ -357,6 +358,8 @@ PL:
   - Fundacja z Sercem # 2
   - Fundacja uśmiechu # 2
   - Fundacja Dar # 2
+PT:
+  - Ultriplo Lda # 3
 RO:
   - Caritas # 8
 RU:

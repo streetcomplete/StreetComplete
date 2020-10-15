@@ -1383,9 +1383,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"litet fristående hus, ofta med veranda (sommarstuga eller liknande)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Stående husvagn"</string>
 
     <!-- Fuzzy -->
@@ -1616,12 +1613,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Gömd av %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Hur är den här järnvägsövergången skyddad?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Saknar skydd"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Foton som du bifogar en anteckning laddas upp till min server och tas bort några dagar efter att anteckningen är avklarad. Metadatan tas bort innan uppladdning.&lt;/p&gt;"</string>

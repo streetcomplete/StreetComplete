@@ -1306,9 +1306,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Yüzer ev"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"küçük müstakil ev (yazlık ev, yazlık,…)"</string>
     <string name="quest_buildingType_static_caravan">"Durağan karavan"</string>
 
     <!-- Fuzzy -->
@@ -1509,12 +1506,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"%1$s, %2$s tarafından gizlenmiş"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Bu demiryolu geçidi nasıl korunuyor?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Değil"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Bir nota eklediğiniz fotoğraflar sunucuma yüklenir ve bu not çözüldükten birkaç gün sonra silinir. Yüklemeden önce meta verileri silinir.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->

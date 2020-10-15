@@ -1383,9 +1383,6 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_buildingType_bungalow">"Dom letniskowy"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"mały dom wolnostojący (domek letni, chatka wakacyjna...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Przyczepa kempingowa ustawiona na stałe"</string>
 
     <!-- Fuzzy -->
@@ -1615,13 +1612,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"ukryte przez %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Jakie zapory ma ten przejazd kolejowy?"</string>
-
-    <!-- Zamiast "To nie jest", powinno być "Nie jest" -->
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Nie ma"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Załączone do notatki zdjęcia są przesyłane na mój serwer i usuwane kilka dni po zakończeniu. Ich meta-dane są usuwane przed przesłaniem.&lt;/p&gt;"</string>
@@ -2350,7 +2340,7 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="quest_accepts_cash_type_title">"Czy %1$s (%2$s) akceptuje płatność gotówką?"</string>
     <string name="quest_busStopBench_tram_name_title">"Czy przystanek tramwajowy %s ma miejsce do siedzenia?"</string>
     <string name="quest_busStopBench_tram_title">"Czy ten przystanek tramwajowy ma miejsce do siedzenia?"</string>
-    <string name="quest_busStopBench_title">"Czy ten przystanek autonusowy ma miejsce do siedzenia?"</string>
+    <string name="quest_busStopBench_title">"Czy ten przystanek autobusowy ma miejsce do siedzenia?"</string>
     <string name="quest_busStopBench_name_title">"Czy przystanek autobusowy %s ma miejsce do siedzenia?"</string>
     <string name="quest_summit_register_title">"Czy szczyt %s ma księgę gości?"</string>
     <string name="quest_is_defibrillator_inside_title">"Czy ten defibrylator (AED) jest wewnątrz budynku?"</string>
