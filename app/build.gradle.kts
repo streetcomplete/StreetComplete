@@ -87,7 +87,6 @@ configurations {
         exclude(group = "net.sf.kxml", module = "kxml2")
     }
 
-    //cleanedAnnotations TODO?
     compile.configure {
         exclude(group = "org.jetbrains", module = "annotations")
         exclude(group = "com.intellij", module = "annotations")

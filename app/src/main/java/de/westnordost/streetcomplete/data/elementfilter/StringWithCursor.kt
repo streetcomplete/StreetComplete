@@ -80,6 +80,12 @@ class StringWithCursor(private val string: String) {
         return match
     }
 
+    fun nextMatchesAndAdvance(regex: Regex): MatchResult? {
+        val result = nextMatches(regex) ?: return null
+        advanceBy(result.value.length)
+        return result
+    }
+
     private fun toDelta(index: Int): Int =
         if (index == -1) string.length - cursorPos else index - cursorPos
 
