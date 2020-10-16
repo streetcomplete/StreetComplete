@@ -51,7 +51,7 @@ class AddTactilePavingCrosswalk(
     override fun createForm() = TactilePavingForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("tactile_paving", answer.toYesNo())
+        changes.updateWithCheckDate("tactile_paving", answer.toYesNo())
     }
 
     private fun getOverpassQuery(bbox: BoundingBox) = """
