@@ -4,6 +4,7 @@ import android.util.Log
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
@@ -21,7 +22,7 @@ class SplitWaysUploader @Inject constructor(
         private val elementGeometryDB: ElementGeometryDao,
         changesetManager: OpenQuestChangesetsManager,
         private val questGiver: OsmQuestGiver,
-        private val elementGeometryCreator: ElementGeometryCreator,
+        elementGeometryCreator: ElementGeometryCreator,
         mapDataApi: MapDataApi,
         private val splitWayDB: OsmQuestSplitWayDao,
         private val splitSingleOsmWayUploader: SplitSingleWayUploader,
@@ -40,12 +41,11 @@ class SplitWaysUploader @Inject constructor(
         return splitSingleOsmWayUploader.upload(changesetId, element as Way, quest.splits)
     }
 
-    override fun updateElement(newElement: Element, quest: OsmQuestSplitWay) {
-        val geometry = elementGeometryCreator.create(newElement, )
-        if (geometry != null) {
-            elementGeometryDB.put(ElementGeometryEntry(newElement.type, newElement.id, geometry))
+    override fun updateElement(newElement: Element, newGeometry: ElementGeometry?, quest: OsmQuestSplitWay) {
+        if (newGeometry != null) {
+            elementGeometryDB.put(ElementGeometryEntry(newElement.type, newElement.id, newGeometry))
             elementDB.put(newElement)
-            questGiver.recreateQuests(newElement, geometry, quest.questTypesOnWay)
+            questGiver.recreateQuests(newElement, newGeometry, quest.questTypesOnWay)
         } else {
             // new element has invalid geometry
             elementDB.delete(newElement.type, newElement.id)

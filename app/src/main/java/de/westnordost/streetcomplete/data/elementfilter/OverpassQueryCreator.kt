@@ -38,9 +38,9 @@ class OverpassQueryCreator(
     }
 
     private fun EnumSet<ElementsTypeFilter>.toOqlNames(): List<String> = when {
-        containsAll(listOf(NODES, WAYS)) ->            listOf("nw")
-        containsAll(listOf(WAYS, RELATIONS)) ->        listOf("wr")
-        containsAll(listOf(NODES,WAYS, RELATIONS)) ->  listOf("nwr")
+        containsAll(listOf(NODES, WAYS, RELATIONS)) ->  listOf("nwr")
+        containsAll(listOf(NODES, WAYS)) ->             listOf("nw")
+        containsAll(listOf(WAYS, RELATIONS)) ->         listOf("wr")
         else -> map { when (it!!) {
             NODES -> "node"
             WAYS -> "way"

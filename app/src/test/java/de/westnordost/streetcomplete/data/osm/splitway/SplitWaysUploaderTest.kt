@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.splitway
 
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.on
@@ -95,6 +96,7 @@ class SplitWaysUploaderTest {
         on(splitSingleOsmWayUploader.upload(anyLong(), any(), anyList()))
             .thenThrow(ElementConflictException())
             .thenReturn(listOf(createElement()))
+        on(elementGeometryCreator.create(any<Element>(), any())).thenReturn(mock())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))

@@ -14,7 +14,7 @@ class AddBusStopNameTest {
     fun `apply no name answer`() {
         questType.verifyAnswer(
             NoBusStopName,
-            StringMapEntryAdd("noname", "yes")
+            StringMapEntryAdd("name:signed", "no")
         )
     }
 
