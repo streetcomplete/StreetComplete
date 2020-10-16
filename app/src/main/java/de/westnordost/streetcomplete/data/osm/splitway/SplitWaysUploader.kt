@@ -41,7 +41,7 @@ class SplitWaysUploader @Inject constructor(
     }
 
     override fun updateElement(newElement: Element, quest: OsmQuestSplitWay) {
-        val geometry = elementGeometryCreator.create(newElement)
+        val geometry = elementGeometryCreator.create(newElement, )
         if (geometry != null) {
             elementGeometryDB.put(ElementGeometryEntry(newElement.type, newElement.id, geometry))
             elementDB.put(newElement)

@@ -5,11 +5,12 @@ import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.NODES
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.RELATIONS
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
+import java.util.*
 
 /** Represents a parse result of a string in filter syntax, i.e.
  *  "ways with (highway = residential or highway = tertiary) and !name"  */
 class ElementFilterExpression(
-    private val elementsTypes: List<ElementsTypeFilter>,
+    private val elementsTypes: EnumSet<ElementsTypeFilter>,
     private val elementExprRoot: BooleanExpression<ElementFilter, Element>?
 ) {
     /** returns whether the given element is found through (=matches) this expression */
