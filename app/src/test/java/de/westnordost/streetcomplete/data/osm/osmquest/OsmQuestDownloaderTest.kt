@@ -6,12 +6,12 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
+import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.Countries
@@ -28,8 +28,9 @@ class OsmQuestDownloaderTest {
     private lateinit var elementDb: MergedElementDao
     private lateinit var osmQuestController: OsmQuestController
     private lateinit var countryBoundaries: CountryBoundaries
-    private lateinit var mapDataApi: MapDataApi
+    private lateinit var notePositionsSource: NotePositionsSource
     private lateinit var elementGeometryCreator: ElementGeometryCreator
+    private lateinit var elementEligibleForOsmQuestChecker: ElementEligibleForOsmQuestChecker
     private lateinit var downloader: OsmQuestDownloader
 
     @Before fun setUp() {
@@ -38,10 +39,11 @@ class OsmQuestDownloaderTest {
         on(osmQuestController.replaceInBBox(any(), any(), any())).thenReturn(OsmQuestController.UpdateResult(0,0))
         countryBoundaries = mock()
         elementGeometryCreator = mock()
-        mapDataApi = mock()
+        notePositionsSource = mock()
+        elementEligibleForOsmQuestChecker = mock()
         val countryBoundariesFuture = FutureTask { countryBoundaries }
         countryBoundariesFuture.run()
-        downloader = OsmQuestDownloader(elementDb, osmQuestController, countryBoundariesFuture, mapDataApi, elementGeometryCreator)
+        downloader = OsmQuestDownloader(elementDb, osmQuestController, countryBoundariesFuture, notePositionsSource, elementEligibleForOsmQuestChecker)
     }
 
     @Test fun `ignore element with invalid geometry`() {
@@ -52,7 +54,7 @@ class OsmQuestDownloaderTest {
 
         val questType = ListBackedQuestType(listOf(invalidGeometryElement))
 
-        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
+        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0))
     }
 
     @Test fun `ignore at blacklisted position`() {
@@ -61,10 +63,11 @@ class OsmQuestDownloaderTest {
                 OsmNode(0, 0, blacklistPos, null),
                 ElementPointGeometry(blacklistPos)
         )
+        on(notePositionsSource.getAllPositions(any())).thenReturn(listOf(blacklistPos))
 
         val questType = ListBackedQuestType(listOf(blacklistElement))
 
-        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf(blacklistPos))
+        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0))
     }
 
     @Test fun `ignore element in country for which this quest is disabled`() {
@@ -80,7 +83,7 @@ class OsmQuestDownloaderTest {
         on(countryBoundaries.isInAny(anyDouble(),anyDouble(),any())).thenReturn(true)
         on(countryBoundaries.getContainingIds(anyDouble(),anyDouble(),anyDouble(),anyDouble())).thenReturn(setOf())
 
-        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
+        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0))
     }
 
     @Test fun `creates quest for element`() {
@@ -94,7 +97,7 @@ class OsmQuestDownloaderTest {
 
         on(osmQuestController.replaceInBBox(any(), any(), any())).thenReturn(OsmQuestController.UpdateResult(0,0))
 
-        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
+        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0))
 
         verify(elementDb).putAll(any())
         verify(osmQuestController).replaceInBBox(any(), any(), any())

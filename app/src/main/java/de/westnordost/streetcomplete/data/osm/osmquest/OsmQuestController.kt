@@ -93,10 +93,10 @@ import javax.inject.Singleton
     /** Replace all quests of the given type in the given bounding box with the given quests,
      *  including their geometry. Called on download of a quest type for a bounding box. */
     fun replaceInBBox(quests: List<OsmQuest>, bbox: BoundingBox, questTypes: List<String>): UpdateResult {
+        require(questTypes.isNotEmpty()) { "questTypes must not be empty if not null" }
         /* All quests in the given bounding box and of the given type should be replaced by the
         *  input list. So, there may be 1. new quests that are added and 2. there may be previous
         *  quests that have been there before but now not anymore, these need to be removed. */
-
         val previousQuestIdsByElement = dao.getAll(
             bounds = bbox,
             questTypes = questTypes
@@ -230,20 +230,25 @@ import javax.inject.Singleton
 
 
     /** Get count of all unanswered quests in given bounding box of given types */
-    fun getAllVisibleInBBoxCount(bbox: BoundingBox, questTypes: Collection<String>) : Int =
-        dao.getCount(
+    fun getAllVisibleInBBoxCount(bbox: BoundingBox, questTypes: Collection<String>) : Int {
+        if (questTypes.isEmpty()) return 0
+        return dao.getCount(
             statusIn = listOf(QuestStatus.NEW),
             bounds = bbox,
             questTypes = questTypes
         )
+    }
 
     /** Get all unanswered quests in given bounding box of given types */
-    fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>): List<OsmQuest> =
-        dao.getAll(
+    fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>): List<OsmQuest> {
+        if (questTypes.isEmpty()) return listOf()
+        return dao.getAll(
             statusIn = listOf(QuestStatus.NEW),
             bounds = bbox,
             questTypes = questTypes
         )
+    }
+
 
     /** Get single quest by id */
     fun get(id: Long): OsmQuest? = dao.get(id)

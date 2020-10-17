@@ -21,4 +21,10 @@ data class MapData(
         elements.add(relations.values)
         return elements.iterator()
     }
+
+    fun add(other: MapData) {
+        nodes.putAll(other.nodes)
+        ways.putAll(other.ways)
+        relations.putAll(other.relations)
+    }
 }

@@ -4,6 +4,7 @@ import org.junit.Before
 import org.junit.Test
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.Tile
 import de.westnordost.streetcomplete.util.TilesRect
 
@@ -80,7 +81,7 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
     @Test fun putMultipleQuestTypes() {
         val rect = r(0, 0, 5, 5)
         dao.putAll(rect, listOf("Huhu", "Haha"))
-        assertEquals(listOf("Huhu", "Haha"), dao.get(rect, 0))
+        assertTrue(dao.get(rect, 0).containsExactlyInAnyOrder(listOf("Huhu", "Haha")))
     }
 
     private fun r(left: Int, top: Int, right: Int, bottom: Int) = TilesRect(left, top, right, bottom)
