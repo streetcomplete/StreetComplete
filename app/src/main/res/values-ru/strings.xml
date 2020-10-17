@@ -1387,9 +1387,6 @@
     <string name="quest_buildingType_bungalow">"Бунгало"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"Дача (летний домик)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Трейлер на постоянной стоянке"</string>
 
     <!-- Fuzzy -->
@@ -1619,12 +1616,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Скрыт с помощью %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Чем защищён этот железнодорожный переезд?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Ничем"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Приложенные фотографии загружаются на мой сервер и удаляются через несколько дней после того, как заметка будет рассмотрена. Все метаданные фотографий удаляются.&lt;/p&gt;"</string>
@@ -2263,13 +2254,16 @@
     <string name="user_profile_global_rank">"Общий рейтинг"</string>
     <string name="user_profile_local_rank">"Рейтинг в %s"</string>
     <string name="user_profile_days_active">"Активных дней"</string>
+    <string name="quest_address_street_title">"К какой улице относится дом %s?"</string>
     <string name="quest_address_street_place_name_label">"Название места"</string>
+    <string name="quest_address_street_description">"Нажмите на дорогу к которой относится объект или введите название улицы в поле ввода:"</string>
     <string name="quest_recycling_type_cooking_oil">"масло для приготовления пищи"</string>
     <string name="quest_recycling_type_engine_oil">"моторное масло"</string>
     <string name="about_title_sponsors">"Спонсоры"</string>
     <string name="quest_board_type_history">"История"</string>
     <string name="quest_board_type_geology">"Геология"</string>
     <string name="quest_board_type_plants">"Растения"</string>
+    <string name="quest_board_type_notice_board">"Это доска объявлений"</string>
     <string name="quest_board_type_public_transport">"Общественный транспорт"</string>
     <string name="quest_board_type_map">"Это карта"</string>
     <string name="quest_board_type_map_title">"Это только карта и ничего более?"</string>
@@ -2287,8 +2281,15 @@
     <string name="at_conscription_number">"Сквозная нумерация %s:"</string>
     <string name="at_housenumber">"номер дома %s:"</string>
     <string name="quest_openingHours_name_type_title">"Какое время работы у %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Время работы для %s корректное?"</string>
+    <string name="quest_openingHours_add_off_days">"Добавить выходные дни"</string>
+    <string name="quest_openingHours_off_day">"Выходной"</string>
+    <string name="quest_openingHours_unspecified_range">"Не указано"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Доступно ли %1$s (%2$s) для инвалидных колясок?"</string>
+    <string name="resurvey_intervals_less_often">"Спрашивать реже"</string>
     <string name="resurvey_intervals_default">"По умолчанию"</string>
+    <string name="resurvey_intervals_more_often">"Спрашивать чаще"</string>
+    <string name="quest_street_side_puzzle_select">"Нажмите для выбора"</string>
     <string name="quest_accepts_cash_type_title">"Принимают ли в %1$s (%2$s) оплату наличными?"</string>
     <string name="quest_busStopBench_tram_name_title">"Есть ли на остановке трамвая %s скамейка?"</string>
     <string name="quest_busStopBench_tram_title">"На этой остановке трамвая есть скамейка?"</string>

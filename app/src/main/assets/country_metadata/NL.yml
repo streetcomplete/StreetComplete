@@ -29,13 +29,13 @@ atmOperators: [ING, Rabobank, ABN AMRO, ABN Amro, Geldmaat, ABN-AMRO, ING Bank, 
    Rabobank Assen en Noord-Drenthe, Rabobank Amstel en Vecht, Postbank, Albert Heijn, ABNAmro, ABN Ambro,
    ABN AMRO Bank]
 chargingStationOperators: [Allego, NUON, Fastned, Nuon, EVBOX, Ecotap, Vattenfall, NewMotion, EVnetNL, Rotterdam Elektrisch, Qbuzz,
-   allego, Pitpoint, Gemeente Rotterdam, gemeente Rotterdam, ecotap, EVBox, EV-Box, Liander, Havendienst
-      Gemeent Alkmaar, e-laad, PitPoint, LastMileSolutions, EVnet, We Drive Solar, Terberg Telecom, New
-      Motion, Mitsubishi Electric, Green Flux, E-laad, Allegro, Agrisnellaad, GreenFlux, Gemeente Delft,
-   Alfen, Gemeente Kerkrade, EV Box, E-bike, Aers Energy, e-laad.nl, Webcompanies.nl, Nuon/Vattenfall,
-   Nuon-Heijmans, Lidl, Ionity, Flow, Essent, Enexis, Delta, All Fixed Green Energy, evnetnl, evnet.nl,
-   The New Motion, Rotterdam elektrisch, Natuurmonumenten, Last Mile Solutions, Evnet, Engie, Eneco, EcoTap,
-   ENGIE, AgriSneltank, '''t Weggeler']
+   allego, Pitpoint, Gemeente Rotterdam, gemeente Rotterdam, ecotap, EVBox, EV-Box, We Drive Solar, Liander,
+   Havendienst Gemeent Alkmaar, e-laad, PitPoint, LastMileSolutions, EVnet, Terberg Telecom, New Motion,
+   Mitsubishi Electric, Green Flux, E-laad, Allegro, Agrisnellaad, GreenFlux, Gemeente Delft, Alfen, Gemeente
+      Kerkrade, EV Box, E-bike, Aers Energy, e-laad.nl, Webcompanies.nl, Nuon/Vattenfall, Nuon-Heijmans,
+   Lidl, Ionity, Flow, Essent, Enexis, Delta, All Fixed Green Energy, evnetnl, evnet.nl, The New Motion,
+   Rotterdam elektrisch, Natuurmonumenten, Last Mile Solutions, Evnet, Engie, Eneco, EcoTap, ENGIE, AgriSneltank,
+   '''t Weggeler']
 clothesContainerOperators: [ROVA, Sympany, Leger des Heils ReShare, Leger des Heils, Gemeente Amsterdam, Curitas, Twiddus, Noppes,
    Leger des heils, hetgoed, Waardlanden, RD4, Opnieuw & Co, HVC]
 isLivingStreetKnown: true

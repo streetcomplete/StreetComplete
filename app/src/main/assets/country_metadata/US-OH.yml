@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Fifth Third Bank, Huntington Bank, PNC Bank, PNC, Huntington, Chase, US Bank, KeyBank, Athena Bitcoin
-      Inc., U.S. Bank, The Huntington National Bank, Key Bank, Citizens Bank, Charter One, US Bank ATM,
-   Ohio University Credit Union, Glass City Federal Credit Union, First-Knox National Bank, First Financial
-      Bank, Chase Bank]
+      Inc., U.S. Bank, The Huntington National Bank, Key Bank, Citizens Bank, Chase Bank, Charter One,
+   US Bank ATM, Ohio University Credit Union, Glass City Federal Credit Union, First-Knox National Bank,
+   First Financial Bank]
 chargingStationOperators: [Tesla Motors, Bowling Green State University, Kent State University, University of Cincinnati, Easton
       Town Center]

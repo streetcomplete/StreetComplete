@@ -1390,9 +1390,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_buildingType_bungalow">"Vasarnamis"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"mažas atskiras namas (vasarnamis, atostogų namas, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Statinis karavanas"</string>
 
     <!-- Fuzzy -->
@@ -1622,12 +1619,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Paslėpė %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Kaip apsaugota ši geležinkelio pervaža?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Niekaip"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Nuotraukos, kurias pridedate prie pastabos, įkeliamos į mano serverį ir ištrinamos po kelių dienų, kai pastaba išsprendžiama. Įkėlimo metu ištrinami metaduomenys.&lt;/p&gt;"</string>

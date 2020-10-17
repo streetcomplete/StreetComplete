@@ -1342,9 +1342,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"Lite, enetasjes hus (sommerhus, feriehytter...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Husvogn"</string>
 
     <!-- Fuzzy -->
@@ -1574,12 +1571,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Skjult av %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Hvordan er denne planovergangen sikret?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Usikret"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Bilder som legges ved en merknad blir lastet opp på serveren min og slettet noen dager etter at merknaden er løst. Metadata blir fjernet fra bildet før opplasting.&lt;/p&gt;"</string>

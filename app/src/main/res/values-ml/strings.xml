@@ -1362,9 +1362,6 @@
     <string name="quest_buildingType_bungalow">"ബംഗ്ലാവ്"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"ചെറിയ വെവ്വേറെ വീടുകൾ (വേനൽകാല വസതി, അവധിക്കാല വസതി)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"സ്റ്റാറ്റിക്ക് കാരവാൻ"</string>
 
     <!-- Fuzzy -->
@@ -1594,12 +1591,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"മറച്ചത് %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"റെയിൽവെ ക്രോസിംഗ് എങ്ങനെ സംരക്ഷിക്കുന്നു?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"ഇതല്ല"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt; നിങ്ങൾ ഒരു കുറിപ്പിലേക്ക് അറ്റാച്ചുചെയ്യുന്ന ഫോട്ടോകൾ എന്റെ സെർവറിലേക്ക് അപ്‌ലോഡുചെയ്യുകയും ആ കുറിപ്പ് പരിഹരിച്ചതിന് കുറച്ച് ദിവസങ്ങൾക്ക് ശേഷം ഇല്ലാതാക്കുകയും ചെയ്യും. അപ്‌ലോഡുചെയ്യുന്നതിന് മുമ്പ് അവരുടെ മെറ്റാ ഡാറ്റ നീക്കംചെയ്യുന്നു. &lt;\p&gt;"</string>

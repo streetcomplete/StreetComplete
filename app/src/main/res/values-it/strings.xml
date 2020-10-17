@@ -1386,9 +1386,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"piccola casa indipendente (casa estiva, cottage per le vacanze, ecc.)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravan fisso"</string>
 
     <!-- Fuzzy -->
@@ -1618,12 +1615,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Nascosto da %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Com'è protetto l'attraversamento ferroviario?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Non lo è"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Le foto che alleghi a una nota sono caricate sul mio server e cancellate alcuni giorni dopo che la nota è stata risolta. I meta-dati vengono eliminati prima del caricamento.&lt;/p&gt;"</string>

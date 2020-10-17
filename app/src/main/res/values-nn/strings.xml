@@ -1363,9 +1363,6 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"lite, éinetasjes hus (sommarhus, feriehytte, …)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Husvogn"</string>
 
     <!-- Fuzzy -->
@@ -1595,12 +1592,6 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Gøymd av %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Korleis er jernbaneovergangen sikra?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Ikkje i det heile teke"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Eventuelle foto som du legg ved, vert lasta opp til tenaren min og sletta nokre dagar etter at merknaden vert lukka. Bilet­metadata vert sletta før opplasting.&lt;/p&gt;"</string>

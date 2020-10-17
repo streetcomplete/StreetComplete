@@ -1,6 +1,6 @@
 layers:
     road-labels:
-        data: { source: jawg, layer: road_label }
+        data: { source: jawg, layer: road }
         filter: { $zoom: { min: 14 } }
         draw:
             text:
@@ -16,10 +16,10 @@ layers:
                     stroke: global.text_stroke
                     weight: normal
 
-    # jawg: state_label, mountain_peak, poi_label (w/ type=, zoomrank=) exists
+    # jawg: natural_label, poi_label (w/ type=, zoomrank=) exists
 
     water-labels:
-        data: { source: jawg, layer: [waterway_label, waterarea_label] }
+        data: { source: jawg, layer: [waterway, water] }
         filter: { $zoom: { min: 14 } }
         draw:
             text:
@@ -32,7 +32,8 @@ layers:
                     size: global.text_size
                     stroke: global.text_water_stroke
     marine-labels:
-        data: { source: jawg, layer: marine_label }
+        data: { source: jawg, layer: natural_label }
+        filter: { class: [ocean, sea] }
         draw:
             text:
                 text_source: global.name_source
@@ -46,7 +47,8 @@ layers:
                     transform: uppercase
 
     country-labels:
-        data: { source: jawg, layer: country_label }
+        data: { source: jawg, layer: place_label }
+        filter: { class: country }
         draw:
             text:
                 text_source: global.name_source
@@ -62,6 +64,7 @@ layers:
 
     place-labels:
         data: { source: jawg, layer: place_label }
+        filter: { not: { class: country } }
         draw:
             text:
                 text_source: global.name_source
@@ -92,10 +95,3 @@ layers:
                     fill: global.text_fill_color
                     size: global.text_size
                     stroke: global.text_stroke
-
-global:
-    name_source: |
-        function() {
-            // Use preferred language label if available
-            return (global.language && feature['name_'+global.language]) || feature.name;
-        }

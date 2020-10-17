@@ -1387,9 +1387,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_buildingType_bungalow">"Bungaló"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"xalé pequeñu (casa de branu, de vacaciones, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravana"</string>
 
     <!-- Fuzzy -->
@@ -1619,12 +1616,6 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Anubrío por %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"¿Cómo ta protexíu esti pasu a nivel?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Nun lo ta"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Les semeyes qu'amiestes a una nota xúbense al mio sirvidor y desaníciense unos díes depués de que la nota se resuelva. Los metadatos esbórrense primero de xubila.&lt;p&gt;"</string>

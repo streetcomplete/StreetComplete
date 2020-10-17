@@ -1393,10 +1393,6 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_buildingType_houseboat">"Husbåd"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
-    <!-- I don't think a bungalow needs to be a holiday house (at least not in Denmark), would it be okay to translate it from https://wiki.openstreetmap.org/wiki/Key:building as "A single-storey detached small house, Dacha."? -->
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"lille fritstående hus (sommerhus, feriehytte...)"</string>
-
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Campingvogn (semi-permanent)"</string>
 
@@ -1629,12 +1625,6 @@ F.eks. 1,3 eller 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Skjult af %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Hvordan er jernbaneoverskæringen beskyttet?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Det er ikke"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt; Fotos, du vedhæfter til en note, uploades til en server og slettes nogle dage efter, at den note er blevet løst. Metadata i fotos fjernes før upload. &lt;/p&gt;"</string>

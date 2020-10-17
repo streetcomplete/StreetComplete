@@ -1388,9 +1388,6 @@
     <string name="quest_buildingType_bungalow">"μπανγκαλόου"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"μικρή μονοκατοικία (καλοκαιρινή κατοικία, εξοχική κατοικία, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Σταθερό τροχόσπιτο"</string>
 
     <!-- Fuzzy -->
@@ -1621,12 +1618,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Κρυμμένο από %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Πώς προστατεύεται αυτή η σιδηροδρομική διασταύρωση;"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"δεν είναι"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Οι φωτογραφίες που επισυνάπτετε σε μια σημείωση μεταφορτώνονται στον διακομιστή μου και διαγράφονται μερικές ημέρες μετά την επίλυση αυτής της σημείωσης. Τα μεταδεδομένα τους έχουν αφαιρεθεί πριν μεταφορτωθούν.&lt;/p&gt;"</string>

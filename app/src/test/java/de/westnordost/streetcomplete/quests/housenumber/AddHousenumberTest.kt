@@ -1,8 +1,7 @@
-package de.westnordost.streetcomplete.quests.add_housenumber
+package de.westnordost.streetcomplete.quests.housenumber
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.quests.address.*
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -13,7 +12,7 @@ class AddHousenumberTest {
     private val questType = AddHousenumber(mock())
 
     @Test fun `housenumber regex`() {
-        val r = AddHousenumberForm.VALID_HOUSENUMBER_REGEX.toRegex()
+        val r = VALID_HOUSENUMBER_REGEX
         assertTrue("1".matches(r))
         assertTrue("1234".matches(r))
 
@@ -33,7 +32,7 @@ class AddHousenumberTest {
     }
 
     @Test fun `blocknumber regex`() {
-        val r = AddHousenumberForm.VALID_BLOCKNUMBER_REGEX.toRegex()
+        val r = VALID_BLOCKNUMBER_REGEX
         assertTrue("1".matches(r))
         assertTrue("1234".matches(r))
         assertFalse("12345".matches(r))

@@ -1391,9 +1391,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"samostatně stojící malý dům, chata"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Mobilní dům"</string>
 
     <!-- Fuzzy -->
@@ -1626,12 +1623,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"Skryl(a) %1$s, %2$s
 "</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Jak je chráněn tento železniční přejezd?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Není"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotografie připojené k poznámce jsou nahrané na můj server a smazány několik dnů po vyřešení poznámky. Metadata fotografií jsou odstraněna před jejich nahráním.&lt;/p&gt;"</string>
