@@ -23,7 +23,7 @@ class DescribeGenericSurfaceDialog(
             context.getString(android.R.string.yes)
         ) { _, _ ->
             val txt = explanationInput.text.toString().trim()
-            if (!txt.isEmpty()) {
+            if (txt.isNotEmpty()) {
                 onSurfaceDescribed(txt)
             }
         }
