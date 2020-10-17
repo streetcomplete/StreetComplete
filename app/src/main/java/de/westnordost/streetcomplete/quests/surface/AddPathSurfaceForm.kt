@@ -57,47 +57,7 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<String, DetailSurfaceAn
 
     override val itemsPerRow = 3
 
-    private var isInExplanationMode = false
-    private var selectedGenericSurfaceValue : String? = null
-    private var explanationInput: EditText? = null
-
-    private fun setLayout(layoutResourceId: Int) {
-        val view = setContentView(layoutResourceId)
-
-        explanationInput = view.findViewById(R.id.explanationInput)
-        explanationInput?.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
-    }
-
-    private val explanation: String get() = explanationInput?.text?.toString().orEmpty().trim()
-
-    override fun isFormComplete(): Boolean {
-        return if(isInExplanationMode) {
-            explanation.isNotEmpty()
-        } else {
-            super.isFormComplete()
-        }
-    }
-
-    override fun onClickOk() {
-        // we need to handle fact that we may be in a separate layout
-        // that is used to input explanation why surface may not be
-        // specified more accurately than just paved/unpaved/ground
-        if(isInExplanationMode) {
-            // clicked in an explanation mode, therefore
-            // user has ready answer prepared that we many use
-            applyAnswer(DetailingWhyOnlyGeneric(selectedGenericSurfaceValue!!, explanation))
-        } else {
-            // use regular onClickOk call chain
-            // used in typical ImageList quest
-            super.onClickOk()
-        }
-    }
-
     override fun onClickOk(selectedItems: List<String>) {
-        // must not happen in isInExplanationMode
-        // this onClickOk is called when user is selecting images from
-        // list of surfaces
-
         // this calls comes from onClickOk() in this class,
         // through onClickOk() AImageListQuestAnswerFragment
         // that calls onClickOk with parameters - that is
@@ -121,31 +81,13 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<String, DetailSurfaceAn
         applyAnswer(SurfaceAnswer(value))
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
-        isInExplanationMode = savedInstanceState?.getBoolean(IS_IN_EXPLANATION_MODE) ?: false
-        setLayout(if (isInExplanationMode) R.layout.quest_surface_detailed_answer_impossible else R.layout.quest_generic_list)
-
-        return view
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putBoolean(IS_IN_EXPLANATION_MODE, isInExplanationMode)
-    }
-
-    companion object {
-        private const val IS_IN_EXPLANATION_MODE = "is_in_explanation_mode"
-    }
-
     class DescribeGenericSurfaceDialog(
         context: Context,
         onSurfaceDescribed: (txt:String) -> Unit
     ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
         init {
             val view = LayoutInflater.from(context).inflate(R.layout.quest_surface_detailed_answer_impossible, null)
-            val commentInput = view.findViewById<EditText>(R.id.explanationInput)
+            val explanationInput = view.findViewById<EditText>(R.id.explanationInput)
             // TODO enable/disable ok button based on whether commentInput is empty (with TextWatcher?)
 
             setTitle(context.resources.getString(R.string.quest_surface_detailed_answer_impossible_title))
@@ -154,7 +96,7 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<String, DetailSurfaceAn
                 DialogInterface.BUTTON_POSITIVE,
                 context.getString(android.R.string.yes)
             ) { _, _ ->
-                val txt = commentInput.text.toString().trim()
+                val txt = explanationInput.text.toString().trim()
                 if (!txt.isEmpty()) {
                     onSurfaceDescribed(txt)
                 }
