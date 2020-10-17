@@ -133,7 +133,7 @@ class QuestDownloader @Inject constructor(
     }
 
     private fun downloadMultipleOsmQuestTypes(bbox: BoundingBox, tiles: TilesRect, notesPositions: Set<LatLon>): List<OsmElementQuestType<*>> {
-        val downloadItem = DownloadItem(R.drawable.ic_motorcycle, "Multi download")
+        val downloadItem = DownloadItem(R.drawable.ic_search_48dp, "Multi download")
         progressListener?.onStarted(downloadItem)
         // Since we query all the data at once, we can also do the downloading for quests not on our list.
         val questTypes = questTypesProvider.get().filterIsInstance<OsmElementQuestType<*>>()
