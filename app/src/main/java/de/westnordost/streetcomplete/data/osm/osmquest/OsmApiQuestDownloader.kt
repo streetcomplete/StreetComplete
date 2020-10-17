@@ -30,10 +30,8 @@ class OsmApiQuestDownloader @Inject constructor(
     private val elementGeometryCreator: ElementGeometryCreator,
     private val elementEligibleForOsmQuestChecker: ElementEligibleForOsmQuestChecker
 ) {
-    private val countryBoundaries: CountryBoundaries get() = countryBoundariesFuture.get()
-
     // TODO TEST
-    fun downloadMultiple(questTypes: List<OsmElementQuestType<*>>, bbox: BoundingBox): List<OsmElementQuestType<*>> {
+    fun download(questTypes: List<OsmElementQuestType<*>>, bbox: BoundingBox): List<OsmElementQuestType<*>> {
         val skippedQuestTypes = mutableSetOf<OsmElementQuestType<*>>()
 
         var time = System.currentTimeMillis()
@@ -58,7 +56,7 @@ class OsmApiQuestDownloader @Inject constructor(
             val questTypeName = questType.getName()
 
             val countries = questType.enabledInCountries
-            if (!countryBoundaries.intersects(bbox, countries)) {
+            if (!countryBoundariesFuture.get().intersects(bbox, countries)) {
                 Log.i(TAG, "$questTypeName: Skipped because it is disabled for this country")
                 continue
             }
@@ -75,7 +73,7 @@ class OsmApiQuestDownloader @Inject constructor(
                     elementGeometries[element.type]!![element.id] = geometry
                 }
                 val geometry = elementGeometries[element.type]!![element.id]
-                if (!elementEligibleForOsmQuestChecker.mayCreateQuestFrom(questType, element, geometry, truncatedBlacklistedPositions)) continue
+                if (!elementEligibleForOsmQuestChecker.mayCreateQuestFrom(questType, geometry, truncatedBlacklistedPositions)) continue
 
                 val quest = OsmQuest(questType, element.type, element.id, geometry!!)
 

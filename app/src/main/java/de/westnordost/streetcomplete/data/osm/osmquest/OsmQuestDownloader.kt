@@ -44,7 +44,7 @@ class OsmQuestDownloader @Inject constructor(
 
         val time = System.currentTimeMillis()
         val success = questType.download(bbox) { element, geometry ->
-            if (elementEligibleForOsmQuestChecker.mayCreateQuestFrom(questType, element, geometry, truncatedBlacklistedPositions)) {
+            if (elementEligibleForOsmQuestChecker.mayCreateQuestFrom(questType, geometry, truncatedBlacklistedPositions)) {
                 val quest = OsmQuest(questType, element.type, element.id, geometry!!)
 
                 quests.add(quest)

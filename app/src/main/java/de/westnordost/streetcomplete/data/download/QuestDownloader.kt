@@ -136,7 +136,7 @@ class QuestDownloader @Inject constructor(
         // Since we query all the data at once, we can also do the downloading for quests not on our list.
         val questTypes = questTypesProvider.get().filterIsInstance<OsmElementQuestType<*>>()
         val questDownload = osmApiQuestDownloaderProvider.get()
-        val downloadedQuestTypes = questDownload.downloadMultiple(questTypes, bbox)
+        val downloadedQuestTypes = questDownload.download(questTypes, bbox)
         downloadedTilesDao.putAll(tiles, downloadedQuestTypes.map { it.javaClass.simpleName })
         progressListener?.onFinished(downloadItem)
         return downloadedQuestTypes
