@@ -30,10 +30,9 @@ class DescribeGenericSurfaceDialog(
 
         setButton(
             DialogInterface.BUTTON_NEGATIVE,
-            context.getString(android.R.string.cancel)
-        ) { _, _ ->
-            setView(view)
-        }
+            context.getString(android.R.string.cancel),
+            null as DialogInterface.OnClickListener?
+        )
         setView(view)
     }
 }
