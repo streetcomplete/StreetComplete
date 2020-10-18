@@ -17,8 +17,6 @@ class DescribeGenericSurfaceDialog(
     val view = LayoutInflater.from(context).inflate(R.layout.quest_surface_detailed_answer_impossible, null)
     val explanationInput = view.findViewById<EditText>(R.id.explanationInput);
     init {
-        // TODO enable/disable ok button based on whether commentInput is empty (with TextWatcher?)
-
         setTitle(context.resources.getString(R.string.quest_surface_detailed_answer_impossible_title))
 
         setButton(
