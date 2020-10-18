@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.R
 
 class DescribeGenericSurfaceDialog(
     context: Context,
-    onSurfaceDescribed: (txt:String) -> Unit
+    onSurfaceDescribed: (txt: String) -> Unit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.quest_surface_detailed_answer_impossible, null)
