@@ -82,6 +82,7 @@ import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
 import de.westnordost.streetcomplete.quests.surface.*
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
+import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingKerb
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
@@ -178,6 +179,7 @@ object QuestModule
         AddBabyChangingTable(o), // used by OsmAnd in the object description
         AddBikeParkingCover(o), // used by OsmAnd in the object description
         AddTactilePavingCrosswalk(o, r), // Paving can be completed while waiting to cross
+        AddTactilePavingKerb(o, r), // Paving can be completed while waiting to cross
         AddTrafficSignalsSound(o, r), // Sound needs to be done as or after you're crossing
         AddTrafficSignalsVibration(o, r),
         AddRoofShape(o),
