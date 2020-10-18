@@ -41,6 +41,7 @@ class AddFootwayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyInterva
             is SurfaceAnswer -> {
                 changes.updateWithCheckDate("footway:surface", answer.value)
                 changes.deleteIfExists("source:footway:surface")
+                changes.deleteIfExists("footway:surface:note")
             }
             is DetailingWhyOnlyGeneric -> {
                 changes.updateWithCheckDate("footway:surface", answer.value)

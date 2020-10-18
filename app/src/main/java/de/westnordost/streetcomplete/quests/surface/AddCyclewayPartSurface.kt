@@ -42,6 +42,7 @@ class AddCyclewayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyInterv
             is SurfaceAnswer -> {
                 changes.updateWithCheckDate("cycleway:surface", answer.value)
                 changes.deleteIfExists("source:cycleway:surface")
+                changes.deleteIfExists("cycleway:surface:note")
             }
             is DetailingWhyOnlyGeneric -> {
                 changes.updateWithCheckDate("cycleway:surface", answer.value)
