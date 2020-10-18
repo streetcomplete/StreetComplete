@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.surface
 
 import android.content.Context
 import android.content.DialogInterface
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -11,9 +13,9 @@ class DescribeGenericSurfaceDialog(
     context: Context,
     onSurfaceDescribed: (txt: String) -> Unit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+    val view = LayoutInflater.from(context).inflate(R.layout.quest_surface_detailed_answer_impossible, null)
+    val explanationInput = view.findViewById<EditText>(R.id.explanationInput);
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.quest_surface_detailed_answer_impossible, null)
-        val explanationInput = view.findViewById<EditText>(R.id.explanationInput)
         // TODO enable/disable ok button based on whether commentInput is empty (with TextWatcher?)
 
         setTitle(context.resources.getString(R.string.quest_surface_detailed_answer_impossible_title))
@@ -34,5 +36,23 @@ class DescribeGenericSurfaceDialog(
             null as DialogInterface.OnClickListener?
         )
         setView(view)
+
+        setOnShowListener {
+            getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = false
+            explanationInput.addTextChangedListener(object : TextWatcher {
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int,
+                                           count: Int) {
+                }
+
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int,
+                                               after: Int) {
+                }
+
+                override fun afterTextChanged(s: Editable) {
+                    val txt = explanationInput.text.toString().trim()
+                    getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = txt.isNotEmpty()
+                }
+            })
+        }
     }
 }
