@@ -38,7 +38,7 @@ class AddCyclewayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyInterv
     override fun createForm() = AddPathSurfaceForm()
 
     override fun applyAnswerTo(answer: DetailSurfaceAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+        when (answer) {
             is SurfaceAnswer -> {
                 changes.updateWithCheckDate("cycleway:surface", answer.value)
                 changes.deleteIfExists("source:cycleway:surface")
@@ -48,5 +48,6 @@ class AddCyclewayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyInterv
                 changes.updateWithCheckDate("cycleway:surface", answer.value)
                 changes.add("cycleway:surface:note", answer.note)
             }
-        }    }
+        }
+    }
 }
