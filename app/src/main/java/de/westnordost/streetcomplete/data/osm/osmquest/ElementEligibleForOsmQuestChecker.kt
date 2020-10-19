@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.util.measuredLength
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
+/** Checks if the given quest type may be created based on its geometry and location */
 class ElementEligibleForOsmQuestChecker @Inject constructor(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
 ) {
