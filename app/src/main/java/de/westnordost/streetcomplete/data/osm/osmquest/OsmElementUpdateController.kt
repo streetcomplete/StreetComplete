@@ -11,19 +11,14 @@ import de.westnordost.osmapi.map.getWayComplete
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import javax.inject.Inject
 
 /** When an element has been updated or deleted (from the API), this class takes care of updating
- *  the data that is dependent on the element - the geometry of the element and the quests based
- *  on the element */
-// TODO TEST
+ *  the element and the data that is dependent on the element - the quests */
 class OsmElementUpdateController @Inject constructor(
     private val mapDataApi: MapDataApi,
     private val elementGeometryCreator: ElementGeometryCreator,
-    private val elementGeometryDB: ElementGeometryDao,
     private val elementDB: MergedElementDao,
     private val questGiver: OsmQuestGiver,
 ){
@@ -35,10 +30,6 @@ class OsmElementUpdateController @Inject constructor(
         val newGeometry = createGeometry(element)
         if (newGeometry != null) {
             elementDB.put(element)
-            /* need to update element geometry in any case because even if the quest giver unlocks
-               no new quests, there are still those that currently exist. They need the current
-               geometry too! */
-            elementGeometryDB.put(ElementGeometryEntry(element.type, element.id, newGeometry))
 
             if (recreateQuestTypes == null) {
                 questGiver.updateQuests(element, newGeometry)
@@ -53,6 +44,7 @@ class OsmElementUpdateController @Inject constructor(
 
     fun delete(elementType: Element.Type, elementId: Long) {
         elementDB.delete(elementType, elementId)
+        // geometry is deleted by the  osmQuestController
         questGiver.deleteQuests(elementType, elementId)
     }
 
