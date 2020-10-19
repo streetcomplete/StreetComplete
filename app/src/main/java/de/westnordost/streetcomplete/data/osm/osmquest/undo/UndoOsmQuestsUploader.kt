@@ -2,13 +2,9 @@ package de.westnordost.streetcomplete.data.osm.osmquest.undo
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementUpdateController
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
 import de.westnordost.streetcomplete.data.osm.osmquest.SingleOsmElementTagChangesUploader
@@ -18,17 +14,12 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all undo osm quests from local DB and uploads them via the OSM API */
 class UndoOsmQuestsUploader @Inject constructor(
-        elementDB: MergedElementDao,
-        elementGeometryDB: ElementGeometryDao,
-        changesetManager: OpenQuestChangesetsManager,
-        questGiver: OsmQuestGiver,
-        elementGeometryCreator: ElementGeometryCreator,
-        mapDataApi: MapDataApi,
-        private val undoQuestDB: UndoOsmQuestDao,
-        private val singleChangeUploader: SingleOsmElementTagChangesUploader,
-        private val statisticsUpdater: StatisticsUpdater
-) : OsmInChangesetsUploader<UndoOsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
-    elementGeometryCreator, mapDataApi) {
+    changesetManager: OpenQuestChangesetsManager,
+    elementUpdateController: OsmElementUpdateController,
+    private val undoQuestDB: UndoOsmQuestDao,
+    private val singleChangeUploader: SingleOsmElementTagChangesUploader,
+    private val statisticsUpdater: StatisticsUpdater
+) : OsmInChangesetsUploader<UndoOsmQuest>(changesetManager, elementUpdateController) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Undoing quest changes")

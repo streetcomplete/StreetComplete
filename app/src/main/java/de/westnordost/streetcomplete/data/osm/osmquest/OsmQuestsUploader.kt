@@ -2,12 +2,8 @@ package de.westnordost.streetcomplete.data.osm.osmquest
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
@@ -16,17 +12,12 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all answered osm quests from local DB and uploads them via the OSM API */
 class OsmQuestsUploader @Inject constructor(
-        elementDB: MergedElementDao,
-        elementGeometryDB: ElementGeometryDao,
-        changesetManager: OpenQuestChangesetsManager,
-        questGiver: OsmQuestGiver,
-        elementGeometryCreator: ElementGeometryCreator,
-        mapDataApi: MapDataApi,
-        private val osmQuestController: OsmQuestController,
-        private val singleChangeUploader: SingleOsmElementTagChangesUploader,
-        private val statisticsUpdater: StatisticsUpdater
-) : OsmInChangesetsUploader<OsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
-    elementGeometryCreator, mapDataApi) {
+    changesetManager: OpenQuestChangesetsManager,
+    elementUpdateController: OsmElementUpdateController,
+    private val osmQuestController: OsmQuestController,
+    private val singleChangeUploader: SingleOsmElementTagChangesUploader,
+    private val statisticsUpdater: StatisticsUpdater
+) : OsmInChangesetsUploader<OsmQuest>(changesetManager, elementUpdateController) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Applying quest changes")
