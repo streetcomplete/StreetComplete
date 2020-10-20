@@ -17,9 +17,17 @@ class AddRoadSurfaceForm  : AImageListQuestAnswerFragment<String, SurfaceAnswer>
     override fun onClickOk(selectedItems: List<String>) {
         val value = selectedItems.single()
         if(value == "paved" || value == "unpaved") {
-                DescribeGenericSurfaceDialog(requireContext()) { description ->
-                    applyAnswer(GenericSurfaceAnswer(value, description))
-                }.show()
+            AlertDialog.Builder(requireContext())
+                .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) {
+                    _, _ -> run {
+                    DescribeGenericSurfaceDialog(requireContext()) { description ->
+                        applyAnswer(GenericSurfaceAnswer(value, description))
+                    }.show()
+                }
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
             return
         }
         applyAnswer(SpecificSurfaceAnswer(value))
