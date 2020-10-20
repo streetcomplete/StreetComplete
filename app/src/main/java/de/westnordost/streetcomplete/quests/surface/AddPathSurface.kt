@@ -17,9 +17,9 @@ class AddPathSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
         and access !~ private|no
         and (!conveying or conveying = no) and (!indoor or indoor = no)
         and (
-          !surface
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -${r * 4} years
-          or surface older today -${r * 8} years
+            !surface
+            or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -${r * 4} years
+            or surface older today -${r * 8} years
         )
     """
     /* ~paved ways are less likely to change the surface type */
