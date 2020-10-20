@@ -46,7 +46,7 @@ class AddCyclewayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyInterv
             }
             is DetailingWhyOnlyGeneric -> {
                 changes.updateWithCheckDate("cycleway:surface", answer.value)
-                changes.add("cycleway:surface:note", answer.note)
+                changes.addOrModify("cycleway:surface:note", answer.note)
             }
         }
     }

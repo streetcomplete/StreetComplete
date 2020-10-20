@@ -45,7 +45,7 @@ class AddFootwayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyInterva
             }
             is DetailingWhyOnlyGeneric -> {
                 changes.updateWithCheckDate("footway:surface", answer.value)
-                changes.add("footway:surface:note", answer.note)
+                changes.addOrModify("footway:surface:note", answer.note)
             }
         }
     }
