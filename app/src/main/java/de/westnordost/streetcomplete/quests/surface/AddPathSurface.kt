@@ -43,7 +43,6 @@ class AddPathSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
         when(answer) {
             is SurfaceAnswer -> {
                 changes.updateWithCheckDate("surface", answer.value)
-                changes.deleteIfExists("source:surface")
                 changes.deleteIfExists("surface:note")
             }
             is DetailingWhyOnlyGeneric -> {
@@ -51,5 +50,6 @@ class AddPathSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
                 changes.addOrModify("surface:note", answer.note)
             }
         }
+        changes.deleteIfExists("source:surface")
     }
 }
