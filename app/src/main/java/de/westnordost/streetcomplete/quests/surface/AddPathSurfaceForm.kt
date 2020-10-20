@@ -1,17 +1,9 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import android.content.Context
-import android.content.DialogInterface
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class AddPathSurfaceForm : AImageListQuestAnswerFragment<String, DetailSurfaceAnswer>() {
     override val items: List<Item<String>> get() =
