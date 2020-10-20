@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfaceAnswer>() {
+class AddRoadSurfaceForm  : AImageListQuestAnswerFragment<String, SurfaceAnswer>() {
     override val items: List<Item<String>> get() =
         (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES).toItems() +
             Item("paved", R.drawable.surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
@@ -22,7 +22,7 @@ class AddRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfaceA
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) {
                     _, _ -> run {
                     DescribeGenericSurfaceDialog(requireContext()) { description ->
-                        applyAnswer(DetailingWhyOnlyGeneric(value, description))
+                        applyAnswer(GenericSurfaceAnswer(value, description))
                     }.show()
                 }
                 }
@@ -30,6 +30,6 @@ class AddRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfaceA
                 .show()
             return
         }
-        applyAnswer(SurfaceAnswer(value))
+        applyAnswer(SpecificSurfaceAnswer(value))
     }
 }

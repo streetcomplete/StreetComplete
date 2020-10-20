@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.quests.surface
 
-sealed class DetailSurfaceAnswer
-data class DetailingWhyOnlyGeneric(val value : String, val note: String) : DetailSurfaceAnswer()
-data class SurfaceAnswer(val value: String) : DetailSurfaceAnswer()
+sealed class SurfaceAnswer
+data class GenericSurfaceAnswer(val value : String, val note: String) : SurfaceAnswer()
+data class SpecificSurfaceAnswer(val value: String) : SurfaceAnswer()
