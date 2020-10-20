@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.quests.surface
 
 import android.content.Context
 import android.content.DialogInterface
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -23,7 +21,13 @@ class DescribeGenericSurfaceDialog(
             context.getString(android.R.string.yes)
         ) { _, _ ->
             val txt = explanationInput.text.toString().trim()
-            if (txt.isNotEmpty()) {
+
+            if (txt.isEmpty()) {
+                Builder(context)
+                    .setMessage(R.string.quest_surface_detailed_answer_impossible_description)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show()
+            } else {
                 onSurfaceDescribed(txt)
             }
         }
@@ -34,23 +38,5 @@ class DescribeGenericSurfaceDialog(
             null as DialogInterface.OnClickListener?
         )
         setView(view)
-
-        setOnShowListener {
-            getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = false
-            explanationInput.addTextChangedListener(object : TextWatcher {
-                override fun onTextChanged(s: CharSequence, start: Int, before: Int,
-                                           count: Int) {
-                }
-
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int,
-                                               after: Int) {
-                }
-
-                override fun afterTextChanged(s: Editable) {
-                    val txt = explanationInput.text.toString().trim()
-                    getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = txt.isNotEmpty()
-                }
-            })
-        }
     }
 }
