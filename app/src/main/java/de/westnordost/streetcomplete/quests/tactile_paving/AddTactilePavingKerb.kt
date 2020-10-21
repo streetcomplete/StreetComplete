@@ -54,15 +54,15 @@ class AddTactilePavingKerb(
         way[highway][access ~ '^(private|no)$']; node(w) -> .private_road_nodes;
         (.exclusive_cycleway_nodes; .private_road_nodes;) -> .excluded;
 
-        node.kerbs[!tactile_paving] -> .unknown_tactile_paving;
+        node.kerbs[!tactile_paving] -> .unknown_state;
         node.kerbs[tactile_paving = no]${olderThan(4).toOverpassQLString()} -> .old_without_tactile_paving;
-        node.kerbs${olderThan(8).toOverpassQLString()} -> .very_old;
+        node.kerbs${olderThan(8).toOverpassQLString()} -> .outdated_data;
 
         (
             (
-                .unknown_tactile_paving;
+                .unknown_state;
                 .old_without_tactile_paving;
-                .very_old;
+                .outdated_data;
             );
         - .excluded;
         );
