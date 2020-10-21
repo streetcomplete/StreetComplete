@@ -47,37 +47,33 @@ class OsmQuestDownloaderTest {
     }
 
     @Test fun `ignore element with invalid geometry`() {
-        val invalidGeometryElement = ElementWithGeometry(
-                OsmNode(0, 0, OsmLatLon(1.0, 1.0), null),
-                null
-        )
-
-        val questType = ListBackedQuestType(listOf(invalidGeometryElement))
+        val questType = TestDownloaderQuestType(mapOf(
+            OsmNode(0, 0, OsmLatLon(1.0, 1.0), null) to
+                    null
+        ))
 
         downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0))
     }
 
     @Test fun `ignore at blacklisted position`() {
         val blacklistPos = OsmLatLon(0.3, 0.4)
-        val blacklistElement = ElementWithGeometry(
-                OsmNode(0, 0, blacklistPos, null),
-                ElementPointGeometry(blacklistPos)
-        )
         on(notePositionsSource.getAllPositions(any())).thenReturn(listOf(blacklistPos))
 
-        val questType = ListBackedQuestType(listOf(blacklistElement))
+        val questType = TestDownloaderQuestType(mapOf(
+            OsmNode(0, 0, blacklistPos, null) to
+                    ElementPointGeometry(blacklistPos)
+        ))
 
         downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0))
     }
 
     @Test fun `ignore element in country for which this quest is disabled`() {
         val pos = OsmLatLon(1.0, 1.0)
-        val inDisabledCountryElement = ElementWithGeometry(
-                OsmNode(0, 0, pos, null),
-                ElementPointGeometry(pos)
-        )
 
-        val questType = ListBackedQuestType(listOf(inDisabledCountryElement))
+        val questType = TestDownloaderQuestType(mapOf(
+            OsmNode(0, 0, pos, null) to
+                    ElementPointGeometry(pos)
+        ))
         questType.enabledInCountries = AllCountriesExcept("AA")
         // country boundaries say that position is in AA
         on(countryBoundaries.isInAny(anyDouble(),anyDouble(),any())).thenReturn(true)
@@ -88,12 +84,11 @@ class OsmQuestDownloaderTest {
 
     @Test fun `creates quest for element`() {
         val pos = OsmLatLon(1.0, 1.0)
-        val normalElement = ElementWithGeometry(
-                OsmNode(0, 0, pos, null),
-                ElementPointGeometry(pos)
-        )
 
-        val questType = ListBackedQuestType(listOf(normalElement))
+        val questType = TestDownloaderQuestType(mapOf(
+            OsmNode(0, 0, pos, null) to
+                    ElementPointGeometry(pos)
+        ))
 
         on(osmQuestController.replaceInBBox(any(), any(), any())).thenReturn(OsmQuestController.UpdateResult(0,0))
 
@@ -104,15 +99,13 @@ class OsmQuestDownloaderTest {
     }
 }
 
-private data class ElementWithGeometry(val element: Element, val geometry: ElementGeometry?)
-
-private class ListBackedQuestType(private val list: List<ElementWithGeometry>) : OsmDownloaderQuestType<String> {
+private class TestDownloaderQuestType(private val map: Map<Element, ElementGeometry?>) : OsmDownloaderQuestType<String> {
 
     override var enabledInCountries: Countries = AllCountries
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        for (e in list) {
-            handler(e.element, e.geometry)
+        for ((element, geometry) in map) {
+            handler(element, geometry)
         }
         return true
     }

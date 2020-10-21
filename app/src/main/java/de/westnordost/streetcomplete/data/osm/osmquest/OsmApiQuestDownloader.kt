@@ -26,7 +26,6 @@ class OsmApiQuestDownloader @Inject constructor(
     private val osmApiMapDataProvider: Provider<OsmApiMapData>,
     private val elementEligibleForOsmQuestChecker: ElementEligibleForOsmQuestChecker
 ) {
-    // TODO TEST
     fun download(questTypes: List<OsmMapDataQuestType<*>>, bbox: BoundingBox) {
         if (questTypes.isEmpty()) return
 

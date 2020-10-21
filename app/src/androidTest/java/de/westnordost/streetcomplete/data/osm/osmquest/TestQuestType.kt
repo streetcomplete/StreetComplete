@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 open class TestQuestType : OsmElementQuestType<String> {
 
     override fun getTitle(tags: Map<String, String>) = 0
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit) = false
     override fun isApplicableTo(element: Element):Boolean? = null
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {}
     override val icon = 0

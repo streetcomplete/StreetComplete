@@ -138,7 +138,7 @@ import javax.inject.Singleton
         elementType: Element.Type,
         elementId: Long
     ): UpdateResult {
-        geometryDao.put(ElementGeometryEntry(elementType, elementId, updatedGeometry)) // TODO test
+        geometryDao.put(ElementGeometryEntry(elementType, elementId, updatedGeometry))
         val e = ElementKey(elementType, elementId)
 
         var deletedCount = removeObsolete(removedIds)
