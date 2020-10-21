@@ -175,10 +175,10 @@ private val buildingTypesThatShouldHaveAddresses = listOf(
 
 /** returns whether this bounding box is completely inside the other */
 private fun BoundingBox.isCompletelyInside(other: BoundingBox): Boolean =
-    minLongitude > other.minLongitude &&
-    minLatitude > other.minLatitude &&
-    maxLongitude < other.maxLongitude &&
-    maxLatitude < other.maxLatitude
+    minLongitude >= other.minLongitude &&
+    minLatitude >= other.minLatitude &&
+    maxLongitude <= other.maxLongitude &&
+    maxLatitude <= other.maxLatitude
 
 private fun Element.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeometry): Boolean =
     when (this) {
