@@ -24,7 +24,7 @@ class AddTactilePavingKerb(
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_railway // TODO icon
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_tactile_paving_kerb
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_tactile_paving_kerb_title
 
     override fun createForm() = TactilePavingForm()
 
