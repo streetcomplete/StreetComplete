@@ -24,6 +24,7 @@ class AddFootwayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyInterva
                 (
                 footway:surface ~ paved|unpaved
                 and !footway:surface:note
+                and !note:footway:surface
                 )
             )
     """

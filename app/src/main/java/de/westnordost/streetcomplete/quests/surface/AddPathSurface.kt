@@ -24,6 +24,7 @@ class AddPathSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
                 (
                 surface ~ paved|unpaved
                 and !surface:note
+                and !note:surface
                 )
         )
     """

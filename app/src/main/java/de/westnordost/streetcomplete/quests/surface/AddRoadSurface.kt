@@ -21,6 +21,7 @@ class AddRoadSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
                 (
                 surface ~ paved|unpaved
                 and !surface:note
+                and !note:surface
                 )
         )
         and (access !~ private|no or (foot and foot !~ private|no))

@@ -25,6 +25,7 @@ class AddCyclewayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyInterv
                 (
                 cycleway:surface ~ paved|unpaved
                 and !cycleway:surface:note
+                and !note:cycleway:surface
                 )
             )
     """
