@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 
-class AddBusStopName(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<BusStopNameAnswer>(o) {
+class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes with
         (
           (public_transport = platform and ~bus|trolleybus|tram ~ yes)

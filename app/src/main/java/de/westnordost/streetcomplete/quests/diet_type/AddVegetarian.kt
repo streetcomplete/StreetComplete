@@ -2,15 +2,13 @@ package de.westnordost.streetcomplete.quests.diet_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddVegetarian(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+class AddVegetarian(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes, ways with amenity ~ restaurant|cafe|fast_food
         and name and (
           !diet:vegetarian 

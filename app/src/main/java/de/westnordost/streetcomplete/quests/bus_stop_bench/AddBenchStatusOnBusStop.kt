@@ -1,16 +1,15 @@
 package de.westnordost.streetcomplete.quests.bus_stop_bench
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddBenchStatusOnBusStop(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore) : SimpleOverpassQuestType<Boolean>(o) {
+class AddBenchStatusOnBusStop(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boolean>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes with
         (
           (public_transport = platform and ~bus|trolleybus|tram ~ yes)

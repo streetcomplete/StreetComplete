@@ -11,7 +11,7 @@ import java.util.*
 
 class AddBusStopShelterTest {
 
-    private val questType = AddBusStopShelter(mock(), mock())
+    private val questType = AddBusStopShelter(mock())
 
     @Test fun `apply shelter yes answer`() {
         questType.verifyAnswer(

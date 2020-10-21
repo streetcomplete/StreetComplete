@@ -6,12 +6,12 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDownloader
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.osm.osmquest.*
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmApiQuestDownloader
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDownloader
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.TilesRect
@@ -74,14 +74,14 @@ class QuestDownloader @Inject constructor(
         if (cancelState.get()) return
 
         // download multiple quests at once
-        val downloadedQuestTypes = downloadMultipleOsmQuestTypes(bbox, tiles)
+        val downloadedQuestTypes = downloadOsmMapDataQuestTypes(bbox, tiles)
         questTypes.removeAll(downloadedQuestTypes)
 
         if (questTypes.isEmpty()) return
         if (cancelState.get()) return
 
         // download remaining quests that haven't been downloaded in the previous step
-        val remainingOsmElementQuestTypes = questTypes.filterIsInstance<OsmElementQuestType<*>>()
+        val remainingOsmElementQuestTypes = questTypes.filterIsInstance<OsmDownloaderQuestType<*>>()
         for (questType in remainingOsmElementQuestTypes) {
             if (cancelState.get()) break
             downloadOsmQuestType(bbox, tiles, questType)
@@ -121,7 +121,7 @@ class QuestDownloader @Inject constructor(
         progressListener?.onFinished(noteQuestType.toDownloadItem())
     }
 
-    private fun downloadOsmQuestType(bbox: BoundingBox, tiles: TilesRect, questType: OsmElementQuestType<*>) {
+    private fun downloadOsmQuestType(bbox: BoundingBox, tiles: TilesRect, questType: OsmDownloaderQuestType<*>) {
         progressListener?.onStarted(questType.toDownloadItem())
         val questDownload = osmQuestDownloaderProvider.get()
         if (questDownload.download(questType, bbox)) {
@@ -130,16 +130,16 @@ class QuestDownloader @Inject constructor(
         progressListener?.onFinished(questType.toDownloadItem())
     }
 
-    private fun downloadMultipleOsmQuestTypes(bbox: BoundingBox, tiles: TilesRect): List<OsmElementQuestType<*>> {
+    private fun downloadOsmMapDataQuestTypes(bbox: BoundingBox, tiles: TilesRect): List<OsmElementQuestType<*>> {
         val downloadItem = DownloadItem(R.drawable.ic_search_black_128dp, "Multi download")
         progressListener?.onStarted(downloadItem)
         // Since we query all the data at once, we can also do the downloading for quests not on our list.
-        val questTypes = questTypesProvider.get().filterIsInstance<OsmElementQuestType<*>>()
+        val questTypes = questTypesProvider.get().filterIsInstance<OsmMapDataQuestType<*>>()
         val questDownload = osmApiQuestDownloaderProvider.get()
-        val downloadedQuestTypes = questDownload.download(questTypes, bbox)
-        downloadedTilesDao.putAll(tiles, downloadedQuestTypes.map { it.javaClass.simpleName })
+        questDownload.download(questTypes, bbox)
+        downloadedTilesDao.putAll(tiles, questTypes.map { it.javaClass.simpleName })
         progressListener?.onFinished(downloadItem)
-        return downloadedQuestTypes
+        return questTypes
     }
 
     companion object {

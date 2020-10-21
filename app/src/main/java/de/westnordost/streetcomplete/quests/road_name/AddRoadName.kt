@@ -4,7 +4,6 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
@@ -12,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmDownloaderQuestType
 import de.westnordost.streetcomplete.quests.LocalizedName
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.quests.road_name.data.putRoadNameSuggestion
@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.quests.road_name.data.putRoadNameSuggestion
 class AddRoadName(
     private val overpassApi: OverpassMapDataAndGeometryApi,
     private val roadNameSuggestionsDao: RoadNameSuggestionsDao
-) : OsmElementQuestType<RoadNameAnswer> {
+) : OsmDownloaderQuestType<RoadNameAnswer> {
 
     override val enabledInCountries = AllCountriesExcept("JP")
     override val commitMessage = "Determine road names and types"

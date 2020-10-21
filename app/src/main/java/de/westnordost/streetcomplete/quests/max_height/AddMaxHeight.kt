@@ -1,17 +1,13 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
-import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 
-class AddMaxHeight(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<MaxHeightAnswer> {
+class AddMaxHeight : OsmMapDataQuestType<MaxHeightAnswer> {
 
     private val nodeFilter by lazy { ElementFiltersParser().parse("""
         nodes with
@@ -49,19 +45,11 @@ class AddMaxHeight(private val overpassApi: OverpassMapDataAndGeometryApi) : Osm
         }
     }
 
+    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> =
+        mapData.nodes.filter { nodeFilter.matches(it) } + mapData.ways.filter { wayFilter.matches(it) }
+
     override fun isApplicableTo(element: Element) =
         nodeFilter.matches(element) || wayFilter.matches(element)
-
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassApi.query(getNodeOverpassQuery(bbox), handler)
-               && overpassApi.query(getWayOverpassQuery(bbox), handler)
-    }
-
-    private fun getNodeOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + "\n" + nodeFilter.toOverpassQLString() + "\n" + getQuestPrintStatement()
-
-    private fun getWayOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + "\n" + wayFilter.toOverpassQLString() + "\n" + getQuestPrintStatement()
 
     override fun createForm() = AddMaxHeightForm()
 

@@ -4,13 +4,13 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmDownloaderQuestType
 
-class AddForestLeafType(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<String> {
+class AddForestLeafType(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmDownloaderQuestType<String> {
     override val commitMessage = "Add leaf type"
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf

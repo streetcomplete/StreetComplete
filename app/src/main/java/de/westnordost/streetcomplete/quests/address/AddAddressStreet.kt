@@ -7,17 +7,17 @@ import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmDownloaderQuestType
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.quests.road_name.data.putRoadNameSuggestion
 
 class AddAddressStreet(
         private val overpassApi: OverpassMapDataAndGeometryApi,
         private val roadNameSuggestionsDao: RoadNameSuggestionsDao
-) : OsmElementQuestType<AddressStreetAnswer> {
+) : OsmDownloaderQuestType<AddressStreetAnswer> {
 
     override val commitMessage = "Add street/place names to address"
     override val icon = R.drawable.ic_quest_housenumber_street

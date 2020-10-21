@@ -11,7 +11,7 @@ import java.util.*
 
 class AddStepsRampTest {
 
-    private val questType = AddStepsRamp(mock(), mock())
+    private val questType = AddStepsRamp(mock())
 
     @Test fun `apply bicycle ramp answer`() {
         questType.verifyAnswer(

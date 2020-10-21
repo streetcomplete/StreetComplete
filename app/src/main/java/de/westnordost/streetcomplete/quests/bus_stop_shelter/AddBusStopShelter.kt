@@ -2,16 +2,14 @@ package de.westnordost.streetcomplete.quests.bus_stop_shelter
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.*
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddBusStopShelter(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<BusStopShelterAnswer>(o) {
+class AddBusStopShelter(r: ResurveyIntervalsStore) : OsmFilterQuestType<BusStopShelterAnswer>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes with 
         (
           (public_transport = platform and ~bus|trolleybus|tram ~ yes)

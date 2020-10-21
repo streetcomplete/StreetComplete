@@ -29,7 +29,7 @@ class OsmQuestDownloader @Inject constructor(
 ) {
     private val countryBoundaries: CountryBoundaries get() = countryBoundariesFuture.get()
 
-    fun download(questType: OsmElementQuestType<*>, bbox: BoundingBox): Boolean {
+    fun download(questType: OsmDownloaderQuestType<*>, bbox: BoundingBox): Boolean {
         val questTypeName = questType.getName()
 
         val countries = questType.enabledInCountries

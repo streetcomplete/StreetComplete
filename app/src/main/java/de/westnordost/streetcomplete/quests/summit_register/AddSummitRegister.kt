@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometry
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmDownloaderQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
@@ -19,7 +20,7 @@ import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 class AddSummitRegister(
     private val overpassMapDataApi: OverpassMapDataAndGeometryApi,
     private val r: ResurveyIntervalsStore
-) : OsmElementQuestType<Boolean> {
+) : OsmDownloaderQuestType<Boolean> {
 
     override val commitMessage = "Add whether summit register is present"
     override val wikiLink = "Key:summit:register"
@@ -56,7 +57,6 @@ class AddSummitRegister(
 
     private fun getOverpassQuery(bbox: BoundingBox) = """
         ${bbox.toGlobalOverpassBBox()}
-
         (
             relation["route"="hiking"];
         )->.hiking;

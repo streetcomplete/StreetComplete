@@ -2,13 +2,12 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.max_speed.*
 import org.junit.Test
 
 class AddMaxSpeedTest {
 
-    private val questType = AddMaxSpeed(mock())
+    private val questType = AddMaxSpeed()
 
     @Test fun `apply no sign answer`() {
         questType.verifyAnswer(

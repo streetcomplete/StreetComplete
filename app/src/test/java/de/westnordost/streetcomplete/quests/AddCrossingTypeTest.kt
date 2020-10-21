@@ -10,7 +10,7 @@ import java.util.*
 
 class AddCrossingTypeTest {
 
-    private val questType = AddCrossingType(mock(), mock())
+    private val questType = AddCrossingType(mock())
 
     @Test fun `apply normal answer`() {
         questType.verifyAnswer(

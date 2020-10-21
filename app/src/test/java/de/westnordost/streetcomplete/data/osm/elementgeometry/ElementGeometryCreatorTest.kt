@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.elementgeometry
 
 import de.westnordost.osmapi.map.MapData
+import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.osmapi.map.data.*
 import org.junit.Test
 
@@ -123,15 +124,15 @@ class ElementGeometryCreatorTest {
             OsmNode(0, 1, P0, null, null, null),
             OsmNode(1, 1, P1, null, null, null)
         )
-        val nodesById = nodes.associateBy { it.id }.toMutableMap()
-        val mapData = MapData(nodesById)
+        val mapData = MutableMapData()
+        mapData.addAll(nodes)
         val geom = create(SIMPLE_WAY1, mapData) as ElementPolylinesGeometry
         assertEquals(listOf(nodes.map { it.position }), geom.polylines)
     }
 
     @Test fun `returns null for non-existent way`() {
         val way = OsmWay(1L, 1, listOf(1,2,3), null)
-        assertNull(create(way, MapData()))
+        assertNull(create(way, MutableMapData()))
     }
 
     @Test fun `positions for relation`() {
@@ -153,9 +154,8 @@ class ElementGeometryCreatorTest {
                 OsmNode(3, 1, P3, null, null, null)
             )
         )
-        val nodesById = nodesByWayId.flatMap { it.value }.associateBy { it.id }.toMutableMap()
-        val waysById = ways.associateBy { it.id }.toMutableMap()
-        val mapData = MapData(nodesById, waysById)
+        val mapData = MutableMapData()
+        mapData.addAll(nodesByWayId.values.flatten() + ways)
         val positions = listOf(P0, P1, P2, P3)
         val geom = create(relation, mapData) as ElementPolylinesGeometry
         assertEquals(listOf(positions), geom.polylines)
@@ -167,7 +167,7 @@ class ElementGeometryCreatorTest {
             OsmRelationMember(2L, "", Element.Type.WAY),
             OsmRelationMember(1L, "", Element.Type.NODE)
         ), null)
-        assertNull(create(relation, MapData()))
+        assertNull(create(relation, MutableMapData()))
     }
 }
 

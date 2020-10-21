@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests.parking_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddParkingAccess(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddParkingAccess : OsmFilterQuestType<String>() {
 
-    override val tagFilters = "nodes, ways, relations with amenity=parking and (!access or access=unknown)"
+    override val elementFilter = "nodes, ways, relations with amenity=parking and (!access or access=unknown)"
     override val commitMessage = "Add type of parking access"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking_access

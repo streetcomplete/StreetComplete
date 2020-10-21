@@ -7,16 +7,13 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.getMapAndHandleTooBigQuery
-import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
 import de.westnordost.streetcomplete.data.quest.QuestType
 import java.util.*
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
+import javax.inject.Provider
 import kotlin.collections.ArrayList
 
 /** Does one API call to get all the map data and generates quests from that. Calls isApplicable
@@ -26,22 +23,17 @@ class OsmApiQuestDownloader @Inject constructor(
     private val osmQuestController: OsmQuestController,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
     private val notePositionsSource: NotePositionsSource,
-    private val mapDataApi: MapDataApi,
-    private val elementGeometryCreator: ElementGeometryCreator,
+    private val osmApiMapDataProvider: Provider<OsmApiMapData>,
     private val elementEligibleForOsmQuestChecker: ElementEligibleForOsmQuestChecker
 ) {
     // TODO TEST
-    fun download(questTypes: List<OsmElementQuestType<*>>, bbox: BoundingBox): List<OsmElementQuestType<*>> {
-        val skippedQuestTypes = mutableSetOf<OsmElementQuestType<*>>()
+    fun download(questTypes: List<OsmMapDataQuestType<*>>, bbox: BoundingBox) {
+        if (questTypes.isEmpty()) return
 
         var time = System.currentTimeMillis()
 
-        val mapData = mapDataApi.getMapAndHandleTooBigQuery(bbox)
-
-        val elementGeometries = EnumMap<Element.Type, MutableMap<Long, ElementGeometry>>(Element.Type::class.java)
-        elementGeometries[Element.Type.NODE] = mutableMapOf()
-        elementGeometries[Element.Type.WAY] = mutableMapOf()
-        elementGeometries[Element.Type.RELATION] = mutableMapOf()
+        val mapData = osmApiMapDataProvider.get()
+        mapData.initWith(bbox)
 
         val quests = ArrayList<OsmQuest>()
         val questElements = HashSet<Element>()
@@ -53,6 +45,7 @@ class OsmApiQuestDownloader @Inject constructor(
         val truncatedBlacklistedPositions = notePositionsSource.getAllPositions(bbox).map { it.truncateTo5Decimals() }.toSet()
 
         for (questType in questTypes) {
+            // TODO multithreading!
             val questTypeName = questType.getName()
 
             val countries = questType.enabledInCountries
@@ -61,18 +54,8 @@ class OsmApiQuestDownloader @Inject constructor(
                 continue
             }
 
-            for (element in mapData) {
-                val appliesToElement = questType.isApplicableTo(element)
-                if (appliesToElement == null) {
-                    skippedQuestTypes.add(questType)
-                    break
-                }
-                if (!appliesToElement) continue
-                if (!elementGeometries[element.type]!!.containsKey(element.id)) {
-                    val geometry = elementGeometryCreator.create(element, mapData) ?: continue
-                    elementGeometries[element.type]!![element.id] = geometry
-                }
-                val geometry = elementGeometries[element.type]!![element.id]
+            for (element in questType.getApplicableElements(mapData)) {
+                val geometry = mapData.getGeometry(element.type, element.id)
                 if (!elementEligibleForOsmQuestChecker.mayCreateQuestFrom(questType, geometry, truncatedBlacklistedPositions)) continue
 
                 val quest = OsmQuest(questType, element.type, element.id, geometry!!)
@@ -81,30 +64,21 @@ class OsmApiQuestDownloader @Inject constructor(
                 questElements.add(element)
             }
         }
-        val downloadedQuestTypes = questTypes.filterNot { skippedQuestTypes.contains(it) }
-        val downloadedQuestTypeNames = downloadedQuestTypes.map { it.getName() }
-
         val secondsSpentAnalyzing = (System.currentTimeMillis() - time) / 1000
 
-        if (downloadedQuestTypeNames.isNotEmpty()) {
+        // elements must be put into DB first because quests have foreign keys on it
+        elementDB.putAll(questElements)
 
-            // elements must be put into DB first because quests have foreign keys on it
-            elementDB.putAll(questElements)
+        val questTypeNames = questTypes.map { it.getName() }
+        val replaceResult = osmQuestController.replaceInBBox(quests, bbox, questTypeNames)
 
-            val replaceResult = osmQuestController.replaceInBBox(quests, bbox, downloadedQuestTypeNames)
+        elementDB.deleteUnreferenced()
 
-            elementDB.deleteUnreferenced()
-
-            for (questType in downloadedQuestTypes) {
-                questType.cleanMetadata()
-            }
-
-            Log.i(TAG,"${downloadedQuestTypeNames.joinToString()}: Added ${replaceResult.added} new and removed ${replaceResult.deleted} already resolved quests (total: ${quests.size}) in ${secondsSpentAnalyzing}s")
-        } else {
-            Log.i(TAG,"Added and removed no quests because no quest types were downloaded, in ${secondsSpentAnalyzing}s")
+        for (questType in questTypes) {
+            questType.cleanMetadata()
         }
 
-        return downloadedQuestTypes
+        Log.i(TAG,"${questTypeNames.joinToString()}: Added ${replaceResult.added} new and removed ${replaceResult.deleted} already resolved quests (total: ${quests.size}) in ${secondsSpentAnalyzing}s")
     }
 
     companion object {

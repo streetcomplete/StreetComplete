@@ -3,16 +3,14 @@ package de.westnordost.streetcomplete.quests.segregated
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddCyclewaySegregation(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<Boolean>(o) {
+class AddCyclewaySegregation(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boolean>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with
         (
           (highway = path and bicycle = designated and foot = designated)

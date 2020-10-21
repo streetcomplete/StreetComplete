@@ -16,7 +16,7 @@ import java.util.*
 
 class AddParkingFeeTest {
 
-    private val questType = AddParkingFee(mock(), mock())
+    private val questType = AddParkingFee(mock())
 
     private val openingHours = OpeningHoursRuleList(listOf(
         Rule().apply {

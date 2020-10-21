@@ -15,12 +15,14 @@ import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.elementfilter.DEFAULT_MAX_QUESTS
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.elementfilter.toOverpassBboxFilter
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmDownloaderQuestType
 import de.westnordost.streetcomplete.util.FlattenIterable
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.isInMultipolygon
 
-class AddHousenumber(private val overpass: OverpassMapDataAndGeometryApi) : OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber(private val overpass: OverpassMapDataAndGeometryApi) :
+    OsmDownloaderQuestType<HousenumberAnswer> {
 
     override val commitMessage = "Add housenumbers"
     override val wikiLink = "Key:addr"

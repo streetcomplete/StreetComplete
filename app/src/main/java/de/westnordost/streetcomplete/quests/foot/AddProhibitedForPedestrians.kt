@@ -2,14 +2,13 @@ package de.westnordost.streetcomplete.quests.foot
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
-class AddProhibitedForPedestrians(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {
+class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with (
           ~'sidewalk(:both)?' ~ none|no or
           (sidewalk:left ~ none|no and sidewalk:right ~ none|no)

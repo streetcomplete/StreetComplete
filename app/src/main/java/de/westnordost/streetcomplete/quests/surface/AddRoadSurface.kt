@@ -3,16 +3,13 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
+class AddRoadSurface(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
 
-class AddRoadSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
-
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
          and (
            !surface

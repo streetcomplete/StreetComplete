@@ -14,13 +14,15 @@ class ElementFilterExpression(
     private val elementExprRoot: BooleanExpression<ElementFilter, Element>?
 ) {
     /** returns whether the given element is found through (=matches) this expression */
-    fun matches(element: Element) =
-        when (element.type) {
-            Element.Type.NODE -> elementsTypes.contains(NODES)
-            Element.Type.WAY -> elementsTypes.contains(WAYS)
-            Element.Type.RELATION -> elementsTypes.contains(RELATIONS)
-            else -> false
-        } && (elementExprRoot?.matches(element) ?: true)
+    fun matches(element: Element): Boolean =
+        includesElementType(element.type) && (elementExprRoot?.matches(element) ?: true)
+
+    fun includesElementType(elementType: Element.Type): Boolean = when (elementType) {
+        Element.Type.NODE -> elementsTypes.contains(NODES)
+        Element.Type.WAY -> elementsTypes.contains(WAYS)
+        Element.Type.RELATION -> elementsTypes.contains(RELATIONS)
+        else -> false
+    }
 
     /** returns this expression as a Overpass query string */
     fun toOverpassQLString(): String = OverpassQueryCreator(elementsTypes, elementExprRoot).create()

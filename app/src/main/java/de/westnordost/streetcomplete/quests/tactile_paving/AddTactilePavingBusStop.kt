@@ -2,17 +2,15 @@ package de.westnordost.streetcomplete.quests.tactile_paving
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<Boolean>(o) {
+class AddTactilePavingBusStop(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boolean>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes, ways with
         (
           (public_transport = platform and (bus = yes or trolleybus = yes or tram = yes)) 

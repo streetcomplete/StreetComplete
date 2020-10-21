@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmDownloaderQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
@@ -24,7 +25,7 @@ import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 class AddCycleway(
     private val overpassApi: OverpassMapDataAndGeometryApi,
     private val r: ResurveyIntervalsStore
-) : OsmElementQuestType<CyclewayAnswer> {
+) : OsmDownloaderQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"

@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.building_underground
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddIsBuildingUnderground(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
+class AddIsBuildingUnderground : OsmFilterQuestType<Boolean>() {
 
-    override val tagFilters = "ways, relations with building and !location and layer~-[0-9]+"
+    override val elementFilter = "ways, relations with building and !location and layer~-[0-9]+"
     override val commitMessage = "Determine whatever building is fully underground"
     override val wikiLink = "Key:location"
     override val icon = R.drawable.ic_quest_building_underground

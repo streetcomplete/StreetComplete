@@ -7,7 +7,7 @@ import de.westnordost.osmapi.ApiRequestWriter
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmDownloaderQuestType
 import de.westnordost.streetcomplete.quests.QuestModule
 import java.io.OutputStream
 import java.lang.Thread.sleep
@@ -29,7 +29,7 @@ fun main() {
     val hamburg = BoundingBox(53.5, 9.9, 53.6, 10.0)
 
     for (questType in registry.all) {
-        if (questType is OsmElementQuestType) {
+        if (questType is OsmDownloaderQuestType) {
             print(questType.javaClass.simpleName + ": ")
             questType.download(hamburg, mock())
             println()

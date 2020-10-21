@@ -233,7 +233,7 @@ private fun MutableList<LatLon>.eliminateDuplicates() {
 
 private fun MapData.getNodePositions(way: Way): List<LatLon>? {
     return way.nodeIds.map { nodeId ->
-        val node = nodes[nodeId] ?: return null
+        val node = getNode(nodeId) ?: return null
         node.position
     }
 }
@@ -241,9 +241,9 @@ private fun MapData.getNodePositions(way: Way): List<LatLon>? {
 private fun MapData.getWaysNodePositions(relation: Relation): Map<Long, List<LatLon>>? {
     val wayMembers = relation.members.filter { it.type == Element.Type.WAY }
     return wayMembers.associate { wayMember ->
-        val way = ways[wayMember.ref] ?: return null
+        val way = getWay(wayMember.ref) ?: return null
         val wayPositions = way.nodeIds.map { nodeId ->
-            val node = nodes[nodeId] ?: return null
+            val node = getNode(nodeId) ?: return null
             node.position
         }
         way.id to wayPositions

@@ -3,15 +3,13 @@ package de.westnordost.streetcomplete.quests.tracktype
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddTracktype(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+class AddTracktype(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway = track
         and (
           !tracktype

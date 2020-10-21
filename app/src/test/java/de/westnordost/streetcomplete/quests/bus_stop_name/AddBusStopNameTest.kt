@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.LocalizedName
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
 class AddBusStopNameTest {
 
-    private val questType = AddBusStopName(mock())
+    private val questType = AddBusStopName()
 
     @Test
     fun `apply no name answer`() {

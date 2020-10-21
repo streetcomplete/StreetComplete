@@ -2,29 +2,63 @@ package de.westnordost.osmapi.map
 
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.handler.MapDataHandler
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.util.MultiIterable
 
-data class MapData(
-    val nodes: MutableMap<Long, Node> = mutableMapOf(),
-    val ways: MutableMap<Long, Way> = mutableMapOf(),
-    val relations: MutableMap<Long, Relation> = mutableMapOf()) : MapDataHandler, Iterable<Element> {
+interface MapDataWithGeometry : MapData {
+    fun getNodeGeometry(id: Long): ElementPointGeometry?
+    fun getWayGeometry(id: Long): ElementGeometry?
+    fun getRelationGeometry(id: Long): ElementGeometry?
+}
 
-    override fun handle(bounds: BoundingBox) {}
-    override fun handle(node: Node) { nodes[node.id] = node }
-    override fun handle(way: Way) { ways[way.id] = way }
-    override fun handle(relation: Relation) { relations[relation.id] = relation }
+interface MapData : Iterable<Element> {
+    val nodes: Collection<Node>
+    val ways: Collection<Way>
+    val relations: Collection<Relation>
+    val boundingBox: BoundingBox?
+
+    fun getNode(id: Long): Node?
+    fun getWay(id: Long): Way?
+    fun getRelation(id: Long): Relation?
+}
+
+open class MutableMapData : MapData, MapDataHandler {
+
+    protected val nodesById: MutableMap<Long, Node> = mutableMapOf()
+    protected val waysById: MutableMap<Long, Way> = mutableMapOf()
+    protected val relationsById: MutableMap<Long, Relation> = mutableMapOf()
+    override var boundingBox: BoundingBox? = null
+    protected set
+
+    override fun handle(bounds: BoundingBox) { boundingBox = bounds }
+    override fun handle(node: Node) { nodesById[node.id] = node }
+    override fun handle(way: Way) { waysById[way.id] = way }
+    override fun handle(relation: Relation) { relationsById[relation.id] = relation }
+
+    override val nodes get() = nodesById.values
+    override val ways get() = waysById.values
+    override val relations get() = relationsById.values
+
+    override fun getNode(id: Long) = nodesById[id]
+    override fun getWay(id: Long) = waysById[id]
+    override fun getRelation(id: Long) = relationsById[id]
+
+    fun addAll(elements: Iterable<Element>) {
+        for (element in elements) {
+            when(element) {
+                is Node -> nodesById[element.id] = element
+                is Way -> waysById[element.id] = element
+                is Relation -> relationsById[element.id] = element
+            }
+        }
+    }
 
     override fun iterator(): Iterator<Element> {
         val elements = MultiIterable<Element>()
-        elements.add(nodes.values)
-        elements.add(ways.values)
-        elements.add(relations.values)
+        elements.add(nodes)
+        elements.add(ways)
+        elements.add(relations)
         return elements.iterator()
-    }
-
-    fun add(other: MapData) {
-        nodes.putAll(other.nodes)
-        ways.putAll(other.ways)
-        relations.putAll(other.relations)
     }
 }

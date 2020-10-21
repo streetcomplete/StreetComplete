@@ -106,7 +106,7 @@ class OsmQuestDownloaderTest {
 
 private data class ElementWithGeometry(val element: Element, val geometry: ElementGeometry?)
 
-private class ListBackedQuestType(private val list: List<ElementWithGeometry>) : OsmElementQuestType<String> {
+private class ListBackedQuestType(private val list: List<ElementWithGeometry>) : OsmDownloaderQuestType<String> {
 
     override var enabledInCountries: Countries = AllCountries
 

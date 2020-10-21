@@ -2,8 +2,9 @@ package de.westnordost.streetcomplete
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmDownloaderQuestType
 import de.westnordost.streetcomplete.quests.QuestModule
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import org.mockito.ArgumentMatchers
@@ -35,11 +36,14 @@ fun main() {
     for (questType in registry.all) {
         if (questType is OsmElementQuestType) {
             println("### " + questType.javaClass.simpleName)
-            if (questType is SimpleOverpassQuestType) {
-                val filters = questType.tagFilters.trimIndent()
-                println("<details>\n<summary>Tag Filters</summary>\n\n```\n$filters\n```\n</details>\n")
+            if (questType is OsmFilterQuestType) {
+                val query = "[bbox:{{bbox}}];\n" + questType.filter.toOverpassQLString() + "\n out meta geom;"
+                println("```\n$query\n```")
+            } else if (questType is OsmDownloaderQuestType) {
+                questType.download(bbox, mock())
+            } else {
+                println("Not available, see source code")
             }
-            questType.download(bbox, mock())
             println()
         }
     }

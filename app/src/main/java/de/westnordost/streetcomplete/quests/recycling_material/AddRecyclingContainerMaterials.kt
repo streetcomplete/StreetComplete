@@ -13,12 +13,13 @@ import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmDownloaderQuestType
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddRecyclingContainerMaterials(
     private val overpassApi: OverpassMapDataAndGeometryApi,
     private val r: ResurveyIntervalsStore
-) : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
+) : OsmDownloaderQuestType<RecyclingContainerMaterialsAnswer> {
 
     override val commitMessage = "Add recycled materials to container"
     override val wikiLink = "Key:recycling"

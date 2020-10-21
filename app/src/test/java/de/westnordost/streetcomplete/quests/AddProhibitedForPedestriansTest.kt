@@ -9,7 +9,7 @@ import org.junit.Test
 
 class AddProhibitedForPedestriansTest {
 
-    private val questType = AddProhibitedForPedestrians(mock())
+    private val questType = AddProhibitedForPedestrians()
 
     @Test fun `apply yes answer`() {
         questType.verifyAnswer(YES, StringMapEntryAdd("foot", "no"))

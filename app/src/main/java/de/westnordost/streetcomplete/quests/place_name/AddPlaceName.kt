@@ -1,22 +1,17 @@
 package de.westnordost.streetcomplete.quests.place_name
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
-import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
-    private val overpassApi: OverpassMapDataAndGeometryApi,
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmElementQuestType<PlaceNameAnswer> {
+) : OsmMapDataQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ElementFiltersParser().parse("""
         nodes, ways, relations with 
@@ -108,12 +103,8 @@ class AddPlaceName(
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
         featureName.value?.let { arrayOf(it) } ?: arrayOf()
 
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassApi.query(getOverpassQuery(bbox)) { element, geometry ->
-            // only show places without names as quests for which a feature name is available
-            if (hasFeatureName(element.tags)) handler(element, geometry)
-        }
-    }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> =
+        mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element) =
         filter.matches(element) && hasFeatureName(element.tags)
@@ -126,9 +117,6 @@ class AddPlaceName(
             is PlaceName -> changes.add("name", answer.name)
         }
     }
-
-    private fun getOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
 
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
         tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false

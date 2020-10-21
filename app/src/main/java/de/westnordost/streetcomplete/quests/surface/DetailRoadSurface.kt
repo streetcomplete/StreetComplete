@@ -3,13 +3,12 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 
 
-class DetailRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<DetailSurfaceAnswer>(o) {
+class DetailRoadSurface : OsmFilterQuestType<DetailSurfaceAnswer>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway ~ ${ALL_ROADS.joinToString("|")}
         and surface ~ paved|unpaved
         and !surface:note
