@@ -56,6 +56,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
+import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
@@ -180,6 +181,7 @@ object QuestModule
         AddBikeParkingCover(o), // used by OsmAnd in the object description
         AddTactilePavingCrosswalk(o, r), // Paving can be completed while waiting to cross
         AddTactilePavingKerb(o, r), // Paving can be completed while waiting to cross
+        AddKerbHeight(o, r), // Should be visible while waiting to cross
         AddTrafficSignalsSound(o, r), // Sound needs to be done as or after you're crossing
         AddTrafficSignalsVibration(o, r),
         AddRoofShape(o),
