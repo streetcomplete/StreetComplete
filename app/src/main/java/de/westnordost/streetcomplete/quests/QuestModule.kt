@@ -119,7 +119,7 @@ object QuestModule
         AddBusStopName(),
         AddBusStopRef(),
         AddIsBuildingUnderground(), //to avoid asking AddHousenumber and other for underground buildings
-        AddHousenumber(o),
+        AddHousenumber(),
         AddAddressStreet(o, roadNameSuggestionsDao),
         MarkCompletedHighwayConstruction(r),
         AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc

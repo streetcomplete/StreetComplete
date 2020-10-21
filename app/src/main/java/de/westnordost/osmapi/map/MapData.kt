@@ -10,6 +10,12 @@ interface MapDataWithGeometry : MapData {
     fun getNodeGeometry(id: Long): ElementPointGeometry?
     fun getWayGeometry(id: Long): ElementGeometry?
     fun getRelationGeometry(id: Long): ElementGeometry?
+
+    fun getGeometry(elementType: Element.Type, id: Long): ElementGeometry? = when(elementType) {
+        Element.Type.NODE -> getNodeGeometry(id)
+        Element.Type.WAY -> getWayGeometry(id)
+        Element.Type.RELATION -> getRelationGeometry(id)
+    }
 }
 
 interface MapData : Iterable<Element> {

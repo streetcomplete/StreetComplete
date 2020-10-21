@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.osmquest
 import de.westnordost.osmapi.common.errors.OsmQueryTooBigException
 import de.westnordost.osmapi.map.*
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.MapDataApi
@@ -74,12 +73,6 @@ class OsmApiMapData @Inject constructor(
             ensureRelationIsComplete(id)
             elementGeometryCreator.create(relationsById.getValue(id), this)
         }
-    }
-
-    fun getGeometry(elementType: Element.Type, id: Long): ElementGeometry? = when(elementType) {
-        NODE -> getNodeGeometry(id)
-        WAY -> getWayGeometry(id)
-        RELATION -> getRelationGeometry(id)
     }
 
     private fun ensureRelationIsComplete(id: Long) {
