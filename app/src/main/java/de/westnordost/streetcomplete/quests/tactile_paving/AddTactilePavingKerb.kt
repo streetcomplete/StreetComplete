@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrierForm
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddTactilePavingKerb(
