@@ -115,7 +115,7 @@ object QuestModule
         AddRoadName(roadNameSuggestionsDao),
         AddPlaceName(featureDictionaryFuture),
         AddOneway(),
-        AddSuspectedOneway(o, trafficFlowSegmentsApi, trafficFlowDao),
+        AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
         AddBusStopName(),
         AddBusStopRef(),
         AddIsBuildingUnderground(), //to avoid asking AddHousenumber and other for underground buildings

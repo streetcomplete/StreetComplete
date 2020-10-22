@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
