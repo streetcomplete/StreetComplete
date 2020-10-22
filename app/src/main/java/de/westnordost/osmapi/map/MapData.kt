@@ -68,3 +68,18 @@ open class MutableMapData : MapData, MapDataHandler {
         return elements.iterator()
     }
 }
+
+fun MapData.isRelationComplete(id: Long): Boolean =
+    getRelation(id)?.members?.all { member ->
+        when (member.type!!) {
+            Element.Type.NODE -> getNode(member.ref) != null
+            Element.Type.WAY -> getWay(member.ref) != null && isWayComplete(member.ref)
+            /* not being recursive here is deliberate. sub-relations are considered not relevant
+               for the element geometry in StreetComplete (and OSM API call to get a "complete"
+               relation also does not include sub-relations) */
+            Element.Type.RELATION -> getRelation(member.ref) != null
+        }
+    } ?: false
+
+fun MapData.isWayComplete(id: Long): Boolean =
+    getWay(id)?.nodeIds?.all { getNode(it) != null } ?: false

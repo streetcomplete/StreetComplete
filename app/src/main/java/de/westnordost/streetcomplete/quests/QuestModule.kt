@@ -201,7 +201,7 @@ object QuestModule
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
         //      the sake of mapping it in case it makes sense later
         AddIsDefibrillatorIndoor(),
-        AddSummitRegister(o, r),
+        AddSummitRegister(r),
         AddCyclewayPartSurface(r),
         AddFootwayPartSurface(r),
         AddMotorcycleParkingCover(),
