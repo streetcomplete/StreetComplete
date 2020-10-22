@@ -17,10 +17,12 @@ class ElementGeometryCreator @Inject constructor() {
      *
      *  @param element the element to create the geometry for
      *  @param mapData the MapData that contains the elements with the necessary
+     *  @param allowIncomplete whether incomplete relations should return an incomplete
+     *                         ElementGeometry (otherwise: null)
      *
      *  @return an ElementGeometry or null if any necessary element to create the geometry is not
      *          in the given MapData */
-    fun create(element: Element, mapData: MapData): ElementGeometry? {
+    fun create(element: Element, mapData: MapData, allowIncomplete: Boolean = false): ElementGeometry? {
         when(element) {
             is Node -> {
                 return create(element)
@@ -30,7 +32,7 @@ class ElementGeometryCreator @Inject constructor() {
                 return create(element, positions)
             }
             is Relation -> {
-                val positionsByWayId = mapData.getWaysNodePositions(element) ?: return null
+                val positionsByWayId = mapData.getWaysNodePositions(element, allowIncomplete) ?: return null
                 return create(element, positionsByWayId)
             }
             else -> return null
@@ -73,6 +75,7 @@ class ElementGeometryCreator @Inject constructor() {
      * @return an ElementPolygonsGeometry if the relation describes an area or an
      *         ElementPolylinesGeometry if it describes is a linear feature */
     fun create(relation: Relation, wayGeometries: Map<Long, List<LatLon>>): ElementGeometry? {
+
         return if (relation.isArea()) {
             createMultipolygonGeometry(relation, wayGeometries)
         } else {
@@ -133,17 +136,17 @@ class ElementGeometryCreator @Inject constructor() {
     private fun getRelationMemberWaysNodePositions(
         relation: Relation, wayGeometries: Map<Long, List<LatLon>>
     ): List<List<LatLon>> {
-        return relation.members.filter { it.type == Element.Type.WAY }.mapNotNull {
-            getValidNodePositions(wayGeometries[it.ref])
-        }
+        return relation.members
+            .filter { it.type == Element.Type.WAY }
+            .mapNotNull { getValidNodePositions(wayGeometries[it.ref]) }
     }
 
     private fun getRelationMemberWaysNodePositions(
         relation: Relation, withRole: String, wayGeometries: Map<Long, List<LatLon>>
     ): List<List<LatLon>> {
-        return relation.members.filter { it.type == Element.Type.WAY && it.role == withRole }.mapNotNull {
-            getValidNodePositions(wayGeometries[it.ref])
-        }
+        return relation.members
+            .filter { it.type == Element.Type.WAY && it.role == withRole }
+            .mapNotNull { getValidNodePositions(wayGeometries[it.ref]) }
     }
 
     private fun getValidNodePositions(wayGeometry: List<LatLon>?): List<LatLon>? {
@@ -238,14 +241,21 @@ private fun MapData.getNodePositions(way: Way): List<LatLon>? {
     }
 }
 
-private fun MapData.getWaysNodePositions(relation: Relation): Map<Long, List<LatLon>>? {
+private fun MapData.getWaysNodePositions(relation: Relation, allowIncomplete: Boolean = false): Map<Long, List<LatLon>>? {
     val wayMembers = relation.members.filter { it.type == Element.Type.WAY }
-    return wayMembers.associate { wayMember ->
-        val way = getWay(wayMember.ref) ?: return null
-        val wayPositions = way.nodeIds.map { nodeId ->
-            val node = getNode(nodeId) ?: return null
-            node.position
+    val result = mutableMapOf<Long, List<LatLon>>()
+    for (wayMember in wayMembers) {
+        val way = getWay(wayMember.ref)
+        if (way != null) {
+            val wayPositions = getNodePositions(way)
+            if (wayPositions != null) {
+                result[way.id] = wayPositions
+            } else {
+                if (!allowIncomplete) return null
+            }
+        } else {
+            if (!allowIncomplete) return null
         }
-        way.id to wayPositions
     }
+    return result
 }

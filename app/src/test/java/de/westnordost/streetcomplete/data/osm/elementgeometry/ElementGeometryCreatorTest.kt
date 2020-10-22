@@ -169,6 +169,42 @@ class ElementGeometryCreatorTest {
         ), null)
         assertNull(create(relation, MutableMapData()))
     }
+
+    @Test fun `returns null for relation with a way that's missing from map data`() {
+        val relation = OsmRelation(1L, 1, listOf(
+            OsmRelationMember(0L, "", Element.Type.WAY),
+            OsmRelationMember(1L, "", Element.Type.WAY)
+        ), null)
+        val mapData = MutableMapData()
+        mapData.addAll(listOf(
+            relation,
+            OsmWay(0, 0, listOf(0,1), null),
+            OsmNode(0, 0, P0, null),
+            OsmNode(1, 0, P1, null)
+        ))
+
+        assertNull(create(relation, mapData))
+    }
+
+    @Test fun `does not return null for relation with a way that's missing from map data if returning incomplete geometries is ok`() {
+        val relation = OsmRelation(1L, 1, listOf(
+            OsmRelationMember(0L, "", Element.Type.WAY),
+            OsmRelationMember(1L, "", Element.Type.WAY)
+        ), null)
+        val way = OsmWay(0, 0, listOf(0,1), null)
+        val mapData = MutableMapData()
+        mapData.addAll(listOf(
+            relation,
+            way,
+            OsmNode(0, 0, P0, null),
+            OsmNode(1, 0, P1, null)
+        ))
+
+        assertEquals(
+            create(way),
+            create(relation, mapData, true)
+        )
+    }
 }
 
 private fun create(node: Node) =
@@ -180,8 +216,8 @@ private fun create(way: Way) =
 private fun create(relation: Relation) =
     ElementGeometryCreator().create(relation, WAY_GEOMETRIES)
 
-private fun create(element: Element, mapData: MapData) =
-    ElementGeometryCreator().create(element, mapData)
+private fun create(element: Element, mapData: MapData, allowIncomplete: Boolean = false) =
+    ElementGeometryCreator().create(element, mapData, allowIncomplete)
 
 private val WAY_AREA = mapOf("area" to "yes")
 
