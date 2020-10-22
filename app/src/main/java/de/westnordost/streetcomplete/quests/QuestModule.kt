@@ -112,7 +112,7 @@ object QuestModule
         osmNoteQuestType,
 
         // ↓ 2. important data that is used by many data consumers
-        AddRoadName(o, roadNameSuggestionsDao),
+        AddRoadName(roadNameSuggestionsDao),
         AddPlaceName(featureDictionaryFuture),
         AddOneway(),
         AddSuspectedOneway(o, trafficFlowSegmentsApi, trafficFlowDao),
@@ -120,7 +120,7 @@ object QuestModule
         AddBusStopRef(),
         AddIsBuildingUnderground(), //to avoid asking AddHousenumber and other for underground buildings
         AddHousenumber(),
-        AddAddressStreet(o, roadNameSuggestionsDao),
+        AddAddressStreet(roadNameSuggestionsDao),
         MarkCompletedHighwayConstruction(r),
         AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
         AddParkingAccess(), //OSM Carto, mapy.cz, OSMand, Sputnik etc

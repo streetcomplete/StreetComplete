@@ -1,26 +1,40 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
-import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmDownloaderQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.quests.LocalizedName
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.quests.road_name.data.putRoadNameSuggestion
 
 class AddRoadName(
-    private val overpassApi: OverpassMapDataAndGeometryApi,
     private val roadNameSuggestionsDao: RoadNameSuggestionsDao
-) : OsmDownloaderQuestType<RoadNameAnswer> {
+) : OsmMapDataQuestType<RoadNameAnswer> {
+
+    private val filter by lazy { ElementFiltersParser().parse("""
+        ways with 
+          highway ~ primary|secondary|tertiary|unclassified|residential|living_street|pedestrian
+          and !name
+          and !ref
+          and noname != yes
+          and !junction
+          and area != yes
+          and (
+            access !~ private|no
+            or foot and foot !~ private|no
+          )
+    """)}
+
+    private val roadsWithNamesFilter by lazy { ElementFiltersParser().parse("""
+        ways with
+          highway ~ ${ALL_ROADS.joinToString("|")}
+          and name
+    """)}
 
     override val enabledInCountries = AllCountriesExcept("JP")
     override val commitMessage = "Determine road names and types"
@@ -35,35 +49,22 @@ class AddRoadName(
         else
             R.string.quest_streetName_title
 
-    override fun isApplicableTo(element: Element) = ROADS_WITHOUT_NAMES_TFE.matches(element)
+    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+        val roadsWithoutNames = mapData.ways.filter { filter.matches(it) }
 
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
-        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), roadNameSuggestionsDao::putRoadNameSuggestion)) return false
-        return true
+        if (roadsWithoutNames.isNotEmpty()) {
+            val roadsWithNames = mapData.ways.filter { roadsWithNamesFilter.matches(it) }
+            for (roadWithName in roadsWithNames) {
+                val roadGeometry = mapData.getWayGeometry(roadWithName.id)
+                if (roadGeometry != null) {
+                    roadNameSuggestionsDao.putRoadNameSuggestion(roadWithName, roadGeometry)
+                }
+            }
+        }
+        return roadsWithoutNames
     }
 
-    /** returns overpass query string for creating the quests */
-    private fun getOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + "\n" +
-        ROADS_WITHOUT_NAMES + "->.unnamed;\n" +
-        "(\n" +
-        "  way.unnamed['access' !~ '^(private|no)$'];\n" +
-        "  way.unnamed['foot']['foot' !~ '^(private|no)$'];\n" +
-        "); " +
-        getQuestPrintStatement()
-
-    /** return overpass query string to get roads with names near roads that don't have names
-     *  private roads are not filtered out here, partially to reduce complexity but also
-     *  because the road may have a private segment that is named already or is close to a road
-     *  with a useful name
-     * */
-    private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + "\n" + """
-        $ROADS_WITHOUT_NAMES -> .without_names;
-        $ROADS_WITH_NAMES -> .with_names;
-        way.with_names(around.without_names: $MAX_DIST_FOR_ROAD_NAME_SUGGESTION );
-        out body geom;""".trimIndent()
+    override fun isApplicableTo(element: Element) = filter.matches(element)
 
     override fun createForm() = AddRoadNameForm()
 
@@ -106,24 +107,6 @@ class AddRoadName(
 
     override fun cleanMetadata() {
         roadNameSuggestionsDao.cleanUp()
-    }
-
-    companion object {
-        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
-
-        // to avoid spam, only ask for names on a limited set of roads
-        private const val NAMEABLE_ROADS =
-                "primary|secondary|tertiary|unclassified|residential|living_street|pedestrian"
-        private const val ROADS_WITHOUT_NAMES =
-                "way[highway ~ \"^($NAMEABLE_ROADS)$\"][!name][!ref][noname != yes][!junction][area != yes]"
-        // this must be the same as above but in tag filter expression syntax
-        private val ROADS_WITHOUT_NAMES_TFE by lazy { ElementFiltersParser().parse(
-                "ways with highway ~ $NAMEABLE_ROADS and !name and !ref and noname != yes and !junction and area != yes"
-        )}
-
-        // but we can find name suggestions on any type of already-named road
-        private val ROADS_WITH_NAMES =
-                "way[highway ~ \"^(${ALL_ROADS.joinToString("|")})$\"][name]"
     }
 }
 

@@ -84,7 +84,7 @@ class OsmApiQuestDownloader @Inject constructor(
                             questElements.add(element)
                             ++i
                         }
-                        Log.i(TAG, "${Thread.currentThread().id} $questTypeName: Found $i quests in ${System.currentTimeMillis() - questTime}ms")
+                        Log.i(TAG, "$questTypeName: Found $i quests in ${System.currentTimeMillis() - questTime}ms")
                     }
                 }
             }
