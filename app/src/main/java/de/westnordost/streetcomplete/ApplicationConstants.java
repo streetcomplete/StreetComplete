@@ -24,9 +24,10 @@ public class ApplicationConstants
 
 	/** a "best before" duration for quests. Quests will not be downloaded again for any tile
 	 *  before the time expired */
-	public static final long REFRESH_QUESTS_AFTER = 7L*24*60*60*1000; // 1 week in ms
-	/** the duration after which quests will be deleted from the database if unsolved */
-	public static final long DELETE_UNSOLVED_QUESTS_AFTER = 1L*30*24*60*60*1000; // 1 months in ms
+	public static final long REFRESH_QUESTS_AFTER = 3L*24*60*60*1000; // 3 days in ms
+	/** the duration after which quests (and quest meta data) will be deleted from the database if
+	 *  unsolved and not refreshed in the meantime */
+	public static final long DELETE_UNSOLVED_QUESTS_AFTER = 14*24*60*60*1000; // 14 days in ms
 
 	/** the max age of the undo history - one cannot undo changes older than X */
 	public static final long MAX_QUEST_UNDO_HISTORY_AGE = 24*60*60*1000; // 1 day in ms
