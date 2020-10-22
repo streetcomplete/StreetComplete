@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.ktx.hasColumn
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
+import java.util.*
 
 @Singleton class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {
@@ -201,9 +202,17 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
                 DELETE FROM ${RelationTable.NAME} 
             """.trimIndent())
         }
+
+        if (oldVersion < 17 && newVersion >= 17) {
+            db.execSQL("""
+                ALTER TABLE ${RoadNamesTable.NAME} 
+                ADD COLUMN ${RoadNamesTable.Columns.LAST_UPDATE} int NOT NULL default ${Date().time};
+                """.trimIndent())
+        }
+
         // for later changes to the DB
         // ...
     }
 }
 
-private const val DB_VERSION = 16
+private const val DB_VERSION = 17

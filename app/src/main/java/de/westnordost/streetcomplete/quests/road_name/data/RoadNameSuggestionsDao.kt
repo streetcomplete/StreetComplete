@@ -7,6 +7,7 @@ import de.westnordost.osmapi.map.data.Element
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.ktx.getBlob
@@ -21,9 +22,13 @@ import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Column
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.NAME
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.ktx.toObject
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.LAST_UPDATE
 import de.westnordost.streetcomplete.util.distanceToArcs
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import java.util.*
 import java.util.regex.Pattern
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class RoadNameSuggestionsDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
@@ -40,7 +45,8 @@ class RoadNameSuggestionsDao @Inject constructor(
             MIN_LATITUDE to bbox.minLatitude,
             MIN_LONGITUDE to bbox.minLongitude,
             MAX_LATITUDE to bbox.maxLatitude,
-            MAX_LONGITUDE to bbox.maxLongitude
+            MAX_LONGITUDE to bbox.maxLongitude,
+            LAST_UPDATE to Date().time
         )
         db.replaceOrThrow(NAME, null, v)
     }
@@ -92,6 +98,11 @@ class RoadNameSuggestionsDao @Inject constructor(
         }
         // return only the road names, sorted by distance ascending
         return distancesByRoad.entries.sortedBy { it.value }.map { it.key }
+    }
+
+    fun cleanUp() {
+        val oldNameSuggestionsTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER
+        db.delete(NAME, "$LAST_UPDATE < ?", arrayOf(oldNameSuggestionsTimestamp.toString()))
     }
 }
 

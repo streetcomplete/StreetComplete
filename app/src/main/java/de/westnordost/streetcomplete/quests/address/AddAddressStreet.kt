@@ -68,6 +68,10 @@ class AddAddressStreet(
         changes.add(key, answer.name)
     }
 
+    override fun cleanMetadata() {
+        roadNameSuggestionsDao.cleanUp()
+    }
+
     companion object {
         const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 100.0
 

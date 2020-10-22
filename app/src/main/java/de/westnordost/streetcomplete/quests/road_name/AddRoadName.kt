@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -101,6 +102,10 @@ class AddRoadName(
         // newly input street names turn up in the suggestions as well
         val roadNameByLanguage = answer.localizedNames.associate { it.languageTag to it.name }
         roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, answer.wayGeometry)
+    }
+
+    override fun cleanMetadata() {
+        roadNameSuggestionsDao.cleanUp()
     }
 
     companion object {
