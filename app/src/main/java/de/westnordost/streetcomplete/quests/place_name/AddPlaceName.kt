@@ -95,7 +95,7 @@ class AddPlaceName(
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
-        and !name and !brand and noname != yes and !name:signed
+        and !name and !brand and noname != yes and name:signed != no
         """.trimIndent()
     )}
 
