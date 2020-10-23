@@ -192,8 +192,8 @@ private fun Relation.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeo
     members
         .filter { it.type == Element.Type.WAY }
         .any { member ->
-            val way = mapData.getWay(member.ref)!!
-            way.nodeIds.any { it in nodeIds }
+            val way = mapData.getWay(member.ref)
+            way?.nodeIds?.any { it in nodeIds } ?: false
         }
 
 /** return whether any of the ways with the given ids are contained in this relation */
