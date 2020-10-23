@@ -28,6 +28,7 @@ class AddStepsRamp(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
     override val commitMessage = "Add whether steps have a ramp"
     override val wikiLink = "Key:ramp"
     override val icon = R.drawable.ic_quest_steps_ramp
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_ramp_title
 
