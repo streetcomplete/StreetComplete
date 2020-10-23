@@ -15,7 +15,6 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
-import java.util.*
 import kotlin.collections.ArrayList
 
 /** Takes care of downloading one quest type in a bounding box and persisting the downloaded quests.
@@ -69,8 +68,6 @@ class OsmQuestDownloader @Inject constructor(
         return true
     }
 
-
-
     companion object {
         private const val TAG = "QuestDownload"
     }
@@ -82,5 +79,3 @@ private fun QuestType<*>.getName() = javaClass.simpleName
 private fun LatLon.truncateTo5Decimals() = OsmLatLon(latitude.truncateTo5Decimals(), longitude.truncateTo5Decimals())
 
 private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
-
-private fun Element.toLogString() = "${type.name.toLowerCase(Locale.US)} #$id"
