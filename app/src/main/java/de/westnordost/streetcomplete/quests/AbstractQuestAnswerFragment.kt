@@ -156,28 +156,6 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         if (content.childCount == 0) {
             content.visibility = View.GONE
         }
-
-        val answers = assembleOtherAnswers()
-        if (answers.size == 1) {
-            otherAnswersButton.setText(answers.first().titleResourceId)
-            otherAnswersButton.setOnClickListener { answers.first().action() }
-        } else {
-            otherAnswersButton.setText(R.string.quest_generic_otherAnswers)
-            otherAnswersButton.setOnClickListener {
-                val popup = PopupMenu(requireContext(), otherAnswersButton)
-                for (i in answers.indices) {
-                    val otherAnswer = answers[i]
-                    val order = answers.size - i
-                    popup.menu.add(Menu.NONE, i, order, otherAnswer.titleResourceId)
-                }
-                popup.show()
-
-                popup.setOnMenuItemClickListener { item ->
-                    answers[item.itemId].action()
-                    true
-                }
-            }
-        }
     }
 
     private fun assembleOtherAnswers() : List<OtherAnswer> {
@@ -206,6 +184,22 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
         answers.addAll(otherAnswers)
         return answers
+    }
+
+    private fun showOtherAnswers() {
+        val answers = assembleOtherAnswers()
+        val popup = PopupMenu(requireContext(), otherAnswersButton)
+        for (i in answers.indices) {
+            val otherAnswer = answers[i]
+            val order = answers.size - i
+            popup.menu.add(Menu.NONE, i, order, otherAnswer.titleResourceId)
+        }
+        popup.show()
+
+        popup.setOnMenuItemClickListener { item ->
+            answers[item.itemId].action()
+            true
+        }
     }
 
     private fun getLocationLabelText(): CharSequence? {
@@ -260,6 +254,15 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         if(!startedOnce) {
             onMapOrientation(initialMapRotation, initialMapTilt)
             startedOnce = true
+        }
+        
+        val answers = assembleOtherAnswers()
+        if (answers.size == 1) {
+            otherAnswersButton.setText(answers.first().titleResourceId)
+            otherAnswersButton.setOnClickListener { answers.first().action() }
+        } else {
+            otherAnswersButton.setText(R.string.quest_generic_otherAnswers)
+            otherAnswersButton.setOnClickListener { showOtherAnswers() }
         }
     }
 
