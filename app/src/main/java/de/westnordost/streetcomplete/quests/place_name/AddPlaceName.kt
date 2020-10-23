@@ -95,7 +95,7 @@ class AddPlaceName(
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
-        and !name and !brand and noname != yes
+        and !name and !brand and noname != yes and !name:signed
         """.trimIndent()
     )}
 
@@ -122,7 +122,7 @@ class AddPlaceName(
 
     override fun applyAnswerTo(answer: PlaceNameAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            is NoPlaceNameSign -> changes.add("noname", "yes")
+            is NoPlaceNameSign -> changes.add("name:signed", "no")
             is PlaceName -> changes.add("name", answer.name)
         }
     }
