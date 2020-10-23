@@ -213,6 +213,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
         houseNumberInput?.onFocusChangeListener = onFocusChange
         streetNumberInput?.onFocusChangeListener = onFocusChange
+        blockNumberInput?.onFocusChangeListener = onFocusChange
     }
 
     private fun showKeyboard(focus: View) {
