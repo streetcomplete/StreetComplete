@@ -707,7 +707,7 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="credits_contributors">"Se &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;den fulde liste på GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Se &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projekt på POEditor&lt;/a&gt; for en komplet liste."</string>
+    <string name="credits_translations">"Se &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekt på POEditor&lt;/a&gt; for en komplet liste."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Oversættelser"</string>
@@ -1815,9 +1815,6 @@ Del det nu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Hvad er max vægt her?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Der er intet skilt"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Denne vægtangivelse ser upålidelig ud. Er du sikker på, at det er korrekt?"</string>

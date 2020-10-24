@@ -695,7 +695,7 @@
     <string name="credits_contributors">"&lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;在GitHub上瀏覽完整列表&lt;/a&gt;。"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor 專案&lt;/a&gt;上瀏覽完整列表。"</string>
+    <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 專案&lt;/a&gt;上瀏覽完整列表。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"翻譯"</string>
@@ -1793,9 +1793,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"這裡的承重有上限嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"這裡沒有指標"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"重量的數量看來怪怪的，你確定輸入正確數值嗎？"</string>

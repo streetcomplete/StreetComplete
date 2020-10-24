@@ -4,7 +4,7 @@ atmOperators: [Danske Bank, Nordea, Sydbank, Jyske Bank, Arbejdernes Landsbank, 
    Sparekassen Vendsyssel, Sparbank, SparNord, Skjern Bank, Lån & Spar Bank, Frøs Herreds Sparekasse,
    Fanø Sparekasse, Dronninglund Sparekasse, Djurslands Bank, DiBa, Danske bank, Bank Nordik, Arbejdernes
       landsbank]
-chargingStationOperators: [E-On, Clever, E.ON, Tesla Motors Inc., Ionity, EON, Eon, CLEVER, Ø Strøm, eon, Københavns Kommune, E-on,
-   e-on, Sperto, SEF, MoveAbout, Clever/E.On, Clever & E-on, Tesla, Speto, Powered by E.ON Drive & Clever,
+chargingStationOperators: [E-On, Clever, E.ON, Tesla Motors Inc., Ionity, EON, Eon, CLEVER, Ø Strøm, eon, e-on, Københavns Kommune,
+   E-on, Sperto, SEF, MoveAbout, Clever/E.On, Clever & E-on, Tesla, Speto, Powered by E.ON Drive & Clever,
    Lidl, Hotel Fredericia, EasyPark]
 clothesContainerOperators: [Røde Kors]

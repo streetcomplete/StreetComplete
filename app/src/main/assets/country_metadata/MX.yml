@@ -1,8 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Banorte, Santander, Banamex, HSBC, Bancomer, Scotiabank, Bansi, Banjercito, BBVA Bancomer, BBVA, Interacciones,
+atmOperators: [Banorte, Santander, Banamex, HSBC, Bancomer, Scotiabank, Bansi, BBVA Bancomer, Banjercito, BBVA, Interacciones,
    Hsbc, BANORTE, banorte, Inbursa, BANCOMER, Banco Santander, Afirme, Multiva, Banco Azteca, BBVA BANCOMER,
    BANAMEX, SANTANDER, Citibanamex, CIBanco, Banco Multiva, hsbc, Santander Serfin, Bancoppel, Bancomer
       BBVA]
+chargingStationOperators: [Servicio de Transportes Eléctricos de la Ciudad de México]
 isSlowZoneKnown: true
 mobileCountryCode: 334
 officialLanguages: [es]

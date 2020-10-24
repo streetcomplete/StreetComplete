@@ -2,6 +2,6 @@
 atmOperators: [Wells Fargo, Bank of America, Chase, US Bank, U.S. Bank, OnPoint, Citibank, Worldwide, Umpqua Bank, Wells
       Fargo Bank, Well Fargo, Union Bank, KeyBank, InRoads Credit Union, First Community Credit Union,
    Bank of the West, Allpoint]
-chargingStationOperators: [Portland General Electric, Tesla, Blink, EVgo, SemaConnect, OpConnect, Church Extension Plan, Chargepoint,
-   AeroVironment]
+chargingStationOperators: [Portland General Electric, Tesla, Blink, EVgo, Volta, SemaConnect, OpConnect, Church Extension Plan,
+   Chargepoint, AeroVironment]
 clothesContainerOperators: [Gemtext]

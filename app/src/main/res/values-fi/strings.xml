@@ -560,7 +560,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="credits_contributors">"Katso &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;täydellinen lista GitHub:issa&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Katso &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projekti POEditorissa&lt;/a&gt; nähdäksesi listan kokonaisuudessaan."</string>
+    <string name="credits_translations">"Katso &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekti POEditorissa&lt;/a&gt; nähdäksesi listan kokonaisuudessaan."</string>
     <string name="credits_translations_title">"Käännökset"</string>
 
     <!-- Fuzzy -->
@@ -1660,9 +1660,6 @@ Jaetaanko nyt?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Mikä painorajoitus täällä on?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Täällä ei ole liikennemerkkiä."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Paino näyttää epätodennäköiseltä. Oletko varma, että syöttämäsi tieto on oikein?"</string>

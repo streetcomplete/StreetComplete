@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Impostazioni"</string>
 
     <!-- Fuzzy -->
@@ -12,8 +10,6 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Autorizzazione negata: vanno concessi tutti i permessi elencati"</string>
-
-    <!-- Fuzzy -->
     <string name="title_activity_settings">"Impostazioni"</string>
 
     <!-- Fuzzy -->
@@ -695,7 +691,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="credits_contributors">"Vedi la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;lista completa su GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Vedi il &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;progetto  su POEditor&lt;/a&gt; per la lista completa."</string>
+    <string name="credits_translations">"Vedi il &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;progetto  su POEditor&lt;/a&gt; per la lista completa."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traduzioni"</string>
@@ -1807,9 +1803,6 @@ Suddividere?"</string>
     <string name="quest_maxweight_title">"Qual è il limite di peso qui?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Non c'è alcun segnale"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Il peso inserito sembra erroneo. Sei sicuro sia corretto?"</string>
 
     <!-- Fuzzy -->
@@ -2365,4 +2358,26 @@ riconoscimento"</string>
     <string name="quest_traffic_signals_sound_title">"Ci sono segnali sonori per i non vedenti?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Questo semaforo ha un indicatore tattile che indica agli ipovedenti quando attraversare?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Consiglio: spesso si tratta di un pulsante che vibra o un cono che ruota nella parte inferiore del pulsante semaforico."</string>
+    <string name="quest_busStopRef_title">"Qual è il numero identificativo di questa fermata del bus?"</string>
+    <string name="quest_tramStopRef_title">"Qual è il numero identificativo di questa fermata del tram?"</string>
+    <string name="quest_buildingType_bungalow_description2">"piccola casa indipendente (casa estiva, cottage per le vacanze, baita...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Che tipo di barriere ci sono in questo passaggio a livello?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Nessuna barriera"</string>
+    <string name="quest_steps_ramp_title">"Questa scala ha una rampa? Di che tipo?"</string>
+    <string name="quest_steps_ramp_none">"Nessuna (o inutilizzabile)"</string>
+    <string name="quest_steps_ramp_bicycle">"Rampa per biciclette"</string>
+    <string name="quest_steps_ramp_stroller">"Rampa per passeggino"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rampa per sedia a rotelle"</string>
+    <string name="quest_atm_operator_title">"A che banca appartiene questo bancomat?"</string>
+    <string name="quest_clothes_container_operator_title">"Chi è il destinatario delle donazioni di questo cassonetto dei rifiuti?"</string>
+    <string name="quest_charging_station_operator_title">"Qual è l'operatore di questa stazione di carica?"</string>
+    <string name="link_indoorequal_description">"Scopri mappe degli interni di ipermercati, stazioni, ..."</string>
+    <string name="link_thenandnow_description">"Vuoi scoprire come siamo cambiati nel tempo? Confronta l'aspetto che aveva la mappa oltre 10 anni fa!"</string>
+    <string name="achievement_rare_title">"Caccia al tesoro"</string>
+    <string name="achievement_rare_solved_X">"Hai trovato e risolto %d missioni che sono completate molto raramente. Super!"</string>
+    <string name="achievement_citizen_title">"Cittadino/a"</string>
+    <string name="achievement_citizen_solved_X">"Hai svolto %d missioni che sono utili per la vita di tutti i giorni in città!"</string>
+    <string name="achievement_outdoors_title">"All'aria aperta"</string>
+    <string name="achievement_outdoors_solved_X">"Hai svolto %d missioni utili per chi ama stare all'aria aperta!"</string>
+    <string name="quest_pedestrian_crossing_island">"Questo attraversamento pedonale ha un'isola di traffico?"</string>
 </resources>
