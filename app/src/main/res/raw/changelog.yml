@@ -20,7 +20,7 @@ v25.0: |
   <ul>
   <li>new achievement graphics by Judith Gastell (<a href='https://www.artstation.com/melusine'>melusine</a>)</li>
   <li>Map style update: Amongst other things, all housenumbers are now displayed again on the map, private roads are displayed as such and 3D buildings can be displayed more detailed</li>
-  <li>Fix tagging tactile paving on crosswalks on a resurvey (#2176, #2172), @by peternewman, @dbdean</li>
+  <li>Fix tagging tactile paving on crosswalks on a resurvey (#2176, #2172), by @peternewman, @dbdean</li>
   <li>Other small fixes and enhancements (#2186, #2190, #2182, #2184, #2181, #2179, ...)</li>
   </ul>
 
