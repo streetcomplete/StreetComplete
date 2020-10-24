@@ -127,7 +127,7 @@ object QuestModule
 
         // ↓ 3. useful data that is used by some data consumers
         AddRecyclingType(),
-        AddRecyclingContainerMaterials(o, r),
+        AddRecyclingContainerMaterials(r),
         AddSport(),
         AddRoadSurface(r), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style
         AddMaxSpeed(), // should best be after road surface because it excludes unpaved roads

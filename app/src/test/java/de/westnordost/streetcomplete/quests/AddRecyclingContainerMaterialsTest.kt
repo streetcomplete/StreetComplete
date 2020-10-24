@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
@@ -11,6 +13,8 @@ import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial
 import de.westnordost.streetcomplete.quests.recycling_material.IsWasteContainer
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
+import de.westnordost.streetcomplete.util.translate
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
@@ -23,10 +27,91 @@ class AddRecyclingContainerMaterialsTest {
         val r: ResurveyIntervalsStore = mock()
         on(r.times(anyInt())).thenAnswer { (it.arguments[0] as Int).toDouble() }
         on(r.times(anyDouble())).thenAnswer { (it.arguments[0] as Double) }
-        questType = AddRecyclingContainerMaterials(mock(), r)
+        questType = AddRecyclingContainerMaterials(r)
     }
 
     private lateinit var questType: AddRecyclingContainerMaterials
+
+    @Test fun `applicable to container without recycling materials`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmNode(1L, 1, 0.0,0.0, mapOf(
+                "amenity" to "recycling",
+                "recycling_type" to "container"
+            ))
+        ))
+        assertEquals(1, questType.getApplicableElements(mapData).size)
+    }
+
+    @Test fun `not applicable to container with recycling materials`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmNode(1L, 1, 0.0,0.0, mapOf(
+                "amenity" to "recycling",
+                "recycling_type" to "container",
+                "recycling:something" to "yes"
+            ))
+        ))
+        assertEquals(0, questType.getApplicableElements(mapData).size)
+    }
+
+    @Test fun `applicable to container with old recycling materials`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmNode(1L, 1, 0.0,0.0, mapOf(
+                "amenity" to "recycling",
+                "recycling_type" to "container",
+                "check_date:recycling" to "2001-01-01",
+                "recycling:plastic_packaging" to "yes",
+                "recycling:something_else" to "no"
+            ), null, Date())
+        ))
+        assertEquals(1, questType.getApplicableElements(mapData).size)
+    }
+
+    @Test fun `not applicable to container with old but unknown recycling materials`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmNode(1L, 1, 0.0,0.0, mapOf(
+                "amenity" to "recycling",
+                "recycling_type" to "container",
+                "check_date:recycling" to "2001-01-01",
+                "recycling:something_else" to "yes"
+            ), null, Date())
+        ))
+        assertEquals(0, questType.getApplicableElements(mapData).size)
+    }
+
+    @Test fun `not applicable to container without recycling materials close to another container`() {
+        val pos1 = OsmLatLon(0.0,0.0)
+        val pos2 = pos1.translate(19.0, 45.0)
+
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmNode(1L, 1, pos1, mapOf(
+                "amenity" to "recycling",
+                "recycling_type" to "container"
+            )),
+            OsmNode(2L, 1, pos2, mapOf(
+                "amenity" to "recycling",
+                "recycling_type" to "container"
+            ))
+        ))
+        assertEquals(0, questType.getApplicableElements(mapData).size)
+    }
+
+    @Test fun `applicable to container without recycling materials not too close to another container`() {
+        val pos1 = OsmLatLon(0.0,0.0)
+        val pos2 = pos1.translate(21.0, 45.0)
+
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmNode(1L, 1, pos1, mapOf(
+                "amenity" to "recycling",
+                "recycling_type" to "container"
+            )),
+            OsmNode(2L, 1, pos2, mapOf(
+                "amenity" to "recycling",
+                "recycling_type" to "container",
+                "recycling:paper" to "yes"
+            ))
+        ))
+        assertEquals(1, questType.getApplicableElements(mapData).size)
+    }
 
     @Test fun `apply normal answer`() {
         questType.verifyAnswer(
