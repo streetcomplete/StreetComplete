@@ -12,7 +12,7 @@ abstract class OsmFilterQuestType<T> : OsmMapDataQuestType<T> {
 
     protected abstract val elementFilter: String
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         /* this is a considerate performance improvement over just iterating over the whole MapData
         *  because for quests that only filter for one (or two) element types, any filter checks
         *  are completely avoided */

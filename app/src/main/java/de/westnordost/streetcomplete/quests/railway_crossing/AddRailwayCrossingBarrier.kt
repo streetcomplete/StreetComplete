@@ -29,7 +29,7 @@ class AddRailwayCrossingBarrier(private val r: ResurveyIntervalsStore) : OsmMapD
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_railway_crossing_barrier_title2
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mutableSetOf<Long>()
         mapData.ways
             .filter { excludedWaysFilter.matches(it) }

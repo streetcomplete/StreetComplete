@@ -22,7 +22,7 @@ class AddClothingBinOperator : OsmMapDataQuestType<String> {
     override val wikiLink = "Tag:amenity=recycling"
     override val icon = R.drawable.ic_quest_recycling_clothes
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> =
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.nodes.filter { filter.matches(it) && it.tags.hasNoOtherRecyclingTags() }
 
     override fun isApplicableTo(element: Element): Boolean =

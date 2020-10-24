@@ -45,7 +45,7 @@ class AddMaxHeight : OsmMapDataQuestType<MaxHeightAnswer> {
         }
     }
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> =
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.nodes.filter { nodeFilter.matches(it) } + mapData.ways.filter { wayFilter.matches(it) }
 
     override fun isApplicableTo(element: Element) =

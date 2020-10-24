@@ -39,7 +39,7 @@ class AddSummitRegister(private val r: ResurveyIntervalsStore) : OsmMapDataQuest
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_summit_register_title
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val peaks = mapData.nodes.filter { filter.matches(it) }
         if (peaks.isEmpty()) return emptyList()
 

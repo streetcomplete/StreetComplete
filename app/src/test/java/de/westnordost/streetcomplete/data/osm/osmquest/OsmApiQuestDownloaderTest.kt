@@ -93,5 +93,5 @@ private class TestMapDataQuestType(private val list: List<Element>) : OsmMapData
     override fun createForm() = object : AbstractQuestAnswerFragment<String>() {}
     override fun isApplicableTo(element: Element) = false
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {}
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> = list
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> = list
 }

@@ -36,7 +36,7 @@ class AddOneway : OsmMapDataQuestType<OnewayAnswer> {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway2_title
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val allRoads = mapData.ways.filter { allRoadsFilter.matches(it) && it.nodeIds.size >= 2 }
         val connectionCountByNodeIds = mutableMapOf<Long, Int>()
         val onewayCandidates = mutableListOf<Way>()

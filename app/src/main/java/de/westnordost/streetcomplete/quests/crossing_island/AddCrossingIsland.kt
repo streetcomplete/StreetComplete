@@ -32,7 +32,7 @@ class AddCrossingIsland : OsmMapDataQuestType<Boolean> {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_island
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mutableSetOf<Long>()
         mapData.ways
             .filter { excludedWaysFilter.matches(it) }

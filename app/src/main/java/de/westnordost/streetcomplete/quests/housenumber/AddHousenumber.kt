@@ -30,7 +30,7 @@ class AddHousenumber :  OsmMapDataQuestType<HousenumberAnswer> {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return listOf()
 
         val addressNodesById = mapData.nodes.filter { nodesWithAddressFilter.matches(it) }.associateBy { it.id }

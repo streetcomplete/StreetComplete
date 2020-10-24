@@ -103,7 +103,7 @@ class AddPlaceName(
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
         featureName.value?.let { arrayOf(it) } ?: arrayOf()
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> =
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element) =

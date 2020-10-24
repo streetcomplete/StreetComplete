@@ -29,7 +29,7 @@ class AddRecyclingContainerMaterials(
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_container
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return emptyList()
 
         val olderThan2Years = TagOlderThan("recycling", RelativeDate(-(r * 365 * 2).toFloat()))

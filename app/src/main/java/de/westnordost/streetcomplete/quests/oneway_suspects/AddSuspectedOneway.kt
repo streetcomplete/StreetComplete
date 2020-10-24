@@ -35,7 +35,7 @@ class AddSuspectedOneway(
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway_title
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return emptyList()
 
         val trafficDirectionMap: Map<Long, List<TrafficFlowSegment>>

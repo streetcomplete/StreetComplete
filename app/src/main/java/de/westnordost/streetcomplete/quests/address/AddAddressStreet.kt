@@ -40,7 +40,7 @@ class AddAddressStreet(
         return if (housenumber != null) arrayOf(housenumber) else arrayOf()
     }
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val associatedStreetRelations = mapData.relations.filter {
             val type = it.tags?.get("type")
             type == "associatedStreet" || type == "street"

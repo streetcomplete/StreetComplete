@@ -49,7 +49,7 @@ class AddRoadName(
         else
             R.string.quest_streetName_title
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): List<Element> {
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val roadsWithoutNames = mapData.ways.filter { filter.matches(it) }
 
         if (roadsWithoutNames.isNotEmpty()) {
