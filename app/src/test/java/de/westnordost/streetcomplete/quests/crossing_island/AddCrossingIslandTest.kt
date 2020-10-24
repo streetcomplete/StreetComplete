@@ -16,7 +16,7 @@ class AddCrossingIslandTest {
                 "crossing" to "something"
             ))
         ))
-        assertEquals(1, questType.getApplicableElements(mapData).size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to crossing with private road`() {
@@ -30,6 +30,6 @@ class AddCrossingIslandTest {
                 "access" to "private"
             ))
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }

@@ -11,7 +11,7 @@ class AddOnewayTest {
 
     @Test fun `does not apply to element without tags`() {
         val mapData = TestMapDataWithGeometry(noDeadEndWays(null))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `applies to slim road`() {
@@ -20,7 +20,7 @@ class AddOnewayTest {
             "width" to "4",
             "lanes" to "1"
         )))
-        assertEquals(1, questType.getApplicableElements(mapData).size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `does not apply to wide road`() {
@@ -29,7 +29,7 @@ class AddOnewayTest {
             "width" to "5",
             "lanes" to "1"
         )))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `applies to wider road that has parking lanes`() {
@@ -40,7 +40,7 @@ class AddOnewayTest {
             "parking:lane:both" to "perpendicular",
             "parking:lane:both:perpendicular" to "on_street"
         )))
-        assertEquals(1, questType.getApplicableElements(mapData).size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `does not apply to wider road that has parking lanes but not enough`() {
@@ -51,7 +51,7 @@ class AddOnewayTest {
             "parking:lane:both" to "perpendicular",
             "parking:lane:both:perpendicular" to "on_street"
         )))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `applies to wider road that has cycle lanes`() {
@@ -61,7 +61,7 @@ class AddOnewayTest {
             "lanes" to "1",
             "cycleway" to "lane"
         )))
-        assertEquals(1, questType.getApplicableElements(mapData).size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `does not apply to slim road with more than one lane`() {
@@ -70,7 +70,7 @@ class AddOnewayTest {
             "width" to "4",
             "lanes" to "2"
         )))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `does not apply to dead end road #1`() {
@@ -82,7 +82,7 @@ class AddOnewayTest {
                 "lanes" to "1"
             ))
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `does not apply to dead end road #2`() {
@@ -94,7 +94,7 @@ class AddOnewayTest {
             )),
             way(2,listOf(3,4), mapOf("highway" to "residential"))
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `applies to road that ends as an intersection in another`() {
@@ -107,7 +107,7 @@ class AddOnewayTest {
             )),
             way(3,listOf(5,3,4), mapOf("highway" to "residential"))
         ))
-        assertEquals(1, questType.getApplicableElements(mapData).size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     private fun way(id: Long, nodeIds: List<Long>, tags: Map<String, String>?) = OsmWay(id,1, nodeIds, tags)

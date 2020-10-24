@@ -19,7 +19,7 @@ class AddAddressStreetTest {
                 "addr:housenumber" to "123"
             ))
         ))
-        assertEquals(1, questType.getApplicableElements(mapData).size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to place with street name`() {
@@ -29,7 +29,7 @@ class AddAddressStreetTest {
                 "addr:street" to "onetwothree",
             ))
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to place without street name but in a associatedStreet relation`() {
@@ -43,6 +43,6 @@ class AddAddressStreetTest {
                 "type" to "associatedStreet"
             )),
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }

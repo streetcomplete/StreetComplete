@@ -16,7 +16,7 @@ class AddRailwayCrossingBarrierTest {
                 "railway" to "level_crossing"
             ))
         ))
-        assertEquals(1, questType.getApplicableElements(mapData).size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to crossing with private road`() {
@@ -29,6 +29,6 @@ class AddRailwayCrossingBarrierTest {
                 "access" to "private"
             ))
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }

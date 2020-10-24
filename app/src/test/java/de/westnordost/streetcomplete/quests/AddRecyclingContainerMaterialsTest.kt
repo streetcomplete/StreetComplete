@@ -39,7 +39,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling_type" to "container"
             ))
         ))
-        assertEquals(1, questType.getApplicableElements(mapData).size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to container with recycling materials`() {
@@ -50,7 +50,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling:something" to "yes"
             ))
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `applicable to container with old recycling materials`() {
@@ -63,7 +63,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling:something_else" to "no"
             ), null, Date())
         ))
-        assertEquals(1, questType.getApplicableElements(mapData).size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to container with old but unknown recycling materials`() {
@@ -75,7 +75,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling:something_else" to "yes"
             ), null, Date())
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to container without recycling materials close to another container`() {
@@ -92,7 +92,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling_type" to "container"
             ))
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `applicable to container without recycling materials not too close to another container`() {
@@ -110,7 +110,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling:paper" to "yes"
             ))
         ))
-        assertEquals(1, questType.getApplicableElements(mapData).size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `apply normal answer`() {
