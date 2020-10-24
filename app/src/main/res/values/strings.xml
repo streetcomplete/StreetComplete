@@ -744,6 +744,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
     <string name="quest_steps_ramp_title">Do these steps have a ramp? What kind?</string>
+    <string name="quest_steps_ramp_separate_wheelchair">Is the wheelchair ramp displayed as a separate way on the map?</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">separate</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">not separate</string>
     <string name="quest_steps_ramp_none">No (usable) ramp</string>
     <string name="quest_steps_ramp_bicycle">Bicycle ramp</string>
     <string name="quest_steps_ramp_stroller">Stroller ramp</string>
