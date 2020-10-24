@@ -7,9 +7,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.bikeway.createCyclewaySides
 import de.westnordost.streetcomplete.quests.bikeway.estimatedWidth
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
