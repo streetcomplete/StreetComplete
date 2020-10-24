@@ -701,7 +701,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="credits_contributors">"Ver la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;llista completa en GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Ver el &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;proyeutu en POEditor&lt;/a&gt; pa la llista completa."</string>
+    <string name="credits_translations">"Ver el &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proyeutu en POEditor&lt;/a&gt; pa la llista completa."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traducciones"</string>

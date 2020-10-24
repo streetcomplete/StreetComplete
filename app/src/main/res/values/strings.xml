@@ -348,7 +348,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_fireHydrant_type_wall">Wall</string>
     <string name="quest_fireHydrant_type_pond">Pond</string>
     <string name="credits_contributors">"See the &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
+    <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
     <string name="credits_translations_title">Translations</string>
     <string name="credits_contributors_title">Code contributors</string>
     <string name="credits_art_contributors_title">Art contributors</string>
@@ -673,7 +673,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
     <string name="quest_maxweight_select_sign">"Select sign"</string>
-    <string name="quest_maxweight_answer_noSign">There is no sign</string>
+    <string name="quest_generic_answer_noSign">There is no sign</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
     <string name="quest_maxweight_answer_other_sign">Sign looks different…</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? A note with a photo will enable other mappers to take care of it.</string>
@@ -744,6 +744,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
     <string name="quest_steps_ramp_title">Do these steps have a ramp? What kind?</string>
+    <string name="quest_steps_ramp_separate_wheelchair">Is the wheelchair ramp displayed as a separate way on the map?</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">separate</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">not separate</string>
     <string name="quest_steps_ramp_none">No (usable) ramp</string>
     <string name="quest_steps_ramp_bicycle">Bicycle ramp</string>
     <string name="quest_steps_ramp_stroller">Stroller ramp</string>

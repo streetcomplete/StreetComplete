@@ -679,7 +679,7 @@
     <string name="credits_contributors">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി ഗിത്ത്ഹബ്ബ് &lt; a href href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;കാണുക&lt;/a&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;പ്രോജെക്ട് POEditor&lt;/a&gt; കാണുക"</string>
+    <string name="credits_translations">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;പ്രോജെക്ട് POEditor&lt;/a&gt; കാണുക"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"വിവർത്തനങ്ങൾ"</string>
@@ -1780,9 +1780,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"ഇവിടെ ഭാരപരിധി എത്രയാണ്?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"അടയാളങ്ങൾ ഇല്ല"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"ഈ ഭാരം അസംഭവ്യമായി തോന്നുന്നു, താങ്കൾക്ക് ഇത് ശരിയാണെന്ന് ഉറപ്പാണോ?"</string>

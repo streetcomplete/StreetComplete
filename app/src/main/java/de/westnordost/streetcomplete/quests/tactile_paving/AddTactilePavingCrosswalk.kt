@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.tactile_paving
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
@@ -68,6 +69,6 @@ class AddTactilePavingCrosswalk(private val r: ResurveyIntervalsStore) : OsmMapD
     override fun createForm() = TactilePavingForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("tactile_paving", answer.toYesNo())
+        changes.updateWithCheckDate("tactile_paving", answer.toYesNo())
     }
 }

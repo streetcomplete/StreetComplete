@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.bikeway
 
+import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
+
 enum class Cycleway {
     // a.k.a. exclusive lane, dedicated lane or simply (proper) lane
     EXCLUSIVE_LANE,
@@ -54,4 +56,14 @@ enum class Cycleway {
     }
 
     val isOneway get() = this != DUAL_LANE && this != DUAL_TRACK
+}
+
+val Cycleway.estimatedWidth: Float get() = when(this) {
+    EXCLUSIVE_LANE -> 1.5f
+    DUAL_LANE -> 3f
+    ADVISORY_LANE -> 1f
+    UNSPECIFIED_LANE -> 1f
+    UNKNOWN_LANE -> 1f
+    SUGGESTION_LANE -> 0.75f
+    else -> 0f
 }

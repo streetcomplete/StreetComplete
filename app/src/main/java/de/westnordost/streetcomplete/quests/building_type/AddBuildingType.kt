@@ -20,7 +20,8 @@ class AddBuildingType : OsmFilterQuestType<String>() {
          and !amenity
          and !leisure
          and location != underground
-         and ruins != yes
+         and abandoned != yes
+         and ruins != yes and ruined != yes
     """
     override val commitMessage = "Add building types"
     override val wikiLink = "Key:building"

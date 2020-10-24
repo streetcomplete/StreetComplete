@@ -13,6 +13,7 @@ achievements graphics/
     blind                       Judith Gastell, License: CC-BY-SA 4.0
     car                         Sanja Dimitrijevic, License: CC-BY-SA 4.0
     citizen                     Judith Gastell, License: CC-BY-SA 4.0
+    emergency                   Judith Gastell, License: CC-BY-SA 4.0
     first_edit                  mashup with https://github.com/openstreetmap/openstreetmap-website/blob/master/app/assets/images/sign-up-illustration.svg
                                 probably (c) Saman Bemel-Benrud, license apparently GPLv2.0
     outdoors                    Judith Gastell, License: CC-BY-SA 4.0

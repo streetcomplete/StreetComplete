@@ -54,6 +54,16 @@ class AddOnewayTest {
         assertEquals(0, questType.getApplicableElements(mapData).size)
     }
 
+    @Test fun `applies to wider road that has cycle lanes`() {
+        setUpElements(noDeadEndWays(mapOf(
+            "highway" to "residential",
+            "width" to "6",
+            "lanes" to "1",
+            "cycleway" to "lane"
+        )))
+        questType.verifyDownloadYieldsQuest(mock())
+    }
+
     @Test fun `does not apply to slim road with more than one lane`() {
         val mapData = TestMapDataWithGeometry(noDeadEndWays(mapOf(
             "highway" to "residential",

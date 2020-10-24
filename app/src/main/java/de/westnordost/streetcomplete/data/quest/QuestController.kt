@@ -151,7 +151,7 @@ import javax.inject.Singleton
 
     private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any) : StringMapChanges? {
         return try {
-            val changesBuilder = StringMapChangesBuilder(element.tags)
+            val changesBuilder = StringMapChangesBuilder(element.tags.orEmpty())
             quest.osmElementQuestType.applyAnswerToUnsafe(answer, changesBuilder)
             changesBuilder.create()
         } catch (e: IllegalArgumentException) {

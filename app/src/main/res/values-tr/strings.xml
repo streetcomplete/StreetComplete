@@ -675,7 +675,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="credits_contributors">"Tüm listeyi &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub'da görebilirsin&lt;/a&gt;. "</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Tüm liste için &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor'de projeye bak&lt;/a&gt;."</string>
+    <string name="credits_translations">"Tüm liste için &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor'de projeye bak&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Çeviriler"</string>
@@ -1622,9 +1622,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"Her ikisi de mevcuttur. "</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"İşaret yok"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"İşaret farklı görünüyor…"</string>

@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Bank of Ireland, AIB, Ulster Bank, Permanent TSB, Euronet, Spar]
+atmOperators: [Bank of Ireland, AIB, Ulster Bank, Permanent TSB, Euronet, Spar, Bank Of Ireland]
 chargingStationOperators: [ESB ecars, easygo.ie, Tesla, Nissan Ireland, Kildare Village, Ionity, Circle K, Dell EMC, Streetcharge,
    Radisson Blu Hotel, Plugsurfing GmbH]
 clothesContainerOperators: [Cork County Council, Cancer Fund for Children, Textile Recycling Limited]

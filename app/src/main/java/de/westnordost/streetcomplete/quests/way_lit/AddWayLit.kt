@@ -35,6 +35,7 @@ class AddWayLit(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
           or highway and lit older today -${r * 16} years
         )
         and (access !~ private|no or (foot and foot !~ private|no))
+        and indoor != yes
     """
 
     override val commitMessage = "Add whether way is lit"

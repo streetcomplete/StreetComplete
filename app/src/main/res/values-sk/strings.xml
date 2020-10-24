@@ -695,7 +695,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="credits_contributors">"Prečítajte si &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;úplný zoznam na GitHube&lt;/a&gt;. "</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Úplný zoznam nájdete v &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projekte na POEditor.com&lt;/a&gt;."</string>
+    <string name="credits_translations">"Úplný zoznam nájdete v &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekte na POEditor.com&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Preklady"</string>

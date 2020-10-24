@@ -675,7 +675,7 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="credits_contributors">"Sjå &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Sjå &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;prosjektet på POEditor&lt;/a&gt; for ei fullstendig oversikt."</string>
+    <string name="credits_translations">"Sjå &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;prosjektet på POEditor&lt;/a&gt; for ei fullstendig oversikt."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Omsetjingar"</string>
@@ -1782,9 +1782,6 @@ Vil du dela opp vegen no?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Kva er vektgrensa her?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Det finst ikkje noko skilt"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Vekta verkar usannsynleg. Er du sikker på at ho er rett?"</string>

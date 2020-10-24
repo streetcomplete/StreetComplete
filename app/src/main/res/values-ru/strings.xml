@@ -695,7 +695,7 @@
     <string name="credits_contributors">"Смотрите &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;полный список на GitHub&lt;/a&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Смотрите &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;проект на POEditor&lt;/a&gt;, где есть полный список."</string>
+    <string name="credits_translations">"Смотрите &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;проект на POEditor&lt;/a&gt;, где есть полный список."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Переводы"</string>
@@ -1807,9 +1807,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Какое ограничение по весу установлено здесь?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Знак отсутствует"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Этот вес выглядит неправдоподобным. Вы уверены, что это правильно?"</string>

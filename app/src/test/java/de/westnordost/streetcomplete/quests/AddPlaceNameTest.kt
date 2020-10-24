@@ -14,7 +14,7 @@ class AddPlaceNameTest {
     @Test fun `apply no name answer`() {
         questType.verifyAnswer(
             NoPlaceNameSign,
-            StringMapEntryAdd("noname", "yes")
+            StringMapEntryAdd("name:signed", "no")
         )
     }
 

@@ -127,7 +127,7 @@
     <string name="close">"lukk"</string>
 
     <!-- Fuzzy -->
-    <string name="download_error">"Feil oppstod i leting etter gjøremål"</string>
+    <string name="download_error">"Feil oppstod i leting etter oppdrag"</string>
 
     <!-- Fuzzy -->
     <string name="upload_error">"Feil oppstod i opplastningen av svar"</string>
@@ -657,7 +657,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="credits_contributors">"Se &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Se på  &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;prosjektet på POEditor&lt;/a&gt; for en komplett liste."</string>
+    <string name="credits_translations">"Se på  &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;prosjektet på POEditor&lt;/a&gt; for en komplett liste."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Oversettelser"</string>
@@ -1754,7 +1754,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_tactilePaving_title_tram">"Har trikkestoppet ledelinjer for blinde i asfalten?"</string>
     <string name="quest_tactilePaving_title_name_tram">"Har trikkestoppet %s ledelinjer for blinde i asfalten?"</string>
     <string name="quest_maxweight_title">"Maksimal tillatt vekt?"</string>
-    <string name="quest_maxweight_answer_noSign">"Det er ikke noe skilt"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Vekten virker usannsynlig. Er du sikker på at det er riktig?"</string>
     <string name="quest_maxweight_answer_other_sign">"Skiltet ser annerledes ut..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vil du legge til en merknad? En merknad med foto gjør at andre kartleggere kan løse problemet."</string>
@@ -1941,6 +1940,7 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_board_type_map_title">"Er det bare et kart, og kun et kart?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"internasjonal"</string>
     <string name="at_housename">"Husnavn %s:"</string>
     <string name="at_conscription_and_street_number">"Konskripsjonsnummer %1$s, Orienteringsnummer %2$s:"</string>
 
@@ -1948,8 +1948,46 @@ forkortelser i feltet nedenfor:"</string>
     <string name="at_conscription_number">"Konskripsjonsnummer %s:"</string>
     <string name="at_housenumber">"Husnummer %s:"</string>
     <string name="quest_openingHours_name_type_title">"Hva er åpningstidene til %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Er disse åpningstidene for %s fortsatt korrekte?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Er disse åpningstidene for %1$s (%2$s) fortsatt korrekte?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Er disse åpningstidene fortsatt korrekte (%s)?"</string>
     <string name="quest_openingHours_unspecified_range">"Ikke spesifisert"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Er %1$s (%2$s) tilgjengelig i rullestol?"</string>
+    <string name="resurvey_intervals_less_often">"Spør sjeldnere"</string>
+    <string name="resurvey_intervals_default">"Standard"</string>
+    <string name="resurvey_intervals_more_often">"Spør oftere"</string>
+    <string name="quest_street_side_puzzle_select">"Trykk for å velge"</string>
     <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) imot betaling med kontanter?"</string>
+    <string name="quest_busStopBench_title">"Har dette busstoppet en benk?"</string>
+    <string name="quest_busStopBench_name_title">"Har busstoppet %s en benk?"</string>
+    <string name="about_title_translate">"Hjelp til å oversette denne appen"</string>
+    <string name="about_description_translate">"%1$s er %2$d%% oversatt"</string>
+    <string name="quest_oneway2_title">"Er dette en enveiskjøring? I hvilken retning?"</string>
+    <string name="quest_oneway2_dir">"Enveiskjøring denne retningen"</string>
+    <string name="quest_oneway2_no_oneway">"Ikke enveiskjøring"</string>
+    <string name="quest_maxweight_select_sign">"Velg skilt"</string>
+    <string name="quest_steps_incline_title">"Hvilken vei leder oppover for disse trappene?"</string>
+    <string name="quest_steps_incline_up">"Denne veien er oppover"</string>
+    <string name="quest_step_count_title">"Hvor mange trappetrinn er det her?"</string>
     <string name="quest_traffic_signals_sound_title">"Er det lydsignal for synshemmede her?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Har disse trafikklysene en taktil indikasjon for synshemmede når det er klart å krysse?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Hint: Ofte er dette en vibrerende knapp eller roterende kjegle under trafikklys-knappen."</string>
+    <string name="quest_busStopRef_title">"Hva er referansenummeret til dette busstoppet?"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Hva slags hindringer brukes på denne jernbaneovergangen?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Ingen hindringer"</string>
+    <string name="quest_steps_ramp_title">"Har disse trappene en rampe? Hva slags?"</string>
+    <string name="quest_steps_ramp_none">"Ingen (brukbar) rampe"</string>
+    <string name="quest_steps_ramp_bicycle">"Sykkelrampe"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rullestolrampe"</string>
+    <string name="quest_atm_operator_title">"Hva er navnet på banken til denne minibanken?"</string>
+    <string name="quest_clothes_container_operator_title">"Hvilken organisasjon tar i mot donasjoner via denne kles-containeren."</string>
+    <string name="quest_charging_station_operator_title">"Hvilket selskap opererer denne ladestasjonen?"</string>
+    <string name="link_indoorequal_description">"Oppdag innendørskart av kjøpesentere, jernbanestasjoner, osv."</string>
+    <string name="achievement_rare_title">"Skattejakt"</string>
+    <string name="achievement_rare_solved_X">"Du har funnet og løst %d oppdrag som løses veldig sjeldent. Gratulerer!"</string>
+    <string name="achievement_citizen_title">"Innbygger"</string>
+    <string name="achievement_citizen_solved_X">"Du har løst %d oppdrag som er nyttige i bylivet!"</string>
+    <string name="achievement_outdoors_title">"Utendørs"</string>
+    <string name="achievement_outdoors_solved_X">"Du har løst %d oppdrag som er nyttige i friluftslivet."</string>
+    <string name="quest_pedestrian_crossing_island">"Har denne fotgjengerovergangen en øy?"</string>
 </resources>
