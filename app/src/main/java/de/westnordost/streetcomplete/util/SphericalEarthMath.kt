@@ -309,6 +309,15 @@ fun LatLon.isInPolygon(polygon: List<LatLon>): Boolean {
 private fun inside(v: Double, bound0: Double, bound1: Double): Boolean =
     if (bound0 < bound1) v in bound0..bound1 else v in bound1..bound0
 
+
+/**
+ * Returns the area of a this multipolygon, assuming the outer shell is defined counterclockwise and
+ * any holes are defined clockwise
+ */
+fun List<List<LatLon>>.measuredMultiPolygonArea(globeRadius: Double = EARTH_RADIUS): Double {
+    return sumOf { it.measuredAreaSigned(globeRadius) }
+}
+
 /**
  * Returns the area of a this polygon
  */
@@ -329,10 +338,10 @@ fun List<LatLon>.measuredAreaSigned(globeRadius: Double = EARTH_RADIUS): Double 
      * for each polygon edge is the polar triangle area */
     forEachLine { first, second ->
         area += polarTriangleArea(
+            first.latitude.toRadians(),
+            first.longitude.toRadians(),
             second.latitude.toRadians(),
             second.longitude.toRadians(),
-            first.latitude.toRadians(),
-            first.longitude.toRadians()
         )
     }
     return area * (globeRadius * globeRadius)
@@ -500,7 +509,7 @@ private fun angularDistanceToArc(φ1: Double, λ1: Double, φ2: Double, λ2: Dou
     return δxt
 }
 
-/** Returns the signed area of a triangle spanning between the north pole and the two given points
+/** Returns the signed area of a triangle spanning between the north pole and the two given points.
  * */
 private fun polarTriangleArea(φ1: Double, λ1: Double, φ2: Double, λ2: Double): Double {
     val tanφ1 = tan((PI / 2 - φ1) / 2)

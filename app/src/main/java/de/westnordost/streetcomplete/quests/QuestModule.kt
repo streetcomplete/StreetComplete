@@ -154,7 +154,7 @@ object QuestModule
         AddPathSurface(r), // used by OSM Carto, OsmAnd
         AddTracktype(r), // widely used in map rendering - OSM Carto, OsmAnd...
         AddMaxWeight(), // used by OSRM and other routing engines
-        AddForestLeafType(o), // used by OSM Carto
+        AddForestLeafType(), // used by OSM Carto
         AddBikeParkingType(), // used by OsmAnd
         AddStepsRamp(r),
         AddWheelchairAccessToilets(r), // used by wheelmap, OsmAnd, MAPS.ME

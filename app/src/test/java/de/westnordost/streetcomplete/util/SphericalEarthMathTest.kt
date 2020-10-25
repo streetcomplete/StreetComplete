@@ -392,7 +392,7 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `point at polygon edge is in polygon`() {
-        val square = p(0.0, 0.0).createClockwiseSquare(10.0)
+        val square = p(0.0, 0.0).createCounterClockwiseSquare(10.0)
         assertTrue(p(0.0, 10.0).isInPolygon(square))
         assertTrue(p(10.0, 0.0).isInPolygon(square))
         assertTrue(p(-10.0, 0.0).isInPolygon(square))
@@ -400,7 +400,7 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `point at polygon edge at 180th meridian is in polygon`() {
-        val square = p(180.0, 0.0).createClockwiseSquare(10.0)
+        val square = p(180.0, 0.0).createCounterClockwiseSquare(10.0)
         assertTrue(p(180.0, 10.0).isInPolygon(square))
         assertTrue(p(-170.0, 0.0).isInPolygon(square))
         assertTrue(p(170.0, 0.0).isInPolygon(square))
@@ -477,20 +477,20 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `point outside polygon is outside polygon`() {
-        assertFalse(p(0.0, 11.0).isInPolygon(p(0.0, 0.0).createClockwiseSquare(10.0)))
+        assertFalse(p(0.0, 11.0).isInPolygon(p(0.0, 0.0).createCounterClockwiseSquare(10.0)))
     }
 
     @Test fun `point outside polygon is outside polygon at 180th meridian`() {
-        assertFalse(p(-169.0, 0.0).isInPolygon(p(180.0, 0.0).createClockwiseSquare(10.0)))
+        assertFalse(p(-169.0, 0.0).isInPolygon(p(180.0, 0.0).createCounterClockwiseSquare(10.0)))
     }
 
     @Test fun `polygon direction does not matter for point-in-polygon check`() {
-        val square = p(0.0, 0.0).createClockwiseSquare(10.0).reversed()
+        val square = p(0.0, 0.0).createCounterClockwiseSquare(10.0).reversed()
         assertTrue(p(5.0, 5.0).isInPolygon(square))
     }
 
     @Test fun `polygon direction does not matter for point-in-polygon check at 180th meridian`() {
-        val square = p(180.0, 0.0).createClockwiseSquare(10.0).reversed()
+        val square = p(180.0, 0.0).createCounterClockwiseSquare(10.0).reversed()
         assertTrue(p(-175.0, 5.0).isInPolygon(square))
     }
 
@@ -569,13 +569,15 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `polygon area is positive for a counterclockwise polygon`() {
-        val square = p(0.0,0.0).createClockwiseSquare(1.0).reversed()
+        val square = p(0.0,0.0).createCounterClockwiseSquare(1.0)
+        assertFalse(square.isRingDefinedClockwise())
         assertTrue(square.measuredAreaSigned() > 0)
         assertTrue(square.measuredArea() > 0)
     }
 
     @Test fun `polygon area is negative for a clockwise polygon`() {
-        val square = p(0.0,0.0).createClockwiseSquare(1.0)
+        val square = p(0.0,0.0).createCounterClockwiseSquare(1.0).reversed()
+        assertTrue(square.isRingDefinedClockwise())
         assertTrue(square.measuredAreaSigned() < 0)
         assertTrue(square.measuredArea() > 0)
     }
@@ -594,7 +596,7 @@ private val LatLon.y get() = latitude
   | + |
   o---o
 */
-private fun LatLon.createClockwiseSquare(l: Double) = listOf(
+private fun LatLon.createCounterClockwiseSquare(l: Double) = listOf(
     p(x + l, y + l),
     p(x + l, y - l),
     p(x - l, y - l),
