@@ -116,6 +116,8 @@ object QuestModule
         AddPlaceName(featureDictionaryFuture),
         AddOneway(),
         AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
+        AddCycleway(o,r), // for any cyclist routers (and cyclist maps)
+        AddSidewalk(), // for any pedestrian routers
         AddBusStopName(),
         AddBusStopRef(),
         AddIsBuildingUnderground(), //to avoid asking AddHousenumber and other for underground buildings
@@ -139,8 +141,6 @@ object QuestModule
         AddBikeParkingCapacity(r), // used by cycle map layer on osm.org, OsmAnd
         AddOrchardProduce(),
         AddBuildingType(), // because housenumber, building levels etc. depend on it
-        AddCycleway(o,r), // SLOW QUERY
-        AddSidewalk(o), // SLOW QUERY
         AddProhibitedForPedestrians(), // uses info from AddSidewalk quest, should be after it
         AddCrossingType(r),
         AddCrossingIsland(),
