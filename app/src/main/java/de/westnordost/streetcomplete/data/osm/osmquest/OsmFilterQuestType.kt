@@ -2,13 +2,13 @@ package de.westnordost.streetcomplete.data.osm.osmquest
 
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.util.MultiIterable
 
 /** Quest type that's based on a simple element filter expression */
 abstract class OsmFilterQuestType<T> : OsmMapDataQuestType<T> {
 
-    val filter by lazy { ElementFiltersParser().parse(elementFilter) }
+    val filter by lazy { elementFilter.toElementFilterExpression() }
 
     protected abstract val elementFilter: String
 

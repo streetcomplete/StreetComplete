@@ -5,7 +5,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import java.util.concurrent.FutureTask
 
@@ -13,7 +13,7 @@ class AddPlaceName(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmMapDataQuestType<PlaceNameAnswer> {
 
-    private val filter by lazy { ElementFiltersParser().parse("""
+    private val filter by lazy { ("""
         nodes, ways, relations with 
         (
           shop and shop !~ no|vacant
@@ -91,8 +91,7 @@ class AddPlaceName(
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
         and !name and !brand and noname != yes and name:signed != no
-        """.trimIndent()
-    )}
+    """.trimIndent()).toElementFilterExpression() }
 
     override val commitMessage = "Determine place names"
     override val wikiLink = "Key:name"

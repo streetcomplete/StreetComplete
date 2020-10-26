@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.sidewalk
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
@@ -18,7 +18,7 @@ class AddSidewalk : OsmMapDataQuestType<SidewalkAnswer> {
      * Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
      * is mapped as a separate way
     * */
-    private val filter by lazy { ElementFiltersParser().parse("""
+    private val filter by lazy { """
         ways with
           highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
           and area != yes
@@ -29,11 +29,11 @@ class AddSidewalk : OsmMapDataQuestType<SidewalkAnswer> {
           and lit = yes
           and foot != no and access !~ private|no
           and foot != use_sidepath
-    """) }
+    """.toElementFilterExpression() }
 
-    private val maybeSeparatelyMappedSidewalksFilter by lazy { ElementFiltersParser().parse("""
+    private val maybeSeparatelyMappedSidewalksFilter by lazy { """
         ways with highway ~ path|footway|cycleway
-    """) }
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add whether there are sidewalks"
     override val wikiLink = "Key:sidewalk"

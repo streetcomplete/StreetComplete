@@ -3,24 +3,24 @@ package de.westnordost.streetcomplete.quests.railway_crossing
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 
 class AddRailwayCrossingBarrier : OsmMapDataQuestType<String> {
 
-    private val crossingFilter by lazy { ElementFiltersParser().parse("""
+    private val crossingFilter by lazy { """
         nodes with 
           railway = level_crossing
           and (!crossing:barrier or crossing:barrier older today -8 years)
-    """)}
+    """.toElementFilterExpression() }
 
-    private val excludedWaysFilter by lazy { ElementFiltersParser().parse("""
+    private val excludedWaysFilter by lazy { """
         ways with
           highway and access ~ private|no
           or railway ~ tram|abandoned
-    """)}
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add type of barrier for railway crossing"
     override val wikiLink = "Key:crossing:barrier"

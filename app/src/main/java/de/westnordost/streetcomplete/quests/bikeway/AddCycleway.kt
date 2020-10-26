@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.bikeway
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
@@ -283,7 +283,7 @@ class AddCycleway : OsmMapDataQuestType<CyclewayAnswer> {
         */
 
         // streets what may have cycleway tagging
-        private val roadsFilter by lazy { ElementFiltersParser().parse("""
+        private val roadsFilter by lazy { """
             ways with
               highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
               and area != yes
@@ -296,10 +296,10 @@ class AddCycleway : OsmMapDataQuestType<CyclewayAnswer> {
               and bicycle != use_sidepath
               and bicycle:backward != use_sidepath
               and bicycle:forward != use_sidepath
-        """) }
+        """.toElementFilterExpression() }
 
         // streets that do not have cycleway tagging yet
-        private val untaggedRoadsFilter by lazy { ElementFiltersParser().parse("""
+        private val untaggedRoadsFilter by lazy { """
             ways with
               highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
               and !cycleway
@@ -312,11 +312,11 @@ class AddCycleway : OsmMapDataQuestType<CyclewayAnswer> {
               and !sidewalk:both:bicycle
               and (!maxspeed or maxspeed > 20 or maxspeed !~ "10 mph|5 mph|walk")
               and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
-        """) }
+        """.toElementFilterExpression() }
 
-        private val maybeSeparatelyMappedCyclewaysFilter by lazy { ElementFiltersParser().parse("""
+        private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
             ways with highway ~ path|footway|cycleway
-        """) }
+        """.toElementFilterExpression() }
 
         private val OLDER_THAN_4_YEARS = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
 

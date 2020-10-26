@@ -4,7 +4,7 @@ import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.bikeway.createCyclewaySides
@@ -16,17 +16,17 @@ import de.westnordost.streetcomplete.quests.parking_lanes.*
 class AddOneway : OsmMapDataQuestType<OnewayAnswer> {
 
     /** find all roads */
-    private val allRoadsFilter by lazy { ElementFiltersParser().parse("""
+    private val allRoadsFilter by lazy { """
         ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes
-    """) }
+    """.toElementFilterExpression() }
 
     /** find only those roads eligible for asking for oneway */
-    private val elementFilter by lazy { ElementFiltersParser().parse("""
+    private val elementFilter by lazy { """
         ways with highway ~ living_street|residential|service|tertiary|unclassified
          and !oneway and area != yes and junction != roundabout 
          and (access !~ private|no or (foot and foot !~ private|no))
          and lanes <= 1 and width
-    """) }
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add whether this road is a one-way road because it is quite slim"
     override val wikiLink = "Key:oneway"

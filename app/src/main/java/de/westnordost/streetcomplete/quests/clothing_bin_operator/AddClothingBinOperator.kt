@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.clothing_bin_operator
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 
@@ -12,11 +12,11 @@ class AddClothingBinOperator : OsmMapDataQuestType<String> {
     /* not the complete filter, see below: we want to filter out additionally all elements that
        contain any recycling:* = yes that is not shoes or clothes but this can not be expressed
        in the elements filter syntax */
-    private val filter by lazy { ElementFiltersParser().parse("""
+    private val filter by lazy { """
         nodes with amenity = recycling and recycling_type = container 
          and recycling:clothes = yes 
          and !operator
-    """)}
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add clothing bin operator"
     override val wikiLink = "Tag:amenity=recycling"

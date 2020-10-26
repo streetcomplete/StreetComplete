@@ -3,19 +3,20 @@ package de.westnordost.streetcomplete.quests.leaf_detail
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 
 class AddForestLeafType : OsmMapDataQuestType<String> {
-    private val areaFilter by lazy { ElementFiltersParser().parse("""
+    private val areaFilter by lazy { """
         ways, relations with landuse = forest or natural = wood and !leaf_type
-    """)}
-    private val wayFilter by lazy { ElementFiltersParser().parse("""
+    """.toElementFilterExpression()}
+
+    private val wayFilter by lazy { """
         ways with natural = tree_row and !leaf_type
-    """)}
+    """.toElementFilterExpression()}
 
     override val commitMessage = "Add leaf type"
     override val wikiLink = "Key:leaf_type"

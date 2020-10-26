@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.isCompletelyInside
@@ -139,22 +139,22 @@ class AddHousenumber :  OsmMapDataQuestType<HousenumberAnswer> {
     }
 }
 
-private val nonBuildingAreasWithAddressFilter by lazy { ElementFiltersParser().parse("""
+private val nonBuildingAreasWithAddressFilter by lazy { """
     ways, relations with
       !building and ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
-""")}
+    """.toElementFilterExpression()}
 
-private val nonMultipolygonRelationsWithAddressFilter by lazy { ElementFiltersParser().parse("""
+private val nonMultipolygonRelationsWithAddressFilter by lazy { """
     relations with 
       type != multipolygon
       and ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
-""")}
+    """.toElementFilterExpression()}
 
-private val nodesWithAddressFilter by lazy { ElementFiltersParser().parse("""
+private val nodesWithAddressFilter by lazy { """
    nodes with ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
-""")}
+    """.toElementFilterExpression()}
 
-private val buildingsWithMissingAddressFilter by lazy { ElementFiltersParser().parse("""
+private val buildingsWithMissingAddressFilter by lazy { """
     ways, relations with
       building ~ ${buildingTypesThatShouldHaveAddresses.joinToString("|")}
       and location != underground
@@ -166,7 +166,7 @@ private val buildingsWithMissingAddressFilter by lazy { ElementFiltersParser().p
       and !addr:streetnumber
       and !noaddress
       and !nohousenumber
-""")}
+    """.toElementFilterExpression()}
 
 private val buildingTypesThatShouldHaveAddresses = listOf(
     "house", "residential", "apartments", "detached", "terrace", "dormitory", "semi",

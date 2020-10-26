@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.recycling_material
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
@@ -17,10 +17,10 @@ import de.westnordost.streetcomplete.util.enclosingBoundingBox
 
 class AddRecyclingContainerMaterials : OsmMapDataQuestType<RecyclingContainerMaterialsAnswer> {
 
-    private val filter by lazy { ElementFiltersParser().parse("""
+    private val filter by lazy { """
         nodes with 
           amenity = recycling and recycling_type = container
-    """) }
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add recycled materials to container"
     override val wikiLink = "Key:recycling"

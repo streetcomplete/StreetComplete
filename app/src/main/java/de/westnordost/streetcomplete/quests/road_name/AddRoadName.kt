@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.quests.LocalizedName
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
@@ -16,7 +16,7 @@ class AddRoadName(
     private val roadNameSuggestionsDao: RoadNameSuggestionsDao
 ) : OsmMapDataQuestType<RoadNameAnswer> {
 
-    private val filter by lazy { ElementFiltersParser().parse("""
+    private val filter by lazy { """
         ways with 
           highway ~ primary|secondary|tertiary|unclassified|residential|living_street|pedestrian
           and !name
@@ -28,13 +28,13 @@ class AddRoadName(
             access !~ private|no
             or foot and foot !~ private|no
           )
-    """)}
+    """.toElementFilterExpression() }
 
-    private val roadsWithNamesFilter by lazy { ElementFiltersParser().parse("""
+    private val roadsWithNamesFilter by lazy { """
         ways with
           highway ~ ${ALL_ROADS.joinToString("|")}
           and name
-    """)}
+    """.toElementFilterExpression() }
 
     override val enabledInCountries = AllCountriesExcept("JP")
     override val commitMessage = "Determine road names and types"

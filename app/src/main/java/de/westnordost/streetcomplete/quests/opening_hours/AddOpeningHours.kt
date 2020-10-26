@@ -5,7 +5,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
@@ -19,7 +19,7 @@ class AddOpeningHours (
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
-    private val filter by lazy { ElementFiltersParser().parse("""
+    private val filter by lazy { ("""
         nodes, ways, relations with
         (
           (
@@ -87,8 +87,7 @@ class AddOpeningHours (
         and (access !~ private|no)
         and (name or brand or noname = yes)
         and opening_hours:signed != no
-        """.trimIndent()
-    )}
+    """.trimIndent()).toElementFilterExpression() }
 
     override val commitMessage = "Add opening hours"
     override val wikiLink = "Key:opening_hours"

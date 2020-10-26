@@ -4,7 +4,7 @@ import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
@@ -16,17 +16,17 @@ class AddAddressStreet(
         private val roadNameSuggestionsDao: RoadNameSuggestionsDao
 ) : OsmMapDataQuestType<AddressStreetAnswer> {
 
-    private val filter by lazy { ElementFiltersParser().parse("""
+    private val filter by lazy { """
         nodes, ways, relations with
           addr:housenumber and !addr:street and !addr:place and !addr:block_number
           or addr:streetnumber and !addr:street
-    """) }
+    """.toElementFilterExpression() }
 
-    private val roadsWithNamesFilter by lazy { ElementFiltersParser().parse("""
+    private val roadsWithNamesFilter by lazy { """
         ways with
           highway ~ ${ALL_ROADS.joinToString("|")}
           and name
-    """)}
+    """.toElementFilterExpression()}
 
     override val commitMessage = "Add street/place names to address"
     override val icon = R.drawable.ic_quest_housenumber_street

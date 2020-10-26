@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.crossing_island
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.ktx.toYesNo
@@ -11,20 +11,20 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddCrossingIsland : OsmMapDataQuestType<Boolean> {
 
-    private val crossingFilter by lazy { ElementFiltersParser().parse("""
+    private val crossingFilter by lazy { """
         nodes with 
           highway = crossing
           and crossing
           and crossing != island
           and !crossing:island
-    """)}
+    """.toElementFilterExpression()}
 
-    private val excludedWaysFilter by lazy { ElementFiltersParser().parse("""
+    private val excludedWaysFilter by lazy { """
         ways with 
           highway and access ~ private|no
           or highway and oneway and oneway != no
           or highway ~ path|footway|cycleway|pedestrian
-    """)}
+    """.toElementFilterExpression()}
 
     override val commitMessage = "Add whether pedestrian crossing has an island"
     override val wikiLink = "Key:crossing:island"

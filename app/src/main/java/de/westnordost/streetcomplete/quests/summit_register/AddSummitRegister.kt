@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.summit_register
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
@@ -15,11 +15,11 @@ import de.westnordost.streetcomplete.util.distanceToArcs
 
 class AddSummitRegister : OsmMapDataQuestType<Boolean> {
 
-    private val filter by lazy { ElementFiltersParser().parse("""
+    private val filter by lazy { """
         nodes with 
           natural = peak and name and 
           (!summit:register or summit:register older today -4 years)
-    """) }
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add whether summit register is present"
     override val wikiLink = "Key:summit:register"

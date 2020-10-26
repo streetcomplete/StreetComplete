@@ -8,7 +8,7 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
@@ -20,11 +20,11 @@ class AddSuspectedOneway(
     private val db: WayTrafficFlowDao
 ) : OsmMapDataQuestType<SuspectedOnewayAnswer> {
 
-    private val filter by lazy { ElementFiltersParser().parse("""
+    private val filter by lazy { """
         ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road
          and !oneway and junction != roundabout and area != yes
          and (access !~ private|no or (foot and foot !~ private|no))
-    """) }
+    """.toElementFilterExpression() }
 
     override val commitMessage =
         "Add whether roads are one-way roads as they were marked as likely oneway by improveosm.org"

@@ -4,7 +4,7 @@ import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.ktx.toYesNo
 
 class AddTactilePavingCrosswalk : OsmMapDataQuestType<Boolean> {
 
-    private val crossingFilter by lazy { ElementFiltersParser().parse("""
+    private val crossingFilter by lazy { """
         nodes with 
           (
             highway = traffic_signals and crossing = traffic_signals and foot != no
@@ -23,13 +23,13 @@ class AddTactilePavingCrosswalk : OsmMapDataQuestType<Boolean> {
             or tactile_paving = no and tactile_paving older today -4 years
             or older today -8 years
           )
-    """)}
+    """.toElementFilterExpression() }
 
-    private val excludedWaysFilter by lazy { ElementFiltersParser().parse("""
+    private val excludedWaysFilter by lazy { """
         ways with 
           highway = cycleway and foot !~ yes|designated
           or highway and access ~ private|no
-    """)}
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add tactile pavings on crosswalks"
     override val wikiLink = "Key:tactile_paving"

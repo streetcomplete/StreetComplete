@@ -4,21 +4,21 @@ import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 
 class AddMaxHeight : OsmMapDataQuestType<MaxHeightAnswer> {
 
-    private val nodeFilter by lazy { ElementFiltersParser().parse("""
+    private val nodeFilter by lazy { """
         nodes with
         (
           barrier = height_restrictor
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )
         and !maxheight and !maxheight:physical
-    """)}
+    """.toElementFilterExpression()}
 
-    private val wayFilter by lazy { ElementFiltersParser().parse("""
+    private val wayFilter by lazy { """
         ways with
         (
           highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
@@ -26,7 +26,7 @@ class AddMaxHeight : OsmMapDataQuestType<MaxHeightAnswer> {
         )
         and (covered = yes or tunnel ~ yes|building_passage|avalanche_protector)
         and !maxheight and !maxheight:physical
-    """)}
+    """.toElementFilterExpression()}
 
     override val commitMessage = "Add maximum heights"
     override val wikiLink = "Key:maxheight"
