@@ -1,6 +1,6 @@
-import java.util.Properties
-import java.net.URI
 import java.io.FileInputStream
+import java.net.URI
+import java.util.*
 
 plugins {
     id("com.android.application")
@@ -38,6 +38,16 @@ android {
         versionCode = 2501
         versionName = "25.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += arrayOf(
+                    "room.schemaLocation" to "$projectDir/schemas",
+                    "room.incremental" to "true",
+                    "room.expandProjection" to "true"
+                )
+            }
+        }
     }
 
     buildTypes {
@@ -99,6 +109,7 @@ dependencies {
     val mockitoVersion = "2.28.2"
     val kotlinxVersion = "1.3.8"
     val daggerVersion = "2.14.1"
+    val roomVersion = "2.2.5"
 
     // debugging
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.4")
@@ -129,6 +140,11 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
+
+    // SQLite persistence
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 
     // photos
     implementation("androidx.exifinterface:exifinterface:1.3.0")
