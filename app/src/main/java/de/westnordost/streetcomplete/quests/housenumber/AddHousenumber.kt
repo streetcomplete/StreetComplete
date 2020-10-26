@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.util.LatLonRaster
+import de.westnordost.streetcomplete.util.isCompletelyInside
 import de.westnordost.streetcomplete.util.isInMultipolygon
 
 class AddHousenumber :  OsmMapDataQuestType<HousenumberAnswer> {
@@ -172,13 +173,6 @@ private val buildingTypesThatShouldHaveAddresses = listOf(
     "semidetached_house", "farm", "school", "civic", "college", "university", "public", "hospital",
     "kindergarten", "train_station", "hotel", "retail", "commercial"
 )
-
-/** returns whether this bounding box is completely inside the other */
-private fun BoundingBox.isCompletelyInside(other: BoundingBox): Boolean =
-    minLongitude >= other.minLongitude &&
-    minLatitude >= other.minLatitude &&
-    maxLongitude <= other.maxLongitude &&
-    maxLatitude <= other.maxLatitude
 
 private fun Element.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeometry): Boolean =
     when (this) {

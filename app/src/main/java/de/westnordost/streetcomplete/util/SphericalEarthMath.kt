@@ -144,6 +144,12 @@ fun LatLon.distanceToArcs(polyLine: List<LatLon>, globeRadius: Double = EARTH_RA
 
 /* -------------------------------- Polyline extension functions -------------------------------- */
 
+/** Returns the shortest distance between this polyline and given polyline */
+fun List<LatLon>.distanceTo(polyline: List<LatLon>, globeRadius: Double = EARTH_RADIUS): Double {
+    require(isNotEmpty()) { "Polyline must not be empty" }
+    return minOf { it.distanceToArcs(polyline, globeRadius) }
+}
+
 /** Returns a bounding box that contains all points */
 fun Iterable<LatLon>.enclosingBoundingBox(): BoundingBox {
     val it = iterator()
@@ -395,7 +401,62 @@ fun BoundingBox.area(globeRadius: Double = EARTH_RADIUS): Double {
     return min.distanceTo(minLatMaxLon, globeRadius) * min.distanceTo(maxLatMinLon, globeRadius)
 }
 
+/** Returns a new bounding box that is [radius] larger than this bounding box */
+fun BoundingBox.enlargedBy(radius: Double, globeRadius: Double = EARTH_RADIUS): BoundingBox {
+    return BoundingBox(
+        min.translate(radius, 225.0, globeRadius),
+        max.translate(radius, 45.0, globeRadius)
+    )
+}
 
+/** returns whether this bounding box intersects with the other. Works if any of the bounding boxes
+ *  cross the 180th meridian */
+fun BoundingBox.intersect(other: BoundingBox): Boolean =
+    checkAlignment(other) { bbox1, bbox2 -> bbox1.intersectCanonical(bbox2) }
+
+/** returns whether this bounding box is completely inside the other, assuming both bounding boxes
+ *  do not cross the 180th meridian */
+fun BoundingBox.isCompletelyInside(other: BoundingBox): Boolean =
+    checkAlignment(other) { bbox1, bbox2 -> bbox1.isCompletelyInsideCanonical(bbox2) }
+
+/** returns whether this bounding box intersects with the other, assuming both bounding boxes do
+ *  not cross the 180th meridian */
+private fun BoundingBox.intersectCanonical(other: BoundingBox): Boolean =
+    maxLongitude >= other.minLongitude &&
+    minLongitude <= other.maxLongitude &&
+    maxLatitude >= other.minLatitude &&
+    minLatitude <= other.maxLatitude
+
+/** returns whether this bounding box is completely inside the other, assuming both bounding boxes
+ *  do not cross the 180th meridian */
+private fun BoundingBox.isCompletelyInsideCanonical(other: BoundingBox): Boolean =
+    minLongitude >= other.minLongitude &&
+    minLatitude >= other.minLatitude &&
+    maxLongitude <= other.maxLongitude &&
+    maxLatitude <= other.maxLatitude
+
+
+private inline fun BoundingBox.checkAlignment(
+    other: BoundingBox,
+    canonicalCheck: (bbox1: BoundingBox, bbox2: BoundingBox) -> Boolean
+): Boolean {
+    return if(crosses180thMeridian()) {
+        val these = splitAt180thMeridian()
+        if (other.crosses180thMeridian()) {
+            val others = other.splitAt180thMeridian()
+            these.any { a -> others.any { b -> canonicalCheck(a, b) } }
+        } else {
+            these.any { canonicalCheck(it, other) }
+        }
+    } else {
+        if (other.crosses180thMeridian()) {
+            val others = other.splitAt180thMeridian()
+            others.any { canonicalCheck(this, it) }
+        } else {
+            canonicalCheck(this, other)
+        }
+    }
+}
 
 fun createTranslated(latitude: Double, longitude: Double): LatLon {
     var lat = latitude
