@@ -86,12 +86,6 @@ configurations {
     all {
         exclude(group = "net.sf.kxml", module = "kxml2")
     }
-
-    compile.configure {
-        exclude(group = "org.jetbrains", module = "annotations")
-        exclude(group = "com.intellij", module = "annotations")
-        exclude(group = "org.intellij", module = "annotations")
-    }
 }
 
 dependencies {
@@ -146,7 +140,6 @@ dependencies {
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:1.1")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-overpass:1.1")
     implementation("de.westnordost:osmapi-map:1.2")
     implementation("de.westnordost:osmapi-changesets:1.2")
     implementation("de.westnordost:osmapi-notes:1.1")

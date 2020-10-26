@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 class AddClothingBinOperator : OsmMapDataQuestType<String> {
 
     /* not the complete filter, see below: we want to filter out additionally all elements that
-       contain any recycling:* = yes that is not shoes or clothes but this can neither be expressed
-       in the elements filter syntax nor overpass QL */
+       contain any recycling:* = yes that is not shoes or clothes but this can not be expressed
+       in the elements filter syntax */
     private val filter by lazy { ElementFiltersParser().parse("""
         nodes with amenity = recycling and recycling_type = container 
          and recycling:clothes = yes 

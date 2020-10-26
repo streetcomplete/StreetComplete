@@ -37,8 +37,8 @@ interface OsmElementQuestType<T> : QuestType<T> {
     override val title: Int get() = getTitle(emptyMap())
 
     /** returns whether a quest of this quest type could be created out of the given [element]. If the
-     * element alone does not suffice to find this out (but e.g. an Overpass query would need to be
-     * made to find this out), this should return null.
+     * element alone does not suffice to find this out (but f.e. is determined by the data around
+     * it), this should return null.
      *
      * The implications of returning null here is that this quest will never be created directly
      * as consequence of solving another quest and also after reverting an input, the quest will
