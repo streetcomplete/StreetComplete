@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import androidx.appcompat.app.AppCompatDelegate;
 import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmfeatures.FeatureDictionary;
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater;
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler;
 
 public class StreetCompleteApplication extends Application
@@ -18,6 +19,7 @@ public class StreetCompleteApplication extends Application
 	@Inject FutureTask<CountryBoundaries> countryBoundariesFuture;
 	@Inject FutureTask<FeatureDictionary> featuresDictionaryFuture;
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
+	@Inject ResurveyIntervalsUpdater resurveyIntervalsUpdater;
 	@Inject SharedPreferences prefs;
 
 	private static final String PRELOAD_TAG = "Preload";
@@ -36,6 +38,8 @@ public class StreetCompleteApplication extends Application
 
 		Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO"));
 		AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode);
+
+		resurveyIntervalsUpdater.update();
 	}
 
 	/** Load some things in the background that are needed later */

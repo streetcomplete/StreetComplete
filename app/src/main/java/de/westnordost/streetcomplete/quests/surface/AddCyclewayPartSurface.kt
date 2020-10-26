@@ -4,9 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddCyclewayPartSurface(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
+class AddCyclewayPartSurface : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         ways with
@@ -16,7 +15,7 @@ class AddCyclewayPartSurface(r: ResurveyIntervalsStore) : OsmFilterQuestType<Str
           or (highway = bridleway and bicycle ~ designated|yes)
         )
         and segregated = yes
-        and (!cycleway:surface or cycleway:surface older today -${r * 8} years)
+        and (!cycleway:surface or cycleway:surface older today -8 years)
     """
     override val commitMessage = "Add path surfaces"
     override val wikiLink = "Key:surface"

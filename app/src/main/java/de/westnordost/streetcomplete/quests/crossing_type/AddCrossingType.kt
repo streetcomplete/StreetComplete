@@ -5,9 +5,8 @@ import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddCrossingType(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
+class AddCrossingType : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes with highway = crossing
@@ -17,7 +16,7 @@ class AddCrossingType(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() 
             or crossing ~ island|unknown|yes
             or (
               crossing ~ traffic_signals|uncontrolled|zebra|marked|unmarked
-              and crossing older today -${r * 8} years
+              and crossing older today -8 years
             )
           )
     """

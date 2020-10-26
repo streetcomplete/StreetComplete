@@ -6,9 +6,8 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddCyclewaySegregation(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boolean>() {
+class AddCyclewaySegregation : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         ways with
@@ -19,7 +18,7 @@ class AddCyclewaySegregation(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boo
         )
         and surface ~ ${ANYTHING_PAVED.joinToString("|")}
         and area != yes
-        and (!segregated or segregated older today -${r * 8} years)
+        and (!segregated or segregated older today -8 years)
     """
 
     override val commitMessage = "Add segregated status for combined footway with cycleway"

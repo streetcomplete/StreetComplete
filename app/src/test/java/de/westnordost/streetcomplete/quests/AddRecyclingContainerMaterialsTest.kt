@@ -6,31 +6,18 @@ import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingContainerMaterials
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterials
 import de.westnordost.streetcomplete.quests.recycling_material.IsWasteContainer
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import de.westnordost.streetcomplete.util.translate
 import org.junit.Assert.assertEquals
-import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers.anyDouble
-import org.mockito.ArgumentMatchers.anyInt
 import java.util.*
 
 class AddRecyclingContainerMaterialsTest {
 
-    @Before fun setUp() {
-        val r: ResurveyIntervalsStore = mock()
-        on(r.times(anyInt())).thenAnswer { (it.arguments[0] as Int).toDouble() }
-        on(r.times(anyDouble())).thenAnswer { (it.arguments[0] as Double) }
-        questType = AddRecyclingContainerMaterials(r)
-    }
-
-    private lateinit var questType: AddRecyclingContainerMaterials
+    private val questType = AddRecyclingContainerMaterials()
 
     @Test fun `applicable to container without recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(

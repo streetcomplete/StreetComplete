@@ -4,16 +4,15 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddBikeParkingCapacity(r: ResurveyIntervalsStore) : OsmFilterQuestType<Int>() {
+class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
 
     override val elementFilter = """
         nodes, ways with amenity = bicycle_parking
          and access !~ private|no
          and (
            !capacity
-           or bicycle_parking ~ stands|wall_loops and capacity older today -${r * 4} years
+           or bicycle_parking ~ stands|wall_loops and capacity older today -4 years
          )
     """
     /* Bike capacity may change more often for stands and wheelbenders as adding or

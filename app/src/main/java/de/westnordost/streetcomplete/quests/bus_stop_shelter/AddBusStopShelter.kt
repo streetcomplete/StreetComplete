@@ -5,9 +5,8 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.*
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddBusStopShelter(r: ResurveyIntervalsStore) : OsmFilterQuestType<BusStopShelterAnswer>() {
+class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
 
     override val elementFilter = """
         nodes with 
@@ -17,7 +16,7 @@ class AddBusStopShelter(r: ResurveyIntervalsStore) : OsmFilterQuestType<BusStopS
           (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
-        and !covered and (!shelter or shelter older today -${r * 4} years)
+        and !covered and (!shelter or shelter older today -4 years)
     """
     /* Not asking again if it is covered because it means the stop itself is under a large
        building or roof building so this won't usually change */

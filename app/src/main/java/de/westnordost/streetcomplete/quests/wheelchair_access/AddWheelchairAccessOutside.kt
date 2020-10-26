@@ -4,13 +4,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddWheelchairAccessOutside(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
+class AddWheelchairAccessOutside : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes, ways, relations with leisure = dog_park
-         and (!wheelchair or wheelchair older today -${r * 8} years)
+         and (!wheelchair or wheelchair older today -8 years)
     """
     override val commitMessage = "Add wheelchair access to outside places"
     override val wikiLink = "Key:wheelchair"

@@ -4,9 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddVegan(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
+class AddVegan : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes, ways with 
@@ -16,7 +15,7 @@ class AddVegan(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
         )
         and name and (
           !diet:vegan 
-          or diet:vegan != only and diet:vegan older today -${r * 2} years
+          or diet:vegan != only and diet:vegan older today -2 years
         )
     """
     override val commitMessage = "Add vegan diet type"

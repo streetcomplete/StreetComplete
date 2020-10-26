@@ -11,15 +11,14 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import de.westnordost.streetcomplete.util.distanceToArcs
 
-class AddSummitRegister(private val r: ResurveyIntervalsStore) : OsmMapDataQuestType<Boolean> {
+class AddSummitRegister : OsmMapDataQuestType<Boolean> {
 
     private val filter by lazy { ElementFiltersParser().parse("""
         nodes with 
           natural = peak and name and 
-          (!summit:register or summit:register older today -${r * 4} years)
+          (!summit:register or summit:register older today -4 years)
     """) }
 
     override val commitMessage = "Add whether summit register is present"

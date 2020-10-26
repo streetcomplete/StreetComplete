@@ -4,17 +4,16 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddWheelchairAccessToilets(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
+class AddWheelchairAccessToilets : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes, ways with amenity = toilets 
          and access !~ private|customers
          and (
            !wheelchair
-           or wheelchair != yes and wheelchair older today -${r * 4} years
-           or wheelchair older today -${r * 8} years
+           or wheelchair != yes and wheelchair older today -4 years
+           or wheelchair older today -8 years
          )
     """
     override val commitMessage = "Add wheelchair access to toilets"

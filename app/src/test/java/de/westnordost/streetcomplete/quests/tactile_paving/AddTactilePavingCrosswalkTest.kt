@@ -2,13 +2,12 @@ package de.westnordost.streetcomplete.quests.tactile_paving
 
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import org.junit.Assert.*
 import org.junit.Test
 
 class AddTactilePavingCrosswalkTest {
-    private val questType = AddTactilePavingCrosswalk(mock())
+    private val questType = AddTactilePavingCrosswalk()
 
     @Test fun `applicable to crossing`() {
         val mapData = TestMapDataWithGeometry(listOf(

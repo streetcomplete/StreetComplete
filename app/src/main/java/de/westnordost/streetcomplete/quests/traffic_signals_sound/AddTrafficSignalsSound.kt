@@ -6,16 +6,15 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddTrafficSignalsSound(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boolean>() {
+class AddTrafficSignalsSound : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals 
         and (
           !$SOUND_SIGNALS
-          or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -${r * 4} years
-          or $SOUND_SIGNALS older today -${r * 8} years
+          or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -4 years
+          or $SOUND_SIGNALS older today -8 years
         )
     """
 

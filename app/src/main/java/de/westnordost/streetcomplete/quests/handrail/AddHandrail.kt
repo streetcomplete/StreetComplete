@@ -6,9 +6,8 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddHandrail(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boolean>() {
+class AddHandrail : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         ways with highway = steps
@@ -17,9 +16,9 @@ class AddHandrail(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boolean>() {
          and (!conveying or conveying = no)
          and (
            !handrail and !handrail:center and !handrail:left and !handrail:right
-           or handrail = no and handrail older today -${r * 4} years
-           or handrail older today -${r * 8} years
-           or older today -${r * 8} years
+           or handrail = no and handrail older today -4 years
+           or handrail older today -8 years
+           or older today -8 years
          )
     """
 

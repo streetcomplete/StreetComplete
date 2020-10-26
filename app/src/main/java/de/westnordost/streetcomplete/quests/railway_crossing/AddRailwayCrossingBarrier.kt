@@ -7,14 +7,13 @@ import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddRailwayCrossingBarrier(private val r: ResurveyIntervalsStore) : OsmMapDataQuestType<String> {
+class AddRailwayCrossingBarrier : OsmMapDataQuestType<String> {
 
     private val crossingFilter by lazy { ElementFiltersParser().parse("""
         nodes with 
           railway = level_crossing
-          and (!crossing:barrier or crossing:barrier older today -${r * 8} years)
+          and (!crossing:barrier or crossing:barrier older today -8 years)
     """)}
 
     private val excludedWaysFilter by lazy { ElementFiltersParser().parse("""

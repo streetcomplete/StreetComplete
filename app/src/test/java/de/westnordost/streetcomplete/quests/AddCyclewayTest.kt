@@ -9,29 +9,16 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.quests.bikeway.*
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import de.westnordost.streetcomplete.util.translate
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers
 import java.util.*
 
 class AddCyclewayTest {
 
-    private lateinit var questType: AddCycleway
-
-    @Before fun setUp() {
-        val r: ResurveyIntervalsStore = mock()
-        on(r.times(ArgumentMatchers.anyInt())).thenAnswer { (it.arguments[0] as Int).toDouble() }
-        on(r.times(ArgumentMatchers.anyDouble())).thenAnswer { (it.arguments[0] as Double) }
-        questType = AddCycleway(r)
-    }
-
+    private val questType = AddCycleway()
 
     @Test fun `applicable to road with missing cycleway`() {
         val mapData = TestMapDataWithGeometry(listOf(

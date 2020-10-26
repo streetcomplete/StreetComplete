@@ -6,9 +6,8 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddTactilePavingBusStop(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boolean>() {
+class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -20,8 +19,8 @@ class AddTactilePavingBusStop(r: ResurveyIntervalsStore) : OsmFilterQuestType<Bo
         and physically_present != no and naptan:BusStopType != HAR
         and (
           !tactile_paving
-          or tactile_paving = no and tactile_paving older today -${r * 4} years
-          or tactile_paving older today -${r * 8} years
+          or tactile_paving = no and tactile_paving older today -4 years
+          or tactile_paving older today -8 years
         )
     """
     override val commitMessage = "Add tactile pavings on bus stops"

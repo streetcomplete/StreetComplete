@@ -5,17 +5,16 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddTracktype(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
+class AddTracktype : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         ways with highway = track
         and (
           !tracktype
-          or tracktype != grade1 and tracktype older today -${r * 4} years
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and tracktype older today -${r * 4} years
-          or tracktype older today -${r * 8} years
+          or tracktype != grade1 and tracktype older today -4 years
+          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and tracktype older today -4 years
+          or tracktype older today -8 years
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """

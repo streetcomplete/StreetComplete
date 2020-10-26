@@ -4,15 +4,14 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddVegetarian(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
+class AddVegetarian : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes, ways with amenity ~ restaurant|cafe|fast_food
         and name and (
           !diet:vegetarian 
-          or diet:vegetarian != only and diet:vegetarian older today -${r * 2} years
+          or diet:vegetarian != only and diet:vegetarian older today -2 years
         )
     """
 

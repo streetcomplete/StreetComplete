@@ -5,9 +5,8 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddBenchStatusOnBusStop(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boolean>() {
+class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes with
@@ -17,7 +16,7 @@ class AddBenchStatusOnBusStop(r: ResurveyIntervalsStore) : OsmFilterQuestType<Bo
           (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
-        and (!bench or bench older today -${r * 4} years)
+        and (!bench or bench older today -4 years)
     """
 
     override val commitMessage = "Add whether a bus stop has a bench"

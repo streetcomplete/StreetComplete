@@ -17,10 +17,9 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import de.westnordost.streetcomplete.util.isNear
 
-class AddCycleway(private val r: ResurveyIntervalsStore) : OsmMapDataQuestType<CyclewayAnswer> {
+class AddCycleway : OsmMapDataQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"

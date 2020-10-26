@@ -11,12 +11,10 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import java.util.concurrent.FutureTask
 
 class AddOpeningHours (
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>,
-    private val r: ResurveyIntervalsStore
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmMapDataQuestType<OpeningHoursAnswer> {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
@@ -84,7 +82,7 @@ class AddOpeningHours (
             )
             and !opening_hours
           )
-          or opening_hours older today -${r * 1} years
+          or opening_hours older today -1 years
         )
         and (access !~ private|no)
         and (name or brand or noname = yes)

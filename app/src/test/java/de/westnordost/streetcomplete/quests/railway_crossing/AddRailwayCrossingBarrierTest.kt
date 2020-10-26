@@ -2,13 +2,12 @@ package de.westnordost.streetcomplete.quests.railway_crossing
 
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import org.junit.Assert.*
 import org.junit.Test
 
 class AddRailwayCrossingBarrierTest {
-    private val questType = AddRailwayCrossingBarrier(mock())
+    private val questType = AddRailwayCrossingBarrier()
 
     @Test fun `applicable to crossing`() {
         val mapData = TestMapDataWithGeometry(listOf(

@@ -3,19 +3,10 @@ package de.westnordost.streetcomplete
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.quests.QuestModule
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
-import org.mockito.ArgumentMatchers
-import org.mockito.ArgumentMatchers.anyInt
 
 fun main() {
 
-    val resurveyIntervalsStoreMock: ResurveyIntervalsStore = mock()
-    on(resurveyIntervalsStoreMock.times(anyInt())).thenAnswer { (it.arguments[0] as Int).toDouble() }
-    on(resurveyIntervalsStoreMock.times(ArgumentMatchers.anyDouble())).thenAnswer { (it.arguments[0] as Double) }
-
-    val registry = QuestModule.questTypeRegistry(
-        mock(), resurveyIntervalsStoreMock, mock(), mock(), mock(), mock()
-    )
+    val registry = QuestModule.questTypeRegistry(mock(), mock(), mock(), mock(), mock())
 
     for (questType in registry.all) {
         if (questType is OsmElementQuestType) {

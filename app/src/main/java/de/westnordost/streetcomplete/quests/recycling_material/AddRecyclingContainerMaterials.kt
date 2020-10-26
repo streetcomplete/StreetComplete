@@ -11,14 +11,11 @@ import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 
-class AddRecyclingContainerMaterials(
-    private val r: ResurveyIntervalsStore
-) : OsmMapDataQuestType<RecyclingContainerMaterialsAnswer> {
+class AddRecyclingContainerMaterials : OsmMapDataQuestType<RecyclingContainerMaterialsAnswer> {
 
     private val filter by lazy { ElementFiltersParser().parse("""
         nodes with 
@@ -32,7 +29,7 @@ class AddRecyclingContainerMaterials(
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return emptyList()
 
-        val olderThan2Years = TagOlderThan("recycling", RelativeDate(-(r * 365 * 2).toFloat()))
+        val olderThan2Years = TagOlderThan("recycling", RelativeDate(-(365 * 2).toFloat()))
 
         val containers = mapData.nodes.filter { filter.matches(it) }
 

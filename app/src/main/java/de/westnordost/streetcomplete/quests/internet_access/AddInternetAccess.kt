@@ -4,9 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddInternetAccess(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
+class AddInternetAccess : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -18,7 +17,7 @@ class AddInternetAccess(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>(
         and (
           !internet_access
           or internet_access = yes
-          or internet_access older today -${r * 2} years
+          or internet_access older today -2 years
         )
     """
     /* Asked less often than for example opening hours because this quest is only asked for

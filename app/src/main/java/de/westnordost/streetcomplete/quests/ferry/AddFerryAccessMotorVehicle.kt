@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddFerryAccessMotorVehicle() : OsmFilterQuestType<Boolean>() {
+class AddFerryAccessMotorVehicle : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = "ways, relations with route = ferry and !motor_vehicle"
     override val commitMessage = "Specify ferry access for motor vehicles"

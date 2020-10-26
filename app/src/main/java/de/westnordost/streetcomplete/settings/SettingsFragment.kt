@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
-import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -34,6 +33,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
     @Inject internal lateinit var osmQuestController: OsmQuestController
     @Inject internal lateinit var osmNoteQuestController: OsmNoteQuestController
+    @Inject internal lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -126,6 +126,9 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
                 AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
                 activity?.recreate()
+            }
+            Prefs.RESURVEY_INTERVALS -> {
+                resurveyIntervalsUpdater.update()
             }
         }
     }

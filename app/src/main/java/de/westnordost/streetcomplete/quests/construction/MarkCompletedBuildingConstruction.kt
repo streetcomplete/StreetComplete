@@ -6,15 +6,14 @@ import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import java.util.*
 
-class MarkCompletedBuildingConstruction(r: ResurveyIntervalsStore) : OsmFilterQuestType<Boolean>() {
+class MarkCompletedBuildingConstruction : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         ways with building = construction
          and (!opening_date or opening_date < today)
-         and older today -${r * 6} months
+         and older today -6 months
     """
     override val commitMessage = "Determine whether construction is now completed"
     override val wikiLink = "Tag:building=construction"

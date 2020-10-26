@@ -5,9 +5,8 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddPathSurface(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
+class AddPathSurface : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
@@ -16,8 +15,8 @@ class AddPathSurface(r: ResurveyIntervalsStore) : OsmFilterQuestType<String>() {
         and (!conveying or conveying = no) and (!indoor or indoor = no)
         and (
           !surface
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -${r * 4} years
-          or surface older today -${r * 8} years
+          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -4 years
+          or surface older today -8 years
         )
     """
     /* ~paved ways are less likely to change the surface type */

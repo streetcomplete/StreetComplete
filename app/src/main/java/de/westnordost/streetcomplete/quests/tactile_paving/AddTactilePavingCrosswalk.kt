@@ -9,9 +9,8 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
 import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddTactilePavingCrosswalk(private val r: ResurveyIntervalsStore) : OsmMapDataQuestType<Boolean> {
+class AddTactilePavingCrosswalk : OsmMapDataQuestType<Boolean> {
 
     private val crossingFilter by lazy { ElementFiltersParser().parse("""
         nodes with 
@@ -21,8 +20,8 @@ class AddTactilePavingCrosswalk(private val r: ResurveyIntervalsStore) : OsmMapD
           )
           and (
             !tactile_paving
-            or tactile_paving = no and tactile_paving older today -${r * 4} years
-            or older today -${r * 8} years
+            or tactile_paving = no and tactile_paving older today -4 years
+            or older today -8 years
           )
     """)}
 
