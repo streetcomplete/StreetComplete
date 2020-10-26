@@ -32,8 +32,8 @@ class AddClothingBinOperator : OsmMapDataQuestType<String> {
         return entries.find {
             it.key.startsWith("recycling:")
             it.key != "recycling:shoes" &&
-                    it.key != "recycling:clothes" &&
-                    it.value == "yes"
+            it.key != "recycling:clothes" &&
+            it.value == "yes"
         } == null
     }
 

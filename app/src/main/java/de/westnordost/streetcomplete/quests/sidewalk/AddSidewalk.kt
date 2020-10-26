@@ -8,9 +8,7 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
-import de.westnordost.streetcomplete.util.distanceTo
-import de.westnordost.streetcomplete.util.enlargedBy
-import de.westnordost.streetcomplete.util.intersect
+import de.westnordost.streetcomplete.util.isNear
 
 class AddSidewalk : OsmMapDataQuestType<SidewalkAnswer> {
 
@@ -26,7 +24,7 @@ class AddSidewalk : OsmMapDataQuestType<SidewalkAnswer> {
           and area != yes
           and motorroad != yes
           and !sidewalk and !sidewalk:left and !sidewalk:right and !sidewalk:both
-          and (maxspeed < 8 or maxspeed !~ "5 mph|walk")
+          and (!maxspeed or maxspeed > 8 or maxspeed !~ "5 mph|walk")
           and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
           and lit = yes
           and foot != no and access !~ private|no
@@ -60,18 +58,11 @@ class AddSidewalk : OsmMapDataQuestType<SidewalkAnswer> {
 
         val minDistToWays = 15.0 //m
 
-        // filter out roads with missing sidewalks that...
+        // filter out roads with missing sidewalks that are near footways
         return roadsWithMissingSidewalks.filter { road ->
             val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
             if (roadGeometry != null) {
-                val roadGeometryBounds = roadGeometry.getBounds().enlargedBy(minDistToWays)
-                // are too close to any footway:
-                maybeSeparatelyMappedSidewalkGeometries.none { sidewalkGeometry ->
-                    // so, the bounding box of the road and footway intersect and...
-                    roadGeometryBounds.intersect(sidewalkGeometry.getBounds()) &&
-                    // ...the minimum distance between these lines is too small
-                    roadGeometry.polylines.single().distanceTo(sidewalkGeometry.polylines.single()) < minDistToWays
-                }
+                !roadGeometry.isNear(minDistToWays, maybeSeparatelyMappedSidewalkGeometries)
             } else {
                 false
             }

@@ -31,7 +31,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var prefs: SharedPreferences
-    @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
     @Inject internal lateinit var osmQuestController: OsmQuestController
     @Inject internal lateinit var osmNoteQuestController: OsmNoteQuestController
@@ -116,14 +115,11 @@ class SettingsFragment : PreferenceFragmentCompat(),
                     val view = LayoutInflater.from(activity).inflate(R.layout.dialog_tutorial_upload, null)
                     val filled = requireContext().getString(R.string.action_download)
                     val uploadExplanation = view.findViewById<TextView>(R.id.tutorialDownloadPanel)
-                    uploadExplanation.text = context!!.getString(R.string.dialog_tutorial_download, filled)
-                    context?.let {
-                        AlertDialog.Builder(it)
-                            .setView(view)
-                            .setPositiveButton(android.R.string.ok, null)
-                            .show()
-                    }
-
+                    uploadExplanation.text = requireContext().getString(R.string.dialog_tutorial_download, filled)
+                    AlertDialog.Builder(requireContext())
+                        .setView(view)
+                        .setPositiveButton(android.R.string.ok, null)
+                        .show()
                 }
             }
             Prefs.THEME_SELECT -> {

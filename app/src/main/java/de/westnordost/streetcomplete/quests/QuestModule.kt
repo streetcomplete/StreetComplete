@@ -116,7 +116,7 @@ object QuestModule
         AddPlaceName(featureDictionaryFuture),
         AddOneway(),
         AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
-        AddCycleway(o,r), // for any cyclist routers (and cyclist maps)
+        AddCycleway(r), // for any cyclist routers (and cyclist maps)
         AddSidewalk(), // for any pedestrian routers
         AddBusStopName(),
         AddBusStopRef(),

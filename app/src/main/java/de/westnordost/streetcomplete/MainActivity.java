@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.AnyThread;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -27,9 +28,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.inject.Inject;
 
@@ -387,7 +385,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* --------------------------------- NotificationButtonFragment.Listener ---------------------------------- */
 
-	@Override public void onClickShowNotification(@NotNull Notification notification)
+	@Override public void onClickShowNotification(@NonNull Notification notification)
 	{
 		Fragment f = getSupportFragmentManager().findFragmentById(R.id.notifications_container_fragment);
 		((NotificationsContainerFragment) f).showNotification(notification);
@@ -400,7 +398,7 @@ public class MainActivity extends AppCompatActivity implements
 		ensureLoggedIn();
 	}
 
-	@Override public void onCreatedNote(@NotNull Point screenPosition)
+	@Override public void onCreatedNote(@NonNull Point screenPosition)
 	{
 		ensureLoggedIn();
 	}

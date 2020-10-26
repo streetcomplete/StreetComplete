@@ -146,6 +146,6 @@ private fun Element.hasAnyRecyclingMaterials(): Boolean =
 private fun Element.hasUnknownRecyclingMaterials(): Boolean =
     tags?.any {
         it.key.startsWith("recycling:") &&
-                it.key !in allKnownMaterials &&
-                it.value == "yes"
+        it.key !in allKnownMaterials &&
+        it.value == "yes"
     } ?: true
