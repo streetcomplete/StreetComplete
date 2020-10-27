@@ -7,10 +7,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionEntry
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.quests.road_name.data.putRoadNameSuggestion
+import de.westnordost.streetcomplete.quests.road_name.data.toRoadNameByLanguage
 
 class AddAddressStreet(
         private val roadNameSuggestionsDao: RoadNameSuggestionsDao
@@ -52,13 +54,16 @@ class AddAddressStreet(
         }
 
         if (addressesWithoutStreet.isNotEmpty()) {
-            val roadsWithNames = mapData.ways.filter { roadsWithNamesFilter.matches(it) }
-            for (roadWithName in roadsWithNames) {
-                val roadGeometry = mapData.getWayGeometry(roadWithName.id)
-                if (roadGeometry != null) {
-                    roadNameSuggestionsDao.putRoadNameSuggestion(roadWithName, roadGeometry)
+            val roadsWithNames = mapData.ways
+                .filter { roadsWithNamesFilter.matches(it) }
+                .mapNotNull {
+                    val geometry = mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry
+                    val roadNamesByLanguage = it.tags?.toRoadNameByLanguage()
+                    if (geometry != null && roadNamesByLanguage != null) {
+                        RoadNameSuggestionEntry(it.id, roadNamesByLanguage, geometry.polylines.first())
+                    } else null
                 }
-            }
+            roadNameSuggestionsDao.putRoads(roadsWithNames)
         }
         return addressesWithoutStreet
     }
