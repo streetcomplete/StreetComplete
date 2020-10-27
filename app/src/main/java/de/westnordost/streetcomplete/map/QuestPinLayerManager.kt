@@ -3,11 +3,14 @@ package de.westnordost.streetcomplete.map
 import android.content.res.Resources
 import android.os.Build
 import androidx.collection.LongSparseArray
+import androidx.collection.forEach
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Point
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.ktx.values
@@ -38,7 +41,7 @@ class QuestPinLayerManager @Inject constructor(
     private var lastDisplayedRect: TilesRect? = null
 
     // quest group -> ( quest Id -> [point, ...] )
-    private val quests: EnumMap<QuestGroup, LongSparseArray<List<Point>>> = EnumMap(QuestGroup::class.java)
+    private val quests: EnumMap<QuestGroup, LongSparseArray<Quest>> = EnumMap(QuestGroup::class.java)
 
     lateinit var mapFragment: MapFragment
 
@@ -122,20 +125,10 @@ class QuestPinLayerManager @Inject constructor(
         if (quest.type is AddCycleway && Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             return
         }
-        val questIconName = resources.getResourceEntryName(quest.type.icon)
-        val positions = quest.markerLocations
-        val points = positions.map { position ->
-            val properties = mapOf(
-                "type" to "point",
-                "kind" to questIconName,
-                "importance" to getQuestImportance(quest).toString(),
-                MARKER_QUEST_GROUP to group.name,
-                MARKER_QUEST_ID to quest.id!!.toString()
-            )
-            Point(position.toLngLat(), properties)
-        }
+
         synchronized(quests) {
-            quests.getOrPut(group, { LongSparseArray(256) }).put(quest.id!!, points)
+            if (quests[group] == null) quests[group] = LongSparseArray(256)
+            quests[group]?.put(quest.id!!, quest)
         }
     }
 
@@ -167,11 +160,67 @@ class QuestPinLayerManager @Inject constructor(
     }
 
     private fun getPoints(): List<Point> {
+        val result = mutableListOf<Point>()
+
         synchronized(quests) {
-            return quests.values.flatMap { questsById ->
-                questsById.values.flatten()
+            for ((group, questById) in quests) {
+                val elementIdCount = mutableMapOf<Long, Int?>()
+                questById.forEach { _, quest ->
+                    if (quest is OsmQuest) {
+                        if (elementIdCount[quest.elementId] == null) {
+                            elementIdCount[quest.elementId] = 1
+                        } else {
+                            elementIdCount[quest.elementId] = elementIdCount[quest.elementId]?.plus(1)
+                        }
+                    }
+                }
+
+                val addedOsmElementId = mutableSetOf<Long>()
+                questById.forEach { _, quest ->
+                    val questIconName = resources.getResourceEntryName(quest.type.icon)
+                    val positions = quest.markerLocations
+                    val properties = mutableMapOf(
+                        "type" to "point",
+                        "kind" to questIconName,
+                        "importance" to getQuestImportance(quest).toString(),
+                        MARKER_QUEST_GROUP to group.name
+                    )
+
+                    if (quest is OsmQuest && elementIdCount[quest.elementId]!! > 1) {
+                        if (!addedOsmElementId.contains(quest.elementId)) {
+                            properties[MARKER_ELEMENT_ID] = quest.elementId.toString()
+                            properties["kind"] = resources.getResourceEntryName(R.drawable.ic_multi_quest_2)
+                            val points = positions.map { position ->
+                                Point(position.toLngLat(), properties)
+                            }
+                            result.addAll(points)
+
+                            addedOsmElementId.add(quest.elementId)
+                        }
+                    } else {
+                        properties[MARKER_QUEST_ID] = quest.id!!.toString()
+                        val points = positions.map { position ->
+                            Point(position.toLngLat(), properties)
+                        }
+                        result.addAll(points)
+                    }
+                }
             }
         }
+        return result
+    }
+
+    fun findQuestsBelongingToOsmElementId(osmElementId: Long): List<Quest> {
+        val result = mutableListOf<Quest>()
+        synchronized(quests) {
+            for ((_, questById) in quests) {
+                result.addAll(
+                    questById.values
+                        .filterIsInstance<OsmQuest>()
+                        .filter { quest -> quest.elementId == osmElementId })
+            }
+        }
+        return result.sortedByDescending { getQuestImportance(it) }
     }
 
     private fun initializeQuestTypeOrders() {
@@ -195,6 +244,7 @@ class QuestPinLayerManager @Inject constructor(
     companion object {
         const val MARKER_QUEST_ID = "quest_id"
         const val MARKER_QUEST_GROUP = "quest_group"
+        const val MARKER_ELEMENT_ID = "element_id"
         private const val TILES_ZOOM = 14
     }
 }

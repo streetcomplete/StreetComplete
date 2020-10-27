@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.smoothness
+package de.westnordost.streetcomplete.quests.incline
 
 import android.content.Context
 import android.graphics.Canvas

@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content" />
 
-    <de.westnordost.streetcomplete.quests.smoothness.InclineView
+    <de.westnordost.streetcomplete.quests.incline.InclineView
         android:id="@+id/inclineView"
         android:layout_width="match_parent"
         android:layout_height="150dp"

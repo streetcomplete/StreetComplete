@@ -30,6 +30,7 @@ class OsmNotesDownloader @Inject constructor(
 
         notesApi.getAll(bbox, { note ->
             if (note.comments.isNotEmpty()) { // exclude invalid notes (#1338)
+                // TODO sst: only include quests with app name in it...
                 val quest = OsmNoteQuest(note, questType)
                 if (shouldMakeNoteClosed(userId, note)) {
                     quest.status = QuestStatus.CLOSED

@@ -61,7 +61,7 @@ private val CreateNote.fullNoteText: String get() {
         if (title != null) {
             "Unable to answer \"$title\" for $associatedElementString via $USER_AGENT:\n\n$text"
         } else {
-            "for $associatedElementString via $USER_AGENT:\n\n$text"
+            "for $associatedElementString via $USER_AGENT:\n\n$text" // TODO sst: change USER_AGENT name here?
         }
     } else "$text\n\nvia $USER_AGENT"
 }

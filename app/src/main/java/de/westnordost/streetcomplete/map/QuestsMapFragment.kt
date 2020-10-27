@@ -1,10 +1,19 @@
 package de.westnordost.streetcomplete.map
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.PointF
 import android.graphics.RectF
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import android.widget.ArrayAdapter
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.geometry.Point
@@ -19,6 +28,7 @@ import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_ELEMENT_ID
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_GROUP
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_ID
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
@@ -61,6 +71,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     interface Listener {
         fun onClickedQuest(questGroup: QuestGroup, questId: Long)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
+        fun onClickedLocationMarker()
     }
 
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
@@ -110,14 +121,49 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     /* -------------------------------- Picking quest pins -------------------------------------- */
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
-        launch {
+            launch {
             val pickResult = controller?.pickLabel(x, y)
 
             val pickedQuestId = pickResult?.properties?.get(MARKER_QUEST_ID)?.toLong()
+            val pickedElementId = pickResult?.properties?.get(MARKER_ELEMENT_ID)?.toLong()
             val pickedQuestGroup = pickResult?.properties?.get(MARKER_QUEST_GROUP)?.let { QuestGroup.valueOf(it) }
+
 
             if (pickedQuestId != null && pickedQuestGroup != null) {
                 listener?.onClickedQuest(pickedQuestGroup, pickedQuestId)
+            } else if (pickedElementId != null && pickedQuestGroup != null) {
+                val quests = questPinLayerManager.findQuestsBelongingToOsmElementId(pickedElementId)
+                val adapter = object : ArrayAdapter<Quest>(
+                    requireContext(),
+                    android.R.layout.select_dialog_item,
+                    android.R.id.text1,
+                    quests) {
+
+                    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                        val v: View = super.getView(position, convertView, parent)
+                        val tv: TextView = v.findViewById(android.R.id.text1)
+                        tv.text = resources.getString(quests[position].type.title)
+
+                        val dr = ContextCompat.getDrawable(context, quests[position].type.icon)
+                        val bitmap = Bitmap.createBitmap(dr!!.intrinsicWidth, dr!!.intrinsicHeight, Bitmap.Config.ARGB_8888)
+                        val canvas = Canvas(bitmap)
+                        dr.setBounds(0, 0, canvas.width, canvas.height);
+                        dr.draw(canvas);
+
+                        val size = tv.textSize * 1.5
+                        val drawable = BitmapDrawable(resources, Bitmap.createScaledBitmap(bitmap, size.toInt(), size.toInt(), true))
+
+                        tv.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
+                        tv.compoundDrawablePadding = (12 * resources.displayMetrics.density).toInt()
+                        return v
+                    }
+                }
+
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Multiple quests available here. Choose one:")
+                    .setAdapter(adapter) { _, item ->
+                        listener?.onClickedQuest(pickedQuestGroup, quests[item].id!!)
+                    }.show()
             } else {
                 val pickMarkerResult = controller?.pickMarker(x,y)
                 if (pickMarkerResult == null) {
