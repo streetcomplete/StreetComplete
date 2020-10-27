@@ -140,10 +140,10 @@ dependencies {
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:1.1")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-map:1.2")
-    implementation("de.westnordost:osmapi-changesets:1.2")
-    implementation("de.westnordost:osmapi-notes:1.1")
-    implementation("de.westnordost:osmapi-user:1.1")
+    implementation("de.westnordost:osmapi-map:1.3")
+    implementation("de.westnordost:osmapi-changesets:1.3")
+    implementation("de.westnordost:osmapi-notes:1.2")
+    implementation("de.westnordost:osmapi-user:1.2")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
