@@ -94,16 +94,13 @@ class QuestDownloadService : SingleIntentService(TAG) {
         }
 
         val tiles = intent.getSerializableExtra(ARG_TILES_RECT) as TilesRect
-        val maxQuestTypes =
-            if (intent.hasExtra(ARG_MAX_QUEST_TYPES)) intent.getIntExtra(ARG_MAX_QUEST_TYPES, 0)
-            else null
 
         val dl = questDownloaderProvider.get()
         dl.progressListener = progressListenerRelay
         try {
             isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
             isDownloading = true
-            dl.download(tiles, maxQuestTypes, cancelState)
+            dl.download(tiles, cancelState)
         } catch (e: Exception) {
             Log.e(TAG, "Unable to download quests", e)
             progressListenerRelay.onError(e)
@@ -132,15 +129,13 @@ class QuestDownloadService : SingleIntentService(TAG) {
     companion object {
         private const val TAG = "QuestDownload"
         const val ARG_TILES_RECT = "tilesRect"
-        const val ARG_MAX_QUEST_TYPES = "maxQuestTypes"
         const val ARG_IS_PRIORITY = "isPriority"
         const val ARG_CANCEL = "cancel"
 
-        fun createIntent(context: Context, tilesRect: TilesRect?, maxQuestTypesToDownload: Int?, isPriority: Boolean): Intent {
+        fun createIntent(context: Context, tilesRect: TilesRect?,isPriority: Boolean): Intent {
             val intent = Intent(context, QuestDownloadService::class.java)
             intent.putExtra(ARG_TILES_RECT, tilesRect)
             intent.putExtra(ARG_IS_PRIORITY, isPriority)
-            maxQuestTypesToDownload?.let { intent.putExtra(ARG_MAX_QUEST_TYPES, it) }
             return intent
         }
 

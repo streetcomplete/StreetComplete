@@ -646,7 +646,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
                 )
             }
         }
-        questDownloadController.download(bbox, ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT, true)
+        questDownloadController.download(bbox, true)
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */

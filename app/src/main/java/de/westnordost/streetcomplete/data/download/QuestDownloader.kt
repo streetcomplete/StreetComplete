@@ -30,11 +30,11 @@ class QuestDownloader @Inject constructor(
 ) {
     var progressListener: DownloadProgressListener? = null
 
-    @Synchronized fun download(tiles: TilesRect, maxQuestTypes: Int?, cancelState: AtomicBoolean) {
+    @Synchronized fun download(tiles: TilesRect, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
 
         progressListener?.onStarted()
-        val questTypes = getQuestTypesToDownload(tiles, maxQuestTypes).toMutableList()
+        val questTypes = getQuestTypesToDownload(tiles).toMutableList()
         if (questTypes.isEmpty()) {
             progressListener?.onSuccess()
             progressListener?.onFinished()
@@ -80,7 +80,7 @@ class QuestDownloader @Inject constructor(
         questTypeRegistry.getByName(OsmNoteQuestType::class.java.simpleName)!!
 
 
-    private fun getQuestTypesToDownload(tiles: TilesRect, maxQuestTypes: Int?): List<QuestType<*>> {
+    private fun getQuestTypesToDownload(tiles: TilesRect): List<QuestType<*>> {
         val result = questTypesProvider.get().toMutableList()
         val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
@@ -90,10 +90,7 @@ class QuestDownloader @Inject constructor(
             result.removeAll(alreadyDownloaded)
             Log.i(TAG, "Quest types already in local store: ${alreadyDownloadedNames.joinToString()}")
         }
-        return if (maxQuestTypes != null && maxQuestTypes < result.size)
-            result.subList(0, maxQuestTypes)
-        else
-            result
+        return result
     }
 
     private fun downloadNotes(bbox: BoundingBox, tiles: TilesRect) {

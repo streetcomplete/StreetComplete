@@ -142,10 +142,7 @@ import javax.inject.Singleton
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
             if (downloadStrategy.mayDownloadHere(pos)) {
                 try {
-                    questDownloadController.download(
-                        downloadStrategy.getDownloadBoundingBox(pos),
-                        downloadStrategy.questTypeDownloadCount
-                    )
+                    questDownloadController.download(downloadStrategy.getDownloadBoundingBox(pos))
                 } catch (e: IllegalStateException) {
                     // The Android 9 bug described here should not result in a hard crash of the app
                     // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume

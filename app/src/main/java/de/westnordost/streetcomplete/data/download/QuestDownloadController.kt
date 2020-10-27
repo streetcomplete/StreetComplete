@@ -54,14 +54,12 @@ import javax.inject.Singleton
      * in a (z14) tiles grid that encloses the given bounding box will be downloaded.
      *
      * @param bbox the minimum area to download
-     * @param maxQuestTypesToDownload download at most the given number of quest types. null for
-     * unlimited
      * @param isPriority whether this shall be a priority download (cancels previous downloads and
      * puts itself in the front)
      */
-    fun download(bbox: BoundingBox, maxQuestTypesToDownload: Int? = null, isPriority: Boolean = false) {
+    fun download(bbox: BoundingBox, isPriority: Boolean = false) {
         val tilesRect = bbox.enclosingTilesRect(ApplicationConstants.QUEST_TILE_ZOOM)
-        context.startService(QuestDownloadService.createIntent(context, tilesRect, maxQuestTypesToDownload, isPriority))
+        context.startService(QuestDownloadService.createIntent(context, tilesRect, isPriority))
     }
 
     private fun bindServices() {
