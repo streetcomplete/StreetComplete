@@ -114,24 +114,14 @@ public class CountryInfos
 	private CountryInfo loadCountryInfo(String countryCodeIso3166) throws IOException
 	{
 		String filename = countryCodeIso3166+".yml";
-		InputStream is = null;
-		try
+		try (InputStream is = assetManager.open(BASEPATH + File.separator + filename))
 		{
-			is = assetManager.open(BASEPATH + File.separator + filename);
-			Reader reader =  new InputStreamReader(is, "UTF-8");
+			Reader reader = new InputStreamReader(is, "UTF-8");
 			YamlReader yamlReader = new YamlReader(reader);
 			yamlReader.getConfig().setPrivateFields(true);
 			CountryInfo result = yamlReader.read(CountryInfo.class);
 			result.countryCode = countryCodeIso3166.split("-")[0];
 			return result;
-		}
-		finally
-		{
-			if(is != null) try
-			{
-				is.close();
-			}
-			catch (IOException ignore) { }
 		}
 	}
 
