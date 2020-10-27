@@ -8,14 +8,14 @@ public class ApplicationConstants
 		QUESTTYPE_TAG_KEY = NAME + ":quest_type";
 
 	public final static double
-		MAX_DOWNLOADABLE_AREA_IN_SQKM = 20,
-		MIN_DOWNLOADABLE_AREA_IN_SQKM = 1;
+		MAX_DOWNLOADABLE_AREA_IN_SQKM = 10,
+		MIN_DOWNLOADABLE_AREA_IN_SQKM = 0.1;
 
 	public final static double MIN_DOWNLOADABLE_RADIUS_IN_METERS = 600;
 
 	public final static String DATABASE_NAME = "streetcomplete.db";
 
-	public final static int QUEST_TILE_ZOOM = 14;
+	public final static int QUEST_TILE_ZOOM = 16;
 
 	public final static int NOTE_MIN_ZOOM = 15;
 

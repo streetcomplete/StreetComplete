@@ -51,7 +51,7 @@ import javax.inject.Singleton
     }
 
     /** Download quests in at least the given bounding box asynchronously. The next-bigger rectangle
-     * in a (z14) tiles grid that encloses the given bounding box will be downloaded.
+     * in a (z16) tiles grid that encloses the given bounding box will be downloaded.
      *
      * @param bbox the minimum area to download
      * @param isPriority whether this shall be a priority download (cancels previous downloads and

@@ -210,9 +210,14 @@ import java.util.*
                 """.trimIndent())
         }
 
+        if (oldVersion < 18 && newVersion >= 18) {
+            // QUEST_TILE_ZOOM changed
+            db.execSQL("DELETE FROM ${DownloadedTilesTable.NAME}")
+        }
+
         // for later changes to the DB
         // ...
     }
 }
 
-private const val DB_VERSION = 17
+private const val DB_VERSION = 18

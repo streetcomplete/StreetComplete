@@ -14,5 +14,5 @@ class MobileDataAutoDownloadStrategy @Inject constructor(
 
     override val minQuestsInActiveRadiusPerKm2 = 12
     override val activeRadii = intArrayOf(200)
-    override val downloadRadius = 600
+    override val downloadRadius = 200
 }
