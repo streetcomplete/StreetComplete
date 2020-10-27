@@ -4,10 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.model.*
 
 // The database version is incremented to preserve the existing data when migrating from SQLite.
-@Database(entities = [], version = 17)
+@Database(
+    entities = [
+        ElementGeometry::class, OsmQuest::class, UndoOsmQuest::class, Node::class, Way::class
+    ],
+    version = 17
+)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
         @Volatile

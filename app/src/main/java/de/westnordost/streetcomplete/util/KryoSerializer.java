@@ -4,6 +4,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
+import org.jetbrains.annotations.NotNull;
 import org.objenesis.strategy.StdInstantiatorStrategy;
 
 import java.util.ArrayList;
@@ -12,26 +13,26 @@ import java.util.HashMap;
 
 import javax.inject.Singleton;
 
-import de.westnordost.osmapi.map.data.Fixed1E7LatLon;
-import de.westnordost.streetcomplete.data.osm.splitway.SplitAtLinePosition;
-import de.westnordost.streetcomplete.data.osm.splitway.SplitAtPoint;
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete;
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify;
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow;
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow;
-import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection;
 import de.westnordost.osmapi.map.data.Element;
+import de.westnordost.osmapi.map.data.Fixed1E7LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmRelationMember;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.user.User;
+import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
+import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
+import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete;
+import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify;
+import de.westnordost.streetcomplete.data.osm.splitway.SplitAtLinePosition;
+import de.westnordost.streetcomplete.data.osm.splitway.SplitAtPoint;
+import de.westnordost.streetcomplete.quests.LocalizedName;
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow;
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow;
+import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection;
 import de.westnordost.streetcomplete.quests.opening_hours.model.Months;
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange;
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
-import de.westnordost.streetcomplete.quests.LocalizedName;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.WeekdaysTimesRow;
 
 @Singleton
@@ -89,6 +90,7 @@ public class KryoSerializer implements Serializer
 		}
 	};
 
+	@NotNull
 	@Override public byte[] toBytes(Object object)
 	{
 		Output output = new Output(1024,-1);
