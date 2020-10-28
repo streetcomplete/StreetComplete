@@ -70,7 +70,7 @@ class OsmApiQuestDownloader @Inject constructor(
                 launch(Dispatchers.Default) {
                     val questTypeName = questType.getName()
                     if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
-                        Log.i(TAG, "$questTypeName: Skipped because it is disabled for this country")
+                        Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
                     } else {
                         var i = 0
                         val questTime = System.currentTimeMillis()
@@ -84,7 +84,7 @@ class OsmApiQuestDownloader @Inject constructor(
                             questElements.add(element)
                             ++i
                         }
-                        Log.i(TAG, "$questTypeName: Found $i quests in ${System.currentTimeMillis() - questTime}ms")
+                        Log.d(TAG, "$questTypeName: Found $i quests in ${System.currentTimeMillis() - questTime}ms")
                     }
                 }
             }
