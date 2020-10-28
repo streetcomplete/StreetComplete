@@ -131,7 +131,6 @@ import javax.inject.Singleton
     /* ------------------------------------------------------------------------------------------ */
 
     fun triggerAutoDownload() {
-        if (!isAllowedByPreference) return
         val pos = pos ?: return
         if (!isConnected) return
         if (questDownloadController.isDownloadInProgress) return

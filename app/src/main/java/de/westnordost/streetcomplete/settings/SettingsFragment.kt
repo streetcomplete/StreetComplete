@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
@@ -113,9 +112,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
             Prefs.AUTOSYNC -> {
                 if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
                     val view = LayoutInflater.from(activity).inflate(R.layout.dialog_tutorial_upload, null)
-                    val filled = requireContext().getString(R.string.action_download)
-                    val uploadExplanation = view.findViewById<TextView>(R.id.tutorialDownloadPanel)
-                    uploadExplanation.text = requireContext().getString(R.string.dialog_tutorial_download, filled)
                     AlertDialog.Builder(requireContext())
                         .setView(view)
                         .setPositiveButton(android.R.string.ok, null)

@@ -17,15 +17,4 @@
         app:drawableTint="@color/text"
         android:text="@string/dialog_tutorial_upload"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        />
-    <TextView
-        android:id="@+id/tutorialDownloadPanel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_search_48dp"
-        android:drawablePadding="8dp"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
 </LinearLayout>
