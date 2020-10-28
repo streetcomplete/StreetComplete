@@ -45,10 +45,10 @@ abstract class AVariableRadiusStrategy(
 
         val activeBoundingBox = pos.enclosingBoundingBox(radius)
         if (hasMissingQuestsFor(activeBoundingBox.enclosingTilesRect(tileZoom))) {
-            Log.i(TAG, "Downloading in ${radius}m radius of user")
+            Log.i(TAG, "Downloading in radius of ${radius.toInt()} meters around user")
             return activeBoundingBox
         }
-        Log.i(TAG, "All downloaded in ${radius}m of user")
+        Log.i(TAG, "All downloaded in radius of ${radius.toInt()} meters around user")
         return null
     }
 
