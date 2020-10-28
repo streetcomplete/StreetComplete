@@ -10,9 +10,8 @@ class MobileDataAutoDownloadStrategy @Inject constructor(
     visibleQuestsSource: VisibleQuestsSource,
     downloadedTilesDao: DownloadedTilesDao,
     questTypesProvider: OrderedVisibleQuestTypesProvider
-) : AActiveRadiusStrategy(visibleQuestsSource, downloadedTilesDao, questTypesProvider) {
+) : AVariableRadiusStrategy(visibleQuestsSource, downloadedTilesDao, questTypesProvider) {
 
-    override val minQuestsInActiveRadiusPerKm2 = 12
-    override val activeRadii = intArrayOf(200)
-    override val downloadRadius = 200
+    override val maxDownloadAreaInKm2 = 6.0 // that's a radius of about 1.4 km
+    override val desiredQuestCountInVicinity = 500
 }

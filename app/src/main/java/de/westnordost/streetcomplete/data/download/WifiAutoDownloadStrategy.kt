@@ -12,16 +12,13 @@ class WifiAutoDownloadStrategy @Inject constructor(
     visibleQuestsSource: VisibleQuestsSource,
     downloadedTilesDao: DownloadedTilesDao,
     questTypes: OrderedVisibleQuestTypesProvider
-) : AActiveRadiusStrategy(visibleQuestsSource, downloadedTilesDao, questTypes) {
+) : AVariableRadiusStrategy(visibleQuestsSource, downloadedTilesDao, questTypes) {
 
     /** Let's assume that if the user is on wifi, he is either at home, at work, in the hotel, at a
      * café,... in any case, somewhere that would act as a "base" from which he can go on an
      * excursion. Let's make sure he can, even if there is no or bad internet.
      */
 
-    override val minQuestsInActiveRadiusPerKm2 = 12
-
-    // checks if either in 600 or 200m radius, there are enough quests.
-    override val activeRadii = intArrayOf(600, 200)
-    override val downloadRadius = 600
+    override val maxDownloadAreaInKm2 = 12.0 // that's a radius of about 2 km
+    override val desiredQuestCountInVicinity = 1000
 }

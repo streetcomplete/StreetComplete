@@ -237,13 +237,11 @@ import javax.inject.Singleton
     }
 
 
-    /** Get count of all unanswered quests in given bounding box of given types */
-    fun getAllVisibleInBBoxCount(bbox: BoundingBox, questTypes: Collection<String>) : Int {
-        if (questTypes.isEmpty()) return 0
+    /** Get count of all unanswered quests in given bounding box  */
+    fun getAllVisibleInBBoxCount(bbox: BoundingBox) : Int {
         return dao.getCount(
             statusIn = listOf(QuestStatus.NEW),
-            bounds = bbox,
-            questTypes = questTypes
+            bounds = bbox
         )
     }
 
