@@ -17,9 +17,7 @@ import javax.inject.Provider
  *
  * Generally, starting a new download cancels the old one. This is a feature; Consideration:
  * If the user requests a new area to be downloaded, he'll generally be more interested in his last
- * request than any request he made earlier and he wants that as fast as possible. (Downloading
- * in-parallel is not possible with Overpass, only one request a time is allowed on the public
- * instance)
+ * request than any request he made earlier and he wants that as fast as possible.
  *
  * The service can be bound to snoop into the state of the downloading process:
  * * To receive progress callbacks
@@ -39,8 +37,14 @@ class QuestDownloadService : SingleIntentService(TAG) {
     private var progressListenerRelay = object : DownloadProgressListener {
         override fun onStarted() { progressListener?.onStarted() }
         override fun onError(e: Exception) { progressListener?.onError(e) }
-        override fun onSuccess() { progressListener?.onSuccess() }
-        override fun onFinished() { progressListener?.onFinished() }
+        override fun onSuccess() {
+            isDownloading = false
+            progressListener?.onSuccess()
+        }
+        override fun onFinished() {
+            isDownloading = false
+            progressListener?.onFinished()
+        }
         override fun onStarted(item: DownloadItem) {
             currentDownloadItem = item
             progressListener?.onStarted(item)

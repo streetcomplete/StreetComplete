@@ -10,9 +10,8 @@ import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypes
 /** Download strategy if user is on wifi */
 class WifiAutoDownloadStrategy @Inject constructor(
     visibleQuestsSource: VisibleQuestsSource,
-    downloadedTilesDao: DownloadedTilesDao,
-    questTypes: OrderedVisibleQuestTypesProvider
-) : AVariableRadiusStrategy(visibleQuestsSource, downloadedTilesDao, questTypes) {
+    downloadedTilesDao: DownloadedTilesDao
+) : AVariableRadiusStrategy(visibleQuestsSource, downloadedTilesDao) {
 
     /** Let's assume that if the user is on wifi, he is either at home, at work, in the hotel, at a
      * café,... in any case, somewhere that would act as a "base" from which he can go on an

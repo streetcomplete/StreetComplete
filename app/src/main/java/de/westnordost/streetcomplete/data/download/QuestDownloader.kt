@@ -4,11 +4,9 @@ import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
 import de.westnordost.streetcomplete.data.osm.osmquest.*
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmApiQuestDownloader
 import de.westnordost.streetcomplete.data.user.UserStore
@@ -24,7 +22,6 @@ class QuestDownloader @Inject constructor(
     private val osmNotesDownloaderProvider: Provider<OsmNotesDownloader>,
     private val osmApiQuestDownloaderProvider: Provider<OsmApiQuestDownloader>,
     private val downloadedTilesDao: DownloadedTilesDao,
-    private val questTypeRegistry: QuestTypeRegistry,
     private val questTypesProvider: OrderedVisibleQuestTypesProvider,
     private val userStore: UserStore
 ) {
@@ -34,8 +31,7 @@ class QuestDownloader @Inject constructor(
         if (cancelState.get()) return
 
         progressListener?.onStarted()
-        val questTypes = getQuestTypesToDownload(tiles).toMutableList()
-        if (questTypes.isEmpty()) {
+        if (hasQuestsAlready(tiles)) {
             progressListener?.onSuccess()
             progressListener?.onFinished()
             return
@@ -44,10 +40,9 @@ class QuestDownloader @Inject constructor(
         val bbox = tiles.asBoundingBox(ApplicationConstants.QUEST_TILE_ZOOM)
 
         Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Starting")
-        Log.i(TAG, "Quest types to download: ${questTypes.joinToString { it.javaClass.simpleName }}")
 
         try {
-            downloadQuestTypes(tiles, bbox, questTypes, cancelState)
+            downloadQuestTypes(tiles, bbox, cancelState)
             progressListener?.onSuccess()
         } finally {
             progressListener?.onFinished()
@@ -55,72 +50,41 @@ class QuestDownloader @Inject constructor(
         }
     }
 
-    private fun downloadQuestTypes(
-        tiles: TilesRect,
-        bbox: BoundingBox,
-        questTypes: MutableList<QuestType<*>>,
-        cancelState: AtomicBoolean)
-    {
-        // always first download notes, because note positions are blockers for creating other
-        // osm quests
-        val noteQuestType = getOsmNoteQuestType()
-        if (questTypes.remove(noteQuestType)) {
-            downloadNotes(bbox, tiles)
-        }
+    private fun downloadQuestTypes(tiles: TilesRect, bbox: BoundingBox, cancelState: AtomicBoolean) {
+        val downloadItem = DownloadItem(R.drawable.ic_search_black_128dp, "Multi download")
+        progressListener?.onStarted(downloadItem)
 
-        if (questTypes.isEmpty()) return
+        // always first download notes, note positions are blockers for creating other quests
+        downloadNotes(bbox)
         if (cancelState.get()) return
+        downloadOsmMapDataQuestTypes(bbox)
+        downloadedTilesDao.put(tiles, DownloadedTilesType.QUESTS)
 
-        // download multiple quests at once
-        val downloadedQuestTypes = downloadOsmMapDataQuestTypes(bbox, tiles)
-        questTypes.removeAll(downloadedQuestTypes)
+        progressListener?.onFinished(downloadItem)
     }
 
-    private fun getOsmNoteQuestType() =
-        questTypeRegistry.getByName(OsmNoteQuestType::class.java.simpleName)!!
-
-
-    private fun getQuestTypesToDownload(tiles: TilesRect): List<QuestType<*>> {
-        val result = questTypesProvider.get().toMutableList()
+    private fun hasQuestsAlready(tiles: TilesRect): Boolean {
         val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
-        val alreadyDownloadedNames = downloadedTilesDao.get(tiles, ignoreOlderThan)
-        if (alreadyDownloadedNames.isNotEmpty()) {
-            val alreadyDownloaded = alreadyDownloadedNames.map { questTypeRegistry.getByName(it) }
-            result.removeAll(alreadyDownloaded)
-            Log.i(TAG, "Quest types already in local store: ${alreadyDownloadedNames.joinToString()}")
-        }
-        return result
+        return downloadedTilesDao.get(tiles, ignoreOlderThan).contains(DownloadedTilesType.QUESTS)
     }
 
-    private fun downloadNotes(bbox: BoundingBox, tiles: TilesRect) {
+    private fun downloadNotes(bbox: BoundingBox) {
         val notesDownload = osmNotesDownloaderProvider.get()
         val userId: Long = userStore.userId.takeIf { it != -1L } ?: return
         // do not download notes if not logged in because notes shall only be downloaded if logged in
-        val noteQuestType = getOsmNoteQuestType()
-        progressListener?.onStarted(noteQuestType.toDownloadItem())
+
         val maxNotes = 10000
         notesDownload.download(bbox, userId, maxNotes)
-        downloadedTilesDao.put(tiles, OsmNoteQuestType::class.java.simpleName)
-        progressListener?.onFinished(noteQuestType.toDownloadItem())
     }
 
 
-    private fun downloadOsmMapDataQuestTypes(bbox: BoundingBox, tiles: TilesRect): List<OsmElementQuestType<*>> {
-        val downloadItem = DownloadItem(R.drawable.ic_search_black_128dp, "Multi download")
-        progressListener?.onStarted(downloadItem)
-        // Since we query all the data at once, we can also do the downloading for quests not on our list.
+    private fun downloadOsmMapDataQuestTypes(bbox: BoundingBox) {
         val questTypes = questTypesProvider.get().filterIsInstance<OsmMapDataQuestType<*>>()
-        val questDownload = osmApiQuestDownloaderProvider.get()
-        questDownload.download(questTypes, bbox)
-        downloadedTilesDao.putAll(tiles, questTypes.map { it.javaClass.simpleName })
-        progressListener?.onFinished(downloadItem)
-        return questTypes
+        osmApiQuestDownloaderProvider.get().download(questTypes, bbox)
     }
 
     companion object {
         private const val TAG = "QuestDownload"
     }
 }
-
-private fun QuestType<*>.toDownloadItem(): DownloadItem = DownloadItem(icon, javaClass.simpleName)

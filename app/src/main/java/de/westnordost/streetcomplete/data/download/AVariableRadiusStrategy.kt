@@ -4,9 +4,9 @@ import android.util.Log
 
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.util.*
 import kotlin.math.PI
@@ -17,8 +17,7 @@ import kotlin.math.sqrt
 /** Quest auto download strategy decides how big of an area to download based on the quest density */
 abstract class AVariableRadiusStrategy(
     private val visibleQuestsSource: VisibleQuestsSource,
-    private val downloadedTilesDao: DownloadedTilesDao,
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider
+    private val downloadedTilesDao: DownloadedTilesDao
 ) : QuestAutoDownloadStrategy {
 
     protected abstract val maxDownloadAreaInKm2: Double
@@ -64,13 +63,7 @@ abstract class AVariableRadiusStrategy(
     private fun hasMissingQuestsFor(tilesRect: TilesRect): Boolean {
         val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
-        val questTypeNames = questTypesProvider.get().map { it.javaClass.simpleName }
-        val alreadyDownloaded = downloadedTilesDao.get(tilesRect, ignoreOlderThan).toSet()
-        val notAlreadyDownloaded = mutableListOf<String>()
-        for (questTypeName in questTypeNames) {
-            if (!alreadyDownloaded.contains(questTypeName)) notAlreadyDownloaded.add(questTypeName)
-        }
-        return notAlreadyDownloaded.isNotEmpty()
+        return !downloadedTilesDao.get(tilesRect, ignoreOlderThan).contains(DownloadedTilesType.QUESTS)
     }
 
     companion object {

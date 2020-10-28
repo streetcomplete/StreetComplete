@@ -78,11 +78,5 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
         assertTrue(check.isEmpty())
     }
 
-    @Test fun putMultipleQuestTypes() {
-        val rect = r(0, 0, 5, 5)
-        dao.putAll(rect, listOf("Huhu", "Haha"))
-        assertTrue(dao.get(rect, 0).containsExactlyInAnyOrder(listOf("Huhu", "Haha")))
-    }
-
     private fun r(left: Int, top: Int, right: Int, bottom: Int) = TilesRect(left, top, right, bottom)
 }
