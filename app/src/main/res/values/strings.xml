@@ -162,7 +162,7 @@
     <string name="quest_sport_ice_hockey">"Ice hockey"</string>
     <string name="quest_sport_netball">"Netball"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
-    <string name="pref_title_sync">"Auto-sync"</string>
+    <string name="pref_title_sync2">"Upload answers automatically"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>
     <string name="map_btn_zoom_in">"Zoom in"</string>
     <string name="map_btn_menu">"Menu"</string>
