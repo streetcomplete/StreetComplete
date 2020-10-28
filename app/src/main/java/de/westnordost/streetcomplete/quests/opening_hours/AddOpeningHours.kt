@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
@@ -15,7 +15,7 @@ import java.util.concurrent.FutureTask
 
 class AddOpeningHours (
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmMapDataQuestType<OpeningHoursAnswer> {
+) : OsmElementQuestType<OpeningHoursAnswer> {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */

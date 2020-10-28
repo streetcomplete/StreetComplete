@@ -5,9 +5,9 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 
-class AddMaxHeight : OsmMapDataQuestType<MaxHeightAnswer> {
+class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     private val nodeFilter by lazy { """
         nodes with

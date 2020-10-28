@@ -56,8 +56,11 @@ class QuestDownloader @Inject constructor(
 
         // always first download notes, note positions are blockers for creating other quests
         downloadNotes(bbox)
+
         if (cancelState.get()) return
-        downloadOsmMapDataQuestTypes(bbox)
+
+        downloadOsmElementQuestTypes(bbox)
+
         downloadedTilesDao.put(tiles, DownloadedTilesType.QUESTS)
 
         progressListener?.onFinished(downloadItem)
@@ -78,9 +81,8 @@ class QuestDownloader @Inject constructor(
         notesDownload.download(bbox, userId, maxNotes)
     }
 
-
-    private fun downloadOsmMapDataQuestTypes(bbox: BoundingBox) {
-        val questTypes = questTypesProvider.get().filterIsInstance<OsmMapDataQuestType<*>>()
+    private fun downloadOsmElementQuestTypes(bbox: BoundingBox) {
+        val questTypes = questTypesProvider.get().filterIsInstance<OsmElementQuestType<*>>()
         osmApiQuestDownloaderProvider.get().download(questTypes, bbox)
     }
 

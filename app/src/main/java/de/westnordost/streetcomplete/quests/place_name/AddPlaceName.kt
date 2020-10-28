@@ -6,12 +6,12 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmMapDataQuestType<PlaceNameAnswer> {
+) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""
         nodes, ways, relations with 

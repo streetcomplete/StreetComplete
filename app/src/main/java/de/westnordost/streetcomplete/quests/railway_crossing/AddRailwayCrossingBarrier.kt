@@ -6,9 +6,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 
-class AddRailwayCrossingBarrier : OsmMapDataQuestType<String> {
+class AddRailwayCrossingBarrier : OsmElementQuestType<String> {
 
     private val crossingFilter by lazy { """
         nodes with 

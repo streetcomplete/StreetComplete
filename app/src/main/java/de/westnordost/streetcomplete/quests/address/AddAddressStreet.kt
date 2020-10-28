@@ -9,14 +9,14 @@ import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionEntry
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.quests.road_name.data.toRoadNameByLanguage
 
 class AddAddressStreet(
         private val roadNameSuggestionsDao: RoadNameSuggestionsDao
-) : OsmMapDataQuestType<AddressStreetAnswer> {
+) : OsmElementQuestType<AddressStreetAnswer> {
 
     private val filter by lazy { """
         nodes, ways, relations with

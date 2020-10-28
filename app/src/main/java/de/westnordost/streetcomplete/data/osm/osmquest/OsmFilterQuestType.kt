@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.util.MultiIterable
 
 /** Quest type that's based on a simple element filter expression */
-abstract class OsmFilterQuestType<T> : OsmMapDataQuestType<T> {
+abstract class OsmFilterQuestType<T> : OsmElementQuestType<T> {
 
     val filter by lazy { elementFilter.toElementFilterExpression() }
 
@@ -21,7 +21,6 @@ abstract class OsmFilterQuestType<T> : OsmMapDataQuestType<T> {
         if (filter.includesElementType(Element.Type.WAY)) iterable.add(mapData.ways)
         if (filter.includesElementType(Element.Type.RELATION)) iterable.add(mapData.relations)
         return iterable.filter { element -> filter.matches(element) }
-
     }
 
     override fun isApplicableTo(element: Element) = filter.matches(element)

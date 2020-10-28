@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
@@ -18,7 +18,7 @@ import kotlin.math.hypot
 class AddSuspectedOneway(
     private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
     private val db: WayTrafficFlowDao
-) : OsmMapDataQuestType<SuspectedOnewayAnswer> {
+) : OsmElementQuestType<SuspectedOnewayAnswer> {
 
     private val filter by lazy { """
         ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road

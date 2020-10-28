@@ -42,7 +42,7 @@ class OsmApiQuestDownloader @Inject constructor(
     private val elementEligibleForOsmQuestChecker: ElementEligibleForOsmQuestChecker
 ) : CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
-    fun download(questTypes: List<OsmMapDataQuestType<*>>, bbox: BoundingBox) {
+    fun download(questTypes: List<OsmElementQuestType<*>>, bbox: BoundingBox) {
         if (questTypes.isEmpty()) return
 
         var time = System.currentTimeMillis()

@@ -6,10 +6,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 
-class AddForestLeafType : OsmMapDataQuestType<String> {
+class AddForestLeafType : OsmElementQuestType<String> {
     private val areaFilter by lazy { """
         ways, relations with landuse = forest or natural = wood and !leaf_type
     """.toElementFilterExpression()}

@@ -7,10 +7,10 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.util.isNear
 
-class AddSidewalk : OsmMapDataQuestType<SidewalkAnswer> {
+class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
 
     /* the filter additionally filters out ways that are unlikely to have sidewalks:
      * unpaved roads, roads with very low speed limits and roads that are probably not developed

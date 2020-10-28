@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.upload.changesets
 
 import android.content.SharedPreferences
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -75,6 +76,7 @@ class OpenQuestChangesetsManagerTest {
 
 private class TestQuestType : OsmElementQuestType<String> {
 
+    override fun getApplicableElements(mapData: MapDataWithGeometry) = emptyList<Element>()
     override fun getTitle(tags: Map<String, String>) = 0
     override fun isApplicableTo(element: Element):Boolean? = null
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {}

@@ -83,7 +83,7 @@ class OsmApiQuestDownloaderTest {
     }
 }
 
-private class TestMapDataQuestType(private val list: List<Element>) : OsmMapDataQuestType<String> {
+private class TestMapDataQuestType(private val list: List<Element>) : OsmElementQuestType<String> {
 
     override var enabledInCountries: Countries = AllCountries
 

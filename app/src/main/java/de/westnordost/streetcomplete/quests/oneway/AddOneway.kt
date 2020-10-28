@@ -9,11 +9,11 @@ import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.bikeway.createCyclewaySides
 import de.westnordost.streetcomplete.quests.bikeway.estimatedWidth
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
 import de.westnordost.streetcomplete.quests.parking_lanes.*
 
-class AddOneway : OsmMapDataQuestType<OnewayAnswer> {
+class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     /** find all roads */
     private val allRoadsFilter by lazy { """

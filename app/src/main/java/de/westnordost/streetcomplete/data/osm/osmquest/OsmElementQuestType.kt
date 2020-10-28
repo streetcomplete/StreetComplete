@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.osmquest
 
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.AllCountries
@@ -35,6 +36,9 @@ interface OsmElementQuestType<T> : QuestType<T> {
     fun getTitle(tags: Map<String, String>): Int
 
     override val title: Int get() = getTitle(emptyMap())
+
+    /** return all elements within the given map data that are applicable to this quest type. */
+    fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element>
 
     /** returns whether a quest of this quest type could be created out of the given [element]. If the
      * element alone does not suffice to find this out (but f.e. is determined by the data around

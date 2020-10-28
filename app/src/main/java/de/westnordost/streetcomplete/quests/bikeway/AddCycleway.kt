@@ -13,13 +13,13 @@ import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmMapDataQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 import de.westnordost.streetcomplete.util.isNear
 
-class AddCycleway : OsmMapDataQuestType<CyclewayAnswer> {
+class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"
