@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.util.TilesRect
 
 import javax.inject.Inject
 
-/** Keeps info in which areas things have been downloaded already in a tile grid of zoom level 14 */
+/** Keeps info in which areas things have been downloaded already in a tile grid */
 class DownloadedTilesDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
 
     private val db get() = dbHelper.writableDatabase

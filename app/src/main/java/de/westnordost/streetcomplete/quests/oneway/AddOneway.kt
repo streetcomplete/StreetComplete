@@ -47,7 +47,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
                 connectionCountByNodeIds[nodeId] = prevCount + 1
             }
             if (elementFilter.matches(road)) {
-                // check if the width of the road minus the space consumed by parking lanes is quite narrow
+                // check if the width of the road minus the space consumed by other stuff is quite narrow
                 val width = road.tags["width"]?.toFloatOrNull()
                 val isNarrow = width != null && width <= estimatedWidthConsumedByOtherThings(road.tags) + 4f
                 if (isNarrow) {
