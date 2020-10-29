@@ -586,7 +586,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_houseboat">Houseboat</string>
     <string name="quest_buildingType_bungalow">Bungalow</string>
     <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin …)</string>
-    <string name="quest_buildingType_static_caravan">Static caravan</string>
+    <string name="quest_buildingType_static_caravan">Mobile home</string>
 
     <string name="quest_buildingType_commercial">Commercial building</string>
     <string name="quest_buildingType_commercial_generic_description">building where people work, shop or do any other commercial activities</string>
