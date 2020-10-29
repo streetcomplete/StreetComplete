@@ -38,10 +38,11 @@ abstract class AVariableRadiusStrategy(
 
         // otherwise, see if anything is missing in a variable radius, based on quest density
         val density = getQuestDensityFor(thisTile.asBoundingBox(tileZoom))
-        val radius = min(
-            sqrt( desiredQuestCountInVicinity / ( PI * density )),
-            sqrt( maxDownloadAreaInKm2 * 1000 * 1000 / PI )
-        )
+        val maxRadius = sqrt( maxDownloadAreaInKm2 * 1000 * 1000 / PI )
+
+        var radius = if (density > 0) sqrt( desiredQuestCountInVicinity / ( PI * density )) else maxRadius
+
+        radius = min( radius, maxRadius)
 
         val activeBoundingBox = pos.enclosingBoundingBox(radius)
         if (hasMissingQuestsFor(activeBoundingBox.enclosingTilesRect(tileZoom))) {
