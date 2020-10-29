@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
 import androidx.annotation.CallSuper
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.core.view.updateLayoutParams
@@ -98,13 +99,24 @@ open class MapFragment : Fragment(),
         mapView = view.findViewById(R.id.map)
         mapView.onCreate(savedInstanceState)
 
-        openstreetmapLink.setOnClickListener { openUrl("https://www.openstreetmap.org/copyright") }
+        openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }
         mapTileProviderLink.text = vectorTileProvider.copyrightText
-        mapTileProviderLink.setOnClickListener { openUrl(vectorTileProvider.copyrightLink) }
+        mapTileProviderLink.setOnClickListener { showOpenUrlDialog(vectorTileProvider.copyrightLink) }
 
         setupFittingToSystemWindowInsets()
 
         launch { initMap() }
+    }
+
+    private fun showOpenUrlDialog(url: String) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.open_url)
+            .setMessage(url)
+            .setPositiveButton(android.R.string.ok) { _,_ ->
+                openUrl(url)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     private fun openUrl(url: String): Boolean {
