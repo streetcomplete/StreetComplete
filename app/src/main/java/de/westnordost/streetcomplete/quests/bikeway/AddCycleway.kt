@@ -75,21 +75,20 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
          * should be excluded whose center is within of ~15 meters of a cycleway, to be on the safe
          * side. */
 
-        val roadsWithMissingCycleway = eligibleRoads.filter { untaggedRoadsFilter.matches(it) }
+        val roadsWithMissingCycleway = eligibleRoads.filter { untaggedRoadsFilter.matches(it) }.toMutableList()
 
-        val maybeSeparatelyMappedCyclewayGeometries = mapData.ways
-            .filter { maybeSeparatelyMappedCyclewaysFilter.matches(it) }
-            .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry }
+        if (roadsWithMissingCycleway.isNotEmpty()) {
 
-        val minDistToWays = 15.0 //m
+            val maybeSeparatelyMappedCyclewayGeometries = mapData.ways
+                .filter { maybeSeparatelyMappedCyclewaysFilter.matches(it) }
+                .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry }
 
-        // filter out roads with missing sidewalks that are near footways
-        val roadsWithMissingCyclewayNotNearSeparateCycleways = roadsWithMissingCycleway.filter { road ->
-            val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
-            if (roadGeometry != null) {
-                !roadGeometry.isNear(minDistToWays, maybeSeparatelyMappedCyclewayGeometries)
-            } else {
-                false
+            val minDistToWays = 15.0 //m
+
+            // filter out roads with missing sidewalks that are near footways
+            roadsWithMissingCycleway.removeAll { road ->
+                val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
+                roadGeometry?.isNear(minDistToWays, maybeSeparatelyMappedCyclewayGeometries) ?: true
             }
         }
 
@@ -100,7 +99,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             OLDER_THAN_4_YEARS.matches(it) && it.hasOnlyKnownCyclewayTags()
         }
 
-        return roadsWithMissingCyclewayNotNearSeparateCycleways + oldRoadsWithKnownCycleways
+        return roadsWithMissingCycleway + oldRoadsWithKnownCycleways
     }
 
 
