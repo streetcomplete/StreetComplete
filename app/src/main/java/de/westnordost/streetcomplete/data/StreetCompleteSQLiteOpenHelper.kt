@@ -24,12 +24,11 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
 import de.westnordost.streetcomplete.ktx.hasColumn
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable
-import de.westnordost.streetcomplete.quests.oneway.AddOneway
-import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable
+import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
 
 @Singleton class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {
@@ -152,7 +151,7 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         // all oneway quest data was invalidated on version 11
         if (oldVersion < 11 && newVersion >= 11) {
             val where = OsmQuestTable.Columns.QUEST_TYPE + " = ?"
-            val args = arrayOf(AddOneway::class.java.simpleName)
+            val args = arrayOf(AddSuspectedOneway::class.java.simpleName)
             db.delete(OsmQuestTable.NAME, where, args)
             db.delete(UndoOsmQuestTable.NAME, where, args)
             db.delete(WayTrafficFlowTable.NAME, null, null)

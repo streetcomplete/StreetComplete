@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
@@ -60,6 +61,6 @@ class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryApi, r: ResurveyInter
     override fun createForm() = TactilePavingForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("tactile_paving", if (answer) "yes" else "no")
+        changes.updateWithCheckDate("tactile_paving", answer.toYesNo())
     }
 }

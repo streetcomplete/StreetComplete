@@ -45,6 +45,8 @@ class OsmUnreadMessagesFragment : DialogFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // hide first, to avoid flashing
+        mailContainer.alpha = 0.0f
         dialogContainer.setOnClickListener { dismiss() }
         readMailButton.setOnClickListener {
             openUrl("https://www.openstreetmap.org/messages/inbox")

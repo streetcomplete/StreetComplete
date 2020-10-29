@@ -1,7 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Bank of Bhutan, BOB, Bhutan National Bank, Tashi Bank, Druk PNB, Bank Of Bhutan, BOBL, BNB, BDBL]
 isLeftHandTraffic: true
 mobileCountryCode: 402
 officialLanguages: [dz]
-orchardProduces: [orange, chilli_pepper, sweet_pepper, areca_nut, apple, banana, nutmeg, guava, mango,
-  mangosteen, pear, peach, plum, tomato, walnut]
+orchardProduces: [orange, chilli_pepper, sweet_pepper, areca_nut, apple, banana, nutmeg, guava, mango, mangosteen, pear,
+   peach, plum, tomato, walnut]
 popularReligions: [buddhist, hindu]

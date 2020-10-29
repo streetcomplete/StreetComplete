@@ -1,7 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, Demir bank, РСК, DemirBank, DEMiR Bank, Халык Банк, РСК банк,
+   КБ Кыргызстан, Айыл Банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Коммерческий банк Кыргызстан, Демир
+      банк, Демир Банк]
 isLivingStreetKnown: true
 mobileCountryCode: 437
 officialLanguages: [ky, ru]
-orchardProduces: [tomato, apple, apricot, plum, pear, peach, grape, walnut, cherry, hazelnut, raspberry,
-  strawberry, almond, chilli_pepper, sweet_pepper, pistachio]
+orchardProduces: [tomato, apple, apricot, plum, pear, peach, grape, walnut, cherry, hazelnut, raspberry, strawberry, almond,
+   chilli_pepper, sweet_pepper, pistachio]
 popularReligions: [muslim]

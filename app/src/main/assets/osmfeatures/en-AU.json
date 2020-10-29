@@ -1,121 +1,121 @@
 {
-    "presets": {
-        "tourism/caravan_site": {
-            "name": "Caravan Site"
-        },
-        "amenity/pharmacy": {
-            "name": "Pharmacy"
-        },
-        "highway/footway/marked": {
-            "name": "Marked Crossing"
-        },
-        "highway/crossing/marked": {
-            "name": "Marked Crossing"
-        },
-        "leisure/fitness_centre": {
-            "name": "Gym / Fitness Centre"
-        },
-        "amenity/fuel": {
-            "name": "Service Station"
-        },
-        "highway/footway/zebra": {
-            "name": "Marked Zebra Crossing"
-        },
-        "shop/cheese": {
-            "name": "Cheese Shop",
-            "terms": "Cheesemonger"
-        },
-        "amenity/community_centre": {
-            "name": "Community Centre"
-        },
-        "amenity/dive_centre": {
-            "name": "Dive Centre"
-        },
-        "shop/chocolate": {
-            "name": "Chocolate Shop",
-            "terms": "Chocolatier"
-        },
-        "amenity/recycling_centre": {
-            "name": "Recycling Centre"
-        },
-        "shop/tyres": {
-            "name": "Tyre Shop"
-        },
-        "healthcare/birthing_center": {
-            "name": "Birthing Centre"
-        },
-        "barrier/kerb/flush": {
-            "name": "Flush Kerb"
-        },
-        "highway/footway/sidewalk": {
-            "name": "Footpath (sidewalk)"
-        },
-        "telecom/data_center": {
-            "name": "Data Centre"
-        },
-        "amenity/community_centre/lgbtq": {
-            "name": "LGBTQ+ Community Centre"
-        },
-        "highway/give_way": {
-            "name": "Give Way Sign"
-        },
-        "leisure/sports_centre": {
-            "name": "Sports Centre / Complex"
-        },
-        "shop/chemist": {
-            "name": "Pharmacy",
-            "terms": "Chemist"
-        },
-        "highway/crossing/zebra": {
-            "name": "Marked Crossing"
-        },
-        "highway/cycleway/bicycle_foot": {
-            "name": "Shared Path"
-        },
-        "highway/crossing/marked-raised": {
-            "name": "Marked Crossing (Raised)"
-        },
-        "barrier/kerb/lowered": {
-            "name": "Lowered Kerb"
-        },
-        "highway/living_street": {
-            "name": "Shared Zone Road"
-        },
-        "highway/crossing/zebra-raised": {
-            "name": "Marked Crossing (Raised)"
-        },
-        "highway/footway/zebra-raised": {
-            "name": "Marked Zebra Crossing (Raised)"
-        },
-        "leisure/adult_gaming_centre": {
-            "name": "Adult Gaming Centre"
-        },
-        "highway/footway/marked-raised": {
-            "name": "Marked Crossing (Raised)"
-        },
-        "amenity/social_centre": {
-            "name": "Social Centre"
-        },
-        "amenity/vending_machine/fuel": {
-            "name": "Fuel Pump"
-        },
-        "amenity/conference_centre": {
-            "name": "Convention Centre"
-        },
-        "barrier/kerb": {
-            "name": "Kerb"
-        },
-        "amenity/arts_centre": {
-            "name": "Arts Centre"
-        },
-        "healthcare/blood_donation": {
-            "name": "Blood Donor Centre"
-        },
-        "amenity/payment_centre": {
-            "name": "Payment Centre"
-        },
-        "shop/garden_centre": {
-            "name": "Garden Centre"
-        }
+  "presets": {
+    "amenity/arts_centre": {
+      "name": "Arts Centre"
+    },
+    "amenity/community_centre": {
+      "name": "Community Centre"
+    },
+    "amenity/community_centre/lgbtq": {
+      "name": "LGBTQ+ Community Centre"
+    },
+    "amenity/conference_centre": {
+      "name": "Convention Centre"
+    },
+    "amenity/dive_centre": {
+      "name": "Dive Centre"
+    },
+    "amenity/fuel": {
+      "name": "Service Station"
+    },
+    "amenity/payment_centre": {
+      "name": "Payment Centre"
+    },
+    "amenity/pharmacy": {
+      "name": "Pharmacy"
+    },
+    "amenity/recycling_centre": {
+      "name": "Recycling Centre"
+    },
+    "amenity/social_centre": {
+      "name": "Social Centre"
+    },
+    "amenity/vending_machine/fuel": {
+      "name": "Fuel Pump"
+    },
+    "barrier/kerb": {
+      "name": "Kerb"
+    },
+    "barrier/kerb/flush": {
+      "name": "Flush Kerb"
+    },
+    "barrier/kerb/lowered": {
+      "name": "Lowered Kerb"
+    },
+    "healthcare/birthing_center": {
+      "name": "Birthing Centre"
+    },
+    "healthcare/blood_donation": {
+      "name": "Blood Donor Centre"
+    },
+    "highway/crossing/marked": {
+      "name": "Marked Crossing"
+    },
+    "highway/crossing/marked-raised": {
+      "name": "Marked Crossing (Raised)"
+    },
+    "highway/crossing/zebra": {
+      "name": "Marked Crossing"
+    },
+    "highway/crossing/zebra-raised": {
+      "name": "Marked Crossing (Raised)"
+    },
+    "highway/cycleway/bicycle_foot": {
+      "name": "Shared Path"
+    },
+    "highway/footway/marked": {
+      "name": "Marked Crossing"
+    },
+    "highway/footway/marked-raised": {
+      "name": "Marked Crossing (Raised)"
+    },
+    "highway/footway/sidewalk": {
+      "name": "Footpath (sidewalk)"
+    },
+    "highway/footway/zebra": {
+      "name": "Marked Zebra Crossing"
+    },
+    "highway/footway/zebra-raised": {
+      "name": "Marked Zebra Crossing (Raised)"
+    },
+    "highway/give_way": {
+      "name": "Give Way Sign"
+    },
+    "highway/living_street": {
+      "name": "Shared Zone Road"
+    },
+    "leisure/adult_gaming_centre": {
+      "name": "Adult Gaming Centre"
+    },
+    "leisure/fitness_centre": {
+      "name": "Gym / Fitness Centre"
+    },
+    "leisure/sports_centre": {
+      "name": "Sports Centre / Complex"
+    },
+    "shop/cheese": {
+      "name": "Cheese Shop",
+      "terms": "Cheesemonger"
+    },
+    "shop/chemist": {
+      "name": "Pharmacy",
+      "terms": "Chemist"
+    },
+    "shop/chocolate": {
+      "name": "Chocolate Shop",
+      "terms": "Chocolatier"
+    },
+    "shop/garden_centre": {
+      "name": "Garden Centre"
+    },
+    "shop/tyres": {
+      "name": "Tyre Shop"
+    },
+    "telecom/data_center": {
+      "name": "Data Centre"
+    },
+    "tourism/caravan_site": {
+      "name": "Caravan Site"
     }
+  }
 }

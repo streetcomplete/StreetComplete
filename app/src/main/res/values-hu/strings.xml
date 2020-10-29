@@ -681,7 +681,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="credits_contributors">"&lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;A teljes lista a GitHubon&lt;/a&gt; található."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"A teljes lista a &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor oldalán lévő projektnél&lt;/a&gt; található."</string>
+    <string name="credits_translations">"A teljes lista a &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor oldalán lévő projektnél&lt;/a&gt; található."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Fordítás"</string>
@@ -1359,9 +1359,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_bungalow">"Bungaló"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"önállóan álló, kis ház (nyári lak, hétvégi ház stb.)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Rögzített lakókocsi"</string>
 
     <!-- Fuzzy -->
@@ -1593,12 +1590,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_noteDiscussion_hide2">"Elrejtette %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Hogyan van biztosítva ez a vasúti átjáró?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Nincs biztosítva"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;A jegyzethez csatolt fényképek a mi szerverünkre kerülnek feltöltésre; metaadataikat a feltöltés előtt eltávolítjuk. A jegyzet megoldása után pár nappal a fényképek törlődnek.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1633,9 +1624,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Teljesen a föld alatt van ez az épület?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Van itt vakoknak szóló hangjelzés?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"A „részben” azt jelenti, hogy legfeljebb egy lépcsőfokkal el lehet érni."</string>
@@ -1789,9 +1777,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Mekkora itt a tömegkorlátozás?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Nincs jelzőtábla"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Ez a tömeg valószínűtlen. Biztosan helyes?"</string>
@@ -2302,7 +2287,7 @@ szintek"</string>
     <string name="quest_streetName_menuItem_international">"nemzetközi"</string>
     <string name="quest_streetName_menuItem_romanized">"latin betűkkel"</string>
     <string name="quest_buildingType_terrace2">"Sorház"</string>
-    <string name="quest_oneway_tutorial">"Az ábrán látható út ugyanúgy van elforgatva, mint a térképen a jelölő helyén. Vegye figyelembe a jelzett irányt. "</string>
+    <string name="quest_oneway_tutorial">"Az ábrán látható út ugyanúgy van elforgatva, mint a térképen a jelölő helyén. Vedd figyelembe a jelzett irányt. "</string>
     <string name="at_housename">"Ház neve %s:"</string>
     <string name="at_conscription_and_street_number">"Helyrajzi szám %1$s, házszám %2$s:"</string>
 
@@ -2312,7 +2297,7 @@ szintek"</string>
     <string name="quest_openingHours_name_type_title">"Mi a nyitvatartása ennek: %1$s (%2$s)?"</string>
     <string name="quest_openingHours_resurvey_name_title">"Még mindig helyes-e a nyitva tartási ideje ennek: %s?"</string>
     <string name="quest_openingHours_resurvey_name_type_title">"Még mindig helyes-e a nyitva tartási ideje ennek: %1$s (%2$s)?"</string>
-    <string name="quest_openingHours_resurvey_no_name_title">"Még mindig helyes-e a nyitva tartási idő %s)?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Még mindig helyes-e a nyitva tartási idő (%s)?"</string>
     <string name="quest_openingHours_add_off_days">"Szabadnapok hozzáadása"</string>
     <string name="quest_openingHours_off_day">"Szabadnap"</string>
     <string name="quest_openingHours_unspecified_range">"Nincs megadva"</string>
@@ -2330,7 +2315,8 @@ szintek"</string>
     <string name="quest_busStopBench_name_title">"Van-e pad a(z) %s buszmegállóban?"</string>
     <string name="quest_summit_register_title">"Van-e csúcsnapló itt: %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Van-e defibrillátor (AED) egy épületben?"</string>
-    <string name="dialog_tutorial_download">"Ha az automatikus szinkronizálás ki van kapcsolva, a kérdések nem töltődnek le automatikusan. Ha ezt kézzel szeretné megtenni, akkor használja a „%s” gombot a menüben, amikor azon a helyen jár, amelyet szeretne letölteni."</string>
-    <string name="about_title_translate">"Segítsen lefordítani ezt az alkalmazást"</string>
+    <string name="dialog_tutorial_download">"Ha az automatikus szinkronizálás ki van kapcsolva, a kérdések nem töltődnek le automatikusan. Ha ezt kézzel szeretnéd megtenni, akkor használd a „%s” gombot a menüben a térkép azon helyén, melyet le szeretnél tölteni."</string>
+    <string name="about_title_translate">"Segíts lefordítani ezt az alkalmazást"</string>
     <string name="about_description_translate">"%1$s le van fordítva %2$d%%"</string>
+    <string name="quest_traffic_signals_sound_title">"Van itt vakoknak szóló hangjelzés?"</string>
 </resources>

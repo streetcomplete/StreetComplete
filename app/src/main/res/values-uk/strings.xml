@@ -702,7 +702,7 @@
     <string name="credits_contributors">"Дивіться &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;повний список на GitHub&lt;/a&gt;. "</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Дивіться повний список &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;у проекті на POEditor&lt;/a&gt;. "</string>
+    <string name="credits_translations">"Дивіться повний список &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;у проекті на POEditor&lt;/a&gt;. "</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Перекладачі"</string>
@@ -1379,9 +1379,6 @@
     <string name="quest_buildingType_bungalow">"Бунгало"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"маленький окремий будинок (дача, котедж, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Житловий трейлер"</string>
 
     <!-- Fuzzy -->
@@ -1574,12 +1571,6 @@
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Як охороняється цей залізничний переїзд?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Ніяк"</string>
-
-    <!-- Fuzzy -->
     <string name="action_deselect_all">"Зняти вибір з усіх"</string>
 
     <!-- Fuzzy -->
@@ -1607,9 +1598,6 @@
     <string name="quest_building_underground_title">"Чи є ця будівля повністю під землею?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Чи є тут звукові сигнали для сліпих?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Якого типу ця будівля?"</string>
     <string name="pref_title_theme_select">"Оберіть тему"</string>
     <string name="theme_light">"Світла"</string>
@@ -1624,4 +1612,5 @@
     <string name="at_conscription_number">"Наскрізна нумерація %s:"</string>
     <string name="quest_openingHours_name_type_title">"Який робочий час для %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Чи доступний заклад %1$s (%2$s) для інвалідних візків?"</string>
+    <string name="quest_traffic_signals_sound_title">"Чи є тут звукові сигнали для сліпих?"</string>
 </resources>

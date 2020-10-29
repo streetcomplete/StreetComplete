@@ -701,7 +701,7 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="credits_contributors">"&lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;Pilnas sąrašas GitHub'e&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor projekte&lt;/a&gt; rasite pilną sąrašą."</string>
+    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor projekte&lt;/a&gt; rasite pilną sąrašą."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Vertimai"</string>
@@ -1390,9 +1390,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_buildingType_bungalow">"Vasarnamis"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"mažas atskiras namas (vasarnamis, atostogų namas, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Statinis karavanas"</string>
 
     <!-- Fuzzy -->
@@ -1624,12 +1621,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_noteDiscussion_hide2">"Paslėpė %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Kaip apsaugota ši geležinkelio pervaža?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Niekaip"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Nuotraukos, kurias pridedate prie pastabos, įkeliamos į mano serverį ir ištrinamos po kelių dienų, kai pastaba išsprendžiama. Įkėlimo metu ištrinami metaduomenys.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1664,9 +1655,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Ar šis pastatas pilnai po žeme?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Ar čia yra garso signalai akliesiems?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Dalinai reiškia, kad yra daugiau nei vienas laiptelis priėjimui."</string>
@@ -1814,9 +1802,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Koks čia yra svorio apribojimas?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Čia nėra ženklo"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Svoris atrodo neįmanomas. Ar tikrai jis teisingas?"</string>
@@ -2276,4 +2261,5 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="quest_openingHours_name_type_title">"Koks yra %1$s (%2$s) darbo laikas?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Ar %1$s (%2$s) prieinamas vežimėliu?"</string>
     <string name="quest_accepts_cash_type_title">"Ar %1$s (%2$s) priima mokėjimus grynais?"</string>
+    <string name="quest_traffic_signals_sound_title">"Ar čia yra garso signalai akliesiems?"</string>
 </resources>

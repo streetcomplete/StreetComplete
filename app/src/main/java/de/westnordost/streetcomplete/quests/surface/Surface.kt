@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.quests.surface.Surface.*
 
-enum class Surface(val item:Item<String>) {
+enum class Surface(val item: Item<String>) {
     ASPHALT       (Item("asphalt",        R.drawable.surface_asphalt,       R.string.quest_surface_value_asphalt)),
     CONCRETE      (Item("concrete",       R.drawable.surface_concrete,      R.string.quest_surface_value_concrete)),
     FINE_GRAVEL   (Item("fine_gravel",    R.drawable.surface_fine_gravel,   R.string.quest_surface_value_fine_gravel)),

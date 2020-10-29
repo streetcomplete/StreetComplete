@@ -1,6 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [CKB, NLB, Erste Bank, Hipotekarna banka, Atlas Banka, Universal Capital Bank, Societe Generale, Prva
+      Banka, ERSTE Bank, Addiko Bank]
 isSlowZoneKnown: true
 mobileCountryCode: 297
 officialLanguages: [sr, bs, sq, hr]
-orchardProduces: [grape, plum, pear, fig, tomato, chilli_pepper, sweet_pepper, orange, cherry, apple,
-  peach, walnut, raspberry, kiwi, olive, tea]
+orchardProduces: [grape, plum, pear, fig, tomato, chilli_pepper, sweet_pepper, orange, cherry, apple, peach, walnut, raspberry,
+   kiwi, olive, tea]

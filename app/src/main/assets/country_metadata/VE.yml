@@ -1,6 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banco Mercantil, Banco Mercantil (Solo Personal), Mercantil, Banco de Venezuela, Banco del Tesoro (Solo
+      Personal), Banco del Tesoro, Sofitasa, Provincial, Banco de Venezuela (Solo Personal), Banco Provincial,
+   Banesco, BOD, Occidental de Descuento, Bicentenario, Banco Mercantil (Slo Personal), Banco Exterior,
+   Banco Bicentenario del Pueblo, Banco Bicentenario, Bancaribe]
 mobileCountryCode: 734
 officialLanguages: [es]
-orchardProduces: [pineapple, banana, papaya, tomato, orange, guava, mango, mangosteen, coconut, avocado,
-  chilli_pepper, sweet_pepper, lemon, lime, peach, coffee, strawberry, cacao, grape]
+orchardProduces: [pineapple, banana, papaya, tomato, orange, guava, mango, mangosteen, coconut, avocado, chilli_pepper,
+   sweet_pepper, lemon, lime, peach, coffee, strawberry, cacao, grape]
 popularSports: [baseball]

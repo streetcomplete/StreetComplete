@@ -1,9 +1,17 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [international]
+atmOperators: [Alpha Bank, Εθνική Τράπεζα, Euronet, Eurobank, Τράπεζα Πειραιώς, Piraeus Bank, Πειραιώς, Εθνική Τράπεζα
+      της Ελλάδος, Euronet Worldwide, National Bank, Ελληνικά Ταχυδρομεία, Piraeus bank, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ,
+   Εθνική, National Bank of Greece, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, Bank of
+      Chania, ALPHA BANK, Attica Bank, Alpha bank, ATM, Τράπεζα Eurobank, ΕΘΝΙΚΗ ΤΡΑΠΕΖΑ, ΑΤΜ Τράπεζα
+      Πειραιώς, piraeus bank, alpha bank, Piräus Bank, Pireus Bank, Piraeusbank, Piraeus, NBG, EuroNet,
+   Ethniki Bank, Ethniki, EUROBANK, Cooperative Bank of Dodecanese, Citibank, Alphabank, Alpha, Alfa Bank]
+chargingStationOperators: [blink, Δήμος Αλίμου, Fortizo, Peugeot, Δήμος Λαμιέων, 'https://mythicalpeloponnese.gr']
+clothesContainerOperators: [Texcycle]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 202
 officialLanguages: [el]
-orchardProduces: [olive, grape, tomato, peach, apple, kiwi, orange, apricot, lemon, lime, pear, strawberry,
-  chestnut, walnut, almond, plum]
+orchardProduces: [olive, grape, tomato, peach, apple, kiwi, orange, apricot, lemon, lime, pear, strawberry, chestnut, walnut,
+   almond, plum]

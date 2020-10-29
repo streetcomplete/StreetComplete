@@ -1,7 +1,17 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Azərbaycan Beynəlxalq Bankı, Kapital Bank, YuniBank, Bank Standart, Texnikabank, Ata Bank, Bank Respublika,
+   Xalq Bank, Dəmirbank, Bankomat, Unibank, Azəriqazbank, Bank of Baku, RabitəBank, MuğanBank, Nikoyl
+      Bank, International Bank of Azerbaijan, AFB Bank, Royal Bank, Beynəlxalq Bank, Access Bank, Kredo
+      Bank, KapitalBank, Kapital bank, Azərbaycan Sənaye Bankı, Zaminbank, Yunayted Kredit Bank, Turan
+      Bank, Parabank, Kapital Bank ATM, Bank of Azerbaijan, Bank Avrasiya, Azerbaijan International Bank,
+   Atrabank, Əmrahbank, The International Bank of Azerbaijan, Pasha Bank, Express Bank, Artsakhbank, Капитал
+      банк, «Kapital Bank» ASC, expressbank, ZaminBank, Yapı Kredi Bank Azərbaycan, SilkWay Bank, SW Bank,
+   SILK WAY, Paşa Bank, Nikoil Bank, Nikoil, NBC Bank, MilliÖn, Melli İran Bank, Kapitalbank ATM, Expressbank,
+   Beynelxalq Bank ATM, Beynalxalq bank, Bank Standard, Bank Silk Vey, AzərTürkBank, Azerbaijan İnternational
+      Bank, AtaBank, ASB]
 isLivingStreetKnown: true
 mobileCountryCode: 400
 officialLanguages: [az]
-orchardProduces: [tomato, apple, persimmon, grape, chilli_pepper, sweet_pepper, pear, hazelnut, plum,
-  apricot, peach, cherry, raspberry, walnut, fig, lemon, lime]
+orchardProduces: [tomato, apple, persimmon, grape, chilli_pepper, sweet_pepper, pear, hazelnut, plum, apricot, peach, cherry,
+   raspberry, walnut, fig, lemon, lime]
 popularReligions: [muslim]

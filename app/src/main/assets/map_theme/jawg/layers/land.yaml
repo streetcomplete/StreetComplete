@@ -2,32 +2,16 @@ layers:
 
     boundaries:
         data: { source: jawg, layer: admin }
-        filter: { admin_level: 2, not: { maritime: 1 }}
+        filter: { admin_level: 2, not: { maritime: [true] }}
         draw:
             boundary_dashes:
                 order: 80
                 color: global.boundary_color
                 width: 1px
 
-    waterareas:
-        data: { source: jawg , layer: waterarea }
-        filter: { not: { tunnel: 1 }}
-        draw:
-            polygons:
-                order: 4
-                color: global.water_color
-
-        shore_lines:
-            filter: { $zoom: { min: 16 } }
-            draw:
-                lines-coast:
-                    order: 5
-                    width: [[16,20px],[18,10m]] # actually visually 1/3
-                    color: global.water_color
-
     water:
-        data: { source: jawg }
-        filter: { not: { tunnel: 1 }}
+        data: { source: jawg, layer: water }
+        filter: { not: { structure: tunnel }}
         draw:
             polygons:
                 order: 4
@@ -43,7 +27,7 @@ layers:
 
     waterways:
         data: { source: jawg, layer: waterway }
-        filter: { not: { tunnel: 1 }}
+        filter: { not: { structure: tunnel }}
         draw:
             lines:
                 order: 5
@@ -51,14 +35,14 @@ layers:
                 cap: square
 
         river_lines:
-            filter: { class: [river, canal, river_intermittent] }
+            filter: { class: [river, canal] }
             draw:
                 lines:
                     color: global.water_color
                     width: [[10, 1px], [17, 6px], [18, 12m]]
 
         stream_lines:
-            filter: { class: [stream, stream_intermittent, ditch, drain], $zoom: { min: 15 }}
+            filter: { class: [stream, ditch, drain], $zoom: { min: 15 }}
             draw:
                 lines:
                     color: global.water_color
@@ -80,7 +64,8 @@ layers:
                 extrude: true
 
     landuse:
-        data: { source: jawg }
+        data: { source: jawg, layer: landuse }
+        filter: { not: { class: national_park }}
         draw:
             polygons:
                 order: 1
@@ -107,24 +92,23 @@ layers:
                     color: global.forest_color
 
     barriers:
-        data: { source: jawg , layer: barrier_line }
+        data: { source: jawg, layer: structure }
         city_walls:
-            # jawg: doesn't work, city walls are transformed into fences
-            filter: { class: [city_wall, dam] }
+            filter: { type: [city_wall, dam, cliff] }
             draw:
                 buildings-outline-style:
                     order: 100
                     color: global.building_outline_color
                     width: [[12, 4px], [18, 8m]]
         walls:
-            filter: { class: [wall, retaining_wall, fence] }
+            filter: { class: fence, not: { type: city_wall }}
             draw:
                 buildings-outline-style:
                     order: 100
                     color: global.building_outline_color
                     width: [[15, 1px], [18, 2m]]
         hedge:
-            filter: { class: [hedge, hedge_bank] }
+            filter: { class: hedge }
             draw:
                 buildings-outline-style:
                     order: 100
@@ -170,6 +154,7 @@ styles:
     boundary_dashes:
         base: lines
         dash: [1, 2]
+        blend: translucent
     buildings-style:
         base: polygons
         blend: opaque

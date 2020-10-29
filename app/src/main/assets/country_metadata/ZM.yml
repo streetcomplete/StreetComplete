@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Zanaco, FNB, Ecobank, Absa Bank, Stanbic Bank, Stanbic, Barclay's]
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 645

@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometry
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddPathSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+    : SimpleOverpassQuestType<SurfaceAnswer>(o) {
 
     override val tagFilters = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
@@ -17,9 +17,15 @@ class AddPathSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
         and access !~ private|no
         and (!conveying or conveying = no) and (!indoor or indoor = no)
         and (
-          !surface
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -${r * 4} years
-          or surface older today -${r * 8} years
+            !surface
+            or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -${r * 4} years
+            or surface older today -${r * 8} years
+            or
+                (
+                surface ~ paved|unpaved
+                and !surface:note
+                and !note:surface
+                )
         )
     """
     /* ~paved ways are less likely to change the surface type */
@@ -39,7 +45,17 @@ class AddPathSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("surface", answer)
+    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is SpecificSurfaceAnswer -> {
+                changes.updateWithCheckDate("surface", answer.value)
+                changes.deleteIfExists("surface:note")
+            }
+            is GenericSurfaceAnswer -> {
+                changes.updateWithCheckDate("surface", answer.value)
+                changes.addOrModify("surface:note", answer.note)
+            }
+        }
+        changes.deleteIfExists("source:surface")
     }
 }

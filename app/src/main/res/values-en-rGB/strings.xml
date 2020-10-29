@@ -21,6 +21,8 @@
 
     <!-- Fuzzy -->
     <string name="pref_category_display">"Display"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_tilecache_size_summary">"%d MB"</string>
 
     <!-- Fuzzy -->
@@ -505,9 +507,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_toiletsFee_title">"Does this toilet require a fee?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
 
     <!-- Fuzzy -->
@@ -679,7 +678,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_contributors">"See the &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
+    <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Translations"</string>
@@ -1177,9 +1176,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_religion_for_wayside_shrine_title">"What religion is represented at this shrine?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_fee_title">"Does it cost a fee to park here?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"cycle lane (dashed markings)"</string>
 
     <!-- Fuzzy -->
@@ -1335,6 +1331,7 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_house_description">"single-family home"</string>
+    <string name="quest_buildingType_apartments_description">"house for multiple families, may have retail outlets on the ground floor"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"Apartment building"</string>
@@ -1367,6 +1364,7 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_commercial">"Commercial building"</string>
+    <string name="quest_buildingType_commercial_generic_description">"building where people work, shop or do any other commercial activities"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_industrial">"Industrial building"</string>
@@ -1401,6 +1399,7 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mosque"</string>
+    <string name="quest_buildingType_temple">"Temple building"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
@@ -1410,12 +1409,14 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_civic">"Civic building"</string>
+    <string name="quest_buildingType_civic_description">"public building usually housing an amenity"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_kindergarten">"Nursery school building"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_school">"School building"</string>
+    <string name="quest_buildingType_college">"College building"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hospital">"Hospital building"</string>
@@ -1539,9 +1540,6 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_noteDiscussion_hide2">"Hidden by %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"It's not"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1573,9 +1571,6 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Is this building completely underground?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Are there sound signals for the blind here?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Partially means that there is no more than a single step to access it."</string>
@@ -1702,9 +1697,6 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"There is no sign"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"Sign looks different…"</string>
 
     <!-- Fuzzy -->
@@ -1800,4 +1792,5 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="at_housenumber">"house number %s:"</string>
     <string name="quest_openingHours_name_type_title">"What are the opening hours of %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Is %1$s (%2$s) wheelchair accessible?"</string>
+    <string name="quest_traffic_signals_sound_title">"Are there sound signals for the blind here?"</string>
 </resources>

@@ -1,8 +1,22 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [BNI, BCA, BRI, Mandiri, Bank Mandiri, Bank BRI, BANK RAKYAT INDONESIA, BANK NASIONAL INDONESIA, BANK
+      MANDIRI, CIMB, DKI, Bank BNI, BANK CENTRAL ASIA, Bank BCA, Danamon, BANK TABUNGAN NEGARA, ATM BNI,
+   CIMB Niaga, mandiri, PT Bank Rakyat Indonesia, Bank Rakyat Indonesia, BANK BENGKULU, ATM BCA, Maybank,
+   Link, Bank Muamalat, BANK DANAMON, ATM BRI, PermataBank, Panin, Bank Negara Indonesia, ATM Mandiri,
+   Cimb Niaga, CIMB NIAGA, bri, bca, Permata Bank, NIAGA, Bank Jatim, Bank Bri, BJB, ATM bank, bank mandiri,
+   Sinarmas, Permata, PT Bank Central Asia, Mandiri Bank, HSBC, Danamon ATM, Commonwealth Bank, Bank NTT,
+   Bank Jabar Banten, Bank Danamon, Bank DKI, Bank Central Asia (BCA), Bank Central Asia, Bank BTN, BPD,
+   BANK Muamalat, BANK MUAMALAT, BANK BRI, ATM Center, ATM Bank BRI, ATM, tuntung, taripa, ds labean,
+   desa talaga, desa saojo, desa samalili, desa oti, desa lembah mukti, desa bou, buntongi, bank BRI,
+   bank BNI, PT Bank Negara Indonesia, OCBC, Muamalat, May bank, DBS, Bersama, Bank Sumsel Babel, Bank
+      Panin, Bank Negara Indonesia 46, Bank Nagari, Bank NTB, Bank Kalsel KCPS Kedai Syariah Pelaihari,
+   Bank CIMB Niaga, Bank BPD DIY, Bank BDP Bali, BTN, BRI Bank, BRI & BNI, BNI46, BNI 46, BANK SYARIAH
+      MANDIRI, BANK INTERNASIONAL INDONESIA, ATM CIMB NIAGA, ATM Bank Mandiri, ATM Bank BCA, ATM BNI Batui,
+   ATM BNI 46]
 isLeftHandTraffic: true
 mobileCountryCode: 510
 officialLanguages: [id, ms, jv, su, mad, min]
-orchardProduces: [coconut, banana, rubber, guava, mango, mangosteen, orange, chilli_pepper, sweet_pepper,
-  pineapple, tomato, papaya, cacao, coffee, avocado, tea, areca_nut, cashew_nut]
+orchardProduces: [coconut, banana, rubber, guava, mango, mangosteen, orange, chilli_pepper, sweet_pepper, pineapple, tomato,
+   papaya, cacao, coffee, avocado, tea, areca_nut, cashew_nut]
 popularReligions: [muslim, christian, hindu, buddhist, chinese_folk]
 popularSports: [soccer, tennis, basketball, volleyball, badminton]

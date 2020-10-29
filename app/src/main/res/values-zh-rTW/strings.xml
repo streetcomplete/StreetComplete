@@ -695,7 +695,7 @@
     <string name="credits_contributors">"&lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;在GitHub上瀏覽完整列表&lt;/a&gt;。"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor 專案&lt;/a&gt;上瀏覽完整列表。"</string>
+    <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 專案&lt;/a&gt;上瀏覽完整列表。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"翻譯"</string>
@@ -1382,9 +1382,6 @@
     <string name="quest_buildingType_bungalow">"平房"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"小型附屬房屋（夏日房屋、渡假小屋，...）"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"靜態大篷車"</string>
 
     <!-- Fuzzy -->
@@ -1616,12 +1613,6 @@
     <string name="quest_noteDiscussion_hide2">"由 %1$s、%2$s 隱藏"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"鐵路平交道的保護措施？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"沒有"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;你附加在註記的照片會上傳到我的伺服器，有一天會在註記解決之後刪除，meta-data 會在上傳前移除。&lt;/p&gt;
 "</string>
 
@@ -1657,9 +1648,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"這座建物完全在地面以下嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"這裡有引導視障人士用的輔助聲響信號嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"部分意味無法在一步動作下過去。"</string>
@@ -1805,9 +1793,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"這裡的承重有上限嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"這裡沒有指標"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"重量的數量看來怪怪的，你確定輸入正確數值嗎？"</string>
@@ -2083,4 +2068,5 @@
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 的營業時間是？"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) 是否輪椅通行無阻？"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) 接受現金支付嗎？"</string>
+    <string name="quest_traffic_signals_sound_title">"這裡有引導視障人士用的輔助聲響信號嗎？"</string>
 </resources>

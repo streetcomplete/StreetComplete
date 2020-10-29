@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.orchard_produce
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddOrchardProduceForm : AImageListQuestAnswerFragment<String, List<String>>() {
 

@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Kazkom, Amonat Bank, Амонатбонк, Eskhata Bank, Amonatbonk, терминали шот гузарони, амонатбонк, Эсхата,
+   Бонки Эсхата, Банкомат, Агроинвест бонк, KazKom, Amonatbank]
 mobileCountryCode: 436
 officialLanguages: [tg, ru]
-orchardProduces: [tomato, apple, grape, apricot, peach, lemon, lime, plum, almond, pepper, orange,
-  fig, hazelnut]
+orchardProduces: [tomato, apple, grape, apricot, peach, lemon, lime, plum, almond, pepper, orange, fig, hazelnut]
 popularReligions: [muslim]

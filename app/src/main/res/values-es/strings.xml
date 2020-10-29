@@ -702,7 +702,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="credits_contributors">"Puedes ver &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;la lista entera de colaboradores en GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Échale un vistazo &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;al proyecto en POEditor&lt;/a&gt; para ver la lista completa."</string>
+    <string name="credits_translations">"Échale un vistazo &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;al proyecto en POEditor&lt;/a&gt; para ver la lista completa."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traducciones"</string>
@@ -1390,9 +1390,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"pequeña casa unifamiliar (casa de verano, casa de vacaciones, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravana estática"</string>
 
     <!-- Fuzzy -->
@@ -1624,12 +1621,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_noteDiscussion_hide2">"Oculto por %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"¿Cómo está protegido este paso a nivel?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"No lo está"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Las fotos que adjuntes a una nota se suben a mi servidor y se borran en cuestión de días tras su resolución. No se incluye ningún metadato en las fotos subidas.&lt;p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1664,9 +1655,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"¿Este edificio está completamente bajo tierra?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"¿Tiene señales sonoras para personas con discapacidad visual?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que no hay más de un escalón para poder entrar."</string>
@@ -1824,9 +1812,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_maxweight_title">"¿Cuál es el límite de peso?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"No hay señal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Este peso parece inverosímil. ¿Estás seguro de que es correcto?"</string>
 
     <!-- Fuzzy -->
@@ -1858,6 +1843,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ningún número de referencia visible..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"La carretera de la ilustración está girada al igual que la localización de la chincheta en el mapa. "</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"¿Qué se puede depositar para reciclar aquí?"</string>
@@ -2367,4 +2353,36 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="dialog_tutorial_download">"Con la sincronización automática desactivada, las misiones no se descargan automáticamente. Para hacer esto manualmente, use el botón \"%s\" del menú en la ubicación en la que desea realizar la descarga."</string>
     <string name="about_title_translate">"Ayuda a traducir esta app"</string>
     <string name="about_description_translate">"%1$s tiene traducido el  %2$d%%"</string>
+    <string name="quest_oneway2_title">"¿Es esta una calle de un solo sentido? ¿En qué dirección?"</string>
+    <string name="quest_oneway2_dir">"Dirección única en esta dirección"</string>
+    <string name="quest_oneway2_no_oneway">"No es de una sola dirección"</string>
+    <string name="quest_maxweight_select_sign">"Seleccionar señal"</string>
+    <string name="quest_steps_incline_title">"¿En qué dirección conducen estas escaleras hacia arriba?"</string>
+    <string name="quest_steps_incline_up">"Sube en esta dirección"</string>
+    <string name="quest_step_count_title">"¿Cuántos escalones hay?"</string>
+    <string name="quest_traffic_signals_sound_title">"¿Tiene señales sonoras para personas con discapacidad visual?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"¿Tienen estos semáforos una indicación táctil para personas ciegas de cuándo es seguro cruzar?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Sugerencia: a menudo, se trata de un botón que vibra o un cono giratorio en la parte inferior de la caja del botón del semáforo."</string>
+    <string name="quest_busStopRef_title">"¿Cuál es el número de referencia de esta parada de autobús?"</string>
+    <string name="quest_tramStopRef_title">"¿Cuál es el número de referencia de esta parada de tranvía?"</string>
+    <string name="quest_buildingType_bungalow_description2">"pequeña casa unifamiliar (casa de verano, casa de vacaciones, cabaña ...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"¿Qué barreras se utilizan en este cruce ferroviario?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Sin barreras"</string>
+    <string name="quest_steps_ramp_title">"¿Estas escaleras tienen rampa? ¿De qué tipo?"</string>
+    <string name="quest_steps_ramp_none">"Sin rampa (utilizable)"</string>
+    <string name="quest_steps_ramp_bicycle">"Rampa para bicicletas"</string>
+    <string name="quest_steps_ramp_stroller">"Rampa para cochecito"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rampa para silla de ruedas"</string>
+    <string name="quest_atm_operator_title">"¿Cuál es el nombre del banco de este cajero automático?"</string>
+    <string name="quest_clothes_container_operator_title">"¿Quién acepta donaciones para este contenedor de ropa?"</string>
+    <string name="quest_charging_station_operator_title">"¿Quién es el operador de esta estación de carga?"</string>
+    <string name="link_indoorequal_description">"Descubra mapas interiores de centros comerciales, estaciones de tren, etc."</string>
+    <string name="link_thenandnow_description">"¿Tiene curiosidad por saber el progreso logramos a lo largo de los años? ¡Compare con el aspecto del mapa hace más de 10 años!"</string>
+    <string name="achievement_rare_title">"Búsqueda del tesoro"</string>
+    <string name="achievement_rare_solved_X">"Encontraste y resolviste %d misiones que rara vez se completan, ¡felicitaciones!"</string>
+    <string name="achievement_citizen_title">"Ciudadano"</string>
+    <string name="achievement_citizen_solved_X">"¡Resolviste %d misiones útiles para la vida cotidiana en la ciudad!"</string>
+    <string name="achievement_outdoors_title">"Al aire libre"</string>
+    <string name="achievement_outdoors_solved_X">"¡Resolviste %d misiones útiles para personas-al aire libre!"</string>
+    <string name="quest_pedestrian_crossing_island">"¿Este paso de peatones tiene una isla?"</string>
 </resources>

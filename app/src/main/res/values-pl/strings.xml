@@ -1,32 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Ustawienia"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Nie można połączyć z serwerem uwierzytelniającym"</string>
-
-    <!-- Fuzzy -->
     <string name="retry">"Ponów"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Nieudane uwierzytelnianie: wszystkie wymienione uprawnienia są potrzebne"</string>
-
-    <!-- Fuzzy -->
     <string name="title_activity_settings">"Ustawienia"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Komunikacja"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"Wyświetlanie"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"Rozmiar w megabajtach zarezerwowany na zewnętrznym nośniku dla pamięci podręcznej mapy"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"Pokaż wszystkie notatki"</string>
 
     <!-- Fuzzy -->
@@ -363,7 +345,7 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="quest_cyclewaySurface_title">"Jaki rodzaj nawierzchni ma ta droga dla rowerów?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_serviceType_title">"Jaki to rodzaj drogi serwisowej?"</string>
+    <string name="quest_serviceType_title">"Jaki to rodzaj drogi dojazdowej?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetLanes_title">"Ile wyznaczonych pasów jezdni ma ta ulica?"</string>
@@ -696,7 +678,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="credits_contributors">"Zobacz &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;pełną listę na GitHubie&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Zobacz pełną listę w &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projekcie na POEditor&lt;/a&gt;"</string>
+    <string name="credits_translations">"Zobacz pełną listę w &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekcie na POEditor&lt;/a&gt;"</string>
     <string name="credits_translations_title">"Tłumaczenia"</string>
 
     <!-- Fuzzy -->
@@ -1385,9 +1367,6 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_buildingType_bungalow">"Dom letniskowy"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"mały dom wolnostojący (domek letni, chatka wakacyjna...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Przyczepa kempingowa ustawiona na stałe"</string>
 
     <!-- Fuzzy -->
@@ -1619,13 +1598,6 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_noteDiscussion_hide2">"ukryte przez %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Jakie zapory ma ten przejazd kolejowy?"</string>
-
-    <!-- Zamiast "To nie jest", powinno być "Nie jest" -->
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Nie ma"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Załączone do notatki zdjęcia są przesyłane na mój serwer i usuwane kilka dni po zakończeniu. Ich meta-dane są usuwane przed przesłaniem.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1660,9 +1632,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Czy ten budynek znajduje się całkowicie pod ziemią?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Czy są tutaj sygnały dźwiękowe dla niewidomych?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Częściowo oznacza, że nie ma więcej niż jednego stopnia prowadzącego do obiektu."</string>
@@ -1789,9 +1758,7 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"Zmienia się..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Jeśli nawierzchnia jest różna w poszczególnych częściach to pierwszym krokiem jest podzielenie drogi na fragmenty. Gdy to się zrobi będzie możliwe odpowiedzenie na to pytanie dla każdego fragmentu z osobna.
+    <string name="quest_split_way_description">"Jeśli sytuacja jest różna w poszczególnych częściach to pierwszym krokiem jest podzielenie drogi na fragmenty. Gdy to się zrobi będzie możliwe odpowiedzenie na to pytanie dla każdego fragmentu z osobna.
 Podzielić?"</string>
 
     <!-- Fuzzy -->
@@ -1817,9 +1784,6 @@ Podzielić?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Czy jest tu ograniczenie wagi pojazdów?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Nie ma znaku"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Ta waga wygląda podejrzanie. Jesteś pewien że jest ona poprawna?"</string>
@@ -2192,9 +2156,7 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
 
     <!-- Fuzzy -->
     <string name="achievement_regular_title">"Stały Bywalec"</string>
-
-    <!-- Fuzzy -->
-    <string name="achievement_regular_description">"Współtworzysz OSM od %d dni! Stali uczestnicy są kręgosłupem OSM, dzięki za Twój wkład! ❤"</string>
+    <string name="achievement_regular_description">"Było %d dni gdy współtworzyłeś OSM  używając tej aplikacji! Stali uczestnicy są fundamentem OSM, dzięki za Twój wkład! ❤"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_bicyclist_title">"Cyklista"</string>
@@ -2357,11 +2319,43 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="quest_accepts_cash_type_title">"Czy %1$s (%2$s) akceptuje płatność gotówką?"</string>
     <string name="quest_busStopBench_tram_name_title">"Czy przystanek tramwajowy %s ma miejsce do siedzenia?"</string>
     <string name="quest_busStopBench_tram_title">"Czy ten przystanek tramwajowy ma miejsce do siedzenia?"</string>
-    <string name="quest_busStopBench_title">"Czy ten przystanek autonusowy ma miejsce do siedzenia?"</string>
+    <string name="quest_busStopBench_title">"Czy ten przystanek autobusowy ma miejsce do siedzenia?"</string>
     <string name="quest_busStopBench_name_title">"Czy przystanek autobusowy %s ma miejsce do siedzenia?"</string>
     <string name="quest_summit_register_title">"Czy szczyt %s ma księgę gości?"</string>
     <string name="quest_is_defibrillator_inside_title">"Czy ten defibrylator (AED) jest wewnątrz budynku?"</string>
     <string name="dialog_tutorial_download">"Z wyłączoną autosynchronizacją zadania nie są automatycznie pobrane. By to zrobić przesuń mapę do interesującej cię lokalizacji i użyj przycisku \"%s\" w menu."</string>
     <string name="about_title_translate">"Pomóż tłumaczyć aplikację."</string>
     <string name="about_description_translate">"%1$s jest przetłumaczony w %2$d%%"</string>
+    <string name="quest_oneway2_title">"Czy ta droga jest jednostronna? W którą stronę?"</string>
+    <string name="quest_oneway2_dir">"Jednokierunkowa w tę stronę"</string>
+    <string name="quest_oneway2_no_oneway">"Jest dwukierunkowa"</string>
+    <string name="quest_maxweight_select_sign">"Wybierz znak"</string>
+    <string name="quest_steps_incline_title">"W którą stronę wznoszą się te schody?"</string>
+    <string name="quest_steps_incline_up">"W tę stronę"</string>
+    <string name="quest_step_count_title">"Ile tu jest schodków?"</string>
+    <string name="quest_traffic_signals_sound_title">"Czy są tutaj sygnały dźwiękowe dla niewidomych?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Czy te światła dla pieszych w namacalny sposób sygnalizują kiedy można przejść?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Wskazówka: guzik może wibrować lub mieć ruchomy element aktywowany wraz z zielonym światłem"</string>
+    <string name="quest_busStopRef_title">"Jaki jest numer referencyjny tego przystanku autobusowego?"</string>
+    <string name="quest_tramStopRef_title">"Jaki jest numer referencyjny tego przystanku tramwajowego?"</string>
+    <string name="quest_buildingType_bungalow_description2">"mały, osobny dom (domek letniskowy, chatka wczasowa …)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Jakie zapory używane są na tym przejeździe kolejowym?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Brak barier"</string>
+    <string name="quest_steps_ramp_title">"Czy te schody mają podjazd? Jaki rodzaj?"</string>
+    <string name="quest_steps_ramp_none">"Brak (używalnej) rampy"</string>
+    <string name="quest_steps_ramp_bicycle">"Do wprowadzania rowerów"</string>
+    <string name="quest_steps_ramp_stroller">"Podjazd dla wózków dziecięcych"</string>
+    <string name="quest_steps_ramp_wheelchair">"Podjazd dla wózków inwalidzkich"</string>
+    <string name="quest_atm_operator_title">"Jak się nazywa bank tego bankomatu?"</string>
+    <string name="quest_clothes_container_operator_title">"Kto przyjmuje dary w tym koszu na ubrania?"</string>
+    <string name="quest_charging_station_operator_title">"Kto jest zarządcą tej stacji ładowania pojazdów?"</string>
+    <string name="link_indoorequal_description">"Odkryj wewnętrzne mapy centr handlowych, stacji kolejowych i.t.d."</string>
+    <string name="link_thenandnow_description">"Ciekaw jak wiele udało się zrobić w OoenStreetMap? Porównaj mapę dzisiaj z tym jak wyglądała ponad 10 lat temu!"</string>
+    <string name="achievement_rare_title">"Łowca skarbów"</string>
+    <string name="achievement_rare_solved_X">"Gratulacje za odnalezienie i rozwiązanie %d zadań które są rzadko rozwiązywane!"</string>
+    <string name="achievement_citizen_title">"Obywatel"</string>
+    <string name="achievement_citizen_solved_X">"Rozwiązałeś %d zadań przydatnych w powszednim życiu w mieście!"</string>
+    <string name="achievement_outdoors_title">"Na zewnątrz"</string>
+    <string name="achievement_outdoors_solved_X">"Rozwiązałeś %d zadań przydatnych ludziom na zewnątrz!"</string>
+    <string name="quest_pedestrian_crossing_island">"Czy te przejście dla pieszych ma wysepkę?"</string>
 </resources>

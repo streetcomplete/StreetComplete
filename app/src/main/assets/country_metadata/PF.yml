@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banque de Polynésie, Banque de Tahiti, Socrédo, Socredo, OPT]
 officialLanguages: [fr]
-orchardProduces: [coconut, pineapple, tomato, grapefruit, banana, chilli_pepper, sweet_pepper, avocado,
-  vanilla, coffee, orange]
+orchardProduces: [coconut, pineapple, tomato, grapefruit, banana, chilli_pepper, sweet_pepper, avocado, vanilla, coffee,
+   orange]

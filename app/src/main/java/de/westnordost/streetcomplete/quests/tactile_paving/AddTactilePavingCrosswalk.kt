@@ -5,6 +5,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
@@ -12,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddTactilePavingCrosswalk(
@@ -50,7 +52,7 @@ class AddTactilePavingCrosswalk(
     override fun createForm() = TactilePavingForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("tactile_paving", if (answer) "yes" else "no")
+        changes.updateWithCheckDate("tactile_paving", answer.toYesNo())
     }
 
     private fun getOverpassQuery(bbox: BoundingBox) = """
@@ -60,7 +62,10 @@ class AddTactilePavingCrosswalk(
         way[highway][access ~ '^(private|no)$']; node(w) -> .private_road_nodes;
         (.exclusive_cycleway_nodes; .private_road_nodes;) -> .excluded;
 
-        node[highway = crossing][foot != no] -> .crossings;
+        (
+            node[highway = traffic_signals][crossing = traffic_signals][foot != no];
+            node[highway = crossing][foot != no];
+        ) -> .crossings;
         
         node.crossings[!tactile_paving] -> .crossings_with_unknown_tactile_paving;
         node.crossings[tactile_paving = no]${olderThan(4).toOverpassQLString()} -> .old_crossings_without_tactile_paving;

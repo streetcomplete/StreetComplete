@@ -1,1 +1,1 @@
-OpenStreetMap surveyor uygulaması
+OpenStreetMap anketör uygulaması.

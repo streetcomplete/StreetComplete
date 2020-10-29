@@ -680,7 +680,7 @@
     <string name="credits_contributors">"Github에서 &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;전체 목록&lt;/a&gt;을 확인하세요."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor 프로젝트&lt;/a&gt;에 들어가서 전체 목록을 확인하세요."</string>
+    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 프로젝트&lt;/a&gt;에 들어가서 전체 목록을 확인하세요."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"번역"</string>
@@ -1365,9 +1365,6 @@
     <string name="quest_buildingType_bungalow">"방갈로"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"작게 따로 떨어져 있는 집(여름 별장, 휴가용 별장, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"고정된 이동식 주택"</string>
 
     <!-- Fuzzy -->
@@ -1599,12 +1596,6 @@
     <string name="quest_noteDiscussion_hide2">"%1$s, %2$s가 숨김"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"이 철도 건널목이 어떻게 보호되고 있습니까?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"보호되지 않음"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;참고에 첨부한 사진은 StreetComplete 서버로 업로드되며, 참고가 해결되면 수일 후에 삭제됩니다. 사진의 메타데이터는 업로드하기 전에 삭제됩니다.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1639,9 +1630,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"이 건물이 완전히 지하에 있습니까?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"여기에 시각 장애인을 위한 음성 신호가 있습니까?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"접근하려면 외길로 가야 한다는 것을 부분적으로 의미합니다."</string>
@@ -1797,9 +1785,6 @@
     <string name="quest_maxweight_title">"여기의 하중 제한이 얼마입니까?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"표지판이 없음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"이 중량은 비현실적입니다. 정말 이 값이 맞습니까?"</string>
 
     <!-- Fuzzy -->
@@ -1919,4 +1904,5 @@
     <string name="at_housenumber">"건물 번호 %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 의 개점 시간은 언제입니까?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s)에 휠체어가 들어갈 수 있습니까?"</string>
+    <string name="quest_traffic_signals_sound_title">"여기에 시각 장애인을 위한 음성 신호가 있습니까?"</string>
 </resources>

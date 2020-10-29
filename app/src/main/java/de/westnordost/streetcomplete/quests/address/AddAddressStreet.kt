@@ -11,8 +11,8 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.quests.localized_name.data.putRoadNameSuggestion
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.quests.road_name.data.putRoadNameSuggestion
 
 class AddAddressStreet(
         private val overpassApi: OverpassMapDataAndGeometryApi,

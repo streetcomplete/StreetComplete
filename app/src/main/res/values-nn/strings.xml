@@ -675,7 +675,7 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="credits_contributors">"Sjå &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Sjå &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;prosjektet på POEditor&lt;/a&gt; for ei fullstendig oversikt."</string>
+    <string name="credits_translations">"Sjå &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;prosjektet på POEditor&lt;/a&gt; for ei fullstendig oversikt."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Omsetjingar"</string>
@@ -1363,9 +1363,6 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"lite, éinetasjes hus (sommarhus, feriehytte, …)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Husvogn"</string>
 
     <!-- Fuzzy -->
@@ -1597,12 +1594,6 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
     <string name="quest_noteDiscussion_hide2">"Gøymd av %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Korleis er jernbaneovergangen sikra?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Ikkje i det heile teke"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Eventuelle foto som du legg ved, vert lasta opp til tenaren min og sletta nokre dagar etter at merknaden vert lukka. Bilet­metadata vert sletta før opplasting.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1637,9 +1628,6 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Er denne bygningen heilt under jorda?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Finst det lydsignal for blinde her?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen."</string>
@@ -1794,9 +1782,6 @@ Vil du dela opp vegen no?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Kva er vektgrensa her?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Det finst ikkje noko skilt"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Vekta verkar usannsynleg. Er du sikker på at ho er rett?"</string>
@@ -2260,4 +2245,5 @@ Merk at appen berre ber om hus­nummeret etter at hustypen er fastsett."</string
     <string name="quest_openingHours_name_type_title">"Når er %1$s (%2$s) open?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Er %1$s (%2$s) tilgjengeleg med rullestol?"</string>
     <string name="quest_accepts_cash_type_title">"Tek %1$s (%2$s) imot betaling med kontantar?"</string>
+    <string name="quest_traffic_signals_sound_title">"Finst det lydsignal for blinde her?"</string>
 </resources>

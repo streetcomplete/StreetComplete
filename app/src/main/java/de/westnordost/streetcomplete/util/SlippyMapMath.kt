@@ -22,10 +22,10 @@ data class Tile(val x: Int, val y:Int) {
 /** Returns the minimum rectangle of tiles that encloses all the tiles */
 fun Collection<Tile>.minTileRect(): TilesRect? {
     if (isEmpty()) return null
-    val right = maxBy { it.x }!!.x
-    val left = minBy { it.x }!!.x
-    val bottom = maxBy { it.y }!!.y
-    val top = minBy { it.y }!!.y
+    val right = maxByOrNull { it.x }!!.x
+    val left = minByOrNull { it.x }!!.x
+    val bottom = maxByOrNull { it.y }!!.y
+    val top = minByOrNull { it.y }!!.y
     return TilesRect(left, top, right, bottom)
 }
 

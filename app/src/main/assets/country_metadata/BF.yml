@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Bank of Africa, UBA, Ecobank]
 mobileCountryCode: 613
 officialLanguages: [fr, mos, dyu, ff]
-orchardProduces: [cashew_nut, guava, mango, mangosteen, tomato, chilli_pepper, sweet_pepper, almond,
-  orange, lemon, lime, grapefruit]
+orchardProduces: [cashew_nut, guava, mango, mangosteen, tomato, chilli_pepper, sweet_pepper, almond, orange, lemon, lime,
+   grapefruit]
 popularReligions: [muslim]

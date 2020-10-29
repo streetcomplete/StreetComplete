@@ -388,7 +388,7 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="credits_contributors">"Lihat &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;daftar lengkap di Github&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Lihat &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;di POEditor&lt;/a&gt; untuk daftar lengkapnya."</string>
+    <string name="credits_translations">"Lihat &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;di POEditor&lt;/a&gt; untuk daftar lengkapnya."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Terjemahan"</string>
@@ -726,7 +726,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_dormitory">"Asrama"</string>
     <string name="quest_buildingType_houseboat">"Rumah kapal"</string>
     <string name="quest_buildingType_bungalow">"Bungalo"</string>
-    <string name="quest_buildingType_bungalow_description">"Rumah terpisah kecil (Rumah musim panas, pondok liburan, ...)"</string>
     <string name="quest_buildingType_static_caravan">"Karavan Statik"</string>
     <string name="quest_buildingType_commercial">"Bangunan komersil"</string>
     <string name="quest_buildingType_commercial_generic_description">"Bangunan di mana orang bekerja, toko atau aktivitas komersil lainnya"</string>
@@ -808,8 +807,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_noteDiscussion_closed2">"Tutup saat %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Buka lagi saat %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Tersembunyi saat %1$s, %2$s"</string>
-    <string name="quest_railway_crossing_barrier_title">"Bagaimana penyeberangan ini dihalangi?"</string>
-    <string name="quest_railway_crossing_barrier_none">"Tidak ada"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Foto yang kamu lampirkan ke catatan diunggah ke serverku dan dihapus beberapa hari setelah catatan diselesaikan. Metadata foto dihapus sebelum diunggah&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Batalkan pilihan"</string>
     <string name="quest_buildingType_retail_description">"termasuk bangunan untuk restoran, kafe, ..."</string>
@@ -822,7 +819,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_tracktype_grade5">"Lemah"</string>
     <string name="quest_building_underground_name_title">"Apa %s sepenuhnya di bawah tanah?"</string>
     <string name="quest_building_underground_title">"Apa bangunan ini sepenuhnya di bawah tanah?"</string>
-    <string name="quest_traffic_signals_sound_title">"Apa ada sinyal suara untuk tunanetra di sini?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Sebagian berarti tidak ada lebih dari 1 anak tangga untuk melewatinya."</string>
     <string name="quest_wheelchairAccess_outside_title">"Apa tempat ini ramah kursi roda?"</string>
     <string name="quest_traffic_signals_button_title">"Apa lampu merah di sini punya tombol untuk menyeberang?"</string>
@@ -889,7 +885,6 @@ Pisah sekarang?"</string>
     <string name="quest_tactilePaving_title_tram">"Apa perhentian mobil ini memiliki ubin pemandu?"</string>
     <string name="quest_tactilePaving_title_name_tram">"Apa perhentian mobil %s memiliki ubin pemandu?"</string>
     <string name="quest_maxweight_title">"Apa batas berat di sini?"</string>
-    <string name="quest_maxweight_answer_noSign">"Tidak ada tanda"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Berat ini terlihat tidak wajar. Apa kamu yakin?"</string>
     <string name="quest_maxweight_answer_other_sign">"Tanda terlihat beda..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Apa kamu ingin meninggalkan catatan? Catatan dengan foto akan memudahkan pemeta lain mengurusnya."</string>
@@ -1109,4 +1104,5 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="quest_openingHours_name_type_title">"Jam berapa %1$s (%2$s) buka?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Apakah %1$s (%2$s) ramah kursi roda?"</string>
     <string name="quest_accepts_cash_type_title">"Apa %1$s (%2$s) menerima pembayaran tunai?"</string>
+    <string name="quest_traffic_signals_sound_title">"Apa ada sinyal suara untuk tunanetra di sini?"</string>
 </resources>

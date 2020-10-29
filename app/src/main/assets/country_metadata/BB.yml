@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [CIBC FirstCaribbean International Bank, Scotiabank]
 isLeftHandTraffic: true
 mobileCountryCode: 342
 officialLanguages: [en]
