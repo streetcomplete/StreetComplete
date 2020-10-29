@@ -64,7 +64,9 @@ global:
                 var elementLang;
                 var name = feature["name"];
                 var localizedNameRegex = /^name_([a-z]{2,3})$/;
-                for (key of Object.keys(feature)) {
+                var keys = Object.keys(feature);
+                for (var i = 0; i < keys.length; ++i) {
+                    var key = keys[i];
                     if (key == "name") continue;
                     if (name == feature[key]) {
                         var match = key.match(localizedNameRegex);
@@ -91,7 +93,7 @@ global:
                     
                     // Preference #4: Take name in English (cause it's kind of the "international") language
                     if (userLang != "en") {
-                        var nameInEnglish = feature["name_en"]
+                        var nameInEnglish = feature["name_en"];
                         if (nameInEnglish) return nameInEnglish;
                     }
                     

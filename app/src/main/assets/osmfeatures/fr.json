@@ -460,6 +460,9 @@
       "name": "Transfert d'argent",
       "terms": "transfert d'argent,western union,banque,argent,échange"
     },
+    "amenity/mortuary": {
+      "name": "Morgue"
+    },
     "amenity/motorcycle_parking": {
       "name": "Parking pour motocyclettes",
       "terms": "Parc à motos,Stationnement motos"
@@ -2971,6 +2974,9 @@
       "name": "Tour de communication",
       "terms": "tour de télécommunication,diffusion,antenne,téléphone portable,téléphone cellulaire,gsm,tour,radio,mât de transmission,pylône de transmission"
     },
+    "man_made/tower/cooling": {
+      "name": "Tour aéroréfrigérante"
+    },
     "man_made/tower/defensive": {
       "name": "Tour fortifiée",
       "terms": "Tour fortifiée,tour de chateau,tour de château,défense,tour défensive"
@@ -3088,6 +3094,9 @@
     "natural/heath": {
       "name": "Lande",
       "terms": "Bruyère"
+    },
+    "natural/hot_spring": {
+      "name": "Source chaude"
     },
     "natural/mud": {
       "name": "Boue",
@@ -3808,8 +3817,14 @@
     "railway/monorail": {
       "name": "Rail pour monorail"
     },
+    "railway/narrow_gauge": {
+      "name": "Voie étroite"
+    },
     "railway/platform": {
       "name": "Quai de gare ferroviaire"
+    },
+    "railway/preserved": {
+      "name": "Chemin de fer touristique"
     },
     "railway/rail": {
       "name": "Rail pour train"
@@ -4433,6 +4448,9 @@
       "name": "Supermarché",
       "terms": "Supermarché"
     },
+    "shop/supermarket/organic": {
+      "name": "Supermarché bio"
+    },
     "shop/swimming_pool": {
       "name": "Magasin de matériel de piscine",
       "terms": "spa,cuve thermale,maintenance,piscine"
@@ -4736,21 +4754,9 @@
       "name": "Panneau de limite de commune",
       "terms": "limite de ville,ville,hameau,bord,fin de ville,début de ville"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Panneau de limite de commune",
-      "terms": "limite de ville,ville,hameau,bord,fin de ville,début de ville"
-    },
     "traffic_sign/maxspeed": {
       "name": "Panneau de limitation de vitesse",
       "terms": "limitation de vitesse,limite de vitesse,vitesse max,vitesse limite"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Panneau de limitation de vitesse",
-      "terms": "limitation de vitesse,limite de vitesse,vitesse max,vitesse limite"
-    },
-    "traffic_sign_vertex": {
-      "name": "Panneau de signalisation",
-      "terms": "signalisation routière, panneau de signalisation"
     },
     "type/boundary": {
       "name": "Frontière",
@@ -4826,10 +4832,6 @@
     "type/route/ferry": {
       "name": "Itinéraire de ferry",
       "terms": "Route de traversier, Ligne de ferry"
-    },
-    "type/route/foot": {
-      "name": "Itinéraire pédestre",
-      "terms": "Sentier"
     },
     "type/route/hiking": {
       "name": "Itinéraire de randonnée",

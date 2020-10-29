@@ -202,7 +202,7 @@
     },
     "amenity/bicycle_rental": {
       "name": "Wypożyczalnia rowerów",
-      "terms": "wypożyczalnia"
+      "terms": "wypożyczalnia, rowery"
     },
     "amenity/bicycle_repair_station": {
       "name": "Samoobsługowa stacja naprawy rowerów",
@@ -212,9 +212,17 @@
       "name": "Ogródek piwny",
       "terms": "ogródek piwny, bar plażowy, beach bar"
     },
+    "amenity/binoculars": {
+      "name": "Lornetka",
+      "terms": "lornetka, luneta, punkt obserwacyjny, punkt widokowy"
+    },
     "amenity/boat_rental": {
       "name": "Wypożyczalnia łodzi",
       "terms": "wynajem łodzi"
+    },
+    "amenity/boat_storage": {
+      "name": "Przechowalnia łodzi",
+      "terms": "przechowalnia łodzi, marina, łódź, łodzie"
     },
     "amenity/bureau_de_change": {
       "name": "Kantor",
@@ -241,7 +249,7 @@
     },
     "amenity/car_rental": {
       "name": "Wypożyczalnia samochodów",
-      "terms": "wypożyczalnia samochodów"
+      "terms": "wypożyczalnia samochodów, samochody"
     },
     "amenity/car_sharing": {
       "name": "Stacja miejskiej wypożyczalni samochodów",
@@ -344,7 +352,7 @@
     },
     "amenity/driving_school": {
       "name": "Szkoła nauki jazdy",
-      "terms": "prawo jazdy"
+      "terms": "szkoła nauki jazdy, nauka jazdy, szkolenia kierowców, prawo jazdy"
     },
     "amenity/embassy": {
       "name": "Ambasada/konsulat"
@@ -383,6 +391,10 @@
     },
     "amenity/fast_food/ice_cream": {
       "name": "Bar z lodami"
+    },
+    "amenity/fast_food/juice": {
+      "name": "Bar z sokami/koktajlami",
+      "terms": "bar, kawiarnia, świeżo wyciskane soki, napoje, koktajle, smoothies"
     },
     "amenity/fast_food/kebab": {
       "name": "Bar z kebabem",
@@ -483,6 +495,10 @@
       "name": "Dok załadunkowy",
       "terms": "dok załadunkowy"
     },
+    "amenity/lounger": {
+      "name": "Leżak",
+      "terms": "leżaki"
+    },
     "amenity/love_hotel": {
       "name": "Love hotel",
       "terms": "love hotel,dla par,xxx,krótki pobyt"
@@ -498,6 +514,10 @@
     "amenity/money_transfer": {
       "name": "Placówka przekazów pieniężnych",
       "terms": "pieniądze, gotówka, Western Union"
+    },
+    "amenity/mortuary": {
+      "name": "Kostnica",
+      "terms": "kostnica, krematorium"
     },
     "amenity/motorcycle_parking": {
       "name": "Parking dla motocykli",
@@ -884,6 +904,10 @@
     "amenity/toilets/disposal/pitlatrine": {
       "name": "Latryna",
       "terms": "latryna, wychodek, sławojka"
+    },
+    "amenity/toilets/portable": {
+      "name": "Przenośna toaleta",
+      "terms": "przenośna toaleta"
     },
     "amenity/townhall": {
       "name": "Ratusz",
@@ -1711,6 +1735,9 @@
     "demolished/building": {
       "name": "Niedawno wyburzony budynek"
     },
+    "disused/amenity": {
+      "name": "Nieużywany obiekt/udogodnienie"
+    },
     "disused/railway": {
       "name": "Nieużywany obiekt kolejowy"
     },
@@ -1823,6 +1850,10 @@
     "golf/cartpath": {
       "name": "Ścieżka dla wózka golfowego",
       "terms": "droga, ścieżka dla wózka golfowego, wózek golfowy"
+    },
+    "golf/clubhouse": {
+      "name": "Klub golfowy",
+      "terms": "klub golfowy"
     },
     "golf/driving_range": {
       "name": "Strzelnica golfowa",
@@ -2551,8 +2582,8 @@
       "terms": "salon gier, automaty wrzutowe, gry wideo, gry video, symulatory jazdy, symulatory jazdy, symulator lotu, pinball, wirtualna rzeczywistość, rzeczywistość wirtualna"
     },
     "leisure/bandstand": {
-      "name": "Estrada",
-      "terms": "estrada,scena,występy"
+      "name": "Muszla koncertowa / estrada",
+      "terms": "muszla koncertowa, estrada, scena, arena, podium, występy, amfiteatr, trybuna, trybuny"
     },
     "leisure/beach_resort": {
       "name": "Resort nadmorski",
@@ -2832,7 +2863,7 @@
     },
     "leisure/sports_centre": {
       "name": "Centrum sportowe",
-      "terms": "centrum sportowe, ośrodek sportowy, ośrodek sportów, kompleks sportowy"
+      "terms": "centrum sportowe, ośrodek sportowy, ośrodek sportów, kompleks sportowy, klub sportowy"
     },
     "leisure/sports_centre/climbing": {
       "name": "Ścianka wspinaczkowa",
@@ -3015,7 +3046,7 @@
     },
     "man_made/mast/communication/mobile_phone": {
       "name": "Maszt telefonii komórkowej",
-      "terms": "antena,maszt komórkowy,maszt telefonii komórkowej,wieża telefonii komórkowej,maszt komunikacyjny,wieża komunikacyjna,maszt transmisyjny,wieża transmisyjna"
+      "terms": "antena,maszt komórkowy,maszt telefonii komórkowej,wieża telefonii komórkowej,maszt komunikacyjny,wieża komunikacyjna,maszt transmisyjny,wieża transmisyjna, bts"
     },
     "man_made/mast/communication/radio": {
       "name": "Maszt radiowy",
@@ -3115,7 +3146,11 @@
     },
     "man_made/tower/communication": {
       "name": "Wieża komunikacyjna",
-      "terms": "antena,wieża nadawcza,maszt telefoniczny,maszt komórkowy,maszt komunikacyjny,wieża komunikacyjna,maszt telefonii komórkowej,maszt radiowy,wieża radiowa,wieża telewizyjna,maszt transmisyjny,wieża transmisyjna,wieża tv"
+      "terms": "antena,wieża nadawcza,maszt telefoniczny,maszt komórkowy,maszt komunikacyjny,wieża komunikacyjna,maszt telefonii komórkowej,maszt radiowy,wieża radiowa,wieża telewizyjna,maszt transmisyjny,wieża transmisyjna,wieża tv, bts"
+    },
+    "man_made/tower/cooling": {
+      "name": "Chłodnia kominowa",
+      "terms": "chłodnia kominowa, wieża chłodnicza, fabryka"
     },
     "man_made/tower/defensive": {
       "name": "Wieża obronna",
@@ -3164,6 +3199,10 @@
     "man_made/windmill": {
       "name": "Wiatrak",
       "terms": "wiatrak"
+    },
+    "man_made/windpump": {
+      "name": "Pompa wiatrowa",
+      "terms": "pompa wiatrowa, pompa wodna, wiatrak"
     },
     "man_made/works": {
       "name": "Fabryka",
@@ -3251,6 +3290,10 @@
     "natural/heath": {
       "name": "Wrzosowisko",
       "terms": "wrzosowisko, krzewy, krzewinki, zieleń"
+    },
+    "natural/hot_spring": {
+      "name": "Źródło termalne",
+      "terms": "źródło termalne, źródło ciepłe, źródło gorące, gorące źródło, gorące źródła, cieplica, cieplice"
     },
     "natural/mud": {
       "name": "Błoto",
@@ -3373,8 +3416,8 @@
       "terms": "rekreacyjna trasa ponumerowanych węzłów"
     },
     "noexit/yes": {
-      "name": "Brak przejścia/przejazdu",
-      "terms": "Brak przejścia/przejazdu"
+      "name": "Brak dalszej kontynuacji",
+      "terms": "Brak przejścia/przejazdu,koniec"
     },
     "office": {
       "name": "Biuro",
@@ -3837,6 +3880,10 @@
     "public_transport/platform/bus_point": {
       "name": "Przystanek autobusowy",
       "terms": "przystanek autobusowy, autobus"
+    },
+    "public_transport/platform/bus_tram_point": {
+      "name": "Przystanek tramwajowo-autobusowy",
+      "terms": "przystanek tramwajowo-autobusowy, przystanek tramwajowy, przystanek autobusowy, tramwaj, autobus"
     },
     "public_transport/platform/ferry": {
       "name": "Przystanek / Peron promu",
@@ -4707,7 +4754,7 @@
     },
     "shop/storage_rental": {
       "name": "Przechowalnia rzeczy (długoterminowa)",
-      "terms": "przechowalnia rzeczy, magazyny samoobsługowe, wynajem magazynów"
+      "terms": "przechowalnia rzeczy, magazyny samoobsługowe, wynajem magazynów, komórki do wynajęcia, magazyny do wynajęcia"
     },
     "shop/supermarket": {
       "name": "Supermarket",
@@ -4930,6 +4977,10 @@
       "name": "Tablica informacyjna",
       "terms": "informacja, obwieszczenia"
     },
+    "tourism/information/board/welcome_sign": {
+      "name": "Tablica powitalna (miasta)",
+      "terms": "tablica powitalna miasta, witamy w mieście"
+    },
     "tourism/information/guidepost": {
       "name": "Drogowskaz",
       "terms": "drogowskaz"
@@ -5046,21 +5097,9 @@
       "name": "Znak granicy miasta",
       "terms": "znak granicy miasta, granica miasta, granica miejscowości, znak drogowy"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Znak granicy miasta",
-      "terms": "znak granicy miasta, granica miasta, granica miejscowości, znak drogowy"
-    },
     "traffic_sign/maxspeed": {
       "name": "Znak ograniczenia prędkości",
       "terms": "znak ograniczenia prędkości, ograniczenie prędkości, maksymalna prędkość, znak drogowy"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Znak ograniczenia prędkości",
-      "terms": "znak ograniczenia prędkości, ograniczenie prędkości, maksymalna prędkość, znak drogowy"
-    },
-    "traffic_sign_vertex": {
-      "name": "Znak drogowy",
-      "terms": "znak drogowy,droga,ulica"
     },
     "type/boundary": {
       "name": "Granica",
@@ -5151,7 +5190,7 @@
     },
     "type/route/foot": {
       "name": "Trasa piesza",
-      "terms": "trasa piesza"
+      "terms": "trasa piesza, szlak pieszy"
     },
     "type/route/hiking": {
       "name": "Szlak pieszy",

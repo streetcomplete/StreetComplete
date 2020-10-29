@@ -1,12 +1,13 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Caixa Geral de Depósitos, Santander Totta, Millennium BCP, Multibanco, Crédito Agrícola, Montepio, Euronet,
    BPI, SIBS, Novo Banco, multibanco, MB Multibanco, BES, CCAM, MB, Caixa de Crédito Agrícola, Caixa Agrícola,
-   CGD, ATM, Santander, SIBS Multibanco, Novo Banco dos Açores, Millennium bcp, Crédito agrícola, Barclays,
-   Banif, Banco Popular, credito agricola, caixiave, Euronet Worldwide, Deutsche Bank, Credito Agricola,
+   CGD, ATM, Santander, SIBS Multibanco, Novo Banco dos Açores, Millennium bcp, Euronet Worldwide, Crédito
+      agrícola, Barclays, Banif, Banco Popular, credito agricola, caixiave, Deutsche Bank, Credito Agricola,
    Banco BIC]
-chargingStationOperators: [MOBI.E, Mobi.E, Tesla, Rede Piloto, KLC, GalpGeste, EDP Comercial, Mobi-e, Galp Power, Prio.E, Mobie,
-   EV Power, Galp Geste, Mobiletric, Powerdot, Tesla Motors Inc., Propel, Loulé Concelho Global, EDP MOP,
-   CME, Mobi, Kilometer Low Cost, Repsol, Mota Engil II, Mobi.e, Mobi-E, MOBI.e, Emel, EMACOM]
+chargingStationOperators: [MOBI.E, Mobi.E, Tesla, KLC, Rede Piloto, EDP Comercial, GalpGeste, Prio.E, Galp Power, Galp Geste, Mobi-e,
+   Mobie, EV Power, Powerdot, Mobilectric, Mobiletric, Tesla Motors Inc., Repsol, Loulé Concelho Global,
+   EDP MOP, CME, Ucharge, Mobi, Kilometer Low Cost, Propel-Cepsa, Propel, Mota Engil II, Mobi.e, Mobi-E,
+   MOBI.e, Emel, EMACOM]
 clothesContainerOperators: [Ultriplo Lda]
 isAdvisorySpeedLimitKnown: true
 isSlowZoneKnown: true

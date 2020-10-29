@@ -3095,17 +3095,8 @@
     "traffic_sign/city_limit": {
       "name": "Značka začiatku/konca obce"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Značka začiatku/konca obce"
-    },
     "traffic_sign/maxspeed": {
       "name": "Značka obmedzenia rýchlosti"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Značka obmedzenia rýchlosti"
-    },
-    "traffic_sign_vertex": {
-      "name": "Dopravná značka"
     },
     "type/boundary": {
       "name": "Hranica",
@@ -3172,10 +3163,6 @@
     "type/route/ferry": {
       "name": "Trajektová trasa",
       "terms": "Trajektova trasa,trajekt,linka,linka trajektu,trasa kompy"
-    },
-    "type/route/foot": {
-      "name": "Turistická trasa",
-      "terms": "turisticka trasa,pesia trasa,pešia trasa"
     },
     "type/route/hiking": {
       "name": "Turistická trasa",

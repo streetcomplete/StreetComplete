@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Impostazioni"</string>
 
     <!-- Fuzzy -->
@@ -12,8 +10,6 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Autorizzazione negata: vanno concessi tutti i permessi elencati"</string>
-
-    <!-- Fuzzy -->
     <string name="title_activity_settings">"Impostazioni"</string>
 
     <!-- Fuzzy -->
@@ -264,7 +260,7 @@
     <string name="quest_roofShape_answer_many">"ha diverse forme"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_sync">"Auto-Sync"</string>
+    <string name="pref_title_sync">"Sincronizzazione automatica"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Rimpicciolisci"</string>
@@ -294,13 +290,13 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="autosync_on">"Attivo"</string>
+    <string name="autosync_on">"Attivata"</string>
 
     <!-- Fuzzy -->
-    <string name="autosync_only_on_wifi">"Solo con WiFi"</string>
+    <string name="autosync_only_on_wifi">"Solo con Wi-Fi"</string>
 
     <!-- Fuzzy -->
-    <string name="autosync_off">"Spento"</string>
+    <string name="autosync_off">"Disattivata"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_title">"Che superficie ha questa tratto di strada?"</string>
@@ -695,7 +691,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="credits_contributors">"Vedi la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;lista completa su GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Vedi il &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;progetto  su POEditor&lt;/a&gt; per la lista completa."</string>
+    <string name="credits_translations">"Vedi il &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;progetto su POEditor&lt;/a&gt; per la lista completa."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traduzioni"</string>
@@ -1000,7 +996,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="pref_title_quests">"Seleziona le missioni"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_enabled">"Abilitato"</string>
+    <string name="quest_enabled">"Attivate"</string>
 
     <!-- Fuzzy -->
     <string name="quest_type">"Tipo di ricerca"</string>
@@ -1807,9 +1803,6 @@ Suddividere?"</string>
     <string name="quest_maxweight_title">"Qual è il limite di peso qui?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Non c'è alcun segnale"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Il peso inserito sembra erroneo. Sei sicuro sia corretto?"</string>
 
     <!-- Fuzzy -->
@@ -2352,7 +2345,7 @@ riconoscimento"</string>
     <string name="quest_busStopBench_name_title">"La fermata del bus %s ha una panchina?"</string>
     <string name="quest_summit_register_title">"C’è un libro di vetta su %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Questo defibrillatore (DAE) è all’interno di un edificio?"</string>
-    <string name="dialog_tutorial_download">"Con auto-sync disabilitato, le missioni non vengono scaricate automaticamente . Per farlo manualmente, usa il pulsante “%s” nel menu nel luogo dove vuoi scaricarle."</string>
+    <string name="dialog_tutorial_download">"Con la sincronizzazione automatica disattivata, le missioni non vengono scaricate automaticamente. Per farlo manualmente, usa il pulsante “%s” nel menù, nella posizione dove vuoi scaricarle."</string>
     <string name="about_title_translate">"Aiuta a tradurre questa app"</string>
     <string name="about_description_translate">"%1$s è tradotto %2$d%%"</string>
     <string name="quest_oneway2_title">"È una strada a senso unico? In quale direzione?"</string>
@@ -2365,4 +2358,30 @@ riconoscimento"</string>
     <string name="quest_traffic_signals_sound_title">"Ci sono segnali sonori per i non vedenti?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Questo semaforo ha un indicatore tattile che indica agli ipovedenti quando attraversare?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Consiglio: spesso si tratta di un pulsante che vibra o un cono che ruota nella parte inferiore del pulsante semaforico."</string>
+    <string name="quest_busStopRef_title">"Qual è il numero identificativo di questa fermata del bus?"</string>
+    <string name="quest_tramStopRef_title">"Qual è il numero identificativo di questa fermata del tram?"</string>
+    <string name="quest_buildingType_bungalow_description2">"piccola casa indipendente (casa estiva, cottage per le vacanze, baita...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Che tipo di barriere ci sono in questo passaggio a livello?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Nessuna barriera"</string>
+    <string name="quest_steps_ramp_title">"Questa scala ha una rampa? Di che tipo?"</string>
+    <string name="quest_steps_ramp_none">"Nessuna (o inutilizzabile)"</string>
+    <string name="quest_steps_ramp_bicycle">"Rampa per biciclette"</string>
+    <string name="quest_steps_ramp_stroller">"Rampa per passeggino"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rampa per sedia a rotelle"</string>
+    <string name="quest_atm_operator_title">"A che banca appartiene questo bancomat?"</string>
+    <string name="quest_clothes_container_operator_title">"Chi è il destinatario delle donazioni di questo cassonetto dei rifiuti?"</string>
+    <string name="quest_charging_station_operator_title">"Qual è l'operatore di questa stazione di carica?"</string>
+    <string name="link_indoorequal_description">"Scopri mappe degli interni di ipermercati, stazioni, ..."</string>
+    <string name="link_thenandnow_description">"Vuoi scoprire come siamo cambiati nel tempo? Confronta l'aspetto che aveva la mappa oltre 10 anni fa!"</string>
+    <string name="achievement_rare_title">"Caccia al tesoro"</string>
+    <string name="achievement_rare_solved_X">"Hai trovato e risolto %d missioni che sono completate molto raramente. Super!"</string>
+    <string name="achievement_citizen_title">"Cittadino/a"</string>
+    <string name="achievement_citizen_solved_X">"Hai svolto %d missioni che sono utili per la vita di tutti i giorni in città!"</string>
+    <string name="achievement_outdoors_title">"All'aria aperta"</string>
+    <string name="achievement_outdoors_solved_X">"Hai svolto %d missioni utili per chi ama stare all'aria aperta!"</string>
+    <string name="quest_pedestrian_crossing_island">"Questo attraversamento pedonale ha un'isola di traffico?"</string>
+    <string name="quest_generic_answer_noSign">"Non c'è alcun cartello"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"La rampa per la sedia a rotelle è visualizzata sulla mappa come una via alternativa?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"è alternativa"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"non è alternativa"</string>
 </resources>

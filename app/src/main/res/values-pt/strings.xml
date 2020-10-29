@@ -694,7 +694,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="credits_contributors">"Veja a lista completa &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Para a lista completa veja o &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projeto no POEditor&lt;/a&gt;."</string>
+    <string name="credits_translations">"Para a lista completa veja o &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projeto no POEditor&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traduções"</string>
@@ -1797,9 +1797,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Qual o limite de peso aqui?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Não há sinalização"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Este limite de peso não é plausível. Tem a certeza que está correto?"</string>

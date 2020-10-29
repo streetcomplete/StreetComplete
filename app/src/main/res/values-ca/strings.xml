@@ -695,7 +695,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="credits_contributors">"Vegeu la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;llista completa de col·laboradors a GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Vegeu el &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projecte a POEditor&lt;/a&gt; per la llista completa."</string>
+    <string name="credits_translations">"Vegeu el &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projecte a POEditor&lt;/a&gt; per la llista completa."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traduccions"</string>
@@ -1803,9 +1803,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Quin és el límit de pes aquí?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"No hi ha cap senyal"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Aquest pes no sembla plausible. Esteu segur que és correcte?"</string>

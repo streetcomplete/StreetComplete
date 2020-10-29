@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
@@ -47,11 +48,7 @@ class AddSummitRegister(
     override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        if (answer) {
-            changes.updateWithCheckDate("summit:register", "yes")
-        } else {
-            changes.updateWithCheckDate("summit:register", "no")
-        }
+        changes.updateWithCheckDate("summit:register", answer.toYesNo())
     }
 
     private fun getOverpassQuery(bbox: BoundingBox) = """

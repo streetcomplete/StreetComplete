@@ -701,7 +701,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="credits_contributors">"すべてのリストは &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; を参照してください。"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"すべてのリストは &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor のプロジェクト&lt;/a&gt; を参照してください。"</string>
+    <string name="credits_translations">"すべてのリストは &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor のプロジェクト&lt;/a&gt; を参照してください。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"翻訳"</string>

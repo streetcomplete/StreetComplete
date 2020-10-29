@@ -280,7 +280,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_manySports_confirmation_specific">"Specifically these"</string>
     <string name="quest_manySports_confirmation_generic">"General purpose"</string>
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
-	<string name="quest_toiletsFee_title">"Does this restroom require a fee?"</string>
+	<string name="quest_toiletsFee_title">"Do you have to pay to use this restroom?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this restroom have a baby changing table?"</string>
     <string name="quest_baby_changing_table_title">"Does %s have a baby changing table?"</string>
     <string name="quest_way_lit_title">"Is this stretch of way lit?"</string>
@@ -523,7 +523,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_religion_caodaist">Caodaism</string>
     <string name="quest_religion_chinese_folk">Chinese folk religion</string>
     <string name="quest_religion_for_wayside_shrine_title">What religion is represented at this shrine?</string>
-    <string name="quest_parking_fee_title">Does it cost a fee to park here?</string>
+    <string name="quest_parking_fee_title">Do you have to pay to park here?</string>
     <string name="quest_surface_value_unhewn_cobblestone">Unhewn cobblestone</string>
     <string name="quest_parking_access_title">Is it restricted who may park here?</string>
     <string name="quest_parking_access_private">It is private</string>
@@ -586,7 +586,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_houseboat">Houseboat</string>
     <string name="quest_buildingType_bungalow">Bungalow</string>
     <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin …)</string>
-    <string name="quest_buildingType_static_caravan">Static caravan</string>
+    <string name="quest_buildingType_static_caravan">Mobile home</string>
 
     <string name="quest_buildingType_commercial">Commercial building</string>
     <string name="quest_buildingType_commercial_generic_description">building where people work, shop or do any other commercial activities</string>
@@ -673,7 +673,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
     <string name="quest_maxweight_select_sign">"Select sign"</string>
-    <string name="quest_maxweight_answer_noSign">There is no sign</string>
+    <string name="quest_generic_answer_noSign">There is no sign</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
     <string name="quest_maxweight_answer_other_sign">Sign looks different…</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? A note with a photo will enable other mappers to take care of it.</string>
@@ -740,10 +740,13 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
     <string name="confirmation_authorize_now_note2">You can also do this later on the profile screen.</string>
-    <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
+    <string name="quest_generalFee_title">Do you need to pay to enter %s?</string>
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
     <string name="quest_steps_ramp_title">Do these steps have a ramp? What kind?</string>
+    <string name="quest_steps_ramp_separate_wheelchair">Is the wheelchair ramp displayed as a separate way on the map?</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">separate</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">not separate</string>
     <string name="quest_steps_ramp_none">No (usable) ramp</string>
     <string name="quest_steps_ramp_bicycle">Bicycle ramp</string>
     <string name="quest_steps_ramp_stroller">Stroller ramp</string>
@@ -926,4 +929,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
+    <string name="open_url">Open URL</string>
 </resources>

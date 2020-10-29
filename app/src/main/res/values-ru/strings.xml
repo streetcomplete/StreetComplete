@@ -695,7 +695,7 @@
     <string name="credits_contributors">"Смотрите &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;полный список на GitHub&lt;/a&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Смотрите &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;проект на POEditor&lt;/a&gt;, где есть полный список."</string>
+    <string name="credits_translations">"Смотрите &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;проект на POEditor&lt;/a&gt;, где есть полный список."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Переводы"</string>
@@ -1809,9 +1809,6 @@
     <string name="quest_maxweight_title">"Какое ограничение по весу установлено здесь?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Знак отсутствует"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Этот вес выглядит неправдоподобным. Вы уверены, что это правильно?"</string>
 
     <!-- Fuzzy -->
@@ -1843,6 +1840,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Номер не виден"</string>
+    <string name="quest_street_side_puzzle_tutorial">"Изображенная дорога повернута так же, как и дорога в месте метки на карте"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Что здесь можно оставить на переработку?"</string>
@@ -2244,9 +2242,12 @@
     <string name="privacy_html_statistics">"
 &lt;p&gt;Данные, показываемые в вашем профиле, собираются из публично доступной истории правок OpenStreetMap и затем размещаются на моем сервере.&lt;/p&gt;
 "</string>
+    <string name="confirmation_authorize_now_note2">"Вы можете сделать это позже в окне профиля"</string>
+    <string name="credits_art_contributors_title">"Иллюстраторы"</string>
 
     <!-- Fuzzy -->
     <string name="credits_projects_contributors_title">"Проекты, сделанные для StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Основные участники"</string>
     <string name="stats_are_syncing">"Ваша статистика синхронизируется. Проверьте ее тут позднее."</string>
     <string name="user_statistics_country_rank">"Рейтинг в %2$s: %1$d"</string>
     <string name="user_statistics_filter_by_country">"по стране"</string>
@@ -2254,17 +2255,24 @@
     <string name="user_profile_global_rank">"Общий рейтинг"</string>
     <string name="user_profile_local_rank">"Рейтинг в %s"</string>
     <string name="user_profile_days_active">"Активных дней"</string>
+    <string name="user_profile_achievement_levels">"Уровни достижения"</string>
     <string name="quest_address_street_title">"К какой улице относится дом %s?"</string>
+    <string name="quest_address_street_no_named_streets">"Не принадлежит названной улице"</string>
     <string name="quest_address_street_place_name_label">"Название места"</string>
     <string name="quest_address_street_description">"Нажмите на дорогу к которой относится объект или введите название улицы в поле ввода:"</string>
     <string name="quest_recycling_type_cooking_oil">"масло для приготовления пищи"</string>
     <string name="quest_recycling_type_engine_oil">"моторное масло"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;Для отображения карты, векторные тайлы из  %1$s. Прочтите  &lt;a href=\"%2$s\"&gt;политику конфиденциальности &lt;/a&gt;  для большей информации &lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Спонсоры"</string>
     <string name="quest_board_type_history">"История"</string>
     <string name="quest_board_type_geology">"Геология"</string>
     <string name="quest_board_type_plants">"Растения"</string>
+    <string name="quest_board_type_wildlife">"Дикая природа"</string>
+    <string name="quest_board_type_nature">"Природа"</string>
     <string name="quest_board_type_notice_board">"Это доска объявлений"</string>
     <string name="quest_board_type_public_transport">"Общественный транспорт"</string>
+    <string name="quest_board_type_title">"Какая информация на этой доске объявлений"</string>
+    <string name="quest_sidewalk_separately_mapped">"Да, отображены раздельно на карте"</string>
     <string name="quest_board_type_map">"Это карта"</string>
     <string name="quest_board_type_map_title">"Это только карта и ничего более?"</string>
     <string name="quest_surface_detailed_answer_impossible">"Различные покрытия..."</string>

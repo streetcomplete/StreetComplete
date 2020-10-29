@@ -702,7 +702,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="credits_contributors">"Zie de &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt; complete lijst op GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Zie het &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;project op POEditor&lt;/a&gt; voor een complete lijst."</string>
+    <string name="credits_translations">"Zie het &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project op POEditor&lt;/a&gt; voor een complete lijst."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Vertalingen"</string>
@@ -1814,9 +1814,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_maxweight_title">"Wat is hier het maximum gewicht?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Er is geen bord"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Dit gewicht lijkt niet waarschijnlijk, weet je zeker dat dit correct is?"</string>
 
     <!-- Fuzzy -->
@@ -2359,4 +2356,32 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_traffic_signals_sound_title">"Zijn er hier geluidsignalen voor blinden?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Hebben deze stoplichten een voelbare indicatie voor blinden wanneer ze veilig over kunnen steken?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Vaak is dit een trillende knop of ronddraaiende kegel aan de onderkant van de stoplichtknop."</string>
+    <string name="quest_busStopRef_title">"Wat is het referentienummer van deze bushalte?"</string>
+    <string name="quest_tramStopRef_title">"Wat is het referentienummer van deze tramhalte?"</string>
+    <string name="quest_buildingType_bungalow_description2">"klein vrijstaand huis (zomerhuisje, vakantiehuisje, hut ...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Welke slagbomen worden bij deze spoorwegovergang gebruikt?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Geen slagbomen"</string>
+    <string name="quest_steps_ramp_title">"Heeft deze trap een helling? Welke soort?"</string>
+    <string name="quest_steps_ramp_none">"Geen (bruikbare) helling"</string>
+    <string name="quest_steps_ramp_bicycle">"Helling voor fietsen"</string>
+    <string name="quest_steps_ramp_stroller">"Helling voor wandelwagens"</string>
+    <string name="quest_steps_ramp_wheelchair">"Helling voor rolstoelen"</string>
+    <string name="quest_atm_operator_title">"Van welke bank is deze geldautomaat?"</string>
+    <string name="quest_clothes_container_operator_title">"Welke organisatie zamelt hier gebruikte kleding in?"</string>
+    <string name="quest_charging_station_operator_title">"Welk bedrijf exploiteert dit oplaadpunt?"</string>
+    <string name="link_indoorequal_description">"Ontdek kaarten van de binnenkant van winkelcentra, stations, enz."</string>
+    <string name="link_thenandnow_description">"Benieuwd naar de vooruitgang die we de afgelopen jaren gemaakt hebben? Vergelijk met hoe de kaart er meer dan 10 jaar geleden uit zag!"</string>
+    <string name="achievement_rare_title">"Op jacht naar de schat"</string>
+    <string name="achievement_rare_solved_X">"Je hebt %d vragen gevonden en beantwoordt die zelden opgelost worden, gefelciteerd!"</string>
+    <string name="achievement_citizen_title">"Burger"</string>
+    <string name="achievement_citizen_solved_X">"Je hebt %d vragen beantwoordt die nuttig zijn voor het dagelijks leven in de stad."</string>
+    <string name="achievement_outdoors_title">"In de vrije natuur"</string>
+
+    <!-- What are outdoor-people? Hikers? -->
+    <string name="achievement_outdoors_solved_X">"Je hebt %d vragen opgelost die nuttig zijn voor mensen in de vrije natuur!"</string>
+    <string name="quest_pedestrian_crossing_island">"Heeft deze oversteekplaats een vluchtheuvel?"</string>
+    <string name="quest_generic_answer_noSign">"Er is geen bord"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Is de rolstoelhelling apart aangegeven op de kaart?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"apart"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"niet apart"</string>
 </resources>

@@ -388,7 +388,7 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="credits_contributors">"Lihat &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;daftar lengkap di Github&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Lihat &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;di POEditor&lt;/a&gt; untuk daftar lengkapnya."</string>
+    <string name="credits_translations">"Lihat &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;di POEditor&lt;/a&gt; untuk daftar lengkapnya."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Terjemahan"</string>
@@ -885,7 +885,6 @@ Pisah sekarang?"</string>
     <string name="quest_tactilePaving_title_tram">"Apa perhentian mobil ini memiliki ubin pemandu?"</string>
     <string name="quest_tactilePaving_title_name_tram">"Apa perhentian mobil %s memiliki ubin pemandu?"</string>
     <string name="quest_maxweight_title">"Apa batas berat di sini?"</string>
-    <string name="quest_maxweight_answer_noSign">"Tidak ada tanda"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Berat ini terlihat tidak wajar. Apa kamu yakin?"</string>
     <string name="quest_maxweight_answer_other_sign">"Tanda terlihat beda..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Apa kamu ingin meninggalkan catatan? Catatan dengan foto akan memudahkan pemeta lain mengurusnya."</string>

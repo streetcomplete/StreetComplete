@@ -212,9 +212,17 @@
       "name": "Jardim de cerveja",
       "terms": "Jardim da Cerveja, esplanada,biergarten"
     },
+    "amenity/binoculars": {
+      "name": "Binóculo panorâmico",
+      "terms": "miradouro,mirante,viewpoint,vista,panorâmica,telescópio,óculo,binóculos,observação,paisagem"
+    },
     "amenity/boat_rental": {
       "name": "Aluguer de barcos",
       "terms": "boat rental, aluguer de barcos, aluguer, locação, barco, barcos, aluga, aluga-se"
+    },
+    "amenity/boat_storage": {
+      "name": "Depósito de barcos",
+      "terms": "barco,embarcação,embarcações,doca seca"
     },
     "amenity/bureau_de_change": {
       "name": "Agência de câmbio",
@@ -268,7 +276,7 @@
       "terms": "filme, filmes, cinema,hollywood"
     },
     "amenity/clinic": {
-      "name": "Centro Clínico",
+      "name": "Centro de saúde / Clínica",
       "terms": "Clinic, Clínica, Centro de Saúde, Unidade de Saúde, Posto de Saúde, Unidade de Saúde Familiar, USF, Agrupamento de Centros de Saúde, ASF, Unidade Local de Saúde, Unidade Básica de Saúde, UBS,urgências,posto médico,"
     },
     "amenity/clinic/abortion": {
@@ -487,6 +495,10 @@
       "name": "Cais de carga",
       "terms": "Cargas,descargas,cargas e descargas,carregamento,doca de carga, carga rodoviária, descarga rodoviária"
     },
+    "amenity/lounger": {
+      "name": "Espreguiçadeira",
+      "terms": "camilha,preguiceira,cama,recosto,lounger"
+    },
     "amenity/love_hotel": {
       "name": "Motel para casais",
       "terms": "Motel"
@@ -502,6 +514,10 @@
     "amenity/money_transfer": {
       "name": "Serviço de transferência de dinheiro",
       "terms": "transferência de dinheiro, transferir dinheiro, envio de dinheiro, Western Union, MoneyGram, enviar dinheiro"
+    },
+    "amenity/mortuary": {
+      "name": "Morgue",
+      "terms": "necrotério,médico-legista"
     },
     "amenity/motorcycle_parking": {
       "name": "Parque de motas",
@@ -1974,8 +1990,8 @@
       "terms": "passadeira levantada, passadeira elevada,lomba,travessia,pedestre,peões"
     },
     "highway/crossing/unmarked": {
-      "name": "Travessia sem marcas",
-      "terms": "passagem de pedestres não marcada, passadeira não marcada, passadeira sem marcas,atravessamento,pedestre,peões,passadeira"
+      "name": "Travessia sem marcações",
+      "terms": "passagem de pedestres não marcada, passadeira não marcada, passadeira sem marcas,atravessamento,pedestre,peões,passadeira,faixa de segurança"
     },
     "highway/crossing/unmarked-raised": {
       "name": "Passadeira não marcada (elevada)",
@@ -3125,6 +3141,10 @@
       "name": "Torre de comunicação",
       "terms": "torre de telecomunicações, radiodifusão, antena, telefone celular, telefone móvel, torre, rádio, mastro de transmissão, pilão de transmissão,televisão,telecomunicações,telecomunicação,transmissão"
     },
+    "man_made/tower/cooling": {
+      "name": "Torre de refrigeração",
+      "terms": "energia,vapor,calor,central,elétrica,arrefecimento,esfriamento,arrefecer,esfriar,nuclear"
+    },
     "man_made/tower/defensive": {
       "name": "Torre fortificada",
       "terms": "fortified tower, bergfried, fortified defensive tower, keep, donjon, torre fortificada, torre da cerca, torre de menagem, torre de atalaia,baluarte,castelo"
@@ -3172,6 +3192,10 @@
     "man_made/windmill": {
       "name": "Moinho de vento",
       "terms": "Windmill,moinho,mó,vento,cereais"
+    },
+    "man_made/windpump": {
+      "name": "Bomba eólica",
+      "terms": "aerotor,bomba de água,moinho de vento,moinho eólico,vento,poço,catavento,bombear,bombeamento,torre,petróleo,gás"
     },
     "man_made/works": {
       "name": "Fábrica",
@@ -3259,6 +3283,10 @@
     "natural/heath": {
       "name": "Charneca",
       "terms": "heath,vegetação,urze,torga,quiroga,queiró,magoriça,tojal,urzal,plantas,área,zona,gândara,esteva,giestas,tojo"
+    },
+    "natural/hot_spring": {
+      "name": "Fonte termal",
+      "terms": "nascente,geotermal,geotérmica,geotermismo,água termal,"
     },
     "natural/mud": {
       "name": "Lama",
@@ -3481,7 +3509,7 @@
     },
     "office/government": {
       "name": "Escritório governamental",
-      "terms": "government office, governo, estado, segurança social, dgv, instituto de emprego, instituto do emprego, centro de emprego, direcção-geral, direção-geral, çoja do cidadão"
+      "terms": "government office, governo, estado, segurança social, dgv, instituto de emprego, instituto do emprego, centro de emprego, direcção-geral, direção-geral, loja do cidadão"
     },
     "office/government/prosecutor": {
       "name": "Gabinete de procuradoria",
@@ -3846,6 +3874,10 @@
       "name": "Paragem de autocarro",
       "terms": "paragem, paragem de autocarro, embarque, autocarro, machimbombo, toca-toca, otocarro, microlete, camionete, camioneta, carreira, ônibus"
     },
+    "public_transport/platform/bus_tram_point": {
+      "name": "Paragem de autocarro e elétrico",
+      "terms": "autocarro,carreira,ônibus,parada,transporte,bonde"
+    },
     "public_transport/platform/ferry": {
       "name": "Plataforma de ferry",
       "terms": "plataforma, ferry, paragem, estação de ferry, barco, atracadouro, atracagem, atracar, embarque, embarcar,travessia"
@@ -4078,7 +4110,7 @@
       "name": "Estação ferroviária"
     },
     "railway/subway": {
-      "name": "Metropolitano",
+      "name": "Linha de metro",
       "terms": "metro, metropolitano, subterrâneo,subway,transportes públicos,carris,linha férrea,caminhos-de-ferro,caminhos de ferro,ferrovia"
     },
     "railway/subway_entrance": {
@@ -4938,6 +4970,10 @@
       "name": "Painel de informação",
       "terms": "placa de informação, informação, informações, painel, placar, placard, placa, painel informativo,informações,turísticas,turismo,mapa,indicações,orientações"
     },
+    "tourism/information/board/welcome_sign": {
+      "name": "Placa de boas-vindas",
+      "terms": "placard,board,outdoor,boas-vindas,bem-vindos,recepção,receção"
+    },
     "tourism/information/guidepost": {
       "name": "Poste com direções",
       "terms": "poste de direções, poste com direções, poste com direções, direção, direção, direções, direções, sinalética, sinalética direções, destinos,indicações"
@@ -5054,21 +5090,9 @@
       "name": "Placa de limite de povoação",
       "terms": "limite da cidade, cidade, aldeia, borda, fim da cidade, início da cidade,rodoviária,estrada"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Placa de limite de povoação",
-      "terms": "limite da cidade, cidade, aldeia, borda, fim da cidade, início da cidade,rodoviária,estrada"
-    },
     "traffic_sign/maxspeed": {
       "name": "Sinal de limite de velocidade",
       "terms": "velocidade máxima, limite de velocidade,estrada,rodoviária"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Sinal de limite de velocidade",
-      "terms": "velocidade máxima, limite de velocidade,estrada,rodoviária"
-    },
-    "traffic_sign_vertex": {
-      "name": "Sinal de trânsito",
-      "terms": "sinais de trânsito, sinal de estrada, sinalização,sinal rodoviário"
     },
     "type/boundary": {
       "name": "Fronteira",
@@ -5159,7 +5183,7 @@
     },
     "type/route/foot": {
       "name": "Rota pedestre",
-      "terms": "rota pedonal, percurso pedestre, percurso pedonal, circuito pedonal, peão"
+      "terms": "rota pedonal,percurso pedestre,percurso pedonal,circuito pedonal,circuito pedestre,percurso recomendado,pequena rota,grande rota,trekking,trail"
     },
     "type/route/hiking": {
       "name": "Rota de caminhada",

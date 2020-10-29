@@ -1345,7 +1345,7 @@
       "terms": "粉刷匠"
     },
     "craft/photographer": {
-      "name": "照相店",
+      "name": "摄影棚",
       "terms": "摄影师"
     },
     "craft/photographic_laboratory": {
@@ -3670,7 +3670,7 @@
     },
     "shop/photo": {
       "name": "照相馆",
-      "terms": "照相馆"
+      "terms": "照相馆,照片"
     },
     "shop/printer_ink": {
       "name": "打印机墨水店"
@@ -3987,12 +3987,6 @@
     "traffic_sign/maxspeed": {
       "name": "限速标志"
     },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "限速标志"
-    },
-    "traffic_sign_vertex": {
-      "name": "交通标志"
-    },
     "type/boundary": {
       "name": "边界",
       "terms": "边界"
@@ -4070,10 +4064,6 @@
     "type/route/ferry": {
       "name": "渡轮航线",
       "terms": "渡轮航线"
-    },
-    "type/route/foot": {
-      "name": "步行线路",
-      "terms": "步行路线,路线,线路"
     },
     "type/route/hiking": {
       "name": "徒步线路",

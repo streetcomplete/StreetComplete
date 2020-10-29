@@ -7,10 +7,10 @@ atmOperators: [ING, Rabobank, ABN AMRO, ABN Amro, Geldmaat, ABN-AMRO, ING Bank, 
       Sneek-ZuidwestFriesland, Rabobank Peelland Zuid, Rabobank Land van Cuijk en Maasduinen, Rabobank
       Hilversum-Vecht en Plassen, Rabobank Helmond, Rabobank Dommelstreek, Rabo, GWK Travelex, ABNAMRO,
    Yourcash, Rabobank Weerterland en Cranendonck, Rabobank Walcheren/ Noord-Beveland, Rabobank Venray,
-   Rabobank Twente Oost, Rabobank Noordenveld West Groningen, Rabobank Groene Hart Noord, Rabobank Centraal
-      Zuid-Limburg, Rabobank Breda, Rabobank Bommelerwaard, Rabobank Amerstreek, Rabobank Alkmaar e.o.,
-   RABO, YourCash, Rabobank Zuidwest-Brabant, Rabobank Voorne-Putten Rozenburg, Rabobank Tilburg en omstreken,
-   Rabobank Terneuzen-Sas van Gent, Rabobank Salland, Rabobank Parkstad Limburg, Rabobank Leeuwarden-Noordwest
+   Rabobank Twente Oost, Rabobank Groene Hart Noord, Rabobank Centraal Zuid-Limburg, Rabobank Breda, Rabobank
+      Bommelerwaard, Rabobank Amerstreek, Rabobank Alkmaar e.o., RABO, YourCash, Rabobank Zuidwest-Brabant,
+   Rabobank Voorne-Putten Rozenburg, Rabobank Tilburg en omstreken, Rabobank Terneuzen-Sas van Gent, Rabobank
+      Salland, Rabobank Parkstad Limburg, Rabobank Noordenveld West Groningen, Rabobank Leeuwarden-Noordwest
       Friesland, Rabobank Hulst, Rabobank Haarlem en Omstreken, Rabobank Drechtsteden, Rabobank Den Haag
       en omgeving, Rabobank Alblasserwaard Noord en Oost, Rabo Bank, GWK, Rabobank Zuid-Holland Midden,
    Rabobank West-Brabant Noord, Rabobank Vijfheerenlanden, Rabobank Valkenswaard en Waalre, Rabobank Schagen-Wieringerland,
@@ -24,18 +24,17 @@ atmOperators: [ING, Rabobank, ABN AMRO, ABN Amro, Geldmaat, ABN-AMRO, ING Bank, 
    Rabobank Noordoostpolder-Urk, Rabobank Noordoost Friesland, Rabobank Noord-Holland Noord, Rabobank
       Noord Gooiland, Rabobank Maashorst, Rabobank Maas en Waal, Rabobank Lopikerwaard, Rabobank Kromme
       Rijnstreek, Rabobank Kop van Noord-Holland, Rabobank Katwijk, Rabobank Het Haringvliet, Rabobank
-      Het Groene Woud Zuid, Rabobank Graafschap-Zuid, Rabobank De Stellingwerven, Rabobank Borger-Klenckeland,
-   Rabobank Bollenstreek, Rabobank Bodegraven-Woerden, Rabobank Bernheze Maasland, Rabobank Assen-Beilen,
-   Rabobank Assen en Noord-Drenthe, Rabobank Amstel en Vecht, Postbank, Albert Heijn, ABNAmro, ABN Ambro,
-   ABN AMRO Bank]
+      Het Groene Woud Zuid, Rabobank Graafschap-Zuid, Rabobank Borger-Klenckeland, Rabobank Bodegraven-Woerden,
+   Rabobank Bernheze Maasland, Rabobank Assen-Beilen, Rabobank Assen en Noord-Drenthe, Rabobank Amstel
+      en Vecht, Postbank, Albert Heijn, ABNAmro, ABN Ambro, ABN AMRO Bank]
 chargingStationOperators: [Allego, NUON, Fastned, Nuon, EVBOX, Ecotap, Vattenfall, NewMotion, EVnetNL, Rotterdam Elektrisch, Qbuzz,
    allego, Pitpoint, Gemeente Rotterdam, gemeente Rotterdam, ecotap, EVBox, EV-Box, We Drive Solar, Liander,
    Havendienst Gemeent Alkmaar, e-laad, PitPoint, LastMileSolutions, EVnet, Terberg Telecom, New Motion,
    Mitsubishi Electric, Green Flux, E-laad, Allegro, Agrisnellaad, GreenFlux, Gemeente Delft, Alfen, Gemeente
       Kerkrade, EV Box, E-bike, Aers Energy, e-laad.nl, Webcompanies.nl, Nuon/Vattenfall, Nuon-Heijmans,
    Lidl, Ionity, Flow, Essent, Enexis, Delta, All Fixed Green Energy, evnetnl, evnet.nl, The New Motion,
-   Rotterdam elektrisch, Natuurmonumenten, Last Mile Solutions, Evnet, Engie, Eneco, EcoTap, ENGIE, AgriSneltank,
-   '''t Weggeler']
+   Rotterdam elektrisch, Natuurmonumenten, Last Mile Solutions, Gemeente Utrecht, Evnet, Engie, Eneco,
+   EcoTap, ENGIE, AgriSneltank, '''t Weggeler']
 clothesContainerOperators: [ROVA, Sympany, Leger des Heils ReShare, Leger des Heils, Gemeente Amsterdam, Curitas, Twiddus, Noppes,
    Leger des heils, hetgoed, Waardlanden, RD4, Opnieuw & Co, HVC]
 isLivingStreetKnown: true

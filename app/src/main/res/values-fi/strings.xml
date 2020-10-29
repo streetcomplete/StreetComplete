@@ -560,7 +560,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="credits_contributors">"Katso &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;täydellinen lista GitHub:issa&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Katso &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projekti POEditorissa&lt;/a&gt; nähdäksesi listan kokonaisuudessaan."</string>
+    <string name="credits_translations">"Katso &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekti POEditorissa&lt;/a&gt; nähdäksesi listan kokonaisuudessaan."</string>
     <string name="credits_translations_title">"Käännökset"</string>
 
     <!-- Fuzzy -->
@@ -1662,9 +1662,6 @@ Jaetaanko nyt?"</string>
     <string name="quest_maxweight_title">"Mikä painorajoitus täällä on?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Täällä ei ole liikennemerkkiä."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Paino näyttää epätodennäköiseltä. Oletko varma, että syöttämäsi tieto on oikein?"</string>
 
     <!-- Fuzzy -->
@@ -2151,6 +2148,7 @@ päiviä"</string>
     <string name="quest_board_type_history">"Historia"</string>
     <string name="quest_board_type_geology">"Geologia"</string>
     <string name="quest_board_type_plants">"Kasvit"</string>
+    <string name="quest_board_type_wildlife">"Villieläimet"</string>
     <string name="quest_board_type_nature">"Luonto (useita aiheita)"</string>
     <string name="quest_board_type_notice_board">"Se on ilmoitustaulu"</string>
     <string name="quest_board_type_public_transport">"Julkinen liikenne"</string>
@@ -2201,5 +2199,44 @@ päiviä"</string>
     <string name="dialog_tutorial_download">"Kun automaattinen synkronointi ei ole käytössä, tehtäviä ei ladata automaattisesti. Voit tehdä tämän manuaalisesti käyttämällä \"%s\" -painiketta paikassa, jonka haluat ladata."</string>
     <string name="about_title_translate">"Auta kääntämään tämä sovellus"</string>
     <string name="about_description_translate">"%1$s on kääntänyt %2$d%%"</string>
+    <string name="quest_oneway2_title">"Onko tämä yksisuuntainen tie? Mihin suuntaan?"</string>
+    <string name="quest_oneway2_dir">"Yksisuuntainen tähän suuntaan"</string>
+    <string name="quest_oneway2_no_oneway">"Ei yksisuuntainen"</string>
+    <string name="quest_maxweight_select_sign">"Valitse merkki"</string>
+    <string name="quest_steps_incline_title">"Mihin suuntaan oon portaiden yläpää?"</string>
+    <string name="quest_steps_incline_up">"Tähän suuntaan ylös"</string>
+    <string name="quest_step_count_title">"Kuinka monta askelmaa tässä on?"</string>
     <string name="quest_traffic_signals_sound_title">"Onko täällä äänimerkkiä sokeille?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Onko näissä liikennevaloissa tuntoindikaattori sokeille ihmisille kertomaan milloin on turvallista ylittää tie?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Vihje: Yleensä kyse on värisevästä painikeesta tai pyörivästä kartiosta liikennevalopainikkeen alapuolella."</string>
+    <string name="quest_busStopRef_title">"Mikä on tämän linja-autopysäkin pysäkkinumero?"</string>
+    <string name="quest_tramStopRef_title">"Mikä on tämän raitiovaunupysäkin pysäkkinumero? 
+"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_bungalow_description2">"Pieni omakotitalo (kesämökki, loma-asunto yms..)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Millaisia esteitä käytetään tällä rautatien ylityspaikassa?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Ei esteitä"</string>
+    <string name="quest_steps_ramp_title">"Onko näissä portaissa ramppia? Millainen?"</string>
+    <string name="quest_steps_ramp_none">"Ei (käytettävää) ramppia"</string>
+    <string name="quest_steps_ramp_bicycle">"Polkupyöräramppi"</string>
+    <string name="quest_steps_ramp_stroller">"Lastenrattaiden ramppi"</string>
+    <string name="quest_steps_ramp_wheelchair">"Pyörätuoliramppi"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_atm_operator_title">"Minkä operaattorin/pankin automaatti tämä on?"</string>
+    <string name="quest_clothes_container_operator_title">"Mikä taho vastaanottaa tämän vaatekeräyksen lahjoitukset?"</string>
+    <string name="quest_charging_station_operator_title">"Kenen operoima latausasema tämä on?"</string>
+    <string name="link_thenandnow_description">"Kiinnostaako mitä edistystä olemme saavuttaneet vuosien varrella?  Vertaa miltä kartta näytti yli 10 vuotta sitten!"</string>
+    <string name="achievement_rare_title">"Aarrejahti"</string>
+    <string name="achievement_rare_solved_X">"Löysit ja ratkaisit %d todella harvoin suoritettua tehtävää, onnittelut!"</string>
+    <string name="achievement_citizen_title">"Kansalainen"</string>
+    <string name="achievement_citizen_solved_X">"Olet ratkaissut %d tehtävää, jotka ovat hyödyllisiä jokapäiväisessä elämässä kaupungissa!"</string>
+    <string name="achievement_outdoors_title">"Ulkona"</string>
+    <string name="achievement_outdoors_solved_X">"Olet ratkaissut %d ulkoilijoille hyödyllistä tehtävää!"</string>
+    <string name="quest_pedestrian_crossing_island">"Onko tällä suojatiellä liikenteen jakaja?"</string>
+    <string name="quest_generic_answer_noSign">"Täällä ei ole merkkiä"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Onko pyörätuoliramppi kuvattu erillisenä reittinä kartalla?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"erillinen"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"ei erillisenä"</string>
 </resources>

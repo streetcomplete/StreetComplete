@@ -1,9 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [HBL, UBL, Askari Bank, MCB, Habib Bank Limited, Meezan Bank, HBL ATM, NBP, Dubai Islamic Bank, Allied
-      Bank, ubl, Standard Chartered Bank, JS Bank, Hbl, Faysal Bank, Bank Islami, Bank Alfalah, Bank Al
+atmOperators: [HBL, UBL, Askari Bank, MCB, Meezan Bank, HBL ATM, Habib Bank Limited, NBP, Allied Bank, ubl, Standard
+      Chartered Bank, JS Bank, Hbl, Faysal Bank, Dubai Islamic Bank, Bank Islami, Bank Alfalah, Bank Al
       Habib, Allied Bank Limited, Summit Bank, Soneri Bank, National Bank, Meezan Bank Limited, Habib
-      Metro Bank, Habib Bank, ATM, mohsin house, hbl atm, United Bank Limited, UBL ATM, National Bank
-      of Pakistan, NIB Bank, Habib Bank Ltd, Habib Bank ATM, Bank AL Habib, Askari bank, Allied bank]
+      Metro Bank, Habib Bank, ATM, mohsin house, hbl atm, UBL ATM, National Bank of Pakistan, NIB Bank,
+   Habib Bank Ltd, Habib Bank ATM, Bank AL Habib, Askari bank, Allied bank]
 isLeftHandTraffic: true
 mobileCountryCode: 410
 officialLanguages: [ur, en, pa]

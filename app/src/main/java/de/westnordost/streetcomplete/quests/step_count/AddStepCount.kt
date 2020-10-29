@@ -19,6 +19,9 @@ class AddStepCount(overpassApi: OverpassMapDataAndGeometryApi)
     override val commitMessage = "Add step count"
     override val wikiLink = "Key:step_count"
     override val icon = R.drawable.ic_quest_steps_count
+    override val isSplitWayEnabled = true
+    // because the user needs to start counting at the start of the steps
+    override val hasMarkersAtEnds = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_title
 

@@ -3942,17 +3942,8 @@
     "traffic_sign/city_limit": {
       "name": "Lakott terület határát jelző tábla"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Lakott terület határát jelző tábla"
-    },
     "traffic_sign/maxspeed": {
       "name": "Sebességkorlátozást jelző tábla"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Sebességkorlátozást jelző tábla"
-    },
-    "traffic_sign_vertex": {
-      "name": "Jelzőtábla"
     },
     "type/boundary": {
       "name": "Határvonal",
@@ -4020,10 +4011,6 @@
     "type/route/ferry": {
       "name": "Kompútvonal",
       "terms": "Kompjárat útvonal"
-    },
-    "type/route/foot": {
-      "name": "Gyalogos útvonal",
-      "terms": "Gyalog útvonal"
     },
     "type/route/hiking": {
       "name": "Turistaút",
@@ -4109,7 +4096,7 @@
       "terms": "üzemanyag,dízel,gázolaj,csónak,hajó, hajóbenzinkút, bunkerolaj"
     },
     "waterway/lock_gate": {
-      "name": "Zsilip",
+      "name": "Zsilipkapu",
       "terms": "csatorna"
     },
     "waterway/milestone": {

@@ -3227,6 +3227,10 @@
       "name": "Windmill",
       "terms": "wind,wheel,mill"
     },
+    "man_made/windpump": {
+      "name": "Windpump",
+      "terms": "aerorotor,water pump,windmill,wind pump"
+    },
     "man_made/works": {
       "name": "Factory",
       "terms": "assembly,build,brewery,car,plant,plastic,processing,manufacture,refinery"

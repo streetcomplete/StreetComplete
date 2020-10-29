@@ -162,6 +162,10 @@
       "name": "Cafe",
       "terms": "Cafe, Café"
     },
+    "amenity/cafe/coffee_shop": {
+      "name": "Kaffebar",
+      "terms": "kaffe,bar,cafe"
+    },
     "amenity/car_pooling": {
       "name": "Samkørselsstation",
       "terms": "delebil,samkørsel,mødested,gomore,ride share"
@@ -432,6 +436,10 @@
       "name": "Politi",
       "terms": "Politistation, Politi"
     },
+    "amenity/post_depot": {
+      "name": "Postsorteringsfacilitet",
+      "terms": "post,forsendelse,pakke,distribution,deopt"
+    },
     "amenity/post_office": {
       "name": "Postkontor",
       "terms": "Posthus, Postkontor"
@@ -459,6 +467,10 @@
     "amenity/recycling_centre": {
       "name": "Genbrugsplads",
       "terms": "Genbrugsplads"
+    },
+    "amenity/research_institute": {
+      "name": "Forskningsinstitutsområde",
+      "terms": "forskning,institut,universitet,udvikling,videnskab"
     },
     "amenity/restaurant": {
       "name": "Restaurant",
@@ -600,6 +612,10 @@
     "amenity/vending_machine/bottle_return": {
       "name": "Pantautomat",
       "terms": "pant,retur,flaske,tomra"
+    },
+    "amenity/vending_machine/bread": {
+      "name": "Brødsalgsautomat",
+      "terms": "brød,automat"
     },
     "amenity/vending_machine/cigarettes": {
       "name": "Cigaretautomat",
@@ -799,7 +815,7 @@
     },
     "barrier/lift_gate": {
       "name": "Løftebom",
-      "terms": "Løftebom, Bom"
+      "terms": "bom,port,løfte,hæve"
     },
     "barrier/retaining_wall": {
       "name": "Støttemur",
@@ -808,6 +824,10 @@
     "barrier/stile": {
       "name": "Stente",
       "terms": "Stente"
+    },
+    "barrier/swing_gate": {
+      "name": "Svingbom",
+      "terms": "bom,sving,rotere,port,"
     },
     "barrier/toll_booth": {
       "name": "Vejafgifthus",
@@ -1244,9 +1264,21 @@
     "emergency/destination": {
       "name": "Udrykningskørsel destination"
     },
+    "emergency/fire_extinguisher": {
+      "name": "Brandslukker",
+      "terms": "pulver,brand,slukker,skum,"
+    },
+    "emergency/fire_hose": {
+      "name": "Brandslange",
+      "terms": "slange,brand,ild"
+    },
     "emergency/fire_hydrant": {
       "name": "Brandhane",
       "terms": "Brandhane"
+    },
+    "emergency/landing_site": {
+      "name": "Redningslandingsplads",
+      "terms": "redning,nødhjælp,akut,læge,hospital,"
     },
     "emergency/life_ring": {
       "name": "Redningskrans",
@@ -1282,6 +1314,14 @@
     },
     "entrance": {
       "name": "Indgang/Udgang"
+    },
+    "entrance/emergency": {
+      "name": "Nødudgang",
+      "terms": "udgang,nød,redning,brand,"
+    },
+    "entrance/emergency_ward_entrance": {
+      "name": "Skadestueindgang",
+      "terms": "indgang,skadestue,akut,læge,hospital,hjælp"
     },
     "ford": {
       "name": "Vadested",
@@ -1411,6 +1451,10 @@
     "highway/elevator": {
       "name": "Elevator",
       "terms": "paternoster"
+    },
+    "highway/emergency_bay": {
+      "name": "Nødvigespor",
+      "terms": "nødspor,spor,redning,akut,fare,havari"
     },
     "highway/footway": {
       "name": "Gangsti",
@@ -1868,6 +1912,10 @@
       "name": "Hundepark",
       "terms": "Hundepark"
     },
+    "leisure/firepit": {
+      "name": "Bålsted",
+      "terms": "lejrbål,bål,ild"
+    },
     "leisure/fitness_centre": {
       "name": "Gym / Fitnesscenter",
       "terms": "Gym / Fitnesscenter, Fitnesscenter"
@@ -1879,6 +1927,10 @@
     "leisure/fitness_station": {
       "name": "Udendørs fitnessplads",
       "terms": "Udendørs fitnessplads, Naturfitnessplads"
+    },
+    "leisure/fitness_station/sign": {
+      "name": "Motionsredskabsinstruktionsskilt",
+      "terms": "motion,fitness,redskab,instruktion,skilt"
     },
     "leisure/garden": {
       "name": "Have",
@@ -2496,6 +2548,10 @@
     "office/government": {
       "name": "Statsligt kontor",
       "terms": "Statslig kontor, Styrelse"
+    },
+    "office/government/prosecutor": {
+      "name": "Offentlig anklager",
+      "terms": "anklager,anklagemyndighed,advokat,jura,stat"
     },
     "office/government/register_office": {
       "name": "Tinglysningskontor",
@@ -3459,10 +3515,6 @@
       "name": "Hastighedsbegrænsningsskilt",
       "terms": "hastighed,fart,skilt,max,maks"
     },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Hastighedsbegrænsningsskilt",
-      "terms": "hastighed,fart,skilt,max,maks"
-    },
     "type/boundary": {
       "name": "Grænse",
       "terms": "Grænse"
@@ -3528,10 +3580,6 @@
     "type/route/ferry": {
       "name": "Færgerute",
       "terms": "Færgerute"
-    },
-    "type/route/foot": {
-      "name": "Vandrerute",
-      "terms": "Vandrerute, Hikingrute"
     },
     "type/route/hiking": {
       "name": "Vandrerute",
@@ -3599,6 +3647,10 @@
     "waterway/fuel": {
       "name": "Søtankstation",
       "terms": "Søtankstation, Bunkerolie"
+    },
+    "waterway/lock_gate": {
+      "name": "Skibssluse",
+      "terms": "skib,sluse,port,kanal,hæve,sænke,hæveværk,skibsfartssluse"
     },
     "waterway/river": {
       "name": "Flod/å",
