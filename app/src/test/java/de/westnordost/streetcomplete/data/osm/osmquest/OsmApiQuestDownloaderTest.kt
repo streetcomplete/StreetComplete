@@ -33,7 +33,6 @@ class OsmApiQuestDownloaderTest {
     private lateinit var mapDataApi: MapDataApi
     private lateinit var mapDataWithGeometry: CachingMapDataWithGeometry
     private lateinit var elementGeometryCreator: ElementGeometryCreator
-    private lateinit var elementEligibleForOsmQuestChecker: ElementEligibleForOsmQuestChecker
     private lateinit var downloader: OsmApiQuestDownloader
 
     private val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
@@ -47,13 +46,12 @@ class OsmApiQuestDownloaderTest {
         mapDataWithGeometry = mock()
         elementGeometryCreator = mock()
         notePositionsSource = mock()
-        elementEligibleForOsmQuestChecker = mock()
         val countryBoundariesFuture = FutureTask { countryBoundaries }
         countryBoundariesFuture.run()
         val mapDataProvider = Provider { mapDataWithGeometry }
         downloader = OsmApiQuestDownloader(
             elementDb, osmQuestController, countryBoundariesFuture, notePositionsSource, mapDataApi,
-            mapDataProvider, elementGeometryCreator, elementEligibleForOsmQuestChecker)
+            mapDataProvider, elementGeometryCreator)
     }
 
     @Test fun `creates quest for element`() {
@@ -63,7 +61,6 @@ class OsmApiQuestDownloaderTest {
         val questType = TestMapDataQuestType(listOf(node))
 
         on(mapDataWithGeometry.getNodeGeometry(5)).thenReturn(geom)
-        on(elementEligibleForOsmQuestChecker.mayCreateQuestFrom(any(), any(), any())).thenReturn(true)
         on(osmQuestController.replaceInBBox(any(), any(), any())).thenAnswer {
             val createdQuests = it.arguments[0] as List<OsmQuest>
             assertEquals(1, createdQuests.size)
