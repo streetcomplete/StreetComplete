@@ -21,9 +21,15 @@ class AddSuspectedOneway(
 ) : OsmElementQuestType<SuspectedOnewayAnswer> {
 
     private val filter by lazy { """
-        ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road
-         and !oneway and junction != roundabout and area != yes
-         and (access !~ private|no or (foot and foot !~ private|no))
+        ways with 
+          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road
+          and !oneway
+          and junction != roundabout
+          and area != yes
+          and (
+            access !~ private|no
+            or (foot and foot !~ private|no)
+          )
     """.toElementFilterExpression() }
 
     override val commitMessage =

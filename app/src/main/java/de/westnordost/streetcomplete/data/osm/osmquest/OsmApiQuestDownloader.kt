@@ -29,8 +29,8 @@ import javax.inject.Inject
 import javax.inject.Provider
 import kotlin.collections.ArrayList
 
-/** Does one API call to get all the map data and generates quests from that. Calls isApplicable
- *  on all the quest types on all elements in the downloaded data. */
+/** Does one API call to get all the map data and generates quests from that. Calls getApplicableElements
+ *  on all the quest types */
 class OsmApiQuestDownloader @Inject constructor(
     private val elementDB: MergedElementDao,
     private val osmQuestController: OsmQuestController,
