@@ -8,7 +8,7 @@
 
         <ListPreference
             android:key="autosync"
-            android:title="@string/pref_title_sync"
+            android:title="@string/pref_title_sync2"
             android:summary="%s"
             android:defaultValue="ON"
             android:entries="@array/pref_entries_autosync"
@@ -92,16 +92,6 @@
             android:dialogLayout="@layout/dialog_number_picker_preference"
             android:positiveButtonText="@android:string/ok"
             android:negativeButtonText="@android:string/cancel"
-            />
-      
-        <ListPreference
-            android:key="overpass_url"
-            android:title="@string/pref_title_overpass_url_select"
-            android:summary="@string/pref_title_overpass_url_info"
-            android:defaultValue="https://lz4.overpass-api.de/api/"
-            android:entries="@array/pref_overpass_url_select"
-            android:entryValues="@array/pref_overpass_url_select"
-            android:persistent="true"
             />
       
     </PreferenceCategory>

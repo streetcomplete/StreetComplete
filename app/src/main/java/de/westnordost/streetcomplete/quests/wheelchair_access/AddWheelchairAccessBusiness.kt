@@ -2,17 +2,15 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import java.util.concurrent.FutureTask
 
 class AddWheelchairAccessBusiness(
-    o: OverpassMapDataAndGeometryApi,
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : SimpleOverpassQuestType<String>(o)
+) : OsmFilterQuestType<String>()
 {
-    override val tagFilters = """
+    override val elementFilter = """
         nodes, ways, relations with
         (
          shop and shop !~ no|vacant

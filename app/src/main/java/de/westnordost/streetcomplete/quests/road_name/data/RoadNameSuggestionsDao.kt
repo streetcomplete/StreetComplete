@@ -7,6 +7,8 @@ import de.westnordost.osmapi.map.data.Element
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.ktx.getBlob
@@ -21,9 +23,14 @@ import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Column
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.NAME
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.ktx.toObject
+import de.westnordost.streetcomplete.ktx.transaction
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.LAST_UPDATE
 import de.westnordost.streetcomplete.util.distanceToArcs
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import java.util.*
 import java.util.regex.Pattern
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class RoadNameSuggestionsDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
@@ -40,9 +47,18 @@ class RoadNameSuggestionsDao @Inject constructor(
             MIN_LATITUDE to bbox.minLatitude,
             MIN_LONGITUDE to bbox.minLongitude,
             MAX_LATITUDE to bbox.maxLatitude,
-            MAX_LONGITUDE to bbox.maxLongitude
+            MAX_LONGITUDE to bbox.maxLongitude,
+            LAST_UPDATE to Date().time
         )
         db.replaceOrThrow(NAME, null, v)
+    }
+
+    fun putRoads(roads: Iterable<RoadNameSuggestionEntry>) {
+        db.transaction {
+            for (road in roads) {
+                putRoad(road.wayId, road.namesByLanguage, road.geometry)
+            }
+        }
     }
 
     /** returns something like [{"": "17th Street", "de": "17. Straße", "en": "17th Street", "international": "17 🛣 ️" }, ...] */
@@ -93,19 +109,16 @@ class RoadNameSuggestionsDao @Inject constructor(
         // return only the road names, sorted by distance ascending
         return distancesByRoad.entries.sortedBy { it.value }.map { it.key }
     }
-}
 
-fun RoadNameSuggestionsDao.putRoadNameSuggestion(element: Element, geometry: ElementGeometry?) {
-    if (element.type != Element.Type.WAY) return
-    if (geometry !is ElementPolylinesGeometry) return
-    val namesByLanguage = element.tags?.toRoadNameByLanguage() ?: return
-
-    putRoad(element.id, namesByLanguage, geometry.polylines.first())
+    fun cleanUp() {
+        val oldNameSuggestionsTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER
+        db.delete(NAME, "$LAST_UPDATE < ?", arrayOf(oldNameSuggestionsTimestamp.toString()))
+    }
 }
 
 /** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang)
  *  int_name becomes "international" */
-private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
+fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
     val result = mutableMapOf<String,String>()
     val namePattern = Pattern.compile("name(:(.*))?")
     for ((key, value) in this) {
@@ -119,3 +132,9 @@ private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
     }
     return if (result.isEmpty()) null else result
 }
+
+data class RoadNameSuggestionEntry(
+    val wayId: Long,
+    val namesByLanguage: Map<String, String>,
+    val geometry: List<LatLon>
+)

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.ktx
 
+import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.OsmLatLon
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -49,18 +51,23 @@ class CollectionsTest {
         assertNull(listOf(1, 2, 3).findPrevious(-1) { true })
     }
 
-    @Test fun `forEachPair with empty list`() {
-        listOf<String>().forEachPair { _, _ -> fail() }
+    @Test fun `forEachLine with empty list`() {
+        listOf<LatLon>().forEachLine { _, _ -> fail() }
     }
 
-    @Test fun `forEachPair with list with only one element`() {
-        listOf(1).forEachPair { _, _ -> fail() }
+    @Test fun `forEachLine with list with only one element`() {
+        listOf(OsmLatLon(0.0,0.0)).forEachLine { _, _ -> fail() }
     }
 
-    @Test fun `forEachPair with several elements`() {
+    @Test fun `forEachLine with several elements`() {
         var counter = 0
-        listOf(1,2,3,4).forEachPair { first, second ->
-            assertEquals(first+1, second)
+        listOf(
+            OsmLatLon(0.0,0.0),
+            OsmLatLon(1.0,0.0),
+            OsmLatLon(2.0,0.0),
+            OsmLatLon(3.0,0.0),
+        ).forEachLine { first, second ->
+            assertEquals(first.latitude + 1, second.latitude, 0.0)
             counter++
         }
         assertEquals(3, counter)

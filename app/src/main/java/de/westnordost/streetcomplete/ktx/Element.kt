@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import java.util.ArrayList
 
 fun Element.copy(newId: Long = id, newVersion: Int = version): Element {
@@ -24,7 +24,7 @@ fun Element.isArea(): Boolean {
     }
 }
 
-private val IS_AREA_EXPR = ElementFiltersParser().parse("""
+private val IS_AREA_EXPR = """
     ways with area = yes or area != no and (
     aeroway
     or amenity
@@ -49,4 +49,4 @@ private val IS_AREA_EXPR = ElementFiltersParser().parse("""
     or cemetery ~ sector|grave
     or natural ~ wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud|water|wetland|glacier|beach|rock|sinkhole
     or man_made ~ beacon|bridge|campanile|dolphin|lighthouse|obelisk|observatory|tower|bunker_silo|chimney|gasometer|kiln|mineshaft|petroleum_well|silo|storage_tank|watermill|windmill|works|communications_tower|monitoring_station|street_cabinet|pumping_station|reservoir_covered|wastewater_plant|water_tank|water_tower|water_well|water_works
-    )""")
+    )""".toElementFilterExpression()

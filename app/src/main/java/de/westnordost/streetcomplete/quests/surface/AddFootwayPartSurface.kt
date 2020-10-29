@@ -2,31 +2,26 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddFootwayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<SurfaceAnswer>(o) {
+class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
-    override val tagFilters = """
-        ways with
-        (
+    override val elementFilter = """
+        ways with (
           highway = footway
           or (highway ~ path|cycleway|bridleway and foot != no)
         )
         and segregated = yes
         and (
-            !footway:surface or
-            footway:surface older today -${r * 8} years
-            or
-                (
-                footway:surface ~ paved|unpaved
-                and !footway:surface:note
-                and !note:footway:surface
-                )
-            )
+          !footway:surface
+          or footway:surface older today -8 years
+          or (
+            footway:surface ~ paved|unpaved
+            and !footway:surface:note
+            and !note:footway:surface
+          )
+        )
     """
     override val commitMessage = "Add path surfaces"
     override val wikiLink = "Key:surface"

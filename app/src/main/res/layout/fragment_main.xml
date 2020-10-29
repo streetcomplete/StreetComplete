@@ -160,10 +160,10 @@
 
         <fragment
             android:id="@+id/quest_download_progress_fragment"
-            android:name="de.westnordost.streetcomplete.controls.QuestDownloadProgressFragment"
+            android:name="de.westnordost.streetcomplete.controls.DownloadProgressFragment"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            tools:layout="@layout/fragment_quest_download_progress"
+            tools:layout="@layout/fragment_download_progress"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="32dp"

@@ -1,11 +1,10 @@
 package de.westnordost.streetcomplete.quests.sport
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddSport(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<List<String>>(o) {
+class AddSport : OsmFilterQuestType<List<String>>() {
 
     private val ambiguousSportValues = listOf(
         "team_handball", // -> not really ambiguous but same as handball
@@ -14,7 +13,7 @@ class AddSport(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<List<
         "football" // -> american_football, soccer or other *_football
     )
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes, ways with leisure = pitch and
         (!sport or sport ~ ${ambiguousSportValues.joinToString("|")} )
         and (access !~ private|no)

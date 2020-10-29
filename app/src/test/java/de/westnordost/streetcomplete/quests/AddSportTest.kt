@@ -8,7 +8,7 @@ import org.junit.Test
 
 class AddSportTest {
 
-    private val questType = AddSport(mock())
+    private val questType = AddSport()
 
     @Test fun `replace hockey when applying answer`() {
         questType.verifyAnswer(

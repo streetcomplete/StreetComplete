@@ -3,14 +3,13 @@ package de.westnordost.streetcomplete.quests
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
 import org.junit.Test
 import java.util.*
 
 class AddCrossingTypeTest {
 
-    private val questType = AddCrossingType(mock(), mock())
+    private val questType = AddCrossingType()
 
     @Test fun `apply normal answer`() {
         questType.verifyAnswer(

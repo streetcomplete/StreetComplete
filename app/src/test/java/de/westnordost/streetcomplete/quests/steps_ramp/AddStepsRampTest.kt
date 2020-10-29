@@ -4,14 +4,13 @@ import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 import java.util.*
 
 class AddStepsRampTest {
 
-    private val questType = AddStepsRamp(mock(), mock())
+    private val questType = AddStepsRamp()
 
     @Test fun `apply bicycle ramp answer`() {
         questType.verifyAnswer(

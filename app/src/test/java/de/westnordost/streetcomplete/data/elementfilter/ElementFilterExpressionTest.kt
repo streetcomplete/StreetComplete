@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 
 import org.junit.Assert.*
+import java.util.*
 
 class ElementFilterExpressionTest {
     // Tests for toOverpassQLString are in FiltersParserTest
@@ -65,7 +66,7 @@ class ElementFilterExpressionTest {
 
     @Test fun `matches filter`() {
         val tagFilter: ElementFilter = mock()
-        val expr = ElementFilterExpression(listOf(ElementsTypeFilter.NODES), Leaf(tagFilter))
+        val expr = ElementFilterExpression(EnumSet.of(ElementsTypeFilter.NODES), Leaf(tagFilter))
 
         on(tagFilter.matches(any())).thenReturn(true)
         assertTrue(expr.matches(node))
@@ -82,6 +83,15 @@ class ElementFilterExpressionTest {
     private fun createMatchExpression(vararg elementsTypeFilter: ElementsTypeFilter): ElementFilterExpression {
         val tagFilter: ElementFilter = mock()
         on(tagFilter.matches(any())).thenReturn(true)
-        return ElementFilterExpression(elementsTypeFilter.asList(), Leaf(tagFilter))
+        return ElementFilterExpression(createEnumSet(*elementsTypeFilter), Leaf(tagFilter))
+    }
+
+    private fun createEnumSet(vararg filters: ElementsTypeFilter): EnumSet<ElementsTypeFilter> {
+        return when (filters.size) {
+            1 -> EnumSet.of(filters[0])
+            2 -> EnumSet.of(filters[0], filters[1])
+            3 -> EnumSet.of(filters[0], filters[1], filters[2])
+            else -> throw IllegalStateException()
+        }
     }
 }

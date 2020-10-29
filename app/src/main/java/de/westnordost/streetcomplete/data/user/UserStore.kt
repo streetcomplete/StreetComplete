@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.data.user
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import de.westnordost.osmapi.common.Iso8601CompatibleDateFormat
 import de.westnordost.osmapi.user.UserDetails
 import de.westnordost.streetcomplete.Prefs
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -21,7 +21,7 @@ import javax.inject.Singleton
     }
     private val listeners: MutableList<UpdateListener> = CopyOnWriteArrayList()
 
-    private val dateFormat = Iso8601CompatibleDateFormat("yyyy-MM-dd HH:mm:ss z")
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss z", Locale.US)
 
     val userId: Long get() = prefs.getLong(Prefs.OSM_USER_ID, -1)
     val userName: String? get() = prefs.getString(Prefs.OSM_USER_NAME, null)

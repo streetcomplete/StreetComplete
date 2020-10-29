@@ -3,15 +3,12 @@ package de.westnordost.streetcomplete.quests.steps_ramp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddStepsRamp(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<StepsRampAnswer>(o) {
+class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway = steps
          and (!indoor or indoor = no)
          and access !~ private|no
@@ -20,8 +17,8 @@ class AddStepsRamp(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
          and (
            !ramp
            or (ramp = yes and !ramp:stroller and !ramp:bicycle and !ramp:wheelchair)
-           or ramp = no and ramp older today -${r * 4} years
-           or ramp older today -${r * 8} years
+           or ramp = no and ramp older today -4 years
+           or ramp older today -8 years
          )
     """
 

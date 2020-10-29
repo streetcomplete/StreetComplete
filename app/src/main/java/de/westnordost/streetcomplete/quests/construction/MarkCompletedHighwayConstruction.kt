@@ -5,19 +5,16 @@ import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import java.util.*
 
-class MarkCompletedHighwayConstruction(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<Boolean>(o) {
+class MarkCompletedHighwayConstruction : OsmFilterQuestType<Boolean>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway = construction
          and (!opening_date or opening_date < today)
-         and older today -${r * 2} weeks
+         and older today -2 weeks
     """
     override val commitMessage = "Determine whether construction is now completed"
     override val wikiLink = "Tag:highway=construction"
