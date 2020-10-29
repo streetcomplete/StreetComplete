@@ -1800,9 +1800,6 @@
     "type/route/ferry": {
       "name": "Kelto maršrutas"
     },
-    "type/route/foot": {
-      "name": "Pėsčiųjų maršrutas"
-    },
     "type/route/hiking": {
       "name": "Žygių maršrutas"
     },

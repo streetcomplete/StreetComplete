@@ -2301,4 +2301,8 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="achievement_outdoors_title">"En plein air"</string>
     <string name="achievement_outdoors_solved_X">"Vous avez résolu %d quêtes utiles aux amateurs de plein air !"</string>
     <string name="quest_pedestrian_crossing_island">"Est ce que ce passage piéton est équipé d'une île de refuge ?"</string>
+    <string name="quest_generic_answer_noSign">"Il n'y a pas de panneau"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Y a t'il une rampe pour fauteuils roulants représentée comme une voie séparée sur la carte ?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"Séparée"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"Non séparée"</string>
 </resources>

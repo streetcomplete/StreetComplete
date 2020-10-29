@@ -8,8 +8,8 @@ atmOperators: [ПриватБанк, Альфа-Банк, Ощадбанк, Пр
    Експрес-Банк, Брокбізнесбанк, Universal Bank, KredoBank, Crédit Agricole, Укрінбанк, УкрГазБанк, КредоБанк,
    Индустриалбанк, UniCredit, Raiffeisen Bank Aval, Privat Bank, '"АБ ""УКРГАЗБАНК"""']
 chargingStationOperators: ['"Перша національна мережа електрозаправних комплексів ""Тока"""', Одеська міська рада, АвтоЭнтерпрайз,
-   ЕлектроДрайв, Autoenterprise, AutoEnterprise, Yasno, ElectroUA, Автоэнтерпрайз, Автоентерпрайз, Electro
-      UA, AutoEnterprise 201, АвтоЕнтерпрайз, Tesla Club Ukraine, Go To-U, AutoVolt]
+   ЕлектроДрайв, Autoenterprise, AutoEnterprise, Yasno, ElectroUA, Автоэнтерпрайз, Автоентерпрайз, Silver
+      Fox Energy, Electro UA, AutoEnterprise 201, АвтоЕнтерпрайз, Tesla Club Ukraine, Go To-U, AutoVolt]
 clothesContainerOperators: [Емаус-Оселя]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true

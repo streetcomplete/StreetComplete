@@ -2136,4 +2136,8 @@
     <string name="achievement_outdoors_title">"Ύπαιθρο"</string>
     <string name="achievement_outdoors_solved_X">"Λύσατε %d αναζητήσεις που είναι χρήσιμες για άτομα της υπαίθρου!"</string>
     <string name="quest_pedestrian_crossing_island">"Έχει νησίδα αυτή η διάβαση πεζών;"</string>
+    <string name="quest_generic_answer_noSign">"Δεν υπάρχει πινακίδα"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Η ράμπα αναπηρικού αμαξίδιου εμφανίζεται ως ξεχωριστή διαδρομή στον χάρτη;"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"ξεχωριστή"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"όχι ξεχωριστή"</string>
 </resources>

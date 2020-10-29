@@ -2157,9 +2157,6 @@
     "type/route/ferry": {
       "name": "Ruta de ferri"
     },
-    "type/route/foot": {
-      "name": "Ruta a peu"
-    },
     "type/route/hiking": {
       "name": "Ruta senderista"
     },

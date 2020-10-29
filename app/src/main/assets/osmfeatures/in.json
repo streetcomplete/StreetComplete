@@ -1334,9 +1334,6 @@
     "type/route/ferry": {
       "name": "Rute Feri"
     },
-    "type/route/foot": {
-      "name": "Rute Jalan Kaki"
-    },
     "type/route/hiking": {
       "name": "Rute Pendakian"
     },

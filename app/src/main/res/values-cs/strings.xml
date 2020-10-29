@@ -2402,4 +2402,8 @@ Is the situation on this cycleway still the same? -->
     <string name="achievement_outdoors_title">"Outdoorák"</string>
     <string name="achievement_outdoors_solved_X">"Vyřešili jste %d úkolů užitečných pro lidi, co rádi chodí do přírody!"</string>
     <string name="quest_pedestrian_crossing_island">"Má tento přechod pro chodce ostrůvek?"</string>
+    <string name="quest_generic_answer_noSign">"Není tu žádná značka"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Je rampa pro invalidní vozíky na mapě zobrazená jako samostatná cesta?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"samostatná"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"Není samostatná"</string>
 </resources>

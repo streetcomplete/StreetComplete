@@ -2387,4 +2387,8 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="achievement_outdoors_title">"Ó ar libre"</string>
     <string name="achievement_outdoors_solved_X">"Resolviches %d tarefas útiles ó ar libre (exteriores)!"</string>
     <string name="quest_pedestrian_crossing_island">"Este paso de peóns ten unha illa (refuxio) de separación?"</string>
+    <string name="quest_generic_answer_noSign">"Non hai sinal"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"A rampla para cadeiras de rodas amósase coma unha vía separada no mapa?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"non separada"</string>
 </resources>
