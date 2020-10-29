@@ -8,10 +8,8 @@ public class ApplicationConstants
 		QUESTTYPE_TAG_KEY = NAME + ":quest_type";
 
 	public final static double
-		MAX_DOWNLOADABLE_AREA_IN_SQKM = 10,
+		MAX_DOWNLOADABLE_AREA_IN_SQKM = 12.0,
 		MIN_DOWNLOADABLE_AREA_IN_SQKM = 0.1;
-
-	public final static double MIN_DOWNLOADABLE_RADIUS_IN_METERS = 600;
 
 	public final static String DATABASE_NAME = "streetcomplete.db";
 
