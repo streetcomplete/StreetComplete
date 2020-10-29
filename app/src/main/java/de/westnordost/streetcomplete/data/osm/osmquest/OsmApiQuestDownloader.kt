@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.osmquest
 
 import android.util.Log
+import de.westnordost.countryboundaries.isInAny
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.countryboundaries.intersects
 import de.westnordost.osmapi.common.errors.OsmQueryTooBigException
@@ -16,9 +17,11 @@ import de.westnordost.osmapi.map.isRelationComplete
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.util.measuredLength
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,8 +41,7 @@ class OsmApiQuestDownloader @Inject constructor(
     private val notePositionsSource: NotePositionsSource,
     private val mapDataApi: MapDataApi,
     private val mapDataWithGeometry: Provider<CachingMapDataWithGeometry>,
-    private val elementGeometryCreator: ElementGeometryCreator,
-    private val elementEligibleForOsmQuestChecker: ElementEligibleForOsmQuestChecker
+    private val elementGeometryCreator: ElementGeometryCreator
 ) : CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     fun download(questTypes: List<OsmElementQuestType<*>>, bbox: BoundingBox) {
@@ -75,10 +77,8 @@ class OsmApiQuestDownloader @Inject constructor(
                         var i = 0
                         val questTime = System.currentTimeMillis()
                         for (element in questType.getApplicableElements(mapData)) {
-                            val geometry = getCompleteGeometry(element.type!!, element.id, mapData, completeRelationGeometries)
-                            if (!elementEligibleForOsmQuestChecker.mayCreateQuestFrom(questType, geometry, truncatedBlacklistedPositions)) continue
-
-                            val quest = OsmQuest(questType, element.type, element.id, geometry!!)
+                            val geometry = getCompleteGeometry(element.type, element.id, mapData, completeRelationGeometries)
+                            val quest = createQuest(questType, element, geometry, truncatedBlacklistedPositions) ?: continue
 
                             quests.add(quest)
                             questElements.add(element)
@@ -112,6 +112,28 @@ class OsmApiQuestDownloader @Inject constructor(
         Log.i(TAG,"Persisting ${quests.size} quests in ${secondsSpentPersisting}s")
 
         Log.i(TAG,"Added ${replaceResult.added} new and removed ${replaceResult.deleted} already resolved quests")
+    }
+
+    private fun createQuest(questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry?, blacklistedPositions: Set<LatLon>): OsmQuest? {
+        // invalid geometry -> can't show this quest, so skip it
+        val pos = geometry?.center ?: return null
+
+        // do not create quests whose marker is at/near a blacklisted position
+        if (blacklistedPositions.contains(pos.truncateTo5Decimals()))  return null
+
+        // do not create quests in countries where the quest is not activated
+        val countries = questType.enabledInCountries
+        if (!countryBoundariesFuture.get().isInAny(pos, countries))  return null
+
+        // do not create quests that refer to geometry that is too long for a surveyor to be expected to survey
+        if (geometry is ElementPolylinesGeometry) {
+            val totalLength = geometry.polylines.sumByDouble { it.measuredLength() }
+            if (totalLength > MAX_GEOMETRY_LENGTH_IN_METERS) {
+                return null
+            }
+        }
+
+        return OsmQuest(questType, element.type, element.id, geometry)
     }
 
     private fun getCompleteGeometry(
@@ -183,3 +205,5 @@ private fun BoundingBox.splitIntoFour(): List<BoundingBox> {
         BoundingBox(center.latitude, center.longitude, maxLatitude,     maxLongitude)
     )
 }
+
+const val MAX_GEOMETRY_LENGTH_IN_METERS = 600
