@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests.tourism_information
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddInformationToTourism(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddInformationToTourism : OsmFilterQuestType<String>() {
 
-    override val tagFilters = "nodes, ways, relations with tourism = information and !information"
+    override val elementFilter = "nodes, ways, relations with tourism = information and !information"
     override val commitMessage = "Add information type to tourist information"
     override val wikiLink = "Tag:tourism=information"
     override val icon = R.drawable.ic_quest_information

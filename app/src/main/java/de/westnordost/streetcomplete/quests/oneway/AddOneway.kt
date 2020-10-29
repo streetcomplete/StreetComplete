@@ -1,38 +1,32 @@
 package de.westnordost.streetcomplete.quests.oneway
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
-import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.bikeway.createCyclewaySides
 import de.westnordost.streetcomplete.quests.bikeway.estimatedWidth
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
 import de.westnordost.streetcomplete.quests.parking_lanes.*
 
-class AddOneway(
-    private val overpassMapDataApi: OverpassMapDataAndGeometryApi
-) : OsmElementQuestType<OnewayAnswer> {
+class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     /** find all roads */
-    private val allRoadsFilter by lazy { ElementFiltersParser().parse("""
+    private val allRoadsFilter by lazy { """
         ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes
-    """) }
+    """.toElementFilterExpression() }
 
     /** find only those roads eligible for asking for oneway */
-    private val tagFilter by lazy { ElementFiltersParser().parse("""
+    private val elementFilter by lazy { """
         ways with highway ~ living_street|residential|service|tertiary|unclassified
          and !oneway and area != yes and junction != roundabout 
          and (access !~ private|no or (foot and foot !~ private|no))
          and lanes <= 1 and width
-    """) }
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add whether this road is a one-way road because it is quite slim"
     override val wikiLink = "Key:oneway"
@@ -42,48 +36,40 @@ class AddOneway(
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway2_title
 
-    override fun isApplicableTo(element: Element): Boolean? = null
-    /* return null because we also want to have a look at the surrounding geometry to filter out
-    *  (some) dead ends */
-
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        val query = bbox.toGlobalOverpassBBox() + "\n" + allRoadsFilter.toOverpassQLString() + getQuestPrintStatement()
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val allRoads = mapData.ways.filter { allRoadsFilter.matches(it) && it.nodeIds.size >= 2 }
         val connectionCountByNodeIds = mutableMapOf<Long, Int>()
-        val onewayCandidates = mutableListOf<Pair<Way, ElementGeometry?>>()
-        val result = overpassMapDataApi.query(query) { element, geometry ->
-            if (element is Way && element.nodeIds.size >= 2) {
-                for (nodeId in element.nodeIds) {
-                    val prevCount = connectionCountByNodeIds[nodeId] ?: 0
-                    connectionCountByNodeIds[nodeId] = prevCount + 1
-                }
+        val onewayCandidates = mutableListOf<Way>()
 
-                if (element.tags != null && tagFilter.matches(element)) {
-                    // check if the width of the road minus the space consumed by parking lanes is quite narrow
-                    val width = element.tags["width"]?.toFloatOrNull()
-                    val isNarrow = width != null && width <= estimatedWidthConsumedByOtherThings(element.tags) + 4f
-                    if (isNarrow) {
-                        onewayCandidates.add(element to geometry)
-                    }
+        for (road in allRoads) {
+            for (nodeId in road.nodeIds) {
+                val prevCount = connectionCountByNodeIds[nodeId] ?: 0
+                connectionCountByNodeIds[nodeId] = prevCount + 1
+            }
+            if (elementFilter.matches(road)) {
+                // check if the width of the road minus the space consumed by other stuff is quite narrow
+                val width = road.tags["width"]?.toFloatOrNull()
+                val isNarrow = width != null && width <= estimatedWidthConsumedByOtherThings(road.tags) + 4f
+                if (isNarrow) {
+                    onewayCandidates.add(road)
                 }
             }
         }
-        if (!result) return false
 
-        for ((way, geometry) in onewayCandidates) {
+        return onewayCandidates.filter {
             /* ways that are simply at the border of the download bounding box are treated as if
                they are dead ends. This is fine though, because it only leads to this quest not
                showing up for those streets (which is better than the other way round)
             */
-            val hasConnectionOnBothEnds =
-                (connectionCountByNodeIds[way.nodeIds.first()] ?: 0) > 1 &&
-                (connectionCountByNodeIds[way.nodeIds.last()] ?: 0) > 1
-
-            if (hasConnectionOnBothEnds) {
-                handler(way, geometry)
-            }
+            // check if the way has connections to other roads at both ends
+            (connectionCountByNodeIds[it.nodeIds.first()] ?: 0) > 1 &&
+            (connectionCountByNodeIds[it.nodeIds.last()] ?: 0) > 1
         }
-        return true
     }
+
+    override fun isApplicableTo(element: Element): Boolean? = null
+    /* return null because we also want to have a look at the surrounding geometry to filter out
+    *  (some) dead ends */
 
     private fun estimatedWidthConsumedByOtherThings(tags: Map<String, String>): Float {
         return estimateWidthConsumedByParkingLanes(tags) +

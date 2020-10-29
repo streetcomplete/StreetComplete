@@ -2,18 +2,15 @@ package de.westnordost.streetcomplete.quests.motorcycle_parking_capacity
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddMotorcycleParkingCapacity(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<Int>(o) {
+class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes, ways with amenity = motorcycle_parking 
          and access !~ private|no
-         and (!capacity or capacity older today -${r * 4} years)
+         and (!capacity or capacity older today -4 years)
     """
     override val commitMessage = "Add motorcycle parking capacities"
     override val wikiLink = "Tag:amenity=motorcycle_parking"

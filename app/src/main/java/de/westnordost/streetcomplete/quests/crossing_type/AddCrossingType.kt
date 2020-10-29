@@ -3,15 +3,12 @@ package de.westnordost.streetcomplete.quests.crossing_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddCrossingType(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+class AddCrossingType : OsmFilterQuestType<String>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes with highway = crossing
           and foot != no
           and (
@@ -19,7 +16,7 @@ class AddCrossingType(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStor
             or crossing ~ island|unknown|yes
             or (
               crossing ~ traffic_signals|uncontrolled|zebra|marked|unmarked
-              and crossing older today -${r * 8} years
+              and crossing older today -8 years
             )
           )
     """

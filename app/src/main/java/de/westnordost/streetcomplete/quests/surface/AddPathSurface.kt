@@ -3,29 +3,26 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddPathSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<SurfaceAnswer>(o) {
+class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
         and segregated != yes
         and access !~ private|no
-        and (!conveying or conveying = no) and (!indoor or indoor = no)
+        and (!conveying or conveying = no)
+        and (!indoor or indoor = no)
         and (
-            !surface
-            or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -${r * 4} years
-            or surface older today -${r * 8} years
-            or
-                (
-                surface ~ paved|unpaved
-                and !surface:note
-                and !note:surface
-                )
+          !surface
+          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -4 years
+          or surface older today -8 years
+          or (
+            surface ~ paved|unpaved
+            and !surface:note
+            and !note:surface
+          )
         )
     """
     /* ~paved ways are less likely to change the surface type */

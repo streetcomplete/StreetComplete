@@ -10,7 +10,7 @@ import org.junit.Test
 
 class AddRoadNameTest {
 
-    private val questType = AddRoadName(mock(), mock())
+    private val questType = AddRoadName(mock())
 
     private val tags = mapOf("highway" to "residential")
 

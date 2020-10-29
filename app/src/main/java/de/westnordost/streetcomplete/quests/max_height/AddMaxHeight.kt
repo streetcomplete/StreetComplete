@@ -1,28 +1,24 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
-import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 
-class AddMaxHeight(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<MaxHeightAnswer> {
+class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
-    private val nodeFilter by lazy { ElementFiltersParser().parse("""
+    private val nodeFilter by lazy { """
         nodes with
         (
           barrier = height_restrictor
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )
         and !maxheight and !maxheight:physical
-    """)}
+    """.toElementFilterExpression()}
 
-    private val wayFilter by lazy { ElementFiltersParser().parse("""
+    private val wayFilter by lazy { """
         ways with
         (
           highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
@@ -30,7 +26,7 @@ class AddMaxHeight(private val overpassApi: OverpassMapDataAndGeometryApi) : Osm
         )
         and (covered = yes or tunnel ~ yes|building_passage|avalanche_protector)
         and !maxheight and !maxheight:physical
-    """)}
+    """.toElementFilterExpression()}
 
     override val commitMessage = "Add maximum heights"
     override val wikiLink = "Key:maxheight"
@@ -49,19 +45,11 @@ class AddMaxHeight(private val overpassApi: OverpassMapDataAndGeometryApi) : Osm
         }
     }
 
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.nodes.filter { nodeFilter.matches(it) } + mapData.ways.filter { wayFilter.matches(it) }
+
     override fun isApplicableTo(element: Element) =
         nodeFilter.matches(element) || wayFilter.matches(element)
-
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassApi.query(getNodeOverpassQuery(bbox), handler)
-               && overpassApi.query(getWayOverpassQuery(bbox), handler)
-    }
-
-    private fun getNodeOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + "\n" + nodeFilter.toOverpassQLString() + "\n" + getQuestPrintStatement()
-
-    private fun getWayOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + "\n" + wayFilter.toOverpassQLString() + "\n" + getQuestPrintStatement()
 
     override fun createForm() = AddMaxHeightForm()
 

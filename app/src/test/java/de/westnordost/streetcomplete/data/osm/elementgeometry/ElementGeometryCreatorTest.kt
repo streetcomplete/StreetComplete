@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.elementgeometry
 
+import de.westnordost.osmapi.map.MapData
+import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.osmapi.map.data.*
 import org.junit.Test
 
@@ -116,6 +118,93 @@ class ElementGeometryCreatorTest {
         val geom = create(relation(member(SIMPLE_WAY1, SIMPLE_WAY2, SIMPLE_WAY3, WAY_DUPLICATE_NODES))) as ElementPolylinesGeometry
         assertTrue(geom.polylines.containsAll(listOf(CCW_RING, listOf(P0, P1, P2))))
     }
+
+    @Test fun `positions for way`() {
+        val nodes = listOf<Node>(
+            OsmNode(0, 1, P0, null, null, null),
+            OsmNode(1, 1, P1, null, null, null)
+        )
+        val mapData = MutableMapData()
+        mapData.addAll(nodes)
+        val geom = create(SIMPLE_WAY1, mapData) as ElementPolylinesGeometry
+        assertEquals(listOf(nodes.map { it.position }), geom.polylines)
+    }
+
+    @Test fun `returns null for non-existent way`() {
+        val way = OsmWay(1L, 1, listOf(1,2,3), null)
+        assertNull(create(way, MutableMapData()))
+    }
+
+    @Test fun `positions for relation`() {
+        val relation = OsmRelation(1L, 1, listOf(
+            OsmRelationMember(0L, "", Element.Type.WAY),
+            OsmRelationMember(1L, "", Element.Type.WAY),
+            OsmRelationMember(1L, "", Element.Type.NODE)
+        ), null)
+
+        val ways = listOf<Way>(SIMPLE_WAY1, SIMPLE_WAY2)
+        val nodesByWayId = mapOf<Long, List<Node>>(
+            0L to listOf(
+                OsmNode(0, 1, P0, null, null, null),
+                OsmNode(1, 1, P1, null, null, null)
+            ),
+            1L to listOf(
+                OsmNode(1, 1, P1, null, null, null),
+                OsmNode(2, 1, P2, null, null, null),
+                OsmNode(3, 1, P3, null, null, null)
+            )
+        )
+        val mapData = MutableMapData()
+        mapData.addAll(nodesByWayId.values.flatten() + ways)
+        val positions = listOf(P0, P1, P2, P3)
+        val geom = create(relation, mapData) as ElementPolylinesGeometry
+        assertEquals(listOf(positions), geom.polylines)
+    }
+
+    @Test fun `returns null for non-existent relation`() {
+        val relation = OsmRelation(1L, 1, listOf(
+            OsmRelationMember(1L, "", Element.Type.WAY),
+            OsmRelationMember(2L, "", Element.Type.WAY),
+            OsmRelationMember(1L, "", Element.Type.NODE)
+        ), null)
+        assertNull(create(relation, MutableMapData()))
+    }
+
+    @Test fun `returns null for relation with a way that's missing from map data`() {
+        val relation = OsmRelation(1L, 1, listOf(
+            OsmRelationMember(0L, "", Element.Type.WAY),
+            OsmRelationMember(1L, "", Element.Type.WAY)
+        ), null)
+        val mapData = MutableMapData()
+        mapData.addAll(listOf(
+            relation,
+            OsmWay(0, 0, listOf(0,1), null),
+            OsmNode(0, 0, P0, null),
+            OsmNode(1, 0, P1, null)
+        ))
+
+        assertNull(create(relation, mapData))
+    }
+
+    @Test fun `does not return null for relation with a way that's missing from map data if returning incomplete geometries is ok`() {
+        val relation = OsmRelation(1L, 1, listOf(
+            OsmRelationMember(0L, "", Element.Type.WAY),
+            OsmRelationMember(1L, "", Element.Type.WAY)
+        ), null)
+        val way = OsmWay(0, 0, listOf(0,1), null)
+        val mapData = MutableMapData()
+        mapData.addAll(listOf(
+            relation,
+            way,
+            OsmNode(0, 0, P0, null),
+            OsmNode(1, 0, P1, null)
+        ))
+
+        assertEquals(
+            create(way),
+            create(relation, mapData, true)
+        )
+    }
 }
 
 private fun create(node: Node) =
@@ -126,6 +215,9 @@ private fun create(way: Way) =
 
 private fun create(relation: Relation) =
     ElementGeometryCreator().create(relation, WAY_GEOMETRIES)
+
+private fun create(element: Element, mapData: MapData, allowIncomplete: Boolean = false) =
+    ElementGeometryCreator().create(element, mapData, allowIncomplete)
 
 private val WAY_AREA = mapOf("area" to "yes")
 

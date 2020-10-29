@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.quests.step_count
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddStepCount(overpassApi: OverpassMapDataAndGeometryApi)
-    : SimpleOverpassQuestType<Int>(overpassApi) {
+class AddStepCount : OsmFilterQuestType<Int>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway = steps
          and (!indoor or indoor = no)
          and access !~ private|no

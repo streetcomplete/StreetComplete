@@ -162,7 +162,7 @@
     <string name="quest_sport_ice_hockey">"Ice hockey"</string>
     <string name="quest_sport_netball">"Netball"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
-    <string name="pref_title_sync">"Auto-sync"</string>
+    <string name="pref_title_sync2">"Upload answers automatically"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>
     <string name="map_btn_zoom_in">"Zoom in"</string>
     <string name="map_btn_menu">"Menu"</string>
@@ -183,7 +183,7 @@ The app does not share your GPS location with anyone. It is used to automaticall
 
 &lt;p&gt;&lt;b&gt;Data Usage&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-As mentioned, the app directly communicates with OSM infrastructure. That is, with the &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; for downloading quests  (which is anonymous) and with the &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; for uploading changes.&lt;br/&gt;
+As mentioned, the app directly communicates with OSM infrastructure.&lt;br/&gt;
 However, before uploading your changes, the app checks with a &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; on my server whether it has been banned from uploading any changes. This is a precautionary measure to be able to keep versions of the app that turn out to have critical bugs from possibly corrupting OSM data.&lt;/p&gt;"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;To display the map, vector tiles are retrieved from %1$s. See their &lt;a href=\"%2$s\"&gt;privacy statement&lt;/a&gt; for more information.&lt;/p&gt;"</string>
     <string name="privacy_html_image_upload2">&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;</string>
@@ -708,8 +708,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_system_default">System default</string>
-    <string name="pref_title_overpass_url_select">Change Overpass server</string>
-    <string name="pref_title_overpass_url_info">Requires application restart to apply. May bypass censorship, for example in Russia.</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer \"sidewalk\".</string>
     <string name="action_open_location">Open location in another app</string>
     <string name="map_application_missing">No other map application installed</string>
@@ -925,7 +923,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="at_housenumber">house number %s:</string>
     <string name="quest_summit_register_title">Is there a summit register at %s?</string>
     <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
-    <string name="dialog_tutorial_download">With auto-sync off, quests are not downloaded automatically. To do this manually, use the \"%s\" button in the menu at the location you want to download.</string>
 
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>

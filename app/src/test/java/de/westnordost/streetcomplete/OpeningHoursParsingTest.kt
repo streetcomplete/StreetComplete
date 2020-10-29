@@ -50,7 +50,7 @@ fun main() = runBlocking {
             for (line in lines) { launch {
                 total++
                 var oh = line
-                // Overpass CSV output wraps string in "..." if it contains a ,
+                // CSV output wraps string in "..." if it contains a ,
                 if (oh.contains(',') && oh.startsWith('"')) {
                     oh = oh.trim { it == '"' }.replace("\"\"", "\"")
                 }

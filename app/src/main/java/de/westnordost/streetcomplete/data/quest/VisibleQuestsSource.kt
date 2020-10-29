@@ -68,15 +68,15 @@ import javax.inject.Singleton
     }
 
 
-    /** Get count of all unanswered quests in given bounding box of given types */
-    fun getAllVisibleCount(bbox: BoundingBox, questTypes: Collection<String>): Int {
-        if (questTypes.isEmpty()) return 0
-        return osmQuestController.getAllVisibleInBBoxCount(bbox, questTypes) +
+    /** Get count of all unanswered quests in given bounding box */
+    fun getAllVisibleCount(bbox: BoundingBox): Int {
+        return osmQuestController.getAllVisibleInBBoxCount(bbox) +
                 osmNoteQuestController.getAllVisibleInBBoxCount(bbox)
     }
 
     /** Retrieve all visible (=new) quests in the given bounding box from local database */
     fun getAllVisible(bbox: BoundingBox, questTypes: Collection<String>): List<QuestAndGroup> {
+        if (questTypes.isEmpty()) return listOf()
         val osmQuests = osmQuestController.getAllVisibleInBBox(bbox, questTypes)
         val osmNoteQuests = osmNoteQuestController.getAllVisibleInBBox(bbox)
 

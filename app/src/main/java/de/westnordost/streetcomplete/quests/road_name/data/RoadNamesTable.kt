@@ -11,6 +11,7 @@ object RoadNamesTable {
         const val MIN_LONGITUDE = "min_longitude"
         const val MAX_LATITUDE = "max_latitude"
         const val MAX_LONGITUDE = "max_longitude"
+        const val LAST_UPDATE = "last_update"
     }
 
     const val CREATE = """
@@ -21,6 +22,7 @@ object RoadNamesTable {
             ${Columns.MIN_LATITUDE} double NOT NULL,
             ${Columns.MIN_LONGITUDE} double NOT NULL,
             ${Columns.MAX_LATITUDE} double NOT NULL,
-            ${Columns.MAX_LONGITUDE} double NOT NULL
+            ${Columns.MAX_LONGITUDE} double NOT NULL,
+            ${Columns.LAST_UPDATE} int NOT NULL
         );"""
 }

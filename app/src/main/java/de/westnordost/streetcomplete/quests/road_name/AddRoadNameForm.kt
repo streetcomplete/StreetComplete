@@ -52,7 +52,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         }
         return roadNameSuggestionsDao.getNames(
             listOf(polyline.first(), polyline.last()),
-            AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION
+            MAX_DIST_FOR_ROAD_NAME_SUGGESTION
         )
     }
 
@@ -144,5 +144,9 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
             .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoRoadName) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
+    }
+
+    companion object {
+        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
     }
 }

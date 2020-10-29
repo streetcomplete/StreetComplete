@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.*
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
+import java.util.*
 
 /** Create an overpass query from the given element filter expression */
 class OverpassQueryCreator(
-    elementTypes: List<ElementsTypeFilter>,
+    elementTypes: EnumSet<ElementsTypeFilter>,
     private val expr: BooleanExpression<ElementFilter, Element>?)
 {
     private val elementTypes = elementTypes.toOqlNames()
@@ -37,11 +37,11 @@ class OverpassQueryCreator(
         }
     }
 
-    private fun List<ElementsTypeFilter>.toOqlNames(): List<String> = when {
-        containsExactlyInAnyOrder(listOf(NODES, WAYS)) ->            listOf("nw")
-        containsExactlyInAnyOrder(listOf(WAYS, RELATIONS)) ->        listOf("wr")
-        containsExactlyInAnyOrder(listOf(NODES,WAYS, RELATIONS)) ->  listOf("nwr")
-        else -> map { when (it) {
+    private fun EnumSet<ElementsTypeFilter>.toOqlNames(): List<String> = when {
+        containsAll(listOf(NODES, WAYS, RELATIONS)) ->  listOf("nwr")
+        containsAll(listOf(NODES, WAYS)) ->             listOf("nw")
+        containsAll(listOf(WAYS, RELATIONS)) ->         listOf("wr")
+        else -> map { when (it!!) {
             NODES -> "node"
             WAYS -> "way"
             RELATIONS -> "rel"

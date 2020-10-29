@@ -9,7 +9,7 @@ import org.junit.Test
 
 class AddPlaceNameTest {
 
-    private val questType = AddPlaceName(mock(), mock())
+    private val questType = AddPlaceName(mock())
 
     @Test fun `apply no name answer`() {
         questType.verifyAnswer(

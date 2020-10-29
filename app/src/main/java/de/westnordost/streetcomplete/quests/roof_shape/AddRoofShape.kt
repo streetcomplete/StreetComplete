@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddRoofShape(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddRoofShape : OsmFilterQuestType<String>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways, relations with roof:levels
         and roof:levels != 0 and !roof:shape and !3dr:type and !3dr:roof
     """

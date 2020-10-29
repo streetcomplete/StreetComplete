@@ -1,23 +1,34 @@
 package de.westnordost.streetcomplete.quests.address
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionEntry
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.quests.road_name.data.putRoadNameSuggestion
+import de.westnordost.streetcomplete.quests.road_name.data.toRoadNameByLanguage
 
 class AddAddressStreet(
-        private val overpassApi: OverpassMapDataAndGeometryApi,
         private val roadNameSuggestionsDao: RoadNameSuggestionsDao
 ) : OsmElementQuestType<AddressStreetAnswer> {
+
+    private val filter by lazy { """
+        nodes, ways, relations with
+          addr:housenumber and !addr:street and !addr:place and !addr:block_number
+          or addr:streetnumber and !addr:street
+    """.toElementFilterExpression() }
+
+    private val roadsWithNamesFilter by lazy { """
+        ways with
+          highway ~ ${ALL_ROADS.joinToString("|")}
+          and name
+    """.toElementFilterExpression()}
 
     override val commitMessage = "Add street/place names to address"
     override val icon = R.drawable.ic_quest_housenumber_street
@@ -31,34 +42,36 @@ class AddAddressStreet(
         return if (housenumber != null) arrayOf(housenumber) else arrayOf()
     }
 
-    override fun createForm() = AddAddressStreetForm()
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val associatedStreetRelations = mapData.relations.filter {
+            val type = it.tags?.get("type")
+            type == "associatedStreet" || type == "street"
+        }
 
-    /* cannot be determined offline because the quest kinda needs the street name suggestions
-       to work conveniently (see #1856) */
-    override fun isApplicableTo(element: Element): Boolean? = null
+        val addressesWithoutStreet = mapData.filter { address ->
+            filter.matches(address) &&
+            associatedStreetRelations.none { it.contains(address.type, address.id) }
+        }
 
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), roadNameSuggestionsDao::putRoadNameSuggestion)) return false
-        if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
-        return true
+        if (addressesWithoutStreet.isNotEmpty()) {
+            val roadsWithNames = mapData.ways
+                .filter { roadsWithNamesFilter.matches(it) }
+                .mapNotNull {
+                    val geometry = mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry
+                    val roadNamesByLanguage = it.tags?.toRoadNameByLanguage()
+                    if (geometry != null && roadNamesByLanguage != null) {
+                        RoadNameSuggestionEntry(it.id, roadNamesByLanguage, geometry.polylines.first())
+                    } else null
+                }
+            roadNameSuggestionsDao.putRoads(roadsWithNames)
+        }
+        return addressesWithoutStreet
     }
 
-    private fun getOverpassQuery(bbox: BoundingBox) =
-            bbox.toGlobalOverpassBBox() + """
-            relation["type"="associatedStreet"]; > -> .inStreetRelation;
-            $ADDRESSES_WITHOUT_STREETS -> .missing_data;
-            (.missing_data; - .inStreetRelation;);
-            """.trimIndent() + getQuestPrintStatement()
+    override fun createForm() = AddAddressStreetForm()
 
-    /** return overpass query string to get roads with names around addresses without streets
-     * */
-    private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
-            bbox.toGlobalOverpassBBox() + "\n" + """
-        $ADDRESSES_WITHOUT_STREETS -> .address_missing_street;
-        $ROADS_WITH_NAMES -> .named_roads;
-        way.named_roads(
-            around.address_missing_street: $MAX_DIST_FOR_ROAD_NAME_SUGGESTION);
-        out body geom;""".trimIndent()
+    /* cannot be determined because of the associated street relations */
+    override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun applyAnswerTo(answer: AddressStreetAnswer, changes: StringMapChangesBuilder) {
         val key = when(answer) {
@@ -68,15 +81,11 @@ class AddAddressStreet(
         changes.add(key, answer.name)
     }
 
-    companion object {
-        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 100.0
-
-        private val ADDRESSES_WITHOUT_STREETS = """
-                (
-                    nwr["addr:housenumber"][!"addr:street"][!"addr:place"][!"addr:block_number"];
-                    nwr["addr:streetnumber"][!"addr:street"];
-                )""".trimIndent()
-        private val ROADS_WITH_NAMES =
-                "way[highway ~ \"^(${ALL_ROADS.joinToString("|")})$\"][name]"
+    override fun cleanMetadata() {
+        roadNameSuggestionsDao.cleanUp()
     }
+}
+
+private fun Relation.contains(elementType: Element.Type, elementId: Long) : Boolean {
+    return members.any { it.type == elementType && it.ref == elementId }
 }
