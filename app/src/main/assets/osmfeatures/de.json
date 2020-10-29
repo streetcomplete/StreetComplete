@@ -212,9 +212,17 @@
       "name": "Biergarten",
       "terms": "Biergarten"
     },
+    "amenity/binoculars": {
+      "name": "Stationäres Aussichtsfernrohr",
+      "terms": "Aussichtsfernrohr,Münzfernrohr,Fernrohr,Aussicht,Fernblick,Fernglas,Feldstecher,Refraktor,Teleskop,Aussichtswarte,Aussichtsplatform,Doppelfernrohr,Naturbeobachtung,Landschaftsbeobachtung,Spektiv"
+    },
     "amenity/boat_rental": {
       "name": "Bootsvermietung",
       "terms": "Bootsverleih, Bootsvermietung"
+    },
+    "amenity/boat_storage": {
+      "name": "Bootslagerplatz",
+      "terms": "Marina, Trockendock, Bootshaus"
     },
     "amenity/bureau_de_change": {
       "name": "Geldwechselstube",
@@ -228,7 +236,7 @@
       "terms": "Kaffee, Café, Kaffeehaus, Cafébar, Bistro, Teehaus, Teestube"
     },
     "amenity/cafe/bubble_tea": {
-      "name": "Bubble Tea Cafe",
+      "name": "Bubble-Tea-Café",
       "terms": "Boba,Bubble Milch Tee, Perlenmilchtee, taiwanesisches Teegetränk, Tapioca"
     },
     "amenity/cafe/coffee_shop": {
@@ -236,7 +244,7 @@
       "terms": "Americano, Gebräu, Kaffee, Café, Cappuccino, Kakao, Tropf, Espresso, heiße Getränke, Latte, Macchiato, Tee, Verlängerter, Brauner"
     },
     "amenity/car_pooling": {
-      "name": "Car Pooling Station",
+      "name": "Car-Pooling-Station",
       "terms": "Car Sharing, Car Pooling, Mitfahren"
     },
     "amenity/car_rental": {
@@ -260,7 +268,7 @@
       "terms": "Ladestation für Elektrofahrzeuge, Ladestation, E-Tankstelle, Stromtankstelle, Ladestation für Elektroautos, Plug-in Hybridfahrzeuge, Pedelecs und E-Bikes."
     },
     "amenity/childcare": {
-      "name": "Kindergrippenbetreuung, Kindertagesstätte",
+      "name": "Kinderkrippenbetreuung, Kindertagesstätte",
       "terms": "Kinderkrippe, Kindergarten"
     },
     "amenity/cinema": {
@@ -378,7 +386,7 @@
       "terms": "Fish & Chips Fast Food, Fish & Chips Stand, Fish & Chips Fast Takeaway"
     },
     "amenity/fast_food/hot_dog": {
-      "name": "Hot Dog Stand",
+      "name": "Hot-Dog-Stand",
       "terms": "Frankfurter, Hotdog Stand, Sandwich, Würstel, Wiener"
     },
     "amenity/fast_food/ice_cream": {
@@ -487,6 +495,10 @@
       "name": "Laderampe",
       "terms": "Tür, Ladenbucht, verschiffen, entladen, Lagerhaus"
     },
+    "amenity/lounger": {
+      "name": "Liege",
+      "terms": "Sessel, Stuhl, Bank, Sitzbank"
+    },
     "amenity/love_hotel": {
       "name": "Stundenhotel",
       "terms": "Stundenhotel, Liebeshotel"
@@ -503,13 +515,17 @@
       "name": "Geldtransferstation",
       "terms": "Geldtransferstation, Bargeldtransfer"
     },
+    "amenity/mortuary": {
+      "name": "Leichenhaus",
+      "terms": "Krematorium,Bestattung,Leichenbestatter,Leichenschauhaus,Leichenhalle,Parentationshalle"
+    },
     "amenity/motorcycle_parking": {
       "name": "Motorradparkplatz",
       "terms": "Motorrad-Parkplatz"
     },
     "amenity/music_school": {
       "name": "Musikschule",
-      "terms": "Musikschule"
+      "terms": "Musikschule,Gitarre,Klavier,Geige,Schlagzeug,Musikunterricht"
     },
     "amenity/nightclub": {
       "name": "Diskothek, Nachtklub",
@@ -531,7 +547,7 @@
       "terms": "Mehrstöckige Parkgarage,Parkhaus"
     },
     "amenity/parking/park_ride": {
-      "name": "Park & Ride Platz",
+      "name": "Park & Ride-Platz",
       "terms": "Pendlerparkplatz, Park&Pool, Park&Ride, P+R, öffentlicher Verkehr, U-Bahn, Eisenbahnparkplatz"
     },
     "amenity/parking/underground": {
@@ -639,8 +655,8 @@
       "terms": "Post, Postamt, Poststelle"
     },
     "amenity/prep_school": {
-      "name": "Vorbereitungsschule",
-      "terms": "Vorbereitungsschule"
+      "name": "Nachhilfeanbieter",
+      "terms": "Vorbereitungsschule,Schülerhilfe,Hausaufgaben,Studienkreis,Repetitorium,Nachhilfe,Lernhilfe"
     },
     "amenity/prison": {
       "name": "Gefängnisanlage",
@@ -678,7 +694,7 @@
       "name": "Recycling"
     },
     "amenity/recycling/container/electrical_items": {
-      "name": "E-Schrott-Container",
+      "name": "Elektroschrottcontainer",
       "terms": "Elektromüllconainer, E-Schrott-Container"
     },
     "amenity/recycling/container/green_waste": {
@@ -750,11 +766,11 @@
       "terms": "Nudel-Restaurant"
     },
     "amenity/restaurant/pizza": {
-      "name": "Pizza Restaurant",
+      "name": "Pizzeria",
       "terms": "Pizza Restaurant"
     },
     "amenity/restaurant/seafood": {
-      "name": "Meeresfrüchte Restaurant",
+      "name": "Meeresfrüchte-Restaurant",
       "terms": "Meeresfrüchte Restaurant"
     },
     "amenity/restaurant/steakhouse": {
@@ -762,7 +778,7 @@
       "terms": "Steakhouse"
     },
     "amenity/restaurant/sushi": {
-      "name": "Sushi Restaurant",
+      "name": "Sushi-Restaurant",
       "terms": "Sushi Restaurant"
     },
     "amenity/restaurant/thai": {
@@ -966,7 +982,7 @@
       "terms": "Frauenhygiene-Automat"
     },
     "amenity/vending_machine/food": {
-      "name": "Lebensmittel-Verkaufs-Automat ",
+      "name": "Lebensmittel-Verkaufsautomat ",
       "terms": "Lebensmittel-Verkaufs-Automat"
     },
     "amenity/vending_machine/fuel": {
@@ -1719,6 +1735,9 @@
     "demolished/building": {
       "name": "kürzlich abgerissenes Gebäude"
     },
+    "disused/amenity": {
+      "name": "nicht benutzte Einrichtung"
+    },
     "disused/railway": {
       "name": "Stillgelegte Eisenbahnstrecken..."
     },
@@ -1832,6 +1851,10 @@
       "name": "Golfwagenweg",
       "terms": "Golfwagenweg"
     },
+    "golf/clubhouse": {
+      "name": "Golf Klubhaus",
+      "terms": "Klubhaus, Goldklubhaus, Golfhaus, Golfclub"
+    },
     "golf/driving_range": {
       "name": "Golf Driving Range",
       "terms": "Golf Driving Range"
@@ -1941,7 +1964,7 @@
       "terms": "Logopäde, Sprachtherapeutin"
     },
     "highway": {
-      "name": "Größere Straßen..."
+      "name": "Straßen/Wege..."
     },
     "highway/bridleway": {
       "name": "Reitweg",
@@ -2120,15 +2143,15 @@
       "terms": "Hauptverbindungsstraßenanschluss, Bundessstraßenanschluss, Hauptverbindungsstraßenauffahrt, Hauptverbindungsstraßenabfahrt, Fernstraßenanschluss, Fernstraßenauffahrt, Fernstraßenabfahrt, Bundesstraßenanschluss, Bundesstraßenauffahrt, Bundesstraßenabfahrt, Auffahrt, Abfahrt"
     },
     "highway/raceway": {
-      "name": "Motorsport Rennbahn",
+      "name": "Motorsport-Rennbahn",
       "terms": "Motorsport, Rennbahn, Formel 1, Auto, Kart"
     },
     "highway/raceway/karting": {
-      "name": "Kartsport Rennbahn",
+      "name": "Kartsport-Rennbahn",
       "terms": "Kartsport, Gokart, Rennen, Motorsport, Rennbahn, Auto, Kart"
     },
     "highway/raceway/motocross": {
-      "name": "Motocross Rennbahn",
+      "name": "Motocross-Rennbahn",
       "terms": "Offroad, Rennen, Motorrennen, Motocross, Motorrrad, Motorsport"
     },
     "highway/residential": {
@@ -2591,7 +2614,7 @@
       "terms": "Tanzschule"
     },
     "leisure/disc_golf_course": {
-      "name": "Discgolf Anlage",
+      "name": "Discgolfanlage",
       "terms": "Discgolf, Frisbee Golf, fliegendes Scheibengolf, Frolf, ultimative"
     },
     "leisure/dog_park": {
@@ -2730,7 +2753,7 @@
       "terms": "American-Football-Platz"
     },
     "leisure/pitch/australian_football": {
-      "name": "Australian Football Feld",
+      "name": "Australian-Football-Feld",
       "terms": "Australian Football Feld, Australischer Football Feld"
     },
     "leisure/pitch/badminton": {
@@ -2779,7 +2802,7 @@
     },
     "leisure/pitch/netball": {
       "name": "Korbball Platz",
-      "terms": "Korbball Platz"
+      "terms": "Korbball-Platz"
     },
     "leisure/pitch/rugby_league": {
       "name": "Rugby-League-Feld",
@@ -2897,7 +2920,7 @@
       "name": "Künstliches..."
     },
     "man_made/adit": {
-      "name": "Bergwerk - Stolleneingang",
+      "name": "Bergwerk-Stolleneingang",
       "terms": "Stollen (horizontaler Tunnel im Bergbau), Stollenmundloch"
     },
     "man_made/antenna": {
@@ -2993,7 +3016,7 @@
       "terms": "Deckel, Ablauf, Loch, Regen Abwasser, Sturm"
     },
     "man_made/manhole/gas": {
-      "name": "Wartungszugang zu Gas-Leitungen",
+      "name": "Wartungszugang zu Gasleitungen",
       "terms": "Deckel, Gas, Hitze, Loch, Wartungszugang"
     },
     "man_made/manhole/power": {
@@ -3005,7 +3028,7 @@
       "terms": "Deckel, Loch, Abwasser, Wartung"
     },
     "man_made/manhole/telecom": {
-      "name": "Wartungszugang zu Telekomunikationskabeln",
+      "name": "Wartungszugang zu Telekommunikationskabeln",
       "terms": "Kabel, Deckel, Loch, Telekom, Telefon, Wartung"
     },
     "man_made/manhole/water": {
@@ -3069,7 +3092,7 @@
       "terms": "Unterirdische Pipeline"
     },
     "man_made/pipeline/valve": {
-      "name": "Pipeline Ventil",
+      "name": "Pipeline-Ventil",
       "terms": "Öl, Gas, Wasser, Abwasser, Abwasserkanal"
     },
     "man_made/pumping_station": {
@@ -3124,6 +3147,10 @@
       "name": "Kommunikationsturm",
       "terms": "Antenne, Mobilfunkmast, verankerter Mast, Mobilfunkturm, Radiofunkmast, Radiofunkturm, Fersehfunkmast, Fernsehfunkturm"
     },
+    "man_made/tower/cooling": {
+      "name": "Kühlturm",
+      "terms": "Kraftwerk"
+    },
     "man_made/tower/defensive": {
       "name": "Befestigter Turm",
       "terms": "Befestigter Turm"
@@ -3171,6 +3198,10 @@
     "man_made/windmill": {
       "name": "Windmühle",
       "terms": "Windmühle"
+    },
+    "man_made/windpump": {
+      "name": "Windpumpe",
+      "terms": "Wasserpumpe, Windmühle, Windpumpe, Aerorotor"
     },
     "man_made/works": {
       "name": "Fabrik",
@@ -3258,6 +3289,10 @@
     "natural/heath": {
       "name": "Heidelandschaft",
       "terms": "Heidelandschaft, Strauchheiden"
+    },
+    "natural/hot_spring": {
+      "name": "Thermalquelle",
+      "terms": "Geothermiequelle, Thermalquelle, Heißwasserpool"
     },
     "natural/mud": {
       "name": "Schlamm",
@@ -3503,11 +3538,11 @@
       "terms": "Versicherungsbüro"
     },
     "office/it": {
-      "name": "Informations-Technologie-Firma",
+      "name": "Informationstechnologie-Firma",
       "terms": "Informations-Technologie-Firma"
     },
     "office/lawyer": {
-      "name": "Anwalt",
+      "name": "Rechtsanwaltsbüro",
       "terms": "Jurist, Advokat, Rechtsanwalt, Notar"
     },
     "office/lawyer/notary": {
@@ -3845,6 +3880,10 @@
       "name": "Bushaltestelle (Wartebereich)",
       "terms": "Bushaltestelle (Wartebereich)"
     },
+    "public_transport/platform/bus_tram_point": {
+      "name": "Straßenbahn und Bus Haltestelle",
+      "terms": "Bus, Straßenbahn, Haltestelle, öffentlicher Verkehr, Schienen, Tram, Bim, Transport"
+    },
     "public_transport/platform/ferry": {
       "name": "Fährterminal (Wartebereich)",
       "terms": "Fährterminal (Wartebereich)"
@@ -3881,8 +3920,8 @@
       "name": "Bahnsteig (Wartebereich)"
     },
     "public_transport/platform/tram": {
-      "name": "Straßen-Haltestelle (Wartebereich)",
-      "terms": "Straßen-Haltestelle (Wartebereich)"
+      "name": "Straßenbahn-Haltestelle (Wartebereich)",
+      "terms": "Straßenbahn-Haltestelle, Wartebereich, öffentlicher Verkehr, Schienen, Oberleitungsbus, Transport, Tram, Bim"
     },
     "public_transport/platform/tram_point": {
       "name": "Straßen-Haltestelle (Wartebereich)",
@@ -3992,7 +4031,7 @@
       "name": "Eisenbahnen..."
     },
     "railway/abandoned": {
-      "name": " Abgebaute Eisenbahnstrecke ",
+      "name": "Abgebaute Eisenbahnstrecke",
       "terms": "Abgebaute Eisenbahnstrecke, Verfallene Eisenbahn, Aufgegebene Bahnstrecke"
     },
     "railway/buffer_stop": {
@@ -4253,7 +4292,7 @@
       "terms": "Autohändler, Autohaus"
     },
     "shop/car/second_hand": {
-      "name": "Gerbrauchtwagenhandlung",
+      "name": "Gebrauchtwagenhandlung",
       "terms": "KFZ, Gebrauchtwagenzentrum, Gebrauchtwagenhändler, Gebrauchtwagenverkauf, Occasion, Jahreswagen, Altfahrzeug, PKW, Gebrauchtwagenmarkt, Autohandlung, Autohaus, Werkstatt, Second Hand"
     },
     "shop/car_parts": {
@@ -4297,7 +4336,7 @@
       "terms": "Bekleidungs-Geschäft, Klamottenladen, Kleiderladen, Modegeschäft, Modehaus"
     },
     "shop/clothes/second_hand": {
-      "name": "Second-Hand Bekleidungsgeschäft",
+      "name": "Second-Hand-Bekleidungsgeschäft",
       "terms": "Gebrauchtwaren, Gebrauchtkleidung, Vintage, secondhand, zweite Hand, Altkleider, Kleider, Kleidung, Klamotten, Mode"
     },
     "shop/clothes/underwear": {
@@ -4589,11 +4628,11 @@
     },
     "shop/music": {
       "name": "Musikgeschäft",
-      "terms": "Musikladen, Musikgeschäft, Plattenladen"
+      "terms": "Musikladen, Musikgeschäft, Plattenladen,CD,LP,Schallplatten,Kassetten,Vinyl"
     },
     "shop/musical_instrument": {
       "name": "Musikinstrumentegeschäft",
-      "terms": "Musikinstrumentengeschäft,Instrumentenladen"
+      "terms": "Musikinstrumentengeschäft,Instrumentenladen,Noten,Gitarre,Schlagzeug,Partitur"
     },
     "shop/newsagent": {
       "name": "Zeitschriftenhandel",
@@ -4897,7 +4936,7 @@
       "terms": "Camping Lager, Zeltplatz, Campingplatz"
     },
     "tourism/camp_site/backcountry": {
-      "name": "Wildnis Campingplatz",
+      "name": "Wildnis-Campingplatz",
       "terms": "Alpines Camping, Backpacker Camping, Waldcamping, informelles Camping, primitives Camping"
     },
     "tourism/camp_site/group_only": {
@@ -4935,6 +4974,10 @@
     "tourism/information/board": {
       "name": "Informationstafel",
       "terms": "Informationsbrett, Infotafel, Infobrett"
+    },
+    "tourism/information/board/welcome_sign": {
+      "name": "Willkommensschild",
+      "terms": "Neuer Ort"
     },
     "tourism/information/guidepost": {
       "name": "Wegweiser",
@@ -5052,21 +5095,9 @@
       "name": "Ortsschild",
       "terms": "Ortsschild"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Ortsschild",
-      "terms": "Ortsschild"
-    },
     "traffic_sign/maxspeed": {
       "name": "Höchstgeschwindigkeits-Schild",
       "terms": "Höchstgeschwindigkeits-Schild"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Höchstgeschwindigkeits-Schild",
-      "terms": "Höchstgeschwindigkeits-Schild"
-    },
-    "traffic_sign_vertex": {
-      "name": "Verkehrszeichen",
-      "terms": "Verkehrsschild, Verkehrszeichen"
     },
     "type/boundary": {
       "name": "Grenze",
@@ -5156,8 +5187,8 @@
       "terms": "Fährlinie"
     },
     "type/route/foot": {
-      "name": "Fußweg",
-      "terms": "Fußweg, Spazierweg"
+      "name": "Fußwegroute",
+      "terms": "Fußwegroute"
     },
     "type/route/hiking": {
       "name": "Wanderweg",
@@ -5172,7 +5203,7 @@
       "terms": "Stadtbahnlinie"
     },
     "type/route/monorail": {
-      "name": "Monorail Linie",
+      "name": "Einschienenbahn-Linie",
       "terms": "Monorail Route"
     },
     "type/route/pipeline": {

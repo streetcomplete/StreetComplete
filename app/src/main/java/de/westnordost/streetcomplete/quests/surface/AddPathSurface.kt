@@ -6,17 +6,23 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddPathSurface : OsmFilterQuestType<String>() {
+class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
         and segregated != yes
         and access !~ private|no
-        and (!conveying or conveying = no) and (!indoor or indoor = no)
+        and (!conveying or conveying = no)
+        and (!indoor or indoor = no)
         and (
           !surface
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -4 years
           or surface older today -8 years
+          or (
+            surface ~ paved|unpaved
+            and !surface:note
+            and !note:surface
+          )
         )
     """
     /* ~paved ways are less likely to change the surface type */
@@ -36,7 +42,17 @@ class AddPathSurface : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("surface", answer)
+    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is SpecificSurfaceAnswer -> {
+                changes.updateWithCheckDate("surface", answer.value)
+                changes.deleteIfExists("surface:note")
+            }
+            is GenericSurfaceAnswer -> {
+                changes.updateWithCheckDate("surface", answer.value)
+                changes.addOrModify("surface:note", answer.note)
+            }
+        }
+        changes.deleteIfExists("source:surface")
     }
 }

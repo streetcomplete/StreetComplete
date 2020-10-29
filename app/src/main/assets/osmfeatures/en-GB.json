@@ -323,7 +323,7 @@
       "name": "Food Bank"
     },
     "amenity/social_facility/group_home": {
-      "name": "Elderly Group Home"
+      "name": "Retirement Home"
     },
     "amenity/social_facility/homeless_shelter": {
       "name": "Homeless Shelter"
@@ -2464,9 +2464,6 @@
     },
     "type/route/ferry": {
       "name": "Ferry Route"
-    },
-    "type/route/foot": {
-      "name": "Foot Route"
     },
     "type/route/hiking": {
       "name": "Hiking Route"

@@ -2795,10 +2795,6 @@
       "name": "渡輪航線",
       "terms": "Ferry Route,渡輪航線,航綫"
     },
-    "type/route/foot": {
-      "name": "步行路綫",
-      "terms": "Foot Route,步行路線,行人路綫,行人路線"
-    },
     "type/route/hiking": {
       "name": "遠足路綫",
       "terms": "Hiking Route,行山路綫,行山路線,遠足路線"

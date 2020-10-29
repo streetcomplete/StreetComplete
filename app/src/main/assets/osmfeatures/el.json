@@ -2250,7 +2250,7 @@
       "terms": "Πλευρικά Κορήματα, Κολλούβιο"
     },
     "natural/scrub": {
-      "name": "Θαμνότοπος"
+      "name": "Χαμηλή Βλάστηση"
     },
     "natural/spring": {
       "name": "Πηγή",
@@ -2529,6 +2529,12 @@
       "name": "Σημείο",
       "terms": "Σημείο"
     },
+    "power": {
+      "name": "Στοιχεία Ηλεκτρικού Ρεύματος"
+    },
+    "power/cable": {
+      "name": "Καλώδιο Ρεύματος"
+    },
     "power/cable/underground": {
       "name": "Υπόγεια Καλωδίωση Ρεύματος"
     },
@@ -2558,6 +2564,18 @@
     },
     "power/plant": {
       "name": "Ηλεκτρικός Σταθμός"
+    },
+    "power/plant/source/coal": {
+      "name": "Ηλεκτροπαραγωγικός Σταθμός Άνθρακα"
+    },
+    "power/plant/source/gas": {
+      "name": "Ηλεκτροπαραγωγικός Σταθμός Άερίου"
+    },
+    "power/plant/source/hydro": {
+      "name": "Υδροηλεκτρικός Σταθμός"
+    },
+    "power/plant/source/nuclear": {
+      "name": "Πυρηνικός Ηλεκτροπαραγωγικός Σταθμός"
     },
     "power/plant/source/solar": {
       "name": "Ηλιακή Φάρμα"
@@ -3398,17 +3416,8 @@
     "traffic_sign/city_limit": {
       "name": "Σήμανση Ορίου Πόλης"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Σήμανση Ορίου Πόλης"
-    },
     "traffic_sign/maxspeed": {
       "name": "Πινακίδα Ορίου Ταχύτητας"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Πινακίδα Ορίου Ταχύτητας"
-    },
-    "traffic_sign_vertex": {
-      "name": "Πινακίδα Σήμανσης ΚΟΚ"
     },
     "type/boundary": {
       "name": "Όριο",
@@ -3470,9 +3479,6 @@
     "type/route/ferry": {
       "name": "Διαδρομή Πορθμείου",
       "terms": "Διαδρομή πορθμείου, Δρομολόγιο πορθμείου"
-    },
-    "type/route/foot": {
-      "name": "Διαδρομή Πεζοπορίας"
     },
     "type/route/hiking": {
       "name": "Διαδρομή Ορεινής Ανάβασης"

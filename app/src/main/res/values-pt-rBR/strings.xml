@@ -2148,4 +2148,8 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="achievement_outdoors_title">"Ao ar livre"</string>
     <string name="achievement_outdoors_solved_X">"Você resolveu %d missões úteis para pessoas ao ar livre!"</string>
     <string name="quest_pedestrian_crossing_island">"Esta faixa de pedestres tem uma ilha?"</string>
+    <string name="quest_generic_answer_noSign">"Não há placa"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"A rampa para cadeiras de rodas é exibida como uma maneira separada no mapa?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"separado"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"não separado"</string>
 </resources>

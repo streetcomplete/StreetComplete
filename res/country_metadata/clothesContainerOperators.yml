@@ -94,8 +94,8 @@ DE:
   - GEB # 114
   - ALBA Braunschweig GmbH # 106
   - Humana # 104
+  - Malteser # 98
   - Stadtreinigung Hamburg # 97
-  - Malteser # 97
   - Stadt Karlsruhe # 70
   - AHE;Deutsches Rotes Kreuz # 64
   - Abfallwirtschaftsgesellschaft Wuppertal # 54
@@ -118,24 +118,25 @@ DE:
   - Step # 23
   - Malteser Hilfsdienst e.V. # 22
   - Landkreis Prignitz # 22
-  - Berlin-Textilrecycling # 21
   - Remondis # 20
   - Malteser Hilfsdienst # 20
   - FWS # 20
   - CityGreenPoint # 20
+  - Berlin-Textilrecycling # 20
   - aha Zweckverband Abfallwirtschaft Region Hannover # 19
   - Stadt Stuttgart # 19
   - TEXAID # 18
+  - Bayerisches Rotes Kreuz # 17
   - Aktex Rohstoff-Recycling Nord # 17
   - Diakoniewerk Essen # 16
-  - Bayerisches Rotes Kreuz # 16
+  - Abfall- und Wertstofflogistik Neuss GmbH (AWL) # 15
   - Retextil Recycling International # 14
-  - Abfall- und Wertstofflogistik Neuss GmbH (AWL) # 14
   - Isevtex # 13
   - AWISTA # 13
   - AHG alpha Handelskontor # 13
   - AHA # 13
   - unknown # 12
+  - ZKE # 12
   - Veolia # 12
   - Kolpingwerk # 12
   - HeDi # 12
@@ -143,20 +144,20 @@ DE:
   - DRK Kreisverband Bonn e.V. # 12
   - Brotex # 12
   - AWM # 12
-  - ZKE # 11
   - Däsa Wiederverwertungs GmbH # 11
   - Altkleiderfirma Nargül # 11
   - illegal # 10
   - Textil-Recycling Nord # 10
   - RS # 10
   - Kolping Recycling GmbH # 10
+  - Deutsches Rotes Kreuz e.V. # 10
   - TEXAID Deutschland GmbH # 9
   - Stadt Karlsruhe Amt für Abfallwirtschaft # 9
-  - Deutsches Rotes Kreuz e.V. # 9
   - DRK-Kreisverband Trier-Saarburg e.V. # 9
   - Bera Textilrecycling # 9
   - Baliz Textilwerke # 9
   - Akza Textilrecycling # 9
+  - SP Textilverwertung # 8
   - Neue Arbeit Lahr # 8
   - Hoppe # 8
   - HUMANA Kleidersammlung GmbH # 8
@@ -165,8 +166,8 @@ DE:
   - AWISTA GmbH # 8
   - AHE;Deutsches Rotes Kreuz;Ruhrtalengel # 8
   - aha # 7
+  - TEXAID Collection GmbH # 7
   - TEXAID Collection # 7
-  - SP Textilverwertung # 7
   - Retextil # 7
   - Maltheser Hilfsdienst # 7
   - Johanniter # 7
@@ -174,7 +175,6 @@ DE:
   - Diakonisches Werk Kassel # 7
   - Deutsche Lebens-Rettungs-Gesellschaft e.V. # 7
   - DESWOS # 7
-  - TEXAID Collection GmbH # 6
   - Stadtreinigung Leipzig # 6
   - SOEX # 6
   - Haytex Textilrecycling # 6
@@ -227,13 +227,13 @@ FI:
   - Suomen Pakkauskierrätys RINKI Oy # 2
   - Auringonnousu # 2
 FX:
-  - Le Relais # 649
+  - Le Relais # 650
   - Toulouse Métropole # 231
   - AMOS # 33
   - Actifrip # 25
   - Chrysalide Ressourcerie # 24
   - CCPRO # 21
-  - Solidarité Textiles # 17
+  - Solidarité Textiles # 18
   - Eco-Emballages # 17
   - Next Textiles Association # 11
   - SITCOM - Côte sud des Landes # 10
@@ -287,7 +287,7 @@ GB:
   - Salvation Army # 12
   - The Fire Fighters Charity # 9
   - Brighton & Hove City Council # 9
-  - The Salvation Army # 6
+  - The Salvation Army # 7
   - British Heart Foundation # 6
   - Scope # 5
   - Rushcliffe Borough Council # 5
@@ -297,6 +297,7 @@ GB:
   - South Norfolk Council # 3
   - Cancer Fund for Children # 3
   - traid # 2
+  - The Firefighters Charity # 2
   - TRAID # 2
   - Severn Waste Services # 2
   - Oxfam # 2

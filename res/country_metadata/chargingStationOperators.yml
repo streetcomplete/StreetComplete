@@ -135,7 +135,7 @@ AX:
 BA:
   - City # 2
 BE:
-  - Allego # 112
+  - Allego # 113
   - Blue Corner # 28
   - Ionity # 12
   - allego # 9
@@ -148,6 +148,7 @@ BE:
   - Colruyt # 4
   - Bluecorner # 4
   - smoov allego # 3
+  - Lidl # 3
   - BlueCorner # 3
   - smoov # 2
   - charge.brussels # 2
@@ -156,11 +157,11 @@ BE:
   - Pitpoint Brussels # 2
   - Partago # 2
   - ORES # 2
-  - Lidl # 2
   - Eoly # 2
   - EV-Box # 2
   - De Lijn # 2
   - BlueConnect # 2
+  - Audi # 2
   - Allegro # 2
 BG:
   - ОП „Общински паркинги и синя зона“ - Варна # 7
@@ -186,9 +187,9 @@ BY:
   - Беларуснафта # 2
   - Eleven # 2
 CA-BC:
-  - Flo # 8
+  - Flo # 11
+  - ChargePoint # 5
   - BC Hydro # 5
-  - ChargePoint # 4
   - Tesla # 3
   - Chargepoint # 3
   - City of Maple Ridge / ChargePoint # 2
@@ -214,7 +215,7 @@ CA-ON:
   - Bingemans # 2
   - Bank of Nova Scotia # 2
 CA-PE:
-  - Flo # 2
+  - Flo # 3
   - Delta Prince Edward # 2
 CA-QC:
   - Le Circuit Électrique # 48
@@ -265,6 +266,7 @@ CH:
   - greenmotion # 3
   - ewl # 3
   - evpass.ch # 3
+  - energie360° # 3
   - eCarup # 3
   - Renault # 3
   - Raiffeisen # 3
@@ -283,7 +285,6 @@ CH:
   - groupe e # 2
   - groupe # 2
   - ewz # 2
-  - energie360° # 2
   - elmoove # 2
   - ee-en.ch # 2
   - eCarUp # 2
@@ -342,7 +343,7 @@ CO:
 CR:
   - Estación de Recarga # 3
 CZ:
-  - ČEZ # 68
+  - ČEZ # 69
   - ČEZ (CCS/CHAdeMO/Mennekes type2) # 38
   - PRE # 26
   - EVMAPA # 16
@@ -366,25 +367,25 @@ CZ:
   - InChaNet # 2
   - EVmapa (Mennekes type 2) # 2
 DE:
-  - Stromnetz Hamburg # 502
+  - Stromnetz Hamburg # 503
   - Stadtwerke München # 377
   - EnBW # 347
   - innogy # 194
   - RWE # 156
   - Allego # 110
-  - allego # 84
+  - allego # 85
   - RWE-Effizienz # 79
   - Innogy # 75
   - E-WALD GmbH # 72
   - LEW # 57
-  - EWE # 55
+  - EWE # 56
   - SWU Stadtwerke Ulm/Neu-Ulm GmbH # 50
   - Tesla # 46
   - EnBW Energie Baden-Württemberg AG # 46
   - be emobil # 45
   - NEW # 45
   - Kaufland # 45
-  - Lidl # 43
+  - Lidl # 44
   - Tank & Rast # 40
   - e-regio GmbH & Co. KG # 37
   - Vattenfall # 32
@@ -396,7 +397,7 @@ DE:
   - Tesla Motors Inc. # 31
   - E.ON # 31
   - Tesla Motors # 30
-  - FairEnergie GmbH # 29
+  - FairEnergie GmbH # 30
   - ENSO Energie Sachsen Ost AG # 29
   - DREWAG - Stadtwerke Dresden GmbH # 29
   - Aldi Süd # 29
@@ -411,9 +412,9 @@ DE:
   - E-Werk Mittelbaden # 23
   - Stadtwerke Leipzig # 22
   - Mainova # 22
+  - Energie Baden-Württemberg AG # 22
   - innogy eMobility Solutions GmbH # 21
   - IKEA # 21
-  - Energie Baden-Württemberg AG # 21
   - Stadtwerke Osnabrück # 20
   - RheinEnergie # 20
   - Kreiswerke Main-Kinzig GmbH # 20
@@ -423,27 +424,27 @@ DE:
   - wallbe # 19
   - Stadtwerke Witten # 19
   - Regensburger Energie- und Wasserversorgung AG & Co KG # 19
+  - Fastned # 19
   - eins energie in sachsen # 18
   - Stadtwerke Düsseldorf # 18
   - NewMotion # 18
   - envia M # 17
-  - eE4mobile eG # 17
+  - Stadtwerke Bielefeld # 17
   - STAWAG # 17
-  - Fastned # 17
   - EWR # 17
   - enviaM # 16
+  - eE4mobile eG # 16
   - Stadtwerke Tübingen # 16
   - Stadtwerke Speyer GmbH # 16
   - ladenetz.de # 15
   - TheNewMotion # 15
-  - Stadtwerke Bielefeld # 15
+  - SWB # 15
   - Edeka # 15
   - Bauhaus # 15
   - Süwag Energie AG # 14
   - Stawag # 14
   - Stadtwerke Marburg # 14
   - Stadtwerke Bochum # 14
-  - SWB # 14
   - Porsche # 14
   - DREWAG - Stadtwerke Dresden # 14
   - Bayernwerk AG # 14
@@ -497,6 +498,7 @@ DE:
   - enercity # 9
   - emma # 9
   - SÜC Energie und H2O GmbH # 9
+  - Stadtwerke Göttingen # 9
   - Stadtwerke Baden-Baden # 9
   - RWE / DEW21 # 9
   - Pfalzwerke AG # 9
@@ -592,12 +594,12 @@ FI:
   - Helsingin Energia # 2
   - Charge&Drive # 2
 FX:
-  - Bouygues Énergies et Services # 841
+  - Bouygues Énergies et Services # 843
   - Izivia # 591
   - Freshmile # 401
   - Clem # 124
   - Sodetrel Mobilité # 115
-  - Mouv Élec Var # 110
+  - Mouv Élec Var # 111
   - Sodetrel # 101
   - SEDI # 97
   - EneRSIEIL # 95
@@ -610,8 +612,8 @@ FX:
   - Tesla Motors # 67
   - SIPLEC # 61
   - SYME05 # 56
+  - Ionity # 55
   - Séolis # 51
-  - Ionity # 51
   - Morbihan énergies # 44
   - SEY 78 # 43
   - Renault # 40
@@ -664,7 +666,7 @@ FX:
   - CAPP # 5
 GB:
   - Ecotricity # 69
-  - Source London # 47
+  - Source London # 48
   - Pod Point # 34
   - Tesla Motors Inc. # 27
   - Tesla # 25
@@ -826,8 +828,8 @@ IS:
   - Ísorka # 2
   - Orka Náttúrunnar # 2
 IT:
-  - Enel # 194
-  - Enel X # 161
+  - Enel # 198
+  - Enel X # 162
   - a2a # 26
   - Alperia # 24
   - ENEL # 21
@@ -838,24 +840,26 @@ IT:
   - Evway # 12
   - ENEL X # 12
   - Hera / AcegasApsAmga # 10
+  - Enel-X # 9
   - Duferco # 8
   - BlueTorino # 8
   - A22 # 8
   - Tesla # 7
   - Etraction # 7
   - SEMM # 6
-  - Enel-X # 6
   - ENEL drive # 6
   - Enel Drive # 5
   - Comune di Firenze # 5
   - A2A # 5
   - enel # 4
+  - Regione Umbria # 4
   - Lidl # 4
   - Iren # 4
   - Enel Distribuzione # 4
   - Emobitaly # 4
   - E-Moving # 4
   - Duferco Energia # 4
+  - ASM Terni # 4
   - enelx # 3
   - enel X # 3
   - alperia # 3
@@ -866,6 +870,7 @@ IT:
   - EVBOX # 3
   - EVAD # 3
   - ENI # 3
+  - E-motion # 3
   - DriWe # 3
   - Atac # 3
   - Amag # 3
@@ -876,6 +881,7 @@ IT:
   - SCAME # 2
   - Repower # 2
   - LIDL # 2
+  - Ionity # 2
   - Enel spa # 2
   - Enel  X # 2
   - ECO fuel # 2
@@ -883,6 +889,7 @@ IT:
   - Comune di Albiate # 2
   - Charge&Go # 2
   - COGESER # 2
+  - BeCharge # 2
   - AcegasApsAmga # 2
   - ATAC # 2
 JP:
@@ -912,14 +919,14 @@ LV:
 MK:
   - EVN # 16
 MX:
-  - Servicio de Transportes Eléctricos de la Ciudad de México # 2
+  - Servicio de Transportes Eléctricos de la Ciudad de México # 3
 NL:
-  - Allego # 176
+  - Allego # 179
   - NUON # 98
   - Fastned # 95
   - Nuon # 71
   - EVBOX # 24
-  - Ecotap # 19
+  - Ecotap # 20
   - Vattenfall # 18
   - NewMotion # 16
   - EVnetNL # 16
@@ -981,7 +988,7 @@ NL:
 NO:
   - Fortum # 297
   - Grønn Kontakt # 182
-  - Oslo kommune # 167
+  - Oslo kommune # 166
   - BKK # 56
   - Grønn kontakt # 43
   - Q-Park # 28
@@ -1252,7 +1259,7 @@ SK:
   - EvMapa # 2
   - BMW T.O.B. # 2
 TR:
-  - SHARZ # 135
+  - SHARZ # 134
   - VOLTRUN # 28
   - ZES # 21
   - Sharz # 7
@@ -1274,11 +1281,12 @@ UA:
   - АвтоЭнтерпрайз # 11
   - ЕлектроДрайв # 9
   - Autoenterprise # 9
-  - AutoEnterprise # 8
+  - AutoEnterprise # 9
   - Yasno # 6
   - ElectroUA # 6
   - Автоэнтерпрайз # 5
   - Автоентерпрайз # 4
+  - Silver Fox Energy # 3
   - Electro UA # 3
   - AutoEnterprise 201 # 3
   - АвтоЕнтерпрайз # 2
@@ -1381,8 +1389,8 @@ US-MD:
 US-ME:
   - Tesla Motors # 5
 US-MI:
-  - Tesla Motors # 14
   - Michigan State University # 12
+  - Tesla Motors # 8
   - Consumers Energy # 6
   - NRG Energy # 3
   - Lansing Board of Water and Light # 3

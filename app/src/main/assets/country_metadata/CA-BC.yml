@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [CIBC, RBC, TD Canada Trust, RBC Royal Bank, Scotiabank, Vancity, BMO, ScotiaBank, DC Bank, coastcapital
       savings, TD Bank, Royal Bank, Envision Financial, DCBank, Coast Capital]
-chargingStationOperators: [Flo, BC Hydro, ChargePoint, Tesla, Chargepoint, City of Maple Ridge / ChargePoint]
+chargingStationOperators: [Flo, ChargePoint, BC Hydro, Tesla, Chargepoint, City of Maple Ridge / ChargePoint]
 clothesContainerOperators: [Developmental Disabilities Association, Cerebral Palsy Association of BC, Canadian Diabetes Association,
    Big Brothers of Greater Vancouver Clothing Donation]
 officialLanguages: [en]

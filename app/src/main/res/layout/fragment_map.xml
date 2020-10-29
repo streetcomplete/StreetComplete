@@ -26,7 +26,7 @@
             android:shadowColor="@color/background"
             android:shadowRadius="6"
             android:text="@string/map_attribution_osm"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
             tools:ignore="RtlHardcoded" />
 
         <TextView
@@ -38,8 +38,8 @@
             android:shadowColor="@color/background"
             android:shadowRadius="6"
             tools:text="© JawgMaps"
-            android:paddingRight="8dp"
-            android:layout_toLeftOf="@id/openstreetmapLink"
+            android:paddingLeft="8dp"
+            android:layout_toRightOf="@id/openstreetmapLink"
             tools:ignore="RtlHardcoded,RtlSymmetry" />
 
     </RelativeLayout>

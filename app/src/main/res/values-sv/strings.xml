@@ -2317,6 +2317,8 @@ nivåer"</string>
     <string name="quest_openingHours_resurvey_name_title">"Är dessa öppettider för %s fortfarande korrekta?"</string>
     <string name="quest_openingHours_resurvey_name_type_title">"Är dessa öppettider för %1$s (%2$s) fortfarande korrekta?"</string>
     <string name="quest_openingHours_resurvey_no_name_title">"Är dessa öppettider fortfarande korrekta (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Lägg till lediga dagar"</string>
+    <string name="quest_openingHours_off_day">"Ledig dag"</string>
     <string name="quest_openingHours_unspecified_range">"Inte angivet"</string>
     <string name="quest_cycleway_resurvey_title">"Är det fortfarande cykelvägsituationen här?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Är %1$s (%2$s) tillgänglig med rullstol?"</string>
@@ -2365,4 +2367,8 @@ nivåer"</string>
     <string name="achievement_outdoors_title">"Utomhus"</string>
     <string name="achievement_outdoors_solved_X">"Du löste %d uppdrag som är användbara för friluftsmänniskor!"</string>
     <string name="quest_pedestrian_crossing_island">"Har detta övergångsställe en ö?"</string>
+    <string name="quest_generic_answer_noSign">"Det finns ingen skylt"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Visas rullstolsrampen som en separat väg på kartan?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"separat"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"inte separat"</string>
 </resources>

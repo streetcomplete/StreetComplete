@@ -675,9 +675,6 @@
     "type/route/ferry": {
       "name": "渡轮航线"
     },
-    "type/route/foot": {
-      "name": "步行路线"
-    },
     "type/route/pipeline": {
       "name": "管道路线"
     },

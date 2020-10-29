@@ -200,9 +200,17 @@
     "amenity/biergarten": {
       "name": "Pivní zahrada"
     },
+    "amenity/binoculars": {
+      "name": "Namontovaný dalekohled",
+      "terms": "dalekohled,veřejný dalekohled,rozhled,výhled,vyhlídka,teleskop"
+    },
     "amenity/boat_rental": {
       "name": "Půjčovna lodí",
       "terms": "půjčovna lodí,půjčovna loděk,půjčovna člunů"
+    },
+    "amenity/boat_storage": {
+      "name": "Místo pro uložení lodí",
+      "terms": "břeh,úschova lodí,uložení lodí mimo vodu,na souši,parkování na souši,prostor pro úschovu lodí"
     },
     "amenity/bureau_de_change": {
       "name": "Směnárna",
@@ -356,6 +364,10 @@
     "amenity/fast_food/ice_cream": {
       "name": "zmrzlina"
     },
+    "amenity/fast_food/juice": {
+      "name": "Čerstvé ovocné šťávy",
+      "terms": "džus, rychlé občerstvení,šťáva,džusárna,ovocné nápoje,pití"
+    },
     "amenity/fast_food/kebab": {
       "name": "Kebab rychlé občerstvení"
     },
@@ -443,6 +455,10 @@
     "amenity/loading_dock": {
       "name": "nakládací rampa"
     },
+    "amenity/lounger": {
+      "name": "Lehátka",
+      "terms": "veřejná lehátka,lehátka,lehátko,křeslo,veřejné sezení,odpočinek,sedadlo,sezení"
+    },
     "amenity/love_hotel": {
       "name": "Hodinový hotel"
     },
@@ -455,6 +471,10 @@
     },
     "amenity/money_transfer": {
       "name": "místo pro peněžní převody"
+    },
+    "amenity/mortuary": {
+      "name": "Márnice",
+      "terms": "márnice,místo pro zemřelé,hřbitov,pohřbívání,mrtví,zemřelí,pohřeb,hrobník"
     },
     "amenity/motorcycle_parking": {
       "name": "Parkování pro motorky",
@@ -1533,6 +1553,9 @@
     "demolished/building": {
       "name": "čerstvě zbouraná budova"
     },
+    "disused/amenity": {
+      "name": "Nepoužívané zařízení"
+    },
     "disused/railway": {
       "name": "nepoužívaný železniční prvek"
     },
@@ -1633,6 +1656,10 @@
     },
     "golf/cartpath": {
       "name": "cesta pro golfová vozítka"
+    },
+    "golf/clubhouse": {
+      "name": "Golfová klubovna",
+      "terms": "golf,golfový klub,základna,budova,golfový areál"
     },
     "golf/driving_range": {
       "name": "Dojezd"
@@ -2782,6 +2809,10 @@
     "man_made/tower/communication": {
       "name": "Komunikační věž"
     },
+    "man_made/tower/cooling": {
+      "name": "Chladící věž",
+      "terms": "chladící věž,elektrárna,JE,jaderná elektrárna,chlazení"
+    },
     "man_made/tower/defensive": {
       "name": "opevněná věž"
     },
@@ -2822,6 +2853,10 @@
     },
     "man_made/windmill": {
       "name": "Větrný mlýn"
+    },
+    "man_made/windpump": {
+      "name": "Větrný mlýn (pumpa)",
+      "terms": "větrný mlýn,čerpání vody,pumpování vody,čerpání ropy,pumpování ropy,poháněné větrem,pumpa poháněná větrem,větrná pumpa,čerpadlo"
     },
     "man_made/works": {
       "name": "Továrna",
@@ -2897,6 +2932,10 @@
     "natural/heath": {
       "name": "Vřesoviště",
       "terms": "vřesoviště,vřes"
+    },
+    "natural/hot_spring": {
+      "name": "Termální pramen",
+      "terms": "termální pramen,termální jezero, horký pramen,geotermální"
     },
     "natural/mud": {
       "name": "Bahno"
@@ -3400,6 +3439,10 @@
     "public_transport/platform/bus_point": {
       "name": "Autobusová zastávka",
       "terms": "autobusová zastávka,nástupiště autobusu,autobusové nástupiště,místo pro čekání na autobus,autobus,bus,MHD,VHD,HD,hromadná doprava,veřejná doprava,městská hromadná doprava,nástupiště"
+    },
+    "public_transport/platform/bus_tram_point": {
+      "name": "Zastávka tramvaje a autobusu",
+      "terms": "tram,tramvaj,šalina,bus,autobus,mhd,hromadná doprava,veřejná doprava,VHD,veřejná hromadná doprava,zastávka,stanoviště,nástupiště,zastavení,zastávka tramvaje a autobusu,tramvajová a autobusová zastávka"
     },
     "public_transport/platform/ferry": {
       "name": "nástupní hrana přívozu"
@@ -4314,6 +4357,9 @@
       "name": "Vinotéka",
       "terms": "vinotéka,víno,vinárna,vinařství,vino"
     },
+    "telecom": {
+      "name": "Telekomunikační prvek"
+    },
     "telecom/data_center": {
       "name": "Datové centrum"
     },
@@ -4405,6 +4451,10 @@
     "tourism/information/board": {
       "name": "Informační tabule",
       "terms": "Informační tabule"
+    },
+    "tourism/information/board/welcome_sign": {
+      "name": "Uvítací tabule",
+      "terms": "uvítací,vítající,značka,tabule,cedule,vítající značka,vítající tabule"
     },
     "tourism/information/guidepost": {
       "name": "Rozcestník"
@@ -4512,21 +4562,9 @@
       "name": "Značka začátek/konec obce",
       "terms": "dopravní značka,DZ,začátek obce,konec obce,obec,začátek území obce,vesnice,město,konec města,konec vesnice,začátek města,začátek vesnice,značka začátku obce,značka konce obce"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Značka začátek/konec obce",
-      "terms": "dopravní značka,DZ,začátek obce,konec obce,obec,začátek území obce,vesnice,město,konec města,konec vesnice,začátek města,začátek vesnice,značka začátku obce,značka konce obce"
-    },
     "traffic_sign/maxspeed": {
       "name": "Značka omezení rychlosti",
       "terms": "dopravní značka omezení rychlosti,dopravní značka maximální rychlosti,maximální rychlost,maximální povolená rychlost,dopravní značení,značka,cedule,dopravní cedule,silniční značení,DZ,doprava,omezení rychlosti,rychlostní limit,rychlostní omezení,značka rychlosti"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Značka omezení rychlosti",
-      "terms": "dopravní značka omezení rychlosti,dopravní značka maximální rychlosti,maximální rychlost,maximální povolená rychlost,dopravní značení,značka,cedule,dopravní cedule,silniční značení,DZ,doprava,omezení rychlosti,rychlostní limit,rychlostní omezení,značka rychlosti"
-    },
-    "traffic_sign_vertex": {
-      "name": "Dopravní značka",
-      "terms": "dopravní značka,dopravní značení,značka,cedule,dopravní cedule,silniční značení,DZ,doprava"
     },
     "type/boundary": {
       "name": "Hranice",
@@ -4608,8 +4646,8 @@
       "terms": "trajekt,trasa,linka,loď,trasa trajektu"
     },
     "type/route/foot": {
-      "name": "Pěší trasa",
-      "terms": "pěší trasa,trasa pro pěší,turistická značka,turistická trasa,značka pro pěší,klub českých turistů,kčt"
+      "name": "Turistická trasa",
+      "terms": "pěší trasa,trasa pro pěší,turistická značka,turistická trasa,značka pro pěší,klub českých turistů,kčt,stezka pro pěší,turistická stezka"
     },
     "type/route/hiking": {
       "name": "Turistická trasa",

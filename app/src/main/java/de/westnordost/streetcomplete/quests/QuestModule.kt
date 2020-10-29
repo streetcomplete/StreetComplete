@@ -126,13 +126,12 @@ import javax.inject.Singleton
         AddRecyclingType(),
         AddRecyclingContainerMaterials(),
         AddSport(),
-        AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style
+        AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style...
         AddMaxSpeed(), // should best be after road surface because it excludes unpaved roads
         AddMaxHeight(), // OSRM and other routing engines
         AddRailwayCrossingBarrier(), // useful for routing
         AddPostboxCollectionTimes(),
         AddOpeningHours(featureDictionaryFuture),
-        DetailRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper
         AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
         AddOrchardProduce(),
         AddBuildingType(), // because housenumber, building levels etc. depend on it
@@ -146,7 +145,7 @@ import javax.inject.Singleton
         AddInternetAccess(), // used by OsmAnd
         AddParkingFee(), // used by OsmAnd
         AddMotorcycleParkingCapacity(),
-        AddPathSurface(), // used by OSM Carto, OsmAnd
+        AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
         AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
         AddMaxWeight(), // used by OSRM and other routing engines
         AddForestLeafType(), // used by OSM Carto

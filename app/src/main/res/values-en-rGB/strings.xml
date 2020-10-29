@@ -507,9 +507,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_toiletsFee_title">"Does this toilet require a fee?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
 
     <!-- Fuzzy -->
@@ -1177,9 +1174,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"What religion is represented at this shrine?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_fee_title">"Does it cost a fee to park here?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"cycle lane (dashed markings)"</string>

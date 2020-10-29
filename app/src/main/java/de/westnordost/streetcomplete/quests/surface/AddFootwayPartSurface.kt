@@ -5,16 +5,23 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddFootwayPartSurface : OsmFilterQuestType<String>() {
+class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
-        ways with
-        (
-          highway = footway 
+        ways with (
+          highway = footway
           or (highway ~ path|cycleway|bridleway and foot != no)
         )
         and segregated = yes
-        and (!footway:surface or footway:surface older today -8 years)
+        and (
+          !footway:surface
+          or footway:surface older today -8 years
+          or (
+            footway:surface ~ paved|unpaved
+            and !footway:surface:note
+            and !note:footway:surface
+          )
+        )
     """
     override val commitMessage = "Add path surfaces"
     override val wikiLink = "Key:surface"
@@ -25,7 +32,17 @@ class AddFootwayPartSurface : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("footway:surface", answer)
+    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is SpecificSurfaceAnswer -> {
+                changes.updateWithCheckDate("footway:surface", answer.value)
+                changes.deleteIfExists("footway:surface:note")
+            }
+            is GenericSurfaceAnswer -> {
+                changes.updateWithCheckDate("footway:surface", answer.value)
+                changes.addOrModify("footway:surface:note", answer.note)
+            }
+        }
+        changes.deleteIfExists("source:footway:surface")
     }
 }

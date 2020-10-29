@@ -6,20 +6,23 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddRoadSurface : OsmFilterQuestType<String>() {
+class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
         ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
-         and (
-           !surface
-           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -4 years
-           or surface older today -12 years
-         )
-         and (access !~ private|no or (foot and foot !~ private|no))
+        and (
+          !surface
+          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -4 years
+          or surface older today -12 years
+          or (
+            surface ~ paved|unpaved
+            and !surface:note
+            and !note:surface
+          )
+        )
+        and (access !~ private|no or (foot and foot !~ private|no))
     """
-    /* ~paved ways are less likely to change the surface type */
-
-    override val commitMessage = "Add road surfaces"
+    override val commitMessage = "Add road surface info"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface
     override val isSplitWayEnabled = true
@@ -42,8 +45,18 @@ class AddRoadSurface : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddRoadSurfaceForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("surface", answer)
+    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is SpecificSurfaceAnswer -> {
+                changes.updateWithCheckDate("surface", answer.value)
+                changes.deleteIfExists("surface:note")
+            }
+            is GenericSurfaceAnswer -> {
+                changes.updateWithCheckDate("surface", answer.value)
+                changes.addOrModify("surface:note", answer.note)
+            }
+        }
+        changes.deleteIfExists("source:surface")
     }
 
     companion object {
