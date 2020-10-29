@@ -8,17 +8,26 @@ import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometry
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddCyclewayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+    : SimpleOverpassQuestType<SurfaceAnswer>(o) {
 
     override val tagFilters = """
         ways with
         (
-          highway = cycleway 
+          highway = cycleway
           or (highway ~ path|footway and bicycle != no)
           or (highway = bridleway and bicycle ~ designated|yes)
         )
         and segregated = yes
-        and (!cycleway:surface or cycleway:surface older today -${r * 8} years)
+        and (
+            !cycleway:surface or
+            cycleway:surface older today -${r * 8} years
+            or
+                (
+                cycleway:surface ~ paved|unpaved
+                and !cycleway:surface:note
+                and !note:cycleway:surface
+                )
+            )
     """
     override val commitMessage = "Add path surfaces"
     override val wikiLink = "Key:surface"
@@ -29,7 +38,17 @@ class AddCyclewayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyInterv
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("cycleway:surface", answer)
+    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
+        when (answer) {
+            is SpecificSurfaceAnswer -> {
+                changes.updateWithCheckDate("cycleway:surface", answer.value)
+                changes.deleteIfExists("cycleway:surface:note")
+            }
+            is GenericSurfaceAnswer -> {
+                changes.updateWithCheckDate("cycleway:surface", answer.value)
+                changes.addOrModify("cycleway:surface:note", answer.note)
+            }
+        }
+        changes.deleteIfExists("source:cycleway:surface")
     }
 }

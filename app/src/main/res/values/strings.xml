@@ -131,7 +131,7 @@
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
-    <string name="quest_roofShape_show_more">"Show more…"</string>
+    <string name="quest_roofShape_show_more">"Show more…"</string><!--it is used in generic list, not only for roof shape but rename would break translations-->
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
     <string name="quest_sport_title">"What sport is played here?"</string>
     <string name="quest_sport_answer_multi">"Not any specific sport"</string>
@@ -919,10 +919,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_detailed_answer_impossible">Multiple surfaces…</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the \"Differs along the way\" answer option that allows you to cut the way where the surface changes. Please use \"Can\'t say\" if there is a single surface but it is not available as an answer.</string>
     <string name="quest_surface_detailed_answer_impossible_description">Please briefly specify the nature of the surface here, for example \"sandy with patches of cobblestone\". The text length is limited to 255 characters.</string>
-    <string name="quest_surface_detailed_name_title">"What specific surface does the road %s have here?"</string>
-    <string name="quest_surface_detailed_square_name_title">"What specific surface does the square %s have here?"</string>
-    <string name="quest_surface_detailed_title">"What specific surface does this piece of road have?"</string>
-    <string name="quest_surface_detailed_square_title">"What specific surface does this square have here?"</string>
     <string name="at_housename">house name %s:</string>
     <string name="at_conscription_and_street_number">conscription number %1$s, orientation number %2$s:</string>
     <string name="at_conscription_number">conscription number %s:</string>
@@ -932,5 +928,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="dialog_tutorial_download">With auto-sync off, quests are not downloaded automatically. To do this manually, use the \"%s\" button in the menu at the location you want to download.</string>
 
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
     <string name="open_url">Open URL</string>
 </resources>

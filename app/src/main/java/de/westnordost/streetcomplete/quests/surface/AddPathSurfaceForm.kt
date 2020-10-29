@@ -1,56 +1,35 @@
 package de.westnordost.streetcomplete.quests.surface
 
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.quests.surface.Surface.*
 
-class AddPathSurfaceForm : AGroupedImageListQuestAnswerFragment<String, String>() {
+class AddPathSurfaceForm : AImageListQuestAnswerFragment<String, SurfaceAnswer>() {
+    override val items: List<Item<String>> get() =
+        (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES).toItems() +
+            Item("paved", R.drawable.path_surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
+            Item("unpaved", R.drawable.path_surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf()) +
+            Item("ground", R.drawable.surface_ground, R.string.quest_surface_value_ground, null, listOf())
 
-    override val topItems get() =
-        when (val pathType = determinePathType(osmElement!!.tags)) {
-            "bridleway" -> listOf(
-                DIRT, GRASS, SAND,
-                PEBBLES, FINE_GRAVEL, COMPACTED
-            )
-            "path" -> listOf(
-                DIRT, PEBBLES, COMPACTED,
-                ASPHALT, FINE_GRAVEL, PAVING_STONES
-            )
-            "footway" -> listOf(
-                PAVING_STONES, ASPHALT, CONCRETE,
-                COMPACTED, FINE_GRAVEL, DIRT
-            )
-            "cycleway" -> listOf(
-                PAVING_STONES, ASPHALT, CONCRETE,
-                COMPACTED, WOOD, METAL
-            )
-            "steps" -> listOf(
-                PAVING_STONES, ASPHALT, CONCRETE,
-                WOOD, SETT, UNHEWN_COBBLESTONE
-            )
-            else -> throw IllegalStateException("Unexpected path type $pathType")
-        }.toItems()
+    override val itemsPerRow = 3
 
-    override val allItems = listOf(
-        // except for different panorama images, should be the same as for the road quest, to avoid confusion
-        Item("paved", R.drawable.panorama_path_surface_paved, R.string.quest_surface_value_paved, null, PAVED_SURFACES.toItems()),
-        Item("unpaved", R.drawable.panorama_path_surface_unpaved, R.string.quest_surface_value_unpaved, null, UNPAVED_SURFACES.toItems()),
-        Item("ground", R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, GROUND_SURFACES.toItems())
-    )
-
-    private fun determinePathType(tags: Map<String, String>): String? {
-        val pathType = tags["highway"]
-        // interpret paths with foot/bicycle/horse=designated as...
-        if ("path" == pathType) {
-            if ("designated" == tags["bicycle"]) return "cycleway"
-            if ("designated" == tags["horse"]) return "bridleway"
-            if ("designated" == tags["foot"]) return "footway"
+    override fun onClickOk(selectedItems: List<String>) {
+        val value = selectedItems.single()
+        if(value == "paved" || value == "unpaved") {
+            AlertDialog.Builder(requireContext())
+                .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) {
+                    _, _ -> run {
+                        DescribeGenericSurfaceDialog(requireContext()) { description ->
+                          applyAnswer(GenericSurfaceAnswer(value, description))
+                        }.show()
+                    }
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+            return
         }
-        return pathType
-    }
-
-    override fun onClickOk(value: String) {
-        applyAnswer(value)
+        applyAnswer(SpecificSurfaceAnswer(value))
     }
 }
