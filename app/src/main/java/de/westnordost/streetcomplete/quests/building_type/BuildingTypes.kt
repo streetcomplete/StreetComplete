@@ -32,7 +32,7 @@ enum class BuildingType(val item: Item<String>) {
     TRAIN_STATION (Item("train_station", R.drawable.ic_building_train_station, R.string.quest_buildingType_train_station)),
     TRANSPORTATION(Item("transportation", R.drawable.ic_building_transportation, R.string.quest_buildingType_transportation)),
     UNIVERSITY    (Item("university", R.drawable.ic_building_university, R.string.quest_buildingType_university)),
-    GOVERNMENT    (Item("government", R.drawable.ic_building_civic,      R.string.quest_buildingType_government)),
+    GOVERNMENT    (Item("government", R.drawable.ic_building_historic,      R.string.quest_buildingType_government)),
 
     CHURCH        (Item("church",     R.drawable.ic_religion_christian,  R.string.quest_buildingType_church)),
     CHAPEL        (Item("chapel",     R.drawable.ic_religion_christian,  R.string.quest_buildingType_chapel)),

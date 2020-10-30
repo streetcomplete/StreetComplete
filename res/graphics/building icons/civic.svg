@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
- <rect x="22" y="52" width="84" height="48" fill="#959595" style="paint-order:normal"/>
- <rect x="18" y="52" width="12" height="48" fill="#d9d9d9" style="paint-order:stroke markers fill"/>
- <rect x="12" y="100" width="104" height="8" fill="#b9b9b9" style="paint-order:stroke markers fill"/>
- <rect x="8" y="108" width="112" height="8" fill="#aaa" style="paint-order:stroke markers fill"/>
- <path d="m20.609 56.783v35.217h11.739v-35.217z" fill-opacity="0"/>
- <path d="m95.739 56.783v35.217h11.739v-35.217z" fill-opacity="0"/>
- <path d="m44.087 56.783v35.217h11.739v-35.217z" fill-opacity="0"/>
- <path d="m72.261 56.783v35.217h11.739v-35.217z" fill-opacity="0"/>
- <rect x="12" y="44" width="104" height="8" fill="#b9b9b9" style="paint-order:stroke markers fill"/>
- <path d="m12 36v8h104v-8l-52-24z" fill="#d9d9d9" stroke="#aeaeae" stroke-width="7.0435"/>
- <rect x="98" y="52" width="12" height="48" fill="#d9d9d9" style="paint-order:stroke markers fill"/>
- <rect x="78" y="52" width="12" height="48" fill="#d9d9d9" style="paint-order:stroke markers fill"/>
- <rect x="38" y="52" width="12" height="48" fill="#d9d9d9" style="paint-order:stroke markers fill"/>
- <path d="m64 68c-4.4183 0-8 3.5817-8 8v24h16v-24c0-4.4183-3.5817-8-8-8z" fill="#58595b" style="paint-order:normal"/>
- <rect x="18" y="52" width="92" height="4" fill-opacity=".2" style="paint-order:normal"/>
+ <path d="m12 112h104v-44l-52-24-52 24z" fill="#deb486"/>
+ <rect x="56" y="80" width="16" height="32" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="32" y="80" width="16" height="24" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="32" y="76" width="16" height="4" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="56" y="76" width="16" height="4" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="16" y="68" width="8" height="44" fill="#fdd7af"/>
+ <rect x="80" y="80" width="16" height="24" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="80" y="76" width="16" height="4" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="104" y="68" width="8" height="44" fill="#fdd7af"/>
+ <path d="m4 72 12-28h96l12 28z" fill-opacity=".2"/>
+ <path d="m4 68 12-28h96l12 28z" fill="#c84747"/>
+ <path d="m48 20 16-8 16 8v36h-32z" fill="#deb486" style="paint-order:stroke markers fill"/>
+ <circle cx="64" cy="40" r="8.9551" fill="#e5e5e5"/>
+ <path d="m40 28 24-16 24 16" fill="none" stroke="#c84747" stroke-width="12"/>
+ <rect x="8" y="112" width="112" height="8" fill="#d0947b"/>
 </svg>
