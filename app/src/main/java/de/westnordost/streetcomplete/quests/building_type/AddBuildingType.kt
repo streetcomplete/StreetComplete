@@ -22,6 +22,7 @@ class AddBuildingType (o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestTy
          and !leisure
          and location != underground
          and ruins != yes
+         and abandoned != building
     """
     override val commitMessage = "Add building types"
     override val wikiLink = "Key:building"
@@ -36,11 +37,9 @@ class AddBuildingType (o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestTy
             val manMade = answer.split("=")[1]
             changes.delete("building")
             changes.add("man_made", manMade)
-        } else {
-            if (answer.contains("historic") || answer.contains("abandoned") || answer.contains("ruin"))
-                changes.add(answer, "yes")
-            else
-                changes.modify("building", answer)
-        }
+        } else if (answer == "historic" || answer == "abandoned" || answer == "ruins")
+            changes.add(answer, "yes")
+        else
+            changes.modify("building", answer)
     }
 }
