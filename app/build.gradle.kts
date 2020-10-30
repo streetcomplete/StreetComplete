@@ -94,9 +94,6 @@ dependencies {
     val kotlinxVersion = "1.3.8"
     val daggerVersion = "2.14.1"
 
-    // debugging
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.4")
-
     // tests
     testImplementation("junit:junit:4.12")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
