@@ -56,6 +56,9 @@
       "name": "Naruhissi",
       "terms": "hissi, hiihtohissi, lasketteluhissi, laskettelu, naru, köysi, köysihissi"
     },
+    "aeroway": {
+      "name": "Ilmailukohde"
+    },
     "aeroway/aerodrome": {
       "name": "Lentokenttä",
       "terms": "lentokenttä, lentoasema, terminaali, lentokone, lentoterminaali"
@@ -396,6 +399,9 @@
     "amenity/money_transfer": {
       "name": "Rahansiirtopiste"
     },
+    "amenity/mortuary": {
+      "name": "Ruumishuone"
+    },
     "amenity/motorcycle_parking": {
       "name": "Moottoripyöräpysäköinti"
     },
@@ -702,6 +708,12 @@
     },
     "amenity/toilets/disposal/flush": {
       "name": "Vesivessa"
+    },
+    "amenity/toilets/disposal/pitlatrine": {
+      "name": "Huussi"
+    },
+    "amenity/toilets/portable": {
+      "name": "Siirrettävä WC"
     },
     "amenity/townhall": {
       "name": "Kunnantalo",
@@ -1026,6 +1038,9 @@
       "name": "Keskeneräinen rakennus",
       "terms": "rakennus, rakennustyömaa, rakenteilla"
     },
+    "building/cowshed": {
+      "name": "Navetta"
+    },
     "building/detached": {
       "name": "Omakotitalo"
     },
@@ -1132,6 +1147,9 @@
     "building/static_caravan": {
       "name": "Paikallaan pysyvä siirrettävä talo"
     },
+    "building/sty": {
+      "name": "Sikala"
+    },
     "building/temple": {
       "name": "Temppelirakennus"
     },
@@ -1167,6 +1185,9 @@
     "craft": {
       "name": "Kädentaitoja vaativa kohde"
     },
+    "craft/agricultural_engines": {
+      "name": "Maatalousmekaanikko"
+    },
     "craft/basket_maker": {
       "name": "Koripaja",
       "terms": "kori, paju, pajukori, korivalmistaja, koripaja"
@@ -1199,6 +1220,9 @@
     },
     "craft/chimney_sweeper": {
       "name": "Nuohooja"
+    },
+    "craft/cleaning": {
+      "name": "Siivouspalvelu"
     },
     "craft/clockmaker": {
       "name": "Kelloseppä"
@@ -1241,6 +1265,9 @@
     },
     "craft/locksmith": {
       "name": "Lukkoseppä"
+    },
+    "craft/metal_construction": {
+      "name": "Metallityöntekijä"
     },
     "craft/painter": {
       "name": "Maalari",
@@ -1317,6 +1344,9 @@
     },
     "demolished/building": {
       "name": "Äskettäin purettu rakennus"
+    },
+    "disused/amenity": {
+      "name": "Poistunut palvelu"
     },
     "disused/railway": {
       "name": "Käytöstä poistettu rautatiekohde"
@@ -1402,6 +1432,9 @@
     },
     "entrance/emergency": {
       "name": "Hätäuloskäynti"
+    },
+    "entrance/emergency_ward_entrance": {
+      "name": "Päivystyssisäänkäynti"
     },
     "ford": {
       "name": "Kahlauspaikka"
@@ -1713,6 +1746,9 @@
     "highway/tertiary_link": {
       "name": "Yhdystien ramppi"
     },
+    "highway/toll_gantry": {
+      "name": "Avoin tietulli"
+    },
     "highway/track": {
       "name": "Maatalous-/metsätie",
       "terms": "pikkutie, hiekkatie, metsätie, metsäkonetie, metsä, metsäkone, ura, ajoväylä"
@@ -1931,6 +1967,9 @@
       "name": "Laivastotukikohta",
       "terms": "sotilaallinen, sotilas, armeija, maanpuolustus, puolustus, puolustusvoimat, sodankäynti, sota, merivoimat, meri, rannikko, laivasto, laivat, laiva, sotalaiva, sotalaivat"
     },
+    "landuse/military/obstacle_course": {
+      "name": "Sotilasesterata"
+    },
     "landuse/military/range": {
       "name": "Sotilasampumarata",
       "terms": "ampumarata, rata, radat, ampumaradat, ampuminen, ase, harjoittelu, sotilaallinen, sotilas, armeija, maanpuolustus, puolustus, puolustusvoimat, sodankäynti, sota"
@@ -2066,7 +2105,7 @@
       "name": "Golfkenttä"
     },
     "leisure/hackerspace": {
-      "name": "Koodausnurkkaus",
+      "name": "Hacklab",
       "terms": "hackerspace, hackspace, makerspace, hacklab, häckläb, ohjelmointi, ohjelmoija, koodaus, koodaaja, teknologia, rakentelu, värkkäys, värkkäily, paja, työpaja, tila, julkinen, labra, verstas, kaupunkiverstas"
     },
     "leisure/horse_riding": {
@@ -2202,6 +2241,9 @@
       "name": "Uimahalli",
       "terms": "uimahalli, kylpylä, uima-allas, uintikeskus, uinti, uiminen, vesi, vesiurheilu, urheilu, vesiurheilukeskus, vesiurheiluhalli"
     },
+    "leisure/sports_hall": {
+      "name": "Liikuntasali"
+    },
     "leisure/stadium": {
       "name": "Stadion"
     },
@@ -2264,8 +2306,14 @@
     "man_made/clearcut": {
       "name": "Avohakattu metsä"
     },
+    "man_made/courtyard": {
+      "name": "Sisäpiha"
+    },
     "man_made/crane": {
       "name": "Nosturi"
+    },
+    "man_made/cross": {
+      "name": "Risti"
     },
     "man_made/cutline": {
       "name": "Metsänraja",
@@ -2280,6 +2328,9 @@
     },
     "man_made/gasometer": {
       "name": "Kaasusäiliö"
+    },
+    "man_made/goods_conveyor": {
+      "name": "Tavaraliukuhihna"
     },
     "man_made/lighthouse": {
       "name": "Majakka"
@@ -2339,6 +2390,9 @@
     "man_made/pumping_station": {
       "name": "Pumppaamo"
     },
+    "man_made/reservoir_covered": {
+      "name": "Peitetty tekojärvi"
+    },
     "man_made/silo": {
       "name": "Siilo"
     },
@@ -2372,6 +2426,9 @@
     },
     "man_made/tower/communication": {
       "name": "Viestintätorni"
+    },
+    "man_made/tower/cooling": {
+      "name": "Jäähdytystorni"
     },
     "man_made/tower/defensive": {
       "name": "Vartiotorni"
@@ -2465,6 +2522,9 @@
     },
     "natural/heath": {
       "name": "Nummi"
+    },
+    "natural/hot_spring": {
+      "name": "Kuuma lähde"
     },
     "natural/mud": {
       "name": "Muta"
@@ -2921,6 +2981,9 @@
       "name": "Linja-autopysäkki",
       "terms": "bussipysäkki, linja-autopysäkki, bussikatos, pysähtymispaikka, bussin pysähtymispaikka, linja-auton pysähtymispaikka, pysäkki, pysäkkisyvänne"
     },
+    "public_transport/platform/bus_tram_point": {
+      "name": "Raitiotie- ja linja-autopysäkki"
+    },
     "public_transport/platform/ferry": {
       "name": "Laivalaituri"
     },
@@ -3052,6 +3115,9 @@
     "railway/construction": {
       "name": "Keskeneräinen rautatie"
     },
+    "railway/crossing": {
+      "name": "Tasoristeys (kevyt liikenne)"
+    },
     "railway/derail": {
       "name": "Raiteensulku"
     },
@@ -3063,6 +3129,9 @@
     },
     "railway/halt": {
       "name": "Seisake"
+    },
+    "railway/level_crossing": {
+      "name": "Tasoristeys (moottoriliikenne)"
     },
     "railway/light_rail": {
       "name": "Pikaraitiotie"
@@ -3094,6 +3163,9 @@
     "railway/rail/highspeed": {
       "name": "Suurnopeusrata"
     },
+    "railway/railway_crossing": {
+      "name": "Raiteiden risteyskohta"
+    },
     "railway/signal": {
       "name": "Rautatieopastin",
       "terms": "rautatie, juna, opastin, liikennevalo, signaali"
@@ -3117,6 +3189,12 @@
     "railway/tram": {
       "name": "Katuraitiotie"
     },
+    "railway/tram_crossing": {
+      "name": "Raitiotien ja polun tasoristeys"
+    },
+    "railway/tram_level_crossing": {
+      "name": "Raitiotien ja kadun tasoristeys"
+    },
     "railway/tram_stop": {
       "name": "Katuraitiovaunun pysähtymiskohta"
     },
@@ -3132,6 +3210,9 @@
     },
     "seamark": {
       "name": "Merimerkintä"
+    },
+    "seamark/buoy_lateral": {
+      "name": "Kanavapoiju"
     },
     "seamark/buoy_lateral/green": {
       "name": "Vihreä poiju"
@@ -3588,6 +3669,9 @@
     "shop/supermarket": {
       "name": "Supermarketti"
     },
+    "shop/supermarket/organic": {
+      "name": "Luomusupermarketti"
+    },
     "shop/swimming_pool": {
       "name": "Uima-allasliike"
     },
@@ -3827,17 +3911,8 @@
     "traffic_sign/city_limit": {
       "name": "Taajamaliikennemerkki"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Taajamaliikennemerkki"
-    },
     "traffic_sign/maxspeed": {
       "name": "Nopeusrajoitusliikennemerkki"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Nopeusrajoitusliikennemerkki"
-    },
-    "traffic_sign_vertex": {
-      "name": "Liikennemerkki"
     },
     "type/boundary": {
       "name": "Raja"
@@ -3847,6 +3922,12 @@
     },
     "type/connectivity": {
       "name": "Ajokaistajatkuvuus"
+    },
+    "type/destination_sign": {
+      "name": "Määränpääkyltti"
+    },
+    "type/enforcement": {
+      "name": "Valvonta"
     },
     "type/enforcement/maxspeed": {
       "name": "Nopeuskamera"
@@ -3970,7 +4051,7 @@
       "name": "Oja"
     },
     "waterway/dock": {
-      "name": "Telakka",
+      "name": "Telakka-allas",
       "terms": "laiva, laivanrakennus, laivateollisuus, teollisuus, rakentaminen, kuivatelakka, laivatelakka"
     },
     "waterway/drain": {

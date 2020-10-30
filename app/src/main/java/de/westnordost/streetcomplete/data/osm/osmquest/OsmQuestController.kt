@@ -4,6 +4,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -92,14 +93,14 @@ import javax.inject.Singleton
 
     /** Replace all quests of the given type in the given bounding box with the given quests,
      *  including their geometry. Called on download of a quest type for a bounding box. */
-    fun replaceInBBox(quests: List<OsmQuest>, bbox: BoundingBox, questType: String): UpdateResult {
+    fun replaceInBBox(quests: List<OsmQuest>, bbox: BoundingBox, questTypes: List<String>): UpdateResult {
+        require(questTypes.isNotEmpty()) { "questTypes must not be empty if not null" }
         /* All quests in the given bounding box and of the given type should be replaced by the
         *  input list. So, there may be 1. new quests that are added and 2. there may be previous
         *  quests that have been there before but now not anymore, these need to be removed. */
-
         val previousQuestIdsByElement = dao.getAll(
             bounds = bbox,
-            questTypes = listOf(questType)
+            questTypes = questTypes
         ).associate { ElementKey(it.elementType, it.elementId)  to it.id!! }.toMutableMap()
         val addedQuests = mutableListOf<OsmQuest>()
 
@@ -130,7 +131,14 @@ import javax.inject.Singleton
     /** Add new unanswered quests and remove others for the given element, including their linked
      *  geometry. Called when an OSM element is updated, so the quests that reference that element
      *  need to be updated as well. */
-    fun updateForElement(added: List<OsmQuest>, removedIds: List<Long>, elementType: Element.Type, elementId: Long): UpdateResult {
+    fun updateForElement(
+        added: List<OsmQuest>,
+        removedIds: List<Long>,
+        updatedGeometry: ElementGeometry,
+        elementType: Element.Type,
+        elementId: Long
+    ): UpdateResult {
+        geometryDao.put(ElementGeometryEntry(elementType, elementId, updatedGeometry))
         val e = ElementKey(elementType, elementId)
 
         var deletedCount = removeObsolete(removedIds)
@@ -229,21 +237,24 @@ import javax.inject.Singleton
     }
 
 
-    /** Get count of all unanswered quests in given bounding box of given types */
-    fun getAllVisibleInBBoxCount(bbox: BoundingBox, questTypes: Collection<String>) : Int =
-        dao.getCount(
+    /** Get count of all unanswered quests in given bounding box  */
+    fun getAllVisibleInBBoxCount(bbox: BoundingBox) : Int {
+        return dao.getCount(
             statusIn = listOf(QuestStatus.NEW),
-            bounds = bbox,
-            questTypes = questTypes
+            bounds = bbox
         )
+    }
 
     /** Get all unanswered quests in given bounding box of given types */
-    fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>): List<OsmQuest> =
-        dao.getAll(
+    fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>): List<OsmQuest> {
+        if (questTypes.isEmpty()) return listOf()
+        return dao.getAll(
             statusIn = listOf(QuestStatus.NEW),
             bounds = bbox,
             questTypes = questTypes
         )
+    }
+
 
     /** Get single quest by id */
     fun get(id: Long): OsmQuest? = dao.get(id)

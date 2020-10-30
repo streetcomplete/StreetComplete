@@ -680,7 +680,7 @@
     <string name="credits_contributors">"Github에서 &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;전체 목록&lt;/a&gt;을 확인하세요."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor 프로젝트&lt;/a&gt;에 들어가서 전체 목록을 확인하세요."</string>
+    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 프로젝트&lt;/a&gt;에 들어가서 전체 목록을 확인하세요."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"번역"</string>
@@ -1783,9 +1783,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"여기의 하중 제한이 얼마입니까?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"표지판이 없음"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"이 중량은 비현실적입니다. 정말 이 값이 맞습니까?"</string>

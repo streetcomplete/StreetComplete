@@ -695,7 +695,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="credits_contributors">"Se &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;hela listan på GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Se &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projekt på POEditor&lt;/a&gt; för en fullständig lista."</string>
+    <string name="credits_translations">"Se &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekt på POEditor&lt;/a&gt; för en fullständig lista."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Översättningar"</string>
@@ -1805,9 +1805,6 @@ Dela den nu?"</string>
     <string name="quest_maxweight_title">"Vad är viktgränsen här?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Det finns ingen skylt"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Denna vikt ser osannolikt ut. Är du säker på att det är korrekt?"</string>
 
     <!-- Fuzzy -->
@@ -2320,6 +2317,8 @@ nivåer"</string>
     <string name="quest_openingHours_resurvey_name_title">"Är dessa öppettider för %s fortfarande korrekta?"</string>
     <string name="quest_openingHours_resurvey_name_type_title">"Är dessa öppettider för %1$s (%2$s) fortfarande korrekta?"</string>
     <string name="quest_openingHours_resurvey_no_name_title">"Är dessa öppettider fortfarande korrekta (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Lägg till lediga dagar"</string>
+    <string name="quest_openingHours_off_day">"Ledig dag"</string>
     <string name="quest_openingHours_unspecified_range">"Inte angivet"</string>
     <string name="quest_cycleway_resurvey_title">"Är det fortfarande cykelvägsituationen här?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Är %1$s (%2$s) tillgänglig med rullstol?"</string>
@@ -2346,4 +2345,30 @@ nivåer"</string>
     <string name="quest_traffic_signals_sound_title">"Finns det ljudsignaler för blinda här?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Har dessa trafikljus en taktil indikation för blinda människor när det är säkert att korsa?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Tips: Ofta är detta en vibrerande knapp eller en roterande kon på undersidan av trafikljusknappen."</string>
+    <string name="quest_busStopRef_title">"Vad är referensnumret för denna busshållplats?"</string>
+    <string name="quest_tramStopRef_title">"Vad är referensnumret för denna spårvagnshållplats?"</string>
+    <string name="quest_buildingType_bungalow_description2">"litet fristående hus (sommarstuga, semesterstuga...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Vilka hinder används vid denna järnvägsövergång?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Inga hinder"</string>
+    <string name="quest_steps_ramp_title">"Har dessa steg en ramp? Vilken sort?"</string>
+    <string name="quest_steps_ramp_none">"Ingen (användbar) ramp"</string>
+    <string name="quest_steps_ramp_bicycle">"Cykelramp"</string>
+    <string name="quest_steps_ramp_stroller">"Barnvagnsramp"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rullstolsramp"</string>
+    <string name="quest_atm_operator_title">"Vad heter banken för denna bankomat?"</string>
+    <string name="quest_clothes_container_operator_title">"Vem accepterar donationer för denna klädkorg?"</string>
+    <string name="quest_charging_station_operator_title">"Vem är operatören för denna laddstation?"</string>
+    <string name="link_indoorequal_description">"Upptäck inomhuskartor över köpcentrum, järnvägsstationer o.sv."</string>
+    <string name="link_thenandnow_description">"Nyfiken vilka framsteg vi gjort under åren? Jämför med hur kartan såg ut för mer än 10 år sedan!"</string>
+    <string name="achievement_rare_title">"Skattjakt"</string>
+    <string name="achievement_rare_solved_X">"Du hittade och löste %d uppdrag som verkligen genomförs sällan, grattis!"</string>
+    <string name="achievement_citizen_title">"Medborgare"</string>
+    <string name="achievement_citizen_solved_X">"Du löste %d uppdrag som är användbara för vardagen i stan!"</string>
+    <string name="achievement_outdoors_title">"Utomhus"</string>
+    <string name="achievement_outdoors_solved_X">"Du löste %d uppdrag som är användbara för friluftsmänniskor!"</string>
+    <string name="quest_pedestrian_crossing_island">"Har detta övergångsställe en ö?"</string>
+    <string name="quest_generic_answer_noSign">"Det finns ingen skylt"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Visas rullstolsrampen som en separat väg på kartan?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"separat"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"inte separat"</string>
 </resources>

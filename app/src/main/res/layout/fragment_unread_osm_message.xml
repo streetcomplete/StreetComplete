@@ -23,7 +23,7 @@
 
         <RelativeLayout
             android:id="@+id/speechbubbleContentContainer"
-            android:layout_width="220dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:background="@drawable/speech_bubble_none"
             android:layout_centerHorizontal="true"

@@ -291,7 +291,7 @@
     },
     "amenity/community_centre": {
       "name": "مرکز اجتماع",
-      "terms": "فرهنگسرا"
+      "terms": "فرهنگسرا، کانون، رویداد، اجتماعات"
     },
     "amenity/community_centre/lgbtq": {
       "name": "مرکز انجمن هم‌جنس‌گرایان",
@@ -3650,13 +3650,16 @@
       "terms": "مبلمان حمام"
     },
     "shop/beauty": {
-      "name": "فروشگاه زیبایی"
+      "name": "سالن زیبایی",
+      "terms": "آرایشگاه"
     },
     "shop/beauty/nails": {
-      "name": "سالن آرایش ناخن"
+      "name": "سالن آرایش ناخن",
+      "terms": "مانیکور، پدیکور، ناخن، کاشت ناخن، سالن زیبایی، آرایشگاه"
     },
     "shop/beauty/tanning": {
-      "name": "سالن برنزه"
+      "name": "سالن برنزه",
+      "terms": "آرایشگاه، سالن زیبایی"
     },
     "shop/bed": {
       "name": "فروشگاه کالای خواب/ تشک"
@@ -3897,7 +3900,8 @@
       "terms": "شکار"
     },
     "shop/interior_decoration": {
-      "name": "فروشگاه تزئینات داخلی"
+      "name": "فروشگاه تزئینات داخلی",
+      "terms": "دکور، دکوراسیون، دکوراسیون داخلی، فروشگاه دکوراسیون داخلی، لوستر"
     },
     "shop/jewelry": {
       "name": "جواهرفروشی"
@@ -4263,17 +4267,8 @@
     "traffic_sign/city_limit": {
       "name": "علائم محدودیت در شهر"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "علائم محدودیت در شهر"
-    },
     "traffic_sign/maxspeed": {
       "name": "تابلو محدودیت سرعت"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "تابلو محدودیت سرعت"
-    },
-    "traffic_sign_vertex": {
-      "name": "علائم راهنمایی و رانندگی"
     },
     "type/boundary": {
       "name": "مرز",
@@ -4343,9 +4338,6 @@
     "type/route/ferry": {
       "name": "مسیر فرابر",
       "terms": "مسیر دریایی, مسیر فری"
-    },
-    "type/route/foot": {
-      "name": "مسیر پیاده"
     },
     "type/route/hiking": {
       "name": "مسیر پیاده‌گردی",

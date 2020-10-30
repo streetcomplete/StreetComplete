@@ -701,7 +701,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="credits_contributors">"Přečtěte si &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;úplný seznam na GitHubu&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Úplný seznam najdete v &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projektu na POEditor.com&lt;/a&gt;."</string>
+    <string name="credits_translations">"Úplný seznam najdete v &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projektu na POEditor.com&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Překladatelé"</string>
@@ -1815,9 +1815,6 @@ Chcete cestu rozdělit?"</string>
     <string name="quest_maxweight_title">"Jaké je zde omezení hmotnosti?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Není tu žádná značka"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Tato hmotnost vypadá nepravděpodobně. jste si jistí, že je správná?"</string>
 
     <!-- Fuzzy -->
@@ -2383,4 +2380,30 @@ Is the situation on this cycleway still the same? -->
     <string name="quest_traffic_signals_sound_title">"Jsou tu zvukové signály pro nevidomé?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Mají tyto semafory hmatovou indikaci pro nevidomé, aby věděli, kdy je bezpečné přejít?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Tip: Často to může být vibrující tlačítko nebo rotující kužel na spodní straně krabičky s ovládacím tlačítkem."</string>
+    <string name="quest_busStopRef_title">"Jaké je referenční číslo této autobusové zastávky?"</string>
+    <string name="quest_tramStopRef_title">"Jaké je referenční číslo této tramvajové zastávky?"</string>
+    <string name="quest_buildingType_bungalow_description2">"malý samostatně stojící dům (prázdninová nebo rekreační chata, chatka...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Jaké závory se používají na tomto železničním přejezdu?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Žádné závory"</string>
+    <string name="quest_steps_ramp_title">"Mají tyto schody rampu? Jakého druhu?"</string>
+    <string name="quest_steps_ramp_none">"Bez (použitelné) rampy"</string>
+    <string name="quest_steps_ramp_bicycle">"Rampa pro bicykly"</string>
+    <string name="quest_steps_ramp_stroller">"Rampa pro kočárky"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rampa pro invalidní vozíky"</string>
+    <string name="quest_atm_operator_title">"Jaké je jméno banky, které patří tento bankomat?"</string>
+    <string name="quest_clothes_container_operator_title">"Kdo je příjemce darů tohoto kontejneru na oblečení?"</string>
+    <string name="quest_charging_station_operator_title">"Kdo provozuje tuto dobíjecí stanici?"</string>
+    <string name="link_indoorequal_description">"Objevte vnitřní mapy nákupních středisek, nádraží atd."</string>
+    <string name="link_thenandnow_description">"Zajímá vás, jaký pokrok jsme během let udělali? Porovnejte mapu s tím, jak vypadala před deseti lety!"</string>
+    <string name="achievement_rare_title">"Lovec pokladů"</string>
+    <string name="achievement_rare_solved_X">"Našli jste a vyřešili %d úkolů, které jsou vyřešeny opravdu velmi zřídka. Gratulujeme!"</string>
+    <string name="achievement_citizen_title">"Občan"</string>
+    <string name="achievement_citizen_solved_X">"Vyřešili jste %d úkolů užitečných pro každodenní život ve městě!"</string>
+    <string name="achievement_outdoors_title">"Outdoorák"</string>
+    <string name="achievement_outdoors_solved_X">"Vyřešili jste %d úkolů užitečných pro lidi, co rádi chodí do přírody!"</string>
+    <string name="quest_pedestrian_crossing_island">"Má tento přechod pro chodce ostrůvek?"</string>
+    <string name="quest_generic_answer_noSign">"Není tu žádná značka"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Je rampa pro invalidní vozíky na mapě zobrazená jako samostatná cesta?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"samostatná"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"Není samostatná"</string>
 </resources>

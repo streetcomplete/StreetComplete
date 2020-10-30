@@ -36,8 +36,4 @@
         <item>DARK</item>
     </string-array>
 
-    <string-array name="pref_overpass_url_select" translatable="false">
-        <item>"https://lz4.overpass-api.de/api/"</item>
-        <item>"https://overpass.kumi.systems/api/"</item>
-    </string-array>
 </resources>

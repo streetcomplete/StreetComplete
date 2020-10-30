@@ -2,13 +2,10 @@ package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddWayLit(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+class AddWayLit : OsmFilterQuestType<String>() {
 
     /* Using sidewalk as a tell-tale tag for (urban) streets which reached a certain level of
        development. I.e. non-urban streets will usually not even be lit in industrialized
@@ -17,7 +14,7 @@ class AddWayLit(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
        most hike paths and trails.
 
         See #427 for discussion. */
-    override val tagFilters = """
+    override val elementFilter = """
         ways with
         (
           (
@@ -33,8 +30,8 @@ class AddWayLit(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
             )
             and !lit
           )
-          or highway and lit = no and lit older today -${r * 8} years
-          or highway and lit older today -${r * 16} years
+          or highway and lit = no and lit older today -8 years
+          or highway and lit older today -16 years
         )
         and (access !~ private|no or (foot and foot !~ private|no))
         and indoor != yes

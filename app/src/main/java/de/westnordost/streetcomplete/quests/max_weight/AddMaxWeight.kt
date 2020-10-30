@@ -1,19 +1,18 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.*
 
-class AddMaxWeight(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<MaxWeightAnswer>(o) {
+class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
 
     override val commitMessage = "Add maximum allowed weight"
     override val wikiLink = "Key:maxweight"
     override val icon = R.drawable.ic_quest_max_weight
     override val hasMarkersAtEnds = true
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service
          and service != driveway
          and !maxweight and maxweight:signed != no

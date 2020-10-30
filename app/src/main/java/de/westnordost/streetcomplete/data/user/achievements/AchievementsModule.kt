@@ -12,11 +12,13 @@ object AchievementsModule {
     @Provides @Named("Achievements") fun achievements(): List<Achievement> = achievements
     @Provides @Named("QuestAliases") fun questAliases(): List<Pair<String, String>> = questAliases
 
+    // list of quest synonyms (this alternate name is mentioned to aid searching for this code)
     private val questAliases = listOf(
         "AddAccessibleForPedestrians"        to "AddProhibitedForPedestrians",
         "AddWheelChairAccessPublicTransport" to "AddWheelchairAccessPublicTransport",
         "AddWheelChairAccessToilets"         to "AddWheelchairAccessToilets",
         "AddSidewalks"                       to "AddSidewalk",
+        "DetailRoadSurface"                  to "AddRoadSurface",
         "AddTrafficSignalsBlindFeatures"     to "AddTrafficSignalsVibration",
         "AddSuspectedOneway"                 to "AddOneway"
     )

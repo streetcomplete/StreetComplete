@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
         targetSdkVersion(29)
-        versionCode = 2500
-        versionName = "25.0-beta1"
+        versionCode = 2501
+        versionName = "25.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -86,12 +86,6 @@ configurations {
     all {
         exclude(group = "net.sf.kxml", module = "kxml2")
     }
-
-    compile.configure {
-        exclude(group = "org.jetbrains", module = "annotations")
-        exclude(group = "com.intellij", module = "annotations")
-        exclude(group = "org.intellij", module = "annotations")
-    }
 }
 
 dependencies {
@@ -99,9 +93,6 @@ dependencies {
     val mockitoVersion = "2.28.2"
     val kotlinxVersion = "1.3.8"
     val daggerVersion = "2.14.1"
-
-    // debugging
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.4")
 
     // tests
     testImplementation("junit:junit:4.12")
@@ -146,11 +137,10 @@ dependencies {
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:1.1")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-overpass:1.1")
-    implementation("de.westnordost:osmapi-map:1.2")
-    implementation("de.westnordost:osmapi-changesets:1.2")
-    implementation("de.westnordost:osmapi-notes:1.1")
-    implementation("de.westnordost:osmapi-user:1.1")
+    implementation("de.westnordost:osmapi-map:1.3")
+    implementation("de.westnordost:osmapi-changesets:1.3")
+    implementation("de.westnordost:osmapi-notes:1.2")
+    implementation("de.westnordost:osmapi-user:1.2")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")

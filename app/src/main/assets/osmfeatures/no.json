@@ -625,14 +625,26 @@
     "attraction/carousel": {
       "name": "Karusell"
     },
+    "attraction/dark_ride": {
+      "name": "Spøkelsetog"
+    },
     "attraction/log_flume": {
       "name": "Tømmerrenne"
     },
     "attraction/maze": {
       "name": "Labyrint"
     },
+    "attraction/river_rafting": {
+      "name": "Vannbane"
+    },
     "attraction/roller_coaster": {
       "name": "Berg-og-dal-bane"
+    },
+    "attraction/summer_toboggan": {
+      "name": "Sommerkjelke"
+    },
+    "attraction/swing_carousel": {
+      "name": "Svingkarusell"
     },
     "attraction/train": {
       "name": "Turisttog"
@@ -643,8 +655,20 @@
     "barrier": {
       "name": "Hinder"
     },
+    "barrier/block": {
+      "name": "Barriereblokk"
+    },
+    "barrier/bollard": {
+      "name": "Pullert"
+    },
+    "barrier/bollard_line": {
+      "name": "Pullertrekke"
+    },
     "barrier/border_control": {
       "name": "Grensekontroll"
+    },
+    "barrier/cattle_grid": {
+      "name": "Fanghekk"
     },
     "barrier/chain": {
       "name": "Kjede"
@@ -682,8 +706,23 @@
     "barrier/retaining_wall": {
       "name": "Støttemur"
     },
+    "barrier/sally_port": {
+      "name": "Sortiport"
+    },
+    "barrier/spikes": {
+      "name": "Spikermatte"
+    },
+    "barrier/stile": {
+      "name": "Stente"
+    },
+    "barrier/swing_gate": {
+      "name": "Svingport"
+    },
     "barrier/toll_booth": {
       "name": "Bomstasjon"
+    },
+    "barrier/turnstile": {
+      "name": "Rotasjonsport"
     },
     "barrier/wall": {
       "name": "Mur"
@@ -997,6 +1036,18 @@
     "craft/winery": {
       "name": "Vingård"
     },
+    "demolished/building": {
+      "name": "Nylig Revet Bygning"
+    },
+    "disused/amenity": {
+      "name": "Nedlagt Bekvemmelighet"
+    },
+    "disused/railway": {
+      "name": "Nedlagt Jernbane Funksjon"
+    },
+    "disused/shop": {
+      "name": "Nedlagt Butikk"
+    },
     "embankment": {
       "name": "Dike"
     },
@@ -1008,6 +1059,12 @@
     },
     "emergency/defibrillator": {
       "name": "Defibrillator"
+    },
+    "emergency/designated": {
+      "name": "Dedikert Nødtilgang "
+    },
+    "emergency/fire_alarm": {
+      "name": "Brannalarm Telefonboks"
     },
     "emergency/fire_extinguisher": {
       "name": "Brannslukningsapparat"
@@ -1027,6 +1084,12 @@
     "emergency/lifeguard": {
       "name": "Livvakt"
     },
+    "emergency/no": {
+      "name": "Nødtilgang Nei"
+    },
+    "emergency/official": {
+      "name": "Offisiell Nødadgang"
+    },
     "emergency/phone": {
       "name": "Nødtelefon"
     },
@@ -1041,6 +1104,9 @@
     },
     "entrance/emergency": {
       "name": "Nødutgang"
+    },
+    "entrance/emergency_ward_entrance": {
+      "name": "Inngang til legevakt"
     },
     "ford": {
       "name": "Vadested"
@@ -2530,12 +2596,6 @@
     "traffic_sign/maxspeed": {
       "name": "Fartsgrenseskilt"
     },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Fartsgrenseskilt"
-    },
-    "traffic_sign_vertex": {
-      "name": "Trafikkskilt"
-    },
     "type/boundary": {
       "name": "Grense"
     },
@@ -2586,9 +2646,6 @@
     },
     "type/route/ferry": {
       "name": "Fergerute"
-    },
-    "type/route/foot": {
-      "name": "Gangrute"
     },
     "type/route/hiking": {
       "name": "Oppmerket sti"

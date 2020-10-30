@@ -1,9 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Victoriabank, Moldindconbank, Агропромбанк, Moldova Agroindbank, Mobiasbanca, Eximbank, ЗАО «Агропромбанк»,
-   Moldincombank, FinComBank, BCR, Сбербанк, Unibank, MAIB, MobiasBanca, Banca de Economii, Banca Comerciala
-      Romaneasca, '"B.C. ""Unibank"" S.A."', Эксимбанк, Приднестровский Сбербанк, ЗАО Агропромбанк, АПБ,
-   micb.md, VictoriaBank, Moldova-Agroindbank, Moldindcombank, Moldinconbank, MICB, Exim Bank, Energbank,
-   Banca Socială, BCR Chișinău, Agroindbank]
+   Moldincombank, FinComBank, BCR, Сбербанк, MAIB, Unibank, MobiasBanca, Banca de Economii, BCR Chișinău,
+   '"B.C. ""Unibank"" S.A."', Эксимбанк, Приднестровский Сбербанк, ЗАО Агропромбанк, АПБ, micb.md, VictoriaBank,
+   Moldova-Agroindbank, Moldindcombank, Moldinconbank, MICB, Exim Bank, Energbank, Banca Socială, Banca
+      Comerciala Romaneasca, Agroindbank]
 isSlowZoneKnown: true
 mobileCountryCode: 259
 officialLanguages: [ro]

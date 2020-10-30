@@ -8,6 +8,9 @@
       "name": "Panel publicitario",
       "terms": "panel, cartel, valo, valado, poste, piar, publicitario, publicidade, carteleira, propaganda"
     },
+    "advertising/board": {
+      "name": "Taboleiro de anuncios"
+    },
     "advertising/column": {
       "name": "Columna de publicidade",
       "terms": "columna, publicidade, anuncios, cilindro"
@@ -127,7 +130,7 @@
       "terms": "barbacoa, grella, asador, lume"
     },
     "amenity/bench": {
-      "name": "Banco ou asento",
+      "name": "Banco",
       "terms": "asento,banco,bancada,banquillo,banqueta,banca"
     },
     "amenity/bicycle_parking": {
@@ -161,6 +164,9 @@
     "amenity/boat_rental": {
       "name": "Alugueiro de embarcacións",
       "terms": "alugueiro, alugamento, locación, bote, barca, lancha, embarcación, embarcacións"
+    },
+    "amenity/boat_storage": {
+      "name": "Tenda de embarcacións"
     },
     "amenity/bureau_de_change": {
       "name": "Troco de divisas",
@@ -229,7 +235,7 @@
     },
     "amenity/community_centre": {
       "name": "Centro comunitario",
-      "terms": "centro social, centro comunitario"
+      "terms": "centro social, centro comunitario, local social"
     },
     "amenity/community_centre/lgbtq": {
       "name": "Centro comunitario LGBTQ+",
@@ -297,11 +303,11 @@
       "terms": "comida rápida, comida ferralla, comida lixo, comida preparada, pratos preparados, comida na rúa, comida de paso, hamburguesa, hotdog, pancho, polos fritidos, tacos, patacas fritidas, pizza, choripán, sandwitch, bocadillos, salchipapas, burrito, sopaipillas, quesadilla, nachos, arepa"
     },
     "amenity/fast_food/burger": {
-      "name": "Comida rápida: Hamburguesa",
+      "name": "Comida rápida: Hamburguesas",
       "terms": "almorzo, cea, comedor, cea, xantar, grella, churrasco, comida, mesa, café, cafe"
     },
     "amenity/fast_food/chicken": {
-      "name": "Comida rápida: Polo",
+      "name": "Comida rápida: Polos",
       "terms": "almorzo, cea, comedor, cea, xantar, grella, churrasco, comida, mesa, café, cafe"
     },
     "amenity/fast_food/donut": {
@@ -311,22 +317,25 @@
       "name": "Comida rápida: Peixe e patacas fritidas"
     },
     "amenity/fast_food/hot_dog": {
-      "name": "Comida rápida: Hot dog"
+      "name": "Comida rápida: Hot dogs"
     },
     "amenity/fast_food/ice_cream": {
-      "name": "Comida rápida: Xeado"
+      "name": "Comida rápida: Xeados"
+    },
+    "amenity/fast_food/juice": {
+      "name": "Comida rápida: Zumes"
     },
     "amenity/fast_food/kebab": {
-      "name": "Comida rápida: Kebab"
+      "name": "Comida rápida: Kebabs"
     },
     "amenity/fast_food/mexican": {
       "name": "Comida rápida: Mexicana"
     },
     "amenity/fast_food/pizza": {
-      "name": "Comida rápida: Pizza"
+      "name": "Comida rápida: Pizzas"
     },
     "amenity/fast_food/sandwich": {
-      "name": "Comida rápida: Sandwich"
+      "name": "Comida rápida: Sandwiches"
     },
     "amenity/fire_station": {
       "name": "Parque de bombeiros",
@@ -409,7 +418,7 @@
     },
     "amenity/monastery": {
       "name": "Área de mosteiro",
-      "terms": "mosteiro, área de mosteiro, igrexa, capela"
+      "terms": "mosteiro, área de mosteiro, igrexa, capela, adro, adral, atrio, igrexario"
     },
     "amenity/money_transfer": {
       "name": "Estación de transferencia de diñeiro",
@@ -542,6 +551,10 @@
       "name": "Bar",
       "terms": "bar, café, cafetería, bebidas, alcohol, cervexa, bar de tapas, pinchos, alcol, furancho, cervexeria, cervexería, cervexaria, cervexaría, tapa, pincho, cerveceria, cervecería, pub inglés, pub irlandés"
     },
+    "amenity/pub/irish": {
+      "name": "Pub irlandés",
+      "terms": "bar irlandés, local irlandés"
+    },
     "amenity/pub/lgbtq": {
       "name": "Bar LGBTQ+",
       "terms": "bar gay, bar lésbico, bar lgbtq, bar  lgbt, bar lgb, homosexual"
@@ -580,8 +593,12 @@
       "name": "Contedor de reciclaxe",
       "terms": "reciclaxe, colector, contenedor, contedor, lixo, basura, vidro, papel, carton"
     },
+    "amenity/refugee_site": {
+      "name": "Campo de refuxiados"
+    },
     "amenity/research_institute": {
-      "name": "Área de Instituto de Investigación"
+      "name": "Área de Instituto de Investigación",
+      "terms": "Centro de investigación, área de investigación, instituto de investigación, centro de innovación"
     },
     "amenity/restaurant": {
       "name": "Restaurante",
@@ -642,7 +659,8 @@
       "name": "Restaurante vietnamita"
     },
     "amenity/sanitary_dump_station": {
-      "name": "Eliminación de WC de caravanas"
+      "name": "Depósito sanitario para caravanas",
+      "terms": "desaugue, caravanas, desaugue de caravanas, cisterna, estanque"
     },
     "amenity/school": {
       "name": "Área escolar",
@@ -653,12 +671,12 @@
       "terms": "abeiro, abrigo, refuxio, cuberto, pavillón, gazebo"
     },
     "amenity/shelter/gazebo": {
-      "name": "Gazebo",
-      "terms": "gazebo,glorieta"
+      "name": "Acubillo",
+      "terms": "gazebo, acolleito, acubillo, abeiradoiro, refuxio"
     },
     "amenity/shelter/lean_to": {
       "name": "Pendello",
-      "terms": "pendello"
+      "terms": "pendello, alboio, alpendre, cabanel, caustra, chapitel, cuberto, sobeira"
     },
     "amenity/shelter/picnic_shelter": {
       "name": "Abeiro de pícnic",
@@ -677,15 +695,16 @@
       "terms": "área de fumadoiro, fumadoiro, fumar, área de fume, fume"
     },
     "amenity/social_centre": {
-      "name": "Centro social"
+      "name": "Centro social",
+      "terms": "local social, centro comunitario"
     },
     "amenity/social_facility": {
       "name": "Axuda Social",
       "terms": "servizos sociais, asistencia social"
     },
     "amenity/social_facility/ambulatory_care": {
-      "name": "Ambulatory Care",
-      "terms": "atención ambulatoria, coidado ambulatorio"
+      "name": "Centro ambulatorio",
+      "terms": "ambulatorio, atención ambulatoria, coidado ambulatorio"
     },
     "amenity/social_facility/food_bank": {
       "name": "Banco de Alimentos",
@@ -699,7 +718,8 @@
       "terms": "abeiro social, abeiro, refuxio social, refuxio, comedor social, albergue, centro, vadío, vagabundo, indixente, homeless"
     },
     "amenity/social_facility/nursing_home": {
-      "name": "Residencia de Anciáns"
+      "name": "Residencia de Anciáns",
+      "terms": "xeriátrico, asilo, residencia de maiores, centro de coidados"
     },
     "amenity/studio": {
       "name": "Estudio",
@@ -722,7 +742,7 @@
       "terms": "estudio de cine, estudio de cinema, produción de cine, producción, estudo de cine, produción de video, gravación de video, estudio de video, vídeo, rodaxe, plató, plato, prató, prato, rodar, cámara, camara"
     },
     "amenity/taxi": {
-      "name": "Paraxe de taxi",
+      "name": "Parada de taxi",
       "terms": "taxi, parada, acopio de taxis, taxis, estacion, estación, carrera, final de carrera"
     },
     "amenity/telephone": {
@@ -739,13 +759,18 @@
     },
     "amenity/toilets": {
       "name": "Aseos",
-      "terms": "aseos, baños, WC"
+      "terms": "aseos, baños, WC, servizo, servizos, lavabo, latrina, retrete, váter, urinario, urinaria"
     },
     "amenity/toilets/disposal/flush": {
-      "name": "Inodoros con cisterna"
+      "name": "Aseo con cisterna",
+      "terms": "aseos, aseo, baños, WC, cuarto de baño, servizo, servizos, lavabo, latrina, retrete, váter, urinario, urinaria"
     },
     "amenity/toilets/disposal/pitlatrine": {
       "name": "Letrina de pozo"
+    },
+    "amenity/toilets/portable": {
+      "name": "Aseo portátil",
+      "terms": "aseos, aseo, baños, WC, cuarto de baño, servizo, servizos, lavabo, latrina, retrete, váter, urinario, urinaria"
     },
     "amenity/townhall": {
       "name": "Casa do Concello",
@@ -810,6 +835,9 @@
     },
     "amenity/vending_machine/ice_cream": {
       "name": "Expendedora de xeados"
+    },
+    "amenity/vending_machine/ice_cubes": {
+      "name": "Máquina expendedora de xeo"
     },
     "amenity/vending_machine/newspapers": {
       "name": "Expendedora de xornais",
@@ -962,7 +990,7 @@
     },
     "barrier/fence": {
       "name": "Valo",
-      "terms": "Valado, reixa, valo, cercado, alambrada, cerca"
+      "terms": "Valado, reixa, valo, cercado, alambrada, cerca, cerrado, cerrume, muro, peche, sebe"
     },
     "barrier/fence/railing": {
       "name": "Reixa",
@@ -1018,12 +1046,15 @@
     "barrier/wall": {
       "name": "Muro"
     },
+    "barrier/wall/noise_barrier": {
+      "name": "Barreira acústica"
+    },
     "boundary": {
       "name": "Límite"
     },
     "boundary/administrative": {
       "name": "Límite administrativo",
-      "terms": "límite administrativo, fronteira, término municipal"
+      "terms": "límite administrativo, fronteira, termo, termo municipal, término municipal"
     },
     "bridge/support": {
       "name": "Piar de ponte",
@@ -1042,11 +1073,11 @@
     },
     "building/barn": {
       "name": "Celeiro/Hórreo",
-      "terms": "celeiro, hórreo, cabazo, cabaceiro, cabaceira, piorno"
+      "terms": "celeiro, hórreo, cabazo, cabaceiro, cabaceira, piorno, barrela, barrelo, barreta, bastardo, combarro, cabaceira, cabaz, cabazo, calostra, calustra, caustra, piorno"
     },
     "building/boathouse": {
       "name": "Pendello para embarcacións",
-      "terms": "pendello, botes, embarcacións, alboio, alpendre"
+      "terms": "pendello, botes, embarcacións, alboio, alpendre, caseta"
     },
     "building/bungalow": {
       "name": "Bungaló"
@@ -1056,7 +1087,7 @@
     },
     "building/cabin": {
       "name": "Cabana",
-      "terms": "casa, cabana, cabaña"
+      "terms": "casa, cabana, cabaña, casoupa, casoupo, chabola, barraca, cabanel, choza"
     },
     "building/carport": {
       "name": "Cocheira cuberta"
@@ -1116,7 +1147,8 @@
       "name": "Invernadoiro"
     },
     "building/hangar": {
-      "name": "Edificio do hangar"
+      "name": "Edificio do hangar",
+      "terms": "hangar, aeroporto, estacionamento, abrigo, avións, avions"
     },
     "building/hospital": {
       "name": "Edificio de hospital"
@@ -1126,25 +1158,30 @@
     },
     "building/house": {
       "name": "Casa",
-      "terms": "casa, vivenda"
+      "terms": "casa, vivenda, domicilio, morada, vivenda, lar, fogar, residencia"
     },
     "building/houseboat": {
       "name": "Casa flotante",
-      "terms": "fogar, familia, residencia, vivenda, lar"
+      "terms": "fogar, familia, residencia, vivenda, lar, casa, vivenda, domicilio, morada, vivenda"
     },
     "building/hut": {
       "name": "Refuxio",
-      "terms": "refuxio, choza, cabaña, cabana"
+      "terms": "refuxio, choza, cabana, cabaña, abeiradoiro, abeiro, abrigadoiro, abrigo, acolleito, acubillo"
     },
     "building/industrial": {
-      "name": "Edificio industrial"
+      "name": "Edificio industrial",
+      "terms": "industria, industrial, nave, local, almacén"
     },
     "building/kindergarten": {
       "name": "Edificio escolar infantil",
       "terms": "preescolar, xardín de infancia, guardería, infantil, párvulos, garderia, gardería, gardaria, parvulos, gardaría, párvulo, xardin de infancia, xardín infantil, xardin infantil, edificio, escola infantil, preescolar"
     },
     "building/mosque": {
-      "name": "Edificio da mesquita"
+      "name": "Edificio da mesquita",
+      "terms": "templo, mezquita, musulmán"
+    },
+    "building/office": {
+      "name": "Edificio de oficinas"
     },
     "building/pavilion": {
       "name": "Edificio do pavillón"
@@ -1158,20 +1195,24 @@
       "terms": "residencial, vivenda, casa, apartamento, domicilio"
     },
     "building/retail": {
-      "name": "Edificio de comercios"
+      "name": "Edificio de comercios",
+      "terms": "comercio, mercado,compra, tendas, negocio"
     },
     "building/roof": {
-      "name": "Tellado"
+      "name": "Tellado",
+      "terms": "teito, lousado, tella, lousa"
     },
     "building/ruins": {
       "name": "Edificio en ruínas",
       "terms": "ruina, ruinas, restos"
     },
     "building/school": {
-      "name": "Edificio escolar"
+      "name": "Edificio escolar",
+      "terms": "escola, colexio, educación"
     },
     "building/semidetached_house": {
-      "name": "Casa adosada"
+      "name": "Casa apegada",
+      "terms": "adosada, adosado, pegado, pegada, contínua"
     },
     "building/service": {
       "name": "Edificio de servizo"
@@ -1261,6 +1302,10 @@
     "craft/chimney_sweeper": {
       "name": "Desenfeluxador",
       "terms": "feluxe, borra, borro, charrizo, cisco, parruma, sarrio, cheminea, chaminea, fumeira, fumeiro, fume, chimenea, fogón, hollín, limpiachimenea, limpeza de chemineas, deshollinador"
+    },
+    "craft/cleaning": {
+      "name": "Servizo de limpeza",
+      "terms": "limpeza, limpar, servizo, oficio"
     },
     "craft/clockmaker": {
       "name": "Reloxeiro",
@@ -1578,7 +1623,7 @@
       "name": "Bus guiado"
     },
     "highway/bus_stop": {
-      "name": "Paraxe de bus"
+      "name": "Parada de bus"
     },
     "highway/corridor": {
       "name": "Corredor interior",
@@ -1597,10 +1642,11 @@
     },
     "highway/crossing/unmarked": {
       "name": "Paso de peóns sen marcar",
-      "terms": "paso de peóns sen marcar"
+      "terms": "paso de peóns sen marcar, peonil, peonal"
     },
     "highway/crossing/unmarked-raised": {
-      "name": "Paso de peóns sen marcar (Levantado)"
+      "name": "Paso de peóns sen marcar (Levantado)",
+      "terms": "peonil, peonal"
     },
     "highway/crossing/zebra": {
       "name": "Paso de peóns marcado"
@@ -1618,6 +1664,10 @@
     "highway/cycleway/crossing": {
       "name": "Paso de bicicletas"
     },
+    "highway/cycleway/crossing/bicycle_foot": {
+      "name": "Paso de peóns e de pista de ciclismo",
+      "terms": "peonil, peonal, ciclista, ciclismo, bicicleta"
+    },
     "highway/cycleway/crossing/marked": {
       "name": "Paso de bicicletas marcado",
       "terms": "paso de bicicleta, cruzamento de carril bici, cruzamento de ciclovía, cruzamento de bicicleta, cruzamento de bici, cruzamento de senda ciclista"
@@ -1631,7 +1681,7 @@
       "terms": "montacargas, ascensor, elevador"
     },
     "highway/emergency_bay": {
-      "name": "Lugar de paraxe de emerxencia",
+      "name": "Lugar de parada de emerxencia",
       "terms": "autopista, parada de emerxencia, autoestrada, autovía"
     },
     "highway/footway": {
@@ -1657,14 +1707,16 @@
       "terms": "paso de cebra, cruzamento marcado, paso de peóns, lombo de burro, lombada, velocidade, calmador, redutor"
     },
     "highway/footway/sidewalk": {
-      "name": "Beirarrúa"
+      "name": "Beirarrúa",
+      "terms": "calzada, paseo, berma"
     },
     "highway/footway/unmarked": {
       "name": "Paso peonil sen marcar",
       "terms": "cruzamento sen marcar, paso de peóns sen marcar"
     },
     "highway/footway/unmarked-raised": {
-      "name": "Paso de peóns sen marcar (Levantado)"
+      "name": "Paso de peóns sen marcar (Levantado)",
+      "terms": "peonil, peonal"
     },
     "highway/footway/zebra": {
       "name": "Paso de peóns marcado"
@@ -1937,16 +1989,19 @@
       "terms": "predio, parcela, xardín comunitario, xardin, horta, horto, urbano, urbán, urbana, urbá, comunitaria, comunitario, leira"
     },
     "landuse/aquaculture": {
-      "name": "Acuicultura"
+      "name": "Acuicultura",
+      "terms": "cría, crianza, cultivo, marisco, peixes, pescado, alga, algas, orgo, orgos, ouco, oucos, granxa, mar, auga"
     },
     "landuse/basin": {
-      "name": "Conca"
+      "name": "Cunca"
     },
     "landuse/brownfield": {
-      "name": "Soar urbanizado abandonado"
+      "name": "Soar urbanizado abandonado",
+      "terms": "terreo"
     },
     "landuse/cemetery": {
-      "name": "Cemiterio"
+      "name": "Cemiterio",
+      "terms": "camposanto, necrópole, cementerio"
     },
     "landuse/churchyard": {
       "name": "Adro"
@@ -1964,10 +2019,11 @@
     },
     "landuse/farmland": {
       "name": "Terra de cultivo",
-      "terms": "terra de cultivo, leira, veiga, agro, eido"
+      "terms": "terra de cultivo, leira, veiga, agro, eido, pasto, agricultura, agro, eido, veiga, varcia, plantación"
     },
     "landuse/farmyard": {
-      "name": "Granxa"
+      "name": "Granxa",
+      "terms": "facenda, explotación, agrícola"
     },
     "landuse/flowerbed": {
       "name": "Xardín floral",
@@ -1975,7 +2031,7 @@
     },
     "landuse/forest": {
       "name": "Bosque xestionado",
-      "terms": "talla, tala, bosque, madeira, árbore, arbore"
+      "terms": "talla, tala, bosque, madeira, árbore, arbore, monte"
     },
     "landuse/garages": {
       "name": "Zona de garaxes privados",
@@ -1983,7 +2039,7 @@
     },
     "landuse/grass": {
       "name": "Céspede",
-      "terms": "céspede, herba"
+      "terms": "céspede, herba, prado"
     },
     "landuse/greenfield": {
       "name": "Soar urbanizábel",
@@ -1994,26 +2050,27 @@
     },
     "landuse/harbour": {
       "name": "Peirao",
-      "terms": "peirao, porto, muelle"
+      "terms": "peirao, porto, molle, muelle, desembarcadoiro, embarcadoiro"
     },
     "landuse/industrial": {
       "name": "Área industrial",
       "terms": "área industrial, parque industrial, industria, fábrica, area industrial, terreo industrial, poligono, polígono, fabrica, fábricas, industrial, zona industrial"
     },
     "landuse/industrial/scrap_yard": {
-      "name": "Depósito de ferralla"
+      "name": "Depósito de ferralla",
+      "terms": "chatarra, ferragacho, vertedoiro"
     },
     "landuse/industrial/slaughterhouse": {
       "name": "Matadoiro",
-      "terms": "matadoiro, carne, carnicería, carnizaría, becerro, polo, vaca, porco, aves de curral, curral"
+      "terms": "matadoiro, matachín, carne, carnicería, carnizaría, becerro, polo, vaca, porco, aves de curral, curral"
     },
     "landuse/landfill": {
       "name": "Vertedoiro",
-      "terms": "vertedoiro, lixo, escombrera, basurero"
+      "terms": "vertedoiro, vertedeiro, lixo, escombreira, escombrera, basurero"
     },
     "landuse/meadow": {
       "name": "Pradaría",
-      "terms": "prado, pasto, pradeira, herba"
+      "terms": "prado, pasto, pasteiro, pradeira, herba, varcia, veiga, varxa"
     },
     "landuse/military": {
       "name": "Área militar",
@@ -2040,7 +2097,7 @@
     },
     "landuse/orchard": {
       "name": "Área de froitais",
-      "terms": "froitais, froitas, pomar"
+      "terms": "froitais, froitas, pomar, árbores, maceira, pereira, pexego"
     },
     "landuse/plant_nursery": {
       "name": "Viveiro de plantas",
@@ -2051,7 +2108,7 @@
     },
     "landuse/quarry": {
       "name": "Canteira",
-      "terms": "canteira, pedra, minaría, mina, pedra, rocha, minerais"
+      "terms": "canteira, pedra, minaría, mina, pedra, rocha, minerais, pedreira, arguina"
     },
     "landuse/railway": {
       "name": "Área ferroviaria"
@@ -2078,7 +2135,7 @@
     },
     "landuse/vineyard": {
       "name": "Viña",
-      "terms": "viña, viñedo, uva"
+      "terms": "viña, viñedo, uva, videira, bacelar, bacelo"
     },
     "landuse/winter_sports": {
       "name": "Área de deportes de inverno"
@@ -2097,7 +2154,7 @@
       "terms": "quiosco, templete, Quiosco de música, música, musica, palco, carpa"
     },
     "leisure/beach_resort": {
-      "name": "Complexo turístico",
+      "name": "Estancia de praia",
       "terms": "resort, complexo, praia, complexo de praia, complexo hoteleiro, complejo hotelero, complexo hotelero"
     },
     "leisure/bird_hide": {
@@ -2105,8 +2162,8 @@
       "terms": "observatorio, aves, paxaros"
     },
     "leisure/bleachers": {
-      "name": "Chanzos",
-      "terms": "chanzos, banzos, bancada, gradas, multitude, banco, deportes, soporte, asento, asentos"
+      "name": "Bancadas",
+      "terms": "chanzos, banzos, bancada, gradas, multitude, banco, deportes, soporte, asento, asentos, tribuna"
     },
     "leisure/bowling_alley": {
       "name": "Birlos",
@@ -2114,7 +2171,7 @@
     },
     "leisure/common": {
       "name": "Terreo comunal",
-      "terms": "terras comunais, terreo comunal, comunal, terras comúns"
+      "terms": "tenza, tenzas, terras comunais, terreo comunal, comunal, terras comúns"
     },
     "leisure/dance": {
       "name": "Sala de baile"
@@ -2131,10 +2188,11 @@
       "terms": "sala de escape, xogo de escape, escapar da habitación, sala de rompecabezas, crebacabezas, quebracabezas, sala de misións, escape room, sala de escape, cuarto de escape"
     },
     "leisure/firepit": {
-      "name": "Pozo de lume"
+      "name": "Fogueira",
+      "terms": "pozo de lume, cacharela, cacheira, cachela, larada, lumarada, luminaria"
     },
     "leisure/fishing": {
-      "name": "Lugar de pesca",
+      "name": "Couto de pesca",
       "terms": "lugar de pesca, pescador, pescar, pescantín"
     },
     "leisure/fitness_centre": {
@@ -2148,15 +2206,40 @@
     "leisure/fitness_station": {
       "name": "Estación de ximnasia ao aire libre"
     },
+    "leisure/fitness_station/balance_beam": {
+      "name": "Barra de equilibrio"
+    },
+    "leisure/fitness_station/box": {
+      "name": "Barra de fitness"
+    },
+    "leisure/fitness_station/horizontal_bar": {
+      "name": "Barra fixa horizontal"
+    },
+    "leisure/fitness_station/horizontal_ladder": {
+      "name": "Escada horizontal"
+    },
+    "leisure/fitness_station/hyperextension": {
+      "name": "Barra de extensións"
+    },
     "leisure/fitness_station/parallel_bars": {
       "name": "Barras paralelas",
       "terms": "barra, exercicio, ximnasio, barras"
     },
+    "leisure/fitness_station/push-up": {
+      "name": "Barra de flexións"
+    },
     "leisure/fitness_station/rings": {
-      "name": "Aneis ou argolas para exercicio"
+      "name": "Argolas para exercicio",
+      "terms": "aneis de exercicio, argolas de exercicio"
     },
     "leisure/garden": {
       "name": "Xardín"
+    },
+    "leisure/garden/botanical": {
+      "name": "Xardín botánico"
+    },
+    "leisure/garden/community": {
+      "name": "Xardín comunitario"
     },
     "leisure/golf_course": {
       "name": "Campo de golf"
@@ -2386,11 +2469,11 @@
     },
     "man_made/manhole/power": {
       "name": "Pozo de inspección de rede eléctrica",
-      "terms": "cuberta, buraco, burato, eléctrico, electricidade, pozo, inspección"
+      "terms": "cuberta, buraco, burato, eléctrico, electricidade, pozo, inspección, arqueta"
     },
     "man_made/manhole/sewer": {
       "name": "Pozo de inspección de sumidoiro",
-      "terms": "cuberta, desagüe, buraco, burato, alcantarillado, pozo, inspección, sumidoiro, rede de sumidoiro, tapa de sumidoiro, inspeccion, auga, augas negras, alcantarilla, augas residuais, residual, refugallo, refugallos"
+      "terms": "cuberta, desagüe, buraco, burato, alcantarillado, pozo, inspección, sumidoiro, rede de sumidoiro, tapa de sumidoiro, inspeccion, auga, augas negras, alcantarilla, augas residuais, residual, refugallo, refugallos, arqueta"
     },
     "man_made/manhole/telecom": {
       "name": "Pozo de inspección de telecomunicacións",
@@ -2503,9 +2586,15 @@
     "man_made/tunnel": {
       "name": "Área de túnel"
     },
+    "man_made/utility_pole": {
+      "name": "Poste de servizos"
+    },
     "man_made/wastewater_plant": {
       "name": "Depuradora de augas residuais",
       "terms": "depuradora, auga, planta depuradora, EDAR, augas residuais, saneamento, tratamento de augas residuais, depuración, PTAR"
+    },
+    "man_made/water_tap": {
+      "name": "Billa de auga"
     },
     "man_made/water_tower": {
       "name": "Torre de auga",
@@ -2527,11 +2616,39 @@
       "name": "Muíño de vento",
       "terms": "vento, eólico, granxa, roda, muíño, turbina, extraer auga, bombeo, muiño"
     },
+    "man_made/windpump": {
+      "name": "Bomba eólica",
+      "terms": "bombeo eólico, muíño de vento, eólica"
+    },
     "man_made/works": {
-      "name": "Fábrica"
+      "name": "Fábrica",
+      "terms": "factoría"
+    },
+    "marker": {
+      "name": "Marco",
+      "terms": "marcador, indicador, placa, poste, fito, mollón, mouteira, marcote"
+    },
+    "marker/utility": {
+      "name": "Identificador de servizo"
+    },
+    "marker/utility/power": {
+      "name": "Indicador de distribución de enerxía"
     },
     "military/bunker": {
-      "name": "Búnquer militar"
+      "name": "Búnker militar",
+      "terms": "Búnquer, búnquer militar, bunquer, casamata, refuxio, bombardeo"
+    },
+    "military/checkpoint": {
+      "name": "Posto de control militar"
+    },
+    "military/nuclear_explosion_site": {
+      "name": "Lugar de probas nucleares"
+    },
+    "military/office": {
+      "name": "Oficina militar"
+    },
+    "military/trench": {
+      "name": "Trincheira militar"
     },
     "natural": {
       "name": "Elemento natural"
@@ -2545,27 +2662,36 @@
       "terms": "baía, baia, golfo, enseada, bahía, bahia, badia, abra, arnela, cala, enseada, golfo, rada"
     },
     "natural/beach": {
-      "name": "Praia"
+      "name": "Praia",
+      "terms": "area, areal"
     },
     "natural/cape": {
-      "name": "Cabo"
+      "name": "Cabo",
+      "terms": "extremo, punta, puntal, promontorio"
     },
     "natural/cave_entrance": {
       "name": "Entrada de cova",
       "terms": "cova, gruta, caverna, entrada de cova, espenuca, pala, cafurna, furna, palafurna, lapa, pala, paleira, toba, tobal, tobeira, tobo, toco, toqueira, gorida, guarida, niño, buraca, burata, furoco, tumba, tomba"
     },
     "natural/cliff": {
-      "name": "Cantil"
+      "name": "Cantil",
+      "terms": "acantilado"
     },
     "natural/coastline": {
       "name": "Beiramar",
-      "terms": "liña de costa, costa, litoral, ribeira, beiramar"
+      "terms": "liña de costa, costa, litoral, ribeira, beiramar, mariña"
     },
     "natural/fell": {
-      "name": "Outeiro"
+      "name": "Alto de montaña",
+      "terms": "fjall, outeiro, montaña, altos, cume, costa deforestada"
+    },
+    "natural/geyser": {
+      "name": "Géyser",
+      "terms": "geyser, fonte, volcánico, volcánica"
     },
     "natural/glacier": {
-      "name": "Glaciar"
+      "name": "Glaciar",
+      "terms": "glaciario"
     },
     "natural/grassland": {
       "name": "Pradeira",
@@ -2573,32 +2699,39 @@
     },
     "natural/heath": {
       "name": "Uceira",
-      "terms": "uceira, breixeira, moural, urceira, uzal, herba, arbustos, gamallos"
+      "terms": "uceira, breixeira, moural, urceira, uzal, herba, arbustos, gamallos, breixeira, moural, urceira, uzal, queiroa, queirogal"
+    },
+    "natural/hot_spring": {
+      "name": "Augas termais",
+      "terms": "caldas, termas, hidrotermas, xeotermas, manancial"
     },
     "natural/mud": {
-      "name": "Barro"
+      "name": "Barro",
+      "terms": "bulleiro, lama, lodo, trollo"
     },
     "natural/peak": {
       "name": "Cumio",
       "terms": "pico, cumio, cume, montaña, monte, cúspide, bico, cima, cimeira, cimbra, curucho, curuto, petouto, pico, picoto, picouto, vértice"
     },
     "natural/reef": {
-      "name": "Arrecife"
+      "name": "Arrecife",
+      "terms": "coral"
     },
     "natural/ridge": {
       "name": "Crista",
-      "terms": "crista, cumieira, cumeira, cume, cumeada, tergo, serras, montañas, cresta, montaña, canto, crista elevada, bico, cima, cúspide, pico, petouto, picoto, picouto, cumio"
+      "terms": "crista, cumieira, cumeira, cume, cumeada, tergo, serras, serra, montañas, cresta, crista, montaña, canto, crista elevada, bico, cima, cúspide, pico, petouto, picoto, picouto, cumio, cordilleira, cadea"
     },
     "natural/rock": {
-      "name": "Rocha incrustada",
-      "terms": "rocha, pedra, pena, penedo, roca, con, farallón"
+      "name": "Penas e grandes rochas",
+      "terms": "rocha, pedra, pena, penedo, roca, con, farallón, fragueiro, fragueira"
     },
     "natural/saddle": {
       "name": "Paso de montaña",
-      "terms": "porto de montaña, paso de montaña"
+      "terms": "porto de montaña, paso de montaña, porto, paso, val de montaña, val, aba, estreito"
     },
     "natural/sand": {
-      "name": "Area"
+      "name": "Area",
+      "terms": "areal, gran, xabre, sábrego"
     },
     "natural/scree": {
       "name": "Pedregal",
@@ -2606,14 +2739,19 @@
     },
     "natural/scrub": {
       "name": "Matogueira",
-      "terms": "matogueira, arbustos, toxeira, toxos, silveira, breña, coucheira, fraguiza, vedramio"
+      "terms": "matogueira, matagueira, arbustos, toxeira, toxos, silveira, breña, coucheira, fraguiza, vedramio, mato"
+    },
+    "natural/shingle": {
+      "name": "Callao",
+      "terms": "canto rolado, canto, cantos, croio, croios, seixo, callaos, bocha, cañó, coio, croio, pelouro, riarengo, xoga,  pedra, deposito de cantos, acumulación de cantos"
     },
     "natural/shrub": {
-      "name": "Arbusto"
+      "name": "Arbusto",
+      "terms": "mato, matoxal, vexetación, leñosa, planta"
     },
     "natural/spring": {
       "name": "Manancial",
-      "terms": "manancial, fonte, auga"
+      "terms": "manancial, fonte, auga, gurgullo, gurgullón, manancial, groto, illó, manancial"
     },
     "natural/stone": {
       "name": "Pedra solta",
@@ -2638,7 +2776,7 @@
       "terms": "río, auga, lago, laguna, albufeira, ibón, lagoa, estanque, embalse, encoro, pantano, balsa, corpo de auga, augas, lámina de auga, poza de auga, charca, agua, regato, rego, pozo, poza, burgas, termas"
     },
     "natural/water/basin": {
-      "name": "Conca"
+      "name": "Cunca"
     },
     "natural/water/canal": {
       "name": "Área da canle"
@@ -2649,15 +2787,15 @@
     },
     "natural/water/moat": {
       "name": "Foso",
-      "terms": "foso"
+      "terms": "foso, castelo, muralla, defensa, fortaleza"
     },
     "natural/water/pond": {
       "name": "Estanque",
-      "terms": "auga, estanque, lagoa, charca"
+      "terms": "auga, estanque, lagoa, charca, encalco"
     },
     "natural/water/reservoir": {
       "name": "Encoro",
-      "terms": "encoro, presa, embalse, estanque"
+      "terms": "encoro, presa, embalse, estanque, encalco, represa, vaira"
     },
     "natural/water/river": {
       "name": "Área de río",
@@ -2667,11 +2805,12 @@
       "name": "Área do regato"
     },
     "natural/water/wastewater": {
-      "name": "Conca de augas residuais",
+      "name": "Cunca de augas residuais",
       "terms": "bazofia, desperdicio, desproveito, reboutallo, sobra, varredura, refugo, excrementos, caca, feces, merda, refugallo, mierda, augas residuais, residuos, conca de asentamento, conca clarificadora, cuenca"
     },
     "natural/wetland": {
-      "name": "Pantano"
+      "name": "Zona húmida",
+      "terms": "humidal, húmido, braña, lameiro, estuario, marisma, pantano, turbeira, mangleiro, esteiro"
     },
     "natural/wood": {
       "name": "Bosque natural",
@@ -2707,6 +2846,9 @@
     },
     "office/company": {
       "name": "Oficina corporativa"
+    },
+    "office/consulting": {
+      "name": "Oficina de consultoría"
     },
     "office/coworking": {
       "name": "Espacio de cotraballo"
@@ -2753,6 +2895,9 @@
     "office/government": {
       "name": "Oficina gobernamental",
       "terms": "oficina gobernamental, oficina do goberno"
+    },
+    "office/government/prosecutor": {
+      "name": "Fiscalía"
     },
     "office/government/register_office": {
       "name": "Oficina de rexistro civil"
@@ -2807,6 +2952,9 @@
       "name": "Oficina de investigación",
       "terms": "investigación, desenvolvemento, I+D, laboratorio"
     },
+    "office/surveyor": {
+      "name": "Oficina de agrimensor"
+    },
     "office/tax_advisor": {
       "name": "Oficina de xestor fiscal"
     },
@@ -2822,6 +2970,19 @@
     "office/water_utility": {
       "name": "Oficina de servizos públicos de auga",
       "terms": "servizo público, servicio público, publico, auga, agua, saneamento"
+    },
+    "piste/downhill": {
+      "name": "Pista de esquí de velocidade"
+    },
+    "piste/ice_skate": {
+      "name": "Pista de patinaxe sobre xeo",
+      "terms": "pista de xeo, patinaxe sobre xeo, pistas, patíns, skates, xeo, pista, xelo"
+    },
+    "piste/nordic": {
+      "name": "Pista de esquí de fondo"
+    },
+    "piste/skitour": {
+      "name": "Pista de esquí de travesía"
     },
     "place": {
       "name": "Lugar"
@@ -2966,13 +3127,13 @@
       "name": "Plataforma de aeroporto"
     },
     "public_transport/platform/aerialway_point": {
-      "name": "Paraxe / Plataforma de vía aérea"
+      "name": "Parada / Plataforma de avións"
     },
     "public_transport/platform/bus": {
       "name": "Plataforma de bus"
     },
     "public_transport/platform/bus_point": {
-      "name": "Paraxe de bus",
+      "name": "Parada de bus",
       "terms": "autobús, bus, colectivo, plataforma, transporte público, parada"
     },
     "public_transport/platform/ferry": {
@@ -2980,48 +3141,48 @@
       "terms": "bote, muelle, transbordador, plataforma, transporte público, peirao, barco"
     },
     "public_transport/platform/ferry_point": {
-      "name": "Paraxe / Plataforma de ferri"
+      "name": "Parada / Plataforma de ferri"
     },
     "public_transport/platform/light_rail": {
       "name": "Plataforma de tren lixeiro"
     },
     "public_transport/platform/light_rail_point": {
-      "name": "Paraxe / Plataforma de tren lixeiro"
+      "name": "Parada / Plataforma de tren lixeiro"
     },
     "public_transport/platform/monorail": {
       "name": "Plataforma de monorraíl"
     },
     "public_transport/platform/monorail_point": {
-      "name": "Paraxe / Plataforma de monorraíl"
+      "name": "Parada / Plataforma de monorraíl"
     },
     "public_transport/platform/subway": {
       "name": "Plataforma de metro"
     },
     "public_transport/platform/subway_point": {
-      "name": "Paraxe / Plataforma de metro"
+      "name": "Parada / Plataforma de metro"
     },
     "public_transport/platform/train": {
       "name": "Plataforma de trens"
     },
     "public_transport/platform/train_point": {
-      "name": "Paraxe / Plataforma de trens"
+      "name": "Parada / Plataforma de trens"
     },
     "public_transport/platform/tram": {
       "name": "Plataforma de tranvía"
     },
     "public_transport/platform/tram_point": {
-      "name": "Paraxe / Plataforma de tranvía",
+      "name": "Parada / Plataforma de tranvía",
       "terms": "eléctrico, tren lixeiro, plataforma, transporte público, ferrocarril, tranvía, pista, tránsito, transporte"
     },
     "public_transport/platform/trolleybus": {
-      "name": "Paraxe / Plataforma de trolebús"
+      "name": "Parada / Plataforma de trolebús"
     },
     "public_transport/platform/trolleybus_point": {
-      "name": "Paraxe de trolebús",
+      "name": "Parada de trolebús",
       "terms": "autobús, eléctrico, plataforma, transporte público, tranvía, sen rieles, trolley, trolebús, transporte, bus, trollei, trole, sen raís, bus, parada"
     },
     "public_transport/platform_point": {
-      "name": "Paraxe / Plataforma de transporte público",
+      "name": "Parada / Plataforma de transporte público",
       "terms": "plataforma, transporte público, tránsito, transporte, parada"
     },
     "public_transport/station": {
@@ -3046,47 +3207,47 @@
       "name": "Estación de tranvía"
     },
     "public_transport/stop_area": {
-      "name": "Área de paraxe do transporte público",
+      "name": "Área de parada de transporte público",
       "terms": "transporte público, parada, punto de detención"
     },
     "public_transport/stop_position": {
-      "name": "Ubicación de paraxe do transporte público",
+      "name": "Ubicación de parada de transporte público",
       "terms": "punto detención, transporte público, tránsito, transporte, aéreo, autobús, ferry, tren lixeiro, tranvía, tren, monorraíl, metro, trolebús, parada, bus, ferri"
     },
     "public_transport/stop_position_aerialway": {
-      "name": "Ubicación de paraxe da vía aérea",
+      "name": "Lugar de parada de avións",
       "terms": "punto detención, transporte público, tránsito, transporte, teleférico, telecabina, góndola, transportador, parada"
     },
     "public_transport/stop_position_bus": {
-      "name": "Punto de paraxe do autobús",
+      "name": "Lugar de parada de bus",
       "terms": "punto detención, transporte público, tránsito, transporte, autobús, bus, minibús, parada"
     },
     "public_transport/stop_position_ferry": {
-      "name": "Ubicación de paraxe do ferri",
+      "name": "Lugar de parada de ferri",
       "terms": "punto detención, transporte público, tránsito, transporte, naval, marítimo, bote, barco, ferry, buque, lancha, muelle, dársena, ferri, peirao, parada"
     },
     "public_transport/stop_position_light_rail": {
-      "name": "Ubicación de paraxe do tren lixeiro",
+      "name": "Lugar de parada de tren lixeiro",
       "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, tren lixeiro, parada"
     },
     "public_transport/stop_position_monorail": {
-      "name": "Ubicación de paraxe do monorraíl",
+      "name": "Lugar de parada de monorraíl",
       "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, monorraíl, monocarril, bus, parada"
     },
     "public_transport/stop_position_subway": {
-      "name": "Ubicación de paraxe do metro",
+      "name": "Lugar de parada de metro",
       "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, metro, subterráneo, parada"
     },
     "public_transport/stop_position_train": {
-      "name": "Ubicación de paraxe do tren",
+      "name": "Lugar de parada do tren",
       "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, parada"
     },
     "public_transport/stop_position_tram": {
-      "name": "Ubicación de paraxe do tranvía",
+      "name": "Lugar de parada de tranvía",
       "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, tranvía, parada"
     },
     "public_transport/stop_position_trolleybus": {
-      "name": "Ubicación de paraxe do trolebús",
+      "name": "Lugar de parada de trolebús",
       "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, bus, autobús, trolebús, bus, parada"
     },
     "railway": {
@@ -3097,14 +3258,15 @@
       "terms": "carris,ferrovia,fora de servizo,ferroviarias,ferroviarios,camiños de ferro,camiños-de-ferro,liña férrea,comboios,vía de tren, via, via de tren, ferrovia, ferrovía, ferrocarril, liña ferrea, via férrea, vía férrea, carris,ferrovia,ferroviarias,ferroviarios,camiños de ferro,camiños-de-ferro,liña férrea,comboios,vía de tren, via, via de tren, ferrovia, ferrovía, ferrocarril, liña ferrea, via férrea, vía férrea"
     },
     "railway/buffer_stop": {
-      "name": "Toupeira (paraxe de buffer)",
+      "name": "Toupeira (parada de buffer)",
       "terms": "parachoques deslizante, tope, amortiguador, quitamedos, topera, topeira, toupeira"
     },
     "railway/construction": {
       "name": "Ferrovía en construción"
     },
     "railway/crossing": {
-      "name": "Paso a nivel peonil"
+      "name": "Ferrovía - Cruce de camiño",
+      "terms": "ferrocarril, tren, peonil, peonal"
     },
     "railway/derail": {
       "name": "Calzo descarrilador"
@@ -3120,7 +3282,8 @@
       "name": "Estación de trens (Halt / Request)"
     },
     "railway/level_crossing": {
-      "name": "Paso a nivel de estrada"
+      "name": "Ferrovía - Cruce de estrada",
+      "terms": "ferrocarril, tren, estrada"
     },
     "railway/light_rail": {
       "name": "Ferrovía de tren lixeiro"
@@ -3155,7 +3318,8 @@
       "terms": "raíl, carril, camiño de ferro, ferrocarril, ferrovía, liña férrea, riel, tren, rail, vía, vía permanente, vía férrea, via, tren bala, tren rápido, tren de alta velocidade, HSR, velocidade alta, LAV, lav, AVE, ave, AVANT, avant"
     },
     "railway/railway_crossing": {
-      "name": "Paso a nivel oblicuo"
+      "name": "Ferrovía - Cruce de ferrovía",
+      "terms": "ferrocarril, tren"
     },
     "railway/signal": {
       "name": "Sinal ferroviario"
@@ -3171,7 +3335,8 @@
       "terms": "boca, entrada de metro, entrada de subte, entrada, ingreso, acceso, subte, subterráneo, subterraneo, metro, escaleiras, escadas, ascensor, boca de metro, entrada do metro, saída, saida, porta, entrada"
     },
     "railway/switch": {
-      "name": "Agulla de ferrovía"
+      "name": "Agulla de ferrovía",
+      "terms": "desvío, ferrocarril, ferrovía"
     },
     "railway/train_wash": {
       "name": "Instalación de lavado de trens"
@@ -3180,8 +3345,14 @@
       "name": "Vía de tranvía",
       "terms": "tranvía, tranvia, vía, via"
     },
+    "railway/tram_crossing": {
+      "name": "Tranvía - cruce de camiño"
+    },
+    "railway/tram_level_crossing": {
+      "name": "Tranvía - cruce de estrada"
+    },
     "railway/tram_stop": {
-      "name": "Paraxe de tranvía"
+      "name": "Parada de tranvía"
     },
     "relation": {
       "name": "Relación",
@@ -3427,6 +3598,9 @@
     },
     "shop/laundry": {
       "name": "Lavandaría"
+    },
+    "shop/laundry/self_service": {
+      "name": "Lavandaría autoservizo"
     },
     "shop/leather": {
       "name": "Tenda de peles"
@@ -3707,6 +3881,9 @@
     "tourism/information/map": {
       "name": "Mapa"
     },
+    "tourism/information/office": {
+      "terms": "centro de información, oficina turística"
+    },
     "tourism/information/terminal": {
       "name": "Terminal de información"
     },
@@ -3715,6 +3892,9 @@
     },
     "tourism/museum": {
       "name": "Museo"
+    },
+    "tourism/museum/history": {
+      "name": "Museo de historia"
     },
     "tourism/picnic_site": {
       "name": "Merendeiro ou zona de pícnic",
@@ -3771,26 +3951,30 @@
     "traffic_sign/city_limit": {
       "name": "Sinal de límite de cidade"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Sinal de límite de cidade"
-    },
     "traffic_sign/maxspeed": {
       "name": "Sinal de límite da velocidade"
     },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Sinal de límite da velocidade"
-    },
     "type/boundary": {
-      "name": "Límite"
+      "name": "Límite",
+      "terms": "fronteira, raia"
     },
     "type/boundary/administrative": {
       "name": "Límite administrativo"
+    },
+    "type/connectivity": {
+      "name": "Conexión vial"
+    },
+    "type/destination_sign": {
+      "name": "Sinal de destino"
+    },
+    "type/enforcement/maxspeed": {
+      "name": "Límite de velocidade controlado"
     },
     "type/multipolygon": {
       "name": "Multipolígono"
     },
     "type/public_transport/stop_area_group": {
-      "name": "Grupo de área da paraxe de transporte",
+      "name": "Grupo de área de parada de transporte",
       "terms": "transporte público, parada, punto de detención"
     },
     "type/restriction": {
@@ -3817,6 +4001,9 @@
     "type/restriction/only_straight_on": {
       "name": "Só cara adiante"
     },
+    "type/restriction/only_u_turn": {
+      "name": "Só cambio de sentido"
+    },
     "type/route": {
       "name": "Ruta"
     },
@@ -3833,9 +4020,6 @@
       "name": "Liña de ferri",
       "terms": "ruta, rota, liña, ferri, itinerario, rumbo, dirección, traxecto, ferry, transbordador, buque, barco"
     },
-    "type/route/foot": {
-      "name": "Roteiro a pé"
-    },
     "type/route/hiking": {
       "name": "Roteiro de sendeirismo"
     },
@@ -3848,6 +4032,9 @@
     "type/route/pipeline": {
       "name": "Ruta de tubaxe",
       "terms": "ruta, rota, tubería, tubaría, gasoduto, oleoduto, conduto, cañería, duto, ducto, tubaxe, tubo"
+    },
+    "type/route/piste": {
+      "name": "Ruta / Pista de esquí"
     },
     "type/route/power": {
       "name": "Ruta de rede eléctrica",
@@ -3883,14 +4070,16 @@
       "terms": "astillero, varadeiro, bote, lancha, embarcación, varadoiro, barco, barcos, embarcacion"
     },
     "waterway/canal": {
-      "name": "Canle"
+      "name": "Canle",
+      "terms": "cal, caldeira, calexa, quenlla, cano, rego"
     },
     "waterway/canal/lock": {
       "name": "Canle de esclusa",
       "terms": "canal, esclusa, canle"
     },
     "waterway/dam": {
-      "name": "Encoro"
+      "name": "Encoro",
+      "terms": "encalco, embalse, presa, represa estanque, pantano, vaira"
     },
     "waterway/ditch": {
       "name": "Birta"
@@ -3903,7 +4092,8 @@
       "terms": "drenaxe, sumidoiro, sumideiro, acougadoiro, desacougadoiro, pluviais, augas, chuvia, chuva, choiva, desagüe, sumidero, alcantarilla, alcantarillado, resumidero, gabia, foxo, foio, cuneta, focha, fochanca, focho, covo"
     },
     "waterway/fish_pass": {
-      "name": "Paso de peixes"
+      "name": "Paso fluvial",
+      "terms": "canle fluvial, augas arriba, desove, paso de peixes, peixe, escada, piscícola, anguías, salmón, represa, reprodución"
     },
     "waterway/fuel": {
       "name": "Gasolineira para embarcacións"
@@ -3918,20 +4108,25 @@
     },
     "waterway/river": {
       "name": "Río",
-      "terms": "río, rio, regato, afluente, auga, regacho, vertente, agua, rama, arroio, curso, esteiro, estuario, foz, riachuelo, ribeira, corrente, curso de auga, auga, agua, beira, marxe"
+      "terms": "río, rio, regato, regacho, afluente, auga, regacho, vertente, agua, rama, arroio, curso, esteiro, estuario, foz, riachuelo, ribeira, corrente, curso de auga, auga, agua, beira, marxe"
     },
     "waterway/riverbank": {
       "name": "Beira de río"
     },
     "waterway/sanitary_dump_station": {
-      "name": "Inodoro para embarcacións"
+      "name": "Aseo para embarcacións",
+      "terms": "aseos, aseo, baños, WC, cuarto de baño, servizo, servizos, lavabo, latrina, retrete, váter, urinario, urinaria"
     },
     "waterway/stream": {
       "name": "Regato",
-      "terms": "río, regato, rego, torrente, auga"
+      "terms": "río, regato, regacho, rego, torrente, auga"
     },
     "waterway/stream_intermittent": {
       "name": "Regato intermitente"
+    },
+    "waterway/tidal_channel": {
+      "name": "Río de esteiro",
+      "terms": "canle, costeiro, rías, ría, mar, esteiro, estuario, mar, litoral, mariño, salgado, regado, rego, insua, salobre, marea, mangal"
     },
     "waterway/water_point": {
       "name": "Auga potábel para embarcacións",

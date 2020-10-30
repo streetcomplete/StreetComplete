@@ -8,7 +8,7 @@ import java.util.Collections
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
@@ -32,12 +32,12 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         return result
     }
 
-    private val likelyNoBicycleContraflow = ElementFiltersParser().parse("""
+    private val likelyNoBicycleContraflow = """
             ways with oneway:bicycle != no and (
                 oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
                 or junction = roundabout
             )
-        """)
+        """.toElementFilterExpression()
 
     private var streetSideRotater: StreetSideRotater? = null
 

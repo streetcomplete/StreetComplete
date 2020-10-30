@@ -149,7 +149,8 @@ private fun createQuery(
         add("$ELEMENT_TYPE = ?", element.elementType.name)
         add("$ELEMENT_ID = ?", element.elementId.toString())
     }
-    if (statusIn != null && statusIn.isNotEmpty()) {
+    if (statusIn != null) {
+        require(statusIn.isNotEmpty()) { "statusIn must not be empty if not null" }
         if (statusIn.size == 1) {
             add("$QUEST_STATUS = ?", statusIn.single().name)
         } else {
@@ -157,7 +158,8 @@ private fun createQuery(
             add("$QUEST_STATUS IN ($names)")
         }
     }
-    if (questTypes != null && questTypes.isNotEmpty()) {
+    if (questTypes != null) {
+        require(questTypes.isNotEmpty()) { "questTypes must not be empty if not null" }
         if (questTypes.size == 1) {
             add("$QUEST_TYPE = ?", questTypes.single())
         } else {

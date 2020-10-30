@@ -16,7 +16,7 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
     override val contentLayoutResId = R.layout.quest_placename
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_name_answer_noName) { confirmNoName() }
+        OtherAnswer(R.string.quest_generic_answer_noSign) { confirmNoName() }
     )
 
     private val placeName get() = nameInput?.text?.toString().orEmpty().trim()
@@ -34,8 +34,8 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
     private fun confirmNoName() {
         val ctx = context ?: return
         AlertDialog.Builder(ctx)
-            .setTitle(R.string.quest_name_answer_noName_confirmation_title)
-            .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoPlaceNameSign) }
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoPlaceNameSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }

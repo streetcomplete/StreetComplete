@@ -4,57 +4,47 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.elementgeometry.OsmApiElementGeometryCreator
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementUpdateController
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.mock
 import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 class SplitWaysUploaderTest {
     private lateinit var splitWayDB: OsmQuestSplitWayDao
-    private lateinit var elementDB: MergedElementDao
     private lateinit var changesetManager: OpenQuestChangesetsManager
-    private lateinit var elementGeometryDB: ElementGeometryDao
-    private lateinit var questGiver: OsmQuestGiver
-    private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var splitSingleOsmWayUploader: SplitSingleWayUploader
     private lateinit var statisticsUpdater: StatisticsUpdater
+    private lateinit var elementUpdateController: OsmElementUpdateController
     private lateinit var uploader: SplitWaysUploader
 
     @Before fun setUp() {
         splitWayDB = mock()
-        elementDB = mock()
-        on(elementDB.get(any(), ArgumentMatchers.anyLong())).thenReturn(createElement())
         changesetManager = mock()
         splitSingleOsmWayUploader = mock()
-        elementGeometryDB = mock()
-        questGiver = mock()
-        elementGeometryCreator = mock()
+        elementUpdateController = mock()
         statisticsUpdater = mock()
-        on(elementGeometryCreator.create(any())).thenReturn(mock())
-        uploader = SplitWaysUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-                elementGeometryCreator, splitWayDB, splitSingleOsmWayUploader, statisticsUpdater)
+        uploader = SplitWaysUploader(changesetManager, elementUpdateController, splitWayDB,
+            splitSingleOsmWayUploader, statisticsUpdater)
     }
 
     @Test fun `cancel upload works`() {
         val cancelled = AtomicBoolean(true)
         uploader.upload(cancelled)
-        verifyZeroInteractions(changesetManager, splitSingleOsmWayUploader, elementDB, splitWayDB)
+        verifyZeroInteractions(changesetManager, splitSingleOsmWayUploader, elementUpdateController, statisticsUpdater, splitWayDB)
     }
 
     @Test fun `catches ElementConflict exception`() {
         on(splitWayDB.getAll()).thenReturn(listOf(createOsmSplitWay()))
         on(splitSingleOsmWayUploader.upload(anyLong(), any(), anyList()))
             .thenThrow(ElementConflictException())
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
 
@@ -64,7 +54,9 @@ class SplitWaysUploaderTest {
     @Test fun `discard if element was deleted`() {
         val q = createOsmSplitWay()
         on(splitWayDB.getAll()).thenReturn(listOf(q))
-        on(elementDB.get(any(),anyLong())).thenReturn(null)
+        on(splitSingleOsmWayUploader.upload(anyLong(), any(), any()))
+            .thenThrow(ElementDeletedException())
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
@@ -77,6 +69,7 @@ class SplitWaysUploaderTest {
         on(splitSingleOsmWayUploader.upload(anyLong(), any(), anyList()))
             .thenThrow(ChangesetConflictException())
             .thenReturn(listOf(createElement()))
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
 
@@ -88,10 +81,12 @@ class SplitWaysUploaderTest {
 
     @Test fun `delete each uploaded split from local DB and calls listener`() {
         val quests = listOf(createOsmSplitWay(), createOsmSplitWay())
+
         on(splitWayDB.getAll()).thenReturn(quests)
         on(splitSingleOsmWayUploader.upload(anyLong(), any(), anyList()))
             .thenThrow(ElementConflictException())
             .thenReturn(listOf(createElement()))
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
@@ -100,11 +95,11 @@ class SplitWaysUploaderTest {
         verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].questType.javaClass.simpleName, quests[0].position)
         verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].questType.javaClass.simpleName,quests[1].position)
 
-        verify(elementDB, times(1)).put(any())
-        verify(elementGeometryDB, times(1)).put(any())
-        verify(questGiver, times(1)).recreateQuests(any(), any(), any())
+        verify(elementUpdateController, times(1)).update(any(), any())
+        verify(elementUpdateController).cleanUp()
+        verify(elementUpdateController, times(2)).get(any(), anyLong())
         verify(statisticsUpdater).addOne(any(), any())
-        verifyNoMoreInteractions(questGiver)
+        verifyNoMoreInteractions(elementUpdateController)
     }
 
     @Test fun `delete unreferenced elements and clean metadata at the end`() {
@@ -113,10 +108,11 @@ class SplitWaysUploaderTest {
         on(splitWayDB.getAll()).thenReturn(listOf(quest))
         on(splitSingleOsmWayUploader.upload(anyLong(), any(), any()))
             .thenReturn(listOf(createElement()))
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
 
-        verify(elementDB).deleteUnreferenced()
+        verify(elementUpdateController).cleanUp()
         verify(quest.osmElementQuestType).cleanMetadata()
     }
 }

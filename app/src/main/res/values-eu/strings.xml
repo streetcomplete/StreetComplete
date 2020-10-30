@@ -701,7 +701,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="credits_contributors">"Ikusi &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;zerrenda osoa GitHub-en&lt;/a&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Ikusi &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;proiektua POEditor-en&lt;/a&gt; zerrenda osorako."</string>
+    <string name="credits_translations">"Ikusi &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proiektua POEditor-en&lt;/a&gt; zerrenda osorako."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Itzulpenak"</string>
@@ -1807,9 +1807,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Zein da pisu muga hemen?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Ez dago seinalerik"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Pisu hori ezohikoa da. Ziur hori dela pisu zuzena?"</string>

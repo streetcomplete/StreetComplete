@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.quests.defibrillator
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddIsDefibrillatorIndoor(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
+class AddIsDefibrillatorIndoor : OsmFilterQuestType<Boolean>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes with
          emergency=defibrillator
          and access !~ private|no

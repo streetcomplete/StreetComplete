@@ -5,6 +5,8 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.*
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import java.lang.NumberFormatException
 import java.text.ParseException
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.min
 
 /**
@@ -14,13 +16,12 @@ import kotlin.math.min
  * <tt>"ways with (highway = residential or highway = tertiary) and !name"</tt> (finds all
  * residential and tertiary roads that have no name)
  */
-class ElementFiltersParser {
-    fun parse(input: String): ElementFilterExpression {
-        // convert all white-spacey things to whitespaces so we do not have to deal with them later
-        val cursor = StringWithCursor(input.replace("\\s".toRegex(), " "))
 
-        return ElementFilterExpression(cursor.parseElementsDeclaration(), cursor.parseTags())
-    }
+fun String.toElementFilterExpression(): ElementFilterExpression {
+    // convert all white-spacey things to whitespaces so we do not have to deal with them later
+    val cursor = StringWithCursor(replace("\\s".toRegex(), " "))
+
+    return ElementFilterExpression(cursor.parseElementsDeclaration(), cursor.parseTags())
 }
 
 private const val WITH = "with"
@@ -71,7 +72,7 @@ private val NUMBER_WORD_REGEX = Regex("(?:([0-9]+(?:\\.[0-9]*)?)|(\\.[0-9]+))(?:
 
 private fun String.stripQuotes() = replace("^[\"']|[\"']$".toRegex(), "")
 
-private fun StringWithCursor.parseElementsDeclaration(): List<ElementsTypeFilter> {
+private fun StringWithCursor.parseElementsDeclaration(): EnumSet<ElementsTypeFilter> {
     val result = ArrayList<ElementsTypeFilter>()
     result.add(parseElementDeclaration())
     while (nextIsAndAdvance(',')) {
@@ -81,7 +82,14 @@ private fun StringWithCursor.parseElementsDeclaration(): List<ElementsTypeFilter
         }
         result.add(element)
     }
-    return result
+    // a little odd interface of EnumSet here
+    return when(result.size) {
+        1 -> EnumSet.of(result[0])
+        2 -> EnumSet.of(result[0], result[1])
+        3 -> EnumSet.of(result[0], result[1], result[2])
+        else -> throw IllegalStateException()
+    }
+
 }
 
 private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {

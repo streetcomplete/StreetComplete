@@ -71,6 +71,7 @@ import javax.inject.Inject
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+import kotlin.math.sqrt
 
 /** Contains the quests map and the controls for it. */
 class MainFragment : Fragment(R.layout.fragment_main),
@@ -612,7 +613,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
             context?.toast(R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG)
         } else {
             val enclosingBBox = displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.QUEST_TILE_ZOOM)
-            val areaInSqKm = enclosingBBox.area(EARTH_RADIUS) / 1000000
+            val areaInSqKm = enclosingBBox.area() / 1000000
             if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
                 context?.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
             } else {
@@ -635,18 +636,16 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private fun downloadAreaConfirmed(bbox: BoundingBox) {
         var bbox = bbox
-        val areaInSqKm = bbox.area(EARTH_RADIUS) / 1000000
+        val areaInSqKm = bbox.area() / 1000000
         // below a certain threshold, it does not make sense to download, so let's enlarge it
         if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
             val cameraPosition = mapFragment?.cameraPosition
             if (cameraPosition != null) {
-                bbox = cameraPosition.position.enclosingBoundingBox(
-                    ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS,
-                    EARTH_RADIUS
-                )
+                val radius = sqrt( 1000000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
+                bbox = cameraPosition.position.enclosingBoundingBox(radius)
             }
         }
-        questDownloadController.download(bbox, ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT, true)
+        questDownloadController.download(bbox, true)
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */

@@ -4153,17 +4153,8 @@
     "traffic_sign/city_limit": {
       "name": "시 경계 표지판"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "시 경계 표지판"
-    },
     "traffic_sign/maxspeed": {
       "name": "제한 속도 표지판"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "제한 속도 표지판"
-    },
-    "traffic_sign_vertex": {
-      "name": "교통 표지판"
     },
     "type/boundary": {
       "name": "경계",
@@ -4230,9 +4221,6 @@
     },
     "type/route/ferry": {
       "name": "페리 노선"
-    },
-    "type/route/foot": {
-      "name": "도보 노선"
     },
     "type/route/hiking": {
       "name": "하이킹 노선"

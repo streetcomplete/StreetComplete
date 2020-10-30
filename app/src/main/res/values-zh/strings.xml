@@ -695,7 +695,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="credits_contributors">"在 &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; 上浏览完整列表。"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor 项目页&lt;/a&gt; 上浏览完整列表。"</string>
+    <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 项目页&lt;/a&gt; 上浏览完整列表。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"翻译"</string>
@@ -1742,9 +1742,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"最大承重限制是多少？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"没有相应的标志"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"这个承重量似乎不太现实。确定是这个数字吗？"</string>

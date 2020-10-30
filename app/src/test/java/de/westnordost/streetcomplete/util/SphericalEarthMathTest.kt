@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.util
 
+import de.westnordost.osmapi.map.data.BoundingBox
 import org.junit.Test
 
 import de.westnordost.osmapi.map.data.LatLon
@@ -243,6 +244,113 @@ class SphericalEarthMathTest {
         assertEquals(160.0, bbox.minLongitude, 0.0)
     }
 
+    @Test fun `isCompletelyInside works`() {
+        val bbox1 = BoundingBox(-1.0, -1.0, 1.0, 1.0)
+        val bbox2 = BoundingBox(-0.5, -0.5, 0.5, 1.0)
+        assertTrue(bbox2.isCompletelyInside(bbox1))
+        assertFalse(bbox1.isCompletelyInside(bbox2))
+    }
+
+    @Test fun `isCompletelyInside works at 180th meridian`() {
+        val bbox1 = BoundingBox(0.0, 179.0, 1.0, -179.0)
+        val bbox2 = BoundingBox(0.0, 179.5, 0.5, -179.5)
+        assertTrue(bbox2.isCompletelyInside(bbox1))
+        assertFalse(bbox1.isCompletelyInside(bbox2))
+    }
+
+    @Test fun `enlargedBy really enlarges bounding box`() {
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        assertTrue(bbox.isCompletelyInside(bbox.enlargedBy(1.0)))
+    }
+
+    @Test fun `enlargedBy really enlarges bounding box, even at 180th meridian`() {
+        val bbox1 = BoundingBox(0.0, 179.0, 1.0, 180.0)
+        // enlarged bounding box should go over the 180th meridian
+        assertTrue(bbox1.isCompletelyInside(bbox1.enlargedBy(100.0)))
+        // here already bbox2 crosses the 180th meridian, maybe this makes a difference
+        val bbox2 = BoundingBox(0.0, 179.0, 1.0, -179.0)
+        assertTrue(bbox2.isCompletelyInside(bbox2.enlargedBy(100.0)))
+    }
+
+    @Test fun `bounding box not on same latitude do not intersect`() {
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val above = BoundingBox(1.1, 0.0, 1.2, 1.0)
+        val below = BoundingBox(-0.2, 0.0, -0.1, 1.0)
+        assertFalse(bbox.intersect(above))
+        assertFalse(bbox.intersect(below))
+        assertFalse(above.intersect(bbox))
+        assertFalse(below.intersect(bbox))
+    }
+
+    @Test fun `bounding box not on same longitude do not intersect`() {
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val left = BoundingBox(0.0, -0.2, 1.0, -0.1)
+        val right = BoundingBox(0.0, 1.1, 1.0, 1.2)
+        assertFalse(bbox.intersect(left))
+        assertFalse(bbox.intersect(right))
+        assertFalse(left.intersect(bbox))
+        assertFalse(right.intersect(bbox))
+    }
+
+    @Test fun `intersecting bounding boxes`() {
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val touchLeft = BoundingBox(0.0, -0.1, 1.0, 0.0)
+        val touchUpperRightCorner = BoundingBox(1.0, 1.0, 1.1, 1.1)
+        val completelyInside = BoundingBox(0.4, 0.4, 0.8, 0.8)
+        val intersectLeft = BoundingBox(0.4, -0.5, 0.5, 0.5)
+        val intersectRight = BoundingBox(0.4, 0.8, 0.5, 1.2)
+        val intersectTop = BoundingBox(0.9, 0.4, 1.1, 0.8)
+        val intersectBottom = BoundingBox(-0.2, 0.4, 0.2, 0.6)
+        assertTrue(bbox.intersect(touchLeft))
+        assertTrue(bbox.intersect(touchUpperRightCorner))
+        assertTrue(bbox.intersect(completelyInside))
+        assertTrue(bbox.intersect(intersectLeft))
+        assertTrue(bbox.intersect(intersectRight))
+        assertTrue(bbox.intersect(intersectTop))
+        assertTrue(bbox.intersect(intersectBottom))
+        // and the other way around
+        assertTrue(touchLeft.intersect(bbox))
+        assertTrue(touchUpperRightCorner.intersect(bbox))
+        assertTrue(completelyInside.intersect(bbox))
+        assertTrue(intersectLeft.intersect(bbox))
+        assertTrue(intersectRight.intersect(bbox))
+        assertTrue(intersectTop.intersect(bbox))
+        assertTrue(intersectBottom.intersect(bbox))
+    }
+
+    @Test fun `bounding box not on same longitude do not intersect, even on 180th meridian`() {
+        val bbox = BoundingBox(0.0, 179.0, 1.0, -179.0)
+        val other = BoundingBox(0.0, -178.0, 1.0, 178.0)
+        assertFalse(bbox.intersect(other))
+        assertFalse(other.intersect(bbox))
+    }
+
+    @Test fun `intersecting bounding boxes at 180th meridian`() {
+        val bbox = BoundingBox(0.0, 179.5, 1.0, -170.0)
+        val touchLeft = BoundingBox(0.0, 179.0, 1.0, 180.0)
+        val touchUpperRightCorner = BoundingBox(1.0, -170.0, 1.1, -169.0)
+        val completelyInside = BoundingBox(0.4, 179.9, 0.8, -179.9)
+        val intersectLeft = BoundingBox(0.4, 179.0, 0.5, 179.9)
+        val intersectRight = BoundingBox(0.4, -179.0, 0.5, -150.0)
+        val intersectTop = BoundingBox(0.9, 179.9, 1.1, -179.8)
+        val intersectBottom = BoundingBox(-0.2, 179.9, 0.2, -179.8)
+        assertTrue(bbox.intersect(touchLeft))
+        assertTrue(bbox.intersect(touchUpperRightCorner))
+        assertTrue(bbox.intersect(completelyInside))
+        assertTrue(bbox.intersect(intersectLeft))
+        assertTrue(bbox.intersect(intersectRight))
+        assertTrue(bbox.intersect(intersectTop))
+        assertTrue(bbox.intersect(intersectBottom))
+        // and the other way around
+        assertTrue(touchLeft.intersect(bbox))
+        assertTrue(touchUpperRightCorner.intersect(bbox))
+        assertTrue(completelyInside.intersect(bbox))
+        assertTrue(intersectLeft.intersect(bbox))
+        assertTrue(intersectRight.intersect(bbox))
+        assertTrue(intersectTop.intersect(bbox))
+        assertTrue(intersectBottom.intersect(bbox))
+    }
+
     /* ++++++++++++++++++++++++++++++ test translating of positions +++++++++++++++++++++++++++++ */
 
     @Test fun `translate latitude north`() { checkTranslate(1000, 0) }
@@ -392,7 +500,7 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `point at polygon edge is in polygon`() {
-        val square = p(0.0, 0.0).createSquare(10.0)
+        val square = p(0.0, 0.0).createCounterClockwiseSquare(10.0)
         assertTrue(p(0.0, 10.0).isInPolygon(square))
         assertTrue(p(10.0, 0.0).isInPolygon(square))
         assertTrue(p(-10.0, 0.0).isInPolygon(square))
@@ -400,7 +508,7 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `point at polygon edge at 180th meridian is in polygon`() {
-        val square = p(180.0, 0.0).createSquare(10.0)
+        val square = p(180.0, 0.0).createCounterClockwiseSquare(10.0)
         assertTrue(p(180.0, 10.0).isInPolygon(square))
         assertTrue(p(-170.0, 0.0).isInPolygon(square))
         assertTrue(p(170.0, 0.0).isInPolygon(square))
@@ -477,20 +585,20 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `point outside polygon is outside polygon`() {
-        assertFalse(p(0.0, 11.0).isInPolygon(p(0.0, 0.0).createSquare(10.0)))
+        assertFalse(p(0.0, 11.0).isInPolygon(p(0.0, 0.0).createCounterClockwiseSquare(10.0)))
     }
 
     @Test fun `point outside polygon is outside polygon at 180th meridian`() {
-        assertFalse(p(-169.0, 0.0).isInPolygon(p(180.0, 0.0).createSquare(10.0)))
+        assertFalse(p(-169.0, 0.0).isInPolygon(p(180.0, 0.0).createCounterClockwiseSquare(10.0)))
     }
 
     @Test fun `polygon direction does not matter for point-in-polygon check`() {
-        val square = p(0.0, 0.0).createSquare(10.0).reversed()
+        val square = p(0.0, 0.0).createCounterClockwiseSquare(10.0).reversed()
         assertTrue(p(5.0, 5.0).isInPolygon(square))
     }
 
     @Test fun `polygon direction does not matter for point-in-polygon check at 180th meridian`() {
-        val square = p(180.0, 0.0).createSquare(10.0).reversed()
+        val square = p(180.0, 0.0).createCounterClockwiseSquare(10.0).reversed()
         assertTrue(p(-175.0, 5.0).isInPolygon(square))
     }
 
@@ -558,6 +666,30 @@ class SphericalEarthMathTest {
         assertFalse(p.isInMultipolygon(listOf(way)))
     }
 
+    @Test fun `polygon area is 0 for a polygon with less than 3 edges`() {
+        val twoEdges = listOf(p(0.0,0.0), p(1.0,0.0), p(1.0,1.0))
+        assertEquals(0.0, twoEdges.measuredArea(), 0.0)
+    }
+
+    @Test fun `polygon area is 0 for a polygon that is not closed`() {
+        val notClosed = listOf(p(0.0,0.0), p(1.0,0.0), p(1.0,1.0), p(0.0,1.0))
+        assertEquals(0.0, notClosed.measuredArea(), 0.0)
+    }
+
+    @Test fun `polygon area is positive for a counterclockwise polygon`() {
+        val square = p(0.0,0.0).createCounterClockwiseSquare(1.0)
+        assertFalse(square.isRingDefinedClockwise())
+        assertTrue(square.measuredAreaSigned() > 0)
+        assertTrue(square.measuredArea() > 0)
+    }
+
+    @Test fun `polygon area is negative for a clockwise polygon`() {
+        val square = p(0.0,0.0).createCounterClockwiseSquare(1.0).reversed()
+        assertTrue(square.isRingDefinedClockwise())
+        assertTrue(square.measuredAreaSigned() < 0)
+        assertTrue(square.measuredArea() > 0)
+    }
+
     companion object {
         private val HH = p(10.0, 53.5)
     }
@@ -572,7 +704,7 @@ private val LatLon.y get() = latitude
   | + |
   o---o
 */
-private fun LatLon.createSquare(l: Double) = listOf(
+private fun LatLon.createCounterClockwiseSquare(l: Double) = listOf(
     p(x + l, y + l),
     p(x + l, y - l),
     p(x - l, y - l),

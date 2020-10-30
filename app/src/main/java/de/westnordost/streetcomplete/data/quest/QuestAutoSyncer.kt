@@ -33,9 +33,8 @@ import javax.inject.Singleton
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
     private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
     private val context: Context,
-    private val visibleQuestsSource: VisibleQuestsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val downloadProgressSource: QuestDownloadProgressSource,
+    private val downloadProgressSource: DownloadProgressSource,
     private val prefs: SharedPreferences,
     private val userController: UserController
 ) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
@@ -44,13 +43,6 @@ import javax.inject.Singleton
 
     private var isConnected: Boolean = false
     private var isWifi: Boolean = false
-
-    // amount of visible quests is reduced -> check if re-downloading makes sense now
-    private val visibleQuestListener = object : VisibleQuestListener {
-        override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<Long>, group: QuestGroup) {
-            if (removed.isNotEmpty()) { triggerAutoDownload() }
-        }
-    }
 
     // new location is known -> check if downloading makes sense now
     private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
@@ -78,7 +70,7 @@ import javax.inject.Singleton
     }
 
     // on download finished, should recheck conditions for download
-    private val downloadProgressListener = object : QuestDownloadProgressListener {
+    private val downloadProgressListener = object : DownloadProgressListener {
         override fun onSuccess() {
             triggerAutoDownload()
         }
@@ -93,9 +85,8 @@ import javax.inject.Singleton
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
     init {
-        visibleQuestsSource.addListener(visibleQuestListener)
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
-        downloadProgressSource.addQuestDownloadProgressListener(downloadProgressListener)
+        downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
@@ -113,9 +104,8 @@ import javax.inject.Singleton
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
-        visibleQuestsSource.removeListener(visibleQuestListener)
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
-        downloadProgressSource.removeQuestDownloadProgressListener(downloadProgressListener)
+        downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         coroutineContext.cancel()
     }
 
@@ -131,7 +121,6 @@ import javax.inject.Singleton
     /* ------------------------------------------------------------------------------------------ */
 
     fun triggerAutoDownload() {
-        if (!isAllowedByPreference) return
         val pos = pos ?: return
         if (!isConnected) return
         if (questDownloadController.isDownloadInProgress) return
@@ -140,12 +129,10 @@ import javax.inject.Singleton
 
         launch {
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
-            if (downloadStrategy.mayDownloadHere(pos)) {
+            val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
+            if (downloadBoundingBox != null) {
                 try {
-                    questDownloadController.download(
-                        downloadStrategy.getDownloadBoundingBox(pos),
-                        downloadStrategy.questTypeDownloadCount
-                    )
+                    questDownloadController.download(downloadBoundingBox)
                 } catch (e: IllegalStateException) {
                     // The Android 9 bug described here should not result in a hard crash of the app
                     // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume

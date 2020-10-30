@@ -3,11 +3,7 @@ package de.westnordost.streetcomplete.data.osm.splitway
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Way
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.elementgeometry.OsmApiElementGeometryCreator
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
-import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementUpdateController
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
@@ -16,16 +12,12 @@ import javax.inject.Inject
 
 /** Gets all split ways from local DB and uploads them via the OSM API */
 class SplitWaysUploader @Inject constructor(
-        private val elementDB: MergedElementDao,
-        private val elementGeometryDB: ElementGeometryDao,
-        changesetManager: OpenQuestChangesetsManager,
-        private val questGiver: OsmQuestGiver,
-        private val osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
-        private val splitWayDB: OsmQuestSplitWayDao,
-        private val splitSingleOsmWayUploader: SplitSingleWayUploader,
-        private val statisticsUpdater: StatisticsUpdater
-) : OsmInChangesetsUploader<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
-    questGiver, osmApiElementGeometryCreator) {
+    changesetManager: OpenQuestChangesetsManager,
+    private val elementUpdateController: OsmElementUpdateController,
+    private val splitWayDB: OsmQuestSplitWayDao,
+    private val splitSingleOsmWayUploader: SplitSingleWayUploader,
+    private val statisticsUpdater: StatisticsUpdater
+) : OsmInChangesetsUploader<OsmQuestSplitWay>(changesetManager, elementUpdateController) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Splitting ways")
@@ -38,17 +30,11 @@ class SplitWaysUploader @Inject constructor(
         return splitSingleOsmWayUploader.upload(changesetId, element as Way, quest.splits)
     }
 
-    override fun updateElement(newElement: Element, quest: OsmQuestSplitWay) {
-        val geometry = osmApiElementGeometryCreator.create(newElement)
-        if (geometry != null) {
-            elementGeometryDB.put(ElementGeometryEntry(newElement.type, newElement.id, geometry))
-            elementDB.put(newElement)
-            questGiver.recreateQuests(newElement, geometry, quest.questTypesOnWay)
-        } else {
-            // new element has invalid geometry
-            elementDB.delete(newElement.type, newElement.id)
-            questGiver.deleteQuests(newElement.type, newElement.id)
-        }
+    override fun updateElement(element: Element, quest: OsmQuestSplitWay) {
+        /* We override this because in case of a split, the two (or more) sections of the way should
+        *  actually get the same quests as the original way, there is no need to again check for
+        *  the eligibility of the element for each quest which would be done normally */
+        elementUpdateController.update(element, quest.questTypesOnWay)
     }
 
     override fun onUploadSuccessful(quest: OsmQuestSplitWay) {

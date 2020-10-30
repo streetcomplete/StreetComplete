@@ -1,17 +1,14 @@
 package de.westnordost.streetcomplete.quests.ferry
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
+class AddFerryAccessMotorVehicle : OsmFilterQuestType<Boolean>() {
 
-
-class AddFerryAccessMotorVehicle(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
-
-    override val tagFilters = "ways, relations with route = ferry and !motor_vehicle"
+    override val elementFilter = "ways, relations with route = ferry and !motor_vehicle"
     override val commitMessage = "Specify ferry access for motor vehicles"
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry

@@ -2005,10 +2005,6 @@
     "type/route/ferry": {
       "name": "Ruta de ferry"
     },
-    "type/route/foot": {
-      "name": "Ruta a pie",
-      "terms": "sienda, PR, GR, ruta"
-    },
     "type/route/hiking": {
       "name": "Ruta escursionista",
       "terms": "Senderismu, Escursionismu"

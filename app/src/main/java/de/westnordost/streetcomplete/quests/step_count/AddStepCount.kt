@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.quests.step_count
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddStepCount(overpassApi: OverpassMapDataAndGeometryApi)
-    : SimpleOverpassQuestType<Int>(overpassApi) {
+class AddStepCount : OsmFilterQuestType<Int>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway = steps
          and (!indoor or indoor = no)
          and access !~ private|no
@@ -19,6 +17,9 @@ class AddStepCount(overpassApi: OverpassMapDataAndGeometryApi)
     override val commitMessage = "Add step count"
     override val wikiLink = "Key:step_count"
     override val icon = R.drawable.ic_quest_steps_count
+    override val isSplitWayEnabled = true
+    // because the user needs to start counting at the start of the steps
+    override val hasMarkersAtEnds = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_title
 

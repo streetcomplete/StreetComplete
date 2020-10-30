@@ -211,9 +211,17 @@
       "name": "啤酒花園 ",
       "terms": "啤酒花園,屋外花園酒店"
     },
+    "amenity/binoculars": {
+      "name": "固定式雙筒望遠鏡",
+      "terms": "固定式雙筒望遠鏡"
+    },
     "amenity/boat_rental": {
       "name": "小艇出租",
       "terms": "租船處,小艇租賃"
+    },
+    "amenity/boat_storage": {
+      "name": "般隻停放處",
+      "terms": "般隻倉庫,般隻存放處"
     },
     "amenity/bureau_de_change": {
       "name": "外幣兌換",
@@ -486,6 +494,10 @@
       "name": "裝卸碼頭",
       "terms": "裝卸碼頭"
     },
+    "amenity/lounger": {
+      "name": "躺椅區",
+      "terms": "躺椅區,躺椅"
+    },
     "amenity/love_hotel": {
       "name": "情趣旅館",
       "terms": "愛情旅館,情人旅館"
@@ -501,6 +513,10 @@
     "amenity/money_transfer": {
       "name": "匯款站",
       "terms": "匯款處"
+    },
+    "amenity/mortuary": {
+      "name": "太平間",
+      "terms": "太平間"
     },
     "amenity/motorcycle_parking": {
       "name": "機車停車場",
@@ -1709,6 +1725,9 @@
     "demolished/building": {
       "name": "最近拆除的建築物"
     },
+    "disused/amenity": {
+      "name": "廢棄設施"
+    },
     "disused/railway": {
       "name": "廢棄鐵軌圖徽"
     },
@@ -1820,6 +1839,10 @@
     "golf/cartpath": {
       "name": "高爾夫球車道",
       "terms": "高爾夫球車道"
+    },
+    "golf/clubhouse": {
+      "name": "高爾夫俱樂部",
+      "terms": "高爾夫俱樂部"
     },
     "golf/driving_range": {
       "name": "高爾夫球練習場",
@@ -3112,6 +3135,10 @@
       "name": "通訊塔",
       "terms": "無線通訊塔"
     },
+    "man_made/tower/cooling": {
+      "name": "冷卻塔",
+      "terms": "冷卻塔"
+    },
     "man_made/tower/defensive": {
       "name": "守衛塔",
       "terms": "槍塔,衛塔"
@@ -3245,6 +3272,10 @@
     "natural/heath": {
       "name": "矮灌木叢",
       "terms": "矮灌木叢"
+    },
+    "natural/hot_spring": {
+      "name": "溫泉",
+      "terms": "溫泉"
     },
     "natural/mud": {
       "name": "泥地",
@@ -3826,6 +3857,10 @@
     "public_transport/platform/bus_point": {
       "name": "公車站",
       "terms": "公車站"
+    },
+    "public_transport/platform/bus_tram_point": {
+      "name": "電車與公車站",
+      "terms": "電車與公車站"
     },
     "public_transport/platform/ferry": {
       "name": "渡輪月台",
@@ -4916,6 +4951,10 @@
       "name": "資訊告示牌",
       "terms": "資訊告示牌,告示牌,看版"
     },
+    "tourism/information/board/welcome_sign": {
+      "name": "歡迎標誌",
+      "terms": "歡迎標誌"
+    },
     "tourism/information/guidepost": {
       "name": "指示牌",
       "terms": "方向指引牌"
@@ -5029,21 +5068,9 @@
       "name": "城市限制標誌",
       "terms": "城市限制標誌"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "城市限制標誌",
-      "terms": "城市限制標誌"
-    },
     "traffic_sign/maxspeed": {
       "name": "速限指標",
       "terms": "速限"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "速限指標",
-      "terms": "速限"
-    },
-    "traffic_sign_vertex": {
-      "name": "交通號誌",
-      "terms": "交通號誌"
     },
     "type/boundary": {
       "name": "邊界",

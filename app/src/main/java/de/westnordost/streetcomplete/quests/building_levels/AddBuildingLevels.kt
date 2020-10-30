@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddBuildingLevels(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<BuildingLevelsAnswer>(o) {
+class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
     // building:height is undocumented, but used the same way as height and currently over 50k times
-    override val tagFilters = """
+    override val elementFilter = """
         ways, relations with building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}
          and !building:levels and !height and !building:height
          and !man_made and location != underground and ruins != yes

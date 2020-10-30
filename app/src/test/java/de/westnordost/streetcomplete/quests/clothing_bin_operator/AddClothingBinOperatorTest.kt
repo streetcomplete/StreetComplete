@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests.clothing_bin_operator
 
 import de.westnordost.osmapi.map.data.OsmNode
-import de.westnordost.streetcomplete.mock
 import org.junit.Assert.*
 import org.junit.Test
 
 class AddClothingBinOperatorTest {
 
-    private val questType = AddClothingBinOperator(mock())
+    private val questType = AddClothingBinOperator()
 
     @Test fun `is not applicable to null tags`() {
         assertFalse(questType.isApplicableTo(create(null)))
