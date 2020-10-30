@@ -26,22 +26,7 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
     override val commitMessage = "Add tactile pavings on bus stops"
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_bus
-
-    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavingBusStop.kt
-    // #750
-    override val enabledInCountries = NoCountriesExcept(
-            // Europe
-            "NO", "SE",
-            "GB", "IE", "NL", "BE", "FR", "ES",
-            "DE", "PL", "CZ", "SK", "HU", "AT", "CH",
-            "LV", "LT", "LU", "EE", "RU",
-            // America
-            "US", "CA", "AR",
-            // Asia
-            "HK", "SG", "KR", "JP",
-            // Oceania
-            "AU", "NZ"
-    )
+    override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
