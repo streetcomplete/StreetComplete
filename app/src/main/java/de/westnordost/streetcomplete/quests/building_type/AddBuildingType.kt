@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.building_type
 
+import android.util.Log
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -37,7 +38,10 @@ class AddBuildingType : OsmFilterQuestType<String>() {
             changes.delete("building")
             changes.add("man_made", manMade)
         } else {
-            changes.modify("building", answer)
+            if (answer.contains("historic") || answer.contains("abandoned") || answer.contains("ruin"))
+                changes.add(answer, "yes")
+            else
+                changes.modify("building", answer)
         }
     }
 }
