@@ -5,13 +5,13 @@ import de.westnordost.osmapi.map.data.Node
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 
 private val footwaysFilter by lazy {"""
-        ways with (
-            highway ~ footway|path
-            or highway = cycleway and foot ~ yes|designated
-            or highway = path
-          )
-          and access !~ private|no and foot !~ no
-    """.toElementFilterExpression() }
+    ways with (
+        highway ~ footway|path
+        or highway = cycleway and foot ~ yes|designated
+        or highway = path
+      )
+      and access !~ private|no and foot !~ no
+""".toElementFilterExpression() }
 
 fun MapData.findAllKerbNodes(): Iterable<Node> {
     val footwayNodes = mutableSetOf<Node>()
