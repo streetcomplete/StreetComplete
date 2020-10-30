@@ -137,7 +137,8 @@ private fun createQuery(
         bounds: BoundingBox? = null,
         changedBefore: Long? = null
 ) = WhereSelectionBuilder().apply {
-    if (statusIn != null && statusIn.isNotEmpty()) {
+    if (statusIn != null) {
+        require(statusIn.isNotEmpty()) { "statusIn must not be empty if not null" }
         if (statusIn.size == 1) {
             add("$QUEST_STATUS = ?", statusIn.single().name)
         } else {

@@ -1,32 +1,108 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.bikeway.*
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
+import de.westnordost.streetcomplete.util.translate
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers
 import java.util.*
 
 class AddCyclewayTest {
 
-    private lateinit var questType: AddCycleway
+    private val questType = AddCycleway()
 
-    @Before fun setUp() {
-        val r: ResurveyIntervalsStore = mock()
-        on(r.times(ArgumentMatchers.anyInt())).thenAnswer { (it.arguments[0] as Int).toDouble() }
-        on(r.times(ArgumentMatchers.anyDouble())).thenAnswer { (it.arguments[0] as Double) }
-        questType = AddCycleway(mock(), r)
+    @Test fun `applicable to road with missing cycleway`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+                "highway" to "primary"
+            ))
+        ))
+        val p1 = OsmLatLon(0.0,0.0)
+        val p2 = p1.translate(50.0, 45.0)
+        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `not applicable to road with nearby cycleway`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmWay(1L, 1, listOf(1,2), mapOf(
+                "highway" to "primary"
+            )),
+            OsmWay(2L, 1, listOf(3,4), mapOf(
+                "highway" to "cycleway"
+            ))
+        ))
+        val p1 = OsmLatLon(0.0,0.0)
+        val p2 = p1.translate(50.0, 45.0)
+        val p3 = p1.translate(14.0, 135.0)
+        val p4 = p3.translate(50.0, 45.0)
+
+        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
+        mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
+
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `applicable to road with cycleway that is far away enough`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmWay(1L, 1, listOf(1,2), mapOf(
+                "highway" to "primary"
+            )),
+            OsmWay(2L, 1, listOf(3,4), mapOf(
+                "highway" to "cycleway"
+            ))
+        ))
+        val p1 = OsmLatLon(0.0,0.0)
+        val p2 = p1.translate(50.0, 45.0)
+        val p3 = p1.translate(16.0, 135.0)
+        val p4 = p3.translate(50.0, 45.0)
+
+        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
+        mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `not applicable to road with cycleway that is not old enough`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+                "highway" to "primary",
+                "cycleway" to "track"
+            ), null, Date())
+        ))
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `applicable to road with cycleway that is old enough`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+                "highway" to "primary",
+                "cycleway" to "track",
+                "check_date:cycleway" to "2001-01-01"
+            ), null, Date())
+        ))
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `not applicable to road with cycleway that is old enough but has unknown cycleway tagging`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+                "highway" to "primary",
+                "cycleway" to "whatsthis",
+                "check_date:cycleway" to "2001-01-01"
+            ), null, Date())
+        ))
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `apply cycleway lane answer`() {
@@ -489,5 +565,5 @@ class AddCyclewayTest {
     }
 
     private fun createElement(tags: Map<String, String>, date: Date? = null): Element =
-        OsmNode(0L, 1, 0.0, 0.0, tags, null, date)
+        OsmWay(0L, 1, listOf(1,2,3), tags, null, date)
 }

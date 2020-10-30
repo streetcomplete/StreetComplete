@@ -45,6 +45,8 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     private var houseNumberInputTextColors: ColorStateList? = null
 
+    private val isShowingHouseNumberHint: Boolean get() = houseNumberInputTextColors != null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
@@ -68,7 +70,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    override fun isFormComplete() = createAnswer() != null
+    override fun isFormComplete() = !isShowingHouseNumberHint && createAnswer() != null
 
     /* ------------------------------------- Other answers -------------------------------------- */
 
@@ -213,6 +215,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
         houseNumberInput?.onFocusChangeListener = onFocusChange
         streetNumberInput?.onFocusChangeListener = onFocusChange
+        blockNumberInput?.onFocusChangeListener = onFocusChange
     }
 
     private fun showKeyboard(focus: View) {
@@ -221,8 +224,11 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 
     private fun updateKeyboardButtonVisibility() {
-        toggleKeyboardButton?.isInvisible =
-            !(houseNumberInput?.hasFocus() == true || streetNumberInput?.hasFocus() == true)
+        toggleKeyboardButton?.isInvisible = !(
+            houseNumberInput?.hasFocus() == true ||
+            streetNumberInput?.hasFocus() == true ||
+            blockNumberInput?.hasFocus() == true
+        )
     }
 
     private fun confirmHousenumber(isUnusual: Boolean, onConfirmed: () -> Unit) {

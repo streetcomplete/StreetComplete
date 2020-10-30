@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.parking_fee.*
 import org.junit.Test
@@ -16,7 +15,7 @@ import java.util.*
 
 class AddParkingFeeTest {
 
-    private val questType = AddParkingFee(mock(), mock())
+    private val questType = AddParkingFee()
 
     private val openingHours = OpeningHoursRuleList(listOf(
         Rule().apply {

@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.postbox_collection_times.*
 import org.junit.Test
 
 class AddPostboxCollectionTimesTest {
 
-    private val questType = AddPostboxCollectionTimes(mock(), mock())
+    private val questType = AddPostboxCollectionTimes()
 
     @Test fun `apply no signed times answer`() {
         questType.verifyAnswer(

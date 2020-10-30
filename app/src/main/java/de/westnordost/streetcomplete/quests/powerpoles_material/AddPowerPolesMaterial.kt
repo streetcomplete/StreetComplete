@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests.powerpoles_material
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddPowerPolesMaterial(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddPowerPolesMaterial : OsmFilterQuestType<String>() {
 
-    override val tagFilters = "nodes with power = pole and !material"
+    override val elementFilter = "nodes with power = pole and !material"
     override val commitMessage = "Add powerpoles material type"
     override val wikiLink = "Tag:power=pole"
     override val icon = R.drawable.ic_quest_power

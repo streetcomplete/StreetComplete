@@ -7,13 +7,11 @@ import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.elementgeometry.OsmApiElementGeometryCreator
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
@@ -26,39 +24,32 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 class OsmQuestsUploaderTest {
     private lateinit var osmQuestController: OsmQuestController
-    private lateinit var elementDB: MergedElementDao
     private lateinit var changesetManager: OpenQuestChangesetsManager
-    private lateinit var elementGeometryDB: ElementGeometryDao
-    private lateinit var questGiver: OsmQuestGiver
-    private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
     private lateinit var statisticsUpdater: StatisticsUpdater
+    private lateinit var elementUpdateController: OsmElementUpdateController
     private lateinit var uploader: OsmQuestsUploader
 
     @Before fun setUp() {
         osmQuestController = mock()
-        elementDB = mock()
-        on(elementDB.get(any(), anyLong())).thenReturn(createElement())
         changesetManager = mock()
         singleChangeUploader = mock()
-        elementGeometryDB = mock()
-        questGiver = mock()
-        elementGeometryCreator = mock()
         statisticsUpdater = mock()
-        on(elementGeometryCreator.create(any())).thenReturn(mock())
-        uploader = OsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-                elementGeometryCreator, osmQuestController, singleChangeUploader, statisticsUpdater)
+        elementUpdateController = mock()
+        uploader = OsmQuestsUploader(changesetManager, elementUpdateController,
+            osmQuestController, singleChangeUploader, statisticsUpdater)
     }
 
     @Test fun `cancel upload works`() {
         uploader.upload(AtomicBoolean(true))
-        verifyZeroInteractions(changesetManager, singleChangeUploader, elementDB, osmQuestController)
+        verifyZeroInteractions(elementUpdateController, changesetManager, singleChangeUploader, statisticsUpdater, osmQuestController)
     }
 
     @Test fun `catches ElementConflict exception`() {
         on(osmQuestController.getAllAnswered()).thenReturn(listOf(createQuest()))
         on(singleChangeUploader.upload(anyLong(), any(), any()))
             .thenThrow(ElementConflictException())
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(mock())
 
         uploader.upload(AtomicBoolean(false))
 
@@ -68,12 +59,15 @@ class OsmQuestsUploaderTest {
     @Test fun `discard if element was deleted`() {
         val q = createQuest()
         on(osmQuestController.getAllAnswered()).thenReturn(listOf(q))
-        on(elementDB.get(any(), anyLong())).thenReturn(null)
+        on(singleChangeUploader.upload(anyLong(), any(), any()))
+            .thenThrow(ElementDeletedException())
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(mock())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
         verify(uploader.uploadedChangeListener)?.onDiscarded(q.osmElementQuestType.javaClass.simpleName, q.position)
+        verify(elementUpdateController).delete(any(), anyLong())
     }
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
@@ -81,6 +75,7 @@ class OsmQuestsUploaderTest {
         on(singleChangeUploader.upload(anyLong(), any(), any()))
             .thenThrow(ChangesetConflictException())
             .thenReturn(createElement())
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(mock())
 
         uploader.upload(AtomicBoolean(false))
 
@@ -95,15 +90,14 @@ class OsmQuestsUploaderTest {
 
         on(osmQuestController.getAllAnswered()).thenReturn(quests)
         on(singleChangeUploader.upload(anyLong(), any(), any())).thenReturn(createElement())
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(mock())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
         verify(osmQuestController, times(2)).success(any())
         verify(uploader.uploadedChangeListener, times(2))?.onUploaded(any(), any())
-        verify(elementDB, times(2)).put(any())
-        verify(elementGeometryDB, times(2)).put(any())
-        verify(questGiver, times(2)).updateQuests(any(), any())
+        verify(elementUpdateController, times(2)).update(any(), isNull())
         verify(statisticsUpdater, times(2)).addOne(any(), any())
     }
 
@@ -113,13 +107,17 @@ class OsmQuestsUploaderTest {
         on(osmQuestController.getAllAnswered()).thenReturn(quests)
         on(singleChangeUploader.upload(anyLong(), any(), any()))
             .thenThrow(ElementConflictException())
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(mock())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
         verify(osmQuestController, times(2)).fail(any())
         verify(uploader.uploadedChangeListener,times(2))?.onDiscarded(any(), any())
-        verifyZeroInteractions(questGiver, elementGeometryCreator, statisticsUpdater)
+        verify(elementUpdateController, times(2)).get(any(), anyLong())
+        verify(elementUpdateController).cleanUp()
+        verifyNoMoreInteractions(elementUpdateController)
+        verifyZeroInteractions(statisticsUpdater)
     }
 
     @Test fun `delete unreferenced elements and clean metadata at the end`() {
@@ -127,10 +125,11 @@ class OsmQuestsUploaderTest {
 
         on(osmQuestController.getAllAnswered()).thenReturn(listOf(quest))
         on(singleChangeUploader.upload(anyLong(), any(), any())).thenReturn(createElement())
+        on(elementUpdateController.get(any(), anyLong())).thenReturn(mock())
 
         uploader.upload(AtomicBoolean(false))
 
-        verify(elementDB).deleteUnreferenced()
+        verify(elementUpdateController).cleanUp()
         verify(quest.osmElementQuestType).cleanMetadata()
     }
 }

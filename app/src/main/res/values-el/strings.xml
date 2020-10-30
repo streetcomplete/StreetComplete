@@ -695,7 +695,7 @@
     <string name="credits_contributors">"Δείτε την &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;πλήρη λίστα στο GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Δείτε την &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;εργασία στο POEditor&lt;/a&gt; για μια πλήρη λίστα."</string>
+    <string name="credits_translations">"Δείτε την &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;εργασία στο POEditor&lt;/a&gt; για μια πλήρη λίστα."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Μεταφράσεις"</string>
@@ -1804,9 +1804,6 @@
     <string name="quest_maxweight_title">"Ποιο είναι το όριο βάρους εδώ;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Δεν υπάρχει κανένα σήμα"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Αυτό το βάρος φαίνεται παράλογο. Είστε βέβαιος ότι είναι σωστό;"</string>
 
     <!-- Fuzzy -->
@@ -2117,4 +2114,30 @@
     <string name="quest_traffic_signals_sound_title">"Υπάρχουν ηχητικά σήματα για τους τυφλούς εδώ;"</string>
     <string name="quest_traffic_signals_vibrate_title">"Έχουν αυτά τα φανάρια ψηλαφιστή ένδειξη για τυφλούς ότι είναι ασφαλές να διασχίσουν τον δρόμο;"</string>
     <string name="quest_traffic_signals_vibrate_description">"Συμβουλή: Συχνά πρόκειται για ένα δονούμενο κουμπί ή περιστρεφόμενο κώνο στην κάτω πλευρά της θήκης του κουμπιού του φαναριού."</string>
+    <string name="quest_busStopRef_title">"Ποιος είναι ο αριθμός αναφοράς αυτής της στάσης λεωφορείου;"</string>
+    <string name="quest_tramStopRef_title">"Ποιος είναι ο αριθμός αναφοράς αυτής της στάσης του τραμ;"</string>
+    <string name="quest_buildingType_bungalow_description2">"μικρή μονοκατοικία (καλοκαιρινή κατοικία, εξοχικό, σπιτάκι ...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Ποια εμπόδια χρησιμοποιούνται σε αυτήν τη σιδηροδρομική διάβαση;"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Χωρίς εμπόδια"</string>
+    <string name="quest_steps_ramp_title">"Αυτά τα σκαλιά έχουν ράμπα; Τι είδους?"</string>
+    <string name="quest_steps_ramp_none">"Δεν υπάρχει (χρησιμοποιήσιμη) ράμπα"</string>
+    <string name="quest_steps_ramp_bicycle">"Ράμπα ποδηλάτου"</string>
+    <string name="quest_steps_ramp_stroller">"Ράμπα καροτσιού"</string>
+    <string name="quest_steps_ramp_wheelchair">"Ράμπα αναπηρικού αμαξιδίου"</string>
+    <string name="quest_atm_operator_title">"Ποιο είναι το όνομα της τράπεζας για αυτό το ATM;"</string>
+    <string name="quest_clothes_container_operator_title">"Ποιος δέχεται δωρεές για αυτόν τον κάδο ρούχων;"</string>
+    <string name="quest_charging_station_operator_title">"Ποιος είναι ο διαχειριστής αυτού του σταθμού φόρτισης;"</string>
+    <string name="link_indoorequal_description">"Ανακαλύψτε εσωτερικούς χάρτες εμπορικών κέντρων, σιδηροδρομικών σταθμών κ.λπ."</string>
+    <string name="link_thenandnow_description">"Είστε περίεργοι για το ποια πρόοδο σημειώσαμε με τα χρόνια; Συγκρίνετε πως έδειχνε ο χάρτης πριν από περισσότερο από 10 χρόνια,!"</string>
+    <string name="achievement_rare_title">"Κυνήγι θησαυρού"</string>
+    <string name="achievement_rare_solved_X">"Βρήκατε και επιλύσατε %d αναζητήσεις που ολοκληρώνονται πολύ σπάνια, συγχαρητήρια!"</string>
+    <string name="achievement_citizen_title">"Πολίτης"</string>
+    <string name="achievement_citizen_solved_X">"Λύσατε %d αναζητήσεις χρήσιμες για την καθημερινή ζωή στην πόλη!"</string>
+    <string name="achievement_outdoors_title">"Ύπαιθρο"</string>
+    <string name="achievement_outdoors_solved_X">"Λύσατε %d αναζητήσεις που είναι χρήσιμες για άτομα της υπαίθρου!"</string>
+    <string name="quest_pedestrian_crossing_island">"Έχει νησίδα αυτή η διάβαση πεζών;"</string>
+    <string name="quest_generic_answer_noSign">"Δεν υπάρχει πινακίδα"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Η ράμπα αναπηρικού αμαξίδιου εμφανίζεται ως ξεχωριστή διαδρομή στον χάρτη;"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"ξεχωριστή"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"όχι ξεχωριστή"</string>
 </resources>

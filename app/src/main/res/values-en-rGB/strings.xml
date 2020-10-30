@@ -21,6 +21,8 @@
 
     <!-- Fuzzy -->
     <string name="pref_category_display">"Display"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_tilecache_size_summary">"%d MB"</string>
 
     <!-- Fuzzy -->
@@ -505,9 +507,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_toiletsFee_title">"Does this toilet require a fee?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
 
     <!-- Fuzzy -->
@@ -679,7 +678,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_contributors">"See the &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
+    <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Translations"</string>
@@ -1177,9 +1176,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_religion_for_wayside_shrine_title">"What religion is represented at this shrine?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_fee_title">"Does it cost a fee to park here?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"cycle lane (dashed markings)"</string>
 
     <!-- Fuzzy -->
@@ -1403,6 +1399,7 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mosque"</string>
+    <string name="quest_buildingType_temple">"Temple building"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
@@ -1412,12 +1409,14 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_civic">"Civic building"</string>
+    <string name="quest_buildingType_civic_description">"public building usually housing an amenity"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_kindergarten">"Nursery school building"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_school">"School building"</string>
+    <string name="quest_buildingType_college">"College building"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hospital">"Hospital building"</string>
@@ -1696,9 +1695,6 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"There is no sign"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"Sign looks different…"</string>

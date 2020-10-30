@@ -2154,10 +2154,12 @@
       "terms": "Водозабор"
     },
     "man_made/watermill": {
-      "name": "Водяная мельница"
+      "name": "Водяная мельница",
+      "terms": "вода,мельница,колесо"
     },
     "man_made/windmill": {
-      "name": "Ветряная мельница"
+      "name": "Ветряная мельница",
+      "terms": "Ветер,мельница"
     },
     "man_made/works": {
       "name": "Завод",
@@ -2234,6 +2236,9 @@
       "name": "Дикий кустарник",
       "terms": "Кустарник, Кусты, Кустовник, Подлесок, Лозняк, Чапыжник"
     },
+    "natural/shrub": {
+      "name": "Куст"
+    },
     "natural/spring": {
       "name": "Родник",
       "terms": "Ручей, Ключ, источник"
@@ -2257,9 +2262,21 @@
       "name": "Водоём",
       "terms": "Вода, Водоём"
     },
+    "natural/water/basin": {
+      "name": "Бассейн",
+      "terms": "дренаж,переток,дождь,канава"
+    },
+    "natural/water/canal": {
+      "name": "Канал",
+      "terms": "Судоходный канал, оросительный канал"
+    },
     "natural/water/lake": {
       "name": "Озеро",
       "terms": "озеро"
+    },
+    "natural/water/moat": {
+      "name": "Ров",
+      "terms": "защитный ров,канава"
     },
     "natural/water/pond": {
       "name": "Пруд",
@@ -2268,6 +2285,18 @@
     "natural/water/reservoir": {
       "name": "Водохранилище",
       "terms": "Водохранилище, Рукотворное озеро, Водоместилище,"
+    },
+    "natural/water/river": {
+      "name": "Река",
+      "terms": "река,русло"
+    },
+    "natural/water/stream": {
+      "name": "Ручей",
+      "terms": "Ручей,русло,поток"
+    },
+    "natural/water/wastewater": {
+      "name": "Пруд отстойник",
+      "terms": "нечистоты, канализация, водоочистка, водосток, отстойник"
     },
     "natural/wetland": {
       "name": "Болото",
@@ -3523,17 +3552,8 @@
     "traffic_sign/city_limit": {
       "name": "Знак населённый пункт"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Знак населённый пункт"
-    },
     "traffic_sign/maxspeed": {
       "name": "Знак ограничения скорости"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Знак ограничения скорости"
-    },
-    "traffic_sign_vertex": {
-      "name": "Дорожный знак"
     },
     "type/boundary": {
       "name": "Граница",
@@ -3597,10 +3617,6 @@
     "type/route/ferry": {
       "name": "Паромный маршрут",
       "terms": "паром, паромная переправа"
-    },
-    "type/route/foot": {
-      "name": "Пешеходный маршрут",
-      "terms": "Пеший маршрут, Пешеходный маршрут"
     },
     "type/route/hiking": {
       "name": "Маршрут пешего туризма",

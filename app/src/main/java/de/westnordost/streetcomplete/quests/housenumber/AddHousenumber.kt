@@ -1,26 +1,19 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
-import android.util.Log
+import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.osmapi.map.data.*
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.elementfilter.DEFAULT_MAX_QUESTS
-import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.data.elementfilter.toOverpassBboxFilter
-import de.westnordost.streetcomplete.util.FlattenIterable
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.util.LatLonRaster
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.isCompletelyInside
 import de.westnordost.streetcomplete.util.isInMultipolygon
 
-class AddHousenumber(private val overpass: OverpassMapDataAndGeometryApi) : OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
     override val commitMessage = "Add housenumbers"
     override val wikiLink = "Key:addr"
@@ -38,110 +31,89 @@ class AddHousenumber(private val overpass: OverpassMapDataAndGeometryApi) : OsmE
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val bbox = mapData.boundingBox ?: return listOf()
+
+        val addressNodesById = mapData.nodes.filter { nodesWithAddressFilter.matches(it) }.associateBy { it.id }
+        val addressNodeIds = addressNodesById.keys
+
+        /** filter: only buildings with no address that usually should have an address
+         *          ...that do not have an address node on their outline */
+
+        val buildings = mapData.filter {
+            buildingsWithMissingAddressFilter.matches(it)
+            && !it.containsAnyNode(addressNodeIds, mapData)
+        }.toMutableList()
+
+        if (buildings.isEmpty()) return listOf()
+
+        /** exclude buildings which are included in relations that have an address */
+
+        val relationsWithAddress = mapData.relations.filter { nonMultipolygonRelationsWithAddressFilter.matches(it) }
+
+        buildings.removeAll { building ->
+            relationsWithAddress.any { it.containsWay(building.id) }
+        }
+
+        if (buildings.isEmpty()) return listOf()
+
+        /** exclude buildings that intersect with the bounding box because it is not possible to
+           ascertain for these if there is an address node within the building - it could be outside
+           the bounding box */
+
+        val buildingGeometriesById = buildings.associate {
+            it.id to mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
+        }
+
+        buildings.removeAll { building ->
+            val buildingBounds = buildingGeometriesById[building.id]?.getBounds()
+            (buildingBounds == null || !buildingBounds.isCompletelyInside(bbox))
+        }
+
+        if (buildings.isEmpty()) return listOf()
+
+        /** exclude buildings that contain an address node somewhere within their area */
+
+        val addressPositions = LatLonRaster(bbox, 0.0005)
+        for (node in addressNodesById.values) {
+            addressPositions.insert(node.position)
+        }
+
+        buildings.removeAll { building ->
+            val buildingGeometry = buildingGeometriesById[building.id]
+            if (buildingGeometry != null) {
+                val nearbyAddresses = addressPositions.getAll(buildingGeometry.getBounds())
+                nearbyAddresses.any { it.isInMultipolygon(buildingGeometry.polygons) }
+            } else true
+        }
+
+        if (buildings.isEmpty()) return listOf()
+
+        /** exclude buildings that are contained in an area that has an address */
+
+        val areasWithAddresses = mapData
+            .filter { nonBuildingAreasWithAddressFilter.matches(it) }
+            .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
+
+        val buildingsByCenterPosition: Map<LatLon?, Element> = buildings.associateBy { buildingGeometriesById[it.id]?.center }
+
+        val buildingPositions = LatLonRaster(bbox, 0.0005)
+        for (buildingCenterPosition in buildingsByCenterPosition.keys) {
+            if (buildingCenterPosition != null) buildingPositions.insert(buildingCenterPosition)
+        }
+
+        for (areaWithAddress in areasWithAddresses) {
+            val nearbyBuildings = buildingPositions.getAll(areaWithAddress.getBounds())
+            val buildingPositionsInArea = nearbyBuildings.filter { it.isInMultipolygon(areaWithAddress.polygons) }
+            val buildingsInArea = buildingPositionsInArea.mapNotNull { buildingsByCenterPosition[it] }
+
+            buildings.removeAll(buildingsInArea)
+        }
+
+        return buildings
+    }
+
     override fun isApplicableTo(element: Element): Boolean? = null
-
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        var ms = System.currentTimeMillis()
-
-        val buildings = downloadBuildingsWithoutAddresses(bbox) ?: return false
-        // empty result: We are done
-        if (buildings.isEmpty()) return true
-
-        val addrAreas = downloadAreasWithAddresses(bbox) ?: return false
-
-        val extendedBbox = getBoundingBoxThatIncludes(buildings.values)
-
-        val addrPositions = downloadFreeFloatingPositionsWithAddresses(extendedBbox) ?: return false
-
-        Log.d("AddHousenumber", "Downloaded ${buildings.size} buildings with no address, " +
-            "${addrAreas.size} areas with address and ${addrPositions.size} address nodes " +
-            "in ${System.currentTimeMillis() - ms}ms"
-        )
-        ms = System.currentTimeMillis()
-
-        val buildingPositions = LatLonRaster(extendedBbox, 0.0005)
-        for (buildingCenter in buildings.keys) {
-            buildingPositions.insert(buildingCenter)
-        }
-
-        // exclude buildings that are contained in an area with a housenumber
-        for (addrArea in addrAreas) {
-            for (buildingPos in buildingPositions.getAll(addrArea.getBounds())) {
-                if (buildingPos.isInMultipolygon(addrArea.polygons)) {
-                    buildings.remove(buildingPos)
-                }
-            }
-        }
-
-        var createdQuests = 0
-        // only buildings with no housenumber-nodes inside them
-        for (building in buildings.values) {
-            // even though we could continue here, limit the max amount of quests created to the
-            // default maximum to avoid performance problems
-            if (createdQuests++ >= DEFAULT_MAX_QUESTS) break
-
-            val addrContainedInBuilding = getPositionContainedInBuilding(building.geometry, addrPositions)
-            if (addrContainedInBuilding != null) {
-                addrPositions.remove(addrContainedInBuilding)
-                continue
-            }
-
-            handler(building.element, building.geometry)
-        }
-
-        Log.d("AddHousenumber", "Processing data took ${System.currentTimeMillis() - ms}ms")
-
-        return true
-    }
-
-    private fun downloadBuildingsWithoutAddresses(bbox: BoundingBox): MutableMap<LatLon, ElementWithArea>? {
-        val buildingsByCenterPoint = mutableMapOf<LatLon, ElementWithArea>()
-        val query = getBuildingsWithoutAddressesOverpassQuery(bbox)
-        val success = overpass.query(query) { element, geometry ->
-            if (geometry is ElementPolygonsGeometry) {
-                buildingsByCenterPoint[geometry.center] = ElementWithArea(element, geometry)
-            }
-        }
-        return if (success) buildingsByCenterPoint else null
-    }
-
-    private fun downloadFreeFloatingPositionsWithAddresses(bbox: BoundingBox): LatLonRaster? {
-        val grid = LatLonRaster(bbox, 0.0005)
-        val query = getFreeFloatingAddressesOverpassQuery(bbox)
-        val success = overpass.query(query) { _, geometry ->
-            if (geometry != null) grid.insert(geometry.center)
-        }
-        return if (success) grid else null
-    }
-
-    private fun downloadAreasWithAddresses(bbox: BoundingBox): List<ElementPolygonsGeometry>? {
-        val areas = mutableListOf<ElementPolygonsGeometry>()
-        val query = getNonBuildingAreasWithAddressesOverpassQuery(bbox)
-        val success = overpass.query(query) { _, geometry ->
-            if (geometry is ElementPolygonsGeometry) areas.add(geometry)
-        }
-        return if (success) areas else null
-    }
-
-    private fun getPositionContainedInBuilding(building: ElementPolygonsGeometry, positions: LatLonRaster): LatLon? {
-        for (pos in positions.getAll(building.getBounds())) {
-            if (pos.isInMultipolygon(building.polygons)) return pos
-        }
-        return null
-    }
-
-    private fun getBoundingBoxThatIncludes(buildings: Iterable<ElementWithArea>): BoundingBox {
-        // see #885: The area in which the app should search for address nodes (and areas) must be
-        // adjusted to the bounding box of all the buildings found. The found buildings may in parts
-        // not be within the specified bounding box. But in exactly that part, there may be an
-        // address
-
-        val allThePoints = FlattenIterable(LatLon::class.java)
-        for (building in buildings) {
-            allThePoints.add(building.geometry.polygons)
-        }
-        return allThePoints.enclosingBoundingBox()
-    }
 
     override fun createForm() = AddHousenumberForm()
 
@@ -161,66 +133,63 @@ class AddHousenumber(private val overpass: OverpassMapDataAndGeometryApi) : OsmE
             }
             is HouseAndBlockNumber -> {
                 changes.add("addr:housenumber", answer.houseNumber)
-                changes.add("addr:block_number", answer.blockNumber)
+                changes.addOrModify("addr:block_number", answer.blockNumber)
             }
         }
     }
-
 }
 
-/** Query that returns all areas that are not buildings but have addresses  */
-private fun getNonBuildingAreasWithAddressesOverpassQuery(bbox: BoundingBox): String {
-    val globalBbox = bbox.toGlobalOverpassBBox()
-    return """
-            $globalBbox
-            wr[!building] $ANY_ADDRESS_FILTER;
-            out geom;
-            """.trimIndent()
-}
+private val nonBuildingAreasWithAddressFilter by lazy { """
+    ways, relations with
+      !building and ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+    """.toElementFilterExpression()}
 
-/** Query that returns all buildings that don't have an address node on their outline, nor are
- *  part of a relation that has a housenumber */
-private fun getBuildingsWithoutAddressesOverpassQuery(bbox: BoundingBox): String {
-    val bboxFilter = bbox.toOverpassBboxFilter()
-    return """
-            (
-              way$BUILDINGS_WITHOUT_ADDRESS_FILTER$bboxFilter;
-              rel$BUILDINGS_WITHOUT_ADDRESS_FILTER$bboxFilter;
-            ) -> .buildings;
-            
-            .buildings << -> .relations_containing_buildings;
-            rel.relations_containing_buildings$ANY_ADDRESS_FILTER; >> -> .elements_contained_in_relations_with_addr;
+private val nonMultipolygonRelationsWithAddressFilter by lazy { """
+    relations with 
+      type != multipolygon
+      and ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+    """.toElementFilterExpression()}
 
-            .buildings > -> .building_nodes;
-            node.building_nodes$ANY_ADDRESS_FILTER; < -> .buildings_with_addr_nodes;
-            
-            ((.buildings; - .buildings_with_addr_nodes;); - .elements_contained_in_relations_with_addr; );
-            out meta geom;
-            """.trimIndent()
-}
+private val nodesWithAddressFilter by lazy { """
+   nodes with ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+    """.toElementFilterExpression()}
 
-/** Query that returns all address nodes that are not part of any building outline  */
-private fun getFreeFloatingAddressesOverpassQuery(bbox: BoundingBox): String {
-    val globalBbox = bbox.toGlobalOverpassBBox()
-    return """
-            $globalBbox
-            (
-              node$ANY_ADDRESS_FILTER;
-               - (wr[building];>;);
-            );
-            out skel;
-            """.trimIndent()
-}
+private val buildingsWithMissingAddressFilter by lazy { """
+    ways, relations with
+      building ~ ${buildingTypesThatShouldHaveAddresses.joinToString("|")}
+      and location != underground
+      and ruins != yes
+      and abandoned != yes
+      and !addr:housenumber
+      and !addr:housename
+      and !addr:conscriptionnumber
+      and !addr:streetnumber
+      and !noaddress
+      and !nohousenumber
+    """.toElementFilterExpression()}
 
-private data class ElementWithArea(val element: Element, val geometry: ElementPolygonsGeometry)
+private val buildingTypesThatShouldHaveAddresses = listOf(
+    "house", "residential", "apartments", "detached", "terrace", "dormitory", "semi",
+    "semidetached_house", "farm", "school", "civic", "college", "university", "public", "hospital",
+    "kindergarten", "train_station", "hotel", "retail", "commercial"
+)
 
-private const val ANY_ADDRESS_FILTER =
-    "[~'^addr:(housenumber|housename|conscriptionnumber|streetnumber)$'~'.']"
+private fun Element.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeometry): Boolean =
+    when (this) {
+        is Way -> this.nodeIds.any { it in nodeIds }
+        is Relation -> containsAnyNode(nodeIds, mapData)
+        else -> false
+    }
 
-private const val NO_ADDRESS_FILTER =
-    "[!'addr:housenumber'][!'addr:housename'][!'addr:conscriptionnumber'][!'addr:streetnumber'][!noaddress][!nohousenumber]"
+/** return whether any way contained in this relation contains any of the nodes with the given ids */
+private fun Relation.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeometry): Boolean =
+    members
+        .filter { it.type == Element.Type.WAY }
+        .any { member ->
+            val way = mapData.getWay(member.ref)
+            way?.nodeIds?.any { it in nodeIds } ?: false
+        }
 
-private const val BUILDINGS_WITHOUT_ADDRESS_FILTER =
-    "['building'~'^(house|residential|apartments|detached|terrace|dormitory|semi|semidetached_house|farm|" +
-            "school|civic|college|university|public|hospital|kindergarten|train_station|hotel|" +
-            "retail|commercial)$'][location!=underground][ruins!=yes]" + NO_ADDRESS_FILTER
+/** return whether any of the ways with the given ids are contained in this relation */
+private fun Relation.containsWay(wayId: Long): Boolean =
+    members.any { it.type == Element.Type.WAY && wayId == it.ref }

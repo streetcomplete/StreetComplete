@@ -2,11 +2,11 @@
 atmOperators: [Euronet, PKO BP, Bank Millennium S.A., Planet Cash, BZ WBK, Santander, Bank Spółdzielczy, PKO, Pekao
       SA, PKO Bank Polski, SGB, ING Bank Śląski, Pekao, ING, Pekao S.A., Grupa BPS, BPS, Bank Pekao, PKO
       BP SA, Cash4You, BZWBK, Bank Zachodni WBK, SKOK, eCard, PKO SA, Euronet Polska Sp. z o.o., PKO S.A.,
-   Bank Pekao SA, BGŻ, Millennium, Global Cash, Santander Bank Polska, PEKAO SA, PBS, euronet, PEKAO,
+   Bank Pekao SA, BGŻ, Millennium, Global Cash, Santander Bank Polska, euronet, PEKAO SA, PBS, PEKAO,
    Euronet Polska, WBK, PlanetCash, Planet cash, PeKaO S.A., PKO BP S.A., BGŻ BNP Paribas, mBank, Santander
       Bank Polska S.A., Eurobank, Bank Zachodni WBK S. A., Bank Pekao S.A., BS, BNP Paribas, Spółdzielcza
-      Grupa Bankowa, Krakowski Bank Spółdzielczy, Millennium Bank, ING Bank, Bankomat, Bank BGŻ, Bankomat
-      PKO BP, Bank Millennium, BPH, TFI SKOK, Euronet sp. z o.o., EURONET, Credit Agricole, Citi Handlowy,
+      Grupa Bankowa, Krakowski Bank Spółdzielczy, Millennium Bank, ING Bank, Bankomat PKO BP, Bankomat,
+   Bank BGŻ, Bank Millennium, BPH, TFI SKOK, Euronet sp. z o.o., EURONET, Credit Agricole, Citi Handlowy,
    Cash 4 You, Bank Spółdzielczy w Zambrowie]
 chargingStationOperators: [GreenWay, RWE, Lotos, Orlen, GO+EAuto, Energa, Zdrojowa Invest & Hotels, LIDL, GreenWay Polska, Tesla,
    PGE Nowa Energia, Leroy Merlin, EV+, greenway, Tesla Motors Inc., Tauron, RWE Polska, PKP S.A., PKP

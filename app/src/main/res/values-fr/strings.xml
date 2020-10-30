@@ -563,7 +563,7 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="credits_contributors">"Voir la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;liste complète sur GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Voir le &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projet sur POEditor&lt;/a&gt; pour la liste complète."</string>
+    <string name="credits_translations">"Voir le &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projet sur POEditor&lt;/a&gt; pour la liste complète."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traductions"</string>
@@ -1699,9 +1699,6 @@ Découper maintenant ?"</string>
     <string name="quest_maxweight_title">"Quelle est la limite de poids ici ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Il n'y a pas de panneau"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Ce poids semble invraisemblable. Êtes-vous sûr qu'il est correct ?"</string>
 
     <!-- Fuzzy -->
@@ -2282,4 +2279,30 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_traffic_signals_sound_title">"Y a-t-il des signaux sonores pour les déficients visuels ici ?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Est-ce que ces feux piétons ont un indicateur de traversée en sécurité, pour personnes malvoyantes ?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Aide : c'est souvent un bouton vibrant ou un cône rotatif en dessous du bouton d'appel de feu."</string>
+    <string name="quest_busStopRef_title">"Quel est le numéro d'identification de cet arrêt de bus ?"</string>
+    <string name="quest_tramStopRef_title">"Quel est le numéro d'identification de cet arrêt de tram ?"</string>
+    <string name="quest_buildingType_bungalow_description2">"petite maison non-mitoyenne (résidence secondaire, cabane, ...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Quel type de barrière est utilisée à ce passage à niveau ?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Pas de barrières"</string>
+    <string name="quest_steps_ramp_title">"Ces marches ont-elles une rampe ? De quel type ?"</string>
+    <string name="quest_steps_ramp_none">"Pas de rampe (fonctionnelle)"</string>
+    <string name="quest_steps_ramp_bicycle">"Rampe à vélo"</string>
+    <string name="quest_steps_ramp_stroller">"Rampe à poussette"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rampe pour fauteuil roulant"</string>
+    <string name="quest_atm_operator_title">"Quel est nom de la banque associée à ce distributeur ?"</string>
+    <string name="quest_clothes_container_operator_title">"Qui perçoit les dons de ce conteneur à vêtements ?"</string>
+    <string name="quest_charging_station_operator_title">"Qui est l'exploitant de cette station de recharge ?"</string>
+    <string name="link_indoorequal_description">"Découvrez les cartes intérieures de centres commerciaux, gares, etc."</string>
+    <string name="link_thenandnow_description">"Curieux de voir les progrès effectués au cours des années ? Découvrez à quoi ressemblait la carte il y a 10 ans !"</string>
+    <string name="achievement_rare_title">"Chasse au trésor"</string>
+    <string name="achievement_rare_solved_X">"Vous avez trouvé et résolu %d quêtes qui sont rarement complétées, félicitations !"</string>
+    <string name="achievement_citizen_title">"Citoyen"</string>
+    <string name="achievement_citizen_solved_X">"Vous avez résolu %d quêtes utiles pour la vie de tous les jours en ville !"</string>
+    <string name="achievement_outdoors_title">"En plein air"</string>
+    <string name="achievement_outdoors_solved_X">"Vous avez résolu %d quêtes utiles aux amateurs de plein air !"</string>
+    <string name="quest_pedestrian_crossing_island">"Est ce que ce passage piéton est équipé d'une île de refuge ?"</string>
+    <string name="quest_generic_answer_noSign">"Il n'y a pas de panneau"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Y a t'il une rampe pour fauteuils roulants représentée comme une voie séparée sur la carte ?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"Séparée"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"Non séparée"</string>
 </resources>

@@ -212,9 +212,17 @@
       "name": "ビアガーデン",
       "terms": "ビアガーデン, ビアホール, ビール, 酒, 飲む, 呑む, 飲食店, アルコール"
     },
+    "amenity/binoculars": {
+      "name": "双眼鏡",
+      "terms": "双眼鏡, 展望所, 眺望, 風景"
+    },
     "amenity/boat_rental": {
       "name": "貸しボート",
       "terms": "貸しボート, ボート, 公園, 娯楽, レジャー, 舟, 池, 公園, 観光"
+    },
+    "amenity/boat_storage": {
+      "name": "ボート店",
+      "terms": "ボート店, お店, 店舗, ボートハウス"
     },
     "amenity/bureau_de_change": {
       "name": "両替所",
@@ -484,8 +492,12 @@
       "terms": "図書館, ライブラリ, ライブラリー, 教育, 本"
     },
     "amenity/loading_dock": {
-      "name": "貨物の搬出入口",
-      "terms": "貨物の搬出入口, 貨物搬入口, 貨物積出口, 荷受, 荷出"
+      "name": "出入口（貨物）",
+      "terms": "貨物の搬出入口, 貨物搬入口, 貨物積出口, 荷受, 荷出, 貨物出口, 貨物入口, 出口, 入口, 出入口（貨物）"
+    },
+    "amenity/lounger": {
+      "name": "サマーベッド",
+      "terms": "サンラウンジャー, 寝椅子, サマーベッド"
     },
     "amenity/love_hotel": {
       "name": "ラブホテル",
@@ -502,6 +514,10 @@
     "amenity/money_transfer": {
       "name": "海外送金所",
       "terms": "海外送金所, 国際送金所, 送金, 金融, 振替, お金"
+    },
+    "amenity/mortuary": {
+      "name": "死体安置所",
+      "terms": "死体安置所, 遺体安置所, モルグ, 死体保管所, 死体置き場, 死体公示場, 霊安室"
     },
     "amenity/motorcycle_parking": {
       "name": "オートバイの駐車場",
@@ -540,7 +556,7 @@
     },
     "amenity/parking_entrance": {
       "name": "出入口（駐車場）",
-      "terms": "駐車場の出入口, 自動車, 出入り口, 出入口, 駐車場"
+      "terms": "駐車場の出入口, 自動車, 出入り口, 出入口, 駐車場, 出口, 入口"
     },
     "amenity/parking_space": {
       "name": "駐車区画（1台ごとの）",
@@ -1719,6 +1735,9 @@
     "demolished/building": {
       "name": "建物（取り壊し済み）"
     },
+    "disused/amenity": {
+      "name": "閉鎖施設"
+    },
     "disused/railway": {
       "name": "鉄道（廃棄済み）"
     },
@@ -1814,8 +1833,8 @@
       "terms": "非常口, 出口, 緊急"
     },
     "entrance/emergency_ward_entrance": {
-      "name": "救急外来入口",
-      "terms": "救急外来入口, 救急車搬送口, 急患, 救急車"
+      "name": "出入口（救急外来）",
+      "terms": "救急外来入口, 救急車搬送口, 急患, 救急車, 出入口（救急外来）, 出口, 入口"
     },
     "ford": {
       "name": "洗い越し",
@@ -1831,6 +1850,10 @@
     "golf/cartpath": {
       "name": "ゴルフカート用の道",
       "terms": "ゴルフカート用の道, ゴルフ, ゴルフカート, ゴルフ場"
+    },
+    "golf/clubhouse": {
+      "name": "クラブハウス",
+      "terms": "クラブハウス, ゴルフ"
     },
     "golf/driving_range": {
       "name": "打ちっぱなし",
@@ -3038,16 +3061,16 @@
       "terms": "立坑, マインシャフト, 鉱山, 垂直坑道, 垂直坑"
     },
     "man_made/monitoring_station": {
-      "name": "監視ステーション",
-      "terms": "監視ステーション"
+      "name": "観測点",
+      "terms": "観測点, 観測装置, アメダス, 水位計, 地震計, 測定局, 監視ステーション"
     },
     "man_made/obelisk": {
       "name": "オベリスク",
       "terms": "オベリスク, 装飾的記念柱, 記念碑, 記念柱"
     },
     "man_made/observatory": {
-      "name": "観測ドーム",
-      "terms": "観測ドーム, 観測所"
+      "name": "観測所",
+      "terms": "観測所, 測候所, 天文台, 観測ドーム"
     },
     "man_made/petroleum_well": {
       "name": "油田",
@@ -3106,8 +3129,8 @@
       "terms": "監視カメラ, 監視"
     },
     "man_made/survey_point": {
-      "name": "観測設備",
-      "terms": "観測設備, 観測地点, 測候所"
+      "name": "測量標",
+      "terms": "測量標, 三角点, 水準点, 電子基準点, 測量標識"
     },
     "man_made/torii": {
       "name": "鳥居",
@@ -3124,6 +3147,10 @@
     "man_made/tower/communication": {
       "name": "塔（通信）",
       "terms": "塔（通信）, 通信塔, 塔, タワー"
+    },
+    "man_made/tower/cooling": {
+      "name": "冷却塔",
+      "terms": "冷却塔, 塔"
     },
     "man_made/tower/defensive": {
       "name": "防衛塔",
@@ -3172,6 +3199,10 @@
     "man_made/windmill": {
       "name": "風車",
       "terms": "風車"
+    },
+    "man_made/windpump": {
+      "name": "水汲み風車",
+      "terms": "水汲み風車, 風車"
     },
     "man_made/works": {
       "name": "工場",
@@ -3230,7 +3261,7 @@
     },
     "natural/cave_entrance": {
       "name": "出入口（洞窟）",
-      "terms": "洞窟の入口, 洞穴, 出入口, 出入り口"
+      "terms": "洞窟の入口, 洞穴, 出入口, 出入り口, 出口, 入口, 出入口（洞窟）"
     },
     "natural/cliff": {
       "name": "崖",
@@ -3259,6 +3290,10 @@
     "natural/heath": {
       "name": "荒地",
       "terms": "荒地, 植物"
+    },
+    "natural/hot_spring": {
+      "name": "温泉（日本国外）",
+      "terms": "温泉（日本国外）, 温泉"
     },
     "natural/mud": {
       "name": "泥地",
@@ -3390,7 +3425,7 @@
     },
     "office/accountant": {
       "name": "会計事務所（主に法人向け）",
-      "terms": "会計事務所, 税理士, 税理士事務所, 会計士, 公認会計士"
+      "terms": "会計事務所, 会計士, 公認会計士"
     },
     "office/administrative": {
       "name": "地方行政事務所"
@@ -3558,8 +3593,8 @@
       "terms": "測量会社"
     },
     "office/tax_advisor": {
-      "name": "税金アドバイザー",
-      "terms": "税金アドバイザー, 節税アドバイザー"
+      "name": "税理士事務所",
+      "terms": "税理士事務所, 税理士, 税金アドバイザー, 節税アドバイザー"
     },
     "office/telecommunication": {
       "name": "通信会社事務所",
@@ -3846,6 +3881,10 @@
       "name": "バス停",
       "terms": "バス停, バス停留所, 停留所, バス乗り場, BS, バスストップ"
     },
+    "public_transport/platform/bus_tram_point": {
+      "name": "路面電車・バス停",
+      "terms": "電停, 停留所, 駅, 停車場, 路面電車, 路面電車停留所, のりば, 路面電車・バス停, バス停"
+    },
     "public_transport/platform/ferry": {
       "name": "旅客船プラットホーム",
       "terms": "フェリー乗り場, フェリー, 港, 船着場, 船, 客船, 旅客船, フェリーターミナル, 舟, 連絡船, 渡し船, 渡船, のりば, ホーム, プラットホーム, 旅客船プラットホーム"
@@ -4083,7 +4122,7 @@
     },
     "railway/subway_entrance": {
       "name": "出入口（地下鉄）",
-      "terms": "地下鉄の出入口, 出入り口, 出入口, 地下鉄, 出口, 入口"
+      "terms": "地下鉄の出入口, 出入り口, 出入口, 地下鉄, 出口, 入口, 出入口（地下鉄）"
     },
     "railway/switch": {
       "name": "分岐器",
@@ -4938,6 +4977,10 @@
       "name": "観光情報掲示板",
       "terms": "情報掲示板, 案内, 観光, 観光案内, インフォメーション, 案内板, 観光情報, 掲示板, 案内地図, 地図, マップ"
     },
+    "tourism/information/board/welcome_sign": {
+      "name": "歓迎案内板",
+      "terms": "歓迎案内板, 歓迎, ようこそ, 歓迎掲示板"
+    },
     "tourism/information/guidepost": {
       "name": "道標",
       "terms": "道標, ガイドポスト, 案内"
@@ -5054,21 +5097,9 @@
       "name": "市町村境界標識",
       "terms": "市町村境界標識, 市町村界標識, 市町村境, 行政界"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "市町村境界標識",
-      "terms": "市町村境界標識, 市町村界標識, 市町村境, 行政界"
-    },
     "traffic_sign/maxspeed": {
       "name": "速度制限標識",
       "terms": "速度制限標識, 速度制限"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "速度制限標識",
-      "terms": "速度制限標識, 速度制限"
-    },
-    "traffic_sign_vertex": {
-      "name": "交通標識",
-      "terms": "交通標識, 道路標識"
     },
     "type/boundary": {
       "name": "境界",
@@ -5158,8 +5189,8 @@
       "terms": "フェリールート, 航路"
     },
     "type/route/foot": {
-      "name": "徒歩ルート",
-      "terms": "徒歩ルート"
+      "name": "ウォーキングルート",
+      "terms": "歩行ルート, ウォーキングルート, ルート, 歩行経路, ウォーキング"
     },
     "type/route/hiking": {
       "name": "ハイキングルート",

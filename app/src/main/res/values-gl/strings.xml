@@ -51,10 +51,10 @@
     <string name="quest_generic_answer_notApplicable">"Non sabería dicirche…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_confirmation_title">"Estás na certeza?"</string>
+    <string name="quest_generic_confirmation_title">"Estás seguro?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_confirmation_yes">"Si, estou na certeza"</string>
+    <string name="quest_generic_confirmation_yes">"Si, estou seguro"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Revisareino"</string>
@@ -701,7 +701,7 @@ Pero lembra que sempre podes descarregar aplicacións de teclado diferentes dend
     <string name="credits_contributors">"Bótalle unha ollada á &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;listaxe enteira dos contribuíntes no GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Bótalle unha ollada ó &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;proxecto no POEditor&lt;/a&gt; para obte-la listaxe completa."</string>
+    <string name="credits_translations">"Bótalle unha ollada ó &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proxecto no POEditor&lt;/a&gt; para obte-la listaxe completa."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traducións"</string>
@@ -1811,9 +1811,6 @@ Dividila agora?"</string>
     <string name="quest_maxweight_title">"Cal é o límite de peso aquí?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Non hai sinal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Este peso semella creíbel. Estás na certeza de que é correcto?"</string>
 
     <!-- Fuzzy -->
@@ -2368,4 +2365,30 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_traffic_signals_sound_title">"Hai aquí sinais con aparellos de son para cegos?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Estes semáforos teñen unha indicación táctil para que indiquen ás persoas con problemas de visión cando é seguro pasar?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Consello: Acotío trátase dun botón que vibra ou un cono xiratorio na parte inferior do botón do semáforo."</string>
+    <string name="quest_busStopRef_title">"Cal é o número de referencia (código) desta parada de bus?"</string>
+    <string name="quest_tramStopRef_title">"Cal é o número de referencia (código) desta parada de tranvía?"</string>
+    <string name="quest_buildingType_bungalow_description2">"pequena casa unifamiliar (casa de verán, chalet de vacacións, cabana ...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Que barreiras son empregadas neste paso a nivel?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Sen barreiras"</string>
+    <string name="quest_steps_ramp_title">"Estas escadas teñen rampla? Que tipo?"</string>
+    <string name="quest_steps_ramp_none">"Sen rampla (utilizábel)"</string>
+    <string name="quest_steps_ramp_bicycle">"Rampla para bicis"</string>
+    <string name="quest_steps_ramp_stroller">"Rampla para carros"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rampla para cadeiras de rodas"</string>
+    <string name="quest_atm_operator_title">"Cal é o nome do banco deste caixeiro automático?"</string>
+    <string name="quest_clothes_container_operator_title">"Quen acepta doazóns neste contedor de roupa?"</string>
+    <string name="quest_charging_station_operator_title">"Quen é o operador desta estación de carga?"</string>
+    <string name="link_indoorequal_description">"Descubre mapas interiores de centros comerciais, estacións de trens, etc."</string>
+    <string name="link_thenandnow_description">"Tes curiosidade por saber que progreso acadamos ó longo dos anos? Compara a aparencia do mapa actual co mapa de hai máis de 10 anos!"</string>
+    <string name="achievement_rare_title">"Á procura do tesouro"</string>
+    <string name="achievement_rare_solved_X">"Atopaches e resolviches %d tarefas que rara vez se completan, parabéns!"</string>
+    <string name="achievement_citizen_title">"Cidadán"</string>
+    <string name="achievement_citizen_solved_X">"Resolviches %d tarefas útiles para a vida cotiá na cidade!"</string>
+    <string name="achievement_outdoors_title">"Ó ar libre"</string>
+    <string name="achievement_outdoors_solved_X">"Resolviches %d tarefas útiles ó ar libre (exteriores)!"</string>
+    <string name="quest_pedestrian_crossing_island">"Este paso de peóns ten unha illa (refuxio) de separación?"</string>
+    <string name="quest_generic_answer_noSign">"Non hai sinal"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"A rampla para cadeiras de rodas amósase coma unha vía separada no mapa?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"non separada"</string>
 </resources>

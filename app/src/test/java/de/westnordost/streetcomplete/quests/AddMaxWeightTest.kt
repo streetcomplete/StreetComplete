@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.max_weight.*
 import org.junit.Test
 
 class AddMaxWeightTest {
 
-    private val questType = AddMaxWeight(mock())
+    private val questType = AddMaxWeight()
 
     @Test fun `apply metric weight answer`() {
         questType.verifyAnswer(

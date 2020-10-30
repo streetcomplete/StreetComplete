@@ -1,16 +1,16 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BPI, BDO, Bank of the Philippine Islands, Metrobank, Land Bank of the Philippines, Landbank, RCBC, BDO
-      Unibank, PNB, Philippine National Bank, Security Bank, DBP, Luzon Development Bank, Landbank of
-      the Philippines, Land Bank, Rizal Commercial Banking Corporation, Philippine Savings Bank, PSBank,
-   Metropolitan Bank and Trust Company, Chinabank, Banco de Oro, One Network Bank, Land Bank ATM, UCPB,
-   Security Bank Corporation, Development Bank of the Philippines, China Bank, Allied Bank, MetroBank,
-   LandBank, Bank of Commerce, Union Bank of the Philippines, First Consolidated Bank, Euronet, DBP ATM,
-   Bank of the Philippine Island, Banco De Oro, AUB, security bank, Veterans Bank, Unionbank, Union Bank,
-   Philippine Business Bank, PS Bank, Metrobank ATM, Landbank ATM, LANDBANK, Citibank, ChinaBank, Bank
-      of the Philipine Islands, pnb, bdo, Veteran's Bank, Various Banks, United Coconut Planters Bank,
-   UCPB Savings Bank, PBCOM, Maybank, LBP, Gretchen R. Leonardo, East West Banking Corporation, CitySavings
-      Bank, City Savings Bank, Chinabank ATM, China Banking Corporation, China Bank Savings, CARD Bank,
-   BDO Bank, BDO ATM]
+atmOperators: [BPI, BDO, Bank of the Philippine Islands, Metrobank, Land Bank of the Philippines, Landbank, BDO Unibank,
+   RCBC, PNB, Philippine National Bank, Security Bank, Luzon Development Bank, DBP, Landbank of the Philippines,
+   Metropolitan Bank and Trust Company, Land Bank, Rizal Commercial Banking Corporation, Philippine Savings
+      Bank, PSBank, Chinabank, Banco de Oro, One Network Bank, Land Bank ATM, China Bank, UCPB, Security
+      Bank Corporation, Development Bank of the Philippines, Allied Bank, MetroBank, LandBank, Bank of
+      Commerce, Banco De Oro, Union Bank of the Philippines, First Consolidated Bank, Euronet, DBP ATM,
+   Bank of the Philippine Island, AUB, security bank, Veterans Bank, Unionbank, Union Bank, Philippine
+      Business Bank, PS Bank, Metrobank ATM, Landbank ATM, LANDBANK, Citibank, ChinaBank, Bank of the
+      Philipine Islands, pnb, bdo, Veteran's Bank, Various Banks, United Coconut Planters Bank, UCPB Savings
+      Bank, PBCOM, Maybank, LBP, Gretchen R. Leonardo, East West Banking Corporation, CitySavings Bank,
+   City Savings Bank, Chinabank ATM, China Banking Corporation, China Bank Savings, CARD Bank, BDO Bank,
+   BDO ATM]
 isAdvisorySpeedLimitKnown: true
 mobileCountryCode: 515
 officialLanguages: [en, fil, es, ceb, ilo, hil]

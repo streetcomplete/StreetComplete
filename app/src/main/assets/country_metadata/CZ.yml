@@ -1,11 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Česká spořitelna, ČSOB, Komerční banka, Pharro, Euronet, Česká Spořitelna, Raiffeisenbank, KB, Air Bank,
-   GE Money Bank, Komerční Banka, Moneta, UniCredit Bank, Moneta Money Bank, CSOB, AirBank, EuroNet, MONETA
-      Money Bank, GE Money, Česká spořitelna a.s., Poštovní spořitelna, Unicredit Bank, Moneta Bank, Komerční
-      banka a.s., Airbank, ČS, Travelex, Sberbank, Raiffeisen Bank, MONETA Money Bank a.s., Citibank,
-   Air bank, komerční banka, airbank, Raiffeisen bank, Komeční banka, GE Money bank, GE, Fio, Era, České
-      spořitelny, Česká spořitelna a. s., www.wbtcb.com, mBank, UniCreditBank, UniCredit bank, Raiffeisen,
-   Oberbank, OK Point, MONETA, Fio Banka, FIO, ERA, Airbank a.s.]
+atmOperators: [Česká spořitelna, ČSOB, Komerční banka, Pharro, Euronet, Česká Spořitelna, Raiffeisenbank, Air Bank,
+   KB, GE Money Bank, Komerční Banka, Moneta, UniCredit Bank, Moneta Money Bank, CSOB, AirBank, EuroNet,
+   MONETA Money Bank, GE Money, Česká spořitelna a.s., Poštovní spořitelna, Air bank, Unicredit Bank,
+   Moneta Bank, Komerční banka a.s., Airbank, ČS, Travelex, Sberbank, Raiffeisen Bank, MONETA Money Bank
+      a.s., Citibank, komerční banka, airbank, Raiffeisen bank, Komeční banka, GE Money bank, GE, Fio,
+   Era, České spořitelny, Česká spořitelna a. s., www.wbtcb.com, mBank, UniCreditBank, UniCredit bank,
+   Raiffeisen, Oberbank, OK Point, MONETA, Fio Banka, FIO, ERA, Airbank a.s.]
 chargingStationOperators: [ČEZ, ČEZ (CCS/CHAdeMO/Mennekes type2), PRE, EVMAPA, E.ON (CCS/CHAdeMO/Mennekes), ČEZ (CCS/CHAdeMO/Mennekes
       typ2), beskolo, EON, E.ON, ČEZ (CCS/CHAdeMO/Mennekes type 2), Tesla, ČEZ (CCS/CHAdeMO and Mennekes
       type2), evmapa.cz, MOL (CCS/CHAdeMO/Mennekes), CCS/CHAdeMO and Mennekes type2, ČEZ (CCS/CHAdeMO/Mennekes),

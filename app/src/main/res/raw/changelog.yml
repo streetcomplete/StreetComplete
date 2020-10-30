@@ -1,8 +1,8 @@
-v25.0-beta1: |
+v25.0: |
   <h3>New Quests</h3>
   <ul>
   <li><i>What is the reference number of this bus stop?</i> (#2126)</li>
-  <li><i>Do these steps have a ramp? What kind?</i> (#2036)</li>
+  <li><i>Do these steps have a ramp? What kind?</i> (#2036, #2168)</li>
   <li><i>Does this pedestrian crossing have an island?</i> (#1961,  #2030), by @kmpoppe</li>
   <li><i>What's the name of the bank for this ATM?</i> (#203)</li>
   <li><i>Who is the operator of this charging station?</i> (#911)</li>
@@ -14,11 +14,14 @@ v25.0-beta1: |
   <li>Recycling materials quest: In the Czech Republic, offer "any glass" option instead of "glass bottles" (#2123)</li>
   <li>Improve a few wordings (#2047, #2096)</li>
   <li>Handrails: Don't ask for places where the information has already been supplied in another way (#2162)</li>
+  <li>Way lit: Don't ask for indoor corridors (#2176)</li>
   </ul>
   <h3>Other Enhancements and Fixes</h3>
   <ul>
   <li>new achievement graphics by Judith Gastell (<a href='https://www.artstation.com/melusine'>melusine</a>)</li>
   <li>Map style update: Amongst other things, all housenumbers are now displayed again on the map, private roads are displayed as such and 3D buildings can be displayed more detailed</li>
+  <li>Fix tagging tactile paving on crosswalks on a resurvey (#2176, #2172), by @peternewman, @dbdean</li>
+  <li>Other small fixes and enhancements (#2186, #2190, #2182, #2184, #2181, #2179, ...)</li>
   </ul>
 
 v24.2: |

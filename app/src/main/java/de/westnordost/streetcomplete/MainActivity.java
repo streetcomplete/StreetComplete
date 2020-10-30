@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.AnyThread;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -28,9 +29,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import javax.inject.Inject;
 
 import de.westnordost.osmapi.common.errors.OsmApiException;
@@ -40,12 +38,13 @@ import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment;
+import de.westnordost.streetcomplete.data.download.DownloadItem;
 import de.westnordost.streetcomplete.data.notifications.Notification;
 import de.westnordost.streetcomplete.data.notifications.NotificationsSource;
 import de.westnordost.streetcomplete.data.quest.Quest;
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
-import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
+import de.westnordost.streetcomplete.data.download.DownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadController;
 import de.westnordost.streetcomplete.data.quest.QuestType;
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource;
@@ -193,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements
 		questDownloadController.setShowNotification(false);
 
 		uploadController.addUploadProgressListener(uploadProgressListener);
-		questDownloadController.addQuestDownloadProgressListener(downloadProgressListener);
+		questDownloadController.addDownloadProgressListener(downloadProgressListener);
 
 		if(!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false))
 		{
@@ -253,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements
 		questDownloadController.setShowNotification(true);
 
 		uploadController.removeUploadProgressListener(uploadProgressListener);
-		questDownloadController.removeQuestDownloadProgressListener(downloadProgressListener);
+		questDownloadController.removeDownloadProgressListener(downloadProgressListener);
 	}
 
 	@Override public void onConfigurationChanged(@NonNull Configuration newConfig) {
@@ -346,14 +345,14 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ----------------------------- Download Progress listener  -------------------------------- */
 
-	private final QuestDownloadProgressListener downloadProgressListener
-			= new QuestDownloadProgressListener()
+	private final DownloadProgressListener downloadProgressListener
+			= new DownloadProgressListener()
 	{
 		@AnyThread @Override public void onStarted() {}
 
-		@Override public void onFinished(@NotNull QuestType<?> questType) {}
+		@Override public void onFinished(@NonNull DownloadItem item) {}
 
-		@Override public void onStarted(@NotNull QuestType<?> questType) {}
+		@Override public void onStarted(@NonNull DownloadItem item) {}
 
 		@AnyThread @Override public void onError(@NonNull final Exception e)
 		{
@@ -386,7 +385,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* --------------------------------- NotificationButtonFragment.Listener ---------------------------------- */
 
-	@Override public void onClickShowNotification(@NotNull Notification notification)
+	@Override public void onClickShowNotification(@NonNull Notification notification)
 	{
 		Fragment f = getSupportFragmentManager().findFragmentById(R.id.notifications_container_fragment);
 		((NotificationsContainerFragment) f).showNotification(notification);
@@ -399,7 +398,7 @@ public class MainActivity extends AppCompatActivity implements
 		ensureLoggedIn();
 	}
 
-	@Override public void onCreatedNote(@NotNull Point screenPosition)
+	@Override public void onCreatedNote(@NonNull Point screenPosition)
 	{
 		ensureLoggedIn();
 	}

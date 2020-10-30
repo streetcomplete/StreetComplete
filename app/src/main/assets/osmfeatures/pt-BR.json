@@ -16,7 +16,8 @@
       "terms": "Quadro de notícias"
     },
     "advertising/column": {
-      "name": "Coluna de publicidade"
+      "name": "Coluna de publicidade",
+      "terms": "Coluna de publicidade"
     },
     "advertising/poster_box": {
       "name": "Caixa de pôster",
@@ -66,8 +67,8 @@
       "terms": "Telesqui de prato"
     },
     "aerialway/pylon": {
-      "name": "Torre de Suporte de Teleférico",
-      "terms": "Torre de Suporte de Teleférico"
+      "name": "Torre de suporte de teleférico",
+      "terms": "Torre de suporte de teleférico"
     },
     "aerialway/rope_tow": {
       "name": "Telecorda",
@@ -93,7 +94,7 @@
       "terms": "Plataforma de estacionamento"
     },
     "aeroway/gate": {
-      "name": "Portão de Embarque",
+      "name": "Portão de embarque",
       "terms": "Portão de Embarque, Portão de desembarque, embarque, desembarque, aeroporto"
     },
     "aeroway/hangar": {
@@ -117,7 +118,7 @@
       "terms": "Posição de estacionamento de aeronaves"
     },
     "aeroway/runway": {
-      "name": "Pista de Pouso e Decolagem",
+      "name": "Pista de pouso e decolagem",
       "terms": "Pista de pouso e decolagem"
     },
     "aeroway/spaceport": {
@@ -125,11 +126,11 @@
       "terms": "Base de lançamento espacial"
     },
     "aeroway/taxiway": {
-      "name": "Pista de Taxiamento",
+      "name": "Pista de taxiamento",
       "terms": "Taxiway"
     },
     "aeroway/terminal": {
-      "name": "Terminal de Aeroporto",
+      "name": "Terminal de aeroporto",
       "terms": "aeroporto, edifício, terminal aeroportuário, embarque, desembarque, viagem, turismo, avião, helicóptero"
     },
     "aeroway/windsock": {
@@ -151,15 +152,15 @@
       "terms": "cruzar, gato, cão, cadela, cachorro, pet motel, reprodução de animais,"
     },
     "amenity/animal_shelter": {
-      "name": "Abrigo de Animais",
+      "name": "Abrigo de animais",
       "terms": "canil, cachorro, gato, pet"
     },
     "amenity/arts_centre": {
-      "name": "Centro Cultural",
+      "name": "Centro cultural",
       "terms": "Centro de Artes, Artes, Centro Artístico, Teatro, Cinema, Espetáculo, Exposições, Galeria, Exposição, Cultura, Espaço Cultural, Pintura, Artes Plásticas"
     },
     "amenity/atm": {
-      "name": "Caixa Eletrônico",
+      "name": "Caixa eletrônico",
       "terms": "caixa eletrônico, ATM, Banco, caixa automático, terminal bancário, terminal"
     },
     "amenity/bank": {
@@ -199,27 +200,35 @@
       "terms": "Armazém de bicicletas"
     },
     "amenity/bicycle_rental": {
-      "name": "Estação de Bicicletas Públicas",
+      "name": "Estação de bicicletas públicas",
       "terms": "Estação de Bicicletas Públicas, Compartilhamento de Bicicletas, Bike sharing, bicicletas comunitárias, bicicletas livres, bicicletas compartilhadas"
     },
     "amenity/bicycle_repair_station": {
-      "name": "Estação de Reparo de Bicicletas",
+      "name": "Estação de reparo de bicicletas",
       "terms": "Bicicleta, Ciclismo, Reparo, Oficina de Bicicletas"
     },
     "amenity/biergarten": {
       "name": "Biergarten",
       "terms": "cerveja, cerva, birra, cervejaria,"
     },
+    "amenity/binoculars": {
+      "name": "Binóculos montados",
+      "terms": "Binóculos montados"
+    },
     "amenity/boat_rental": {
-      "name": "Aluguel de Barcos",
-      "terms": "Aluguel de Embarcações"
+      "name": "Aluguel de barcos",
+      "terms": "Aluguel de embarcações"
+    },
+    "amenity/boat_storage": {
+      "name": "Armazenamento de barco",
+      "terms": "Armazenamento de barco"
     },
     "amenity/bureau_de_change": {
-      "name": "Casa de Câmbio",
+      "name": "Casa de câmbio",
       "terms": "Moedas, Câmbio, Troca de valores,"
     },
     "amenity/bus_station": {
-      "name": "Terminal / Estação de Ônibus"
+      "name": "Terminal / Estação de ônibus"
     },
     "amenity/cafe": {
       "name": "Cafeteria",
@@ -246,7 +255,7 @@
       "terms": "Estação de compartilhamento de carros"
     },
     "amenity/car_wash": {
-      "name": "Lava a Jato",
+      "name": "Lava a jato",
       "terms": "Lavagem de Veículos, Lava jato, lava rápido, lava-a-jato, lava-jato"
     },
     "amenity/casino": {
@@ -258,23 +267,23 @@
       "terms": "Estação de carregamento, Estação de Recarga, Estação de Carga Elétrica, Tomada de Cargamento, Tomada de Recarga"
     },
     "amenity/childcare": {
-      "name": "Berçário ou Creche",
+      "name": "Berçário ou creche",
       "terms": "Berçário, Creche, Maternal, Jardim de infância, Cuidados infantis"
     },
     "amenity/cinema": {
       "name": "Cinema",
-      "terms": "Cinema, Sala de Cinema"
+      "terms": "Cinema, Sala de cinema"
     },
     "amenity/clinic": {
-      "name": "Clínica ou Posto de Saúde",
+      "name": "Clínica ou posto de saúde",
       "terms": "clínica, consultório, posto de saúde, unidade de saúde, unidade básica de saúde, ubs, pronto atendimento, enfermaria, doutor, médico, atendimento médico especializado, hospital"
     },
     "amenity/clinic/abortion": {
-      "name": "Clínica de Aborto",
+      "name": "Clínica de aborto",
       "terms": "aborto, interrupção da gravidez"
     },
     "amenity/clinic/fertility": {
-      "name": "Clínica de Fertilidade",
+      "name": "Clínica de fertilidade",
       "terms": "fertilidade, inseminação artificial, congelamento de esperma, fertilização in-vitro"
     },
     "amenity/clock": {
@@ -290,11 +299,11 @@
       "terms": "Colégio técnico, Ensino profissionalizante, Educação profissional"
     },
     "amenity/community_centre": {
-      "name": "Centro Comunitário",
+      "name": "Centro comunitário",
       "terms": "Centro comunitário, Salão de festas e eventos, centro social, associação de moradores"
     },
     "amenity/community_centre/lgbtq": {
-      "name": "Centro Comunitário LGBTQ+",
+      "name": "Centro comunitário LGBTQ+",
       "terms": "Centro Comunitário LGBTQ+"
     },
     "amenity/compressed_air": {
@@ -302,7 +311,7 @@
       "terms": "Ar Comprimido, calibragem, calibrar, pneu, bicicleta"
     },
     "amenity/conference_centre": {
-      "name": "Centro de Convenções",
+      "name": "Centro de convenções",
       "terms": "Centro de Convenções"
     },
     "amenity/courthouse": {
@@ -321,7 +330,7 @@
       "terms": "Dentista, Odontologista"
     },
     "amenity/dive_centre": {
-      "name": "Centro de Mergulho",
+      "name": "Centro de mergulho",
       "terms": "Centro de Mergulho"
     },
     "amenity/doctors": {
@@ -338,17 +347,17 @@
     },
     "amenity/drinking_water": {
       "name": "Bebedouro",
-      "terms": "Água Potável, Bebedouro, fonte"
+      "terms": "Água potável, Bebedouro, fonte"
     },
     "amenity/driving_school": {
-      "name": "Auto Escola",
+      "name": "Auto escola",
       "terms": "Escola de direção, escola de motoristas, auto-escola, autoescola"
     },
     "amenity/embassy": {
       "name": "Embaixada"
     },
     "amenity/events_venue": {
-      "name": "Local de Eventos",
+      "name": "Local de eventos",
       "terms": "Local de Eventos"
     },
     "amenity/exhibition_centre": {
@@ -364,7 +373,7 @@
       "terms": "lanchonete, fast food, comida rápida, hambúrguer, restaurante, lanche"
     },
     "amenity/fast_food/chicken": {
-      "name": "Frango Frito",
+      "name": "Frango frito",
       "terms": "frango, lanchonete, comida rápida, fast food, chicken fry"
     },
     "amenity/fast_food/donut": {
@@ -372,7 +381,7 @@
       "terms": "donut fast food, donut, doughnut, dónute, rosca, rosquinha"
     },
     "amenity/fast_food/fish_and_chips": {
-      "name": "Peixe e Batatas Fritas",
+      "name": "Peixe e batatas fritas",
       "terms": "lanchonete, comida rápida, fast food, restaurante, alimentação, peixe, fritas,"
     },
     "amenity/fast_food/hot_dog": {
@@ -381,6 +390,10 @@
     },
     "amenity/fast_food/ice_cream": {
       "name": "Comida rápida de gelados"
+    },
+    "amenity/fast_food/juice": {
+      "name": "Casa de Sucos",
+      "terms": "suqueria, fast food, lanchonete, sucos, bebidas, sumo, frutas"
     },
     "amenity/fast_food/kebab": {
       "name": "Kebab",
@@ -402,11 +415,11 @@
       "name": "Terminal da balsa"
     },
     "amenity/fire_station": {
-      "name": "Posto de Bombeiros",
+      "name": "Posto de bombeiros",
       "terms": "Posto de Bombeiros, Bombeiros, Central de Bombeiros, corpo de bombeiros"
     },
     "amenity/food_court": {
-      "name": "Praça de Alimentação",
+      "name": "Praça de alimentação",
       "terms": "praça de alimentação, área de alimentação, comida, alimentação, restaurantes, lanchonete, comida rápida, fast food"
     },
     "amenity/fountain": {
@@ -414,7 +427,7 @@
       "terms": "Fonte luminosa, Fonte Aquática"
     },
     "amenity/fuel": {
-      "name": "Posto de Combustível",
+      "name": "Posto de combustível",
       "terms": "Posto de Gasolina, Combustíveis, Posto de Combustíveis, Combustível, Diesel, Gasolina, GNV, Etanol, Abastecimento, Carro"
     },
     "amenity/gambling": {
@@ -481,6 +494,10 @@
       "name": "Doca de carregamento",
       "terms": "Doca de carregamento"
     },
+    "amenity/lounger": {
+      "name": "Espreguiçadeira",
+      "terms": "Espreguiçadeira"
+    },
     "amenity/love_hotel": {
       "name": "Motel",
       "terms": "hotel de beira de estrada, hotel, pousada, romântico, amor, love hotel"
@@ -495,6 +512,10 @@
     "amenity/money_transfer": {
       "name": "Estação de transferência de dinheiro",
       "terms": "Estação de transferência de dinheiro"
+    },
+    "amenity/mortuary": {
+      "name": "Necrotério",
+      "terms": "Necrotério"
     },
     "amenity/motorcycle_parking": {
       "name": "Estacionamento de motos",
@@ -560,19 +581,19 @@
       "terms": "Cabine de foto"
     },
     "amenity/place_of_worship": {
-      "name": "Local de Prática Religiosa",
+      "name": "Local de prática religiosa",
       "terms": "Local de Culto, Lugar de Adoração, Abadia, Basílica, Betel, Catedral, Mor, Capela, Igreja, Aprisco, Casa de Deus, Casa de oração, Casa de adoração, Mesquita, Oratório, Paróquia, Santuário, Sinagoga, Tabernáculo, Templo"
     },
     "amenity/place_of_worship/buddhist": {
-      "name": "Templo Budista",
+      "name": "Templo budista",
       "terms": "Templo Budista"
     },
     "amenity/place_of_worship/christian": {
-      "name": "Igreja Cristã",
+      "name": "Igreja cristã",
       "terms": "Igreja cristã, cristianismo"
     },
     "amenity/place_of_worship/christian/jehovahs_witness": {
-      "name": "Salão do Reino das Testemunhas de Jeová",
+      "name": "Salão do reino das testemunhas de jeová",
       "terms": "Salão do Reino das Testemunhas de Jeová"
     },
     "amenity/place_of_worship/christian/la_luz_del_mundo": {
@@ -580,31 +601,31 @@
       "terms": "A luz do templo mundial"
     },
     "amenity/place_of_worship/christian/quaker": {
-      "name": "Casa de Reunião dos Amigos ",
+      "name": "Casa de reunião dos amigos ",
       "terms": "Casa de Reunião dos Amigos"
     },
     "amenity/place_of_worship/hindu": {
-      "name": "Templo Hindu",
+      "name": "Templo hindu",
       "terms": "garbhargriha,mandir,mandu,puja,santuário,hinduísmo, templo"
     },
     "amenity/place_of_worship/jewish": {
-      "name": "Sinagoga Judaica",
+      "name": "Sinagoga judaica",
       "terms": "Sinagoga judaica, judeus, judaísmo"
     },
     "amenity/place_of_worship/muslim": {
-      "name": "Mesquita Muçulmana",
+      "name": "Mesquita muçulmana",
       "terms": "Mesquita muçulmana, islamismo, mosque"
     },
     "amenity/place_of_worship/shinto": {
-      "name": "Santuário Xintoísta",
+      "name": "Santuário xintoísta",
       "terms": "templo, xintoísmo, kami, torii, portal, japonês"
     },
     "amenity/place_of_worship/sikh": {
-      "name": "Templo Sique",
+      "name": "Templo sique",
       "terms": "sikhi, religião, siquismo, sikhismo, templo sikhi,"
     },
     "amenity/place_of_worship/taoist": {
-      "name": "Templo Taoísta",
+      "name": "Templo taoísta",
       "terms": "daoista, daoismo, Taoismo, tauismo, monastério, templo taoista, templo tauista,"
     },
     "amenity/planetarium": {
@@ -628,7 +649,7 @@
       "terms": "Escritório de classificação de correspondência"
     },
     "amenity/post_office": {
-      "name": "Agência de Correios",
+      "name": "Agência de correios",
       "terms": "Correios, Encomendas, Transporte, Log, Cargas"
     },
     "amenity/prep_school": {
@@ -643,6 +664,10 @@
       "name": "Bar / Boteco",
       "terms": "pub, botequim, boteco, buteco, bar, botequim, butequim, chopperia, choperia"
     },
+    "amenity/pub/irish": {
+      "name": "Pub Irlândês",
+      "terms": "pub, irlanda, bar, irlandês, bebida"
+    },
     "amenity/pub/lgbtq": {
       "name": "Pub LGBTQ+",
       "terms": "Pub LGBTQ+"
@@ -656,7 +681,7 @@
       "terms": "águas termais, fonte termal, onsen, banho turco, banho japonês, chuveiro público"
     },
     "amenity/public_bookcase": {
-      "name": "Biblioteca ao Ar Livre",
+      "name": "Biblioteca ao ar livre",
       "terms": "Biblioteca ao Ar Livre, Biblioteca Pública"
     },
     "amenity/ranger_station": {
@@ -675,11 +700,11 @@
       "terms": "Recipiente de resíduos verdes"
     },
     "amenity/recycling_centre": {
-      "name": "Centro de Reciclagem",
+      "name": "Centro de reciclagem",
       "terms": "Material Reciclável, Dejetos, Material sólido, Reciclagem, Resíduos, lixo, vidro, garrafa, lata"
     },
     "amenity/recycling_container": {
-      "name": "Container para Reciclagem",
+      "name": "Container para reciclagem",
       "terms": "reciclagem, lixo, lixeira, lata de reciclagem, lata de lixo, dejetos, resíduos, material reciclável"
     },
     "amenity/refugee_site": {
@@ -687,7 +712,7 @@
       "terms": "Campo de refugiados"
     },
     "amenity/research_institute": {
-      "name": "Área do Instituto de Pesquisa",
+      "name": "Área do instituto de pesquisa",
       "terms": "Área do Instituto de Pesquisa"
     },
     "amenity/restaurant": {
@@ -695,47 +720,47 @@
       "terms": "Alimentação, Comida, Refeitório"
     },
     "amenity/restaurant/american": {
-      "name": "Restaurante Americano",
+      "name": "Restaurante americano",
       "terms": "Restaurante Americano"
     },
     "amenity/restaurant/asian": {
-      "name": "Restaurante Asiático",
+      "name": "Restaurante asiático",
       "terms": "Asiático, comida asiática, restaurante, ásia"
     },
     "amenity/restaurant/chinese": {
-      "name": "Restaurante Chinês",
+      "name": "Restaurante chinês",
       "terms": "comida chinesa, yakisoba, lamen,"
     },
     "amenity/restaurant/french": {
-      "name": "Restaurante Francês",
+      "name": "Restaurante francês",
       "terms": "Restaurante Francês, comida francesa, frança, comida mediterrânea, restaurante mediterrâneo"
     },
     "amenity/restaurant/german": {
-      "name": "Restaurante Alemão",
+      "name": "Restaurante alemão",
       "terms": "Comida Alemã, alemanha, restaurante, salsicha, cerveja"
     },
     "amenity/restaurant/greek": {
-      "name": "Restaurante Grego",
+      "name": "Restaurante grego",
       "terms": "comida grega, comida mediterrânea, restaurante mediterrâneo"
     },
     "amenity/restaurant/indian": {
-      "name": "Restaurante Indiano",
+      "name": "Restaurante indiano",
       "terms": "comida Indiana, índia, restaurante asiático, comida asiática,"
     },
     "amenity/restaurant/italian": {
-      "name": "Restaurante Italiano",
+      "name": "Restaurante italiano",
       "terms": "Restaurante italiano, comida italiana, macarrão, pasta, pizza"
     },
     "amenity/restaurant/japanese": {
-      "name": "Restaurante Japonês",
+      "name": "Restaurante japonês",
       "terms": "comida Japonesa, sushi, temaki, teriaki,"
     },
     "amenity/restaurant/mexican": {
-      "name": "Restaurante Mexicano",
+      "name": "Restaurante mexicano",
       "terms": "comida Mexicana, tex-mex, nachos, guacamole, tortillas"
     },
     "amenity/restaurant/noodle": {
-      "name": "Restaurante de Lámen",
+      "name": "Restaurante de lámen",
       "terms": "ramen, lamen, noodle,"
     },
     "amenity/restaurant/pizza": {
@@ -755,19 +780,19 @@
       "terms": "sushi, sashimi, comida japonesa, restaurante, alimentação, comida asiática, restaurante asiático, restaurante japonês"
     },
     "amenity/restaurant/thai": {
-      "name": "Restaurante Tailandês",
+      "name": "Restaurante tailandês",
       "terms": "tailândia, comida tailandesa, comida asiática, restaurante asiático"
     },
     "amenity/restaurant/turkish": {
-      "name": "Restaurante Turco",
+      "name": "Restaurante turco",
       "terms": "Restaurante, turquia, comida turca, kebab, falafel, shawarma, homus, tahine"
     },
     "amenity/restaurant/vietnamese": {
-      "name": "Restaurante Vietnamita",
+      "name": "Restaurante vietnamita",
       "terms": "Restaurante, vietnã, restaurante asiático, comida asiática, alimentação,"
     },
     "amenity/sanitary_dump_station": {
-      "name": "Ponto de Descarga de Dejetos (para trailers)",
+      "name": "Ponto de descarga de dejetos (para trailers)",
       "terms": "Depósito de Toaletes de Trailers, depósito de banheiro de trailers, depósito sanitário, trailer, despejo de banheiro, despejo sanitário"
     },
     "amenity/school": {
@@ -775,7 +800,7 @@
       "terms": "área escolar, terreno escolar, pátio escolar, colégio, ensino fundamental, ensino médio, educação, instituição de ensino"
     },
     "amenity/shelter": {
-      "name": "Abrigo contra Intempéries",
+      "name": "Abrigo contra intempéries",
       "terms": "abrigo contra intempéries, abrigo, proteção da chuva"
     },
     "amenity/shelter/gazebo": {
@@ -806,7 +831,7 @@
       "terms": "Centro social"
     },
     "amenity/social_facility": {
-      "name": "Unidade de Assistência Social",
+      "name": "Unidade de assistência social",
       "terms": "Assistência Social, assistente social, Serviço Social"
     },
     "amenity/social_facility/ambulatory_care": {
@@ -826,7 +851,7 @@
       "terms": "refúgio para desabrigados, abrigo para sem-teto, albergue, abrigo, mendigo, sopão, sem-teto"
     },
     "amenity/social_facility/nursing_home": {
-      "name": "Casa de Repouso",
+      "name": "Casa de repouso",
       "terms": "Enfermagem, casa de saúde, lar de repouso, lar de idosos, asilo, lar de vida assistida, lar de saúde, casa de velhinhos,"
     },
     "amenity/studio": {
@@ -854,7 +879,7 @@
       "terms": "táxi, cooperativa"
     },
     "amenity/telephone": {
-      "name": "Telefone Público",
+      "name": "Telefone público",
       "terms": "Telefone, Orelhão"
     },
     "amenity/theatre": {
@@ -866,11 +891,11 @@
       "terms": "Anfiteatro"
     },
     "amenity/toilets": {
-      "name": "Banheiros Públicos",
+      "name": "Banheiros públicos",
       "terms": "Banheiros, Sanitário, WC, Lavabo, Toalete"
     },
     "amenity/toilets/disposal/flush": {
-      "name": "Banheiros com Descarga",
+      "name": "Banheiros com descarga",
       "terms": "Banheiro"
     },
     "amenity/toilets/disposal/pitlatrine": {
@@ -882,11 +907,11 @@
       "terms": "Banheiro portátil"
     },
     "amenity/townhall": {
-      "name": "Paço Municipal ou Prefeitura",
+      "name": "Paço municipal ou prefeitura",
       "terms": "Prefeitura"
     },
     "amenity/townhall/city": {
-      "name": "Câmara Municipal",
+      "name": "Câmara municipal",
       "terms": "Câmara Municipal"
     },
     "amenity/toy_library": {
@@ -894,7 +919,7 @@
       "terms": "Biblioteca de brinquedos"
     },
     "amenity/university": {
-      "name": "Universidade ou Faculdade",
+      "name": "Universidade ou faculdade",
       "terms": "Área de Universidade, Faculdade, Área de Faculdade, Centro Universitário"
     },
     "amenity/vacuum_cleaner": {
@@ -906,7 +931,7 @@
       "terms": "Inspeção veicular"
     },
     "amenity/vending_machine": {
-      "name": "Máquina de Venda",
+      "name": "Máquina de venda",
       "terms": "Totem de vendas, Máquina de Venda Automática, Dispenser, Máquina Automática de Vendas"
     },
     "amenity/vending_machine/bottle_return": {
@@ -918,30 +943,30 @@
       "terms": "Máquina de venda automática de pão"
     },
     "amenity/vending_machine/cigarettes": {
-      "name": "Máquina de Venda de Cigarros",
+      "name": "Máquina de venda de cigarros",
       "terms": "cigarro, venda de cigarro"
     },
     "amenity/vending_machine/coffee": {
-      "name": "Máquina de Venda de Café"
+      "name": "Máquina de venda de café"
     },
     "amenity/vending_machine/condoms": {
-      "name": "Máquina de Venda de Preservativos",
+      "name": "Máquina de venda de preservativos",
       "terms": "máquina de venda de camisinhas, preservativos, camisinha"
     },
     "amenity/vending_machine/drinks": {
-      "name": "Máquina de Venda de Bebidas",
+      "name": "Máquina de venda de bebidas",
       "terms": "Máquina de Venda de Bebidas, máquina de refrigerante, refrigerante, lata, latinha"
     },
     "amenity/vending_machine/eggs": {
-      "name": "Máquina de venda automática de ovos",
+      "name": "Máquina de venda de ovos",
       "terms": "Máquina de venda automática de ovos"
     },
     "amenity/vending_machine/electronics": {
-      "name": "Máquina de Venda de Eletrônicos",
+      "name": "Máquina de venda de eletrônicos",
       "terms": "Máquina de venda automática de eletrônicos"
     },
     "amenity/vending_machine/elongated_coin": {
-      "name": "Máquina de Venda de Moedas Achatadas",
+      "name": "Máquina de venda de moedas achatadas",
       "terms": "Máquina de venda automática de moedas"
     },
     "amenity/vending_machine/excrement_bags": {
@@ -949,27 +974,27 @@
       "terms": "Dispensador de saco de excrementos"
     },
     "amenity/vending_machine/feminine_hygiene": {
-      "name": "Máquina de Vendas - Higiene Feminina",
+      "name": "Máquina de vendas de higiene feminina",
       "terms": "produtos de higiene feminina, camisinha, preservativo, absorvente, tampão, cuidados pessoais, higiene, mulher"
     },
     "amenity/vending_machine/food": {
-      "name": "Máquina de Venda de Comida",
+      "name": "Máquina de venda de comida",
       "terms": "Máquina de venda automática de alimentos"
     },
     "amenity/vending_machine/fuel": {
-      "name": "Bomba de Gasolina",
+      "name": "Bomba de gasolina",
       "terms": "bomba de gasolina,bomba de combustível,bomba de diesel,gasolina,combustível,propano,diesel,biodiesel"
     },
     "amenity/vending_machine/ice_cream": {
-      "name": "Máquina de Venda de Sorvete",
+      "name": "Máquina de venda de sorvete",
       "terms": "Máquina de venda automática de sorvetes"
     },
     "amenity/vending_machine/ice_cubes": {
-      "name": "Máquina de venda automática de gelo",
+      "name": "Máquina de venda de gelo",
       "terms": "Máquina de venda automática de gelo"
     },
     "amenity/vending_machine/newspapers": {
-      "name": "Máquina de Venda de Jornais",
+      "name": "Máquina de venda de jornais",
       "terms": "jornais, revistas, venda de jornal, notícia, banca de jornal, periódicos, tabloides"
     },
     "amenity/vending_machine/parcel_pickup": {
@@ -985,15 +1010,15 @@
       "terms": "máquina de vendas de bilhete de estacionamento, carro, bilhete de estacionamento"
     },
     "amenity/vending_machine/public_transport_tickets": {
-      "name": "Máquina de Vendas de Bilhete de Transporte",
+      "name": "Máquina de vendas de bilhete de transporte",
       "terms": "Transporte público, ônibus, Trem, Metrô, Ticket, Bilhete"
     },
     "amenity/vending_machine/stamps": {
-      "name": "Máquina de Venda de Selos",
+      "name": "Máquina de venda de selos",
       "terms": "Máquina de venda automática de postagem"
     },
     "amenity/vending_machine/sweets": {
-      "name": "Máquina de Venda de Lanches",
+      "name": "Máquina de venda de lanches",
       "terms": "salgados, doces, petiscos, salgadinhos, snacks, chicletes, biscoitos, balas"
     },
     "amenity/veterinary": {
@@ -1013,11 +1038,11 @@
       "terms": "lixo, resíduos, container de lixo"
     },
     "amenity/waste_transfer_station": {
-      "name": "Estação de Transferência de Resíduos",
+      "name": "Estação de transferência de resíduos",
       "terms": "Transferência de lixo, Dejetos"
     },
     "amenity/water_point": {
-      "name": "Torneira de Água Potável",
+      "name": "Torneira de água potável",
       "terms": "Água potável, Abastecimento"
     },
     "amenity/watering_place": {
@@ -1048,7 +1073,7 @@
       "terms": "Cerca de animal"
     },
     "attraction/big_wheel": {
-      "name": "Roda Gigante",
+      "name": "Roda gigante",
       "terms": "roda panorâmica, parque de diversões, brinquedo, parque temático"
     },
     "attraction/bumper_car": {
@@ -1064,11 +1089,11 @@
       "terms": "maxambomba, trivoli, parque de diversões, cavalos"
     },
     "attraction/dark_ride": {
-      "name": "Trem Fantasma",
+      "name": "Trem fantasma",
       "terms": "brinquedo, parque de diversões, terror, medo"
     },
     "attraction/drop_tower": {
-      "name": "Torre de Queda Livre",
+      "name": "Torre de queda livre",
       "terms": "1"
     },
     "attraction/kiddie_ride": {
@@ -1091,7 +1116,7 @@
       "terms": "Passeio pelas corredeiras do rio"
     },
     "attraction/roller_coaster": {
-      "name": "Montanha Russa",
+      "name": "Montanha russa",
       "terms": "brinquedo, trem, trilhos, parque de diversão, parque de diversões, parque temático, aventura"
     },
     "attraction/summer_toboggan": {
@@ -1103,7 +1128,7 @@
       "terms": "Carrossel de giro"
     },
     "attraction/train": {
-      "name": "Trem Turístico",
+      "name": "Trem turístico",
       "terms": "parque temático, caminhão trem, trem da alegria, trem de passeio, trem para turismo"
     },
     "attraction/water_slide": {
@@ -1143,7 +1168,7 @@
       "terms": "muralha, muro, parede"
     },
     "barrier/cycle_barrier": {
-      "name": "Barreira para Bicicletas",
+      "name": "Barreira para bicicletas",
       "terms": "barreira para bicicletas, bloqueio para bicicletas"
     },
     "barrier/ditch": {
@@ -1154,7 +1179,7 @@
       "name": "Entrada"
     },
     "barrier/fence": {
-      "name": "Cerca ou Grade",
+      "name": "Cerca ou grade",
       "terms": "cerca, grade"
     },
     "barrier/fence/railing": {
@@ -1170,7 +1195,7 @@
       "terms": "Mureta"
     },
     "barrier/hedge": {
-      "name": "Cerca Viva",
+      "name": "Cerca viva",
       "terms": "Cerca viva"
     },
     "barrier/height_restrictor": {
@@ -1202,11 +1227,11 @@
       "terms": "Porteira Giratória, quebra cabeça, quebra costela, passa um, passador, imbricação"
     },
     "barrier/lift_gate": {
-      "name": "Cancela Elevatória",
+      "name": "Cancela elevatória",
       "terms": "cancela, barreira elevatória"
     },
     "barrier/retaining_wall": {
-      "name": "Muro de Contenção",
+      "name": "Muro de contenção",
       "terms": "parede de retenção, barreira de retenção"
     },
     "barrier/sally_port": {
@@ -1218,15 +1243,15 @@
       "terms": "Faixa de espigão, Espigões de trânsito, Picador de pneus,Ferrões, Ferrão, Dispositivo de esvaziamento de pneus"
     },
     "barrier/stile": {
-      "name": "Travessia em Cerca/Muro",
-      "terms": "Passagem Fixa por Barreira"
+      "name": "Travessia em cerca/muro",
+      "terms": "Passagem fixa por barreira"
     },
     "barrier/swing_gate": {
       "name": "Balanço de portão",
       "terms": "Balanço de portão"
     },
     "barrier/toll_booth": {
-      "name": "Cabine de Pedágio",
+      "name": "Cabine de pedágio",
       "terms": "Pedágio"
     },
     "barrier/turnstile": {
@@ -1245,7 +1270,7 @@
       "name": "Limite"
     },
     "boundary/administrative": {
-      "name": "Limite Administrativo",
+      "name": "Limite administrativo",
       "terms": "Fronteira Administrativa, Limite Administrativo, Divisa"
     },
     "bridge/support": {
@@ -1296,7 +1321,7 @@
       "terms": "Igreja, Edificação de Capela, Prédio de Capela, Capela, Lugar de Adoração, Religião, templo"
     },
     "building/church": {
-      "name": "Edifício de Igreja",
+      "name": "Edifício de igreja",
       "terms": "Edifício de Igreja, igreja, paróquia, lugar de adoração, templo, capela, catedral, prédio de igreja"
     },
     "building/civic": {
@@ -1304,7 +1329,7 @@
       "terms": "edifício cívico"
     },
     "building/college": {
-      "name": "Edifício de Escola Técnica",
+      "name": "Edifício de escola técnica",
       "terms": "Colégio técnico, Ensino profissionalizante, Educação profissional, prédio de escola técnica"
     },
     "building/commercial": {
@@ -1335,7 +1360,7 @@
       "terms": "Casa de fazenda"
     },
     "building/farm_auxiliary": {
-      "name": "Edifício da Fazenda",
+      "name": "Edifício de fazenda",
       "terms": "Edifício da Fazenda"
     },
     "building/garage": {
@@ -1379,7 +1404,7 @@
       "terms": "Cabana"
     },
     "building/industrial": {
-      "name": "Edifício Industrial",
+      "name": "Edifício industrial",
       "terms": "Edifício Industrial, prédio industrial"
     },
     "building/kindergarten": {
@@ -1403,7 +1428,7 @@
       "terms": "Edifício Público, prédio público"
     },
     "building/residential": {
-      "name": "Edifício Residencial",
+      "name": "Edifício residencial",
       "terms": "Edifício Residencial, prédio residencial, apartamentos, condomínio"
     },
     "building/retail": {
@@ -1415,7 +1440,7 @@
       "terms": "Telhado, Cobertura, teto"
     },
     "building/ruins": {
-      "name": "Edifício em Ruínas",
+      "name": "Edifício em ruínas",
       "terms": "ruínas, edifício abandonado"
     },
     "building/school": {
@@ -1439,11 +1464,11 @@
       "terms": "Estábulo"
     },
     "building/stadium": {
-      "name": "Edifício de Estádio",
+      "name": "Edifício de estádio",
       "terms": "estádio, esportes, ginásio de esportes"
     },
     "building/static_caravan": {
-      "name": "Casa Transportável",
+      "name": "Casa transportável",
       "terms": "Casa Transportável"
     },
     "building/sty": {
@@ -1455,7 +1480,7 @@
       "terms": "Templo, igreja, lugar de adoração, capela, local sagrado"
     },
     "building/terrace": {
-      "name": "Fileira de Casas",
+      "name": "Fileira de casas",
       "terms": "Fileira de Casas"
     },
     "building/train_station": {
@@ -1466,7 +1491,7 @@
       "terms": "Edifício de transporte"
     },
     "building/university": {
-      "name": "Edifício Universitário",
+      "name": "Edifício universitário",
       "terms": "Edifício Universitário, Faculdade, Edifício de Faculdade, prédio universitário, bloco universitário, prédio de faculdade, prédio de universidade, edifício de universidade"
     },
     "building/warehouse": {
@@ -1509,7 +1534,7 @@
       "terms": "Serralheiro, Ferreiro"
     },
     "craft/boatbuilder": {
-      "name": "Fabricante de Barcos",
+      "name": "Fabricante de barcos",
       "terms": "Barcos, Estaleiro, Veleiro"
     },
     "craft/bookbinder": {
@@ -1525,7 +1550,7 @@
       "terms": "Carpinteiro, Marceneiro, marcenaria, Carpintaria"
     },
     "craft/carpet_layer": {
-      "name": "Instalador de Carpete",
+      "name": "Instalador de carpete",
       "terms": "Colocador de Carpete, instalação"
     },
     "craft/caterer": {
@@ -1533,7 +1558,7 @@
       "terms": "Fornecedor de Mantimentos, Aprovisionador, cozinheiro, encomenda, marmita, PF, refeição,"
     },
     "craft/chimney_sweeper": {
-      "name": "Limpador de Chaminé",
+      "name": "Limpador de chaminé",
       "terms": "limpador de chaminés, limpeza de chaminés, chaminés"
     },
     "craft/cleaning": {
@@ -1614,7 +1639,7 @@
       "terms": "Fotógrafo"
     },
     "craft/photographic_laboratory": {
-      "name": "Laboratório Fotográfico",
+      "name": "Laboratório fotográfico",
       "terms": "Laboratório Fotográfico"
     },
     "craft/plasterer": {
@@ -1634,7 +1659,7 @@
       "terms": "Rigger"
     },
     "craft/roofer": {
-      "name": "Reparador de Telhados",
+      "name": "Reparador de telhados",
       "terms": "Telheiro"
     },
     "craft/saddler": {
@@ -1642,7 +1667,7 @@
       "terms": "Seleiro"
     },
     "craft/sailmaker": {
-      "name": "Fabricante de Velas Náuticas",
+      "name": "Fabricante de velas náuticas",
       "terms": "Veleiro"
     },
     "craft/sawmill": {
@@ -1650,7 +1675,7 @@
       "terms": "Serraria"
     },
     "craft/scaffolder": {
-      "name": "Montador de Andaimes",
+      "name": "Montador de andaimes",
       "terms": "Montador de Andaimes"
     },
     "craft/sculptor": {
@@ -1689,7 +1714,7 @@
       "terms": "Relógios, Relojoaria, relógio de pulso, Conserto de relógios, Reparos de relógios"
     },
     "craft/window_construction": {
-      "name": "Fabricante de Janelas",
+      "name": "Fabricante de janelas",
       "terms": "Janeleiro"
     },
     "craft/winery": {
@@ -1703,6 +1728,9 @@
     "demolished/building": {
       "name": "Edifício recentemente demolido"
     },
+    "disused/amenity": {
+      "name": "Amenidade em desuso"
+    },
     "disused/railway": {
       "name": "Recurso ferroviário em desuso"
     },
@@ -1713,10 +1741,10 @@
       "name": "Aterro Elevado"
     },
     "emergency": {
-      "name": "Recurso de Emergência"
+      "name": "Recurso de emergência"
     },
     "emergency/ambulance_station": {
-      "name": "Posto de Ambulâncias",
+      "name": "Posto de ambulâncias",
       "terms": "Primeiros socorros, Parada de Ambulâncias, Garagem de Ambulâncias"
     },
     "emergency/defibrillator": {
@@ -1727,7 +1755,7 @@
       "name": "Acesso de Emergência Designado"
     },
     "emergency/destination": {
-      "name": "Acesso de Emergência como Destino"
+      "name": "Acesso de emergência como destino"
     },
     "emergency/fire_alarm": {
       "name": "Caixa de chamada de alarme de incêndio",
@@ -1769,10 +1797,10 @@
       "name": "Acesso de Emergência Não Permitido"
     },
     "emergency/official": {
-      "name": "Acesso de Emergência Oficial"
+      "name": "Acesso de emergência oficial"
     },
     "emergency/phone": {
-      "name": "Telefone de Emergência",
+      "name": "Telefone de emergência",
       "terms": "Telefone de Emergência"
     },
     "emergency/private": {
@@ -1809,7 +1837,7 @@
       "name": "Vau"
     },
     "golf/bunker": {
-      "name": "Banco de Areia",
+      "name": "Banco de areia",
       "terms": "Bunker, Banco de Areia, Banca de Areia, Poça de Areia, Obstáculo de Areia"
     },
     "golf/cartpath": {
@@ -1857,7 +1885,7 @@
       "terms": "posto de saúde, Unidade de Pronto Atendimento, Unidade Básica de Saúde, enfermaria, clínica, doutor, consultório médico, serviços médicos, serviço médico, serviço de saúde, atendimento médico, médico, médica, saúde, hospital, dentista, fisioterapia"
     },
     "healthcare/alternative": {
-      "name": "Medicina Alternativa",
+      "name": "Medicina alternativa",
       "terms": "acupuntura, antroposofia, cinesiologia aplicada, aromaterapia, ayurveda, homeopatia, hidroterapia, hipnose, naturopatia, osteopatia, reflexologia, reiki, shiatsu, tradicional, tuiná, unani"
     },
     "healthcare/alternative/chiropractic": {
@@ -1869,7 +1897,7 @@
       "terms": "audiólogo, fonoaudiólogo, ouvido, audição"
     },
     "healthcare/birthing_center": {
-      "name": "Casa de Parto",
+      "name": "Casa de parto",
       "terms": "Centro de Parto Normal, Maternidade, Parto normal, parteira, obstetrícia, nascimento, hospital, clínica, saúde, bebê, infantil"
     },
     "healthcare/blood_donation": {
@@ -3109,6 +3137,10 @@
       "name": "Torre de comunicação",
       "terms": "Torre de comunicação"
     },
+    "man_made/tower/cooling": {
+      "name": "Torre de refrigeração",
+      "terms": "Torre de refrigeração"
+    },
     "man_made/tower/defensive": {
       "name": "Torre fortificada",
       "terms": "Torre fortificada"
@@ -3156,6 +3188,10 @@
     "man_made/windmill": {
       "name": "Moinho de Vento",
       "terms": "moinho de vento, eólico, moinho, catavento"
+    },
+    "man_made/windpump": {
+      "name": "Moinho de vento",
+      "terms": "Moinho de vento"
     },
     "man_made/works": {
       "name": "Fábrica",
@@ -3243,6 +3279,10 @@
     "natural/heath": {
       "name": "Urzal",
       "terms": "Urzal, vegetação, arbustos, charneca"
+    },
+    "natural/hot_spring": {
+      "name": "Fonte termal",
+      "terms": "Fonte termal"
     },
     "natural/mud": {
       "name": "Lama",
@@ -3829,6 +3869,10 @@
     "public_transport/platform/bus_point": {
       "name": "Ponto de Ônibus",
       "terms": "Ponto de Ônibus, Parada de Ônibus"
+    },
+    "public_transport/platform/bus_tram_point": {
+      "name": "Ponto de bonde e ônibus",
+      "terms": "Ponto de bonde e ônibus"
     },
     "public_transport/platform/ferry": {
       "name": "Plataforma de Balsa",
@@ -4920,6 +4964,10 @@
       "name": "Painel de Informações",
       "terms": "Painel de Informações Turísticas"
     },
+    "tourism/information/board/welcome_sign": {
+      "name": "Placa de boas vindas",
+      "terms": "Placa de boas vindas"
+    },
     "tourism/information/guidepost": {
       "name": "Poste de Sinalização",
       "terms": "Poste de Informações Turísticas"
@@ -5033,21 +5081,9 @@
       "name": "Sinal de limite de cidade",
       "terms": "Sinal de limite de cidade"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Sinal de limite de cidade",
-      "terms": "Sinal de limite de cidade"
-    },
     "traffic_sign/maxspeed": {
       "name": "Sinal de limite de velocidade",
       "terms": "Sinal de limite de velocidade"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Sinal de limite de velocidade",
-      "terms": "Sinal de limite de velocidade"
-    },
-    "traffic_sign_vertex": {
-      "name": "Sinal de trânsito",
-      "terms": "Sinal de trânsito"
     },
     "type/boundary": {
       "name": "Fronteira",
@@ -5137,8 +5173,8 @@
       "terms": "Rota de Barco, Rota de Ferry, Ferry Boat"
     },
     "type/route/foot": {
-      "name": "Rota de Pedestres",
-      "terms": "Rota de Caminhada"
+      "name": "Percurso de pedestre",
+      "terms": "Percurso de pedestre"
     },
     "type/route/hiking": {
       "name": "Rota de Caminhada",

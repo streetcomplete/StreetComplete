@@ -204,13 +204,13 @@ private val TEST_QUEST_TYPE = TestQuestType()
 private val TEST_QUEST_TYPE2 = TestQuestType2()
 
 private fun create(
-        questType: OsmElementQuestType<*> = TEST_QUEST_TYPE,
-        elementType: Element.Type = Element.Type.NODE,
-        elementId: Long = 1,
-        status: QuestStatus = QuestStatus.NEW,
-        geometry: ElementGeometry = ElementPointGeometry(OsmLatLon(5.0, 5.0)),
-        changes: StringMapChanges? = null,
-        changesSource: String? = null
+    questType: OsmElementQuestType<*> = TEST_QUEST_TYPE,
+    elementType: Element.Type = Element.Type.NODE,
+    elementId: Long = 1,
+    status: QuestStatus = QuestStatus.NEW,
+    geometry: ElementGeometry = ElementPointGeometry(OsmLatLon(5.0, 5.0)),
+    changes: StringMapChanges? = null,
+    changesSource: String? = null
 ) = OsmQuest(
         null, questType, elementType, elementId, status, changes, changesSource, Date(), geometry
 )

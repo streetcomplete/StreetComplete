@@ -54,10 +54,10 @@ class VisibleQuestsSourceTest {
     }
 
     @Test fun getAllVisibleCount() {
-        on(osmQuestController.getAllVisibleInBBoxCount(bbox, questTypes)).thenReturn(3)
+        on(osmQuestController.getAllVisibleInBBoxCount(bbox)).thenReturn(3)
         on(osmNoteQuestController.getAllVisibleInBBoxCount(bbox)).thenReturn(4)
 
-        assertEquals(7, source.getAllVisibleCount(bbox, questTypes))
+        assertEquals(7, source.getAllVisibleCount(bbox))
     }
 
     @Test fun getAllVisible() {

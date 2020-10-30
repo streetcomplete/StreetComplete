@@ -212,9 +212,17 @@
       "name": "Biergarten (Bar al aire libre)",
       "terms": "cerveza, bar, terraza, jardín, al aire libre, biergarten"
     },
+    "amenity/binoculars": {
+      "name": "Binoculares montados",
+      "terms": "Visor de observación, largavista, binocular, telescopio, visor, catalejo, soporte de visualización"
+    },
     "amenity/boat_rental": {
       "name": "Alquiler de barcos",
       "terms": "alquiler de botes"
+    },
+    "amenity/boat_storage": {
+      "name": "Almacenamiento de barcos",
+      "terms": "varadero, dique seco, puerto deportivo, almacén de barcos, almacenaje de barcos, barcos, embarcaciones"
     },
     "amenity/bureau_de_change": {
       "name": "Cambio de moneda",
@@ -420,7 +428,7 @@
       "terms": "fuente, chorro, surtidor ornamental"
     },
     "amenity/fuel": {
-      "name": "Gasolinera",
+      "name": "Estación de servicio / Gasolinera",
       "terms": "gasolinera, surtidor, estación de servicio, combustible"
     },
     "amenity/gambling": {
@@ -487,6 +495,10 @@
       "name": "Muelle de carga",
       "terms": "puerto, puerta, almacén, almacen, envío, envio, descarga, bahía de carga, bahia"
     },
+    "amenity/lounger": {
+      "name": "Sillón de jardín / Tumbona",
+      "terms": "asiento, silla, banco"
+    },
     "amenity/love_hotel": {
       "name": "Hotel para parejas",
       "terms": "hotel para parejas, parejas, telo, albergue transitorio, hotel alojamiento, motel"
@@ -503,8 +515,12 @@
       "name": "Estación de transferencia de dinero",
       "terms": "giro postal, cheque, factura, moneda, finanzas, transferencia bancaria, cable, persona a persona, efectivo a efectivo, intercambio"
     },
+    "amenity/mortuary": {
+      "name": "Morgue",
+      "terms": "morgue, depósito de cadáveres, crematorio, funeraria, casa conmemorativa, mortuorio, enterrador"
+    },
     "amenity/motorcycle_parking": {
-      "name": "Aparcamiento de motocicletas",
+      "name": "Estacionamiento de motos",
       "terms": "motocicleta, moto, aparcamiento, parking, estacionamiento, parqueadero, parqueo, parqueadero de motocicletas, estacionamiento de motocicletas, parqueo de motocicletas"
     },
     "amenity/music_school": {
@@ -523,7 +539,7 @@
       "name": "Residencia de ancianos"
     },
     "amenity/parking": {
-      "name": "Aparcamiento / Estacionamiento",
+      "name": "Estacionamiento / Aparcamiento",
       "terms": "estacionamiento, playa de estacionamiento, aparcadero, aparcamiento, aparcamento, auto, vehículo"
     },
     "amenity/parking/multi-storey": {
@@ -543,7 +559,7 @@
       "terms": "entrada, salida, aparcamiento, parking, aparcadero, estacionamiento, garaje, parqueadero, parqueo"
     },
     "amenity/parking_space": {
-      "name": "Plaza de aparcamiento / estacionamiento",
+      "name": "Plaza de estacionamiento",
       "terms": "lugar, zona, área, plaza, coche, carro, auto, automóvil, vehículo, aparcamiento, parking, aparcadero, estacionamiento, parqueadero, parqueo"
     },
     "amenity/parking_space/disabled": {
@@ -830,8 +846,8 @@
       "terms": "Banco de alimentos"
     },
     "amenity/social_facility/group_home": {
-      "name": "Residencia de la tercera edad",
-      "terms": "Hogar de mayores, ancianos, residencia, tercera edad"
+      "name": "Residencia de personas mayores",
+      "terms": "Hogar de mayores, Residencia de personas mayores, ancianos, residencia, tercera edad, mayores, viejos, abuelos"
     },
     "amenity/social_facility/homeless_shelter": {
       "name": "Refugio para personas sin hogar",
@@ -1409,7 +1425,7 @@
       "terms": "centro de negocios, bloque de oficinas"
     },
     "building/pavilion": {
-      "name": "Edificio Pavilion"
+      "name": "Edificio pabellón"
     },
     "building/public": {
       "name": "Edificio público",
@@ -1637,8 +1653,8 @@
       "terms": "yeso, albañil, obra, construcción"
     },
     "craft/plumber": {
-      "name": "Fontanero",
-      "terms": "fontanero, fontanería, plomero, plomería, desatascador, tubero"
+      "name": "Fontanero / Plomero",
+      "terms": "fontanero, fontanería, plomero, plomería, desatascador, tubero,gásfiter,plomera,fontanera,gasfitero,gasfitera"
     },
     "craft/pottery": {
       "name": "Fabricante de cerámica (alfarero)",
@@ -1717,6 +1733,9 @@
     },
     "demolished/building": {
       "name": "Edificio recientemente demolido"
+    },
+    "disused/amenity": {
+      "name": "Servicio en desuso"
     },
     "disused/railway": {
       "name": "Elemento ferroviario en desuso"
@@ -1830,6 +1849,10 @@
     "golf/cartpath": {
       "name": "Sendero del carrito de golf",
       "terms": "Carrito, carro, golf, sendero"
+    },
+    "golf/clubhouse": {
+      "name": "Casa club de golf",
+      "terms": "casa club, casa club de golf, casa de golf, tienda profesional, clubhouse"
     },
     "golf/driving_range": {
       "name": "Driving range",
@@ -2175,7 +2198,7 @@
       "terms": "Acceso de emergencia"
     },
     "highway/service/parking_aisle": {
-      "name": "Pasillo de aparcamiento / estacionamiento",
+      "name": "Pasillo de estacionamiento",
       "terms": "pasillo, coche, carro, auto, automóvil, vehículo, aparcamiento, parking, aparcadero, estacionamiento, garaje, parqueadero, parqueo"
     },
     "highway/services": {
@@ -3053,12 +3076,12 @@
       "terms": "pozo, pozo petrolero, petróleo, plataforma de perforación, torre de perforación, perforación de petróleo, plataforma petrolera"
     },
     "man_made/pier": {
-      "name": "Embarcadero",
-      "terms": "Pilote, Embarcadero, entarimado"
+      "name": "Muelle",
+      "terms": "atraque, muelle, embarcadero, paseo marítimo"
     },
     "man_made/pier/floating": {
       "name": "Muelle flotante",
-      "terms": "muelle, embarcadero, paseo marítimo"
+      "terms": "muelle, embarcadero, paseo marítimo, balsa"
     },
     "man_made/pipeline": {
       "name": "Tubería",
@@ -3124,6 +3147,10 @@
       "name": "Torre de comunicación",
       "terms": "antena, torre de transmisión, torre de telefonía celular, torre de telefonía móvil, mástil de comunicación, torre de comunicación, torre adaptada, torre de telefonía móvil, mástil de radio, torre de radio, torre de televisión, mástil de transmisión, torre de transmisión, torre de televisión"
     },
+    "man_made/tower/cooling": {
+      "name": "Torre de refrigeración",
+      "terms": "planta de energía, central eléctrica, torre de enfriamiento, enfriamiento, refrigeración"
+    },
     "man_made/tower/defensive": {
       "name": "Torre fortificada",
       "terms": "Torre defensiva, torre del castillo"
@@ -3171,6 +3198,10 @@
     "man_made/windmill": {
       "name": "Molino de viento",
       "terms": "viento, eólico, granja, rueda, molino, turbina, extraer agua, bombeo"
+    },
+    "man_made/windpump": {
+      "name": "Bomba de agua eólica",
+      "terms": "aerorotor, bomba de agua, molino de viento, bomba de viento, bombeo eólico"
     },
     "man_made/works": {
       "name": "Fábrica",
@@ -3256,8 +3287,12 @@
       "terms": "prado, pradera, pradería, pastizal, pastos, herbazal, majada, dehesa"
     },
     "natural/heath": {
-      "name": "Brezal / Landa",
+      "name": "Brezal",
       "terms": "brezal, landa, jaral, matorral, llanura, páramo, meseta, arenal, estepa, planicie, descampado, escajo, tojo"
+    },
+    "natural/hot_spring": {
+      "name": "Fuente termal",
+      "terms": "manantial geotermal, piscina termal, aguas termales"
     },
     "natural/mud": {
       "name": "Lodo",
@@ -3522,7 +3557,7 @@
       "terms": "periódico, diario, semanario, revista"
     },
     "office/ngo": {
-      "name": "ONG",
+      "name": "Oficina de ONG",
       "terms": "ONG, organización no gubernamental, Oficina de la ONG"
     },
     "office/notary": {
@@ -3639,7 +3674,7 @@
     },
     "place/isolated_dwelling": {
       "name": "Vivienda aislada",
-      "terms": "Viviendas aisladas"
+      "terms": "Viviendas aisladas, aislada"
     },
     "place/locality": {
       "name": "Paraje",
@@ -3771,11 +3806,11 @@
       "terms": "generador, turbina, molino de viento, viento"
     },
     "power/line": {
-      "name": "Línea de alta tensión",
+      "name": "Cable de alta tensión",
       "terms": "energía, línea, eléctrica, líneas eléctricas, linea electrica, lineas electricas"
     },
     "power/minor_line": {
-      "name": "Línea eléctrica de media tensión",
+      "name": "Cable de media tensión",
       "terms": "media tensión, baja tensión"
     },
     "power/plant": {
@@ -3844,6 +3879,10 @@
     "public_transport/platform/bus_point": {
       "name": "Parada de bus",
       "terms": "autobús, bus, colectivo, plataforma, transporte público"
+    },
+    "public_transport/platform/bus_tram_point": {
+      "name": "Parada de tranvía y autobús",
+      "terms": "autobús, bus, colectivo, tren ligero, plataforma, tránsito público, transporte público, carril, tranvía, tránsito, transporte, trole, trolebus"
     },
     "public_transport/platform/ferry": {
       "name": "Plataforma de ferry",
@@ -4478,7 +4517,7 @@
     },
     "shop/hardware": {
       "name": "Ferretería",
-      "terms": "ferretería,  herramientas"
+      "terms": "ferretería,  herramientas, herrajes"
     },
     "shop/health_food": {
       "name": "Tienda de comida saludable",
@@ -4937,6 +4976,10 @@
       "name": "Tablero de información",
       "terms": "tabla, tablón, cuadro, cartel, información, informativo, información turística"
     },
+    "tourism/information/board/welcome_sign": {
+      "name": "Cartel de bienvenida",
+      "terms": "bienvenida, bienvenido, nueva ubicación, nuevo lugar, lugar, ciudad, pueblo, comunidad"
+    },
     "tourism/information/guidepost": {
       "name": "Poste guía",
       "terms": "poste indicador, cartel, información, dirección, indicación"
@@ -5053,21 +5096,9 @@
       "name": "Señal de límite de ciudad",
       "terms": "señal, ciudad, aldea, pueblo, límite, frontera, ruta"
     },
-    "traffic_sign/city_limit_vertex": {
-      "name": "Señal de límite de ciudad",
-      "terms": "señal, ciudad, aldea, pueblo, límite, frontera, ruta"
-    },
     "traffic_sign/maxspeed": {
       "name": "Señal de límite de velocidad",
       "terms": "señal, cartel, señalización, velocidad máxima"
-    },
-    "traffic_sign/maxspeed_vertex": {
-      "name": "Señal de límite de velocidad",
-      "terms": "señal, cartel, señalización, velocidad máxima"
-    },
-    "traffic_sign_vertex": {
-      "name": "Señal de tránsito",
-      "terms": "señal, cartel, señalización, tráfico, ruta, autopista, tránsito"
     },
     "type/boundary": {
       "name": "Límite",
@@ -5158,7 +5189,7 @@
     },
     "type/route/foot": {
       "name": "Ruta a pie",
-      "terms": "ruta, itinerario, rumbo, dirección, trayecto, peatonal, pie, senderismo , camino, derrotero, vía"
+      "terms": "ruta a pie, ruta para caminar, senderismo, caminata"
     },
     "type/route/hiking": {
       "name": "Ruta de senderismo",

@@ -2,20 +2,17 @@ package de.westnordost.streetcomplete.quests.bike_parking_capacity
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddBikeParkingCapacity(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<Int>(o) {
+class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes, ways with amenity = bicycle_parking
          and access !~ private|no
          and (
            !capacity
-           or bicycle_parking ~ stands|wall_loops and capacity older today -${r * 4} years
+           or bicycle_parking ~ stands|wall_loops and capacity older today -4 years
          )
     """
     /* Bike capacity may change more often for stands and wheelbenders as adding or

@@ -31,7 +31,7 @@ class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
     fun insert(p: LatLon) {
         val x = longitudeToCellX(p.longitude)
         val y = latitudeToCellY(p.latitude)
-        checkBounds(x, y)
+        if(!isInsideBounds(x, y)) return
         var list = raster[y * rasterWidth + x]
         if (list == null) {
             list = ArrayList()
@@ -66,10 +66,8 @@ class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
         return result
     }
 
-    private fun checkBounds(x: Int, y: Int) {
-        require(x in 0 until rasterWidth) { "Longitude is out of bounds" }
-        require(y in 0 until rasterHeight) { "Latitude is out of bounds" }
-    }
+    private fun isInsideBounds(x: Int, y: Int): Boolean =
+        x in 0 until rasterWidth && y in 0 until rasterHeight
 
     private fun longitudeToCellX(longitude: Double) =
         floor(normalizeLongitude(longitude - bbox.minLongitude) / cellSize).toInt()

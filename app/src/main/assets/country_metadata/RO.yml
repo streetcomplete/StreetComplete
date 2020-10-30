@@ -1,10 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BCR, BRD, Banca Transilvania, Raiffeisen Bank, Raiffeisen, CEC Bank, Alpha Bank, ING România, ING, UniCredit
-      Bank, Bancpost, Euronet, BT, ATM RZB, ATM Bancpost, Garanti Bank, First Bank, CEC, Unicredit Bank,
-   UniCredit Bank SA, Piraeus Bank, OTP Bank, MKB Nextebank, GarantiBank, ATM Unicredit Bank, RZB, Banca
-      Comercială Română SA, ATM Dezinstalat, citibank, Unicredit Țiriac, UniCredit, Raifeissen Bank, ProCredit
-      Bank, OTP Bank România, ING Bank, Credit Europe Bank, CEC bank, Banca Românească, Banca Comercială
-      Română, Alpha, ATM Piraeus Bank, ATM ING, ATM Euronet, ATM Alpha Bank, ATM]
+atmOperators: [BCR, BRD, Banca Transilvania, Raiffeisen Bank, Raiffeisen, CEC Bank, Alpha Bank, ING, UniCredit Bank,
+   ING România, Bancpost, Euronet, BT, ATM RZB, First Bank, ATM Bancpost, Garanti Bank, CEC, Unicredit
+      Bank, UniCredit Bank SA, Piraeus Bank, OTP Bank, MKB Nextebank, GarantiBank, ATM Unicredit Bank,
+   RZB, Banca Comercială Română SA, ATM Dezinstalat, citibank, Unicredit Țiriac, UniCredit, Raifeissen
+      Bank, ProCredit Bank, OTP Bank România, ING Bank, Credit Europe Bank, CEC bank, Banca Românească,
+   Banca Comercială Română, Alpha, ATM Piraeus Bank, ATM ING, ATM Euronet, ATM Alpha Bank, ATM]
 chargingStationOperators: [STPT, Renovatio, Lidl, Kaufland, Flow, Enel]
 clothesContainerOperators: [Caritas]
 isAdvisorySpeedLimitKnown: true

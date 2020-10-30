@@ -2,13 +2,12 @@ package de.westnordost.streetcomplete.quests.steps_incline
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.*
 
-class AddStepsIncline(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<StepsIncline>(o) {
+class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway = steps 
          and (!indoor or indoor = no)
          and area != yes

@@ -1,33 +1,39 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 
-class AddForestLeafType(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<String> {
+class AddForestLeafType : OsmElementQuestType<String> {
+    private val areaFilter by lazy { """
+        ways, relations with landuse = forest or natural = wood and !leaf_type
+    """.toElementFilterExpression()}
+
+    private val wayFilter by lazy { """
+        ways with natural = tree_row and !leaf_type
+    """.toElementFilterExpression()}
+
     override val commitMessage = "Add leaf type"
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf
     override val isSplitWayEnabled = true
 
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassApi.query(getOverpassQuery(bbox), handler)
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val forests = mapData
+            .filter { areaFilter.matches(it) }
+            .filter {
+                val geometry = mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
+                val area = geometry?.polygons?.measuredMultiPolygonArea() ?: 0.0
+                area > 0.0 && area < 10000
+            }
+        val treeRows = mapData.filter { wayFilter.matches(it) }
+        return forests + treeRows
     }
-
-    private fun getOverpassQuery(bbox: BoundingBox) = """
-        ${bbox.toGlobalOverpassBBox()}
-        (
-          wr[landuse = forest][!leaf_type](if: length()<700.0);
-          wr[natural = wood][!leaf_type](if: length()<700.0);
-          way[natural = tree_row][!leaf_type](if: length()<700.0);
-        );
-        ${getQuestPrintStatement()}""".trimIndent()
 
     override fun isApplicableTo(element: Element):Boolean? = null
 

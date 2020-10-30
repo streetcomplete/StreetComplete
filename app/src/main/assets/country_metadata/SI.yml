@@ -1,8 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [NLB, NKBM, Abanka, SKB, Nova KBM, Gorenjska banka, Banka Koper, ABanka, UniCredit Bank, Gorenjska Banka,
    NKBM d.d., Bitnik d.o.o., ABANKA, Delavska hranilnica, Banka Celje, A banka, SKB banka, SKB Banka,
-   PBS, Nova Ljubljanska banka d.d., Nova Ljubljanska Banka, Intesa San Paolo, Bitnik, Addiko bank, Addiko
-      Bank]
+   PBS, Nova Ljubljanska banka d.d., Nova Ljubljanska Banka, Intesa San Paolo, Hypo Alpe-Adria-Bank d.d.,
+   Bitnik, Addiko bank, Addiko Bank]
 chargingStationOperators: [SODO, Petrol, Elektro Maribor, unknovn, elektro Celje, dravske elektrarne maribor, Renault, Elektro Ljubljana
       d.d., Elektro Gorenjska, EM]
 isAdvisorySpeedLimitKnown: true

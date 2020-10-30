@@ -263,7 +263,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_fireHydrant_type_wall">"Wandanschluss"</string>
     <string name="quest_fireHydrant_type_pond">"Drucklos"</string>
     <string name="credits_contributors">"Siehe die &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;komplette Liste auf GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Für eine vollständige Liste, siehe das &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;Projekt auf POEditor&lt;/a&gt;."</string>
+    <string name="credits_translations">"Für eine vollständige Liste, siehe das &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;Projekt auf POEditor&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Übersetzungen"</string>
     <string name="credits_contributors_title">"Programmierbeiträge"</string>
     <string name="credits_author_title">"Hauptentwickler"</string>
@@ -331,7 +331,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_way_lit_automatic">"per Bewegungsmelder"</string>
     <string name="quest_way_lit_24_7">"sogar Tag und Nacht beleuchtet"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht scannen. Zoome weiter herein oder kippe die Karte weniger"</string>
-    <string name="quest_crossing_type_title">"Welche Art von Kreuzung ist das?"</string>
+    <string name="quest_crossing_type_title">"Welche Art von Fußgängerüberweg ist das?"</string>
     <string name="quest_crossing_type_signals">"Kreuzung mit Ampeln"</string>
     <string name="quest_crossing_type_uncontrolled">"Unkontrollierter Übergang"</string>
     <string name="quest_crossing_type_unmarked">"Kreuzung ohne Markierungen"</string>
@@ -641,8 +641,12 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_busStopShelter_covered">"gesamte Haltestelle ist überdacht"</string>
     <string name="quest_ferry_pedestrian_name_title">"Kann man als Fußgänger %s nutzen?"</string>
     <string name="quest_ferry_pedestrian_title">"Kann man als Fußgänger diese Fährverbindung nutzen?"</string>
-    <string name="quest_ferry_motor_vehicle_name_title">"Kann man als Autofahrer %s nutzen?"</string>
-    <string name="quest_ferry_motor_vehicle_title">"Kann man als Autofahrer diese Fährverbindung nutzen?"</string>
+
+    <!-- Motor vehicles sind "motorisierte Fahrzeuge", das können auch andere sein als Autos oder Autofahrer. Wäre besser, wenn man das offen lassen würde. -->
+    <string name="quest_ferry_motor_vehicle_name_title">"Kann man mit Kraftfahrzeugen die Fährverbindung %s nutzen?"</string>
+
+    <!-- Auch hier sollte man motor vehicles nicht mit "Autofahrer" übersetzen. -->
+    <string name="quest_ferry_motor_vehicle_title">"Kann man mit Kraftfahrzeugen diese Fährverbindung nutzen?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Ein Foto macht eine Notiz oft viel hilfreicher."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Wann wird dieser %s Postkasten geleert?"</string>
     <string name="create_new_note_hint">"Am besten die Notiz in der lokal gesprochenen Sprache oder ansonsten auf Englisch verfassen."</string>
@@ -662,7 +666,6 @@ Jetzt aufspalten?"</string>
     <string name="quest_tactilePaving_title_tram">"Hat diese Straßenbahnhaltestelle eine spezielle Pflasterung für Blinde?"</string>
     <string name="quest_tactilePaving_title_name_tram">"Hat die Straßenbahnhaltestelle %s eine spezielle Pflasterung für Blinde?"</string>
     <string name="quest_maxweight_title">"Was ist das Maximalgewicht hier?"</string>
-    <string name="quest_maxweight_answer_noSign">"Da ist kein Schild"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Dieses Gewicht sieht ungewöhnlich aus. Bist du sicher, dass es korrekt ist?"</string>
     <string name="quest_maxweight_answer_other_sign">"Schild sieht anders aus…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Willst du stattdessen eine Notiz hinterlassen? Mit Hilfe eines Fotos können andere Mapper sich darum kümmern, es einzutragen."</string>
@@ -807,7 +810,11 @@ Beachte, dass diese App nur Hausnummern von Gebäuden abfragt, deren Typ bereits
     <string name="achievement_pedestrian_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Fußgänger sind."</string>
     <string name="achievement_veg_title">"Tierlieb"</string>
     <string name="achievement_veg_solved_X">"Du hast %d Aufgaben gelöst, die Vegetariern und Veganen am Herzen liegen."</string>
-    <string name="achievement_car_title">"Autofahrer"</string>
+
+    <!-- Hier sollte nicht ein bestimmtes Fahrzeug suggeriert werden sondern man sollte das offen lassen.
+
+Eine bessere Idee habe ich allerdings nicht. -->
+    <string name="achievement_car_title">"Auf der Straße"</string>
     <string name="achievement_car_solved_X">"Du hast %d Aufgaben gelöst, die Details zu Straßeninfrastrukturdaten hinzufügen!"</string>
     <string name="unread_messages_message">"Du hast %d ungelesene Nachrichten in deinem Posteingang"</string>
     <string name="unread_messages_button">"Posteingang öffnen"</string>
@@ -930,4 +937,8 @@ Erfolge"</string>
     <string name="achievement_outdoors_title">"In der freien Natur"</string>
     <string name="achievement_outdoors_solved_X">"Du hast %d Aufgaben gelöst, die nützlich für Menschen in der freien Natur sind!"</string>
     <string name="quest_pedestrian_crossing_island">"Gibt es bei diesem Fußgängerüberweg eine Verkehrsinsel?"</string>
+    <string name="quest_generic_answer_noSign">"Da ist kein Schild"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Wird die Rampe für Rollstühle auf der Karte als separater Weg angezeigt?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"Ja, separat"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"Nicht separat"</string>
 </resources>

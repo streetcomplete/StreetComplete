@@ -235,6 +235,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"Çalışma saatlerini açıkla"</string>
+    <string name="quest_openingHours_comment_description">"Kısa ve öz olun, tercihen tabeladaki ifadeyi girin, örneğin \"randevu ile\". Açılış saati ile ilgili bir bilgilendirmenin olmaması, bir açılış saati olmadığı anlamına gelmez."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_title">"Bu bina kaç katlı?"</string>
@@ -377,6 +378,7 @@ Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"http
 
     <!-- Fuzzy -->
     <string name="quest_address_title">"Bu binanın kapı numarası kaç?"</string>
+    <string name="store_listing_short_description">"OpenStreetMap anketör uygulaması."</string>
 
     <!-- Fuzzy -->
     <string name="store_listing_full_description">"StreetComplete ile OpenStreetMap'ın geliştirilmesine yardımcı olun!
@@ -513,6 +515,8 @@ Girdiğiniz bilgiler başka bir düzenleyici kullanmak zorunda kalmaksızın ad�
 
     <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Bu tuvalet ücretli mi?"</string>
+    <string name="quest_tactilePaving_title_bus">"Bu otobüs durağında kabartmalı/hisli kaldırımlar var mı?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Bu yaya geçidinin her iki tarafında da kabartmalı/hisli kaldırımlar var mı?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"Bunu yerinde kontrol ettiğinden emin misin?"</string>
@@ -562,6 +566,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"Buz Pateni"</string>
     <string name="quest_sport_paddle_tennis">"Raket tenisi"</string>
+    <string name="quest_sport_gaelic_games">"Gal oyunları"</string>
 
     <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"Ayak voleybolu"</string>
@@ -675,7 +680,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="credits_contributors">"Tüm listeyi &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub'da görebilirsin&lt;/a&gt;. "</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Tüm liste için &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor'de projeye bak&lt;/a&gt;."</string>
+    <string name="credits_translations">"Tüm liste için &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor'de projeye bak&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Çeviriler"</string>
@@ -868,6 +873,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="produce_tomatoes">"Domates"</string>
+    <string name="produce_areca_nuts">"Areca fıstığı"</string>
 
     <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"Tatlı biber"</string>
@@ -1166,6 +1172,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"bisiklet şeridi (kesik işaretler)"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"Kesilmemiş parke taşı/Arnavut Kaldırımı"</string>
 
     <!-- Fuzzy -->
     <string name="quest_parking_access_title">"Buraya kimlerin park edebileceği sınırlandırılmış mı?"</string>
@@ -1181,6 +1188,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Bu yaya caddesinin adı ne?"</string>
+    <string name="quest_streetSurface_square_title">"Bu meydanın yüzeyi nedir?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Zamana ve güne bağlı…"</string>
@@ -1224,6 +1232,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Burasi ne tarz bir bisiklet park alani ?"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"bisiklet öneri şeridi"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Bu posta kutusunun, posta toplama sureleri ne zaman?"</string>
@@ -1249,6 +1258,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_construction_building_title">"Bu bina tamamlandı mı?"</string>
+    <string name="questList_disabled_in_country">"Asla % olarak gösterme"</string>
 
     <!-- Fuzzy -->
     <string name="quest_toiletAvailability_rest_area_title">"Bu dinlenme yerinde tuvalet bulunmakta midir?"</string>
@@ -1401,18 +1411,22 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_parking">"Otopark binası"</string>
+    <string name="quest_buildingType_farm">"Bir çiftlikte"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse">"Çiftlik Evi"</string>
+    <string name="quest_buildingType_farmhouse_description">"Bir çiftlikte konut binası"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary">"Çiftlik binası"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"Bir çiftlikte konut olmayan herhangi bir bina"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_greenhouse">"Yeşil Ev"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_other">"Diğer"</string>
+    <string name="quest_buildingType_shed">"Kulübe"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hut">"Kulübe"</string>
@@ -1622,9 +1636,11 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"Her ikisi de mevcuttur. "</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"İşaret yok"</string>
+    <string name="quest_split_way_too_imprecise">"Lütfen daha fazla yakınlaştırın"</string>
+    <string name="quest_footwayPartSurface_title">"Buradaki patikanın yüzeyi nedir?"</string>
+    <string name="quest_tactilePaving_title_tram">"Bu tramvay durağında kabartmalı/hisli kaldırımlar var mı?"</string>
+    <string name="quest_maxweight_title">"Buradaki ağırlık sınırı nedir?"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Bu ağırlık mantıksız görünüyor. Doğru olduğundan emin misin?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"İşaret farklı görünüyor…"</string>
@@ -1709,9 +1725,20 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="title_whats_new">"Neler yeni?"</string>
+    <string name="about_title_rate">"Bu uygulamayı oyla"</string>
+    <string name="about_summary_rate">"Google Play'de"</string>
+    <string name="about_title_donate">"Bağış yap"</string>
+    <string name="about_summary_donate">"Minnettarlığınızı gösterin! ❤️"</string>
 
     <!-- Fuzzy -->
     <string name="about_description_donate">"Uygulamamızı desteklemeyi düşündüğünüz için teşekkür ederiz! Mevcut bağışları görmek ve bağışyapmak için ilgili platforma dokunun:"</string>
+    <string name="user_profile">"Profilim"</string>
+    <string name="user_login">"Giriş Yap"</string>
+    <string name="user_logout">"Çıkış Yap"</string>
+    <string name="osm_profile">"OSM Profili"</string>
+    <string name="next">"İleri"</string>
+    <string name="tutorial_welcome_to_osm">"OpenStreetMap'e hoşgeldin"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"özgür dünya haritası wikisi."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"Ev ismi %s:"</string>

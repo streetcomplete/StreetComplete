@@ -2,20 +2,17 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddWheelchairAccessToiletsPart(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+class AddWheelchairAccessToiletsPart : OsmFilterQuestType<String>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes, ways, relations with name and toilets = yes
          and (
            !toilets:wheelchair
-           or toilets:wheelchair != yes and toilets:wheelchair older today -${r * 4} years
-           or toilets:wheelchair older today -${r * 8} years
+           or toilets:wheelchair != yes and toilets:wheelchair older today -4 years
+           or toilets:wheelchair older today -8 years
          )
     """
     override val commitMessage = "Add wheelchair access to toilets"

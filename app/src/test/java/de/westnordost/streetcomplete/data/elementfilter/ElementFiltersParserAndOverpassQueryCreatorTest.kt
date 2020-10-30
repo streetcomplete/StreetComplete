@@ -196,7 +196,7 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
         check("nodes with check_date < today -2 days", "node[check_date](if:date(t['check_date']) < date('$twoDaysAgo'));")
 
         val twoDaysInFuture = dateDaysAgo(-2f).toCheckDateString()
-        check("nodes with check_date < today + 0.3 weeks", "node[check_date](if:date(t['check_date']) < date('$twoDaysInFuture'));")
+        check("nodes with check_date < today + 0.285 weeks", "node[check_date](if:date(t['check_date']) < date('$twoDaysInFuture'));")
     }
 
     @Test fun `element older x days`() {
@@ -383,14 +383,14 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
 
     private fun shouldFail(input: String) {
         try {
-            ElementFiltersParser().parse(input)
+            input.toElementFilterExpression()
             fail()
         } catch (ignore: ParseException) {
         }
     }
 
     private fun check(input: String, output: String) {
-        val expr = ElementFiltersParser().parse(input)
+        val expr = input.toElementFilterExpression()
         assertEquals(
             output.replace("\n","").replace(" ",""),
             expr.toOverpassQLString().replace("\n","").replace(" ",""))

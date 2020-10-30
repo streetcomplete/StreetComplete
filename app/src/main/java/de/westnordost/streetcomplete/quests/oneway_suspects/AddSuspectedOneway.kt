@@ -1,33 +1,36 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects
 
 import android.util.Log
+import de.westnordost.osmapi.map.MapDataWithGeometry
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
+import kotlin.math.hypot
 
 class AddSuspectedOneway(
-    private val overpassMapDataApi: OverpassMapDataAndGeometryApi,
     private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
     private val db: WayTrafficFlowDao
 ) : OsmElementQuestType<SuspectedOnewayAnswer> {
 
-    private val tagFilters = """
-        ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road
-         and !oneway and junction != roundabout and area != yes
-         and (access !~ private|no or (foot and foot !~ private|no))
-    """
+    private val filter by lazy { """
+        ways with 
+          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road
+          and !oneway
+          and junction != roundabout
+          and area != yes
+          and (
+            access !~ private|no
+            or (foot and foot !~ private|no)
+          )
+    """.toElementFilterExpression() }
 
     override val commitMessage =
         "Add whether roads are one-way roads as they were marked as likely oneway by improveosm.org"
@@ -36,54 +39,58 @@ class AddSuspectedOneway(
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
 
-    private val filter by lazy { ElementFiltersParser().parse(tagFilters) }
-
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway_title
 
-    override fun isApplicableTo(element: Element) =
-        filter.matches(element) && db.isForward(element.id) != null
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val bbox = mapData.boundingBox ?: return emptyList()
 
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         val trafficDirectionMap: Map<Long, List<TrafficFlowSegment>>
         try {
             trafficDirectionMap = trafficFlowSegmentsApi.get(bbox)
         } catch (e: Exception) {
-            Log.e("AddOneway", "Unable to download traffic metadata", e)
-            return false
+            Log.e("AddSuspectedOneway", "Unable to download traffic metadata", e)
+            return emptyList()
         }
 
-        if (trafficDirectionMap.isEmpty()) return true
+        val suspectedOnewayWayIds = trafficDirectionMap.keys
 
-        val query = "way(id:${trafficDirectionMap.keys.joinToString(",")}); out meta geom;"
-        overpassMapDataApi.query(query) { element, geometry ->
-            fun checkValidAndHandle(element: Element, geometry: ElementGeometry?) {
-                if (geometry == null) return
-                if (geometry !is ElementPolylinesGeometry) return
-                // filter the data as ImproveOSM data may be outdated or catching too much
-                if (!filter.matches(element)) return
-
-                val way = element as? Way ?: return
-                val segments = trafficDirectionMap[way.id] ?: return
-                /* exclude rings because the driving direction can then not be determined reliably
-                   from the improveosm data and the quest should stay simple, i.e not require the
-                   user to input it in those cases. Additionally, whether a ring-road is a oneway or
-                   not is less valuable information (for routing) and many times such a ring will
-                   actually be a roundabout. Oneway information on roundabouts is superfluous.
-                   See #1320 */
-                if (way.nodeIds.last() == way.nodeIds.first()) return
-                /* only create quest if direction can be clearly determined and is the same
-                   direction for all segments belonging to one OSM way (because StreetComplete
-                   cannot split ways up) */
-                val isForward = isForward(geometry.polylines.first(), segments) ?: return
-
-                db.put(way.id, isForward)
-                handler(element, geometry)
-            }
-            checkValidAndHandle(element, geometry)
+        val onewayCandidates = mapData.ways.filter {
+            // so, only the ways suspected by improveOSM to be oneways
+            it.id in suspectedOnewayWayIds &&
+            // but also filter the data as ImproveOSM data may be outdated or catching too much
+            filter.matches(it) &&
+            /* also exclude rings because the driving direction can then not be determined reliably
+               from the improveosm data and the quest should stay simple, i.e not require the
+               user to input it in those cases. Additionally, whether a ring-road is a oneway or
+               not is less valuable information (for routing) and many times such a ring will
+               actually be a roundabout. Oneway information on roundabouts is superfluous.
+               See #1320 */
+            it.nodeIds.first() != it.nodeIds.last()
         }
 
-        return true
+        // rehash traffic direction data into simple "way id -> forward/backward" data and persist
+        val onewayDirectionMap = onewayCandidates.associate { way ->
+            val segments = trafficDirectionMap[way.id]
+            val geometry = mapData.getWayGeometry(way.id) as? ElementPolylinesGeometry
+            val isForward =
+                if (segments != null && geometry != null)
+                    isForward(geometry.polylines.first(), segments)
+                else null
+
+            way.id to isForward
+        }
+
+        for ((wayId, isForward) in onewayDirectionMap) {
+            if (isForward != null) db.put(wayId, isForward)
+        }
+
+        /* only create quest if direction could be clearly determined (isForward != null) and is the
+           same direction for all segments belonging to one OSM way */
+        return onewayCandidates.filter { onewayDirectionMap[it.id] != null }
     }
+
+    override fun isApplicableTo(element: Element) =
+        filter.matches(element) && db.isForward(element.id) != null
 
     /** returns true if all given [trafficFlowSegments] point forward in relation to the
      *  direction of the OSM [way] and false if they all point backward.
@@ -113,9 +120,8 @@ class AddSuspectedOneway(
     private fun findClosestPositionIndexOf(positions: List<LatLon>, latlon: LatLon): Int {
         var shortestDistance = 1.0
         var result = -1
-        var index = 0
-        for (pos in positions) {
-            val distance = Math.hypot(
+        for ((index, pos) in positions.withIndex()) {
+            val distance = hypot(
                 pos.longitude - latlon.longitude,
                 pos.latitude - latlon.latitude
             )
@@ -123,7 +129,6 @@ class AddSuspectedOneway(
                 shortestDistance = distance
                 result = index
             }
-            index++
         }
 
         return result

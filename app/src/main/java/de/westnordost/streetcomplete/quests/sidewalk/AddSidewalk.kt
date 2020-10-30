@@ -1,17 +1,39 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.util.isNear
 
-class AddSidewalk(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<SidewalkAnswer> {
+class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
+
+    /* the filter additionally filters out ways that are unlikely to have sidewalks:
+     * unpaved roads, roads with very low speed limits and roads that are probably not developed
+     * enough to have pavement (that are not lit).
+     * Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
+     * is mapped as a separate way
+    * */
+    private val filter by lazy { """
+        ways with
+          highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+          and area != yes
+          and motorroad != yes
+          and !sidewalk and !sidewalk:left and !sidewalk:right and !sidewalk:both
+          and (!maxspeed or maxspeed > 8 or maxspeed !~ "5 mph|walk")
+          and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+          and lit = yes
+          and foot != no and access !~ private|no
+          and foot != use_sidepath
+    """.toElementFilterExpression() }
+
+    private val maybeSeparatelyMappedSidewalksFilter by lazy { """
+        ways with highway ~ path|footway|cycleway
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add whether there are sidewalks"
     override val wikiLink = "Key:sidewalk"
@@ -20,42 +42,31 @@ class AddSidewalk(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmE
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassApi.query(getOverpassQuery(bbox), handler)
-    }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val roadsWithMissingSidewalks = mapData.ways.filter { filter.matches(it) }
+        if (roadsWithMissingSidewalks.isEmpty()) return emptyList()
 
-    /** returns overpass query string to get streets without sidewalk info not near separately mapped
-     *  sidewalks (and other paths)
-     */
-    private fun getOverpassQuery(bbox: BoundingBox): String {
-        val minDistToWays = 15 //m
+        /* Unfortunately, the filter above is not enough. In OSM, sidewalks may be mapped as
+         * separate ways as well and it is not guaranteed that in this case, sidewalk = separate
+         * (or foot = use_sidepath) is always tagged on the main road then. So, all roads should
+         * be excluded whose center is within of ~15 meters of a footway, to be on the safe side. */
 
-        // note: this query is very similar to the query in AddCycleway
-        return bbox.toGlobalOverpassBBox() + "\n" +
-            "way[highway ~ '^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential)$']" +
-            "[area != yes]" +
-            // not any motorroads
-            "[motorroad != yes]" +
-            // only without sidewalk tags
-            "[!sidewalk][!'sidewalk:left'][!'sidewalk:right'][!'sidewalk:both']" +
-            // not any with very low speed limit because they not very likely to have sidewalks
-            "[maxspeed !~ '^(8|7|6|5|5 mph|walk)$']" +
-            // not any unpaved because of the same reason
-            "[surface !~ '^(" + ANYTHING_UNPAVED.joinToString("|") + ")$']" +
-            "[lit = yes]" +
-            // not any explicitly tagged as no pedestrians
-            "[foot != no]" +
-            "[access !~ '^(private|no)$']" +
-            // some roads may be farther than minDistToWays from ways, not tagged with
-            // footway=separate/sidepath but may have a hint that there is a separately tagged
-            // sidewalk
-            "[foot != use_sidepath]" +
-            " -> .streets;\n" +
-            "way[highway ~ '^(path|footway|cycleway)$'](around.streets: " + minDistToWays + ")" +
-            " -> .ways;\n" +
-            "way.streets(around.ways: " + minDistToWays + ") -> .streets_near_ways;\n" +
-            "(.streets; - .streets_near_ways;);\n" +
-            getQuestPrintStatement()
+        val maybeSeparatelyMappedSidewalkGeometries = mapData.ways
+            .filter { maybeSeparatelyMappedSidewalksFilter.matches(it) }
+            .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry }
+        if (maybeSeparatelyMappedSidewalkGeometries.isEmpty()) return roadsWithMissingSidewalks
+
+        val minDistToWays = 15.0 //m
+
+        // filter out roads with missing sidewalks that are near footways
+        return roadsWithMissingSidewalks.filter { road ->
+            val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
+            if (roadGeometry != null) {
+                !roadGeometry.isNear(minDistToWays, maybeSeparatelyMappedSidewalkGeometries)
+            } else {
+                false
+            }
+        }
     }
 
     override fun isApplicableTo(element: Element): Boolean? = null
@@ -76,4 +87,4 @@ class AddSidewalk(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmE
                 else -> "none"
             }
         }
-    }
+}
