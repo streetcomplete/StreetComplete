@@ -443,7 +443,8 @@ object AchievementsModule {
                     "AddMotorcycleParkingCover",
                     "AddFerryAccessMotorVehicle",
                     "AddCarWashType",
-                    "AddChargingStationOperator"
+                    "AddChargingStationOperator",
+                    "AddChargingStationCapacity"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...

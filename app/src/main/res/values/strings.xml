@@ -815,6 +815,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_atm_operator_title">"What's the name of the bank for this ATM?"</string>
     <string name="quest_clothes_container_operator_title">"Who accepts donations for this clothing bin?"</string>
     <string name="quest_charging_station_operator_title">"Who is the operator of this charging station?"</string>
+    <string name="quest_charging_station_capacity_title">"How many cars can be charged at this charging station at the same time?"</string>
 
     <string name="user_quests_title">Solved Quests</string>
     <string name="user_achievements_title">Achievements</string>

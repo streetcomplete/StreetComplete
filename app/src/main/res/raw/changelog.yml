@@ -3,12 +3,16 @@ v26.0-beta1: |
   <p>
   Reworked it completely. Quest download is now substantially faster and the pins for all quest types appear immediately at the same time! (#1874, #1901)
   </p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>How many cars can be charged at this charging station at the same time?</i> (#900)</li>
+  </ul>
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Road surfaces: Improve interface, ask for reason when a generic surface is selected (#2078), by @matkoniecz </li>
   <li>Building types: Add answer options for silos (#2180), historic, abandoned buildings and ruins (#2177, #2214), by @RiffLord </li>
   <li>Improve a few wordings (#2202, #2204)</li>
-  <ul>
+  </ul>
   <h3>Other Enhancements and Fixes</h3>
   <ul>
   <li>You cannot accidentally open the copyright statements for the map (links at the bottom) anymore (#2199)</li>
