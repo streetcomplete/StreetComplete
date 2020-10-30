@@ -27,7 +27,7 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     return footwayNodes.filter {
         // 1. either as the intersection of a way tagged with barrier = kerb that crosses a footway
         it.tags?.get("barrier") == "kerb" ||
-                // 2. or as a node tagged with barrier = kerb on a footway
-                kerbBarrierNodeIds.contains(it.id)
+        // 2. or as a node tagged with barrier = kerb on a footway
+        kerbBarrierNodeIds.contains(it.id)
     }
 }
