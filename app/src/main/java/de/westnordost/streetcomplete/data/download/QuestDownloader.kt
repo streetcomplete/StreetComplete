@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
 import de.westnordost.streetcomplete.data.osm.osmquest.*
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmApiQuestDownloader
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.UserStore
-import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.TilesRect
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
@@ -22,7 +22,7 @@ class QuestDownloader @Inject constructor(
     private val osmNotesDownloaderProvider: Provider<OsmNotesDownloader>,
     private val osmApiQuestDownloaderProvider: Provider<OsmApiQuestDownloader>,
     private val downloadedTilesDao: DownloadedTilesDao,
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider,
+    private val questTypeRegistry: QuestTypeRegistry,
     private val userStore: UserStore
 ) {
     var progressListener: DownloadProgressListener? = null
@@ -82,7 +82,7 @@ class QuestDownloader @Inject constructor(
     }
 
     private fun downloadOsmElementQuestTypes(bbox: BoundingBox) {
-        val questTypes = questTypesProvider.get().filterIsInstance<OsmElementQuestType<*>>()
+        val questTypes = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
         osmApiQuestDownloaderProvider.get().download(questTypes, bbox)
     }
 

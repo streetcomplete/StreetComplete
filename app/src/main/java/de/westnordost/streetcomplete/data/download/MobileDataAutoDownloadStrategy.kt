@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.download
 import javax.inject.Inject
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 
 /** Download strategy if user is on mobile data */
 class MobileDataAutoDownloadStrategy @Inject constructor(
