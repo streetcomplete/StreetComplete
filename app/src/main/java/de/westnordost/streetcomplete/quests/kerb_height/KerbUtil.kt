@@ -8,7 +8,6 @@ private val footwaysFilter by lazy {"""
     ways with (
         highway ~ footway|path
         or highway = cycleway and foot ~ yes|designated
-        or highway = path
       )
       and access !~ private|no and foot !~ no
 """.toElementFilterExpression() }
