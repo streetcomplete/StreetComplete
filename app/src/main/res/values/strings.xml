@@ -536,7 +536,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_fee_not_at_hours">Yes, but not…</string>
     <string name="quest_fee_hours_title">at the following times:</string>
     <string name="quest_housenumber_multiple_numbers">It has multiple house numbers</string>
-    <string name="quest_housenumber_multiple_numbers_description">"You can simply enter comma-separated house numbers or ranges.\nFor instance 1,3 or 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"You can simply enter comma–separated house numbers or ranges.\nFor instance 1,3 or 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">Stand (supports bike frame)</string>
     <string name="quest_bicycle_parking_type_wheelbender">Wheelbender (supports wheel only)</string>
     <string name="quest_bicycle_parking_type_shed">Shed</string>
@@ -649,7 +649,12 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_hangar">Hangar</string>
     <string name="quest_buildingType_hangar_description">storage for airplanes, helicopters or spacecraft</string>
     <string name="quest_buildingType_bunker">Bunker</string>
-
+    <string name="quest_buildingType_historic">Historic</string>
+    <string name="quest_buildingType_historic_description">building of historic value not serving any civic, religious or commercial functions</string>
+    <string name="quest_buildingType_abandoned">Abandoned</string>
+    <string name="quest_buildingType_abandoned_description">unused building whose original function or purpose is unknown</string>
+    <string name="quest_buildingType_ruins">Ruins</string>
+    <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
 
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
