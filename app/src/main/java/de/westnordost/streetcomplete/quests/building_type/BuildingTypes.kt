@@ -50,6 +50,7 @@ enum class BuildingType(val item: Item<String>) {
 
     FARM          (Item("farm",       R.drawable.ic_building_farm_house, R.string.quest_buildingType_farmhouse, R.string.quest_buildingType_farmhouse_description)),
     FARM_AUXILIARY(Item("farm_auxiliary", R.drawable.ic_building_barn,   R.string.quest_buildingType_farm_auxiliary, R.string.quest_buildingType_farm_auxiliary_description)),
+    SILO          (Item("man_made=silo",  R.drawable.ic_building_silo,   R.string.quest_buildingType_farm_auxiliary)),
     GREENHOUSE    (Item("greenhouse", R.drawable.ic_building_greenhouse, R.string.quest_buildingType_greenhouse)),
 
     SHED          (Item("shed",       R.drawable.ic_building_shed,       R.string.quest_buildingType_shed)),

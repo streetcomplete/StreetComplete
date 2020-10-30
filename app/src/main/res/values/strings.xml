@@ -635,6 +635,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_farmhouse_description">the residential building on a farm</string>
     <string name="quest_buildingType_farm_auxiliary">Farm building</string>
     <string name="quest_buildingType_farm_auxiliary_description">any building on a farm that is not a residential building</string>
+    <string name="quest_buildingType_silo">Silo</string>
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
 
     <string name="quest_buildingType_other">Other</string>
