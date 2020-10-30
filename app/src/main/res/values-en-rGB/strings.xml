@@ -261,20 +261,15 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Show more…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Auto-sync"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Zoom out"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Zoom in"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt;Ah, someone who cares about privacy, nice!"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"On"</string>
@@ -991,7 +986,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="action_reset">"Reset"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Long-press and move a quest to reorder its priority for download and display on the map."</string>
+    <string name="reorder_quest_priority_hint">"Long-press and move a quest to reorder its priority for display on the map."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Undo"</string>
@@ -1635,12 +1630,6 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"No other map application installed"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Change Overpass server"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Requires application restart to apply. May bypass censorship, for example in Russia."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"house number"</string>

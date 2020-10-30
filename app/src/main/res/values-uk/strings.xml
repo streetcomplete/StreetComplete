@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Показати ще…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Він має кілька різних форм"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Автосинхронізація"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Віддалити"</string>
@@ -289,15 +287,8 @@
 
 &lt;p&gt;&lt;b&gt;Використання даних&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Як було вказано вище, додаток взаємодіє безпосередньо з інфраструктурою OSM, а саме з &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; для завантаження завдань (анонімно) і з &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; для відправлення змін.&lt;br/&gt;
+Як було вказано вище, додаток взаємодіє безпосередньо з інфраструктурою OSM.
 Однак перед відправленням змін на сайт додаток перевіряє &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простий текстовий файл&lt;/a&gt; на моєму сервері, щоб переконатися, чи не було заборонено цій версії додатку відправляти буді-які зміни. Це зроблено для того, щоб у крайньому випадку версія з критичними помилками не псувала дані OSM.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Векторні зображення для показу карти беруться з
-&lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;сервісу векторних карт Mapzen&lt;/a&gt;, який є анонімним. Сервіс зберігає запити, щоб оцінити популярність певних районів для кешування і покращити швидкість роботи. Платформа Mapzen також зберігає IP-адреси і повністю знаходиться на Amazon, тому зобов'язана виконувати правила хостингу.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Це насправді ще не реалізовано, просто хочу сказати, що незабаром буде!:&lt;/i&gt;) Дані, які відображаються у топі лідерів та профілях, агрегуються з публічної інформації, доступної на OpenStreetMap. Дані беруться не з додатку, а з публічної історії правок користувачів OSM.
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1015,7 +1006,7 @@
     <string name="action_reset">"Скинути"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Тривало зажміть і перемістіть квест, щоб змінити пріоритет для завантаження та відображення на карті."</string>
+    <string name="reorder_quest_priority_hint">"Тривало зажміть і перемістіть квест, щоб змінити пріоритет для  відображення на карті."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Відмінити"</string>

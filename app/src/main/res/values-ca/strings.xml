@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Mostra'n més…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Té diferents formes"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sinc. automàtica"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Allunya't"</string>
@@ -289,7 +287,6 @@ La vostra ubicació només s'utilitza per a cercar automàticament missions que 
 
 &lt;p&gt;&lt;b&gt;Ús de dades&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Com s'ha esmentat, l'aplicació es comunica directament amb la infraestructura de l'OSM. És a dir, amb l'&lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; &lt;/a&gt;API Overpass&lt;/a&gt; per a baixar les missions (de forma anònima) i amb la &lt;a href = \"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API de l'OSM&lt;/a&gt; API per a pujar els canvis.&lt;br/&gt;
 No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fitxer de text pla&lt;/a&gt; en el meu servidor si té prohibit de pujar canvis. Aquesta és una mesura de precaució per a poder mantenir versions de l'aplicació que tinguin errors crítics i puguin malmetre les dades de l'OSM.&lt;br/&gt;
 &lt;/p&gt;"</string>
 
@@ -1008,7 +1005,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="action_reset">"Restablir"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Premeu i moveu una cerca per reordenar la prioritat per baixar-la i visualitzar-la al mapa."</string>
+    <string name="reorder_quest_priority_hint">"Premeu i moveu una cerca per reordenar la prioritat per visualitzar-la al mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfer"</string>
@@ -1722,12 +1719,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"No hi ha cap altra aplicació de mapes instal·lada"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Canvia el servidor Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Cal reiniciar l'aplicació per a aplicar-ho. Permet eludir la censura, per exemple en Rússia."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"número de casa"</string>

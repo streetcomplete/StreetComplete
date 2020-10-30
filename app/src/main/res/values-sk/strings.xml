@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Zobraziť viac..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Má viacero rôznych tvarov"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Auto synchronizácia"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Oddialiť"</string>
@@ -289,8 +287,7 @@ Vaša poloha sa používa iba pre automatické vyhľadávanie \"úloh\" vo Vaše
 
 &lt;p&gt;&lt;b&gt;Použitie dát&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Ako už bolo spomenuté, aplikácia priamo komunikuje s OSM infraštruktúrou. Čiže s &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; pre sťahovanie \"úloh\" (ktoré je anonymné) a s &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; pre nahrávanie zmien.&lt;br/&gt;
-Pred odoslaním zmien však aplikácia skontroluje pomocou &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového súboru&lt;/a&gt; na mojom serveri či jej nebolo zakázané nahrávanie zmien. Toto je preventívne opatrenie zabraňujúce verziám aplikácie, v ktorých sa našli kritické chyby, aby poškodili OSM dáta.&lt;br/&gt;
+Ako už bolo spomenuté, aplikácia priamo komunikuje s OSM infraštruktúrou. Pred odoslaním zmien však aplikácia skontroluje pomocou &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového súboru&lt;/a&gt; na mojom serveri či jej nebolo zakázané nahrávanie zmien. Toto je preventívne opatrenie zabraňujúce verziám aplikácie, v ktorých sa našli kritické chyby, aby poškodili OSM dáta.&lt;br/&gt;
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1008,7 +1005,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="action_reset">"Obnoviť"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Dlho stlačte a presuňte úlohu pre zmenu jej poradia pri sťahovní a zobrazení na mape."</string>
+    <string name="reorder_quest_priority_hint">"Dlho stlačte a presuňte úlohu pre zmenu jej poradia pri zobrazení na mape."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Späť"</string>

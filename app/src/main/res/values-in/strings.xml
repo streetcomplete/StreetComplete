@@ -171,10 +171,9 @@ semisal \"sesuai janji\". Jika tidak ada tandanya bukan berarti tidak ada jam bu
     <string name="quest_roofShape_title">"Apa bentuk dasar dari atap bangunan ini?"</string>
     <string name="quest_roofShape_select_one">"Pilih satu:"</string>
     <string name="quest_roofShape_show_more">"Tampilkan lebih banyak..."</string>
-    <string name="quest_roofShape_answer_many">"Punya beberapa bentuk"</string>
 
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sinkron otomatis"</string>
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
+    <string name="quest_roofShape_answer_many">"Punya beberapa bentuk"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Perkecil"</string>
@@ -200,7 +199,7 @@ Aplikasi ini tidak membagi lokasi GPSmu dengan siapapun. Ini digunakan hanya unt
 
 &lt;p&gt;&lt;b&gt;Penggunaan Data&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Seperti yang disebutkan, aplikasi ini langsung berkomunikasi dengan infrastruktur OSM. Yaitu, dengan &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; untuk mengunduh pencarian (secara anonim) dan dengan &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; untuk mengunggah perubahan.&lt;br/&gt;
+Seperti yang disebutkan, aplikasi ini langsung berkomunikasi dengan infrastruktur OSM. 
 Tetapi, sebelum mengunggah perubahan, aplikasi mengecek &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;teks file sederhana&lt;/a&gt; di serverku kalau saja versi aplikasi sudah dilarang untuk mengunggah perubahan. Ini adalah langkah pencegahan untuk menjaga versi aplikasi yang ternyata mempunyai bug kritis yang dapat merusak data OSM.&lt;/p&gt;
 "</string>
 
@@ -585,7 +584,9 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_enabled">"Nyala"</string>
     <string name="quest_type">"Jenis Pencarian"</string>
     <string name="action_reset">"Reset"</string>
-    <string name="reorder_quest_priority_hint">"Tekan lama dan pindahkan pencarian untuk mengurutkan ulang prioritas unduhan dan tampilan di peta"</string>
+
+    <!-- Fuzzy -->
+    <string name="reorder_quest_priority_hint">"Tekan lama dan pindahkan pencarian untuk mengurutkan ulang prioritas tampilan di peta"</string>
     <string name="undo_confirm_positive">"Urungkan"</string>
     <string name="undo_confirm_negative">"Batal"</string>
     <string name="quest_dietType_vegetarian_name_title">"Apa %s punya menu vegetarian?"</string>
@@ -857,8 +858,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_placeName_title_name">"Apa nama tempat ini? (%s)"</string>
     <string name="action_open_location">"Buka lokasi di aplikasi lain"</string>
     <string name="map_application_missing">"Tidak ada aplikasi peta lain terinstal"</string>
-    <string name="pref_title_overpass_url_select">"Ganti server Overpass"</string>
-    <string name="pref_title_overpass_url_info">"Penerapan memerlukan restart aplikasi. Dapat melewati sensor, seperti di Rusia"</string>
     <string name="label_housenumber">"nomor rumah"</string>
     <string name="label_blocknumber">"nomor blok"</string>
     <string name="quest_busStopShelter_covered">"Seluruhnya tertutup"</string>

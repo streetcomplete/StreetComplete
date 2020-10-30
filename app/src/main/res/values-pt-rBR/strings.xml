@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Mostre mais…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Auto-Sincronização"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Afastar"</string>
@@ -289,9 +287,7 @@ O app não compartilha sua localização GPS com ninguém.  A sua localização 
 
 &lt;p&gt;&lt;b&gt;Uso de dados&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-P&gt;
-Como mencionado, o aplicativo se comunica diretamente com a infraestrutura do OSM. Ou seja, com a &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; para baixar missões (que é anônimo) e com o &lt;a href = \"http: / /wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; para enviar alterações.&lt;br/&gt;
-No entanto, antes de carregar suas alterações, o app verifica com um &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;arquivo de texto simples&lt;/a&gt; no meu servidor se ele foi banido de enviar alterações. Esta é uma medida de precaução para ser capaz de manter versões do aplicativo que acabam por ter bugs críticos de possivelmente corrompendo dados do OSM.&lt;br/&gt;
+Como mencionado, o aplicativo se comunica diretamente com a infraestrutura do OSM. No entanto, antes de carregar suas alterações, o app verifica com um &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;arquivo de texto simples&lt;/a&gt; no meu servidor se ele foi banido de enviar alterações. Esta é uma medida de precaução para ser capaz de manter versões do aplicativo que acabam por ter bugs críticos de possivelmente corrompendo dados do OSM.&lt;br/&gt;
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1009,7 +1005,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="action_reset">"Limpar"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Pressione e mova a missão para reorganizar a prioridade de download e apresentação no mapa."</string>
+    <string name="reorder_quest_priority_hint">"Pressione e mova a missão para reorganizar a prioridade de apresentação no mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfazer"</string>
@@ -1725,12 +1721,6 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="map_application_missing">"Nenhuma outra aplicação de mapa instalada"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Mudar o servidor Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Precisa reiniciar a aplicação para ativar.  Pode contornar censura, por exemplo na Rússia."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"número da casa"</string>
 
     <!-- Fuzzy -->
@@ -2076,10 +2066,6 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="quest_surface_detailed_answer_impossible">"Múltiplas superfícies..."</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Tem certeza de que é impossível especificar a superfície? Observe a opção de resposta \"Difere ao longo do caminho\", que permite cortar o caminho onde a superfície muda. Use \"Não posso dizer\" se houver uma única superfície, mas não estiver disponível como uma resposta."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Por favor, especifique resumidamente a natureza da superfície aqui, por exemplo \"areia com manchas de paralelepípedos\". O comprimento do texto é limitado a 255 caracteres."</string>
-    <string name="quest_surface_detailed_name_title">"Qual superfície específica a estrada %s tem aqui?"</string>
-    <string name="quest_surface_detailed_square_name_title">"Que superfície específica o quadrado %s tem aqui?"</string>
-    <string name="quest_surface_detailed_title">"Que superfície específica tem este pedaço de estrada?"</string>
-    <string name="quest_surface_detailed_square_title">"Que superfície específica este quadrado tem aqui?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
@@ -2113,7 +2099,6 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="quest_busStopBench_name_title">"A parada de ônibus %s tem um banco?"</string>
     <string name="quest_summit_register_title">"Existe um registro de conferência em %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro de um edifício?"</string>
-    <string name="dialog_tutorial_download">"Com a sincronização automática desativada, as missões não são baixadas automaticamente. Para fazer isso manualmente, use o botão \"%s\" no menu do local que deseja baixar."</string>
     <string name="about_title_translate">"Ajude a traduzir esse aplicativo"</string>
     <string name="about_description_translate">"%1$s é traduzido %2$d%%"</string>
     <string name="quest_oneway2_title">"Esta é uma rua de mão única? Em que direção?"</string>

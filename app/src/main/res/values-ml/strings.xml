@@ -260,11 +260,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"കൂടുതൽ കാണിക്കുക…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"ഇതിന് പല വ്യത്യസ്ത രൂപങ്ങൾ ഉണ്ട്"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"യാന്ത്രിക സമന്വയം"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"സൂം ഔട്ട് ചെയ്യുക"</string>
@@ -290,7 +288,7 @@
 
 &lt;p&gt;&lt;b&gt;ദത്തത്തിന്റെ ഉപയോഗം&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-സൂചിപ്പിച്ചപോലെ, അപ്ലിക്കേഷൻ ഒഎസ്‍മ്മുമായി നേരിട്ടാണ് ആശയവിനിമയം നടത്തുന്നത്. അതായത് &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;ഓവർപാസ്സ് API&lt;/a&gt; for downloading quests  (which is anonymous) അതോടൊപ്പം &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;ഒഎസ്എം API&lt;/a&gt; മാറ്റൾ അപ്പ്ലോഡ്ചെയ്യുന്നതിന്.&lt;br/&gt;
+സൂചിപ്പിച്ചപോലെ, അപ്ലിക്കേഷൻ ഒഎസ്‍മ്മുമായി നേരിട്ടാണ് ആശയവിനിമയം നടത്തുന്നത്. 
 എന്നിരുന്നാലും, നിങ്ങളുടെ മാറ്റങ്ങൾ അപ്‌ലോഡ് ചെയ്യുന്നതിനു മുമ്പ്, അപ്ലിക്കേഷൻ a&lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; എന്തെങ്കിലും മാറ്റങ്ങൾ അപ്‌ലോഡുചെയ്യുന്നതിൽ നിന്ന് ഇത് നിരോധിച്ചിട്ടുണ്ടോ എന്ന് എന്റെ സെർവറിൽ ഇവ പരിശോധിക്കുന്നു. ഒ‌എസ്‌എം ഡാറ്റയെ ദുഷിപ്പിക്കുന്നതിൽ നിന്ന് ഗുരുതരമായ ബഗുകളുള്ള അപ്ലിക്കേഷന്റെ പതിപ്പുകൾ സൂക്ഷിക്കാൻ കഴിയുന്ന ഒരു മുൻകരുതൽ നടപടിയാണിത്.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1699,12 +1697,6 @@
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"മാപ്പ് കാണാൻ കഴിയുന്ന വേറൊരു ആപ്പും ഈ ഫോണിൽ ചേർത്തിട്ടില്ല"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"ഓവർപാസ് സെർവർ മാറ്റുക"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"പ്രയോഗത്തിൽ വരുത്തുന്നതിനായി അപ്ലികേഷൻ പുനരാരംഭിക്കേണ്ടിവരും. ഇത് സെൻസ‍ഷിപ്പിനെ ബൈപ്പാസ് ചെയ്തേക്കാം. ഉദാഹരണം റഷ്യ"</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"വീട്ട് നമ്പർ"</string>

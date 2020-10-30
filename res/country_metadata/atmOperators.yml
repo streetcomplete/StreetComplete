@@ -748,12 +748,12 @@ BY:
   - Приорбанк # 177
   - Белагропромбанк # 177
   - БПС-Сбербанк # 167
-  - Банк Дабрабыт # 55
   - Белгазпромбанк # 54
+  - Банк Дабрабыт # 51
   - ОАО «Белагропромбанк» # 28
-  - БНБ-Банк # 25
   - Альфа-Банк # 25
-  - Паритетбанк # 22
+  - БНБ-Банк # 24
+  - Паритетбанк # 21
   - ОАО «Белгазпромбанк» # 20
   - Белвнешэкономбанк # 18
   - Технобанк # 15
@@ -778,11 +778,12 @@ BY:
   - БПС # 6
   - беларусбанк # 5
   - ОАО «Белинвестбанк» # 5
-  - ОАО «Банк Дабрабыт» # 5
   - БПС-сбербанк # 5
+  - БНБ # 5
   - Альфабанк # 5
   - Belinvestbank # 5
   - '"ОАО ""Белагропромбанк"""' # 5
+  - ОАО «Банк Дабрабыт» # 4
   - БелАгроПромБанк # 4
   - Банк ВТБ # 4
   - БТА Банк # 4
@@ -1283,8 +1284,8 @@ CZ:
   - Airbank a.s. # 2
 DE:
   - Sparkasse # 774
-  - Postbank # 656
-  - Euronet # 409
+  - Postbank # 657
+  - Euronet # 408
   - Volksbank # 318
   - Deutsche Bank # 206
   - ING-DiBa # 118
@@ -1710,7 +1711,7 @@ FX:
   - Société Générale # 401
   - Caisse d'Épargne # 323
   - LCL # 300
-  - Crédit Mutuel # 289
+  - Crédit Mutuel # 290
   - BNP Paribas # 288
   - CIC # 249
   - Banque Populaire # 191
@@ -1777,8 +1778,8 @@ GB:
   - Cashzone # 61
   - Lloyds # 60
   - TSB # 51
-  - Yorkshire Bank # 48
   - Lloyds TSB # 48
+  - Yorkshire Bank # 46
   - Clydesdale Bank # 46
   - Bank of Scotland # 40
   - Ulster Bank # 39
@@ -1805,9 +1806,9 @@ GB:
   - ASDA # 9
   - cashzone # 8
   - Sainsbury # 8
+  - Notemachine # 8
   - HBOS # 8
   - Alliance & Leicester # 8
-  - Notemachine # 7
   - National Westminster Bank Plc # 7
   - Morrisons # 7
   - Marks & Spencer # 7
@@ -1822,6 +1823,7 @@ GB:
   - natwest # 5
   - link # 5
   - barclays # 5
+  - Virgin Money # 5
   - The Royal Bank of Scotland # 5
   - Sainsburys Bank # 5
   - One Stop # 5
@@ -2442,10 +2444,10 @@ IN-KA:
   - Andhra Bank ATM # 2
   - AXIS Bank ATM # 2
 IN-KL:
-  - SBI # 105
+  - SBI # 106
   - State Bank of India # 75
   - Federal Bank # 73
-  - SBI ATM # 54
+  - SBI ATM # 53
   - South Indian Bank # 47
   - Canara Bank # 32
   - Federal Bank ATM # 23
@@ -2458,8 +2460,8 @@ IN-KL:
   - federal bank # 13
   - SBT # 13
   - Canara Bank ATM # 12
+  - south indian bank # 11
   - ICICI Bank # 11
-  - south indian bank # 10
   - canara bank # 10
   - State Bank # 10
   - HDFC Bank # 10
@@ -2469,10 +2471,10 @@ IN-KL:
   - State Bank of Travancore # 9
   - ICICI Bank ATM # 9
   - State Bank Of India ATM # 8
+  - HDFC # 8
   - Federal bank # 8
   - State Bank of India ATM # 7
   - STATE BANK OF INDIA # 7
-  - HDFC # 7
   - CANARA BANK ATM # 7
   - federal bank atm # 6
   - Indian Bank # 6
@@ -2726,7 +2728,7 @@ IN-TG:
   - HDFC # 13
   - HDFC Bank # 9
   - Bank of India # 9
-  - State Bank of India # 6
+  - State Bank of India # 7
   - Vijaya Bank # 4
   - IDBI Bank # 4
   - Citibank # 4
@@ -3537,7 +3539,7 @@ LS:
   - Post Bank # 2
   - NedBank ATM # 2
 LT:
-  - SEB # 287
+  - SEB # 286
   - Swedbank # 152
   - DNB # 42
   - Luminor # 14
@@ -4172,7 +4174,7 @@ PG:
   - ANZ Bank # 2
 PH:
   - BPI # 92
-  - BDO # 77
+  - BDO # 78
   - Bank of the Philippine Islands # 65
   - Metrobank # 52
   - Land Bank of the Philippines # 45
@@ -4278,7 +4280,7 @@ PK:
   - Askari bank # 2
   - Allied bank # 2
 PL:
-  - Euronet # 2710
+  - Euronet # 2709
   - PKO BP # 529
   - Bank Millennium S.A. # 217
   - Planet Cash # 195
@@ -4523,7 +4525,7 @@ RU:
   - Киви # 98
   - Райффайзенбанк # 90
   - Райффайзен # 90
-  - Бинбанк # 90
+  - Бинбанк # 87
   - Санкт Петербург # 85
   - Почта Банк # 82
   - Челябинвестбанк # 81
@@ -5080,7 +5082,7 @@ TZ:
   - Barclays Bank # 2
 UA:
   - ПриватБанк # 1553
-  - Альфа-Банк # 730
+  - Альфа-Банк # 728
   - Ощадбанк # 307
   - Приватбанк # 273
   - Райффайзен Банк Аваль # 249
@@ -5352,6 +5354,7 @@ US-GA:
   - Fidelity Bank # 2
   - Delta Community Credit Union # 2
   - Bank of North Georgia # 2
+  - Bank OZK # 2
 US-HI:
   - First Hawaiian Bank # 14
   - Bank of Hawaii # 4

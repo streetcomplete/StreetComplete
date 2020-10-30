@@ -208,11 +208,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"نمایش بیشتر..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"این سقف چند شکل مختلف دارد"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"همگام سازی خودکار"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"کوچک نمایی"</string>
@@ -237,16 +235,8 @@
 &lt;/p&gt;
 
 &lt;p&gt; &lt;b&gt; استفاده از داده &lt;/ b&gt; &lt;/ p&gt;
-&lt;p&gt;
-همانطور که ذکر شد، برنامه به طور مستقیم برای بارگذاری تغییرات با زیرساخت OSM ارتباط برقرار می کند. یعنی با &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; برای&lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 
-&lt;br/&gt;
+&lt;p&gt; 
 با این حال، قبل از بارگذاری تغییرات شما ، برنامه با یک &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; سند متنی ساده &lt;/a&gt; در سرور بررسی  می کند، برای بارگذاری هر تغییری آیا این تغییرات مجاز هست یا خیر . این یک اقدام امنیتی است که می تواند ویرایش های برنامه را از خرابکاری های احتمالی حفظ کند و از اشکالات بحرانی در داده‌های OSM جلوگیری نماید. &lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-برای نمایش نقشه، جزئیات بُرداری از منبع &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt; بازیابی می شوند که به صورت ناشناس می باشد. سامانه درخواست جزئیات نقشه برای بازبینی مناطق ، پیش از ذخیره سازی و بهبود عملکرد تغییرات انجام شده فعالیت می کنند. زیرساخت آنها همچنین آدرس های IP را ذخیره می کند و میزبانی آنها در وبگاه آمازون می باشد تا آنها هر اقدامی که صلاح می دانند ، انجام دهند.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt; موارد فوق الذکر اجرا نمی شود، فقط می خواهیم خاطرنشان کنیم که چه مواردی را می‌بایست به یاد داشته باشید: &lt;/ i&gt;) اطلاعات شما در مراکز ذخیره و سرورهای  موجود در OpenStreetMap جمع آوری می شود. اطلاعات از این برنامه بوجود نمی آیند بلکه به طور کلی از تاریخ اعمال ویرایش های عمومی کاربران OSM بوجود می آیند.
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1680,12 +1670,6 @@
     <string name="map_application_missing">"برنامه نقشه دیگری نصب نگردیده‌است"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"تغییر Overpass server"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"برنامه برای اجرا نیاز به بازنشانی دارد. امکان دارد به علت سیاست سانسور باشد، مثلا در روسیه."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"شماره خانه"</string>
 
     <!-- Fuzzy -->
@@ -2240,10 +2224,6 @@
     <string name="quest_surface_detailed_answer_impossible">"چندین سطح ..."</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"آیا مطمئن هستید که تعیین جنس سطوح ناممکن است؟ گزینه \"اختلاف جنس سطوح در طول مسیر\" را مدنظر قرار دهید، تا بتوانید با جدا کردن مسیر اختلاف جنس سطح را مشخص کنید. لطفاً اگر جنس یکسان وجود دارد از پاسخ  \"نمی توان بیان کرد\" استفاده کنید اما به عنوان یک پاسخ در دسترس نیست."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"لطفاً به طور خلاصه ماهیت جنس سطح را در اینجا مشخص کنید ، به عنوان مثال \"ماسه ای با قطعات سنگفرش\". طول متن به 255 نویسه محدود شده است."</string>
-    <string name="quest_surface_detailed_name_title">"چه جنس سطح مشخصی درجاده %s وجود دارد؟"</string>
-    <string name="quest_surface_detailed_square_name_title">"چه جنس سطح مشخصی در میدان %s وجود دارد؟"</string>
-    <string name="quest_surface_detailed_title">"جنس سطح این قسمت از جاده چیست؟"</string>
-    <string name="quest_surface_detailed_square_title">"جنس سطح این میدان چیست؟"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"بین‌المللی"</string>
@@ -2275,7 +2255,6 @@
     <string name="quest_busStopBench_name_title">"آیا ایستگاه اتوبوس %s نیمکت دارد؟"</string>
     <string name="quest_summit_register_title">"آیا امکان ثبت نام میزگرد در %s وجود دارد؟"</string>
     <string name="quest_is_defibrillator_inside_title">"آیا داخل ساختمان دستگاه شوک الکتریکی موجود است؟"</string>
-    <string name="dialog_tutorial_download">"با خاموش کردن همگام سازی خودکار، جُستارها به طور خودکار بارگیری نمی شوند. برای انجام این کار به صورت دستی، از دکمه \"%s\" در منو مکان دلخواه استفاده کنید."</string>
     <string name="about_title_translate">"به ترجمه این برنامه کمک کنید"</string>
     <string name="about_description_translate">"%1$s  %2$d%% ترجمه شده است"</string>
     <string name="quest_oneway2_title">"آیا این خیابان یک طرفه است؟ به کدام سو؟"</string>

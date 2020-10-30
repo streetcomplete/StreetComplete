@@ -241,11 +241,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Vis mer..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Det har flere forskjellige former"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Automatisk synkroniseringt"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Forminsk"</string>
@@ -254,7 +252,29 @@
     <string name="map_btn_zoom_in">"Forstørr"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt;Ah, noen som bryr seg om personvern - flott! Jeg tror jeg bare har gode nyheter til deg:&lt;/p&gt;&lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Merk først at du med denne appen gir faktiske, dirkete bidrag til OpenStreetMap.&lt;/br&gt;Alt du bidrar med blir lagt direkte til kartet; det er ikke noen tredjepart mellom appen og OSM-infrastrukturen, slik det for eksempel er med &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; og &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Det er ikke mulig å redigere OpenStreetMap anonymt, så alle endringene dine blir gjort med OSM-brukerkontoen din. Dette medfører at tidspunktet, innholdet og (implisitt) stedet du var på blir synlig for alle på OpenStreetMap-nettstedet, og blir knyttet til brukerkontoen din.&lt;/p&gt;&lt;b&gt;Posisjon&lt;/b&gt;&lt;br/&gt;&lt;p&gt;Appen deler ikke GPS-posisjonen din med noen. Den blir bare brukt til å automatisk søke opp oppdrag og vise (og dermed laste ned) kartet der du er.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Databruk&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Som nevnt kommuniserer appen direkte med OSM-infrastrukturen, nærmere bestemt med  &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass-API-et&lt;/a&gt; for nedlasting av oppdrag (dette er anonymt) og med &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM-API-et&lt;/a&gt; for opplasting av endringer.&lt;br/&gt; Men før appen laster opp endringen dine sjekker den via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;en enkel tekstfil&lt;/a&gt; på webserveren min om den er utestengt fra å laste opp endringer. Dette er en «føre var»-funksjon for å hindre at versjoner av appen som har kristiske feil kan komme til å ødelegge OSM-data.&lt;br/&gt;"</string>
+    <string name="privacy_html">"&lt;p&gt;Ah, noen som bryr seg om personvern - flott! Jeg tror jeg bare har gode nyheter til deg:&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;Direkte bidrag&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Merk først at du med denne appen gir faktiske, dirkete bidrag til OpenStreetMap.&lt;/br&gt;
+Alt du bidrar med blir lagt direkte til kartet; det er ikke noen tredjepart mellom appen og OSM-infrastrukturen, slik det for eksempel er med &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; og &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;
+Det er ikke mulig å redigere OpenStreetMap anonymt, så alle endringene dine blir gjort med OSM-brukerkontoen din. Dette medfører at tidspunktet, innholdet og (implisitt) stedet du var på blir synlig for alle på OpenStreetMap-nettstedet, og blir knyttet til brukerkontoen din.
+&lt;/p&gt;
+&lt;b&gt;Posisjon&lt;/b&gt;
+&lt;br/&gt;
+&lt;p&gt;Appen deler ikke GPS-posisjonen din med noen. Den blir bare brukt til å automatisk søke opp oppdrag og vise (og dermed laste ned) kartet der du er.
+&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;Databruk&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Som nevnt kommuniserer appen direkte med OSM-infrastrukturen.
+&lt;br/&gt;
+Men før appen laster opp endringen dine sjekker den via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;en enkel tekstfil&lt;/a&gt; på webserveren min om den er utestengt fra å laste opp endringer. Dette er en «føre var»-funksjon for å hindre at versjoner av appen som har kristiske feil kan komme til å ødelegge OSM-data.&lt;br/&gt;
+&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"På"</string>
@@ -970,7 +990,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="action_reset">"Nullstil"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Trykk og hold for å endre rekkefølge på oppdragstypene. Rekkefølgen avgjør prioritering for nedlasting og visning på kartet."</string>
+    <string name="reorder_quest_priority_hint">"Trykk og hold for å endre rekkefølge på oppdragstypene. Rekkefølgen avgjør prioritering for visning på kartet."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Angre"</string>
@@ -1679,12 +1699,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Ingen andre kartprogram installert"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Bytt Overpass-server"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Krever omstart av applikasjonen. Kan omgå sensur, for eksempel i Russland."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"Husnummer"</string>

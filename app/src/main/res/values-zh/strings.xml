@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"显示更多…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"它有多种不同形状"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"自动同步"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"缩小"</string>
@@ -289,7 +287,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
 &lt;p&gt;&lt;b&gt;资料使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-以上提到，此 APP 直接和 OpenStreetMap 的设施直接沟通，会使用 &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下载任务(是匿名的)，且使用 &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上传资料。&lt;br/&gt;
 上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，这样一来，如果 APP 的版本更变后有严重的错误出现，OpenStreetMap 的资料不会受污染。&lt;br/&gt;
 &lt;/p&gt;"</string>
 
@@ -1691,9 +1688,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"未安装其他地图应用程序"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"更改 Overpass 服务器"</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"房屋数量"</string>

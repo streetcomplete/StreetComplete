@@ -260,11 +260,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Mostrar mais..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sincronização automática"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Afastar"</string>
@@ -290,7 +288,7 @@ A aplicação não partilha a sua localização GPS com ninguém. Esta apenas é
 
 &lt;p&gt;&lt;b&gt;Utilização de dados&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Como mencionado, a aplicação comunica diretamente com a infraestrutura do OpenStreetMap. Isto é, com a &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;API do Overpass&lt;/a&gt; para descarregar desafios (de forma anónima) e com a &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API do OpenStreetMap&lt;/a&gt; para enviar as alterações.&lt;br/&gt;
+Como mencionado, a aplicação comunica diretamente com a infraestrutura do OpenStreetMap. 
 Contudo, antes enviar as suas alterações, a aplicação confirma com &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;um ficheiro de texto simples&lt;/a&gt; no meu servidor para averiguar se a versão do StreetComplete que usa foi banida de forma a impedir o envio de alterações. Isto é uma medida preventiva, para impedir que certas versões da aplicação venham a ter erros graves detetados posteriormente e que possam corromper os dados do OpenStreetMap.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1008,7 +1006,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="action_reset">"Repor"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Pressionar durante 1 segundo num desafio para o mover, reordenar a prioridade de descarregamento ou a sua visualização no mapa."</string>
+    <string name="reorder_quest_priority_hint">"Pressionar durante 1 segundo num desafio para o mover, reordenar a prioridade de sua visualização no mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfazer"</string>
@@ -1719,12 +1717,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Não há outra app de mapas instalada"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Alterar servidor Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Requer que a app seja reiniciada. Pode contornar a censura, como por exemplo na Rússia"</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"número de porta"</string>

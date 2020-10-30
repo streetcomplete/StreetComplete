@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Rodyti daugiau..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Jis turi kelias skirtingas formas"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Automatinė sinchronizacija"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Nutolinti"</string>
@@ -289,15 +287,9 @@ Jūsų vieta naudojama tik automatinei užduočių aplink jus paieškai. Nesijau
 
 &lt;p&gt;&lt;b&gt;Duomenų naudojimas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. Per &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; atsisiunčiamos užduotys (o tai anonimiška), o per &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; įkeliami pakeitimai.&lt;br/&gt;
-Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;paprastą tekstinį failą&lt;/a&gt; mano serveryje, kurio pagalba patikrina, ar jai nėra uždrausta įkelti pakeitimus. Tai atsargos priemonė, kad jei paaiškėja, kad kažkuri aplikacijos versija turi kritinių klaidų, jai nebūtų leista gadinti OSM duomenų.&lt;br/&gt;
+Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;paprastą tekstinį failą&lt;/a&gt; mano serveryje, kurio pagalba patikrina, ar jai nėra uždrausta įkelti pakeitimus. Tai atsargos priemonė, kad jei paaiškėja, kad kažkuri aplikacijos versija turi kritinių klaidų, jai nebūtų leista gadinti OSM duomenų.&lt;br/&gt;
 &lt;/p&gt;
-&lt;p&gt;
-Žemėlapio rodymui, vektorinės kaladėlės atsiunčiamos iš &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vektorinių kaladėlių paslaugos&lt;/a&gt;, kuri yra anoniminė. Užklausos rašomos į žurnalą, kad būtų žinoma, kurios vietovės populiarios išankstiniam sukūrimui ir greitaveikos patobulinimams. Jų platforma taipogi įrašo ir IP adresą bei paslaugas teikia per Amazon, kuri gali nustatyti, kas daroma su šia informacija.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Tai kol kas dar nepadaryta, bet noriu informuoti, kas bus artimiausiu metu:&lt;/i&gt;) Duomenys rodomi lyderių lentoje ir profilyje agreguojami iš viešai prieinamos OpenStreetMap informacijos. Duomenys imami ne iš šios aplikacijos, bet iš viešos OSM naudotojų pakeitimų istorijos.
-&lt;/p&gt;"</string>
+"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"Įjungta"</string>
@@ -1014,7 +1006,7 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="action_reset">"Atstatyti"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Ilgai spauskite ir tempkite užduotį, kad pakeistumėte jos prioritetą atsiuntimui ir rodymui žemėlapyje."</string>
+    <string name="reorder_quest_priority_hint">"Ilgai spauskite ir tempkite užduotį, kad pakeistumėte jos prioritetą rodymui žemėlapyje."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Atšaukti"</string>
@@ -1727,12 +1719,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Nėra įdiegtų kitų žemėlapių programėlių"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Keisti Overpass serverį"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Reikalauja iš naujo paleisti programėlę. Gali išvengti cenzūros pavyzdžiui Maskvoje."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"namo numeris"</string>

@@ -416,6 +416,7 @@ DE:
   - innogy eMobility Solutions GmbH # 21
   - IKEA # 21
   - Stadtwerke Osnabrück # 20
+  - Stadtwerke Düsseldorf # 20
   - RheinEnergie # 20
   - Kreiswerke Main-Kinzig GmbH # 20
   - Ionity GmbH # 20
@@ -426,7 +427,6 @@ DE:
   - Regensburger Energie- und Wasserversorgung AG & Co KG # 19
   - Fastned # 19
   - eins energie in sachsen # 18
-  - Stadtwerke Düsseldorf # 18
   - NewMotion # 18
   - envia M # 17
   - Stadtwerke Bielefeld # 17
@@ -596,7 +596,7 @@ FI:
 FX:
   - Bouygues Énergies et Services # 843
   - Izivia # 591
-  - Freshmile # 401
+  - Freshmile # 403
   - Clem # 124
   - Sodetrel Mobilité # 115
   - Mouv Élec Var # 111
@@ -613,7 +613,7 @@ FX:
   - SIPLEC # 61
   - SYME05 # 56
   - Ionity # 55
-  - Séolis # 51
+  - Séolis # 52
   - Morbihan énergies # 44
   - SEY 78 # 43
   - Renault # 40
@@ -666,7 +666,7 @@ FX:
   - CAPP # 5
 GB:
   - Ecotricity # 69
-  - Source London # 48
+  - Source London # 49
   - Pod Point # 34
   - Tesla Motors Inc. # 27
   - Tesla # 25
@@ -902,8 +902,8 @@ KH:
 LK:
   - Spark EV # 2
 LT:
+  - Ignitis # 6
   - Spark # 5
-  - Ignitis # 5
   - Ignitis grupė # 4
   - UAB „Elinta“ # 2
   - LAKD # 2
@@ -1244,7 +1244,7 @@ SI:
   - EM # 2
 SK:
   - ZSE # 42
-  - GreenWay # 41
+  - GreenWay # 40
   - ejoin # 36
   - ZSE Drive # 8
   - ebajk connect # 6

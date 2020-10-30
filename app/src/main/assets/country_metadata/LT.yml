@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [SEB, Swedbank, DNB, Luminor, Šiaulių bankas, Nordea, Citadele, Nordea/Parex/Danske/Ūkio, Danske Bank,
    AB SEB bankas, '"AB ""Swedbank"""', Perlas, Luminor/Citadele, AB Swedbank]
-chargingStationOperators: [Spark, Ignitis, Ignitis grupė, UAB „Elinta“, LAKD, Ignitis ON, Iginitis group, Elinta Charge]
+chargingStationOperators: [Ignitis, Spark, Ignitis grupė, UAB „Elinta“, LAKD, Ignitis ON, Iginitis group, Elinta Charge]
 clothesContainerOperators: [UAB „VAATC“]
 isLivingStreetKnown: true
 isSlowZoneKnown: true

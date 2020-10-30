@@ -253,11 +253,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Továbbiak…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Több különböző alakja van"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Automatikus szinkronizálás"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Kicsinyít"</string>
@@ -283,7 +281,7 @@ Az alkalmazás senkivel sem osztja meg a helyzetedet. Kizárólag arra használj
 
 &lt;p&gt;&lt;b&gt;Adathasználat&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Ahogy említettük, az alkalmazás közvetlenül kommunikál az OSM infrastruktúrával. Vagyis az &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt;-t használja a kérdések letöltéséhez (ami névtelen) és az &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt;-t a változtatások feltöltéséhez.&lt;br/&gt;
+Ahogy említettük, az alkalmazás közvetlenül kommunikál az OSM infrastruktúrával.
 A módosításaid feltöltése előtt azonban az alkalmazás először leellenőrzi egy &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;egyszerű szövegfájl&lt;/a&gt; alapján a szerveremen, hogy nincs-e letiltva számára a módosítások feltöltése. Ez egy óvintézkedés, amely kiszűri az alkalmazás azon verzióit, amelyekben olyan súlyos programhibák vannak, amelyek potenciálisan károsíthatnák az OSM adatait.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -989,7 +987,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="action_reset">"Alaphelyzetbe állítás"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Nyomd hosszan, majd mozgasd a kérdést, hogy átrendezd a prioritását a letöltéshez és a térképen való megjelenítéshez."</string>
+    <string name="reorder_quest_priority_hint">"Nyomd hosszan, majd mozgasd a kérdést, hogy átrendezd a prioritását a térképen való megjelenítéshez."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Visszavonás"</string>
@@ -1698,12 +1696,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="map_application_missing">"Nem található másik térképalkalmazás"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Overpass szerver módosítása"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Az alkalmazás újraindítása szükséges. Lehet, hogy ezzel meg tudja kerülni a cenzúrát, például Oroszországban."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"házszám"</string>
 
     <!-- Fuzzy -->
@@ -2278,10 +2270,6 @@ szintek"</string>
     <string name="quest_surface_detailed_answer_impossible">"Többféle felület…"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Biztos, hogy lehetetlen meghatározni a felületet? Ne feledd, az \"Az út mentén változik\" válasz esetén az utat elvághatod az útburkolat változásainál. Kérlek, akkor válaszd a \"Nem tudom\" lehetőséget, ha egyetlen útburkolat jellemzi, de az nem szerepel a válaszok között."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Kérlek, röviden jellemezd az útburkolatot, például \"Homok, macskaköves részekkel\". A szöveg hossza legfeljebb 255 karakter lehet."</string>
-    <string name="quest_surface_detailed_name_title">"Mi ennek az útnak a pontos burkolata? %s"</string>
-    <string name="quest_surface_detailed_square_name_title">"Mi ennek a térnek a pontos burkolata? %s"</string>
-    <string name="quest_surface_detailed_title">"Mi ennek az útszakasznak a pontos burkolata?"</string>
-    <string name="quest_surface_detailed_square_title">"Mi ennek a térnek a pontos burkolata?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"nemzetközi"</string>
@@ -2315,7 +2303,6 @@ szintek"</string>
     <string name="quest_busStopBench_name_title">"Van-e pad a(z) %s buszmegállóban?"</string>
     <string name="quest_summit_register_title">"Van-e csúcsnapló itt: %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Van-e defibrillátor (AED) egy épületben?"</string>
-    <string name="dialog_tutorial_download">"Ha az automatikus szinkronizálás ki van kapcsolva, a kérdések nem töltődnek le automatikusan. Ha ezt kézzel szeretnéd megtenni, akkor használd a „%s” gombot a menüben a térkép azon helyén, melyet le szeretnél tölteni."</string>
     <string name="about_title_translate">"Segíts lefordítani ezt az alkalmazást"</string>
     <string name="about_description_translate">"%1$s le van fordítva %2$d%%"</string>
     <string name="quest_traffic_signals_sound_title">"Van itt vakoknak szóló hangjelzés?"</string>

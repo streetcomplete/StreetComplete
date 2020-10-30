@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Erakutsi gehiago..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Hainbat forma desberdin ditu"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sinkronizaio automatikoa"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Urrundu zooma"</string>
@@ -289,15 +287,8 @@ Kokalekua inguruko erronkak automatikoki bilatzeko erabiltzen da, aplikazioak ez
 
 &lt;p&gt;&lt;b&gt;Datuen erabilera&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Esan bezala, zuzenean OSM azpiegiturarekin komunikatzen da aplikazioa. Hau da, &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt;-arekin erronkak deskargatzeko (anonimoa da) eta &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt;-arekin erantzunak igotzeko.&lt;br/&gt;
 Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;testu soileko fitxategi&lt;/a&gt; batean aldaketak igotzea debekatu zaion egiaztatzen du. Hau badaezpadako neurri bat da arazo larriak dituztelako OSM datuak zapuzteko arriskua duten bertsioak kanpo uzteko. &lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Mapa bistaratzeko, bektore lauzak &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen bektore lauzen zerbitzu&lt;/a&gt;tik hartzen dira, anonimoa da. Zerbitzariak lauzen eskaerak egunkarian gordetzen ditu eskari handia duten zonaldeak zeintzuk diren ulertzeko eta aurrez cachean sartuz errendimendua hobetzeko. Plataformak IP helbideak ere gordetzen ditu eta dena Amazon zerbitzarietan ostatatuta dago.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Hau ez da oraindik inplementatu, datorrenari buruz informatzeko da!:&lt;/i&gt;) 
-Sailkapenean eta profilean agertzen den informazioa OpenStreetMap-en publikoki eskuragarri dagoen informazioarekin osatu da. Datuak ez datoz aplikazio honetatik, baizik eta OSMko erabiltzaileen ekarpenen historia publikotik.&lt;/p&gt;"</string>
+&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"Bai"</string>
@@ -1014,7 +1005,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="action_reset">"Leheneratu"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Sakatu luze eta mugitu erronka, deskargatu eta mapan bistaratzeko lehentasuna aldatzeko."</string>
+    <string name="reorder_quest_priority_hint">"Sakatu luze eta mugitu erronka, mapan bistaratzeko lehentasuna aldatzeko."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desegin"</string>
@@ -1728,12 +1719,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="map_application_missing">"Ez dago beste mapa aplikaziorik instalatuta"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Aldatu Overpass zerbitzaria"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Aplikazioa berrabiarazi behar da aplikatzeko. Zentzura saihestu dezake, adibidez Errusian."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"etxe zenbakia"</string>
 
     <!-- Fuzzy -->
@@ -2273,10 +2258,6 @@ mailak"</string>
     <string name="quest_board_type_map_description">"Argibide-taula gai konkretu bati buruzkoa bada, zehaztu mesedez, ez du axola mapa bat ere baduen ala ez. Adibidez, garraio publikoko argibide-taula batek autobus mapa bat izan dezake. Gaia ez badago hemen zerrendatuta, agian utzi mezu bat horren ordez."</string>
     <string name="quest_surface_detailed_answer_impossible">"Hainbat gainazal..."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Mesedez, azaldu laburki nolako gainazala dagoen hemen, adibidez \"hondarra, harrikoxkor zatiekin\". Testuaren luzeera gehienez 255 karakterekoa da."</string>
-    <string name="quest_surface_detailed_name_title">"Zein da %s bidearen gainazala hemen zehazki?"</string>
-    <string name="quest_surface_detailed_square_name_title">"Zehazki zein gainazal du %s plaza honek hemen?"</string>
-    <string name="quest_surface_detailed_title">"Zehazki zein gainazal du bide zati honek?"</string>
-    <string name="quest_surface_detailed_square_title">"Zehazki zein gainazal mota du hemen plaza honek?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internazionala"</string>

@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"顯示更多…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"它有不同的形體"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"自動同步"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"縮近"</string>
@@ -289,7 +287,6 @@
 
 &lt;p&gt;&lt;b&gt;資料使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-以上提到，此app會直接和開放街圖的設施直接溝通，將使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下載任務(是匿名的)，且使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上傳資料。&lt;br/&gt;
 在上傳你的變更之前，此app會在我的伺服器上確認 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;簡單的文字檔&lt;/a&gt; 來確認app是否被封鎖而無法上傳任何變更。這是一個防護措施，如果app的版本變更後有嚴重的錯誤出現，開放街圖的資料不受汙染。&lt;br/&gt;
 &lt;/p&gt;"</string>
 
@@ -1722,12 +1719,6 @@
     <string name="map_application_missing">"沒有安裝其他地圖應用程式"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"更改 Overpass 伺服器"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"需要重開應用程式來套用設定，也許需要繞過審查，像是俄羅斯。"</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"房屋門牌號碼"</string>
 
     <!-- Fuzzy -->
@@ -2049,10 +2040,6 @@
     <string name="quest_surface_detailed_answer_impossible">"多種的表面材質"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"你確定描述此鋪面是不可能的嗎？註記「在線段上皆不同」允許你切斷鋪面改變的線段的解答選項。當這裡只有一種鋪面但不可作為解答的話，請使用「無法說明」。"</string>
     <string name="quest_surface_detailed_answer_impossible_description">"在此請簡述此表面的自然材質，例如：包含鵝卵石補丁的砂質鋪面。此字串長度僅限255個字元。"</string>
-    <string name="quest_surface_detailed_name_title">"此道路 %s 是哪種特定的鋪面？"</string>
-    <string name="quest_surface_detailed_square_name_title">"此廣場 %s 是哪種特定的鋪面？"</string>
-    <string name="quest_surface_detailed_title">"此道路片段是哪種特定的鋪面？"</string>
-    <string name="quest_surface_detailed_square_title">"這個廣場的表面材質是哪種？"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"國際"</string>

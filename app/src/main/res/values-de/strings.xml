@@ -88,10 +88,13 @@
     <string name="quest_roofShape_title">"Welche grundlegende Dachform hat dieses Gebäude?"</string>
     <string name="quest_roofShape_select_one">"Wähle eine aus:"</string>
     <string name="quest_roofShape_show_more">"Weitere anzeigen…"</string>
+
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <string name="quest_roofShape_answer_many">"Es hat mehrere unterschiedliche"</string>
-    <string name="pref_title_sync">"Auto-Synchronisierung"</string>
     <string name="map_btn_zoom_out">"Verkleinern"</string>
     <string name="map_btn_zoom_in">"Vergrößern"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, jemand dem Datenschutz wichtig ist, schön! Ich denke, dass ich nur gute Nachrichten für dich habe:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte Mitwirkung&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -109,8 +112,7 @@ Diese App teilt deinen GPS-Standort mit niemandem. Er wird genutzt, um automatis
 
 &lt;p&gt;&lt;b&gt;Datennutzung&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur. Genauer, mit der &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass-API&lt;/a&gt; zum Herunterladen der Aufgaben (das ist anonym) und direkt mit der &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM-API&lt;/a&gt; zum Hochladen der Änderungen.&lt;br/&gt;
-Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;eine simple Textdatei&lt;/a&gt; auf meinem Server ab, um zu sehen, ob sie für den Upload gesperrt wurde. Das ist eine Vorsichtsmaßnahme, um Versionen dieser App, die möglicherweise kritische Fehler enthalten, davon abzuhalten, OSM-Daten zu korrumpieren.&lt;br/&gt;
+Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur. Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;eine simple Textdatei&lt;/a&gt; auf meinem Server ab, um zu sehen, ob sie für den Upload gesperrt wurde. Das ist eine Vorsichtsmaßnahme, um Versionen dieser App, die möglicherweise kritische Fehler enthalten, davon abzuhalten, OSM-Daten zu korrumpieren.&lt;br/&gt;
 &lt;/p&gt;"</string>
     <string name="autosync_on">"An"</string>
     <string name="autosync_only_on_wifi">"Nur bei WLAN"</string>
@@ -382,7 +384,9 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_enabled">"Aktiviert"</string>
     <string name="quest_type">"Aufgabentyp"</string>
     <string name="action_reset">"Zurücksetzen"</string>
-    <string name="reorder_quest_priority_hint">"Halte und bewege eine Aufgabe, um ihre Download-Priorität und Anzeige auf der Karte zu verändern."</string>
+
+    <!-- Fuzzy -->
+    <string name="reorder_quest_priority_hint">"Halte und bewege eine Aufgabe, um ihre Priorität der Anzeige auf der Karte zu verändern."</string>
     <string name="undo_confirm_positive">"Rückgängig machen"</string>
     <string name="undo_confirm_negative">"Abbrechen"</string>
     <string name="quest_dietType_vegetarian_name_title">"Hat %s vegetarisches Essen auf der Karte?"</string>
@@ -634,8 +638,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_placeName_title_name">"Was ist der Name hiervon? (%s)"</string>
     <string name="action_open_location">"Standort in einer anderen App öffnen"</string>
     <string name="map_application_missing">"Keine andere Kartenanwendung installiert"</string>
-    <string name="pref_title_overpass_url_select">"Overpass-Server ändern"</string>
-    <string name="pref_title_overpass_url_info">"Die Änderung wird erst nach Neustart übernommen. Könnte Zensur umgehen, zum Beispiel in Russland."</string>
     <string name="label_housenumber">"Hausnummer"</string>
     <string name="label_blocknumber">"Blocknummer"</string>
     <string name="quest_busStopShelter_covered">"gesamte Haltestelle ist überdacht"</string>
@@ -864,10 +866,6 @@ Erfolge"</string>
     <string name="quest_surface_detailed_answer_impossible">"Mehrere Oberflächen…"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Bist du dir sicher, dass man die genaue Oberfläche nicht angeben kann? Du kannst auch „Entlang des Weges unterschiedlich…“ antworten, um den Weg dort aufzuspalten, wo sich die Oberfläche ändert. Bitte nutze „Nicht beantwortbar“ wenn es eine Oberfläche hat, die nicht als Antwort zur Verfügung steht."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Bitte beschreibe kurz die Beschaffenheit der Oberfläche, zum Beispiel „sandig mit vereinzeltem Kopfsteinpflaster“. Der Text hat eine maximale Länge von 255 Zeichen."</string>
-    <string name="quest_surface_detailed_name_title">"Welche Oberfläche hat die Straße %s hier genau?"</string>
-    <string name="quest_surface_detailed_square_name_title">"Welche Oberfläche hat der Platz %s hier genau?"</string>
-    <string name="quest_surface_detailed_title">"Welche Oberfläche hat dieser Straßenabschnitt hier genau?"</string>
-    <string name="quest_surface_detailed_square_title">"Welche Oberfläche hat dieser Platz hier genau?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
@@ -899,7 +897,6 @@ Erfolge"</string>
     <string name="quest_busStopBench_name_title">"Hat die Haltestelle %s eine Bank?"</string>
     <string name="quest_summit_register_title">"Gibt es bei %s ein Gipfelbuch?"</string>
     <string name="quest_is_defibrillator_inside_title">"Befindet sich dieser Defibrillator innerhalb eines Gebäudes?"</string>
-    <string name="dialog_tutorial_download">"Wenn Auto-Sync aus ist, werden Aufgaben nicht automatisch heruntergeladen. Um dies manuell zu tun, benutze den „%s“-Knopf im Menü an der Stelle, an der du sie herunterladen möchtest."</string>
     <string name="about_title_translate">"App übersetzen"</string>
 
     <!-- Was genau wird bei %1$s angezeigt ? -->
@@ -941,4 +938,16 @@ Erfolge"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Wird die Rampe für Rollstühle auf der Karte als separater Weg angezeigt?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Ja, separat"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Nicht separat"</string>
+    <string name="pref_title_sync2">"Antworten automatisch hochladen"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Oberfläche beschreiben"</string>
+    <string name="open_url">"URL öffnen"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_buildingType_historic">"Historisch"</string>
+    <string name="quest_buildingType_historic_description">"Ein historisches Gebäude, dessen (ursprünglicher) Zweck nicht offensichtlich ist."</string>
+    <string name="quest_buildingType_abandoned">"Verlassen"</string>
+    <string name="quest_buildingType_abandoned_description">"Ein verlassenes Gebäude dessen ursprüngliche Funktion unbekannt ist"</string>
+    <string name="quest_buildingType_ruins">"Ruine"</string>
+    <string name="quest_buildingType_ruins_description">"Ein verfallenes oder zerstörtes Gebäude"</string>
+    <string name="quest_charging_station_capacity_title">"Wie viele Autos können an dieser Ladestation gleichzeitig aufgeladen werden?"</string>
+    <string name="link_disaster_ninja_description">"Karte, die jüngste Naturkatastrophen zeigt. Interessant für humanitäre Mapper. Zeigt außerdem viele weitere interessante Statistiken um zu analysieren, wie vollständig und aktuell Orte kartiert sind."</string>
 </resources>
