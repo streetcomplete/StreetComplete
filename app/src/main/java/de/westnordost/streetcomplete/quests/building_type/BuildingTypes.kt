@@ -58,6 +58,9 @@ enum class BuildingType(val item: Item<String>) {
     SERVICE       (Item("service",    R.drawable.ic_building_service,    R.string.quest_buildingType_service, R.string.quest_buildingType_service_description)),
     HANGAR        (Item("hangar",     R.drawable.ic_building_hangar,     R.string.quest_buildingType_hangar, R.string.quest_buildingType_hangar_description)),
     BUNKER        (Item("bunker",     R.drawable.ic_building_bunker,     R.string.quest_buildingType_bunker)),
+    HISTORIC      (Item("historic",   R.drawable.ic_building_historic,      R.string.quest_buildingType_historic, R.string.quest_buildingType_historic_description)),
+    ABANDONED     (Item("abandoned",  R.drawable.ic_building_abandoned,       R.string.quest_buildingType_abandoned, R.string.quest_buildingType_abandoned_description)),
+    RUINS          (Item("ruins",       R.drawable.ic_building_ruins,       R.string.quest_buildingType_ruins, R.string.quest_buildingType_ruins_description)),
 
     RESIDENTIAL   (
         Item("residential", R.drawable.ic_building_apartments, R.string.quest_buildingType_residential, R.string.quest_buildingType_residential_description,
@@ -91,7 +94,7 @@ enum class BuildingType(val item: Item<String>) {
 
     OTHER         (
         Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, null,
-        listOf( SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER ).toItems())
+        listOf( SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER, HISTORIC, ABANDONED, RUINS ).toItems())
     );
 
     companion object {
