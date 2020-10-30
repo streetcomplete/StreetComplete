@@ -38,7 +38,7 @@ class AddBuildingType : OsmFilterQuestType<String>() {
             changes.delete("building")
             changes.add("man_made", manMade)
         } else if (answer == "historic" || answer == "abandoned" || answer == "ruins")
-            changes.add(answer, "yes")
+            changes.addOrModify(answer, "yes")
         else
             changes.modify("building", answer)
     }
