@@ -10,6 +10,8 @@ import kotlin.NullPointerException
 
 class AddInternetAccessForm : AbstractQuestFormAnswerFragment<String>() {
 
+    override val defaultExpanded = false
+
     override val contentLayoutResId = R.layout.quest_internet_access
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
