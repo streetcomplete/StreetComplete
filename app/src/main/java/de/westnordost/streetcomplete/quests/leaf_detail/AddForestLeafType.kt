@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 
 class AddForestLeafType : OsmElementQuestType<String> {
     private val areaFilter by lazy { """
-        ways, relations with landuse = forest or natural = wood and !leaf_type
+        ways, relations with (landuse = forest or natural = wood) and !leaf_type
     """.toElementFilterExpression()}
 
     private val wayFilter by lazy { """
