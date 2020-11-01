@@ -2365,4 +2365,19 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="achievement_outdoors_title">"Al aire libre"</string>
     <string name="achievement_outdoors_solved_X">"¡Resolviste %d misiones útiles para personas-al aire libre!"</string>
     <string name="quest_pedestrian_crossing_island">"¿Este paso de peatones tiene una isla?"</string>
+    <string name="quest_generic_answer_noSign">"No hay señal"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"¿Se muestra la rampa para sillas de ruedas como una vía separada en el mapa?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"no separada"</string>
+    <string name="pref_title_sync2">"Subir respuestas automáticamente"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Describe la superficie"</string>
+    <string name="open_url">"Abrir URL"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_buildingType_historic">"Histórico"</string>
+    <string name="quest_buildingType_historic_description">"edificio de valor histórico que no cumple funciones cívicas, religiosas o comerciales"</string>
+    <string name="quest_buildingType_abandoned">"Abandonado"</string>
+    <string name="quest_buildingType_abandoned_description">"edificio en desuso cuya función o propósito original se desconoce"</string>
+    <string name="quest_buildingType_ruins">"Ruinas"</string>
+    <string name="quest_buildingType_ruins_description">"edificio abandonado, en ruinas e inidentificable"</string>
+    <string name="quest_charging_station_capacity_title">"¿Cuántos coches se pueden cargar en esta estación de carga al mismo tiempo?"</string>
 </resources>

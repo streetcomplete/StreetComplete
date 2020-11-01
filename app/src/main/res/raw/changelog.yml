@@ -1,3 +1,10 @@
+v26.0-beta2: |
+  <ul>
+  <li>Added Croatian translation by Matija Nalis</li>
+  <li>All forms for quests except image selection forms now automatically expand to full height</li>
+  <li>Fixed two crashes (#2220, #2219)</li>
+  </ul>
+
 v26.0-beta1: |
   <h3>⚡ Wait for the download no more!</h3>
   <p>
