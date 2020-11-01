@@ -14,22 +14,31 @@ class CachingMapDataWithGeometry @Inject constructor(
     private val elementGeometryCreator: ElementGeometryCreator
 ) : MutableMapData(), MapDataWithGeometry {
 
-    private val nodeGeometriesById: ConcurrentHashMap<Long, ElementPointGeometry?> = ConcurrentHashMap()
-    private val wayGeometriesById: ConcurrentHashMap<Long, ElementGeometry?> = ConcurrentHashMap()
-    private val relationGeometriesById: ConcurrentHashMap<Long, ElementGeometry?> = ConcurrentHashMap()
+    private val nodeGeometriesById: ConcurrentHashMap<Long, Optional<ElementPointGeometry>> = ConcurrentHashMap()
+    private val wayGeometriesById: ConcurrentHashMap<Long, Optional<ElementGeometry>> = ConcurrentHashMap()
+    private val relationGeometriesById: ConcurrentHashMap<Long, Optional<ElementGeometry>> = ConcurrentHashMap()
 
     override fun getNodeGeometry(id: Long): ElementPointGeometry? {
         val node = nodesById[id] ?: return null
-        return nodeGeometriesById.getOrPut(id, { elementGeometryCreator.create(node) })
+        return nodeGeometriesById.getOrPut(id, {
+            Optional(elementGeometryCreator.create(node))
+        }).value
     }
 
     override fun getWayGeometry(id: Long): ElementGeometry? {
         val way = waysById[id] ?: return null
-        return wayGeometriesById.getOrPut(id, { elementGeometryCreator.create(way, this, true) })
+        return wayGeometriesById.getOrPut(id, {
+            Optional(elementGeometryCreator.create(way, this, true))
+        }).value
     }
 
     override fun getRelationGeometry(id: Long): ElementGeometry? {
         val relation = relationsById[id] ?: return null
-        return relationGeometriesById.getOrPut(id, { elementGeometryCreator.create(relation, this, true) })
+        return relationGeometriesById.getOrPut(id, {
+            Optional(elementGeometryCreator.create(relation, this, true))
+        }).value
     }
 }
+
+// workaround the limitation of ConcurrentHashMap that it cannot store null values by wrapping it
+private class Optional<T>(val value: T?)
