@@ -5,7 +5,9 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.util.intersects
 
 class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
@@ -16,7 +18,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )
         and !maxheight and !maxheight:physical
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     private val wayFilter by lazy { """
         ways with
@@ -24,9 +26,16 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
           highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
-        and (covered = yes or tunnel ~ yes|building_passage|avalanche_protector)
         and !maxheight and !maxheight:physical
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
+
+    private val tunnelFilter by lazy { """
+        ways with highway and (covered = yes or tunnel ~ yes|building_passage|avalanche_protector)
+    """.toElementFilterExpression() }
+
+    private val bridgeFilter by lazy { """
+        ways with highway and bridge and layer
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add maximum heights"
     override val wikiLink = "Key:maxheight"
@@ -45,8 +54,29 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
         }
     }
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.nodes.filter { nodeFilter.matches(it) } + mapData.ways.filter { wayFilter.matches(it) }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val bridges = mapData.ways.filter { bridgeFilter.matches(it) }
+
+        val waysWithoutHeight = mapData.ways.filter { wayFilter.matches(it) }
+
+        val nodesWithoutHeight = mapData.nodes.filter { nodeFilter.matches(it) }
+        val tunnelsWithoutHeight = waysWithoutHeight.filter { tunnelFilter.matches(it) }
+
+        val waysBelowBridgesWithoutHeight = waysWithoutHeight.filter { way ->
+            val layer = way.tags?.get("layer")?.toIntOrNull() ?: 0
+            val geometry = mapData.getWayGeometry(way.id) as? ElementPolylinesGeometry
+
+            geometry != null && bridges.any { bridge ->
+                val bridgeGeometry = mapData.getWayGeometry(bridge.id) as? ElementPolylinesGeometry
+                val bridgeLayer = bridge.tags?.get("layer")?.toIntOrNull() ?: 0
+
+                bridgeGeometry != null && bridgeLayer > layer && bridgeGeometry.intersects(geometry)
+            }
+        }
+
+        return nodesWithoutHeight + tunnelsWithoutHeight + waysBelowBridgesWithoutHeight
+    }
+
 
     override fun isApplicableTo(element: Element) =
         nodeFilter.matches(element) || wayFilter.matches(element)

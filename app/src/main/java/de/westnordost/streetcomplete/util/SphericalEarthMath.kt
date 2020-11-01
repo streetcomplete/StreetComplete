@@ -6,6 +6,9 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.ktx.forEachLine
+import de.westnordost.streetcomplete.util.math.Vector3d
+import de.westnordost.streetcomplete.util.math.toLatLon
+import de.westnordost.streetcomplete.util.math.toNormalOnSphere
 import kotlin.math.*
 
 /** Calculate stuff assuming a spherical Earth. The Earth is not spherical, but it is a good
@@ -148,6 +151,28 @@ fun LatLon.distanceToArcs(polyLine: List<LatLon>, globeRadius: Double = EARTH_RA
 fun List<LatLon>.distanceTo(polyline: List<LatLon>, globeRadius: Double = EARTH_RADIUS): Double {
     require(isNotEmpty()) { "Polyline must not be empty" }
     return minOf { it.distanceToArcs(polyline, globeRadius) }
+}
+
+/** Returns whether this polyline intersects with the given polyline */
+fun List<LatLon>.intersectsWith(polyline: List<LatLon>): Boolean {
+    require(size > 1 && polyline.size > 1) { "Polylines must each contain at least two elements" }
+    forEachLine { first, second ->
+        polyline.forEachLine { otherFirst, otherSecond ->
+            if ((first to second).intersectsWith(otherFirst to otherSecond)) {
+                return true
+            }
+        }
+    }
+    return false
+}
+
+fun Pair<LatLon, LatLon>.intersectsWith(other: Pair<LatLon, LatLon>): Boolean {
+    return intersection(
+        first.toNormalOnSphere(),
+        second.toNormalOnSphere(),
+        other.first.toNormalOnSphere(),
+        other.second.toNormalOnSphere()
+    )?.toLatLon() != null
 }
 
 /** Returns a bounding box that contains all points */
@@ -578,4 +603,56 @@ private fun polarTriangleArea(φ1: Double, λ1: Double, φ2: Double, λ2: Double
     val Δλ = λ1 - λ2
     val tan = tanφ1 * tanφ2
     return 2 * atan2(tan * sin(Δλ), 1 + tan * cos(Δλ))
+}
+
+/* The following formulas have been adapted from this excellent source:
+   http://www.movable-type.co.uk/scripts/latlong-vectors.html#intersection
+   Thanks to and (c) Chris Veness 2002-2019, MIT Licence
+
+   All the calculations below are done with coordinates in radians.
+*/
+
+private fun segmentIntersection(a: Vector3d, b: Vector3d, p: Vector3d, q: Vector3d): Vector3d? {
+    val intersection = intersection(a, b, p, q) ?: return null
+
+    val n: Vector3d
+
+    val ab = a.angleTo(b, n)
+    val ax = a.angleTo(intersection, n)
+
+    if (ax < min(0.0, ab) || ax > max(0.0, ab)) return null
+
+    val pq = p.angleTo(q, n)
+    val px = p.angleTo(intersection, n)
+
+    if (px < min(0.0, pq) || px > max(0.0, pq)) return null
+
+    return intersection
+}
+
+/** Returns the intersection of the great circle spanned by ab and pq */
+private fun intersection(a: Vector3d, b: Vector3d, p: Vector3d, q: Vector3d): Vector3d? {
+    if (a == b || p == q) return null
+    if (a == p) return a
+
+    /* cab & cpq are the normals of planes whose intersection with the surface of the sphere
+       define the great circles through start & end points. These two planes intersect each other
+       in a line and this line pierce the sphere at two points. One on this side of the sphere,
+       one directly opposite */
+    val cab = a x b
+    val cpq = p x q
+    // there are two (antipodal) candidate intersection points; we have to choose which to return
+    val i1 = cab x cpq
+
+    // if cab x cpq == 0 this means that ab and pq are on the same great circle
+    if (i1.length == 0.0) {
+        // TODO
+        return null
+    }
+
+    // select nearest intersection to mid-point of all points
+    val mid = (a + p + b + q) / 4.0
+    val intersection = if (mid * i1 > 0) i1 else -i1
+
+    return intersection.normalize()
 }

@@ -17,10 +17,19 @@ fun ElementPolylinesGeometry.isNear(
     val bounds = getBounds().enlargedBy(maxDistance)
     return others.any { other ->
         bounds.intersect(other.getBounds()) &&
-                polylines.any { polyline ->
-                    other.polylines.any { otherPolyline ->
-                        polyline.distanceTo(otherPolyline) <= maxDistance
-                    }
-                }
+        polylines.any { polyline ->
+            other.polylines.any { otherPolyline ->
+                polyline.distanceTo(otherPolyline) <= maxDistance
+            }
+        }
     }
 }
+
+
+fun ElementPolylinesGeometry.intersects(other: ElementPolylinesGeometry): Boolean =
+    getBounds().intersect(other.getBounds()) &&
+    polylines.any { polyline ->
+        other.polylines.any { otherPolyline ->
+            polyline.intersectsWith(otherPolyline)
+        }
+    }
