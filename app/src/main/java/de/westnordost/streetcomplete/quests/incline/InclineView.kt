@@ -101,7 +101,7 @@ class InclineView @JvmOverloads constructor(context: Context, attrs: AttributeSe
     }
 
     private fun drawLockIcon(canvas: Canvas) {
-        val lockIconResource = if (locked) R.drawable.ic_lock else R.drawable.ic_lock_open_24
+        val lockIconResource = if (locked) R.drawable.ic_lock_24 else R.drawable.ic_lock_open_24
         val lockIconDrawable: Drawable? = ContextCompat.getDrawable(context, lockIconResource)
         val iconSizeDp = (24 * resources.displayMetrics.scaledDensity).roundToInt()
         val offsetDp = (8 * resources.displayMetrics.scaledDensity).roundToInt()

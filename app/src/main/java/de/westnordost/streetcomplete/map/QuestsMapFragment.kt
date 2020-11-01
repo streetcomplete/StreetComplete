@@ -14,6 +14,8 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.core.view.marginLeft
+import androidx.core.view.marginStart
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.geometry.Point
@@ -135,7 +137,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
                 val quests = questPinLayerManager.findQuestsBelongingToOsmElementId(pickedElementId)
                 val adapter = object : ArrayAdapter<Quest>(
                     requireContext(),
-                    android.R.layout.select_dialog_item,
+                    R.layout.select_quest_dialog_item,
                     android.R.id.text1,
                     quests) {
 
@@ -143,6 +145,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
                         val v: View = super.getView(position, convertView, parent)
                         val tv: TextView = v.findViewById(android.R.id.text1)
                         tv.text = resources.getString(quests[position].type.title)
+                        tv.textSize = 16f
 
                         val dr = ContextCompat.getDrawable(context, quests[position].type.icon)
                         val bitmap = Bitmap.createBitmap(dr!!.intrinsicWidth, dr!!.intrinsicHeight, Bitmap.Config.ARGB_8888)
@@ -150,17 +153,18 @@ class QuestsMapFragment : LocationAwareMapFragment() {
                         dr.setBounds(0, 0, canvas.width, canvas.height);
                         dr.draw(canvas);
 
-                        val size = tv.textSize * 1.5
+                        val size = tv.textSize * 2
                         val drawable = BitmapDrawable(resources, Bitmap.createScaledBitmap(bitmap, size.toInt(), size.toInt(), true))
 
                         tv.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
-                        tv.compoundDrawablePadding = (12 * resources.displayMetrics.density).toInt()
+                        tv.compoundDrawablePadding = (8 * resources.displayMetrics.density).toInt()
                         return v
                     }
                 }
 
+                // TODO sst: translate
                 AlertDialog.Builder(requireContext())
-                    .setTitle("Multiple quests available here. Choose one:")
+                    .setTitle("Multiple quests available here")
                     .setAdapter(adapter) { _, item ->
                         listener?.onClickedQuest(pickedQuestGroup, quests[item].id!!)
                     }.show()
