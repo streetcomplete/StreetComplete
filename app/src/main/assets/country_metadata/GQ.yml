@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [SEGESA Comercial]
 mobileCountryCode: 627
 officialLanguages: [es, fr, pt, fan]
-orchardProduces: [banana, coconut, banana, guava, mango, mangosteen, pineapple, coffee, coconut, cacao,
-  banana, pineapple, coffee, rubber, cashew_nut, cacao, rubber]
+orchardProduces: [banana, coconut, banana, guava, mango, mangosteen, pineapple, coffee, coconut, cacao, banana, pineapple,
+   coffee, rubber, cashew_nut, cacao, rubber]
 workweekDays: 6

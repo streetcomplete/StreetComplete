@@ -260,12 +260,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Vis mere…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Den har flere forskellige former"</string>
-
-    <!-- "Auto-synk" would mean auto-swallow -->
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Auto-synkroniser"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Zoom out"</string>
@@ -291,14 +288,7 @@ Din lokation er kun brugt til at automatisk skanne efter opgaver tæt på dig. B
 
 &lt;p&gt;&lt;b&gt;Databrug&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Som sagt, denne app kommunikerer direkte med OSM's infrastruktur. Det vil sige &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API'et&lt;/a&gt; til at downloade opgaver (hvilket sker anonymt) og med &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API'et&lt;/a&gt; for at indsende ændringer.&lt;br/&gt;
 Før ændringer sendes tjekker appen dog en &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst fil&lt;/a&gt; på min server om denne version er bandlyst fra at sende ændringer. Dette sker som et sikkerhedstjek for at holde versioner af appen med kritiske fejl fra et skade OSM data.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt;, hvilket sker anonymt. Servicen logger anmodninger for at forstå hvilke områder er populære så de kan lave performance forbedringer. Deres platform logger også IP adresser og alt deres hosting (hjemmeside udbyder osv.) sker hos Amazon så de er muligvis også underlagt regler der.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Dette er ikke implementeret endnu, jeg vil bare informere dig om hvad der er i vente!&lt;/i&gt;) Data der vises på top-yder boards og profiler er indstamlet fra offentligt tilgængelige informationer fra OpenStreetMap. Denne data kommer ikke fra denne app, men fra den offentligt tilgængelige bidragshistorik af OSM brugere.
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -707,7 +697,7 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="credits_contributors">"Se &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;den fulde liste på GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Se &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projekt på POEditor&lt;/a&gt; for en komplet liste."</string>
+    <string name="credits_translations">"Se &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekt på POEditor&lt;/a&gt; for en komplet liste."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Oversættelser"</string>
@@ -1020,7 +1010,7 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="action_reset">"Nulstil"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Hold nede og flyt en opgave for at ændre den prioritet ved download og visning på kortet."</string>
+    <string name="reorder_quest_priority_hint">"Hold nede og flyt en opgave for at ændre den prioritet ved visning på kortet."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Fortryd"</string>
@@ -1393,10 +1383,6 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_buildingType_houseboat">"Husbåd"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
-    <!-- I don't think a bungalow needs to be a holiday house (at least not in Denmark), would it be okay to translate it from https://wiki.openstreetmap.org/wiki/Key:building as "A single-storey detached small house, Dacha."? -->
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"lille fritstående hus (sommerhus, feriehytte...)"</string>
-
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Campingvogn (semi-permanent)"</string>
 
@@ -1631,12 +1617,6 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_noteDiscussion_hide2">"Skjult af %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Hvordan er jernbaneoverskæringen beskyttet?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Det er ikke"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt; Fotos, du vedhæfter til en note, uploades til en server og slettes nogle dage efter, at den note er blevet løst. Metadata i fotos fjernes før upload. &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1671,9 +1651,6 @@ F.eks. 1,3 eller 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Er denne bygning helt underjordisk?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Er der nogen lydsignaler for blinde her?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Delvist betyder, at der ikke er mere end et enkelt trin for at få adgang til det."</string>
@@ -1746,12 +1723,6 @@ F.eks. 1,3 eller 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Intet andet kortprogram er installeret"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Skift Overpass server"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Kræver genstart af applikationen for at blive anvendt. Kan måske omgå censur, for eksempel i Rusland."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"husnummer"</string>
@@ -1828,9 +1799,6 @@ Del det nu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Hvad er max vægt her?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Der er intet skilt"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Denne vægtangivelse ser upålidelig ud. Er du sikker på, at det er korrekt?"</string>
@@ -1962,8 +1930,18 @@ Del det nu?"</string>
     <string name="link_category_maps_title">"Kort"</string>
     <string name="link_category_maps_description">"OpenStreetMap-baserede kort"</string>
     <string name="link_cyclosm_description">"Et kort for cyklister"</string>
+    <string name="quest_recycling_type_cooking_oil">"Madolie"</string>
+    <string name="quest_recycling_type_engine_oil">"Motorolie"</string>
+    <string name="quest_board_type_history">"Historie"</string>
+    <string name="quest_board_type_geology">"Geologi"</string>
+    <string name="quest_board_type_plants">"Planter"</string>
+    <string name="quest_board_type_wildlife">"Dyreliv"</string>
+    <string name="quest_board_type_nature">"Natur (flere emner)"</string>
+    <string name="quest_board_type_public_transport">"Offentlig transport"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"international"</string>
+    <string name="quest_buildingType_terrace2">"Rækkehuse"</string>
     <string name="at_housename">"Husnavn %s:"</string>
     <string name="at_conscription_and_street_number">"Beskrivendenummer %1$s, retningsnummer %2$s:"</string>
 
@@ -1971,5 +1949,12 @@ Del det nu?"</string>
     <string name="at_conscription_number">"Beskrivendenummer %s:"</string>
     <string name="at_housenumber">"husnummer %s:"</string>
     <string name="quest_openingHours_name_type_title">"Hvad er åbningstiderne for %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Tilføj lukkedage"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Er %1$s (%2$s) kørestolsvenlig?"</string>
+    <string name="about_description_translate">"%1$s er %2$d%% oversæt"</string>
+    <string name="quest_oneway2_title">"Er denne vej ensrettet? I hvilken retning?"</string>
+    <string name="quest_oneway2_dir">"Ensrettet in denne retning"</string>
+    <string name="quest_oneway2_no_oneway">"Ikke ensrettet"</string>
+    <string name="quest_step_count_title">"Hvor mange trin her?"</string>
+    <string name="quest_traffic_signals_sound_title">"Er der nogen lydsignaler for blinde her?"</string>
 </resources>

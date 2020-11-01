@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddOrchardProduce(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<List<String>>(o) {
+class AddOrchardProduce : OsmFilterQuestType<List<String>>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways, relations with landuse = orchard
         and !trees and !produce and !crop
         and orchard != meadow_orchard

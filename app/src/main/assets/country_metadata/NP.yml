@@ -1,9 +1,24 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Nabil Bank, Nepal Investment Bank, Everest Bank, Rastriya Banijya Bank, Nepal SBI Bank, Laxmi Bank, Global
+      IME Bank, Prabhu Bank, Himalayan Bank, Everest Bank Limited, er2, NIC Asia Bank, tr, gr3, Sanima
+      Bank, Nepal Bank Limited, NMB Bank, er3, Standard Chartered Bank, Prabhu Bank Limited, NIBL, Sunrise
+      Bank Limited, Sunrise Bank, Siddhartha Bank, Nepal Investment Bank Limited, Machhapuchchre Bank
+      Limited, Machhapuchchhre Bank, Laxmi Bank Limited, Himalayan Bank Limited, Everest Bank ATM, er
+      3, Siddhartha Bank Ltd., Prabhu Bank ATM, Om Development Bank Limited, Mega Bank Nepal Limited,
+   Mega Bank Limited, Machhapuchchre Bank, Kumari Bank, Kamana Bikash Bank, Agricultural Development Bank,
+   pode tole, nabil bank, gr 3, earth road, earth, cul, Vibor Society Development Bank, Siddhartha Bank
+      Limited, Nepal investment bank, Nepal SBI Bank Atm, Nepal Investment Bank Ltd., Nabil Bank Limited,
+   Nabil, NMB Bank Limited, NIC Asia Bank Limited, NIC Asia, NIC ASIA Bank, NIC ASIA BANK, NIBL ATM, NCC
+      Bank Limited, NCC Bank ATM, NCC Bank, NABIL Bank, Mukthinath Bikash Bank, Mega Bank, Machhapuchhre
+      Bank Ltd, Machhapuchhre Bank Limited, Machapucchre Bank, MBL, Kasthamandap Development Bank, Kamana
+      Bikash Bank Limited, Janata Bank, Garima Bikash Bank, Fewa Bikash Bank, Fewa Bank, Everest Bank
+      Ltd, Civil Bank, Century Bank ATM, Agricultural development bank]
+chargingStationOperators: [Shrestha Niwas]
 firstDayOfWorkweek: Su
 isLeftHandTraffic: true
 mobileCountryCode: 429
 officialLanguages: [ne]
-orchardProduces: [guava, mango, mangosteen, banana, orange, chilli_pepper, sweet_pepper, lemon, lime,
-  pear, apple, tea, areca_nut, papaya, pineapple, peach, plum, walnut, nutmeg]
+orchardProduces: [guava, mango, mangosteen, banana, orange, chilli_pepper, sweet_pepper, lemon, lime, pear, apple, tea,
+   areca_nut, papaya, pineapple, peach, plum, walnut, nutmeg]
 popularReligions: [hindu, buddhist]
 workweekDays: 6

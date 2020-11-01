@@ -55,7 +55,7 @@ open class LocationAwareMapFragment : MapFragment() {
     var isFollowingPosition = false
         set(value) {
             field = value
-            followPosition()
+            centerCurrentPositionIfFollowing()
         }
 
     /** When the view follows the GPS position, whether the view already zoomed to the location once*/
@@ -124,7 +124,7 @@ open class LocationAwareMapFragment : MapFragment() {
         super.onMapReady()
         restoreMapState()
         initMarkers()
-        followPosition()
+        centerCurrentPositionIfFollowing()
         showLocation()
     }
 
@@ -236,8 +236,7 @@ open class LocationAwareMapFragment : MapFragment() {
         return isFollowingPosition
     }
 
-    protected fun followPosition() {
-        if (!shouldCenterCurrentPosition()) return
+    fun centerCurrentPosition() {
         val controller = controller ?: return
         val targetPosition = displayedPosition ?: return
         controller.updateCameraPosition(600) {
@@ -249,11 +248,15 @@ open class LocationAwareMapFragment : MapFragment() {
         }
     }
 
+    protected fun centerCurrentPositionIfFollowing() {
+        if (shouldCenterCurrentPosition()) centerCurrentPosition()
+    }
+
     private fun onLocationChanged(location: Location) {
         displayedLocation = location
         compass.setLocation(location)
         showLocation()
-        followPosition()
+        centerCurrentPositionIfFollowing()
         listener?.onLocationDidChange()
     }
 

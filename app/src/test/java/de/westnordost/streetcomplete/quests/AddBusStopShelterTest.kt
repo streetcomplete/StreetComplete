@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer
 import org.junit.Test
@@ -11,7 +10,7 @@ import java.util.*
 
 class AddBusStopShelterTest {
 
-    private val questType = AddBusStopShelter(mock(), mock())
+    private val questType = AddBusStopShelter()
 
     @Test fun `apply shelter yes answer`() {
         questType.verifyAnswer(

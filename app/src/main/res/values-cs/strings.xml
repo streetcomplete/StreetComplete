@@ -262,11 +262,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Zobrazit více..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Má několik různých tvarů"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Auto synchronizace"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Oddálit"</string>
@@ -292,7 +290,6 @@ Aplikace s nikým nesdílí vaši GPS polohu. Vaše poloha se používá jen pro
 
 &lt;p&gt;&lt;b&gt;Použití dat&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Jak už bylo zmíněno, aplikace komunikuje přímo s OSM infrastrukturou, ke které patří &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; pro stahování „úkolů“ (které je anonymní) a &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; pro nahrávání změn.&lt;br/&gt;
 Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového souboru&lt;/a&gt; na mém serveru, jestli jí nebylo zakázáno nahrávání změn. To je preventivní opatření zabraňující verzím aplikace, ve kterých by mohli být kritické chyby, aby poškodili OSM data.&lt;br/&gt;
 &lt;/p&gt;"</string>
 
@@ -701,7 +698,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="credits_contributors">"Přečtěte si &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;úplný seznam na GitHubu&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Úplný seznam najdete v &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projektu na POEditor.com&lt;/a&gt;."</string>
+    <string name="credits_translations">"Úplný seznam najdete v &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projektu na POEditor.com&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Překladatelé"</string>
@@ -1391,9 +1388,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"samostatně stojící malý dům, chata"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Mobilní dům"</string>
 
     <!-- Fuzzy -->
@@ -1628,12 +1622,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 "</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Jak je chráněn tento železniční přejezd?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Není"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotografie připojené k poznámce jsou nahrané na můj server a smazány několik dnů po vyřešení poznámky. Metadata fotografií jsou odstraněna před jejich nahráním.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1668,9 +1656,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Je celá tato budova v podzemí?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Jsou tu zvukové signály pro neslyšící?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Částečně znamená, že v přístupu nebrání více než jeden schod."</string>
@@ -1743,12 +1728,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Nemáte nainstalovanou žádnou jinou mapovou aplikaci"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Změnit Overpass server"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Aplikace bude muset být restartovaná. Nastavení může obejít cenzuru, např. v Rusku."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"číslo popisné"</string>
@@ -1825,9 +1804,6 @@ Chcete cestu rozdělit?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Jaké je zde omezení hmotnosti?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Není tu žádná značka"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Tato hmotnost vypadá nepravděpodobně. jste si jistí, že je správná?"</string>
@@ -2341,10 +2317,6 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_surface_detailed_answer_impossible">"Více povrchů..."</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Jste si jisti, že nelze specifikovat povrch? Všimněte si odpovědi „V různých částech různý...“, pomocí které lze rozdělit cestu tam, kde se mění povrch. Odpověď „Nedá se to určit“ použijte tam, kde se jeden povrch, ale není mezi odpověďmi."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Prosím v krátkosti specifikujte zdejší povrch, např. „Písečný se záplatami dlažebních kostek“. Maximální délka textu je 255 znaků."</string>
-    <string name="quest_surface_detailed_name_title">"Jaký konkrétní povrch má tady cesta %s?"</string>
-    <string name="quest_surface_detailed_square_name_title">"Jaký konkrétní povrch má tady náměstí %s?"</string>
-    <string name="quest_surface_detailed_title">"Jaký konkrétní povrch má tento kus cesty?"</string>
-    <string name="quest_surface_detailed_square_title">"Jaký konkrétní povrch má tady tohle náměstí?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"mezinárodní"</string>
@@ -2381,8 +2353,55 @@ Is the situation on this cycleway still the same? -->
     <string name="quest_busStopBench_name_title">"Má autobusová zastávka %s lavičku?"</string>
     <string name="quest_summit_register_title">"Je na %s vrcholová kniha?"</string>
     <string name="quest_is_defibrillator_inside_title">"Je tento defibrilátor (AED) uvnitř budovy?"</string>
-    <string name="dialog_tutorial_download">"Při vypnuté automatické synchronizaci se úkoly nestahují automaticky. Pro jejich manuální stažení použijte v nabídce tlačítko „%s“ na místě, na kterém chcete úkoly stáhnout."</string>
     <string name="about_title_translate">"Pomozte přeložit tuto aplikaci"</string>
     <string name="about_description_translate">"%1$s je přeloženo %2$d%%
 "</string>
+    <string name="quest_oneway2_title">"Je tohle jednosměrná ulice? V jakém směru?"</string>
+    <string name="quest_oneway2_dir">"Je jednosměrná v tomto směru"</string>
+    <string name="quest_oneway2_no_oneway">"Není jednosměrná"</string>
+    <string name="quest_maxweight_select_sign">"Vyberte značku"</string>
+    <string name="quest_steps_incline_title">"Který směr vede na těchto schodech nahoru?"</string>
+    <string name="quest_steps_incline_up">"Toto je směr nahoru"</string>
+    <string name="quest_step_count_title">"Kolik je tu schodů"</string>
+    <string name="quest_traffic_signals_sound_title">"Jsou tu zvukové signály pro nevidomé?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Mají tyto semafory hmatovou indikaci pro nevidomé, aby věděli, kdy je bezpečné přejít?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Tip: Často to může být vibrující tlačítko nebo rotující kužel na spodní straně krabičky s ovládacím tlačítkem."</string>
+    <string name="quest_busStopRef_title">"Jaké je referenční číslo této autobusové zastávky?"</string>
+    <string name="quest_tramStopRef_title">"Jaké je referenční číslo této tramvajové zastávky?"</string>
+    <string name="quest_buildingType_bungalow_description2">"malý samostatně stojící dům (prázdninová nebo rekreační chata, chatka...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Jaké závory se používají na tomto železničním přejezdu?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Žádné závory"</string>
+    <string name="quest_steps_ramp_title">"Mají tyto schody rampu? Jakého druhu?"</string>
+    <string name="quest_steps_ramp_none">"Bez (použitelné) rampy"</string>
+    <string name="quest_steps_ramp_bicycle">"Rampa pro bicykly"</string>
+    <string name="quest_steps_ramp_stroller">"Rampa pro kočárky"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rampa pro invalidní vozíky"</string>
+    <string name="quest_atm_operator_title">"Jaké je jméno banky, které patří tento bankomat?"</string>
+    <string name="quest_clothes_container_operator_title">"Kdo je příjemce darů tohoto kontejneru na oblečení?"</string>
+    <string name="quest_charging_station_operator_title">"Kdo provozuje tuto dobíjecí stanici?"</string>
+    <string name="link_indoorequal_description">"Objevte vnitřní mapy nákupních středisek, nádraží atd."</string>
+    <string name="link_thenandnow_description">"Zajímá vás, jaký pokrok jsme během let udělali? Porovnejte mapu s tím, jak vypadala před deseti lety!"</string>
+    <string name="achievement_rare_title">"Lovec pokladů"</string>
+    <string name="achievement_rare_solved_X">"Našli jste a vyřešili %d úkolů, které jsou vyřešeny opravdu velmi zřídka. Gratulujeme!"</string>
+    <string name="achievement_citizen_title">"Občan"</string>
+    <string name="achievement_citizen_solved_X">"Vyřešili jste %d úkolů užitečných pro každodenní život ve městě!"</string>
+    <string name="achievement_outdoors_title">"Outdoorák"</string>
+    <string name="achievement_outdoors_solved_X">"Vyřešili jste %d úkolů užitečných pro lidi, co rádi chodí do přírody!"</string>
+    <string name="quest_pedestrian_crossing_island">"Má tento přechod pro chodce ostrůvek?"</string>
+    <string name="quest_generic_answer_noSign">"Není tu žádná značka"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Je rampa pro invalidní vozíky na mapě zobrazená jako samostatná cesta?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"samostatná"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"Není samostatná"</string>
+    <string name="pref_title_sync2">"Nahrát odpověď automaticky"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Popište povrch"</string>
+    <string name="open_url">"Otevřít URL adresu"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_buildingType_historic">"Historická"</string>
+    <string name="quest_buildingType_historic_description">"budova historického významu, která neslouží žádným občanským, náboženským, nebo komerčním účelům"</string>
+    <string name="quest_buildingType_abandoned">"Opuštěná"</string>
+    <string name="quest_buildingType_abandoned_description">"nevyužívaná budova, jejíž původní funkce nebo účel není znám"</string>
+    <string name="quest_buildingType_ruins">"Ruina"</string>
+    <string name="quest_buildingType_ruins_description">"opuštěná, zničená a neidentifikovatelná budova"</string>
+    <string name="quest_charging_station_capacity_title">"Kolik vozidel může být na této dobíjecí stanici najednou dobíjeno?"</string>
+    <string name="link_disaster_ninja_description">"Mapa, která zobrazuje aktuální přírodní katastrofy, zajímavá pro humanitární mapéry. Dále jsou tu zajímavé statistiky, podle kterých lze analyzovat, jak jsou místa dobře zmapovaná a aktuální."</string>
 </resources>

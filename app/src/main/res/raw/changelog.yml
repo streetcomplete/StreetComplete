@@ -1,4 +1,99 @@
-v23.0-beta1: |
+v26.0-beta2: |
+  <ul>
+  <li>Added Croatian translation by Matija Nalis</li>
+  <li>All forms for quests except image selection forms now automatically expand to full height</li>
+  <li>Fixed two crashes (#2220, #2219)</li>
+  </ul>
+
+v26.0-beta1: |
+  <h3>⚡ Wait for the download no more!</h3>
+  <p>
+  Reworked it completely. Quest download is now substantially faster and the pins for all quest types appear immediately at the same time! (#1874, #1901)
+  </p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>How many cars can be charged at this charging station at the same time?</i> (#900)</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Road surfaces: Improve interface, ask for reason when a generic surface is selected (#2078), by @matkoniecz </li>
+  <li>Building types: Add answer options for silos (#2180), historic, abandoned buildings and ruins (#2177, #2214), by @RiffLord </li>
+  <li>Improve a few wordings (#2202, #2204)</li>
+  </ul>
+  <h3>Other Enhancements and Fixes</h3>
+  <ul>
+  <li>You cannot accidentally open the copyright statements for the map (links at the bottom) anymore (#2199)</li>
+  </ul>
+
+v25.1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What is the reference number of this bus stop?</i> (#2126)</li>
+  <li><i>Do these steps have a ramp? What kind?</i> (#2036, #2168)</li>
+  <li><i>Does this pedestrian crossing have an island?</i> (#1961,  #2030), by @kmpoppe</li>
+  <li><i>What's the name of the bank for this ATM?</i> (#203)</li>
+  <li><i>Who is the operator of this charging station?</i> (#911)</li>
+  <li><i>Who accepts donations for this clothing bin?</i> (#570)</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>House number quest: Make it faster to collect house numbers in a row (#2131)</li>
+  <li>Recycling materials quest: In the Czech Republic, offer "any glass" option instead of "glass bottles" (#2123)</li>
+  <li>Improve a few wordings (#2047, #2096)</li>
+  <li>Handrails: Don't ask for places where the information has already been supplied in another way (#2162)</li>
+  <li>Way lit: Don't ask for indoor corridors (#2176)</li>
+  </ul>
+  <h3>Other Enhancements and Fixes</h3>
+  <ul>
+  <li>new achievement graphics by Judith Gastell (<a href='https://www.artstation.com/melusine'>melusine</a>)</li>
+  <li>Map style update: Amongst other things, all housenumbers are now displayed again on the map, private roads are displayed as such and 3D buildings can be displayed more detailed</li>
+  <li>Fix tagging tactile paving on crosswalks on a resurvey (#2176, #2172), by @peternewman, @dbdean</li>
+  <li>Other small fixes and enhancements (#2186, #2190, #2182, #2184, #2181, #2179, ...)</li>
+  </ul>
+
+v24.2: |
+  <ul>
+  <li>Fix crash for the max height quest (#2147)</li>
+  <li>Surface and building type quest: Make categories visually more distinct (#1952, #2000)</li>
+  <li>A few fixes (#2145, #2148, #2161...), thanks @peternewman</li>
+  <li>Updated translations</li>
+  </ul>
+
+v24.1: |
+  <ul>
+  <li>Less ambiguous interface for one-way and steps inclination quest (#2140)</li>
+  <li>Don't ask for obvious dead end streets if they are one-ways</li>
+  <li>Tactile paving on crossing quest: Ask for more crossings (#2141)</li>
+  <li>Added photo how a special button for the blind at a crossing looks like in the UK (#2127), thanks @CJ-Malone</li>
+  <li>Other small enhancements and fixes</li>
+  </ul>
+
+v24.0: |
+  <p>
+  Good News! StreetComplete received a grant from the <a href="https://www.bmbf.de/">German Federal Ministry of Education and Research</a> within the frame of the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a>,
+  spanning over a period of 6 months! For the next few months, my focus is on adding new quest types, starting with this update!
+  </p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is this a one-way street? In which direction?</i> (#1982, #2122)</li>
+  <li><i>Do these traffic lights have a tactile indication for blind people for when it's safe to cross?</i> (#1330, #2127)</li>
+  <li><i>Which direction leads upwards for these steps?</i> (#1817)</li>
+  <li><i>How may steps are here?</i> (#875)</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Max weight: A range of different max weight signs are now supported (#1880, #2121)</li>
+  <li>Postbox collection times: Can now select more times for the same day (range) (#2108, #2109), by @kmpoppe</li>
+  <li>All pedestrian traffic signals quests: Ask for more crossings (#2130)</li>
+  <li>Building levels: Do not ask for barns and warehouses (#2124), by @Etua</li>
+  </ul>
+  <h3>Other Enhancements and Fixes</h3>
+  <ul>
+  <li>hide GPS button only when the screen follows current position (#1996, #2101, #2110), by @smichel17 and me</li>
+  <li>other small fixes (#2103, ...)</li>
+  </ul>
+
+v23.0: |
   <h3>🚧 Map maintenance</h3>
   Quest types whose answer is likely to change over the years will be asked again in reasonable
   intervals. So now you can help not only to complete the map, but also to keep it up-to-date,
@@ -22,6 +117,7 @@ v23.0-beta1: |
   <ul>
   <li>Motorcycle and bicycle parking: Do not accept an input of "0" (#516)</li>
   <li>Also ask for the opening hours of defilbrilators (#1756, #2066), by @matkoniecz</li>
+  <li>Better picture of paving stones in surface quest (#2088), by @matkoniecz</li>
   <li>Accepts cash quest: Ask for more places (#2019), by @kmpoppe</li>
   <li>For opening hours, wheelchair access and accepts cash quest, always display the type of place alongside its name (#2012), by @Helium314</li>
   <li>Recycling container materials: Don't ask for containers close to other containers</li>
@@ -30,6 +126,7 @@ v23.0-beta1: |
   <h3>Other Enhancements and Fixes</h3>
   <ul>
   <li>Explain that you have to download manually if auto-sync is off (#1989, #2009, #2070), by @matkoniecz</li>
+  <li>Antialias pointer pin (#2091), by @Plastix</li>
   <li>Show link how to contribute translations in settings (#2079)</li>
   <li>Improve visibility of highlighted elements on the map (#1769)</li>
   <li>Fix a few rare crashes</li>

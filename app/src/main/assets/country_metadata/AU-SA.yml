@@ -1,0 +1,3 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [RediATM, BankSA, NAB, Commonwealth Bank, ANZ, Commonwealth Bank of Australia, Bendigo Bank, Bank SA]
+chargingStationOperators: [Chargefox]

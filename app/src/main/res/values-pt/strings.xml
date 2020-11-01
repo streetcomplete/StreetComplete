@@ -260,11 +260,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Mostrar mais..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sincronização automática"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Afastar"</string>
@@ -290,7 +288,7 @@ A aplicação não partilha a sua localização GPS com ninguém. Esta apenas é
 
 &lt;p&gt;&lt;b&gt;Utilização de dados&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Como mencionado, a aplicação comunica diretamente com a infraestrutura do OpenStreetMap. Isto é, com a &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;API do Overpass&lt;/a&gt; para descarregar desafios (de forma anónima) e com a &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API do OpenStreetMap&lt;/a&gt; para enviar as alterações.&lt;br/&gt;
+Como mencionado, a aplicação comunica diretamente com a infraestrutura do OpenStreetMap. 
 Contudo, antes enviar as suas alterações, a aplicação confirma com &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;um ficheiro de texto simples&lt;/a&gt; no meu servidor para averiguar se a versão do StreetComplete que usa foi banida de forma a impedir o envio de alterações. Isto é uma medida preventiva, para impedir que certas versões da aplicação venham a ter erros graves detetados posteriormente e que possam corromper os dados do OpenStreetMap.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -694,7 +692,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="credits_contributors">"Veja a lista completa &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Para a lista completa veja o &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projeto no POEditor&lt;/a&gt;."</string>
+    <string name="credits_translations">"Para a lista completa veja o &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projeto no POEditor&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traduções"</string>
@@ -1008,7 +1006,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="action_reset">"Repor"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Pressionar durante 1 segundo num desafio para o mover, reordenar a prioridade de descarregamento ou a sua visualização no mapa."</string>
+    <string name="reorder_quest_priority_hint">"Pressionar durante 1 segundo num desafio para o mover, reordenar a prioridade de sua visualização no mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfazer"</string>
@@ -1381,9 +1379,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"casa pequena separada (casa de verão, férias...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravana estática"</string>
 
     <!-- Fuzzy -->
@@ -1616,12 +1611,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_noteDiscussion_hide2">"Oculto por %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Que barreira tem esta passagem de nível ferroviária?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Não tem"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;As fotografias que anexar a um erro reportado/nota são enviados para o meu servidor e eliminadas após alguns dias após o erro ser resolvido. Os meta-dados das fotografias são eliminados antes do envio.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1656,9 +1645,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Este edifício está totalmente abaixo do solo?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Existe aqui sinalização sonora para invisuais?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que não há mais que um degrau para aceder."</string>
@@ -1733,12 +1719,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="map_application_missing">"Não há outra app de mapas instalada"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Alterar servidor Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Requer que a app seja reiniciada. Pode contornar a censura, como por exemplo na Rússia"</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"número de porta"</string>
 
     <!-- Fuzzy -->
@@ -1811,9 +1791,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_maxweight_title">"Qual o limite de peso aqui?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Não há sinalização"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Este limite de peso não é plausível. Tem a certeza que está correto?"</string>
 
     <!-- Fuzzy -->
@@ -1840,4 +1817,5 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="at_housenumber">"número de porta %s:"</string>
     <string name="quest_openingHours_name_type_title">"Qual o horário de funcionamento de %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) é acessível a cadeira de rodas?"</string>
+    <string name="quest_traffic_signals_sound_title">"Existe aqui sinalização sonora para invisuais?"</string>
 </resources>

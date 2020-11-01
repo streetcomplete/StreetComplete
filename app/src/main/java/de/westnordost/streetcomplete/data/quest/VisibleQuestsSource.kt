@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -12,7 +13,8 @@ import javax.inject.Singleton
 /** Access and listen to quests visible on the map */
 @Singleton class VisibleQuestsSource @Inject constructor(
     private val osmQuestController: OsmQuestController,
-    private val osmNoteQuestController: OsmNoteQuestController
+    private val osmNoteQuestController: OsmNoteQuestController,
+    private val visibleQuestTypeDao: VisibleQuestTypeDao
 ) {
     private val listeners: MutableList<VisibleQuestListener> = CopyOnWriteArrayList()
 
@@ -32,7 +34,12 @@ import javax.inject.Singleton
         }
 
         override fun onUpdated(added: Collection<OsmQuest>, updated: Collection<OsmQuest>, deleted: Collection<Long>) {
-            onUpdatedVisibleQuests(added, updated, deleted, QuestGroup.OSM)
+            onUpdatedVisibleQuests(
+                added.filter { visibleQuestTypeDao.isVisible(it.type) },
+                updated.filter { visibleQuestTypeDao.isVisible(it.type) },
+                deleted,
+                QuestGroup.OSM
+            )
         }
     }
 
@@ -68,15 +75,15 @@ import javax.inject.Singleton
     }
 
 
-    /** Get count of all unanswered quests in given bounding box of given types */
-    fun getAllVisibleCount(bbox: BoundingBox, questTypes: Collection<String>): Int {
-        if (questTypes.isEmpty()) return 0
-        return osmQuestController.getAllVisibleInBBoxCount(bbox, questTypes) +
+    /** Get count of all unanswered quests in given bounding box */
+    fun getAllVisibleCount(bbox: BoundingBox): Int {
+        return osmQuestController.getAllVisibleInBBoxCount(bbox) +
                 osmNoteQuestController.getAllVisibleInBBoxCount(bbox)
     }
 
     /** Retrieve all visible (=new) quests in the given bounding box from local database */
     fun getAllVisible(bbox: BoundingBox, questTypes: Collection<String>): List<QuestAndGroup> {
+        if (questTypes.isEmpty()) return listOf()
         val osmQuests = osmQuestController.getAllVisibleInBBox(bbox, questTypes)
         val osmNoteQuests = osmNoteQuestController.getAllVisibleInBBox(bbox)
 

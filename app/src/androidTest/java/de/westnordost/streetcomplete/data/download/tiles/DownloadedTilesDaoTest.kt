@@ -4,6 +4,7 @@ import org.junit.Before
 import org.junit.Test
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.Tile
 import de.westnordost.streetcomplete.util.TilesRect
 
@@ -76,6 +77,6 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
         check = dao.get(r(0, 0, 6, 6), 0)
         assertTrue(check.isEmpty())
     }
-    
+
     private fun r(left: Int, top: Int, right: Int, bottom: Int) = TilesRect(left, top, right, bottom)
 }

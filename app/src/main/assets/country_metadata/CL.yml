@@ -1,5 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Banco de Chile, BancoEstado, Banco Estado, Santander, Redbanc, Banco Santander, Scotiabank, BCI, Caja
+      Vecina, RedBanc, Itaú, Bancoestado, banco chile, Transbank, Servipag, REDBANC]
+chargingStationOperators: [Enel, Copec, e, copec, CGE, Copec Voltex]
 mobileCountryCode: 730
 officialLanguages: [es]
-orchardProduces: [grape, apple, tomato, peach, pear, plum, kiwi, lemon, lime, avocado, orange, olive,
-  cranberry, walnut, cherry, chilli_pepper, sweet_pepper]
+orchardProduces: [grape, apple, tomato, peach, pear, plum, kiwi, lemon, lime, avocado, orange, olive, cranberry, walnut,
+   cherry, chilli_pepper, sweet_pepper]

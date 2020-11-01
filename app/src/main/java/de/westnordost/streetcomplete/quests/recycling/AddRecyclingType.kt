@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.quests.recycling
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.*
 
 
-class AddRecyclingType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<RecyclingType>(o) {
+class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
-    override val tagFilters = "nodes, ways, relations with amenity = recycling and !recycling_type"
+    override val elementFilter = "nodes, ways, relations with amenity = recycling and !recycling_type"
     override val commitMessage = "Add recycling type to recycling amenity"
     override val wikiLink = "Key:recycling_type"
     override val icon = R.drawable.ic_quest_recycling

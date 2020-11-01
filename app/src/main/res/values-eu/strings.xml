@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Erakutsi gehiago..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Hainbat forma desberdin ditu"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sinkronizaio automatikoa"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Urrundu zooma"</string>
@@ -289,15 +287,8 @@ Kokalekua inguruko erronkak automatikoki bilatzeko erabiltzen da, aplikazioak ez
 
 &lt;p&gt;&lt;b&gt;Datuen erabilera&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Esan bezala, zuzenean OSM azpiegiturarekin komunikatzen da aplikazioa. Hau da, &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt;-arekin erronkak deskargatzeko (anonimoa da) eta &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt;-arekin erantzunak igotzeko.&lt;br/&gt;
 Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;testu soileko fitxategi&lt;/a&gt; batean aldaketak igotzea debekatu zaion egiaztatzen du. Hau badaezpadako neurri bat da arazo larriak dituztelako OSM datuak zapuzteko arriskua duten bertsioak kanpo uzteko. &lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Mapa bistaratzeko, bektore lauzak &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen bektore lauzen zerbitzu&lt;/a&gt;tik hartzen dira, anonimoa da. Zerbitzariak lauzen eskaerak egunkarian gordetzen ditu eskari handia duten zonaldeak zeintzuk diren ulertzeko eta aurrez cachean sartuz errendimendua hobetzeko. Plataformak IP helbideak ere gordetzen ditu eta dena Amazon zerbitzarietan ostatatuta dago.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Hau ez da oraindik inplementatu, datorrenari buruz informatzeko da!:&lt;/i&gt;) 
-Sailkapenean eta profilean agertzen den informazioa OpenStreetMap-en publikoki eskuragarri dagoen informazioarekin osatu da. Datuak ez datoz aplikazio honetatik, baizik eta OSMko erabiltzaileen ekarpenen historia publikotik.&lt;/p&gt;"</string>
+&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"Bai"</string>
@@ -701,7 +692,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="credits_contributors">"Ikusi &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;zerrenda osoa GitHub-en&lt;/a&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Ikusi &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;proiektua POEditor-en&lt;/a&gt; zerrenda osorako."</string>
+    <string name="credits_translations">"Ikusi &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proiektua POEditor-en&lt;/a&gt; zerrenda osorako."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Itzulpenak"</string>
@@ -1014,7 +1005,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="action_reset">"Leheneratu"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Sakatu luze eta mugitu erronka, deskargatu eta mapan bistaratzeko lehentasuna aldatzeko."</string>
+    <string name="reorder_quest_priority_hint">"Sakatu luze eta mugitu erronka, mapan bistaratzeko lehentasuna aldatzeko."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desegin"</string>
@@ -1389,9 +1380,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"isolatutako etxe txikia (udarako etxea, oporretarako basetxea, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Karabana estatikoa"</string>
 
     <!-- Fuzzy -->
@@ -1623,12 +1611,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_noteDiscussion_hide2">"%1$s(e)k ezkutatuta, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Nola dago trenbide gurutze hau babestuta?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Ez dago babestuta"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Ohar batetara gehitzen dituzun argazkiak nire zerbitzarira igotzen dira eta oharra ebatzi eta egun batzuetara ezabatzen dira. Igo aurretik metadatuak kentzen zaizkie.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1663,9 +1645,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Eraikin hau erabat lur azpian dago?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Itsuentzako soinuzko seinaleak daude hemen?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"'Partziala' esan nahi du ez dagoela urrats bat baino gehiago iristeko."</string>
@@ -1738,12 +1717,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Ez dago beste mapa aplikaziorik instalatuta"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Aldatu Overpass zerbitzaria"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Aplikazioa berrabiarazi behar da aplikatzeko. Zentzura saihestu dezake, adibidez Errusian."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"etxe zenbakia"</string>
@@ -1819,9 +1792,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Zein da pisu muga hemen?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Ez dago seinalerik"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Pisu hori ezohikoa da. Ziur hori dela pisu zuzena?"</string>
@@ -2177,7 +2147,7 @@ Bukatzeko, tentuz ibili: Adi zure inguruneari eta ez sartu jabetza pribatuko ere
     <string name="link_figuregrounder_description">"Sortu hiri edo auzoetako diagrama posterrak"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_first_edit_title">"Lehen erroka ebatzita"</string>
+    <string name="achievement_first_edit_title">"Lehen erronka ebatzita"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"Ongi etorri OpenStreetMap komunitatera! Zure profilaren pantailan, ebatzi duzun erronka mota bakoitzaren informazio gehiago aurkitu dezakezu."</string>
@@ -2250,8 +2220,49 @@ Kontuan izan aplikazio honek eraikin baten zenbakia, behin zein motakoa denean j
     <string name="unread_messages_button">"Ireki sarrera ontzia"</string>
     <string name="action_about2">"Honi buruz"</string>
     <string name="map_btn_menu">"Menua"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;Zure profilean erakusten diren datuak zure OpenStreetMap-eko aportazioen informazio publikoa hartuta prozesatutakoak dira, gero nire zerbitzarian ostatatuta.&lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"Beranduago ere egin dezakezu, profilaren pantailan."</string>
+    <string name="credits_art_contributors_title">"Arte laguntzailea"</string>
+    <string name="credits_projects_contributors_title">"StreetComplete-rentzat egindako proiektuak"</string>
+    <string name="credits_main_contributors_title">"Laguntzaile lagusiak"</string>
+    <string name="stats_are_syncing">"Zure estatistikak oraindik eguneratzen ari gara. Etorri geroxeago ikustera."</string>
+    <string name="user_statistics_filter_by_country">"herrialdeka"</string>
+    <string name="user_statistics_filter_by_quest_type">"galdera motaren arabera"</string>
+    <string name="user_profile_global_rank">"Ranking
+globala"</string>
+    <string name="user_profile_local_rank">"%s-ko
+rankinga"</string>
+    <string name="user_profile_days_active">"Egunak
+aktibo"</string>
+    <string name="user_profile_achievement_levels">"Lorpen
+mailak"</string>
+    <string name="quest_address_street_title">"Zein kaleri dagokio %s etxe-zenbaki horrek?"</string>
+    <string name="quest_address_street_no_named_streets">"Ez dago izena duen kale batekin lotuta"</string>
+    <string name="quest_address_street_place_name_label">"Toki izena:"</string>
+    <string name="quest_address_street_description">"Ukitu mapan zein kale edo bideri dagokion edo idatzi laburdurarik gabe beheko eremuan:"</string>
+    <string name="quest_recycling_type_cooking_oil">"Sukaldeko olioa"</string>
+    <string name="quest_recycling_type_engine_oil">"Motoreen olioa"</string>
+    <string name="link_qwant_maps_description">"Bilatu daitezkeen toki eta helbideen mapa bat"</string>
+    <string name="about_title_sponsors">"Babesleak"</string>
+    <string name="quest_board_type_history">"Historia"</string>
+    <string name="quest_board_type_geology">"Geologia"</string>
+    <string name="quest_board_type_plants">"Landareak"</string>
+    <string name="quest_board_type_wildlife">"Fauna"</string>
+    <string name="quest_board_type_nature">"Natura (hainbat gai)"</string>
+    <string name="quest_board_type_notice_board">"Iragarki-taula bat da"</string>
+    <string name="quest_board_type_public_transport">"Garraio publikoa"</string>
+    <string name="quest_board_type_title">"Zein da argibide-taula honen gaia?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Bai, mapan aparte erakutsita"</string>
+    <string name="quest_board_type_map">"Mapa bat da"</string>
+    <string name="quest_board_type_map_title">"Mapa bat da eta besterik ez?"</string>
+    <string name="quest_board_type_map_description">"Argibide-taula gai konkretu bati buruzkoa bada, zehaztu mesedez, ez du axola mapa bat ere baduen ala ez. Adibidez, garraio publikoko argibide-taula batek autobus mapa bat izan dezake. Gaia ez badago hemen zerrendatuta, agian utzi mezu bat horren ordez."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Hainbat gainazal..."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Mesedez, azaldu laburki nolako gainazala dagoen hemen, adibidez \"hondarra, harrikoxkor zatiekin\". Testuaren luzeera gehienez 255 karakterekoa da."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"internazionala"</string>
+    <string name="quest_streetName_menuItem_romanized">"latindar alfabetoan"</string>
+    <string name="quest_buildingType_terrace2">"Etxe elkarri atxikiak"</string>
     <string name="at_housename">"Etxearen izena %s:"</string>
     <string name="at_conscription_and_street_number">"Konskripzio zenbakia %1$s, orientazio zenbakia %2$s:"</string>
 
@@ -2259,6 +2270,25 @@ Kontuan izan aplikazio honek eraikin baten zenbakia, behin zein motakoa denean j
     <string name="at_conscription_number">"Konskripzio zenbakia %s:"</string>
     <string name="at_housenumber">"etxe zenbakia %s:"</string>
     <string name="quest_openingHours_name_type_title">"Zein da %1$s (%2$s) (r)en ordutegia?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"%s-ko ordutegi hau oraindik zuzena da?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"%1$s-ko ordutegi hau oraindik zuzena da? (%2$s)"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Ordutegi hau oraindik zuzena da? (%s)"</string>
+    <string name="quest_openingHours_add_off_days">"Itxitako egunak gehitu"</string>
+    <string name="quest_openingHours_off_day">"Itxita dagoen eguna"</string>
+    <string name="quest_openingHours_unspecified_range">"Zehaztu gabe"</string>
+    <string name="quest_cycleway_resurvey_title">"Bizikletentzako bidearen egoerak honela jarraitzen du?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s)  gurpildun aulkientzat irisgarria al da?"</string>
+    <string name="pref_title_resurvey_intervals">"Berraztertze tarteak"</string>
+    <string name="resurvey_intervals_less_often">"Ez galdetu hain sarritan"</string>
+    <string name="resurvey_intervals_default">"Lehenetsia"</string>
+    <string name="resurvey_intervals_more_often">"Galdetu sarriago"</string>
+    <string name="quest_street_side_puzzle_select">"Ukitu hautatzeko"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) (e)k eskudiruz ordaintzea onartzen du?"</string>
+    <string name="quest_busStopBench_tram_name_title">"%s tranbia geltokiak eserlekurik du?"</string>
+    <string name="quest_busStopBench_tram_title">"Tranbia geltoki honek badu eserlekurik?"</string>
+    <string name="quest_busStopBench_title">"Autobus geltoki honek badu eserlekurik?"</string>
+    <string name="quest_busStopBench_name_title">"%s autobus geltokiak eserlekurik du?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Desfibriladore hau (AED) eraikin baten barruan dago?"</string>
+    <string name="about_title_translate">"Lagundu app hau itzultzen"</string>
+    <string name="quest_traffic_signals_sound_title">"Itsuentzako soinuzko seinaleak daude hemen?"</string>
 </resources>

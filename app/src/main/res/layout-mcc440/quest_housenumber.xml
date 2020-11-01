@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -15,6 +14,7 @@
         android:padding="8dp"
         android:showDividers="middle|beginning|end"
         android:orientation="horizontal"
+        android:layoutDirection="ltr"
         android:gravity="center"
         >
 
@@ -33,7 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="–"
-            style="@style/BlocknumberEditText"/>
+            style="@style/BlocknumberEditText"
+            tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/houseNumberInput"
@@ -41,12 +42,26 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             tools:text="33"
+            android:textColorHint="#2fff"
             android:digits="0123456789.,- /"
             style="@style/BlocknumberEditText"
             android:minWidth="54dp"
             />
 
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="56dp"
+        android:layout_height="0dp"
+        android:layout_toRightOf="@+id/houseAndBlockNumberContainer"
+        android:layout_alignTop="@+id/houseAndBlockNumberContainer"
+        android:layout_alignBottom="@+id/houseAndBlockNumberContainer"
+        android:layout_marginLeft="8dp"
+        tools:ignore="RtlHardcoded">
+
+        <include layout="@layout/view_plus_minus_control"/>
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -56,6 +71,7 @@
         android:orientation="horizontal"
         android:showDividers="middle"
         android:divider="@drawable/space_16dp"
+        android:layoutDirection="ltr"
         android:layout_margin="8dp">
 
         <TextView
@@ -66,7 +82,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="–"/>
+            android:text="–"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,8 +97,9 @@
         android:layout_width="64dp"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
         tools:text="ABC"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        tools:ignore="RtlHardcoded" />
 
 </RelativeLayout>

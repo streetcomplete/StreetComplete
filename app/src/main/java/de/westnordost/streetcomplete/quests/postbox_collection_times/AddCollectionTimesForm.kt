@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
@@ -52,7 +54,29 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
         collectionTimesList.isNestedScrollingEnabled = false
         checkIsFormComplete()
 
-        addTimesButton.setOnClickListener { collectionTimesAdapter.addNew() }
+        addTimesButton.setOnClickListener { onClickAddButton(it) }
+    }
+
+    private fun onClickAddButton(v: View) {
+        val rows = collectionTimesAdapter.collectionTimesRows
+
+        val addTimeAvailable = rows.isNotEmpty()
+
+        if (addTimeAvailable) {
+            val popup = PopupMenu(requireContext(), v)
+            if (addTimeAvailable) popup.menu.add(Menu.NONE, 0, Menu.NONE, R.string.quest_openingHours_add_hours)
+            popup.menu.add(Menu.NONE, 1, Menu.NONE, R.string.quest_openingHours_add_weekdays)
+            popup.setOnMenuItemClickListener { item ->
+                when(item.itemId) {
+                    0 -> collectionTimesAdapter.addNewHours()
+                    1 -> collectionTimesAdapter.addNewWeekdays()
+                }
+                true
+            }
+            popup.show()
+        } else {
+            collectionTimesAdapter.addNewWeekdays()
+        }
     }
 
     private fun loadCollectionTimesData(savedInstanceState: Bundle?):List<WeekdaysTimesRow> =

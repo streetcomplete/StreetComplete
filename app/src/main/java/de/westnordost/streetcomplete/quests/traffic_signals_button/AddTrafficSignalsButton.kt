@@ -1,15 +1,17 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_button
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddTrafficSignalsButton(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
+class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>() {
 
-    override val tagFilters =
-        "nodes with highway = crossing and crossing = traffic_signals and !button_operated"
+    override val elementFilter = """
+        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals 
+        and !button_operated
+        """
     override val commitMessage = "Add whether traffic signals have a button for pedestrians"
     override val wikiLink = "Tag:highway=traffic_signals"
     override val icon = R.drawable.ic_quest_traffic_lights
@@ -19,6 +21,6 @@ class AddTrafficSignalsButton(o: OverpassMapDataAndGeometryApi) : SimpleOverpass
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("button_operated", if (answer) "yes" else "no")
+        changes.add("button_operated", answer.toYesNo())
     }
 }

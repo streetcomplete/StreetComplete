@@ -1,16 +1,17 @@
 package de.westnordost.streetcomplete.data.user
 
-import de.westnordost.osmapi.common.Iso8601CompatibleDateFormat
 import de.westnordost.streetcomplete.ApplicationConstants
 import org.json.JSONObject
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.*
 
 /** Downloads statistics from the backend */
 class StatisticsDownloader(private val baseUrl: String) {
 
-    private val lastActivityDateFormat = Iso8601CompatibleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+    private val lastActivityDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.US)
 
     fun download(osmUserId: Long): Statistics {
         (URL("$baseUrl?user_id=$osmUserId").openConnection() as HttpURLConnection).run {
@@ -53,7 +54,7 @@ class StatisticsDownloader(private val baseUrl: String) {
         val rank = obj.getInt("rank")
         val daysActive = obj.getInt("daysActive")
         val isAnalyzing = obj.getBoolean("isAnalyzing")
-        val lastUpdate = lastActivityDateFormat.parse(obj.getString("lastUpdate"))
-        return Statistics(questTypes, countriesStatistics, rank, daysActive, lastUpdate, isAnalyzing)
+        val lastUpdate = lastActivityDateFormat.parse(obj.getString("lastUpdate"))!!
+        return Statistics(questTypes, countriesStatistics, rank, daysActive, lastUpdate.time, isAnalyzing)
     }
 }

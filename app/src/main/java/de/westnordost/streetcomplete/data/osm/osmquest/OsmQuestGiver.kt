@@ -12,7 +12,7 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
 import de.westnordost.streetcomplete.data.quest.QuestStatus
-import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import java.util.concurrent.FutureTask
 
@@ -21,7 +21,7 @@ import java.util.concurrent.FutureTask
 class OsmQuestGiver @Inject constructor(
     private val notePositionsSource: NotePositionsSource,
     private val osmQuestController: OsmQuestController,
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider,
+    private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
 ) {
 
@@ -34,7 +34,7 @@ class OsmQuestGiver @Inject constructor(
             createdQuests.add(quest)
             createdQuestsLog.add(questType.javaClass.simpleName)
         }
-        val updates = osmQuestController.updateForElement(createdQuests, emptyList(), element.type, element.id)
+        val updates = osmQuestController.updateForElement(createdQuests, emptyList(), geometry, element.type, element.id)
         Log.d(TAG, "Recreated ${updates.added} quests for ${element.type.name}#${element.id}: ${createdQuestsLog.joinToString()}")
     }
 
@@ -49,7 +49,7 @@ class OsmQuestGiver @Inject constructor(
         val createdQuestsLog = ArrayList<String>()
         val removedQuestsLog = ArrayList<String>()
 
-        for (questType in questTypesProvider.get()) {
+        for (questType in questTypeRegistry.all) {
             if (questType !is OsmElementQuestType<*>) continue
 
             val appliesToElement = questType.isApplicableTo(element) ?: continue
@@ -73,7 +73,7 @@ class OsmQuestGiver @Inject constructor(
                 }
             }
         }
-        val updates = osmQuestController.updateForElement(createdQuests, removedQuestIds, element.type, element.id)
+        val updates = osmQuestController.updateForElement(createdQuests, removedQuestIds, geometry, element.type, element.id)
 
         if (updates.added > 0) {
             Log.d(TAG, "Created ${updates.added} new quests for ${element.type.name}#${element.id}: ${createdQuestsLog.joinToString()}")

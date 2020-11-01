@@ -1,5 +1,12 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+atmOperators: [صراف الراجحي, الراجحي, SABB, Bank Al-Bilad, Al Rajhi Bank, مصرف الراجحي, NCB, بنك الرياض, بنك الراجحي,
+   SAMBA, مصرف الإنماء, صراف العربي, صراف الرياض, صراف الأهلي, Bank AlJazira, Al Rajhi, مصرف الانماء,
+   سامبا, البنك العربي, البنك الاهلي, الإنماء, الأهلي, Samba, Alahli NCB, صرافة بنك الرياض, صراف ساب,
+   صراف بنك الرياض, صراف بنك الراجحي, صراف الاهلي, بنك الجزيرة, بنك البلاد, بنك الانماء, العربي, البنك
+      السعودي للاستثمار, البنك السعودي الفرنسي, البنك الاول, الاهلي, الانماء, camera, Saudi Hollandi Bank,
+   Riyadh Bank, Bank Aljazira, Alrajhi Bank, Alinma Bank, Alinma ATM, Albilad, Alarabi Bank, Al-Rajhi
+      Bank, Al Rajhi ATM]
 firstDayOfWorkweek: Su
 mobileCountryCode: 420
 officialLanguages: [ar]

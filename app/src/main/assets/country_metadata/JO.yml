@@ -1,8 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+atmOperators: [Arab Bank, Housing Bank, دائرة الجمارك الأردنية, Salwa Islamic Bank, Jordan Islamic Bank, Islamic International
+      Arab Bank]
 firstDayOfWorkweek: Su
 mobileCountryCode: 416
 officialLanguages: [ar]
-orchardProduces: [tomato, olive, chilli_pepper, sweet_pepper, peach, grape, apple, lemon, lime, banana,
-  orange, date, apricot, grapefruit, plum, strawberry, pear]
+orchardProduces: [tomato, olive, chilli_pepper, sweet_pepper, peach, grape, apple, lemon, lime, banana, orange, date, apricot,
+   grapefruit, plum, strawberry, pear]
 popularReligions: [muslim]

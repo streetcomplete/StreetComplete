@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.self_service
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddSelfServiceLaundry(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
+class AddSelfServiceLaundry : OsmFilterQuestType<Boolean>() {
 
-    override val tagFilters = "nodes, ways with shop = laundry and !self_service"
+    override val elementFilter = "nodes, ways with shop = laundry and !self_service"
     override val commitMessage = "Add self service info"
     override val wikiLink = "Tag:shop=laundry"
     override val icon = R.drawable.ic_quest_laundry
@@ -18,6 +18,6 @@ class AddSelfServiceLaundry(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQu
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("self_service", if (answer) "yes" else "no")
+        changes.add("self_service", answer.toYesNo())
     }
 }

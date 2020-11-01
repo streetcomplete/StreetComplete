@@ -6,8 +6,7 @@ import androidx.annotation.AnyThread
 import android.view.View
 
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.util.centerLineOfPolyline
-import de.westnordost.streetcomplete.util.initialBearingTo
+import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
 
 class StreetSideRotater(
@@ -15,7 +14,7 @@ class StreetSideRotater(
     private val compassView: View,
     geometry: ElementPolylinesGeometry
 ) {
-    private val wayOrientationAtCenter = geometry.getWayOrientationAtCenterLineInDegrees()
+    private val wayOrientationAtCenter = geometry.getOrientationAtCenterLineInDegrees()
     private val uiThread = Handler(Looper.getMainLooper())
 
     @AnyThread fun onMapOrientation(rotation: Float, tilt: Float) {
@@ -27,9 +26,4 @@ class StreetSideRotater(
     }
 
     private fun Float.toDegrees() = (180 * this / Math.PI).toFloat()
-
-    private fun ElementPolylinesGeometry.getWayOrientationAtCenterLineInDegrees(): Float {
-        val centerLine = polylines.first().centerLineOfPolyline()
-        return centerLine.first.initialBearingTo(centerLine.second).toFloat()
-    }
 }

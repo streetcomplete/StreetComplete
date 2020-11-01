@@ -1,32 +1,25 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
-import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import java.util.concurrent.FutureTask
 
 class AddOpeningHours (
-    private val overpassApi: OverpassMapDataAndGeometryApi,
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>,
-    private val r: ResurveyIntervalsStore
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<OpeningHoursAnswer> {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
-    private val filter by lazy { ElementFiltersParser().parse("""
+    private val filter by lazy { ("""
         nodes, ways, relations with
         (
           (
@@ -84,21 +77,17 @@ class AddOpeningHours (
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason"
-            ),
-            "emergency" to arrayOf(
-                "defibrillator"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
             )
             and !opening_hours
           )
-          or opening_hours older today -${r * 1} years
+          or opening_hours older today -1 years
         )
         and (access !~ private|no)
-        and (name or brand or noname = yes or emergency=defibrillator)
+        and (name or brand or noname = yes)
         and opening_hours:signed != no
-        """.trimIndent()
-    )}
+    """.trimIndent()).toElementFilterExpression() }
 
     override val commitMessage = "Add opening hours"
     override val wikiLink = "Key:opening_hours"
@@ -135,11 +124,8 @@ class AddOpeningHours (
         }
     }
 
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassApi.query(getOverpassQuery(bbox)) { element, geometry ->
-            if (isApplicableTo(element)) handler(element, geometry)
-        }
-    }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element) : Boolean {
         if (!filter.matches(element)) return false
@@ -176,9 +162,6 @@ class AddOpeningHours (
             }
         }
     }
-
-    private fun getOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
 
     private fun hasName(tags: Map<String, String>?) = hasProperName(tags) || hasFeatureName(tags)
 

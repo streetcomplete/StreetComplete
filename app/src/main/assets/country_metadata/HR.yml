@@ -1,9 +1,21 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [sr, it]
+atmOperators: [Zagrebačka banka, PBZ, Privredna banka Zagreb, Erste, Euronet, HPB, Erste Bank, ZABA, Hrvatska poštanska
+      banka, RBA, OTP, OTP banka, Euronet Worldwide, Raiffeisen Bank, Raiffeisen, Splitska Banka, Splitska
+      banka, otpbanka, OTP Banka, Zaba, Hypo, Zagrebačka Banka, Raiffeisenbank Austria, Raiffeisen bank,
+   Addiko Bank, Erste Banka, Zagrebacka banka, Raiffeisenbank, Privredna banka, Auro Domus, euronet, Sberbank,
+   Privredna Banka Zagreb, Karlovačka banka, Hrvatska Poštanska Banka, Erste bank, Addiko, Zagrebacka
+      Banka, Kreditna banka Zagreb, Addiko bank, Raiffeisen BANK, Raiffaisen Bank, Jadranska Banka, HypoGroup
+      Alpe Adria, Hypo Group, EuroNet, Erstebank, Erste banka, Erste Bank Croatia, Erste & Steiermärkische
+      banka, ERSTE Bank, ERSTE, BSpend, suma, Zagrebačka banka d.d., Volksbank, Societe Generale - Splitska
+      banka, Raiffeisen banka, Poštanska banka, Payten, Otp, OTP banka d.d., MoneyGet, Jadranska banka,
+   Hypo Alpe Adria Bank, Hypo Alpe Adria, Hpb, Euonet, Erste&Steiermärkische Bank, Erste & Steiermärkische
+      Bank, Addiko Banka]
+chargingStationOperators: [ELEN, Elen, Tesla Motors Inc., MOL Plugee, Eurokod]
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 219
 officialLanguages: [hr]
-orchardProduces: [grape, apple, tomato, olive, chilli_pepper, sweet_pepper, plum, peach, pear, strawberry,
-  cherry, hazelnut, fig, apricot, walnut, orange]
+orchardProduces: [grape, apple, tomato, olive, chilli_pepper, sweet_pepper, plum, peach, pear, strawberry, cherry, hazelnut,
+   fig, apricot, walnut, orange]
 popularSports: [soccer, tennis, basketball, boules, handball]

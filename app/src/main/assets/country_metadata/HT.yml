@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Sogebank, Unibank, SogeBank]
 mobileCountryCode: 372
 officialLanguages: [fr, ht]
-orchardProduces: [guava, mango, mangosteen, banana, avocado, lemon, lime, coffee, coconut, grapefruit,
-  orange, cacao, sisal, pineapple, tomato, papaya]
+orchardProduces: [guava, mango, mangosteen, banana, avocado, lemon, lime, coffee, coconut, grapefruit, orange, cacao, sisal,
+   pineapple, tomato, papaya]

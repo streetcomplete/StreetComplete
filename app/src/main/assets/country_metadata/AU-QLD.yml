@@ -1,0 +1,5 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [ANZ, Commonwealth Bank, Westpac, NAB, Suncorp, rediATM, Bank of Queensland, nab, Warwick Credit Union,
+   National Australia Bank, BOQ, westpac, commonwealth, Westpac Bank, Suncorp Bank, RediATM, DC ATM, Commonwealth,
+   Bendigo Bank, Bendigo]
+chargingStationOperators: [Evie Networks, Chargefox]

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.recycling_material
 /** All known recycling:* keys known to StreetComplete */
 enum class RecyclingMaterial(val value: String) {
     GLASS_BOTTLES("glass_bottles"),
+    GLASS("glass"),
     PAPER("paper"),
     PLASTIC("plastic"),
     PLASTIC_PACKAGING("plastic_packaging"),

@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Mostra'n més…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Té diferents formes"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sinc. automàtica"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Allunya't"</string>
@@ -289,7 +287,6 @@ La vostra ubicació només s'utilitza per a cercar automàticament missions que 
 
 &lt;p&gt;&lt;b&gt;Ús de dades&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Com s'ha esmentat, l'aplicació es comunica directament amb la infraestructura de l'OSM. És a dir, amb l'&lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; &lt;/a&gt;API Overpass&lt;/a&gt; per a baixar les missions (de forma anònima) i amb la &lt;a href = \"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API de l'OSM&lt;/a&gt; API per a pujar els canvis.&lt;br/&gt;
 No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fitxer de text pla&lt;/a&gt; en el meu servidor si té prohibit de pujar canvis. Aquesta és una mesura de precaució per a poder mantenir versions de l'aplicació que tinguin errors crítics i puguin malmetre les dades de l'OSM.&lt;br/&gt;
 &lt;/p&gt;"</string>
 
@@ -695,7 +692,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="credits_contributors">"Vegeu la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;llista completa de col·laboradors a GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Vegeu el &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projecte a POEditor&lt;/a&gt; per la llista completa."</string>
+    <string name="credits_translations">"Vegeu el &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projecte a POEditor&lt;/a&gt; per la llista completa."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traduccions"</string>
@@ -1008,7 +1005,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="action_reset">"Restablir"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Premeu i moveu una cerca per reordenar la prioritat per baixar-la i visualitzar-la al mapa."</string>
+    <string name="reorder_quest_priority_hint">"Premeu i moveu una cerca per reordenar la prioritat per visualitzar-la al mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfer"</string>
@@ -1385,9 +1382,6 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_buildingType_bungalow">"Bungalou"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"petita casa unifamiliar aïllada (casa d'estiu, casa de vacances, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravana estàtica"</string>
 
     <!-- Fuzzy -->
@@ -1619,12 +1613,6 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_noteDiscussion_hide2">"Ocult per %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Com està protegit aquest pas de vies?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"No ho està"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Les fotografies que adjunteu s'envien al meu servidor i se suprimeixen uns dies després que la nota s'ha resolt. Les metadades dels fitxers s'eliminen abans de pujar-los.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1659,9 +1647,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Aquest edifici és completament subterrani?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Hi ha senyals acústics per a cecs aquí?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialment significa que no hi ha més que un esglaó per accedir-hi."</string>
@@ -1734,12 +1719,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"No hi ha cap altra aplicació de mapes instal·lada"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Canvia el servidor Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Cal reiniciar l'aplicació per a aplicar-ho. Permet eludir la censura, per exemple en Rússia."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"número de casa"</string>
@@ -1815,9 +1794,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Quin és el límit de pes aquí?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"No hi ha cap senyal"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Aquest pes no sembla plausible. Esteu segur que és correcte?"</string>
@@ -1994,4 +1970,5 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_openingHours_name_type_title">"Quin és l'horari d'obertura de %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Es pot accedir a %1$s (%2$s) amb cadira de rodes?"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accepta pagaments en metàl·lic?"</string>
+    <string name="quest_traffic_signals_sound_title">"Hi ha senyals acústics per a cecs aquí?"</string>
 </resources>

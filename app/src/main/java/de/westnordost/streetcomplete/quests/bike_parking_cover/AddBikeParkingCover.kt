@@ -1,13 +1,14 @@
 package de.westnordost.streetcomplete.quests.bike_parking_cover
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddBikeParkingCover(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
-    override val tagFilters = """
+class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
+
+    override val elementFilter = """
         nodes, ways with 
          amenity = bicycle_parking
          and access !~ private|no
@@ -24,6 +25,6 @@ class AddBikeParkingCover(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQues
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("covered", if (answer) "yes" else "no")
+        changes.add("covered", answer.toYesNo())
     }
 }

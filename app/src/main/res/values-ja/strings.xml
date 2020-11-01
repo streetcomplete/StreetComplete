@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"さらに表示…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"いくつかの異なる形をしています"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"自動同期"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"ズームアウト"</string>
@@ -289,15 +287,10 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
 &lt;p&gt;&lt;b&gt;データの使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-前述のとおり、このアプリは OSM インフラストラクチャと直接通信します。つまり、探索をダウンロードする &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;オーバーパス API&lt;/a&gt;（これは匿名です）と、変更をアップロードする &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; です。&lt;br/&gt;
+前述のとおり、このアプリは OSM インフラストラクチャと直接通信します。
 ただし、変更をアップロードする前に、アプリは私たちのサーバー上で &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; を使用して、アップロードと変更が禁止されているかどうかを確認します。これは、OSM データを壊滅させる可能性のある重大なバグのあるバージョンのアプリを保護するめの予防措置です。
 &lt;/p&gt;
-&lt;p&gt;
-マップを表示するために、ベクタータイルが匿名の &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen ベクタータイルサービス&lt;/a&gt; から取得されます。サービスは、プリキャッシュおよびパフォーマンス向上のため、どの領域が一般的であるかを理解するために、タイルのリクエストをログ記録します。彼らのプラットフォームは IP アドレスも記録し、そのホスティングはすべて Amazon になっているので、彼らが何をするかにかかっています。
-&lt;/p&gt;
-&lt;p&gt;
-（&lt;i&gt;これは実際にはまだ実装されていませんが、何が来るのかをお知らせします!:&lt;/i&gt;）リーダーボードとプロフィールに表示されるデータは、OpenStreetMap から公開されている情報から集約されます。データはこのアプリからは得らるものではなく、基本的に OSM ユーザーの公開コミット履歴から取得されます。
-&lt;/p&gt;"</string>
+"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"オン"</string>
@@ -701,7 +694,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="credits_contributors">"すべてのリストは &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; を参照してください。"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"すべてのリストは &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor のプロジェクト&lt;/a&gt; を参照してください。"</string>
+    <string name="credits_translations">"すべてのリストは &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor のプロジェクト&lt;/a&gt; を参照してください。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"翻訳"</string>
@@ -1370,7 +1363,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_openingHours_timeSelect_next">"次"</string>
     <string name="quest_building_underground_name_title">"%s は建物全体が地下にありますか?"</string>
     <string name="quest_building_underground_title">"この建物は全体が地下にありますか?"</string>
-    <string name="quest_traffic_signals_sound_title">"この信号に視覚障害者のための音響装置はありますか?"</string>
     <string name="quest_wheelchairAccess_outside_title">"この場所は車椅子でアクセスできますか?"</string>
     <string name="quest_traffic_signals_button_title">"この信号には歩行者用の押ボタンがありますか?"</string>
     <string name="default_disabled_msg_maxspeed">"このタイプの質問に答えるためには強調表示されている部分だけではなく、通り全域の速度制限標識を確認する必要があるためデフォルトで無効になっています。場合によっては1つの探索を完了するのに非常に労力がかかるでしょう。"</string>
@@ -1391,8 +1383,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_placeName_title_name">"この場所の名前は何ですか? (%s)"</string>
     <string name="action_open_location">"他のアプリでこの場所を開く"</string>
     <string name="map_application_missing">"他の地図アプリがインストールされていません"</string>
-    <string name="pref_title_overpass_url_select">"Overpass サーバを変更"</string>
-    <string name="pref_title_overpass_url_info">"アプリの再起動が必要です。ロシアなどで検閲を回避できる場合があります。"</string>
     <string name="label_housenumber">"住居番号"</string>
     <string name="quest_busStopShelter_covered">"バス停全体が屋根で覆われている"</string>
     <string name="quest_leave_new_note_photos_are_useful">"写真を追加するとノートがより役に立ちます。"</string>
@@ -1455,4 +1445,5 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="at_housenumber">"住居番号 %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) の営業時間はどのくらいですか?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) は車椅子でアクセスできますか?"</string>
+    <string name="quest_traffic_signals_sound_title">"この信号に視覚障害者のための音響装置はありますか?"</string>
 </resources>

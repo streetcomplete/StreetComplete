@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
 import androidx.annotation.CallSuper
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.core.view.updateLayoutParams
@@ -98,13 +99,24 @@ open class MapFragment : Fragment(),
         mapView = view.findViewById(R.id.map)
         mapView.onCreate(savedInstanceState)
 
-        openstreetmapLink.setOnClickListener { openUrl("https://www.openstreetmap.org/copyright") }
+        openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }
         mapTileProviderLink.text = vectorTileProvider.copyrightText
-        mapTileProviderLink.setOnClickListener { openUrl(vectorTileProvider.copyrightLink) }
+        mapTileProviderLink.setOnClickListener { showOpenUrlDialog(vectorTileProvider.copyrightLink) }
 
         setupFittingToSystemWindowInsets()
 
         launch { initMap() }
+    }
+
+    private fun showOpenUrlDialog(url: String) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.open_url)
+            .setMessage(url)
+            .setPositiveButton(android.R.string.ok) { _,_ ->
+                openUrl(url)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     private fun openUrl(url: String): Boolean {
@@ -350,6 +362,14 @@ open class MapFragment : Fragment(),
 
     /* ------------------------------- Controlling the map -------------------------------------- */
 
+    public fun adjustToOffsets(oldOffset: RectF, newOffset: RectF) {
+        controller?.screenCenterToLatLon(oldOffset)?.let { pos ->
+            controller?.updateCameraPosition {
+                position = controller?.getLatLonThatCentersLatLon(pos, newOffset)
+            }
+        }
+    }
+
     fun getPositionAt(point: PointF): LatLon? = controller?.screenPositionToLatLon(point)
 
     fun getPointOf(pos: LatLon): PointF? = controller?.latLonToScreenPosition(pos)
@@ -382,10 +402,6 @@ open class MapFragment : Fragment(),
 
     fun getPositionThatCentersPosition(pos: LatLon, offset: RectF): LatLon? {
         return controller?.getLatLonThatCentersLatLon(pos, offset)
-    }
-
-    fun getViewPosition(offset: RectF): LatLon? {
-        return controller?.screenCenterToLatLon(offset)
     }
 
     var show3DBuildings: Boolean = true

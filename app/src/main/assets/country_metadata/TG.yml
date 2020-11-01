@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Ecobank, BTCI]
 mobileCountryCode: 615
 officialLanguages: [fr]
-orchardProduces: [banana, cacao, coffee, orange, coconut, cashew_nut, tomato, chilli_pepper, sweet_pepper,
-  pineapple, nutmeg]
+orchardProduces: [banana, cacao, coffee, orange, coconut, cashew_nut, tomato, chilli_pepper, sweet_pepper, pineapple, nutmeg]

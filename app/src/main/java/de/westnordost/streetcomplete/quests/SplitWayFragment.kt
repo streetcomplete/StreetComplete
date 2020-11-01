@@ -190,7 +190,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             context?.toast(R.string.quest_split_way_too_imprecise)
             return true
         }
-        val splitWay = splitWayCandidates.minBy { it.pos.distanceTo(position) }!!
+        val splitWay = splitWayCandidates.minByOrNull { it.pos.distanceTo(position) }!!
         val splitPosition = splitWay.pos
 
         // new split point is too close to existing split points
@@ -246,14 +246,14 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
 
     private fun createSplitsForLines(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitAtLinePosition> {
         val result = mutableSetOf<SplitAtLinePosition>()
-        positions.forEachPair { first, second ->
+        positions.forEachLine { first, second ->
             val crossTrackDistance = abs(clickPosition.crossTrackDistanceTo(first, second))
             if (clickAreaSizeInMeters > crossTrackDistance) {
                 val alongTrackDistance = clickPosition.alongTrackDistanceTo(first, second)
                 val distance = first.distanceTo(second)
                 if (distance > alongTrackDistance && alongTrackDistance > 0) {
                     val delta = alongTrackDistance / distance
-                    result.add(SplitAtLinePosition(first, second, delta))
+                    result.add(SplitAtLinePosition(OsmLatLon(first), OsmLatLon(second), delta))
                 }
             }
         }

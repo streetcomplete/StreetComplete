@@ -259,24 +259,15 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"더 보기..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"다양한 모양을 가지고 있습니다"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"자동 동기화"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"축소"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"확대"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt;아, 개인정보에 신경을 쓰는 분이시네요. 좋습니다! 저는 당신에게 좋은 소식만 전달하고 있다고 생각하고 있습니다.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;직접 기여&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-먼저, 이 앱으로 당신은 실제로, 그리고 직접적으로 OpenStreetMap에 기여한다는 것을 이해하세요.&lt;br/&gt;
-당신이 이 앱으로 기여하는 모든 것은 직접 지도에 추가됩니다. &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; or &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;이 앱과 OSM 인프라에 껴 있는 제3자 프로그램은 없습니다."</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"켜기"</string>
@@ -680,7 +671,7 @@
     <string name="credits_contributors">"Github에서 &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;전체 목록&lt;/a&gt;을 확인하세요."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor 프로젝트&lt;/a&gt;에 들어가서 전체 목록을 확인하세요."</string>
+    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 프로젝트&lt;/a&gt;에 들어가서 전체 목록을 확인하세요."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"번역"</string>
@@ -1365,9 +1356,6 @@
     <string name="quest_buildingType_bungalow">"방갈로"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"작게 따로 떨어져 있는 집(여름 별장, 휴가용 별장, ...)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"고정된 이동식 주택"</string>
 
     <!-- Fuzzy -->
@@ -1599,12 +1587,6 @@
     <string name="quest_noteDiscussion_hide2">"%1$s, %2$s가 숨김"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"이 철도 건널목이 어떻게 보호되고 있습니까?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"보호되지 않음"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;참고에 첨부한 사진은 StreetComplete 서버로 업로드되며, 참고가 해결되면 수일 후에 삭제됩니다. 사진의 메타데이터는 업로드하기 전에 삭제됩니다.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1639,9 +1621,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"이 건물이 완전히 지하에 있습니까?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"여기에 시각 장애인을 위한 음성 신호가 있습니까?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"접근하려면 외길로 가야 한다는 것을 부분적으로 의미합니다."</string>
@@ -1714,12 +1693,6 @@
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"설치된 다른 지도 앱이 없습니다"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Overpass 서버 변경"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"설정을 적용하려면 앱을 다시 시작해야 합니다. 러시아 등의 국가에서는 검열을 우회할 수도 있습니다."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"건물 번호"</string>
@@ -1795,9 +1768,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"여기의 하중 제한이 얼마입니까?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"표지판이 없음"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"이 중량은 비현실적입니다. 정말 이 값이 맞습니까?"</string>
@@ -1919,4 +1889,5 @@
     <string name="at_housenumber">"건물 번호 %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 의 개점 시간은 언제입니까?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s)에 휠체어가 들어갈 수 있습니까?"</string>
+    <string name="quest_traffic_signals_sound_title">"여기에 시각 장애인을 위한 음성 신호가 있습니까?"</string>
 </resources>

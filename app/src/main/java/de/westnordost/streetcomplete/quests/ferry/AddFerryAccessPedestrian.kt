@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.ferry
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddFerryAccessPedestrian(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
+class AddFerryAccessPedestrian : OsmFilterQuestType<Boolean>() {
 
-    override val tagFilters = "ways, relations with route = ferry and !foot"
+    override val elementFilter = "ways, relations with route = ferry and !foot"
     override val commitMessage = "Specify ferry access for pedestrians"
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry_pedestrian
@@ -25,6 +25,6 @@ class AddFerryAccessPedestrian(o: OverpassMapDataAndGeometryApi) : SimpleOverpas
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("foot", if (answer) "yes" else "no")
+        changes.add("foot", answer.toYesNo())
     }
 }

@@ -22,7 +22,7 @@ import java.util.*
 
 class AddOpeningHoursTest {
 
-    private val questType = AddOpeningHours(mock(), mock(), mock())
+    private val questType = AddOpeningHours(mock())
 
     @Test fun `apply description answer`() {
         questType.verifyAnswer(

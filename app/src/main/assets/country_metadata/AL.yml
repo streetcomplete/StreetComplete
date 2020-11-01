@@ -1,6 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [BKT, Raiffeisen, Fibank, Tirana Bank, Raiffeisen Bank, Raiffeisen BANK, Alpha Bank, donaldi, Raffeisen,
+   Credins Bank, Credins, Bkt, Banka Kombetare Tregtare, Bank Gjirokastra]
 isLivingStreetKnown: true
 mobileCountryCode: 276
 officialLanguages: [sq]
-orchardProduces: [tomato, grape, olive, apple, chilli_pepper, sweet_pepper, plum, fig, orange, peach,
-  cherry, date, pear, chestnut, apricot, lemon, lime]
+orchardProduces: [tomato, grape, olive, apple, chilli_pepper, sweet_pepper, plum, fig, orange, peach, cherry, date, pear,
+   chestnut, apricot, lemon, lime]

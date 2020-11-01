@@ -2,20 +2,17 @@ package de.westnordost.streetcomplete.quests.parking_fee
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddParkingFee(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<FeeAnswer>(o) {
+class AddParkingFee : OsmFilterQuestType<FeeAnswer>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes, ways, relations with amenity = parking
         and access ~ yes|customers|public
         and (
             !fee and !fee:conditional
-            or fee older today -${r * 8} years
+            or fee older today -8 years
         )
     """
     override val commitMessage = "Add whether there is a parking fee"

@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [SBM, MCB, Mauritius Commercial Bank, Barclays, MCB ATM, HSBC]
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true

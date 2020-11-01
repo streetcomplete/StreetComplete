@@ -11,6 +11,8 @@ import javax.inject.Inject;
 import androidx.appcompat.app.AppCompatDelegate;
 import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmfeatures.FeatureDictionary;
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater;
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler;
 
 public class StreetCompleteApplication extends Application
@@ -18,6 +20,8 @@ public class StreetCompleteApplication extends Application
 	@Inject FutureTask<CountryBoundaries> countryBoundariesFuture;
 	@Inject FutureTask<FeatureDictionary> featuresDictionaryFuture;
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
+	@Inject ResurveyIntervalsUpdater resurveyIntervalsUpdater;
+	@Inject DownloadedTilesDao downloadedTilesDao;
 	@Inject SharedPreferences prefs;
 
 	private static final String PRELOAD_TAG = "Preload";
@@ -36,6 +40,18 @@ public class StreetCompleteApplication extends Application
 
 		Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO"));
 		AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode);
+
+		resurveyIntervalsUpdater.update();
+
+		String lastVersion = prefs.getString(Prefs.LAST_VERSION_DATA, null);
+		if (!BuildConfig.VERSION_NAME.equals(lastVersion))
+		{
+			prefs.edit().putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME).apply();
+			if (lastVersion != null)
+			{
+				onNewVersion();
+			}
+		}
 	}
 
 	/** Load some things in the background that are needed later */
@@ -55,5 +71,10 @@ public class StreetCompleteApplication extends Application
 			featuresDictionaryFuture.run();
 			Log.i(PRELOAD_TAG, "Loaded features dictionary");
 		}).start();
+	}
+
+	private void onNewVersion() {
+		// on each new version, invalidate quest cache
+		downloadedTilesDao.removeAll();
 	}
 }

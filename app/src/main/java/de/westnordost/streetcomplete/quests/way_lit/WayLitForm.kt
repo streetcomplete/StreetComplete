@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 
@@ -12,6 +13,6 @@ class WayLitForm : AYesNoQuestAnswerFragment<String>() {
     )
 
     override fun onClick(answer: Boolean) {
-        applyAnswer(if(answer) "yes" else "no")
+        applyAnswer(answer.toYesNo())
     }
 }

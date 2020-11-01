@@ -2,21 +2,18 @@ package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
+class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes with amenity = post_box
         and access !~ private|no
         and collection_times:signed != no
-        and (!collection_times or collection_times older today -${r * 2} years)
+        and (!collection_times or collection_times older today -2 years)
     """
 
     /* Don't ask again for postboxes without signed collection times. This is very unlikely to

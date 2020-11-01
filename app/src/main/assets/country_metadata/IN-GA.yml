@@ -1,2 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [HDFC, ICICI Bank, State Bank of India, Corporation Bank, Bank of India, Bank of Baroda, Canara Bank,
+   Syndicate Bank, State Bank, SBI, HDFC Bank, Corporation bank, Canara bank, Axis Bank]
 officialLanguages: [kok]

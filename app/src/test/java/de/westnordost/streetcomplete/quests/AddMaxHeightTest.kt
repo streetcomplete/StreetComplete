@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.max_height.*
 import org.junit.Test
 
 class AddMaxHeightTest {
 
-    private val questType = AddMaxHeight(mock())
+    private val questType = AddMaxHeight()
 
     @Test fun `apply metric height answer`() {
         questType.verifyAnswer(
