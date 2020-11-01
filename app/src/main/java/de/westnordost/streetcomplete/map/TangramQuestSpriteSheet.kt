@@ -37,8 +37,15 @@ import kotlin.math.sqrt
 
     private fun createSpritesheet(): String {
         val questIconResIds = questTypeRegistry.all.map { it.icon }.toSortedSet()
-        questIconResIds.add(R.drawable.ic_multi_quest)
         questIconResIds.add(R.drawable.ic_multi_quest_2)
+        questIconResIds.add(R.drawable.ic_multi_quest_3)
+        questIconResIds.add(R.drawable.ic_multi_quest_4)
+        questIconResIds.add(R.drawable.ic_multi_quest_5)
+        questIconResIds.add(R.drawable.ic_multi_quest_6)
+        questIconResIds.add(R.drawable.ic_multi_quest_7)
+        questIconResIds.add(R.drawable.ic_multi_quest_8)
+        questIconResIds.add(R.drawable.ic_multi_quest_9)
+        questIconResIds.add(R.drawable.ic_multi_quest_9_and_more)
 
         val spriteSheetEntries: MutableList<String> = ArrayList(questIconResIds.size)
         val questPin = context.resources.getDrawable(R.drawable.quest_pin)

@@ -73,7 +73,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     interface Listener {
         fun onClickedQuest(questGroup: QuestGroup, questId: Long)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
-        fun onClickedLocationMarker()
     }
 
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
@@ -124,56 +123,55 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
             launch {
-            val pickResult = controller?.pickLabel(x, y)
+                val pickResult = controller?.pickLabel(x, y)
 
-            val pickedQuestId = pickResult?.properties?.get(MARKER_QUEST_ID)?.toLong()
-            val pickedElementId = pickResult?.properties?.get(MARKER_ELEMENT_ID)?.toLong()
-            val pickedQuestGroup = pickResult?.properties?.get(MARKER_QUEST_GROUP)?.let { QuestGroup.valueOf(it) }
+                val pickedQuestId = pickResult?.properties?.get(MARKER_QUEST_ID)?.toLong()
+                val pickedElementId = pickResult?.properties?.get(MARKER_ELEMENT_ID)?.toLong()
+                val pickedQuestGroup = pickResult?.properties?.get(MARKER_QUEST_GROUP)?.let { QuestGroup.valueOf(it) }
 
+                if (pickedQuestId != null && pickedQuestGroup != null) {
+                    listener?.onClickedQuest(pickedQuestGroup, pickedQuestId)
+                } else if (pickedElementId != null && pickedQuestGroup != null) {
+                    val quests = questPinLayerManager.findQuestsBelongingToOsmElementId(pickedElementId)
+                    val adapter = object : ArrayAdapter<Quest>(
+                        requireContext(),
+                        R.layout.select_quest_dialog_item,
+                        android.R.id.text1,
+                        quests) {
 
-            if (pickedQuestId != null && pickedQuestGroup != null) {
-                listener?.onClickedQuest(pickedQuestGroup, pickedQuestId)
-            } else if (pickedElementId != null && pickedQuestGroup != null) {
-                val quests = questPinLayerManager.findQuestsBelongingToOsmElementId(pickedElementId)
-                val adapter = object : ArrayAdapter<Quest>(
-                    requireContext(),
-                    R.layout.select_quest_dialog_item,
-                    android.R.id.text1,
-                    quests) {
+                        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                            val v: View = super.getView(position, convertView, parent)
+                            val tv: TextView = v.findViewById(android.R.id.text1)
+                            tv.text = resources.getString(quests[position].type.title)
+                            tv.textSize = 16f
 
-                    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                        val v: View = super.getView(position, convertView, parent)
-                        val tv: TextView = v.findViewById(android.R.id.text1)
-                        tv.text = resources.getString(quests[position].type.title)
-                        tv.textSize = 16f
+                            val dr = ContextCompat.getDrawable(context, quests[position].type.icon)
+                            val bitmap = Bitmap.createBitmap(dr!!.intrinsicWidth, dr!!.intrinsicHeight, Bitmap.Config.ARGB_8888)
+                            val canvas = Canvas(bitmap)
+                            dr.setBounds(0, 0, canvas.width, canvas.height);
+                            dr.draw(canvas);
 
-                        val dr = ContextCompat.getDrawable(context, quests[position].type.icon)
-                        val bitmap = Bitmap.createBitmap(dr!!.intrinsicWidth, dr!!.intrinsicHeight, Bitmap.Config.ARGB_8888)
-                        val canvas = Canvas(bitmap)
-                        dr.setBounds(0, 0, canvas.width, canvas.height);
-                        dr.draw(canvas);
+                            val size = tv.textSize * 2
+                            val drawable = BitmapDrawable(resources, Bitmap.createScaledBitmap(bitmap, size.toInt(), size.toInt(), true))
 
-                        val size = tv.textSize * 2
-                        val drawable = BitmapDrawable(resources, Bitmap.createScaledBitmap(bitmap, size.toInt(), size.toInt(), true))
+                            tv.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
+                            tv.compoundDrawablePadding = (8 * resources.displayMetrics.density).toInt()
+                            return v
+                        }
+                    }
 
-                        tv.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
-                        tv.compoundDrawablePadding = (8 * resources.displayMetrics.density).toInt()
-                        return v
+                    // TODO sst: translate
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Multiple quests available here")
+                        .setAdapter(adapter) { _, item ->
+                            listener?.onClickedQuest(pickedQuestGroup, quests[item].id!!)
+                        }.show()
+                } else {
+                    val pickMarkerResult = controller?.pickMarker(x,y)
+                    if (pickMarkerResult == null) {
+                        onClickedMap(x, y)
                     }
                 }
-
-                // TODO sst: translate
-                AlertDialog.Builder(requireContext())
-                    .setTitle("Multiple quests available here")
-                    .setAdapter(adapter) { _, item ->
-                        listener?.onClickedQuest(pickedQuestGroup, quests[item].id!!)
-                    }.show()
-            } else {
-                val pickMarkerResult = controller?.pickMarker(x,y)
-                if (pickMarkerResult == null) {
-                    onClickedMap(x, y)
-                }
-            }
         }
         return true
     }

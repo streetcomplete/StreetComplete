@@ -37,6 +37,7 @@ class AddInclineForm : AbstractQuestFormAnswerFragment<String>() {
             manualInputLayout.visibility = if (deviceMeasurementActive) View.GONE else View.VISIBLE
             // TODO sst: translate
             toggleMeasurementButton.text = if (deviceMeasurementActive) "Enter manually" else "Measure with device"
+            inclineView.locked = false
 
             checkIsFormComplete()
         }

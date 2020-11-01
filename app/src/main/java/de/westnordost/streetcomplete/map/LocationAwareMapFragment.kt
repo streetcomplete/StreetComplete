@@ -126,6 +126,7 @@ open class LocationAwareMapFragment : MapFragment() {
         initMarkers()
         centerCurrentPositionIfFollowing()
         showLocation()
+        controller?.requestRender()
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {

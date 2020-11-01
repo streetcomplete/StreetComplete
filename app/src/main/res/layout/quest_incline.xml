@@ -49,7 +49,10 @@
             android:id="@+id/inclineView"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"/>
 
     </LinearLayout>
 

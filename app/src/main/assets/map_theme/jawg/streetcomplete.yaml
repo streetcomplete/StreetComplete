@@ -125,7 +125,7 @@ layers:
                     collide: false
                     order: 1000
     additional_quest_highlighting_layer:
-      data: { source: streetcomplete_geometry_2 }
+      data: { source: additional_quest_highlighting_layer }
       line:
         filter: { type: line }
         draw:

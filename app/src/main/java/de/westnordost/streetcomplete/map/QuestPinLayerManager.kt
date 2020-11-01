@@ -186,10 +186,12 @@ class QuestPinLayerManager @Inject constructor(
                         MARKER_QUEST_GROUP to group.name
                     )
 
-                    if (quest is OsmQuest && elementIdCount[quest.elementId]!! > 1) {
+                    val questCount = if (quest is OsmQuest) elementIdCount[quest.elementId]!! else 1
+                    if (quest is OsmQuest && questCount > 1) {
                         if (!addedOsmElementId.contains(quest.elementId)) {
+                            val multiQuestIconResource = getCorrectMultiQuestIconResource(questCount)
+                            properties["kind"] = resources.getResourceEntryName(multiQuestIconResource)
                             properties[MARKER_ELEMENT_ID] = quest.elementId.toString()
-                            properties["kind"] = resources.getResourceEntryName(R.drawable.ic_multi_quest_2)
                             val points = positions.map { position ->
                                 Point(position.toLngLat(), properties)
                             }
@@ -208,6 +210,20 @@ class QuestPinLayerManager @Inject constructor(
             }
         }
         return result
+    }
+
+    private fun getCorrectMultiQuestIconResource(count: Int): Int {
+        return when (count) {
+            2 -> R.drawable.ic_multi_quest_2
+            3 -> R.drawable.ic_multi_quest_3
+            4 -> R.drawable.ic_multi_quest_4
+            5 -> R.drawable.ic_multi_quest_5
+            6 -> R.drawable.ic_multi_quest_6
+            7 -> R.drawable.ic_multi_quest_7
+            8 -> R.drawable.ic_multi_quest_8
+            9 -> R.drawable.ic_multi_quest_9
+            else -> R.drawable.ic_multi_quest_9_and_more
+        }
     }
 
     fun findQuestsBelongingToOsmElementId(osmElementId: Long): List<Quest> {

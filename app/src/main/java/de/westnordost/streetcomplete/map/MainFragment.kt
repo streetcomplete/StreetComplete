@@ -60,6 +60,7 @@ import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment.Listener.SidewalkSide
 import de.westnordost.streetcomplete.util.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.CoroutineScope
@@ -350,10 +351,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
         questController.hide(questId, group)
     }
 
-    override fun onHighlightSidewalkSide(questId: Long, group: QuestGroup, sidewalkSide: AbstractQuestAnswerFragment.Listener.SidewalkSide) {
+    override fun onHighlightSidewalkSide(questId: Long, group: QuestGroup, side: SidewalkSide) {
         val quest = questController.get(questId, group)
         if (quest != null) {
-            mapFragment?.highlightSidewalkForQuest(quest, sidewalkSide)
+            mapFragment?.highlightSidewalkForQuest(quest, side)
         }
     }
 

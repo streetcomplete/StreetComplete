@@ -4,24 +4,19 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.surface.AddPathSurfaceForm
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 
-class AddPathSmoothness (o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+class AddPathSmoothness : OsmFilterQuestType<String>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway ~ path|footway
         and segregated != yes
         and access !~ private|no
         and (!conveying or conveying = no) and (!indoor or indoor = no)
         and (
           !smoothness
-          or smoothness ~ ${ANYTHING_UNPAVED.joinToString("|")} and smoothness older today -${r * 4} years
-          or smoothness older today -${r * 8} years
+          or smoothness ~ ${ANYTHING_UNPAVED.joinToString("|")} and smoothness older today -4 years
+          or smoothness older today -8 years
         )
     """
     /* ~paved ways are less likely to change the surface type */

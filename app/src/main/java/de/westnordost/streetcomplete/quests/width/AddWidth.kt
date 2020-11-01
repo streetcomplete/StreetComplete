@@ -3,14 +3,11 @@ package de.westnordost.streetcomplete.quests.width
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 
-class AddWidth (o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+class AddWidth : OsmFilterQuestType<String>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway ~ path|footway
         and access !~ private|no
         and (!conveying or conveying = no) and (!indoor or indoor = no)

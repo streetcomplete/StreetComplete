@@ -37,7 +37,7 @@ public class Prefs {
 			LAST_LOCATION_REQUEST_DENIED = "location.denied",
 			LAST_VERSION = "lastVersion",
 			LAST_VERSION_DATA = "lastVersion_data",
-			HAS_SHOWN_TUTORIAL = "hasShownTutorial";
+			HAS_SHOWN_TUTORIAL = "hasShownTutorial",
 			HAS_COMPLETED_ARCORE_MEASUREMENT = "hasCompletedARCoreMeasurement";
 
 	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";

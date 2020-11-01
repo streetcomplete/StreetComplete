@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete
 
 import dagger.Component
+import de.westnordost.streetcomplete.about.PrivacyStatementFragment
 import de.westnordost.streetcomplete.controls.*
 import de.westnordost.streetcomplete.data.DbModule
 import de.westnordost.streetcomplete.data.OsmApiModule

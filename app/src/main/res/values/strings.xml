@@ -280,7 +280,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_manySports_confirmation_specific">"Specifically these"</string>
     <string name="quest_manySports_confirmation_generic">"General purpose"</string>
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
-	<string name="quest_toiletsFee_title">"Do you have to pay to use this restroom?"</string>
+    <string name="quest_toiletsFee_title">"Do you have to pay to use this restroom?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this restroom have a baby changing table?"</string>
     <string name="quest_baby_changing_table_title">"Does %s have a baby changing table?"</string>
     <string name="quest_way_lit_title">"Is this stretch of way lit?"</string>
@@ -427,9 +427,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_dietType_vegetarian_name_title">Does %s have vegetarian meals on the menu?</string>
     <string name="quest_dietType_vegan_name_title">Does %s have vegan meals on the menu?</string>
     <string name="quest_hasFeature_only">Only</string>
-    <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, fish, poultry, milk products, eggs, …).</string>
+    <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, fish, poultry, milk products, eggs, …).</string>
     <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat, fish, or poultry.</string>
-    <string name="quest_dietType_explanation">Only answer “yes” if the place provides proper eating options for this diet, ignore starters etc.</string>
+    <string name="quest_dietType_explanation">Only answer “yes” if the place provides proper eating options for this diet, ignore starters etc.</string>
     <string name="quest_toiletAvailability_name_title">Does %s have a restroom?</string>
     <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
     <string name="quest_powerPolesMaterial_wood">Wood</string>
@@ -839,6 +839,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_category_goodies_description">Interesting map-related stuff for you to try out</string>
 
     <string name="link_cyclosm_description">A map for cyclists</string>
+    <string name="link_indoorequal_description">Discover indoor maps of malls, railway stations etc.</string>
     <string name="link_wheelmap_description">A map for finding wheelchair accessible places</string>
     <string name="link_osm_buildings_description">A map that shows the buildings in 3D</string>
     <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
@@ -930,7 +931,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="at_housenumber">house number %s:</string>
     <string name="quest_summit_register_title">Is there a summit register at %s?</string>
     <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
-    <string name="dialog_tutorial_download">With auto-sync off, quests are not downloaded automatically. To do this manually, use the \"%s\" button in the menu at the location you want to download.</string>
 
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
@@ -942,4 +942,22 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="measurement_instructions_width">Please measure the width of the sidewalk at its narrowest section. Please also consider permanent objects such as trash cans or street lights when you determine the narrowest point.</string>
     <string name="measurement_instructions_incline">Please perform the measurement on the steepest section and in the same direction as indicated by the arrows on the map. Use a negative value for a downward slope.</string>
     <string name="measurement_instructions_incline_with_device">Put your device on the ground as instructed below and lock the measurement.</string>
+
+    <string name="quest_smoothness_impassable">Impassable</string>
+    <string name="quest_smoothness_very_horrible">Very horrible</string>
+    <string name="quest_smoothness_horrible">Horrible</string>
+    <string name="quest_smoothness_very_bad">Very bad</string>
+    <string name="quest_smoothness_bad">Bad</string>
+    <string name="quest_smoothness_intermediate">Intermediate</string>
+    <string name="quest_smoothness_good">Good</string>
+    <string name="quest_smoothness_excellent">Excellent</string>
+
+    <string name="quest_smoothness_impassable_description">Not suitable for any wheeled vehicle</string>
+    <string name="quest_smoothness_very_horrible_description">Suitable for tractors, ATVs, tanks, trials, mountain bikes and all kind of off-highway vehicles</string>
+    <string name="quest_smoothness_horrible_description">Suitable for heavy-duty off road vehicles and all below</string>
+    <string name="quest_smoothness_very_bad_description">Suitable for cars with high clearance, light-duty off road vehicles and all below</string>
+    <string name="quest_smoothness_bad_description">Suitable for trekking bikes, normal cars, Rickshaws and all below </string>
+    <string name="quest_smoothness_intermediate_description">Suitable for city bikes, sport cars, wheel chairs, scooters and all below</string>
+    <string name="quest_smoothness_good_description">Suitable for racing bikes and all below</string>
+    <string name="quest_smoothness_excellent_description">Suitable for roller blades, skate boards and all below</string>
 </resources>

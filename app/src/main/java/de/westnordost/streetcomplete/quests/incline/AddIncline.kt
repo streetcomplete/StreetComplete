@@ -3,14 +3,11 @@ package de.westnordost.streetcomplete.quests.incline;
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 
-class AddIncline (o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
-    : SimpleOverpassQuestType<String>(o) {
+class AddIncline : OsmFilterQuestType<String>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway ~ path|footway
         and access !~ private|no
         and (!conveying or conveying = no) and (!indoor or indoor = no)
@@ -19,7 +16,7 @@ class AddIncline (o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
 
     override val commitMessage = "Add incline"
     override val wikiLink = "Key:incline"
-    override val icon = R.drawable.ic_quest_smoke
+    override val icon = R.drawable.ic_placeholder_quest
     override val isSplitWayEnabled = false
 
     override fun getTitle(tags: Map<String, String>) = when {

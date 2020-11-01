@@ -33,7 +33,7 @@ android {
 
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
-        minSdkVersion(17)
+        minSdkVersion(24)
         targetSdkVersion(29)
         versionCode = 2601
         versionName = "26.0-beta2"
@@ -148,6 +148,12 @@ dependencies {
     implementation("org.sufficientlysecure:html-textview:3.9")
     implementation("com.duolingo.open:rtl-viewpager:2.0.0")
     implementation("com.google.android:flexbox:2.0.1")
+    implementation("com.github.GoodieBag:CarouselPicker:v1.2")
+
+    // ARCore
+    implementation("com.google.ar.sceneform.ux:sceneform-ux:1.14.0")
+    implementation("com.google.ar.sceneform:core:1.14.0")
+    implementation("com.google.ar:core:1.14.0")
 
     // box2d view
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")

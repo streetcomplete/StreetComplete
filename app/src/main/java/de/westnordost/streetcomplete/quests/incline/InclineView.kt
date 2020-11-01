@@ -47,14 +47,8 @@ class InclineView @JvmOverloads constructor(context: Context, attrs: AttributeSe
         textPaint.typeface = Typeface.DEFAULT_BOLD
         textPaint.textSize = 32f * resources.displayMetrics.scaledDensity
 
-        val clickAnimation = AlphaAnimation(1f, 0.1f).apply {
-            duration = 150
-            interpolator = LinearInterpolator()
-        }
-
         setOnClickListener {
             changeLock(!locked)
-            startAnimation(clickAnimation)
         }
     }
 
