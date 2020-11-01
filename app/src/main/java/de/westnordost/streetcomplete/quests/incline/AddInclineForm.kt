@@ -6,34 +6,64 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import kotlinx.android.synthetic.main.fragment_quest_answer.*
-import kotlinx.android.synthetic.main.quest_smoothness.*
+import kotlinx.android.synthetic.main.quest_incline.*
 import kotlin.math.atan2
-import kotlin.math.roundToInt
 import kotlin.math.sqrt
-import kotlin.math.tan
 
 class AddInclineForm : AbstractQuestFormAnswerFragment<String>() {
-    override val contentLayoutResId = R.layout.quest_smoothness
+    override val contentLayoutResId = R.layout.quest_incline
 
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     private var sensorManager: SensorManager? = null
     private var sensor: Sensor? = null
-    private var sensorEventListener : SensorEventListener? = null
+    private var sensorEventListener: SensorEventListener? = null
+
+    private var deviceMeasurementActive = false
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        toggleMeasurementButton.setOnClickListener {
+            deviceMeasurementActive = !deviceMeasurementActive
+            deviceMeasurementLayout.visibility = if (deviceMeasurementActive) View.VISIBLE else View.GONE
+            manualInputLayout.visibility = if (deviceMeasurementActive) View.GONE else View.VISIBLE
+            // TODO sst: translate
+            toggleMeasurementButton.text = if (deviceMeasurementActive) "Enter manually" else "Measure with device"
+
+            checkIsFormComplete()
+        }
+
+        inclineView.addListener(object: InclineView.Listener {
+            override fun onLockChanged(locked: Boolean) {
+                checkIsFormComplete()
+            }
+        })
+
+        manualInputField.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // NOP
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // TODO sst: format value here?
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                checkIsFormComplete()
+            }
+        })
+
         sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         sensor = sensorManager?.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
         sensorEventListener = object : SensorEventListener {
-            private var lastRenderTime = System.currentTimeMillis()
-
             override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
                 Log.i("Sensor", "" + accuracy)
             }
@@ -57,10 +87,8 @@ class AddInclineForm : AbstractQuestFormAnswerFragment<String>() {
                 val cosP = 1.0 - 2.0 * (x * x + y * y)
                 val pitch = atan2(sinP, cosP) * (180 / Math.PI)
 
-                if (System.currentTimeMillis() - lastRenderTime > 100) {
-                    titleLabel.text = "incline = ${(tan(pitch  * Math.PI / 180) * 100).roundToInt()} %"
-                    inclineView.changeIncline(pitch.toFloat())
-                    lastRenderTime = System.currentTimeMillis()
+                if (!inclineView.locked) {
+                    inclineView.changeIncline(pitch)
                 }
             }
 
@@ -79,7 +107,7 @@ class AddInclineForm : AbstractQuestFormAnswerFragment<String>() {
 
     override fun onResume() {
         super.onResume()
-        sensorManager?.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_UI)
+        sensorManager?.registerListener(sensorEventListener, sensor, 100_000)
     }
 
     override fun onPause() {
@@ -88,7 +116,12 @@ class AddInclineForm : AbstractQuestFormAnswerFragment<String>() {
     }
 
     override fun isFormComplete(): Boolean {
-        return true // TODO sst: sensor must be fixed or something...
+        // TODO sst: ask user about unrealistic values...
+        return if (deviceMeasurementActive) {
+            inclineView.locked
+        } else {
+            manualInputField.text.isNotEmpty()
+        }
     }
 
     override fun onClickOk() {

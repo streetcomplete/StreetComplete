@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete
 
 import dagger.Component
-import de.westnordost.streetcomplete.about.PrivacyStatementFragment
 import de.westnordost.streetcomplete.controls.*
 import de.westnordost.streetcomplete.data.DbModule
 import de.westnordost.streetcomplete.data.OsmApiModule
@@ -19,6 +18,7 @@ import de.westnordost.streetcomplete.map.MainFragment
 import de.westnordost.streetcomplete.map.MapFragment
 import de.westnordost.streetcomplete.map.MapModule
 import de.westnordost.streetcomplete.map.QuestsMapFragment
+import de.westnordost.streetcomplete.measurement.ARCoreMeasurementActivity
 import de.westnordost.streetcomplete.notifications.OsmUnreadMessagesFragment
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.QuestModule
@@ -94,4 +94,5 @@ interface ApplicationComponent {
     fun inject(questStatisticsByCountryFragment: QuestStatisticsByCountryFragment)
     fun inject(questStatisticsByQuestTypeFragment: QuestStatisticsByQuestTypeFragment)
     fun inject(privacyStatementFragment: PrivacyStatementFragment)
+    fun inject(measurementActivity: ARCoreMeasurementActivity)
 }

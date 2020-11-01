@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/speech_bubble_none"
+    tools:context=".measurement.ARCoreMeasurementActivity">
+
+    <TextView
+        android:id="@+id/distanceCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="6dp"
+        android:textStyle="bold"
+        android:textSize="14sp" />
+
+</LinearLayout>

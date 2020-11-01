@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
-import de.westnordost.streetcomplete.quests.incline.AddInclineForm
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddWidth (o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
@@ -20,7 +19,7 @@ class AddWidth (o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
 
     override val commitMessage = "Add width"
     override val wikiLink = "Key:width"
-    override val icon = R.drawable.ic_quest_apple
+    override val icon = R.drawable.ic_quest_street_width
     override val isSplitWayEnabled = false
 
     override fun getTitle(tags: Map<String, String>) = when { // TODO sst: change title
@@ -30,7 +29,7 @@ class AddWidth (o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
         // rest is rather similar, can be called simply "path"
     }
 
-    override fun createForm(): AddInclineForm = AddInclineForm() // TODO sst: change form
+    override fun createForm(): AddWidthForm = AddWidthForm()
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
         changes.updateWithCheckDate("width", answer)

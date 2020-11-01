@@ -34,7 +34,6 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

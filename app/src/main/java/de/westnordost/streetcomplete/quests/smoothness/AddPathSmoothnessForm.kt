@@ -1,90 +1,58 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
-import android.content.Context
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
-import android.hardware.SensorManager.SENSOR_DELAY_UI
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.surface.GROUND_SURFACES
+import de.westnordost.streetcomplete.quests.surface.PAVED_SURFACES
+import de.westnordost.streetcomplete.quests.surface.UNPAVED_SURFACES
+import de.westnordost.streetcomplete.quests.surface.toItems
+import de.westnordost.streetcomplete.view.Item
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_smoothness.*
-import kotlin.math.*
 
 class AddPathSmoothnessForm : AbstractQuestFormAnswerFragment<String>() {
     override val contentLayoutResId = R.layout.quest_smoothness
 
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private var sensorManager: SensorManager? = null
-    private var sensor: Sensor? = null
-    private var sensorEventListener : SensorEventListener? = null
+    private val values = listOf(
+        Item("paved", R.drawable.panorama_path_surface_paved, R.string.quest_surface_value_paved, null, PAVED_SURFACES.toItems()),
+        Item("unpaved", R.drawable.panorama_path_surface_unpaved, R.string.quest_surface_value_unpaved, null, UNPAVED_SURFACES.toItems()),
+        Item("ground", R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, GROUND_SURFACES.toItems()))
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initSlider()
+        checkIsFormComplete()
 
-        sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        sensor = sensorManager?.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
-        sensorEventListener = object : SensorEventListener {
-            private var lastRenderTime = System.currentTimeMillis()
+        listener?.onHighlightSidewalkSide(questId, questGroup, Listener.SidewalkSide.LEFT)
+    }
 
-            override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-                Log.i("Sensor", "" + accuracy)
-            }
-
-            override fun onSensorChanged(event: SensorEvent?) {
-                val g = convertFloatsToDoubles(event!!.values.clone())
-                val norm = sqrt(g!![0] * g[0] + g[1] * g[1] + g[2] * g[2] + g[3] * g[3])
-                g[0] /= norm
-                g[1] /= norm
-                g[2] /= norm
-                g[3] /= norm
-
-                // Set values to commonly known quaternion letter representatives
-                val x = g[0]
-                val y = g[1]
-                val z = g[2]
-                val w = g[3]
-
-                // Calculate Pitch in degrees (-180 to 180)
-                val sinP = 2.0 * (w * x + y * z)
-                val cosP = 1.0 - 2.0 * (x * x + y * y)
-                val pitch = atan2(sinP, cosP) * (180 / Math.PI)
-
-                if (System.currentTimeMillis() - lastRenderTime > 100) {
-                    titleLabel.text = "incline = ${(tan(pitch  * Math.PI / 180) * 100).roundToInt()} %"
-                    inclineView.changeIncline(pitch.toFloat())
-                    lastRenderTime = System.currentTimeMillis()
-                }
-            }
-
-            private fun convertFloatsToDoubles(input: FloatArray?): DoubleArray? {
-                if (input == null) return null
-                val output = DoubleArray(input.size)
-                for (i in input.indices) output[i] = input[i].toDouble()
-                return output
-            }
+    private fun initSlider() {
+        valueSlider.apply {
+            valueFrom = 0f
+            valueTo = values.size.toFloat() - 1
+            value = 1f
         }
 
-        okButton.text = "Next"
-        listener?.onHighlightSidewalkSide(questId, questGroup, Listener.SidewalkSide.LEFT)
-
-        checkIsFormComplete()
+        setValueInformation(values[1])
+        valueSlider.addOnChangeListener { _, value, _ ->
+            val item = values[value.toInt()]
+            setValueInformation(item)
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        sensorManager?.registerListener(sensorEventListener, sensor, SENSOR_DELAY_UI)
-    }
+    private fun setValueInformation(item: Item<String>) {
+        valueName.text = item.value
+        valueDescription.text = resources.getText(item.titleId!!)
 
-    override fun onPause() {
-        super.onPause()
-        sensorManager?.unregisterListener(sensorEventListener)
+        val exampleImage: Drawable? = ContextCompat.getDrawable(requireContext(), item.drawableId!!)
+        valueExampleImage.setImageDrawable(exampleImage)
     }
 
     override fun onClickOk() {

@@ -839,7 +839,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_category_goodies_description">Interesting map-related stuff for you to try out</string>
 
     <string name="link_cyclosm_description">A map for cyclists</string>
-    <string name="link_indoorequal_description">Discover indoor maps of malls, railway stations etc.</string>
     <string name="link_wheelmap_description">A map for finding wheelchair accessible places</string>
     <string name="link_osm_buildings_description">A map that shows the buildings in 3D</string>
     <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
@@ -931,8 +930,16 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="at_housenumber">house number %s:</string>
     <string name="quest_summit_register_title">Is there a summit register at %s?</string>
     <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
+    <string name="dialog_tutorial_download">With auto-sync off, quests are not downloaded automatically. To do this manually, use the \"%s\" button in the menu at the location you want to download.</string>
 
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
     <string name="open_url">Open URL</string>
+
+    <string name="use_device_to_measure">Use device to measure</string>
+    <string name="unit_cm">cm</string>
+    <string name="value">Value</string>
+    <string name="measurement_instructions_width">Please measure the width of the sidewalk at its narrowest section. Please also consider permanent objects such as trash cans or street lights when you determine the narrowest point.</string>
+    <string name="measurement_instructions_incline">Please perform the measurement on the steepest section and in the same direction as indicated by the arrows on the map. Use a negative value for a downward slope.</string>
+    <string name="measurement_instructions_incline_with_device">Put your device on the ground as instructed below and lock the measurement.</string>
 </resources>

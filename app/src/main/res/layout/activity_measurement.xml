@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".measurement.ARCoreMeasurementActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <fragment
+            android:id="@+id/sceneformFragment"
+            android:name="com.google.ar.sceneform.ux.ArFragment"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <RelativeLayout
+            android:id="@+id/hintLayout"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/round_button_padding"
+            android:background="@drawable/speech_bubble_none" >
+
+            <TextView
+                android:id="@+id/hintTitleView"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/hintTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hintTitleView"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/hintActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hintTextView"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                style="@style/BottomSheetButtonBarItem" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/okButton"
+            android:text="@android:string/ok"
+            style="@style/RoundAccentButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/round_button_padding"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/clearButton"
+            style="@style/RoundWhiteButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/round_button_padding"
+            android:contentDescription="..."
+            android:scaleType="center"
+            android:src="@drawable/ic_undo_black_24dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

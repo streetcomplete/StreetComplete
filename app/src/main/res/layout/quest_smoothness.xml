@@ -1,36 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/descriptionLabel"
+    <com.google.android.material.slider.Slider
+        android:id="@+id/valueSlider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:labelFor="@+id/nameInput"
-        android:text="@string/quest_determineRecyclingGlass_description_any_glass" />
-
-    <com.google.android.material.slider.RangeSlider
-        android:id="@+id/slider"
-        app:labelBehavior="gone"
         android:layout_gravity="center"
-        android:value="50"
-        android:valueFrom="0"
-        android:valueTo="5"
         android:stepSize="1"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content" />
+        app:labelBehavior="gone"
+        app:thumbRadius="12dp"
+        app:trackHeight="8dp" />
 
-    <de.westnordost.streetcomplete.quests.incline.InclineView
-        android:id="@+id/inclineView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/valueName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/nameInput"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/valueDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="It could look like this:"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/valueExampleImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="4dp"
+            android:contentDescription="TODO"
+            android:scaleType="fitStart"/>
+    </LinearLayout>
 
 </LinearLayout>
-

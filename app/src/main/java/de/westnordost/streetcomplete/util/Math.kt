@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.util
 
 import kotlin.math.PI
+import kotlin.math.tan
 
 fun Double.normalizeDegrees(startAt: Double = 0.0): Double {
     var result = this % 360 // is now -360..360
@@ -22,4 +23,8 @@ fun Float.normalizeDegrees(startAt: Float = 0f): Float {
     result = (result + 360) % 360 // is now 0..360
     if (result > startAt + 360) result -= 360
     return result
+}
+
+fun Double.fromDegreesToPercentage(): Double {
+    return tan(this  * Math.PI / 180) * 100
 }
