@@ -857,6 +857,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mapFragment?.isFollowingPosition = false
         mapFragment?.isCompassMode = false
         mapFragment?.setInitialCameraPosition(CameraPosition(position, 0f, 0f, zoom))
+        setIsFollowingPosition(false)
     }
 
     //endregion
