@@ -951,7 +951,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_smoothness_intermediate">Intermediate</string>
     <string name="quest_smoothness_good">Good</string>
     <string name="quest_smoothness_excellent">Excellent</string>
-
     <string name="quest_smoothness_impassable_description">Not suitable for any wheeled vehicle</string>
     <string name="quest_smoothness_very_horrible_description">Suitable for tractors, ATVs, tanks, trials, mountain bikes and all kind of off-highway vehicles</string>
     <string name="quest_smoothness_horrible_description">Suitable for heavy-duty off road vehicles and all below</string>
@@ -960,4 +959,13 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_smoothness_intermediate_description">Suitable for city bikes, sport cars, wheel chairs, scooters and all below</string>
     <string name="quest_smoothness_good_description">Suitable for racing bikes and all below</string>
     <string name="quest_smoothness_excellent_description">Suitable for roller blades, skate boards and all below</string>
+
+    <string name="quest_kerb_raised">Raised (> 3 cm)</string>
+    <string name="quest_kerb_lowered">Lowered (~ 3 cm)</string>
+    <string name="quest_kerb_flush">Flush (~ 0 cm)</string>
+    <string name="quest_kerb_rolled">Rolled</string>
+    <string name="quest_kerb_raised_description">Raised above the norm, sufficiently to prevent traversal by wheelchairs, as well as to impede bicycles.</string>
+    <string name="quest_kerb_lowered_description">Lowered curbs ensure that the crossing can be used by wheelchair users and allow access to drives.</string>
+    <string name="quest_kerb_flush_description">Similar to a lowered curb except the level transition is unlikely to be apparent to blind pedestrians.</string>
+    <string name="quest_kerb_rolled_description">Rolled kerbs still provide a gutter for water while being traversable by large wheeled vehicles, such as cars and bicycles, but not wheelchairs</string>
 </resources>
