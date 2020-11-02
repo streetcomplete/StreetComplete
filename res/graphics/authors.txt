@@ -19,9 +19,11 @@ achievements graphics/
     outdoors                    Judith Gastell, License: CC-BY-SA 4.0
     pedestrian                  Sanja Dimitrijevic, License: CC-BY-SA 4.0
     postman                     Judith Gastell, License: CC-BY-SA 4.0
+    rare                        Judith Gastell, License: CC-BY-SA 4.0
     regular                     Judith Gastell, License: CC-BY-SA 4.0
     surveyor                    mashup with https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
                                 (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
+    tourist                     Judith Gastell, License: CC-BY-SA 4.0
     veg                         Florian Edelmann; mashup with
                                 https://github.com/twitter/twemoji/blob/v13.0.1/assets/svg/1f955.svg (License: CC-BY 4.0)
                                 https://openclipart.org/detail/212733/vegetables (License: CC0 1.0)
@@ -35,7 +37,7 @@ app icon/
     appicon_fancy-debug.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
     appicon_flat-debug.svg      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
     feature_graphic.xcf         parts taken from https://commons.wikimedia.org/wiki/File:M%C3%BCnchen_-_Westend.JPG
-    launcher_foreground.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)     
+    launcher_foreground.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
 
 
 building icons/
@@ -184,7 +186,7 @@ quest icons/
     car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
     cash.svg
     christian.svg
-    defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny 
+    defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny
     ferry.svg                        modified from Twemoji: U+26F4
     ferry_pedestrian.svg             modified from Twemoji: U+26F4
     fire_hydrant.svg
@@ -220,7 +222,7 @@ quest icons/
     parking_lane.svg
     parking_maxstay.svg
     path_segregation.svg
-    peak.svg                         (c) 2020 Mateusz Konieczny 
+    peak.svg                         (c) 2020 Mateusz Konieczny
     pedestrian.svg
     pedestrian_crossing.svg
     pedestrian_crossing_island.svg   (c) 2020 Kai Michael Poppe and Tobias Zwick
