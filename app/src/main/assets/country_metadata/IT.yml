@@ -34,11 +34,11 @@ atmOperators: [Poste Italiane, Unicredit, Intesa Sanpaolo, Monte dei Paschi di S
       Dei Paschi Di Siena, Banca Fideuram, Banca Atestina di Credito Cooperativo, Banca Antonveneta, BNL
       Gruppo BNP Paribas, BCC di Sesto San Giovanni, BCC Caravaggio]
 chargingStationOperators: [Enel, Enel X, a2a, Alperia, ENEL, Alperia Smart Mobility, Agsm Verona Spa, Tesla Motors Inc., enel x,
-   Evway, ENEL X, Hera / AcegasApsAmga, Enel-X, Duferco, BlueTorino, A22, Tesla, Etraction, SEMM, ENEL
-      drive, Enel Drive, Comune di Firenze, A2A, enel, Regione Umbria, Lidl, Iren, Enel Distribuzione,
-   Emobitaly, E-Moving, Duferco Energia, ASM Terni, enelx, enel X, alperia, Stazione di ricarica per auto
-      elettriche, IrenGo, Enelx, EnelX, EVBOX, EVAD, ENI, E-motion, DriWe, Atac, Amag, 'http://www.lampionet.it',
-   evway, Tesla Motors (Destination Charging), Tesla Motors, SCAME, Repower, LIDL, Ionity, Enel spa, Enel  X,
+   Evway, ENEL X, Hera / AcegasApsAmga, Enel-X, Duferco, BlueTorino, A22, Tesla, Etraction, enel, SEMM,
+   ENEL drive, Enel Drive, Comune di Firenze, A2A, Regione Umbria, Lidl, Iren, Enel Distribuzione, Emobitaly,
+   E-Moving, Duferco Energia, ASM Terni, enelx, enel X, alperia, Stazione di ricarica per auto elettriche,
+   IrenGo, Enelx, EnelX, EVBOX, EVAD, ENI, E-motion, DriWe, Atac, Amag, 'http://www.lampionet.it', evway,
+   Tesla Motors (Destination Charging), Tesla Motors, SCAME, Repower, LIDL, Ionity, Enel spa, Enel  X,
    ECO fuel, Comune di Vicenza, Comune di Albiate, Charge&Go, COGESER, BeCharge, AcegasApsAmga, ATAC]
 clothesContainerOperators: [Cannone, Caritas Ambrosiana, Humana, UIC, Aamps, Caritas, AMIU, Exodus, Umanitaria Padana onlus, Hera,
    Cooperativa Sociale Lavoro e Solidarietà, Comune di Vanzago, COSMARI, AMA]

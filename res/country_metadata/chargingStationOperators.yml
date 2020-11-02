@@ -369,8 +369,8 @@ CZ:
 DE:
   - Stromnetz Hamburg # 503
   - Stadtwerke München # 377
-  - EnBW # 347
-  - innogy # 194
+  - EnBW # 348
+  - innogy # 195
   - RWE # 156
   - Allego # 110
   - allego # 85
@@ -379,6 +379,7 @@ DE:
   - E-WALD GmbH # 72
   - LEW # 57
   - EWE # 56
+  - e-regio GmbH & Co. KG # 55
   - SWU Stadtwerke Ulm/Neu-Ulm GmbH # 50
   - Tesla # 46
   - EnBW Energie Baden-Württemberg AG # 46
@@ -387,7 +388,6 @@ DE:
   - Kaufland # 45
   - Lidl # 44
   - Tank & Rast # 40
-  - e-regio GmbH & Co. KG # 37
   - Vattenfall # 32
   - Stadtwerke Augsburg # 32
   - SWM # 32
@@ -846,12 +846,12 @@ IT:
   - A22 # 8
   - Tesla # 7
   - Etraction # 7
+  - enel # 6
   - SEMM # 6
   - ENEL drive # 6
   - Enel Drive # 5
   - Comune di Firenze # 5
   - A2A # 5
-  - enel # 4
   - Regione Umbria # 4
   - Lidl # 4
   - Iren # 4
@@ -1144,21 +1144,20 @@ PT:
   - Galp Power # 15
   - Galp Geste # 15
   - Mobi-e # 14
+  - EV Power # 12
   - Mobie # 11
-  - EV Power # 11
-  - Powerdot # 9
+  - Powerdot # 10
   - Mobilectric # 8
   - Mobiletric # 7
   - Tesla Motors Inc. # 4
   - Repsol # 4
+  - Propel-Cepsa # 4
   - Loulé Concelho Global # 4
   - EDP MOP # 4
   - CME # 4
   - Ucharge # 3
   - Mobi # 3
   - Kilometer Low Cost # 3
-  - Propel-Cepsa # 2
-  - Propel # 2
   - Mota Engil II # 2
   - Mobi.e # 2
   - Mobi-E # 2
@@ -1390,8 +1389,8 @@ US-ME:
   - Tesla Motors # 5
 US-MI:
   - Michigan State University # 12
-  - Tesla Motors # 8
   - Consumers Energy # 6
+  - Tesla Motors # 5
   - NRG Energy # 3
   - Lansing Board of Water and Light # 3
   - Chargepoint # 3

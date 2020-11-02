@@ -5,8 +5,8 @@ atmOperators: [Caixa Geral de Depósitos, Santander Totta, Millennium BCP, Multi
       agrícola, Barclays, Banif, Banco Popular, credito agricola, caixiave, Deutsche Bank, Credito Agricola,
    Banco BIC]
 chargingStationOperators: [MOBI.E, Mobi.E, Tesla, KLC, Rede Piloto, EDP Comercial, GalpGeste, Prio.E, Galp Power, Galp Geste, Mobi-e,
-   Mobie, EV Power, Powerdot, Mobilectric, Mobiletric, Tesla Motors Inc., Repsol, Loulé Concelho Global,
-   EDP MOP, CME, Ucharge, Mobi, Kilometer Low Cost, Propel-Cepsa, Propel, Mota Engil II, Mobi.e, Mobi-E,
+   EV Power, Mobie, Powerdot, Mobilectric, Mobiletric, Tesla Motors Inc., Repsol, Propel-Cepsa, Loulé
+      Concelho Global, EDP MOP, CME, Ucharge, Mobi, Kilometer Low Cost, Mota Engil II, Mobi.e, Mobi-E,
    MOBI.e, Emel, EMACOM]
 clothesContainerOperators: [Ultriplo Lda]
 isAdvisorySpeedLimitKnown: true

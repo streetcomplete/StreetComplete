@@ -883,7 +883,7 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="action_reset">"Réinitialiser"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Appuyez longuement sur une quête et déplacez-là afin de réorganiser sa priorité concernant son l'affichage sur la carte."</string>
+    <string name="reorder_quest_priority_hint">"Appuyez longuement sur une quête et déplacez la afin de réorganiser sa priorité d'affichage sur la carte."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Annuler"</string>
@@ -2293,4 +2293,16 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_steps_ramp_separate_wheelchair">"Y a t'il une rampe pour fauteuils roulants représentée comme une voie séparée sur la carte ?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Séparée"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Non séparée"</string>
+    <string name="pref_title_sync2">"Téléverser les réponses automatiquement"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Décrire la surface"</string>
+    <string name="open_url">"Ouvrir l'URL"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_buildingType_historic">"Monument historique"</string>
+    <string name="quest_buildingType_historic_description">"Bâtiment à valeur historique, ne présentant pas de fonction civique, religieuse ou commerciale"</string>
+    <string name="quest_buildingType_abandoned">"Abandonné"</string>
+    <string name="quest_buildingType_abandoned_description">"Bâtiment inutilisé dont la fonction originelle est inconnue"</string>
+    <string name="quest_buildingType_ruins">"Ruines"</string>
+    <string name="quest_buildingType_ruins_description">"Bâtiment abandonné, en ruines et non identifiable"</string>
+    <string name="quest_charging_station_capacity_title">"Combien de véhicules peuvent être chargés simultanément à cette station de recharge ?"</string>
+    <string name="link_disaster_ninja_description">"Carte montrant les catastrophes naturelles récentes, d'intérêt pour les cartographes humanitaires, ainsi que plusieurs statistiques intéressantes pour analyser l'état de la cartographie (récence, avancement, ...)"</string>
 </resources>
