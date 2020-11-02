@@ -34,7 +34,8 @@ private fun List<LatLon>.isWithinDistanceAndAngleOf(other: List<LatLon>, maxDist
             val bearing = first.initialBearingTo(second)
             val otherBearing = otherFirst.initialBearingTo(otherSecond)
             val bearingDiff = abs((bearing - otherBearing).normalizeDegrees(-180.0))
-            if (bearingDiff <= angle && first.distanceToArc(otherFirst, otherSecond) <= maxDistance)
+            val distance = first.distanceToArc(otherFirst, otherSecond)
+            if (bearingDiff <= angle && distance <= maxDistance)
                 return true
         }
     }
