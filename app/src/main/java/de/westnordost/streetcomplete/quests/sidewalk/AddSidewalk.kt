@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.util.isNear
+import de.westnordost.streetcomplete.util.isNearAligned
 
 class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
 
@@ -62,7 +62,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
         return roadsWithMissingSidewalks.filter { road ->
             val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
             if (roadGeometry != null) {
-                !roadGeometry.isNear(minDistToWays, maybeSeparatelyMappedSidewalkGeometries)
+                !roadGeometry.isNearAligned(minDistToWays, maybeSeparatelyMappedSidewalkGeometries)
             } else {
                 false
             }

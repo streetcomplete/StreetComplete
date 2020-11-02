@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
-import de.westnordost.streetcomplete.util.isNear
+import de.westnordost.streetcomplete.util.isNearAligned
 
 class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
 
@@ -88,7 +88,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             // filter out roads with missing sidewalks that are near footways
             roadsWithMissingCycleway.removeAll { road ->
                 val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
-                roadGeometry?.isNear(minDistToWays, maybeSeparatelyMappedCyclewayGeometries) ?: true
+                roadGeometry?.isNearAligned(minDistToWays, maybeSeparatelyMappedCyclewayGeometries) ?: true
             }
         }
 
@@ -302,7 +302,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             ways with
               highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
               and !cycleway
-              and !cycleway:left 
+              and !cycleway:left
               and !cycleway:right
               and !cycleway:both
               and !sidewalk:bicycle
