@@ -5,6 +5,8 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.ALL_PATHS
+import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.util.intersects
@@ -34,7 +36,14 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     """.toElementFilterExpression() }
 
     private val bridgeFilter by lazy { """
-        ways with (highway or railway) and bridge and layer
+        ways with (
+            highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+            or railway ~ rail|light_rail|subway|narrow_gauge|tram
+          ) and (
+            bridge and bridge != no
+            or man_made = pipeline and location = overhead
+          )
+          and layer
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add maximum heights"
@@ -46,7 +55,10 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
         val isParkingEntrance = tags["amenity"] == "parking_entrance"
         val isHeightRestrictor =  tags["barrier"] == "height_restrictor"
         val isTunnel = tags["tunnel"] == "yes"
-        val isBelowBridge = !isParkingEntrance && !isHeightRestrictor && tags["tunnel"] == null && tags["covered"] == null
+        val isBelowBridge =
+            !isParkingEntrance && !isHeightRestrictor &&
+            tags["tunnel"] == null && tags["covered"] == null &&
+            tags["man_made"] != "pipeline"
 
         return when {
             isParkingEntrance  -> R.string.quest_maxheight_parking_entrance_title
