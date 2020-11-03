@@ -85,23 +85,6 @@ fun arcIntersection(a: Vector3d, b: Vector3d, p: Vector3d, q: Vector3d): Vector3
     return null
 }
 
-/**
- * Vector normal to great circle obtained by heading on given [bearing] in radians from point given
- * by this vector
- *
- * Direction of vector is such that initial bearing vector b = c × n, where n is an n-vector
- * representing this (start) point.
- *
- * Returns normalized vector representing great circle.
- */
-fun Vector3d.greatCircle(bearing: Double): Vector3d {
-    val θ = bearing
-    val northPole = Vector3d(0.0, 0.0, 1.0) // n-vector representing north pole
-    val e = northPole x this  // easting
-    val n = this x e          // northing
-    return n * (sin(θ) / n.length) - e * (cos(θ) / e.length)
-}
-
 fun Vector3d.toLatLon(): LatLon {
     val n = normalize()
     val φ = atan2(n.z, sqrt(n.x * n.x + n.y * n.y))

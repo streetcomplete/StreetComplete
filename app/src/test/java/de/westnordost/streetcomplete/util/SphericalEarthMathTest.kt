@@ -775,6 +775,17 @@ class SphericalEarthMathTest {
         assertNull(intersectionOf(p1, p2, q1, q2))
     }
 
+    @Test fun `two lines intersect on the other side of the earth`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(180.0,0.0)
+        val q1 = p(-90.0, 1.0)
+        val q2 = p(90.0, -1.0)
+
+        val i = intersectionOf(p1, p2, q1, q2)!!
+        assertEquals(0.0, i.longitude, 1e-9)
+        assertEquals(0.0, i.latitude, 1e-9)
+    }
+
     companion object {
         private val HH = p(10.0, 53.5)
     }
