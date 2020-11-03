@@ -39,10 +39,12 @@ class AddMaxHeightTest {
         val mapData = TestMapDataWithGeometry(listOf(
             OsmWay(1L, 1, listOf(1,2), mapOf(
                 "highway" to "residential",
-                "bridge" to "yes"
+                "bridge" to "yes",
+                "layer" to "1"
             )),
             OsmWay(2L, 1, listOf(3,4), mapOf(
-                "highway" to "residential"
+                "highway" to "residential",
+                "layer" to "1"
             ))
         ))
         mapData.wayGeometriesById[1] = ElementPolylinesGeometry(listOf(listOf(
@@ -54,7 +56,7 @@ class AddMaxHeightTest {
             OsmLatLon(0.0,+0.1),
         )), OsmLatLon(0.0,0.0))
 
-        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `apply metric height answer`() {

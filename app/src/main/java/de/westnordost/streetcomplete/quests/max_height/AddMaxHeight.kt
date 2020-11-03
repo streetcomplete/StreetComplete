@@ -34,22 +34,25 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     """.toElementFilterExpression() }
 
     private val bridgeFilter by lazy { """
-        ways with highway and bridge and layer
+        ways with (highway or railway) and bridge and layer
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add maximum heights"
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>): Int {
         val isParkingEntrance = tags["amenity"] == "parking_entrance"
         val isHeightRestrictor =  tags["barrier"] == "height_restrictor"
         val isTunnel = tags["tunnel"] == "yes"
+        val isBelowBridge = !isParkingEntrance && !isHeightRestrictor && tags["tunnel"] == null && tags["covered"] == null
 
         return when {
             isParkingEntrance  -> R.string.quest_maxheight_parking_entrance_title
             isHeightRestrictor -> R.string.quest_maxheight_height_restrictor_title
             isTunnel           -> R.string.quest_maxheight_tunnel_title
+            isBelowBridge      -> R.string.quest_maxheight_below_bridge_title
             else               -> R.string.quest_maxheight_title
         }
     }
