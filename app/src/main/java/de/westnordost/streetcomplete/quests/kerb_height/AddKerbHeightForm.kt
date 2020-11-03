@@ -11,7 +11,8 @@ class AddKerbHeightForm : AImageListQuestAnswerFragment<String, String>() {
         // TODO IMAGES
         Item("raised", R.drawable.kerb_height_raised, R.string.quest_kerb_height_raised),
         Item("lowered", R.drawable.kerb_height_lowered, R.string.quest_kerb_height_lowered),
-        Item("flush", R.drawable.kerb_height_flush, R.string.quest_kerb_height_flush)
+        Item("flush", R.drawable.kerb_height_flush, R.string.quest_kerb_height_flush),
+        Item("lowered", R.drawable.kerb_height_lowered_ramp, R.string.quest_kerb_height_lowered)
     )
 
     override val otherAnswers = listOf(
