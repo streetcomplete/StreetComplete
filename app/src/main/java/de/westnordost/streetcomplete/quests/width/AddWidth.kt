@@ -19,12 +19,7 @@ class AddWidth : OsmFilterQuestType<String>() {
     override val icon = R.drawable.ic_quest_street_width
     override val isSplitWayEnabled = false
 
-    override fun getTitle(tags: Map<String, String>) = when { // TODO sst: change title
-        tags["highway"] == "bridleway" -> R.string.quest_pathSurface_title_bridleway
-        tags["highway"] == "steps"     -> R.string.quest_pathSurface_title_steps
-        else                           -> R.string.quest_pathSurface_title
-        // rest is rather similar, can be called simply "path"
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_path_width_title
 
     override fun createForm(): AddWidthForm = AddWidthForm()
 

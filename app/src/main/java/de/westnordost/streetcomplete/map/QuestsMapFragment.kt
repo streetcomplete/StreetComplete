@@ -148,14 +148,14 @@ class QuestsMapFragment : LocationAwareMapFragment() {
                             val dr = ContextCompat.getDrawable(context, quests[position].type.icon)
                             val bitmap = Bitmap.createBitmap(dr!!.intrinsicWidth, dr!!.intrinsicHeight, Bitmap.Config.ARGB_8888)
                             val canvas = Canvas(bitmap)
-                            dr.setBounds(0, 0, canvas.width, canvas.height);
-                            dr.draw(canvas);
+                            dr.setBounds(0, 0, canvas.width, canvas.height)
+                            dr.draw(canvas)
 
-                            val size = tv.textSize * 2
+                            val size = 40f.toPx(context)
                             val drawable = BitmapDrawable(resources, Bitmap.createScaledBitmap(bitmap, size.toInt(), size.toInt(), true))
 
                             tv.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
-                            tv.compoundDrawablePadding = (8 * resources.displayMetrics.density).toInt()
+                            tv.compoundDrawablePadding = 8f.toPx(context).toInt()
                             return v
                         }
                     }
@@ -279,7 +279,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
         val marker = controller?.addMarker() ?: return null
         marker.setStylingFromString(
-            "{ style: 'quest-selection', color: 'white', size: [${w}px, ${h}px], flat: false, collide: false, offset: ['1px', '-78px'] }"
+            "{ style: 'quest-selection', color: 'white', size: [${w}px, ${h}px], flat: false, collide: false, offset: ['10px', '-78px'] }"
         )
         marker.setDrawable(frame)
         return marker

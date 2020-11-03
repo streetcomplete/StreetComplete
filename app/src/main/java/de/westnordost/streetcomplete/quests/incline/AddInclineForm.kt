@@ -19,14 +19,11 @@ import kotlin.math.sqrt
 class AddInclineForm : AbstractQuestFormAnswerFragment<String>() {
     override val contentLayoutResId = R.layout.quest_incline
 
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
     private var sensorManager: SensorManager? = null
     private var sensor: Sensor? = null
     private var sensorEventListener: SensorEventListener? = null
 
     private var deviceMeasurementActive = false
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -100,8 +97,6 @@ class AddInclineForm : AbstractQuestFormAnswerFragment<String>() {
                 return output
             }
         }
-
-        listener?.onHighlightSidewalkSide(questId, questGroup, Listener.SidewalkSide.LEFT)
 
         checkIsFormComplete()
     }

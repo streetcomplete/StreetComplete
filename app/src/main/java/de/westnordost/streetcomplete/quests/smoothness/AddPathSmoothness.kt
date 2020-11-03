@@ -19,20 +19,13 @@ class AddPathSmoothness : OsmFilterQuestType<String>() {
           or smoothness older today -8 years
         )
     """
-    /* ~paved ways are less likely to change the surface type */
 
     override val commitMessage = "Add path smoothness"
     override val wikiLink = "Key:smoothness"
-    override val icon = R.drawable.ic_quest_way_surface
+    override val icon = R.drawable.ic_quest_smoothness
     override val isSplitWayEnabled = true
 
-    override fun getTitle(tags: Map<String, String>) = when {
-        tags["area"] == "yes"          -> R.string.quest_streetSurface_square_title
-        tags["highway"] == "bridleway" -> R.string.quest_pathSurface_title_bridleway
-        tags["highway"] == "steps"     -> R.string.quest_pathSurface_title_steps
-        else                           -> R.string.quest_pathSurface_title
-        // rest is rather similar, can be called simply "path"
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_path_smoothness_title
 
     override fun createForm(): AddPathSmoothnessForm = AddPathSmoothnessForm()
 

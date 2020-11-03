@@ -968,4 +968,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_kerb_lowered_description">Lowered curbs ensure that the crossing can be used by wheelchair users and allow access to drives.</string>
     <string name="quest_kerb_flush_description">Similar to a lowered curb except the level transition is unlikely to be apparent to blind pedestrians.</string>
     <string name="quest_kerb_rolled_description">Rolled kerbs still provide a gutter for water while being traversable by large wheeled vehicles, such as cars and bicycles, but not wheelchairs</string>
+
+    <string name="quest_kerb_type_title">"What curb types can be found on this crossing?"</string>
+    <string name="quest_path_smoothness_title">"How is the smoothness quality of this path best described?"</string>
+    <string name="quest_path_width_title">"What is the minimum width of this path?"</string>
+    <string name="quest_path_incline">"What is the maximum incline of this path?"</string>
 </resources>

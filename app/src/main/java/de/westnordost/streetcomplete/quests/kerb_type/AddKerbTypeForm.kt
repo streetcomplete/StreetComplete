@@ -20,9 +20,10 @@ class AddKerbTypeForm : AbstractQuestFormAnswerFragment<String>() {
         Item("rolled", R.drawable.kerb_rolled, R.string.quest_kerb_rolled, R.string.quest_kerb_rolled_description, null))
     private val initialValueIndex = 1
 
-    var carouselItems = valueItems.map {
+    private val carouselItems = valueItems.map {
         CarouselPicker.DrawableItem((it.drawableId!!))
     }
+    private var carouselMoved = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,6 +42,7 @@ class AddKerbTypeForm : AbstractQuestFormAnswerFragment<String>() {
             }
 
             override fun onPageSelected(position: Int) {
+                carouselMoved = true
                 setValueInformation(valueItems[position])
                 checkIsFormComplete()
             }
@@ -64,5 +66,9 @@ class AddKerbTypeForm : AbstractQuestFormAnswerFragment<String>() {
 
     override fun isFormComplete(): Boolean {
         return true
+    }
+
+    override fun isRejectingClose(): Boolean {
+        return carouselMoved
     }
 }
