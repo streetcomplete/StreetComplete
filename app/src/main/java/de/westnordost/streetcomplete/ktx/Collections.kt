@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.util.math.Vector3d
 
 /** Return the first and last element of this list. If it contains only one element, just that one */
 fun <E> List<E>.firstAndLast() = if (size == 1) listOf(first()) else listOf(first(), last())
@@ -35,7 +36,7 @@ inline fun <T> List<T>.findNext(index: Int, predicate: (T) -> Boolean): T? {
 }
 
 /** Iterate through the given list of points in pairs, so [predicate] is called for every line */
-inline fun Iterable<LatLon>.forEachLine(predicate: (first: LatLon, second: LatLon) -> Unit) {
+inline fun <T> Iterable<T>.forEachLine(predicate: (first: T, second: T) -> Unit) {
     val it = iterator()
     if (!it.hasNext()) return
     var item1 = it.next()

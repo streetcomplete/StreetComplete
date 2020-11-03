@@ -6,7 +6,7 @@ import kotlin.math.*
 
 /* The following code has been adapted from this excellent source:
 
-   http://www.movable-type.co.uk/scripts/latlong-vectors.html#intersection
+   http://www.movable-type.co.uk/scripts/latlong-vectors.html
    Thanks to and (c) Chris Veness 2002-2019, MIT Licence
 */
 
@@ -97,22 +97,3 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
 
     override fun toString() = "$x,$y,$z"
 }
-
-
-fun Vector3d.toLatLon(): LatLon {
-    val n = normalize()
-    val φ = atan2(n.z, sqrt(n.x * n.x + n.y * n.y))
-    val λ = atan2(n.y, n.x)
-    return OsmLatLon(φ.toDegrees(), λ.toDegrees());
-}
-
-fun LatLon.toNormalOnSphere(): Vector3d {
-    val φ = latitude.toRadians()
-    val λ = longitude.toRadians()
-
-    // right-handed vector: x -> 0°E,0°N; y -> 90°E,0°N, z -> 90°N
-    return Vector3d(cos(φ) * cos(λ),cos(φ) * sin(λ), sin(φ)).normalize()
-}
-
-private fun Double.toRadians() = this / 180.0 * PI
-private fun Double.toDegrees() = this / PI * 180.0
