@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.kerb_height
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddKerbHeightForm : AImageListQuestAnswerFragment<String, String>() {
@@ -11,6 +12,10 @@ class AddKerbHeightForm : AImageListQuestAnswerFragment<String, String>() {
         Item("raised", R.drawable.kerb_height_raised, R.string.quest_kerb_height_raised),
         Item("lowered", R.drawable.kerb_height_lowered, R.string.quest_kerb_height_lowered),
         Item("flush", R.drawable.kerb_height_flush, R.string.quest_kerb_height_flush)
+    )
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_kerb_height_answer_no_kerb) { applyAnswer("no") }
     )
 
     override val itemsPerRow = 3

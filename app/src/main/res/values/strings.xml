@@ -932,4 +932,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_kerb_height_flush">Same level as road surface</string>
     <string name="quest_kerb_height_lowered">Lowered, still above road surface</string>
     <string name="quest_kerb_height_raised">High kerb</string>
+    <string name="quest_kerb_height_answer_no_kerb">There is no kerb on this side of crossing</string>
 </resources>
