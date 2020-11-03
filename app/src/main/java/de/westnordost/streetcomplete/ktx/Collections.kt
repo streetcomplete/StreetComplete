@@ -1,8 +1,5 @@
 package de.westnordost.streetcomplete.ktx
 
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.util.math.Vector3d
-
 /** Return the first and last element of this list. If it contains only one element, just that one */
 fun <E> List<E>.firstAndLast() = if (size == 1) listOf(first()) else listOf(first(), last())
 
