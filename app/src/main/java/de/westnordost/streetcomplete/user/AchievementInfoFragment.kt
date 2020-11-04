@@ -342,7 +342,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     companion object {
         const val ANIMATION_TIME_NEW_ACHIEVEMENT_IN_MS = 1000L
         const val ANIMATION_TIME_IN_MS = 400L
-        const val DIALOG_APPEAR_DELAY_IN_MS = 2500L
+        const val DIALOG_APPEAR_DELAY_IN_MS = 1600L
         const val ANIMATION_TIME_OUT_MS = 300L
     }
 }

@@ -650,7 +650,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_hangar_description">storage for airplanes, helicopters or spacecraft</string>
     <string name="quest_buildingType_bunker">Bunker</string>
     <string name="quest_buildingType_historic">Historic</string>
-    <string name="quest_buildingType_historic_description">building of historic value not serving any civic, religious or commercial functions</string>
+    <string name="quest_buildingType_historic_description">building of historic value, constructed for an unknown or unclear purpose</string>
     <string name="quest_buildingType_abandoned">Abandoned</string>
     <string name="quest_buildingType_abandoned_description">unused building whose original function or purpose is unknown</string>
     <string name="quest_buildingType_ruins">Ruins</string>
