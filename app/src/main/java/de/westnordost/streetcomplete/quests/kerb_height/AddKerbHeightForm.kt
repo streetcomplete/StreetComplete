@@ -18,7 +18,7 @@ class AddKerbHeightForm : AImageListQuestAnswerFragment<String, String>() {
         OtherAnswer(R.string.quest_kerb_height_answer_no_kerb) { applyAnswer("no") }
     )
 
-    override val itemsPerRow = 3
+    override val itemsPerRow = 2
 
     override fun onClickOk(selectedItems: List<String>) {
         applyAnswer(selectedItems.single())

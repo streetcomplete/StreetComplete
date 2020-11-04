@@ -933,5 +933,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_kerb_height_lowered">A bit higher than road surface</string>
     <string name="quest_kerb_height_raised">High curb</string>
     <string name="quest_kerb_height_answer_no_kerb">There is no curb on this side of crossing</string>
-    <string name="quest_kerb_height_lowered_ramp">Curb cut</string>
+    <string name="quest_kerb_height_lowered_ramp">Curb ramp</string>
 </resources>
