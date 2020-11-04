@@ -38,7 +38,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     private val bridgeFilter by lazy { """
         ways with (
             highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-            or railway ~ rail|light_rail|subway|narrow_gauge|tram
+            or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular
           ) and (
             bridge and bridge != no
             or man_made = pipeline and location = overhead
