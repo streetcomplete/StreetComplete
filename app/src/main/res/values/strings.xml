@@ -244,9 +244,11 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_cycleway_resurvey_title">"Is this still the cycleway situation here?"</string>
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
     <string name="quest_streetLanes_title">"How many lanes does this road have?"</string>
-    <string name="quest_streetLanes_description">"If there are no road markings, it has no lanes."</string>
-    <string name="quest_streetLanes_answer_noLanes">"It has no marked lanes"</string>
-    <string name="quest_streetLanes_noLanes_estWidth">"Please estimate how many cars would fit alongside each other on this road."</string>
+    <string name="quest_streetLanes_answer_lanes">"Marked lanes"</string>
+    <string name="quest_streetLanes_answer_lanes_description">"Please specify the total number of marked lanes - for the left plus the right side of the road."</string>
+    <string name="quest_streetLanes_answer_noLanes">"No marked lanes"</string>
+    <string name="quest_streetLanes_answer_noLanes_description">"Please specify how many cars can conveniently pass without having to evade each other on this road."</string>
+    <string name="quest_streetLanes_answer_lanes_odd">"Different lane count in each direction"</string>
     <string name="quest_oneway_title">"Is this a one-way street?"</string>
     <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
     <string name="quest_oneway2_dir">"Oneway in this direction"</string>
@@ -567,8 +569,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_answer_multiple_types">It has multiple purposes</string>
     <string name="quest_buildingType_answer_multiple_types_description">Simply select the main purpose of this building. E.g. if there is a shop on the ground floor with apartments above it, it is still mainly an apartment building.</string>
     <string name="quest_buildingType_answer_construction_site">It is still being constructed</string>
-
-
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_residential_description">building where people live</string>
     <string name="quest_buildingType_house">House</string>
@@ -587,7 +587,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_bungalow">Bungalow</string>
     <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin …)</string>
     <string name="quest_buildingType_static_caravan">Mobile home</string>
-
     <string name="quest_buildingType_commercial">Commercial building</string>
     <string name="quest_buildingType_commercial_generic_description">building where people work, shop or do any other commercial activities</string>
     <string name="quest_buildingType_industrial">Industrial building</string>
@@ -597,7 +596,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_warehouse">Warehouse</string>
     <string name="quest_buildingType_kiosk">Kiosk</string>
     <string name="quest_buildingType_storage_tank">Storage tank</string>
-
     <string name="quest_buildingType_religious">Religious building</string>
     <string name="quest_buildingType_church">Church</string>
     <string name="quest_buildingType_chapel">Chapel</string>
@@ -607,7 +605,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_pagoda">Pagoda</string>
     <string name="quest_buildingType_synagogue">Synagogue</string>
     <string name="quest_buildingType_shrine">Shrine</string>
-
     <string name="quest_buildingType_civic">Civic building</string>
     <string name="quest_buildingType_civic_description">public building usually housing an amenity</string>
     <string name="quest_buildingType_kindergarten">Kindergarten building</string>
@@ -620,7 +617,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_transportation">Public transportation building</string>
     <string name="quest_buildingType_university">University building</string>
     <string name="quest_buildingType_government">Government building</string>
-
     <string name="quest_buildingType_cars">For cars</string>
     <string name="quest_buildingType_carport">Carport</string>
     <string name="quest_buildingType_carport_description">roof for a car</string>
@@ -628,8 +624,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_garages">Multiple garages</string>
     <string name="quest_buildingType_garages_description">Separate spaces for different owners/tenants</string>
     <string name="quest_buildingType_parking">Parking building</string>
-
-
     <string name="quest_buildingType_farm">On a farm</string>
     <string name="quest_buildingType_farmhouse">Farmhouse</string>
     <string name="quest_buildingType_farmhouse_description">the residential building on a farm</string>
@@ -637,7 +631,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_farm_auxiliary_description">any building on a farm that is not a residential building</string>
     <string name="quest_buildingType_silo">Silo</string>
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
-
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_shed">Shed</string>
     <string name="quest_buildingType_toilets">Toilets</string>
