@@ -20,11 +20,11 @@ class TrafficFlowSegmentsApi(private val apiUrl: String) {
     companion object {
         fun parse(json: String): Map<Long, List<TrafficFlowSegment>> {
             val obj = JSONObject(json)
-            val segments = obj.getJSONArray("segments")
+            if (!obj.has("segments")) return mapOf()
 
+            val segments = obj.getJSONArray("segments")
             @SuppressLint("UseSparseArrays")
             val result = mutableMapOf<Long, MutableList<TrafficFlowSegment>>()
-            if (segments == null) return result
 
             for (i in 0 until segments.length()) {
                 if (segments.isNull(i)) continue

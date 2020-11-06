@@ -53,6 +53,7 @@ interface OsmElementQuestType<T> : QuestType<T> {
      *  instead, a map of [changes] is built */
     fun applyAnswerTo(answer: T, changes: StringMapChangesBuilder)
 
+    @Suppress("UNCHECKED_CAST")
     fun applyAnswerToUnsafe(answer: Any, changes: StringMapChangesBuilder) {
         applyAnswerTo(answer as T, changes)
     }
