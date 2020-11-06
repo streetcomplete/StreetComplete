@@ -27,7 +27,7 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
         .mapNotNull { getNode(it) }
 
     val unknownEndNodes = footways
-        .filter { it.tags?.get("footway") != "sidewalk" and it.tags?.get("footway") != "crossing" }
+        .filter { it.tags?.get("footway") != "sidewalk" && it.tags?.get("footway") != "crossing" }
         .flatMap { it.nodeIds.firstAndLast() }
         .mapNotNull { getNode(it) }
 
