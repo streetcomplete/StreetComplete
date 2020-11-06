@@ -2613,7 +2613,7 @@
       "terms": "Linea"
     },
     "man_made": {
-      "name": "Elementi creati dall’uomo"
+      "name": "Elemento creato dall'uomo"
     },
     "man_made/adit": {
       "name": "Cunicolo",
@@ -2624,7 +2624,8 @@
       "terms": "cella,stazione,trasmissione,trasmissioni,comunicazione,comunicazioni,telecomunicazione,cellulare,cellulari,smartphone,gsm,telefono,telefoni,telefonia,telefonica,radio,televisione,tv,etere"
     },
     "man_made/beacon": {
-      "name": "Fanale"
+      "name": "Fanale",
+      "terms": "fanale,segnale luminoso,segnale"
     },
     "man_made/beehive": {
       "name": "Arnia",
@@ -2633,6 +2634,10 @@
     "man_made/breakwater": {
       "name": "Frangiflutti",
       "terms": "frangiflutti,barriera,diga,frangionde,ostacolo,scogliera"
+    },
+    "man_made/bridge": {
+      "name": "Superficie di un ponte",
+      "terms": "ponte,viadotto,pontile,arco,strallato,cavalcavia"
     },
     "man_made/bunker_silo": {
       "name": "Bunker silo",

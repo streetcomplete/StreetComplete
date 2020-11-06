@@ -3416,8 +3416,8 @@
       "terms": "rekreacyjna trasa ponumerowanych węzłów"
     },
     "noexit/yes": {
-      "name": "Brak dalszej kontynuacji",
-      "terms": "Brak przejścia/przejazdu,koniec"
+      "name": "Brak przejścia/przejazdu",
+      "terms": "brak przejścia, brak przejazdu, koniec drogi"
     },
     "office": {
       "name": "Biuro",

@@ -2359,22 +2359,28 @@ riconoscimento"</string>
     <string name="link_indoorequal_description">"Scopri mappe degli interni di ipermercati, stazioni, ..."</string>
     <string name="link_thenandnow_description">"Vuoi scoprire come siamo cambiati nel tempo? Confronta l'aspetto che aveva la mappa oltre 10 anni fa!"</string>
     <string name="achievement_rare_title">"Caccia al tesoro"</string>
-    <string name="achievement_rare_solved_X">"Hai trovato e risolto %d missioni che sono completate molto raramente. Super!"</string>
+    <string name="achievement_rare_solved_X">"Hai trovato e risolto %d missioni che sono completate molto raramente, congratulazioni!"</string>
     <string name="achievement_citizen_title">"Cittadino/a"</string>
     <string name="achievement_citizen_solved_X">"Hai svolto %d missioni che sono utili per la vita di tutti i giorni in città!"</string>
     <string name="achievement_outdoors_title">"All'aria aperta"</string>
     <string name="achievement_outdoors_solved_X">"Hai svolto %d missioni utili per chi ama stare all'aria aperta!"</string>
     <string name="quest_pedestrian_crossing_island">"Questo attraversamento pedonale ha un'isola di traffico?"</string>
     <string name="quest_generic_answer_noSign">"Non c'è alcun cartello"</string>
-    <string name="quest_steps_ramp_separate_wheelchair">"La rampa per la sedia a rotelle è visualizzata sulla mappa come una via alternativa?"</string>
-    <string name="quest_steps_ramp_separate_wheelchair_confirm">"è alternativa"</string>
-    <string name="quest_steps_ramp_separate_wheelchair_decline">"non è alternativa"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"La rampa per la sedia a rotelle è visualizzata sulla mappa come una via separata?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"separata"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"non separata"</string>
+    <string name="pref_title_sync2">"Carica risposte automaticamente"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Descrivi la superficie"</string>
     <string name="open_url">"Apri URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Storico"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_historic_description">"costruzione di valore storico che non assolve ad alcuna funzione civica, religiosa o commerciale"</string>
     <string name="quest_buildingType_abandoned">"Abbandonato"</string>
     <string name="quest_buildingType_abandoned_description">"Costruzione inutilizzato la cui funzione o scopo originale è sconosciuto"</string>
     <string name="quest_buildingType_ruins">"Rovine"</string>
     <string name="quest_buildingType_ruins_description">"Rovine"</string>
+    <string name="quest_charging_station_capacity_title">"Quante automobili possono essere ricaricate contemporaneamente a questa colonnina?"</string>
+    <string name="link_disaster_ninja_description">"Mappe che mostrano disastri naturali recenti, interessanti per i mappatori umanitari. Inoltre, mostrano molte statistiche interessanti per analizzare quanto i luoghi sono ben mappati o aggiornati."</string>
 </resources>

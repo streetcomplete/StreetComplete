@@ -6,7 +6,7 @@ AR:
 AT:
   - Humana # 42
   - Holding Graz # 31
-  - Kolping # 13
+  - Kolping # 12
   - Rotes Kreuz # 10
   - MA 48 # 10
   - Caritas # 9
@@ -87,27 +87,27 @@ CZ:
   - Město Veltrusy # 2
   - KLOK.TEX # 2
 DE:
-  - Deutsches Rotes Kreuz # 535
+  - Deutsches Rotes Kreuz # 537
   - Loop # 374
   - Aktion Hoffnung # 137
   - AWG # 116
   - GEB # 114
   - ALBA Braunschweig GmbH # 106
-  - Humana # 105
-  - Malteser # 98
-  - Stadtreinigung Hamburg # 97
+  - Humana # 103
+  - Malteser # 101
+  - Stadtreinigung Hamburg # 96
   - Stadt Karlsruhe # 70
   - AHE;Deutsches Rotes Kreuz # 64
-  - Abfallwirtschaftsgesellschaft Wuppertal # 55
+  - Abfallwirtschaftsgesellschaft Wuppertal # 56
   - Vorwerker Diakonie # 51
-  - DRK # 47
+  - DRK # 48
   - Zweckverband für Abfallwirtschaft Kempten # 46
   - Technische Betriebe Velbert AöR # 41
   - Abfallwirtschaftsbetrieb München # 41
   - Texaid # 40
   - hoelp # 39
   - Kolping # 39
-  - AWB Köln # 38
+  - AWB Köln # 39
   - AWB # 36
   - AHE # 35
   - AWO # 32
@@ -124,15 +124,15 @@ DE:
   - CityGreenPoint # 20
   - aha Zweckverband Abfallwirtschaft Region Hannover # 19
   - Stadt Stuttgart # 19
-  - Berlin-Textilrecycling # 19
   - TEXAID # 18
+  - Berlin-Textilrecycling # 18
   - Bayerisches Rotes Kreuz # 17
   - Aktex Rohstoff-Recycling Nord # 17
   - Diakoniewerk Essen # 16
   - Abfall- und Wertstofflogistik Neuss GmbH (AWL) # 16
   - Retextil Recycling International # 14
-  - Gew. Fa. Mettex # 14
   - Isevtex # 13
+  - Gew. Fa. Mettex # 13
   - AWISTA # 13
   - AHG alpha Handelskontor # 13
   - AHA # 13
@@ -144,20 +144,20 @@ DE:
   - DRK Kreisverband Bonn e.V. # 12
   - Brotex # 12
   - AWM # 12
+  - illegal # 11
   - Däsa Wiederverwertungs GmbH # 11
-  - illegal # 10
+  - Deutsches Rotes Kreuz e.V. # 11
   - Textil-Recycling Nord # 10
   - TEXAID Deutschland GmbH # 10
   - RS # 10
   - Kolping Recycling GmbH # 10
-  - Deutsches Rotes Kreuz e.V. # 10
   - Altkleiderfirma Nargül # 10
   - Stadt Karlsruhe Amt für Abfallwirtschaft # 9
   - DRK-Kreisverband Trier-Saarburg e.V. # 9
   - Bera Textilrecycling # 9
   - Baliz Textilwerke # 9
-  - SP Textilverwertung # 8
   - Neue Arbeit Lahr # 8
+  - Johanniter # 8
   - Hoppe # 8
   - HUMANA Kleidersammlung GmbH # 8
   - Familienschutzwerk # 8
@@ -168,9 +168,9 @@ DE:
   - aha # 7
   - TEXAID Collection GmbH # 7
   - TEXAID Collection # 7
+  - SP Textilverwertung # 7
   - Retextil # 7
   - Maltheser Hilfsdienst # 7
-  - Johanniter # 7
   - HUMANA # 7
   - Diakonisches Werk Kassel # 7
   - Deutsche Lebens-Rettungs-Gesellschaft e.V. # 7
@@ -227,7 +227,7 @@ FI:
   - Suomen Pakkauskierrätys RINKI Oy # 2
   - Auringonnousu # 2
 FX:
-  - Le Relais # 649
+  - Le Relais # 650
   - Toulouse Métropole # 231
   - AMOS # 33
   - Actifrip # 25
@@ -239,6 +239,7 @@ FX:
   - SITCOM - Côte sud des Landes # 10
   - Ecotextile # 9
   - Apivet # 9
+  - www.lerelais.org # 8
   - Le relais # 6
   - Emmaüs # 6
   - SMICVAL # 5
@@ -264,6 +265,7 @@ FX:
   - Fringuette # 3
   - Croix-Rouge # 3
   - Charlieu-Belmont Communauté # 3
+  - Association d'aide aux enfants atteints de leucemie # 3
   - Active # 3
   - Écotextile # 2
   - ecotextile # 2
@@ -294,9 +296,9 @@ GB:
   - Nottingham City Council # 5
   - Traid # 4
   - Cystic Fibrosis Trust # 4
+  - traid # 3
   - South Norfolk Council # 3
   - Cancer Fund for Children # 3
-  - traid # 2
   - The Firefighters Charity # 2
   - TRAID # 2
   - Severn Waste Services # 2
@@ -311,7 +313,7 @@ IE:
 IS:
   - Sorpa # 2
 IT:
-  - Cannone # 105
+  - Cannone # 107
   - Caritas Ambrosiana # 27
   - Humana # 21
   - UIC # 15
@@ -367,7 +369,7 @@ RO:
   - Caritas # 8
 RU:
   - Перемолка # 8
-  - Лепта # 5
+  - Лепта # 6
   - Спасибо # 2
 SE:
   - Myrorna # 4

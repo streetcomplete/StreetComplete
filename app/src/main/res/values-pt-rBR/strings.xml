@@ -2137,4 +2137,18 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="quest_steps_ramp_separate_wheelchair">"A rampa para cadeiras de rodas é exibida como uma maneira separada no mapa?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separado"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"não separado"</string>
+    <string name="pref_title_sync2">"Carregar respostas automaticamente"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Descreva a superfície"</string>
+    <string name="open_url">"Abrir URL"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_buildingType_historic">"Histórico"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_historic_description">"edifício de valor histórico que não desempenha funções cívicas, religiosas ou comerciais"</string>
+    <string name="quest_buildingType_abandoned">"Abandoned"</string>
+    <string name="quest_buildingType_abandoned_description">"edifício não utilizado, cuja função ou propósito original é desconhecido"</string>
+    <string name="quest_buildingType_ruins">"Ruínas"</string>
+    <string name="quest_buildingType_ruins_description">"edifício abandonado, em ruínas e não identificável"</string>
+    <string name="quest_charging_station_capacity_title">"Quantos carros podem ser carregados nesta estação de carregamento ao mesmo tempo?"</string>
+    <string name="link_disaster_ninja_description">"Mapa que mostra desastres naturais recentes, interessante para mapeadores humanitários. Além disso, mostra muitas estatísticas interessantes para analisar como os lugares estão bem mapeados e atualizados."</string>
 </resources>

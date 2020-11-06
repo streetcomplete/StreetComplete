@@ -62,6 +62,7 @@ AT:
   - Gigasport # 3
   - Gemeinde Podersdorf # 3
   - EnergieAG # 3
+  - Energie Graz GmbH & Co KG # 3
   - Energie Burgenland AG # 3
   - ÖBB # 2
   - vlotte # 2
@@ -94,7 +95,6 @@ AT:
   - Gemeinde Kirchdorf in Tirol # 2
   - Gemeinde Eben # 2
   - Energie Steiermark AG # 2
-  - Energie Graz GmbH & Co KG # 2
   - ElectroDrive # 2
   - ELLA # 2
   - Direkt Holidays GmbH # 2
@@ -141,10 +141,10 @@ BE:
   - allego # 9
   - Smoov Allego # 8
   - Luminus # 8
+  - PitPoint # 5
   - The Plugin Company # 4
   - Tesla # 4
   - Smoov # 4
-  - PitPoint # 4
   - Colruyt # 4
   - Bluecorner # 4
   - smoov allego # 3
@@ -223,8 +223,8 @@ CA-QC:
   - Flo # 11
   - Le Circuit électrique # 10
   - Circuit Electrique # 9
+  - Hydro-Québec # 6
   - Circuit électrique # 6
-  - Hydro-Québec # 5
   - Hydro-Quebec # 4
   - Le circuit électrique # 3
   - Le Circuite Électrique # 3
@@ -356,23 +356,24 @@ CZ:
   - Tesla # 4
   - ČEZ (CCS/CHAdeMO and Mennekes type2) # 3
   - evmapa.cz # 3
-  - MOL (CCS/CHAdeMO/Mennekes) # 3
   - CCS/CHAdeMO and Mennekes type2 # 3
   - ČEZ (CCS/CHAdeMO/Mennekes) # 2
   - ČEZ (CCS/CHAdeMO/Menneke type2) # 2
   - VŠB # 2
   - TS Opava # 2
   - Město Dačice # 2
+  - MOL (CCS/CHAdeMO/Mennekes) # 2
+  - MOL # 2
   - Kaufland # 2
   - InChaNet # 2
   - EVmapa (Mennekes type 2) # 2
 DE:
   - Stromnetz Hamburg # 503
   - Stadtwerke München # 377
-  - EnBW # 348
+  - EnBW # 349
   - innogy # 195
   - RWE # 156
-  - Allego # 110
+  - Allego # 111
   - allego # 85
   - RWE-Effizienz # 79
   - Innogy # 75
@@ -385,12 +386,12 @@ DE:
   - EnBW Energie Baden-Württemberg AG # 46
   - be emobil # 45
   - NEW # 45
+  - Lidl # 45
   - Kaufland # 45
-  - Lidl # 44
   - Tank & Rast # 40
+  - SWM # 33
   - Vattenfall # 32
   - Stadtwerke Augsburg # 32
-  - SWM # 32
   - Lechwerke AG # 32
   - Ionity # 32
   - Energie- und Wasserversorgung Bonn/Rhein-Sieg GmbH # 32
@@ -398,17 +399,17 @@ DE:
   - E.ON # 31
   - Tesla Motors # 30
   - FairEnergie GmbH # 30
+  - innogy SE # 29
   - ENSO Energie Sachsen Ost AG # 29
   - DREWAG - Stadtwerke Dresden GmbH # 29
   - Aldi Süd # 29
   - ADAC # 29
-  - innogy SE # 28
   - N-Ergie # 28
   - Stadtwerke Norderstedt # 27
   - EWE Vertrieb GmbH # 26
   - Westfalen Weser Netz # 24
-  - EWV # 24
   - BMW # 24
+  - EWV # 23
   - E-Werk Mittelbaden # 23
   - Stadtwerke Leipzig # 22
   - Mainova # 22
@@ -427,9 +428,9 @@ DE:
   - Regensburger Energie- und Wasserversorgung AG & Co KG # 19
   - Fastned # 19
   - eins energie in sachsen # 18
+  - Stadtwerke Bielefeld # 18
   - NewMotion # 18
   - envia M # 17
-  - Stadtwerke Bielefeld # 17
   - STAWAG # 17
   - EWR # 17
   - enviaM # 16
@@ -448,6 +449,7 @@ DE:
   - Porsche # 14
   - DREWAG - Stadtwerke Dresden # 14
   - Bayernwerk AG # 14
+  - Allego GmbH # 14
   - eon # 13
   - e-on Drive # 13
   - VGS mbH # 13
@@ -469,15 +471,17 @@ DE:
   - Energieversorgung Rodau GmbH # 12
   - ENTEGA Energie GmbH # 12
   - DREWAG # 12
-  - Allego GmbH # 12
+  - Bayernwerk # 12
   - Stadtwerke Tübingen GmbH # 11
   - Stadtwerke Iserlohn - Heimatversorger # 11
+  - Ovag # 11
   - Mainzer Stadtwerke # 11
   - Kreis Paderborn # 11
   - Entega # 11
   - E-Wald GmbH # 11
-  - Bayernwerk # 11
   - BEW # 11
+  - Allegro # 11
+  - enercity # 10
   - eeMobility # 10
   - e.on # 10
   - e.dis # 10
@@ -489,13 +493,11 @@ DE:
   - Stadtwerke Herne # 10
   - Rheinenergie # 10
   - RWE Effizienz GmbH # 10
-  - Ovag # 10
   - Mennekes # 10
   - Kreiswerke Main-Kinzig # 10
+  - Filderstadtwerke # 10
   - ENBW # 10
   - EAM # 10
-  - Allegro # 10
-  - enercity # 9
   - emma # 9
   - SÜC Energie und H2O GmbH # 9
   - Stadtwerke Göttingen # 9
@@ -506,6 +508,7 @@ DE:
   - Ladeverbund+ # 9
   - LEW Augsburg # 9
   - Innogy eMobility Solutions GmbH # 9
+  - Energieversorgung Leverkusen GmbH & Co. KG (EVL) # 9
   - EGG Energieversorgung Gera # 9
   - Charge-ON GmbH # 9
 EE:
@@ -515,7 +518,7 @@ ES:
   - IBIL # 38
   - Tesla Motors Inc. # 27
   - EDP # 23
-  - Iberdrola # 14
+  - Iberdrola # 15
   - GIC # 13
   - Viesgo # 11
   - Feníe Energía # 9
@@ -578,7 +581,7 @@ EU:
 FI:
   - Virta # 46
   - Fortum Charge & Drive # 15
-  - Fortum # 11
+  - Fortum # 12
   - KSSe # 7
   - Tesla Motors Inc. # 5
   - K-Lataus # 5
@@ -594,15 +597,15 @@ FI:
   - Helsingin Energia # 2
   - Charge&Drive # 2
 FX:
-  - Bouygues Énergies et Services # 843
+  - Bouygues Énergies et Services # 844
   - Izivia # 591
-  - Freshmile # 403
+  - Freshmile # 405
   - Clem # 124
   - Sodetrel Mobilité # 115
   - Mouv Élec Var # 111
   - Sodetrel # 101
   - SEDI # 97
-  - EneRSIEIL # 95
+  - EneRSIEIL # 94
   - SDE35 # 89
   - Sorégies # 78
   - SDEY # 71
@@ -667,14 +670,14 @@ FX:
 GB:
   - Ecotricity # 69
   - Source London # 49
-  - Pod Point # 34
+  - Pod Point # 35
   - Tesla Motors Inc. # 27
   - Tesla # 25
   - ChargePlace Scotland # 25
   - Ubitricity # 21
   - Lancaster City Council # 20
-  - Birmingham City Council # 20
   - evolt # 19
+  - Birmingham City Council # 19
   - InstaVolt # 16
   - Chargemaster # 16
   - CYC # 16
@@ -707,6 +710,7 @@ GB:
   - Genie Point # 4
   - ESB EV Solutions # 4
   - ChargeMaster # 4
+  - polar # 3
   - eVolt # 3
   - Zero Carbon World # 3
   - Tesla Motors # 3
@@ -723,7 +727,6 @@ GB:
   - www.chargeyourcar.org.uk # 2
   - vendelectric # 2
   - tesla_standard # 2
-  - polar # 2
   - podpoint # 2
   - engenie # 2
   - West Point House # 2
@@ -758,7 +761,7 @@ GB:
   - 'AutoCharge: EV Pedestal' # 2
   - Allego # 2
 GR:
-  - blink # 8
+  - blink # 10
   - Δήμος Αλίμου # 4
   - Fortizo # 4
   - Peugeot # 3
@@ -828,7 +831,7 @@ IS:
   - Ísorka # 2
   - Orka Náttúrunnar # 2
 IT:
-  - Enel # 198
+  - Enel # 199
   - Enel X # 162
   - a2a # 26
   - Alperia # 24
@@ -921,19 +924,19 @@ MK:
 MX:
   - Servicio de Transportes Eléctricos de la Ciudad de México # 3
 NL:
-  - Allego # 179
+  - Allego # 181
   - NUON # 98
-  - Fastned # 95
+  - Fastned # 94
   - Nuon # 71
   - EVBOX # 24
   - Ecotap # 20
   - Vattenfall # 18
+  - EVnetNL # 17
   - NewMotion # 16
-  - EVnetNL # 16
   - Rotterdam Elektrisch # 15
+  - Pitpoint # 14
   - Qbuzz # 13
   - allego # 12
-  - Pitpoint # 12
   - Gemeente Rotterdam # 12
   - gemeente Rotterdam # 11
   - ecotap # 11
@@ -1028,6 +1031,7 @@ NO:
   - UMB Drifts- og vedlikeholdsavd. # 5
   - Tinn kommune # 5
   - Sandnes Parkering KF # 5
+  - Ishavsveien # 5
   - IKEA # 5
   - Halden kommune # 5
   - Fredrikstad kommune # 5
@@ -1090,7 +1094,7 @@ NZ:
   - Orion # 8
   - ChargeNet # 7
   - Unison # 5
-  - Charge.net.nz # 3
+  - Charge.net.nz # 4
   - Vector Limited # 2
   - Thundergrid # 2
   - Tesla # 2
@@ -1100,7 +1104,7 @@ NZ:
 PE:
   - La Puntilla # 2
 PL:
-  - GreenWay # 55
+  - GreenWay # 56
   - RWE # 10
   - Lotos # 9
   - Orlen # 8
@@ -1134,36 +1138,37 @@ PL:
   - ABB # 2
 PT:
   - MOBI.E # 104
-  - Mobi.E # 51
-  - Tesla # 36
-  - KLC # 28
-  - Rede Piloto # 25
-  - EDP Comercial # 20
+  - Mobi.E # 49
+  - KLC # 43
+  - EDP Comercial # 43
+  - Tesla # 37
+  - Powerdot # 25
+  - Rede Piloto # 24
+  - Mobilectric # 22
+  - Galp Power # 22
+  - Galp Geste # 22
+  - Prio.E # 20
   - GalpGeste # 16
-  - Prio.E # 15
-  - Galp Power # 15
-  - Galp Geste # 15
   - Mobi-e # 14
-  - EV Power # 12
+  - EV Power # 13
   - Mobie # 11
-  - Powerdot # 10
-  - Mobilectric # 8
-  - Mobiletric # 7
+  - Mobiletric # 6
+  - Emacom # 5
   - Tesla Motors Inc. # 4
   - Repsol # 4
   - Propel-Cepsa # 4
   - Loulé Concelho Global # 4
   - EDP MOP # 4
-  - CME # 4
   - Ucharge # 3
+  - Mota Engil II # 3
   - Mobi # 3
-  - Kilometer Low Cost # 3
-  - Mota Engil II # 2
+  - CME # 3
   - Mobi.e # 2
   - Mobi-E # 2
   - MOBI.e # 2
+  - Factor Energia # 2
   - Emel # 2
-  - EMACOM # 2
+  - EVCE Power # 2
 PY:
   - Petropar # 2
 RE:
@@ -1178,7 +1183,7 @@ RO:
 RS:
   - putevi srbije # 3
 RU:
-  - '"ПАО ""Ленэнерго"""' # 30
+  - '"ПАО ""Ленэнерго"""' # 29
   - Мосэнерго # 9
   - МРСК Волги # 9
   - '"ПАО ""МРСК Волги"""' # 8
@@ -1265,7 +1270,7 @@ TR:
   - Eşarj # 7
   - EŞARJ # 2
 TW:
-  - 英屬開曼群島商睿能新動力股份有限公司台灣分公司 # 53
+  - 英屬開曼群島商睿能新動力股份有限公司台灣分公司 # 52
   - 睿能創意股份有限公司 # 12
   - Gogoro Inc. # 10
   - gogoro # 8
@@ -1275,12 +1280,12 @@ TW:
 TZ:
   - Jaza Energy # 2
 UA:
-  - '"Перша національна мережа електрозаправних комплексів ""Тока"""' # 98
   - Одеська міська рада # 15
   - АвтоЭнтерпрайз # 11
   - ЕлектроДрайв # 9
   - Autoenterprise # 9
   - AutoEnterprise # 9
+  - '"Перша національна мережа електрозаправних комплексів ""Тока"""' # 9
   - Yasno # 6
   - ElectroUA # 6
   - Автоэнтерпрайз # 5
@@ -1390,10 +1395,10 @@ US-ME:
 US-MI:
   - Michigan State University # 12
   - Consumers Energy # 6
-  - Tesla Motors # 5
   - NRG Energy # 3
   - Lansing Board of Water and Light # 3
   - Chargepoint # 3
+  - Village of DeWitt # 2
   - Tanger Outlet Mall Howell # 2
   - Hyatt Place # 2
   - Celebration Cinema # 2

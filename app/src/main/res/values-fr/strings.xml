@@ -2298,6 +2298,8 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="open_url">"Ouvrir l'URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Monument historique"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_historic_description">"Bâtiment à valeur historique, ne présentant pas de fonction civique, religieuse ou commerciale"</string>
     <string name="quest_buildingType_abandoned">"Abandonné"</string>
     <string name="quest_buildingType_abandoned_description">"Bâtiment inutilisé dont la fonction originelle est inconnue"</string>

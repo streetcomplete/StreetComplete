@@ -20,7 +20,7 @@ layers:
 
     water-labels:
         data: { source: jawg, layer: [waterway, water] }
-        filter: { $zoom: { min: 14 } }
+        filter: { $zoom: { min: 14 }, not: { structure: tunnel } }
         draw:
             text:
                 text_source: global.name_source

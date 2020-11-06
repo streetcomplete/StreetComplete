@@ -93,8 +93,6 @@
     <string name="quest_roofShape_answer_many">"Es hat mehrere unterschiedliche"</string>
     <string name="map_btn_zoom_out">"Verkleinern"</string>
     <string name="map_btn_zoom_in">"Vergrößern"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, jemand dem Datenschutz wichtig ist, schön! Ich denke, dass ich nur gute Nachrichten für dich habe:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte Mitwirkung&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -384,9 +382,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_enabled">"Aktiviert"</string>
     <string name="quest_type">"Aufgabentyp"</string>
     <string name="action_reset">"Zurücksetzen"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Halte und bewege eine Aufgabe, um ihre Priorität der Anzeige auf der Karte zu verändern."</string>
+    <string name="reorder_quest_priority_hint">"Halte und bewege eine Aufgabe, um ihre Anzeige-Priorität auf der Karte zu verändern."</string>
     <string name="undo_confirm_positive">"Rückgängig machen"</string>
     <string name="undo_confirm_negative">"Abbrechen"</string>
     <string name="quest_dietType_vegetarian_name_title">"Hat %s vegetarisches Essen auf der Karte?"</string>
@@ -943,11 +939,11 @@ Erfolge"</string>
     <string name="open_url">"URL öffnen"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisch"</string>
-    <string name="quest_buildingType_historic_description">"Ein historisches Gebäude, dessen (ursprünglicher) Zweck nicht offensichtlich ist."</string>
+    <string name="quest_buildingType_historic_description">"historisches Gebäude, dessen (ursprünglicher) Zweck nicht offensichtlich ist"</string>
     <string name="quest_buildingType_abandoned">"Verlassen"</string>
-    <string name="quest_buildingType_abandoned_description">"Ein verlassenes Gebäude dessen ursprüngliche Funktion unbekannt ist"</string>
+    <string name="quest_buildingType_abandoned_description">"verlassenes Gebäude, dessen ursprüngliche Funktion unbekannt ist"</string>
     <string name="quest_buildingType_ruins">"Ruine"</string>
-    <string name="quest_buildingType_ruins_description">"Ein verfallenes oder zerstörtes Gebäude"</string>
+    <string name="quest_buildingType_ruins_description">"verfallenes oder zerstörtes Gebäude"</string>
     <string name="quest_charging_station_capacity_title">"Wie viele Autos können an dieser Ladestation gleichzeitig aufgeladen werden?"</string>
-    <string name="link_disaster_ninja_description">"Karte, die jüngste Naturkatastrophen zeigt. Interessant für humanitäre Mapper. Zeigt außerdem viele weitere interessante Statistiken um zu analysieren, wie vollständig und aktuell Orte kartiert sind."</string>
+    <string name="link_disaster_ninja_description">"Karte, die jüngste Naturkatastrophen zeigt. Interessant für humanitäre Mapper. Zeigt außerdem viele weitere interessante Statistiken, um zu analysieren, wie vollständig und aktuell Orte kartiert sind."</string>
 </resources>

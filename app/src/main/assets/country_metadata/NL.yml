@@ -27,8 +27,8 @@ atmOperators: [ING, Rabobank, ABN AMRO, ABN Amro, Geldmaat, ABN-AMRO, ING Bank, 
       Het Groene Woud Zuid, Rabobank Graafschap-Zuid, Rabobank Borger-Klenckeland, Rabobank Bodegraven-Woerden,
    Rabobank Bernheze Maasland, Rabobank Assen-Beilen, Rabobank Assen en Noord-Drenthe, Rabobank Amstel
       en Vecht, Postbank, Albert Heijn, ABNAmro, ABN Ambro, ABN AMRO Bank]
-chargingStationOperators: [Allego, NUON, Fastned, Nuon, EVBOX, Ecotap, Vattenfall, NewMotion, EVnetNL, Rotterdam Elektrisch, Qbuzz,
-   allego, Pitpoint, Gemeente Rotterdam, gemeente Rotterdam, ecotap, EVBox, EV-Box, We Drive Solar, Liander,
+chargingStationOperators: [Allego, NUON, Fastned, Nuon, EVBOX, Ecotap, Vattenfall, EVnetNL, NewMotion, Rotterdam Elektrisch, Pitpoint,
+   Qbuzz, allego, Gemeente Rotterdam, gemeente Rotterdam, ecotap, EVBox, EV-Box, We Drive Solar, Liander,
    Havendienst Gemeent Alkmaar, e-laad, PitPoint, LastMileSolutions, EVnet, Terberg Telecom, New Motion,
    Mitsubishi Electric, Green Flux, E-laad, Allegro, Agrisnellaad, GreenFlux, Gemeente Delft, Alfen, Gemeente
       Kerkrade, EV Box, E-bike, Aers Energy, e-laad.nl, Webcompanies.nl, Nuon/Vattenfall, Nuon-Heijmans,

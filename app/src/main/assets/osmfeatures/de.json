@@ -572,7 +572,7 @@
     },
     "amenity/payment_terminal": {
       "name": "Zahlungsterminal",
-      "terms": "Zahlungsterminal"
+      "terms": "Zahlungsterminal, Kiosksystem, Münzwechsel, Selbstbedienung"
     },
     "amenity/pharmacy": {
       "name": "Apotheke",
@@ -1457,8 +1457,8 @@
       "terms": "Doppelhaushälfte"
     },
     "building/service": {
-      "name": "Maschinenhaus",
-      "terms": "Maschinenhaus, Dienstleistungsgebäude"
+      "name": "Versorgungsgebäude",
+      "terms": "Maschinenhaus, Dienstleistungsgebäude, Betriebsgebäude, Technikgebäude"
     },
     "building/shed": {
       "name": "Schuppen",

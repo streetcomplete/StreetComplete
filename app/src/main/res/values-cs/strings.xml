@@ -2397,6 +2397,8 @@ Is the situation on this cycleway still the same? -->
     <string name="open_url">"Otevřít URL adresu"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historická"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_historic_description">"budova historického významu, která neslouží žádným občanským, náboženským, nebo komerčním účelům"</string>
     <string name="quest_buildingType_abandoned">"Opuštěná"</string>
     <string name="quest_buildingType_abandoned_description">"nevyužívaná budova, jejíž původní funkce nebo účel není znám"</string>

@@ -4,12 +4,12 @@ atmOperators: [ПриватБанк, Альфа-Банк, Ощадбанк, Пр
       банк Аваль, Credit Agricole, Райфайзен банк Аваль, Райфайзен Банк Аваль, UniCredit Bank, УкрСибБанк,
    приватбанк, '"ПАТ ""Укрсоцбанк"""', Промінвестбанк, Приват банк, PrivatBank, Правекс-Банк, Райффайзенбанк
       Аваль, Надра, Кредитпромбанк, УкрЕксімБанк, Надра Банк, Проминвестбанк, Приват, Полтава-Банк, Банк
-      Хрещатик, Банк Форум, Банк Південний, партнер Укрсиббанку, Сбербанк России, Приват-Банк, Мегабанк,
-   Експрес-Банк, Брокбізнесбанк, Universal Bank, KredoBank, Crédit Agricole, Укрінбанк, УкрГазБанк, КредоБанк,
+      Хрещатик, Банк Південний, партнер Укрсиббанку, Сбербанк России, Приват-Банк, Мегабанк, Експрес-Банк,
+   Брокбізнесбанк, Банк Форум, Universal Bank, KredoBank, Crédit Agricole, Укрінбанк, УкрГазБанк, КредоБанк,
    Индустриалбанк, UniCredit, Raiffeisen Bank Aval, Privat Bank, '"АБ ""УКРГАЗБАНК"""']
-chargingStationOperators: ['"Перша національна мережа електрозаправних комплексів ""Тока"""', Одеська міська рада, АвтоЭнтерпрайз,
-   ЕлектроДрайв, Autoenterprise, AutoEnterprise, Yasno, ElectroUA, Автоэнтерпрайз, Автоентерпрайз, Silver
-      Fox Energy, Electro UA, AutoEnterprise 201, АвтоЕнтерпрайз, Tesla Club Ukraine, Go To-U, AutoVolt]
+chargingStationOperators: [Одеська міська рада, АвтоЭнтерпрайз, ЕлектроДрайв, Autoenterprise, AutoEnterprise, '"Перша національна
+      мережа електрозаправних комплексів ""Тока"""', Yasno, ElectroUA, Автоэнтерпрайз, Автоентерпрайз,
+   Silver Fox Energy, Electro UA, AutoEnterprise 201, АвтоЕнтерпрайз, Tesla Club Ukraine, Go To-U, AutoVolt]
 clothesContainerOperators: [Емаус-Оселя]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true

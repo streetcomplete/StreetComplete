@@ -75,6 +75,9 @@
       "name": "Tyrolienne",
       "terms": "Câble aérien, câble de canopée, tyrolienne..."
     },
+    "aeroway": {
+      "name": "Équipement aérien"
+    },
     "aeroway/aerodrome": {
       "name": "Aéroport",
       "terms": "Aéroport, Aérodrome, aeroport, aerodrome, Altiport, Héliport, airport"
@@ -1674,7 +1677,7 @@
     },
     "emergency/fire_hydrant": {
       "name": "Borne incendie",
-      "terms": "Borne incendie, borne-fontaine, borne fontaine, bouche d'incendie, poteau incendie, hydrant, fire hydrant"
+      "terms": "Borne incendie, borne-fontaine, borne fontaine, bouche d'incendie, poteau incendie, hydrant, fire hydrant, point d'eau incendie"
     },
     "emergency/first_aid_kit": {
       "name": "Kit de premiers secours",
@@ -2432,6 +2435,9 @@
       "name": "Aire de sports d'hiver",
       "terms": "ski, nordique, fond, alpin, descente, snowboard, randonnée, rando, luge, traîneau, ski-joring, husky, cheval, raquette, piéton, glace, patin à glace"
     },
+    "leisure": {
+      "name": "Équipement de loisir"
+    },
     "leisure/adult_gaming_centre": {
       "name": "Jeux pour adultes",
       "terms": "Jeux pour adultes"
@@ -3048,6 +3054,9 @@
       "name": "Tranchée militaire",
       "terms": "tranchée,guerre,infanterie"
     },
+    "natural": {
+      "name": "Élément naturel"
+    },
     "natural/bare_rock": {
       "name": "Zone Rocheuse",
       "terms": "Zone Rocheuse, Rochers"
@@ -3542,6 +3551,9 @@
     "polling_station": {
       "name": "Bureau de vote temporaire",
       "terms": "bureau de vote,vote,élections,démocratie,démocratique"
+    },
+    "power": {
+      "name": "Équipement lié à l'énergie"
     },
     "power/cable/underground": {
       "name": "Câble électrique souterrain",
@@ -4554,7 +4566,7 @@
       "terms": "data center,technologie,télécommunications,nuage,cloud,ordinateurs,serveurs,hébergeur,hébergement"
     },
     "tourism": {
-      "name": "Équipement touristiques"
+      "name": "Équipement touristique"
     },
     "tourism/alpine_hut": {
       "name": "Refuge de montagne",
