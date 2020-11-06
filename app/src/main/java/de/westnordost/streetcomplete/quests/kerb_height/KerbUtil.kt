@@ -52,6 +52,8 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     // have value 3 or greater
 
     /*
+    // skips unusual geometries where rules above are not sufficient,
+    // see tests in app/src/test/java/de/westnordost/streetcomplete/quests/kerb_height
     for (nd in unknownEndNodes) {
         val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
         if (prevCount > 0) crossingEndNodesConnectionCountByIds[nd.id] = -1
