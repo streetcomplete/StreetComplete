@@ -51,34 +51,12 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     // and more than one footway=sidewalk ending on the node
     // have value 3 or greater
 
-    /*
-    // skips unusual geometries where rules above are not sufficient,
+    // skips unusual geometries where not fully tagged footway also terminates on node,
     // see tests in app/src/test/java/de/westnordost/streetcomplete/quests/kerb_height
     for (nd in unknownEndNodes) {
         val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
         if (prevCount > 0) crossingEndNodesConnectionCountByIds[nd.id] = -1
     }
-    */
-
-    // now all nodes with ending of a way (queried by footwaysFilter)
-    // that had neither foootway=crossing or footway=sidewalk
-    // will get value -1
-    // this is necessary as highway=crossing way may end not on a kerb
-    // but on sidewalk
-    //
-    // 3 ways, all ending on node x that should not be selected
-    //
-    // 1-----x------2
-    //       |
-    //       |
-    //       |
-    //       3
-    // way 1: highway=footway footway=sidewalk
-    // way 2: highway=footway
-    // way 3: highway=footway footway=crossing
-    //
-    // such incomplete tagging is not wrong, and StreetComplete needs to
-    // handle it
 
     val footwayNodes = mutableSetOf<Node>()
     footways
