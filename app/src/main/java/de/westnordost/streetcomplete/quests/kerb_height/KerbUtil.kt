@@ -51,10 +51,13 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     // and more than one footway=sidewalk ending on the node
     // have value 3 or greater
 
+    /*
     for (nd in unknownEndNodes) {
         val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
         if (prevCount > 0) crossingEndNodesConnectionCountByIds[nd.id] = -1
     }
+    */
+
     // now all nodes with ending of a way (queried by footwaysFilter)
     // that had neither foootway=crossing or footway=sidewalk
     // will get value -1
