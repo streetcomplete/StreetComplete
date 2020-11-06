@@ -26,7 +26,7 @@ class AddKosher : OsmFilterQuestType<String>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_kosher_name_title
 
-    override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_vegan)
+    override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_kosher)
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
         changes.updateWithCheckDate("diet:vegan", answer)
