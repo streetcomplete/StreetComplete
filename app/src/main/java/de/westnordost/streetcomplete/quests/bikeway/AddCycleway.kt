@@ -303,6 +303,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
               and bicycle != use_sidepath
               and bicycle:backward != use_sidepath
               and bicycle:forward != use_sidepath
+              and sidewalk != separate
         """.toElementFilterExpression() }
 
         // streets that do not have cycleway tagging yet
