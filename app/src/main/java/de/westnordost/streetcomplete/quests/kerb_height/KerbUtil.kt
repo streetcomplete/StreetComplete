@@ -57,9 +57,9 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
 
     // nodes with at least one footway=sidewalk ending at the given node
     // and more than one footway=sidewalk ending on the node
-    // have value 3 or greater
+    // have value 3 or greater and will be dropped in a final check
 
-    // skips unusual geometries where not fully tagged footway also terminates on node,
+    // skips unusual geometries where not fully tagged footway also terminates on the node,
     // see tests in app/src/test/java/de/westnordost/streetcomplete/quests/kerb_height
     for (nd in unknownEndNodes) {
         val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
