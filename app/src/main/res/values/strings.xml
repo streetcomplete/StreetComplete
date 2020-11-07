@@ -474,7 +474,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="undo_confirm_negative">Cancel</string>
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
     <string name="default_disabled_msg_go_inside">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type.</string>
-    <string name="default_disabled_msg_go_inside_usefullness_warning">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type. Please, do not enable this quest if answer would be "no" for all objects.</string>
+    <string name="default_disabled_msg_go_inside_usefulness_warning">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type. Please, do not enable this quest if answer would be "no" for all objects.</string>
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
