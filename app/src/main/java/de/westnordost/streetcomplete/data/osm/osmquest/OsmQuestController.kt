@@ -93,7 +93,7 @@ import javax.inject.Singleton
 
     /** Replace all quests of the given type in the given bounding box with the given quests,
      *  including their geometry. Called on download of a quest type for a bounding box. */
-    fun replaceInBBox(quests: List<OsmQuest>, bbox: BoundingBox, questTypes: List<String>): UpdateResult {
+    fun replaceInBBox(quests: Iterable<OsmQuest>, bbox: BoundingBox, questTypes: List<String>): UpdateResult {
         require(questTypes.isNotEmpty()) { "questTypes must not be empty if not null" }
         /* All quests in the given bounding box and of the given type should be replaced by the
         *  input list. So, there may be 1. new quests that are added and 2. there may be previous

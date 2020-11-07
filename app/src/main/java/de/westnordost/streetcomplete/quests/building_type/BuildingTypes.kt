@@ -32,7 +32,7 @@ enum class BuildingType(val item: Item<String>) {
     TRAIN_STATION (Item("train_station", R.drawable.ic_building_train_station, R.string.quest_buildingType_train_station)),
     TRANSPORTATION(Item("transportation", R.drawable.ic_building_transportation, R.string.quest_buildingType_transportation)),
     UNIVERSITY    (Item("university", R.drawable.ic_building_university, R.string.quest_buildingType_university)),
-    GOVERNMENT    (Item("government", R.drawable.ic_building_civic,      R.string.quest_buildingType_government)),
+    GOVERNMENT    (Item("government", R.drawable.ic_building_historic,      R.string.quest_buildingType_government)),
 
     CHURCH        (Item("church",     R.drawable.ic_religion_christian,  R.string.quest_buildingType_church)),
     CHAPEL        (Item("chapel",     R.drawable.ic_religion_christian,  R.string.quest_buildingType_chapel)),
@@ -50,6 +50,7 @@ enum class BuildingType(val item: Item<String>) {
 
     FARM          (Item("farm",       R.drawable.ic_building_farm_house, R.string.quest_buildingType_farmhouse, R.string.quest_buildingType_farmhouse_description)),
     FARM_AUXILIARY(Item("farm_auxiliary", R.drawable.ic_building_barn,   R.string.quest_buildingType_farm_auxiliary, R.string.quest_buildingType_farm_auxiliary_description)),
+    SILO          (Item("man_made=silo",  R.drawable.ic_building_silo,   R.string.quest_buildingType_farm_auxiliary)),
     GREENHOUSE    (Item("greenhouse", R.drawable.ic_building_greenhouse, R.string.quest_buildingType_greenhouse)),
 
     SHED          (Item("shed",       R.drawable.ic_building_shed,       R.string.quest_buildingType_shed)),
@@ -58,6 +59,9 @@ enum class BuildingType(val item: Item<String>) {
     SERVICE       (Item("service",    R.drawable.ic_building_service,    R.string.quest_buildingType_service, R.string.quest_buildingType_service_description)),
     HANGAR        (Item("hangar",     R.drawable.ic_building_hangar,     R.string.quest_buildingType_hangar, R.string.quest_buildingType_hangar_description)),
     BUNKER        (Item("bunker",     R.drawable.ic_building_bunker,     R.string.quest_buildingType_bunker)),
+    HISTORIC      (Item("historic",   R.drawable.ic_building_historic,   R.string.quest_buildingType_historic, R.string.quest_buildingType_historic_description)),
+    ABANDONED     (Item("abandoned",  R.drawable.ic_building_abandoned,  R.string.quest_buildingType_abandoned, R.string.quest_buildingType_abandoned_description)),
+    RUINS         (Item("ruins",      R.drawable.ic_building_ruins,      R.string.quest_buildingType_ruins, R.string.quest_buildingType_ruins_description)),
 
     RESIDENTIAL   (
         Item("residential", R.drawable.ic_building_apartments, R.string.quest_buildingType_residential, R.string.quest_buildingType_residential_description,
@@ -86,12 +90,12 @@ enum class BuildingType(val item: Item<String>) {
 
     FOR_FARMS     (
         Item(null, R.drawable.ic_building_farm, R.string.quest_buildingType_farm, null,
-        listOf( FARM, FARM_AUXILIARY, GREENHOUSE, STORAGE_TANK ).toItems())
+        listOf( FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK ).toItems())
     ),
 
     OTHER         (
         Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, null,
-        listOf( SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER ).toItems())
+        listOf( SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER, HISTORIC, ABANDONED, RUINS ).toItems())
     );
 
     companion object {

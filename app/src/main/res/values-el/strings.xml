@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Δείξε περισσότερα..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Έχει πολλά διαφορετικά σχήματα"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Αυτόματος Συγχρονισμός"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Σμίκρυνση"</string>
@@ -289,8 +287,7 @@
 
 &lt;p&gt;&lt;b&gt;Χρήση δεδομένων&lt;/ b&gt;&lt;/ p&gt;
 &lt;p&gt;
-Όπως αναφέρθηκε, η εφαρμογή επικοινωνεί απευθείας με την υποδομή OSM. Δηλαδή, με το &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt;για τη λήψη αναζητήσεων (που είναι ανώνυμα) και με το &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; για μεταφόρτωση αλλαγών. &lt;br/&gt;
-Ωστόσο, πριν μεταφορτώσετε τις αλλαγές σας, η εφαρμογή ελέγχει με ένα &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; στο διακομιστή μου είτε έχει απαγορευτεί η μεταφόρτωση των αλλαγών. Αυτό είναι ένα προληπτικό μέτρο για να μπορέσει να κρατήσει τις εκδόσεις της εφαρμογής που καταλήγουν να έχουν κρίσιμα σφάλματα από την ενδεχόμενη καταστροφή των δεδομένων OSM.&lt;/ p&gt;
+Όπως αναφέρθηκε, η εφαρμογή επικοινωνεί απευθείας με την υποδομή OSM. Ωστόσο, πριν μεταφορτώσετε τις αλλαγές σας, η εφαρμογή ελέγχει με ένα &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; στο διακομιστή μου είτε έχει απαγορευτεί η μεταφόρτωση των αλλαγών. Αυτό είναι ένα προληπτικό μέτρο για να μπορέσει να κρατήσει τις εκδόσεις της εφαρμογής που καταλήγουν να έχουν κρίσιμα σφάλματα από την ενδεχόμενη καταστροφή των δεδομένων OSM.&lt;/ p&gt;
 "</string>
 
     <!-- Fuzzy -->
@@ -1722,10 +1719,6 @@
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Δεν έχει εγκατασταθεί άλλη εφαρμογή χάρτη"</string>
-    <string name="pref_title_overpass_url_select">"Αλλαγή διακομιστή Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Απαιτείται επανεκκίνηση της εφαρμογής για να εφαρμοστεί. Μπορεί να παρακάμψει τη λογοκρισία, για παράδειγμα στη Ρωσία."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"αριθμός σπιτιού"</string>
@@ -2064,10 +2057,6 @@
     <string name="quest_surface_detailed_answer_impossible">"Πολλαπλές επιφάνειες…"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Είστε βέβαιοι ότι είναι αδύνατο να προσδιορίσετε την επιφάνεια; Σημειώστε την επιλογή απάντησης \"Διαφέρει μέσα στη διαδρομή\" που σας επιτρέπει να κόψετε τον δρόμο με τον οποίο αλλάζει η επιφάνεια. Χρησιμοποιήστε το \"Δεν μπορώ να πω\" εάν υπάρχει μία μόνο επιφάνεια, αλλά δεν είναι διαθέσιμη ως απάντηση."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Προσδιορίστε εν συντομία τη φύση της επιφάνειας εδώ, για παράδειγμα \"αμμώδης με μπαλώματα σε πλακόστρωτο\". Το μήκος του κειμένου περιορίζεται σε 255 χαρακτήρες."</string>
-    <string name="quest_surface_detailed_name_title">"Ποια συγκεκριμένη επιφάνεια έχει ο δρόμος %s εδώ;"</string>
-    <string name="quest_surface_detailed_square_name_title">"Ποια συγκεκριμένη επιφάνεια έχει η πλατεία %s εδώ;"</string>
-    <string name="quest_surface_detailed_title">"Τι συγκεκριμένη επιφάνεια έχει αυτό το κομμάτι δρόμου;"</string>
-    <string name="quest_surface_detailed_square_title">"Τι συγκεκριμένη επιφάνεια έχει αυτή η πλατεία εδώ;"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"διεθνές"</string>
@@ -2101,7 +2090,6 @@
     <string name="quest_busStopBench_name_title">"Η στάση λεωφορείου %s έχει πάγκο;"</string>
     <string name="quest_summit_register_title">"Υπάρχει καταχώρηση κορυφής στο %s;"</string>
     <string name="quest_is_defibrillator_inside_title">"Είναι αυτός ο απινιδωτής (AED) μέσα σε ένα κτήριο;"</string>
-    <string name="dialog_tutorial_download">"Με τον αυτόματο συγχρονισμό κλειστό, οι αναζητήσεις δεν λαμβάνονται αυτόματα. Για να το κάνετε αυτό χειροκίνητα, χρησιμοποιήστε το κουμπί  \"%s\" στο μενού στη τοποθεσία που θέλετε να κατεβάσετε."</string>
     <string name="about_title_translate">"Βοηθήστε στη μετάφραση αυτής της εφαρμογής"</string>
     <string name="about_description_translate">"Το %1$s είναι μεταφρασμένο %2$d%%"</string>
     <string name="quest_oneway2_title">"Είναι αυτός μονόδρομος; Προς ποια κατεύθυνση;"</string>

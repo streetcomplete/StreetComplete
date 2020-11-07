@@ -536,7 +536,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_fee_not_at_hours">Yes, but not…</string>
     <string name="quest_fee_hours_title">at the following times:</string>
     <string name="quest_housenumber_multiple_numbers">It has multiple house numbers</string>
-    <string name="quest_housenumber_multiple_numbers_description">"You can simply enter comma-separated house numbers or ranges.\nFor instance 1,3 or 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"You can simply enter comma–separated house numbers or ranges.\nFor instance 1,3 or 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">Stand (supports bike frame)</string>
     <string name="quest_bicycle_parking_type_wheelbender">Wheelbender (supports wheel only)</string>
     <string name="quest_bicycle_parking_type_shed">Shed</string>
@@ -635,6 +635,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_farmhouse_description">the residential building on a farm</string>
     <string name="quest_buildingType_farm_auxiliary">Farm building</string>
     <string name="quest_buildingType_farm_auxiliary_description">any building on a farm that is not a residential building</string>
+    <string name="quest_buildingType_silo">Silo</string>
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
 
     <string name="quest_buildingType_other">Other</string>
@@ -648,7 +649,12 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_hangar">Hangar</string>
     <string name="quest_buildingType_hangar_description">storage for airplanes, helicopters or spacecraft</string>
     <string name="quest_buildingType_bunker">Bunker</string>
-
+    <string name="quest_buildingType_historic">Historic</string>
+    <string name="quest_buildingType_historic_description">building of historic value not serving any civic, religious or commercial functions</string>
+    <string name="quest_buildingType_abandoned">Abandoned</string>
+    <string name="quest_buildingType_abandoned_description">unused building whose original function or purpose is unknown</string>
+    <string name="quest_buildingType_ruins">Ruins</string>
+    <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
 
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
@@ -809,6 +815,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_atm_operator_title">"What's the name of the bank for this ATM?"</string>
     <string name="quest_clothes_container_operator_title">"Who accepts donations for this clothing bin?"</string>
     <string name="quest_charging_station_operator_title">"Who is the operator of this charging station?"</string>
+    <string name="quest_charging_station_capacity_title">"How many cars can be charged at this charging station at the same time?"</string>
 
     <string name="user_quests_title">Solved Quests</string>
     <string name="user_achievements_title">Achievements</string>
@@ -847,6 +854,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_wiki_description">The wiki is your starting point to everything related OpenStreetMap</string>
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
     <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
+    <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
     <string name="link_thenandnow_description">Curious what progress we made over the years? Compare to how the map looked more than 10 years ago!</string>
     <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
     <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>

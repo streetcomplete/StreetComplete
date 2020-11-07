@@ -10,6 +10,8 @@ import kotlinx.android.synthetic.main.quest_parking_access.*
 
 class AddBoardTypeForm : AbstractQuestFormAnswerFragment<String>() {
 
+    override val defaultExpanded = false
+
     override val otherAnswers = listOf(
             OtherAnswer(R.string.quest_board_type_map) { confirmOnMap() }
     )

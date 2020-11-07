@@ -252,11 +252,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Daha fazla göster…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Birkaç farklı şekli var"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Otomatik Senkronizasyon"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Uzaklaştır"</string>
@@ -265,32 +263,25 @@
     <string name="map_btn_zoom_in">"Yakınlaştır"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;P&gt; Ah, gizlilikle ilgilenen biri, hoş! Sanırım sana iyi haberlerim var: &lt;/ p&gt;
-&lt;P&gt; &lt;b&gt; Doğrudan Katkılar &lt;/ b&gt; &lt;/ p&gt;
+    <string name="privacy_html">"&lt;P&gt; Ah, gizlilikle ilgilenen biri, hoş! Sanırım sana iyi haberlerim var: &lt;/p&gt;
+&lt;P&gt; &lt;b&gt; Doğrudan Katkılar &lt;/b&gt; &lt;/p&gt;
 &lt;P&gt;
 İlk önce, bu uygulamanın OpenStreetMap'e gerçek ve doğrudan katkıda bulunduğunu anlayın. &lt;br/&gt;
 Bu uygulamaya katkıda bulunmanız gereken herhangi bir şey doğrudan haritaya eklenir; uygulama ve OSM altyapısı arasında üçüncü taraf yok, tıpkı &lt;a href=\"https://wheelmap.org\"&gt; wheelmap.org &lt;/a&gt; veya &lt;a href=\"http://www.kort.ch\"&gt; Kort &lt;/a&gt;.
-&lt;/ P&gt;
+&lt;/P&gt;
 &lt;P&gt;
 OpenStreetMap'i anonim olarak düzenlemek mümkün değildir, bu nedenle yaptığınız değişiklikler OSM kullanıcı hesabınızla yapılır. Bu, değişikliklerin tarih, içerik ve dolaylı olarak yerinin openstreetmap web sitesinde herkese görünür olduğu ve hesabınıza atfedilebileceği anlamına gelir.
-&lt;/ P&gt;
+&lt;/P&gt;
 
-&lt;B&gt; Yer &lt;/ b&gt; &lt;br/&gt;
+&lt;B&gt; Yer &lt;/b&gt; &lt;br/&gt;
 &lt;P&gt;
 Konumunuz yalnızca etrafınızdaki görevleri otomatik olarak taramak için kullanılır. Endişelenmenize gerek yok, uygulama konumunuzu kendisi için saklar.
 &lt;/ P&gt;
 
-&lt;P&gt; &lt;b&gt; Veri Kullanımı &lt;/ b&gt; &lt;/ p&gt;
+&lt;P&gt; &lt;b&gt; Veri Kullanımı &lt;/b&gt; &lt;/p&gt;
 &lt;P&gt;
-Bahsedildiği gibi, uygulama OSM altyapısıyla doğrudan iletişim kuruyor. Başka bir deyişle, görevleri (anonim) indirmek için &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; Üstgeçit API &lt;/a&gt; ile ve &lt;a href = \"http: /wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API &lt;/a&gt; 'nı yükleyin. &lt;br/&gt;
-Bununla birlikte, değişikliklerinizi yüklemeden önce uygulama, sunucudaki &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; basit bir metin dosyası &lt;/a&gt; ile yasaklanmış olup olmadığı kontrol eder. Herhangi bir değişiklik yüklüyor. Bu, kritik hataların OSM verilerini muhtemelen bozmasına neden olan uygulamaların sürümlerini muhafaza edebilmek için ihtiyati bir önlemdir. &lt;br/&gt;
-&lt;/ P&gt;
-&lt;P&gt;
-Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt; Mapzen vektör döşeme hizmetinden &lt;/a&gt; alınır. Hizmet, hangi alanların ön bellek önbellekleme ve performans iyileştirmeleri için popüler olduğunu anlamak için istekleri karo olarak kaydeder. Platformları ayrıca IP adreslerini günlüğe kaydeder ve tüm barındırma işleri Amazon'da olduğundan, yapabileceklerine tabidirler.
-&lt;/ P&gt;
-&lt;P&gt;
-(&lt;I&gt; Bu henüz gerçekleştirilmedi, yalnızca size neyin geleceğini size bildirmek istiyoruz! &lt;/ I&gt;) Afiş tablosunda ve profilde gösterilen veriler, OpenStreetMap'ten halka açık bilgilerden toplandı. Veriler bu uygulamadan değil, temelde OSM kullanıcılarının kamusal taahhüt geçmişinden gelmektedir.
-&lt;/ P&gt;"</string>
+Bahsedildiği gibi, uygulama OSM altyapısıyla doğrudan iletişim kuruyor. Bununla birlikte, değişikliklerinizi yüklemeden önce uygulama, sunucudaki &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; basit bir metin dosyası &lt;/a&gt; ile yasaklanmış olup olmadığı kontrol eder. Herhangi bir değişiklik yüklüyor. Bu, kritik hataların OSM verilerini muhtemelen bozmasına neden olan uygulamaların sürümlerini muhafaza edebilmek için ihtiyati bir önlemdir. &lt;br/&gt;
+&lt;/P&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"Açık"</string>
@@ -989,7 +980,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="action_reset">"Sıfırla"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Bir görevi indirme ve haritada görüntüleme sırasında önceliklendirmek için uzun basın ve sürükleyin."</string>
+    <string name="reorder_quest_priority_hint">"Bir görevi haritada görüntüleme sırasında önceliklendirmek için uzun basın ve sürükleyin."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Geri al"</string>
@@ -1258,7 +1249,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_construction_building_title">"Bu bina tamamlandı mı?"</string>
-    <string name="questList_disabled_in_country">"Asla % olarak gösterme"</string>
+    <string name="questList_disabled_in_country">"Asla %s olarak gösterme"</string>
 
     <!-- Fuzzy -->
     <string name="quest_toiletAvailability_rest_area_title">"Bu dinlenme yerinde tuvalet bulunmakta midir?"</string>
@@ -1603,9 +1594,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Yüklenmiş başka harita uygulaması yok"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Uygulamak için uygulamanın yeniden başlatılmasını gerektirir.  Örneğin Rusya’da sansürü atlayabilir."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"ev numarası"</string>

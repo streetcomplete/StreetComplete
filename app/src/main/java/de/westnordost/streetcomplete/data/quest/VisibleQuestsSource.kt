@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -12,7 +13,8 @@ import javax.inject.Singleton
 /** Access and listen to quests visible on the map */
 @Singleton class VisibleQuestsSource @Inject constructor(
     private val osmQuestController: OsmQuestController,
-    private val osmNoteQuestController: OsmNoteQuestController
+    private val osmNoteQuestController: OsmNoteQuestController,
+    private val visibleQuestTypeDao: VisibleQuestTypeDao
 ) {
     private val listeners: MutableList<VisibleQuestListener> = CopyOnWriteArrayList()
 
@@ -32,7 +34,12 @@ import javax.inject.Singleton
         }
 
         override fun onUpdated(added: Collection<OsmQuest>, updated: Collection<OsmQuest>, deleted: Collection<Long>) {
-            onUpdatedVisibleQuests(added, updated, deleted, QuestGroup.OSM)
+            onUpdatedVisibleQuests(
+                added.filter { visibleQuestTypeDao.isVisible(it.type) },
+                updated.filter { visibleQuestTypeDao.isVisible(it.type) },
+                deleted,
+                QuestGroup.OSM
+            )
         }
     }
 

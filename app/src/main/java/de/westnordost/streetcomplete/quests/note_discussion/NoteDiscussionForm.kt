@@ -37,6 +37,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_note_discussion_content
     override val buttonsResId = R.layout.quest_buttonpanel_note_discussion
+    override val defaultExpanded = false
 
     private lateinit var anonAvatar: Bitmap
 

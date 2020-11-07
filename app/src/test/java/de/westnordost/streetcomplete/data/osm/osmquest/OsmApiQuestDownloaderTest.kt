@@ -22,6 +22,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
+import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.FutureTask
 import javax.inject.Provider
 
@@ -62,9 +63,9 @@ class OsmApiQuestDownloaderTest {
 
         on(mapDataWithGeometry.getNodeGeometry(5)).thenReturn(geom)
         on(osmQuestController.replaceInBBox(any(), any(), any())).thenAnswer {
-            val createdQuests = it.arguments[0] as List<OsmQuest>
+            val createdQuests = it.arguments[0] as ConcurrentLinkedQueue<OsmQuest>
             assertEquals(1, createdQuests.size)
-            val quest = createdQuests[0]
+            val quest = createdQuests.first()
             assertEquals(5, quest.elementId)
             assertEquals(Element.Type.NODE, quest.elementType)
             assertEquals(geom, quest.geometry)

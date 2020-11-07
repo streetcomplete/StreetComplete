@@ -178,8 +178,9 @@ That is not very clear to me. Any further explanations? -->
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Montrer d’avantage…"</string>
+
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <string name="quest_roofShape_answer_many">"Il a plusieurs formes différentes"</string>
-    <string name="pref_title_sync">"Synchronisation automatique"</string>
     <string name="map_btn_zoom_out">"Zoom arrière"</string>
     <string name="map_btn_zoom_in">"Zoom avant"</string>
 
@@ -202,7 +203,7 @@ L'application ne partage votre position GPS avec personne. Elle est utilisée po
 
 &lt;p&gt;&lt;b&gt;Utilisation des données&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Comme mentionné, l'application communique directement avec l'infrastructure d'OSM. C'est-à-dire avec l'API &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; pour le téléchargement des quêtes (qui est anonyme) et avec l'API &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; pour le téléchargement des modifications.&lt;br/&gt;
+Comme mentionné, l'application communique directement avec l'infrastructure d'OSM. 
 Toutefois, avant de télécharger vos modifications, l'application vérifie, à l'aide d'un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fichier texte simple&lt;/a&gt; sur mon serveur, si la version de l'application n'est pas interdite de téléversement. Il s'agit d'une mesure de précaution pour éviter que les versions qui présentent des bogues critiques ne corrompent les données d'OSM.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -882,7 +883,7 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="action_reset">"Réinitialiser"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Appuyez longuement sur une quête et déplacez-là afin de réorganiser sa priorité concernant son téléchargement son l'affichage sur la carte."</string>
+    <string name="reorder_quest_priority_hint">"Appuyez longuement sur une quête et déplacez la afin de réorganiser sa priorité d'affichage sur la carte."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Annuler"</string>
@@ -1612,12 +1613,6 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="map_application_missing">"Aucune autre application de cartographie n'est installée"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Changer de serveur Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Nécessite un redémarrage de l'application pour pouvoir appliquer les changements. Peut contourner la censure, par exemple en Russie."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"Numéro de rue"</string>
 
     <!-- I'm not sure about my translation. -->
@@ -2205,10 +2200,6 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_surface_detailed_answer_impossible">"Surfaces multiples..."</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Etes-vous sûr qu'il est impossible de préciser la surface ? Notez la réponse possible \"Change en cours de route\", qui vous permet de couper la voie à l'en,droit où la surface change. Veuillez utiliser \"Ne peux pas répondre\" s'il s'agit d'une surface unique non listée."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Décrivez brièvement la nature du revêtement ici, par exemple \"sableux avec îlots pavés\". La longueur du texte est limitée à 255 caractères."</string>
-    <string name="quest_surface_detailed_name_title">"Quel est le revêtement précis de la route %s ?"</string>
-    <string name="quest_surface_detailed_square_name_title">"Quel est le revêtement précis de la place %s ?"</string>
-    <string name="quest_surface_detailed_title">"Quel est le revêtement précis de cette route ?"</string>
-    <string name="quest_surface_detailed_square_title">"Quel est le revêtement précis de cette place ?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
@@ -2254,9 +2245,6 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Fuzzy -->
     <string name="quest_is_defibrillator_inside_title">"Ce défibrillateur (AED) se trouve-t-il à l'intérieur d'un bâtiment ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="dialog_tutorial_download">"Avec la synchronisation automatique désactivée, les quêtes ne sont pas téléchargées automatiquement. Pour le faire manuellement, utilisez le bouton \"%s\" dans le menu à l'endroit où vous voulez télécharger."</string>
 
     <!-- Fuzzy -->
     <string name="about_title_translate">"Aidez à traduire cette application"</string>
@@ -2305,4 +2293,16 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_steps_ramp_separate_wheelchair">"Y a t'il une rampe pour fauteuils roulants représentée comme une voie séparée sur la carte ?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Séparée"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Non séparée"</string>
+    <string name="pref_title_sync2">"Téléverser les réponses automatiquement"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Décrire la surface"</string>
+    <string name="open_url">"Ouvrir l'URL"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_buildingType_historic">"Monument historique"</string>
+    <string name="quest_buildingType_historic_description">"Bâtiment à valeur historique, ne présentant pas de fonction civique, religieuse ou commerciale"</string>
+    <string name="quest_buildingType_abandoned">"Abandonné"</string>
+    <string name="quest_buildingType_abandoned_description">"Bâtiment inutilisé dont la fonction originelle est inconnue"</string>
+    <string name="quest_buildingType_ruins">"Ruines"</string>
+    <string name="quest_buildingType_ruins_description">"Bâtiment abandonné, en ruines et non identifiable"</string>
+    <string name="quest_charging_station_capacity_title">"Combien de véhicules peuvent être chargés simultanément à cette station de recharge ?"</string>
+    <string name="link_disaster_ninja_description">"Carte montrant les catastrophes naturelles récentes, d'intérêt pour les cartographes humanitaires, ainsi que plusieurs statistiques intéressantes pour analyser l'état de la cartographie (récence, avancement, ...)"</string>
 </resources>

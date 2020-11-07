@@ -92,7 +92,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         })
 
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            bottomSheetBehavior.state = STATE_EXPANDED
+            expand()
         }
 
         if (savedInstanceState == null) {
@@ -147,8 +147,12 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         }
     }
 
-    private fun onKeyboardOpened() {
+    protected fun expand() {
         bottomSheetBehavior.state = STATE_EXPANDED
+    }
+
+    private fun onKeyboardOpened() {
+        expand()
     }
 
     private fun onKeyboardClosed() {

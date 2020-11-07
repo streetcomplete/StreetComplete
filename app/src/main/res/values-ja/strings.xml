@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"さらに表示…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"いくつかの異なる形をしています"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"自動同期"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"ズームアウト"</string>
@@ -289,15 +287,10 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
 &lt;p&gt;&lt;b&gt;データの使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-前述のとおり、このアプリは OSM インフラストラクチャと直接通信します。つまり、探索をダウンロードする &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;オーバーパス API&lt;/a&gt;（これは匿名です）と、変更をアップロードする &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; です。&lt;br/&gt;
+前述のとおり、このアプリは OSM インフラストラクチャと直接通信します。
 ただし、変更をアップロードする前に、アプリは私たちのサーバー上で &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; を使用して、アップロードと変更が禁止されているかどうかを確認します。これは、OSM データを壊滅させる可能性のある重大なバグのあるバージョンのアプリを保護するめの予防措置です。
 &lt;/p&gt;
-&lt;p&gt;
-マップを表示するために、ベクタータイルが匿名の &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen ベクタータイルサービス&lt;/a&gt; から取得されます。サービスは、プリキャッシュおよびパフォーマンス向上のため、どの領域が一般的であるかを理解するために、タイルのリクエストをログ記録します。彼らのプラットフォームは IP アドレスも記録し、そのホスティングはすべて Amazon になっているので、彼らが何をするかにかかっています。
-&lt;/p&gt;
-&lt;p&gt;
-（&lt;i&gt;これは実際にはまだ実装されていませんが、何が来るのかをお知らせします!:&lt;/i&gt;）リーダーボードとプロフィールに表示されるデータは、OpenStreetMap から公開されている情報から集約されます。データはこのアプリからは得らるものではなく、基本的に OSM ユーザーの公開コミット履歴から取得されます。
-&lt;/p&gt;"</string>
+"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"オン"</string>
@@ -1390,8 +1383,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_placeName_title_name">"この場所の名前は何ですか? (%s)"</string>
     <string name="action_open_location">"他のアプリでこの場所を開く"</string>
     <string name="map_application_missing">"他の地図アプリがインストールされていません"</string>
-    <string name="pref_title_overpass_url_select">"Overpass サーバを変更"</string>
-    <string name="pref_title_overpass_url_info">"アプリの再起動が必要です。ロシアなどで検閲を回避できる場合があります。"</string>
     <string name="label_housenumber">"住居番号"</string>
     <string name="quest_busStopShelter_covered">"バス停全体が屋根で覆われている"</string>
     <string name="quest_leave_new_note_photos_are_useful">"写真を追加するとノートがより役に立ちます。"</string>

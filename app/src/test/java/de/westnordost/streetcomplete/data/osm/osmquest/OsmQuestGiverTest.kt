@@ -10,13 +10,9 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
-import de.westnordost.streetcomplete.data.quest.AllCountries
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
+import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 
@@ -49,10 +45,10 @@ class OsmQuestGiverTest {
         val future = FutureTask { countryBoundaries }
         future.run()
 
-        val questTypeProvider: OrderedVisibleQuestTypesProvider = mock()
-        on(questTypeProvider.get()).thenReturn(listOf(questType))
+        val questTypeRegistry: QuestTypeRegistry = mock()
+        on(questTypeRegistry.all).thenReturn(listOf(questType))
 
-        osmQuestGiver = OsmQuestGiver(notePositionsSource, osmQuestController, questTypeProvider, future)
+        osmQuestGiver = OsmQuestGiver(notePositionsSource, osmQuestController, questTypeRegistry, future)
     }
 
     @Test fun `note blocks new quests`() {

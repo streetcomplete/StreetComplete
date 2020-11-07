@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Toon meer…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Het heeft verschillende vormen"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Automatisch synchroniseren"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Uitzoomen"</string>
@@ -289,14 +287,7 @@ Je locatie wordt enkel gebruikt om naar vragen te scannen rondom jou. Geen zorge
 
 &lt;p&gt;&lt;b&gt;Data Gebruik&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Zoals eerder aangehaald zal de app direct met OSM communiceren, meer bepaald de &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; om vragen te downloaden (anoniem) and met de &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; om wijzigingen te uploaden.&lt;br/&gt;
 Voor het uploaden van jouw wijzigingen zal de app een &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst bestand&lt;/a&gt; op mijn server nagaat om te bepalen of hij verbannen is om wijzigingen te uploaden. Dit om te voorkomen dat bepaalde versies van de app met kritische bugs mogelijk de OSM data zouden verknoeien.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt; gedownload, welke anoniem is. Deze dienst zal de gemaakte verzoeken naar tegels loggen, om beter te begrijpen welke omgevingen pupulair zijn, voor pre-caching en performantie verbeteringen. Hun platform zal ook IP adressen loggen, en wordt volledig gehost op Amazon. Ze zijn dus ook afhankelijk van Amazon en hun privacy-notice.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Dit is nog niet geïmplementeerd, ik wil je enkel laten weten waar ik mee bezig ben!:&lt;/i&gt;) De data getoond op het scorebord en profiel wordt geaggregeerd van publieke informatie van OpenStreetMap. De data komt niet van deze app, maar van de publieke bijdragingen van de OSM gebruikers.
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1015,7 +1006,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="action_reset">"Reset"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Duw lang op een vraag en verplaats hem om de prioriteit in te stellen bij het downloaden en tonen op de kaart."</string>
+    <string name="reorder_quest_priority_hint">"Duw lang op een vraag en verplaats hem om de prioriteit in te stellen bij tonen op de kaart."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Ongedaan maken"</string>
@@ -1733,12 +1724,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="map_application_missing">"Geen andere map applicatie geïnstalleerd"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Wijzig overpass server"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Vereist dat de applicatie opnieuw wordt opgestart. Kan de censuur omzeilen, bijvoorbeeld in Rusland."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"huisnummer"</string>
 
     <!-- Fuzzy -->
@@ -2305,10 +2290,6 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_surface_detailed_answer_impossible">"Meerdere soorten bedekkingen"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Weet u zeker dat het onmogelijk is om de bedekking te specificeren? Let op de antwoordoptie \"Verschilt onderweg\" waarmee u de weg kunt splitsen waar de bedekking verandert. Gebruik a.u.b. \"Weet ik niet...\" als er één bedekking is maar die is niet beschikbaar als antwoord."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Geef hier in het kort de aard van de bedekking aan, bijvoorbeeld \"zanderig met geplaveide plekken\". De tekstlengte is hoogstens 255 tekens."</string>
-    <string name="quest_surface_detailed_name_title">"Welke specifieke bedekking heeft de weg %s hier?"</string>
-    <string name="quest_surface_detailed_square_name_title">"Welke specifieke bedekking heeft het plein %s hier?"</string>
-    <string name="quest_surface_detailed_title">"Welke specifieke bedekking heeft dit stuk weg hier?"</string>
-    <string name="quest_surface_detailed_square_title">"Welke specifieke bedekking heeft dit plein?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"Internationaal"</string>
@@ -2343,7 +2324,6 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_busStopBench_name_title">"Heeft deze bushalte %s een bank?"</string>
     <string name="quest_summit_register_title">"Is er een topboek op %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Is er een defibrilator (AED) in dit gebouw?"</string>
-    <string name="dialog_tutorial_download">"Als automatische synchronisatie is uitgeschakeld, worden vragen niet automatisch gedownload. Om dit handmatig te doen, gebruik je de \"%s\" knop in het menu op de locatie die je wilt downloaden"</string>
     <string name="about_title_translate">"Help deze App te vertalen"</string>
     <string name="about_description_translate">"%1$s is vertaald %2$d%%"</string>
     <string name="quest_oneway2_title">"Is hier eenrichtingsverkeer? In welke richting?"</string>
@@ -2384,4 +2364,16 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_steps_ramp_separate_wheelchair">"Is de rolstoelhelling apart aangegeven op de kaart?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"apart"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"niet apart"</string>
+    <string name="pref_title_sync2">"Upload automatisch antwoorden"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Beschrijf de bedekking van de grond"</string>
+    <string name="open_url">"Open URL"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_buildingType_historic">"Monumentaal"</string>
+    <string name="quest_buildingType_historic_description">"Een monumentaal gebouw die niet een woon-, religieuze-  of commerciële functie heeft"</string>
+    <string name="quest_buildingType_abandoned">"Verlaten"</string>
+    <string name="quest_buildingType_abandoned_description">"ongebruikt gebouw waarvan de oorspronkelijke functie of bestemming onbekend is"</string>
+    <string name="quest_buildingType_ruins">"Ruïne"</string>
+    <string name="quest_buildingType_ruins_description">"vervallen, verwoest en niet-identificeerbaar gebouw"</string>
+    <string name="quest_charging_station_capacity_title">"Hoeveel auto's kunnen tegelijk op dit oplaad station worden opgeladen?"</string>
+    <string name="link_disaster_ninja_description">"Kaart met recente natuurrampen, interessant voor humanitaire kaartenmakers. Toont ook veel interessante statistieken om te analyseren hoe goed in kaart gebracht en actueel plaatsen zijn."</string>
 </resources>

@@ -134,8 +134,6 @@
                                     app:justifyContent="space_between"
                                     app:showDividerHorizontal="middle"
                                     app:showDividerVertical="middle"
-                                    android:paddingStart="8dp"
-                                    android:paddingEnd="8dp"
                                     app:dividerDrawableVertical="@drawable/button_bar_divider_with_vertical_padding"
                                     app:dividerDrawableHorizontal="@drawable/button_bar_divider_with_horizontal_padding"
                                     >

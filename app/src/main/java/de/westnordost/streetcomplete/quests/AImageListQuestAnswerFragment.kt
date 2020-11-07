@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.quest_generic_list.*
 abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
 
     override val contentLayoutResId = R.layout.quest_generic_list
+    override val defaultExpanded = false
 
     protected lateinit var imageSelector: ImageSelectAdapter<I>
 

@@ -259,24 +259,15 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"더 보기..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"다양한 모양을 가지고 있습니다"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"자동 동기화"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"축소"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"확대"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt;아, 개인정보에 신경을 쓰는 분이시네요. 좋습니다! 저는 당신에게 좋은 소식만 전달하고 있다고 생각하고 있습니다.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;직접 기여&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-먼저, 이 앱으로 당신은 실제로, 그리고 직접적으로 OpenStreetMap에 기여한다는 것을 이해하세요.&lt;br/&gt;
-당신이 이 앱으로 기여하는 모든 것은 직접 지도에 추가됩니다. &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; or &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;이 앱과 OSM 인프라에 껴 있는 제3자 프로그램은 없습니다."</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"켜기"</string>
@@ -1702,12 +1693,6 @@
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"설치된 다른 지도 앱이 없습니다"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Overpass 서버 변경"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"설정을 적용하려면 앱을 다시 시작해야 합니다. 러시아 등의 국가에서는 검열을 우회할 수도 있습니다."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"건물 번호"</string>

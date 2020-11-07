@@ -54,7 +54,7 @@ class StatisticsDownloader(private val baseUrl: String) {
         val rank = obj.getInt("rank")
         val daysActive = obj.getInt("daysActive")
         val isAnalyzing = obj.getBoolean("isAnalyzing")
-        val lastUpdate = lastActivityDateFormat.parse(obj.getString("lastUpdate"))
-        return Statistics(questTypes, countriesStatistics, rank, daysActive, lastUpdate, isAnalyzing)
+        val lastUpdate = lastActivityDateFormat.parse(obj.getString("lastUpdate"))!!
+        return Statistics(questTypes, countriesStatistics, rank, daysActive, lastUpdate.time, isAnalyzing)
     }
 }

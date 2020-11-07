@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Impostazioni"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Impossibile raggiungere il server per l'autenticazione"</string>
 
     <!-- Fuzzy -->
@@ -256,11 +254,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Mostrane altre..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"ha diverse forme"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sincronizzazione automatica"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Rimpicciolisci"</string>
@@ -285,7 +281,7 @@ Questa app non condivide al tua posizione GPS con nessuno. Essa viene utilizzata
 
 &lt;p&gt;&lt;b&gt; Utilizzo dei dati&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Come accennato, l’applicazione comunica direttamente con l’infrastruttura OSM. Cioè, con &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; per lo scarico delle missioni (che è anonimo) e con le &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; per il caricamento sul server delle modifiche. &lt;br/&gt;
+Come accennato, l’applicazione comunica direttamente con l’infrastruttura OSM. 
 Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;semplice file di testo&lt;/a&gt; nel mio server per controllare se le è stato vietato il caricamento di modifiche. Si tratta di una misura precauzionale che impedisce ad alcune versioni dell’app contenenti bug critici di danneggiare i dati OSM&lt;br/&gt;
 &lt;/p&gt;"</string>
 
@@ -1005,7 +1001,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="action_reset">"Reset"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Premere a lungo e spostare una ricerca per riordinare la sua priorità per il download e visualizzarla sulla mappa."</string>
+    <string name="reorder_quest_priority_hint">"Premere a lungo e spostare una ricerca per riordinare la sua priorità per visualizzarla sulla mappa."</string>
 
     <!-- Ho modificato questa risposta positiva e quella negativa "Cancel" rispettivamente in "Annulla" e "Non annullare" così da essere simili a quelle usate dai traduttori francesi; esse sono le risposte che può dare l’utente alla domanda "Undo the following last answer?" che è stata tradotta in "Annullare quest'ultima riposta?". Vedi la nota in francese alla voce undo_confirm_negative. -->
     <!-- Fuzzy -->
@@ -1721,12 +1717,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="map_application_missing">"Nessun'altra applicazione di mappe installata"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Cambia server Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Richiede il riavvio dell'applicazione. Potrebbe essere utile per evitare la censura, per esempio in Russia."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"numero civico"</string>
 
     <!-- Fuzzy -->
@@ -2308,10 +2298,6 @@ riconoscimento"</string>
     <string name="quest_surface_detailed_answer_impossible">"Superfici multiple..."</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Sei sicuro che è impossibile specificare la superficie? Ricorda che c'è l'opzione \"Cambia lungo la via\" che ti permette di tagliare la via dove la superficie cambia. Usa \"Non so\" se c'è una singola superficie ma nessuna risposta adatta."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Specifica brevemente il tipo di superficie qui, per esempio \"sabbioso con zone in ciottolato\". La lunghezza del testo è limitata a 255 caratteri."</string>
-    <string name="quest_surface_detailed_name_title">"Che superficie ha la strada %s qui?"</string>
-    <string name="quest_surface_detailed_square_name_title">"Che superficie ha la piazza %s qui?"</string>
-    <string name="quest_surface_detailed_title">"Che superficie ha questo tratto di strada?"</string>
-    <string name="quest_surface_detailed_square_title">"Che superficie ha questa piazza qui?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"Internazionale"</string>
@@ -2345,7 +2331,6 @@ riconoscimento"</string>
     <string name="quest_busStopBench_name_title">"La fermata del bus %s ha una panchina?"</string>
     <string name="quest_summit_register_title">"C’è un libro di vetta su %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Questo defibrillatore (DAE) è all’interno di un edificio?"</string>
-    <string name="dialog_tutorial_download">"Con la sincronizzazione automatica disattivata, le missioni non vengono scaricate automaticamente. Per farlo manualmente, usa il pulsante “%s” nel menù, nella posizione dove vuoi scaricarle."</string>
     <string name="about_title_translate">"Aiuta a tradurre questa app"</string>
     <string name="about_description_translate">"%1$s è tradotto %2$d%%"</string>
     <string name="quest_oneway2_title">"È una strada a senso unico? In quale direzione?"</string>
@@ -2384,4 +2369,12 @@ riconoscimento"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"La rampa per la sedia a rotelle è visualizzata sulla mappa come una via alternativa?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"è alternativa"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"non è alternativa"</string>
+    <string name="open_url">"Apri URL"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_buildingType_historic">"Storico"</string>
+    <string name="quest_buildingType_historic_description">"costruzione di valore storico che non assolve ad alcuna funzione civica, religiosa o commerciale"</string>
+    <string name="quest_buildingType_abandoned">"Abbandonato"</string>
+    <string name="quest_buildingType_abandoned_description">"Costruzione inutilizzato la cui funzione o scopo originale è sconosciuto"</string>
+    <string name="quest_buildingType_ruins">"Rovine"</string>
+    <string name="quest_buildingType_ruins_description">"Rovine"</string>
 </resources>

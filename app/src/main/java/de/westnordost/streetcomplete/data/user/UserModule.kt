@@ -35,6 +35,8 @@ object UserModule {
 	@Provides fun defaultOAuthConsumer(): OAuthConsumer =
         DefaultOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET)
 
+    @Provides fun loginStatusSource(userController: UserController): LoginStatusSource = userController
+
 	@Provides @Named("OAuthCallbackScheme")
     fun oAuthCallbackScheme(): String = CALLBACK_SCHEME
 

@@ -27,10 +27,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.util.*
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 import javax.inject.Provider
-import kotlin.collections.ArrayList
 
 /** Does one API call to get all the map data and generates quests from that. Calls getApplicableElements
  *  on all the quest types */
@@ -56,8 +57,8 @@ class OsmApiQuestDownloader @Inject constructor(
         // bbox should be the bbox of the complete download
         mapData.handle(bbox)
 
-        val quests = ArrayList<OsmQuest>()
-        val questElements = HashSet<Element>()
+        val quests = ConcurrentLinkedQueue<OsmQuest>()
+        val questElements = Collections.newSetFromMap(ConcurrentHashMap<Element, Boolean>(5000))
 
         val secondsSpentDownloading = (System.currentTimeMillis() - time) / 1000
         Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${secondsSpentDownloading}s")

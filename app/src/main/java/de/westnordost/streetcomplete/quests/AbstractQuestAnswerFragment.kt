@@ -90,6 +90,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     open val buttonsResId: Int? = null
     open val otherAnswers = listOf<OtherAnswer>()
     open val contentPadding = true
+    open val defaultExpanded = true
 
     interface Listener {
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
@@ -156,6 +157,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         if (content.childCount == 0) {
             content.visibility = View.GONE
         }
+
+        if (defaultExpanded) expand()
     }
 
     private fun assembleOtherAnswers() : List<OtherAnswer> {
@@ -255,7 +258,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             onMapOrientation(initialMapRotation, initialMapTilt)
             startedOnce = true
         }
-        
+
         val answers = assembleOtherAnswers()
         if (answers.size == 1) {
             otherAnswersButton.setText(answers.first().titleResourceId)
@@ -341,7 +344,6 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     }
 
     protected fun setButtonsView(resourceId: Int) {
-        otherAnswersButton.layoutParams = FlexboxLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
         removeButtonsView()
         activity?.layoutInflater?.inflate(resourceId, buttonPanel)
     }

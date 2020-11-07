@@ -66,6 +66,14 @@ object AchievementsModule {
             R.drawable.ic_link_neis_one,
             R.string.link_neis_one_description
         ),
+        Link(
+            "disaster.ninja",
+            "https://disaster.ninja/live/#position=11,46;zoom=3",
+            "disaster.ninja",
+            LinkCategory.INTRO,
+            R.drawable.ic_link_kontur,
+            R.string.link_disaster_ninja_description
+        ),
 
         // TODO not sure where to put these links
         Link(
@@ -397,7 +405,8 @@ object AchievementsModule {
                 3 to links("neis-one"), // who-is-around-me, leaderboards etc fits into "community intro"
                 4 to links("ideditor"),
                 5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
-                6 to links("vespucci", "josm") // together because both are full-featured-editors for each their platform
+                6 to links("disaster.ninja"),
+                7 to links("vespucci", "josm") // together because both are full-featured-editors for each their platform
             )
         ),
 
@@ -443,7 +452,8 @@ object AchievementsModule {
                     "AddMotorcycleParkingCover",
                     "AddFerryAccessMotorVehicle",
                     "AddCarWashType",
-                    "AddChargingStationOperator"
+                    "AddChargingStationOperator",
+                    "AddChargingStationCapacity"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...

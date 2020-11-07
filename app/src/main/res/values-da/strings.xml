@@ -260,12 +260,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Vis mere…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Den har flere forskellige former"</string>
-
-    <!-- "Auto-synk" would mean auto-swallow -->
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Auto-synkroniser"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Zoom out"</string>
@@ -291,14 +288,7 @@ Din lokation er kun brugt til at automatisk skanne efter opgaver tæt på dig. B
 
 &lt;p&gt;&lt;b&gt;Databrug&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Som sagt, denne app kommunikerer direkte med OSM's infrastruktur. Det vil sige &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API'et&lt;/a&gt; til at downloade opgaver (hvilket sker anonymt) og med &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API'et&lt;/a&gt; for at indsende ændringer.&lt;br/&gt;
 Før ændringer sendes tjekker appen dog en &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst fil&lt;/a&gt; på min server om denne version er bandlyst fra at sende ændringer. Dette sker som et sikkerhedstjek for at holde versioner af appen med kritiske fejl fra et skade OSM data.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt;, hvilket sker anonymt. Servicen logger anmodninger for at forstå hvilke områder er populære så de kan lave performance forbedringer. Deres platform logger også IP adresser og alt deres hosting (hjemmeside udbyder osv.) sker hos Amazon så de er muligvis også underlagt regler der.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Dette er ikke implementeret endnu, jeg vil bare informere dig om hvad der er i vente!&lt;/i&gt;) Data der vises på top-yder boards og profiler er indstamlet fra offentligt tilgængelige informationer fra OpenStreetMap. Denne data kommer ikke fra denne app, men fra den offentligt tilgængelige bidragshistorik af OSM brugere.
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1020,7 +1010,7 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="action_reset">"Nulstil"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Hold nede og flyt en opgave for at ændre den prioritet ved download og visning på kortet."</string>
+    <string name="reorder_quest_priority_hint">"Hold nede og flyt en opgave for at ændre den prioritet ved visning på kortet."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Fortryd"</string>
@@ -1733,12 +1723,6 @@ F.eks. 1,3 eller 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Intet andet kortprogram er installeret"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Skift Overpass server"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Kræver genstart af applikationen for at blive anvendt. Kan måske omgå censur, for eksempel i Rusland."</string>
 
     <!-- Fuzzy -->
     <string name="label_housenumber">"husnummer"</string>

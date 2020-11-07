@@ -24,11 +24,11 @@ import javax.inject.Singleton
     private val statisticsDao: QuestStatisticsDao,
     private val countryStatisticsDao: CountryStatisticsDao,
     private val osmConnection: OsmConnection
-): CoroutineScope by CoroutineScope(Dispatchers.Default) {
+): CoroutineScope by CoroutineScope(Dispatchers.Default), LoginStatusSource, UserAvatarUpdateSource {
     private val loginStatusListeners: MutableList<UserLoginStatusListener> = CopyOnWriteArrayList()
     private val userAvatarListeners: MutableList<UserAvatarListener> = CopyOnWriteArrayList()
 
-    val isLoggedIn: Boolean get() = oAuthStore.isAuthorized
+    override val isLoggedIn: Boolean get() = oAuthStore.isAuthorized
 
     fun logIn(consumer: OAuthConsumer) {
         oAuthStore.oAuthConsumer = consumer
@@ -74,16 +74,16 @@ import javax.inject.Singleton
         statisticsUpdater.updateFromBackend(userId)
     }
 
-    fun addLoginStatusListener(listener: UserLoginStatusListener) {
+    override fun addLoginStatusListener(listener: UserLoginStatusListener) {
         loginStatusListeners.add(listener)
     }
-    fun removeLoginStatusListener(listener: UserLoginStatusListener) {
+    override fun removeLoginStatusListener(listener: UserLoginStatusListener) {
         loginStatusListeners.remove(listener)
     }
-    fun addUserAvatarListener(listener: UserAvatarListener) {
+    override fun addUserAvatarListener(listener: UserAvatarListener) {
         userAvatarListeners.add(listener)
     }
-    fun removeUserAvatarListener(listener: UserAvatarListener) {
+    override fun removeUserAvatarListener(listener: UserAvatarListener) {
         userAvatarListeners.remove(listener)
     }
 
@@ -99,4 +99,16 @@ interface UserLoginStatusListener {
 
 interface UserAvatarListener {
     fun onUserAvatarUpdated()
+}
+
+interface LoginStatusSource {
+    val isLoggedIn: Boolean
+
+    fun addLoginStatusListener(listener: UserLoginStatusListener)
+    fun removeLoginStatusListener(listener: UserLoginStatusListener)
+}
+
+interface UserAvatarUpdateSource {
+    fun addUserAvatarListener(listener: UserAvatarListener)
+    fun removeUserAvatarListener(listener: UserAvatarListener)
 }

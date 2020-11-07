@@ -21,6 +21,8 @@ class AddBuildingType : OsmFilterQuestType<String>() {
          and !leisure
          and location != underground
          and abandoned != yes
+         and abandoned != building
+         and abandoned:building != yes
          and ruins != yes and ruined != yes
     """
     override val commitMessage = "Add building types"
@@ -36,6 +38,8 @@ class AddBuildingType : OsmFilterQuestType<String>() {
             val manMade = answer.split("=")[1]
             changes.delete("building")
             changes.add("man_made", manMade)
+        } else if (answer == "historic" || answer == "abandoned" || answer == "ruins") {
+            changes.addOrModify(answer, "yes")
         } else {
             changes.modify("building", answer)
         }

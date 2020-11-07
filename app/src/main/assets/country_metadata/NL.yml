@@ -35,8 +35,8 @@ chargingStationOperators: [Allego, NUON, Fastned, Nuon, EVBOX, Ecotap, Vattenfal
    Lidl, Ionity, Flow, Essent, Enexis, Delta, All Fixed Green Energy, evnetnl, evnet.nl, The New Motion,
    Rotterdam elektrisch, Natuurmonumenten, Last Mile Solutions, Gemeente Utrecht, Evnet, Engie, Eneco,
    EcoTap, ENGIE, AgriSneltank, '''t Weggeler']
-clothesContainerOperators: [ROVA, Sympany, Leger des Heils ReShare, Leger des Heils, Gemeente Amsterdam, Curitas, Twiddus, Noppes,
-   Leger des heils, hetgoed, Waardlanden, RD4, Opnieuw & Co, HVC]
+clothesContainerOperators: [ROVA, Sympany, Leger des Heils ReShare, Leger des Heils, Gemeente Amsterdam, RD4, Curitas, Twiddus, Noppes,
+   Leger des heils, hetgoed, Waardlanden, Opnieuw & Co, HVC]
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 204

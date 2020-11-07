@@ -14,7 +14,9 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.*
 import de.westnordost.streetcomplete.data.upload.UploadController
+import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.location.FineLocationManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,8 +37,9 @@ import javax.inject.Singleton
     private val context: Context,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
+    private val loginStatusSource: LoginStatusSource,
     private val prefs: SharedPreferences,
-    private val userController: UserController
+    private val userController: UserController,
 ) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     private var pos: LatLon? = null
@@ -76,6 +79,14 @@ import javax.inject.Singleton
         }
     }
 
+    private val userLoginStatusListener = object : UserLoginStatusListener {
+        override fun onLoggedIn() {
+            triggerAutoUpload()
+        }
+
+        override fun onLoggedOut() {}
+    }
+
     val isAllowedByPreference: Boolean
         get() {
             val p = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!)
@@ -87,6 +98,7 @@ import javax.inject.Singleton
     init {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
+        loginStatusSource.addLoginStatusListener(userLoginStatusListener)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
@@ -106,6 +118,7 @@ import javax.inject.Singleton
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
+        loginStatusSource.removeLoginStatusListener(userLoginStatusListener)
         coroutineContext.cancel()
     }
 

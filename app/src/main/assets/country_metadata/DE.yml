@@ -12,8 +12,8 @@ atmOperators: [Sparkasse, Postbank, Euronet, Volksbank, Deutsche Bank, ING-DiBa,
       Hanauerland, Kreissparkasse Köln, Kreissparkasse Böblingen, IC Cash Services GmbH, Berliner Volksbank
       eG, Bankhaus Lenz, BW-Bank, Volksbank Krefeld eG, Stadtsparkasse, Sparkasse Bielefeld, ING-Diba,
    Stadt-Sparkasse Solingen, Sparkasse Mainz, Sparkasse Hanau, Ostsächsische Sparkasse Dresden, Nord-Ostsee
-      Sparkasse, Targobank, Sparkasse Bodensee, Sparkasse Bayreuth, Förde Sparkasse, Deutsche Post, Cardpoint
-      GmbH, BW Bank, Volks- und Raiffeisenbank, Taunus Sparkasse, Sparkasse Westholstein, Sparkasse Saarbrücken,
+      Sparkasse, Cardpoint GmbH, Targobank, Sparkasse Bodensee, Sparkasse Bayreuth, Förde Sparkasse, Deutsche
+      Post, BW Bank, Volks- und Raiffeisenbank, Taunus Sparkasse, Sparkasse Westholstein, Sparkasse Saarbrücken,
    Sparkasse Mittelthüringen, Sparkasse LeerWittmund, Mainzer Volksbank, Kasseler Sparkasse, IC Cash,
    Volksbank Kraichgau eG, Sparkasse Witten, Sparkasse Vorpommern, Sparkasse Nürnberg, Sparkasse Gießen,
    Postbank AG, Münchner Bank, Kreissparkasse Verden, Kreissparkasse Tübingen, Ing Diba, Cardpoint, Braunschweigische
@@ -32,15 +32,15 @@ atmOperators: [Sparkasse, Postbank, Euronet, Volksbank, Deutsche Bank, ING-DiBa,
       Duisburg, Santander, Nassauische Sparkasse, Landesbank Baden-Württemberg, Kreissparkasse Gelnhausen,
    Ing-Diba]
 chargingStationOperators: [Stromnetz Hamburg, Stadtwerke München, EnBW, innogy, RWE, Allego, allego, RWE-Effizienz, Innogy, E-WALD
-      GmbH, LEW, EWE, SWU Stadtwerke Ulm/Neu-Ulm GmbH, Tesla, EnBW Energie Baden-Württemberg AG, be emobil,
-   NEW, Kaufland, Lidl, Tank & Rast, e-regio GmbH & Co. KG, Vattenfall, Stadtwerke Augsburg, SWM, Lechwerke
+      GmbH, LEW, EWE, e-regio GmbH & Co. KG, SWU Stadtwerke Ulm/Neu-Ulm GmbH, Tesla, EnBW Energie Baden-Württemberg
+      AG, be emobil, NEW, Kaufland, Lidl, Tank & Rast, Vattenfall, Stadtwerke Augsburg, SWM, Lechwerke
       AG, Ionity, Energie- und Wasserversorgung Bonn/Rhein-Sieg GmbH, Tesla Motors Inc., E.ON, Tesla Motors,
    FairEnergie GmbH, ENSO Energie Sachsen Ost AG, DREWAG - Stadtwerke Dresden GmbH, Aldi Süd, ADAC, innogy
       SE, N-Ergie, Stadtwerke Norderstedt, EWE Vertrieb GmbH, Westfalen Weser Netz, EWV, BMW, E-Werk Mittelbaden,
    Stadtwerke Leipzig, Mainova, Energie Baden-Württemberg AG, innogy eMobility Solutions GmbH, IKEA, Stadtwerke
-      Osnabrück, RheinEnergie, Kreiswerke Main-Kinzig GmbH, Ionity GmbH, Energie- und Wasserversorgung
-      Bruchsal GmbH, Energie und Wasser Potsdam GmbH, wallbe, Stadtwerke Witten, Regensburger Energie-
-      und Wasserversorgung AG & Co KG, Fastned, eins energie in sachsen, Stadtwerke Düsseldorf, NewMotion,
+      Osnabrück, Stadtwerke Düsseldorf, RheinEnergie, Kreiswerke Main-Kinzig GmbH, Ionity GmbH, Energie-
+      und Wasserversorgung Bruchsal GmbH, Energie und Wasser Potsdam GmbH, wallbe, Stadtwerke Witten,
+   Regensburger Energie- und Wasserversorgung AG & Co KG, Fastned, eins energie in sachsen, NewMotion,
    envia M, Stadtwerke Bielefeld, STAWAG, EWR, enviaM, eE4mobile eG, Stadtwerke Tübingen, Stadtwerke Speyer
       GmbH, ladenetz.de, TheNewMotion, SWB, Edeka, Bauhaus, Süwag Energie AG, Stawag, Stadtwerke Marburg,
    Stadtwerke Bochum, Porsche, DREWAG - Stadtwerke Dresden, Bayernwerk AG, eon, e-on Drive, VGS mbH, Süwag,
@@ -58,21 +58,21 @@ clothesContainerOperators: [Deutsches Rotes Kreuz, Loop, Aktion Hoffnung, AWG, G
       Diakonie, DRK, Zweckverband für Abfallwirtschaft Kempten, Technische Betriebe Velbert AöR, Abfallwirtschaftsbetrieb
       München, Texaid, hoelp, Kolping, AWB Köln, AWB, AHE, AWO, GOA, bonnorange AöR, Technische Betriebe
       Remscheid, Darbo Recycling, Step, Malteser Hilfsdienst e.V., Landkreis Prignitz, Remondis, Malteser
-      Hilfsdienst, FWS, CityGreenPoint, Berlin-Textilrecycling, aha Zweckverband Abfallwirtschaft Region
-      Hannover, Stadt Stuttgart, TEXAID, Bayerisches Rotes Kreuz, Aktex Rohstoff-Recycling Nord, Diakoniewerk
-      Essen, Abfall- und Wertstofflogistik Neuss GmbH (AWL), Retextil Recycling International, Isevtex,
-   AWISTA, AHG alpha Handelskontor, AHA, unknown, ZKE, Veolia, Kolpingwerk, HeDi, Gew. Fa. Mettex, DRK
-      Kreisverband Bonn e.V., Brotex, AWM, Däsa Wiederverwertungs GmbH, Altkleiderfirma Nargül, illegal,
-   Textil-Recycling Nord, RS, Kolping Recycling GmbH, Deutsches Rotes Kreuz e.V., TEXAID Deutschland GmbH,
+      Hilfsdienst, FWS, CityGreenPoint, aha Zweckverband Abfallwirtschaft Region Hannover, Stadt Stuttgart,
+   Berlin-Textilrecycling, TEXAID, Bayerisches Rotes Kreuz, Aktex Rohstoff-Recycling Nord, Diakoniewerk
+      Essen, Abfall- und Wertstofflogistik Neuss GmbH (AWL), Retextil Recycling International, Gew. Fa.
+      Mettex, Isevtex, AWISTA, AHG alpha Handelskontor, AHA, unknown, ZKE, Veolia, Kolpingwerk, HeDi,
+   DRK Kreisverband Bonn e.V., Brotex, AWM, Däsa Wiederverwertungs GmbH, illegal, Textil-Recycling Nord,
+   TEXAID Deutschland GmbH, RS, Kolping Recycling GmbH, Deutsches Rotes Kreuz e.V., Altkleiderfirma Nargül,
    Stadt Karlsruhe Amt für Abfallwirtschaft, DRK-Kreisverband Trier-Saarburg e.V., Bera Textilrecycling,
-   Baliz Textilwerke, Akza Textilrecycling, SP Textilverwertung, Neue Arbeit Lahr, Hoppe, HUMANA Kleidersammlung
-      GmbH, Familienschutzwerk, BRK, AWISTA GmbH, AHE;Deutsches Rotes Kreuz;Ruhrtalengel, aha, TEXAID
-      Collection GmbH, TEXAID Collection, Retextil, Maltheser Hilfsdienst, Johanniter, HUMANA, Diakonisches
-      Werk Kassel, Deutsche Lebens-Rettungs-Gesellschaft e.V., DESWOS, Stadtreinigung Leipzig, SOEX, Haytex
+   Baliz Textilwerke, SP Textilverwertung, Neue Arbeit Lahr, Hoppe, HUMANA Kleidersammlung GmbH, Familienschutzwerk,
+   BRK, Akza Textilrecycling, AWISTA GmbH, AHE;Deutsches Rotes Kreuz;Ruhrtalengel, aha, TEXAID Collection
+      GmbH, TEXAID Collection, Retextil, Maltheser Hilfsdienst, Johanniter, HUMANA, Diakonisches Werk
+      Kassel, Deutsche Lebens-Rettungs-Gesellschaft e.V., DESWOS, Stadtreinigung Leipzig, SOEX, Haytex
       Textilrecycling, Ginotex, DRK-Kreisverband Koblenz-Stadt e.V., DRK KV Ammerland, Content KG, Bethel,
-   Baliz, Awista, ZVO, Wittmann, USB, Stadtreiniger Kassel, Sehbehinderten Selbsthilfe Kurpfalz-Odenwald
-      e.V., REMONDIS, OKA Textil, KuB GmbH, Kreisentsorgungs GmbH Vogtland (KEV), Kolpingsfamilie Ostbevern
-      e. V., Faircollect, East-West Textilrecycling Kursun, East-West, Caritas, Arbeiter-Samariter-Bund]
+   Baliz, Awista, Arbeiter-Samariter-Bund, ZVO, Wittmann, USB, Stadtreiniger Kassel, Sehbehinderten Selbsthilfe
+      Kurpfalz-Odenwald e.V., REMONDIS, OKA Textil, KuB GmbH, Kreisentsorgungs GmbH Vogtland (KEV), Kolpingsfamilie
+      Ostbevern e. V., Faircollect, East-West Textilrecycling Kursun, East-West, Caritas]
 isAdvisorySpeedLimitKnown: false
 isLivingStreetKnown: true
 isSlowZoneKnown: true

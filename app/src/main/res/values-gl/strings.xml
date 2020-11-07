@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Amosar máis..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Ten varias formas diferentes"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sincronización automática"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Afastar"</string>
@@ -289,14 +287,8 @@ A túa ubicación non se partilla ou comparte con ninguén, só emprégase para 
 
 &lt;p&gt;&lt;b&gt;Emprego dos datos&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Proseguendo co de antes, a aplicación comunícase de xeito directo ca infraestrutura do OSM. É dicir, ca &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;API do Overpass&lt;/a&gt; para descarregar tarefas (de xeito anónimo) e ca &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API do OSM&lt;/a&gt; para subi-las mudanzas.&lt;br/&gt;
+Proseguendo co de antes, a aplicación comunícase de xeito directo ca infraestrutura do OSM. 
 Porén, antes de subir calquera mudanza á aplicación pescuda se a versión actual aparece nun &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ficheiro de texto plano&lt;/a&gt; do meu servidor. Esta é unha medida preventiva para poder restrinxi-las subidas nas versións da aplicación que teñan erros fortes e poidan racha-los datos no OSM.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Para que poidas olla-las últimas seccións do mapa empregamos o &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;servizo anónimo das teselas do Mapzen&lt;/a&gt;. Este servizo rexistra as solicitudes nas distintas partes do mundo para medir as zonas máis populares e almacenalas na caché, mellorando o seu rendemento. Esta plataforma tamén rexistra os enderezos IP e está aloxada no Amazon, polo que dependen do contrato de servizo dun terceiro.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;O que vén deseguido aínda non está rematado, é só para que saibas o que está a vir:&lt;/i&gt;) Os datos que se amosan na táboa da clasificación e no perfil conséguense da información pública no OpenStreetMap. Estos datos non veñen da aplicación, senón do historial público das mudanzas da propia comunidade dos usuarios e usuarias.
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1014,7 +1006,7 @@ Pero lembra que sempre podes descarregar aplicacións de teclado diferentes dend
     <string name="action_reset">"Restabelecer"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Mantén premido para arrastrar unha tarefa e reordenala na listaxe, priorizando a súa descarrega e a súa visualización no mapa."</string>
+    <string name="reorder_quest_priority_hint">"Mantén premido para arrastrar unha tarefa e reordenala na listaxe, priorizando a súa visualización no mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfacer"</string>
@@ -1729,12 +1721,6 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="map_application_missing">"Ningunha outra aplicación de mapas instalada"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Mudar de servidor do Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Require reiniciar a aplicación para aplicar. Pode pasar por alto a censura, por exemplo en Rusia."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"número de edificio"</string>
 
     <!-- Fuzzy -->
@@ -2315,10 +2301,6 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_surface_detailed_answer_impossible">"Múltiples superficies..."</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Estás seguro de que é imposíbel especificar a superficie? Ten en conta a opción de resposta \"Difire ó longo da vía\" que che permite dividir a vía por onde muda a superficie. Emprega \"Non podo dicilo\" se hai unha soa superficie pero non está dispoñíbel coma resposta."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Especifica de xeito breve a natureza da superficie, por exemplo \"areoso con anacos de lastros\". A lonxitude do texto está limitada a 255 caracteres."</string>
-    <string name="quest_surface_detailed_name_title">"Que superficie específica ten a estrada %s?"</string>
-    <string name="quest_surface_detailed_square_name_title">"Que superficie específica ten a praza %s?"</string>
-    <string name="quest_surface_detailed_title">"Que superficie específica ten este treito de estrada?"</string>
-    <string name="quest_surface_detailed_square_title">"Que superficie específica ten esta praza?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
@@ -2352,7 +2334,6 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_busStopBench_name_title">"A paraxe do bus %s ten asento? "</string>
     <string name="quest_summit_register_title">"Hai un rexisto de conferencias en %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro dun edificio?"</string>
-    <string name="dialog_tutorial_download">"Coa sincronización automática desactivada, as tarefas non se baixarán de xeito automático. Para facer isto de xeito manual, usa o botón \"%s\" do menú no lugar que desexas baixar."</string>
     <string name="about_title_translate">"Axuda a traducir esta app"</string>
     <string name="about_description_translate">"%1$s está traducido %2$d%%"</string>
     <string name="quest_oneway2_title">"Esta é unha rúa dun só sentido? En que dirección?"</string>

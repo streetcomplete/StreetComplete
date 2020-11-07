@@ -2,17 +2,17 @@
 additionalStreetsignLanguages: [cy, gd]
 atmOperators: [RBS, Barclays Bank PLC, HSBC, NatWest, Tesco, Barclays, Santander, Cash Zone, Royal Bank of Scotland,
    Sainsbury's Bank, Lloyds Bank, Natwest, Sainsbury's, Post Office, Halifax, Nationwide, Note Machine,
-   Link, Bank of Ireland, Cashzone, Lloyds, TSB, Yorkshire Bank, Lloyds TSB, Clydesdale Bank, Bank of
+   Link, Bank of Ireland, Cashzone, Lloyds, TSB, Lloyds TSB, Yorkshire Bank, Clydesdale Bank, Bank of
       Scotland, Ulster Bank, Tesco Bank, Danske Bank, Sainsburys, Co-operative Bank, Co-op, NoteMachine,
    Bank Machine, CashZone, The Co-operative Bank, Co-operative, The Co-operative, Clydesdale, HSBC UK,
    Asda, First Trust, Co-Operative Bank, Nationwide Building Society, Nat West, Cooperative Bank, Coop,
-   ASDA, cashzone, Sainsbury, HBOS, Alliance & Leicester, Notemachine, National Westminster Bank Plc,
+   ASDA, cashzone, Sainsbury, Notemachine, HBOS, Alliance & Leicester, National Westminster Bank Plc,
    Morrisons, Marks & Spencer, LINK, tesco, co-op, The Co-operative Food, Tesco Express, Sainsbury's Finance,
-   HSBC Bank plc, Barclays Bank, natwest, link, barclays, The Royal Bank of Scotland, Sainsburys Bank,
-   One Stop, Cooperative, Coop Bank, Co-op Bank, Co-Op, sainsburys, bankmachine, Travelex, The Co-operative
-      Group, The Co-Operative Bank, Royal Mail, Post Office Money, Post Office Ltd, National Westminster
-      Bank, Lloyds Banking Group, Lloyds Bank plc, DC ATM, BankMachine, Bank of Ireland; Post Office,
-   Bank Of Ireland, Abbey, AIB]
+   HSBC Bank plc, Barclays Bank, natwest, link, barclays, Virgin Money, The Royal Bank of Scotland, Sainsburys
+      Bank, One Stop, Cooperative, Coop Bank, Co-op Bank, Co-Op, sainsburys, bankmachine, Travelex, The
+      Co-operative Group, The Co-Operative Bank, Royal Mail, Post Office Money, Post Office Ltd, National
+      Westminster Bank, Lloyds Banking Group, Lloyds Bank plc, DC ATM, BankMachine, Bank of Ireland; Post
+      Office, Bank Of Ireland, Abbey, AIB]
 chargingStationOperators: [Ecotricity, Source London, Pod Point, Tesla Motors Inc., Tesla, ChargePlace Scotland, Ubitricity, Lancaster
       City Council, Birmingham City Council, evolt, InstaVolt, Chargemaster, CYC, Polar, GeniePoint, Charge
       Your Car, Booths, Lancaster University, Brighton and Hove City Council, ecotricity, ecars Northern

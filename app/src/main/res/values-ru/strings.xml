@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Ещё…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Она имеет несколько разных форм"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Автосинхронизация"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Отдалить"</string>
@@ -289,8 +287,7 @@
 
 &lt;p&gt;&lt;b&gt;Использование данных&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Как уже было сказано, приложение использует инфраструктуру OSM напрямую. А именно, &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; для загрузки квестов (анонимно) и &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; для отправки правок.&lt;br/&gt;
-Однако перед отправкой изменений приложение проверяет &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможной порчи данных OSM версиями приложения, в которых обнаружены критические ошибки.&lt;br/&gt;
+Как уже было сказано, приложение использует инфраструктуру OSM напрямую. Однако перед отправкой изменений приложение проверяет &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможной порчи данных OSM версиями приложения, в которых обнаружены критические ошибки.&lt;br/&gt;
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1011,7 +1008,7 @@
     <string name="action_reset">"Сбросить"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Долгое нажатие и перетаскивание квестов меняет их приоритет при загрузке и отображении на карте."</string>
+    <string name="reorder_quest_priority_hint">"Долгое нажатие и перетаскивание квестов меняет их приоритет при отображении на карте."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Отменить"</string>
@@ -1726,12 +1723,6 @@
     <string name="map_application_missing">"Другие картографические приложения не установлены"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Изменить сервер Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Поможет обойти блокировку (цензуру), например, в России. После изменения необходим перезапуск приложения."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"номер дома"</string>
 
     <!-- Fuzzy -->
@@ -2276,7 +2267,6 @@
     <string name="quest_board_type_map">"Это карта"</string>
     <string name="quest_board_type_map_title">"Это только карта и ничего более?"</string>
     <string name="quest_surface_detailed_answer_impossible">"Различные покрытия..."</string>
-    <string name="quest_surface_detailed_title">"Какой конкретно вид покрытия у этого отрезка дороги?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"международное"</string>

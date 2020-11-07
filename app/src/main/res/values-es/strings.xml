@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Mostrar más…"</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Tiene varias formas diferentes"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sincronización automática"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Alejar"</string>
@@ -289,14 +287,7 @@ Tu posición no se comparte con nadie, sólo se utiliza para buscar tareas dispo
 
 &lt;p&gt;&lt;b&gt;Uso de datos&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Continuando con lo de antes, la aplicación se comunica directamente con la infraestructura de OSM. Es decir, con la &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;API de Overpass&lt;/a&gt; para descargar tareas (de forma anónima) y con la &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API de OSM&lt;/a&gt; para subir los cambios.&lt;br/&gt;
-No obstante, antes de subir cualquier cambio la aplicación comprueba si la versión actual aparece en un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;archivo de texto plano&lt;/a&gt; de mi servidor. Esta es una medida preventiva para poder restringir subidas en versiones de la aplicación que tengan errores críticos y puedan corromper los datos en OSM.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Para que puedas ver las últimas secciones del mapa utilizamos el &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;servicio anónimo de teselas de Mapzen&lt;/a&gt;. Este servicio registra las solicitudes en distintas partes del globo para medir las zonas más populares y almacenarlas en caché, mejorando su rendimiento. Esta plataforma también registra las direcciones IP y está alojada en Amazon, por lo que dependen del contrato de servicio de un tercero.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Lo que viene a continuación todavía no está terminado, es sólo para que sepas lo que está al caer:&lt;/i&gt;) Los datos que se muestran en la tabla de clasificación y en el perfil se consiguen de información pública en OpenStreetMap. Estos datos no proceden de la aplicación, sino del historial público de cambios de la propia comunidad de usuarios y usuarias.
+Continuando con lo de antes, la aplicación se comunica directamente con la infraestructura de OSM. No obstante, antes de subir cualquier cambio la aplicación comprueba si la versión actual aparece en un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;archivo de texto plano&lt;/a&gt; de mi servidor. Esta es una medida preventiva para poder restringir subidas en versiones de la aplicación que tengan errores críticos y puedan corromper los datos en OSM.&lt;br/&gt;
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1015,7 +1006,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="action_reset">"Restaurar"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Mantén pulsado para arrastrar una tarea y reordenarla en la lista, priorizando su descarga y destacándola en el mapa."</string>
+    <string name="reorder_quest_priority_hint">"Mantén pulsado para arrastrar una tarea y reordenarla en la lista, priorizando su destacándola en el mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Deshacer"</string>
@@ -1731,12 +1722,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="map_application_missing">"No hay otra aplicación para mapas instalada"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Cambiar servidor Overpass"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Requierereiniciar la aplicación para aplicar. Puede pasar por alto la censura, por ejemplo en Rusia."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"número de casa"</string>
 
     <!-- Fuzzy -->
@@ -2313,10 +2298,6 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_surface_detailed_answer_impossible">"Múltiples superficies..."</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"¿Estás seguro que es imposible especificar la superficie? Ten en cuenta que la respuesta \"difiere a lo largo del camino\" te permite cortar el camino por donde la superficie cambia. Por favor, usa \"No lo puedo decir\" si hay una única superficie pero no está disponible como respuesta."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Por favor, especifica brevemente la naturaleza de la superficie, por ejemplo \"arenoso con trozos de adoquines\". La longitud del texto está limitada a 255 caracteres."</string>
-    <string name="quest_surface_detailed_name_title">"¿Qué superficie específica tiene la carretera %s aquí?"</string>
-    <string name="quest_surface_detailed_square_name_title">"¿Qué superficie específica tiene la plaza %s aquí?"</string>
-    <string name="quest_surface_detailed_title">"¿Qué superficie específica tiene este trozo de carretera?"</string>
-    <string name="quest_surface_detailed_square_title">"¿Qué superficie específica tiene esta plaza aquí?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
@@ -2350,7 +2331,6 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_busStopBench_name_title">"¿La parada de autobús %s tiene banco?"</string>
     <string name="quest_summit_register_title">"¿Hay un comprobante de cumbres en %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"¿Este desfibrilador (AED) está dentro de un edificio?"</string>
-    <string name="dialog_tutorial_download">"Con la sincronización automática desactivada, las misiones no se descargan automáticamente. Para hacer esto manualmente, use el botón \"%s\" del menú en la ubicación en la que desea realizar la descarga."</string>
     <string name="about_title_translate">"Ayuda a traducir esta app"</string>
     <string name="about_description_translate">"%1$s tiene traducido el  %2$d%%"</string>
     <string name="quest_oneway2_title">"¿Es esta una calle de un solo sentido? ¿En qué dirección?"</string>
@@ -2385,4 +2365,19 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="achievement_outdoors_title">"Al aire libre"</string>
     <string name="achievement_outdoors_solved_X">"¡Resolviste %d misiones útiles para personas-al aire libre!"</string>
     <string name="quest_pedestrian_crossing_island">"¿Este paso de peatones tiene una isla?"</string>
+    <string name="quest_generic_answer_noSign">"No hay señal"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"¿Se muestra la rampa para sillas de ruedas como una vía separada en el mapa?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"no separada"</string>
+    <string name="pref_title_sync2">"Subir respuestas automáticamente"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Describe la superficie"</string>
+    <string name="open_url">"Abrir URL"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_buildingType_historic">"Histórico"</string>
+    <string name="quest_buildingType_historic_description">"edificio de valor histórico que no cumple funciones cívicas, religiosas o comerciales"</string>
+    <string name="quest_buildingType_abandoned">"Abandonado"</string>
+    <string name="quest_buildingType_abandoned_description">"edificio en desuso cuya función o propósito original se desconoce"</string>
+    <string name="quest_buildingType_ruins">"Ruinas"</string>
+    <string name="quest_buildingType_ruins_description">"edificio abandonado, en ruinas e inidentificable"</string>
+    <string name="quest_charging_station_capacity_title">"¿Cuántos coches se pueden cargar en esta estación de carga al mismo tiempo?"</string>
 </resources>

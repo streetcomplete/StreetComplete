@@ -90,15 +90,15 @@ DE:
   - Deutsches Rotes Kreuz # 535
   - Loop # 374
   - Aktion Hoffnung # 137
-  - AWG # 117
+  - AWG # 116
   - GEB # 114
   - ALBA Braunschweig GmbH # 106
-  - Humana # 104
+  - Humana # 105
   - Malteser # 98
   - Stadtreinigung Hamburg # 97
   - Stadt Karlsruhe # 70
   - AHE;Deutsches Rotes Kreuz # 64
-  - Abfallwirtschaftsgesellschaft Wuppertal # 54
+  - Abfallwirtschaftsgesellschaft Wuppertal # 55
   - Vorwerker Diakonie # 51
   - DRK # 47
   - Zweckverband für Abfallwirtschaft Kempten # 46
@@ -122,15 +122,16 @@ DE:
   - Malteser Hilfsdienst # 20
   - FWS # 20
   - CityGreenPoint # 20
-  - Berlin-Textilrecycling # 20
   - aha Zweckverband Abfallwirtschaft Region Hannover # 19
   - Stadt Stuttgart # 19
+  - Berlin-Textilrecycling # 19
   - TEXAID # 18
   - Bayerisches Rotes Kreuz # 17
   - Aktex Rohstoff-Recycling Nord # 17
   - Diakoniewerk Essen # 16
-  - Abfall- und Wertstofflogistik Neuss GmbH (AWL) # 15
+  - Abfall- und Wertstofflogistik Neuss GmbH (AWL) # 16
   - Retextil Recycling International # 14
+  - Gew. Fa. Mettex # 14
   - Isevtex # 13
   - AWISTA # 13
   - AHG alpha Handelskontor # 13
@@ -140,29 +141,28 @@ DE:
   - Veolia # 12
   - Kolpingwerk # 12
   - HeDi # 12
-  - Gew. Fa. Mettex # 12
   - DRK Kreisverband Bonn e.V. # 12
   - Brotex # 12
   - AWM # 12
   - Däsa Wiederverwertungs GmbH # 11
-  - Altkleiderfirma Nargül # 11
   - illegal # 10
   - Textil-Recycling Nord # 10
+  - TEXAID Deutschland GmbH # 10
   - RS # 10
   - Kolping Recycling GmbH # 10
   - Deutsches Rotes Kreuz e.V. # 10
-  - TEXAID Deutschland GmbH # 9
+  - Altkleiderfirma Nargül # 10
   - Stadt Karlsruhe Amt für Abfallwirtschaft # 9
   - DRK-Kreisverband Trier-Saarburg e.V. # 9
   - Bera Textilrecycling # 9
   - Baliz Textilwerke # 9
-  - Akza Textilrecycling # 9
   - SP Textilverwertung # 8
   - Neue Arbeit Lahr # 8
   - Hoppe # 8
   - HUMANA Kleidersammlung GmbH # 8
   - Familienschutzwerk # 8
   - BRK # 8
+  - Akza Textilrecycling # 8
   - AWISTA GmbH # 8
   - AHE;Deutsches Rotes Kreuz;Ruhrtalengel # 8
   - aha # 7
@@ -185,6 +185,7 @@ DE:
   - Bethel # 6
   - Baliz # 6
   - Awista # 6
+  - Arbeiter-Samariter-Bund # 6
   - ZVO # 5
   - Wittmann # 5
   - USB # 5
@@ -199,7 +200,6 @@ DE:
   - East-West Textilrecycling Kursun # 5
   - East-West # 5
   - Caritas # 5
-  - Arbeiter-Samariter-Bund # 5
 EE:
   - Tallinna Jäätmekeskus # 2
 ES:
@@ -227,7 +227,7 @@ FI:
   - Suomen Pakkauskierrätys RINKI Oy # 2
   - Auringonnousu # 2
 FX:
-  - Le Relais # 650
+  - Le Relais # 649
   - Toulouse Métropole # 231
   - AMOS # 33
   - Actifrip # 25
@@ -329,17 +329,17 @@ LT:
   - UAB „VAATC“ # 3
 NL:
   - ROVA # 17
-  - Sympany # 13
+  - Sympany # 14
   - Leger des Heils ReShare # 9
   - Leger des Heils # 8
   - Gemeente Amsterdam # 6
+  - RD4 # 4
   - Curitas # 4
   - Twiddus # 3
   - Noppes # 3
   - Leger des heils # 3
   - hetgoed # 2
   - Waardlanden # 2
-  - RD4 # 2
   - Opnieuw & Co # 2
   - HVC # 2
 NO:

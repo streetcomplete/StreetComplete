@@ -369,8 +369,8 @@ CZ:
 DE:
   - Stromnetz Hamburg # 503
   - Stadtwerke München # 377
-  - EnBW # 347
-  - innogy # 194
+  - EnBW # 348
+  - innogy # 195
   - RWE # 156
   - Allego # 110
   - allego # 85
@@ -379,6 +379,7 @@ DE:
   - E-WALD GmbH # 72
   - LEW # 57
   - EWE # 56
+  - e-regio GmbH & Co. KG # 55
   - SWU Stadtwerke Ulm/Neu-Ulm GmbH # 50
   - Tesla # 46
   - EnBW Energie Baden-Württemberg AG # 46
@@ -387,7 +388,6 @@ DE:
   - Kaufland # 45
   - Lidl # 44
   - Tank & Rast # 40
-  - e-regio GmbH & Co. KG # 37
   - Vattenfall # 32
   - Stadtwerke Augsburg # 32
   - SWM # 32
@@ -416,6 +416,7 @@ DE:
   - innogy eMobility Solutions GmbH # 21
   - IKEA # 21
   - Stadtwerke Osnabrück # 20
+  - Stadtwerke Düsseldorf # 20
   - RheinEnergie # 20
   - Kreiswerke Main-Kinzig GmbH # 20
   - Ionity GmbH # 20
@@ -426,7 +427,6 @@ DE:
   - Regensburger Energie- und Wasserversorgung AG & Co KG # 19
   - Fastned # 19
   - eins energie in sachsen # 18
-  - Stadtwerke Düsseldorf # 18
   - NewMotion # 18
   - envia M # 17
   - Stadtwerke Bielefeld # 17
@@ -596,7 +596,7 @@ FI:
 FX:
   - Bouygues Énergies et Services # 843
   - Izivia # 591
-  - Freshmile # 401
+  - Freshmile # 403
   - Clem # 124
   - Sodetrel Mobilité # 115
   - Mouv Élec Var # 111
@@ -613,7 +613,7 @@ FX:
   - SIPLEC # 61
   - SYME05 # 56
   - Ionity # 55
-  - Séolis # 51
+  - Séolis # 52
   - Morbihan énergies # 44
   - SEY 78 # 43
   - Renault # 40
@@ -666,7 +666,7 @@ FX:
   - CAPP # 5
 GB:
   - Ecotricity # 69
-  - Source London # 48
+  - Source London # 49
   - Pod Point # 34
   - Tesla Motors Inc. # 27
   - Tesla # 25
@@ -846,12 +846,12 @@ IT:
   - A22 # 8
   - Tesla # 7
   - Etraction # 7
+  - enel # 6
   - SEMM # 6
   - ENEL drive # 6
   - Enel Drive # 5
   - Comune di Firenze # 5
   - A2A # 5
-  - enel # 4
   - Regione Umbria # 4
   - Lidl # 4
   - Iren # 4
@@ -902,8 +902,8 @@ KH:
 LK:
   - Spark EV # 2
 LT:
+  - Ignitis # 6
   - Spark # 5
-  - Ignitis # 5
   - Ignitis grupė # 4
   - UAB „Elinta“ # 2
   - LAKD # 2
@@ -1144,21 +1144,20 @@ PT:
   - Galp Power # 15
   - Galp Geste # 15
   - Mobi-e # 14
+  - EV Power # 12
   - Mobie # 11
-  - EV Power # 11
-  - Powerdot # 9
+  - Powerdot # 10
   - Mobilectric # 8
   - Mobiletric # 7
   - Tesla Motors Inc. # 4
   - Repsol # 4
+  - Propel-Cepsa # 4
   - Loulé Concelho Global # 4
   - EDP MOP # 4
   - CME # 4
   - Ucharge # 3
   - Mobi # 3
   - Kilometer Low Cost # 3
-  - Propel-Cepsa # 2
-  - Propel # 2
   - Mota Engil II # 2
   - Mobi.e # 2
   - Mobi-E # 2
@@ -1244,7 +1243,7 @@ SI:
   - EM # 2
 SK:
   - ZSE # 42
-  - GreenWay # 41
+  - GreenWay # 40
   - ejoin # 36
   - ZSE Drive # 8
   - ebajk connect # 6
@@ -1390,8 +1389,8 @@ US-ME:
   - Tesla Motors # 5
 US-MI:
   - Michigan State University # 12
-  - Tesla Motors # 8
   - Consumers Energy # 6
+  - Tesla Motors # 5
   - NRG Energy # 3
   - Lansing Board of Water and Light # 3
   - Chargepoint # 3

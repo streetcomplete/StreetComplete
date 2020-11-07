@@ -259,11 +259,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Ver más..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Tien distintes formes"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Sincronización automática"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Alloñar"</string>
@@ -289,14 +287,7 @@ La to posición nun se comparte con naide, namái s'emplega pa buscar xeres disp
 
 &lt;p&gt;&lt;b&gt;Usu de datos&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Coles mesmes, l'aplicación comunícase direutamente cola infraestructura d'OSM. Ye dicir, cola &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;API d'Overpass&lt;/a&gt; pa descargar xeres (de forma anónima) y cola &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API d'OSM&lt;/a&gt; pa xubir los cambeos.&lt;br/&gt;
 Sicasí, primero de facer cualesquier cambéu l'aplicación comprueba si la versión actual apaez nun &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;archivu de testu planu&lt;/a&gt; del mio sirvidor. Esta ye una midida preventiva pa poder torgar xubíes en versiones de l'aplicación que tengan errores críticos y puedan corromper los datos n'OSM.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Pa que puedas ver les últimes seiciones del mapa emplegamos el &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;serviciu anónimu de teseles de Mapzen&lt;/a&gt;. Esti serviciu rexistra les solicitúes en distintes partes del globu pa midir les zones más populares y almacenales nel caché, ameyorando'l so rindimientu. Esta plataforma tamién rexistra les direiciones IP y ta agospiada n'Amazon, polo que dependen del contratu de serviciu d'un terceru.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Lo que vien darréu tovía nun ta rematao, ye namái pa que sepas lo que ta por venir:&lt;/i&gt;) Los datos que s'amuesen na tabla de clasificación y nel perfil consíguense d'información pública n'OpenStreetMap. Estos datos nun proceden de l'aplicación, sinón de la historia pública de cambeos de la propia comunidá d'usuarios y usuaries.
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1014,7 +1005,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="action_reset">"Reaniciar"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Calca de siguío p'arrastrar una xera y reordenala na llista, priorizando la so descarga y destacándola nel mapa."</string>
+    <string name="reorder_quest_priority_hint">"Calca de siguío p'arrastrar una xera y reordenala na llista, priorizando la so destacándola nel mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfacer"</string>
