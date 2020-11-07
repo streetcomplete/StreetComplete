@@ -66,8 +66,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
     val waysMiddleNodeIds = ways.flatMap { it.nodeIds.subList(1, it.nodeIds.size - 1) }
     crossingEndNodesConnectionCountByIds.keys.removeAll(waysMiddleNodeIds)
 
-    // count connection of the remaining crossing end node ids with end nodes of ways with
-    // footway=sidewalk
+    // count connections of the remaining crossing end node ids with end nodes of sidewalks
     val sidewalkEndNodeIds = footways
         .filter { it.tags?.get("footway") == "sidewalk" }
         .flatMap { it.nodeIds.firstAndLast() }
