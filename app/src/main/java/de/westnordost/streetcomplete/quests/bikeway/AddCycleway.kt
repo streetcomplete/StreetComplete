@@ -309,7 +309,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
         // streets that do not have cycleway tagging yet
         private val untaggedRoadsFilter by lazy { """
             ways with
-              highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+              highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
               and !cycleway
               and !cycleway:left
               and !cycleway:right
