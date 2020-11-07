@@ -31,6 +31,14 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
         .flatMap { it.nodeIds.firstAndLast() }
         .mapNotNull { getNode(it) }
 
+    val allNodesOnNotFootways = ways
+        .filter { footwaysFilter.matches(it) == false }
+        .flatMap { it.nodeIds }
+        .mapNotNull { getNode(it) }
+
+    val footwaysMiddleNodes = footways
+        .flatMap { it.nodeIds.drop(1).dropLast(1) }
+        .mapNotNull { getNode(it) }
 
     val crossingEndNodesConnectionCountByIds = mutableMapOf<Long, Int>()
     for (nd in crossingEndNodes) {
@@ -54,6 +62,18 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     // skips unusual geometries where not fully tagged footway also terminates on node,
     // see tests in app/src/test/java/de/westnordost/streetcomplete/quests/kerb_height
     for (nd in unknownEndNodes) {
+        val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
+        if (prevCount > 0) crossingEndNodesConnectionCountByIds[nd.id] = -1
+    }
+
+    // skip nodes that are belonging to other ways (for example cycleways)
+    for (nd in allNodesOnNotFootways) {
+        val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
+        if (prevCount > 0) crossingEndNodesConnectionCountByIds[nd.id] = -1
+    }
+
+    // skip anything in the middle of footway
+    for (nd in footwaysMiddleNodes) {
         val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
         if (prevCount > 0) crossingEndNodesConnectionCountByIds[nd.id] = -1
     }
