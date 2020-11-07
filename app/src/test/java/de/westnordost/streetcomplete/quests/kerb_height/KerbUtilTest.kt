@@ -171,11 +171,12 @@ class KerbUtilTest {
                 "footway" to "sidewalk"
             )),
             OsmWay(3L, 1, listOf(1,3), mapOf(
-                "highway" to "construction",
+                "construction" to "footway",
             )),
         ))
         assertEquals(0, mapData.findAllKerbNodes().toList().size)
     }
+
     @Test fun `nodes are not returned twice`() {
         val mapData = TestMapDataWithGeometry(listOf(
             OsmNode(1L, 1, 0.0,0.0, mapOf(

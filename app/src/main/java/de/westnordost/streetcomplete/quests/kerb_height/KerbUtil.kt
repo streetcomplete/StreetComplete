@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.kerb_height
 
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.data.Node
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.ktx.firstAndLast
 
@@ -13,73 +14,13 @@ private val footwaysFilter by lazy {"""
       and access !~ private|no and foot !~ no
 """.toElementFilterExpression() }
 
+private val waysFilter by lazy {"""
+    ways with highway ~ footway|path|cycleway or construction ~ footway|path|cycleway
+""".toElementFilterExpression() }
+
 fun MapData.findAllKerbNodes(): Iterable<Node> {
-    val footways = ways.filter { footwaysFilter.matches(it) }
-
-    val crossingEndNodes = footways
-        .filter { it.tags?.get("footway") == "crossing" }
-        .flatMap { it.nodeIds.firstAndLast() }
-        .mapNotNull { getNode(it) }
-
-    val sidewalkEndNodes = footways
-        .filter { it.tags?.get("footway") == "sidewalk" }
-        .flatMap { it.nodeIds.firstAndLast() }
-        .mapNotNull { getNode(it) }
-
-    val unknownEndNodes = footways
-        .filter { it.tags?.get("footway") != "sidewalk" && it.tags?.get("footway") != "crossing" }
-        .flatMap { it.nodeIds.firstAndLast() }
-        .mapNotNull { getNode(it) }
-
-    val allNodesOnNotFootways = ways
-        .filter { footwaysFilter.matches(it) == false }
-        .flatMap { it.nodeIds }
-        .mapNotNull { getNode(it) }
-
-    val footwaysMiddleNodes = footways
-        .flatMap { it.nodeIds.drop(1).dropLast(1) }
-        .mapNotNull { getNode(it) }
-
-    val crossingEndNodesConnectionCountByIds = mutableMapOf<Long, Int>()
-    for (nd in crossingEndNodes) {
-        crossingEndNodesConnectionCountByIds[nd.id] = 1
-    }
-    // now all nodes with at least one footway=crossing terminating
-    // on the node will have value 1 in crossingEndNodesConnectionCountByIds
-
-    for (nd in sidewalkEndNodes) {
-        val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
-        if (prevCount > 0) crossingEndNodesConnectionCountByIds[nd.id] = prevCount + 1
-    }
-    // now all nodes with exactly one footway=sidewalk with an end on the node
-    // that had at least one footway=crossing with an end on the node
-    // will have value 2 in crossingEndNodesConnectionCountByIds
-
-    // nodes with at least one footway=sidewalk ending at the given node
-    // and more than one footway=sidewalk ending on the node
-    // have value 3 or greater and will be dropped in a final check
-
-    // skips unusual geometries where not fully tagged footway also terminates on the node,
-    // see tests in app/src/test/java/de/westnordost/streetcomplete/quests/kerb_height
-    for (nd in unknownEndNodes) {
-        val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
-        if (prevCount > 0) crossingEndNodesConnectionCountByIds[nd.id] = -1
-    }
-
-    // skip nodes that are belonging to other ways (for example cycleways)
-    for (nd in allNodesOnNotFootways) {
-        val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
-        if (prevCount > 0) crossingEndNodesConnectionCountByIds[nd.id] = -1
-    }
-
-    // skip anything in the middle of footway
-    for (nd in footwaysMiddleNodes) {
-        val prevCount = crossingEndNodesConnectionCountByIds[nd.id] ?: 0
-        if (prevCount > 0) crossingEndNodesConnectionCountByIds[nd.id] = -1
-    }
-
     val footwayNodes = mutableSetOf<Node>()
-    footways
+    ways.filter { footwaysFilter.matches(it) }
         .flatMap { it.nodeIds }
         .mapNotNullTo(footwayNodes) { getNode(it) }
 
@@ -87,15 +28,56 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     ways.filter { it.tags?.get("barrier") == "kerb" }
         .flatMapTo(kerbBarrierNodeIds) { it.nodeIds }
 
+    val anyWays = ways.filter { waysFilter.matches(it) }
+    val crossingEndNodeIds = findCrossingKerbEndNodeIds(anyWays)
+
     // Kerbs can be defined in three ways (see https://github.com/westnordost/StreetComplete/issues/1305#issuecomment-688333976):
     return footwayNodes.filter {
         // 1. either as a node tagged with barrier = kerb on a footway
         it.tags?.get("barrier") == "kerb" ||
         // 2. or as the shared node at which a way tagged with barrier = kerb crosses a footway
-        kerbBarrierNodeIds.contains(it.id) ||
+        it.id in kerbBarrierNodeIds ||
         // 3. or implicitly as the shared node between a footway tagged with footway = crossing and
         //    another tagged with footway = sidewalk that is the continuation of the way and is not
         //    and intersection (thus, has exactly two connections: to the sidewalk and to the crossing)
-        crossingEndNodesConnectionCountByIds[it.id] == 2
+        it.id in crossingEndNodeIds
     }
+}
+
+/** Find all node ids of end nodes of crossings that are (very probably) kerbs within the given
+ *  collection of [ways] */
+private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
+    val footways = ways.filter { footwaysFilter.matches(it) }
+
+    // all nodes that are an endpoint of a way with footway=crossing will have value 1 in this map
+    val crossingEndNodesConnectionCountByIds = mutableMapOf<Long, Int>()
+    footways
+        .filter { it.tags?.get("footway") == "crossing" }
+        .flatMap { it.nodeIds.firstAndLast() }
+        .associateWithTo(crossingEndNodesConnectionCountByIds) { 1 }
+
+    // skip nodes that share an end node with a way where it is not clear if it is a sidewalk, crossing or something else
+    val unknownEndNodeIds = ways
+        .filter { it.tags?.get("footway") != "sidewalk" && it.tags?.get("footway") != "crossing" }
+        .flatMap { it.nodeIds.firstAndLast() }
+    crossingEndNodesConnectionCountByIds.keys.removeAll(unknownEndNodeIds)
+
+    // skip nodes that share an end node with any node of a way that is not an end node
+    val waysMiddleNodeIds = ways.flatMap { it.nodeIds.subList(1, it.nodeIds.size - 1) }
+    crossingEndNodesConnectionCountByIds.keys.removeAll(waysMiddleNodeIds)
+
+    // count connection of the remaining crossing end node ids with end nodes of ways with
+    // footway=sidewalk
+    val sidewalkEndNodeIds = footways
+        .filter { it.tags?.get("footway") == "sidewalk" }
+        .flatMap { it.nodeIds.firstAndLast() }
+
+    for (id in sidewalkEndNodeIds) {
+        val prevCount = crossingEndNodesConnectionCountByIds[id] ?: 0
+        if (prevCount > 0) crossingEndNodesConnectionCountByIds[id] = prevCount + 1
+    }
+
+    // if there are exactly two connections (one to crossing way, one to sidewalk way), this'll be
+    // a node where there is a kerb
+    return crossingEndNodesConnectionCountByIds.filter { it.value == 2 }.keys
 }
