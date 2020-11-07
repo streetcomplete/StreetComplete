@@ -580,7 +580,9 @@ object AchievementsModule {
                     "AddTrafficSignalsSound",
                     "AddTrafficSignalsVibration",
                     "AddTactilePavingBusStop",
-                    "AddCrossingIsland"
+                    "AddCrossingIsland",
+                    "AddKerbHeight",
+                    "AddTactilePavingKerb"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -606,7 +608,8 @@ object AchievementsModule {
                     "AddFootwayPartSurface",
                     "AddPathSurface",
                     "AddStepsRamp",
-                    "AddHandrail"
+                    "AddHandrail",
+                    "AddKerbHeight"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -631,7 +634,8 @@ object AchievementsModule {
                     "AddBikeParkingType",
                     "AddCyclewaySegregation",
                     "AddPathSurface",
-                    "AddStepsRamp"
+                    "AddStepsRamp",
+                    "AddKerbHeight"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
