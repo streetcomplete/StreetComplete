@@ -8,13 +8,13 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 class AddVegan : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways with 
         (
-          amenity ~ restaurant|cafe|fast_food and diet:vegetarian ~ yes|only
+          amenity ~ restaurant|cafe|fast_food and diet:vegetarian ~ yes|only 
           or amenity = ice_cream
         )
         and name and (
-          !diet:vegan
+          !diet:vegan 
           or diet:vegan != only and diet:vegan older today -2 years
         )
     """
