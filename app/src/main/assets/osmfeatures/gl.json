@@ -534,7 +534,7 @@
     },
     "amenity/pharmacy": {
       "name": "Farmacia",
-      "terms": "farmacia,botica, laboratorio, apoteca, herbolario, medicamentos, remedios"
+      "terms": "farmacia, botica, laboratorio, menciña, menciñas, medicación,  medicamentos, fármaco, medicina, apoteca, saúde"
     },
     "amenity/photo_booth": {
       "name": "Cabina de fotos",
@@ -985,8 +985,23 @@
     "attraction/dark_ride": {
       "name": "Camiño escuro"
     },
+    "attraction/drop_tower": {
+      "name": "Torre de caída libre"
+    },
+    "attraction/kiddie_ride": {
+      "name": "Vehículo de xogo para cativos",
+      "terms": "xogo, xoguete, cabaliño, cabalo, infantil, meniños, crianzas, entretemento, atracción, feira"
+    },
+    "attraction/log_flume": {
+      "name": "Tobogán acuático",
+      "terms": "escorregadoiro, esvaradoiro, parque temático, acuático, diversión, entretemento"
+    },
     "attraction/maze": {
       "name": "Labirinto"
+    },
+    "attraction/pirate_ship": {
+      "name": "Barco pirata",
+      "terms": "parque temático, diversión, entretemento"
     },
     "attraction/river_rafting": {
       "name": "Rápidos",
@@ -3530,8 +3545,15 @@
     "shop/boutique": {
       "name": "Boutique"
     },
+    "shop/brewing_supplies": {
+      "name": "Tenda de cervexaría artesanal"
+    },
     "shop/butcher": {
       "name": "Carnizaría"
+    },
+    "shop/camera": {
+      "name": "Tenda de fotografía",
+      "terms": "fotografía, cámara, vídeo"
     },
     "shop/candles": {
       "name": "Tenda de velas"
@@ -3552,10 +3574,12 @@
       "name": "Tenda solidaria"
     },
     "shop/cheese": {
-      "name": "Tenda de queixos"
+      "name": "Queixaría",
+      "terms": "Tenda de queixos, queixería, queixo"
     },
     "shop/chemist": {
-      "name": "Drogaría"
+      "name": "Drogaría",
+      "terms": "botica"
     },
     "shop/chocolate": {
       "name": "Chocolataría",
@@ -3563,6 +3587,16 @@
     },
     "shop/clothes": {
       "name": "Tenda de roupa"
+    },
+    "shop/clothes/second_hand": {
+      "name": "Tenda de roupa de segunda man"
+    },
+    "shop/clothes/underwear": {
+      "name": "Tenda de roupa interior"
+    },
+    "shop/clothes/wedding": {
+      "name": "Tenda de roupa de casamento",
+      "terms": "voda, casoiro, casorio, esposorio, himeneo"
     },
     "shop/coffee": {
       "name": "Tenda de café"
@@ -3582,6 +3616,12 @@
     },
     "shop/cosmetics": {
       "name": "Tenda de cosméticos"
+    },
+    "shop/country_store": {
+      "name": "Tenda do agro ou campo"
+    },
+    "shop/craft": {
+      "name": "Tenda de artes e oficios"
     },
     "shop/curtain": {
       "name": "Tenda de cortinas"
@@ -3606,11 +3646,17 @@
     "shop/e-cigarette": {
       "name": "Tenda de cigarros electrónicos"
     },
+    "shop/electrical": {
+      "name": "Tenda de material de electrónica"
+    },
     "shop/electronics": {
       "name": "Tenda de electrodomésticos"
     },
     "shop/erotic": {
       "name": "Tenda erótica"
+    },
+    "shop/erotic/lgbtq": {
+      "name": "Tenda erótica LGBTQ+"
     },
     "shop/fabric": {
       "name": "Tenda de teas"
@@ -3621,6 +3667,13 @@
     "shop/fashion": {
       "name": "Tenda de moda"
     },
+    "shop/fashion_accessories": {
+      "name": "Tenda de accesorios de moda"
+    },
+    "shop/fireplace": {
+      "name": "Tenda de chemineas",
+      "terms": "chaminea, lareira, lume, fumeira"
+    },
     "shop/fishing": {
       "name": "Tenda de pesca"
     },
@@ -3630,6 +3683,9 @@
     "shop/frame": {
       "name": "Tenda de enmarcado",
       "terms": "enmarcado, marco, enmarcar, cadro"
+    },
+    "shop/frozen_food": {
+      "name": "Tenda de conxelados"
     },
     "shop/fuel": {
       "name": "Tenda de combustíbel",
@@ -3642,11 +3698,17 @@
     "shop/furniture": {
       "name": "Moblaría"
     },
+    "shop/games": {
+      "name": "Tenda de xogos de mesa"
+    },
     "shop/garden_centre": {
       "name": "Centro de xardinaría"
     },
     "shop/gas": {
       "name": "Tenda de bombonas de gas"
+    },
+    "shop/general": {
+      "name": "Tenda xeral"
     },
     "shop/gift": {
       "name": "Tenda de agasallos"
@@ -3658,6 +3720,9 @@
     "shop/hairdresser": {
       "name": "Perrucaría"
     },
+    "shop/hairdresser_supply": {
+      "name": "Tenda de accesorios de salón de peiteado "
+    },
     "shop/hardware": {
       "name": "Ferraxaría"
     },
@@ -3665,7 +3730,8 @@
       "name": "Tenda de audífonos"
     },
     "shop/herbalist": {
-      "name": "Herboristaría"
+      "name": "Herboristaría",
+      "terms": "herboristería, herbas, menciñas, remedio, fármaco, parafarmacia"
     },
     "shop/hifi": {
       "name": "Tenda de equipamento de son"
@@ -3717,6 +3783,9 @@
     },
     "shop/medical_supply": {
       "name": "Tenda de subministracións médicas"
+    },
+    "shop/military_surplus": {
+      "name": "Tenda de accesorios militares"
     },
     "shop/mobile_phone": {
       "name": "Tenda de telefonía móbil"
@@ -3770,8 +3839,18 @@
     "shop/pet": {
       "name": "Tenda de mascotas"
     },
+    "shop/pet_grooming": {
+      "name": "Tenda de coidado de animais"
+    },
     "shop/photo": {
       "name": "Tenda de fotografía"
+    },
+    "shop/pottery": {
+      "name": "Tenda de cerámica",
+      "terms": "olaría, olería"
+    },
+    "shop/printer_ink": {
+      "name": "Tenda de tinta de impresora"
     },
     "shop/pyrotechnics": {
       "name": "Tenda de fogos artificiais",
@@ -3834,6 +3913,9 @@
     },
     "shop/tea": {
       "name": "Tenda de té"
+    },
+    "shop/telecommunication": {
+      "name": "Tenda de subministracións de telecomunicación"
     },
     "shop/ticket": {
       "name": "Venda de entradas"

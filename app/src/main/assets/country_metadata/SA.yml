@@ -5,8 +5,8 @@ atmOperators: [صراف الراجحي, الراجحي, SABB, Bank Al-Bilad, Al 
    سامبا, البنك العربي, البنك الاهلي, الإنماء, الأهلي, Samba, Alahli NCB, صرافة بنك الرياض, صراف ساب,
    صراف بنك الرياض, صراف بنك الراجحي, صراف الاهلي, بنك الجزيرة, بنك البلاد, بنك الانماء, العربي, البنك
       السعودي للاستثمار, البنك السعودي الفرنسي, البنك الاول, الاهلي, الانماء, camera, Saudi Hollandi Bank,
-   Riyadh Bank, Bank Aljazira, Alrajhi Bank, Alinma Bank, Alinma ATM, Albilad, Alarabi Bank, Al-Rajhi
-      Bank, Al Rajhi ATM]
+   Riyadh Bank, Riyad Bank, Bank Aljazira, Alrajhi Bank, Alinma Bank, Alinma ATM, Albilad, Alarabi Bank,
+   Al-Rajhi Bank, Al Rajhi ATM]
 firstDayOfWorkweek: Su
 mobileCountryCode: 420
 officialLanguages: [ar]

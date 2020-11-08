@@ -96,7 +96,6 @@ class SplitWaysUploaderTest {
         verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].questType.javaClass.simpleName,quests[1].position)
 
         verify(elementUpdateController, times(1)).update(any(), any())
-        verify(elementUpdateController).cleanUp()
         verify(elementUpdateController, times(2)).get(any(), anyLong())
         verify(statisticsUpdater).addOne(any(), any())
         verifyNoMoreInteractions(elementUpdateController)
@@ -112,7 +111,6 @@ class SplitWaysUploaderTest {
 
         uploader.upload(AtomicBoolean(false))
 
-        verify(elementUpdateController).cleanUp()
         verify(quest.osmElementQuestType).cleanMetadata()
     }
 }

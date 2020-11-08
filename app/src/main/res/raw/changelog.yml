@@ -1,3 +1,10 @@
+v26.1: |
+  <ul>
+  <li>Don't ask for cycleways on residential roads after all (#2251)</li>
+  <li>Fix cycleway and sidewalk quest sometimes appeared if there was a separately mapped cycleway or sidewalk (#2248)</li>
+  <li>Don't ask for cycleways if the sidewalk is mapped explicitly as a separate way (#2247), by @matkoniecz</li>
+  </ul>
+
 v26.0: |
   <h3>⚡ Wait for the download no more!</h3>
   <p>

@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [State Bank of India, HDFC Bank, Axis Bank, SBI, Punjab National Bank, ICICI Bank, Bank of Baroda, PNB,
+atmOperators: [State Bank of India, HDFC Bank, SBI, Axis Bank, Punjab National Bank, ICICI Bank, Bank of Baroda, PNB,
    ICICI, state bank of india, Union Bank of India, State Bank of India (SBI), State Bank, HDFC, Bank
       of Baroda ATM, Ballia, Axis Bank ATM]
 chargingStationOperators: [AB]

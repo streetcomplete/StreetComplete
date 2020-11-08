@@ -1001,7 +1001,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="action_reset">"Reset"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Premere a lungo e spostare una ricerca per riordinare la sua priorità per visualizzarla sulla mappa."</string>
+    <string name="reorder_quest_priority_hint">"Premere a lungo e spostare una missione per riordinare la sua priorità per visualizzarla sulla mappa."</string>
 
     <!-- Ho modificato questa risposta positiva e quella negativa "Cancel" rispettivamente in "Annulla" e "Non annullare" così da essere simili a quelle usate dai traduttori francesi; esse sono le risposte che può dare l’utente alla domanda "Undo the following last answer?" che è stata tradotta in "Annullare quest'ultima riposta?". Vedi la nota in francese alla voce undo_confirm_negative. -->
     <!-- Fuzzy -->
@@ -2380,7 +2380,7 @@ riconoscimento"</string>
     <string name="quest_buildingType_abandoned">"Abbandonato"</string>
     <string name="quest_buildingType_abandoned_description">"Costruzione inutilizzato la cui funzione o scopo originale è sconosciuto"</string>
     <string name="quest_buildingType_ruins">"Rovine"</string>
-    <string name="quest_buildingType_ruins_description">"Rovine"</string>
+    <string name="quest_buildingType_ruins_description">"Fatiscente, edificio in rovina e non identificabile"</string>
     <string name="quest_charging_station_capacity_title">"Quante automobili possono essere ricaricate contemporaneamente a questa colonnina?"</string>
     <string name="link_disaster_ninja_description">"Mappe che mostrano disastri naturali recenti, interessanti per i mappatori umanitari. Inoltre, mostrano molte statistiche interessanti per analizzare quanto i luoghi sono ben mappati o aggiornati."</string>
 </resources>

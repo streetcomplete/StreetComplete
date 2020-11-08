@@ -9,9 +9,9 @@ atmOperators: [Sparkasse, Postbank, Euronet, Volksbank, Deutsche Bank, Commerzba
       Sparkasse, ING Diba, Commerzbank AG, Sparkasse Trier, Saalesparkasse, ICCash, Stadtsparkasse Düsseldorf,
    Sparkasse Herford, Sparkasse Bochum, BBBank, Aachener Bank, Sparkasse Holstein, Sparkasse Chemnitz,
    Sparkasse Leipzig, ING-DiBa AG, Degussa Bank, Volksbank Dessau-Anhalt eG, Sparkasse Hanauerland, Kreissparkasse
-      Köln, Kreissparkasse Böblingen, IC Cash Services GmbH, Berliner Volksbank eG, Bankhaus Lenz, BW-Bank,
-   Volksbank Krefeld eG, Stadtsparkasse, Sparkasse Bielefeld, ING-Diba, Stadt-Sparkasse Solingen, Sparkasse
-      Mainz, Sparkasse Hanau, Sparkasse Bühl, Ostsächsische Sparkasse Dresden, Nord-Ostsee Sparkasse,
+      Köln, IC Cash Services GmbH, Berliner Volksbank eG, Bankhaus Lenz, BW-Bank, Volksbank Krefeld eG,
+   Stadtsparkasse, Sparkasse Bielefeld, Kreissparkasse Böblingen, ING-Diba, Stadt-Sparkasse Solingen,
+   Sparkasse Mainz, Sparkasse Hanau, Sparkasse Bühl, Ostsächsische Sparkasse Dresden, Nord-Ostsee Sparkasse,
    Cardpoint GmbH, Targobank, Sparkasse Bodensee, Sparkasse Bayreuth, Förde Sparkasse, Deutsche Post,
    BW Bank, Volks- und Raiffeisenbank, Taunus Sparkasse, Sparkasse Westholstein, Sparkasse Saarbrücken,
    Sparkasse LeerWittmund, Mainzer Volksbank, Kasseler Sparkasse, IC Cash, Volksbank Kraichgau eG, Sparkasse
@@ -21,16 +21,16 @@ atmOperators: [Sparkasse, Postbank, Euronet, Volksbank, Deutsche Bank, Commerzba
       Kraichgau, Sparkasse Freising, Sparkasse Emden, Sparkasse Dortmund, Raiffeisenbank Oldenburg eG,
    Nord-Ostsee-Sparkasse, Volksbank Reutlingen, VR-Bank Bad Hersfeld-Rotenburg eG, Stadtsparkasse Wuppertal,
    Stadtsparkasse Kaiserslautern, Sparkasse Neuss, Sparkasse Münsterland Ost, Sparkasse Mittelsachsen,
-   Sparkasse Hildesheim, Sparkasse Hannover, Landessparkasse zu Oldenburg, Kreissparkasse Reutlingen,
-   Kreissparkasse Ostalb, Kreissparkasse Ludwigsburg, Bremische Volksbank eG, transact Elektronische Zahlungssysteme
-      GmbH, Volksbank Raiffeisenbank, Volksbank Köln Bonn eG, Stadtsparkasse Magdeburg, Sparkasse Rhein-Nahe,
-   Sparkasse Harburg-Buxtehude, Sparkasse HRV, Sparkasse Darmstadt, ReiseBank AG, Ostsächsische Sparkasse,
-   Kreissparkasse Waiblingen, Kreissparkasse Esslingen-Nürtingen, Ing-DiBa, IC Cash Services, Frankfurter
-      Sparkasse, Erzgebirgssparkasse, cardpoint, Volksbank Trier eG, Volksbank Lahr eG, Volksbank Heilbronn,
-   Volksbank Bühl eG, VR Bank Schwäbisch Hall-Crailsheim eG, Sparkasse Schwäbisch Hall - Crailsheim, Sparkasse
-      Regensburg, Sparkasse Paderborn-Detmold, Sparkasse Jena-Saale-Holzland, Sparkasse Düsseldorf, Sparkasse
-      Duisburg, Santander, Nassauische Sparkasse, Landesbank Baden-Württemberg, Kreissparkasse Gelnhausen,
-   Ing-Diba]
+   Sparkasse Hildesheim, Sparkasse Hannover, ReiseBank AG, Landessparkasse zu Oldenburg, Kreissparkasse
+      Reutlingen, Kreissparkasse Ostalb, Kreissparkasse Ludwigsburg, Bremische Volksbank eG, transact
+      Elektronische Zahlungssysteme GmbH, Volksbank Raiffeisenbank, Volksbank Köln Bonn eG, Stadtsparkasse
+      Magdeburg, Sparkasse Rhein-Nahe, Sparkasse Harburg-Buxtehude, Sparkasse HRV, Sparkasse Darmstadt,
+   Ostsächsische Sparkasse, Kreissparkasse Waiblingen, Kreissparkasse Esslingen-Nürtingen, Ing-DiBa, IC
+      Cash Services, Frankfurter Sparkasse, Erzgebirgssparkasse, cardpoint, Volksbank Trier eG, Volksbank
+      Lahr eG, Volksbank Heilbronn, Volksbank Bühl eG, VR Bank Schwäbisch Hall-Crailsheim eG, Sparkasse
+      Schwäbisch Hall - Crailsheim, Sparkasse Regensburg, Sparkasse Paderborn-Detmold, Sparkasse Jena-Saale-Holzland,
+   Sparkasse Düsseldorf, Sparkasse Duisburg, Santander, Nassauische Sparkasse, Landesbank Baden-Württemberg,
+   Kreissparkasse Gelnhausen, Ing-Diba]
 chargingStationOperators: [Stromnetz Hamburg, Stadtwerke München, EnBW, innogy, RWE, Allego, allego, RWE-Effizienz, Innogy, E-WALD
       GmbH, LEW, EWE, e-regio GmbH & Co. KG, SWU Stadtwerke Ulm/Neu-Ulm GmbH, Tesla, EnBW Energie Baden-Württemberg
       AG, be emobil, NEW, Lidl, Kaufland, Tank & Rast, SWM, Vattenfall, Stadtwerke Augsburg, Lechwerke
@@ -49,31 +49,31 @@ chargingStationOperators: [Stromnetz Hamburg, Stadtwerke München, EnBW, innogy,
    IONITY, Entega Energie GmbH, Energieversorgung Rodau GmbH, ENTEGA Energie GmbH, DREWAG, Bayernwerk,
    Stadtwerke Tübingen GmbH, Stadtwerke Iserlohn - Heimatversorger, Ovag, Mainzer Stadtwerke, Kreis Paderborn,
    Entega, E-Wald GmbH, BEW, Allegro, enercity, eeMobility, e.on, e.dis, WVV, The New Motion, TankE GmbH,
-   TEAG, Stadtwerke Rhede GmbH, Stadtwerke Herne, Rheinenergie, RWE Effizienz GmbH, Mennekes, Kreiswerke
-      Main-Kinzig, Filderstadtwerke, ENBW, EAM, emma, SÜC Energie und H2O GmbH, Stadtwerke Göttingen,
-   Stadtwerke Baden-Baden, RWE / DEW21, Pfalzwerke AG, Maingau, Ladeverbund+, LEW Augsburg, Innogy eMobility
-      Solutions GmbH, Energieversorgung Leverkusen GmbH & Co. KG (EVL), EGG Energieversorgung Gera, Charge-ON
-      GmbH]
+   TEAG, Stadtwerke Rhede GmbH, Stadtwerke Herne, Rheinenergie, RWE Effizienz GmbH, Mennekes, Ladeverbund+,
+   Kreiswerke Main-Kinzig, Filderstadtwerke, ENBW, EAM, emma, SÜC Energie und H2O GmbH, Stadtwerke Göttingen,
+   Stadtwerke Baden-Baden, RWE / DEW21, Pfalzwerke AG, Maingau, LEW Augsburg, Innogy eMobility Solutions
+      GmbH, Energieversorgung Leverkusen GmbH & Co. KG (EVL), EGG Energieversorgung Gera, Charge-ON GmbH]
 clothesContainerOperators: [Deutsches Rotes Kreuz, Loop, Aktion Hoffnung, AWG, GEB, ALBA Braunschweig GmbH, Humana, Malteser, Stadtreinigung
       Hamburg, Stadt Karlsruhe, AHE;Deutsches Rotes Kreuz, Abfallwirtschaftsgesellschaft Wuppertal, Vorwerker
-      Diakonie, DRK, Zweckverband für Abfallwirtschaft Kempten, Technische Betriebe Velbert AöR, Abfallwirtschaftsbetrieb
-      München, Texaid, hoelp, Kolping, AWB Köln, AWB, AHE, AWO, GOA, bonnorange AöR, Technische Betriebe
-      Remscheid, Darbo Recycling, Step, Malteser Hilfsdienst e.V., Landkreis Prignitz, Remondis, Malteser
-      Hilfsdienst, FWS, CityGreenPoint, aha Zweckverband Abfallwirtschaft Region Hannover, Stadt Stuttgart,
-   TEXAID, Berlin-Textilrecycling, Bayerisches Rotes Kreuz, Aktex Rohstoff-Recycling Nord, Diakoniewerk
-      Essen, Abfall- und Wertstofflogistik Neuss GmbH (AWL), Retextil Recycling International, Isevtex,
-   Gew. Fa. Mettex, AWISTA, AHG alpha Handelskontor, AHA, unknown, ZKE, Veolia, Kolpingwerk, HeDi, DRK
-      Kreisverband Bonn e.V., Brotex, AWM, illegal, Däsa Wiederverwertungs GmbH, Deutsches Rotes Kreuz
-      e.V., Textil-Recycling Nord, TEXAID Deutschland GmbH, RS, Kolping Recycling GmbH, Altkleiderfirma
-      Nargül, Stadt Karlsruhe Amt für Abfallwirtschaft, DRK-Kreisverband Trier-Saarburg e.V., Bera Textilrecycling,
-   Baliz Textilwerke, Neue Arbeit Lahr, Johanniter, Hoppe, HUMANA Kleidersammlung GmbH, Familienschutzwerk,
-   BRK, Akza Textilrecycling, AWISTA GmbH, AHE;Deutsches Rotes Kreuz;Ruhrtalengel, aha, TEXAID Collection
-      GmbH, TEXAID Collection, SP Textilverwertung, Retextil, Maltheser Hilfsdienst, HUMANA, Diakonisches
-      Werk Kassel, Deutsche Lebens-Rettungs-Gesellschaft e.V., DESWOS, Stadtreinigung Leipzig, SOEX, Haytex
-      Textilrecycling, Ginotex, DRK-Kreisverband Koblenz-Stadt e.V., DRK KV Ammerland, Content KG, Bethel,
-   Baliz, Awista, Arbeiter-Samariter-Bund, ZVO, Wittmann, USB, Stadtreiniger Kassel, Sehbehinderten Selbsthilfe
-      Kurpfalz-Odenwald e.V., REMONDIS, OKA Textil, KuB GmbH, Kreisentsorgungs GmbH Vogtland (KEV), Kolpingsfamilie
-      Ostbevern e. V., Faircollect, East-West Textilrecycling Kursun, East-West, Caritas]
+      Diakonie, DRK, Zweckverband für Abfallwirtschaft Kempten, Texaid, Technische Betriebe Velbert AöR,
+   Abfallwirtschaftsbetrieb München, hoelp, Kolping, AWB Köln, AWB, AHE, AWO, GOA, bonnorange AöR, Technische
+      Betriebe Remscheid, Darbo Recycling, Step, Malteser Hilfsdienst e.V., Landkreis Prignitz, Remondis,
+   Malteser Hilfsdienst, FWS, CityGreenPoint, aha Zweckverband Abfallwirtschaft Region Hannover, Stadt
+      Stuttgart, TEXAID, Berlin-Textilrecycling, Bayerisches Rotes Kreuz, Aktex Rohstoff-Recycling Nord,
+   Diakoniewerk Essen, Abfall- und Wertstofflogistik Neuss GmbH (AWL), Retextil Recycling International,
+   Isevtex, Gew. Fa. Mettex, AWISTA, AHG alpha Handelskontor, AHA, unknown, ZKE, Veolia, Kolpingwerk,
+   HeDi, DRK Kreisverband Bonn e.V., Brotex, AWM, illegal, Däsa Wiederverwertungs GmbH, Deutsches Rotes
+      Kreuz e.V., Textil-Recycling Nord, TEXAID Deutschland GmbH, RS, Kolping Recycling GmbH, Altkleiderfirma
+      Nargül, Stadt Karlsruhe Amt für Abfallwirtschaft, HUMANA Kleidersammlung GmbH, DRK-Kreisverband
+      Trier-Saarburg e.V., Bera Textilrecycling, Baliz Textilwerke, Neue Arbeit Lahr, Johanniter, Hoppe,
+   Familienschutzwerk, BRK, Akza Textilrecycling, AWISTA GmbH, AHE;Deutsches Rotes Kreuz;Ruhrtalengel,
+   aha, TEXAID Collection GmbH, TEXAID Collection, SP Textilverwertung, Retextil, Maltheser Hilfsdienst,
+   HUMANA, Diakonisches Werk Kassel, Deutsche Lebens-Rettungs-Gesellschaft e.V., DESWOS, Stadtreinigung
+      Leipzig, SOEX, Haytex Textilrecycling, Ginotex, DRK-Kreisverband Koblenz-Stadt e.V., DRK KV Ammerland,
+   Content KG, Bethel, Baliz, Awista, Arbeiter-Samariter-Bund, ZVO, Wittmann, USB, Stadtreiniger Kassel,
+   Sehbehinderten Selbsthilfe Kurpfalz-Odenwald e.V., REMONDIS, OKA Textil, KuB GmbH, Kreisentsorgungs
+      GmbH Vogtland (KEV), Kolpingsfamilie Ostbevern e. V., Faircollect, East-West Textilrecycling Kursun,
+   East-West, Caritas]
 isAdvisorySpeedLimitKnown: false
 isLivingStreetKnown: true
 isSlowZoneKnown: true

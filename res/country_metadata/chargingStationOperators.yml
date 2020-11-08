@@ -372,7 +372,7 @@ DE:
   - Stadtwerke München # 377
   - EnBW # 349
   - innogy # 195
-  - RWE # 156
+  - RWE # 157
   - Allego # 111
   - allego # 85
   - RWE-Effizienz # 79
@@ -494,6 +494,7 @@ DE:
   - Rheinenergie # 10
   - RWE Effizienz GmbH # 10
   - Mennekes # 10
+  - Ladeverbund+ # 10
   - Kreiswerke Main-Kinzig # 10
   - Filderstadtwerke # 10
   - ENBW # 10
@@ -505,7 +506,6 @@ DE:
   - RWE / DEW21 # 9
   - Pfalzwerke AG # 9
   - Maingau # 9
-  - Ladeverbund+ # 9
   - LEW Augsburg # 9
   - Innogy eMobility Solutions GmbH # 9
   - Energieversorgung Leverkusen GmbH & Co. KG (EVL) # 9
@@ -597,11 +597,11 @@ FI:
   - Helsingin Energia # 2
   - Charge&Drive # 2
 FX:
-  - Bouygues Énergies et Services # 844
+  - Bouygues Énergies et Services # 845
   - Izivia # 591
   - Freshmile # 405
   - Clem # 124
-  - Sodetrel Mobilité # 115
+  - Sodetrel Mobilité # 114
   - Mouv Élec Var # 111
   - Sodetrel # 101
   - SEDI # 97
@@ -627,8 +627,8 @@ FX:
   - Morbihan Énergies # 33
   - SDE04 # 30
   - Syndicat Départemental d'Énergie de Loire-Atlantique (SYDELA) | FR*S44 # 24
+  - Lidl # 24
   - InEnergies # 24
-  - Lidl # 23
   - Saint-Louis # 17
   - Autolib' # 17
   - SIEL42 # 16
@@ -720,6 +720,7 @@ GB:
   - GMEV # 3
   - Engie # 3
   - E.on # 3
+  - Circontrol # 3
   - Charge Master # 3
   - BP Chargemaster # 3
   - BP # 3
@@ -745,6 +746,7 @@ GB:
   - Milton Park - Pod Point # 2
   - Milton Park # 2
   - Kendal College # 2
+  - Hubsta # 2
   - Eurotunnel # 2
   - Elektromotive # 2
   - ESB # 2
@@ -788,10 +790,10 @@ HU:
   - e-mobi # 6
   - Elektromobilitás Nonprofit Kft. # 6
   - e-Mobi Elekrtomobilitás Nonprofit Kft. # 5
-  - evopro # 4
   - NKM # 4
   - Lidl # 4
   - Evopro # 4
+  - evopro # 3
   - emobi # 3
   - e.on # 3
   - NISSAN # 3
@@ -924,7 +926,7 @@ MK:
 MX:
   - Servicio de Transportes Eléctricos de la Ciudad de México # 3
 NL:
-  - Allego # 181
+  - Allego # 182
   - NUON # 98
   - Fastned # 94
   - Nuon # 71
@@ -1137,20 +1139,20 @@ PL:
   - DBT # 2
   - ABB # 2
 PT:
-  - MOBI.E # 104
-  - Mobi.E # 49
-  - KLC # 43
-  - EDP Comercial # 43
+  - MOBI.E # 102
+  - KLC # 51
+  - Mobi.E # 48
+  - EDP Comercial # 48
   - Tesla # 37
-  - Powerdot # 25
+  - Powerdot # 31
+  - Galp Power # 28
+  - Prio.E # 25
   - Rede Piloto # 24
-  - Mobilectric # 22
-  - Galp Power # 22
+  - Mobilectric # 24
   - Galp Geste # 22
-  - Prio.E # 20
   - GalpGeste # 16
   - Mobi-e # 14
-  - EV Power # 13
+  - EV Power # 14
   - Mobie # 11
   - Mobiletric # 6
   - Emacom # 5
@@ -1169,6 +1171,7 @@ PT:
   - Factor Energia # 2
   - Emel # 2
   - EVCE Power # 2
+  - Bluecharge # 2
 PY:
   - Petropar # 2
 RE:
@@ -1221,6 +1224,7 @@ SE:
   - VB Energi # 2
   - SKF # 2
   - NOVI Ressort # 2
+  - Mönsterås Kommun # 2
   - Ljusdal Energi # 2
   - Lidl # 2
   - Kraftringen # 2
