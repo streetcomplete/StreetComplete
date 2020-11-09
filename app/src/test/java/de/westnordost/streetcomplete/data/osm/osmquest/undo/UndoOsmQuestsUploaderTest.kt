@@ -103,7 +103,6 @@ class UndoOsmQuestsUploaderTest {
         verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].osmElementQuestType.javaClass.simpleName, quests[1].position)
 
         verify(elementUpdateController, times(1)).update(any(), isNull())
-        verify(elementUpdateController, times(1)).cleanUp()
         verify(elementUpdateController, times(2)).get(any(), anyLong())
         verify(statisticsUpdater).subtractOne(any(), any())
         verifyNoMoreInteractions(elementUpdateController)
@@ -118,7 +117,6 @@ class UndoOsmQuestsUploaderTest {
 
         uploader.upload(AtomicBoolean(false))
 
-        verify(elementUpdateController).cleanUp()
         verify(quest.osmElementQuestType).cleanMetadata()
     }
 }

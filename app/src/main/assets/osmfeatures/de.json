@@ -572,7 +572,7 @@
     },
     "amenity/payment_terminal": {
       "name": "Zahlungsterminal",
-      "terms": "Zahlungsterminal"
+      "terms": "Zahlungsterminal, Kiosksystem, Münzwechsel, Selbstbedienung"
     },
     "amenity/pharmacy": {
       "name": "Apotheke",
@@ -1457,8 +1457,8 @@
       "terms": "Doppelhaushälfte"
     },
     "building/service": {
-      "name": "Maschinenhaus",
-      "terms": "Maschinenhaus, Dienstleistungsgebäude"
+      "name": "Versorgungsgebäude",
+      "terms": "Maschinenhaus, Dienstleistungsgebäude, Betriebsgebäude, Technikgebäude"
     },
     "building/shed": {
       "name": "Schuppen",
@@ -1853,7 +1853,7 @@
     },
     "golf/clubhouse": {
       "name": "Golf Klubhaus",
-      "terms": "Klubhaus, Goldklubhaus, Golfhaus, Golfclub"
+      "terms": "Klubhaus, Golfklubhaus, Golfhaus, Golfclub, Clubhaus"
     },
     "golf/driving_range": {
       "name": "Golf Driving Range",
@@ -3201,7 +3201,7 @@
     },
     "man_made/windpump": {
       "name": "Windpumpe",
-      "terms": "Wasserpumpe, Windmühle, Windpumpe, Aerorotor"
+      "terms": "Wasserpumpe, Windmühle, Windpumpe, Aerorotor, Windmotor"
     },
     "man_made/works": {
       "name": "Fabrik",

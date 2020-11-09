@@ -2369,6 +2369,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="open_url">"Open URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Monumentaal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_historic_description">"Een monumentaal gebouw die niet een woon-, religieuze-  of commerciële functie heeft"</string>
     <string name="quest_buildingType_abandoned">"Verlaten"</string>
     <string name="quest_buildingType_abandoned_description">"ongebruikt gebouw waarvan de oorspronkelijke functie of bestemming onbekend is"</string>

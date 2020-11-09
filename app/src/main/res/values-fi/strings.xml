@@ -2221,4 +2221,18 @@ päiviä"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Onko pyörätuoliramppi kuvattu erillisenä reittinä kartalla?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"erillinen"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ei erillisenä"</string>
+    <string name="pref_title_sync2">"Lähetä vastaukset automaattisesti"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Kuvaile pintaa"</string>
+    <string name="open_url">"Avaa URL"</string>
+    <string name="quest_buildingType_silo">"Siilo"</string>
+    <string name="quest_buildingType_historic">"Historiallinen"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_historic_description">"historiallisesti arvokas rakennus, joka ei palvele mitään kansalais-, uskonnollisia tai kaupallisia tehtäviä"</string>
+    <string name="quest_buildingType_abandoned">"Hylätty"</string>
+    <string name="quest_buildingType_abandoned_description">"Käyttämätön rakennus, jonka alkuperäistä käyttötarkoitus on tuntematon"</string>
+    <string name="quest_buildingType_ruins">"Raunio"</string>
+    <string name="quest_buildingType_ruins_description">"hylätty, pilalla oleva ja tunnistamaton rakennus"</string>
+    <string name="quest_charging_station_capacity_title">"Kuinka monia autoa voi ladata tällä latausasemalla yhtäaikaisesti?"</string>
+    <string name="link_disaster_ninja_description">"Viimeaikaiset luonnonkatastrofit näyttävä kartta humanitaarisille kartoittajille. Näyttää myös monia mielenkiintoisia tilastoja analysoidakseen kuinka hyvin kartoitettuja ja ajantasaisia kartat ovat."</string>
 </resources>

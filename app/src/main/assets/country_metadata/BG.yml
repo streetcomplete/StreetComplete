@@ -2,10 +2,10 @@
 additionalStreetsignLanguages: [international]
 atmOperators: [Fibank, ДСК, ОББ, FIBank, Postbank, Банка ДСК, УниКредит Булбанк, Райфайзенбанк, Unicredit Bulbank, Централна
       кооперативна банка, Unicredit, UniCredit Bulbank, UniCredit, ЦКБ, Райфайзен Банк, ПИБ, Raiffeisenbank,
-   DSK Bank, Райфайзен, Пощенска банка, Raiffeisen, DSK, Уникредит Булбанк, Първа Инвестиционна Банка,
-   Обединена българска банка, Обединена Българска Банка, Unicredit bulbank, Raiffeisen Bank, Piraeus Bank,
-   OBB, FiBank, CCB, Фибанк, Първа инвестиционна банка, Общинска банка, Общинска Банка, Инвестбанк, Банк
-      ДСК, Société Générale, ProCredit Bank, First Investment Bank, Euronet, Central Cooperative Bank,
+   DSK Bank, Райфайзен, Пощенска банка, Raiffeisen, DSK, Уникредит Булбанк, Фибанк, Първа Инвестиционна
+      Банка, Обединена българска банка, Обединена Българска Банка, Unicredit bulbank, Raiffeisen Bank,
+   Piraeus Bank, OBB, FiBank, CCB, Първа инвестиционна банка, Общинска банка, Общинска Банка, Инвестбанк,
+   Банк ДСК, Société Générale, ProCredit Bank, First Investment Bank, Euronet, Central Cooperative Bank,
    Allianz]
 chargingStationOperators: [ОП „Общински паркинги и синя зона“ - Варна]
 clothesContainerOperators: [БЧК, texcycle]

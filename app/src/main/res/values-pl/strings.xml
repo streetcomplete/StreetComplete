@@ -2345,4 +2345,20 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="achievement_outdoors_title">"Na zewnątrz"</string>
     <string name="achievement_outdoors_solved_X">"Rozwiązałeś %d zadań przydatnych ludziom na zewnątrz!"</string>
     <string name="quest_pedestrian_crossing_island">"Czy te przejście dla pieszych ma wysepkę?"</string>
+    <string name="quest_generic_answer_noSign">"Nie ma tabliczki z nazwą"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Czy rampa dla wóżków inwalidzkich jest wyświetlana jako osobna linia na mapie?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"osobno"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"nie jest pokazana osobno"</string>
+    <string name="pref_title_sync2">"Automatycznie wysyłaj zmiany"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Opisz nawierzchnię"</string>
+    <string name="open_url">"Otwórz link"</string>
+    <string name="quest_buildingType_silo">"Silos"</string>
+    <string name="quest_buildingType_historic">"Historyczny"</string>
+    <string name="quest_buildingType_historic_description">"budynek historyczny zbudowany z nieznanego lub niepewnego powodu"</string>
+    <string name="quest_buildingType_abandoned">"Opuszczony"</string>
+    <string name="quest_buildingType_abandoned_description">"Opuszczony budynek, niejasne jest w jakim celu powstał"</string>
+    <string name="quest_buildingType_ruins">"Ruiny"</string>
+    <string name="quest_buildingType_ruins_description">"Ruiny budynku którego stan nie pozwala na ustalenie jego przeznaczenia"</string>
+    <string name="quest_charging_station_capacity_title">"Ile samochodów elektrycznych może się tu równocześnie ładować?"</string>
+    <string name="link_disaster_ninja_description">"Mapa pokazująca niedawne klęski żywiołowe, interesujące dla osób wspomagających pomoc humanitarną przez tworzenie map. Pokazuje też statystyki jak wiele jest zmapowane w danym miejscu i jak bardzo aktualne są dane OSM. "</string>
 </resources>

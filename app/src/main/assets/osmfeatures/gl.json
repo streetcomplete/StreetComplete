@@ -1,5 +1,8 @@
 {
   "presets": {
+    "addr/interpolation": {
+      "name": "Interpolación de enderezo"
+    },
     "address": {
       "name": "Enderezo",
       "terms": "dirección, enderezo, domicilio"
@@ -15,6 +18,15 @@
       "name": "Columna de publicidade",
       "terms": "columna, publicidade, anuncios, cilindro"
     },
+    "advertising/poster_box": {
+      "name": "Expositor publicitario"
+    },
+    "advertising/totem": {
+      "name": "Panel publicitario"
+    },
+    "aerialway": {
+      "name": "Elemento de vía aérea"
+    },
     "aerialway/cable_car": {
       "name": "Teleférico",
       "terms": "teleférico, telecabina, telecadeira"
@@ -27,9 +39,16 @@
       "name": "Ascensor de Arrastre",
       "terms": "elevador, remonta pendentes, telesquí, esquí, deslizador, snowboarder"
     },
+    "aerialway/gondola": {
+      "name": "Teleférico",
+      "terms": "telecadeira, funicular, vehículo teleférico"
+    },
     "aerialway/goods": {
-      "name": "Camiño aéreo de mercadorías",
+      "name": "Vía aérea de mercadorías",
       "terms": "produto, mercadoría, artigo, mercadería, carga, material, elevador, remonte"
+    },
+    "aerialway/j-bar": {
+      "name": "Telesquí de barra en J"
     },
     "aerialway/magic_carpet": {
       "name": "Ascensor Magic Carpet",
@@ -44,19 +63,28 @@
       "terms": "ascensor de prato, prato de elevación, tele esquí, telesquí"
     },
     "aerialway/pylon": {
-      "name": "Pilón Vía Aérea",
+      "name": "Piar de vía aérea",
       "terms": "piar, pilona, columna, poste, soporte"
     },
     "aerialway/rope_tow": {
       "name": "Ascensor de Corda de Remolque",
       "terms": "ascensor de remolque de corda, cable de remolque, corda de remolque"
     },
+    "aerialway/t-bar": {
+      "name": "Telesqui de barra en T"
+    },
     "aerialway/zip_line": {
       "name": "Tirolina"
+    },
+    "aeroway": {
+      "name": "Vías aéreas"
     },
     "aeroway/aerodrome": {
       "name": "Aeroporto",
       "terms": "aeroporto, avión, aeródromo, terminal"
+    },
+    "aeroway/apron": {
+      "name": "Estacionamento aéreo"
     },
     "aeroway/gate": {
       "name": "Porta de embarque",
@@ -70,9 +98,22 @@
       "name": "Heliporto",
       "terms": "heliporto, helicóptero"
     },
+    "aeroway/holding_position": {
+      "name": "Punto de espera de avións"
+    },
+    "aeroway/jet_bridge": {
+      "name": "Ponte de embarque"
+    },
+    "aeroway/parking_position": {
+      "name": "Estacionamento de transportes aéreos"
+    },
     "aeroway/runway": {
       "name": "Pista de aeroporto",
       "terms": "pista, pista de aterraxe, pista de engalaxe"
+    },
+    "aeroway/spaceport": {
+      "name": "Cosmódromo",
+      "terms": "Base espacial"
     },
     "aeroway/taxiway": {
       "name": "Pista de rodaxe",
@@ -161,6 +202,9 @@
       "name": "Biergarten (xardín da cervexa alemán)",
       "terms": "cervexa, bar, terraza, xardín, ó ar libre, ao aire libre, biergarten"
     },
+    "amenity/binoculars": {
+      "name": "Binoculares panorámicos"
+    },
     "amenity/boat_rental": {
       "name": "Alugueiro de embarcacións",
       "terms": "alugueiro, alugamento, locación, bote, barca, lancha, embarcación, embarcacións"
@@ -178,6 +222,14 @@
     "amenity/cafe": {
       "name": "Cafetaría",
       "terms": "cafetaría, café, bar, tetería, cafetería"
+    },
+    "amenity/cafe/bubble_tea": {
+      "name": "Casa de té con burbullas",
+      "terms": "buba, té con leite, infusión"
+    },
+    "amenity/cafe/coffee_shop": {
+      "name": "Cafetaría",
+      "terms": "bar, café, cafetería"
     },
     "amenity/car_pooling": {
       "name": "Estación de automóbil compartido (Carpooling)"
@@ -337,6 +389,9 @@
     "amenity/fast_food/sandwich": {
       "name": "Comida rápida: Sandwiches"
     },
+    "amenity/ferry_terminal": {
+      "name": "Terminal de transbordadores"
+    },
     "amenity/fire_station": {
       "name": "Parque de bombeiros",
       "terms": "estación de bombeiros, bombeiros, parque de bombeiros"
@@ -424,6 +479,10 @@
       "name": "Estación de transferencia de diñeiro",
       "terms": "xiro postal, cheque, factura, moeda, finanzas, transferencia bancaria, cable, cabo, persoa a persoa, efectivo a efectivo, intercambio, troco"
     },
+    "amenity/mortuary": {
+      "name": "Velorio / tanatorio",
+      "terms": "tanatorio, funeraria, fúnebre, velorio, velatorio, mortuorio, mortuoria, crematorio"
+    },
     "amenity/motorcycle_parking": {
       "name": "Aparcadoiro de motos",
       "terms": "aparcadoiro, parking, motos, motocicletas, ciclomotores, aparcamento, estacionamento"
@@ -464,6 +523,9 @@
     "amenity/parking_space": {
       "name": "Praza de aparcadoiro"
     },
+    "amenity/parking_space/disabled": {
+      "name": "Espazo de aparcadoiro para discapacitados"
+    },
     "amenity/payment_centre": {
       "name": "Centro de pagamento"
     },
@@ -472,7 +534,7 @@
     },
     "amenity/pharmacy": {
       "name": "Farmacia",
-      "terms": "farmacia,botica, laboratorio, apoteca, herbolario, medicamentos, remedios"
+      "terms": "farmacia, botica, laboratorio, menciña, menciñas, medicación,  medicamentos, fármaco, medicina, apoteca, saúde"
     },
     "amenity/photo_booth": {
       "name": "Cabina de fotos",
@@ -923,8 +985,23 @@
     "attraction/dark_ride": {
       "name": "Camiño escuro"
     },
+    "attraction/drop_tower": {
+      "name": "Torre de caída libre"
+    },
+    "attraction/kiddie_ride": {
+      "name": "Vehículo de xogo para cativos",
+      "terms": "xogo, xoguete, cabaliño, cabalo, infantil, meniños, crianzas, entretemento, atracción, feira"
+    },
+    "attraction/log_flume": {
+      "name": "Tobogán acuático",
+      "terms": "escorregadoiro, esvaradoiro, parque temático, acuático, diversión, entretemento"
+    },
     "attraction/maze": {
       "name": "Labirinto"
+    },
+    "attraction/pirate_ship": {
+      "name": "Barco pirata",
+      "terms": "parque temático, diversión, entretemento"
     },
     "attraction/river_rafting": {
       "name": "Rápidos",
@@ -936,6 +1013,9 @@
     },
     "attraction/summer_toboggan": {
       "name": "Escorregadoiro de verán"
+    },
+    "attraction/swing_carousel": {
+      "name": "Randeeira carrusel"
     },
     "attraction/train": {
       "name": "Tren turístico",
@@ -1038,6 +1118,9 @@
     "barrier/stile": {
       "name": "Escada",
       "terms": "escada, escaleira, valado, cerca, reixa"
+    },
+    "barrier/swing_gate": {
+      "name": "Barreira abatible"
     },
     "barrier/toll_booth": {
       "name": "Peaxe",
@@ -1413,7 +1496,7 @@
       "terms": "fabricante, creador, criador, cartaces, cartaz, carteles, tendas, negocios, rótulo, rotulo, rótulos, rotulos"
     },
     "craft/stonemason": {
-      "name": "Albanel",
+      "name": "Canteiro",
       "terms": "albanel, canteiro, pedra"
     },
     "craft/tailor": {
@@ -1440,6 +1523,9 @@
     "craft/winery": {
       "name": "Adega de viños",
       "terms": "lagar, adega, prensa, lagareta, viño, uva"
+    },
+    "disused/amenity": {
+      "name": "Instalación en desuso"
     },
     "disused/railway": {
       "name": "Elemento ferroviario en desuso"
@@ -3045,6 +3131,9 @@
     "playground/balance_beam": {
       "name": "Barra de equilibrio de xogos"
     },
+    "playground/basket_swing": {
+      "name": "Cesta da randeeira"
+    },
     "playground/horizontal_bar": {
       "name": "Barra horizontal de xogos"
     },
@@ -3062,6 +3151,9 @@
     },
     "playground/structure": {
       "name": "Estrutura de parque infantil"
+    },
+    "playground/swing": {
+      "name": "Randeeira hamaca"
     },
     "point": {
       "name": "Punto"
@@ -3124,10 +3216,10 @@
       "terms": "plataforma, andén, transporte público, transporte"
     },
     "public_transport/platform/aerialway": {
-      "name": "Plataforma de aeroporto"
+      "name": "Plataforma de vía aérea"
     },
     "public_transport/platform/aerialway_point": {
-      "name": "Parada / Plataforma de avións"
+      "name": "Parada / Plataforma de vía aérea"
     },
     "public_transport/platform/bus": {
       "name": "Plataforma de bus"
@@ -3137,11 +3229,11 @@
       "terms": "autobús, bus, colectivo, plataforma, transporte público, parada"
     },
     "public_transport/platform/ferry": {
-      "name": "Plataforma de ferri",
+      "name": "Plataforma de transbordadores",
       "terms": "bote, muelle, transbordador, plataforma, transporte público, peirao, barco"
     },
     "public_transport/platform/ferry_point": {
-      "name": "Parada / Plataforma de ferri"
+      "name": "Parada / Plataforma de transbordadores"
     },
     "public_transport/platform/light_rail": {
       "name": "Plataforma de tren lixeiro"
@@ -3150,7 +3242,8 @@
       "name": "Parada / Plataforma de tren lixeiro"
     },
     "public_transport/platform/monorail": {
-      "name": "Plataforma de monorraíl"
+      "name": "Plataforma de monorraíl",
+      "terms": "monocarríl"
     },
     "public_transport/platform/monorail_point": {
       "name": "Parada / Plataforma de monorraíl"
@@ -3188,11 +3281,21 @@
     "public_transport/station": {
       "name": "Estación de transporte público"
     },
+    "public_transport/station_aerialway": {
+      "name": "Estación de vía aérea"
+    },
     "public_transport/station_bus": {
       "name": "Estación de autobuses"
     },
+    "public_transport/station_ferry": {
+      "name": "Terminal de transbordadores"
+    },
     "public_transport/station_light_rail": {
       "name": "Estación de tren lixeiro"
+    },
+    "public_transport/station_monorail": {
+      "name": "Estación de monoraíl",
+      "terms": "monocarríl"
     },
     "public_transport/station_subway": {
       "name": "Estación de metro"
@@ -3206,6 +3309,9 @@
     "public_transport/station_tram": {
       "name": "Estación de tranvía"
     },
+    "public_transport/station_trolleybus": {
+      "name": "Estación / parada de trolebús"
+    },
     "public_transport/stop_area": {
       "name": "Área de parada de transporte público",
       "terms": "transporte público, parada, punto de detención"
@@ -3215,7 +3321,7 @@
       "terms": "punto detención, transporte público, tránsito, transporte, aéreo, autobús, ferry, tren lixeiro, tranvía, tren, monorraíl, metro, trolebús, parada, bus, ferri"
     },
     "public_transport/stop_position_aerialway": {
-      "name": "Lugar de parada de avións",
+      "name": "Lugar de parada de vía aérea",
       "terms": "punto detención, transporte público, tránsito, transporte, teleférico, telecabina, góndola, transportador, parada"
     },
     "public_transport/stop_position_bus": {
@@ -3223,7 +3329,7 @@
       "terms": "punto detención, transporte público, tránsito, transporte, autobús, bus, minibús, parada"
     },
     "public_transport/stop_position_ferry": {
-      "name": "Lugar de parada de ferri",
+      "name": "Lugar de parada de transbordadores",
       "terms": "punto detención, transporte público, tránsito, transporte, naval, marítimo, bote, barco, ferry, buque, lancha, muelle, dársena, ferri, peirao, parada"
     },
     "public_transport/stop_position_light_rail": {
@@ -3295,10 +3401,12 @@
       "name": "Ferrovía en miniatura"
     },
     "railway/monorail": {
-      "name": "Vía de monorraíl"
+      "name": "Vía de monorraíl",
+      "terms": "monocarríl"
     },
     "railway/monorail/hanging": {
-      "name": "Vía de monorraíl colgante"
+      "name": "Vía de monorraíl colgante",
+      "terms": "monocarríl"
     },
     "railway/narrow_gauge": {
       "name": "Ferrovía estreita"
@@ -3359,7 +3467,7 @@
       "terms": "Relación, Ligazón, Vínculo, Asociación"
     },
     "route/ferry": {
-      "name": "Liña de ferri",
+      "name": "Liña de transbordadores",
       "terms": "ruta, rota, liña, ferry, ferri, buque, transbordador, lancha, embarcación, trasbordador, barco"
     },
     "seamark": {
@@ -3437,8 +3545,15 @@
     "shop/boutique": {
       "name": "Boutique"
     },
+    "shop/brewing_supplies": {
+      "name": "Tenda de cervexaría artesanal"
+    },
     "shop/butcher": {
       "name": "Carnizaría"
+    },
+    "shop/camera": {
+      "name": "Tenda de fotografía",
+      "terms": "fotografía, cámara, vídeo"
     },
     "shop/candles": {
       "name": "Tenda de velas"
@@ -3459,10 +3574,12 @@
       "name": "Tenda solidaria"
     },
     "shop/cheese": {
-      "name": "Tenda de queixos"
+      "name": "Queixaría",
+      "terms": "Tenda de queixos, queixería, queixo"
     },
     "shop/chemist": {
-      "name": "Drogaría"
+      "name": "Drogaría",
+      "terms": "botica"
     },
     "shop/chocolate": {
       "name": "Chocolataría",
@@ -3470,6 +3587,16 @@
     },
     "shop/clothes": {
       "name": "Tenda de roupa"
+    },
+    "shop/clothes/second_hand": {
+      "name": "Tenda de roupa de segunda man"
+    },
+    "shop/clothes/underwear": {
+      "name": "Tenda de roupa interior"
+    },
+    "shop/clothes/wedding": {
+      "name": "Tenda de roupa de casamento",
+      "terms": "voda, casoiro, casorio, esposorio, himeneo"
     },
     "shop/coffee": {
       "name": "Tenda de café"
@@ -3489,6 +3616,12 @@
     },
     "shop/cosmetics": {
       "name": "Tenda de cosméticos"
+    },
+    "shop/country_store": {
+      "name": "Tenda do agro ou campo"
+    },
+    "shop/craft": {
+      "name": "Tenda de artes e oficios"
     },
     "shop/curtain": {
       "name": "Tenda de cortinas"
@@ -3513,11 +3646,17 @@
     "shop/e-cigarette": {
       "name": "Tenda de cigarros electrónicos"
     },
+    "shop/electrical": {
+      "name": "Tenda de material de electrónica"
+    },
     "shop/electronics": {
       "name": "Tenda de electrodomésticos"
     },
     "shop/erotic": {
       "name": "Tenda erótica"
+    },
+    "shop/erotic/lgbtq": {
+      "name": "Tenda erótica LGBTQ+"
     },
     "shop/fabric": {
       "name": "Tenda de teas"
@@ -3528,6 +3667,13 @@
     "shop/fashion": {
       "name": "Tenda de moda"
     },
+    "shop/fashion_accessories": {
+      "name": "Tenda de accesorios de moda"
+    },
+    "shop/fireplace": {
+      "name": "Tenda de chemineas",
+      "terms": "chaminea, lareira, lume, fumeira"
+    },
     "shop/fishing": {
       "name": "Tenda de pesca"
     },
@@ -3537,6 +3683,9 @@
     "shop/frame": {
       "name": "Tenda de enmarcado",
       "terms": "enmarcado, marco, enmarcar, cadro"
+    },
+    "shop/frozen_food": {
+      "name": "Tenda de conxelados"
     },
     "shop/fuel": {
       "name": "Tenda de combustíbel",
@@ -3549,11 +3698,17 @@
     "shop/furniture": {
       "name": "Moblaría"
     },
+    "shop/games": {
+      "name": "Tenda de xogos de mesa"
+    },
     "shop/garden_centre": {
       "name": "Centro de xardinaría"
     },
     "shop/gas": {
       "name": "Tenda de bombonas de gas"
+    },
+    "shop/general": {
+      "name": "Tenda xeral"
     },
     "shop/gift": {
       "name": "Tenda de agasallos"
@@ -3565,6 +3720,9 @@
     "shop/hairdresser": {
       "name": "Perrucaría"
     },
+    "shop/hairdresser_supply": {
+      "name": "Tenda de accesorios de salón de peiteado "
+    },
     "shop/hardware": {
       "name": "Ferraxaría"
     },
@@ -3572,7 +3730,8 @@
       "name": "Tenda de audífonos"
     },
     "shop/herbalist": {
-      "name": "Herboristaría"
+      "name": "Herboristaría",
+      "terms": "herboristería, herbas, menciñas, remedio, fármaco, parafarmacia"
     },
     "shop/hifi": {
       "name": "Tenda de equipamento de son"
@@ -3624,6 +3783,9 @@
     },
     "shop/medical_supply": {
       "name": "Tenda de subministracións médicas"
+    },
+    "shop/military_surplus": {
+      "name": "Tenda de accesorios militares"
     },
     "shop/mobile_phone": {
       "name": "Tenda de telefonía móbil"
@@ -3677,8 +3839,18 @@
     "shop/pet": {
       "name": "Tenda de mascotas"
     },
+    "shop/pet_grooming": {
+      "name": "Tenda de coidado de animais"
+    },
     "shop/photo": {
       "name": "Tenda de fotografía"
+    },
+    "shop/pottery": {
+      "name": "Tenda de cerámica",
+      "terms": "olaría, olería"
+    },
+    "shop/printer_ink": {
+      "name": "Tenda de tinta de impresora"
     },
     "shop/pyrotechnics": {
       "name": "Tenda de fogos artificiais",
@@ -3741,6 +3913,9 @@
     },
     "shop/tea": {
       "name": "Tenda de té"
+    },
+    "shop/telecommunication": {
+      "name": "Tenda de subministracións de telecomunicación"
     },
     "shop/ticket": {
       "name": "Venda de entradas"
@@ -4017,7 +4192,7 @@
       "name": "Ruta de desvío"
     },
     "type/route/ferry": {
-      "name": "Liña de ferri",
+      "name": "Liña de transbordadores",
       "terms": "ruta, rota, liña, ferri, itinerario, rumbo, dirección, traxecto, ferry, transbordador, buque, barco"
     },
     "type/route/hiking": {
@@ -4028,6 +4203,10 @@
     },
     "type/route/light_rail": {
       "name": "Ruta de tren lixeiro"
+    },
+    "type/route/monorail": {
+      "name": "Ruta de monoraíl",
+      "terms": "monocarríl"
     },
     "type/route/pipeline": {
       "name": "Ruta de tubaxe",
@@ -4051,6 +4230,9 @@
     },
     "type/route/tram": {
       "name": "Liña de tranvía"
+    },
+    "type/route/trolleybus": {
+      "name": "Ruta de trolebús"
     },
     "type/route_master": {
       "name": "Ruta mestra"
@@ -4089,7 +4271,7 @@
     },
     "waterway/drain": {
       "name": "Gabia",
-      "terms": "drenaxe, sumidoiro, sumideiro, acougadoiro, desacougadoiro, pluviais, augas, chuvia, chuva, choiva, desagüe, sumidero, alcantarilla, alcantarillado, resumidero, gabia, foxo, foio, cuneta, focha, fochanca, focho, covo"
+      "terms": "drenaxe, sumidoiro, sumideiro, acougadoiro, desacougadoiro, pluviais, augas, chuvia, chuva, choiva, desagüe, sumidero, alcantarilla, alcantarillado, resumidero, gabia, foxo, foio, cuneta, focha, fochanca, focho, covo, cal, caldeira, canle, quenlla"
     },
     "waterway/fish_pass": {
       "name": "Paso fluvial",

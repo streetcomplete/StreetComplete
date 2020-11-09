@@ -2374,6 +2374,8 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="open_url">"Abrir URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Histórico"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_historic_description">"edificio de valor histórico que no cumple funciones cívicas, religiosas o comerciales"</string>
     <string name="quest_buildingType_abandoned">"Abandonado"</string>
     <string name="quest_buildingType_abandoned_description">"edificio en desuso cuya función o propósito original se desconoce"</string>

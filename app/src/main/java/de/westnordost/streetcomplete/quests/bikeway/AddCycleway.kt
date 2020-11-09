@@ -303,12 +303,15 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
               and bicycle != use_sidepath
               and bicycle:backward != use_sidepath
               and bicycle:forward != use_sidepath
+              and sidewalk != separate
         """.toElementFilterExpression() }
 
         // streets that do not have cycleway tagging yet
         private val untaggedRoadsFilter by lazy { """
-            ways with
-              highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+            ways with (
+                highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+                or highway = residential and maxspeed > 30
+              )
               and !cycleway
               and !cycleway:left
               and !cycleway:right

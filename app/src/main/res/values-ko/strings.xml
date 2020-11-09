@@ -48,7 +48,7 @@
     <string name="quest_generic_otherAnswers">"다른 답변..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_answer_notApplicable">"대답할 수 없음…"</string>
+    <string name="quest_generic_answer_notApplicable">"답할 수 없음…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"확실합니까?"</string>
@@ -268,6 +268,25 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"확대"</string>
+    <string name="privacy_html">"&lt;p&gt;아, 개인정보 보호에 관심이 많으시군요! 마침 좋은 소식이 있습니다!&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;직접적인 기여&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+먼저, 기여하는 법을 익히세요. StreetComplete를 이용하면 오픈스트리트맵에 직접적으로 기여할 수 있습니다.&lt;br/&gt;
+StreetComplete로 기여한 모든 것들이 바로 오픈스트리트맵에 추가됩니다. 제3자 앱의 개입은 없습니다. 이는 &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt;나 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt; 또한 마찬가지입니다.
+&lt;/p&gt;
+&lt;p&gt;
+오픈스트리트맵을 익명으로 편집하는 것은 불가능합니다. 따라서 오픈스트리트맵에 기여하려면 계정이 필요합니다. 즉, 여러분이 추가한 지물의 종류와 위치 등이 다른 사람에게 공개되고, 여러분의 이름으로 저작자 표기가 들어가게 됩니다.
+&lt;/p&gt;
+
+&lt;b&gt;위치&lt;/b&gt;&lt;br/&gt;
+&lt;p&gt;
+StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니다. 오로지 여러분의 위치를 찾고, 그 주변에 있는 퀘스트를 탐색할 때만 GPS를 이용합니다.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;데이터의 사용처&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+말했다시피, 이 앱은 오픈스트리트맵 서버와 직접적으로 통신합니다.&lt;br/&gt;
+그러나, 변경 내역을 업로드하기 전에, StreetComplete는 당신이 기여 금지(밴)을 먹었는지, 그렇지 않은지를 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;기록해&lt;/a&gt; StreetComplete 서버에 저장합니다. 이는 오픈스트리트맵에 오염된 데이터가 들어가는 치명적인 버그를 일으키지 않게 하기 위한 예방 차원의 조치입니다.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"켜기"</string>
@@ -677,7 +696,7 @@
     <string name="credits_translations_title">"번역"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors_title">"코드 기여"</string>
+    <string name="credits_contributors_title">"코드 기여자"</string>
 
     <!-- Fuzzy -->
     <string name="credits_author_title">"제작자·유지보수자"</string>
@@ -1124,6 +1143,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"소풍 테이블입니다"</string>
+    <string name="quest_religion_for_place_of_worship_title">"이 장소는 무슨 종교를 위한 장소입니까?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_christian">"기독교"</string>
@@ -1740,7 +1760,7 @@
     <string name="quest_cyclewayPartSurface_title">"이 자전거 도로의 포장재가 무엇입니까?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_answer_differs_along_the_way">"각 부분마다 다름"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"각 부분마다 다릅니다..."</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"구간마다 특성이 다르다면, 먼저 길을 분할하세요. 그런 다음, 각 부분을 터치해 질문에 답을 하세요. 이 길을 분할하시겠습니까?"</string>
@@ -1801,6 +1821,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"번호를 찾을 수 없음..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"이미지에 있는 도로가 핀의 위치에 있는 지도와 같은 방향으로 돌아가 있습니다. "</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"이 수거함에 무엇을 넣을 수 있습니까?"</string>
@@ -1879,8 +1900,169 @@
 
     <!-- Fuzzy -->
     <string name="about_description_donate">"이 앱을 지원하기로 결정해 주셔서 감사합니다! 기부 현황을 보거나 기부하고 싶으시다면, 각 플랫폼을 터치해 주세요:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"장소 %s은(는) 무슨 종교를 위한 장소입니까?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"대신 여기를 스캔하기"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"지금 스캔한 것으로 계속"</string>
+    <string name="quest_buildingType_garages_description">"서로 다른 소유주/세입자를 위해 구분된 공간"</string>
+    <string name="quest_tourism_information_title">"어떤 관광 정보가 나와 있습니까?"</string>
+    <string name="quest_tourism_information_name_title">"%s에 어떤 관광 정보가 나와 있습니까?"</string>
+    <string name="quest_tourism_information_office">"관광 정보 사무소"</string>
+    <string name="quest_tourism_information_board">"정보 안내판"</string>
+    <string name="quest_tourism_information_terminal">"정보 안내기"</string>
+    <string name="quest_tourism_information_map">"지도"</string>
+    <string name="quest_tourism_information_guidepost">"이정표"</string>
+    <string name="quest_recycling_materials_answer_waste">"일반 쓰레기용"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"그렇다면, 이 컨테이너는 가정/상가에서 나오는 일반 쓰레기를 취급합니까?"</string>
+    <string name="quest_accepts_cash_title">"%s은(는) 현금을 받습니까?"</string>
+    <string name="user_profile">"내 프로필"</string>
+    <string name="user_login">"로그인"</string>
+    <string name="user_logout">"로그아웃"</string>
+    <string name="osm_profile">"OSM 프로필"</string>
+    <string name="next">"다음"</string>
+    <string name="letsgo">"시작합시다!"</string>
+    <string name="tutorial_welcome_to_osm">"오픈스트리트맵에 오신 것을 환영합니다"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"자유로운 위키형 세계 지도"</string>
+    <string name="tutorial_intro">"StreetComplete를 이용하면 손쉽게 오픈스트리트맵에 기여할 수 있습니다.
+StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 찾습니다. 자전거 도로, 건물 번호, 개점 시간 등등..."</string>
+    <string name="tutorial_solving_quests">"탐색이 끝나면, 지도에 채워넣어야 할 데이터가 퀘스트의 형태로 지도에 표시됩니다.
+
+여기서 바로 퀘스트를 해결할 수도 있고, 먼저 로그인한 다음에 퀘스트를 해결할 수도 있습니다."</string>
+    <string name="tutorial_stay_safe">"확신이 들지 않으면, 언제든지 \"답할 수 없음\"을 선택해 참고를 남기세요.
+
+마지막으로, 안전하게 활동하세요. 주변에 낯선 사람이 있는지 항상 확인하고, 사유지에 들어가지 마세요."</string>
+    <string name="tutorial_happy_mapping">"즐거운 지도 제작 시간 보내세요!"</string>
+    <string name="achievements_empty">"아직 달성한 업적이 없습니다"</string>
+    <string name="links_empty">"아직 링크가 없습니다"</string>
+    <string name="quests_empty">"아직 아무 답변도 업로드하지 않았습니다"</string>
+    <string name="unsynced_quests_description">"아직 답변 %d개를 업로드하지 않았습니다."</string>
+    <string name="unsynced_quests_not_logged_in_description">"아직 변경 내역 %d개를 업로드하지 않았습니다. 변경 내역을 업로드하려면 로그인하세요."</string>
+    <string name="user_quests_title">"해결한 퀘스트"</string>
+    <string name="user_achievements_title">"업적"</string>
+    <string name="user_links_title">"링크 모음"</string>
+    <string name="user_profile_title">"프로필"</string>
+    <string name="user_statistics_quest_wiki_link">"문서"</string>
+    <string name="achievements_unlocked_link">"잠금 해제된 링크:"</string>
+    <string name="achievements_unlocked_links">"잠금 해제된 링크:"</string>
+    <string name="link_category_intro_title">"소개"</string>
+    <string name="link_category_intro_description">"OSM과 OSM 커뮤니티에 대해 더 자세히 알고 싶다면"</string>
+    <string name="link_category_editors_title">"기여하기"</string>
+    <string name="link_category_editors_description">"오픈스트리트맵에 기여하기 위한 편집기와 프로그램 등"</string>
+    <string name="link_category_maps_title">"지도"</string>
+    <string name="link_category_maps_description">"오픈스트리트맵 기반 지도"</string>
+    <string name="link_category_showcase_title">"진열장"</string>
+    <string name="link_category_showcase_description">"오픈스트리트맵 기반 서비스와 앱"</string>
+    <string name="link_category_goodies_title">"기타 사이트"</string>
+    <string name="link_category_goodies_description">"한번쯤 다뤄 볼 만한 흥미로운 지도 관련 사이트"</string>
+    <string name="link_cyclosm_description">"자전거 이용자들을 위한 지도"</string>
+    <string name="link_wheelmap_description">"휠체어가 접근할 수 있는 곳을 찾는 지도"</string>
+    <string name="link_osm_buildings_description">"건물을 3D로 보여주는 지도"</string>
+    <string name="link_openvegemap_description">"여러분의 도시에 채식주의자나 비건이 있는지 찾아보세요"</string>
+    <string name="link_touch_mapper_description">"점자 지도를 손쉽게 만들 수 있습니다"</string>
+    <string name="link_mapy_tactile_description">"시각 장애인들을 위한 다양한 배율의 점자 지도"</string>
+    <string name="link_josm_description">"데스크톱 이용자들을 위한 강력한 오픈스트리트맵 편집기입니다. 규칙적으로 기여하는 사람들에게 가장 강력한 도구입니다."</string>
+    <string name="link_vespucci_description">"안드로이드용 고급 오픈스트리트맵 편집기"</string>
+    <string name="link_ideditor_description">"인터넷 브라우저에서 이용하는 간단한 오픈스트리트맵 편집기입니다. 데스크톱과 큰 태블릿에 최적화되었습니다"</string>
+    <string name="link_umap_description">"원하는 데이터만 골라 나만의 지도를 만들고 홈페이지에 삽입해 보세요"</string>
+    <string name="link_opnvkarte_description">"대중교통 노선도/정류장 지도"</string>
+    <string name="link_pic4review_description">"단순히 도시 사진만 보고도 오픈스트리트맵에 기여할 수 있습니다"</string>
+    <string name="link_wiki_description">"오픈스트리트맵과 관련된 모든 활동은 여기에서 시작됩니다"</string>
+    <string name="link_learnosm_description">"오픈스트리트맵에 처음이신 분을 위한 초보자 가이드"</string>
+    <string name="link_neis_one_description">"오픈스트리트맵 기여자들의 통계를 모아 놓은 사이트입니다. 여러분이 어디를 어떻게 기여했는지, 여러분 주변에 다른 사람이 있는지, 내 리더보드는 어떠한지 등을 볼 수 있습니다."</string>
+    <string name="link_welcome_mat_description">"오픈스트리트맵에 관한 일반적인 정보와 팀으로 뭉쳐 오픈스트리트맵에 기여하는 방법"</string>
+    <string name="link_mapillary_description">"불특정 다수가 찍은 거리 사진을 공유하는 서비스이자 앱. 오픈스트리트맵에 기여할 때 자유롭게 이용할 수 있습니다"</string>
+    <string name="link_openstreetcam_description">"수많은 사람이 거리 사진을 공유하는 서비스이자 앱. 여기 있는 사진들은 오픈스트리트맵에 기여할 때 자유롭게 이용할 수 있습니다"</string>
+    <string name="link_openrouteservice_wheelchair_description">"휠체어 이용자를 위한 내비게이션"</string>
+    <string name="link_nominatim_description">"오픈스트리트맵 데이터 지오코더, 수많은 서비스에 사용됩니다"</string>
+    <string name="link_city_roads_description">"도시의 모든 도로를 티셔츠, 머그 컵 등등에 담습니다"</string>
+    <string name="link_myosmatic_description">"인쇄 가능한 도시 지도를 손쉽게 만들 수 있습니다. 원한다면 지도 옆에 도로명을 나열할 수도 있습니다."</string>
+    <string name="link_brouter_description">"아마 가장 좋은 자전거용 경로 탐색 엔진"</string>
+    <string name="link_show_me_the_way_description">"오픈스트리트맵이 바뀌는 모습을 실시간으로 보기"</string>
+    <string name="link_osrm_description">"가장 빠른 경로 탐색 엔진"</string>
+    <string name="link_openrouteservice_description">"다양한 교통 수단과 도보 경로를 목적에 맞게 탐색합니다. 등시선(특정 지점으로부터 이동하는 데 걸리는 시간이 동일한 지역을 등고선처럼 나타낸 것) 지도 또한 제작할 수 있습니다."</string>
+    <string name="link_osm_haiku_description">"오픈스트리트맵 데이터로 하이쿠(일본의 정형시)를 생성합니다"</string>
+    <string name="link_openinframap_description">"전력, 통신, 가스, 유류 인프라를 보여주는 지도"</string>
+    <string name="link_openorienteeringmap_description">"오리엔티어링을 위한 인쇄용 지도를 제작합니다"</string>
+    <string name="link_openstreetbrowser_description">"오픈스트리트맵의 지물들을 카테고리별로 보여주는 지도"</string>
+    <string name="link_weeklyosm_description">"오픈스트리트맵 세계에서 일어나는 소식이 매주 올라오는 블로그"</string>
+    <string name="link_figuregrounder_description">"피겨 그라운드 지도(건물이 있는 부분과 없는 부분을 표현한 지도)를 생성합니다"</string>
+    <string name="achievement_first_edit_title">"처음으로 퀘스트 해결"</string>
+    <string name="achievement_first_edit_description">"오픈스트리트맵 커뮤니티에 오신 것을 환영합니다! 본인이 해결한 퀘스트를 유형벌로 보고 싶으시다면 프로필로 들어가세요."</string>
+    <string name="achievement_surveyor_title">"조사자"</string>
+    <string name="achievement_surveyor_solved_X">"퀘스트 %d개를 해결했습니다. 더 많은 업적을 해제하려면 계속 퀘스트를 해결하세요! 업적을 해제할수록 더 많은 오픈스트리트맵 관련 앱과 프로젝트를 볼 수 있습니다!"</string>
+    <string name="achievement_regular_title">"규칙적인 기여"</string>
+    <string name="achievement_regular_description">"이 앱으로 오픈스트리트맵에 %d일 동안 기여했습니다! 규칙적인 기여자들은 오픈스트리트맵의 척추가 됩니다. 정말 감사합니다!"</string>
+    <string name="achievement_bicyclist_title">"자전거 운전자"</string>
+    <string name="achievement_bicyclist_solved_X">"자전거 운전자들을 위해 퀘스트를 %d개 해결했습니다!"</string>
+    <string name="achievement_wheelchair_title">"휠체어 운전자"</string>
+    <string name="achievement_wheelchair_solved_X">"휠체어를 이용하는 사람을 위해 퀘스트를 %d개 해결했습니다!"</string>
+    <string name="achievement_postman_title">"우체부"</string>
+    <string name="achievement_postman_solved_X">"주소 %d개를 기여했습니다!
+주소 데이터는 우체부에게도 필요하지만, 내비게이션에도 필요합니다."</string>
+    <string name="achievement_building_title">"고층 건물"</string>
+    <string name="achievement_building_solved_X">"건물 관련 퀘스트를 %d개 해결했습니다.
+이 앱은 건물의 용도가 결정되어야 건물의 주소를 물어본다는 점을 잊지 마세요."</string>
+    <string name="achievement_blind_title">"여섯 번째 감각"</string>
+    <string name="achievement_blind_solved_X">"시각 장애인을 위한 퀘스트를 %d개 해결했습니다."</string>
+    <string name="achievement_pedestrian_title">"달리기 선수"</string>
+    <string name="achievement_pedestrian_solved_X">"걸어다니는 사람을 위한 퀘스트를 %d개 해결했습니다!"</string>
+    <string name="achievement_veg_title">"동물 애호가"</string>
+    <string name="achievement_veg_solved_X">"고기를 먹지 않는 사람들을 위한 퀘스트를 %d개 해결했습니다!"</string>
+    <string name="achievement_car_title">"도로 위를 달린다"</string>
+    <string name="achievement_car_solved_X">"도로와 도로 관련 시설을 위한 퀘스트를 %d개 해결했습니다!"</string>
+    <string name="unread_messages_message">"메일함에 읽지 않은 메시지가 %d개 있습니다"</string>
+    <string name="unread_messages_button">"메일함 열기"</string>
+    <string name="action_about2">"정보"</string>
+    <string name="map_btn_menu">"메뉴"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;프로필에 나와 있는 데이터는 누구나 볼 수 있는 여러분의 오픈스트리트맵 기여 내역에서 가져와 합산한 것입니다. 가져온 데이터는 StreetComplete 서버에 저장합니다.&lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"나중에 프로필 화면에서 언제든지 볼 수 있습니다."</string>
+    <string name="credits_art_contributors_title">"그림 기여자"</string>
+    <string name="credits_projects_contributors_title">"StreetComplete를 지원하는 프로젝트"</string>
+    <string name="credits_main_contributors_title">"주요 기여자"</string>
+    <string name="stats_are_syncing">"통계를 동기화하는 중입니다. 조금 이따 확인하세요."</string>
+    <string name="user_statistics_country_rank">"%2$s에서의 순위: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"지도 제작 포털 %s"</string>
+    <string name="user_statistics_filter_by_country">"국가별"</string>
+    <string name="user_statistics_filter_by_quest_type">"퀘스트 유형별"</string>
+    <string name="user_profile_global_rank">"전 세계
+순위"</string>
+    <string name="user_profile_local_rank">"%s
+에서의 순위"</string>
+    <string name="user_profile_days_active">"활동한
+날(일)"</string>
+    <string name="user_profile_achievement_levels">"기여
+레벨"</string>
+    <string name="quest_address_street_title">"이 (건물)번호 %s은(는) 어느 도로에 속해 있습니까?"</string>
+    <string name="quest_address_street_no_named_streets">"이름이 있는 도로에 속해 있지 않음"</string>
+    <string name="quest_address_street_place_name_label">"장소명:"</string>
+    <string name="quest_address_street_description">"건물 번호가 속한 도로를 지도에서 선택하거나 도로명을 아래에 직접 입력하세요."</string>
+    <string name="quest_recycling_type_cooking_oil">"조리용 기름"</string>
+    <string name="quest_recycling_type_engine_oil">"엔진오일"</string>
+    <string name="link_photon_description">"오픈스트리트맵 지물 검색 엔진 Nominatim의 단독 실행 버전"</string>
+    <string name="link_graphhopper_description">"유연한 경로 탐색 엔진"</string>
+    <string name="link_qwant_maps_description">"탐색할 수 있는 장소와 방향이 담긴 지도"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;지도를 띄우려면, %1$s에서 벡터 타일을 가져와야 합니다. 자세한 사항은 &lt;a href=\"%2$s\"&gt;개인정보 정책&lt;/a&gt;을 참조하세요.&lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"스폰서"</string>
+    <string name="quest_board_type_history">"역사"</string>
+    <string name="quest_board_type_geology">"지질학"</string>
+    <string name="quest_board_type_plants">"식생"</string>
+    <string name="quest_board_type_wildlife">"야생동물"</string>
+    <string name="quest_board_type_nature">"자연(다양한 주제)"</string>
+    <string name="quest_board_type_notice_board">"공지 알림판입니다"</string>
+    <string name="quest_board_type_public_transport">"대중교통"</string>
+    <string name="quest_board_type_title">"이 안내판의 주제가 무엇입니까?"</string>
+    <string name="quest_sidewalk_separately_mapped">"네, 지도에서 분리되어 보입니다"</string>
+    <string name="quest_board_type_map">"지도입니다"</string>
+    <string name="quest_board_type_map_title">"지도밖에 안 그려져 있습니까?"</string>
+    <string name="quest_board_type_map_description">"만약 안내판이 특정 주제를 다루고 있다면, 해당 주제를 적어 주세요. 이때 안내판에 지도가 있는지 없는지 신경쓸 필요는 없습니다. 예를 들어 대중교통 안내판에는 버스 노선도가 있을 수 있습니다. 만약 답변 목록에서 주제를 찾을 수 없다면, 참고를 남겨 주세요."</string>
+    <string name="quest_surface_detailed_answer_impossible">"여러 재질이 섞여 있음..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"\"각 부분마다 다릅니다\"를 선택하면 선을 포장재가 바뀌는 곳을 기준으로 자를 수 있습니다. \"답할 수 없음\"은 도로의 포장재가 답변 목록에 없을 때 선택합니다."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"포장재의 특성을 간략하게(ex. \"조약돌 사이사이에 모래가 들어가 있음\") 적어 주세요. 최대 255자까지 적을 수 있습니다."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"국제 명칭"</string>
+    <string name="quest_streetName_menuItem_romanized">"라틴 문자로 쓰여 있음"</string>
+    <string name="quest_buildingType_terrace2">"옆으로 나란한 연립 주택"</string>
+    <string name="quest_oneway_tutorial">"이미지에 있는 도로가 핀의 위치에 있는 지도와 같은 방향으로 돌아가 있습니다. 화살표의 방향을 참고하세요. "</string>
     <string name="at_housename">"건물 명칭 %s:"</string>
     <string name="at_conscription_and_street_number">"징병 번호 %1$s, 방위각 %2$s:"</string>
 
@@ -1888,6 +2070,74 @@
     <string name="at_conscription_number">"징병 번호 %s:"</string>
     <string name="at_housenumber">"건물 번호 %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 의 개점 시간은 언제입니까?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"%s의 영업 시간이 달라지지 않았습니까?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"%1$s의 영업 시간(%2$s)이 달라지지 않았습니까?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"영업 시간(%s)이 달라지지 않았습니까?"</string>
+    <string name="quest_openingHours_add_off_days">"쉬는 날 추가"</string>
+    <string name="quest_openingHours_off_day">"쉬는 날"</string>
+    <string name="quest_openingHours_unspecified_range">"명시되어 있지 않음"</string>
+    <string name="quest_cycleway_resurvey_title">"아직도 여기에 자전거 도로가 있습니까?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s)에 휠체어가 들어갈 수 있습니까?"</string>
+    <string name="pref_title_resurvey_intervals">"재조사 간격"</string>
+    <string name="resurvey_intervals_less_often">"더 가끔 물어보기"</string>
+    <string name="resurvey_intervals_default">"기본값"</string>
+    <string name="resurvey_intervals_more_often">"더 자주 물어보기"</string>
+    <string name="quest_street_side_puzzle_select">"선택하려면 탭"</string>
+    <string name="quest_accepts_cash_type_title">"%1$s(%2$s)은(는) 현금을 받습니까?"</string>
+    <string name="quest_busStopBench_tram_name_title">"트램 정류장 %s에 벤치가 있습니까?"</string>
+    <string name="quest_busStopBench_tram_title">"이 트램 정류장에 벤치가 있습니까?"</string>
+    <string name="quest_busStopBench_title">"이 버스 정류장에 벤치가 있습니까?"</string>
+    <string name="quest_busStopBench_name_title">"버스 정류장 %s에 벤치가 있습니까?"</string>
+    <string name="quest_summit_register_title">"산꼭대기 %s 지점이 등록되어 있습니까?"</string>
+    <string name="quest_is_defibrillator_inside_title">"건물 안에 심장충격기(재세동기, AED)가 있습니까?"</string>
+    <string name="about_title_translate">"앱 번역을 도와주세요"</string>
+    <string name="about_description_translate">"%1$s은(는) %2$d%% 번역되었습니다"</string>
+    <string name="quest_oneway2_title">"일방통행 도로입니까? 그렇다면 방향은 어느 쪽입니까?"</string>
+    <string name="quest_oneway2_dir">"이 방향으로 일방통행"</string>
+    <string name="quest_oneway2_no_oneway">"일방통행이 아님"</string>
+    <string name="quest_maxweight_select_sign">"표지판 선택"</string>
+    <string name="quest_steps_incline_title">"이 계단은 올라가는 방향이 어느 쪽입니까?"</string>
+    <string name="quest_steps_incline_up">"이 방향"</string>
+    <string name="quest_step_count_title">"몇 단짜리 계단입니까?"</string>
     <string name="quest_traffic_signals_sound_title">"여기에 시각 장애인을 위한 음성 신호가 있습니까?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"이 신호등에 시각 장애인의 횡단을 위한 점자 표시가 있습니까?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"힌트: 보통 신호등 버튼 케이스 아래쪽에 진동하는 버튼이나 회전하는 고깔이 있습니다."</string>
+    <string name="quest_busStopRef_title">"이 버스 정류장의 참조 번호는 무엇입니까?"</string>
+    <string name="quest_tramStopRef_title">"이 트램 정류장의 참조 번호는 얼마입니까?"</string>
+    <string name="quest_buildingType_bungalow_description2">"작은 외딴 집(여름 별장, 전원주택, 오두막, ...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"이 철길 건널목에는 어떤 장벽이 있습니까?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"장벽 없음"</string>
+    <string name="quest_steps_ramp_title">"이 계단에 경사로가 있습니까? 있다면 어떤 종류입니까?"</string>
+    <string name="quest_steps_ramp_none">"(이용할 수 있는) 경사로 없음"</string>
+    <string name="quest_steps_ramp_bicycle">"자전거용"</string>
+    <string name="quest_steps_ramp_stroller">"보행자용"</string>
+    <string name="quest_steps_ramp_wheelchair">"휠체어용"</string>
+    <string name="quest_atm_operator_title">"이 ATM은 어느 은행 소속입니까?"</string>
+    <string name="quest_clothes_container_operator_title">"이 헌옷 수거함은 누구를 위한 것입니까?"</string>
+    <string name="quest_charging_station_operator_title">"이 충전소는 누가 운영합니까?"</string>
+    <string name="link_indoorequal_description">"쇼핑몰, 지하철역 등에서 실내 지도를 찾아보세요"</string>
+    <string name="link_thenandnow_description">"우리가 그동안 얼마나 진전을 이루었는지 궁금하신가요? 10년 전 지도와 현재의 지도를 비교해 보세요!"</string>
+    <string name="achievement_rare_title">"모험가"</string>
+    <string name="achievement_rare_solved_X">"다른 사람들이 잘 해결하지 않는 퀘스트를 %d개 해결했습니다. 축하드립니다!"</string>
+    <string name="achievement_citizen_title">"시민"</string>
+    <string name="achievement_citizen_solved_X">"도시에서의 일상에 유용한 퀘스트를 %d개 해결했습니다!"</string>
+    <string name="achievement_outdoors_title">"외출"</string>
+    <string name="achievement_outdoors_solved_X">"외출하는 사람들에게 유용한 퀘스트를 %d개 해결했습니다!"</string>
+    <string name="quest_pedestrian_crossing_island">"이 보행자 횡단보도에 섬이 있습니까?"</string>
+    <string name="quest_generic_answer_noSign">"표지판이 없음"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"휠체어 경사로가 지도 상에서 분리되어 보입니까?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"분리되어 있음"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"분리되어 있지 않음"</string>
+    <string name="pref_title_sync2">"자동으로 답변 업로드"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"포장재를 설명해 주세요"</string>
+    <string name="open_url">"URL 열기"</string>
+    <string name="quest_buildingType_silo">"사일로"</string>
+    <string name="quest_buildingType_historic">"역사적 건물"</string>
+    <string name="quest_buildingType_historic_description">"건립 목적이 명확하지 않은, 역사적인 가치가 있는 건물"</string>
+    <string name="quest_buildingType_abandoned">"폐건물"</string>
+    <string name="quest_buildingType_abandoned_description">"원래 목적을 알 수 없는, 사용하지 않는 건물"</string>
+    <string name="quest_buildingType_ruins">"폐허"</string>
+    <string name="quest_buildingType_ruins_description">"버려지고 부서져 알아보기 힘든 건물"</string>
+    <string name="quest_charging_station_capacity_title">"이 충전소에서 최대 몇 대의 차량이 동시에 충전할 수 있습니까?"</string>
+    <string name="link_disaster_ninja_description">"최근에 일어난 자연재해를 보여주는 지도입니다. 인도주의 지도 제작자들이 좋아합니다. 또한 지도가 자세한 지역, 지도가 최신인 지역을 분석해 통계로 보여줍니다."</string>
 </resources>

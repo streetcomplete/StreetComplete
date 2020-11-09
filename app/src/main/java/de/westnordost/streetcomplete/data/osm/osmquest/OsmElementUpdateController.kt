@@ -52,10 +52,6 @@ class OsmElementUpdateController @Inject constructor(
         return elementDB.get(elementType, elementId)
     }
 
-    fun cleanUp() {
-        elementDB.deleteUnreferenced()
-    }
-
     private fun createGeometry(element: Element): ElementGeometry? {
         when(element) {
             is Node -> {

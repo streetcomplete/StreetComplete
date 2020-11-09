@@ -75,6 +75,9 @@
       "name": "Tyrolienne",
       "terms": "Câble aérien, câble de canopée, tyrolienne..."
     },
+    "aeroway": {
+      "name": "Équipement aérien"
+    },
     "aeroway/aerodrome": {
       "name": "Aéroport",
       "terms": "Aéroport, Aérodrome, aeroport, aerodrome, Altiport, Héliport, airport"
@@ -326,7 +329,8 @@
       "terms": "banquet,baptême,bar mitzvah,bat mitzvah,anniversaires,célébrations,conférences,confirmation,rencontres,fêtes,mariages"
     },
     "amenity/exhibition_centre": {
-      "name": "Centre d'expositions"
+      "name": "Centre d'expositions",
+      "terms": "centre d'exposition,parc des expositions,expo"
     },
     "amenity/fast_food": {
       "name": "Restauration rapide",
@@ -423,14 +427,16 @@
       "terms": "Café internet,Cybercafé"
     },
     "amenity/karaoke_box": {
-      "name": "Karaoke"
+      "name": "Karaoke",
+      "terms": "karaoke,karaoké"
     },
     "amenity/language_school": {
       "name": "École de langues",
       "terms": "école de langues,langues étrangères"
     },
     "amenity/lavoir": {
-      "name": "Lavoir"
+      "name": "Lavoir",
+      "terms": "lavoir"
     },
     "amenity/letter_box": {
       "name": "Boîte aux lettres privée",
@@ -443,6 +449,10 @@
     "amenity/loading_dock": {
       "name": "Quai de chargement",
       "terms": "quai de chargement,zone de chargement,plateforme de chargement,plate-forme de chargement,embarcadère,chargement"
+    },
+    "amenity/lounger": {
+      "name": "Chaise longue",
+      "terms": "chaise,banc,siège"
     },
     "amenity/love_hotel": {
       "name": "Love hôtel",
@@ -461,7 +471,8 @@
       "terms": "transfert d'argent,western union,banque,argent,échange"
     },
     "amenity/mortuary": {
-      "name": "Morgue"
+      "name": "Morgue",
+      "terms": "morgue,iml,mortuaire"
     },
     "amenity/motorcycle_parking": {
       "name": "Parking pour motocyclettes",
@@ -507,7 +518,8 @@
       "terms": "Parking, Zone de stationnement"
     },
     "amenity/parking_space/disabled": {
-      "name": "Place de parking accessible PMR"
+      "name": "Place de parking accessible PMR",
+      "terms": "parking handicapé,PMR"
     },
     "amenity/payment_centre": {
       "name": "Centre de paiement",
@@ -681,7 +693,7 @@
     },
     "amenity/restaurant/greek": {
       "name": "Restaurant grec",
-      "terms": "restaurant grecque,café,bar"
+      "terms": "restaurant grec,café,bar,gyros,pita,souvlaki"
     },
     "amenity/restaurant/indian": {
       "name": "Restaurant indien",
@@ -859,6 +871,10 @@
       "name": "Université, enseignement supérieur universitaire - institution ou campus",
       "terms": "université, campus universitaire, campus, enseignement supérieur universitaire, enseignement supérieur, universitaire, établissement d'enseignement supérieur, post-bac, post bac, institut, etablissement d'enseignement superieur, école, ecole, university, amenity university, college, école supérieure, grande école, haute école, ecole superieure, grande ecole"
     },
+    "amenity/vacuum_cleaner": {
+      "name": "Station d'aspirateurs pour nettoyage automobile",
+      "terms": "aspirateur,automobile,nettoyage,lavage,voiture"
+    },
     "amenity/vehicle_inspection": {
       "name": "Centre de contrôle technique",
       "terms": "centre de contrôle technique,contrôle technique"
@@ -1026,6 +1042,10 @@
       "name": "Parcours scénique",
       "terms": "parcours scénique,train fantôme,attraction,parc d'attraction"
     },
+    "attraction/drop_tower": {
+      "name": "Tour de chute",
+      "terms": "attraction,fete foraine,fête foraine,tour,parc d'attraction"
+    },
     "attraction/kiddie_ride": {
       "name": "manège pour petits enfants",
       "terms": "petite voiture,petit camion,camion de pompiers,hélicoptère,cheval,petit enfant,petits enfants,manège,attraction,parc d'attraction"
@@ -1168,6 +1188,10 @@
     "barrier/sally_port": {
       "name": "Entrée fortifiée",
       "terms": "entrée fortifiée,poterne"
+    },
+    "barrier/spikes": {
+      "name": "Herse",
+      "terms": "herse"
     },
     "barrier/stile": {
       "name": "Échalier",
@@ -1440,6 +1464,10 @@
       "name": "Artisanat",
       "terms": "Artisanat"
     },
+    "craft/agricultural_engines": {
+      "name": "Réparation de matériel agricole",
+      "terms": "matériel agricole,materiel agricole,réparation,reparation,garage,tracteur,engins agricoles,engin agricole,mécanicien,mecanicien"
+    },
     "craft/basket_maker": {
       "name": "Vannier",
       "terms": "Vannier"
@@ -1534,6 +1562,10 @@
     },
     "craft/locksmith": {
       "name": "Serrurier"
+    },
+    "craft/metal_construction": {
+      "name": "Constructions métalliques",
+      "terms": "constructions métalliques,constructions metalliques,"
     },
     "craft/painter": {
       "name": "Peintre",
@@ -1674,14 +1706,15 @@
     },
     "emergency/fire_hydrant": {
       "name": "Borne incendie",
-      "terms": "Borne incendie, borne-fontaine, borne fontaine, bouche d'incendie, poteau incendie, hydrant, fire hydrant"
+      "terms": "Borne incendie, borne-fontaine, borne fontaine, bouche d'incendie, poteau incendie, hydrant, fire hydrant, point d'eau incendie"
     },
     "emergency/first_aid_kit": {
       "name": "Kit de premiers secours",
       "terms": "bandage, pansement, premiers secours, kit médical, kit d'urgence, trousse de secours, trousse d'urgence"
     },
     "emergency/landing_site": {
-      "name": "Site d’atterrissage d’urgence"
+      "name": "Site d’atterrissage d’urgence",
+      "terms": "hélicoptère,helicoptere,héliport,urgence"
     },
     "emergency/life_ring": {
       "name": "Bouée de Sauvetage",
@@ -1728,7 +1761,8 @@
       "terms": "sortie de secours, porte, issue de secours, évacuation, urgence, incendie"
     },
     "entrance/emergency_ward_entrance": {
-      "name": "Entrée des urgences"
+      "name": "Entrée des urgences",
+      "terms": "urgences"
     },
     "ford": {
       "name": "Gué",
@@ -1744,6 +1778,10 @@
     "golf/cartpath": {
       "name": "chemin pour charriot de golf",
       "terms": "charriot,golf,chemin,parcours de golf,terrain de golf"
+    },
+    "golf/clubhouse": {
+      "name": "Club-house de golf",
+      "terms": "club house,clubhouse"
     },
     "golf/driving_range": {
       "name": "Terrain de pratique",
@@ -1810,7 +1848,8 @@
       "terms": "conseil,diététique,sexe,régime"
     },
     "healthcare/dentist/orthodontics": {
-      "name": "Orthodontiste"
+      "name": "Orthodontiste",
+      "terms": "orthodontiste,dentiste,appareil dentaire"
     },
     "healthcare/hospice": {
       "name": "Hospice",
@@ -1867,7 +1906,8 @@
       "name": "Arrêt de bus"
     },
     "highway/construction": {
-      "name": "Route barrée"
+      "name": "Route barrée",
+      "terms": "route,travaux,barrée,fermée,construction"
     },
     "highway/corridor": {
       "name": "Couloir intérieur",
@@ -2006,6 +2046,10 @@
       "name": "Chemin non carrossable",
       "terms": "Chemin"
     },
+    "highway/path/boardwalk": {
+      "name": "Passerelle",
+      "terms": "pont,passerelle,promenade"
+    },
     "highway/path/informal": {
       "name": "Chemin informel",
       "terms": "chemin informel,chemin officieux,chemin spontané,raccourci"
@@ -2049,6 +2093,10 @@
     "highway/road": {
       "name": "Voie de type inconnu",
       "terms": "Route inconnue"
+    },
+    "highway/road/bridge": {
+      "name": "Pont routier de type inconnu",
+      "terms": "pont"
     },
     "highway/secondary": {
       "name": "Route secondaire",
@@ -2114,6 +2162,10 @@
       "name": "Voie d'accès à une route tertiaire",
       "terms": "Bretelle d'accès à une route tertiaire"
     },
+    "highway/toll_gantry": {
+      "name": "Péage sans barrière",
+      "terms": "péage"
+    },
     "highway/track": {
       "name": "Piste agricole ou forestière",
       "terms": "route forestière,piste pare-feu, chemin d'exploitation, chemin agricole,chemin non entretenu"
@@ -2163,7 +2215,8 @@
       "terms": "Borne frontière"
     },
     "historic/building": {
-      "name": "Bâtiment historique"
+      "name": "Bâtiment historique",
+      "terms": "monument,historique"
     },
     "historic/castle": {
       "name": "Château",
@@ -2171,7 +2224,7 @@
     },
     "historic/castle/fortress": {
       "name": "Forteresse historique",
-      "terms": "forteresse historique,site historique,citadelle,militaire"
+      "terms": "forteresse historique,site historique,citadelle,militaire,monument"
     },
     "historic/castle/palace": {
       "name": "Palace",
@@ -2271,7 +2324,8 @@
       "name": "Occupation du sol"
     },
     "landuse/allotments": {
-      "name": "Jardins familiaux"
+      "name": "Jardins familiaux",
+      "terms": "jardin,jardin communautaire"
     },
     "landuse/aquaculture": {
       "name": "Aquaculture",
@@ -2378,9 +2432,17 @@
       "name": "Base Navale",
       "terms": "Base navale"
     },
+    "landuse/military/obstacle_course": {
+      "name": "Parcours du combattant",
+      "terms": "parcours,obstacles"
+    },
     "landuse/military/range": {
       "name": "Stand de tir militaire",
       "terms": "Champ de tir"
+    },
+    "landuse/military/training_area": {
+      "name": "Zone d'entraînement militaire",
+      "terms": "armée,entrainement,manœuvres,manoeuvres"
     },
     "landuse/orchard": {
       "name": "Verger",
@@ -2431,6 +2493,9 @@
     "landuse/winter_sports": {
       "name": "Aire de sports d'hiver",
       "terms": "ski, nordique, fond, alpin, descente, snowboard, randonnée, rando, luge, traîneau, ski-joring, husky, cheval, raquette, piéton, glace, patin à glace"
+    },
+    "leisure": {
+      "name": "Équipement de loisir"
     },
     "leisure/adult_gaming_centre": {
       "name": "Jeux pour adultes",
@@ -3048,6 +3113,9 @@
       "name": "Tranchée militaire",
       "terms": "tranchée,guerre,infanterie"
     },
+    "natural": {
+      "name": "Élément naturel"
+    },
     "natural/bare_rock": {
       "name": "Zone Rocheuse",
       "terms": "Zone Rocheuse, Rochers"
@@ -3410,10 +3478,12 @@
       "terms": "Agence de l'eau, Compagnie des eaux"
     },
     "piste/ice_skate": {
-      "name": "Piste de patin à glace"
+      "name": "Piste de patin à glace",
+      "terms": "patin,glace"
     },
     "piste/nordic": {
-      "name": "Piste de ski de fond"
+      "name": "Piste de ski de fond",
+      "terms": "ski de fond,ski nordique"
     },
     "piste/skitour": {
       "name": "Ski de Randonnée",
@@ -3424,7 +3494,8 @@
       "terms": "luge,piste,bobsleigh,toboggan,skeleton"
     },
     "piste/sleigh": {
-      "name": "Piste de traîneau"
+      "name": "Piste de traîneau",
+      "terms": "traineau,husky"
     },
     "place": {
       "name": "Lieu"
@@ -3543,6 +3614,12 @@
       "name": "Bureau de vote temporaire",
       "terms": "bureau de vote,vote,élections,démocratie,démocratique"
     },
+    "power": {
+      "name": "Équipement lié à l'énergie"
+    },
+    "power/cable": {
+      "name": "Câble électrique"
+    },
     "power/cable/underground": {
       "name": "Câble électrique souterrain",
       "terms": "Câble électrique souterrain"
@@ -3580,22 +3657,28 @@
       "terms": "Centrale électrique"
     },
     "power/plant/source/coal": {
-      "name": "Centrale au charbon"
+      "name": "Centrale au charbon",
+      "terms": "centrale,charbon"
     },
     "power/plant/source/gas": {
-      "name": "Centrale au gaz"
+      "name": "Centrale au gaz",
+      "terms": "centrale,gaz"
     },
     "power/plant/source/hydro": {
-      "name": "Centrale hydroélectrique"
+      "name": "Centrale hydroélectrique",
+      "terms": "centrale hydroélectrique,centrale hydroelectrique,turbine"
     },
     "power/plant/source/nuclear": {
-      "name": "Centrale nucléaire"
+      "name": "Centrale nucléaire",
+      "terms": "centrale nucléaire,centrale nucleaire,centrale atomique"
     },
     "power/plant/source/solar": {
-      "name": "Ferme solaire"
+      "name": "Ferme solaire",
+      "terms": "centrale solaire,photovoltaïque,photovoltaique"
     },
     "power/plant/source/wind": {
-      "name": "Fermé d'éoliennes"
+      "name": "Ferme d'éoliennes",
+      "terms": "éolienne,éolienne,parc éolien,parc eolien"
     },
     "power/pole": {
       "name": "Poteau électrique",
@@ -3812,25 +3895,31 @@
       "terms": "borne kilométrique ferroviaire"
     },
     "railway/miniature": {
-      "name": "Rail pour train miniature"
+      "name": "Rail pour train miniature",
+      "terms": "rail,train miniature"
     },
     "railway/monorail": {
-      "name": "Rail pour monorail"
+      "name": "Rail pour monorail",
+      "terms": "rail,monorail"
     },
     "railway/narrow_gauge": {
-      "name": "Voie étroite"
+      "name": "Voie étroite",
+      "terms": "voie etroite"
     },
     "railway/platform": {
       "name": "Quai de gare ferroviaire"
     },
     "railway/preserved": {
-      "name": "Chemin de fer touristique"
+      "name": "Chemin de fer touristique",
+      "terms": "train touristique,train historique"
     },
     "railway/rail": {
-      "name": "Rail pour train"
+      "name": "Rail pour train",
+      "terms": "rail,chemin de fer"
     },
     "railway/rail/highspeed": {
-      "name": "Rail pour train à grande vitesse"
+      "name": "Rail pour train à grande vitesse",
+      "terms": "rail,TGV"
     },
     "railway/signal": {
       "name": "Feux tricolores ferroviaires",
@@ -3840,7 +3929,8 @@
       "name": "Gare ferroviaire"
     },
     "railway/subway": {
-      "name": "Rail pour métro"
+      "name": "Rail pour métro",
+      "terms": "rail,métro,metro,métropolitain,metropolitain"
     },
     "railway/subway_entrance": {
       "name": "Bouche de métro",
@@ -3861,7 +3951,8 @@
       "name": "Emplacement où s'arrête le tram"
     },
     "railway/yard": {
-      "name": "Dépôt ferroviaire"
+      "name": "Dépôt ferroviaire",
+      "terms": "depot,fret"
     },
     "relation": {
       "name": "Relation",
@@ -3911,7 +4002,8 @@
       "terms": "Cave, Caviste, Magasin de vin, Vins & Spiritueux"
     },
     "shop/anime": {
-      "name": "Boutique de manga et anime"
+      "name": "Boutique de manga et anime",
+      "terms": "manga,BD,figurine"
     },
     "shop/antiques": {
       "name": "Antiquaire",
@@ -3989,7 +4081,8 @@
       "terms": "Boucherie, charcuterie, charcutier, boucher"
     },
     "shop/camera": {
-      "name": "Photographe"
+      "name": "Boutique de matériel photographique",
+      "terms": "appareil photo,caméra,camera,film"
     },
     "shop/candles": {
       "name": "Magasin de bougies",
@@ -4004,7 +4097,8 @@
       "terms": "Concessionnaire,garage,garagiste"
     },
     "shop/car/second_hand": {
-      "name": "Concessionnaire de voiture d'occasion"
+      "name": "Concessionnaire de voiture d'occasion",
+      "terms": "automobile,voiture,occasion"
     },
     "shop/car_parts": {
       "name": "Magasin de pièces automobiles",
@@ -4040,7 +4134,7 @@
     },
     "shop/chocolate": {
       "name": "Chocolatier",
-      "terms": "Vente de chocolats"
+      "terms": "chocolats,confiserie"
     },
     "shop/clothes": {
       "name": "Magasin de vêtements",
@@ -4055,7 +4149,8 @@
       "terms": "boutique,magasin de sous-vêtements,sous-vêtements,slips,boxers,soutient-gorges,lingerie,chaussettes"
     },
     "shop/clothes/wedding": {
-      "name": "Magasin de vêtements de mariage"
+      "name": "Magasin de vêtements de mariage",
+      "terms": "mariage,robe,mariée,mariee"
     },
     "shop/coffee": {
       "name": "Boutique de vente de cafés",
@@ -4086,7 +4181,8 @@
       "terms": "campagne,chasse,pêche,équitation,cheval,chevaux"
     },
     "shop/craft": {
-      "name": "Magasin d'arts et loisirs créatifs"
+      "name": "Magasin d'arts et loisirs créatifs",
+      "terms": "art,loisir,peinture"
     },
     "shop/curtain": {
       "name": "Magasin de rideaux",
@@ -4109,7 +4205,8 @@
       "terms": "Magasin de bricolage"
     },
     "shop/doors": {
-      "name": "Magasin de portes"
+      "name": "Magasin de portes",
+      "terms": "porte,porte-fenêtre,porte-fenetre"
     },
     "shop/dry_cleaning": {
       "name": "Pressing",
@@ -4167,7 +4264,8 @@
       "terms": "Vente de cadres"
     },
     "shop/frozen_food": {
-      "name": "Magasin de produits surgelés"
+      "name": "Magasin de produits surgelés",
+      "terms": "surgelés,surgeles,glaces"
     },
     "shop/fuel": {
       "name": "Revendeur de carburant",
@@ -4378,7 +4476,8 @@
       "terms": "Photographe, Tirage de photos"
     },
     "shop/pottery": {
-      "name": "Magasin de poterie"
+      "name": "Magasin de poterie",
+      "terms": "poterie,céramique,ceramique,potier,céramiste,ceramiste"
     },
     "shop/printer_ink": {
       "name": "Vendeur d'encre pour imprimante",
@@ -4449,7 +4548,8 @@
       "terms": "Supermarché"
     },
     "shop/supermarket/organic": {
-      "name": "Supermarché bio"
+      "name": "Supermarché bio",
+      "terms": "bio,biologique"
     },
     "shop/swimming_pool": {
       "name": "Magasin de matériel de piscine",
@@ -4484,7 +4584,8 @@
       "terms": "Buraliste"
     },
     "shop/tool_hire": {
-      "name": "Location d'outils"
+      "name": "Location d'outils",
+      "terms": "outil,outillage,location"
     },
     "shop/toys": {
       "name": "Magasin de jouets",
@@ -4507,7 +4608,7 @@
     },
     "shop/vacuum_cleaner": {
       "name": "Magasin d'électroménager de nettoyage",
-      "terms": "Vente de produits de nettoyage"
+      "terms": "aspirateur,nettoyage"
     },
     "shop/variety_store": {
       "name": "Magasin à prix unique ou à bas prix",
@@ -4543,18 +4644,18 @@
     },
     "shop/window_blind": {
       "name": "Magasin de vente de stores",
-      "terms": "Magasin de vente de stores"
+      "terms": "store,rideau,volet"
     },
     "shop/wine": {
       "name": "Caviste",
-      "terms": "Caviste,  Bar à vins"
+      "terms": "caviste,vin"
     },
     "telecom/data_center": {
       "name": "Centre de données",
       "terms": "data center,technologie,télécommunications,nuage,cloud,ordinateurs,serveurs,hébergeur,hébergement"
     },
     "tourism": {
-      "name": "Équipement touristiques"
+      "name": "Équipement touristique"
     },
     "tourism/alpine_hut": {
       "name": "Refuge de montagne",
@@ -4609,7 +4710,8 @@
       "terms": "Terrain de camping,Site de camping,Aire de camping"
     },
     "tourism/camp_site/group_only": {
-      "name": "Aire de camping pour groupes"
+      "name": "Aire de camping pour groupes",
+      "terms": "camping,groupe"
     },
     "tourism/caravan_site": {
       "name": "Aire pour caravanes",
@@ -4617,7 +4719,7 @@
     },
     "tourism/chalet": {
       "name": "Gîte",
-      "terms": "Gîte"
+      "terms": "gîte,gite,chalet,vacances"
     },
     "tourism/gallery": {
       "name": "Galerie d'art",
@@ -4668,7 +4770,8 @@
       "terms": "Musée"
     },
     "tourism/museum/history": {
-      "name": "Musée d'histoire"
+      "name": "Musée d'histoire",
+      "terms": "musée,musee,expositions"
     },
     "tourism/picnic_site": {
       "name": "Aire de pique-nique",
@@ -4770,6 +4873,10 @@
       "name": "Contrôle",
       "terms": "controle,contrôle,radar"
     },
+    "type/enforcement/maxspeed": {
+      "name": "Contrôle de la limitation de vitesse",
+      "terms": "radar,vitesse,controle,contrôle"
+    },
     "type/multipolygon": {
       "name": "Multipolygone"
     },
@@ -4833,6 +4940,10 @@
       "name": "Itinéraire de ferry",
       "terms": "Route de traversier, Ligne de ferry"
     },
+    "type/route/foot": {
+      "name": "Itinéraire pédestre",
+      "terms": "itinéraire,itineraire,pieton,piéton,pedestre"
+    },
     "type/route/hiking": {
       "name": "Itinéraire de randonnée",
       "terms": "Sentier pédestre"
@@ -4877,6 +4988,10 @@
       "name": "Itinéraire de tramway",
       "terms": "Voie de tramway"
     },
+    "type/route/trolleybus": {
+      "name": "Itinéraire de trolleybus",
+      "terms": "trolley,trolleybus,itineraire"
+    },
     "type/route_master": {
       "name": "Itinéraire parent",
       "terms": "Relation principale, route master"
@@ -4918,7 +5033,8 @@
       "terms": "Drain"
     },
     "waterway/fish_pass": {
-      "name": "Échelle à poissons"
+      "name": "Passe à poissons",
+      "terms": "passe a poisson,migration"
     },
     "waterway/fuel": {
       "name": "Station-service marine",
@@ -4950,6 +5066,10 @@
     "waterway/stream_intermittent": {
       "name": "Ruisseau intermittent",
       "terms": "Ruisseau intermittent"
+    },
+    "waterway/tidal_channel": {
+      "name": "Chenal de marée",
+      "terms": "chenal,canal,marée,maree"
     },
     "waterway/water_point": {
       "name": "Eau potable pour bateau",

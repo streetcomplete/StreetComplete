@@ -66,7 +66,6 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
     }
 
     @CallSuper protected open fun cleanUp(questTypes: Set<OsmElementQuestType<*>>) {
-        elementUpdateController.cleanUp()
         // must be after unreferenced elements have been deleted
         for (questType in questTypes) {
             questType.cleanMetadata()

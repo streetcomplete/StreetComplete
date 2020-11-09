@@ -115,7 +115,6 @@ class OsmQuestsUploaderTest {
         verify(osmQuestController, times(2)).fail(any())
         verify(uploader.uploadedChangeListener,times(2))?.onDiscarded(any(), any())
         verify(elementUpdateController, times(2)).get(any(), anyLong())
-        verify(elementUpdateController).cleanUp()
         verifyNoMoreInteractions(elementUpdateController)
         verifyZeroInteractions(statisticsUpdater)
     }
@@ -129,7 +128,6 @@ class OsmQuestsUploaderTest {
 
         uploader.upload(AtomicBoolean(false))
 
-        verify(elementUpdateController).cleanUp()
         verify(quest.osmElementQuestType).cleanMetadata()
     }
 }

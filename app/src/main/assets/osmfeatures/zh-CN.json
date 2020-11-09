@@ -1565,6 +1565,9 @@
       "name": "献血中心",
       "terms": "献血中心,献血室"
     },
+    "healthcare/dentist/orthodontics": {
+      "name": "牙齿矫正医生"
+    },
     "healthcare/hospice": {
       "name": "临终安养院",
       "terms": "临终,善终,安宁,宁养,安养,关怀,保守,疾病,病房,垂死,致命,癌症,晚期,末期,死亡,诊所,医院,医学,医疗,疗法,卫生"
@@ -2497,6 +2500,10 @@
       "name": "风车",
       "terms": "风,轮,磨,坊,提水,灌溉,风能,风轮机,发电,风力,风力机,风帆,风轮"
     },
+    "man_made/windpump": {
+      "name": "风力泵",
+      "terms": "风泵,风车,风力泵"
+    },
     "man_made/works": {
       "name": "工厂",
       "terms": "工厂,加工,制造"
@@ -2941,7 +2948,8 @@
       "terms": "发电机"
     },
     "power/generator/method/photovoltaic": {
-      "name": "太阳能板"
+      "name": "太阳能板",
+      "terms": "光伏板组件,光伏电池板,太阳能电池板"
     },
     "power/generator/source/hydro": {
       "name": "水轮机",
@@ -2979,11 +2987,12 @@
       "name": "核能发电厂"
     },
     "power/plant/source/solar": {
-      "name": "太阳能发电场"
+      "name": "太阳能发电场",
+      "terms": "光伏发电站,太阳能板,光伏发电厂"
     },
     "power/plant/source/wind": {
       "name": "风电场",
-      "terms": "风电场,风力发电场"
+      "terms": "风电场,风力发电场,风车田"
     },
     "power/pole": {
       "name": "电线杆",

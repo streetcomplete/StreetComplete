@@ -70,7 +70,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    override fun isFormComplete() = !isShowingHouseNumberHint && createAnswer() != null
+    override fun isFormComplete() = (!isShowingHouseNumberHint || isHousename) && createAnswer() != null
 
     /* ------------------------------------- Other answers -------------------------------------- */
 

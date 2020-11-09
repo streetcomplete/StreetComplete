@@ -46,7 +46,6 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadController;
-import de.westnordost.streetcomplete.data.quest.QuestType;
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource;
 import de.westnordost.streetcomplete.data.upload.UploadController;
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener;
@@ -148,7 +147,6 @@ public class MainActivity extends AppCompatActivity implements
 						.add(R.id.fragment_container, new TutorialFragment())
 						.commit();
 			}
-			questController.cleanUp();
 			if (userController.isLoggedIn() && isConnected()) {
 				userController.updateUser();
 			}
