@@ -245,10 +245,10 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
     <string name="quest_streetLanes_title">"How many lanes does this road have?"</string>
     <string name="quest_streetLanes_answer_lanes">"Marked lanes"</string>
-    <string name="quest_streetLanes_answer_lanes_description">"Specify the total number of marked lanes - for the left plus the right side of the road."</string>
+    <string name="quest_streetLanes_answer_lanes_description">"Specify the total number of marked lanes (both sides)."</string>
     <string name="quest_streetLanes_answer_lanes_description_one_side">"Specify the total number of marked lanes here."</string>
     <string name="quest_streetLanes_answer_noLanes">"No marked lanes"</string>
-    <string name="quest_streetLanes_answer_noLanes_description">"Specify how many cars can conveniently pass without having to evade each other on this road."</string>
+    <string name="quest_streetLanes_answer_noLanes_description">"Specify the total number of lanes (both sides) the road would have if lanes were marked."</string>
     <string name="quest_streetLanes_answer_lanes_odd">"Different lane count in each direction"</string>
     <string name="quest_oneway_title">"Is this a one-way street?"</string>
     <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>

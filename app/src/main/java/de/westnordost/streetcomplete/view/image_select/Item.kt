@@ -1,5 +1,10 @@
 package de.westnordost.streetcomplete.view.image_select
 
+import de.westnordost.streetcomplete.view.Image
+import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.view.Text
+
 data class Item<T>(
     override val value: T?,
     val drawableId: Int? = null,

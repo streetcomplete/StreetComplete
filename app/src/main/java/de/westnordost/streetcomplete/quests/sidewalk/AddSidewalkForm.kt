@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGe
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
+import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
@@ -48,8 +49,8 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
             else                   R.drawable.ic_sidewalk_unknown
         val defaultTitleId = R.string.quest_street_side_puzzle_select
 
-        puzzleView.setLeftSideImageResource(leftSide?.puzzleResId ?: defaultResId)
-        puzzleView.setRightSideImageResource(rightSide?.puzzleResId ?: defaultResId)
+        puzzleView.setLeftSideImage(ResImage(leftSide?.puzzleResId ?: defaultResId))
+        puzzleView.setRightSideImage(ResImage(rightSide?.puzzleResId ?: defaultResId))
 
         puzzleView.setLeftSideText(if (leftSide != null) null else resources.getString( defaultTitleId ))
         puzzleView.setRightSideText(if (rightSide != null) null else resources.getString( defaultTitleId ))
@@ -93,11 +94,11 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
             val sidewalk = selected.value!!
             if (isRight) {
-                puzzleView.replaceRightSideImageResource(sidewalk.puzzleResId)
+                puzzleView.replaceRightSideImage(ResImage(sidewalk.puzzleResId))
                 puzzleView.setRightSideText(null)
                 rightSide = sidewalk
             } else {
-                puzzleView.replaceLeftSideImageResource(sidewalk.puzzleResId)
+                puzzleView.replaceLeftSideImage(ResImage(sidewalk.puzzleResId))
                 puzzleView.setLeftSideText(null)
                 leftSide = sidewalk
             }

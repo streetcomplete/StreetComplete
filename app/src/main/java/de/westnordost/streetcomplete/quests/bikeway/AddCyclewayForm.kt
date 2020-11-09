@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
+import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 import kotlinx.android.synthetic.main.view_little_compass.*
@@ -82,8 +83,8 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
         val defaultTitleId = R.string.quest_street_side_puzzle_select
 
-        puzzleView.setLeftSideImageResource(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
-        puzzleView.setRightSideImageResource(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
+        puzzleView.setLeftSideImage(ResImage(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
+        puzzleView.setRightSideImage(ResImage(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
         puzzleView.setLeftSideText(resources.getString(leftSide?.getTitleResId() ?: defaultTitleId ))
         puzzleView.setRightSideText(resources.getString(rightSide?.getTitleResId() ?: defaultTitleId ))
 
@@ -199,11 +200,11 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             val titleResId = resources.getString(cycleway.getTitleResId())
 
             if (isRight) {
-                puzzleView.replaceRightSideImageResource(iconResId)
+                puzzleView.replaceRightSideImage(ResImage(iconResId))
                 puzzleView.setRightSideText(titleResId)
                 rightSide = cycleway
             } else {
-                puzzleView.replaceLeftSideImageResource(iconResId)
+                puzzleView.replaceLeftSideImage(ResImage(iconResId))
                 puzzleView.setLeftSideText(titleResId)
                 leftSide = cycleway
             }

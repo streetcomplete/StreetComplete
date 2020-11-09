@@ -37,8 +37,7 @@
                 android:layout_alignParentLeft="true"
                 android:scaleType="fitXY"
                 tools:ignore="RtlHardcoded"
-                tools:src="@drawable/ic_cycleway_track"
-                tools:rotation="180"/>
+                tools:src="@drawable/ic_cycleway_track"/>
 
             <de.westnordost.streetcomplete.view.VerticalLabelView
                 android:id="@+id/leftSideTextView"

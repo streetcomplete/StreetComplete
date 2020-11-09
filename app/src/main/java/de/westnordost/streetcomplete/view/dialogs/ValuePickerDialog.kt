@@ -11,6 +11,7 @@ import androidx.annotation.LayoutRes
 import androidx.core.view.children
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.spToPx
 
 /** A dialog in which you can select one value from a range of values  */
 class ValuePickerDialog<T>(
@@ -40,6 +41,9 @@ class ValuePickerDialog<T>(
         numberPicker.displayedValues = values.map { it.toString() }.toTypedArray()
         numberPicker.minValue = 0
         numberPicker.maxValue = values.size - 1
+        if (android.os.Build.VERSION.SDK_INT >= 29) {
+            numberPicker.textSize = 32f.spToPx(context)
+        }
         selectedValue?.let { numberPicker.value = values.indexOf(it) }
         // do not allow keyboard input
         numberPicker.disableEditTextsFocus()

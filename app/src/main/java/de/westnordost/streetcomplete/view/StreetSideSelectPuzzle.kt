@@ -10,6 +10,7 @@ import android.view.*
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import androidx.core.view.doOnPreDraw
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
@@ -29,14 +30,19 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         rightSideContainer.setOnClickListener { listener?.invoke(true) }
     }
 
-    private var leftImageResId: Int = 0
-    private var rightImageResId: Int = 0
+    private var leftImage: Image? = null
+    private var rightImage: Image? = null
     private var isLeftImageSet: Boolean = false
     private var isRightImageSet: Boolean = false
     private var onlyShowingOneSide: Boolean = false
 
     init {
         LayoutInflater.from(context).inflate(R.layout.side_select_puzzle, this, true)
+
+        doOnPreDraw {
+            leftSideImage.pivotX = leftSideContainer.width.toFloat()
+            rightSideImage.pivotX = 0f
+        }
 
         addOnLayoutChangeListener { _, left, top, right, bottom, _, _, _, _ ->
             val width = min(bottom - top, right - left)
@@ -49,12 +55,14 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
             }
 
             val streetWidth = if (onlyShowingOneSide) width else width / 2
-            if (!isLeftImageSet && leftImageResId != 0) {
-                setStreetDrawable(leftImageResId, streetWidth, leftSideImage, true)
+            val leftImage = leftImage
+            if (!isLeftImageSet && leftImage != null) {
+                setStreetDrawable(leftImage, streetWidth, leftSideImage, true)
                 isLeftImageSet = true
             }
-            if (!isRightImageSet && rightImageResId != 0) {
-                setStreetDrawable(rightImageResId, streetWidth, rightSideImage, false)
+            val rightImage = rightImage
+            if (!isRightImageSet && rightImage != null) {
+                setStreetDrawable(rightImage, streetWidth, rightSideImage, false)
                 isRightImageSet = true
             }
         }
@@ -74,22 +82,22 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         rotateContainer.scaleY = 1 + scale * 2 / 3f
     }
 
-    fun setLeftSideImageResource(resId: Int) {
-        leftImageResId = resId
+    fun setLeftSideImage(image: Image?) {
+        leftImage = image
     }
 
-    fun setRightSideImageResource(resId: Int) {
-        rightImageResId = resId
+    fun setRightSideImage(image: Image?) {
+        rightImage = image
     }
 
-    fun replaceLeftSideImageResource(resId: Int) {
-        leftImageResId = resId
-        replaceAnimated(resId, leftSideImage, true)
+    fun replaceLeftSideImage(image: Image?) {
+        leftImage = image
+        replaceAnimated(image, leftSideImage, true)
     }
 
-    fun replaceRightSideImageResource(resId: Int) {
-        rightImageResId = resId
-        replaceAnimated(resId, rightSideImage, false)
+    fun replaceRightSideImage(image: Image?) {
+        rightImage = image
+        replaceAnimated(image, rightSideImage, false)
     }
 
     fun setLeftSideText(text: String?) {
@@ -125,9 +133,9 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         strut.layoutParams = params
     }
 
-    private fun replaceAnimated(resId: Int, imgView: ImageView, flip180Degrees: Boolean) {
+    private fun replaceAnimated(image: Image?, imgView: ImageView, flip180Degrees: Boolean) {
         val width = if (onlyShowingOneSide) rotateContainer.width else rotateContainer.width / 2
-        setStreetDrawable(resId, width, imgView, flip180Degrees)
+        setStreetDrawable(image, width, imgView, flip180Degrees)
 
         (imgView.parent as View).bringToFront()
 
@@ -136,10 +144,14 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         imgView.animate().scaleX(1f).scaleY(1f)
     }
 
-    private fun setStreetDrawable(resId: Int, width: Int, imageView: ImageView, flip180Degrees: Boolean) {
-        val drawable = scaleToWidth(resources.getBitmapDrawable(resId), width, flip180Degrees)
-        drawable.tileModeY = Shader.TileMode.REPEAT
-        imageView.setImageDrawable(drawable)
+    private fun setStreetDrawable(image: Image?, width: Int, imageView: ImageView, flip180Degrees: Boolean) {
+        if (image == null) {
+            imageView.setImageDrawable(null)
+        } else {
+            val drawable = scaleToWidth(resources.getBitmapDrawable(image), width, flip180Degrees)
+            drawable.tileModeY = Shader.TileMode.REPEAT
+            imageView.setImageDrawable(drawable)
+        }
     }
 
     private fun scaleToWidth(drawable: BitmapDrawable, width: Int, flip180Degrees: Boolean): BitmapDrawable {

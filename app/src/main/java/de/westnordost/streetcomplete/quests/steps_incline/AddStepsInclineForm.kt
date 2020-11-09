@@ -11,6 +11,9 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.*
 import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
+import de.westnordost.streetcomplete.view.DrawableImage
+import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RotatedCircleDrawable
 import de.westnordost.streetcomplete.view.image_select.*
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
@@ -46,7 +49,7 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
         val defaultResId = R.drawable.ic_steps_incline_unknown
         val defaultTitleId = R.string.quest_street_side_puzzle_select
 
-        puzzleView.setRightSideImageResource(selection?.iconResId ?: defaultResId)
+        puzzleView.setRightSideImage(ResImage(selection?.iconResId ?: defaultResId))
         puzzleView.setRightSideText(resources.getString( selection?.titleResId ?: defaultTitleId ))
 
         streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
@@ -73,7 +76,7 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
         val items = StepsIncline.values().map { it.toItem(resources, wayRotation + mapRotation) }
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
             val dir = selected.value!!
-            puzzleView.replaceRightSideImageResource(dir.iconResId)
+            puzzleView.replaceRightSideImage(ResImage(dir.iconResId))
             puzzleView.setRightSideText(resources.getString(dir.titleResId))
             selection = dir
             checkIsFormComplete()
