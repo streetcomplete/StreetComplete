@@ -91,28 +91,31 @@ import javax.inject.Singleton
 
     /* ------------------------------------------------------------------------------------------ */
 
-    /** Replace all quests of the given type in the given bounding box with the given quests,
+    /** Replace all quests of the given types in the given bounding box with the given quests,
      *  including their geometry. Called on download of a quest type for a bounding box. */
     fun replaceInBBox(quests: Iterable<OsmQuest>, bbox: BoundingBox, questTypes: List<String>): UpdateResult {
         require(questTypes.isNotEmpty()) { "questTypes must not be empty if not null" }
-        /* All quests in the given bounding box and of the given type should be replaced by the
+        /* All quests in the given bounding box and of the given types should be replaced by the
         *  input list. So, there may be 1. new quests that are added and 2. there may be previous
         *  quests that have been there before but now not anymore, these need to be removed. */
-        val previousQuestIdsByElement = dao.getAll(
-            bounds = bbox,
-            questTypes = questTypes
-        ).associate { ElementKey(it.elementType, it.elementId)  to it.id!! }.toMutableMap()
+        val previousQuests = mutableMapOf<OsmElementQuestType<*>, MutableMap<ElementKey, Long>>()
+        for (quest in dao.getAll(bounds = bbox, questTypes = questTypes)) {
+            val previousQuestIdsByElement = previousQuests.getOrPut(quest.osmElementQuestType, { mutableMapOf() })
+            previousQuestIdsByElement[ElementKey(quest.elementType, quest.elementId)] = quest.id!!
+        }
+
         val addedQuests = mutableListOf<OsmQuest>()
 
         for (quest in quests) {
+            val previousQuestIdsByElement = previousQuests[quest.osmElementQuestType]
             val e = ElementKey(quest.elementType, quest.elementId)
-            if (previousQuestIdsByElement.containsKey(e)) {
+            if (previousQuestIdsByElement != null && previousQuestIdsByElement.containsKey(e)) {
                 previousQuestIdsByElement.remove(e)
             } else {
                 addedQuests.add(quest)
             }
         }
-        val obsoleteQuestIds = previousQuestIdsByElement.values
+        val obsoleteQuestIds = previousQuests.values.flatMap { it.values }
 
         val deletedCount = removeObsolete(obsoleteQuestIds)
         val addedCount = addNew(addedQuests)
