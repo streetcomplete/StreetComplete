@@ -6,10 +6,10 @@ import android.view.View
 import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
-import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
+import de.westnordost.streetcomplete.view.StreetRotateable
 
 class StreetSideRotater(
-    private val puzzle: StreetSideSelectPuzzle,
+    private val puzzle: StreetRotateable,
     private val compassView: View,
     geometry: ElementPolylinesGeometry
 ) {

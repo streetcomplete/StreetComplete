@@ -37,7 +37,13 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
                 changes.addOrModify("lanes", answer.count.toString())
                 changes.deleteIfExists("lanes:forward")
                 changes.deleteIfExists("lanes:backward")
-                changes.addOrModify("lane_markings", "no")
+                // if there is just one lane, the information whether it is marked or not is irrelevant
+                // (if there are no more than one lane, there are no markings to separate them)
+                if (answer.count == 1) {
+                    changes.deleteIfExists("lane_markings")
+                } else {
+                    changes.addOrModify("lane_markings", "no")
+                }
             }
             is MarkedLanesSides -> {
                 changes.addOrModify("lanes", (answer.forward + answer.backward).toString())

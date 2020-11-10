@@ -21,7 +21,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0)
-    : FrameLayout(context, attrs, defStyleAttr) {
+    : FrameLayout(context, attrs, defStyleAttr), StreetRotateable {
 
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
     set(value) {
@@ -96,7 +96,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         rightSideContainer.isEnabled = enabled
     }
 
-    fun setStreetRotation(rotation: Float) {
+    override fun setStreetRotation(rotation: Float) {
         rotateContainer.rotation = rotation
         val scale = abs(cos(rotation * PI / 180)).toFloat()
         rotateContainer.scaleX = 1 + scale * 2 / 3f
@@ -192,4 +192,8 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         )
         return BitmapDrawable(resources, bitmap)
     }
+}
+
+interface StreetRotateable {
+    fun setStreetRotation(rotatio: Float)
 }

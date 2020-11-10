@@ -1,23 +1,17 @@
 package de.westnordost.streetcomplete.quests.lanes
 
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.lanes.LanesType.*
-import de.westnordost.streetcomplete.view.DrawableImage
-import de.westnordost.streetcomplete.view.Image
-import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
 import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
 import kotlinx.android.synthetic.main.quest_lanes_select_type.view.*
-import kotlinx.android.synthetic.main.quest_street_side_puzzle.view.*
+import kotlinx.android.synthetic.main.quest_street_lanes_puzzle.view.*
 import kotlinx.android.synthetic.main.view_little_compass.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +32,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
 
     override val contentPadding get() = selectedLanesType == null
 
-    private var puzzleView: StreetSideSelectPuzzle? = null
+    private var puzzleView: LanesSelectPuzzle? = null
 
     private var streetSideRotater: StreetSideRotater? = null
 
@@ -150,7 +144,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     //region Street side layout
 
     private fun setStreetSideLayout() {
-        val view = setContentView(R.layout.quest_street_side_puzzle)
+        val view = setContentView(R.layout.quest_street_lanes_puzzle)
 
         puzzleView = view.puzzleView
         when(selectedLanesType) {
@@ -163,12 +157,8 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
                 view.puzzleView.onClickSideListener = this::selectNumberOfLanesOnOneSide
             }
         }
-
-        if (isOneway || selectedLanesType == UNMARKED) {
-            view.puzzleView.showOnlyRightSide()
-        } else {
-            view.puzzleView.showBothSides()
-        }
+        view.puzzleView.isShowingLaneMarkings = selectedLanesType in listOf(MARKED, MARKED_SIDES)
+        view.puzzleView.isShowingBothSides = !isOneway
 
         streetSideRotater = StreetSideRotater(view.puzzleView, view.compassNeedleView, elementGeometry as ElementPolylinesGeometry)
         streetSideRotater?.onMapOrientation(lastRotation, lastTilt)
@@ -177,32 +167,10 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     }
 
     private fun updatePuzzleView() {
-        puzzleView?.setLeftSideImage(createLeftSideImage())
-        puzzleView?.setRightSideImage(createRightSideImage())
-
-        val defaultTitle = resources.getString(R.string.quest_street_side_puzzle_select)
-        puzzleView?.setLeftSideText(if (leftSide != null) null else defaultTitle)
-        puzzleView?.setRightSideText(if (rightSide != null) null else defaultTitle)
+        puzzleView?.laneCountLeft = leftSide
+        puzzleView?.laneCountRight = rightSide
 
         checkIsFormComplete()
-    }
-
-    private fun createLeftSideImage() : Image? {
-        val leftSide = leftSide ?: return null
-        val lanesType = selectedLanesType ?: return null
-        return DrawableImage(BitmapDrawable(resources, lanesType.createBitmap(
-            256f.toPx(requireContext()).toInt(),
-            leftSide, rightSide
-        )))
-    }
-
-    private fun createRightSideImage() : Image? {
-        val rightSide = rightSide ?: return null
-        val lanesType = selectedLanesType ?: return null
-        return DrawableImage(BitmapDrawable(resources, lanesType.createBitmap(
-            256f.toPx(requireContext()).toInt(),
-            rightSide, leftSide
-        )))
     }
 
     //endregion
@@ -244,7 +212,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     }
 
     private fun setTotalLanesCount(lanes: Int) {
-        if (isOneway || selectedLanesType == UNMARKED) {
+        if (isOneway) {
             leftSide = null
             rightSide = lanes
         } else {
@@ -259,7 +227,8 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
             listOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14),
             selectedValue, null,
             R.layout.quest_lanes_select_unmarked_lanes,
-            { cont.resume(it)}).show()
+            { cont.resume(it) }
+        ).show()
     }
 
     private suspend fun showSelectMarkedLanesDialogForBothSides(selectedValue: Int?) = suspendCoroutine<Int> { cont ->
@@ -267,15 +236,17 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
             listOf(2,4,6,8,10,12,14),
             selectedValue, null,
             R.layout.quest_lanes_select_lanes,
-            { cont.resume(it)} ).show()
+            { cont.resume(it) }
+        ).show()
     }
 
     private suspend fun showSelectMarkedLanesDialogForOneSide(selectedValue: Int?) = suspendCoroutine<Int> { cont ->
         ValuePickerDialog(requireContext(),
-            listOf(1, 2, 3, 4, 5, 6, 7, 8),
+            listOf(1,2,3,4,5,6,7,8),
             selectedValue, null,
             R.layout.quest_lanes_select_lanes_one_side_only,
-            { cont.resume(it)} ).show()
+            { cont.resume(it) }
+        ).show()
     }
 
     // endregion
@@ -289,10 +260,4 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
 
 private enum class LanesType {
     MARKED, MARKED_SIDES, UNMARKED
-}
-
-private fun LanesType.createBitmap(height: Int, laneCount: Int, otherLaneCount: Int?): Bitmap = when(this) {
-    MARKED -> createLanesBitmap(height, laneCount, otherLaneCount, true)
-    MARKED_SIDES -> createLanesBitmap(height, laneCount, otherLaneCount, true)
-    UNMARKED -> createLanesBitmap(height, laneCount, otherLaneCount, false)
 }
