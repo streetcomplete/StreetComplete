@@ -40,7 +40,7 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        puzzleView.listener = { isRight -> showSidewalkSelectionDialog(isRight) }
+        puzzleView.onClickSideListener = { isRight -> showSidewalkSelectionDialog(isRight) }
 
         streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
 

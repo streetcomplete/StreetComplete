@@ -23,11 +23,32 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     defStyleAttr: Int = 0)
     : FrameLayout(context, attrs, defStyleAttr) {
 
-    var listener: ((isRight:Boolean) -> Unit)? = null
+    var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
     set(value) {
         field = value
-        leftSideContainer.setOnClickListener { listener?.invoke(false) }
-        rightSideContainer.setOnClickListener { listener?.invoke(true) }
+        if (value == null) {
+            leftSideContainer.setOnClickListener(null)
+            rightSideContainer.setOnClickListener(null)
+            leftSideContainer.isClickable = false
+            rightSideContainer.isClickable = false
+        } else {
+            rotateContainer.isClickable = false
+            leftSideContainer.setOnClickListener { value.invoke(false) }
+            rightSideContainer.setOnClickListener { value.invoke(true) }
+        }
+    }
+
+    var onClickListener: (() -> Unit)? = null
+    set(value) {
+        field = value
+        if (value == null) {
+            rotateContainer.setOnClickListener(null)
+            rotateContainer.isClickable = false
+        } else {
+            leftSideContainer.isClickable = false
+            rightSideContainer.isClickable = false
+            rotateContainer.setOnClickListener { value.invoke() }
+        }
     }
 
     private var leftImage: Image? = null
@@ -84,10 +105,12 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 
     fun setLeftSideImage(image: Image?) {
         leftImage = image
+        replace(image, leftSideImage, true)
     }
 
     fun setRightSideImage(image: Image?) {
         rightImage = image
+        replace(image, rightSideImage, false)
     }
 
     fun replaceLeftSideImage(image: Image?) {
@@ -133,12 +156,16 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         strut.layoutParams = params
     }
 
-    private fun replaceAnimated(image: Image?, imgView: ImageView, flip180Degrees: Boolean) {
+    private fun replace(image: Image?, imgView: ImageView, flip180Degrees: Boolean) {
         val width = if (onlyShowingOneSide) rotateContainer.width else rotateContainer.width / 2
+        if (width == 0) return
         setStreetDrawable(image, width, imgView, flip180Degrees)
+    }
+
+    private fun replaceAnimated(image: Image?, imgView: ImageView, flip180Degrees: Boolean) {
+        replace(image, imgView, flip180Degrees)
 
         (imgView.parent as View).bringToFront()
-
         imgView.scaleX = 3f
         imgView.scaleY = 3f
         imgView.animate().scaleX(1f).scaleY(1f)

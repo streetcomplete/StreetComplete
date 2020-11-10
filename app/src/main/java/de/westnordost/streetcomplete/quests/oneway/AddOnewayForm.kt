@@ -44,7 +44,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
         super.onViewCreated(view, savedInstanceState)
 
         puzzleView.showOnlyRightSide()
-        puzzleView.listener = { showDirectionSelectionDialog() }
+        puzzleView.onClickSideListener = { showDirectionSelectionDialog() }
 
         val defaultResId = R.drawable.ic_oneway_unknown
         val defaultTitleId = R.string.quest_street_side_puzzle_select

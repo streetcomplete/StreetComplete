@@ -44,7 +44,7 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
         super.onViewCreated(view, savedInstanceState)
 
         puzzleView.showOnlyRightSide()
-        puzzleView.listener = { showDirectionSelectionDialog() }
+        puzzleView.onClickSideListener = { showDirectionSelectionDialog() }
 
         val defaultResId = R.drawable.ic_steps_incline_unknown
         val defaultTitleId = R.string.quest_street_side_puzzle_select

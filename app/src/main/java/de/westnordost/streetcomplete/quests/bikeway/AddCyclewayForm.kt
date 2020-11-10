@@ -68,7 +68,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             onLoadInstanceState(savedInstanceState)
         }
 
-        puzzleView.listener = { isRight -> showCyclewaySelectionDialog(isRight) }
+        puzzleView.onClickSideListener = { isRight -> showCyclewaySelectionDialog(isRight) }
 
         streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
 
