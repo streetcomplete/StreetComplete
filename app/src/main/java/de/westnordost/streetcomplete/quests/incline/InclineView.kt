@@ -13,6 +13,7 @@ import android.view.animation.LinearInterpolator
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.util.fromDegreesToPercentage
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -45,7 +46,7 @@ class InclineView @JvmOverloads constructor(context: Context, attrs: AttributeSe
         textPaint.color = Color.WHITE
         textPaint.textAlign = Paint.Align.CENTER
         textPaint.typeface = Typeface.DEFAULT_BOLD
-        textPaint.textSize = 32f * resources.displayMetrics.scaledDensity
+        textPaint.textSize = 32f.toPx(context)
 
         setOnClickListener {
             changeLock(!locked)
@@ -97,13 +98,13 @@ class InclineView @JvmOverloads constructor(context: Context, attrs: AttributeSe
     private fun drawLockIcon(canvas: Canvas) {
         val lockIconResource = if (locked) R.drawable.ic_lock_24 else R.drawable.ic_lock_open_24
         val lockIconDrawable: Drawable? = ContextCompat.getDrawable(context, lockIconResource)
-        val iconSizeDp = (24 * resources.displayMetrics.scaledDensity).roundToInt()
-        val offsetDp = (8 * resources.displayMetrics.scaledDensity).roundToInt()
+        val iconSizeDp = (32f.toPx(context)).roundToInt()
+        val offsetDp = (8f.toPx(context)).roundToInt()
         lockIconDrawable?.setBounds(
             width - (iconSizeDp + offsetDp),
-            offsetDp,
+            (height / 2) - (iconSizeDp / 2),
             width - offsetDp,
-            iconSizeDp + offsetDp)
+            (height / 2) + (iconSizeDp / 2))
         lockIconDrawable?.draw(canvas)
     }
 
