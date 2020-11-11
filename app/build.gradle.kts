@@ -148,7 +148,7 @@ dependencies {
     implementation("org.sufficientlysecure:html-textview:3.9")
     implementation("com.duolingo.open:rtl-viewpager:2.0.0")
     implementation("com.google.android:flexbox:2.0.1")
-    implementation("com.github.GoodieBag:CarouselPicker:v1.2")
+    implementation("androidx.cardview:cardview:1.0.0")
 
     // ARCore
     implementation("com.google.ar.sceneform.ux:sceneform-ux:1.14.0")

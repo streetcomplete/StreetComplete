@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.kerb_type
 
-import `in`.goodiebag.carouselpicker.CarouselPicker
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager.widget.ViewPager
@@ -8,7 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.view.image_select.Item
 import kotlinx.android.synthetic.main.quest_kerb_type.*
-import kotlinx.android.synthetic.main.quest_surface_new.carousel
+import kotlin.math.abs
 
 class AddKerbTypeForm : AbstractQuestFormAnswerFragment<String>() {
     override val contentLayoutResId = R.layout.quest_kerb_type
@@ -20,45 +19,73 @@ class AddKerbTypeForm : AbstractQuestFormAnswerFragment<String>() {
         Item("rolled", R.drawable.kerb_rolled, R.string.quest_kerb_rolled, R.string.quest_kerb_rolled_description, null))
     private val initialValueIndex = 1
 
-    private val carouselItems = valueItems.map {
-        CarouselPicker.DrawableItem((it.drawableId!!))
-    }
     private var carouselMoved = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initCarousel()
+        initPager()
+        initButtons()
     }
 
-    private fun initCarousel() {
-        val adapter = CarouselPicker.CarouselViewAdapter(context, carouselItems, 0)
-        carousel.adapter = adapter
-        carousel.setCurrentItem(initialValueIndex, false)
+    private fun initPager() {
+        pager.adapter = KerbTypePagerAdapter(requireContext(), valueItems)
+        pager.setCurrentItem(initialValueIndex, false)
 
-        setValueInformation(valueItems[initialValueIndex])
-        carousel.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        pager.setPageTransformer(false) { page, position ->
+            // Change scale (zoom)
+            page.scaleX = 1.0F - 0.33f * abs(position)
+            page.scaleY = 1.0F - 0.33f * abs(position)
+
+            // Makes the page zoom from the center
+            page.pivotX = page.width / 2.0f
+            page.pivotY = page.height / 2.0f
+        }
+
+        pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 // NOP
             }
 
             override fun onPageSelected(position: Int) {
                 carouselMoved = true
-                setValueInformation(valueItems[position])
                 checkIsFormComplete()
+
+                if (pager.currentItem >= valueItems.size - 1) {
+                    nextButton.visibility = View.INVISIBLE
+                } else {
+                    nextButton.visibility = View.VISIBLE
+                }
+
+                if (pager.currentItem <= 0) {
+                    beforeButton.visibility = View.INVISIBLE
+                } else {
+                    beforeButton.visibility = View.VISIBLE
+                }
             }
 
             override fun onPageScrollStateChanged(state: Int) {
                 // NOP
             }
         })
-
-        checkIsFormComplete()
     }
 
-    private fun setValueInformation(item: Item<String>) {
-        valueName.text = resources.getText(item.titleId!!)
-        valueDescription.text = resources.getText(item.descriptionId!!)
+
+    private fun initButtons() {
+        beforeButton.setOnClickListener {
+            if (pager.currentItem < 1) {
+                return@setOnClickListener
+            }
+            pager.setCurrentItem(pager.currentItem - 1, true)
+        }
+
+        nextButton.setOnClickListener {
+            if (pager.currentItem >= valueItems.size - 1) {
+                return@setOnClickListener
+            }
+            pager.setCurrentItem(pager.currentItem + 1, true)
+        }
     }
+
 
     override fun onClickOk() {
         applyAnswer("test")
