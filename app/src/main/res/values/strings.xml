@@ -937,11 +937,22 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="open_url">Open URL</string>
 
     <string name="use_device_to_measure">Use device to measure</string>
+    <string name="enter_manually">Enter manually</string>
     <string name="unit_cm">cm</string>
     <string name="value">Value</string>
+
+    <string name="upward_slope">Upward slope</string>
+    <string name="downward_slope">Downward slope</string>
+
     <string name="measurement_instructions_width">Please measure the width of the sidewalk at its narrowest section. Please also consider permanent objects such as trash cans or street lights when you determine the narrowest point.</string>
-    <string name="measurement_instructions_incline">Please perform the measurement on the steepest section and in the same direction as indicated by the arrows on the map. Use a negative value for a downward slope.</string>
-    <string name="measurement_instructions_incline_with_device">Put your device on the ground as instructed below and lock the measurement.</string>
+    <string name="quest_incline_device_instructions_step_1">Find the steepest section.\n</string>
+    <string name="quest_incline_device_instructions_step_2">Orient yourself on the street according to the arrows displayed on the map.\n</string>
+    <string name="quest_incline_device_instructions_step_3">Place your phone flat on the floor with the screen facing upwards.\n</string>
+    <string name="quest_incline_device_instructions_step_4">Lock/unlock the measurement by taping on the element below.</string>
+
+    <string name="quest_incline_manual_instructions_step_1">Find the steepest section.\n</string>
+    <string name="quest_incline_manual_instructions_step_2">Orient yourself on the street according to the arrows displayed on the map.\n</string>
+    <string name="quest_incline_manual_instructions_step_3">Measure the slope with a digital level and enter the value below.</string>
 
     <string name="quest_smoothness_impassable">Impassable</string>
     <string name="quest_smoothness_very_horrible">Very horrible</string>

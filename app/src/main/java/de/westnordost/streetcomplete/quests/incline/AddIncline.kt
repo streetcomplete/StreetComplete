@@ -9,9 +9,10 @@ class AddIncline : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         ways with highway ~ path|footway
-        and access !~ private|no
-        and (!conveying or conveying = no) and (!indoor or indoor = no)
         and (!incline or incline = no)
+        and access !~ private|no
+        and (!conveying or conveying = no)
+        and (!indoor or indoor = no)
     """
 
     override val commitMessage = "Add incline"

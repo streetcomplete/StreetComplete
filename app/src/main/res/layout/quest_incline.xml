@@ -1,58 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/manualInputLayout"
+        android:id="@+id/deviceMeasurementLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/manualInputField"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/value"
-            android:importantForAutofill="no"
-            android:inputType="numberSigned"
-            android:textSize="24sp" />
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="%"
-            android:textSize="24sp"
-            tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/deviceMeasurementInstructions"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:labelFor="@+id/inclineView"
+                tools:ignore="LabelFor" /> <!-- Text is set programmatically because it's a list-->
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:contentDescription="TODO"
+                android:src="@drawable/example_incline_measurement_device" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="8dp"
+            android:elevation="0dp"
+            card_view:cardCornerRadius="4dp">
+
+            <de.westnordost.streetcomplete.quests.incline.InclineView
+                android:id="@+id/inclineView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground" />
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/deviceMeasurementLayout"
+        android:id="@+id/manualInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
+            android:id="@+id/manualMeasurementInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/inclineView"
+            tools:ignore="LabelFor" /> <!-- Text is set programmatically because it's a list-->
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:labelFor="@+id/nameInput"
-            android:text="@string/measurement_instructions_incline_with_device" />
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
-        <de.westnordost.streetcomplete.quests.incline.InclineView
-            android:id="@+id/inclineView"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="8dp"
-            android:focusable="true"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"/>
+            <EditText
+                android:id="@+id/manualInputField"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="@string/value"
+                android:importantForAutofill="no"
+                android:inputType="numberSigned"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="4dp"
+                android:text="%"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <RadioGroup
+                android:id="@+id/slopeTypeRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radioUpwardSlope"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/upward_slope" />
+
+                <RadioButton
+                    android:id="@+id/radioDownwardSlope"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/downward_slope" />
+            </RadioGroup>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -61,23 +123,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/use_device_to_measure" />
-
-    <TextView
-        android:id="@+id/descriptionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:labelFor="@+id/nameInput"
-        android:text="@string/measurement_instructions_incline" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
-        android:scaleX="-1"
-        android:src="@drawable/example_incline"
-        android:contentDescription="TODO" />
 
 </LinearLayout>
