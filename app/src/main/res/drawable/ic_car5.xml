@@ -64,13 +64,13 @@
   <path
       android:pathData="m118.13,275.74 l-0.579,-3.958 11.873,-1.738 0.579,3.958z"
       android:strokeWidth="2"
-      android:fillColor="#da2525"
-      android:strokeColor="#941919"/>
+      android:fillColor="#bf4040"
+      android:strokeColor="#822b2b"/>
   <path
       android:pathData="m41.904,275.52 l0.505,-3.968 -11.904,-1.516 -0.505,3.968z"
       android:strokeWidth="2"
-      android:fillColor="#da2525"
-      android:strokeColor="#941919"/>
+      android:fillColor="#bf4040"
+      android:strokeColor="#822b2b"/>
   <path
       android:pathData="m30,274 l0.505,-3.968 -11.904,-1.516c-0.505,3.968 3.463,4.473 11.399,5.484z"
       android:strokeAlpha="0.99597"

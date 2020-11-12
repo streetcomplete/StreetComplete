@@ -37,7 +37,6 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     private var streetSideRotater: StreetSideRotater? = null
 
     // just some shortcuts
-    private val isReverseSideRight get() = isReversedOneway xor isLeftHandTraffic
 
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
@@ -49,7 +48,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     override val otherAnswers: List<OtherAnswer> get() {
         return if (!isOneway) {
              listOf(
-                OtherAnswer(R.string.quest_streetLanes_answer_lanes_odd) {
+                OtherAnswer(R.string.quest_lanes_answer_lanes_odd) {
                     selectedLanesType = MARKED_SIDES
                     setStreetSideLayout()
                 }
@@ -144,9 +143,16 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     //region Street side layout
 
     private fun setStreetSideLayout() {
+        puzzleView?.let {
+            it.pause()
+            lifecycle.removeObserver(it)
+        }
+
         val view = setContentView(R.layout.quest_street_lanes_puzzle)
 
         puzzleView = view.puzzleView
+        lifecycle.addObserver(view.puzzleView)
+
         when(selectedLanesType) {
             MARKED, UNMARKED -> {
                 view.puzzleView.onClickListener = this::selectTotalNumberOfLanes
@@ -159,6 +165,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         }
         view.puzzleView.isShowingLaneMarkings = selectedLanesType in listOf(MARKED, MARKED_SIDES)
         view.puzzleView.isShowingBothSides = !isOneway
+        view.puzzleView.isForwardTraffic = if (isOneway) isForwardOneway else !isLeftHandTraffic
 
         streetSideRotater = StreetSideRotater(view.puzzleView, view.compassNeedleView, elementGeometry as ElementPolylinesGeometry)
         streetSideRotater?.onMapOrientation(lastRotation, lastTilt)
@@ -224,7 +231,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
 
     private suspend fun showSelectUnmarkedLanesDialog(selectedValue: Int?) = suspendCoroutine<Int> { cont ->
         ValuePickerDialog(requireContext(),
-            listOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14),
+            listOf(1,2,3,4,5,6,7,8),
             selectedValue, null,
             R.layout.quest_lanes_select_unmarked_lanes,
             { cont.resume(it) }

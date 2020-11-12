@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/ImageSelectLabelBelow"
-                android:text="@string/quest_streetLanes_answer_lanes"/>
+                android:text="@string/quest_lanes_answer_lanes"/>
 
         </LinearLayout>
 
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/ImageSelectLabelBelow"
-                android:text="@string/quest_streetLanes_answer_noLanes"/>
+                android:text="@string/quest_lanes_answer_noLanes"/>
 
         </LinearLayout>
 

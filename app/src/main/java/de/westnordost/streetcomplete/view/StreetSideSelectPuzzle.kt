@@ -20,8 +20,8 @@ import kotlin.math.*
 class StreetSideSelectPuzzle @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0)
-    : FrameLayout(context, attrs, defStyleAttr), StreetRotateable {
+    defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr), StreetRotateable {
 
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
     set(value) {
@@ -50,6 +50,8 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
             rotateContainer.setOnClickListener { value.invoke() }
         }
     }
+
+    val streetSidesView: ViewGroup get() = rotateContainer
 
     private var leftImage: Image? = null
     private var rightImage: Image? = null

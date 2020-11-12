@@ -16,7 +16,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
     override val icon = R.drawable.ic_quest_street_lanes
     override val isSplitWayEnabled = true
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_streetLanes_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_lanes_title
 
     override fun createForm() = AddLanesForm()
 

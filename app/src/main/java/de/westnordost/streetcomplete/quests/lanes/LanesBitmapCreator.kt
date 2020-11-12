@@ -23,12 +23,12 @@ fun createLanesBitmap(
     val paint = Paint()
 
     // draw background
-    paint.color = Color.GRAY
+    paint.color = Color.parseColor("#808080")
     paint.style = Paint.Style.FILL
     canvas.drawRect(0f, 0f, height * laneCount + shouldersWidth, height.toFloat(), paint)
 
     // draw markings:
-    paint.color = Color.WHITE
+    paint.color = Color.parseColor("#ffffff")
     paint.style = Paint.Style.STROKE
     paint.strokeWidth = 0.0625f * height
 
