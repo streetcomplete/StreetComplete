@@ -26,6 +26,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     private var selectedLanesType: LanesType? = null
     private var leftSide: Int? = null
     private var rightSide: Int? = null
+    private var hasCenterLeftTurnLane: Boolean = false
 
     private var lastRotation: Float = 0f
     private var lastTilt: Float = 0f
@@ -46,14 +47,22 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     private val isReversedOneway get() = osmElement!!.tags["oneway"] == "-1"
 
     override val otherAnswers: List<OtherAnswer> get() {
-        return if (!isOneway) {
-             listOf(
-                OtherAnswer(R.string.quest_lanes_answer_lanes_odd) {
-                    selectedLanesType = MARKED_SIDES
-                    setStreetSideLayout()
-                }
-            )
-        } else listOf()
+        val answers = mutableListOf<OtherAnswer>()
+
+        if (!isOneway) {
+            answers.add(OtherAnswer(R.string.quest_lanes_answer_lanes_odd) {
+                selectedLanesType = MARKED_SIDES
+                setStreetSideLayout()
+            })
+        }
+        if (!isOneway && countryInfo.isCenterLeftTurnLaneKnown) {
+            answers.add(OtherAnswer(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
+                selectedLanesType = MARKED_SIDES
+                hasCenterLeftTurnLane = true
+                setStreetSideLayout()
+            })
+        }
+        return answers
     }
 
     //region Lifecycle
@@ -65,6 +74,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
             selectedLanesType = savedInstanceState.getString(LANES_TYPE)?.let { LanesType.valueOf(it) }
             leftSide = savedInstanceState.getInt(LANES_LEFT, -1).takeIf { it != -1 }
             rightSide = savedInstanceState.getInt(LANES_RIGHT, -1).takeIf { it != -1 }
+            hasCenterLeftTurnLane = savedInstanceState.getBoolean(CENTER_LEFT_TURN_LANE)
         }
 
         if (selectedLanesType == null) {
@@ -94,7 +104,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
             MARKED_SIDES -> {
                 val forwardLanes = if (isLeftHandTraffic) leftSide else rightSide
                 val backwardLanes = if (isLeftHandTraffic) rightSide else leftSide
-                applyAnswer(MarkedLanesSides(forwardLanes ?: 0, backwardLanes ?: 0))
+                applyAnswer(MarkedLanesSides(forwardLanes ?: 0, backwardLanes ?: 0, hasCenterLeftTurnLane))
             }
         }
     }
@@ -104,6 +114,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         outState.putString(LANES_TYPE, selectedLanesType?.name)
         leftSide?.let { outState.putInt(LANES_LEFT, it) }
         rightSide?.let { outState.putInt(LANES_RIGHT, it) }
+        outState.putBoolean(CENTER_LEFT_TURN_LANE, hasCenterLeftTurnLane)
     }
 
     override fun onDestroy() {
@@ -174,7 +185,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     }
 
     private fun updatePuzzleView() {
-        puzzleView?.setLaneCounts(leftSide ?: 0, rightSide ?: 0)
+        puzzleView?.setLaneCounts(leftSide ?: 0, rightSide ?: 0, hasCenterLeftTurnLane)
         checkIsFormComplete()
     }
 
@@ -260,6 +271,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         private const val LANES_TYPE = "lanes_type"
         private const val LANES_LEFT = "lanes_left"
         private const val LANES_RIGHT = "lanes_right"
+        private const val CENTER_LEFT_TURN_LANE = "center_left_turn_lane"
     }
 }
 

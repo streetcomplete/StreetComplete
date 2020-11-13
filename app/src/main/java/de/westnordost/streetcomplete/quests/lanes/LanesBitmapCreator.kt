@@ -11,37 +11,42 @@ fun createLanesBitmap(
     width: Int,
     laneCountLeft: Int,
     laneCountRight: Int,
+    hasCenterLeftTurnLane: Boolean,
     showOnlyRightSide: Boolean,
     drawLaneMarkings: Boolean
 ): Bitmap? {
-    if (laneCountLeft == 0 && laneCountRight == 0 || showOnlyRightSide && laneCountRight == 0) return null
-    val maxLaneCount = max(laneCountLeft, laneCountRight)
-    val totalLaneCount = laneCountLeft + laneCountRight
+    require(laneCountLeft >= 0)
+    require(laneCountRight >= 0)
+
     val bothSidesDefined = laneCountLeft > 0 && laneCountRight > 0
+    val noSidesDefined = laneCountLeft == 0 && laneCountRight == 0
+
     val shoulder = 0.125f
 
-    val roomForLanes = when {
-        bothSidesDefined -> totalLaneCount
-        showOnlyRightSide -> laneCountRight
-        else -> maxLaneCount * 2
+    val laneCountCenter = (if (hasCenterLeftTurnLane) 1 else 0)
+
+    val lanesSpace = laneCountCenter + when {
+        bothSidesDefined ->  laneCountLeft + laneCountRight
+        showOnlyRightSide -> max(1, laneCountRight)
+        noSidesDefined ->    2
+        else ->              2 * max(laneCountLeft, laneCountRight)
     }
 
-    val laneWidth = width / (shoulder * 2f + when {
-        bothSidesDefined  -> totalLaneCount
-        showOnlyRightSide -> laneCountRight
-        else              -> 2 * maxLaneCount
-    })
+    val laneWidth = width / (shoulder * 2f + lanesSpace)
 
-    val leftLanesOffset = shoulder
+    val leftLanesStart = shoulder
 
-    val rightLanesOffset = shoulder + when {
-        bothSidesDefined -> laneCountLeft
+    val leftLanesEnd = shoulder + when {
+        bothSidesDefined ->  laneCountLeft
         showOnlyRightSide -> 0
-        else -> max(laneCountLeft, laneCountRight)
+        noSidesDefined ->    1
+        else ->              max(laneCountLeft, laneCountRight)
     }
+
+    val rightLanesStart = leftLanesEnd + laneCountCenter
 
     val shoulderWidth = shoulder * laneWidth
-    val height = (width / (roomForLanes + shoulder * 2)).toInt()
+    val height = (width / (lanesSpace + shoulder * 2)).toInt()
     val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
     val paint = Paint()
@@ -49,9 +54,9 @@ fun createLanesBitmap(
     // draw background
     paint.color = Color.parseColor("#808080")
     paint.style = Paint.Style.FILL
-    val leftOffset = if (laneCountLeft > 0 || showOnlyRightSide) 0f else laneWidth * rightLanesOffset
-    val rightOffset = if (laneCountRight > 0) 0f else laneWidth * rightLanesOffset
-    canvas.drawRect(leftOffset, 0f, width - rightOffset, height.toFloat(), paint)
+    val streetStartX = if (laneCountLeft > 0 || showOnlyRightSide) 0f else laneWidth * leftLanesEnd
+    val streetEndX = if (laneCountRight > 0) width.toFloat() else laneWidth * rightLanesStart
+    canvas.drawRect(streetStartX, 0f, streetEndX, height.toFloat(), paint)
 
     // draw markings:
     paint.color = Color.parseColor("#ffffff")
@@ -60,18 +65,18 @@ fun createLanesBitmap(
 
     // 1. markings for the shoulders
     if (laneCountLeft > 0 || showOnlyRightSide) {
-        val leftShoulderX = leftLanesOffset * laneWidth
-        canvas.drawLine(leftShoulderX, 0f, leftShoulderX, height.toFloat(), paint)
+        val leftShoulderX = leftLanesStart * laneWidth
+        canvas.drawVerticalLine(leftShoulderX, paint)
     }
     if (laneCountRight > 0) {
-        val rightShoulderX = shoulderWidth + roomForLanes * laneWidth
-        canvas.drawLine(rightShoulderX, 0f, rightShoulderX, height.toFloat(), paint)
+        val rightShoulderX = shoulderWidth + lanesSpace * laneWidth
+        canvas.drawVerticalLine(rightShoulderX, paint)
     }
 
     // 2. center line
-    if (bothSidesDefined && totalLaneCount > 2 && drawLaneMarkings) {
-        val offsetX = rightLanesOffset * laneWidth
-        canvas.drawLine(offsetX, 0f, offsetX, height.toFloat(), paint)
+    if (bothSidesDefined && !hasCenterLeftTurnLane && laneCountLeft + laneCountRight > 2 && drawLaneMarkings) {
+        val offsetX = leftLanesEnd * laneWidth
+        canvas.drawVerticalLine(offsetX, paint)
     }
 
     // 3. lane markings
@@ -80,8 +85,18 @@ fun createLanesBitmap(
             canvas.drawVerticalDashedLine(shoulderWidth + x * laneWidth, paint)
         }
         for (x in 0 until laneCountRight) {
-            canvas.drawVerticalDashedLine((rightLanesOffset + x) * laneWidth, paint)
+            canvas.drawVerticalDashedLine((rightLanesStart + x) * laneWidth, paint)
         }
+
+    }
+
+    // 4. center turn lane markings
+    paint.color = Color.parseColor("#ffff00")
+    if (hasCenterLeftTurnLane) {
+        canvas.drawVerticalLine(leftLanesEnd * laneWidth, paint)
+        canvas.drawVerticalLine(rightLanesStart * laneWidth, paint)
+        canvas.drawVerticalDashedLine((leftLanesEnd + 0.125f) * laneWidth, paint)
+        canvas.drawVerticalDashedLine((rightLanesStart - 0.125f) * laneWidth, paint)
     }
 
     return bitmap
@@ -93,4 +108,8 @@ private fun Canvas.drawVerticalDashedLine(x: Float, paint: Paint) {
         val endY = startY + 0.25f * height
         drawLine(x, startY, x, endY, paint)
     }
+}
+
+private fun Canvas.drawVerticalLine(x: Float, paint: Paint) {
+    drawLine(x, 0f, x, height.toFloat(), paint)
 }

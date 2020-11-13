@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 firstDayOfWorkweek: Mo
 isAdvisorySpeedLimitKnown: false
+isCenterLeftTurnLaneKnown: false
 isLeftHandTraffic: false
 isLivingStreetKnown: false
 isSlowZoneKnown: false

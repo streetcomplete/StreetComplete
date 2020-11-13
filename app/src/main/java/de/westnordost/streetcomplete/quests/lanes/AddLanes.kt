@@ -21,9 +21,27 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
     override fun createForm() = AddLanesForm()
 
     override fun applyAnswerTo(answer: LanesAnswer, changes: StringMapChangesBuilder) {
+
+        changes.addOrModify("lanes", answer.total.toString())
+
+        val isUnmarked = answer !is UnmarkedLanes
+        // if there is just one lane, the information whether it is marked or not is irrelevant
+        // (if there are no more than one lane, there are no markings to separate them)
+        if (answer.total == 1) changes.deleteIfExists("lane_markings")
+        else if (isUnmarked)   changes.modifyIfExists("lane_markings", "yes")
+        else                   changes.addOrModify("lane_markings", "no")
+
+        val hasCenterLeftTurnLane = answer is MarkedLanesSides && answer.centerLeftTurnLane
+        if (hasCenterLeftTurnLane) {
+            changes.addOrModify("lanes:both_ways", "yes")
+            changes.addOrModify("turn:lanes:both_ways","left")
+        } else {
+            changes.deleteIfExists("lanes:both_ways")
+            changes.deleteIfExists("turn:lanes:both_ways")
+        }
+
         when(answer) {
             is MarkedLanes -> {
-                changes.addOrModify("lanes", answer.count.toString())
                 if (answer.count == 1) {
                     changes.deleteIfExists("lanes:forward")
                     changes.deleteIfExists("lanes:backward")
@@ -31,25 +49,14 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
                     changes.modifyIfExists("lanes:forward", (answer.count / 2).toString())
                     changes.modifyIfExists("lanes:backward", (answer.count / 2).toString())
                 }
-                changes.modifyIfExists("lane_markings", "yes")
             }
             is UnmarkedLanes -> {
-                changes.addOrModify("lanes", answer.count.toString())
                 changes.deleteIfExists("lanes:forward")
                 changes.deleteIfExists("lanes:backward")
-                // if there is just one lane, the information whether it is marked or not is irrelevant
-                // (if there are no more than one lane, there are no markings to separate them)
-                if (answer.count == 1) {
-                    changes.deleteIfExists("lane_markings")
-                } else {
-                    changes.addOrModify("lane_markings", "no")
-                }
             }
             is MarkedLanesSides -> {
-                changes.addOrModify("lanes", (answer.forward + answer.backward).toString())
                 changes.addOrModify("lanes:forward", answer.forward.toString())
                 changes.addOrModify("lanes:backward", answer.backward.toString())
-                changes.modifyIfExists("lane_markings", "yes")
             }
         }
     }

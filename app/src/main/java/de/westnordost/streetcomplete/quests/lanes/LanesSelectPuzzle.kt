@@ -70,6 +70,8 @@ class LanesSelectPuzzle @JvmOverloads constructor(
     var laneCountRight: Int = 0
     private set
 
+    var hasCenterLeftTurnLane: Boolean = false
+
     var isShowingBothSides: Boolean = true
     set(value) {
         if (field != value) {
@@ -83,29 +85,35 @@ class LanesSelectPuzzle @JvmOverloads constructor(
     private val carsOnLanesLeft = mutableListOf<CarViewAndPosition>()
     private val carsOnLanesRight = mutableListOf<CarViewAndPosition>()
 
+    private val laneCountCenter: Int get() = if (hasCenterLeftTurnLane) 1 else 0
+
     private val bothSidesAreDefined: Boolean get() = laneCountLeft > 0 && laneCountRight > 0
+    private val noSidesDefined: Boolean get() = laneCountLeft == 0 && laneCountRight == 0
     private val isShowingOnlyRightSide: Boolean get() = !isShowingBothSides || !isShowingLaneMarkings && laneCountLeft == 0
 
     private val shoulderWidth = 0.125f
 
     private val laneWidth: Int get() {
-        val w = rotateContainer.width
-        val ratio = when {
-            bothSidesAreDefined    -> laneCountLeft + laneCountRight
-            isShowingOnlyRightSide -> max(laneCountRight, 1)
-            else                   -> 2 * max(laneCountLeft, laneCountRight)
-        } + shoulderWidth * 2
-        return (w / ratio).toInt()
+        return (rotateContainer.width / (lanesSpace + shoulderWidth * 2)).toInt()
     }
 
-    private val leftLanesOffset: Float get() = shoulderWidth
+    private val lanesSpace: Int get() = laneCountCenter + when {
+        bothSidesAreDefined    -> laneCountLeft + laneCountRight
+        isShowingOnlyRightSide -> max(laneCountRight, 1)
+        noSidesDefined         -> 2
+        else                   -> 2 * max(laneCountLeft, laneCountRight)
+    }
 
-    private val rightLanesOffset: Float get() =
-        shoulderWidth + when {
-            bothSidesAreDefined    -> laneCountLeft
-            isShowingOnlyRightSide -> 0
-            else                   -> max(laneCountLeft, laneCountRight)
-        }
+    private val leftLanesStart: Float get() = shoulderWidth
+
+    private val leftLanesEnd: Float get() = shoulderWidth + when {
+        bothSidesAreDefined    -> laneCountLeft
+        isShowingOnlyRightSide -> 0
+        noSidesDefined         -> 1
+        else                   -> max(laneCountLeft, laneCountRight)
+    }
+
+    private val rightLanesStart: Float get() = leftLanesEnd + laneCountCenter
 
     init {
         LayoutInflater.from(context).inflate(R.layout.lanes_select_puzzle, this, true)
@@ -149,9 +157,10 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         rotateContainer.scaleY = 1 + scale * 2 / 3f
     }
 
-    fun setLaneCounts(left: Int, right: Int) {
+    fun setLaneCounts(left: Int, right: Int, centerLeftTurn: Boolean) {
         laneCountLeft = left
         laneCountRight = right
+        hasCenterLeftTurnLane = centerLeftTurn
         updateCarViewsOnLanes(left, carsOnLanesLeft)
         updateCarViewsOnLanes(right, carsOnLanesRight)
         updateLanes()
@@ -162,7 +171,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
     /** update the lanes on the street */
     private fun updateLanes() {
         if (rotateContainer.width == 0) return
-        val bitmap = createLanesBitmap(rotateContainer.width, laneCountLeft, laneCountRight, isShowingOnlyRightSide, isShowingLaneMarkings)
+        val bitmap = createLanesBitmap(rotateContainer.width, laneCountLeft, laneCountRight, hasCenterLeftTurnLane, isShowingOnlyRightSide, isShowingLaneMarkings)
         val drawable = bitmap?.let { BitmapDrawable(resources, it) }
         drawable?.tileModeY = Shader.TileMode.REPEAT
         streetView.setImageDrawable(drawable)
@@ -171,10 +180,14 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         leftSideTextView.setText(if (laneCountLeft > 0) null else defaultTitle)
         rightSideTextView.setText(if (laneCountRight > 0) null else defaultTitle)
 
-        val centerX = (rightLanesOffset * laneWidth).toInt()
+        val laneWidth = laneWidth
         leftSideClickArea.isGone = isShowingOnlyRightSide
-        leftSideClickArea.updateLayoutParams { width = centerX }
-        rightSideClickArea.updateLayoutParams { width = rotateContainer.width - centerX }
+        leftSideClickArea.updateLayoutParams {
+            width = (leftLanesEnd * laneWidth).toInt()
+        }
+        rightSideClickArea.updateLayoutParams {
+            width = rotateContainer.width - (rightLanesStart * laneWidth).toInt()
+        }
 
         renderCars()
     }
@@ -208,8 +221,8 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         if (l == 0 && r == 0) return
 
         val laneWidth = laneWidth
-        val rightLanesOffset = rightLanesOffset
-        val leftLanesOffset = leftLanesOffset
+        val rightLanesOffset = rightLanesStart
+        val leftLanesOffset = leftLanesStart
 
         val carWidth = ((1f - 2f * LANE_PADDING) * laneWidth).toInt()
         val trafficDirection = if (isForwardTraffic) 1f else -1f
@@ -249,8 +262,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         /* the CAR_SPEED is "lane graphic squares per second". If the lane graphic is not a square
            we need to go faster/slower */
         val ratio = 1f * w / h
-        val totalLanes = max(2, carsOnLanesLeft.size + carsOnLanesRight.size)
-        val delta = CAR_SPEED * ratio * deltaTime/1000f / totalLanes
+        val delta = CAR_SPEED * ratio * deltaTime/1000f / max(2, lanesSpace)
 
         val randomPerLane = Random(1)
         val allCarsOnLanes = carsOnLanesLeft.asSequence() + carsOnLanesRight.asSequence()
