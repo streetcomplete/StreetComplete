@@ -33,6 +33,12 @@ fun ElementGeometry.toTangramGeometry(): List<Geometry> = when(this) {
     }
 }
 
+fun ElementPolylinesGeometry.toTangramGeometryWithDirectionIndicator(): List<Geometry> {
+    return polylines.map { polyline ->
+        Polyline(polyline.map { it.toLngLat() }, mapOf("type" to "arrows"))
+    }
+}
+
 fun LngLat.toLatLon(): LatLon = OsmLatLon(latitude, longitude)
 
 fun LatLon.toLngLat(): LngLat = LngLat(longitude, latitude)

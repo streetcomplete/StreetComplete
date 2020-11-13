@@ -14,8 +14,6 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginLeft
-import androidx.core.view.marginStart
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.geometry.Point
@@ -25,6 +23,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
@@ -33,10 +33,7 @@ import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_ELEMENT_ID
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_GROUP
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_ID
-import de.westnordost.streetcomplete.map.tangram.CameraPosition
-import de.westnordost.streetcomplete.map.tangram.Marker
-import de.westnordost.streetcomplete.map.tangram.toLngLat
-import de.westnordost.streetcomplete.map.tangram.toTangramGeometry
+import de.westnordost.streetcomplete.map.tangram.*
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.util.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.distanceTo
@@ -160,9 +157,8 @@ class QuestsMapFragment : LocationAwareMapFragment() {
                         }
                     }
 
-                    // TODO sst: translate
                     AlertDialog.Builder(requireContext())
-                        .setTitle("Multiple quests available here")
+                        .setTitle(resources.getText(R.string.multiple_quests_available))
                         .setAdapter(adapter) { _, item ->
                             listener?.onClickedQuest(pickedQuestGroup, quests[item].id!!)
                         }.show()
@@ -194,7 +190,10 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         zoomAndMoveToContain(quest.geometry, offset)
         showQuestSelectionMarkers(quest.markerLocations)
         putSelectedQuestPins(quest)
-        putQuestGeometry(quest.geometry)
+
+        val indicateQuestDirection = quest.type is OsmElementQuestType
+            && (quest.type as OsmElementQuestType<*>).indicateDirection
+        putQuestGeometry(quest.geometry, indicateQuestDirection)
     }
 
     /** Clear focus on current quest but do not return to normal view yet */
@@ -320,8 +319,13 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     /* ------------------------------  Geometry for current quest ------------------------------- */
 
-    private fun putQuestGeometry(geometry: ElementGeometry) {
-        geometryLayer?.setFeatures(geometry.toTangramGeometry())
+    private fun putQuestGeometry(geometry: ElementGeometry, indicateDirection: Boolean) {
+        val tangramGeometry =
+            if (indicateDirection && geometry is ElementPolylinesGeometry)
+                geometry.toTangramGeometryWithDirectionIndicator()
+            else
+                geometry.toTangramGeometry()
+        geometryLayer?.setFeatures(tangramGeometry)
     }
 
     fun highlightSidewalkForQuest(quest: Quest, sidewalkSide: AbstractQuestAnswerFragment.Listener.SidewalkSide) {

@@ -29,6 +29,9 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** returns whether the markers should be at the ends instead of the center */
     val hasMarkersAtEnds: Boolean get() = false
 
+    /** returns whether the direction of ways should be indicated on the map when drawing the quest geometry */
+    val indicateDirection: Boolean get() = false
+
     /** returns whether the user should be able to split the way instead */
     val isSplitWayEnabled: Boolean get() = false
 

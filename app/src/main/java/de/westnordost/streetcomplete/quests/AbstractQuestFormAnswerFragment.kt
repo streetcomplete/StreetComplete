@@ -9,8 +9,10 @@ import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
-/** Abstract base class for dialogs in which the user answers a quest with a form he has to fill
- * out  */
+/**
+ * Abstract base class for dialogs in which the user answers a quest with a form he has to fill
+ * out
+ * */
 abstract class AbstractQuestFormAnswerFragment<T> : AbstractQuestAnswerFragment<T>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

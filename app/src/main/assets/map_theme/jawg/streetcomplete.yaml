@@ -1,6 +1,6 @@
 global:
-    geometry_color: '#44D14000' # accent color + alpha
-    quest_highlighting_color: '#000000'
+    geometry_color: '#44D14000' # alpha + accent color (AARRGGBB)
+    quest_highlighting_color: '#88536DFE'
 
 textures:
     quests:
@@ -12,9 +12,9 @@ textures:
         filtering: mipmap
         density: 5
     arrow:
-      url: images/oneway_arrow@2x.png
-      filtering: mipmap
-      density: 10
+        url: images/oneway_arrow@2x.png
+        filtering: mipmap
+        density: 10
 
 styles:
     quest-selection:
@@ -36,7 +36,7 @@ styles:
         texture: quest_dot
         blend: overlay
         blend_order: 1
-    arrows:
+    geometry-arrows:
         base: lines
         texture: arrow
         blend: overlay
@@ -44,6 +44,10 @@ styles:
     geometry-lines:
         base: lines
         blend: overlay
+    geometry-lines-dashed:
+        base: lines
+        blend: overlay
+        dash: [1]
     geometry-polygons:
         base: polygons
         blend: overlay
@@ -99,13 +103,23 @@ layers:
         line:
             filter: { type: line }
             draw:
-                arrows:
+                geometry-lines:
                     color: global.geometry_color
                     width: 16px
                     collide: false
                     order: 1000
                     cap: round
                     join: round
+        arrows:
+          filter: { type: arrows }
+          draw:
+            geometry-arrows:
+              color: global.geometry_color
+              width: 16px
+              collide: false
+              order: 1000
+              cap: round
+              join: round
         poly:
             filter: { type: poly }
             draw:
@@ -125,22 +139,22 @@ layers:
                     collide: false
                     order: 1000
     additional_quest_highlighting_layer:
-      data: { source: additional_quest_highlighting_layer }
-      line:
-        filter: { type: line }
-        draw:
-          geometry-lines:
-            color: global.quest_highlighting_color
-            width: 8px
-            collide: false
-            order: 1000
-            cap: round
-            join: round
-      point:
-        filter: { type: point }
-        draw:
-          geometry-points:
-            color: global.quest_highlighting_color
-            size: 8px
-            collide: false
-            order: 1000
+        data: { source: additional_quest_highlighting_layer }
+        line:
+            filter: { type: line }
+            draw:
+                geometry-lines-dashed:
+                    color: global.quest_highlighting_color
+                    width: 8px
+                    collide: false
+                    order: 1000
+                    cap: square
+                    join: bevel
+        point:
+            filter: { type: point }
+            draw:
+                geometry-points:
+                    color: global.quest_highlighting_color
+                    size: 8px
+                    collide: false
+                    order: 1000

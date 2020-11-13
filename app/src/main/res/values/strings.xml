@@ -936,6 +936,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
     <string name="open_url">Open URL</string>
 
+    <string name="multiple_quests_available">Multiple quests available here</string>
     <string name="use_device_to_measure">Use device to measure</string>
     <string name="enter_manually">Enter manually</string>
     <string name="unit_cm">cm</string>

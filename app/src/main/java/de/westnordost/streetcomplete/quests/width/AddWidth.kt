@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 
-class AddWidth : OsmFilterQuestType<String>() {
+class AddWidth : OsmFilterQuestType<WidthAnswer>() {
 
     override val elementFilter = """
         ways with highway ~ path|footway
@@ -23,7 +23,22 @@ class AddWidth : OsmFilterQuestType<String>() {
 
     override fun createForm(): AddWidthForm = AddWidthForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("width", answer)
+    override fun applyAnswerTo(answer: WidthAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is SimpleWidthAnswer -> {
+                changes.updateWithCheckDate("width", answer.value)
+                changes.deleteIfExists("source:width")
+            }
+            is SidewalkWidthAnswer -> {
+                if (answer.leftSidewalkValue != null) {
+                    changes.updateWithCheckDate("sidewalk:left:width", answer.leftSidewalkValue!!)
+                    changes.deleteIfExists("source:sidewalk:left:width")
+                }
+                if (answer.rightSidewalkValue != null) {
+                    changes.updateWithCheckDate("sidewalk:right:width", answer.rightSidewalkValue!!)
+                    changes.deleteIfExists("source:sidewalk:right:width")
+                }
+            }
+        }
     }
 }

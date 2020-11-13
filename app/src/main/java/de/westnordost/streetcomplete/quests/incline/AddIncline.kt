@@ -18,6 +18,7 @@ class AddIncline : OsmFilterQuestType<String>() {
     override val commitMessage = "Add incline"
     override val wikiLink = "Key:incline"
     override val icon = R.drawable.ic_quest_incline
+    override val indicateDirection = true
     override val isSplitWayEnabled = false
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_path_incline

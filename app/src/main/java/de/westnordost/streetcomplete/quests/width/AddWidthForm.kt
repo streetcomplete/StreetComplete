@@ -10,17 +10,27 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.measurement.ARCoreMeasurementActivity
 import de.westnordost.streetcomplete.measurement.ARCoreMeasurementActivity.Companion.REQUEST_CODE_MEASURE_DISTANCE
 import de.westnordost.streetcomplete.measurement.ARCoreMeasurementActivity.Companion.RESULT_ATTRIBUTE_DISTANCE
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment.Listener.SidewalkSide
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerWithSidewalkFragment
 import kotlinx.android.synthetic.main.quest_width.*
-import kotlinx.android.synthetic.main.quest_width.manualInputField
 import kotlin.math.roundToInt
 
-class AddWidthForm : AbstractQuestFormAnswerFragment<String>() {
+class AddWidthForm : AbstractQuestFormAnswerWithSidewalkFragment<WidthAnswer>() {
     override val contentLayoutResId = R.layout.quest_width
+
+    private var answer: WidthAnswer? = null
+
+    override fun shouldHandleSidewalks(): Boolean {
+        return true
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initInputFields()
+        checkIsFormComplete()
+    }
 
+    private fun initInputFields() {
         measureButton.setOnClickListener {
             val intent = Intent(activity?.application, ARCoreMeasurementActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_MEASURE_DISTANCE)
@@ -39,8 +49,6 @@ class AddWidthForm : AbstractQuestFormAnswerFragment<String>() {
                 checkIsFormComplete()
             }
         })
-
-        checkIsFormComplete()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -58,7 +66,35 @@ class AddWidthForm : AbstractQuestFormAnswerFragment<String>() {
         return manualInputField.text.isNotEmpty()
     }
 
+    override fun resetInputs() {
+        manualInputField.text = null
+    }
+
     override fun onClickOk() {
-        applyAnswer("test") // TODO sst: use real value
+        val width = manualInputField.text.toString()
+        if (elementHasSidewalk) {
+                if (answer is SidewalkWidthAnswer) {
+                    if (currentSidewalkSide == SidewalkSide.LEFT) {
+                        (answer as SidewalkWidthAnswer).leftSidewalkValue = width
+                    } else {
+                        (answer as SidewalkWidthAnswer).rightSidewalkValue = width
+                    }
+                    applyAnswer(answer!!)
+                } else {
+                    answer =
+                        if (currentSidewalkSide == SidewalkSide.LEFT)
+                            SidewalkWidthAnswer(width, null)
+                        else
+                            SidewalkWidthAnswer(null, width)
+                    if (sidewalkOnBothSides) {
+                        switchToOppositeSidewalkSide()
+                    } else {
+                        applyAnswer(answer!!)
+                    }
+                }
+        } else {
+            answer = SimpleWidthAnswer(width)
+            applyAnswer(answer!!)
+        }
     }
 }
