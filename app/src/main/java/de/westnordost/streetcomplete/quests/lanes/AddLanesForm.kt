@@ -174,9 +174,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     }
 
     private fun updatePuzzleView() {
-        puzzleView?.laneCountLeft = leftSide
-        puzzleView?.laneCountRight = rightSide
-
+        puzzleView?.setLaneCounts(leftSide ?: 0, rightSide ?: 0)
         checkIsFormComplete()
     }
 

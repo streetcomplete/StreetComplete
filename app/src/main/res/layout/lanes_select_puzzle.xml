@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <RelativeLayout
+        android:id="@+id/rotateContainer"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="#3666"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        tools:rotation="0">
+
+        <ImageView
+            android:id="@+id/streetView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+
+        <RelativeLayout
+            android:id="@+id/leftSideClickArea"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            tools:ignore="RtlHardcoded">
+
+            <de.westnordost.streetcomplete.view.VerticalLabelView
+                android:id="@+id/leftSideTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textSize="10sp"
+                android:textColor="#404040"
+                app:orientationRight="true"
+                tools:text="Sidewalk"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rightSideClickArea"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            tools:ignore="RtlHardcoded">
+
+            <de.westnordost.streetcomplete.view.VerticalLabelView
+                android:id="@+id/rightSideTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textSize="10sp"
+                android:textColor="#404040"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                tools:text="Sidewalk"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</merge>

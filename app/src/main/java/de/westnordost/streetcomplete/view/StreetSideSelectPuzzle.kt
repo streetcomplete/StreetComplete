@@ -51,8 +51,6 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         }
     }
 
-    val streetSidesView: ViewGroup get() = rotateContainer
-
     private var leftImage: Image? = null
     private var rightImage: Image? = null
     private var isLeftImageSet: Boolean = false
@@ -197,5 +195,5 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 }
 
 interface StreetRotateable {
-    fun setStreetRotation(rotatio: Float)
+    fun setStreetRotation(rotation: Float)
 }
