@@ -47,10 +47,13 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
         puzzleView.onClickSideListener = { showDirectionSelectionDialog() }
 
         val defaultResId = R.drawable.ic_steps_incline_unknown
-        val defaultTitleId = R.string.quest_street_side_puzzle_select
 
         puzzleView.setRightSideImage(ResImage(selection?.iconResId ?: defaultResId))
-        puzzleView.setRightSideText(resources.getString( selection?.titleResId ?: defaultTitleId ))
+        puzzleView.setRightSideText(selection?.titleResId?.let { resources.getString(it) })
+        if (!HAS_SHOWN_TAP_HINT) {
+            if (selection == null) puzzleView.showRightSideTapHint()
+            HAS_SHOWN_TAP_HINT = true
+        }
 
         streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
     }
@@ -85,6 +88,7 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
 
     companion object {
         private const val SELECTION = "selection"
+        private var HAS_SHOWN_TAP_HINT = false
     }
 }
 

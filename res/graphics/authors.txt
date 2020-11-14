@@ -30,6 +30,7 @@ achievements graphics/
                                 https://openclipart.org/detail/312402/simple-daikon (License: CC0 1.0)
                                 https://openclipart.org/detail/229813/aubergine (License: CC0 1.0)
                                 https://openclipart.org/detail/280304/fruit-icons-1-package (License: CC0 1.0)
+	wheelchair                  Judith Gastell, License: CC-BY-SA 4.0
 
 app icon/
     appicon_fancy.svg           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)

@@ -47,13 +47,15 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         val defaultResId =
             if (isLeftHandTraffic) R.drawable.ic_sidewalk_unknown_l
             else                   R.drawable.ic_sidewalk_unknown
-        val defaultTitleId = R.string.quest_street_side_puzzle_select
 
         puzzleView.setLeftSideImage(ResImage(leftSide?.puzzleResId ?: defaultResId))
         puzzleView.setRightSideImage(ResImage(rightSide?.puzzleResId ?: defaultResId))
 
-        puzzleView.setLeftSideText(if (leftSide != null) null else resources.getString( defaultTitleId ))
-        puzzleView.setRightSideText(if (rightSide != null) null else resources.getString( defaultTitleId ))
+        if (!HAS_SHOWN_TAP_HINT) {
+            if (leftSide == null) puzzleView.showLeftSideTapHint()
+            if (rightSide == null) puzzleView.showRightSideTapHint()
+            HAS_SHOWN_TAP_HINT = true
+        }
 
         checkIsFormComplete()
     }
@@ -116,5 +118,7 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
     companion object {
         private const val SIDEWALK_LEFT = "sidewalk_left"
         private const val SIDEWALK_RIGHT = "sidewalk_right"
+
+        private var HAS_SHOWN_TAP_HINT = false
     }
 }
