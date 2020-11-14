@@ -13,6 +13,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.ktx.showTapHint
 import kotlinx.android.synthetic.main.lanes_select_puzzle.view.*
 import kotlin.math.*
 import kotlin.random.Random
@@ -134,10 +135,6 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
         LayoutInflater.from(context).inflate(R.layout.lanes_select_puzzle, this, true)
 
-        val defaultTitle = resources.getString(R.string.quest_street_side_puzzle_select)
-        leftSideTextView.setText(defaultTitle)
-        rightSideTextView.setText(defaultTitle)
-
         animator.setTimeListener { _, _, deltaTime ->
             moveCars(deltaTime)
             invalidate()
@@ -165,9 +162,11 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         updateCarsOnLanes(left, carsOnLanesLeft)
         updateCarsOnLanes(right, carsOnLanesRight)
 
-        val defaultTitle = resources.getString(R.string.quest_street_side_puzzle_select)
-        leftSideTextView.setText(if (laneCountLeft > 0) null else defaultTitle)
-        rightSideTextView.setText(if (laneCountRight > 0) null else defaultTitle)
+        if ((laneCountLeft <= 0 || laneCountRight <= 0) && !HAS_SHOWN_TAP_HINT) {
+            if (laneCountLeft <= 0) leftSideClickArea.showTapHint(300)
+            if (laneCountRight <= 0) rightSideClickArea.showTapHint(1200)
+            HAS_SHOWN_TAP_HINT = true
+        }
 
         updateLanes()
     }
@@ -285,6 +284,10 @@ class LanesSelectPuzzle @JvmOverloads constructor(
                 carAndPosition.position = -Random.nextFloat() * CAR_SPARSITY
             }
         }
+    }
+
+    companion object {
+        private var HAS_SHOWN_TAP_HINT = false
     }
 }
 
