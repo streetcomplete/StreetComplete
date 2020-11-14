@@ -80,7 +80,7 @@ class AddLanesTest {
 
     @Test fun `answering marked lanes for each side`() {
         questType.verifyAnswer(
-            MarkedLanesSides(2,3),
+            MarkedLanesSides(2,3, false),
             StringMapEntryAdd("lanes", "5"),
             StringMapEntryAdd("lanes:forward", "2"),
             StringMapEntryAdd("lanes:backward", "3")
@@ -93,7 +93,7 @@ class AddLanesTest {
                 "lanes" to "4",
                 "lane_markings" to "no"
             ),
-            MarkedLanesSides(2, 3),
+            MarkedLanesSides(2, 3, false),
             StringMapEntryModify("lanes", "4", "5"),
             StringMapEntryModify("lane_markings", "no", "yes"),
             StringMapEntryAdd("lanes:forward", "2"),
@@ -108,10 +108,63 @@ class AddLanesTest {
                 "lanes:forward" to "2",
                 "lanes:backward" to "2",
             ),
-            MarkedLanesSides(2, 3),
+            MarkedLanesSides(2, 3, false),
             StringMapEntryModify("lanes", "4", "5"),
             StringMapEntryModify("lanes:forward", "2", "2"),
             StringMapEntryModify("lanes:backward", "2", "3")
+        )
+    }
+
+    @Test fun `answering marked lanes for each side deletes center lane tagging`() {
+        questType.verifyAnswer(
+            mapOf(
+                "lanes:both_ways" to "1",
+                "turn:lanes:both_ways" to "left"
+            ),
+            MarkedLanesSides(2,3, false),
+            StringMapEntryAdd("lanes", "5"),
+            StringMapEntryAdd("lanes:forward", "2"),
+            StringMapEntryAdd("lanes:backward", "3"),
+            StringMapEntryDelete("lanes:both_ways", "1"),
+            StringMapEntryDelete("turn:lanes:both_ways", "left"),
+        )
+    }
+
+    @Test fun `answering unmarked lanes deletes center lane tagging`() {
+        questType.verifyAnswer(
+            mapOf(
+                "lanes:both_ways" to "1",
+                "turn:lanes:both_ways" to "left"
+            ),
+            UnmarkedLanes(2),
+            StringMapEntryAdd("lanes", "2"),
+            StringMapEntryAdd("lane_markings", "no"),
+            StringMapEntryDelete("lanes:both_ways", "1"),
+            StringMapEntryDelete("turn:lanes:both_ways", "left"),
+        )
+    }
+
+    @Test fun `answering marked lanes deletes center lane tagging`() {
+        questType.verifyAnswer(
+            mapOf(
+                "lanes:both_ways" to "1",
+                "turn:lanes:both_ways" to "left"
+            ),
+            MarkedLanes(2),
+            StringMapEntryAdd("lanes", "2"),
+            StringMapEntryDelete("lanes:both_ways", "1"),
+            StringMapEntryDelete("turn:lanes:both_ways", "left"),
+        )
+    }
+
+    @Test fun `answering marked lanes with center left turn lane`() {
+        questType.verifyAnswer(
+            MarkedLanesSides(1,1, true),
+            StringMapEntryAdd("lanes", "3"),
+            StringMapEntryAdd("lanes:forward", "1"),
+            StringMapEntryAdd("lanes:backward", "1"),
+            StringMapEntryAdd("lanes:both_ways", "1"),
+            StringMapEntryAdd("turn:lanes:both_ways", "left")
         )
     }
 }
