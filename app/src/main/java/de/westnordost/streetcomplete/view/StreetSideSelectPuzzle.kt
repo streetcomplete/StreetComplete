@@ -13,6 +13,7 @@ import android.widget.RelativeLayout
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.ktx.showTapHint
 import kotlinx.android.synthetic.main.side_select_puzzle.view.*
 import kotlin.math.*
 
@@ -98,6 +99,14 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 
     fun setRightSideText(text: String?) {
         rightSideTextView.setText(text)
+    }
+
+    fun showLeftSideTapHint() {
+        leftSideContainer.showTapHint(300)
+    }
+
+    fun showRightSideTapHint() {
+        rightSideContainer.showTapHint(1200)
     }
 
     fun showOnlyRightSide() {

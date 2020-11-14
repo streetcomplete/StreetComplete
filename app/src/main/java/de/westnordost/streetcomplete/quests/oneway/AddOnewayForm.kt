@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGe
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
+import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalkForm
 import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.RotatedCircleDrawable
 import de.westnordost.streetcomplete.view.image_select.*
@@ -44,10 +45,14 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
         puzzleView.listener = { showDirectionSelectionDialog() }
 
         val defaultResId = R.drawable.ic_oneway_unknown
-        val defaultTitleId = R.string.quest_street_side_puzzle_select
 
         puzzleView.setRightSideImageResource(selection?.iconResId ?: defaultResId)
-        puzzleView.setRightSideText(resources.getString( selection?.titleResId ?: defaultTitleId ))
+
+        puzzleView.setRightSideText(selection?.titleResId?.let { resources.getString(it) })
+        if (!HAS_SHOWN_TAP_HINT) {
+            if (selection == null) puzzleView.showRightSideTapHint()
+            HAS_SHOWN_TAP_HINT = true
+        }
 
         streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
     }
@@ -82,6 +87,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
     companion object {
         private const val SELECTION = "selection"
+        private var HAS_SHOWN_TAP_HINT = false
     }
 }
 

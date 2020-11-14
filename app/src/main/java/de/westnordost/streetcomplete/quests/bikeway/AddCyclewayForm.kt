@@ -80,12 +80,15 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             if (isLeftHandTraffic) R.drawable.ic_cycleway_unknown_l
             else                   R.drawable.ic_cycleway_unknown
 
-        val defaultTitleId = R.string.quest_street_side_puzzle_select
-
         puzzleView.setLeftSideImageResource(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
         puzzleView.setRightSideImageResource(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
-        puzzleView.setLeftSideText(resources.getString(leftSide?.getTitleResId() ?: defaultTitleId ))
-        puzzleView.setRightSideText(resources.getString(rightSide?.getTitleResId() ?: defaultTitleId ))
+        puzzleView.setLeftSideText(leftSide?.getTitleResId()?.let { resources.getString(it) })
+        puzzleView.setRightSideText(rightSide?.getTitleResId()?.let { resources.getString(it) })
+        if (!HAS_SHOWN_TAP_HINT) {
+            if (leftSide == null) puzzleView.showLeftSideTapHint()
+            if (rightSide == null) puzzleView.showRightSideTapHint()
+            HAS_SHOWN_TAP_HINT = true
+        }
 
         checkIsFormComplete()
     }
@@ -233,5 +236,6 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         private const val DEFINE_BOTH_SIDES = "define_both_sides"
         private const val IS_DISPLAYING_PREVIOUS_CYCLEWAY = "is_displaying_previous_cycleway"
 
+        private var HAS_SHOWN_TAP_HINT = false
     }
 }
