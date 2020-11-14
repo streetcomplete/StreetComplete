@@ -500,6 +500,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
+    <string name="quest_toiletsFee_title">"Do you have to pay to use this restroom?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
@@ -1421,6 +1422,7 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"Train station"</string>
+    <string name="quest_buildingType_transportation">"Is this transportation building public?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_university">"University building"</string>

@@ -2172,7 +2172,6 @@ päiviä"</string>
     <string name="resurvey_intervals_less_often">"Kysy harvemmin"</string>
     <string name="resurvey_intervals_default">"Oletus"</string>
     <string name="resurvey_intervals_more_often">"Kysy useammin"</string>
-    <string name="quest_street_side_puzzle_select">"Napauta valitaksesi"</string>
     <string name="quest_accepts_cash_type_title">"Hyväksyykö %1$s (%2$s) käteismaksun?"</string>
     <string name="quest_busStopBench_tram_name_title">"Onko raitiovaunupysäkillä %s penkki"</string>
     <string name="quest_busStopBench_tram_title">"Onko raitiovaunupysäkillä penkki?"</string>

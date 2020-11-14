@@ -45,7 +45,7 @@
     <string name="map_attribution_osm">"© contribuidores do OpenStreetMap"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_otherAnswers">"Outras respostas"</string>
+    <string name="quest_generic_otherAnswers">"Outras respostas…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Não sei…"</string>
@@ -408,10 +408,10 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="crash_title">"Ah não, o StreetComplete travou da última vez!"</string>
 
     <!-- Fuzzy -->
-    <string name="crash_compose_email">"Compor e-mail"</string>
+    <string name="crash_compose_email">"Escrever e-mail"</string>
 
     <!-- Fuzzy -->
-    <string name="no_email_client">"Você não tem um cliente de email instalado."</string>
+    <string name="no_email_client">"Você não tem um cliente de e-mail instalado."</string>
 
     <!-- Fuzzy -->
     <string name="pref_title_keep_screen_on">"Manter a tela ligada"</string>
@@ -530,7 +530,7 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_bus">"A parada de ônibus \"%S\" tem pavimentos táteis?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"A parada de ônibus \"%s\" tem pavimentos táteis?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"Apenas informação que foi feita durante um levantamento deve ser adicionada."</string>
@@ -648,10 +648,10 @@ Se não há placas ao longo de toda a rua que corresponda com a parte destacada 
     <string name="quest_generic_error_a_field_empty">"Você deixou um campo vazio"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s – %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s – %2$s (%3$s)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"Não é possível introduzir os caracteres da placa"</string>
@@ -2091,7 +2091,6 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="resurvey_intervals_less_often">"Pergunte com menos frequência"</string>
     <string name="resurvey_intervals_default">"Padrão"</string>
     <string name="resurvey_intervals_more_often">"Pergunte com mais frequência"</string>
-    <string name="quest_street_side_puzzle_select">"Toque para seleccionar"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) aceita pagamento em dinheiro?"</string>
     <string name="quest_busStopBench_tram_name_title">"O bonde para %s tem um banco?"</string>
     <string name="quest_busStopBench_tram_title">"Essa parada de bonde tem um banco?"</string>
@@ -2100,7 +2099,7 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="quest_summit_register_title">"Existe um registro de conferência em %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro de um edifício?"</string>
     <string name="about_title_translate">"Ajude a traduzir esse aplicativo"</string>
-    <string name="about_description_translate">"%1$s é traduzido %2$d%%"</string>
+    <string name="about_description_translate">"%1$s está %2$d%% traduzido"</string>
     <string name="quest_oneway2_title">"Esta é uma rua de mão única? Em que direção?"</string>
     <string name="quest_oneway2_dir">"Direção única nesta direção"</string>
     <string name="quest_oneway2_no_oneway">"Não é uma direção única"</string>

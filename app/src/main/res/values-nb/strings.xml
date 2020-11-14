@@ -1970,7 +1970,6 @@ forkortelser i feltet nedenfor:"</string>
     <string name="resurvey_intervals_less_often">"Spør sjeldnere"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spør oftere"</string>
-    <string name="quest_street_side_puzzle_select">"Trykk for å velge"</string>
     <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) imot betaling med kontanter?"</string>
     <string name="quest_busStopBench_title">"Har dette busstoppet en benk?"</string>
     <string name="quest_busStopBench_name_title">"Har busstoppet %s en benk?"</string>

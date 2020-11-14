@@ -1422,7 +1422,7 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="quest_address_answer_no_housenumber_message1">"Le bâtiment a été marqué comme :"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Est-ce correct et et ne s'agit-il pas simplement d'une partie d'un bâtiment ?"</string>
+    <string name="quest_address_answer_no_housenumber_message2">"Est-ce correct et ne s'agit-il pas simplement d'une partie d'un bâtiment ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Sanctuaire"</string>
@@ -2225,7 +2225,6 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="resurvey_intervals_less_often">"Demander moins souvent"</string>
     <string name="resurvey_intervals_default">"Défaut"</string>
     <string name="resurvey_intervals_more_often">"Demander plus souvent"</string>
-    <string name="quest_street_side_puzzle_select">"Appuyer pour choisir"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accepte-t-il les paiements en espèces ?"</string>
 
     <!-- Fuzzy -->

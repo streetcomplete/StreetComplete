@@ -1,3 +1,12 @@
+v26.2: |
+  <ul>
+  <li>fix that quests that turn out to be already solved will be removed on next download (#2255)</li>
+  <li>ask for cycleways on residential roads with a speed limit above 30 km/h</li>
+  <li>add another achievement graphic</li>
+  <li>add a visual tap hint for the cycleway, sidewalk, oneway and steps incline quest (#2240)</li>
+  <li>update translations</li>
+  </ul>
+
 v26.1: |
   <ul>
   <li>Don't ask for cycleways on residential roads after all (#2251)</li>

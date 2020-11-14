@@ -2407,6 +2407,10 @@
       "name": "大型燃气罐",
       "terms": "大型燃气罐,大型储气罐,煤气包"
     },
+    "man_made/goods_conveyor": {
+      "name": "货物传送带",
+      "terms": "传送带,输送带,输送机"
+    },
     "man_made/lighthouse": {
       "name": "灯塔",
       "terms": "灯塔"
@@ -2469,6 +2473,10 @@
     "man_made/tower/communication": {
       "name": "通信塔"
     },
+    "man_made/tower/cooling": {
+      "name": "冷却塔",
+      "terms": "发电厂"
+    },
     "man_made/tower/observation": {
       "name": "瞭望塔"
     },
@@ -2516,6 +2524,10 @@
     },
     "military/checkpoint": {
       "name": "军事检查点"
+    },
+    "military/nuclear_explosion_site": {
+      "name": "核爆场所",
+      "terms": "原子弹,爆炸,弹坑,核弹,氢弹,核爆,点,试验场"
     },
     "natural": {
       "name": "自然要素"
@@ -3580,7 +3592,7 @@
     },
     "shop/kitchen": {
       "name": "厨房用品店",
-      "terms": "厨房用品店"
+      "terms": "厨房用品,橱柜,水槽,厨房台面"
     },
     "shop/laundry": {
       "name": "洗衣店",

@@ -1180,9 +1180,6 @@
     <string name="quest_religion_jain">"Джайнизм"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_religion_bahai">"Вера Бахаи"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_caodaist">"Каодай"</string>
 
     <!-- Fuzzy -->
@@ -1266,9 +1263,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Какого типа данная велопарковка?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"велосипедная дорожка"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Какое время выемки писем у почтового ящика?"</string>
@@ -2241,6 +2235,7 @@
     <string name="credits_main_contributors_title">"Основные участники"</string>
     <string name="stats_are_syncing">"Ваша статистика синхронизируется. Проверьте ее тут позднее."</string>
     <string name="user_statistics_country_rank">"Рейтинг в %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Картографический портал %s"</string>
     <string name="user_statistics_filter_by_country">"по стране"</string>
     <string name="user_statistics_filter_by_quest_type">"по типу квеста"</string>
     <string name="user_profile_global_rank">"Общий рейтинг"</string>
@@ -2253,6 +2248,8 @@
     <string name="quest_address_street_description">"Нажмите на дорогу к которой относится объект или введите название улицы в поле ввода:"</string>
     <string name="quest_recycling_type_cooking_oil">"масло для приготовления пищи"</string>
     <string name="quest_recycling_type_engine_oil">"моторное масло"</string>
+    <string name="link_graphhopper_description">"Гибкий механизм маршрутизации"</string>
+    <string name="link_qwant_maps_description">"Карта с доступными для поиска местами и направлениями"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Для отображения карты, векторные тайлы из  %1$s. Прочтите  &lt;a href=\"%2$s\"&gt;политику конфиденциальности &lt;/a&gt;  для большей информации &lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Спонсоры"</string>
     <string name="quest_board_type_history">"История"</string>
@@ -2266,7 +2263,9 @@
     <string name="quest_sidewalk_separately_mapped">"Да, отображены раздельно на карте"</string>
     <string name="quest_board_type_map">"Это карта"</string>
     <string name="quest_board_type_map_title">"Это только карта и ничего более?"</string>
+    <string name="quest_board_type_map_description">"Если доска посвящена определенной теме, укажите ее, независимо от того, есть ли на ней карта. Например, на табло общественного транспорта может быть карта автобусных маршрутов. Если тема отсутствует в списке доступных ответов, оставьте вместо этого заметку."</string>
     <string name="quest_surface_detailed_answer_impossible">"Различные покрытия..."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Пожалуйста, кратко укажите здесь характер поверхности, например, «песчаный с вкраплениями булыжника». Длина текста ограничена 255 символами."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"международное"</string>
@@ -2280,6 +2279,8 @@
     <string name="at_housenumber">"номер дома %s:"</string>
     <string name="quest_openingHours_name_type_title">"Какое время работы у %1$s (%2$s)?"</string>
     <string name="quest_openingHours_resurvey_name_title">"Время работы для %s корректное?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Часы работы для %1$s (%2$s) все еще правильны?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Часы работы все еще правильные (%s)?"</string>
     <string name="quest_openingHours_add_off_days">"Добавить выходные дни"</string>
     <string name="quest_openingHours_off_day">"Выходной"</string>
     <string name="quest_openingHours_unspecified_range">"Не указано"</string>
@@ -2287,12 +2288,56 @@
     <string name="resurvey_intervals_less_often">"Спрашивать реже"</string>
     <string name="resurvey_intervals_default">"По умолчанию"</string>
     <string name="resurvey_intervals_more_often">"Спрашивать чаще"</string>
-    <string name="quest_street_side_puzzle_select">"Нажмите для выбора"</string>
     <string name="quest_accepts_cash_type_title">"Принимают ли в %1$s (%2$s) оплату наличными?"</string>
     <string name="quest_busStopBench_tram_name_title">"Есть ли на остановке трамвая %s скамейка?"</string>
     <string name="quest_busStopBench_tram_title">"На этой остановке трамвая есть скамейка?"</string>
     <string name="quest_busStopBench_title">"На этой автобусной остановке есть скамейка?"</string>
     <string name="quest_busStopBench_name_title">"Есть ли на автобусной остановке %s скамейка?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Дефибриллятор (AED) находится внутри здания?"</string>
+    <string name="about_title_translate">"Помогите перевести это приложение"</string>
     <string name="about_description_translate">"%1$s переведен на %2$d%%"</string>
+    <string name="quest_oneway2_title">"Это улица с односторонним движением? В каком направлении?"</string>
+    <string name="quest_oneway2_dir">"В одну сторону в этом направлении"</string>
+    <string name="quest_oneway2_no_oneway">"Не в одну сторону"</string>
+    <string name="quest_maxweight_select_sign">"Выберите знак"</string>
+    <string name="quest_steps_incline_title">"Какое направление ведет вверх для этих ступеней?"</string>
+    <string name="quest_steps_incline_up">"Этой стороной вверх"</string>
+    <string name="quest_step_count_title">"Сколько здесь ступеней?"</string>
     <string name="quest_traffic_signals_sound_title">"Есть ли здесь звуковые сигналы для слепых?"</string>
+    <string name="quest_busStopRef_title">"Какой номер у этой автобусной остановки?"</string>
+    <string name="quest_tramStopRef_title">"Какой номер у этой трамвайной остановки?"</string>
+    <string name="quest_buildingType_bungalow_description2">"небольшой особняк (дача,  коттедж,  хижина…)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Какие заграждения используются на этом железнодорожном переезде?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Без преград"</string>
+    <string name="quest_steps_ramp_title">"Есть ли у этих ступеней пандус? Какой?"</string>
+    <string name="quest_steps_ramp_none">"Нет рампы"</string>
+    <string name="quest_steps_ramp_bicycle">"Велосипедная рампа"</string>
+    <string name="quest_steps_ramp_stroller">"Рампа для коляски"</string>
+    <string name="quest_steps_ramp_wheelchair">"Пандус для инвалидных колясок"</string>
+    <string name="quest_atm_operator_title">"Как называется банк этого банкомата?"</string>
+    <string name="quest_charging_station_operator_title">"Кто является оператором этой зарядной станции?"</string>
+    <string name="link_indoorequal_description">"Откройте для себя карты торговых центров, вокзалов и т.д."</string>
+    <string name="link_thenandnow_description">"Любопытно, какого прогресса мы достигли за эти годы? Сравните с тем, как карта выглядела более 10 лет назад!"</string>
+    <string name="achievement_rare_title">"Охота за сокровищами"</string>
+    <string name="achievement_rare_solved_X">"Вы нашли и выполнили %d квестов, которые выполняются очень редко, поздравляем!"</string>
+    <string name="achievement_citizen_title">"Гражданин"</string>
+    <string name="achievement_citizen_solved_X">"Вы выполнили %d квестов, полезных в повседневной городской жизни!"</string>
+    <string name="achievement_outdoors_title">"На открытом воздухе"</string>
+    <string name="achievement_outdoors_solved_X">"Вы выполнили %d квестов, полезных для любителей активного отдыха!"</string>
+    <string name="quest_pedestrian_crossing_island">"Есть ли у этого пешеходного перехода островок безопасности?"</string>
+    <string name="quest_generic_answer_noSign">"Нет знака"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Отображается ли пандус для инвалидных колясок отдельным участком на карте?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"отдельный"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"не отдельный"</string>
+    <string name="pref_title_sync2">"Загружать ответы автоматически"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Опишите поверхность"</string>
+    <string name="open_url">"Открыть URL"</string>
+    <string name="quest_buildingType_silo">"Силос"</string>
+    <string name="quest_buildingType_historic">"Исторический"</string>
+    <string name="quest_buildingType_historic_description">"здание исторической ценности, построенное с неизвестной или неясной целью"</string>
+    <string name="quest_buildingType_abandoned">"Заброшенный"</string>
+    <string name="quest_buildingType_abandoned_description">"неиспользуемое здание, первоначальная функция или назначение которого неизвестны"</string>
+    <string name="quest_buildingType_ruins">"Руины"</string>
+    <string name="quest_buildingType_ruins_description">"заброшенное, разрушенное и неопознанное здание"</string>
+    <string name="quest_charging_station_capacity_title">"Сколько автомобилей можно заряжать на этой зарядной станции одновременно?"</string>
 </resources>

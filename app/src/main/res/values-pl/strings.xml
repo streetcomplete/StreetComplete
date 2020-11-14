@@ -2303,7 +2303,6 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="resurvey_intervals_less_often">"Pytaj rzadziej"</string>
     <string name="resurvey_intervals_default">"Domyślny"</string>
     <string name="resurvey_intervals_more_often">"Pytaj częściej"</string>
-    <string name="quest_street_side_puzzle_select">"Dotknij by wybrać"</string>
     <string name="quest_accepts_cash_type_title">"Czy %1$s (%2$s) akceptuje płatność gotówką?"</string>
     <string name="quest_busStopBench_tram_name_title">"Czy przystanek tramwajowy %s ma miejsce do siedzenia?"</string>
     <string name="quest_busStopBench_tram_title">"Czy ten przystanek tramwajowy ma miejsce do siedzenia?"</string>

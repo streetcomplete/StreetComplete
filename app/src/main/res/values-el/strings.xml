@@ -2082,7 +2082,6 @@
     <string name="resurvey_intervals_less_often">"Ρωτήστε λιγότερο συχνά"</string>
     <string name="resurvey_intervals_default">"Προκαθορισμένο"</string>
     <string name="resurvey_intervals_more_often">"Ρωτήστε πιο συχνά"</string>
-    <string name="quest_street_side_puzzle_select">"Πατήστε για επιλογή"</string>
     <string name="quest_accepts_cash_type_title">"Δέχεται το %1$s (%2$s) πληρωμή σε μετρητά;"</string>
     <string name="quest_busStopBench_tram_name_title">"Έχει η στάση του τραμ %s πάγκο;"</string>
     <string name="quest_busStopBench_tram_title">"Μήπως αυτή η στάση τραμ έχει πάγκο;"</string>

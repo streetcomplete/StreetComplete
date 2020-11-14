@@ -686,7 +686,7 @@ Na primjer 1,3 ili 2–6."</string>
     <!-- Fuzzy -->
     <string name="quest_buildingType_residential">"Stanovanje"</string>
     <string name="quest_buildingType_residential_description">"Zgrada gdje ljudi žive"</string>
-    <string name="quest_buildingType_house">"Obiteljska kuća"</string>
+    <string name="quest_buildingType_house">"Kuća"</string>
     <string name="quest_buildingType_house_description">"Gdje živi jedna obitelj"</string>
     <string name="quest_buildingType_apartments_description">"zgrada za više obitelji, u prizemlju može imati prodajna mjesta"</string>
     <string name="quest_buildingType_apartments">"Stambena zgrada"</string>
@@ -1248,7 +1248,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="resurvey_intervals_less_often">"Pitaj rjeđe"</string>
     <string name="resurvey_intervals_default">"Uobičajeno"</string>
     <string name="resurvey_intervals_more_often">"Pitaj češće"</string>
-    <string name="quest_street_side_puzzle_select">"Dotaknite za odabir"</string>
     <string name="quest_accepts_cash_type_title">"Prihvaća li %1$s (%2$s) plaćanje gotovinom?"</string>
     <string name="quest_busStopBench_tram_name_title">"Postoji li klupa na tramvajskom stajalištu %s?"</string>
     <string name="quest_busStopBench_tram_title">"Ima li ova tramvajska stanica klupu?"</string>

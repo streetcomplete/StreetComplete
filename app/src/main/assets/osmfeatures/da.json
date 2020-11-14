@@ -147,9 +147,17 @@
       "name": "Cykelreparationsværktøj",
       "terms": "Cykelreparationsværktøj"
     },
+    "amenity/binoculars": {
+      "name": "Fastmonteret kikkert",
+      "terms": "kikkert,observation,udsyn,panorama"
+    },
     "amenity/boat_rental": {
       "name": "Bådudlejning",
       "terms": "Bådudlejning, lystbådudlejning"
+    },
+    "amenity/boat_storage": {
+      "name": "Bådlager",
+      "terms": "lager,båd,opbevaring,dock,marina"
     },
     "amenity/bureau_de_change": {
       "name": "Valutaveksling",
@@ -291,6 +299,10 @@
     "amenity/fast_food/hot_dog": {
       "name": "Hot Dog fastfood"
     },
+    "amenity/fast_food/juice": {
+      "name": "Juicebar",
+      "terms": "cafe,juice,drikkevarer,frugt.millkshake,smoothie"
+    },
     "amenity/fast_food/mexican": {
       "name": "Mexicansk fastfood"
     },
@@ -361,6 +373,10 @@
     "amenity/monastery": {
       "name": "Kloster-område",
       "terms": "kloster, nonne, katedral, kapel, kirke, gud, bøn"
+    },
+    "amenity/mortuary": {
+      "name": "Lighus",
+      "terms": "krematorium,bedemand"
     },
     "amenity/motorcycle_parking": {
       "name": "Motorcykelparkering",
@@ -451,6 +467,10 @@
     "amenity/pub": {
       "name": "Værtshus",
       "terms": "Værtshus, Pub, Ølstue"
+    },
+    "amenity/pub/irish": {
+      "name": "Irsk pub",
+      "terms": "irsk, pub,bar"
     },
     "amenity/public_bath": {
       "name": "Offentligt bad",
@@ -2070,6 +2090,9 @@
       "name": "Swimmingpool",
       "terms": "Swimmingpool, Svømmepool"
     },
+    "leisure/sports_hall": {
+      "name": "Fitness"
+    },
     "leisure/stadium": {
       "name": "Stadion",
       "terms": "Stadion"
@@ -2264,6 +2287,10 @@
       "name": "Kommunikationstårn",
       "terms": "tårn,mast,kommunikation,antenne,tv,radio,rf"
     },
+    "man_made/tower/cooling": {
+      "name": "Køletårn",
+      "terms": "køling,køle,afkøling,kraftværk,elkraft"
+    },
     "man_made/tower/defensive": {
       "name": "Befæstningstårn",
       "terms": "militær,fort,slot,forsvar"
@@ -2299,6 +2326,10 @@
     "man_made/windmill": {
       "name": "Vindmølle",
       "terms": "mølle"
+    },
+    "man_made/windpump": {
+      "name": "Vindrose",
+      "terms": "vind,vindpumpe,pumpe,vand,vandmølle,mølle"
     },
     "man_made/works": {
       "name": "Fabrik",
@@ -2357,6 +2388,10 @@
     "natural/heath": {
       "name": "Hede",
       "terms": "Hede"
+    },
+    "natural/hot_spring": {
+      "name": "Varm kilde",
+      "terms": "kilde,kildevæld,vand,varm"
     },
     "natural/mud": {
       "name": "Mudder"
@@ -2764,6 +2799,10 @@
     },
     "public_transport/platform/bus_point": {
       "name": "Busstop"
+    },
+    "public_transport/platform/bus_tram_point": {
+      "name": "Sporvogn- og busstop",
+      "terms": "bus,letbane,sporvogn,platform,offentlig,transport"
     },
     "public_transport/stop_area": {
       "name": "Stoppestedsområde",
@@ -3580,6 +3619,10 @@
     "type/route/ferry": {
       "name": "Færgerute",
       "terms": "Færgerute"
+    },
+    "type/route/foot": {
+      "name": "Vandrerrute",
+      "terms": "vandring,vandrer,gå,hike,hiking,rute,til fods"
     },
     "type/route/hiking": {
       "name": "Vandrerute",

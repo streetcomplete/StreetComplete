@@ -2345,7 +2345,6 @@ Is the situation on this cycleway still the same? -->
     <string name="resurvey_intervals_less_often">"Ptát se méně často"</string>
     <string name="resurvey_intervals_default">"Výchozí"</string>
     <string name="resurvey_intervals_more_often">"Ptát se častěji"</string>
-    <string name="quest_street_side_puzzle_select">"Vyberte ťuknutím"</string>
     <string name="quest_accepts_cash_type_title">"Přijímá %1$s (%2$s) platbu v hotovosti?"</string>
     <string name="quest_busStopBench_tram_name_title">"Má tramvajová zastávka %s lavičku?"</string>
     <string name="quest_busStopBench_tram_title">"Má tato tramvajová zastávka lavičku?"</string>

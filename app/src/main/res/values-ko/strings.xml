@@ -618,10 +618,10 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
     <string name="quest_wheelchairAccess_location_name_title">"위치 %s에 휠체어가 접근할 수 있습니까?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"부분적으로 이 장소에 접근할 때 계단 하나만 있고, 대부분의 방에 휠체어가 들어갈 수 있다는 것을 의미합니다."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"이 장소에 접근할 때 계단 하나만 있고, 대부분의 방에 휠체어가 들어갈 수 있다는 것을 (부분적으로) 의미합니다."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"부분적으로 이곳에 접근할 때 계단 하나만 있다는 것을 의미합니다."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"이곳에 접근할 때 계단 하나만 있다는 것을 (부분적으로) 의미합니다."</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"이름 %s의 축약형이 무엇입니까?"</string>
@@ -1821,7 +1821,7 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"번호를 찾을 수 없음..."</string>
-    <string name="quest_street_side_puzzle_tutorial">"이미지에 있는 도로가 핀의 위치에 있는 지도와 같은 방향으로 돌아가 있습니다. "</string>
+    <string name="quest_street_side_puzzle_tutorial">"아래 그림의 도로는 지도에서 핀이 가리키는 위치의 도로와 같은 방향으로 돌아가 있습니다. "</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"이 수거함에 무엇을 넣을 수 있습니까?"</string>
@@ -1992,9 +1992,9 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="achievement_regular_title">"규칙적인 기여"</string>
     <string name="achievement_regular_description">"이 앱으로 오픈스트리트맵에 %d일 동안 기여했습니다! 규칙적인 기여자들은 오픈스트리트맵의 척추가 됩니다. 정말 감사합니다!"</string>
     <string name="achievement_bicyclist_title">"자전거 운전자"</string>
-    <string name="achievement_bicyclist_solved_X">"자전거 운전자들을 위해 퀘스트를 %d개 해결했습니다!"</string>
+    <string name="achievement_bicyclist_solved_X">"자전거 운전자들을 위한 퀘스트를 %d개 해결했습니다!"</string>
     <string name="achievement_wheelchair_title">"휠체어 운전자"</string>
-    <string name="achievement_wheelchair_solved_X">"휠체어를 이용하는 사람을 위해 퀘스트를 %d개 해결했습니다!"</string>
+    <string name="achievement_wheelchair_solved_X">"휠체어를 이용하는 사람을 위한 퀘스트를 %d개 해결했습니다!"</string>
     <string name="achievement_postman_title">"우체부"</string>
     <string name="achievement_postman_solved_X">"주소 %d개를 기여했습니다!
 주소 데이터는 우체부에게도 필요하지만, 내비게이션에도 필요합니다."</string>
@@ -2026,7 +2026,7 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="user_profile_global_rank">"전 세계
 순위"</string>
     <string name="user_profile_local_rank">"%s
-에서의 순위"</string>
+순위"</string>
     <string name="user_profile_days_active">"활동한
 날(일)"</string>
     <string name="user_profile_achievement_levels">"기여
@@ -2062,7 +2062,7 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="quest_streetName_menuItem_international">"국제 명칭"</string>
     <string name="quest_streetName_menuItem_romanized">"라틴 문자로 쓰여 있음"</string>
     <string name="quest_buildingType_terrace2">"옆으로 나란한 연립 주택"</string>
-    <string name="quest_oneway_tutorial">"이미지에 있는 도로가 핀의 위치에 있는 지도와 같은 방향으로 돌아가 있습니다. 화살표의 방향을 참고하세요. "</string>
+    <string name="quest_oneway_tutorial">"아래 그림의 도로는 지도에서 핀이 가리키는 위치의 도로와 같은 방향으로 돌아가 있습니다. 화살표의 방향을 참고하세요. "</string>
     <string name="at_housename">"건물 명칭 %s:"</string>
     <string name="at_conscription_and_street_number">"징병 번호 %1$s, 방위각 %2$s:"</string>
 
@@ -2082,7 +2082,6 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="resurvey_intervals_less_often">"더 가끔 물어보기"</string>
     <string name="resurvey_intervals_default">"기본값"</string>
     <string name="resurvey_intervals_more_often">"더 자주 물어보기"</string>
-    <string name="quest_street_side_puzzle_select">"선택하려면 탭"</string>
     <string name="quest_accepts_cash_type_title">"%1$s(%2$s)은(는) 현금을 받습니까?"</string>
     <string name="quest_busStopBench_tram_name_title">"트램 정류장 %s에 벤치가 있습니까?"</string>
     <string name="quest_busStopBench_tram_title">"이 트램 정류장에 벤치가 있습니까?"</string>
