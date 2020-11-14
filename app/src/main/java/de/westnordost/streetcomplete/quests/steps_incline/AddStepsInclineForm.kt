@@ -47,8 +47,8 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
 
         puzzleView.setRightSideImageResource(selection?.iconResId ?: defaultResId)
         puzzleView.setRightSideText(selection?.titleResId?.let { resources.getString(it) })
-        if (!HAS_SHOWN_TAP_HINT) {
-            if (selection == null) puzzleView.showRightSideTapHint()
+        if (selection == null && !HAS_SHOWN_TAP_HINT) {
+            puzzleView.showRightSideTapHint()
             HAS_SHOWN_TAP_HINT = true
         }
 
