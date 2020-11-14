@@ -85,7 +85,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         puzzleView.setRightSideImage(ResImage(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
         puzzleView.setLeftSideText(leftSide?.getTitleResId()?.let { resources.getString(it) })
         puzzleView.setRightSideText(rightSide?.getTitleResId()?.let { resources.getString(it) })
-        if (!HAS_SHOWN_TAP_HINT) {
+        if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
             if (leftSide == null) puzzleView.showLeftSideTapHint()
             if (rightSide == null) puzzleView.showRightSideTapHint()
             HAS_SHOWN_TAP_HINT = true

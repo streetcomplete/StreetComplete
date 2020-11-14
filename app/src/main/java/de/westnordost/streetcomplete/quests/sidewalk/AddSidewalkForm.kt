@@ -51,7 +51,7 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         puzzleView.setLeftSideImage(ResImage(leftSide?.puzzleResId ?: defaultResId))
         puzzleView.setRightSideImage(ResImage(rightSide?.puzzleResId ?: defaultResId))
 
-        if (!HAS_SHOWN_TAP_HINT) {
+        if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
             if (leftSide == null) puzzleView.showLeftSideTapHint()
             if (rightSide == null) puzzleView.showRightSideTapHint()
             HAS_SHOWN_TAP_HINT = true
