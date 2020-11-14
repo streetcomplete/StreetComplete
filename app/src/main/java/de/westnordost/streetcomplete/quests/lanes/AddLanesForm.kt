@@ -24,8 +24,8 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     private var selectedLanesType: LanesType? = null
-    private var leftSide: Int? = null
-    private var rightSide: Int? = null
+    private var leftSide: Int = 0
+    private var rightSide: Int = 0
     private var hasCenterLeftTurnLane: Boolean = false
 
     private var lastRotation: Float = 0f
@@ -72,8 +72,8 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
 
         if (savedInstanceState != null) {
             selectedLanesType = savedInstanceState.getString(LANES_TYPE)?.let { LanesType.valueOf(it) }
-            leftSide = savedInstanceState.getInt(LANES_LEFT, -1).takeIf { it != -1 }
-            rightSide = savedInstanceState.getInt(LANES_RIGHT, -1).takeIf { it != -1 }
+            leftSide = savedInstanceState.getInt(LANES_LEFT, 0)
+            rightSide = savedInstanceState.getInt(LANES_RIGHT, 0)
             hasCenterLeftTurnLane = savedInstanceState.getBoolean(CENTER_LEFT_TURN_LANE)
         }
 
@@ -91,20 +91,20 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     }
 
     override fun isFormComplete() = selectedLanesType != null &&
-        if (!isOneway) leftSide != null && rightSide != null
-        else           leftSide != null || rightSide != null
+        if (!isOneway) leftSide > 0 && rightSide > 0
+        else           leftSide > 0 || rightSide > 0
 
-    override fun isRejectingClose() = leftSide != null || rightSide != null
+    override fun isRejectingClose() = leftSide > 0 || rightSide > 0
 
     override fun onClickOk() {
-        val totalLanes = (leftSide ?: 0) + (rightSide ?: 0)
+        val totalLanes = leftSide + rightSide
         when(selectedLanesType) {
             MARKED -> applyAnswer(MarkedLanes(totalLanes))
             UNMARKED -> applyAnswer(UnmarkedLanes(totalLanes))
             MARKED_SIDES -> {
                 val forwardLanes = if (isLeftHandTraffic) leftSide else rightSide
                 val backwardLanes = if (isLeftHandTraffic) rightSide else leftSide
-                applyAnswer(MarkedLanesSides(forwardLanes ?: 0, backwardLanes ?: 0, hasCenterLeftTurnLane))
+                applyAnswer(MarkedLanesSides(forwardLanes, backwardLanes, hasCenterLeftTurnLane))
             }
         }
     }
@@ -112,8 +112,8 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString(LANES_TYPE, selectedLanesType?.name)
-        leftSide?.let { outState.putInt(LANES_LEFT, it) }
-        rightSide?.let { outState.putInt(LANES_RIGHT, it) }
+        outState.putInt(LANES_LEFT, leftSide)
+        outState.putInt(LANES_RIGHT, rightSide)
         outState.putBoolean(CENTER_LEFT_TURN_LANE, hasCenterLeftTurnLane)
     }
 
@@ -178,14 +178,14 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         view.puzzleView.isShowingBothSides = !isOneway
         view.puzzleView.isForwardTraffic = if (isOneway) isForwardOneway else !isLeftHandTraffic
 
-        streetSideRotater = StreetSideRotater(view.puzzleView, view.compassNeedleView, elementGeometry as ElementPolylinesGeometry)
+        streetSideRotater = StreetSideRotater(view.puzzleViewRotateContainer, view.compassNeedleView, elementGeometry as ElementPolylinesGeometry)
         streetSideRotater?.onMapOrientation(lastRotation, lastTilt)
 
         updatePuzzleView()
     }
 
     private fun updatePuzzleView() {
-        puzzleView?.setLaneCounts(leftSide ?: 0, rightSide ?: 0, hasCenterLeftTurnLane)
+        puzzleView?.setLaneCounts(leftSide, rightSide, hasCenterLeftTurnLane)
         checkIsFormComplete()
     }
 
@@ -229,7 +229,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
 
     private fun setTotalLanesCount(lanes: Int) {
         if (isOneway) {
-            leftSide = null
+            leftSide = 0
             rightSide = lanes
         } else {
             leftSide = lanes / 2

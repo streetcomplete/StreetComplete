@@ -21,12 +21,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <de.westnordost.streetcomplete.quests.lanes.LanesSelectPuzzle
-            android:id="@+id/puzzleView"
+
+        <de.westnordost.streetcomplete.quests.lanes.StreetSideSelectRotateContainer
+            android:id="@+id/puzzleViewRotateContainer"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/street_side_puzzle_height"
-            android:clipChildren="false"
-            android:clipToPadding="false"/>
+            android:layout_height="@dimen/street_side_puzzle_height">
+
+            <de.westnordost.streetcomplete.quests.lanes.LanesSelectPuzzle
+                android:id="@+id/puzzleView"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </de.westnordost.streetcomplete.quests.lanes.StreetSideSelectRotateContainer>
 
         <!-- note the other compass in fragment_main -->
         <include layout="@layout/view_little_compass"/>

@@ -250,7 +250,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_lanes_answer_noLanes">"No marked lanes"</string>
     <string name="quest_lanes_answer_noLanes_description">"Specify the total number of lanes the road would have if lanes were marked. In other words, how many cars can comfortably pass each other?"</string>
     <string name="quest_lanes_answer_lanes_odd">"Differs for each side"</string>
-    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"There is a two-way left turn lane"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"It has a two-way left turn lane"</string>
     <string name="quest_oneway_title">"Is this a one-way street?"</string>
     <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
     <string name="quest_oneway2_dir">"Oneway in this direction"</string>
