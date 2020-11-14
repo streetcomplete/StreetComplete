@@ -31,7 +31,7 @@ private val IS_AREA_EXPR = """
     or boundary
     or building
     or craft
-    or emergency
+    or (emergency and emergency !~ yes|no)
     or historic
     or landuse
     or leisure
