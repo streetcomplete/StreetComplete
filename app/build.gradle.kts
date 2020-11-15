@@ -95,7 +95,7 @@ dependencies {
     val daggerVersion = "2.14.1"
 
     // tests
-    testImplementation("junit:junit:4.12")
+    testImplementation("junit:junit:4.13.1")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:2.8.0")
@@ -113,7 +113,7 @@ dependencies {
     implementation("com.google.android.material:material:1.2.1")
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.annotation:annotation:1.1.0")
     implementation("androidx.fragment:fragment-ktx:1.2.5")
     implementation("androidx.preference:preference-ktx:1.1.1")
@@ -122,7 +122,7 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.0")
+    implementation("androidx.exifinterface:exifinterface:1.3.1")
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
