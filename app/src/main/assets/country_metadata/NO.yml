@@ -3,6 +3,7 @@ atmOperators: [Nordea, DNB, Sparebanken Sør, Sandnes Sparebank, Sparebanken Ves
       NOR, Sparebanken Sogn og Fjordane, Sparebanken Møre, Sparebank 1, Haugesund Sparebank, Danske Bank,
    Tinn Sparebank, Sparebank1 SR-Bank, Sparebank1 Nord-Norge, SpareBank1, SpareBank 1 SR-Bank, SpareBank
       1 SMN, SpareBank, NOKAS, Helgeland Sparebank, DnB, DNB Nor]
+centerLine: yellow
 chargingStationOperators: [Fortum, Grønn Kontakt, Oslo kommune, BKK, Grønn kontakt, Q-Park, Fortum Charge & Drive, Jernbaneverket,
    Ringeriks-kraft AS, Stavanger kommune, EB Elbil AS, Oppegård kommune, BKK Nett AS for Hordaland fylkeskommune,
    Ionity, Sunnfjord energi, Charge365, Fortum Charge&Drive, EuroPark AS, Lyse/BKK, Orkdal kommune, BKK

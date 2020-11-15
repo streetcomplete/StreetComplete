@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 atmOperators: [HSBC, BISB, NBB, Ithmaar Bank, BBK Online, BBK, Kuwait Finance House]
+centerLine: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 426
 officialLanguages: [ar]

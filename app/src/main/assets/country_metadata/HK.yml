@@ -2,10 +2,12 @@
 atmOperators: [HSBC, Standard Chartered Bank, 中國銀行（香港）Bank of China (Hong Kong), Standard Chartered, Hang Seng Bank,
    Bank of China, 恒生銀行 Heng Seng Bank, 滙豐銀行 HSBC, Heng Seng Bank, Citibank, Bank of China (Hong Kong),
    BOC, BEA]
+centerLine: white
 chargingStationOperators: [HKEV, HK Electric, Tesla Motors Inc., Tesla Motors]
 isLeftHandTraffic: true
 mobileCountryCode: 454
 officialLanguages: [en, zh]
 orchardProduces: [tomato]
 popularReligions: [chinese_folk, taoist, buddhist]
+shoulderLine: two yellow lines
 workweekDays: 6

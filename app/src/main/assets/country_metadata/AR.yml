@@ -16,6 +16,7 @@ atmOperators: [Banco Macro, Banco de la Nación Argentina, Banco Nación, Macro,
       Pampa, Banco Superville, Banco Santander, Banco Rioja, Banco Provincia del Neuquén S.A., Banco Provincia
       de La Rioja, Banco Piano, Banco Nacion, Banco Hipotecario S.A., Banco Francés, Banco Corrientes,
    Banco Comafi, BPN, BERSA, BBVA Banco Francés]
+centerLine: yellow
 chargingStationOperators: [Empresa Provincial de la Energía Santa Fe]
 clothesContainerOperators: [Municipalidad de Posadas]
 mobileCountryCode: 722

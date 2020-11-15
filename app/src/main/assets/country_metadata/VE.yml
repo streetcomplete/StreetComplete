@@ -3,6 +3,7 @@ atmOperators: [Banco Mercantil, Banco Mercantil (Solo Personal), Mercantil, Banc
       Personal), Banco del Tesoro, Sofitasa, Provincial, Banco de Venezuela (Solo Personal), Banco Provincial,
    Banesco, BOD, Occidental de Descuento, Bicentenario, Banco Mercantil (Slo Personal), Banco Exterior,
    Banco Bicentenario del Pueblo, Banco Bicentenario, Bancaribe]
+centerLine: white
 mobileCountryCode: 734
 officialLanguages: [es]
 orchardProduces: [pineapple, banana, papaya, tomato, orange, guava, mango, mangosteen, coconut, avocado, chilli_pepper,

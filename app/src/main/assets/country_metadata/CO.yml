@@ -6,6 +6,7 @@ atmOperators: [Bancolombia, Davivienda, Servibanca, BBVA, A Toda Hora S.A. (Red 
    polv, cespo, cajero Bancolombia, cajero BBVA, ath, VIA baloto, Casa Kennedy, Cajero Bancolombia, Cajero,
    COOMULDESA, CAJERO BANCO POPULAR, BancoBogota, Banco Pichincha, Banco AV Villas, A Toda Hora (ATH)
       S.A.]
+centerLine: yellow
 chargingStationOperators: [Codensa, parqueadero, Terpel, Mobil]
 mobileCountryCode: 732
 officialLanguages: [es]

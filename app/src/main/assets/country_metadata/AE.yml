@@ -5,6 +5,7 @@ atmOperators: [ADIB, ADCB, Emirates NBD, Dubai Islamic Bank, Al Hilal, FAB, Unio
       Bank of Dubai, Rak Bank, Mashreq, National Bank of Abu Dhabi, EMIRATES ISLAMIC, CBI, union national
       bank, nbf, Mashreq Bank, FGB, Emirates Islamic Bank, Emirates Islamic, Dubai Islamic bank, City
       Bank, Bank of Sharjah, Al Masraf, Al Hilal Bank, Abu Dhabi Distribution Co.]
+centerLine: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 424
 officialLanguages: [ar]
@@ -12,3 +13,4 @@ orchardProduces: [date, tomato, guava, mango, mangosteen, lemon, lime, chilli_pe
    grape]
 popularReligions: [muslim]
 popularSports: [tennis, golf]
+shoulderLine: yellow

@@ -1,16 +1,16 @@
-// source - Mapillary
+# source - Mapillary
 default: white
 AE: yellow
 AO: yellow
 BW: yellow
-CD: white dashes
-CM: white dashes
+CD: short white dashes
+CM: short white dashes
 IE: short yellow dashes
-GF: white dashes
+GF: short white dashes
 HK: two yellow lines
 LS: yellow
 MO: yellow
-MU: white dashes
+MU: short white dashes
 MW: yellow
 MZ: yellow
 NA: yellow

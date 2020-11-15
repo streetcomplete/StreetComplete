@@ -3,6 +3,7 @@ atmOperators: [Maybank, CIMB, CIMB Bank, MEPS, Bank Islam, Bank Rakyat, RHB Bank
       Simpanan Nasional, ATM AmBank@7eleven, MayBank, Agro Bank, UOB, Cimb, Rhb, MAYBANK, Bank Muamalat,
    Ambank, ATM, 7-Eleven Malaysia Sdn Bhd, maybank, Standard Chartered, Meps, CIMB BANK, Bank Islam Malaysia
       Berhad]
+centerLine: white
 isLeftHandTraffic: true
 mobileCountryCode: 502
 officialLanguages: [ms]

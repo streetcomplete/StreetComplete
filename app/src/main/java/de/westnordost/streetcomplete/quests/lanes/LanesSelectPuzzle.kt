@@ -14,9 +14,11 @@ import androidx.lifecycle.OnLifecycleEvent
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.showTapHint
+import de.westnordost.streetcomplete.quests.lanes.LineStyle.*
 import kotlinx.android.synthetic.main.lanes_select_puzzle.view.*
-import kotlin.math.*
+import kotlin.math.max
 import kotlin.random.Random
+
 
 class LanesSelectPuzzle @JvmOverloads constructor(
     context: Context,
@@ -79,19 +81,45 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
     var isForwardTraffic: Boolean = true
 
+    var centerLineColor: Int
+    set(value) {
+        centerLinePaint.color = value
+        invalidate()
+    }
+    get() = centerLinePaint.color
+
+    var shoulderLineColor: Int
+        set(value) {
+            shoulderLinePaint.color = value
+            invalidate()
+        }
+        get() = shoulderLinePaint.color
+
+    var shoulderLineStyle: LineStyle = CONTINUOUS
+    set(value) {
+        field = value
+        invalidate()
+    }
+
     private val roadPaint = Paint().also {
         it.color = Color.parseColor("#808080")
         it.style = Paint.Style.FILL
     }
 
-    private val yellowLanePaint = Paint().also {
-        it.color = Color.parseColor("#ffff00")
+    private val centerLinePaint = Paint().also {
+        it.color = Color.WHITE
         it.style = Paint.Style.STROKE
         it.isAntiAlias = true
     }
 
-    private val whiteLanePaint = Paint().also {
-        it.color = Color.parseColor("#ffffff")
+    private val laneSeparatorLinePaint = Paint().also {
+        it.color = Color.WHITE
+        it.style = Paint.Style.STROKE
+        it.isAntiAlias = true
+    }
+
+    private val shoulderLinePaint = Paint().also {
+        it.color = Color.WHITE
         it.style = Paint.Style.STROKE
         it.isAntiAlias = true
     }
@@ -183,6 +211,22 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         val rightLanesStart = rightLanesStart
         val shoulderWidth = SHOULDER_WIDTH * laneWidth
 
+        val lineWidth = LANE_MARKING_WIDTH * laneWidth
+
+        val dashEffect = DashPathEffect(floatArrayOf(lineWidth * 8, lineWidth * 12), 0f)
+
+        shoulderLinePaint.strokeWidth = lineWidth
+        shoulderLinePaint.pathEffect = when(shoulderLineStyle) {
+            CONTINUOUS -> null
+            DASHES -> dashEffect
+            SHORT_DASHES -> DashPathEffect(floatArrayOf(lineWidth * 4, lineWidth * 4), 0f)
+        }
+
+        centerLinePaint.strokeWidth = lineWidth
+
+        laneSeparatorLinePaint.strokeWidth = lineWidth
+        laneSeparatorLinePaint.pathEffect = dashEffect
+
         // draw background
         val streetStartX = if (laneCountLeft > 0 || isShowingOnlyRightSide) 0f else laneWidth * leftLanesEnd
         val streetEndX = if (laneCountRight > 0) width.toFloat() else laneWidth * rightLanesStart
@@ -192,36 +236,38 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
         // 1. markings for the shoulders
         if (laneCountLeft > 0 || isShowingOnlyRightSide) {
-            val leftShoulderX = leftLanesStart * laneWidth
-            canvas.drawVerticalLine(leftShoulderX, whiteLanePaint)
+            canvas.drawVerticalLine(leftLanesStart * laneWidth, shoulderLinePaint)
         }
         if (laneCountRight > 0) {
-            val rightShoulderX = shoulderWidth + lanesSpace * laneWidth
-            canvas.drawVerticalLine(rightShoulderX, whiteLanePaint)
+            canvas.drawVerticalLine(shoulderWidth + lanesSpace * laneWidth, shoulderLinePaint)
         }
 
-        // 2. center line
-        if (bothSidesAreDefined && !hasCenterLeftTurnLane && laneCountLeft + laneCountRight > 2 && isShowingLaneMarkings) {
-            val offsetX = leftLanesEnd * laneWidth
-            canvas.drawVerticalLine(offsetX, whiteLanePaint)
-        }
-
-        // 3. lane markings
+        // 2. lane markings
         if (isShowingLaneMarkings) {
-            for (x in 0 until laneCountLeft) {
-                canvas.drawVerticalDashedLine(shoulderWidth + x * laneWidth, whiteLanePaint)
+            for (x in 1 until laneCountLeft) {
+                canvas.drawVerticalLine(shoulderWidth + x * laneWidth, laneSeparatorLinePaint)
             }
-            for (x in 0 until laneCountRight) {
-                canvas.drawVerticalDashedLine((rightLanesStart + x) * laneWidth, whiteLanePaint)
+            for (x in 1 until laneCountRight) {
+                canvas.drawVerticalLine((rightLanesStart + x) * laneWidth, laneSeparatorLinePaint)
             }
+        }
+
+        // 3. center line
+        if (bothSidesAreDefined && !hasCenterLeftTurnLane && isShowingLaneMarkings) {
+            val onlyTwoLanes = laneCountLeft + laneCountRight <= 2
+            if (onlyTwoLanes) centerLinePaint.pathEffect = dashEffect
+            canvas.drawVerticalLine(leftLanesEnd * laneWidth, centerLinePaint)
+            if (onlyTwoLanes) centerLinePaint.pathEffect = null
         }
 
         // 4. center turn lane markings
         if (hasCenterLeftTurnLane) {
-            canvas.drawVerticalLine(leftLanesEnd * laneWidth, yellowLanePaint)
-            canvas.drawVerticalLine(rightLanesStart * laneWidth, yellowLanePaint)
-            canvas.drawVerticalDashedLine((leftLanesEnd + 0.125f) * laneWidth, yellowLanePaint)
-            canvas.drawVerticalDashedLine((rightLanesStart - 0.125f) * laneWidth, yellowLanePaint)
+            canvas.drawVerticalLine(leftLanesEnd * laneWidth, centerLinePaint)
+            canvas.drawVerticalLine(rightLanesStart * laneWidth, centerLinePaint)
+            centerLinePaint.pathEffect = dashEffect
+            canvas.drawVerticalLine((leftLanesEnd + 0.125f) * laneWidth, centerLinePaint)
+            canvas.drawVerticalLine((rightLanesStart - 0.125f) * laneWidth, centerLinePaint)
+            centerLinePaint.pathEffect = null
         }
 
         // 5. draw cars
@@ -239,9 +285,6 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         if (w == 0) return
         val laneWidth = laneWidth
         if (laneWidth == 0f) return
-
-        whiteLanePaint.strokeWidth = LANE_MARKING_WIDTH * laneWidth
-        yellowLanePaint.strokeWidth = LANE_MARKING_WIDTH * laneWidth
 
         leftSideClickArea.isGone = isShowingOnlyRightSide
         leftSideClickArea.updateLayoutParams {
@@ -312,17 +355,6 @@ private val CAR_RES_IDS = listOf(
 
 private data class CarState(var bitmap: Bitmap, var position: Float, val matrix: Matrix = Matrix())
 
-private fun Canvas.drawVerticalDashedLine(x: Float, paint: Paint) {
-    val w = paint.strokeWidth
-    if (w == 0f) return
-    val h = w * 6
-    var y = 0f
-    while (y < height) {
-        drawLine(x, y, x, y + h, paint)
-        y += 2 * h
-    }
-}
-
 private fun Canvas.drawVerticalLine(x: Float, paint: Paint) {
     drawLine(x, 0f, x, height.toFloat(), paint)
 }
@@ -339,8 +371,10 @@ private fun Canvas.drawCar(carState: CarState, laneIndex: Float, laneWidth: Floa
     val y = (carHeight + height) * (if (!isDirectionForward) carState.position else 1 - carState.position) - carHeight
 
     carState.matrix.reset()
-    if (!isDirectionForward) carState.matrix.postRotate(180f, w/2f, h/2f)
+    if (!isDirectionForward) carState.matrix.postRotate(180f, w / 2f, h / 2f)
     carState.matrix.postScale(1f * carWidth / w, 1f * carHeight / h)
     carState.matrix.postTranslate(x, y)
     drawBitmap(bitmap, carState.matrix, null)
 }
+
+enum class LineStyle { CONTINUOUS, DASHES, SHORT_DASHES }

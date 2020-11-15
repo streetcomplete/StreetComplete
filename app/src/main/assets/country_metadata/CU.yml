@@ -2,6 +2,7 @@
 atmOperators: [Banco Metropolitano, BANDEC, BPA, Banco Popular de Ahorro, Cajeros Automáticos, Cajero automático, Cajero
       Automático, Bandec, BPP, BM, Cajeros, Banco metropolitano, Banco de Credito y Comercio, Banco Popular
       De Ahorro, Banco]
+centerLine: yellow
 mobileCountryCode: 368
 officialLanguages: [es]
 orchardProduces: [tomato, guava, mango, mangosteen, banana, papaya, chilli_pepper, sweet_pepper, coconut, pineapple, grapefruit,

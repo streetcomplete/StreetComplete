@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.lanes
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
@@ -177,6 +178,18 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         view.puzzleView.isShowingLaneMarkings = selectedLanesType in listOf(MARKED, MARKED_SIDES)
         view.puzzleView.isShowingBothSides = !isOneway
         view.puzzleView.isForwardTraffic = if (isOneway) isForwardOneway else !isLeftHandTraffic
+
+        val shoulderLine = countryInfo.shoulderLine
+
+        view.puzzleView.shoulderLineColor =
+            if(shoulderLine.contains("yellow")) Color.YELLOW else Color.WHITE
+        view.puzzleView.shoulderLineStyle =
+            if(shoulderLine.contains("dashes"))
+                if (shoulderLine.contains("short")) LineStyle.SHORT_DASHES else LineStyle.DASHES
+            else
+                LineStyle.CONTINUOUS
+
+            view.puzzleView.centerLineColor = if(countryInfo.centerLine.contains("yellow")) Color.YELLOW else Color.WHITE
 
         streetSideRotater = StreetSideRotater(view.puzzleViewRotateContainer, view.compassNeedleView, elementGeometry as ElementPolylinesGeometry)
         streetSideRotater?.onMapOrientation(lastRotation, lastTilt)

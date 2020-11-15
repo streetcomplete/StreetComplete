@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [Arab Bank, Housing Bank, دائرة الجمارك الأردنية, Salwa Islamic Bank, Jordan Islamic Bank, Islamic International
       Arab Bank]
+centerLine: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 416
 officialLanguages: [ar]
