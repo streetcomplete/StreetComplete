@@ -117,6 +117,13 @@ surface_metal.jpg              Public Domain     https://commons.wikimedia.org/w
 surface_paved.jpg              CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
+herb_height_raised.jpg         CC0               Mateusz Konieczny
+herb_height_raised_original... CC0               Mateusz Konieczny
+herb_height_lowered.jpg        CC0               Mateusz Konieczny
+herb_height_lowered_origina... CC0               Mateusz Konieczny
+herb_height_flush.jpg          CC0               Mateusz Konieczny
+herb_height_flush_original.jpg CC0               Mateusz Konieczny
+herb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
 surface_pebblestone.jpg        CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg (FrankM)
 surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:2013-08-21_12_04_26_View_south_towards_Barnegat_Lighthouse_along_the_sand_road_to_Barnegat_Inlet_in_Island_Beach_State_Park.jpg (Famartin )
 surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG (Øyvind Holmstad )

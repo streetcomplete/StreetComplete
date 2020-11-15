@@ -934,4 +934,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
     <string name="open_url">Open URL</string>
+    <string name="quest_tactile_paving_kerb_title">Is there tactile paving on this curb here?</string>
+    <string name="quest_kerb_height_title">What is the height of this curb?</string>
+    <string name="quest_kerb_height_flush">Same level as road surface</string>
+    <string name="quest_kerb_height_lowered">A bit higher than road surface</string>
+    <string name="quest_kerb_height_raised">High curb</string>
+    <string name="quest_kerb_height_answer_no_kerb">There is no curb on this side of crossing</string>
+    <string name="quest_kerb_height_lowered_ramp">Curb ramp</string>
 </resources>
