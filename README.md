@@ -11,6 +11,8 @@ economic with data usage.
 
 To make the app easy to use, quests are limited to those answerable by asking simple questions.
 
+* See the [latest release notes](https://github.com/westnordost/StreetComplete/releases).
+
 ## Screenshots
 <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot01.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot02.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot03.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot04.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot05.png" width="170"/>
 <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot06.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot07.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot08.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot09.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot10.png" width="170"/>
