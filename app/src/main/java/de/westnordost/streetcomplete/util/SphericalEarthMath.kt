@@ -6,6 +6,9 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.ktx.forEachLine
+import de.westnordost.streetcomplete.util.math.arcIntersection
+import de.westnordost.streetcomplete.util.math.toLatLon
+import de.westnordost.streetcomplete.util.math.toNormalOnSphere
 import kotlin.math.*
 
 /** Calculate stuff assuming a spherical Earth. The Earth is not spherical, but it is a good
@@ -83,8 +86,7 @@ fun LatLon.translate(distance: Double, angle: Double, globeRadius: Double = EART
         latitude.toRadians(),
         longitude.toRadians(),
         angle.toRadians(),
-        distance,
-        globeRadius
+        distance / globeRadius
     )
     return createTranslated(pair.first.toDegrees(), pair.second.toDegrees())
 }
@@ -148,6 +150,31 @@ fun LatLon.distanceToArcs(polyLine: List<LatLon>, globeRadius: Double = EARTH_RA
 fun List<LatLon>.distanceTo(polyline: List<LatLon>, globeRadius: Double = EARTH_RADIUS): Double {
     require(isNotEmpty()) { "Polyline must not be empty" }
     return minOf { it.distanceToArcs(polyline, globeRadius) }
+}
+
+/** Returns whether this polyline intersects with the given polyline */
+fun List<LatLon>.intersectsWith(polyline: List<LatLon>): Boolean {
+    require(size > 1 && polyline.size > 1) { "Polylines must each contain at least two elements" }
+    val ns = map { it.toNormalOnSphere() }
+    val npolyline = polyline.map { it.toNormalOnSphere() }
+    ns.forEachLine { first, second ->
+        npolyline.forEachLine { otherFirst, otherSecond ->
+            if (arcIntersection(first, second, otherFirst, otherSecond) != null) {
+                return true
+            }
+        }
+    }
+    return false
+}
+
+/** Returns whether the arc spanned between p1 and p2 intersects with the arc spanned by p2 and p4 */
+fun intersectionOf(p1: LatLon, p2: LatLon, p3: LatLon, p4: LatLon): LatLon? {
+    return arcIntersection(
+        p1.toNormalOnSphere(),
+        p2.toNormalOnSphere(),
+        p3.toNormalOnSphere(),
+        p4.toNormalOnSphere()
+    )?.toLatLon()
 }
 
 /** Returns a bounding box that contains all points */
@@ -496,9 +523,8 @@ fun normalizeLongitude(lon: Double): Double {
    All the calculations below are done with coordinates in radians.
 */
 
-/** Return a new point translated in the given angle and distance on a sphere with the given radius */
-private fun translate(φ1: Double, λ1: Double, α1: Double, distance: Double, radius: Double): Pair<Double, Double> {
-    val σ12 = distance / radius
+/** Return a new point translated from the point [φ1], [λ1] in the initial bearing [α1] and angular distance [σ12] */
+private fun translate(φ1: Double, λ1: Double, α1: Double, σ12: Double): Pair<Double, Double> {
     val y = sin(φ1) * cos(σ12) + cos(φ1) * sin(σ12) * cos(α1)
     val a = cos(φ1) * cos(σ12) - sin(φ1) * sin(σ12) * cos(α1)
     val b = sin(σ12) * sin(α1)
@@ -514,7 +540,7 @@ private fun angularDistance(φ1: Double, λ1: Double, φ2: Double, λ2: Double):
     val Δλ = λ2 - λ1
     val Δφ = φ2 - φ1
     val a = sin(Δφ / 2).pow(2) + cos(φ1) * cos(φ2) * sin(Δλ / 2).pow(2)
-    return 2 * atan2(sqrt(a), sqrt(1 - a))
+    return 2 * asin(sqrt(a))
 }
 
 /** Returns the initial bearing from one point to another */

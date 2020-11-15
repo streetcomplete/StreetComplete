@@ -46,3 +46,12 @@ private fun List<LatLon>.isWithinDistanceAndAngleOf(other: List<LatLon>, maxDist
     }
     return false
 }
+
+
+fun ElementPolylinesGeometry.intersects(other: ElementPolylinesGeometry): Boolean =
+    getBounds().intersect(other.getBounds()) &&
+    polylines.any { polyline ->
+        other.polylines.any { otherPolyline ->
+            polyline.intersectsWith(otherPolyline)
+        }
+    }
