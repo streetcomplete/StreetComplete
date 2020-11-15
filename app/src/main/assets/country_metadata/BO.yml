@@ -7,6 +7,7 @@ atmOperators: [Banco Mercantil Santa Cruz, Banco Unión, Banco Bisa, Banco Union
       Nazareno, Banco Union S.A., Banco Mercantíl Santa Cruz, Prodem, Mutual La Primera, MERCANTIL SANTA
       CRUZ, La Primera, Cajero BNB, Banco de Crédito (BCP), Banco de Crédito, Banco Mercantil Santa Cruz
       S.A., Banco Los Andes ProCredit, Banco Fassil S.A., BMSC - Banco Mercantil Santa Cruz]
+centerLine: yellow
 mobileCountryCode: 736
 officialLanguages: [es, qu, ay]
 orchardProduces: [banana, orange, pineapple, chestnut, tomato, peach, lemon, lime, brazil_nut, grape, coffee, papaya, guava,

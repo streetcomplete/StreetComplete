@@ -83,5 +83,6 @@ private class TestQuestType : OsmElementQuestType<String> {
     override val icon = 0
     override fun createForm(): AbstractQuestAnswerFragment<String> = object : AbstractQuestAnswerFragment<String>() {}
     override val commitMessage = "test me"
+    override val wikiLink: String? = null
 }
 

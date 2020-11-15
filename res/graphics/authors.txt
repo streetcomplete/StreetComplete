@@ -153,6 +153,13 @@ max weight graphics/
     bogieweight.svg
     truck.svg
 
+parking lane graphics/
+	car1.svg
+	car2.svg
+	car3.svg
+	car4.svg
+	car5.svg
+
 quest icons/
     apple.svg
     baby.svg                         modified from Twemoji: U+1F6BC

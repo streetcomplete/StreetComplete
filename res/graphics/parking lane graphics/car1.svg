@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="SVGRoot" version="1.1" viewBox="0 0 160 262" xmlns="http://www.w3.org/2000/svg">
+ <path d="m24 36v192c0 8 8 32 24 32h64c16 0 24-24 24-32v-192c0-12-8-24-16-24-24-16-56-16-80 0-8 0-16 12-16 24z" fill="#703b3b" stroke-width="3.7795"/>
+ <path d="m128 204 1.9e-4 20c4e-5 8-4 24-16 24h-64c-12 0-16-16-16-24l-1.51e-4 -20 12-28c-4-4-4.0002-8-4.0002-20v-44l4-4-12-32v-40c0-16 8-20 24-20l1.51e-4 40 7.9998-44c11.503-5.4595 22.018-5.212 32 0l8.0002 44-1.5e-4 -40c16 0 24 4 24 20v40l-12 32 4 4v44c0 12 1.6e-4 16-3.9998 20z" fill="#8c4744" stroke-width="3.7795"/>
+ <path d="m32 76c31.562-20.814 63.541-21.847 96 0l-12 32c-24.463-11.007-48.434-10.322-72 0z" fill="#202932" stroke-width="3.7795"/>
+ <path d="m28 80 12 32v44l-12 16z" fill="#202932" stroke-width="3.7795"/>
+ <path d="m132 80v92l-12-16v-44z" fill="#202932" stroke-width="3.7795"/>
+ <path d="m44 176c23.566 5.1608 47.537 5.5036 72 0l12 28c-32.113 10.732-64.111 10.602-96 0z" fill="#202932" stroke-width="3.7795"/>
+ <path d="m128 84 20 8e-6c0-4-8-12-16-12z" fill="#363e46"/>
+ <path d="m32 84-20 8e-6c0-4 8-12 16-12z" fill="#363e46"/>
+ <path d="m56 124h48v24h-48z" fill="none" stroke="#703b3b" stroke-linejoin="round" stroke-width="4"/>
+ <path d="m40 10v4s-8 4-12 8c0-8 7.0368-11.994 12-12z" fill="#c58100" stroke="#905e00" stroke-width="2"/>
+ <path d="m40 14c8-4 16-4 16-4l1.51e-4 -6s-12 2-16 6z" fill="#c7c7c7" stroke="#808080" stroke-width="2"/>
+ <path d="m120 10v4s8 4 12 8c0-8-7.0368-11.994-12-12z" fill="#c58100" stroke="#905e00" stroke-width="2"/>
+ <path d="m120 14c-8-4-16-4-16-4l1.9e-4 -6s12 2 16 6z" fill="#c7c7c7" stroke="#808080" stroke-width="2"/>
+ <path d="m100 260v-8h12v8z" fill="#bf4040" stroke="#822b2b" stroke-width="2"/>
+ <path d="m93.375 61.321c-15.469 11.132-19.648 23.777-21.661 39.125-5.5133 0.36503-15.092 2.11-27.714 7.5536l-12-32c16.691-10.8 37.101-19.327 61.375-14.679z" fill="#fff" fill-opacity=".1" stroke-width="3.7795"/>
+ <path d="m44 176-12 28c20.518 6.4821 34.433 8.1537 52 8-7.6318-8.8758-7.9998-32-7.9998-32-11.162-0.48713-22.396-1.6398-32-4z" fill="#fff" fill-opacity=".1"/>
+ <path d="m28 80 12 32v44l-12 16z" fill="#fff" fill-opacity=".1" stroke-width="3.7795"/>
+ <path d="m60 260v-8h-12v8z" fill="#bf4040" stroke="#822b2b" stroke-width="2"/>
+ <path d="m48 260v-8h-12c4e-6 4 4 8 12 8z" fill="#c58100" stroke="#905e00" stroke-opacity=".99597" stroke-width="2"/>
+ <path d="m112 260v-8h12c0 4-4 8-12 8z" fill="#c58100" stroke="#905e00" stroke-opacity=".99597" stroke-width="2"/>
+</svg>

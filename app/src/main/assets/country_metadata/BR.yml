@@ -5,6 +5,7 @@ atmOperators: [Banco do Brasil, Banco 24 Horas, Banco24Horas, Bradesco, Caixa, I
    HSBC, 24 horas, BRB, TecBan, Caixa 24h, Caixa 24 Horas, banco 24h, Itau, Caixa Econômica, Caixa Economica
       Federal, Banese, Banco24h, Banco24, Banco Bradesco, BDN BRADESCO, caixa 24h, Dinho, Caixas eletrônicos
       da Caixa Econômica Federal, Banco24H, Banco Santander, Banco 24Hrs]
+centerLine: yellow
 chargingStationOperators: [Ipiranga, Sat, Petrobras, BR, ipiranga, Taurus, Shell, Petrobrás, EDP]
 mobileCountryCode: 724
 officialLanguages: [pt]

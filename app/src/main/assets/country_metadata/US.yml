@@ -1,5 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+centerLine: yellow
 isAdvisorySpeedLimitKnown: true
+isCenterLeftTurnLaneKnown: true
 isSlowZoneKnown: false
 lengthUnits: [foot and inch]
 mobileCountryCode: 310

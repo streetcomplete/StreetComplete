@@ -10,6 +10,7 @@ atmOperators: [Vietcombank, BIDV, Agribank, Agribank - ATM, Techcombank - ATM, T
    Habubank, Chùa Thiên Tường, BitcoinVN, AgriBank, Abbank - ATM, agribank, Vietinbank - Atm, Vibank
       - ATM, VIB - ATM, SeABank ATM, SCB, Nasbank - ATM, DongA, Dong A Bank, Bank for Investment and Development
       of Vietnam]
+centerLine: white
 mobileCountryCode: 452
 officialLanguages: [vi]
 orchardProduces: [banana, coffee, coconut, rubber, cashew_nut, guava, mango, mangosteen, orange, pineapple, grapefruit,

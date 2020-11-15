@@ -92,4 +92,5 @@ private class TestMapDataQuestType(private val list: List<Element>) : OsmElement
     override fun isApplicableTo(element: Element) = false
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {}
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> = list
+    override val wikiLink: String? = null
 }

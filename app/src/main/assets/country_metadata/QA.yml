@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 atmOperators: [Doha Bank, QNB, QIB, Commercial Bank of Qatar]
+centerLine: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 427
 officialLanguages: [ar]

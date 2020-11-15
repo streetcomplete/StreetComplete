@@ -11,6 +11,7 @@ atmOperators: [ゆうちょ銀行, みずほ銀行, 三井住友銀行, セブ�
    尼崎信用金庫, 宮城第一信用金庫, 多摩信用金庫, 埼玉県信用金庫, 四国銀行, 南都銀行, 北陸銀行, 八十二銀行, 但馬銀行／TajimaBank, 京都北都信用金庫, 中央労働金庫, 三菱東京ＵＦＪ銀行,
    七十七銀行・仙台銀行・ゆうちょ銀行, モビット, セブンバンク, クレディセゾン, エポスカード, イーネット, ろうきん, りそな, ゆうちょ, みずほ銀行／MizuhoBank, きらぼし銀行,
    いわき信用組合, あぶくま信用金庫, UFJ, MIZUHO ATM, JP, JA福島さくら, JA横浜, JA兵庫南, JAふくしま未来, JAならけん, 7-bank, 7-Eleven, 7-Bank]
+centerLine: white
 chargingStationOperators: [EV Quick, 東光高岳, 浜松日産, Tesla Motors Inc.]
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true

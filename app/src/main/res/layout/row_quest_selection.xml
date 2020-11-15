@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@string/quest_streetLanes_title"
+            tools:text="@string/quest_lanes_title"
             android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
             android:id="@+id/questTitle"/>
 

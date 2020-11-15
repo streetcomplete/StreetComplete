@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="SVGRoot" version="1.1" viewBox="0 0 160 264" xmlns="http://www.w3.org/2000/svg">
+ <path d="m24 36v192c0 8 8 32 16 32 26.811 5.383 53.475 5.2835 80 0 8 0 16-24 16-32v-192c0-12-8-24-16-24-11.929-8.0001-25.893-12-39.893-12s-28.035 4-40.107 12c-8 0-16 12-16 24z" fill="#444752" stroke-width="3.7795"/>
+ <path d="m116 220c-21.192 5.271-50.522 5.3954-72 0-4 0-4-56-4-64v-44l4-4-12-32v-40c6.6012-37.999 95.384-31.371 96 0v40l-12 32 4 4v44c-3e-5 8-3e-5 64-4 64z" fill="#565868" stroke-width="3.7795"/>
+ <path d="m32 76c30.4-15.973 62.148-16.049 96 0l-12 32c-24.463-11.007-48.434-10.322-72 0z" fill="#202932" stroke-width="3.7795"/>
+ <path d="m28 80 12 32v44h-12z" fill="#202932" stroke-width="3.7795"/>
+ <path d="m132 80-3e-5 76h-12v-44z" fill="#202932" stroke-width="3.7795"/>
+ <path d="m44 220c23.566 5.1608 47.537 5.5035 72 0l8 24c-32.455 5.2532-56.435 5.4154-88 0z" fill="#202932" stroke-width="3.7795"/>
+ <path d="m128 84 20 1e-5c0-4-8-12-16-12z" fill="#444752"/>
+ <path d="m32 84-20 1e-5c0-4 8-12 16-12z" fill="#444752"/>
+ <path d="m40 10v4s-8 4-12 8c0-8 7.0368-11.994 12-12z" fill="#c58100" stroke="#905e00" stroke-width="2"/>
+ <path d="m40 14c8-4 16-4 16-4l1.5e-4 -6s-12 2-16 6z" fill="#c7c7c7" stroke="#808080" stroke-width="2"/>
+ <path d="m120 10v4s8 4 12 8c0-8-7.0368-11.994-12-12z" fill="#c58100" stroke="#905e00" stroke-width="2"/>
+ <path d="m120 14c-8-4-16-4-16-4l1.9e-4 -6s12 2 16 6z" fill="#c7c7c7" stroke="#808080" stroke-width="2"/>
+ <path d="m96.045 65.643c-15.469 11.132-22.318 19.456-24.33 34.804-5.5132 0.36503-15.092 2.11-27.714 7.5536l-12-32c19.207-10.171 40.959-14.709 64.045-10.357z" fill="#fff" fill-opacity=".1" stroke-width="3.7795"/>
+ <path d="m44 220-8 24c28 4 30.433 4.1537 48 4-7.6318-8.8758-7.9998-24-7.9998-24-11.162-0.4871-22.396-1.6398-32-4z" fill="#fff" fill-opacity=".1"/>
+ <path d="m28 80 12 32v44h-12z" fill="#fff" fill-opacity=".1" stroke-width="3.7795"/>
+ <path d="m132 160v56l-12-24v-32z" fill="#202932" stroke-width="3.7795"/>
+ <path d="m28 160v56l12-24v-32z" fill="#202932" stroke-width="3.7795"/>
+ <path d="m28 160v56l12-24v-32z" fill="#fff" fill-opacity=".1" stroke-width="3.7795"/>
+ <path d="m56 120v80" fill="none" stroke="#444752" stroke-width="4"/>
+ <path d="m104 120v80" fill="none" stroke="#444752" stroke-width="4"/>
+ <path d="m80 120v80" fill="none" stroke="#444752" stroke-width="4"/>
+ <path d="m100 260-1e-5 -4h12v4z" fill="#bf4040" stroke="#822b2b" stroke-width="2"/>
+ <path d="m60 260v-4h-12l3e-6 4z" fill="#bf4040" stroke="#822b2b" stroke-width="2"/>
+ <path d="m48 260v-4h-12c4e-6 4 4 4 12 4z" fill="#c58100" stroke="#905e00" stroke-opacity=".99597" stroke-width="2"/>
+ <path d="m112 260v-4h12c0 4-4 4-12 4z" fill="#c58100" stroke="#905e00" stroke-opacity=".99597" stroke-width="2"/>
+</svg>

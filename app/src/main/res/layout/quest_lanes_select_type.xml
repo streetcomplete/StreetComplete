@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:weightSum="1">
+
+    <TextView
+        android:id="@+id/selectHintLabel"
+        android:text="@string/quest_roofShape_select_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/markedLanesButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@drawable/image_select_cell_rounded">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="6dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_lanes_marked"
+                android:adjustViewBounds="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ImageSelectLabelBelow"
+                android:text="@string/quest_lanes_answer_lanes"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/unmarkedLanesButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@drawable/image_select_cell_rounded">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="6dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_lanes_unmarked"
+                android:adjustViewBounds="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ImageSelectLabelBelow"
+                android:text="@string/quest_lanes_answer_noLanes"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

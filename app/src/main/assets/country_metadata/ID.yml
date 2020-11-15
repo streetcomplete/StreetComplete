@@ -13,6 +13,7 @@ atmOperators: [BNI, BCA, BRI, Mandiri, Bank Mandiri, Bank BRI, BANK RAKYAT INDON
    Bank CIMB Niaga, Bank BPD DIY, Bank BDP Bali, BTN, BRI Bank, BRI & BNI, BNI46, BNI 46, BANK SYARIAH
       MANDIRI, BANK INTERNASIONAL INDONESIA, ATM CIMB NIAGA, ATM Bank Mandiri, ATM Bank BCA, ATM BNI Batui,
    ATM BNI 46]
+centerLine: white
 isLeftHandTraffic: true
 mobileCountryCode: 510
 officialLanguages: [id, ms, jv, su, mad, min]

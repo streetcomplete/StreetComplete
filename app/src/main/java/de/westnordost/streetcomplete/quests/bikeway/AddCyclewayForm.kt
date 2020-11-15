@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
+import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 import kotlinx.android.synthetic.main.view_little_compass.*
@@ -67,7 +68,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             onLoadInstanceState(savedInstanceState)
         }
 
-        puzzleView.listener = { isRight -> showCyclewaySelectionDialog(isRight) }
+        puzzleView.onClickSideListener = { isRight -> showCyclewaySelectionDialog(isRight) }
 
         streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
 
@@ -80,8 +81,8 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             if (isLeftHandTraffic) R.drawable.ic_cycleway_unknown_l
             else                   R.drawable.ic_cycleway_unknown
 
-        puzzleView.setLeftSideImageResource(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
-        puzzleView.setRightSideImageResource(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
+        puzzleView.setLeftSideImage(ResImage(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
+        puzzleView.setRightSideImage(ResImage(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
         puzzleView.setLeftSideText(leftSide?.getTitleResId()?.let { resources.getString(it) })
         puzzleView.setRightSideText(rightSide?.getTitleResId()?.let { resources.getString(it) })
         if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
@@ -202,11 +203,11 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             val titleResId = resources.getString(cycleway.getTitleResId())
 
             if (isRight) {
-                puzzleView.replaceRightSideImageResource(iconResId)
+                puzzleView.replaceRightSideImage(ResImage(iconResId))
                 puzzleView.setRightSideText(titleResId)
                 rightSide = cycleway
             } else {
-                puzzleView.replaceLeftSideImageResource(iconResId)
+                puzzleView.replaceLeftSideImage(ResImage(iconResId))
                 puzzleView.setLeftSideText(titleResId)
                 leftSide = cycleway
             }

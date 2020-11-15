@@ -10,6 +10,7 @@ atmOperators: [Bangkok Bank, Siam Commercial Bank, Kasikorn Bank, Krungsri, Krun
    TMB Bank, TCAP, Siam Commercial Bank (SCB), SNA, Oomsin, LH Bank, Krungthai Bank ธนาคารกรุงไทย, Krungsri
       Bay, Krungsri ATM, Krungsiri, Krung Thai Bank (KTB), Kbank, K Bank, Easy Bank, Cimb, Bangkok bank,
    Bangkok Bank (BBL), BAY, Aomsin Bank, ATM Krungsri]
+centerLine: yellow
 isLeftHandTraffic: true
 mobileCountryCode: 520
 officialLanguages: [th]

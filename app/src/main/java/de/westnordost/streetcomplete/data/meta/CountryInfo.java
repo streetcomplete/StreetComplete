@@ -35,6 +35,16 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> clothesContainerOperators;
 	List<String> atmOperators;
 	Boolean isUsuallyAnyGlassRecycleableInContainers;
+	Boolean isCenterLeftTurnLaneKnown;
+	String centerLine;
+	String shoulderLine;
+
+	public String getCenterLine() { return centerLine; }
+	public String getShoulderLine() { return shoulderLine; }
+
+	public Boolean isCenterLeftTurnLaneKnown() {
+		return isCenterLeftTurnLaneKnown;
+	}
 
 	public Boolean isUsuallyAnyGlassRecycleableInContainers() {
 		return isUsuallyAnyGlassRecycleableInContainers;

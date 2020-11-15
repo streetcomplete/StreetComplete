@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.PopupMenu
 import androidx.annotation.AnyThread
@@ -138,7 +137,6 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         contentLayoutResId?.let { setContentView(it) }
         buttonsResId?.let { setButtonsView(it) }
-        if(!contentPadding) content.setPadding(0,0,0,0)
         return view
     }
 
@@ -336,11 +334,18 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             content.removeAllViews()
         }
         content.visibility = View.VISIBLE
+        updateContentPadding()
         return layoutInflater.inflate(resourceId, content)
     }
 
-    protected fun setNoContentPadding() {
-        content.setPadding(0, 0, 0, 0)
+    private fun updateContentPadding() {
+        if(!contentPadding) {
+            content.setPadding(0,0,0,0)
+        } else {
+            val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)
+            val vertical = resources.getDimensionPixelSize(R.dimen.quest_form_vertical_padding)
+            content.setPadding(horizontal, vertical, horizontal, vertical)
+        }
     }
 
     protected fun setButtonsView(resourceId: Int) {

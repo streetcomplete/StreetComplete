@@ -18,7 +18,7 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** the commit message to be used for this quest type */
     val commitMessage: String
 
-    val wikiLink: String? get() = null
+    val wikiLink: String?
 
     // the below could also go up into QuestType interface, but then they should be accounted for
     // in the respective download/upload classes as well
