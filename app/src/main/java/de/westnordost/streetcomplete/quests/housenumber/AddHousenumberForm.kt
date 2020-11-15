@@ -91,20 +91,24 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         val buildingValue = osmElement!!.tags["building"]!!
         val buildingType = BuildingType.getByTag("building", buildingValue)
         if (buildingType != null) {
-            val inflater = LayoutInflater.from(requireContext())
-            val inner = inflater.inflate(R.layout.dialog_quest_address_no_housenumber, null, false)
-            ItemViewHolder(inner.findViewById(R.id.item_view)).bind(buildingType.item)
-
-            AlertDialog.Builder(requireContext())
-                .setView(inner)
-                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoHouseNumber) }
-                .setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note) { _, _ -> composeNote() }
-                .show()
+            showNoHousenumberDialog(buildingType)
         } else {
             // fallback in case the type of building is known by Housenumber quest but not by
             // building type quest
             onClickCantSay()
         }
+    }
+
+    private fun showNoHousenumberDialog(buildingType: BuildingType) {
+        val inflater = LayoutInflater.from(requireContext())
+        val inner = inflater.inflate(R.layout.dialog_quest_address_no_housenumber, null, false)
+        ItemViewHolder(inner.findViewById(R.id.item_view)).bind(buildingType.item)
+
+        AlertDialog.Builder(requireContext())
+            .setView(inner)
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoHouseNumber) }
+            .setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note) { _, _ -> composeNote() }
+            .show()
     }
 
     /* -------------------------- Set (different) housenumber layout  --------------------------- */
