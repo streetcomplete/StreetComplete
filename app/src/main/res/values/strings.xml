@@ -245,8 +245,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
     <string name="quest_lanes_title">"How many lanes for cars does this road have?"</string>
     <string name="quest_lanes_answer_lanes">"Marked lanes"</string>
-    <string name="quest_lanes_answer_lanes_description">"Specify the total number of usable marked lanes (both sides). So, lanes occupied with parking cars don't count."</string>
-    <string name="quest_lanes_answer_lanes_description_one_side">"Specify the total number of usable marked lanes here. So, lanes occupied with parking cars don't count."</string>
+    <string name="quest_lanes_answer_lanes_description">"Specify the total number of marked lanes (both sides), including lanes reserved for buses etc. Lanes occupied with parking cars don't count."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side">"Specify the total number of marked lanes here, including lanes reserved for buses etc. Lanes occupied with parking cars don't count."</string>
     <string name="quest_lanes_answer_noLanes">"No marked lanes"</string>
     <string name="quest_lanes_answer_noLanes_description">"Specify the total number of lanes the road would have if lanes were marked. In other words, how many cars can comfortably pass each other?"</string>
     <string name="quest_lanes_answer_lanes_odd">"Differs for each side"</string>
