@@ -39,7 +39,7 @@ open class UpdatePresetsTask : DefaultTask() {
 
     /** Fetch iD presets */
     private fun fetchPresets(): String {
-        val presetsUrl = "https://raw.githubusercontent.com/openstreetmap/iD/develop/data/presets/presets.json"
+        val presetsUrl = "https://raw.githubusercontent.com/openstreetmap/id-tagging-schema/main/dist/presets.min.json"
         return URL(presetsUrl).readText()
     }
 

@@ -1283,7 +1283,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_pathSurface_title_bridleway">"Milyen a burkolata ennek a lovaglóútnak?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"Milyen a burkolata ennek az ösvénynek?"</string>
+    <string name="quest_pathSurface_title">"Milyen a burkolata ennek a gyalogútnak?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Válaszd ki a leginkább rá jellemzőt:"</string>
@@ -2295,7 +2295,6 @@ szintek"</string>
     <string name="resurvey_intervals_less_often">"Kérdezzen rá ritkábban"</string>
     <string name="resurvey_intervals_default">"Alapértelmezett"</string>
     <string name="resurvey_intervals_more_often">"Kérdezzen rá gyakrabban"</string>
-    <string name="quest_street_side_puzzle_select">"Koppintson a kijelöléshez"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) elfogad készpénzes fizetést?"</string>
     <string name="quest_busStopBench_tram_name_title">"Van-e pad a(z) %s villamosmegállóban?"</string>
     <string name="quest_busStopBench_tram_title">"Van-e pad ebben a villamosmegállóban?"</string>
@@ -2303,7 +2302,54 @@ szintek"</string>
     <string name="quest_busStopBench_name_title">"Van-e pad a(z) %s buszmegállóban?"</string>
     <string name="quest_summit_register_title">"Van-e csúcsnapló itt: %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Van-e defibrillátor (AED) egy épületben?"</string>
-    <string name="about_title_translate">"Segíts lefordítani ezt az alkalmazást"</string>
-    <string name="about_description_translate">"%1$s le van fordítva %2$d%%"</string>
+    <string name="about_title_translate">"Segíts az alkalmazás fordításában"</string>
+    <string name="about_description_translate">"%1$s nyelvű fordítás %2$d%%-ban kész"</string>
+    <string name="quest_oneway2_title">"Ez egy egyirányú utca? Melyik irányban?"</string>
+    <string name="quest_oneway2_dir">"Egyirányú ebben az irányban"</string>
+    <string name="quest_oneway2_no_oneway">"Nem egyerirányú"</string>
+    <string name="quest_maxweight_select_sign">"Tábla kiválasztása"</string>
+    <string name="quest_steps_incline_title">"Melyik irányban vezet felfelé ez a lépcső?"</string>
+    <string name="quest_steps_incline_up">"Ebben az irányban felfelé"</string>
+    <string name="quest_step_count_title">"Hány lépcsőfok található itt?"</string>
     <string name="quest_traffic_signals_sound_title">"Van itt vakoknak szóló hangjelzés?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Rendelkezik ez a közlekedési lámpa a biztonságos átkelés idején a vakok számára szolgáló tapintható jelzéssel?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Tipp: Ez gyakran a jelzőgomb házán alul található rezgő gomb vagy forgó kúp."</string>
+    <string name="quest_busStopRef_title">"Mi az azonosítószáma ennek a buszmegállónak?"</string>
+    <string name="quest_tramStopRef_title">"Mi az azonosítószáma ennek a villamosmegállónak?"</string>
+    <string name="quest_buildingType_bungalow_description2">"apró lakóház (nyaraló, hétvégi ház …)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Milyen akadály található ezen a vasúti átkelőhelyen?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Nincs akadály"</string>
+    <string name="quest_steps_ramp_title">"Rendelkezik ez a lépcső rámpával? Milyennel?"</string>
+    <string name="quest_steps_ramp_none">"Nincs (használható) rámpa"</string>
+    <string name="quest_steps_ramp_bicycle">"Kerékpáros rámpa"</string>
+    <string name="quest_steps_ramp_stroller">"Babakocsi rámpa"</string>
+    <string name="quest_steps_ramp_wheelchair">"Kerekesszékes rámpa"</string>
+    <string name="quest_atm_operator_title">"Melyik bankhoz tartozik ez az ATM?"</string>
+    <string name="quest_clothes_container_operator_title">"Ki fogadja az ebből a ruhagyűjtő konténerből származó adományokat?"</string>
+    <string name="quest_charging_station_operator_title">"Ki az üzemeltetője ennek a töltőállomásnak?"</string>
+    <string name="link_indoorequal_description">"Fedezd fel plázák, vasútállomások, stb. beléri térképeit"</string>
+    <string name="link_thenandnow_description">"Kiváncsi vagy, mennyit haladtunk az évek során? Hasonlítsd össze, hogy nézett nézett ki a térkép több mint 10 évvel ezelőtt!"</string>
+    <string name="achievement_rare_title">"Kincsvadász"</string>
+    <string name="achievement_rare_solved_X">"%d olyan kérdést megtaláltál és megoldottál, amiket nagyon ritkán szoktak megoldani, gratulálok!"</string>
+    <string name="achievement_citizen_title">"Polgár"</string>
+    <string name="achievement_citizen_solved_X">"%d olyan kérdést megoldottál, amik a városi mindennapi élethez hasznosak!"</string>
+    <string name="achievement_outdoors_title">"Túrázó"</string>
+    <string name="achievement_outdoors_solved_X">"%d olyan kérdést megoldottál, amik a túrázók számára hasznosak!"</string>
+    <string name="quest_pedestrian_crossing_island">"Ez a gyalogosátkelőhely rendelkezik járdaszigettel?"</string>
+    <string name="quest_generic_answer_noSign">"Nincs tábla"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"A kerekesszékes rámpa külön vonalként szerepel a térképen?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"külön"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"nem külön"</string>
+    <string name="pref_title_sync2">"Válaszok automatikus feltöltése"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Felület leírása"</string>
+    <string name="open_url">"URL megnyitása"</string>
+    <string name="quest_buildingType_silo">"Siló"</string>
+    <string name="quest_buildingType_historic">"Történelmi"</string>
+    <string name="quest_buildingType_historic_description">"történelmi értékkel bíró épület, eredeti rendeltetése már nem ismert"</string>
+    <string name="quest_buildingType_abandoned">"Elhagyatott"</string>
+    <string name="quest_buildingType_abandoned_description">"használaton kívüli épület, aminek az eredeti funkciója vagy rendeltetése ismeretlen"</string>
+    <string name="quest_buildingType_ruins">"Romok"</string>
+    <string name="quest_buildingType_ruins_description">"elhagyatott, romos és beazonosíthatatlan épület"</string>
+    <string name="quest_charging_station_capacity_title">"Hány autó tölthető egyidejűleg ezen a töltőállomáson?"</string>
+    <string name="link_disaster_ninja_description">"Térkép, amely megjeleníti a közelmúltbéli természeti katasztrófákat, hasznos információt szolgáltatva a humanitárius térképezőknek. Valamint számos érdekes statisztikát is megjelenít arról, hogy mennyire feltérképezettek és naprakészek az egyes helyek."</string>
 </resources>

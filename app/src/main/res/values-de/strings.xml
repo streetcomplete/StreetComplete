@@ -885,7 +885,6 @@ Erfolge"</string>
     <string name="resurvey_intervals_less_often">"Seltener fragen"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Öfter fragen"</string>
-    <string name="quest_street_side_puzzle_select">"Antippen zum Auswählen"</string>
     <string name="quest_accepts_cash_type_title">"Akzeptiert %1$s (%2$s) Bargeld?"</string>
     <string name="quest_busStopBench_tram_name_title">"Hat die Straßenbahnhaltestelle %s eine Bank?"</string>
     <string name="quest_busStopBench_tram_title">"Hat diese Straßenbahnhaltestelle eine Bank?"</string>

@@ -1210,7 +1210,7 @@
     },
     "ford": {
       "name": "Brod",
-      "terms": "brod rieky,rieka,prechod cez rieku"
+      "terms": "brod rieky,rieka,priechod cez rieku"
     },
     "ford_line": {
       "name": "Brod"
@@ -1308,22 +1308,22 @@
       "terms": "chodba,hala"
     },
     "highway/crossing": {
-      "name": "Prechod"
+      "name": "Priechod pre chodcov"
     },
     "highway/crossing/marked": {
-      "name": "Značený prechod"
+      "name": "Značený priechod pre chodcov"
     },
     "highway/crossing/marked-raised": {
       "name": "Vyznačený priechod pre chodcov (vyvýšený)"
     },
     "highway/crossing/unmarked": {
-      "name": "Neznačený prechod"
+      "name": "Neznačený priechod pre chodcov"
     },
     "highway/crossing/unmarked-raised": {
       "name": "Nevyznačený priechod pre chodcov (vyvýšený)"
     },
     "highway/crossing/zebra": {
-      "name": "Značený prechod"
+      "name": "Značený priechod pre chodcov"
     },
     "highway/crossing/zebra-raised": {
       "name": "Vyznačený priechod pre chodcov (vyvýšený)"
@@ -1339,13 +1339,13 @@
       "name": "Prechod pre cyklistov"
     },
     "highway/cycleway/crossing/bicycle_foot": {
-      "name": "Prechod pre cyklistov a peších"
+      "name": "Priechod pre cyklistov a peších"
     },
     "highway/cycleway/crossing/marked": {
-      "name": "Značený prechod pre cyklistov"
+      "name": "Značený priechod pre cyklistov"
     },
     "highway/cycleway/crossing/unmarked": {
-      "name": "Neznačený prechod pre cyklistov"
+      "name": "Neznačený priechod pre cyklistov"
     },
     "highway/elevator": {
       "name": "Výťah"
@@ -1361,7 +1361,7 @@
       "name": "Prístupová ulička"
     },
     "highway/footway/crossing": {
-      "name": "Prechod pre chodcov"
+      "name": "Priechod pre chodcov"
     },
     "highway/footway/marked-raised": {
       "name": "Vyznačený priechod pre chodcov (vyvýšený)"
@@ -1370,13 +1370,13 @@
       "name": "Chodník"
     },
     "highway/footway/unmarked": {
-      "name": "Neznačený prechod"
+      "name": "Neznačený priechod pre chodcov"
     },
     "highway/footway/unmarked-raised": {
       "name": "Nevyznačený priechod pre chodcov (vyvýšený)"
     },
     "highway/footway/zebra": {
-      "name": "Značený prechod"
+      "name": "Značený priechod pre chodcov"
     },
     "highway/footway/zebra-raised": {
       "name": "Vyznačený priechod pre chodcov (vyvýšený)"
@@ -1467,7 +1467,7 @@
     },
     "highway/service/alley": {
       "name": "Ulička medzi domami",
-      "terms": "Ulicka medzi domami,ulicka,priechod"
+      "terms": "Ulička medzi domami,ulička,priechod"
     },
     "highway/service/drive-through": {
       "name": "Obslúženie z auta",
@@ -2447,7 +2447,7 @@
     },
     "place/island": {
       "name": "Ostrov",
-      "terms": "ostrov,atol,útes,ostrovček,archipelágo,utes,ostrovcek,archipelago"
+      "terms": "ostrov,atol,útes,ostrovček,súostrovie,utes,ostrovcek,archipelago"
     },
     "place/isolated_dwelling": {
       "name": "Samota",

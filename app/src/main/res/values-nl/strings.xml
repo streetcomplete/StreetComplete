@@ -2316,7 +2316,6 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="resurvey_intervals_less_often">"Vraag minder vaak"</string>
     <string name="resurvey_intervals_default">"Standaard"</string>
     <string name="resurvey_intervals_more_often">"Vraag vaker"</string>
-    <string name="quest_street_side_puzzle_select">"Klik om te selecteren"</string>
     <string name="quest_accepts_cash_type_title">"Accepteert %1$s (%2$s) contant geld als betaling?"</string>
     <string name="quest_busStopBench_tram_name_title">"Heeft deze halte %s een bank?"</string>
     <string name="quest_busStopBench_tram_title">"Heeft deze tramhalte een bank?"</string>

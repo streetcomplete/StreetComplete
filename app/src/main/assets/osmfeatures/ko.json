@@ -399,6 +399,9 @@
       "name": "도서관",
       "terms": "도서관, 문고"
     },
+    "amenity/lounger": {
+      "name": "일광욕용 의자"
+    },
     "amenity/love_hotel": {
       "name": "러브 호텔"
     },
@@ -411,6 +414,9 @@
     },
     "amenity/money_transfer": {
       "name": "환전소"
+    },
+    "amenity/mortuary": {
+      "name": "영안실"
     },
     "amenity/motorcycle_parking": {
       "name": "오토바이 주차장",
@@ -719,6 +725,9 @@
     },
     "amenity/toilets/disposal/pitlatrine": {
       "name": "재래식 화장실"
+    },
+    "amenity/toilets/portable": {
+      "name": "이동식 화장실"
     },
     "amenity/townhall": {
       "name": "마을 회관",
@@ -1490,6 +1499,9 @@
     },
     "golf/cartpath": {
       "name": "골프 카트 도로"
+    },
+    "golf/clubhouse": {
+      "name": "골프 클럽 하우스"
     },
     "golf/driving_range": {
       "name": "드라이빙 레인지"
@@ -2544,6 +2556,9 @@
     "man_made/tower/communication": {
       "name": "통신 탑"
     },
+    "man_made/tower/cooling": {
+      "name": "냉각탑"
+    },
     "man_made/tower/minaret": {
       "name": "미너렛"
     },
@@ -2576,6 +2591,9 @@
     "man_made/windmill": {
       "name": "풍차",
       "terms": "풍차"
+    },
+    "man_made/windpump": {
+      "name": "풍력 펌프"
     },
     "man_made/works": {
       "name": "공장",
@@ -2645,6 +2663,9 @@
     "natural/heath": {
       "name": "황무지",
       "terms": "황무지"
+    },
+    "natural/hot_spring": {
+      "name": "온천"
     },
     "natural/mud": {
       "name": "진흙"
@@ -3266,6 +3287,9 @@
     "railway/halt": {
       "name": "기차역 (간이역)"
     },
+    "railway/level_crossing": {
+      "name": "철도-도로 건널목"
+    },
     "railway/light_rail": {
       "name": "경전철 선로"
     },
@@ -3293,6 +3317,9 @@
     "railway/rail/highspeed": {
       "name": "고속철 선로"
     },
+    "railway/railway_crossing": {
+      "name": "철도-철도 건널목"
+    },
     "railway/signal": {
       "name": "철도신호"
     },
@@ -3314,6 +3341,9 @@
     },
     "railway/tram": {
       "name": "노면전차 궤도"
+    },
+    "railway/tram_level_crossing": {
+      "name": "전차-도로 건널목"
     },
     "railway/tram_stop": {
       "name": "전차 정차 위치"
@@ -4078,6 +4108,9 @@
     "tourism/information/map": {
       "name": "지도",
       "terms": "지도"
+    },
+    "tourism/information/office": {
+      "name": "관광 안내소"
     },
     "tourism/information/terminal": {
       "name": "안내 단말기"

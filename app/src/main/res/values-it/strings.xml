@@ -2323,7 +2323,6 @@ riconoscimento"</string>
     <string name="resurvey_intervals_less_often">"Chiedi meno spesso"</string>
     <string name="resurvey_intervals_default">"Predefinito"</string>
     <string name="resurvey_intervals_more_often">"Chiedi più spesso"</string>
-    <string name="quest_street_side_puzzle_select">"Premi per selezionare"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accetta pagamenti in denaro?"</string>
     <string name="quest_busStopBench_tram_name_title">"La fermata del tram %s ha una panchina?"</string>
     <string name="quest_busStopBench_tram_title">"Questa fermata del tram ha un panchina?"</string>

@@ -2247,7 +2247,6 @@
     <string name="resurvey_intervals_less_often">"کمتر بپرسید"</string>
     <string name="resurvey_intervals_default">"پیشفرض"</string>
     <string name="resurvey_intervals_more_often">"بیشتر اوقات بپرسید"</string>
-    <string name="quest_street_side_puzzle_select">"انتخاب کنید"</string>
     <string name="quest_accepts_cash_type_title">"آیا %1$s (%2$s) پرداخت نقدی را قبول می کند؟"</string>
     <string name="quest_busStopBench_tram_name_title">"آیا توقفگاه خودرو %s نیمکت دارد؟"</string>
     <string name="quest_busStopBench_tram_title">"آیا این توقفگاه خودرو نیمکت دارد؟"</string>

@@ -2312,7 +2312,6 @@ nivåer"</string>
     <string name="resurvey_intervals_less_often">"Fråga mindre ofta"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Fråga oftare"</string>
-    <string name="quest_street_side_puzzle_select">"Tryck för att välja"</string>
     <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) emot kontanter?"</string>
     <string name="quest_busStopBench_tram_name_title">"Har spårvagnshållplatsen %s en bänk?"</string>
     <string name="quest_busStopBench_tram_title">"Har denna spårvagnshållplats en bänk?"</string>
@@ -2356,4 +2355,15 @@ nivåer"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Visas rullstolsrampen som en separat väg på kartan?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separat"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"inte separat"</string>
+    <string name="pref_title_sync2">"Ladda upp svar automatiskt"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Beskriv ytan"</string>
+    <string name="open_url">"Öppna webbadress"</string>
+    <string name="quest_buildingType_historic">"Historisk"</string>
+    <string name="quest_buildingType_historic_description">"byggnad av historiskt värde, konstruerad för ett okänt eller oklart syfte"</string>
+    <string name="quest_buildingType_abandoned">"Övergiven"</string>
+    <string name="quest_buildingType_abandoned_description">"oanvänd byggnad vars ursprungliga funktion eller syfte är okänd"</string>
+    <string name="quest_buildingType_ruins">"Ruiner"</string>
+    <string name="quest_buildingType_ruins_description">"övergiven, förstörd och oidentifierbar byggnad"</string>
+    <string name="quest_charging_station_capacity_title">"Hur många bilar kan laddas vid den här laddstationen samtidigt?"</string>
+    <string name="link_disaster_ninja_description">"Karta som visar de senaste naturkatastroferna, intressant för humanitära kartläggare. Visar också många intressanta statistik för att analysera hur väl kartlagda och uppdaterade platser är."</string>
 </resources>

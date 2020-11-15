@@ -1799,7 +1799,7 @@
       "terms": "zebrapad"
     },
     "highway/crossing/unmarked-raised": {
-      "name": "Verhoogde oversteekplaats",
+      "name": "Ongemarkeerde oversteekplaats (op drempel)",
       "terms": "zebrapad op plateau,zebrapad op drempel,oversteekplaats op plateau,oversteekplaats op drempel"
     },
     "highway/crossing/zebra": {
