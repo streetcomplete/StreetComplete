@@ -218,30 +218,9 @@ class AddCyclewayTest {
         )
     }
 
-    @Test fun `apply cycleway on sidewalk permitted answer`() {
-        questType.verifyAnswer(
-            bothSidesAnswer(SIDEWALK_OK),
-            StringMapEntryAdd("cycleway:both", "no"),
-            StringMapEntryAdd("sidewalk", "both"),
-            StringMapEntryAdd("sidewalk:both:bicycle", "yes")
-        )
-    }
-
     private fun bothSidesAnswer(bothSides: Cycleway): CyclewayAnswer {
         val side = CyclewaySide(bothSides)
         return CyclewayAnswer(side, side)
-    }
-
-
-    @Test fun `apply answer where both sides are different but both tag sidewalk`() {
-        questType.verifyAnswer(
-            CyclewayAnswer(CyclewaySide(SIDEWALK_OK), CyclewaySide(SIDEWALK_EXPLICIT)),
-            StringMapEntryAdd("sidewalk", "both"),
-            StringMapEntryAdd("cycleway:left", "no"),
-            StringMapEntryAdd("sidewalk:left:bicycle", "yes"),
-            StringMapEntryAdd("cycleway:right", "track"),
-            StringMapEntryAdd("cycleway:right:segregated", "no")
-        )
     }
 
     @Test fun `apply dual cycle track answer`() {
@@ -421,18 +400,6 @@ class AddCyclewayTest {
             bothSidesAnswer(TRACK),
             StringMapEntryModify("cycleway:both","track", "track"),
             StringMapEntryDelete("cycleway:both:oneway", "no")
-        )
-    }
-
-    @Test fun `deletes sidewalk bicycle yes tag if new answer is not sidewalk ok`() {
-        questType.verifyAnswer(
-            mapOf(
-                "cycleway:both" to "no",
-                "sidewalk:both:bicycle" to "yes"
-            ),
-            bothSidesAnswer(TRACK),
-            StringMapEntryModify("cycleway:both","no", "track"),
-            StringMapEntryDelete("sidewalk:both:bicycle", "yes")
         )
     }
 

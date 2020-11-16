@@ -32,7 +32,6 @@ private fun Cycleway.getRightHandTrafficIconResId(): Int = when(this) {
     NONE_NO_ONEWAY -> R.drawable.ic_cycleway_pictograms
     PICTOGRAMS -> R.drawable.ic_cycleway_pictograms
     SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit
-    SIDEWALK_OK -> R.drawable.ic_cycleway_sidewalk
     DUAL_LANE -> R.drawable.ic_cycleway_lane_dual
     DUAL_TRACK -> R.drawable.ic_cycleway_track_dual
     BUSWAY -> R.drawable.ic_cycleway_bus_lane
@@ -49,7 +48,6 @@ private fun Cycleway.getLeftHandTrafficIconResId(): Int = when(this) {
     NONE_NO_ONEWAY -> R.drawable.ic_cycleway_pictograms_l
     PICTOGRAMS -> R.drawable.ic_cycleway_pictograms_l
     SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit_l
-    SIDEWALK_OK -> R.drawable.ic_cycleway_sidewalk
     DUAL_LANE -> R.drawable.ic_cycleway_lane_dual_l
     DUAL_TRACK -> R.drawable.ic_cycleway_track_dual_l
     BUSWAY -> R.drawable.ic_cycleway_bus_lane_l
@@ -66,7 +64,6 @@ fun Cycleway.getTitleResId(): Int = when(this) {
     NONE_NO_ONEWAY -> R.string.quest_cycleway_value_none_but_no_oneway
     PICTOGRAMS -> R.string.quest_cycleway_value_shared
     SIDEWALK_EXPLICIT -> R.string.quest_cycleway_value_sidewalk
-    SIDEWALK_OK -> R.string.quest_cycleway_value_sidewalk_allowed
     DUAL_LANE -> R.string.quest_cycleway_value_lane_dual
     DUAL_TRACK -> R.string.quest_cycleway_value_track_dual
     BUSWAY -> R.string.quest_cycleway_value_bus_lane
@@ -83,7 +80,6 @@ val DISPLAYED_CYCLEWAY_ITEMS: List<Cycleway> = listOf(
     PICTOGRAMS,
     BUSWAY,
     SIDEWALK_EXPLICIT,
-    SIDEWALK_OK,
     DUAL_LANE,
     DUAL_TRACK
 )

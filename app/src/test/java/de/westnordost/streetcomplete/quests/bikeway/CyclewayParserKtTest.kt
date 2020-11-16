@@ -785,29 +785,6 @@ class CyclewayParserKtTest {
         )
     }
 
-
-    @Test fun sidewalk() {
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, SIDEWALK_OK),
-            parse(
-                "cycleway" to "no",
-                "sidewalk:bicycle" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, SIDEWALK_OK),
-            parse(
-                "cycleway" to "none",
-                "sidewalk:bicycle" to "yes"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, SIDEWALK_OK),
-            parse("sidewalk:bicycle" to "yes")
-        )
-    }
-
     @Test fun none() {
         assertEquals(
             LeftAndRightCycleway(NONE, NONE),
@@ -1575,28 +1552,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `sidewalk on left side`() {
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, null),
-            parse(
-                "cycleway:left" to "no",
-                "sidewalk:left:bicycle" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, null),
-            parse(
-                "cycleway:left" to "none",
-                "sidewalk:left:bicycle" to "yes"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, null),
-            parse("sidewalk:left:bicycle" to "yes")
-        )
-    }
-
     @Test fun `none on left side`() {
         assertEquals(
             LeftAndRightCycleway(NONE, null),
@@ -2222,28 +2177,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `sidewalk on right side`() {
-        assertEquals(
-            LeftAndRightCycleway(null, SIDEWALK_OK),
-            parse(
-                "cycleway:right" to "no",
-                "sidewalk:right:bicycle" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, SIDEWALK_OK),
-            parse(
-                "cycleway:right" to "none",
-                "sidewalk:right:bicycle" to "yes"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(null, SIDEWALK_OK),
-            parse("sidewalk:right:bicycle" to "yes")
-        )
-    }
-
     @Test fun `none on right side`() {
         assertEquals(
             LeftAndRightCycleway(null, NONE),
@@ -2820,43 +2753,6 @@ class CyclewayParserKtTest {
                 "cycleway:both" to "shared_lane",
                 "cycleway:both:lane" to "pictogram"
             )
-        )
-    }
-
-    @Test fun `sidewalk on both sides`() {
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, SIDEWALK_OK),
-            parse(
-                "cycleway:both" to "no",
-                "sidewalk:both:bicycle" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, SIDEWALK_OK),
-            parse(
-                "cycleway:both" to "none",
-                "sidewalk:both:bicycle" to "yes"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, SIDEWALK_OK),
-            parse(
-                "cycleway:both" to "no",
-                "sidewalk:bicycle" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, SIDEWALK_OK),
-            parse(
-                "cycleway:both" to "none",
-                "sidewalk:bicycle" to "yes"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(SIDEWALK_OK, SIDEWALK_OK),
-            parse("sidewalk:both:bicycle" to "yes")
         )
     }
 

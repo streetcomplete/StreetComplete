@@ -225,11 +225,6 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
                 changes.addOrModify(cyclewayKey, "track")
                 changes.addOrModify("$cyclewayKey:segregated", "no")
             }
-            SIDEWALK_OK -> {
-                // https://wiki.openstreetmap.org/wiki/File:Z239Z1022-10GehwegRadfahrerFrei.jpeg
-                changes.addOrModify(cyclewayKey, "no")
-                changes.addOrModify("sidewalk:" + side.value + ":bicycle", "yes")
-            }
             PICTOGRAMS -> {
                 changes.addOrModify(cyclewayKey, "shared_lane")
                 changes.addOrModify("$cyclewayKey:lane", "pictogram")
@@ -257,10 +252,6 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
         // clear previous cycleway:segregated=no value
         if (cycleway != SIDEWALK_EXPLICIT && cycleway != TRACK) {
             changes.deleteIfPreviously("$cyclewayKey:segregated", "no")
-        }
-        // clear previous sidewalk:bicycle=yes value
-        if (cycleway != SIDEWALK_OK) {
-            changes.deleteIfPreviously("sidewalk:" + side.value + ":bicycle", "yes")
         }
     }
 

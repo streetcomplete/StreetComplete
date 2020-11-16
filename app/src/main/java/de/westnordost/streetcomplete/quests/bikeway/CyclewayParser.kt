@@ -79,7 +79,6 @@ private fun createCyclewayForSide(tags: Map<String, String>, side: String?): Cyc
 
     val isDual = tags["$cyclewayKey:oneway"] == "no"
     val isSegregated = tags["$cyclewayKey:segregated"] != "no"
-    val isAllowedOnSidewalk = tags["sidewalk$sideVal:bicycle"] == "yes"
 
     val result = when(cycleway) {
         "lane", "opposite_lane" -> {
@@ -115,10 +114,6 @@ private fun createCyclewayForSide(tags: Map<String, String>, side: String?): Cyc
         "share_busway", "opposite_share_busway" -> BUSWAY
         null -> null
         else -> UNKNOWN
-    }
-
-    if (result == null || result == NONE) {
-        if (isAllowedOnSidewalk) return SIDEWALK_OK
     }
 
     return result
