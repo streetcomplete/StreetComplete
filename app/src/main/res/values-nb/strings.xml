@@ -348,18 +348,6 @@ Men før appen laster opp endringen dine sjekker den via &lt;a href=\"https://ww
     <string name="quest_serviceType_title">"Hva slags privat vei er dette?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Hvor mange filer har denne veien?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Hvis veien mangler midtlinje, har den ikke kjørefelt."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Ingen oppmerkede filer"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Beregn hvor mange biler som får plass ved siden av hverandre på veien."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Er dette en enveiskjørt gate?"</string>
 
     <!-- Fuzzy -->
@@ -1511,9 +1499,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Bygningen er merket med:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Et dette riktig og er det ikke bare en del av en bygning?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Helligdom"</string>

@@ -362,18 +362,6 @@
     <string name="quest_serviceType_title">"Τι είδους δρόμος υπηρεσίας είναι αυτός;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Πόσα λωρίδες έχει αυτός ο δρόμος;"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Αν δεν υπάρχουν σημάνσεις δρόμου, δεν υπάρχουν λωρίδες."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"δεν έχει σημειωμένες λωρίδες"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Υπολογίστε πόσα αυτοκίνητα θα χωρέσουν το ένα δίπλα στο άλλο σε αυτόν τον δρόμο."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Είναι μονόδρομος αυτός ο δρόμος;"</string>
 
     <!-- Fuzzy -->
@@ -1535,9 +1523,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Το κτίριο χαρακτηρίστηκε ως:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Είναι αυτό σωστό και δεν είναι μόνο τμήμα ενός κτιρίου;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Ναός"</string>

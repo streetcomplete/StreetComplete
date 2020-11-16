@@ -275,18 +275,6 @@ en:cement = fr:ciment = de:Zement -->
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"De quel type de voie de service s'agit-il ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Combien de voies de circulation cette route compte-t-elle ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"S'il n'y a pas de marquage routier, il n'y a pas plusieurs voies de circulation."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Il n'a pas de marquage de voies de circulation"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Veuillez estimer le nombre de voitures qui pourraient se côtoyer sur cette route."</string>
     <string name="quest_oneway_title">"S'agit-il d'une voie à sens unique ?"</string>
 
     <!-- "édifice" or "bâtiment" ? -->
@@ -1420,9 +1408,6 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Le bâtiment a été marqué comme :"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Est-ce correct et ne s'agit-il pas simplement d'une partie d'un bâtiment ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Sanctuaire"</string>

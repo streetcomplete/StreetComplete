@@ -362,18 +362,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_serviceType_title">"此条联络道路的种类是?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"这条路有多少个车道？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"如果这里没有道路标记，它将不会有车道"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"没有标记的车道"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"这条路的宽度能让多少辆车并排行进（双向合计）"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"这条路是单行道吗？"</string>
 
     <!-- Fuzzy -->
@@ -1528,9 +1516,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"这栋建筑被标为："</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"正确吗，还是这边不是建筑的一部分？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"神社/寺庙"</string>

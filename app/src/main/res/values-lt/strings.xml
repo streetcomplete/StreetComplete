@@ -363,18 +363,6 @@ Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. 
     <string name="quest_serviceType_title">"Kokio tipo tai privažiavimas?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Kiek juostų turi šis kelias?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Jei nėra horizontalaus žymėjimo, nėra jokių juostų."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Neturi pažymėtų juostų"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Nurodykite, kiek apytiksliai mašinų tilps viena greta kitos šiame kelyje."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Ar tai vienpusis kelias?"</string>
 
     <!-- Fuzzy -->
@@ -1531,9 +1519,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Pastatas buvo pažymėtas kaip:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Ar tai tiesa ir jis nėra tik pastato dalis?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Šventykla"</string>

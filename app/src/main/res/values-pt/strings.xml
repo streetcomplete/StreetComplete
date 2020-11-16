@@ -363,18 +363,6 @@ Contudo, antes enviar as suas alterações, a aplicação confirma com &lt;a hre
     <string name="quest_serviceType_title">"Que tipo de estrada de serviço é esta?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Quantas faixas de rodagem tem esta rua?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Se não há marcações no eixo da via, não há faixas de rodagem."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Não tem faixas de rodagem marcadas"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Quantos carros se pode estacionar de cada lado desta rua? (estimativa)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"É uma rua de sentido único?"</string>
 
     <!-- Fuzzy -->
@@ -1528,9 +1516,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"O edifício foi etiquetado como:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Isto está correto e não faz parte de um edifício?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuário"</string>

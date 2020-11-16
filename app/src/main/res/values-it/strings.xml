@@ -329,14 +329,12 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_surface_value_gravel">"Ghiaia"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_value_paving_stones">"Pavimentato a pietre"</string>
+    <string name="quest_surface_value_paving_stones">"Pietre lisce"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_pebblestone">"Ciottoli"</string>
     <string name="quest_surface_value_sand">"Sabbia"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_surface_value_sett">"Bolognini"</string>
+    <string name="quest_surface_value_sett">"Sanpietrini"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"Legno"</string>
@@ -355,18 +353,6 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Che tipo di strada di servizio è questa?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Quante corsie ha questa strada?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Se non è presente alcuna striscia sulla strada, allora non ci sono corsie."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"non ci sono corsie marcate"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Si prega di stimare quante auto possono stare una accanto all'altro su questa strada."</string>
 
     <!-- Fuzzy -->
     <string name="quest_oneway_title">"Si tratta di una strada a senso unico?"</string>
@@ -1529,9 +1515,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_address_answer_no_housenumber_message1">"L’edificio era etichettato come:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"È corretto e non si tratta solo di una parte di un edificio?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Sacello"</string>
 
     <!-- Fuzzy -->
@@ -2382,4 +2365,22 @@ riconoscimento"</string>
     <string name="quest_buildingType_ruins_description">"Fatiscente, edificio in rovina e non identificabile"</string>
     <string name="quest_charging_station_capacity_title">"Quante automobili possono essere ricaricate contemporaneamente a questa colonnina?"</string>
     <string name="link_disaster_ninja_description">"Mappe che mostrano disastri naturali recenti, interessanti per i mappatori umanitari. Inoltre, mostrano molte statistiche interessanti per analizzare quanto i luoghi sono ben mappati o aggiornati."</string>
+    <string name="quest_lanes_title">"Quante corsie per automobili ha questa strada?"</string>
+    <string name="quest_lanes_answer_lanes">"Corsie indicate"</string>
+    <string name="quest_lanes_answer_lanes_description">"Specifica il numero di corsie indicate (entrambi i lati), incluse cosie riservate ad autobus, ecc. Le corsie occupate da parcheggi non vanno considerate."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side">"Specifica il numero totale di corsie indicate, incluse le corsie riservate ad autobus, ecc. Le corsie occupate da parcheggi non vanno considerate."</string>
+    <string name="quest_lanes_answer_noLanes">"Nessuna corsia indicata"</string>
+    <string name="quest_lanes_answer_noLanes_description">"Specifica il numero totale di corsie che questa strada avrebbe se fossero indicate. In altre parole: quante automobili possono passare con facilità?"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Diverso per ogni lato"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ha una corsia a doppio senso a sinistra"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"È corretto?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Qual è il limite d'altezza sotto al ponte?"</string>
+    <string name="quest_maxheight_split_way_hint">"Se non si applica per l'intera strada, rispondi \"%s\""</string>
+    <string name="quest_tactile_paving_kerb_title">"C'è una pavimentazione tattile su questo cordolo?"</string>
+    <string name="quest_kerb_height_title">"Qual è l'altezza di questo cordolo?"</string>
+    <string name="quest_kerb_height_flush">"Stessa altezza del manto stradale"</string>
+    <string name="quest_kerb_height_lowered">"Un po' più alto del manto stradale"</string>
+    <string name="quest_kerb_height_raised">"Cordolo alto"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Non c'è alcun cordolo su questo lato dell'attraversamento"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Cordolo a rampa"</string>
 </resources>

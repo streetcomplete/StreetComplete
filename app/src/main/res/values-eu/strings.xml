@@ -362,18 +362,6 @@ Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=
     <string name="quest_serviceType_title">"Ze motako zerbitzu bide da hau?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Zenbat erraia ditu errepide honek?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Margoztatuko marrarik ez badu, ez du errairik"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"ez du margoztatuko errairik"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Kalkulatu zenbat kotxe sartzen diren alboz albo bide honetan."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Norabide bakarreko kalea da?"</string>
 
     <!-- Fuzzy -->
@@ -1529,9 +1517,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Eraikina honela etiketatu da:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Hau zuzena da, hau ez da eraikin baten parte bat?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santutegia"</string>

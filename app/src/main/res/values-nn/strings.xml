@@ -363,18 +363,6 @@ Alt du som bidreg med vert lagt direkte til kartet; det finst ikkje nokon tredje
     <string name="quest_serviceType_title">"Kva slags småveg er dette?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Kor mange køyrefelt har denne vegen?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Viss vegen manglar midtlinje, har han ikkje nokon køyrefelt."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Han har ingen oppmerkte køyrefelt"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Prøv å estimera kor mange bilar som får plass ved sida av kvarandre på vegen."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Er dette ei einvegskøyrd gate?"</string>
 
     <!-- Fuzzy -->
@@ -1529,9 +1517,6 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Bygningen vart definert som:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Er dette rett, og er det ikkje berre ein del av ein bygning?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Heilagstad"</string>

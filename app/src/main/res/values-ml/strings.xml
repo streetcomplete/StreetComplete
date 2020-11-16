@@ -363,18 +363,6 @@
     <string name="quest_serviceType_title">"എന്തുതരം സർവീസ് റോഡ് ആണ് ഇത് ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"ഈ റോഡ് എത്ര വരി പാതയാണ്?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"റോഡ് അടയാളങ്ങൾ ഇല്ലെങ്കിൽ ഇതിൽ lanes ഇല്ല ."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"അടയാളപ്പെടുത്തിയ പാതകൾ ഇല്ല."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"ഈ റോഡിൽ എത്ര കാറുകൾ പരസ്പരം ഒന്നിച്ച്  നിൽക്കാൻ പറ്റുമെന്ന് ദയവായി മനസിലാക്കുക."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"ഇത് ഒരു വൺ-വേ സ്ട്രീറ്റ് ആണോ?"</string>
 
     <!-- Fuzzy -->
@@ -1509,9 +1497,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"ഈ കെട്ടിടം tag ചെയ്തിരിക്കുന്നത്:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"ഇത് വെറുമൊരു കെട്ടിടത്തിൻ്റെ ഭാഗം മാത്രമല്ലല്ലോ. അത് ഉറപ്പല്ലേ ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"പ്രതിഷ്ഠ"</string>

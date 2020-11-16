@@ -101,6 +101,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_add_hours">"Saatleri ekle"</string>
+    <string name="quest_openingHours_add_weekdays">"Hafta içi günlerini ekle"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_chooseMonthsTitle">"Ayları seç"</string>
@@ -351,18 +352,6 @@ Bahsedildiği gibi, uygulama OSM altyapısıyla doğrudan iletişim kuruyor. Bun
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Burası nasıl bir servis yolu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Bu yol kaç şerit?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Şerit çizgisi yoksa şeritte yoktur."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Belirgin şerit yok"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Lütfen bu yolda yan yana kaç araba sığacağını tahmin edin."</string>
 
     <!-- Fuzzy -->
     <string name="quest_oneway_title">"Burası tek yönlü cadde mi?"</string>
@@ -1297,6 +1286,8 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Yarı müstakil ev"</string>
+    <string name="quest_buildingType_semi_detached_description">"İkili tek aileli evler"</string>
+    <string name="quest_buildingType_terrace_description">"Tek sıra halinde tek aileli evler"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"Hotel"</string>
@@ -1428,6 +1419,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_service">"Servis Binası"</string>
+    <string name="quest_buildingType_service_description">"Pompa ve transformatör barındıran bina"</string>
     <string name="quest_buildingType_hangar">"Hangar"</string>
     <string name="quest_buildingType_hangar_description">"Uçaklar, helikopterler veya uzay araçları için depo"</string>
     <string name="quest_buildingType_bunker">"Sığınak"</string>
@@ -1562,6 +1554,12 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="pref_title_quests_restore_hidden">"Gizli görevleri geri yükle"</string>
     <string name="restore_hidden_success">"%d gizlenmiş görev geri yüklendi"</string>
 
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"%s. katta"</string>
+
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <!-- Fuzzy -->
     <string name="underground">"Yer alti"</string>
@@ -1575,6 +1573,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Bu nasıl bir bina?"</string>
+    <string name="pref_title_theme_select">"Tema seçin"</string>
     <string name="theme_automatic">"Otomatik"</string>
 
     <!-- Fuzzy -->
@@ -1600,6 +1599,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="label_blocknumber">"blok numarası"</string>
+    <string name="quest_busStopShelter_covered">"Durağın üstü kapalı"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_name_title">"%s yayaları taşıyor mu?"</string>
@@ -1621,9 +1621,14 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="create_new_note_hint">"Notu en iyi konuşulan yerel dilde veya İngilizce yazınız."</string>
+    <string name="quest_leafType_title">"Buradaki ağaçlar iğne mi yoksa geniş yapraklı mı?"</string>
+    <string name="quest_leaf_type_needles">"İğne yapraklı"</string>
+    <string name="quest_leaf_type_broadleaved">"Geniş yapraklı"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"Her ikisi de mevcuttur. "</string>
+    <string name="quest_cyclewayPartSurface_title">"Buradaki bisiklet yolunun yüzey nasıldır?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Yol boyunca değişiyor."</string>
     <string name="quest_split_way_too_imprecise">"Lütfen daha fazla yakınlaştırın"</string>
     <string name="quest_footwayPartSurface_title">"Buradaki patikanın yüzeyi nedir?"</string>
     <string name="quest_tactilePaving_title_tram">"Bu tramvay durağında kabartmalı/hisli kaldırımlar var mı?"</string>
@@ -1720,6 +1725,8 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="about_description_donate">"Uygulamamızı desteklemeyi düşündüğünüz için teşekkür ederiz! Mevcut bağışları görmek ve bağışyapmak için ilgili platforma dokunun:"</string>
+    <string name="quest_tourism_information_office">"Turist danışma ofisi"</string>
+    <string name="quest_tourism_information_board">"Bilgi panosu"</string>
     <string name="user_profile">"Profilim"</string>
     <string name="user_login">"Giriş Yap"</string>
     <string name="user_logout">"Çıkış Yap"</string>

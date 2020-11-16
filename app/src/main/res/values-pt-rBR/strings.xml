@@ -362,18 +362,6 @@ Como mencionado, o aplicativo se comunica diretamente com a infraestrutura do OS
     <string name="quest_serviceType_title">"Que tipo de rua de serviço é essa?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Quantas pistas tem essa rua?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Se não houver marcações rodoviárias, não há pistas."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Não tem faixas marcadas"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Estime por favor quantos carros caberiam lado a lado nesta rua."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"É uma rua de mão única?"</string>
 
     <!-- Fuzzy -->
@@ -1529,9 +1517,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Esse prédio foi marcado como:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Isso está correto e não é apenas parte de outro prédio?"</string>
 
     <!-- For example this is a shrine: https://wiki.openstreetmap.org/wiki/File:Shinto_shrine_building.jpg
 Is "Altar" really fitting here? It is about a building type after all. -->

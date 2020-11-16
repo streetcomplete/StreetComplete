@@ -363,18 +363,6 @@ Porén, antes de subir calquera mudanza á aplicación pescuda se a versión act
     <string name="quest_serviceType_title">"Que tipo de estrada de servizo é?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Cantas faixas ou carrís ten esta estrada?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Se non hai marcas na estrada, non hai as liñas das faixas ou carrís."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Non ten as liñas das faixas ou carrís marcados"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Se podes, calcula máis ou menos a anchura da estrada co número de automóbiles que poderían circular en paralelo."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"É unha rúa cun só sentido?"</string>
 
     <!-- Fuzzy -->
@@ -1533,9 +1521,6 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_address_answer_no_housenumber_message1">"O edificio foi etiquetado coma:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Estás na certeza de que esta etiqueta define ó edificio enteiro?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuario"</string>
 
     <!-- Fuzzy -->
@@ -2383,4 +2368,22 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_buildingType_ruins_description">"edificio abandonado, en ruinas e inidentificable"</string>
     <string name="quest_charging_station_capacity_title">"Cantos coches poden ser cargados neste punto de carga ó mesmo tempo?"</string>
     <string name="link_disaster_ninja_description">"Mapa que amosa desastres naturais recentes, interesante para os cartógrafos humanitarios. Tamén amosa moitas estatísticas interesantes para analizar que tan ben cartografados e actualizados están os lugares."</string>
+    <string name="quest_lanes_title">"Cantos carrís para vehículos ten esta estrada?"</string>
+    <string name="quest_lanes_answer_lanes">"Carrís marcados"</string>
+    <string name="quest_lanes_answer_lanes_description">"Especifica o número total de carrís marcados (ambos lados), incluídos os carrís reservados para buses, etc. As zonas de aparcadoiro non contan."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side">"Especifica o número total de carrís marcados aquí, incluídos os carrís reservados para buses, etc. As zonas de aparcadoiro non contan."</string>
+    <string name="quest_lanes_answer_noLanes">"Carrís sen marcar"</string>
+    <string name="quest_lanes_answer_noLanes_description">"Especifica o número total de carrís que tería a estrada se os carrís estiveran marcados. Noutras palabras, cantos vehículos poden pasar de xeito cómodo entre si?"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Difire de cada lado"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ten dous carrís de xiro á esquerda"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Isto é correcto?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Cal é o límite de altura baixo a ponte?"</string>
+    <string name="quest_maxheight_split_way_hint">"Se non se aplica para toda a vía, coida responder \"%s\"."</string>
+    <string name="quest_tactile_paving_kerb_title">"Hai pavimento táctil neste bordo?"</string>
+    <string name="quest_kerb_height_title">"Cal é a altura deste bordo?"</string>
+    <string name="quest_kerb_height_flush">"Mesmo nivel que a estrada"</string>
+    <string name="quest_kerb_height_lowered">"Un pouco máis alto que a estrada"</string>
+    <string name="quest_kerb_height_raised">"Bordo alto"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Non hai bordo neste lado do paso"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Bordo rebaixado (rampla)"</string>
 </resources>

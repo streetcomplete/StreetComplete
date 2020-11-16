@@ -191,10 +191,6 @@ Međutim, prije slanja promjena, aplikacija provjerava &lt;a href=\"https://www.
     <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"Kakvu površinu ovdje ima biciklistička staza?"</string>
     <string name="quest_serviceType_title">"Koja je ovo vrsta pristupne ceste?"</string>
-    <string name="quest_streetLanes_title">"Koliko traka ima ova cesta?"</string>
-    <string name="quest_streetLanes_description">"Ako nema oznaka na cesti, onda nema traka."</string>
-    <string name="quest_streetLanes_answer_noLanes">"Nema označenih traka"</string>
-    <string name="quest_streetLanes_noLanes_estWidth">"Molimo vas da procijenite koliko automobila bi stalo jedan uz drugog na ovoj cesti."</string>
     <string name="quest_oneway_title">"Je li ovo jednosmjerna ulica?"</string>
     <string name="quest_address_title">"Koji je kućni broj ove zgrade?"</string>
 
@@ -786,10 +782,6 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Nema kućnog broja..."</string>
     <string name="quest_address_answer_no_housenumber_message1">"Zgrada je označena kao:"</string>
-
-    <!-- What does this even mean? it is extra confusing because it has TWO questions, ("Is this correct?" and "is it not just part of a building?") and you can only provide one answer -->
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Je li to točno, i nije li to samo dio zgrade?"</string>
     <string name="quest_buildingType_shrine">"Svetište"</string>
     <string name="quest_maxspeed_title_short2">"Koje je ograničenje brzine za ovu ulicu?"</string>
     <string name="quest_maxspeed_answer_sign">"Prometni znak"</string>

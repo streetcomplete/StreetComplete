@@ -356,16 +356,6 @@ A módosításaid feltöltése előtt azonban az alkalmazás először leellenő
     <string name="quest_serviceType_title">"Ez milyen szervizút?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Hány sáv van ezen az úton?"</string>
-    <string name="quest_streetLanes_description">"Ha nincs útburkolati jel, akkor nincsenek sávok."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Nincsenek jelölt sávjai"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Becsüld meg, hány autó fér el egymás mellett ebben az utcában."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Ez egyirányú utca?"</string>
 
     <!-- Fuzzy -->
@@ -1506,9 +1496,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Az épület címkéje:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Helyes ez így, és ez nem csak egy épületrész?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Szentély"</string>

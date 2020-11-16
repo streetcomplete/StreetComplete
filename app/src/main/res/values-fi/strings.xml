@@ -275,16 +275,6 @@ Kuten mainittu, sovellus on suoraan yhteydessä OSM järjestelmään. Joka tapau
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Missä tämä katu on?"</string>
     <string name="quest_cyclewaySurface_title">"Mikä päällyste tällä pyörätiellä on?"</string>
     <string name="quest_serviceType_title">"Millainen huoltotie tämä on?"</string>
-    <string name="quest_streetLanes_title">"Kuinka monta kaistaa tällä tiellä on?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Jos siinä ei ole tiemerkintöjä, siinä eo ole kaistoja."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Sillä ei ole merkattuja kaistoja"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Arvioi kuinka monta autoa mahtuu rinnakkain tälle tielle."</string>
     <string name="quest_oneway_title">"Onko tämä yksisuuntainen tie?"</string>
 
     <!-- Fuzzy -->
@@ -821,6 +811,8 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"Pyöräilykaista"</string>
+
+    <!-- Is this correct answer, if cycling is allowed on the way without any excplicit marks?. "none, but cyc list may use road in boat directions" is not active at the app 26.2 -->
     <string name="quest_cycleway_value_none">"ei mitään"</string>
 
     <!-- Fuzzy -->
@@ -1383,9 +1375,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Rakennus on merkattu seuraavasti:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Onko tämä oikein ja eikö kyseessä ole osa rakennusta?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Pyhäkkö"</string>

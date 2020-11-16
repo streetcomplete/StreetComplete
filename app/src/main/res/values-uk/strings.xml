@@ -364,18 +364,6 @@
     <string name="quest_serviceType_title">"Якого типу цей проїзд?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Скільки смуг має ця дорога?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Якщо на дорозі немає розмітки, вона не має смуг."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Позначених смуг руху немає"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Будь ласка, розрахуйте, скільки машин поміститься бік у бік на цій дорозі."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Ця вулиця одностороння?"</string>
 
     <!-- Fuzzy -->

@@ -364,18 +364,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_serviceType_title">"これはどんな側道ですか?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"この道路にはいくつの車線がありますか?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"道路標示がない場合は、車線がありません。"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"標識の付いた車線がない"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"この道路に、何台の車が適合するかを見積もってください。"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"これは一方通行路ですか?"</string>
 
     <!-- Fuzzy -->
@@ -1334,7 +1322,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_hangar_description">"航空機やヘリコプター、宇宙船の格納庫"</string>
     <string name="quest_address_answer_no_housenumber">"住居番号は無い..."</string>
     <string name="quest_address_answer_no_housenumber_message1">"建物は次のようにタグ付けされています:"</string>
-    <string name="quest_address_answer_no_housenumber_message2">"この情報は正しいですか? そして住居番号が無いのは建物の一部だけではありませんか?"</string>
     <string name="quest_buildingType_shrine">"神社"</string>
     <string name="quest_maxspeed_title_short2">"この通りの速度制限は何ですか?"</string>
     <string name="quest_maxspeed_answer_sign">"標識"</string>

@@ -362,18 +362,6 @@
     <string name="quest_serviceType_title">"Какой тип у этого проезда?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Сколько полос у этой дороги?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Если разметки нет, значит полос нет."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Полосы не размечены"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Пожалуйста, оцените сколько машин поместится на данной дороге бок о бок."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Это односторонняя улица?"</string>
 
     <!-- Fuzzy -->
@@ -1527,9 +1515,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Строению были добавлены теги:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Верно ли указано и не относится ли только к части данного здания?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Святилище"</string>

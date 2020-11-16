@@ -365,18 +365,6 @@ Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href
     <string name="quest_serviceType_title">"Jakého druhu je tato účelová komunikace?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Kolik jízdních pruhů má tato silnice?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Pokud tu není silniční značení, tak tu nejsou jízdní pruhy."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Nejsou tu namalované pruhy"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Odhadněte, kolik průběžných jízdních pruhů je na této silnici. (V obou směrech dohromady)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Je to jednosměrka?"</string>
 
     <!-- Fuzzy -->
@@ -1537,9 +1525,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Budova byla označená jako:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Je to správně a není to pouze část budovy?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Svatyně"</string>

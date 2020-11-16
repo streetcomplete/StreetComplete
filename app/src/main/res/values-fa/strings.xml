@@ -311,18 +311,6 @@
     <string name="quest_serviceType_title">"نوع این جاده خدماتی چیست؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"این راه چند خط عبور دارد؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"اگر خطوط رنگی مسیر وجود ندارد، پس راه بدون خطوط است."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"فاقد خطوط رنگی مسیر"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"لطفا تعداد خودرو کنار هم روی این مسیر را برای تعیین تعداد خطوط عبور بررسی نمایید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"آیا این خیابان یک طرفه است؟"</string>
 
     <!-- Fuzzy -->
@@ -1480,9 +1468,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"این ساختمان به چه عنوانی برچسب‌گذاری شده :"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"آیا این درست است و آیا این فقط بخشی از یک ساختمان نیست؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"زیارتگاه"</string>

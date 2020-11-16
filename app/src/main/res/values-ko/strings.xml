@@ -360,18 +360,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
     <string name="quest_serviceType_title">"여기는 이면 도로 중에서 어디에 속합니까?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"이 도로의 차로 수는 얼마입니까?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"차선 표시가 없으면 차로가 없다는 뜻입니다."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"차선 표시가 없습니다"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"이 도로의 양쪽 가장자리에서 시작해서 몇 대의 차가 들어갈지 추정해 주세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"일방통행 도로입니까?"</string>
 
     <!-- Fuzzy -->
@@ -1525,9 +1513,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"이 건물의 태그는 다음과 같습니다."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"이 지물이 단순히 건물의 일부가 아니라서 건물번호가 없는 것입니까?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"성지"</string>

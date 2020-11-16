@@ -362,18 +362,6 @@ Continuando con lo de antes, la aplicación se comunica directamente con la infr
     <string name="quest_serviceType_title">"¿Qué tipo de vía de servicio es?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"¿Cuantos carriles tiene esta vía?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Si no hay marcas en la vía, no hay carriles."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"No tiene carriles marcados"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Si puedes, calcula más o menos la anchura de la carretera con el número de vehículos que podrían circular en paralelo."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"¿Es una calle de sentido único?"</string>
 
     <!-- Fuzzy -->
@@ -1530,9 +1518,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"El edificio fue etiquetado como:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"¿Seguro que esta etiqueta define al edificio entero?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuario"</string>

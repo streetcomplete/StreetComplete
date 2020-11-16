@@ -362,18 +362,6 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
     <string name="quest_serviceType_title">"Quin tipus de via de servei?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Quants carrils té aquesta via?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Si no hi ha marques, no té carrils."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"No té marques de carril"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Feu una estimació del nombre de cotxes que caben un al costat de l'altre en aquesta via."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"És una via de sentit únic?"</string>
 
     <!-- Fuzzy -->
@@ -1531,9 +1519,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"L'edifici s'ha etiquetat com a:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Això és correcte, o només és part d'un edifici?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuari"</string>

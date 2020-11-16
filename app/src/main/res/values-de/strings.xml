@@ -137,10 +137,6 @@ Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur. Bevor d
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Wo befindet sich diese Straße?"</string>
     <string name="quest_cyclewaySurface_title">"Welche Oberfläche hat dieser Radweg?"</string>
     <string name="quest_serviceType_title">"Welche Art von Erschließungsweg ist das?"</string>
-    <string name="quest_streetLanes_title">"Wie viele Fahrspuren hat diese Straße?"</string>
-    <string name="quest_streetLanes_description">"Wenn nichts markiert ist, gibt es nur eine Fahrspur."</string>
-    <string name="quest_streetLanes_answer_noLanes">"Keine Fahrspuren sind markiert"</string>
-    <string name="quest_streetLanes_noLanes_estWidth">"Bitte schätze, wie viele Autos auf dieser Straße nebeneinander passen würden."</string>
     <string name="quest_oneway_title">"Ist dies eine Einbahnstraße?"</string>
     <string name="quest_address_title">"Welche Hausnummer hat dieses Gebäude?"</string>
 
@@ -564,7 +560,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Hat keine Hausnummer…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Das Gebäude wurde bestimmt als:"</string>
-    <string name="quest_address_answer_no_housenumber_message2">"Ist das richtig und es ist auch nicht nur Teil eines Gebäudes?"</string>
     <string name="quest_buildingType_shrine">"Schrein"</string>
     <string name="quest_maxspeed_title_short2">"Welche Geschwindigkeitsbegrenzung gilt hier?"</string>
     <string name="quest_maxspeed_answer_sign">"Ein Schild"</string>
@@ -945,4 +940,24 @@ Erfolge"</string>
     <string name="quest_buildingType_ruins_description">"verfallenes oder zerstörtes Gebäude"</string>
     <string name="quest_charging_station_capacity_title">"Wie viele Autos können an dieser Ladestation gleichzeitig aufgeladen werden?"</string>
     <string name="link_disaster_ninja_description">"Karte, die jüngste Naturkatastrophen zeigt. Interessant für humanitäre Mapper. Zeigt außerdem viele weitere interessante Statistiken, um zu analysieren, wie vollständig und aktuell Orte kartiert sind."</string>
+    <string name="quest_lanes_title">"Wie viele Fahrspuren für Autos hat diese Straße?"</string>
+    <string name="quest_lanes_answer_lanes">"markierte Fahrspuren"</string>
+    <string name="quest_lanes_answer_lanes_description">"Gib hier die Gesamtzahl der markierten Spuren an (beide Seiten), einschließlich Spuren die für Busse reserviert sind usw.
+Spuren die mit parkenden Autos belegt sind zählen nicht mit."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side">"Gib hier die Gesamtzahl der markierten Spuren an, einschließlich Spuren die für Busse reserviert sind usw.
+Spuren die mit parkenden Autos belegt sind zählen nicht mit."</string>
+    <string name="quest_lanes_answer_noLanes">"Keine markierten Fahrspuren"</string>
+    <string name="quest_lanes_answer_noLanes_description">"Gib hier die Gesamtzahl der Spuren an wenn die Straße markierte Fahrspuren hätte. Mit anderen Worten, wie viele Autos kommen gut aneinander vorbei ohne einander ausweichen zu müssen?"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Je Seite unterschiedlich"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Hat Zweiweg-Fahrspur für Linksabbieger"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Ist das korrekt?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Was ist die Maximalhöhe unter dieser Brücke?"</string>
+    <string name="quest_maxheight_split_way_hint">"Wenn die Maximalhöhe nicht für die gesamte Strecke zutrifft, erwäge, \"%s\" antzuworten."</string>
+    <string name="quest_tactile_paving_kerb_title">"Hat dieser Kantstein eine taktile Pflasterung für Blinde?"</string>
+    <string name="quest_kerb_height_title">"Wie hoch ist dieser Bordstein"</string>
+    <string name="quest_kerb_height_flush">"bildet eine Ebene mit der Straße"</string>
+    <string name="quest_kerb_height_lowered">"etwas höher als die Straße"</string>
+    <string name="quest_kerb_height_raised">"hoher Bordstein"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Hier gibt es keinen Bordstein"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Bordsteinrampe"</string>
 </resources>

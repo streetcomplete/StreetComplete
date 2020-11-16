@@ -365,18 +365,6 @@ Før ændringer sendes tjekker appen dog en &lt;a href=\"https://www.westnordost
     <string name="quest_serviceType_title">"Hvilken slags servicevej er dette?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Hvor mange spor har denne vej?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Hvis der ikke er vejmarkeringer er der ingen spor."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Den har ingen markerede spor"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Prøv at estimere hvor mange biler der kan stå ved siden af hinanden på denne vej."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Er dette en ensrettet vej?"</string>
 
     <!-- Fuzzy -->
@@ -1537,9 +1525,6 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bygningen var markeret som:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Er dette korrekt, og er det ikke bare en del af en bygning?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Helligdom"</string>
 
     <!-- Fuzzy -->
@@ -1940,6 +1925,7 @@ Del det nu?"</string>
     <string name="user_profile_title">"Profil"</string>
     <string name="user_statistics_quest_wiki_link">"Dokumentation"</string>
     <string name="link_category_intro_title">"Introduktion"</string>
+    <string name="link_category_intro_description">"Lær mere om OSM og fællesskabet bag"</string>
     <string name="link_category_maps_title">"Kort"</string>
     <string name="link_category_maps_description">"OpenStreetMap-baserede kort"</string>
     <string name="link_category_showcase_description">"OpenStreetMap-baserede services og applikationer"</string>
@@ -1953,13 +1939,23 @@ Del det nu?"</string>
     <string name="link_umap_description">"Opret kort med brugerdefinerede data, og integrer dem på din hjemmeside"</string>
     <string name="link_opnvkarte_description">"Et kort over offentlig transports ruter og stop"</string>
     <string name="link_pic4review_description">"Bidrag til OSM blot ved at kigge på billeder af din by"</string>
+    <string name="link_learnosm_description">"Ny på OpenStreetMap? Se denne guide for begyndere"</string>
+    <string name="link_neis_one_description">"En kæmpe samling af statistikker til OpenStreetMap-bidragsydere, som hvor og hvordan du bidrog, hvem der ellers er omkring dig plus toplister"</string>
+    <string name="link_welcome_mat_description">"Generel information om OpenStreetMap og hvordan man kan arbejde med OSM som organisation"</string>
+    <string name="link_mapillary_description">"En service og app til deling af Crowdsourced fotos på gadeniveau med eksplicit tilladelse til at bruge dem til at bidrage til OSM"</string>
+    <string name="link_openstreetcam_description">"En service og app til deling af Crowdsourced fotos på gadeniveau med eksplicit tilladelse til at bruge dem til at bidrage til OSM"</string>
+    <string name="link_show_me_the_way_description">"Følg med i OSM opdateringer i realtid"</string>
     <string name="link_openorienteeringmap_description">"Lav kort til print for orienteringssport"</string>
+    <string name="achievement_first_edit_title">"Første opgave løst"</string>
     <string name="achievement_bicyclist_title">"Cyklist"</string>
+    <string name="achievement_bicyclist_solved_X">"Du har løst %d opgaver der hjælper cyklister"</string>
     <string name="achievement_blind_solved_X">"Du har løst %d opgaver der er interessante for synshandicappede."</string>
     <string name="achievement_pedestrian_solved_X">"Du har løst %d opgaver der er interessante for folk til fods."</string>
     <string name="achievement_veg_title">"God mod dyr"</string>
     <string name="achievement_veg_solved_X">"Du har løst %d opgaver der er interessante for folk der lever på en diæt uden kød!
 "</string>
+    <string name="unread_messages_message">"Du har %d ulæste beskeder i din indbakke"</string>
+    <string name="unread_messages_button">"Åbn indbakke"</string>
     <string name="action_about2">"Om"</string>
     <string name="map_btn_menu">"Menu"</string>
     <string name="confirmation_authorize_now_note2">"Du kan også gøre det senere på profil siden."</string>
@@ -2018,12 +2014,14 @@ aktiv"</string>
     <string name="quest_steps_incline_up">"Denne vej op"</string>
     <string name="quest_step_count_title">"Hvor mange trin her?"</string>
     <string name="quest_traffic_signals_sound_title">"Er der nogen lydsignaler for blinde her?"</string>
+    <string name="quest_buildingType_bungalow_description2">"Lille hus (sommerhus, feriehytte, ...)"</string>
     <string name="quest_steps_ramp_title">"Er der en rampe? Hvilken type?"</string>
     <string name="quest_steps_ramp_none">"Ingen (brugbar) rampe"</string>
     <string name="quest_steps_ramp_bicycle">"Cykelrampe"</string>
     <string name="quest_steps_ramp_stroller">"Rampe til barnevogn"</string>
     <string name="quest_steps_ramp_wheelchair">"Rampe til kørestol"</string>
     <string name="quest_atm_operator_title">"Hvilken bank driver denne hæveautomat?"</string>
+    <string name="quest_clothes_container_operator_title">"Hvem modtager donationer til denne tøjindsamling?"</string>
     <string name="quest_charging_station_operator_title">"Hvem er operatør af denne ladestation"</string>
     <string name="link_indoorequal_description">"Indendørs kort over indkøbscentre, jernbanestationer osv."</string>
     <string name="link_thenandnow_description">"Nysgerrig efter hvilke fremskridt der er sket gennem årene? Sammenlign med hvordan kortet så ud for mere end 10 år siden!"</string>

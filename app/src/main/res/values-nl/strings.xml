@@ -363,18 +363,6 @@ Voor het uploaden van jouw wijzigingen zal de app een &lt;a href=\"https://www.w
     <string name="quest_serviceType_title">"Wat voor dienstweg is dit?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Hoeveel banen heeft deze weg?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Als er geen wegmarkeringen zijn, dan heeft het geen banen."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Het heeft geen gemarkeerde banen"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Schat hoeveel autos er naast elkaar in deze straat passen."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Is dit een eenrichtingsweg?"</string>
 
     <!-- Fuzzy -->
@@ -1532,9 +1520,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Het gebouw was aangeduid als:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Klopt dit en is het geen deel van een gebouw?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Altaar"</string>

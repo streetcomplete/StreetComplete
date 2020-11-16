@@ -362,18 +362,6 @@ Som nämnts kommunicerar appen direkt med OSM-Infrastruktur. Men innan du skicka
     <string name="quest_serviceType_title">"Vilken typ av tjänstväg är detta?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Hur många körfält har denna väg?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Om vägen saknar mittlinje har det inte några körfält."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Den har inga markerade körfält"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Försök att uppskatta hur många bilar som skulle få plats bredvid varandra på den här vägen."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Är det här en enkelriktad gata?"</string>
 
     <!-- Fuzzy -->
@@ -1529,9 +1517,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Byggnaden är definierad som:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Är det korrekt och det är inte enbart en del av en byggnad?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Helgedom"</string>

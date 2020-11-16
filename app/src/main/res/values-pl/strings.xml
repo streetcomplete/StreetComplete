@@ -346,18 +346,6 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="quest_serviceType_title">"Jaki to rodzaj drogi dojazdowej?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Ile wyznaczonych pasów jezdni ma ta ulica?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Jeśli nie ma wymalowanych pasów, to nie są one wyznaczone."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Nie ma wyznaczonych pasów"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Napisz proszę, ile mniej więcej samochodów mieści się koło siebie na tej ulicy."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Czy jest to ulica jednokierunkowa?"</string>
 
     <!-- Fuzzy -->
@@ -1514,9 +1502,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Budynek jest zaznaczony jako:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Czy jest to poprawne i nie jest to jedynie część budynku?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Kapliczka"</string>

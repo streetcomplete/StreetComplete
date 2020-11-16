@@ -235,10 +235,6 @@ Tetapi, sebelum mengunggah perubahan, aplikasi mengecek &lt;a href=\"https://www
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Jalan ini ada di mana?"</string>
     <string name="quest_cyclewaySurface_title">"Permukaan jalur sepeda disini terbuat dari apa?"</string>
     <string name="quest_serviceType_title">"Apa jenis jalan khusus ini?"</string>
-    <string name="quest_streetLanes_title">"Berapa banyak lajur di jalan ini?"</string>
-    <string name="quest_streetLanes_description">"Jika tidak ada marka jalan, berarti tidak ada lajur"</string>
-    <string name="quest_streetLanes_answer_noLanes">"tidak ada tanda lajur"</string>
-    <string name="quest_streetLanes_noLanes_estWidth">"Tolong perkirakan berapa banyak mobil yang dapat muat bersampingan di jalan ini."</string>
     <string name="quest_oneway_title">"Apakah ini jalan satu arah?"</string>
     <string name="quest_address_title">"Nomor berapa bangunan ini?"</string>
 
@@ -780,7 +776,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Tidak punya no. rumah..."</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bangunan ini ditandai sebagai:"</string>
-    <string name="quest_address_answer_no_housenumber_message2">"Apakah ini benar dan tidak hanya bagian dari bangunan?"</string>
     <string name="quest_buildingType_shrine">"Kuil"</string>
     <string name="quest_maxspeed_title_short2">"Berapa batas kecepatan di jalan ini?"</string>
     <string name="quest_maxspeed_answer_sign">"Sebuah rambu"</string>

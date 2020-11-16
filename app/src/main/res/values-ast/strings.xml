@@ -362,18 +362,6 @@ Sicasí, primero de facer cualesquier cambéu l'aplicación comprueba si la vers
     <string name="quest_serviceType_title">"¿Qué tipu de vía de serviciu ye?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"¿Cuántos carriles tien esta vía?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Si nun hai marques na vía, nun tien carriles."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Nun tien carriles marcaos"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Si pues, calcula más menos l'anchor de la carretera col númberu de vehículos que podríen circular en paralelo."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"¿Ye una cai de sentíu únicu?"</string>
 
     <!-- Fuzzy -->
@@ -1527,9 +1515,6 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"L'edificiu etiquetóse como:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"¿De xuru qu'esta etiqueta val pa tol edificiu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuariu"</string>
