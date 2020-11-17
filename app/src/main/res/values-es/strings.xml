@@ -976,9 +976,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_cycleway_value_track_dual">"senda ciclista, ambas direcciones"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"no hay nada, pero los ciclistas pueden ir por la acera"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avanzado"</string>
 
     <!-- Fuzzy -->
@@ -2366,4 +2363,20 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_buildingType_ruins">"Ruinas"</string>
     <string name="quest_buildingType_ruins_description">"edificio abandonado, en ruinas e inidentificable"</string>
     <string name="quest_charging_station_capacity_title">"¿Cuántos coches se pueden cargar en esta estación de carga al mismo tiempo?"</string>
+    <string name="link_disaster_ninja_description">"Mapa que muestra desastres naturales recientes, interesante para los cartógrafos humanitarios. Además, muestra muchas estadísticas interesantes para analizar qué tan bien cartografiados y actualizados están los lugares."</string>
+    <string name="quest_lanes_title">"¿Cuántos carriles para automóviles tiene esta carretera?"</string>
+    <string name="quest_lanes_answer_lanes">"Carriles marcados"</string>
+    <string name="quest_lanes_answer_noLanes">"Sin carriles marcados"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Difiere para cada lado"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"¿Es esto correcto?"</string>
+    <string name="quest_maxheight_below_bridge_title">"¿Cuál es el límite de altura debajo del puente?"</string>
+    <string name="quest_maxheight_split_way_hint">"Si no aplica para toda la vía, considere responder \"%s\"."</string>
+    <string name="quest_tactile_paving_kerb_title">"¿Hay pavimento táctil en este bordillo aquí?"</string>
+    <string name="quest_kerb_height_title">"¿Cuál es la altura de este bordillo?"</string>
+    <string name="quest_kerb_height_flush">"Mismo nivel que la superficie de la calzada
+"</string>
+    <string name="quest_kerb_height_lowered">"Un poco más alto que la superficie de la calzada"</string>
+    <string name="quest_kerb_height_raised">"Bordillo alto"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"No hay acera en este lado del cruce"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Rampa de acera"</string>
 </resources>

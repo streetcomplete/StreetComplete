@@ -923,9 +923,6 @@
     <string name="quest_cycleway_value_track_dual">"مسیر دوچرخه سواری، دوطرفه"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"هیچیک، اما دوچرخه سواری در پیاده رو مجاز می باشد"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"پیشرفته"</string>
 
     <!-- Fuzzy -->

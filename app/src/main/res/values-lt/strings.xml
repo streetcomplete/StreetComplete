@@ -976,9 +976,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_cycleway_value_track_dual">"dviračių takas į abi puses"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"nėra, bet dviratininkai gali važiuoti šaligatviu"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Išmanesni"</string>
 
     <!-- Fuzzy -->

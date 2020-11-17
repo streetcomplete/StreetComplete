@@ -951,9 +951,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_cycleway_value_track_dual">"iki yönde de bisiklet parkuru"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"Yok, ama bisikletliler kaldırımda sürebilir"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Gelişmiş"</string>
 
     <!-- Fuzzy -->

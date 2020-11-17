@@ -957,9 +957,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_cycleway_value_track_dual">"droga dla rowerów w obu kierunkach"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"brak, ale rowerzyści mogą poruszać się po chodniku"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Zaawansowane"</string>
 
     <!-- Fuzzy -->
@@ -2345,4 +2342,18 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="quest_buildingType_ruins_description">"Ruiny budynku którego stan nie pozwala na ustalenie jego przeznaczenia"</string>
     <string name="quest_charging_station_capacity_title">"Ile samochodów elektrycznych może się tu równocześnie ładować?"</string>
     <string name="link_disaster_ninja_description">"Mapa pokazująca niedawne klęski żywiołowe, interesujące dla osób wspomagających pomoc humanitarną przez tworzenie map. Pokazuje też statystyki jak wiele jest zmapowane w danym miejscu i jak bardzo aktualne są dane OSM. "</string>
+    <string name="quest_lanes_answer_lanes">"Wyznaczone pasy"</string>
+    <string name="quest_lanes_answer_noLanes">"Brak wyznaczonych pasów"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ma pas dwukierunkowy do skrętu w lewo"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Czy jest to poprawne?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Jakie jest ograniczenie wysokości pod mostem?"</string>
+    <string name="quest_maxheight_split_way_hint">"Jeśli nie dotyczy to tego całego odcinka, rozważ użycie \"%s\".
+"</string>
+    <string name="quest_tactile_paving_kerb_title">"Czy w tym miejscu są oznaczenia dla niewidomych na krawężniku?"</string>
+    <string name="quest_kerb_height_title">"Jaka jest wysokość krawężnika?"</string>
+    <string name="quest_kerb_height_flush">"Ten sam poziom co nawierzchnia drogi"</string>
+    <string name="quest_kerb_height_lowered">"Trochę wyżej niż nawierzchnia drogi"</string>
+    <string name="quest_kerb_height_raised">"Wysoki krawężnik"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Nie ma krawężnika po tej stronie przejścia"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Krawężnik-podjazd"</string>
 </resources>

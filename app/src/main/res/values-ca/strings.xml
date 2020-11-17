@@ -975,9 +975,6 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_cycleway_value_track_dual">"Via per ciclistes, doble direcció"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"Cap, però els ciclistes són permesos damunt la vorera"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avançat"</string>
 
     <!-- Fuzzy -->

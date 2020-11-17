@@ -960,9 +960,6 @@
     <string name="quest_cycleway_value_track_dual">"സൈക്കിൾ പാത, രണ്ട് ദിശകളിലേക്കും"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"പറ്റില്ല, പക്ഷേ സൈക്കിൾ സവാരിക്കാർക്ക് പാർശ്വഭാഗത്ത്‌ കൂടെ നീങ്ങാം"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"ഉയർന്ന വിഭാഗം"</string>
 
     <!-- Fuzzy -->

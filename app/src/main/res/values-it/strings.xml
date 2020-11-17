@@ -276,12 +276,12 @@ La modifica anonima in OpenStreetMap non è possibile, pertanto tutte le modific
 
 &lt;b&gt;Posizione geografica&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Questa app non condivide al tua posizione GPS con nessuno. Essa viene utilizzata solo per la ricerca automatica di missioni nei tuoi dintorni e per centrare (e quindi scaricare) la mappa dove ti trovi.
+Questa app non condivide al tua posizione GPS con nessuno. Essa viene utilizzata solo per la ricerca automatica di missioni nei tuoi dintorni e per centrare (e quindi scaricare) la mappa dove ti trovi. 
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt; Utilizzo dei dati&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Come accennato, l’applicazione comunica direttamente con l’infrastruttura OSM.
+Come accennato, l’applicazione comunica direttamente con l’infrastruttura OSM. 
 Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;semplice file di testo&lt;/a&gt; nel mio server per controllare se le è stato vietato il caricamento di modifiche. Si tratta di una misura precauzionale che impedisce ad alcune versioni dell’app contenenti bug critici di danneggiare i dati OSM&lt;br/&gt;
 &lt;/p&gt;"</string>
 
@@ -967,9 +967,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"pista ciclabile, entrambe le direzioni"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"nessuna, ma i ciclisti possono utilizzare il marciapiede"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avanzate"</string>
@@ -2367,10 +2364,7 @@ riconoscimento"</string>
     <string name="link_disaster_ninja_description">"Mappe che mostrano disastri naturali recenti, interessanti per i mappatori umanitari. Inoltre, mostrano molte statistiche interessanti per analizzare quanto i luoghi sono ben mappati o aggiornati."</string>
     <string name="quest_lanes_title">"Quante corsie per automobili ha questa strada?"</string>
     <string name="quest_lanes_answer_lanes">"Corsie indicate"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Specifica il numero di corsie indicate (entrambi i lati), incluse cosie riservate ad autobus, ecc. Le corsie occupate da parcheggi non vanno considerate."</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">"Specifica il numero totale di corsie indicate, incluse le corsie riservate ad autobus, ecc. Le corsie occupate da parcheggi non vanno considerate."</string>
     <string name="quest_lanes_answer_noLanes">"Nessuna corsia indicata"</string>
-    <string name="quest_lanes_answer_noLanes_description2">"Specifica il numero totale di corsie che questa strada avrebbe se fossero indicate. In altre parole: quante automobili possono passare con facilità?"</string>
     <string name="quest_lanes_answer_lanes_odd">"Diverso per ogni lato"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ha una corsia a doppio senso a sinistra"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"È corretto?"</string>

@@ -976,9 +976,6 @@
     <string name="quest_cycleway_value_track_dual">"велодоріжка з двостороннім рухом"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"ні, але велорух дозволений на тротуарі"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Розширені"</string>
 
     <!-- Fuzzy -->

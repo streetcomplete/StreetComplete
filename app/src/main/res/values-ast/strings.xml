@@ -975,9 +975,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_cycleway_value_track_dual">"sienda ciclista, dambes direiciones"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"nun hai nada, pero los ciclistes puen dir pela cera"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avanzáu"</string>
 
     <!-- Fuzzy -->

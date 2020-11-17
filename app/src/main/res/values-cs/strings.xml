@@ -982,9 +982,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_cycleway_value_track_dual">"Cyklostezka s oddělenými směry jízdy"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"Není, ale cyklisté můžou používat chodník"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Pokročilé"</string>
 
     <!-- Fuzzy -->
@@ -2390,4 +2387,18 @@ Is the situation on this cycleway still the same? -->
     <string name="quest_buildingType_ruins_description">"opuštěná, zničená a neidentifikovatelná budova"</string>
     <string name="quest_charging_station_capacity_title">"Kolik vozidel může být na této dobíjecí stanici najednou dobíjeno?"</string>
     <string name="link_disaster_ninja_description">"Mapa, která zobrazuje aktuální přírodní katastrofy, zajímavá pro humanitární mapéry. Dále jsou tu zajímavé statistiky, podle kterých lze analyzovat, jak jsou místa dobře zmapovaná a aktuální."</string>
+    <string name="quest_lanes_title">"Kolik jízdních pruhů pro auta má tato cesta?"</string>
+    <string name="quest_lanes_answer_lanes">"Vyznačené pruhy"</string>
+    <string name="quest_lanes_answer_noLanes">"Bez vyznačených pruhů"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Každá strana je jiná"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Je to správně?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Jaké je výškové omezení pod mostem?"</string>
+    <string name="quest_maxheight_split_way_hint">"Pokud to neplatí pro celou cestu, zvažte odpověď „%s“."</string>
+    <string name="quest_tactile_paving_kerb_title">"Je na tomto obrubníku hmatová dlažba?"</string>
+    <string name="quest_kerb_height_title">"Jaká je výška tohoto obrubníku?"</string>
+    <string name="quest_kerb_height_flush">"Na stejné úrovni s povrchem cesty"</string>
+    <string name="quest_kerb_height_lowered">"Trochu vyšší než povrch cesty"</string>
+    <string name="quest_kerb_height_raised">"Vysoký obrubník (jako schod)"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Na této straně přechodu není obrubník"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Obrubník s nájezdem"</string>
 </resources>

@@ -980,9 +980,6 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="quest_cycleway_value_track_dual">"cykelsti, begge retninger"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men cyklister er tilladt på fortov"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avanceret"</string>
 
     <!-- Fuzzy -->

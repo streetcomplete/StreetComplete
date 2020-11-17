@@ -975,9 +975,6 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_cycleway_value_track_dual">"sykkelveg – begge retningar"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men syklistar kan bruka fortauet"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avansert"</string>
 
     <!-- Fuzzy -->

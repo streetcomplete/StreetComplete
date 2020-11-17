@@ -287,7 +287,7 @@ A túa ubicación non se partilla ou comparte con ninguén, só emprégase para 
 
 &lt;p&gt;&lt;b&gt;Emprego dos datos&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Proseguendo co de antes, a aplicación comunícase de xeito directo ca infraestrutura do OSM.
+Proseguendo co de antes, a aplicación comunícase de xeito directo ca infraestrutura do OSM. 
 Porén, antes de subir calquera mudanza á aplicación pescuda se a versión actual aparece nun &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ficheiro de texto plano&lt;/a&gt; do meu servidor. Esta é unha medida preventiva para poder restrinxi-las subidas nas versións da aplicación que teñan erros fortes e poidan racha-los datos no OSM.&lt;br/&gt;
 &lt;/p&gt;"</string>
 
@@ -974,9 +974,6 @@ Pero lembra que sempre podes descarregar aplicacións de teclado diferentes dend
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"senda ciclista, dúas direccións"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"non hai ren, pero os ciclistas poden ir pola beirarrúa"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avanzado"</string>
@@ -2370,10 +2367,7 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="link_disaster_ninja_description">"Mapa que amosa desastres naturais recentes, interesante para os cartógrafos humanitarios. Tamén amosa moitas estatísticas interesantes para analizar que tan ben cartografados e actualizados están os lugares."</string>
     <string name="quest_lanes_title">"Cantos carrís para vehículos ten esta estrada?"</string>
     <string name="quest_lanes_answer_lanes">"Carrís marcados"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Especifica o número total de carrís marcados (ambos lados), incluídos os carrís reservados para buses, etc. As zonas de aparcadoiro non contan."</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">"Especifica o número total de carrís marcados aquí, incluídos os carrís reservados para buses, etc. As zonas de aparcadoiro non contan."</string>
     <string name="quest_lanes_answer_noLanes">"Carrís sen marcar"</string>
-    <string name="quest_lanes_answer_noLanes_description2">"Especifica o número total de carrís que tería a estrada se os carrís estiveran marcados. Noutras palabras, cantos vehículos poden pasar de xeito cómodo entre si?"</string>
     <string name="quest_lanes_answer_lanes_odd">"Difire de cada lado"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ten dous carrís de xiro á esquerda"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Isto é correcto?"</string>

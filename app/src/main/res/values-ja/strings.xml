@@ -977,9 +977,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_cycleway_value_track_dual">"自転車道、両方向"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"なし、ただし自転車は歩道上を許可されている"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"詳細"</string>
 
     <!-- Fuzzy -->

@@ -978,9 +978,6 @@
     <string name="quest_cycleway_value_track_dual">"велодорожка, движение в обе стороны"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"нет, но знаки разрешают движение велосипедистов по тротуару"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Расширенные"</string>
 
     <!-- Fuzzy -->

@@ -959,9 +959,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_cycleway_value_track_dual">"elválasztott kerékpársáv, kétirányú"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"nincs, de a járdán szabad kerékpározni"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Speciális"</string>
 
     <!-- Fuzzy -->

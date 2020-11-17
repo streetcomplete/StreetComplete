@@ -975,9 +975,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_cycleway_value_track_dual">"bizikletentzako pista, norabide bikoa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"bat ere ez, baina bizikletek espalioan ibiltzeko baimena dute"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Aurreratua"</string>
 
     <!-- Fuzzy -->
