@@ -91,9 +91,11 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         lastTilt = tilt
     }
 
-    override fun isFormComplete() = selectedLanesType != null &&
-        if (!isOneway) leftSide > 0 && rightSide > 0
-        else           leftSide > 0 || rightSide > 0
+    override fun isFormComplete(): Boolean = when (selectedLanesType) {
+        null -> false
+        MARKED_SIDES -> leftSide > 0 && rightSide > 0
+        else -> leftSide > 0 || rightSide > 0
+    }
 
     override fun isRejectingClose() = leftSide > 0 || rightSide > 0
 
@@ -226,7 +228,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     }}
 
     private suspend fun askForTotalNumberOfLanes(): Int {
-        val currentLaneCount = (rightSide ?: 0) + (leftSide ?: 0)
+        val currentLaneCount = rightSide + leftSide
         return if (selectedLanesType == MARKED) {
             if (isOneway) {
                 showSelectMarkedLanesDialogForOneSide(currentLaneCount)
