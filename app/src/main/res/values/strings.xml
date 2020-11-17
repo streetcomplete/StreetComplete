@@ -245,10 +245,13 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
     <string name="quest_lanes_title">"How many lanes for cars does this road have?"</string>
     <string name="quest_lanes_answer_lanes">"Marked lanes"</string>
-    <string name="quest_lanes_answer_lanes_description">"Specify the total number of marked lanes (both sides), including lanes reserved for buses etc. Lanes occupied with parking cars don't count."</string>
-    <string name="quest_lanes_answer_lanes_description_one_side">"Specify the total number of marked lanes here, including lanes reserved for buses etc. Lanes occupied with parking cars don't count."</string>
+    <string name="quest_lanes_answer_lanes_description2">"Specify the total number of marked lanes (both directions) usable by car traffic. So, bike and parking lanes don't count.
+If any lanes are reserved for buses, please leave a note instead."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Specify the number of marked lanes usable by car traffic here. So, bike and parking lanes don't count.
+If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_lanes_answer_noLanes">"No marked lanes"</string>
-    <string name="quest_lanes_answer_noLanes_description">"Specify the total number of lanes the road would have if lanes were marked. In other words, how many cars can comfortably pass each other?"</string>
+    <string name="quest_lanes_answer_noLanes_description2">"Estimate how many cars can comfortably pass each other here.
+Narrow residential roads with parking cars often do not have enough space for more than one car to pass through simultaneously."</string>
     <string name="quest_lanes_answer_lanes_odd">"Differs for each side"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"It has a two-way left turn lane"</string>
     <string name="quest_oneway_title">"Is this a one-way street?"</string>

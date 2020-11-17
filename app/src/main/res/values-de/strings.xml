@@ -942,12 +942,12 @@ Erfolge"</string>
     <string name="link_disaster_ninja_description">"Karte, die jüngste Naturkatastrophen zeigt. Interessant für humanitäre Mapper. Zeigt außerdem viele weitere interessante Statistiken, um zu analysieren, wie vollständig und aktuell Orte kartiert sind."</string>
     <string name="quest_lanes_title">"Wie viele Fahrspuren für Autos hat diese Straße?"</string>
     <string name="quest_lanes_answer_lanes">"markierte Fahrspuren"</string>
-    <string name="quest_lanes_answer_lanes_description">"Gib hier die Gesamtzahl der markierten Spuren an (beide Seiten), einschließlich Spuren die für Busse reserviert sind usw.
+    <string name="quest_lanes_answer_lanes_description2">"Gib hier die Gesamtzahl der markierten Spuren an (beide Seiten), einschließlich Spuren die für Busse reserviert sind usw.
 Spuren die mit parkenden Autos belegt sind zählen nicht mit."</string>
-    <string name="quest_lanes_answer_lanes_description_one_side">"Gib hier die Gesamtzahl der markierten Spuren an, einschließlich Spuren die für Busse reserviert sind usw.
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Gib hier die Gesamtzahl der markierten Spuren an, einschließlich Spuren die für Busse reserviert sind usw.
 Spuren die mit parkenden Autos belegt sind zählen nicht mit."</string>
     <string name="quest_lanes_answer_noLanes">"Keine markierten Fahrspuren"</string>
-    <string name="quest_lanes_answer_noLanes_description">"Gib hier die Gesamtzahl der Spuren an wenn die Straße markierte Fahrspuren hätte. Mit anderen Worten, wie viele Autos kommen gut aneinander vorbei ohne einander ausweichen zu müssen?"</string>
+    <string name="quest_lanes_answer_noLanes_description2">"Gib hier die Gesamtzahl der Spuren an wenn die Straße markierte Fahrspuren hätte. Mit anderen Worten, wie viele Autos kommen gut aneinander vorbei ohne einander ausweichen zu müssen?"</string>
     <string name="quest_lanes_answer_lanes_odd">"Je Seite unterschiedlich"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Hat Zweiweg-Fahrspur für Linksabbieger"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ist das korrekt?"</string>
