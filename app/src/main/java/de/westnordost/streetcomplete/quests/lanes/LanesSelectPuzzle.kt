@@ -212,7 +212,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         val leftLanesStart = leftLanesStart
         val leftLanesEnd = leftLanesEnd
         val rightLanesStart = rightLanesStart
-        val zoom = if (isShowingOneLaneUnmarked) 1.4f / laneWidth else 1f / laneWidth
+        val zoom = if (isShowingBothSides && isShowingOneLaneUnmarked) 1.4f / laneWidth else 1f / laneWidth
 
         val shoulderWidth = SHOULDER_WIDTH * laneWidth
 
