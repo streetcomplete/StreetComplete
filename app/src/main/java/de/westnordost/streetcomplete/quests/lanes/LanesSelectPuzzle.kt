@@ -201,6 +201,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        if (width == 0 || height == 0) return
 
         canvas.drawColor(Color.parseColor("#33666666"))
 
@@ -209,11 +210,13 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         val leftLanesStart = leftLanesStart
         val leftLanesEnd = leftLanesEnd
         val rightLanesStart = rightLanesStart
+        val zoom = if (isShowingOnlyRightSide) 1.4f / laneWidth else 1f / laneWidth
+
         val shoulderWidth = SHOULDER_WIDTH * laneWidth
 
-        val lineWidth = LANE_MARKING_WIDTH * laneWidth
+        val lineWidth = LANE_MARKING_WIDTH / zoom
 
-        val dashEffect = DashPathEffect(floatArrayOf(lineWidth * 8, lineWidth * 12), 0f)
+        val dashEffect = DashPathEffect(floatArrayOf(lineWidth * 6, lineWidth * 10), 0f)
 
         shoulderLinePaint.strokeWidth = lineWidth
         shoulderLinePaint.pathEffect = when(shoulderLineStyle) {
@@ -271,11 +274,12 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         }
 
         // 5. draw cars
+        val carWidth = (1f - 2f * CAR_LANE_PADDING) / zoom
         carsOnLanesRight.asReversed().forEachIndexed { index, carState ->
-            canvas.drawCar(carState, rightLanesStart + index, laneWidth, isForwardTraffic)
+            canvas.drawCar(carState, rightLanesStart + index, laneWidth, carWidth, isForwardTraffic)
         }
         carsOnLanesLeft.forEachIndexed { index, carState ->
-            canvas.drawCar(carState, leftLanesStart + index, laneWidth, !isForwardTraffic)
+            canvas.drawCar(carState, leftLanesStart + index, laneWidth, carWidth, !isForwardTraffic)
         }
     }
 
@@ -315,7 +319,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         /* the CAR_SPEED is "lane graphic squares per second". If the lane graphic is not a square
            we need to go faster/slower */
         val ratio = 1f * w / h
-        val zoom = max(2, lanesSpace)
+        val zoom = max(3, lanesSpace)
         val delta = CAR_SPEED * ratio * deltaTime/1000f / zoom
 
         val randomPerLane = Random(1)
@@ -337,7 +341,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 private const val SHOULDER_WIDTH = 0.125f // as fraction of lane width
 private const val LANE_MARKING_WIDTH = 0.0625f // as fraction of lane width
 private const val CAR_LANE_PADDING = 0.10f // how much space there is between car and lane markings, as fraction of lane width
-private const val CAR_SPEED = 5f // in "lane graphic squares per second"
+private const val CAR_SPEED = 4f // in "lane graphic squares per second"
 private const val CAR_SPEED_VARIATION = 0.2f // as fraction: 1 = 100% variation
 private const val CAR_SPARSITY = 1f
 
@@ -359,15 +363,14 @@ private fun Canvas.drawVerticalLine(x: Float, paint: Paint) {
     drawLine(x, 0f, x, height.toFloat(), paint)
 }
 
-private fun Canvas.drawCar(carState: CarState, laneIndex: Float, laneWidth: Float, isDirectionForward: Boolean) {
+private fun Canvas.drawCar(carState: CarState, laneIndex: Float, laneWidth: Float, carWidth: Float, isDirectionForward: Boolean) {
     val bitmap = carState.bitmap
     val w = bitmap.width
     val h = bitmap.height
 
-    val carWidth = ((1f - 2f * CAR_LANE_PADDING) * laneWidth).toInt()
     val carHeight = carWidth * h / w
 
-    val x = laneWidth * (laneIndex + CAR_LANE_PADDING)
+    val x = laneWidth * laneIndex + (laneWidth - carWidth) / 2f
     val y = (carHeight + height) * (if (!isDirectionForward) carState.position else 1 - carState.position) - carHeight
 
     carState.matrix.reset()
