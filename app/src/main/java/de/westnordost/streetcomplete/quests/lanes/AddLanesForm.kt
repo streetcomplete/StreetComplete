@@ -287,8 +287,6 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         private const val LANES_LEFT = "lanes_left"
         private const val LANES_RIGHT = "lanes_right"
         private const val CENTER_LEFT_TURN_LANE = "center_left_turn_lane"
-
-        private var HAS_SHOWN_TAP_HINT = false
     }
 }
 
