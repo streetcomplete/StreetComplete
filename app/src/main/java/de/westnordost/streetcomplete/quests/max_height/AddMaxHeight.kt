@@ -93,8 +93,16 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     }
 
 
-    override fun isApplicableTo(element: Element) =
-        nodeFilter.matches(element) || wayFilter.matches(element)
+    override fun isApplicableTo(element: Element): Boolean? {
+        if (nodeFilter.matches(element)) return true
+        if (wayFilter.matches(element)) {
+            if (tunnelFilter.matches(element)) return true
+            // if it is a way but not a tunnel, we cannot determine whether it is applicable (=
+            // below a bridge) just by looking at the tags
+            return null
+        }
+        return false
+    }
 
     override fun createForm() = AddMaxHeightForm()
 
