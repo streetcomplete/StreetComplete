@@ -761,6 +761,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_step_count_title">How many steps are here?</string>
     <string name="quest_address_street_title">What street does the (house) number %s belong to?</string>
     <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
+    <string name="quest_address_street_hint">Tap road on map</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
     <string name="quest_address_street_description">Tap the road it belongs to on the map or enter it without abbreviations in the field below:</string>
     <string name="quest_street_side_puzzle_tutorial">The road in the illustration is rotated the same as on the map at the location of the pin. </string>
