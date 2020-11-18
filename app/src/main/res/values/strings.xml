@@ -671,6 +671,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
     <string name="quest_maxheight_split_way_hint">If it doesn\'t apply for the whole way, consider answering \"%s\".</string>
     <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">Tall trucks can pass through</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Tall trucks don't fit"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
