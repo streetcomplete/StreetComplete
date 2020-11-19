@@ -50,6 +50,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
     override val isSplitWayEnabled = true
+    override val isRecreateAfterSplitEnabled = false
 
     override fun getTitle(tags: Map<String, String>): Int {
         val isParkingEntrance = tags["amenity"] == "parking_entrance"

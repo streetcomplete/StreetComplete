@@ -20,6 +20,7 @@ interface OsmElementQuestType<T> : QuestType<T> {
 
     val wikiLink: String?
 
+
     // the below could also go up into QuestType interface, but then they should be accounted for
     // in the respective download/upload classes as well
 
@@ -31,6 +32,9 @@ interface OsmElementQuestType<T> : QuestType<T> {
 
     /** returns whether the user should be able to split the way instead */
     val isSplitWayEnabled: Boolean get() = false
+
+    /** whether quests of this type should be added for all segments of a way that has been split */
+    val isRecreateAfterSplitEnabled: Boolean get() = true
 
     /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
     fun getTitle(tags: Map<String, String>): Int
