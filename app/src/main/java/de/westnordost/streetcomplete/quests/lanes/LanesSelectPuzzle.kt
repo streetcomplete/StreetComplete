@@ -376,7 +376,8 @@ private class CarState(forwardDirection: Boolean, bitmaps: List<Bitmap>) {
 
     init {
         reset(forwardDirection, bitmaps)
-        position = Random.nextFloat()
+        val r = Random.nextFloat() / 2f
+        position = if (forwardDirection) r else 1 - r
     }
 
     fun reset(forwardDirection: Boolean, bitmaps: List<Bitmap>) {
