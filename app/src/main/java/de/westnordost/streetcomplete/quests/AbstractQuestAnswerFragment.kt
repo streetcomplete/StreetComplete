@@ -104,6 +104,9 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         /** Called when the user chose to skip the quest  */
         fun onSkippedQuest(questId: Long, group: QuestGroup)
+
+        /** Called when the element shall be deleted */
+        fun onDeleteElement(osmQuestId: Long, element: OsmElement)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -327,6 +330,19 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     protected fun skipQuest() {
         listener?.onSkippedQuest(questId, questGroup)
+    }
+
+    protected fun deleteElement() {
+        context?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.osm_element_gone_description)
+            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
+                listener?.onDeleteElement(questId, osmElement!!)
+            }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .setNeutralButton(R.string.leave_note) { _, _ ->
+                composeNote()
+            }
+        }
     }
 
     protected fun setContentView(resourceId: Int): View {

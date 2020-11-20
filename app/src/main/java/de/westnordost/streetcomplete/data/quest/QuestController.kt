@@ -8,6 +8,8 @@ import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElement
+import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementDao
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
@@ -23,20 +25,20 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestContro
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
 /** Controls the workflow of quests: Solving them, hiding them instead, splitting the way instead,
  *  undoing, etc. */
 @Singleton class QuestController @Inject constructor(
-        private val osmQuestController: OsmQuestController,
-        private val osmNoteQuestController: OsmNoteQuestController,
-        private val undoOsmQuestDB: UndoOsmQuestDao,
-        private val osmElementDB: MergedElementDao,
-        private val splitWayDB: OsmQuestSplitWayDao,
-        private val createNoteDB: CreateNoteDao,
-        private val prefs: SharedPreferences
+    private val osmQuestController: OsmQuestController,
+    private val osmNoteQuestController: OsmNoteQuestController,
+    private val undoOsmQuestDB: UndoOsmQuestDao,
+    private val osmElementDB: MergedElementDao,
+    private val splitWayDB: OsmQuestSplitWayDao,
+    private val deleteElementDB: DeleteOsmElementDao,
+    private val createNoteDB: CreateNoteDao,
+    private val prefs: SharedPreferences
 ): CoroutineScope by CoroutineScope(Dispatchers.Default) {
     /** Create a note for the given OSM Quest instead of answering it. The quest will turn
      * invisible.
@@ -79,6 +81,20 @@ import javax.inject.Singleton
         splitWayDB.add(OsmQuestSplitWay(osmQuestId, q.osmElementQuestType, q.elementId, source, splits, unsolvedQuestTypes))
 
         removeUnsolvedQuestsForElement(q.elementType, q.elementId)
+        return true
+    }
+
+    /** Delete the element referred to by the given OSM quest id.
+     * @return true if successful
+     */
+    fun deleteOsmElement(osmQuestId: Long, source: String): Boolean {
+        val q = osmQuestController.get(osmQuestId)
+        if (q?.status != QuestStatus.NEW) return false
+
+        deleteElementDB.add(DeleteOsmElement(osmQuestId, q.osmElementQuestType, q.elementId, q.elementType, source, q.center))
+
+        osmQuestController.deleteAllForElement(q.elementType, q.elementId)
+        osmElementDB.deleteUnreferenced()
         return true
     }
 

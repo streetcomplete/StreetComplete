@@ -937,4 +937,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_kerb_height_raised">High curb</string>
     <string name="quest_kerb_height_answer_no_kerb">There is no curb on this side of crossing</string>
     <string name="quest_kerb_height_lowered_ramp">Curb ramp</string>
+    <string name="osm_element_gone_description">Warning: This cannot be undone!\nAre you sure that it does not exist (anymore)? Did you check whether it is not simply mapped at a slightly wrong location?</string>
+    <string name="osm_element_gone_confirmation">It does not exist</string>
+    <string name="leave_note">Leave note</string>
 </resources>

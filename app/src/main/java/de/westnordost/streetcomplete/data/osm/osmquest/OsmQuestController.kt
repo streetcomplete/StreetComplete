@@ -47,9 +47,8 @@ import javax.inject.Singleton
     /** Mark the previously successfully uploaded quest as reverted */
     fun revert(quest: OsmQuest) {
         val status = quest.status
-        quest.status = QuestStatus.REVERT
-        dao.update(quest)
-        onChanged(quest, status)
+        dao.delete(quest.id!!)
+        onRemoved(quest.id!!, status)
     }
 
     /** Mark the quest as answered by the user with the given answer */
@@ -142,12 +141,7 @@ import javax.inject.Singleton
         elementId: Long
     ): UpdateResult {
         geometryDao.put(ElementGeometryEntry(elementType, elementId, updatedGeometry))
-        val e = ElementKey(elementType, elementId)
-
-        var deletedCount = removeObsolete(removedIds)
-        /* Before new quests are unlocked, all reverted quests need to be removed for this element
-           so that they can be created anew as the case may be */
-        deletedCount += dao.deleteAll(statusIn = listOf(QuestStatus.REVERT), element = e)
+        val deletedCount = removeObsolete(removedIds)
         val addedCount = addNew(added)
         onUpdated(added = added.filter { it.id != null }, deleted = removedIds)
 
@@ -212,7 +206,7 @@ import javax.inject.Singleton
         // remove old uploaded quests. These were kept only for the undo/history function
         val oldUploadedQuestsTimestamp = System.currentTimeMillis() - ApplicationConstants.MAX_QUEST_UNDO_HISTORY_AGE
         var deleted = dao.deleteAll(
-            statusIn = listOf(QuestStatus.CLOSED, QuestStatus.REVERT),
+            statusIn = listOf(QuestStatus.CLOSED),
             changedBefore = oldUploadedQuestsTimestamp
         )
         // remove old unsolved and hidden quests. To let the quest cache not get too big and to
@@ -279,8 +273,6 @@ import javax.inject.Singleton
     /** Get all quests for the given type */
     fun getAllForElement(elementType: Element.Type, elementId: Long): List<OsmQuest> =
         dao.getAll(element = ElementKey(elementType, elementId))
-            .filter { it.status != QuestStatus.REVERT }
-
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.quest
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
@@ -27,6 +28,7 @@ class UnsyncedChangesCountSourceTest {
     private lateinit var osmNoteQuestController: OsmNoteQuestController
     private lateinit var createNoteDao: CreateNoteDao
     private lateinit var splitWayDao: OsmQuestSplitWayDao
+    private lateinit var deleteOsmElementDao: DeleteOsmElementDao
     private lateinit var undoOsmQuestDao: UndoOsmQuestDao
 
     private lateinit var noteQuestStatusListener: OsmNoteQuestController.QuestStatusListener
@@ -34,6 +36,7 @@ class UnsyncedChangesCountSourceTest {
     private lateinit var createNoteListener: CreateNoteDao.Listener
     private lateinit var undoOsmQuestListener: UndoOsmQuestDao.Listener
     private lateinit var splitWayListener: OsmQuestSplitWayDao.Listener
+    private lateinit var deleteElementListener: DeleteOsmElementDao.Listener
 
     private lateinit var listener: UnsyncedChangesCountListener
 
@@ -66,6 +69,12 @@ class UnsyncedChangesCountSourceTest {
             Unit
         }
 
+        deleteOsmElementDao = mock()
+        on(deleteOsmElementDao.addListener(any())).then { invocation: InvocationOnMock ->
+            deleteElementListener = invocation.arguments[0] as DeleteOsmElementDao.Listener
+            Unit
+        }
+
         undoOsmQuestDao = mock()
         on(undoOsmQuestDao.addListener(any())).then { invocation: InvocationOnMock ->
             undoOsmQuestListener = invocation.arguments[0] as UndoOsmQuestDao.Listener
@@ -78,7 +87,13 @@ class UnsyncedChangesCountSourceTest {
         on(splitWayDao.getCount()).thenReturn(4)
         on(undoOsmQuestDao.getCount()).thenReturn(5)
 
-        source = UnsyncedChangesCountSource(osmQuestController, osmNoteQuestController, createNoteDao, splitWayDao, undoOsmQuestDao)
+        source = UnsyncedChangesCountSource(
+            osmQuestController,
+            osmNoteQuestController,
+            createNoteDao,
+            splitWayDao,
+            deleteOsmElementDao,
+            undoOsmQuestDao)
 
         listener = mock()
         source.addListener(listener)
@@ -105,6 +120,16 @@ class UnsyncedChangesCountSourceTest {
 
     @Test fun `remove split way triggers listener`() {
         splitWayListener.onDeletedSplitWay()
+        verifyDecreased()
+    }
+
+    @Test fun `add delete element triggers listener`() {
+        deleteElementListener.onAddedDeleteOsmElement()
+        verifyIncreased()
+    }
+
+    @Test fun `remove delete element triggers listener`() {
+        deleteElementListener.onDeletedDeleteOsmElement()
         verifyDecreased()
     }
 

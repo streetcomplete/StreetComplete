@@ -1,15 +1,16 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osm.osmquest
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.NoteDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
 import javax.inject.Inject
 
-/** Supplies a set of note positions, these are used to block the creation of other quests.
+/** Supplies a set of note positions, these are used to block the creation of (other) quests.
  *
  *  The note positions include the positions of OSM notes plus those notes that have been created
  *  locally but have not been uploaded yet. */
-class NotePositionsSource @Inject constructor(
+class BlacklistedPositionsSource @Inject constructor(
     private val noteDao: NoteDao,
     private val createNoteDao: CreateNoteDao
 ) {

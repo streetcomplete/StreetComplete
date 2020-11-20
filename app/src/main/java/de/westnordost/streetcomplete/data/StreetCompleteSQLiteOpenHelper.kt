@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
+import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
 import de.westnordost.streetcomplete.ktx.hasColumn
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable
@@ -65,6 +66,8 @@ import java.util.*
         db.execSQL(QuestVisibilityTable.CREATE)
 
         db.execSQL(OsmQuestSplitWayTable.CREATE)
+
+        db.execSQL(DeleteOsmElementTable.CREATE)
 
         db.execSQL(RoadNamesTable.CREATE)
         db.execSQL(WayTrafficFlowTable.CREATE)
@@ -191,21 +194,21 @@ import java.util.*
                ALL the relations currently in the store. See #2014
              */
             db.execSQL("""
-                DELETE FROM ${OsmQuestTable.NAME} 
+                DELETE FROM ${OsmQuestTable.NAME}
                 WHERE ${OsmQuestTable.Columns.ELEMENT_TYPE} = "${Element.Type.RELATION.name}"
             """.trimIndent())
             db.execSQL("""
-                DELETE FROM ${UndoOsmQuestTable.NAME} 
+                DELETE FROM ${UndoOsmQuestTable.NAME}
                 WHERE ${UndoOsmQuestTable.Columns.ELEMENT_TYPE} = "${Element.Type.RELATION.name}"
             """.trimIndent())
             db.execSQL("""
-                DELETE FROM ${RelationTable.NAME} 
+                DELETE FROM ${RelationTable.NAME}
             """.trimIndent())
         }
 
         if (oldVersion < 17 && newVersion >= 17) {
             db.execSQL("""
-                ALTER TABLE ${RoadNamesTable.NAME} 
+                ALTER TABLE ${RoadNamesTable.NAME}
                 ADD COLUMN ${RoadNamesTable.Columns.LAST_UPDATE} int NOT NULL default ${Date().time};
                 """.trimIndent())
         }
@@ -215,9 +218,16 @@ import java.util.*
             db.execSQL("DELETE FROM ${DownloadedTilesTable.NAME}")
         }
 
+        if (oldVersion < 19 && newVersion >= 19) {
+            db.execSQL(DeleteOsmElementTable.CREATE)
+
+            db.execSQL("""
+                DELETE FROM ${OsmQuestTable.NAME} WHERE ${OsmQuestTable.Columns.QUEST_STATUS} = "REVERT"
+            """.trimIndent())
+        }
         // for later changes to the DB
         // ...
     }
 }
 
-private const val DB_VERSION = 18
+private const val DB_VERSION = 19

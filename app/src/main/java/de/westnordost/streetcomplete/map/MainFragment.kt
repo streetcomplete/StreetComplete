@@ -36,10 +36,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.data.Way
+import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
@@ -348,6 +345,21 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onSkippedQuest(questId: Long, group: QuestGroup) {
         closeQuestDetailsFor(questId, group)
         questController.hide(questId, group)
+    }
+
+    override fun onDeleteElement(osmQuestId: Long, element: OsmElement) {
+        val ctx = context ?: return
+
+        val checkLocations = listOfNotNull(mapFragment?.displayedLocation, locationWhenOpenedQuest)
+
+        isSurveyChecker.assureIsSurvey(ctx, osmQuestId, QuestGroup.OSM, checkLocations) {
+            val quest = questController.get(osmQuestId, QuestGroup.OSM)
+            closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
+            if (questController.deleteOsmElement(osmQuestId, "survey")) {
+                listener?.onQuestSolved(quest, "survey")
+                quest?.let { showQuestSolvedAnimation(it) }
+            }
+        }
     }
 
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */

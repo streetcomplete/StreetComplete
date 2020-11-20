@@ -18,8 +18,8 @@ import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
-import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.util.measuredLength
 import kotlinx.coroutines.CoroutineScope
@@ -39,7 +39,8 @@ class OsmApiQuestDownloader @Inject constructor(
     private val elementDB: MergedElementDao,
     private val osmQuestController: OsmQuestController,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
-    private val notePositionsSource: NotePositionsSource,
+    private val blacklistedPositionsSource: BlacklistedPositionsSource,
+    private val blacklistedElementsSource: BlacklistedElementsSource,
     private val mapDataApi: MapDataApi,
     private val mapDataWithGeometry: Provider<CachingMapDataWithGeometry>,
     private val elementGeometryCreator: ElementGeometryCreator
@@ -64,7 +65,8 @@ class OsmApiQuestDownloader @Inject constructor(
         Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${secondsSpentDownloading}s")
         time = System.currentTimeMillis()
 
-        val truncatedBlacklistedPositions = notePositionsSource.getAllPositions(bbox).map { it.truncateTo5Decimals() }.toSet()
+        val truncatedBlacklistedPositions = blacklistedPositionsSource.getAllPositions(bbox).map { it.truncateTo5Decimals() }.toSet()
+        val blacklistedElements = blacklistedElementsSource.getAll().toSet()
 
         val countryBoundaries = countryBoundariesFuture.get()
 
@@ -79,7 +81,7 @@ class OsmApiQuestDownloader @Inject constructor(
                         val questTime = System.currentTimeMillis()
                         for (element in questType.getApplicableElements(mapData)) {
                             val geometry = getCompleteGeometry(element.type, element.id, mapData, completeRelationGeometries)
-                            val quest = createQuest(questType, element, geometry, truncatedBlacklistedPositions) ?: continue
+                            val quest = createQuest(questType, element, geometry, blacklistedElements, truncatedBlacklistedPositions) ?: continue
 
                             quests.add(quest)
                             questElements.add(element)
@@ -115,7 +117,7 @@ class OsmApiQuestDownloader @Inject constructor(
         Log.i(TAG,"Added ${replaceResult.added} new and removed ${replaceResult.deleted} already resolved quests")
     }
 
-    private fun createQuest(questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry?, blacklistedPositions: Set<LatLon>): OsmQuest? {
+    private fun createQuest(questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry?, blacklistedElements: Set<ElementKey>, blacklistedPositions: Set<LatLon>): OsmQuest? {
         // invalid geometry -> can't show this quest, so skip it
         val pos = geometry?.center ?: return null
 
@@ -125,6 +127,10 @@ class OsmApiQuestDownloader @Inject constructor(
         // do not create quests in countries where the quest is not activated
         val countries = questType.enabledInCountries
         if (!countryBoundariesFuture.get().isInAny(pos, countries))  return null
+
+        // do not create quests of blacklisted elements
+        val elementKey = ElementKey(element.type, element.id)
+        if (blacklistedElements.contains(elementKey)) return null
 
         // do not create quests that refer to geometry that is too long for a surveyor to be expected to survey
         if (geometry is ElementPolylinesGeometry) {

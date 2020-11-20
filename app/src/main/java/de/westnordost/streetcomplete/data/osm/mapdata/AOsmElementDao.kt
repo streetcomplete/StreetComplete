@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
+import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable
 import de.westnordost.streetcomplete.ktx.queryOne
@@ -18,6 +19,24 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
     protected abstract val tableName: String
     protected abstract val idColumnName: String
     protected abstract val mapping: ObjectRelationalMapping<T>
+
+    protected val selectElementIdsInQuestTable: String get() = getSelectAllElementIdsIn(
+        OsmQuestTable.NAME,
+        OsmQuestTable.Columns.ELEMENT_ID,
+        OsmQuestTable.Columns.ELEMENT_TYPE
+    )
+
+    protected val selectElementIdsInUndoQuestTable: String get() = getSelectAllElementIdsIn(
+        UndoOsmQuestTable.NAME,
+        UndoOsmQuestTable.Columns.ELEMENT_ID,
+        UndoOsmQuestTable.Columns.ELEMENT_TYPE
+    )
+
+    protected val selectElementIdsInDeleteElementsTable: String get() = getSelectAllElementIdsIn(
+        DeleteOsmElementTable.NAME,
+        DeleteOsmElementTable.Columns.ELEMENT_ID,
+        DeleteOsmElementTable.Columns.ELEMENT_TYPE
+    )
 
     fun putAll(elements: Collection<T>) {
         db.transaction {
@@ -39,21 +58,23 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
         return db.queryOne(tableName, null, "$idColumnName = $id", null) { mapping.toObject(it) }
     }
 
-    /** Cleans up element entries that are not referenced by any quest anymore.  */
+    /** Cleans up element entries that are not referenced by any quest (or other things) anymore.  */
     open fun deleteUnreferenced() {
         val where = """
             $idColumnName NOT IN (
-            ${getSelectAllElementIdsIn(OsmQuestTable.NAME)} 
+            $selectElementIdsInQuestTable
             UNION
-            ${getSelectAllElementIdsIn(UndoOsmQuestTable.NAME)}
+            $selectElementIdsInUndoQuestTable
+            UNION
+            $selectElementIdsInDeleteElementsTable
             )""".trimIndent()
 
         db.delete(tableName, where, null)
     }
 
-    protected fun getSelectAllElementIdsIn(table: String) = """
-        SELECT ${OsmQuestTable.Columns.ELEMENT_ID} AS $idColumnName
+    private fun getSelectAllElementIdsIn(table: String, elementIdColumn: String, elementTypeColumn: String) = """
+        SELECT $elementIdColumn AS $idColumnName
         FROM $table
-        WHERE ${OsmQuestTable.Columns.ELEMENT_TYPE} = "$elementTypeName"
+        WHERE $elementTypeColumn = "$elementTypeName"
     """
 }

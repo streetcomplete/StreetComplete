@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
-import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.mock
@@ -30,7 +29,8 @@ class OsmApiQuestDownloaderTest {
     private lateinit var elementDb: MergedElementDao
     private lateinit var osmQuestController: OsmQuestController
     private lateinit var countryBoundaries: CountryBoundaries
-    private lateinit var notePositionsSource: NotePositionsSource
+    private lateinit var blacklistedPositionsSource: BlacklistedPositionsSource
+    private lateinit var blacklistedElementsSource: BlacklistedElementsSource
     private lateinit var mapDataApi: MapDataApi
     private lateinit var mapDataWithGeometry: CachingMapDataWithGeometry
     private lateinit var elementGeometryCreator: ElementGeometryCreator
@@ -46,13 +46,14 @@ class OsmApiQuestDownloaderTest {
         mapDataApi = mock()
         mapDataWithGeometry = mock()
         elementGeometryCreator = mock()
-        notePositionsSource = mock()
+        blacklistedPositionsSource = mock()
+        blacklistedElementsSource = mock()
         val countryBoundariesFuture = FutureTask { countryBoundaries }
         countryBoundariesFuture.run()
         val mapDataProvider = Provider { mapDataWithGeometry }
         downloader = OsmApiQuestDownloader(
-            elementDb, osmQuestController, countryBoundariesFuture, notePositionsSource, mapDataApi,
-            mapDataProvider, elementGeometryCreator)
+            elementDb, osmQuestController, countryBoundariesFuture, blacklistedPositionsSource,
+            blacklistedElementsSource, mapDataApi, mapDataProvider, elementGeometryCreator)
     }
 
     @Test fun `creates quest for element`() {

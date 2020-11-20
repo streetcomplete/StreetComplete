@@ -5,6 +5,7 @@ import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;
+import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementsUploader;
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestsUploader;
 import de.westnordost.streetcomplete.data.osm.splitway.SplitWaysUploader;
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestsUploader;
@@ -18,10 +19,22 @@ public class UploadModule2
 	*  and cannot provide the dependency for UploadService. So, it must stay in Java (for now) */
 	@Provides public static List<? extends Uploader> uploaders(
 		OsmNoteQuestsChangesUploader osmNoteQuestsChangesUploader,
-		UndoOsmQuestsUploader undoOsmQuestsUploader, OsmQuestsUploader osmQuestsUploader,
-		SplitWaysUploader splitWaysUploader, CreateNotesUploader createNotesUploader
+		DeleteOsmElementsUploader deleteOsmElementsUploader,
+		UndoOsmQuestsUploader undoOsmQuestsUploader,
+		OsmQuestsUploader osmQuestsUploader,
+		SplitWaysUploader splitWaysUploader,
+		CreateNotesUploader createNotesUploader
 	) {
-		return Arrays.asList(osmNoteQuestsChangesUploader, undoOsmQuestsUploader, osmQuestsUploader,
-			splitWaysUploader, createNotesUploader);
+		return Arrays.asList(
+				osmNoteQuestsChangesUploader,
+				deleteOsmElementsUploader,
+				/* the order is important: undo should happen before normal quest changes are
+				   uploaded, so that new quests can be unlocked (not-uploaded undos block creation
+				   of new quests) on upload of these */
+				undoOsmQuestsUploader,
+				osmQuestsUploader,
+				splitWaysUploader,
+				createNotesUploader
+		);
 	}
 }
