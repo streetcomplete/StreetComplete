@@ -69,8 +69,9 @@ class DeleteOsmElementsUploaderTest {
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
         on(deleteElementDB.getAll()).thenReturn(listOf(createDeleteOsmElement()))
-        on(singleUploader.upload(anyLong(), any()))
-            .thenThrow(ChangesetConflictException())
+        doThrow(ChangesetConflictException())
+            .doNothing()
+            .on(singleUploader).upload(anyLong(), any())
         on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
@@ -85,7 +86,9 @@ class DeleteOsmElementsUploaderTest {
         val quests = listOf(createDeleteOsmElement(), createDeleteOsmElement())
 
         on(deleteElementDB.getAll()).thenReturn(quests)
-        on(singleUploader.upload(anyLong(), any())).thenThrow(ElementConflictException())
+        doThrow(ElementConflictException())
+            .doNothing()
+            .on(singleUploader).upload(anyLong(), any())
         on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.uploadedChangeListener = mock()
@@ -95,7 +98,7 @@ class DeleteOsmElementsUploaderTest {
         verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].questType.javaClass.simpleName, quests[0].position)
         verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].questType.javaClass.simpleName,quests[1].position)
 
-        verify(elementUpdateController, times(1)).delete(any(), any())
+        verify(elementUpdateController, times(1)).delete(any(), anyLong())
         verify(elementUpdateController, times(2)).get(any(), anyLong())
         verify(statisticsUpdater).addOne(any(), any())
         verifyNoMoreInteractions(elementUpdateController)
@@ -105,7 +108,6 @@ class DeleteOsmElementsUploaderTest {
         val quest = createDeleteOsmElement()
 
         on(deleteElementDB.getAll()).thenReturn(listOf(quest))
-        on(singleUploader.upload(anyLong(), any()))
         on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))

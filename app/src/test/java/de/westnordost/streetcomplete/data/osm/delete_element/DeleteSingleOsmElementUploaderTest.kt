@@ -36,13 +36,13 @@ class DeleteSingleOsmElementUploaderTest {
 
     @Test(expected = ElementConflictException::class)
     fun `pass osm conflict`() {
-        on(mapDataApi.uploadChanges(any(), any(), any())).thenThrow(OsmConflictException(HTTP_CONFLICT, "Conflict", "Invalid element version"))
+        on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(OsmConflictException(HTTP_CONFLICT, "Conflict", "Invalid element version"))
         uploader.upload(100L, e)
     }
 
     @Test(expected = ElementConflictException::class)
     fun `pass deleted conflict`() {
-        on(mapDataApi.uploadChanges(any(), any(), any())).thenThrow(OsmNotFoundException(HTTP_NOT_FOUND, "Not found", "Something"))
+        on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(OsmNotFoundException(HTTP_NOT_FOUND, "Not found", "Something"))
         uploader.upload(100L, e)
     }
 }

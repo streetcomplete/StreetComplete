@@ -28,9 +28,10 @@ import javax.inject.Singleton
             answeredOsmNoteQuestCount +
             splitWayCount +
             createNoteCount +
-            undoOsmQuestCount
+            undoOsmQuestCount +
+            deleteOsmElementCount
 
-    val questCount: Int get() = answeredOsmQuestCount + splitWayCount - undoOsmQuestCount
+    val questCount: Int get() = answeredOsmQuestCount - undoOsmQuestCount + splitWayCount  + deleteOsmElementCount
 
     private var answeredOsmQuestCount: Int = osmQuestController.getAllAnsweredCount()
     set(value) {

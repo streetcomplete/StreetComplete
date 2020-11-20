@@ -151,7 +151,6 @@ class UnsyncedChangesCountSourceTest {
     @Test fun `remove non-answered osm quest does not trigger listener`() {
         questStatusListener.onRemoved(2L, QuestStatus.NEW)
         questStatusListener.onRemoved(3L, QuestStatus.INVISIBLE)
-        questStatusListener.onRemoved(4L, QuestStatus.REVERT)
         questStatusListener.onRemoved(5L, QuestStatus.CLOSED)
         questStatusListener.onRemoved(6L, QuestStatus.HIDDEN)
         verifyNothingHappened()
@@ -168,7 +167,7 @@ class UnsyncedChangesCountSourceTest {
     }
 
     @Test fun `change osm quest from non-answered does not trigger listener`() {
-        questStatusListener.onChanged(osmQuest(1L, QuestStatus.REVERT), QuestStatus.CLOSED)
+        questStatusListener.onChanged(osmQuest(1L, QuestStatus.INVISIBLE), QuestStatus.CLOSED)
         verifyNothingHappened()
     }
 
@@ -187,7 +186,6 @@ class UnsyncedChangesCountSourceTest {
     @Test fun `remove non-answered osm note quest does not trigger listener`() {
         noteQuestStatusListener.onRemoved(2L, QuestStatus.NEW)
         noteQuestStatusListener.onRemoved(3L, QuestStatus.INVISIBLE)
-        noteQuestStatusListener.onRemoved(4L, QuestStatus.REVERT)
         noteQuestStatusListener.onRemoved(5L, QuestStatus.CLOSED)
         noteQuestStatusListener.onRemoved(6L, QuestStatus.HIDDEN)
         verifyNothingHappened()
@@ -204,7 +202,7 @@ class UnsyncedChangesCountSourceTest {
     }
 
     @Test fun `change osm note quest from non-answered does not trigger listener`() {
-        noteQuestStatusListener.onChanged(osmNoteQuest(1L, QuestStatus.REVERT), QuestStatus.CLOSED)
+        noteQuestStatusListener.onChanged(osmNoteQuest(1L, QuestStatus.INVISIBLE), QuestStatus.CLOSED)
         verifyNothingHappened()
     }
 
