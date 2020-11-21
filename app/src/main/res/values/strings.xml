@@ -215,6 +215,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_surface_value_paving_stones">"Paving stones"</string>
     <string name="quest_surface_value_pebblestone">"Pebbles"</string>
     <string name="quest_surface_value_sand">"Sand"</string>
+    <string name="quest_surface_value_rock">"Rock"</string>
     <string name="quest_surface_value_sett">"Sett"</string>
     <string name="quest_surface_value_wood">"Wood"</string>
     <string name="quest_placeName_title">"What is the name of this place?"</string>

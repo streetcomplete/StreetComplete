@@ -117,6 +117,7 @@ surface_metal.jpg              Public Domain     https://commons.wikimedia.org/w
 surface_paved.jpg              CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
+surface_rock.jpg               CC0               Elliot Plack
 herb_height_raised.jpg         CC0               Mateusz Konieczny
 herb_height_raised_original... CC0               Mateusz Konieczny
 herb_height_lowered.jpg        CC0               Mateusz Konieczny
