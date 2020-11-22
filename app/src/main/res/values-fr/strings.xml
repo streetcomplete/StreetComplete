@@ -18,7 +18,7 @@
     <string name="map_btn_gps_tracking">"Me suivre"</string>
     <string name="map_attribution_osm">"© Contributeurs OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Autres réponses…"</string>
-    <string name="quest_generic_answer_notApplicable">"Ne sait pas…"</string>
+    <string name="quest_generic_answer_notApplicable">"Je ne sais pas"</string>
 
     <!-- je me suis permis d'éviter de sous-entendre que l'utilisateur est un homme ou une femme, ce qui évite la forme un peu étrange avec le point médian -->
     <string name="quest_generic_confirmation_title">"C'est votre dernier mot ?"</string>
@@ -331,7 +331,7 @@ S'il n'y a pas de panneau applicable à ce tronçon le long de la voie, les limi
     <string name="quest_streetName_cantType_title">"Disposition du clavier manquante ?"</string>
     <string name="quest_streetName_cantType_open_settings">"Ouvrir les paramètres"</string>
     <string name="quest_streetName_cantType_open_store">"Visitez l'app store"</string>
-    <string name="quest_streetName_cantType_description">"Si vous utilisez un clavier par défaut, il y a de fortes chances que vous puissiez simplement activer dans les paramètres de langue et de saisie de votre téléphone la disposition du clavier pour la langue dont vous avez besoin.
+    <string name="quest_streetName_cantType_description">"Si vous utilisez un clavier par défaut, il y a de fortes chances que vous puissiez simplement activer la disposition du clavier pour la langue dont vous avez besoin dans les paramètres de langue et de saisie de votre téléphone.
 
 Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers les plus populaires prenant en charge de nombreuses langues sont Google Gboard (propriétaire), SwiftKey Keyboard (propriétaire) ou AnySoftKeyboard (libre)."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(non spécifié)"</string>
@@ -406,8 +406,8 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_way_lit_road_title">"Ce tronçon de route est-il éclairé ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Cela utilise la détection de mouvement"</string>
-    <string name="quest_way_lit_24_7">"C'est éclairé jour et nuit"</string>
+    <string name="quest_way_lit_automatic">"Oui, avec détection de mouvement"</string>
+    <string name="quest_way_lit_24_7">"Oui, c'est éclairé jour et nuit"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Impossible de rechercher ici. Essayez de zoomer ou de moins incliner la carte."</string>
     <string name="quest_crossing_type_title">"De quel type de passage piéton s'agit-il ?"</string>
     <string name="quest_crossing_type_signals">"Passage piéton avec feux"</string>
@@ -609,7 +609,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_buildingType_answer_multiple_types">"Plusieurs usages"</string>
 
     <!-- Je serais pour réorganiser l'enchaînement, du type : "Indiquez l'usage principal du bâtiment (sachant qu'il s'agit d'un immeuble résidentiel). Ex : s’il y a des magasins aux rez-de-chaussée et des appartements au-dessus." -->
-    <string name="quest_buildingType_answer_multiple_types_description">"Indiquez l'usage principal du bâtiment. Ex : s’il y a des magasins aux rez-de-chaussée et des appartements au-dessus, il s'agit d'un immeuble résidentiel."</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Indiquez l'usage principal du bâtiment. Par exemple : s’il y a des magasins aux rez-de-chaussée et des appartements au-dessus, il s'agit d'un immeuble résidentiel."</string>
     <string name="quest_buildingType_answer_construction_site">"En construction"</string>
     <string name="quest_buildingType_residential">"Résidentiel"</string>
     <string name="quest_buildingType_residential_description">"logement"</string>
@@ -814,7 +814,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_leaf_type_broadleaved">"Feuillus"</string>
     <string name="quest_leaf_type_mixed">"Les deux sont présents"</string>
     <string name="quest_cyclewayPartSurface_title">"Quel est le revêtement de la piste cyclable ici ?"</string>
-    <string name="quest_generic_answer_differs_along_the_way">"Varie en cours de route..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Cela varie en cours de route"</string>
     <string name="quest_split_way_description">"S'il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon. 
 Découper maintenant ?"</string>
 
@@ -1139,6 +1139,8 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_steps_ramp_separate_wheelchair">"Y a t'il une rampe pour fauteuils roulants représentée comme une voie séparée sur la carte ?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Séparée"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Non séparée"</string>
+
+    <!-- Le terme français d'upload est bien "téléverser", je ne vois pas trop ce que ce changement apporte par rapport à la première version ? -->
     <string name="pref_title_sync2">"Envoyer les réponses automatiquement"</string>
     <string name="quest_surface_detailed_answer_impossible_title">"Décrire la surface"</string>
     <string name="open_url">"Ouvrir l'URL"</string>
@@ -1166,13 +1168,21 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_maxheight_split_way_hint">"Si ça ne concerne pas la totalité de la voie, vous pouvez répondre \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Y a t-il un revêtement podotactile à cet endroit ?"</string>
     <string name="quest_kerb_height_title">"Quelle est la hauteur de cette bordure ?"</string>
-    <string name="quest_kerb_height_flush">"Au même niveau que la route"</string>
-    <string name="quest_kerb_height_lowered">"Un peu plus haute que la route"</string>
+
+    <!-- Pour être un peu pédant on pourrait dire "vue zéro" mais à mon avis c'est un terme technique que presque personne ne va piger -->
+    <string name="quest_kerb_height_flush">"Au niveau de la route"</string>
+    <string name="quest_kerb_height_lowered">"Basse"</string>
 
     <!-- Maybe there's a better wording for this, but this translate as "high as a step" which should make it crystal clear to the user -->
-    <string name="quest_kerb_height_raised">"Haute comme une marche"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Il n'y a pas de bordure de ce côté du passage"</string>
+    <string name="quest_kerb_height_raised">"Haute"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Pas de bordure de ce côté du passage"</string>
 
     <!-- In France there is also "bateau" which means the kerb is lowered locally but I believe that wouldn't exactly decribe the inclined state of a curb ramp. "bateau" would generally have a 2/3 cm height and be used in place where vehicles exit private property, while a ramp would be used at the intersection of a crosswalk with the curb (not really often but still)  and provide a smoother transition. -->
-    <string name="quest_kerb_height_lowered_ramp">"Pente douce"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Il s'agit d'une pente douce"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description2">"Spécifiez le nombre total de voies délimitées (dans les deux sens) utilisables pour le trafic routier. Les voies cyclables et emplacement de parking ne comptent pas. Si certaines voies sont réservées aux bus, laissez une note."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Spécifiez le nombre de voies délimitées utilisables pour le trafic routier. Les voies cyclables et emplacement de parking ne comptent pas. Si certaines voies sont réservées aux bus, laissez une note."</string>
 </resources>

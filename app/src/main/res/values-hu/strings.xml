@@ -2336,4 +2336,25 @@ szintek"</string>
     <string name="quest_buildingType_ruins_description">"elhagyatott, romos és beazonosíthatatlan épület"</string>
     <string name="quest_charging_station_capacity_title">"Hány autó tölthető egyidejűleg ezen a töltőállomáson?"</string>
     <string name="link_disaster_ninja_description">"Térkép, amely megjeleníti a közelmúltbéli természeti katasztrófákat, hasznos információt szolgáltatva a humanitárius térképezőknek. Valamint számos érdekes statisztikát is megjelenít arról, hogy mennyire feltérképezettek és naprakészek az egyes helyek."</string>
+    <string name="quest_lanes_title">"Hány forgalmi sávval rendelkezik ez az út?"</string>
+    <string name="quest_lanes_answer_lanes">"Jelölt sávok"</string>
+    <string name="quest_lanes_answer_noLanes">"Nincsenek jelölt sávok"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Irányonként különböző"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Kétirányú balra kanyarodó sávval rendelkezik"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Ez helyes?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Mekkora a magasságkorlátozás a híd alatt?"</string>
+    <string name="quest_maxheight_split_way_hint">"Ha nem az egész útra érvényes, akkor inkább válaszold ezt: \"%s\"."</string>
+    <string name="quest_tactile_paving_kerb_title">"Van vakvezető burkolat ezen a járdaszegélyen?"</string>
+    <string name="quest_kerb_height_title">"Milyen magas ez a járdaszegély?"</string>
+    <string name="quest_kerb_height_flush">"Az útfelülettel megegyező"</string>
+    <string name="quest_kerb_height_lowered">"Valamivel magasabb az útfelületnél"</string>
+    <string name="quest_kerb_height_raised">"Magas szegély"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Nincs szegély az átkelő ezen oldalán"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Szegély rámpa"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description2">"Add meg az autóforgalom számára használható, jelölt sávok számát (két irányban együttesen). A kerékpársávok és a parkolósávok nem számítanak bele. Ha vannak buszok számára fenntartott sávok is, akkor kérlek, inkább hagyj megjegyzést."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Add meg az autóforgalom számára használható, jelölt sávok számát. A kerékpársávok és a parkolósávok nem számítanak bele. Ha vannak buszok számára fenntartott sávok is, akkor kérlek, inkább hagyj megjegyzést."</string>
 </resources>

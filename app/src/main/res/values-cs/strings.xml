@@ -2391,6 +2391,7 @@ Is the situation on this cycleway still the same? -->
     <string name="quest_lanes_answer_lanes">"Vyznačené pruhy"</string>
     <string name="quest_lanes_answer_noLanes">"Bez vyznačených pruhů"</string>
     <string name="quest_lanes_answer_lanes_odd">"Každá strana je jiná"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Má obousměrný pruh pro odbočení vlevo (v ČR není)"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Je to správně?"</string>
     <string name="quest_maxheight_below_bridge_title">"Jaké je výškové omezení pod mostem?"</string>
     <string name="quest_maxheight_split_way_hint">"Pokud to neplatí pro celou cestu, zvažte odpověď „%s“."</string>
@@ -2401,4 +2402,13 @@ Is the situation on this cycleway still the same? -->
     <string name="quest_kerb_height_raised">"Vysoký obrubník (jako schod)"</string>
     <string name="quest_kerb_height_answer_no_kerb">"Na této straně přechodu není obrubník"</string>
     <string name="quest_kerb_height_lowered_ramp">"Obrubník s nájezdem"</string>
+
+    <!-- Just to be sure - users shouldn't count lanes reserved for buses, but leave note, right? -->
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description2">"Určete celkový počet vyznačených jízdních pruhů (v obou směrech), na kterých mohou jezdit auta. Pruhy pro kola a parkování nepočítejte.
+Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Určete tady celkový počet vyznačených jízdních pruhů, na kterých mohou jezdit auta. Pruhy pro kola a parkování nepočítejte.
+Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
 </resources>

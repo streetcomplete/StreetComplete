@@ -2147,4 +2147,12 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="quest_kerb_height_raised">"Meio-fio alto"</string>
     <string name="quest_kerb_height_answer_no_kerb">"Não há meio-fio deste lado do cruzamento"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampa de meio-fio"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description2">"Especifique o número total de pistas marcadas (ambas as direções) que podem ser utilizadas pelo tráfego de automóveis. Portanto, as faixas de bicicletas e de estacionamento não contam.
+Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Especifique aqui o número de faixas marcadas que podem ser utilizadas pelo tráfego de automóveis. Portanto, as faixas de bicicletas e de estacionamento não contam.
+Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
 </resources>

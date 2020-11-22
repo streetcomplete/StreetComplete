@@ -2229,7 +2229,7 @@ päiviä"</string>
     <string name="quest_maxheight_below_bridge_title">"Mikä on korkeusrajoitus sillan alla?"</string>
     <string name="quest_maxheight_split_way_hint">"Jos tämä ei koske koko tietä, harkitse vastaamaan \"%s\""</string>
     <string name="quest_tactile_paving_kerb_title">"Onko täällä jalkakäytävässä kosketuspäällysteitä?"</string>
-    <string name="quest_kerb_height_title">"Mikä on tämän reunakiven korkeus?"</string>
+    <string name="quest_kerb_height_title">"Mikä on tämän reunakivetyksen korkeus?"</string>
     <string name="quest_kerb_height_flush">"Tienpinnan kanssa samalla tasolla"</string>
     <string name="quest_kerb_height_lowered">"Hieman tienpintaa korkeammalla"</string>
     <string name="quest_kerb_height_raised">"Korkea reunakiveys"</string>

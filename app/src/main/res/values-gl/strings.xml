@@ -2380,4 +2380,12 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_kerb_height_raised">"Bordo alto"</string>
     <string name="quest_kerb_height_answer_no_kerb">"Non hai bordo neste lado do paso"</string>
     <string name="quest_kerb_height_lowered_ramp">"Bordo rebaixado (rampla)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description2">"Especifica o número total de carrís marcados (en ambas direccións) que pode empregar o tráfico de vehículos. Entón, os carrís para bicicletas e aparcadoiro non contan.
+Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Especifica aquí o número de carrís marcados que pode empregar o tráfico de vehículos. Entón, os carrís para bicicletas e aparcadoiro non contan.
+Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
 </resources>

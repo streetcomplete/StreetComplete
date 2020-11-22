@@ -2368,6 +2368,7 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_lanes_answer_lanes">"Carriles marcados"</string>
     <string name="quest_lanes_answer_noLanes">"Sin carriles marcados"</string>
     <string name="quest_lanes_answer_lanes_odd">"Difiere para cada lado"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Tiene un carril de giro a la izquierda de dos-vías"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"¿Es esto correcto?"</string>
     <string name="quest_maxheight_below_bridge_title">"¿Cuál es el límite de altura debajo del puente?"</string>
     <string name="quest_maxheight_split_way_hint">"Si no aplica para toda la vía, considere responder \"%s\"."</string>
@@ -2379,4 +2380,10 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_kerb_height_raised">"Bordillo alto"</string>
     <string name="quest_kerb_height_answer_no_kerb">"No hay acera en este lado del cruce"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampa de acera"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description2">"Especifique el número total de carriles marcados (en ambas direcciones) que puede utilizar el tráfico de automóviles. Los carriles para bicicletas y estacionamiento no cuentan. Si hay carriles reservados para autobuses, deje una nota en su lugar."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Especifique el número de carriles marcados que puede utilizar el tráfico de automóviles. Los carriles para bicicletas y estacionamiento no cuentan. Si hay carriles reservados para autobuses, deje una nota en su lugar."</string>
 </resources>
