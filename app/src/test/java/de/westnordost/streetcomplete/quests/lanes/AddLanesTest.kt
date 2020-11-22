@@ -12,8 +12,7 @@ class AddLanesTest {
 
     @Test fun `answering unmarked lanes`() {
         questType.verifyAnswer(
-            UnmarkedLanes(2),
-            StringMapEntryAdd("lanes", "2"),
+            UnmarkedLanes,
             StringMapEntryAdd("lane_markings", "no"),
         )
     }
@@ -24,8 +23,7 @@ class AddLanesTest {
                 "lanes" to "4",
                 "lane_markings" to "yes",
             ),
-            UnmarkedLanes(2),
-            StringMapEntryModify("lanes", "4", "2"),
+            UnmarkedLanes,
             StringMapEntryModify("lane_markings", "yes", "no"),
         )
     }
@@ -37,8 +35,7 @@ class AddLanesTest {
                 "lanes:forward" to "2",
                 "lanes:backward" to "3",
             ),
-            UnmarkedLanes(2),
-            StringMapEntryModify("lanes", "5", "2"),
+            UnmarkedLanes,
             StringMapEntryAdd("lane_markings", "no"),
             StringMapEntryDelete("lanes:forward", "2"),
             StringMapEntryDelete("lanes:backward", "3"),
@@ -136,8 +133,7 @@ class AddLanesTest {
                 "lanes:both_ways" to "1",
                 "turn:lanes:both_ways" to "left"
             ),
-            UnmarkedLanes(2),
-            StringMapEntryAdd("lanes", "2"),
+            UnmarkedLanes,
             StringMapEntryAdd("lane_markings", "no"),
             StringMapEntryDelete("lanes:both_ways", "1"),
             StringMapEntryDelete("turn:lanes:both_ways", "left"),

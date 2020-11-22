@@ -78,7 +78,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
             hasCenterLeftTurnLane = savedInstanceState.getBoolean(CENTER_LEFT_TURN_LANE)
         }
 
-        if (selectedLanesType == null) {
+        if (selectedLanesType == null || selectedLanesType == UNMARKED) {
             setSelectLanesTypeLayout()
         } else {
             setStreetSideLayout()
@@ -93,6 +93,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
 
     override fun isFormComplete(): Boolean = when (selectedLanesType) {
         null -> false
+        UNMARKED -> true
         MARKED_SIDES -> leftSide > 0 && rightSide > 0
         else -> leftSide > 0 || rightSide > 0
     }
@@ -103,7 +104,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         val totalLanes = leftSide + rightSide
         when(selectedLanesType) {
             MARKED -> applyAnswer(MarkedLanes(totalLanes))
-            UNMARKED -> applyAnswer(UnmarkedLanes(totalLanes))
+            UNMARKED -> applyAnswer(UnmarkedLanes)
             MARKED_SIDES -> {
                 val forwardLanes = if (isLeftHandTraffic) leftSide else rightSide
                 val backwardLanes = if (isLeftHandTraffic) rightSide else leftSide
@@ -132,17 +133,19 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     private fun setSelectLanesTypeLayout() {
         val view = setContentView(R.layout.quest_lanes_select_type)
 
-        view.unmarkedLanesButton.setOnClickListener {
-            launch {
-                selectedLanesType = UNMARKED
-                askLanesAndSwitchToStreetSideLayout()
-            }
+        val unmarkedLanesButton = view.unmarkedLanesButton
+
+        unmarkedLanesButton.isSelected = selectedLanesType == UNMARKED
+
+        unmarkedLanesButton.setOnClickListener {
+            val wasSelected = unmarkedLanesButton.isSelected
+            unmarkedLanesButton.isSelected = !wasSelected
+            selectedLanesType = if (wasSelected) null else UNMARKED
+            checkIsFormComplete()
         }
         view.markedLanesButton.setOnClickListener {
-            launch {
-                selectedLanesType = MARKED
-                askLanesAndSwitchToStreetSideLayout()
-            }
+            selectedLanesType = MARKED
+            askLanesAndSwitchToStreetSideLayout()
         }
     }
 
@@ -168,7 +171,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         lifecycle.addObserver(view.puzzleView)
 
         when(selectedLanesType) {
-            MARKED, UNMARKED -> {
+            MARKED -> {
                 view.puzzleView.onClickListener = this::selectTotalNumberOfLanes
                 view.puzzleView.onClickSideListener = null
             }
@@ -235,8 +238,6 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
             } else {
                 showSelectMarkedLanesDialogForBothSides(currentLaneCount)
             }
-        } else if (selectedLanesType == UNMARKED) {
-            showSelectUnmarkedLanesDialog(currentLaneCount)
         } else {
             throw IllegalStateException()
         }
@@ -251,15 +252,6 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
             rightSide = lanes - lanes / 2
         }
         updatePuzzleView()
-    }
-
-    private suspend fun showSelectUnmarkedLanesDialog(selectedValue: Int?) = suspendCoroutine<Int> { cont ->
-        ValuePickerDialog(requireContext(),
-            listOf(1,2,3,4,5,6,7,8),
-            selectedValue, null,
-            R.layout.quest_lanes_select_unmarked_lanes,
-            { cont.resume(it) }
-        ).show()
     }
 
     private suspend fun showSelectMarkedLanesDialogForBothSides(selectedValue: Int?) = suspendCoroutine<Int> { cont ->
