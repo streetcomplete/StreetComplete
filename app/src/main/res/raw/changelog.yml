@@ -6,7 +6,7 @@ v27.0-beta3: |
   <li>Max height below bridges: fix splitting the way (#2304)</li>
   <li>A few wording improvements (#2160, #2315, ...)</li>
   <li>Surface: Add "rock" as an answer option (#2298)</li>
-  <li>Cycleway resurvey: Interpret a road with oneway:bicyle=no to have no cycleway unless it is
+  <li>Cycleway resurvey: Interpret a road with oneway:bicycle=no to have no cycleway unless it is
       tagged explicitly (#2310)</li>
   </ul>
 
