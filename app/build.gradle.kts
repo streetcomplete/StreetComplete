@@ -197,3 +197,10 @@ tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {
     sourceDir = "$rootDir/res/country_metadata"
     targetDir = "$projectDir/src/main/assets/country_metadata"
 }
+
+tasks.register("copyDefaultStringsToEnStrings") {
+    doLast {
+        File("$projectDir/src/main/res/values/strings.xml")
+            .copyTo(File("$projectDir/src/main/res/values-en/strings.xml"), true)
+    }
+}
