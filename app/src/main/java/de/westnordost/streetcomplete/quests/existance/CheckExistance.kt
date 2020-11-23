@@ -20,7 +20,7 @@ class CheckExistance(
     private val nodesFilter by lazy { """
         nodes with ((
           (
-            or amenity = telephone
+            amenity = telephone
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or birds_nest = stork
           )

@@ -169,7 +169,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         answers.add(cantSay)
 
         createSplitWayAnswer()?.let { answers.add(it) }
-
+        createDeleteElementAnswer()?.let { answers.add(it) }
 
         answers.addAll(otherAnswers)
         return answers
@@ -348,16 +348,21 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     }
 
     protected fun deleteElement() {
-        context?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.osm_element_gone_description)
-            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
-                listener?.onDeleteElement(questId, osmElement!!)
-            }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .setNeutralButton(R.string.leave_note) { _, _ ->
-                composeNote()
-            }
+        val context = context ?: return
+
+        val message = (
+            "<b>" + Html.escapeHtml(context.getString(R.string.osm_element_gone_warning)) + "</b>"
+            + "<br><br>" + context.getString(R.string.osm_element_gone_description)
+            ).parseAsHtml()
+
+        AlertDialog.Builder(context)
+        .setMessage(message)
+        .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
+            listener?.onDeleteElement(questId, osmElement!!)
         }
+        .setNeutralButton(R.string.leave_note) { _, _ ->
+            composeNote()
+        }.show()
     }
 
     protected fun setContentView(resourceId: Int): View {
