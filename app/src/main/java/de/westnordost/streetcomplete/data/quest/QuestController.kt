@@ -91,6 +91,8 @@ import javax.inject.Singleton
         val q = osmQuestController.get(osmQuestId)
         if (q?.status != QuestStatus.NEW) return false
 
+        Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName}")
+
         deleteElementDB.add(DeleteOsmElement(osmQuestId, q.osmElementQuestType, q.elementId, q.elementType, source, q.center))
 
         osmQuestController.deleteAllForElement(q.elementType, q.elementId)
