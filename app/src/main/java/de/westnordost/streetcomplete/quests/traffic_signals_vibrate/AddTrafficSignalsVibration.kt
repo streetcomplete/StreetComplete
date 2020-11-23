@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.ktx.toYesNo
 class AddTrafficSignalsVibration : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals 
+        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals and foot!=no
         and (
           !$VIBRATING_BUTTON
           or $VIBRATING_BUTTON = no and $VIBRATING_BUTTON older today -4 years
