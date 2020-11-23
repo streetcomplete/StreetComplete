@@ -16,6 +16,7 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
     override val commitMessage = "Add charging station capacities"
     override val wikiLink = "Tag:amenity=charging_station"
     override val icon = R.drawable.ic_quest_car_charger_capacity
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_charging_station_capacity_title
 

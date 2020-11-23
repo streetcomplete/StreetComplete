@@ -13,6 +13,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
     override val icon = R.drawable.ic_quest_mail_ref
     override val commitMessage = "Add postbox refs"
     override val wikiLink = "Tag:amenity=post_box"
+    override val isDeleteElementEnabled = true
 
     // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     override val enabledInCountries = NoCountriesExcept(

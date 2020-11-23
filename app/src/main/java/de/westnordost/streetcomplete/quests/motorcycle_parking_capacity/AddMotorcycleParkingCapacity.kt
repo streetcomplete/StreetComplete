@@ -8,13 +8,14 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>() {
 
     override val elementFilter = """
-        nodes, ways with amenity = motorcycle_parking 
+        nodes, ways with amenity = motorcycle_parking
          and access !~ private|no
          and (!capacity or capacity older today -4 years)
     """
     override val commitMessage = "Add motorcycle parking capacities"
     override val wikiLink = "Tag:amenity=motorcycle_parking"
     override val icon = R.drawable.ic_quest_motorcycle_parking_capacity
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_motorcycleParkingCapacity_title
 

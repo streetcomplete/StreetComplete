@@ -11,6 +11,7 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
     override val commitMessage = "Add backrest information to benches"
     override val wikiLink = "Tag:amenity=bench"
     override val icon = R.drawable.ic_quest_bench_poi
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bench_backrest_title
 

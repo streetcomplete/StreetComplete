@@ -168,26 +168,41 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
         answers.add(cantSay)
 
-        val isSplitWayEnabled = (questType as? OsmElementQuestType)?.isSplitWayEnabled == true
-        if (isSplitWayEnabled) {
-            val way = osmElement as? Way
-            if (way != null) {
-                /* splitting up a closed roundabout can be very complex if it is part of a route
-               relation, so it is not supported
-               https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
-            */
-                val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
-                    way.tags?.get("junction") == "roundabout"
-                if (!isClosedRoundabout && !way.isArea()) {
-                    val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
-                        onClickSplitWayAnswer()
-                    }
-                    answers.add(splitWay)
-                }
-            }
-        }
+        createSplitWayAnswer()?.let { answers.add(it) }
+
+
         answers.addAll(otherAnswers)
         return answers
+    }
+
+    private fun createSplitWayAnswer(): OtherAnswer? {
+        val isSplitWayEnabled = (questType as? OsmElementQuestType)?.isSplitWayEnabled == true
+        if (!isSplitWayEnabled) return null
+
+        val way = osmElement as? Way ?: return null
+
+        /* splitting up a closed roundabout can be very complex if it is part of a route
+           relation, so it is not supported
+           https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
+        */
+        val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
+            way.tags?.get("junction") == "roundabout"
+        if (isClosedRoundabout) return null
+
+        if (way.isArea()) return null
+
+        return OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
+            onClickSplitWayAnswer()
+        }
+    }
+
+    private fun createDeleteElementAnswer(): OtherAnswer? {
+        val isDeleteElementEnabled = (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
+        if (!isDeleteElementEnabled) return null
+
+        return OtherAnswer(R.string.quest_generic_answer_does_not_exist) {
+            deleteElement()
+        }
     }
 
     private fun showOtherAnswers() {

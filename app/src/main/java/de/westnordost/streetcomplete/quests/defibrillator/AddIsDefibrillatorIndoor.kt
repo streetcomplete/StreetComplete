@@ -10,7 +10,7 @@ class AddIsDefibrillatorIndoor : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes with
-         emergency=defibrillator
+         emergency = defibrillator
          and access !~ private|no
          and !indoor
     """

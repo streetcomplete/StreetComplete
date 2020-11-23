@@ -32,6 +32,17 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** returns whether the user should be able to split the way instead */
     val isSplitWayEnabled: Boolean get() = false
 
+    /** returns whether the user should be able to delete this element instead. Only elements that
+     *  are not expected...
+     *  - to be part of a relation
+     *  - to be part of a network (f.e. roads, power lines, ...)
+     *  - to be part of a(nother) way
+     *  - to house a second POI on the same element (f.e. maybe a gift shop could double as tourism information?)
+     *  - to be a kind of element where deletion is not recommended, (f.e. a shop should rather
+     *    be set to shop=vacant until there is another one)
+     *  ...should be deletable */
+    val isDeleteElementEnabled: Boolean get() = false
+
     /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
     fun getTitle(tags: Map<String, String>): Int
 

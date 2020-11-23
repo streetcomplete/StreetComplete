@@ -10,6 +10,7 @@ class AddAtmOperator : OsmFilterQuestType<String>() {
     override val commitMessage = "Add ATM operator"
     override val wikiLink = "Tag:amenity=atm"
     override val icon = R.drawable.ic_quest_money
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_atm_operator_title
 

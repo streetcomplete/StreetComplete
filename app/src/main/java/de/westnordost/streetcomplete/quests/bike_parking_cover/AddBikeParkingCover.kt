@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with 
+        nodes, ways with
          amenity = bicycle_parking
          and access !~ private|no
          and !covered
@@ -18,6 +18,7 @@ class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
     override val commitMessage = "Add bicycle parkings cover"
     override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.ic_quest_bicycle_parking_cover
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) =
         R.string.quest_bicycleParkingCoveredStatus_title
