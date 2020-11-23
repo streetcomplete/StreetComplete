@@ -435,6 +435,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat, fish, or poultry.</string>
     <string name="quest_dietType_explanation">Only answer “yes” if the place provides proper eating options for this diet, ignore starters etc.</string>
     <string name="quest_toiletAvailability_name_title">Does %s have a restroom?</string>
+    <string name="quest_existance_title">Is this still here? (%s)</string>
+    <string name="quest_existance_name_title">Is %1$s still here? (%2$s)</string>
     <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
     <string name="quest_powerPolesMaterial_wood">Wood</string>
     <string name="quest_powerPolesMaterial_metal">Steel</string>

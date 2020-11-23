@@ -63,3 +63,11 @@ fun StringMapChangesBuilder.deleteCheckDatesForKey(key: String) {
 private val OSM_CHECK_DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 // not using date format because we want to be able to understand 2000-11 as well
 private val OSM_CHECK_DATE_REGEX = Regex("([0-9]{4})-([0-9]{2})(?:-([0-9]{2}))?")
+
+val LAST_CHECK_DATE_KEYS = listOf(
+    "check_date",
+    "lastcheck",
+    "last_checked",
+    "survey:date",
+    "survey_date"
+)

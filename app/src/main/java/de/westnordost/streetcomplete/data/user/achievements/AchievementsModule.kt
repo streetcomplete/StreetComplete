@@ -654,6 +654,7 @@ object AchievementsModule {
             R.string.achievement_citizen_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
+                    "CheckExistance",
                     "AddSelfServiceLaundry",
                     "AddToiletAvailability",
                     "AddToiletsFee",
@@ -691,6 +692,7 @@ object AchievementsModule {
             R.string.achievement_outdoors_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
+                    "CheckExistance",
                     "AddSport",
                     "AddSummitRegister",
                     "AddReligionToWaysideShrine",
