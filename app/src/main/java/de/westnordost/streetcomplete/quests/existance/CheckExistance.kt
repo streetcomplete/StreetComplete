@@ -29,6 +29,8 @@ class CheckExistance(
           (
             amenity = atm
             or amenity = post_box
+            or amenity = waste_basket
+            or amenity = vending_machine and vending = public_transport_tickets
           )
           and (${lastChecked(2.0)})
         ) or (
@@ -37,10 +39,8 @@ class CheckExistance(
             or amenity = bench
             or leisure = picnic_table
             or leisure = firepit
-            or amenity = waste_basket
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
-            or amenity = vending_machine and vending = public_transport_tickets
           )
           and (${lastChecked(4.0)})
         )) and access !~ no|private
