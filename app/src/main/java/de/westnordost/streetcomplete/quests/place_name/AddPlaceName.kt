@@ -14,12 +14,12 @@ class AddPlaceName(
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""
-        nodes, ways, relations with 
+        nodes, ways, relations with
         (
           shop and shop !~ no|vacant
           or craft
           or office
-          or tourism = information and information = office 
+          or tourism = information and information = office
           or """.trimIndent() +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
