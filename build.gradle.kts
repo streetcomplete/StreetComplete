@@ -54,9 +54,9 @@ tasks.register("updateStreetCompleteData") {
     group = "streetcomplete"
     dependsOn(
         "updateStoreDescriptions",
-        "updateChargingStationOperators",
-        "updateClothesContainerOperators",
-        "updateAtmOperators",
+        //"updateChargingStationOperators",
+        //"updateClothesContainerOperators",
+        //"updateAtmOperators",
         "app:updatePresets",
         "app:updateTranslations",
         "app:updateTranslationCompleteness",

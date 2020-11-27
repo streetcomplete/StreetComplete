@@ -2155,4 +2155,8 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Especifique aqui o número de faixas marcadas que podem ser utilizadas pelo tráfego de automóveis. Portanto, as faixas de bicicletas e de estacionamento não contam.
 Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
+    <string name="quest_surface_value_rock">"Rocha"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Caminhões altos podem passar"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Caminhões altos não cabem"</string>
+    <string name="quest_address_street_hint">"Toque na estrada no mapa"</string>
 </resources>

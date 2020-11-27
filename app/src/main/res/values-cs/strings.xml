@@ -2411,4 +2411,8 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Určete tady celkový počet vyznačených jízdních pruhů, na kterých mohou jezdit auta. Pruhy pro kola a parkování nepočítejte.
 Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
+    <string name="quest_surface_value_rock">"Skála"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Vysoký náklaďák může projet"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Vysoký náklaďák se nevejde"</string>
+    <string name="quest_address_street_hint">"Ťukněte na cestu na mapě"</string>
 </resources>

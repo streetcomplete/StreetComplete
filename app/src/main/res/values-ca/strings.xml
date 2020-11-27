@@ -337,7 +337,7 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
     <string name="quest_surface_value_paving_stones">"Paviment intertravat"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_value_pebblestone">"Llambordes"</string>
+    <string name="quest_surface_value_pebblestone">"Còdols"</string>
     <string name="quest_surface_value_sand">"Sorra"</string>
 
     <!-- Fuzzy -->

@@ -2386,4 +2386,8 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
 
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Especifique el número de carriles marcados que puede utilizar el tráfico de automóviles. Los carriles para bicicletas y estacionamiento no cuentan. Si hay carriles reservados para autobuses, deje una nota en su lugar."</string>
+    <string name="quest_surface_value_rock">"Roca"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Los camiones altos pueden pasar"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Los camiones altos no caben"</string>
+    <string name="quest_address_street_hint">"Toque la carretera en el mapa"</string>
 </resources>

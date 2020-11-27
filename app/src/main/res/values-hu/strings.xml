@@ -2340,7 +2340,7 @@ szintek"</string>
     <string name="quest_lanes_answer_lanes">"Jelölt sávok"</string>
     <string name="quest_lanes_answer_noLanes">"Nincsenek jelölt sávok"</string>
     <string name="quest_lanes_answer_lanes_odd">"Irányonként különböző"</string>
-    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Kétirányú balra kanyarodó sávval rendelkezik"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Kétirányú balra kanyarodó sávval rendelkezik (USA és Kanada)"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ez helyes?"</string>
     <string name="quest_maxheight_below_bridge_title">"Mekkora a magasságkorlátozás a híd alatt?"</string>
     <string name="quest_maxheight_split_way_hint">"Ha nem az egész útra érvényes, akkor inkább válaszold ezt: \"%s\"."</string>
@@ -2357,4 +2357,8 @@ szintek"</string>
 
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Add meg az autóforgalom számára használható, jelölt sávok számát. A kerékpársávok és a parkolósávok nem számítanak bele. Ha vannak buszok számára fenntartott sávok is, akkor kérlek, inkább hagyj megjegyzést."</string>
+    <string name="quest_surface_value_rock">"Szikla"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Magas kamionok át tudnak haladni"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Magas kamionok nem férnek el"</string>
+    <string name="quest_address_street_hint">"Koppints a térképen lévő útra"</string>
 </resources>

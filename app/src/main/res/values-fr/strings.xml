@@ -1185,4 +1185,14 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Spécifiez le nombre de voies délimitées utilisables pour le trafic routier. Les voies cyclables et emplacement de parking ne comptent pas. Si certaines voies sont réservées aux bus, laissez une note."</string>
+    <string name="quest_surface_value_rock">"Rocher"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_maxheight_answer_noSign_question_yes">"Les grands camions peuvent passer"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_maxheight_answer_noSign_question_no">"Les grands camions ne rentrent pas"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_street_hint">"Tapez la rue sur le plan"</string>
 </resources>

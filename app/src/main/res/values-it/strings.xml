@@ -186,12 +186,12 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_surface_value_gravel">"Ghiaia"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_value_paving_stones">"Pietre lisce"</string>
+    <string name="quest_surface_value_paving_stones">"Pietre (o mattonelle) lisce regolari"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_pebblestone">"Ciottoli"</string>
     <string name="quest_surface_value_sand">"Sabbia"</string>
-    <string name="quest_surface_value_sett">"Sanpietrini"</string>
+    <string name="quest_surface_value_sett">"Blocchetti di pietra irregolari (es. sampietrini, pavè)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"Legno"</string>
@@ -996,7 +996,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_cycleway_value_lane_soft">"pista ciclabile (segni tratteggiati)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_value_unhewn_cobblestone">"Ciottoli non sbiancati"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"Ciottoli grezzi"</string>
 
     <!-- Fuzzy -->
     <string name="quest_parking_access_title">"L'accesso al parcheggio è limitato ad alcune categorie?"</string>
@@ -2176,7 +2176,7 @@ riconoscimento"</string>
     <!-- Fuzzy -->
     <string name="quest_buildingType_historic_description">"costruzione di valore storico che non assolve ad alcuna funzione civica, religiosa o commerciale"</string>
     <string name="quest_buildingType_abandoned">"Abbandonato"</string>
-    <string name="quest_buildingType_abandoned_description">"Costruzione inutilizzato la cui funzione o scopo originale è sconosciuto"</string>
+    <string name="quest_buildingType_abandoned_description">"Costruzione inutilizzata, la cui funzione o scopo originale è sconosciuto"</string>
     <string name="quest_buildingType_ruins">"Rovine"</string>
     <string name="quest_buildingType_ruins_description">"Fatiscente, edificio in rovina e non identificabile"</string>
     <string name="quest_charging_station_capacity_title">"Quante automobili possono essere ricaricate contemporaneamente a questa colonnina?"</string>
@@ -2198,10 +2198,12 @@ riconoscimento"</string>
     <string name="quest_kerb_height_lowered_ramp">"Cordolo a rampa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_lanes_answer_lanes_description2">"Specifica il numero totale di corsie segnate (entrambe le direzioni) utilizzabili dal traffico automobilistico. Le corsie ciclabili e quelle dei parcheggi non vengono contate. 
-Se invece qualche corsia é riservata ai bus per favore lascia un commento."</string>
+    <string name="quest_lanes_answer_lanes_description2">"Specifica il numero totale di corsie segnate (entrambe le direzioni) utilizzabili dal traffico automobilistico. Le corsie ciclabili e quelle dei parcheggi non vengono contate. Se invece qualche corsia è riservata ai bus per favore lascia un commento."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_lanes_answer_lanes_description_one_side2">"Specifica il numero totale di corsie segnate in questo tratto utilizzabili dal traffico automobilistico. Le corsie ciclabili e quelle dei parcheggi non vengono contate. 
-Se invece qualche corsia é riservata ai bus per favore lascia un commento. "</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Specifica il numero totale di corsie segnate in questo tratto utilizzabili dal traffico automobilistico. Le corsie ciclabili e quelle dei parcheggi non vanno contate. Se invece qualche corsia è riservata ai bus per favore lascia un commento."</string>
+    <string name="quest_surface_value_rock">"Rocce"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"I camion alti possono passare"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"I camion alti non passano"</string>
+    <string name="quest_address_street_hint">"Premi la strada sulla mappa"</string>
 </resources>
