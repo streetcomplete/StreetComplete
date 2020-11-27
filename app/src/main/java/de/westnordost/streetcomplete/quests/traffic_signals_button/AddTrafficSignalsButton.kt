@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals 
+        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals and foot!=no 
         and !button_operated
         """
     override val commitMessage = "Add whether traffic signals have a button for pedestrians"

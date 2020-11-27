@@ -42,7 +42,7 @@ private val IS_AREA_EXPR = """
     or tourism
     or building:part
     or aerialway = station
-    or railway = station
+    or railway ~ platform|station
     or (military and military != trench)
     or power ~ compensator|converter|generator|plant|substation
     or waterway ~ boatyard|dam|dock|riverbank|fuel
