@@ -7,10 +7,12 @@ import android.view.View
 import android.widget.AutoCompleteTextView
 import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.ConfigurationCompat
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
-import de.westnordost.osmfeatures.Match
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.toTypedArray
 import kotlinx.android.synthetic.main.dialog_shop_gone.view.*
 
 class ShopGoneDialog(
@@ -76,7 +78,7 @@ class ShopGoneDialog(
         }
     }
 
-    private fun getSelectedFeature(): Match? {
+    private fun getSelectedFeature(): Feature? {
         val input = presetsEditText.text.toString()
         // TODO canonicalize?
         return getFeatures(input).firstOrNull()?.takeIf { it.name == input }
@@ -87,7 +89,7 @@ class ShopGoneDialog(
         if (feature == null) {
             presetsEditText.error = context.resources.getText(R.string.quest_shop_gone_replaced_answer_error)
         } else {
-            applyAndDismiss(ShopReplaced(feature.tags))
+            applyAndDismiss(ShopReplaced(feature))
         }
     }
 
@@ -96,12 +98,13 @@ class ShopGoneDialog(
         dismiss()
     }
 
-    private fun getFeatures(startsWith: String) : List<Match> {
+    private fun getFeatures(startsWith: String) : List<Feature> {
+        val localeList = ConfigurationCompat.getLocales(context.resources.configuration)
         return featureDictionary
             .byTerm(startsWith)
             .forGeometry(geometryType)
             .inCountry(countryCode)
-            .forLocale(context.resources.configuration.locale) // TODO
+            .forLocale(*localeList.toTypedArray())
             .find()
     }
 }
