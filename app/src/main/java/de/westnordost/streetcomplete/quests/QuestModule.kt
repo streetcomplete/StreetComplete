@@ -160,11 +160,11 @@ import javax.inject.Singleton
         AddStepsRamp(),
         AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, MAPS.ME
         AddPlaygroundAccess(), //late as in many areas all needed access=private is already mapped
-        AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, MAPS.ME
+        AddWheelchairAccessBusiness(), // used by wheelmap, OsmAnd, MAPS.ME
         AddToiletAvailability(), //OSM Carto, shown in OsmAnd descriptions
         AddFerryAccessPedestrian(),
         AddFerryAccessMotorVehicle(),
-        AddAcceptsCash(featureDictionaryFuture),
+        AddAcceptsCash(),
 
         // ↓ 4. definitely shown as errors in QA tools
 

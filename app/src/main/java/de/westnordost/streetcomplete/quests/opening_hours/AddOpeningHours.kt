@@ -95,33 +95,22 @@ class AddOpeningHours (
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasProperName = hasProperName(tags)
-        val hasNonBrandFeatureName = hasFeatureName(tags) && !tags.containsKey("brand")
         // treat invalid opening hours like it is not set at all
         val hasValidOpeningHours = tags["opening_hours"]?.toOpeningHoursRules() != null
         return if (hasValidOpeningHours) {
-            when {
-                !hasProperName          -> R.string.quest_openingHours_resurvey_no_name_title
-                !hasNonBrandFeatureName -> R.string.quest_openingHours_resurvey_name_title
-                else                    -> R.string.quest_openingHours_resurvey_name_type_title
-            }
+            if (!hasProperName) R.string.quest_openingHours_resurvey_no_name_title
+            else R.string.quest_openingHours_resurvey_name_type_title
         } else {
-            when {
-                !hasProperName          -> R.string.quest_openingHours_no_name_title
-                !hasNonBrandFeatureName -> R.string.quest_openingHours_name_title
-                else                    -> R.string.quest_openingHours_name_type_title
-            }
+            if (!hasProperName) R.string.quest_openingHours_no_name_title
+            else R.string.quest_openingHours_name_type_title
         }
     }
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
-        val hasProperName = name != null
-        val hasNonBrandFeatureName = hasFeatureName(tags) && !tags.containsKey("brand")
-        return when {
-            !hasProperName          -> arrayOf(featureName.value.toString())
-            !hasNonBrandFeatureName -> arrayOf(name!!)
-            else                    -> arrayOf(name!!, featureName.value.toString())
-        }
+        val hasProperName = hasProperName(tags)
+        return if (!hasProperName) arrayOf(featureName.value.toString())
+               else arrayOf(name.toString(), featureName.value.toString())
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

@@ -135,7 +135,7 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:1.5")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures-android:1.1")
+    implementation("de.westnordost:osmfeatures-android:2.0")
     // talking with the OSM API
     implementation("de.westnordost:osmapi-map:1.3")
     implementation("de.westnordost:osmapi-changesets:1.3")
