@@ -975,9 +975,6 @@
     <string name="quest_cycleway_value_track_dual">"單車道，雙向"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"無，但允許單車騎士使用人行道"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"進階"</string>
 
     <!-- Fuzzy -->

@@ -1,14 +1,18 @@
-v27.0-beta1: |
+v27.0: |
   <h3>New Quests</h3>
   <ul>
   <li><i>Is there tactile paving on this curb here?</i> (#1305, #2183), by @matkoniecz</li>
   <li><i>What is the height of this curb?</i> (#1305, #2183), by @matkoniecz</li>
-  <li><i>How many lanes for cars does this road have?</i> (#856, #2269)</li>
+  <li><i>How many lanes for cars does this road have?</i> (#856, #2269, #2305, #2299 ...)</li>
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Ask for the max height also below bridges (#1882, #2234)</li>
-  <li>A few minor enhancements (#2280, #2276, #2221)</li>
+  <li>Building type: fix wrong name for a silo (#2303)</li>
+  <li>Surface: Add "rock" as an answer option (#2298)</li>
+  <li>Cycleway resurvey: Interpret a road with oneway:bicycle=no to have no cycleway unless it is
+      tagged explicitly (#2310)</li>
+  <li>A few minor enhancements (#2280, #2276, #2221, #2160, #2315, ...)</li>
   </ul>
 
 v26.2: |

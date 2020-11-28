@@ -129,7 +129,9 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
     private val carBitmaps: List<Bitmap>
 
-    private val isShowingOnlyRightSide: Boolean get() = !isShowingBothSides || !isShowingLaneMarkings && laneCountLeft == 0
+    private val isShowingOneLaneUnmarked: Boolean get() = !isShowingLaneMarkings && laneCountLeft == 0 && laneCountRight == 1
+
+    private val isShowingOnlyRightSide: Boolean get() = !isShowingBothSides || isShowingOneLaneUnmarked
 
     private val noSidesAreDefined: Boolean get() = laneCountLeft == 0 && laneCountRight == 0
     private val bothSidesAreDefined: Boolean get() = laneCountLeft > 0 && laneCountRight > 0
@@ -187,8 +189,8 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         laneCountLeft = left
         laneCountRight = right
         hasCenterLeftTurnLane = centerLeftTurn
-        updateCarsOnLanes(left, carsOnLanesLeft)
-        updateCarsOnLanes(right, carsOnLanesRight)
+        updateCarsOnLanes(left, carsOnLanesLeft, !isForwardTraffic)
+        updateCarsOnLanes(right, carsOnLanesRight, isForwardTraffic)
 
         if ((laneCountLeft <= 0 || laneCountRight <= 0) && !HAS_SHOWN_TAP_HINT) {
             if (laneCountLeft <= 0) leftSideClickArea.showTapHint(300)
@@ -201,6 +203,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        if (width == 0 || height == 0) return
 
         canvas.drawColor(Color.parseColor("#33666666"))
 
@@ -209,11 +212,13 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         val leftLanesStart = leftLanesStart
         val leftLanesEnd = leftLanesEnd
         val rightLanesStart = rightLanesStart
+        val zoom = if (isShowingBothSides && isShowingOneLaneUnmarked) 1.4f / laneWidth else 1f / laneWidth
+
         val shoulderWidth = SHOULDER_WIDTH * laneWidth
 
-        val lineWidth = LANE_MARKING_WIDTH * laneWidth
+        val lineWidth = LANE_MARKING_WIDTH / zoom
 
-        val dashEffect = DashPathEffect(floatArrayOf(lineWidth * 8, lineWidth * 12), 0f)
+        val dashEffect = DashPathEffect(floatArrayOf(lineWidth * 6, lineWidth * 10), 0f)
 
         shoulderLinePaint.strokeWidth = lineWidth
         shoulderLinePaint.pathEffect = when(shoulderLineStyle) {
@@ -271,11 +276,12 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         }
 
         // 5. draw cars
+        val carWidth = (1f - 2f * CAR_LANE_PADDING) / zoom
         carsOnLanesRight.asReversed().forEachIndexed { index, carState ->
-            canvas.drawCar(carState, rightLanesStart + index, laneWidth, isForwardTraffic)
+            canvas.drawCar(carState, rightLanesStart + index, laneWidth, carWidth)
         }
         carsOnLanesLeft.forEachIndexed { index, carState ->
-            canvas.drawCar(carState, leftLanesStart + index, laneWidth, !isForwardTraffic)
+            canvas.drawCar(carState, leftLanesStart + index, laneWidth, carWidth)
         }
     }
 
@@ -298,9 +304,9 @@ class LanesSelectPuzzle @JvmOverloads constructor(
     }
 
     /** initialize/delete car states given the new lane count */
-    private fun updateCarsOnLanes(laneCount: Int, carsOnLanes: MutableList<CarState>) {
+    private fun updateCarsOnLanes(laneCount: Int, carsOnLanes: MutableList<CarState>, forwardDirection: Boolean) {
         while (carsOnLanes.size < laneCount) {
-            carsOnLanes.add(CarState(carBitmaps[Random.nextInt(carBitmaps.size)], Random.nextFloat()))
+            carsOnLanes.add(CarState(forwardDirection, carBitmaps))
         }
         while (carsOnLanes.size > laneCount) {
             carsOnLanes.removeLast()
@@ -315,16 +321,23 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         /* the CAR_SPEED is "lane graphic squares per second". If the lane graphic is not a square
            we need to go faster/slower */
         val ratio = 1f * w / h
-        val zoom = max(2, lanesSpace)
-        val delta = CAR_SPEED * ratio * deltaTime/1000f / zoom
+        val zoom = max(3, lanesSpace)
+        val delta = ratio * deltaTime/1000f / zoom
 
-        val randomPerLane = Random(1)
-        val allCarsOnLanes = carsOnLanesLeft.asSequence() + carsOnLanesRight.asSequence()
-        for(carAndPosition in allCarsOnLanes) {
-            carAndPosition.position += delta * (1f + CAR_SPEED_VARIATION * (1 - 2 * randomPerLane.nextFloat()))
-            if (carAndPosition.position > 1f) {
-                carAndPosition.bitmap = carBitmaps[Random.nextInt(carBitmaps.size)]
-                carAndPosition.position = -Random.nextFloat() * CAR_SPARSITY
+        for(car in carsOnLanesLeft) {
+            car.position += delta * car.speed
+            if (car.isOutOfBounds) {
+                car.reset(!isForwardTraffic, carBitmaps)
+            }
+        }
+        for(car in carsOnLanesRight) {
+            car.position += delta * car.speed
+            if (car.isOutOfBounds) {
+                if (isShowingBothSides && isShowingOneLaneUnmarked) {
+                    car.reset(car.speed < 0, carBitmaps)
+                } else {
+                    car.reset(isForwardTraffic, carBitmaps)
+                }
             }
         }
     }
@@ -337,7 +350,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 private const val SHOULDER_WIDTH = 0.125f // as fraction of lane width
 private const val LANE_MARKING_WIDTH = 0.0625f // as fraction of lane width
 private const val CAR_LANE_PADDING = 0.10f // how much space there is between car and lane markings, as fraction of lane width
-private const val CAR_SPEED = 5f // in "lane graphic squares per second"
+private const val CAR_SPEED = 4f // in "lane graphic squares per second"
 private const val CAR_SPEED_VARIATION = 0.2f // as fraction: 1 = 100% variation
 private const val CAR_SPARSITY = 1f
 
@@ -353,25 +366,44 @@ private val CAR_RES_IDS = listOf(
     R.drawable.ic_car5,
 )
 
-private data class CarState(var bitmap: Bitmap, var position: Float, val matrix: Matrix = Matrix())
+private class CarState(forwardDirection: Boolean, bitmaps: List<Bitmap>) {
+    lateinit var bitmap: Bitmap
+    var position: Float = 0f
+    var speed: Float = 0f
+    val matrix: Matrix = Matrix()
+
+    val isOutOfBounds: Boolean get() = speed > 0 && position > 1 || speed < 0 && position < 0
+
+    init {
+        reset(forwardDirection, bitmaps)
+        val r = Random.nextFloat() / 2f
+        position = if (forwardDirection) r else 1 - r
+    }
+
+    fun reset(forwardDirection: Boolean, bitmaps: List<Bitmap>) {
+        bitmap = bitmaps[Random.nextInt(bitmaps.size)]
+        val pos = Random.nextFloat() * CAR_SPARSITY
+        position = if (forwardDirection) -pos else 1f + pos
+        speed = CAR_SPEED * (1f + CAR_SPEED_VARIATION * Random.nextFloat()) * (if (forwardDirection) 1 else -1)
+    }
+}
 
 private fun Canvas.drawVerticalLine(x: Float, paint: Paint) {
     drawLine(x, 0f, x, height.toFloat(), paint)
 }
 
-private fun Canvas.drawCar(carState: CarState, laneIndex: Float, laneWidth: Float, isDirectionForward: Boolean) {
+private fun Canvas.drawCar(carState: CarState, laneIndex: Float, laneWidth: Float, carWidth: Float) {
     val bitmap = carState.bitmap
     val w = bitmap.width
     val h = bitmap.height
 
-    val carWidth = ((1f - 2f * CAR_LANE_PADDING) * laneWidth).toInt()
     val carHeight = carWidth * h / w
 
-    val x = laneWidth * (laneIndex + CAR_LANE_PADDING)
-    val y = (carHeight + height) * (if (!isDirectionForward) carState.position else 1 - carState.position) - carHeight
+    val x = laneWidth * laneIndex + (laneWidth - carWidth) / 2f
+    val y = (carHeight + height) * (1 - carState.position) - carHeight
 
     carState.matrix.reset()
-    if (!isDirectionForward) carState.matrix.postRotate(180f, w / 2f, h / 2f)
+    if (carState.speed < 0) carState.matrix.postRotate(180f, w / 2f, h / 2f)
     carState.matrix.postScale(1f * carWidth / w, 1f * carHeight / h)
     carState.matrix.postTranslate(x, y)
     drawBitmap(bitmap, carState.matrix, null)

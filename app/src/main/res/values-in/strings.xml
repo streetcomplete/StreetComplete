@@ -574,7 +574,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_leave_new_note_create_image_error">"Tidak dapat membuat berkas untuk foto"</string>
     <string name="quest_cycleway_value_lane_dual">"lajur sepeda, kedua arah"</string>
     <string name="quest_cycleway_value_track_dual">"jalur sepeda, dua arah"</string>
-    <string name="quest_cycleway_value_sidewalk_allowed">"tidak ada, tapi sepeda dibolehkan di trotoar"</string>
     <string name="pref_category_advanced">"Lanjutan"</string>
     <string name="pref_title_quests">"Pilihan pencarian"</string>
     <string name="quest_enabled">"Nyala"</string>

@@ -30,7 +30,6 @@
         style="@style/ImageSelectLabelBelow"
         android:maxLines="4"
         android:padding="4dp"
-        tools:text="@string/quest_cycleway_value_sidewalk_allowed"
         />
 
 

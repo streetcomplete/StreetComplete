@@ -975,9 +975,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_cycleway_value_track_dual">"双向自行车赛道（cycle track）"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"无，但允许自行车使用人行道"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"高级"</string>
 
     <!-- Fuzzy -->

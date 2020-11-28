@@ -27,11 +27,12 @@
             android:padding="8dp"
             android:inputType="text"
             android:imeOptions="actionDone"
-            android:textSize="32dp"
+            android:textSize="28dp"
             android:textAlignment="center"
             android:maxLines="1"
             android:textColor="#ffffff"
-            tools:text="My cool Street"
+            android:textColorHint="#66ffffff"
+            android:hint="@string/quest_address_street_hint"
             />
 
     </me.grantland.widget.AutofitLayout>

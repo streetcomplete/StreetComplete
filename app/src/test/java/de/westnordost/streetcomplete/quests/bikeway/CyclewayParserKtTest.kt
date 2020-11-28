@@ -1583,7 +1583,7 @@ class CyclewayParserKtTest {
 
     @Test fun `none on left side but oneway that isn't a oneway for cyclists (reversed)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, null),
+            LeftAndRightCycleway(NONE, NONE_NO_ONEWAY),
             parse(
                 "cycleway:left" to "no",
                 "oneway" to "-1",
@@ -1594,7 +1594,7 @@ class CyclewayParserKtTest {
 
     @Test fun `none on left side but oneway that isn't a oneway for cyclists (left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, null),
+            LeftAndRightCycleway(NONE, NONE_NO_ONEWAY),
             parseForLeftHandTraffic(
                 "cycleway:left" to "no",
                 "oneway" to "yes",
@@ -1615,6 +1615,26 @@ class CyclewayParserKtTest {
     }
 
     /* ------------------------------ cycleway:left opposite tagging --------------------------- */
+
+    @Test fun `left opposite`() {
+        assertEquals(
+            LeftAndRightCycleway(NONE_NO_ONEWAY, null),
+            parse(
+                "cycleway:left" to "opposite",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `left opposite (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(NONE, null),
+            parseForLeftHandTraffic(
+                "cycleway:left" to "opposite",
+                "oneway" to "yes"
+            )
+        )
+    }
 
     @Test fun `track left opposite`() {
         assertEquals(
@@ -2197,7 +2217,7 @@ class CyclewayParserKtTest {
 
     @Test fun `none on right side but oneway that isn't a oneway for cyclists`() {
         assertEquals(
-            LeftAndRightCycleway(null, NONE),
+            LeftAndRightCycleway(NONE_NO_ONEWAY, NONE),
             parse(
                 "cycleway:right" to "no",
                 "oneway" to "yes",
@@ -2217,7 +2237,7 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `none on right side but oneway that isn't a oneway for cyclists (right hand traffic)`() {
+    @Test fun `none on right side but oneway that isn't a oneway for cyclists (left hand traffic)`() {
         assertEquals(
             LeftAndRightCycleway(null, NONE_NO_ONEWAY),
             parseForLeftHandTraffic(
@@ -2228,9 +2248,9 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `none on right side but oneway that isn't a oneway for cyclists (reversed + right hand traffic)`() {
+    @Test fun `none on right side but oneway that isn't a oneway for cyclists (reversed + left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(null, NONE),
+            LeftAndRightCycleway(NONE_NO_ONEWAY, NONE),
             parseForLeftHandTraffic(
                 "cycleway:right" to "no",
                 "oneway" to "-1",
@@ -2240,6 +2260,26 @@ class CyclewayParserKtTest {
     }
 
     /* ------------------------------ cycleway:right opposite tagging --------------------------- */
+
+    @Test fun `right opposite`() {
+        assertEquals(
+            LeftAndRightCycleway(null, NONE),
+            parse(
+                "cycleway:right" to "opposite",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `right opposite (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, NONE_NO_ONEWAY),
+            parseForLeftHandTraffic(
+                "cycleway:right" to "opposite",
+                "oneway" to "yes"
+            )
+        )
+    }
 
     @Test fun `track right opposite`() {
         assertEquals(
@@ -2796,7 +2836,7 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `none on both sides but oneway that isn't a oneway for cyclists (right hand traffic)`() {
+    @Test fun `none on both sides but oneway that isn't a oneway for cyclists (left hand traffic)`() {
         assertEquals(
             LeftAndRightCycleway(NONE, NONE_NO_ONEWAY),
             parseForLeftHandTraffic(
@@ -2807,7 +2847,7 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `none on both sides but oneway that isn't a oneway for cyclists (reversed + right hand traffic)`() {
+    @Test fun `none on both sides but oneway that isn't a oneway for cyclists (reversed + left hand traffic)`() {
         assertEquals(
             LeftAndRightCycleway(NONE_NO_ONEWAY, NONE),
             parseForLeftHandTraffic(

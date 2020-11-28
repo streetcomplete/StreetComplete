@@ -973,9 +973,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
     <string name="quest_cycleway_value_track_dual">"양방향 자전거 도로"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"없지만 인도를 이용할 수 있음"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"상세"</string>
 
     <!-- Fuzzy -->

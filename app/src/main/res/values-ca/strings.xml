@@ -337,7 +337,7 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
     <string name="quest_surface_value_paving_stones">"Paviment intertravat"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_value_pebblestone">"Llambordes"</string>
+    <string name="quest_surface_value_pebblestone">"Còdols"</string>
     <string name="quest_surface_value_sand">"Sorra"</string>
 
     <!-- Fuzzy -->
@@ -973,9 +973,6 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"Via per ciclistes, doble direcció"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"Cap, però els ciclistes són permesos damunt la vorera"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avançat"</string>

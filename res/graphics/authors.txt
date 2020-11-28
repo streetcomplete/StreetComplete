@@ -11,6 +11,7 @@ achievements graphics/
     achievement_frame           Sanja Dimitrijevic, License: CC-BY-SA 4.0
     bicyclist                   Sanja Dimitrijevic, License: CC-BY-SA 4.0
     blind                       Judith Gastell, License: CC-BY-SA 4.0
+    building                    Judith Gastell, License: CC-BY-SA 4.0
     car                         Sanja Dimitrijevic, License: CC-BY-SA 4.0
     citizen                     Judith Gastell, License: CC-BY-SA 4.0
     emergency                   Judith Gastell, License: CC-BY-SA 4.0

@@ -978,9 +978,6 @@
     <string name="quest_cycleway_value_track_dual">"велодорожка, движение в обе стороны"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"нет, но знаки разрешают движение велосипедистов по тротуару"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Расширенные"</string>
 
     <!-- Fuzzy -->
@@ -1166,6 +1163,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_religion_jain">"Джайнизм"</string>
+    <string name="quest_religion_bahai">"Бахаи"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_caodaist">"Каодай"</string>
@@ -1251,6 +1249,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Какого типа данная велопарковка?"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"велосипедная дорожка"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Какое время выемки писем у почтового ящика?"</string>
@@ -2233,6 +2232,7 @@
     <string name="quest_address_street_description">"Нажмите на дорогу к которой относится объект или введите название улицы в поле ввода:"</string>
     <string name="quest_recycling_type_cooking_oil">"масло для приготовления пищи"</string>
     <string name="quest_recycling_type_engine_oil">"моторное масло"</string>
+    <string name="link_photon_description">"Автономное расширение для Nominatim с нечетким поиском и функцией поиска по мере ввода"</string>
     <string name="link_graphhopper_description">"Гибкий механизм маршрутизации"</string>
     <string name="link_qwant_maps_description">"Карта с доступными для поиска местами и направлениями"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Для отображения карты, векторные тайлы из  %1$s. Прочтите  &lt;a href=\"%2$s\"&gt;политику конфиденциальности &lt;/a&gt;  для большей информации &lt;/p&gt;"</string>
@@ -2250,12 +2250,14 @@
     <string name="quest_board_type_map_title">"Это только карта и ничего более?"</string>
     <string name="quest_board_type_map_description">"Если доска посвящена определенной теме, укажите ее, независимо от того, есть ли на ней карта. Например, на табло общественного транспорта может быть карта автобусных маршрутов. Если тема отсутствует в списке доступных ответов, оставьте вместо этого заметку."</string>
     <string name="quest_surface_detailed_answer_impossible">"Различные покрытия..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Вы уверены что указать тип покрытия невозможно? Опция \"Отличается на разных участках\" позволяет разделить участок в местах смены покрытия. Используйте \"Не знаю\" если покрытие однородно, но не доступно в качестве ответа"</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Пожалуйста, кратко укажите здесь характер поверхности, например, «песчаный с вкраплениями булыжника». Длина текста ограничена 255 символами."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"международное"</string>
     <string name="quest_streetName_menuItem_romanized">"Латиницей"</string>
     <string name="quest_buildingType_terrace2">"Ряд домов"</string>
+    <string name="quest_oneway_tutorial">"Дорога на картинке повернута так же, как на карте в месте расположения булавки. Обратите внимание на указанное направление."</string>
     <string name="at_housename">"Название дома %s:"</string>
     <string name="at_conscription_and_street_number">"Сквозная нумерация %1$s, Ориентировочный номер %2$s:"</string>
 
@@ -2269,7 +2271,9 @@
     <string name="quest_openingHours_add_off_days">"Добавить выходные дни"</string>
     <string name="quest_openingHours_off_day">"Выходной"</string>
     <string name="quest_openingHours_unspecified_range">"Не указано"</string>
+    <string name="quest_cycleway_resurvey_title">"Здесь всё ещё есть велосипедная дорожка?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Доступно ли %1$s (%2$s) для инвалидных колясок?"</string>
+    <string name="pref_title_resurvey_intervals">"Интервалы повторного обследования"</string>
     <string name="resurvey_intervals_less_often">"Спрашивать реже"</string>
     <string name="resurvey_intervals_default">"По умолчанию"</string>
     <string name="resurvey_intervals_more_often">"Спрашивать чаще"</string>
@@ -2278,28 +2282,32 @@
     <string name="quest_busStopBench_tram_title">"На этой остановке трамвая есть скамейка?"</string>
     <string name="quest_busStopBench_title">"На этой автобусной остановке есть скамейка?"</string>
     <string name="quest_busStopBench_name_title">"Есть ли на автобусной остановке %s скамейка?"</string>
+    <string name="quest_summit_register_title">"Здесь есть книга записи посетителей на %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Дефибриллятор (AED) находится внутри здания?"</string>
     <string name="about_title_translate">"Помогите перевести это приложение"</string>
     <string name="about_description_translate">"%1$s переведен на %2$d%%"</string>
     <string name="quest_oneway2_title">"Это улица с односторонним движением? В каком направлении?"</string>
     <string name="quest_oneway2_dir">"В одну сторону в этом направлении"</string>
-    <string name="quest_oneway2_no_oneway">"Не в одну сторону"</string>
+    <string name="quest_oneway2_no_oneway">"Не одностороннее"</string>
     <string name="quest_maxweight_select_sign">"Выберите знак"</string>
     <string name="quest_steps_incline_title">"Какое направление ведет вверх для этих ступеней?"</string>
     <string name="quest_steps_incline_up">"Этой стороной вверх"</string>
     <string name="quest_step_count_title">"Сколько здесь ступеней?"</string>
     <string name="quest_traffic_signals_sound_title">"Есть ли здесь звуковые сигналы для слепых?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Имеет ли светофор тактильную индикацию для слепых людей"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Подсказка: Обычно это вибрирующая кнопка или вращающийся конус под кнопкой светофора"</string>
     <string name="quest_busStopRef_title">"Какой номер у этой автобусной остановки?"</string>
     <string name="quest_tramStopRef_title">"Какой номер у этой трамвайной остановки?"</string>
     <string name="quest_buildingType_bungalow_description2">"небольшой особняк (дача,  коттедж,  хижина…)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Какие заграждения используются на этом железнодорожном переезде?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Без преград"</string>
     <string name="quest_steps_ramp_title">"Есть ли у этих ступеней пандус? Какой?"</string>
-    <string name="quest_steps_ramp_none">"Нет рампы"</string>
-    <string name="quest_steps_ramp_bicycle">"Велосипедная рампа"</string>
-    <string name="quest_steps_ramp_stroller">"Рампа для коляски"</string>
+    <string name="quest_steps_ramp_none">"Нет пандуса"</string>
+    <string name="quest_steps_ramp_bicycle">"Велосипедный пандус"</string>
+    <string name="quest_steps_ramp_stroller">"Пандус для коляски"</string>
     <string name="quest_steps_ramp_wheelchair">"Пандус для инвалидных колясок"</string>
     <string name="quest_atm_operator_title">"Как называется банк этого банкомата?"</string>
+    <string name="quest_clothes_container_operator_title">"Куда идет пожертвованая здесь одежда"</string>
     <string name="quest_charging_station_operator_title">"Кто является оператором этой зарядной станции?"</string>
     <string name="link_indoorequal_description">"Откройте для себя карты торговых центров, вокзалов и т.д."</string>
     <string name="link_thenandnow_description">"Любопытно, какого прогресса мы достигли за эти годы? Сравните с тем, как карта выглядела более 10 лет назад!"</string>
@@ -2323,6 +2331,30 @@
     <string name="quest_buildingType_abandoned">"Заброшенный"</string>
     <string name="quest_buildingType_abandoned_description">"неиспользуемое здание, первоначальная функция или назначение которого неизвестны"</string>
     <string name="quest_buildingType_ruins">"Руины"</string>
-    <string name="quest_buildingType_ruins_description">"заброшенное, разрушенное и неопознанное здание"</string>
+    <string name="quest_buildingType_ruins_description">"заброшенное, разрушенное и неопознаваемое здание"</string>
     <string name="quest_charging_station_capacity_title">"Сколько автомобилей можно заряжать на этой зарядной станции одновременно?"</string>
+    <string name="link_disaster_ninja_description">"Карта показывающая недавние стихийные бедствия, полезно для гуманитарных картографов. Также отображает много интересной статистики о том насколько хорошо некоторые места картографированы"</string>
+    <string name="quest_lanes_title">"Сколько полос имеет эта дорога"</string>
+    <string name="quest_lanes_answer_lanes">"Размеченая полоса"</string>
+    <string name="quest_lanes_answer_noLanes">"Нет размеченных полос движения"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Отличается для каждой стороны"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Двусторонняя полоса левого поворота"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Это правильно?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Какое ограничение по высоте под этим мостом?"</string>
+    <string name="quest_maxheight_split_way_hint">"Если она отличается в разных местах, ответьте \"%s\""</string>
+    <string name="quest_tactile_paving_kerb_title">"Есть ли здесь на этом бордюре тактильное покрытие?"</string>
+    <string name="quest_kerb_height_title">"Какая высота у этого бордюра?"</string>
+    <string name="quest_kerb_height_flush">"На одном уровне с дорожным покрытием"</string>
+    <string name="quest_kerb_height_lowered">"Немного выше поверхности дороги"</string>
+    <string name="quest_kerb_height_raised">"Высокий бордюр"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"На этой стороне перехода нет бордюра"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Рампа для въезда"</string>
+    <string name="quest_lanes_answer_lanes_description2">"Укажите общее количество размеченных полос движения (в обоих направлениях), используемых автомобильным движением. Велосипедные дорожки и выделенные полосы для парковки не в счёт.
+Если какие-либо полосы используются для общественного транспорта, пожалуйста, оставьте комментарий."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Укажите здесь количество размеченных полос движения, используемых автомобильным движением. Велосипедные дорожки и выделенные полосы для парковки не в счёт.
+Если какие-либо полосы используются для общественного транспорта, пожалуйста, оставьте комментарий."</string>
+    <string name="quest_surface_value_rock">"Камень"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Высокие грузовики могут проехать"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Высокие грузовики не могут проехать"</string>
+    <string name="quest_address_street_hint">"Нажмите на дорогу на карте"</string>
 </resources>

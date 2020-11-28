@@ -34,7 +34,7 @@ class OsmElementUpdateController @Inject constructor(
             if (recreateQuestTypes == null) {
                 questGiver.updateQuests(element, newGeometry)
             } else {
-                questGiver.recreateQuests(element, newGeometry, recreateQuestTypes)
+                questGiver.recreateQuests(element, newGeometry, recreateQuestTypes.filter { it.isRecreateAfterSplitEnabled })
             }
         } else {
             // new element has invalid geometry

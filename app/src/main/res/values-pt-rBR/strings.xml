@@ -975,9 +975,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_cycleway_value_track_dual">"Ciclovia, ambas as direções"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"Nenhuma, mas ciclistas permitidos na calçada"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avançado"</string>
 
     <!-- Fuzzy -->
@@ -2135,4 +2132,31 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="quest_buildingType_ruins_description">"edifício abandonado, em ruínas e não identificável"</string>
     <string name="quest_charging_station_capacity_title">"Quantos carros podem ser carregados nesta estação de carregamento ao mesmo tempo?"</string>
     <string name="link_disaster_ninja_description">"Mapa que mostra desastres naturais recentes, interessante para mapeadores humanitários. Além disso, mostra muitas estatísticas interessantes para analisar como os lugares estão bem mapeados e atualizados."</string>
+    <string name="quest_lanes_title">"Quantas faixas para carros essa estrada tem?"</string>
+    <string name="quest_lanes_answer_lanes">"Pistas marcadas"</string>
+    <string name="quest_lanes_answer_noLanes">"Sem pistas marcadas"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Difere para cada lado"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Tem uma via de mão dupla para virar à esquerda"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Isso está correto?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Qual é o limite de altura abaixo da ponte?"</string>
+    <string name="quest_maxheight_split_way_hint">"Se não se aplicar a todo o caminho, considere responder \"%s\"."</string>
+    <string name="quest_tactile_paving_kerb_title">"Há pavimentação tátil neste meio-fio aqui?"</string>
+    <string name="quest_kerb_height_title">"Qual é a altura desse meio-fio?"</string>
+    <string name="quest_kerb_height_flush">"Mesmo nível da superfície da estrada"</string>
+    <string name="quest_kerb_height_lowered">"Um pouco mais alto que a superfície da estrada"</string>
+    <string name="quest_kerb_height_raised">"Meio-fio alto"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Não há meio-fio deste lado do cruzamento"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Rampa de meio-fio"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description2">"Especifique o número total de pistas marcadas (ambas as direções) que podem ser utilizadas pelo tráfego de automóveis. Portanto, as faixas de bicicletas e de estacionamento não contam.
+Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Especifique aqui o número de faixas marcadas que podem ser utilizadas pelo tráfego de automóveis. Portanto, as faixas de bicicletas e de estacionamento não contam.
+Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
+    <string name="quest_surface_value_rock">"Rocha"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Caminhões altos podem passar"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Caminhões altos não cabem"</string>
+    <string name="quest_address_street_hint">"Toque na estrada no mapa"</string>
 </resources>

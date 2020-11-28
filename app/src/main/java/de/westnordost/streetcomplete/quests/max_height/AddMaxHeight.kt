@@ -19,7 +19,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
           barrier = height_restrictor
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )
-        and !maxheight and !maxheight:physical
+        and !maxheight and !maxheight:signed and !maxheight:physical
     """.toElementFilterExpression() }
 
     private val wayFilter by lazy { """
@@ -28,7 +28,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
           highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
-        and !maxheight and !maxheight:physical
+        and !maxheight and !maxheight:signed and !maxheight:physical
     """.toElementFilterExpression() }
 
     private val tunnelFilter by lazy { """
@@ -50,6 +50,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
     override val isSplitWayEnabled = true
+    override val isRecreateAfterSplitEnabled = false
 
     override fun getTitle(tags: Map<String, String>): Int {
         val isParkingEntrance = tags["amenity"] == "parking_entrance"
@@ -93,8 +94,16 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     }
 
 
-    override fun isApplicableTo(element: Element) =
-        nodeFilter.matches(element) || wayFilter.matches(element)
+    override fun isApplicableTo(element: Element): Boolean? {
+        if (nodeFilter.matches(element)) return true
+        if (wayFilter.matches(element)) {
+            if (tunnelFilter.matches(element)) return true
+            // if it is a way but not a tunnel, we cannot determine whether it is applicable (=
+            // below a bridge) just by looking at the tags
+            return null
+        }
+        return false
+    }
 
     override fun createForm() = AddMaxHeightForm()
 

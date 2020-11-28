@@ -976,9 +976,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_cycleway_value_track_dual">"Gescheiden fietspad met tweerichtingsverkeer"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"geen, maar fietsers zijn toegestaan op het voetpad"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Geavanceerde instellingen"</string>
 
     <!-- Fuzzy -->

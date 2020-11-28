@@ -11,7 +11,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
         ways with
           highway ~ ${ROADS_WITH_LANES.joinToString("|")}
           and surface ~ ${ANYTHING_PAVED.joinToString("|")}
-          and (!lanes or lanes !~ [1-9][0-9]*)
+          and (!lanes or lanes = 0)
     """
     override val commitMessage = "Add road lanes"
     override val wikiLink = "Key:lanes"
@@ -24,14 +24,18 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
     override fun applyAnswerTo(answer: LanesAnswer, changes: StringMapChangesBuilder) {
 
-        changes.addOrModify("lanes", answer.total.toString())
+        val laneCount = answer.total
 
-        val isUnmarked = answer !is UnmarkedLanes
+        laneCount?.let { changes.addOrModify("lanes", it.toString()) }
+
+        val isMarked = answer !is UnmarkedLanes
         // if there is just one lane, the information whether it is marked or not is irrelevant
         // (if there are no more than one lane, there are no markings to separate them)
-        if (answer.total == 1) changes.deleteIfExists("lane_markings")
-        else if (isUnmarked)   changes.modifyIfExists("lane_markings", "yes")
-        else                   changes.addOrModify("lane_markings", "no")
+        when {
+            laneCount == 1 -> changes.deleteIfExists("lane_markings")
+            isMarked ->       changes.modifyIfExists("lane_markings", "yes")
+            else ->           changes.addOrModify("lane_markings", "no")
+        }
 
         val hasCenterLeftTurnLane = answer is MarkedLanesSides && answer.centerLeftTurnLane
         if (hasCenterLeftTurnLane) {

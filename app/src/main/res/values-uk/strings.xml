@@ -976,9 +976,6 @@
     <string name="quest_cycleway_value_track_dual">"велодоріжка з двостороннім рухом"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"ні, але велорух дозволений на тротуарі"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Розширені"</string>
 
     <!-- Fuzzy -->
@@ -1134,6 +1131,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"Це стіл для пікніка"</string>
+    <string name="quest_religion_for_place_of_worship_title">"До якої релігії відноситься це місце"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_christian">"Християнство"</string>
@@ -1301,6 +1299,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no_leave_note">"Ні (лишити коментар)"</string>
+    <string name="pref_quests_reset">"Скинути ввімкненість квестів та їх порядок до початкових настройок"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_title2">"Якого типу ця будівля?"</string>
@@ -1310,6 +1309,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types">"Має декілька призначень"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Виберіть основне призначення цього будинку.
+Тобто: якщо на першому поверсі житлового будинку розташований магазин, це все одно житловий будинок."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"Він все ще будується"</string>
@@ -1504,12 +1505,15 @@
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber">"Не має номеру дому…"</string>
+    <string name="quest_address_answer_no_housenumber_message1">"Будинок позначено як:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Святиня"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_title_short2">"Яке обмеження швидкості на цій вулиці?"</string>
+    <string name="quest_maxspeed_answer_sign">"Знак"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Без знака, стандартне значення"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_no_sign">"Немає вказаних годин роботи"</string>
@@ -1522,6 +1526,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"Туалети"</string>
+    <string name="quest_maxspeed_sign_question">"Що вказує обмеження швидкості"</string>
     <string name="notification_channel_download">"Завантажити"</string>
 
     <!-- Fuzzy -->
@@ -1529,6 +1534,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_segregated_title">"Як тут розміщені пішохідна та велодоріжки?"</string>
+    <string name="dialog_tutorial_upload">"Для публикації ваших змін вручну, використовуйте кнопку в панелі інструментів що виглядає так."</string>
+    <string name="quest_segregated_mixed">"Пішоходи та велосипедисти ділять один простір"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_title">"Який тут ліміт висоти?"</string>
@@ -1544,13 +1551,19 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"Немає знаку…"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Чи достатньо тут місця для проїзду вантажівки висотою 4,5 метрів"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"Така висота виглядає нереальною. Ви впевнені?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_closed2">"Закрито %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_hide2">"Сховано %1$s, %2$s"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;Фото що ви додаєте до нотатки завантажуються на мій сервер і видаляються через деякий час після того як нотатка була вирішена. Метадані видаляются перед відправкою&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="action_deselect_all">"Зняти вибір з усіх"</string>
+    <string name="quest_buildingType_retail_description">"Включаючи будівлі для ресторанів, кафе, ..."</string>
+    <string name="quest_openingHours_timeSelect_next">"Далі"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_title">"Наскільки тверде покриття цього шляху?"</string>
@@ -1575,6 +1588,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Чи є ця будівля повністю під землею?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Частково означає що одного кроку достатньо для доступу"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Якого типу ця будівля?"</string>

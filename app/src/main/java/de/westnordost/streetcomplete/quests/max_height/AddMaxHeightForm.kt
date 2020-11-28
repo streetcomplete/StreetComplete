@@ -132,8 +132,8 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_maxheight_answer_noSign_question)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
-            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
+            .setPositiveButton(R.string.quest_maxheight_answer_noSign_question_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
+            .setNegativeButton(R.string.quest_maxheight_answer_noSign_question_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
             .show()
         }
     }

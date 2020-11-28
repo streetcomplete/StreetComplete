@@ -975,9 +975,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_cycleway_value_track_dual">"cyklochodník, oboma smermi"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"nie je, ale cyklisti môžu používať chodník"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Pokročilé"</string>
 
     <!-- Fuzzy -->

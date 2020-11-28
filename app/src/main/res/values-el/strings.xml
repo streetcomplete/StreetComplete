@@ -976,9 +976,6 @@
     <string name="quest_cycleway_value_track_dual">"ποδηλατόδρομος, διπλή κατεύθυνση"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"κανείς, αλλά οι ποδηλάτες επιτρέπονται στο πεζοδρόμιο"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Προχωρημένο"</string>
 
     <!-- Fuzzy -->
@@ -2126,4 +2123,19 @@
     <string name="quest_buildingType_ruins_description">"εγκαταλελειμμένο, ερειπωμένο και μη αναγνωρίσιμο κτήριο"</string>
     <string name="quest_charging_station_capacity_title">"Πόσα αυτοκίνητα μπορούν να φορτιστούν ταυτόχρονα σε αυτόν τον σταθμό φόρτισης;"</string>
     <string name="link_disaster_ninja_description">"Χάρτης που δείχνει τις πρόσφατες φυσικές καταστροφές, ενδιαφέρουσες για τους ανθρωπιστικούς χαρτογράφους. Επίσης, δείχνει πολλά ενδιαφέροντα στατιστικά στοιχεία για να αναλύσετε πόσο καλά χαρτογραφημένα και ενημερωμένα μέρη είναι."</string>
+    <string name="quest_lanes_title">"Πόσες λωρίδες για αυτοκίνητα έχει αυτός ο δρόμος;"</string>
+    <string name="quest_lanes_answer_lanes">"Διαγραμμίσεις"</string>
+    <string name="quest_lanes_answer_noLanes">"Χωρίς διαγραμμίσεις"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Διαφέρει για κάθε πλευρά"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Διαθέτει αμφίδρομη αριστερή λωρίδα"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Είναι αυτό σωστό?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Ποιο είναι το όριο ύψους κάτω από τη γέφυρα;"</string>
+    <string name="quest_maxheight_split_way_hint">"Εάν δεν ισχύει για όλη την διαδρομή, σκεφτείτε να απαντήσετε \"%s\"."</string>
+    <string name="quest_tactile_paving_kerb_title">"Υπάρχει ανάγλυφη επίστρωση σε αυτό το κράσπεδο εδώ;"</string>
+    <string name="quest_kerb_height_title">"Ποιο είναι το ύψος αυτού του κράσπεδου;"</string>
+    <string name="quest_kerb_height_flush">"Ίδιο επίπεδο με την επιφάνεια του δρόμου"</string>
+    <string name="quest_kerb_height_lowered">"Λίγο υψηλότερο από την επιφάνεια του δρόμου"</string>
+    <string name="quest_kerb_height_raised">"Ψηλό κράσπεδο"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Δεν υπάρχει κράσπεδο σε αυτήν την πλευρά της διάβασης"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Κράσπεδο ράμπας"</string>
 </resources>

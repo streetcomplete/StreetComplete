@@ -974,9 +974,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_cycleway_value_track_dual">"separat cykelbana, båda riktningarna"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men cyklister är tillåtna på trottoaren"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avancerat"</string>
 
     <!-- Fuzzy -->

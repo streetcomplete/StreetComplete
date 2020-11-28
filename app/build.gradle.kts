@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
         targetSdkVersion(29)
-        versionCode = 2700
-        versionName = "27.0-beta1"
+        versionCode = 2703
+        versionName = "27.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -196,4 +196,11 @@ tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
     targetDir = "$projectDir/src/main/assets/country_metadata"
+}
+
+tasks.register("copyDefaultStringsToEnStrings") {
+    doLast {
+        File("$projectDir/src/main/res/values/strings.xml")
+            .copyTo(File("$projectDir/src/main/res/values-en/strings.xml"), true)
+    }
 }

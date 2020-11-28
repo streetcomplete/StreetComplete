@@ -960,9 +960,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_cycleway_value_track_dual">"sykkelvei, begge retninger"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men syklister er tillatt på fortauet"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avansert"</string>
 
     <!-- Fuzzy -->
@@ -1824,7 +1821,7 @@ en merknad til andre.
 
 Og husk å ta vare på egen sikkerhet: Pass på hvor du setter foten, og gå aldri inn på privat eigendom."</string>
     <string name="tutorial_happy_mapping">"Kos deg med kartlegging!"</string>
-    <string name="achievements_empty">"Du har inne noen bradger enda"</string>
+    <string name="achievements_empty">"Du har ingen bragder enda"</string>
     <string name="links_empty">"Du har ikke noen lenker enda"</string>
     <string name="quests_empty">"Du har ikke offentliggjort noen svar på oppdrag enda"</string>
     <string name="unsynced_quests_description">"og %d endringer som ikke er offentliggjort."</string>
