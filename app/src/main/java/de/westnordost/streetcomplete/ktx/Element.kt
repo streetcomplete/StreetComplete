@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import java.util.ArrayList
 
@@ -15,6 +17,14 @@ fun Element.copy(newId: Long = id, newVersion: Int = version): Element {
 }
 
 fun Way.isClosed() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
+
+val Element.geometryType: GeometryType get() =
+    when {
+        type == NODE -> GeometryType.POINT
+        isArea() -> GeometryType.AREA
+        type == RELATION -> GeometryType.RELATION
+        else -> GeometryType.LINE
+    }
 
 fun Element.isArea(): Boolean {
     return when(this) {

@@ -31,7 +31,9 @@ import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.isArea
+import de.westnordost.streetcomplete.quests.shop_gone.ShopGoneDialog
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import java.lang.ref.WeakReference
 import java.util.*
@@ -107,6 +109,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         /** Called when the element shall be deleted */
         fun onDeleteElement(osmQuestId: Long, element: OsmElement)
+        
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -345,6 +348,17 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     protected fun skipQuest() {
         listener?.onSkippedQuest(questId, questGroup)
+    }
+
+    protected fun showShopGoneDialog() {
+        val ctx = context ?: return
+        val isoCountryCode = countryInfo.countryCode.substringBefore('-')
+
+        ShopGoneDialog(
+            ctx,
+            osmElement?.geometryType,
+            isoCountryCode,
+            featureDictionaryFuture.get(), { /* TODO */ }).show()
     }
 
     protected fun deleteElement() {
