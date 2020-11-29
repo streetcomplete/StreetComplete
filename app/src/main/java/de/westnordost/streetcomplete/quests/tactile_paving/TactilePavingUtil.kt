@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 val COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON = NoCountriesExcept(
     // Europe
     "NO", "SE",
-    "GB", "IE", "NL", "BE", "FR", "ES",
+    "GB", "IE", "NL", "BE", "FR", "ES", "IT",
     "DE", "PL", "CZ", "SK", "HU", "AT", "CH",
     "LV", "LT", "EE", "LU", "RU",
     // America
