@@ -12,6 +12,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
           highway ~ ${ROADS_WITH_LANES.joinToString("|")}
           and surface ~ ${ANYTHING_PAVED.joinToString("|")}
           and (!lanes or lanes = 0)
+          and lane_markings != no
     """
     override val commitMessage = "Add road lanes"
     override val wikiLink = "Key:lanes"
