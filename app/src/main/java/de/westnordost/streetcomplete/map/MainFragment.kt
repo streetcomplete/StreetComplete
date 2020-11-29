@@ -61,6 +61,7 @@ import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
 import de.westnordost.streetcomplete.util.*
+import de.westnordost.streetcomplete.view.insets_animation.enableSmoothImeAnimation
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -156,6 +157,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private fun setupFittingToSystemWindowInsets() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            view?.findViewById<View>(R.id.map_bottom_sheet_container)?.enableSmoothImeAnimation()
+
             view?.setOnApplyWindowInsetsListener { _, insets ->
                 mapControls.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                     setMargins(
