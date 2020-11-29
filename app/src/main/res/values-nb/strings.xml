@@ -106,10 +106,10 @@
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_title">"Kast input?"</string>
+    <string name="confirmation_discard_title">"Forkast endrigene?"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_positive">"Kast"</string>
+    <string name="confirmation_discard_positive">"Forkast"</string>
 
     <!-- Fuzzy -->
     <string name="confirmation_discard_negative">"Avbryt"</string>

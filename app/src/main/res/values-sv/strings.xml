@@ -1067,7 +1067,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_wheelchairAccess_toilets_name_title">"Är toaletterna %s tillgängliga med rullstol?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_description_toilets">"Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt. 
+    <string name="quest_wheelchairAccess_description_toilets">"Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt.
     Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men att det inte finns stödhandtag eller anpassad tvättho."</string>
 
     <!-- Fuzzy -->
@@ -2169,8 +2169,7 @@ Slutligen, kom ihåg att vara säker: var medveten om din omgivning och gå inte
     <string name="achievement_postman_title">"Brevbärare"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_postman_solved_X">"Du hjälpte till att hitta %d adresser!
-Denna information är inte bara nödvändig för postmästaren utan också för alla navigationssystem."</string>
+    <string name="achievement_postman_solved_X">"Du hjälpte till att hitta %d adresser!\nDessa uppgifter är viktiga inte bara för brevbäraren utan också för alla navigationssystem."</string>
 
     <!-- Fuzzy -->
     <string name="achievement_building_title">"Höghus"</string>
@@ -2348,4 +2347,26 @@ nivåer"</string>
     <string name="quest_buildingType_ruins_description">"övergiven, förstörd och oidentifierbar byggnad"</string>
     <string name="quest_charging_station_capacity_title">"Hur många bilar kan laddas vid den här laddstationen samtidigt?"</string>
     <string name="link_disaster_ninja_description">"Karta som visar de senaste naturkatastroferna, intressant för humanitära kartläggare. Visar också många intressanta statistik för att analysera hur väl kartlagda och uppdaterade platser är."</string>
+    <string name="quest_lanes_title">"Hur många körfält för bilar har den här vägen?"</string>
+    <string name="quest_lanes_answer_lanes">"Markerade körfält"</string>
+    <string name="quest_lanes_answer_noLanes">"Inga markerade körfält"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Skillnader för varje sida"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Den har en tvåvägs vänsterfält"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Är detta rätt?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Vad är höjdgränsen under bron?"</string>
+    <string name="quest_maxheight_split_way_hint">"Om det inte gäller hela vägen, överväg att svara \"%s\"."</string>
+    <string name="quest_tactile_paving_kerb_title">"Finns det taktil beläggning på denna trottoarkant här?"</string>
+    <string name="quest_kerb_height_title">"Vad är höjden på denna trottoarkant?"</string>
+    <string name="quest_kerb_height_flush">"Samma nivå som vägytan"</string>
+    <string name="quest_kerb_height_lowered">"Lite högre än vägytan"</string>
+    <string name="quest_kerb_height_raised">"Hög trottoarkant"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Det finns ingen trottoarkant på denna sida av korsningen"</string>
+    <string name="quest_lanes_answer_lanes_description2">"Ange det totala antalet markerade körfält (båda riktningarna) som kan användas av biltrafik. Så, cykel och särskilda parkeringsfält räknas inte.
+Om några körfält är reserverade för bussar, vänligen lämna en anteckning istället."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Ange antalet markerade körfält som kan användas av biltrafik här. Så, cykel och särskilda parkeringsfält räknas inte.
+Om några körfält är reserverade för bussar, vänligen lämna en anteckning istället."</string>
+    <string name="quest_surface_value_rock">"Sten"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Höga lastbilar kan passera"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Höga lastbilar passar inte"</string>
+    <string name="quest_address_street_hint">"Tryck på väg på karta"</string>
 </resources>

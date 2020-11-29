@@ -1,3 +1,11 @@
+v27.1: |
+  <ul>
+  <li>Fix the lanes quest was asked again (and again and again) if you answered that there are no
+      marked lanes (#2328)</li>
+  <li>Show tactile paving quests in Italy (#2320)</li>
+  <li>Update translations</li>
+  </ul>
+
 v27.0: |
   <h3>New Quests</h3>
   <ul>

@@ -2286,4 +2286,31 @@
     <string name="quest_buildingType_ruins_description">"ساختمانی متروکه ، ویران و غیرقابل شناسایی"</string>
     <string name="quest_charging_station_capacity_title">"چند خودرو در این ایستگاه شارژ می تواند به طور همزمان شارژ شود؟"</string>
     <string name="link_disaster_ninja_description">"نقشه ای که بلایای طبیعی اخیر را نشان می دهد و برای نقشه‌کش‌های همنوع دوست جالب است. همچنین ، بسیاری از آمارهای متنوع را برای تجزیه و تحلیل چگونگی نقشه‌کشی و به روز بودن مکان ها نشان می دهد."</string>
+    <string name="quest_lanes_title">"این مسیر چند خط عبور برای خودرو ها دارد؟"</string>
+    <string name="quest_lanes_answer_lanes">"با خطوط رنگی
+"</string>
+    <string name="quest_lanes_answer_noLanes">"بدون خطوط رنگی"</string>
+    <string name="quest_lanes_answer_lanes_odd">"برای هر سمت جداگانه موجود است"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"دارای دوربرگردان برای چرخش به چپ دو طرفه می باشد
+"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"آیا این درست است؟"</string>
+    <string name="quest_maxheight_below_bridge_title">"حداکثر ارتفاع زیر پل چقدر است؟"</string>
+    <string name="quest_maxheight_split_way_hint">"اگر برای کل راه اعمال نمی شود، پاسخ \"%s\" را در نظر بگیرید."</string>
+    <string name="quest_tactile_paving_kerb_title">"آیا اینجا جدول در کناره مسیر وجود دارد؟"</string>
+    <string name="quest_kerb_height_title">"ارتفاع این جدول چقدر است؟"</string>
+    <string name="quest_kerb_height_flush">"هم سطح جاده"</string>
+    <string name="quest_kerb_height_lowered">"کمی بالاتر از سطح جاده
+"</string>
+    <string name="quest_kerb_height_raised">"جدول برجسته"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"در این سمت مسیرهیچ جدولی وجود ندارد"</string>
+    <string name="quest_kerb_height_lowered_ramp">"جدول شیب‌دار
+"</string>
+    <string name="quest_lanes_answer_lanes_description2">"تعداد کل خطوط تردد (هر دو جهت) قابل استفاده خودروها را مشخص کنید. خطوط دوچرخه و پارکینگ اختصاصی حساب نمی شوند.
+اگر خطوطی ویژه اتوبوس ها ایجاد شده است ، لطفاً یادداشت کنید."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"تعداد خطوط تردد قابل استفاده خودروها را در اینجا مشخص کنید. خطوط دوچرخه و پارکینگ اختصاصی حساب نمی شوند.
+اگر خطوطی ویژه اتوبوس ها ایجاد شده است، لطفاً یادداشت کنید."</string>
+    <string name="quest_surface_value_rock">"سنگ"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"کامیون های مرتفع می توانند عبور کنند"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"برای عبور کامیون های مرتفع مناسب نیست"</string>
+    <string name="quest_address_street_hint">"روی جاده در نقشه ضربه بزنید"</string>
 </resources>
