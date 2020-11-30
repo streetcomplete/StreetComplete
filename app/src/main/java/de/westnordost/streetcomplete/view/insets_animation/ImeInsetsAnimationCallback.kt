@@ -17,14 +17,9 @@ class ImeInsetsAnimationCallback(
     private var isAnimating = false
     private var prevInsets: WindowInsets? = null
 
-
     override fun onApplyWindowInsets(v: View, windowInsets: WindowInsets): WindowInsets {
         prevInsets = windowInsets
-
-        val imeTypeIfNotAnimated = if (!isAnimating) WindowInsets.Type.ime() else 0
-        val typeInsets = windowInsets.getInsets(WindowInsets.Type.systemBars() or imeTypeIfNotAnimated)
-        onNewInsets(view, typeInsets.left, typeInsets.top, typeInsets.right, typeInsets.bottom)
-
+        if (!isAnimating) applyNewInsets(windowInsets)
         return windowInsets
     }
 
@@ -35,8 +30,7 @@ class ImeInsetsAnimationCallback(
     }
 
     override fun onProgress(insets: WindowInsets, runningAnims: List<WindowInsetsAnimation>): WindowInsets {
-        val typeInsets = insets.getInsets(WindowInsets.Type.systemBars() or WindowInsets.Type.ime())
-        onNewInsets(view, typeInsets.left, typeInsets.top, typeInsets.right, typeInsets.bottom)
+        applyNewInsets(insets)
         return insets
     }
 
@@ -45,6 +39,11 @@ class ImeInsetsAnimationCallback(
             isAnimating = false
             prevInsets?.let { view.dispatchApplyWindowInsets(it) }
         }
+    }
+
+    private fun applyNewInsets(insets: WindowInsets) {
+        val typeInsets = insets.getInsets(WindowInsets.Type.ime() or WindowInsets.Type.systemBars())
+        onNewInsets(view, typeInsets.left, typeInsets.top, typeInsets.right, typeInsets.bottom)
     }
 }
 
