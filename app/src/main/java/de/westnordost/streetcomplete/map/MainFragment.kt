@@ -10,7 +10,6 @@ import android.graphics.RectF
 import android.location.Location
 import android.location.LocationManager
 import android.net.ConnectivityManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -31,7 +30,6 @@ import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.view.isGone
-import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
@@ -50,10 +48,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGe
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.quest.*
-import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
-import de.westnordost.streetcomplete.ktx.getLocationInWindow
-import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
@@ -61,7 +56,7 @@ import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
 import de.westnordost.streetcomplete.util.*
-import de.westnordost.streetcomplete.view.insets_animation.enableSmoothImeAnimation
+import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -142,7 +137,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupFittingToSystemWindowInsets()
+        mapControls.respectSystemInsets(View::setMargins)
+        view.respectSystemInsets { left, top, right, bottom ->
+            windowInsets = Rect(left, top, right, bottom)
+        }
 
         locationPointerPin.setOnClickListener { onClickLocationPointer() }
 
@@ -153,30 +151,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mainMenuButton.setOnClickListener { onClickMainMenu() }
 
         updateMapQuestOffsets()
-    }
-
-    private fun setupFittingToSystemWindowInsets() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            view?.findViewById<View>(R.id.map_bottom_sheet_container)?.enableSmoothImeAnimation()
-
-            view?.setOnApplyWindowInsetsListener { _, insets ->
-                mapControls.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    setMargins(
-                        insets.systemWindowInsetLeft,
-                        insets.systemWindowInsetTop,
-                        insets.systemWindowInsetRight,
-                        insets.systemWindowInsetBottom
-                    )
-                }
-                windowInsets = Rect(
-                    insets.systemWindowInsetLeft,
-                    insets.systemWindowInsetTop,
-                    insets.systemWindowInsetRight,
-                    insets.systemWindowInsetBottom
-                )
-                insets
-            }
-        }
     }
 
     override fun onAttachFragment(childFragment: Fragment) {

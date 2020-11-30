@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.view.ViewGroup
-import android.view.WindowInsets
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
@@ -21,7 +19,9 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.updateMargins
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /** Abstract base class for (quest) bottom sheets
@@ -56,7 +56,11 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
         closeButton.setOnClickListener { activity?.onBackPressed() }
 
-        setupFittingToSystemWindowInsets()
+        view.respectSystemInsets { left, top, right, bottom ->
+            scrollViewChild.updatePadding(bottom = bottom)
+            bottomSheetContainer.updateMargins(top = top, left = left, right = right)
+            okButton.updateMargins(bottom = bottom + 8f.toPx(context).toInt())
+        }
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
@@ -120,30 +124,6 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         bottomSheetBehavior.peekHeight = resources.getDimensionPixelSize(R.dimen.quest_form_peekHeight)
         bottomSheetContainer?.let {
             it.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
-        }
-    }
-
-    private fun setupFittingToSystemWindowInsets() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            view?.setOnApplyWindowInsetsListener { v: View, insets: WindowInsets ->
-
-                scrollViewChild.updatePadding(bottom = insets.systemWindowInsetBottom)
-
-                okButton.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    val defaultMargin = 8f.toPx(v.context).toInt()
-                    updateMargins(bottom = insets.systemWindowInsetBottom + defaultMargin)
-                }
-
-                bottomSheetContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    updateMargins(
-                        top = insets.systemWindowInsetTop,
-                        left = insets.systemWindowInsetLeft,
-                        right = insets.systemWindowInsetRight
-                    )
-                }
-
-                insets
-            }
         }
     }
 

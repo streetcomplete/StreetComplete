@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.view.insets_animation
 
-import android.graphics.Insets
 import android.os.Build
 import android.view.View
 import android.view.WindowInsets
@@ -10,20 +9,23 @@ import androidx.annotation.RequiresApi
 /** Make the keyboard appear and disappear smoothly. Must be set on both
  *  setOnApplyWindowInsetsListener and setWindowInsetsAnimationCallback */
 @RequiresApi(Build.VERSION_CODES.R)
-class ImeInsetsAnimationCallback(private val view: View)
-    : WindowInsetsAnimation.Callback(DISPATCH_MODE_STOP), View.OnApplyWindowInsetsListener {
+class ImeInsetsAnimationCallback(
+    private val view: View,
+    private val onNewInsets: View.(left: Int, top: Int, right: Int, bottom: Int) -> Unit
+) : WindowInsetsAnimation.Callback(DISPATCH_MODE_CONTINUE_ON_SUBTREE), View.OnApplyWindowInsetsListener {
 
     private var isAnimating = false
     private var prevInsets: WindowInsets? = null
+
 
     override fun onApplyWindowInsets(v: View, windowInsets: WindowInsets): WindowInsets {
         prevInsets = windowInsets
 
         val imeTypeIfNotAnimated = if (!isAnimating) WindowInsets.Type.ime() else 0
         val typeInsets = windowInsets.getInsets(WindowInsets.Type.systemBars() or imeTypeIfNotAnimated)
-        v.setPadding(typeInsets.left, typeInsets.top, typeInsets.right, typeInsets.bottom)
+        onNewInsets(view, typeInsets.left, typeInsets.top, typeInsets.right, typeInsets.bottom)
 
-        return WindowInsets.CONSUMED
+        return windowInsets
     }
 
     override fun onPrepare(animation: WindowInsetsAnimation) {
@@ -33,21 +35,12 @@ class ImeInsetsAnimationCallback(private val view: View)
     }
 
     override fun onProgress(insets: WindowInsets, runningAnims: List<WindowInsetsAnimation>): WindowInsets {
-        val diff = Insets.max(Insets.subtract(
-            insets.getInsets(WindowInsets.Type.ime()),
-            insets.getInsets(WindowInsets.Type.systemBars())
-        ), Insets.NONE)
-
-        view.translationX = (diff.left - diff.right).toFloat()
-        view.translationY = (diff.top - diff.bottom).toFloat()
-
+        val typeInsets = insets.getInsets(WindowInsets.Type.systemBars() or WindowInsets.Type.ime())
+        onNewInsets(view, typeInsets.left, typeInsets.top, typeInsets.right, typeInsets.bottom)
         return insets
     }
 
     override fun onEnd(animation: WindowInsetsAnimation) {
-        view.translationX = 0f
-        view.translationY = 0f
-
         if (isAnimating && (animation.typeMask and WindowInsets.Type.ime()) != 0) {
             isAnimating = false
             prevInsets?.let { view.dispatchApplyWindowInsets(it) }
@@ -55,10 +48,20 @@ class ImeInsetsAnimationCallback(private val view: View)
     }
 }
 
-fun View.enableSmoothImeAnimation() {
+fun View.respectSystemInsets(onNewInsets: View.(left: Int, top: Int, right: Int, bottom: Int) -> Unit = View::setPadding) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-        val imeAnimationCallback = ImeInsetsAnimationCallback(this)
+        val imeAnimationCallback = ImeInsetsAnimationCallback(this, onNewInsets)
         setOnApplyWindowInsetsListener(imeAnimationCallback)
         setWindowInsetsAnimationCallback(imeAnimationCallback)
+    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        setOnApplyWindowInsetsListener { v, windowInsets ->
+            onNewInsets(v,
+                windowInsets.systemWindowInsetLeft,
+                windowInsets.systemWindowInsetTop,
+                windowInsets.systemWindowInsetRight,
+                windowInsets.systemWindowInsetBottom
+            )
+            windowInsets
+        }
     }
 }

@@ -8,8 +8,6 @@ import android.graphics.drawable.Animatable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import android.view.WindowInsets
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.annotation.UiThread
@@ -35,6 +33,7 @@ import de.westnordost.streetcomplete.util.alongTrackDistanceTo
 import de.westnordost.streetcomplete.util.crossTrackDistanceTo
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -87,7 +86,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupFittingToSystemWindowInsets()
+        bottomSheetContainer.respectSystemInsets(View::setMargins)
 
         splitWayRoot.setOnTouchListener { _, event ->
             clickPos = PointF(event.x, event.y)
@@ -113,24 +112,6 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             view.findViewById<View>(R.id.speechbubbleContentContainer).startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
-        }
-    }
-
-    private fun setupFittingToSystemWindowInsets() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            view?.setOnApplyWindowInsetsListener { v: View, insets: WindowInsets ->
-
-                bottomSheetContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    setMargins(
-                        insets.systemWindowInsetLeft,
-                        insets.systemWindowInsetTop,
-                        insets.systemWindowInsetRight,
-                        insets.systemWindowInsetBottom
-                    )
-                }
-
-                insets
-            }
         }
     }
 
