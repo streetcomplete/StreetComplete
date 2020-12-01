@@ -96,6 +96,7 @@ class AddPlaceName(
     override val commitMessage = "Determine place names"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
+    override val isReplaceShopEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
 

@@ -20,17 +20,12 @@ class CheckExistance(
     private val nodesFilter by lazy { """
         nodes with ((
           (
-            amenity = telephone
-            or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
-            or birds_nest = stork
-          )
-          and (${lastChecked(1.0)})
-        ) or (
-          (
             amenity = atm
+            or amenity = telephone
             or amenity = post_box
             or amenity = waste_basket
-            or amenity = vending_machine and vending = public_transport_tickets
+            or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
+            or birds_nest = stork
           )
           and (${lastChecked(2.0)})
         ) or (
@@ -39,6 +34,7 @@ class CheckExistance(
             or amenity = bench
             or leisure = picnic_table
             or leisure = firepit
+            or amenity = vending_machine and vending = public_transport_tickets
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
           )

@@ -41,11 +41,17 @@ interface OsmElementQuestType<T> : QuestType<T> {
      *  - to be part of a relation
      *  - to be part of a network (f.e. roads, power lines, ...)
      *  - to be part of a(nother) way
-     *  - to house a second POI on the same element (f.e. maybe a gift shop could double as tourism information?)
+     *  - to house a second POI on the same element
      *  - to be a kind of element where deletion is not recommended, (f.e. a shop should rather
      *    be set to shop=vacant until there is another one)
      *  ...should be deletable */
     val isDeleteElementEnabled: Boolean get() = false
+
+    /** returns whether the user should be able to replace this element with another preset. Only
+     *  elements that are expected to be some kind of shop/amenity should be replaceable this way,
+     *  i.e. anything that when it's gone, there is a vacant shop then.
+     *  */
+    val isReplaceShopEnabled: Boolean get() = false
 
     /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
     fun getTitle(tags: Map<String, String>): Int

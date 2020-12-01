@@ -6,8 +6,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.changes.*
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElement
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementDao
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -98,6 +97,41 @@ import javax.inject.Singleton
         osmQuestController.deleteAllForElement(q.elementType, q.elementId)
         osmElementDB.deleteUnreferenced()
         return true
+    }
+
+    /** Replaces the previous element which is assumed to be a shop/amenity of sort with another
+     *  feature.
+     *  @return true if successful
+     */
+    fun replaceShopElement(osmQuestId: Long, tags: Map<String, String>, source: String): Boolean {
+        val q = osmQuestController.get(osmQuestId)
+        if (q?.status != QuestStatus.NEW) return false
+        val element = osmElementDB.get(q.elementType, q.elementId) ?: return false
+        val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
+        Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName} with $changes")
+        osmQuestController.answer(q, changes, source)
+        prefs.edit().putLong(Prefs.LAST_SOLVED_QUEST_TIME, System.currentTimeMillis()).apply()
+        return true
+    }
+
+    private fun createReplaceShopChanges(previousTags: Map<String, String>, newTags: Map<String, String>): StringMapChanges {
+        val changesList = mutableListOf<StringMapEntryChange>()
+
+        // first remove old tags
+        for ((key, value) in previousTags) {
+            val isOkToRemove = KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED.none { it.matches(key) }
+            if (isOkToRemove && !newTags.containsKey(key)) {
+                changesList.add(StringMapEntryDelete(key, value))
+            }
+        }
+        // then add new tags
+        for ((key, value) in newTags) {
+            val valueBefore = previousTags[key]
+            if (valueBefore != null) changesList.add(StringMapEntryModify(key, valueBefore, value))
+            else changesList.add(StringMapEntryAdd(key, value))
+        }
+
+        return StringMapChanges(changesList)
     }
 
     /** Apply the user's answer to the given quest. (The quest will turn invisible.)
@@ -206,3 +240,17 @@ import javax.inject.Singleton
 }
 
 data class QuestAndGroup(val quest: Quest, val group: QuestGroup)
+
+private val KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
+    "landuse", "historic",
+    // building/simple 3d building mapping
+    "building", "man_made", "building:.*", "roof:.*",
+    // any address
+    "addr:.*",
+    // shop can at the same time be an outline in indoor mapping
+    "level", "level:ref", "indoor", "room",
+    // geometry
+    "layer", "ele", "height", "area", "is_in",
+    // notes and fixmes
+    "FIXME", "fixme", "note"
+).map { it.toRegex() }

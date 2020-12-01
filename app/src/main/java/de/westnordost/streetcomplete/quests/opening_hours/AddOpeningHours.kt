@@ -92,6 +92,7 @@ class AddOpeningHours (
     override val commitMessage = "Add opening hours"
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
+    override val isReplaceShopEnabled = true
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasProperName = hasProperName(tags)

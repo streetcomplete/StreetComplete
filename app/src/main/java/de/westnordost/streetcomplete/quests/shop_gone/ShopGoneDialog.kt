@@ -8,10 +8,13 @@ import android.widget.AutoCompleteTextView
 import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.ConfigurationCompat
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
+import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.ktx.toTypedArray
 import kotlinx.android.synthetic.main.dialog_shop_gone.view.*
 
@@ -20,7 +23,8 @@ class ShopGoneDialog(
     private val geometryType: GeometryType?,
     private val countryCode: String?,
     private val featureDictionary: FeatureDictionary,
-    private val onAnswered: (ShopGoneAnswer) -> Unit
+    private val onSelectedFeature: (Map<String,String>) -> Unit,
+    private val onLeaveNote: () -> Unit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
     private val presetsEditText: AutoCompleteTextView
@@ -64,9 +68,23 @@ class ShopGoneDialog(
         // to override the default OK=dismiss() behavior
         getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
             when (selectedRadioButtonId) {
-                R.id.vacantRadioButton -> applyAndDismiss(ShopVacant)
-                R.id.replaceRadioButton -> applyReplaceFeature()
-                R.id.leaveNoteRadioButton -> applyAndDismiss(LeaveNote)
+                R.id.vacantRadioButton -> {
+                    onSelectedFeature(mapOf("shop" to "vacant"))
+                    dismiss()
+                }
+                R.id.replaceRadioButton -> {
+                    val feature = getSelectedFeature()
+                    if (feature == null) {
+                        presetsEditText.error = context.resources.getText(R.string.quest_shop_gone_replaced_answer_error)
+                    } else {
+                        onSelectedFeature(feature.addTags)
+                        dismiss()
+                    }
+                }
+                R.id.leaveNoteRadioButton -> {
+                    onLeaveNote()
+                    dismiss()
+                }
             }
         }
     }
@@ -80,31 +98,35 @@ class ShopGoneDialog(
 
     private fun getSelectedFeature(): Feature? {
         val input = presetsEditText.text.toString()
-        // TODO canonicalize?
-        return getFeatures(input).firstOrNull()?.takeIf { it.name == input }
-    }
-
-    private fun applyReplaceFeature() {
-        val feature = getSelectedFeature()
-        if (feature == null) {
-            presetsEditText.error = context.resources.getText(R.string.quest_shop_gone_replaced_answer_error)
-        } else {
-            applyAndDismiss(ShopReplaced(feature))
-        }
-    }
-
-    private fun applyAndDismiss(answer: ShopGoneAnswer) {
-        onAnswered(answer)
-        dismiss()
+        return getFeatures(input).firstOrNull()?.takeIf { it.canonicalName == StringUtils.canonicalize(input) }
     }
 
     private fun getFeatures(startsWith: String) : List<Feature> {
         val localeList = ConfigurationCompat.getLocales(context.resources.configuration)
+        val fakeElement = FakeElement()
         return featureDictionary
             .byTerm(startsWith)
             .forGeometry(geometryType)
             .inCountry(countryCode)
             .forLocale(*localeList.toTypedArray())
             .find()
+            .filter { feature ->
+                fakeElement.setTags(feature.tags)
+                fakeElement.isSomeKindOfShop()
+            }
     }
+}
+
+private class FakeElement : Element {
+    private var tags: Map<String, String>? = null
+    override fun isNew() = false
+    override fun isModified() = false
+    override fun isDeleted() = false
+    override fun getId() = 0L
+    override fun getVersion() = 0
+    override fun getChangeset() = null
+    override fun getDateEdited() = null
+    override fun getTags() = tags
+    fun setTags(map: Map<String, String>) { tags = map }
+    override fun getType() = Element.Type.NODE
 }

@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 class AddWheelchairAccessToilets : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
-        nodes, ways with amenity = toilets 
+        nodes, ways with amenity = toilets
          and access !~ private|customers
          and (
            !wheelchair
@@ -19,6 +19,7 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<String>() {
     override val commitMessage = "Add wheelchair access to toilets"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags.containsKey("name"))

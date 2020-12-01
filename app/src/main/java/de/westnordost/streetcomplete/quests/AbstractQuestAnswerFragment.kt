@@ -33,6 +33,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.isArea
+import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.quests.shop_gone.ShopGoneDialog
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import java.lang.ref.WeakReference
@@ -109,7 +110,9 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         /** Called when the element shall be deleted */
         fun onDeleteElement(osmQuestId: Long, element: OsmElement)
-        
+
+        /** Called when a new feature has been selected for an element (a shop of some kind) */
+        fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -172,7 +175,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         answers.add(cantSay)
 
         createSplitWayAnswer()?.let { answers.add(it) }
-        createDeleteElementAnswer()?.let { answers.add(it) }
+        createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
 
         answers.addAll(otherAnswers)
         return answers
@@ -199,12 +202,17 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
     }
 
-    private fun createDeleteElementAnswer(): OtherAnswer? {
+    private fun createDeleteOrReplaceElementAnswer(): OtherAnswer? {
         val isDeleteElementEnabled = (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
-        if (!isDeleteElementEnabled) return null
+        val isReplaceShopEnabled = (questType as? OsmElementQuestType)?.isReplaceShopEnabled == true
+        if (!isDeleteElementEnabled && !isReplaceShopEnabled) return null
+        check(!(isDeleteElementEnabled && isReplaceShopEnabled)) {
+            "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
+        }
 
         return OtherAnswer(R.string.quest_generic_answer_does_not_exist) {
-            deleteElement()
+            if (isDeleteElementEnabled) deleteElement()
+            else if (isReplaceShopEnabled) replaceShopElement()
         }
     }
 
@@ -350,15 +358,23 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         listener?.onSkippedQuest(questId, questGroup)
     }
 
-    protected fun showShopGoneDialog() {
+    protected fun replaceShopElement() {
         val ctx = context ?: return
+        val element = osmElement ?: return
         val isoCountryCode = countryInfo.countryCode.substringBefore('-')
 
-        ShopGoneDialog(
-            ctx,
-            osmElement?.geometryType,
-            isoCountryCode,
-            featureDictionaryFuture.get(), { /* TODO */ }).show()
+        if (element.isSomeKindOfShop()) {
+            ShopGoneDialog(
+                ctx,
+                element.geometryType,
+                isoCountryCode,
+                featureDictionaryFuture.get(),
+                onSelectedFeature = { tags -> listener?.onReplaceShopElement(questId, tags) },
+                onLeaveNote = this::composeNote
+            ).show()
+        } else {
+            composeNote()
+        }
     }
 
     protected fun deleteElement() {

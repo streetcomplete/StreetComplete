@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import java.util.concurrent.FutureTask
 
 class AddWheelchairAccessBusiness : OsmFilterQuestType<String>()
 {
@@ -82,6 +80,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<String>()
     override val commitMessage = "Add wheelchair access"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair_shop
+    override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_name_type_title

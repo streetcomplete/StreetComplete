@@ -390,7 +390,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* --------------------------------- MainFragment.Listener ---------------------------------- */
 
-	@Override public void onQuestSolved(@Nullable Quest quest, @Nullable String source)
+	@Override public void onQuestSolved(@NonNull Quest quest, @Nullable String source)
 	{
 		ensureLoggedIn();
 	}

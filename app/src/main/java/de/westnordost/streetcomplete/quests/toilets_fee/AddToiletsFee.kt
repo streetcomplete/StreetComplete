@@ -12,6 +12,7 @@ class AddToiletsFee : OsmFilterQuestType<Boolean>() {
     override val commitMessage = "Add toilets fee"
     override val wikiLink = "Key:fee"
     override val icon = R.drawable.ic_quest_toilet_fee
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_toiletsFee_title
 
