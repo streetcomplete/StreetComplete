@@ -56,6 +56,7 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
     }
 
     private fun getFeatures(startsWith: String): List<Feature> {
+        val elementFeature = getOsmElementFeature() ?: return emptyList()
         val localeList = ConfigurationCompat.getLocales(requireContext().resources.configuration)
         return featureDictionary
             .byTerm(startsWith)
@@ -66,9 +67,16 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
             .find()
             // filter to those brands that fit on how the thing is tagged now
             .filter { feature ->
-                osmElement!!.tags!!.none { (key, value) ->
-                    feature.tags.containsKey(key) && feature.tags[key] != value
-                }
+                elementFeature.tags.all { feature.tags[it.key] == it.value }
             }
+    }
+
+    private fun getOsmElementFeature(): Feature? {
+        return featureDictionary
+            .byTags(osmElement!!.tags)
+            .forGeometry(osmElement!!.geometryType)
+            .isSuggestion(false)
+            .find()
+            .firstOrNull()
     }
 }
