@@ -63,6 +63,7 @@ class OsmElementUpdateControllerTest {
         val element = OsmNode(123L, 1, 0.0, 0.0, null)
         val point = ElementPointGeometry(element.position)
         val questType: OsmElementQuestType<Boolean> = mock()
+        on(questType.isRecreateAfterSplitEnabled).thenReturn(true)
         val questTypes = listOf(questType)
         on(elementGeometryCreator.create(element)).thenReturn(point)
 

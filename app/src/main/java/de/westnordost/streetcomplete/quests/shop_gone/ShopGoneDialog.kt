@@ -97,7 +97,7 @@ class ShopGoneDialog(
     }
 
     private fun getSelectedFeature(): Feature? {
-        val input = presetsEditText.text.toString()
+        val input = presetsEditText.text.toString().trim()
         return getFeatures(input).firstOrNull()?.takeIf { it.canonicalName == StringUtils.canonicalize(input) }
     }
 
