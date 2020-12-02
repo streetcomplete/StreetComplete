@@ -5,8 +5,10 @@ import androidx.appcompat.app.AlertDialog
 import android.view.View
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.shop_gone.SearchAdapter
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import kotlinx.android.synthetic.main.quest_placename.*
 
@@ -24,6 +26,15 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        nameInput.setAdapter(SearchAdapter(requireContext()) { term ->
+            featureDictionary
+                .byTerm(term)
+                .forGeometry(osmElement!!.geometryType)
+                .inCountry(countryInfo.countryCode)
+                .isSuggestion(true)
+                .find()
+                .map { it.name }
+        })
         nameInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
     }
 

@@ -59,6 +59,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
     protected val countryInfo get() = _countryInfo!!
 
+    protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
+
     // views
     private lateinit var content: ViewGroup
     private lateinit var buttonPanel: FlexboxLayout
@@ -368,7 +370,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
                 ctx,
                 element.geometryType,
                 isoCountryCode,
-                featureDictionaryFuture.get(),
+                featureDictionary,
                 onSelectedFeature = { tags -> listener?.onReplaceShopElement(questId, tags) },
                 onLeaveNote = this::composeNote
             ).show()
