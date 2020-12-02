@@ -74,7 +74,7 @@ fun Element.isSomeKindOfShop(): Boolean = IS_SOME_KIND_OF_SHOP_EXPR.matches(this
  *  */
 private val IS_SOME_KIND_OF_SHOP_EXPR = ("""
     nodes, ways, relations with
-      shop and shop !~ no|vacant
+      shop and shop !~ no|vacant|mall
       or tourism = information and information = office
       or """ +
     mapOf(

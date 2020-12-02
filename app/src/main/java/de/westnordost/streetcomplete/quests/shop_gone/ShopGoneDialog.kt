@@ -8,7 +8,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.ConfigurationCompat
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
@@ -103,7 +103,6 @@ class ShopGoneDialog(
 
     private fun getFeatures(startsWith: String) : List<Feature> {
         val localeList = ConfigurationCompat.getLocales(context.resources.configuration)
-        val fakeElement = FakeElement()
         return featureDictionary
             .byTerm(startsWith)
             .forGeometry(geometryType)
@@ -111,22 +110,8 @@ class ShopGoneDialog(
             .forLocale(*localeList.toTypedArray())
             .find()
             .filter { feature ->
-                fakeElement.setTags(feature.tags)
+                val fakeElement = OsmNode(-1L, 0, 0.0, 0.0, feature.tags)
                 fakeElement.isSomeKindOfShop()
             }
     }
-}
-
-private class FakeElement : Element {
-    private var tags: Map<String, String>? = null
-    override fun isNew() = false
-    override fun isModified() = false
-    override fun isDeleted() = false
-    override fun getId() = 0L
-    override fun getVersion() = 0
-    override fun getChangeset() = null
-    override fun getDateEdited() = null
-    override fun getTags() = tags
-    fun setTags(map: Map<String, String>) { tags = map }
-    override fun getType() = Element.Type.NODE
 }

@@ -947,7 +947,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="leave_note">Leave note</string>
     <string name="quest_shop_gone_title">What\'s here now instead?</string>
     <string name="quest_shop_gone_vacant_answer">It\'s vacant</string>
-    <string name="quest_shop_gone_replaced_answer">A…</string>
+    <string name="quest_shop_gone_replaced_answer">A(n)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
     <string name="quest_shop_gone_replaced_answer_error">"Don't know what this is. Consider leaving a note."</string>
 </resources>
