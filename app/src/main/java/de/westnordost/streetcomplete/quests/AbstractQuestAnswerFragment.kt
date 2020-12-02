@@ -386,13 +386,13 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             ).parseAsHtml()
 
         AlertDialog.Builder(context)
-        .setMessage(message)
-        .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
-            listener?.onDeleteElement(questId, osmElement!!)
-        }
-        .setNeutralButton(R.string.leave_note) { _, _ ->
-            composeNote()
-        }.show()
+            .setMessage(message)
+            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
+                listener?.onDeleteElement(questId, osmElement!!)
+            }
+            .setNeutralButton(R.string.leave_note) { _, _ ->
+                composeNote()
+            }.show()
     }
 
     protected fun setContentView(resourceId: Int): View {
