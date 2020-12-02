@@ -1,10 +1,14 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import java.util.concurrent.FutureTask
 
-class AddWheelchairAccessBusiness : OsmFilterQuestType<String>()
+class AddWheelchairAccessBusiness(
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+) : OsmFilterQuestType<String>()
 {
     override val elementFilter = """
         nodes, ways, relations with
@@ -83,11 +87,13 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<String>()
     override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_name_type_title
+    override fun getTitle(tags: Map<String, String>) =
+        if (hasFeatureName(tags)) R.string.quest_wheelchairAccess_name_type_title
+        else                      R.string.quest_wheelchairAccess_name_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
-        return arrayOf(name.toString(),featureName.value.toString())
+        return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
     }
 
     override fun createForm() = AddWheelchairAccessBusinessForm()
@@ -95,4 +101,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<String>()
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
         changes.add("wheelchair", answer)
     }
+
+    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
+        tags?.let { featureDictionaryFuture.get().byTags(it).isSuggestion(false).find().isNotEmpty() } ?: false
 }

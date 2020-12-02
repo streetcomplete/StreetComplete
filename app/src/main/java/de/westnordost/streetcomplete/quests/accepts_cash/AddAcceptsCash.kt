@@ -9,7 +9,9 @@ import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import java.util.concurrent.FutureTask
 
-class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
+class AddAcceptsCash(
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+) : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter: String get() {
         val amenities = listOf(
@@ -53,11 +55,15 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
 
     override val enabledInCountries = NoCountriesExcept("SE")
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_type_title
+    override fun getTitle(tags: Map<String, String>) =
+        if (hasFeatureName(tags) && !tags.containsKey("brand"))
+            R.string.quest_accepts_cash_type_title
+        else
+            R.string.quest_accepts_cash_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
-        return arrayOf(name.toString(),featureName.value.toString())
+        return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
     }
 
     override fun createForm() = YesNoQuestAnswerFragment()
@@ -65,4 +71,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("payment:cash", answer.toYesNo())
     }
+
+    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
+        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }

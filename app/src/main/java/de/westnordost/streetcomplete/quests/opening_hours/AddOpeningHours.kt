@@ -96,22 +96,33 @@ class AddOpeningHours (
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasProperName = hasProperName(tags)
+        val hasFeatureName = hasFeatureName(tags)
         // treat invalid opening hours like it is not set at all
         val hasValidOpeningHours = tags["opening_hours"]?.toOpeningHoursRules() != null
         return if (hasValidOpeningHours) {
-            if (!hasProperName) R.string.quest_openingHours_resurvey_no_name_title
-            else R.string.quest_openingHours_resurvey_name_type_title
+            when {
+                !hasProperName  -> R.string.quest_openingHours_resurvey_no_name_title
+                !hasFeatureName -> R.string.quest_openingHours_resurvey_name_title
+                else            -> R.string.quest_openingHours_resurvey_name_type_title
+            }
         } else {
-            if (!hasProperName) R.string.quest_openingHours_no_name_title
-            else R.string.quest_openingHours_name_type_title
+            when {
+                !hasProperName  -> R.string.quest_openingHours_no_name_title
+                !hasFeatureName -> R.string.quest_openingHours_name_title
+                else            -> R.string.quest_openingHours_name_type_title
+            }
         }
     }
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
-        val hasProperName = hasProperName(tags)
-        return if (!hasProperName) arrayOf(featureName.value.toString())
-               else arrayOf(name.toString(), featureName.value.toString())
+        val hasProperName = name != null
+        val hasFeatureName = hasFeatureName(tags)
+        return when {
+            !hasProperName  -> arrayOf(featureName.value.toString())
+            !hasFeatureName -> arrayOf(name!!)
+            else            -> arrayOf(name!!, featureName.value.toString())
+        }
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
@@ -159,5 +170,5 @@ class AddOpeningHours (
         tags?.keys?.containsAny(listOf("name", "brand")) ?: false
 
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+        tags?.let { featureDictionaryFuture.get().byTags(it).isSuggestion(false).find().isNotEmpty() } ?: false
 }
