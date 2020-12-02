@@ -22,7 +22,6 @@ class CheckExistance(
           (
             amenity = atm
             or amenity = telephone
-            or amenity = post_box
             or amenity = waste_basket
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or birds_nest = stork
@@ -32,6 +31,7 @@ class CheckExistance(
           (
             amenity = clock
             or amenity = bench
+            or amenity = post_box
             or leisure = picnic_table
             or leisure = firepit
             or amenity = vending_machine and vending = public_transport_tickets
@@ -42,6 +42,7 @@ class CheckExistance(
         )) and access !~ no|private
     """.toElementFilterExpression()
     }
+    // postboxes are in 4 years category so that postbox collection times is asked instead more often
 
     private val nodesWaysFilter by lazy { """
         nodes, ways with (
@@ -50,8 +51,6 @@ class CheckExistance(
         and access !~ no|private
         and (${lastChecked(4.0)})
     """.toElementFilterExpression() }
-
-    // TODO postkästen!
 
     /* not including bicycle parkings, motorcycle parkings because their capacity is asked every
     *  few years already, so if it's gone now, it will be noticed that way. */
