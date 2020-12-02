@@ -89,7 +89,7 @@ class CheckExistence(
 
     private fun lastChecked(yearsAgo: Double): String = """
         older today -$yearsAgo years
-        or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it older today -$yearsAgo years" }}
+        or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -$yearsAgo years" }}
     """.trimIndent()
 
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
