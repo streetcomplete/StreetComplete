@@ -61,10 +61,8 @@ open class UpdatePresetsTask : DefaultTask() {
 
     /** Download and pick the localization for only the presets from iD localizations
      *  (the iD localizations contain everything, such as localizations of iD UI etc)*/
-    private fun fetchPresetsLocalizations(localization: LocalizationMetadata): String? {
-        val localizationUrl = URL(localization.downloadUrl)
-        val localizationJson = Parser.default().parse(localizationUrl.openStream()) as JsonObject
-        return localizationJson.toJsonString(true).unescapeUnicode()
+    private fun fetchPresetsLocalizations(localization: LocalizationMetadata): String {
+        return URL(localization.downloadUrl).openStream().bufferedReader().use { it.readText() }.unescapeUnicode()
     }
 }
 
