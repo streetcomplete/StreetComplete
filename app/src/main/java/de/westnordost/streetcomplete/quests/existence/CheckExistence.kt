@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.existance
+package de.westnordost.streetcomplete.quests.existence
 
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.ktx.containsAny
 import java.util.*
 import java.util.concurrent.FutureTask
 
-class CheckExistance(
+class CheckExistence(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<Unit> {
 
@@ -61,7 +61,7 @@ class CheckExistance(
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
-        return if(hasName) R.string.quest_existance_name_title else R.string.quest_existance_title
+        return if(hasName) R.string.quest_existence_name_title else R.string.quest_existence_title
     }
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
@@ -77,7 +77,7 @@ class CheckExistance(
         (nodesFilter.matches(element) || nodesWaysFilter.matches(element))
         && hasFeatureName(element.tags)
 
-    override fun createForm() = CheckExistanceForm()
+    override fun createForm() = CheckExistenceForm()
 
     override fun applyAnswerTo(answer: Unit, changes: StringMapChangesBuilder) {
         changes.addOrModify("check_date", Date().toCheckDateString())

@@ -1,8 +1,8 @@
-package de.westnordost.streetcomplete.quests.existance
+package de.westnordost.streetcomplete.quests.existence
 
 import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
 
-class CheckExistanceForm : AYesNoQuestAnswerFragment<Unit>() {
+class CheckExistenceForm : AYesNoQuestAnswerFragment<Unit>() {
     override fun onClick(answer: Boolean) {
         if (answer) applyAnswer(Unit)
         else deleteElement()
