@@ -92,9 +92,6 @@ class CheckExistence(
         or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it older today -$yearsAgo years" }}
     """.trimIndent()
 
-    private fun hasProperName(tags: Map<String, String>?): Boolean =
-        tags?.keys?.containsAny(listOf("name", "brand")) ?: false
-
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
         tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }

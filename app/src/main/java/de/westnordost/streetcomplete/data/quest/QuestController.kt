@@ -109,8 +109,13 @@ import javax.inject.Singleton
         val element = osmElementDB.get(q.elementType, q.elementId) ?: return false
         val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName} with $changes")
+
         osmQuestController.answer(q, changes, source)
+        // current quests are likely invalid after shop has been replaced, so let's remove the unsolved ones
+        osmQuestController.deleteAllUnsolvedForElement(q.elementType, q.elementId)
+
         prefs.edit().putLong(Prefs.LAST_SOLVED_QUEST_TIME, System.currentTimeMillis()).apply()
+
         return true
     }
 
