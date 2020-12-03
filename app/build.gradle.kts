@@ -176,7 +176,7 @@ val bcp47ExportLanguages = setOf(
 tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
-    targetDir = "$projectDir/src/main/assets/osmfeatures"
+    targetDir = "$projectDir/src/main/assets/osmfeatures/default"
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {

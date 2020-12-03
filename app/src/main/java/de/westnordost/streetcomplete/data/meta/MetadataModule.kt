@@ -19,5 +19,5 @@ object MetadataModule {
         FutureTask { CountryBoundaries.load(assetManager.open("boundaries.ser")) }
 
     @Provides @Singleton fun featureDictionaryFuture(assetManager: AssetManager): FutureTask<FeatureDictionary> =
-        FutureTask { AndroidFeatureDictionary.create(assetManager, "osmfeatures") }
+        FutureTask { AndroidFeatureDictionary.create(assetManager,"osmfeatures/default", "osmfeatures/brands" ) }
 }
