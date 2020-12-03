@@ -6,13 +6,12 @@ import android.view.View
 import androidx.core.os.ConfigurationCompat
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.StringUtils
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.toTypedArray
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.shop_gone.SearchAdapter
+import de.westnordost.streetcomplete.quests.shop_type.SearchAdapter
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import kotlinx.android.synthetic.main.quest_placename.*
 
@@ -30,17 +29,16 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        nameInput.setAdapter(SearchAdapter(requireContext()) { term ->
-            getFeatures(term).map { it.name } })
+        nameInput.setAdapter(SearchAdapter(requireContext(), { term -> getFeatures(term) }, { it.name }))
         nameInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
     }
 
     override fun onClickOk() {
         val feature = getSelectedFeature()
-        if (feature == null) {
-            applyAnswer(PlaceName(placeName))
-        } else {
+        if (feature != null) {
             applyAnswer(BrandFeature(feature.addTags))
+        } else {
+            applyAnswer(PlaceName(placeName))
         }
     }
 

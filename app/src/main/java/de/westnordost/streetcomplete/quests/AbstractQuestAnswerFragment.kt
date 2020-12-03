@@ -34,7 +34,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
-import de.westnordost.streetcomplete.quests.shop_gone.ShopGoneDialog
+import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import java.lang.ref.WeakReference
 import java.util.*

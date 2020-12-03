@@ -655,6 +655,7 @@ object AchievementsModule {
             SolvedQuestsOfTypes(
                 listOf(
                     "CheckExistence",
+                    "CheckShopType",
                     "AddSelfServiceLaundry",
                     "AddToiletAvailability",
                     "AddToiletsFee",

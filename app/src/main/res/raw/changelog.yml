@@ -1,3 +1,22 @@
+v28.0-beta1: |
+  <p>This update is devoted to checking whether things still exist the way they are mapped since
+  keeping data up-to-date is at least as important as contributing new data.</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>This shop has been vacant. What's here now?</i></li>
+  <li><i>Is this still here?</i>, asked periodically for benches, telephones, post boxes etc.</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Added "doesn't exist" answer option to many quests. If it was a shop of some kind, you can
+      directly specify what is there now.</li>
+  </ul>
+  <h3>Other Enhancements and Fixes</h3>
+  <ul>
+  <li>Android 11: Enable smooth keyboard appear animation (#2133)</li>
+  <li>even slightly faster download</li>
+  </ul>
+
 v27.0: |
   <h3>New Quests</h3>
   <ul>

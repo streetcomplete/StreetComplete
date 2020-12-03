@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.shop_gone
+package de.westnordost.streetcomplete.quests.shop_type
 
 import android.content.Context
 import android.content.DialogInterface
@@ -16,7 +16,7 @@ import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.ktx.toTypedArray
-import kotlinx.android.synthetic.main.dialog_shop_gone.view.*
+import kotlinx.android.synthetic.main.view_shop_type.view.*
 
 class ShopGoneDialog(
     context: Context,
@@ -46,8 +46,7 @@ class ShopGoneDialog(
             radioButton.setOnClickListener { selectRadioButton(it) }
         }
 
-        val adapter = SearchAdapter(context) { term -> getFeatures(term).map { it.name }}
-        presetsEditText.setAdapter(adapter)
+        presetsEditText.setAdapter(SearchAdapter(context, { term -> getFeatures(term) }, { it.name }))
         presetsEditText.setOnClickListener { selectRadioButton(replaceRadioButton) }
         presetsEditText.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) selectRadioButton(replaceRadioButton)

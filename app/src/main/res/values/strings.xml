@@ -954,4 +954,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
     <string name="quest_shop_gone_replaced_answer_error">"Don't know what this is. Consider leaving a note."</string>
+    <string name="quest_shop_vacant_type_title">This shop has been vacant. What\'s here now?</string>
 </resources>
