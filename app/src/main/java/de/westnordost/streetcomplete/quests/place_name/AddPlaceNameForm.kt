@@ -36,7 +36,12 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(PlaceName(placeName))
+        val feature = getSelectedFeature()
+        if (feature == null) {
+            applyAnswer(PlaceName(placeName))
+        } else {
+            applyAnswer(BrandFeature(feature.addTags))
+        }
     }
 
     private fun confirmNoName() {

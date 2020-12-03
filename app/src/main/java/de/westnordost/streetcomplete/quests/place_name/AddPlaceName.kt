@@ -115,6 +115,11 @@ class AddPlaceName(
         when(answer) {
             is NoPlaceNameSign -> changes.add("name:signed", "no")
             is PlaceName -> changes.add("name", answer.name)
+            is BrandFeature -> {
+                for ((key, value) in answer.tags.entries) {
+                    changes.addOrModify(key, value)
+                }
+            }
         }
     }
 
