@@ -6,10 +6,10 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
+import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.ktx.containsAny
 import java.util.*
 import java.util.concurrent.FutureTask
 
@@ -80,8 +80,8 @@ class CheckExistence(
     override fun createForm() = CheckExistenceForm()
 
     override fun applyAnswerTo(answer: Unit, changes: StringMapChangesBuilder) {
-        changes.addOrModify("check_date", Date().toCheckDateString())
-        val otherCheckDateKeys = LAST_CHECK_DATE_KEYS.filterNot { it == "check_date" }
+        changes.addOrModify(SURVEY_MARK_KEY, Date().toCheckDateString())
+        val otherCheckDateKeys = LAST_CHECK_DATE_KEYS.filterNot { it == SURVEY_MARK_KEY }
         for (otherCheckDateKey in otherCheckDateKeys) {
             changes.deleteIfExists(otherCheckDateKey)
         }
