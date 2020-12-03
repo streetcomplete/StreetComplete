@@ -145,6 +145,8 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         }
         view.markedLanesButton.setOnClickListener {
             selectedLanesType = MARKED
+            unmarkedLanesButton.isSelected = false
+            checkIsFormComplete()
             askLanesAndSwitchToStreetSideLayout()
         }
     }
