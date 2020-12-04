@@ -8,11 +8,12 @@ class AddParkingTypeForm : AImageListQuestAnswerFragment<String,String>() {
 
     override val items = listOf(
         Item("surface", R.drawable.parking_type_surface, R.string.quest_parkingType_surface),
+        Item("street_side", R.drawable.parking_type_street_side, R.string.quest_parkingType_street_side),
         Item("underground", R.drawable.parking_type_underground, R.string.quest_parkingType_underground),
         Item("multi-storey", R.drawable.parking_type_multistorey, R.string.quest_parkingType_multiStorage)
     )
 
-    override val itemsPerRow = 3
+    override val itemsPerRow = 2
 
     override fun onClickOk(selectedItems: List<String>) {
         applyAnswer(selectedItems.single())
