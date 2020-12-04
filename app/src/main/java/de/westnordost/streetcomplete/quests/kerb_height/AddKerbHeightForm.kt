@@ -19,6 +19,7 @@ class AddKerbHeightForm : AImageListQuestAnswerFragment<String, String>() {
     )
 
     override val itemsPerRow = 2
+    override val moveFavoritesToFront = false
 
     override fun onClickOk(selectedItems: List<String>) {
         applyAnswer(selectedItems.single())
