@@ -9,7 +9,10 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
     override val elementFilter = """
         ways with
-          highway ~ ${ROADS_WITH_LANES.joinToString("|")}
+          (
+            highway ~ ${ROADS_WITH_LANES.joinToString("|")}
+            or highway = residential and maxspeed > 30
+          )
           and surface ~ ${ANYTHING_PAVED.joinToString("|")}
           and (!lanes or lanes = 0)
           and lane_markings != no
@@ -72,7 +75,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
         private val ROADS_WITH_LANES = listOf(
             "motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link",
             "secondary", "secondary_link", "tertiary", "tertiary_link",
-            "unclassified", "residential"
+            "unclassified"
         )
     }
 }
