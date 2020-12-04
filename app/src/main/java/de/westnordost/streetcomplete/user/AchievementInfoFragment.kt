@@ -72,14 +72,13 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         achievementIconBubble = null
         clearAnimators()
         shineAnimation?.cancel()
         shineAnimation = null
     }
-
 
     /* ---------------------------------------- Interface --------------------------------------- */
 

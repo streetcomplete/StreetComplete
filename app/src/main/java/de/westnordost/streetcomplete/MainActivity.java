@@ -255,6 +255,11 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onConfigurationChanged(@NonNull Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		findViewById(R.id.main).requestLayout();
+		// recreate the NotificationsContainerFragment because it should load a new layout, see #2330
+		getSupportFragmentManager()
+				.beginTransaction()
+				.replace(R.id.notifications_container_fragment, new NotificationsContainerFragment())
+				.commit();
 	}
 
 	private void ensureLoggedIn()
