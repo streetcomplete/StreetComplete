@@ -429,6 +429,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
     <string name="quest_parkingType_street_side">Street side parking</string>
+    <string name="quest_parkingType_lane">Parking on roadway</string>
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
     <string name="quest_dietType_vegetarian_name_title">Does %s have vegetarian meals on the menu?</string>

@@ -6,7 +6,11 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
 class AddParkingType : OsmFilterQuestType<String>() {
 
-    override val elementFilter = "nodes, ways, relations with amenity = parking and !parking"
+    override val elementFilter = """
+        nodes, ways, relations with
+          amenity = parking
+          and (!parking or parking = yes)
+    """
     override val commitMessage = "Add parking type"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking
