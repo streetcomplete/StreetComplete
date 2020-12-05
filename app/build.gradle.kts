@@ -179,6 +179,11 @@ tasks.register<UpdatePresetsTask>("updatePresets") {
     targetDir = "$projectDir/src/main/assets/osmfeatures/default"
 }
 
+tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
+    group = "streetcomplete"
+    targetDir = "$projectDir/src/main/assets/osmfeatures/brands"
+}
+
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages

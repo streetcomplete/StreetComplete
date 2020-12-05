@@ -58,6 +58,7 @@ tasks.register("updateStreetCompleteData") {
         //"updateClothesContainerOperators",
         //"updateAtmOperators",
         "app:updatePresets",
+        "app:updateNsiPresets",
         "app:updateTranslations",
         "app:updateTranslationCompleteness",
         "app:copyDefaultStringsToEnStrings",
