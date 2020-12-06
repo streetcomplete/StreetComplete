@@ -1,1 +1,1 @@
-App topógrafo para OpenStreetMap
+Aplicativo topógrafo para OpenStreetMap

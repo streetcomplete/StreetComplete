@@ -1,1 +1,1 @@
-Додаток — інспектор OpenStreetMap
+Застосунок — дослідник OpenStreetMap

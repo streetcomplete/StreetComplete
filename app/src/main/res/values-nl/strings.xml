@@ -2359,4 +2359,10 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_buildingType_ruins_description">"vervallen, verwoest en niet-identificeerbaar gebouw"</string>
     <string name="quest_charging_station_capacity_title">"Hoeveel auto's kunnen tegelijk op dit oplaad station worden opgeladen?"</string>
     <string name="link_disaster_ninja_description">"Kaart met recente natuurrampen, interessant voor humanitaire kaartenmakers. Toont ook veel interessante statistieken om te analyseren hoe goed in kaart gebracht en actueel plaatsen zijn."</string>
+    <string name="quest_lanes_title">"Hoeveel rijbanen voor auto's geeft deze weg?"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Is dit correct?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Wat is de maximum hoogte onder deze brug?"</string>
+    <string name="quest_surface_value_rock">"Rots"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Hoge vrachtwasen kunnen er door"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Hoge vrachtwagens passen niet"</string>
 </resources>

@@ -1914,6 +1914,7 @@ Del det nu?"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"Det gratis wiki verdenskort"</string>
     <string name="tutorial_intro">"StreetComplete gør det nemt at bidrage til OpenStreetMap. Den leder automatisk efter detajer i dit område: cykelstier, åbningstider, gadebelysning og meget mere..."</string>
     <string name="achievements_empty">"Du har ingen medaljer endnu"</string>
+    <string name="links_empty">"Du har endnu ingen links"</string>
     <string name="quests_empty">"Du har ikke indsendt nogle svar endnu"</string>
     <string name="unsynced_quests_description">"plus %d ændringer der endnu ikke er indsendt."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du har %d endnu ikke indsendte ændringer. Du skal logge ind for at indsende dem."</string>
@@ -1946,17 +1947,24 @@ Del det nu?"</string>
     <string name="achievement_first_edit_title">"Første opgave løst"</string>
     <string name="achievement_bicyclist_title">"Cyklist"</string>
     <string name="achievement_bicyclist_solved_X">"Du har løst %d opgaver der hjælper cyklister"</string>
+    <string name="achievement_postman_title">"Postbud"</string>
     <string name="achievement_blind_solved_X">"Du har løst %d opgaver der er interessante for synshandicappede."</string>
+    <string name="achievement_pedestrian_title">"Løber"</string>
     <string name="achievement_pedestrian_solved_X">"Du har løst %d opgaver der er interessante for folk til fods."</string>
     <string name="achievement_veg_title">"God mod dyr"</string>
     <string name="achievement_veg_solved_X">"Du har løst %d opgaver der er interessante for folk der lever på en diæt uden kød!
 "</string>
+    <string name="achievement_car_title">"På vejen"</string>
     <string name="unread_messages_message">"Du har %d ulæste beskeder i din indbakke"</string>
     <string name="unread_messages_button">"Åbn indbakke"</string>
     <string name="action_about2">"Om"</string>
     <string name="map_btn_menu">"Menu"</string>
     <string name="confirmation_authorize_now_note2">"Du kan også gøre det senere på profil siden."</string>
+    <string name="credits_art_contributors_title">"Kunstbidragsydere"</string>
+    <string name="credits_main_contributors_title">"Hovedbidragsydere"</string>
     <string name="user_statistics_filter_by_country">"efter land"</string>
+    <string name="user_profile_global_rank">"Global rang"</string>
+    <string name="user_profile_local_rank">"Rang i %s"</string>
     <string name="user_profile_days_active">"Dage
 aktiv"</string>
     <string name="quest_address_street_title">"Hvilken vej ligger hus-nummer %s på?"</string>
@@ -1971,6 +1979,7 @@ aktiv"</string>
     <string name="quest_board_type_plants">"Planter"</string>
     <string name="quest_board_type_wildlife">"Dyreliv"</string>
     <string name="quest_board_type_nature">"Natur (flere emner)"</string>
+    <string name="quest_board_type_notice_board">"Det er en opslagstavle"</string>
     <string name="quest_board_type_public_transport">"Offentlig transport"</string>
     <string name="quest_board_type_title">"Hvilket emne handler infotavlen om?"</string>
     <string name="quest_sidewalk_separately_mapped">"Ja, vist seperat på kortet"</string>
@@ -1998,6 +2007,8 @@ aktiv"</string>
     <string name="resurvey_intervals_less_often">"Spørg sjældnere"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spørg oftere"</string>
+    <string name="quest_busStopBench_tram_name_title">"Har sporvognsstoppestedet %s en bænk?"</string>
+    <string name="quest_busStopBench_tram_title">"Har dette sporvognsstoppested en bænk?"</string>
     <string name="quest_busStopBench_title">"Er der en bænk ved dette busstop?"</string>
     <string name="quest_busStopBench_name_title">"Har busstoppet %s en bænk?"</string>
     <string name="quest_is_defibrillator_inside_title">"Er hjertestarteren (AED) inde i bygningen?"</string>
@@ -2011,6 +2022,8 @@ aktiv"</string>
     <string name="quest_steps_incline_up">"Denne vej op"</string>
     <string name="quest_step_count_title">"Hvor mange trin her?"</string>
     <string name="quest_traffic_signals_sound_title">"Er der nogen lydsignaler for blinde her?"</string>
+    <string name="quest_busStopRef_title">"Hvad er dette busstoppesteds referencenummer?"</string>
+    <string name="quest_tramStopRef_title">"Hvad er dette sporvognsstoppesteds referencenummer?"</string>
     <string name="quest_buildingType_bungalow_description2">"Lille hus (sommerhus, feriehytte, ...)"</string>
     <string name="quest_steps_ramp_title">"Er der en rampe? Hvilken type?"</string>
     <string name="quest_steps_ramp_none">"Ingen (brugbar) rampe"</string>
@@ -2043,4 +2056,8 @@ aktiv"</string>
     <string name="quest_buildingType_ruins_description">"forladt, ødelagt og/eller uidentificerbar bygning"</string>
     <string name="quest_charging_station_capacity_title">"Hvor mange biler kan lades samtidig på denne ladestation?"</string>
     <string name="link_disaster_ninja_description">"Kort, der viser nylige naturkatastrofer, interessant for humanitære kortlæggere. Viser også mange interessante statistikker til at analysere, hvor godt kortlagte og opdaterede stederne er."</string>
+    <string name="quest_lanes_title">"Hvor mange kørebaner for biler har denne vej?"</string>
+    <string name="quest_lanes_answer_lanes">"Markerede kørebaner"</string>
+    <string name="quest_lanes_answer_noLanes">"Ingen markerede kørebaner"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Er dette korrekt?"</string>
 </resources>

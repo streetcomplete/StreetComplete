@@ -1676,13 +1676,13 @@ Suddividere?"</string>
     <string name="quest_recycling_type_scrap_metal">"Rottami metallici"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_type_any_glass">"Vetro"</string>
+    <string name="quest_recycling_type_any_glass">"Qualsiasi vetro"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_glass_title">"Possono essere gettate solo bottiglie e vasetti di vetro, o qualsiasi tipo di vetro?"</string>
+    <string name="quest_recycling_glass_title">"Qui si possono gettare solo bottiglie e vasetti di vetro, o qualsiasi tipo di vetro?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_determineRecyclingGlass_description_any_glass">"Esempi di verto che spesso non è accettato: vetro temprato, finestre, stoviglie di vetro, lampadine o specchi."</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Esempi di vetro che spesso non è accettato: vetro temprato, finestre, stoviglie di vetro, lampadine o specchi."</string>
 
     <!-- Fuzzy -->
     <string name="about_title_changelog">"Cronologia"</string>
