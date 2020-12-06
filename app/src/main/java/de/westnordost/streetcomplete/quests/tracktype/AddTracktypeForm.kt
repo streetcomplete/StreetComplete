@@ -8,8 +8,8 @@ class AddTracktypeForm : AImageListQuestAnswerFragment<String, String>() {
 
     override val items = listOf(
         Item("grade1", R.drawable.tracktype_grade1, R.string.quest_tracktype_grade1),
-        Item("grade2", R.drawable.tracktype_grade2, R.string.quest_tracktype_grade2),
-        Item("grade3", R.drawable.tracktype_grade3, R.string.quest_tracktype_grade3),
+        Item("grade2", R.drawable.tracktype_grade2, R.string.quest_tracktype_grade2a),
+        Item("grade3", R.drawable.tracktype_grade3, R.string.quest_tracktype_grade3a),
         Item("grade4", R.drawable.tracktype_grade4, R.string.quest_tracktype_grade4),
         Item("grade5", R.drawable.tracktype_grade5, R.string.quest_tracktype_grade5)
     )
