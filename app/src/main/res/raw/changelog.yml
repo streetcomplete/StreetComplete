@@ -1,3 +1,12 @@
+v27.2: |
+  <ul>
+  <li>Lanes quest: Don't ask for residential roads with a speed limit of 30 km/h and below (#2324)</li>
+  <li>Lanes quest: A few tiny UX improvements (#2337, ...)</li>
+  <li>Kerb height quest: Always show available options in the same order (#2345)</li>
+  <li>Fix display of achievements when app was rotated in landscape mode on start (#2330)</li>
+  <li>Update translations</li>
+  </ul>
+
 v27.1: |
   <ul>
   <li>Fix the lanes quest was asked again (and again and again) if you answered that there are no

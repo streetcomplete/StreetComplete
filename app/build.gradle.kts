@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
         targetSdkVersion(29)
-        versionCode = 2704
-        versionName = "27.1"
+        versionCode = 2705
+        versionName = "27.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
