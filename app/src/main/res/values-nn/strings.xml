@@ -849,7 +849,7 @@ nivå"</string>
     <string name="quest_summit_register_title">"Finst det ei turbok å skriva namnet sitt i på %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Er denne hjarte­startaren innandørs?"</string>
     <string name="about_title_translate">"Hjelp til med å omsetja appen"</string>
-    <string name="about_description_translate">"%1$s er omsett %2$d% %"</string>
+    <string name="about_description_translate">"%1$s er omsett %2$d%%"</string>
     <string name="quest_oneway2_title">"Er dette ei einvegskøyrd gate? I kva retning?"</string>
     <string name="quest_oneway2_dir">"Einvegskøyrd i denne retninga"</string>
     <string name="quest_oneway2_no_oneway">"Ikkje einvegskøyrd"</string>
