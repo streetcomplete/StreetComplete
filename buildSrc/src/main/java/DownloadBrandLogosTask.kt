@@ -52,7 +52,7 @@ open class DownloadBrandLogosTask : DefaultTask() {
                     val targetFile = File("$targetDir/$id.$suffix")
                     targetFile.parentFile.mkdirs()
 
-                    URL(smallImageUrl).openStream().use { input ->
+                    conn.openStream().use { input ->
                         FileOutputStream(targetFile).use { output ->
                             input.copyTo(output)
                         }
