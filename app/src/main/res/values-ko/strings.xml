@@ -1763,10 +1763,10 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
     <string name="quest_wheelchairAccess_toiletsPart_title">"%s의 화장실에 휠체어가 들어갈 수 있습니까?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_tram">"이 전차 정류장에 점자 블록이 있습니까?"</string>
+    <string name="quest_tactilePaving_title_tram">"이 전차 정류장에 점자 타일이 있습니까?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_tram">"전차 정류장 %s에 점자 블록이 있습니까?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"전차 정류장 %s에 점자 타일이 있습니까?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"여기의 하중 제한이 얼마입니까?"</string>
@@ -2121,4 +2121,25 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="quest_buildingType_ruins_description">"버려지고 부서져 알아보기 힘든 건물"</string>
     <string name="quest_charging_station_capacity_title">"이 충전소에서 최대 몇 대의 차량이 동시에 충전할 수 있습니까?"</string>
     <string name="link_disaster_ninja_description">"최근에 일어난 자연재해를 보여주는 지도입니다. 인도주의 지도 제작자들이 좋아합니다. 또한 지도가 자세한 지역, 지도가 최신인 지역을 분석해 통계로 보여줍니다."</string>
+    <string name="quest_lanes_title">"이 도로는 몇 차로입니까?"</string>
+    <string name="quest_lanes_answer_lanes">"차선이 그려져 있음"</string>
+    <string name="quest_lanes_answer_noLanes">"차선이 그려져 있지 않음"</string>
+    <string name="quest_lanes_answer_lanes_odd">"각 부분마다 다름"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"좌회전 차로가 2개 있음"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"정말 사실입니까?"</string>
+    <string name="quest_maxheight_below_bridge_title">"다리 밑 도로의 통과 높이 제한이 얼마입니까?"</string>
+    <string name="quest_maxheight_split_way_hint">"만약 선 전체에 적용되는 답변을 찾을 수 없다면, \"%s\"라고 답변해 보세요."</string>
+    <string name="quest_tactile_paving_kerb_title">"이 연석에 점자 타일이 있습니까?"</string>
+    <string name="quest_kerb_height_title">"이 연석의 높이가 얼마입니까?"</string>
+    <string name="quest_kerb_height_flush">"차도와 높이가 동일함"</string>
+    <string name="quest_kerb_height_lowered">"차도보다 약간 더 높음"</string>
+    <string name="quest_kerb_height_raised">"높은 연석"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"이쪽 횡단보도에는 연석이 없음"</string>
+    <string name="quest_kerb_height_lowered_ramp">"연석의 경사로"</string>
+    <string name="quest_lanes_answer_lanes_description2">"명시적으로 그려진 (양 방향) 차로의 개수는 교통량을 파악할 때 유용합니다. 따라서, 자전거 차로나 주차용 차로는 빼고 세세요. 만약 버스 전용 차로가 있다면, 참고를 남겨 주세요."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"명시적으로 그려진 차로의 개수는 교통량을 파악할 때 유용합니다. 따라서, 자전거 차로나 주차용 차로는 빼고 세세요. 만약 버스 전용 차로가 있다면, 참고를 남겨 주세요."</string>
+    <string name="quest_surface_value_rock">"바위"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"큰 트럭도 통과할 수 있음"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"큰 트럭은 통과할 수 없음"</string>
+    <string name="quest_address_street_hint">"추가하려면 도로를 탭하세요"</string>
 </resources>

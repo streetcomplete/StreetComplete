@@ -366,7 +366,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
     <string name="quest_crossing_type_signals">Crossing with traffic lights</string>
-    <string name="quest_crossing_type_uncontrolled">Uncontrolled crossing</string>
+    <string name="quest_crossing_type_marked">Marked crossing</string>
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
     <string name="action_undo">Undo</string>
@@ -428,6 +428,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_tung_nuts">Tung nuts</string>
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
+    <string name="quest_parkingType_street_side">Parking just off the roadway</string>
+    <string name="quest_parkingType_lane">Parking on roadway</string>
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
     <string name="quest_dietType_vegetarian_name_title">Does %s have vegetarian meals on the menu?</string>
@@ -437,6 +439,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat, fish, or poultry.</string>
     <string name="quest_dietType_explanation">Only answer “yes” if the place provides proper eating options for this diet, ignore starters etc.</string>
     <string name="quest_toiletAvailability_name_title">Does %s have a restroom?</string>
+    <string name="quest_existence_title">Is this still here? (%s)</string>
+    <string name="quest_existence_name_title">Is %1$s still here? (%2$s)</string>
     <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
     <string name="quest_powerPolesMaterial_wood">Wood</string>
     <string name="quest_powerPolesMaterial_metal">Steel</string>
@@ -685,8 +689,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? A note with a photo will enable other mappers to take care of it.</string>
     <string name="quest_tracktype_title">What is the surface firmness of this track?</string>
     <string name="quest_tracktype_grade1">Solid</string>
-    <string name="quest_tracktype_grade2">Mostly solid</string>
-    <string name="quest_tracktype_grade3">Mixture</string>
+    <string name="quest_tracktype_grade2a">Solid but unpaved</string>
+    <string name="quest_tracktype_grade3a">Mostly solid</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
     <string name="quest_wheelchairAccess_outside_title">Is this place wheelchair accessible?</string>
@@ -809,8 +813,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_recycling_materials_answer_waste">It\'s for general waste</string>
     <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or commercial waste?</string>
 
-    <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
     <string name="quest_accepts_cash_type_title">"Does %1$s (%2$s) accept cash payment?"</string>
+    <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
 
     <string name="quest_atm_operator_title">"What's the name of the bank for this ATM?"</string>
     <string name="quest_clothes_container_operator_title">"Who accepts donations for this clothing bin?"</string>
@@ -855,7 +859,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
     <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
-    <string name="link_thenandnow_description">Curious what progress we made over the years? Compare to how the map looked more than 10 years ago!</string>
     <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
     <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
     <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
@@ -942,4 +945,15 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_kerb_height_raised">High curb</string>
     <string name="quest_kerb_height_answer_no_kerb">There is no curb on this side of crossing</string>
     <string name="quest_kerb_height_lowered_ramp">Curb ramp</string>
+    <string name="quest_generic_answer_does_not_exist">It does not exist…</string>
+    <string name="osm_element_gone_warning">"Warning: This cannot be undone!</string>
+    <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? When in doubt, better leave a note instead.</string>
+    <string name="osm_element_gone_confirmation">It does not exist</string>
+    <string name="leave_note">Leave note</string>
+    <string name="quest_shop_gone_title">What\'s here now instead?</string>
+    <string name="quest_shop_gone_vacant_answer">It\'s vacant</string>
+    <string name="quest_shop_gone_replaced_answer">A(n)…</string>
+    <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Don't know what this is. Consider leaving a note."</string>
+    <string name="quest_shop_vacant_type_title">This shop has been vacant. What\'s here now?</string>
 </resources>

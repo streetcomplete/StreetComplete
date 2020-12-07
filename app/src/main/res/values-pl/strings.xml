@@ -2237,7 +2237,7 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="quest_address_street_title">"Do jakiej ulicy należy adres numer %s?"</string>
     <string name="quest_address_street_no_named_streets">"Nie należy do nazwanej ulicy"</string>
     <string name="quest_address_street_place_name_label">"Nazwa miejscowości/miejsca:"</string>
-    <string name="quest_address_street_description">"Dotkniej mapy na drodze do której należy lub wpisz pełną nazwę w polu poniżej:"</string>
+    <string name="quest_address_street_description">"Dotknij drogę na mapie, do której należy lub wpisz pełną nazwę w polu poniżej:"</string>
     <string name="quest_recycling_type_cooking_oil">"Olej jadalny"</string>
     <string name="quest_recycling_type_engine_oil">"Olej silnikowy"</string>
     <string name="link_photon_description">"Wyszukiwarka będąca ulepszoną wersją Nominatim z wsparciem dla podpowiedzi w czasie pisania i z autokorektą"</string>
@@ -2358,5 +2358,12 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="quest_kerb_height_raised">"Wysoki krawężnik"</string>
     <string name="quest_kerb_height_answer_no_kerb">"Nie ma krawężnika po tej stronie przejścia"</string>
     <string name="quest_kerb_height_lowered_ramp">"Krawężnik-podjazd"</string>
+    <string name="quest_lanes_answer_lanes_description2">"Podaj całkowitą liczbę oznaczonych pasów (w obu kierunkach), które mogą być wykorzystywane przez ruch samochodowy. Rower i wydzielone pasy parkingowe się nie liczą.
+Jeśli jakieś pasy są zarezerwowane dla autobusów, zostaw wiadomość."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Określ liczbę oznaczonych pasów, na których mogą poruszać się samochody. Rower i wydzielone pasy parkingowe się nie liczą.
+Jeśli jakieś pasy są zarezerwowane dla autobusów, zostaw wiadomość."</string>
     <string name="quest_surface_value_rock">"Kamień"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Wysokie ciężarówki mogą przejechać"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Wysokie ciężarówki nie mogą przejechać"</string>
+    <string name="quest_address_street_hint">"Dotknij drogę na mapie"</string>
 </resources>

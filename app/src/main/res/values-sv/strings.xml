@@ -1067,7 +1067,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_wheelchairAccess_toilets_name_title">"Är toaletterna %s tillgängliga med rullstol?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_description_toilets">"Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt.
+    <string name="quest_wheelchairAccess_description_toilets">"Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt. 
     Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men att det inte finns stödhandtag eller anpassad tvättho."</string>
 
     <!-- Fuzzy -->
@@ -2169,7 +2169,8 @@ Slutligen, kom ihåg att vara säker: var medveten om din omgivning och gå inte
     <string name="achievement_postman_title">"Brevbärare"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_postman_solved_X">"Du hjälpte till att hitta %d adresser!\nDessa uppgifter är viktiga inte bara för brevbäraren utan också för alla navigationssystem."</string>
+    <string name="achievement_postman_solved_X">"Du hjälpte till att hitta %d adresser!
+Dessa uppgifter är viktiga inte bara för brevbäraren utan också för alla navigationssystem."</string>
 
     <!-- Fuzzy -->
     <string name="achievement_building_title">"Höghus"</string>

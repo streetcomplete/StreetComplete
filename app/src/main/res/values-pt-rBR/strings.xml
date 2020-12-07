@@ -368,7 +368,7 @@ Como mencionado, o aplicativo se comunica diretamente com a infraestrutura do OS
     <string name="quest_address_title">"Qual é o número deste edifício?"</string>
 
     <!-- Fuzzy -->
-    <string name="store_listing_short_description">"App topógrafo para OpenStreetMap"</string>
+    <string name="store_listing_short_description">"Aplicativo topógrafo para OpenStreetMap"</string>
 
     <!-- Fuzzy -->
     <string name="store_listing_full_description">"Ajude a melhorar o OpenStreetMap com StreetComplete!
@@ -1923,7 +1923,7 @@ Dividir agora?"</string>
     <string name="tutorial_stay_safe">"Sempre que você não tiver certeza, poderá sempre responder \"Não posso dizer\" e deixar uma nota.
 
  Por fim, lembre-se de ficar seguro: esteja ciente do que está ao seu redor e não entre em propriedades particulares."</string>
-    <string name="tutorial_happy_mapping">"Feliz mapeamento!"</string>
+    <string name="tutorial_happy_mapping">"Bom mapeamento!"</string>
     <string name="achievements_empty">"Você não tem conquistas ainda"</string>
     <string name="links_empty">"Você ainda não possui links"</string>
     <string name="quests_empty">"Você não publicou respostas para a missão ainda"</string>
