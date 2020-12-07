@@ -591,8 +591,8 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_openingHours_timeSelect_next">"Weiter"</string>
     <string name="quest_tracktype_title">"Wie gut ist dieser Weg befestigt?"</string>
     <string name="quest_tracktype_grade1">"Befestigt"</string>
-    <string name="quest_tracktype_grade4">"Größtenteils unbefestigt"</string>
-    <string name="quest_tracktype_grade5">"Unbefestigt"</string>
+    <string name="quest_tracktype_grade4">"Größtenteils weich"</string>
+    <string name="quest_tracktype_grade5">"Weich"</string>
     <string name="quest_building_underground_name_title">"Ist %s komplett unterirdisch?"</string>
     <string name="quest_building_underground_title">"Ist dieses Gebäude komplett unterirdisch?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt."</string>
@@ -958,4 +958,22 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Hohe Lastwagen können hindurch"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Hohe Lastwagen passen nicht"</string>
     <string name="quest_address_street_hint">"Tippe auf die Straße"</string>
+    <string name="quest_crossing_type_marked">"Kreuzung mit Markierungen"</string>
+    <string name="quest_parkingType_street_side">"Parkbuchten"</string>
+    <string name="quest_parkingType_lane">"Parken auf der Straße"</string>
+    <string name="quest_existence_title">"Existiert das hier noch? (%s)"</string>
+    <string name="quest_existence_name_title">"Existiert %1$s hier noch? (%2$s)"</string>
+    <string name="quest_tracktype_grade2a">"Unbefestigt aber fest"</string>
+    <string name="quest_tracktype_grade3a">"Größtenteils fest"</string>
+    <string name="quest_generic_answer_does_not_exist">"Existiert nicht…"</string>
+    <string name="osm_element_gone_warning">"Achtung: Das kann nicht rückgängig gemacht werden!"</string>
+    <string name="osm_element_gone_description">"Bist Du dir sicher dass es nicht existiert, auch nicht an einer leicht anderen Stelle? Im Zweifelsfall hinterlasse besser eine Notiz."</string>
+    <string name="osm_element_gone_confirmation">"Existiert nicht"</string>
+    <string name="leave_note">"Notiz hinterlassen"</string>
+    <string name="quest_shop_gone_title">"Was ist jetzt stattdessen hier?"</string>
+    <string name="quest_shop_gone_vacant_answer">"Es steht leer."</string>
+    <string name="quest_shop_gone_replaced_answer">"Ein(e)…"</string>
+    <string name="quest_shop_gone_replaced_answer_hint">"Hier Art des Ortes eingeben"</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Unbekannt. Hinterlasse ansonsten eine Notiz."</string>
+    <string name="quest_shop_vacant_type_title">"Dieser Laden stand leer. Was ist hier jetzt?"</string>
 </resources>
