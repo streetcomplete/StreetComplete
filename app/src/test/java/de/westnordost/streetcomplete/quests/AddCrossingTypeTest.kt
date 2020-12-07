@@ -39,26 +39,26 @@ class AddCrossingTypeTest {
     @Test fun `apply marked answer does not change the type of marked value`() {
         questType.verifyAnswer(
             mapOf("crossing" to "zebra"),
-            "uncontrolled",
+            "marked",
             StringMapEntryAdd("check_date:crossing", Date().toCheckDateString())
         )
 
         questType.verifyAnswer(
             mapOf("crossing" to "marked"),
-            "uncontrolled",
+            "marked",
             StringMapEntryAdd("check_date:crossing", Date().toCheckDateString())
         )
 
         questType.verifyAnswer(
             mapOf("crossing" to "uncontrolled"),
-            "uncontrolled",
+            "marked",
             StringMapEntryAdd("check_date:crossing", Date().toCheckDateString())
         )
 
         questType.verifyAnswer(
             mapOf("crossing" to "unmarked"),
-            "unmarked",
-            StringMapEntryAdd("check_date:crossing", Date().toCheckDateString())
+            "marked",
+            StringMapEntryModify("crossing", "unmarked", "marked")
         )
     }
 }

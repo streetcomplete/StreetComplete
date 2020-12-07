@@ -41,7 +41,7 @@ class AddCrossingType : OsmFilterQuestType<String>() {
             changes.modify("crossing", answer)
             changes.addOrModify("crossing:island", "yes")
         } else {
-            if (answer == "uncontrolled" && previous in listOf("zebra", "marked", "uncontrolled")) {
+            if (answer == "marked" && previous in listOf("zebra", "marked", "uncontrolled")) {
                 changes.updateCheckDateForKey("crossing")
             } else {
                 changes.updateWithCheckDate("crossing", answer)
