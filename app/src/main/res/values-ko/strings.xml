@@ -854,9 +854,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
     <string name="quest_crossing_type_signals">"신호등 있는 횡단보도"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"신호등 없는 횡단보도"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"도로에 표시가 없는 횡단보도"</string>
     <string name="compass_north_one_letter">"북"</string>
 
@@ -1607,12 +1604,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
     <string name="quest_tracktype_grade1">"단단함"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"거의 단단함"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"혼합"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"거의 부드러움"</string>
 
     <!-- Fuzzy -->
@@ -2097,7 +2088,6 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="quest_clothes_container_operator_title">"이 헌옷 수거함은 누구를 위한 것입니까?"</string>
     <string name="quest_charging_station_operator_title">"이 충전소는 누가 운영합니까?"</string>
     <string name="link_indoorequal_description">"쇼핑몰, 지하철역 등에서 실내 지도를 찾아보세요"</string>
-    <string name="link_thenandnow_description">"우리가 그동안 얼마나 진전을 이루었는지 궁금하신가요? 10년 전 지도와 현재의 지도를 비교해 보세요!"</string>
     <string name="achievement_rare_title">"모험가"</string>
     <string name="achievement_rare_solved_X">"다른 사람들이 잘 해결하지 않는 퀘스트를 %d개 해결했습니다. 축하드립니다!"</string>
     <string name="achievement_citizen_title">"시민"</string>

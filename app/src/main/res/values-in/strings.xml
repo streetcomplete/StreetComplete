@@ -517,7 +517,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat memindai di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
     <string name="quest_crossing_type_title">"Apakah tipe penyeberangan ini?"</string>
     <string name="quest_crossing_type_signals">"Penyeberangan dengan lampu lalu lintas"</string>
-    <string name="quest_crossing_type_uncontrolled">"Penyeberangan tanpa lampu lalu lintas"</string>
     <string name="quest_crossing_type_unmarked">"Penyeberangan tanpa zebra cross"</string>
     <string name="compass_north_one_letter">"U"</string>
 
@@ -808,8 +807,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_openingHours_timeSelect_next">"Lanjut"</string>
     <string name="quest_tracktype_title">"Apa tingkat kepadatan jalan ini?"</string>
     <string name="quest_tracktype_grade1">"Padat"</string>
-    <string name="quest_tracktype_grade2">"Sebagian padat"</string>
-    <string name="quest_tracktype_grade3">"Campuran"</string>
     <string name="quest_tracktype_grade4">"Sebagian lemah"</string>
     <string name="quest_tracktype_grade5">"Lemah"</string>
     <string name="quest_building_underground_name_title">"Apa %s sepenuhnya di bawah tanah?"</string>

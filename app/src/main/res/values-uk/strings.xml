@@ -328,7 +328,6 @@
     <string name="cannot_find_bbox_or_reduce_tilt">"Не можу знайти квести. Спробуйте наблизити або зменшити нахил мапи."</string>
     <string name="quest_crossing_type_title">"Якого типу цей перехід?"</string>
     <string name="quest_crossing_type_signals">"Перехід зі світлофором"</string>
-    <string name="quest_crossing_type_uncontrolled">"Нерегульований перехід"</string>
     <string name="quest_crossing_type_unmarked">"Перехід без дорожньої розмітки"</string>
     <string name="compass_north_one_letter">"П"</string>
     <string name="action_undo">"Скасувати"</string>
@@ -589,8 +588,6 @@
     <string name="quest_openingHours_timeSelect_next">"Далі"</string>
     <string name="quest_tracktype_title">"Наскільки тверде покриття цього шляху?"</string>
     <string name="quest_tracktype_grade1">"Тверде"</string>
-    <string name="quest_tracktype_grade2">"В основному тверде"</string>
-    <string name="quest_tracktype_grade3">"Змішане"</string>
     <string name="quest_tracktype_grade4">"В основному м'яке"</string>
     <string name="quest_tracktype_grade5">"М'яке"</string>
     <string name="quest_building_underground_name_title">"Чи є повністю під землею %s?"</string>
@@ -909,7 +906,6 @@
     <string name="quest_clothes_container_operator_title">"Хто збирає пожертви у цей контейнер для одягу?"</string>
     <string name="quest_charging_station_operator_title">"Хто є оператором цієї зарядної станції?"</string>
     <string name="link_indoorequal_description">"Відкрийте для себе внутрішні плани торгових центрів, залізничних станцій тощо."</string>
-    <string name="link_thenandnow_description">"Цікаво, якого прогресу ми досягли за ці роки? Порівняйте з тим, як виглядала мапа понад 10 років тому!"</string>
     <string name="achievement_rare_title">"Полювання за скарбами"</string>
     <string name="achievement_rare_solved_X">"Ви знайшли та розв'язали %d квестів, які виконуються дуже рідко, вітаємо!"</string>
     <string name="achievement_citizen_title">"Житель"</string>

@@ -858,9 +858,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_crossing_type_signals">"信号機のある交差点"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"信号機のない交差点"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"道路標示のない交差点"</string>
     <string name="compass_north_one_letter">"北"</string>
 

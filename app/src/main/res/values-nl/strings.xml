@@ -857,9 +857,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_crossing_type_signals">"Kruispunt met verkeerslichten"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"kruispunt zonder verkeerslichten of borden."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Kruispunt zonder wegmarkeringen."</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1616,12 +1613,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_tracktype_grade1">"Hard"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Voornamelijk hard"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"niet hard / niet zacht"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Voornamelijk zacht"</string>
 
     <!-- Fuzzy -->
@@ -2331,7 +2322,6 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_clothes_container_operator_title">"Welke organisatie zamelt hier gebruikte kleding in?"</string>
     <string name="quest_charging_station_operator_title">"Welk bedrijf exploiteert dit oplaadpunt?"</string>
     <string name="link_indoorequal_description">"Ontdek kaarten van de binnenkant van winkelcentra, stations, enz."</string>
-    <string name="link_thenandnow_description">"Benieuwd naar de vooruitgang die we de afgelopen jaren gemaakt hebben? Vergelijk met hoe de kaart er meer dan 10 jaar geleden uit zag!"</string>
     <string name="achievement_rare_title">"Op jacht naar de schat"</string>
     <string name="achievement_rare_solved_X">"Je hebt %d vragen gevonden en beantwoordt die zelden opgelost worden, gefelciteerd!"</string>
     <string name="achievement_citizen_title">"Burger"</string>

@@ -857,9 +857,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_crossing_type_signals">"Perėja su šviesoforu"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Nereguliuojama perėja"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Perėja be horizontalaus žymėjimo"</string>
     <string name="compass_north_one_letter">"Š"</string>
 
@@ -1611,12 +1608,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Tvirtas"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Daugiausia tvirtas"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Įvairus"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Daugiausia minkštas"</string>

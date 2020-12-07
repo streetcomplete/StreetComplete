@@ -855,9 +855,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_crossing_type_signals">"Övergångsställe med trafikljus"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Övergångsställe utan trafikljus"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Övergångsställe utan vägmarkeringar"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1611,12 +1608,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_tracktype_grade1">"Fast"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Mestadels fast"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Blandning"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Mestadels mjuk"</string>
 
     <!-- Fuzzy -->
@@ -2325,7 +2316,6 @@ nivåer"</string>
     <string name="quest_clothes_container_operator_title">"Vem accepterar donationer för denna klädkorg?"</string>
     <string name="quest_charging_station_operator_title">"Vem är operatören för denna laddstation?"</string>
     <string name="link_indoorequal_description">"Upptäck inomhuskartor över köpcentrum, järnvägsstationer o.sv."</string>
-    <string name="link_thenandnow_description">"Nyfiken vilka framsteg vi gjort under åren? Jämför med hur kartan såg ut för mer än 10 år sedan!"</string>
     <string name="achievement_rare_title">"Skattjakt"</string>
     <string name="achievement_rare_solved_X">"Du hittade och löste %d uppdrag som verkligen genomförs sällan, grattis!"</string>
     <string name="achievement_citizen_title">"Medborgare"</string>

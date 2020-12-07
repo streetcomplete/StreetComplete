@@ -670,9 +670,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_crossing_type_signals">"Attraversamento con semafori"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Attraversamento non controllato"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Incrocio senza segnaletica stradale"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1426,12 +1423,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_tracktype_grade1">"Solido"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Per lo più solido"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Misto"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Per lo più soffice"</string>
 
     <!-- Fuzzy -->
@@ -2155,7 +2146,6 @@ riconoscimento"</string>
     <string name="quest_clothes_container_operator_title">"Chi è il destinatario delle donazioni di questo cassonetto dei rifiuti?"</string>
     <string name="quest_charging_station_operator_title">"Qual è l'operatore di questa stazione di carica?"</string>
     <string name="link_indoorequal_description">"Scopri mappe degli interni di ipermercati, stazioni, ..."</string>
-    <string name="link_thenandnow_description">"Vuoi scoprire come siamo cambiati nel tempo? Confronta l'aspetto che aveva la mappa oltre 10 anni fa!"</string>
     <string name="achievement_rare_title">"Caccia al tesoro"</string>
     <string name="achievement_rare_solved_X">"Hai trovato e risolto %d missioni che sono completate molto raramente, congratulazioni!"</string>
     <string name="achievement_citizen_title">"Cittadino/a"</string>

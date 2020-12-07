@@ -862,9 +862,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_crossing_type_signals">"Přechod řízený semaforem"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Přechod bez semaforu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Přechod bez označení na cestě"</string>
     <string name="compass_north_one_letter">"S"</string>
 
@@ -1622,12 +1619,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_tracktype_grade1">"Pevný"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Víceméně pevný"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Mix tvrdých a měkkých materiálů"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Spíše měkký"</string>
 
     <!-- Fuzzy -->
@@ -2361,7 +2352,6 @@ Is the situation on this cycleway still the same? -->
     <string name="quest_clothes_container_operator_title">"Kdo je příjemce darů tohoto kontejneru na oblečení?"</string>
     <string name="quest_charging_station_operator_title">"Kdo provozuje tuto dobíjecí stanici?"</string>
     <string name="link_indoorequal_description">"Objevte vnitřní mapy nákupních středisek, nádraží atd."</string>
-    <string name="link_thenandnow_description">"Zajímá vás, jaký pokrok jsme během let udělali? Porovnejte mapu s tím, jak vypadala před deseti lety!"</string>
     <string name="achievement_rare_title">"Lovec pokladů"</string>
     <string name="achievement_rare_solved_X">"Našli jste a vyřešili %d úkolů, které jsou vyřešeny opravdu velmi zřídka. Gratulujeme!"</string>
     <string name="achievement_citizen_title">"Občan"</string>

@@ -856,9 +856,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_crossing_type_signals">"Prechod so semaforom"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Prechod bez semaforu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Prechod bez označenia na ceste"</string>
     <string name="compass_north_one_letter">"S"</string>
 
@@ -1607,12 +1604,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Pevný"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Zväčša pevný"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Zmiešaný"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Zväčša mäkký"</string>

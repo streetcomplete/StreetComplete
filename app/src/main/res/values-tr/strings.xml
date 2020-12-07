@@ -836,9 +836,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_crossing_type_signals">"Trafik ışıklı geçiş"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Kontrolsüz geçiş"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Yol işaretleri olmayan geçiş"</string>
     <string name="compass_north_one_letter">"K"</string>
 
@@ -1510,12 +1507,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Katı"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Çoğunlukla katı"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Karışık"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Çoğunlukla yumuşak"</string>

@@ -856,9 +856,6 @@
     <string name="quest_crossing_type_signals">"Διασταύρωση με φανάρια"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Διέλευση χωρίς έλεγχο"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Διασταύρωση χωρίς οδικές σημάνσεις"</string>
     <string name="compass_north_one_letter">"Ν"</string>
 
@@ -1615,12 +1612,6 @@
     <string name="quest_tracktype_grade1">"Στερεό"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Κυρίως στερεό"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Μίγμα"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Κυρίως μαλακό"</string>
 
     <!-- Fuzzy -->
@@ -2097,7 +2088,6 @@
     <string name="quest_clothes_container_operator_title">"Ποιος δέχεται δωρεές για αυτόν τον κάδο ρούχων;"</string>
     <string name="quest_charging_station_operator_title">"Ποιος είναι ο διαχειριστής αυτού του σταθμού φόρτισης;"</string>
     <string name="link_indoorequal_description">"Ανακαλύψτε εσωτερικούς χάρτες εμπορικών κέντρων, σιδηροδρομικών σταθμών κ.λπ."</string>
-    <string name="link_thenandnow_description">"Είστε περίεργοι για το ποια πρόοδο σημειώσαμε με τα χρόνια; Συγκρίνετε πως έδειχνε ο χάρτης πριν από περισσότερο από 10 χρόνια,!"</string>
     <string name="achievement_rare_title">"Κυνήγι θησαυρού"</string>
     <string name="achievement_rare_solved_X">"Βρήκατε και επιλύσατε %d αναζητήσεις που ολοκληρώνονται πολύ σπάνια, συγχαρητήρια!"</string>
     <string name="achievement_citizen_title">"Πολίτης"</string>

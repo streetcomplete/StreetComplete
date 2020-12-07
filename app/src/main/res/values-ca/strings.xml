@@ -856,9 +856,6 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_crossing_type_signals">"Encreuament amb semafór"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Encreuament no senyalitzat"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Encreuament sense senyals horitzontals"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1611,12 +1608,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Pavimentada o compactada"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Graveta, terra o sorra compactada"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Barreja de materials durs i tous"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Principalment de tera, amb algunes pedres o materials durs"</string>

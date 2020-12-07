@@ -856,9 +856,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_crossing_type_signals">"有红绿灯的路口"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"无交通号志控制的路口"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"无道路标记的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
 
@@ -1608,12 +1605,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"坚固"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"基本坚固"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"一般"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"基本松软"</string>

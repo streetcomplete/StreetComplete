@@ -411,7 +411,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="cannot_find_bbox_or_reduce_tilt">"Impossible de rechercher ici. Essayez de zoomer ou de moins incliner la carte."</string>
     <string name="quest_crossing_type_title">"De quel type de passage piéton s'agit-il ?"</string>
     <string name="quest_crossing_type_signals">"Passage piéton avec feux"</string>
-    <string name="quest_crossing_type_uncontrolled">"Passage piéton sans feux"</string>
     <string name="quest_crossing_type_unmarked">"Passage piéton sans marquage"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -751,8 +750,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
 
     <!-- En ce qui concerne les tracktypes, j'ai essayé d'harmoniser et de coller le plus possible à https://wiki.openstreetmap.org/wiki/FR:Key:tracktype -->
     <string name="quest_tracktype_grade1">"Dur, très compacté"</string>
-    <string name="quest_tracktype_grade2">"Plutôt dur, compacté"</string>
-    <string name="quest_tracktype_grade3">"Matériaux mixtes, plutôt compacté"</string>
     <string name="quest_tracktype_grade4">"Plutôt mou, essentiellement terre"</string>
     <string name="quest_tracktype_grade5">"Sol quasi naturel avec marques de passages"</string>
     <string name="quest_building_underground_name_title">"%s est-il complètement souterrain ?"</string>
@@ -1127,7 +1124,6 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_clothes_container_operator_title">"Qui perçoit les dons de ce conteneur à vêtements ?"</string>
     <string name="quest_charging_station_operator_title">"Qui est l'exploitant de cette station de recharge ?"</string>
     <string name="link_indoorequal_description">"Découvrez les cartes intérieures de centres commerciaux, gares, etc."</string>
-    <string name="link_thenandnow_description">"Curieux de voir les progrès effectués au cours des années ? Découvrez à quoi ressemblait la carte il y a 10 ans !"</string>
     <string name="achievement_rare_title">"Chasse au trésor"</string>
     <string name="achievement_rare_solved_X">"Vous avez trouvé et résolu %d quêtes qui sont rarement complétées, félicitations !"</string>
     <string name="achievement_citizen_title">"Citoyen"</string>

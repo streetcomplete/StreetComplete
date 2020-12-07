@@ -838,9 +838,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_signals">"Crossing with traffic lights"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Uncontrolled crossing"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Crossing without road markings"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1535,12 +1532,6 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Solid"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Mostly solid"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Mixture"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Mostly soft"</string>

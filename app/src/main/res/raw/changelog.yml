@@ -15,6 +15,7 @@ v28.0-beta1: |
   </ul>
   <h3>Other Enhancements and Fixes</h3>
   <ul>
+  <li>Serbian translation by Mario, Nemanja Bračko</li>
   <li>Android 11: Enable smooth keyboard appear animation (#2133)</li>
   <li>even slightly faster download</li>
   <li>Other small enhancements and fixes (#2349, #2351...)</li>

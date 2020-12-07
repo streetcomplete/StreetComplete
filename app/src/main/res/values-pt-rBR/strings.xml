@@ -856,9 +856,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_crossing_type_signals">"Cruzamento com semáforo"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Cruzamento sem controle"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruzamento sem marcação na pista"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1613,12 +1610,6 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="quest_tracktype_grade1">"Sólida"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Quase sólida"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Misturada"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Quase mole"</string>
 
     <!-- Fuzzy -->
@@ -2106,7 +2097,6 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="quest_clothes_container_operator_title">"Quem aceita doações para esta caixa de roupas?"</string>
     <string name="quest_charging_station_operator_title">"Quem é o operador desta estação de carregamento?"</string>
     <string name="link_indoorequal_description">"Descubra mapas internos de shoppings, estações ferroviárias, etc."</string>
-    <string name="link_thenandnow_description">"Curioso para saber o progresso que fizemos ao longo dos anos? Compare com a aparência do mapa há mais de 10 anos!"</string>
     <string name="achievement_rare_title">"Caça ao tesouro"</string>
     <string name="achievement_rare_solved_X">"Você encontrou e resolveu %d missões que raramente são concluídas, parabéns!"</string>
     <string name="achievement_citizen_title">"Cidadão"</string>

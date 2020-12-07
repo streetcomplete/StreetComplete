@@ -838,9 +838,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_crossing_type_signals">"Przejście ze światłami"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Przejście bez sygnalizacji"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Przejście nieoznaczone"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1596,12 +1593,6 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_tracktype_grade1">"Utwardzona"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Głównie utwardzona"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Mieszana"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Głównie miękka"</string>
 
     <!-- Fuzzy -->
@@ -2318,7 +2309,6 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="quest_clothes_container_operator_title">"Kto przyjmuje dary w tym koszu na ubrania?"</string>
     <string name="quest_charging_station_operator_title">"Kto jest zarządcą tej stacji ładowania pojazdów?"</string>
     <string name="link_indoorequal_description">"Odkryj wewnętrzne mapy centr handlowych, stacji kolejowych i.t.d."</string>
-    <string name="link_thenandnow_description">"Ciekaw jak wiele udało się zrobić w OoenStreetMap? Porównaj mapę dzisiaj z tym jak wyglądała ponad 10 lat temu!"</string>
     <string name="achievement_rare_title">"Łowca skarbów"</string>
     <string name="achievement_rare_solved_X">"Gratulacje za odnalezienie i rozwiązanie %d zadań które są rzadko rozwiązywane!"</string>
     <string name="achievement_citizen_title">"Obywatel"</string>

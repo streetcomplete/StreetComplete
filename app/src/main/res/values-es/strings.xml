@@ -857,9 +857,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_crossing_type_signals">"Cruce señalizado con semáforo"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Cruce señalizado sin semáforo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruce sin señalizar"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1612,12 +1609,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_tracktype_grade1">"Sólido"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Bastante sólido"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Mezcla"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Bastante suave"</string>
 
     <!-- Fuzzy -->
@@ -2338,7 +2329,6 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_clothes_container_operator_title">"¿Quién acepta donaciones para este contenedor de ropa?"</string>
     <string name="quest_charging_station_operator_title">"¿Quién es el operador de esta estación de carga?"</string>
     <string name="link_indoorequal_description">"Descubra mapas interiores de centros comerciales, estaciones de tren, etc."</string>
-    <string name="link_thenandnow_description">"¿Tiene curiosidad por saber el progreso logramos a lo largo de los años? ¡Compare con el aspecto del mapa hace más de 10 años!"</string>
     <string name="achievement_rare_title">"Búsqueda del tesoro"</string>
     <string name="achievement_rare_solved_X">"Encontraste y resolviste %d misiones que rara vez se completan, ¡felicitaciones!"</string>
     <string name="achievement_citizen_title">"Ciudadano"</string>

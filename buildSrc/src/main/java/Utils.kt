@@ -1,4 +1,3 @@
-import java.io.StringWriter
 import java.util.*
 
 
@@ -14,6 +13,7 @@ fun bcp47LanguageTagToJavaLanguageTag(bcp47: String): String {
 }
 
 fun javaLanguageTagToAndroidResCodes(languageTag: String): List<String> {
+    if (languageTag == "sr-Cyrl") return listOf("sr")
     val locale = Locale.forLanguageTag(languageTag)
     // scripts not supported by Android resource system
     if (locale.script.isNotEmpty()) return listOf()

@@ -841,9 +841,6 @@
     <string name="quest_crossing_type_signals">"ട്രാഫിക് ലൈറ്റുകൾ ഉപയോഗിച്ചുള്ള ക്രോസിംഗ്"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"അനിയന്ത്രിതമായ ക്രോസിംഗ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"റോഡ് അടയാളങ്ങളില്ലാതെയുള്ള ക്രോസിംഗ്"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1589,12 +1586,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"ഖരം"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"അധികം ഖരമായ"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"മിശ്രിതം"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"അധികം മൃദുവായ"</string>

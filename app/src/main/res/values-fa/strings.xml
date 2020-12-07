@@ -804,9 +804,6 @@
     <string name="quest_crossing_type_signals">"تقاطع با چراغ های راهنمایی"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"تقاطع بدون کنترل"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"تقاطع بدون علائم در مسیر"</string>
     <string name="compass_north_one_letter">"شمال"</string>
 
@@ -1562,12 +1559,6 @@
     <string name="quest_tracktype_grade1">"سخت"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"خیلی سخت"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"مخلوط"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"خیلی نرم"</string>
 
     <!-- Fuzzy -->
@@ -2262,7 +2253,6 @@
     <string name="quest_clothes_container_operator_title">"چه کسی کمک های مالی برای این سطل پوشاک را پرداخت می کند؟"</string>
     <string name="quest_charging_station_operator_title">"متصدی این ایستگاه شارژ کیست؟"</string>
     <string name="link_indoorequal_description">"نقشه های داخلی مراکز خرید ، ایستگاه های راه آهن و غیره را بیابید"</string>
-    <string name="link_thenandnow_description">"می‌خواهید بدانید طی این سالها چه پیشرفتی داشته ایم؟ مقایسه کنید که نقشه بیش از 10 سال پیش چگونه بوده است!"</string>
     <string name="achievement_rare_title">"شکارچی گنج"</string>
     <string name="achievement_rare_solved_X">"شما %d جُستار را یافتید و پاسخ دادید که هنوز ناتمام بوده‌اند، تبریک می گویم!"</string>
     <string name="achievement_citizen_title">"رتبه عالی"</string>

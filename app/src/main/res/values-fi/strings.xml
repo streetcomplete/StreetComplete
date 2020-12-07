@@ -717,9 +717,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_crossing_type_signals">"Ylityspaikassa liikennevalot"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Valvomaton ylityspaikka"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Ylityspaikassa ei ole tiemerkintöjä"</string>
     <string name="compass_north_one_letter">"P"</string>
 
@@ -1469,12 +1466,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_tracktype_grade1">"Kiinteä"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Enimmäkseen kiinteä"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Yhdistelmä"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Enimmäkseen pehmeää"</string>
 
     <!-- Fuzzy -->
@@ -2195,7 +2186,6 @@ päiviä"</string>
     <string name="quest_clothes_container_operator_title">"Mikä taho vastaanottaa tämän vaatekeräyksen lahjoitukset?"</string>
     <string name="quest_charging_station_operator_title">"Kenen operoima latausasema tämä on?"</string>
     <string name="link_indoorequal_description">"Tutustu kauppakeskusten, rautatieasemien yms. sisäkarttoihin"</string>
-    <string name="link_thenandnow_description">"Kiinnostaako mitä edistystä olemme saavuttaneet vuosien varrella?  Vertaa miltä kartta näytti yli 10 vuotta sitten!"</string>
     <string name="achievement_rare_title">"Aarrejahti"</string>
     <string name="achievement_rare_solved_X">"Löysit ja ratkaisit %d todella harvoin suoritettua tehtävää, onnittelut!"</string>
     <string name="achievement_citizen_title">"Kansalainen"</string>

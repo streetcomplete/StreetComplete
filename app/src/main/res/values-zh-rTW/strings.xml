@@ -856,9 +856,6 @@
     <string name="quest_crossing_type_signals">"有交通號誌的路口"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"無交通號誌控制的路口"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"無道路標記的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
 
@@ -1609,12 +1606,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"剛性路面"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"偏剛性路面"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"混合型路面"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"偏柔性路面"</string>

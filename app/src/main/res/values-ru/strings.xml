@@ -848,9 +848,6 @@
     <string name="quest_crossing_type_signals">"Регулируемый переход со светофором"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Нерегулируемый переход"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Переход без дорожной разметки"</string>
     <string name="compass_north_one_letter">"С"</string>
 
@@ -1603,12 +1600,6 @@
     <string name="quest_tracktype_grade1">"Твёрдая"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Преимущественно твёрдая"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Средне"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Преимущественно мягкая"</string>
 
     <!-- Fuzzy -->
@@ -2302,7 +2293,6 @@
     <string name="quest_clothes_container_operator_title">"Куда идет пожертвованая здесь одежда"</string>
     <string name="quest_charging_station_operator_title">"Кто является оператором этой зарядной станции?"</string>
     <string name="link_indoorequal_description">"Откройте для себя карты торговых центров, вокзалов и т.д."</string>
-    <string name="link_thenandnow_description">"Любопытно, какого прогресса мы достигли за эти годы? Сравните с тем, как карта выглядела более 10 лет назад!"</string>
     <string name="achievement_rare_title">"Охота за сокровищами"</string>
     <string name="achievement_rare_solved_X">"Вы нашли и выполнили %d квестов, которые выполняются очень редко, поздравляем!"</string>
     <string name="achievement_citizen_title">"Гражданин"</string>

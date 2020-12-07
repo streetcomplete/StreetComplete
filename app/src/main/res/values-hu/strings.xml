@@ -842,9 +842,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_crossing_type_signals">"Jelzőlámpás"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Lámpa nélküli"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Útburkolati jel nélküli"</string>
     <string name="compass_north_one_letter">"É"</string>
 
@@ -1590,12 +1587,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_tracktype_grade1">"Szilárd"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Viszonylag szilárd"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Vegyes"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Viszonylag puha"</string>
 
     <!-- Fuzzy -->
@@ -2312,7 +2303,6 @@ szintek"</string>
     <string name="quest_clothes_container_operator_title">"Ki fogadja az ebből a ruhagyűjtő konténerből származó adományokat?"</string>
     <string name="quest_charging_station_operator_title">"Ki az üzemeltetője ennek a töltőállomásnak?"</string>
     <string name="link_indoorequal_description">"Fedezd fel plázák, vasútállomások, stb. beléri térképeit"</string>
-    <string name="link_thenandnow_description">"Kiváncsi vagy, mennyit haladtunk az évek során? Hasonlítsd össze, hogy nézett nézett ki a térkép több mint 10 évvel ezelőtt!"</string>
     <string name="achievement_rare_title">"Kincsvadász"</string>
     <string name="achievement_rare_solved_X">"%d olyan kérdést megtaláltál és megoldottál, amiket nagyon ritkán szoktak megoldani, gratulálok!"</string>
     <string name="achievement_citizen_title">"Polgár"</string>

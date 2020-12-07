@@ -861,9 +861,6 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="quest_crossing_type_signals">"Overgang med traffiklys"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Ukontrolleret overgang"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Overgang uden markering på vejen"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1617,12 +1614,6 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_tracktype_grade1">"Solid"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Solid, men ikke fast underlag"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Blanding"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Mest blød"</string>
 
     <!-- Fuzzy -->
@@ -2040,7 +2031,6 @@ aktiv"</string>
     <string name="quest_clothes_container_operator_title">"Hvem modtager donationer til denne tøjindsamling?"</string>
     <string name="quest_charging_station_operator_title">"Hvem er operatør af denne ladestation"</string>
     <string name="link_indoorequal_description">"Indendørs kort over indkøbscentre, jernbanestationer osv."</string>
-    <string name="link_thenandnow_description">"Nysgerrig efter hvilke fremskridt der er sket gennem årene? Sammenlign med hvordan kortet så ud for mere end 10 år siden!"</string>
     <string name="achievement_rare_title">"Skattejagt"</string>
     <string name="achievement_rare_solved_X">"Du har fundet og fuldført %d opgaver der meget sjældent bliver løst. Tillykke!"</string>
     <string name="achievement_citizen_title">"Borger"</string>

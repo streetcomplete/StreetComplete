@@ -841,9 +841,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_crossing_type_signals">"Med trafikklys"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Ukontrollert"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Uten veimarkeringer"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1591,12 +1588,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Fast"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Mest fast"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Blandet"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Mest mykt"</string>

@@ -856,9 +856,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_crossing_type_signals">"Cruce señalizáu con semáforu"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Cruce señalizáu ensin semáforu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruce ensin señalizar"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1607,12 +1604,6 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Sólido"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Sólido abondo"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Mesto"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Suave abondo"</string>

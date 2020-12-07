@@ -857,9 +857,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_crossing_type_signals">"Passadeira com semáforos"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Passadeira só com sinalização horizontal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Passadeira sem qualquer tipo de marcação"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -1609,12 +1606,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Sólido"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Praticamente sólido"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Mistura"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Praticamente brando"</string>
