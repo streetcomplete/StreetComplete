@@ -10,7 +10,7 @@ import javax.inject.Inject
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
@@ -19,7 +19,8 @@ import java.util.concurrent.FutureTask
 /** Manages creating new quests and removing quests that are no longer applicable for an OSM
  * element locally  */
 class OsmQuestGiver @Inject constructor(
-    private val notePositionsSource: NotePositionsSource,
+    private val blacklistedPositionsSource: BlacklistedPositionsSource,
+    private val blacklistedElementsSource: BlacklistedElementsSource,
     private val osmQuestController: OsmQuestController,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
@@ -45,6 +46,8 @@ class OsmQuestGiver @Inject constructor(
 
         val hasNote = hasNoteAt(geometry.center)
 
+        val isElementBlacklisted = blacklistedElementsSource.getAll().contains(ElementKey(element.type, element.id))
+
         val currentQuestsByType = osmQuestController.getAllForElement(element.type, element.id).associateBy { it.type }
         val createdQuestsLog = ArrayList<String>()
         val removedQuestsLog = ArrayList<String>()
@@ -57,7 +60,7 @@ class OsmQuestGiver @Inject constructor(
             val isEnabledForCountry = countryBoundariesFuture.get().isInAny(geometry.center, countries)
 
             val hasQuest = currentQuestsByType.containsKey(questType)
-            if (appliesToElement && !hasQuest && !hasNote && isEnabledForCountry) {
+            if (appliesToElement && !hasQuest && !hasNote && !isElementBlacklisted && isEnabledForCountry) {
                 val quest = OsmQuest(questType, element.type, element.id, geometry)
                 createdQuests.add(quest)
                 createdQuestsLog.add(questType.javaClass.simpleName)
@@ -93,7 +96,7 @@ class OsmQuestGiver @Inject constructor(
         // note about one meter around the center of an element still count as at this point as to
         // deal with imprecision of the center calculation of geometry (see #1089)
         val bbox = pos.enclosingBoundingBox(1.0)
-        return notePositionsSource.getAllPositions(bbox).isNotEmpty()
+        return blacklistedPositionsSource.getAllPositions(bbox).isNotEmpty()
     }
 
     companion object {

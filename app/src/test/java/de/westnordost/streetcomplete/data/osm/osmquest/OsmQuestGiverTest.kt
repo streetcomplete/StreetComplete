@@ -11,7 +11,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
@@ -23,15 +23,19 @@ import java.util.concurrent.FutureTask
 
 class OsmQuestGiverTest {
 
-    private lateinit var notePositionsSource: NotePositionsSource
+    private lateinit var blacklistedPositionsSource: BlacklistedPositionsSource
+    private lateinit var blacklistedElementsSource: BlacklistedElementsSource
     private lateinit var osmQuestController: OsmQuestController
     private lateinit var questType: OsmElementQuestType<*>
     private lateinit var countryBoundaries: CountryBoundaries
     private lateinit var osmQuestGiver: OsmQuestGiver
 
     @Before fun setUp() {
-        notePositionsSource = mock()
-        on(notePositionsSource.getAllPositions(any())).thenReturn(emptyList())
+        blacklistedPositionsSource = mock()
+        on(blacklistedPositionsSource.getAllPositions(any())).thenReturn(emptyList())
+
+        blacklistedElementsSource = mock()
+        on(blacklistedElementsSource.getAll()).thenReturn(emptyList())
 
         osmQuestController = mock()
         on(osmQuestController.getAllForElement(Element.Type.NODE, 1)).thenReturn(emptyList())
@@ -48,12 +52,20 @@ class OsmQuestGiverTest {
         val questTypeRegistry: QuestTypeRegistry = mock()
         on(questTypeRegistry.all).thenReturn(listOf(questType))
 
-        osmQuestGiver = OsmQuestGiver(notePositionsSource, osmQuestController, questTypeRegistry, future)
+        osmQuestGiver = OsmQuestGiver(blacklistedPositionsSource, blacklistedElementsSource, osmQuestController, questTypeRegistry, future)
     }
 
     @Test fun `note blocks new quests`() {
         // there is a note at our position
-        on(notePositionsSource.getAllPositions(any())).thenReturn(listOf(POS))
+        on(blacklistedPositionsSource.getAllPositions(any())).thenReturn(listOf(POS))
+
+        osmQuestGiver.updateQuests(NODE, GEOM)
+
+        verify(osmQuestController).updateForElement(emptyList(), emptyList(), GEOM, NODE.type, NODE.id)
+    }
+
+    @Test fun `element blocks new quests`() {
+        on(blacklistedElementsSource.getAll()).thenReturn(listOf(ELEMENT_KEY))
 
         osmQuestGiver.updateQuests(NODE, GEOM)
 
@@ -132,4 +144,5 @@ class OsmQuestGiverTest {
 
 private val POS = OsmLatLon(10.0, 10.0)
 private val NODE = OsmNode(1, 0, POS, null, null, null)
+private val ELEMENT_KEY = ElementKey(Element.Type.NODE, 1)
 private val GEOM = ElementPointGeometry(POS)

@@ -51,10 +51,11 @@ class AddAcceptsCash(
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
+    override val isReplaceShopEnabled = true
 
     override val enabledInCountries = NoCountriesExcept("SE")
 
-    override fun getTitle(tags: Map<String, String>) = 
+    override fun getTitle(tags: Map<String, String>) =
         if (hasFeatureName(tags) && !tags.containsKey("brand"))
             R.string.quest_accepts_cash_type_title
         else
@@ -64,13 +65,13 @@ class AddAcceptsCash(
         val name = tags["name"] ?: tags["brand"]
         return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
     }
-    
+
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("payment:cash", answer.toYesNo())
     }
-    
+
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
         tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }

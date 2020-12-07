@@ -16,9 +16,8 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_glass
     // see isUsuallyAnyGlassRecycleableInContainers.yml
-    override val enabledInCountries = AllCountriesExcept(
-        "CZ"
-    )
+    override val enabledInCountries = AllCountriesExcept("CZ")
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_glass_title
 

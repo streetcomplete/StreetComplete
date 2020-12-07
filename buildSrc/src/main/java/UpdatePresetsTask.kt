@@ -39,14 +39,14 @@ open class UpdatePresetsTask : DefaultTask() {
 
     /** Fetch iD presets */
     private fun fetchPresets(): String {
-        val presetsUrl = "https://raw.githubusercontent.com/openstreetmap/id-tagging-schema/main/dist/presets.min.json"
+        val presetsUrl = "https://raw.githubusercontent.com/openstreetmap/id-tagging-schema/main/dist/presets.json"
         return URL(presetsUrl).readText()
     }
 
     /** Fetch relevant meta-infos for localizations from iD */
     private fun fetchLocalizationMetadata(): List<LocalizationMetadata> {
         // this file contains a list with meta information for each localization of iD
-        val contentsUrl = "https://api.github.com/repos/openstreetmap/iD/contents/dist/locales"
+        val contentsUrl = "https://api.github.com/repos/openstreetmap/id-tagging-schema/contents/dist/translations"
         val languagesJson = Parser.default().parse(URL(contentsUrl).openStream()) as JsonArray<JsonObject>
 
         return languagesJson.mapNotNull {
@@ -61,15 +61,8 @@ open class UpdatePresetsTask : DefaultTask() {
 
     /** Download and pick the localization for only the presets from iD localizations
      *  (the iD localizations contain everything, such as localizations of iD UI etc)*/
-    private fun fetchPresetsLocalizations(localization: LocalizationMetadata): String? {
-        val localizationUrl = URL(localization.downloadUrl)
-        val localizationJson = Parser.default().parse(localizationUrl.openStream()) as JsonObject
-        val presetsJson = localizationJson.obj(localization.languageCode)?.obj("presets")?.obj("presets")
-
-        return if (presetsJson != null) {
-            val jsonObject = JsonObject(mapOf("presets" to presetsJson))
-            jsonObject.toJsonString(true).unescapeUnicode()
-        } else null
+    private fun fetchPresetsLocalizations(localization: LocalizationMetadata): String {
+        return URL(localization.downloadUrl).openStream().bufferedReader().use { it.readText() }.unescapeUnicode()
     }
 }
 

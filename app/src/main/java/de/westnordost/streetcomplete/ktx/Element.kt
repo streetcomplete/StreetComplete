@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import java.util.ArrayList
 
@@ -15,6 +17,14 @@ fun Element.copy(newId: Long = id, newVersion: Int = version): Element {
 }
 
 fun Way.isClosed() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
+
+val Element.geometryType: GeometryType get() =
+    when {
+        type == NODE -> GeometryType.POINT
+        isArea() -> GeometryType.AREA
+        type == RELATION -> GeometryType.RELATION
+        else -> GeometryType.LINE
+    }
 
 fun Element.isArea(): Boolean {
     return when(this) {
@@ -50,3 +60,39 @@ private val IS_AREA_EXPR = """
     or natural ~ wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud|water|wetland|glacier|beach|rock|sinkhole
     or man_made ~ beacon|bridge|campanile|dolphin|lighthouse|obelisk|observatory|tower|bunker_silo|chimney|gasometer|kiln|mineshaft|petroleum_well|silo|storage_tank|watermill|windmill|works|communications_tower|monitoring_station|street_cabinet|pumping_station|reservoir_covered|wastewater_plant|water_tank|water_tower|water_well|water_works
     )""".toElementFilterExpression()
+
+fun Element.isSomeKindOfShop(): Boolean = IS_SOME_KIND_OF_SHOP_EXPR.matches(this)
+
+/** ~ tenant of a normal retail shop area.
+ *  So,
+ *  - no larger or purpose-built things like malls, cinemas, theatres, car washes, fuel stations,
+ *    museums, galleries, zoos, aquariums, bowling alleys...
+ *  - no things that are usually not found in normal retail shop areas but in offices:
+ *    clinics, doctors, fitness centers, dental technicians...
+ *  - nothing that is rather located in an industrial estate like car repair and other types
+ *    of workshops (most craft=* other than those where people go to have something repaired or so)
+ *  */
+private val IS_SOME_KIND_OF_SHOP_EXPR = ("""
+    nodes, ways, relations with
+      shop and shop !~ no|vacant|mall
+      or tourism = information and information = office
+      or """ +
+    mapOf(
+        "amenity" to arrayOf(
+            "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "nightclub",
+            "bank", "bureau_de_change", "money_transfer", "post_office", "internet_cafe",
+            "pharmacy",
+            "driving_school",
+        ),
+        "leisure" to arrayOf(
+            "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+        ),
+        "office" to arrayOf(
+            "insurance", "travel_agent", "tax_advisor", "estate_agent", "political_party",
+        ),
+        "craft" to arrayOf(
+            "shoemaker", "tailor", "photographer", "watchmaker", "optician",
+            "electronics_repair", "key_cutter",
+        )
+    ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
+    ).trimIndent().toElementFilterExpression()

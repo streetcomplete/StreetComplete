@@ -13,14 +13,15 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
        contain any recycling:* = yes that is not shoes or clothes but this can not be expressed
        in the elements filter syntax */
     private val filter by lazy { """
-        nodes with amenity = recycling and recycling_type = container 
-         and recycling:clothes = yes 
+        nodes with amenity = recycling and recycling_type = container
+         and recycling:clothes = yes
          and !operator
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add clothing bin operator"
     override val wikiLink = "Tag:amenity=recycling"
     override val icon = R.drawable.ic_quest_recycling_clothes
+    override val isDeleteElementEnabled = true
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.nodes.filter { filter.matches(it) && it.tags.hasNoOtherRecyclingTags() }

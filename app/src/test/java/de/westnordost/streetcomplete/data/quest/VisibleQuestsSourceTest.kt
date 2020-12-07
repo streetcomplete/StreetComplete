@@ -86,7 +86,6 @@ class VisibleQuestsSourceTest {
         questStatusListener.onRemoved(1L, QuestStatus.ANSWERED)
         questStatusListener.onRemoved(2L, QuestStatus.INVISIBLE)
         questStatusListener.onRemoved(3L, QuestStatus.HIDDEN)
-        questStatusListener.onRemoved(4L, QuestStatus.REVERT)
         questStatusListener.onRemoved(5L, QuestStatus.CLOSED)
         verifyZeroInteractions(listener)
     }
@@ -105,7 +104,7 @@ class VisibleQuestsSourceTest {
     @Test fun `change of osm quest status not involving new does not trigger listener`() {
         questStatusListener.onChanged(osmQuest(1L, QuestStatus.ANSWERED), QuestStatus.CLOSED)
         questStatusListener.onChanged(osmQuest(2L, QuestStatus.HIDDEN), QuestStatus.INVISIBLE)
-        questStatusListener.onChanged(osmQuest(3L, QuestStatus.CLOSED), QuestStatus.REVERT)
+        questStatusListener.onChanged(osmQuest(3L, QuestStatus.CLOSED), QuestStatus.CLOSED)
         verifyZeroInteractions(listener)
     }
 
@@ -155,7 +154,6 @@ class VisibleQuestsSourceTest {
         noteQuestStatusListener.onRemoved(1L, QuestStatus.ANSWERED)
         noteQuestStatusListener.onRemoved(2L, QuestStatus.INVISIBLE)
         noteQuestStatusListener.onRemoved(3L, QuestStatus.HIDDEN)
-        noteQuestStatusListener.onRemoved(4L, QuestStatus.REVERT)
         noteQuestStatusListener.onRemoved(5L, QuestStatus.CLOSED)
         verifyZeroInteractions(listener)
     }
@@ -169,7 +167,7 @@ class VisibleQuestsSourceTest {
     @Test fun `change of osm note quest status not involving new does not trigger listener`() {
         noteQuestStatusListener.onChanged(osmNoteQuest(1L, QuestStatus.ANSWERED), QuestStatus.CLOSED)
         noteQuestStatusListener.onChanged(osmNoteQuest(2L, QuestStatus.HIDDEN), QuestStatus.INVISIBLE)
-        noteQuestStatusListener.onChanged(osmNoteQuest(3L, QuestStatus.CLOSED), QuestStatus.REVERT)
+        noteQuestStatusListener.onChanged(osmNoteQuest(3L, QuestStatus.CLOSED), QuestStatus.CLOSED)
         verifyZeroInteractions(listener)
     }
 

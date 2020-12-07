@@ -108,7 +108,7 @@ class UndoOsmQuestsUploaderTest {
         verifyNoMoreInteractions(elementUpdateController)
     }
 
-    @Test fun `delete unreferenced elements and clean metadata at the end`() {
+    @Test fun `clean metadata at the end`() {
         val quest = createUndoQuest()
 
         on(undoQuestDB.getAll()).thenReturn(listOf(quest))

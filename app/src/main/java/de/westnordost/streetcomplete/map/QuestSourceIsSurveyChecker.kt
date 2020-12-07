@@ -12,21 +12,21 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
-import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.util.distanceToArcs
 import javax.inject.Inject
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 /** Checks if the quest was solved on a survey, either by looking at the GPS position or asking
  *  the user  */
-class QuestSourceIsSurveyChecker @Inject constructor(
-        private val osmQuestController: OsmQuestController,
-        private val osmNoteQuestController: OsmNoteQuestController
-) {
-    fun assureIsSurvey(context: Context, questId: Long, group: QuestGroup, locations: List<Location>, isSurveyCallback: () -> Unit) {
-        if (dontShowAgain || isWithinSurveyDistance(questId, group, locations)) {
-            isSurveyCallback()
+class QuestSourceIsSurveyChecker @Inject constructor() {
+
+    suspend fun checkIsSurvey(
+        context: Context, geometry: ElementGeometry, locations: List<Location>
+    ): Boolean = suspendCoroutine { cont ->
+
+        if (dontShowAgain || isWithinSurveyDistance(geometry, locations)) {
+            cont.resume(true)
         } else {
             val inner = LayoutInflater.from(context).inflate(R.layout.quest_source_dialog_layout, null, false)
             val checkBox = inner.findViewById<CheckBox>(R.id.checkBoxDontShowAgain)
@@ -38,15 +38,15 @@ class QuestSourceIsSurveyChecker @Inject constructor(
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     ++timesShown
                     dontShowAgain = checkBox.isChecked
-                    isSurveyCallback()
+                    cont.resume(true)
                 }
-                .setNegativeButton(android.R.string.cancel, null)
+                .setNegativeButton(android.R.string.cancel) { _, _ -> cont.resume(false) }
+                .setOnCancelListener { cont.resume(false) }
                 .show()
+            }
         }
-    }
 
-    private fun isWithinSurveyDistance(questId: Long, group: QuestGroup, locations: List<Location>): Boolean {
-        val geometry = getQuestGeometry(questId, group) ?: return false
+    private fun isWithinSurveyDistance(geometry: ElementGeometry, locations: List<Location>): Boolean {
         for (location in locations) {
             val pos = OsmLatLon(location.latitude, location.longitude)
             val polyLines: List<List<LatLon>> = when (geometry) {
@@ -61,12 +61,6 @@ class QuestSourceIsSurveyChecker @Inject constructor(
         }
         return false
     }
-
-    private fun getQuestGeometry(questId: Long, group: QuestGroup): ElementGeometry? =
-        when (group) {
-            QuestGroup.OSM -> osmQuestController.get(questId)?.geometry
-            QuestGroup.OSM_NOTE -> osmNoteQuestController.get(questId)?.geometry
-        }
 
     companion object {
         /*

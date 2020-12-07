@@ -36,6 +36,23 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** whether quests of this type should be added for all segments of a way that has been split */
     val isRecreateAfterSplitEnabled: Boolean get() = true
 
+    /** returns whether the user should be able to delete this element instead. Only elements that
+     *  are not expected...
+     *  - to be part of a relation
+     *  - to be part of a network (f.e. roads, power lines, ...)
+     *  - to be part of a(nother) way
+     *  - to house a second POI on the same element
+     *  - to be a kind of element where deletion is not recommended, (f.e. a shop should rather
+     *    be set to shop=vacant until there is another one)
+     *  ...should be deletable */
+    val isDeleteElementEnabled: Boolean get() = false
+
+    /** returns whether the user should be able to replace this element with another preset. Only
+     *  elements that are expected to be some kind of shop/amenity should be replaceable this way,
+     *  i.e. anything that when it's gone, there is a vacant shop then.
+     *  */
+    val isReplaceShopEnabled: Boolean get() = false
+
     /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
     fun getTitle(tags: Map<String, String>): Int
 
