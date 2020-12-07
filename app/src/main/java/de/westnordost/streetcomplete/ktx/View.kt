@@ -3,12 +3,14 @@ package de.westnordost.streetcomplete.ktx
 import android.graphics.Point
 import android.os.Build
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewPropertyAnimator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.os.postDelayed
 import androidx.core.view.doOnLayout
 import androidx.core.view.doOnPreDraw
+import androidx.core.view.updateLayoutParams
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -53,5 +55,20 @@ fun View.showTapHint(initialDelay: Long = 300, pressedDelay: Long = 600) {
         handler?.postDelayed(pressedDelay) {
             isPressed = false
         }
+    }
+}
+
+fun View.setMargins(left: Int, top: Int, right: Int, bottom: Int) {
+    updateLayoutParams<ViewGroup.MarginLayoutParams> { setMargins(left, top, right, bottom) }
+}
+
+fun View.updateMargins(left: Int? = null, top: Int? = null, right: Int? = null, bottom: Int? = null) {
+    updateLayoutParams<ViewGroup.MarginLayoutParams> {
+        setMargins(
+            left ?: leftMargin,
+            top ?: topMargin,
+            right ?: rightMargin,
+            bottom ?: bottomMargin
+        )
     }
 }

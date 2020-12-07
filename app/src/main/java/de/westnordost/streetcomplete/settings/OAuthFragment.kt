@@ -122,6 +122,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
                 }
                 progressView?.visibility = View.INVISIBLE
             }
+            val authorizeUrl = authorizeUrl
             if (authorizeUrl != null && oAuthVerifier == null) {
                 webView.visibility = View.VISIBLE
                 webView.loadUrl(

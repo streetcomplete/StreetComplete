@@ -17,7 +17,6 @@ import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.net.toUri
-import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.mapzen.tangram.MapView
@@ -34,8 +33,10 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.containsAll
+import de.westnordost.streetcomplete.ktx.setMargins
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.map.tangram.*
+import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -103,7 +104,7 @@ open class MapFragment : Fragment(),
         mapTileProviderLink.text = vectorTileProvider.copyrightText
         mapTileProviderLink.setOnClickListener { showOpenUrlDialog(vectorTileProvider.copyrightLink) }
 
-        setupFittingToSystemWindowInsets()
+        attributionContainer.respectSystemInsets(View::setMargins)
 
         launch { initMap() }
     }
@@ -122,22 +123,6 @@ open class MapFragment : Fragment(),
     private fun openUrl(url: String): Boolean {
         val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         return tryStartActivity(intent)
-    }
-
-    private fun setupFittingToSystemWindowInsets() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            view?.setOnApplyWindowInsetsListener { _, insets ->
-                attributionContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    setMargins(
-                        insets.systemWindowInsetLeft,
-                        insets.systemWindowInsetTop,
-                        insets.systemWindowInsetRight,
-                        insets.systemWindowInsetBottom
-                    )
-                }
-                insets
-            }
-        }
     }
 
     override fun onStart() {
@@ -362,7 +347,7 @@ open class MapFragment : Fragment(),
 
     /* ------------------------------- Controlling the map -------------------------------------- */
 
-    public fun adjustToOffsets(oldOffset: RectF, newOffset: RectF) {
+    fun adjustToOffsets(oldOffset: RectF, newOffset: RectF) {
         controller?.screenCenterToLatLon(oldOffset)?.let { pos ->
             controller?.updateCameraPosition {
                 position = controller?.getLatLonThatCentersLatLon(pos, newOffset)
