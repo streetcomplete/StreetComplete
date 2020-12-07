@@ -236,9 +236,9 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         val currentLaneCount = rightSide + leftSide
         return if (selectedLanesType == MARKED) {
             if (isOneway) {
-                showSelectMarkedLanesDialogForOneSide(currentLaneCount)
+                showSelectMarkedLanesDialogForOneSide(currentLaneCount.takeIf { it > 0 })
             } else {
-                showSelectMarkedLanesDialogForBothSides(currentLaneCount)
+                showSelectMarkedLanesDialogForBothSides(currentLaneCount.takeIf { it > 0 })
             }
         } else {
             throw IllegalStateException()
