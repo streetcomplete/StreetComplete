@@ -10,11 +10,14 @@ v28.0-beta1: |
   <ul>
   <li>Added "doesn't exist" answer option to many quests. If it was a shop of some kind, you can
       directly specify what is there now.</li>
+  <li>Tracktypes: Better wording and pictures (#2294)</li>
+  <li>Parking type: Added lane and off-street parking (#2346)</li>
   </ul>
   <h3>Other Enhancements and Fixes</h3>
   <ul>
   <li>Android 11: Enable smooth keyboard appear animation (#2133)</li>
   <li>even slightly faster download</li>
+  <li>Other small enhancements and fixes (#2349, #2351...)</li>
   </ul>
 
 v27.2: |
