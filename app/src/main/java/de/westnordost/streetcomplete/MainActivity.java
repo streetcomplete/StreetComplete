@@ -45,7 +45,7 @@ import de.westnordost.streetcomplete.data.quest.Quest;
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener;
-import de.westnordost.streetcomplete.data.download.QuestDownloadController;
+import de.westnordost.streetcomplete.data.download.DownloadController;
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource;
 import de.westnordost.streetcomplete.data.upload.UploadController;
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener;
@@ -75,7 +75,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject QuestAutoSyncer questAutoSyncer;
 
 	@Inject QuestController questController;
-	@Inject QuestDownloadController questDownloadController;
+	@Inject
+	DownloadController downloadController;
 	@Inject UploadController uploadController;
 	@Inject NotificationsSource notificationsSource;
 	@Inject UnsyncedChangesCountSource unsyncedChangesCountSource;
@@ -186,10 +187,10 @@ public class MainActivity extends AppCompatActivity implements
 		localBroadcaster.registerReceiver(locationRequestFinishedReceiver,
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
-		questDownloadController.setShowNotification(false);
+		downloadController.setShowNotification(false);
 
 		uploadController.addUploadProgressListener(uploadProgressListener);
-		questDownloadController.addDownloadProgressListener(downloadProgressListener);
+		downloadController.addDownloadProgressListener(downloadProgressListener);
 
 		if(!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false))
 		{
@@ -246,10 +247,10 @@ public class MainActivity extends AppCompatActivity implements
 
 		unregisterReceiver(locationAvailabilityReceiver);
 
-		questDownloadController.setShowNotification(true);
+		downloadController.setShowNotification(true);
 
 		uploadController.removeUploadProgressListener(uploadProgressListener);
-		questDownloadController.removeDownloadProgressListener(downloadProgressListener);
+		downloadController.removeDownloadProgressListener(downloadProgressListener);
 	}
 
 	@Override public void onConfigurationChanged(@NonNull Configuration newConfig) {

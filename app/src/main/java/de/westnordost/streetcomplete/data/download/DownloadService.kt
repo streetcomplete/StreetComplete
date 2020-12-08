@@ -10,10 +10,9 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.util.TilesRect
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
-import javax.inject.Provider
 
-/** Downloads all quests in a given area asynchronously. To use, start the service with the
- * appropriate parameters.
+/** Downloads all quests and tiles in a given area asynchronously. To use, start the service with
+ * the appropriate parameters.
  *
  * Generally, starting a new download cancels the old one. This is a feature; Consideration:
  * If the user requests a new area to be downloaded, he'll generally be more interested in his last
@@ -25,26 +24,16 @@ import javax.inject.Provider
  * * To query for the state of the service and/or current download task, i.e. if the current
  * download job was started by the user
  */
-class QuestDownloadService : SingleIntentService(TAG) {
-    @Inject internal lateinit var questDownloaderProvider: Provider<QuestDownloader>
+class DownloadService : SingleIntentService(TAG) {
+    @Inject internal lateinit var downloaders: List<Downloader>
 
-    private lateinit var notificationController: QuestDownloadNotificationController
+    private lateinit var notificationController: DownloadNotificationController
 
     // interface
-    private val binder: IBinder = Interface()
+    private val binder = Interface()
 
     // listener
-    private var progressListenerRelay = object : DownloadProgressListener {
-        override fun onStarted() { progressListener?.onStarted() }
-        override fun onError(e: Exception) { progressListener?.onError(e) }
-        override fun onSuccess() {
-            isDownloading = false
-            progressListener?.onSuccess()
-        }
-        override fun onFinished() {
-            isDownloading = false
-            progressListener?.onFinished()
-        }
+    private var progressListenerRelay = object : OnDownloadedItemListener {
         override fun onStarted(item: DownloadItem) {
             currentDownloadItem = item
             progressListener?.onStarted(item)
@@ -80,7 +69,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
 
     override fun onCreate() {
         super.onCreate()
-        notificationController = QuestDownloadNotificationController(
+        notificationController = DownloadNotificationController(
             this, ApplicationConstants.NOTIFICATIONS_CHANNEL_DOWNLOAD, 1)
     }
 
@@ -98,19 +87,35 @@ class QuestDownloadService : SingleIntentService(TAG) {
         }
 
         val tiles = intent.getSerializableExtra(ARG_TILES_RECT) as TilesRect
+        isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
+        isDownloading = true
 
-        val dl = questDownloaderProvider.get()
-        dl.progressListener = progressListenerRelay
+        progressListener?.onStarted()
+
+        Log.i(TAG, "Starting download")
+
+        var error: Exception? = null
         try {
-            isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
-            isDownloading = true
-            dl.download(tiles, cancelState)
+            for (downloader in downloaders) {
+                if (cancelState.get()) return
+                downloader.downloadedItemListener = progressListenerRelay
+                downloader.download(tiles, cancelState)
+            }
         } catch (e: Exception) {
-            Log.e(TAG, "Unable to download quests", e)
-            progressListenerRelay.onError(e)
+            Log.e(TAG, "Unable to download", e)
+            error = e
         }
+        // downloading flags must be set to false before invoking the callbacks
         isPriorityDownload = false
         isDownloading = false
+        if (error != null) {
+            progressListener?.onError(error)
+        } else {
+            progressListener?.onSuccess()
+        }
+        progressListener?.onFinished()
+
+        Log.i(TAG, "Finished download")
     }
 
     /** Public interface to classes that are bound to this service  */
@@ -123,7 +128,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
 
         val isDownloadInProgress: Boolean get() = isDownloading
 
-        val currentDownloadItem: DownloadItem? get() = this@QuestDownloadService.currentDownloadItem
+        val currentDownloadItem: DownloadItem? get() = this@DownloadService.currentDownloadItem
 
         var showDownloadNotification: Boolean
             get() = showNotification
@@ -131,20 +136,20 @@ class QuestDownloadService : SingleIntentService(TAG) {
     }
 
     companion object {
-        private const val TAG = "QuestDownload"
+        private const val TAG = "Download"
         const val ARG_TILES_RECT = "tilesRect"
         const val ARG_IS_PRIORITY = "isPriority"
         const val ARG_CANCEL = "cancel"
 
-        fun createIntent(context: Context, tilesRect: TilesRect?,isPriority: Boolean): Intent {
-            val intent = Intent(context, QuestDownloadService::class.java)
+        fun createIntent(context: Context, tilesRect: TilesRect?, isPriority: Boolean): Intent {
+            val intent = Intent(context, DownloadService::class.java)
             intent.putExtra(ARG_TILES_RECT, tilesRect)
             intent.putExtra(ARG_IS_PRIORITY, isPriority)
             return intent
         }
 
         fun createCancelIntent(context: Context): Intent {
-            val intent = Intent(context, QuestDownloadService::class.java)
+            val intent = Intent(context, DownloadService::class.java)
             intent.putExtra(ARG_CANCEL, true)
             return intent
         }

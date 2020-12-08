@@ -24,16 +24,13 @@ class QuestDownloader @Inject constructor(
     private val downloadedTilesDao: DownloadedTilesDao,
     private val questTypeRegistry: QuestTypeRegistry,
     private val userStore: UserStore
-) {
-    var progressListener: DownloadProgressListener? = null
+) : Downloader {
+    override var downloadedItemListener: OnDownloadedItemListener? = null
 
-    @Synchronized fun download(tiles: TilesRect, cancelState: AtomicBoolean) {
+    @Synchronized override fun download(tiles: TilesRect, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
 
-        progressListener?.onStarted()
         if (hasQuestsAlready(tiles)) {
-            progressListener?.onSuccess()
-            progressListener?.onFinished()
             return
         }
 
@@ -43,16 +40,14 @@ class QuestDownloader @Inject constructor(
 
         try {
             downloadQuestTypes(tiles, bbox, cancelState)
-            progressListener?.onSuccess()
         } finally {
-            progressListener?.onFinished()
             Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Finished")
         }
     }
 
     private fun downloadQuestTypes(tiles: TilesRect, bbox: BoundingBox, cancelState: AtomicBoolean) {
         val downloadItem = DownloadItem(R.drawable.ic_search_black_128dp, "Multi download")
-        progressListener?.onStarted(downloadItem)
+        downloadedItemListener?.onStarted(downloadItem)
 
         // always first download notes, note positions are blockers for creating other quests
         downloadNotes(bbox)
@@ -63,7 +58,7 @@ class QuestDownloader @Inject constructor(
 
         downloadedTilesDao.put(tiles, DownloadedTilesType.QUESTS)
 
-        progressListener?.onFinished(downloadItem)
+        downloadedItemListener?.onFinished(downloadItem)
     }
 
     private fun hasQuestsAlready(tiles: TilesRect): Boolean {
