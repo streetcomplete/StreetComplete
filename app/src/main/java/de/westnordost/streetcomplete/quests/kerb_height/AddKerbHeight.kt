@@ -33,5 +33,6 @@ class AddKerbHeight : OsmElementQuestType<String> {
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
         changes.updateWithCheckDate("kerb", answer)
+        changes.addOrModify("barrier", "kerb")
     }
 }

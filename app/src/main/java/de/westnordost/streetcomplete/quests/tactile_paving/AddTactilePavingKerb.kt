@@ -36,5 +36,6 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.updateWithCheckDate("tactile_paving", answer.toYesNo())
+        changes.addOrModify("barrier", "kerb")
     }
 }
