@@ -11,7 +11,7 @@ economic with data usage.
 
 To make the app easy to use, quests are limited to those answerable by asking simple questions.
 
-* See the [latest release notes](https://github.com/westnordost/StreetComplete/releases).
+* See the [latest release notes](https://github.com/streetcomplete/StreetComplete/releases).
 
 ## Screenshots
 <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot01.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot02.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot03.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot04.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot05.png" width="170"/>
@@ -20,7 +20,7 @@ To make the app easy to use, quests are limited to those answerable by asking si
 
 ## Download
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete/)[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Download APK from GitHub" height="80">](https://github.com/westnordost/StreetComplete/releases/latest)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete/)[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Download APK from GitHub" height="80">](https://github.com/streetcomplete/StreetComplete/releases/latest)
 
 ## Quests
 
