@@ -17,6 +17,7 @@ import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import de.westnordost.streetcomplete.HandlesOnBackPressed
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.ktx.tryStartActivity
@@ -41,7 +42,8 @@ import kotlinx.android.synthetic.main.fragment_achievement_info.*
  *  different root view than the rest of the UI. However, for the calculation to animate the icon
  *  from another view to the position in the "dialog", there must be a common root view.
  *  */
-class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
+class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
+    HandlesOnBackPressed {
 
     /** View from which the achievement icon is animated from (and back on dismissal)*/
     private var achievementIconBubble: View? = null
@@ -70,6 +72,14 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
         unlockedLinksList.layoutManager = object : LinearLayoutManager(requireContext(), VERTICAL, false) {
             override fun canScrollVertically() = false
         }
+    }
+
+    override fun onBackPressed(): Boolean {
+        if (isShowing) {
+            dismiss()
+            return true
+        }
+        return false
     }
 
     override fun onDestroyView() {

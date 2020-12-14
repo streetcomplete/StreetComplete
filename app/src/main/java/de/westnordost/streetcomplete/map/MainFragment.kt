@@ -35,10 +35,7 @@ import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuDialog
 import de.westnordost.streetcomplete.data.download.QuestDownloadController
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
@@ -73,6 +70,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     AbstractQuestAnswerFragment.Listener,
     SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener, CreateNoteFragment.Listener,
     VisibleQuestListener,
+    HandlesOnBackPressed,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var questController: QuestController
@@ -188,7 +186,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /** Called by the activity when the user presses the back button.
      *  Returns true if the event should be consumed. */
-    fun onBackPressed(): Boolean {
+    override fun onBackPressed(): Boolean {
         val f = bottomSheetFragment
         if (f !is IsCloseableBottomSheet) return false
 

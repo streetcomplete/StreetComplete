@@ -39,6 +39,7 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment;
 import de.westnordost.streetcomplete.data.download.DownloadItem;
+import de.westnordost.streetcomplete.data.notifications.NewAchievementNotification;
 import de.westnordost.streetcomplete.data.notifications.Notification;
 import de.westnordost.streetcomplete.data.notifications.NotificationsSource;
 import de.westnordost.streetcomplete.data.quest.Quest;
@@ -203,10 +204,21 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onBackPressed()
 	{
+		if (!forwardBackPressedToChildren()) super.onBackPressed();
+	}
+
+	private boolean forwardBackPressedToChildren()
+	{
+		NotificationsContainerFragment notificationsContainerFragment = getNotificationsContainerFragment();
+		if (notificationsContainerFragment != null)
+		{
+			if (notificationsContainerFragment.onBackPressed()) return true;
+		}
 		if (mainFragment != null)
 		{
-			if (!mainFragment.onBackPressed()) super.onBackPressed();
+			if (mainFragment.onBackPressed()) return true;
 		}
+		return false;
 	}
 
 	@Override
@@ -389,8 +401,15 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onClickShowNotification(@NonNull Notification notification)
 	{
+		NotificationsContainerFragment f = getNotificationsContainerFragment();
+		if (f != null) f.showNotification(notification);
+	}
+
+	private NotificationsContainerFragment getNotificationsContainerFragment()
+	{
 		Fragment f = getSupportFragmentManager().findFragmentById(R.id.notifications_container_fragment);
-		((NotificationsContainerFragment) f).showNotification(notification);
+		if (f instanceof NotificationsContainerFragment) return (NotificationsContainerFragment) f;
+		else return null;
 	}
 
 	/* --------------------------------- MainFragment.Listener ---------------------------------- */
