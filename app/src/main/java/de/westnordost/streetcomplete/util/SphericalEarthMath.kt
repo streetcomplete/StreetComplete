@@ -152,15 +152,22 @@ fun List<LatLon>.distanceTo(polyline: List<LatLon>, globeRadius: Double = EARTH_
     return minOf { it.distanceToArcs(polyline, globeRadius) }
 }
 
-/** Returns whether this polyline intersects with the given polyline */
+/** Returns whether this polyline intersects with the given polyline. If a polyline touches the
+ *  other at an endpoint (f.e. two consecutive polylines that share one endpoint), this doesn't
+ *  count. */
 fun List<LatLon>.intersectsWith(polyline: List<LatLon>): Boolean {
     require(size > 1 && polyline.size > 1) { "Polylines must each contain at least two elements" }
     val ns = map { it.toNormalOnSphere() }
     val npolyline = polyline.map { it.toNormalOnSphere() }
     ns.forEachLine { first, second ->
         npolyline.forEachLine { otherFirst, otherSecond ->
-            if (arcIntersection(first, second, otherFirst, otherSecond) != null) {
-                return true
+            val intersection = arcIntersection(first, second, otherFirst, otherSecond)
+            if (intersection != null) {
+                // touching endpoints don't count
+                if (
+                    first != npolyline.first() && first != npolyline.last() &&
+                    second != npolyline.first() && second != npolyline.last()
+                ) return true
             }
         }
     }
