@@ -141,6 +141,8 @@ dependencies {
     implementation("de.westnordost:osmapi-changesets:1.3")
     implementation("de.westnordost:osmapi-notes:1.2")
     implementation("de.westnordost:osmapi-user:1.2")
+    implementation("com.squareup.okhttp3:okhttp:3.12.12")
+    implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
