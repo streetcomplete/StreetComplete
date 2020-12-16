@@ -120,6 +120,7 @@ surface_paved.jpg              CC0               https://www.goodfreephotos.com/
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
 surface_rock.jpg               CC0               Elliot Plack
+surface_tennis_clay.jpg        CC-BY-SA 2.0      https://www.flickr.com/photos/la_bretagne_a_paris/5756037305/ (Yann Caradec)
 herb_height_raised.jpg         CC0               Mateusz Konieczny
 herb_height_raised_original... CC0               Mateusz Konieczny
 herb_height_lowered.jpg        CC0               Mateusz Konieczny

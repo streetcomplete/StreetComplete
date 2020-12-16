@@ -22,7 +22,7 @@ enum class Surface(val item: Item<String>) {
     GRASS         (Item("grass",          R.drawable.surface_grass,         R.string.quest_surface_value_grass)),
     SAND          (Item("sand",           R.drawable.surface_sand,          R.string.quest_surface_value_sand)),
     ROCK          (Item("rock",           R.drawable.surface_rock,          R.string.quest_surface_value_rock)),
-    CLAY          (Item("clay",           R.drawable.surface_rock,          R.string.quest_surface_value_clay)),
+    CLAY          (Item("clay",           R.drawable.surface_tennis_clay,    R.string.quest_surface_value_clay)),
     ARTIFICIAL_TURF (Item("artificial_turf", R.drawable.surface_rock,        R.string.quest_surface_value_artificial_turf)),
     TARTAN        (Item("tartan",         R.drawable.surface_rock,          R.string.quest_surface_value_tartan));
 }
