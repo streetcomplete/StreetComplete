@@ -21,7 +21,6 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
           )
         )
     """
-        /* ~paved ways are less likely to change the surface type */
 
         override val commitMessage = "Add path surfaces"
         override val wikiLink = "Key:surface"
