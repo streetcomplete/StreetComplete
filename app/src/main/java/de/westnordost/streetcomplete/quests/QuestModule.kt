@@ -206,6 +206,7 @@ import javax.inject.Singleton
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
         //      the sake of mapping it in case it makes sense later
+        AddPitchSurface(),
         AddIsDefibrillatorIndoor(),
         AddSummitRegister(),
         AddCyclewayPartSurface(),

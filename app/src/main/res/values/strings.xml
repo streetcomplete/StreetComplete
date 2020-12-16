@@ -200,6 +200,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_streetSurface_name_title">"What surface does the road %s have here?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
     <string name="quest_streetSurface_square_name_title">"What surface does the square %s have here?"</string>
+    <string name="quest_pitchSurface_title">What surface does this pitch have?</string>
     <string name="quest_select_hint_most_specific">"Select the most specific one that fits:"</string>
     <string name="quest_surface_value_paved">"Paved (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
@@ -956,4 +957,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
     <string name="quest_shop_gone_replaced_answer_error">"Don't know what this is. Consider leaving a note."</string>
     <string name="quest_shop_vacant_type_title">This shop has been vacant. What\'s here now?</string>
+    <string name="quest_surface_value_clay">Clay</string>
+    <string name="quest_surface_value_artificial_turf">Artificial turf</string>
+    <string name="quest_surface_value_tartan">Tartan</string>
 </resources>
