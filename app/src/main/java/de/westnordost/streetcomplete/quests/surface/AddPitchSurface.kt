@@ -22,7 +22,7 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
         )
     """
 
-        override val commitMessage = "Add path surfaces"
+        override val commitMessage = "Add pitch surfaces"
         override val wikiLink = "Key:surface"
         override val icon = R.drawable.ic_quest_sport
         override val isSplitWayEnabled = true
