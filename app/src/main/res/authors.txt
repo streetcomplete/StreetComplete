@@ -122,6 +122,7 @@ surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
 surface_rock.jpg               CC0               Elliot Plack
 surface_tennis_clay.jpg        CC-BY-SA 2.0      https://www.flickr.com/photos/la_bretagne_a_paris/5756037305/ (Yann Caradec)
 surface_artificial_turf.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Meltingout.jpg
+surface_tartan.jpg             CC-BY 2.0         https://commons.wikimedia.org/wiki/File:%E5%9B%BD%E7%AB%8B%E9%9C%9E%E3%83%B6%E4%B8%98%E9%99%B8%E4%B8%8A%E7%AB%B6%E6%8A%80%E5%A0%B4_(National_Olympic_Stadium)_(14151146399).jpg (Kentaro Ohno)
 herb_height_raised.jpg         CC0               Mateusz Konieczny
 herb_height_raised_original... CC0               Mateusz Konieczny
 herb_height_lowered.jpg        CC0               Mateusz Konieczny
