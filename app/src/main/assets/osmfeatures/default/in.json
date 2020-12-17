@@ -86,7 +86,7 @@
                         }
                     },
                     "placeholder": "Tidak dispesifikasikan",
-                    "terms": "Boleh masuk,Boleh akses,bisa masuk,bisa akses, akses diperbolehkan",
+                    "terms": "boleh masuk,boleh akses,bisa masuk,bisa akses,akses diperbolehkan",
                     "types": {
                         "access": "Semua",
                         "bicycle": "Sepeda",
@@ -142,7 +142,7 @@
                         "suburb": "Kelurahan",
                         "unit": "Unit"
                     },
-                    "terms": "Alamat,Lokasi,Denah,Tempat"
+                    "terms": "alamat,lokasi,denah,tempat"
                 },
                 "admin_level": {
                     "label": "Tingkat Admin"
@@ -201,7 +201,7 @@
                 },
                 "architect": {
                     "label": "Arsitek",
-                    "terms": "Arsitek,Pembangun,Pembuat,Perancang"
+                    "terms": "arsitek,pembangun,pembuat,perancang"
                 },
                 "area/highway": {
                     "label": "Tipe"
@@ -252,14 +252,14 @@
                 },
                 "bench": {
                     "label": "Bangku",
-                    "terms": "Bangku,Kursi"
+                    "terms": "bangku,kursi"
                 },
                 "bicycle_parking": {
                     "label": "Tipe"
                 },
                 "bin": {
                     "label": "Tong Sampah",
-                    "terms": "Tempat Sampah, Tempat Pembuangan, Tempat Limbah"
+                    "terms": "tempat sampah,tempat pembuangan,tempat limbah"
                 },
                 "blind": {
                     "label": "Akses Tunanetra",
@@ -268,7 +268,7 @@
                         "no": "Tidak",
                         "yes": "Ya"
                     },
-                    "terms": "Akses Orang Buta,Akses ramah tunanetra"
+                    "terms": "akses orang buta,akses ramah tunanetra"
                 },
                 "blood_components": {
                     "label": "Komponen Darah",
@@ -294,7 +294,7 @@
                 },
                 "brand": {
                     "label": "Merek",
-                    "terms": "Brand"
+                    "terms": "brand"
                 },
                 "building": {
                     "label": "Bangunan"
@@ -325,7 +325,7 @@
                 "capacity": {
                     "label": "Kapasitas",
                     "placeholder": "50, 100, 200...",
-                    "terms": "Kapasitas"
+                    "terms": "kapasitas"
                 },
                 "cash_in": {
                     "label": "Tunai"
@@ -350,7 +350,7 @@
                     "label": "Waktu Pengumpulan"
                 },
                 "colour": {
-                    "terms": "Warna"
+                    "terms": "warna"
                 },
                 "comment": {
                     "label": "Komentar perubahan",
@@ -596,7 +596,7 @@
                         "unisex": "Unisex"
                     },
                     "placeholder": "Tidak diketahui",
-                    "terms": "Kelamin"
+                    "terms": "kelamin"
                 },
                 "generator/method": {
                     "label": "Metode"
@@ -761,14 +761,13 @@
                 },
                 "manufacturer": {
                     "label": "Manufaktur",
-                    "terms": "Pembuat,Produsen,Pabrik"
+                    "terms": "pembuat,produsen,pabrik"
                 },
                 "max_age": {
                     "label": "Umur maksimal"
                 },
                 "maxheight": {
-                    "label": "Tinggi Maksimal",
-                    "placeholder": "4, 4.5, 5, 14'0\", 14'6\", 15'0\""
+                    "label": "Tinggi Maksimal"
                 },
                 "maxspeed": {
                     "label": "Batas Kecepatan",
@@ -1009,28 +1008,28 @@
             "presets": {
                 "address": {
                     "name": "Alamat",
-                    "terms": "Alamat"
+                    "terms": "alamat"
                 },
                 "aerialway/cable_car": {
                     "name": "Kereta Gantung"
                 },
                 "aeroway/aerodrome": {
                     "name": "Bandar udara",
-                    "terms": "Bandara,Lapangan Terbang,"
+                    "terms": "bandara,lapangan terbang"
                 },
                 "aeroway/hangar": {
                     "name": "Hanggar"
                 },
                 "aeroway/helipad": {
                     "name": "Helipad",
-                    "terms": "Helikopter, Pendaratan Helikopter, Bandar Helikopter"
+                    "terms": "helikopter,pendaratan helikopter,bandar helikopter"
                 },
                 "aeroway/runway": {
                     "name": "Landas pacu"
                 },
                 "aeroway/taxiway": {
                     "name": "Landas hubung",
-                    "terms": "Landas gelinding, Jalan rayap, Landas ancang"
+                    "terms": "landas gelinding,jalan rayap,landas ancang"
                 },
                 "amenity": {
                     "name": "Keramahan"
@@ -1043,7 +1042,7 @@
                 },
                 "amenity/bank": {
                     "name": "Bank",
-                    "terms": "Uang, Keuangan"
+                    "terms": "uang,keuangan"
                 },
                 "amenity/bar": {
                     "name": "Bar"
@@ -1053,15 +1052,15 @@
                 },
                 "amenity/bench": {
                     "name": "Bangku",
-                    "terms": "Tempat Duduk"
+                    "terms": "tempat duduk"
                 },
                 "amenity/bicycle_parking": {
                     "name": "Parkir Sepeda",
-                    "terms": "Parkir Sepeda"
+                    "terms": "parkir sepeda"
                 },
                 "amenity/bicycle_rental": {
                     "name": "Penyewaan Sepeda",
-                    "terms": "Penyewaan Sepeda"
+                    "terms": "penyewaan sepeda"
                 },
                 "amenity/boat_rental": {
                     "name": "Penyewaan Perahu Boat"
@@ -1071,15 +1070,15 @@
                 },
                 "amenity/cafe": {
                     "name": "Kafe",
-                    "terms": "Warung Kopi"
+                    "terms": "warung kopi"
                 },
                 "amenity/car_rental": {
                     "name": "Penyewaan Mobil",
-                    "terms": "Penyewaan Mobil"
+                    "terms": "penyewaan mobil"
                 },
                 "amenity/car_wash": {
                     "name": "Pencucian Mobil",
-                    "terms": "Cuci Mobil"
+                    "terms": "cuci mobil"
                 },
                 "amenity/casino": {
                     "name": "Kasino"
@@ -1089,7 +1088,7 @@
                 },
                 "amenity/cinema": {
                     "name": "Bioskop",
-                    "terms": "Sinema"
+                    "terms": "sinema"
                 },
                 "amenity/clinic": {
                     "name": "Klinik"
@@ -1102,11 +1101,11 @@
                 },
                 "amenity/compressed_air": {
                     "name": "Pompa Ban",
-                    "terms": "Tempat Isi Angin Ban"
+                    "terms": "tempat isi angin ban"
                 },
                 "amenity/courthouse": {
                     "name": "Pengadilan",
-                    "terms": "Hukum"
+                    "terms": "hukum"
                 },
                 "amenity/dentist": {
                     "name": "Dokter Gigi"
@@ -1122,29 +1121,29 @@
                 },
                 "amenity/fast_food": {
                     "name": "Makanan Cepat Saji",
-                    "terms": "Makanan Cepatsaji"
+                    "terms": "makanan cepatsaji"
                 },
                 "amenity/fire_station": {
                     "name": "Kantor Pemadam Kebakaran",
-                    "terms": "Kantor Pemadam Kebakaran"
+                    "terms": "kantor pemadam kebakaran"
                 },
                 "amenity/fountain": {
                     "name": "Air Mancur"
                 },
                 "amenity/fuel": {
                     "name": "Pom Bensin",
-                    "terms": "SPBU, Pom Bensin,"
+                    "terms": "spbu,pom bensin"
                 },
                 "amenity/grave_yard": {
                     "name": "Kuburan",
-                    "terms": "Makam, Pemakaman, TPU"
+                    "terms": "makam,pemakaman,tpu"
                 },
                 "amenity/hospital": {
                     "name": "Lingkungan Rumah Sakit"
                 },
                 "amenity/library": {
                     "name": "Perpustakaan",
-                    "terms": "Perpustakaan"
+                    "terms": "perpustakaan"
                 },
                 "amenity/marketplace": {
                     "name": "Pasar"
@@ -1157,26 +1156,26 @@
                 },
                 "amenity/place_of_worship": {
                     "name": "Tempat Beribadah",
-                    "terms": "Rumah Ibadah"
+                    "terms": "rumah ibadah"
                 },
                 "amenity/place_of_worship/buddhist": {
                     "name": "Kuil Buddha",
-                    "terms": "Wihara"
+                    "terms": "wihara"
                 },
                 "amenity/police": {
                     "name": "Polisi",
-                    "terms": "Polisi"
+                    "terms": "polisi"
                 },
                 "amenity/post_office": {
                     "name": "Kantor Pos",
-                    "terms": "Surat"
+                    "terms": "surat"
                 },
                 "amenity/pub": {
                     "name": "Pub"
                 },
                 "amenity/restaurant": {
                     "name": "Restoran",
-                    "terms": "Rumah Makan"
+                    "terms": "rumah makan"
                 },
                 "amenity/school": {
                     "name": "Lingkungan Sekolah"
@@ -1198,23 +1197,23 @@
                 },
                 "amenity/telephone": {
                     "name": "Telepon",
-                    "terms": "Telepon"
+                    "terms": "telepon"
                 },
                 "amenity/theatre": {
                     "name": "Teater",
-                    "terms": "Teater"
+                    "terms": "teater"
                 },
                 "amenity/toilets": {
                     "name": "Toilet",
-                    "terms": "Kamar Kecil, WC"
+                    "terms": "kamar kecil,wc"
                 },
                 "amenity/townhall": {
                     "name": "Balai Kota",
-                    "terms": "Balai Kota,"
+                    "terms": "balai kota"
                 },
                 "amenity/university": {
                     "name": "Lingkungan Universitas",
-                    "terms": "Universitas, Kampus"
+                    "terms": "universitas,kampus"
                 },
                 "amenity/veterinary": {
                     "name": "Dokter Hewan"
@@ -1224,7 +1223,7 @@
                 },
                 "area": {
                     "name": "Area",
-                    "terms": "Daerah, Kawasan, Wilayah"
+                    "terms": "daerah,kawasan,wilayah"
                 },
                 "barrier": {
                     "name": "Penghalang"
@@ -1321,7 +1320,7 @@
                 },
                 "building/retail": {
                     "name": "Bangunan Pertokoan",
-                    "terms": "Toko, Ruko"
+                    "terms": "toko,ruko"
                 },
                 "building/roof": {
                     "name": "Atap"
@@ -1334,7 +1333,7 @@
                 },
                 "building/university": {
                     "name": "Bangunan Universitas",
-                    "terms": "Universitas, Kampus"
+                    "terms": "universitas,kampus"
                 },
                 "building/warehouse": {
                     "name": "Gudang"
@@ -1356,7 +1355,7 @@
                 },
                 "craft/bookbinder": {
                     "name": "Tukang Jilid",
-                    "terms": "Penjilid Buku, Binder Buku"
+                    "terms": "penjilid buku,binder buku"
                 },
                 "craft/brewery": {
                     "name": "Perusahaan Bir"
@@ -1366,7 +1365,7 @@
                 },
                 "craft/caterer": {
                     "name": "Jasa Boga",
-                    "terms": "Katering, Pejasaboga"
+                    "terms": "katering,pejasaboga"
                 },
                 "craft/clockmaker": {
                     "name": "Pembuat Jam"
@@ -1397,11 +1396,11 @@
                 },
                 "craft/photographic_laboratory": {
                     "name": "Laboratorium Fotografi",
-                    "terms": "Lab Fotografi"
+                    "terms": "lab fotografi"
                 },
                 "craft/plumber": {
                     "name": "Tukang Ledeng",
-                    "terms": "Tukang Leding, Tukang Pipa"
+                    "terms": "tukang leding,tukang pipa"
                 },
                 "craft/roofer": {
                     "name": "Tukang Atap"
@@ -1420,22 +1419,22 @@
                 },
                 "craft/watchmaker": {
                     "name": "Ahli Arloji",
-                    "terms": "Tukang Jam Tangan"
+                    "terms": "tukang jam tangan"
                 },
                 "craft/window_construction": {
                     "name": "Konstruksi Jendela"
                 },
                 "craft/winery": {
                     "name": "Penghasil Anggur",
-                    "terms": "Minuman Keras, Miras, Alkohol"
+                    "terms": "minuman keras,miras,alkohol"
                 },
                 "emergency/ambulance_station": {
                     "name": "Pos Ambulans",
-                    "terms": "Ambulan"
+                    "terms": "ambulan"
                 },
                 "emergency/fire_hydrant": {
                     "name": "Keran Pemadam Kebakaran",
-                    "terms": "Hidran, Pompa Air"
+                    "terms": "hidran,pompa air"
                 },
                 "emergency/phone": {
                     "name": "Telepon Darurat"
@@ -1457,7 +1456,7 @@
                 },
                 "highway/footway": {
                     "name": "Jalur Pejalan Kaki",
-                    "terms": "Pejalan Kaki"
+                    "terms": "pejalan kaki"
                 },
                 "highway/living_street": {
                     "name": "Jalan Tinggal"
@@ -1467,60 +1466,60 @@
                 },
                 "highway/motorway": {
                     "name": "Jalan Tol",
-                    "terms": "Jalan bebas hambatan"
+                    "terms": "jalan bebas hambatan"
                 },
                 "highway/motorway_junction": {
                     "name": "Jalan Keluar Tol",
-                    "terms": "Simpang susun / Jalan keluar"
+                    "terms": "simpang susun / jalan keluar"
                 },
                 "highway/motorway_link": {
                     "name": "Jalan Tol",
-                    "terms": "Jalan penghubung bebas hambatan"
+                    "terms": "jalan penghubung bebas hambatan"
                 },
                 "highway/path": {
                     "name": "Jalur"
                 },
                 "highway/primary": {
                     "name": "Jalan Provinsi",
-                    "terms": "Jalan Primer, Jalan Utama"
+                    "terms": "jalan primer,jalan utama"
                 },
                 "highway/primary_link": {
                     "name": "Jalan Penghubung Primer",
-                    "terms": "Jalan Penghubung Primer"
+                    "terms": "jalan penghubung primer"
                 },
                 "highway/residential": {
                     "name": "Jalan Perumahan",
-                    "terms": "Jalan Permukiman, Jalan Pemukiman"
+                    "terms": "jalan permukiman,jalan pemukiman"
                 },
                 "highway/rest_area": {
                     "name": "Tempat Peristirahatan",
-                    "terms": "Rest Area"
+                    "terms": "rest area"
                 },
                 "highway/road": {
                     "name": "Jalan Tak Diketahui"
                 },
                 "highway/secondary": {
                     "name": "Jalan Kabupaten",
-                    "terms": "Jalan Sekunder"
+                    "terms": "jalan sekunder"
                 },
                 "highway/secondary_link": {
                     "name": "Jalan Penghubung Sekunder",
-                    "terms": "Jalan Penghubung Sekunder"
+                    "terms": "jalan penghubung sekunder"
                 },
                 "highway/service": {
                     "name": "Jalan Layanan"
                 },
                 "highway/service/alley": {
                     "name": "Gang",
-                    "terms": "Gang"
+                    "terms": "gang"
                 },
                 "highway/service/emergency_access": {
                     "name": "Akses Darurat",
-                    "terms": "Akses Darurat"
+                    "terms": "akses darurat"
                 },
                 "highway/service/parking_aisle": {
                     "name": "Jalan Parkir",
-                    "terms": "Jalan Parkiran"
+                    "terms": "jalan parkiran"
                 },
                 "highway/services": {
                     "name": "Area layanan"
@@ -1530,143 +1529,143 @@
                 },
                 "highway/stop": {
                     "name": "Rambu Berhenti",
-                    "terms": "Tanda Stop"
+                    "terms": "tanda stop"
                 },
                 "highway/street_lamp": {
                     "name": "Lampu Jalan"
                 },
                 "highway/tertiary": {
                     "name": "Jalan Kota",
-                    "terms": "Jalan Tersier"
+                    "terms": "jalan tersier"
                 },
                 "highway/tertiary_link": {
                     "name": "Jalan Penghubung Tersier",
-                    "terms": "Jalan Penghubung Tersier"
+                    "terms": "jalan penghubung tersier"
                 },
                 "highway/traffic_signals": {
                     "name": "Lampu Lalu lintas",
-                    "terms": "Lampu Merah"
+                    "terms": "lampu merah"
                 },
                 "highway/trunk": {
                     "name": "Jalan Nasional",
-                    "terms": "Jalan Raya"
+                    "terms": "jalan raya"
                 },
                 "highway/trunk_link": {
                     "name": "Jalan Raya Penghubung",
-                    "terms": "Jalan Raya Penghubung"
+                    "terms": "jalan raya penghubung"
                 },
                 "highway/turning_circle": {
                     "name": "Putaran",
-                    "terms": "Putar Balik"
+                    "terms": "putar balik"
                 },
                 "historic": {
                     "name": "Situs Bersejarah",
-                    "terms": "Situs Sejarah"
+                    "terms": "situs sejarah"
                 },
                 "historic/archaeological_site": {
                     "name": "Situs Arkeologi",
-                    "terms": "Situs Purbakala"
+                    "terms": "situs purbakala"
                 },
                 "historic/boundary_stone": {
                     "name": "Patok Perbatasan",
-                    "terms": "Patok Perbatasan"
+                    "terms": "patok perbatasan"
                 },
                 "historic/castle": {
                     "name": "Istana",
-                    "terms": "Kastil, Benteng, Kastel"
+                    "terms": "kastil,benteng,kastel"
                 },
                 "historic/memorial": {
                     "name": "Tugu Peringatan",
-                    "terms": "Tugu Peringatan"
+                    "terms": "tugu peringatan"
                 },
                 "historic/monument": {
                     "name": "Monumen",
-                    "terms": "Monumen"
+                    "terms": "monumen"
                 },
                 "historic/ruins": {
                     "name": "Reruntuhan",
-                    "terms": "Reruntuhan"
+                    "terms": "reruntuhan"
                 },
                 "historic/wayside_cross": {
                     "name": "Salib Pinggir Jalan",
-                    "terms": "Salib Pinggir Jalan"
+                    "terms": "salib pinggir jalan"
                 },
                 "historic/wayside_shrine": {
                     "name": "Kuil Pinggir Jalan",
-                    "terms": "Kuil Pinggir Jalan"
+                    "terms": "kuil pinggir jalan"
                 },
                 "junction": {
                     "name": "Persimpangan",
-                    "terms": "Pertigaan, Perempatan"
+                    "terms": "pertigaan,perempatan"
                 },
                 "landuse/basin": {
                     "name": "Cekungan"
                 },
                 "landuse/cemetery": {
                     "name": "Pemakaman",
-                    "terms": "Kuburan, Makam, TPU, Tempat Pemakaman Umum"
+                    "terms": "kuburan,makam,tpu,tempat pemakaman umum"
                 },
                 "landuse/churchyard": {
                     "name": "Halaman Gereja"
                 },
                 "landuse/commercial": {
                     "name": "Daerah Komersial",
-                    "terms": "Area Komersial, Daerah Komersial, Perkantoran"
+                    "terms": "area komersial,daerah komersial,perkantoran"
                 },
                 "landuse/farm": {
                     "name": "Pertanian"
                 },
                 "landuse/farmland": {
                     "name": "Pertanian",
-                    "terms": "Pertanian"
+                    "terms": "pertanian"
                 },
                 "landuse/farmyard": {
                     "name": "Peternakan"
                 },
                 "landuse/grass": {
                     "name": "Rumput",
-                    "terms": "Rerumputan"
+                    "terms": "rerumputan"
                 },
                 "landuse/industrial": {
                     "name": "Kawasan Industri",
-                    "terms": "Kawasan Industri"
+                    "terms": "kawasan industri"
                 },
                 "landuse/landfill": {
                     "name": "Tempat Pembuangan Akhir",
-                    "terms": "TPA, Sampah"
+                    "terms": "tpa,sampah"
                 },
                 "landuse/meadow": {
                     "name": "Padang Rumput"
                 },
                 "landuse/military": {
                     "name": "Daerah Militer",
-                    "terms": "Area Militer, Kawasan Militer"
+                    "terms": "area militer,kawasan militer"
                 },
                 "landuse/orchard": {
                     "name": "Kebun Buah"
                 },
                 "landuse/quarry": {
                     "name": "Pertambangan",
-                    "terms": "Tambang"
+                    "terms": "tambang"
                 },
                 "landuse/residential": {
                     "name": "Daerah Permukiman",
-                    "terms": "Perumahan, Pemukiman"
+                    "terms": "perumahan,pemukiman"
                 },
                 "landuse/retail": {
                     "name": "Daerah Pertokoan",
-                    "terms": "Belanja, Berbelanja, Eceran"
+                    "terms": "belanja,berbelanja,eceran"
                 },
                 "landuse/vineyard": {
                     "name": "Kebun Anggur",
-                    "terms": "Kebun Anggur"
+                    "terms": "kebun anggur"
                 },
                 "leisure/adult_gaming_centre": {
                     "name": "Pusat permainan dewasa"
                 },
                 "leisure/bowling_alley": {
                     "name": "Tempat Boling",
-                    "terms": "Bowling"
+                    "terms": "bowling"
                 },
                 "leisure/common": {
                     "name": "Perintah"
@@ -1676,79 +1675,79 @@
                 },
                 "leisure/garden": {
                     "name": "Kebun",
-                    "terms": "Kebun"
+                    "terms": "kebun"
                 },
                 "leisure/golf_course": {
                     "name": "Lapangan Golf",
-                    "terms": "Lapangan Golf"
+                    "terms": "lapangan golf"
                 },
                 "leisure/ice_rink": {
                     "name": "Arena Seluncur Es",
-                    "terms": "Ice Skating"
+                    "terms": "ice skating"
                 },
                 "leisure/marina": {
                     "name": "Marina",
-                    "terms": "Marina"
+                    "terms": "marina"
                 },
                 "leisure/nature_reserve": {
                     "name": "Cagar Alam",
-                    "terms": "Cagar Alam"
+                    "terms": "cagar alam"
                 },
                 "leisure/park": {
                     "name": "Taman",
-                    "terms": "Kebun"
+                    "terms": "kebun"
                 },
                 "leisure/picnic_table": {
                     "name": "Meja Piknik",
-                    "terms": "Meja Piknik"
+                    "terms": "meja piknik"
                 },
                 "leisure/pitch": {
                     "name": "Lapangan Olahraga",
-                    "terms": "Lapangan Olahraga"
+                    "terms": "lapangan olahraga"
                 },
                 "leisure/pitch/american_football": {
                     "name": "Lapangan Rugby",
-                    "terms": "Lapangan Sepak Bola Amerika"
+                    "terms": "lapangan sepak bola amerika"
                 },
                 "leisure/pitch/basketball": {
                     "name": "Lapangan Basket",
-                    "terms": "Lapangan Basket"
+                    "terms": "lapangan basket"
                 },
                 "leisure/pitch/skateboard": {
                     "name": "Arena Papan Seluncur",
-                    "terms": "Skating, Skateboarding"
+                    "terms": "skating,skateboarding"
                 },
                 "leisure/pitch/soccer": {
                     "name": "Lapangan Bola",
-                    "terms": "Lapangan Sepak Bola"
+                    "terms": "lapangan sepak bola"
                 },
                 "leisure/pitch/tennis": {
                     "name": "Lapangan Tenis",
-                    "terms": "Lapangan Tenis"
+                    "terms": "lapangan tenis"
                 },
                 "leisure/pitch/volleyball": {
                     "name": "Lapangan Voli",
-                    "terms": "Lapangan Voli"
+                    "terms": "lapangan voli"
                 },
                 "leisure/playground": {
                     "name": "Lapangan Bermain",
-                    "terms": "Tempat Bermain"
+                    "terms": "tempat bermain"
                 },
                 "leisure/stadium": {
                     "name": "Stadion",
-                    "terms": "Stadion"
+                    "terms": "stadion"
                 },
                 "leisure/swimming_pool": {
                     "name": "Kolam Renang",
-                    "terms": "Kolam Renang"
+                    "terms": "kolam renang"
                 },
                 "line": {
                     "name": "Garis",
-                    "terms": "Garis"
+                    "terms": "garis"
                 },
                 "man_made/breakwater": {
                     "name": "Pemecah Gelombang",
-                    "terms": "Pemecah Ombak, Tembok Laut"
+                    "terms": "pemecah ombak,tembok laut"
                 },
                 "man_made/flagpole": {
                     "name": "Tiang Bendera"
@@ -1764,7 +1763,7 @@
                 },
                 "man_made/pipeline": {
                     "name": "Jalur Pipa",
-                    "terms": "Pipa Gas"
+                    "terms": "pipa gas"
                 },
                 "man_made/storage_tank": {
                     "name": "Tangki Penyimpanan"
@@ -1777,14 +1776,14 @@
                 },
                 "man_made/wastewater_plant": {
                     "name": "Pabrik Air Limbah",
-                    "terms": "Limbah, Limbah Cair"
+                    "terms": "limbah,limbah cair"
                 },
                 "man_made/water_tower": {
                     "name": "Menara Air"
                 },
                 "man_made/water_well": {
                     "name": "Sumur",
-                    "terms": "Perigi"
+                    "terms": "perigi"
                 },
                 "natural/bay": {
                     "name": "Teluk"
@@ -1800,14 +1799,14 @@
                 },
                 "natural/coastline": {
                     "name": "Garis Pantai",
-                    "terms": "Laut, Batas"
+                    "terms": "laut,batas"
                 },
                 "natural/fell": {
                     "name": "jatuh"
                 },
                 "natural/glacier": {
                     "name": "Gletser",
-                    "terms": "Sungai Es"
+                    "terms": "sungai es"
                 },
                 "natural/grassland": {
                     "name": "Padang Rumput"
@@ -1817,7 +1816,7 @@
                 },
                 "natural/peak": {
                     "name": "Puncak",
-                    "terms": "Gunung"
+                    "terms": "gunung"
                 },
                 "natural/scrub": {
                     "name": "Belukar"
@@ -1830,29 +1829,29 @@
                 },
                 "natural/volcano": {
                     "name": "Gunung Api",
-                    "terms": "Gunung Berapi"
+                    "terms": "gunung berapi"
                 },
                 "natural/water": {
                     "name": "Air"
                 },
                 "natural/water/lake": {
                     "name": "Danau",
-                    "terms": "Situ"
+                    "terms": "situ"
                 },
                 "natural/water/pond": {
                     "name": "Empang",
-                    "terms": "Air"
+                    "terms": "air"
                 },
                 "natural/water/reservoir": {
                     "name": "Waduk",
-                    "terms": "Reservoir, Air, Danau"
+                    "terms": "reservoir,air,danau"
                 },
                 "natural/wetland": {
                     "name": "Lahan Basah"
                 },
                 "office": {
                     "name": "Kantor",
-                    "terms": "Balai"
+                    "terms": "balai"
                 },
                 "office/administrative": {
                     "name": "Kantor Administrasi"
@@ -1904,7 +1903,7 @@
                 },
                 "place/island": {
                     "name": "Pulau",
-                    "terms": "Tanah, Daratan"
+                    "terms": "tanah,daratan"
                 },
                 "place/locality": {
                     "name": "Daerah Sekitar"
@@ -1956,7 +1955,7 @@
                 },
                 "route/ferry": {
                     "name": "Rute Feri",
-                    "terms": "Kapal, Laut"
+                    "terms": "kapal,laut"
                 },
                 "shop": {
                     "name": "Toko"
@@ -1984,7 +1983,7 @@
                 },
                 "shop/bed": {
                     "name": "Toko Selimut/Matras",
-                    "terms": "Tempat Tidur, Sprei, Seprai, Ranjang, Kamar Tidur"
+                    "terms": "tempat tidur,sprei,seprai,ranjang,kamar tidur"
                 },
                 "shop/beverages": {
                     "name": "Toko Minuman"
@@ -1994,7 +1993,7 @@
                 },
                 "shop/bookmaker": {
                     "name": "Juru Taruh",
-                    "terms": "Tukang Taruh, Taruhan, Judi"
+                    "terms": "tukang taruh,taruhan,judi"
                 },
                 "shop/books": {
                     "name": "Toko Buku"
@@ -2046,7 +2045,7 @@
                 },
                 "shop/curtain": {
                     "name": "Toko Gorden",
-                    "terms": "Toko Tirai"
+                    "terms": "toko tirai"
                 },
                 "shop/dairy": {
                     "name": "Toko Susu"
@@ -2056,11 +2055,11 @@
                 },
                 "shop/doityourself": {
                     "name": "Toko Swakriya",
-                    "terms": "Lakukan Sendiri, DIY"
+                    "terms": "lakukan sendiri,diy"
                 },
                 "shop/dry_cleaning": {
                     "name": "Jasa Cuci Kering",
-                    "terms": "Dry Clean"
+                    "terms": "dry clean"
                 },
                 "shop/electronics": {
                     "name": "Toko Elektronik"
@@ -2085,11 +2084,11 @@
                 },
                 "shop/garden_centre": {
                     "name": "Toko Tanaman",
-                    "terms": "Bunga, Tanaman Hias, Kebun, Taman"
+                    "terms": "bunga,tanaman hias,kebun,taman"
                 },
                 "shop/gift": {
                     "name": "Toko Hadiah",
-                    "terms": "Suvenir, Cenderamata, Cinderamata"
+                    "terms": "suvenir,cenderamata,cinderamata"
                 },
                 "shop/greengrocer": {
                     "name": "Toko Buah dan Sayuran"
@@ -2102,21 +2101,21 @@
                 },
                 "shop/hearing_aids": {
                     "name": "Toko Alat Bantu Dengar",
-                    "terms": "Bantuan Pendengaran"
+                    "terms": "bantuan pendengaran"
                 },
                 "shop/hifi": {
                     "name": "Toko Hifi"
                 },
                 "shop/interior_decoration": {
                     "name": "Toko Dekorasi Interior",
-                    "terms": "Hiasan, Rumah"
+                    "terms": "hiasan,rumah"
                 },
                 "shop/kitchen": {
                     "name": "Toko Desain Interior Dapur"
                 },
                 "shop/laundry": {
                     "name": "Penatu",
-                    "terms": "Binatu, Laundry, Cuci Baju"
+                    "terms": "binatu,laundry,cuci baju"
                 },
                 "shop/leather": {
                     "name": "Toko Kulit"
@@ -2138,11 +2137,11 @@
                 },
                 "shop/mobile_phone": {
                     "name": "Toko Handphone",
-                    "terms": "HP, Smartphone, Ponsel"
+                    "terms": "hp,smartphone,ponsel"
                 },
                 "shop/money_lender": {
                     "name": "Peminjaman Uang",
-                    "terms": "Lintah Darat"
+                    "terms": "lintah darat"
                 },
                 "shop/motorcycle": {
                     "name": "Dealer Motor"
@@ -2158,7 +2157,7 @@
                 },
                 "shop/optician": {
                     "name": "Optik",
-                    "terms": "Mata"
+                    "terms": "mata"
                 },
                 "shop/outdoor": {
                     "name": "Toko Perlengkapan Outdoor"
@@ -2192,7 +2191,7 @@
                 },
                 "shop/second_hand": {
                     "name": "Jual Titip/Pasar Loak",
-                    "terms": "Konsinyasi/Toko Barang Bekas"
+                    "terms": "konsinyasi/toko barang bekas"
                 },
                 "shop/shoes": {
                     "name": "Toko Sepatu"
@@ -2205,7 +2204,7 @@
                 },
                 "shop/supermarket": {
                     "name": "Supermarket",
-                    "terms": "Pasar Swalayan"
+                    "terms": "pasar swalayan"
                 },
                 "shop/tailor": {
                     "name": "Tukang Jahit"
@@ -2221,7 +2220,7 @@
                 },
                 "shop/tobacco": {
                     "name": "Toko Tembakau",
-                    "terms": "Rokok"
+                    "terms": "rokok"
                 },
                 "shop/toys": {
                     "name": "Toko Mainan"
@@ -2240,11 +2239,11 @@
                 },
                 "shop/video": {
                     "name": "Toko Video",
-                    "terms": "CD, DVD, Sewa"
+                    "terms": "cd,dvd,sewa"
                 },
                 "shop/video_games": {
                     "name": "Toko Permainan Video",
-                    "terms": "Video Game"
+                    "terms": "video game"
                 },
                 "shop/water_sports": {
                     "name": "Toko Renang/Olahraga Air"
@@ -2254,18 +2253,18 @@
                 },
                 "shop/window_blind": {
                     "name": "Toko Kerai",
-                    "terms": "Jendela, Krey, Bidai, Tirai"
+                    "terms": "jendela,krey,bidai,tirai"
                 },
                 "shop/wine": {
                     "name": "Toko Anggur",
-                    "terms": "Alkohol, Minum, Minuman Beralkohol"
+                    "terms": "alkohol,minum,minuman beralkohol"
                 },
                 "tourism/artwork": {
                     "name": "Karya Seni"
                 },
                 "tourism/attraction": {
                     "name": "Objek Wisata",
-                    "terms": "Atraksi Wisata"
+                    "terms": "atraksi wisata"
                 },
                 "tourism/guest_house": {
                     "name": "Rumah Tamu"
@@ -2284,7 +2283,7 @@
                 },
                 "tourism/museum": {
                     "name": "Museum",
-                    "terms": "Gedung Bersejarah, Sejarah, Prasejarah, Kuno"
+                    "terms": "gedung bersejarah,sejarah,prasejarah,kuno"
                 },
                 "tourism/picnic_site": {
                     "name": "Tempat Piknik"
@@ -2303,7 +2302,7 @@
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Pita Kejut",
-                    "terms": "Marka Kejut, Pita Penggaduh, Garis Kejut, Rumble Strip"
+                    "terms": "marka kejut,pita penggaduh,garis kejut,rumble strip"
                 },
                 "type/boundary": {
                     "name": "Batas"
@@ -2379,7 +2378,7 @@
                 },
                 "waterway/river": {
                     "name": "Sungai",
-                    "terms": "Kali"
+                    "terms": "kali"
                 },
                 "waterway/riverbank": {
                     "name": "Tepi Sungai"
@@ -2392,7 +2391,7 @@
                 },
                 "waterway/weir": {
                     "name": "Tanggul",
-                    "terms": "Sungai, Bendung"
+                    "terms": "sungai,bendung"
                 }
             }
         }

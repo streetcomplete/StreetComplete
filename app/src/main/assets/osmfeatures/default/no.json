@@ -243,7 +243,7 @@
                 },
                 "bar": {
                     "label": "Bar",
-                    "terms": "Utested, pub, nattklubb"
+                    "terms": "utested,pub,nattklubb"
                 },
                 "barrier": {
                     "label": "Type"
@@ -265,14 +265,14 @@
                 },
                 "bench": {
                     "label": "Benk",
-                    "terms": "Sete"
+                    "terms": "sete"
                 },
                 "bicycle_parking": {
                     "label": "Type"
                 },
                 "bin": {
                     "label": "Søppelkasse",
-                    "terms": "Søppelkasse, søppelbøtte, bosspann, søppelspann, papirkurv"
+                    "terms": "søppelkasse,søppelbøtte,bosspann,søppelspann,papirkurv"
                 },
                 "blind": {
                     "label": "Blind personstilgang",
@@ -660,7 +660,7 @@
                         "no": "Ikke tillatt",
                         "yes": "Tillatt"
                     },
-                    "terms": "Hunder, bisker, bikkjer"
+                    "terms": "hunder,bisker,bikkjer"
                 },
                 "door": {
                     "label": "Dør"
@@ -700,7 +700,7 @@
                 "email": {
                     "label": "E-post",
                     "placeholder": "eksempel@eksempel.no",
-                    "terms": "E-post, epost, e-mail, email, elektronisk post"
+                    "terms": "e-post,epost,e-mail,email,elektronisk post"
                 },
                 "embankment": {
                     "label": "Type",
@@ -739,7 +739,7 @@
                 },
                 "fee": {
                     "label": "Avgift",
-                    "terms": "Avgift, kostnad, pris, gebyr"
+                    "terms": "avgift,kostnad,pris,gebyr"
                 },
                 "fence_type": {
                     "label": "Type"
@@ -973,7 +973,7 @@
                 },
                 "inscription": {
                     "label": "Inskripsjon",
-                    "terms": "Inskripsjon, innskrift, påskrift, epigraf"
+                    "terms": "inskripsjon,innskrift,påskrift,epigraf"
                 },
                 "intermittent": {
                     "label": "Intermittent"
@@ -1148,8 +1148,7 @@
                     "label": "Maksimum Alder"
                 },
                 "maxheight": {
-                    "label": "Maks høyde",
-                    "placeholder": "4, 4.5, 5, 14'0\", 14'6\", 15'0\""
+                    "label": "Maks høyde"
                 },
                 "maxspeed": {
                     "label": "Fartsgrense",
@@ -1485,7 +1484,7 @@
                 },
                 "product": {
                     "label": "Produkter",
-                    "terms": "Varer"
+                    "terms": "varer"
                 },
                 "public_bookcase/type": {
                     "label": "Type"
@@ -1993,7 +1992,7 @@
             "presets": {
                 "address": {
                     "name": "Adresse",
-                    "terms": "adresse, husnummer, adresser, gate, gateadresse"
+                    "terms": "adresse,husnummer,adresser,gate,gateadresse"
                 },
                 "advertising/billboard": {
                     "name": "Plakattavle"
@@ -3052,7 +3051,7 @@
                     "name": "Defibrillator"
                 },
                 "emergency/designated": {
-                    "name": "Dedikert Nødtilgang "
+                    "name": "Dedikert Nødtilgang"
                 },
                 "emergency/fire_alarm": {
                     "name": "Brannalarm Telefonboks"
@@ -3996,9 +3995,6 @@
                 "place/village": {
                     "name": "Tettsted"
                 },
-                "playground/balance_beam": {
-                    "name": "Leke Balansebjelke"
-                },
                 "playground/seesaw": {
                     "name": "Vippehuske"
                 },
@@ -4033,7 +4029,7 @@
                     "name": "Høyspentlinje"
                 },
                 "power/minor_line": {
-                    "terms": "stolpe, ledning, strøm, strømlinje, linje, elektrisitet"
+                    "terms": "stolpe,ledning,strøm,strømlinje,linje,elektrisitet"
                 },
                 "power/pole": {
                     "name": "Høyspentmast"

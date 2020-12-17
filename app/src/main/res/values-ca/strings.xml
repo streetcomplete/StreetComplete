@@ -1800,6 +1800,7 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"En el dibuix, la via segueix la direcció que té en el mapa en el punt marcat."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Què es pot deixar aquí per a reciclar?"</string>
@@ -1928,20 +1929,39 @@ Per example 1,3 o 2-6."</string>
     <string name="letsgo">"Som-hi!"</string>
     <string name="tutorial_welcome_to_osm">"Us donem la benvinguda a l'OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"el mapa mundial wiki"</string>
+    <string name="tutorial_intro">"StreetComplete fa que sigui fàcil contribuir a OpenStreetMap. Cerca automàticament detalls que manquen a prop teu: carrils bici, números de carrer, hores d'obertura i molt més."</string>
+    <string name="tutorial_solving_quests">"Un cop els ha trobat, els detalls que manquen apareixen en el teu mapa com a proves.
+
+Les pots resoldre tot seguit i més tard iniciar la sessió per a publicar els canvis."</string>
+    <string name="tutorial_stay_safe">"Quan no n'estiguis segur, sempre pots respondre \"No ho sé\" i escriure una nota.
+
+Finalment, ves amb compte: para atenció al que t'envolta i no entris en propietats privades."</string>
+    <string name="tutorial_happy_mapping">"Bon mapeig!"</string>
+    <string name="achievements_empty">"Encara no tens cap assoliment"</string>
     <string name="links_empty">"Encara no teniu cap enllaç"</string>
     <string name="quests_empty">"Encara no heu publicat cap resposta"</string>
+    <string name="unsynced_quests_description">"i %d de canvis no publicats."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Tens %d canvis no publicats. Has d'iniciar la sessió per a pujar-los."</string>
+    <string name="user_quests_title">"Proves resoltes"</string>
+    <string name="user_achievements_title">"Assoliments"</string>
+    <string name="user_links_title">"Col·lecció d'enllaços"</string>
 
     <!-- Fuzzy -->
     <string name="user_profile_title">"Perfil"</string>
 
     <!-- Fuzzy -->
     <string name="user_statistics_quest_wiki_link">"Documentació"</string>
+    <string name="achievements_unlocked_link">"Enllaç desbloquejat:"</string>
+    <string name="achievements_unlocked_links">"Enllaços desbloquejats:"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_intro_title">"Introducció"</string>
+    <string name="link_category_intro_description">"Aprenem més coses sobre OSM i la seva comunitat"</string>
+    <string name="link_category_editors_description">"Editors i altres maneres de contribuir a OpenStreetMap"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_maps_title">"Mapes"</string>
+    <string name="link_category_maps_description">"Mapes basats en OpenStreetMap"</string>
     <string name="link_cyclosm_description">"Un mapa per a ciclistes"</string>
     <string name="link_wheelmap_description">"Un mapa per a trobar llocs accessibles amb cadira de rodes"</string>
     <string name="link_osm_buildings_description">"Un mapa que mostra els edificis en 3D"</string>

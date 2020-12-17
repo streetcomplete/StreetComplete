@@ -807,7 +807,7 @@
                 },
                 "fire_hydrant/diameter": {
                     "label": "直径 (mm, in 或字母)",
-                    "terms": "直径 (mm, in 或字母)"
+                    "terms": "直径 (mm,in 或字母)"
                 },
                 "fire_hydrant/pressure": {
                     "label": "水压 (bar)",
@@ -907,7 +907,7 @@
                 },
                 "gnis/feature_id": {
                     "label": "GNIS 要素 ID",
-                    "terms": "GNIS"
+                    "terms": "gnis"
                 },
                 "government": {
                     "label": "类型"
@@ -1238,7 +1238,7 @@
                 },
                 "mapillary": {
                     "label": "Mapillary 图像 ID",
-                    "terms": "Mapillary 图像 ID,Mapillary"
+                    "terms": "mapillary 图像 id,mapillary"
                 },
                 "marker": {
                     "label": "类型"
@@ -1253,7 +1253,6 @@
                 },
                 "maxheight": {
                     "label": "限制高度",
-                    "placeholder": "4, 4.5, 5, 14'0\", 14'6\", 15'0\"",
                     "terms": "限高,最大高度,高度限制"
                 },
                 "maxspeed": {
@@ -1419,13 +1418,13 @@
                 },
                 "opening_hours/covid19": {
                     "label": "COVID-19 流行期间营业时间",
-                    "terms": "冠状病毒,新冠,新冠肺炎,新型冠状病毒,营业时间,隔离,隔离时间,COVID-19,SARS‑CoV‑2,2019冠状病毒病"
+                    "terms": "冠状病毒,新冠,新冠肺炎,新型冠状病毒,营业时间,隔离,隔离时间,covid-19,sars‑cov‑2,2019冠状病毒病"
                 },
                 "operator": {
                     "label": "经营者"
                 },
                 "operator/type": {
-                    "label": "操作人员类型"
+                    "label": "经营者类型"
                 },
                 "organic": {
                     "label": "有机产品",
@@ -2477,7 +2476,7 @@
                 },
                 "amenity/atm": {
                     "name": "ATM机",
-                    "terms": "ATM,提款机,自动提款机,自动取款机"
+                    "terms": "atm,提款机,自动提款机,自动取款机"
                 },
                 "amenity/bank": {
                     "name": "银行",
@@ -2640,7 +2639,7 @@
                 },
                 "amenity/drinking_water": {
                     "name": "饮水处",
-                    "terms": "饮水处,饮水处,饮水"
+                    "terms": "饮水处,饮水"
                 },
                 "amenity/driving_school": {
                     "name": "驾校",
@@ -2655,11 +2654,11 @@
                 },
                 "amenity/fast_food/burger": {
                     "name": "汉堡快餐",
-                    "terms": "汉堡,汉堡店,快餐,快餐店,餐厅,早餐,午餐,午饭,中饭,食物,晚餐,晚饭,食物,美食,得来速"
+                    "terms": "汉堡,汉堡店,快餐,快餐店,餐厅,早餐,午餐,午饭,中饭,食物,晚餐,晚饭,美食,得来速"
                 },
                 "amenity/fast_food/chicken": {
                     "name": "鸡肉快餐",
-                    "terms": "鸡肉,鸡,炸鸡,炸鸡店,快餐,快餐店,餐厅,早餐,早饭,午餐,午饭,中饭,食物,晚餐,晚饭,食物,美食,得来速"
+                    "terms": "鸡肉,鸡,炸鸡,炸鸡店,快餐,快餐店,餐厅,早餐,早饭,午餐,午饭,中饭,食物,晚餐,晚饭,美食,得来速"
                 },
                 "amenity/fast_food/donut": {
                     "name": "甜甜圈快餐",
@@ -2667,7 +2666,7 @@
                 },
                 "amenity/fast_food/fish_and_chips": {
                     "name": "炸鱼薯条快餐",
-                    "terms": "鱼,炸鱼,薯条,马铃薯,土豆,快餐,快餐店,餐厅,早餐,早饭,午餐,午饭,中饭,食物,晚餐,晚饭,食物,美食"
+                    "terms": "鱼,炸鱼,薯条,马铃薯,土豆,快餐,快餐店,餐厅,早餐,早饭,午餐,午饭,中饭,食物,晚餐,晚饭,美食"
                 },
                 "amenity/fast_food/hot_dog": {
                     "name": "热狗快餐",
@@ -2678,11 +2677,11 @@
                 },
                 "amenity/fast_food/mexican": {
                     "name": "墨西哥快餐",
-                    "terms": "墨西哥,墨式,快餐,快餐店,塔克,塔可,玉米卷,玉米薄饼,餐厅,早餐,早饭,午餐,午饭,中饭,食物,晚餐,晚饭,食物,美食,得来速"
+                    "terms": "墨西哥,墨式,快餐,快餐店,塔克,塔可,玉米卷,玉米薄饼,餐厅,早餐,早饭,午餐,午饭,中饭,食物,晚餐,晚饭,美食,得来速"
                 },
                 "amenity/fast_food/pizza": {
                     "name": "披萨快餐",
-                    "terms": "披萨,批萨,匹萨,比萨,薄饼,快餐,快餐店,披萨店,餐厅,午餐,午饭,中饭,食物,晚餐,晚饭,食物,美食,得来速"
+                    "terms": "披萨,批萨,匹萨,比萨,薄饼,快餐,快餐店,披萨店,餐厅,午餐,午饭,中饭,食物,晚餐,晚饭,美食,得来速"
                 },
                 "amenity/fast_food/sandwich": {
                     "name": "三明治快餐",
@@ -2924,7 +2923,7 @@
                 },
                 "amenity/restaurant": {
                     "name": "餐馆",
-                    "terms": "餐馆,餐厅,饭店,酒楼,酒家,茶楼,美食,饭馆,食堂,食物,吃,美食,食肆,菜馆"
+                    "terms": "餐馆,餐厅,饭店,酒楼,酒家,茶楼,美食,饭馆,食堂,食物,吃,食肆,菜馆"
                 },
                 "amenity/restaurant/american": {
                     "name": "美式餐馆",
@@ -3082,7 +3081,7 @@
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "冲水式厕所",
-                    "terms": "厕所,公厕,洗手间,公共卫生间,马桶,WC"
+                    "terms": "厕所,公厕,洗手间,公共卫生间,马桶,wc"
                 },
                 "amenity/toilets/disposal/pitlatrine": {
                     "name": "旱厕",
@@ -3137,7 +3136,7 @@
                 },
                 "amenity/vending_machine/electronics": {
                     "name": "电器售货机",
-                    "terms": "电器,电子,元件,器件,充电器,电线,充电线,插头,耳机,手机,平板,插头,插座,接口,售货,售卖,自助,自动,付货,零售,贩卖,售货机,贩卖机"
+                    "terms": "电器,电子,元件,器件,充电器,电线,充电线,插头,耳机,手机,平板,插座,接口,售货,售卖,自助,自动,付货,零售,贩卖,售货机,贩卖机"
                 },
                 "amenity/vending_machine/elongated_coin": {
                     "name": "纪念币压制机",
@@ -3216,6 +3215,10 @@
                     "name": "动物饮水地",
                     "terms": "动物,饮水,水,水源,渴,野生,生命,资源,农业,牧,农"
                 },
+                "amenity/weighbridge": {
+                    "name": "汽车衡",
+                    "terms": "汽车衡,地磅,磅秤,汽车,货车"
+                },
                 "area": {
                     "name": "区域",
                     "terms": "区域,面"
@@ -3280,6 +3283,9 @@
                 "barrier/bollard": {
                     "name": "护柱",
                     "terms": "护柱"
+                },
+                "barrier/bollard_line": {
+                    "name": "系船柱列"
                 },
                 "barrier/border_control": {
                     "name": "边境检查站",
@@ -3575,7 +3581,7 @@
                 },
                 "building_part": {
                     "name": "建筑部分",
-                    "terms": "屋顶,楼顶,三维建筑,3D建筑"
+                    "terms": "屋顶,楼顶,三维建筑,3d建筑"
                 },
                 "building_point": {
                     "name": "建筑物"
@@ -3662,13 +3668,16 @@
                     "name": "玻璃工人",
                     "terms": "玻璃工人,装玻璃的人"
                 },
+                "craft/hvac": {
+                    "name": "高压交流电工作场所"
+                },
                 "craft/insulator": {
                     "name": "楼层隔热间",
                     "terms": "楼层隔热间,绝缘,隔热"
                 },
                 "craft/key_cutter": {
                     "name": "配匙工",
-                    "terms": "配匙工,切割,钥匙,配匙,钥匙,锁,锁匠,门锁"
+                    "terms": "配匙工,切割,钥匙,配匙,锁,锁匠,门锁"
                 },
                 "craft/locksmith": {
                     "name": "锁匠"
@@ -3781,7 +3790,7 @@
                 },
                 "emergency/defibrillator": {
                     "name": "除颤器",
-                    "terms": "除颤器,心脏,电复律机,体外,急救,抢救,除颤仪,心电图,心律,心率,电击,窦性,AED"
+                    "terms": "除颤器,心脏,电复律机,体外,急救,抢救,除颤仪,心电图,心律,心率,电击,窦性,aed"
                 },
                 "emergency/designated": {
                     "name": "紧急设施：指定"
@@ -3915,11 +3924,11 @@
                 },
                 "healthcare/occupational_therapist": {
                     "name": "作业治疗师",
-                    "terms": "职能,职业,作业,治疗,疗法,诊所,医院,医学,医疗,疗法,卫生,康复,自理,功能障碍,医生"
+                    "terms": "职能,职业,作业,治疗,疗法,诊所,医院,医学,医疗,卫生,康复,自理,功能障碍,医生"
                 },
                 "healthcare/optometrist": {
                     "name": "验光师",
-                    "terms": "验光,视光,光学,视力,视觉,晶体,测定,瞳,眼睛,眼镜,眼科,镜片,眼科,眼,近视,远视,散光,老视,老花,屈光,矫正,诊所,医院,医学,医疗,疗法,卫生,医生,外科"
+                    "terms": "验光,视光,光学,视力,视觉,晶体,测定,瞳,眼睛,眼镜,眼科,镜片,眼,近视,远视,散光,老视,老花,屈光,矫正,诊所,医院,医学,医疗,疗法,卫生,医生,外科"
                 },
                 "healthcare/physiotherapist": {
                     "name": "理疗师",
@@ -4210,11 +4219,11 @@
                 },
                 "highway/turning_loop": {
                     "name": "回车场 (O形)",
-                    "terms": "回车场 (O形),回车场,路末环岛"
+                    "terms": "回车场 (o形),回车场,路末环岛"
                 },
                 "highway/unclassified": {
                     "name": "小型/未分级道路",
-                    "terms": "道路,道路,路,公路,街道,马路,小型道路,未分级道路"
+                    "terms": "道路,路,公路,街道,马路,小型道路,未分级道路"
                 },
                 "historic": {
                     "name": "历史地点",
@@ -4231,6 +4240,10 @@
                 "historic/castle": {
                     "name": "城堡",
                     "terms": "城堡"
+                },
+                "historic/castle/palace": {
+                    "name": "宫殿",
+                    "terms": "宫,殿,故宫,城,皇室居所,皇家"
                 },
                 "historic/castle/stately": {
                     "name": "城堡"
@@ -4561,7 +4574,7 @@
                 },
                 "leisure/picnic_table": {
                     "name": "野餐桌",
-                    "terms": "Picnic Table"
+                    "terms": "picnic table"
                 },
                 "leisure/picnic_table/chess": {
                     "name": "棋台"
@@ -4662,9 +4675,13 @@
                     "name": "游泳设施",
                     "terms": "游泳设施,游泳,潜水,水"
                 },
+                "leisure/sports_hall": {
+                    "name": "体育馆",
+                    "terms": "体育馆,运动场"
+                },
                 "leisure/stadium": {
                     "name": "体育场",
-                    "terms": "体育,体育场"
+                    "terms": "体育,体育场,体育中心,奥体中心"
                 },
                 "leisure/swimming_area": {
                     "name": "自然游泳区域",
@@ -4752,6 +4769,30 @@
                     "name": "灯塔",
                     "terms": "灯塔"
                 },
+                "man_made/manhole": {
+                    "name": "窨井",
+                    "terms": "窨井,窨井盖,下水道,井盖,检查井,沙井"
+                },
+                "man_made/manhole/gas": {
+                    "name": "燃气设施窨井",
+                    "terms": "燃气,井盖,天然气,煤气,窨井,检查井,沙井"
+                },
+                "man_made/manhole/power": {
+                    "name": "电力设施窨井",
+                    "terms": "电,井盖,窨井,检查井,沙井"
+                },
+                "man_made/manhole/sewer": {
+                    "name": "污水窨井",
+                    "terms": "下水道,污水,排水,窨井,检查井,沙井,井盖"
+                },
+                "man_made/manhole/telecom": {
+                    "name": "电信设施窨井",
+                    "terms": "电信,通信,光缆,宽带,电话线,检查井,沙井,井盖"
+                },
+                "man_made/manhole/water": {
+                    "name": "供水窨井",
+                    "terms": "供水,自来水,给水,水,水务,检查井,沙井,井盖"
+                },
                 "man_made/mast": {
                     "name": "通讯天线杆",
                     "terms": "通讯天线杆,无线电杆,电线杆,杆"
@@ -4806,6 +4847,10 @@
                 "man_made/tower": {
                     "name": "塔",
                     "terms": "塔"
+                },
+                "man_made/tower/bell_tower": {
+                    "name": "钟楼",
+                    "terms": "钟楼,钟"
                 },
                 "man_made/tower/communication": {
                     "name": "通信塔"
@@ -4985,6 +5030,10 @@
                     "name": "湖泊",
                     "terms": "湖泊"
                 },
+                "natural/water/moat": {
+                    "name": "护城河",
+                    "terms": "护城河,城池"
+                },
                 "natural/water/pond": {
                     "name": "池塘",
                     "terms": "池塘"
@@ -5023,7 +5072,7 @@
                 },
                 "office/accountant": {
                     "name": "会计师事务所",
-                    "terms": "会计,事务所,会计师,审计,会计,咨询,税务,账"
+                    "terms": "会计,事务所,会计师,审计,咨询,税务,账"
                 },
                 "office/administrative": {
                     "name": "行政楼"
@@ -5172,7 +5221,7 @@
                 },
                 "office/therapist": {
                     "name": "治疗师工作室",
-                    "terms": "理疗,医生,中医,推拿,整骨,医疗,治疗,医疗,医师,护士,医护,办公室,技师,医院"
+                    "terms": "理疗,医生,中医,推拿,整骨,医疗,治疗,医师,护士,医护,办公室,技师,医院"
                 },
                 "office/travel_agent": {
                     "name": "旅行社"
@@ -5238,18 +5287,6 @@
                     "name": "村庄",
                     "terms": "村庄"
                 },
-                "playground/balance_beam": {
-                    "name": "跷跷板",
-                    "terms": "平衡木,独木桥,木桩,勇敢者道路,儿童,小孩,游乐,游乐设施,游乐园,游乐场,乐园,儿童乐园"
-                },
-                "playground/basket_spinner": {
-                    "name": "网兜旋转器 (儿童游乐)",
-                    "terms": "网兜,篮网,旋转,儿童,小孩,游乐,游乐设施,游乐园,游乐场,乐园,儿童乐园"
-                },
-                "playground/basket_swing": {
-                    "name": "网兜秋千 (儿童游乐)",
-                    "terms": "网兜,篮网,秋千,儿童,小孩,游乐,游乐设施,游乐园,游乐场,乐园,儿童乐园"
-                },
                 "playground/cushion": {
                     "name": "弹跳垫",
                     "terms": "气垫,弹簧垫,弹簧,弹力,弹性,垫子,弹跳,蹦跳,跳,充气,充气城堡"
@@ -5257,10 +5294,6 @@
                 "playground/horizontal_bar": {
                     "name": "平衡木",
                     "terms": "单杠,高低杠,杠子,横杠,铁棒,竞技,运动,体操,操场,回环,转体,摆荡,儿童,小孩,游乐,游乐设施,游乐园,游乐场,乐园,儿童乐园"
-                },
-                "playground/rocker": {
-                    "name": "弹簧木马 (儿童游乐)",
-                    "terms": "弹簧,弹簧木马,弹簧牛,儿童,小孩,游乐,游乐设施,游乐园,游乐场,乐园,儿童乐园"
                 },
                 "playground/roundabout": {
                     "name": "旋转平台 (儿童游乐)",
@@ -5321,7 +5354,7 @@
                 },
                 "power/minor_line": {
                     "name": "高压输电线",
-                    "terms": "输电线,输电,配电,低电压,中电压,低压,低压线,低压,高压线,高压电线,架空,电线,电力,电缆,缆线,线缆,发电,导线,电"
+                    "terms": "输电线,输电,配电,低电压,中电压,低压,低压线,高压线,高压电线,架空,电线,电力,电缆,缆线,线缆,发电,导线,电"
                 },
                 "power/plant": {
                     "name": "发电厂",
@@ -5626,6 +5659,10 @@
                 "railway/tram_stop": {
                     "name": "有轨电车停车处"
                 },
+                "railway/yard": {
+                    "name": "铁路货场",
+                    "terms": "货运站,货运火车站,铁路,货场,铁路货场"
+                },
                 "relation": {
                     "name": "关系",
                     "terms": "关系"
@@ -5639,7 +5676,7 @@
                 },
                 "shop": {
                     "name": "商店",
-                    "terms": "商店,超市,便利店,汽车,汽修,百货,商场,服装,面包,报刊,报纸,美发,理发,家具,硬件,电脑,花,电器,肉,酒,鞋,轮胎,自行车,单车,4S"
+                    "terms": "商店,超市,便利店,汽车,汽修,百货,商场,服装,面包,报刊,报纸,美发,理发,家具,硬件,电脑,花,电器,肉,酒,鞋,轮胎,自行车,单车,4s"
                 },
                 "shop/agrarian": {
                     "name": "农场供应店"
@@ -5666,7 +5703,7 @@
                 },
                 "shop/baby_goods": {
                     "name": "婴儿用品店",
-                    "terms": "母婴用品店, 婴幼儿用品店"
+                    "terms": "母婴用品店,婴幼儿用品店"
                 },
                 "shop/bag": {
                     "name": "箱包店",
@@ -5763,7 +5800,7 @@
                 },
                 "shop/clothes": {
                     "name": "服装店",
-                    "terms": "服装店,时装,衣服,衬衫,连衣裙,时装,裤子,裙子"
+                    "terms": "服装店,时装,衣服,衬衫,连衣裙,裤子,裙子"
                 },
                 "shop/clothes/second_hand": {
                     "name": "二手服装店"
@@ -5816,7 +5853,7 @@
                 },
                 "shop/doityourself": {
                     "name": "DIY店",
-                    "terms": "DIY商店,手工店"
+                    "terms": "diy商店,手工店"
                 },
                 "shop/dry_cleaning": {
                     "name": "干洗店",
@@ -6152,7 +6189,7 @@
                 },
                 "shop/watches": {
                     "name": "手表店",
-                    "terms": "手表店,钟表店,Watches Shop"
+                    "terms": "手表店,钟表店,watches shop"
                 },
                 "shop/water": {
                     "name": "饮水店"
