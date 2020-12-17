@@ -9,7 +9,7 @@ class AddPitchSurfaceForm : AImageListQuestAnswerFragment<String, SurfaceAnswer>
     override val items: List<Item<String>> get() =
         listOf(Surface.GRASS, Surface.ASPHALT, Surface.SAND, Surface.CONCRETE,
             Surface.CLAY, Surface.ARTIFICIAL_TURF, Surface.TARTAN, Surface.DIRT).toItems() +
-        Item("paved", R.drawable.path_surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
+        Item("paved", R.drawable.surface_paved_area, R.string.quest_surface_value_paved, null, listOf()) +
         Item("unpaved", R.drawable.path_surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf()) +
         Item("ground", R.drawable.surface_ground, R.string.quest_surface_value_ground, null, listOf())
 
