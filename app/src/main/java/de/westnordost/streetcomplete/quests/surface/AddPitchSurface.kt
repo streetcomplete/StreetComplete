@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
 
 class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
-        override val elementFilter = """
+    override val elementFilter = """
         ways with leisure=pitch
         and sport ~ soccer|tennis|basketball|equestrian|athletics|volleyball|skateboard|bmx|american_football|rugby_union
         and (access !~ private|no)
@@ -22,28 +22,28 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
         )
     """
 
-        override val commitMessage = "Add pitch surfaces"
-        override val wikiLink = "Key:surface"
-        override val icon = R.drawable.ic_quest_pitch_surface
-        override val isSplitWayEnabled = true
+    override val commitMessage = "Add pitch surfaces"
+    override val wikiLink = "Key:surface"
+    override val icon = R.drawable.ic_quest_pitch_surface
+    override val isSplitWayEnabled = true
 
-        override fun getTitle(tags: Map<String, String>) = R.string.quest_pitchSurface_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_pitchSurface_title
 
 
 
     override fun createForm() = AddPitchSurfaceForm()
 
-        override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
-            when(answer) {
-                is SpecificSurfaceAnswer -> {
-                    changes.updateWithCheckDate("surface", answer.value)
-                    changes.deleteIfExists("surface:note")
-                }
-                is GenericSurfaceAnswer -> {
-                    changes.updateWithCheckDate("surface", answer.value)
-                    changes.addOrModify("surface:note", answer.note)
-                }
+    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is SpecificSurfaceAnswer -> {
+                changes.updateWithCheckDate("surface", answer.value)
+                changes.deleteIfExists("surface:note")
             }
-            changes.deleteIfExists("source:surface")
+            is GenericSurfaceAnswer -> {
+                changes.updateWithCheckDate("surface", answer.value)
+                changes.addOrModify("surface:note", answer.note)
+            }
         }
+        changes.deleteIfExists("source:surface")
+    }
 }
