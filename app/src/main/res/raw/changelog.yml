@@ -1,3 +1,8 @@
+v28.0-beta2: |
+  <ul>
+  <li>Ask for roof shape even if roof levels is 0 - but only in countries where flat roofs are not the norm (#1929)</li>
+  </ul>
+
 v28.0-beta1: |
   <p>This update is devoted to checking whether things still exist the way they are mapped since
   keeping data up-to-date is at least as important as contributing new data.</p>
@@ -9,7 +14,7 @@ v28.0-beta1: |
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Added "doesn't exist" answer option to many quests. If it was a shop of some kind, you can
-      directly specify what is there now.</li>
+      directly specify what is there now. (#1673)</li>
   <li>Tracktypes: Better wording and pictures (#2294)</li>
   <li>Parking type: Added lane and off-street parking (#2346)</li>
   </ul>

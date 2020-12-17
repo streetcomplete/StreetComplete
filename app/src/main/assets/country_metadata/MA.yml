@@ -8,3 +8,4 @@ officialLanguages: [ar, ber]
 orchardProduces: [tomato, olive, orange, apple, grape, banana, chilli_pepper, sweet_pepper, plum, strawberry, date, peach,
    almond, fig, apricot, avocado]
 popularReligions: [muslim]
+roofsAreUsuallyFlat: true

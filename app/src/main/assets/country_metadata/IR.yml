@@ -21,3 +21,4 @@ officialLanguages: [fa]
 orchardProduces: [tomato, apple, grape, orange, date, peach, pistachio, lemon, lime, walnut, kiwi, plum, apricot, cherry,
    banana, pear]
 popularReligions: [muslim, bahai]
+roofsAreUsuallyFlat: true

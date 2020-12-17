@@ -5,3 +5,4 @@ officialLanguages: [fr, mos, dyu, ff]
 orchardProduces: [cashew_nut, guava, mango, mangosteen, tomato, chilli_pepper, sweet_pepper, almond, orange, lemon, lime,
    grapefruit]
 popularReligions: [muslim]
+roofsAreUsuallyFlat: true

@@ -38,6 +38,9 @@ public class CountryInfo implements Serializable, Cloneable
 	Boolean isCenterLeftTurnLaneKnown;
 	String centerLine;
 	String shoulderLine;
+	Boolean roofsAreUsuallyFlat;
+
+	public Boolean isRoofsAreUsuallyFlat() { return roofsAreUsuallyFlat; }
 
 	public String getCenterLine() { return centerLine; }
 	public String getShoulderLine() { return shoulderLine; }

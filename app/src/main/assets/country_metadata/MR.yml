@@ -3,3 +3,4 @@ mobileCountryCode: 609
 officialLanguages: [ar, fr, ff, snk, wo]
 orchardProduces: [date]
 popularReligions: [muslim]
+roofsAreUsuallyFlat: true

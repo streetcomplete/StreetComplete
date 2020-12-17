@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests
 import dagger.Module
 import dagger.Provides
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
@@ -105,8 +106,10 @@ import javax.inject.Singleton
     @Provides @Singleton fun questTypeRegistry(
         osmNoteQuestType: OsmNoteQuestType,
         roadNameSuggestionsDao: RoadNameSuggestionsDao,
-        trafficFlowSegmentsApi: TrafficFlowSegmentsApi, trafficFlowDao: WayTrafficFlowDao,
-        featureDictionaryFuture: FutureTask<FeatureDictionary>
+        trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
+        trafficFlowDao: WayTrafficFlowDao,
+        featureDictionaryFuture: FutureTask<FeatureDictionary>,
+        countryInfos: CountryInfos
     ): QuestTypeRegistry = QuestTypeRegistry(listOf(
 
         // ↓ 1. notes
@@ -185,7 +188,7 @@ import javax.inject.Singleton
         AddKerbHeight(), // Should be visible while waiting to cross
         AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing
         AddTrafficSignalsVibration(),
-        AddRoofShape(),
+        AddRoofShape(countryInfos),
         AddWheelchairAccessPublicTransport(),
         AddWheelchairAccessOutside(),
         AddTactilePavingBusStop(),
