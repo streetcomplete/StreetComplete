@@ -1,15 +1,22 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
 
 class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
+    private val sportValuesWherePitchSurfaceQuestionIsInteresting = listOf(
+        "soccer", "tennis", "basketball", "equestrian", "athletics", "volleyball", "skateboard",
+        "bmx", "american_football", "rugby_union", "badminton", "pelota", "horse_racing",
+        "disc_golf", "futsal", "cycling", "gymnastics"
+    )
+
     override val elementFilter = """
         ways with leisure=pitch
-        and sport ~ soccer|tennis|basketball|equestrian|athletics|volleyball|skateboard|bmx|american_football|rugby_union
+        and sport ~ ${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")}
         and (access !~ private|no)
         and (
           !surface
