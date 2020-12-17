@@ -24,7 +24,7 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
         override val commitMessage = "Add pitch surfaces"
         override val wikiLink = "Key:surface"
-        override val icon = R.drawable.ic_quest_sport
+        override val icon = R.drawable.ic_quest_pitch_surface
         override val isSplitWayEnabled = true
 
         override fun getTitle(tags: Map<String, String>) = R.string.quest_pitchSurface_title
