@@ -16,7 +16,7 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
         ways with leisure=pitch
-        and sport ~ ${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")}
+        and sport ~ .*${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")}.*
         and (access !~ private|no)
         and (
           !surface
