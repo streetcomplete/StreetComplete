@@ -10,10 +10,13 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     private val sportValuesWherePitchSurfaceQuestionIsInteresting = listOf(
         "soccer", "tennis", "basketball", "equestrian", "athletics", "volleyball", "skateboard",
-        "bmx", "american_football", "rugby_union", "badminton", "pelota", "horse_racing",
+        "bmx", "american_football", "badminton", "pelota", "horse_racing",
         "disc_golf", "futsal", "cycling", "gymnastics", "bowls", "boules", "netball",
-        "handball", "team_handball", "field_hockey", "padel", "horseshoes",
-        "gaelic_games", "australian_football", "racquet", "rugby_league",
+        "handball", "team_handball", "field_hockey", "padel", "horseshoes", "tetherball",
+        "gaelic_games", "australian_football", "racquet", "rugby_league", "rugby_union", "rugby",
+        "canadian_football", "softball", "sepak_takraw", "cricket", "pickleball", "lacrosse",
+        "roller_skating", "baseball", "shuffleboard", "paddle_tennis", "korfball", "petanque",
+        "croquet", "four_square", "shot-put",
     )
     
     override val elementFilter = """
