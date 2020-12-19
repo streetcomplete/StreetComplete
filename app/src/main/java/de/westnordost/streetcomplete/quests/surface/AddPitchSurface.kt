@@ -13,9 +13,9 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
         "bmx", "american_football", "rugby_union", "badminton", "pelota", "horse_racing",
         "disc_golf", "futsal", "cycling", "gymnastics", "bowls", "boules", "netball",
         "handball", "team_handball", "field_hockey", "padel", "horseshoes",
-        "gaelic_games", "australian_football", "racquet",
+        "gaelic_games", "australian_football", "racquet", "rugby_league",
     )
-
+    
     override val elementFilter = """
         ways with leisure=pitch
         and sport ~ .*${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")}.*
