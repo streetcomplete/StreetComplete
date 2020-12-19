@@ -11,7 +11,9 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     private val sportValuesWherePitchSurfaceQuestionIsInteresting = listOf(
         "soccer", "tennis", "basketball", "equestrian", "athletics", "volleyball", "skateboard",
         "bmx", "american_football", "rugby_union", "badminton", "pelota", "horse_racing",
-        "disc_golf", "futsal", "cycling", "gymnastics"
+        "disc_golf", "futsal", "cycling", "gymnastics", "bowls", "boules", "netball",
+        "handball", "team_handball", "field_hockey", "padel", "horseshoes",
+        "gaelic_games", "australian_football", "racquet",
     )
 
     override val elementFilter = """
