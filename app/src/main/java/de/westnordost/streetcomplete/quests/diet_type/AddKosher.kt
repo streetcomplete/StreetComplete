@@ -11,7 +11,7 @@ class AddKosher : OsmFilterQuestType<String>() {
         nodes, ways with
         (
           amenity ~ restaurant|cafe|fast_food|ice_cream
-          or shop ~ butcher|supermarket
+          or shop ~ butcher|supermarket|ice_cream
         )
         and name and (
           !diet:kosher
