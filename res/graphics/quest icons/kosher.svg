@@ -34,7 +34,7 @@
      inkscape:cx="160.02136"
      inkscape:cy="468.33697"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="text1670"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1920"
@@ -50,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -81,14 +81,16 @@
          cx="99.466423"
          cy="145.69943"
          r="93.98307" />
-      <text
-         xml:space="preserve"
+      <g
+         aria-label="K"
+         transform="matrix(13.793149,0,0,13.499123,-738.11078,-619.06086)"
          id="text1670"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1672);fill:#ffffff;fill-opacity:1;stroke:none;"
-         transform="matrix(13.793149,0,0,13.499123,-738.11078,-619.06086)"><tspan
-           x="56.361328"
-           y="60.510224"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1">K</tspan></tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1672);fill:#ffffff;fill-opacity:1;stroke:none">
+        <path
+           d="m 57.332842,52.794957 h 1.989536 v 2.816357 l 2.868033,-2.816357 h 2.309929 l -3.715523,3.653512 4.097928,4.061755 H 62.391949 L 59.322378,57.47166 v 3.038564 h -1.989536 z"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1"
+           id="path849" />
+      </g>
     </g>
   </g>
 </svg>
