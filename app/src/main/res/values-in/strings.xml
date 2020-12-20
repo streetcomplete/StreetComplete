@@ -235,10 +235,6 @@ Tetapi, sebelum mengunggah perubahan, aplikasi mengecek &lt;a href=\"https://www
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Jalan ini ada di mana?"</string>
     <string name="quest_cyclewaySurface_title">"Permukaan jalur sepeda disini terbuat dari apa?"</string>
     <string name="quest_serviceType_title">"Apa jenis jalan khusus ini?"</string>
-    <string name="quest_streetLanes_title">"Berapa banyak lajur di jalan ini?"</string>
-    <string name="quest_streetLanes_description">"Jika tidak ada marka jalan, berarti tidak ada lajur"</string>
-    <string name="quest_streetLanes_answer_noLanes">"tidak ada tanda lajur"</string>
-    <string name="quest_streetLanes_noLanes_estWidth">"Tolong perkirakan berapa banyak mobil yang dapat muat bersampingan di jalan ini."</string>
     <string name="quest_oneway_title">"Apakah ini jalan satu arah?"</string>
     <string name="quest_address_title">"Nomor berapa bangunan ini?"</string>
 
@@ -521,7 +517,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat memindai di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
     <string name="quest_crossing_type_title">"Apakah tipe penyeberangan ini?"</string>
     <string name="quest_crossing_type_signals">"Penyeberangan dengan lampu lalu lintas"</string>
-    <string name="quest_crossing_type_uncontrolled">"Penyeberangan tanpa lampu lalu lintas"</string>
     <string name="quest_crossing_type_unmarked">"Penyeberangan tanpa zebra cross"</string>
     <string name="compass_north_one_letter">"U"</string>
 
@@ -578,7 +573,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_leave_new_note_create_image_error">"Tidak dapat membuat berkas untuk foto"</string>
     <string name="quest_cycleway_value_lane_dual">"lajur sepeda, kedua arah"</string>
     <string name="quest_cycleway_value_track_dual">"jalur sepeda, dua arah"</string>
-    <string name="quest_cycleway_value_sidewalk_allowed">"tidak ada, tapi sepeda dibolehkan di trotoar"</string>
     <string name="pref_category_advanced">"Lanjutan"</string>
     <string name="pref_title_quests">"Pilihan pencarian"</string>
     <string name="quest_enabled">"Nyala"</string>
@@ -780,7 +774,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Tidak punya no. rumah..."</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bangunan ini ditandai sebagai:"</string>
-    <string name="quest_address_answer_no_housenumber_message2">"Apakah ini benar dan tidak hanya bagian dari bangunan?"</string>
     <string name="quest_buildingType_shrine">"Kuil"</string>
     <string name="quest_maxspeed_title_short2">"Berapa batas kecepatan di jalan ini?"</string>
     <string name="quest_maxspeed_answer_sign">"Sebuah rambu"</string>
@@ -814,8 +807,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_openingHours_timeSelect_next">"Lanjut"</string>
     <string name="quest_tracktype_title">"Apa tingkat kepadatan jalan ini?"</string>
     <string name="quest_tracktype_grade1">"Padat"</string>
-    <string name="quest_tracktype_grade2">"Sebagian padat"</string>
-    <string name="quest_tracktype_grade3">"Campuran"</string>
     <string name="quest_tracktype_grade4">"Sebagian lemah"</string>
     <string name="quest_tracktype_grade5">"Lemah"</string>
     <string name="quest_building_underground_name_title">"Apa %s sepenuhnya di bawah tanah?"</string>

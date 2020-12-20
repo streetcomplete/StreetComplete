@@ -10,7 +10,6 @@ import android.graphics.RectF
 import android.location.Location
 import android.location.LocationManager
 import android.net.ConnectivityManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -31,29 +30,20 @@ import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.view.isGone
-import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.data.Way
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.R
+import de.westnordost.osmapi.map.data.*
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuDialog
 import de.westnordost.streetcomplete.data.download.QuestDownloadController
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.quest.*
-import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
-import de.westnordost.streetcomplete.ktx.getLocationInWindow
-import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
@@ -61,6 +51,7 @@ import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
 import de.westnordost.streetcomplete.util.*
+import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -79,6 +70,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     AbstractQuestAnswerFragment.Listener,
     SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener, CreateNoteFragment.Listener,
     VisibleQuestListener,
+    HandlesOnBackPressed,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var questController: QuestController
@@ -106,7 +98,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
 
     interface Listener {
-        fun onQuestSolved(quest: Quest?, source: String?)
+        fun onQuestSolved(quest: Quest, source: String?)
         fun onCreatedNote(screenPosition: Point)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
@@ -141,7 +133,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupFittingToSystemWindowInsets()
+        mapControls.respectSystemInsets(View::setMargins)
+        view.respectSystemInsets { left, top, right, bottom ->
+            windowInsets = Rect(left, top, right, bottom)
+        }
 
         locationPointerPin.setOnClickListener { onClickLocationPointer() }
 
@@ -152,28 +147,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mainMenuButton.setOnClickListener { onClickMainMenu() }
 
         updateMapQuestOffsets()
-    }
-
-    private fun setupFittingToSystemWindowInsets() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            view?.setOnApplyWindowInsetsListener { _, insets ->
-                mapControls.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    setMargins(
-                        insets.systemWindowInsetLeft,
-                        insets.systemWindowInsetTop,
-                        insets.systemWindowInsetRight,
-                        insets.systemWindowInsetBottom
-                    )
-                }
-                windowInsets = Rect(
-                    insets.systemWindowInsetLeft,
-                    insets.systemWindowInsetTop,
-                    insets.systemWindowInsetRight,
-                    insets.systemWindowInsetBottom
-                )
-                insets
-            }
-        }
     }
 
     override fun onAttachFragment(childFragment: Fragment) {
@@ -213,7 +186,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /** Called by the activity when the user presses the back button.
      *  Returns true if the event should be consumed. */
-    fun onBackPressed(): Boolean {
+    override fun onBackPressed(): Boolean {
         val f = bottomSheetFragment
         if (f !is IsCloseableBottomSheet) return false
 
@@ -316,20 +289,15 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* -------------------------- AbstractQuestAnswerFragment.Listener -------------------------- */
 
-    override fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any) {
-        val ctx = context ?: return
-
-        val checkLocations = listOfNotNull(mapFragment?.displayedLocation, locationWhenOpenedQuest)
-
-        isSurveyChecker.assureIsSurvey(ctx, questId, group, checkLocations) {
-            val quest = questController.get(questId, group)
+    override fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any) { launch {
+        val quest = questController.get(questId, group)
+        if (quest != null && assureIsSurvey(quest.geometry)) {
             closeQuestDetailsFor(questId, group)
             if (questController.solve(questId, group, answer, "survey")) {
-                listener?.onQuestSolved(quest, "survey")
-                quest?.let { showQuestSolvedAnimation(it) }
+                onQuestSolved(quest, "survey")
             }
         }
-    }
+    }}
 
     override fun onComposeNote(questId: Long, group: QuestGroup, questTitle: String) {
         showInBottomSheet(LeaveNoteInsteadFragment.create(questId, group, questTitle))
@@ -350,21 +318,48 @@ class MainFragment : Fragment(R.layout.fragment_main),
         questController.hide(questId, group)
     }
 
-    /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
-
-    override fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>) {
-        val ctx = context ?: return
-
-        val checkLocations = listOfNotNull(mapFragment?.displayedLocation, locationWhenOpenedQuest)
-        isSurveyChecker.assureIsSurvey(ctx, osmQuestId, QuestGroup.OSM, checkLocations) {
-            val quest = questController.get(osmQuestId, QuestGroup.OSM)
+    override fun onDeleteElement(osmQuestId: Long, element: OsmElement) { launch {
+        val quest = questController.get(osmQuestId, QuestGroup.OSM)
+        if (quest != null && assureIsSurvey(quest.geometry)) {
             closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
-            if (questController.splitWay(osmQuestId, splits, "survey")) {
-                listener?.onQuestSolved(quest, "survey")
-                quest?.let { showQuestSolvedAnimation(it) }
+            if (questController.deleteOsmElement(osmQuestId, "survey")) {
+                onQuestSolved(quest, "survey")
             }
         }
+    }}
+
+    override fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>) { launch {
+        val quest = questController.get(osmQuestId, QuestGroup.OSM)
+        if (quest != null && assureIsSurvey(quest.geometry)) {
+            closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
+            if (questController.replaceShopElement(osmQuestId, tags, "survey")) {
+                onQuestSolved(quest, "survey")
+            }
+        }
+    }}
+
+    private suspend fun assureIsSurvey(elementGeometry: ElementGeometry): Boolean {
+        val ctx = context ?: return false
+        val checkLocations = listOfNotNull(mapFragment?.displayedLocation, locationWhenOpenedQuest)
+        return isSurveyChecker.checkIsSurvey(ctx, elementGeometry, checkLocations)
     }
+
+    private fun onQuestSolved(quest: Quest, source: String?) {
+        listener?.onQuestSolved(quest, source)
+        showQuestSolvedAnimation(quest)
+    }
+
+    /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
+
+    override fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>) { launch {
+        val quest = questController.get(osmQuestId, QuestGroup.OSM)
+        if (quest != null && assureIsSurvey(quest.geometry)) {
+            closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
+            if (questController.splitWay(osmQuestId, splits, "survey")) {
+                onQuestSolved(quest, "survey")
+            }
+        }
+    }}
 
     override fun onAddSplit(point: LatLon) {
         mapFragment?.putMarkerForCurrentQuest(point)
@@ -380,9 +375,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
         closeQuestDetailsFor(questId, group)
         // the quest is deleted from DB on creating a note, so need to fetch quest before
         val quest = questController.get(questId, group)
-        if (questController.createNote(questId, questTitle, note, imagePaths)) {
-            listener?.onQuestSolved(quest, null)
-            quest?.let { showQuestSolvedAnimation(it) }
+        if (quest != null && questController.createNote(questId, questTitle, note, imagePaths)) {
+            onQuestSolved(quest, null)
         }
     }
 

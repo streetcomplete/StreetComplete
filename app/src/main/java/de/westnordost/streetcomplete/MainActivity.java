@@ -39,6 +39,7 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment;
 import de.westnordost.streetcomplete.data.download.DownloadItem;
+import de.westnordost.streetcomplete.data.notifications.NewAchievementNotification;
 import de.westnordost.streetcomplete.data.notifications.Notification;
 import de.westnordost.streetcomplete.data.notifications.NotificationsSource;
 import de.westnordost.streetcomplete.data.quest.Quest;
@@ -46,7 +47,6 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadController;
-import de.westnordost.streetcomplete.data.quest.QuestType;
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource;
 import de.westnordost.streetcomplete.data.upload.UploadController;
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener;
@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-
 		Injector.INSTANCE.getApplicationComponent().inject(this);
 
 		getLifecycle().addObserver(questAutoSyncer);
@@ -148,7 +147,6 @@ public class MainActivity extends AppCompatActivity implements
 						.add(R.id.fragment_container, new TutorialFragment())
 						.commit();
 			}
-			questController.cleanUp();
 			if (userController.isLoggedIn() && isConnected()) {
 				userController.updateUser();
 			}
@@ -206,10 +204,21 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onBackPressed()
 	{
+		if (!forwardBackPressedToChildren()) super.onBackPressed();
+	}
+
+	private boolean forwardBackPressedToChildren()
+	{
+		NotificationsContainerFragment notificationsContainerFragment = getNotificationsContainerFragment();
+		if (notificationsContainerFragment != null)
+		{
+			if (notificationsContainerFragment.onBackPressed()) return true;
+		}
 		if (mainFragment != null)
 		{
-			if (!mainFragment.onBackPressed()) super.onBackPressed();
+			if (mainFragment.onBackPressed()) return true;
 		}
+		return false;
 	}
 
 	@Override
@@ -258,6 +267,11 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onConfigurationChanged(@NonNull Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		findViewById(R.id.main).requestLayout();
+		// recreate the NotificationsContainerFragment because it should load a new layout, see #2330
+		getSupportFragmentManager()
+				.beginTransaction()
+				.replace(R.id.notifications_container_fragment, new NotificationsContainerFragment())
+				.commit();
 	}
 
 	private void ensureLoggedIn()
@@ -387,13 +401,20 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onClickShowNotification(@NonNull Notification notification)
 	{
+		NotificationsContainerFragment f = getNotificationsContainerFragment();
+		if (f != null) f.showNotification(notification);
+	}
+
+	private NotificationsContainerFragment getNotificationsContainerFragment()
+	{
 		Fragment f = getSupportFragmentManager().findFragmentById(R.id.notifications_container_fragment);
-		((NotificationsContainerFragment) f).showNotification(notification);
+		if (f instanceof NotificationsContainerFragment) return (NotificationsContainerFragment) f;
+		else return null;
 	}
 
 	/* --------------------------------- MainFragment.Listener ---------------------------------- */
 
-	@Override public void onQuestSolved(@Nullable Quest quest, @Nullable String source)
+	@Override public void onQuestSolved(@NonNull Quest quest, @Nullable String source)
 	{
 		ensureLoggedIn();
 	}

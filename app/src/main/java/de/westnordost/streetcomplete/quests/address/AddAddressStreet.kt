@@ -32,6 +32,7 @@ class AddAddressStreet(
 
     override val commitMessage = "Add street/place names to address"
     override val icon = R.drawable.ic_quest_housenumber_street
+    override val wikiLink = "Key:addr"
     // In Japan, housenumbers usually have block numbers, not streets
     override val enabledInCountries = AllCountriesExcept("JP")
 

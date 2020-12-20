@@ -275,16 +275,6 @@ Kuten mainittu, sovellus on suoraan yhteydessä OSM järjestelmään. Joka tapau
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Missä tämä katu on?"</string>
     <string name="quest_cyclewaySurface_title">"Mikä päällyste tällä pyörätiellä on?"</string>
     <string name="quest_serviceType_title">"Millainen huoltotie tämä on?"</string>
-    <string name="quest_streetLanes_title">"Kuinka monta kaistaa tällä tiellä on?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Jos siinä ei ole tiemerkintöjä, siinä eo ole kaistoja."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Sillä ei ole merkattuja kaistoja"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Arvioi kuinka monta autoa mahtuu rinnakkain tälle tielle."</string>
     <string name="quest_oneway_title">"Onko tämä yksisuuntainen tie?"</string>
 
     <!-- Fuzzy -->
@@ -727,9 +717,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_crossing_type_signals">"Ylityspaikassa liikennevalot"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Valvomaton ylityspaikka"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Ylityspaikassa ei ole tiemerkintöjä"</string>
     <string name="compass_north_one_letter">"P"</string>
 
@@ -821,6 +808,8 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"Pyöräilykaista"</string>
+
+    <!-- Is this correct answer, if cycling is allowed on the way without any excplicit marks?. "none, but cyc list may use road in boat directions" is not active at the app 26.2 -->
     <string name="quest_cycleway_value_none">"ei mitään"</string>
 
     <!-- Fuzzy -->
@@ -840,9 +829,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"pyöräilyrata, molempiin suuuntiin"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"ei mitään, mutta pyöräilijät sallitaan jalkakäytävällä"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Edistyneet"</string>
@@ -1385,9 +1371,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_address_answer_no_housenumber_message1">"Rakennus on merkattu seuraavasti:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Onko tämä oikein ja eikö kyseessä ole osa rakennusta?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Pyhäkkö"</string>
 
     <!-- Fuzzy -->
@@ -1481,12 +1464,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Kiinteä"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Enimmäkseen kiinteä"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Yhdistelmä"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Enimmäkseen pehmeää"</string>
@@ -2172,7 +2149,6 @@ päiviä"</string>
     <string name="resurvey_intervals_less_often">"Kysy harvemmin"</string>
     <string name="resurvey_intervals_default">"Oletus"</string>
     <string name="resurvey_intervals_more_often">"Kysy useammin"</string>
-    <string name="quest_street_side_puzzle_select">"Napauta valitaksesi"</string>
     <string name="quest_accepts_cash_type_title">"Hyväksyykö %1$s (%2$s) käteismaksun?"</string>
     <string name="quest_busStopBench_tram_name_title">"Onko raitiovaunupysäkillä %s penkki"</string>
     <string name="quest_busStopBench_tram_title">"Onko raitiovaunupysäkillä penkki?"</string>
@@ -2209,7 +2185,7 @@ päiviä"</string>
     <string name="quest_atm_operator_title">"Minkä operaattorin/pankin automaatti tämä on?"</string>
     <string name="quest_clothes_container_operator_title">"Mikä taho vastaanottaa tämän vaatekeräyksen lahjoitukset?"</string>
     <string name="quest_charging_station_operator_title">"Kenen operoima latausasema tämä on?"</string>
-    <string name="link_thenandnow_description">"Kiinnostaako mitä edistystä olemme saavuttaneet vuosien varrella?  Vertaa miltä kartta näytti yli 10 vuotta sitten!"</string>
+    <string name="link_indoorequal_description">"Tutustu kauppakeskusten, rautatieasemien yms. sisäkarttoihin"</string>
     <string name="achievement_rare_title">"Aarrejahti"</string>
     <string name="achievement_rare_solved_X">"Löysit ja ratkaisit %d todella harvoin suoritettua tehtävää, onnittelut!"</string>
     <string name="achievement_citizen_title">"Kansalainen"</string>
@@ -2221,4 +2197,32 @@ päiviä"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Onko pyörätuoliramppi kuvattu erillisenä reittinä kartalla?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"erillinen"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ei erillisenä"</string>
+    <string name="pref_title_sync2">"Lähetä vastaukset automaattisesti"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Kuvaile pintaa"</string>
+    <string name="open_url">"Avaa URL"</string>
+    <string name="quest_buildingType_silo">"Siilo"</string>
+    <string name="quest_buildingType_historic">"Historiallinen"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_historic_description">"historiallisesti arvokas rakennus, joka ei palvele mitään kansalais-, uskonnollisia tai kaupallisia tehtäviä"</string>
+    <string name="quest_buildingType_abandoned">"Hylätty"</string>
+    <string name="quest_buildingType_abandoned_description">"Käyttämätön rakennus, jonka alkuperäistä käyttötarkoitus on tuntematon"</string>
+    <string name="quest_buildingType_ruins">"Raunio"</string>
+    <string name="quest_buildingType_ruins_description">"hylätty, pilalla oleva ja tunnistamaton rakennus"</string>
+    <string name="quest_charging_station_capacity_title">"Kuinka monia autoa voi ladata tällä latausasemalla yhtäaikaisesti?"</string>
+    <string name="link_disaster_ninja_description">"Viimeaikaiset luonnonkatastrofit näyttävä kartta humanitaarisille kartoittajille. Näyttää myös monia mielenkiintoisia tilastoja analysoidakseen kuinka hyvin kartoitettuja ja ajantasaisia kartat ovat."</string>
+    <string name="quest_lanes_title">"Montako kaistaa autoille on tällä tiellä?"</string>
+    <string name="quest_lanes_answer_lanes">"Merkityt kaistat"</string>
+    <string name="quest_lanes_answer_noLanes">"Ei merkittyjä kaistoja"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Eroaa tien eri puolilla"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Onko tämä oikein?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Mikä on korkeusrajoitus sillan alla?"</string>
+    <string name="quest_maxheight_split_way_hint">"Jos tämä ei koske koko tietä, harkitse vastaamaan \"%s\""</string>
+    <string name="quest_tactile_paving_kerb_title">"Onko täällä jalkakäytävässä kosketuspäällysteitä?"</string>
+    <string name="quest_kerb_height_title">"Mikä on tämän reunakivetyksen korkeus?"</string>
+    <string name="quest_kerb_height_flush">"Tienpinnan kanssa samalla tasolla"</string>
+    <string name="quest_kerb_height_lowered">"Hieman tienpintaa korkeammalla"</string>
+    <string name="quest_kerb_height_raised">"Korkea reunakiveys"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Tällä puolella ei ole reunakivetystä"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Ohitusramppi"</string>
 </resources>

@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.changes
 
-import java.util.ArrayList
-
 /** A diff that can be applied on a map of strings. Use StringMapChangesBuilder to conveniently build
  * it. A StringMapChanges is immutable.  */
 class StringMapChanges(changes: Collection<StringMapEntryChange>) {

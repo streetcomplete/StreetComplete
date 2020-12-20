@@ -18,4 +18,9 @@ val ALL_ROADS = listOf(
     "unclassified", "residential", "living_street", "pedestrian",
     "service", "track", "road"
 )
+
+val ALL_PATHS = listOf(
+    "footway", "cycleway", "path", "bridleway", "steps"
+)
+
 const val SURVEY_MARK_KEY = "check_date"

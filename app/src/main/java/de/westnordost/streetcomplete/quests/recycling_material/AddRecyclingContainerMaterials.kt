@@ -18,13 +18,14 @@ import de.westnordost.streetcomplete.util.enclosingBoundingBox
 class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
     private val filter by lazy { """
-        nodes with 
+        nodes with
           amenity = recycling and recycling_type = container
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add recycled materials to container"
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_container
+    override val isDeleteElementEnabled = true
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return emptyList()

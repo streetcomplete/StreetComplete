@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGe
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
+import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
@@ -39,20 +40,22 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        puzzleView.listener = { isRight -> showSidewalkSelectionDialog(isRight) }
+        puzzleView.onClickSideListener = { isRight -> showSidewalkSelectionDialog(isRight) }
 
         streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
 
         val defaultResId =
             if (isLeftHandTraffic) R.drawable.ic_sidewalk_unknown_l
             else                   R.drawable.ic_sidewalk_unknown
-        val defaultTitleId = R.string.quest_street_side_puzzle_select
 
-        puzzleView.setLeftSideImageResource(leftSide?.puzzleResId ?: defaultResId)
-        puzzleView.setRightSideImageResource(rightSide?.puzzleResId ?: defaultResId)
+        puzzleView.setLeftSideImage(ResImage(leftSide?.puzzleResId ?: defaultResId))
+        puzzleView.setRightSideImage(ResImage(rightSide?.puzzleResId ?: defaultResId))
 
-        puzzleView.setLeftSideText(if (leftSide != null) null else resources.getString( defaultTitleId ))
-        puzzleView.setRightSideText(if (rightSide != null) null else resources.getString( defaultTitleId ))
+        if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
+            if (leftSide == null) puzzleView.showLeftSideTapHint()
+            if (rightSide == null) puzzleView.showRightSideTapHint()
+            HAS_SHOWN_TAP_HINT = true
+        }
 
         checkIsFormComplete()
     }
@@ -93,11 +96,11 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
             val sidewalk = selected.value!!
             if (isRight) {
-                puzzleView.replaceRightSideImageResource(sidewalk.puzzleResId)
+                puzzleView.replaceRightSideImage(ResImage(sidewalk.puzzleResId))
                 puzzleView.setRightSideText(null)
                 rightSide = sidewalk
             } else {
-                puzzleView.replaceLeftSideImageResource(sidewalk.puzzleResId)
+                puzzleView.replaceLeftSideImage(ResImage(sidewalk.puzzleResId))
                 puzzleView.setLeftSideText(null)
                 leftSide = sidewalk
             }
@@ -115,5 +118,7 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
     companion object {
         private const val SIDEWALK_LEFT = "sidewalk_left"
         private const val SIDEWALK_RIGHT = "sidewalk_right"
+
+        private var HAS_SHOWN_TAP_HINT = false
     }
 }

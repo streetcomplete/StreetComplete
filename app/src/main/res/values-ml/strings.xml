@@ -363,18 +363,6 @@
     <string name="quest_serviceType_title">"എന്തുതരം സർവീസ് റോഡ് ആണ് ഇത് ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"ഈ റോഡ് എത്ര വരി പാതയാണ്?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"റോഡ് അടയാളങ്ങൾ ഇല്ലെങ്കിൽ ഇതിൽ lanes ഇല്ല ."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"അടയാളപ്പെടുത്തിയ പാതകൾ ഇല്ല."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"ഈ റോഡിൽ എത്ര കാറുകൾ പരസ്പരം ഒന്നിച്ച്  നിൽക്കാൻ പറ്റുമെന്ന് ദയവായി മനസിലാക്കുക."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"ഇത് ഒരു വൺ-വേ സ്ട്രീറ്റ് ആണോ?"</string>
 
     <!-- Fuzzy -->
@@ -853,9 +841,6 @@
     <string name="quest_crossing_type_signals">"ട്രാഫിക് ലൈറ്റുകൾ ഉപയോഗിച്ചുള്ള ക്രോസിംഗ്"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"അനിയന്ത്രിതമായ ക്രോസിംഗ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"റോഡ് അടയാളങ്ങളില്ലാതെയുള്ള ക്രോസിംഗ്"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -970,9 +955,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"സൈക്കിൾ പാത, രണ്ട് ദിശകളിലേക്കും"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"പറ്റില്ല, പക്ഷേ സൈക്കിൾ സവാരിക്കാർക്ക് പാർശ്വഭാഗത്ത്‌ കൂടെ നീങ്ങാം"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"ഉയർന്ന വിഭാഗം"</string>
@@ -1511,9 +1493,6 @@
     <string name="quest_address_answer_no_housenumber_message1">"ഈ കെട്ടിടം tag ചെയ്തിരിക്കുന്നത്:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"ഇത് വെറുമൊരു കെട്ടിടത്തിൻ്റെ ഭാഗം മാത്രമല്ലല്ലോ. അത് ഉറപ്പല്ലേ ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"പ്രതിഷ്ഠ"</string>
 
     <!-- Fuzzy -->
@@ -1607,12 +1586,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"ഖരം"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"അധികം ഖരമായ"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"മിശ്രിതം"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"അധികം മൃദുവായ"</string>

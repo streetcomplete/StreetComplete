@@ -362,18 +362,6 @@ Continuando con lo de antes, la aplicación se comunica directamente con la infr
     <string name="quest_serviceType_title">"¿Qué tipo de vía de servicio es?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"¿Cuantos carriles tiene esta vía?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Si no hay marcas en la vía, no hay carriles."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"No tiene carriles marcados"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Si puedes, calcula más o menos la anchura de la carretera con el número de vehículos que podrían circular en paralelo."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"¿Es una calle de sentido único?"</string>
 
     <!-- Fuzzy -->
@@ -869,9 +857,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_crossing_type_signals">"Cruce señalizado con semáforo"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Cruce señalizado sin semáforo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruce sin señalizar"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -986,9 +971,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"senda ciclista, ambas direcciones"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"no hay nada, pero los ciclistas pueden ir por la acera"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avanzado"</string>
@@ -1532,9 +1514,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_address_answer_no_housenumber_message1">"El edificio fue etiquetado como:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"¿Seguro que esta etiqueta define al edificio entero?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuario"</string>
 
     <!-- Fuzzy -->
@@ -1628,12 +1607,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Sólido"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Bastante sólido"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Mezcla"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Bastante suave"</string>
@@ -2323,7 +2296,6 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="resurvey_intervals_less_often">"Preguntar con menos frecuencia"</string>
     <string name="resurvey_intervals_default">"Por defecto"</string>
     <string name="resurvey_intervals_more_often">"Preguntar con más frecuencia"</string>
-    <string name="quest_street_side_puzzle_select">"Toca para seleccionar"</string>
     <string name="quest_accepts_cash_type_title">"¿%1$s (%2$s) acepta pagos en efectivo?"</string>
     <string name="quest_busStopBench_tram_name_title">"¿La parada del tranvía %s tiene un banco?"</string>
     <string name="quest_busStopBench_tram_title">"¿Esta parada de tranvía tiene banco?"</string>
@@ -2357,7 +2329,6 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_clothes_container_operator_title">"¿Quién acepta donaciones para este contenedor de ropa?"</string>
     <string name="quest_charging_station_operator_title">"¿Quién es el operador de esta estación de carga?"</string>
     <string name="link_indoorequal_description">"Descubra mapas interiores de centros comerciales, estaciones de tren, etc."</string>
-    <string name="link_thenandnow_description">"¿Tiene curiosidad por saber el progreso logramos a lo largo de los años? ¡Compare con el aspecto del mapa hace más de 10 años!"</string>
     <string name="achievement_rare_title">"Búsqueda del tesoro"</string>
     <string name="achievement_rare_solved_X">"Encontraste y resolviste %d misiones que rara vez se completan, ¡felicitaciones!"</string>
     <string name="achievement_citizen_title">"Ciudadano"</string>
@@ -2374,10 +2345,54 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="open_url">"Abrir URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Histórico"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_historic_description">"edificio de valor histórico que no cumple funciones cívicas, religiosas o comerciales"</string>
     <string name="quest_buildingType_abandoned">"Abandonado"</string>
     <string name="quest_buildingType_abandoned_description">"edificio en desuso cuya función o propósito original se desconoce"</string>
     <string name="quest_buildingType_ruins">"Ruinas"</string>
     <string name="quest_buildingType_ruins_description">"edificio abandonado, en ruinas e inidentificable"</string>
     <string name="quest_charging_station_capacity_title">"¿Cuántos coches se pueden cargar en esta estación de carga al mismo tiempo?"</string>
+    <string name="link_disaster_ninja_description">"Mapa que muestra desastres naturales recientes, interesante para los cartógrafos humanitarios. Además, muestra muchas estadísticas interesantes para analizar qué tan bien cartografiados y actualizados están los lugares."</string>
+    <string name="quest_lanes_title">"¿Cuántos carriles para automóviles tiene esta carretera?"</string>
+    <string name="quest_lanes_answer_lanes">"Carriles marcados"</string>
+    <string name="quest_lanes_answer_noLanes">"Sin carriles marcados"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Difiere para cada lado"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Tiene un carril de giro a la izquierda de dos-vías"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"¿Es esto correcto?"</string>
+    <string name="quest_maxheight_below_bridge_title">"¿Cuál es el límite de altura debajo del puente?"</string>
+    <string name="quest_maxheight_split_way_hint">"Si no aplica para toda la vía, considere responder \"%s\"."</string>
+    <string name="quest_tactile_paving_kerb_title">"¿Hay pavimento táctil en este bordillo aquí?"</string>
+    <string name="quest_kerb_height_title">"¿Cuál es la altura de este bordillo?"</string>
+    <string name="quest_kerb_height_flush">"Mismo nivel que la superficie de la calzada
+"</string>
+    <string name="quest_kerb_height_lowered">"Un poco más alto que la superficie de la calzada"</string>
+    <string name="quest_kerb_height_raised">"Bordillo alto"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"No hay acera en este lado del cruce"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Rampa de acera"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description2">"Especifique el número total de carriles marcados (en ambas direcciones) que puede utilizar el tráfico de automóviles. Los carriles para bicicletas y estacionamiento no cuentan. Si hay carriles reservados para autobuses, deje una nota en su lugar."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Especifique el número de carriles marcados que puede utilizar el tráfico de automóviles. Los carriles para bicicletas y estacionamiento no cuentan. Si hay carriles reservados para autobuses, deje una nota en su lugar."</string>
+    <string name="quest_surface_value_rock">"Roca"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Los camiones altos pueden pasar"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Los camiones altos no caben"</string>
+    <string name="quest_address_street_hint">"Toque la carretera en el mapa"</string>
+    <string name="quest_crossing_type_marked">"Cruze marcado"</string>
+    <string name="quest_existence_title">"¿Sigue aquí? (%s)"</string>
+    <string name="quest_existence_name_title">"¿%1$s sigue aquí? (%2$s)"</string>
+    <string name="quest_tracktype_grade2a">"Sólido pero no pavimentado"</string>
+    <string name="quest_tracktype_grade3a">"Mayormente sólido"</string>
+    <string name="quest_generic_answer_does_not_exist">"Esto no existe..."</string>
+    <string name="osm_element_gone_warning">"Cuidado: ¡No puede revertirse!"</string>
+    <string name="osm_element_gone_description">"¿Está seguro de que no existe, ni siquiera en un lugar un poco diferente? En caso de duda, mejor dejar una nota."</string>
+    <string name="osm_element_gone_confirmation">"No existe"</string>
+    <string name="leave_note">"Dejar nota"</string>
+    <string name="quest_shop_gone_title">"¿Que hay ahora aquí?"</string>
+    <string name="quest_shop_gone_vacant_answer">"Está libre"</string>
+    <string name="quest_shop_gone_replaced_answer">"Un(a)…"</string>
+    <string name="quest_shop_gone_replaced_answer_hint">"Pon el tipo de lugar aquí"</string>
+    <string name="quest_shop_gone_replaced_answer_error">"No sé qué es esto. Considere dejar una nota."</string>
 </resources>

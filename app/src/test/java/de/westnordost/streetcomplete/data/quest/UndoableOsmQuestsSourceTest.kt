@@ -57,7 +57,6 @@ class UndoableOsmQuestsSourceTest {
     @Test fun `remove non-undoable osm quest does not trigger listener`() {
         questStatusListener.onRemoved(2L, QuestStatus.NEW)
         questStatusListener.onRemoved(3L, QuestStatus.INVISIBLE)
-        questStatusListener.onRemoved(4L, QuestStatus.REVERT)
         verifyNothingHappened()
     }
 
@@ -69,14 +68,14 @@ class UndoableOsmQuestsSourceTest {
     }
 
     @Test fun `change osm quest from undoable triggers listener`() {
-        questStatusListener.onChanged(osmQuest(1L, QuestStatus.REVERT), QuestStatus.ANSWERED)
-        questStatusListener.onChanged(osmQuest(2L, QuestStatus.REVERT), QuestStatus.HIDDEN)
-        questStatusListener.onChanged(osmQuest(3L, QuestStatus.REVERT), QuestStatus.CLOSED)
+        questStatusListener.onChanged(osmQuest(1L, QuestStatus.NEW), QuestStatus.ANSWERED)
+        questStatusListener.onChanged(osmQuest(2L, QuestStatus.NEW), QuestStatus.HIDDEN)
+        questStatusListener.onChanged(osmQuest(3L, QuestStatus.NEW), QuestStatus.CLOSED)
         verifyDecreasedBy(3)
     }
 
     @Test fun `change osm quest from non-undoable does not trigger listener`() {
-        questStatusListener.onChanged(osmQuest(1L, QuestStatus.REVERT), QuestStatus.NEW)
+        questStatusListener.onChanged(osmQuest(1L, QuestStatus.INVISIBLE), QuestStatus.NEW)
         questStatusListener.onChanged(osmQuest(2L, QuestStatus.ANSWERED), QuestStatus.CLOSED)
         verifyNothingHappened()
     }

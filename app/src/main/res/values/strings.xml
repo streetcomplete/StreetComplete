@@ -215,6 +215,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_surface_value_paving_stones">"Paving stones"</string>
     <string name="quest_surface_value_pebblestone">"Pebbles"</string>
     <string name="quest_surface_value_sand">"Sand"</string>
+    <string name="quest_surface_value_rock">"Rock"</string>
     <string name="quest_surface_value_sett">"Sett"</string>
     <string name="quest_surface_value_wood">"Wood"</string>
     <string name="quest_placeName_title">"What is the name of this place?"</string>
@@ -243,10 +244,15 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_cycleway_title2">"Is there a cycleway here? What type?"</string>
     <string name="quest_cycleway_resurvey_title">"Is this still the cycleway situation here?"</string>
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
-    <string name="quest_streetLanes_title">"How many lanes does this road have?"</string>
-    <string name="quest_streetLanes_description">"If there are no road markings, it has no lanes."</string>
-    <string name="quest_streetLanes_answer_noLanes">"It has no marked lanes"</string>
-    <string name="quest_streetLanes_noLanes_estWidth">"Please estimate how many cars would fit alongside each other on this road."</string>
+    <string name="quest_lanes_title">"How many lanes for cars does this road have?"</string>
+    <string name="quest_lanes_answer_lanes">"Marked lanes"</string>
+    <string name="quest_lanes_answer_lanes_description2">"Specify the total number of marked lanes (both directions) usable by car traffic. So, bike and dedicated parking lanes don't count.
+If any lanes are reserved for buses, please leave a note instead."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Specify the number of marked lanes usable by car traffic here. So, bike and dedicated parking lanes don't count.
+If any lanes are reserved for buses, please leave a note instead."</string>
+    <string name="quest_lanes_answer_noLanes">"No marked lanes"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Differs for each side"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"It has a two-way left turn lane"</string>
     <string name="quest_oneway_title">"Is this a one-way street?"</string>
     <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
     <string name="quest_oneway2_dir">"Oneway in this direction"</string>
@@ -360,7 +366,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
     <string name="quest_crossing_type_signals">Crossing with traffic lights</string>
-    <string name="quest_crossing_type_uncontrolled">Uncontrolled crossing</string>
+    <string name="quest_crossing_type_marked">Marked crossing</string>
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
     <string name="action_undo">Undo</string>
@@ -422,6 +428,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_tung_nuts">Tung nuts</string>
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
+    <string name="quest_parkingType_street_side">Parking just off the roadway</string>
+    <string name="quest_parkingType_lane">Parking on roadway</string>
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
     <string name="quest_dietType_vegetarian_name_title">Does %s have vegetarian meals on the menu?</string>
@@ -431,6 +439,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat, fish, or poultry.</string>
     <string name="quest_dietType_explanation">Only answer “yes” if the place provides proper eating options for this diet, ignore starters etc.</string>
     <string name="quest_toiletAvailability_name_title">Does %s have a restroom?</string>
+    <string name="quest_existence_title">Is this still here? (%s)</string>
+    <string name="quest_existence_name_title">Is %1$s still here? (%2$s)</string>
     <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
     <string name="quest_powerPolesMaterial_wood">Wood</string>
     <string name="quest_powerPolesMaterial_metal">Steel</string>
@@ -459,7 +469,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_carWashType_service">Staff cleans car</string>
     <string name="quest_cycleway_value_lane_dual">cycle lane, both directions</string>
     <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
-    <string name="quest_cycleway_value_sidewalk_allowed">none, but cyclists are allowed on sidewalk</string>
     <string name="pref_category_advanced">Advanced</string>
     <string name="pref_title_resurvey_intervals">Resurvey intervals</string>
     <string name="resurvey_intervals_less_often">Ask less often</string>
@@ -568,8 +577,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_answer_multiple_types">It has multiple purposes</string>
     <string name="quest_buildingType_answer_multiple_types_description">Simply select the main purpose of this building. E.g. if there is a shop on the ground floor with apartments above it, it is still mainly an apartment building.</string>
     <string name="quest_buildingType_answer_construction_site">It is still being constructed</string>
-
-
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_residential_description">building where people live</string>
     <string name="quest_buildingType_house">House</string>
@@ -588,7 +595,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_bungalow">Bungalow</string>
     <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin …)</string>
     <string name="quest_buildingType_static_caravan">Mobile home</string>
-
     <string name="quest_buildingType_commercial">Commercial building</string>
     <string name="quest_buildingType_commercial_generic_description">building where people work, shop or do any other commercial activities</string>
     <string name="quest_buildingType_industrial">Industrial building</string>
@@ -598,7 +604,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_warehouse">Warehouse</string>
     <string name="quest_buildingType_kiosk">Kiosk</string>
     <string name="quest_buildingType_storage_tank">Storage tank</string>
-
     <string name="quest_buildingType_religious">Religious building</string>
     <string name="quest_buildingType_church">Church</string>
     <string name="quest_buildingType_chapel">Chapel</string>
@@ -608,7 +613,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_pagoda">Pagoda</string>
     <string name="quest_buildingType_synagogue">Synagogue</string>
     <string name="quest_buildingType_shrine">Shrine</string>
-
     <string name="quest_buildingType_civic">Civic building</string>
     <string name="quest_buildingType_civic_description">public building usually housing an amenity</string>
     <string name="quest_buildingType_kindergarten">Kindergarten building</string>
@@ -621,7 +625,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_transportation">Public transportation building</string>
     <string name="quest_buildingType_university">University building</string>
     <string name="quest_buildingType_government">Government building</string>
-
     <string name="quest_buildingType_cars">For cars</string>
     <string name="quest_buildingType_carport">Carport</string>
     <string name="quest_buildingType_carport_description">roof for a car</string>
@@ -629,8 +632,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_garages">Multiple garages</string>
     <string name="quest_buildingType_garages_description">Separate spaces for different owners/tenants</string>
     <string name="quest_buildingType_parking">Parking building</string>
-
-
     <string name="quest_buildingType_farm">On a farm</string>
     <string name="quest_buildingType_farmhouse">Farmhouse</string>
     <string name="quest_buildingType_farmhouse_description">the residential building on a farm</string>
@@ -638,7 +639,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_farm_auxiliary_description">any building on a farm that is not a residential building</string>
     <string name="quest_buildingType_silo">Silo</string>
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
-
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_shed">Shed</string>
     <string name="quest_buildingType_toilets">Toilets</string>
@@ -651,7 +651,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_hangar_description">storage for airplanes, helicopters or spacecraft</string>
     <string name="quest_buildingType_bunker">Bunker</string>
     <string name="quest_buildingType_historic">Historic</string>
-    <string name="quest_buildingType_historic_description">building of historic value not serving any civic, religious or commercial functions</string>
+    <string name="quest_buildingType_historic_description">building of historic value, constructed for an unknown or unclear purpose</string>
     <string name="quest_buildingType_abandoned">Abandoned</string>
     <string name="quest_buildingType_abandoned_description">unused building whose original function or purpose is unknown</string>
     <string name="quest_buildingType_ruins">Ruins</string>
@@ -659,7 +659,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
-    <string name="quest_address_answer_no_housenumber_message2">Is this correct and is it not just part of a building?</string>
+    <string name="quest_address_answer_no_housenumber_message2b">Is this correct?</string>
     <string name="quest_maxspeed_sign_question">What defines the speed limit?</string>
     <string name="notification_channel_download">"Download"</string>
     <string name="quest_playground_access_title">Is this playground publicly accessible?</string>
@@ -671,8 +671,12 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_parking_entrance_title">What is the height limit of this parking entrance?</string>
     <string name="quest_maxheight_height_restrictor_title">What is the height limit of this height restrictor?</string>
     <string name="quest_maxheight_tunnel_title">What is the height limit of this tunnel?</string>
+    <string name="quest_maxheight_below_bridge_title">What is the height limit below the bridge?</string>
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
+    <string name="quest_maxheight_split_way_hint">If it doesn\'t apply for the whole way, consider answering \"%s\".</string>
     <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">Tall trucks can pass through</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Tall trucks don't fit"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
@@ -686,8 +690,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? A note with a photo will enable other mappers to take care of it.</string>
     <string name="quest_tracktype_title">What is the surface firmness of this track?</string>
     <string name="quest_tracktype_grade1">Solid</string>
-    <string name="quest_tracktype_grade2">Mostly solid</string>
-    <string name="quest_tracktype_grade3">Mixture</string>
+    <string name="quest_tracktype_grade2a">Solid but unpaved</string>
+    <string name="quest_tracktype_grade3a">Mostly solid</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
     <string name="quest_wheelchairAccess_outside_title">Is this place wheelchair accessible?</string>
@@ -761,10 +765,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_step_count_title">How many steps are here?</string>
     <string name="quest_address_street_title">What street does the (house) number %s belong to?</string>
     <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
+    <string name="quest_address_street_hint">Tap road on map</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
     <string name="quest_address_street_description">Tap the road it belongs to on the map or enter it without abbreviations in the field below:</string>
     <string name="quest_street_side_puzzle_tutorial">The road in the illustration is rotated the same as on the map at the location of the pin. </string>
-    <string name="quest_street_side_puzzle_select">Tap to select</string>
     <string name="quest_oneway_tutorial">The road in the illustration is rotated the same as on the map at the location of the pin. Note the indicated direction. </string>
     <string name="quest_recycling_materials_title">What can be left here for recycling?</string>
     <string name="quest_recycling_materials_note">If anything different can be recycled than selectable here, please leave a note instead.</string>
@@ -810,8 +814,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_recycling_materials_answer_waste">It\'s for general waste</string>
     <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or commercial waste?</string>
 
-    <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
     <string name="quest_accepts_cash_type_title">"Does %1$s (%2$s) accept cash payment?"</string>
+    <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
 
     <string name="quest_atm_operator_title">"What's the name of the bank for this ATM?"</string>
     <string name="quest_clothes_container_operator_title">"Who accepts donations for this clothing bin?"</string>
@@ -856,7 +860,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
     <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
-    <string name="link_thenandnow_description">Curious what progress we made over the years? Compare to how the map looked more than 10 years ago!</string>
     <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
     <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
     <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
@@ -938,4 +941,22 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="open_url">Open URL</string>
     <string name="quest_dietType_kosher_name_title">Does %s offer kosher products?</string>
     <string name="quest_dietType_explanation_kosher">Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance.</string>
+    <string name="quest_tactile_paving_kerb_title">Is there tactile paving on this curb here?</string>
+    <string name="quest_kerb_height_title">What is the height of this curb?</string>
+    <string name="quest_kerb_height_flush">Same level as road surface</string>
+    <string name="quest_kerb_height_lowered">A bit higher than road surface</string>
+    <string name="quest_kerb_height_raised">High curb</string>
+    <string name="quest_kerb_height_answer_no_kerb">There is no curb on this side of crossing</string>
+    <string name="quest_kerb_height_lowered_ramp">Curb ramp</string>
+    <string name="quest_generic_answer_does_not_exist">It does not exist…</string>
+    <string name="osm_element_gone_warning">"Warning: This cannot be undone!</string>
+    <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? When in doubt, better leave a note instead.</string>
+    <string name="osm_element_gone_confirmation">It does not exist</string>
+    <string name="leave_note">Leave note</string>
+    <string name="quest_shop_gone_title">What\'s here now instead?</string>
+    <string name="quest_shop_gone_vacant_answer">It\'s vacant</string>
+    <string name="quest_shop_gone_replaced_answer">A(n)…</string>
+    <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Don't know what this is. Consider leaving a note."</string>
+    <string name="quest_shop_vacant_type_title">This shop has been vacant. What\'s here now?</string>
 </resources>

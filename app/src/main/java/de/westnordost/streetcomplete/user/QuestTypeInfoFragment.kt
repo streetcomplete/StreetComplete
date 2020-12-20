@@ -50,6 +50,7 @@ class QuestTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_q
         solvedQuestsContainer.visibility = View.INVISIBLE
         solvedQuestsContainer.scaleX = scale
         solvedQuestsContainer.scaleY = scale
+        solvedQuestsContainer.setOnClickListener { counterAnimation?.end() }
         wikiLinkButton.isInvisible = questType !is OsmElementQuestType || questType.wikiLink == null
         if (questType is OsmElementQuestType && questType.wikiLink != null) {
             wikiLinkButton.setOnClickListener {

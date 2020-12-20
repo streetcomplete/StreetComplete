@@ -5,6 +5,7 @@ atmOperators: [Stanbic Bank Uganda, Centenary Rural Development Bank, Crane Bank
       Uganda, Bank of Africa-Uganda, Centenary Bank, Stanbic, dfcu Bank, Equity Bank, Cairo International
       Bank, centenary, United Bank for Africa, Pride Microfinance, NC Bank Uganda, Guaranty Trust Bank,
    FINCA Uganda, Ecobank, Crane Bank Ltd., Barclays Bank]
+centerLine: yellow
 isLeftHandTraffic: true
 mobileCountryCode: 641
 officialLanguages: [sw, en]

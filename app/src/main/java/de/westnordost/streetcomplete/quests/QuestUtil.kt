@@ -10,7 +10,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
-import java.util.*
+import de.westnordost.streetcomplete.ktx.toTypedArray
 import java.util.concurrent.FutureTask
 
 fun Resources.getQuestTitle(questType: QuestType<*>, element: Element?, featureDictionaryFuture: FutureTask<FeatureDictionary>?): String {
@@ -42,21 +42,14 @@ private fun findTypeName(
     featureDictionaryFuture: FutureTask<FeatureDictionary>?,
     localeList: LocaleListCompat
 ): String? {
-    featureDictionaryFuture?.get()?.let { dict ->
-        localeList.forEach { locale ->
-            val matches = dict.byTags(tags).forLocale(locale).find()
-            if (matches.isNotEmpty()) {
-                return matches.first().name
-            }
-        }
-    }
-    return null
-}
-
-private inline fun LocaleListCompat.forEach(action: (Locale) -> Unit) {
-    for (i in 0 until size()) {
-        action(this[i])
-    }
+    val dict = featureDictionaryFuture?.get() ?: return null
+    return dict
+        .byTags(tags)
+        .isSuggestion(false)
+        .forLocale(*localeList.toTypedArray(), null)
+        .find()
+        .firstOrNull()
+        ?.name
 }
 
 private fun getQuestTitleResId(questType: QuestType<*>, element: Element?) =

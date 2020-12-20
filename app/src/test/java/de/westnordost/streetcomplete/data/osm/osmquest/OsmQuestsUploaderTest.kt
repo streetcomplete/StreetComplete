@@ -115,12 +115,11 @@ class OsmQuestsUploaderTest {
         verify(osmQuestController, times(2)).fail(any())
         verify(uploader.uploadedChangeListener,times(2))?.onDiscarded(any(), any())
         verify(elementUpdateController, times(2)).get(any(), anyLong())
-        verify(elementUpdateController).cleanUp()
         verifyNoMoreInteractions(elementUpdateController)
         verifyZeroInteractions(statisticsUpdater)
     }
 
-    @Test fun `delete unreferenced elements and clean metadata at the end`() {
+    @Test fun `clean metadata at the end`() {
         val quest = createQuest()
 
         on(osmQuestController.getAllAnswered()).thenReturn(listOf(quest))
@@ -129,7 +128,6 @@ class OsmQuestsUploaderTest {
 
         uploader.upload(AtomicBoolean(false))
 
-        verify(elementUpdateController).cleanUp()
         verify(quest.osmElementQuestType).cleanMetadata()
     }
 }

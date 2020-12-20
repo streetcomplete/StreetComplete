@@ -106,10 +106,10 @@
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_title">"Kast input?"</string>
+    <string name="confirmation_discard_title">"Forkast endrigene?"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_positive">"Kast"</string>
+    <string name="confirmation_discard_positive">"Forkast"</string>
 
     <!-- Fuzzy -->
     <string name="confirmation_discard_negative">"Avbryt"</string>
@@ -346,18 +346,6 @@ Men før appen laster opp endringen dine sjekker den via &lt;a href=\"https://ww
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Hva slags privat vei er dette?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Hvor mange filer har denne veien?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Hvis veien mangler midtlinje, har den ikke kjørefelt."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Ingen oppmerkede filer"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Beregn hvor mange biler som får plass ved siden av hverandre på veien."</string>
 
     <!-- Fuzzy -->
     <string name="quest_oneway_title">"Er dette en enveiskjørt gate?"</string>
@@ -853,9 +841,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_crossing_type_signals">"Med trafikklys"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Ukontrollert"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Uten veimarkeringer"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -970,9 +955,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"sykkelvei, begge retninger"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men syklister er tillatt på fortauet"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avansert"</string>
@@ -1513,9 +1495,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_address_answer_no_housenumber_message1">"Bygningen er merket med:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Et dette riktig og er det ikke bare en del av en bygning?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Helligdom"</string>
 
     <!-- Fuzzy -->
@@ -1609,12 +1588,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Fast"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Mest fast"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Blandet"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Mest mykt"</string>
@@ -1839,7 +1812,7 @@ en merknad til andre.
 
 Og husk å ta vare på egen sikkerhet: Pass på hvor du setter foten, og gå aldri inn på privat eigendom."</string>
     <string name="tutorial_happy_mapping">"Kos deg med kartlegging!"</string>
-    <string name="achievements_empty">"Du har inne noen bradger enda"</string>
+    <string name="achievements_empty">"Du har ingen bragder enda"</string>
     <string name="links_empty">"Du har ikke noen lenker enda"</string>
     <string name="quests_empty">"Du har ikke offentliggjort noen svar på oppdrag enda"</string>
     <string name="unsynced_quests_description">"og %d endringer som ikke er offentliggjort."</string>
@@ -1970,7 +1943,6 @@ forkortelser i feltet nedenfor:"</string>
     <string name="resurvey_intervals_less_often">"Spør sjeldnere"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spør oftere"</string>
-    <string name="quest_street_side_puzzle_select">"Trykk for å velge"</string>
     <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) imot betaling med kontanter?"</string>
     <string name="quest_busStopBench_title">"Har dette busstoppet en benk?"</string>
     <string name="quest_busStopBench_name_title">"Har busstoppet %s en benk?"</string>

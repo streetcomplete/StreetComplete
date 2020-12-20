@@ -2,8 +2,8 @@
 additionalStreetsignLanguages: [ca, eu, gl, ast]
 additionalValidHousenumberRegex: s/n
 atmOperators: [Santander, Bankia, BBVA, La Caixa, Banco Santander, Telebanco 4B, Banco Popular, CaixaBank, Euronet,
-   Kutxabank, Sabadell, Caja Rural, Banca March, Unicaja, Cajamar, Banc Sabadell, IberCaja, Banco Sabadell,
-   Liberbank, Abanca, Deutsche Bank, ABANCA, Euro 6000, Caixabank, Servired, Popular, BBK, Telebanco,
+   Sabadell, Kutxabank, Caja Rural, Banca March, Unicaja, Cajamar, Banc Sabadell, IberCaja, Banco Sabadell,
+   Liberbank, Abanca, ABANCA, Euro 6000, Deutsche Bank, Caixabank, Servired, Popular, BBK, Telebanco,
    Ibercaja, Euro6000, Sabadell Atlántico, Kutxa, ING, Caja Duero, Bankinter, BanCaixa, Laboral Kutxa,
    Caixa Bank, Banco Pastor, euronet, Cajasol, BMN, kutxabank, EspañaDuero, Catalunya Caixa, Cajasur,
    CAM, Banco de Sabadell, Bancaja, la Caixa, Targo Bank, ING Direct, Euronet Worldwide, Euro Automatic

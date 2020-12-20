@@ -7,10 +7,16 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
 class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
 
-    override val elementFilter = "nodes, ways with amenity = charging_station and !capacity"
+    override val elementFilter = """
+        nodes, ways with
+          amenity = charging_station
+          and !capacity
+          and bicycle != yes and scooter != yes and motorcar != no
+    """
     override val commitMessage = "Add charging station capacities"
     override val wikiLink = "Tag:amenity=charging_station"
     override val icon = R.drawable.ic_quest_car_charger_capacity
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_charging_station_capacity_title
 

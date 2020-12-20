@@ -690,6 +690,102 @@ class SphericalEarthMathTest {
         assertTrue(square.measuredArea() > 0)
     }
 
+    /* +++++++++++++++++++++++++++++ test intersection check +++++++++++++++++++++++++++ */
+
+    @Test fun `two lines intersect at endpoints`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(1.0,0.0)
+        val q1 = p(0.0, 1.0)
+        val q2 = p(1.0, 0.0)
+
+        assertEquals(p2, intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines intersect at start points`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(1.0,0.0)
+        val q1 = p(0.0, 0.0)
+        val q2 = p(1.0, 1.0)
+
+        assertEquals(p1, intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines intersect somewhere in the middle`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(2.0,0.0)
+        val q1 = p(0.0, 1.0)
+        val q2 = p(2.0, -1.0)
+
+        val i = intersectionOf(p1, p2, q1, q2)!!
+        assertEquals(1.0, i.longitude, 1e-9)
+        assertEquals(0.0, i.latitude, 1e-9)
+    }
+
+    @Test fun `two lines do not intersect somewhere after segment p`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(4.0,0.0)
+        val q1 = p(0.0, 2.0)
+        val q2 = p(1.0, 1.0)
+
+        assertNull(intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines do not intersect somewhere after segment q`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(1.0,0.0)
+        val q1 = p(0.0, 1.0)
+        val q2 = p(4.0, -1.0)
+
+        assertNull(intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines do not intersect somewhere before segment p`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(0.0,1.0)
+        val q1 = p(-2.0, -1.0)
+        val q2 = p(0.0, 1.0)
+
+        assertNull(intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines do not intersect somewhere before segment q`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(0.0,4.0)
+        val q1 = p(4.0, 1.0)
+        val q2 = p(5.0, 2.0)
+
+        assertNull(intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines intersect that are on the same great circle`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(2.0,0.0)
+        val q1 = p(4.0, 0.0)
+        val q2 = p(-2.0, 0.0)
+
+        assertEquals(p1, intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines do not intersect that are on the same great circle`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(1.0,0.0)
+        val q1 = p(3.0, 0.0)
+        val q2 = p(2.0, 0.0)
+
+        assertNull(intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines intersect on the other side of the earth`() {
+        val p1 = p(0.0,0.0)
+        val p2 = p(180.0,0.0)
+        val q1 = p(-90.0, 1.0)
+        val q2 = p(90.0, -1.0)
+
+        val i = intersectionOf(p1, p2, q1, q2)!!
+        assertEquals(0.0, i.longitude, 1e-9)
+        assertEquals(0.0, i.latitude, 1e-9)
+    }
+
     companion object {
         private val HH = p(10.0, 53.5)
     }

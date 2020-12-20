@@ -17,6 +17,7 @@ class AddMotorcycleParkingCover : OsmFilterQuestType<Boolean>() {
     override val commitMessage = "Add motorcycle parkings cover"
     override val wikiLink = "Tag:amenity=motorcycle_parking"
     override val icon = R.drawable.ic_quest_motorcycle_parking_cover
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_motorcycleParkingCoveredStatus_title
 

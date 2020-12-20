@@ -96,13 +96,12 @@ class SplitWaysUploaderTest {
         verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].questType.javaClass.simpleName,quests[1].position)
 
         verify(elementUpdateController, times(1)).update(any(), any())
-        verify(elementUpdateController).cleanUp()
         verify(elementUpdateController, times(2)).get(any(), anyLong())
         verify(statisticsUpdater).addOne(any(), any())
         verifyNoMoreInteractions(elementUpdateController)
     }
 
-    @Test fun `delete unreferenced elements and clean metadata at the end`() {
+    @Test fun `clean metadata at the end`() {
         val quest = createOsmSplitWay()
 
         on(splitWayDB.getAll()).thenReturn(listOf(quest))
@@ -112,7 +111,6 @@ class SplitWaysUploaderTest {
 
         uploader.upload(AtomicBoolean(false))
 
-        verify(elementUpdateController).cleanUp()
         verify(quest.osmElementQuestType).cleanMetadata()
     }
 }

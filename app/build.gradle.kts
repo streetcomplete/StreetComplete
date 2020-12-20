@@ -24,7 +24,7 @@ android {
         }
     }
 
-    compileSdkVersion(29)
+    compileSdkVersion(30)
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -34,9 +34,9 @@ android {
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
-        targetSdkVersion(29)
-        versionCode = 2602
-        versionName = "26.0-beta3"
+        targetSdkVersion(30)
+        versionCode = 2800
+        versionName = "28.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -95,7 +95,7 @@ dependencies {
     val daggerVersion = "2.14.1"
 
     // tests
-    testImplementation("junit:junit:4.12")
+    testImplementation("junit:junit:4.13.1")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:2.8.0")
@@ -113,7 +113,7 @@ dependencies {
     implementation("com.google.android.material:material:1.2.1")
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.annotation:annotation:1.1.0")
     implementation("androidx.fragment:fragment-ktx:1.2.5")
     implementation("androidx.preference:preference-ktx:1.1.1")
@@ -122,7 +122,7 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.0")
+    implementation("androidx.exifinterface:exifinterface:1.3.1")
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
@@ -135,12 +135,14 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:1.5")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures-android:1.1")
+    implementation("de.westnordost:osmfeatures-android:2.0")
     // talking with the OSM API
     implementation("de.westnordost:osmapi-map:1.3")
     implementation("de.westnordost:osmapi-changesets:1.3")
     implementation("de.westnordost:osmapi-notes:1.2")
     implementation("de.westnordost:osmapi-user:1.2")
+    implementation("com.squareup.okhttp3:okhttp:3.12.12")
+    implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
@@ -169,14 +171,19 @@ dependencies {
 /** Localizations that should be pulled from POEditor etc. */
 val bcp47ExportLanguages = setOf(
     "ast","ca","cs","da","de","el","en","en-AU","en-GB","es","eu","fa","fi","fr","gl","hr","hu",
-    "id","it", "ja","ko","lt","ml","nb","no","nl","nn","pl","pt","pt-BR","ru","sk","sv","tr",
+    "id","it", "ja","ko","lt","ml","nb","no","nl","nn","pl","pt","pt-BR","ru","sk","sr-cyrl","sv","tr",
     "uk","zh","zh-CN","zh-HK","zh-TW"
 )
 
 tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
-    targetDir = "$projectDir/src/main/assets/osmfeatures"
+    targetDir = "$projectDir/src/main/assets/osmfeatures/default"
+}
+
+tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
+    group = "streetcomplete"
+    targetDir = "$projectDir/src/main/assets/osmfeatures/brands"
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
@@ -196,4 +203,11 @@ tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
     targetDir = "$projectDir/src/main/assets/country_metadata"
+}
+
+tasks.register("copyDefaultStringsToEnStrings") {
+    doLast {
+        File("$projectDir/src/main/res/values/strings.xml")
+            .copyTo(File("$projectDir/src/main/res/values-en/strings.xml"), true)
+    }
 }

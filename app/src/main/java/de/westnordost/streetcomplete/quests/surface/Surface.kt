@@ -20,7 +20,8 @@ enum class Surface(val item: Item<String>) {
     GRAVEL        (Item("gravel",         R.drawable.surface_gravel,        R.string.quest_surface_value_gravel)),
     PEBBLES       (Item("pebblestone",    R.drawable.surface_pebblestone,   R.string.quest_surface_value_pebblestone)),
     GRASS         (Item("grass",          R.drawable.surface_grass,         R.string.quest_surface_value_grass)),
-    SAND          (Item("sand",           R.drawable.surface_sand,          R.string.quest_surface_value_sand));
+    SAND          (Item("sand",           R.drawable.surface_sand,          R.string.quest_surface_value_sand)),
+    ROCK          (Item("rock",           R.drawable.surface_rock,          R.string.quest_surface_value_rock));
 }
 
 fun List<Surface>.toItems() = this.map { it.item }
@@ -36,5 +37,5 @@ val UNPAVED_SURFACES = listOf(
 )
 
 val GROUND_SURFACES = listOf(
-    DIRT, GRASS, SAND
+    DIRT, GRASS, SAND, ROCK
 )

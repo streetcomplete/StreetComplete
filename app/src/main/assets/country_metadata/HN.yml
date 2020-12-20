@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Banco Ficohsa, Banco Atlántida, BAC Honduras, Banco de Occidente, Davivienda]
+centerLine: yellow
 mobileCountryCode: 708
 officialLanguages: [es]
 orchardProduces: [banana, coffee, orange, tomato, pineapple, grapefruit, guava, mango, mangosteen, chilli_pepper, sweet_pepper,

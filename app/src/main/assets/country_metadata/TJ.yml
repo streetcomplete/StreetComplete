@@ -5,3 +5,4 @@ mobileCountryCode: 436
 officialLanguages: [tg, ru]
 orchardProduces: [tomato, apple, grape, apricot, peach, lemon, lime, plum, almond, pepper, orange, fig, hazelnut]
 popularReligions: [muslim]
+roofsAreUsuallyFlat: true

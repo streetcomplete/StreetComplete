@@ -36,6 +36,7 @@
 
 # just leave my stuff alone
 -keep class de.westnordost.* { *; }
+-keep class de.westnordost.** { *; }
 
 # see https://github.com/westnordost/StreetComplete/issues/2003
 -keepclassmembers class * implements android.os.Parcelable {

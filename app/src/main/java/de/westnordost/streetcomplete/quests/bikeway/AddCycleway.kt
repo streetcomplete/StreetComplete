@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
-import de.westnordost.streetcomplete.util.isNear
+import de.westnordost.streetcomplete.util.isNearAndAligned
 
 class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
 
@@ -83,12 +83,13 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
                 .filter { maybeSeparatelyMappedCyclewaysFilter.matches(it) }
                 .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry }
 
-            val minDistToWays = 15.0 //m
+            val minAngleToWays = 25.0
 
             // filter out roads with missing sidewalks that are near footways
             roadsWithMissingCycleway.removeAll { road ->
+                val minDistToWays = estimatedWidth(road.tags) / 2.0 + 6
                 val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
-                roadGeometry?.isNear(minDistToWays, maybeSeparatelyMappedCyclewayGeometries) ?: true
+                roadGeometry?.isNearAndAligned(minDistToWays, minAngleToWays, maybeSeparatelyMappedCyclewayGeometries) ?: true
             }
         }
 
@@ -102,6 +103,13 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
         return roadsWithMissingCycleway + oldRoadsWithKnownCycleways
     }
 
+    private fun estimatedWidth(tags: Map<String, String>): Float {
+        val width = tags["width"]?.toFloatOrNull()
+        if (width != null) return width
+        val lanes = tags["lanes"]?.toIntOrNull()
+        if (lanes != null) return lanes * 3f
+        return 12f
+    }
 
     override fun isApplicableTo(element: Element): Boolean? {
         val tags = element.tags ?: return false
@@ -217,11 +225,6 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
                 changes.addOrModify(cyclewayKey, "track")
                 changes.addOrModify("$cyclewayKey:segregated", "no")
             }
-            SIDEWALK_OK -> {
-                // https://wiki.openstreetmap.org/wiki/File:Z239Z1022-10GehwegRadfahrerFrei.jpeg
-                changes.addOrModify(cyclewayKey, "no")
-                changes.addOrModify("sidewalk:" + side.value + ":bicycle", "yes")
-            }
             PICTOGRAMS -> {
                 changes.addOrModify(cyclewayKey, "shared_lane")
                 changes.addOrModify("$cyclewayKey:lane", "pictogram")
@@ -249,10 +252,6 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
         // clear previous cycleway:segregated=no value
         if (cycleway != SIDEWALK_EXPLICIT && cycleway != TRACK) {
             changes.deleteIfPreviously("$cyclewayKey:segregated", "no")
-        }
-        // clear previous sidewalk:bicycle=yes value
-        if (cycleway != SIDEWALK_OK) {
-            changes.deleteIfPreviously("sidewalk:" + side.value + ":bicycle", "yes")
         }
     }
 
@@ -295,14 +294,17 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
               and bicycle != use_sidepath
               and bicycle:backward != use_sidepath
               and bicycle:forward != use_sidepath
+              and sidewalk != separate
         """.toElementFilterExpression() }
 
         // streets that do not have cycleway tagging yet
         private val untaggedRoadsFilter by lazy { """
-            ways with
-              highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+            ways with (
+                highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+                or highway = residential and maxspeed > 30
+              )
               and !cycleway
-              and !cycleway:left 
+              and !cycleway:left
               and !cycleway:right
               and !cycleway:both
               and !sidewalk:bicycle

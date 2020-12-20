@@ -6,7 +6,7 @@ atmOperators: [OTP, OTP Bank, Erste Bank, K&H, Euronet, Erste, K&H Bank, OTP Ban
       Zrt., Euronet Worldwide, Duna Takarék, Takarék Bank, Slovenská sporiteľňa, Raiffeisen Bank Zrt.,
    Pannon Takarék Bank, K&H bank, Erste bank, ERSTE, Duna Takarék Bank, B3 Takarék]
 chargingStationOperators: [NKM Mobilitás Kft., MOL Nyrt., ELMŰ, e-Mobi, E-On, Penny Market, e-mobi, Elektromobilitás Nonprofit Kft.,
-   e-Mobi Elekrtomobilitás Nonprofit Kft., evopro, NKM, Lidl, Evopro, emobi, e.on, NISSAN, ÉMÁSZ, eTank,
+   e-Mobi Elekrtomobilitás Nonprofit Kft., NKM, Lidl, Evopro, evopro, emobi, e.on, NISSAN, ÉMÁSZ, eTank,
    e-mobi.hu, XVIII. kerület, Tesla Motors, Porsche Hungária Kft, Lidl Magyarország Kereskedelmi Bt.,
    LUKOIL Magyarország Kft., IKEA, E-mobi, ABB]
 isAdvisorySpeedLimitKnown: true

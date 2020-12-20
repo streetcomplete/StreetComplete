@@ -22,7 +22,7 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<String, SurfaceAnswer>(
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) {
                     _, _ -> run {
                         DescribeGenericSurfaceDialog(requireContext()) { description ->
-                          applyAnswer(GenericSurfaceAnswer(value, description))
+                            applyAnswer(GenericSurfaceAnswer(value, description))
                         }.show()
                     }
                 }

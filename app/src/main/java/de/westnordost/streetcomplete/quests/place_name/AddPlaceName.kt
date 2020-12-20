@@ -14,12 +14,12 @@ class AddPlaceName(
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""
-        nodes, ways, relations with 
+        nodes, ways, relations with
         (
           shop and shop !~ no|vacant
           or craft
           or office
-          or tourism = information and information = office 
+          or tourism = information and information = office
           or """.trimIndent() +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -96,6 +96,7 @@ class AddPlaceName(
     override val commitMessage = "Determine place names"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
+    override val isReplaceShopEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
 
@@ -114,6 +115,11 @@ class AddPlaceName(
         when(answer) {
             is NoPlaceNameSign -> changes.add("name:signed", "no")
             is PlaceName -> changes.add("name", answer.name)
+            is BrandFeature -> {
+                for ((key, value) in answer.tags.entries) {
+                    changes.addOrModify(key, value)
+                }
+            }
         }
     }
 

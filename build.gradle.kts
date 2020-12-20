@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.1.0")
+        classpath("com.android.tools.build:gradle:4.1.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10")
     }
 }
@@ -54,12 +54,14 @@ tasks.register("updateStreetCompleteData") {
     group = "streetcomplete"
     dependsOn(
         "updateStoreDescriptions",
-        "updateChargingStationOperators",
-        "updateClothesContainerOperators",
-        "updateAtmOperators",
+        //"updateChargingStationOperators",
+        //"updateClothesContainerOperators",
+        //"updateAtmOperators",
         "app:updatePresets",
+        "app:updateNsiPresets",
         "app:updateTranslations",
         "app:updateTranslationCompleteness",
+        "app:copyDefaultStringsToEnStrings",
         "app:generateMetadataByCountry"
         )
 }

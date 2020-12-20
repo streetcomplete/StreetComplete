@@ -345,18 +345,6 @@
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"How many lanes does this road have?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"If there are no road markings, it has no lanes."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"It has no marked lanes"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Please estimate how many cars would fit alongside each other on this road."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Is this a one-way street?"</string>
 
     <!-- Fuzzy -->
@@ -500,6 +488,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
+    <string name="quest_toiletsFee_title">"Do you have to pay to use this restroom?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
@@ -849,9 +838,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_signals">"Crossing with traffic lights"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Uncontrolled crossing"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Crossing without road markings"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -966,9 +952,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"cycle track, both directions"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"none, but cyclists are allowed on pavement"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Advanced"</string>
@@ -1421,6 +1404,7 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"Train station"</string>
+    <string name="quest_buildingType_transportation">"Is this transportation building public?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_university">"University building"</string>
@@ -1548,12 +1532,6 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Solid"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Mostly solid"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Mixture"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Mostly soft"</string>
@@ -1782,4 +1760,9 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="quest_openingHours_name_type_title">"What are the opening hours of %1$s (%2$s)?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Is %1$s (%2$s) wheelchair accessible?"</string>
     <string name="quest_traffic_signals_sound_title">"Are there sound signals for the blind here?"</string>
+    <string name="quest_tactile_paving_kerb_title">"Is there tactile paving on this kerb here?"</string>
+    <string name="quest_kerb_height_title">"What is the height of this kerb?"</string>
+    <string name="quest_kerb_height_raised">"High kerb"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"There is no kerb on this side of crossing"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Kerb ramp"</string>
 </resources>

@@ -10,10 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.data.OsmNode
-import de.westnordost.osmapi.map.data.OsmWay
+import de.westnordost.osmapi.map.data.*
 
 import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
@@ -69,7 +66,8 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         }
     }
 
-    private fun popQuestForm() {
+    private fun popQuestForm(message: String? = null) {
+        message?.let { AlertDialog.Builder(this).setMessage(it).show() }
         questFormContainer.visibility = View.GONE
         supportFragmentManager.popBackStack()
         currentQuestType = null
@@ -139,21 +137,18 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         popQuestForm()
     }
     override fun onComposeNote(questId: Long, group: QuestGroup, questTitle: String) {
-        popQuestForm()
-        AlertDialog.Builder(this)
-            .setMessage("Composing note")
-            .show()
+        popQuestForm("Composing note")
     }
     override fun onSplitWay(osmQuestId: Long) {
-        popQuestForm()
-        AlertDialog.Builder(this)
-            .setMessage("Splitting way")
-            .show()
+        popQuestForm("Splitting way")
     }
     override fun onSkippedQuest(questId: Long, group: QuestGroup) {
-        popQuestForm()
-        AlertDialog.Builder(this)
-            .setMessage("Skipping quest")
-            .show()
+        popQuestForm("Skipping quest")
+    }
+    override fun onDeleteElement(osmQuestId: Long, element: OsmElement) {
+        popQuestForm("Deleting element")
+    }
+    override fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>) {
+        popQuestForm("Replacing shop element")
     }
 }

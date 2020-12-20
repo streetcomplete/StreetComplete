@@ -22,7 +22,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="8dp"
-        tools:text="@string/quest_streetLanes_title"
+        tools:text="@string/quest_lanes_title"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
         />
 

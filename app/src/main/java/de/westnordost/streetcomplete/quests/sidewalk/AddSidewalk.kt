@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.util.isNear
+import de.westnordost.streetcomplete.util.isNearAndAligned
 
 class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
 
@@ -56,17 +56,26 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
             .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry }
         if (maybeSeparatelyMappedSidewalkGeometries.isEmpty()) return roadsWithMissingSidewalks
 
-        val minDistToWays = 15.0 //m
+        val minAngleToWays = 25.0
 
         // filter out roads with missing sidewalks that are near footways
         return roadsWithMissingSidewalks.filter { road ->
+            val minDistToWays = estimatedWidth(road.tags) / 2.0 + 6
             val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
             if (roadGeometry != null) {
-                !roadGeometry.isNear(minDistToWays, maybeSeparatelyMappedSidewalkGeometries)
+                !roadGeometry.isNearAndAligned(minDistToWays, minAngleToWays, maybeSeparatelyMappedSidewalkGeometries)
             } else {
                 false
             }
         }
+    }
+
+    private fun estimatedWidth(tags: Map<String, String>): Float {
+        val width = tags["width"]?.toFloatOrNull()
+        if (width != null) return width
+        val lanes = tags["lanes"]?.toIntOrNull()
+        if (lanes != null) return lanes * 3f
+        return 12f
     }
 
     override fun isApplicableTo(element: Element): Boolean? = null

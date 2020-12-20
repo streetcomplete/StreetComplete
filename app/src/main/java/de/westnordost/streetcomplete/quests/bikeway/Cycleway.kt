@@ -33,8 +33,9 @@ enum class Cycleway {
 
     // shared lane with pictograms
     SIDEWALK_EXPLICIT,
+    // the following not anymore, see #2276
     // no cycleway, but cyclists are allowed on sidewalk
-    SIDEWALK_OK,
+    //SIDEWALK_OK,
 
     // no cycleway
     NONE,
@@ -45,7 +46,7 @@ enum class Cycleway {
     UNKNOWN
 ;
 
-    val isOnSidewalk get() = this == SIDEWALK_EXPLICIT || this == SIDEWALK_OK
+    val isOnSidewalk get() = this == SIDEWALK_EXPLICIT
 
     /** is a lane (cycleway=lane or cycleway=shared_lane), shared on busway doesn't count as a lane
      *  in that sense because it is not a subtag of the mentioned tags */

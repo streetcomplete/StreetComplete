@@ -15,14 +15,13 @@ chargingStationOperators: [Wien Energie GmbH, SMATRICS, Energie AG, EVN, Energie
       illwerke, VKW Mobilität, Lidl Österreich GmbH, IONITY, Hotel Der Stubaierhof, HGL, Envesta, EVN
       AG, E-Werke Bad Radkersburg, ÖBB-Infrastruktur, ÖAMTC, smatrics, VLOTTE P&C, VKW Vlotte, Stadtwerke
       Trofaiach 22 kW, Stadtgemeinde Zell am See, Keba, Ionity, IAM – Institut für Technologie und alternative
-      Mobilität, IAM, Gigasport, Gemeinde Podersdorf, EnergieAG, Energie Burgenland AG, ÖBB, vlotte, vkw
-      vlotte, tim, huma eleven, everynear, elektrodrive-tirol.at, da emobil GmbH, Weiss GmbH Kompetent
-      bei Holz, Vlotte-VKW, Turmöl, Turmstrom, Tiwag- Tiroler Wasserkraftwerke AG, Tiwag, Tesla, TU Wien
-      - Enio, TIWAG-Tiroler Wasserkraft AG, Swarovski, Stadtwerke Mürzzuschlag, Stadtwerke Judenburg,
-   Stadtwerke Hartberg, Stadtgemeinde Mank, Stadtgemeinde Friedberg, Stadtgemeinde Ebreichsdorf, Spar,
-   Linz Strom AG, Linz AG Strom, Gemeinde Kreuzstetten, Gemeinde Kirchdorf in Tirol, Gemeinde Eben, Energie
-      Steiermark AG, Energie Graz GmbH & Co KG, ElectroDrive, ELLA, Direkt Holidays GmbH, DEZ, BH Melk,
-   A1]
+      Mobilität, IAM, Gigasport, Gemeinde Podersdorf, EnergieAG, Energie Graz GmbH & Co KG, Energie Burgenland
+      AG, ÖBB, vlotte, vkw vlotte, tim, huma eleven, everynear, elektrodrive-tirol.at, da emobil GmbH,
+   Weiss GmbH Kompetent bei Holz, Vlotte-VKW, Turmöl, Turmstrom, Tiwag- Tiroler Wasserkraftwerke AG, Tiwag,
+   Tesla, TU Wien - Enio, TIWAG-Tiroler Wasserkraft AG, Swarovski, Stadtwerke Mürzzuschlag, Stadtwerke
+      Judenburg, Stadtwerke Hartberg, Stadtgemeinde Mank, Stadtgemeinde Friedberg, Stadtgemeinde Ebreichsdorf,
+   Spar, Linz Strom AG, Linz AG Strom, Gemeinde Kreuzstetten, Gemeinde Kirchdorf in Tirol, Gemeinde Eben,
+   Energie Steiermark AG, ElectroDrive, ELLA, Direkt Holidays GmbH, DEZ, BH Melk, A1]
 clothesContainerOperators: [Humana, Holding Graz, Kolping, Rotes Kreuz, MA 48, Caritas, Linz AG Abfall, MA48, Graz Holding, humana,
    WAMS, Stadtbetriebe Steyr, Stadt Graz, HUMANA, GVA Baden]
 isAdvisorySpeedLimitKnown: false

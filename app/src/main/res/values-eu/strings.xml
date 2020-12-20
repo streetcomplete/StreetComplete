@@ -362,18 +362,6 @@ Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=
     <string name="quest_serviceType_title">"Ze motako zerbitzu bide da hau?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Zenbat erraia ditu errepide honek?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Margoztatuko marrarik ez badu, ez du errairik"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"ez du margoztatuko errairik"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Kalkulatu zenbat kotxe sartzen diren alboz albo bide honetan."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Norabide bakarreko kalea da?"</string>
 
     <!-- Fuzzy -->
@@ -868,9 +856,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_crossing_type_signals">"Semaforoak dituen bidegurutzea"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Kontrolatu gabeko bidegurutzea"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Errepide-markarik gabeko bidegurutzea"</string>
     <string name="compass_north_one_letter">"I"</string>
 
@@ -985,9 +970,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"bizikletentzako pista, norabide bikoa"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"bat ere ez, baina bizikletek espalioan ibiltzeko baimena dute"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Aurreratua"</string>
@@ -1531,9 +1513,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_address_answer_no_housenumber_message1">"Eraikina honela etiketatu da:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Hau zuzena da, hau ez da eraikin baten parte bat?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santutegia"</string>
 
     <!-- Fuzzy -->
@@ -1627,12 +1606,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Trinkoa"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Gehienbat trinkoa"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Nahasia"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Gehienbat malgua"</string>
@@ -2282,7 +2255,6 @@ mailak"</string>
     <string name="resurvey_intervals_less_often">"Ez galdetu hain sarritan"</string>
     <string name="resurvey_intervals_default">"Lehenetsia"</string>
     <string name="resurvey_intervals_more_often">"Galdetu sarriago"</string>
-    <string name="quest_street_side_puzzle_select">"Ukitu hautatzeko"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) (e)k eskudiruz ordaintzea onartzen du?"</string>
     <string name="quest_busStopBench_tram_name_title">"%s tranbia geltokiak eserlekurik du?"</string>
     <string name="quest_busStopBench_tram_title">"Tranbia geltoki honek badu eserlekurik?"</string>

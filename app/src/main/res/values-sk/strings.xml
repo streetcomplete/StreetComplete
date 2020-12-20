@@ -362,18 +362,6 @@ Ako už bolo spomenuté, aplikácia priamo komunikuje s OSM infraštruktúrou. P
     <string name="quest_serviceType_title">"Aký druh servisnej cesty je toto?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Koľko pruhov má táto cesta?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Ak na ceste nie sú žiadne čiary, potom nemá pruhy."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Nemá vyznačené pruhy"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Prosím odhadnite koľko áut by sa na tejto ceste vošlo vedľa seba."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Je toto jednosmerka?"</string>
 
     <!-- Fuzzy -->
@@ -868,9 +856,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_crossing_type_signals">"Prechod so semaforom"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Prechod bez semaforu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Prechod bez označenia na ceste"</string>
     <string name="compass_north_one_letter">"S"</string>
 
@@ -985,9 +970,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"cyklochodník, oboma smermi"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"nie je, ale cyklisti môžu používať chodník"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Pokročilé"</string>
@@ -1529,9 +1511,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_address_answer_no_housenumber_message1">"Táto budova bola označená ako:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Je to pravda a nie je to len časť budovy?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Svätyňa"</string>
 
     <!-- Fuzzy -->
@@ -1625,12 +1604,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Pevný"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Zväčša pevný"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Zmiešaný"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Zväčša mäkký"</string>

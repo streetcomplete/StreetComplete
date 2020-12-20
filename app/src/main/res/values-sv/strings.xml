@@ -362,18 +362,6 @@ Som nämnts kommunicerar appen direkt med OSM-Infrastruktur. Men innan du skicka
     <string name="quest_serviceType_title">"Vilken typ av tjänstväg är detta?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Hur många körfält har denna väg?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Om vägen saknar mittlinje har det inte några körfält."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Den har inga markerade körfält"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Försök att uppskatta hur många bilar som skulle få plats bredvid varandra på den här vägen."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Är det här en enkelriktad gata?"</string>
 
     <!-- Fuzzy -->
@@ -867,9 +855,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_crossing_type_signals">"Övergångsställe med trafikljus"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Övergångsställe utan trafikljus"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Övergångsställe utan vägmarkeringar"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -984,9 +969,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"separat cykelbana, båda riktningarna"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men cyklister är tillåtna på trottoaren"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Avancerat"</string>
@@ -1531,9 +1513,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_address_answer_no_housenumber_message1">"Byggnaden är definierad som:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Är det korrekt och det är inte enbart en del av en byggnad?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Helgedom"</string>
 
     <!-- Fuzzy -->
@@ -1627,12 +1606,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Fast"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Mestadels fast"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Blandning"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Mestadels mjuk"</string>
@@ -2188,7 +2161,7 @@ Slutligen, kom ihåg att vara säker: var medveten om din omgivning och gå inte
 
     <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"Du hjälpte till att hitta %d adresser!
-Denna information är inte bara nödvändig för postmästaren utan också för alla navigationssystem."</string>
+Dessa uppgifter är viktiga inte bara för brevbäraren utan också för alla navigationssystem."</string>
 
     <!-- Fuzzy -->
     <string name="achievement_building_title">"Höghus"</string>
@@ -2312,7 +2285,6 @@ nivåer"</string>
     <string name="resurvey_intervals_less_often">"Fråga mindre ofta"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Fråga oftare"</string>
-    <string name="quest_street_side_puzzle_select">"Tryck för att välja"</string>
     <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) emot kontanter?"</string>
     <string name="quest_busStopBench_tram_name_title">"Har spårvagnshållplatsen %s en bänk?"</string>
     <string name="quest_busStopBench_tram_title">"Har denna spårvagnshållplats en bänk?"</string>
@@ -2344,7 +2316,6 @@ nivåer"</string>
     <string name="quest_clothes_container_operator_title">"Vem accepterar donationer för denna klädkorg?"</string>
     <string name="quest_charging_station_operator_title">"Vem är operatören för denna laddstation?"</string>
     <string name="link_indoorequal_description">"Upptäck inomhuskartor över köpcentrum, järnvägsstationer o.sv."</string>
-    <string name="link_thenandnow_description">"Nyfiken vilka framsteg vi gjort under åren? Jämför med hur kartan såg ut för mer än 10 år sedan!"</string>
     <string name="achievement_rare_title">"Skattjakt"</string>
     <string name="achievement_rare_solved_X">"Du hittade och löste %d uppdrag som verkligen genomförs sällan, grattis!"</string>
     <string name="achievement_citizen_title">"Medborgare"</string>
@@ -2356,4 +2327,37 @@ nivåer"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Visas rullstolsrampen som en separat väg på kartan?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separat"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"inte separat"</string>
+    <string name="pref_title_sync2">"Ladda upp svar automatiskt"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Beskriv ytan"</string>
+    <string name="open_url">"Öppna webbadress"</string>
+    <string name="quest_buildingType_historic">"Historisk"</string>
+    <string name="quest_buildingType_historic_description">"byggnad av historiskt värde, konstruerad för ett okänt eller oklart syfte"</string>
+    <string name="quest_buildingType_abandoned">"Övergiven"</string>
+    <string name="quest_buildingType_abandoned_description">"oanvänd byggnad vars ursprungliga funktion eller syfte är okänd"</string>
+    <string name="quest_buildingType_ruins">"Ruiner"</string>
+    <string name="quest_buildingType_ruins_description">"övergiven, förstörd och oidentifierbar byggnad"</string>
+    <string name="quest_charging_station_capacity_title">"Hur många bilar kan laddas vid den här laddstationen samtidigt?"</string>
+    <string name="link_disaster_ninja_description">"Karta som visar de senaste naturkatastroferna, intressant för humanitära kartläggare. Visar också många intressanta statistik för att analysera hur väl kartlagda och uppdaterade platser är."</string>
+    <string name="quest_lanes_title">"Hur många körfält för bilar har den här vägen?"</string>
+    <string name="quest_lanes_answer_lanes">"Markerade körfält"</string>
+    <string name="quest_lanes_answer_noLanes">"Inga markerade körfält"</string>
+    <string name="quest_lanes_answer_lanes_odd">"Skillnader för varje sida"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Den har en tvåvägs vänsterfält"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Är detta rätt?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Vad är höjdgränsen under bron?"</string>
+    <string name="quest_maxheight_split_way_hint">"Om det inte gäller hela vägen, överväg att svara \"%s\"."</string>
+    <string name="quest_tactile_paving_kerb_title">"Finns det taktil beläggning på denna trottoarkant här?"</string>
+    <string name="quest_kerb_height_title">"Vad är höjden på denna trottoarkant?"</string>
+    <string name="quest_kerb_height_flush">"Samma nivå som vägytan"</string>
+    <string name="quest_kerb_height_lowered">"Lite högre än vägytan"</string>
+    <string name="quest_kerb_height_raised">"Hög trottoarkant"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Det finns ingen trottoarkant på denna sida av korsningen"</string>
+    <string name="quest_lanes_answer_lanes_description2">"Ange det totala antalet markerade körfält (båda riktningarna) som kan användas av biltrafik. Så, cykel och särskilda parkeringsfält räknas inte.
+Om några körfält är reserverade för bussar, vänligen lämna en anteckning istället."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Ange antalet markerade körfält som kan användas av biltrafik här. Så, cykel och särskilda parkeringsfält räknas inte.
+Om några körfält är reserverade för bussar, vänligen lämna en anteckning istället."</string>
+    <string name="quest_surface_value_rock">"Sten"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Höga lastbilar kan passera"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Höga lastbilar passar inte"</string>
+    <string name="quest_address_street_hint">"Tryck på väg på karta"</string>
 </resources>

@@ -37,18 +37,21 @@ class VerticalLabelView @JvmOverloads constructor(
     }
 
     fun setText(text: String?) {
+        if (this.text == text) return
         this.text = text
         requestLayout()
         invalidate()
     }
 
     fun setTextSize(size: Int) {
+        if (textPaint.textSize == size.toFloat()) return
         textPaint.textSize = size.toFloat()
         requestLayout()
         invalidate()
     }
 
     fun setTextColor(color: Int) {
+        if (textPaint.color == color) return
         textPaint.color = color
         invalidate()
     }

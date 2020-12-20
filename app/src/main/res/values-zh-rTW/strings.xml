@@ -362,18 +362,6 @@
     <string name="quest_serviceType_title">"此條聯絡道路的種類是?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"此條道路有多少車道?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"如果這裡沒有道路標記，它將不會有車道"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"沒有標記的車道"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"請估計這條路的寬度能有多少車並排"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"這條是單行道嗎?"</string>
 
     <!-- Fuzzy -->
@@ -868,9 +856,6 @@
     <string name="quest_crossing_type_signals">"有交通號誌的路口"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"無交通號誌控制的路口"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"無道路標記的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
 
@@ -985,9 +970,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"單車道，雙向"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"無，但允許單車騎士使用人行道"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"進階"</string>
@@ -1530,9 +1512,6 @@
     <string name="quest_address_answer_no_housenumber_message1">"這棟建築被標為："</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"正確嗎，還是這邊不是建築的一部分？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"神社"</string>
 
     <!-- Fuzzy -->
@@ -1627,12 +1606,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"剛性路面"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"偏剛性路面"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"混合型路面"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"偏柔性路面"</string>

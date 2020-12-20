@@ -92,14 +92,20 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         img?.setImageDrawable(resources.getDrawable(R.drawable.ic_living_street))
 
         speedInput = rightSideContainer.findViewById(R.id.maxSpeedInput)
-        speedInput?.requestFocus()
-        speedInput?.let { showKeyboard(it) }
+
         speedInput?.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
 
         speedUnitSelect = rightSideContainer.findViewById(R.id.speedUnitSelect)
         speedUnitSelect?.isGone = speedUnits.size == 1
         speedUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, speedUnits)
         speedUnitSelect?.setSelection(0)
+
+        if (speedType == ZONE && LAST_INPUT_SLOW_ZONE != null) {
+            speedInput?.setText(LAST_INPUT_SLOW_ZONE.toString())
+        } else {
+            speedInput?.requestFocus()
+            speedInput?.let { showKeyboard(it) }
+        }
 
         checkIsFormComplete()
     }
@@ -153,7 +159,11 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         val speed = getSpeedFromInput()!!
         when (speedType) {
             ADVISORY      -> applyAnswer(AdvisorySpeedSign(speed))
-            ZONE          -> applyAnswer(MaxSpeedZone(speed, countryInfo.countryCode, "zone${speed.toValue()}"))
+            ZONE          -> {
+                val zoneX = speed.toValue()
+                LAST_INPUT_SLOW_ZONE = zoneX
+                applyAnswer(MaxSpeedZone(speed, countryInfo.countryCode, "zone$zoneX"))
+            }
             SIGN          -> applyAnswer(MaxSpeedSign(speed))
             else          -> throw IllegalStateException()
         }
@@ -267,6 +277,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         private val POSSIBLY_SLOWZONE_ROADS = listOf("residential", "unclassified", "tertiary" /*#1133*/)
         private val MAYBE_LIVING_STREET = listOf("residential", "unclassified")
         private val ROADS_WITH_DEFINITE_SPEED_LIMIT = listOf("trunk", "motorway", "living_street")
+
+        private var LAST_INPUT_SLOW_ZONE: Int? = null
     }
 }
 

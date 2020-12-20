@@ -22,7 +22,7 @@ enum class ParkingLanePosition {
     UNKNOWN
 }
 
-val ParkingLane.estimatedWidth: Float get() = when(this) {
+val ParkingLane.estimatedWidthOnRoad: Float get() = when(this) {
     is ParallelParkingLane -> 2f * (position?.estimatedWidthFactor ?: 1f)
     is DiagonalParkingLane -> 3f * (position?.estimatedWidthFactor ?: 1f)
     is PerpendicularParkingLane -> 4f * (position?.estimatedWidthFactor ?: 1f)

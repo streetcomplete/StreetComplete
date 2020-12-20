@@ -84,14 +84,13 @@ class AddWheelchairAccessBusiness(
     override val commitMessage = "Add wheelchair access"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair_shop
+    override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
-    override fun getTitle(tags: Map<String, String>) = 
-        if (hasFeatureName(tags) && !tags.containsKey("brand"))
-            R.string.quest_wheelchairAccess_name_type_title
-        else
-            R.string.quest_wheelchairAccess_name_title
-    
+    override fun getTitle(tags: Map<String, String>) =
+        if (hasFeatureName(tags)) R.string.quest_wheelchairAccess_name_type_title
+        else                      R.string.quest_wheelchairAccess_name_title
+
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
         return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
@@ -102,7 +101,7 @@ class AddWheelchairAccessBusiness(
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
         changes.add("wheelchair", answer)
     }
-    
+
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+        tags?.let { featureDictionaryFuture.get().byTags(it).isSuggestion(false).find().isNotEmpty() } ?: false
 }

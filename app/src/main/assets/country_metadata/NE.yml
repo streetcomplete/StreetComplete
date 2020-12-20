@@ -4,3 +4,4 @@ mobileCountryCode: 614
 officialLanguages: [fr, ha]
 orchardProduces: [tomato, guava, mango, mangosteen, date, chilli_pepper, sweet_pepper, pepper]
 popularReligions: [muslim]
+roofsAreUsuallyFlat: true

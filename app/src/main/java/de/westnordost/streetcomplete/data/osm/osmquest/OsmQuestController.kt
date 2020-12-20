@@ -47,9 +47,8 @@ import javax.inject.Singleton
     /** Mark the previously successfully uploaded quest as reverted */
     fun revert(quest: OsmQuest) {
         val status = quest.status
-        quest.status = QuestStatus.REVERT
-        dao.update(quest)
-        onChanged(quest, status)
+        dao.delete(quest.id!!)
+        onRemoved(quest.id!!, status)
     }
 
     /** Mark the quest as answered by the user with the given answer */
@@ -91,28 +90,31 @@ import javax.inject.Singleton
 
     /* ------------------------------------------------------------------------------------------ */
 
-    /** Replace all quests of the given type in the given bounding box with the given quests,
+    /** Replace all quests of the given types in the given bounding box with the given quests,
      *  including their geometry. Called on download of a quest type for a bounding box. */
     fun replaceInBBox(quests: Iterable<OsmQuest>, bbox: BoundingBox, questTypes: List<String>): UpdateResult {
         require(questTypes.isNotEmpty()) { "questTypes must not be empty if not null" }
-        /* All quests in the given bounding box and of the given type should be replaced by the
+        /* All quests in the given bounding box and of the given types should be replaced by the
         *  input list. So, there may be 1. new quests that are added and 2. there may be previous
         *  quests that have been there before but now not anymore, these need to be removed. */
-        val previousQuestIdsByElement = dao.getAll(
-            bounds = bbox,
-            questTypes = questTypes
-        ).associate { ElementKey(it.elementType, it.elementId)  to it.id!! }.toMutableMap()
+        val previousQuests = mutableMapOf<OsmElementQuestType<*>, MutableMap<ElementKey, Long>>()
+        for (quest in dao.getAll(bounds = bbox, questTypes = questTypes)) {
+            val previousQuestIdsByElement = previousQuests.getOrPut(quest.osmElementQuestType, { mutableMapOf() })
+            previousQuestIdsByElement[ElementKey(quest.elementType, quest.elementId)] = quest.id!!
+        }
+
         val addedQuests = mutableListOf<OsmQuest>()
 
         for (quest in quests) {
+            val previousQuestIdsByElement = previousQuests[quest.osmElementQuestType]
             val e = ElementKey(quest.elementType, quest.elementId)
-            if (previousQuestIdsByElement.containsKey(e)) {
+            if (previousQuestIdsByElement != null && previousQuestIdsByElement.containsKey(e)) {
                 previousQuestIdsByElement.remove(e)
             } else {
                 addedQuests.add(quest)
             }
         }
-        val obsoleteQuestIds = previousQuestIdsByElement.values
+        val obsoleteQuestIds = previousQuests.values.flatMap { it.values }
 
         val deletedCount = removeObsolete(obsoleteQuestIds)
         val addedCount = addNew(addedQuests)
@@ -139,12 +141,7 @@ import javax.inject.Singleton
         elementId: Long
     ): UpdateResult {
         geometryDao.put(ElementGeometryEntry(elementType, elementId, updatedGeometry))
-        val e = ElementKey(elementType, elementId)
-
-        var deletedCount = removeObsolete(removedIds)
-        /* Before new quests are unlocked, all reverted quests need to be removed for this element
-           so that they can be created anew as the case may be */
-        deletedCount += dao.deleteAll(statusIn = listOf(QuestStatus.REVERT), element = e)
+        val deletedCount = removeObsolete(removedIds)
         val addedCount = addNew(added)
         onUpdated(added = added.filter { it.id != null }, deleted = removedIds)
 
@@ -209,7 +206,7 @@ import javax.inject.Singleton
         // remove old uploaded quests. These were kept only for the undo/history function
         val oldUploadedQuestsTimestamp = System.currentTimeMillis() - ApplicationConstants.MAX_QUEST_UNDO_HISTORY_AGE
         var deleted = dao.deleteAll(
-            statusIn = listOf(QuestStatus.CLOSED, QuestStatus.REVERT),
+            statusIn = listOf(QuestStatus.CLOSED),
             changedBefore = oldUploadedQuestsTimestamp
         )
         // remove old unsolved and hidden quests. To let the quest cache not get too big and to
@@ -276,8 +273,6 @@ import javax.inject.Singleton
     /** Get all quests for the given type */
     fun getAllForElement(elementType: Element.Type, elementId: Long): List<OsmQuest> =
         dao.getAll(element = ElementKey(elementType, elementId))
-            .filter { it.status != QuestStatus.REVERT }
-
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 

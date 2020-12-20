@@ -36,7 +36,8 @@ class AddCyclewayTest {
     @Test fun `not applicable to road with nearby cycleway`() {
         val mapData = TestMapDataWithGeometry(listOf(
             OsmWay(1L, 1, listOf(1,2), mapOf(
-                "highway" to "primary"
+                "highway" to "primary",
+                "width" to "18"
             )),
             OsmWay(2L, 1, listOf(3,4), mapOf(
                 "highway" to "cycleway"
@@ -53,10 +54,32 @@ class AddCyclewayTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
+    @Test fun `applicable to road with nearby cycleway that is not aligned to the road`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmWay(1L, 1, listOf(1,2), mapOf(
+                "highway" to "primary",
+                "width" to "18"
+            )),
+            OsmWay(2L, 1, listOf(3,4), mapOf(
+                "highway" to "cycleway"
+            ))
+        ))
+        val p1 = OsmLatLon(0.0,0.0)
+        val p2 = p1.translate(50.0, 45.0)
+        val p3 = p1.translate(14.0, 135.0)
+        val p4 = p3.translate(50.0, 75.0)
+
+        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
+        mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+    }
+
     @Test fun `applicable to road with cycleway that is far away enough`() {
         val mapData = TestMapDataWithGeometry(listOf(
             OsmWay(1L, 1, listOf(1,2), mapOf(
-                "highway" to "primary"
+                "highway" to "primary",
+                "width" to "18"
             )),
             OsmWay(2L, 1, listOf(3,4), mapOf(
                 "highway" to "cycleway"
@@ -65,6 +88,27 @@ class AddCyclewayTest {
         val p1 = OsmLatLon(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(16.0, 135.0)
+        val p4 = p3.translate(50.0, 45.0)
+
+        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
+        mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `applicable to small road with cycleway that is far away enough`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmWay(1L, 1, listOf(1,2), mapOf(
+                "highway" to "primary",
+                "lanes" to "2"
+            )),
+            OsmWay(2L, 1, listOf(3,4), mapOf(
+                "highway" to "cycleway"
+            ))
+        ))
+        val p1 = OsmLatLon(0.0,0.0)
+        val p2 = p1.translate(50.0, 45.0)
+        val p3 = p1.translate(10.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
 
         mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
@@ -174,30 +218,9 @@ class AddCyclewayTest {
         )
     }
 
-    @Test fun `apply cycleway on sidewalk permitted answer`() {
-        questType.verifyAnswer(
-            bothSidesAnswer(SIDEWALK_OK),
-            StringMapEntryAdd("cycleway:both", "no"),
-            StringMapEntryAdd("sidewalk", "both"),
-            StringMapEntryAdd("sidewalk:both:bicycle", "yes")
-        )
-    }
-
     private fun bothSidesAnswer(bothSides: Cycleway): CyclewayAnswer {
         val side = CyclewaySide(bothSides)
         return CyclewayAnswer(side, side)
-    }
-
-
-    @Test fun `apply answer where both sides are different but both tag sidewalk`() {
-        questType.verifyAnswer(
-            CyclewayAnswer(CyclewaySide(SIDEWALK_OK), CyclewaySide(SIDEWALK_EXPLICIT)),
-            StringMapEntryAdd("sidewalk", "both"),
-            StringMapEntryAdd("cycleway:left", "no"),
-            StringMapEntryAdd("sidewalk:left:bicycle", "yes"),
-            StringMapEntryAdd("cycleway:right", "track"),
-            StringMapEntryAdd("cycleway:right:segregated", "no")
-        )
     }
 
     @Test fun `apply dual cycle track answer`() {
@@ -377,18 +400,6 @@ class AddCyclewayTest {
             bothSidesAnswer(TRACK),
             StringMapEntryModify("cycleway:both","track", "track"),
             StringMapEntryDelete("cycleway:both:oneway", "no")
-        )
-    }
-
-    @Test fun `deletes sidewalk bicycle yes tag if new answer is not sidewalk ok`() {
-        questType.verifyAnswer(
-            mapOf(
-                "cycleway:both" to "no",
-                "sidewalk:both:bicycle" to "yes"
-            ),
-            bothSidesAnswer(TRACK),
-            StringMapEntryModify("cycleway:both","no", "track"),
-            StringMapEntryDelete("sidewalk:both:bicycle", "yes")
         )
     }
 

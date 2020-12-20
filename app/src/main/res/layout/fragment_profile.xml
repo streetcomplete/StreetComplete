@@ -51,6 +51,7 @@
                 android:textAppearance="@style/TextAppearance.Title"
                 android:textSize="32dp"
                 app:autoSizeMaxTextSize="32dp"
+                app:autoSizeMinTextSize="22dp"
                 app:autoSizeTextType="uniform"
                 android:layout_toEndOf="@id/avatarAndButtonContainer"
                 tools:text="westnordost" />
@@ -130,6 +131,7 @@
                     android:layout_centerHorizontal="true"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMaxTextSize="22dp"
+                    app:autoSizeMinTextSize="16dp"
                     android:textColor="@color/background"
                     tools:text="#1"/>
 
@@ -165,6 +167,7 @@
                     android:layout_centerHorizontal="true"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMaxTextSize="22dp"
+                    app:autoSizeMinTextSize="16dp"
                     android:textColor="@color/background"
                     tools:text="#882"/>
 
@@ -198,6 +201,7 @@
                     android:layout_centerHorizontal="true"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMaxTextSize="22dp"
+                    app:autoSizeMinTextSize="16dp"
                     android:textColor="@color/background"
                     tools:text="82"/>
 
@@ -231,6 +235,7 @@
                     android:layout_centerHorizontal="true"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMaxTextSize="22dp"
+                    app:autoSizeMinTextSize="16dp"
                     android:textColor="@color/background"
                     tools:text="123"/>
 

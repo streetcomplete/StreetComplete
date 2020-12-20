@@ -1,5 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+centerLine: yellow
 isAdvisorySpeedLimitKnown: true
+isCenterLeftTurnLaneKnown: true
 isSlowZoneKnown: false
 mobileCountryCode: 302
 officialLanguages: [en, fr]

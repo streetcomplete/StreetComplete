@@ -18,6 +18,7 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<String>() {
     override val commitMessage = "Add wheelchair access to toilets"
     override val wikiLink = "Key:toilets:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
+    override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_toiletsPart_title

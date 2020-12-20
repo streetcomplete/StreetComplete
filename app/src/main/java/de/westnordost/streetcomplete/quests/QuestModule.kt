@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests
 import dagger.Module
 import dagger.Provides
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
@@ -57,6 +58,9 @@ import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargin
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
+import de.westnordost.streetcomplete.quests.existence.CheckExistence
+import de.westnordost.streetcomplete.quests.lanes.AddLanes
+import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
@@ -76,6 +80,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
+import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
@@ -83,6 +88,7 @@ import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
 import de.westnordost.streetcomplete.quests.surface.*
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
+import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingKerb
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
@@ -101,8 +107,10 @@ import javax.inject.Singleton
     @Provides @Singleton fun questTypeRegistry(
         osmNoteQuestType: OsmNoteQuestType,
         roadNameSuggestionsDao: RoadNameSuggestionsDao,
-        trafficFlowSegmentsApi: TrafficFlowSegmentsApi, trafficFlowDao: WayTrafficFlowDao,
-        featureDictionaryFuture: FutureTask<FeatureDictionary>
+        trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
+        trafficFlowDao: WayTrafficFlowDao,
+        featureDictionaryFuture: FutureTask<FeatureDictionary>,
+        countryInfos: CountryInfos
     ): QuestTypeRegistry = QuestTypeRegistry(listOf(
 
         // ↓ 1. notes
@@ -112,6 +120,7 @@ import javax.inject.Singleton
         AddRoadName(roadNameSuggestionsDao),
         AddPlaceName(featureDictionaryFuture),
         AddOneway(),
+        CheckExistence(featureDictionaryFuture),
         AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
         AddCycleway(), // for any cyclist routers (and cyclist maps)
         AddSidewalk(), // for any pedestrian routers
@@ -120,6 +129,7 @@ import javax.inject.Singleton
         AddIsBuildingUnderground(), //to avoid asking AddHousenumber and other for underground buildings
         AddHousenumber(),
         AddAddressStreet(roadNameSuggestionsDao),
+        CheckShopType(),
         MarkCompletedHighwayConstruction(),
         AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
         AddParkingAccess(), //OSM Carto, mapy.cz, OSMand, Sputnik etc
@@ -131,6 +141,7 @@ import javax.inject.Singleton
         AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style...
         AddMaxSpeed(), // should best be after road surface because it excludes unpaved roads
         AddMaxHeight(), // OSRM and other routing engines
+        AddLanes(), // abstreet, certainly most routing engines
         AddRailwayCrossingBarrier(), // useful for routing
         AddPostboxCollectionTimes(),
         AddOpeningHours(featureDictionaryFuture),
@@ -174,9 +185,11 @@ import javax.inject.Singleton
         AddBabyChangingTable(), // used by OsmAnd in the object description
         AddBikeParkingCover(), // used by OsmAnd in the object description
         AddTactilePavingCrosswalk(), // Paving can be completed while waiting to cross
+        AddTactilePavingKerb(), // Paving can be completed while waiting to cross
+        AddKerbHeight(), // Should be visible while waiting to cross
         AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing
         AddTrafficSignalsVibration(),
-        AddRoofShape(),
+        AddRoofShape(countryInfos),
         AddWheelchairAccessPublicTransport(),
         AddWheelchairAccessOutside(),
         AddTactilePavingBusStop(),

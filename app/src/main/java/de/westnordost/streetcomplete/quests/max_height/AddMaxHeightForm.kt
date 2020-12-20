@@ -5,12 +5,10 @@ import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.numberOrNull
@@ -46,6 +44,10 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
     private fun setMaxHeightSignLayout(resourceId: Int, unit: HeightMeasurementUnit) {
         val contentView = setContentView(resourceId)
+
+        val splitWayHint = contentView.findViewById<TextView>(R.id.splitWayHint)
+        splitWayHint?.text = getString(R.string.quest_maxheight_split_way_hint, getString(R.string.quest_generic_answer_differs_along_the_way))
+        splitWayHint?.isGone = osmElement!!.type == Element.Type.NODE
 
         meterInput = contentView.findViewById(R.id.meterInput)
         feetInput = contentView.findViewById(R.id.feetInput)
@@ -130,8 +132,8 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_maxheight_answer_noSign_question)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
-            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
+            .setPositiveButton(R.string.quest_maxheight_answer_noSign_question_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
+            .setNegativeButton(R.string.quest_maxheight_answer_noSign_question_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
             .show()
         }
     }

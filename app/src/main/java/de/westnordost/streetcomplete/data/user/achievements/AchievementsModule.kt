@@ -335,14 +335,6 @@ object AchievementsModule {
             LinkCategory.GOODIES,
             R.drawable.ic_link_figuregrounder,
             R.string.link_figuregrounder_description
-        ),
-        Link(
-            "thenandnow",
-            "https://mvexel.github.io/thenandnow/",
-            "OSM Then And Now ",
-            LinkCategory.GOODIES,
-            null,
-            R.string.link_neis_one_description
         )
     )
 
@@ -381,9 +373,7 @@ object AchievementsModule {
 
                 8 to links("osm-haiku"),
 
-                10 to links("umap"),
-
-                12 to links("thenandnow")
+                10 to links("umap")
             )
         ),
 
@@ -453,7 +443,8 @@ object AchievementsModule {
                     "AddFerryAccessMotorVehicle",
                     "AddCarWashType",
                     "AddChargingStationOperator",
-                    "AddChargingStationCapacity"
+                    "AddChargingStationCapacity",
+                    "AddLanes"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -580,7 +571,9 @@ object AchievementsModule {
                     "AddTrafficSignalsSound",
                     "AddTrafficSignalsVibration",
                     "AddTactilePavingBusStop",
-                    "AddCrossingIsland"
+                    "AddCrossingIsland",
+                    "AddKerbHeight",
+                    "AddTactilePavingKerb"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -606,7 +599,8 @@ object AchievementsModule {
                     "AddFootwayPartSurface",
                     "AddPathSurface",
                     "AddStepsRamp",
-                    "AddHandrail"
+                    "AddHandrail",
+                    "AddKerbHeight"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -631,7 +625,8 @@ object AchievementsModule {
                     "AddBikeParkingType",
                     "AddCyclewaySegregation",
                     "AddPathSurface",
-                    "AddStepsRamp"
+                    "AddStepsRamp",
+                    "AddKerbHeight"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -649,6 +644,8 @@ object AchievementsModule {
             R.string.achievement_citizen_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
+                    "CheckExistence",
+                    "CheckShopType",
                     "AddSelfServiceLaundry",
                     "AddToiletAvailability",
                     "AddToiletsFee",
@@ -686,6 +683,7 @@ object AchievementsModule {
             R.string.achievement_outdoors_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
+                    "CheckExistence",
                     "AddSport",
                     "AddSummitRegister",
                     "AddReligionToWaysideShrine",

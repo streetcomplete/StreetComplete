@@ -23,7 +23,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     /** find only those roads eligible for asking for oneway */
     private val elementFilter by lazy { """
         ways with highway ~ living_street|residential|service|tertiary|unclassified
-         and !oneway and area != yes and junction != roundabout 
+         and !oneway and area != yes and junction != roundabout
          and (access !~ private|no or (foot and foot !~ private|no))
          and lanes <= 1 and width
     """.toElementFilterExpression() }
@@ -78,7 +78,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     private fun estimateWidthConsumedByParkingLanes(tags: Map<String, String>): Float {
         val sides = createParkingLaneSides(tags) ?: return 0f
-        return (sides.left?.estimatedWidth ?: 0f) + (sides.right?.estimatedWidth ?: 0f)
+        return (sides.left?.estimatedWidthOnRoad ?: 0f) + (sides.right?.estimatedWidthOnRoad ?: 0f)
     }
 
     private fun estimateWidthConsumedByCycleLanes(tags: Map<String, String>): Float {

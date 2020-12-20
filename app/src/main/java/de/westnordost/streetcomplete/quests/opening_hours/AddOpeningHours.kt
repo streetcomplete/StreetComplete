@@ -92,23 +92,24 @@ class AddOpeningHours (
     override val commitMessage = "Add opening hours"
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
+    override val isReplaceShopEnabled = true
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasProperName = hasProperName(tags)
-        val hasNonBrandFeatureName = hasFeatureName(tags) && !tags.containsKey("brand")
+        val hasFeatureName = hasFeatureName(tags)
         // treat invalid opening hours like it is not set at all
         val hasValidOpeningHours = tags["opening_hours"]?.toOpeningHoursRules() != null
         return if (hasValidOpeningHours) {
             when {
-                !hasProperName          -> R.string.quest_openingHours_resurvey_no_name_title
-                !hasNonBrandFeatureName -> R.string.quest_openingHours_resurvey_name_title
-                else                    -> R.string.quest_openingHours_resurvey_name_type_title
+                !hasProperName  -> R.string.quest_openingHours_resurvey_no_name_title
+                !hasFeatureName -> R.string.quest_openingHours_resurvey_name_title
+                else            -> R.string.quest_openingHours_resurvey_name_type_title
             }
         } else {
             when {
-                !hasProperName          -> R.string.quest_openingHours_no_name_title
-                !hasNonBrandFeatureName -> R.string.quest_openingHours_name_title
-                else                    -> R.string.quest_openingHours_name_type_title
+                !hasProperName  -> R.string.quest_openingHours_no_name_title
+                !hasFeatureName -> R.string.quest_openingHours_name_title
+                else            -> R.string.quest_openingHours_name_type_title
             }
         }
     }
@@ -116,11 +117,11 @@ class AddOpeningHours (
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
         val hasProperName = name != null
-        val hasNonBrandFeatureName = hasFeatureName(tags) && !tags.containsKey("brand")
+        val hasFeatureName = hasFeatureName(tags)
         return when {
-            !hasProperName          -> arrayOf(featureName.value.toString())
-            !hasNonBrandFeatureName -> arrayOf(name!!)
-            else                    -> arrayOf(name!!, featureName.value.toString())
+            !hasProperName  -> arrayOf(featureName.value.toString())
+            !hasFeatureName -> arrayOf(name!!)
+            else            -> arrayOf(name!!, featureName.value.toString())
         }
     }
 
@@ -169,5 +170,5 @@ class AddOpeningHours (
         tags?.keys?.containsAny(listOf("name", "brand")) ?: false
 
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+        tags?.let { featureDictionaryFuture.get().byTags(it).isSuggestion(false).find().isNotEmpty() } ?: false
 }

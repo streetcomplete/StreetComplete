@@ -10,7 +10,11 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGe
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
+import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalkForm
 import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
+import de.westnordost.streetcomplete.view.DrawableImage
+import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RotatedCircleDrawable
 import de.westnordost.streetcomplete.view.image_select.*
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
@@ -41,13 +45,17 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
         super.onViewCreated(view, savedInstanceState)
 
         puzzleView.showOnlyRightSide()
-        puzzleView.listener = { showDirectionSelectionDialog() }
+        puzzleView.onClickSideListener = { showDirectionSelectionDialog() }
 
         val defaultResId = R.drawable.ic_oneway_unknown
-        val defaultTitleId = R.string.quest_street_side_puzzle_select
 
-        puzzleView.setRightSideImageResource(selection?.iconResId ?: defaultResId)
-        puzzleView.setRightSideText(resources.getString( selection?.titleResId ?: defaultTitleId ))
+        puzzleView.setRightSideImage(ResImage(selection?.iconResId ?: defaultResId))
+
+        puzzleView.setRightSideText(selection?.titleResId?.let { resources.getString(it) })
+        if (selection == null && !HAS_SHOWN_TAP_HINT) {
+            puzzleView.showRightSideTapHint()
+            HAS_SHOWN_TAP_HINT = true
+        }
 
         streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
     }
@@ -73,7 +81,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
         val items = OnewayAnswer.values().map { it.toItem(resources, wayRotation + mapRotation) }
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 3) { selected ->
             val oneway = selected.value!!
-            puzzleView.replaceRightSideImageResource(oneway.iconResId)
+            puzzleView.replaceRightSideImage(ResImage(oneway.iconResId))
             puzzleView.setRightSideText(resources.getString(oneway.titleResId))
             selection = oneway
             checkIsFormComplete()
@@ -82,6 +90,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
     companion object {
         private const val SELECTION = "selection"
+        private var HAS_SHOWN_TAP_HINT = false
     }
 }
 

@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Banco de Costa Rica, BCR, Banco Nacional, Banco Popular, BAC, BAC Credomatic, ATH, Scotiabank, HSBC,
    Cajero BCR, Banco de Costa Rica (BCR), Banco Popular;4B]
+centerLine: yellow
 chargingStationOperators: [Estación de Recarga]
 mobileCountryCode: 712
 officialLanguages: [es]
