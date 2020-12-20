@@ -12,7 +12,7 @@ class AddKosher : OsmFilterQuestType<String>() {
         (
           amenity ~ restaurant|cafe|fast_food
           or amenity = ice_cream
-          or shop = butcher
+          or shop ~ butcher|supermarket
         )
         and name and (
           !diet:kosher
