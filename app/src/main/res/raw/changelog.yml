@@ -3,7 +3,7 @@ v28.0-beta2: |
   <ul>
   <li>Fix crash on Android 11 (#2355)</li>
   <li>Fix the below bridge height quest was shown for too many roads (#2370)</li>
-  <li>Fix problem on deletion of a node that is a vertex of a way (#2350)</li>
+  <li>Fix problem on deletion of a node that is a vertex of a way (#2369)</li>
   <li>More crash fixes</li>
   </ul>
   <h3>Enhancements</h3>
@@ -11,6 +11,7 @@ v28.0-beta2: |
   <li>Ask for roof shape even if roof levels is 0 - but only in countries where flat roofs are not the norm (#1929)</li>
   <li>Kerb quests: Tag barrier=kerb if it is missing (#2348)</li>
   <li>Do not ask for the bench backrest if the bench type is already recorded (#2365)</li>
+  <li>Lanes quest: Move "differs for each side" option to main UI (#2350)</li>
   <li>Other small enhancements (#1832, #2371, #2368)</li>
   </ul>
 
