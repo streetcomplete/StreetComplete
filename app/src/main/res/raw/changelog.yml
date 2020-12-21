@@ -3,7 +3,7 @@ v28.0-beta2: |
   <ul>
   <li>Fix crash on Android 11 (#2355)</li>
   <li>Fix the below bridge height quest was shown for too many roads (#2370)</li>
-  <li>Fix problem on deletion of a node that is a vertex of a way (#2350)</li>
+  <li>Fix problem on deletion of a node that is a vertex of a way (#2369)</li>
   <li>More crash fixes</li>
   </ul>
   <h3>Enhancements</h3>
