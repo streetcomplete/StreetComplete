@@ -1209,4 +1209,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_shop_gone_replaced_answer_hint">"Écrire un type de lieu ici"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Je ne sais pas ce que c'est. Vous pouvez laisser une note."</string>
     <string name="quest_shop_vacant_type_title">"Cet emplacement de magasin a été vacant. Qu'y a-t'il ici maintenant ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_lanes_answer_lanes_odd2">"Le nombre de voies n'est pas le même de chaque côté"</string>
 </resources>

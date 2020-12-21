@@ -2398,4 +2398,5 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_shop_gone_replaced_answer_hint">"Pon el tipo de lugar aquí"</string>
     <string name="quest_shop_gone_replaced_answer_error">"No sé qué es esto. Considere dejar una nota."</string>
     <string name="quest_shop_vacant_type_title">"Este establecimiento ha estado vacío. ¿Qué hay aquí ahora?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"El número de carriles es diferente para cada dirección"</string>
 </resources>

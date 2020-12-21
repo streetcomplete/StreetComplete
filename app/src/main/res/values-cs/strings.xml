@@ -2423,4 +2423,5 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Napište druh místa/obchodu"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Nevím, co tu je. Zvažte zanechání poznámky."</string>
     <string name="quest_shop_vacant_type_title">"Tento obchod byl prázdný. Co tu je nyní?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Počet pruhů je na každé straně jiný"</string>
 </resources>

@@ -2128,4 +2128,26 @@
     <string name="quest_kerb_height_raised">"Ψηλό κράσπεδο"</string>
     <string name="quest_kerb_height_answer_no_kerb">"Δεν υπάρχει κράσπεδο σε αυτήν την πλευρά της διάβασης"</string>
     <string name="quest_kerb_height_lowered_ramp">"Κράσπεδο ράμπας"</string>
+    <string name="quest_lanes_answer_lanes_description2">"Καθορίστε τον συνολικό αριθμό των σηματοδοτημένων λωρίδων (και των δύο κατευθύνσεων) για την χρήση της κυκλοφορίας των αυτοκινήτων. Έτσι, οι μοτοσυκλέτες και οι ειδικές λωρίδες στάθμευσης δεν μετράνε.
+Εάν υπάρχουν λωρίδες που προορίζονται για λεωφορεία, παρακαλώ αφήστε ένα σημείωμα."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Καθορίστε εδώ τον αριθμό των σηματοδοτημένων λωρίδων για την χρήση της κυκλοφορίας των αυτοκινήτων. Έτσι, οι μοτοσυκλέτες και οι ειδικές λωρίδες στάθμευσης δεν μετράνε.
+Εάν υπάρχουν λωρίδες που προορίζονται για λεωφορεία, παρακαλώ αφήστε ένα σημείωμα."</string>
+    <string name="quest_surface_value_rock">"Πέτρα"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Μπορούν να περάσουν ψηλά φορτηγά"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Τα ψηλά φορτηγά δεν χωράνε"</string>
+    <string name="quest_address_street_hint">"Χτυπήστε το δρόμο στον χάρτη"</string>
+    <string name="quest_crossing_type_marked">"Σηματοδοτημένες διαβάσεις"</string>
+    <string name="quest_parkingType_street_side">"Χώρος στάθμευσης ακριβώς έξω από το δρόμο"</string>
+    <string name="quest_parkingType_lane">"Χώρος στάθμευσης σε δρόμο"</string>
+    <string name="quest_existence_title">"Αυτό είναι ακόμα εδώ; (%s)"</string>
+    <string name="quest_existence_name_title">"Είναι ακόμα το %1$s εδώ; (%2$s)"</string>
+    <string name="quest_tracktype_grade2a">"Στερεό αλλά μη ασφαλτοστρωμένο"</string>
+    <string name="quest_tracktype_grade3a">"Κυρίως στερεό"</string>
+    <string name="quest_generic_answer_does_not_exist">"Δεν υπάρχει…"</string>
+    <string name="osm_element_gone_warning">"Προειδοποίηση: Αυτό δεν μπορεί να αναιρεθεί!"</string>
+    <string name="osm_element_gone_description">"Είστε βέβαιοι ότι δεν υπάρχει, ούτε καν σε διαφορετική τοποθεσία; Σε περίπτωση αμφιβολίας, καλύτερα να αφήσετε μια σημείωση."</string>
+    <string name="osm_element_gone_confirmation">"Δεν υπάρχει"</string>
+    <string name="leave_note">"Αφήστε σημείωμα"</string>
+    <string name="quest_shop_gone_title">"Τι είναι εδώ τώρα;"</string>
+    <string name="quest_shop_gone_vacant_answer">"Είναι κενό"</string>
 </resources>

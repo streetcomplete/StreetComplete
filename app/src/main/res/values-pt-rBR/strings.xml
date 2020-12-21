@@ -2167,4 +2167,5 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Digite o tipo de lugar aqui"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Não sei o que é isso.  Considere deixar uma nota."</string>
     <string name="quest_shop_vacant_type_title">"Esta loja está vazia.  O que está aqui agora?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"A contagem de pistas difere para cada lado"</string>
 </resources>

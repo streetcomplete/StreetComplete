@@ -1043,4 +1043,5 @@ riconoscimento"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Inserisci il tipo di attività"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Non so cosa sia. Se puoi lascia di una nota."</string>
     <string name="quest_shop_vacant_type_title">"Questo negozio era libero. Cosa c'è ora?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Il numero di corsie è differente su ogni lato"</string>
 </resources>

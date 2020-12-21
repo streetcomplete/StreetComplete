@@ -1105,4 +1105,5 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Ova je trgovina bila upražnjena. Što je sad ovdje?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Broj traka je različit na svakoj strani"</string>
 </resources>
