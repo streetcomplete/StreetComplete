@@ -18,7 +18,7 @@ class MarkCompletedConstructionForm : AYesNoQuestAnswerFragment<CompletedConstru
         val month = tomorrow.get(Calendar.MONTH)
         val day = tomorrow.get(Calendar.DAY_OF_MONTH)
         val dpd = DatePickerDialog(requireContext(), { _, yearSelected, monthSelected, dayOfMonthSelected ->
-            applyAnswer(OpeningDateAnswer(Date(yearSelected-1900, monthSelected, dayOfMonthSelected)))
+            applyAnswer(OpeningDateAnswer(GregorianCalendar(yearSelected, monthSelected, dayOfMonthSelected).time))
         }, year, month, day)
         dpd.setTitle(resources.getString(R.string.quest_construction_opening_date_title))
         dpd.datePicker.minDate = tomorrow.timeInMillis
