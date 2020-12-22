@@ -660,6 +660,8 @@ object AchievementsModule {
                     "AddReligionToPlaceOfWorship",
                     "AddRecyclingType",
                     "AddAcceptsCash",
+                    "AddVegetarian",
+                    "AddVegan",
                     // tourist related
                     "AddInformationToTourism",
                     "AddBoardType",
