@@ -452,10 +452,10 @@ object AchievementsModule {
                 2 to links("city_roads"), // put it here because it shows roads
 
 
-                4 to links("kartaview", "mapillary"),
                 5 to links("osrm"), // routing engines are not that interesting for end users
                 6 to links("openrouteservice"),
-                7 to links("graphhopper")
+                7 to links("graphhopper"),
+                12 to links("kartaview", "mapillary") // useful to OSM, but not directly OSM and interesting only to extreme enthusiasts
             )
         ),
 
