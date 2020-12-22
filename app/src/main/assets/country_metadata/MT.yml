@@ -5,3 +5,4 @@ isSlowZoneKnown: true
 mobileCountryCode: 278
 officialLanguages: [mt, en]
 orchardProduces: [tomato, grape, strawberry, lemon, lime, peach, orange, fig, olive, apricot, pear, apple, grapefruit]
+roofsAreUsuallyFlat: true

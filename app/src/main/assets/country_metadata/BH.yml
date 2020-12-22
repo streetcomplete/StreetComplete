@@ -7,3 +7,4 @@ mobileCountryCode: 426
 officialLanguages: [ar]
 orchardProduces: [date, tomato, lemon, lime, banana, grape, chilli_pepper, sweet_pepper]
 popularReligions: [muslim]
+roofsAreUsuallyFlat: true
