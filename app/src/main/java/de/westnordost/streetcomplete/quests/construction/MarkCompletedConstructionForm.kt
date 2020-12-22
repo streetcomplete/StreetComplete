@@ -23,9 +23,6 @@ class MarkCompletedConstructionForm : AYesNoQuestAnswerFragment<CompletedConstru
         val month = tomorrow.get(Calendar.MONTH)
         val day = tomorrow.get(Calendar.DAY_OF_MONTH)
         val dpd = DatePickerDialog(requireContext(), { _, yearSelected, monthSelected, dayOfMonthSelected ->
-            Log.e("Solved year ", yearSelected.toString())
-            Log.e("Solved month ", monthSelected.toString())
-            Log.e("Solved dayOfMonth ", dayOfMonthSelected.toString())
             applyAnswer(OpeningDateAnswer(Date(yearSelected-1900, monthSelected, dayOfMonthSelected)))
         }, year, month, day)
         dpd.setTitle(resources.getString(R.string.quest_construction_completion_date_title))

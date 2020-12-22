@@ -53,6 +53,5 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
                 }
             }
         }
-        Log.e("Solved !!!!!! ", "AKAKKAKAKAKA")
     }
 }

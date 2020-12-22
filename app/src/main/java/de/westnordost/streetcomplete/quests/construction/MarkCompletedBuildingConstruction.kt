@@ -38,6 +38,5 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructi
                 }
             }
         }
-        Log.e("Solved !!!!!! ", "AKAKKAKAKAKA")
     }
 }
