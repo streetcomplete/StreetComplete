@@ -33,16 +33,6 @@ class DownloadService : SingleIntentService(TAG) {
     private val binder = Interface()
 
     // listener
-    private var progressListenerRelay = object : OnDownloadedItemListener {
-        override fun onStarted(item: DownloadItem) {
-            currentDownloadItem = item
-            progressListener?.onStarted(item)
-        }
-        override fun onFinished(item: DownloadItem) {
-            currentDownloadItem = null
-            progressListener?.onFinished(item)
-        }
-    }
     private var progressListener: DownloadProgressListener? = null
 
     // state
@@ -60,8 +50,6 @@ class DownloadService : SingleIntentService(TAG) {
         if (!value || !isDownloading) notificationController.hide()
         else notificationController.show()
     }
-
-    private var currentDownloadItem: DownloadItem? = null
 
     init {
         Injector.applicationComponent.inject(this)
@@ -98,7 +86,6 @@ class DownloadService : SingleIntentService(TAG) {
         try {
             for (downloader in downloaders) {
                 if (cancelState.get()) return
-                downloader.downloadedItemListener = progressListenerRelay
                 downloader.download(tiles, cancelState)
             }
         } catch (e: Exception) {
@@ -127,8 +114,6 @@ class DownloadService : SingleIntentService(TAG) {
         val isPriorityDownloadInProgress: Boolean get() = isPriorityDownload
 
         val isDownloadInProgress: Boolean get() = isDownloading
-
-        val currentDownloadItem: DownloadItem? get() = this@DownloadService.currentDownloadItem
 
         var showDownloadNotification: Boolean
             get() = showNotification

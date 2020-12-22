@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.download
 import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
@@ -25,7 +24,6 @@ class QuestDownloader @Inject constructor(
     private val questTypeRegistry: QuestTypeRegistry,
     private val userStore: UserStore
 ) : Downloader {
-    override var downloadedItemListener: OnDownloadedItemListener? = null
 
     @Synchronized override fun download(tiles: TilesRect, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
@@ -46,9 +44,6 @@ class QuestDownloader @Inject constructor(
     }
 
     private fun downloadQuestTypes(tiles: TilesRect, bbox: BoundingBox, cancelState: AtomicBoolean) {
-        val downloadItem = DownloadItem(R.drawable.ic_search_black_128dp, "Multi download")
-        downloadedItemListener?.onStarted(downloadItem)
-
         // always first download notes, note positions are blockers for creating other quests
         downloadNotes(bbox)
 
@@ -57,8 +52,6 @@ class QuestDownloader @Inject constructor(
         downloadOsmElementQuestTypes(bbox)
 
         downloadedTilesDao.put(tiles, DownloadedTilesType.QUESTS)
-
-        downloadedItemListener?.onFinished(downloadItem)
     }
 
     private fun hasQuestsAlready(tiles: TilesRect): Boolean {

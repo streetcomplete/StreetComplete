@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.DbModule
 import de.westnordost.streetcomplete.data.OsmApiModule
 import de.westnordost.streetcomplete.data.upload.UploadModule2
 import de.westnordost.streetcomplete.data.download.DownloadModule
+import de.westnordost.streetcomplete.data.download.DownloadModule2
 import de.westnordost.streetcomplete.data.download.DownloadService
 import de.westnordost.streetcomplete.data.meta.MetadataModule
 import de.westnordost.streetcomplete.data.osm.upload.changesets.ChangesetAutoCloserWorker
@@ -47,6 +48,7 @@ import javax.inject.Singleton
     OsmNotesModule::class,
     UploadModule::class,
     DownloadModule::class,
+    DownloadModule2::class,
     QuestModule::class,
     DbModule::class,
     MetadataModule::class,

@@ -6,11 +6,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.download.DownloadItem
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -29,30 +27,16 @@ class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress),
     private val animateOutRunnable = Runnable { animateOutProgressView() }
 
     private val downloadProgressListener = object : DownloadProgressListener {
-        private var startedButNoQuestsYet = false
 
         override fun onStarted() {
-            startedButNoQuestsYet = true
-            launch(Dispatchers.Main) { animateInProgressView() }
-        }
-
-        override fun onStarted(item: DownloadItem) {
-            startedButNoQuestsYet = false
-            launch(Dispatchers.Main) { progressView.enqueueIcon(resources.getDrawable(item.iconResId)) }
-        }
-
-        override fun onFinished(item: DownloadItem) {
-            launch(Dispatchers.Main) { progressView.pollIcon() }
+            launch(Dispatchers.Main) {
+                animateInProgressView()
+                progressView.enqueueIcon(resources.getDrawable(R.drawable.ic_search_black_128dp))
+            }
         }
 
         override fun onFinished() {
             mainHandler.postDelayed(animateOutRunnable, 1000)
-        }
-
-        override fun onSuccess() {
-            if (startedButNoQuestsYet && downloadProgressSource.isPriorityDownloadInProgress) {
-                mainHandler.postDelayed({ context?.toast(R.string.nothing_more_to_download) }, 600)
-            }
         }
     }
 
@@ -101,10 +85,6 @@ class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress),
     private fun updateDownloadProgress() {
         if (downloadProgressSource.isDownloadInProgress) {
             showProgressView()
-            val item = downloadProgressSource.currentDownloadItem
-            if (item != null) {
-                progressView.setIcon(resources.getDrawable(item.iconResId))
-            }
         } else {
             hideProgressView()
         }

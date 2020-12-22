@@ -38,10 +38,6 @@ import javax.inject.Singleton
     override val isDownloadInProgress: Boolean get() =
         downloadService?.isDownloadInProgress == true
 
-    /** @return the item that is currently being downloaded or null if nothing is downloaded */
-    override val currentDownloadItem: DownloadItem? get() =
-        downloadService?.currentDownloadItem
-
     var showNotification: Boolean
         get() = downloadService?.showDownloadNotification == true
         set(value) { downloadService?.showDownloadNotification = value }

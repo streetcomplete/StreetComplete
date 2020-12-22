@@ -38,8 +38,6 @@ import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment;
-import de.westnordost.streetcomplete.data.download.DownloadItem;
-import de.westnordost.streetcomplete.data.notifications.NewAchievementNotification;
 import de.westnordost.streetcomplete.data.notifications.Notification;
 import de.westnordost.streetcomplete.data.notifications.NotificationsSource;
 import de.westnordost.streetcomplete.data.quest.Quest;
@@ -75,11 +73,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject LocationRequestFragment locationRequestFragment;
 	@Inject QuestAutoSyncer questAutoSyncer;
 
-	@Inject QuestController questController;
-	@Inject
-	DownloadController downloadController;
+	@Inject DownloadController downloadController;
 	@Inject UploadController uploadController;
-	@Inject NotificationsSource notificationsSource;
 	@Inject UnsyncedChangesCountSource unsyncedChangesCountSource;
 
 	@Inject SharedPreferences prefs;
@@ -364,10 +359,6 @@ public class MainActivity extends AppCompatActivity implements
 			= new DownloadProgressListener()
 	{
 		@AnyThread @Override public void onStarted() {}
-
-		@Override public void onFinished(@NonNull DownloadItem item) {}
-
-		@Override public void onStarted(@NonNull DownloadItem item) {}
 
 		@AnyThread @Override public void onError(@NonNull final Exception e)
 		{
