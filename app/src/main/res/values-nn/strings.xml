@@ -85,7 +85,7 @@
     <string name="quest_openingHours_comment_description">"Ver kort og konsis. Bruk helst ordlyden frå skiltet, for eksempel «etter avtale». Merk at mangel på skilt med opningstider ikkje nødvendigvis tyder at det ikkje finst faste opningstider."</string>
     <string name="quest_buildingLevels_title">"Kor mange etasjar har denne bygningen?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Kor mange etasjar har denne bygningsdelen?"</string>
-    <string name="quest_roofShape_title">"Kva grunnform har taket på bygningen?"</string>
+    <string name="quest_roofShape_title">"Kva grunnform har taket på denne bygningen?"</string>
     <string name="quest_roofShape_select_one">"Vel éi:"</string>
     <string name="quest_roofShape_show_more">"Vel fleire …"</string>
 
@@ -343,11 +343,11 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_cycleway_value_lane_dual">"sykkelfelt – begge retningar"</string>
     <string name="quest_cycleway_value_track_dual">"sykkelveg – begge retningar"</string>
     <string name="pref_category_advanced">"Avansert"</string>
-    <string name="pref_title_quests">"Val av oppdragstypar"</string>
+    <string name="pref_title_quests">"Vel oppdragstypar"</string>
     <string name="quest_enabled">"Tilby"</string>
     <string name="quest_type">"Oppdragstype"</string>
     <string name="action_reset">"Nullstill"</string>
-    <string name="reorder_quest_priority_hint">"Trykk og hald for å endra rekkjefølgja på oppdragstypane. Rekkjefølgja avgjer prioritering for vising på kartet."</string>
+    <string name="reorder_quest_priority_hint">"Trykk og hald for å endra rekkjefølgja på oppdrags­typane. Rekkjefølgja avgjer prioritering for vising på kartet."</string>
     <string name="undo_confirm_positive">"Angra"</string>
     <string name="undo_confirm_negative">"Avbryt"</string>
     <string name="quest_dietType_vegetarian_name_title">"Har %s vegetarmat på menyen?"</string>
@@ -356,7 +356,7 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_dietType_explanation_vegan">"Veganmat inneheld ingen dyreprodukt (ikkje kjøt, fisk, fjørfe, mjølk, egg, …)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Vegetarmat inneheld ikkje kjøt, fisk eller fjørfe."</string>
     <string name="quest_dietType_explanation">"Svar berre ja dersom det finst eit fullverdig tilbod for denne dietten – ikkje for eksempel berre forrettar."</string>
-    <string name="quest_carWashType_title">"Kva type bilvask vert tilboden her?"</string>
+    <string name="quest_carWashType_title">"Kva type bilvask kan ein få her?"</string>
     <string name="quest_carWashType_automated">"Automatisk"</string>
     <string name="quest_carWashType_selfService">"Sjølvbetent"</string>
     <string name="quest_carWashType_service">"Tilsette vaskar bilen"</string>
@@ -538,7 +538,7 @@ som intervall skilde med binde-/tankestrek: «1,3» eller «2–6»."</string>
     <string name="quest_buildingType_toilets">"Toalett"</string>
     <string name="quest_maxspeed_sign_question">"Kva fastset fartsgrensa?"</string>
     <string name="notification_channel_download">"Last ned"</string>
-    <string name="quest_playground_access_title">"Er leikeplassen offentleg tilgjengeleg?"</string>
+    <string name="quest_playground_access_title">"Er denne leikeplassen offentleg tilgjengeleg?"</string>
     <string name="quest_segregated_title">"Korleis er gang- og sykkelvegen utforma her?"</string>
     <string name="dialog_tutorial_upload">"For å lasta opp endringane manuelt kan du bruka verktøylinje­knappen som ser slik ut."</string>
     <string name="quest_segregated_separated">"Syklistar og fotgjengarar har kvar sitt felt"</string>
@@ -568,7 +568,7 @@ som intervall skilde med binde-/tankestrek: «1,3» eller «2–6»."</string>
     <string name="quest_wheelchairAccess_outside_title">"Er denne staden tilgjengeleg med rullestol?"</string>
     <string name="quest_traffic_signals_button_title">"Har trafikklysa ein knapp for fotgjengarar?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Kor mange motorsyklar kan parkera her?"</string>
-    <string name="quest_motorcycleParkingCoveredStatus_title">"Er det tak over denne motorsykkelparkeringa?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Er det tak over denne motorsykkel­parkeringa?"</string>
     <string name="default_disabled_msg_maxspeed">"Denne oppdragstypen vert som standard ikkje vist, då du vanlegvis må kontrollera heile gata for fartsskilt, ikkje berre den merkte gate­stubben. Dette kan vera veldig mykje arbeid berre for eitt oppdrag."</string>
     <string name="pref_title_quests_restore_hidden">"Gjenopprett gøymde oppdrag"</string>
     <string name="restore_hidden_success">"Gjenoppretta %d gøymde oppdrag"</string>
@@ -708,7 +708,7 @@ Og hugs å halda deg trygg: Pass på kor du set foten, og gå aldri inn på priv
     <string name="link_category_maps_title">"Kart"</string>
     <string name="link_category_maps_description">"Kart bygde på OpenStreetMap"</string>
     <string name="link_category_showcase_title">"Framvising"</string>
-    <string name="link_category_showcase_description">"Tenester og apper bygde på OpenStreetMap"</string>
+    <string name="link_category_showcase_description">"Tenester og appar bygde på OpenStreetMap"</string>
     <string name="link_category_goodies_title">"Godsaker"</string>
     <string name="link_category_goodies_description">"Interessante kartrelaterte ting du kan sjå nærare på"</string>
     <string name="link_cyclosm_description">"Eit kart for syklistar"</string>
@@ -724,14 +724,14 @@ Og hugs å halda deg trygg: Pass på kor du set foten, og gå aldri inn på priv
     <string name="link_opnvkarte_description">"Eit kart over ruter og stopp for kollektiv­transport"</string>
     <string name="link_pic4review_description">"Bidra til OSM berre ved å sjå på bilete av gater i byen din"</string>
     <string name="link_wiki_description">"Wikien er utgangspunktet for alt som er knytt til OpenStreetMap"</string>
-    <string name="link_learnosm_description">"Ny til OpenStreetMap? Her er ei innføring."</string>
+    <string name="link_learnosm_description">"Ny i OpenStreetMap-verda? Her er ei innføring."</string>
     <string name="link_neis_one_description">"Ei enorm samling statistikk for bidrag­sytarar til OpenStreetMap. Har blant anna informasjon om kor og når du bidrog, kven andre som kartlegg i same område som deg og rankinglister."</string>
     <string name="link_welcome_mat_description">"Generell informasjon om OpenStreetMap og korleis ein kan arbeida med OSM som organisasjon."</string>
     <string name="link_mapillary_description">"Ei teneste og ein app for deling av gatebilete samla inn på dugnad og som lovleg kan brukast til OSM-arbeid."</string>
     <string name="link_openstreetcam_description">"Ei teneste og ein app for deling av gatebilete samla inn på dugnad og som lovleg kan brukast til OSM-arbeid."</string>
     <string name="link_openrouteservice_wheelchair_description">"Detaljert ruteskildring for rullestolbrukarar."</string>
     <string name="link_nominatim_description">"Geokodar for OSM-data, bruk av mange tenester"</string>
-    <string name="link_city_roads_description">"Teiknar opp alle vegane i ein by, for trykk på T-skjorter, krus, …"</string>
+    <string name="link_city_roads_description">"Teikn opp alle vegane i ein by, for trykk på T-skjorter, krus osv."</string>
     <string name="link_myosmatic_description">"Lag bykart for utskrift på 1-2-3, eventuelt med gateindeks"</string>
     <string name="link_brouter_description">"Truleg den beste rute­planleggjaren for syklistar"</string>
     <string name="link_show_me_the_way_description">"Sjå endringar i OSM i sanntid"</string>
@@ -746,7 +746,7 @@ Og hugs å halda deg trygg: Pass på kor du set foten, og gå aldri inn på priv
     <string name="achievement_first_edit_title">"Første løyste oppdrag"</string>
     <string name="achievement_first_edit_description">"Velkommen til OpenStreetMap-fellesskapet! På profil­sida kan lesa meir om dei ulike oppdrags­typane som du har løyst."</string>
     <string name="achievement_surveyor_title">"Landmålar"</string>
-    <string name="achievement_surveyor_solved_X">"Du har løyst %d oppdrag! Hald fram slik for å låsa opp fleire bragder, som inneheld lenkjer til OSM og andre kart­relaterte appar og prosjekt."</string>
+    <string name="achievement_surveyor_solved_X">"Du har løyst %d oppdrag! Hald fram slik for å låsa opp fleire bragder. Bragdene inneheld lenkjer til OSM og andre kart­relaterte appar og prosjekt."</string>
     <string name="achievement_regular_title">"Stamgjest"</string>
     <string name="achievement_regular_description">"Du har bidrege i %d dagar til OSM med appen! Regel­messige bidrags­ytarar utgjer ryggrada til OSM, så takk for at du er så engasjert! ❤"</string>
     <string name="achievement_bicyclist_title">"Syklist"</string>
@@ -761,7 +761,7 @@ Ikkje berre postmannen har bruk for dette; det har alle navigasjons­system."</s
 Merk at appen berre ber om hus­nummeret etter at hustypen er fastsett."</string>
     <string name="achievement_blind_title">"Sjette sans"</string>
     <string name="achievement_blind_solved_X">"Du har løyst %d oppdrag som nyttige for synshemma!"</string>
-    <string name="achievement_pedestrian_title">"Springar"</string>
+    <string name="achievement_pedestrian_title">"Sprintar"</string>
     <string name="achievement_pedestrian_solved_X">"Du har løyst %d oppdrag som er interessante for fotgjengarar!"</string>
     <string name="achievement_veg_title">"Snill med dyr"</string>
     <string name="achievement_veg_solved_X">"Du har løyst %d oppdrag som er interessante for dei som ikkje et kjøt!"</string>
@@ -780,7 +780,7 @@ Merk at appen berre ber om hus­nummeret etter at hustypen er fastsett."</string
     <string name="user_statistics_country_rank">"Rangering i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartleggingsportal %s"</string>
     <string name="user_statistics_filter_by_country">"etter land"</string>
-    <string name="user_statistics_filter_by_quest_type">"etter oppdragstype"</string>
+    <string name="user_statistics_filter_by_quest_type">"etter type oppdrag"</string>
     <string name="user_profile_global_rank">"Global
 rangering"</string>
     <string name="user_profile_local_rank">"Rangering i
@@ -807,7 +807,7 @@ nivå"</string>
     <string name="quest_board_type_nature">"Natur (fleire emne)"</string>
     <string name="quest_board_type_notice_board">"Det er ei oppslagstavle"</string>
     <string name="quest_board_type_public_transport">"Kollektiv­tilbod"</string>
-    <string name="quest_board_type_title">"Kva handlar informasjons­tavla om?"</string>
+    <string name="quest_board_type_title">"Kva handlar denne informasjons­tavla om?"</string>
     <string name="quest_sidewalk_separately_mapped">"Ja, vist for seg på kart"</string>
     <string name="quest_board_type_map">"Det er eit kart"</string>
     <string name="quest_board_type_map_title">"Er det eit kart og berre eit kart?"</string>
@@ -846,12 +846,12 @@ nivå"</string>
     <string name="quest_summit_register_title">"Finst det ei turbok å skriva namnet sitt i på %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Er denne hjarte­startaren innandørs?"</string>
     <string name="about_title_translate">"Hjelp til med å omsetja appen"</string>
-    <string name="about_description_translate">"%1$s er omsett %2$d%%"</string>
+    <string name="about_description_translate">"Appen er omsett %2$d %% til %1$s"</string>
     <string name="quest_oneway2_title">"Er dette ei einvegskøyrd gate? I kva retning?"</string>
     <string name="quest_oneway2_dir">"Einvegskøyrd i denne retninga"</string>
     <string name="quest_oneway2_no_oneway">"Ikkje einvegskøyrd"</string>
     <string name="quest_maxweight_select_sign">"Vel skilt"</string>
-    <string name="quest_steps_incline_title">"Kva retning leier oppover i trappa?"</string>
+    <string name="quest_steps_incline_title">"Kva retning leier oppover i denne trappa?"</string>
     <string name="quest_steps_incline_up">"Denne vegen leier oppover"</string>
     <string name="quest_step_count_title">"Kor mange trappesteg har trappa?"</string>
     <string name="quest_traffic_signals_sound_title">"Finst det lydsignal for blinde her?"</string>
@@ -860,7 +860,7 @@ nivå"</string>
     <string name="quest_busStopRef_title">"Kva er referansenummeret til dette busstoppet?"</string>
     <string name="quest_tramStopRef_title">"Kva er referansenummeret til dette trikkestoppet?"</string>
     <string name="quest_buildingType_bungalow_description2">"lite, éinetasjes hus (sommarhus, feriehytte, …)"</string>
-    <string name="quest_railway_crossing_barrier_title2">"Korleis er jernbane­overgangen sikra?"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Korleis er denne jernbane­overgangen sikra?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Ingen hindringar"</string>
     <string name="quest_steps_ramp_title">"Har denne trappa rampe? Kva type?"</string>
     <string name="quest_steps_ramp_none">"Ingen (brukbar) rampe"</string>
@@ -869,14 +869,14 @@ nivå"</string>
     <string name="quest_steps_ramp_wheelchair">"Rullestol­rampe"</string>
     <string name="quest_atm_operator_title">"Kva bank høyrer denne minibanken til?"</string>
     <string name="quest_clothes_container_operator_title">"Kven tek imot klede lagde i denne innsamlings­boksen?"</string>
-    <string name="quest_charging_station_operator_title">"Kve er eigar av denne ladestasjonen?"</string>
+    <string name="quest_charging_station_operator_title">"Kven er eigar av denne ladestasjonen?"</string>
     <string name="link_indoorequal_description">"Finn kart for innandørs­navigering på kjøpesenter, togstasjonar osv."</string>
     <string name="achievement_rare_title">"Skattejakt"</string>
     <string name="achievement_rare_solved_X">"Du har funne og løyst %d oppdrag som svært sjeldant vert fullførte. Gratulerer!"</string>
     <string name="achievement_citizen_title">"Medborgar"</string>
     <string name="achievement_citizen_solved_X">"Du har løyst %d oppdrag som er nyttige for kvardagslivet i byen!"</string>
-    <string name="achievement_outdoors_title">"Friluftsliv"</string>
-    <string name="achievement_outdoors_solved_X">"Du har løyst %d oppdrag som er interessante for friluftsliv­entusiastar!"</string>
+    <string name="achievement_outdoors_title">"Friskus"</string>
+    <string name="achievement_outdoors_solved_X">"Du har løyst %d oppdrag som er interessante for friluftslivs­entusiastar!"</string>
     <string name="quest_pedestrian_crossing_island">"Har denne fotgjengar­overgangen ei trafikkøy?"</string>
     <string name="quest_generic_answer_noSign">"Det finst ikkje noko skilt"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Er rullestol­rampen vist som ein åtskild veg på kartet?"</string>
@@ -900,10 +900,10 @@ nivå"</string>
     <string name="quest_lanes_answer_lanes_odd">"Forskjellig på kvar side"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Han har eit venstresvinge­felt med tovegskøyring"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Er dette rett?"</string>
-    <string name="quest_maxheight_below_bridge_title">"Kva er fri høgd under brua?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Kva er fri høgd under denne brua?"</string>
     <string name="quest_maxheight_split_way_hint">"Viss ho ikkje gjeld heile vegstykket, kan du svara «%s»."</string>
     <string name="quest_tactile_paving_kerb_title">"Finst det leielinjer for blinde på fortaus­kanten her?"</string>
-    <string name="quest_kerb_height_title">"Kva er høgda til fortauskanten?"</string>
+    <string name="quest_kerb_height_title">"Kva er høgda til denne fortauskanten?"</string>
     <string name="quest_kerb_height_flush">"Same nivå som vegen"</string>
     <string name="quest_kerb_height_lowered">"Litt høgare enn vegen"</string>
     <string name="quest_kerb_height_raised">"Høg fortauskant"</string>
@@ -915,4 +915,22 @@ nivå"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Høge vogntog kan passera"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Høge vogntog får ikkje plass"</string>
     <string name="quest_address_street_hint">"Trykk på gata/vegen på kartet"</string>
+    <string name="quest_crossing_type_marked">"Overgang med vegmarkering"</string>
+    <string name="quest_parkingType_street_side">"Parkering i grøftekanten"</string>
+    <string name="quest_parkingType_lane">"Parkering på vegen"</string>
+    <string name="quest_existence_title">"Finst denne framleis her? (%s)"</string>
+    <string name="quest_existence_name_title">"Finst %1$s framleis her? (%2$s)"</string>
+    <string name="quest_tracktype_grade2a">"Fast, men ikkje asfaltert"</string>
+    <string name="quest_tracktype_grade3a">"Stort sett fast"</string>
+    <string name="quest_generic_answer_does_not_exist">"Han finst ikkje …"</string>
+    <string name="osm_element_gone_warning">"Åtvaring: Du kan ikkje angra denne handlinga!"</string>
+    <string name="osm_element_gone_description">"Er du sikker på at han ikkje finst, heller ikkje like i nærleiken? Er du i tvil, er det betre å leggja att ein merknad."</string>
+    <string name="osm_element_gone_confirmation">"Han finst ikkje"</string>
+    <string name="leave_note">"Legg att ein merknad"</string>
+    <string name="quest_shop_gone_title">"Kva er her i staden for?"</string>
+    <string name="quest_shop_gone_vacant_answer">"Det er ikkje noko her"</string>
+    <string name="quest_shop_gone_replaced_answer">"Ein/ei/eit …"</string>
+    <string name="quest_shop_gone_replaced_answer_hint">"Type plass som er her"</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Veit ikkje kva det er. Vurder å leggja att ein merknad."</string>
+    <string name="quest_shop_vacant_type_title">"Dette butikk­lokalet har stått tomt. Kva er her no?"</string>
 </resources>

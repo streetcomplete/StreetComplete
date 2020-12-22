@@ -22,7 +22,6 @@ class CheckExistence(
           (
             amenity = atm
             or amenity = telephone
-            or amenity = waste_basket
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or birds_nest = stork
           )
@@ -31,6 +30,7 @@ class CheckExistence(
           (
             amenity = clock
             or amenity = bench
+            or amenity = waste_basket
             or amenity = post_box
             or leisure = picnic_table
             or leisure = firepit

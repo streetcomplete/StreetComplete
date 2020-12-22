@@ -1613,7 +1613,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_openingHours_timeSelect_next">"Další"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_title">"Jaká je pevnost povrchu této stezky/cesty?"</string>
+    <string name="quest_tracktype_title">"Jak pevný je povrch této stezky/cesty?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Pevný"</string>
@@ -2405,4 +2405,23 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Vysoký náklaďák může projet"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Vysoký náklaďák se nevejde"</string>
     <string name="quest_address_street_hint">"Ťukněte na cestu na mapě"</string>
+    <string name="quest_crossing_type_marked">"Označený přechod"</string>
+    <string name="quest_parkingType_street_side">"Parkuje se přímo vedle cesty"</string>
+    <string name="quest_parkingType_lane">"Parkuje se na cestě"</string>
+    <string name="quest_existence_title">"Je to tu pořád? (%s)"</string>
+    <string name="quest_existence_name_title">"Je tu pořád %1$s? (%2$s)"</string>
+    <string name="quest_tracktype_grade2a">"Víceméně pevný"</string>
+    <string name="quest_tracktype_grade3a">"Spíše pevný"</string>
+    <string name="quest_generic_answer_does_not_exist">"Neexistuje to..."</string>
+    <string name="osm_element_gone_warning">"Pozor: Tato akce nelze vrátit zpět!"</string>
+    <string name="osm_element_gone_description">"Jste si jistí, že to co tu bylo již neexistuje? Třeba nedaleko? Pokud jste na pochybách, je lepší zanechat k místu poznámku."</string>
+    <string name="osm_element_gone_confirmation">"Neexistuje to"</string>
+    <string name="leave_note">"Nechat poznámku"</string>
+    <string name="quest_shop_gone_title">"Co je tu místo toho?"</string>
+    <string name="quest_shop_gone_vacant_answer">"Je to prázdné"</string>
+    <string name="quest_shop_gone_replaced_answer">"..."</string>
+    <string name="quest_shop_gone_replaced_answer_hint">"Napište druh místa/obchodu"</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Nevím, co tu je. Zvažte zanechání poznámky."</string>
+    <string name="quest_shop_vacant_type_title">"Tento obchod byl prázdný. Co tu je nyní?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Počet pruhů je na každé straně jiný"</string>
 </resources>

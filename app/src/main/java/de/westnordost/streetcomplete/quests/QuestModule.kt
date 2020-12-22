@@ -120,6 +120,9 @@ import javax.inject.Singleton
         AddRoadName(roadNameSuggestionsDao),
         AddPlaceName(featureDictionaryFuture),
         AddOneway(),
+        // not that useful as such, but should be shown before CheckExistence because this is
+        // basically the check whether the postbox is still there in countries in which it is enabled
+        AddPostboxCollectionTimes(),
         CheckExistence(featureDictionaryFuture),
         AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
         AddCycleway(), // for any cyclist routers (and cyclist maps)
@@ -143,7 +146,6 @@ import javax.inject.Singleton
         AddMaxHeight(), // OSRM and other routing engines
         AddLanes(), // abstreet, certainly most routing engines
         AddRailwayCrossingBarrier(), // useful for routing
-        AddPostboxCollectionTimes(),
         AddOpeningHours(featureDictionaryFuture),
         AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
         AddOrchardProduce(),

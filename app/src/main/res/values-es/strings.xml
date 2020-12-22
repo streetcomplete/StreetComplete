@@ -2381,6 +2381,8 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_maxheight_answer_noSign_question_no">"Los camiones altos no caben"</string>
     <string name="quest_address_street_hint">"Toque la carretera en el mapa"</string>
     <string name="quest_crossing_type_marked">"Cruze marcado"</string>
+    <string name="quest_parkingType_street_side">"Estacionamiento justo al lado de la carretera"</string>
+    <string name="quest_parkingType_lane">"Estacionamiento en la calzada"</string>
     <string name="quest_existence_title">"¿Sigue aquí? (%s)"</string>
     <string name="quest_existence_name_title">"¿%1$s sigue aquí? (%2$s)"</string>
     <string name="quest_tracktype_grade2a">"Sólido pero no pavimentado"</string>
@@ -2395,4 +2397,6 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_shop_gone_replaced_answer">"Un(a)…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Pon el tipo de lugar aquí"</string>
     <string name="quest_shop_gone_replaced_answer_error">"No sé qué es esto. Considere dejar una nota."</string>
+    <string name="quest_shop_vacant_type_title">"Este establecimiento ha estado vacío. ¿Qué hay aquí ahora?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"El número de carriles es diferente para cada dirección"</string>
 </resources>

@@ -18,8 +18,6 @@
     <!-- Fuzzy -->
     <string name="pref_category_display">"Вид"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"Резерв для тайлов на внешнем накопителе (MB)"</string>
 
     <!-- Fuzzy -->
@@ -1278,8 +1276,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_pathSurface_title">"Какое покрытие у этой тропы?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Выберите наиболее подходящий вариант:"</string>
 
     <!-- Fuzzy -->
@@ -1891,7 +1887,7 @@
     <string name="quest_tourism_information_name_title">"Какая именно здесь туристическая информация %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tourism_information_office">"туристско-информационный центр"</string>
+    <string name="quest_tourism_information_office">"Туристско-информационный центр"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tourism_information_board">"Информационная доска"</string>
@@ -1900,10 +1896,10 @@
     <string name="quest_tourism_information_terminal">"Информационный терминал"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tourism_information_map">"карта"</string>
+    <string name="quest_tourism_information_map">"Карта"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tourism_information_guidepost">"указатель"</string>
+    <string name="quest_tourism_information_guidepost">"Указатель"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"для общих отходов"</string>
@@ -2339,4 +2335,30 @@
     <string name="quest_maxheight_answer_noSign_question_yes">"Высокие грузовики могут проехать"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Высокие грузовики не могут проехать"</string>
     <string name="quest_address_street_hint">"Нажмите на дорогу на карте"</string>
+    <string name="quest_crossing_type_marked">"Переход с разметкой/знаком"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_parkingType_street_side">"Парковка на обочине"</string>
+    <string name="quest_parkingType_lane">"Парковка на проезжей части"</string>
+    <string name="quest_existence_title">"Находится ли этот объект тут? (%s)"</string>
+    <string name="quest_existence_name_title">"Находится ли %1$s тут? (%2$s)"</string>
+    <string name="quest_tracktype_grade2a">"Твёрдое но без покрытия"</string>
+    <string name="quest_tracktype_grade3a">"Преимущественно твёрдое"</string>
+    <string name="quest_generic_answer_does_not_exist">"Не существует..."</string>
+    <string name="osm_element_gone_warning">"Внимание: Это действие нельзя отменить!"</string>
+
+    <!-- Fuzzy -->
+    <string name="osm_element_gone_description">"Вы уверены, что этого места не существует, даже в ближайшей окрестности? Если есть сомнения, лучше оставить заметку."</string>
+    <string name="osm_element_gone_confirmation">"Это не существует"</string>
+    <string name="leave_note">"Оставить заметку"</string>
+    <string name="quest_shop_gone_title">"Что сейчас здесь находится вместо?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_shop_gone_vacant_answer">"Съехало"</string>
+    <string name="quest_shop_gone_replaced_answer">"..."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_shop_gone_replaced_answer_hint">"Введите категорию точки здесь"</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Не знаю, что это. Советуем оставить заметку."</string>
+    <string name="quest_shop_vacant_type_title">"Магазин выехал. Что сейчас расположено тут?"</string>
 </resources>

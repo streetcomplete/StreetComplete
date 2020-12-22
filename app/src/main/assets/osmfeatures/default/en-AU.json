@@ -123,15 +123,15 @@
                 },
                 "shop/cheese": {
                     "name": "Cheese Shop",
-                    "terms": "Cheesemonger"
+                    "terms": "cheesemonger"
                 },
                 "shop/chemist": {
                     "name": "Pharmacy",
-                    "terms": "Chemist"
+                    "terms": "chemist"
                 },
                 "shop/chocolate": {
                     "name": "Chocolate Shop",
-                    "terms": "Chocolatier"
+                    "terms": "chocolatier"
                 },
                 "shop/garden_centre": {
                     "name": "Garden Centre"
