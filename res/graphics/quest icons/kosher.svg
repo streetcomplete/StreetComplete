@@ -1,96 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="249.59296mm"
-   height="242.89384mm"
-   viewBox="0 0 249.59296 242.89384"
-   version="1.1"
-   id="svg1098"
-   inkscape:version="1.0.1 (1.0.1+r74)"
-   sodipodi:docname="kosher.svg">
-  <defs
-     id="defs1092">
-    <rect
-       x="56.360947"
-       y="51.147003"
-       width="104.53376"
-       height="143.88765"
-       id="rect1672" />
-  </defs>
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="160.02136"
-     inkscape:cy="468.33697"
-     inkscape:document-units="mm"
-     inkscape:current-layer="text1670"
-     inkscape:document-rotation="0"
-     showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1020"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1" />
-  <metadata
-     id="metadata1095">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(25.330055,-24.25251)">
-    <g
-       id="g1715">
-      <ellipse
-         style="fill:#000200;fill-opacity:1;fill-rule:evenodd;stroke-width:0.346583"
-         id="path1678-3"
-         cx="99.466423"
-         cy="145.69943"
-         rx="124.79648"
-         ry="121.44692" />
-      <ellipse
-         style="fill:#fffff8;fill-opacity:1;fill-rule:evenodd;stroke-width:0.327196"
-         id="path1678-3-2"
-         cx="99.466423"
-         cy="145.69943"
-         rx="117.81539"
-         ry="114.65321" />
-      <circle
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0.264583"
-         id="path1678"
-         cx="99.466423"
-         cy="145.69943"
-         r="93.98307" />
-      <g
-         aria-label="K"
-         transform="matrix(13.793149,0,0,13.499123,-738.11078,-619.06086)"
-         id="text1670"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1672);fill:#ffffff;fill-opacity:1;stroke:none">
-        <path
-           d="m 57.332842,52.794957 h 1.989536 v 2.816357 l 2.868033,-2.816357 h 2.309929 l -3.715523,3.653512 4.097928,4.061755 H 62.391949 L 59.322378,57.47166 v 3.038564 h -1.989536 z"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1"
-           id="path849" />
-      </g>
-    </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="249.59mm" height="242.89mm" version="1.1" viewBox="0 0 249.59 242.89" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(25.33 -24.253)">
+  <g>
+   <g fill-rule="evenodd">
+    <ellipse cx="99.466" cy="145.7" rx="124.8" ry="121.45" fill="#000200" stroke-width=".34658"/>
+    <ellipse cx="99.466" cy="145.7" rx="117.82" ry="114.65" fill="#fffff8" stroke-width=".3272"/>
+    <circle cx="99.466" cy="145.7" r="93.983" stroke-width=".26458"/>
+   </g>
+   <g transform="matrix(13.793 0 0 13.499 -738.11 -619.06)" fill="#fff" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;shape-inside:url(#rect1672);white-space:pre" aria-label="K">
+    <path d="m57.333 52.795h1.9895v2.8164l2.868-2.8164h2.3099l-3.7155 3.6535 4.0979 4.0618h-2.4908l-3.0696-3.0386v3.0386h-1.9895z" fill="#fff" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+   </g>
   </g>
+ </g>
 </svg>
