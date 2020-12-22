@@ -12,16 +12,16 @@ class AddPitchSurfaceTest {
     @Test fun `not applicable to pitch area without tagged sport`() {
         assertIsNotApplicable("leisure" to "pitch")
     }
-    
-    private fun assertIsApplicable(vararg vararg pairs: Pair<K, V>) {
+
+    private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
         assertTrue(questType.isApplicableTo(create(*pairs)))
     }
-    
-    private fun assertIsNotApplicable(vararg vararg pairs: Pair<K, V>) {
+
+    private fun assertIsNotApplicable(vararg pairs: Pair<String, String>) {
         assertFalse(questType.isApplicableTo(create(*pairs)))
     }
-    
-    private fun create(vararg vararg pairs: Pair<K, V>) = OsmWay(1L, 1, listOf(1,2,3), mapOf(pairs))
+
+    private fun create(vararg pairs: Pair<String, String>) = OsmWay(1L, 1, listOf(1,2,3), mapOf(*pairs))
 
     @Test fun `applicable to pitch area with single valid sport`() {
         val mapData = TestMapDataWithGeometry(listOf(
