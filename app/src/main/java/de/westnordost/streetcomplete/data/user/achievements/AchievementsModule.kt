@@ -685,6 +685,7 @@ object AchievementsModule {
                 listOf(
                     "CheckExistence",
                     "AddSport",
+                    "AddPitchSurface",
                     "AddSummitRegister",
                     "AddReligionToWaysideShrine",
                     // from pedestrian
