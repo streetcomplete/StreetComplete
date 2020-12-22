@@ -86,11 +86,11 @@ object AchievementsModule {
         ),
         // TODO not sure where to put these links
         Link(
-            "openstreetcam",
-            "https://openstreetcam.org",
-            "OpenStreetCam",
+            "kartaview",
+            "https://kartaview.org/map/",
+            "KartaView",
             LinkCategory.INTRO,
-            R.drawable.ic_link_openstreetcam,
+            R.drawable.ic_link_kartaview,
             R.string.link_openstreetcam_description
         ),
 
