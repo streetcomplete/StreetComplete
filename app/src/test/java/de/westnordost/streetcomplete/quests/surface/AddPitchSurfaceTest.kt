@@ -37,7 +37,7 @@ class AddPitchSurfaceTest {
         assertIsApplicable("leisure" to "pitch", "sport" to "multi;table_tennis")
     }
 
-    @Test fun `not applicable to pitch area with with sport value that is substring of valid one`() {
+    @Test fun `not applicable to pitch area with sport value that is substring of valid one`() {
         assertIsNotApplicable("leisure" to "pitch", "sport" to "table_soccer")
     }
 
