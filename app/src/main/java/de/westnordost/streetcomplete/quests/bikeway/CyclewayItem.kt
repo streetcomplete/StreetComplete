@@ -16,8 +16,12 @@ fun Cycleway.isAvailableAsSelection(countryCode: String): Boolean =
     /* unspecified lanes are only ok in Belgium (no distinction made, all lanes are dashed) */
     && (this != UNSPECIFIED_LANE || countryCode == "BE")
 
-fun Cycleway.asItem(isLeftHandTraffic: Boolean) : Item<Cycleway> =
-    Item(this, getIconResId(isLeftHandTraffic), getTitleResId())
+fun Cycleway.asItem(isLeftHandTraffic: Boolean) : Item<Cycleway> {
+    if(this == NONE) {
+        return Item(this, R.drawable.ic_cycleway_none_in_selection, getTitleResId())
+    }
+    return Item(this, getIconResId(isLeftHandTraffic), getTitleResId())
+}
 
 fun Cycleway.getIconResId(isLeftHandTraffic: Boolean): Int =
     if (isLeftHandTraffic) getLeftHandTrafficIconResId() else getRightHandTrafficIconResId()
