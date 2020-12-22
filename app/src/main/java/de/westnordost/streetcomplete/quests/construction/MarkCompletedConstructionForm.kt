@@ -8,7 +8,7 @@ import java.util.*
 
 class MarkCompletedConstructionForm : AYesNoQuestAnswerFragment<CompletedConstructionAnswer>() {
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_construction_completes_at_known_date) { setFinishDate() }
+        OtherAnswer(R.string.quest_construction_opens_at_known_date) { setFinishDate() }
     )
 
     private fun setFinishDate() {
@@ -20,7 +20,7 @@ class MarkCompletedConstructionForm : AYesNoQuestAnswerFragment<CompletedConstru
         val dpd = DatePickerDialog(requireContext(), { _, yearSelected, monthSelected, dayOfMonthSelected ->
             applyAnswer(OpeningDateAnswer(Date(yearSelected-1900, monthSelected, dayOfMonthSelected)))
         }, year, month, day)
-        dpd.setTitle(resources.getString(R.string.quest_construction_completion_date_title))
+        dpd.setTitle(resources.getString(R.string.quest_construction_opening_date_title))
         dpd.datePicker.minDate = tomorrow.timeInMillis
         dpd.show()
     }

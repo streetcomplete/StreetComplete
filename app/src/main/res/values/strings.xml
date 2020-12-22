@@ -956,6 +956,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
     <string name="quest_shop_gone_replaced_answer_error">"Don't know what this is. Consider leaving a note."</string>
     <string name="quest_shop_vacant_type_title">This shop has been vacant. What\'s here now?</string>
-    <string name="quest_construction_completes_at_known_date">Completes at known date</string>
-    <string name="quest_construction_completion_date_title">When object will be open?</string>
+    <string name="quest_construction_opens_at_known_date">Opens at date…</string>
+    <string name="quest_construction_opening_date_title">When will it be open?</string>
 </resources>
