@@ -75,7 +75,6 @@ object AchievementsModule {
             R.string.link_disaster_ninja_description
         ),
 
-        // TODO not sure where to put these links
         Link(
             "mapillary",
             "https://www.mapillary.com",
@@ -84,7 +83,7 @@ object AchievementsModule {
             R.drawable.ic_link_mapillary,
             R.string.link_mapillary_description
         ),
-        // TODO not sure where to put these links
+
         Link(
             "kartaview",
             "https://kartaview.org/map/",
@@ -453,6 +452,7 @@ object AchievementsModule {
                 2 to links("city_roads"), // put it here because it shows roads
 
 
+                4 to links("kartaview", "mapillary"),
                 5 to links("osrm"), // routing engines are not that interesting for end users
                 6 to links("openrouteservice"),
                 7 to links("graphhopper")
