@@ -1,14 +1,11 @@
 package de.westnordost.streetcomplete.quests.construction
 
-import android.util.Log
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.quests.bus_stop_ref.BusStopRef
-import de.westnordost.streetcomplete.quests.bus_stop_ref.NoBusStopRef
 import java.util.*
 
 class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {

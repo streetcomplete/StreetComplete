@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.construction
 
-import android.util.Log
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString

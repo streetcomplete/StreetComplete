@@ -1,14 +1,9 @@
 package de.westnordost.streetcomplete.quests.construction
 
 import android.app.DatePickerDialog
-import android.os.Bundle
-import android.util.Log
-import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
 import java.util.*
 
 class MarkCompletedConstructionForm : AYesNoQuestAnswerFragment<CompletedConstructionAnswer>() {
