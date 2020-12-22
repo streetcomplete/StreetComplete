@@ -34,7 +34,7 @@ As you probably noticed, you can choose *"Cannot answer"* in StreetComplete and 
 
 You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). While processing and solving notes, it may become apparent that there is a systematic problem in that users misunderstand the UI or the wording when solving StreetComplete quests.
 
-If you find such user experience problems, please report them back in the [issue tracker of StreetComplete](https://github.com/westnordost/StreetComplete/issues). Do not forget to add links to examples, e.g. the notes StreetComplete mappers submitted.
+If you find such user experience problems, please report them back in the [issue tracker of StreetComplete](https://github.com/streetcomplete/StreetComplete/issues). Do not forget to add links to examples, e.g. the notes StreetComplete mappers submitted.
 
 ## Testing and reporting issues
 
@@ -42,7 +42,7 @@ If you experience problems, crashes or a quest is not clear to you, feel free to
 
 1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
 2. Remember to report map style issues [in the appropriate repository](#issues-of-dependencies).
-3. Look [whether your issue has already been reported](https://github.com/westnordost/StreetComplete/issues).
+3. Look [whether your issue has already been reported](https://github.com/streetcomplete/StreetComplete/issues).
 
 ### Issues of dependencies
 
@@ -56,7 +56,7 @@ The full list of dependencies and other StreetComplete-related projects is liste
 
 ### Suggesting new quests
 
-Not all ideas for quests are actually eligible to be included in this app. So, before you suggest a new quest, it is very important that you read the [Quest Guidelines for StreetComplete](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
+Not all ideas for quests are actually eligible to be included in this app. So, before you suggest a new quest, it is very important that you read the [Quest Guidelines for StreetComplete](https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
 
 If you can code, see also how to [develop your own quest](#developing-new-quests).
 
@@ -76,7 +76,7 @@ There are many reasonable feature requests and ideas for new question types in t
 
 Note that StreetComplete also uses [some dependencies](#issues-of-dependencies), where contributions are likely also accepted and help StreetComplete, too.
 
-If you need to find things where help is especially appreciated [have a look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
+If you need to find things where help is especially appreciated [have a look at the issues tagged with "help wanted"](https://github.com/streetcomplete/StreetComplete/labels/help%20wanted).
 
 To build and test StreetComplete [download and install Android Studio](https://developer.android.com/studio/) which comes bundled with all tools needed, checkout and open the project in this application and click on the green play button on the top.
 
@@ -87,9 +87,9 @@ See also a [documentation of program architecture](ARCHITECTURE.md).
 You want to contribute a new quest right away? That's great!
 However, we strongly suggest to [**open an issue** discussing the quest](#suggesting-new-quests), before creating a PR, so we can see if your quest idea meets the criteria and can be included in StreetComplete.
 
-In case you **don't have an idea of a quest?** Look [at the existing issues](https://github.com/westnordost/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22+sort%3Areactions-%2B1-desc). Sorted by 👍 reactions you can also see which are the most requested quests.
+In case you **don't have an idea of a quest?** Look [at the existing issues](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22+sort%3Areactions-%2B1-desc). Sorted by 👍 reactions you can also see which are the most requested quests.
 
-Always remember to pay attention to [the quest guidelines](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
+Always remember to pay attention to [the quest guidelines](https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
 
 ### StreetComplete-related projects
 
@@ -105,12 +105,12 @@ Always remember to pay attention to [the quest guidelines](https://github.com/we
 * [StreetCompleteJSON](https://github.com/goldfndr/StreetCompleteJSON) by [@goldfndr](https://github.com/goldfndr) listing all tags edited by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete)
 * [blacklistr](https://github.com/ENT8R/blacklistr) by [@ENT8R](https://github.com/ENT8R) for visualizing StreetComplete's country exclusion list
 * [NotesReview](https://github.com/ENT8R/NotesReview) by [@ENT8R](https://github.com/ENT8R) for reviewing notes with a specific keyword (here: `StreetComplete`)
-* [streetcomplete-mapstyle](https://github.com/ENT8R/streetcomplete-mapstyle) by [@ENT8R](https://github.com/ENT8R) maintaining the mapstyle of StreetComplete
-* [oneway-data-api](https://github.com/ENT8R/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
+* [streetcomplete-mapstyle](https://github.com/streetcomplete/streetcomplete-mapstyle) by [@ENT8R](https://github.com/ENT8R) maintaining the mapstyle of StreetComplete
+* [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
 * [crops-parser](https://github.com/rugk/crops-parser) by [@rugk](https://github.com/rugk) for parsing data for the orchard quest
 * [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement
-* [sc-photo-service](https://github.com/exploide/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
-* [sc-statistics-service](https://github.com/westnordost/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
+* [sc-photo-service](https://github.com/streetcomplete/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
+* [sc-statistics-service](https://github.com/streetcomplete/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
 

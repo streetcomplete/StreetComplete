@@ -5,8 +5,8 @@ import dagger.Module
 import dagger.Provides
 import oauth.signpost.OAuthConsumer
 import oauth.signpost.OAuthProvider
-import oauth.signpost.basic.DefaultOAuthConsumer
-import oauth.signpost.basic.DefaultOAuthProvider
+import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer
+import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider
 import javax.inject.Named
 import javax.inject.Provider
 
@@ -23,17 +23,17 @@ object UserModule {
         StatisticsDownloader(STATISTICS_BACKEND_URL)
 
     @Provides fun oAuthStore(prefs: SharedPreferences): OAuthStore = OAuthStore(
-        prefs, Provider { defaultOAuthConsumer() }
+        prefs, Provider { oAuthConsumer() }
     )
 
-	@Provides fun oAuthProvider(): OAuthProvider = DefaultOAuthProvider(
+	@Provides fun oAuthProvider(): OAuthProvider = OkHttpOAuthProvider(
         BASE_OAUTH_URL + "request_token",
         BASE_OAUTH_URL + "access_token",
         BASE_OAUTH_URL + "authorize"
     )
 
-	@Provides fun defaultOAuthConsumer(): OAuthConsumer =
-        DefaultOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET)
+	@Provides fun oAuthConsumer(): OAuthConsumer =
+	    OkHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET)
 
     @Provides fun loginStatusSource(userController: UserController): LoginStatusSource = userController
 

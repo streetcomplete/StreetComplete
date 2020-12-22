@@ -6,3 +6,4 @@ officialLanguages: [ar]
 orchardProduces: [guava, mango, mangosteen, grape, banana, orange, tomato, date, peach, lemon, lime, papaya, coffee, apple,
    chilli_pepper, sweet_pepper, fig, apricot, pear]
 popularReligions: [muslim]
+roofsAreUsuallyFlat: true

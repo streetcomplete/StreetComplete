@@ -387,7 +387,7 @@ Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetM
     <string name="quest_name_noName_confirmation_positive">"Sí, no té nom"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_add_times">"Afegir horaris d'apertura"</string>
+    <string name="quest_openingHours_add_times">"Afegir horaris d'obertura"</string>
 
     <!-- Fuzzy -->
     <string name="crash_message">"Voleu enviar l'informe d'error al desenvolupador?"</string>
@@ -1800,6 +1800,7 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"En el dibuix, la via segueix la direcció que té en el mapa en el punt marcat."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Què es pot deixar aquí per a reciclar?"</string>
@@ -1928,27 +1929,62 @@ Per example 1,3 o 2-6."</string>
     <string name="letsgo">"Som-hi!"</string>
     <string name="tutorial_welcome_to_osm">"Us donem la benvinguda a l'OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"el mapa mundial wiki"</string>
+    <string name="tutorial_intro">"StreetComplete fa que sigui fàcil contribuir a OpenStreetMap. Cerca automàticament detalls que manquen a prop teu: carrils bici, números de carrer, hores d'obertura i molt més."</string>
+    <string name="tutorial_solving_quests">"Un cop els ha trobat, els detalls que manquen apareixen en el teu mapa com a proves.
+
+Les pots resoldre tot seguit i més tard iniciar la sessió per a publicar els canvis."</string>
+    <string name="tutorial_stay_safe">"Quan no n'estiguis segur, sempre pots respondre \"No ho sé\" i escriure una nota.
+
+Finalment, ves amb compte: para atenció al que t'envolta i no entris en propietats privades."</string>
+    <string name="tutorial_happy_mapping">"Bon mapeig!"</string>
+    <string name="achievements_empty">"Encara no tens cap assoliment"</string>
     <string name="links_empty">"Encara no teniu cap enllaç"</string>
     <string name="quests_empty">"Encara no heu publicat cap resposta"</string>
+    <string name="unsynced_quests_description">"i %d de canvis no publicats."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Tens %d canvis no publicats. Has d'iniciar la sessió per a pujar-los."</string>
+    <string name="user_quests_title">"Proves resoltes"</string>
+    <string name="user_achievements_title">"Assoliments"</string>
+    <string name="user_links_title">"Col·lecció d'enllaços"</string>
 
     <!-- Fuzzy -->
     <string name="user_profile_title">"Perfil"</string>
 
     <!-- Fuzzy -->
     <string name="user_statistics_quest_wiki_link">"Documentació"</string>
+    <string name="achievements_unlocked_link">"Enllaç desbloquejat:"</string>
+    <string name="achievements_unlocked_links">"Enllaços desbloquejats:"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_intro_title">"Introducció"</string>
+    <string name="link_category_intro_description">"Aprenem més coses sobre OSM i la seva comunitat"</string>
+    <string name="link_category_editors_description">"Editors i altres maneres de contribuir a OpenStreetMap"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_maps_title">"Mapes"</string>
+    <string name="link_category_maps_description">"Mapes basats en OpenStreetMap"</string>
+    <string name="link_category_showcase_title">"Aparador"</string>
+    <string name="link_category_showcase_description">"Serveis i apps basat en OpenStreetMap"</string>
+    <string name="link_category_goodies_title">"Regalets"</string>
+    <string name="link_category_goodies_description">"Material cartogràfic interessant perquè el provis"</string>
     <string name="link_cyclosm_description">"Un mapa per a ciclistes"</string>
     <string name="link_wheelmap_description">"Un mapa per a trobar llocs accessibles amb cadira de rodes"</string>
     <string name="link_osm_buildings_description">"Un mapa que mostra els edificis en 3D"</string>
     <string name="link_openvegemap_description">"Descobriu restaurants vegetarians i vegans en el vostre municipi"</string>
+    <string name="link_touch_mapper_description">"Crea fàcilment mapes tàctils per a qualsevol adreça"</string>
+    <string name="link_mapy_tactile_description">"Mapes tàctils per a invidents en escales diverses"</string>
+    <string name="link_josm_description">"Editor complet d'OSM per a escriptori. Aquesta és l'eina principal per a col·laboradors habituals."</string>
     <string name="link_vespucci_description">"Editor avançat de l'OSM per a l'Android"</string>
+    <string name="link_ideditor_description">"Editor senzill d'OSM per al navegador. Optimitzat per a escriptori i tauletes grans"</string>
+    <string name="link_umap_description">"Crea ràpidament mapes amb dades a mida i insereix-los en el teu lloc web"</string>
     <string name="link_opnvkarte_description">"Un mapa de rutes i parades de transport públic"</string>
+    <string name="link_pic4review_description">"Col·labora amb OSM només mirant fotos de la teva ciutat"</string>
+    <string name="link_wiki_description">"La wiki és el teu punt de partida per a tot allò relacionat amb OpenStreetMap"</string>
     <string name="link_learnosm_description">"Sou nou a l'OpenStreetMap? Això és la guia d'iniciació"</string>
+    <string name="link_neis_one_description">"Una gran recopilació d'estadístiques per als col·laboradors d'OpenStreetMap, com ara, des d'on i com has col·laborat, qui hi ha a prop teu, a més de taules de classificació"</string>
+    <string name="link_welcome_mat_description">"Informació general sobre OpenStreetMap i sobre com treballar com a organització amb OSM"</string>
+    <string name="link_mapillary_description">"Un servei i una app per a compartir fotos a nivell de carrer de proveïment participatiu, amb permís explícit per a utilitzar-les per a col·laborar amb OSM"</string>
+    <string name="link_openstreetcam_description">"Un servei i una app per a compartir fotos a nivell de carrer de proveïment participatiu, amb permís explícit per a utilitzar-les per a col·laborar amb OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Navegació detallada per a usuaris de cadira de rodes"</string>
     <string name="achievement_bicyclist_title">"Ciclista"</string>
     <string name="achievement_bicyclist_solved_X">"Heu resolt %d missions que ajuden els ciclistes!"</string>
     <string name="achievement_wheelchair_title">"Mobilitat"</string>

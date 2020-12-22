@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
         targetSdkVersion(30)
-        versionCode = 2800
-        versionName = "28.0-beta1"
+        versionCode = 2802
+        versionName = "28.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -135,12 +135,14 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:1.5")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures-android:2.0")
+    implementation("de.westnordost:osmfeatures-android:2.1")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-map:1.3")
-    implementation("de.westnordost:osmapi-changesets:1.3")
-    implementation("de.westnordost:osmapi-notes:1.2")
-    implementation("de.westnordost:osmapi-user:1.2")
+    implementation("de.westnordost:osmapi-map:1.4")
+    implementation("de.westnordost:osmapi-changesets:1.4")
+    implementation("de.westnordost:osmapi-notes:1.3")
+    implementation("de.westnordost:osmapi-user:1.3")
+    implementation("com.squareup.okhttp3:okhttp:3.12.12")
+    implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")

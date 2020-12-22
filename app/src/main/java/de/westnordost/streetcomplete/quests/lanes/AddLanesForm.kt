@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
+import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -50,12 +51,6 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     override val otherAnswers: List<OtherAnswer> get() {
         val answers = mutableListOf<OtherAnswer>()
 
-        if (!isOneway) {
-            answers.add(OtherAnswer(R.string.quest_lanes_answer_lanes_odd) {
-                selectedLanesType = MARKED_SIDES
-                setStreetSideLayout()
-            })
-        }
         if (!isOneway && countryInfo.isCenterLeftTurnLaneKnown) {
             answers.add(OtherAnswer(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
                 selectedLanesType = MARKED_SIDES
@@ -148,6 +143,13 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
             unmarkedLanesButton.isSelected = false
             checkIsFormComplete()
             askLanesAndSwitchToStreetSideLayout()
+        }
+        view.markedLanesOddButton.isGone = isOneway
+
+        view.markedLanesOddButton.setOnClickListener {
+            selectedLanesType = MARKED_SIDES
+            unmarkedLanesButton.isSelected = false
+            setStreetSideLayout()
         }
     }
 

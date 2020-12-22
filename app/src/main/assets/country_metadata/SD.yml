@@ -9,3 +9,4 @@ officialLanguages: [ar, en]
 orchardProduces: [banana, guava, mango, mangosteen, tomato, date, lemon, lime, grapefruit, orange, chilli_pepper, sweet_pepper,
    pineapple]
 popularReligions: [muslim]
+roofsAreUsuallyFlat: true

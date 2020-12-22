@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Fuzzy -->
-    <string name="action_settings">"Opções"</string>
+    <string name="action_settings">"Configurações"</string>
 
     <!-- Fuzzy -->
     <string name="oauth_communication_error">"Não foi possível conectar-se ao servidor de autorização"</string>
@@ -2149,4 +2149,23 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Caminhões altos podem passar"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Caminhões altos não cabem"</string>
     <string name="quest_address_street_hint">"Toque na estrada no mapa"</string>
+    <string name="quest_crossing_type_marked">"Cruzamento marcado"</string>
+    <string name="quest_parkingType_street_side">"Estacionamento perto da estrada"</string>
+    <string name="quest_parkingType_lane">"Estacionamento na estrada"</string>
+    <string name="quest_existence_title">"Ainda está aqui?  (%s)"</string>
+    <string name="quest_existence_name_title">"%1$s ainda está aqui?  (%2$s)"</string>
+    <string name="quest_tracktype_grade2a">"Sólido mas não pavimentado"</string>
+    <string name="quest_tracktype_grade3a">"Principalmente sólido"</string>
+    <string name="quest_generic_answer_does_not_exist">"Isso não existe..."</string>
+    <string name="osm_element_gone_warning">"Aviso: isso não pode ser desfeito!"</string>
+    <string name="osm_element_gone_description">"Tem certeza de que não existe, nem mesmo em um local ligeiramente diferente?  Em caso de dúvida, é melhor deixar uma nota."</string>
+    <string name="osm_element_gone_confirmation">"Isso não existe"</string>
+    <string name="leave_note">"Deixar nota"</string>
+    <string name="quest_shop_gone_title">"O que está aqui agora?"</string>
+    <string name="quest_shop_gone_vacant_answer">"Está vago"</string>
+    <string name="quest_shop_gone_replaced_answer">"Um..."</string>
+    <string name="quest_shop_gone_replaced_answer_hint">"Digite o tipo de lugar aqui"</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Não sei o que é isso.  Considere deixar uma nota."</string>
+    <string name="quest_shop_vacant_type_title">"Esta loja está vazia.  O que está aqui agora?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"A contagem de pistas difere para cada lado"</string>
 </resources>
