@@ -445,11 +445,11 @@
                 },
                 "cuisine": {
                     "label": "Cuines",
-                    "terms": "Cuina"
+                    "terms": "cuina"
                 },
                 "currency_multi": {
                     "label": "Tipus de divisa",
-                    "terms": "Tipus de moneda, moneda, divisa, monedes, divises"
+                    "terms": "tipus de moneda,moneda,divisa,monedes,divises"
                 },
                 "cutting": {
                     "label": "Tipus",
@@ -504,7 +504,7 @@
                 },
                 "delivery": {
                     "label": "Entrega",
-                    "terms": "entrega, servei a domicili"
+                    "terms": "entrega,servei a domicili"
                 },
                 "denomination": {
                     "label": "Denominació"
@@ -591,7 +591,7 @@
                         "no": "No permès",
                         "yes": "Permès"
                     },
-                    "terms": "gossos, gos, ca, cans"
+                    "terms": "gossos,gos,ca,cans"
                 },
                 "door": {
                     "label": "Porta"
@@ -608,7 +608,7 @@
                 "duration": {
                     "label": "Durada",
                     "placeholder": "00:00",
-                    "terms": "durada, duració"
+                    "terms": "durada,duració"
                 },
                 "ele": {
                     "label": "Elevació"
@@ -629,7 +629,7 @@
                 "email": {
                     "label": "Adreça elctrònica",
                     "placeholder": "exemple@exemple.com",
-                    "terms": "adreça electrònica, correu electrònic, mail, correu"
+                    "terms": "adreça electrònica,correu electrònic,mail,correu"
                 },
                 "embankment": {
                     "label": "Tipus",
@@ -721,7 +721,7 @@
                         "unisex": "Unisex"
                     },
                     "placeholder": "Desconegut",
-                    "terms": "gènere, sexe, sexes, gèneres"
+                    "terms": "gènere,sexe,sexes,gèneres"
                 },
                 "generator/method": {
                     "label": "Mètode"
@@ -970,8 +970,7 @@
                     "label": "Material"
                 },
                 "maxheight": {
-                    "label": "Altura màxima",
-                    "placeholder": "4, 4.5, 5, 14'0\", 14'6\", 15'0\""
+                    "label": "Altura màxima"
                 },
                 "maxspeed": {
                     "label": "Límit de velocitat",
@@ -1301,7 +1300,7 @@
                         "required": "Requerides",
                         "yes": "S'accepten"
                     },
-                    "terms": "reserves, demanar cita, demanar hora"
+                    "terms": "reserves,demanar cita,demanar hora"
                 },
                 "residential": {
                     "label": "Tipus"
@@ -1431,7 +1430,7 @@
                         "yes": "Sí"
                     },
                     "placeholder": "Sí, No, Només",
-                    "terms": "2a mà, segona mà"
+                    "terms": "2a mà,segona mà"
                 },
                 "self_service": {
                     "label": "Autoservei"
@@ -1536,7 +1535,7 @@
                 "start_date": {
                     "label": "Data d'inici",
                     "placeholder": "AAAA-MM-DD",
-                    "terms": "Data d'inici, data inicial, inici, des de"
+                    "terms": "data d'inici,data inicial,inici,des de"
                 },
                 "step_count": {
                     "label": "Nombre de passes"
@@ -1831,32 +1830,32 @@
             "presets": {
                 "address": {
                     "name": "Adreça",
-                    "terms": "Adreça, Direcció, Domicili"
+                    "terms": "adreça,direcció,domicili"
                 },
                 "advertising/billboard": {
                     "name": "Taulell",
-                    "terms": "Cartellera"
+                    "terms": "cartellera"
                 },
                 "advertising/column": {
-                    "terms": "Columna publicitària, publicitat, cartell, propaganda"
+                    "terms": "columna publicitària,publicitat,cartell,propaganda"
                 },
                 "aerialway/cable_car": {
                     "name": "Telefèric",
-                    "terms": "Telefèric"
+                    "terms": "telefèric"
                 },
                 "aerialway/chair_lift": {
                     "name": "Telecadira",
-                    "terms": "Telecadira"
+                    "terms": "telecadira"
                 },
                 "aerialway/drag_lift": {
-                    "terms": "elevador, remunta pendents, telesquí, esquí, lliscant, snowboarder"
+                    "terms": "elevador,remunta pendents,telesquí,esquí,lliscant,snowboarder"
                 },
                 "aerialway/goods": {
-                    "terms": "producte, mercaderia, article, càrrega, material"
+                    "terms": "producte,mercaderia,article,càrrega,material"
                 },
                 "aerialway/magic_carpet": {
                     "name": "Cinta remuntadora",
-                    "terms": "catifa màgica, catifa rodant, cinta transportadora"
+                    "terms": "catifa màgica,catifa rodant,cinta transportadora"
                 },
                 "aerialway/platter": {
                     "name": "Teleesquí individual"
@@ -1869,26 +1868,26 @@
                 },
                 "aeroway/aerodrome": {
                     "name": "Aeroport",
-                    "terms": "Aeroport, Aeròdrom"
+                    "terms": "aeroport,aeròdrom"
                 },
                 "aeroway/gate": {
                     "name": "Porta d'aeroport"
                 },
                 "aeroway/hangar": {
                     "name": "Hàngar",
-                    "terms": "dipòsit, drassana, magatzem, nau."
+                    "terms": "dipòsit,drassana,magatzem,nau."
                 },
                 "aeroway/helipad": {
                     "name": "Heliport",
-                    "terms": "Heliport, Helisuperfície, Àrea d'aturada d'helicòpters"
+                    "terms": "heliport,helisuperfície,àrea d'aturada d'helicòpters"
                 },
                 "aeroway/runway": {
                     "name": "Pista d'enlairament/aterratge",
-                    "terms": "Pista d'enlairament, Pista d'aterratge"
+                    "terms": "pista d'enlairament,pista d'aterratge"
                 },
                 "aeroway/taxiway": {
                     "name": "Plataforma de rodada",
-                    "terms": "Plataforma de Rodada, Carrer de Taxi, Pista de Taxi, Carrer de Rodament, Carrer de Rodatge, Carril de Rodada, Carril de Rodatge"
+                    "terms": "plataforma de rodada,carrer de taxi,pista de taxi,carrer de rodament,carrer de rodatge,carril de rodada,carril de rodatge"
                 },
                 "aeroway/terminal": {
                     "name": "Terminal d'aeroport"
@@ -1904,22 +1903,22 @@
                 },
                 "amenity/animal_shelter": {
                     "name": "Refugi d'animals",
-                    "terms": "Refugi d'animals, protectora"
+                    "terms": "refugi d'animals,protectora"
                 },
                 "amenity/arts_centre": {
                     "name": "Centre artístic"
                 },
                 "amenity/atm": {
                     "name": "Caixer automàtic",
-                    "terms": "Caixer automàtic, Màquina expenedora de bitllets"
+                    "terms": "caixer automàtic,màquina expenedora de bitllets"
                 },
                 "amenity/bank": {
                     "name": "Banc",
-                    "terms": "Banc, Institució financera, sucursal bancària,"
+                    "terms": "banc,institució financera,sucursal bancària"
                 },
                 "amenity/bar": {
                     "name": "Bar de copes",
-                    "terms": "Bar de copes, Local d'oci nocturn, Bar Musical, Local d'oci"
+                    "terms": "bar de copes,local d'oci nocturn,bar musical,local d'oci"
                 },
                 "amenity/bar/lgbtq": {
                     "name": "Bar LGBTQ+"
@@ -1929,15 +1928,15 @@
                 },
                 "amenity/bench": {
                     "name": "Banc",
-                    "terms": "Banc peatonal, Banc per a asseure's, Banc de carrer"
+                    "terms": "banc peatonal,banc per a asseure's,banc de carrer"
                 },
                 "amenity/bicycle_parking": {
                     "name": "Aparcament per a  bicicletes",
-                    "terms": "Aparcament per a Bicicletes, Àrea d'aparcament de bicicletes, Estació de bicicletes públiques, parking de bicis, pàrquing de bicicletes, parking de bicicletes, pàrquing de bicis"
+                    "terms": "aparcament per a bicicletes,àrea d'aparcament de bicicletes,estació de bicicletes públiques,parking de bicis,pàrquing de bicicletes,parking de bicicletes,pàrquing de bicis"
                 },
                 "amenity/bicycle_rental": {
                     "name": "Lloguer de bicicletes",
-                    "terms": "Lloguer de bicicletes, Servei de lloguer de bicicletes"
+                    "terms": "lloguer de bicicletes,servei de lloguer de bicicletes"
                 },
                 "amenity/bicycle_repair_station": {
                     "name": "Lloc de reparació de Bicicletes"
@@ -1953,15 +1952,15 @@
                 },
                 "amenity/cafe": {
                     "name": "Cafè",
-                    "terms": "Cafè, bar, cafeteria"
+                    "terms": "cafè,bar,cafeteria"
                 },
                 "amenity/car_rental": {
                     "name": "Lloguer de cotxes",
-                    "terms": "Lloguer de cotxes, Servei de lloguer de turismes"
+                    "terms": "lloguer de cotxes,servei de lloguer de turismes"
                 },
                 "amenity/car_wash": {
                     "name": "Rentat de cotxes",
-                    "terms": "Servei de neteja de cotxes, Tren de rentat de cotxes, Estació d'autorentat de cotxes"
+                    "terms": "servei de neteja de cotxes,tren de rentat de cotxes,estació d'autorentat de cotxes"
                 },
                 "amenity/casino": {
                     "name": "Casino"
@@ -1974,7 +1973,7 @@
                 },
                 "amenity/cinema": {
                     "name": "Cinema",
-                    "terms": "Cinema, Cine, Local de projeccions cinematogràfiques, Local d'esbarjo"
+                    "terms": "cinema,cine,local de projeccions cinematogràfiques,local d'esbarjo"
                 },
                 "amenity/clinic": {
                     "name": "Clínica"
@@ -1999,7 +1998,7 @@
                 },
                 "amenity/courthouse": {
                     "name": "Jutjat",
-                    "terms": "Jutjats, Palau de justícia"
+                    "terms": "jutjats,palau de justícia"
                 },
                 "amenity/coworking_space": {
                     "name": "Espai de coworking"
@@ -2018,41 +2017,41 @@
                 },
                 "amenity/drinking_water": {
                     "name": "Aigua apta per al consum",
-                    "terms": "Aigua potable, Aigua apta per al consum humà, Aigua per beure, Font"
+                    "terms": "aigua potable,aigua apta per al consum humà,aigua per beure,font"
                 },
                 "amenity/driving_school": {
                     "name": "Autoescola",
-                    "terms": "Autoescola, escola de conduir, escola de conducció"
+                    "terms": "autoescola,escola de conduir,escola de conducció"
                 },
                 "amenity/embassy": {
                     "name": "Ambaixada"
                 },
                 "amenity/fast_food": {
                     "name": "Local de menjar ràpid",
-                    "terms": "Menjar ràpid, servei de menjar ràpid, restaurant de menjar ràpid, Local de menjar ràpid"
+                    "terms": "menjar ràpid,servei de menjar ràpid,restaurant de menjar ràpid,local de menjar ràpid"
                 },
                 "amenity/fire_station": {
                     "name": "Parc de bombers",
-                    "terms": "Caserna de bombers, Base de Bombers, Estació de Bombers"
+                    "terms": "caserna de bombers,base de bombers,estació de bombers"
                 },
                 "amenity/fountain": {
                     "name": "Font",
-                    "terms": "Font, aiguaneix, broll, brollador, deu, fontana, sortidor."
+                    "terms": "font,aiguaneix,broll,brollador,deu,fontana,sortidor."
                 },
                 "amenity/fuel": {
                     "name": "Benzinera",
-                    "terms": "Betzinera, Estació de servei, Gasolinera,"
+                    "terms": "betzinera,estació de servei,gasolinera"
                 },
                 "amenity/grave_yard": {
                     "name": "Cementiri",
-                    "terms": "Cementiri, Camp de tombes, necròpoli, ciutat dels difunts"
+                    "terms": "cementiri,camp de tombes,necròpoli,ciutat dels difunts"
                 },
                 "amenity/grit_bin": {
                     "name": "Contenidor de sorra"
                 },
                 "amenity/hospital": {
                     "name": "Hospital",
-                    "terms": "Hospital, centre hospitalari, policlínica, clínica, CAP, Centre d'atenció primària, Centre de salut, Centre, Atenció, Primària, Centre d'Atenció Primària."
+                    "terms": "hospital,centre hospitalari,policlínica,clínica,cap,centre d'atenció primària,centre de salut,centre,atenció,primària,centre d'atenció primària."
                 },
                 "amenity/hunting_stand": {
                     "name": "Punt de caça"
@@ -2062,19 +2061,19 @@
                 },
                 "amenity/internet_cafe": {
                     "name": "Cifercafè",
-                    "terms": "Cifercafè, cafè d'internet, xatfeteria"
+                    "terms": "cifercafè,cafè d'internet,xatfeteria"
                 },
                 "amenity/language_school": {
                     "name": "Escola d'idiomes",
-                    "terms": "Acadèmia d'idiomes, escola de llengües, acadèmia de llengües"
+                    "terms": "acadèmia d'idiomes,escola de llengües,acadèmia de llengües"
                 },
                 "amenity/library": {
                     "name": "Biblioteca",
-                    "terms": "Biblioteca, llibreria, Espai d'emmagatzematge de llibres, Edifici públic per als llibres"
+                    "terms": "biblioteca,llibreria,espai d'emmagatzematge de llibres,edifici públic per als llibres"
                 },
                 "amenity/marketplace": {
                     "name": "Mercat",
-                    "terms": "Mercat, Mercat veïnal, Mercat de carrer"
+                    "terms": "mercat,mercat veïnal,mercat de carrer"
                 },
                 "amenity/motorcycle_parking": {
                     "name": "Aparcament per a motocicletes"
@@ -2093,15 +2092,15 @@
                 },
                 "amenity/pharmacy": {
                     "name": "Farmàcia",
-                    "terms": "dispensari farmacèutic, fórmules magistrals, medicaments"
+                    "terms": "dispensari farmacèutic,fórmules magistrals,medicaments"
                 },
                 "amenity/place_of_worship": {
                     "name": "Lloc de culte",
-                    "terms": "Lloc de culte, Lloc per a la oració, temple de la fe, Punt de trobada religiós, Casa de Déu"
+                    "terms": "lloc de culte,lloc per a la oració,temple de la fe,punt de trobada religiós,casa de déu"
                 },
                 "amenity/place_of_worship/buddhist": {
                     "name": "Temple budista",
-                    "terms": "Temple Budista, Lloc per al culte budista, església budista"
+                    "terms": "temple budista,lloc per al culte budista,església budista"
                 },
                 "amenity/place_of_worship/christian": {
                     "name": "Capella cristiana"
@@ -2119,7 +2118,7 @@
                     "name": "Santuari sintoísta"
                 },
                 "amenity/place_of_worship/sikh": {
-                    "name": "Temple Sikh "
+                    "name": "Temple Sikh"
                 },
                 "amenity/place_of_worship/taoist": {
                     "name": "Temple Taoista"
@@ -2129,22 +2128,22 @@
                 },
                 "amenity/police": {
                     "name": "Comissaria de Policia",
-                    "terms": "Comissaria de policia, dependències policials, edifici policial, base de la policia"
+                    "terms": "comissaria de policia,dependències policials,edifici policial,base de la policia"
                 },
                 "amenity/post_office": {
                     "name": "Oficina de correus",
-                    "terms": "Oficina de Correus, Correus, Edifici de Correus, Cartes, Carters"
+                    "terms": "oficina de correus,correus,edifici de correus,cartes,carters"
                 },
                 "amenity/prison": {
                     "name": "Terrenys de presó"
                 },
                 "amenity/pub": {
                     "name": "Bar",
-                    "terms": "Bar, Pub, Granja, Local d'oci nocturn, Bareto"
+                    "terms": "bar,pub,granja,local d'oci nocturn,bareto"
                 },
                 "amenity/public_bath": {
                     "name": "Banys públic",
-                    "terms": "Banys públic, bany públic, banys, bany"
+                    "terms": "banys públic,bany públic,banys,bany"
                 },
                 "amenity/public_bookcase": {
                     "name": "Biblioteca pública"
@@ -2160,7 +2159,7 @@
                 },
                 "amenity/restaurant": {
                     "name": "Restaurant",
-                    "terms": "Restaurant, Lloc per menjar, Bistro, Wok, Trattoria, Pizzeria"
+                    "terms": "restaurant,lloc per menjar,bistro,wok,trattoria,pizzeria"
                 },
                 "amenity/restaurant/french": {
                     "name": "Restaurant francès",
@@ -2207,7 +2206,7 @@
                 },
                 "amenity/school": {
                     "name": "Escola",
-                    "terms": "Escola, CEIP, IES, Col·legi, Institut, Centre educatiu, Guarderia"
+                    "terms": "escola,ceip,ies,col·legi,institut,centre educatiu,guarderia"
                 },
                 "amenity/shelter": {
                     "name": "Refugi"
@@ -2226,7 +2225,7 @@
                 },
                 "amenity/social_facility/group_home": {
                     "name": "Residència d'avis",
-                    "terms": "Geriàtric, Residencia geriàtrica"
+                    "terms": "geriàtric,residencia geriàtrica"
                 },
                 "amenity/social_facility/homeless_shelter": {
                     "name": "Refugi per a indigents"
@@ -2239,30 +2238,30 @@
                 },
                 "amenity/taxi": {
                     "name": "Parada de Taxi",
-                    "terms": "Parada de taxi, estació de taxis, taxi, taxis"
+                    "terms": "parada de taxi,estació de taxis,taxi,taxis"
                 },
                 "amenity/telephone": {
                     "name": "Telèfon",
-                    "terms": "Telèfon, Telèfon públic, Cabina telefònica, Cabina de telèfon públic"
+                    "terms": "telèfon,telèfon públic,cabina telefònica,cabina de telèfon públic"
                 },
                 "amenity/theatre": {
                     "name": "Teatre",
-                    "terms": "Cinema, Sala de Cine, Complex de cines, edifici de cines, sala de cine"
+                    "terms": "cinema,sala de cine,complex de cines,edifici de cines"
                 },
                 "amenity/toilets": {
                     "name": "Lavabos",
-                    "terms": "Lavabos, Serveis, Lavabos públics, W.C"
+                    "terms": "lavabos,serveis,lavabos públics,w.c"
                 },
                 "amenity/townhall": {
                     "name": "Ajuntament",
-                    "terms": "Ajuntament, casa consistorial, consistori, govern local, seu del govern local,"
+                    "terms": "ajuntament,casa consistorial,consistori,govern local,seu del govern local"
                 },
                 "amenity/university": {
                     "name": "Campus universitari"
                 },
                 "amenity/vehicle_inspection": {
                     "name": "Inspecció de vehicles",
-                    "terms": "ITV"
+                    "terms": "itv"
                 },
                 "amenity/vending_machine": {
                     "name": "Màquina de vending"
@@ -2311,7 +2310,7 @@
                 },
                 "amenity/waste_basket": {
                     "name": "Paperera",
-                    "terms": "Paperera, Basura, Paperera pública, Contenidor, deixalles, brossa"
+                    "terms": "paperera,basura,paperera pública,contenidor,deixalles,brossa"
                 },
                 "amenity/waste_disposal": {
                     "name": "Contenidor d'escombraries"
@@ -2327,7 +2326,7 @@
                 },
                 "area": {
                     "name": "Àrea",
-                    "terms": "Àrea"
+                    "terms": "àrea"
                 },
                 "attraction/amusement_ride": {
                     "name": "Atracció de fira"
@@ -2343,31 +2342,31 @@
                 },
                 "barrier": {
                     "name": "Barrera",
-                    "terms": "Tanca, Valla, Paret, Seto, Tancament, Filferrada, Reixat, Reixa"
+                    "terms": "tanca,valla,paret,seto,tancament,filferrada,reixat,reixa"
                 },
                 "barrier/block": {
                     "name": "Bloc",
-                    "terms": "Bloc"
+                    "terms": "bloc"
                 },
                 "barrier/bollard": {
                     "name": "Piló",
-                    "terms": "Piló, Pilona"
+                    "terms": "piló,pilona"
                 },
                 "barrier/border_control": {
                     "name": "Control de fronteres",
-                    "terms": "Control de frontereres, control fronterer"
+                    "terms": "control de frontereres,control fronterer"
                 },
                 "barrier/cattle_grid": {
-                    "name": "Reixat ",
-                    "terms": "Reixat, reixat ramader"
+                    "name": "Reixat",
+                    "terms": "reixat,reixat ramader"
                 },
                 "barrier/city_wall": {
                     "name": "Muralla",
-                    "terms": "Muralla, Muralla Medieval, Paret de la ciutat, Mur, Tanca, Tancament, Medieval, Monument"
+                    "terms": "muralla,muralla medieval,paret de la ciutat,mur,tanca,tancament,medieval,monument"
                 },
                 "barrier/cycle_barrier": {
                     "name": "Barrera per a ciclistes",
-                    "terms": "Barrera per a ciclistes, Ciclisme, Bicicleta, Ruta cicloturista, Valla, Tanca, Tancament, Tanca per a bicicletes"
+                    "terms": "barrera per a ciclistes,ciclisme,bicicleta,ruta cicloturista,valla,tanca,tancament,tanca per a bicicletes"
                 },
                 "barrier/ditch": {
                     "name": "Trinxera"
@@ -2377,47 +2376,47 @@
                 },
                 "barrier/fence": {
                     "name": "Tanca",
-                    "terms": "Valla, Tanca, Tancament, Barrera,"
+                    "terms": "valla,tanca,tancament,barrera"
                 },
                 "barrier/gate": {
                     "name": "Porta",
-                    "terms": "Porta d'embarcament d'avions, Porta d'aeroport, Porta"
+                    "terms": "porta d'embarcament d'avions,porta d'aeroport,porta"
                 },
                 "barrier/hedge": {
                     "name": "Tanca de bardissa",
-                    "terms": "Seto, Tanca de Bardissa, Valla de seto, Valla verda, Valla de plantes, Tanca de plantes"
+                    "terms": "seto,tanca de bardissa,valla de seto,valla verda,valla de plantes,tanca de plantes"
                 },
                 "barrier/kissing_gate": {
                     "name": "Porta giratòria",
-                    "terms": "Porta giratòria, Porta sense retorn, Accés giratori, Porta de no retorn"
+                    "terms": "porta giratòria,porta sense retorn,accés giratori,porta de no retorn"
                 },
                 "barrier/lift_gate": {
                     "name": "Barrera per a vehicles",
-                    "terms": "Porta d'ascensor"
+                    "terms": "porta d'ascensor"
                 },
                 "barrier/retaining_wall": {
                     "name": "Mur de contenció",
-                    "terms": "Mur de contenció, Paret de contenció"
+                    "terms": "mur de contenció,paret de contenció"
                 },
                 "barrier/stile": {
                     "name": "esgraons",
-                    "terms": "Escala de tanca"
+                    "terms": "escala de tanca"
                 },
                 "barrier/toll_booth": {
                     "name": "Peatge",
-                    "terms": "Peatge, Autopista de peatge, Cabina de peatge, Estació de peatge, Punt de peatge"
+                    "terms": "peatge,autopista de peatge,cabina de peatge,estació de peatge,punt de peatge"
                 },
                 "barrier/wall": {
                     "name": "Mur",
-                    "terms": "Mur, Paret, Muralla"
+                    "terms": "mur,paret,muralla"
                 },
                 "boundary/administrative": {
                     "name": "Límit administratiu",
-                    "terms": "Límit administratiu, Frontera administrativa, Delimitació administrativa"
+                    "terms": "límit administratiu,frontera administrativa,delimitació administrativa"
                 },
                 "building": {
                     "name": "Edifici",
-                    "terms": "Edifici, Bloc de pisos, Nau industrial, Centre comercial, Oficines, Bloc, Casa, Barraca"
+                    "terms": "edifici,bloc de pisos,nau industrial,centre comercial,oficines,bloc,casa,barraca"
                 },
                 "building/apartments": {
                     "name": "Edifici d'apartaments"
@@ -2445,7 +2444,7 @@
                 },
                 "building/commercial": {
                     "name": "Edifici comercial",
-                    "terms": "Edifici comercial"
+                    "terms": "edifici comercial"
                 },
                 "building/construction": {
                     "name": "Edifici en construcció"
@@ -2466,8 +2465,8 @@
                     "name": "Edifici d'una granja"
                 },
                 "building/garage": {
-                    "name": "garatge ",
-                    "terms": "Garatge"
+                    "name": "garatge",
+                    "terms": "garatge"
                 },
                 "building/garages": {
                     "name": "Garatges"
@@ -2477,22 +2476,22 @@
                 },
                 "building/hospital": {
                     "name": "Edifici hospitalari",
-                    "terms": "Edifici hospitalari, hospital, urgències, planta, consultes externes, UCI, UVI, quiròfans"
+                    "terms": "edifici hospitalari,hospital,urgències,planta,consultes externes,uci,uvi,quiròfans"
                 },
                 "building/hotel": {
                     "name": "Edifici hoteler"
                 },
                 "building/house": {
                     "name": "Casa",
-                    "terms": "Casa"
+                    "terms": "casa"
                 },
                 "building/hut": {
                     "name": "Cabana",
-                    "terms": "Barraca"
+                    "terms": "barraca"
                 },
                 "building/industrial": {
                     "name": "Edifici industrial",
-                    "terms": "Edifici industrial"
+                    "terms": "edifici industrial"
                 },
                 "building/mosque": {
                     "name": "Edifici d'una mesquita"
@@ -2502,7 +2501,7 @@
                 },
                 "building/residential": {
                     "name": "Edifici residencial",
-                    "terms": "Edifici residencial"
+                    "terms": "edifici residencial"
                 },
                 "building/retail": {
                     "name": "Edifici de grans magatzems"
@@ -2515,7 +2514,7 @@
                 },
                 "building/school": {
                     "name": "Edifici escolar",
-                    "terms": "Escola, Gimnàs, Poliesportiu, Aulari, Seminaris, Pati, Esbarjo, Aules, Despatxos, Tallers, Ateliers, Aules d'informàtica, Classes, Classe, Sala de música, Corredors, Corredor, Pasillo, Pasillos, Passadís, Passadissos, Sala de professors, Recepció"
+                    "terms": "escola,gimnàs,poliesportiu,aulari,seminaris,pati,esbarjo,aules,despatxos,tallers,ateliers,aules d'informàtica,classes,classe,sala de música,corredors,corredor,pasillo,pasillos,passadís,passadissos,sala de professors,recepció"
                 },
                 "building/semidetached_house": {
                     "name": "Casa adossada"
@@ -2546,7 +2545,7 @@
                 },
                 "building/university": {
                     "name": "Edifici universitari",
-                    "terms": "Edifici universitari"
+                    "terms": "edifici universitari"
                 },
                 "building/warehouse": {
                     "name": "Magatzem"
@@ -2577,7 +2576,7 @@
                 },
                 "craft/carpenter": {
                     "name": "Fuster",
-                    "terms": "Fuster, Fusteria, Ebenista, Ebenisteria, Tallista"
+                    "terms": "fuster,fusteria,ebenista,ebenisteria,tallista"
                 },
                 "craft/carpet_layer": {
                     "name": "Moquetista"
@@ -2604,7 +2603,7 @@
                     "name": "Electricista"
                 },
                 "craft/electronics_repair": {
-                    "name": "Botiga de reparacions electròniques "
+                    "name": "Botiga de reparacions electròniques"
                 },
                 "craft/gardener": {
                     "name": "Jardiner"
@@ -2685,11 +2684,11 @@
                     "name": "Celler"
                 },
                 "embankment": {
-                    "name": "Terraplè "
+                    "name": "Terraplè"
                 },
                 "emergency/ambulance_station": {
                     "name": "Parada d'ambulàncies",
-                    "terms": "Estació d'ambulàncies"
+                    "terms": "estació d'ambulàncies"
                 },
                 "emergency/defibrillator": {
                     "name": "Desfibril·lador"
@@ -2702,7 +2701,7 @@
                 },
                 "emergency/fire_hydrant": {
                     "name": "Boca d'incendis",
-                    "terms": "Boca d'incendis, presa d'aigua per a bombers, incendi, bombers, sortida d'aigua, aigua"
+                    "terms": "boca d'incendis,presa d'aigua per a bombers,incendi,bombers,sortida d'aigua,aigua"
                 },
                 "emergency/no": {
                     "name": "Accés per a emergències prohibit"
@@ -2712,7 +2711,7 @@
                 },
                 "emergency/phone": {
                     "name": "Telèfon per a emergències",
-                    "terms": "Telèfon d'emergències, SOS, S.O.S"
+                    "terms": "telèfon d'emergències,sos,s.o.s"
                 },
                 "emergency/private": {
                     "name": "Accés per a emergències privat"
@@ -2752,106 +2751,106 @@
                 },
                 "highway/bridleway": {
                     "name": "Camí de ferradura",
-                    "terms": "Camí de ferradura, cavall, camí eqüestre, via eqüestre, ferradura, via de ferradura"
+                    "terms": "camí de ferradura,cavall,camí eqüestre,via eqüestre,ferradura,via de ferradura"
                 },
                 "highway/corridor": {
                     "name": "Corredor interior"
                 },
                 "highway/cycleway": {
                     "name": "Carril Bici",
-                    "terms": "Carril Bici, Via verda, Via ciclista"
+                    "terms": "carril bici,via verda,via ciclista"
                 },
                 "highway/footway": {
                     "name": "Camí per a vianants",
-                    "terms": "Camí per a vianants, carrer peatonal, camí per a peatons, a peu, camí per caminar, vianant, vianants, peató, peatons, transeünt, transeünts, peatonal"
+                    "terms": "camí per a vianants,carrer peatonal,camí per a peatons,a peu,camí per caminar,vianant,vianants,peató,peatons,transeünt,transeünts,peatonal"
                 },
                 "highway/footway/sidewalk": {
                     "name": "Vorera",
-                    "terms": "Vorera, voravia"
+                    "terms": "vorera,voravia"
                 },
                 "highway/give_way": {
                     "name": "Senyal de cediu el pas"
                 },
                 "highway/living_street": {
                     "name": "Carrer residencial",
-                    "terms": "Carrer residencial"
+                    "terms": "carrer residencial"
                 },
                 "highway/mini_roundabout": {
                     "name": "Mini-Rotonda",
-                    "terms": "Minirotonda, Mini-rotonda, Rotonda petita"
+                    "terms": "minirotonda,mini-rotonda,rotonda petita"
                 },
                 "highway/motorway": {
                     "name": "Autopista",
-                    "terms": "Autopista,Autovia"
+                    "terms": "autopista,autovia"
                 },
                 "highway/motorway_junction": {
                     "name": "Intersecció d'autopista / Sortida"
                 },
                 "highway/motorway_link": {
                     "name": "Enllaç d'autopista",
-                    "terms": "Rampa, entrada, incorporació, baixada, addició, autopista, autovia, eix"
+                    "terms": "rampa,entrada,incorporació,baixada,addició,autopista,autovia,eix"
                 },
                 "highway/path": {
                     "name": "Camí",
-                    "terms": "Sender,Corriol"
+                    "terms": "sender,corriol"
                 },
                 "highway/primary": {
                     "name": "Carretera primària",
-                    "terms": "Carretera primària,Carretera de 1r ordre"
+                    "terms": "carretera primària,carretera de 1r ordre"
                 },
                 "highway/primary_link": {
                     "name": "Enllaç de carretera primària",
-                    "terms": "Enllaç amb primària"
+                    "terms": "enllaç amb primària"
                 },
                 "highway/residential": {
                     "name": "Carrer",
-                    "terms": "Carrer"
+                    "terms": "carrer"
                 },
                 "highway/rest_area": {
                     "name": "Àrea de descans"
                 },
                 "highway/road": {
                     "name": "Carretera sense classificació",
-                    "terms": "via desconeguda, via per arreglar,"
+                    "terms": "via desconeguda,via per arreglar"
                 },
                 "highway/secondary": {
                     "name": "Carretera secundària",
-                    "terms": "Carretera secundària,Carretera de 2n ordre"
+                    "terms": "carretera secundària,carretera de 2n ordre"
                 },
                 "highway/secondary_link": {
                     "name": "Enllaç de carretera secundària",
-                    "terms": "Enllaç amb secundària"
+                    "terms": "enllaç amb secundària"
                 },
                 "highway/service": {
                     "name": "Via de servei",
-                    "terms": "Via de servei, Lateral"
+                    "terms": "via de servei,lateral"
                 },
                 "highway/service/alley": {
                     "name": "Carreró",
-                    "terms": "Carreró,Cul de sac"
+                    "terms": "carreró,cul de sac"
                 },
                 "highway/service/drive-through": {
                     "name": "Via dins una propietat",
-                    "terms": "Pas de vehicles"
+                    "terms": "pas de vehicles"
                 },
                 "highway/service/driveway": {
                     "name": "Via d'accés a una propietat",
-                    "terms": "Entrada de vehicles"
+                    "terms": "entrada de vehicles"
                 },
                 "highway/service/emergency_access": {
                     "name": "Accés per a emergències",
-                    "terms": "Accés d'emergència"
+                    "terms": "accés d'emergència"
                 },
                 "highway/service/parking_aisle": {
                     "name": "Carrer d'aparcament",
-                    "terms": "Passadís de pàrquing, pàrquing, parking, aparcament, carrer interior d'aparcament, carrer per aparcar, carrer de pàrqquing, carrer de parking"
+                    "terms": "passadís de pàrquing,pàrquing,parking,aparcament,carrer interior d'aparcament,carrer per aparcar,carrer de pàrqquing,carrer de parking"
                 },
                 "highway/services": {
                     "name": "Àrea de servei"
                 },
                 "highway/steps": {
                     "name": "Escales",
-                    "terms": "esgraons, graons, escalinata, escala, escalons"
+                    "terms": "esgraons,graons,escalinata,escala,escalons"
                 },
                 "highway/stop": {
                     "name": "Senyal de stop"
@@ -2861,72 +2860,72 @@
                 },
                 "highway/tertiary": {
                     "name": "Carretera terciària",
-                    "terms": "Carretera terciària,Carretera de 3r ordre,local"
+                    "terms": "carretera terciària,carretera de 3r ordre,local"
                 },
                 "highway/tertiary_link": {
                     "name": "Enllaç de carretera terciària",
-                    "terms": "Enllaç amb terciària"
+                    "terms": "enllaç amb terciària"
                 },
                 "highway/track": {
                     "name": "Pista forestal sense manteniment"
                 },
                 "highway/traffic_signals": {
                     "name": "Semàfors",
-                    "terms": "Senyals de trànsit, Senyals de tràfic"
+                    "terms": "senyals de trànsit,senyals de tràfic"
                 },
                 "highway/trunk": {
                     "name": "Carretera principal",
-                    "terms": "Via ràpida,Variant"
+                    "terms": "via ràpida,variant"
                 },
                 "highway/trunk_link": {
                     "name": "Enllaç de via principal",
-                    "terms": "Enllaç amb via ràpida"
+                    "terms": "enllaç amb via ràpida"
                 },
                 "highway/turning_circle": {
                     "name": "Cul de sac",
-                    "terms": "Girar 180 graus, Canviar de sentit"
+                    "terms": "girar 180 graus,canviar de sentit"
                 },
                 "highway/unclassified": {
                     "name": "Carretera menor / sense classificació"
                 },
                 "historic": {
                     "name": "Lloc històric",
-                    "terms": "Lloc històric"
+                    "terms": "lloc històric"
                 },
                 "historic/archaeological_site": {
                     "name": "Jaciment arqueològic",
-                    "terms": "Lloc arqueològic"
+                    "terms": "lloc arqueològic"
                 },
                 "historic/boundary_stone": {
                     "name": "Fita de terme",
-                    "terms": "Fita de frontera"
+                    "terms": "fita de frontera"
                 },
                 "historic/castle": {
                     "name": "Castell",
-                    "terms": "Castell"
+                    "terms": "castell"
                 },
                 "historic/memorial": {
                     "name": "Memorial",
-                    "terms": "Memorial"
+                    "terms": "memorial"
                 },
                 "historic/monument": {
                     "name": "Monument",
-                    "terms": "Monument"
+                    "terms": "monument"
                 },
                 "historic/ruins": {
                     "name": "Ruïnes",
-                    "terms": "Ruines"
+                    "terms": "ruines"
                 },
                 "historic/tomb": {
                     "name": "Tomba"
                 },
                 "historic/wayside_cross": {
                     "name": "Creu Cristiana",
-                    "terms": "Calvari,Encreuament del camí"
+                    "terms": "calvari,encreuament del camí"
                 },
                 "historic/wayside_shrine": {
                     "name": "Capella",
-                    "terms": "Ermita"
+                    "terms": "ermita"
                 },
                 "junction": {
                     "name": "Encreuament"
@@ -2936,7 +2935,7 @@
                 },
                 "landuse/cemetery": {
                     "name": "Cementiri",
-                    "terms": "Cementiri, Camp Sant"
+                    "terms": "cementiri,camp sant"
                 },
                 "landuse/churchyard": {
                     "name": "Terrenys d'església"
@@ -2952,11 +2951,11 @@
                 },
                 "landuse/farmyard": {
                     "name": "Edificis de Granja",
-                    "terms": "Granja, Granges, Galliner, Estable, Mas, Masia, Masoveria, Ranxo, Nau, Naus,  Dipòsit, Femta, Fems, Fem, Porc, Porcs, Purí, Purins, Gallina, Gallines, Conill, Conills, Pinso, Tancat, Tanca, Valles, Valla"
+                    "terms": "granja,granges,galliner,estable,mas,masia,masoveria,ranxo,nau,naus,dipòsit,femta,fems,fem,porc,porcs,purí,purins,gallina,gallines,conill,conills,pinso,tancat,tanca,valles,valla"
                 },
                 "landuse/grass": {
                     "name": "Herba",
-                    "terms": "Herba,Gespa"
+                    "terms": "herba,gespa"
                 },
                 "landuse/industrial": {
                     "name": "Zona Industrial"
@@ -2969,7 +2968,7 @@
                 },
                 "landuse/meadow": {
                     "name": "Prat",
-                    "terms": "Prat,Prada,Natural"
+                    "terms": "prat,prada,natural"
                 },
                 "landuse/military": {
                     "name": "Zona Militar"
@@ -2988,14 +2987,14 @@
                 },
                 "landuse/orchard": {
                     "name": "Verger",
-                    "terms": "Horta,Hort,Plantació"
+                    "terms": "horta,hort,plantació"
                 },
                 "landuse/plant_nursery": {
                     "name": "Planter"
                 },
                 "landuse/quarry": {
                     "name": "Mina a cel obert",
-                    "terms": "Pedrera"
+                    "terms": "pedrera"
                 },
                 "landuse/railway": {
                     "name": "Corredor ferroviari"
@@ -3014,7 +3013,7 @@
                 },
                 "landuse/vineyard": {
                     "name": "Vinya",
-                    "terms": "Vinyar, Vinyal, Vinyet, Vinya"
+                    "terms": "vinyar,vinyal,vinyet,vinya"
                 },
                 "leisure/adult_gaming_centre": {
                     "name": "Centre d'oci adult"
@@ -3030,11 +3029,11 @@
                 },
                 "leisure/dance": {
                     "name": "Pista de ball",
-                    "terms": "Zona de ball"
+                    "terms": "zona de ball"
                 },
                 "leisure/dog_park": {
                     "name": "Parc Caní",
-                    "terms": "Pipi-can,Parc per gossos"
+                    "terms": "pipi-can,parc per gossos"
                 },
                 "leisure/fitness_centre": {
                     "name": "Gimnàs / Centre de Fitness"
@@ -3047,18 +3046,18 @@
                 },
                 "leisure/garden": {
                     "name": "Jardí",
-                    "terms": "Jardí,Parc,Zona ajardinada"
+                    "terms": "jardí,parc,zona ajardinada"
                 },
                 "leisure/golf_course": {
                     "name": "Camp de golf",
-                    "terms": "Camp de Golf"
+                    "terms": "camp de golf"
                 },
                 "leisure/ice_rink": {
                     "name": "Pista de gel"
                 },
                 "leisure/marina": {
                     "name": "Port esportiu",
-                    "terms": "Port esportiu, Marina"
+                    "terms": "port esportiu,marina"
                 },
                 "leisure/miniature_golf": {
                     "name": "Golf en miniatura"
@@ -3068,25 +3067,25 @@
                 },
                 "leisure/park": {
                     "name": "Parc",
-                    "terms": "parc, àrea verda, àrea enjardinada, jardí, verger, gespa, arbres, flors"
+                    "terms": "parc,àrea verda,àrea enjardinada,jardí,verger,gespa,arbres,flors"
                 },
                 "leisure/picnic_table": {
                     "name": "Taula de picnic"
                 },
                 "leisure/pitch": {
                     "name": "Camp d'esports",
-                    "terms": "Camp d'esports, Pista poliesportiva"
+                    "terms": "camp d'esports,pista poliesportiva"
                 },
                 "leisure/pitch/american_football": {
                     "name": "Camp de futbol americà",
-                    "terms": "Estadi de futbol americà,Camp de futbol americà"
+                    "terms": "estadi de futbol americà,camp de futbol americà"
                 },
                 "leisure/pitch/baseball": {
                     "name": "Camp de beisbol"
                 },
                 "leisure/pitch/basketball": {
                     "name": "Pista de bàsquet",
-                    "terms": "Pista de bàsquet, Pavelló de bàsquet"
+                    "terms": "pista de bàsquet,pavelló de bàsquet"
                 },
                 "leisure/pitch/bowls": {
                     "name": "Camp de bolos"
@@ -3105,23 +3104,23 @@
                 },
                 "leisure/pitch/soccer": {
                     "name": "Camp de futbol",
-                    "terms": "Camp de futbol,Pista de futbol"
+                    "terms": "camp de futbol,pista de futbol"
                 },
                 "leisure/pitch/tennis": {
                     "name": "Pista de tennis",
-                    "terms": "Camp de Tennis, Pista de tennis"
+                    "terms": "camp de tennis,pista de tennis"
                 },
                 "leisure/pitch/volleyball": {
                     "name": "Camp de vòleibol",
-                    "terms": "Pista de voleibol,Camp de voleibol"
+                    "terms": "pista de voleibol,camp de voleibol"
                 },
                 "leisure/playground": {
                     "name": "Zona de jocs infantils",
-                    "terms": "Parc Infantil"
+                    "terms": "parc infantil"
                 },
                 "leisure/slipway": {
                     "name": "Pendent per a embarcacions",
-                    "terms": "Varador"
+                    "terms": "varador"
                 },
                 "leisure/sports_centre": {
                     "name": "Complex esportiu"
@@ -3131,35 +3130,35 @@
                 },
                 "leisure/stadium": {
                     "name": "Estadi",
-                    "terms": "Estadi,Camp"
+                    "terms": "estadi,camp"
                 },
                 "leisure/swimming_pool": {
                     "name": "Piscina",
-                    "terms": "Piscina"
+                    "terms": "piscina"
                 },
                 "leisure/water_park": {
                     "name": "Parc Aquàtic"
                 },
                 "line": {
                     "name": "Línia",
-                    "terms": "Línia"
+                    "terms": "línia"
                 },
                 "man_made/adit": {
                     "name": "Entrada"
                 },
                 "man_made/breakwater": {
                     "name": "trencaonades",
-                    "terms": "Escullera,Espigó,Espatller"
+                    "terms": "escullera,espigó,espatller"
                 },
                 "man_made/chimney": {
                     "name": "Xemeneia"
                 },
                 "man_made/cutline": {
                     "name": "Línia de tall",
-                    "terms": "Línia de tall"
+                    "terms": "línia de tall"
                 },
                 "man_made/embankment": {
-                    "name": "Terraplè "
+                    "name": "Terraplè"
                 },
                 "man_made/flagpole": {
                     "name": "Màstil"
@@ -3169,18 +3168,18 @@
                 },
                 "man_made/lighthouse": {
                     "name": "Far",
-                    "terms": "Far"
+                    "terms": "far"
                 },
                 "man_made/petroleum_well": {
                     "name": "Pou petrolífer"
                 },
                 "man_made/pier": {
                     "name": "Moll de pilons",
-                    "terms": "Moll,Dàrsena"
+                    "terms": "moll,dàrsena"
                 },
                 "man_made/pipeline": {
                     "name": "Canonada",
-                    "terms": "Gàseoducte,Oleoducte,Canonades"
+                    "terms": "gàseoducte,oleoducte,canonades"
                 },
                 "man_made/pumping_station": {
                     "name": "Estació de Bombament"
@@ -3196,19 +3195,19 @@
                 },
                 "man_made/survey_point": {
                     "name": "Punt referencial",
-                    "terms": "Punt de salvació,Punt de salvament,Punt d'evacuació"
+                    "terms": "punt de salvació,punt de salvament,punt d'evacuació"
                 },
                 "man_made/tower": {
                     "name": "Torre",
-                    "terms": "Torre, Torres"
+                    "terms": "torre,torres"
                 },
                 "man_made/wastewater_plant": {
                     "name": "Depuradora d'aigües residuals",
-                    "terms": "Depuradora"
+                    "terms": "depuradora"
                 },
                 "man_made/water_tower": {
                     "name": "Torre d'aigua",
-                    "terms": "Torre d'aigua, Dipòsit d'aigua, Dipòsit"
+                    "terms": "torre d'aigua,dipòsit d'aigua,dipòsit"
                 },
                 "man_made/water_well": {
                     "name": "Pou"
@@ -3221,14 +3220,14 @@
                 },
                 "man_made/works": {
                     "name": "Fàbrica",
-                    "terms": "Factoria"
+                    "terms": "factoria"
                 },
                 "natural/bay": {
                     "name": "Badia"
                 },
                 "natural/beach": {
                     "name": "Platja",
-                    "terms": "Platja"
+                    "terms": "platja"
                 },
                 "natural/cave_entrance": {
                     "name": "Entrada de cova"
@@ -3238,7 +3237,7 @@
                 },
                 "natural/coastline": {
                     "name": "Línia costanera",
-                    "terms": "Línia costera, costa, litoral, línia de platja, costa, platja, mar"
+                    "terms": "línia costera,costa,litoral,línia de platja,platja,mar"
                 },
                 "natural/fell": {
                     "name": "Prat d'alta muntanya"
@@ -3254,7 +3253,7 @@
                 },
                 "natural/peak": {
                     "name": "Pic",
-                    "terms": "Pic, cim, cimadal, pollegó, agulla."
+                    "terms": "pic,cim,cimadal,pollegó,agulla."
                 },
                 "natural/saddle": {
                     "name": "Collada"
@@ -3273,22 +3272,22 @@
                 },
                 "natural/tree": {
                     "name": "Arbre",
-                    "terms": "Arbre"
+                    "terms": "arbre"
                 },
                 "natural/volcano": {
                     "name": "Volcà"
                 },
                 "natural/water": {
                     "name": "Aigua",
-                    "terms": "Aigua"
+                    "terms": "aigua"
                 },
                 "natural/water/lake": {
                     "name": "Llac",
-                    "terms": "Llac, Estany"
+                    "terms": "llac,estany"
                 },
                 "natural/water/pond": {
                     "name": "Estany",
-                    "terms": "estany, bassa, bassal, llac, reserva"
+                    "terms": "estany,bassa,bassal,llac,reserva"
                 },
                 "natural/water/reservoir": {
                     "name": "Embassament"
@@ -3301,7 +3300,7 @@
                 },
                 "office": {
                     "name": "Oficines",
-                    "terms": "Oficina, Oficines"
+                    "terms": "oficina,oficines"
                 },
                 "office/accountant": {
                     "name": "Oficina comptable"
@@ -3379,8 +3378,8 @@
                     "name": "Lloc"
                 },
                 "place/city": {
-                    "name": "Ciutat ",
-                    "terms": "Ciutat, Municipi"
+                    "name": "Ciutat",
+                    "terms": "ciutat,municipi"
                 },
                 "place/farm": {
                     "name": "Granja"
@@ -3390,7 +3389,7 @@
                 },
                 "place/island": {
                     "name": "Illa",
-                    "terms": "Illa, Illot, Illes, Illots"
+                    "terms": "illa,illot,illes,illots"
                 },
                 "place/isolated_dwelling": {
                     "name": "Vivenda aïllada"
@@ -3415,7 +3414,7 @@
                 },
                 "point": {
                     "name": "Punt",
-                    "terms": "Punt"
+                    "terms": "punt"
                 },
                 "power/generator": {
                     "name": "Generador elèctric"
@@ -3431,15 +3430,15 @@
                 },
                 "power/substation": {
                     "name": "Subestació",
-                    "terms": "Subestació elèctrica, Estació elèctrica, Central elèctrica"
+                    "terms": "subestació elèctrica,estació elèctrica,central elèctrica"
                 },
                 "power/tower": {
                     "name": "Torre de línia d'alta tensió",
-                    "terms": "Torre d'alta tensió, Torre d'alt voltatge"
+                    "terms": "torre d'alta tensió,torre d'alt voltatge"
                 },
                 "power/transformer": {
                     "name": "Transformador",
-                    "terms": "Transformador"
+                    "terms": "transformador"
                 },
                 "public_transport/station_bus": {
                     "name": "Estació d'autobusos"
@@ -3452,29 +3451,29 @@
                 },
                 "railway/disused": {
                     "name": "Via fèrria fora d'ús",
-                    "terms": "Via fèrria abandonada, Via de tren fora d'ús, Via de tren abandonada"
+                    "terms": "via fèrria abandonada,via de tren fora d'ús,via de tren abandonada"
                 },
                 "railway/station": {
                     "name": "Estació de ferrocarril"
                 },
                 "railway/subway_entrance": {
                     "name": "Boca de Metro",
-                    "terms": "Boca de metro, Entrada de metro"
+                    "terms": "boca de metro,entrada de metro"
                 },
                 "relation": {
                     "name": "Relació",
-                    "terms": "Relació"
+                    "terms": "relació"
                 },
                 "route/ferry": {
                     "name": "Ruta de ferri"
                 },
                 "shop": {
                     "name": "Botiga",
-                    "terms": "Botiga, Comerç"
+                    "terms": "botiga,comerç"
                 },
                 "shop/alcohol": {
                     "name": "Botiga de licors",
-                    "terms": "Licoreria, Botiga de licors"
+                    "terms": "licoreria,botiga de licors"
                 },
                 "shop/antiques": {
                     "name": "Botiga d'antiguitats"
@@ -3490,7 +3489,7 @@
                 },
                 "shop/bakery": {
                     "name": "Fleca",
-                    "terms": "Forn de pa, Panaderia, pastisseria, forn"
+                    "terms": "forn de pa,panaderia,pastisseria,forn"
                 },
                 "shop/bathroom_furnishing": {
                     "name": "Botiga de mobles de bany"
@@ -3509,11 +3508,11 @@
                 },
                 "shop/beverages": {
                     "name": "Botiga de begudes",
-                    "terms": "Licoreria"
+                    "terms": "licoreria"
                 },
                 "shop/bicycle": {
                     "name": "Botiga de bicicletes",
-                    "terms": "Botiga de bicicletes"
+                    "terms": "botiga de bicicletes"
                 },
                 "shop/bookmaker": {
                     "name": "Cusidor de llibres"
@@ -3556,34 +3555,34 @@
                 },
                 "shop/clothes": {
                     "name": "Botiga de roba",
-                    "terms": "Botiga de roba"
+                    "terms": "botiga de roba"
                 },
                 "shop/coffee": {
                     "name": "Botiga de cafè"
                 },
                 "shop/computer": {
                     "name": "Botiga d'informàtica",
-                    "terms": "Botiga d'informàtica, Botiga d'ordinadors"
+                    "terms": "botiga d'informàtica,botiga d'ordinadors"
                 },
                 "shop/confectionery": {
                     "name": "Botiga de llaminadures",
-                    "terms": "Botiga de dolços, Botiga de caramels, Botiga de Llepolies, Dolços, Llaminadures, Caramels, Llepolies"
+                    "terms": "botiga de dolços,botiga de caramels,botiga de llepolies,dolços,llaminadures,caramels,llepolies"
                 },
                 "shop/convenience": {
                     "name": "Botiga d'ultramarins",
-                    "terms": "Botiga de queviures, Ultramarins, Queviures, Colmado"
+                    "terms": "botiga de queviures,ultramarins,queviures,colmado"
                 },
                 "shop/copyshop": {
                     "name": "Copisteria",
-                    "terms": "Botiga, fotocòpies, fulls, impressora"
+                    "terms": "botiga,fotocòpies,fulls,impressora"
                 },
                 "shop/cosmetics": {
                     "name": "Botiga de cosmètics",
-                    "terms": "Botiga de perfums, Cosmètics, Cosmètica, Perfums, Perfumeria"
+                    "terms": "botiga de perfums,cosmètics,cosmètica,perfums,perfumeria"
                 },
                 "shop/curtain": {
                     "name": "Botiga de cortines",
-                    "terms": "Botiga de roba de la llar, Cortines, Coixins"
+                    "terms": "botiga de roba de la llar,cortines,coixins"
                 },
                 "shop/dairy": {
                     "name": "Botiga de productes làctics"
@@ -3596,37 +3595,37 @@
                 },
                 "shop/doityourself": {
                     "name": "Botiga de bricolatge",
-                    "terms": "Botiga de bricolatge"
+                    "terms": "botiga de bricolatge"
                 },
                 "shop/dry_cleaning": {
                     "name": "Bugaderia",
-                    "terms": "Tintoreria, Centre de neteja, Neteja, Neteja en sec"
+                    "terms": "tintoreria,centre de neteja,neteja,neteja en sec"
                 },
                 "shop/e-cigarette": {
                     "name": "Botiga de cigars electrònics"
                 },
                 "shop/electronics": {
                     "name": "Botiga d'electrònica",
-                    "terms": "Botiga d'electrònica, Botiga de components electrònics"
+                    "terms": "botiga d'electrònica,botiga de components electrònics"
                 },
                 "shop/erotic": {
                     "name": "Botiga d'articles eròtics",
-                    "terms": "sex, shop, sexshop"
+                    "terms": "sex,shop,sexshop"
                 },
                 "shop/fabric": {
                     "name": "Botiga de teles",
-                    "terms": "Botiga de robes, Teles, Robes"
+                    "terms": "botiga de robes,teles,robes"
                 },
                 "shop/farm": {
                     "name": "Estand productiu",
-                    "terms": "Grades"
+                    "terms": "grades"
                 },
                 "shop/fashion": {
                     "name": "Botiga de roba"
                 },
                 "shop/florist": {
                     "name": "Floristeria",
-                    "terms": "Floristeria, Botiga de plantes, Botiga de jardineria"
+                    "terms": "floristeria,botiga de plantes,botiga de jardineria"
                 },
                 "shop/frame": {
                     "name": "Botiga de marcs"
@@ -3636,14 +3635,14 @@
                 },
                 "shop/furniture": {
                     "name": "Botiga de mobles",
-                    "terms": "Botiga de mobles, Moblista"
+                    "terms": "botiga de mobles,moblista"
                 },
                 "shop/garden_centre": {
                     "name": "Centre de jardineria"
                 },
                 "shop/gift": {
                     "name": "Botiga de regals",
-                    "terms": "Botiga de regals, Botiga d'objectes de regal"
+                    "terms": "botiga de regals,botiga d'objectes de regal"
                 },
                 "shop/greengrocer": {
                     "name": "Fruiteria"
@@ -3734,7 +3733,7 @@
                 },
                 "shop/perfumery": {
                     "name": "Botiga de perfums",
-                    "terms": "Perfumeria, botiga de colònies"
+                    "terms": "perfumeria,botiga de colònies"
                 },
                 "shop/pet": {
                     "name": "Botiga d'animals"
@@ -3762,7 +3761,7 @@
                 },
                 "shop/shoes": {
                     "name": "Sabateria",
-                    "terms": "Sabateria, Botiga de sabates, Sabater"
+                    "terms": "sabateria,botiga de sabates,sabater"
                 },
                 "shop/sports": {
                     "name": "Botiga d'esports"
@@ -3775,7 +3774,7 @@
                 },
                 "shop/supermarket": {
                     "name": "Supermercat",
-                    "terms": "Supermercat, Súper, Hipermercat, Híper"
+                    "terms": "supermercat,súper,hipermercat,híper"
                 },
                 "shop/tailor": {
                     "name": "Sastreria"
@@ -3794,11 +3793,11 @@
                 },
                 "shop/toys": {
                     "name": "Botiga de joguines",
-                    "terms": "Botiga de joguines, Botiga de jocs, Joguineria"
+                    "terms": "botiga de joguines,botiga de jocs,joguineria"
                 },
                 "shop/travel_agency": {
                     "name": "Agència de viatges",
-                    "terms": "Agència de viatges"
+                    "terms": "agència de viatges"
                 },
                 "shop/tyres": {
                     "name": "Botiga de pneumàtics"
@@ -3811,18 +3810,18 @@
                 },
                 "shop/variety_store": {
                     "name": "Botiga de tot a 100",
-                    "terms": "Basar"
+                    "terms": "basar"
                 },
                 "shop/video": {
                     "name": "Botiga de vídeos",
-                    "terms": "Videoclub"
+                    "terms": "videoclub"
                 },
                 "shop/video_games": {
                     "name": "Botiga de videojocs"
                 },
                 "shop/watches": {
                     "name": "Òptica",
-                    "terms": "Botiga d'ulleres"
+                    "terms": "botiga d'ulleres"
                 },
                 "shop/water_sports": {
                     "name": "Botiga d'esports aquàtics"
@@ -3835,7 +3834,7 @@
                 },
                 "shop/wine": {
                     "name": "Botiga de vins",
-                    "terms": "Celler, Licoreria"
+                    "terms": "celler,licoreria"
                 },
                 "tourism/alpine_hut": {
                     "name": "Refugi de muntanya"
@@ -3866,34 +3865,34 @@
                 },
                 "tourism/guest_house": {
                     "name": "Habitacions de lloguer",
-                    "terms": "Casa de convidats, convidats, hostes, invitats"
+                    "terms": "casa de convidats,convidats,hostes,invitats"
                 },
                 "tourism/hostel": {
                     "name": "Alberg",
-                    "terms": "Hostal"
+                    "terms": "hostal"
                 },
                 "tourism/hotel": {
                     "name": "Hotel",
-                    "terms": "Hotel"
+                    "terms": "hotel"
                 },
                 "tourism/information": {
                     "name": "Informació",
-                    "terms": "Informació, Oficina d'informació, Punt d'Informació"
+                    "terms": "informació,oficina d'informació,punt d'informació"
                 },
                 "tourism/information/board": {
                     "name": "Tauler informatiu",
-                    "terms": "Tauler d'informació, panell d'informació, panell informatiu"
+                    "terms": "tauler d'informació,panell d'informació,panell informatiu"
                 },
                 "tourism/information/map": {
                     "name": "Mapa"
                 },
                 "tourism/motel": {
                     "name": "Motel",
-                    "terms": "Motel"
+                    "terms": "motel"
                 },
                 "tourism/museum": {
                     "name": "Museu",
-                    "terms": "Museu"
+                    "terms": "museu"
                 },
                 "tourism/picnic_site": {
                     "name": "Àrea de pícnic"
@@ -3906,14 +3905,14 @@
                 },
                 "tourism/zoo": {
                     "name": "Zoo",
-                    "terms": "Zoo, Zoològic"
+                    "terms": "zoo,zoològic"
                 },
                 "traffic_calming": {
                     "name": "Mesures de reducció de velocitat"
                 },
                 "traffic_calming/bump": {
                     "name": "Ressalt",
-                    "terms": "Cavalló, Resalt, Túmul, Reductor, Tope"
+                    "terms": "cavalló,resalt,túmul,reductor,tope"
                 },
                 "traffic_calming/chicane": {
                     "name": "Chicane"
@@ -3929,56 +3928,56 @@
                 },
                 "traffic_calming/hump": {
                     "name": "Esquena d'ase",
-                    "terms": "Esquena de ruc, Esquena de burro, Esquena de bou, Esquena de toro, Llom d'ase, Llom de ruc, Llom de burro, Llom de bou, Llom de toro, Ressalt, Cavalló, Túmul"
+                    "terms": "esquena de ruc,esquena de burro,esquena de bou,esquena de toro,llom d'ase,llom de ruc,llom de burro,llom de bou,llom de toro,ressalt,cavalló,túmul"
                 },
                 "traffic_calming/island": {
                     "name": "Refugi viari"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Bandes rugoses",
-                    "terms": "banda, bandes, rugós, rugoses"
+                    "terms": "banda,bandes,rugós,rugoses"
                 },
                 "type/boundary": {
                     "name": "Límit",
-                    "terms": "Límit administratiu, Frontera, Vora"
+                    "terms": "límit administratiu,frontera,vora"
                 },
                 "type/boundary/administrative": {
                     "name": "Límit administratiu",
-                    "terms": "Límit administratiu, Frontera"
+                    "terms": "límit administratiu,frontera"
                 },
                 "type/multipolygon": {
                     "name": "Multipolígon"
                 },
                 "type/restriction": {
                     "name": "Restricció",
-                    "terms": "Restricció"
+                    "terms": "restricció"
                 },
                 "type/restriction/no_left_turn": {
                     "name": "Prohibició del gir a l'esquerra",
-                    "terms": "Prohibit girar a l'esquerra"
+                    "terms": "prohibit girar a l'esquerra"
                 },
                 "type/restriction/no_right_turn": {
                     "name": "Prohibició del gir a la dreta",
-                    "terms": "Prohibit girar a la dreta"
+                    "terms": "prohibit girar a la dreta"
                 },
                 "type/restriction/no_straight_on": {
                     "name": "Prohibició de seguir recte",
-                    "terms": "Prohibit continuar recte"
+                    "terms": "prohibit continuar recte"
                 },
                 "type/restriction/no_u_turn": {
                     "name": "Prohibició del gir total",
-                    "terms": "Prohibit canviar de sentit"
+                    "terms": "prohibit canviar de sentit"
                 },
                 "type/route": {
                     "name": "Ruta",
-                    "terms": "Ruta"
+                    "terms": "ruta"
                 },
                 "type/route/bicycle": {
                     "name": "Ruta ciclista"
                 },
                 "type/route/bus": {
                     "name": "Ruta d'autobús",
-                    "terms": "Ruta de bus, Línia de bus"
+                    "terms": "ruta de bus,línia de bus"
                 },
                 "type/route/detour": {
                     "name": "Desviació"
@@ -4020,30 +4019,30 @@
                     "name": "Dic sec"
                 },
                 "waterway/canal": {
-                    "name": "Canal ",
-                    "terms": "Canal, Sèquia, Séquia"
+                    "name": "Canal",
+                    "terms": "canal,sèquia,séquia"
                 },
                 "waterway/dam": {
                     "name": "Presa",
-                    "terms": "Presa, Pantà, Embassament"
+                    "terms": "presa,pantà,embassament"
                 },
                 "waterway/ditch": {
                     "name": "Séquia",
-                    "terms": "Séquia, Sèquia, Rara, Canal, Aigua, Via aqüífera, Torrent, Conducció d'aigua, Aqüífer, Rierol"
+                    "terms": "séquia,sèquia,rara,canal,aigua,via aqüífera,torrent,conducció d'aigua,aqüífer,rierol"
                 },
                 "waterway/dock": {
                     "name": "Moll humit/Moll sec"
                 },
                 "waterway/drain": {
                     "name": "Torrent",
-                    "terms": "Torrentera, Rambla"
+                    "terms": "torrentera,rambla"
                 },
                 "waterway/fuel": {
                     "name": "Benzinera per a embarcacions"
                 },
                 "waterway/river": {
                     "name": "Riu",
-                    "terms": "Riu"
+                    "terms": "riu"
                 },
                 "waterway/riverbank": {
                     "name": "Banc fluvial"
@@ -4053,14 +4052,14 @@
                 },
                 "waterway/stream": {
                     "name": "Rierol",
-                    "terms": "Séquia, rierol, Fil d'aigua, Rajolí, Riuet, Ramal, Reguer, Segla, Canal, Rec, Regueró, Sequiola, Sequió, Cavim."
+                    "terms": "séquia,rierol,fil d'aigua,rajolí,riuet,ramal,reguer,segla,canal,rec,regueró,sequiola,sequió,cavim."
                 },
                 "waterway/water_point": {
                     "name": "Aigua marina potable"
                 },
                 "waterway/waterfall": {
                     "name": "Cascada",
-                    "terms": "Salt d'aigua, saltant, sallent, fall"
+                    "terms": "salt d'aigua,saltant,sallent,fall"
                 },
                 "waterway/weir": {
                     "name": "Assut"

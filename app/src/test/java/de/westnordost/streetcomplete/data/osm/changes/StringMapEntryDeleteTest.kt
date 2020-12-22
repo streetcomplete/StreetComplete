@@ -6,19 +6,29 @@ import org.junit.Assert.*
 
 class StringMapEntryDeleteTest {
 
-    @Test fun delete() {
-        val c = StringMapEntryDelete("a", "b")
-        val m = mutableMapOf("a" to "c")
+    @Test fun `conflicts if already changed to different value`() {
+        assertTrue(StringMapEntryDelete("a", "b").conflictsWith(mutableMapOf("a" to "c")))
+    }
 
-        assertEquals("DELETE \"a\"=\"b\"", c.toString())
+    @Test fun `does not conflict if already deleted key`() {
+        assertFalse(StringMapEntryDelete("a", "b").conflictsWith(mutableMapOf()))
+    }
 
-        assertTrue(c.conflictsWith(m))
-        m["a"] = "b"
-        assertFalse(c.conflictsWith(m))
+    @Test fun `does not conflict if not deleted yet`() {
+        assertFalse(StringMapEntryDelete("a", "b").conflictsWith(mutableMapOf("a" to "b")))
+    }
 
-        c.applyTo(m)
+    @Test fun `toString is as expected`() {
+        assertEquals(
+            "DELETE \"a\"=\"b\"",
+            StringMapEntryDelete("a", "b").toString()
+        )
+    }
+
+    @Test fun apply() {
+        val m = mutableMapOf("a" to "b")
+        StringMapEntryDelete("a", "b").applyTo(m)
         assertFalse(m.containsKey("a"))
-        assertTrue(c.conflictsWith(m))
     }
 
     @Test fun reverse() {

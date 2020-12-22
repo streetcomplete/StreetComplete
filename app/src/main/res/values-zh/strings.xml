@@ -1721,6 +1721,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"是否需要付费才能进入 %s？"</string>
+    <string name="quest_handrail_title">"台阶有扶手么？"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"当前版本：%s"</string>
@@ -1802,6 +1803,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="about_summary_donate">"展示您对本应用的喜爱！"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"在此扫描"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_garages_description">"拥有多个隔离空间供不同人使用，比如连起来的单车位车库"</string>
@@ -1811,8 +1813,31 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste_description">"所以，这是一个回收任何垃圾的设施，比如袋装的生活垃圾？"</string>
+    <string name="next">"继续"</string>
+    <string name="letsgo">"开始吧"</string>
+    <string name="achievements_unlocked_link">"解锁连接"</string>
+    <string name="achievements_unlocked_links">"解锁连接"</string>
+    <string name="link_category_editors_title">"贡献"</string>
+    <string name="link_cyclosm_description">"骑自行车地图"</string>
+    <string name="link_osm_buildings_description">"三维建筑地图"</string>
+    <string name="link_vespucci_description">"面向Android的OSM高级编辑应用"</string>
+    <string name="link_learnosm_description">"刚刚接触OpenStreetMap?这里是初学者指南"</string>
+    <string name="link_show_me_the_way_description">"实时观看OSM改动"</string>
+    <string name="achievement_bicyclist_title">"骑自行车的人"</string>
+    <string name="achievement_building_title">"高楼"</string>
+    <string name="achievement_blind_title">"盲人"</string>
+    <string name="achievement_pedestrian_title">"跑步者"</string>
+    <string name="achievement_veg_title">"素食者"</string>
+    <string name="action_about2">"关于"</string>
+    <string name="map_btn_menu">"菜单"</string>
+    <string name="confirmation_authorize_now_note2">"您还可以之后在个人资料页面做"</string>
+    <string name="about_title_sponsors">"赞助者"</string>
+    <string name="quest_board_type_plants">"植物"</string>
+    <string name="quest_board_type_notice_board">"公告板"</string>
+    <string name="quest_board_type_public_transport">"公共交通"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_buildingType_terrace2">"排屋"</string>
     <string name="at_housename">"房屋名称 %s："</string>
     <string name="at_conscription_and_street_number">"征兵（Conscription）号码 %1$s, 定位号码 %2$s:"</string>
 
@@ -1821,5 +1846,12 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="at_housenumber">"房屋数量 %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 的开放时间/营业时间是？"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) 是否可以轮椅无障碍通行？"</string>
+    <string name="about_title_translate">"帮助翻译应用"</string>
     <string name="quest_traffic_signals_sound_title">"这个交通灯带有声音，供盲人使用吗？"</string>
+    <string name="achievement_outdoors_title">"户外"</string>
+    <string name="open_url">"打开链接"</string>
+    <string name="quest_buildingType_historic">"历史建筑"</string>
+    <string name="quest_buildingType_ruins">"废墟"</string>
+    <string name="quest_generic_answer_does_not_exist">"不存在哦"</string>
+    <string name="osm_element_gone_confirmation">"不存在"</string>
 </resources>

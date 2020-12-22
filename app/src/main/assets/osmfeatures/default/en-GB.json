@@ -819,8 +819,7 @@
                     "label": "Type"
                 },
                 "maxheight": {
-                    "label": "Max Height",
-                    "placeholder": "4, 4.5, 5, 14'0\", 14'6\", 15'0\""
+                    "label": "Max Height"
                 },
                 "maxspeed": {
                     "label": "Speed Limit",
@@ -1511,7 +1510,7 @@
                     "name": "Advertising Column"
                 },
                 "advertising/poster_box": {
-                    "terms": "lollylop, snowshoe, city light"
+                    "terms": "lollylop,snowshoe,city light"
                 },
                 "aerialway/cable_car": {
                     "name": "Cable Car"
@@ -1698,7 +1697,7 @@
                 },
                 "amenity/fuel": {
                     "name": "Petrol Station",
-                    "terms": "gas, fuel, propane, diesel, lng, cng, biodiesel"
+                    "terms": "gas,fuel,propane,diesel,lng,cng,biodiesel"
                 },
                 "amenity/grave_yard": {
                     "name": "Graveyard"
@@ -1857,7 +1856,7 @@
                     "name": "University Grounds"
                 },
                 "amenity/vehicle_inspection": {
-                    "terms": "car inspection, mot test, mot centre"
+                    "terms": "car inspection,mot test,mot centre"
                 },
                 "amenity/vending_machine": {
                     "name": "Vending Machine"
@@ -3287,23 +3286,11 @@
                 "place/village": {
                     "name": "Village"
                 },
-                "playground/balance_beam": {
-                    "name": "Play Balance Beam"
-                },
-                "playground/basket_spinner": {
-                    "name": "Basket Spinner"
-                },
-                "playground/basket_swing": {
-                    "name": "Basket Swing"
-                },
                 "playground/cushion": {
                     "name": "Bouncy Cushion"
                 },
                 "playground/horizontal_bar": {
                     "name": "Play Horizontal Bar"
-                },
-                "playground/rocker": {
-                    "name": "Spring Rider"
                 },
                 "playground/roundabout": {
                     "name": "Play Roundabout"
@@ -3643,7 +3630,7 @@
                 },
                 "shop/houseware": {
                     "name": "Houseware Store",
-                    "terms": "homeware, kitchenware, linen, crockery"
+                    "terms": "homeware,kitchenware,linen,crockery"
                 },
                 "shop/interior_decoration": {
                     "name": "Interior Decoration Shop"
@@ -3811,7 +3798,7 @@
                     "name": "Weapon Shop"
                 },
                 "shop/wholesale": {
-                    "name": "Wholesale Shop / Cash & Carry "
+                    "name": "Wholesale Shop / Cash & Carry"
                 },
                 "shop/window_blind": {
                     "name": "Window Blind Shop"

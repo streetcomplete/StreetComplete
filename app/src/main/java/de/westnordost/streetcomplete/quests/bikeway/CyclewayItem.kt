@@ -29,7 +29,7 @@ private fun Cycleway.getRightHandTrafficIconResId(): Int = when(this) {
     SUGGESTION_LANE -> R.drawable.ic_cycleway_suggestion_lane
     TRACK -> R.drawable.ic_cycleway_track
     NONE -> R.drawable.ic_cycleway_none
-    NONE_NO_ONEWAY -> R.drawable.ic_cycleway_pictograms
+    NONE_NO_ONEWAY -> R.drawable.ic_cycleway_none_no_oneway
     PICTOGRAMS -> R.drawable.ic_cycleway_pictograms
     SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit
     DUAL_LANE -> R.drawable.ic_cycleway_lane_dual
@@ -45,7 +45,7 @@ private fun Cycleway.getLeftHandTrafficIconResId(): Int = when(this) {
     SUGGESTION_LANE -> R.drawable.ic_cycleway_suggestion_lane
     TRACK -> R.drawable.ic_cycleway_track_l
     NONE -> R.drawable.ic_cycleway_none
-    NONE_NO_ONEWAY -> R.drawable.ic_cycleway_pictograms_l
+    NONE_NO_ONEWAY -> R.drawable.ic_cycleway_none_no_oneway_l
     PICTOGRAMS -> R.drawable.ic_cycleway_pictograms_l
     SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit_l
     DUAL_LANE -> R.drawable.ic_cycleway_lane_dual_l

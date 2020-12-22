@@ -733,9 +733,6 @@
                 "material": {
                     "label": "Materiala"
                 },
-                "maxheight": {
-                    "placeholder": "4, 4.5, 5, 14'0\", 14'6\", 15'0\""
-                },
                 "maxspeed": {
                     "label": "Abiadura muga",
                     "placeholder": "40, 50, 60..."
@@ -1362,7 +1359,7 @@
                     "name": "Bizikletentzako Aparkalekua"
                 },
                 "amenity/bicycle_rental": {
-                    "name": "Bizikleten Alokairua "
+                    "name": "Bizikleten Alokairua"
                 },
                 "amenity/bicycle_repair_station": {
                     "name": "Bizikleta konpontzeko tresneriaren postua"
@@ -1518,7 +1515,7 @@
                     "name": "Xintoismo Santutegia"
                 },
                 "amenity/place_of_worship/sikh": {
-                    "name": "Tenplu Sikhista "
+                    "name": "Tenplu Sikhista"
                 },
                 "amenity/place_of_worship/taoist": {
                     "name": "Tenplu Taoista"
