@@ -8,6 +8,7 @@ import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.util.TilesRect
+import kotlinx.coroutines.*
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
@@ -24,7 +25,7 @@ import javax.inject.Inject
  * * To query for the state of the service and/or current download task, i.e. if the current
  * download job was started by the user
  */
-class DownloadService : SingleIntentService(TAG) {
+class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineScope(Dispatchers.IO) {
     @Inject internal lateinit var downloaders: List<Downloader>
 
     private lateinit var notificationController: DownloadNotificationController
@@ -84,9 +85,12 @@ class DownloadService : SingleIntentService(TAG) {
 
         var error: Exception? = null
         try {
-            for (downloader in downloaders) {
-                if (cancelState.get()) return
-                downloader.download(tiles, cancelState)
+            runBlocking {
+                for (downloader in downloaders) {
+                    launch(Dispatchers.IO) {
+                        if (!cancelState.get()) downloader.download(tiles, cancelState)
+                    }
+                }
             }
         } catch (e: Exception) {
             Log.e(TAG, "Unable to download", e)
@@ -103,6 +107,11 @@ class DownloadService : SingleIntentService(TAG) {
         progressListener?.onFinished()
 
         Log.i(TAG, "Finished download")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineContext.cancel()
     }
 
     /** Public interface to classes that are bound to this service  */

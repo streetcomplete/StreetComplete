@@ -67,6 +67,27 @@ data class TilesRect(val left: Int, val top: Int, val right: Int, val bottom: In
             tile2lon(right + 1, zoom)
         )
     }
+
+    fun zoom(from: Int, to: Int): TilesRect {
+        val delta = to - from
+        return when {
+            delta > 0 -> TilesRect(
+                left shl delta,
+                top shl delta,
+                right shl delta,
+                bottom shl delta
+            )
+            delta < 0 -> TilesRect(
+                left shr -delta,
+                top shr -delta,
+                right shr -delta,
+                bottom shr -delta
+            )
+            else -> this
+        }
+    }
+
+    fun getAsLeftBottomRightTopString() = "$left,$bottom,$right,$top"
 }
 
 /** Returns the bounding box of the tile rect at the given zoom level that encloses this bounding box.

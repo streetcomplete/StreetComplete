@@ -40,8 +40,6 @@ public class Prefs
 			LAST_VERSION_DATA = "lastVersion_data",
 			HAS_SHOWN_TUTORIAL = "hasShownTutorial";
 
-	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
-
 	public static final String QUEST_SPRITES_VERSION = "TangramQuestSpriteSheet.version";
 	public static final String QUEST_SPRITES = "TangramQuestSpriteSheet.questSprites";
 
