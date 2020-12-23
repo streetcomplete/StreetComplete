@@ -15,10 +15,10 @@ class AddParkingAccess : OsmFilterQuestType<String>() {
     //
     // Cf. #2408: Parking access might omit parking=street_side
     override val elementFilter = """
-        nodes, ways, relations with amenity=parking
+        nodes, ways, relations with amenity = parking
         and (
-            access=unknown
-            or (!access and parking != street_side)
+            access = unknown
+            or (!access and parking !~ street_side|lane)
         )
     """
 
