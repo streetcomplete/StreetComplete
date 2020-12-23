@@ -18,7 +18,7 @@ class AddParkingAccess : OsmFilterQuestType<String>() {
         nodes, ways, relations with amenity=parking
         and (
             access=unknown
-            or (!access and -parking=street_side)
+            or (!access and parking != street_side)
         )
     """
 
