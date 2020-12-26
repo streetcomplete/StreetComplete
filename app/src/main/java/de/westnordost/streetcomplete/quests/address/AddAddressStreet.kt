@@ -30,6 +30,12 @@ class AddAddressStreet(
           and name
     """.toElementFilterExpression()}
 
+    // #2112 - exclude indirect addr:street
+    private val excludedWaysFilter by lazy { """
+        ways with
+          addr:street and addr:interpolation
+    """.toElementFilterExpression() }
+
     override val commitMessage = "Add street/place names to address"
     override val icon = R.drawable.ic_quest_housenumber_street
     override val wikiLink = "Key:addr"
@@ -44,6 +50,11 @@ class AddAddressStreet(
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val excludedWayNodeIds = mutableSetOf<Long>()
+        mapData.ways
+            .filter { excludedWaysFilter.matches(it) }
+            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
+
         val associatedStreetRelations = mapData.relations.filter {
             val type = it.tags?.get("type")
             type == "associatedStreet" || type == "street"
@@ -52,6 +63,7 @@ class AddAddressStreet(
         val addressesWithoutStreet = mapData.filter { address ->
             filter.matches(address) &&
             associatedStreetRelations.none { it.contains(address.type, address.id) }
+            && address.id !in excludedWayNodeIds
         }
 
         if (addressesWithoutStreet.isNotEmpty()) {
