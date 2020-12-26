@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.LocalizedName
@@ -19,7 +20,7 @@ class AddRoadName(
 ) : OsmElementQuestType<RoadNameAnswer> {
 
     private val filter by lazy { """
-        ways with 
+        ways with
           highway ~ primary|secondary|tertiary|unclassified|residential|living_street|pedestrian
           and !name
           and !ref
@@ -34,7 +35,7 @@ class AddRoadName(
 
     private val roadsWithNamesFilter by lazy { """
         ways with
-          highway ~ ${ALL_ROADS.joinToString("|")}
+          highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
           and name
     """.toElementFilterExpression() }
 
