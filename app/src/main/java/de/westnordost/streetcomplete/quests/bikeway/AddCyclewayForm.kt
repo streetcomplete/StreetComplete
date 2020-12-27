@@ -31,7 +31,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         if (!isDefiningBothSides && isNoRoundabout) {
             result.add(OtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
         }
-        result.add(OtherAnswer(R.string.quest_cycleway_answer_no_bicycle_infrastructure) { noBikewayHereHint() },)
+        result.add(OtherAnswer(R.string.quest_cycleway_answer_no_bicycle_infrastructure) { noBikewayHereHint() })
         return result
     }
 
