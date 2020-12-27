@@ -28,6 +28,12 @@ After joining [main site of the POEditor](https://poeditor.com/projects/) should
 
 Before each release, translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged and do not help the project.
 
+### iD presets
+
+Some translations are from iD presets. For example in "Is this still here (Bench)" text "Is this still here ()" will be translated as part of StreetComplete, but translation for bench is taken from iD presets.
+
+For iD preset translation see [their documentation](https://github.com/openstreetmap/iD/blob/develop/CONTRIBUTING.md#translating).
+
 ## Solving notes
 
 As you probably noticed, you can choose *"Cannot answer"* in StreetComplete and thus leave a note on OpenStreetMap.
