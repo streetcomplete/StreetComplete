@@ -5,6 +5,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
@@ -26,7 +27,7 @@ class AddAddressStreet(
 
     private val roadsWithNamesFilter by lazy { """
         ways with
-          highway ~ ${ALL_ROADS.joinToString("|")}
+          highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
           and name
     """.toElementFilterExpression()}
 

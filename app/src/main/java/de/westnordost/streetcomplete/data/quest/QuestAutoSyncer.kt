@@ -49,8 +49,10 @@ import javax.inject.Singleton
 
     // new location is known -> check if downloading makes sense now
     private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
-        pos = OsmLatLon(location.latitude, location.longitude)
-        triggerAutoDownload()
+        if (location.accuracy <= 300) {
+            pos = OsmLatLon(location.latitude, location.longitude)
+            triggerAutoDownload()
+        }
     }
 
     // connection state changed -> check if downloading or uploading is allowed now
@@ -124,7 +126,7 @@ import javax.inject.Singleton
 
     @SuppressLint("MissingPermission")
     fun startPositionTracking() {
-        locationManager.requestUpdates(3 * 60 * 1000L, 500f)
+        locationManager.requestUpdates(30 * 1000L, 250f)
     }
 
     fun stopPositionTracking() {
