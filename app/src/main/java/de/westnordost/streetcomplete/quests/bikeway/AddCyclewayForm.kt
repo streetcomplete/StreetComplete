@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.bikeway
 import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 
 import java.util.Collections
 
@@ -30,8 +31,19 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         if (!isDefiningBothSides && isNoRoundabout) {
             result.add(OtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
         }
+        result.add(OtherAnswer(R.string.quest_cycleway_answer_no_bicycle_infrastructure) { noBikewayHereHint() })
         return result
     }
+
+    private fun noBikewayHereHint() {
+        activity?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_cycleway_answer_no_bicycle_infrastructure_title)
+            .setMessage(R.string.quest_cycleway_answer_no_bicycle_infrastructure_explanation)
+            .setPositiveButton(android.R.string.ok, null)
+            .show()
+        }
+    }
+
 
     private val likelyNoBicycleContraflow = """
             ways with oneway:bicycle != no and (

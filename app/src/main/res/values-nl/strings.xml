@@ -2388,4 +2388,5 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_shop_gone_replaced_answer_hint">"Voer de soort winkel hier in"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Ik weet niet wat dit is. Overweeg een notitie achter te laten."</string>
     <string name="quest_shop_vacant_type_title">"Deze winkel stond leeg. Wat is hier nu?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Het aantal rijstroken verschilt per kant."</string>
 </resources>

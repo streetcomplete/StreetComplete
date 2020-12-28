@@ -1,3 +1,21 @@
+v28.1: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Android 11: Fix unable to take photo, unable to open location in another app, unable to send crash report (#2410)</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Cycleways: Improve visibility of "no cycleway" option, by @matkoniecz (#2385, #2404, #2285)</li>
+  <li>Street address: Allow tapping on footways, paths, ... (#2411)</li>
+  <li>Street address: Do not ask for vertices of an address interpolation line that already has a street set, by @matkoniecz (#2417)</li>
+  <li>Parking access: Do not ask for parking acces for street side and lane parking, by @jdhoek (#2408)</li>
+  </ul>
+  <h3>Enhancements</h3>
+  <ul>
+  <li>Added a few links to achievements, by @matkoniecz (#2403)</li>
+  <li>Only download quests automatically if GPS accuracy is ok (#2422)</li>
+  </ul>
+
 v28.0: |
   <p>This update is devoted to checking whether things still exist the way they are mapped since
   keeping data up-to-date is at least as important as contributing new data.</p>

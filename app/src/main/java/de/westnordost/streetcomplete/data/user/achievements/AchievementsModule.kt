@@ -75,7 +75,6 @@ object AchievementsModule {
             R.string.link_disaster_ninja_description
         ),
 
-        // TODO not sure where to put these links
         Link(
             "mapillary",
             "https://www.mapillary.com",
@@ -84,7 +83,7 @@ object AchievementsModule {
             R.drawable.ic_link_mapillary,
             R.string.link_mapillary_description
         ),
-        // TODO not sure where to put these links
+
         Link(
             "kartaview",
             "https://kartaview.org/map/",
@@ -455,7 +454,8 @@ object AchievementsModule {
 
                 5 to links("osrm"), // routing engines are not that interesting for end users
                 6 to links("openrouteservice"),
-                7 to links("graphhopper")
+                7 to links("graphhopper"),
+                12 to links("kartaview", "mapillary") // useful to OSM, but not directly OSM and interesting only to extreme enthusiasts
             )
         ),
 
@@ -662,6 +662,7 @@ object AchievementsModule {
                     "AddAcceptsCash",
                     "AddVegetarian",
                     "AddVegan",
+                    "AddKosher",
                     // tourist related
                     "AddInformationToTourism",
                     "AddBoardType",
@@ -687,6 +688,7 @@ object AchievementsModule {
                 listOf(
                     "CheckExistence",
                     "AddSport",
+                    "AddPitchSurface",
                     "AddSummitRegister",
                     "AddReligionToWaysideShrine",
                     // from pedestrian
