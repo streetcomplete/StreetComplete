@@ -18,7 +18,7 @@ import kotlin.math.sqrt
 abstract class AVariableRadiusStrategy(
     private val visibleQuestsSource: VisibleQuestsSource,
     private val downloadedTilesDao: DownloadedTilesDao
-) : QuestAutoDownloadStrategy {
+) : AutoDownloadStrategy {
 
     protected abstract val maxDownloadAreaInKm2: Double
     protected abstract val desiredQuestCountInVicinity: Int

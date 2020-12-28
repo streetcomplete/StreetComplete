@@ -38,15 +38,13 @@ import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment;
-import de.westnordost.streetcomplete.data.download.DownloadItem;
-import de.westnordost.streetcomplete.data.notifications.NewAchievementNotification;
 import de.westnordost.streetcomplete.data.notifications.Notification;
 import de.westnordost.streetcomplete.data.notifications.NotificationsSource;
 import de.westnordost.streetcomplete.data.quest.Quest;
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener;
-import de.westnordost.streetcomplete.data.download.QuestDownloadController;
+import de.westnordost.streetcomplete.data.download.DownloadController;
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource;
 import de.westnordost.streetcomplete.data.upload.UploadController;
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener;
@@ -75,10 +73,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject LocationRequestFragment locationRequestFragment;
 	@Inject QuestAutoSyncer questAutoSyncer;
 
-	@Inject QuestController questController;
-	@Inject QuestDownloadController questDownloadController;
+	@Inject DownloadController downloadController;
 	@Inject UploadController uploadController;
-	@Inject NotificationsSource notificationsSource;
 	@Inject UnsyncedChangesCountSource unsyncedChangesCountSource;
 
 	@Inject SharedPreferences prefs;
@@ -187,10 +183,10 @@ public class MainActivity extends AppCompatActivity implements
 		localBroadcaster.registerReceiver(locationRequestFinishedReceiver,
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
-		questDownloadController.setShowNotification(false);
+		downloadController.setShowNotification(false);
 
 		uploadController.addUploadProgressListener(uploadProgressListener);
-		questDownloadController.addDownloadProgressListener(downloadProgressListener);
+		downloadController.addDownloadProgressListener(downloadProgressListener);
 
 		if(!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false))
 		{
@@ -258,10 +254,10 @@ public class MainActivity extends AppCompatActivity implements
 
 		unregisterReceiver(locationAvailabilityReceiver);
 
-		questDownloadController.setShowNotification(true);
+		downloadController.setShowNotification(true);
 
 		uploadController.removeUploadProgressListener(uploadProgressListener);
-		questDownloadController.removeDownloadProgressListener(downloadProgressListener);
+		downloadController.removeDownloadProgressListener(downloadProgressListener);
 	}
 
 	@Override public void onConfigurationChanged(@NonNull Configuration newConfig) {
@@ -363,10 +359,6 @@ public class MainActivity extends AppCompatActivity implements
 			= new DownloadProgressListener()
 	{
 		@AnyThread @Override public void onStarted() {}
-
-		@Override public void onFinished(@NonNull DownloadItem item) {}
-
-		@Override public void onStarted(@NonNull DownloadItem item) {}
 
 		@AnyThread @Override public void onError(@NonNull final Exception e)
 		{

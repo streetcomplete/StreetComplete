@@ -30,7 +30,7 @@ import javax.inject.Singleton
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
 @Singleton class QuestAutoSyncer @Inject constructor(
-    private val questDownloadController: QuestDownloadController,
+    private val downloadController: DownloadController,
     private val uploadController: UploadController,
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
     private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
@@ -138,7 +138,7 @@ import javax.inject.Singleton
     fun triggerAutoDownload() {
         val pos = pos ?: return
         if (!isConnected) return
-        if (questDownloadController.isDownloadInProgress) return
+        if (downloadController.isDownloadInProgress) return
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude},${pos.longitude}")
 
@@ -147,7 +147,7 @@ import javax.inject.Singleton
             val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
             if (downloadBoundingBox != null) {
                 try {
-                    questDownloadController.download(downloadBoundingBox)
+                    downloadController.download(downloadBoundingBox)
                 } catch (e: IllegalStateException) {
                     // The Android 9 bug described here should not result in a hard crash of the app
                     // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume

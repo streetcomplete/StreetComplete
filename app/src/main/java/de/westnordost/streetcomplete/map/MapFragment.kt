@@ -18,7 +18,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.preference.PreferenceManager
 import com.mapzen.tangram.MapView
 import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.TouchInput.*
@@ -29,8 +28,8 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.containsAll
 import de.westnordost.streetcomplete.ktx.setMargins
@@ -42,14 +41,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import okhttp3.Cache
-import okhttp3.CacheControl
 import okhttp3.HttpUrl
+import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.internal.Version
-import java.io.File
 import java.util.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /** Manages a map that remembers its last location*/
@@ -70,6 +66,7 @@ open class MapFragment : Fragment(),
     private var isMapInitialized: Boolean = false
 
     @Inject internal lateinit var vectorTileProvider: VectorTileProvider
+    @Inject internal lateinit var cacheConfig: MapTilesDownloadCacheConfig
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -231,25 +228,11 @@ open class MapFragment : Fragment(),
     }
 
     private fun createHttpHandler(): HttpHandler {
-        val builder = DefaultHttpHandler.getClientBuilder()
-        val cacheDir = requireContext().externalCacheDir
-        val tileCacheDir: File?
-        if (cacheDir != null) {
-            tileCacheDir = File(cacheDir, "tile_cache")
-            if (!tileCacheDir.exists()) tileCacheDir.mkdir()
-        } else {
-            tileCacheDir = null
-        }
-        if (tileCacheDir?.exists() == true) {
-            val cacheSize = PreferenceManager.getDefaultSharedPreferences(context).getInt(Prefs.MAP_TILECACHE_IN_MB, 50)
-            builder.cache(Cache(tileCacheDir, cacheSize * 1024L * 1024L))
-        }
-
+        val builder = OkHttpClient.Builder().cache(cacheConfig.cache)
         return object : DefaultHttpHandler(builder) {
-            val cacheControl = CacheControl.Builder().maxStale(7, TimeUnit.DAYS).build()
             override fun configureRequest(url: HttpUrl, builder: Request.Builder) {
                 builder
-                    .cacheControl(cacheControl)
+                    .cacheControl(cacheConfig.cacheControl)
                     .header("User-Agent", ApplicationConstants.USER_AGENT + " / " + Version.userAgent())
             }
         }

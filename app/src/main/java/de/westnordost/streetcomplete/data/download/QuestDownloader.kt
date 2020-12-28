@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.download
 import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
@@ -24,16 +23,12 @@ class QuestDownloader @Inject constructor(
     private val downloadedTilesDao: DownloadedTilesDao,
     private val questTypeRegistry: QuestTypeRegistry,
     private val userStore: UserStore
-) {
-    var progressListener: DownloadProgressListener? = null
+) : Downloader {
 
-    @Synchronized fun download(tiles: TilesRect, cancelState: AtomicBoolean) {
+    @Synchronized override fun download(tiles: TilesRect, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
 
-        progressListener?.onStarted()
         if (hasQuestsAlready(tiles)) {
-            progressListener?.onSuccess()
-            progressListener?.onFinished()
             return
         }
 
@@ -43,17 +38,12 @@ class QuestDownloader @Inject constructor(
 
         try {
             downloadQuestTypes(tiles, bbox, cancelState)
-            progressListener?.onSuccess()
         } finally {
-            progressListener?.onFinished()
             Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Finished")
         }
     }
 
     private fun downloadQuestTypes(tiles: TilesRect, bbox: BoundingBox, cancelState: AtomicBoolean) {
-        val downloadItem = DownloadItem(R.drawable.ic_search_black_128dp, "Multi download")
-        progressListener?.onStarted(downloadItem)
-
         // always first download notes, note positions are blockers for creating other quests
         downloadNotes(bbox)
 
@@ -62,8 +52,6 @@ class QuestDownloader @Inject constructor(
         downloadOsmElementQuestTypes(bbox)
 
         downloadedTilesDao.put(tiles, DownloadedTilesType.QUESTS)
-
-        progressListener?.onFinished(downloadItem)
     }
 
     private fun hasQuestsAlready(tiles: TilesRect): Boolean {

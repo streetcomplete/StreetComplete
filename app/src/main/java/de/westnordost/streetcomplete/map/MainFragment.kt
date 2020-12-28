@@ -37,7 +37,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuDialog
-import de.westnordost.streetcomplete.data.download.QuestDownloadController
+import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
@@ -74,7 +74,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var questController: QuestController
-    @Inject internal lateinit var questDownloadController: QuestDownloadController
+    @Inject internal lateinit var downloadController: DownloadController
     @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
     @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
     @Inject internal lateinit var soundFx: SoundFx
@@ -611,7 +611,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
             if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
                 context?.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
             } else {
-                if (questDownloadController.isPriorityDownloadInProgress) {
+                if (downloadController.isPriorityDownloadInProgress) {
                     context?.let {
                         AlertDialog.Builder(it)
                             .setMessage(R.string.confirmation_cancel_prev_download_title)
@@ -639,7 +639,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
                 bbox = cameraPosition.position.enclosingBoundingBox(radius)
             }
         }
-        questDownloadController.download(bbox, true)
+        downloadController.download(bbox, true)
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */

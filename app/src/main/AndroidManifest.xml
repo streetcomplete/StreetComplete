@@ -74,7 +74,7 @@
             android:name=".user.UserActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <service android:name=".data.download.QuestDownloadService" />
+        <service android:name=".data.download.DownloadService" />
         <service android:name=".data.upload.UploadService" />
         <provider
             android:name="androidx.core.content.FileProvider"

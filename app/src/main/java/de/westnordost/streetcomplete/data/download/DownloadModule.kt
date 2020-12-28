@@ -6,6 +6,6 @@ import dagger.Provides
 @Module
 object DownloadModule {
     @Provides
-    fun downloadProgressSource(downloadController: QuestDownloadController): DownloadProgressSource =
+    fun downloadProgressSource(downloadController: DownloadController): DownloadProgressSource =
         downloadController
 }
