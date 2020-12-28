@@ -5,6 +5,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
@@ -26,9 +27,15 @@ class AddAddressStreet(
 
     private val roadsWithNamesFilter by lazy { """
         ways with
-          highway ~ ${ALL_ROADS.joinToString("|")}
+          highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
           and name
     """.toElementFilterExpression()}
+
+    // #2112 - exclude indirect addr:street
+    private val excludedWaysFilter by lazy { """
+        ways with
+          addr:street and addr:interpolation
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add street/place names to address"
     override val icon = R.drawable.ic_quest_housenumber_street
@@ -44,6 +51,11 @@ class AddAddressStreet(
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val excludedWayNodeIds = mutableSetOf<Long>()
+        mapData.ways
+            .filter { excludedWaysFilter.matches(it) }
+            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
+
         val associatedStreetRelations = mapData.relations.filter {
             val type = it.tags?.get("type")
             type == "associatedStreet" || type == "street"
@@ -52,6 +64,7 @@ class AddAddressStreet(
         val addressesWithoutStreet = mapData.filter { address ->
             filter.matches(address) &&
             associatedStreetRelations.none { it.contains(address.type, address.id) }
+            && address.id !in excludedWayNodeIds
         }
 
         if (addressesWithoutStreet.isNotEmpty()) {

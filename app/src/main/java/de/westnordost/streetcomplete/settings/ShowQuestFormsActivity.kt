@@ -116,7 +116,13 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
 
         val f = questType.createForm()
         val args = AbstractQuestAnswerFragment.createArguments(quest, QuestGroup.OSM, element, 0f, 0f)
-        f.arguments = args
+        if(f.arguments != null) {
+            f.arguments!!.putAll(args)
+        } else {
+            f.arguments = args
+        }
+
+
 
         currentQuestType = questType
 

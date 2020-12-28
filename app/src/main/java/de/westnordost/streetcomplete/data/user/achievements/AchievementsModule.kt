@@ -662,6 +662,7 @@ object AchievementsModule {
                     "AddAcceptsCash",
                     "AddVegetarian",
                     "AddVegan",
+                    "AddKosher",
                     // tourist related
                     "AddInformationToTourism",
                     "AddBoardType",
@@ -687,6 +688,7 @@ object AchievementsModule {
                 listOf(
                     "CheckExistence",
                     "AddSport",
+                    "AddPitchSurface",
                     "AddSummitRegister",
                     "AddReligionToWaysideShrine",
                     // from pedestrian
