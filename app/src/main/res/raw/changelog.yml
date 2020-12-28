@@ -1,4 +1,13 @@
 v29.0-beta1: |
+  <h3>🗺️ Tiles available offline!</h3>
+  <p>
+  The background map tiles are now downloaded into the cache alongside each quest download.
+  <br/><br/>
+  When you go offline after quest download, you can continue to use this app without any problem
+  because the background map will be available wherever quests are shown.(#112, #2428).
+  <br/><br/>
+  To download not at your current GPS location but somewhere else, just pan and zoom to
+  that location and tap "search for quests here" in the menu.</p>
   <h3>New Quests</h3>
   <ul>
   <li><i>What surface does this sport field have?</i> (#1170, #2377), by @matkoniecz </li>
