@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
+import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
@@ -208,6 +209,7 @@ import javax.inject.Singleton
         AddChargingStationCapacity(),
         AddChargingStationOperator(),
         AddClothingBinOperator(),
+        AddKosher(),
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
         //      the sake of mapping it in case it makes sense later

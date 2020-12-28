@@ -728,7 +728,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f
-        f.arguments = AbstractQuestAnswerFragment.createArguments(quest, group, element, rotation, tilt)
+        val args = AbstractQuestAnswerFragment.createArguments(quest, group, element, rotation, tilt)
+        if(f.arguments != null) {
+            f.arguments!!.putAll(args)
+        } else {
+            f.arguments = args
+        }
         showInBottomSheet(f)
     }
 

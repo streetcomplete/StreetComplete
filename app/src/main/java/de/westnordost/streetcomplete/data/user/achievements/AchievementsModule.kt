@@ -662,6 +662,7 @@ object AchievementsModule {
                     "AddAcceptsCash",
                     "AddVegetarian",
                     "AddVegan",
+                    "AddKosher",
                     // tourist related
                     "AddInformationToTourism",
                     "AddBoardType",
