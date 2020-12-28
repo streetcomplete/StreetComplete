@@ -1,3 +1,15 @@
+v29.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What surface does this sport field have?</i> (#1170, #2377), by @matkoniecz </li>
+  <li><i>Does ... offer kosher products?</i> (#639, #2244), disabled by default, by @matkoniecz </li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Construction quest: Make it possible to select date at which construction will be finished (#1341, #2402), by @matkoniecz</li>
+  <li>Cycleways: Provide hint what to answer if there is no cycleway at all (#2285, #2405), by @matkoniecz
+  </ul>
+
 v28.1: |
   <h3>Fixes</h3>
   <ul>
