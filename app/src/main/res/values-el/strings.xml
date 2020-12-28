@@ -2150,4 +2150,8 @@
     <string name="leave_note">"Αφήστε σημείωμα"</string>
     <string name="quest_shop_gone_title">"Τι είναι εδώ τώρα;"</string>
     <string name="quest_shop_gone_vacant_answer">"Είναι κενό"</string>
+    <string name="quest_shop_gone_replaced_answer_hint">"Πληκτρολογήστε το είδος της τοποθεσίας εδώ"</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Δεν ξέρετε τι είναι αυτό. Σκεφτείτε να αφήσετε μια σημείωση."</string>
+    <string name="quest_shop_vacant_type_title">"Αυτό το κατάστημα ήταν κενό. Τι είναι τώρα εδώ;"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Ο αριθμός λωρίδων διαφέρει για κάθε πλευρά"</string>
 </resources>

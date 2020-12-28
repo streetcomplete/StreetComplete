@@ -31,11 +31,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Odpowiedź niemożliwa…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"Na pewno?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"Tak, na pewno"</string>
 
     <!-- Fuzzy -->
@@ -242,7 +238,6 @@
     <string name="quest_roofShape_show_more">"Pokaż więcej…"</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Ma kilka różnych kształtów"</string>
 
     <!-- Fuzzy -->
@@ -414,8 +409,6 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
 
     <!-- Fuzzy -->
     <string name="quest_sport_answer_multi">"Żaden konkretny sport"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_soccer">"Piłka nożna"</string>
     <string name="quest_sport_tennis">"Tenis"</string>
     <string name="quest_sport_baseball">"Baseball"</string>
@@ -438,8 +431,6 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <!-- Fuzzy -->
     <string name="quest_sport_skateboard">"Jazda na deskorolce"</string>
     <string name="quest_sport_bowls">"Bowls"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_boules">"Bule"</string>
 
     <!-- Fuzzy -->
@@ -636,8 +627,6 @@ Jeśli na całej ulicy nie ma znaków dotyczących podświetlonej sekcji, obowi�
 
     <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"Odwiedź sklep"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"Jeśli używasz domyślnego układu klawiatury, to być może jesteś w stanie włączyć układ dla wymaganego języka w ustawieniach klawiatury.
 
 W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze sklepu z aplikacjami. Popularne klawiatury, które wspierają wiele języków, to Google Gboard, SwiftKey Keyboard oraz Multiling O Keyboard."</string>
@@ -931,11 +920,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"pas dla rowerów"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none">"brak"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_shared">"pas dzielony z innymi uczestnikami ruchu"</string>
 
     <!-- Fuzzy -->
@@ -964,8 +949,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
 
     <!-- Fuzzy -->
     <string name="quest_type">"Rodzaj zadań"</string>
-
-    <!-- Fuzzy -->
     <string name="action_reset">"Reset"</string>
 
     <!-- Fuzzy -->
@@ -982,8 +965,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
 
     <!-- Fuzzy -->
     <string name="quest_dietType_vegan_name_title">"Czy %s posiada w menu ofertę dla wegan?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"Tylko"</string>
 
     <!-- Fuzzy -->
@@ -1012,8 +993,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
 
     <!-- Fuzzy -->
     <string name="default_disabled_msg_go_inside">"To zadanie jest domyślnie nieaktywne, ponieważ odpowiedź jest często niemożliwa bez wejścia do danego miejsca"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"Numer konskrypcyjny"</string>
 
     <!-- Fuzzy -->
@@ -1294,8 +1273,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types">"Ma różne zastosowania"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types_description">"Wybierz główne przeznaczenie budynku. Np. jeżeli na parterze bloku znajdują się sklepy, w dalszym ciągu jest on budynkiem mieszkalnym."</string>
 
     <!-- Fuzzy -->
@@ -1557,8 +1534,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"Nie ma znaku…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question">"Czy jest tutaj wystarczająco dużo miejsca na przejazd najwyższych ciężarówek (co najmniej 4.5m / 15 stóp)?"</string>
 
     <!-- Fuzzy -->
@@ -1567,11 +1542,7 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_closed2">"zamknięte przez %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_reopen2">"ponownie otwarte przez %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"ukryte przez %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
@@ -1588,8 +1559,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_title">"Jaka jest twardość powierzchni tej drogi?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Utwardzona"</string>
 
     <!-- Fuzzy -->
@@ -1609,8 +1578,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_outside_title">"Czy to miejsce jest dostępne dla osób na wózkach inwalidzkich?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_button_title">"Czy te sygnalizatory mają przycisk żądający zielonego światła?"</string>
 
     <!-- Fuzzy -->
@@ -1647,8 +1614,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Czy piesi mają zakaz poruszania się na tej drodze?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ta ulica jest otagowana jako pozbawiona chodnika po obu stronach. Jeśli jednak chodnik istnieje, ale jest wyświetlany jako samodzielna droga, wypełnij odpowiedź na temat chodnika."</string>
 
     <!-- Fuzzy -->
@@ -1669,8 +1634,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_placeName_title_name">"Jaka jest nazwa własna tego miejsca? (%s)"</string>
-
-    <!-- Fuzzy -->
     <string name="action_open_location">"Otwórz to miejsce w innej aplikacji"</string>
 
     <!-- Fuzzy -->
@@ -1681,20 +1644,12 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="label_blocknumber">"Numer kwartału"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_covered">"Przystanek jest w całości przykryty"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_name_title">"Czy %s przewozi pieszych?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"Czy ten prom przewozi pieszych?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_name_title">"Czy %s przewozi pojazdy silnikowe?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Czy ten prom przewozi pojazdy silnikowe?"</string>
 
     <!-- Fuzzy -->
@@ -1705,14 +1660,8 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="create_new_note_hint">"Najlepiej użyj lokalnego języka lub angielskiego."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leafType_title">"Czy te drzewa są liściaste czy iglaste?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_needles">"Iglaste"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_broadleaved">"Liściaste"</string>
 
     <!-- Fuzzy -->
@@ -1734,8 +1683,6 @@ Podzielić?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"To jest sporo podziałów! Zawsze możesz podzielić linię bardziej przy odpowiadaniu na poszczególne zadania."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Jak jest nawierzchnia części będącej chodnikiem dla pieszych?"</string>
 
     <!-- Fuzzy -->
@@ -1782,8 +1729,6 @@ Podzielić?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nie ma widocznego numeru..."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Droga na ilustracji jest obrócona w ten sam sposób jak odcinek na mapie pod znaczkiem zadania."</string>
 
     <!-- Fuzzy -->
@@ -1926,8 +1871,6 @@ Podzielić?"</string>
 
     <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm">"Witaj w OpenStreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm_subtitle">"wolnej wiki-mapie świata"</string>
 
     <!-- Fuzzy -->
@@ -1956,7 +1899,6 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
     <string name="quests_empty">"Nie masz jeszcze żadnych zakończonych zadań"</string>
 
     <!-- Potrzebny kontekst -->
-    <!-- Fuzzy -->
     <string name="unsynced_quests_description">"oraz %d nieopublikowanych zmian."</string>
 
     <!-- Fuzzy -->
@@ -2103,8 +2045,6 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
 
     <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Cotygodniowy blog o wydarzeniach związanych z OpenStreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="link_figuregrounder_description">"Tworzy mapy miast lub obszarów w stylu plakatu"</string>
 
     <!-- Fuzzy -->
@@ -2131,28 +2071,20 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
 
     <!-- Fuzzy -->
     <string name="achievement_wheelchair_title">"Mobilność"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_wheelchair_solved_X">"Rozwiązałeś %d zadań pomagających osobom na wózkach inwalidzkich!"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_postman_title">"Listonosz"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"Zlokalizowałeś %d adresów!
 Te informacje są niezbędne nie tylko listonoszom ale także narzędziom nawigującym."</string>
 
     <!-- Fuzzy -->
     <string name="achievement_building_title">"Wieżowiec"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"Rozwiązałeś %d zadań związanych z budynkami.
 Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie określony typ budynku."</string>
 
     <!-- Fuzzy -->
     <string name="achievement_blind_title">"Szósty Zmysł"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_blind_solved_X">"Rozwiązałeś %d zadań, które są ważne dla osób niedowidzących."</string>
 
     <!-- Fuzzy -->
@@ -2166,11 +2098,7 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
 
     <!-- Fuzzy -->
     <string name="achievement_veg_solved_X">"Rozwiązałeś %d zadań ważnych dla osób na diecie bezmięsnej!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_title">"Na Drodze"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"Rozwiązałeś %d zadań ulepszających drogową infrastrukturę dodając ulicę w OpenStreetMap!"</string>
 
     <!-- Fuzzy -->
@@ -2215,8 +2143,6 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
 
     <!-- Fuzzy -->
     <string name="user_profile_global_rank">"Pozycja światowa"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_local_rank">"Pozycja w
 %s"</string>
 

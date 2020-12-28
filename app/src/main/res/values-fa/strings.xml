@@ -10,11 +10,11 @@
     <string name="pref_tilecache_size_summary">"%d مگابایت"</string>
     <string name="pref_tilecache_size_message">"میزان فضای اشغال شده (مگابایت) روی حافظه خارجی برای ذخیره جزئیات نقشه"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"نمایش تمام یاداشت‌ها"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"و همچنین نمایش یادداشت‌هایی که به عنوان سوال تعریف نشده‌اند"</string>
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده گرفتن یادداشت‌هایی که به عنوان سوال تعریف نشده است"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"و همچنین نمایش یادداشت‌هایی که به عنوان پرسش تعریف نشده‌اند"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده گرفتن یادداشت‌هایی که به عنوان پرسش تعریف نشده است"</string>
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
-    <string name="map_attribution_osm">"© مشارکت‌کنندگان در اوپن‌استریت‌مپ"</string>
+    <string name="map_attribution_osm">"© مشارکت‌کنندگان در نقشه متن باز"</string>
     <string name="quest_generic_otherAnswers">"دیگر پاسخ‌ها ..."</string>
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
     <string name="quest_generic_confirmation_title">"مطمئنید؟"</string>
@@ -25,15 +25,15 @@
 
     <!-- بهتر نیست به جای نقشه بردار نقشه کش یا یه عبارت دیگه به کار ببریم؟ به نظرم با توجه به معنی اصلی کلمه در اینجا مناسب نباشه -->
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"شما هم می‌توانید یک یادداشت عمومی در این مکان بگذارید تا نقشه‌کش‌های دیگر در مورد آن نظر داده و احتمالا رفعش کنند وهم می‌توانید این مساله را برای شخص خودتان پنهان کنید"</string>
+    <string name="quest_leave_new_note_description">"شما نیز می‌توانید یک یادداشت عمومی در این مکان بگذارید تا نقشه‌کش‌های دیگر در مورد آن نظر داده و در صورت امکان آن‌را حل نمایید و می‌توانید این مورد را برای خودتان پنهان کنید"</string>
     <string name="quest_leave_new_note_yes">"تایید"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"نه، فقط پنهان کن"</string>
     <string name="quest_streetName_title">"نام این مسیر چیست؟"</string>
-    <string name="quest_streetName_description">"همان گونه که در تابلو خیابان نوشته شده، کلمات اختصاری را هم وارد نمایید:"</string>
+    <string name="quest_streetName_description">"همان گونه که در تابلو خیابان نگاشته شده، کلمات اختصاری را هم وارد نمایید:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"گاهی علائم خیابان تنها در یک سوی خیابان است. همچنین توجه داشته باشید که ممکن است علائم تکمیلی برای معابر فرعی که به خیابان اصلی متصل هستند، وجود نداشته باشد. معمولا هر خیابان یا خانه دارای یک نام است."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"اگر نام را بدون اختصار می‌نویسید، باید آن را توضیح دهید. بسیاری از کلمات اختصاری اغلب در حالی که شما می‌نویسید، به طور خودکار توسط صفحه کلید هوشمند به کلمه اصلی باز می‌گردند، البته نه همه آنها."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"اگر نام را بدون اختصار می‌نویسید، می بایست آن را توضیح دهید. بسیاری از کلمات اختصاری اغلب در حالی که شما می‌نویسید، به طور خودکار توسط صفحه کلید هوشمند به کلمه اصلی باز می‌گردند، البته نه همه آنها."</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"بدون اختصار"</string>
@@ -84,7 +84,7 @@
     <!-- به نظرم جُستار معادل خوبیه
 البته من واژهٔ پرسش را هم می‌پسندم -->
     <!-- Fuzzy -->
-    <string name="action_download">"جستجوی جُستارهای اینجا"</string>
+    <string name="action_download">"کاوش جُستارهای اینجا"</string>
 
     <!-- Fuzzy -->
     <string name="action_upload">"بارگذاری پاسخ‌ها"</string>
@@ -801,10 +801,10 @@
     <string name="quest_crossing_type_title">"این تقاطع از چه نوعی چیست؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"تقاطع با چراغ های راهنمایی"</string>
+    <string name="quest_crossing_type_signals">"گذرگاه عابر دارای چراغ‌های راهنمایی"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_unmarked">"تقاطع بدون علائم در مسیر"</string>
+    <string name="quest_crossing_type_unmarked">"گذرگاه عابر بدون خط‌کشی"</string>
     <string name="compass_north_one_letter">"شمال"</string>
 
     <!-- Fuzzy -->
@@ -2238,7 +2238,7 @@
     <string name="quest_steps_incline_up">"این راه بالا"</string>
     <string name="quest_step_count_title">"چند پله اینجا است؟"</string>
     <string name="quest_traffic_signals_sound_title">"آیا در اینجا پارازیت برای امواج وجود دارد؟"</string>
-    <string name="quest_traffic_signals_vibrate_title">"آیا این چراغ های راهنمایی برای افراد نابینا مجهز به دکمه لمسی برای عبور امن است؟"</string>
+    <string name="quest_traffic_signals_vibrate_title">"آیا این چراغ‌های راهنمایی برای افراد نابینا مجهز به دکمه لمسی برای عبور امن است؟"</string>
     <string name="quest_traffic_signals_vibrate_description">"نکته: اغلب این دکمه یک دکمه ارتعاشی یا یک مخروط چرخان در زیر بخش دکمه چراغ راهنمایی است."</string>
     <string name="quest_busStopRef_title">"شماره این ایستگاه اتوبوس چیست؟"</string>
     <string name="quest_tramStopRef_title">"شماره این ایستگاه واگن برقی چیست؟"</string>
@@ -2260,7 +2260,7 @@
     <string name="achievement_citizen_solved_X">"شما %d جُستار مفید در زندگی روزمره این شهر را پاسخ دادید!"</string>
     <string name="achievement_outdoors_title">"فضاهای بیرونی"</string>
     <string name="achievement_outdoors_solved_X">"شما %d جُستار مفید برای گردشگران را پاسخ دادید"</string>
-    <string name="quest_pedestrian_crossing_island">"آیا این گذرگاه عابر پیاده جزیره ای دارد؟"</string>
+    <string name="quest_pedestrian_crossing_island">"آیا این گذرگاه عابر پیاده جزیره‌ای دارد؟"</string>
     <string name="quest_generic_answer_noSign">"اینجا تابلو ندارد"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"آیا سطح شیب دار صندلی چرخدار به صورت راه جداگانه روی نقشه نمایش داده می شود؟"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"تفکیک شده"</string>
@@ -2322,4 +2322,5 @@
     <string name="quest_shop_gone_replaced_answer_hint">"نوع مکان ایجا را وارد کنید"</string>
     <string name="quest_shop_gone_replaced_answer_error">"اگر نمی‌دانید چه چیزی اینجاست، یادداشتی بگذارید."</string>
     <string name="quest_shop_vacant_type_title">"این مغازه بلااستفاده بوده است. اکنون چه چیزی این‌جاست؟"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"تعداد خطوط برای هر سمت متفاوت است"</string>
 </resources>
