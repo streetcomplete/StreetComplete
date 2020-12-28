@@ -839,7 +839,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"Ez milyen típusú gyalogátkelő?"</string>
-    <string name="quest_crossing_type_signals">"Jelzőlámpás"</string>
+    <string name="quest_crossing_type_signals">"Jelzőlámpás átkelő"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Útburkolati jel nélküli"</string>
@@ -873,7 +873,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_parkingType_title">"Ez milyen típusú parkoló?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parkingType_surface">"Normál"</string>
+    <string name="quest_parkingType_surface">"Önálló parkoló"</string>
 
     <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"Mélygarázs"</string>
@@ -1952,7 +1952,7 @@ Végül, légy óvatos: figyelj a környezetedre és ne lépj magánterületre."
     <string name="unsynced_quests_description">"plusz %d még nem közzétett módosítás."</string>
 
     <!-- Fuzzy -->
-    <string name="unsynced_quests_not_logged_in_description">"Van %d még nem közzétett módosítások. Jelentkezz be, hogy feltölthesd őket."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Van %d db, még nem közzétett módosításod. Jelentkezz be, hogy feltölthesd őket."</string>
 
     <!-- Fuzzy -->
     <string name="user_quests_title">"Megoldott kérdések"</string>
@@ -2351,4 +2351,23 @@ szintek"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Magas kamionok át tudnak haladni"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Magas kamionok nem férnek el"</string>
     <string name="quest_address_street_hint">"Koppints a térképen lévő útra"</string>
+    <string name="quest_crossing_type_marked">"Jelzett átkelő"</string>
+    <string name="quest_parkingType_street_side">"Közvetlen az út melletti parkoló"</string>
+    <string name="quest_parkingType_lane">"Útfelületen lévő parkoló"</string>
+    <string name="quest_existence_title">"Ez még mindig itt található? (%s)"</string>
+    <string name="quest_existence_name_title">"Ez még mindig itt található: %1$s? (%2$s)"</string>
+    <string name="quest_tracktype_grade2a">"Szilárd, de burkolatlan"</string>
+    <string name="quest_tracktype_grade3a">"Többnyire szilárd"</string>
+    <string name="quest_generic_answer_does_not_exist">"Nem létezik…"</string>
+    <string name="osm_element_gone_warning">"Figyelem: Ez nem vonható vissza!"</string>
+    <string name="osm_element_gone_description">"Biztos vagy benne, hogy nem létezik, akár egy kissé eltérő helyszínen? Ha nem vagy benne biztos, inkább hagyj egy megjegyzést."</string>
+    <string name="osm_element_gone_confirmation">"Nem létezik"</string>
+    <string name="leave_note">"Megyjegyzés írása"</string>
+    <string name="quest_shop_gone_title">"Mi található itt helyette?"</string>
+    <string name="quest_shop_gone_vacant_answer">"Üresen áll"</string>
+    <string name="quest_shop_gone_replaced_answer">"Egy…"</string>
+    <string name="quest_shop_gone_replaced_answer_hint">"Add meg a hely típusát"</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Nem tudom pontosan. Inkább megjegyzést hagyok."</string>
+    <string name="quest_shop_vacant_type_title">"Ez az üzlet üresen állt. Mi található most itt?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"A sávok száma eltérő a két oldalon"</string>
 </resources>
