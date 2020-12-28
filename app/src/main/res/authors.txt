@@ -120,6 +120,12 @@ surface_paved.jpg              CC0               https://www.goodfreephotos.com/
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
 surface_rock.jpg               CC0               Elliot Plack
+surface_tennis_clay.jpg        CC-BY-SA 2.0      https://www.flickr.com/photos/la_bretagne_a_paris/5756037305/ (Yann Caradec)
+surface_artificial_turf.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Meltingout.jpg
+surface_tartan.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:200_metres_track_running_start_line.jpg (Santeri Viinamäki)
+surface_paved_area.jpg         CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-27_13_01_48_View_across_Parkway_Avenue_(Mercer_County_Route_634)_near_the_Delaware_and_Bound_Brook_Railroad_underpass,_with_concrete_pavement_likely_dating_to_the_1950s.JPG (Famartin)
+surface_unpaved_area.jpg       CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Art_earthwork_landscape_sculpture_Woodland_Trust_Theydon_Bois_Essex_08.JPG (Acabashi)
+surface_ground_area.jpg        CC-BY 2.0         https://www.flickr.com/photos/7175652@N02/3734770583 (Danumurthi Mahendra)
 herb_height_raised.jpg         CC0               Mateusz Konieczny
 herb_height_raised_original... CC0               Mateusz Konieczny
 herb_height_lowered.jpg        CC0               Mateusz Konieczny
