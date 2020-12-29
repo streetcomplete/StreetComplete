@@ -16,7 +16,13 @@ v29.0-beta1: |
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Construction quest: Make it possible to select date at which construction will be finished (#1341, #2402), by @matkoniecz</li>
-  <li>Cycleways: Provide hint what to answer if there is no cycleway at all (#2285, #2405), by @matkoniecz
+  <li>Cycleways: Provide hint what to answer if there is no cycleway at all (#2285, #2405), by @matkoniecz</li>
+  <li>Housenumbers: Do not ask in France (#2427), by @matkoniecz</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Answer that a thing does not exist anymore, sometimes wasn't uploaded correctly (#2419)</li>
+  <li>Sometimes during download, some quests would appear and then vanish again (#2430)</li>
   </ul>
 
 v28.1: |
