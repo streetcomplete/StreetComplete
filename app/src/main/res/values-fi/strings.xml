@@ -157,9 +157,6 @@
 
     <!-- Fuzzy -->
     <string name="no_gps_no_quests">"Kohteiden automaattiseen hakuun vaaditaan sijaintipalvelut"</string>
-
-    <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Ei enempää tehtäviä tarjolla"</string>
     <string name="later">"Myöhemmin"</string>
 
     <!-- Fuzzy -->
@@ -2214,7 +2211,6 @@ päiviä"</string>
     <string name="quest_lanes_title">"Montako kaistaa autoille on tällä tiellä?"</string>
     <string name="quest_lanes_answer_lanes">"Merkityt kaistat"</string>
     <string name="quest_lanes_answer_noLanes">"Ei merkittyjä kaistoja"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Eroaa tien eri puolilla"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Onko tämä oikein?"</string>
     <string name="quest_maxheight_below_bridge_title">"Mikä on korkeusrajoitus sillan alla?"</string>
     <string name="quest_maxheight_split_way_hint">"Jos tämä ei koske koko tietä, harkitse vastaamaan \"%s\""</string>

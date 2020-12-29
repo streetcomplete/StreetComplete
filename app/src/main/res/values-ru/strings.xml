@@ -193,9 +193,6 @@
     <string name="no_gps_no_quests">"Для автоматического сканирования заданий поблизости включите определение местоположения"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Больше квестов нет"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Не сейчас"</string>
 
     <!-- Fuzzy -->
@@ -2315,7 +2312,6 @@
     <string name="quest_lanes_title">"Сколько полос имеет эта дорога"</string>
     <string name="quest_lanes_answer_lanes">"Размеченая полоса"</string>
     <string name="quest_lanes_answer_noLanes">"Нет размеченных полос движения"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Отличается для каждой стороны"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Двусторонняя полоса левого поворота"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Это правильно?"</string>
     <string name="quest_maxheight_below_bridge_title">"Какое ограничение по высоте под этим мостом?"</string>

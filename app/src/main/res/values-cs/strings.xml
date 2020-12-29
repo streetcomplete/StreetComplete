@@ -204,9 +204,6 @@
     <string name="no_gps_no_quests">"Pro automatické vyhledávání úkolů ve vašem okolí zapněte určování polohy"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Nejsou tu žádné další úkoly"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Později"</string>
 
     <!-- Fuzzy -->
@@ -1293,7 +1290,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_pathSurface_title_bridleway">"Jaký povrch má stezka pro koně v této části?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"Jaký povrch má stezka v této části?"</string>
+    <string name="quest_pathSurface_title">"Jaký povrch má stezka/chodník v této části?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Vyberte nejvíce odpovídající možnost:"</string>
@@ -2380,7 +2377,6 @@ Is the situation on this cycleway still the same? -->
     <string name="quest_lanes_title">"Kolik jízdních pruhů pro auta má tato cesta?"</string>
     <string name="quest_lanes_answer_lanes">"Vyznačené pruhy"</string>
     <string name="quest_lanes_answer_noLanes">"Bez vyznačených pruhů"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Každá strana je jiná"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Má obousměrný pruh pro odbočení vlevo (v ČR není)"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Je to správně?"</string>
     <string name="quest_maxheight_below_bridge_title">"Jaké je výškové omezení pod mostem?"</string>
@@ -2424,4 +2420,16 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_shop_gone_replaced_answer_error">"Nevím, co tu je. Zvažte zanechání poznámky."</string>
     <string name="quest_shop_vacant_type_title">"Tento obchod byl prázdný. Co tu je nyní?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Počet pruhů je na každé straně jiný"</string>
+    <string name="quest_pitchSurface_title">"Jaký povrch má toto sportoviště?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Tento typ úkolů je ve výchozím nastavení zakázán, protože v některých regionech nemá použití, a protože pravděpodobně budete muset na místo vstoupit, abyste na otázku mohli odpovědět."</string>
+    <string name="quest_dietType_kosher_name_title">"Nabízí %s košer produkty?"</string>
+    <string name="quest_dietType_explanation_kosher">"Košer produkty se musí připravovat podle zvláštních pravidel s označením  kašrut od certifikační agentury."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Není tu žádná cyklostezka"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Jako obvykle ťukněte na jednu stranu ilustrace, vyberte správnou odpověď a udělejte to samo na druhé straně. Všimněte si všech možností: v některých případech nemusí být zřejmé: např. jednosměrná cesta, na které můžou cyklisté jezdit v obou směrech!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Vybíráte, že tu není žádná cyklostezka"</string>
+    <string name="quest_construction_completed_at_known_date">"Stavba bude dokončena..."</string>
+    <string name="quest_construction_completion_date_title">"Kdy to bude stavba dokončena?"</string>
+    <string name="quest_surface_value_clay">"Antuka"</string>
+    <string name="quest_surface_value_artificial_turf">"Umělý trávník"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
 </resources>

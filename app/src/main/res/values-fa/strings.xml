@@ -152,9 +152,6 @@
     <string name="no_gps_no_quests">"برای مرور خودکار جستارهای اطراف، مکان نما را روشن کنید"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"جستار دیگری قابل دسترس نیست"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"بعداً"</string>
 
     <!-- Fuzzy -->
@@ -2281,7 +2278,6 @@
     <string name="quest_lanes_answer_lanes">"با خطوط رنگی
 "</string>
     <string name="quest_lanes_answer_noLanes">"بدون خطوط رنگی"</string>
-    <string name="quest_lanes_answer_lanes_odd">"برای هر سمت جداگانه موجود است"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"دارای دوربرگردان برای چرخش به چپ دو طرفه می باشد
 "</string>
     <string name="quest_address_answer_no_housenumber_message2b">"آیا این درست است؟"</string>

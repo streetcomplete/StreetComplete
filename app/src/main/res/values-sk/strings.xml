@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"Zapnite lokalizáciu, ak chcete hľadať úlohy okolo vás"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Žiadne ďalšie úlohy nie sú dostupné"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Neskôr"</string>
 
     <!-- Fuzzy -->

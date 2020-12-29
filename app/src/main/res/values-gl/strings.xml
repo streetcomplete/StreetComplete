@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"Para procurar tarefas ó teu arredor de xeito automático activa a ubicación"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Non hai máis tarefas"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Despois"</string>
 
     <!-- Fuzzy -->
@@ -2358,7 +2355,6 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_lanes_title">"Cantos carrís para vehículos ten esta estrada?"</string>
     <string name="quest_lanes_answer_lanes">"Carrís marcados"</string>
     <string name="quest_lanes_answer_noLanes">"Carrís sen marcar"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Difire de cada lado"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ten dous carrís de xiro á esquerda"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Isto é correcto?"</string>
     <string name="quest_maxheight_below_bridge_title">"Cal é o límite de altura baixo a ponte?"</string>

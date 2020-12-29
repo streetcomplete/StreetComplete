@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"Para escanear por missões em torno de você automaticamente, ative a localização"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Sem novas missões disponíveis"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Mais tarde"</string>
 
     <!-- Fuzzy -->
@@ -2125,7 +2122,6 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="quest_lanes_title">"Quantas faixas para carros essa estrada tem?"</string>
     <string name="quest_lanes_answer_lanes">"Pistas marcadas"</string>
     <string name="quest_lanes_answer_noLanes">"Sem pistas marcadas"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Difere para cada lado"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Tem uma via de mão dupla para virar à esquerda"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Isso está correto?"</string>
     <string name="quest_maxheight_below_bridge_title">"Qual é o limite de altura abaixo da ponte?"</string>

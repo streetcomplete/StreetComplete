@@ -69,7 +69,6 @@
     <string name="not_authorized">"Не авторизовано"</string>
     <string name="version_banned_message">"Ція версія StreetComplete дуже застаріла. Оновіть версію!"</string>
     <string name="no_gps_no_quests">"Для автоматичного пошуку завдань поруч із вами увімкніть позиціювання"</string>
-    <string name="nothing_more_to_download">"Завдань поруч немає"</string>
     <string name="later">"Пізніше"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Це лише з'єднання двох доріг"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Щось інше (залишити нотатку)"</string>
@@ -932,7 +931,6 @@
     <string name="quest_lanes_title">"Скильки на цій дорозі смуг для авто?"</string>
     <string name="quest_lanes_answer_lanes">"Розмічені смуги"</string>
     <string name="quest_lanes_answer_noLanes">"Немає розмічених смуг"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Відрізняється для кожної сторони"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Він має подвійну смугу лівого повороту"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Це правильно?"</string>
     <string name="quest_maxheight_below_bridge_title">"Яка гранична висота під мостом?"</string>

@@ -197,9 +197,6 @@
     <string name="no_gps_no_quests">"A környék kérdéseinek automatikus lekéréséhez kapcsold be a helymeghatározást"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Nem érhető el több kérdés"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Később"</string>
 
     <!-- Fuzzy -->
@@ -2329,7 +2326,6 @@ szintek"</string>
     <string name="quest_lanes_title">"Hány forgalmi sávval rendelkezik ez az út?"</string>
     <string name="quest_lanes_answer_lanes">"Jelölt sávok"</string>
     <string name="quest_lanes_answer_noLanes">"Nincsenek jelölt sávok"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Irányonként különböző"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Kétirányú balra kanyarodó sávval rendelkezik (USA és Kanada)"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ez helyes?"</string>
     <string name="quest_maxheight_below_bridge_title">"Mekkora a magasságkorlátozás a híd alatt?"</string>

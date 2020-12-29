@@ -185,9 +185,6 @@
     <string name="no_gps_no_quests">"Skru på posisjonsdeling for å automatisk lete etter oppdrag i nærheten av deg"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Ingen flere oppdrag er tilgjengelige"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Senere"</string>
 
     <!-- Fuzzy -->

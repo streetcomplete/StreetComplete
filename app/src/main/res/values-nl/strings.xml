@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"Om automatisch te kunnnen scannen voor vragen moet je \"locatie\" aanstaan."</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Verder geen vragen beschikbaar."</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Later"</string>
 
     <!-- Fuzzy -->
@@ -2352,7 +2349,6 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_lanes_title">"Hoeveel rijstroken voor auto's heeft deze weg?"</string>
     <string name="quest_lanes_answer_lanes">"Gemarkeerde rijstroken"</string>
     <string name="quest_lanes_answer_noLanes">"Geen gemarkeerde rijstroken"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Verschillend voor elke kant"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Het heeft een tweerichtingsstrook voor linksaf slaan"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Is dit correct?"</string>
     <string name="quest_maxheight_below_bridge_title">"Wat is de maximum hoogte onder deze brug?"</string>

@@ -73,7 +73,6 @@
     <string name="not_authorized">"Non autorizzato"</string>
     <string name="version_banned_message">"Questa versione di StreetComplete è troppo vecchia. È necessario aggiornarla!"</string>
     <string name="no_gps_no_quests">"Per individuare le missioni da svolgere in zona è necessario abilitare la localizzazione"</string>
-    <string name="nothing_more_to_download">"Non sono disponibili ulteriori missioni"</string>
     <string name="later">"Più tardi"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"È solo un collegamento fra due strade"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Qualcos'altro (lascia una nota)"</string>
@@ -786,7 +785,7 @@ Infine, ricorda per la sicurezza: stai attento dell'ambiente circostante e non e
     <string name="tutorial_happy_mapping">"Buona mappatura!"</string>
 
     <!-- Fuzzy -->
-    <string name="achievements_empty">"Non hai ancora compiti svolti"</string>
+    <string name="achievements_empty">"Non hai ancora riconoscimenti"</string>
     <string name="links_empty">"Non hai ancora collegamenti"</string>
     <string name="quests_empty">"Non hai ancora pubblicato risposte"</string>
     <string name="unsynced_quests_description">"e %d modifiche non pubblicate."</string>
@@ -1007,7 +1006,6 @@ riconoscimento"</string>
     <string name="quest_lanes_title">"Quante corsie per automobili ha questa strada?"</string>
     <string name="quest_lanes_answer_lanes">"Corsie indicate"</string>
     <string name="quest_lanes_answer_noLanes">"Nessuna corsia indicata"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Diverso per ogni lato"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ha una corsia a doppio senso a sinistra"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"È corretto?"</string>
     <string name="quest_maxheight_below_bridge_title">"Qual è il limite d'altezza sotto al ponte?"</string>
@@ -1044,4 +1042,16 @@ riconoscimento"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Non so cosa sia. Se puoi lascia di una nota."</string>
     <string name="quest_shop_vacant_type_title">"Questo negozio era libero. Cosa c'è ora?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Il numero di corsie è differente su ogni lato"</string>
+    <string name="quest_pitchSurface_title">"Che superficie ha questo campo sportivo?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Questo tipo di compito si presenta disabilitato perché non utile in alcune regioni e perché, per rispondere, probabilmente è necessario entrare nel luogo."</string>
+    <string name="quest_dietType_kosher_name_title">"%s vende prodotti kosher?"</string>
+    <string name="quest_dietType_explanation_kosher">"I prodotti kosher devono essere preparati seguendo metodi particolari e vengono controllati da agenzie di certificazione kashrut."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nessuna pista ciclabile"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Al solito, tocca sul lato della figura, seleziona la risposta corretta e ripeti per l'altro lato. Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio una strada a senso unico che permette il transito delle bici in entrambi i sensi!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Indicazione che è presente una pista ciclabile"</string>
+    <string name="quest_construction_completed_at_known_date">"Sarà completato in data…"</string>
+    <string name="quest_construction_completion_date_title">"Quando sarà completato?"</string>
+    <string name="quest_surface_value_clay">"Argilla"</string>
+    <string name="quest_surface_value_artificial_turf">"Erba sintetica"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
 </resources>

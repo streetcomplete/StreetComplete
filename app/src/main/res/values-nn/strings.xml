@@ -69,7 +69,6 @@
     <string name="not_authorized">"Ikkje godkjend"</string>
     <string name="version_banned_message">"Denne versjonen av StreetComplete er for gammal. Du må oppdatera til nyaste versjon."</string>
     <string name="no_gps_no_quests">"Du må slå på posisjonsinnhenting for å kunna søkja etter oppdrag i nærleiken"</string>
-    <string name="nothing_more_to_download">"Det finst ingen fleire oppdrag her"</string>
     <string name="later">"Seinare"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Han koplar berre saman to vegar"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Noko anna (legg att ein merknad)"</string>
@@ -897,7 +896,6 @@ nivå"</string>
     <string name="quest_lanes_title">"Kor mange køyrefelt har denne vegen?"</string>
     <string name="quest_lanes_answer_lanes">"Oppmerkte køyrefelt"</string>
     <string name="quest_lanes_answer_noLanes">"Ingen oppmerkte køyrefelt"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Forskjellig på kvar side"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Han har eit venstresvinge­felt med tovegskøyring"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Er dette rett?"</string>
     <string name="quest_maxheight_below_bridge_title">"Kva er fri høgd under denne brua?"</string>

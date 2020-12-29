@@ -28,8 +28,6 @@
     <string name="quest_generic_confirmation_no">"Je vais vérifier"</string>
     <string name="quest_generic_error_field_empty">"Vous avez laissé ce champ vide"</string>
     <string name="quest_leave_new_note_title">"Laisser une note à la place ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Vous pouvez laisser une note publique ici. D'autres cartographes pourront y répondre et la résoudre. Sinon, vous pouvez cacher la quête uniquement pour vous."</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Non, seulement cacher"</string>
@@ -96,7 +94,6 @@ That is not very clear to me. Any further explanations? -->
     <string name="not_authorized">"Non autorisé"</string>
     <string name="version_banned_message">"Cette version de StreetComplete est trop vielle. Veuillez la mettre à jour !"</string>
     <string name="no_gps_no_quests">"Pour rechercher automatiquement des quêtes autour de vous, activer la localisation"</string>
-    <string name="nothing_more_to_download">"Pas d'autres quêtes disponibles"</string>
     <string name="later">"Plus tard"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Ce n'est qu'une section entre deux voies"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Autre chose (laisser une note)"</string>
@@ -110,9 +107,7 @@ That is not very clear to me. Any further explanations? -->
     <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Varie selon les mois…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Pas d’horaires fixes…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_openingHours_comment_title">"Indiquer les horaires d’ouverture"</string>
+    <string name="quest_openingHours_comment_title">"Indiquez les horaires d’ouverture"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Soyez concis, utilisez de préférence la formulation de la pancarte, par exemple \"sur rendez-vous\". L'absence de pancarte ne signifie pas forcément qu'il n'y a pas d'horaires d'ouverture réguliers."</string>
@@ -1154,7 +1149,6 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_lanes_title">"Combien y a t-il de voies pour voitures sur cette route ?"</string>
     <string name="quest_lanes_answer_lanes">"Voies peintes"</string>
     <string name="quest_lanes_answer_noLanes">"Pas de voies peintes"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Différent pour chaque côté"</string>
 
     <!-- Needs reviews for the exact meaning -->
     <!-- Fuzzy -->
@@ -1212,4 +1206,16 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"Le nombre de voies n'est pas le même de chaque côté"</string>
+    <string name="quest_pitchSurface_title">"Surface du terrain de sport ?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Cette quête est désactivée par défaut car elle n'est pas utile dans certaines régions et vous auriez certainement besoin de rentrer à l'intérieur du bâtiment pour y répondre"</string>
+    <string name="quest_dietType_kosher_name_title">"%s propose-t-il des produits casher ?"</string>
+    <string name="quest_dietType_explanation_kosher">"Les produits casher doivent être préparés selon certaines règles, avec un certificat produit par une organisation certificative "</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Aucune infrastructure cyclable "</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Comme d'habitude, cliquez sur un côté de l'illustration, sélectionnez la bonne réponse, et faîtes de même pour l'autre côté. Prenez garde de voire toutes les options, certains cas sont non triviaux, comme une rue à sens unique pour les voitures mais à double sens pour les cyclistes !"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Renseignez qu'il n'y a pas de pistes cyclables"</string>
+    <string name="quest_construction_completed_at_known_date">"Cela sera fini le ..."</string>
+    <string name="quest_construction_completion_date_title">"Quand cela sera-t'il fini ?"</string>
+    <string name="quest_surface_value_clay">"Argile"</string>
+    <string name="quest_surface_value_artificial_turf">"Gazon synthétique"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
 </resources>

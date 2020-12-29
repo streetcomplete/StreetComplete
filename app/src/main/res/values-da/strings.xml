@@ -204,9 +204,6 @@
     <string name="no_gps_no_quests">"For at skanne efter opgaver tæt på dig skal du tænde Lokation."</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Der er ikke flere opgaver tilgængelige"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Senere"</string>
 
     <!-- Fuzzy -->
@@ -2056,7 +2053,6 @@ aktiv"</string>
     <string name="quest_lanes_title">"Hvor mange kørebaner for biler har denne vej?"</string>
     <string name="quest_lanes_answer_lanes">"Markerede kørebaner"</string>
     <string name="quest_lanes_answer_noLanes">"Ingen markerede kørebaner"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Forskelligt for de to sider"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Er dette korrekt?"</string>
     <string name="quest_maxheight_below_bridge_title">"Hvad er højdebegrænsningen under broen?"</string>
     <string name="quest_tactile_paving_kerb_title">"Er der taktil markering på kantstenen her?"</string>

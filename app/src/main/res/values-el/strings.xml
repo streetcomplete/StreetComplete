@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"Για να σαρώσετε για αναζητήσεις τριγύρω σας αυτόματα, ανοίξτε την τοποθεσία"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Δεν υπάρχουν άλλες αναζητήσεις"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Αργότερα"</string>
 
     <!-- Fuzzy -->
@@ -2116,7 +2113,6 @@
     <string name="quest_lanes_title">"Πόσες λωρίδες για αυτοκίνητα έχει αυτός ο δρόμος;"</string>
     <string name="quest_lanes_answer_lanes">"Διαγραμμίσεις"</string>
     <string name="quest_lanes_answer_noLanes">"Χωρίς διαγραμμίσεις"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Διαφέρει για κάθε πλευρά"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Διαθέτει αμφίδρομη αριστερή λωρίδα"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Είναι αυτό σωστό?"</string>
     <string name="quest_maxheight_below_bridge_title">"Ποιο είναι το όριο ύψους κάτω από τη γέφυρα;"</string>

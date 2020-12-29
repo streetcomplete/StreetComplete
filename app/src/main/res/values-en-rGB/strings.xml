@@ -125,9 +125,6 @@
     <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"No further quests available"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Later"</string>
 
     <!-- Fuzzy -->
@@ -1968,7 +1965,6 @@ levels"</string>
     <string name="quest_lanes_title">"How many lanes for cars does this road have?"</string>
     <string name="quest_lanes_answer_lanes">"Marked lanes"</string>
     <string name="quest_lanes_answer_noLanes">"No marked lanes"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Differs for each side"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"It has a two-way left turn lane"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Is this correct?"</string>
     <string name="quest_maxheight_below_bridge_title">"What is the height limit below the bridge?"</string>

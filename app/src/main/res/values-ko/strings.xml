@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"주변에 있는 퀘스트를 자동으로 찾도록 하려면 위치 탐색을 켜세요"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"해결할 수 있는 퀘스트가 없습니다"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"나중에"</string>
 
     <!-- Fuzzy -->
@@ -2114,7 +2111,6 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="quest_lanes_title">"이 도로는 몇 차로입니까?"</string>
     <string name="quest_lanes_answer_lanes">"차선이 그려져 있음"</string>
     <string name="quest_lanes_answer_noLanes">"차선이 그려져 있지 않음"</string>
-    <string name="quest_lanes_answer_lanes_odd">"각 부분마다 다름"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"좌회전 차로가 2개 있음"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"정말 사실입니까?"</string>
     <string name="quest_maxheight_below_bridge_title">"다리 밑 도로의 통과 높이 제한이 얼마입니까?"</string>

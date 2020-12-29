@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"För att söka efter uppdrag runt omkring dig automatiskt, slå på plats"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Det finns inga fler uppdrag här"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Senare"</string>
 
     <!-- Fuzzy -->
@@ -2341,7 +2338,6 @@ nivåer"</string>
     <string name="quest_lanes_title">"Hur många körfält för bilar har den här vägen?"</string>
     <string name="quest_lanes_answer_lanes">"Markerade körfält"</string>
     <string name="quest_lanes_answer_noLanes">"Inga markerade körfält"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Skillnader för varje sida"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Den har en tvåvägs vänsterfält"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Är detta rätt?"</string>
     <string name="quest_maxheight_below_bridge_title">"Vad är höjdgränsen under bron?"</string>

@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"如果要自动寻找你附近的任务，请启用定位"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"没有更多的任务了"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"稍后"</string>
 
     <!-- Fuzzy -->

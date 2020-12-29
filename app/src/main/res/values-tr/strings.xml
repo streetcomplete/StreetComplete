@@ -201,9 +201,6 @@
     <string name="no_gps_no_quests">"Çevrenizdeki görevleri otomatik olarak taramak için, konumu açın"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Başka görev yok"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Sonra"</string>
 
     <!-- Fuzzy -->

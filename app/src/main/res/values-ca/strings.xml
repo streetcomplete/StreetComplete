@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"Per a cercar automàticament missions prop teu, activa la geolocalització"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"No hi ha més missions disponibles"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Després"</string>
 
     <!-- Fuzzy -->

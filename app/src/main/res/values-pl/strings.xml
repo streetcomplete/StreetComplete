@@ -181,9 +181,6 @@
     <string name="no_gps_no_quests">"Aby automatycznie szukać zadań wokół ciebie, włącz lokalizacje."</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Brak nowych zadań"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Później"</string>
 
     <!-- Fuzzy -->
@@ -522,8 +519,6 @@ Jeśli na całej ulicy nie ma znaków dotyczących podświetlonej sekcji, obowi�
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"W terenie zabudowanym obowiązuje bardziej restrykcyjne domyślne ograniczenie prędkości niż poza terenem zabudowanym,"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"W terenie zabudowanym"</string>
 
     <!-- Fuzzy -->
@@ -1295,8 +1290,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"Budynek wielorodzinny"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_detached">"Wolnostojący dom jednorodzinny"</string>
 
     <!-- Fuzzy -->
@@ -2058,15 +2051,11 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
 
     <!-- Fuzzy -->
     <string name="achievement_surveyor_solved_X">"Rozwiązałeś %d zadań! Trzymaj tak dalej a odblokujesz więcej osiągnięć zawierających linki do projektów i aplikacji związanych z OSM."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_regular_title">"Stały Bywalec"</string>
     <string name="achievement_regular_description">"Było %d dni gdy współtworzyłeś OSM  używając tej aplikacji! Stali uczestnicy są fundamentem OSM, dzięki za Twój wkład! ❤"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_bicyclist_title">"Cyklista"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_bicyclist_solved_X">"Rozwiązałeś %d zadań pomagających rowerzystom!"</string>
 
     <!-- Fuzzy -->
@@ -2118,8 +2107,6 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
 
     <!-- Fuzzy -->
     <string name="confirmation_authorize_now_note2">"Możesz to również zrobić później na ekranie profilu użytkownika"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_art_contributors_title">"Autorzy grafiki"</string>
 
     <!-- Fuzzy -->
@@ -2261,7 +2248,6 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="quest_lanes_title">"Ile pasów drogowych ma ta droga?"</string>
     <string name="quest_lanes_answer_lanes">"Wyznaczone pasy"</string>
     <string name="quest_lanes_answer_noLanes">"Brak wyznaczonych pasów"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Różni się w zależności od strony"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ma pas dwukierunkowy do skrętu w lewo"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Czy jest to poprawne?"</string>
     <string name="quest_maxheight_below_bridge_title">"Jakie jest ograniczenie wysokości pod mostem?"</string>
@@ -2301,4 +2287,14 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, zostaw wiadomość."</stri
     <string name="quest_shop_gone_replaced_answer_error">"Nie wiem co to jest. Rozważ zostawienie notatki."</string>
     <string name="quest_shop_vacant_type_title">"Ten sklep stał pusty. Co teraz tutaj jest?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Liczba pasów nie jest ta sama po obu stronach"</string>
+    <string name="quest_pitchSurface_title">"Jaka jest nawierzchnia tego pola do gry?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"To zadanie jest domyślnie nieaktywne, ponieważ nie wczędzie jest przydatne a odpowiedź jest często niemożliwa bez wejścia do danego miejsca"</string>
+    <string name="quest_dietType_kosher_name_title">"Czy %s oferuje koszerne produkty?"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Brak drogi rowerowej"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Zaznaczanie braku drogi dla rowerów"</string>
+    <string name="quest_construction_completed_at_known_date">"Będzie zakończone dnia…"</string>
+    <string name="quest_construction_completion_date_title">"Kiedy będzie oddane do użytku?"</string>
+    <string name="quest_surface_value_clay">"Glina"</string>
+    <string name="quest_surface_value_artificial_turf">"Sztuczna trawa"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
 </resources>

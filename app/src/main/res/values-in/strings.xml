@@ -145,9 +145,6 @@
     <string name="no_gps_no_quests">"Untuk memindai pencarian disekitarmu secara otomatis, aktifkan lokasi"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Tidak ada pencarian lebih lanjut"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Nanti"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Ini hanya menghubungkan dua jalan"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Lainnya (tinggalkan catatan)"</string>

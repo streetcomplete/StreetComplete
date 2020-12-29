@@ -109,7 +109,6 @@
     <string name="not_authorized">"Not authorized"</string>
     <string name="version_banned_message">"This version of StreetComplete is too old. Please update!"</string>
     <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
-    <string name="nothing_more_to_download">"No further quests available"</string>
     <string name="later">"Later"</string>
     <string name="quest_streetName_answer_noName_question">"Why does it have no name?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"It just links two roads"</string>
@@ -200,6 +199,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_streetSurface_name_title">"What surface does the road %s have here?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
     <string name="quest_streetSurface_square_name_title">"What surface does the square %s have here?"</string>
+    <string name="quest_pitchSurface_title">What surface does this sport field have?</string>
     <string name="quest_select_hint_most_specific">"Select the most specific one that fits:"</string>
     <string name="quest_surface_value_paved">"Paved (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
@@ -483,6 +483,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="undo_confirm_negative">Cancel</string>
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
     <string name="default_disabled_msg_go_inside">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type.</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
@@ -938,6 +939,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
     <string name="open_url">Open URL</string>
+    <string name="quest_dietType_kosher_name_title">Does %s offer kosher products?</string>
+    <string name="quest_dietType_explanation_kosher">Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance.</string>
     <string name="quest_tactile_paving_kerb_title">Is there tactile paving on this curb here?</string>
     <string name="quest_kerb_height_title">What is the height of this curb?</string>
     <string name="quest_kerb_height_flush">Same level as road surface</string>
@@ -956,4 +959,12 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
     <string name="quest_shop_gone_replaced_answer_error">"Don't know what this is. Consider leaving a note."</string>
     <string name="quest_shop_vacant_type_title">This shop has been vacant. What\'s here now?</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">No cycleway at all</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side. Note all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Selecting that there is no cycleway</string>
+    <string name="quest_construction_completed_at_known_date">Will be finished at date…</string>
+    <string name="quest_construction_completion_date_title">When will it be complete?</string>
+    <string name="quest_surface_value_clay">Clay</string>
+    <string name="quest_surface_value_artificial_turf">Artificial turf</string>
+    <string name="quest_surface_value_tartan">Tartan</string>
 </resources>

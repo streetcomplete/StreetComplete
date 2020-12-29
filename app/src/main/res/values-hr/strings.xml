@@ -71,7 +71,6 @@
     <string name="not_authorized">"Nije autorizirano"</string>
     <string name="version_banned_message">"Ova verzija StreetCompletea je prestara. Molimo ažurirajte je!"</string>
     <string name="no_gps_no_quests">"Uključite lokaciju za automatsko traženje zadataka oko sebe"</string>
-    <string name="nothing_more_to_download">"Nema dodatnih zadataka"</string>
     <string name="later">"Kasnije"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Samo povezuje dvije ceste"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Nešto drugo (ostavi bilješku)"</string>
@@ -430,7 +429,7 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_carWashType_selfService">"Samoposlužna"</string>
     <string name="quest_carWashType_service">"Osoblje pere vozilo"</string>
     <string name="enable_quest_confirmation_title">"Omogućiti ovu vrstu zadataka?"</string>
-    <string name="default_disabled_msg_go_inside">"Ova vrsta zadatka je inicijalno onemogućena jer biste vjerojatno morali ući unutra da biste mogli odgovoriti na zadatak ove vrste."</string>
+    <string name="default_disabled_msg_go_inside">"Ova vrsta zadatka je inicijalno onemogućena jer biste vjerojatno morali ući unutra kako bi mogli odgovoriti na zadatak ove vrste."</string>
     <string name="quest_housenumber_conscription_number">"Konskripcijski broj"</string>
     <string name="quest_housenumber_street_number_optional">"Orijentacijski broj (neobavezno)"</string>
 
@@ -1020,7 +1019,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_lanes_title">"Koliko traka za automobile ima ova cesta?"</string>
     <string name="quest_lanes_answer_lanes">"Označene trake"</string>
     <string name="quest_lanes_answer_noLanes">"Nema označenih traka"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Ovisi o strani ceste"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ima dvosmjernu traku za skretanje lijevo (USA/Kanada)"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Je li to točno?"</string>
     <string name="quest_maxheight_below_bridge_title">"Kolika je visinska granica za prolaz ispod mosta?"</string>
@@ -1106,4 +1104,24 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Ova je trgovina bila upražnjena. Što je sad ovdje?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Broj traka je različit na svakoj strani"</string>
+    <string name="quest_pitchSurface_title">"Koju površinu ima ovo sportsko igralište?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Ova vrsta zadatka je inicijalno onemogućena jer u nekim regijama nije korisna i jer biste vjerojatno morali ući unutra kako bi mogli odgovoriti na zadatak ove vrste."</string>
+    <string name="quest_dietType_kosher_name_title">"Nudi li %s košer proizvode?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_dietType_explanation_kosher">"Košer proizvodi moraju se pripremati prema posebnim pravilima, a agencije za certificiranje moraju označavati proizvode u skladu s kašrutom."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Uopće nema biciklističke staze"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Kao i inače, dotaknite jednu stranu ilustracije, odaberite ispravan odgovor i učinite isto za drugu stranu. Pripazite na sve dostupne opcije: neki slučajevi nisu očigledni, poput jednosmjerne ceste koja dozvoljava vožnju biciklom u oba smjera!"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Odabir da nema biciklističke infrastrukture"</string>
+    <string name="quest_construction_completed_at_known_date">"Bit će dovršeno na datum…"</string>
+    <string name="quest_construction_completion_date_title">"Kada će biti dovršeno?"</string>
+    <string name="quest_surface_value_clay">"Glina"</string>
+    <string name="quest_surface_value_artificial_turf">"Umjetna trava"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
 </resources>

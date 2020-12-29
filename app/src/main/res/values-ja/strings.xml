@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"周囲の探索を自動的にスキャンするには、位置情報をオンにしてください"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"それ以上の探索は利用できません"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"後で"</string>
 
     <!-- Fuzzy -->

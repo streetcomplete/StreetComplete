@@ -203,9 +203,6 @@
     <string name="no_gps_no_quests">"Para buscar tareas a tu alrededor automáticamente activa la ubicación"</string>
 
     <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"No hay más tareas"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Luego"</string>
 
     <!-- Fuzzy -->
@@ -2357,7 +2354,6 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_lanes_title">"¿Cuántos carriles para automóviles tiene esta carretera?"</string>
     <string name="quest_lanes_answer_lanes">"Carriles marcados"</string>
     <string name="quest_lanes_answer_noLanes">"Sin carriles marcados"</string>
-    <string name="quest_lanes_answer_lanes_odd">"Difiere para cada lado"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Tiene un carril de giro a la izquierda de dos-vías"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"¿Es esto correcto?"</string>
     <string name="quest_maxheight_below_bridge_title">"¿Cuál es el límite de altura debajo del puente?"</string>
