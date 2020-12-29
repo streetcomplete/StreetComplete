@@ -6,6 +6,7 @@ import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.argumentCaptor
+import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.mock
@@ -34,7 +35,6 @@ class DeleteSingleOsmElementUploaderTest {
         assertEquals(e, arg.value.single())
     }
 
-
     @Test fun `upload deleted vertex`() {
         doThrow(OsmApiException(HTTP_PRECON_FAILED, "Precondition Failed", "Is part of way XYZ"))
             .doNothing()
@@ -47,9 +47,20 @@ class DeleteSingleOsmElementUploaderTest {
         assertTrue(uploadedNode.tags.isEmpty())
     }
 
+    @Test(expected = ChangesetConflictException::class)
+    fun `do not catch a changeset conflict exception`() {
+        // OSM Dao returns an element with the same version as in the database
+        on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(OsmConflictException(HTTP_CONFLICT, "Conflict", "Invalid element version"))
+        on(mapDataApi.getNode(anyLong())).thenReturn(e)
+
+        uploader.upload(0L, e)
+    }
+
     @Test(expected = ElementConflictException::class)
     fun `pass osm conflict`() {
         on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(OsmConflictException(HTTP_CONFLICT, "Conflict", "Invalid element version"))
+        on(mapDataApi.getNode(anyLong())).thenReturn(OsmNode(1L, 2, 0.0, 0.0, mutableMapOf("amenity" to "atm")))
+
         uploader.upload(100L, e)
     }
 

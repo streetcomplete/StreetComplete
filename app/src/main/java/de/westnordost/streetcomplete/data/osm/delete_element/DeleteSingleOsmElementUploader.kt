@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.data.osm.delete_element
 import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.data.OsmElement
+import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.osm.upload.ConflictException
+import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
 import java.net.HttpURLConnection
@@ -17,7 +17,13 @@ class DeleteSingleOsmElementUploader @Inject constructor(private val mapDataApi:
         try {
             uploadDeletion(changesetId, element)
         } catch (e: OsmConflictException) {
-            throw ElementConflictException(e.message, e)
+            val serverVersion = element.fetchUpdated()?.version
+            val ourVersion = element.version
+            if (serverVersion == null || serverVersion > ourVersion) {
+                throw ElementConflictException(e.message, e)
+            } else {
+                throw ChangesetConflictException(e.message, e)
+            }
         } catch (e: OsmNotFoundException) {
             throw ElementDeletedException(e.message, e)
         }
@@ -37,4 +43,12 @@ class DeleteSingleOsmElementUploader @Inject constructor(private val mapDataApi:
             } else throw e
         }
     }
+
+    private fun Element.fetchUpdated() =
+        when (this) {
+            is Node -> mapDataApi.getNode(id)
+            is Way -> mapDataApi.getWay(id)
+            is Relation -> mapDataApi.getRelation(id)
+            else -> null
+        }
 }
