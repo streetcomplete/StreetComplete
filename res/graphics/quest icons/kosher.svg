@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="249.59mm" height="242.89mm" version="1.1" viewBox="0 0 249.59 242.89" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
- <metadata>
-  <rdf:RDF>
-   <cc:Work rdf:about="">
-    <dc:format>image/svg+xml</dc:format>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:title/>
-   </cc:Work>
-  </rdf:RDF>
- </metadata>
- <g transform="translate(25.33 -24.253)">
-  <g>
-   <g fill-rule="evenodd">
-    <ellipse cx="99.466" cy="145.7" rx="124.8" ry="121.45" fill="#000200" stroke-width=".34658"/>
-    <ellipse cx="99.466" cy="145.7" rx="117.82" ry="114.65" fill="#fffff8" stroke-width=".3272"/>
-    <circle cx="99.466" cy="145.7" r="93.983" stroke-width=".26458"/>
-   </g>
-   <g transform="matrix(13.793 0 0 13.499 -738.11 -619.06)" fill="#fff" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;shape-inside:url(#rect1672);white-space:pre" aria-label="K">
-    <path d="m57.333 52.795h1.9895v2.8164l2.868-2.8164h2.3099l-3.7155 3.6535 4.0979 4.0618h-2.4908l-3.0696-3.0386v3.0386h-1.9895z" fill="#fff" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
-   </g>
-  </g>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64s-64-28.654-64-64 28.654-64 64-64 64 28.654 64 64" fill="#e9a76f" stroke-width=".2"/>
+ <path d="m64.015 14.08c-28.702 0-51.971 23.269-51.971 51.971s23.269 51.971 51.971 51.971 51.971-23.269 51.971-51.971-23.269-51.971-51.971-51.971z" fill-opacity=".2"/>
+ <g transform="matrix(2.8872,0,0,-2.8872,12.074,113.99)">
+  <path d="m36 18c0-9.941-8.059-18-18-18s-18 8.059-18 18 8.059 18 18 18 18-8.059 18-18" fill="#fff"/>
+  <circle transform="scale(1,-1)" cx="17.985" cy="-18.007" r="13.854" fill="#444" fill-rule="evenodd" stroke-width=".039002"/>
+  <path d="m11.058 27.012 4.1563-0.05937-1e-6 -6.8678 5.5417 6.8678 5.5417 0.05937-7.6198-9.0053 7.6198-9.0053-5.5417-0.059375-5.5417 6.9271v-6.9271l-4.1563 0.059375z" fill="#fff" stroke-width="2.4568" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;white-space:pre"/>
  </g>
 </svg>
