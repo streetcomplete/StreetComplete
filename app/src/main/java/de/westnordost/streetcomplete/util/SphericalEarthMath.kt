@@ -443,6 +443,21 @@ fun BoundingBox.enlargedBy(radius: Double, globeRadius: Double = EARTH_RADIUS): 
     )
 }
 
+/** returns whether this bounding box contains the given position */
+fun BoundingBox.contains(pos: LatLon): Boolean {
+    return if (crosses180thMeridian()) {
+        splitAt180thMeridian().any { it.containsCanonical(pos) }
+    } else {
+        containsCanonical(pos)
+    }
+}
+
+/** returns whether this bounding box contains the given position, assuming the bounding box does
+ *  not cross the 180th meridian */
+private fun BoundingBox.containsCanonical(pos: LatLon): Boolean =
+    pos.longitude in minLongitude..maxLongitude &&
+    pos.latitude in minLatitude..maxLatitude
+
 /** returns whether this bounding box intersects with the other. Works if any of the bounding boxes
  *  cross the 180th meridian */
 fun BoundingBox.intersect(other: BoundingBox): Boolean =

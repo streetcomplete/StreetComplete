@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGe
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.util.contains
 import de.westnordost.streetcomplete.util.measuredLength
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -81,7 +82,7 @@ class OsmApiQuestDownloader @Inject constructor(
                         val questTime = System.currentTimeMillis()
                         for (element in questType.getApplicableElements(mapData)) {
                             val geometry = getCompleteGeometry(element.type, element.id, mapData, completeRelationGeometries)
-                            val quest = createQuest(questType, element, geometry, blacklistedElements, truncatedBlacklistedPositions) ?: continue
+                            val quest = createQuest(questType, element, geometry, blacklistedElements, truncatedBlacklistedPositions, bbox) ?: continue
 
                             quests.add(quest)
                             questElements.add(element)
@@ -117,9 +118,19 @@ class OsmApiQuestDownloader @Inject constructor(
         Log.i(TAG,"Added ${replaceResult.added} new and removed ${replaceResult.deleted} already resolved quests")
     }
 
-    private fun createQuest(questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry?, blacklistedElements: Set<ElementKey>, blacklistedPositions: Set<LatLon>): OsmQuest? {
+    private fun createQuest(
+        questType: OsmElementQuestType<*>,
+        element: Element,
+        geometry: ElementGeometry?,
+        blacklistedElements: Set<ElementKey>,
+        blacklistedPositions: Set<LatLon>,
+        downloadedBoundingBox: BoundingBox
+    ): OsmQuest? {
         // invalid geometry -> can't show this quest, so skip it
         val pos = geometry?.center ?: return null
+
+        // outside downloaded area: skip
+        if (!downloadedBoundingBox.contains(pos)) return null
 
         // do not create quests whose marker is at/near a blacklisted position
         if (blacklistedPositions.contains(pos.truncateTo5Decimals()))  return null

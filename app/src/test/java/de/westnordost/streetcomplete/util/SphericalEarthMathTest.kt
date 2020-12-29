@@ -244,6 +244,34 @@ class SphericalEarthMathTest {
         assertEquals(160.0, bbox.minLongitude, 0.0)
     }
 
+    @Test fun `contains works`() {
+        val bbox = BoundingBox(-1.0, -2.0, 1.0, 2.0)
+        assertTrue(bbox.contains(p(-2.0,-1.0)))
+        assertTrue(bbox.contains(p(+2.0,-1.0)))
+        assertTrue(bbox.contains(p(-2.0,+1.0)))
+        assertTrue(bbox.contains(p(+2.0,+1.0)))
+        assertTrue(bbox.contains(p(+0.0,+0.0)))
+
+        assertFalse(bbox.contains(p(-2.1,0.0)))
+        assertFalse(bbox.contains(p(+2.1,0.0)))
+        assertFalse(bbox.contains(p(0.0,-1.1)))
+        assertFalse(bbox.contains(p(0.0,+1.1)))
+    }
+
+    @Test fun `contains works at 180th meridian`() {
+        val bbox = BoundingBox(0.0, 179.0, 1.0, -179.0)
+        assertTrue(bbox.contains(p(179.0,0.0)))
+        assertTrue(bbox.contains(p(179.0,1.0)))
+        assertTrue(bbox.contains(p(180.0,0.0)))
+        assertTrue(bbox.contains(p(180.0,1.0)))
+        assertTrue(bbox.contains(p(-179.0,0.0)))
+        assertTrue(bbox.contains(p(-179.0,1.0)))
+        assertTrue(bbox.contains(p(-180.0,0.0)))
+        assertTrue(bbox.contains(p(-180.0,1.0)))
+
+        assertFalse(bbox.contains(p(0.0,0.0)))
+    }
+
     @Test fun `isCompletelyInside works`() {
         val bbox1 = BoundingBox(-1.0, -1.0, 1.0, 1.0)
         val bbox2 = BoundingBox(-0.5, -0.5, 0.5, 1.0)
