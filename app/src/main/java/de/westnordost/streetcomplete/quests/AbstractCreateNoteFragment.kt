@@ -30,9 +30,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
         val view = inflater.inflate(layoutResId, container, false)
 
         val bottomSheet = view.findViewById<LinearLayout>(R.id.bottomSheet)
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            BottomSheetBehavior.from(bottomSheet).state = BottomSheetBehavior.STATE_EXPANDED
-        }
+        BottomSheetBehavior.from(bottomSheet).state = BottomSheetBehavior.STATE_EXPANDED
 
         val content = view.findViewById<ViewGroup>(R.id.content)
         content.removeAllViews()
