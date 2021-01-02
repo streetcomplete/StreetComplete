@@ -17,12 +17,12 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPS
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.updateMargins
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import kotlin.math.min
 
 /** Abstract base class for (quest) bottom sheets
  *
@@ -32,34 +32,29 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
 
-    private val mainHandler = Handler(Looper.getMainLooper())
+    private var minBottomInset = Int.MAX_VALUE
 
-    private var bottomSheetBottom: Int? = null
+    private val mainHandler = Handler(Looper.getMainLooper())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheet.addOnLayoutChangeListener { _, _, _, _, bottom, _, _, _, _ ->
+        bottomSheet.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
             // not immediately because this is called during layout change (view.getTop() == 0)
-            val previousBottom = bottomSheetBottom
-            mainHandler.post {
-                updateCloseButtonVisibility()
-                val ctx = context
-                if (previousBottom != null && ctx != null) {
-                    val diffInDp = (bottom - previousBottom).toFloat().toDp(ctx)
-                    if (diffInDp > 150) onKeyboardOpened()
-                    else if (diffInDp < -150) onKeyboardClosed()
-                }
-            }
-            bottomSheetBottom = bottom
+            mainHandler.post { updateCloseButtonVisibility() }
         }
 
         closeButton.setOnClickListener { activity?.onBackPressed() }
 
+        minBottomInset = Int.MAX_VALUE
         view.respectSystemInsets { left, top, right, bottom ->
             scrollViewChild.updatePadding(bottom = bottom)
             bottomSheetContainer.updateMargins(top = top, left = left, right = right)
             okButton.updateMargins(bottom = bottom + 8f.toPx(context).toInt())
+
+            // expanding bottom sheet when keyboard is opened
+            if (minBottomInset < bottom) expand()
+            minBottomInset = min(bottom, minBottomInset)
         }
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
@@ -129,14 +124,6 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
     protected fun expand() {
         bottomSheetBehavior.state = STATE_EXPANDED
-    }
-
-    private fun onKeyboardOpened() {
-        expand()
-    }
-
-    private fun onKeyboardClosed() {
-        // nothing really...
     }
 
     private fun updateCloseButtonVisibility() {
