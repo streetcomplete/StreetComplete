@@ -36,6 +36,7 @@ private const val DAYS = "days"
 private const val EQUALS = "="
 private const val NOT_EQUALS = "!="
 private const val LIKE = "~"
+private const val NOT = "!"
 private const val NOT_LIKE = "!~"
 private const val GREATER_THAN = ">"
 private const val LESS_THAN = "<"
@@ -115,7 +116,7 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
     // tags are optional...
     if (!nextIsAndAdvance(WITH)) {
         if (!isAtEnd()) {
-            throw ParseException("Expected end of string or 'with' keyword", cursorPos)
+            throw ParseException("Expected end of string or '$WITH' keyword", cursorPos)
         }
         return null
     }
@@ -147,7 +148,7 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
         } else if (nextIsAndAdvance(AND)) {
             builder.addAnd()
         } else
-            throw ParseException("Expected end of string, 'and' or 'or'", cursorPos)
+            throw ParseException("Expected end of string, '$AND' or '$OR'", cursorPos)
 
     } while (true)
 
@@ -180,27 +181,27 @@ private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressio
 }
 
 private fun StringWithCursor.parseTag(): ElementFilter {
-    if (nextIsAndAdvance('!')) {
+    if (nextIsAndAdvance(NOT)) {
         expectAnyNumberOfSpaces()
-        if (nextIsAndAdvance('~')) {
+        if (nextIsAndAdvance(LIKE)) {
             return NotHasKeyLike(parseKey())
         } else {
             return NotHasKey(parseKey())
         }
     }
 
-    if (nextIsAndAdvance('~')) {
+    if (nextIsAndAdvance(LIKE)) {
         expectAnyNumberOfSpaces()
         val key = parseKey()
         expectAnyNumberOfSpaces()
         val operator = parseOperator()
         if (operator == null) {
             return HasKeyLike(key)
-        } else if ("~" == operator) {
+        } else if (LIKE == operator) {
             expectAnyNumberOfSpaces()
             return HasTagLike(key, parseQuotableWord())
         }
-        throw ParseException("Unexpected operator '$operator': The key prefix operator '~' must be used together with the binary operator '~'", cursorPos)
+        throw ParseException("Unexpected operator '$operator': The key prefix operator '$LIKE' must be used together with the binary operator '$LIKE'", cursorPos)
     }
 
     if (nextIsAndAdvance(OLDER)) {
@@ -323,7 +324,7 @@ private fun StringWithCursor.parseDate(): DateFilter {
         return FixedDate(date)
     }
 
-    throw ParseException("Expected either a date (YYYY-MM-DD) or 'today'", cursorPos)
+    throw ParseException("Expected either a date (YYYY-MM-DD) or '$TODAY'", cursorPos)
 }
 
 private fun StringWithCursor.parseDeltaDurationInDays(): Float {
@@ -336,7 +337,7 @@ private fun StringWithCursor.parseDeltaDurationInDays(): Float {
             expectAnyNumberOfSpaces()
             -parseDurationInDays()
         }
-        else -> throw ParseException("Expected + or -", cursorPos)
+        else -> throw ParseException("Expected $PLUS or $MINUS", cursorPos)
     }
 }
 
@@ -348,7 +349,7 @@ private fun StringWithCursor.parseDurationInDays(): Float {
         nextIsAndAdvance(MONTHS) -> 30.5f * duration
         nextIsAndAdvance(WEEKS) -> 7 * duration
         nextIsAndAdvance(DAYS) -> duration
-        else -> throw ParseException("Expected years, months, weeks or days", cursorPos)
+        else -> throw ParseException("Expected $YEARS, $MONTHS, $WEEKS or $DAYS", cursorPos)
     }
 }
 
