@@ -24,7 +24,11 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
           and area != yes
           and motorroad != yes
           and !sidewalk and !sidewalk:left and !sidewalk:right and !sidewalk:both
-          and (!maxspeed or maxspeed > 8 or maxspeed !~ "5 mph|walk")
+          and (
+            !maxspeed
+            or maxspeed > 8
+            or (maxspeed ~ ".*mph" and maxspeed !~ "[1-5] mph")
+          )
           and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
           and lit = yes
           and foot != no and access !~ private|no
