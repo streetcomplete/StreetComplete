@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -23,7 +24,7 @@ class AddWayLit : OsmFilterQuestType<String>() {
               or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and
               (
                 sidewalk ~ both|left|right|yes|separate
-                or ~source:maxspeed|maxspeed:type|zone:maxspeed|zone:traffic|maxspeed ~ .+urban|.+zone
+                or ~${MAXSPEED_TYPE_KEYS.joinToString("|")} ~ .*urban|.*zone.*
               )
               or highway ~ ${LIT_WAYS.joinToString("|")}
               or highway = path and (foot = designated or bicycle = designated)
