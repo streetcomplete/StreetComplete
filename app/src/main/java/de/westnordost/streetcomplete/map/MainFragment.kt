@@ -711,6 +711,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     @UiThread private fun showQuestDetails(quest: Quest, group: QuestGroup) {
         val mapFragment = mapFragment ?: return
+        if (quest.status != QuestStatus.NEW) return
         if (isQuestDetailsCurrentlyDisplayedFor(quest.id!!, group)) return
         if (bottomSheetFragment != null) {
             hideKeyboard()
