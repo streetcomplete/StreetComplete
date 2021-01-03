@@ -101,26 +101,26 @@ class OsmUnreadMessagesFragment : DialogFragment(),
             .withEndAction {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    (mailOpenImageView.drawable as? AnimatedVectorDrawable)?.start()
+                    (mailOpenImageView?.drawable as? AnimatedVectorDrawable)?.start()
                 }
 
-                mailFrontImageView.animate()
-                    .setDuration(100)
-                    .setStartDelay(100)
-                    .alpha(1f)
-                    .start()
+                mailFrontImageView?.animate()?.run {
+                    duration = 100
+                    startDelay = 100
+                    alpha(1f)
+                    start()
+                }
 
-
-                speechbubbleContentContainer.animate()
-                    .withStartAction {
-                        speechbubbleContentContainer.alpha = 0.4f
-                    }
-                    .setStartDelay(200)
-                    .setDuration(300)
-                    .scaleX(1f).scaleY(1f)
-                    .alpha(1f)
-                    .translationY(0f)
-                    .start()
+                speechbubbleContentContainer?.animate()?.run {
+                    withStartAction { speechbubbleContentContainer?.alpha = 0.4f }
+                    startDelay = 200
+                    duration = 300
+                    scaleX(1f)
+                    scaleY(1f)
+                    alpha(1f)
+                    translationY(0f)
+                    start()
+                }
             }
             .start()
     }
