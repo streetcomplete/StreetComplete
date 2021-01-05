@@ -62,6 +62,10 @@ private const val TWO_MINUTES: Long = 1000 * 60 * 2
  * @param currentBestLocation The current Location fix, to which you want to compare the new one
  */
 private fun isBetterLocation(location: Location, currentBestLocation: Location?): Boolean {
+    // check whether this is a valid location at all. Happened once that lat/lon is NaN, maybe issue
+    // of that particular device
+    if (location.longitude.isNaN() || location.latitude.isNaN()) return false
+
     if (currentBestLocation == null) {
         // A new location is always better than no location
         return true
