@@ -23,8 +23,8 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
     private val excludedWaysFilter by lazy { """
         ways with 
           highway and access ~ private|no
+          or highway = service
           or highway and oneway and oneway != no
-          or highway ~ path|footway|cycleway|pedestrian
     """.toElementFilterExpression()}
 
     override val commitMessage = "Add whether pedestrian crossing has an island"
