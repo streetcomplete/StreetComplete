@@ -225,9 +225,24 @@ import java.util.*
                 DELETE FROM ${OsmQuestTable.NAME} WHERE ${OsmQuestTable.Columns.QUEST_STATUS} = "REVERT"
             """.trimIndent())
         }
+
+        if (oldVersion < 20 && newVersion >= 20) {
+            // clearing quests that previously existed but now not anymore
+            db.execSQL("""
+                DELETE FROM ${OsmQuestTable.NAME}
+                WHERE ${OsmQuestTable.Columns.QUEST_TYPE}
+                IN (
+                    "DetailRoadSurface",
+                    "AddTrafficSignalsBlindFeatures",
+                    "AddAccessibleForPedestrians",
+                    "AddWheelChairAccessPublicTransport",
+                    "AddWheelChairAccessToilets"
+                )
+            """.trimIndent())
+        }
         // for later changes to the DB
         // ...
     }
 }
 
-private const val DB_VERSION = 19
+private const val DB_VERSION = 20
