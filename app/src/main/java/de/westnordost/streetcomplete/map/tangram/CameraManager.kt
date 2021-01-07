@@ -14,6 +14,7 @@ import androidx.core.animation.addListener
 import com.mapzen.tangram.CameraUpdateFactory
 import com.mapzen.tangram.MapController
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.LatLons
 import de.westnordost.osmapi.map.data.OsmLatLon
 import kotlin.math.PI
 
@@ -166,6 +167,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     }
 
     private fun pushCameraPositionToController() {
+        LatLons.checkValidity(_tangramCamera.latitude, _tangramCamera.longitude)
         c.updateCameraPosition(CameraUpdateFactory.newCameraPosition(_tangramCamera))
     }
 
