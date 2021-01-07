@@ -984,7 +984,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Auswählen, dass kein Radweg existiert"</string>
     <string name="quest_construction_completed_at_known_date">"Wird zum folgenden Datum fertiggestellt…"</string>
     <string name="quest_construction_completion_date_title">"Wann wird es fertig?"</string>
-    <string name="quest_surface_value_clay">"Lehm"</string>
+    <string name="quest_surface_value_clay">"Sandplatz (Lehm)"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstrasen"</string>
     <string name="quest_surface_value_tartan">"Tartanbahn"</string>
 </resources>

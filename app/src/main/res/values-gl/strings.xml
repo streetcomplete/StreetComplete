@@ -2397,4 +2397,16 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_shop_gone_replaced_answer_error">"Non sei que é isto. Coida deixar unha nota."</string>
     <string name="quest_shop_vacant_type_title">"Este comercio estivo baleiro. Que hai aquí agora?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"O número de carrís difire en cada sentido"</string>
+    <string name="quest_pitchSurface_title">"Que superficie ten esta pista deportiva?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Este tipo de tarefa está desactivada de xeito predeterminado porque non é útil nalgunhas rexións e é probábel que teñas que entrar no lugar para poder responder a unha tarefa deste tipo."</string>
+    <string name="quest_dietType_kosher_name_title">"%s ofrece produtos kosher?"</string>
+    <string name="quest_dietType_explanation_kosher">"Os produtos kosher teñen que prepararse dacordo coas regras especiais do xudaísmo, e as axencias de certificación kashrut deben marcar os produtos en cumprimento."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Non hai carril bici de ningún tipo"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Coma sempre, toca un lado da ilustración, selecciona unha resposta axeitada e fai o mesmo co outro lado. Ten en conta todas as opcións dispoñíbeis: algúns casos non son obvios, coma unha estrada dun só sentido que permite aos ciclistas ir en ambas direccións."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Seleccionar que non hai carril bici"</string>
+    <string name="quest_construction_completed_at_known_date">"Estará rematado na data..."</string>
+    <string name="quest_construction_completion_date_title">"Cando estará completo?"</string>
+    <string name="quest_surface_value_clay">"Arxila"</string>
+    <string name="quest_surface_value_artificial_turf">"Céspede artificial"</string>
+    <string name="quest_surface_value_tartan">"Tartán"</string>
 </resources>

@@ -1891,6 +1891,7 @@ Del det nu?"</string>
     <string name="quest_tourism_information_board">"Informationstavle"</string>
     <string name="quest_tourism_information_terminal">"Informationsterminal"</string>
     <string name="quest_tourism_information_map">"Kort"</string>
+    <string name="quest_tourism_information_guidepost">"Skilt"</string>
     <string name="quest_recycling_materials_answer_waste">"Det er til almindeligt affald"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Så dette er en container til alle typer affald, såsom husholdningsaffald eller kommercielt affald?"</string>
     <string name="quest_accepts_cash_title">"Kan man betale med kontanter hos %s?"</string>
@@ -1899,44 +1900,64 @@ Del det nu?"</string>
     <string name="user_logout">"Logout"</string>
     <string name="osm_profile">"OSM Profil"</string>
     <string name="next">"Næste"</string>
+
+    <!-- Fuzzy -->
+    <string name="letsgo">"Lad os starte!"</string>
     <string name="tutorial_welcome_to_osm">"Velkommen til OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"Det gratis wiki verdenskort"</string>
     <string name="tutorial_intro">"StreetComplete gør det nemt at bidrage til OpenStreetMap. Den leder automatisk efter detajer i dit område: cykelstier, åbningstider, gadebelysning og meget mere..."</string>
+    <string name="tutorial_solving_quests">"Når de er fundet, vil de manglende detaljer dukke op på dit kort som opgaver.
+
+Du kan begynde at løse dem med det samme og senere logge ind for at publicere dine svar."</string>
+    <string name="tutorial_stay_safe">"Når du er usikker, kan du altid svare \"Ikke sikker\" og efterlade en note.
+
+Endelig, husk på at passe på dig selv: Vær opmærksom på dine omgivelser og gå ikke ind på privat grund."</string>
     <string name="achievements_empty">"Du har ingen medaljer endnu"</string>
     <string name="links_empty">"Du har endnu ingen links"</string>
     <string name="quests_empty">"Du har ikke indsendt nogle svar endnu"</string>
     <string name="unsynced_quests_description">"plus %d ændringer der endnu ikke er indsendt."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du har %d endnu ikke indsendte ændringer. Du skal logge ind for at indsende dem."</string>
     <string name="user_quests_title">"Løste udfordringer"</string>
+    <string name="user_achievements_title">"Præstationer"</string>
     <string name="user_links_title">"Linksamling"</string>
     <string name="user_profile_title">"Profil"</string>
     <string name="user_statistics_quest_wiki_link">"Dokumentation"</string>
     <string name="link_category_intro_title">"Introduktion"</string>
     <string name="link_category_intro_description">"Lær mere om OSM og fællesskabet bag"</string>
+    <string name="link_category_editors_title">"Bidrager"</string>
     <string name="link_category_maps_title">"Kort"</string>
     <string name="link_category_maps_description">"OpenStreetMap-baserede kort"</string>
     <string name="link_category_showcase_description">"OpenStreetMap-baserede services og applikationer"</string>
+    <string name="link_category_goodies_description">"Interessante kort-relaterede ting du kan prøve af"</string>
     <string name="link_cyclosm_description">"Et kort for cyklister"</string>
     <string name="link_wheelmap_description">"Et kort over steder, der er tilgængelige for kørestole"</string>
     <string name="link_osm_buildings_description">"Et kort der viser bygningerne i 3D"</string>
     <string name="link_openvegemap_description">"Opdag vegetariske og veganske restauranter i din by"</string>
     <string name="link_touch_mapper_description">"Lav taktile landkort overalt i verden"</string>
+    <string name="link_mapy_tactile_description">"Taktile kort for de svagtseende i forskellige størrelser"</string>
     <string name="link_vespucci_description">"Advanceret OSM editor til Android"</string>
     <string name="link_ideditor_description">"Simpel OSM editor til browseren. Optimeret til desktop eller store tablets."</string>
     <string name="link_umap_description">"Opret kort med brugerdefinerede data, og integrer dem på din hjemmeside"</string>
     <string name="link_opnvkarte_description">"Et kort over offentlig transports ruter og stop"</string>
     <string name="link_pic4review_description">"Bidrag til OSM blot ved at kigge på billeder af din by"</string>
+    <string name="link_wiki_description">"Wikien er udgangspunktet for alt relateret til OpenStreetMap"</string>
     <string name="link_learnosm_description">"Ny på OpenStreetMap? Se denne guide for begyndere"</string>
     <string name="link_neis_one_description">"En kæmpe samling af statistikker til OpenStreetMap-bidragsydere, som hvor og hvordan du bidrog, hvem der ellers er omkring dig plus toplister"</string>
     <string name="link_welcome_mat_description">"Generel information om OpenStreetMap og hvordan man kan arbejde med OSM som organisation"</string>
     <string name="link_mapillary_description">"En service og app til deling af Crowdsourced fotos på gadeniveau med eksplicit tilladelse til at bruge dem til at bidrage til OSM"</string>
     <string name="link_openstreetcam_description">"En service og app til deling af Crowdsourced fotos på gadeniveau med eksplicit tilladelse til at bruge dem til at bidrage til OSM"</string>
     <string name="link_show_me_the_way_description">"Følg med i OSM opdateringer i realtid"</string>
+    <string name="link_osm_haiku_description">"Brug OSM data til at lave haiku (en form for Japansk digt)"</string>
+    <string name="link_openinframap_description">"Et kort over energi-, telekommunikations-, gas- og olieinfrastruktur"</string>
     <string name="link_openorienteeringmap_description">"Lav kort til print for orienteringssport"</string>
     <string name="achievement_first_edit_title">"Første opgave løst"</string>
     <string name="achievement_bicyclist_title">"Cyklist"</string>
     <string name="achievement_bicyclist_solved_X">"Du har løst %d opgaver der hjælper cyklister"</string>
+    <string name="achievement_wheelchair_title">"Mobilitet"</string>
+    <string name="achievement_wheelchair_solved_X">"Du løste %d opgaver, der hjælper kørestolsbrugere med at komme rundt i byen!"</string>
     <string name="achievement_postman_title">"Postbud"</string>
+    <string name="achievement_postman_solved_X">"Du hjalp med at lokalisere %d adresser!
+Denne data er essentiel ikke bare for postbuddet men også for ethvert navigationssystem."</string>
     <string name="achievement_blind_solved_X">"Du har løst %d opgaver der er interessante for synshandicappede."</string>
     <string name="achievement_pedestrian_title">"Løber"</string>
     <string name="achievement_pedestrian_solved_X">"Du har løst %d opgaver der er interessante for folk til fods."</string>
@@ -1951,6 +1972,7 @@ Del det nu?"</string>
     <string name="confirmation_authorize_now_note2">"Du kan også gøre det senere på profil siden."</string>
     <string name="credits_art_contributors_title">"Kunstbidragsydere"</string>
     <string name="credits_main_contributors_title">"Hovedbidragsydere"</string>
+    <string name="stats_are_syncing">"Dine statistikker synkroniserer stadigvæk. Tjek denne side senere."</string>
     <string name="user_statistics_country_rank">"Rangering i %2$s: %1$d"</string>
     <string name="user_statistics_filter_by_country">"efter land"</string>
     <string name="user_profile_global_rank">"Global rang"</string>
@@ -1994,6 +2016,7 @@ aktiv"</string>
     <string name="quest_openingHours_resurvey_no_name_title">"Er åbningstiderne stadig korrekte (%s)?"</string>
     <string name="quest_openingHours_add_off_days">"Tilføj lukkedage"</string>
     <string name="quest_openingHours_unspecified_range">"Ikke angivet"</string>
+    <string name="quest_cycleway_resurvey_title">"Er dette stadig cykelsti-situationen her?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Er %1$s (%2$s) kørestolsvenlig?"</string>
     <string name="resurvey_intervals_less_often">"Spørg sjældnere"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
@@ -2014,6 +2037,7 @@ aktiv"</string>
     <string name="quest_steps_incline_up">"Denne vej op"</string>
     <string name="quest_step_count_title">"Hvor mange trin her?"</string>
     <string name="quest_traffic_signals_sound_title">"Er der nogen lydsignaler for blinde her?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Har disse trafiklys en taktil indikering for svagtseende, der fortæller, hvornår det er sikkert at krydse vejen?"</string>
     <string name="quest_busStopRef_title">"Hvad er dette busstoppesteds referencenummer?"</string>
     <string name="quest_tramStopRef_title">"Hvad er dette sporvognsstoppesteds referencenummer?"</string>
     <string name="quest_buildingType_bungalow_description2">"Lille hus (sommerhus, feriehytte, ...)"</string>
@@ -2033,6 +2057,7 @@ aktiv"</string>
     <string name="achievement_citizen_title">"Borger"</string>
     <string name="achievement_citizen_solved_X">"Du har løst %d opgaver der er nyttige for hverdagen i byen."</string>
     <string name="achievement_outdoors_title">"Udendørs"</string>
+    <string name="achievement_outdoors_solved_X">"Du løste %d opgaver, der er brugbare for udendørsmennesker!"</string>
     <string name="quest_pedestrian_crossing_island">"Har dette fodgængerfelt en midterhelle?"</string>
     <string name="quest_generic_answer_noSign">"Der er ikke noget skilt"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Er kørestolrampen vist som en selvstændig vej på kortet?"</string>
@@ -2067,4 +2092,15 @@ aktiv"</string>
     <string name="quest_surface_value_rock">"Sten"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Høje lastbiler kan passere"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Høje lastbiler kan ikke passere"</string>
+    <string name="quest_address_street_hint">"Tryk på vejen på kortet"</string>
+    <string name="quest_crossing_type_marked">"Markeret fodgængerfelt"</string>
+    <string name="quest_parkingType_street_side">"Parkering lige ved siden ad vejen"</string>
+    <string name="quest_parkingType_lane">"Parkering på vejen"</string>
+    <string name="quest_existence_title">"Er dette stadig her? (%s)"</string>
+    <string name="quest_generic_answer_does_not_exist">"Det eksisterer ikke..."</string>
+    <string name="quest_shop_vacant_type_title">"Denne butik har været tom. Hvad er her nu?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Antal vognbaner er forskellig for hver side"</string>
+    <string name="quest_pitchSurface_title">"Hvilket underlag har dette sport-område?"</string>
+    <string name="quest_construction_completion_date_title">"Hvornår vil det være færdigt?"</string>
+    <string name="quest_surface_value_clay">"Ler"</string>
 </resources>

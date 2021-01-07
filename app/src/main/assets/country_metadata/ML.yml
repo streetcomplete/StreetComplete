@@ -2,7 +2,6 @@
 atmOperators: [BNDA, BICIM]
 mobileCountryCode: 610
 officialLanguages: [fr, bm]
-orchardProduces: [guava, mango, mangosteen, tomato, banana, cashew_nut, papaya, chilli_pepper, sweet_pepper, lemon, lime,
-   orange, grapefruit, date, tea]
+orchardProduces: [guava, mango, mangosteen, tomato, banana, cashew_nut, papaya, chilli_pepper, sweet_pepper, lemon, lime, orange, grapefruit, date, tea]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

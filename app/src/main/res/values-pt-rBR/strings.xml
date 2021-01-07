@@ -2164,4 +2164,16 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_shop_gone_replaced_answer_error">"Não sei o que é isso.  Considere deixar uma nota."</string>
     <string name="quest_shop_vacant_type_title">"Esta loja está vazia.  O que está aqui agora?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"A contagem de pistas difere para cada lado"</string>
+    <string name="quest_pitchSurface_title">"Qual superfície este campo esporte tem?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Este tipo de missão é desativado por padrão porque não é útil em algumas regiões e você provavelmente terá que entrar no local para poder responder a uma missão deste tipo."</string>
+    <string name="quest_dietType_kosher_name_title">"%s oferece produtos kosher?"</string>
+    <string name="quest_dietType_explanation_kosher">"Os produtos kosher devem ser preparados de acordo com regras especiais, com agências de certificação de Kashrut marcando produtos em conformidade."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nenhum ciclovia"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Como de costume, toque em um lado da ilustração, selecione uma resposta adequada e faça o mesmo para o outro lado. Observe todas as opções disponíveis: Alguns casos não são óbvios, como uma estrada que permite ciclistas em ambas as direções!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecionando que não há ciclovia"</string>
+    <string name="quest_construction_completed_at_known_date">"Será concluído na data..."</string>
+    <string name="quest_construction_completion_date_title">"Quando será completo?"</string>
+    <string name="quest_surface_value_clay">"Argila"</string>
+    <string name="quest_surface_value_artificial_turf">"Relva artificial"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
 </resources>

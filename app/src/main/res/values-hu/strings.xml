@@ -2366,4 +2366,16 @@ szintek"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Nem tudom pontosan. Inkább megjegyzést hagyok."</string>
     <string name="quest_shop_vacant_type_title">"Ez az üzlet üresen állt. Mi található most itt?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"A sávok száma eltérő a két oldalon"</string>
+    <string name="quest_pitchSurface_title">"Milyen a burkolata ennek a sportpályának?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Ez a kérdéstípus alapértelmezésben ki van kapcsolva, mivel egyes régiókban kevésbé hasznos, valamint a kérdés megválaszolásához jó eséllyel be kell menni az adott helyre."</string>
+    <string name="quest_dietType_kosher_name_title">"Rendelkezik a hely kóser termékekkel: %s?"</string>
+    <string name="quest_dietType_explanation_kosher">"A kóser termékeknek különleges szabályok szerint kell készülniük, valamint rendelkezniük kell a megfelelő intézmények hitelesítésével."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nincs kerékpárút egyáltalán"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Sokás szerint koppints az ábra egyik oldalára, válaszd ki a megfelelő választ, majd tedd meg hasonlóan a másik oldalon is. Vedd figyelembe az összes lehetséges választ: néhány esetben nem egyértelmű, például olyan egyirányú út esetében, amelyen a kerékpárosok mindkét irányban közlekedhetnek."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"\"Nincs kerékpárút\" válasz"</string>
+    <string name="quest_construction_completed_at_known_date">"Ekkor lesz készen…"</string>
+    <string name="quest_construction_completion_date_title">"Mikor lesz ez készen?"</string>
+    <string name="quest_surface_value_clay">"Agyag"</string>
+    <string name="quest_surface_value_artificial_turf">"Műfű"</string>
+    <string name="quest_surface_value_tartan">"Rekortán"</string>
 </resources>

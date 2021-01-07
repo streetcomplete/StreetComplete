@@ -124,7 +124,7 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_surface_value_ground">"Sterrato (generico)"</string>
     <string name="quest_surface_value_asphalt">"Asfalto"</string>
     <string name="quest_surface_value_compacted">"Compatto"</string>
-    <string name="quest_surface_value_concrete">"Cementato"</string>
+    <string name="quest_surface_value_concrete">"Cemento"</string>
     <string name="quest_surface_value_dirt">"Terra"</string>
     <string name="quest_surface_value_fine_gravel">"Ghiaia fine"</string>
     <string name="quest_surface_value_grass">"Erba"</string>
@@ -133,7 +133,7 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_surface_value_paving_stones">"Pietre regolari"</string>
     <string name="quest_surface_value_pebblestone">"Ciottoli"</string>
     <string name="quest_surface_value_sand">"Sabbia"</string>
-    <string name="quest_surface_value_sett">"Pietre irregolari"</string>
+    <string name="quest_surface_value_sett">"Pietre irregolari (es. sampietrini, pavè)"</string>
     <string name="quest_surface_value_wood">"Legno"</string>
     <string name="quest_placeName_title">"Qual è il nome di questo luogo?"</string>
     <string name="quest_sidewalk_title">"Questa strada ha un marciapiede?"</string>

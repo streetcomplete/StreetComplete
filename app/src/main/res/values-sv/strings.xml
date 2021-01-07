@@ -2373,5 +2373,18 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_shop_gone_replaced_answer">"En…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Skriv typ av plats här"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Vet inte vad detta är. Överväg att lämna en anteckning."</string>
+    <string name="quest_shop_vacant_type_title">"Denna butik har varit ledig. Vad är här nu?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Fältantalet skiljer sig åt för varje sida"</string>
+    <string name="quest_pitchSurface_title">"Vilken yta har detta sportfält?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Denna uppdragstyp är inaktiverad som standard eftersom den inte är användbar i vissa regioner och du kommer sannolikt att behöva ange platsen för att kunna svara på ett uppdrag av denna typ."</string>
+    <string name="quest_dietType_kosher_name_title">"Erbjuder %s kosherprodukter?"</string>
+    <string name="quest_dietType_explanation_kosher">"Kosherprodukter måste beredas enligt särskilda regler, med kashrut-certifieringsbyråer som märker produkter i enlighet."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ingen cykelväg alls"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Som vanligt, tryck på ena sidan av bilden, välj ett rätt svar och gör detsamma för den andra sidan. Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en motorväg som tillåter cyklister i båda riktningar!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Väljer att det inte finns någon cykelväg"</string>
+    <string name="quest_construction_completed_at_known_date">"Färdigställs vid datum..."</string>
+    <string name="quest_construction_completion_date_title">"När kommer det att vara klart?"</string>
+    <string name="quest_surface_value_clay">"Lera"</string>
+    <string name="quest_surface_value_artificial_turf">"Konstgräs"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
 </resources>

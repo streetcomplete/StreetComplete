@@ -1,18 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Caixa Geral de Depósitos, Santander Totta, Millennium BCP, Multibanco, Crédito Agrícola, Montepio, Euronet,
-   BPI, SIBS, Novo Banco, multibanco, MB Multibanco, BES, CCAM, MB, Caixa de Crédito Agrícola, Caixa Agrícola,
-   CGD, ATM, Santander, SIBS Multibanco, Novo Banco dos Açores, Millennium bcp, Euronet Worldwide, Crédito
-      agrícola, Barclays, Banif, Banco Popular, credito agricola, caixiave, Deutsche Bank, Credito Agricola,
-   Banco BIC]
-chargingStationOperators: [MOBI.E, KLC, Mobi.E, EDP Comercial, Tesla, Powerdot, Galp Power, Prio.E, Rede Piloto, Mobilectric, Galp
-      Geste, GalpGeste, Mobi-e, EV Power, Mobie, Mobiletric, Emacom, Tesla Motors Inc., Repsol, Propel-Cepsa,
-   Loulé Concelho Global, EDP MOP, Ucharge, Mota Engil II, Mobi, CME, Mobi.e, Mobi-E, MOBI.e, Factor Energia,
-   Emel, EVCE Power, Bluecharge]
+atmOperators: [Caixa Geral de Depósitos, Santander Totta, Millennium BCP, Multibanco, Crédito Agrícola, Montepio, Euronet, BPI, SIBS, Novo Banco, multibanco, MB Multibanco, BES, CCAM, MB, Caixa de Crédito Agrícola, Caixa Agrícola, CGD, ATM, Santander, SIBS Multibanco, Novo Banco dos Açores, Millennium bcp, Euronet Worldwide, Crédito agrícola, Barclays, Banif, Banco Popular, credito agricola, caixiave, Deutsche Bank, Credito Agricola, Banco BIC]
+chargingStationOperators: [MOBI.E, KLC, Mobi.E, EDP Comercial, Tesla, Powerdot, Galp Power, Prio.E, Rede Piloto, Mobilectric, Galp Geste, GalpGeste, Mobi-e, EV Power, Mobie, Mobiletric, Emacom, Tesla Motors Inc., Repsol, Propel-Cepsa, Loulé Concelho Global, EDP MOP, Ucharge, Mota Engil II, Mobi, CME, Mobi.e, Mobi-E, MOBI.e, Factor Energia, Emel, EVCE Power, Bluecharge]
 clothesContainerOperators: [Ultriplo Lda]
 isAdvisorySpeedLimitKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 268
 officialLanguages: [pt]
-orchardProduces: [tomato, grape, olive, orange, apple, pear, peach, chestnut, kiwi, plum, banana, raspberry, lemon, lime,
-   almond, strawberry]
+orchardProduces: [tomato, grape, olive, orange, apple, pear, peach, chestnut, kiwi, plum, banana, raspberry, lemon, lime, almond, strawberry]
 popularReligions: [christian, jewish, muslim]

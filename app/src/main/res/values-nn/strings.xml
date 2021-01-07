@@ -121,11 +121,7 @@
     <string name="quest_oneway_title">"Er dette ei einvegskøyrd gate?"</string>
     <string name="quest_address_title">"Kva er husnummeret til denne bygningen?"</string>
     <string name="store_listing_short_description">"Kartleggingsapp for OpenStreetMap"</string>
-    <string name="store_listing_full_description">"Gjer dugnads­kartet OpenStreetMap betre med StreetComplete!
-
-Denne appen leitar opp ufullstendige kart­opplysningar i nærleiken av deg og viser desse på kartet. Ved å svara på enkle spørsmål om dei, vil du forbetra kart­grunnlaget der du er.
-
-Informasjonen du legg til, vert send direkte til OpenStreetMap i ditt namn, utan at du treng bruka noko eksternt redigerings­program."</string>
+    <string name="store_listing_full_description">"Gjer dugnads­kartet OpenStreetMap betre med StreetComplete! Denne appen leitar opp ufullstendige kart­opplysningar i nærleiken av deg og viser desse på kartet. Ved å svara på enkle spørsmål om dei, vil du forbetra kart­grunnlaget der du er. Informasjonen du legg til, vert send direkte til OpenStreetMap i ditt namn, utan at du treng bruka noko eksternt redigerings­program."</string>
     <string name="quest_name_answer_noName">"Han har ikkje noko namn …"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Er du sikker på at han manglar namn?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, han manglar namn"</string>
@@ -227,9 +223,7 @@ Informasjonen du legg til, vert send direkte til OpenStreetMap i ditt namn, utan
     <string name="quest_streetName_cantType_title">"Manglar tastaturoppsett?"</string>
     <string name="quest_streetName_cantType_open_settings">"Opna innstillingar"</string>
     <string name="quest_streetName_cantType_open_store">"Opna appbutikk"</string>
-    <string name="quest_streetName_cantType_description">"Viss du brukar standard­tastaturet, kan du truleg slå på tastatur­støtte for språket du treng i tastatur­innstillingane.
-
-Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur som støttar mange språk er «Google Gboard», «SwiftKey Keyboard» og «Multiling O Keyboard»."</string>
+    <string name="quest_streetName_cantType_description">"Viss du brukar standard­tastaturet, kan du truleg slå på tastatur­støtte for språket du treng i tastatur­innstillingane. Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur som støttar mange språk er «Google Gboard», «SwiftKey Keyboard» og «Multiling O Keyboard»."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(ikkje valt)"</string>
     <string name="quest_fireHydrant_type_title">"Kva slags brannhydrant er dette?"</string>
     <string name="quest_fireHydrant_type_pillar">"Ståande"</string>
@@ -426,8 +420,7 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_busStopName_title">"Kva heiter dette busstoppet?"</string>
     <string name="quest_tramStopName_title">"Kva heiter dette trikkestoppet?"</string>
     <string name="quest_housenumber_multiple_numbers">"Det har fleire husnummer"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Du kan skriva inn husnummera skilde med komma eller
-som intervall skilde med binde-/tankestrek: «1,3» eller «2–6»."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Du kan skriva inn husnummera skilde med komma eller som intervall skilde med binde-/tankestrek: «1,3» eller «2–6»."</string>
     <string name="quest_bicycle_parking_type_stand">"Bøylestativ"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Hjullås"</string>
     <string name="quest_bicycle_parking_type_shed">"Skur"</string>
@@ -609,8 +602,7 @@ som intervall skilde med binde-/tankestrek: «1,3» eller «2–6»."</string>
     <string name="quest_leaf_type_mixed">"Finst begge typar"</string>
     <string name="quest_cyclewayPartSurface_title">"Kva vegdekke har sykkelvegen her?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Forskjellig på ulike delar av vegen …"</string>
-    <string name="quest_split_way_description">"Viss det er forskjellig på ulike delar av vegen, må du først dela opp vegen. Du kan så svara for kvart vegstykke.
-Vil du dela opp vegen no?"</string>
+    <string name="quest_split_way_description">"Viss det er forskjellig på ulike delar av vegen, må du først dela opp vegen. Du kan så svara for kvart vegstykke. Vil du dela opp vegen no?"</string>
     <string name="quest_split_way_tutorial">"Trykk på vegen for dela han der svaret er forskjellig. Prøv å vera så nøyaktig som du kan. Du kan zooma inn om nødvendig."</string>
     <string name="quest_split_way_too_imprecise">"Zoom lenger inn"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Du har no ganske mange vegstykke. Du kan alltids dela vegen meir seinare."</string>
@@ -634,10 +626,10 @@ Vil du dela opp vegen no?"</string>
     <string name="quest_recycling_materials_title">"Kva kan du levera til resirkulering her?"</string>
     <string name="quest_recycling_materials_note">"Viss det kan resirkulerast noko her som ikkje står som svaralternativ, legg heller igjen ein merknad."</string>
     <string name="quest_recycling_type_batteries">"Batteri"</string>
-    <string name="quest_recycling_type_cans">"Hermetikkboksar"</string>
+    <string name="quest_recycling_type_cans">"Hermetikk­boksar"</string>
     <string name="quest_recycling_type_clothes">"Klede"</string>
-    <string name="quest_recycling_type_green_waste">"Hageavfall"</string>
-    <string name="quest_recycling_type_glass_bottles">"Glasflasker og syltetøyglas"</string>
+    <string name="quest_recycling_type_green_waste">"Hage­avfall"</string>
+    <string name="quest_recycling_type_glass_bottles">"Glas­flasker og syltetøy­glas"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Flasker og syltetøyglas"</string>
     <string name="quest_recycling_type_paper">"Papir"</string>
     <string name="quest_recycling_type_plastic_generic">"Plast"</string>
@@ -646,7 +638,7 @@ Vil du dela opp vegen no?"</string>
     <string name="quest_recycling_type_electric_appliances">"EE-avfall"</string>
     <string name="quest_recycling_type_plastic_bottles">"Berre plastflasker"</string>
     <string name="quest_recycling_type_plastic_packaging">"Berre plastemballasje"</string>
-    <string name="quest_recycling_type_scrap_metal">"Skrapmetall"</string>
+    <string name="quest_recycling_type_scrap_metal">"Skrap­metall"</string>
     <string name="quest_recycling_type_any_glass">"Alle typar glas"</string>
     <string name="quest_recycling_glass_title">"Kan berre glasflasker og syltetøyglas resirkulerast her, eller alle typar glas?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Eksempel på glastypar som ofte ikkje vert tekne imot: herda glas, glasruter, glastøy, lyspærer og speglar."</string>
@@ -679,14 +671,9 @@ Vil du dela opp vegen no?"</string>
     <string name="letsgo">"Kom igjen!"</string>
     <string name="tutorial_welcome_to_osm">"Velkommen til OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"det frie dugnadskartet"</string>
-    <string name="tutorial_intro">"StreetComplete gjer det svært enkelt å bidra til OpenStreetMap.
-Appen ser automatisk etter ting i nærleiken som ikkje er registrert på kartet – sykkelvegar, husnummer, opnings­tider og mykje anna …"</string>
-    <string name="tutorial_solving_quests">"Dette vert så vist på kartet som oppdrag til deg.
-
-Du kan løysa nokre oppdrag med ein gong, for seinare å logga inn og senda inn informasjonen du registrerer."</string>
-    <string name="tutorial_stay_safe">"Viss du er usikker, kan du alltid svar «Vanskeleg å seia» og leggja att ein merknad til andre.
-
-Og hugs å halda deg trygg: Pass på kor du set foten, og gå aldri inn på privat eigedom."</string>
+    <string name="tutorial_intro">"StreetComplete gjer det svært enkelt å bidra til OpenStreetMap. Appen ser automatisk etter ting i nærleiken som ikkje er registrert på kartet – sykkelvegar, husnummer, opnings­tider og mykje anna …"</string>
+    <string name="tutorial_solving_quests">"Dette vert så vist på kartet som oppdrag til deg. Du kan løysa nokre oppdrag med ein gong, for seinare å logga inn og senda inn informasjonen du registrerer."</string>
+    <string name="tutorial_stay_safe">"Viss du er usikker, kan du alltid svar «Vanskeleg å seia» og leggja att ein merknad til andre. Og hugs å halda deg trygg: Pass på kor du set foten, og gå aldri inn på privat eigedom."</string>
     <string name="tutorial_happy_mapping">"Kos deg med kartlegging!"</string>
     <string name="achievements_empty">"Du har ikkje nokon bragder enno"</string>
     <string name="links_empty">"Du har ikkje nokon lenkjer enno"</string>
@@ -747,17 +734,15 @@ Og hugs å halda deg trygg: Pass på kor du set foten, og gå aldri inn på priv
     <string name="achievement_surveyor_title">"Landmålar"</string>
     <string name="achievement_surveyor_solved_X">"Du har løyst %d oppdrag! Hald fram slik for å låsa opp fleire bragder. Bragdene inneheld lenkjer til OSM og andre kart­relaterte appar og prosjekt."</string>
     <string name="achievement_regular_title">"Stamgjest"</string>
-    <string name="achievement_regular_description">"Du har bidrege i %d dagar til OSM med appen! Regel­messige bidrags­ytarar utgjer ryggrada til OSM, så takk for at du er så engasjert! ❤"</string>
+    <string name="achievement_regular_description">"Du har bidrege til OSM i %d dagar med denne appen! Regel­messige bidrags­ytarar utgjer ryggrada til OSM, så takk for at du er så engasjert! ❤"</string>
     <string name="achievement_bicyclist_title">"Syklist"</string>
     <string name="achievement_bicyclist_solved_X">"Du har løyst %d oppdrag som hjelper syklistar!"</string>
     <string name="achievement_wheelchair_title">"Mobilitet"</string>
     <string name="achievement_wheelchair_solved_X">"Du har løyst %d oppdrag som hjelper rullestol­brukarar!"</string>
     <string name="achievement_postman_title">"Postmann"</string>
-    <string name="achievement_postman_solved_X">"Du har stadfesta %d adresser!
-Ikkje berre postmannen har bruk for dette; det har alle navigasjons­system."</string>
+    <string name="achievement_postman_solved_X">"Du har stadfesta %d adresser! Ikkje berre postmannen har bruk for dette; det har alle navigasjons­system."</string>
     <string name="achievement_building_title">"Huseigar"</string>
-    <string name="achievement_building_solved_X">"Du har løyst %d bygnings­oppdrag!
-Merk at appen berre ber om hus­nummeret etter at hustypen er fastsett."</string>
+    <string name="achievement_building_solved_X">"Du har løyst %d bygnings­oppdrag! Merk at appen berre ber om hus­nummeret etter at hustypen er fastsett."</string>
     <string name="achievement_blind_title">"Sjette sans"</string>
     <string name="achievement_blind_solved_X">"Du har løyst %d oppdrag som nyttige for synshemma!"</string>
     <string name="achievement_pedestrian_title">"Sprintar"</string>
@@ -780,20 +765,16 @@ Merk at appen berre ber om hus­nummeret etter at hustypen er fastsett."</string
     <string name="user_statistics_country_wiki_link">"Kartleggingsportal %s"</string>
     <string name="user_statistics_filter_by_country">"etter land"</string>
     <string name="user_statistics_filter_by_quest_type">"etter type oppdrag"</string>
-    <string name="user_profile_global_rank">"Global
-rangering"</string>
-    <string name="user_profile_local_rank">"Rangering i
-%s"</string>
-    <string name="user_profile_days_active">"Aktive
-dagar"</string>
-    <string name="user_profile_achievement_levels">"Bragd-
-nivå"</string>
+    <string name="user_profile_global_rank">"Global rangering"</string>
+    <string name="user_profile_local_rank">"Rangering i %s"</string>
+    <string name="user_profile_days_active">"Aktive dagar"</string>
+    <string name="user_profile_achievement_levels">"Bragd- nivå"</string>
     <string name="quest_address_street_title">"Kva gate/veg høyrer (hus)nummeret %s til?"</string>
     <string name="quest_address_street_no_named_streets">"Det høyrer ikkje til ei gate eller ein veg med namn"</string>
     <string name="quest_address_street_place_name_label">"Stadnamn:"</string>
     <string name="quest_address_street_description">"Trykk på gata/vegen som det høyrer til, eller skriv inn namnet utan forkortingar nedanfor:"</string>
-    <string name="quest_recycling_type_cooking_oil">"Matolje"</string>
-    <string name="quest_recycling_type_engine_oil">"Motorolje"</string>
+    <string name="quest_recycling_type_cooking_oil">"Mat­olje"</string>
+    <string name="quest_recycling_type_engine_oil">"Motor­olje"</string>
     <string name="link_photon_description">"Ei frittståande utviding til Nominatim. Støttar omtrentlege søk og kontinuerleg vising av søkjeresultat."</string>
     <string name="link_graphhopper_description">"Ein fleksibel rute­planleggjar"</string>
     <string name="link_qwant_maps_description">"Eit kart med søkbare stadar og ruter"</string>
@@ -931,4 +912,17 @@ nivå"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Type plass som er her"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Veit ikkje kva det er. Vurder å leggja att ein merknad."</string>
     <string name="quest_shop_vacant_type_title">"Dette butikk­lokalet har stått tomt. Kva er her no?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Talet på felt er forskjellig på kvar side"</string>
+    <string name="quest_pitchSurface_title">"Kva dekke er brukt på denne idrettsbana?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Denne oppdragstypen vert som standard ikkje vist, då han ikkje er nyttig alle stadar og du vanlegvis må gå inn på staden for å kunna svara på spørsmålet."</string>
+    <string name="quest_dietType_kosher_name_title">"Har %s koscher­produkt?"</string>
+    <string name="quest_dietType_explanation_kosher">"Koscher­produkt må lagast etter særskilde religiøse reglar, og det finst eigne sertifiserings­instansar som godkjenner produkta."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Finst ikkje sykkelveg/-felt"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Trykk som vanleg på éi side av teikninga, vel rett alternativ, og gjenta det same for den andre sida. Men merk at det er mange tilgjengelege alternativ her. Nokre tilfelle er ikkje openbare, for eksempel ein einvegskøyrd veg som likevel tillèt sykling i begge retningar."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Vel at det ikkje finst nokon sykkelveg"</string>
+    <string name="quest_construction_completed_at_known_date">"Vert ferdigstilt ein gitt dato …"</string>
+    <string name="quest_construction_completion_date_title">"Når vert han ferdigstilt?"</string>
+    <string name="quest_surface_value_clay">"Leire"</string>
+    <string name="quest_surface_value_artificial_turf">"Kunst­gras"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
 </resources>

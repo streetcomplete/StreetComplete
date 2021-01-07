@@ -1206,11 +1206,11 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"Le nombre de voies n'est pas le même de chaque côté"</string>
-    <string name="quest_pitchSurface_title">"Surface du terrain de sport ?"</string>
+    <string name="quest_pitchSurface_title">"Quelle est la surface de ce terrain de sport ?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Cette quête est désactivée par défaut car elle n'est pas utile dans certaines régions et vous auriez certainement besoin de rentrer à l'intérieur du bâtiment pour y répondre"</string>
     <string name="quest_dietType_kosher_name_title">"%s propose-t-il des produits casher ?"</string>
-    <string name="quest_dietType_explanation_kosher">"Les produits casher doivent être préparés selon certaines règles, avec un certificat produit par une organisation certificative "</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Aucune infrastructure cyclable "</string>
+    <string name="quest_dietType_explanation_kosher">"Les produits casher doivent être préparés selon certaines règles, avec un certificat produit par un organisme de certification"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Aucune infrastructure cyclable"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Comme d'habitude, cliquez sur un côté de l'illustration, sélectionnez la bonne réponse, et faîtes de même pour l'autre côté. Prenez garde de voire toutes les options, certains cas sont non triviaux, comme une rue à sens unique pour les voitures mais à double sens pour les cyclistes !"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Renseignez qu'il n'y a pas de pistes cyclables"</string>
     <string name="quest_construction_completed_at_known_date">"Cela sera fini le ..."</string>

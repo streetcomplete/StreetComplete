@@ -2319,4 +2319,16 @@
     <string name="quest_shop_gone_replaced_answer_error">"اگر نمی‌دانید چه چیزی اینجاست، یادداشتی بگذارید."</string>
     <string name="quest_shop_vacant_type_title">"این مغازه بلااستفاده بوده است. اکنون چه چیزی این‌جاست؟"</string>
     <string name="quest_lanes_answer_lanes_odd2">"تعداد خطوط برای هر سمت متفاوت است"</string>
+    <string name="quest_pitchSurface_title">"سطح این زمین ورزشی چه پوششی دارد؟"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"این نوع جُستار به صورت پیش فرض غیرفعال است زیرا در برخی مناطق مفید نیست و احتمالاً مجبور خواهید بود که به مکان مورد نظر وارد شوید تا بتوانید به یک جُستار از این نوع پاسخ دهید."</string>
+    <string name="quest_dietType_kosher_name_title">"آیا %s محصولات حلال ارائه می دهد؟"</string>
+    <string name="quest_dietType_explanation_kosher">"محصولات حلال مطابق با قوانین خاص تهیه می شود و مراکز صدور گواهینامه حلال محصولات، محصولات را مطابق با آن نشانه گذاری می‌کنند."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"اصلاً مسیر دوچرخه سواری وجود ندارد"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"طبق معمول ، روی یک سمت تصویر ضربه بزنید ، یک پاسخ مناسب را انتخاب نمایید و همین روش را برای سمت دیگر انجام دهید. به همه گزینه های موجود توجه داشته باشید: بعضی موارد واضح نیستند، مانند جاده یک طرفه ای که دوچرخه سواران می توانند در هر دو جهت حرکت کنند!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"انتخاب اینکه، هیچ مسیر دوچرخه ای وجود ندارد"</string>
+    <string name="quest_construction_completed_at_known_date">"تمام می‌شود در تاریخ ..."</string>
+    <string name="quest_construction_completion_date_title">"چه زمانی کامل خواهد شد؟"</string>
+    <string name="quest_surface_value_clay">"خاکی"</string>
+    <string name="quest_surface_value_artificial_turf">"چمن مصنوعی"</string>
+    <string name="quest_surface_value_tartan">"شطرنجی"</string>
 </resources>
