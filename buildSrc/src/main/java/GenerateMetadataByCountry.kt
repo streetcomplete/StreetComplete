@@ -45,6 +45,7 @@ open class GenerateMetadataByCountry : DefaultTask() {
         val config = YamlConfig().apply {
             writeConfig.setWriteClassname(YamlConfig.WriteClassName.NEVER)
             writeConfig.isFlowStyle = true
+            writeConfig.setWrapColumn(Int.MAX_VALUE)
             writeConfig.setEscapeUnicode(false)
         }
         for ((countryCode, byProperty) in result) {
