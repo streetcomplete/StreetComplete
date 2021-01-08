@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.user
 
-import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -18,6 +17,7 @@ import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.*
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao
 import de.westnordost.streetcomplete.ktx.createBitmap
+import de.westnordost.streetcomplete.ktx.tryStartActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.coroutines.*
 import java.io.File
@@ -164,12 +164,4 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
         return tryStartActivity(intent)
     }
 
-    private fun tryStartActivity(intent: Intent): Boolean {
-        return try {
-            startActivity(intent)
-            true
-        } catch (e: ActivityNotFoundException) {
-            false
-        }
-    }
 }
