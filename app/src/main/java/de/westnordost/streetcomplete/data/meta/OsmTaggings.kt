@@ -27,8 +27,7 @@ val MAXSPEED_TYPE_KEYS = listOf(
     "source:maxspeed",
     "zone:maxspeed",
     "maxspeed:type",
-    "zone:traffic",
-    "maxspeed"
+    "zone:traffic"
 )
 
 const val SURVEY_MARK_KEY = "check_date"

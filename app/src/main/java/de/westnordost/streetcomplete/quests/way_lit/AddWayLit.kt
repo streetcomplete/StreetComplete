@@ -24,7 +24,7 @@ class AddWayLit : OsmFilterQuestType<String>() {
               or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and
               (
                 sidewalk ~ both|left|right|yes|separate
-                or ~${MAXSPEED_TYPE_KEYS.joinToString("|")} ~ .*urban|.*zone.*
+                or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
               )
               or highway ~ ${LIT_WAYS.joinToString("|")}
               or highway = path and (foot = designated or bicycle = designated)
