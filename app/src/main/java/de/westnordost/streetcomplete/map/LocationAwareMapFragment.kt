@@ -74,6 +74,7 @@ open class LocationAwareMapFragment : MapFragment() {
                 }
             }
         }
+    private var viewDirection: Float? = null
 
     interface Listener {
         /** Called after the map fragment updated its displayed location */
@@ -279,8 +280,19 @@ open class LocationAwareMapFragment : MapFragment() {
         }
 
         if (isCompassMode) {
-            controller?.updateCameraPosition { rotation = -rot }
+            viewDirection =
+                if (viewDirection == null) -rot
+                else smoothenAngle(-rot, viewDirection ?: 0f, 0.05f)
+
+            controller?.updateCameraPosition { rotation = viewDirection }
         }
+    }
+
+    private fun smoothenAngle( newValue: Float, oldValue: Float, factor: Float): Float {
+        var delta = newValue - oldValue
+        while (delta > +PI) delta -= 2 * PI.toFloat()
+        while (delta < -PI) delta += 2 * PI.toFloat()
+        return oldValue + factor * delta
     }
 
     /* -------------------------------- Save and Restore State ---------------------------------- */

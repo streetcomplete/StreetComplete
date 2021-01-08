@@ -161,7 +161,7 @@ class Compass(
     companion object {
         private const val MAX_DISPATCH_FPS = 30
         private const val SMOOTHEN_FACTOR = 0.1f
-        private const val MIN_DIFFERENCE = 0.005f
+        private const val MIN_DIFFERENCE = 0.001f
     }
 }
 
