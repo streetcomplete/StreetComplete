@@ -30,11 +30,15 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
 
             try {
                 val uploadedElements = uploadSingle(quest)
+                /* onUploadSuccessful must be called before updating the element because in there,
+                   the entry from the database that this-thing-needs-to-be-uploaded is removed.
+                   Such entry blocks the creation of new quests. See #2418
+                */
+                onUploadSuccessful(quest)
                 for (element in uploadedElements) {
                     updateElement(element, quest)
                 }
                 uploadedQuestTypes.add(quest.osmElementQuestType)
-                onUploadSuccessful(quest)
                 uploadedChangeListener?.onUploaded(quest.osmElementQuestType.name, quest.position)
             } catch (e: ElementIncompatibleException) {
                 elementUpdateController.delete(quest.elementType, quest.elementId)
