@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.about
 
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,9 +12,10 @@ import androidx.core.widget.TextViewCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.tryStartActivity
+import de.westnordost.streetcomplete.util.sendEmail
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.cell_labeled_icon_select_right.view.*
 import java.util.*
@@ -98,29 +98,18 @@ class AboutFragment : PreferenceFragmentCompat() {
 
     private fun openUrl(url: String): Boolean {
         val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        return tryStartActivity(intent)
+        tryStartActivity(intent)
+        return true
     }
 
     private fun sendFeedbackEmail(): Boolean {
-        val intent = Intent(Intent.ACTION_SENDTO)
-        intent.data = "mailto:".toUri()
-        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("osm@westnordost.de"))
-        intent.putExtra(Intent.EXTRA_SUBJECT, ApplicationConstants.USER_AGENT + " Feedback")
-        return tryStartActivity(intent)
+        sendEmail(requireActivity(),"osm@westnordost.de", "Feedback")
+        return true
     }
 
     private fun openGooglePlayStorePage(): Boolean {
         val appPackageName = context?.applicationContext?.packageName ?: return false
         return openUrl("market://details?id=$appPackageName")
-    }
-
-    private fun tryStartActivity(intent: Intent): Boolean {
-        return try {
-            startActivity(intent)
-            true
-        } catch (e: ActivityNotFoundException) {
-            false
-        }
     }
 
     private fun showDonateDialog() {

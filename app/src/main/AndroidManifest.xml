@@ -26,11 +26,6 @@
             <action android:name="android.intent.action.VIEW"/>
             <data android:scheme="geo"/>
         </intent>
-        <!-- send crash report mail -->
-        <intent>
-            <action android:name="android.intent.action.SENDTO"/>
-            <data android:scheme="mailto"/>
-        </intent>
     </queries>
 
     <application

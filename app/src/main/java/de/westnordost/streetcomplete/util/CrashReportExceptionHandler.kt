@@ -2,13 +2,9 @@ package de.westnordost.streetcomplete.util
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
-import androidx.core.net.toUri
-import androidx.core.os.bundleOf
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toast
@@ -67,7 +63,7 @@ $error
             .setTitle(titleResourceId)
             .setMessage(R.string.crash_message)
             .setPositiveButton(R.string.crash_compose_email) { _, _ ->
-                sendEmail(activityCtx, report)
+                sendEmail(activityCtx, mailReportTo, "Error Report", report)
             }
             .setNegativeButton(android.R.string.no) { _, _ ->
                 activityCtx.toast("\uD83D\uDE22")
@@ -112,19 +108,4 @@ $stackTrace
         appCtx.deleteFile(crashReportFile)
     }
 
-    private fun sendEmail(activityCtx: Activity, text: String) {
-        val intent = Intent(Intent.ACTION_SENDTO)
-        intent.data = "mailto:".toUri()
-        intent.putExtras(bundleOf(
-            Intent.EXTRA_EMAIL to arrayOf(mailReportTo),
-            Intent.EXTRA_SUBJECT to ApplicationConstants.USER_AGENT + " Error Report",
-            Intent.EXTRA_TEXT to text
-        ))
-
-        if (intent.resolveActivity(activityCtx.packageManager) != null) {
-            activityCtx.startActivity(intent)
-        } else {
-            activityCtx.toast(R.string.no_email_client)
-        }
-    }
 }
