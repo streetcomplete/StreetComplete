@@ -43,10 +43,10 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val icon = R.drawable.ic_quest_pitch_surface
 
     override fun getTitle(tags: Map<String, String>) =
-        if (tags.get("leisure") == "pitch")
-            R.string.quest_pitchSurface_title
-        else
+        if (tags.get("leisure") == "track")
             R.string.quest_pitchSurface_title_track
+        else
+            R.string.quest_pitchSurface_title
 
 
 
