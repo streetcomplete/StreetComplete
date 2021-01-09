@@ -23,7 +23,7 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     )
 
     override val elementFilter = """
-        ways with leisure=pitch
+        ways with (leisure=pitch or leisure=track)
         and sport ~ "(^|.*;)(${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")})(${'$'}|;.*)"
         and (access !~ private|no)
         and indoor != yes and !building
@@ -42,7 +42,11 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_pitch_surface
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_pitchSurface_title
+    override fun getTitle(tags: Map<String, String>) =
+        if (tags.get("leisure") == "pitch")
+            R.string.quest_pitchSurface_title
+        else
+            R.string.quest_pitchSurface_title_track
 
 
 
