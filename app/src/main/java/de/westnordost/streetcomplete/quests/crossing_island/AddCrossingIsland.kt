@@ -12,16 +12,16 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddCrossingIsland : OsmElementQuestType<Boolean> {
 
     private val crossingFilter by lazy { """
-        nodes with 
+        nodes with
           highway = crossing
-          and foot!=no
+          and foot != no
           and crossing
           and crossing != island
           and !crossing:island
     """.toElementFilterExpression()}
 
     private val excludedWaysFilter by lazy { """
-        ways with 
+        ways with
           highway and access ~ private|no
           or highway = service
           or highway and oneway and oneway != no

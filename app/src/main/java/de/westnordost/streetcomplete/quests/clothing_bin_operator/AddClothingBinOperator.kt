@@ -15,7 +15,7 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
     private val filter by lazy { """
         nodes with amenity = recycling and recycling_type = container
          and recycling:clothes = yes
-         and !operator
+         and !operator and !name and !brand
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add clothing bin operator"

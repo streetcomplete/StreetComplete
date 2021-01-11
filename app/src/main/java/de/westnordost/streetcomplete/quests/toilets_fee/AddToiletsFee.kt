@@ -8,7 +8,12 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddToiletsFee : OsmFilterQuestType<Boolean>() {
 
-    override val elementFilter = "nodes, ways with amenity = toilets and access !~ private|customers and !fee"
+    override val elementFilter = """
+        nodes, ways with
+          amenity = toilets
+          and access !~ private|customers
+          and !fee
+    """
     override val commitMessage = "Add toilets fee"
     override val wikiLink = "Key:fee"
     override val icon = R.drawable.ic_quest_toilet_fee

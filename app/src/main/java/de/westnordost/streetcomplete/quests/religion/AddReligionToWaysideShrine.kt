@@ -6,8 +6,12 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
 class AddReligionToWaysideShrine : OsmFilterQuestType<String>() {
 
-    override val elementFilter =
-        "nodes, ways, relations with historic = wayside_shrine and !religion and (access !~ private|no)"
+    override val elementFilter = """
+        nodes, ways, relations with
+          historic = wayside_shrine
+          and !religion
+          and access !~ private|no
+    """
     override val commitMessage = "Add religion for wayside shrine"
     override val wikiLink = "Key:religion"
     override val icon = R.drawable.ic_quest_religion

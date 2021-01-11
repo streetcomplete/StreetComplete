@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddTrafficSignalsSound : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals and foot!=no
+        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals and foot != no
         and (
           !$SOUND_SIGNALS
           or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -4 years
