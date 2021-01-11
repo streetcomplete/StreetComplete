@@ -14,6 +14,7 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
          and !maxspeed and !maxspeed:advisory and !maxspeed:forward and !maxspeed:backward
          and ${MAXSPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
          and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+         and cyclestreet != yes and bicycle_road != yes
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
          and area != yes
