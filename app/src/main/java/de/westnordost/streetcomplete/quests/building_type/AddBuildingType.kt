@@ -34,14 +34,15 @@ class AddBuildingType : OsmFilterQuestType<String>() {
     override fun createForm() = AddBuildingTypeForm()
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        if(answer.startsWith("man_made=")) {
-            val manMade = answer.split("=")[1]
+        val (key, value) = answer.split("=")
+
+        if (key == "man_made") {
             changes.delete("building")
-            changes.add("man_made", manMade)
-        } else if (answer == "historic" || answer == "abandoned" || answer == "ruins") {
-            changes.addOrModify(answer, "yes")
+            changes.add("man_made", value)
+        } else if (key != "building") {
+            changes.addOrModify(key, value)
         } else {
-            changes.modify("building", answer)
+            changes.modify("building", value)
         }
     }
 }

@@ -12,7 +12,7 @@ class AddBuildingTypeForm : AGroupedImageListQuestAnswerFragment<String,String>(
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_buildingType_answer_multiple_types) { showMultipleTypesHint() },
-        OtherAnswer(R.string.quest_buildingType_answer_construction_site) { applyAnswer("construction") }
+        OtherAnswer(R.string.quest_buildingType_answer_construction_site) { applyAnswer("building=construction") }
     )
 
     override val topItems = listOf(
