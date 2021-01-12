@@ -48,11 +48,11 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is SpecificSurfaceAnswer -> {
-                changes.updateWithCheckDate("surface", answer.value)
+                changes.updateWithCheckDate("surface", answer.value.osmValue)
                 changes.deleteIfExists("surface:note")
             }
             is GenericSurfaceAnswer -> {
-                changes.updateWithCheckDate("surface", answer.value)
+                changes.updateWithCheckDate("surface", answer.value.osmValue)
                 changes.addOrModify("surface:note", answer.note)
             }
         }
