@@ -55,4 +55,4 @@ val GENERIC_SURFACES = listOf(
     PAVED, UNPAVED, GROUND
 )
 
-val Surface.shouldDescribe: Boolean get() = this == PAVED || this == UNPAVED
+val Surface.shouldBeDescribed: Boolean get() = this == PAVED || this == UNPAVED

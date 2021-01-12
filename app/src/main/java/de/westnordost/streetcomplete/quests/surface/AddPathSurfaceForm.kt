@@ -13,7 +13,7 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>
 
     override fun onClickOk(selectedItems: List<Surface>) {
         val value = selectedItems.single()
-        if (value.shouldDescribe) {
+        if (value.shouldBeDescribed) {
             AlertDialog.Builder(requireContext())
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
