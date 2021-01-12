@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
+import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
@@ -102,7 +103,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     private fun showNoHousenumberDialog(buildingType: BuildingType) {
         val inflater = LayoutInflater.from(requireContext())
         val inner = inflater.inflate(R.layout.dialog_quest_address_no_housenumber, null, false)
-        ItemViewHolder(inner.findViewById(R.id.item_view)).bind(buildingType.item)
+        ItemViewHolder(inner.findViewById(R.id.item_view)).bind(buildingType.asItem())
 
         AlertDialog.Builder(requireContext())
             .setView(inner)
