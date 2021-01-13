@@ -13,6 +13,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
           ~'sidewalk(:both)?' ~ none|no or
           (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
         )
+        and shoulder != yes
         and !foot
         and access !~ private|no
         """ +
