@@ -1,3 +1,22 @@
+v29.1: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Cycleways: Fix regression that it was asked in 30 zones (#2448)</li>
+  <li>Fix quest did not show up again after undo of its answer (#2418), thanks @thefeiter</li>
+  <li>Fix upload problem if exactly the intended change that has already been made server-side</li>
+  </ul>
+  <h3>Enhancements</h3>
+  <ul>
+  <li>Smoothen view direction in compass mode more (#2465)</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Cycleways: rearrange a selection option (#2310)</li>
+  <li>Road access for pedestrians: improve wording in English (#2472)</li>
+  <li>Road access for pedestrians: don't ask if there is a shoulder</li>
+  <li>Speed limit: do not ask for cycle streets (#2488)</li>
+  </ul>
+
 v29.0: |
   <h3>🗺️ Map available offline!</h3>
   <p>
