@@ -2150,4 +2150,16 @@
     <string name="quest_shop_gone_replaced_answer_error">"Δεν ξέρετε τι είναι αυτό. Σκεφτείτε να αφήσετε μια σημείωση."</string>
     <string name="quest_shop_vacant_type_title">"Αυτό το κατάστημα ήταν κενό. Τι είναι τώρα εδώ;"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Ο αριθμός λωρίδων διαφέρει για κάθε πλευρά"</string>
+    <string name="quest_pitchSurface_title">"Τι επιφάνεια έχει αυτό το γήπεδο;"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή δεν είναι χρήσιμος σε ορισμένες περιοχές και πιθανότατα θα πρέπει να εισαγάγετε το μέρος για να μπορείτε να απαντήσετε σε μια αναζήτηση αυτού του τύπου."</string>
+    <string name="quest_dietType_kosher_name_title">"Το %s προσφέρει προϊόντα Κοσέρ;"</string>
+    <string name="quest_dietType_explanation_kosher">"Τα προϊόντα Κοσέρ πρέπει να προετοιμάζονται σύμφωνα με ειδικούς κανόνες, με τους οργανισμούς πιστοποίησης Κασρούτ να επισημαίνουν τα προϊόντα σε συμμόρφωση."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Δεν υπάρχει καθόλου ποδηλατόδρομος"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Ως συνήθως, χτυπήστε στη μία πλευρά της εικόνας, επιλέξτε μια σωστή απάντηση και κάντε το ίδιο για την άλλη πλευρά. Σημειώστε όλες τις διαθέσιμες επιλογές: ορισμένες περιπτώσεις δεν είναι προφανείς, όπως ένας μονόδρομος που επιτρέπει ποδηλάτες και στις δύο κατευθύνσεις!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Επιλέγοντας αυτό δεν υπάρχει ποδηλατόδρομος"</string>
+    <string name="quest_construction_completed_at_known_date">"Θα ολοκληρωθεί στις…"</string>
+    <string name="quest_construction_completion_date_title">"Πότε θα ολοκληρωθεί;"</string>
+    <string name="quest_surface_value_clay">"Πηλός"</string>
+    <string name="quest_surface_value_artificial_turf">"Τεχνητός χλοοτάπητας"</string>
+    <string name="quest_surface_value_tartan">"Ταρτάν"</string>
 </resources>

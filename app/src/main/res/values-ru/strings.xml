@@ -1082,7 +1082,7 @@
     <string name="quest_generic_looks_like_this">"Обычно выглядит так:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_value_metal">"мета́лл"</string>
+    <string name="quest_surface_value_metal">"Металл"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"Здесь есть велодорожка? Какого типа?"</string>
@@ -2357,4 +2357,8 @@
     <string name="quest_shop_gone_replaced_answer_hint">"Введите категорию точки здесь"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Не знаю, что это. Советуем оставить заметку."</string>
     <string name="quest_shop_vacant_type_title">"Магазин выехал. Что сейчас расположено тут?"</string>
+    <string name="quest_pitchSurface_title">"Какое покрытие у этого спортивного поля?"</string>
+    <string name="quest_surface_value_clay">"Глина"</string>
+    <string name="quest_surface_value_artificial_turf">"Искусственная трава"</string>
+    <string name="quest_surface_value_tartan">"Тартан"</string>
 </resources>

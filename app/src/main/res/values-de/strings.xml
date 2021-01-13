@@ -495,7 +495,10 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_apartments">"Mehrfamilienhaus"</string>
     <string name="quest_buildingType_detached">"Freistehendes Haus"</string>
     <string name="quest_buildingType_detached_description">"Einfamilienhaus mit Garten rundherum"</string>
-    <string name="quest_buildingType_semi_detached">"Doppelhaus"</string>
+
+    <!-- Doppelhaushälfte ist der korrekte Ausdruck, es gab nachfragen OSM Dach Gruppe -->
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_semi_detached">"Doppelhaus(-hälfte)"</string>
     <string name="quest_buildingType_semi_detached_description">"zwei aneinandergebaute Einfamilienhäuser"</string>
     <string name="quest_buildingType_terrace_description">"eine lange Reihe aus ähnlichen Einfamilienhäusern"</string>
     <string name="quest_buildingType_hotel">"Hotelgebäude"</string>
@@ -596,7 +599,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_building_underground_title">"Ist dieses Gebäude komplett unterirdisch?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt."</string>
     <string name="quest_wheelchairAccess_outside_title">"Ist dieser Ort zugänglich für Rollstühle?"</string>
-    <string name="quest_traffic_signals_button_title">"Ist dies eine Druckampel?"</string>
+    <string name="quest_traffic_signals_button_title">"Ist dies eine Bedarfsampel?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Wie viele Motorräder können hier abgestellt werden?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ist der Motorradstellplatz überdacht (Schutz vor Regen)?"</string>
     <string name="default_disabled_msg_maxspeed">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du normalerweise die ganze Straße nach entsprechenden Schildern absuchen musst, nicht nur den hervorgehobenen Abschnitt. Das kann manchmal eine ganz schöne Strecke sein, um bloß eine einzige Aufgabe zu lösen."</string>
@@ -896,7 +899,7 @@ Erfolge"</string>
     <string name="quest_step_count_title">"Wie viele Stufen hat diese Treppe?"</string>
     <string name="quest_traffic_signals_sound_title">"Gibt es hier akustische Signale für Sehbehinderte?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Gibt es an dieser Ampel einen Taster für Blinde, der signalisiert, wenn man über die Straße gehen kann?"</string>
-    <string name="quest_traffic_signals_vibrate_description">"Hinweis: Dies ist oft ein vibrierender Taster oder drehender Konus auf der Unterseite des Druckampel-Kastens."</string>
+    <string name="quest_traffic_signals_vibrate_description">"Hinweis: Dies ist oft ein vibrierender Taster oder drehender Konus auf der Unterseite des Bedarfsampel-Kastens."</string>
     <string name="quest_busStopRef_title">"Was ist die Referenznummer dieser Bushaltestelle?"</string>
     <string name="quest_tramStopRef_title">"Was ist die Referenznummer dieser Straßenbahnhaltestelle?"</string>
     <string name="quest_buildingType_bungalow_description2">"kleines, freistehendes Haus (Gartenhaus, Ferienhaus oder -hütte)"</string>
@@ -975,7 +978,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_shop_gone_replaced_answer_error">"Unbekannt. Hinterlasse stattdessen eine Notiz."</string>
     <string name="quest_shop_vacant_type_title">"Dieser Laden stand leer. Was ist hier jetzt?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Anzahl Fahrstreifen je Seite unterschiedlich"</string>
-    <string name="quest_pitchSurface_title">"Welchen Bodenbelag hat der Sportplatz?"</string>
+    <string name="quest_pitchSurface_title">"Welchen Bodenbelag hat dieser Sportplatz?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Dieser Fragentyp ist standardmäßig deaktiviert, weil er in manchen Regionen nicht sinnvoll ist und man wahrscheinlich einen Ort betreten muss, um eine Frage dieses Typs zu beantworten."</string>
     <string name="quest_dietType_kosher_name_title">"Bietet %s koschere Produkte an?"</string>
     <string name="quest_dietType_explanation_kosher">"Koschere Produkte werden nach den jüdischen Speisegesetzen hergestellt, wobei spezielle Kashrut-Zertifizierungs-Argenturen diese Produkte überprüfen."</string>

@@ -2385,4 +2385,16 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_shop_gone_replaced_answer_error">"Ik weet niet wat dit is. Overweeg een notitie achter te laten."</string>
     <string name="quest_shop_vacant_type_title">"Deze winkel stond leeg. Wat is hier nu?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Het aantal rijstroken verschilt per kant."</string>
+    <string name="quest_pitchSurface_title">"Wat voor ondergrond heeft dit sportveld?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Dit type vraag is standaard uitgeschakeld omdat het in sommige regio's niet nuttig is en je waarschijnlijk ter plaatse naar binnen moet gaan om een ​​vraag van dit type te kunnen beantwoorden."</string>
+    <string name="quest_dietType_kosher_name_title">"Biedt %s koosjere producten aan?"</string>
+    <string name="quest_dietType_explanation_kosher">"Kosjere producten moeten worden bereid volgens speciale regels, waarbij kasjroet-certificeringsinstanties de producten in overeenstemming certificeren."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Dit is geen fietspad."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Tik zoals gewoonlijk op de ene kant van de afbeelding, selecteer een juist antwoord en doe hetzelfde voor de andere kant. Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals een eenrichtingsweg die fietsers in beide richtingen toelaat!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecteer dat er geen fietspad is"</string>
+    <string name="quest_construction_completed_at_known_date">"Dit zal gereed zijn op de datum..."</string>
+    <string name="quest_construction_completion_date_title">"Wanneer zal dit gereed zijn?"</string>
+    <string name="quest_surface_value_clay">"Klei"</string>
+    <string name="quest_surface_value_artificial_turf">"Kunstgras"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
 </resources>

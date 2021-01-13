@@ -967,4 +967,13 @@
     <string name="quest_shop_gone_replaced_answer_hint">"Тип цього місця"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Не знаю що це. Лишити нотатку."</string>
     <string name="quest_shop_vacant_type_title">"Цей магазин незайнятий. Що тут тепер?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Кількісь смуг різна на різних сторонах"</string>
+    <string name="quest_pitchSurface_title">"Яке покриття має це спортивне поле?"</string>
+    <string name="quest_dietType_kosher_name_title">"Чи продаються у %s кошерні товари?"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Немає велодоріжок"</string>
+    <string name="quest_construction_completed_at_known_date">"Буде завершено ..."</string>
+    <string name="quest_construction_completion_date_title">"Коли буде завершено?"</string>
+    <string name="quest_surface_value_clay">"Глина"</string>
+    <string name="quest_surface_value_artificial_turf">"Штучна трава"</string>
+    <string name="quest_surface_value_tartan">"Тартан (гумове покриття)"</string>
 </resources>

@@ -291,19 +291,13 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="produce_cacao">"Cacao"</string>
     <string name="produce_cashew_nuts">"Anacardi"</string>
     <string name="produce_cherries">"Ciliegie"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_chestnuts">"Castagne"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coconuts">"Noci di cocco"</string>
     <string name="produce_coffee">"Caffè"</string>
     <string name="produce_cranberries">"Mirtilli rossi"</string>
     <string name="produce_dates">"Datteri"</string>
     <string name="produce_figs">"Fichi"</string>
     <string name="produce_grapefruits">"Pompelmi"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_guavas">"Guava"</string>
 
     <!-- Fuzzy -->
@@ -313,8 +307,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="produce_hops">"Luppolo"</string>
     <string name="produce_jojoba">"Jojoba"</string>
     <string name="produce_kiwis">"Kiwi"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"Noci di cola"</string>
     <string name="produce_lemons">"Limoni"</string>
     <string name="produce_limes">"Lime"</string>
@@ -365,11 +357,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
 
     <!-- Fuzzy -->
     <string name="produce_areca_nuts">"Palma di Betel"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"Peperoni dolci"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_brazil_nuts">"Noci brasiliane"</string>
 
     <!-- Fuzzy -->
@@ -404,7 +392,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_cycleway_value_none">"nessuna"</string>
     <string name="quest_cycleway_value_shared">"corsia condivisa esplicitamente con altro traffico"</string>
     <string name="quest_cycleway_value_bus_lane">"sul percorso dell'autobus"</string>
-    <string name="quest_cycleway_value_sidewalk">"esplicitamente condivisa con il marciapiede"</string>
+    <string name="quest_cycleway_value_sidewalk">"esplicitamente condivisa con il percorso pedonale"</string>
     <string name="quest_leave_new_note_create_image_error">"Impossibile creare un file per la foto"</string>
     <string name="quest_cycleway_value_lane_dual">"corsia ciclabile, entrambe le direzioni"</string>
     <string name="quest_cycleway_value_track_dual">"pista ciclabile, entrambe le direzioni"</string>
@@ -504,11 +492,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_busStopName_title">"Qual è il nome di questa fermata dell'autobus?"</string>
     <string name="quest_tramStopName_title">"Come si chiama questa fermata del tram?"</string>
     <string name="quest_housenumber_multiple_numbers">"Ha più numeri civici"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"Basta inserire i numeri separati da virgole o intervalli. Ad esempio 1,3 o 2-6."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Porta biciclette alto"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Rastrelliera per biciclette (supporto solo per la ruota)"</string>
     <string name="quest_bicycle_parking_type_shed">"Capannone"</string>
@@ -554,8 +538,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_buildingType_dormitory">"Dormitorio"</string>
     <string name="quest_buildingType_houseboat">"Casa galleggiante"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Caravan fisso"</string>
     <string name="quest_buildingType_commercial">"Edificio commerciale"</string>
     <string name="quest_buildingType_commercial_generic_description">"edificio dove le persone lavorano, fanno compere o altre attività commerciali"</string>
@@ -611,8 +593,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Non ha un numero civico…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"L’edificio era etichettato come:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Sacello"</string>
     <string name="quest_maxspeed_title_short2">"Qual è il limite di velocità su questa strada?"</string>
     <string name="quest_maxspeed_answer_sign">"Un cartello"</string>
@@ -622,8 +602,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_maxspeed_name_title2">"Qual è il limite di velocità per %s qui?"</string>
     <string name="quest_buildingType_sports_centre">"Centro sportivo"</string>
     <string name="quest_buildingType_toilets">"Servizi igienici"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Cosa indica il limite di velocità?"</string>
     <string name="notification_channel_download">"Scarica"</string>
     <string name="quest_playground_access_title">"Il parco giochi è accessibile a tutti?"</string>
@@ -669,12 +647,10 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"sottoterra:"</string>
-    <string name="quest_sidewalk_value_yes">"marciapiede"</string>
-    <string name="quest_sidewalk_value_no">"nessun marciapiede"</string>
+    <string name="quest_sidewalk_value_yes">"percorso pedonale"</string>
+    <string name="quest_sidewalk_value_no">"nessun percorso pedonale"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ai pedoni è vietato camminare su questa strada?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"È stato indicato che questa strada non ha un marciapiede su nessuno dei due lati. Nel caso ci sia comunque un marciapiede ma è indicato come percorso separato rispondi \"marciapiede\"."</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"È stato indicato che questa strada non ha un percorso pedonale su nessun lato. Nel caso ci sia comunque un percorso pedonale, ma è indicato come percorso separato, rispondi \"percorso pedonale\"."</string>
     <string name="quest_buildingType_title">"Che tipo di edificio è questo?"</string>
     <string name="pref_title_theme_select">"Seleziona tema"</string>
     <string name="theme_automatic">"Automatico"</string>
@@ -685,8 +661,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="action_open_location">"Apri posizione in un'altra applicazione"</string>
     <string name="map_application_missing">"Nessun'altra applicazione di mappe installata"</string>
     <string name="label_housenumber">"numero civico"</string>
-
-    <!-- Fuzzy -->
     <string name="label_blocknumber">"numero del quartiere"</string>
     <string name="quest_busStopShelter_covered">"Tutta la fermata è coperta"</string>
     <string name="quest_ferry_pedestrian_name_title">"%s trasporta pedoni?"</string>
@@ -783,16 +757,12 @@ Puoi iniziare a risolverli subito e dopo accedere per pubblicare le tue risposte
 
 Infine, ricorda per la sicurezza: stai attento dell'ambiente circostante e non entrare in proprietà private."</string>
     <string name="tutorial_happy_mapping">"Buona mappatura!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievements_empty">"Non hai ancora riconoscimenti"</string>
     <string name="links_empty">"Non hai ancora collegamenti"</string>
     <string name="quests_empty">"Non hai ancora pubblicato risposte"</string>
     <string name="unsynced_quests_description">"e %d modifiche non pubblicate."</string>
     <string name="unsynced_quests_not_logged_in_description">"Hai %d modifiche non ancora pubblicate. Devi accedere per caricarle."</string>
     <string name="user_quests_title">"Compiti risolti"</string>
-
-    <!-- Fuzzy -->
     <string name="user_achievements_title">"Riconoscimenti"</string>
     <string name="user_links_title">"Collezione di collegamenti"</string>
     <string name="user_profile_title">"Profilo"</string>
@@ -802,8 +772,6 @@ Infine, ricorda per la sicurezza: stai attento dell'ambiente circostante e non e
     <string name="link_category_intro_title">"Introduzione"</string>
     <string name="link_category_intro_description">"Maggiori informazioni su OSM e la community"</string>
     <string name="link_category_editors_title">"Contribuire"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_editors_description">"Mappatori e altri modi per contribuire a OpenStreetMap"</string>
     <string name="link_category_maps_title">"Mappe"</string>
     <string name="link_category_maps_description">"Mappe basate su OpenStreetMap"</string>
@@ -892,8 +860,6 @@ Questa app chiede il numero civico di un edificio solo dopo che è stato determi
 %s"</string>
     <string name="user_profile_days_active">"Giorni
 attivo"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Livelli di
 riconoscimento"</string>
     <string name="quest_address_street_title">"A quale strada appartiene il numero civico %s?"</string>
@@ -915,7 +881,7 @@ riconoscimento"</string>
     <string name="quest_board_type_notice_board">"È una bacheca informazioni"</string>
     <string name="quest_board_type_public_transport">"Trasporto pubblico"</string>
     <string name="quest_board_type_title">"Qual è lo scopo di questa bacheca informazioni?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Sì, mostrata separatamente sulla mappa"</string>
+    <string name="quest_sidewalk_separately_mapped">"Sì, mostrato separatamente sulla mappa"</string>
     <string name="quest_board_type_map">"È una mappa"</string>
     <string name="quest_board_type_map_title">"È solo ed esclusivamente una mappa?"</string>
     <string name="quest_board_type_map_description">"Se la bacheca è su un argomento particolare, specificalo, indipendentemente se include o meno una mappa. Per esempio una bacheca del trasporto pubblico può avere una mappa delle tratte. Se l'argomento non è tra le risposte disponibile, puoi lasciare una nota."</string>

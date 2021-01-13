@@ -1541,7 +1541,7 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="quest_sidewalk_value_no">"no pavement"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_accessible_for_pedestrians_title_prohibited">"Are pedestrians prohibited from walking on this road here?"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Are pedestrians forbidden to walk on this road here?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"This street was tagged as having no pavement on either side. In the case that there is a pavement after all but it is displayed as a separate way, please answer \"pavement\"."</string>
