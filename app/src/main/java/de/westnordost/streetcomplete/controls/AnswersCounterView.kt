@@ -9,6 +9,7 @@ import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.view_answers_counter.view.*
 
+/** View that displays the user's quest answer counter */
 class AnswersCounterView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

@@ -13,6 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/** Controller that handles user login, logout, auth and updated data */
 @Singleton class UserController @Inject constructor(
     private val userApi: UserApi,
     private val oAuthStore: OAuthStore,

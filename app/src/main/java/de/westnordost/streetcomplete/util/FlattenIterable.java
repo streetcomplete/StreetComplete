@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 
+/** An iterable to which several iterables can be added which can be iterated once this way. */
 public class FlattenIterable<T> implements Iterable<T>
 {
 	private final Queue<Iterable> queue;

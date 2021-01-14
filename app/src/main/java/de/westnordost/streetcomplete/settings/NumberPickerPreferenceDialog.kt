@@ -6,6 +6,7 @@ import android.widget.NumberPicker
 
 import de.westnordost.streetcomplete.R
 
+/** Preference dialog where user should pick a number */
 class NumberPickerPreferenceDialog : PreferenceDialogFragmentCompat() {
     private lateinit var picker: NumberPicker
     private lateinit var values: Array<String>

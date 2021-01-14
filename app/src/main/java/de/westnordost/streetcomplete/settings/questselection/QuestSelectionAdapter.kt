@@ -39,6 +39,8 @@ import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.settings.genericQuestTitle
 import kotlinx.android.synthetic.main.row_quest_selection.view.*
 
+/** Adapter for the list that in which the user can enable and disable quests as well as re-order
+ *  them */
 class QuestSelectionAdapter @Inject constructor(
     countryBoundaries: FutureTask<CountryBoundaries>,
     prefs: SharedPreferences

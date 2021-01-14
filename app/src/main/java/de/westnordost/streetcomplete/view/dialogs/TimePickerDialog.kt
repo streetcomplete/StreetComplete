@@ -10,6 +10,7 @@ import android.widget.TimePicker
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 
+/** A dialog in which you can select a time */
 class TimePickerDialog(
     context: Context,
     initialHourOfDay: Int,

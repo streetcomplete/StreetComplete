@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toPx
 import kotlin.math.min
 
+/** A very basic text view whose text is displayed vertically. No line break is possible */
 class VerticalLabelView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

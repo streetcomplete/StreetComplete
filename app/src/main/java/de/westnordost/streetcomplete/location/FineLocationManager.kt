@@ -8,6 +8,8 @@ import android.location.LocationManager.NETWORK_PROVIDER
 import android.os.Looper
 import androidx.annotation.RequiresPermission
 
+/** Convenience wrapper around the location manager with easier API, making use of both the GPS
+ *  and Network provider */
 class FineLocationManager(private val mgr: LocationManager, private var locationUpdateCallback: ((Location) -> Unit)) {
 
     private var lastLocation: Location? = null

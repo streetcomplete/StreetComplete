@@ -8,7 +8,9 @@ import kotlin.math.floor
 import kotlin.math.max
 import kotlin.math.min
 
-/** A spatial index implemented as a grid, based on points  */
+/** A spatial index implemented as a grid, based on points. <br>
+ *  So, you can add points to the grid and each point is sorted into exactly one box within this
+ *  grid. Thus, it is very fast to get all points within a certain bounding box. */
 class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
     private val raster: Array<ArrayList<LatLon>?>
     private val rasterWidth: Int

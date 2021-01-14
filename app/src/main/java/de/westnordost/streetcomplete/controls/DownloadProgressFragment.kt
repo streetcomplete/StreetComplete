@@ -15,6 +15,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/** Fragment that takes care of showing the download progress */
 class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
