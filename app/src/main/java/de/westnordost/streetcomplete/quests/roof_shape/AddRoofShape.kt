@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 
-class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType<String> {
+class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType<RoofShape> {
 
     private val filter by lazy { """
         ways, relations with
@@ -23,8 +23,8 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
 
     override fun createForm() = AddRoofShapeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("roof:shape", answer)
+    override fun applyAnswerTo(answer: RoofShape, changes: StringMapChangesBuilder) {
+        changes.add("roof:shape", answer.osmValue)
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
