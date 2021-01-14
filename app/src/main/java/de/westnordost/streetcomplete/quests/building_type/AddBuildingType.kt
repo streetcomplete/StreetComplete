@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddBuildingType : OsmFilterQuestType<String>() {
+class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
     // in the case of man_made, historic, military and power, these tags already contain
     // information about the purpose of the building, so no need to force asking it
@@ -33,15 +33,14 @@ class AddBuildingType : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddBuildingTypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        if(answer.startsWith("man_made=")) {
-            val manMade = answer.split("=")[1]
+    override fun applyAnswerTo(answer: BuildingType, changes: StringMapChangesBuilder) {
+        if (answer.osmKey == "man_made") {
             changes.delete("building")
-            changes.add("man_made", manMade)
-        } else if (answer == "historic" || answer == "abandoned" || answer == "ruins") {
-            changes.addOrModify(answer, "yes")
+            changes.add("man_made", answer.osmValue)
+        } else if (answer.osmKey != "building") {
+            changes.addOrModify(answer.osmKey, answer.osmValue)
         } else {
-            changes.modify("building", answer)
+            changes.modify("building", answer.osmValue)
         }
     }
 }

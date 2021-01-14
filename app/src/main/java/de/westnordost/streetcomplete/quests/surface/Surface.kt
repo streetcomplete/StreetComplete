@@ -1,33 +1,32 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.quests.surface.Surface.*
 
-enum class Surface(val item: Item<String>) {
-    ASPHALT       (Item("asphalt",        R.drawable.surface_asphalt,       R.string.quest_surface_value_asphalt)),
-    CONCRETE      (Item("concrete",       R.drawable.surface_concrete,      R.string.quest_surface_value_concrete)),
-    FINE_GRAVEL   (Item("fine_gravel",    R.drawable.surface_fine_gravel,   R.string.quest_surface_value_fine_gravel)),
-    PAVING_STONES (Item("paving_stones",  R.drawable.surface_paving_stones, R.string.quest_surface_value_paving_stones)),
-    COMPACTED     (Item("compacted",      R.drawable.surface_compacted,     R.string.quest_surface_value_compacted)),
-    DIRT          (Item("dirt",           R.drawable.surface_dirt,          R.string.quest_surface_value_dirt)),
-    SETT          (Item("sett",           R.drawable.surface_sett,          R.string.quest_surface_value_sett)),
+enum class Surface(val osmValue: String) {
+    ASPHALT("asphalt"),
+    CONCRETE("concrete"),
+    FINE_GRAVEL("fine_gravel"),
+    PAVING_STONES("paving_stones"),
+    COMPACTED("compacted"),
+    DIRT("dirt"),
+    SETT("sett"),
     // https://forum.openstreetmap.org/viewtopic.php?id=61042
-    UNHEWN_COBBLESTONE (Item("unhewn_cobblestone", R.drawable.surface_cobblestone, R.string.quest_surface_value_unhewn_cobblestone)),
-    GRASS_PAVER   (Item("grass_paver",    R.drawable.surface_grass_paver,   R.string.quest_surface_value_grass_paver)),
-    WOOD          (Item("wood",           R.drawable.surface_wood,          R.string.quest_surface_value_wood)),
-    METAL         (Item("metal",          R.drawable.surface_metal,         R.string.quest_surface_value_metal)),
-    GRAVEL        (Item("gravel",         R.drawable.surface_gravel,        R.string.quest_surface_value_gravel)),
-    PEBBLES       (Item("pebblestone",    R.drawable.surface_pebblestone,   R.string.quest_surface_value_pebblestone)),
-    GRASS         (Item("grass",          R.drawable.surface_grass,         R.string.quest_surface_value_grass)),
-    SAND          (Item("sand",           R.drawable.surface_sand,          R.string.quest_surface_value_sand)),
-    ROCK          (Item("rock",           R.drawable.surface_rock,          R.string.quest_surface_value_rock)),
-    CLAY          (Item("clay",           R.drawable.surface_tennis_clay,    R.string.quest_surface_value_clay)),
-    ARTIFICIAL_TURF (Item("artificial_turf", R.drawable.surface_artificial_turf, R.string.quest_surface_value_artificial_turf)),
-    TARTAN        (Item("tartan",         R.drawable.surface_tartan,         R.string.quest_surface_value_tartan));
+    UNHEWN_COBBLESTONE("unhewn_cobblestone"),
+    GRASS_PAVER("grass_paver"),
+    WOOD("wood"),
+    METAL("metal"),
+    GRAVEL("gravel"),
+    PEBBLES("pebblestone"),
+    GRASS("grass"),
+    SAND("sand"),
+    ROCK("rock"),
+    CLAY("clay"),
+    ARTIFICIAL_TURF("artificial_turf"),
+    TARTAN("tartan"),
+    PAVED("paved"),
+    UNPAVED("unpaved"),
+    GROUND("ground"),
 }
-
-fun List<Surface>.toItems() = this.map { it.item }
 
 val PAVED_SURFACES = listOf(
     ASPHALT, CONCRETE, PAVING_STONES,
@@ -42,3 +41,18 @@ val UNPAVED_SURFACES = listOf(
 val GROUND_SURFACES = listOf(
     DIRT, GRASS, SAND, ROCK
 )
+
+val PITCH_SURFACES = listOf(
+    GRASS, ASPHALT, SAND, CONCRETE,
+    CLAY, ARTIFICIAL_TURF, TARTAN, DIRT,
+    FINE_GRAVEL, PAVING_STONES, COMPACTED,
+    SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
+    WOOD, METAL, GRAVEL, PEBBLES,
+    ROCK
+)
+
+val GENERIC_SURFACES = listOf(
+    PAVED, UNPAVED, GROUND
+)
+
+val Surface.shouldBeDescribed: Boolean get() = this == PAVED || this == UNPAVED

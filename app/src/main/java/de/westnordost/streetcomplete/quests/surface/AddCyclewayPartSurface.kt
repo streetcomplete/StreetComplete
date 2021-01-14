@@ -36,11 +36,11 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
             is SpecificSurfaceAnswer -> {
-                changes.updateWithCheckDate("cycleway:surface", answer.value)
+                changes.updateWithCheckDate("cycleway:surface", answer.value.osmValue)
                 changes.deleteIfExists("cycleway:surface:note")
             }
             is GenericSurfaceAnswer -> {
-                changes.updateWithCheckDate("cycleway:surface", answer.value)
+                changes.updateWithCheckDate("cycleway:surface", answer.value.osmValue)
                 changes.addOrModify("cycleway:surface:note", answer.note)
             }
         }

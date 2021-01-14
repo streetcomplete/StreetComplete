@@ -35,11 +35,11 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is SpecificSurfaceAnswer -> {
-                changes.updateWithCheckDate("footway:surface", answer.value)
+                changes.updateWithCheckDate("footway:surface", answer.value.osmValue)
                 changes.deleteIfExists("footway:surface:note")
             }
             is GenericSurfaceAnswer -> {
-                changes.updateWithCheckDate("footway:surface", answer.value)
+                changes.updateWithCheckDate("footway:surface", answer.value.osmValue)
                 changes.addOrModify("footway:surface:note", answer.note)
             }
         }

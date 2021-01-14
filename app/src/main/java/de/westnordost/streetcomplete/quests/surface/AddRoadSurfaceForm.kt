@@ -5,19 +5,15 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddRoadSurfaceForm : AImageListQuestAnswerFragment<String, SurfaceAnswer>() {
-    override val items: List<Item<String>>
-        get() =
-            (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES).toItems() +
-                Item("paved", R.drawable.surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
-                Item("unpaved", R.drawable.surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf()) +
-                Item("ground", R.drawable.surface_ground, R.string.quest_surface_value_ground, null, listOf())
+class AddRoadSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>() {
+    override val items: List<Item<Surface>>
+        get() = (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_SURFACES).toItems()
 
     override val itemsPerRow = 3
 
-    override fun onClickOk(selectedItems: List<String>) {
+    override fun onClickOk(selectedItems: List<Surface>) {
         val value = selectedItems.single()
-        if (value == "paved" || value == "unpaved") {
+        if (value.shouldBeDescribed) {
             AlertDialog.Builder(requireContext())
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
