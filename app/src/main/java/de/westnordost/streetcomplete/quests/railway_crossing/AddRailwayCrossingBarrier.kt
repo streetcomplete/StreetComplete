@@ -8,10 +8,10 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 
-class AddRailwayCrossingBarrier : OsmElementQuestType<String> {
+class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
 
     private val crossingFilter by lazy { """
-        nodes with 
+        nodes with
           railway = level_crossing
           and (!crossing:barrier or crossing:barrier older today -8 years)
     """.toElementFilterExpression() }
@@ -42,7 +42,7 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<String> {
 
     override fun createForm() = AddRailwayCrossingBarrierForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("crossing:barrier", answer)
+    override fun applyAnswerTo(answer: RailwayCrossingBarrier, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("crossing:barrier", answer.osmValue)
     }
 }
