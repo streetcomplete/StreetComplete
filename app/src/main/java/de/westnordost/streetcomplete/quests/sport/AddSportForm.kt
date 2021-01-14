@@ -16,6 +16,8 @@ class AddSportForm : AImageListQuestAnswerFragment<Sport, List<Sport>>() {
     )
 
     override val items get() = listOf(
+        // sorted by ~worldwide usages, minus country specific ones
+        // 250k - 10k
         Item(SOCCER,              R.drawable.ic_sport_soccer,              R.string.quest_sport_soccer),
         Item(TENNIS,              R.drawable.ic_sport_tennis,              R.string.quest_sport_tennis),
         Item(BASKETBALL,          R.drawable.ic_sport_basketball,          R.string.quest_sport_basketball),
@@ -24,12 +26,12 @@ class AddSportForm : AImageListQuestAnswerFragment<Sport, List<Sport>>() {
         Item(BEACHVOLLEYBALL,     R.drawable.ic_sport_beachvolleyball,     R.string.quest_sport_beachvolleyball),
         Item(SKATEBOARD,          R.drawable.ic_sport_skateboard,          R.string.quest_sport_skateboard),
         Item(SHOOTING,            R.drawable.ic_sport_shooting,            R.string.quest_sport_shooting),
-
+        // 7k - 5k
         Item(BASEBALL,            R.drawable.ic_sport_baseball,            R.string.quest_sport_baseball),
         Item(ATHLETICS,           R.drawable.ic_sport_athletics,           R.string.quest_sport_athletics),
         Item(TABLE_TENNIS,        R.drawable.ic_sport_table_tennis,        R.string.quest_sport_table_tennis),
         Item(GYMNASTICS,          R.drawable.ic_sport_gymnastics,          R.string.quest_sport_gymnastics),
-
+        // 4k - 2k
         Item(BOULES,              R.drawable.ic_sport_boules,              R.string.quest_sport_boules),
         Item(HANDBALL,            R.drawable.ic_sport_handball,            R.string.quest_sport_handball),
         Item(FIELD_HOCKEY,        R.drawable.ic_sport_field_hockey,        R.string.quest_sport_field_hockey),
@@ -38,7 +40,7 @@ class AddSportForm : AImageListQuestAnswerFragment<Sport, List<Sport>>() {
         Item(EQUESTRIAN,          R.drawable.ic_sport_equestrian,          R.string.quest_sport_equestrian),
         Item(ARCHERY,             R.drawable.ic_sport_archery,             R.string.quest_sport_archery),
         Item(ROLLER_SKATING,      R.drawable.ic_sport_roller_skating,      R.string.quest_sport_roller_skating),
-
+        // 1k - 0k
         Item(BADMINTON,           R.drawable.ic_sport_badminton,           R.string.quest_sport_badminton),
         Item(CRICKET,             R.drawable.ic_sport_cricket,             R.string.quest_sport_cricket),
         Item(RUGBY,               R.drawable.ic_sport_rugby,               R.string.quest_sport_rugby),

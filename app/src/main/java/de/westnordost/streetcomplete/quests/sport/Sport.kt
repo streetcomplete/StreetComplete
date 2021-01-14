@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.quests.sport
 
 enum class Sport(val osmValue: String) {
-    // sorted by ~worldwide usages, minus country specific ones
     MULTI("multi"),
-
-    // 250k - 10k
     SOCCER("soccer"),
     TENNIS("tennis"),
     BASKETBALL("basketball"),
@@ -13,14 +10,10 @@ enum class Sport(val osmValue: String) {
     BEACHVOLLEYBALL("beachvolleyball"),
     SKATEBOARD("skateboard"),
     SHOOTING("shooting"),
-
-    // 7k - 5k
     BASEBALL("baseball"),
     ATHLETICS("athletics"),
     TABLE_TENNIS("table_tennis"),
     GYMNASTICS("gymnastics"),
-
-    // 4k - 2k
     BOULES("boules"),
     HANDBALL("handball"),
     FIELD_HOCKEY("field_hockey"),
@@ -29,8 +22,6 @@ enum class Sport(val osmValue: String) {
     EQUESTRIAN("equestrian"),
     ARCHERY("archery"),
     ROLLER_SKATING("roller_skating"),
-
-    // 1k - 0k
     BADMINTON("badminton"),
     CRICKET("cricket"),
     RUGBY("rugby"),
