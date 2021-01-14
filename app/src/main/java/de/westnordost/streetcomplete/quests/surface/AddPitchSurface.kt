@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
 class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     private val sportValuesWherePitchSurfaceQuestionIsInteresting = listOf(
+        // #2377
         "multi", "soccer", "tennis", "basketball", "equestrian", "athletics", "volleyball",
         "bmx", "american_football", "badminton", "pelota", "horse_racing", "skateboard",
         "disc_golf", "futsal", "cycling", "gymnastics", "bowls", "boules", "netball",
@@ -16,10 +17,13 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
         "canadian_football", "softball", "sepak_takraw", "cricket", "pickleball", "lacrosse",
         "roller_skating", "baseball", "shuffleboard", "paddle_tennis", "korfball", "petanque",
         "croquet", "four_square", "shot-put",
+
+        // #2468
+        "running", "dog_racing", "toboggan",
     )
 
     override val elementFilter = """
-        ways with leisure=pitch
+        ways with (leisure=pitch or leisure=track)
         and sport ~ "(^|.*;)(${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")})(${'$'}|;.*)"
         and (access !~ private|no)
         and indoor != yes and !building
@@ -38,7 +42,11 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_pitch_surface
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_pitchSurface_title
+    override fun getTitle(tags: Map<String, String>) =
+        if (tags.get("leisure") == "track")
+            R.string.quest_pitchSurface_title_track
+        else
+            R.string.quest_pitchSurface_title
 
 
 
