@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddCrossingType : OsmFilterQuestType<String>() {
+class AddCrossingType : OsmFilterQuestType<CrossingType>() {
 
     override val elementFilter = """
         nodes with highway = crossing
@@ -35,16 +35,16 @@ class AddCrossingType : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddCrossingTypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: CrossingType, changes: StringMapChangesBuilder) {
         val previous = changes.getPreviousValue("crossing")
         if(previous == "island") {
-            changes.modify("crossing", answer)
+            changes.modify("crossing", answer.osmValue)
             changes.addOrModify("crossing:island", "yes")
         } else {
-            if (answer == "marked" && previous in listOf("zebra", "marked", "uncontrolled")) {
+            if (answer == CrossingType.MARKED && previous in listOf("zebra", "marked", "uncontrolled")) {
                 changes.updateCheckDateForKey("crossing")
             } else {
-                changes.updateWithCheckDate("crossing", answer)
+                changes.updateWithCheckDate("crossing", answer.osmValue)
             }
         }
     }
