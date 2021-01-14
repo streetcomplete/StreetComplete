@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.building_type
 
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
+
 enum class BuildingType(val osmKey: String, val osmValue: String) {
     HOUSE         ("building", "house"),
     APARTMENTS    ("building", "apartments"),
@@ -74,43 +76,31 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     }
 }
 
-val topBuildingTypes = listOf(
-    BuildingType.DETACHED, BuildingType.APARTMENTS, BuildingType.HOUSE, BuildingType.GARAGE,
-    BuildingType.SHED, BuildingType.HUT
-)
+val topBuildingTypes = listOf(DETACHED, APARTMENTS, HOUSE, GARAGE, SHED, HUT)
 
 enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<BuildingType>) {
     RESIDENTIAL(BuildingType.RESIDENTIAL, listOf(
-        BuildingType.DETACHED, BuildingType.APARTMENTS, BuildingType.SEMI_DETACHED,
-        BuildingType.TERRACE, BuildingType.HOUSE, BuildingType.FARM, BuildingType.HUT,
-        BuildingType.BUNGALOW, BuildingType.HOUSEBOAT, BuildingType.STATIC_CARAVAN,
-        BuildingType.DORMITORY
+        DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, HOUSE, FARM, HUT, BUNGALOW, HOUSEBOAT,
+        STATIC_CARAVAN, DORMITORY
     )),
     COMMERCIAL(BuildingType.COMMERCIAL, listOf(
-        BuildingType.OFFICE, BuildingType.INDUSTRIAL, BuildingType.RETAIL, BuildingType.WAREHOUSE,
-        BuildingType.KIOSK, BuildingType.HOTEL, BuildingType.STORAGE_TANK
+        OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK
     )),
     CIVIC(BuildingType.CIVIC, listOf(
-        BuildingType.SCHOOL, BuildingType.UNIVERSITY, BuildingType.HOSPITAL,
-        BuildingType.KINDERGARTEN, BuildingType.SPORTS_CENTRE, BuildingType.TRAIN_STATION,
-        BuildingType.TRANSPORTATION, BuildingType.COLLEGE, BuildingType.GOVERNMENT,
-        BuildingType.STADIUM
+        SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION, TRANSPORTATION,
+        COLLEGE, GOVERNMENT, STADIUM
     )),
     RELIGIOUS(BuildingType.RELIGIOUS, listOf(
-        BuildingType.CHURCH, BuildingType.CATHEDRAL, BuildingType.CHAPEL, BuildingType.MOSQUE,
-        BuildingType.TEMPLE, BuildingType.PAGODA, BuildingType.SYNAGOGUE, BuildingType.SHRINE
+        CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE
     )),
     FOR_CARS(null, listOf(
-        BuildingType.GARAGE, BuildingType.GARAGES, BuildingType.CARPORT, BuildingType.PARKING
+        GARAGE, GARAGES, CARPORT, PARKING
     )),
     FOR_FARMS(null, listOf(
-        BuildingType.FARM, BuildingType.FARM_AUXILIARY, BuildingType.SILO, BuildingType.GREENHOUSE,
-        BuildingType.STORAGE_TANK
+        FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK
     )),
     OTHER(null, listOf(
-        BuildingType.SHED, BuildingType.ROOF, BuildingType.SERVICE, BuildingType.HUT,
-        BuildingType.TOILETS, BuildingType.HANGAR, BuildingType.BUNKER, BuildingType.HISTORIC,
-        BuildingType.ABANDONED, BuildingType.RUINS
+        SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER, HISTORIC, ABANDONED, RUINS
     )),
 }
 
