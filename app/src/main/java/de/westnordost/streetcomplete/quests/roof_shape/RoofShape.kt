@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
-import android.os.Bundle
-
 enum class RoofShape(val osmValue: String) {
     GABLED("gabled"),
     HIPPED("hipped"),
