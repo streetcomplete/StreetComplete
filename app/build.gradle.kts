@@ -122,7 +122,7 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.1")
+    implementation("androidx.exifinterface:exifinterface:1.3.2")
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
@@ -165,7 +165,7 @@ dependencies {
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.22.1")
+    implementation("ch.poole:OpeningHoursParser:0.23.0")
 }
 
 /** Localizations that should be pulled from POEditor etc. */
