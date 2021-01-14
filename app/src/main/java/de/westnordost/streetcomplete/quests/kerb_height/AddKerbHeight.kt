@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 
-class AddKerbHeight : OsmElementQuestType<String> {
+class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
     private val eligibleKerbsFilter by lazy { """
         nodes with
@@ -31,8 +31,8 @@ class AddKerbHeight : OsmElementQuestType<String> {
 
     override fun isApplicableTo(element: Element): Boolean? = null
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("kerb", answer)
+    override fun applyAnswerTo(answer: KerbHeight, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("kerb", answer.osmValue)
         changes.addOrModify("barrier", "kerb")
     }
 }
