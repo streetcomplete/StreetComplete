@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddBikeParkingType : OsmFilterQuestType<String>() {
+class AddBikeParkingType : OsmFilterQuestType<BikeParkingType>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -21,7 +21,7 @@ class AddBikeParkingType : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddBikeParkingTypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("bicycle_parking", answer)
+    override fun applyAnswerTo(answer: BikeParkingType, changes: StringMapChangesBuilder) {
+        changes.add("bicycle_parking", answer.osmValue)
     }
 }

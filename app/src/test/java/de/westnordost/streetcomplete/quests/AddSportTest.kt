@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.sport.AddSport
+import de.westnordost.streetcomplete.quests.sport.Sport.*
 import org.junit.Test
 
 class AddSportTest {
@@ -13,7 +13,7 @@ class AddSportTest {
     @Test fun `replace hockey when applying answer`() {
         questType.verifyAnswer(
             mapOf("sport" to "hockey"),
-            listOf("field_hockey"),
+            listOf(FIELD_HOCKEY),
             StringMapEntryModify("sport", "hockey", "field_hockey")
         )
     }
@@ -21,7 +21,7 @@ class AddSportTest {
     @Test fun `replace team handball when applying answer`() {
         questType.verifyAnswer(
             mapOf("sport" to "team_handball"),
-            listOf("handball"),
+            listOf(HANDBALL),
             StringMapEntryModify("sport", "team_handball", "handball")
         )
     }
@@ -29,7 +29,7 @@ class AddSportTest {
     @Test fun `replace skating when applying answer`() {
         questType.verifyAnswer(
             mapOf("sport" to "skating"),
-            listOf("ice_skating"),
+            listOf(ICE_SKATING),
             StringMapEntryModify("sport", "skating", "ice_skating")
         )
     }
@@ -37,14 +37,14 @@ class AddSportTest {
     @Test fun `replace football when applying answer`() {
         questType.verifyAnswer(
             mapOf("sport" to "football"),
-            listOf("soccer"),
+            listOf(SOCCER),
             StringMapEntryModify("sport", "football", "soccer")
         )
     }
 
     @Test fun `apply sport answer`() {
         questType.verifyAnswer(
-            listOf("soccer"),
+            listOf(SOCCER),
             StringMapEntryAdd("sport", "soccer")
         )
     }

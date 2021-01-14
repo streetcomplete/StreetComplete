@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddReligionToWaysideShrine : OsmFilterQuestType<String>() {
+class AddReligionToWaysideShrine : OsmFilterQuestType<Religion>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -20,7 +20,7 @@ class AddReligionToWaysideShrine : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddReligionForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("religion", answer)
+    override fun applyAnswerTo(answer: Religion, changes: StringMapChangesBuilder) {
+        changes.add("religion", answer.osmValue)
     }
 }

@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddInformationToTourism : OsmFilterQuestType<String>() {
+class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
 
     override val elementFilter = "nodes, ways, relations with tourism = information and !information"
     override val commitMessage = "Add information type to tourist information"
@@ -21,7 +21,7 @@ class AddInformationToTourism : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddInformationForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("information", answer)
+    override fun applyAnswerTo(answer: TourismInformation, changes: StringMapChangesBuilder) {
+        changes.add("information", answer.osmValue)
     }
 }

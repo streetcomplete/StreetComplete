@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeo
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 
-class AddForestLeafType : OsmElementQuestType<String> {
+class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     private val areaFilter by lazy { """
         ways, relations with (landuse = forest or natural = wood) and !leaf_type
     """.toElementFilterExpression()}
@@ -41,7 +41,7 @@ class AddForestLeafType : OsmElementQuestType<String> {
 
     override fun createForm() = AddForestLeafTypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("leaf_type", answer)
+    override fun applyAnswerTo(answer: ForestLeafType, changes: StringMapChangesBuilder) {
+        changes.add("leaf_type", answer.osmValue)
     }
 }

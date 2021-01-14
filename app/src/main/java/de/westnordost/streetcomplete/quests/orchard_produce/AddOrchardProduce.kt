@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddOrchardProduce : OsmFilterQuestType<List<String>>() {
+class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>() {
 
     override val elementFilter = """
         ways, relations with landuse = orchard
@@ -19,12 +19,12 @@ class AddOrchardProduce : OsmFilterQuestType<List<String>>() {
 
     override fun createForm() = AddOrchardProduceForm()
 
-    override fun applyAnswerTo(answer: List<String>, changes: StringMapChangesBuilder) {
-        changes.add("produce", answer.joinToString(";"))
+    override fun applyAnswerTo(answer: List<OrchardProduce>, changes: StringMapChangesBuilder) {
+        changes.add("produce", answer.joinToString(";") { it.osmValue })
 
-        when(answer.singleOrNull()) {
-            "grape" -> changes.modify("landuse", "vineyard")
-            "sisal" -> changes.modify("landuse", "farmland")
+        val landuse = answer.singleOrNull()?.landuse
+        if (landuse != null) {
+            changes.modify("landuse", landuse)
         }
     }
 }

@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddFireHydrantType : OsmFilterQuestType<String>() {
+class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
 
     override val elementFilter = "nodes with emergency = fire_hydrant and !fire_hydrant:type"
     override val commitMessage = "Add fire hydrant type"
@@ -15,7 +15,7 @@ class AddFireHydrantType : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddFireHydrantTypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("fire_hydrant:type", answer)
+    override fun applyAnswerTo(answer: FireHydrantType, changes: StringMapChangesBuilder) {
+        changes.add("fire_hydrant:type", answer.osmValue)
     }
 }

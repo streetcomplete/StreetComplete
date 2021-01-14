@@ -2,26 +2,27 @@ package de.westnordost.streetcomplete.quests.bridge_structure
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.*
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddBridgeStructureForm : AImageListQuestAnswerFragment<String, String>() {
+class AddBridgeStructureForm : AImageListQuestAnswerFragment<BridgeStructure, BridgeStructure>() {
 
     // structures sorted highest to lowest amount of values on taginfo, footbridge-types last
     override val items = listOf(
-        Item("beam", R.drawable.bridge_structure_beam),
-        Item("suspension", R.drawable.bridge_structure_suspension),
-        Item("arch", R.drawable.bridge_structure_arch),
-        Item("arch", R.drawable.bridge_structure_tied_arch), // a subtype of arch, but visually quite different
-        Item("truss", R.drawable.bridge_structure_truss),
-        Item("cable-stayed", R.drawable.bridge_structure_cablestayed),
-        Item("humpback", R.drawable.bridge_structure_humpback),
-        Item("simple-suspension", R.drawable.bridge_structure_simple_suspension),
-        Item("floating", R.drawable.bridge_structure_floating)
+        Item(BEAM, R.drawable.bridge_structure_beam),
+        Item(SUSPENSION, R.drawable.bridge_structure_suspension),
+        Item(ARCH, R.drawable.bridge_structure_arch),
+        Item(TIED_ARCH, R.drawable.bridge_structure_tied_arch),
+        Item(TRUSS, R.drawable.bridge_structure_truss),
+        Item(CABLE_STAYED, R.drawable.bridge_structure_cablestayed),
+        Item(HUMPBACK, R.drawable.bridge_structure_humpback),
+        Item(SIMPLE_SUSPENSION, R.drawable.bridge_structure_simple_suspension),
+        Item(FLOATING, R.drawable.bridge_structure_floating)
     )
 
     override val itemsPerRow = 2
 
-    override fun onClickOk(selectedItems: List<String>) {
+    override fun onClickOk(selectedItems: List<BridgeStructure>) {
         applyAnswer(selectedItems.first())
     }
 }
