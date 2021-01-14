@@ -3,7 +3,7 @@ v29.1: |
   <ul>
   <li>Cycleways: Fix regression that it was asked in 30 zones (#2448)</li>
   <li>Fix quest did not show up again after undo of its answer (#2418), thanks @thefeiter</li>
-  <li>Fix upload problem if exactly the intended change that has already been made server-side</li>
+  <li>Fix upload problem if exactly the intended change has already been made server-side</li>
   </ul>
   <h3>Enhancements</h3>
   <ul>
