@@ -2,20 +2,21 @@ package de.westnordost.streetcomplete.quests.fire_hydrant
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.*
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddFireHydrantTypeForm : AImageListQuestAnswerFragment<String, String>() {
+class AddFireHydrantTypeForm : AImageListQuestAnswerFragment<FireHydrantType, FireHydrantType>() {
 
     override val items = listOf(
-        Item("pillar", R.drawable.fire_hydrant_pillar, R.string.quest_fireHydrant_type_pillar),
-        Item("underground", R.drawable.fire_hydrant_underground, R.string.quest_fireHydrant_type_underground),
-        Item("wall", R.drawable.fire_hydrant_wall, R.string.quest_fireHydrant_type_wall),
-        Item("pond", R.drawable.fire_hydrant_pond, R.string.quest_fireHydrant_type_pond)
+        Item(PILLAR, R.drawable.fire_hydrant_pillar, R.string.quest_fireHydrant_type_pillar),
+        Item(UNDERGROUND, R.drawable.fire_hydrant_underground, R.string.quest_fireHydrant_type_underground),
+        Item(WALL, R.drawable.fire_hydrant_wall, R.string.quest_fireHydrant_type_wall),
+        Item(POND, R.drawable.fire_hydrant_pond, R.string.quest_fireHydrant_type_pond)
     )
 
     override val itemsPerRow = 2
 
-    override fun onClickOk(selectedItems: List<String>) {
+    override fun onClickOk(selectedItems: List<FireHydrantType>) {
         applyAnswer(selectedItems.single())
     }
 }
