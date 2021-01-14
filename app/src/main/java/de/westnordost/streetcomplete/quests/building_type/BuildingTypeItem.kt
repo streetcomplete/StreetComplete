@@ -74,8 +74,7 @@ fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
     CONSTRUCTION -> Item(null) // This does not need details, as it's part of "Other answers"
 }
 
-@JvmName("buildingTypeCategoryToItems")
-fun List<BuildingTypeCategory>.toItems() = this.map { it.asItem() }
+fun Array<BuildingTypeCategory>.toItems() = this.map { it.asItem() }
 
 fun BuildingTypeCategory.asItem(): Item<BuildingType?> = when(this) {
     BuildingTypeCategory.RESIDENTIAL -> Item(this.type, R.drawable.ic_building_apartments,

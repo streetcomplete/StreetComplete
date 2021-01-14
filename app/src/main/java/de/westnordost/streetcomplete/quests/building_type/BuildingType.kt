@@ -114,8 +114,4 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
     )),
 }
 
-val buildingCategories = listOf(
-    BuildingTypeCategory.RESIDENTIAL, BuildingTypeCategory.COMMERCIAL, BuildingTypeCategory.CIVIC,
-    BuildingTypeCategory.RELIGIOUS, BuildingTypeCategory.FOR_CARS, BuildingTypeCategory.FOR_FARMS,
-    BuildingTypeCategory.OTHER
-)
+val buildingCategories = BuildingTypeCategory.values()
