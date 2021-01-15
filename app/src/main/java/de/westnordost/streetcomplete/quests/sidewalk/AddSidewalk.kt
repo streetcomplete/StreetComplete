@@ -42,6 +42,9 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
           )
           and foot != no and access !~ private|no
           and foot != use_sidepath
+          and bicycle != use_sidepath
+          and bicycle:backward != use_sidepath
+          and bicycle:forward != use_sidepath
     """.toElementFilterExpression() }
 
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
