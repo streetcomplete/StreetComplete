@@ -19,7 +19,7 @@ abstract class OsmFilterQuestType<T> : OsmElementQuestType<T> {
         if (filter.includesElementType(Element.Type.NODE)) elements += mapData.nodes
         if (filter.includesElementType(Element.Type.WAY)) elements += mapData.ways
         if (filter.includesElementType(Element.Type.RELATION)) elements += mapData.relations
-        return Iterable { elements.filter { element -> filter.matches(element) }.iterator() }
+        return elements.filter { element -> filter.matches(element) }.asIterable()
     }
 
     override fun isApplicableTo(element: Element) = filter.matches(element)

@@ -55,7 +55,7 @@ class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
                 if (list != null) result += list
             }
         }
-        return Iterable { result.iterator() }
+        return result.asIterable()
     }
 
     fun remove(p: LatLon): Boolean {
