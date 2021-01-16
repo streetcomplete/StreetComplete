@@ -58,6 +58,7 @@ import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargin
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
+import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
@@ -186,6 +187,7 @@ import javax.inject.Singleton
         AddToiletsFee(), // used by OsmAnd in the object description
         AddBabyChangingTable(), // used by OsmAnd in the object description
         AddBikeParkingCover(), // used by OsmAnd in the object description
+        AddDrinkingWater(), // used by AnyFinder
         AddTactilePavingCrosswalk(), // Paving can be completed while waiting to cross
         AddTactilePavingKerb(), // Paving can be completed while waiting to cross
         AddKerbHeight(), // Should be visible while waiting to cross

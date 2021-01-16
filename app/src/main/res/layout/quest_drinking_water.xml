@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/radioButtonGroup">
+
+    <RadioButton
+        android:id="@+id/sign_drinkable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/quest_drinking_water_sign_drinkable" />
+
+    <RadioButton
+        android:id="@+id/sign_not_drinkable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/quest_drinking_water_sign_not_drinkable" />
+
+    <RadioButton
+        android:id="@+id/no_sign_drinkable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/quest_drinking_water_no_sign_drinkable" />
+
+    <RadioButton
+        android:id="@+id/no_sign_not_drinkable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/quest_drinking_water_no_sign_not_drinkable" />
+
+</RadioGroup>
