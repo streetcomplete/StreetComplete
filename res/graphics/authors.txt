@@ -196,6 +196,7 @@ quest icons/
     cash.svg
     christian.svg
     defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny
+    drinking_water.svg               Florian Edelmann, parts from https://www.svgrepo.com/svg/24753/drop (License: CC0 1.0)
     ferry.svg                        modified from Twemoji: U+26F4
     ferry_pedestrian.svg             modified from Twemoji: U+26F4
     fire_hydrant.svg
