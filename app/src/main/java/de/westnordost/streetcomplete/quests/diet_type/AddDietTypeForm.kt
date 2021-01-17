@@ -6,11 +6,11 @@ import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.diet_type.DietType.*
+import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no_only.*
 import kotlinx.android.synthetic.main.quest_diet_type_explanation.*
 
-class AddDietTypeForm : AbstractQuestAnswerFragment<DietType>() {
+class AddDietTypeForm : AbstractQuestAnswerFragment<DietAvailability>() {
 
     override val contentLayoutResId = R.layout.quest_diet_type_explanation
     override val buttonsResId = R.layout.quest_buttonpanel_yes_no_only

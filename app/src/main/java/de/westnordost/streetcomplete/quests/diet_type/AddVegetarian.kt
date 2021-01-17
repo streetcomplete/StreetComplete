@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddVegetarian : OsmFilterQuestType<DietType>() {
+class AddVegetarian : OsmFilterQuestType<DietAvailability>() {
 
     override val elementFilter = """
         nodes, ways with amenity ~ restaurant|cafe|fast_food
@@ -25,7 +25,7 @@ class AddVegetarian : OsmFilterQuestType<DietType>() {
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_vegetarian)
 
-    override fun applyAnswerTo(answer: DietType, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: DietAvailability, changes: StringMapChangesBuilder) {
         changes.updateWithCheckDate("diet:vegetarian", answer.osmValue)
     }
 }
