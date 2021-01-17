@@ -5,9 +5,10 @@ import android.view.View
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.parking_access.ParkingAccess.*
 import kotlinx.android.synthetic.main.quest_parking_access.*
 
-class AddParkingAccessForm : AbstractQuestFormAnswerFragment<String>() {
+class AddParkingAccessForm : AbstractQuestFormAnswerFragment<ParkingAccess>() {
 
     override val contentLayoutResId = R.layout.quest_parking_access
 
@@ -18,9 +19,9 @@ class AddParkingAccessForm : AbstractQuestFormAnswerFragment<String>() {
 
     override fun onClickOk() {
         applyAnswer(when (radioButtonGroup.checkedRadioButtonId) {
-            R.id.yes            -> "yes"
-            R.id.customers      -> "customers"
-            R.id.private_access -> "private"
+            R.id.yes            -> YES
+            R.id.customers      -> CUSTOMERS
+            R.id.private_access -> PRIVATE
             else -> throw NullPointerException()
         })
     }
