@@ -8,7 +8,7 @@ import java.util.concurrent.FutureTask
 
 class AddWheelchairAccessBusiness(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmFilterQuestType<String>()
+) : OsmFilterQuestType<WheelchairAccess>()
 {
     override val elementFilter = """
         nodes, ways, relations with
@@ -98,8 +98,8 @@ class AddWheelchairAccessBusiness(
 
     override fun createForm() = AddWheelchairAccessBusinessForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("wheelchair", answer)
+    override fun applyAnswerTo(answer: WheelchairAccess, changes: StringMapChangesBuilder) {
+        changes.add("wheelchair", answer.osmValue)
     }
 
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
