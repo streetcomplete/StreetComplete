@@ -968,7 +968,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_clay">Clay</string>
     <string name="quest_surface_value_artificial_turf">Artificial turf</string>
     <string name="quest_surface_value_tartan">Tartan</string>
-    <string name="quest_drinking_water_title">Is the water drinkable here?</string>
+    <string name="quest_drinking_water_title">Is the water drinkable here? (%s)</string>
     <string name="quest_drinking_water_seems_drinkable">Seems drinkable</string>
     <string name="quest_drinking_water_sign_drinkable">Yes, there is a sign</string>
     <string name="quest_drinking_water_sign_not_drinkable">No, there is a sign</string>

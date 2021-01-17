@@ -22,6 +22,9 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_title
 
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
+        featureName.value?.let { arrayOf(it) } ?: arrayOf()
+
     override fun createForm() = AddDrinkingWaterForm()
 
     override fun applyAnswerTo(answer: DrinkingWater, changes: StringMapChangesBuilder) {
