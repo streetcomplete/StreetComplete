@@ -10,11 +10,10 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
         nodes with (
             man_made = water_tap
             or man_made = water_well
-            or amenity = toilets
             or natural = spring
         )
         and access !~ private|no and indoor != yes
-        and !drinking_water and amenity != drinking_water
+        and !drinking_water and !drinking_water:legal and amenity != drinking_water
     """
 
     override val commitMessage = "Add whether water is drinkable"
