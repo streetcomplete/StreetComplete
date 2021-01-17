@@ -15,11 +15,11 @@ abstract class OsmFilterQuestType<T> : OsmElementQuestType<T> {
         /* this is a considerate performance improvement over just iterating over the whole MapData
         *  because for quests that only filter for one (or two) element types, any filter checks
         *  are completely avoided */
-        var elements = sequenceOf<Element>()
-        if (filter.includesElementType(Element.Type.NODE)) elements += mapData.nodes
-        if (filter.includesElementType(Element.Type.WAY)) elements += mapData.ways
-        if (filter.includesElementType(Element.Type.RELATION)) elements += mapData.relations
-        return elements.filter { element -> filter.matches(element) }.asIterable()
+        return sequence {
+            if (filter.includesElementType(Element.Type.NODE)) yieldAll(mapData.nodes)
+            if (filter.includesElementType(Element.Type.WAY)) yieldAll(mapData.ways)
+            if (filter.includesElementType(Element.Type.RELATION)) yieldAll(mapData.relations)
+        }.filter { filter.matches(it) }.asIterable()
     }
 
     override fun isApplicableTo(element: Element) = filter.matches(element)

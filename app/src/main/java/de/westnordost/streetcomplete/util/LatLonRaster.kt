@@ -48,14 +48,13 @@ class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
         val startY = max(0, min(latitudeToCellY(bounds.minLatitude), rasterHeight - 1))
         val endX = max(0, min(longitudeToCellX(bounds.maxLongitude), rasterWidth - 1))
         val endY = max(0, min(latitudeToCellY(bounds.maxLatitude), rasterHeight - 1))
-        var result = sequenceOf<LatLon>()
-        for (y in startY..endY) {
-            for (x in startX..endX) {
-                val list = raster[y * rasterWidth + x]
-                if (list != null) result += list
+        return sequence {
+            for (y in startY..endY) {
+                for (x in startX..endX) {
+                    raster[y * rasterWidth + x]?.let{ yieldAll(it) }
+                }
             }
-        }
-        return result.asIterable()
+        }.asIterable()
     }
 
     fun remove(p: LatLon): Boolean {
