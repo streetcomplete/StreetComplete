@@ -23,7 +23,7 @@ class AddInternetAccessForm : AbstractQuestFormAnswerFragment<InternetAccess>() 
     override fun onClickOk() {
         applyAnswer(
             when (radioButtonGroup.checkedRadioButtonId) {
-                R.id.wlan ->     WLAN
+                R.id.wifi ->     WIFI
                 R.id.no ->       NO
                 R.id.terminal -> TERMINAL
                 R.id.wired ->    WIRED
