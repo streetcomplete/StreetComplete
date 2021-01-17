@@ -65,7 +65,7 @@ class CheckExistence(
     }
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"]
+        val name = tags["name"] ?: tags["brand"]
         val featureNameStr = featureName.value.toString()
         return if (name != null) arrayOf(name, featureNameStr) else arrayOf(featureNameStr)
     }
