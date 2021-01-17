@@ -6,10 +6,11 @@ import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no_only.*
 import kotlinx.android.synthetic.main.quest_diet_type_explanation.*
 
-class AddDietTypeForm : AbstractQuestAnswerFragment<String>() {
+class AddDietTypeForm : AbstractQuestAnswerFragment<DietAvailability>() {
 
     override val contentLayoutResId = R.layout.quest_diet_type_explanation
     override val buttonsResId = R.layout.quest_buttonpanel_yes_no_only
@@ -17,9 +18,9 @@ class AddDietTypeForm : AbstractQuestAnswerFragment<String>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        yesButton.setOnClickListener { applyAnswer("yes") }
-        noButton.setOnClickListener { applyAnswer("no") }
-        onlyButton.setOnClickListener { applyAnswer("only") }
+        yesButton.setOnClickListener { applyAnswer(DIET_YES) }
+        noButton.setOnClickListener { applyAnswer(DIET_NO) }
+        onlyButton.setOnClickListener { applyAnswer(DIET_ONLY) }
 
         val resId = arguments?.getInt(ARG_DIET) ?: 0
         if (resId > 0) {

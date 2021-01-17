@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddWayLit : OsmFilterQuestType<String>() {
+class AddWayLit : OsmFilterQuestType<WayLit>() {
 
     /* Using sidewalk as a tell-tale tag for (urban) streets which reached a certain level of
        development. I.e. non-urban streets will usually not even be lit in industrialized
@@ -57,8 +57,8 @@ class AddWayLit : OsmFilterQuestType<String>() {
 
     override fun createForm() = WayLitForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("lit", answer)
+    override fun applyAnswerTo(answer: WayLit, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("lit", answer.osmValue)
     }
 
     companion object {

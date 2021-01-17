@@ -6,7 +6,7 @@
     android:id="@+id/radioButtonGroup" >
 
     <RadioButton
-        android:id="@+id/wlan"
+        android:id="@+id/wifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

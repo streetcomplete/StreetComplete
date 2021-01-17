@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddWheelchairAccessOutside : OsmFilterQuestType<String>() {
+class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with leisure = dog_park
@@ -19,7 +19,7 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddWheelchairAccessOutsideForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("wheelchair", answer)
+    override fun applyAnswerTo(answer: WheelchairAccess, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("wheelchair", answer.osmValue)
     }
 }
