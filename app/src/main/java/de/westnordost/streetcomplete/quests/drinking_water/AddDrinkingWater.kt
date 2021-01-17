@@ -29,9 +29,6 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
     override fun applyAnswerTo(answer: DrinkingWater, changes: StringMapChangesBuilder) {
         changes.addOrModify("drinking_water", answer.osmValue)
-
-        if (answer.osmLegalValue != null) {
-            changes.addOrModify("drinking_water:legal", answer.osmLegalValue)
-        }
+        answer.osmLegalValue?.let { changes.addOrModify("drinking_water:legal", it) }
     }
 }

@@ -12,11 +12,6 @@ class AddDrinkingWaterForm : AbstractQuestFormAnswerFragment<DrinkingWater>() {
 
     override val defaultExpanded = false
 
-    override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_drinking_water_sign_is_wrong) { composeNote() },
-        OtherAnswer(R.string.quest_drinking_water_seems_drinkable) { applyAnswer(SEEMS_DRINKABLE) }
-    )
-
     override val contentLayoutResId = R.layout.quest_drinking_water
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
