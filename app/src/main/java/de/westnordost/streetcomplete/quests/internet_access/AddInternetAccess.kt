@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddInternetAccess : OsmFilterQuestType<String>() {
+class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -32,7 +32,7 @@ class AddInternetAccess : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddInternetAccessForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("internet_access", answer)
+    override fun applyAnswerTo(answer: InternetAccess, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("internet_access", answer.osmValue)
     }
 }

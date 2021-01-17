@@ -5,10 +5,11 @@ import android.view.View
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.internet_access.InternetAccess.*
 import kotlinx.android.synthetic.main.quest_internet_access.*
 import kotlin.NullPointerException
 
-class AddInternetAccessForm : AbstractQuestFormAnswerFragment<String>() {
+class AddInternetAccessForm : AbstractQuestFormAnswerFragment<InternetAccess>() {
 
     override val defaultExpanded = false
 
@@ -22,10 +23,10 @@ class AddInternetAccessForm : AbstractQuestFormAnswerFragment<String>() {
     override fun onClickOk() {
         applyAnswer(
             when (radioButtonGroup.checkedRadioButtonId) {
-                R.id.wlan ->     "wlan"
-                R.id.no ->       "no"
-                R.id.terminal -> "terminal"
-                R.id.wired ->    "wired"
+                R.id.wifi ->     WIFI
+                R.id.no ->       NO
+                R.id.terminal -> TERMINAL
+                R.id.wired ->    WIRED
                 else -> throw NullPointerException()
             }
         )

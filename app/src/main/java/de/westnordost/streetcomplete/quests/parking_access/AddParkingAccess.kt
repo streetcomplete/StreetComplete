@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddParkingAccess : OsmFilterQuestType<String>() {
+class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
 
     // Exclude parking=street_side lacking any access tags, because most of
     // these are found alongside public access roads, and likely will be
@@ -30,7 +30,7 @@ class AddParkingAccess : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddParkingAccessForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.addOrModify("access", answer)
+    override fun applyAnswerTo(answer: ParkingAccess, changes: StringMapChangesBuilder) {
+        changes.addOrModify("access", answer.osmValue)
     }
 }

@@ -117,7 +117,8 @@ import javax.inject.Singleton
         val obsoleteQuestIds = previousQuests.values.flatMap { it.values }
 
         val deletedCount = removeObsolete(obsoleteQuestIds)
-        val addedCount = addNew(addedQuests)
+        geometryDao.putAll(quests.map { ElementGeometryEntry(it.elementType, it.elementId, it.geometry) })
+        val addedCount = dao.addAll(addedQuests)
 
         /* Only send quests to listener that were really added, i.e. have an ID. How could quests
         *  not be added at this point? If they exist in the DB but outside the bounding box,
@@ -142,19 +143,10 @@ import javax.inject.Singleton
     ): UpdateResult {
         geometryDao.put(ElementGeometryEntry(elementType, elementId, updatedGeometry))
         val deletedCount = removeObsolete(removedIds)
-        val addedCount = addNew(added)
+        val addedCount = dao.addAll(added)
         onUpdated(added = added.filter { it.id != null }, deleted = removedIds)
 
         return UpdateResult(added = addedCount, deleted = deletedCount)
-    }
-
-    /** Add new unanswered quests, including their linked geometry */
-    private fun addNew(quests: Collection<OsmQuest>): Int {
-        if (quests.isNotEmpty()) {
-            geometryDao.putAll(quests.map { ElementGeometryEntry(it.elementType, it.elementId, it.geometry) })
-            return dao.addAll(quests)
-        }
-        return 0
     }
 
     /** Remove obsolete quests, including their linked geometry */

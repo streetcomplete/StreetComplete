@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 
-class AddBoardType : OsmFilterQuestType<String>() {
+class AddBoardType : OsmFilterQuestType<BoardType>() {
 
     override val elementFilter = """
         nodes with information = board
@@ -20,11 +20,11 @@ class AddBoardType : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddBoardTypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        if(answer == "map") {
+    override fun applyAnswerTo(answer: BoardType, changes: StringMapChangesBuilder) {
+        if(answer == BoardType.MAP) {
             changes.modify("information", "map")
         } else {
-            changes.addOrModify("board_type", answer)
+            changes.addOrModify("board_type", answer.osmValue)
         }
     }
 }
