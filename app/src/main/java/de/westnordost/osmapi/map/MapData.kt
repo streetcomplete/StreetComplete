@@ -4,7 +4,6 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.handler.MapDataHandler
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
-import de.westnordost.streetcomplete.util.MultiIterable
 
 interface MapDataWithGeometry : MapData {
     fun getNodeGeometry(id: Long): ElementPointGeometry?
@@ -61,11 +60,7 @@ open class MutableMapData : MapData, MapDataHandler {
     }
 
     override fun iterator(): Iterator<Element> {
-        val elements = MultiIterable<Element>()
-        elements.add(nodes)
-        elements.add(ways)
-        elements.add(relations)
-        return elements.iterator()
+        return (nodes.asSequence() + ways.asSequence() + relations.asSequence()).iterator()
     }
 }
 
