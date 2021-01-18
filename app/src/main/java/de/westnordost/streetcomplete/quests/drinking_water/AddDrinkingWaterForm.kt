@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.drinking_water.DrinkingWater.*
 import kotlinx.android.synthetic.main.quest_drinking_water.*
 
@@ -21,10 +20,10 @@ class AddDrinkingWaterForm : AbstractQuestFormAnswerFragment<DrinkingWater>() {
 
     override fun onClickOk() {
         applyAnswer(when (radioButtonGroup.checkedRadioButtonId) {
-            R.id.sign_drinkable -> DRINKABLE_SIGN
-            R.id.sign_not_drinkable -> NOT_DRINKABLE_SIGN
-            R.id.no_sign_drinkable -> DRINKABLE
-            R.id.no_sign_not_drinkable -> NOT_DRINKABLE
+            R.id.potable_signed -> POTABLE_SIGNED
+            R.id.potable_unsigned -> POTABLE_UNSIGNED
+            R.id.not_potable_signed -> NOT_POTABLE_SIGNED
+            R.id.not_potable_unsigned -> NOT_POTABLE_UNSIGNED
             else -> throw NullPointerException()
         })
     }

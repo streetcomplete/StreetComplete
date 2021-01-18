@@ -6,31 +6,31 @@
     android:id="@+id/radioButtonGroup">
 
     <RadioButton
-        android:id="@+id/sign_drinkable"
+        android:id="@+id/potable_signed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/quest_drinking_water_sign_drinkable" />
+        android:text="@string/quest_drinking_water_potable_signed" />
 
     <RadioButton
-        android:id="@+id/sign_not_drinkable"
+        android:id="@+id/potable_unsigned"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/quest_drinking_water_sign_not_drinkable" />
+        android:text="@string/quest_drinking_water_potable_unsigned" />
 
     <RadioButton
-        android:id="@+id/no_sign_drinkable"
+        android:id="@+id/not_potable_signed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/quest_drinking_water_no_sign_drinkable" />
+        android:text="@string/quest_drinking_water_not_potable_signed" />
 
     <RadioButton
-        android:id="@+id/no_sign_not_drinkable"
+        android:id="@+id/not_potable_unsigned"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/quest_drinking_water_no_sign_not_drinkable" />
+        android:text="@string/quest_drinking_water_not_potable_unsigned" />
 
 </RadioGroup>
