@@ -23,24 +23,5 @@ class AddParkingFee : OsmFilterQuestType<FeeAnswer>() {
 
     override fun createForm() = AddParkingFeeForm()
 
-    override fun applyAnswerTo(answer: FeeAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
-            is HasFee   -> {
-                changes.updateWithCheckDate("fee", "yes")
-                changes.deleteIfExists("fee:conditional")
-            }
-            is HasNoFee -> {
-                changes.updateWithCheckDate("fee", "no")
-                changes.deleteIfExists("fee:conditional")
-            }
-            is HasFeeAtHours -> {
-                changes.updateWithCheckDate("fee", "no")
-                changes.addOrModify("fee:conditional", "yes @ (${answer.openingHours})")
-            }
-            is HasFeeExceptAtHours -> {
-                changes.updateWithCheckDate("fee", "yes")
-                changes.addOrModify("fee:conditional", "no @ (${answer.openingHours})")
-            }
-        }
-    }
+    override fun applyAnswerTo(answer: FeeAnswer, changes: StringMapChangesBuilder) = answer.applyTo(changes)
 }
