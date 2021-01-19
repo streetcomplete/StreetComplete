@@ -623,6 +623,7 @@ object AchievementsModule {
                     "AddBikeParkingCapacity",
                     "AddBikeParkingCover",
                     "AddBikeParkingType",
+                    "AddBikeParkingFee",
                     "AddCyclewaySegregation",
                     "AddPathSurface",
                     "AddStepsRamp",
