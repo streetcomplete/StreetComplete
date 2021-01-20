@@ -7,10 +7,13 @@ import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
 import de.westnordost.streetcomplete.util.TilesRect
 import kotlinx.coroutines.*
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
+import kotlin.math.max
 
 /** Downloads all quests and tiles in a given area asynchronously. To use, start the service with
  * the appropriate parameters.
@@ -27,6 +30,7 @@ import javax.inject.Inject
  */
 class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineScope(Dispatchers.IO) {
     @Inject internal lateinit var downloaders: List<Downloader>
+    @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
 
     private lateinit var notificationController: DownloadNotificationController
 
@@ -76,42 +80,61 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
         }
 
         val tiles = intent.getSerializableExtra(ARG_TILES_RECT) as TilesRect
-        isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
-        isDownloading = true
+        val bbox = tiles.asBoundingBox(ApplicationConstants.QUEST_TILE_ZOOM)
 
-        progressListener?.onStarted()
+        if (hasDownloadedAlready(tiles)) {
+            Log.i(TAG, "Not downloading (${bbox.asLeftBottomRightTopString}), data still fresh")
+        } else {
+            isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
+            isDownloading = true
 
-        Log.i(TAG, "Starting download")
+            progressListener?.onStarted()
 
-        var error: Exception? = null
-        try {
-            runBlocking {
-                for (downloader in downloaders) {
-                    launch(Dispatchers.IO) {
-                        if (!cancelState.get()) downloader.download(tiles, cancelState)
+            Log.i(TAG, "Starting download (${bbox.asLeftBottomRightTopString})")
+
+            var error: Exception? = null
+            try {
+                runBlocking {
+                    for (downloader in downloaders) {
+                        // all downloaders run concurrently
+                        launch(Dispatchers.IO) {
+                            downloader.download(bbox, cancelState)
+                        }
                     }
                 }
+                putDownloadedAlready(tiles)
+            } catch (e: Exception) {
+                Log.e(TAG, "Unable to download", e)
+                error = e
+            } finally {
+                // downloading flags must be set to false before invoking the callbacks
+                isPriorityDownload = false
+                isDownloading = false
             }
-        } catch (e: Exception) {
-            Log.e(TAG, "Unable to download", e)
-            error = e
+            if (error != null) {
+                progressListener?.onError(error)
+            } else {
+                progressListener?.onSuccess()
+            }
+            progressListener?.onFinished()
         }
-        // downloading flags must be set to false before invoking the callbacks
-        isPriorityDownload = false
-        isDownloading = false
-        if (error != null) {
-            progressListener?.onError(error)
-        } else {
-            progressListener?.onSuccess()
-        }
-        progressListener?.onFinished()
 
-        Log.i(TAG, "Finished download")
+        Log.i(TAG, "Finished download (${bbox.asLeftBottomRightTopString})")
     }
 
     override fun onDestroy() {
         super.onDestroy()
         coroutineContext.cancel()
+    }
+
+    private fun hasDownloadedAlready(tiles: TilesRect): Boolean {
+        val freshTime = ApplicationConstants.REFRESH_DATA_AFTER
+        val ignoreOlderThan = max(0, System.currentTimeMillis() - freshTime)
+        return downloadedTilesDao.get(tiles, ignoreOlderThan).contains(DownloadedTilesType.ALL)
+    }
+
+    private fun putDownloadedAlready(tiles: TilesRect) {
+        downloadedTilesDao.put(tiles, DownloadedTilesType.ALL)
     }
 
     /** Public interface to classes that are bound to this service  */

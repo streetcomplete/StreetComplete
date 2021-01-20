@@ -8,11 +8,10 @@ import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.osmapi.map.data.Way
 
 /** Stores OSM elements */
-class MergedElementDao @Inject
-constructor(
-        private val nodeDao: NodeDao,
-        private val wayDao: WayDao,
-        private val relationDao: RelationDao
+class MergedElementDao @Inject constructor(
+    private val nodeDao: NodeDao,
+    private val wayDao: WayDao,
+    private val relationDao: RelationDao
 ) {
 
     fun putAll(elements: Collection<Element>) {

@@ -13,9 +13,9 @@ object ApplicationConstants {
     const val QUEST_TILE_ZOOM = 16
     const val NOTE_MIN_ZOOM = 15
 
-    /** a "best before" duration for quests. Quests will not be downloaded again for any tile
-     * before the time expired  */
-    const val REFRESH_QUESTS_AFTER = 3L * 24 * 60 * 60 * 1000 // 3 days in ms
+    /** a "best before" duration for downloaded data. Quests etc will not be downloaded again for
+     *  any tile before the time expired  */
+    const val REFRESH_DATA_AFTER = 12L * 60 * 60 * 1000 // 12 hours in ms
 
     /** the duration after which quests (and quest meta data) will be deleted from the database if
      * unsolved and not refreshed in the meantime  */

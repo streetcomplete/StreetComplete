@@ -2,62 +2,42 @@ package de.westnordost.streetcomplete.data.download
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownloader
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
 import de.westnordost.streetcomplete.data.osm.osmquest.*
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmApiQuestDownloader
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.UserStore
-import de.westnordost.streetcomplete.util.TilesRect
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Provider
-import kotlin.math.max
 
 /** Takes care of downloading all note and osm quests */
 class QuestDownloader @Inject constructor(
     private val osmNotesDownloaderProvider: Provider<OsmNotesDownloader>,
     private val osmApiQuestDownloaderProvider: Provider<OsmApiQuestDownloader>,
-    private val downloadedTilesDao: DownloadedTilesDao,
     private val questTypeRegistry: QuestTypeRegistry,
     private val userStore: UserStore
 ) : Downloader {
 
-    @Synchronized override fun download(tiles: TilesRect, cancelState: AtomicBoolean) {
+    @Synchronized override fun download(bbox: BoundingBox, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
-
-        if (hasQuestsAlready(tiles)) {
-            return
-        }
-
-        val bbox = tiles.asBoundingBox(ApplicationConstants.QUEST_TILE_ZOOM)
 
         Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Starting")
 
         try {
-            downloadQuestTypes(tiles, bbox, cancelState)
+            downloadQuestTypes(bbox, cancelState)
         } finally {
             Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Finished")
         }
     }
 
-    private fun downloadQuestTypes(tiles: TilesRect, bbox: BoundingBox, cancelState: AtomicBoolean) {
+    private fun downloadQuestTypes(bbox: BoundingBox, cancelState: AtomicBoolean) {
         // always first download notes, note positions are blockers for creating other quests
         downloadNotes(bbox)
 
         if (cancelState.get()) return
 
         downloadOsmElementQuestTypes(bbox)
-
-        downloadedTilesDao.put(tiles, DownloadedTilesType.QUESTS)
-    }
-
-    private fun hasQuestsAlready(tiles: TilesRect): Boolean {
-        val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
-        val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
-        return downloadedTilesDao.get(tiles, ignoreOlderThan).contains(DownloadedTilesType.QUESTS)
     }
 
     private fun downloadNotes(bbox: BoundingBox) {

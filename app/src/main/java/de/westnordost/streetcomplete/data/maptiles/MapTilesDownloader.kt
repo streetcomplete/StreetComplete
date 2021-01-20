@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.data.maptiles
 
 import android.util.Log
+import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.TilesRect
+import de.westnordost.streetcomplete.util.enclosingTilesRect
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,28 +26,29 @@ class MapTilesDownloader @Inject constructor(
 
     private val okHttpClient = OkHttpClient.Builder().cache(cacheConfig.cache).build()
 
-    override fun download(tiles: TilesRect, cancelState: AtomicBoolean) {
+    override fun download(bbox: BoundingBox, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
 
-        Log.i(TAG, "(${tiles.getAsLeftBottomRightTopString()}) Starting")
+        Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Starting")
 
         try {
-            downloadTiles(tiles, cancelState)
+            downloadTiles(bbox, cancelState)
         } finally {
-            Log.i(TAG, "(${tiles.getAsLeftBottomRightTopString()}) Finished")
+            Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Finished")
         }
     }
 
-    private fun downloadTiles(tiles: TilesRect, cancelState: AtomicBoolean) = runBlocking {
+    private fun downloadTiles(bbox: BoundingBox, cancelState: AtomicBoolean) = runBlocking {
         var tileCount = 0
         var failureCount = 0
         var downloadedSize = 0
         var cachedSize = 0
         val time = System.currentTimeMillis()
+
         for (zoom in vectorTileProvider.maxZoom downTo 0) {
             if (!cancelState.get()) {
-                val tilesAtZoom = tiles.zoom(ApplicationConstants.QUEST_TILE_ZOOM, zoom)
-                for (tile in tilesAtZoom.asTileSequence()) {
+                val tiles = bbox.enclosingTilesRect(zoom)
+                for (tile in tiles.asTileSequence()) {
                     launch {
                         if (!cancelState.get()) {
                             val result = downloadTile(zoom, tile.x, tile.y)

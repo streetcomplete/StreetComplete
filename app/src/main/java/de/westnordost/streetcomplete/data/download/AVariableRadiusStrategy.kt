@@ -62,9 +62,9 @@ abstract class AVariableRadiusStrategy(
 
     /** return if there are any quests in the given tiles rect that haven't been downloaded yet */
     private fun hasMissingQuestsFor(tilesRect: TilesRect): Boolean {
-        val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
+        val questExpirationTime = ApplicationConstants.REFRESH_DATA_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
-        return !downloadedTilesDao.get(tilesRect, ignoreOlderThan).contains(DownloadedTilesType.QUESTS)
+        return !downloadedTilesDao.get(tilesRect, ignoreOlderThan).contains(DownloadedTilesType.ALL)
     }
 
     companion object {
