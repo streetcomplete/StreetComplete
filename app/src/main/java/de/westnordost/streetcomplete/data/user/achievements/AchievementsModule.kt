@@ -691,6 +691,7 @@ object AchievementsModule {
                     "AddPitchSurface",
                     "AddSummitRegister",
                     "AddReligionToWaysideShrine",
+                    "AddDrinkingWater",
                     // from pedestrian
                     "AddPathSurface",
                     "AddCyclewaySegregation",
