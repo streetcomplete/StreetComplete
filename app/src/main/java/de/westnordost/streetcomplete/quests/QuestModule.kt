@@ -63,7 +63,9 @@ import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
+import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
+import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
@@ -166,6 +168,8 @@ import javax.inject.Singleton
         AddMaxWeight(), // used by OSRM and other routing engines
         AddForestLeafType(), // used by OSM Carto
         AddBikeParkingType(), // used by OsmAnd
+        AddBikeParkingAccess(),
+        AddBikeParkingFee(),
         AddStepsRamp(),
         AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, MAPS.ME
         AddPlaygroundAccess(), //late as in many areas all needed access=private is already mapped
