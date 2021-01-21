@@ -2,6 +2,8 @@
 
 ### StreetComplete quests
 
+This quest list is automatically updated when new commits are pushed to the `master` branch.
+
 See also the [quest list in the OSM Wiki](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests).
 It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it contains a lot more human-readable information.
 
