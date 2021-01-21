@@ -24,8 +24,7 @@ To make the app easy to use, quests are limited to those answerable by asking si
 
 ## Quests
 
-There are quite a few different quest types now and more will be added over time.
-You can see a community-managed [list of all quests in the OSM wiki](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests).
+There are quite a few different quest types now and more will be added over time. Please see the [automatically generated list of all quest types](quests.md).
 
 ## FAQ
 
