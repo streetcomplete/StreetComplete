@@ -2,6 +2,7 @@
 
 import {resolve, dirname, relative} from 'path';
 import {readFile, readdir, writeFile} from 'fs/promises';
+import {execFileSync} from 'child_process';
 
 const scriptFilePath = new URL(import.meta.url).pathname;
 
@@ -91,6 +92,7 @@ async function getStrings(stringsFileName) {
  * @property {string} filePath - An absolute path to the quest's Kotlin file.
  * @property {string} title - The quest's title.
  * @property {number} defaultPriority - The quest's default priority (1 is highest priority).
+ * @property {string|undefined} firstRelease - The git tag of the first release that included this quest, or undefined if it's unreleased.
  */
 
 
@@ -110,6 +112,7 @@ async function getQuest(questName) {
         filePath,
         title: strings[titleStringName].replace(/%s/g, '…'),
         defaultPriority: questNames.indexOf(questName) + 1,
+        firstRelease: getReleaseVersion(filePath),
     };
 }
 
@@ -179,6 +182,31 @@ function getQuestTitleStringName(questName, questFileContent) {
 
 
 /**
+ * @param {string} questFilePath
+ * @returns {string|undefined} The git tag of the first release that included this file, or undefined if it's unreleased.
+ */
+function getReleaseVersion(questFilePath) {
+    const firstCommit = execFileSync('git', [
+        'log',
+        '--follow',             // track file renames
+        '--diff-filter=A',      // only show the commit where the file was added
+        '--pretty=format:%H',   // only output the commit hash
+        '-1',                   // limit to one commit
+        '--',
+        questFilePath,
+    ], {encoding: 'utf8'});
+
+    const gitTags = execFileSync('git', ['tag', '--contains', firstCommit], {encoding: 'utf8'});
+
+    return gitTags
+        .split('\n')
+        .filter(tag => /^v\d+\.\d+$/.test(tag)) // exclude empty strings, beta versions and tags missing the `v` prefix
+        .sort((a, b) => a.localeCompare(b))
+        .shift();
+}
+
+
+/**
  * @param {Quest[]} quests
  */
 async function writeMarkdownFile(quests) {
@@ -200,6 +228,7 @@ async function writeMarkdownFile(quests) {
         '      <th>Quest Name</th>',
         '      <th>Question</th>',
         '      <th>Default Priority</th>',
+        '      <th>Since at least version <sup><a href="#user-content-footnote-1">[1]</a></sup></th>',
         '    </tr>',
         '  </thead>',
         '  <tbody>',
@@ -208,18 +237,25 @@ async function writeMarkdownFile(quests) {
             const relativeIconPath = relative(markdownFileDirectory, quest.icon);
             const relativeFilePath = relative(markdownFileDirectory, quest.filePath);
 
+            const releaseLink = quest.firstRelease
+                ? `<a href="https://github.com/streetcomplete/StreetComplete/releases/tag/${quest.firstRelease}">${quest.firstRelease}</a>`
+                : 'unreleased';
+
             return [
                 '    <tr>',
                 `      <td><img src="${relativeIconPath}"></td>`,
                 `      <td><a href="${relativeFilePath}">${quest.name}</a></td>`,
                 `      <td>${quest.title}</td>`,
                 `      <td>${quest.defaultPriority}</td>`,
+                `      <td>${releaseLink}</td>`,
                 '    </tr>',
             ];
         }),
 
         '  </tbody>',
         '</table>',
+        '',
+        '**<a id="user-content-footnote-1">[1]</a>**: This is automatically detected based on current files\' git tags. Unfortunately, git often gets confused when files are renamed, so a quest may have been introduced (in a different file) before the version displayed here.',
     ];
 
     await writeFile(markdownFilePath, markdownLines.join('\n'));
