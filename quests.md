@@ -23,14 +23,14 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt">AddAcceptsCash</a></td>
       <td>Does … accept cash payment?</td>
       <td>55</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v20.0">v20.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v18.0">v18.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/housenumber_street.svg"></td>
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt">AddAddressStreet</a></td>
       <td>What street does the (house) number … belong to?</td>
       <td>14</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v20.0">v20.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/money.svg"></td>
@@ -86,7 +86,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/parking_fee/AddBikeParkingFee.kt">AddBikeParkingFee</a></td>
       <td>Do you have to pay to park a bike here?</td>
       <td>47</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td>unreleased</td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/bicycle_parking.svg"></td>
@@ -128,7 +128,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/bus_stop_name/AddBusStopName.kt">AddBusStopName</a></td>
       <td>What is the name of this bus stop?</td>
       <td>10</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v25.0">v25.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/bus_stop_name.svg"></td>
@@ -219,14 +219,14 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/ferry/AddFerryAccessMotorVehicle.kt">AddFerryAccessMotorVehicle</a></td>
       <td>Does this ferry route transport motor vehicles?</td>
       <td>54</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v13.0">v13.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/ferry_pedestrian.svg"></td>
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/ferry/AddFerryAccessPedestrian.kt">AddFerryAccessPedestrian</a></td>
       <td>Does this ferry route transport pedestrians?</td>
       <td>53</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v13.0">v13.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/fire_hydrant.svg"></td>
@@ -254,7 +254,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/general_fee/AddGeneralFee.kt">AddGeneralFee</a></td>
       <td>Do you need to pay to enter …?</td>
       <td>75</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v15.0">v15.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/steps_handrail.svg"></td>
@@ -268,14 +268,14 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/housenumber/AddHousenumber.kt">AddHousenumber</a></td>
       <td>What is the house number of this building?</td>
       <td>13</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v25.0">v25.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/information.svg"></td>
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/tourism_information/AddInformationToTourism.kt">AddInformationToTourism</a></td>
       <td>What type of tourist information is this?</td>
       <td>80</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v20.0">v20.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v18.0">v18.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/wifi.svg"></td>
@@ -296,21 +296,21 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt">AddIsDefibrillatorIndoor</a></td>
       <td>Is this defibrillator (AED) inside a building?</td>
       <td>87</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v23.0">v23.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/kerb_type.svg"></td>
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/kerb_height/AddKerbHeight.kt">AddKerbHeight</a></td>
       <td>What is the height of this curb?</td>
       <td>64</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v27.0">v27.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/kosher.svg"></td>
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/diet_type/AddKosher.kt">AddKosher</a></td>
       <td>Does … offer kosher products?</td>
       <td>85</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v29.0">v29.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/street_lanes.svg"></td>
@@ -436,7 +436,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/postbox_ref/AddPostboxRef.kt">AddPostboxRef</a></td>
       <td>What is the reference number of this postbox?</td>
       <td>94</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v20.0">v20.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v16.0">v16.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/power.svg"></td>
@@ -450,7 +450,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/foot/AddProhibitedForPedestrians.kt">AddProhibitedForPedestrians</a></td>
       <td>Are pedestrians forbidden to walk on this road here?</td>
       <td>31</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.2">v10.2</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/railway.svg"></td>
@@ -464,7 +464,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/recycling_material/AddRecyclingContainerMaterials.kt">AddRecyclingContainerMaterials</a></td>
       <td>What can be left here for recycling?</td>
       <td>20</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v20.0">v20.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v16.0">v16.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/recycling.svg"></td>
@@ -492,14 +492,14 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/road_name/AddRoadName.kt">AddRoadName</a></td>
       <td>What is the name of this road?</td>
       <td>2</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v26.0">v26.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/street_surface.svg"></td>
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt">AddRoadSurface</a></td>
       <td>What surface does this piece of road have?</td>
       <td>22</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v22.0">v22.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v26.0">v26.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/roof_shape.svg"></td>
@@ -513,7 +513,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/self_service/AddSelfServiceLaundry.kt">AddSelfServiceLaundry</a></td>
       <td>Is this laundry a self service laundry?</td>
       <td>76</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v15.0">v15.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/sidewalk.svg"></td>
@@ -555,14 +555,14 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/summit_register/AddSummitRegister.kt">AddSummitRegister</a></td>
       <td>Is there a summit register at …?</td>
       <td>88</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v23.0">v23.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/oneway.svg"></td>
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/oneway_suspects/AddSuspectedOneway.kt">AddSuspectedOneway</a></td>
       <td>Is this a one-way street?</td>
       <td>7</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v24.0">v24.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/blind_bus.svg"></td>
@@ -583,7 +583,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/tactile_paving/AddTactilePavingKerb.kt">AddTactilePavingKerb</a></td>
       <td>Is there tactile paving on this curb here?</td>
       <td>63</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v27.0">v27.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/toilets.svg"></td>
@@ -618,7 +618,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/traffic_signals_sound/AddTrafficSignalsSound.kt">AddTrafficSignalsSound</a></td>
       <td>Are there sound signals for the blind here?</td>
       <td>65</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v15.0">v15.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v24.0">v24.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/blind_traffic_lights.svg"></td>
@@ -667,21 +667,21 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessPublicTransport.kt">AddWheelchairAccessPublicTransport</a></td>
       <td>Is this location wheelchair accessible?</td>
       <td>68</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v14.0">v14.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/toilets_wheelchair.svg"></td>
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessToilets.kt">AddWheelchairAccessToilets</a></td>
       <td>Is this restroom wheelchair accessible?</td>
       <td>49</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v14.0">v14.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/toilets_wheelchair.svg"></td>
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessToiletsPart.kt">AddWheelchairAccessToiletsPart</a></td>
       <td>Is the restroom at … wheelchair accessible?</td>
       <td>95</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v14.0">v14.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/check.svg"></td>
@@ -702,7 +702,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/quests/recycling_glass/DetermineRecyclingGlass.kt">DetermineRecyclingGlass</a></td>
       <td>Can only glass bottles and jars be recycled here, or any type of glass?</td>
       <td>56</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v20.0">v20.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v16.0">v16.0</a></td>
     </tr>
     <tr>
       <td><img src="res/graphics/quest icons/building_construction.svg"></td>
@@ -723,7 +723,7 @@ It is maintained by the OSM Wiki editors and thus may be a bit outdated, but it 
       <td><a href="app/src/main/java/de/westnordost/streetcomplete/data/osmnotes/notequests/OsmNoteQuestType.kt">OsmNoteQuest</a></td>
       <td>Can you contribute anything to this note?</td>
       <td>1</td>
-      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v10.0">v10.0</a></td>
+      <td><a href="https://github.com/streetcomplete/StreetComplete/releases/tag/v19.0">v19.0</a></td>
     </tr>
   </tbody>
 </table>

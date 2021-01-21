@@ -188,7 +188,6 @@ function getQuestTitleStringName(questName, questFileContent) {
 function getReleaseVersion(questFilePath) {
     const firstCommit = execFileSync('git', [
         'log',
-        '--follow',             // track file renames
         '--diff-filter=A',      // only show the commit where the file was added
         '--pretty=format:%H',   // only output the commit hash
         '-1',                   // limit to one commit
