@@ -39,6 +39,7 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
     )
 
     fun putAll(elements: Collection<T>) {
+        if (elements.isEmpty()) return
         db.transaction {
             for (element in elements) {
                 put(element)
@@ -52,6 +53,15 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
 
     fun delete(id: Long) {
         db.delete(tableName, "$idColumnName = $id", null)
+    }
+
+    fun deleteAll(ids: Collection<Long>) {
+        if (ids.isEmpty()) return
+        db.transaction {
+            for (id in ids) {
+                delete(id)
+            }
+        }
     }
 
     fun get(id: Long): T? {

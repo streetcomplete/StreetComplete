@@ -85,6 +85,7 @@ internal class OsmQuestDao @Inject constructor(
     }
 
     fun deleteAllIds(ids: Collection<Long>): Int {
+        if (ids.isEmpty()) return 0
         return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
     }
 

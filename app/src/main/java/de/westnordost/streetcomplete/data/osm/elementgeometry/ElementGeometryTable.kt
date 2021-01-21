@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.elementgeometry
 
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
-
 object ElementGeometryTable {
     const val NAME = "elements_geometry"
 
     object Columns {
-        const val ELEMENT_ID = OsmQuestTable.Columns.ELEMENT_ID
-        const val ELEMENT_TYPE = OsmQuestTable.Columns.ELEMENT_TYPE
+        const val ELEMENT_ID = "element_id"
+        const val ELEMENT_TYPE = "element_type"
         const val GEOMETRY_POLYGONS = "geometry_polygons"
         const val GEOMETRY_POLYLINES = "geometry_polylines"
         const val LATITUDE = "latitude"

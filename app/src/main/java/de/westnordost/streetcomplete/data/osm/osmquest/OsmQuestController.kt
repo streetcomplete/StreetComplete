@@ -4,21 +4,16 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.quest.QuestStatus
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects along with their
- *  referenced geometry and notifying listeners about changes */
-@Singleton class OsmQuestController @Inject internal constructor(
-    private val dao: OsmQuestDao,
-    private val geometryDao: ElementGeometryDao
-){
+/** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
+ *  listeners about changes */
+@Singleton class OsmQuestController @Inject internal constructor(private val dao: OsmQuestDao) {
+
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
@@ -90,8 +85,8 @@ import javax.inject.Singleton
 
     /* ------------------------------------------------------------------------------------------ */
 
-    /** Replace all quests of the given types in the given bounding box with the given quests,
-     *  including their geometry. Called on download of a quest type for a bounding box. */
+    /** Replace all quests of the given types in the given bounding box with the given quests.
+     *  Called on download of a quest type for a bounding box. */
     fun replaceInBBox(quests: Iterable<OsmQuest>, bbox: BoundingBox, questTypes: List<String>): UpdateResult {
         require(questTypes.isNotEmpty()) { "questTypes must not be empty if not null" }
         /* All quests in the given bounding box and of the given types should be replaced by the
@@ -116,8 +111,7 @@ import javax.inject.Singleton
         }
         val obsoleteQuestIds = previousQuests.values.flatMap { it.values }
 
-        val deletedCount = removeObsolete(obsoleteQuestIds)
-        geometryDao.putAll(quests.map { ElementGeometryEntry(it.elementType, it.elementId, it.geometry) })
+        val deletedCount = dao.deleteAllIds(obsoleteQuestIds)
         val addedCount = dao.addAll(addedQuests)
 
         /* Only send quests to listener that were really added, i.e. have an ID. How could quests
@@ -131,34 +125,14 @@ import javax.inject.Singleton
         return UpdateResult(added = addedCount, deleted = deletedCount)
     }
 
-    /** Add new unanswered quests and remove others for the given element, including their linked
-     *  geometry. Called when an OSM element is updated, so the quests that reference that element
-     *  need to be updated as well. */
-    fun updateForElement(
-        added: List<OsmQuest>,
-        removedIds: List<Long>,
-        updatedGeometry: ElementGeometry,
-        elementType: Element.Type,
-        elementId: Long
-    ): UpdateResult {
-        geometryDao.put(ElementGeometryEntry(elementType, elementId, updatedGeometry))
-        val deletedCount = removeObsolete(removedIds)
+    /** Add new unanswered quests and remove others for the given element. Called when an OSM
+     *  element is updated, so the quests that reference that element need to be updated as well. */
+    fun updateForElement(added: List<OsmQuest>, removedIds: List<Long>): UpdateResult {
+        val deletedCount = dao.deleteAllIds(removedIds)
         val addedCount = dao.addAll(added)
         onUpdated(added = added.filter { it.id != null }, deleted = removedIds)
 
         return UpdateResult(added = addedCount, deleted = deletedCount)
-    }
-
-    /** Remove obsolete quests, including their linked geometry */
-    private fun removeObsolete(questIds: Collection<Long>): Int {
-        if (questIds.isNotEmpty()) {
-            val result = dao.deleteAllIds(questIds)
-            if (result > 0) {
-                geometryDao.deleteUnreferenced()
-            }
-            return result
-        }
-        return 0
     }
 
     /** Remove all unsolved quests that reference the given element. Used for when a quest blocker
@@ -169,7 +143,6 @@ import javax.inject.Singleton
             element = ElementKey(elementType, elementId)
         )
         val result = dao.deleteAllIds(deletedQuestIds)
-        geometryDao.deleteUnreferenced()
         onUpdated(deleted = deletedQuestIds)
         return result
     }
@@ -179,7 +152,6 @@ import javax.inject.Singleton
     fun deleteAllForElement(elementType: Element.Type, elementId: Long): Int {
         val deletedQuestIds = dao.getAllIds(element = ElementKey(elementType, elementId))
         val result = dao.deleteAllIds(deletedQuestIds)
-        geometryDao.delete(elementType, elementId)
         onUpdated(deleted = deletedQuestIds)
         return result
     }
@@ -208,7 +180,6 @@ import javax.inject.Singleton
             statusIn = listOf(QuestStatus.NEW, QuestStatus.HIDDEN),
             changedBefore = oldUnsolvedQuestsTimestamp
         )
-        if (deleted > 0) geometryDao.deleteUnreferenced()
 
         onUpdated()
 

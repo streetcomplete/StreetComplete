@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.elementgeometry
 
+import de.westnordost.osmapi.map.data.BoundingBox
 import org.junit.Before
 import org.junit.Test
 
@@ -11,9 +12,11 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestMapping
+import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 
 import org.junit.Assert.*
 import org.mockito.Mockito.mock
@@ -40,12 +43,32 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
     @Test fun putAll() {
         val geometry = createSimpleGeometry()
         dao.putAll(listOf(
-                ElementGeometryEntry(Element.Type.NODE, 1, geometry),
-                ElementGeometryEntry(Element.Type.WAY, 2, geometry)
+            ElementGeometryEntry(Element.Type.NODE, 1, geometry),
+            ElementGeometryEntry(Element.Type.WAY, 2, geometry)
         ))
 
         assertNotNull(dao.get(Element.Type.WAY, 2))
         assertNotNull(dao.get(Element.Type.NODE, 1))
+    }
+
+    @Test fun getAllKeys() {
+        dao.putAll(listOf(
+            ElementGeometryEntry(Element.Type.NODE, 1, createPoint(0.0,0.0)),
+            ElementGeometryEntry(Element.Type.WAY, 2, createPoint(1.0,2.0)),
+            ElementGeometryEntry(Element.Type.NODE, 2, createPoint(0.5,1.0)),
+            // these are outside
+            ElementGeometryEntry(Element.Type.NODE, 3, createPoint(-0.5,1.0)),
+            ElementGeometryEntry(Element.Type.NODE, 4, createPoint(1.5,1.0)),
+            ElementGeometryEntry(Element.Type.NODE, 5, createPoint(0.5,-0.5)),
+            ElementGeometryEntry(Element.Type.NODE, 6, createPoint(0.5,2.5))
+        ))
+
+        assertTrue(dao.getAllKeys(BoundingBox(0.0, 0.0, 1.0, 2.0))
+            .containsExactlyInAnyOrder(listOf(
+                ElementKey(Element.Type.NODE, 1),
+                ElementKey(Element.Type.WAY, 2),
+                ElementKey(Element.Type.NODE, 2),
+        )))
     }
 
     @Test fun simplePutGet() {
@@ -97,7 +120,9 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
         assertEquals(0, dao.deleteUnreferenced())
     }
 
-    private fun createSimpleGeometry() = ElementPointGeometry(OsmLatLon(50.0, 50.0))
+    private fun createSimpleGeometry() = createPoint(50.0, 50.0)
+
+    private fun createPoint(lat: Double, lon: Double) = ElementPointGeometry(OsmLatLon(lat, lon))
 
     private fun createSomeLatLons(start: Double): List<LatLon> {
         val result = ArrayList<LatLon>(5)

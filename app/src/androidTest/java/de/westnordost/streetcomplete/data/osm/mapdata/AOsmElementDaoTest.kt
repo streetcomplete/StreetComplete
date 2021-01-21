@@ -51,6 +51,18 @@ class AOsmElementDaoTest {
         assertEquals(5, dao.get(6)!!.version)
     }
 
+    @Test fun deleteAll() {
+        dao.putAll(listOf(
+            createElement(1, 2),
+            createElement(2, 2),
+            createElement(3, 2)
+        ))
+        dao.deleteAll(listOf(1,2,4))
+        assertNotNull(dao.get(3))
+        assertNull(dao.get(1))
+        assertNull(dao.get(2))
+    }
+
     @Test fun getNull() {
         assertNull(dao.get(6))
     }

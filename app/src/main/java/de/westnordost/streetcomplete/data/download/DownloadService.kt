@@ -91,6 +91,7 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
             progressListener?.onStarted()
 
             Log.i(TAG, "Starting download (${bbox.asLeftBottomRightTopString})")
+            val time = System.currentTimeMillis()
 
             var error: Exception? = null
             try {
@@ -117,9 +118,10 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
                 progressListener?.onSuccess()
             }
             progressListener?.onFinished()
-        }
 
-        Log.i(TAG, "Finished download (${bbox.asLeftBottomRightTopString})")
+            val seconds = (System.currentTimeMillis() - time) / 1000
+            Log.i(TAG, "Finished download (${bbox.asLeftBottomRightTopString}) in ${seconds}s")
+        }
     }
 
     override fun onDestroy() {

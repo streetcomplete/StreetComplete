@@ -28,14 +28,7 @@ class MapTilesDownloader @Inject constructor(
 
     override fun download(bbox: BoundingBox, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
-
-        Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Starting")
-
-        try {
-            downloadTiles(bbox, cancelState)
-        } finally {
-            Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Finished")
-        }
+        downloadTiles(bbox, cancelState)
     }
 
     private fun downloadTiles(bbox: BoundingBox, cancelState: AtomicBoolean) = runBlocking {
@@ -67,7 +60,7 @@ class MapTilesDownloader @Inject constructor(
         }
         val seconds = (System.currentTimeMillis() - time) / 1000
         val failureText = if (failureCount > 0) ". $failureCount tiles failed to download" else ""
-        Log.i(TAG, "Fetched $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds}s$failureText")
+        Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds}s$failureText")
     }
 
     private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadResult = suspendCoroutine { cont ->

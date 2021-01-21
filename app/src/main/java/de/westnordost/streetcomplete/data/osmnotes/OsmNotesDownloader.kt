@@ -12,9 +12,12 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
+import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.user.UserStore
+import java.util.concurrent.atomic.AtomicBoolean
 
 /** Takes care of downloading notes, creating quests out of them and persisting them */
 class OsmNotesDownloader @Inject constructor(
@@ -22,9 +25,18 @@ class OsmNotesDownloader @Inject constructor(
     private val osmNoteQuestController: OsmNoteQuestController,
     private val preferences: SharedPreferences,
     private val questType: OsmNoteQuestType,
-    private val avatarsDownloader: OsmAvatarsDownloader
-) {
-    fun download(bbox: BoundingBox, userId: Long, max: Int) {
+    private val avatarsDownloader: OsmAvatarsDownloader,
+    private val userStore: UserStore
+) : Downloader {
+
+    override fun download(bbox: BoundingBox, cancelState: AtomicBoolean) {
+        if (cancelState.get()) return
+
+        val userId: Long = userStore.userId.takeIf { it != -1L } ?: return
+        // do not download notes if not logged in because notes shall only be downloaded if logged in
+
+        val time = System.currentTimeMillis()
+
         val quests = ArrayList<OsmNoteQuest>()
         val noteCommentUserIds = HashSet<Long>()
 
@@ -41,13 +53,14 @@ class OsmNotesDownloader @Inject constructor(
                     if (comment.user != null) noteCommentUserIds.add(comment.user.id)
                 }
             }
-        }, max, 0)
+        }, 10000, 0)
 
         val update = osmNoteQuestController.replaceInBBox(quests, bbox)
 
+        val seconds = (System.currentTimeMillis() - time) / 1000
         Log.i(TAG,
-            "Successfully added ${update.added} new and removed ${update.deleted} closed notes" +
-            " (${update.closed} of ${quests.size} notes are hidden)"
+            "Added ${update.added} new and removed ${update.deleted} closed notes" +
+            " (${update.closed} of ${quests.size} notes are hidden) in ${seconds}s"
         )
 
         avatarsDownloader.download(noteCommentUserIds)

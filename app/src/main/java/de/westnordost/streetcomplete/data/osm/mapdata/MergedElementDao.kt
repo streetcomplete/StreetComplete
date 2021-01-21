@@ -6,6 +6,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.osmapi.map.data.Way
+import de.westnordost.osmapi.map.data.Element.Type.*
 
 /** Stores OSM elements */
 class MergedElementDao @Inject constructor(
@@ -14,21 +15,10 @@ class MergedElementDao @Inject constructor(
     private val relationDao: RelationDao
 ) {
 
-    fun putAll(elements: Collection<Element>) {
-        val nodes = mutableListOf<Node>()
-        val ways = mutableListOf<Way>()
-        val relations = mutableListOf<Relation>()
-
-        for (element in elements) {
-            when (element) {
-                is Node -> nodes.add(element)
-                is Way -> ways.add(element)
-                is Relation -> relations.add(element)
-            }
-        }
-        if (nodes.isNotEmpty()) nodeDao.putAll(nodes)
-        if (ways.isNotEmpty()) wayDao.putAll(ways)
-        if (relations.isNotEmpty()) relationDao.putAll(relations)
+    fun putAll(elements: Iterable<Element>) {
+        nodeDao.putAll(elements.filterIsInstance<Node>())
+        wayDao.putAll(elements.filterIsInstance<Way>())
+        relationDao.putAll(elements.filterIsInstance<Relation>())
     }
 
     fun put(element: Element) {
@@ -41,17 +31,23 @@ class MergedElementDao @Inject constructor(
 
     fun delete(type: Element.Type, id: Long) {
         when (type) {
-            Element.Type.NODE -> nodeDao.delete(id)
-            Element.Type.WAY -> wayDao.delete(id)
-            Element.Type.RELATION -> relationDao.delete(id)
+            NODE -> nodeDao.delete(id)
+            WAY -> wayDao.delete(id)
+            RELATION -> relationDao.delete(id)
         }
+    }
+
+    fun deleteAll(keys: Iterable<ElementKey>) {
+        nodeDao.deleteAll(keys.filter { it.elementType == NODE }.map { it.elementId })
+        wayDao.deleteAll(keys.filter { it.elementType == WAY }.map { it.elementId })
+        relationDao.deleteAll(keys.filter { it.elementType == RELATION }.map { it.elementId })
     }
 
     fun get(type: Element.Type, id: Long): Element? {
         return when (type) {
-            Element.Type.NODE -> nodeDao.get(id)
-            Element.Type.WAY -> wayDao.get(id)
-            Element.Type.RELATION -> relationDao.get(id)
+            NODE -> nodeDao.get(id)
+            WAY -> wayDao.get(id)
+            RELATION -> relationDao.get(id)
         }
     }
 

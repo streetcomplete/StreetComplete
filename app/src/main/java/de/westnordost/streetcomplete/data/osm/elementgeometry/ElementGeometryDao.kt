@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.elementgeometry
 import android.database.Cursor
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
+import de.westnordost.osmapi.map.data.BoundingBox
 
 
 import javax.inject.Inject
@@ -18,6 +19,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTab
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.NAME
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable
 import de.westnordost.streetcomplete.ktx.*
@@ -53,6 +55,31 @@ class ElementGeometryDao @Inject constructor(
         return db.queryOne(NAME, null, where, args) { mapping.toObject(it) }
     }
 
+    fun getAllKeys(bbox: BoundingBox): List<ElementKey> =
+        db.query(NAME,
+            columns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
+            selection = "($LATITUDE BETWEEN ? AND ?) AND ($LONGITUDE BETWEEN ? AND ?)",
+            selectionArgs = arrayOf(
+                bbox.minLatitude.toString(),
+                bbox.maxLatitude.toString(),
+                bbox.minLongitude.toString(),
+                bbox.maxLongitude.toString()
+            )
+        ) {
+            ElementKey(
+                Element.Type.valueOf(it.getString(0)),
+                it.getLong(1)
+            )
+        }
+
+    fun deleteAll(entries: Iterable<ElementKey>) {
+        db.transaction {
+            for (entry in entries) {
+                delete(entry.elementType, entry.elementId)
+            }
+        }
+    }
+
     fun delete(type: Element.Type, id: Long) {
         val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
         val args = arrayOf(type.name, id.toString())
@@ -62,6 +89,7 @@ class ElementGeometryDao @Inject constructor(
 
     /** Cleans up element geometry entries that belong to elements that are not referenced by any
      * quest anymore.  */
+    // TODO remove dis?
     fun deleteUnreferenced(): Int {
         /* SQLite does not allow selecting multiple columns in a DELETE subquery. Using a workaround
          * as described here:

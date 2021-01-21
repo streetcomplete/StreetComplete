@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.changes.*
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElement
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementDao
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementSource
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuest
@@ -33,10 +33,10 @@ import javax.inject.Singleton
     private val osmQuestController: OsmQuestController,
     private val osmNoteQuestController: OsmNoteQuestController,
     private val undoOsmQuestDB: UndoOsmQuestDao,
-    private val osmElementDB: MergedElementDao,
     private val splitWayDB: OsmQuestSplitWayDao,
     private val deleteElementDB: DeleteOsmElementDao,
     private val createNoteDB: CreateNoteDao,
+    private val osmElementSource: OsmElementSource,
     private val prefs: SharedPreferences
 ): CoroutineScope by CoroutineScope(Dispatchers.Default) {
     /** Create a note for the given OSM Quest instead of answering it. The quest will turn
@@ -66,7 +66,6 @@ import javax.inject.Singleton
 
     private fun removeUnsolvedQuestsForElement(elementType: Element.Type, elementId: Long) {
         osmQuestController.deleteAllUnsolvedForElement(elementType, elementId)
-        osmElementDB.deleteUnreferenced()
     }
 
     /** Split a way for the given OSM Quest. The quest will turn invisible.
@@ -95,7 +94,6 @@ import javax.inject.Singleton
         deleteElementDB.add(DeleteOsmElement(osmQuestId, q.osmElementQuestType, q.elementId, q.elementType, source, q.center))
 
         osmQuestController.deleteAllForElement(q.elementType, q.elementId)
-        osmElementDB.deleteUnreferenced()
         return true
     }
 
@@ -106,7 +104,7 @@ import javax.inject.Singleton
     fun replaceShopElement(osmQuestId: Long, tags: Map<String, String>, source: String): Boolean {
         val q = osmQuestController.get(osmQuestId)
         if (q?.status != QuestStatus.NEW) return false
-        val element = osmElementDB.get(q.elementType, q.elementId) ?: return false
+        val element = getOsmElement(q) ?: return false
         val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName} with $changes")
 
@@ -150,7 +148,7 @@ import javax.inject.Singleton
     }
 
     fun getOsmElement(quest: OsmQuest): OsmElement? =
-        osmElementDB.get(quest.elementType, quest.elementId) as OsmElement?
+        osmElementSource.get(quest.elementType, quest.elementId) as OsmElement?
 
     /** Undo changes made after answering a quest. */
     fun undo(quest: OsmQuest) {
@@ -185,7 +183,7 @@ import javax.inject.Singleton
         // element already (#282). So in this case, just ignore
         val q = osmQuestController.get(questId)
         if (q?.status != QuestStatus.NEW) return false
-        val element = osmElementDB.get(q.elementType, q.elementId) ?: return false
+        val element = getOsmElement(q) ?: return false
 
         val changes = createOsmQuestChanges(q, element, answer)
         if (changes == null) {

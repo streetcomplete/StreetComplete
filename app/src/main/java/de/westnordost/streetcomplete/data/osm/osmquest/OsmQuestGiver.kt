@@ -35,7 +35,7 @@ class OsmQuestGiver @Inject constructor(
             createdQuests.add(quest)
             createdQuestsLog.add(questType.javaClass.simpleName)
         }
-        val updates = osmQuestController.updateForElement(createdQuests, emptyList(), geometry, element.type, element.id)
+        val updates = osmQuestController.updateForElement(createdQuests, emptyList())
         Log.d(TAG, "Recreated ${updates.added} quests for ${element.type.name}#${element.id}: ${createdQuestsLog.joinToString()}")
     }
 
@@ -76,7 +76,7 @@ class OsmQuestGiver @Inject constructor(
                 }
             }
         }
-        val updates = osmQuestController.updateForElement(createdQuests, removedQuestIds, geometry, element.type, element.id)
+        val updates = osmQuestController.updateForElement(createdQuests, removedQuestIds)
 
         if (updates.added > 0) {
             Log.d(TAG, "Created ${updates.added} new quests for ${element.type.name}#${element.id}: ${createdQuestsLog.joinToString()}")
