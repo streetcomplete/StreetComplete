@@ -8,8 +8,12 @@ object ElementGeometryTable {
         const val ELEMENT_TYPE = "element_type"
         const val GEOMETRY_POLYGONS = "geometry_polygons"
         const val GEOMETRY_POLYLINES = "geometry_polylines"
-        const val LATITUDE = "latitude"
-        const val LONGITUDE = "longitude"
+        const val CENTER_LATITUDE = "latitude"
+        const val CENTER_LONGITUDE = "longitude"
+        const val MIN_LATITUDE = "min_lat"
+        const val MIN_LONGITUDE = "min_lon"
+        const val MAX_LATITUDE = "max_lat"
+        const val MAX_LONGITUDE = "max_lon"
     }
 
     const val CREATE = """
@@ -18,8 +22,12 @@ object ElementGeometryTable {
             ${Columns.ELEMENT_ID} int NOT NULL,
             ${Columns.GEOMETRY_POLYLINES} blob,
             ${Columns.GEOMETRY_POLYGONS} blob,
-            ${Columns.LATITUDE} double NOT NULL,
-            ${Columns.LONGITUDE} double NOT NULL,
+            ${Columns.CENTER_LATITUDE} double NOT NULL,
+            ${Columns.CENTER_LONGITUDE} double NOT NULL,
+            ${Columns.MIN_LATITUDE} double NOT NULL,
+            ${Columns.MAX_LATITUDE} double NOT NULL,
+            ${Columns.MIN_LONGITUDE} double NOT NULL,
+            ${Columns.MAX_LONGITUDE} double NOT NULL,
             CONSTRAINT primary_key PRIMARY KEY (
                 ${Columns.ELEMENT_TYPE},
                 ${Columns.ELEMENT_ID}

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.about.PrivacyStatementFragment
 import de.westnordost.streetcomplete.controls.*
 import de.westnordost.streetcomplete.data.DbModule
 import de.westnordost.streetcomplete.data.OsmApiModule
+import de.westnordost.streetcomplete.data.StreetCompleteSQLiteOpenHelper
 import de.westnordost.streetcomplete.data.upload.UploadModule2
 import de.westnordost.streetcomplete.data.download.DownloadModule
 import de.westnordost.streetcomplete.data.download.DownloadModule2
@@ -98,4 +99,5 @@ interface ApplicationComponent {
     fun inject(questStatisticsByCountryFragment: QuestStatisticsByCountryFragment)
     fun inject(questStatisticsByQuestTypeFragment: QuestStatisticsByQuestTypeFragment)
     fun inject(privacyStatementFragment: PrivacyStatementFragment)
+    fun inject(streetCompleteSQLiteOpenHelper: StreetCompleteSQLiteOpenHelper)
 }

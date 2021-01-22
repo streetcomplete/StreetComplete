@@ -23,11 +23,11 @@ import org.mockito.Mockito.mock
 
 class ElementGeometryDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementGeometryDao
-    private lateinit var elementGeometryMapping: ElementGeometryMapping
+    private lateinit var mapping: ElementGeometryEntryMapping
 
     @Before fun createDao() {
-        elementGeometryMapping = ElementGeometryMapping(serializer)
-        dao = ElementGeometryDao(dbHelper, elementGeometryMapping)
+        mapping = ElementGeometryEntryMapping(ElementGeometryMapping(serializer))
+        dao = ElementGeometryDao(dbHelper, mapping)
     }
 
     @Test fun testGetNull() {
@@ -114,7 +114,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
 
         dao.put(ElementGeometryEntry(type, id, geometry))
         val questType = mock(OsmElementQuestType::class.java)
-        val osmQuestMapping = OsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), elementGeometryMapping)
+        val osmQuestMapping = OsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), mapping.geometry)
         val questDao = OsmQuestDao(dbHelper, osmQuestMapping)
         questDao.add(OsmQuest(questType, type, id, geometry))
         assertEquals(0, dao.deleteUnreferenced())

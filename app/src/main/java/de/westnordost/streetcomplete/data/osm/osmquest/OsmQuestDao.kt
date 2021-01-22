@@ -170,12 +170,12 @@ private fun createQuery(
     }
     if (bounds != null) {
         add(
-            "(${ElementGeometryTable.Columns.LATITUDE} BETWEEN ? AND ?)",
+            "(${ElementGeometryTable.Columns.CENTER_LATITUDE} BETWEEN ? AND ?)",
             bounds.minLatitude.toString(),
             bounds.maxLatitude.toString()
         )
         add(
-            "(${ElementGeometryTable.Columns.LONGITUDE} BETWEEN ? AND ?)",
+            "(${ElementGeometryTable.Columns.CENTER_LONGITUDE} BETWEEN ? AND ?)",
             bounds.minLongitude.toString(),
             bounds.maxLongitude.toString()
         )

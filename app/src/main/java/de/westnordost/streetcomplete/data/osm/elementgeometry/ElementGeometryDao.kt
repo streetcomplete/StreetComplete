@@ -16,8 +16,12 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTab
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.GEOMETRY_POLYGONS
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.GEOMETRY_POLYLINES
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.LATITUDE
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.LONGITUDE
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.CENTER_LATITUDE
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.CENTER_LONGITUDE
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.MAX_LATITUDE
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.MAX_LONGITUDE
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.MIN_LATITUDE
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.MIN_LONGITUDE
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
@@ -27,7 +31,7 @@ import de.westnordost.streetcomplete.ktx.*
 /** Stores the geometry of elements */
 class ElementGeometryDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val mapping: ElementGeometryMapping
+    private val mapping: ElementGeometryEntryMapping
 ) {
     private val db get() = dbHelper.writableDatabase
 
@@ -40,30 +44,25 @@ class ElementGeometryDao @Inject constructor(
     }
 
     fun put(entry: ElementGeometryEntry) {
-        val values = contentValuesOf(
-            ELEMENT_TYPE to entry.elementType.name,
-            ELEMENT_ID to entry.elementId
-        ) + mapping.toContentValues(entry.geometry)
-
-        db.replaceOrThrow(NAME, null, values)
+        db.replaceOrThrow(NAME, null, mapping.toContentValues(entry))
     }
 
     fun get(type: Element.Type, id: Long): ElementGeometry? {
         val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
         val args = arrayOf(type.name, id.toString())
 
-        return db.queryOne(NAME, null, where, args) { mapping.toObject(it) }
+        return db.queryOne(NAME, null, where, args) { mapping.geometry.toObject(it) }
     }
 
     fun getAllKeys(bbox: BoundingBox): List<ElementKey> =
         db.query(NAME,
             columns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
-            selection = "($LATITUDE BETWEEN ? AND ?) AND ($LONGITUDE BETWEEN ? AND ?)",
+            selection = "$MAX_LONGITUDE >= ? AND $MAX_LATITUDE >= ? AND $MIN_LONGITUDE <= ? AND $MIN_LATITUDE <= ?",
             selectionArgs = arrayOf(
-                bbox.minLatitude.toString(),
-                bbox.maxLatitude.toString(),
                 bbox.minLongitude.toString(),
-                bbox.maxLongitude.toString()
+                bbox.minLatitude.toString(),
+                bbox.maxLongitude.toString(),
+                bbox.maxLatitude.toString()
             )
         ) {
             ElementKey(
@@ -114,20 +113,24 @@ private const val LUMP = "+'#'+"
 private typealias PolyLines = ArrayList<ArrayList<OsmLatLon>>
 
 class ElementGeometryMapping @Inject constructor(
-    private val serializer: Serializer)
-    : ObjectRelationalMapping<ElementGeometry> {
+    private val serializer: Serializer
+) : ObjectRelationalMapping<ElementGeometry> {
 
     override fun toContentValues(obj: ElementGeometry) = contentValuesOf(
-        LATITUDE to obj.center.latitude,
-        LONGITUDE to obj.center.longitude,
+        CENTER_LATITUDE to obj.center.latitude,
+        CENTER_LONGITUDE to obj.center.longitude,
         GEOMETRY_POLYGONS to (obj as? ElementPolygonsGeometry)?.let { serializer.toBytes(obj.polygons) },
-        GEOMETRY_POLYLINES to (obj as? ElementPolylinesGeometry)?.let { serializer.toBytes(obj.polylines) }
+        GEOMETRY_POLYLINES to (obj as? ElementPolylinesGeometry)?.let { serializer.toBytes(obj.polylines) },
+        MIN_LATITUDE to obj.getBounds().minLatitude,
+        MIN_LONGITUDE to obj.getBounds().minLongitude,
+        MAX_LATITUDE to obj.getBounds().maxLatitude,
+        MAX_LONGITUDE to obj.getBounds().maxLongitude
     )
 
     override fun toObject(cursor: Cursor): ElementGeometry {
         val polylines = cursor.getBlobOrNull(GEOMETRY_POLYLINES)?.let { serializer.toObject<PolyLines>(it) }
         val polygons = cursor.getBlobOrNull(GEOMETRY_POLYGONS)?.let { serializer.toObject<PolyLines>(it) }
-        val center = OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE))
+        val center = OsmLatLon(cursor.getDouble(CENTER_LATITUDE), cursor.getDouble(CENTER_LONGITUDE))
 
         return when {
             polygons != null -> ElementPolygonsGeometry(polygons, center)
@@ -135,4 +138,20 @@ class ElementGeometryMapping @Inject constructor(
             else -> ElementPointGeometry(center)
         }
     }
+}
+
+class ElementGeometryEntryMapping @Inject constructor(
+    val geometry: ElementGeometryMapping
+): ObjectRelationalMapping<ElementGeometryEntry> {
+
+    override fun toContentValues(obj: ElementGeometryEntry) = contentValuesOf(
+        ELEMENT_TYPE to obj.elementType.name,
+        ELEMENT_ID to obj.elementId
+    ) + geometry.toContentValues(obj.geometry)
+
+    override fun toObject(cursor: Cursor) = ElementGeometryEntry(
+        Element.Type.valueOf(cursor.getString(ELEMENT_TYPE)),
+        cursor.getLong(ELEMENT_ID),
+        geometry.toObject(cursor)
+    )
 }

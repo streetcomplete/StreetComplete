@@ -4,6 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 
@@ -25,15 +26,24 @@ import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntryMapping
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryMapping
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
-import de.westnordost.streetcomplete.ktx.hasColumn
+import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
 import java.util.*
+import javax.inject.Inject
 
 @Singleton class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {
+
+    @Inject internal lateinit var elementGeometryEntryMapping: ElementGeometryEntryMapping
+
+    init {
+        Injector.applicationComponent.inject(this)
+    }
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(ElementGeometryTable.CREATE)
@@ -240,9 +250,24 @@ import java.util.*
                 )
             """.trimIndent())
         }
+
+        if (oldVersion < 21 && newVersion >= 21) {
+            // the new columns min latitude, max latitude, min longitude, max longitude have been
+            // added. Need to get all data from the table, drop the table, recreate it and re-insert
+            // all the data - this will also fill in the mentioned values correctly
+            val entries = db.query(ElementGeometryTable.NAME) { elementGeometryEntryMapping.toObject(it) }
+            db.execSQL("DROP TABLE ${ElementGeometryTable.NAME}")
+            db.execSQL(ElementGeometryTable.CREATE)
+            db.transaction {
+                for (entry in entries) {
+                    db.replaceOrThrow(ElementGeometryTable.NAME, null, elementGeometryEntryMapping.toContentValues(entry))
+                }
+            }
+        }
+
         // for later changes to the DB
         // ...
     }
 }
 
-private const val DB_VERSION = 20
+private const val DB_VERSION = 21
