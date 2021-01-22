@@ -11,60 +11,61 @@ class AddAddressStreetTest {
     private val questType = AddAddressStreet(mock())
 
     @Test fun `applicable to place without street name`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
-                "addr:housenumber" to "123"
-            ))
+        val addr = OsmNode(1L, 1, 0.0,0.0, mapOf(
+            "addr:housenumber" to "123"
         ))
+        val mapData = TestMapDataWithGeometry(listOf(addr))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(addr))
     }
 
     @Test fun `not applicable to place with street name`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
-                "addr:housenumber" to "123",
-                "addr:street" to "onetwothree",
-            ))
+        val addr = OsmNode(1L, 1, 0.0,0.0, mapOf(
+            "addr:housenumber" to "123",
+            "addr:street" to "onetwothree",
         ))
+        val mapData = TestMapDataWithGeometry(listOf(addr))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(false, questType.isApplicableTo(addr))
     }
 
     @Test fun `not applicable to place without street name but in a associatedStreet relation`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
-                "addr:housenumber" to "123"
-            )),
-            OsmRelation(1L, 1, listOf(
-                OsmRelationMember(1L, "doesntmatter", Element.Type.NODE)
-            ), mapOf(
-                "type" to "associatedStreet"
-            )),
+        val addr = OsmNode(1L, 1, 0.0,0.0, mapOf(
+            "addr:housenumber" to "123"
         ))
+        val associatedStreetRelation = OsmRelation(1L, 1, listOf(
+            OsmRelationMember(1L, "doesntmatter", Element.Type.NODE)
+        ), mapOf(
+            "type" to "associatedStreet"
+        ))
+
+        val mapData = TestMapDataWithGeometry(listOf(addr, associatedStreetRelation))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(addr))
     }
 
     @Test fun `applicable to place in interpolation without street name`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
-                "addr:housenumber" to "123"
-            )),
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
-                "addr:interpolation" to "whatever",
-            ))
+        val addr = OsmNode(1L, 1, 0.0,0.0, mapOf(
+            "addr:housenumber" to "123"
         ))
+        val addrInterpolation = OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            "addr:interpolation" to "whatever",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(addr, addrInterpolation))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(addr))
     }
 
     @Test fun `not applicable to place in interpolation with street name`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
-                "addr:housenumber" to "123"
-            )),
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
-                "addr:interpolation" to "whatever",
-                "addr:street" to "Street Name"
-            ))
+        val addr = OsmNode(1L, 1, 0.0,0.0, mapOf(
+            "addr:housenumber" to "123"
         ))
+        val addrInterpolation = OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            "addr:interpolation" to "whatever",
+            "addr:street" to "Street Name"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(addr, addrInterpolation))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(addr))
     }
 }

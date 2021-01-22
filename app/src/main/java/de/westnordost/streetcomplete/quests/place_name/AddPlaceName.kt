@@ -106,7 +106,7 @@ class AddPlaceName(
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
-    override fun isApplicableTo(element: Element) =
+    override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) && hasFeatureName(element.tags)
 
     override fun createForm() = AddPlaceNameForm()

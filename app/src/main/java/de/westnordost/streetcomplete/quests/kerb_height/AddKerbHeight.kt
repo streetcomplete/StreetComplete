@@ -25,11 +25,11 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
     override fun createForm() = AddKerbHeightForm()
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        return mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }
-    }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!eligibleKerbsFilter.matches(element)) false else null
 
     override fun applyAnswerTo(answer: KerbHeight, changes: StringMapChangesBuilder) {
         changes.updateWithCheckDate("kerb", answer.osmValue)

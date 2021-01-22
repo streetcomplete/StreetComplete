@@ -281,7 +281,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
           - if already tagged, if not older than 8 years or if the cycleway tag uses some unknown value
         */
 
-        // streets what may have cycleway tagging
+        // streets that may have cycleway tagging
         private val roadsFilter by lazy { """
             ways with
               highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service

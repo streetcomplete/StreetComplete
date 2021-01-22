@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.ktx.toYesNo
 class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
 
     private val crossingFilter by lazy { """
-        nodes with 
+        nodes with
           (
             highway = traffic_signals and crossing = traffic_signals and foot != no
             or highway = crossing and foot != no
@@ -26,7 +26,7 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
-        ways with 
+        ways with
           highway = cycleway and foot !~ yes|designated
           or highway and access ~ private|no
     """.toElementFilterExpression() }
@@ -48,7 +48,8 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
             .filter { crossingFilter.matches(it) && it.id !in excludedWayNodeIds }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!crossingFilter.matches(element)) false else null
 
     override fun createForm() = TactilePavingForm()
 

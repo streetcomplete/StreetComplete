@@ -82,10 +82,11 @@ class AddAddressStreet(
         return addressesWithoutStreet
     }
 
-    override fun createForm() = AddAddressStreetForm()
-
     /* cannot be determined because of the associated street relations */
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!filter.matches(element)) false else null
+
+    override fun createForm() = AddAddressStreetForm()
 
     override fun applyAnswerTo(answer: AddressStreetAnswer, changes: StringMapChangesBuilder) {
         val key = when(answer) {

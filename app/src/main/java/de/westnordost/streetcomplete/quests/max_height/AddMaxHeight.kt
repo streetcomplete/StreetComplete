@@ -92,7 +92,6 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
         return nodesWithoutHeight + tunnelsWithoutHeight + waysBelowBridgesWithoutHeight
     }
 
-
     override fun isApplicableTo(element: Element): Boolean? {
         if (nodeFilter.matches(element)) return true
         if (wayFilter.matches(element)) {

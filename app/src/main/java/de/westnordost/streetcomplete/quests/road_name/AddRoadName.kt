@@ -70,7 +70,7 @@ class AddRoadName(
         return roadsWithoutNames
     }
 
-    override fun isApplicableTo(element: Element) = filter.matches(element)
+    override fun isApplicableTo(element: Element): Boolean = filter.matches(element)
 
     override fun createForm() = AddRoadNameForm()
 

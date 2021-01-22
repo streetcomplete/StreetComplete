@@ -114,7 +114,8 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
         return buildings
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!buildingsWithMissingAddressFilter.matches(element)) false else null
 
     override fun createForm() = AddHousenumberForm()
 

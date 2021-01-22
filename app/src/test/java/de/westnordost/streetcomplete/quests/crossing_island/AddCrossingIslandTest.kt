@@ -9,27 +9,36 @@ import org.junit.Test
 class AddCrossingIslandTest {
     private val questType = AddCrossingIsland()
 
-    @Test fun `applicable to crossing`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
-                "highway" to "crossing",
-                "crossing" to "something"
-            ))
+    @Test fun `not applicable to non-crossing`() {
+        val node = OsmNode(1L, 1, 0.0,0.0, mapOf(
+            "nub" to "dub"
         ))
+        val mapData = TestMapDataWithGeometry(listOf(node))
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(false, questType.isApplicableTo(node))
+    }
+
+    @Test fun `applicable to crossing`() {
+        val crossing = OsmNode(1L, 1, 0.0,0.0, mapOf(
+            "highway" to "crossing",
+            "crossing" to "something"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(crossing))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(crossing))
     }
 
     @Test fun `not applicable to crossing with private road`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
-                "highway" to "crossing",
-                "crossing" to "something"
-            )),
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
-                "highway" to "residential",
-                "access" to "private"
-            ))
+        val crossing = OsmNode(1L, 1, 0.0,0.0, mapOf(
+            "highway" to "crossing",
+            "crossing" to "something"
         ))
+        val privateRoad = OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            "highway" to "residential",
+            "access" to "private"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(crossing, privateRoad ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(crossing))
     }
 }

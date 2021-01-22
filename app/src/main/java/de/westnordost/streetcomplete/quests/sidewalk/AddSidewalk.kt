@@ -82,7 +82,8 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
         return 12f
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!filter.matches(element)) false else null
 
     override fun createForm() = AddSidewalkForm()
 

@@ -16,8 +16,8 @@ import de.westnordost.streetcomplete.util.distanceToArcs
 class AddSummitRegister : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
-        nodes with 
-          natural = peak and name and 
+        nodes with
+          natural = peak and name and
           (!summit:register or summit:register older today -4 years)
     """.toElementFilterExpression() }
 
@@ -57,7 +57,8 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!filter.matches(element)) false else null
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

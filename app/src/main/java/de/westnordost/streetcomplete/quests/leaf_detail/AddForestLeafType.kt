@@ -35,7 +35,12 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
         return forests + treeRows
     }
 
-    override fun isApplicableTo(element: Element):Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? {
+        if (wayFilter.matches(element)) return true // tree rows
+        // for areas, we don't want to show things larger than x m², we need the geometry for that
+        if (!areaFilter.matches(element)) return false
+        return null
+    }
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_leafType_title
 

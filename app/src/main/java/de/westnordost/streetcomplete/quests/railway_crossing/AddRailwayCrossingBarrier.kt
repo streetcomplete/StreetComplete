@@ -38,7 +38,8 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
             .filter { crossingFilter.matches(it) && it.id !in excludedWayNodeIds }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!crossingFilter.matches(element)) false else null
 
     override fun createForm() = AddRailwayCrossingBarrierForm()
 

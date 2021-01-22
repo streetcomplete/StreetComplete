@@ -21,7 +21,7 @@ class AddSuspectedOneway(
 ) : OsmElementQuestType<SuspectedOnewayAnswer> {
 
     private val filter by lazy { """
-        ways with 
+        ways with
           highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road
           and !oneway
           and junction != roundabout
@@ -89,7 +89,7 @@ class AddSuspectedOneway(
         return onewayCandidates.filter { onewayDirectionMap[it.id] != null }
     }
 
-    override fun isApplicableTo(element: Element) =
+    override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) && db.isForward(element.id) != null
 
     /** returns true if all given [trafficFlowSegments] point forward in relation to the
