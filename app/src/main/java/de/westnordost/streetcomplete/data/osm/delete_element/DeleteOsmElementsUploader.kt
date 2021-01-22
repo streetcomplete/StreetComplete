@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.delete_element
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmElement
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementUpdateController
+import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
@@ -12,11 +12,11 @@ import javax.inject.Inject
 
 class DeleteOsmElementsUploader @Inject constructor(
     changesetManager: OpenQuestChangesetsManager,
-    private val elementUpdateController: OsmElementUpdateController,
+    private val osmElementController: OsmElementController,
     private val deleteElementDB: DeleteOsmElementDao,
     private val singleUploader: DeleteSingleOsmElementUploader,
     private val statisticsUpdater: StatisticsUpdater
-) : OsmInChangesetsUploader<DeleteOsmElement>(changesetManager, elementUpdateController) {
+) : OsmInChangesetsUploader<DeleteOsmElement>(changesetManager, osmElementController) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Deleting Elements")
@@ -33,7 +33,7 @@ class DeleteOsmElementsUploader @Inject constructor(
     override fun updateElement(element: Element, quest: DeleteOsmElement) {
         /* So on successful upload of deleting the element, all that refers to that element should
         *  be removed as well */
-        elementUpdateController.delete(element.type, element.id)
+        osmElementController.delete(element.type, element.id)
     }
 
     override fun onUploadSuccessful(quest: DeleteOsmElement) {

@@ -13,8 +13,6 @@ import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
 
 import org.mockito.Mockito.*
 
@@ -114,25 +112,15 @@ class MergedElementDaoTest {
     }
 
     @Test fun deleteAllElements() {
-        dao.putAll(listOf(
-            OsmNode(0, 0, 0.0, 0.0, null),
-            OsmNode(1, 0, 0.0, 0.0, null),
-            OsmWay(0, 0, listOf(0L), null),
-            OsmWay(1, 0, listOf(0L), null),
-            OsmRelation(0, 0, listOf(), null),
-            OsmRelation(1, 0, listOf(), null)
-        ))
         dao.deleteAll(listOf(
             ElementKey(Element.Type.NODE,0),
             ElementKey(Element.Type.WAY,0),
             ElementKey(Element.Type.RELATION,0)
         ))
-        assertNull(dao.get(Element.Type.NODE, 0))
-        assertNull(dao.get(Element.Type.WAY, 0))
-        assertNull(dao.get(Element.Type.RELATION, 0))
-        assertNotNull(dao.get(Element.Type.NODE, 1))
-        assertNotNull(dao.get(Element.Type.WAY, 1))
-        assertNotNull(dao.get(Element.Type.RELATION, 1))
+
+        verify(nodeDao).deleteAll(listOf(0L))
+        verify(wayDao).deleteAll(listOf(0L))
+        verify(relationDao).deleteAll(listOf(0L))
     }
 
     private fun createANode() = OsmNode(0, 0, 0.0, 0.0, null)

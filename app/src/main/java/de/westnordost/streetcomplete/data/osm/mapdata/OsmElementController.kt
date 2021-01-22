@@ -1,8 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import android.util.Log
+import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.MapData
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.getRelationComplete
+import de.westnordost.osmapi.map.getWayComplete
+import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
@@ -12,34 +17,86 @@ import javax.inject.Singleton
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
 @Singleton class OsmElementController @Inject internal constructor(
-    private val elementDao: MergedElementDao,
-    private val geometryDao: ElementGeometryDao,
+    private val mapDataApi: MapDataApi,
+    private val elementDB: MergedElementDao,
+    private val geometryDB: ElementGeometryDao,
     private val elementGeometryCreator: ElementGeometryCreator
 ): OsmElementSource {
+
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
     private val elementUpdatesListener: MutableList<OsmElementSource.ElementUpdatesListener> = CopyOnWriteArrayList()
 
-    override fun get(type: Element.Type, id: Long) : Element? = elementDao.get(type, id)
+    override fun get(type: Element.Type, id: Long) : Element? = elementDB.get(type, id)
 
-    fun replaceInBBox(bbox: BoundingBox, mapData: MapData) {
+    /** update element data because in the given bounding box, fresh data from the OSM API has been
+     *  downloaded */
+    fun updateAllInBBox(bbox: BoundingBox, mapData: MapData) {
+        val time = System.currentTimeMillis()
 
-        val oldElementKeys = geometryDao.getAllKeys(bbox).toMutableSet()
+        val oldElementKeys = geometryDB.getAllKeys(bbox).toMutableSet()
         for (element in mapData) {
             oldElementKeys.remove(ElementKey(element.type, element.id))
         }
-        geometryDao.deleteAll(oldElementKeys)
-        elementDao.deleteAll(oldElementKeys)
+        elementDB.deleteAll(oldElementKeys)
+        geometryDB.deleteAll(oldElementKeys)
         val geometries = mapData.mapNotNull { element ->
+            // TODO hm what about incomplete relations?
             val geometry = elementGeometryCreator.create(element, mapData, true)
             geometry?.let { ElementGeometryEntry(element.type, element.id, it) }
         }
-        geometryDao.putAll(geometries)
-        elementDao.putAll(mapData)
+        geometryDB.putAll(geometries)
+        elementDB.putAll(mapData)
+
+        val seconds = (System.currentTimeMillis() - time) / 1000
+        Log.i(TAG,"Persisted ${geometries.size} elements and geometries in ${seconds}s")
 
         val mapDataWithGeometry = ImmutableMapDataWithGeometry(mapData, geometries)
-        elementUpdatesListener.forEach { it.onUpdated(bbox, mapDataWithGeometry) }
+        elementUpdatesListener.forEach { it.onUpdateAllInBBox(bbox, mapDataWithGeometry) }
+    }
+
+    /** delete an element because the element does not exist anymore on OSM */
+    fun delete(type: Element.Type, id: Long) {
+        elementDB.delete(type, id)
+        geometryDB.delete(type, id)
+        elementUpdatesListener.forEach { it.onDeleted(type, id) }
+    }
+
+    /** update an element because the element has changed on OSM */
+    fun update(element: Element) {
+        val geometry = createGeometry(element) ?: return delete(element.type, element.id)
+
+        geometryDB.put(ElementGeometryEntry(element.type, element.id, geometry))
+        elementDB.put(element)
+        elementUpdatesListener.forEach { it.onUpdated(element, geometry) }
+    }
+
+    private fun createGeometry(element: Element): ElementGeometry? {
+        when(element) {
+            is Node -> {
+                return elementGeometryCreator.create(element)
+            }
+            is Way -> {
+                val mapData: MapData
+                try {
+                    mapData = mapDataApi.getWayComplete(element.id)
+                } catch (e: OsmNotFoundException) {
+                    return null
+                }
+                return elementGeometryCreator.create(element, mapData)
+            }
+            is Relation -> {
+                val mapData: MapData
+                try {
+                    mapData = mapDataApi.getRelationComplete(element.id)
+                } catch (e: OsmNotFoundException) {
+                    return null
+                }
+                return elementGeometryCreator.create(element, mapData)
+            }
+            else -> return null
+        }
     }
 
     /* ------------------------------------ Listeners ------------------------------------------- */
@@ -49,5 +106,9 @@ import javax.inject.Singleton
     }
     override fun removeQuestStatusListener(listener: OsmElementSource.ElementUpdatesListener) {
         elementUpdatesListener.remove(listener)
+    }
+
+    companion object {
+        private const val TAG = "OsmElementDownload"
     }
 }

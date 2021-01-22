@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.data.osm.osmquest.undo
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementUpdateController
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
 import de.westnordost.streetcomplete.data.osm.osmquest.SingleOsmElementTagChangesUploader
@@ -15,11 +15,11 @@ import java.util.concurrent.atomic.AtomicBoolean
 /** Gets all undo osm quests from local DB and uploads them via the OSM API */
 class UndoOsmQuestsUploader @Inject constructor(
     changesetManager: OpenQuestChangesetsManager,
-    elementUpdateController: OsmElementUpdateController,
+    osmElementController: OsmElementController,
     private val undoQuestDB: UndoOsmQuestDao,
     private val singleChangeUploader: SingleOsmElementTagChangesUploader,
     private val statisticsUpdater: StatisticsUpdater
-) : OsmInChangesetsUploader<UndoOsmQuest>(changesetManager, elementUpdateController) {
+) : OsmInChangesetsUploader<UndoOsmQuest>(changesetManager, osmElementController) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Undoing quest changes")

@@ -37,6 +37,7 @@ class NoteDao @Inject constructor(
     private val db get() = dbHelper.writableDatabase
 
     fun putAll(notes: Collection<Note>) {
+        if (notes.isEmpty()) return
         db.transaction {
             for (note in notes) {
                 put(note)

@@ -11,18 +11,21 @@ import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
 import java.util.*
+import java.util.concurrent.atomic.AtomicBoolean
 
 class OsmNotesDownloaderTest {
     private lateinit var notesApi: NotesApi
     private lateinit var osmNoteQuestController: OsmNoteQuestController
     private lateinit var preferences: SharedPreferences
     private lateinit var avatarsDownloader: OsmAvatarsDownloader
+    private lateinit var userStore: UserStore
 
     @Before fun setUp() {
         notesApi = mock()
@@ -31,6 +34,8 @@ class OsmNotesDownloaderTest {
 
         preferences = mock()
         avatarsDownloader = mock()
+        userStore = mock()
+        on(userStore.userId).thenReturn(1L)
     }
 
     @Test fun `downloads avatars of all users involved in note discussions`() {
@@ -51,8 +56,8 @@ class OsmNotesDownloaderTest {
         ))
 
         val noteApi = TestListBasedNotesApi(listOf(note1))
-        val dl = OsmNotesDownloader(noteApi, osmNoteQuestController, preferences, OsmNoteQuestType(), avatarsDownloader)
-        dl.download(BoundingBox(0.0, 0.0, 1.0, 1.0), 0, 1000)
+        val dl = OsmNotesDownloader(noteApi, osmNoteQuestController, preferences, OsmNoteQuestType(), avatarsDownloader, userStore)
+        dl.download(BoundingBox(0.0, 0.0, 1.0, 1.0), AtomicBoolean(false))
 
         verify(avatarsDownloader).download(setOf(54, 13))
     }

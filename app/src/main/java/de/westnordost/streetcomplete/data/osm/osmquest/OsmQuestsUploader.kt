@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.osmquest
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
@@ -13,11 +14,11 @@ import java.util.concurrent.atomic.AtomicBoolean
 /** Gets all answered osm quests from local DB and uploads them via the OSM API */
 class OsmQuestsUploader @Inject constructor(
     changesetManager: OpenQuestChangesetsManager,
-    elementUpdateController: OsmElementUpdateController,
+    osmElementController: OsmElementController,
     private val osmQuestController: OsmQuestController,
     private val singleChangeUploader: SingleOsmElementTagChangesUploader,
     private val statisticsUpdater: StatisticsUpdater
-) : OsmInChangesetsUploader<OsmQuest>(changesetManager, elementUpdateController) {
+) : OsmInChangesetsUploader<OsmQuest>(changesetManager, osmElementController) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Applying quest changes")

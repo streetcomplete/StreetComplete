@@ -33,9 +33,6 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** returns whether the user should be able to split the way instead */
     val isSplitWayEnabled: Boolean get() = false
 
-    /** whether quests of this type should be added for all segments of a way that has been split */
-    val isRecreateAfterSplitEnabled: Boolean get() = true
-
     /** returns whether the user should be able to delete this element instead. Only elements that
      *  are not expected...
      *  - to be part of a relation

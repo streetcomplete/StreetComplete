@@ -116,25 +116,13 @@ import javax.inject.Singleton
         val obsoleteQuestIds = previousQuestsByNoteId.values.map { it.id!! }
 
         // delete obsolete note quests (note is not there anymore)
-        var deletedCount = 0
-        if (obsoleteQuestIds.isNotEmpty()) {
-            deletedCount = dao.deleteAllIds(obsoleteQuestIds)
-            if (deletedCount > 0) {
-                noteDao.deleteUnreferenced()
-            }
-        }
+        val deletedCount = dao.deleteAllIds(obsoleteQuestIds)
+        if (deletedCount > 0) noteDao.deleteUnreferenced()
+
         // update all notes (they may have new comments etc)
-        if (quests.isNotEmpty()) {
-            noteDao.putAll(quests.map { it.note })
-        }
-        var closedCount = 0
-        if (closedExistingQuests.isNotEmpty()) {
-            closedCount = dao.updateAll(closedExistingQuests)
-        }
-        var addedCount = 0
-        if (addedQuests.isNotEmpty()) {
-            addedCount = dao.addAll(addedQuests)
-        }
+        noteDao.putAll(quests.map { it.note })
+        val closedCount = dao.updateAll(closedExistingQuests)
+        val addedCount = dao.addAll(addedQuests)
 
         onUpdated(added = addedQuests, updated = closedExistingQuests, deleted = obsoleteQuestIds)
 

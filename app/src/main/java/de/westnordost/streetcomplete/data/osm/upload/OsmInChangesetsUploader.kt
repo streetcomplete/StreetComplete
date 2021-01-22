@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.data.osm.upload
 
 import androidx.annotation.CallSuper
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementUpdateController
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicBoolean
  *  OSM data (of course), and that the data is uploaded in changesets. */
 abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
     private val changesetManager: OpenQuestChangesetsManager,
-    private val elementUpdateController: OsmElementUpdateController
+    private val osmElementController: OsmElementController
 ): Uploader {
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
@@ -41,7 +41,7 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
                 uploadedQuestTypes.add(quest.osmElementQuestType)
                 uploadedChangeListener?.onUploaded(quest.osmElementQuestType.name, quest.position)
             } catch (e: ElementIncompatibleException) {
-                elementUpdateController.delete(quest.elementType, quest.elementId)
+                osmElementController.delete(quest.elementType, quest.elementId)
                 onUploadFailed(quest, e)
                 uploadedChangeListener?.onDiscarded(quest.osmElementQuestType.name, quest.position)
             } catch (e: ElementConflictException) {
@@ -53,11 +53,11 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
     }
 
     protected open fun updateElement(element: Element, quest: T) {
-        elementUpdateController.update(element, null)
+        osmElementController.update(element)
     }
 
     private fun uploadSingle(quest: T) : List<Element> {
-        val element = elementUpdateController.get(quest.elementType, quest.elementId)
+        val element = osmElementController.get(quest.elementType, quest.elementId)
             ?: throw ElementDeletedException("Element deleted")
 
         return try {

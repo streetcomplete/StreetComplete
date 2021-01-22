@@ -5,7 +5,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementUpdateController
+import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
@@ -22,30 +22,30 @@ class DeleteOsmElementsUploaderTest {
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var singleUploader: DeleteSingleOsmElementUploader
     private lateinit var statisticsUpdater: StatisticsUpdater
-    private lateinit var elementUpdateController: OsmElementUpdateController
+    private lateinit var osmElementController: OsmElementController
     private lateinit var uploader: DeleteOsmElementsUploader
 
     @Before fun setUp() {
         deleteElementDB = mock()
         changesetManager = mock()
         singleUploader = mock()
-        elementUpdateController = mock()
+        osmElementController = mock()
         statisticsUpdater = mock()
-        uploader = DeleteOsmElementsUploader(changesetManager, elementUpdateController, deleteElementDB,
+        uploader = DeleteOsmElementsUploader(changesetManager, osmElementController, deleteElementDB,
             singleUploader, statisticsUpdater)
     }
 
     @Test fun `cancel upload works`() {
         val cancelled = AtomicBoolean(true)
         uploader.upload(cancelled)
-        verifyZeroInteractions(changesetManager, singleUploader, elementUpdateController, statisticsUpdater, deleteElementDB)
+        verifyZeroInteractions(changesetManager, singleUploader, osmElementController, statisticsUpdater, deleteElementDB)
     }
 
     @Test fun `catches ElementConflict exception`() {
         val q = createDeleteOsmElement()
         on(deleteElementDB.getAll()).thenReturn(listOf(q))
         on(singleUploader.upload(anyLong(), any())).thenThrow(ElementConflictException())
-        on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
+        on(osmElementController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
@@ -59,7 +59,7 @@ class DeleteOsmElementsUploaderTest {
         val q = createDeleteOsmElement()
         on(deleteElementDB.getAll()).thenReturn(listOf(q))
         on(singleUploader.upload(anyLong(), any())).thenThrow(ElementDeletedException())
-        on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
+        on(osmElementController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
@@ -72,7 +72,7 @@ class DeleteOsmElementsUploaderTest {
         doThrow(ChangesetConflictException())
             .doNothing()
             .on(singleUploader).upload(anyLong(), any())
-        on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
+        on(osmElementController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
 
@@ -89,7 +89,7 @@ class DeleteOsmElementsUploaderTest {
         doThrow(ElementConflictException())
             .doNothing()
             .on(singleUploader).upload(anyLong(), any())
-        on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
+        on(osmElementController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
@@ -98,17 +98,17 @@ class DeleteOsmElementsUploaderTest {
         verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].questType.javaClass.simpleName, quests[0].position)
         verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].questType.javaClass.simpleName,quests[1].position)
 
-        verify(elementUpdateController, times(1)).delete(any(), anyLong())
-        verify(elementUpdateController, times(2)).get(any(), anyLong())
+        verify(osmElementController, times(1)).delete(any(), anyLong())
+        verify(osmElementController, times(2)).get(any(), anyLong())
         verify(statisticsUpdater).addOne(any(), any())
-        verifyNoMoreInteractions(elementUpdateController)
+        verifyNoMoreInteractions(osmElementController)
     }
 
     @Test fun `clean metadata at the end`() {
         val quest = createDeleteOsmElement()
 
         on(deleteElementDB.getAll()).thenReturn(listOf(quest))
-        on(elementUpdateController.get(any(), anyLong())).thenReturn(createElement())
+        on(osmElementController.get(any(), anyLong())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
 

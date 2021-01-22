@@ -53,7 +53,8 @@ internal class OsmNoteQuestDao @Inject constructor(
         return db.update(NAME, mapping.toUpdatableContentValues(quest), query, args) == 1
     }
 
-    fun updateAll(quests: List<OsmNoteQuest>): Int {
+    fun updateAll(quests: Collection<OsmNoteQuest>): Int {
+        if (quests.isEmpty()) return 0
         var rows = 0
         db.transaction {
             quests.forEach {
@@ -76,6 +77,7 @@ internal class OsmNoteQuestDao @Inject constructor(
     }
 
     fun deleteAllIds(ids: Collection<Long>): Int {
+        if (ids.isEmpty()) return 0
         return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
     }
 
@@ -116,6 +118,7 @@ internal class OsmNoteQuestDao @Inject constructor(
     }
 
     private fun insertAll(quests: Collection<OsmNoteQuest>, conflictAlgorithm: Int): Int {
+        if (quests.isEmpty()) return 0
         var addedRows = 0
         db.transaction {
             for (quest in quests) {

@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.download.DownloadModule
 import de.westnordost.streetcomplete.data.download.DownloadModule2
 import de.westnordost.streetcomplete.data.download.DownloadService
 import de.westnordost.streetcomplete.data.meta.MetadataModule
+import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementModule
 import de.westnordost.streetcomplete.data.osm.upload.changesets.ChangesetAutoCloserWorker
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
 import de.westnordost.streetcomplete.data.upload.UploadModule
@@ -54,7 +55,8 @@ import javax.inject.Singleton
     MetadataModule::class,
     UserModule::class,
     AchievementsModule::class,
-    MapModule::class
+    MapModule::class,
+    OsmElementModule::class
 ])
 interface ApplicationComponent {
     fun inject(app: StreetCompleteApplication)
