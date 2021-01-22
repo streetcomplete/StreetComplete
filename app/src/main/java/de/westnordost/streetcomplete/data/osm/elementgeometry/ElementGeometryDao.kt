@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
+import de.westnordost.streetcomplete.data.WhereSelectionBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.ELEMENT_ID
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.GEOMETRY_POLYGONS
@@ -54,22 +55,22 @@ class ElementGeometryDao @Inject constructor(
         return db.queryOne(NAME, null, where, args) { mapping.geometry.toObject(it) }
     }
 
-    fun getAllKeys(bbox: BoundingBox): List<ElementKey> =
-        db.query(NAME,
-            columns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
-            selection = "$MAX_LONGITUDE >= ? AND $MAX_LATITUDE >= ? AND $MIN_LONGITUDE <= ? AND $MIN_LATITUDE <= ?",
-            selectionArgs = arrayOf(
-                bbox.minLongitude.toString(),
-                bbox.minLatitude.toString(),
-                bbox.maxLongitude.toString(),
-                bbox.maxLatitude.toString()
-            )
-        ) {
+    fun getAllKeys(bbox: BoundingBox): List<ElementKey> {
+        val builder = WhereSelectionBuilder()
+        builder.appendBounds(bbox)
+        return db.query(NAME, arrayOf(ELEMENT_TYPE, ELEMENT_ID), builder.where, builder.args) {
             ElementKey(
                 Element.Type.valueOf(it.getString(0)),
                 it.getLong(1)
             )
         }
+    }
+
+    fun getAllEntries(bbox: BoundingBox): List<ElementGeometryEntry> {
+        val builder = WhereSelectionBuilder()
+        builder.appendBounds(bbox)
+        return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
+    }
 
     fun deleteAll(entries: Iterable<ElementKey>) {
         db.transaction {
@@ -100,6 +101,14 @@ class ElementGeometryDao @Inject constructor(
             ")"
 
         return db.delete(NAME, where, null)
+    }
+
+    private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox): WhereSelectionBuilder {
+        add("$MAX_LONGITUDE >= ?", bbox.minLongitude.toString())
+        add("$MAX_LATITUDE >= ?", bbox.minLatitude.toString())
+        add("$MIN_LONGITUDE <= ?", bbox.maxLongitude.toString())
+        add("$MIN_LATITUDE <= ?", bbox.maxLatitude.toString())
+        return this
     }
 }
 

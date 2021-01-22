@@ -4,12 +4,9 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryMapping
+import de.westnordost.streetcomplete.data.osm.elementgeometry.*
 import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType
 import org.junit.Assert.*
 import org.junit.Before
@@ -24,9 +21,9 @@ class UndoOsmQuestDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: UndoOsmQuestDao
 
     @Before fun createDaos() {
-        val elementGeometryMapping = ElementGeometryMapping(serializer)
-        geometryDao = ElementGeometryDao(dbHelper, elementGeometryMapping)
-        dao = UndoOsmQuestDao(dbHelper, UndoOsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), elementGeometryMapping))
+        val elementGeometryEntryMapping = ElementGeometryEntryMapping(ElementGeometryMapping(serializer))
+        geometryDao = ElementGeometryDao(dbHelper, elementGeometryEntryMapping)
+        dao = UndoOsmQuestDao(dbHelper, UndoOsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), elementGeometryEntryMapping.geometry))
     }
 
     @Test fun getButNothingIsThere() {

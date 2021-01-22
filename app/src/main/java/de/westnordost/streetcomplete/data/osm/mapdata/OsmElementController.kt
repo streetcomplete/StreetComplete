@@ -2,10 +2,8 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import android.util.Log
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.MapData
+import de.westnordost.osmapi.map.*
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.osmapi.map.getRelationComplete
-import de.westnordost.osmapi.map.getWayComplete
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
@@ -29,6 +27,15 @@ import javax.inject.Singleton
     private val elementUpdatesListener: MutableList<OsmElementSource.ElementUpdatesListener> = CopyOnWriteArrayList()
 
     override fun get(type: Element.Type, id: Long) : Element? = elementDB.get(type, id)
+
+    override fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry {
+        val elementGeometryEntries = geometryDB.getAllEntries(bbox)
+        val elementKeys = elementGeometryEntries.map { ElementKey(it.elementType, it.elementId) }
+        val mapData = MutableMapData()
+        mapData.addAll(elementDB.getAll(elementKeys))
+        mapData.handle(bbox)
+        return ImmutableMapDataWithGeometry(mapData, elementGeometryEntries)
+    }
 
     /** update element data because in the given bounding box, fresh data from the OSM API has been
      *  downloaded */

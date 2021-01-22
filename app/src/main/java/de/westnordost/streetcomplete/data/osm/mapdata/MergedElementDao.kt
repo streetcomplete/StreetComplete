@@ -43,6 +43,14 @@ class MergedElementDao @Inject constructor(
         relationDao.deleteAll(keys.filter { it.elementType == RELATION }.map { it.elementId })
     }
 
+    fun getAll(keys: Iterable<ElementKey>): List<Element> {
+        val result = mutableListOf<Element>()
+        result.addAll(nodeDao.getAll(keys.filter { it.elementType == NODE }.map { it.elementId }))
+        result.addAll(wayDao.getAll(keys.filter { it.elementType == WAY }.map { it.elementId }))
+        result.addAll(relationDao.getAll(keys.filter { it.elementType == RELATION }.map { it.elementId }))
+        return result
+    }
+
     fun get(type: Element.Type, id: Long): Element? {
         return when (type) {
             NODE -> nodeDao.get(id)

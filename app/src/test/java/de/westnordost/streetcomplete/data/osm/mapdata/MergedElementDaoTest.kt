@@ -123,6 +123,18 @@ class MergedElementDaoTest {
         verify(relationDao).deleteAll(listOf(0L))
     }
 
+    @Test fun getAllElements() {
+        dao.getAll(listOf(
+            ElementKey(Element.Type.NODE,0),
+            ElementKey(Element.Type.WAY,0),
+            ElementKey(Element.Type.RELATION,0)
+        ))
+
+        verify(nodeDao).getAll(listOf(0L))
+        verify(wayDao).getAll(listOf(0L))
+        verify(relationDao).getAll(listOf(0L))
+    }
+
     private fun createANode() = OsmNode(0, 0, 0.0, 0.0, null)
 
     private fun createAWay() = OsmWay(0, 0, listOf(0L), null)

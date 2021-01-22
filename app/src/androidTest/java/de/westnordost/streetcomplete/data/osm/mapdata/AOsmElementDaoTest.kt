@@ -15,6 +15,7 @@ import de.westnordost.osmapi.map.data.Element
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
+import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import org.mockito.Mockito.*
 
@@ -61,6 +62,15 @@ class AOsmElementDaoTest {
         assertNotNull(dao.get(3))
         assertNull(dao.get(1))
         assertNull(dao.get(2))
+    }
+
+    @Test fun getAll() {
+        dao.putAll(listOf(
+            createElement(1, 2),
+            createElement(2, 2),
+            createElement(3, 2)
+        ))
+        assertTrue(dao.getAll(listOf(1,2,4)).containsExactlyInAnyOrder(listOf(1, 2)))
     }
 
     @Test fun getNull() {

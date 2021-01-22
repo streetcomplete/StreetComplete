@@ -14,6 +14,7 @@ interface OsmElementSource {
     }
 
     fun get(type: Element.Type, id: Long): Element?
+    fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry
 
     fun addQuestStatusListener(listener: ElementUpdatesListener)
     fun removeQuestStatusListener(listener: ElementUpdatesListener)

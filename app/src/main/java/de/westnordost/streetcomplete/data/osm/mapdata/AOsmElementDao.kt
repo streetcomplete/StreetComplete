@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable
+import de.westnordost.streetcomplete.ktx.query
 import de.westnordost.streetcomplete.ktx.queryOne
 import de.westnordost.streetcomplete.ktx.transaction
 
@@ -62,6 +63,11 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
                 delete(id)
             }
         }
+    }
+
+    fun getAll(ids: Collection<Long>): List<T> {
+        if (ids.isEmpty()) return emptyList()
+        return db.query(tableName, null, "$idColumnName IN (${ids.joinToString(",")})") { mapping.toObject(it) }
     }
 
     fun get(id: Long): T? {

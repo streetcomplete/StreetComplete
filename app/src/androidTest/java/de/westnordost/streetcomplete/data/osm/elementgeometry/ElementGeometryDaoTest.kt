@@ -71,6 +71,24 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
         )))
     }
 
+    @Test fun getAllEntries() {
+        val insideElements = listOf(
+            ElementGeometryEntry(Element.Type.NODE, 1, createPoint(0.0,0.0)),
+            ElementGeometryEntry(Element.Type.WAY, 2, createPoint(1.0,2.0)),
+            ElementGeometryEntry(Element.Type.NODE, 2, createPoint(0.5,1.0))
+        )
+        val outsideElements = listOf(
+            ElementGeometryEntry(Element.Type.NODE, 3, createPoint(-0.5,1.0)),
+            ElementGeometryEntry(Element.Type.NODE, 4, createPoint(1.5,1.0)),
+            ElementGeometryEntry(Element.Type.NODE, 5, createPoint(0.5,-0.5)),
+            ElementGeometryEntry(Element.Type.NODE, 6, createPoint(0.5,2.5))
+        )
+        dao.putAll(insideElements + outsideElements)
+
+        assertTrue(dao.getAllEntries(BoundingBox(0.0, 0.0, 1.0, 2.0))
+            .containsExactlyInAnyOrder(insideElements))
+    }
+
     @Test fun simplePutGet() {
         val geometry = createSimpleGeometry()
         dao.put(ElementGeometryEntry(Element.Type.NODE, 0, geometry))
