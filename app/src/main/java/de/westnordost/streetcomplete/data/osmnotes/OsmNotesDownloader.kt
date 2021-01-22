@@ -40,7 +40,9 @@ class OsmNotesDownloader @Inject constructor(
         val quests = ArrayList<OsmNoteQuest>()
         val noteCommentUserIds = HashSet<Long>()
 
+        var i = 0
         notesApi.getAll(bbox, { note ->
+            ++i
             if (note.comments.isNotEmpty()) { // exclude invalid notes (#1338)
                 val quest = OsmNoteQuest(note, questType)
                 if (shouldMakeNoteClosed(userId, note)) {
@@ -55,13 +57,10 @@ class OsmNotesDownloader @Inject constructor(
             }
         }, 10000, 0)
 
-        val update = osmNoteQuestController.replaceInBBox(quests, bbox)
-
         val seconds = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG,
-            "Added ${update.added} new and removed ${update.deleted} closed notes" +
-            " (${update.closed} of ${quests.size} notes are hidden) in ${seconds}s"
-        )
+        Log.i(TAG, "Downloaded $i notes in ${seconds}s")
+
+        osmNoteQuestController.replaceInBBox(quests, bbox)
 
         avatarsDownloader.download(noteCommentUserIds)
     }

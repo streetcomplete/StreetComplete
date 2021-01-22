@@ -29,12 +29,15 @@ import javax.inject.Singleton
     override fun get(type: Element.Type, id: Long) : Element? = elementDB.get(type, id)
 
     override fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry {
+        val time = System.currentTimeMillis()
         val elementGeometryEntries = geometryDB.getAllEntries(bbox)
         val elementKeys = elementGeometryEntries.map { ElementKey(it.elementType, it.elementId) }
         val mapData = MutableMapData()
         mapData.addAll(elementDB.getAll(elementKeys))
         mapData.handle(bbox)
-        return ImmutableMapDataWithGeometry(mapData, elementGeometryEntries)
+        val result = ImmutableMapDataWithGeometry(mapData, elementGeometryEntries)
+        Log.i(TAG, "Fetched ${elementKeys.size} elements and geometries in ${System.currentTimeMillis() - time}ms")
+        return result
     }
 
     /** update element data because in the given bounding box, fresh data from the OSM API has been

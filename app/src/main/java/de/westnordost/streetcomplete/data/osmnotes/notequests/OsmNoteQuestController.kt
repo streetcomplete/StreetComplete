@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
+import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osmnotes.NoteDao
@@ -83,7 +84,8 @@ import javax.inject.Singleton
     }
 
     /** Replace all quests in the given bounding box with the given quests, including its notes */
-    fun replaceInBBox(quests: List<OsmNoteQuest>, bbox: BoundingBox): UpdateResult {
+    fun replaceInBBox(quests: List<OsmNoteQuest>, bbox: BoundingBox) {
+        val time = System.currentTimeMillis()
         /* All quests in the given bounding box and of the given type should be replaced by the
         *  input list. So, there may be 1. new quests that are added because there are new notes,
         *   2. there may be previous quests that are no more because the notes have been
@@ -124,9 +126,13 @@ import javax.inject.Singleton
         val closedCount = dao.updateAll(closedExistingQuests)
         val addedCount = dao.addAll(addedQuests)
 
-        onUpdated(added = addedQuests, updated = closedExistingQuests, deleted = obsoleteQuestIds)
+        val seconds = (System.currentTimeMillis() - time) / 1000
+        Log.i(TAG,
+            "Added $addedCount new and removed $deletedCount closed notes" +
+                " (${closedCount} of ${quests.size} notes are hidden) in ${seconds}s"
+        )
 
-        return UpdateResult(added = addedCount, deleted = deletedCount, closed = closedCount)
+        onUpdated(added = addedQuests, updated = closedExistingQuests, deleted = obsoleteQuestIds)
     }
 
     /** Make all the given quests invisible */
@@ -201,5 +207,7 @@ import javax.inject.Singleton
         questStatusListeners.forEach { it.onUpdated(added,updated, deleted) }
     }
 
-    data class UpdateResult(val added: Int, val deleted: Int, val closed: Int)
+    companion object {
+        private const val TAG = "OsmNoteQuestController"
+    }
 }

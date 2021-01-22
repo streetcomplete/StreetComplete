@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.osmquest
 
+import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -87,7 +88,8 @@ import javax.inject.Singleton
 
     /** Replace all quests of the given types in the given bounding box with the given quests.
      *  Called on download of a quest type for a bounding box. */
-    fun replaceInBBox(quests: Iterable<OsmQuest>, bbox: BoundingBox, questTypes: List<String>): UpdateResult {
+    fun replaceInBBox(quests: Iterable<OsmQuest>, bbox: BoundingBox, questTypes: List<String>) {
+        val time = System.currentTimeMillis()
         require(questTypes.isNotEmpty()) { "questTypes must not be empty if not null" }
         /* All quests in the given bounding box and of the given types should be replaced by the
         *  input list. So, there may be 1. new quests that are added and 2. there may be previous
@@ -120,19 +122,20 @@ import javax.inject.Singleton
         *  also extend the bbox in which they download the quests, like the housenumber quest */
         val reallyAddedQuests = addedQuests.filter { it.id != null }
 
-        onUpdated(added = reallyAddedQuests, deleted = obsoleteQuestIds)
+        val seconds = (System.currentTimeMillis() - time) / 1000
+        Log.i(TAG,"Added $addedCount new and removed $deletedCount already resolved quests in ${seconds}s")
 
-        return UpdateResult(added = addedCount, deleted = deletedCount)
+        onUpdated(added = reallyAddedQuests, deleted = obsoleteQuestIds)
     }
 
     /** Add new unanswered quests and remove others for the given element. Called when an OSM
      *  element is updated, so the quests that reference that element need to be updated as well. */
-    fun updateForElement(added: List<OsmQuest>, removedIds: List<Long>): UpdateResult {
+    fun updateForElement(added: List<OsmQuest>, removedIds: List<Long>) {
         val deletedCount = dao.deleteAllIds(removedIds)
         val addedCount = dao.addAll(added)
-        onUpdated(added = added.filter { it.id != null }, deleted = removedIds)
+        val reallyAddedQuests = added.filter { it.id != null }
 
-        return UpdateResult(added = addedCount, deleted = deletedCount)
+        onUpdated(added = reallyAddedQuests, deleted = removedIds)
     }
 
     /** Remove all unsolved quests that reference the given element. Used for when a quest blocker
@@ -260,6 +263,8 @@ import javax.inject.Singleton
         questStatusListeners.forEach { it.onUpdated(added, updated, deleted) }
     }
 
-    data class UpdateResult(val added: Int, val deleted: Int)
+    companion object {
+        private const val TAG = "OsmQuestController"
+    }
 }
 

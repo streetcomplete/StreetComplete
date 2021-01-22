@@ -76,15 +76,7 @@ class OsmQuestUpdater @Inject constructor(
             }
         }
 
-        val updates = osmQuestController.updateForElement(createQuests, deleteQuestIds)
-        // TODO OsmQuestcontroller should log itself
-        /*
-        if (updates.added > 0) {
-            Log.d(TAG, "Created ${updates.added} new quests for ${element.type.name}#${element.id}: ${createdQuestsLog.joinToString()}")
-        }
-        if (updates.deleted > 0) {
-            Log.d(TAG, "Removed ${updates.deleted} quests no longer applicable for ${element.type.name}#${element.id}: ${removedQuestsLog.joinToString()}")
-        }*/
+        osmQuestController.updateForElement(createQuests, deleteQuestIds)
     }
 
     override fun onUpdateAllInBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
@@ -120,7 +112,7 @@ class OsmQuestUpdater @Inject constructor(
         time = System.currentTimeMillis()
 
         val questTypeNames = questTypes.map { it.getName() }
-        val replaceResult = osmQuestController.replaceInBBox(quests, bbox, questTypeNames)
+        osmQuestController.replaceInBBox(quests, bbox, questTypeNames)
 
         for (questType in questTypes) {
             questType.cleanMetadata()
@@ -128,7 +120,7 @@ class OsmQuestUpdater @Inject constructor(
 
         val secondsSpentPersisting = (System.currentTimeMillis() - time) / 1000
         Log.i(TAG,"Persisted ${quests.size} quests in ${secondsSpentPersisting}s")
-        Log.i(TAG,"Added ${replaceResult.added} new and removed ${replaceResult.deleted} already resolved quests")
+
     }
 
     private fun mayCreateQuest(

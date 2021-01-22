@@ -21,12 +21,15 @@ class OsmAvatarsDownloader @Inject constructor(
             return
         }
 
+        val time = System.currentTimeMillis()
         for (userId in userIds) {
             val avatarUrl = userApi.get(userId)?.profileImageUrl
             if (avatarUrl != null) {
                 download(userId, avatarUrl)
             }
         }
+        val seconds = (System.currentTimeMillis() - time) / 1000
+        Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds}s")
     }
 
     /** download avatar for the given user and a known avatar url */
@@ -35,7 +38,7 @@ class OsmAvatarsDownloader @Inject constructor(
         try {
             val avatarFile = File(cacheDir, "$userId")
             URL(avatarUrl).saveToFile(avatarFile)
-            Log.i(TAG, "Saved file: ${avatarFile.path}")
+            Log.d(TAG, "Downloaded file: ${avatarFile.path}")
         } catch (e: IOException) {
             Log.w(TAG, "Unable to download avatar for user id $userId")
         }
