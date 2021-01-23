@@ -90,9 +90,9 @@ configurations {
 
 dependencies {
     val kotlinVersion = "1.4.10"
-    val mockitoVersion = "2.28.2"
-    val kotlinxVersion = "1.3.8"
-    val daggerVersion = "2.14.1"
+    val mockitoVersion = "3.7.7"
+    val kotlinxVersion = "1.4.2"
+    val daggerVersion = "2.31.2"
 
     // tests
     testImplementation("junit:junit:4.13.1")
@@ -156,7 +156,7 @@ dependencies {
 
     // serialization
     implementation("com.esotericsoftware:kryo:4.0.2")
-    implementation("org.objenesis:objenesis:2.6")
+    implementation("org.objenesis:objenesis:3.1")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.13.0")
