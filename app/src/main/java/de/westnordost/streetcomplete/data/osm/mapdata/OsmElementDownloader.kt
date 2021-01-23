@@ -6,8 +6,10 @@ import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.handler.MapDataHandler
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.download.Downloader
+import de.westnordost.streetcomplete.util.enlargedBy
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
@@ -23,10 +25,11 @@ class OsmElementDownloader @Inject constructor(
         val time = System.currentTimeMillis()
 
         val mapData = MutableMapData()
-        getMapAndHandleTooBigQuery(bbox, mapData)
+        val expandedBBox = bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+        getMapAndHandleTooBigQuery(expandedBBox, mapData)
         /* The map data might be filled with several bboxes one after another if the download is
            split up in several, so lets set the bbox back to the bbox of the complete download */
-        mapData.handle(bbox)
+        mapData.handle(expandedBBox)
 
         val seconds = (System.currentTimeMillis() - time) / 1000
         Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds}s")

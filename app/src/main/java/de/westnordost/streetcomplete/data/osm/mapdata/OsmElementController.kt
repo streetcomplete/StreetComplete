@@ -45,7 +45,7 @@ import javax.inject.Singleton
     fun updateForBBox(bbox: BoundingBox, mapData: MapData) {
         val time = System.currentTimeMillis()
 
-        val oldElementKeys = geometryDB.getAllKeys(bbox).toMutableSet()
+        val oldElementKeys = geometryDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
         for (element in mapData) {
             oldElementKeys.remove(ElementKey(element.type, element.id))
         }
