@@ -1,11 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import android.util.Log
-import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.*
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
@@ -15,7 +12,6 @@ import javax.inject.Singleton
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
 @Singleton class OsmElementController @Inject internal constructor(
-    private val mapDataApi: MapDataApi,
     private val elementDB: MergedElementDao,
     private val wayDB: WayDao,
     private val nodeDB: NodeDao,
@@ -80,40 +76,16 @@ import javax.inject.Singleton
 
     /** update an element because the element has changed on OSM */
     fun update(element: Element) {
-        // we need the complete geometry here because if f.e. the way has been changed to include
-        // more points, we don't have what it takes to construct the new geometry in local storage
-        val geometry = createCompleteGeometry(element) ?: return delete(element.type, element.id)
+        // TODO bulk update would be better, nodes first!
+        val mapData = MutableMapData()
+        mapData.addAll(listOf(element))
+
+        val geometry = elementGeometryCreator.create(element, mapData, true)
+            ?: return delete(element.type, element.id)
 
         geometryDB.put(ElementGeometryEntry(element.type, element.id, geometry))
         elementDB.put(element)
         elementUpdatesListener.forEach { it.onUpdated(element, geometry) }
-    }
-
-    private fun createCompleteGeometry(element: Element): ElementGeometry? {
-        when(element) {
-            is Node -> {
-                return elementGeometryCreator.create(element)
-            }
-            is Way -> {
-                val mapData: MapData
-                try {
-                    mapData = mapDataApi.getWayComplete(element.id)
-                } catch (e: OsmNotFoundException) {
-                    return null
-                }
-                return elementGeometryCreator.create(element, mapData)
-            }
-            is Relation -> {
-                val mapData: MapData
-                try {
-                    mapData = mapDataApi.getRelationComplete(element.id)
-                } catch (e: OsmNotFoundException) {
-                    return null
-                }
-                return elementGeometryCreator.create(element, mapData)
-            }
-            else -> return null
-        }
     }
 
     private fun completeMapData(mapData: MutableMapData) {
