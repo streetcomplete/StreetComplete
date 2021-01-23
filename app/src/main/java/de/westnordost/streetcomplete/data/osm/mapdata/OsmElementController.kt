@@ -17,6 +17,8 @@ import javax.inject.Singleton
 @Singleton class OsmElementController @Inject internal constructor(
     private val mapDataApi: MapDataApi,
     private val elementDB: MergedElementDao,
+    private val wayDB: WayDao,
+    private val nodeDB: NodeDao,
     private val geometryDB: ElementGeometryDao,
     private val elementGeometryCreator: ElementGeometryCreator
 ): OsmElementSource {
@@ -42,8 +44,12 @@ import javax.inject.Singleton
 
     /** update element data because in the given bounding box, fresh data from the OSM API has been
      *  downloaded */
-    fun updateForBBox(bbox: BoundingBox, mapData: MapData) {
+    fun updateForBBox(bbox: BoundingBox, mapData: MutableMapData) {
         val time = System.currentTimeMillis()
+
+        // for incompletely downloaded relations, complete the map data (as far as possible) with
+        // local data, i.e. with local nodes and ways (still) in local storage
+        completeMapData(mapData)
 
         val oldElementKeys = geometryDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
         for (element in mapData) {
@@ -52,7 +58,6 @@ import javax.inject.Singleton
         elementDB.deleteAll(oldElementKeys)
         geometryDB.deleteAll(oldElementKeys)
         val geometries = mapData.mapNotNull { element ->
-            // TODO hm what about incomplete relations?
             val geometry = elementGeometryCreator.create(element, mapData, true)
             geometry?.let { ElementGeometryEntry(element.type, element.id, it) }
         }
@@ -75,14 +80,16 @@ import javax.inject.Singleton
 
     /** update an element because the element has changed on OSM */
     fun update(element: Element) {
-        val geometry = createGeometry(element) ?: return delete(element.type, element.id)
+        // we need the complete geometry here because if f.e. the way has been changed to include
+        // more points, we don't have what it takes to construct the new geometry in local storage
+        val geometry = createCompleteGeometry(element) ?: return delete(element.type, element.id)
 
         geometryDB.put(ElementGeometryEntry(element.type, element.id, geometry))
         elementDB.put(element)
         elementUpdatesListener.forEach { it.onUpdated(element, geometry) }
     }
 
-    private fun createGeometry(element: Element): ElementGeometry? {
+    private fun createCompleteGeometry(element: Element): ElementGeometry? {
         when(element) {
             is Node -> {
                 return elementGeometryCreator.create(element)
@@ -107,6 +114,33 @@ import javax.inject.Singleton
             }
             else -> return null
         }
+    }
+
+    private fun completeMapData(mapData: MutableMapData) {
+        val missingNodeIds = mutableListOf<Long>()
+        val missingWayIds = mutableListOf<Long>()
+        for (relation in mapData.relations) {
+            for (member in relation.members) {
+                if (member.type == Element.Type.NODE && mapData.getNode(member.ref) == null) {
+                    missingNodeIds.add(member.ref)
+                }
+                if (member.type == Element.Type.WAY && mapData.getWay(member.ref) == null) {
+                    missingWayIds.add(member.ref)
+                }
+            }
+        }
+        val ways = wayDB.getAll(missingWayIds)
+        for (way in ways) {
+            for (nodeId in way.nodeIds) {
+                if (mapData.getNode(nodeId) == null) {
+                    missingNodeIds.add(nodeId)
+                }
+            }
+        }
+        val nodes = nodeDB.getAll(missingNodeIds)
+
+        mapData.addAll(nodes)
+        mapData.addAll(ways)
     }
 
     /* ------------------------------------ Listeners ------------------------------------------- */
