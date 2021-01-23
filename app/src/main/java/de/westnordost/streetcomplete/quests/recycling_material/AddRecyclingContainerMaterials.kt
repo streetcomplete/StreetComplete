@@ -58,7 +58,8 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     }
 
     // can't determine by tags alone because we need info about geometry surroundings
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!filter.matches(element)) false else null
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
