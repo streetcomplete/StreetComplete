@@ -15,4 +15,9 @@ enum class QuestStatus {
     CLOSED;
 
     val isVisible: Boolean get() = this == NEW
+
+    val isUnanswered: Boolean get() = when(this) {
+        NEW, HIDDEN, INVISIBLE -> true
+        else -> false
+    }
 }

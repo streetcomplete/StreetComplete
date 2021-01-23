@@ -88,39 +88,26 @@ import javax.inject.Singleton
 
     /** Replace all quests of the given types in the given bounding box with the given quests.
      *  Called on download of a quest type for a bounding box. */
-    fun replaceInBBox(quests: Iterable<OsmQuest>, bbox: BoundingBox, questTypes: List<String>) {
+    fun updateForBBox(quests: Collection<OsmQuest>, bbox: BoundingBox) {
         val time = System.currentTimeMillis()
-        require(questTypes.isNotEmpty()) { "questTypes must not be empty if not null" }
-        /* All quests in the given bounding box and of the given types should be replaced by the
-        *  input list. So, there may be 1. new quests that are added and 2. there may be previous
-        *  quests that have been there before but now not anymore, these need to be removed. */
-        val previousQuests = mutableMapOf<OsmElementQuestType<*>, MutableMap<ElementKey, Long>>()
-        for (quest in dao.getAll(bounds = bbox, questTypes = questTypes)) {
-            val previousQuestIdsByElement = previousQuests.getOrPut(quest.osmElementQuestType, { mutableMapOf() })
-            previousQuestIdsByElement[ElementKey(quest.elementType, quest.elementId)] = quest.id!!
-        }
 
-        val addedQuests = mutableListOf<OsmQuest>()
+        val previousQuests = mutableMapOf<OsmElementQuestType<*>, MutableMap<ElementKey, OsmQuest>>()
+        for (quest in dao.getAll(bounds = bbox)) {
+            val previousQuestIdsByElement = previousQuests.getOrPut(quest.osmElementQuestType, { mutableMapOf() })
+            previousQuestIdsByElement[ElementKey(quest.elementType, quest.elementId)] = quest
+        }
 
         for (quest in quests) {
-            val previousQuestIdsByElement = previousQuests[quest.osmElementQuestType]
-            val e = ElementKey(quest.elementType, quest.elementId)
-            if (previousQuestIdsByElement != null && previousQuestIdsByElement.containsKey(e)) {
-                previousQuestIdsByElement.remove(e)
-            } else {
-                addedQuests.add(quest)
-            }
+            previousQuests[quest.osmElementQuestType]?.remove(ElementKey(quest.elementType, quest.elementId))
         }
-        val obsoleteQuestIds = previousQuests.values.flatMap { it.values }
+        val obsoleteQuestIds = previousQuests.values
+            .flatMap { it.values }
+            .filter { it.status.isUnanswered } // do not delete quests with changes
+            .map { it.id!! }
 
         val deletedCount = dao.deleteAllIds(obsoleteQuestIds)
-        val addedCount = dao.addAll(addedQuests)
-
-        /* Only send quests to listener that were really added, i.e. have an ID. How could quests
-        *  not be added at this point? If they exist in the DB but outside the bounding box,
-        *  so usually either if the geometry has been moved in the meantime, or, some quests
-        *  also extend the bbox in which they download the quests, like the housenumber quest */
-        val reallyAddedQuests = addedQuests.filter { it.id != null }
+        val addedCount = dao.addAll(quests)
+        val reallyAddedQuests = quests.filter { it.id != null }
 
         val seconds = (System.currentTimeMillis() - time) / 1000
         Log.i(TAG,"Added $addedCount new and removed $deletedCount already resolved quests in ${seconds}s")
@@ -128,21 +115,38 @@ import javax.inject.Singleton
         onUpdated(added = reallyAddedQuests, deleted = obsoleteQuestIds)
     }
 
-    /** Add new unanswered quests and remove others for the given element. Called when an OSM
+    /** For the given element, replace the current quests with the given ones. Called when an OSM
      *  element is updated, so the quests that reference that element need to be updated as well. */
-    fun updateForElement(added: List<OsmQuest>, removedIds: List<Long>) {
-        val deletedCount = dao.deleteAllIds(removedIds)
-        val addedCount = dao.addAll(added)
-        val reallyAddedQuests = added.filter { it.id != null }
+    fun updateForElement(elementType: Element.Type, elementId: Long, quests: List<OsmQuest>) {
+        val elementKey = ElementKey(elementType, elementId)
+        val previousQuestsByType = dao.getAll(element = elementKey)
+            .associateBy { it.osmElementQuestType }
+            .toMutableMap()
 
-        onUpdated(added = reallyAddedQuests, deleted = removedIds)
+        for (quest in quests) {
+            previousQuestsByType.remove(quest.osmElementQuestType)
+        }
+        val obsoleteQuests = previousQuestsByType.values.filter { it.status.isUnanswered } // do not delete quests with changes
+        val obsoleteQuestIds = obsoleteQuests.mapNotNull { it.id }
+
+        dao.deleteAllIds(obsoleteQuestIds)
+        dao.addAll(quests) // if already exists, will not add it
+        val reallyAddedQuests = quests.filter { it.id != null }
+
+        Log.i(TAG,
+            "For ${elementType.name}#$elementId:"
+                + if (reallyAddedQuests.isEmpty()) "" else " added: ${reallyAddedQuests.joinToString { it.javaClass.name }}"
+                + if (obsoleteQuests.isEmpty()) "" else " removed: ${obsoleteQuests.joinToString { it.javaClass.name }}"
+        )
+
+        onUpdated(added = reallyAddedQuests, deleted = obsoleteQuestIds)
     }
 
     /** Remove all unsolved quests that reference the given element. Used for when a quest blocker
      * (=a note) or similar has been added for that element position. */
     fun deleteAllUnsolvedForElement(elementType: Element.Type, elementId: Long): Int {
         val deletedQuestIds = dao.getAllIds(
-            statusIn = listOf(QuestStatus.NEW),
+            statusIn = listOf(QuestStatus.NEW, QuestStatus.HIDDEN, QuestStatus.INVISIBLE),
             element = ElementKey(elementType, elementId)
         )
         val result = dao.deleteAllIds(deletedQuestIds)
@@ -235,10 +239,6 @@ import javax.inject.Singleton
 
     /** Get all answered quests count */
     fun getAllAnsweredCount(): Int = dao.getCount(statusIn = listOf(QuestStatus.ANSWERED))
-
-    /** Get all quests for the given type */
-    fun getAllForElement(elementType: Element.Type, elementId: Long): List<OsmQuest> =
-        dao.getAll(element = ElementKey(elementType, elementId))
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 

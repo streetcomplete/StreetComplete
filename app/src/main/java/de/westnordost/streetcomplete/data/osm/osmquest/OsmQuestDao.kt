@@ -43,7 +43,11 @@ internal class OsmQuestDao @Inject constructor(
     private val db get() = dbHelper.writableDatabase
 
     fun add(quest: OsmQuest): Boolean {
-        return addAll(listOf(quest)) == 1
+        quest.lastUpdate = Date()
+        val rowId = db.insertWithOnConflict(NAME, null, mapping.toContentValues(quest), CONFLICT_IGNORE)
+        if (rowId == -1L) return false
+        quest.id = rowId
+        return true
     }
 
     fun get(id: Long): OsmQuest? {
@@ -70,15 +74,11 @@ internal class OsmQuestDao @Inject constructor(
     }
 
     fun addAll(quests: Collection<OsmQuest>): Int {
+        if (quests.isEmpty()) return 0
         var addedRows = 0
         db.transaction {
             for (quest in quests) {
-                quest.lastUpdate = Date()
-                val rowId = db.insertWithOnConflict(NAME, null, mapping.toContentValues(quest), CONFLICT_IGNORE)
-                if (rowId != -1L) {
-                    quest.id = rowId
-                    addedRows++
-                }
+                if (add(quest)) addedRows++
             }
         }
         return addedRows

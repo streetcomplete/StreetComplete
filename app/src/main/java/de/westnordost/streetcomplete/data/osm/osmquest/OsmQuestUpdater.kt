@@ -9,15 +9,15 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementSource
-import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.contains
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.enlargedBy
 import de.westnordost.streetcomplete.util.measuredLength
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +30,7 @@ import javax.inject.Inject
 /** Does one API call to get all the map data and generates quests from that. Calls getApplicableElements
  *  on all the quest types */
 class OsmQuestUpdater @Inject constructor(
-    osmElementSource: OsmElementSource,
+    private val osmElementSource: OsmElementSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val osmQuestController: OsmQuestController,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
@@ -49,37 +49,27 @@ class OsmQuestUpdater @Inject constructor(
     }
 
     override fun onUpdated(element: Element, geometry: ElementGeometry) {
-        val createQuests = mutableListOf<OsmQuest>()
-        val deleteQuestIds = mutableListOf<Long>() // TODO or isn't this the duty of OsmQuestcontroller??
+        val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+        val lazyMapData by lazy { osmElementSource.getMapDataWithGeometry(paddedBounds) }
 
-        val minBbox = geometry.center.enclosingBoundingBox(1.0)
-        val truncatedBlacklistedPositions = blacklistedPositionsSource.getAllPositions(minBbox).map { it.truncateTo5Decimals() }.toSet()
+        val quests = mutableListOf<OsmQuest>()
+        val truncatedBlacklistedPositions = blacklistedPositionsSource.getAllPositions(paddedBounds).map { it.truncateTo5Decimals() }.toSet()
         val blacklistedElements = blacklistedElementsSource.getAll().toSet()
 
-        val currentQuestsByType = osmQuestController.getAllForElement(element.type, element.id).associateBy { it.type }
-
         for (questType in questTypes) {
-            // TODO better applies to...
-            val appliesToElement = questType.isApplicableTo(element) ?: continue
-            val mayCreateQuest = appliesToElement && mayCreateQuest(questType, element, geometry, blacklistedElements, truncatedBlacklistedPositions, null)
-            val hasQuest = currentQuestsByType.containsKey(questType)
-            if (mayCreateQuest && !hasQuest) {
-                createQuests.add(OsmQuest(questType, element.type, element.id, geometry))
-            } else if (!mayCreateQuest && hasQuest) {
-                // only remove "fresh" unanswered quests because answered/closed quests by definition
-                // do not apply to the element anymore. E.g. after adding the name to the street,
-                // there shan't be any AddRoadName quest for that street anymore
-                val quest = currentQuestsByType.getValue(questType)
-                if (quest.status == QuestStatus.NEW) {
-                    deleteQuestIds.add(quest.id!!)
-                }
-            }
+            val appliesToElement = questType.isApplicableTo(element)
+                ?: questType.getApplicableElements(lazyMapData).contains(element)
+
+            if (!appliesToElement) continue
+            if (!mayCreateQuest(questType, element, geometry, blacklistedElements, truncatedBlacklistedPositions, null)) continue
+
+            quests.add(OsmQuest(questType, element.type, element.id, geometry))
         }
 
-        osmQuestController.updateForElement(createQuests, deleteQuestIds)
+        osmQuestController.updateForElement(element.type, element.id, quests)
     }
 
-    override fun onUpdateAllInBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+    override fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
         var time = System.currentTimeMillis()
 
         val quests = ConcurrentLinkedQueue<OsmQuest>()
@@ -111,8 +101,7 @@ class OsmQuestUpdater @Inject constructor(
         Log.i(TAG,"Created ${quests.size} quests in ${secondsSpentAnalyzing}s")
         time = System.currentTimeMillis()
 
-        val questTypeNames = questTypes.map { it.getName() }
-        osmQuestController.replaceInBBox(quests, bbox, questTypeNames)
+        osmQuestController.updateForBBox(quests, bbox)
 
         for (questType in questTypes) {
             questType.cleanMetadata()

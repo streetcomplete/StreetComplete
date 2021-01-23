@@ -42,7 +42,7 @@ import javax.inject.Singleton
 
     /** update element data because in the given bounding box, fresh data from the OSM API has been
      *  downloaded */
-    fun updateAllInBBox(bbox: BoundingBox, mapData: MapData) {
+    fun updateForBBox(bbox: BoundingBox, mapData: MapData) {
         val time = System.currentTimeMillis()
 
         val oldElementKeys = geometryDB.getAllKeys(bbox).toMutableSet()
@@ -63,7 +63,7 @@ import javax.inject.Singleton
         Log.i(TAG,"Persisted ${geometries.size} elements and geometries in ${seconds}s")
 
         val mapDataWithGeometry = ImmutableMapDataWithGeometry(mapData, geometries)
-        elementUpdatesListener.forEach { it.onUpdateAllInBBox(bbox, mapDataWithGeometry) }
+        elementUpdatesListener.forEach { it.onUpdateForBBox(bbox, mapDataWithGeometry) }
     }
 
     /** delete an element because the element does not exist anymore on OSM */
