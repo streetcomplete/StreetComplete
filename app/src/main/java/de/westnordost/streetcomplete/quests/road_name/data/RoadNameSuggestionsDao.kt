@@ -2,15 +2,11 @@ package de.westnordost.streetcomplete.quests.road_name.data
 
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
-import de.westnordost.osmapi.map.data.Element
 
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.ktx.getBlob
 import de.westnordost.streetcomplete.ktx.query
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.GEOMETRY

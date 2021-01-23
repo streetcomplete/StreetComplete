@@ -8,7 +8,6 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
-import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.user.UserStore
@@ -30,7 +29,6 @@ class OsmNotesDownloaderTest {
     @Before fun setUp() {
         notesApi = mock()
         osmNoteQuestController = mock()
-        on(osmNoteQuestController.replaceInBBox(any(), any())).thenReturn(OsmNoteQuestController.UpdateResult(0,0,0))
 
         preferences = mock()
         avatarsDownloader = mock()
