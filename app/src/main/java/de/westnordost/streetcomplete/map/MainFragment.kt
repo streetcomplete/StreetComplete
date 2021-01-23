@@ -606,7 +606,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         if (displayArea == null) {
             context?.toast(R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG)
         } else {
-            val enclosingBBox = displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.QUEST_TILE_ZOOM)
+            val enclosingBBox = displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
             val areaInSqKm = enclosingBBox.area() / 1000000
             if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
                 context?.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)

@@ -80,7 +80,7 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
         }
 
         val tiles = intent.getSerializableExtra(ARG_TILES_RECT) as TilesRect
-        val bbox = tiles.asBoundingBox(ApplicationConstants.QUEST_TILE_ZOOM)
+        val bbox = tiles.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
 
         if (hasDownloadedAlready(tiles)) {
             Log.i(TAG, "Not downloading (${bbox.asLeftBottomRightTopString}), data still fresh")

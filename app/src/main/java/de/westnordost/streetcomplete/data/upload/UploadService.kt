@@ -104,7 +104,7 @@ class UploadService : IntentService(TAG) {
     private fun invalidateArea(pos: LatLon) {
         // called after a conflict. If there is a conflict, the user is not the only one in that
         // area, so best invalidate all downloaded quests here and redownload on next occasion
-        val tile = pos.enclosingTile(ApplicationConstants.QUEST_TILE_ZOOM)
+        val tile = pos.enclosingTile(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
         downloadedTilesDB.remove(tile)
     }
 

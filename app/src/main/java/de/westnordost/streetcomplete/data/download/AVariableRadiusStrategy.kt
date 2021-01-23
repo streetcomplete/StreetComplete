@@ -24,7 +24,7 @@ abstract class AVariableRadiusStrategy(
     protected abstract val desiredQuestCountInVicinity: Int
 
     override fun getDownloadBoundingBox(pos: LatLon): BoundingBox? {
-        val tileZoom = ApplicationConstants.QUEST_TILE_ZOOM
+        val tileZoom = ApplicationConstants.DOWNLOAD_TILE_ZOOM
 
         val thisTile = pos.enclosingTile(tileZoom)
         val hasMissingQuestsForThisTile = hasMissingQuestsFor(thisTile.toTilesRect())
