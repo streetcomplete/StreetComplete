@@ -13,7 +13,6 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestMapping
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 
@@ -74,11 +73,11 @@ class NoteDaoTest : ApplicationDbTestCase() {
         OsmNoteQuestDao(dbHelper, osmNoteQuestMapping).add(OsmNoteQuest(note, OsmNoteQuestType()))
         assertEquals(0, dao.deleteUnreferenced())
     }
-    
+
     @Test fun deleteButNothingIsThere() {
         assertFalse(dao.delete(1))
     }
-    
+
     @Test fun delete() {
         val note = createNote()
         dao.put(note)

@@ -10,7 +10,6 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
 import de.westnordost.streetcomplete.data.osmnotes.*
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
 import java.util.concurrent.atomic.AtomicBoolean

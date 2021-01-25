@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.download.DownloadModule
 import de.westnordost.streetcomplete.data.meta.MetadataModule
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementModule
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestModule
 import de.westnordost.streetcomplete.data.upload.UploadModule
 import de.westnordost.streetcomplete.data.user.UserModule
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule
@@ -33,6 +34,7 @@ object Injector {
             .userModule(UserModule)
             .mapModule(MapModule)
             .osmElementModule(OsmElementModule)
+            .osmNoteQuestModule(OsmNoteQuestModule)
             .build()
     }
 }

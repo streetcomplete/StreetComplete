@@ -14,22 +14,12 @@ import javax.inject.Singleton
  *  listeners about changes. */
 @Singleton class OsmNoteQuestController @Inject internal constructor(
     private val dao: OsmNoteQuestDao
-) {
+): OsmNoteQuestSource {
+
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
-    /** Interface for listening to changes for quest (status). */
-    interface QuestStatusListener {
-        /** a note quest was added */
-        fun onAdded(quest: OsmNoteQuest)
-        /** the status of a note quest was changed */
-        fun onChanged(quest: OsmNoteQuest, previousStatus: QuestStatus)
-        /** a note quest was removed */
-        fun onRemoved(questId: Long, previousStatus: QuestStatus)
-        /** various note quests were updated */
-        fun onUpdated(added: Collection<OsmNoteQuest>, updated: Collection<OsmNoteQuest>, deleted: Collection<Long>)
-    }
-    private val questStatusListeners: MutableList<QuestStatusListener> = CopyOnWriteArrayList()
+    private val questStatusListeners: MutableList<OsmNoteQuestSource.QuestStatusListener> = CopyOnWriteArrayList()
 
     /* ---------------------------------- Modify single quests ---------------------------------- */
 
@@ -141,32 +131,27 @@ import javax.inject.Singleton
 
     /* ---------------------------------------- Getters ----------------------------------------- */
 
-    /** Get all unanswered quests in given bounding box */
-    fun getAllVisibleInBBoxCount(bbox: BoundingBox): Int =
+    override fun getAllVisibleInBBoxCount(bbox: BoundingBox): Int =
         dao.getCount(statusIn = listOf(QuestStatus.NEW), bounds = bbox)
 
-    /** Get all unanswered quests in given bounding box */
-    fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> =
+    override fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> =
         dao.getAll(statusIn = listOf(QuestStatus.NEW), bounds = bbox)
 
-    /** Get single quest by id */
-    fun get(id: Long): OsmNoteQuest? = dao.get(id)
+    override fun get(questId: Long): OsmNoteQuest? = dao.get(questId)
 
-    /** Get all answered quests */
-    fun getAllAnswered(): List<OsmNoteQuest> = dao.getAll(statusIn = listOf(QuestStatus.ANSWERED))
+    override fun getAllAnswered(): List<OsmNoteQuest> = dao.getAll(statusIn = listOf(QuestStatus.ANSWERED))
 
-    /** Get all answered quests count */
-    fun getAllAnsweredCount(): Int = dao.getCount(statusIn = listOf(QuestStatus.ANSWERED))
+    override fun getAllAnsweredCount(): Int = dao.getCount(statusIn = listOf(QuestStatus.ANSWERED))
 
     /** Get all unanswered quests */
     fun getAllVisible(): List<OsmNoteQuest> =  dao.getAll(statusIn = listOf(QuestStatus.NEW))
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 
-    fun addQuestStatusListener(listener: QuestStatusListener) {
+    override fun addQuestStatusListener(listener: OsmNoteQuestSource.QuestStatusListener) {
         questStatusListeners.add(listener)
     }
-    fun removeQuestStatusListener(listener: QuestStatusListener) {
+    override fun removeQuestStatusListener(listener: OsmNoteQuestSource.QuestStatusListener) {
         questStatusListeners.remove(listener)
     }
 

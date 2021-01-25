@@ -18,7 +18,7 @@ import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -41,7 +41,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     private lateinit var anonAvatar: Bitmap
 
-    @Inject internal lateinit var osmNoteQuestController: OsmNoteQuestController
+    @Inject internal lateinit var osmNoteQuestSource: OsmNoteQuestSource
 
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
@@ -66,7 +66,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
         anonAvatar = resources.getDrawable(R.drawable.ic_osm_anon_avatar).createBitmap()
 
-        inflateNoteDiscussion(osmNoteQuestController.get(questId)!!.note.comments)
+        inflateNoteDiscussion(osmNoteQuestSource.get(questId)!!.note.comments)
 
         if (savedInstanceState == null) {
             childFragmentManager.commit { add<AttachPhotoFragment>(R.id.attachPhotoFragment) }

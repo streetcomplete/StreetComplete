@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 /** Gets all note quests from local DB and uploads them via the OSM API */
 class OsmNoteQuestsChangesUploader @Inject constructor(
     private val noteController: NoteController,
-    private val osmNoteQuestController: OsmNoteQuestController,
+    private val osmNoteQuestSource: OsmNoteQuestSource,
     private val singleNoteUploader: OsmNoteWithPhotosUploader
 ): Uploader {
 
@@ -31,7 +31,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
         var created = 0
         var obsolete = 0
         if (cancelled.get()) return
-        for (quest in osmNoteQuestController.getAllAnswered()) {
+        for (quest in osmNoteQuestSource.getAllAnswered()) {
             if (cancelled.get()) break
 
             try {

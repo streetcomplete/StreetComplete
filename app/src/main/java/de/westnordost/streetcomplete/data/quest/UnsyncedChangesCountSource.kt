@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestDao
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 /** Access and listen to how many unsynced (=uploadable) changes there are */
 @Singleton class UnsyncedChangesCountSource @Inject constructor(
     private val osmQuestController: OsmQuestController,
-    private val osmNoteQuestController: OsmNoteQuestController,
+    private val osmNoteQuestSource: OsmNoteQuestSource,
     private val createNoteDao: CreateNoteDao,
     private val splitWayDao: OsmQuestSplitWayDao,
     private val deleteElementDao: DeleteOsmElementDao,
@@ -39,7 +39,7 @@ import javax.inject.Singleton
         field = value
         onUpdate(diff)
     }
-    private var answeredOsmNoteQuestCount: Int = osmNoteQuestController.getAllAnsweredCount()
+    private var answeredOsmNoteQuestCount: Int = osmNoteQuestSource.getAllAnsweredCount()
     set(value) {
         val diff = value - field
         field = value
@@ -87,7 +87,7 @@ import javax.inject.Singleton
         override fun onDeletedDeleteOsmElement() { --deleteOsmElementCount }
     }
 
-    private val noteQuestStatusListener = object : OsmNoteQuestController.QuestStatusListener {
+    private val noteQuestStatusListener = object : OsmNoteQuestSource.QuestStatusListener {
         override fun onAdded(quest: OsmNoteQuest) {
             if (quest.status.isAnswered) { ++answeredOsmNoteQuestCount }
         }
@@ -105,7 +105,7 @@ import javax.inject.Singleton
         }
 
         override fun onUpdated(added: Collection<OsmNoteQuest>, updated: Collection<OsmNoteQuest>, deleted: Collection<Long>) {
-            answeredOsmNoteQuestCount = osmNoteQuestController.getAllAnsweredCount()
+            answeredOsmNoteQuestCount = osmNoteQuestSource.getAllAnsweredCount()
         }
     }
     private val questStatusListener = object : OsmQuestController.QuestStatusListener {
@@ -131,7 +131,7 @@ import javax.inject.Singleton
         deleteElementDao.addListener(deleteElementListener)
         undoOsmQuestDao.addListener(undoOsmQuestListener)
         createNoteDao.addListener(createNoteListener)
-        osmNoteQuestController.addQuestStatusListener(noteQuestStatusListener)
+        osmNoteQuestSource.addQuestStatusListener(noteQuestStatusListener)
         osmQuestController.addQuestStatusListener(questStatusListener)
     }
 
