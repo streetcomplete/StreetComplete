@@ -5,14 +5,11 @@ import de.westnordost.streetcomplete.data.MapDataApi
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
 import de.westnordost.streetcomplete.data.osmnotes.*
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
@@ -21,9 +18,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 /** Gets all create notes from local DB and uploads them via the OSM API */
 class CreateNotesUploader @Inject constructor(
     private val createNoteDB: CreateNoteDao,
-    private val osmNoteQuestController: OsmNoteQuestController,
+    private val noteController: NoteController,
     private val mapDataApi: MapDataApi,
-    private val questType: OsmNoteQuestType,
     private val singleCreateNoteUploader: SingleCreateNoteUploader
 ): Uploader {
 
@@ -44,12 +40,7 @@ class CreateNotesUploader @Inject constructor(
 
             try {
                 val newNote = uploadSingle(createNote)
-
-                // add a closed quest as a blocker so that at this location no quests are created.
-                // if the note was not added, don't do this (see below) -> probably based on old data
-                val noteQuest = OsmNoteQuest(newNote, questType)
-                noteQuest.status = QuestStatus.CLOSED
-                osmNoteQuestController.add(noteQuest)
+                noteController.add(newNote)
 
                 Log.d(TAG, "Uploaded note ${createNote.logString}")
                 uploadedChangeListener?.onUploaded(NOTE, createNote.position)

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -8,8 +7,6 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
@@ -21,16 +18,14 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 class OsmNotesDownloaderTest {
     private lateinit var notesApi: NotesApi
-    private lateinit var osmNoteQuestController: OsmNoteQuestController
-    private lateinit var preferences: SharedPreferences
+    private lateinit var noteController: NoteController
     private lateinit var avatarsDownloader: OsmAvatarsDownloader
     private lateinit var userStore: UserStore
 
     @Before fun setUp() {
         notesApi = mock()
-        osmNoteQuestController = mock()
+        noteController = mock()
 
-        preferences = mock()
         avatarsDownloader = mock()
         userStore = mock()
         on(userStore.userId).thenReturn(1L)
@@ -54,7 +49,7 @@ class OsmNotesDownloaderTest {
         ))
 
         val noteApi = TestListBasedNotesApi(listOf(note1))
-        val dl = OsmNotesDownloader(noteApi, osmNoteQuestController, preferences, OsmNoteQuestType(), avatarsDownloader, userStore)
+        val dl = OsmNotesDownloader(noteApi, avatarsDownloader, userStore, noteController)
         dl.download(BoundingBox(0.0, 0.0, 1.0, 1.0), AtomicBoolean(false))
 
         verify(avatarsDownloader).download(setOf(54, 13))

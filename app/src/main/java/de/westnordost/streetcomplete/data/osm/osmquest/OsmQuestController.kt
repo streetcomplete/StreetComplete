@@ -23,7 +23,7 @@ import javax.inject.Singleton
         fun onChanged(quest: OsmQuest, previousStatus: QuestStatus)
         /** a quest was removed */
         fun onRemoved(questId: Long, previousStatus: QuestStatus)
-        /** various note quests were updated */
+        /** various quests were updated */
         fun onUpdated(added: Collection<OsmQuest>, updated: Collection<OsmQuest>, deleted: Collection<Long>)
     }
     private val questStatusListeners: MutableList<QuestStatusListener> = CopyOnWriteArrayList()
@@ -88,7 +88,7 @@ import javax.inject.Singleton
 
     /** Replace all quests of the given types in the given bounding box with the given quests.
      *  Called on download of a quest type for a bounding box. */
-    fun updateForBBox(quests: Collection<OsmQuest>, bbox: BoundingBox) {
+    fun updateForBBox(bbox: BoundingBox, quests: Collection<OsmQuest>) {
         val time = System.currentTimeMillis()
 
         val previousQuests = mutableMapOf<OsmElementQuestType<*>, MutableMap<ElementKey, OsmQuest>>()

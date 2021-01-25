@@ -56,6 +56,7 @@ class OsmQuestUpdater @Inject constructor(
         val truncatedBlacklistedPositions = blacklistedPositionsSource.getAllPositions(paddedBounds).map { it.truncateTo5Decimals() }.toSet()
         val blacklistedElements = blacklistedElementsSource.getAll().toSet()
 
+        // TODO this could also be in a coroutine...
         for (questType in questTypes) {
             val appliesToElement = questType.isApplicableTo(element)
                 ?: questType.getApplicableElements(lazyMapData).contains(element)
@@ -101,7 +102,7 @@ class OsmQuestUpdater @Inject constructor(
         Log.i(TAG,"Created ${quests.size} quests in ${secondsSpentAnalyzing}s")
         time = System.currentTimeMillis()
 
-        osmQuestController.updateForBBox(quests, bbox)
+        osmQuestController.updateForBBox(bbox, quests)
 
         for (questType in questTypes) {
             questType.cleanMetadata()

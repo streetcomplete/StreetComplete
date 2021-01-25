@@ -34,6 +34,8 @@ internal class OsmNoteQuestDao @Inject constructor(
 ) {
     private val db get() = dbHelper.writableDatabase
 
+    // TODO check if all these methods are still necessary
+
     fun add(quest: OsmNoteQuest): Boolean {
         return insert(quest, CONFLICT_IGNORE)
     }

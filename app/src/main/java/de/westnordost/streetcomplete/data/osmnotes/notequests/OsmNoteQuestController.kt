@@ -3,23 +3,17 @@ package de.westnordost.streetcomplete.data.osmnotes.notequests
 import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.osmnotes.NoteDao
 import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/** Controller for managing OsmNoteQuests. Takes care of persisting OsmNoteQuest objects along with
- *  their referenced OSM notes and notifying listeners about changes. */
+/** Controller for managing OsmNoteQuests. Takes care of persisting OsmNoteQuest and notifying
+ *  listeners about changes. */
 @Singleton class OsmNoteQuestController @Inject internal constructor(
-    private val dao: OsmNoteQuestDao,
-    private val noteDao: NoteDao
+    private val dao: OsmNoteQuestDao
 ) {
-    /* There is a 1:1 relationship of OsmNoteQuests and Notes, so how they are persisted in the
-    *  background is an implementation detail. So, this class manages the quests together with the
-    *  notes. */
-
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
@@ -56,46 +50,32 @@ import javax.inject.Singleton
         onChanged(quest, status)
     }
 
-    /** Mark that the upload of the quest was successful */
-    fun success(quest: OsmNoteQuest) {
-        val status = quest.status
-        quest.status = QuestStatus.CLOSED
-        noteDao.put(quest.note)
+    /* ------------------------------------------------------------------------------------------ */
+
+    fun deleteForNote(noteId: Long) {
+        // TODO
+
+        dao.delete(questId)
+        onRemoved(questId, previousStatus)
+    }
+
+    fun update(newquest: OsmNoteQuest) {
+        // TODO
+
         dao.update(quest)
         onChanged(quest, status)
     }
 
-    /** Mark that the quest failed because there was an unsolvable conflict during upload (deletes
-     *  the quest) */
-    fun fail(quest: OsmNoteQuest) {
-        val status = quest.status
-        dao.delete(quest.id!!)
-        noteDao.delete(quest.note.id)
-        onRemoved(quest.id!!, status)
-    }
-
-    /* ------------------------------------------------------------------------------------------ */
-
-    /** Add a single quest, including its note */
-    fun add(quest: OsmNoteQuest) {
-        noteDao.put(quest.note)
-        dao.add(quest)
-        onAdded(quest)
-    }
-
-    /** Replace all quests in the given bounding box with the given quests, including its notes */
-    fun replaceInBBox(quests: List<OsmNoteQuest>, bbox: BoundingBox) {
+    /** Replace all quests in the given bounding box with the given quests */
+    fun updateForBBox(bbox: BoundingBox, quests: List<OsmNoteQuest>) {
         val time = System.currentTimeMillis()
-        /* All quests in the given bounding box and of the given type should be replaced by the
-        *  input list. So, there may be 1. new quests that are added because there are new notes,
-        *   2. there may be previous quests that are no more because the notes have been
-        *   closed/deleted and 3. existing quests that have become invisible/solved because the
-        *   notes have been solved outside the app */
 
         val previousQuestsByNoteId = dao.getAll(bounds = bbox)
             .associateBy { it.note.id }
             .toMutableMap()
 
+        /* this here would be a little simpler if SQLite on android supported UPSERT, now we have to
+        *  sort by hand which quests are added and which quests are updated (and which did not change) */
         val closedExistingQuests = mutableListOf<OsmNoteQuest>()
         val addedQuests = mutableListOf<OsmNoteQuest>()
 
@@ -104,9 +84,9 @@ import javax.inject.Singleton
             if (existingQuest != null) {
                 previousQuestsByNoteId.remove(quest.note.id)
                 /* The status of note quests can have changed from outside this app since they are tied
-                *  to notes. So if the note changed, i.e. if a user answered or closed the note from the
-                *  website instead of within the app. This needs to be accounted for here.
-                * */
+                 *  to notes. So if the note changed, i.e. if a user answered or closed the note from the
+                 *  website instead of within the app. This needs to be accounted for here.
+                 * */
                 if (quest.status == QuestStatus.CLOSED || quest.status == QuestStatus.INVISIBLE) {
                     existingQuest.status = quest.status
                     closedExistingQuests.add(existingQuest)
@@ -115,24 +95,19 @@ import javax.inject.Singleton
                 addedQuests.add(quest)
             }
         }
-        val obsoleteQuestIds = previousQuestsByNoteId.values.map { it.id!! }
+        val obsoleteQuestIds = previousQuestsByNoteId.values
+            .filter { it.status.isUnanswered } // do not delete quests with changes
+            .map { it.id!! }
 
-        // delete obsolete note quests (note is not there anymore)
         val deletedCount = dao.deleteAllIds(obsoleteQuestIds)
-        if (deletedCount > 0) noteDao.deleteUnreferenced()
-
-        // update all notes (they may have new comments etc)
-        noteDao.putAll(quests.map { it.note })
         val closedCount = dao.updateAll(closedExistingQuests)
         val addedCount = dao.addAll(addedQuests)
+        val reallyAddedQuests = quests.filter { it.id != null }
 
         val seconds = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG,
-            "Added $addedCount new and removed $deletedCount closed notes" +
-                " (${closedCount} of ${quests.size} notes are hidden) in ${seconds}s"
-        )
+        Log.i(TAG,"Added $addedCount new, removed $deletedCount closed and hid $closedCount note quests in ${seconds}s")
 
-        onUpdated(added = addedQuests, updated = closedExistingQuests, deleted = obsoleteQuestIds)
+        onUpdated(added = reallyAddedQuests, updated = closedExistingQuests, deleted = obsoleteQuestIds)
     }
 
     /** Make all the given quests invisible */

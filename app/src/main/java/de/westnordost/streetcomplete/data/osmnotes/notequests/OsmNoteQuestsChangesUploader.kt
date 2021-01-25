@@ -6,6 +6,7 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
+import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteWithPhotosUploader
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
@@ -14,8 +15,9 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all note quests from local DB and uploads them via the OSM API */
 class OsmNoteQuestsChangesUploader @Inject constructor(
-        private val osmNoteQuestController: OsmNoteQuestController,
-        private val singleNoteUploader: OsmNoteWithPhotosUploader
+    private val noteController: NoteController,
+    private val osmNoteQuestController: OsmNoteQuestController,
+    private val singleNoteUploader: OsmNoteWithPhotosUploader
 ): Uploader {
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
@@ -34,17 +36,14 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
 
             try {
                 val newNote = singleNoteUploader.comment(quest.note.id, quest.comment ?: "", quest.imagePaths)
-                quest.note.comments = newNote.comments
-                quest.note.dateClosed = newNote.dateClosed
-                quest.note.status = newNote.status
-                osmNoteQuestController.success(quest)
+                noteController.update(newNote)
 
                 Log.d(TAG, "Uploaded note comment ${quest.logString}")
                 uploadedChangeListener?.onUploaded(NOTE, quest.center)
                 created++
                 deleteImages(quest.imagePaths)
             } catch (e: ConflictException) {
-                osmNoteQuestController.fail(quest)
+                noteController.delete(quest.note.id)
 
                 Log.d(TAG, "Dropped note comment ${quest.logString}: ${e.message}")
                 uploadedChangeListener?.onDiscarded(NOTE, quest.center)

@@ -61,7 +61,7 @@ import javax.inject.Singleton
         elementDB.putAll(mapData)
 
         val seconds = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG,"Persisted ${geometries.size} elements and geometries in ${seconds}s")
+        Log.i(TAG,"Persisted ${geometries.size} and deleted ${oldElementKeys.size} elements and geometries in ${seconds}s")
 
         val mapDataWithGeometry = ImmutableMapDataWithGeometry(mapData, geometries)
         elementUpdatesListener.forEach { it.onUpdateForBBox(bbox, mapDataWithGeometry) }

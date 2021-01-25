@@ -10,21 +10,18 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
-import de.westnordost.streetcomplete.data.osmnotes.NoteDao
 import de.westnordost.streetcomplete.data.osmnotes.NoteMapping
 
 import org.junit.Assert.*
 
 class OsmNoteQuestDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: OsmNoteQuestDao
-    private lateinit var noteDao: NoteDao
     private lateinit var questType: OsmNoteQuestType
 
     @Before fun createDao() {
         questType = OsmNoteQuestType()
         val noteMapping = NoteMapping(serializer)
         dao = OsmNoteQuestDao(dbHelper, OsmNoteQuestMapping(serializer, questType, noteMapping))
-        noteDao = NoteDao(dbHelper, noteMapping)
     }
 
     @Test fun addGetNoChanges() {
