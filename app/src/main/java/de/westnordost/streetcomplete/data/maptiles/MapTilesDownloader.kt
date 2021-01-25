@@ -4,6 +4,7 @@ import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.Downloader
+import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.TilesRect
 import de.westnordost.streetcomplete.util.enclosingTilesRect
@@ -58,9 +59,9 @@ class MapTilesDownloader @Inject constructor(
                 }
             }
         }
-        val seconds = (System.currentTimeMillis() - time) / 1000
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
         val failureText = if (failureCount > 0) ". $failureCount tiles failed to download" else ""
-        Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds}s$failureText")
+        Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
     }
 
     private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadResult = suspendCoroutine { cont ->

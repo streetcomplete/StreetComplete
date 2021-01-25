@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.quest.QuestStatus
+import de.westnordost.streetcomplete.ktx.format
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -109,8 +110,8 @@ import javax.inject.Singleton
         val addedCount = dao.addAll(quests)
         val reallyAddedQuests = quests.filter { it.id != null }
 
-        val seconds = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG,"Added $addedCount new and removed $deletedCount already resolved quests in ${seconds}s")
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
+        Log.i(TAG,"Added $addedCount new and removed $deletedCount already resolved quests in ${seconds.format(1)}s")
 
         onUpdated(added = reallyAddedQuests, deleted = obsoleteQuestIds)
     }

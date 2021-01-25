@@ -6,6 +6,7 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.ktx.format
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -60,8 +61,8 @@ import javax.inject.Singleton
         geometryDB.putAll(geometries)
         elementDB.putAll(mapData)
 
-        val seconds = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG,"Persisted ${geometries.size} and deleted ${oldElementKeys.size} elements and geometries in ${seconds}s")
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
+        Log.i(TAG,"Persisted ${geometries.size} and deleted ${oldElementKeys.size} elements and geometries in ${seconds.format(1)}s")
 
         val mapDataWithGeometry = ImmutableMapDataWithGeometry(mapData, geometries)
         elementUpdatesListener.forEach { it.onUpdateForBBox(bbox, mapDataWithGeometry) }

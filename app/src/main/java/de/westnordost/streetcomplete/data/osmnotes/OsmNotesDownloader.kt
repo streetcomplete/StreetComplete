@@ -9,6 +9,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.ktx.format
 import java.util.concurrent.atomic.AtomicBoolean
 
 /** Takes care of downloading notes and referenced avatar pictures into persistent storage */
@@ -33,8 +34,8 @@ class OsmNotesDownloader @Inject constructor(
             // exclude invalid notes (#1338)
             .filter { it.comments.isNotEmpty() }
 
-        val seconds = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG, "Downloaded ${notes.size} notes in ${seconds}s")
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
+        Log.i(TAG, "Downloaded ${notes.size} notes in ${seconds.format(1)}s")
 
         noteController.updateForBBox(bbox, notes)
 

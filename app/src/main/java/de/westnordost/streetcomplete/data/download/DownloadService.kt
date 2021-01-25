@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
+import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.TilesRect
 import kotlinx.coroutines.*
 import java.util.concurrent.atomic.AtomicBoolean
@@ -119,8 +120,8 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
             }
             progressListener?.onFinished()
 
-            val seconds = (System.currentTimeMillis() - time) / 1000
-            Log.i(TAG, "Finished download (${bbox.asLeftBottomRightTopString}) in ${seconds}s")
+            val seconds = (System.currentTimeMillis() - time) / 1000.0
+            Log.i(TAG, "Finished download (${bbox.asLeftBottomRightTopString}) in ${seconds.format(1)}s")
         }
     }
 

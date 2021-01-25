@@ -9,6 +9,7 @@ import de.westnordost.osmapi.map.handler.MapDataHandler
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.download.Downloader
+import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.enlargedBy
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
@@ -31,8 +32,8 @@ class OsmElementDownloader @Inject constructor(
            split up in several, so lets set the bbox back to the bbox of the complete download */
         mapData.handle(expandedBBox)
 
-        val seconds = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds}s")
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
+        Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
 
         osmElementController.updateForBBox(bbox, mapData)
     }

@@ -4,6 +4,7 @@ import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
+import de.westnordost.streetcomplete.ktx.format
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -30,8 +31,8 @@ import javax.inject.Singleton
         dao.putAll(notes)
         dao.deleteAll(oldNoteIds)
 
-        val seconds = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG,"Persisted ${notes.size} and deleted ${oldNoteIds.size} notes in ${seconds}s")
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
+        Log.i(TAG,"Persisted ${notes.size} and deleted ${oldNoteIds.size} notes in ${seconds.format(1)}s")
 
         noteUpdatesListeners.forEach { it.onUpdatedForBBox(bbox, notes) }
     }

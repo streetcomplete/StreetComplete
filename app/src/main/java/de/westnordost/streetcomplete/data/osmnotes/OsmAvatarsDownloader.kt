@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import android.util.Log
 import de.westnordost.streetcomplete.data.UserApi
+import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.saveToFile
 import java.io.File
 import java.io.IOException
@@ -28,8 +29,8 @@ class OsmAvatarsDownloader @Inject constructor(
                 download(userId, avatarUrl)
             }
         }
-        val seconds = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds}s")
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
+        Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds.format(1)}s")
     }
 
     /** download avatar for the given user and a known avatar url */
