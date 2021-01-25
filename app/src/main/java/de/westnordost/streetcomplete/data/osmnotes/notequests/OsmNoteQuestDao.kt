@@ -35,15 +35,11 @@ internal class OsmNoteQuestDao @Inject constructor(
     private val db get() = dbHelper.writableDatabase
 
     fun add(quest: OsmNoteQuest): Boolean {
-        return insertAll(listOf(quest), CONFLICT_IGNORE) == 1
+        return insert(quest, CONFLICT_IGNORE)
     }
 
     fun replace(quest: OsmNoteQuest): Boolean {
-        return insertAll(listOf(quest), CONFLICT_REPLACE) == 1
-    }
-
-    fun get(id: Long): OsmNoteQuest? {
-        return db.queryOne(NAME_MERGED_VIEW, null, "$QUEST_ID = $id") { mapping.toObject(it) }
+        return insert(quest, CONFLICT_REPLACE)
     }
 
     fun update(quest: OsmNoteQuest): Boolean {
@@ -53,15 +49,25 @@ internal class OsmNoteQuestDao @Inject constructor(
         return db.update(NAME, mapping.toUpdatableContentValues(quest), query, args) == 1
     }
 
-    fun updateAll(quests: Collection<OsmNoteQuest>): Int {
-        if (quests.isEmpty()) return 0
-        var rows = 0
-        db.transaction {
-            quests.forEach {
-                if (update(it)) rows++
-            }
-        }
-        return rows
+    private fun insert(quest: OsmNoteQuest, conflictAlgorithm: Int) : Boolean {
+        quest.lastUpdate = Date()
+        val rowId = db.insertWithOnConflict(NAME, null, mapping.toContentValues(quest), conflictAlgorithm)
+        if (rowId == -1L) return false
+        quest.id = rowId
+        return true
+    }
+
+    fun get(id: Long): OsmNoteQuest? {
+        return db.queryOne(NAME_MERGED_VIEW, null, "$QUEST_ID = $id") { mapping.toObject(it) }
+    }
+
+    fun getCount(
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        changedBefore: Long? = null
+    ): Int {
+        val qb = createQuery(statusIn, bounds, changedBefore)
+        return db.queryOne(NAME_MERGED_VIEW, arrayOf("COUNT(*)"), qb) { it.getInt(0) } ?: 0
     }
 
     fun delete(id: Long): Boolean {
@@ -76,9 +82,17 @@ internal class OsmNoteQuestDao @Inject constructor(
         return insertAll(quests, CONFLICT_REPLACE)
     }
 
-    fun deleteAllIds(ids: Collection<Long>): Int {
-        if (ids.isEmpty()) return 0
-        return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
+    private fun insertAll(quests: Collection<OsmNoteQuest>, conflictAlgorithm: Int): Int {
+        if (quests.isEmpty()) return 0
+        var addedRows = 0
+        db.transaction {
+            for (quest in quests) {
+                if (insert(quest, conflictAlgorithm))
+                    ++addedRows
+            }
+        }
+
+        return addedRows
     }
 
     fun getAllIds(
@@ -91,21 +105,28 @@ internal class OsmNoteQuestDao @Inject constructor(
     }
 
     fun getAll(
-            statusIn: Collection<QuestStatus>? = null,
-            bounds: BoundingBox? = null,
-            changedBefore: Long? = null
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        changedBefore: Long? = null
     ): List<OsmNoteQuest> {
         val qb = createQuery(statusIn, bounds, changedBefore)
         return db.query(NAME_MERGED_VIEW, null, qb) { mapping.toObject(it) }
     }
 
-    fun getCount(
-            statusIn: Collection<QuestStatus>? = null,
-            bounds: BoundingBox? = null,
-            changedBefore: Long? = null
-    ): Int {
-        val qb = createQuery(statusIn, bounds, changedBefore)
-        return db.queryOne(NAME_MERGED_VIEW, arrayOf("COUNT(*)"), qb) { it.getInt(0) } ?: 0
+    fun updateAll(quests: Collection<OsmNoteQuest>): Int {
+        if (quests.isEmpty()) return 0
+        var rows = 0
+        db.transaction {
+            quests.forEach {
+                if (update(it)) rows++
+            }
+        }
+        return rows
+    }
+
+    fun deleteAllIds(ids: Collection<Long>): Int {
+        if (ids.isEmpty()) return 0
+        return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
     }
 
     fun deleteAll(
@@ -115,23 +136,6 @@ internal class OsmNoteQuestDao @Inject constructor(
     ): Int {
         val qb = createQuery(statusIn, bounds, changedBefore)
         return db.delete(NAME, qb.where, qb.args)
-    }
-
-    private fun insertAll(quests: Collection<OsmNoteQuest>, conflictAlgorithm: Int): Int {
-        if (quests.isEmpty()) return 0
-        var addedRows = 0
-        db.transaction {
-            for (quest in quests) {
-                quest.lastUpdate = Date()
-                val rowId = db.insertWithOnConflict(NAME, null, mapping.toContentValues(quest), conflictAlgorithm)
-                if (rowId != -1L) {
-                    quest.id = rowId
-                    addedRows++
-                }
-            }
-        }
-
-        return addedRows
     }
 }
 

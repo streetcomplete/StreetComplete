@@ -54,19 +54,25 @@ internal class OsmQuestDao @Inject constructor(
         return db.queryOne(NAME_MERGED_VIEW, null, "$QUEST_ID = $id") { mapping.toObject(it) }
     }
 
+    fun getLastSolved(): OsmQuest? {
+        val qb = createQuery(statusIn = listOf(HIDDEN, ANSWERED, CLOSED))
+        return db.queryOne(NAME_MERGED_VIEW, null, qb, "$LAST_UPDATE DESC") { mapping.toObject(it) }
+    }
+
+    fun getCount(
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        element: ElementKey? = null,
+        questTypes: Collection<String>? = null,
+        changedBefore: Long? = null
+    ): Int {
+        val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
+        return db.queryOne(NAME_MERGED_VIEW, arrayOf("COUNT(*)"), qb) { it.getInt(0) } ?: 0
+    }
+
     fun update(quest: OsmQuest): Boolean {
         quest.lastUpdate = Date()
         return db.update(NAME, mapping.toUpdatableContentValues(quest), "$QUEST_ID = ${quest.id}", null) == 1
-    }
-
-    fun updateAll(quests: List<OsmQuest>): Int {
-        var rows = 0
-        db.transaction {
-            quests.forEach {
-                if (update(it)) rows++
-            }
-        }
-        return rows
     }
 
     fun delete(id: Long): Boolean {
@@ -84,55 +90,50 @@ internal class OsmQuestDao @Inject constructor(
         return addedRows
     }
 
-    fun deleteAllIds(ids: Collection<Long>): Int {
-        if (ids.isEmpty()) return 0
-        return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
-    }
-
-    fun getLastSolved(): OsmQuest? {
-        val qb = createQuery(statusIn = listOf(HIDDEN, ANSWERED, CLOSED))
-        return db.queryOne(NAME_MERGED_VIEW, null, qb, "$LAST_UPDATE DESC") { mapping.toObject(it) }
-    }
-
     fun getAll(
-            statusIn: Collection<QuestStatus>? = null,
-            bounds: BoundingBox? = null,
-            element: ElementKey? = null,
-            questTypes: Collection<String>? = null,
-            changedBefore: Long? = null
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        element: ElementKey? = null,
+        questTypes: Collection<String>? = null,
+        changedBefore: Long? = null
     ): List<OsmQuest> {
         val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
         return db.query(NAME_MERGED_VIEW, null, qb) { mapping.toObject(it) }.filterNotNull()
     }
 
     fun getAllIds(
-            statusIn: Collection<QuestStatus>? = null,
-            bounds: BoundingBox? = null,
-            element: ElementKey? = null,
-            questTypes: Collection<String>? = null,
-            changedBefore: Long? = null
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        element: ElementKey? = null,
+        questTypes: Collection<String>? = null,
+        changedBefore: Long? = null
     ): List<Long> {
         val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
         return db.query(NAME_MERGED_VIEW, arrayOf(QUEST_ID), qb) { it.getLong(0) }
     }
 
-    fun getCount(
-            statusIn: Collection<QuestStatus>? = null,
-            bounds: BoundingBox? = null,
-            element: ElementKey? = null,
-            questTypes: Collection<String>? = null,
-            changedBefore: Long? = null
-    ): Int {
-        val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
-        return db.queryOne(NAME_MERGED_VIEW, arrayOf("COUNT(*)"), qb) { it.getInt(0) } ?: 0
+    fun updateAll(quests: Collection<OsmQuest>): Int {
+        if (quests.isEmpty()) return 0
+        var rows = 0
+        db.transaction {
+            quests.forEach {
+                if (update(it)) rows++
+            }
+        }
+        return rows
+    }
+
+    fun deleteAllIds(ids: Collection<Long>): Int {
+        if (ids.isEmpty()) return 0
+        return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
     }
 
     fun deleteAll(
-            statusIn: Collection<QuestStatus>? = null,
-            bounds: BoundingBox? = null,
-            element: ElementKey? = null,
-            questTypes: Collection<String>? = null,
-            changedBefore: Long? = null
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        element: ElementKey? = null,
+        questTypes: Collection<String>? = null,
+        changedBefore: Long? = null
     ): Int {
         val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
         return db.delete(NAME, qb.where, qb.args)

@@ -36,14 +36,6 @@ class ElementGeometryDao @Inject constructor(
 ) {
     private val db get() = dbHelper.writableDatabase
 
-    fun putAll(entries: Collection<ElementGeometryEntry>) {
-        db.transaction {
-            for (entry in entries) {
-                put(entry)
-            }
-        }
-    }
-
     fun put(entry: ElementGeometryEntry) {
         db.replaceOrThrow(NAME, null, mapping.toContentValues(entry))
     }
@@ -53,6 +45,21 @@ class ElementGeometryDao @Inject constructor(
         val args = arrayOf(type.name, id.toString())
 
         return db.queryOne(NAME, null, where, args) { mapping.geometry.toObject(it) }
+    }
+
+    fun delete(type: Element.Type, id: Long) {
+        val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
+        val args = arrayOf(type.name, id.toString())
+
+        db.delete(NAME, where, args)
+    }
+
+    fun putAll(entries: Collection<ElementGeometryEntry>) {
+        db.transaction {
+            for (entry in entries) {
+                put(entry)
+            }
+        }
     }
 
     fun getAllKeys(bbox: BoundingBox): List<ElementKey> {
@@ -72,19 +79,13 @@ class ElementGeometryDao @Inject constructor(
         return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
     }
 
-    fun deleteAll(entries: Iterable<ElementKey>) {
+    fun deleteAll(entries: Collection<ElementKey>) {
+        if (entries.isEmpty()) return
         db.transaction {
             for (entry in entries) {
                 delete(entry.elementType, entry.elementId)
             }
         }
-    }
-
-    fun delete(type: Element.Type, id: Long) {
-        val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
-        val args = arrayOf(type.name, id.toString())
-
-        db.delete(NAME, where, args)
     }
 
     /** Cleans up element geometry entries that belong to elements that are not referenced by any

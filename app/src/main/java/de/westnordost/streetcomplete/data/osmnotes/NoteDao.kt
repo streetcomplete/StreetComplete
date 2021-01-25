@@ -26,7 +26,6 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.NAME
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable
 import de.westnordost.streetcomplete.ktx.*
 
 /** Stores OSM notes */
@@ -35,15 +34,6 @@ class NoteDao @Inject constructor(
     private val mapping: NoteMapping
 ) {
     private val db get() = dbHelper.writableDatabase
-
-    fun putAll(notes: Collection<Note>) {
-        if (notes.isEmpty()) return
-        db.transaction {
-            for (note in notes) {
-                put(note)
-            }
-        }
-    }
 
     fun put(note: Note) {
         db.replaceOrThrow(NAME, null, mapping.toContentValues(note))
@@ -57,6 +47,22 @@ class NoteDao @Inject constructor(
         return db.delete(NAME, "$ID = $id", null) == 1
     }
 
+    fun putAll(notes: Collection<Note>) {
+        if (notes.isEmpty()) return
+        db.transaction {
+            for (note in notes) {
+                put(note)
+            }
+        }
+    }
+
+    fun getAllIds(bbox: BoundingBox): List<Long> {
+        val cols = arrayOf(ID)
+        val builder = WhereSelectionBuilder()
+        builder.appendBounds(bbox)
+        return db.query(NAME, cols, builder.where, builder.args) { it.getLong(0) }
+    }
+
     fun getAllPositions(bbox: BoundingBox): List<LatLon> {
         val cols = arrayOf(LATITUDE, LONGITUDE)
         val builder = WhereSelectionBuilder()
@@ -64,12 +70,9 @@ class NoteDao @Inject constructor(
         return db.query(NAME, cols, builder.where, builder.args) { OsmLatLon(it.getDouble(0), it.getDouble(1)) }
     }
 
-    fun deleteUnreferenced(): Int {
-        val where = ID + " NOT IN ( " +
-                "SELECT " + OsmNoteQuestTable.Columns.NOTE_ID + " FROM " + OsmNoteQuestTable.NAME +
-                ")"
-
-        return db.delete(NAME, where, null)
+    fun deleteAll(ids: Collection<Long>): Int {
+        if (ids.isEmpty()) return 0
+        return db.delete(NAME, "$ID IN (${ids.joinToString(",")})", null)
     }
 }
 

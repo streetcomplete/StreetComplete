@@ -39,6 +39,18 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
         DeleteOsmElementTable.Columns.ELEMENT_TYPE
     )
 
+    fun put(element: T) {
+        db.replaceOrThrow(tableName, null, mapping.toContentValues(element))
+    }
+
+    fun get(id: Long): T? {
+        return db.queryOne(tableName, null, "$idColumnName = $id", null) { mapping.toObject(it) }
+    }
+
+    fun delete(id: Long) {
+        db.delete(tableName, "$idColumnName = $id", null)
+    }
+
     fun putAll(elements: Collection<T>) {
         if (elements.isEmpty()) return
         db.transaction {
@@ -48,30 +60,14 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
         }
     }
 
-    fun put(element: T) {
-        db.replaceOrThrow(tableName, null, mapping.toContentValues(element))
-    }
-
-    fun delete(id: Long) {
-        db.delete(tableName, "$idColumnName = $id", null)
-    }
-
-    fun deleteAll(ids: Collection<Long>) {
-        if (ids.isEmpty()) return
-        db.transaction {
-            for (id in ids) {
-                delete(id)
-            }
-        }
-    }
-
     fun getAll(ids: Collection<Long>): List<T> {
         if (ids.isEmpty()) return emptyList()
         return db.query(tableName, null, "$idColumnName IN (${ids.joinToString(",")})") { mapping.toObject(it) }
     }
 
-    fun get(id: Long): T? {
-        return db.queryOne(tableName, null, "$idColumnName = $id", null) { mapping.toObject(it) }
+    fun deleteAll(ids: Collection<Long>) {
+        if (ids.isEmpty()) return
+        db.delete(tableName, "$idColumnName IN (${ids.joinToString(",")})", null)
     }
 
     /** Cleans up element entries that are not referenced by any quest (or other things) anymore.  */
