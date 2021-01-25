@@ -29,8 +29,13 @@ object OsmNotesModule {
     @Provides @Singleton
     fun osmNoteController(
         noteDao: NoteDao,
-        osmNoteQuestUpdater: OsmNoteQuestUpdater
+        osmNoteQuestUpdater: OsmNoteQuestUpdater,
+        osmAvatarsInNotesUpdater: OsmAvatarsInNotesUpdater
     ) = NoteController(noteDao).apply {
+        // on notes have been updated,
+        // note quests need to be updated
         addNoteUpdatesListener(osmNoteQuestUpdater)
+        // and avatar images should be downloaded (cached) referenced in note discussions
+        addNoteUpdatesListener(osmAvatarsInNotesUpdater)
     }
 }

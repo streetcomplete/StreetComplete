@@ -15,7 +15,6 @@ import java.util.concurrent.atomic.AtomicBoolean
 /** Takes care of downloading notes and referenced avatar pictures into persistent storage */
 class OsmNotesDownloader @Inject constructor(
     private val notesApi: NotesApi,
-    private val avatarsDownloader: OsmAvatarsDownloader,
     private val userStore: UserStore,
     private val noteController: NoteController
 ) : Downloader {
@@ -38,14 +37,6 @@ class OsmNotesDownloader @Inject constructor(
         Log.i(TAG, "Downloaded ${notes.size} notes in ${seconds.format(1)}s")
 
         noteController.updateForBBox(bbox, notes)
-
-        val noteCommentUserIds = HashSet<Long>()
-        notes.flatMapTo(noteCommentUserIds) { note ->
-            note.comments.mapNotNull { comment ->
-                comment.user?.id
-            }
-        }
-        avatarsDownloader.download(noteCommentUserIds)
     }
 
     companion object {
