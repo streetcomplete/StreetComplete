@@ -40,10 +40,6 @@ class OsmQuestUpdater @Inject constructor(
 
     private val questTypes get() = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
 
-    init {
-        osmElementSource.addQuestStatusListener(this)
-    }
-
     override fun onDeleted(type: Element.Type, id: Long) {
         osmQuestController.deleteAllForElement(type, id)
     }

@@ -4,8 +4,10 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestUpdater
 import java.io.File
 import javax.inject.Named
+import javax.inject.Singleton
 
 @Module
 object OsmNotesModule {
@@ -23,4 +25,12 @@ object OsmNotesModule {
     @Provides
     fun imageUploader(): StreetCompleteImageUploader =
         StreetCompleteImageUploader(ApplicationConstants.SC_PHOTO_SERVICE_URL)
+
+    @Provides @Singleton
+    fun osmNoteController(
+        noteDao: NoteDao,
+        osmNoteQuestUpdater: OsmNoteQuestUpdater
+    ) = NoteController(noteDao).apply {
+        addNoteUpdatesListener(osmNoteQuestUpdater)
+    }
 }

@@ -117,10 +117,10 @@ import javax.inject.Singleton
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 
-    override fun addQuestStatusListener(listener: OsmElementSource.ElementUpdatesListener) {
+    override fun addElementUpdatesListener(listener: OsmElementSource.ElementUpdatesListener) {
         elementUpdatesListener.add(listener)
     }
-    override fun removeQuestStatusListener(listener: OsmElementSource.ElementUpdatesListener) {
+    override fun removeElementUpdatesListener(listener: OsmElementSource.ElementUpdatesListener) {
         elementUpdatesListener.remove(listener)
     }
 
