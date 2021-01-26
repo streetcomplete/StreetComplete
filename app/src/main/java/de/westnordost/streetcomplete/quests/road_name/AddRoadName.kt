@@ -77,7 +77,17 @@ class AddRoadName(
     override fun applyAnswerTo(answer: RoadNameAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is NoRoadName        -> changes.add("noname", "yes")
-            is RoadIsServiceRoad -> changes.modify("highway", "service")
+            is RoadIsServiceRoad -> {
+                // The understanding of what is a service road is much broader in common language
+                // than what the highway=service tagging covers. For example, certain traffic-calmed
+                // driveways / service roads may be tagged as highway=living_street. We do not want
+                // to overwrite this, so let's keep it a living street in that case (see #2431)
+                if (changes.getPreviousValue("highway") == "living_street") {
+                    changes.add("noname", "yes")
+                } else {
+                    changes.modify("highway", "service")
+                }
+            }
             is RoadIsTrack       -> changes.modify("highway", "track")
             is RoadIsLinkRoad    -> {
                 val prevValue = changes.getPreviousValue("highway")

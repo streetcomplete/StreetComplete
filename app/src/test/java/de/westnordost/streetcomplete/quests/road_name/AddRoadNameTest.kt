@@ -80,6 +80,14 @@ class AddRoadNameTest {
         )
     }
 
+    @Test fun `apply is service road answer with prior living street`() {
+        questType.verifyAnswer(
+            mapOf("highway" to "living_street"),
+            RoadIsServiceRoad,
+            StringMapEntryAdd("noname", "yes")
+        )
+    }
+
     @Test fun `apply is track answer`() {
         questType.verifyAnswer(
             tags,
