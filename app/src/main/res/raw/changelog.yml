@@ -1,3 +1,27 @@
+v30.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is the water potable here?</i> (#549, #2509), by @FloEdelmann</li>
+  <li><i>Do you have to pay to park a bike here?</i> (#2507, #2517), by @FloEdelmann</li>
+  <li><i>Is it restricted who may park a bike here?</i> (#2496, #2517), by @FloEdelmann</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Ask for the surface of sport tracks (#2468, #2310), by @FloEdelmann</li>
+  <li>More opening hours in non-standard syntax are understood and displayed on resurvey, thanks @simonpoole</li>
+  <li>Check existence: Display brand name if object has no name (#2512)</li>
+  <li>Kosher: Do not ask for veg-only places (#2513), by @FloEdelmann</li>
+  <li>Sidewalks: Ask for residential roads even if they are not lit (#2519, #2531), by @riQQ</li>
+  <li>Reycling materials: Do not ask for private containers (#2515)</li>
+  <li>Road name: Do not ask if name:left or name:right is defined already (#2526)</li>
+  <li>A few clarifications in wording (#2467, #2431)</li>
+  </ul>
+  <h3>Fixes & More</h3>
+  <ul>
+  <li>Update geometry of displayed elements after another download (#2503)</li>
+  <li>Some code modernizations (#2495, #2501, #2504, #2511) by @FloEdelmann</li>
+  </ul>
+
 v29.1: |
   <h3>Fixes</h3>
   <ul>
