@@ -22,7 +22,7 @@ class AddRoadName(
     private val filter by lazy { """
         ways with
           highway ~ primary|secondary|tertiary|unclassified|residential|living_street|pedestrian
-          and !name
+          and !name and !name:left and !name:right
           and !ref
           and noname != yes
           and !junction
