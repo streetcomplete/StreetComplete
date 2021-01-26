@@ -19,7 +19,9 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 
     private val filter by lazy { """
         nodes with
-          amenity = recycling and recycling_type = container
+          amenity = recycling
+          and recycling_type = container
+          and access !~ private|no
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add recycled materials to container"
