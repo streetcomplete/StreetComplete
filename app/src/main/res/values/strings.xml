@@ -554,6 +554,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
     <string name="quest_bicycle_parking_type_title">What type of bicycle parking is this?</string>
+    <string name="quest_bicycle_parking_access_title">Is it restricted who may park a bike here?</string>
+    <string name="quest_bicycle_parking_fee_title">Do you have to pay to park a bike here?</string>
     <string name="quest_cycleway_value_suggestion_lane">bicycle suggestion lane</string>
     <string name="quest_postboxCollectionTimes_title">What are the collection times of this postbox?</string>
     <string name="quest_postboxCollectionTimes_name_title">What are the collection times of this %s postbox?</string>
@@ -581,7 +583,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_residential_description">building where people live</string>
     <string name="quest_buildingType_house">House</string>
-    <string name="quest_buildingType_house_description">single-family home</string>
+    <string name="quest_buildingType_house_description2">non-detached single-family home</string>
     <string name="quest_buildingType_apartments_description">house for multiple families, may have retail outlets on the ground floor</string>
     <string name="quest_buildingType_apartments">Apartment building</string>
     <string name="quest_buildingType_detached">Detached house</string>
@@ -968,4 +970,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_clay">Clay</string>
     <string name="quest_surface_value_artificial_turf">Artificial turf</string>
     <string name="quest_surface_value_tartan">Tartan</string>
+    <string name="quest_drinking_water_title">Is the water potable here? (%s)</string>
+    <string name="quest_drinking_water_potable_signed">Safe to drink (signed)</string>
+    <string name="quest_drinking_water_potable_unsigned">Safe to drink (unsigned)</string>
+    <string name="quest_drinking_water_not_potable_signed">Not safe to drink (signed)</string>
+    <string name="quest_drinking_water_not_potable_unsigned">Not safe to drink (unsigned)</string>
 </resources>

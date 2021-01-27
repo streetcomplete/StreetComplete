@@ -623,6 +623,8 @@ object AchievementsModule {
                     "AddBikeParkingCapacity",
                     "AddBikeParkingCover",
                     "AddBikeParkingType",
+                    "AddBikeParkingAccess",
+                    "AddBikeParkingFee",
                     "AddCyclewaySegregation",
                     "AddPathSurface",
                     "AddStepsRamp",
@@ -691,6 +693,7 @@ object AchievementsModule {
                     "AddPitchSurface",
                     "AddSummitRegister",
                     "AddReligionToWaysideShrine",
+                    "AddDrinkingWater",
                     // from pedestrian
                     "AddPathSurface",
                     "AddCyclewaySegregation",
