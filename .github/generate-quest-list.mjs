@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import https from 'https';
 import {resolve, dirname, relative} from 'path';
 import {readFile, readdir, writeFile} from 'fs/promises';
 
@@ -16,28 +17,29 @@ const noteQuestPath = resolve(sourceDirectory, 'data/osmnotes/notequests/OsmNote
 
 
 /** @type string[] */
-let questNames;
-
-/** @type string[] */
 let questFiles;
 
 /** @type Record<string, string> */
 let strings;
 
+/** @type TableRow[] */
+let wikiTable;
+
 
 (async () => {
     const questFile = await readFile(resolve(sourceDirectory, 'quests/QuestModule.kt'), 'utf8');
-    questNames = questFile.match(/(?<=^ {8})[A-Z][a-zA-Z]+(?=\()/gm);
-    const sortedQuestNames = questNames.slice(0).sort();
-
-    // sort note quest to the end
+    const questNames = questFile.match(/(?<=^ {8})[A-Z][a-zA-Z]+(?=\()/gm);
     questNames.unshift(noteQuestName);
-    sortedQuestNames.push(noteQuestName);
 
     questFiles = await getFiles(resolve(sourceDirectory, 'quests/'));
     strings = await getStrings(resolve(projectDirectory, 'app/src/main/res/values/strings.xml'));
 
-    const quests = await Promise.all(sortedQuestNames.map(name => getQuest(name)));
+    const wikiPageContent = await getWikiTableContent();
+    wikiTable = parseWikiTable(wikiPageContent);
+
+    const quests = await Promise.all(questNames.map((name, defaultPriority) => getQuest(name, defaultPriority)));
+
+    quests.sort((a, b) => a.wikiOrder - b.wikiOrder);
 
     await writeMarkdownFile(quests);
 })().catch(error => {
@@ -91,25 +93,34 @@ async function getStrings(stringsFileName) {
  * @property {string} filePath - An absolute path to the quest's Kotlin file.
  * @property {string} title - The quest's title.
  * @property {number} defaultPriority - The quest's default priority (1 is highest priority).
+ * @property {number} wikiOrder - The quest's table row number in the wiki quest list.
  */
 
+String.prototype.replaceAll = function(search, replace) {
+    return this.split(search).join(replace);
+}
 
 /**
  * @param {string} questName
+ * @param {number} defaultPriority
  * @returns {Quest} All information about the quest with the given name.
  */
-async function getQuest(questName) {
+async function getQuest(questName, defaultPriority) {
     const filePath = getQuestFilePath(questName);
     const questFileContent = await readFile(filePath, 'utf8');
 
     const titleStringName = getQuestTitleStringName(questName, questFileContent);
 
+    const title = strings[titleStringName].replace(/%s|%\d\$s/g, '[…]').replaceAll('([…])', '[…]').replaceAll('[…] […]', '[…]');
+    const wikiOrder = wikiTable.findIndex(tableRow => tableRow.question === title);
+
     return {
         name: questName,
         icon: await getQuestIcon(questName, questFileContent),
         filePath,
-        title: strings[titleStringName].replace(/%s/g, '…'),
-        defaultPriority: questNames.indexOf(questName) + 1,
+        title,
+        defaultPriority,
+        wikiOrder,
     };
 }
 
@@ -175,6 +186,95 @@ function getQuestTitleStringName(questName, questFileContent) {
 
     // heuristic: use the last one that contains "title"
     return stringResourceNames.filter(name => name.includes('title')).pop();
+}
+
+
+/**
+ * @returns {Promise<string>} The quest list wiki page content as a string.
+ */
+async function getWikiTableContent() {
+    const apiUrl = new URL('https://wiki.openstreetmap.org/w/api.php');
+    apiUrl.searchParams.set('action', 'parse');
+    apiUrl.searchParams.set('format', 'json');
+    apiUrl.searchParams.set('prop', 'wikitext');
+    apiUrl.searchParams.set('formatversion', '2');
+    apiUrl.searchParams.set('page', 'StreetComplete/Quests');
+    apiUrl.searchParams.set('section', '1'); // "Released quest types" section
+
+    return new Promise((resolve, reject) => {
+        https.get(apiUrl, response => {
+            let data = '';
+
+            response.on('data', chunk => {
+                data += chunk;
+            });
+
+            response.on('end', () => {
+                resolve(JSON.parse(data).parse.wikitext);
+            });
+        }).on('error', error => {
+            reject(error);
+        });
+    });
+}
+
+
+/**
+ * @typedef {object} TableRow
+ * @property {string} icon
+ * @property {string} question
+ * @property {string} askedForElements
+ * @property {string} modifiedTags
+ * @property {string} defaultPriority
+ * @property {string} sinceVersion
+ * @property {string} notes
+ * @property {string} code
+ */
+
+/**
+ * @param {string} wikiPageContent
+ * @returns {TableRow[]}
+ */
+function parseWikiTable(wikiPageContent) {
+    const tableRows = wikiPageContent.split('|-');
+
+    tableRows.shift(); // Drop table header and everything before the table
+    tableRows.push(tableRows.pop().split('|}')[0]); // Drop everything after the table
+
+    const tableColumns = ['icon', 'question', 'askedForElements', 'modifiedTags', 'defaultPriority', 'sinceVersion', 'notes', 'code'];
+    const rowSpan2 = ' rowspan="2" |';
+
+    const cells = [];
+
+    for (const [rowIndex, row] of tableRows.entries()) {
+        const rowCells = row.split('\n|').slice(1);
+
+        if (rowIndex > 0) {
+            const previousRowCells = cells[rowIndex - 1];
+            for (const [cellIndex, cell] of previousRowCells.entries()) {
+                if (cell.startsWith(rowSpan2)) {
+                    rowCells.splice(cellIndex, 0, cell.slice(rowSpan2.length));
+                }
+            }
+        }
+
+        cells.push(rowCells);
+    }
+
+    return cells.map((rowCells, rowIndex) => Object.fromEntries(rowCells.map((cell, cellIndex) => {
+        if (/^ ?(?:rowspan=|colspan=)/.test(cell)) {
+            if (cell.startsWith(rowSpan2)) {
+                cell = cell.slice(rowSpan2.length);
+            }
+            else {
+                throw new Error(`Unsupported rowspan > 2 or colspan detected in table row ${rowIndex}: ${cell}`);
+            }
+        }
+
+        const column = tableColumns[cellIndex];
+
+        return [column, cell.trim()];
+    })));
 }
 
 
