@@ -30,7 +30,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
             or (maxspeed ~ ".*mph" and maxspeed !~ "[1-5] mph")
           )
           and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
-          and lit = yes
+          and (lit = yes or highway = residential)
           and foot != no and access !~ private|no
           and foot != use_sidepath
     """.toElementFilterExpression() }

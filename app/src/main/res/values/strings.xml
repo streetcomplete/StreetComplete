@@ -583,7 +583,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_residential_description">building where people live</string>
     <string name="quest_buildingType_house">House</string>
-    <string name="quest_buildingType_house_description">single-family home</string>
+    <string name="quest_buildingType_house_description2">non-detached single-family home</string>
     <string name="quest_buildingType_apartments_description">house for multiple families, may have retail outlets on the ground floor</string>
     <string name="quest_buildingType_apartments">Apartment building</string>
     <string name="quest_buildingType_detached">Detached house</string>
