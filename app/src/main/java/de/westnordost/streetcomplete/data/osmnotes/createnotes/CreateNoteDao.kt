@@ -6,7 +6,6 @@ import androidx.core.content.contentValuesOf
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.WhereSelectionBuilder
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
@@ -47,10 +46,8 @@ import javax.inject.Singleton
     fun add(note: CreateNote): Boolean {
         val rowId = db.insert(NAME, null, mapping.toContentValues(note))
         if (rowId == -1L) return false
-
         note.id = rowId
         listeners.forEach { it.onAddedCreateNote() }
-
         return true
     }
 
@@ -73,18 +70,17 @@ import javax.inject.Singleton
         return db.query(NAME) { mapping.toObject(it) }
     }
 
-    fun getAll(bbox: BoundingBox): List<CreateNote> {
-        val builder = WhereSelectionBuilder()
-        builder.appendBounds(bbox)
-
-        return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
-    }
-
     fun getAllPositions(bbox: BoundingBox): List<LatLon> {
-        val builder = WhereSelectionBuilder()
-        builder.appendBounds(bbox)
-        val cols = arrayOf(LATITUDE, LONGITUDE)
-        return db.query(NAME, cols, builder.where, builder.args) { OsmLatLon(it.getDouble(0), it.getDouble(1)) }
+        return db.query(NAME,
+            arrayOf(LATITUDE, LONGITUDE),
+            "($LATITUDE BETWEEN ? AND ?) AND ($LONGITUDE BETWEEN ? AND ?)",
+            arrayOf(
+                bbox.minLatitude.toString(),
+                bbox.maxLatitude.toString(),
+                bbox.minLongitude.toString(),
+                bbox.maxLongitude.toString()
+            )
+        ) { OsmLatLon(it.getDouble(0), it.getDouble(1)) }
     }
 
     fun addListener(listener: Listener) {
@@ -93,18 +89,6 @@ import javax.inject.Singleton
     fun removeListener(listener: Listener) {
         listeners.remove(listener)
     }
-}
-
-private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox) {
-    add("($LATITUDE BETWEEN ? AND ?)",
-        bbox.minLatitude.toString(),
-        bbox.maxLatitude.toString()
-    )
-    add(
-        "($LONGITUDE BETWEEN ? AND ?)",
-        bbox.minLongitude.toString(),
-        bbox.maxLongitude.toString()
-    )
 }
 
 class CreateNoteMapping @Inject constructor(private val serializer: Serializer)
@@ -121,15 +105,15 @@ class CreateNoteMapping @Inject constructor(private val serializer: Serializer)
     )
 
     override fun toObject(cursor: Cursor) = CreateNote(
-            cursor.getLong(ID),
-            cursor.getString(TEXT),
-            OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-            cursor.getStringOrNull(QUEST_TITLE),
-            cursor.getStringOrNull(ELEMENT_TYPE)?.let { type ->
-                cursor.getLongOrNull(ELEMENT_ID)?.let { id ->
-                    ElementKey(Element.Type.valueOf(type), id)
-                }
-            },
-            cursor.getBlobOrNull(IMAGE_PATHS)?.let { serializer.toObject<ArrayList<String>>(it) }
+        cursor.getLong(ID),
+        cursor.getString(TEXT),
+        OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
+        cursor.getStringOrNull(QUEST_TITLE),
+        cursor.getStringOrNull(ELEMENT_TYPE)?.let { type ->
+            cursor.getLongOrNull(ELEMENT_ID)?.let { id ->
+                ElementKey(Element.Type.valueOf(type), id)
+            }
+        },
+        cursor.getBlobOrNull(IMAGE_PATHS)?.let { serializer.toObject<ArrayList<String>>(it) }
     )
 }

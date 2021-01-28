@@ -53,7 +53,7 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
     }
 
     protected open fun updateElement(element: Element, quest: T) {
-        osmElementController.update(element)
+        osmElementController.put(element)
     }
 
     private fun uploadSingle(quest: T) : List<Element> {

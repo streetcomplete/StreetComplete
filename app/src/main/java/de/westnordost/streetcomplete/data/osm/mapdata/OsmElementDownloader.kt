@@ -35,7 +35,7 @@ class OsmElementDownloader @Inject constructor(
         val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
 
-        osmElementController.updateForBBox(bbox, mapData)
+        osmElementController.putAllForBBox(bbox, mapData)
     }
 
     private fun getMapAndHandleTooBigQuery(bounds: BoundingBox, mapDataHandler: MapDataHandler) {

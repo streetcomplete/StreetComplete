@@ -102,7 +102,7 @@ class UndoOsmQuestsUploaderTest {
         verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].osmElementQuestType.javaClass.simpleName, quests[0].position)
         verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].osmElementQuestType.javaClass.simpleName, quests[1].position)
 
-        verify(osmElementController, times(1)).update(any())
+        verify(osmElementController, times(1)).put(any())
         verify(osmElementController, times(2)).get(any(), anyLong())
         verify(statisticsUpdater).subtractOne(any(), any())
         verifyNoMoreInteractions(osmElementController)

@@ -56,6 +56,12 @@ class NoteDao @Inject constructor(
         }
     }
 
+    fun getAll(bbox: BoundingBox): List<Note> {
+        val builder = WhereSelectionBuilder()
+        builder.appendBounds(bbox)
+        return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
+    }
+
     fun getAllIds(bbox: BoundingBox): List<Long> {
         val cols = arrayOf(ID)
         val builder = WhereSelectionBuilder()

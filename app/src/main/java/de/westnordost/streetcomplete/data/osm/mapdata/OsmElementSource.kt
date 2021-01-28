@@ -8,9 +8,9 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 interface OsmElementSource {
 
     interface ElementUpdatesListener {
-        fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry)
-        fun onDeleted(type: Element.Type, id: Long)
         fun onUpdated(element: Element, geometry: ElementGeometry)
+        fun onDeleted(type: Element.Type, id: Long)
+        fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry)
     }
 
     fun get(type: Element.Type, id: Long): Element?

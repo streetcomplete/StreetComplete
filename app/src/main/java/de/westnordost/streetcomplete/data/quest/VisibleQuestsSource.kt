@@ -4,7 +4,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 /** Access and listen to quests visible on the map */
 @Singleton class VisibleQuestsSource @Inject constructor(
     private val osmQuestController: OsmQuestController,
-    private val osmNoteQuestSource: OsmNoteQuestSource,
+    private val osmNoteQuestController: OsmNoteQuestController,
     private val visibleQuestTypeDao: VisibleQuestTypeDao
 ) {
     private val listeners: MutableList<VisibleQuestListener> = CopyOnWriteArrayList()
@@ -43,7 +43,7 @@ import javax.inject.Singleton
         }
     }
 
-    private val osmNoteQuestStatusListener = object : OsmNoteQuestSource.QuestStatusListener {
+    private val osmNoteQuestStatusListener = object : OsmNoteQuestController.QuestStatusListener {
         override fun onAdded(quest: OsmNoteQuest) {
             if(quest.status.isVisible) {
                 onQuestBecomesVisible(quest, QuestGroup.OSM_NOTE)
@@ -71,21 +71,21 @@ import javax.inject.Singleton
 
     init {
         osmQuestController.addQuestStatusListener(osmQuestStatusListener)
-        osmNoteQuestSource.addQuestStatusListener(osmNoteQuestStatusListener)
+        osmNoteQuestController.addQuestStatusListener(osmNoteQuestStatusListener)
     }
 
 
     /** Get count of all unanswered quests in given bounding box */
     fun getAllVisibleCount(bbox: BoundingBox): Int {
         return osmQuestController.getAllVisibleInBBoxCount(bbox) +
-            osmNoteQuestSource.getAllVisibleInBBoxCount(bbox)
+            osmNoteQuestController.getAllVisibleInBBoxCount(bbox)
     }
 
     /** Retrieve all visible (=new) quests in the given bounding box from local database */
     fun getAllVisible(bbox: BoundingBox, questTypes: Collection<String>): List<QuestAndGroup> {
         if (questTypes.isEmpty()) return listOf()
         val osmQuests = osmQuestController.getAllVisibleInBBox(bbox, questTypes)
-        val osmNoteQuests = osmNoteQuestSource.getAllVisibleInBBox(bbox)
+        val osmNoteQuests = osmNoteQuestController.getAllVisibleInBBox(bbox)
 
         return osmQuests.map { QuestAndGroup(it, QuestGroup.OSM) } +
                 osmNoteQuests.map { QuestAndGroup(it, QuestGroup.OSM_NOTE) }
@@ -109,7 +109,6 @@ import javax.inject.Singleton
         val deletedQuestIds = updated.filter { !it.status.isVisible }.map { it.id!! } + deleted
         listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestIds, group) }
     }
-
 }
 
 interface VisibleQuestListener {

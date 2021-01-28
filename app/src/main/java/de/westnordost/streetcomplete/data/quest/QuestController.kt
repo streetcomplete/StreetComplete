@@ -18,6 +18,8 @@ import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestDao
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWay
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayDao
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNote
+import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
@@ -36,6 +38,7 @@ import javax.inject.Singleton
     private val splitWayDB: OsmQuestSplitWayDao,
     private val deleteElementDB: DeleteOsmElementDao,
     private val createNoteDB: CreateNoteDao,
+    private val commentNoteDB: CommentNoteDao,
     private val osmElementSource: OsmElementSource,
     private val prefs: SharedPreferences
 ): CoroutineScope by CoroutineScope(Dispatchers.Default) {
@@ -169,12 +172,11 @@ import javax.inject.Singleton
     }
 
     private fun solveOsmNoteQuest(questId: Long, answer: NoteAnswer): Boolean {
-        val q = osmNoteQuestController.get(questId)
-        if (q == null || q.status !== QuestStatus.NEW) return false
+        val q = osmNoteQuestController.get(questId) ?: return false
 
         require(answer.text.isNotEmpty()) { "NoteQuest has been answered with an empty comment!" }
-
-        osmNoteQuestController.answer(q, answer)
+        val commentNote = CommentNote(questId, q.center, answer.text, answer.imagePaths)
+        commentNoteDB.add(commentNote)
         return true
     }
 
@@ -224,11 +226,14 @@ import javax.inject.Singleton
                 osmQuestController.hide(quest)
             }
             QuestGroup.OSM_NOTE -> {
-                val q = osmNoteQuestController.get(questId)
-                if (q?.status != QuestStatus.NEW) return
-                osmNoteQuestController.hide(q)
+                osmNoteQuestController.hide(questId)
             }
         }
+    }
+
+    /** Unhide all previously hidden quests */
+    fun unhideAll(): Int {
+        return osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()
     }
 
     /** Retrieve the given quest from local database  */

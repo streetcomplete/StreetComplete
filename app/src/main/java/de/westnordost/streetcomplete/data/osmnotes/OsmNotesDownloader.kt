@@ -36,7 +36,7 @@ class OsmNotesDownloader @Inject constructor(
         val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Downloaded ${notes.size} notes in ${seconds.format(1)}s")
 
-        noteController.updateForBBox(bbox, notes)
+        noteController.putAllForBBox(bbox, notes)
     }
 
     companion object {

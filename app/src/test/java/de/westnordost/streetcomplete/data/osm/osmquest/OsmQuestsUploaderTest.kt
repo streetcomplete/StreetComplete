@@ -98,7 +98,7 @@ class OsmQuestsUploaderTest {
 
         verify(osmQuestController, times(2)).success(any())
         verify(uploader.uploadedChangeListener, times(2))?.onUploaded(any(), any())
-        verify(osmElementController, times(2)).update(any())
+        verify(osmElementController, times(2)).put(any())
         verify(statisticsUpdater, times(2)).addOne(any(), any())
     }
 

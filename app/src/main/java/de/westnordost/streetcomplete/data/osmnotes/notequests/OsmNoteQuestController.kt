@@ -1,174 +1,178 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
-import android.util.Log
+import android.content.SharedPreferences
 import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.notes.Note
+import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.quest.QuestStatus
-import de.westnordost.streetcomplete.ktx.format
-import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.osmnotes.NoteSource
+import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
+import de.westnordost.streetcomplete.data.user.UserStore
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/** Controller for managing OsmNoteQuests. Takes care of persisting OsmNoteQuest and notifying
- *  listeners about changes. */
-@Singleton class OsmNoteQuestController @Inject internal constructor(
-    private val dao: OsmNoteQuestDao
-): OsmNoteQuestSource {
-
+/** Used to get visible osm note quests */
+@Singleton class OsmNoteQuestController @Inject constructor(
+    private val noteSource: NoteSource,
+    private val commentNoteDB: CommentNoteDao,
+    private val hiddenNoteQuestDB: HiddenNoteQuestDao,
+    private val questType: OsmNoteQuestType,
+    private val userStore: UserStore,
+    private val preferences: SharedPreferences,
+) {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
-    private val questStatusListeners: MutableList<OsmNoteQuestSource.QuestStatusListener> = CopyOnWriteArrayList()
+    private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
+        !preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
 
-    /* ---------------------------------- Modify single quests ---------------------------------- */
+    private val userId: Long? get() = userStore.userId.takeIf { it != -1L }
 
-    /** Mark the quest as answered by the user with the given answer */
-    fun answer(quest: OsmNoteQuest, answer: NoteAnswer) {
-        val status = quest.status
-        quest.comment = answer.text
-        quest.imagePaths = answer.imagePaths
-        quest.status = QuestStatus.ANSWERED
-        dao.update(quest)
-        onChanged(quest, status)
+    private val commentNoteListener = object : CommentNoteDao.Listener {
+        override fun onAddedCommentNote() {
+            TODO("Not yet implemented")
+        }
+
+        override fun onDeletedCommentNote() {
+            TODO("Not yet implemented")
+        }
     }
 
-    /** Mark the quest as hidden by user interaction */
-    fun hide(quest: OsmNoteQuest) {
-        val status = quest.status
-        quest.status = QuestStatus.HIDDEN
-        dao.update(quest)
-        onChanged(quest, status)
+    private val noteUpdatesListener = object : NoteSource.NoteUpdatesListener {
+        override fun onUpdatedForBBox(bbox: BoundingBox, notes: Collection<Note>) {
+            val blockedNoteIds = getBlockedNoteIds()
+            val quests = notes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
+            // TODO
+        }
+
+        override fun onUpdated(note: Note) {
+            // TODO
+        }
+
+        override fun onDeleted(noteId: Long) {
+            // TODO
+        }
     }
 
-    /* ------------------------------------------------------------------------------------------ */
-
-    fun deleteForNote(noteId: Long) {
-        // TODO
-
-        dao.delete(questId)
-        onRemoved(questId, previousStatus)
-    }
-
-    fun update(newquest: OsmNoteQuest) {
-        // TODO
-
-        dao.update(quest)
-        onChanged(quest, status)
-    }
-
-    /** Replace all quests in the given bounding box with the given quests */
-    fun updateForBBox(bbox: BoundingBox, quests: List<OsmNoteQuest>) {
-        val time = System.currentTimeMillis()
-
-        val previousQuestsByNoteId = dao.getAll(bounds = bbox)
-            .associateBy { it.note.id }
-            .toMutableMap()
-
-        /* this here would be a little simpler if SQLite on android supported UPSERT, now we have to
-        *  sort by hand which quests are added and which quests are updated (and which did not change) */
-        val closedExistingQuests = mutableListOf<OsmNoteQuest>()
-        val addedQuests = mutableListOf<OsmNoteQuest>()
-
-        for (quest in quests) {
-            val existingQuest = previousQuestsByNoteId[quest.note.id]
-            if (existingQuest != null) {
-                previousQuestsByNoteId.remove(quest.note.id)
-                /* The status of note quests can have changed from outside this app since they are tied
-                 *  to notes. So if the note changed, i.e. if a user answered or closed the note from the
-                 *  website instead of within the app. This needs to be accounted for here.
-                 * */
-                if (quest.status == QuestStatus.CLOSED || quest.status == QuestStatus.INVISIBLE) {
-                    existingQuest.status = quest.status
-                    closedExistingQuests.add(existingQuest)
-                }
-            } else {
-                addedQuests.add(quest)
+    init {
+        noteSource.addNoteUpdatesListener(noteUpdatesListener)
+        commentNoteDB.addListener(commentNoteListener)
+        preferences.registerOnSharedPreferenceChangeListener { _, key ->
+            if (key == Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) {
+                TODO("Not yet implemented")
             }
         }
-        val obsoleteQuestIds = previousQuestsByNoteId.values
-            .filter { it.status.isUnanswered } // do not delete quests with changes
-            .map { it.id!! }
-
-        val deletedCount = dao.deleteAllIds(obsoleteQuestIds)
-        val closedCount = dao.updateAll(closedExistingQuests)
-        val addedCount = dao.addAll(addedQuests)
-        val reallyAddedQuests = quests.filter { it.id != null }
-
-        val seconds = (System.currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Added $addedCount new, removed $deletedCount closed and hid $closedCount note quests in ${seconds.format(1)}s")
-
-        onUpdated(added = reallyAddedQuests, updated = closedExistingQuests, deleted = obsoleteQuestIds)
+        userStore.addListener(object : UserStore.UpdateListener {
+            override fun onUserDataUpdated() {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
-    /** Make all the given quests invisible */
-    fun makeAllInvisible(quests: List<OsmNoteQuest>) {
-        quests.forEach { it.status = QuestStatus.INVISIBLE }
-        dao.updateAll(quests)
-        onUpdated(updated = quests)
+    /** get single quest by id */
+    fun get(questId: Long): OsmNoteQuest? {
+        if (isNoteBlocked(questId)) return null
+        return noteSource.get(questId)?.let { createQuestForNote(it, setOf()) }
     }
 
-    /** Make all invisible quests visible again */
-    fun makeAllInvisibleVisible() {
-        val quests = dao.getAll(statusIn = listOf(QuestStatus.INVISIBLE))
-        quests.forEach { it.status = QuestStatus.NEW }
-        dao.updateAll(quests)
-        onUpdated(updated = quests)
+    /** Get count of all unanswered quests in given bounding box */
+    fun getAllVisibleInBBoxCount(bbox: BoundingBox): Int {
+        val blockedNoteIds = getBlockedNoteIds()
+        return noteSource.getAll(bbox).mapNotNull { createQuestForNote(it, blockedNoteIds) }.size
     }
 
-    /** Delete old unsolved and hidden quests */
-    fun cleanUp(): Int {
-        // remove old unsolved and hidden quests
-        val oldUnsolvedQuestsTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER
-        val deletedQuestIds = dao.getAllIds(
-            statusIn = listOf(QuestStatus.NEW, QuestStatus.HIDDEN),
-            changedBefore = oldUnsolvedQuestsTimestamp
-        )
-        val deleted = dao.deleteAllIds(deletedQuestIds)
-        onUpdated(deleted = deletedQuestIds)
-        return deleted
+    /** Get all unanswered quests in given bounding box */
+    fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> {
+        return createQuestsForNotes(noteSource.getAll(bbox))
     }
 
-    /* ---------------------------------------- Getters ----------------------------------------- */
-
-    override fun getAllVisibleInBBoxCount(bbox: BoundingBox): Int =
-        dao.getCount(statusIn = listOf(QuestStatus.NEW), bounds = bbox)
-
-    override fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> =
-        dao.getAll(statusIn = listOf(QuestStatus.NEW), bounds = bbox)
-
-    override fun get(questId: Long): OsmNoteQuest? = dao.get(questId)
-
-    override fun getAllAnswered(): List<OsmNoteQuest> = dao.getAll(statusIn = listOf(QuestStatus.ANSWERED))
-
-    override fun getAllAnsweredCount(): Int = dao.getCount(statusIn = listOf(QuestStatus.ANSWERED))
-
-    /** Get all unanswered quests */
-    fun getAllVisible(): List<OsmNoteQuest> =  dao.getAll(statusIn = listOf(QuestStatus.NEW))
-
-    /* ------------------------------------ Listeners ------------------------------------------- */
-
-    override fun addQuestStatusListener(listener: OsmNoteQuestSource.QuestStatusListener) {
-        questStatusListeners.add(listener)
-    }
-    override fun removeQuestStatusListener(listener: OsmNoteQuestSource.QuestStatusListener) {
-        questStatusListeners.remove(listener)
+    fun hide(noteId: Long) {
+        hiddenNoteQuestDB.add(noteId)
+        TODO("call listener")
     }
 
-    private fun onAdded(quest: OsmNoteQuest) {
-        questStatusListeners.forEach { it.onAdded(quest) }
-    }
-    private fun onChanged(quest: OsmNoteQuest, previousStatus: QuestStatus) {
-        questStatusListeners.forEach { it.onChanged(quest, previousStatus) }
-    }
-    private fun onRemoved(id: Long, previousStatus: QuestStatus) {
-        questStatusListeners.forEach { it.onRemoved(id, previousStatus) }
-    }
-    private fun onUpdated(added: Collection<OsmNoteQuest> = listOf(), updated: Collection<OsmNoteQuest> = listOf(), deleted: Collection<Long> = listOf()) {
-        questStatusListeners.forEach { it.onUpdated(added,updated, deleted) }
+    fun unhideAll(): Int {
+        return hiddenNoteQuestDB.deleteAll()
+        TODO("call listener")
     }
 
-    companion object {
-        private const val TAG = "OsmNoteQuestController"
+    private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> {
+        val blockedNoteIds = getBlockedNoteIds()
+        return notes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
     }
+
+    private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long>): OsmNoteQuest? {
+        val shouldShowQuest = note.shouldShowAsQuest(userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds)
+        return if (shouldShowQuest) OsmNoteQuest(note, questType) else null
+    }
+
+    private fun isNoteBlocked(noteId: Long): Boolean =
+        commentNoteDB.get(noteId) != null || hiddenNoteQuestDB.contains(noteId)
+
+    private fun getBlockedNoteIds(): Set<Long> =
+        (commentNoteDB.getAll().map { it.noteId } + hiddenNoteQuestDB.getAll()).toSet()
+}
+
+private fun Note.shouldShowAsQuest(
+    userId: Long?,
+    showOnlyNotesPhrasedAsQuestions: Boolean,
+    blockedNoteIds: Set<Long>
+): Boolean {
+
+    // don't show a note if user already contributed to it
+    if (userId != null) {
+        if (containsCommentFromUser(userId) || probablyCreatedByUserInThisApp(userId)) return false
+    }
+    // a note comment pending to be uploaded also counts as contribution
+    if (id in blockedNoteIds) return false
+
+    /* many notes are created to report problems on the map that cannot be resolved
+     * through an on-site survey.
+     * Likely, if something is posed as a question, the reporter expects someone to
+     * answer/comment on it, possibly an information on-site is missing, so let's only show these */
+    if (showOnlyNotesPhrasedAsQuestions) {
+        if (!probablyContainsQuestion()) return false
+    }
+
+    return true
+}
+
+private fun Note.probablyContainsQuestion(): Boolean {
+    /* from left to right (if smartass IntelliJ wouldn't mess up left-to-right):
+       - latin question mark
+       - greek question mark (a different character than semikolon, though same appearance)
+       - semikolon (often used instead of proper greek question mark)
+       - mirrored question mark (used in script written from right to left, like Arabic)
+       - armenian question mark
+       - ethopian question mark
+       - full width question mark (often used in modern Chinese / Japanese)
+       (Source: https://en.wikipedia.org/wiki/Question_mark)
+
+        NOTE: some languages, like Thai, do not use any question mark, so this would be more
+        difficult to determine.
+   */
+    val questionMarksAroundTheWorld = "[?;;؟՞፧？]"
+
+    val text = comments?.firstOrNull()?.text
+    return text?.matches(".*$questionMarksAroundTheWorld.*".toRegex()) ?: false
+}
+
+
+private fun Note.containsCommentFromUser(userId: Long): Boolean {
+    for (comment in comments) {
+        val isComment = comment.action == NoteComment.Action.COMMENTED
+        if (comment.isFromUser(userId) && isComment) return true
+    }
+    return false
+}
+
+private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
+    val firstComment = comments.first()
+    val isViaApp = firstComment.text.contains("via " + ApplicationConstants.NAME)
+    return firstComment.isFromUser(userId) && isViaApp
+}
+
+private fun NoteComment.isFromUser(userId: Long): Boolean {
+    return user != null && user.id == userId
 }

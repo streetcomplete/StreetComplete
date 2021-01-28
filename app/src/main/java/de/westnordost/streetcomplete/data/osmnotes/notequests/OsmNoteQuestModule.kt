@@ -5,5 +5,5 @@ import dagger.Provides
 
 @Module
 object OsmNoteQuestModule {
-    @Provides fun osmNoteQuestSource(ctrl: OsmNoteQuestController): OsmNoteQuestSource = ctrl
+    @Provides fun osmNoteQuestSource(ctrl: OsmNoteQuestController): OsmNoteQuestController = ctrl
 }

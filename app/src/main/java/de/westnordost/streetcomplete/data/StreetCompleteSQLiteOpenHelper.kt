@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.data
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
@@ -20,19 +22,22 @@ import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntryMapping
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryMapping
+import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNote
+import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteMapping
+import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteTable
+import de.westnordost.streetcomplete.data.osmnotes.notequests.HiddenNoteQuestTable
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
+import de.westnordost.streetcomplete.util.Serializer
 import java.util.*
 import javax.inject.Inject
 
@@ -40,6 +45,8 @@ import javax.inject.Inject
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {
 
     @Inject internal lateinit var elementGeometryEntryMapping: ElementGeometryEntryMapping
+    @Inject internal lateinit var commentNoteMapping: CommentNoteMapping
+    @Inject internal lateinit var serializer: Serializer
 
     init {
         Injector.applicationComponent.inject(this)
@@ -56,8 +63,9 @@ import javax.inject.Inject
         db.execSQL(RelationTable.CREATE)
 
         db.execSQL(NoteTable.CREATE)
-        db.execSQL(OsmNoteQuestTable.CREATE)
+        db.execSQL(HiddenNoteQuestTable.CREATE)
         db.execSQL(CreateNoteTable.CREATE)
+        db.execSQL(CommentNoteTable.CREATE)
 
         db.execSQL(QuestStatisticsTable.CREATE)
         db.execSQL(CountryStatisticsTable.CREATE)
@@ -69,7 +77,6 @@ import javax.inject.Inject
 
         db.execSQL(OsmQuestTable.CREATE_VIEW)
         db.execSQL(UndoOsmQuestTable.MERGED_VIEW_CREATE)
-        db.execSQL(OsmNoteQuestTable.CREATE_VIEW)
 
         db.execSQL(OpenChangesetsTable.CREATE)
 
@@ -81,6 +88,7 @@ import javax.inject.Inject
 
         db.execSQL(RoadNamesTable.CREATE)
         db.execSQL(WayTrafficFlowTable.CREATE)
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -148,8 +156,8 @@ import javax.inject.Inject
                 """.trimIndent()
             )
             db.execSQL("""
-                ALTER TABLE ${OsmNoteQuestTable.NAME}
-                ADD COLUMN ${OsmNoteQuestTable.Columns.IMAGE_PATHS} blob;
+                ALTER TABLE osm_notequests
+                ADD COLUMN image_paths blob;
                 """.trimIndent()
             )
         }
@@ -263,6 +271,42 @@ import javax.inject.Inject
                     db.replaceOrThrow(ElementGeometryTable.NAME, null, elementGeometryEntryMapping.toContentValues(entry))
                 }
             }
+
+            // OsmNoteQuestTable is no more
+            // there is the CommentNote table now....
+            val commentNotes = db.query(
+                "osm_notequests_full",
+                null,
+                "quest_status = ANSWERED"
+            ) { c -> CommentNote(
+                c.getLong("note_id"),
+                OsmLatLon(c.getDouble("latitude"), c.getDouble("longitude")),
+                c.getString("changes"),
+                c.getBlobOrNull(CommentNoteTable.Columns.IMAGE_PATHS)?.let { serializer.toObject<ArrayList<String>>(it) }
+            ) }
+            db.execSQL(CommentNoteTable.CREATE)
+            db.transaction {
+                for (commentNote in commentNotes) {
+                    db.insert(CommentNoteTable.NAME, null, commentNoteMapping.toContentValues(commentNote))
+                }
+            }
+            // and there is the HiddenNoteQuestTable now
+            val hiddenNoteIds = db.query(
+                "osm_notequests",
+                arrayOf("note_id"),
+                "quest_status = HIDDEN"
+            ) { it.getLong(0) }
+            db.execSQL(HiddenNoteQuestTable.CREATE)
+            db.transaction {
+                for (noteId in hiddenNoteIds) {
+                    db.insert(HiddenNoteQuestTable.NAME, null, contentValuesOf(
+                        HiddenNoteQuestTable.Columns.NOTE_ID to noteId
+                    ))
+                }
+            }
+
+            db.execSQL("DROP VIEW osm_notequests_full")
+            db.execSQL("DROP TABLE osm_notequests")
         }
 
         // for later changes to the DB

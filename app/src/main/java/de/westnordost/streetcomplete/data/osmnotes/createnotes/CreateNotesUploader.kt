@@ -39,7 +39,7 @@ class CreateNotesUploader @Inject constructor(
 
             try {
                 val newNote = uploadSingle(createNote)
-                noteController.add(newNote)
+                noteController.put(newNote)
 
                 Log.d(TAG, "Uploaded note ${createNote.logString}")
                 uploadedChangeListener?.onUploaded(NOTE, createNote.position)

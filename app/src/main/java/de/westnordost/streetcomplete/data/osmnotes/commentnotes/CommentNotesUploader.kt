@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes.notequests
+package de.westnordost.streetcomplete.data.osmnotes.commentnotes
 
 import android.util.Log
 
@@ -14,15 +14,15 @@ import de.westnordost.streetcomplete.data.upload.Uploader
 import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all note quests from local DB and uploads them via the OSM API */
-class OsmNoteQuestsChangesUploader @Inject constructor(
+class CommentNotesUploader @Inject constructor(
+    private val commentNoteDB: CommentNoteDao,
     private val noteController: NoteController,
-    private val osmNoteQuestSource: OsmNoteQuestSource,
     private val singleNoteUploader: OsmNoteWithPhotosUploader
 ): Uploader {
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
 
-    /** Uploads all note quests from local DB and closes them on successful upload.
+    /** Uploads all comment notes from local DB and deletes them on successful upload.
      *
      *  Drops any notes where the upload failed because of a conflict but keeps any notes where
      *  the upload failed because attached photos could not be uploaded (so it can try again
@@ -31,26 +31,28 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
         var created = 0
         var obsolete = 0
         if (cancelled.get()) return
-        for (quest in osmNoteQuestSource.getAllAnswered()) {
+        for (commentNote in commentNoteDB.getAll()) {
             if (cancelled.get()) break
 
             try {
-                val newNote = singleNoteUploader.comment(quest.note.id, quest.comment ?: "", quest.imagePaths)
-                noteController.update(newNote)
+                val newNote = singleNoteUploader.comment(commentNote.noteId, commentNote.text, commentNote.imagePaths)
+                noteController.put(newNote)
+                commentNoteDB.delete(commentNote.noteId)
 
-                Log.d(TAG, "Uploaded note comment ${quest.logString}")
-                uploadedChangeListener?.onUploaded(NOTE, quest.center)
+                Log.d(TAG, "Uploaded note comment ${commentNote.logString}")
+                uploadedChangeListener?.onUploaded(NOTE, commentNote.position)
                 created++
-                deleteImages(quest.imagePaths)
+                deleteImages(commentNote.imagePaths)
             } catch (e: ConflictException) {
-                noteController.delete(quest.note.id)
+                noteController.delete(commentNote.noteId)
+                commentNoteDB.delete(commentNote.noteId)
 
-                Log.d(TAG, "Dropped note comment ${quest.logString}: ${e.message}")
-                uploadedChangeListener?.onDiscarded(NOTE, quest.center)
+                Log.d(TAG, "Dropped note comment ${commentNote.logString}: ${e.message}")
+                uploadedChangeListener?.onDiscarded(NOTE, commentNote.position)
                 obsolete++
-                deleteImages(quest.imagePaths)
+                deleteImages(commentNote.imagePaths)
             } catch (e: ImageUploadException) {
-                Log.e(TAG, "Error uploading image attached to note comment ${quest.logString}", e)
+                Log.e(TAG, "Error uploading image attached to note comment ${commentNote.logString}", e)
             }
         }
         var logMsg = "Commented on $created notes"
@@ -66,4 +68,4 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
     }
 }
 
-private val OsmNoteQuest.logString get() = "\"$comment\" at ${center.latitude}, ${center.longitude}"
+private val CommentNote.logString get() = "\"$text\" at ${position.latitude}, ${position.longitude}"

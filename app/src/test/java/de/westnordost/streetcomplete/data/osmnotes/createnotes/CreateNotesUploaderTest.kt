@@ -15,8 +15,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.mock
 import java.util.*
 
@@ -25,29 +24,25 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 class CreateNotesUploaderTest {
     private lateinit var createNoteDB: CreateNoteDao
-    private lateinit var osmNoteQuestController: OsmNoteQuestController
+    private lateinit var noteController: NoteController
     private lateinit var mapDataApi: MapDataApi
-    private lateinit var questType: OsmNoteQuestType
     private lateinit var singleCreateNoteUploader: SingleCreateNoteUploader
 
     private lateinit var uploader: CreateNotesUploader
 
     @Before fun setUp() {
         mapDataApi = mock()
-        osmNoteQuestController = mock()
+        noteController = mock()
         createNoteDB = mock()
-        questType = mock()
         singleCreateNoteUploader = mock()
 
-        uploader = CreateNotesUploader(createNoteDB, osmNoteQuestController, mapDataApi, questType,
-                singleCreateNoteUploader)
+        uploader = CreateNotesUploader(createNoteDB, noteController, mapDataApi, singleCreateNoteUploader)
     }
 
     @Test fun `cancel upload works`() {
         val cancelled = AtomicBoolean(true)
         uploader.upload(cancelled)
-        verifyZeroInteractions(createNoteDB, osmNoteQuestController, mapDataApi, questType,
-            singleCreateNoteUploader)
+        verifyZeroInteractions(createNoteDB, noteController, mapDataApi, singleCreateNoteUploader)
     }
 
     @Test fun `catches conflict exception`() {
@@ -59,7 +54,7 @@ class CreateNotesUploaderTest {
         // will not throw ElementConflictException
     }
 
-    @Test fun `delete each uploaded quest in local DB and call listener`() {
+    @Test fun `delete each uploaded create note in local DB and call listener`() {
         val createNotes = listOf(newCreateNote(), newCreateNote())
 
         on(createNoteDB.getAll()).thenReturn(createNotes)
@@ -69,11 +64,11 @@ class CreateNotesUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(createNoteDB, times(createNotes.size)).delete(anyLong())
-        verify(osmNoteQuestController, times(createNotes.size)).add(any())
+        verify(noteController, times(createNotes.size)).add(any())
         verify(uploader.uploadedChangeListener, times(createNotes.size))?.onUploaded(any(), any())
     }
 
-    @Test fun `delete each unsuccessfully uploaded quest in local DB and call listener`() {
+    @Test fun `delete each unsuccessfully uploaded create note in local DB and call listener`() {
         val createNotes = listOf(newCreateNote(), newCreateNote())
 
         on(createNoteDB.getAll()).thenReturn(createNotes)

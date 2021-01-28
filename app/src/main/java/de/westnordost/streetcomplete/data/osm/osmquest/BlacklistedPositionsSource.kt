@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.osmquest
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteSource
+import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
 import javax.inject.Inject
 
@@ -12,10 +13,12 @@ import javax.inject.Inject
  *  locally but have not been uploaded yet. */
 class BlacklistedPositionsSource @Inject constructor(
     private val noteSource: NoteSource,
+    private val commentNoteDao: CommentNoteDao,
     private val createNoteDao: CreateNoteDao
 ) {
     /** Get the positions of all notes within the given bounding box */
-    fun getAllPositions(bbox: BoundingBox): List<LatLon> {
-        return createNoteDao.getAllPositions(bbox) + noteSource.getAllPositions(bbox)
-    }
+    fun getAllPositions(bbox: BoundingBox): List<LatLon> =
+        createNoteDao.getAllPositions(bbox) +
+        commentNoteDao.getAllPositions(bbox) +
+        noteSource.getAllPositions(bbox)
 }

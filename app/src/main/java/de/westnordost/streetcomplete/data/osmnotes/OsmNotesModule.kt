@@ -4,7 +4,6 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestUpdater
 import java.io.File
 import javax.inject.Named
 import javax.inject.Singleton
@@ -29,13 +28,9 @@ object OsmNotesModule {
     @Provides @Singleton
     fun osmNoteController(
         noteDao: NoteDao,
-        osmNoteQuestUpdater: OsmNoteQuestUpdater,
         osmAvatarsInNotesUpdater: OsmAvatarsInNotesUpdater
     ) = NoteController(noteDao).apply {
-        // on notes have been updated,
-        // note quests need to be updated
-        addNoteUpdatesListener(osmNoteQuestUpdater)
-        // and avatar images should be downloaded (cached) referenced in note discussions
+        // on notes have been updated, avatar images should be downloaded (cached) referenced in note discussions
         addNoteUpdatesListener(osmAvatarsInNotesUpdater)
     }
 }

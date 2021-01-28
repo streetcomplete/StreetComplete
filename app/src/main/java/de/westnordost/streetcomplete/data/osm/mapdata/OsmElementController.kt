@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import android.util.Log
 import de.westnordost.osmapi.map.*
 import de.westnordost.osmapi.map.data.*
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
@@ -41,7 +42,7 @@ import javax.inject.Singleton
 
     /** update element data because in the given bounding box, fresh data from the OSM API has been
      *  downloaded */
-    fun updateForBBox(bbox: BoundingBox, mapData: MutableMapData) {
+    fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
         val time = System.currentTimeMillis()
 
         // for incompletely downloaded relations, complete the map data (as far as possible) with
@@ -65,19 +66,19 @@ import javax.inject.Singleton
         Log.i(TAG,"Persisted ${geometries.size} and deleted ${oldElementKeys.size} elements and geometries in ${seconds.format(1)}s")
 
         val mapDataWithGeometry = ImmutableMapDataWithGeometry(mapData, geometries)
-        elementUpdatesListener.forEach { it.onUpdateForBBox(bbox, mapDataWithGeometry) }
+        onUpdateForBBox(bbox, mapDataWithGeometry)
     }
 
     /** delete an element because the element does not exist anymore on OSM */
     fun delete(type: Element.Type, id: Long) {
         elementDB.delete(type, id)
         geometryDB.delete(type, id)
-        elementUpdatesListener.forEach { it.onDeleted(type, id) }
+        onDeleted(type, id)
     }
 
+    // TODO bulk update would be better, nodes first!
     /** update an element because the element has changed on OSM */
-    fun update(element: Element) {
-        // TODO bulk update would be better, nodes first!
+    fun put(element: Element) {
         val mapData = MutableMapData()
         mapData.addAll(listOf(element))
 
@@ -86,7 +87,7 @@ import javax.inject.Singleton
 
         geometryDB.put(ElementGeometryEntry(element.type, element.id, geometry))
         elementDB.put(element)
-        elementUpdatesListener.forEach { it.onUpdated(element, geometry) }
+        onUpdated(element, geometry)
     }
 
     private fun completeMapData(mapData: MutableMapData) {
@@ -123,6 +124,16 @@ import javax.inject.Singleton
     }
     override fun removeElementUpdatesListener(listener: OsmElementSource.ElementUpdatesListener) {
         elementUpdatesListener.remove(listener)
+    }
+
+    private fun onUpdated(element: Element, geometry: ElementGeometry) {
+        elementUpdatesListener.forEach { it.onUpdated(element, geometry) }
+    }
+    private fun onDeleted(type: Element.Type, id: Long) {
+        elementUpdatesListener.forEach { it.onDeleted(type, id) }
+    }
+    private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: ImmutableMapDataWithGeometry) {
+        elementUpdatesListener.forEach { it.onUpdateForBBox(bbox, mapDataWithGeometry) }
     }
 
     companion object {

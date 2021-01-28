@@ -11,14 +11,10 @@ class OsmAvatarsInNotesUpdater @Inject constructor(private val downloader: OsmAv
         val noteCommentUserIds = notes.flatMap { it.userIds }.toSet()
         downloader.download(noteCommentUserIds)
     }
-    override fun onAdded(note: Note) {
-        downloader.download(note.userIds.toSet())
-    }
     override fun onUpdated(note: Note) {
         downloader.download(note.userIds.toSet())
     }
-
-    override fun onDeleted(id: Long) {}
+    override fun onDeleted(noteId: Long) {}
 }
 
 private val Note.userIds: List<Long> get() = comments.mapNotNull { it.user?.id }

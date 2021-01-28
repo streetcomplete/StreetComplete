@@ -95,7 +95,7 @@ class SplitWaysUploaderTest {
         verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].questType.javaClass.simpleName, quests[0].position)
         verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].questType.javaClass.simpleName,quests[1].position)
 
-        verify(osmElementController, times(1)).update(any())
+        verify(osmElementController, times(1)).put(any())
         verify(osmElementController, times(2)).get(any(), anyLong())
         verify(statisticsUpdater).addOne(any(), any())
         verifyNoMoreInteractions(osmElementController)
