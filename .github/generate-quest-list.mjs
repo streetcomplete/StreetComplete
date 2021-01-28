@@ -14,6 +14,8 @@ const csvFilePath = resolve(projectDirectory, 'quest-list.csv');
 const noteQuestName = 'OsmNoteQuest';
 const noteQuestPath = resolve(sourceDirectory, 'data/osmnotes/notequests/OsmNoteQuestType.kt');
 
+const wikiRowSpan2 = ' rowspan="2" |';
+
 
 /** @type string[] */
 let questFiles;
@@ -21,8 +23,11 @@ let questFiles;
 /** @type Record<string, string> */
 let strings;
 
-/** @type TableRow[] */
+/** @type WikiTableQuest[] */
 let wikiTable;
+
+/** @type RepoQuest[] */
+let quests;
 
 
 (async () => {
@@ -36,15 +41,108 @@ let wikiTable;
     const wikiPageContent = await getWikiTableContent();
     wikiTable = parseWikiTable(wikiPageContent);
 
-    const quests = await Promise.all(questNames.map((name, defaultPriority) => getQuest(name, defaultPriority)));
+    quests = await Promise.all(questNames.map((name, defaultPriority) => getQuest(name, defaultPriority)));
 
     quests.sort((a, b) => a.wikiOrder - b.wikiOrder);
 
-    await writeCsvFile(quests);
+    await writeCsvFile();
 })().catch(error => {
     console.error(error);
     process.exit(1);
 });
+
+
+class RepoQuest {
+    /**
+     * @param {string} name
+     * @param {string} filePath
+     * @param {string} title
+     * @param {number} defaultPriority
+     * @param {number} wikiOrder
+     */
+    constructor(name, filePath, title, defaultPriority, wikiOrder) {
+        /** @type string */
+        this.name = name;
+
+        /** @type string */
+        this.filePath = filePath;
+
+        /** @type string */
+        this.title = title;
+
+        /** @type number */
+        this.defaultPriority = defaultPriority;
+
+        /** @type number */
+        this.wikiOrder = wikiOrder;
+    }
+
+    get csvString() {
+        const wikiOrder = this.wikiOrder === -1 ? '???' : this.wikiOrder;
+        return `"${this.name}", "${this.title}", ${this.defaultPriority + 1}, ${wikiOrder}`;
+    }
+}
+
+class WikiTableQuest {
+    /** @type number */
+    wikiOrder;
+
+    /** @type string */
+    icon;
+
+    /** @type string */
+    question;
+
+    /** @type string */
+    askedForElements;
+
+    /** @type string */
+    modifiedTags;
+
+    /** @type string */
+    defaultPriority;
+
+    /** @type string */
+    sinceVersion;
+
+    /** @type string */
+    notes;
+
+    /** @type string */
+    code;
+
+    /**
+     * @param {string[]} rowCells
+     * @param {number} rowIndex
+     */
+    constructor(rowCells, rowIndex) {
+        this.wikiOrder = rowIndex;
+
+        const tableColumns = ['icon', 'question', 'askedForElements', 'modifiedTags', 'defaultPriority', 'sinceVersion', 'notes', 'code'];
+
+        for (let [cellIndex, cell] of rowCells.entries()) {
+            if (/^ ?(?:rowspan=|colspan=)/.test(cell)) {
+                if (cell.startsWith(wikiRowSpan2)) {
+                    cell = cell.slice(wikiRowSpan2.length);
+                }
+                else {
+                    throw new Error(`Unsupported rowspan > 2 or colspan detected in table row ${rowIndex}: ${cell}`);
+                }
+            }
+
+            const column = tableColumns[cellIndex];
+            this[column] = cell.trim();
+        }
+    }
+
+    get isOutdated() {
+        return !quests.some(quest => quest.wikiOrder === this.wikiOrder);
+    }
+
+    get csvString() {
+        return `"???", "${this.question}", "???", ${this.wikiOrder}`;
+    }
+}
 
 
 /**
@@ -86,14 +184,12 @@ async function getStrings(stringsFileName) {
 }
 
 /**
- * @typedef {object} Quest
- * @property {string} name - The quest's name
- * @property {string} filePath - An absolute path to the quest's Kotlin file.
- * @property {string} title - The quest's title.
- * @property {number} defaultPriority - The quest's default priority (1 is highest priority).
- * @property {number} wikiOrder - The quest's table row number in the wiki quest list.
+ * Simplified polyfill for
+ * https://developer.mozilla.org/en-us/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll
+ * @param {string} search
+ * @param {string} replace
+ * @returns {string}
  */
-
 String.prototype.replaceAll = function(search, replace) {
     return this.split(search).join(replace);
 }
@@ -101,7 +197,7 @@ String.prototype.replaceAll = function(search, replace) {
 /**
  * @param {string} questName
  * @param {number} defaultPriority
- * @returns {Quest} All information about the quest with the given name.
+ * @returns {RepoQuest} All information about the quest with the given name.
  */
 async function getQuest(questName, defaultPriority) {
     const filePath = getQuestFilePath(questName);
@@ -114,13 +210,7 @@ async function getQuest(questName, defaultPriority) {
     const wikiOrder = wikiTable.findIndex(tableRow => questions.includes(tableRow.question));
     const title = wikiOrder > -1 ? wikiTable[wikiOrder].question : questions.pop();
 
-    return {
-        name: questName,
-        filePath,
-        title,
-        defaultPriority,
-        wikiOrder,
-    };
+    return new RepoQuest(questName, filePath, title, defaultPriority, wikiOrder);
 }
 
 
@@ -194,29 +284,14 @@ async function getWikiTableContent() {
 
 
 /**
- * @typedef {object} TableRow
- * @property {string} icon
- * @property {string} question
- * @property {string} askedForElements
- * @property {string} modifiedTags
- * @property {string} defaultPriority
- * @property {string} sinceVersion
- * @property {string} notes
- * @property {string} code
- */
-
-/**
  * @param {string} wikiPageContent
- * @returns {TableRow[]}
+ * @returns {WikiTableQuest[]}
  */
 function parseWikiTable(wikiPageContent) {
     const tableRows = wikiPageContent.split('|-');
 
     tableRows.shift(); // Drop table header and everything before the table
     tableRows.push(tableRows.pop().split('|}')[0]); // Drop everything after the table
-
-    const tableColumns = ['icon', 'question', 'askedForElements', 'modifiedTags', 'defaultPriority', 'sinceVersion', 'notes', 'code'];
-    const rowSpan2 = ' rowspan="2" |';
 
     const cells = [];
 
@@ -226,8 +301,8 @@ function parseWikiTable(wikiPageContent) {
         if (rowIndex > 0) {
             const previousRowCells = cells[rowIndex - 1];
             for (const [cellIndex, cell] of previousRowCells.entries()) {
-                if (cell.startsWith(rowSpan2)) {
-                    rowCells.splice(cellIndex, 0, cell.slice(rowSpan2.length));
+                if (cell.startsWith(wikiRowSpan2)) {
+                    rowCells.splice(cellIndex, 0, cell.slice(wikiRowSpan2.length));
                 }
             }
         }
@@ -235,39 +310,21 @@ function parseWikiTable(wikiPageContent) {
         cells.push(rowCells);
     }
 
-    return cells.map((rowCells, rowIndex) => Object.fromEntries(rowCells.map((cell, cellIndex) => {
-        if (/^ ?(?:rowspan=|colspan=)/.test(cell)) {
-            if (cell.startsWith(rowSpan2)) {
-                cell = cell.slice(rowSpan2.length);
-            }
-            else {
-                throw new Error(`Unsupported rowspan > 2 or colspan detected in table row ${rowIndex}: ${cell}`);
-            }
-        }
-
-        const column = tableColumns[cellIndex];
-
-        return [column, cell.trim()];
-    })));
+    return cells.map((rowCells, rowIndex) => new WikiTableQuest(rowCells, rowIndex));
 }
 
 
-/**
- * @param {Quest[]} quests
- */
-async function writeCsvFile(quests) {
+async function writeCsvFile() {
     const newQuests = quests.filter(quest => quest.wikiOrder === -1);
     const oldQuests = quests.filter(quest => quest.wikiOrder > -1);
 
     const csvLines = [
-        'Quest Name, Question, Default Priority, Wiki Order',
-        ...wikiTable.filter((row, index) => !quests.some(quest => quest.wikiOrder === index)).map(
-            row => `"???", "${row.question}", "???", ${wikiTable.indexOf(row)}`,
-        ),
+        '"Quest Name", "Question", "Default Priority", "Wiki Order"',
+        ...wikiTable.filter(quest => quest.isOutdated).map(quest => quest.csvString),
         ',,,',
-        ...newQuests.map(quest => `"${quest.name}", "${quest.title}", ${quest.defaultPriority + 1}, "???"`),
+        ...newQuests.map(quest => quest.csvString),
         ',,,',
-        ...oldQuests.map(quest => `"${quest.name}", "${quest.title}", ${quest.defaultPriority + 1}, ${quest.wikiOrder}`),
+        ...oldQuests.map(quest => quest.csvString),
     ];
 
     await writeFile(csvFilePath, csvLines.join('\n'));
