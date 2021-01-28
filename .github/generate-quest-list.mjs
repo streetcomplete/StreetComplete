@@ -8,7 +8,6 @@ const scriptFilePath = new URL(import.meta.url).pathname;
 
 const projectDirectory = resolve(dirname(scriptFilePath), '..');
 const sourceDirectory = resolve(projectDirectory, 'app/src/main/java/de/westnordost/streetcomplete/');
-const iconsDirectory = resolve(projectDirectory, 'res/graphics/quest icons/');
 
 const csvFilePath = resolve(projectDirectory, 'quests.csv');
 
@@ -89,7 +88,6 @@ async function getStrings(stringsFileName) {
 /**
  * @typedef {object} Quest
  * @property {string} name - The quest's name
- * @property {string} icon - An absolute path to the quest's SVG icon.
  * @property {string} filePath - An absolute path to the quest's Kotlin file.
  * @property {string} title - The quest's title.
  * @property {number} defaultPriority - The quest's default priority (1 is highest priority).
@@ -118,7 +116,6 @@ async function getQuest(questName, defaultPriority) {
 
     return {
         name: questName,
-        icon: await getQuestIcon(questName, questFileContent),
         filePath,
         title,
         defaultPriority,
@@ -143,30 +140,6 @@ function getQuestFilePath(questName) {
     }
 
     return questFile;
-}
-
-
-/**
- * @param {string} questName
- * @param {string} questFileContent
- * @returns {Promise<string>} The absolute path of the quest's SVG icon.
- */
-async function getQuestIcon(questName, questFileContent) {
-    const [iconName] = questFileContent.match(/(?<=override val icon = R.drawable.ic_quest_)\w+/) ?? [];
-
-    if (!iconName) {
-        throw new Error(`Could not find the icon reference for quest '${questName}'.`);
-    }
-
-    const svgFileName = resolve(iconsDirectory, iconName + '.svg');
-
-    try {
-        await readFile(svgFileName);
-        return svgFileName;
-    }
-    catch {
-        throw new Error(`Could not find the SVG for icon '${iconName}' (quest '${questName}').`);
-    }
 }
 
 
