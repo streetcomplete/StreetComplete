@@ -9,7 +9,7 @@ const scriptFilePath = new URL(import.meta.url).pathname;
 const projectDirectory = resolve(dirname(scriptFilePath), '..');
 const sourceDirectory = resolve(projectDirectory, 'app/src/main/java/de/westnordost/streetcomplete/');
 
-const csvFilePath = resolve(projectDirectory, 'quests.csv');
+const csvFilePath = resolve(projectDirectory, 'quest-list.csv');
 
 const noteQuestName = 'OsmNoteQuest';
 const noteQuestPath = resolve(sourceDirectory, 'data/osmnotes/notequests/OsmNoteQuestType.kt');
