@@ -1,0 +1,108 @@
+Quest Name, Question, Default Priority, Wiki Order
+"???", "What surface does this road have here?", "???", 29
+"???", "What specific surface does the road […] have here?", "???", 31
+"???", "Does the bus stop […] have a bench?", "???", 77
+"???", "What type of tourist information is […]?", "???", 78
+,,,
+"AddRoadSurface", "What surface does this piece of road have?", 22, "???"
+"AddBikeParkingAccess", "Is it restricted who may park a bike here?", 46, "???"
+"AddBikeParkingFee", "Do you have to pay to park a bike here?", 47, "???"
+"AddDrinkingWater", "Is the water potable here? […]", 61, "???"
+"AddInformationToTourism", "What type of tourist information is this?", 80, "???"
+"AddBenchStatusOnBusStop", "Does this bus stop have a bench?", 99, "???"
+,,,
+"AddBikeParkingCapacity", "How many bikes can be parked here?", 28, 0
+"AddBikeParkingCover", "Is this bicycle parking covered (protected from rain)?", 60, 1
+"AddBikeParkingType", "What type of bicycle parking is this?", 45, 2
+"AddMotorcycleParkingCapacity", "How many motorcycles can be parked here?", 40, 3
+"AddMotorcycleParkingCover", "Is this motorcycle parking covered (protected from rain)?", 91, 4
+"AddParkingType", "What kind of parking is this?", 93, 5
+"AddParkingAccess", "Is it restricted who may park here?", 18, 6
+"AddParkingFee", "Do you have to pay to park here?", 39, 7
+"AddChargingStationOperator", "Who is the operator of this charging station?", 83, 8
+"AddChargingStationCapacity", "How many cars can be charged at this charging station at the same time?", 82, 9
+"AddCarWashType", "What kind of car wash is this?", 98, 10
+"AddBusStopShelter", "Does this bus stop have a shelter?", 35, 11
+"AddBusStopName", "What is the name of this bus stop?", 10, 12
+"AddBusStopRef", "What is the reference number of this bus stop?", 11, 13
+"AddTactilePavingBusStop", "Does this bus stop have tactile pavings?", 70, 14
+"AddTactilePavingCrosswalk", "Does this crosswalk have tactile pavings on both sides?", 62, 15
+"AddCrossingType", "What kind of crossing is this?", 32, 16
+"AddCrossingIsland", "Does this pedestrian crossing have an island?", 33, 17
+"AddTrafficSignalsButton", "Do these traffic lights have a button to request a walk signal?", 101, 18
+"AddTrafficSignalsSound", "Are there sound signals for the blind here?", 65, 19
+"AddTrafficSignalsVibration", "Do these traffic lights have a tactile indication for blind people for when it's safe to cross?", 66, 20
+"AddMaxSpeed", "What is the speed limit for this street?", 23, 21
+"AddSuspectedOneway", "Is this a one-way street?", 7, 22
+"AddOneway", "Is this a one-way street? In which direction?", 4, 23
+"AddMaxHeight", "What is the height limit here?", 24, 24
+"AddMaxWeight", "What is the weight limit here?", 43, 25
+"AddRailwayCrossingBarrier", "What barriers are used at this railway crossing?", 26, 26
+"AddRoadName", "What is the name of this road?", 2, 27
+"AddLanes", "How many lanes for cars does this road have?", 25, 28
+"AddPathSurface", "What surface does this path have here?", 41, 30
+"AddCyclewayPartSurface", "What's the surface of the cycleway here?", 89, 32
+"AddFootwayPartSurface", "What's the surface of the footway here?", 90, 33
+"AddTracktype", "What is the surface firmness of this track?", 42, 34
+"AddWayLit", "Is this stretch of way lit?", 57, 35
+"AddCycleway", "Is there a cycleway here? What type?", 8, 36
+"AddProhibitedForPedestrians", "Are pedestrians forbidden to walk on this road here?", 31, 37
+"AddSidewalk", "Does this street have a sidewalk?", 9, 38
+"AddCyclewaySegregation", "How are the footway and cycleway laid out here?", 73, 39
+"AddBuildingType", "What kind of building is this?", 30, 40
+"AddIsBuildingUnderground", "Is this building completely underground?", 12, 41
+"AddBuildingLevels", "How many levels does this building have?", 34, 42
+"AddRoofShape", "What basic shape does this building’s roof have?", 67, 43
+"AddHousenumber", "What is the house number of this building?", 13, 44
+"AddAddressStreet", "What street does the (house) number […] belong to?", 14, 45
+"MarkCompletedHighwayConstruction", "Is this way completed?", 16, 46
+"MarkCompletedBuildingConstruction", "Is this building completed?", 74, 47
+"AddWheelchairAccessBusiness", "Is […] wheelchair accessible?", 51, 48
+"AddWheelchairAccessPublicTransport", "Is this location wheelchair accessible?", 68, 49
+"AddWheelchairAccessOutside", "Is this place wheelchair accessible?", 69, 50
+"AddWheelchairAccessToilets", "Is this restroom wheelchair accessible?", 49, 51
+"AddWheelchairAccessToiletsPart", "Is the restroom at […] wheelchair accessible?", 95, 52
+"AddToiletAvailability", "Does […] have a restroom?", 52, 53
+"AddToiletsFee", "Do you have to pay to use this restroom?", 58, 54
+"AddBabyChangingTable", "Does this restroom have a baby changing table?", 59, 55
+"AddSport", "What sport is played here?", 21, 56
+"AddPlaygroundAccess", "Is this playground publicly accessible?", 50, 57
+"AddPitchSurface", "What surface does this sport field have?", 86, 58
+"AddPostboxCollectionTimes", "What are the collection times of this postbox?", 5, 59
+"AddPostboxRef", "What is the reference number of this postbox?", 94, 60
+"AddRecyclingType", "What type of recycling facility is this?", 19, 61
+"AddRecyclingContainerMaterials", "What can be left here for recycling?", 20, 62
+"DetermineRecyclingGlass", "Can only glass bottles and jars be recycled here, or any type of glass?", 56, 63
+"AddClothingBinOperator", "Who accepts donations for this clothing bin?", 84, 64
+"AddGeneralFee", "Do you need to pay to enter […]?", 75, 65
+"AddPowerPolesMaterial", "What is the material of this power pole?", 97, 66
+"AddBridgeStructure", "What is the structure of this bridge?", 71, 67
+"AddFireHydrantType", "What kind of fire hydrant is this?", 92, 68
+"AddIsDefibrillatorIndoor", "Is this defibrillator (AED) inside a building?", 87, 69
+"AddSelfServiceLaundry", "Is this laundry a self service laundry?", 76, 70
+"AddFerryAccessPedestrian", "Does this ferry route transport pedestrians?", 53, 71
+"AddFerryAccessMotorVehicle", "Does this ferry route transport motor vehicles?", 54, 72
+"AddOrchardProduce", "What is being cultivated here?", 29, 73
+"AddForestLeafType", "Do the trees here have needles or leaves?", 44, 74
+"AddSummitRegister", "Is there a summit register at […]?", 88, 75
+"AddBenchBackrest", "Does this bench have a backrest?", 100, 76
+"AddBoardType", "What is the topic of this information board?", 96, 79
+"AddReligionToPlaceOfWorship", "What religion is practiced at this place?", 17, 80
+"AddReligionToWaysideShrine", "What religion is represented at this shrine?", 72, 81
+"AddStepCount", "How many steps are here?", 79, 82
+"AddHandrail", "Do these steps have a handrail?", 78, 83
+"AddStepsRamp", "Do these steps have a ramp? What kind?", 48, 84
+"AddStepsIncline", "Which direction leads upwards for these steps?", 77, 85
+"AddTactilePavingKerb", "Is there tactile paving on this curb here?", 63, 86
+"AddKerbHeight", "What is the height of this curb?", 64, 87
+"AddOpeningHours", "What are the opening hours of […]?", 27, 88
+"AddVegetarian", "Does […] have vegetarian meals on the menu?", 36, 89
+"AddVegan", "Does […] have vegan meals on the menu?", 37, 90
+"AddKosher", "Does […] offer kosher products?", 85, 91
+"AddInternetAccess", "What kind of Internet connection does […] offer?", 38, 92
+"AddPlaceName", "What is the name of this place? […]", 3, 93
+"AddAtmOperator", "What's the name of the bank for this ATM?", 81, 94
+"AddAcceptsCash", "Does […] accept cash payment?", 55, 95
+"CheckShopType", "This shop has been vacant. What's here now?", 15, 96
+"CheckExistence", "Is this still here? […]", 6, 97
+"OsmNoteQuest", "Can you contribute anything to this note?", 1, 98
