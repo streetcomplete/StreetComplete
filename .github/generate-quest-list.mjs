@@ -109,10 +109,12 @@ async function getQuest(questName, defaultPriority) {
     const filePath = getQuestFilePath(questName);
     const questFileContent = await readFile(filePath, 'utf8');
 
-    const titleStringName = getQuestTitleStringName(questName, questFileContent);
+    const questions = getQuestTitleStringNames(questName, questFileContent).map(
+        name => strings[name].replace(/%s|%\d\$s/g, '[…]').replaceAll('([…])', '[…]').replaceAll('[…] […]', '[…]'),
+    );
 
-    const title = strings[titleStringName].replace(/%s|%\d\$s/g, '[…]').replaceAll('([…])', '[…]').replaceAll('[…] […]', '[…]');
-    const wikiOrder = wikiTable.findIndex(tableRow => tableRow.question === title);
+    const wikiOrder = wikiTable.findIndex(tableRow => questions.includes(tableRow.question));
+    const title = wikiOrder > -1 ? wikiTable[wikiOrder].question : questions.pop();
 
     return {
         name: questName,
@@ -173,7 +175,7 @@ async function getQuestIcon(questName, questFileContent) {
  * @param {string} questFileContent
  * @returns {string} The Android String Resource name of the quest's title.
  */
-function getQuestTitleStringName(questName, questFileContent) {
+function getQuestTitleStringNames(questName, questFileContent) {
     let stringResourceNames = questFileContent.match(/(?<=R\.string\.)quest_\w+/g);
 
     if (stringResourceNames.length === 0) {
@@ -181,11 +183,10 @@ function getQuestTitleStringName(questName, questFileContent) {
     }
 
     if (stringResourceNames.length === 1) {
-        return stringResourceNames[0];
+        return stringResourceNames;
     }
 
-    // heuristic: use the last one that contains "title"
-    return stringResourceNames.filter(name => name.includes('title')).pop();
+    return stringResourceNames.filter(name => name.includes('title'));
 }
 
 

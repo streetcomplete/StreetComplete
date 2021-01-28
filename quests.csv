@@ -1,15 +1,11 @@
 Quest Name, Question, Default Priority, Wiki Order
 "???", "What surface does this road have here?", "???", 29
 "???", "What specific surface does the road […] have here?", "???", 31
-"???", "Does the bus stop […] have a bench?", "???", 77
-"???", "What type of tourist information is […]?", "???", 78
 ,,,
 "AddRoadSurface", "What surface does this piece of road have?", 22, "???"
 "AddBikeParkingAccess", "Is it restricted who may park a bike here?", 46, "???"
 "AddBikeParkingFee", "Do you have to pay to park a bike here?", 47, "???"
 "AddDrinkingWater", "Is the water potable here? […]", 61, "???"
-"AddInformationToTourism", "What type of tourist information is this?", 80, "???"
-"AddBenchStatusOnBusStop", "Does this bus stop have a bench?", 99, "???"
 ,,,
 "AddBikeParkingCapacity", "How many bikes can be parked here?", 28, 0
 "AddBikeParkingCover", "Is this bicycle parking covered (protected from rain)?", 60, 1
@@ -86,6 +82,8 @@ Quest Name, Question, Default Priority, Wiki Order
 "AddForestLeafType", "Do the trees here have needles or leaves?", 44, 74
 "AddSummitRegister", "Is there a summit register at […]?", 88, 75
 "AddBenchBackrest", "Does this bench have a backrest?", 100, 76
+"AddBenchStatusOnBusStop", "Does the bus stop […] have a bench?", 99, 77
+"AddInformationToTourism", "What type of tourist information is […]?", 80, 78
 "AddBoardType", "What is the topic of this information board?", 96, 79
 "AddReligionToPlaceOfWorship", "What religion is practiced at this place?", 17, 80
 "AddReligionToWaysideShrine", "What religion is represented at this shrine?", 72, 81
