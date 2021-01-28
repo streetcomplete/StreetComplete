@@ -78,7 +78,7 @@ class RepoQuest {
     }
 
     get csvString() {
-        const wikiOrder = this.wikiOrder === -1 ? '???' : this.wikiOrder;
+        const wikiOrder = this.wikiOrder === -1 ? '"???"' : this.wikiOrder;
         return `"${this.name}", "${this.title}", ${this.defaultPriority + 1}, ${wikiOrder}`;
     }
 }
