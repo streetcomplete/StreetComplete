@@ -107,7 +107,7 @@ class RoadNameSuggestionsDao @Inject constructor(
     }
 
     fun cleanUp() {
-        val oldNameSuggestionsTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER
+        val oldNameSuggestionsTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_OLD_DATA_AFTER
         db.delete(NAME, "$LAST_UPDATE < ?", arrayOf(oldNameSuggestionsTimestamp.toString()))
     }
 }

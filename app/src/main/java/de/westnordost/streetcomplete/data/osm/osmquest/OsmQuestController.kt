@@ -183,7 +183,7 @@ import javax.inject.Singleton
         )
         // remove old unsolved and hidden quests. To let the quest cache not get too big and to
         // ensure that the probability of merge conflicts remains low
-        val oldUnsolvedQuestsTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER
+        val oldUnsolvedQuestsTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_OLD_DATA_AFTER
         deleted += dao.deleteAll(
             statusIn = listOf(QuestStatus.NEW, QuestStatus.HIDDEN),
             changedBefore = oldUnsolvedQuestsTimestamp

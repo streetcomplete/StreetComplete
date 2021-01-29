@@ -20,7 +20,7 @@ object ApplicationConstants {
 
     /** the duration after which OSM data, notes, quest meta data etc. will be deleted from the
      *  database if not used anymore and have not been refreshed in the meantime  */
-    const val DELETE_UNSOLVED_QUESTS_AFTER = 14L * 24 * 60 * 60 * 1000 // 14 days in ms
+    const val DELETE_OLD_DATA_AFTER = 14L * 24 * 60 * 60 * 1000 // 14 days in ms
 
     const val NOTE_MIN_ZOOM = 15
 
