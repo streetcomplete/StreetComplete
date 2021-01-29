@@ -1,25 +1,16 @@
 package de.westnordost.streetcomplete.data.osm.elementgeometry
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.*
 import org.junit.Before
 import org.junit.Test
 
 import java.util.ArrayList
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestMapping
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 
 import org.junit.Assert.*
-import org.mockito.Mockito.mock
 
 class ElementGeometryDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementGeometryDao
@@ -123,18 +114,35 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun deleteUnreferenced() {
-        val type = Element.Type.WAY
-        val id: Long = 0
         val geometry = createSimpleGeometry()
 
-        dao.put(ElementGeometryEntry(type, id, geometry))
-        assertEquals(1, dao.deleteUnreferenced())
+        val nodeDao = NodeDao(dbHelper, NodeMapping(serializer))
+        val wayDao = WayDao(dbHelper, WayMapping(serializer))
+        val relationDao = RelationDao(dbHelper, RelationMapping(serializer))
 
-        dao.put(ElementGeometryEntry(type, id, geometry))
-        val questType = mock(OsmElementQuestType::class.java)
-        val osmQuestMapping = OsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), mapping.geometry)
-        val questDao = OsmQuestDao(dbHelper, osmQuestMapping)
-        questDao.add(OsmQuest(questType, type, id, geometry))
+        // the element geometry entries each for element id have no counterpart in the element tables
+        nodeDao.put(OsmNode(0, 1, 0.0, 0.0, null))
+        wayDao.put(OsmWay(0, 1, listOf(), null))
+        relationDao.put(OsmRelation(0, 1, listOf(), null))
+
+        dao.putAll(listOf(
+            ElementGeometryEntry(Element.Type.NODE, 0, geometry),
+            ElementGeometryEntry(Element.Type.NODE, 1, geometry),
+            ElementGeometryEntry(Element.Type.WAY, 0, geometry),
+            ElementGeometryEntry(Element.Type.WAY, 1, geometry),
+            ElementGeometryEntry(Element.Type.RELATION, 0, geometry),
+            ElementGeometryEntry(Element.Type.RELATION, 1, geometry)
+        ))
+
+        // we expect that the ones with id=1 have been deleted
+        assertEquals(3, dao.deleteUnreferenced())
+        assertNull(dao.get(Element.Type.NODE, 1))
+        assertNull(dao.get(Element.Type.WAY, 1))
+        assertNull(dao.get(Element.Type.RELATION, 1))
+        assertNotNull(dao.get(Element.Type.NODE, 0))
+        assertNotNull(dao.get(Element.Type.WAY, 0))
+        assertNotNull(dao.get(Element.Type.RELATION, 0))
+
         assertEquals(0, dao.deleteUnreferenced())
     }
 
