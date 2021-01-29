@@ -48,19 +48,21 @@ class OsmQuestUpdater @Inject constructor(
         val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
         val lazyMapData by lazy { osmElementSource.getMapDataWithGeometry(paddedBounds) }
 
-        val quests = mutableListOf<OsmQuest>()
+        val quests = ConcurrentLinkedQueue<OsmQuest>()
         val truncatedBlacklistedPositions = blacklistedPositionsSource.getAllPositions(paddedBounds).map { it.truncateTo5Decimals() }.toSet()
         val blacklistedElements = blacklistedElementsSource.getAll().toSet()
 
-        // TODO this could also be in a coroutine...
-        for (questType in questTypes) {
-            val appliesToElement = questType.isApplicableTo(element)
-                ?: questType.getApplicableElements(lazyMapData).contains(element)
+        runBlocking {
+            for (questType in questTypes) {
+                launch(Dispatchers.Default) {
+                    val appliesToElement = questType.isApplicableTo(element)
+                        ?: questType.getApplicableElements(lazyMapData).contains(element)
 
-            if (!appliesToElement) continue
-            if (!mayCreateQuest(questType, element, geometry, blacklistedElements, truncatedBlacklistedPositions, null)) continue
-
-            quests.add(OsmQuest(questType, element.type, element.id, geometry))
+                    if (appliesToElement && mayCreateQuest(questType, element, geometry, blacklistedElements, truncatedBlacklistedPositions, null)) {
+                        quests.add(OsmQuest(questType, element.type, element.id, geometry))
+                    }
+                }
+            }
         }
 
         osmQuestController.updateForElement(element.type, element.id, quests)

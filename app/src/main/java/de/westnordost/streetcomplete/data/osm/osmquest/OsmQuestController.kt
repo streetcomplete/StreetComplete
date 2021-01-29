@@ -118,7 +118,7 @@ import javax.inject.Singleton
 
     /** For the given element, replace the current quests with the given ones. Called when an OSM
      *  element is updated, so the quests that reference that element need to be updated as well. */
-    fun updateForElement(elementType: Element.Type, elementId: Long, quests: List<OsmQuest>) {
+    fun updateForElement(elementType: Element.Type, elementId: Long, quests: Collection<OsmQuest>) {
         val elementKey = ElementKey(elementType, elementId)
         val previousQuestsByType = dao.getAll(element = elementKey)
             .associateBy { it.osmElementQuestType }
