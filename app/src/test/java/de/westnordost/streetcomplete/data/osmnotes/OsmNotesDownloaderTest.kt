@@ -6,8 +6,8 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Before
@@ -19,46 +19,30 @@ import java.util.concurrent.atomic.AtomicBoolean
 class OsmNotesDownloaderTest {
     private lateinit var notesApi: NotesApi
     private lateinit var noteController: NoteController
-    private lateinit var avatarsDownloader: OsmAvatarsDownloader
     private lateinit var userStore: UserStore
 
     @Before fun setUp() {
         notesApi = mock()
         noteController = mock()
 
-        avatarsDownloader = mock()
         userStore = mock()
         on(userStore.userId).thenReturn(1L)
     }
 
-    @Test fun `downloads avatars of all users involved in note discussions`() {
-        val note1 = createANote(4L)
-        note1.comments.addAll(listOf(
-            NoteComment().apply {
-                date = Date()
-                action = NoteComment.Action.COMMENTED
-                text = "abc"
-                user = User(54, "Blibu")
-            },
-            NoteComment().apply {
-                date = Date()
-                action = NoteComment.Action.COMMENTED
-                text = "abc"
-                user = User(13, "Wilbur")
-            }
-        ))
-
+    @Test fun `calls controller with all notes coming from the notes api`() {
+        val note1 = createANote()
         val noteApi = TestListBasedNotesApi(listOf(note1))
-        val dl = OsmNotesDownloader(noteApi, avatarsDownloader, userStore, noteController)
-        dl.download(BoundingBox(0.0, 0.0, 1.0, 1.0), AtomicBoolean(false))
+        val dl = OsmNotesDownloader(noteApi, userStore, noteController)
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        dl.download(bbox, AtomicBoolean(false))
 
-        verify(avatarsDownloader).download(setOf(54, 13))
+        verify(noteController).putAllForBBox(eq(bbox), eq(listOf(note1)))
     }
 }
 
-private fun createANote(id: Long): Note {
+private fun createANote(): Note {
     val note = Note()
-    note.id = id
+    note.id = 1L
     note.position = OsmLatLon(6.0, 7.0)
     note.status = Note.Status.OPEN
     note.dateCreated = Date()
