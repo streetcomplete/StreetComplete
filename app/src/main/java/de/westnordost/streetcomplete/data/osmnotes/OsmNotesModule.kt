@@ -25,6 +25,8 @@ object OsmNotesModule {
     fun imageUploader(): StreetCompleteImageUploader =
         StreetCompleteImageUploader(ApplicationConstants.SC_PHOTO_SERVICE_URL)
 
+    @Provides fun noteSource(noteController: NoteController): NoteSource = noteController
+
     @Provides @Singleton
     fun osmNoteController(
         noteDao: NoteDao,

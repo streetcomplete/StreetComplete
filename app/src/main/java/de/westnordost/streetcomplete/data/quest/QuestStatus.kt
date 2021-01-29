@@ -10,8 +10,7 @@ enum class QuestStatus {
     /** the system (decided that it) doesn't show the quest. They may become visible again (-> NEW)  */
     INVISIBLE,
     /** the quest has been uploaded (either solved or dropped through conflict). The app needs to
-     * remember its solved quests for some time before deleting them so that they can be reverted
-     * Note quests are generally closed after upload, they are never deleted  */
+     * remember its solved quests for some time before deleting them so that they can be reverted  */
     CLOSED;
 
     val isVisible: Boolean get() = this == NEW

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestDao
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayDao
+import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNote
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
 import java.util.concurrent.CopyOnWriteArrayList
@@ -78,8 +79,8 @@ import javax.inject.Singleton
         override fun onDeletedUndoOsmQuest() { --undoOsmQuestCount }
     }
     private val commentNoteListener = object : CommentNoteDao.Listener {
-        override fun onAddedCommentNote() { ++commentNoteCount }
-        override fun onDeletedCommentNote() { --commentNoteCount }
+        override fun onAddedCommentNote(note: CommentNote) { ++commentNoteCount }
+        override fun onDeletedCommentNote(noteId: Long) { --commentNoteCount }
     }
     private val createNoteListener = object : CreateNoteDao.Listener {
         override fun onAddedCreateNote() { ++createNoteCount }
