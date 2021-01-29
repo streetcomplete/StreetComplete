@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Singleton class MapTilesDownloadCacheConfig @Inject constructor(context: Context) {
 
     val cacheControl = CacheControl.Builder()
-        .maxAge(1, TimeUnit.DAYS)
+        .maxAge(12, TimeUnit.HOURS)
         .maxStale(DELETE_OLD_DATA_AFTER.toInt(), TimeUnit.MILLISECONDS)
         .build()
 
