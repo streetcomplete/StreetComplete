@@ -25,8 +25,9 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTab
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.MIN_LONGITUDE
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable
+import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable
+import de.westnordost.streetcomplete.data.osm.mapdata.WayTable
 import de.westnordost.streetcomplete.ktx.*
 
 /** Stores the geometry of elements */
@@ -88,19 +89,20 @@ class ElementGeometryDao @Inject constructor(
         }
     }
 
-    /** Cleans up element geometry entries that belong to elements that are not referenced by any
-     * quest anymore.  */
-    // TODO remove dis?
+    /** Cleans up element geometry entries that are not referenced by any element anymore */
     fun deleteUnreferenced(): Int {
-        /* SQLite does not allow selecting multiple columns in a DELETE subquery. Using a workaround
-         * as described here:
-         * http://blog.programmingsolution.net/sql-server-2008/tsql/delete-rows-of-a-table-matching-multiple-columns-of-another-table/
-         */
-        val where = "(" + ELEMENT_TYPE + LUMP + ELEMENT_ID + ") NOT IN (" +
-            "SELECT " + OsmQuestTable.Columns.ELEMENT_TYPE + LUMP + OsmQuestTable.Columns.ELEMENT_ID + " FROM " + OsmQuestTable.NAME + " " +
-            "UNION SELECT " + UndoOsmQuestTable.Columns.ELEMENT_TYPE + LUMP + UndoOsmQuestTable.Columns.ELEMENT_ID + " FROM " + UndoOsmQuestTable.NAME +
-            ")"
-
+        val where = """
+            (
+              $ELEMENT_TYPE = ${Element.Type.NODE.name}
+              AND $ELEMENT_ID NOT IN (SELECT ${NodeTable.Columns.ID} FROM ${NodeTable.NAME}))
+            ) OR (
+              $ELEMENT_TYPE = ${Element.Type.WAY.name}
+              AND $ELEMENT_ID NOT IN (SELECT ${WayTable.Columns.ID} FROM ${WayTable.NAME}))
+            ) OR (
+              $ELEMENT_TYPE = ${Element.Type.RELATION.name}
+              AND $ELEMENT_ID NOT IN (SELECT ${RelationTable.Columns.ID} FROM ${RelationTable.NAME}))
+            )
+        """.trimIndent()
         return db.delete(NAME, where, null)
     }
 
@@ -119,7 +121,6 @@ data class ElementGeometryEntry(
     val geometry: ElementGeometry
 )
 
-private const val LUMP = "+'#'+"
 private typealias PolyLines = ArrayList<ArrayList<OsmLatLon>>
 
 class ElementGeometryMapping @Inject constructor(

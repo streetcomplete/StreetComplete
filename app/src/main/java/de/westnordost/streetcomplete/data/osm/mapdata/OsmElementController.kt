@@ -117,6 +117,12 @@ import javax.inject.Singleton
         mapData.addAll(ways)
     }
 
+    fun deleteUnreferencedOlderThan(timestamp: Long) {
+        val deletedElements = elementDB.deleteUnreferencedOlderThan(timestamp)
+        val deletedGeometries = geometryDB.deleteUnreferenced()
+        Log.i(TAG,"Deleted $deletedElements old elements and $deletedGeometries geometries")
+    }
+
     /* ------------------------------------ Listeners ------------------------------------------- */
 
     override fun addListener(listener: OsmElementSource.Listener) {

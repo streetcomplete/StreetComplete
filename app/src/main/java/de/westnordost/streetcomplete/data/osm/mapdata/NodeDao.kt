@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.Element
 
-import java.util.HashMap
-
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.util.Serializer
@@ -16,12 +14,14 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.ID
+import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LAST_UPDATE
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
 import de.westnordost.streetcomplete.ktx.*
+import java.util.*
 
 /** Stores OSM nodes */
 class NodeDao @Inject constructor(dbHelper: SQLiteOpenHelper, override val mapping: NodeMapping)
@@ -29,6 +29,7 @@ class NodeDao @Inject constructor(dbHelper: SQLiteOpenHelper, override val mappi
 
     override val tableName = NAME
     override val idColumnName = ID
+    override val lastUpdateColumnName = LAST_UPDATE
     override val elementTypeName = Element.Type.NODE.name
 }
 
@@ -40,7 +41,8 @@ class NodeMapping @Inject constructor(private val serializer: Serializer)
         VERSION to obj.version,
         LATITUDE to obj.position.latitude,
         LONGITUDE to obj.position.longitude,
-        TAGS to obj.tags?.let { serializer.toBytes(HashMap(it)) }
+        TAGS to obj.tags?.let { serializer.toBytes(HashMap(it)) },
+        LAST_UPDATE to Date().time
     )
 
     override fun toObject(cursor: Cursor) = OsmNode(

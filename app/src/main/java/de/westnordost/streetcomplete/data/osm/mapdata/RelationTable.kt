@@ -8,6 +8,7 @@ object RelationTable {
         const val VERSION = "version"
         const val TAGS = "tags"
         const val MEMBERS = "members"
+        const val LAST_UPDATE = "last_update"
     }
 
     const val CREATE = """
@@ -15,6 +16,7 @@ object RelationTable {
             ${Columns.ID} int PRIMARY KEY,
             ${Columns.VERSION} int NOT NULL,
             ${Columns.TAGS} blob,
-            ${Columns.MEMBERS} blob NOT NULL
+            ${Columns.MEMBERS} blob NOT NULL,
+            ${Columns.LAST_UPDATE} int NOT NULL
         );"""
 }

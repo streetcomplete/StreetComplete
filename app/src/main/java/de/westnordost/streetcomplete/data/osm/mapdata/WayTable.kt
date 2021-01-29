@@ -8,6 +8,7 @@ object WayTable {
         const val VERSION = "version"
         const val TAGS = "tags"
         const val NODE_IDS = "node_ids"
+        const val LAST_UPDATE = "last_update"
     }
 
     const val CREATE = """
@@ -15,6 +16,7 @@ object WayTable {
             ${Columns.ID} int PRIMARY KEY,
             ${Columns.VERSION} int NOT NULL,
             ${Columns.TAGS} blob,
-            ${Columns.NODE_IDS} blob NOT NULL
+            ${Columns.NODE_IDS} blob NOT NULL,
+            ${Columns.LAST_UPDATE} int NOT NULL
         );"""
 }

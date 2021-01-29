@@ -6,18 +6,17 @@ import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 
-import java.util.ArrayList
-import java.util.HashMap
-
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable.Columns.ID
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable.Columns.LAST_UPDATE
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable.Columns.MEMBERS
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable.NAME
 import de.westnordost.streetcomplete.ktx.*
+import java.util.*
 
 /** Stores OSM relations */
 class RelationDao @Inject constructor(dbHelper: SQLiteOpenHelper, override val mapping: RelationMapping)
@@ -25,6 +24,7 @@ class RelationDao @Inject constructor(dbHelper: SQLiteOpenHelper, override val m
 
     override val tableName = NAME
     override val idColumnName = ID
+    override val lastUpdateColumnName = LAST_UPDATE
     override val elementTypeName = Element.Type.RELATION.name
 }
 
@@ -35,7 +35,8 @@ class RelationMapping @Inject constructor(private val serializer: Serializer)
         ID to obj.id,
         VERSION to obj.version,
         MEMBERS to serializer.toBytes(ArrayList(obj.members)),
-        TAGS to obj.tags?.let { serializer.toBytes(HashMap(it)) }
+        TAGS to obj.tags?.let { serializer.toBytes(HashMap(it)) },
+        LAST_UPDATE to Date().time
     )
 
     override fun toObject(cursor: Cursor) = OsmRelation(

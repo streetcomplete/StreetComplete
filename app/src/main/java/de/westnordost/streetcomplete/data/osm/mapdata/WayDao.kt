@@ -5,9 +5,6 @@ import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.Element
 
-import java.util.ArrayList
-import java.util.HashMap
-
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.util.Serializer
@@ -15,11 +12,13 @@ import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.ID
+import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.LAST_UPDATE
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.NODE_IDS
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable
 import de.westnordost.streetcomplete.ktx.*
+import java.util.*
 
 /** Stores OSM ways */
 class WayDao @Inject constructor(private val dbHelper: SQLiteOpenHelper, override val mapping: WayMapping)
@@ -29,11 +28,13 @@ class WayDao @Inject constructor(private val dbHelper: SQLiteOpenHelper, overrid
 
     override val tableName = WayTable.NAME
     override val idColumnName = ID
+    override val lastUpdateColumnName = LAST_UPDATE
     override val elementTypeName = Element.Type.WAY.name
 
     /** Cleans up element entries that are not referenced by any quest (or other things) anymore.  */
-    override fun deleteUnreferenced() {
+    override fun deleteUnreferencedOlderThan(timestamp: Long): Int {
         val where = """
+            $lastUpdateColumnName < $timestamp AND
             $idColumnName NOT IN (
             $selectElementIdsInQuestTable
             UNION
@@ -44,7 +45,7 @@ class WayDao @Inject constructor(private val dbHelper: SQLiteOpenHelper, overrid
             SELECT ${OsmQuestSplitWayTable.Columns.WAY_ID} AS $idColumnName FROM ${OsmQuestSplitWayTable.NAME}
             )""".trimIndent()
 
-        db.delete(tableName, where, null)
+        return db.delete(tableName, where, null)
     }
 }
 
@@ -55,7 +56,8 @@ class WayMapping @Inject constructor(private val serializer: Serializer)
         ID to obj.id,
         VERSION to obj.version,
         NODE_IDS to serializer.toBytes(ArrayList(obj.nodeIds)),
-        TAGS to obj.tags?.let { serializer.toBytes(HashMap(it)) }
+        TAGS to obj.tags?.let { serializer.toBytes(HashMap(it)) },
+        LAST_UPDATE to Date().time
     )
 
     override fun toObject(cursor: Cursor) = OsmWay(

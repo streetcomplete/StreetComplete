@@ -278,6 +278,20 @@ import javax.inject.Inject
                 ADD COLUMN ${NoteTable.Columns.LAST_UPDATE} int NOT NULL default ${Date().time};
             """.trimIndent())
 
+            // node table, way table, relation tabel has a last update column now
+            db.execSQL("""
+                ALTER TABLE ${NodeTable.NAME}
+                ADD COLUMN ${NodeTable.Columns.LAST_UPDATE} int NOT NULL default ${Date().time};
+            """.trimIndent())
+            db.execSQL("""
+                ALTER TABLE ${WayTable.NAME}
+                ADD COLUMN ${WayTable.Columns.LAST_UPDATE} int NOT NULL default ${Date().time};
+            """.trimIndent())
+            db.execSQL("""
+                ALTER TABLE ${RelationTable.NAME}
+                ADD COLUMN ${RelationTable.Columns.LAST_UPDATE} int NOT NULL default ${Date().time};
+            """.trimIndent())
+
             // OsmNoteQuestTable is no more
             // there is the CommentNote table now....
             val commentNotes = db.query(

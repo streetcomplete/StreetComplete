@@ -11,7 +11,7 @@ interface NoteSource {
         fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
     }
 
-    /** get note of the given id */
+    /** get note with the given id */
     fun get(noteId: Long): Note?
 
     /** get the positions of all notes in the given bounding box */
