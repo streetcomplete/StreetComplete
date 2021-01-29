@@ -99,8 +99,8 @@ import javax.inject.Inject
             val tableName = OsmQuestTable.NAME
             val oldTableName = tableName + "_old"
             db.execSQL("ALTER TABLE $tableName RENAME TO $oldTableName")
-            db.execSQL(OsmQuestTable.CREATE_DB_VERSION_3)
-            val allColumns = OsmQuestTable.ALL_COLUMNS_DB_VERSION_3.joinToString(",")
+            db.execSQL(OSM_QUEST_TABLE_CREATE_DB_VERSION_3)
+            val allColumns = OSM_QUEST_TABLE_ALL_COLUMNS_DB_VERSION_3.joinToString(",")
             db.execSQL("INSERT INTO $tableName ($allColumns) SELECT $allColumns FROM $oldTableName")
             db.execSQL("DROP TABLE $oldTableName")
         }
@@ -313,5 +313,37 @@ import javax.inject.Inject
         // ...
     }
 }
+
+private val OSM_QUEST_TABLE_ALL_COLUMNS_DB_VERSION_3 = listOf(
+    "quest_id",
+    "quest_type",
+    "element_id",
+    "element_type",
+    "quest_status",
+    "tag_changes",
+    "last_update"
+)
+
+private const val OSM_QUEST_TABLE_CREATE_DB_VERSION_3 = """
+    CREATE TABLE osm_quests (
+        quest_id INTEGER PRIMARY KEY,
+        quest_type varchar(255) NOT NULL,
+        quest_status varchar(255) NOT NULL,
+        tag_changes blob,
+        last_update int NOT NULL,
+        element_id int NOT NULL,
+        element_type varchar(255) NOT NULL,
+        CONSTRAINT same_osm_quest UNIQUE (
+            quest_type,
+            element_id,
+            element_type
+        ),
+        CONSTRAINT element_key FOREIGN KEY (
+            element_type, element_id
+        ) REFERENCES elements_geometry (
+            element_type, element_id
+        )
+    );
+"""
 
 private const val DB_VERSION = 21

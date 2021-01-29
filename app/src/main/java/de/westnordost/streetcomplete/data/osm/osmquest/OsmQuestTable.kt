@@ -49,36 +49,4 @@ object OsmQuestTable {
             ${ElementGeometryTable.Columns.ELEMENT_TYPE},
             ${ElementGeometryTable.Columns.ELEMENT_ID}
         );"""
-
-    val ALL_COLUMNS_DB_VERSION_3 = listOf(
-            Columns.QUEST_ID,
-            Columns.QUEST_TYPE,
-            Columns.ELEMENT_ID,
-            Columns.ELEMENT_TYPE,
-            Columns.QUEST_STATUS,
-            Columns.TAG_CHANGES,
-            Columns.LAST_UPDATE
-    )
-
-    const val CREATE_DB_VERSION_3 = """
-        CREATE TABLE $NAME (
-            ${Columns.QUEST_ID} INTEGER PRIMARY KEY,
-            ${Columns.QUEST_TYPE} varchar(255) NOT NULL,
-            ${Columns.QUEST_STATUS} varchar(255) NOT NULL,
-            ${Columns.TAG_CHANGES} blob,
-            ${Columns.LAST_UPDATE} int NOT NULL,
-            ${Columns.ELEMENT_ID} int NOT NULL,
-            ${Columns.ELEMENT_TYPE} varchar(255) NOT NULL,
-            CONSTRAINT same_osm_quest UNIQUE (
-                ${Columns.QUEST_TYPE},
-                ${Columns.ELEMENT_ID},
-                ${Columns.ELEMENT_TYPE}
-            ),
-            CONSTRAINT element_key FOREIGN KEY (
-                ${Columns.ELEMENT_TYPE}, ${Columns.ELEMENT_ID}
-            ) REFERENCES ${ElementGeometryTable.NAME} (
-                ${ElementGeometryTable.Columns.ELEMENT_TYPE},
-                ${ElementGeometryTable.Columns.ELEMENT_ID}
-            )
-        );"""
 }
