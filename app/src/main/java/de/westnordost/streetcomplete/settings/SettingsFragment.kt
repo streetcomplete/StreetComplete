@@ -16,6 +16,8 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
+import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.coroutines.*
@@ -28,6 +30,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     @Inject internal lateinit var prefs: SharedPreferences
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
+    @Inject internal lateinit var noteController: NoteController
+    @Inject internal lateinit var osmElementController: OsmElementController
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
 
@@ -49,12 +53,12 @@ class SettingsFragment : PreferenceFragmentCompat(),
             true
         }
 
-        findPreference<Preference>("quests.invalidation")?.setOnPreferenceClickListener {
+        findPreference<Preference>("delete_cache")?.setOnPreferenceClickListener {
             context?.let {
                 AlertDialog.Builder(it)
-                    .setMessage(R.string.invalidation_dialog_message)
-                    .setPositiveButton(R.string.invalidate_confirmation) { _, _ ->
-                        downloadedTilesDao.removeAll()
+                    .setMessage(R.string.delete_cache_dialog_message)
+                    .setPositiveButton(R.string.delete_confirmation) { _, _ ->
+                        launch { deleteCache() }
                     }
                     .setNegativeButton(android.R.string.cancel, null)
                     .show()
@@ -129,4 +133,10 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
     }
 
+    private suspend fun deleteCache() = withContext(Dispatchers.IO) {
+        downloadedTilesDao.removeAll()
+        val futureTime = System.currentTimeMillis() + 10
+        noteController.deleteAllOlderThan(futureTime)
+        osmElementController.deleteUnreferencedOlderThan(futureTime)
+    }
 }

@@ -25,7 +25,6 @@ object Prefs {
 
     // not shown anywhere directly
     const val QUEST_ORDER = "quests.order"
-    const val QUEST_INVALIDATION = "quests.invalidation"
     const val LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime"
     const val MAP_LATITUDE = "map.latitude"
     const val MAP_LONGITUDE = "map.longitude"
