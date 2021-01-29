@@ -1321,9 +1321,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
     <string name="quest_buildingType_house">"주택"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"1가구가 사는 주택"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"다수의 가족이 사는 집, 1층에 소매 시설이 있음"</string>
 
     <!-- Fuzzy -->

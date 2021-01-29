@@ -1333,9 +1333,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_buildingType_house">"Rodinný dům"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"budova postavená pro jednu rodinu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"obvykle vícepatrový dům se samostatnými byty, v přízemí mohou být obchody a služby."</string>
 
     <!-- Fuzzy -->
@@ -2432,4 +2429,12 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_surface_value_clay">"Antuka"</string>
     <string name="quest_surface_value_artificial_turf">"Umělý trávník"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="quest_pitchSurface_title_track">"Jaký povrch má tato sportovní dráha?"</string>
+    <string name="quest_bicycle_parking_access_title">"Je nějak omezeno, kdo zde může parkovat kolo?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Je zde potřeba platit za parkování kola?"</string>
+    <string name="quest_drinking_water_title">"Je tento zdroj vody pitný? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Pitná voda (rozbor)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Pitná voda (bez rozboru)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Nepitná voda (rozbor)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Nepitná voda (bez rozboru)"</string>
 </resources>

@@ -1326,9 +1326,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_buildingType_house">"Dom"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"rodinný dom"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"dom pre viacero rodín, môže mať na prízemí obchody"</string>
 
     <!-- Fuzzy -->

@@ -30,10 +30,10 @@
     <string name="pref_title_show_notes_not_phrased_as_questions">"Amosar tódalas notas"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Amósanse tamén as notas non feitas coma cuestións"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Amósanse tamén as notas non feitas como cuestións"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Desbótanse as notas non feitas coma cuestións"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Desbótanse as notas non feitas como cuestións"</string>
 
     <!-- Fuzzy -->
     <string name="pref_title_map_cache">"Tamaño da caché do mapa"</string>
@@ -76,7 +76,7 @@
     <string name="quest_streetName_title">"Cal é o nome desta estrada?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_description">"tal e coma se le no letreiro da rúa, as abreviacións amplíanse:"</string>
+    <string name="quest_streetName_description">"tal e como está no letreiro da rúa, as abreviacións amplíanse:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_confirmation_description">"Algunhas veces o letreiro só está nun linde da rúa. Pensa que pode que no haber letreiros nas vías adxacentes que pertenezan a unha rúa grande. O normal é que calquera rúa con casas teña nome."</string>
@@ -553,7 +553,7 @@ Se non hai sinais no treito escollido empregaranse os límites da velocidade xer
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Fóra da cidade"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_info_zone">"Se hai unha sinal coma esta no cruzamento ca rúa principal non atoparás outras sinais porque o límite da velocidade é o mesmo en toda a zona."</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Se hai unha sinal como esta no cruzamento ca rúa principal non atoparás outras sinais porque o límite da velocidade é o mesmo en toda a zona."</string>
     <string name="quest_sport_softball">"Sóftbol"</string>
     <string name="quest_sport_racquet">"Raqueta"</string>
 
@@ -696,7 +696,7 @@ Pero lembra que sempre podes descarregar aplicacións de teclado diferentes dend
     <string name="quest_maxspeed_answer_living_street">"É unha rúa peonil"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Hai un sinal coma este?"</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Hai un sinal como este?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"Que é o que se sementa aquí?"</string>
@@ -1063,7 +1063,7 @@ Pero lembra que sempre podes descarregar aplicacións de teclado diferentes dend
     <string name="quest_wheelchairAccess_toilets_name_title">"Podes ir nunha cadeira de rodas ós servizos de %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_description_toilets">"Unha sinal cunha cadeira de rodas coma a que estás a ver pode dár a entender que os servizos están adaptados de xeito especial.
+    <string name="quest_wheelchairAccess_description_toilets">"Unha sinal cunha cadeira de rodas como a que estás a ver pode dar a entender que os servizos están adaptados de xeito especial.
     Parcial é que sexa posíbel entrar cunha cadeira e emprega-los servizos, pero sen pasamáns ou lavabos específicos."</string>
 
     <!-- Fuzzy -->
@@ -1327,9 +1327,6 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_buildingType_house">"Casa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"vivenda unifamiliar"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"edificio de vivendas, pode ter locais comerciais a nivel de rúa"</string>
 
     <!-- Fuzzy -->
@@ -1498,7 +1495,7 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_buildingType_service">"Edificio de servizo"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_service_description">"edificio con maquinaria coma bombas ou transformadoiros"</string>
+    <string name="quest_buildingType_service_description">"edificio con maquinaria como bombas ou transformadoiros"</string>
     <string name="quest_buildingType_hangar">"Hangar"</string>
 
     <!-- Fuzzy -->
@@ -1509,7 +1506,7 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_address_answer_no_housenumber">"Non ten número da casa…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message1">"O edificio foi etiquetado coma:"</string>
+    <string name="quest_address_answer_no_housenumber_message1">"O edificio foi etiquetado como:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuario"</string>
@@ -1743,7 +1740,7 @@ Por exemplo 1,3 ou 2-6."</string>
 Dividila agora?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_tutorial">"Preme na vía para dividila nos puntos onde os atributos difiren do resto. Tenta ser o máis preciso posíbel, podes achegar o mapa coma de costume."</string>
+    <string name="quest_split_way_tutorial">"Preme na vía para dividila nos puntos onde os atributos difiren do resto. Tenta ser o máis preciso posíbel, podes achegar o mapa como de costume."</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"Por favor achega máis"</string>
@@ -1951,7 +1948,7 @@ Dividila agora?"</string>
 Procura de xeito automático os detalles que fallan na túa veciñanza: carrís bici, enderezos, horarios de apertura e moito máis..."</string>
 
     <!-- Fuzzy -->
-    <string name="tutorial_solving_quests">"Unha vez atopados, os detalles que fallan aparecerán no teu mapa coma tarefas.
+    <string name="tutorial_solving_quests">"Unha vez atopados, os detalles que fallan aparecerán no teu mapa como tarefas.
 
 Podes comezar a resolvelas de inmediato e despois iniciar sesión para publicar as túas respostas."</string>
 
@@ -2073,7 +2070,7 @@ Finalmente, lembra estar seguro: atento á túa contorna e non entres a unha pro
     <string name="link_neis_one_description">"Unha grande colección de estatísticas para os contribuíntes do OpenStreetMap, como e onde contribuíches, quen máis está ó teu redor e táboas de clasificación"</string>
 
     <!-- Fuzzy -->
-    <string name="link_welcome_mat_description">"Información xeral sobre o OpenStreetMap e como traballar co OSM coma organización"</string>
+    <string name="link_welcome_mat_description">"Información xeral sobre o OpenStreetMap e como traballar co OSM como organización"</string>
 
     <!-- Fuzzy -->
     <string name="link_mapillary_description">"Un servizo e unha aplicación para compartir imaxes a nivel de rúa, con permiso explícito para empregalas para contribuír no OSM"</string>
@@ -2269,7 +2266,7 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_board_type_map_title">"É soamente un mapa?"</string>
     <string name="quest_board_type_map_description">"Se o taboleiro é sobre un tema en particular, especifícao, independentemente de se tamén inclúe un mapa. Por exemplo, un taboleiro de transporte público pode ter un mapa de rutas de autobús. Se o tema non figura entre as respostas dispoñíbeis, coida deixar unha nota."</string>
     <string name="quest_surface_detailed_answer_impossible">"Múltiples superficies..."</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Estás seguro de que é imposíbel especificar a superficie? Ten en conta a opción de resposta \"Difire ó longo da vía\" que che permite dividir a vía por onde muda a superficie. Emprega \"Non podo dicilo\" se hai unha soa superficie pero non está dispoñíbel coma resposta."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Estás seguro de que é imposíbel especificar a superficie? Ten en conta a opción de resposta \"Difire ó longo da vía\" que che permite dividir a vía por onde muda a superficie. Emprega \"Non podo dicilo\" se hai unha soa superficie pero non está dispoñíbel como resposta."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Especifica de xeito breve a natureza da superficie, por exemplo \"areoso con anacos de lastros\". A lonxitude do texto está limitada a 255 caracteres."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -2337,7 +2334,7 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="achievement_outdoors_solved_X">"Resolviches %d tarefas útiles ó ar libre (exteriores)!"</string>
     <string name="quest_pedestrian_crossing_island">"Este paso de peóns ten unha illa (refuxio) de separación?"</string>
     <string name="quest_generic_answer_noSign">"Non hai sinal"</string>
-    <string name="quest_steps_ramp_separate_wheelchair">"A rampla para cadeiras de rodas amósase coma unha vía separada no mapa?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"A rampla para cadeiras de rodas amósase como unha vía separada no mapa?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"non separada"</string>
     <string name="pref_title_sync2">"Subir respostas de xeito automático"</string>
@@ -2402,11 +2399,20 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_dietType_kosher_name_title">"%s ofrece produtos kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"Os produtos kosher teñen que prepararse dacordo coas regras especiais do xudaísmo, e as axencias de certificación kashrut deben marcar os produtos en cumprimento."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Non hai carril bici de ningún tipo"</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Coma sempre, toca un lado da ilustración, selecciona unha resposta axeitada e fai o mesmo co outro lado. Ten en conta todas as opcións dispoñíbeis: algúns casos non son obvios, coma unha estrada dun só sentido que permite aos ciclistas ir en ambas direccións."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Como sempre, toca un lado da ilustración, selecciona unha resposta axeitada e fai o mesmo co outro lado. Ten en conta todas as opcións dispoñíbeis: algúns casos non son obvios, como unha estrada dun só sentido que permite aos ciclistas ir en ambas direccións."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Seleccionar que non hai carril bici"</string>
     <string name="quest_construction_completed_at_known_date">"Estará rematado na data..."</string>
     <string name="quest_construction_completion_date_title">"Cando estará completo?"</string>
     <string name="quest_surface_value_clay">"Arxila"</string>
     <string name="quest_surface_value_artificial_turf">"Céspede artificial"</string>
     <string name="quest_surface_value_tartan">"Tartán"</string>
+    <string name="quest_pitchSurface_title_track">"Que superficie ten esta pista deportiva?"</string>
+    <string name="quest_bicycle_parking_access_title">"Está restrinxido quen pode aparcar unha bicicleta aquí?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Tes que pagar para aparcar unha bicicleta aquí?"</string>
+    <string name="quest_buildingType_house_description2">"vivenda unifamiliar non adosada"</string>
+    <string name="quest_drinking_water_title">"A auga é potábel aquí? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Seguro para beber (comprobado)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Seguro para beber (sen comprobar)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Non seguro para beber (comprobado)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Non seguro para beber (non comprobado)"</string>
 </resources>

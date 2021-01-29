@@ -1324,9 +1324,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_house">"房屋"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"单一家庭住的房屋"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"有住多个家庭的房屋，也许一楼有零售店面"</string>
 
     <!-- Fuzzy -->

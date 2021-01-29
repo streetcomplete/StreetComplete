@@ -1306,9 +1306,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_house">"Családi ház"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"egy család otthona"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"több család otthona, a földszinten esetleg boltokkal"</string>
 
     <!-- Fuzzy -->
@@ -2378,4 +2375,13 @@ szintek"</string>
     <string name="quest_surface_value_clay">"Agyag"</string>
     <string name="quest_surface_value_artificial_turf">"Műfű"</string>
     <string name="quest_surface_value_tartan">"Rekortán"</string>
+    <string name="quest_pitchSurface_title_track">"Milyen a burkolata ennek a futópályának?"</string>
+    <string name="quest_bicycle_parking_access_title">"Korlátozva van, hogy ki használhatja ezt a kerékpártárolót?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Ez a kerékpártároló fizetős?"</string>
+    <string name="quest_buildingType_house_description2">"családi ház, mely egy sorház része"</string>
+    <string name="quest_drinking_water_title">"Iható itt a víz? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Biztonságosan iható (jelzett)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Biztonságosan iható (jelzetlen)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Nem iható biztonságosan (jelzett)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Nem iható biztonságosan (jelzetlen)"</string>
 </resources>

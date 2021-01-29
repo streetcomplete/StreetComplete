@@ -1268,7 +1268,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_residential">"住居"</string>
     <string name="quest_buildingType_residential_description">"人が住んでいる建物"</string>
     <string name="quest_buildingType_house">"住宅"</string>
-    <string name="quest_buildingType_house_description">"1つの世帯が住んでいる住まい"</string>
     <string name="quest_buildingType_apartments_description">"複数の世帯が住んでいる建物。1階に店舗があることもあります。"</string>
     <string name="quest_buildingType_apartments">"集合住宅(アパートやマンション)"</string>
     <string name="quest_buildingType_hotel">"宿泊施設"</string>

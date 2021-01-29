@@ -706,7 +706,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_residential">"Penduduk"</string>
     <string name="quest_buildingType_residential_description">"Bangunan di mana orang tinggal"</string>
     <string name="quest_buildingType_house">"Rumah"</string>
-    <string name="quest_buildingType_house_description">"Rumah satu keluarga"</string>
     <string name="quest_buildingType_apartments_description">"Rumah untuk banyak keluarga, bisa memiliki toko di lantai dasar"</string>
     <string name="quest_buildingType_apartments">"Bangunan apartemen"</string>
     <string name="quest_buildingType_detached">"Rumah terpisah"</string>

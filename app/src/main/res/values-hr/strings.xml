@@ -541,11 +541,10 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_residential">"Stanovanje"</string>
     <string name="quest_buildingType_residential_description">"Zgrada gdje ljudi žive"</string>
     <string name="quest_buildingType_house">"Kuća"</string>
-    <string name="quest_buildingType_house_description">"gdje živi jedna obitelj"</string>
     <string name="quest_buildingType_apartments_description">"zgrada za više obitelji, u prizemlju može imati prodajna mjesta"</string>
     <string name="quest_buildingType_apartments">"Stambena zgrada"</string>
     <string name="quest_buildingType_detached">"Odvojena kuća"</string>
-    <string name="quest_buildingType_detached_description">"samostojeća obiteljska kuća"</string>
+    <string name="quest_buildingType_detached_description">"Obiteljska kuća (sa okućnicom)"</string>
     <string name="quest_buildingType_semi_detached">"Dvojna kuća"</string>
     <string name="quest_buildingType_semi_detached_description">"spojeni par dvije obiteljske kuće"</string>
     <string name="quest_buildingType_terrace_description">"linearni niz sličnih obiteljskih kuća"</string>
@@ -1124,4 +1123,15 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_surface_value_clay">"Glina"</string>
     <string name="quest_surface_value_artificial_turf">"Umjetna trava"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="quest_pitchSurface_title_track">"Kakvu površinu ima ova sportska staza?"</string>
+    <string name="quest_bicycle_parking_access_title">"Je li ograničeno tko ovdje smije parkirati bicikl?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Naplaćuje li se parkiranje bicikla ovdje?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_house_description2">"Obiteljska kuća (bez okućnice)"</string>
+    <string name="quest_drinking_water_title">"Je li ova voda za piće? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Sigurno za piće (s oznakom)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Sigurno za piće (bez oznake)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Nije za piće (s oznakom)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Nije za piće (bez oznake)"</string>
 </resources>

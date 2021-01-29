@@ -1276,9 +1276,6 @@
     <string name="quest_buildingType_house">"خانه"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"خانه تک کاربری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"خانه چندمنظوره ، ممکن است خرده فروشی در طبقه همکف داشته باشد."</string>
 
     <!-- Fuzzy -->

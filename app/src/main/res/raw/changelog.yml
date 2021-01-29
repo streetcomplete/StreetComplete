@@ -1,4 +1,6 @@
 v30.0-beta1: |
+  <p>Did you already <a href="https://osmf.limequery.org/281662">take the survey</a>
+  of the OpenStreetMap Foundation? It's open only till Feb 14.</p>
   <h3>New Quests</h3>
   <ul>
   <li><i>Is the water potable here?</i> (#549, #2509), by @FloEdelmann</li>
@@ -18,6 +20,7 @@ v30.0-beta1: |
   </ul>
   <h3>Fixes & More</h3>
   <ul>
+  <li>Added Bulgarian translation by Plamen and Kalin</li>
   <li>Update geometry of displayed elements after another download (#2503)</li>
   <li>Some code modernizations (#2495, #2501, #2504, #2511) by @FloEdelmann</li>
   </ul>

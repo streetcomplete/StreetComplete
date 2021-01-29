@@ -1324,9 +1324,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_buildingType_house">"Hus"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"enfamiljshus, även enskilt radhus"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"lägenheter, kan ha affärer på bottenvåningen"</string>
 
     <!-- Fuzzy -->
@@ -2287,6 +2284,8 @@ nivåer"</string>
     <string name="quest_busStopBench_tram_title">"Har denna spårvagnshållplats en bänk?"</string>
     <string name="quest_busStopBench_title">"Har denna busshållplats en bänk?"</string>
     <string name="quest_busStopBench_name_title">"Har busshållplatsen %s en bänk?"</string>
+    <string name="quest_summit_register_title">"Finns det en toppbok på %s?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Finns det en defibrillator i byggnaden?"</string>
     <string name="about_title_translate">"Hjälp till med översättningen av denna app"</string>
     <string name="about_description_translate">"%1$s är översatt %2$d%%"</string>
     <string name="quest_oneway2_title">"Är detta en enkelriktad gata? I vilken riktning?"</string>
@@ -2327,6 +2326,7 @@ nivåer"</string>
     <string name="pref_title_sync2">"Ladda upp svar automatiskt"</string>
     <string name="quest_surface_detailed_answer_impossible_title">"Beskriv ytan"</string>
     <string name="open_url">"Öppna webbadress"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisk"</string>
     <string name="quest_buildingType_historic_description">"byggnad av historiskt värde, konstruerad för ett okänt eller oklart syfte"</string>
     <string name="quest_buildingType_abandoned">"Övergiven"</string>
@@ -2348,6 +2348,7 @@ nivåer"</string>
     <string name="quest_kerb_height_lowered">"Lite högre än vägytan"</string>
     <string name="quest_kerb_height_raised">"Hög trottoarkant"</string>
     <string name="quest_kerb_height_answer_no_kerb">"Det finns ingen trottoarkant på denna sida av korsningen"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Trottoarramp"</string>
     <string name="quest_lanes_answer_lanes_description2">"Ange det totala antalet markerade körfält (båda riktningarna) som kan användas av biltrafik. Så, cykel och särskilda parkeringsfält räknas inte.
 Om några körfält är reserverade för bussar, vänligen lämna en anteckning istället."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Ange antalet markerade körfält som kan användas av biltrafik här. Så, cykel och särskilda parkeringsfält räknas inte.
@@ -2387,4 +2388,13 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_surface_value_clay">"Lera"</string>
     <string name="quest_surface_value_artificial_turf">"Konstgräs"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="quest_pitchSurface_title_track">"Vilket underlag har denna sportbana?"</string>
+    <string name="quest_bicycle_parking_access_title">"Är det begränsat vem som får parkera en cykel här?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Måste man betala för att parkera en cykel här?"</string>
+    <string name="quest_buildingType_house_description2">"Enfamiljsradhus"</string>
+    <string name="quest_drinking_water_title">"Är vattnet drickbart här? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Drickbart (skyltat)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Drickbart (inte skyltat)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Inte drickbart (skyltat)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Inte drickbart (inte skyltat)"</string>
 </resources>

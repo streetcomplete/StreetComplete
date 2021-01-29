@@ -1230,7 +1230,7 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_buildingType_answer_multiple_types">"It was multiple purposes"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_answer_multiple_types_description">"Simply select the main purpose of this building. E.g. if there is a shop on the ground floor with apartments above it, it is still mainly an apartment building."</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Simply select the main purpose of this building. E.g. if there is a shop on the ground floor with flats above it, it is still mainly flats."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"It is still being constructed"</string>
@@ -1243,13 +1243,10 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_house">"House"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"single-family home"</string>
     <string name="quest_buildingType_apartments_description">"house for multiple families, may have retail outlets on the ground floor"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_apartments">"Apartment building"</string>
+    <string name="quest_buildingType_apartments">"Flats"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_detached">"Detached house"</string>
@@ -2003,4 +2000,11 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_shop_gone_replaced_answer_error">"Don't know what this is. Consider leaving a note."</string>
     <string name="quest_shop_vacant_type_title">"This shop has been vacant. What's here now?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Lane count differs for each side"</string>
+    <string name="quest_pitchSurface_title">"What surface does this sports field have?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type."</string>
+    <string name="quest_dietType_kosher_name_title">"Does %s offer kosher products?"</string>
+    <string name="quest_dietType_explanation_kosher">"Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"As usual, tap on one side of the illustration, select a proper answer and do the same for the other side. Note all the available options: some cases are not obvious, like a one way road that allows cyclists in both directions!"</string>
+    <string name="quest_construction_completed_at_known_date">"Will be finished at date…"</string>
+    <string name="quest_construction_completion_date_title">"When will it be complete?"</string>
 </resources>

@@ -1183,9 +1183,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_buildingType_house">"Talo"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"Omakotitalo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"Useita asuntoja. Katutasossa voi olla kauppoja"</string>
 
     <!-- Fuzzy -->

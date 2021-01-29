@@ -454,7 +454,6 @@
     <string name="quest_buildingType_residential">"Bustadar"</string>
     <string name="quest_buildingType_residential_description">"bygning der det bur folk"</string>
     <string name="quest_buildingType_house">"Hus"</string>
-    <string name="quest_buildingType_house_description">"hus for éin familie"</string>
     <string name="quest_buildingType_apartments_description">"hus for fleire familiar, og kan ha butikkar på gateplan"</string>
     <string name="quest_buildingType_apartments">"Bustadblokk"</string>
     <string name="quest_buildingType_detached">"Villa"</string>
