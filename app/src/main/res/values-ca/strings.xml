@@ -1327,9 +1327,6 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_buildingType_house">"Casa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"la llar d'una família"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"casa per a més d'una família, pot tenir comerços la planta baixa"</string>
 
     <!-- Fuzzy -->

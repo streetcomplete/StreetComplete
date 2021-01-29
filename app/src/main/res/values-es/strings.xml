@@ -1326,9 +1326,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_buildingType_house">"Casa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"vivienda unifamiliar"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"edificio de viviendas, puede tener locales comerciales a nivel de calle"</string>
 
     <!-- Fuzzy -->

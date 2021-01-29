@@ -1323,9 +1323,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_buildingType_house">"Casa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"vivienda unifamiliar"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"edificiu de viviendes, pue tener baxos comerciales"</string>
 
     <!-- Fuzzy -->

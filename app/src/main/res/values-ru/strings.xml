@@ -1312,9 +1312,6 @@
     <string name="quest_buildingType_house">"Индивидуальный жилой дом"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"для проживания одной, реже двух, семей"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"многоквартирный жилой дом, иногда есть магазин на первом этаже.
 "</string>
 
@@ -2357,7 +2354,16 @@
     <string name="quest_shop_gone_replaced_answer_hint">"Введите категорию точки здесь"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Не знаю, что это. Советуем оставить заметку."</string>
     <string name="quest_shop_vacant_type_title">"Магазин выехал. Что сейчас расположено тут?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Количество полос различно у сторон"</string>
     <string name="quest_pitchSurface_title">"Какое покрытие у этого спортивного поля?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Данный тип заданий отключен по - умолчанию, т.к. он бесполезен в некоторых регионах и скорее всего требует зайти в это место, чтобы решить  задания этого типа"</string>
+    <string name="quest_dietType_kosher_name_title">"Предлагается ли в %s кошерные продукты"</string>
+    <string name="quest_dietType_explanation_kosher">"Кошерные продукты должны быть приготовлены по специальный правилам,  с маркировкой агентства по сертификации кашрута"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Велосипедная дорожка отсутствует"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Как обычно, коснитесь края иллюстрации, выберите правильный ответ и повторите для другой стороны. Обратите внимание на все доступные варианты:  некоторые случаи неочевидны, как односторонняя дорога, позволяющая двигаться велосипедистам в обоих направлениях!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Выбор отсутствия велодорожки"</string>
+    <string name="quest_construction_completed_at_known_date">"Будет закончено.."</string>
+    <string name="quest_construction_completion_date_title">"Когда строительство будет завершено ?"</string>
     <string name="quest_surface_value_clay">"Глина"</string>
     <string name="quest_surface_value_artificial_turf">"Искусственная трава"</string>
     <string name="quest_surface_value_tartan">"Тартан"</string>

@@ -1273,9 +1273,6 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_buildingType_house">"Dom"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"Dom jednorodzinny"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"budynek dla wielu rodzin, może mieć sklepy na parterze"</string>
 
     <!-- Fuzzy -->

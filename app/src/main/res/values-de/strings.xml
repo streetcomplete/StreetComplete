@@ -10,7 +10,9 @@
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Größe des Caches für die Karte auf dem externen Speicher (in MB)"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Alle Notizen anzeigen"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Auch nicht als Fragen formulierte Notizen anzeigen"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Notizen dennoch anzeigen"</string>
+
+    <!-- Vorschlag: "Notizen ignorieren, wenn sie nicht als Fragen formuliert sind". Was passiert, kommt zuerst: "Notizen ignorieren". Vermeidet außerdem die unnötig lange Nominalphrase "nicht als Fragen formulierte Notizen". -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Notizen ignorieren"</string>
     <string name="pref_title_map_cache">"Größe des Karten-Zwischenspeichers"</string>
     <string name="map_btn_gps_tracking">"Mir folgen"</string>
@@ -213,7 +215,7 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Innerorts gelten andere Geschwindigkeitsbegrenzungen als außerorts."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Innerorts"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Außerorts"</string>
-    <string name="quest_maxspeed_answer_noSign_info_zone">"Wenn es ein Schild wie dieses an der Kreuzung zur Hauptstraße gibt, wirst Du keine weiteren Schilder innerhalb der Zone finden, da die dort angegebene Höchstgeschwindigkeit für die gesamte Zone gilt."</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Wenn es ein Schild wie dieses an der Kreuzung zur Hauptstraße gibt, wirst du keine weiteren Schilder innerhalb der Zone finden, da die dort angegebene Höchstgeschwindigkeit für die gesamte Zone gilt."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Racquetball"</string>
     <string name="quest_sport_ice_skating">"Schlittschuhlaufen"</string>
@@ -248,9 +250,9 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_streetName_cantType_title">"Fehlt das Tastaturlayout?"</string>
     <string name="quest_streetName_cantType_open_settings">"Einstellungen öffnen"</string>
     <string name="quest_streetName_cantType_open_store">"Store öffnen"</string>
-    <string name="quest_streetName_cantType_description">"Wenn Du eine Standardtastatur verwendest, kannst Du wahrscheinlich einfach das Tastaturlayout für die benötigte Sprache in den Tastatureinstellungen aktivieren.
+    <string name="quest_streetName_cantType_description">"Wenn du eine Standardtastatur verwendest, kannst du wahrscheinlich einfach das Tastaturlayout für die benötigte Sprache in den Tastatureinstellungen aktivieren.
 
-Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beliebte Tastaturen, die mehrere Sprachen unterstützen, sind Google Gboard, SwiftKey Keyboard und Multiling O Keyboard."</string>
+Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beliebte Tastaturen, die mehrere Sprachen unterstützen, sind Google Gboard, SwiftKey Keyboard und Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(unspezifiziert)"</string>
     <string name="quest_fireHydrant_type_title">"Was für eine Art Hydrant ist hier?"</string>
     <string name="quest_fireHydrant_type_pillar">"Überflur"</string>
@@ -393,7 +395,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_housenumber_conscription_number">"Konskriptionsnummer"</string>
     <string name="quest_housenumber_street_number_optional">"Orientierungsnummer (optional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Fahrradweg auch auf anderer Seite…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest Du drinnen nach den Öffnungszeiten fragen."</string>
+    <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest du drinnen nach den Öffnungszeiten fragen."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"keinen, aber Radfahrer dürfen in beiden Richtungen auf der Fahrbahn fahren"</string>
     <string name="quest_streetName_answer_noName_question">"Warum hat sie keinen Namen?"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"Ist bloß so etwas wie eine Zufahrt"</string>
@@ -407,9 +409,9 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="create_new_note_unprecise">"Zoome weiter herein, um eine Notiz zu erstellen"</string>
     <string name="create_new_note_description">"Erstelle hier eine Notiz, um anderen Mappern Bescheid zu geben, dass es hier ein Problem gibt. Die Position der Notiz kann durch Bewegen der Karte angepasst werden:"</string>
     <string name="pref_title_quests_invalidation">"Aufgabencache ungültig machen"</string>
-    <string name="pref_title_quests_invalidation_summary">"Nützlich, wenn Du denkst, dass einige Aufgaben veraltet sind"</string>
+    <string name="pref_title_quests_invalidation_summary">"Nützlich, wenn du denkst, dass einige Aufgaben veraltet sind"</string>
     <string name="invalidate_confirmation">"Ungültig machen"</string>
-    <string name="invalidation_dialog_message">"Wenn der Cache ungültig gemacht wird, werden die Aufgaben das nächste Mal, wenn sie jeweils heruntergeladen werden, aktualisiert. Der Aufgabencache wird automatisch nach einer Woche ungültig gemacht, und sofort, falls sich herausstellt, dass eine Aufgabe, die Du beantwortet hast, schon von jemand anderem beantwortet wurde."</string>
+    <string name="invalidation_dialog_message">"Wenn der Cache ungültig gemacht wird, werden die Aufgaben das nächste Mal, wenn sie jeweils heruntergeladen werden, aktualisiert. Der Aufgabencache wird automatisch nach einer Woche ungültig gemacht, und sofort, falls sich herausstellt, dass eine Aufgabe, die du beantwortet hast, schon von jemand anderem beantwortet wurde."</string>
     <string name="quest_generic_looks_like_this">"Sieht normalerweise so aus:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
@@ -490,7 +492,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_residential">"Wohngebäude"</string>
     <string name="quest_buildingType_residential_description">"Gebäude, in dem Leute wohnen"</string>
     <string name="quest_buildingType_house">"Haus"</string>
-    <string name="quest_buildingType_house_description">"Einfamilienhaus"</string>
     <string name="quest_buildingType_apartments_description">"Haus für mehrere Familien, im Erdgeschoss befinden sich gelegentlich Läden"</string>
     <string name="quest_buildingType_apartments">"Mehrfamilienhaus"</string>
     <string name="quest_buildingType_detached">"Freistehendes Haus"</string>
@@ -649,7 +650,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_generic_answer_differs_along_the_way">"Entlang des Weges unterschiedlich…"</string>
     <string name="quest_split_way_description">"Wenn es entlang des Weges unterschiedlich ist, ist der erste Schritt, den Weg aufzuspalten. Danach kann die Aufgabe für jeden Teil davon getrennt beantwortet werden.
 Jetzt aufspalten?"</string>
-    <string name="quest_split_way_tutorial">"Drücke auf den Weg, um ihn an den Punkt(en), wo die Antwort unterschiedlich ist, aufzuspalten. Versuche, möglichst genau zu sein, Du kannst wie immer frei hereinzoomen."</string>
+    <string name="quest_split_way_tutorial">"Drücke auf den Weg, um ihn an den Punkt(en), wo die Antwort unterschiedlich ist, aufzuspalten. Versuche, möglichst genau zu sein, du kannst wie immer frei hereinzoomen."</string>
     <string name="quest_split_way_too_imprecise">"Bitte zoome weiter herein"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Das sind ganz schön viele Punkte, an denen aufgespalten werden soll. Es gibt die Möglichkeit, den Weg auch später noch weiter aufzuspalten."</string>
     <string name="quest_footwayPartSurface_title">"Welche Oberfläche hat der Fußweg hier?"</string>
@@ -717,7 +718,7 @@ Jetzt aufspalten?"</string>
     <string name="letsgo">"Auf geht's!"</string>
     <string name="tutorial_welcome_to_osm">"Willkommen bei OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"der freien Wiki-Weltkarte"</string>
-    <string name="tutorial_intro">"Mit StreetComplete kannst Du einfach einen Beitrag zur OpenStreetmap leisten. Die App sucht automatisch nach fehlenden Details in deiner Nähe: Fahrradstreifen, Hausnummern, Öffnungszeiten und mehr…"</string>
+    <string name="tutorial_intro">"Mit StreetComplete kannst du einfach einen Beitrag zur OpenStreetmap leisten. Die App sucht automatisch nach fehlenden Details in deiner Nähe: Fahrradstreifen, Hausnummern, Öffnungszeiten und mehr…"</string>
     <string name="tutorial_solving_quests">"Sobald sie gefunden wurden, tauchen die fehlenden Details als Aufgaben auf deiner Karte auf.
 
 Du kannst dann sofort anfangen, diese zu lösen. Später kannst du dich einloggen, um deine Antworten zu veröffentlichen."</string>
@@ -968,7 +969,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_tracktype_grade3a">"Größtenteils fest"</string>
     <string name="quest_generic_answer_does_not_exist">"Existiert nicht…"</string>
     <string name="osm_element_gone_warning">"Achtung: Das kann nicht rückgängig gemacht werden!"</string>
-    <string name="osm_element_gone_description">"Bist Du dir sicher, dass es nicht existiert, auch nicht an einer leicht anderen Stelle? Im Zweifelsfall hinterlasse besser eine Notiz."</string>
+    <string name="osm_element_gone_description">"Bist du dir sicher, dass es nicht existiert, auch nicht an einer leicht anderen Stelle? Im Zweifelsfall hinterlasse besser eine Notiz."</string>
     <string name="osm_element_gone_confirmation">"Existiert nicht"</string>
     <string name="leave_note">"Notiz hinterlassen"</string>
     <string name="quest_shop_gone_title">"Was ist jetzt stattdessen hier?"</string>
@@ -990,4 +991,13 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_surface_value_clay">"Sandplatz (Lehm)"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstrasen"</string>
     <string name="quest_surface_value_tartan">"Tartanbahn"</string>
+    <string name="quest_pitchSurface_title_track">"Welchen Bodenbelag hat diese Rennbahn?"</string>
+    <string name="quest_bicycle_parking_access_title">"Ist es eingeschränkt, welche Fahrräder hier parken dürfen?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Fallen hier Parkgebühren für Fahrräder an?"</string>
+    <string name="quest_buildingType_house_description2">"nicht freistehendes Einfamilienhaus"</string>
+    <string name="quest_drinking_water_title">"Ist das Wasser hier trinkbar? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Trinkwasser (beschildert)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Trinkwasser (nicht beschildert)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"kein Trinkwasser (beschildert)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"kein Trinkwasser (nicht beschildert)"</string>
 </resources>

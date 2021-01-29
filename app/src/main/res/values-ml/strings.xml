@@ -1305,9 +1305,6 @@
     <string name="quest_buildingType_house">"വീട്"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"ഒരു കുടുംബം താമസിക്കുന്ന വീട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"ഒന്നിലേറെ കുടുംബങ്ങൾക്ക് താമസിക്കാൻ കഴിയുന്നതും താഴത്തെ നിലയിൽ ചെറുകിട കച്ചവട സ്ഥാപനങ്ങൾ ഉള്ളതുമായ കെട്ടിടം"</string>
 
     <!-- Fuzzy -->

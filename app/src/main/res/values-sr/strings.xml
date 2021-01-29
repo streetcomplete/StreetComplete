@@ -565,7 +565,6 @@ As mentioned, the app directly communicates with OSM infrastructure. However, be
     <string name="quest_buildingType_residential">"Стамбена"</string>
     <string name="quest_buildingType_residential_description">"Зграда где људи живе"</string>
     <string name="quest_buildingType_house">"Кућа"</string>
-    <string name="quest_buildingType_house_description">"Породична кућа"</string>
     <string name="quest_buildingType_apartments_description">"Кућа за више породица која може имати радње у приземљу"</string>
     <string name="quest_buildingType_apartments">"Стамбена зграда"</string>
     <string name="quest_buildingType_detached">"Издвојена кућа"</string>

@@ -1307,9 +1307,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_buildingType_house">"hus"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"Bolighus"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"Et hus med flere leiligheter. Kan ha butikker på gateplan."</string>
 
     <!-- Fuzzy -->

@@ -1324,9 +1324,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_buildingType_house">"Casa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"Casa para uma família"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"casa para múltiplas famílias, pode ter lojas no térreo"</string>
 
     <!-- Fuzzy -->
@@ -2176,4 +2173,13 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_surface_value_clay">"Argila"</string>
     <string name="quest_surface_value_artificial_turf">"Relva artificial"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="quest_pitchSurface_title_track">"Qual superfície essa pista esportiva tem?"</string>
+    <string name="quest_bicycle_parking_access_title">"É restrito quem pode estacionar uma bicicleta aqui?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Você tem que pagar para estacionar uma bicicleta aqui?"</string>
+    <string name="quest_buildingType_house_description2">"casa unifamiliar não independente"</string>
+    <string name="quest_drinking_water_title">"A água é potável aqui? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Seguro para beber (assinado)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Seguro para beber (sem assinatura)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Não é seguro beber (assinado)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Não é seguro beber (sem assinatura)"</string>
 </resources>

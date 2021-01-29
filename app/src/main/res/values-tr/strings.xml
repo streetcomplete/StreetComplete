@@ -1263,9 +1263,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_buildingType_house">"Ev"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"tek aile evi"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"Birden fazla aile için ev, zemin katta perakende satış mağazaları olabilir."</string>
 
     <!-- Fuzzy -->

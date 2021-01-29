@@ -1325,9 +1325,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingType_house">"Etxea"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"familia bakarreko etxea"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"hainbat familientzako bizitoki, beheko pisuetan dendak egon daitezke"</string>
 
     <!-- Fuzzy -->

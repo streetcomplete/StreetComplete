@@ -11,7 +11,7 @@ open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
         val targetFiles = targetFiles ?: return
 
         val localizationStatus = fetchLocalizations {
-            LocalizationStatus(it["code"] as String, it["percentage"] as Int)
+            LocalizationStatus(it.string("code")!!, it.int("percentage")!!)
         }
         for (status in localizationStatus) {
             val languageCode = status.languageCode
@@ -31,7 +31,7 @@ open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
                     <resources>
                       <integer name="translation_completeness">${completedPercentage}</integer>
                     </resources>
-                    
+
                     """.trimIndent())
             }
         }

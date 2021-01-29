@@ -489,7 +489,6 @@
     <string name="quest_buildingType_residential">"Жила оселя"</string>
     <string name="quest_buildingType_residential_description">"дім, в якому живуть люди"</string>
     <string name="quest_buildingType_house">"Дім"</string>
-    <string name="quest_buildingType_house_description">"single-family home"</string>
     <string name="quest_buildingType_apartments_description">"будинок для декількох сімей, може мати роздрібні торговельні точки на першому поверсі"</string>
     <string name="quest_buildingType_apartments">"Житловий будинок"</string>
     <string name="quest_buildingType_detached">"Особняк"</string>

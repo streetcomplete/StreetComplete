@@ -136,7 +136,9 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_surface_value_sett">"Pietre irregolari (es. sampietrini, pavè)"</string>
     <string name="quest_surface_value_wood">"Legno"</string>
     <string name="quest_placeName_title">"Qual è il nome di questo luogo?"</string>
-    <string name="quest_sidewalk_title">"Questa strada ha un marciapiede?"</string>
+
+    <!-- Ho modificato la traduzione italiana di "sidewalk" da "marciapiede" a "percorso pedonale", perché in OSM vengono considerati "sidewalk" anche i portici, che in italiano non rientrano nella definizione di "marciapiede". (vedi https://github.com/streetcomplete/StreetComplete/issues/2452) -->
+    <string name="quest_sidewalk_title">"Questa strada ha un percorso pedonale (come un marciapiede o un portico)?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Dov'è questa strada?"</string>
     <string name="quest_cyclewaySurface_title">"Che superficie ha questa pista ciclabile?"</string>
     <string name="quest_serviceType_title">"Che tipo di strada di servizio è questa?"</string>
@@ -526,7 +528,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_buildingType_residential">"Residenziale"</string>
     <string name="quest_buildingType_residential_description">"un edificio dove le persone vivono"</string>
     <string name="quest_buildingType_house">"Casa"</string>
-    <string name="quest_buildingType_house_description">"casa unifamiliare"</string>
     <string name="quest_buildingType_apartments_description">"casa multifamiliare, potrebbe avere piccoli negozi al piano terra"</string>
     <string name="quest_buildingType_apartments">"Appartamenti"</string>
     <string name="quest_buildingType_detached">"Casa indipendente"</string>
