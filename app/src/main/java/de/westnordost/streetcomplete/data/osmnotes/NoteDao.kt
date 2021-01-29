@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CLOSED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.COMMENTS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CREATED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.ID
+import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LAST_UPDATE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
@@ -74,6 +75,10 @@ class NoteDao @Inject constructor(
         return db.query(NAME, null, "$ID IN (${ids.joinToString(",")})") { mapping.toObject(it) }
     }
 
+    fun getAllIdsOlderThan(timestamp: Long): List<Long> {
+        return db.query(NAME, arrayOf(ID), "$LAST_UPDATE < $timestamp", null) { it.getLong(0) }
+    }
+
     fun deleteAll(ids: Collection<Long>): Int {
         if (ids.isEmpty()) return 0
         return db.delete(NAME, "$ID IN (${ids.joinToString(",")})", null)
@@ -102,7 +107,8 @@ class NoteMapping @Inject constructor(private val serializer: Serializer)
         STATUS to obj.status.name,
         CREATED to obj.dateCreated.time,
         CLOSED to obj.dateClosed?.time,
-        COMMENTS to serializer.toBytes(ArrayList(obj.comments))
+        COMMENTS to serializer.toBytes(ArrayList(obj.comments)),
+        LAST_UPDATE to Date().time
     )
 
     override fun toObject(cursor: Cursor) = Note().also { n ->

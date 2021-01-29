@@ -272,6 +272,12 @@ import javax.inject.Inject
                 }
             }
 
+            // note table has a last update column now
+            db.execSQL("""
+                ALTER TABLE ${NoteTable.NAME}
+                ADD COLUMN ${NoteTable.Columns.LAST_UPDATE} int NOT NULL default ${Date().time};
+            """.trimIndent())
+
             // OsmNoteQuestTable is no more
             // there is the CommentNote table now....
             val commentNotes = db.query(
@@ -324,7 +330,7 @@ private val OSM_QUEST_TABLE_ALL_COLUMNS_DB_VERSION_3 = listOf(
     "last_update"
 )
 
-private const val OSM_QUEST_TABLE_CREATE_DB_VERSION_3 = """
+private val OSM_QUEST_TABLE_CREATE_DB_VERSION_3 = """
     CREATE TABLE osm_quests (
         quest_id INTEGER PRIMARY KEY,
         quest_type varchar(255) NOT NULL,
@@ -344,6 +350,6 @@ private const val OSM_QUEST_TABLE_CREATE_DB_VERSION_3 = """
             element_type, element_id
         )
     );
-"""
+""".trimIndent()
 
 private const val DB_VERSION = 21

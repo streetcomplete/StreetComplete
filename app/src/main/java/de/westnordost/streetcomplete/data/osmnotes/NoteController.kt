@@ -52,13 +52,20 @@ import javax.inject.Singleton
         onUpdated(deleted = listOf(noteId))
     }
 
-    // TODO bulk update would be better
     /** put a note because the note has been created/changed on OSM */
     fun put(note: Note) {
         val hasNote = dao.get(note.id) != null
         dao.put(note)
         if (hasNote) onUpdated(updated = listOf(note))
         else onUpdated(added = listOf(note))
+    }
+
+    fun deleteAllOlderThan(timestamp: Long): Int {
+        val ids = dao.getAllIdsOlderThan(timestamp)
+        dao.deleteAll(ids)
+        Log.i(TAG, "Deleted ${ids.size} old notes")
+        onUpdated(deleted = ids)
+        return ids.size
     }
 
     override fun getAllPositions(bbox: BoundingBox): List<LatLon> = dao.getAllPositions(bbox)
