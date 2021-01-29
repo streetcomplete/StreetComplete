@@ -7,8 +7,10 @@ import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osmnotes.NoteSource
+import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNote
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
 import de.westnordost.streetcomplete.data.user.UserStore
+import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -20,9 +22,11 @@ import javax.inject.Singleton
     private val questType: OsmNoteQuestType,
     private val userStore: UserStore,
     private val preferences: SharedPreferences,
-) {
+): OsmNoteQuestSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
+
+    private val listeners: MutableList<OsmNoteQuestSource.Listener> = CopyOnWriteArrayList()
 
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
         !preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
@@ -30,71 +34,74 @@ import javax.inject.Singleton
     private val userId: Long? get() = userStore.userId.takeIf { it != -1L }
 
     private val commentNoteListener = object : CommentNoteDao.Listener {
-        override fun onAddedCommentNote() {
-            TODO("Not yet implemented")
+        override fun onAddedCommentNote(note: CommentNote) {
+            onUpdated(deletedQuestIds = listOf(note.noteId))
         }
 
-        override fun onDeletedCommentNote() {
-            TODO("Not yet implemented")
+        override fun onDeletedCommentNote(noteId: Long) {
+            val quest = get(noteId)
+            if (quest != null) onUpdated(quests = listOf(quest))
         }
     }
 
-    private val noteUpdatesListener = object : NoteSource.NoteUpdatesListener {
-        override fun onUpdatedForBBox(bbox: BoundingBox, notes: Collection<Note>) {
+    private val noteUpdatesListener = object : NoteSource.Listener {
+        override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
             val blockedNoteIds = getBlockedNoteIds()
-            val quests = notes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
-            // TODO
-        }
 
-        override fun onUpdated(note: Note) {
-            // TODO
-        }
-
-        override fun onDeleted(noteId: Long) {
-            // TODO
+            val quests = mutableListOf<OsmNoteQuest>()
+            val deletedQuestIds = ArrayList(deleted)
+            for (note in added) {
+                val q = createQuestForNote(note, blockedNoteIds)
+                if (q != null) quests.add(q)
+            }
+            for (note in updated) {
+                val q = createQuestForNote(note, blockedNoteIds)
+                if (q != null) quests.add(q)
+                else deletedQuestIds.add(note.id)
+            }
+            onUpdated(quests, deletedQuestIds)
         }
     }
 
     init {
-        noteSource.addNoteUpdatesListener(noteUpdatesListener)
+        noteSource.addListener(noteUpdatesListener)
         commentNoteDB.addListener(commentNoteListener)
-        preferences.registerOnSharedPreferenceChangeListener { _, key ->
-            if (key == Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) {
-                TODO("Not yet implemented")
-            }
-        }
-        userStore.addListener(object : UserStore.UpdateListener {
-            override fun onUserDataUpdated() {
-                TODO("Not yet implemented")
-            }
-        })
+
+        /* we don't listen to changes to shared preferences (for
+           Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) or to userStore (for whether user is logged
+           in or not) because they can only ever change while the map view with the quest pins
+           is not visible (i.e., not listening to changes) anyway. If that ever changes, need to
+           add this here */
     }
 
-    /** get single quest by id */
-    fun get(questId: Long): OsmNoteQuest? {
+    override fun get(questId: Long): OsmNoteQuest? {
         if (isNoteBlocked(questId)) return null
-        return noteSource.get(questId)?.let { createQuestForNote(it, setOf()) }
+        return noteSource.get(questId)?.let { createQuestForNote(it) }
     }
 
-    /** Get count of all unanswered quests in given bounding box */
-    fun getAllVisibleInBBoxCount(bbox: BoundingBox): Int {
+    override fun getAllInBBoxCount(bbox: BoundingBox): Int {
         val blockedNoteIds = getBlockedNoteIds()
         return noteSource.getAll(bbox).mapNotNull { createQuestForNote(it, blockedNoteIds) }.size
     }
 
-    /** Get all unanswered quests in given bounding box */
-    fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> {
+    override fun getAllInBBox(bbox: BoundingBox): List<OsmNoteQuest> {
         return createQuestsForNotes(noteSource.getAll(bbox))
     }
 
-    fun hide(noteId: Long) {
-        hiddenNoteQuestDB.add(noteId)
-        TODO("call listener")
+    fun hide(questId: Long) {
+        hiddenNoteQuestDB.add(questId)
+        onUpdated(deletedQuestIds = listOf(questId))
     }
 
     fun unhideAll(): Int {
-        return hiddenNoteQuestDB.deleteAll()
-        TODO("call listener")
+        val previouslyHiddenNotes = noteSource.getAll(hiddenNoteQuestDB.getAll())
+        val result = hiddenNoteQuestDB.deleteAll()
+
+        val blockedNoteIds = getBlockedNoteIds()
+        val unhiddenNoteQuests = previouslyHiddenNotes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
+
+        onUpdated(quests = unhiddenNoteQuests)
+        return result
     }
 
     private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> {
@@ -102,7 +109,7 @@ import javax.inject.Singleton
         return notes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
     }
 
-    private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long>): OsmNoteQuest? {
+    private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? {
         val shouldShowQuest = note.shouldShowAsQuest(userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds)
         return if (shouldShowQuest) OsmNoteQuest(note, questType) else null
     }
@@ -112,6 +119,22 @@ import javax.inject.Singleton
 
     private fun getBlockedNoteIds(): Set<Long> =
         (commentNoteDB.getAll().map { it.noteId } + hiddenNoteQuestDB.getAll()).toSet()
+
+    /* ---------------------------------------- Listener ---------------------------------------- */
+
+    override fun addListener(listener: OsmNoteQuestSource.Listener) {
+        listeners.add(listener)
+    }
+    override fun removeListener(listener: OsmNoteQuestSource.Listener) {
+        listeners.remove(listener)
+    }
+
+    private fun onUpdated(
+        quests: Collection<OsmNoteQuest> = emptyList(),
+        deletedQuestIds: Collection<Long> = emptyList()
+    ) {
+        listeners.forEach { it.onUpdated(quests, deletedQuestIds) }
+    }
 }
 
 private fun Note.shouldShowAsQuest(

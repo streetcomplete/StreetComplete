@@ -60,14 +60,14 @@ class VisibleQuestsSourceTest {
 
     @Test fun getAllVisibleCount() {
         on(osmQuestController.getAllVisibleInBBoxCount(bbox)).thenReturn(3)
-        on(osmNoteQuestController.getAllVisibleInBBoxCount(bbox)).thenReturn(4)
+        on(osmNoteQuestController.getAllInBBoxCount(bbox)).thenReturn(4)
 
         assertEquals(7, source.getAllVisibleCount(bbox))
     }
 
     @Test fun getAllVisible() {
         on(osmQuestController.getAllVisibleInBBox(bbox, questTypes)).thenReturn(listOf(mock(), mock(), mock()))
-        on(osmNoteQuestController.getAllVisibleInBBox(bbox)).thenReturn(listOf(mock(), mock()))
+        on(osmNoteQuestController.getAllInBBox(bbox)).thenReturn(listOf(mock(), mock()))
 
         val quests = source.getAllVisible(bbox, questTypes)
         assertEquals(5, quests.size)

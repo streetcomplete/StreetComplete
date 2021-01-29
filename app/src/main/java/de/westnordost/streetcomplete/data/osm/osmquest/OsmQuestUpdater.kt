@@ -36,7 +36,7 @@ class OsmQuestUpdater @Inject constructor(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
     private val blacklistedPositionsSource: BlacklistedPositionsSource,
     private val blacklistedElementsSource: BlacklistedElementsSource
-) : CoroutineScope by CoroutineScope(Dispatchers.Default), OsmElementSource.ElementUpdatesListener {
+) : CoroutineScope by CoroutineScope(Dispatchers.Default), OsmElementSource.Listener {
 
     private val questTypes get() = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
 
@@ -66,7 +66,7 @@ class OsmQuestUpdater @Inject constructor(
         osmQuestController.updateForElement(element.type, element.id, quests)
     }
 
-    override fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+    override fun onUpdatedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
         var time = System.currentTimeMillis()
 
         val quests = ConcurrentLinkedQueue<OsmQuest>()

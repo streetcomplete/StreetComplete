@@ -4,7 +4,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 /** Access and listen to quests visible on the map */
 @Singleton class VisibleQuestsSource @Inject constructor(
     private val osmQuestController: OsmQuestController,
-    private val osmNoteQuestController: OsmNoteQuestController,
+    private val osmNoteQuestSource: OsmNoteQuestSource,
     private val visibleQuestTypeDao: VisibleQuestTypeDao
 ) {
     private val listeners: MutableList<VisibleQuestListener> = CopyOnWriteArrayList()
@@ -43,49 +43,29 @@ import javax.inject.Singleton
         }
     }
 
-    private val osmNoteQuestStatusListener = object : OsmNoteQuestController.QuestStatusListener {
-        override fun onAdded(quest: OsmNoteQuest) {
-            if(quest.status.isVisible) {
-                onQuestBecomesVisible(quest, QuestGroup.OSM_NOTE)
-            }
-        }
-
-        override fun onChanged(quest: OsmNoteQuest, previousStatus: QuestStatus) {
-            if (quest.status.isVisible && !previousStatus.isVisible) {
-                onQuestBecomesVisible(quest, QuestGroup.OSM_NOTE)
-            } else if(!quest.status.isVisible && previousStatus.isVisible) {
-                onQuestBecomesInvisible(quest.id!!, QuestGroup.OSM_NOTE)
-            }
-        }
-
-        override fun onRemoved(questId: Long, previousStatus: QuestStatus) {
-            if (previousStatus.isVisible) {
-                onQuestBecomesInvisible(questId, QuestGroup.OSM_NOTE)
-            }
-        }
-
-        override fun onUpdated(added: Collection<OsmNoteQuest>, updated: Collection<OsmNoteQuest>, deleted: Collection<Long>) {
-            onUpdatedVisibleQuests(added, updated, deleted, QuestGroup.OSM_NOTE)
+    private val osmNoteQuestSourceListener = object : OsmNoteQuestSource.Listener {
+        override fun onUpdated(addedQuests: Collection<OsmNoteQuest>, deletedQuestIds: Collection<Long>) {
+            listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestIds, QuestGroup.OSM_NOTE) }
         }
     }
 
     init {
         osmQuestController.addQuestStatusListener(osmQuestStatusListener)
-        osmNoteQuestController.addQuestStatusListener(osmNoteQuestStatusListener)
+        osmNoteQuestSource.addListener(osmNoteQuestSourceListener)
     }
 
 
     /** Get count of all unanswered quests in given bounding box */
     fun getAllVisibleCount(bbox: BoundingBox): Int {
         return osmQuestController.getAllVisibleInBBoxCount(bbox) +
-            osmNoteQuestController.getAllVisibleInBBoxCount(bbox)
+            osmNoteQuestSource.getAllInBBoxCount(bbox)
     }
 
     /** Retrieve all visible (=new) quests in the given bounding box from local database */
     fun getAllVisible(bbox: BoundingBox, questTypes: Collection<String>): List<QuestAndGroup> {
         if (questTypes.isEmpty()) return listOf()
         val osmQuests = osmQuestController.getAllVisibleInBBox(bbox, questTypes)
-        val osmNoteQuests = osmNoteQuestController.getAllVisibleInBBox(bbox)
+        val osmNoteQuests = osmNoteQuestSource.getAllInBBox(bbox)
 
         return osmQuests.map { QuestAndGroup(it, QuestGroup.OSM) } +
                 osmNoteQuests.map { QuestAndGroup(it, QuestGroup.OSM_NOTE) }

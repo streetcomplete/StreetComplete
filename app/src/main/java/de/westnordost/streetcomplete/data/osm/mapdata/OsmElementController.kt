@@ -24,7 +24,7 @@ import javax.inject.Singleton
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
-    private val elementUpdatesListener: MutableList<OsmElementSource.ElementUpdatesListener> = CopyOnWriteArrayList()
+    private val listener: MutableList<OsmElementSource.Listener> = CopyOnWriteArrayList()
 
     override fun get(type: Element.Type, id: Long) : Element? = elementDB.get(type, id)
 
@@ -119,21 +119,21 @@ import javax.inject.Singleton
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 
-    override fun addElementUpdatesListener(listener: OsmElementSource.ElementUpdatesListener) {
-        elementUpdatesListener.add(listener)
+    override fun addListener(listener: OsmElementSource.Listener) {
+        this.listener.add(listener)
     }
-    override fun removeElementUpdatesListener(listener: OsmElementSource.ElementUpdatesListener) {
-        elementUpdatesListener.remove(listener)
+    override fun removeListener(listener: OsmElementSource.Listener) {
+        this.listener.remove(listener)
     }
 
     private fun onUpdated(element: Element, geometry: ElementGeometry) {
-        elementUpdatesListener.forEach { it.onUpdated(element, geometry) }
+        listener.forEach { it.onUpdated(element, geometry) }
     }
     private fun onDeleted(type: Element.Type, id: Long) {
-        elementUpdatesListener.forEach { it.onDeleted(type, id) }
+        listener.forEach { it.onDeleted(type, id) }
     }
     private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: ImmutableMapDataWithGeometry) {
-        elementUpdatesListener.forEach { it.onUpdateForBBox(bbox, mapDataWithGeometry) }
+        listener.forEach { it.onUpdatedForBBox(bbox, mapDataWithGeometry) }
     }
 
     companion object {

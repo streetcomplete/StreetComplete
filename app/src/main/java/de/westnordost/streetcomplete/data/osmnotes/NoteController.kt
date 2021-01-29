@@ -16,23 +16,32 @@ import javax.inject.Singleton
     /* Must be a singleton because there is a listener that should respond to a change in the
     *  database table */
 
-    private val noteUpdatesListeners: MutableList<NoteSource.NoteUpdatesListener> = CopyOnWriteArrayList()
+    private val listeners: MutableList<NoteSource.Listener> = CopyOnWriteArrayList()
 
     /** Replace all notes in the given bounding box with the given notes */
     fun putAllForBBox(bbox: BoundingBox, notes: List<Note>) {
         val time = System.currentTimeMillis()
 
-        val oldNoteIds = dao.getAllIds(bbox).toMutableSet()
+        val oldNotesById = mutableMapOf<Long, Note>()
+        dao.getAll(bbox).associateByTo(oldNotesById) { it.id }
+
+        val addedNotes = mutableListOf<Note>()
+        val updatedNotes = mutableListOf<Note>()
         for (note in notes) {
-            oldNoteIds.remove(note.id)
+            if (oldNotesById.containsKey(note.id)) {
+                updatedNotes.add(note)
+            } else {
+                addedNotes.add(note)
+            }
+            oldNotesById.remove(note.id)
         }
         dao.putAll(notes)
-        dao.deleteAll(oldNoteIds)
+        dao.deleteAll(oldNotesById.keys)
 
         val seconds = (System.currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Persisted ${notes.size} and deleted ${oldNoteIds.size} notes in ${seconds.format(1)}s")
+        Log.i(TAG,"Added ${addedNotes.size} and deleted ${oldNotesById.size} notes in ${seconds.format(1)}s")
 
-        onUpdatedForBBox(bbox, notes)
+        onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)
     }
 
     override fun get(noteId: Long): Note? = dao.get(noteId)
@@ -40,36 +49,33 @@ import javax.inject.Singleton
     /** delete a note because the note does not exist anymore on OSM (has been closed) */
     fun delete(noteId: Long) {
         dao.delete(noteId)
-        onDeleted(noteId)
+        onUpdated(deleted = listOf(noteId))
     }
 
     // TODO bulk update would be better
     /** put a note because the note has been created/changed on OSM */
     fun put(note: Note) {
+        val hasNote = dao.get(note.id) != null
         dao.put(note)
-        onUpdated(note)
+        if (hasNote) onUpdated(updated = listOf(note))
+        else onUpdated(added = listOf(note))
     }
 
     override fun getAllPositions(bbox: BoundingBox): List<LatLon> = dao.getAllPositions(bbox)
     override fun getAll(bbox: BoundingBox): List<Note> = dao.getAll(bbox)
+    override fun getAll(noteIds: Collection<Long>): List<Note> = dao.getAll(noteIds)
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 
-    override fun addNoteUpdatesListener(listener: NoteSource.NoteUpdatesListener) {
-        noteUpdatesListeners.add(listener)
+    override fun addListener(listener: NoteSource.Listener) {
+        listeners.add(listener)
     }
-    override fun removeNoteUpdatesListener(listener: NoteSource.NoteUpdatesListener) {
-        noteUpdatesListeners.remove(listener)
+    override fun removeListener(listener: NoteSource.Listener) {
+        listeners.remove(listener)
     }
 
-    private fun onUpdated(note: Note) {
-        noteUpdatesListeners.forEach { it.onUpdated(note) }
-    }
-    private fun onDeleted(noteId: Long) {
-        noteUpdatesListeners.forEach { it.onDeleted(noteId) }
-    }
-    private fun onUpdatedForBBox(bbox: BoundingBox, notes: List<Note>) {
-        noteUpdatesListeners.forEach { it.onUpdatedForBBox(bbox, notes) }
+    private fun onUpdated(added: Collection<Note> = emptyList(), updated: Collection<Note> = emptyList(), deleted: Collection<Long> = emptyList()) {
+        listeners.forEach { it.onUpdated(added, updated, deleted) }
     }
 
     companion object {

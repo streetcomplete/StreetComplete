@@ -20,6 +20,6 @@ import javax.inject.Singleton
         elementGeometryCreator: ElementGeometryCreator,
         osmQuestUpdater: OsmQuestUpdater
     ) = OsmElementController(elementDB, wayDB, nodeDB, geometryDB, elementGeometryCreator).apply {
-        addElementUpdatesListener(osmQuestUpdater)
+        addListener(osmQuestUpdater)
     }
 }

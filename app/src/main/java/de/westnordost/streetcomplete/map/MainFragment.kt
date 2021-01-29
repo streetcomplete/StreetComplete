@@ -420,6 +420,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
+    override fun onReplacedVisibleQuests(bbox: BoundingBox, quests: Collection<Quest>, group: QuestGroup) {}
+
     //endregion
 
     /* ++++++++++++++++++++++++++++++++++++++ VIEW CONTROL ++++++++++++++++++++++++++++++++++++++ */

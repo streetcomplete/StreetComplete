@@ -6,11 +6,9 @@ import de.westnordost.osmapi.notes.Note
 
 interface NoteSource {
 
-    /** Interface to be notified of new notes in the given bbox */
-    interface NoteUpdatesListener {
-        fun onUpdated(note: Note)
-        fun onDeleted(noteId: Long)
-        fun onUpdatedForBBox(bbox: BoundingBox, notes: Collection<Note>)
+    /** Interface to be notified of new notes, updated notes and notes that have been deleted */
+    interface Listener {
+        fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
     }
 
     /** get note of the given id */
@@ -22,7 +20,10 @@ interface NoteSource {
     /** get all notes in the given bounding box */
     fun getAll(bbox: BoundingBox): List<Note>
 
-    fun addNoteUpdatesListener(listener: NoteUpdatesListener)
-    fun removeNoteUpdatesListener(listener: NoteUpdatesListener)
+    /** get all notes with the given ids */
+    fun getAll(noteIds: Collection<Long>): List<Note>
+
+    fun addListener(listener: Listener)
+    fun removeListener(listener: Listener)
 
 }

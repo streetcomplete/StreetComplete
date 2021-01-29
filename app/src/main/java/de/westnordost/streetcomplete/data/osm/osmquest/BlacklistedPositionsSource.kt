@@ -22,3 +22,5 @@ class BlacklistedPositionsSource @Inject constructor(
         commentNoteDao.getAllPositions(bbox) +
         noteSource.getAllPositions(bbox)
 }
+
+// TODO not also listen?

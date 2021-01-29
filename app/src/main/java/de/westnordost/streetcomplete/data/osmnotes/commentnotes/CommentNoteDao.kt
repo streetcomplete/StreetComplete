@@ -32,8 +32,8 @@ import javax.inject.Singleton
     private val db get() = dbHelper.writableDatabase
 
     interface Listener {
-        fun onAddedCommentNote()
-        fun onDeletedCommentNote()
+        fun onAddedCommentNote(note: CommentNote)
+        fun onDeletedCommentNote(noteId: Long)
     }
 
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
@@ -41,7 +41,7 @@ import javax.inject.Singleton
     fun add(note: CommentNote): Boolean {
         val rowId = db.insert(NAME, null, mapping.toContentValues(note))
         if (rowId == -1L) return false
-        listeners.forEach { it.onAddedCommentNote() }
+        listeners.forEach { it.onAddedCommentNote(note) }
         return true
     }
 
@@ -56,7 +56,7 @@ import javax.inject.Singleton
     fun delete(id: Long): Boolean {
         val success = db.delete(NAME, "$NOTE_ID = $id", null) == 1
         if (!success) return false
-        listeners.forEach { it.onDeletedCommentNote() }
+        listeners.forEach { it.onDeletedCommentNote(id) }
         return true
     }
 

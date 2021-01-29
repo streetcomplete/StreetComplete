@@ -8,6 +8,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Point
+import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.ktx.values
@@ -91,9 +92,10 @@ class QuestPinLayerManager @Inject constructor(
     }
 
     override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<Long>, group: QuestGroup) {
-        added.forEach { add(it, group) }
-        removed.forEach { remove(it, group) }
-        updateLayer()
+        var updates = 0
+        added.forEach { if (add(it, group)) updates++ }
+        removed.forEach { if (remove(it, group)) updates++ }
+        if (updates > 0) updateLayer()
     }
 
     private fun updateQuestsInRect(tilesRect: TilesRect) {
@@ -117,13 +119,17 @@ class QuestPinLayerManager @Inject constructor(
         synchronized(retrievedTiles) { retrievedTiles.addAll(tiles) }
     }
 
-    private fun add(quest: Quest, group: QuestGroup) {
+    private fun add(quest: Quest, group: QuestGroup): Boolean {
+        val positions = quest.markerLocations
+        val previousPoints = synchronized(quest) { quests[group]?.get(quest.id!!) }
+        val previousPositions = previousPoints?.map { OsmLatLon(it.coordinateArray[1], it.coordinateArray[0]) }
+        if (positions == previousPositions) return false
+
         // hack away cycleway quests for old Android SDK versions (#713)
         if (quest.type is AddCycleway && Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            return
+            return false
         }
         val questIconName = resources.getResourceEntryName(quest.type.icon)
-        val positions = quest.markerLocations
         val points = positions.map { position ->
             val properties = mapOf(
                 "type" to "point",
@@ -137,11 +143,15 @@ class QuestPinLayerManager @Inject constructor(
         synchronized(quests) {
             quests.getOrPut(group, { LongSparseArray(256) }).put(quest.id!!, points)
         }
+        return true
     }
 
-    private fun remove(questId: Long, group: QuestGroup) {
+    private fun remove(questId: Long, group: QuestGroup): Boolean {
         synchronized(quests) {
+            if (quests[group]?.containsKey(questId) != true) return false
+
             quests[group]?.remove(questId)
+            return true
         }
     }
 

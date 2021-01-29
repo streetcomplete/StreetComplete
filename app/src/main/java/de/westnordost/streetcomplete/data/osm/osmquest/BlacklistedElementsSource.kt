@@ -18,3 +18,4 @@ class BlacklistedElementsSource @Inject constructor(
             undoOsmQuestDao.getAll()
         ).map { ElementKey(it.elementType, it.elementId) }
 }
+// TODO not also listen?

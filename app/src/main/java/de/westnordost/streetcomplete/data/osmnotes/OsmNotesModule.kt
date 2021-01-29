@@ -31,6 +31,6 @@ object OsmNotesModule {
         osmAvatarsInNotesUpdater: OsmAvatarsInNotesUpdater
     ) = NoteController(noteDao).apply {
         // on notes have been updated, avatar images should be downloaded (cached) referenced in note discussions
-        addNoteUpdatesListener(osmAvatarsInNotesUpdater)
+        addListener(osmAvatarsInNotesUpdater)
     }
 }

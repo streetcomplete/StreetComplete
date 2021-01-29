@@ -62,18 +62,16 @@ class NoteDao @Inject constructor(
         return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
     }
 
-    fun getAllIds(bbox: BoundingBox): List<Long> {
-        val cols = arrayOf(ID)
-        val builder = WhereSelectionBuilder()
-        builder.appendBounds(bbox)
-        return db.query(NAME, cols, builder.where, builder.args) { it.getLong(0) }
-    }
-
     fun getAllPositions(bbox: BoundingBox): List<LatLon> {
         val cols = arrayOf(LATITUDE, LONGITUDE)
         val builder = WhereSelectionBuilder()
         builder.appendBounds(bbox)
         return db.query(NAME, cols, builder.where, builder.args) { OsmLatLon(it.getDouble(0), it.getDouble(1)) }
+    }
+
+    fun getAll(ids: Collection<Long>): List<Note> {
+        if (ids.isEmpty()) return emptyList()
+        return db.query(NAME, null, "$ID IN (${ids.joinToString(",")})") { mapping.toObject(it) }
     }
 
     fun deleteAll(ids: Collection<Long>): Int {
