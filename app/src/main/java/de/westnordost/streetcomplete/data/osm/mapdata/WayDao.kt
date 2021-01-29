@@ -31,9 +31,8 @@ class WayDao @Inject constructor(private val dbHelper: SQLiteOpenHelper, overrid
     override val lastUpdateColumnName = LAST_UPDATE
     override val elementTypeName = Element.Type.WAY.name
 
-    /** Cleans up element entries that are not referenced by any quest (or other things) anymore.  */
-    override fun deleteUnreferencedOlderThan(timestamp: Long): Int {
-        val where = """
+    override fun getUnusedAndOldIds(timestamp: Long): List<Long> {
+        return db.query(tableName, arrayOf(idColumnName), """
             $lastUpdateColumnName < $timestamp AND
             $idColumnName NOT IN (
             $selectElementIdsInQuestTable
@@ -43,9 +42,9 @@ class WayDao @Inject constructor(private val dbHelper: SQLiteOpenHelper, overrid
             $selectElementIdsInDeleteElementsTable
             UNION
             SELECT ${OsmQuestSplitWayTable.Columns.WAY_ID} AS $idColumnName FROM ${OsmQuestSplitWayTable.NAME}
-            )""".trimIndent()
-
-        return db.delete(tableName, where, null)
+            )""".trimIndent()) {
+            it.getLong(0)
+        }
     }
 }
 

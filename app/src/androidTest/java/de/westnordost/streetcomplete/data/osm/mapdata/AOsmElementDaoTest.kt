@@ -86,7 +86,7 @@ class AOsmElementDaoTest {
         assertNull(dao.get(6))
     }
 
-    @Test fun deleteUnreferenced() {
+    @Test fun getUnusedAndOldIds() {
         val db = dbHelper.writableDatabase
         db.insert(OsmQuestTable.NAME, null, contentValuesOf(
             OsmQuestTable.Columns.ELEMENT_ID to 1L,
@@ -106,11 +106,8 @@ class AOsmElementDaoTest {
             createElement(3L, 1),
             createElement(4L, 1),
         ))
-        dao.deleteUnreferencedOlderThan(System.currentTimeMillis() + 10)
-        assertNotNull(dao.get(1L))
-        assertNotNull(dao.get(2L))
-        assertNotNull(dao.get(3L))
-        assertNull(dao.get(4L))
+        val unusedIds = dao.getUnusedAndOldIds(System.currentTimeMillis() + 10)
+        assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(4L)))
     }
 }
 

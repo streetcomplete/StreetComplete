@@ -3,15 +3,17 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 
 interface OsmElementSource {
 
     /** Interface to be notified of new or updated OSM elements */
     interface Listener {
-        fun onUpdated(element: Element, geometry: ElementGeometry)
-        fun onDeleted(type: Element.Type, id: Long)
-        fun onUpdatedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry)
+        /** Called when a number of elements have been updated or deleted */
+        fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>)
+
+        /** Called when all elements in the given bounding box should be replaced with the elements
+         *  in the mapDataWithGeometry */
+        fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry)
     }
 
     /** get element of the given type and id */

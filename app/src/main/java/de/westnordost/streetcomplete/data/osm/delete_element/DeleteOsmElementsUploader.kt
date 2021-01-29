@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.delete_element
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmElement
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
@@ -30,10 +31,10 @@ class DeleteOsmElementsUploader @Inject constructor(
         return listOf(element)
     }
 
-    override fun updateElement(element: Element, quest: DeleteOsmElement) {
+    override fun updateElements(elements: List<Element>, quest: DeleteOsmElement) {
         /* So on successful upload of deleting the element, all that refers to that element should
         *  be removed as well */
-        osmElementController.delete(element.type, element.id)
+        osmElementController.deleteAll(elements.map { ElementKey(it.type, it.id) })
     }
 
     override fun onUploadSuccessful(quest: DeleteOsmElement) {

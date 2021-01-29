@@ -135,8 +135,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         downloadedTilesDao.removeAll()
-        val futureTime = System.currentTimeMillis() + 10
-        noteController.deleteAllOlderThan(futureTime)
-        osmElementController.deleteUnreferencedOlderThan(futureTime)
+        val now = System.currentTimeMillis()
+        noteController.deleteAllOlderThan(now)
+        osmElementController.deleteUnreferencedOlderThan(now)
     }
 }

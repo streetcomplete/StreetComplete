@@ -25,9 +25,6 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTab
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.MIN_LONGITUDE
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable
-import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable
-import de.westnordost.streetcomplete.data.osm.mapdata.WayTable
 import de.westnordost.streetcomplete.ktx.*
 
 /** Stores the geometry of elements */
@@ -87,23 +84,6 @@ class ElementGeometryDao @Inject constructor(
                 delete(entry.elementType, entry.elementId)
             }
         }
-    }
-
-    /** Cleans up element geometry entries that are not referenced by any element anymore */
-    fun deleteUnreferenced(): Int {
-        val where = """
-            (
-              $ELEMENT_TYPE = ${Element.Type.NODE.name}
-              AND $ELEMENT_ID NOT IN (SELECT ${NodeTable.Columns.ID} FROM ${NodeTable.NAME}))
-            ) OR (
-              $ELEMENT_TYPE = ${Element.Type.WAY.name}
-              AND $ELEMENT_ID NOT IN (SELECT ${WayTable.Columns.ID} FROM ${WayTable.NAME}))
-            ) OR (
-              $ELEMENT_TYPE = ${Element.Type.RELATION.name}
-              AND $ELEMENT_ID NOT IN (SELECT ${RelationTable.Columns.ID} FROM ${RelationTable.NAME}))
-            )
-        """.trimIndent()
-        return db.delete(NAME, where, null)
     }
 
     private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox): WhereSelectionBuilder {

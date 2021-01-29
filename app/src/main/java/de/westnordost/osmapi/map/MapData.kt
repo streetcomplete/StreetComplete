@@ -64,6 +64,24 @@ open class MutableMapData : MapData, MapDataHandler {
     }
 }
 
+class EmptyMapData : MapData {
+    override val nodes = emptyList<Node>()
+    override val ways = emptyList<Way>()
+    override val relations = emptyList<Relation>()
+    override val boundingBox: BoundingBox? = null
+
+    override fun getNode(id: Long): Node? = null
+    override fun getWay(id: Long): Way? = null
+    override fun getRelation(id: Long): Relation? = null
+    override fun iterator() = emptyList<Element>().iterator()
+}
+
+class EmptyMapDataWithGeometry : MapData by EmptyMapData(), MapDataWithGeometry {
+    override fun getNodeGeometry(id: Long): ElementPointGeometry? = null
+    override fun getWayGeometry(id: Long): ElementGeometry? = null
+    override fun getRelationGeometry(id: Long): ElementGeometry? = null
+}
+
 fun MapData.isRelationComplete(id: Long): Boolean =
     getRelation(id)?.members?.all { member ->
         when (member.type!!) {

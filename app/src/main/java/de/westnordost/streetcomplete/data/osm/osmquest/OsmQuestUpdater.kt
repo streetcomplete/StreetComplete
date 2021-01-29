@@ -40,35 +40,39 @@ class OsmQuestUpdater @Inject constructor(
 
     private val questTypes get() = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
 
-    override fun onDeleted(type: Element.Type, id: Long) {
-        osmQuestController.deleteAllForElement(type, id)
-    }
+    override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
+        // TODO bulk update would be better
+        for (elementKey in deleted) {
+            osmQuestController.deleteAllForElement(elementKey.elementType, elementKey.elementId)
+        }
+        // TODO same here
+        for (element in updated) {
+            val geometry = updated.getGeometry(element.type, element.id) ?: continue
+            val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+            val lazyMapData by lazy { osmElementSource.getMapDataWithGeometry(paddedBounds) }
 
-    override fun onUpdated(element: Element, geometry: ElementGeometry) {
-        val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
-        val lazyMapData by lazy { osmElementSource.getMapDataWithGeometry(paddedBounds) }
+            val quests = ConcurrentLinkedQueue<OsmQuest>()
+            val truncatedBlacklistedPositions = blacklistedPositionsSource.getAllPositions(paddedBounds).map { it.truncateTo5Decimals() }.toSet()
+            val blacklistedElements = blacklistedElementsSource.getAll().toSet()
 
-        val quests = ConcurrentLinkedQueue<OsmQuest>()
-        val truncatedBlacklistedPositions = blacklistedPositionsSource.getAllPositions(paddedBounds).map { it.truncateTo5Decimals() }.toSet()
-        val blacklistedElements = blacklistedElementsSource.getAll().toSet()
+            runBlocking {
+                for (questType in questTypes) {
+                    launch(Dispatchers.Default) {
+                        val appliesToElement = questType.isApplicableTo(element)
+                            ?: questType.getApplicableElements(lazyMapData).contains(element)
 
-        runBlocking {
-            for (questType in questTypes) {
-                launch(Dispatchers.Default) {
-                    val appliesToElement = questType.isApplicableTo(element)
-                        ?: questType.getApplicableElements(lazyMapData).contains(element)
-
-                    if (appliesToElement && mayCreateQuest(questType, element, geometry, blacklistedElements, truncatedBlacklistedPositions, null)) {
-                        quests.add(OsmQuest(questType, element.type, element.id, geometry))
+                        if (appliesToElement && mayCreateQuest(questType, element, geometry, blacklistedElements, truncatedBlacklistedPositions, null)) {
+                            quests.add(OsmQuest(questType, element.type, element.id, geometry))
+                        }
                     }
                 }
             }
-        }
 
-        osmQuestController.updateForElement(element.type, element.id, quests)
+            osmQuestController.updateForElement(element.type, element.id, quests)
+        }
     }
 
-    override fun onUpdatedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+    override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
         var time = System.currentTimeMillis()
 
         val quests = ConcurrentLinkedQueue<OsmQuest>()

@@ -59,9 +59,9 @@ class MergedElementDao @Inject constructor(
         }
     }
 
-    fun deleteUnreferencedOlderThan(timestamp: Long): Int {
-        return nodeDao.deleteUnreferencedOlderThan(timestamp) +
-            wayDao.deleteUnreferencedOlderThan(timestamp) +
-            relationDao.deleteUnreferencedOlderThan(timestamp)
+    fun getUnusedAndOldIds(timestamp: Long): List<ElementKey> {
+        return nodeDao.getUnusedAndOldIds(timestamp).map { ElementKey(NODE, it) } +
+            wayDao.getUnusedAndOldIds(timestamp).map { ElementKey(WAY, it) } +
+            relationDao.getUnusedAndOldIds(timestamp).map { ElementKey(RELATION, it) }
     }
 }

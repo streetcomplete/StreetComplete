@@ -3,10 +3,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import android.util.Log
 import de.westnordost.osmapi.map.*
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.*
 import de.westnordost.streetcomplete.ktx.format
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -69,25 +66,29 @@ import javax.inject.Singleton
         onUpdateForBBox(bbox, mapDataWithGeometry)
     }
 
-    /** delete an element because the element does not exist anymore on OSM */
-    fun delete(type: Element.Type, id: Long) {
-        elementDB.delete(type, id)
-        geometryDB.delete(type, id)
-        onDeleted(type, id)
+    /** delete elements because the elements doe not exist anymore on OSM */
+    fun deleteAll(elementKeys: Collection<ElementKey>) {
+        elementDB.deleteAll(elementKeys)
+        geometryDB.deleteAll(elementKeys)
+        onUpdated(deleted = elementKeys)
     }
 
-    // TODO bulk update would be better, nodes first!
-    /** update an element because the element has changed on OSM */
-    fun put(element: Element) {
+    /** update elements because the elements have changed on OSM */
+    fun putAll(elements: Collection<Element>) {
         val mapData = MutableMapData()
-        mapData.addAll(listOf(element))
+        mapData.addAll(elements)
 
-        val geometry = elementGeometryCreator.create(element, mapData, true)
-            ?: return delete(element.type, element.id)
+        val elementGeometryEntries = elements.mapNotNull { element ->
+            val geometry = elementGeometryCreator.create(element, mapData, true)
+            geometry?.let { ElementGeometryEntry(element.type, element.id, geometry) }
+        }
 
-        geometryDB.put(ElementGeometryEntry(element.type, element.id, geometry))
-        elementDB.put(element)
-        onUpdated(element, geometry)
+        val mapDataWithGeom = ImmutableMapDataWithGeometry(mapData, elementGeometryEntries)
+
+        geometryDB.putAll(elementGeometryEntries)
+        elementDB.putAll(elements)
+
+        onUpdated(updated = mapDataWithGeom)
     }
 
     private fun completeMapData(mapData: MutableMapData) {
@@ -118,9 +119,11 @@ import javax.inject.Singleton
     }
 
     fun deleteUnreferencedOlderThan(timestamp: Long) {
-        val deletedElements = elementDB.deleteUnreferencedOlderThan(timestamp)
-        val deletedGeometries = geometryDB.deleteUnreferenced()
-        Log.i(TAG,"Deleted $deletedElements old elements and $deletedGeometries geometries")
+        val deletedElements = elementDB.getUnusedAndOldIds(timestamp)
+        elementDB.deleteAll(deletedElements)
+        val deletedGeometries = geometryDB.deleteAll(deletedElements)
+        onUpdated(deleted = deletedElements)
+        Log.i(TAG,"Deleted ${deletedElements.size} old elements and $deletedGeometries geometries")
     }
 
     /* ------------------------------------ Listeners ------------------------------------------- */
@@ -132,14 +135,11 @@ import javax.inject.Singleton
         this.listener.remove(listener)
     }
 
-    private fun onUpdated(element: Element, geometry: ElementGeometry) {
-        listener.forEach { it.onUpdated(element, geometry) }
+    private fun onUpdated(updated: MapDataWithGeometry = EmptyMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
+        listener.forEach { it.onUpdated(updated, deleted) }
     }
-    private fun onDeleted(type: Element.Type, id: Long) {
-        listener.forEach { it.onDeleted(type, id) }
-    }
-    private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: ImmutableMapDataWithGeometry) {
-        listener.forEach { it.onUpdatedForBBox(bbox, mapDataWithGeometry) }
+    private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+        listener.forEach { it.onReplacedForBBox(bbox, mapDataWithGeometry) }
     }
 
     companion object {

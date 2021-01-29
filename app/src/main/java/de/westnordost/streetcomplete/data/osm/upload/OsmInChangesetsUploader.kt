@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.upload
 
 import androidx.annotation.CallSuper
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
@@ -35,13 +36,11 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
                    Such entry blocks the creation of new quests. See #2418
                 */
                 onUploadSuccessful(quest)
-                for (element in uploadedElements) {
-                    updateElement(element, quest)
-                }
+                updateElements(uploadedElements, quest)
                 uploadedQuestTypes.add(quest.osmElementQuestType)
                 uploadedChangeListener?.onUploaded(quest.osmElementQuestType.name, quest.position)
             } catch (e: ElementIncompatibleException) {
-                osmElementController.delete(quest.elementType, quest.elementId)
+                osmElementController.deleteAll(listOf(ElementKey(quest.elementType, quest.elementId)))
                 onUploadFailed(quest, e)
                 uploadedChangeListener?.onDiscarded(quest.osmElementQuestType.name, quest.position)
             } catch (e: ElementConflictException) {
@@ -52,8 +51,8 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
         cleanUp(uploadedQuestTypes)
     }
 
-    protected open fun updateElement(element: Element, quest: T) {
-        osmElementController.put(element)
+    protected open fun updateElements(elements: List<Element>, quest: T) {
+        osmElementController.putAll(elements)
     }
 
     private fun uploadSingle(quest: T) : List<Element> {

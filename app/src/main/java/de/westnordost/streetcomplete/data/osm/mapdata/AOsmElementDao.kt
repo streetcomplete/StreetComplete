@@ -71,9 +71,10 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
         db.delete(tableName, "$idColumnName IN (${ids.joinToString(",")})", null)
     }
 
-    /** Cleans up element entries that are not referenced by any quest (or other things) anymore.  */
-    open fun deleteUnreferencedOlderThan(timestamp: Long): Int {
-        val where = """
+    /** Get all elements that are not referenced by any quest (or other things) anymore and older
+     *  than the given timestamp*/
+    open fun getUnusedAndOldIds(timestamp: Long): List<Long> {
+        return db.query(tableName, arrayOf(idColumnName), """
             $lastUpdateColumnName < $timestamp AND
             $idColumnName NOT IN (
             $selectElementIdsInQuestTable
@@ -81,9 +82,9 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
             $selectElementIdsInUndoQuestTable
             UNION
             $selectElementIdsInDeleteElementsTable
-            )""".trimIndent()
-
-        return db.delete(tableName, where, null)
+            )""".trimIndent()) {
+            it.getLong(0)
+        }
     }
 
     private fun getSelectAllElementIdsIn(table: String, elementIdColumn: String, elementTypeColumn: String) = """
