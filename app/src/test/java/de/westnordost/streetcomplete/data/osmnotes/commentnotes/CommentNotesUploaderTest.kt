@@ -56,7 +56,7 @@ class CommentNotesUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(commentNoteDB, times(notes.size)).delete(anyLong())
-        verify(noteController, times(notes.size)).update(any())
+        verify(noteController, times(notes.size)).put(any())
         verify(uploader.uploadedChangeListener, times(notes.size))?.onUploaded(any(), any())
     }
 

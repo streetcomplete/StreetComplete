@@ -32,11 +32,11 @@ class CommentNoteDaoTest : ApplicationDbTestCase() {
 
         val n = note()
         assertTrue(dao.add(n))
-        verify(listener).onAddedCommentNote()
+        verify(listener).onAddedCommentNote(n)
         assertEquals(n, dao.get(n.noteId))
 
         assertTrue(dao.delete(n.noteId))
-        verify(listener).onDeletedCommentNote()
+        verify(listener).onDeletedCommentNote(n.noteId)
 
         assertNull(dao.get(n.noteId))
     }
@@ -45,10 +45,11 @@ class CommentNoteDaoTest : ApplicationDbTestCase() {
         val listener = mock(CommentNoteDao.Listener::class.java)
         dao.addListener(listener)
 
+        val n = note(1)
         assertTrue(dao.add(note(1)))
-        verify(listener).onAddedCommentNote()
+        verify(listener).onAddedCommentNote(n)
         assertTrue(dao.delete(1))
-        verify(listener).onDeletedCommentNote()
+        verify(listener).onDeletedCommentNote(n.noteId)
         assertNull(dao.get(1))
     }
 
@@ -58,7 +59,7 @@ class CommentNoteDaoTest : ApplicationDbTestCase() {
 
         val n = note(imagePaths = null)
         assertTrue(dao.add(n))
-        verify(listener).onAddedCommentNote()
+        verify(listener).onAddedCommentNote(n)
         val dbNote = dao.get(n.noteId)!!
 
         assertNull(dbNote.imagePaths)

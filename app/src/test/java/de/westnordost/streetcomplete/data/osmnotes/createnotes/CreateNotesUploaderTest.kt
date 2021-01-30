@@ -64,7 +64,7 @@ class CreateNotesUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(createNoteDB, times(createNotes.size)).delete(anyLong())
-        verify(noteController, times(createNotes.size)).add(any())
+        verify(noteController, times(createNotes.size)).put(any())
         verify(uploader.uploadedChangeListener, times(createNotes.size))?.onUploaded(any(), any())
     }
 
