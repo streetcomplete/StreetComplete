@@ -12,27 +12,8 @@ import javax.inject.Named
 
 /** Downloads and stores the OSM avatars of users */
 class OsmAvatarsDownloader @Inject constructor(
-    private val userApi: UserApi,
     @Named("AvatarsCacheDirectory") private val cacheDir: File
 ) {
-
-    fun download(userIds: Collection<Long>) {
-        if (!ensureCacheDirExists()) {
-            Log.w(TAG, "Unable to create directories for avatars")
-            return
-        }
-
-        val time = System.currentTimeMillis()
-        for (userId in userIds) {
-            val avatarUrl = userApi.get(userId)?.profileImageUrl
-            if (avatarUrl != null) {
-                download(userId, avatarUrl)
-            }
-        }
-        val seconds = (System.currentTimeMillis() - time) / 1000.0
-        Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds.format(1)}s")
-    }
-
     /** download avatar for the given user and a known avatar url */
     fun download(userId: Long, avatarUrl: String) {
         if (!ensureCacheDirExists()) return
