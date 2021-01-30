@@ -111,7 +111,7 @@ class SplitWaysUploaderTest {
 
         uploader.upload(AtomicBoolean(false))
 
-        verify(quest.osmElementQuestType).cleanMetadata()
+        verify(quest.osmElementQuestType).deleteMetadataOlderThan()
     }
 }
 

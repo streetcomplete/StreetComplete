@@ -42,11 +42,6 @@ class OsmQuestsUploader @Inject constructor(
         Log.d(TAG, "Dropped osm quest ${quest.toLogString()}: ${e.message}")
     }
 
-    override fun cleanUp(questTypes: Set<OsmElementQuestType<*>>) {
-        super.cleanUp(questTypes)
-        osmQuestController.cleanUp()
-    }
-
     companion object {
         private const val TAG = "OsmQuestUpload"
     }

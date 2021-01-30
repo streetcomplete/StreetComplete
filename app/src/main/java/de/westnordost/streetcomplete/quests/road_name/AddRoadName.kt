@@ -121,8 +121,8 @@ class AddRoadName(
         roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, answer.wayGeometry)
     }
 
-    override fun cleanMetadata() {
-        roadNameSuggestionsDao.cleanUp()
+    override fun deleteMetadataOlderThan(timestamp: Long) {
+        roadNameSuggestionsDao.deleteAllOlderThan(timestamp)
     }
 }
 

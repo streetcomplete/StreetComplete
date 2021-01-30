@@ -96,8 +96,8 @@ class AddAddressStreet(
         changes.add(key, answer.name)
     }
 
-    override fun cleanMetadata() {
-        roadNameSuggestionsDao.cleanUp()
+    override fun deleteMetadataOlderThan(timestamp: Long) {
+        roadNameSuggestionsDao.deleteAllOlderThan(timestamp)
     }
 }
 

@@ -144,7 +144,7 @@ class AddSuspectedOneway(
         }
     }
 
-    override fun cleanMetadata() {
+    override fun deleteMetadataOlderThan(timestamp: Long) {
         db.deleteUnreferenced()
     }
 }

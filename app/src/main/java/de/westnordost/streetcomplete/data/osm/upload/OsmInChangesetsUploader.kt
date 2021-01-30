@@ -48,7 +48,6 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
                 uploadedChangeListener?.onDiscarded(quest.osmElementQuestType.name, quest.position)
             }
         }
-        cleanUp(uploadedQuestTypes)
     }
 
     protected open fun updateElements(elements: List<Element>, quest: T) {
@@ -65,13 +64,6 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
         } catch (e: ChangesetConflictException) {
             val changesetId = changesetManager.createChangeset(quest.osmElementQuestType, quest.source)
             uploadSingle(changesetId, quest, element)
-        }
-    }
-
-    @CallSuper protected open fun cleanUp(questTypes: Set<OsmElementQuestType<*>>) {
-        // must be after unreferenced elements have been deleted
-        for (questType in questTypes) {
-            questType.cleanMetadata()
         }
     }
 

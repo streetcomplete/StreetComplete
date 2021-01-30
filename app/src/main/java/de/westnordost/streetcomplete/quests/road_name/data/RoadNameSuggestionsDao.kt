@@ -106,9 +106,8 @@ class RoadNameSuggestionsDao @Inject constructor(
         return distancesByRoad.entries.sortedBy { it.value }.map { it.key }
     }
 
-    fun cleanUp() {
-        val oldNameSuggestionsTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_OLD_DATA_AFTER
-        db.delete(NAME, "$LAST_UPDATE < ?", arrayOf(oldNameSuggestionsTimestamp.toString()))
+    fun deleteAllOlderThan(timestamp: Long) {
+        db.delete(NAME, "$LAST_UPDATE < timestamp", null)
     }
 }
 

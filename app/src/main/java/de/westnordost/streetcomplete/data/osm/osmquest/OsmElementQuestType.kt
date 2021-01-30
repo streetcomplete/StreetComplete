@@ -18,11 +18,8 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** the commit message to be used for this quest type */
     val commitMessage: String
 
+    /** the OpenStreetMap wiki page with the documentation */
     val wikiLink: String?
-
-
-    // the below could also go up into QuestType interface, but then they should be accounted for
-    // in the respective download/upload classes as well
 
     /** in which countries the quest should be shown */
     val enabledInCountries: Countries get() = AllCountries
@@ -75,7 +72,4 @@ interface OsmElementQuestType<T> : QuestType<T> {
     fun applyAnswerToUnsafe(answer: Any, changes: StringMapChangesBuilder) {
         applyAnswerTo(answer as T, changes)
     }
-
-    /** The quest type can clean it's metadata here, if any  */
-    fun cleanMetadata() {}
 }

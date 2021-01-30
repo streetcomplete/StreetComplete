@@ -106,10 +106,6 @@ class OsmQuestUpdater @Inject constructor(
 
         osmQuestController.updateForBBox(bbox, quests)
 
-        for (questType in questTypes) {
-            questType.cleanMetadata()
-        }
-
         val secondsSpentPersisting = (System.currentTimeMillis() - time) / 1000
         Log.i(TAG,"Persisted ${quests.size} quests in ${secondsSpentPersisting}s")
 
