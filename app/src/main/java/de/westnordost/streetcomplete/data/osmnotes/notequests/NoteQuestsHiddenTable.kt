@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
-object HiddenNoteQuestTable {
-    const val NAME = "osm_hidden_notes"
+object NoteQuestsHiddenTable {
+    const val NAME = "osm_notes_hidden"
 
     object Columns {
         const val NOTE_ID = "note_id"

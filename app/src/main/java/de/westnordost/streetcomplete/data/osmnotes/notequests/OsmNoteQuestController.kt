@@ -18,7 +18,7 @@ import javax.inject.Singleton
 @Singleton class OsmNoteQuestController @Inject constructor(
     private val noteSource: NoteSource,
     private val commentNoteDB: CommentNoteDao,
-    private val hiddenNoteQuestDB: HiddenNoteQuestDao,
+    private val noteQuestsHiddenDB: NoteQuestsHiddenDao,
     private val questType: OsmNoteQuestType,
     private val userStore: UserStore,
     private val preferences: SharedPreferences,
@@ -89,13 +89,13 @@ import javax.inject.Singleton
     }
 
     fun hide(questId: Long) {
-        hiddenNoteQuestDB.add(questId)
+        noteQuestsHiddenDB.add(questId)
         onUpdated(deletedQuestIds = listOf(questId))
     }
 
     fun unhideAll(): Int {
-        val previouslyHiddenNotes = noteSource.getAll(hiddenNoteQuestDB.getAll())
-        val result = hiddenNoteQuestDB.deleteAll()
+        val previouslyHiddenNotes = noteSource.getAll(noteQuestsHiddenDB.getAll())
+        val result = noteQuestsHiddenDB.deleteAll()
 
         val blockedNoteIds = getBlockedNoteIds()
         val unhiddenNoteQuests = previouslyHiddenNotes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
@@ -115,10 +115,10 @@ import javax.inject.Singleton
     }
 
     private fun isNoteBlocked(noteId: Long): Boolean =
-        commentNoteDB.get(noteId) != null || hiddenNoteQuestDB.contains(noteId)
+        commentNoteDB.get(noteId) != null || noteQuestsHiddenDB.contains(noteId)
 
     private fun getBlockedNoteIds(): Set<Long> =
-        (commentNoteDB.getAll().map { it.noteId } + hiddenNoteQuestDB.getAll()).toSet()
+        (commentNoteDB.getAll().map { it.noteId } + noteQuestsHiddenDB.getAll()).toSet()
 
     /* ---------------------------------------- Listener ---------------------------------------- */
 

@@ -6,11 +6,11 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
-class HiddenNoteQuestDaoTest : ApplicationDbTestCase() {
-    private lateinit var dao: HiddenNoteQuestDao
+class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
+    private lateinit var dao: NoteQuestsHiddenDao
 
     @Before fun createDao() {
-        dao = HiddenNoteQuestDao(dbHelper)
+        dao = NoteQuestsHiddenDao(dbHelper)
     }
 
     @Test fun getButNothingIsThere() {

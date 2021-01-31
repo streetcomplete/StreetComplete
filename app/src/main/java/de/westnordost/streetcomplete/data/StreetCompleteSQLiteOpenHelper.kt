@@ -31,7 +31,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEnt
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNote
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteMapping
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteTable
-import de.westnordost.streetcomplete.data.osmnotes.notequests.HiddenNoteQuestTable
+import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable
@@ -63,7 +63,7 @@ import javax.inject.Inject
         db.execSQL(RelationTable.CREATE)
 
         db.execSQL(NoteTable.CREATE)
-        db.execSQL(HiddenNoteQuestTable.CREATE)
+        db.execSQL(NoteQuestsHiddenTable.CREATE)
         db.execSQL(CreateNoteTable.CREATE)
         db.execSQL(CommentNoteTable.CREATE)
 
@@ -201,7 +201,7 @@ import javax.inject.Inject
         if (oldVersion < 15 && newVersion >= 15) {
             db.execSQL("""
                 ALTER TABLE ${OsmQuestSplitWayTable.NAME}
-                ADD COLUMN ${OsmQuestSplitWayTable.Columns.QUEST_TYPES_ON_WAY} text;
+                ADD COLUMN quest_types_on_way text;
                 """.trimIndent()
             )
         }
@@ -316,11 +316,11 @@ import javax.inject.Inject
                 arrayOf("note_id"),
                 "quest_status = HIDDEN"
             ) { it.getLong(0) }
-            db.execSQL(HiddenNoteQuestTable.CREATE)
+            db.execSQL(NoteQuestsHiddenTable.CREATE)
             db.transaction {
                 for (noteId in hiddenNoteIds) {
-                    db.insert(HiddenNoteQuestTable.NAME, null, contentValuesOf(
-                        HiddenNoteQuestTable.Columns.NOTE_ID to noteId
+                    db.insert(NoteQuestsHiddenTable.NAME, null, contentValuesOf(
+                        NoteQuestsHiddenTable.Columns.NOTE_ID to noteId
                     ))
                 }
             }
