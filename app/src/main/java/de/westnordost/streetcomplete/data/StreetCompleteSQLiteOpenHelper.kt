@@ -327,6 +327,10 @@ import javax.inject.Inject
 
             db.execSQL("DROP VIEW osm_notequests_full")
             db.execSQL("DROP TABLE osm_notequests")
+
+            // quest_types_on_way column in osm_split_ways table is no more
+            db.execSQL("DROP TABLE ${OsmQuestSplitWayTable.NAME}")
+            db.execSQL(OsmQuestSplitWayTable.CREATE)
         }
 
         // for later changes to the DB
