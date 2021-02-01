@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.osmquest.undo
+package de.westnordost.streetcomplete.data.osm.osmquest.changes
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
@@ -23,7 +23,7 @@ class UndoOsmQuestDaoTest : ApplicationDbTestCase() {
     @Before fun createDaos() {
         val elementGeometryEntryMapping = ElementGeometryEntryMapping(ElementGeometryMapping(serializer))
         geometryDao = ElementGeometryDao(dbHelper, elementGeometryEntryMapping)
-        dao = UndoOsmQuestDao(dbHelper, UndoOsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), elementGeometryEntryMapping.geometry))
+        dao = UndoOsmQuestDao(dbHelper, UndoOsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), elementGeometryEntryMapping.geometryMapping))
     }
 
     @Test fun getButNothingIsThere() {

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.osmquest
 
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementDao
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestDao
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestDao
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayDao
 import javax.inject.Inject
 

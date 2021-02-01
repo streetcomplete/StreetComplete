@@ -8,7 +8,7 @@ import dagger.Provides;
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementsUploader;
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestsUploader;
 import de.westnordost.streetcomplete.data.osm.splitway.SplitWaysUploader;
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestsUploader;
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestsUploader;
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNotesUploader;
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNotesUploader;
 

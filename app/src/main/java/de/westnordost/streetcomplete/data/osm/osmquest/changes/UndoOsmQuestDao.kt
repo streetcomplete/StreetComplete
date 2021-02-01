@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.osmquest.undo
+package de.westnordost.streetcomplete.data.osm.osmquest.changes
 
 import android.database.Cursor
 import android.database.sqlite.SQLiteOpenHelper
@@ -11,14 +11,14 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryMapping
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable.Columns.QUEST_ID
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable.Columns.QUEST_TYPE
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable.Columns.ELEMENT_ID
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable.Columns.ELEMENT_TYPE
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable.Columns.TAG_CHANGES
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable.Columns.CHANGES_SOURCE
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable.NAME
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable.NAME_MERGED_VIEW
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable.Columns.QUEST_ID
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable.Columns.QUEST_TYPE
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable.Columns.ELEMENT_ID
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable.Columns.ELEMENT_TYPE
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable.Columns.TAG_CHANGES
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable.Columns.CHANGES_SOURCE
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable.NAME
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable.NAME_MERGED_VIEW
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 import java.util.concurrent.CopyOnWriteArrayList

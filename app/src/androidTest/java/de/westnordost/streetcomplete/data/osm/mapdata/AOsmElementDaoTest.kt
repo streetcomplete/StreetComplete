@@ -16,7 +16,7 @@ import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import org.mockito.Mockito.*

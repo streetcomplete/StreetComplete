@@ -13,8 +13,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementSource
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestDao
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestDao
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWay
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayDao
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition

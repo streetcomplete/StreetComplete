@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.osmquest.undo
+package de.westnordost.streetcomplete.data.osm.osmquest.changes
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element

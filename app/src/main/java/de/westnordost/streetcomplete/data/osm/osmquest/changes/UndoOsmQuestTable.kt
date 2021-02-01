@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.osmquest.undo
+package de.westnordost.streetcomplete.data.osm.osmquest.changes
 
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable
 
@@ -39,7 +39,7 @@ object UndoOsmQuestTable {
         );"""
 
     const val MERGED_VIEW_CREATE = """
-        CREATE VIEW $NAME_MERGED_VIEW AS 
+        CREATE VIEW $NAME_MERGED_VIEW AS
         SELECT * FROM $NAME
             INNER JOIN ${ElementGeometryTable.NAME} USING (
                 ${ElementGeometryTable.Columns.ELEMENT_TYPE},
