@@ -34,5 +34,6 @@ class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
         dao.add(2L)
         assertEquals(2, dao.deleteAll())
         assertFalse(dao.contains(1L))
+        assertFalse(dao.contains(2L))
     }
 }
