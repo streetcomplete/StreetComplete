@@ -42,7 +42,7 @@ class ElementGeometryDao @Inject constructor(
         val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
         val args = arrayOf(type.name, id.toString())
 
-        return db.queryOne(NAME, null, where, args) { mapping.geometry.toObject(it) }
+        return db.queryOne(NAME, null, where, args) { mapping.geometryMapping.toObject(it) }
     }
 
     fun delete(type: Element.Type, id: Long) {
@@ -132,17 +132,17 @@ class ElementGeometryMapping @Inject constructor(
 }
 
 class ElementGeometryEntryMapping @Inject constructor(
-    val geometry: ElementGeometryMapping
+    val geometryMapping: ElementGeometryMapping
 ): ObjectRelationalMapping<ElementGeometryEntry> {
 
     override fun toContentValues(obj: ElementGeometryEntry) = contentValuesOf(
         ELEMENT_TYPE to obj.elementType.name,
         ELEMENT_ID to obj.elementId
-    ) + geometry.toContentValues(obj.geometry)
+    ) + geometryMapping.toContentValues(obj.geometry)
 
     override fun toObject(cursor: Cursor) = ElementGeometryEntry(
         Element.Type.valueOf(cursor.getString(ELEMENT_TYPE)),
         cursor.getLong(ELEMENT_ID),
-        geometry.toObject(cursor)
+        geometryMapping.toObject(cursor)
     )
 }

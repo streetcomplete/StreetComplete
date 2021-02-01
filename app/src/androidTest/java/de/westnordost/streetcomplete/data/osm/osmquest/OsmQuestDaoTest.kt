@@ -29,7 +29,7 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         val elementGeometryEntryMapping = ElementGeometryEntryMapping(ElementGeometryMapping(serializer))
         geometryDao = ElementGeometryDao(dbHelper, elementGeometryEntryMapping)
         val list = listOf<QuestType<*>>(TEST_QUEST_TYPE, TEST_QUEST_TYPE2)
-        val mapping = OsmQuestMapping(serializer, QuestTypeRegistry(list), elementGeometryEntryMapping.geometry)
+        val mapping = OsmQuestMapping(serializer, QuestTypeRegistry(list), elementGeometryEntryMapping.geometryMapping)
         dao = OsmQuestDao(dbHelper, mapping)
     }
 
