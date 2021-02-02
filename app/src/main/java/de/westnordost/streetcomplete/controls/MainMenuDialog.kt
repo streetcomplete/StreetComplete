@@ -25,6 +25,7 @@ class MainMenuDialog(
             dismiss()
         }
         view.teamModeButton.setOnClickListener {
+            TeamModeDialog(context).show()
             dismiss()
         }
         view.settingsButton.setOnClickListener {
