@@ -50,11 +50,12 @@ class VisibleQuestTypeControllerTest {
     }
 
     @Test fun reset() {
+        ctrl.setVisible(testQuestType, false)
+        assertFalse(ctrl.isVisible(testQuestType))
+
         val listener = mock<VisibleQuestTypeSource.Listener>()
         ctrl.addListener(listener)
 
-        ctrl.setVisible(testQuestType, false)
-        assertFalse(ctrl.isVisible(testQuestType))
         ctrl.clear()
         assertTrue(ctrl.isVisible(testQuestType))
 

@@ -1,17 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.upload.changesets
 
 import android.content.SharedPreferences
-import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -68,7 +64,7 @@ class OpenQuestChangesetsManagerTest {
             "created_by" to ApplicationConstants.USER_AGENT,
             "comment" to "test me",
             "locale" to "es-AR",
-            "StreetComplete:quest_type" to "TestQuestType"
+            "StreetComplete:quest_type" to questType.javaClass.simpleName
         ))
         verify(openChangesetsDB).put(any())
     }

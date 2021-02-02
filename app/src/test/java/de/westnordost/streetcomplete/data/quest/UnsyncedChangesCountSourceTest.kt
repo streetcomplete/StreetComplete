@@ -148,7 +148,7 @@ class UnsyncedChangesCountSourceTest {
     }
 
     @Test fun `remove comment note triggers listener`() {
-        commentNoteListener.onDeletedCommentNote(mock())
+        commentNoteListener.onDeletedCommentNote(0L)
         verifyDecreased()
     }
 

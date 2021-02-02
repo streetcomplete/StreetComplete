@@ -94,14 +94,14 @@ class VisibleQuestsSourceTest {
 
 
         val quests = source.getAllVisible(bbox, questTypes)
-        assertEquals(q2, quests.single())
+        assertEquals(QuestAndGroup(q2, QuestGroup.OSM), quests.single())
     }
 
     @Test fun `osm quests added or removed triggers listener`() {
         val quests = listOf(osmQuest(1L), osmQuest(2L))
         val deleted = listOf(3L,4L)
         questListener.onUpdated(quests, deleted)
-        verify(listener).onUpdatedVisibleQuests(eq(quests), eq(deleted), QuestGroup.OSM)
+        verify(listener).onUpdatedVisibleQuests(eq(quests), eq(deleted), eq(QuestGroup.OSM))
     }
 
     @Test fun `osm quests added of invisible type does not trigger listener`() {
@@ -115,7 +115,7 @@ class VisibleQuestsSourceTest {
         val quests = listOf(osmNoteQuest(1L), osmNoteQuest(2L))
         val deleted = listOf(3L,4L)
         noteQuestListener.onUpdated(quests, deleted)
-        verify(listener).onUpdatedVisibleQuests(eq(quests), eq(deleted), QuestGroup.OSM_NOTE)
+        verify(listener).onUpdatedVisibleQuests(eq(quests), eq(deleted), eq(QuestGroup.OSM_NOTE))
     }
 
     @Test fun `osm note quests added of invisible type does not trigger listener`() {

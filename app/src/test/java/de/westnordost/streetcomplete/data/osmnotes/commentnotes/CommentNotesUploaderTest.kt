@@ -70,14 +70,14 @@ class CommentNotesUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(commentNoteDB, times(notes.size)).delete(anyLong())
-        verify(noteController, times(notes.size)).delete(any())
+        verify(noteController, times(notes.size)).delete(anyLong())
         verify(uploader.uploadedChangeListener, times(notes.size))?.onDiscarded(any(), any())
     }
 
     @Test fun `catches image upload exception`() {
         val note = note()
         on(commentNoteDB.getAll()).thenReturn(listOf(note))
-        on(singleNoteUploader).thenThrow(ImageUploadException())
+        on(singleNoteUploader.comment(anyLong(),any(),any())).thenThrow(ImageUploadException())
 
         uploader.upload(AtomicBoolean(false))
 

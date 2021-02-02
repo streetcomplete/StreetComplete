@@ -102,7 +102,7 @@ class OsmElementTagChangesUploaderTest {
 
         verify(osmElementController, times(1)).putAll(any())
         verify(osmElementController, times(2)).get(any(), anyLong())
-        verify(statisticsUpdater).subtractOne(any(), any())
+        verify(statisticsUpdater).addOne(any(), any())
         verifyNoMoreInteractions(osmElementController)
     }
 }
