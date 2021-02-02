@@ -140,26 +140,6 @@ import javax.inject.Singleton
     fun getOsmElement(quest: OsmQuest): OsmElement? =
         osmElementSource.get(quest.elementType, quest.elementId) as OsmElement?
 
-    /** Undo changes made after answering a quest. */
-    fun undo(quest: OsmQuest) {
-        TODO("reimplement undo stuff")
-        /*
-            // not uploaded yet -> simply revert to NEW
-            QuestStatus.ANSWERED, QuestStatus.HIDDEN -> {
-                osmQuestController.undo(quest)
-            }
-            // already uploaded! -> create change to reverse the previous change
-            QuestStatus.CLOSED -> {
-                osmQuestController.revert(quest)
-                osmElementTagChangesDB.add(OsmElementTagChanges(quest))
-            }
-            else -> {
-                throw IllegalStateException("Tried to undo a quest that hasn't been answered yet")
-            }
-
-         */
-    }
-
     private fun solveOsmNoteQuest(questId: Long, answer: NoteAnswer): Boolean {
         val q = osmNoteQuestController.get(questId) ?: return false
 

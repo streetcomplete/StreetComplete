@@ -6,8 +6,6 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.util.measuredLength
 import de.westnordost.streetcomplete.util.pointOnPolylineFromEnd
 import de.westnordost.streetcomplete.util.pointOnPolylineFromStart

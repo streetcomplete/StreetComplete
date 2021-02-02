@@ -118,7 +118,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
             .setTitle(R.string.undo_confirm_title)
             .setView(inner)
             .setPositiveButton(R.string.undo_confirm_positive) { _, _ ->
-                questController.undo(quest)
+                // TODO reimplement undo!
                 updateUndoButtonEnablement(true)
             }
             .setNegativeButton(R.string.undo_confirm_negative) { _, _ -> updateUndoButtonEnablement(true) }
