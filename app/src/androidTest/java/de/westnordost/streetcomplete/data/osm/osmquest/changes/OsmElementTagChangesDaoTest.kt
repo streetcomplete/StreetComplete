@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.elementgeometry.*
 import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType
 import org.junit.Assert.*
 import org.junit.Before
@@ -14,16 +13,13 @@ import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
-class UndoOsmQuestDaoTest : ApplicationDbTestCase() {
+class OsmElementTagChangesDaoTest : ApplicationDbTestCase() {
 
     private val questType = TestQuestType()
-    private lateinit var geometryDao: ElementGeometryDao
-    private lateinit var dao: UndoOsmQuestDao
+    private lateinit var dao: OsmElementTagChangesDao
 
     @Before fun createDaos() {
-        val elementGeometryEntryMapping = ElementGeometryEntryMapping(ElementGeometryMapping(serializer))
-        geometryDao = ElementGeometryDao(dbHelper, elementGeometryEntryMapping)
-        dao = UndoOsmQuestDao(dbHelper, UndoOsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), elementGeometryEntryMapping.geometryMapping))
+        dao = OsmElementTagChangesDao(dbHelper, ElementTagChangesMapping(serializer, QuestTypeRegistry(listOf(questType))))
     }
 
     @Test fun getButNothingIsThere() {
@@ -31,37 +27,31 @@ class UndoOsmQuestDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAllButNothingIsThere() {
-        assertEquals(listOf<UndoOsmQuest>(), dao.getAll())
+        assertEquals(listOf<OsmElementTagChanges>(), dao.getAll())
     }
 
     @Test fun addAndGet() {
-        val listener = mock(UndoOsmQuestDao.Listener::class.java)
+        val listener = mock(OsmElementTagChangesDao.Listener::class.java)
         dao.addListener(listener)
 
         val id = 1L
         val input = addUndoQuest(id)
-        verify(listener).onAddedUndoOsmQuest()
+        verify(listener).onAddedElementTagChanges()
         val output = dao.get(id)!!
 
-        assertEquals(input.id, output.id)
-        assertEquals(input.type, output.type)
-        assertEquals(input.geometry, output.geometry)
-        assertEquals(input.changesSource, output.changesSource)
-        assertEquals(input.changes, output.changes)
-        assertEquals(input.elementType, output.elementType)
-        assertEquals(input.elementId, output.elementId)
+        assertEquals(input, output)
     }
 
     @Test fun delete() {
         val id = 1L
         addUndoQuest(id)
 
-        val listener = mock(UndoOsmQuestDao.Listener::class.java)
+        val listener = mock(OsmElementTagChangesDao.Listener::class.java)
         dao.addListener(listener)
 
         dao.delete(id)
         assertNull(dao.get(id))
-        verify(listener).onDeletedUndoOsmQuest()
+        verify(listener).onDeletedElementTagChanges()
     }
 
     @Test fun getAll() {
@@ -85,12 +75,10 @@ class UndoOsmQuestDaoTest : ApplicationDbTestCase() {
         assertEquals(2, dao.getCount())
     }
 
-    private fun addUndoQuest(id: Long, elementId: Long = 1L): UndoOsmQuest {
-        val geometry = ElementPointGeometry(OsmLatLon(1.0, 2.0))
+    private fun addUndoQuest(id: Long, elementId: Long = 1L): OsmElementTagChanges {
         val elementType = Element.Type.NODE
         val changes = StringMapChanges(listOf(StringMapEntryAdd("foo", "bar")))
-        val quest = UndoOsmQuest(id, questType, elementType, elementId, changes, "test", geometry)
-        geometryDao.put(ElementGeometryEntry(elementType, elementId, geometry))
+        val quest = OsmElementTagChanges(id, questType, elementType, elementId, changes, "test", OsmLatLon(1.0, 2.0), false)
         dao.add(quest)
         return quest
     }

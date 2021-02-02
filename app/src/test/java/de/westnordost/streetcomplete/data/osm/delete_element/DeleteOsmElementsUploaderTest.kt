@@ -98,21 +98,10 @@ class DeleteOsmElementsUploaderTest {
         verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].questType.javaClass.simpleName, quests[0].position)
         verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].questType.javaClass.simpleName,quests[1].position)
 
-        verify(osmElementController, times(1)).delete(any(), anyLong())
+        verify(osmElementController, times(1)).deleteAll(any())
         verify(osmElementController, times(2)).get(any(), anyLong())
         verify(statisticsUpdater).addOne(any(), any())
         verifyNoMoreInteractions(osmElementController)
-    }
-
-    @Test fun `clean metadata at the end`() {
-        val quest = createDeleteOsmElement()
-
-        on(deleteElementDB.getAll()).thenReturn(listOf(quest))
-        on(osmElementController.get(any(), anyLong())).thenReturn(createElement())
-
-        uploader.upload(AtomicBoolean(false))
-
-        verify(quest.osmElementQuestType).deleteMetadataOlderThan()
     }
 }
 

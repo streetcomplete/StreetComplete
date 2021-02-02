@@ -17,9 +17,9 @@ import org.junit.Test
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito.*
 
-class SplitSingleWayUploaderTest {
+class SplitSingleOsmWayUploaderTest {
     private val mapDataApi: MapDataApi = mock()
-    private val uploader = SplitSingleWayUploader(mapDataApi)
+    private val uploader = SplitSingleOsmWayUploader(mapDataApi)
 
     private val p = arrayOf(
         OsmLatLon(0.0, 0.0),

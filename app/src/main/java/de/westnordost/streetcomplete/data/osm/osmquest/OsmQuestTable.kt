@@ -11,20 +11,12 @@ object OsmQuestTable {
         const val QUEST_TYPE = "quest_type"
         const val ELEMENT_ID = "element_id"
         const val ELEMENT_TYPE = "element_type"
-        const val QUEST_STATUS = "quest_status"
-        const val TAG_CHANGES = "tag_changes"
-        const val CHANGES_SOURCE = "changes_source"
-        const val LAST_UPDATE = "last_update"
     }
 
     const val CREATE = """
         CREATE TABLE $NAME (
             ${Columns.QUEST_ID} INTEGER PRIMARY KEY,
             ${Columns.QUEST_TYPE} varchar(255) NOT NULL,
-            ${Columns.QUEST_STATUS} varchar(255) NOT NULL,
-            ${Columns.TAG_CHANGES} blob,
-            ${Columns.CHANGES_SOURCE} varchar(255),
-            ${Columns.LAST_UPDATE} int NOT NULL,
             ${Columns.ELEMENT_ID} int NOT NULL,
             ${Columns.ELEMENT_TYPE} varchar(255) NOT NULL,
             CONSTRAINT same_osm_quest UNIQUE (
@@ -41,7 +33,7 @@ object OsmQuestTable {
             )
         );"""
 
-    const val CREATE_VIEW = """
+    const val MERGED_VIEW_CREATE = """
         CREATE VIEW $NAME_MERGED_VIEW
         AS SELECT * FROM $NAME
         INNER JOIN ${ElementGeometryTable.NAME}

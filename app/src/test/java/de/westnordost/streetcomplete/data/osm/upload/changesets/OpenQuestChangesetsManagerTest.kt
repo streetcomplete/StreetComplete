@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
@@ -27,7 +28,7 @@ class OpenQuestChangesetsManagerTest {
     private lateinit var prefs: SharedPreferences
 
     @Before fun setUp() {
-        questType = TestQuestType()
+        questType = TestQuestTypeA()
         mapDataApi = mock()
         openChangesetsDB = mock()
         changesetAutoCloser = mock()
@@ -73,16 +74,3 @@ class OpenQuestChangesetsManagerTest {
     }
 
 }
-
-private class TestQuestType : OsmElementQuestType<String> {
-
-    override fun getApplicableElements(mapData: MapDataWithGeometry) = emptyList<Element>()
-    override fun getTitle(tags: Map<String, String>) = 0
-    override fun isApplicableTo(element: Element):Boolean? = null
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {}
-    override val icon = 0
-    override fun createForm(): AbstractQuestAnswerFragment<String> = object : AbstractQuestAnswerFragment<String>() {}
-    override val commitMessage = "test me"
-    override val wikiLink: String? = null
-}
-

@@ -1,267 +1,280 @@
 package de.westnordost.streetcomplete.data.osm.osmquest
 
+
 import android.util.Log
+import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.countryboundaries.intersects
+import de.westnordost.countryboundaries.isInAny
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.quest.QuestStatus
+import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementSource
+import de.westnordost.streetcomplete.data.osmnotes.NoteSource
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.util.contains
+import de.westnordost.streetcomplete.util.enlargedBy
+import de.westnordost.streetcomplete.util.measuredLength
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.CopyOnWriteArrayList
+import java.util.concurrent.FutureTask
 import javax.inject.Inject
 import javax.inject.Singleton
 
+// TODO hiddenDB shoudl prevent quest creation? Or maybe blacklistedElementDb etc should just prevent them from being idsplayed?
+
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
  *  listeners about changes */
-@Singleton class OsmQuestController @Inject internal constructor(private val dao: OsmQuestDao) {
+@Singleton class OsmQuestController @Inject internal constructor(
+    private val db: OsmQuestDao,
+    private val hiddenDB: OsmQuestsHiddenDao,
+    private val osmElementSource: OsmElementSource,
+    private val notesSource: NoteSource,
+    private val questTypeRegistry: QuestTypeRegistry,
+    private val countryBoundariesFuture: FutureTask<CountryBoundaries>
+): OsmQuestSource {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
-    interface QuestStatusListener {
-        /** the status of a quest was changed */
-        fun onChanged(quest: OsmQuest, previousStatus: QuestStatus)
-        /** a quest was removed */
-        fun onRemoved(questId: Long, previousStatus: QuestStatus)
-        /** various quests were updated */
-        fun onUpdated(added: Collection<OsmQuest>, updated: Collection<OsmQuest>, deleted: Collection<Long>)
+    private val listeners: MutableList<OsmQuestSource.Listener> = CopyOnWriteArrayList()
+
+    private val questTypes get() = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
+
+    private val osmElementSourceListener = object : OsmElementSource.Listener {
+
+        /** For the given elements, replace the current quests with the given ones. Called when
+         *  OSM elements are updated, so the quests that reference that element need to be updated
+         *  as well. */
+        override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
+            val addedQuests = mutableListOf<OsmQuest>()
+            val obsoleteQuestIds = mutableListOf<Long>()
+
+            for (element in updated) {
+                val quests = createQuestsForElement(element, updated)
+
+                val previousQuestsByType = mutableMapOf<OsmElementQuestType<*>, OsmQuest>()
+                db.getAllForElement(element.type, element.id)
+                    .associateByTo(previousQuestsByType) { it.osmElementQuestType }
+
+                for (quest in quests) {
+                    if (previousQuestsByType.containsKey(quest.type)) {
+                        previousQuestsByType.remove(quest.type)
+                    } else {
+                        addedQuests.add(quest)
+                    }
+                }
+                // quests that were created previously for an element but now not anymore shall be deleted
+                obsoleteQuestIds.addAll(previousQuestsByType.values.mapNotNull { it.id })
+            }
+            for (key in deleted) {
+                // quests that refer to elements that have been deleted shall be deleted
+                obsoleteQuestIds.addAll(db.getAllForElement(key.elementType, key.elementId).mapNotNull { it.id })
+            }
+
+            updateQuests(addedQuests, obsoleteQuestIds)
+        }
+
+        /** Replace all quests of the given types in the given bounding box with the given quests.
+         *  Called on download of a quest type for a bounding box. */
+        override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+            val quests = createQuestsForBBox(bbox, mapDataWithGeometry)
+
+            val previousQuestsByKey = mutableMapOf<OsmQuestKey, OsmQuest>()
+            db.getAllInBBox(bbox).associateByTo(previousQuestsByKey) { it.key }
+
+            val addedQuests = mutableListOf<OsmQuest>()
+            for (quest in quests) {
+                val questKey = quest.key
+                if (previousQuestsByKey.containsKey(questKey)) {
+                    previousQuestsByKey.remove(quest.key)
+                } else {
+                    addedQuests.add(quest)
+                }
+            }
+            val obsoleteQuestIds = previousQuestsByKey.values.mapNotNull { it.id }
+
+            updateQuests(addedQuests, obsoleteQuestIds)
+        }
     }
-    private val questStatusListeners: MutableList<QuestStatusListener> = CopyOnWriteArrayList()
 
-    /* ---------------------------------- Modify single quests ---------------------------------- */
-
-    /** Return the previously answered quest to the initial unanswered state */
-    fun undo(quest: OsmQuest) {
-        val status = quest.status
-        quest.status = QuestStatus.NEW
-        quest.changes = null
-        quest.changesSource = null
-        dao.update(quest)
-        onChanged(quest, status)
+    init {
+        osmElementSource.addListener(osmElementSourceListener)
     }
 
-    /** Mark the previously successfully uploaded quest as reverted */
-    fun revert(quest: OsmQuest) {
-        val status = quest.status
-        dao.delete(quest.id!!)
-        onRemoved(quest.id!!, status)
+    private fun createQuestsForBBox(
+        bbox: BoundingBox,
+        mapDataWithGeometry: MapDataWithGeometry
+    ): Collection<OsmQuest> {
+        val time = System.currentTimeMillis()
+
+        val quests = ConcurrentLinkedQueue<OsmQuest>()
+        val truncatedBlacklistedPositions = notesSource
+            .getAllPositions(bbox)
+            .map { it.truncateTo5Decimals() }
+            .toSet()
+        val countryBoundaries = countryBoundariesFuture.get()
+
+        runBlocking {
+            for (questType in questTypes) {
+                launch(Dispatchers.Default) {
+                    val questTypeName = questType.javaClass.simpleName
+                    if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
+                        Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
+                    } else {
+                        val questTime = System.currentTimeMillis()
+                        for (element in questType.getApplicableElements(mapDataWithGeometry)) {
+                            val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
+                            if (!mayCreateQuest(questType, element, geometry, truncatedBlacklistedPositions, bbox)) continue
+                            quests.add(OsmQuest(null, questType, element.type, element.id, geometry!!))
+                        }
+
+                        val questSeconds = System.currentTimeMillis() - questTime
+                        Log.d(TAG, "$questTypeName: Found ${quests.size} quests in ${questSeconds}ms")
+                    }
+                }
+            }
+        }
+        val secondsSpentAnalyzing = (System.currentTimeMillis() - time) / 1000
+        Log.i(TAG,"Created ${quests.size} quests for bbox in ${secondsSpentAnalyzing}s")
+
+        return quests
     }
 
-    /** Mark the quest as answered by the user with the given answer */
-    fun answer(quest: OsmQuest, changes: StringMapChanges, source: String) {
-        val status = quest.status
-        quest.changes = changes
-        quest.changesSource = source
-        quest.status = QuestStatus.ANSWERED
-        dao.update(quest)
-        onChanged(quest, status)
+    private fun createQuestsForElement(
+        element: Element,
+        mapDataWithGeometry: MapDataWithGeometry
+    ): Collection<OsmQuest> {
+        val time = System.currentTimeMillis()
+
+        val geometry = mapDataWithGeometry.getGeometry(element.type, element.id) ?: return emptyList()
+        val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+        val lazyMapData by lazy { osmElementSource.getMapDataWithGeometry(paddedBounds) }
+
+        val quests = ConcurrentLinkedQueue<OsmQuest>()
+        val truncatedBlacklistedPositions = notesSource
+            .getAllPositions(paddedBounds)
+            .map { it.truncateTo5Decimals() }
+            .toSet()
+
+        runBlocking {
+            for (questType in questTypes) {
+                launch(Dispatchers.Default) {
+                    val appliesToElement = questType.isApplicableTo(element)
+                        ?: questType.getApplicableElements(lazyMapData).contains(element)
+
+                    if (appliesToElement && mayCreateQuest(questType, element, geometry, truncatedBlacklistedPositions, null)) {
+                        quests.add(OsmQuest(null, questType, element.type, element.id, geometry))
+                    }
+                }
+            }
+        }
+        val secondsSpentAnalyzing = (System.currentTimeMillis() - time) / 1000
+        Log.i(TAG,"Created ${quests.size} quests for ${element.type.name}#${element.id} in ${secondsSpentAnalyzing}s")
+
+        return quests
+    }
+
+    private fun updateQuests(added: Collection<OsmQuest>, deletedIds: Collection<Long>) {
+        val time = System.currentTimeMillis()
+
+        val deletedCount = db.deleteAll(deletedIds)
+        val addedCount = db.addAll(added)
+        val reallyAddedQuests = added.filter { it.id != null }
+
+        val secondsSpentPersisting = (System.currentTimeMillis() - time) / 1000.0
+        Log.i(TAG,"Added $addedCount new and removed $deletedCount already resolved quests in ${secondsSpentPersisting.format(1)}s")
+
+        // TODO hidden quests sind außen vor1
+        onUpdated(added = reallyAddedQuests, deletedIds = deletedIds)
+    }
+
+    private fun mayCreateQuest(
+        questType: OsmElementQuestType<*>,
+        element: Element,
+        geometry: ElementGeometry?,
+        blacklistedPositions: Set<LatLon>,
+        downloadedBoundingBox: BoundingBox?
+    ): Boolean {
+        // invalid geometry -> can't show this quest, so skip it
+        val pos = geometry?.center ?: return false
+
+        // outside downloaded area: skip
+        if (downloadedBoundingBox != null && !downloadedBoundingBox.contains(pos)) return false
+
+        // do not create quests whose marker is at/near a blacklisted position
+        if (blacklistedPositions.contains(pos.truncateTo5Decimals()))  return false
+
+        // do not create quests in countries where the quest is not activated
+        val countries = questType.enabledInCountries
+        if (!countryBoundariesFuture.get().isInAny(pos, countries))  return false
+
+        // do not create quests that refer to geometry that is too long for a surveyor to be expected to survey
+        if (geometry is ElementPolylinesGeometry) {
+            val totalLength = geometry.polylines.sumByDouble { it.measuredLength() }
+            if (totalLength > MAX_GEOMETRY_LENGTH_IN_METERS) {
+                return false
+            }
+        }
+        return true
     }
 
     /** Mark the quest as hidden by user interaction */
     fun hide(quest: OsmQuest) {
-        val status = quest.status
-        quest.status = QuestStatus.HIDDEN
-        dao.update(quest)
-        onChanged(quest, status)
-    }
-
-    /** Mark that the upload of the quest was successful */
-    fun success(quest: OsmQuest) {
-        val status = quest.status
-        quest.status = QuestStatus.CLOSED
-        dao.update(quest)
-        onChanged(quest, status)
-    }
-
-    /** Mark that the quest failed because either the changes could not be applied or there was an
-     *  unsolvable conflict during upload (deletes the quest) */
-    fun fail(quest: OsmQuest) {
-        val status = quest.status
-        /* #812 conflicting quests may not reside in the database, otherwise they would
-           wrongfully be candidates for an undo - even though nothing was changed */
-        dao.delete(quest.id!!)
-        onRemoved(quest.id!!, status)
-    }
-
-
-    /* ------------------------------------------------------------------------------------------ */
-
-    /** Replace all quests of the given types in the given bounding box with the given quests.
-     *  Called on download of a quest type for a bounding box. */
-    fun updateForBBox(bbox: BoundingBox, quests: Collection<OsmQuest>) {
-        val time = System.currentTimeMillis()
-
-        val previousQuests = mutableMapOf<OsmElementQuestType<*>, MutableMap<ElementKey, OsmQuest>>()
-        for (quest in dao.getAll(bounds = bbox)) {
-            val previousQuestIdsByElement = previousQuests.getOrPut(quest.osmElementQuestType, { mutableMapOf() })
-            previousQuestIdsByElement[ElementKey(quest.elementType, quest.elementId)] = quest
-        }
-
-        for (quest in quests) {
-            previousQuests[quest.osmElementQuestType]?.remove(ElementKey(quest.elementType, quest.elementId))
-        }
-        val obsoleteQuestIds = previousQuests.values
-            .flatMap { it.values }
-            .filter { it.status.isUnanswered } // do not delete quests with changes
-            .map { it.id!! }
-
-        val deletedCount = dao.deleteAllIds(obsoleteQuestIds)
-        val addedCount = dao.addAll(quests)
-        val reallyAddedQuests = quests.filter { it.id != null }
-
-        val seconds = (System.currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Added $addedCount new and removed $deletedCount already resolved quests in ${seconds.format(1)}s")
-
-        onUpdated(added = reallyAddedQuests, deleted = obsoleteQuestIds)
-    }
-
-    /** For the given element, replace the current quests with the given ones. Called when an OSM
-     *  element is updated, so the quests that reference that element need to be updated as well. */
-    fun updateForElement(elementType: Element.Type, elementId: Long, quests: Collection<OsmQuest>) {
-        val elementKey = ElementKey(elementType, elementId)
-        val previousQuestsByType = dao.getAll(element = elementKey)
-            .associateBy { it.osmElementQuestType }
-            .toMutableMap()
-
-        for (quest in quests) {
-            previousQuestsByType.remove(quest.osmElementQuestType)
-        }
-        val obsoleteQuests = previousQuestsByType.values.filter { it.status.isUnanswered } // do not delete quests with changes
-        val obsoleteQuestIds = obsoleteQuests.mapNotNull { it.id }
-
-        dao.deleteAllIds(obsoleteQuestIds)
-        dao.addAll(quests) // if already exists, will not add it
-        val reallyAddedQuests = quests.filter { it.id != null }
-
-        Log.i(TAG,
-            "For ${elementType.name}#$elementId:"
-                + if (reallyAddedQuests.isEmpty()) "" else " added: ${reallyAddedQuests.joinToString { it.javaClass.name }}"
-                + if (obsoleteQuests.isEmpty()) "" else " removed: ${obsoleteQuests.joinToString { it.javaClass.name }}"
-        )
-
-        onUpdated(added = reallyAddedQuests, deleted = obsoleteQuestIds)
-    }
-
-    /** Remove all unsolved quests that reference the given element. Used for when a quest blocker
-     * (=a note) or similar has been added for that element position. */
-    fun deleteAllUnsolvedForElement(elementType: Element.Type, elementId: Long): Int {
-        val deletedQuestIds = dao.getAllIds(
-            statusIn = listOf(QuestStatus.NEW, QuestStatus.HIDDEN, QuestStatus.INVISIBLE),
-            element = ElementKey(elementType, elementId)
-        )
-        val result = dao.deleteAllIds(deletedQuestIds)
-        onUpdated(deleted = deletedQuestIds)
-        return result
-    }
-
-    /** Remove all quests that reference the given element. Used for when that element has been
-     *  deleted, so all quests referencing this element should to. */
-    fun deleteAllForElement(elementType: Element.Type, elementId: Long): Int {
-        val deletedQuestIds = dao.getAllIds(element = ElementKey(elementType, elementId))
-        val result = dao.deleteAllIds(deletedQuestIds)
-        onUpdated(deleted = deletedQuestIds)
-        return result
+        val questId = quest.id ?: return
+        hiddenDB.add(quest.key)
+        onUpdated(deletedIds = listOf(questId))
     }
 
     /** Un-hides all previously hidden quests by user interaction */
     fun unhideAll(): Int {
-        val hiddenQuests = dao.getAll(statusIn = listOf(QuestStatus.HIDDEN))
-        hiddenQuests.forEach { it.status = QuestStatus.NEW }
-        val result = dao.updateAll(hiddenQuests)
-        onUpdated(updated = hiddenQuests)
+        val previouslyHiddenQuestKeys = hiddenDB.getAll()
+        val result = hiddenDB.deleteAll()
+        val unhiddenQuests = previouslyHiddenQuestKeys.mapNotNull { db.get(it) }
+        onUpdated(added = unhiddenQuests)
         return result
     }
 
-    /** Delete old closed and reverted quests and old unsolved and hidden quests */
-    fun cleanUp(): Int {
-        // remove old uploaded quests. These were kept only for the undo/history function
-        val oldUploadedQuestsTimestamp = System.currentTimeMillis() - ApplicationConstants.MAX_QUEST_UNDO_HISTORY_AGE
-        var deleted = dao.deleteAll(
-            statusIn = listOf(QuestStatus.CLOSED),
-            changedBefore = oldUploadedQuestsTimestamp
-        )
-        // remove old unsolved and hidden quests. To let the quest cache not get too big and to
-        // ensure that the probability of merge conflicts remains low
-        val oldUnsolvedQuestsTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_OLD_DATA_AFTER
-        deleted += dao.deleteAll(
-            statusIn = listOf(QuestStatus.NEW, QuestStatus.HIDDEN),
-            changedBefore = oldUnsolvedQuestsTimestamp
-        )
-
-        onUpdated()
-
-        return deleted
+    override fun get(questId: Long): OsmQuest? {
+        val q = db.get(questId) ?: return null
+        if (hiddenDB.contains(q.key)) return null
+        return q
     }
 
-    /* ---------------------------------------- Getters ----------------------------------------- */
+    override fun getAllInBBoxCount(bbox: BoundingBox): Int = db.getAllInBBoxCount(bbox)
 
-    /** Get the quest types of all unsolved quests for the given element */
-    fun getAllUnsolvedQuestTypesForElement(elementType: Element.Type, elementId: Long): List<OsmElementQuestType<*>> {
-        return dao.getAll(
-            statusIn = listOf(QuestStatus.NEW),
-            element = ElementKey(elementType, elementId)
-        ).map { it.osmElementQuestType }
+    override fun getAllVisibleInBBox(
+        bbox: BoundingBox,
+        questTypes: Collection<String>?
+    ): List<OsmQuest> {
+        val quests = mutableMapOf<OsmQuestKey, OsmQuest>()
+        db.getAllInBBox(bbox, questTypes).associateByTo(quests) { it.key }
+        val hiddenQuestKeys = hiddenDB.getAll().toSet()
+        return quests.filterKeys { it !in hiddenQuestKeys }.values.toList()
     }
 
-
-    /** Get count of all unanswered quests in given bounding box  */
-    fun getAllVisibleInBBoxCount(bbox: BoundingBox) : Int {
-        return dao.getCount(
-            statusIn = listOf(QuestStatus.NEW),
-            bounds = bbox
-        )
+    override fun addListener(listener: OsmQuestSource.Listener) {
+        listeners.add(listener)
     }
 
-    /** Get all unanswered quests in given bounding box of given types */
-    fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>): List<OsmQuest> {
-        if (questTypes.isEmpty()) return listOf()
-        return dao.getAll(
-            statusIn = listOf(QuestStatus.NEW),
-            bounds = bbox,
-            questTypes = questTypes
-        )
+    override fun removeListener(listener: OsmQuestSource.Listener) {
+        listeners.remove(listener)
     }
 
-
-    /** Get single quest by id */
-    fun get(id: Long): OsmQuest? = dao.get(id)
-
-    /** Get the last undoable quest (includes answered, hidden and uploaded) */
-    fun getLastUndoable(): OsmQuest? = dao.getLastSolved()
-
-    /** Get all undoable quests count */
-    fun getAllUndoableCount(): Int = dao.getCount(statusIn = listOf(
-        QuestStatus.ANSWERED, QuestStatus.CLOSED, QuestStatus.HIDDEN
-    ))
-
-    /** Get all answered quests */
-    fun getAllAnswered(): List<OsmQuest> = dao.getAll(statusIn = listOf(QuestStatus.ANSWERED))
-
-    /** Get all answered quests count */
-    fun getAllAnsweredCount(): Int = dao.getCount(statusIn = listOf(QuestStatus.ANSWERED))
-
-    /* ------------------------------------ Listeners ------------------------------------------- */
-
-    fun addQuestStatusListener(listener: QuestStatusListener) {
-        questStatusListeners.add(listener)
-    }
-    fun removeQuestStatusListener(listener: QuestStatusListener) {
-        questStatusListeners.remove(listener)
-    }
-
-    private fun onChanged(quest: OsmQuest, previousStatus: QuestStatus) {
-        questStatusListeners.forEach { it.onChanged(quest, previousStatus) }
-    }
-    private fun onRemoved(id: Long, previousStatus: QuestStatus) {
-        questStatusListeners.forEach { it.onRemoved(id, previousStatus) }
-    }
     private fun onUpdated(
-        added: Collection<OsmQuest> = listOf(),
-        updated: Collection<OsmQuest> = listOf(),
-        deleted: Collection<Long> = listOf()
+        added: Collection<OsmQuest> = emptyList(),
+        deletedIds: Collection<Long> = emptyList()
     ) {
-        questStatusListeners.forEach { it.onUpdated(added, updated, deleted) }
+        listeners.forEach { it.onUpdated(added, deletedIds) }
     }
 
     companion object {
@@ -269,3 +282,12 @@ import javax.inject.Singleton
     }
 }
 
+private val OsmQuest.key get() =
+    OsmQuestKey(elementType, elementId, osmElementQuestType.javaClass.simpleName)
+
+// the resulting precision is about ~1 meter (see #1089)
+private fun LatLon.truncateTo5Decimals() = OsmLatLon(latitude.truncateTo5Decimals(), longitude.truncateTo5Decimals())
+
+private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
+
+const val MAX_GEOMETRY_LENGTH_IN_METERS = 600

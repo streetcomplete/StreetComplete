@@ -110,8 +110,6 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
             override val markerLocations = listOf<LatLon>(firstPos)
             override val geometry = elementGeometry
             override val type = questType
-            override var status = QuestStatus.NEW
-            override val lastUpdate = Date()
         }
 
         val f = questType.createForm()

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.osmquest
+package de.westnordost.streetcomplete.data.osm.osmquest.changes
 
 import de.westnordost.streetcomplete.data.MapDataApi
 import javax.inject.Inject

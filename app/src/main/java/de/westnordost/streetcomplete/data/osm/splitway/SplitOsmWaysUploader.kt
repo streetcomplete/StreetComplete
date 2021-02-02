@@ -11,33 +11,33 @@ import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
 /** Gets all split ways from local DB and uploads them via the OSM API */
-class SplitWaysUploader @Inject constructor(
+class SplitOsmWaysUploader @Inject constructor(
     changesetManager: OpenQuestChangesetsManager,
     private val osmElementController: OsmElementController,
-    private val splitWayDB: OsmQuestSplitWayDao,
-    private val splitSingleOsmWayUploader: SplitSingleWayUploader,
+    private val splitWayDB: SplitOsmWayDao,
+    private val splitSingleOsmOsmWayUploader: SplitSingleOsmWayUploader,
     private val statisticsUpdater: StatisticsUpdater
-) : OsmInChangesetsUploader<OsmQuestSplitWay>(changesetManager, osmElementController) {
+) : OsmInChangesetsUploader<SplitOsmWay>(changesetManager, osmElementController) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Splitting ways")
         super.upload(cancelled)
     }
 
-    override fun getAll(): Collection<OsmQuestSplitWay> = splitWayDB.getAll()
+    override fun getAll(): Collection<SplitOsmWay> = splitWayDB.getAll()
 
-    override fun uploadSingle(changesetId: Long, quest: OsmQuestSplitWay, element: Element): List<Element> {
-        return splitSingleOsmWayUploader.upload(changesetId, element as Way, quest.splits)
+    override fun uploadSingle(changesetId: Long, split: SplitOsmWay, element: Element): List<Element> {
+        return splitSingleOsmOsmWayUploader.upload(changesetId, element as Way, split.splits)
     }
 
-    override fun onUploadSuccessful(quest: OsmQuestSplitWay) {
-        splitWayDB.delete(quest.questId)
+    override fun onUploadSuccessful(quest: SplitOsmWay) {
+        splitWayDB.delete(quest.id!!)
         statisticsUpdater.addOne(quest.osmElementQuestType.javaClass.simpleName, quest.position)
         Log.d(TAG, "Uploaded split way #${quest.wayId}")
     }
 
-    override fun onUploadFailed(quest: OsmQuestSplitWay, e: Throwable) {
-        splitWayDB.delete(quest.questId)
+    override fun onUploadFailed(quest: SplitOsmWay, e: Throwable) {
+        splitWayDB.delete(quest.id!!)
         Log.d(TAG, "Dropped split for way #${quest.wayId}: ${e.message}")
     }
 

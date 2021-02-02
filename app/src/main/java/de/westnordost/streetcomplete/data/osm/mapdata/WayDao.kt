@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.LAST_UPDA
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.NODE_IDS
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.VERSION
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable
+import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayTable
 import de.westnordost.streetcomplete.ktx.*
 import java.util.*
 
@@ -41,7 +41,7 @@ class WayDao @Inject constructor(private val dbHelper: SQLiteOpenHelper, overrid
             UNION
             $selectElementIdsInDeleteElementsTable
             UNION
-            SELECT ${OsmQuestSplitWayTable.Columns.WAY_ID} AS $idColumnName FROM ${OsmQuestSplitWayTable.NAME}
+            SELECT ${SplitOsmWayTable.Columns.WAY_ID} AS $idColumnName FROM ${SplitOsmWayTable.NAME}
             )""".trimIndent()) {
             it.getLong(0)
         }

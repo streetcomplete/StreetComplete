@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.download.DownloadModule2
 import de.westnordost.streetcomplete.data.download.DownloadService
 import de.westnordost.streetcomplete.data.meta.MetadataModule
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementModule
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestModule
 import de.westnordost.streetcomplete.data.osm.upload.changesets.ChangesetAutoCloserWorker
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestModule
@@ -19,6 +20,7 @@ import de.westnordost.streetcomplete.data.upload.UploadModule
 import de.westnordost.streetcomplete.data.upload.UploadService
 import de.westnordost.streetcomplete.data.user.UserModule
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeModule
 import de.westnordost.streetcomplete.map.MainFragment
 import de.westnordost.streetcomplete.map.MapFragment
 import de.westnordost.streetcomplete.map.MapModule
@@ -59,7 +61,9 @@ import javax.inject.Singleton
     AchievementsModule::class,
     MapModule::class,
     OsmElementModule::class,
-    OsmNoteQuestModule::class
+    OsmNoteQuestModule::class,
+    OsmQuestModule::class,
+    VisibleQuestTypeModule::class
 ])
 interface ApplicationComponent {
     fun inject(app: StreetCompleteApplication)

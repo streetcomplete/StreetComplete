@@ -69,7 +69,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     MapFragment.Listener, LocationAwareMapFragment.Listener, QuestsMapFragment.Listener,
     AbstractQuestAnswerFragment.Listener,
     SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener, CreateNoteFragment.Listener,
-    VisibleQuestListener,
+    VisibleQuestsSource.Listener,
     HandlesOnBackPressed,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
@@ -420,6 +420,16 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
+    @AnyThread override fun onInvalidated() {
+        val f = bottomSheetFragment
+        if (f !is IsShowingQuestDetails) return
+
+        val openQuest = visibleQuestsSource.get(f.questGroup, f.questId)
+        if (openQuest == null) {
+            mainHandler.post { closeBottomSheet() }
+        }
+    }
+
     //endregion
 
     /* ++++++++++++++++++++++++++++++++++++++ VIEW CONTROL ++++++++++++++++++++++++++++++++++++++ */
@@ -711,7 +721,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     @UiThread private fun showQuestDetails(quest: Quest, group: QuestGroup) {
         val mapFragment = mapFragment ?: return
-        if (quest.status != QuestStatus.NEW) return
         if (isQuestDetailsCurrentlyDisplayedFor(quest.id!!, group)) return
         if (bottomSheetFragment != null) {
             hideKeyboard()

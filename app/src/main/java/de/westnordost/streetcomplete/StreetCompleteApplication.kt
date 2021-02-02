@@ -2,10 +2,7 @@ package de.westnordost.streetcomplete
 
 import android.app.Application
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
-import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
@@ -13,8 +10,6 @@ import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
 class StreetCompleteApplication : Application(),
@@ -29,6 +24,8 @@ class StreetCompleteApplication : Application(),
 
     override fun onCreate() {
         super.onCreate()
+
+        deleteDatabase(ApplicationConstants.OLD_DATABASE_NAME)
 
         Injector.initializeApplicationComponent(this)
         Injector.applicationComponent.inject(this)

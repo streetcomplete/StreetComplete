@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-object QuestVisibilityTable {
+object VisibleQuestTypeTable {
     const val NAME = "quest_visibility"
 
     object Columns {

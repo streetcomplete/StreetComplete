@@ -16,7 +16,7 @@ import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
-import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.OsmElementTagChangesTable
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import org.mockito.Mockito.*
@@ -92,9 +92,9 @@ class AOsmElementDaoTest {
             OsmQuestTable.Columns.ELEMENT_ID to 1L,
             OsmQuestTable.Columns.ELEMENT_TYPE to "NODE"
         ))
-        db.insert(UndoOsmQuestTable.NAME, null, contentValuesOf(
-            UndoOsmQuestTable.Columns.ELEMENT_ID to 2L,
-            UndoOsmQuestTable.Columns.ELEMENT_TYPE to "NODE"
+        db.insert(OsmElementTagChangesTable.NAME, null, contentValuesOf(
+            OsmElementTagChangesTable.Columns.ELEMENT_ID to 2L,
+            OsmElementTagChangesTable.Columns.ELEMENT_TYPE to "NODE"
         ))
         db.insert(DeleteOsmElementTable.NAME, null, contentValuesOf(
             DeleteOsmElementTable.Columns.ELEMENT_ID to 3L,
@@ -153,9 +153,9 @@ private class TestDbHelper(context: Context) : SQLiteOpenHelper(context, TESTDB,
             )
         """.trimIndent())
         db.execSQL("""
-            CREATE TABLE ${UndoOsmQuestTable.NAME} (
-                ${UndoOsmQuestTable.Columns.ELEMENT_ID} int NOT NULL,
-                ${UndoOsmQuestTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL,
+            CREATE TABLE ${OsmElementTagChangesTable.NAME} (
+                ${OsmElementTagChangesTable.Columns.ELEMENT_ID} int NOT NULL,
+                ${OsmElementTagChangesTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL,
             )
         """.trimIndent())
         db.execSQL("""

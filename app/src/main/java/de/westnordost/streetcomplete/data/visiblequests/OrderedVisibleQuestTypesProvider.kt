@@ -9,12 +9,12 @@ import javax.inject.Inject
  *  This can be changed anytime by user preference */
 class OrderedVisibleQuestTypesProvider @Inject constructor(
         private val questTypeRegistry: QuestTypeRegistry,
-        private val visibleQuestTypeDao: VisibleQuestTypeDao,
+        private val visibleQuestTypeSource: VisibleQuestTypeSource,
         private val questTypeOrderList: QuestTypeOrderList
 ) {
     fun get(): List<QuestType<*>> {
         val visibleQuestTypes = questTypeRegistry.all.mapNotNull { questType ->
-            questType.takeIf { visibleQuestTypeDao.isVisible(it) }
+            questType.takeIf { visibleQuestTypeSource.isVisible(it) }
         }.toMutableList()
 
         questTypeOrderList.sort(visibleQuestTypes)

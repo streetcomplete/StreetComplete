@@ -6,7 +6,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
-import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestTable
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.OsmElementTagChangesTable
 import de.westnordost.streetcomplete.ktx.query
 import de.westnordost.streetcomplete.ktx.queryOne
 import de.westnordost.streetcomplete.ktx.transaction
@@ -29,9 +29,9 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
     )
 
     protected val selectElementIdsInUndoQuestTable: String get() = getSelectAllElementIdsIn(
-        UndoOsmQuestTable.NAME,
-        UndoOsmQuestTable.Columns.ELEMENT_ID,
-        UndoOsmQuestTable.Columns.ELEMENT_TYPE
+        OsmElementTagChangesTable.NAME,
+        OsmElementTagChangesTable.Columns.ELEMENT_ID,
+        OsmElementTagChangesTable.Columns.ELEMENT_TYPE
     )
 
     protected val selectElementIdsInDeleteElementsTable: String get() = getSelectAllElementIdsIn(

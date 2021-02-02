@@ -29,7 +29,7 @@ class QuestPinLayerManager @Inject constructor(
     private val questTypesProvider: OrderedVisibleQuestTypesProvider,
     private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource
-): LifecycleObserver, VisibleQuestListener, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+): LifecycleObserver, VisibleQuestsSource.Listener, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
@@ -96,6 +96,10 @@ class QuestPinLayerManager @Inject constructor(
         added.forEach { if (add(it, group)) updates++ }
         removed.forEach { if (remove(it, group)) updates++ }
         if (updates > 0) updateLayer()
+    }
+
+    override fun onInvalidated() {
+        clear()
     }
 
     private fun updateQuestsInRect(tilesRect: TilesRect) {

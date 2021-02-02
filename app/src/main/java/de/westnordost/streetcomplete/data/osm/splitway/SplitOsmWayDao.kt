@@ -6,12 +6,12 @@ import androidx.core.content.contentValuesOf
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.NAME
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.QUEST_ID
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.QUEST_TYPE
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.SOURCE
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.SPLITS
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.WAY_ID
+import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayTable.Columns.ID
+import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayTable.NAME
+import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayTable.Columns.QUEST_TYPE
+import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayTable.Columns.SOURCE
+import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayTable.Columns.SPLITS
+import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayTable.Columns.WAY_ID
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 import java.util.concurrent.CopyOnWriteArrayList
@@ -21,9 +21,9 @@ import kotlin.collections.ArrayList
 
 /** Stores OsmQuestSplitWay objects by quest ID - the solutions of "differs along the way" quest
  *  answers. */
-@Singleton class OsmQuestSplitWayDao @Inject constructor(
+@Singleton class SplitOsmWayDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val mapping: OsmQuestSplitWayMapping
+    private val mapping: SplitOsmWayMapping
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
@@ -37,13 +37,13 @@ import kotlin.collections.ArrayList
 
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
-    fun getAll(): List<OsmQuestSplitWay> {
+    fun getAll(): List<SplitOsmWay> {
         return db.query(NAME) { mapping.toObject(it) }
     }
 
-    fun get(questId: Long): OsmQuestSplitWay? {
-        val selection = "$QUEST_ID = ?"
-        val args = arrayOf(questId.toString())
+    fun get(id: Long): SplitOsmWay? {
+        val selection = "$ID = ?"
+        val args = arrayOf(id.toString())
         return db.queryOne(NAME, null, selection, args) { mapping.toObject(it) }
     }
 
@@ -51,13 +51,14 @@ import kotlin.collections.ArrayList
         return db.queryOne(NAME, arrayOf("COUNT(*)")) { it.getInt(0) } ?: 0
     }
 
-    fun add(quest: OsmQuestSplitWay) {
-        db.insertOrThrow(NAME, null, mapping.toContentValues(quest))
+    fun add(split: SplitOsmWay) {
+        val rowId = db.insertOrThrow(NAME, null, mapping.toContentValues(split))
+        if (rowId != -1L) split.id = rowId
         listeners.forEach { it.onAddedSplitWay() }
     }
 
-    fun delete(questId: Long): Boolean {
-        val result = db.delete(NAME, "$QUEST_ID = ?", arrayOf(questId.toString())) == 1
+    fun delete(id: Long): Boolean {
+        val result = db.delete(NAME, "$ID = ?", arrayOf(id.toString())) == 1
         if (result) listeners.forEach { it.onDeletedSplitWay() }
         return result
     }
@@ -70,24 +71,24 @@ import kotlin.collections.ArrayList
     }
 }
 
-class OsmQuestSplitWayMapping @Inject constructor(
+class SplitOsmWayMapping @Inject constructor(
     private val serializer: Serializer,
     private val questTypeList: QuestTypeRegistry
-) : ObjectRelationalMapping<OsmQuestSplitWay> {
+) : ObjectRelationalMapping<SplitOsmWay> {
 
-    override fun toContentValues(obj: OsmQuestSplitWay) = contentValuesOf(
-        QUEST_ID to obj.questId,
-        QUEST_TYPE to obj.questType.javaClass.simpleName,
+    override fun toContentValues(obj: SplitOsmWay) = contentValuesOf(
+        ID to obj.id,
+        QUEST_TYPE to obj.osmElementQuestType.javaClass.simpleName,
         WAY_ID to obj.wayId,
         SOURCE to obj.source,
         SPLITS to serializer.toBytes(ArrayList(obj.splits))
     )
 
-    override fun toObject(cursor: Cursor)= OsmQuestSplitWay(
-            cursor.getLong(QUEST_ID),
-            questTypeList.getByName(cursor.getString(QUEST_TYPE)) as OsmElementQuestType<*>,
-            cursor.getLong(WAY_ID),
-            cursor.getString(SOURCE),
-            (serializer.toObject(cursor.getBlob(SPLITS)) as ArrayList<SplitPolylineAtPosition>)
+    override fun toObject(cursor: Cursor)= SplitOsmWay(
+        cursor.getLong(ID),
+        questTypeList.getByName(cursor.getString(QUEST_TYPE)) as OsmElementQuestType<*>,
+        cursor.getLong(WAY_ID),
+        cursor.getString(SOURCE),
+        (serializer.toObject(cursor.getBlob(SPLITS)) as ArrayList<SplitPolylineAtPosition>)
     )
 }

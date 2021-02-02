@@ -135,13 +135,6 @@ class MergedElementDaoTest {
         verify(relationDao).getAll(listOf(0L))
     }
 
-    @Test fun deleteUnreferencedOlderThan() {
-        dao.deleteUnreferencedOlderThan(123)
-        verify(nodeDao).deleteUnreferencedOlderThan(123)
-        verify(wayDao).deleteUnreferencedOlderThan(123)
-        verify(relationDao).deleteUnreferencedOlderThan(123)
-    }
-
     private fun createANode() = OsmNode(0, 0, 0.0, 0.0, null)
 
     private fun createAWay() = OsmWay(0, 0, listOf(0L), null)

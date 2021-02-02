@@ -56,7 +56,7 @@ abstract class AVariableRadiusStrategy(
     /** return the quest density in quests per m² for this given [boundingBox]*/
     private fun getQuestDensityFor(boundingBox: BoundingBox): Double {
         val areaInKm = boundingBox.area()
-        val visibleQuestCount = visibleQuestsSource.getAllVisibleCount(boundingBox)
+        val visibleQuestCount = visibleQuestsSource.getCount(boundingBox)
         return visibleQuestCount / areaInKm
     }
 

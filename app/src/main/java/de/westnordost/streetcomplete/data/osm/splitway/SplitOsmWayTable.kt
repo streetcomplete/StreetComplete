@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.splitway
 
-object OsmQuestSplitWayTable {
+object SplitOsmWayTable {
     const val NAME = "osm_split_ways"
 
     object Columns {
-        const val QUEST_ID = "quest_id"
+        const val ID = "id"
         const val QUEST_TYPE = "quest_type"
         const val WAY_ID = "way_id"
         const val SPLITS = "splits"
@@ -13,7 +13,7 @@ object OsmQuestSplitWayTable {
 
     const val CREATE = """
         CREATE TABLE $NAME (
-            ${Columns.QUEST_ID} int PRIMARY KEY,
+            ${Columns.ID} int PRIMARY KEY,
             ${Columns.QUEST_TYPE} varchar(255) NOT NULL,
             ${Columns.WAY_ID} int NOT NULL,
             ${Columns.SPLITS} blob NOT NULL,

@@ -14,15 +14,14 @@ import de.westnordost.streetcomplete.data.osm.upload.UploadableInChangeset
  *  Keeping the split positions as a lat-lon position because it more robust when handling
  *  conflicts than if the split positions were kept as node ids or node indices of the way.
  *  */
-data class OsmQuestSplitWay(
-    val questId: Long,
-    val questType: OsmElementQuestType<*>,
+data class SplitOsmWay(
+    var id: Long?,
+    override val osmElementQuestType: OsmElementQuestType<*>,
     val wayId: Long,
     override val source: String,
     val splits: List<SplitPolylineAtPosition>
 ) : UploadableInChangeset {
 
-    override val osmElementQuestType get() = questType
     override val elementType get() = Element.Type.WAY
     override val elementId get() = wayId
     override val position: LatLon get() = splits.first().pos

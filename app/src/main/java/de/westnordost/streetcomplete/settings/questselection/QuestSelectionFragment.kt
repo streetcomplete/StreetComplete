@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionFragment
@@ -27,7 +27,7 @@ class QuestSelectionFragment
 
     @Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
+    @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
     @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
 
     override val title: String get() = getString(R.string.pref_title_quests)
@@ -78,19 +78,19 @@ class QuestSelectionFragment
     }
 
     override fun onChangedQuestVisibility(questType: QuestType<*>, visible: Boolean) {
-        visibleQuestTypeDao.setVisible(questType, visible)
+        visibleQuestTypeController.setVisible(questType, visible)
     }
 
     private fun onReset() {
         questTypeOrderList.clear()
-        visibleQuestTypeDao.clear()
+        visibleQuestTypeController.clear()
         questSelectionAdapter.list = createQuestTypeVisibilityList()
     }
 
     private fun onDeselectAll() {
         for (questType in questTypeRegistry.all) {
             if (questType !is OsmNoteQuestType) {
-                visibleQuestTypeDao.setVisible(questType, false)
+                visibleQuestTypeController.setVisible(questType, false)
             }
         }
         questSelectionAdapter.list = createQuestTypeVisibilityList()
@@ -99,6 +99,6 @@ class QuestSelectionFragment
     private fun createQuestTypeVisibilityList(): MutableList<QuestVisibility> {
         val questTypes = questTypeRegistry.all.toMutableList()
         questTypeOrderList.sort(questTypes)
-        return questTypes.map { QuestVisibility(it, visibleQuestTypeDao.isVisible(it)) }.toMutableList()
+        return questTypes.map { QuestVisibility(it, visibleQuestTypeController.isVisible(it)) }.toMutableList()
     }
 }

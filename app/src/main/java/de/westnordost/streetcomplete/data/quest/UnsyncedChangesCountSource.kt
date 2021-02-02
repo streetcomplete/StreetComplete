@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementDao
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.osmquest.changes.UndoOsmQuestDao
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayDao
+import de.westnordost.streetcomplete.data.osm.osmquest.changes.OsmElementTagChangesDao
+import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayDao
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNote
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
@@ -14,31 +12,24 @@ import javax.inject.Singleton
 
 /** Access and listen to how many unsynced (=uploadable) changes there are */
 @Singleton class UnsyncedChangesCountSource @Inject constructor(
-    private val osmQuestController: OsmQuestController,
     private val commentNoteDao: CommentNoteDao,
     private val createNoteDao: CreateNoteDao,
-    private val splitWayDao: OsmQuestSplitWayDao,
+    private val splitWayDao: SplitOsmWayDao,
     private val deleteElementDao: DeleteOsmElementDao,
-    private val undoOsmQuestDao: UndoOsmQuestDao
+    private val osmElementTagChangesDao: OsmElementTagChangesDao
 ) {
     private val listeners: MutableList<UnsyncedChangesCountListener> = CopyOnWriteArrayList()
 
     val count: Int get() =
-            answeredOsmQuestCount +
             commentNoteCount +
             splitWayCount +
             createNoteCount +
-            undoOsmQuestCount +
+            elementTagChangesCount +
             deleteOsmElementCount
 
-    val questCount: Int get() = answeredOsmQuestCount - undoOsmQuestCount + splitWayCount  + deleteOsmElementCount
+    // TODO it depends whether undoOsmQuestCount is positive or negative!!
+    val questCount: Int get() = + elementTagChangesCount + splitWayCount  + deleteOsmElementCount
 
-    private var answeredOsmQuestCount: Int = osmQuestController.getAllAnsweredCount()
-    set(value) {
-        val diff = value - field
-        field = value
-        onUpdate(diff)
-    }
     private var commentNoteCount: Int = commentNoteDao.getCount()
     set(value) {
         val diff = value - field
@@ -57,7 +48,7 @@ import javax.inject.Singleton
         field = value
         onUpdate(diff)
     }
-    private var undoOsmQuestCount: Int = undoOsmQuestDao.getCount()
+    private var elementTagChangesCount: Int = osmElementTagChangesDao.getCount()
     set(value) {
         val diff = value - field
         field = value
@@ -70,13 +61,13 @@ import javax.inject.Singleton
         onUpdate(diff)
     }
 
-    private val splitWayListener = object : OsmQuestSplitWayDao.Listener {
+    private val splitWayListener = object : SplitOsmWayDao.Listener {
         override fun onAddedSplitWay() { ++splitWayCount }
         override fun onDeletedSplitWay() { --splitWayCount }
     }
-    private val undoOsmQuestListener = object : UndoOsmQuestDao.Listener {
-        override fun onAddedUndoOsmQuest() { ++undoOsmQuestCount }
-        override fun onDeletedUndoOsmQuest() { --undoOsmQuestCount }
+    private val undoOsmQuestListener = object : OsmElementTagChangesDao.Listener {
+        override fun onAddedElementTagChanges() { ++elementTagChangesCount }
+        override fun onDeletedElementTagChanges() { --elementTagChangesCount }
     }
     private val commentNoteListener = object : CommentNoteDao.Listener {
         override fun onAddedCommentNote(note: CommentNote) { ++commentNoteCount }
@@ -91,31 +82,12 @@ import javax.inject.Singleton
         override fun onDeletedDeleteOsmElement() { --deleteOsmElementCount }
     }
 
-    private val questStatusListener = object : OsmQuestController.QuestStatusListener {
-        override fun onChanged(quest: OsmQuest, previousStatus: QuestStatus) {
-            if(quest.status.isAnswered && !previousStatus.isAnswered) {
-                ++answeredOsmQuestCount
-            } else if (!quest.status.isAnswered && previousStatus.isAnswered) {
-                --answeredOsmQuestCount
-            }
-        }
-
-        override fun onRemoved(questId: Long, previousStatus: QuestStatus) {
-            if (previousStatus.isAnswered) { --answeredOsmQuestCount }
-        }
-
-        override fun onUpdated(added: Collection<OsmQuest>, updated: Collection<OsmQuest>, deleted: Collection<Long>) {
-            answeredOsmQuestCount = osmQuestController.getAllAnsweredCount()
-        }
-    }
-
     init {
         splitWayDao.addListener(splitWayListener)
         deleteElementDao.addListener(deleteElementListener)
-        undoOsmQuestDao.addListener(undoOsmQuestListener)
+        osmElementTagChangesDao.addListener(undoOsmQuestListener)
         createNoteDao.addListener(createNoteListener)
         commentNoteDao.addListener(commentNoteListener)
-        osmQuestController.addQuestStatusListener(questStatusListener)
     }
 
     private fun onUpdate(diff: Int) {
@@ -135,5 +107,3 @@ interface UnsyncedChangesCountListener {
     fun onUnsyncedChangesCountIncreased()
     fun onUnsyncedChangesCountDecreased()
 }
-
-private val QuestStatus.isAnswered get() = this == QuestStatus.ANSWERED

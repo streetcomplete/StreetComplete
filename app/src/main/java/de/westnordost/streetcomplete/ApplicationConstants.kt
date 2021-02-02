@@ -8,7 +8,8 @@ object ApplicationConstants {
     const val MAX_DOWNLOADABLE_AREA_IN_SQKM = 12.0
     const val MIN_DOWNLOADABLE_AREA_IN_SQKM = 0.1
 
-    const val DATABASE_NAME = "streetcomplete.db"
+    const val DATABASE_NAME = "streetcomplete_v2.db"
+    const val OLD_DATABASE_NAME = "streetcomplete.db"
 
     /** tile zoom at which the app downloads automatically and remembers which tiles have already
      *  been downloaded */

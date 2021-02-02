@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.quest
 
-import java.util.Date
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.osmapi.map.data.LatLon
 
@@ -13,8 +12,4 @@ interface Quest {
     val geometry: ElementGeometry
 
     val type: QuestType<*>
-
-    var status: QuestStatus
-
-    val lastUpdate: Date
 }
