@@ -24,6 +24,9 @@ class MainMenuDialog(
             context.startActivity(intent)
             dismiss()
         }
+        view.teamModeButton.setOnClickListener {
+            dismiss()
+        }
         view.settingsButton.setOnClickListener {
             val intent = Intent(context, SettingsActivity::class.java)
             context.startActivity(intent)
