@@ -149,19 +149,19 @@ private class TestDbHelper(context: Context) : SQLiteOpenHelper(context, TESTDB,
         db.execSQL("""
             CREATE TABLE ${OsmQuestTable.NAME} (
                 ${OsmQuestTable.Columns.ELEMENT_ID} int NOT NULL,
-                ${OsmQuestTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL,
+                ${OsmQuestTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL
             )
         """.trimIndent())
         db.execSQL("""
             CREATE TABLE ${OsmElementTagChangesTable.NAME} (
                 ${OsmElementTagChangesTable.Columns.ELEMENT_ID} int NOT NULL,
-                ${OsmElementTagChangesTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL,
+                ${OsmElementTagChangesTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL
             )
         """.trimIndent())
         db.execSQL("""
             CREATE TABLE ${DeleteOsmElementTable.NAME} (
                 ${DeleteOsmElementTable.Columns.ELEMENT_ID} int NOT NULL,
-                ${DeleteOsmElementTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL,
+                ${DeleteOsmElementTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL
             )
         """.trimIndent())
 

@@ -107,7 +107,7 @@ class RoadNameSuggestionsDao @Inject constructor(
     }
 
     fun deleteAllOlderThan(timestamp: Long) {
-        db.delete(NAME, "$LAST_UPDATE < timestamp", null)
+        db.delete(NAME, "$LAST_UPDATE < $timestamp", null)
     }
 }
 

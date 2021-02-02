@@ -65,12 +65,12 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         val q2 = addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 1L, p(1.0,1.0))
         val q3 = addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 2L, p(0.5,0.5))
         // in but wrong quest type
-        addToDaos(TEST_QUEST_TYPE2, Element.Type.NODE, 0L, p(0.5,0.5))
+        addToDaos(TEST_QUEST_TYPE2, Element.Type.NODE, 3L, p(0.5,0.5))
         // out
-        addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 3L, p(-0.5,0.5))
-        addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 4L, p(0.5,-0.5))
-        addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 5L, p(0.5,1.5))
-        addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 6L, p(1.5,0.5))
+        addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 4L, p(-0.5,0.5))
+        addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 5L, p(0.5,-0.5))
+        addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 6L, p(0.5,1.5))
+        addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 7L, p(1.5,0.5))
         assertTrue(dao.getAllInBBox(
             BoundingBox(0.0,0.0,1.0,1.0),
             listOf("TestQuestType")

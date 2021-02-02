@@ -88,6 +88,8 @@ class ElementTagChangesMapping @Inject constructor(
         CHANGES_SOURCE to obj.source,
         ELEMENT_TYPE to obj.elementType.name,
         ELEMENT_ID to obj.elementId,
+        LATITUDE to obj.position.latitude,
+        LONGITUDE to obj.position.longitude,
         IS_REVERT to if (obj.isRevert) 1 else 0
     )
 

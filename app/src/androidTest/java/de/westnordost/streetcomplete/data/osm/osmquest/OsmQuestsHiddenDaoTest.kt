@@ -41,7 +41,7 @@ class OsmQuestsHiddenDaoTest : ApplicationDbTestCase() {
         )
         keys.forEach { dao.add(it) }
         assertEquals(2, dao.deleteAll())
+        assertFalse(dao.contains(keys[0]))
         assertFalse(dao.contains(keys[1]))
-        assertFalse(dao.contains(keys[2]))
     }
 }
