@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 
 interface OsmElementSource {
 
@@ -18,6 +19,9 @@ interface OsmElementSource {
 
     /** get element of the given type and id */
     fun get(type: Element.Type, id: Long): Element?
+
+    /** get geometry of the element of the given type and id */
+    fun getGeometry(type: Element.Type, id: Long) : ElementGeometry?
 
     /** get all element data with its geometry within the given bounding box */
     fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry

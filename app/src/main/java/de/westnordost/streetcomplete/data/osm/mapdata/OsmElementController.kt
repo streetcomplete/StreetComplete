@@ -25,6 +25,8 @@ import javax.inject.Singleton
 
     override fun get(type: Element.Type, id: Long) : Element? = elementDB.get(type, id)
 
+    override fun getGeometry(type: Element.Type, id: Long) : ElementGeometry? = geometryDB.get(type, id)
+
     override fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry {
         val time = System.currentTimeMillis()
         val elementGeometryEntries = geometryDB.getAllEntries(bbox)
