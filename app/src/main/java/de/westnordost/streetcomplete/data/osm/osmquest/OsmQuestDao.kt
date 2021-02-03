@@ -83,6 +83,12 @@ class OsmQuestDao @Inject constructor(
         return db.query(NAME_MERGED_VIEW, null, builder.where, builder.args) { mapping.toObject(it) }
     }
 
+    fun getAllIdsInBBox(bounds: BoundingBox): List<Long> {
+        val builder = WhereSelectionBuilder()
+        builder.appendBounds(bounds)
+        return db.query(NAME_MERGED_VIEW, arrayOf(QUEST_ID), builder.where, builder.args) { it.getLong(0) }
+    }
+
     fun deleteAll(ids: Collection<Long>) {
         if (ids.isEmpty()) return
         db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)

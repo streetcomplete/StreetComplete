@@ -10,6 +10,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
@@ -19,6 +20,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteSource
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.contains
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
 import de.westnordost.streetcomplete.util.measuredLength
 import kotlinx.coroutines.Dispatchers
@@ -80,8 +82,22 @@ import javax.inject.Singleton
         }
     }
 
+    private val notesSourceListener = object : NoteSource.Listener {
+        override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
+            val addedNotePositions = added.map { it.position }
+            val questIdsAtNotes = mutableSetOf<Long>()
+            for (pos in addedNotePositions) {
+                questIdsAtNotes.addAll(db.getAllIdsInBBox(pos.enclosingBoundingBox(1.0)))
+            }
+            db.deleteAll(questIdsAtNotes)
+
+            onUpdated(deletedIds = questIdsAtNotes)
+        }
+    }
+
     init {
         osmElementSource.addListener(osmElementSourceListener)
+        notesSource.addListener(notesSourceListener)
     }
 
     private fun createQuestsForBBox(
@@ -160,6 +176,21 @@ import javax.inject.Singleton
         return quests
     }
 
+    private fun createQuestsForQuestKeys(keys: Collection<OsmQuestKey>): List<OsmQuest> {
+        val questTypesByElement = mutableMapOf<Element, MutableList<OsmElementQuestType<*>>>()
+        for (key in keys) {
+            val element = osmElementSource.get(key.elementType, key.elementId) ?: continue
+            val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: continue
+            questTypesByElement.getOrPut(element) { mutableListOf() }.add(questType)
+        }
+
+        val addedQuests = mutableListOf<OsmQuest>()
+        for ((element, questTypes) in questTypesByElement) {
+            val geometry = osmElementSource.getGeometry(element.type, element.id) ?: continue
+            addedQuests.addAll(createQuestsForElement(element, geometry, questTypes))
+        }
+        return addedQuests
+    }
 
     private fun updateQuests(
         questsNow: Collection<OsmQuest>,
@@ -238,19 +269,7 @@ import javax.inject.Singleton
     /** Un-hides all previously hidden quests by user interaction */
     fun unhideAll(): Int {
         val previouslyHiddenQuestKeys = hiddenDB.getAll()
-
-        val questTypesByElement = mutableMapOf<Element, MutableList<OsmElementQuestType<*>>>()
-        for (key in previouslyHiddenQuestKeys) {
-            val element = osmElementSource.get(key.elementType, key.elementId) ?: continue
-            val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: continue
-            questTypesByElement.getOrPut(element) { mutableListOf() }.add(questType)
-        }
-
-        val addedQuests = mutableListOf<OsmQuest>()
-        for ((element, questTypes) in questTypesByElement) {
-            val geometry = osmElementSource.getGeometry(element.type, element.id) ?: continue
-            addedQuests.addAll(createQuestsForElement(element, geometry, questTypes))
-        }
+        val addedQuests = createQuestsForQuestKeys(previouslyHiddenQuestKeys)
 
         val result = hiddenDB.deleteAll()
         db.addAll(addedQuests)
