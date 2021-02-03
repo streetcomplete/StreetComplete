@@ -1745,7 +1745,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_generic_answer_differs_along_the_way">"V různých částech různý..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Pokud má cesta v různých částech různý povrch, je dobré ji nejdříve rozdělit a pak odpovědět na samostatné úkoly v každé její části.
+    <string name="quest_split_way_description">"Pokud má cesta v různých částech různé vlastnosti, je dobré ji nejdříve rozdělit a pak odpovědět na samostatné úkoly v každé její části.
 Chcete cestu rozdělit?"</string>
 
     <!-- Fuzzy -->
