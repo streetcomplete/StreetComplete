@@ -140,6 +140,7 @@ open class MapFragment : Fragment(),
 
     override fun onDestroy() {
         super.onDestroy()
+        controller?.cancelAllCameraAnimations()
         mapView.onDestroy()
         controller = null
         coroutineContext.cancel()
