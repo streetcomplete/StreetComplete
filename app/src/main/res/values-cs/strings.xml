@@ -1745,7 +1745,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_generic_answer_differs_along_the_way">"V různých částech různý..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Pokud má cesta v různých částech různý povrch, je dobré ji nejdříve rozdělit a pak odpovědět na samostatné úkoly v každé její části.
+    <string name="quest_split_way_description">"Pokud má cesta v různých částech různé vlastnosti, je dobré ji nejdříve rozdělit a pak odpovědět na samostatné úkoly v každé její části.
 Chcete cestu rozdělit?"</string>
 
     <!-- Fuzzy -->
@@ -2432,6 +2432,7 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_pitchSurface_title_track">"Jaký povrch má tato sportovní dráha?"</string>
     <string name="quest_bicycle_parking_access_title">"Je nějak omezeno, kdo zde může parkovat kolo?"</string>
     <string name="quest_bicycle_parking_fee_title">"Je zde potřeba platit za parkování kola?"</string>
+    <string name="quest_buildingType_house_description2">"řadový dům pro jednu rodinu"</string>
     <string name="quest_drinking_water_title">"Je tento zdroj vody pitný? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Pitná voda (rozbor)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Pitná voda (bez rozboru)"</string>

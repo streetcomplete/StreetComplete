@@ -346,8 +346,12 @@
     <string name="quest_dietType_vegetarian_name_title">"Har %s vegetarmat på menyen?"</string>
     <string name="quest_dietType_vegan_name_title">"Har %s veganmat på menyen?"</string>
     <string name="quest_hasFeature_only">"Berre"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Veganmat inneheld ingen dyreprodukt (ikkje kjøt, fisk, fjørfe, mjølk, egg, …)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Vegetarmat inneheld ikkje kjøt, fisk eller fjørfe."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Svar berre ja dersom det finst eit fullverdig tilbod for denne dietten – ikkje for eksempel berre forrettar."</string>
     <string name="quest_carWashType_title">"Kva type bilvask kan ein få her?"</string>
     <string name="quest_carWashType_automated">"Automatisk"</string>

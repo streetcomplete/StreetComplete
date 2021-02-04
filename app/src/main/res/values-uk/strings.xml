@@ -378,8 +378,12 @@
     <string name="quest_dietType_vegetarian_name_title">"Чи має «%s» вегетаріанські страви в меню?"</string>
     <string name="quest_dietType_vegan_name_title">"Чи має «%s» веганські страви в меню?"</string>
     <string name="quest_hasFeature_only">"Лише"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Веганські страви не містять продуктів тваринного походження (без м'яса, молочних продуктів, яєць і т. д.)"</string>
     <string name="quest_dietType_explanation_vegetarian">"Вегетаріанські страви не містять м'яса, риби та птиці."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Відповідайте «так», тільки якщо місце надає належні варіанти харчування для цієї дієти. Ігноруйте закуски і т. п."</string>
     <string name="quest_carWashType_title">"Якого типу ця автомийка?"</string>
     <string name="quest_carWashType_automated">"Автоматична"</string>

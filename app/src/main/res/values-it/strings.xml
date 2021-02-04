@@ -413,8 +413,12 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_dietType_vegetarian_name_title">"%s ha cibo vegetariano nel menu?"</string>
     <string name="quest_dietType_vegan_name_title">"%s offre cibo vegano nel menu?"</string>
     <string name="quest_hasFeature_only">"Soltanto"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Il cibo vegano non contiene alcun prodotto animale (carne, pesce, pollame, latte e derivati, uova, ...)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Il cibo vegetariano non contiene né carne né pesce o pollame."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Rispondere “sì” solo se il locale offre opzioni alimentari adeguate per questa dieta, vanno ignorati gli antipasti ecc."</string>
     <string name="quest_carWashType_title">"Che tipo di autolavaggio è?"</string>
     <string name="quest_carWashType_automated">"Automatizzato"</string>
@@ -622,7 +626,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_noteDiscussion_reopen2">"Riaperta da %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Nascosto da %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Le foto che alleghi a una nota sono caricate sul mio server e cancellate alcuni giorni dopo che la nota è stata risolta. I meta-dati vengono eliminati prima del caricamento.&lt;/p&gt;"</string>
-    <string name="action_deselect_all">"Deselezionare tutti"</string>
+    <string name="action_deselect_all">"Deselezionare tutto"</string>
     <string name="quest_buildingType_retail_description">"inclusi edifici per ristoranti, bar, etc, ..."</string>
     <string name="quest_openingHours_timeSelect_next">"Prossimo"</string>
     <string name="quest_tracktype_title">"Com'è il grado di solidità della superficie di questa strada?"</string>
@@ -1015,10 +1019,19 @@ riconoscimento"</string>
     <string name="quest_dietType_explanation_kosher">"I prodotti kosher devono essere preparati seguendo metodi particolari e vengono controllati da agenzie di certificazione kashrut."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nessuna pista ciclabile"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Al solito, tocca sul lato della figura, seleziona la risposta corretta e ripeti per l'altro lato. Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio una strada a senso unico che permette il transito delle bici in entrambi i sensi!"</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Indicazione che è presente una pista ciclabile"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selezionare che non è presente una pista ciclabile"</string>
     <string name="quest_construction_completed_at_known_date">"Sarà completato in data…"</string>
     <string name="quest_construction_completion_date_title">"Quando sarà completato?"</string>
     <string name="quest_surface_value_clay">"Argilla"</string>
     <string name="quest_surface_value_artificial_turf">"Erba sintetica"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="quest_pitchSurface_title_track">"Qual è la superficie di questa pista sportiva?"</string>
+    <string name="quest_bicycle_parking_access_title">"Il parcheggio bici qui è riservato?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Si paga per parcheggiare la bici qua?"</string>
+    <string name="quest_buildingType_house_description2">"casa unifamiliare non indipendente"</string>
+    <string name="quest_drinking_water_title">"Qui l’acqua è potabile? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"È sicura da bere (è scritto così)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"È sicura da bere (non presente alcuna scritta)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Non sicura da bere (è scritto così)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Non sicura da bere (non presente alcuna scritta)"</string>
 </resources>
