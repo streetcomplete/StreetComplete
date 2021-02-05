@@ -456,8 +456,12 @@ As mentioned, the app directly communicates with OSM infrastructure. However, be
     <string name="quest_dietType_vegetarian_name_title">"Да ли %s има вегетаријаска јела у јеловнику?"</string>
     <string name="quest_dietType_vegan_name_title">"Да ли %s има веганска јела у јеловнику?"</string>
     <string name="quest_hasFeature_only">"Искључиво"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Веганска јела не садрже животињске производе (без меса, рибе, живине, млечних производа, јаја...)"</string>
     <string name="quest_dietType_explanation_vegetarian">"Вегетаријанска јела не садрже месо, рибу или живину."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Одговорите „Да“ само ако место нуди одговарајућа јела за ову врсту исхране. Занемарите предјела и сл."</string>
     <string name="quest_carWashType_title">"Каква је ово ауто-перионица?"</string>
     <string name="quest_carWashType_automated">"Аутоматска"</string>

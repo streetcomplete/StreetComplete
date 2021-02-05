@@ -583,8 +583,12 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_dietType_vegetarian_name_title">"Apa %s punya menu vegetarian?"</string>
     <string name="quest_dietType_vegan_name_title">"Apa %s punya menu vegan?"</string>
     <string name="quest_hasFeature_only">"Hanya"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Menu Vegan tidak mengandung produk hewani (tanpa daging, ikan, unggas ayam/bebek, produk susu, telur, ...)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Menu Vegetarian tidak mengandung daging, ikan, atau unggas"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Jawab \"ya\" saja jika tempat menyediakan pilihan makanan yang benar untuk diet ini, abaikan jika salah dll."</string>
     <string name="quest_carWashType_title">"Apakah jenis pencucian mobil di sini?"</string>
     <string name="quest_carWashType_automated">"Otomatis"</string>

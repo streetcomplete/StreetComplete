@@ -470,8 +470,12 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_dietType_vegetarian_name_title">"Le menu de %s comporte-t-il des plats végétariens ?"</string>
     <string name="quest_dietType_vegan_name_title">"Le menu de %s comporte-t-il des plats végétaliens ?"</string>
     <string name="quest_hasFeature_only">"Exclusivement"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Les plats végétaliens ne contiennent aucun produit animal (pas de viande, de poisson, de volaille, de produits laitiers, d'œufs, ...)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Les plats végétariens ne contiennent ni viande, ni poisson, ni volaille."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Ne répondez \"oui\" que si l'endroit offre des choix de plats adaptés à ce régime, ignorez les entrées, les accompagnements, etc."</string>
     <string name="quest_carWashType_title">"De quel type de station de lavage s'agit-il ?"</string>
     <string name="quest_carWashType_automated">"Automatisée"</string>

@@ -383,9 +383,9 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_dietType_vegetarian_name_title">"Hat %s vegetarisches Essen auf der Karte?"</string>
     <string name="quest_dietType_vegan_name_title">"Hat %s veganes Essen auf der Karte?"</string>
     <string name="quest_hasFeature_only">"Ausschließlich"</string>
-    <string name="quest_dietType_explanation_vegan">"Veganes Essen enthält keine Tierprodukte (kein Fleisch, keine Milchprodukte, keine Eier, …)."</string>
+    <string name="quest_dietType_explanation_vegan">"Veganes Essen enthält keine Tierprodukte (Fleisch, Milchprodukte, Eier, Honig, …)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Vegetarisches Essen enthält kein Fleisch."</string>
-    <string name="quest_dietType_explanation">"Nur mit „Ja“ antworten, wenn es hier ordentliche Alternativen für diese Ernährung gibt, Vorspeisen usw. zählen nicht."</string>
+    <string name="quest_dietType_explanation">"Nur mit „Ja“ antworten, wenn es hier eine vergleichbare Auswahl für diese Ernährung gibt."</string>
     <string name="quest_carWashType_title">"Was für eine Autowaschanlage ist das?"</string>
     <string name="quest_carWashType_automated">"Automatisiert"</string>
     <string name="quest_carWashType_selfService">"Selbstbedienung"</string>
