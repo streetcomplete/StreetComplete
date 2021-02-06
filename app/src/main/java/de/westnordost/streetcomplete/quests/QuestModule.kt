@@ -42,7 +42,6 @@ import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
 import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
@@ -109,7 +108,6 @@ import javax.inject.Singleton
 {
     @Provides @Singleton fun questTypeRegistry(
         osmNoteQuestType: OsmNoteQuestType,
-        roadNameSuggestionsDao: RoadNameSuggestionsDao,
         trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
         trafficFlowDao: WayTrafficFlowDao,
         featureDictionaryFuture: FutureTask<FeatureDictionary>,
@@ -120,7 +118,7 @@ import javax.inject.Singleton
         osmNoteQuestType,
 
         // ↓ 2. important data that is used by many data consumers
-        AddRoadName(roadNameSuggestionsDao),
+        AddRoadName(),
         AddPlaceName(featureDictionaryFuture),
         AddOneway(),
         // not that useful as such, but should be shown before CheckExistence because this is
@@ -134,7 +132,7 @@ import javax.inject.Singleton
         AddBusStopRef(),
         AddIsBuildingUnderground(), //to avoid asking AddHousenumber and other for underground buildings
         AddHousenumber(),
-        AddAddressStreet(roadNameSuggestionsDao),
+        AddAddressStreet(),
         CheckShopType(),
         MarkCompletedHighwayConstruction(),
         AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc

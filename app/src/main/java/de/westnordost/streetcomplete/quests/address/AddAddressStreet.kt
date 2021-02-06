@@ -5,31 +5,17 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ALL_PATHS
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionEntry
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.quests.road_name.data.toRoadNameByLanguage
 
-class AddAddressStreet(
-        private val roadNameSuggestionsDao: RoadNameSuggestionsDao
-) : OsmElementQuestType<AddressStreetAnswer> {
+class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
     private val filter by lazy { """
         nodes, ways, relations with
           addr:housenumber and !addr:street and !addr:place and !addr:block_number
           or addr:streetnumber and !addr:street
     """.toElementFilterExpression() }
-
-    private val roadsWithNamesFilter by lazy { """
-        ways with
-          highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-          and name
-    """.toElementFilterExpression()}
 
     // #2112 - exclude indirect addr:street
     private val excludedWaysFilter by lazy { """
@@ -67,18 +53,6 @@ class AddAddressStreet(
             && address.id !in excludedWayNodeIds
         }
 
-        if (addressesWithoutStreet.isNotEmpty()) {
-            val roadsWithNames = mapData.ways
-                .filter { roadsWithNamesFilter.matches(it) }
-                .mapNotNull {
-                    val geometry = mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry
-                    val roadNamesByLanguage = it.tags?.toRoadNameByLanguage()
-                    if (geometry != null && roadNamesByLanguage != null) {
-                        RoadNameSuggestionEntry(it.id, roadNamesByLanguage, geometry.polylines.first())
-                    } else null
-                }
-            roadNameSuggestionsDao.putRoads(roadsWithNames)
-        }
         return addressesWithoutStreet
     }
 
@@ -94,10 +68,6 @@ class AddAddressStreet(
             is PlaceName -> "addr:place"
         }
         changes.add(key, answer.name)
-    }
-
-    override fun deleteMetadataOlderThan(timestamp: Long) {
-        roadNameSuggestionsDao.deleteAllOlderThan(timestamp)
     }
 }
 

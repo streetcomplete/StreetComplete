@@ -27,7 +27,6 @@ import de.westnordost.streetcomplete.data.osm.osmquest.*
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
 
 @Singleton class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
@@ -79,7 +78,6 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         db.execSQL(NewUserAchievementsTable.CREATE)
 
         // quest specific tables
-        db.execSQL(RoadNamesTable.CREATE)
         db.execSQL(WayTrafficFlowTable.CREATE)
     }
 
