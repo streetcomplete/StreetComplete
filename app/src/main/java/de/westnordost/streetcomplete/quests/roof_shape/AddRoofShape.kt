@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType<RoofShape> {
 
     private val filter by lazy { """
-        ways, relations with building ~ ${BUILDINGS_WITH_ROOFS.joinToString("|")}
+        ways, relations with (building:levels or roof:levels)
           and !roof:shape and !3dr:type and !3dr:roof
     """.toElementFilterExpression() }
 
@@ -49,10 +49,3 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
         return countryInfos.get(center.longitude, center.latitude).isRoofsAreUsuallyFlat
     }
 }
-
-private val BUILDINGS_WITH_ROOFS = arrayOf(
-    "house","residential","apartments","detached","terrace","dormitory","semi",
-    "semidetached_house","bungalow","school","civic","college","university","public",
-    "hospital","kindergarten","transportation","train_station", "hotel","retail",
-    "commercial","office","industrial","manufacture","parking","farm","farm_auxiliary",
-    "cabin")
