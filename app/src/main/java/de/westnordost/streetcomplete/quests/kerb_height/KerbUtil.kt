@@ -11,6 +11,7 @@ private val footwaysFilter by lazy {"""
         highway ~ footway|path
         or highway = cycleway and foot ~ yes|designated
       )
+      and area != yes
       and access !~ private|no and foot !~ no
 """.toElementFilterExpression() }
 

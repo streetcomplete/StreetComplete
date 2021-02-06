@@ -2004,7 +2004,21 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type."</string>
     <string name="quest_dietType_kosher_name_title">"Does %s offer kosher products?"</string>
     <string name="quest_dietType_explanation_kosher">"Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"No bike path available"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"As usual, tap on one side of the illustration, select a proper answer and do the same for the other side. Note all the available options: some cases are not obvious, like a one way road that allows cyclists in both directions!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Select that there is no bike path here"</string>
     <string name="quest_construction_completed_at_known_date">"Will be finished at date…"</string>
     <string name="quest_construction_completion_date_title">"When will it be complete?"</string>
+    <string name="quest_surface_value_clay">"Clay court"</string>
+    <string name="quest_surface_value_artificial_turf">"Astroturf"</string>
+    <string name="quest_surface_value_tartan">"Tartan Track"</string>
+    <string name="quest_pitchSurface_title_track">"What is the surface of this running track?"</string>
+    <string name="quest_bicycle_parking_access_title">"Is there a restriction on which types of bikes can park here?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Is there a fee to park bikes here?"</string>
+    <string name="quest_buildingType_house_description2">"not detached house"</string>
+    <string name="quest_drinking_water_title">"Is the water safe to drink here? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Drinking water (with a sign)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Drinking water (no sign)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Non-potable water (with a sign)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Non-potable water (no sign)"</string>
 </resources>

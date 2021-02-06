@@ -1624,7 +1624,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     that does not carry an implicit meaning of where it is located in respect to the ground floor.
     The context is usually shopping centres, train stations or airport terminals -->
     <!-- Fuzzy -->
-    <string name="on_level">"i etasje %s;"</string>
+    <string name="on_level">"på nivå %s;"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <!-- Fuzzy -->

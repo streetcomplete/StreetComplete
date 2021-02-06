@@ -5,7 +5,7 @@
             android:width="5dp"
             android:color="@color/quest_selection_frame"/>
         <size
-            android:width="51dp"
-            android:height="51dp"/>
+            android:width="58dp"
+            android:height="58dp"/>
     </shape>
 </inset>

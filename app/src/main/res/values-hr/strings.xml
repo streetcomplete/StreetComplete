@@ -181,8 +181,6 @@ Podaci koje unesete se izravno dodaju u OpenStreetMap pod vašim korisničkim im
     <string name="quest_sport_beachvolleyball">"Odbojka na pijesku"</string>
     <string name="quest_sport_american_football">"Američki nogomet"</string>
     <string name="quest_sport_skateboard">"Skejtbordanje"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_bowls">"(Bowls)"</string>
     <string name="quest_sport_boules">"Boćanje"</string>
     <string name="quest_sport_shooting">"Streljaštvo"</string>
@@ -196,8 +194,6 @@ Podaci koje unesete se izravno dodaju u OpenStreetMap pod vašim korisničkim im
     <string name="quest_sport_field_hockey">"Hokej na travi"</string>
     <string name="quest_sport_handball">"Rukomet"</string>
     <string name="quest_sport_ice_hockey">"Hokej na ledu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_netball">"(Netball)"</string>
     <string name="quest_sport_rugby">"Ragbi"</string>
     <string name="quest_select_hint">"Odaberite:"</string>
@@ -229,12 +225,8 @@ Ako duž cijele ulice nema znakova koji se odnose na istaknuti odjeljak, primjen
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Skvoš"</string>
     <string name="quest_sport_ice_skating">"Klizanje"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_paddle_tennis">"(Paddle tennis)"</string>
     <string name="quest_sport_gaelic_games">"Galske igre"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"(Sepak takraw)"</string>
     <string name="quest_wheelchairAccess_name_title">"Je li %s pristupačan za invalidska kolica?"</string>
     <string name="quest_wheelchairAccess_limited">"Djelomično"</string>
@@ -311,8 +303,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="produce_hops">"Hmelj"</string>
     <string name="produce_jojoba">"Jojoba"</string>
     <string name="produce_kiwis">"Kivi"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"(Kola nuts)"</string>
     <string name="produce_lemons">"Limuni"</string>
     <string name="produce_limes">"Limete"</string>
@@ -354,19 +344,13 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Poništi"</string>
     <string name="undo_confirm_title">"Poništi zadnji odgovor?"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangosteen">"(Mangosteen)"</string>
     <string name="produce_tomatoes">"Rajčice"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_areca_nuts">"(Areca nuts)"</string>
 
     <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"Slatka paprika"</string>
     <string name="produce_brazil_nuts">"Brazilski orasi"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tung_nuts">"(Tung nuts)"</string>
     <string name="quest_parkingType_title">"Koje je ovo vrsta parkirališta?"</string>
     <string name="quest_parkingType_surface">"Površinsko parkiralište"</string>
@@ -421,9 +405,9 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
 
     <!-- in what contexts is this used? -->
     <string name="quest_hasFeature_only">"Isključivo"</string>
-    <string name="quest_dietType_explanation_vegan">"Veganska jela ne sadrže proizvode životinja (bez mesa, ribe, peradi, mliječnih proizvoda, jaja, ...)"</string>
+    <string name="quest_dietType_explanation_vegan">"Veganska jela ne sadrže proizvode životinja (jela bez mesa, ribe, peradi, mliječnih proizvoda, jaja, meda...)"</string>
     <string name="quest_dietType_explanation_vegetarian">"Vegeterijanska jela ne sadrže meso, ribu ni perad."</string>
-    <string name="quest_dietType_explanation">"Odgovorite \"da\" samo ako mjesto nudi kompletne obroke za ovu vrstu prehrane, zanemarite predjela i sl."</string>
+    <string name="quest_dietType_explanation">"Odgovorite \"da\" samo ako se nudi usporediv izbor jela za ovu vrstu prehrane"</string>
     <string name="quest_carWashType_title">"Koja je ovo vrsta autopraone?"</string>
     <string name="quest_carWashType_automated">"Automatizirana"</string>
     <string name="quest_carWashType_selfService">"Samoposlužna"</string>
@@ -838,11 +822,7 @@ Konačno, ne zaboravite paziti na sigurnost: budite svjesni svoje okoline i ne u
     <string name="link_learnosm_description">"Novi ste u OpenStreetMapu? Ovo je vodič za početnike"</string>
     <string name="link_neis_one_description">"Ogromna zbirka statistika za suradnike OpenStreetMap-a; poput mjesta i načina na koji ste dali svoj doprinos, tko je još blizu vas, te rang liste"</string>
     <string name="link_welcome_mat_description">"Opće informacije o OpenStreetMap-u i kako kao organizacija raditi s OSM-om"</string>
-
-    <!-- Fuzzy -->
     <string name="link_mapillary_description">"Servis i aplikacija za dijeljenje uličnih fotografija mnogih suradnika, s izričitim dopuštenjem da se koriste za doprinos OSM-u"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openstreetcam_description">"Servis i aplikacija za dijeljenje uličnih fotografija mnogih suradnika, s izričitim dopuštenjem da se koriste za doprinos OSM-u"</string>
 
     <!-- Fuzzy -->
@@ -1072,17 +1052,11 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_does_not_exist">"Ne postoji..."</string>
-
-    <!-- Fuzzy -->
     <string name="osm_element_gone_warning">"OPREZ: Ova akcija se ne može poništiti!"</string>
 
     <!-- Fuzzy -->
     <string name="osm_element_gone_description">"Jeste li sigurni da ne postoji, čak ni na nešto pomaknutoj lokaciji? Ako niste potpuno sigurni, radije ostavite bilješku."</string>
-
-    <!-- Fuzzy -->
     <string name="osm_element_gone_confirmation">"Ne postoji"</string>
-
-    <!-- Fuzzy -->
     <string name="leave_note">"Ostavite bilješku"</string>
 
     <!-- Fuzzy -->
@@ -1098,7 +1072,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_shop_gone_replaced_answer_hint">"Upišite vrstu trgovine ili sl."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Ne znam što je to. Molimo, ostavite bilješku."</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Ne znam što je to. Molim, ostavite bilješku."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Ova je trgovina bila upražnjena. Što je sad ovdje?"</string>
@@ -1106,8 +1080,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_pitchSurface_title">"Koju površinu ima ovo sportsko igralište?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Ova vrsta zadatka je inicijalno onemogućena jer u nekim regijama nije korisna i jer biste vjerojatno morali ući unutra kako bi mogli odgovoriti na zadatak ove vrste."</string>
     <string name="quest_dietType_kosher_name_title">"Nudi li %s košer proizvode?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_kosher">"Košer proizvodi moraju se pripremati prema posebnim pravilima, a agencije za certificiranje moraju označavati proizvode u skladu s kašrutom."</string>
 
     <!-- Fuzzy -->

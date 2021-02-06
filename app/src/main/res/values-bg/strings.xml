@@ -375,8 +375,12 @@
     <string name="quest_dietType_vegetarian_name_title">"Мястото %s има ли вегетарианско меню?"</string>
     <string name="quest_dietType_vegan_name_title">"Мястото %s има ли веганско меню?"</string>
     <string name="quest_hasFeature_only">"Само"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Веган менюто не съдържа животински продукти (без месо, риба, пиле, млечни продукти, яйца...)"</string>
     <string name="quest_dietType_explanation_vegetarian">"Вегетарианското меню не съдържа месо или риба."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Отговорете с \"Да\", само ако мястото предлага подходящо меню за тази диета. "</string>
     <string name="quest_carWashType_title">"Какъв вид автомивка е това?"</string>
     <string name="quest_carWashType_automated">"Автоматична"</string>
@@ -970,4 +974,12 @@
     <string name="quest_surface_value_clay">"Глина"</string>
     <string name="quest_surface_value_artificial_turf">"Изкуствена трева"</string>
     <string name="quest_surface_value_tartan">"Тартан"</string>
+    <string name="quest_pitchSurface_title_track">"Каква повърхност има тази спортна пътека?"</string>
+    <string name="quest_bicycle_parking_access_title">"Паркингът за велосипеди има ли ограничения?"</string>
+    <string name="quest_bicycle_parking_fee_title">" Плаща ли се паркингът за велосипеди?"</string>
+    <string name="quest_drinking_water_title">"Водата добра ли е за пиене? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Добра е за пиене (има табела)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Добра е за пиене (няма табела)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Не е за пиене (има табела)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Не е за пиене (няма табела)"</string>
 </resources>

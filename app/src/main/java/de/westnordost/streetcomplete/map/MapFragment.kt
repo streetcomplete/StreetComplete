@@ -140,12 +140,8 @@ open class MapFragment : Fragment(),
 
     override fun onDestroy() {
         super.onDestroy()
-        try {
-            mapView.onDestroy()
-        } catch (e : Exception) {
-            // workaround for https://github.com/tangrams/tangram-es/issues/2136
-            Log.e(TAG, "Error on disposing map", e)
-        }
+        controller?.cancelAllCameraAnimations()
+        mapView.onDestroy()
         controller = null
         coroutineContext.cancel()
     }
