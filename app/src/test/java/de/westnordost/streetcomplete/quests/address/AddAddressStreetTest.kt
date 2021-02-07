@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import org.junit.Assert.*
 import org.junit.Test
 
 class AddAddressStreetTest {
 
-    private val questType = AddAddressStreet(mock())
+    private val questType = AddAddressStreet()
 
     @Test fun `applicable to place without street name`() {
         val addr = OsmNode(1L, 1, 0.0,0.0, mapOf(

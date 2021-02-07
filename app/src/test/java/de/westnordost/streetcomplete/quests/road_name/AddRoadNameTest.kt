@@ -3,14 +3,13 @@ package de.westnordost.streetcomplete.quests.road_name
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.LocalizedName
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
 class AddRoadNameTest {
 
-    private val questType = AddRoadName(mock())
+    private val questType = AddRoadName()
 
     private val tags = mapOf("highway" to "residential")
 
