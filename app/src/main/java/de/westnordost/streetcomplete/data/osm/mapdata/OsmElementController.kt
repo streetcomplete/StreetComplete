@@ -79,6 +79,7 @@ import javax.inject.Singleton
     fun putAll(elements: Collection<Element>) {
         val mapData = MutableMapData()
         mapData.addAll(elements)
+        completeMapData(mapData)
 
         val elementGeometryEntries = elements.mapNotNull { element ->
             val geometry = elementGeometryCreator.create(element, mapData, true)

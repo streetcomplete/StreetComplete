@@ -20,6 +20,12 @@ class NoteControllerTest {
         noteController = NoteController(dao)
     }
 
+    @Test fun get() {
+        val note = note(5)
+        on(dao.get(5L)).thenReturn(note)
+        assertEquals(note, noteController.get(5L))
+    }
+
     @Test fun `getAll note ids`() {
         val ids = listOf(1L,2L,3L)
         val ret = listOf(note(1), note(2), note(3))
@@ -42,7 +48,7 @@ class NoteControllerTest {
     }
 
     @Test fun put() {
-        val note = Note().apply { id = 1L}
+        val note = note(1)
 
         val listener = mock<NoteSource.Listener>()
         noteController.addListener(listener)
@@ -53,7 +59,7 @@ class NoteControllerTest {
     }
 
     @Test fun `put existing`() {
-        val note = Note().apply { id = 1L}
+        val note = note(1)
         val listener = mock<NoteSource.Listener>()
         on(dao.get(1L)).thenReturn(note)
 
