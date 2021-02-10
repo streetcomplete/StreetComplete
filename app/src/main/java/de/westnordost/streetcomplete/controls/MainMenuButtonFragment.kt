@@ -10,6 +10,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_main_menu_button.view.*
 import kotlinx.coroutines.CoroutineScope
@@ -20,6 +21,7 @@ import javax.inject.Inject
 class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
+    @Inject internal lateinit var teamModeQuestFilter: TeamModeQuestFilter
     @Inject internal lateinit var downloadController: DownloadController
 
     interface Listener {
@@ -45,19 +47,11 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
     internal fun onClickMainMenu() {
         MainMenuDialog(
             requireContext(),
-            null, // TODO: if enabled: indexInTeam, else: null
+            if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
             this::onClickDownload,
-            this::enableTeamMode,
-            this::disableTeamMode
+            teamModeQuestFilter::enableTeamMode,
+            teamModeQuestFilter::disableTeamMode
         ).show()
-    }
-
-    private fun enableTeamMode(teamSize: Int, indexInTeam: Int) {
-        // TODO: save preference
-    }
-
-    private fun disableTeamMode() {
-        // TODO: save preference
     }
 
     /* ------------------------------------ Download Button  ------------------------------------ */
