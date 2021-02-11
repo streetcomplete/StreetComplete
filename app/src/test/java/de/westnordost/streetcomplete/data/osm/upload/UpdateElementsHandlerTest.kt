@@ -5,6 +5,8 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.NODE
 import de.westnordost.osmapi.map.data.Element.Type.WAY
 import de.westnordost.osmapi.map.data.Element.Type.RELATION
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -149,6 +151,31 @@ class UpdateElementsHandlerTest {
             listOf(member(WAY, 1), member(RELATION, 1), member(NODE, 2)),
             updatedRelations.find { it.id == 3L }!!.members
         )
+    }
+
+    @Test fun `relays element id updates of non-deleted elements`() {
+        val elements = listOf<Element>(
+            node(-1),
+            node(-2),
+            way(-3, mutableListOf()),
+            relation(-4, mutableListOf())
+        )
+        val handler = UpdateElementsHandler()
+        handler.handleAll(
+            diff(NODE, -1, 11),
+            diff(NODE, -2, null),
+            diff(WAY, -3, 33),
+            diff(RELATION, -4, 44)
+        )
+        val updates = handler.getElementUpdates(elements)
+        assertTrue(updates.idUpdates.containsExactlyInAnyOrder(listOf(
+            ElementIdUpdate(NODE, -1, 11),
+            ElementIdUpdate(WAY, -3, 33),
+            ElementIdUpdate(RELATION, -4, 44),
+        )))
+        updates.deleted.containsExactlyInAnyOrder(listOf(
+            ElementKey(NODE, -2)
+        ))
     }
 }
 

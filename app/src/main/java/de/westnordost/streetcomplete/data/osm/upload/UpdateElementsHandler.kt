@@ -22,15 +22,19 @@ class UpdateElementsHandler : Handler<DiffElement> {
     fun getElementUpdates(elements: Collection<Element>): ElementUpdates {
         val updatedElements = mutableListOf<Element>()
         val deletedElementKeys = mutableListOf<ElementKey>()
+        val idUpdates = mutableListOf<ElementIdUpdate>()
         for (element in elements) {
-            val update = getDiff(element.type, element.id) ?: continue
-            if (update.serverId != null && update.serverVersion != null) {
-                updatedElements.add(createUpdatedElement(element, update.serverId, update.serverVersion))
+            val diff = getDiff(element.type, element.id) ?: continue
+            if (diff.serverId != null && diff.serverVersion != null) {
+                updatedElements.add(createUpdatedElement(element, diff.serverId, diff.serverVersion))
             } else {
-                deletedElementKeys.add(ElementKey(update.type, update.clientId))
+                deletedElementKeys.add(ElementKey(diff.type, diff.clientId))
+            }
+            if (diff.clientId != diff.serverId && diff.serverId != null) {
+                idUpdates.add(ElementIdUpdate(diff.type, diff.clientId, diff.serverId))
             }
         }
-        return ElementUpdates(updatedElements, deletedElementKeys)
+        return ElementUpdates(updatedElements, deletedElementKeys, idUpdates)
     }
 
     private fun getDiff(type: Element.Type, id: Long): DiffElement? = when (type) {
@@ -54,9 +58,9 @@ class UpdateElementsHandler : Handler<DiffElement> {
     private fun createUpdatedWay(way: Way, newId: Long, newVersion: Int): Way {
         val newNodeIds = ArrayList<Long>(way.nodeIds.size)
         for (nodeId in way.nodeIds) {
-            val update = nodeDiffs[nodeId]
-            if (update == null) newNodeIds.add(nodeId)
-            else if (update.serverId != null) newNodeIds.add(update.serverId)
+            val diff = nodeDiffs[nodeId]
+            if (diff == null) newNodeIds.add(nodeId)
+            else if (diff.serverId != null) newNodeIds.add(diff.serverId)
         }
         return OsmWay(newId, newVersion, newNodeIds, way.tags?.let { HashMap(it) })
     }
@@ -64,12 +68,22 @@ class UpdateElementsHandler : Handler<DiffElement> {
     private fun createUpdatedRelation(relation: Relation, newId: Long, newVersion: Int): Relation {
         val newRelationMembers = ArrayList<RelationMember>(relation.members.size)
         for (member in relation.members) {
-            val update = getDiff(member.type, member.ref)
-            if (update == null) newRelationMembers.add(OsmRelationMember(member.ref, member.role, member.type))
-            else if(update.serverId != null) newRelationMembers.add(OsmRelationMember(update.serverId, member.role, member.type))
+            val diff = getDiff(member.type, member.ref)
+            if (diff == null) newRelationMembers.add(OsmRelationMember(member.ref, member.role, member.type))
+            else if(diff.serverId != null) newRelationMembers.add(OsmRelationMember(diff.serverId, member.role, member.type))
         }
         return OsmRelation(newId, newVersion, newRelationMembers, relation.tags?.let { HashMap(it) })
     }
 }
 
-data class ElementUpdates(val updated: Collection<Element>, val deleted: Collection<ElementKey>)
+data class ElementUpdates(
+    val updated: Collection<Element>,
+    val deleted: Collection<ElementKey>,
+    val idUpdates: Collection<ElementIdUpdate>
+)
+
+data class ElementIdUpdate(
+    val elementType: Element.Type,
+    val oldElementId: Long,
+    val newElementId: Long
+)
