@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.util.distanceTo
  *  Returns the element that has been updated or throws a ConflictException */
 class SingleOsmElementTagChangesUploader @Inject constructor(private val mapDataApi: MapDataApi) {
 
-    fun upload(changesetId: Long, change: HasElementTagChanges, dbElement: Element): Element {
+    fun upload(changesetId: Long, change: HasElementTagChanges, dbElement: Element): ElementUpdates {
         var element = dbElement
         var handlingConflict = false
 
@@ -21,7 +21,7 @@ class SingleOsmElementTagChangesUploader @Inject constructor(private val mapData
             val changes = change.changes
 
             val elementWithChangesApplied = element.changesApplied(changes)
-            val handler = UpdateElementsHandler()
+            val handler = UpdatedElementsHandler()
             try {
                 mapDataApi.uploadChanges(changesetId, setOf(elementWithChangesApplied), handler)
 
@@ -34,14 +34,14 @@ class SingleOsmElementTagChangesUploader @Inject constructor(private val mapData
                 // try again (go back to beginning of loop)
                 continue
             }
-            val updatedElements = handler.getElementUpdates(listOf(elementWithChangesApplied)).updated
+            val elementUpdates = handler.getElementUpdates(listOf(elementWithChangesApplied))
             // if the uploaded change has been made on the server side EXACTLY how the diff applied
             // would have done, the OSM server reports that 0 elements have been updated. So this
             // case must be treated like a conflict
-            if (updatedElements.size != 1) {
+            if (elementUpdates.updated.size != 1) {
                 throw ElementConflictException("Exactly these changes already applied")
             }
-            return updatedElements.single()
+            return elementUpdates
         }
     }
 

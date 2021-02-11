@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.upload
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.changes.*
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -34,10 +33,10 @@ abstract class OsmElementChangesUploader(
             val change = osmElementChangesController.getOldestUnsynced() ?: break
 
             try {
-                val uploadedElements = uploadSingle(change)
+                val elementUpdates = uploadSingle(change)
                 onUploadSuccessful(change)
                 // TODO really put all?
-                osmElementController.putAll(uploadedElements)
+                osmElementController.putAll(elementUpdates.updated)
             } catch (e: ElementIncompatibleException) {
                 // TODO what, delete??
                 osmElementController.deleteAll(listOf(ElementKey(change.elementType, change.elementId)))
@@ -48,7 +47,7 @@ abstract class OsmElementChangesUploader(
         }
     }
 
-    private fun uploadSingle(change: OsmElementChange) : List<Element> {
+    private fun uploadSingle(change: OsmElementChange): ElementUpdates {
         // TODO remove this??
         val element = osmElementController.get(change.elementType, change.elementId)
             ?: throw ElementDeletedException("Element deleted")
@@ -63,12 +62,12 @@ abstract class OsmElementChangesUploader(
     }
 
     /** Upload the changes for a single change. Returns the updated element(s) */
-    private fun uploadSingle(changesetId: Long, change: OsmElementChange, element: Element): List<Element> {
-        when(change) {
+    private fun uploadSingle(changesetId: Long, change: OsmElementChange, element: Element): ElementUpdates {
+        return when(change) {
             is ChangeOsmElementTags ->
                 singleOsmElementTagChangesUploader.upload(changesetId, change, element)
             is DeleteOsmElement ->
-                deleteSingleOsmElementUploader.upload(changesetId, element as OsmElement)
+                deleteSingleOsmElementUploader.upload(changesetId, element)
             is RevertChangeOsmElementTags ->
                 singleOsmElementTagChangesUploader.upload(changesetId, change, element)
             is SplitOsmWay ->

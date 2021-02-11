@@ -6,7 +6,7 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 
 /** Reads the answer of an update map call on the OSM API. */
-class UpdateElementsHandler : Handler<DiffElement> {
+class UpdatedElementsHandler : Handler<DiffElement> {
     private val nodeDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
     private val wayDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
     private val relationDiffs: MutableMap<Long, DiffElement> = mutableMapOf()

@@ -10,9 +10,9 @@ import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import org.junit.Test
 
-class UpdateElementsHandlerTest {
+class UpdatedElementsHandlerTest {
     @Test fun `updates element version`() {
-        val handler = UpdateElementsHandler()
+        val handler = UpdatedElementsHandler()
         handler.handle(diff(NODE, 1, 1, 123))
 
         val element = handler.getElementUpdates(listOf(node(1))).updated.single()
@@ -20,7 +20,7 @@ class UpdateElementsHandlerTest {
     }
 
     @Test fun `deletes element`() {
-        val handler = UpdateElementsHandler()
+        val handler = UpdatedElementsHandler()
         handler.handle(diff(NODE, 1))
 
         val deletedElementKey = handler.getElementUpdates(listOf(node(1))).deleted.single()
@@ -29,7 +29,7 @@ class UpdateElementsHandlerTest {
     }
 
     @Test fun `updates element id`() {
-        val handler = UpdateElementsHandler()
+        val handler = UpdatedElementsHandler()
         handler.handle(diff(NODE, -1, 123456, 1))
 
         val element = handler.getElementUpdates(listOf(node(-1))).updated.single()
@@ -43,7 +43,7 @@ class UpdateElementsHandlerTest {
             way(2, mutableListOf(-1,2,-1,-1)), // contains it multiple times
             way(3, mutableListOf(3,4)) // contains it not
         )
-        val handler = UpdateElementsHandler()
+        val handler = UpdatedElementsHandler()
         handler.handleAll(
             diff(NODE, -1, 1, 1),
             diff(WAY, 1, 1, 2),
@@ -67,7 +67,7 @@ class UpdateElementsHandlerTest {
             relation(2, mutableListOf(member(NODE, -1), member(NODE, 2), member(NODE, -1))), // contains it multiple times
             relation(3, mutableListOf(member(WAY, -1), member(RELATION, -1), member(NODE, 1))) // contains it not
         )
-        val handler = UpdateElementsHandler()
+        val handler = UpdatedElementsHandler()
         handler.handle(diff(NODE, -1, 1, 1))
         handler.handleAll(
             diff(NODE, -1, 1, 1),
@@ -101,7 +101,7 @@ class UpdateElementsHandlerTest {
             way(2, mutableListOf(1,2,1)), // contains it multiple times
             way(3, mutableListOf(3,4)) // contains it not
         )
-        val handler = UpdateElementsHandler()
+        val handler = UpdatedElementsHandler()
         handler.handleAll(
             diff(NODE, 1),
             diff(WAY, 1, 1, 2),
@@ -126,7 +126,7 @@ class UpdateElementsHandlerTest {
             relation(2, mutableListOf(member(NODE, 1), member(NODE, 2), member(NODE, 1))), // contains it multiple times
             relation(3, mutableListOf(member(WAY, 1), member(RELATION, 1), member(NODE, 2))) // contains it not
         )
-        val handler = UpdateElementsHandler()
+        val handler = UpdatedElementsHandler()
         handler.handleAll(
             diff(NODE, 1),
             diff(RELATION, 1, 1, 2),
@@ -160,7 +160,7 @@ class UpdateElementsHandlerTest {
             way(-3, mutableListOf()),
             relation(-4, mutableListOf())
         )
-        val handler = UpdateElementsHandler()
+        val handler = UpdatedElementsHandler()
         handler.handleAll(
             diff(NODE, -1, 11),
             diff(NODE, -2, null),
@@ -192,6 +192,6 @@ private fun diff(type: Element.Type, oldId: Long, newId: Long? = null, newVersio
         it.serverVersion = newVersion
     }
 
-private fun UpdateElementsHandler.handleAll(vararg diffs: DiffElement) {
+private fun UpdatedElementsHandler.handleAll(vararg diffs: DiffElement) {
     diffs.forEach { handle(it) }
 }

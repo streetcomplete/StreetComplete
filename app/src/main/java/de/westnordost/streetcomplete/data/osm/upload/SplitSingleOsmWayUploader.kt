@@ -18,7 +18,7 @@ import kotlin.math.sign
  *  Returns only the ways that have been updated or throws a ConflictException */
 class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapDataApi)  {
 
-    fun upload(changesetId: Long, way: Way, splits: List<SplitPolylineAtPosition>): List<Way> {
+    fun upload(changesetId: Long, way: Way, splits: List<SplitPolylineAtPosition>): ElementUpdates {
         val updatedWay = way.fetchUpdated()
             ?: throw ElementDeletedException("Way #${way.id} has been deleted")
         if(updatedWay.isClosed() && splits.size < 2)
@@ -54,14 +54,13 @@ class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapD
         }
 
         uploadElements.addAll(splitWayAtIndices(updatedWay, splitAtIndices))
-        val handler = UpdateElementsHandler()
+        val handler = UpdatedElementsHandler()
         try {
             mapDataApi.uploadChanges(changesetId, uploadElements, handler)
         } catch (e: OsmConflictException) {
             throw ChangesetConflictException(e.message, e)
         }
-        // the added nodes and updated relations are not relevant for quest creation, only the way are
-        return handler.getElementUpdates(uploadElements).updated.filterIsInstance<Way>()
+        return handler.getElementUpdates(uploadElements)
     }
 
     private fun checkForConflicts(old: Way, new: Way) {
