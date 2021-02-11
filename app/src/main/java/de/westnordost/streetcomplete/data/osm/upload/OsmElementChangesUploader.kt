@@ -13,8 +13,9 @@ import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 
 import java.util.concurrent.atomic.AtomicBoolean
+import javax.inject.Inject
 
-abstract class OsmElementChangesUploader(
+class OsmElementChangesUploader @Inject constructor(
     private val changesetManager: OpenQuestChangesetsManager,
     private val osmElementChangesController: OsmElementChangesController,
     private val osmElementController: OsmElementController,

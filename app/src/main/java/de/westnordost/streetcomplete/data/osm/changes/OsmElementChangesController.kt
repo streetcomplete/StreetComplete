@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.changes
 
 import android.content.SharedPreferences
-import de.westnordost.osmapi.map.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.Prefs
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -18,14 +16,6 @@ import javax.inject.Singleton
      * database table */
 
     private val listeners: MutableList<OsmElementChangesSource.Listener> = CopyOnWriteArrayList()
-
-    fun changesAppliedTo(element: Element?): Element? {
-        TODO()
-    }
-
-    fun changesAppliedTo(mapDataWithGeometry: MapDataWithGeometry): MapDataWithGeometry {
-        TODO()
-    }
 
     fun getOldestUnsynced(): OsmElementChange? = changesDB.getOldestUnsynced()
 

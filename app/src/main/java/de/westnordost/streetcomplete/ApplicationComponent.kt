@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.download.DownloadModule
 import de.westnordost.streetcomplete.data.download.DownloadModule2
 import de.westnordost.streetcomplete.data.download.DownloadService
 import de.westnordost.streetcomplete.data.meta.MetadataModule
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesModule
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementModule
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestModule
 import de.westnordost.streetcomplete.data.osm.upload.changesets.ChangesetAutoCloserWorker
@@ -61,6 +62,7 @@ import javax.inject.Singleton
     AchievementsModule::class,
     MapModule::class,
     OsmElementModule::class,
+    OsmElementChangesModule::class,
     OsmNoteQuestModule::class,
     OsmQuestModule::class,
     VisibleQuestTypeModule::class
