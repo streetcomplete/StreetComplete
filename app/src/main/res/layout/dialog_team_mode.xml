@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/dialog_horizontal_margin">
 
     <TextView
-        android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/team_mode_description"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog" />
 
-    <TextView
-        android:id="@+id/team_size_label"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:labelFor="@id/team_size_input"
-        android:text="@string/team_mode_team_size_label"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        app:layout_constraintBottom_toBottomOf="@+id/team_size_input"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/team_size_input" />
-
-    <EditText
-        android:id="@+id/team_size_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dialog_horizontal_margin"
         android:layout_marginTop="@dimen/dialog_vertical_margin"
-        android:ems="2"
-        android:importantForAutofill="no"
-        android:inputType="numberSigned"
-        android:textAlignment="center"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/team_size_label"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:labelFor="@id/team_size_input"
+            android:text="@string/team_mode_team_size_label"
+            android:textAppearance="@android:style/TextAppearance.Theme.Dialog" />
+
+        <EditText
+            android:id="@+id/team_size_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dialog_horizontal_margin"
+            android:ems="2"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:inputType="numberSigned"
+            android:textAlignment="center"
+            android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+            android:textSize="30sp" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/team_size_hint"
@@ -49,8 +49,6 @@
         android:layout_marginTop="@dimen/dialog_vertical_margin"
         android:text="@string/team_mode_team_size_hint"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_size_input"
         tools:visibility="visible" />
 
     <TextView
@@ -61,9 +59,6 @@
         android:text="@string/team_mode_choose_color"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_size_hint"
         tools:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -72,14 +67,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dialog_vertical_margin"
         android:visibility="gone"
-        app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/color_hint"
         tools:itemCount="12"
         tools:listitem="@layout/cell_team_mode_color_circle_select"
         tools:visibility="visible" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
