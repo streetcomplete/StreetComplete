@@ -8,9 +8,9 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.WhereSelectionBuilder
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryMapping
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.CENTER_LATITUDE
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable.Columns.CENTER_LONGITUDE
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryMapping
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.CENTER_LATITUDE
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.CENTER_LONGITUDE
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable.Columns.QUEST_ID
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable.Columns.ELEMENT_TYPE

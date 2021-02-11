@@ -10,10 +10,8 @@ import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 import javax.inject.Singleton
 
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenChangesetsTable
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable
-import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayTable
-import de.westnordost.streetcomplete.data.osm.osmquest.changes.OsmElementTagChangesTable
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable
@@ -22,7 +20,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
-import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesTable
 import de.westnordost.streetcomplete.data.osm.osmquest.*
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
@@ -51,9 +49,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         db.execSQL(CommentNoteTable.CREATE)
 
         // changes made on OSM map data
-        db.execSQL(OsmElementTagChangesTable.CREATE)
-        db.execSQL(SplitOsmWayTable.CREATE)
-        db.execSQL(DeleteOsmElementTable.CREATE)
+        db.execSQL(OsmElementChangesTable.CREATE)
 
         // quests
         db.execSQL(VisibleQuestTypeTable.CREATE)

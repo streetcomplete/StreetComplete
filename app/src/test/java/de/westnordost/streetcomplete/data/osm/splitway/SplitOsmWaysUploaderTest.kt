@@ -5,9 +5,11 @@ import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
+import de.westnordost.streetcomplete.data.osm.changes.SplitOsmWay
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
+import de.westnordost.streetcomplete.data.osm.upload.SplitSingleOsmWayUploader
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.mock
@@ -61,7 +63,7 @@ class SplitOsmWaysUploaderTest {
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(uploader.uploadedChangeListener)?.onDiscarded(q.osmElementQuestType.javaClass.simpleName, q.position)
+        verify(uploader.uploadedChangeListener)?.onDiscarded(q.questType.javaClass.simpleName, q.position)
     }
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
@@ -92,8 +94,8 @@ class SplitOsmWaysUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(splitWayDB, times(2)).delete(anyLong())
-        verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].osmElementQuestType.javaClass.simpleName, quests[0].position)
-        verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].osmElementQuestType.javaClass.simpleName,quests[1].position)
+        verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].questType.javaClass.simpleName, quests[0].position)
+        verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].questType.javaClass.simpleName,quests[1].position)
 
         verify(osmElementController, times(1)).putAll(any())
         verify(osmElementController, times(2)).get(any(), anyLong())

@@ -4,7 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.annotation.AnyThread
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.StreetRotateable
 

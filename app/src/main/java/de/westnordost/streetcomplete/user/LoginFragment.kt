@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.OsmApiModule
 import de.westnordost.streetcomplete.data.PermissionsApi
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.ktx.toast

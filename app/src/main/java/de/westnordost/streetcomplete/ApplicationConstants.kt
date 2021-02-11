@@ -26,7 +26,7 @@ object ApplicationConstants {
     const val NOTE_MIN_ZOOM = 15
 
     /** the max age of the undo history - one cannot undo changes older than X  */
-    const val MAX_QUEST_UNDO_HISTORY_AGE = 12L * 60 * 60 * 1000 // 12 hours in ms
+    const val MAX_UNDO_HISTORY_AGE = 12L * 60 * 60 * 1000 // 12 hours in ms
 
     /** The creation of some quests is dependent on surrounding geometry. This constant describes
      *  the maximum distance surrounding elements may affect whether a quest is created or not */

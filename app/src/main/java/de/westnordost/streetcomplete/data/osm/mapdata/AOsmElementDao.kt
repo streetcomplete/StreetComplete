@@ -4,9 +4,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
-import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
-import de.westnordost.streetcomplete.data.osm.osmquest.changes.OsmElementTagChangesTable
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesTable
 import de.westnordost.streetcomplete.ktx.query
 import de.westnordost.streetcomplete.ktx.queryOne
 import de.westnordost.streetcomplete.ktx.transaction
@@ -21,24 +19,6 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
     protected abstract val idColumnName: String
     protected abstract val lastUpdateColumnName: String
     protected abstract val mapping: ObjectRelationalMapping<T>
-
-    protected val selectElementIdsInQuestTable: String get() = getSelectAllElementIdsIn(
-        OsmQuestTable.NAME,
-        OsmQuestTable.Columns.ELEMENT_ID,
-        OsmQuestTable.Columns.ELEMENT_TYPE
-    )
-
-    protected val selectElementIdsInUndoQuestTable: String get() = getSelectAllElementIdsIn(
-        OsmElementTagChangesTable.NAME,
-        OsmElementTagChangesTable.Columns.ELEMENT_ID,
-        OsmElementTagChangesTable.Columns.ELEMENT_TYPE
-    )
-
-    protected val selectElementIdsInDeleteElementsTable: String get() = getSelectAllElementIdsIn(
-        DeleteOsmElementTable.NAME,
-        DeleteOsmElementTable.Columns.ELEMENT_ID,
-        DeleteOsmElementTable.Columns.ELEMENT_TYPE
-    )
 
     fun put(element: T) {
         db.replaceOrThrow(tableName, null, mapping.toContentValues(element))
@@ -77,19 +57,13 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
         return db.query(tableName, arrayOf(idColumnName), """
             $lastUpdateColumnName < $timestamp AND
             $idColumnName NOT IN (
-            $selectElementIdsInQuestTable
-            UNION
-            $selectElementIdsInUndoQuestTable
-            UNION
-            $selectElementIdsInDeleteElementsTable
+                SELECT ${OsmElementChangesTable.Columns.ELEMENT_ID} AS $idColumnName
+                FROM ${OsmElementChangesTable.NAME}
+                WHERE ${OsmElementChangesTable.Columns.ELEMENT_TYPE} = "$elementTypeName"
             )""".trimIndent()) {
             it.getLong(0)
         }
     }
-
-    private fun getSelectAllElementIdsIn(table: String, elementIdColumn: String, elementTypeColumn: String) = """
-        SELECT $elementIdColumn AS $idColumnName
-        FROM $table
-        WHERE $elementTypeColumn = "$elementTypeName"
-    """
 }
+
+

@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountListener
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountListener
+import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
@@ -16,7 +16,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/** Fragment that shows (and hides) the undo button, based on whether there is anything to undo */
+/** Fragment that shows the "star" with the number of solved quests */
 class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
@@ -97,7 +97,7 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter),
     private fun updateCount(animated: Boolean) {
         /* if autosync is on, show the uploaded count + the to-be-uploaded count (but only those
            uploadables that will be part of the statistics, so no note stuff) */
-        val amount = questStatisticsDao.getTotalAmount() + if (isAutosync) unsyncedChangesCountSource.questCount else 0
+        val amount = questStatisticsDao.getTotalAmount() + if (isAutosync) unsyncedChangesCountSource.solvedCount else 0
         answersCounterView.setUploadedCount(amount, animated)
     }
 }

@@ -40,7 +40,7 @@ class OpenQuestChangesetsManager @Inject constructor(
     }
 
     @Synchronized fun closeOldChangesets() {
-        val timePassed = System.currentTimeMillis() - prefs.getLong(Prefs.LAST_SOLVED_QUEST_TIME, 0)
+        val timePassed = System.currentTimeMillis() - prefs.getLong(Prefs.LAST_CHANGE_TIME, 0)
         if (timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
 
         for (info in openChangesetsDB.getAll()) {

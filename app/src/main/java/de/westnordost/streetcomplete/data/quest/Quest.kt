@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.osmapi.map.data.LatLon
 
 /** Represents one task for the user to complete/correct  */

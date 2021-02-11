@@ -6,7 +6,9 @@ import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
+import de.westnordost.streetcomplete.data.osm.changes.DeleteOsmElement
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
+import de.westnordost.streetcomplete.data.osm.upload.DeleteSingleOsmElementUploader
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager

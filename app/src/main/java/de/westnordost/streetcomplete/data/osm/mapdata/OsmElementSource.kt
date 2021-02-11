@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 
 interface OsmElementSource {
 

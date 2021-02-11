@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.fragment_show_quest_forms.*
 import kotlinx.android.synthetic.main.row_quest_display.view.*
 import kotlinx.android.synthetic.main.toolbar.*
-import java.util.*
 
 /** activity only used in debug, to show all the different forms for the different quests. */
 class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.Listener {

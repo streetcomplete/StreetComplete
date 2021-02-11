@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountListener
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountListener
+import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.*
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao
 import de.westnordost.streetcomplete.ktx.createBitmap

@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
+import de.westnordost.streetcomplete.data.osm.changes.ChangeOsmElementTags
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
@@ -65,7 +66,7 @@ class OsmElementTagChangesUploaderTest {
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(uploader.uploadedChangeListener)?.onDiscarded(q.osmElementQuestType.javaClass.simpleName, q.position)
+        verify(uploader.uploadedChangeListener)?.onDiscarded(q.questType.javaClass.simpleName, q.position)
         verify(osmElementController).deleteAll(any())
     }
 
@@ -97,8 +98,8 @@ class OsmElementTagChangesUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(osmElementTagChangesDB, times(2)).delete(anyLong())
-        verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].osmElementQuestType.javaClass.simpleName, quests[0].position)
-        verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].osmElementQuestType.javaClass.simpleName, quests[1].position)
+        verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].questType.javaClass.simpleName, quests[0].position)
+        verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].questType.javaClass.simpleName, quests[1].position)
 
         verify(osmElementController, times(1)).putAll(any())
         verify(osmElementController, times(2)).get(any(), anyLong())
@@ -107,10 +108,10 @@ class OsmElementTagChangesUploaderTest {
     }
 }
 
-private fun createElementTagChanges() : OsmElementTagChanges {
+private fun createElementTagChanges() : ChangeOsmElementTags {
     val changes = StringMapChanges(listOf(StringMapEntryAdd("surface","asphalt")))
     val point = OsmLatLon(0.0, 0.0)
-    return OsmElementTagChanges(1, mock(), Element.Type.NODE, 1, changes, "survey", point, false)
+    return ChangeOsmElementTags(1, mock(), Element.Type.NODE, 1, changes, "survey", point, false)
 }
 
 private fun createElement() = OsmNode(1,1,OsmLatLon(0.0,0.0),null)

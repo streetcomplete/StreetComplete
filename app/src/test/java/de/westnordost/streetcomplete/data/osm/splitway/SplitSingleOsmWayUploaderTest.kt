@@ -7,6 +7,7 @@ import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.argumentCaptor
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.osm.upload.SplitSingleOsmWayUploader
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on

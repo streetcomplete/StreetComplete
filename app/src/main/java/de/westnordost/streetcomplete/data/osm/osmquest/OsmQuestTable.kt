@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.osmquest
 
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable
 
 object OsmQuestTable {
     const val NAME = "osm_quests"

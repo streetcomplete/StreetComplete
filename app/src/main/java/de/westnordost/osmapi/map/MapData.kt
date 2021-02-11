@@ -2,8 +2,8 @@ package de.westnordost.osmapi.map
 
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.handler.MapDataHandler
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 
 interface MapDataWithGeometry : MapData {
     fun getNodeGeometry(id: Long): ElementPointGeometry?

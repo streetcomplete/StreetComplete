@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.changes.ChangeOsmElementTags
 import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType
 import org.junit.Assert.*
 import org.junit.Before
@@ -27,7 +28,7 @@ class OsmElementTagChangesDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAllButNothingIsThere() {
-        assertEquals(listOf<OsmElementTagChanges>(), dao.getAll())
+        assertEquals(listOf<ChangeOsmElementTags>(), dao.getAll())
     }
 
     @Test fun addAndGet() {
@@ -75,10 +76,10 @@ class OsmElementTagChangesDaoTest : ApplicationDbTestCase() {
         assertEquals(2, dao.getCount())
     }
 
-    private fun addUndoQuest(id: Long, elementId: Long = 1L): OsmElementTagChanges {
+    private fun addUndoQuest(id: Long, elementId: Long = 1L): ChangeOsmElementTags {
         val elementType = Element.Type.NODE
         val changes = StringMapChanges(listOf(StringMapEntryAdd("foo", "bar")))
-        val quest = OsmElementTagChanges(id, questType, elementType, elementId, changes, "test", OsmLatLon(1.0, 2.0), false)
+        val quest = ChangeOsmElementTags(id, questType, elementType, elementId, changes, "test", OsmLatLon(1.0, 2.0), false)
         dao.add(quest)
         return quest
     }

@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.LAST_UPDA
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.NODE_IDS
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.VERSION
-import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayTable
 import de.westnordost.streetcomplete.ktx.*
 import java.util.*
 
@@ -24,28 +23,10 @@ import java.util.*
 class WayDao @Inject constructor(private val dbHelper: SQLiteOpenHelper, override val mapping: WayMapping)
     : AOsmElementDao<Way>(dbHelper) {
 
-    private val db get() = dbHelper.writableDatabase
-
     override val tableName = WayTable.NAME
     override val idColumnName = ID
     override val lastUpdateColumnName = LAST_UPDATE
     override val elementTypeName = Element.Type.WAY.name
-
-    override fun getUnusedAndOldIds(timestamp: Long): List<Long> {
-        return db.query(tableName, arrayOf(idColumnName), """
-            $lastUpdateColumnName < $timestamp AND
-            $idColumnName NOT IN (
-            $selectElementIdsInQuestTable
-            UNION
-            $selectElementIdsInUndoQuestTable
-            UNION
-            $selectElementIdsInDeleteElementsTable
-            UNION
-            SELECT ${SplitOsmWayTable.Columns.WAY_ID} AS $idColumnName FROM ${SplitOsmWayTable.NAME}
-            )""".trimIndent()) {
-            it.getLong(0)
-        }
-    }
 }
 
 class WayMapping @Inject constructor(private val serializer: Serializer)

@@ -13,10 +13,10 @@ import androidx.fragment.app.Fragment
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
-import de.westnordost.streetcomplete.data.quest.QuestController
-import de.westnordost.streetcomplete.data.quest.UndoableOsmQuestsCountListener
-import de.westnordost.streetcomplete.data.quest.UndoableOsmQuestsSource
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChange
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesController
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesSource
+import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementSource
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.ktx.popIn
@@ -33,27 +33,27 @@ import javax.inject.Inject
 class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    @Inject internal lateinit var undoableOsmQuestsSource: UndoableOsmQuestsSource
+    @Inject internal lateinit var osmElementChangesController: OsmElementChangesController
+    @Inject internal lateinit var osmElementSource: OsmElementSource
     @Inject internal lateinit var uploadProgressSource: UploadProgressSource
-    @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var featureDictionaryFutureTask: FutureTask<FeatureDictionary>
 
     private val undoButton get() = view as ImageButton
 
     /* undo button is not shown when there is nothing to undo */
-    private val undoableOsmQuestsCountListener = object : UndoableOsmQuestsCountListener {
-        override fun onUndoableOsmQuestsCountIncreased() {
+    private val osmElementChangesListener = object : OsmElementChangesSource.Listener {
+        override fun onAddedChange(change: OsmElementChange) {
             launch(Dispatchers.Main) {
-                if (!undoButton.isVisible && undoableOsmQuestsSource.count > 0) {
-                    undoButton.popIn()
+                if (!undoButton.isVisible && osmElementChangesController.getFirstUndoable() != null) {
+                    animateUndoButtonVisibility(true)
                 }
             }
         }
 
-        override fun onUndoableOsmQuestsCountDecreased() {
+        override fun onDeletedChange(change: OsmElementChange) {
             launch(Dispatchers.Main) {
-                if (undoButton.isVisible && undoableOsmQuestsSource.count == 0) {
-                    undoButton.popOut().withEndAction { undoButton.visibility = View.INVISIBLE }
+                if (undoButton.isVisible && osmElementChangesController.getFirstUndoable() == null) {
+                    animateUndoButtonVisibility(false)
                 }
             }
         }
@@ -78,8 +78,8 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
 
         undoButton.setOnClickListener {
             undoButton.isEnabled = false
-            val quest = undoableOsmQuestsSource.getLastUndoable()
-            if (quest != null) confirmUndo(quest)
+            val change = osmElementChangesController.getFirstUndoable()
+            if (change != null) confirmUndo(change)
         }
     }
 
@@ -87,13 +87,13 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
         super.onStart()
         updateUndoButtonVisibility()
         updateUndoButtonEnablement(true)
-        undoableOsmQuestsSource.addListener(undoableOsmQuestsCountListener)
+        osmElementChangesController.addListener(osmElementChangesListener)
         uploadProgressSource.addUploadProgressListener(uploadProgressListener)
     }
 
     override fun onStop() {
         super.onStop()
-        undoableOsmQuestsSource.removeListener(undoableOsmQuestsCountListener)
+        osmElementChangesController.removeListener(osmElementChangesListener)
         uploadProgressSource.removeUploadProgressListener(uploadProgressListener)
     }
 
@@ -104,21 +104,21 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
 
     /* ------------------------------------------------------------------------------------------ */
 
-    private fun confirmUndo(quest: OsmQuest) {
-        val element = questController.getOsmElement(quest) ?: return
+    private fun confirmUndo(change: OsmElementChange) {
         val ctx = context ?: return
+        val element = osmElementSource.get(change.elementType, change.elementId)
 
         val inner = LayoutInflater.from(ctx).inflate(R.layout.dialog_undo, null, false)
         val icon = inner.findViewById<ImageView>(R.id.icon)
-        icon.setImageResource(quest.type.icon)
+        icon.setImageResource(change.questType.icon)
         val text = inner.findViewById<TextView>(R.id.text)
-        text.text = resources.getHtmlQuestTitle(quest.type, element, featureDictionaryFutureTask)
+        text.text = resources.getHtmlQuestTitle(change.questType, element, featureDictionaryFutureTask)
 
         AlertDialog.Builder(ctx)
             .setTitle(R.string.undo_confirm_title)
             .setView(inner)
             .setPositiveButton(R.string.undo_confirm_positive) { _, _ ->
-                // TODO reimplement undo!
+                osmElementChangesController.undo(change.id!!)
                 updateUndoButtonEnablement(true)
             }
             .setNegativeButton(R.string.undo_confirm_negative) { _, _ -> updateUndoButtonEnablement(true) }
@@ -127,10 +127,18 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     }
 
     private fun updateUndoButtonVisibility() {
-        view?.isGone = undoableOsmQuestsSource.count <= 0
+        view?.isGone = osmElementChangesController.getFirstUndoable() == null
     }
 
     private fun updateUndoButtonEnablement(enable: Boolean) {
         undoButton.isEnabled = enable && !uploadProgressSource.isUploadInProgress
+    }
+
+    private fun animateUndoButtonVisibility(visible: Boolean) {
+        if (visible) {
+            undoButton.popIn()
+        } else {
+            undoButton.popOut().withEndAction { undoButton.visibility = View.INVISIBLE }
+        }
     }
 }

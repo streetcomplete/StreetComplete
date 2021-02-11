@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountListener
+import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementDao
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestSource
 import de.westnordost.streetcomplete.data.osm.osmquest.changes.OsmElementTagChangesDao

@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import android.util.Log
 import de.westnordost.osmapi.map.*
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.osm.elementgeometry.*
+import de.westnordost.streetcomplete.data.osm.geometry.*
 import de.westnordost.streetcomplete.ktx.format
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -21,7 +21,7 @@ import javax.inject.Singleton
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
-    private val listener: MutableList<OsmElementSource.Listener> = CopyOnWriteArrayList()
+    private val listeners: MutableList<OsmElementSource.Listener> = CopyOnWriteArrayList()
 
     override fun get(type: Element.Type, id: Long) : Element? = elementDB.get(type, id)
 
@@ -132,17 +132,17 @@ import javax.inject.Singleton
     /* ------------------------------------ Listeners ------------------------------------------- */
 
     override fun addListener(listener: OsmElementSource.Listener) {
-        this.listener.add(listener)
+        this.listeners.add(listener)
     }
     override fun removeListener(listener: OsmElementSource.Listener) {
-        this.listener.remove(listener)
+        this.listeners.remove(listener)
     }
 
     private fun onUpdated(updated: MapDataWithGeometry = EmptyMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
-        listener.forEach { it.onUpdated(updated, deleted) }
+        listeners.forEach { it.onUpdated(updated, deleted) }
     }
     private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
-        listener.forEach { it.onReplacedForBBox(bbox, mapDataWithGeometry) }
+        listeners.forEach { it.onReplacedForBBox(bbox, mapDataWithGeometry) }
     }
 
     companion object {

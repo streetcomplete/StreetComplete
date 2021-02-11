@@ -1,23 +1,17 @@
 package de.westnordost.streetcomplete.data.quest
 
-import android.content.SharedPreferences
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmElement
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.changes.*
-import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElement
-import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementDao
+import de.westnordost.streetcomplete.data.osm.changes.DeleteOsmElement
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementSource
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.osmquest.changes.OsmElementTagChanges
-import de.westnordost.streetcomplete.data.osm.osmquest.changes.OsmElementTagChangesDao
-import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWay
-import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayDao
-import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.changes.ChangeOsmElementTags
+import de.westnordost.streetcomplete.data.osm.changes.SplitOsmWay
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNote
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
@@ -34,13 +28,10 @@ import javax.inject.Singleton
 @Singleton class QuestController @Inject constructor(
     private val osmQuestController: OsmQuestController,
     private val osmNoteQuestController: OsmNoteQuestController,
-    private val osmElementTagChangesDB: OsmElementTagChangesDao,
-    private val splitWayDB: SplitOsmWayDao,
-    private val deleteElementDB: DeleteOsmElementDao,
+    private val osmElementChangesController: OsmElementChangesController,
     private val createNoteDB: CreateNoteDao,
     private val commentNoteDB: CommentNoteDao,
-    private val osmElementSource: OsmElementSource,
-    private val prefs: SharedPreferences
+    private val osmElementSource: OsmElementSource
 ): CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     /** Create a note for the given OSM Quest instead of answering it.
@@ -65,7 +56,15 @@ import javax.inject.Singleton
      */
     fun splitWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>, source: String): Boolean {
         val q = osmQuestController.get(osmQuestId) ?: return false
-        splitWayDB.add(SplitOsmWay(null, q.osmElementQuestType, q.elementId, source, splits))
+        osmElementChangesController.add(SplitOsmWay(
+            null,
+            q.osmElementQuestType,
+            q.elementType,
+            q.elementId,
+            source,
+            q.center,
+            splits = ArrayList(splits)
+        ))
         return true
     }
 
@@ -77,7 +76,14 @@ import javax.inject.Singleton
 
         Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName}")
 
-        deleteElementDB.add(DeleteOsmElement(osmQuestId, q.osmElementQuestType, q.elementId, q.elementType, source, q.center))
+        osmElementChangesController.add(DeleteOsmElement(
+            null,
+            q.osmElementQuestType,
+            q.elementType,
+            q.elementId,
+            source,
+            q.center
+        ))
         return true
     }
 
@@ -91,18 +97,15 @@ import javax.inject.Singleton
         val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName} with $changes")
 
-        osmElementTagChangesDB.add(OsmElementTagChanges(
+        osmElementChangesController.add(ChangeOsmElementTags(
             null,
             q.osmElementQuestType,
             q.elementType,
             q.elementId,
-            changes,
             source,
             q.center,
-            false
+            changes = changes
         ))
-
-        prefs.edit().putLong(Prefs.LAST_SOLVED_QUEST_TIME, System.currentTimeMillis()).apply()
 
         return true
     }
@@ -162,18 +165,15 @@ import javax.inject.Singleton
 
         Log.d(TAG, "Solved a ${q.type.javaClass.simpleName} quest: $changes")
 
-        osmElementTagChangesDB.add(OsmElementTagChanges(
-            q.id!!,
+        osmElementChangesController.add(ChangeOsmElementTags(
+            null,
             q.osmElementQuestType,
             q.elementType,
             q.elementId,
-            changes,
             source,
             q.center,
-            false
+            changes = changes
         ))
-
-        prefs.edit().putLong(Prefs.LAST_SOLVED_QUEST_TIME, System.currentTimeMillis()).apply()
 
         return true
     }

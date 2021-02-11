@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element.Type.*
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 
 class ImmutableMapDataWithGeometry(
     mapData: MapData,

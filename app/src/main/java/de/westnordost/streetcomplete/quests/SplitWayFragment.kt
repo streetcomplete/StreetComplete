@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.Injector
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestGroup
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.splitway.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.splitway.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition

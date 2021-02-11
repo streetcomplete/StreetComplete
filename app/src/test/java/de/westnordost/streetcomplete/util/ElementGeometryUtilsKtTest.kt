@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.util
 
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import org.junit.Assert.assertTrue
 
 import org.junit.Test
