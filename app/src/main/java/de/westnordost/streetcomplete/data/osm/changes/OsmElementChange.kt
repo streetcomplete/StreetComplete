@@ -31,7 +31,14 @@ sealed class OsmElementChange {
 
     /** whether this change has been uploaded already */
     abstract val isSynced: Boolean
+
+    /** the number of new elements this change creates. This needs to be stated in advance so that
+     *  negative element ids can be reserved for this change: The same element id needs to be used
+     *  when applying the change locally and when uploading the change */
+    open val newElementsCount: ElementsCount? = null
 }
+
+data class ElementsCount(val nodes: Int, val ways: Int, val relations: Int)
 
 interface IsUndoable
 interface IsRevertable {
@@ -106,4 +113,11 @@ class SplitOsmWay(
     override val createdTimestamp: Long = currentTimeMillis(),
     override val isSynced: Boolean = false,
     val splits: ArrayList<SplitPolylineAtPosition>
-) : OsmElementChange()
+) : OsmElementChange() {
+
+    override val newElementsCount get() = ElementsCount(
+        nodes = splits.filterIsInstance<SplitAtLinePosition>().size,
+        ways = splits.size,
+        relations = 0
+    )
+}

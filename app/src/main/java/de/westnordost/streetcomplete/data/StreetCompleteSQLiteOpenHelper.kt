@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
 import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesTable
+import de.westnordost.streetcomplete.data.osm.changes.NewOsmElementIdProviderTable
 import de.westnordost.streetcomplete.data.osm.osmquest.*
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
@@ -50,6 +51,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
 
         // changes made on OSM map data
         db.execSQL(OsmElementChangesTable.CREATE)
+        db.execSQL(NewOsmElementIdProviderTable.CREATE)
 
         // quests
         db.execSQL(VisibleQuestTypeTable.CREATE)

@@ -29,7 +29,7 @@ class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapD
         val positions = nodes.map { it.position }
         /* the splits must be sorted strictly from start to end of way because the algorithm may
            insert nodes in the way */
-        val sortedSplits = splits.flatMap { it.toSplitWay(positions) }.sorted()
+        val sortedSplits = splits.map { it.toSplitWay(positions) }.sorted()
 
         val uploadElements = mutableListOf<Element>()
         var newNodeId = -1L
@@ -258,15 +258,28 @@ private data class SplitWayAtLinePosition( val pos1: LatLon, val index1: Int,
  *  a split at the position where they self-intersect. I.e. a way in the shape of an 8 split exactly
  *  in the centre.
  *  If the way changed significantly in the meantime, it will throw an ElementConflictException */
-private fun SplitPolylineAtPosition.toSplitWay(positions: List<LatLon>): Collection<SplitWay> {
+private fun SplitPolylineAtPosition.toSplitWay(positions: List<LatLon>): SplitWay {
+    /* For stability reasons, or to be more precise, to be able to state in advance how many new
+       elements will be created by this change, we always only split at the first intersection of
+       self-intersecting. This doesn't make a huge difference anyway as self-intersecting ways are
+       very rare and likely an error and splitting such a way only once and not several times at
+       the same position does not lead to wrong or corrupted data */
     return when(this) {
-        is SplitAtPoint -> toSplitWay(positions)
-        is SplitAtLinePosition -> toSplitWay(positions)
-    }
+        is SplitAtPoint -> toSplitWays(positions)
+        is SplitAtLinePosition -> toSplitWays(positions)
+    }.first()
 }
 
-private fun SplitAtPoint.toSplitWay(positions: List<LatLon>): Collection<SplitWayAtPoint> {
-    // could be several indices, for example if the way has the shape of an 8.
+private fun SplitAtPoint.toSplitWays(positions: List<LatLon>): Collection<SplitWayAtPoint> {
+    /* could be several indices, for example if the way has the shape of an 8.
+       For example a line going through points 1,2,3,4,2,5
+       3   1
+       |\ /
+       | 2
+       |/ \
+       4   5
+     */
+
     var indicesOf = positions.osmIndicesOf(pos)
     if (indicesOf.isEmpty()) throw ElementConflictException("To be split point has been moved")
 
@@ -274,11 +287,13 @@ private fun SplitAtPoint.toSplitWay(positions: List<LatLon>): Collection<SplitWa
     if (indicesOf.isEmpty())
         throw ElementConflictException("Split position is now at the very start or end of the way - can't split there")
 
-    return indicesOf.map { indexOf -> SplitWayAtPoint(pos, indexOf) }
+    return indicesOf.map { indexOf -> SplitWayAtPoint(pos, indexOf) }.sorted()
 }
 
-private fun SplitAtLinePosition.toSplitWay(positions: List<LatLon>): Collection<SplitWayAtLinePosition> {
-    // could be several indices, for example if the way has the shape of an 8...
+private fun SplitAtLinePosition.toSplitWays(positions: List<LatLon>): Collection<SplitWayAtLinePosition> {
+    // could be several indices, for example if the way has the shape of an 8,
+    // see SplitAtPoint.toSplitWay
+
     val indicesOf1 = positions.osmIndicesOf(pos1)
     if (indicesOf1.isEmpty()) throw ElementConflictException("To be split line has been moved")
 
@@ -295,13 +310,22 @@ private fun SplitAtLinePosition.toSplitWay(positions: List<LatLon>): Collection<
             if (i2 + 1 == i1) result.add(SplitWayAtLinePosition(pos2, i2, pos1, i1, 1.0 - delta))
         }
     }
+    /* The result can still be several split SplitWayAtLinePosition: if two lines are on top of each
+       other. For example a line going through the points 1,2,3,4,2,1,5
+       3
+       |\
+       | 2 -- 1 -- 5
+       |/
+       4
+     */
+
     if (result.isNotEmpty())
-        return result
+        return result.sorted()
     else
         throw ElementConflictException("End points of the to be split line are not directly successive anymore")
 }
 
-/** returns the indices at which the given pos is found in this list, taking into accound the limited
+/** returns the indices at which the given pos is found in this list, taking into account the limited
  *  precision of positions in OSM. */
 private fun List<LatLon>.osmIndicesOf(pos: LatLon): List<Int> =
     mapIndexedNotNull { i, p -> if (p.equalsInOsm(pos)) i else null }
