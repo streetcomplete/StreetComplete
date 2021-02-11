@@ -35,7 +35,7 @@ sealed class OsmElementChange {
     /** the number of new elements this change creates. This needs to be stated in advance so that
      *  negative element ids can be reserved for this change: The same element id needs to be used
      *  when applying the change locally and when uploading the change */
-    open val newElementsCount: ElementsCount? = null
+    open val newElementsCount: ElementsCount = ElementsCount(0,0,0)
 }
 
 data class ElementsCount(val nodes: Int, val ways: Int, val relations: Int)
@@ -115,7 +115,7 @@ class SplitOsmWay(
     val splits: ArrayList<SplitPolylineAtPosition>
 ) : OsmElementChange() {
 
-    override val newElementsCount get() = ElementsCount(
+    override val newElementsCount = ElementsCount(
         nodes = splits.filterIsInstance<SplitAtLinePosition>().size,
         ways = splits.size,
         relations = 0

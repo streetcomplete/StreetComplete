@@ -10,7 +10,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton class OsmElementChangesController @Inject constructor(
-    private val db: OsmElementChangesDao,
+    private val changesDB: OsmElementChangesDao,
+    private val newOsmElementIdProviderDB: NewOsmElementIdProviderDao,
     private val prefs: SharedPreferences
 ): OsmElementChangesSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -26,14 +27,14 @@ import javax.inject.Singleton
         TODO()
     }
 
-    fun getOldestUnsynced(): OsmElementChange? = db.getOldestUnsynced()
+    fun getOldestUnsynced(): OsmElementChange? = changesDB.getOldestUnsynced()
 
     fun getFirstUndoable(): OsmElementChange? =
-        db.getAll().firstOrNull { if (it.isSynced) it is IsRevertable else it is IsUndoable }
+        changesDB.getAll().firstOrNull { if (it.isSynced) it is IsRevertable else it is IsUndoable }
 
 
     fun undo(id: Long) {
-        val change = db.get(id) ?: return
+        val change = changesDB.get(id) ?: return
         // already uploaded
         if (change.isSynced) {
             if (change !is IsRevertable) return
@@ -51,25 +52,35 @@ import javax.inject.Singleton
 
     /** Delete old synced (aka uploaded) changes older than the given timestamp. Used to clear
      *  the undo history */
-    fun deleteSyncedOlderThan(timestamp: Long): Int = db.deleteSyncedOlderThan(timestamp)
+    fun deleteSyncedOlderThan(timestamp: Long): Int = changesDB.deleteSyncedOlderThan(timestamp)
 
-    override fun getUnsyncedCount(): Int = db.getUnsyncedCount()
+    override fun getUnsyncedCount(): Int = changesDB.getUnsyncedCount()
 
     override fun getSolvedCount(): Int {
-        val unsynced = db.getAllUnsynced()
+        val unsynced = changesDB.getAllUnsynced()
         return unsynced.filter { it !is IsRevert }.size - unsynced.filter { it is IsRevert }.size
     }
 
     /** Add new unsynced change to the to-be-uploaded queue */
     fun add(change: OsmElementChange) {
         check(!change.isSynced)
-        db.add(change)
+        changesDB.add(change)
+        val id = change.id
+        check(id != null)
+        val createdElementsCount = change.newElementsCount
+        newOsmElementIdProviderDB.assign(
+            change.id!!,
+            createdElementsCount.nodes,
+            createdElementsCount.ways,
+            createdElementsCount.relations
+        )
         onAddedChange(change)
     }
 
     /** Mark the change with the given id as synced (=uploaded) */
     fun markSynced(id: Long) {
-        if (db.markSynced(id)) {
+        newOsmElementIdProviderDB.delete(id)
+        if (changesDB.markSynced(id)) {
             TODO("should trigger listener?!")
         }
     }
@@ -78,7 +89,8 @@ import javax.inject.Singleton
     fun delete(change: OsmElementChange) {
         val id = change.id
         check(id != null)
-        if (db.delete(id)) {
+        newOsmElementIdProviderDB.delete(id)
+        if (changesDB.delete(id)) {
             onDeletedChange(change)
         }
     }

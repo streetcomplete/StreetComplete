@@ -21,6 +21,7 @@ class NewOsmElementIdProviderDao @Inject constructor(
     private val db get() = dbHelper.writableDatabase
 
     fun assign(changeId: Long, nodeCount: Int, wayCount: Int, relationCount: Int) {
+        if (nodeCount == 0 && wayCount == 0 && relationCount == 0) return
         db.transaction {
             repeat(nodeCount) { assign(changeId, Element.Type.NODE) }
             repeat(wayCount) { assign(changeId, Element.Type.WAY) }
