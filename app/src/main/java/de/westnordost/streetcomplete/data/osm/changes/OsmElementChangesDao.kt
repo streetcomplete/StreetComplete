@@ -60,7 +60,6 @@ class OsmElementChangesDao @Inject constructor(
     fun deleteSyncedOlderThan(timestamp: Long): Int =
         db.delete(NAME, "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp", null)
 
-    // TODO TEST THIS!
     fun updateElementId(elementType: Element.Type, oldElementId: Long, newElementId: Long): Int =
         db.update(
             NAME,
@@ -69,7 +68,6 @@ class OsmElementChangesDao @Inject constructor(
             arrayOf(elementType.name, oldElementId.toString())
         )
 
-    // TODO TEST THIS!
     fun deleteAllForElement(elementType: Element.Type, elementId: Long): Int =
         db.delete(
             NAME,

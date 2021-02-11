@@ -147,11 +147,54 @@ class OsmElementChangesDaoTest : ApplicationDbTestCase() {
         assertEquals(oldEnough, dao.getAll().single())
     }
 
-    private fun createChangeOsmElementTags(timestamp: Long = 123L, isSynced: Boolean = false) = ChangeOsmElementTags(
+    @Test fun updateElementId() {
+        assertEquals(0, dao.updateElementId(Element.Type.NODE, -5, 6))
+
+        val e1 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = -5)
+        val e2 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = -5)
+        val e3 = createChangeOsmElementTags(elementType = Element.Type.WAY, elementId = -5)
+        val e4 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = -3)
+        dao.add(e1)
+        dao.add(e2)
+        dao.add(e3)
+        dao.add(e4)
+
+        assertEquals(2, dao.updateElementId(Element.Type.NODE, -5, 6))
+
+        assertEquals(6, dao.get(e1.id!!)!!.elementId)
+        assertEquals(6, dao.get(e2.id!!)!!.elementId)
+        assertEquals(-5, dao.get(e3.id!!)!!.elementId)
+        assertEquals(-3, dao.get(e4.id!!)!!.elementId)
+    }
+
+    @Test fun deleteAllForElement() {
+        val e1 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = 1)
+        val e2 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = 1)
+        val e3 = createChangeOsmElementTags(elementType = Element.Type.WAY, elementId = 1)
+        val e4 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = 2)
+        dao.add(e1)
+        dao.add(e2)
+        dao.add(e3)
+        dao.add(e4)
+
+        assertEquals(2, dao.deleteAllForElement(Element.Type.NODE, 1))
+
+        assertNull(dao.get(e1.id!!))
+        assertNull(dao.get(e2.id!!))
+        assertNotNull(dao.get(e3.id!!))
+        assertNotNull(dao.get(e4.id!!))
+    }
+
+    private fun createChangeOsmElementTags(
+        elementType: Element.Type = Element.Type.NODE,
+        elementId: Long = 1L,
+        timestamp: Long = 123L,
+        isSynced: Boolean = false
+    ) = ChangeOsmElementTags(
         null,
         TEST_QUEST_TYPE,
-        Element.Type.NODE,
-        1L,
+        elementType,
+        elementId,
         "survey",
         OsmLatLon(0.0,0.0),
         timestamp,
