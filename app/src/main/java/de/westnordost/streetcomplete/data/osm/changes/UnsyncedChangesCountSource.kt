@@ -20,11 +20,8 @@ import javax.inject.Singleton
     /** count of unsynced changes that count towards the statistics. That is, unsynced note stuff
      *  doesn't count and reverts of changes count negative */
     var solvedCount: Int = osmElementChangesSource.getSolvedCount()
-    set(value) {
-        val diff = value - field
-        field = value
-        onUpdate(diff)
-    }
+    private set
+
     private var commentNoteCount: Int = commentNoteDao.getCount()
     set(value) {
         val diff = value - field

@@ -119,22 +119,20 @@ class SplitSingleOsmWayUploaderTest {
     @Test fun `find node to split at from several alternatives`() {
         way = OsmWay(0, 1, mutableListOf(0,1,2,0,3,0,1), null)
         val elements = doSplit(SplitAtPoint(p[0]))
-        assertEquals(3, elements.ways.size)
+        assertEquals(2, elements.ways.size)
         assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
             listOf(0,1,2,0),
-            listOf(0,3,0),
-            listOf(0,1)
+            listOf(0,3,0,1)
         )))
     }
 
     @Test fun `find line to split at from several alternatives`() {
         way = OsmWay(0, 1, mutableListOf(0,1,2,0,3,0,1), null)
         val elements = doSplit(SplitAtLinePosition(p[0], p[3], 0.25))
-        assertEquals(3, elements.ways.size)
+        assertEquals(2, elements.ways.size)
         assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
             listOf(0,1,2,0,-1),
-            listOf(-1,3,-2),
-            listOf(-2,0,1)
+            listOf(-1,3,0,1)
         )))
     }
 

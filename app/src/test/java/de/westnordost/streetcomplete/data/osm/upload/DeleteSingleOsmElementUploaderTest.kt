@@ -30,7 +30,11 @@ class DeleteSingleOsmElementUploaderTest {
         uploader.upload(100L, e)
         val arg: ArgumentCaptor<Iterable<Element>> = argumentCaptor()
         verify(mapDataApi).uploadChanges(eq(100L), arg.capture(), any())
-        assertEquals(e, arg.value.single())
+        val e2 = arg.value.single()
+        assertEquals(e.id, e2.id)
+        assertEquals(e.type, e2.type)
+        assertEquals(e.tags, e2.tags)
+        assertEquals(e.version, e2.version)
     }
 
     @Test fun `upload deleted vertex`() {

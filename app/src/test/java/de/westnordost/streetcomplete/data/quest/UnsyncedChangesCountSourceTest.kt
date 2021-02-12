@@ -35,7 +35,7 @@ class UnsyncedChangesCountSourceTest {
 
     private lateinit var source: UnsyncedChangesCountSource
 
-    private val baseCount = 2+3+4+5
+    private val baseCount = 2+3+4
 
     @Before fun setUp() {
         osmQuestSource = mock()
@@ -86,28 +86,28 @@ class UnsyncedChangesCountSourceTest {
     @Test fun `add unsynced element change triggers listener`() {
         val change = mock<OsmElementChange>()
         on(change.isSynced).thenReturn(false)
-        osmElementChangesListener.onAddedChange(mock())
+        osmElementChangesListener.onAddedChange(change)
         verifyIncreased()
     }
 
     @Test fun `remove unsynced element change triggers listener`() {
         val change = mock<OsmElementChange>()
         on(change.isSynced).thenReturn(false)
-        osmElementChangesListener.onDeletedChange(mock())
+        osmElementChangesListener.onDeletedChange(change)
         verifyDecreased()
     }
 
     @Test fun `add synced element change does not trigger listener`() {
         val change = mock<OsmElementChange>()
         on(change.isSynced).thenReturn(true)
-        osmElementChangesListener.onAddedChange(mock())
+        osmElementChangesListener.onAddedChange(change)
         verifyZeroInteractions(listener)
     }
 
     @Test fun `remove synced element change does not trigger listener`() {
         val change = mock<OsmElementChange>()
         on(change.isSynced).thenReturn(true)
-        osmElementChangesListener.onDeletedChange(mock())
+        osmElementChangesListener.onDeletedChange(change)
         verifyZeroInteractions(listener)
     }
 
