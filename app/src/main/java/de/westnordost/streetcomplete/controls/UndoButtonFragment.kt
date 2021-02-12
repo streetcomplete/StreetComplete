@@ -43,22 +43,15 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     /* undo button is not shown when there is nothing to undo */
     private val osmElementChangesListener = object : OsmElementChangesSource.Listener {
         override fun onAddedChange(change: OsmElementChange) {
-            launch(Dispatchers.Main) {
-                if (!undoButton.isVisible && osmElementChangesController.getFirstUndoable() != null) {
-                    animateUndoButtonVisibility(true)
-                }
-            }
+            launch(Dispatchers.Main) { animateInIfAnythingToUndo() }
         }
-
+        override fun onSyncedChange(change: OsmElementChange) {
+            launch(Dispatchers.Main) { animateOutIfNothingLeftToUndo() }
+        }
         override fun onDeletedChange(change: OsmElementChange) {
-            launch(Dispatchers.Main) {
-                if (undoButton.isVisible && osmElementChangesController.getFirstUndoable() == null) {
-                    animateUndoButtonVisibility(false)
-                }
-            }
+            launch(Dispatchers.Main) { animateOutIfNothingLeftToUndo() }
         }
     }
-
 
     /* Don't allow undoing while uploading. Should prevent race conditions. (Undoing quest while
     *  also uploading it at the same time) */
@@ -78,7 +71,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
 
         undoButton.setOnClickListener {
             undoButton.isEnabled = false
-            val change = osmElementChangesController.getFirstUndoable()
+            val change = osmElementChangesController.getFirstUndoableChange()
             if (change != null) confirmUndo(change)
         }
     }
@@ -118,7 +111,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
             .setTitle(R.string.undo_confirm_title)
             .setView(inner)
             .setPositiveButton(R.string.undo_confirm_positive) { _, _ ->
-                osmElementChangesController.undo(change.id!!)
+                osmElementChangesController.undoChange(change.id!!)
                 updateUndoButtonEnablement(true)
             }
             .setNegativeButton(R.string.undo_confirm_negative) { _, _ -> updateUndoButtonEnablement(true) }
@@ -127,17 +120,21 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     }
 
     private fun updateUndoButtonVisibility() {
-        view?.isGone = osmElementChangesController.getFirstUndoable() == null
+        view?.isGone = osmElementChangesController.getFirstUndoableChange() == null
     }
 
     private fun updateUndoButtonEnablement(enable: Boolean) {
         undoButton.isEnabled = enable && !uploadProgressSource.isUploadInProgress
     }
 
-    private fun animateUndoButtonVisibility(visible: Boolean) {
-        if (visible) {
+    private fun animateInIfAnythingToUndo() {
+        if (!undoButton.isVisible && osmElementChangesController.getFirstUndoableChange() != null) {
             undoButton.popIn()
-        } else {
+        }
+    }
+
+    private fun animateOutIfNothingLeftToUndo() {
+        if (undoButton.isVisible && osmElementChangesController.getFirstUndoableChange() == null) {
             undoButton.popOut().withEndAction { undoButton.visibility = View.INVISIBLE }
         }
     }

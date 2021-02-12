@@ -13,18 +13,22 @@ class SingleOsmElementChangeUploader @Inject constructor(
     private val deleteSingleOsmElementUploader: DeleteSingleOsmElementUploader
 ) {
 
+    /** Apply the given change to the given element and upload it
+     *
+     *  @throws ElementConflictException if element has been changed server-side in an incompatible way
+     *  @throws ElementDeletedException if element has been deleted server-side */
     fun upload(change: OsmElementChange, element: Element): ElementUpdates {
         return try {
             val changesetId = changesetManager.getOrCreateChangeset(change.questType, change.source)
-            uploadSingle(changesetId, change, element)
+            uploadInChangeset(changesetId, change, element)
         } catch (e: ChangesetConflictException) {
             val changesetId = changesetManager.createChangeset(change.questType, change.source)
-            uploadSingle(changesetId, change, element)
+            uploadInChangeset(changesetId, change, element)
         }
     }
 
     /** Upload the changes for a single change. Returns the updated element(s) */
-    private fun uploadSingle(changesetId: Long, change: OsmElementChange, element: Element): ElementUpdates {
+    private fun uploadInChangeset(changesetId: Long, change: OsmElementChange, element: Element): ElementUpdates {
         return when(change) {
             is ChangeOsmElementTags ->
                 singleOsmElementTagChangesUploader.upload(changesetId, change, element)

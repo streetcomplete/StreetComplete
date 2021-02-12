@@ -4,6 +4,9 @@ import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.countryboundaries.getIds
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.changes.IsRevert
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChange
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesSource
 import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
 import java.util.*
 import java.util.concurrent.FutureTask
@@ -19,8 +22,18 @@ class StatisticsUpdater @Inject constructor(
     private val statisticsDownloader: StatisticsDownloader,
     private val countryBoundaries: FutureTask<CountryBoundaries>,
     @Named("QuestAliases") private val questAliases: List<Pair<String, String>>
-){
-    fun addOne(questType: String, position: LatLon) {
+) : OsmElementChangesSource.Listener {
+
+    override fun onSyncedChange(change: OsmElementChange) {
+        val questName = change.questType::class.simpleName!!
+        if (change is IsRevert) {
+            subtractOne(questName, change.position)
+        } else {
+            addOne(questName, change.position)
+        }
+    }
+
+    private fun addOne(questType: String, position: LatLon) {
         updateDaysActive()
 
         questStatisticsDao.addOne(questType)
@@ -29,7 +42,7 @@ class StatisticsUpdater @Inject constructor(
         achievementGiver.updateQuestTypeAchievements(questType)
     }
 
-    fun subtractOne(questType: String, position: LatLon) {
+    private fun subtractOne(questType: String, position: LatLon) {
         updateDaysActive()
         questStatisticsDao.subtractOne(questType)
         getRealCountryCode(position)?.let { countryStatisticsDao.subtractOne(it) }

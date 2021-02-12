@@ -56,7 +56,7 @@ import javax.inject.Singleton
      */
     fun splitWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>, source: String): Boolean {
         val q = osmQuestController.get(osmQuestId) ?: return false
-        osmElementChangesController.add(SplitOsmWay(
+        osmElementChangesController.addChange(SplitOsmWay(
             null,
             q.osmElementQuestType,
             q.elementType,
@@ -76,7 +76,7 @@ import javax.inject.Singleton
 
         Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName}")
 
-        osmElementChangesController.add(DeleteOsmElement(
+        osmElementChangesController.addChange(DeleteOsmElement(
             null,
             q.osmElementQuestType,
             q.elementType,
@@ -97,7 +97,7 @@ import javax.inject.Singleton
         val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName} with $changes")
 
-        osmElementChangesController.add(ChangeOsmElementTags(
+        osmElementChangesController.addChange(ChangeOsmElementTags(
             null,
             q.osmElementQuestType,
             q.elementType,
@@ -165,7 +165,7 @@ import javax.inject.Singleton
 
         Log.d(TAG, "Solved a ${q.type.javaClass.simpleName} quest: $changes")
 
-        osmElementChangesController.add(ChangeOsmElementTags(
+        osmElementChangesController.addChange(ChangeOsmElementTags(
             null,
             q.osmElementQuestType,
             q.elementType,

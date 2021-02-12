@@ -25,13 +25,10 @@ object OsmNotesModule {
     fun imageUploader(): StreetCompleteImageUploader =
         StreetCompleteImageUploader(ApplicationConstants.SC_PHOTO_SERVICE_URL)
 
-    @Provides fun noteSource(noteController: NoteController): NoteSource = noteController
-
-    @Provides @Singleton
-    fun osmNoteController(
-        noteDao: NoteDao,
+    @Provides @Singleton fun noteSource(
+        noteController: NoteController,
         osmAvatarsInNotesUpdater: OsmAvatarsInNotesUpdater
-    ) = NoteController(noteDao).apply {
+    ): NoteSource = noteController.apply {
         // on notes have been updated, avatar images should be downloaded (cached) referenced in note discussions
         addListener(osmAvatarsInNotesUpdater)
     }
