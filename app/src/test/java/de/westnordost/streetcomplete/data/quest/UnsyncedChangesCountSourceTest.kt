@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChange
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesSource
 import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountListener
 import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementDao
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestSource
-import de.westnordost.streetcomplete.data.osm.osmquest.changes.OsmElementTagChangesDao
-import de.westnordost.streetcomplete.data.osm.splitway.SplitOsmWayDao
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
@@ -16,6 +15,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyZeroInteractions
 import org.mockito.invocation.InvocationOnMock
 
 class UnsyncedChangesCountSourceTest {
@@ -23,17 +23,13 @@ class UnsyncedChangesCountSourceTest {
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
     private lateinit var createNoteDao: CreateNoteDao
     private lateinit var commentNoteDao: CommentNoteDao
-    private lateinit var splitWayDao: SplitOsmWayDao
-    private lateinit var deleteOsmElementDao: DeleteOsmElementDao
-    private lateinit var osmElementTagChangesDao: OsmElementTagChangesDao
+    private lateinit var osmElementChangesSource: OsmElementChangesSource
 
     private lateinit var noteQuestListener: OsmNoteQuestSource.Listener
     private lateinit var questListener: OsmQuestSource.Listener
     private lateinit var createNoteListener: CreateNoteDao.Listener
     private lateinit var commentNoteListener: CommentNoteDao.Listener
-    private lateinit var osmElementTagChangesListener: OsmElementTagChangesDao.Listener
-    private lateinit var splitWayListener: SplitOsmWayDao.Listener
-    private lateinit var deleteElementListener: DeleteOsmElementDao.Listener
+    private lateinit var osmElementChangesListener: OsmElementChangesSource.Listener
 
     private lateinit var listener: UnsyncedChangesCountListener
 
@@ -66,35 +62,18 @@ class UnsyncedChangesCountSourceTest {
             Unit
         }
 
-        splitWayDao = mock()
-        on(splitWayDao.addListener(any())).then { invocation: InvocationOnMock ->
-            splitWayListener = invocation.arguments[0] as SplitOsmWayDao.Listener
-            Unit
-        }
-
-        deleteOsmElementDao = mock()
-        on(deleteOsmElementDao.addListener(any())).then { invocation: InvocationOnMock ->
-            deleteElementListener = invocation.arguments[0] as DeleteOsmElementDao.Listener
-            Unit
-        }
-
-        osmElementTagChangesDao = mock()
-        on(osmElementTagChangesDao.addListener(any())).then { invocation: InvocationOnMock ->
-            osmElementTagChangesListener = invocation.arguments[0] as OsmElementTagChangesDao.Listener
+        osmElementChangesSource = mock()
+        on(osmElementChangesSource.addListener(any())).then { invocation: InvocationOnMock ->
+            osmElementChangesListener = invocation.arguments[0] as OsmElementChangesSource.Listener
             Unit
         }
 
         on(commentNoteDao.getCount()).thenReturn(2)
         on(createNoteDao.getCount()).thenReturn(3)
-        on(splitWayDao.getCount()).thenReturn(4)
-        on(osmElementTagChangesDao.getCount()).thenReturn(5)
+        on(osmElementChangesSource.getUnsyncedCount()).thenReturn(4)
+        on(osmElementChangesSource.getSolvedCount()).thenReturn(2)
 
-        source = UnsyncedChangesCountSource(
-            commentNoteDao,
-            createNoteDao,
-            splitWayDao,
-            deleteOsmElementDao,
-            osmElementTagChangesDao)
+        source = UnsyncedChangesCountSource(commentNoteDao, createNoteDao, osmElementChangesSource)
 
         listener = mock()
         source.addListener(listener)
@@ -104,34 +83,32 @@ class UnsyncedChangesCountSourceTest {
         assertEquals(baseCount, source.count)
     }
 
-    @Test fun `add element tag change triggers listener`() {
-        osmElementTagChangesListener.onAddedElementTagChanges()
+    @Test fun `add unsynced element change triggers listener`() {
+        val change = mock<OsmElementChange>()
+        on(change.isSynced).thenReturn(false)
+        osmElementChangesListener.onAddedChange(mock())
         verifyIncreased()
     }
 
-    @Test fun `remove element tag change triggers listener`() {
-        osmElementTagChangesListener.onDeletedElementTagChanges()
+    @Test fun `remove unsynced element change triggers listener`() {
+        val change = mock<OsmElementChange>()
+        on(change.isSynced).thenReturn(false)
+        osmElementChangesListener.onDeletedChange(mock())
         verifyDecreased()
     }
 
-    @Test fun `add split way triggers listener`() {
-        splitWayListener.onAddedSplitWay()
-        verifyIncreased()
+    @Test fun `add synced element change does not trigger listener`() {
+        val change = mock<OsmElementChange>()
+        on(change.isSynced).thenReturn(true)
+        osmElementChangesListener.onAddedChange(mock())
+        verifyZeroInteractions(listener)
     }
 
-    @Test fun `remove split way triggers listener`() {
-        splitWayListener.onDeletedSplitWay()
-        verifyDecreased()
-    }
-
-    @Test fun `add delete element triggers listener`() {
-        deleteElementListener.onAddedDeleteOsmElement()
-        verifyIncreased()
-    }
-
-    @Test fun `remove delete element triggers listener`() {
-        deleteElementListener.onDeletedDeleteOsmElement()
-        verifyDecreased()
+    @Test fun `remove synced element change does not trigger listener`() {
+        val change = mock<OsmElementChange>()
+        on(change.isSynced).thenReturn(true)
+        osmElementChangesListener.onDeletedChange(mock())
+        verifyZeroInteractions(listener)
     }
 
     @Test fun `add create note triggers listener`() {

@@ -1,13 +1,13 @@
-package de.westnordost.streetcomplete.data.osm.splitway
+package de.westnordost.streetcomplete.data.osm.upload
 
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.argumentCaptor
-import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
-import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
-import de.westnordost.streetcomplete.data.osm.upload.SplitSingleOsmWayUploader
+import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition
+import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
+import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on

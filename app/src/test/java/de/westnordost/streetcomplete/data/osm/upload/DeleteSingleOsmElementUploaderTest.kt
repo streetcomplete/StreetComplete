@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.delete_element
+package de.westnordost.streetcomplete.data.osm.upload
 
 import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.streetcomplete.data.MapDataApi
@@ -6,9 +6,6 @@ import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.argumentCaptor
-import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
-import de.westnordost.streetcomplete.data.osm.upload.DeleteSingleOsmElementUploader
-import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
