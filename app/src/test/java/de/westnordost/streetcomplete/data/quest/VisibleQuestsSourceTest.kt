@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
@@ -26,6 +27,7 @@ class VisibleQuestsSourceTest {
     private lateinit var osmQuestController: OsmQuestController
     private lateinit var osmNoteQuestController: OsmNoteQuestController
     private lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
+    private lateinit var teamModeQuestFilter: TeamModeQuestFilter
     private lateinit var source: VisibleQuestsSource
 
     private lateinit var noteQuestStatusListener: OsmNoteQuestController.QuestStatusListener
@@ -40,6 +42,7 @@ class VisibleQuestsSourceTest {
         osmNoteQuestController = mock()
         osmQuestController = mock()
         visibleQuestTypeDao = mock()
+        teamModeQuestFilter = mock()
 
         on(visibleQuestTypeDao.isVisible(any())).thenReturn(true)
 
@@ -52,7 +55,7 @@ class VisibleQuestsSourceTest {
             Unit
         }
 
-        source = VisibleQuestsSource(osmQuestController, osmNoteQuestController, visibleQuestTypeDao)
+        source = VisibleQuestsSource(osmQuestController, osmNoteQuestController, visibleQuestTypeDao, teamModeQuestFilter)
 
         listener = mock()
         source.addListener(listener)

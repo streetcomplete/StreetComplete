@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -14,7 +15,8 @@ import javax.inject.Singleton
 @Singleton class VisibleQuestsSource @Inject constructor(
     private val osmQuestController: OsmQuestController,
     private val osmNoteQuestController: OsmNoteQuestController,
-    private val visibleQuestTypeDao: VisibleQuestTypeDao
+    private val visibleQuestTypeDao: VisibleQuestTypeDao,
+    private val teamModeQuestFilter: TeamModeQuestFilter
 ) {
     private val listeners: MutableList<VisibleQuestListener> = CopyOnWriteArrayList()
 
@@ -69,9 +71,16 @@ import javax.inject.Singleton
         }
     }
 
+    private val teamModeChangeListener = object : TeamModeQuestFilter.TeamModeChangeListener {
+        override fun onTeamModeChanged(enabled: Boolean) {
+            // TODO: Not yet implemented
+        }
+    }
+
     init {
         osmQuestController.addQuestStatusListener(osmQuestStatusListener)
         osmNoteQuestController.addQuestStatusListener(osmNoteQuestStatusListener)
+        teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
 
