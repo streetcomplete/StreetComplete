@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType
 import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType2
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -144,7 +145,7 @@ class OsmElementChangesDaoTest : ApplicationDbTestCase() {
         dao.add(notSynced)
 
         assertEquals(1, dao.deleteSyncedOlderThan(1000))
-        assertEquals(oldEnough, dao.getAll().single())
+        assertTrue(dao.getAll().containsExactlyInAnyOrder(listOf(tooYoung, notSynced)))
     }
 
     @Test fun updateElementId() {

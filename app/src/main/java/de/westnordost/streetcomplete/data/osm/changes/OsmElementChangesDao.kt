@@ -83,7 +83,6 @@ class OsmElementChangesMapping @Inject constructor(
 
     override fun toContentValues(obj: OsmElementChange): ContentValues {
         val values = contentValuesOf(
-            ID to obj.id,
             QUEST_TYPE to obj.questType.name,
             ELEMENT_TYPE to obj.elementType.name,
             ELEMENT_ID to obj.elementId,

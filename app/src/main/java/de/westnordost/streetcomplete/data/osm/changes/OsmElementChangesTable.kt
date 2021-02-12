@@ -19,7 +19,7 @@ object OsmElementChangesTable {
 
     const val CREATE = """
         CREATE TABLE $NAME (
-            ${Columns.ID} int PRIMARY KEY,
+            ${Columns.ID} INTEGER PRIMARY KEY AUTOINCREMENT,
             ${Columns.QUEST_TYPE} varchar(255) NOT NULL,
             ${Columns.ELEMENT_ID} int NOT NULL,
             ${Columns.ELEMENT_TYPE} varchar(255) NOT NULL,

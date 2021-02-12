@@ -13,13 +13,11 @@ import org.junit.Test
 import de.westnordost.osmapi.map.data.Element
 
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
-import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementTable
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
-import de.westnordost.streetcomplete.data.osm.osmquest.changes.OsmElementTagChangesTable
+import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesTable
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
-import org.mockito.Mockito.*
 import java.util.*
 
 class AOsmElementDaoTest {
@@ -68,12 +66,11 @@ class AOsmElementDaoTest {
     }
 
     @Test fun getAll() {
-        dao.putAll(listOf(
-            createElement(1, 2),
-            createElement(2, 2),
-            createElement(3, 2)
-        ))
-        assertTrue(dao.getAll(listOf(1,2,4)).containsExactlyInAnyOrder(listOf(1, 2)))
+        val e1 = createElement(1, 2)
+        val e2 = createElement(2, 2)
+        val e3 = createElement(3, 2)
+        dao.putAll(listOf(e1,e2,e3))
+        assertEquals(listOf(e1, e2).map { it.id }, dao.getAll(listOf(1,2,4)).map { it.id })
     }
 
     @Test fun getNull() {
@@ -88,36 +85,25 @@ class AOsmElementDaoTest {
 
     @Test fun getUnusedAndOldIds() {
         val db = dbHelper.writableDatabase
-        db.insert(OsmQuestTable.NAME, null, contentValuesOf(
-            OsmQuestTable.Columns.ELEMENT_ID to 1L,
-            OsmQuestTable.Columns.ELEMENT_TYPE to "NODE"
+        db.insert(OsmElementChangesTable.NAME, null, contentValuesOf(
+            OsmElementChangesTable.Columns.ELEMENT_ID to 2L,
+            OsmElementChangesTable.Columns.ELEMENT_TYPE to "NODE"
         ))
-        db.insert(OsmElementTagChangesTable.NAME, null, contentValuesOf(
-            OsmElementTagChangesTable.Columns.ELEMENT_ID to 2L,
-            OsmElementTagChangesTable.Columns.ELEMENT_TYPE to "NODE"
-        ))
-        db.insert(DeleteOsmElementTable.NAME, null, contentValuesOf(
-            DeleteOsmElementTable.Columns.ELEMENT_ID to 3L,
-            DeleteOsmElementTable.Columns.ELEMENT_TYPE to "NODE"
+        db.insert(OsmElementChangesTable.NAME, null, contentValuesOf(
+            OsmElementChangesTable.Columns.ELEMENT_ID to 3L,
+            OsmElementChangesTable.Columns.ELEMENT_TYPE to "NODE"
         ))
         dao.putAll(listOf(
             createElement(1L, 1),
             createElement(2L, 1),
             createElement(3L, 1),
-            createElement(4L, 1),
         ))
         val unusedIds = dao.getUnusedAndOldIds(System.currentTimeMillis() + 10)
-        assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(4L)))
+        assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(1L)))
     }
 }
 
-private fun createElement(id: Long, version: Int): Element {
-    val element = mock(Element::class.java)
-    `when`(element.id).thenReturn(id)
-    `when`(element.type).thenReturn(Element.Type.NODE)
-    `when`(element.version).thenReturn(version)
-    return element
-}
+private fun createElement(id: Long, version: Int) = OsmNode(id, version, 0.0,0.0, null)
 
 private const val TABLE_NAME = "test"
 private const val ID_COL = "id"
@@ -147,21 +133,9 @@ private class TestDbHelper(context: Context) : SQLiteOpenHelper(context, TESTDB,
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("""
-            CREATE TABLE ${OsmQuestTable.NAME} (
-                ${OsmQuestTable.Columns.ELEMENT_ID} int NOT NULL,
-                ${OsmQuestTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL
-            )
-        """.trimIndent())
-        db.execSQL("""
-            CREATE TABLE ${OsmElementTagChangesTable.NAME} (
-                ${OsmElementTagChangesTable.Columns.ELEMENT_ID} int NOT NULL,
-                ${OsmElementTagChangesTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL
-            )
-        """.trimIndent())
-        db.execSQL("""
-            CREATE TABLE ${DeleteOsmElementTable.NAME} (
-                ${DeleteOsmElementTable.Columns.ELEMENT_ID} int NOT NULL,
-                ${DeleteOsmElementTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL
+            CREATE TABLE ${OsmElementChangesTable.NAME} (
+                ${OsmElementChangesTable.Columns.ELEMENT_ID} int NOT NULL,
+                ${OsmElementChangesTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL
             )
         """.trimIndent())
 

@@ -16,7 +16,7 @@ object CreateNoteTable {
 
     const val CREATE = """
         CREATE TABLE $NAME (
-            ${Columns.ID} INTEGER PRIMARY KEY,
+            ${Columns.ID} INTEGER PRIMARY KEY AUTOINCREMENT,
             ${Columns.LATITUDE} double NOT NULL,
             ${Columns.LONGITUDE} double NOT NULL,
             ${Columns.ELEMENT_TYPE} varchar(255),

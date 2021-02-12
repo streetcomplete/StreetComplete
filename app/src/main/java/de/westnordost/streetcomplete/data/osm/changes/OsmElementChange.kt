@@ -67,7 +67,7 @@ data class ChangeOsmElementTags(
 }
 
 /** Contains the information necessary to revert tag changes made on an element */
-class RevertChangeOsmElementTags(
+data class RevertChangeOsmElementTags(
     override var id: Long?,
     override val questType: OsmElementQuestType<*>,
     override val elementType: Element.Type,
@@ -83,7 +83,7 @@ class RevertChangeOsmElementTags(
 }
 
 /** Contains all necessary information to delete an OSM element as a result of a quest answer */
-class DeleteOsmElement(
+data class DeleteOsmElement(
     override var id: Long?,
     override val questType: OsmElementQuestType<*>,
     override val elementType: Element.Type,
@@ -103,7 +103,7 @@ class DeleteOsmElement(
  *  Keeping the split positions as a lat-lon position because it more robust when handling
  *  conflicts than if the split positions were kept as node ids or node indices of the way.
  *  */
-class SplitOsmWay(
+data class SplitOsmWay(
     override var id: Long?,
     override val questType: OsmElementQuestType<*>,
     override val elementType: Element.Type,

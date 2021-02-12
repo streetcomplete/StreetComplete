@@ -42,8 +42,8 @@ class NewOsmElementIdProviderDaoTest : ApplicationDbTestCase() {
         wayIdSet.add(p2.nextWayId())
         assertThrows { p2.nextWayId() }
 
-        relationIdSet.add(p2.nextWayId())
-        relationIdSet.add(p2.nextWayId())
+        relationIdSet.add(p2.nextRelationId())
+        relationIdSet.add(p2.nextRelationId())
         assertThrows { p2.nextRelationId() }
 
         // test if ids are unique
