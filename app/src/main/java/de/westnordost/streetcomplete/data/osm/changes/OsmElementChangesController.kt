@@ -52,8 +52,9 @@ import javax.inject.Singleton
         try {
             val element = osmElementController.get(change.elementType, change.elementId)
                 ?: throw ElementDeletedException()
+            val idProvider = newOsmElementIdProviderDB.get(change.id!!)
 
-            val elementUpdates = singleUploader.upload(change, element)
+            val elementUpdates = singleUploader.upload(change, element, idProvider)
             Log.d(UPLOAD_TAG, "Uploaded a $changeClassName")
             markChangeSynced(change)
             updateChangesElementIds(elementUpdates.idUpdates)

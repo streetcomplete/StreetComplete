@@ -6,6 +6,7 @@ import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.data.*
 import javax.inject.Inject
 import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.streetcomplete.data.osm.changes.NewOsmElementIdProvider
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
@@ -18,7 +19,12 @@ import kotlin.math.sign
  *  Returns only the ways that have been updated or throws a ConflictException */
 class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapDataApi)  {
 
-    fun upload(changesetId: Long, way: Way, splits: List<SplitPolylineAtPosition>): ElementUpdates {
+    fun upload(
+        changesetId: Long,
+        way: Way,
+        splits: List<SplitPolylineAtPosition>,
+        idProvider: NewOsmElementIdProvider?
+    ): ElementUpdates {
         val updatedWay = way.fetchUpdated()
             ?: throw ElementDeletedException("Way #${way.id} has been deleted")
         if(updatedWay.isClosed() && splits.size < 2)

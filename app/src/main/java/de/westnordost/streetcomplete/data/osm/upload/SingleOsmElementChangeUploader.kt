@@ -17,18 +17,27 @@ class SingleOsmElementChangeUploader @Inject constructor(
      *
      *  @throws ElementConflictException if element has been changed server-side in an incompatible way
      *  @throws ElementDeletedException if element has been deleted server-side */
-    fun upload(change: OsmElementChange, element: Element): ElementUpdates {
+    fun upload(
+        change: OsmElementChange,
+        element: Element,
+        idProvider: NewOsmElementIdProvider?
+    ): ElementUpdates {
         return try {
             val changesetId = changesetManager.getOrCreateChangeset(change.questType, change.source)
-            uploadInChangeset(changesetId, change, element)
+            uploadInChangeset(changesetId, change, element, idProvider)
         } catch (e: ChangesetConflictException) {
             val changesetId = changesetManager.createChangeset(change.questType, change.source)
-            uploadInChangeset(changesetId, change, element)
+            uploadInChangeset(changesetId, change, element, idProvider)
         }
     }
 
     /** Upload the changes for a single change. Returns the updated element(s) */
-    private fun uploadInChangeset(changesetId: Long, change: OsmElementChange, element: Element): ElementUpdates {
+    private fun uploadInChangeset(
+        changesetId: Long,
+        change: OsmElementChange,
+        element: Element,
+        idProvider: NewOsmElementIdProvider?
+    ): ElementUpdates {
         return when(change) {
             is ChangeOsmElementTags ->
                 singleOsmElementTagChangesUploader.upload(changesetId, change, element)
@@ -37,7 +46,7 @@ class SingleOsmElementChangeUploader @Inject constructor(
             is RevertChangeOsmElementTags ->
                 singleOsmElementTagChangesUploader.upload(changesetId, change, element)
             is SplitOsmWay ->
-                splitSingleOsmWayUploader.upload(changesetId, element as Way, change.splits)
+                splitSingleOsmWayUploader.upload(changesetId, element as Way, change.splits, idProvider)
         }
     }
 }
