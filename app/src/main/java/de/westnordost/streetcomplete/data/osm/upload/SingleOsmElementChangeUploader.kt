@@ -1,0 +1,39 @@
+package de.westnordost.streetcomplete.data.osm.upload
+
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.data.osm.changes.*
+import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
+import javax.inject.Inject
+
+class SingleOsmElementChangeUploader @Inject constructor(
+    private val changesetManager: OpenQuestChangesetsManager,
+    private val singleOsmElementTagChangesUploader: SingleOsmElementTagChangesUploader,
+    private val splitSingleOsmWayUploader: SplitSingleOsmWayUploader,
+    private val deleteSingleOsmElementUploader: DeleteSingleOsmElementUploader
+) {
+
+    fun upload(change: OsmElementChange, element: Element): ElementUpdates {
+        return try {
+            val changesetId = changesetManager.getOrCreateChangeset(change.questType, change.source)
+            uploadSingle(changesetId, change, element)
+        } catch (e: ChangesetConflictException) {
+            val changesetId = changesetManager.createChangeset(change.questType, change.source)
+            uploadSingle(changesetId, change, element)
+        }
+    }
+
+    /** Upload the changes for a single change. Returns the updated element(s) */
+    private fun uploadSingle(changesetId: Long, change: OsmElementChange, element: Element): ElementUpdates {
+        return when(change) {
+            is ChangeOsmElementTags ->
+                singleOsmElementTagChangesUploader.upload(changesetId, change, element)
+            is DeleteOsmElement ->
+                deleteSingleOsmElementUploader.upload(changesetId, element)
+            is RevertChangeOsmElementTags ->
+                singleOsmElementTagChangesUploader.upload(changesetId, change, element)
+            is SplitOsmWay ->
+                splitSingleOsmWayUploader.upload(changesetId, element as Way, change.splits)
+        }
+    }
+}

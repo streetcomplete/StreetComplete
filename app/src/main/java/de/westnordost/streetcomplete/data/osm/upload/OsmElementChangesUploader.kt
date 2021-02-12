@@ -1,13 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
 import android.util.Log
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.changes.*
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
@@ -16,12 +13,9 @@ import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
 class OsmElementChangesUploader @Inject constructor(
-    private val changesetManager: OpenQuestChangesetsManager,
     private val osmElementChangesController: OsmElementChangesController,
     private val osmElementController: OsmElementController,
-    private val singleOsmElementTagChangesUploader: SingleOsmElementTagChangesUploader,
-    private val splitSingleOsmWayUploader: SplitSingleOsmWayUploader,
-    private val deleteSingleOsmElementUploader: DeleteSingleOsmElementUploader,
+    private val singleUploader: SingleOsmElementChangeUploader,
     // TODO all this necessary? Couldn't there be listeners?
     private val statisticsUpdater: StatisticsUpdater
 ): Uploader {
@@ -34,45 +28,19 @@ class OsmElementChangesUploader @Inject constructor(
             val change = osmElementChangesController.getOldestUnsynced() ?: break
 
             try {
-                val elementUpdates = uploadSingle(change)
+                val element = osmElementController.get(change.elementType, change.elementId) ?:
+                    throw ElementDeletedException()
+                val elementUpdates = singleUploader.upload(change, element)
                 onUploadSuccessful(change)
                 // TODO really put all?
                 osmElementController.putAll(elementUpdates.updated)
-            } catch (e: ElementIncompatibleException) {
+            } catch (e: ElementDeletedException) {
                 // TODO what, delete??
                 osmElementController.deleteAll(listOf(ElementKey(change.elementType, change.elementId)))
                 onUploadFailed(change, e)
             } catch (e: ElementConflictException) {
                 onUploadFailed(change, e)
             }
-        }
-    }
-
-    private fun uploadSingle(change: OsmElementChange): ElementUpdates {
-        // TODO remove this??
-        val element = osmElementController.get(change.elementType, change.elementId)
-            ?: throw ElementDeletedException("Element deleted")
-
-        return try {
-            val changesetId = changesetManager.getOrCreateChangeset(change.questType, change.source)
-            uploadSingle(changesetId, change, element)
-        } catch (e: ChangesetConflictException) {
-            val changesetId = changesetManager.createChangeset(change.questType, change.source)
-            uploadSingle(changesetId, change, element)
-        }
-    }
-
-    /** Upload the changes for a single change. Returns the updated element(s) */
-    private fun uploadSingle(changesetId: Long, change: OsmElementChange, element: Element): ElementUpdates {
-        return when(change) {
-            is ChangeOsmElementTags ->
-                singleOsmElementTagChangesUploader.upload(changesetId, change, element)
-            is DeleteOsmElement ->
-                deleteSingleOsmElementUploader.upload(changesetId, element)
-            is RevertChangeOsmElementTags ->
-                singleOsmElementTagChangesUploader.upload(changesetId, change, element)
-            is SplitOsmWay ->
-                splitSingleOsmWayUploader.upload(changesetId, element as Way, change.splits)
         }
     }
 
