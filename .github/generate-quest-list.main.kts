@@ -42,7 +42,7 @@ data class RepoQuest(
     val wikiOrder: Int
 ) {
     val csvString: String get() {
-        val wikiOrder = if (wikiOrder == -1) "\"???\"" else wikiOrder
+        val wikiOrder = if (wikiOrder == -1) "\"???\"" else wikiOrder + 1
         return "\"$name\", \"$title\", ${defaultPriority + 1}, $wikiOrder"
     }
 }
@@ -84,7 +84,7 @@ class WikiTableQuest(rowCells: List<String>, rowIndex: Int) {
 
     val isOutdated: Boolean get() = !quests.any { it.wikiOrder == wikiOrder }
 
-    val csvString: String get() = "\"???\", \"$question\", \"???\", $wikiOrder"
+    val csvString: String get() = "\"???\", \"$question\", \"???\", ${wikiOrder + 1}"
 }
 
 fun getFilesRecursively(directory: File): List<File> {
