@@ -23,7 +23,7 @@ class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapD
         changesetId: Long,
         way: Way,
         splits: List<SplitPolylineAtPosition>,
-        idProvider: NewOsmElementIdProvider?
+        idProvider: NewOsmElementIdProvider
     ): ElementUpdates {
         val updatedWay = way.fetchUpdated()
             ?: throw ElementDeletedException("Way #${way.id} has been deleted")
@@ -38,7 +38,6 @@ class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapD
         val sortedSplits = splits.map { it.toSplitWay(positions) }.sorted()
 
         val uploadElements = mutableListOf<Element>()
-        var newNodeId = -1L
 
         val splitAtIndices = mutableListOf<Int>()
         var insertedNodeCount = 0
@@ -48,7 +47,7 @@ class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapD
                     splitAtIndices.add(split.index + insertedNodeCount)
                 }
                 is SplitWayAtLinePosition -> {
-                    val splitNode = OsmNode(newNodeId--, 1, split.pos, null)
+                    val splitNode = OsmNode(idProvider.nextNodeId(), 1, split.pos, null)
                     uploadElements.add(splitNode)
 
                     val nodeIndex = split.index2 + insertedNodeCount
@@ -59,7 +58,7 @@ class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapD
             }
         }
 
-        uploadElements.addAll(splitWayAtIndices(updatedWay, splitAtIndices))
+        uploadElements.addAll(splitWayAtIndices(updatedWay, splitAtIndices, idProvider))
         val handler = UpdatedElementsHandler()
         try {
             mapDataApi.uploadChanges(changesetId, uploadElements, handler)
@@ -77,14 +76,22 @@ class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapD
         }
     }
 
-    private fun splitWayAtIndices(originalWay: Way, splitIndices: List<Int>): List<Element> {
-        val newWays = createSplitWays(originalWay, splitIndices)
+    private fun splitWayAtIndices(
+        originalWay: Way,
+        splitIndices: List<Int>,
+        idProvider: NewOsmElementIdProvider
+    ): List<Element> {
+        val newWays = createSplitWays(originalWay, splitIndices, idProvider)
         val updatedRelations = updateRelations(originalWay, newWays)
         return newWays + updatedRelations
     }
 
     /** Returns the elements that have been changed */
-    private fun createSplitWays(originalWay: Way, splitIndices: List<Int>): List<Way> {
+    private fun createSplitWays(
+        originalWay: Way,
+        splitIndices: List<Int>,
+        idProvider: NewOsmElementIdProvider
+    ): List<Way> {
         val nodesChunks = originalWay.nodeIds.splitIntoChunks(splitIndices)
         /* Handle circular ways specially: If you split at a circular way at two nodes, you just
            want to split it at these points, not also at the former endpoint. So if the last node is
@@ -102,7 +109,7 @@ class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapD
         val indexOfChunkToKeep = nodesChunks.indexOfMaxBy { it.size }
         val tags = originalWay.tags?.toMutableMap()
         tags?.transformTagsForSplit()
-        var newWayId = -1L
+
         return nodesChunks.mapIndexed { index, nodes ->
             if(index == indexOfChunkToKeep) {
                 OsmWay(originalWay.id, originalWay.version, nodes, tags).apply {
@@ -110,7 +117,7 @@ class SplitSingleOsmWayUploader @Inject constructor(private val mapDataApi: MapD
                 }
             }
             else {
-                OsmWay(newWayId--, 0, nodes, tags)
+                OsmWay(idProvider.nextWayId(), 0, nodes, tags)
             }
         }
     }

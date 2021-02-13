@@ -46,7 +46,7 @@ class SingleOsmElementChangeUploader @Inject constructor(
             is RevertChangeOsmElementTags ->
                 singleOsmElementTagChangesUploader.upload(changesetId, change, element)
             is SplitOsmWay ->
-                splitSingleOsmWayUploader.upload(changesetId, element as Way, change.splits, idProvider)
+                splitSingleOsmWayUploader.upload(changesetId, element as Way, change.splits, idProvider!!)
         }
     }
 }
