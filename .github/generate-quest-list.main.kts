@@ -30,10 +30,10 @@ fun main() {
     val questNameRegex = Regex("(?<=^ {8})[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
     val questNames = listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
 
-    val questFiles: List<File> = getFilesRecursively(sourceDirectory.resolve("quests/"))
-    val strings: Map<String, String> = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
-    val wikiQuests: List<WikiQuest> = parseWikiTable(getWikiTableContent())
-    val repoQuests: List<RepoQuest> = questNames.mapIndexed { defaultPriority, name ->
+    val questFiles = getFilesRecursively(sourceDirectory.resolve("quests/"))
+    val strings = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
+    val wikiQuests = parseWikiTable(getWikiTableContent())
+    val repoQuests = questNames.mapIndexed { defaultPriority, name ->
         getQuest(name, defaultPriority, questFiles, strings, wikiQuests)
     }.sortedBy { it.wikiOrder }
 
