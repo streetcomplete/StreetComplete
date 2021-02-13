@@ -7,10 +7,11 @@
 @file:DependsOn("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
 @file:Suppress("PLUGIN_IS_NOT_ENABLED")
 
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import java.io.File
 import java.net.URL
-import kotlinx.serialization.*
-import kotlinx.serialization.json.*
 
 val projectDirectory = File(".")
 val sourceDirectory = projectDirectory.resolve("app/src/main/java/de/westnordost/streetcomplete/")
@@ -22,17 +23,22 @@ val noteQuestFile = sourceDirectory.resolve("data/osmnotes/notequests/OsmNoteQue
 
 val wikiRowSpan2 = " rowspan=\"2\" |"
 
-val questFileContent = sourceDirectory.resolve("quests/QuestModule.kt").readText()
-val questNameRegex = Regex("(?<=^ {8})[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
-val questNames = listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
+main()
 
-val questFiles: List<File> = getFilesRecursively(sourceDirectory.resolve("quests/"))
-val strings: Map<String, String> = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
-val wikiTable: List<WikiTableQuest> = parseWikiTable(getWikiTableContent())
-val quests: List<RepoQuest> = questNames.mapIndexed { defaultPriority, name -> getQuest(name, defaultPriority) }.sortedBy { it.wikiOrder }
+fun main() {
+    val questFileContent = sourceDirectory.resolve("quests/QuestModule.kt").readText()
+    val questNameRegex = Regex("(?<=^ {8})[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
+    val questNames = listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
 
-writeCsvFile()
+    val questFiles: List<File> = getFilesRecursively(sourceDirectory.resolve("quests/"))
+    val strings: Map<String, String> = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
+    val wikiQuests: List<WikiQuest> = parseWikiTable(getWikiTableContent())
+    val repoQuests: List<RepoQuest> = questNames.mapIndexed { defaultPriority, name ->
+        getQuest(name, defaultPriority, questFiles, strings, wikiQuests)
+    }.sortedBy { it.wikiOrder }
 
+    writeCsvFile(repoQuests, wikiQuests)
+}
 
 data class RepoQuest(
     val name: String,
@@ -47,7 +53,7 @@ data class RepoQuest(
     }
 }
 
-class WikiTableQuest(rowCells: List<String>, rowIndex: Int) {
+class WikiQuest(rowCells: List<String>, rowIndex: Int) {
     private val wikiOrder: Int = rowIndex
     private val icon: String
     val question: String
@@ -82,7 +88,7 @@ class WikiTableQuest(rowCells: List<String>, rowIndex: Int) {
         code = rowCellContents[7]
     }
 
-    val isOutdated: Boolean get() = !quests.any { it.wikiOrder == wikiOrder }
+    fun isOutdated(repoQuests: List<RepoQuest>): Boolean = !repoQuests.any { it.wikiOrder == wikiOrder }
 
     val csvString: String get() = "\"???\", \"$question\", \"???\", ${wikiOrder + 1}"
 }
@@ -108,19 +114,25 @@ fun getStrings(stringsFile: File): Map<String, String> {
     return stringRegex.findAll(stringsContent).map { it.groupValues[1] to normalizeString(it.groupValues[2]) }.toMap()
 }
 
-fun getQuest(questName: String, defaultPriority: Int): RepoQuest {
-    val file = getQuestFile(questName)
+fun getQuest(
+    questName: String,
+    defaultPriority: Int,
+    questFiles: List<File>,
+    strings: Map<String, String>,
+    wikiQuests: List<WikiQuest>
+): RepoQuest {
+    val file = getQuestFile(questName, questFiles)
     val questFileContent = file.readText()
 
     val questions = getQuestTitleStringNames(questName, questFileContent).map { strings[it]!! }
 
-    val wikiOrder = wikiTable.indexOfFirst { questions.contains(it.question) }
-    val title = if (wikiOrder > -1) wikiTable[wikiOrder].question else questions.last()
+    val wikiOrder = wikiQuests.indexOfFirst { questions.contains(it.question) }
+    val title = if (wikiOrder > -1) wikiQuests[wikiOrder].question else questions.last()
 
     return RepoQuest(questName, file, title, defaultPriority, wikiOrder)
 }
 
-fun getQuestFile(questName: String): File {
+fun getQuestFile(questName: String, questFiles: List<File>): File {
     if (questName === noteQuestName) {
         return noteQuestFile
     }
@@ -161,7 +173,7 @@ fun getWikiTableContent(): String {
     return Json.decodeFromString<ApiResult>(jsonString).parse.wikitext
 }
 
-fun parseWikiTable(wikiPageContent: String): List<WikiTableQuest> {
+fun parseWikiTable(wikiPageContent: String): List<WikiQuest> {
     val tableRows = wikiPageContent.split("|-").toMutableList()
 
     tableRows.removeFirst() // Drop table header and everything before the table
@@ -185,16 +197,15 @@ fun parseWikiTable(wikiPageContent: String): List<WikiTableQuest> {
         cells += rowCells
     }
 
-    return cells.mapIndexed { rowIndex, rowCells -> WikiTableQuest(rowCells, rowIndex) }
+    return cells.mapIndexed { rowIndex, rowCells -> WikiQuest(rowCells, rowIndex) }
 }
 
-fun writeCsvFile() {
-    val newQuests = quests.filter { it.wikiOrder == -1 }
-    val oldQuests = quests.filter { it.wikiOrder > -1 }
+fun writeCsvFile(repoQuests: List<RepoQuest>, wikiQuests: List<WikiQuest>) {
+    val (newQuests, oldQuests) = repoQuests.partition { it.wikiOrder == -1 }
 
     val csvLines =
         listOf("\"Quest Name\", \"Question\", \"Default Priority\", \"Wiki Order\"") +
-        wikiTable.filter { it.isOutdated }.map { it.csvString } +
+        wikiQuests.filter { it.isOutdated(repoQuests) }.map { it.csvString } +
         listOf(",,,") +
         newQuests.map { it.csvString } +
         listOf(",,,") +
