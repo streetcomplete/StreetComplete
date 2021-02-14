@@ -30,8 +30,10 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.filter {
             filter.matches(it) && (
-                it.tags?.get("roof:levels") != "0" ||
-                roofsAreUsuallyFlatAt(it, mapData) == false
+                (
+                    it.tags?.get("roof:levels") != null &&
+                    it.tags?.get("roof:levels") != "0"
+                ) || roofsAreUsuallyFlatAt(it, mapData) == false
             )
         }
 
