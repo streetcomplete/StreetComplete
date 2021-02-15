@@ -722,4 +722,5 @@ object AchievementsModule {
     // maybe "emergency"
     // AddFireHydrantType AddIsDefibrillatorIndoor
     //
+    // AddPostboxRoyalCypher
 }
