@@ -42,7 +42,8 @@ class AddRecyclingContainerMaterialsForm
     private val plasticItems = listOf(
         Item(PLASTIC,           R.drawable.ic_recycling_plastic,           R.string.quest_recycling_type_plastic),
         Item(PLASTIC_PACKAGING, R.drawable.ic_recycling_plastic_packaging, R.string.quest_recycling_type_plastic_packaging),
-        Item(PLASTIC_BOTTLES,   R.drawable.ic_recycling_plastic_bottles,   R.string.quest_recycling_type_plastic_bottles)
+        Item(PLASTIC_BOTTLES,   R.drawable.ic_recycling_plastic_bottles,   R.string.quest_recycling_type_plastic_bottles),
+        Item(BEVERAGE_CARTONS,  R.drawable.ic_recycling_beverage_cartons,  R.string.quest_recycling_type_beverage_cartons),
     )
 
     override val maxSelectableItems = -1
