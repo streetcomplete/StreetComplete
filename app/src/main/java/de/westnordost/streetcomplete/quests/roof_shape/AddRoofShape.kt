@@ -30,10 +30,8 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.filter {
             filter.matches(it) && (
-                (
-                    it.tags?.get("roof:levels") != null &&
-                    it.tags?.get("roof:levels") != "0"
-                ) || roofsAreUsuallyFlatAt(it, mapData) == false
+                it.tags?.get("roof:levels") ?: "0" != "0"
+                || roofsAreUsuallyFlatAt(it, mapData) == false
             )
         }
 
@@ -42,7 +40,7 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
         // if it has 0 roof levels, or the roof levels aren't specified,
         // the quest should only be shown in certain countries. But whether
         // the element is in a certain country cannot be ascertained at this point
-        if (element.tags?.get("roof:levels") == "0") return null
+        if (element.tags?.get("roof:levels") ?: "0" == "0") return null
         return true
     }
 
