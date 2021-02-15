@@ -9,13 +9,13 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes with
           amenity = post_box
           and !royal_cypher
     """
     override val commitMessage = "Add postbox royal cypher"
     override val wikiLink = "Key:royal_cypher"
-    override val icon = R.drawable.ic_quest_mail
+    override val icon = R.drawable.ic_quest_crown
     override val enabledInCountries = NoCountriesExcept(
         "GB"
     )
