@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes with
           amenity = post_box
           and !royal_cypher
     """
