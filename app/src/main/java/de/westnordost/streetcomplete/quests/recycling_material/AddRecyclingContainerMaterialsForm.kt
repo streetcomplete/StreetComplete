@@ -57,7 +57,7 @@ class AddRecyclingContainerMaterialsForm
             override fun onIndexSelected(index: Int) {
                 val value = imageSelector.items[index].value!!
 
-                if (value == PLASTIC) {
+                if (value in plasticItems.map { it.value!! }) {
                     showPickItemForItemAtIndexDialog(index, plasticItems)
                 }
             }
