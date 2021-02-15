@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.util.intersects
 
 class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
@@ -82,11 +83,17 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
             val layer = way.tags?.get("layer")?.toIntOrNull() ?: 0
             val geometry = mapData.getWayGeometry(way.id) as? ElementPolylinesGeometry
 
+            // applicable if with any bridge...
             geometry != null && bridges.any { bridge ->
                 val bridgeGeometry = mapData.getWayGeometry(bridge.id) as? ElementPolylinesGeometry
                 val bridgeLayer = bridge.tags?.get("layer")?.toIntOrNull() ?: 0
 
-                bridgeGeometry != null && bridgeLayer > layer && bridgeGeometry.intersects(geometry)
+                // , that is in a layer above this way
+                bridgeLayer > layer
+                    // and with which it does not share any node (=connects) (#2555)
+                    && !bridge.nodeIds.toSet().containsAny(way.nodeIds)
+                    //, it intersects
+                    && bridgeGeometry != null && bridgeGeometry.intersects(geometry)
             }
         }
 

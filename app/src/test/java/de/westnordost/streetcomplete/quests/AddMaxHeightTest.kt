@@ -35,7 +35,7 @@ class AddMaxHeightTest {
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test fun `not applicable to road not below bridge`() {
+    @Test fun `not applicable to road on same layer as bridge, even if they intersect`() {
         val mapData = TestMapDataWithGeometry(listOf(
             OsmWay(1L, 1, listOf(1,2), mapOf(
                 "highway" to "residential",
@@ -53,6 +53,31 @@ class AddMaxHeightTest {
         )), OsmLatLon(0.0,0.0))
         mapData.wayGeometriesById[2] = ElementPolylinesGeometry(listOf(listOf(
             OsmLatLon(0.0,-0.1),
+            OsmLatLon(0.0,+0.1),
+        )), OsmLatLon(0.0,0.0))
+
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `not applicable to road that shares a node with the bridge`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmWay(1L, 1, listOf(1,5,2), mapOf(
+                "highway" to "residential",
+                "layer" to "1",
+                "bridge" to "yes"
+            )),
+            OsmWay(2L, 1, listOf(3,5,4), mapOf(
+                "highway" to "residential"
+            ))
+        ))
+        mapData.wayGeometriesById[1] = ElementPolylinesGeometry(listOf(listOf(
+            OsmLatLon(-0.1,0.0),
+            OsmLatLon(0.0,0.0),
+            OsmLatLon(+0.1,0.0),
+        )), OsmLatLon(0.0,0.0))
+        mapData.wayGeometriesById[2] = ElementPolylinesGeometry(listOf(listOf(
+            OsmLatLon(0.0,-0.1),
+            OsmLatLon(0.0,0.0),
             OsmLatLon(0.0,+0.1),
         )), OsmLatLon(0.0,0.0))
 
