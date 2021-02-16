@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.quest.Quest
+import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,6 +23,11 @@ import javax.inject.Singleton
 
     val isEnabled: Boolean get() = teamSize > 0
 
+    interface TeamModeChangeListener {
+        fun onTeamModeChanged(enabled: Boolean)
+    }
+    private val listeners: MutableList<TeamModeChangeListener> = CopyOnWriteArrayList()
+
     fun isVisible(quest: Quest): Boolean =
         !isEnabled || quest.stableId % teamSize == indexInTeam.toLong()
 
@@ -36,9 +42,21 @@ import javax.inject.Singleton
             putInt(Prefs.TEAM_MODE_TEAM_SIZE, teamSize)
             putInt(Prefs.TEAM_MODE_INDEX_IN_TEAM, indexInTeam)
         }
+        listeners.forEach { it.onTeamModeChanged(true) }
     }
 
     fun disableTeamMode() {
         prefs.edit().putInt(Prefs.TEAM_MODE_TEAM_SIZE, -1).apply()
+        listeners.forEach { it.onTeamModeChanged(false) }
+    }
+
+
+    /* ------------------------------------ Listeners ------------------------------------------- */
+
+    fun addListener(listener: TeamModeChangeListener) {
+        listeners.add(listener)
+    }
+    fun removeListener(listener: TeamModeChangeListener) {
+        listeners.remove(listener)
     }
 }

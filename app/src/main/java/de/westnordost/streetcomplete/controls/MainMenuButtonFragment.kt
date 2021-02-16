@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.controls
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
@@ -11,6 +12,8 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
+import de.westnordost.streetcomplete.ktx.popIn
+import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_main_menu_button.view.*
 import kotlinx.coroutines.CoroutineScope
@@ -19,6 +22,7 @@ import javax.inject.Inject
 
 /** Fragment that shows the main menu button and manages its logic */
 class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
+    TeamModeQuestFilter.TeamModeChangeListener,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var teamModeQuestFilter: TeamModeQuestFilter
@@ -30,6 +34,8 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
 
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    private lateinit var teamModeColorCircle: View
+
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
     init {
@@ -40,6 +46,23 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
         super.onViewCreated(view, savedInstanceState)
 
         view.mainMenuButton.setOnClickListener { onClickMainMenu() }
+        teamModeColorCircle = view.teamModeColorCircle
+
+        if (teamModeQuestFilter.isEnabled) {
+            onTeamModeChanged(true)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        teamModeQuestFilter.addListener(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        teamModeQuestFilter.removeListener(this)
     }
 
     /* ------------------------------------------------------------------------------------------ */
@@ -52,6 +75,17 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
             teamModeQuestFilter::enableTeamMode,
             teamModeQuestFilter::disableTeamMode
         ).show()
+    }
+
+    override fun onTeamModeChanged(enabled: Boolean) {
+        if (enabled) {
+            requireContext().toast(R.string.team_mode_enabled, Toast.LENGTH_LONG)
+            teamModeColorCircle.popIn()
+            TeamModeColorCircle.setViewColorsAndText(teamModeColorCircle, teamModeQuestFilter.indexInTeam)
+        } else {
+            requireContext().toast(R.string.team_mode_disabled, Toast.LENGTH_SHORT)
+            teamModeColorCircle.popOut()
+        }
     }
 
     /* ------------------------------------ Download Button  ------------------------------------ */
