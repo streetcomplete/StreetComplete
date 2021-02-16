@@ -36,7 +36,7 @@
     </style>
 
     <style name="Dialog.Button" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textColor">@color/accent</item>
+        <item name="android:textColor">@color/button_bar_button_text</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">-0.01</item>
     </style>
 

@@ -91,6 +91,7 @@ interface ApplicationComponent {
     fun inject(notificationButtonFragment: NotificationButtonFragment)
     fun inject(undoButtonFragment: UndoButtonFragment)
     fun inject(uploadButtonFragment: UploadButtonFragment)
+    fun inject(mainMenuButtonFragment: MainMenuButtonFragment)
     fun inject(answersCounterFragment: AnswersCounterFragment)
     fun inject(downloadProgressFragment: DownloadProgressFragment)
     fun inject(questStatisticsByCountryFragment: QuestStatisticsByCountryFragment)

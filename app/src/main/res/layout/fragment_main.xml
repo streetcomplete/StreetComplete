@@ -41,18 +41,16 @@
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
             tools:layout="@layout/fragment_upload_button"
-            android:layout_toLeftOf="@id/mainMenuButton"
+            android:layout_toLeftOf="@id/main_menu_button_fragment"
             />
 
-        <ImageButton
-            android:id="@+id/mainMenuButton"
+        <fragment
+            android:id="@+id/main_menu_button_fragment"
+            android:name="de.westnordost.streetcomplete.controls.MainMenuButtonFragment"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
-            android:scaleType="center"
-            style="@style/RoundWhiteButton"
-            android:src="@drawable/ic_menu_black_24dp"
-            android:contentDescription="@string/map_btn_menu"
-            android:layout_alignParentRight="true"/>
+            tools:layout="@layout/fragment_main_menu_button"
+            android:layout_alignParentRight="true" />
 
         <fragment
             android:id="@+id/notification_button_fragment"
@@ -69,7 +67,7 @@
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
             style="@style/RoundWhiteButton"
-            android:layout_below="@id/mainMenuButton"
+            android:layout_below="@id/main_menu_button_fragment"
             android:layout_alignParentRight="true"
             >
 
