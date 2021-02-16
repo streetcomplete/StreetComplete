@@ -307,7 +307,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
             val cameraPosition = mapFragment?.cameraPosition
             if (cameraPosition != null) {
-                val radius = sqrt( 1000000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
+                val radius = sqrt(1000000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
                 return cameraPosition.position.enclosingBoundingBox(radius)
             }
         }
