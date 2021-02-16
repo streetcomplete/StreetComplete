@@ -1,5 +1,4 @@
 v30.1: |
-  <h3>Enhancements & Fixes to Quests</h3>
   <ul>
   <li>Max height: Do not ask for roads that merely connect to bridges (#2555)</li>
   <li>Kerbs: Do not ask for kerbs on nodes that are intersections with another road or path (#2564)</li>
