@@ -9,13 +9,13 @@ import de.westnordost.streetcomplete.view.image_select.Item
 class AddPostboxRoyalCypherForm : AImageListQuestAnswerFragment<PostboxRoyalCypher, PostboxRoyalCypher>() {
 
     override val items = listOf(
-        Item(PostboxRoyalCypher.ELIZABETHII,    R.drawable.postbox_royal_cypher_eiir_red),
-        Item(PostboxRoyalCypher.GEORGEVI,       R.drawable.postbox_royal_cypher_gvir_red),
-        Item(PostboxRoyalCypher.EDWARDVIII,     R.drawable.postbox_royal_cypher_eviiir_red),
-        Item(PostboxRoyalCypher.GEORGEV,        R.drawable.postbox_royal_cypher_gr_red),
-        Item(PostboxRoyalCypher.EDWARDVII,      R.drawable.postbox_royal_cypher_eviir_red),
-        Item(PostboxRoyalCypher.VICTORIA,       R.drawable.postbox_royal_cypher_vr_red),
-        Item(PostboxRoyalCypher.SCOTTISHCROWN,  R.drawable.postbox_royal_cypher_scottish_crown_red)
+        Item(PostboxRoyalCypher.ELIZABETHII,    R.drawable.postbox_royal_cypher_eiir),
+        Item(PostboxRoyalCypher.GEORGEVI,       R.drawable.postbox_royal_cypher_gvir),
+        Item(PostboxRoyalCypher.EDWARDVIII,     R.drawable.postbox_royal_cypher_eviiir),
+        Item(PostboxRoyalCypher.GEORGEV,        R.drawable.postbox_royal_cypher_gr),
+        Item(PostboxRoyalCypher.EDWARDVII,      R.drawable.postbox_royal_cypher_eviir),
+        Item(PostboxRoyalCypher.VICTORIA,       R.drawable.postbox_royal_cypher_vr),
+        Item(PostboxRoyalCypher.SCOTTISHCROWN,  R.drawable.postbox_royal_cypher_scottish_crown)
     )
 
     override val otherAnswers = listOf(
