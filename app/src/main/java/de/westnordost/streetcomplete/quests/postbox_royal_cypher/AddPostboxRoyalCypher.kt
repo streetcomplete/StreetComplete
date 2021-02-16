@@ -26,8 +26,5 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
 
     override fun applyAnswerTo(answer: PostboxRoyalCypher, changes: StringMapChangesBuilder) {
         changes.add("royal_cypher", answer.osmValue)
-        if (answer.wikidataValue != "") {
-            changes.add("royal_cypher:wikidata", answer.wikidataValue)
-        }
     }
 }
