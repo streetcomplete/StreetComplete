@@ -2125,4 +2125,15 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="quest_maxheight_answer_noSign_question_yes">"큰 트럭도 통과할 수 있음"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"큰 트럭은 통과할 수 없음"</string>
     <string name="quest_address_street_hint">"추가하려면 도로를 탭하세요"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_existence_name_title">"%1$s가 지금도 여기에 있습니까? (%2$s)"</string>
+    <string name="quest_shop_vacant_type_title">"이 가게는 비어 있습니다. 지금 여기에 무엇이 있습니까?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"차선 수가 방향에 따라 다름"</string>
+    <string name="quest_pitchSurface_title">"이 운동장의 바닥 재질은 무엇입니까?"</string>
+    <string name="quest_surface_value_clay">"찰흙"</string>
+    <string name="quest_surface_value_artificial_turf">"인조잔디"</string>
+    <string name="quest_surface_value_tartan">"타탄"</string>
+    <string name="quest_bicycle_parking_fee_title">"여기에 자전거를 주차하기 위해 요금을 지불해야 합니까?"</string>
+    <string name="quest_drinking_water_title">"여기 물은 마실 수 있습니까? (%s)"</string>
 </resources>

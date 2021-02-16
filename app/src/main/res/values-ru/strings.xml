@@ -2367,4 +2367,13 @@
     <string name="quest_surface_value_clay">"Глина"</string>
     <string name="quest_surface_value_artificial_turf">"Искусственная трава"</string>
     <string name="quest_surface_value_tartan">"Тартан"</string>
+    <string name="quest_pitchSurface_title_track">"Какое покрытие у этой спортивной трассы?"</string>
+    <string name="quest_bicycle_parking_access_title">"Есть ли здесь ограничения для парковки велосипеда?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Это платная парковка для велосипеда?"</string>
+    <string name="quest_buildingType_house_description2">"Частный дом"</string>
+    <string name="quest_drinking_water_title">"Здесь питьевая вода? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Питьевая вода (есть знак)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Питьевая вода (нет знака)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Не питьевая вода (есть знак)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Не питьевая вода (нет знака)"</string>
 </resources>

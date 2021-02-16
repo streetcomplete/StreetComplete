@@ -2328,4 +2328,13 @@
     <string name="quest_surface_value_clay">"خاکی"</string>
     <string name="quest_surface_value_artificial_turf">"چمن مصنوعی"</string>
     <string name="quest_surface_value_tartan">"شطرنجی"</string>
+    <string name="quest_pitchSurface_title_track">"جنس سطح این میدان ورزشی چیست؟"</string>
+    <string name="quest_bicycle_parking_access_title">"آیا برای کسی که اینجا دوچرخه پارک می‌کند محدودیتی هست؟"</string>
+    <string name="quest_bicycle_parking_fee_title">"برای پارک دوچرخه در اینجا باید هزینه پرداخت کرد؟"</string>
+    <string name="quest_buildingType_house_description2">"خانه مجردی غیر مستقل"</string>
+    <string name="quest_drinking_water_title">"اینجا آب قابل شرب است؟  (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"آب شرب (تایید شده)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"آب شرب (تایید نشده)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"آب غیر قابل شرب (تایید شده)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"آب غیر قابل شرب (تایید نشده)"</string>
 </resources>
