@@ -60,12 +60,14 @@ import javax.inject.Inject
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+import kotlin.math.sqrt
 
 /** Contains the quests map and the controls for it. */
 class MainFragment : Fragment(R.layout.fragment_main),
     MapFragment.Listener, LocationAwareMapFragment.Listener, QuestsMapFragment.Listener,
     AbstractQuestAnswerFragment.Listener,
     SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener, CreateNoteFragment.Listener,
+    MainMenuButtonFragment.Listener,
     VisibleQuestListener,
     HandlesOnBackPressed,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
@@ -279,6 +281,38 @@ class MainFragment : Fragment(R.layout.fragment_main),
             if (!f.onClickMapAt(position, clickAreaSizeInMeters))
                 f.onClickClose { closeBottomSheet() }
         }
+    }
+
+    //endregion
+
+    //region Buttons - Callbacks from the buttons in the main view
+
+    /* ---------------------------- MainMenuButtonFragment.Listener ----------------------------- */
+
+    override fun getDownloadArea(): BoundingBox? {
+        val displayArea = mapFragment?.getDisplayedArea()
+        if (displayArea == null) {
+            context?.toast(R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG)
+            return null
+        }
+
+        val enclosingBBox = displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.QUEST_TILE_ZOOM)
+        val areaInSqKm = enclosingBBox.area() / 1000000
+        if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
+            context?.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
+            return null
+        }
+
+        // below a certain threshold, it does not make sense to download, so let's enlarge it
+        if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
+            val cameraPosition = mapFragment?.cameraPosition
+            if (cameraPosition != null) {
+                val radius = sqrt( 1000000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
+                return cameraPosition.position.enclosingBoundingBox(radius)
+            }
+        }
+
+        return enclosingBBox
     }
 
     //endregion
