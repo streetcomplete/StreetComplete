@@ -8,6 +8,8 @@ import de.westnordost.streetcomplete.R
 
 object TeamModeColorCircle {
 
+    const val layout = R.layout.cell_team_mode_color_circle_select
+
     // "background color" to "text color"
     private val teamModeColors = listOf(
         Color.parseColor("#e45f5f") to Color.parseColor("#550000"), // red

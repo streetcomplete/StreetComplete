@@ -53,5 +53,33 @@
         app:layout_constraintTop_toBottomOf="@+id/team_size_input"
         tools:visibility="visible" />
 
+    <TextView
+        android:id="@+id/color_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_vertical_margin"
+        android:text="@string/team_mode_choose_color"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/team_size_hint"
+        tools:visibility="visible" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/color_circles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_vertical_margin"
+        android:visibility="gone"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/color_hint"
+        tools:itemCount="12"
+        tools:listitem="@layout/cell_team_mode_color_circle_select"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
