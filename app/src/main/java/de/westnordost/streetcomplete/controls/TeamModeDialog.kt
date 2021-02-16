@@ -26,7 +26,7 @@ class TeamModeDialog(
     private fun parseTeamSize(string: String): Int? {
         return try {
             val number = Integer.parseInt(string)
-            if (number in 2..12) number else null
+            if (number in 2..TeamModeColorCircle.maxTeamSize) number else null
         } catch (e: NumberFormatException) { null }
     }
 }
