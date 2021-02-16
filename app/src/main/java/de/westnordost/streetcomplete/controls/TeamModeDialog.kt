@@ -20,6 +20,15 @@ class TeamModeDialog(
             view.team_size_hint.isGone = number !== null
         }
 
+        setButton(BUTTON_POSITIVE, context.resources.getText(android.R.string.ok)) { _, _ ->
+            // TODO: report selected numbers to calling dialog
+            dismiss()
+        }
+
+        setOnShowListener {
+            getButton(BUTTON_POSITIVE).isEnabled = false
+        }
+
         setView(view)
     }
 
