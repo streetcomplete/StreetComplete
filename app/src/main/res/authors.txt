@@ -42,7 +42,7 @@ parking_type_underground.jpg   CC0               https://pixabay.com/de/tiefgara
 Postbox-Royal-Cypher-EIIR.svg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Elizabeth_II.svg (adapted)
 Postbox-Royal-Cypher-EVIIIR... Public Domain     https://commons.wikimedia.org/wiki/File:EVIIIR.PNG (adapted)
 Postbox-Royal-Cypher-EVIIR.svg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_Edward_VII_of_Great_Britain_goldenrod.svg (adapted)
-Postbox-Royal-Cypher-GR.svg    //TODO            http://www.bechler.free-online.co.uk/gc/RoyalCyphers2.jpg (adapted)
+Postbox-Royal-Cypher-GR.svg                      http://www.bechler.free-online.co.uk/gc/RoyalCyphers2.jpg (adapted)
 Postbox-Royal-Cypher-GVIR.svg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_George_VI_of_Great_Britain.svg (adapted)
 Postbox-Royal-Cypher-Scotti... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Crown_of_Scotland_(Heraldry).svg (adapted)
 Postbox-Royal-Cypher-VR.svg    Public Domain     https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Victoria.svg (adapted)

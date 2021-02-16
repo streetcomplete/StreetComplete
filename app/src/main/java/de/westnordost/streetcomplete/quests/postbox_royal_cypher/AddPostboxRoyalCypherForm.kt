@@ -15,7 +15,7 @@ class AddPostboxRoyalCypherForm : AImageListQuestAnswerFragment<PostboxRoyalCyph
         Item(PostboxRoyalCypher.GEORGEV,        R.drawable.postbox_royal_cypher_gr),
         Item(PostboxRoyalCypher.EDWARDVII,      R.drawable.postbox_royal_cypher_eviir),
         Item(PostboxRoyalCypher.VICTORIA,       R.drawable.postbox_royal_cypher_vr),
-        Item(PostboxRoyalCypher.SCOTTISHCROWN,  R.drawable.postbox_royal_cypher_scottish_crown, R.string.quest_postboxRoyalCypher_type_crown)
+        Item(PostboxRoyalCypher.SCOTTISHCROWN,  R.drawable.postbox_royal_cypher_scottish_crown, R.string.quest_postboxRoyalCypher_type_scottish_crown)
     )
 
     override val otherAnswers = listOf(
