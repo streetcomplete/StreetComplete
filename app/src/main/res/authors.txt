@@ -39,6 +39,14 @@ parking_type_street_side.jpg   CC0               https://wiki.openstreetmap.org/
 parking_type_surface.jpg       CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:Car_park2.jpg
 parking_type_underground.jpg   CC0               https://pixabay.com/de/tiefgarage-einfahrt-absch%C3%BCssig-273439/
 
+Postbox-Royal-Cypher-EIIR.svg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Elizabeth_II.svg (adapted)
+Postbox-Royal-Cypher-EVIIIR... Public Domain     https://commons.wikimedia.org/wiki/File:EVIIIR.PNG
+Postbox-Royal-Cypher-EVIIR.svg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_Edward_VII_of_Great_Britain_goldenrod.svg (adapted)
+Postbox-Royal-Cypher-GR.svg    //TODO            http://www.bechler.free-online.co.uk/gc/RoyalCyphers2.jpg
+Postbox-Royal-Cypher-GVIR.svg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_George_VI_of_Great_Britain.svg (adapted)
+Postbox-Royal-Cypher-Scottish-crown.svg
+Postbox-Royal-Cypher-VR.svg    Public Domain     https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Victoria.svg (adapted)
+
 power_pole_concrete.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Concrete_utility_pole.jpg
 power_pole_steel.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:Steel_tube_pylon.JPG
 power_pole_wood.jpg            CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Two_armed_power_pole_1.jpg
