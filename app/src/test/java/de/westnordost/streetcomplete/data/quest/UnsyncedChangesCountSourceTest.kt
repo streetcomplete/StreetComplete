@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChange
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesSource
+import de.westnordost.streetcomplete.data.osm.changes.ElementEdit
+import de.westnordost.streetcomplete.data.osm.changes.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountListener
 import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestSource
@@ -23,13 +23,13 @@ class UnsyncedChangesCountSourceTest {
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
     private lateinit var createNoteDao: CreateNoteDao
     private lateinit var commentNoteDao: CommentNoteDao
-    private lateinit var osmElementChangesSource: OsmElementChangesSource
+    private lateinit var elementEditsSource: ElementEditsSource
 
     private lateinit var noteQuestListener: OsmNoteQuestSource.Listener
     private lateinit var questListener: OsmQuestSource.Listener
     private lateinit var createNoteListener: CreateNoteDao.Listener
     private lateinit var commentNoteListener: CommentNoteDao.Listener
-    private lateinit var osmElementChangesListener: OsmElementChangesSource.Listener
+    private lateinit var elementEditsListener: ElementEditsSource.Listener
 
     private lateinit var listener: UnsyncedChangesCountListener
 
@@ -62,18 +62,18 @@ class UnsyncedChangesCountSourceTest {
             Unit
         }
 
-        osmElementChangesSource = mock()
-        on(osmElementChangesSource.addListener(any())).then { invocation: InvocationOnMock ->
-            osmElementChangesListener = invocation.arguments[0] as OsmElementChangesSource.Listener
+        elementEditsSource = mock()
+        on(elementEditsSource.addListener(any())).then { invocation: InvocationOnMock ->
+            elementEditsListener = invocation.arguments[0] as ElementEditsSource.Listener
             Unit
         }
 
         on(commentNoteDao.getCount()).thenReturn(2)
         on(createNoteDao.getCount()).thenReturn(3)
-        on(osmElementChangesSource.getUnsyncedChangesCount()).thenReturn(4)
-        on(osmElementChangesSource.getChangesCountSolved()).thenReturn(2)
+        on(elementEditsSource.getUnsyncedEditsCount()).thenReturn(4)
+        on(elementEditsSource.getEditsCountSolved()).thenReturn(2)
 
-        source = UnsyncedChangesCountSource(commentNoteDao, createNoteDao, osmElementChangesSource)
+        source = UnsyncedChangesCountSource(commentNoteDao, createNoteDao, elementEditsSource)
 
         listener = mock()
         source.addListener(listener)
@@ -84,30 +84,30 @@ class UnsyncedChangesCountSourceTest {
     }
 
     @Test fun `add unsynced element change triggers listener`() {
-        val change = mock<OsmElementChange>()
+        val change = mock<ElementEdit>()
         on(change.isSynced).thenReturn(false)
-        osmElementChangesListener.onAddedChange(change)
+        elementEditsListener.onAddedEdit(change)
         verifyIncreased()
     }
 
     @Test fun `remove unsynced element change triggers listener`() {
-        val change = mock<OsmElementChange>()
+        val change = mock<ElementEdit>()
         on(change.isSynced).thenReturn(false)
-        osmElementChangesListener.onDeletedChange(change)
+        elementEditsListener.onDeletedEdit(change)
         verifyDecreased()
     }
 
     @Test fun `add synced element change does not trigger listener`() {
-        val change = mock<OsmElementChange>()
+        val change = mock<ElementEdit>()
         on(change.isSynced).thenReturn(true)
-        osmElementChangesListener.onAddedChange(change)
+        elementEditsListener.onAddedEdit(change)
         verifyZeroInteractions(listener)
     }
 
     @Test fun `remove synced element change does not trigger listener`() {
-        val change = mock<OsmElementChange>()
+        val change = mock<ElementEdit>()
         on(change.isSynced).thenReturn(true)
-        osmElementChangesListener.onDeletedChange(change)
+        elementEditsListener.onDeletedEdit(change)
         verifyZeroInteractions(listener)
     }
 

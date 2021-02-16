@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementSource
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.data.osmnotes.NoteSource
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.format
@@ -37,7 +37,7 @@ import javax.inject.Singleton
 @Singleton class OsmQuestController @Inject internal constructor(
     private val db: OsmQuestDao,
     private val hiddenDB: OsmQuestsHiddenDao,
-    private val osmElementSource: OsmElementSource,
+    private val mapDataSource: MapDataSource,
     private val notesSource: NoteSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
@@ -50,7 +50,7 @@ import javax.inject.Singleton
 
     private val allQuestTypes get() = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
 
-    private val osmElementSourceListener = object : OsmElementSource.Listener {
+    private val osmElementSourceListener = object : MapDataSource.Listener {
 
         /** For the given elements, replace the current quests with the given ones. Called when
          *  OSM elements are updated, so the quests that reference that element need to be updated
@@ -96,7 +96,7 @@ import javax.inject.Singleton
     }
 
     init {
-        osmElementSource.addListener(osmElementSourceListener)
+        mapDataSource.addListener(osmElementSourceListener)
         notesSource.addListener(notesSourceListener)
     }
 
@@ -149,7 +149,7 @@ import javax.inject.Singleton
         val time = System.currentTimeMillis()
 
         val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
-        val lazyMapData by lazy { osmElementSource.getMapDataWithGeometry(paddedBounds) }
+        val lazyMapData by lazy { mapDataSource.getMapDataWithGeometry(paddedBounds) }
 
         val quests = ConcurrentLinkedQueue<OsmQuest>()
         val truncatedBlacklistedPositions = notesSource
@@ -179,14 +179,14 @@ import javax.inject.Singleton
     private fun createQuestsForQuestKeys(keys: Collection<OsmQuestKey>): List<OsmQuest> {
         val questTypesByElement = mutableMapOf<Element, MutableList<OsmElementQuestType<*>>>()
         for (key in keys) {
-            val element = osmElementSource.get(key.elementType, key.elementId) ?: continue
+            val element = mapDataSource.get(key.elementType, key.elementId) ?: continue
             val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: continue
             questTypesByElement.getOrPut(element) { mutableListOf() }.add(questType)
         }
 
         val addedQuests = mutableListOf<OsmQuest>()
         for ((element, questTypes) in questTypesByElement) {
-            val geometry = osmElementSource.getGeometry(element.type, element.id) ?: continue
+            val geometry = mapDataSource.getGeometry(element.type, element.id) ?: continue
             addedQuests.addAll(createQuestsForElement(element, geometry, questTypes))
         }
         return addedQuests

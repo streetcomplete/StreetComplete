@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.drinking_water
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 
 class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {

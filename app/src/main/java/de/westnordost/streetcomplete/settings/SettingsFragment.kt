@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.ktx.toast
@@ -31,7 +31,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     @Inject internal lateinit var prefs: SharedPreferences
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
     @Inject internal lateinit var noteController: NoteController
-    @Inject internal lateinit var osmElementController: OsmElementController
+    @Inject internal lateinit var mapDataController: MapDataController
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
 
@@ -137,6 +137,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
         downloadedTilesDao.removeAll()
         val now = System.currentTimeMillis()
         noteController.deleteAllOlderThan(now)
-        osmElementController.deleteUnreferencedOlderThan(now)
+        mapDataController.deleteUnreferencedOlderThan(now)
     }
 }

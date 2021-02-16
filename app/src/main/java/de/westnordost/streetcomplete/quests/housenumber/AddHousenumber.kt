@@ -4,7 +4,7 @@ import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.*
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression

@@ -7,11 +7,13 @@ import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.streetcomplete.data.osm.changes.*
 import de.westnordost.streetcomplete.data.osm.changes.DeleteOsmElement
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementSource
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.changes.ChangeOsmElementTags
 import de.westnordost.streetcomplete.data.osm.changes.SplitOsmWay
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.*
+import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNote
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
@@ -28,10 +30,10 @@ import javax.inject.Singleton
 @Singleton class QuestController @Inject constructor(
     private val osmQuestController: OsmQuestController,
     private val osmNoteQuestController: OsmNoteQuestController,
-    private val osmElementChangesController: OsmElementChangesController,
+    private val elementEditsController: ElementEditsController,
     private val createNoteDB: CreateNoteDao,
     private val commentNoteDB: CommentNoteDao,
-    private val osmElementSource: OsmElementSource
+    private val mapDataSource: MapDataSource
 ): CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     /** Create a note for the given OSM Quest instead of answering it.
@@ -56,7 +58,7 @@ import javax.inject.Singleton
      */
     fun splitWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>, source: String): Boolean {
         val q = osmQuestController.get(osmQuestId) ?: return false
-        osmElementChangesController.addChange(SplitOsmWay(
+        elementEditsController.addEdit(SplitOsmWay(
             null,
             q.osmElementQuestType,
             q.elementType,
@@ -71,12 +73,12 @@ import javax.inject.Singleton
     /** Delete the element referred to by the given OSM quest id.
      * @return true if successful
      */
-    fun deleteOsmElement(osmQuestId: Long, source: String): Boolean {
+    fun deletePoiElement(osmQuestId: Long, source: String): Boolean {
         val q = osmQuestController.get(osmQuestId) ?: return false
 
         Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName}")
 
-        osmElementChangesController.addChange(DeleteOsmElement(
+        elementEditsController.addEdit(DeleteOsmElement(
             null,
             q.osmElementQuestType,
             q.elementType,
@@ -97,7 +99,7 @@ import javax.inject.Singleton
         val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName} with $changes")
 
-        osmElementChangesController.addChange(ChangeOsmElementTags(
+        elementEditsController.addEdit(ChangeOsmElementTags(
             null,
             q.osmElementQuestType,
             q.elementType,
@@ -141,7 +143,7 @@ import javax.inject.Singleton
     }
 
     fun getOsmElement(quest: OsmQuest): OsmElement? =
-        osmElementSource.get(quest.elementType, quest.elementId) as OsmElement?
+        mapDataSource.get(quest.elementType, quest.elementId) as OsmElement?
 
     private fun solveOsmNoteQuest(questId: Long, answer: NoteAnswer): Boolean {
         val q = osmNoteQuestController.get(questId) ?: return false
@@ -165,7 +167,7 @@ import javax.inject.Singleton
 
         Log.d(TAG, "Solved a ${q.type.javaClass.simpleName} quest: $changes")
 
-        osmElementChangesController.addChange(ChangeOsmElementTags(
+        elementEditsController.addEdit(ChangeOsmElementTags(
             null,
             q.osmElementQuestType,
             q.elementType,

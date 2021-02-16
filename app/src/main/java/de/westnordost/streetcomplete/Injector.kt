@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.data.DbModule
 import de.westnordost.streetcomplete.data.OsmApiModule
 import de.westnordost.streetcomplete.data.download.DownloadModule
 import de.westnordost.streetcomplete.data.meta.MetadataModule
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesModule
-import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementModule
+import de.westnordost.streetcomplete.data.osm.changes.ElementEditsModule
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementModule
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestModule
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestModule
@@ -36,8 +36,8 @@ object Injector {
             .uploadModule(UploadModule)
             .userModule(UserModule)
             .mapModule(MapModule)
-            .osmElementModule(OsmElementModule)
-            .osmElementChangesModule(OsmElementChangesModule)
+            .osmElementModule(ElementModule)
+            .osmElementEditsModule(ElementEditsModule)
             .osmNoteQuestModule(OsmNoteQuestModule)
             .osmQuestModule(OsmQuestModule)
             .visibleQuestTypeModule(VisibleQuestTypeModule)

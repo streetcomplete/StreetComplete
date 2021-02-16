@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.data
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesController
-import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementController
+import de.westnordost.streetcomplete.data.osm.changes.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.format
@@ -16,8 +16,8 @@ import javax.inject.Inject
 /** Deletes old unused data in the background */
 class Cleaner @Inject constructor(
     private val noteController: NoteController,
-    private val osmElementController: OsmElementController,
-    private val osmElementChangesController: OsmElementChangesController,
+    private val mapDataController: MapDataController,
+    private val elementEditsController: ElementEditsController,
     private val questTypeRegistry: QuestTypeRegistry
 ): CoroutineScope by CoroutineScope(Dispatchers.IO) {
 
@@ -40,7 +40,7 @@ class Cleaner @Inject constructor(
 
     private fun cleanElements(timestamp: Long) = launch {
         val time = currentTimeMillis()
-        osmElementController.deleteUnreferencedOlderThan(timestamp)
+        mapDataController.deleteUnreferencedOlderThan(timestamp)
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Cleaned elements in ${seconds.format(1)}s")
     }
@@ -56,7 +56,7 @@ class Cleaner @Inject constructor(
 
     private fun cleanOldHistory(timestamp: Long) = launch {
         val time = currentTimeMillis()
-        osmElementChangesController.deleteSyncedChangesOlderThan(timestamp)
+        elementEditsController.deleteSyncedEditsOlderThan(timestamp)
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Cleaned old history in ${seconds.format(1)}s")
     }

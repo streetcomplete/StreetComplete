@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry

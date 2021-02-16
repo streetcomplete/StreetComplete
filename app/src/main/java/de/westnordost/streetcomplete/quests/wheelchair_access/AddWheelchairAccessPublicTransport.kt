@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 
 class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>() {
 

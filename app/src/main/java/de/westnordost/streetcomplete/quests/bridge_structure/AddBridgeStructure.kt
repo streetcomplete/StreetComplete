@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.bridge_structure
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 
 class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>() {
 

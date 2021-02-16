@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.changes
 
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryDelete
 import org.junit.Test
 
 import org.junit.Assert.*

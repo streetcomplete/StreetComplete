@@ -22,9 +22,9 @@ import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.Injector
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition
-import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
-import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitAtLinePosition
+import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitAtPoint
+import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.ktx.*

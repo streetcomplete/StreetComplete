@@ -15,7 +15,7 @@ import de.westnordost.osmapi.map.data.Element
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesTable
+import de.westnordost.streetcomplete.data.osm.changes.ElementEditsTable
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import java.util.*
@@ -85,13 +85,13 @@ class AOsmElementDaoTest {
 
     @Test fun getUnusedAndOldIds() {
         val db = dbHelper.writableDatabase
-        db.insert(OsmElementChangesTable.NAME, null, contentValuesOf(
-            OsmElementChangesTable.Columns.ELEMENT_ID to 2L,
-            OsmElementChangesTable.Columns.ELEMENT_TYPE to "NODE"
+        db.insert(ElementEditsTable.NAME, null, contentValuesOf(
+            ElementEditsTable.Columns.ELEMENT_ID to 2L,
+            ElementEditsTable.Columns.ELEMENT_TYPE to "NODE"
         ))
-        db.insert(OsmElementChangesTable.NAME, null, contentValuesOf(
-            OsmElementChangesTable.Columns.ELEMENT_ID to 3L,
-            OsmElementChangesTable.Columns.ELEMENT_TYPE to "NODE"
+        db.insert(ElementEditsTable.NAME, null, contentValuesOf(
+            ElementEditsTable.Columns.ELEMENT_ID to 3L,
+            ElementEditsTable.Columns.ELEMENT_TYPE to "NODE"
         ))
         dao.putAll(listOf(
             createElement(1L, 1),
@@ -133,9 +133,9 @@ private class TestDbHelper(context: Context) : SQLiteOpenHelper(context, TESTDB,
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("""
-            CREATE TABLE ${OsmElementChangesTable.NAME} (
-                ${OsmElementChangesTable.Columns.ELEMENT_ID} int NOT NULL,
-                ${OsmElementChangesTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL
+            CREATE TABLE ${ElementEditsTable.NAME} (
+                ${ElementEditsTable.Columns.ELEMENT_ID} int NOT NULL,
+                ${ElementEditsTable.Columns.ELEMENT_TYPE} varchar(255) NOT NULL
             )
         """.trimIndent())
 

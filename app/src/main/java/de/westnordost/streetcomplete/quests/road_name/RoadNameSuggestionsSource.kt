@@ -7,13 +7,13 @@ import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementSource
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
 
 class RoadNameSuggestionsSource @Inject constructor(
-    private val osmElementSource: OsmElementSource
+    private val mapDataSource: MapDataSource
 ) {
 
     /** returns something like [{"": "17th Street", "de": "17. Straße", "en": "17th Street", "international": "17 🛣 ️" }, ...] */
@@ -21,7 +21,7 @@ class RoadNameSuggestionsSource @Inject constructor(
         if (points.isEmpty()) return emptyList()
 
         val bbox = points.enclosingBoundingBox().enlargedBy(maxDistance)
-        val mapData = osmElementSource.getMapDataWithGeometry(bbox)
+        val mapData = mapDataSource.getMapDataWithGeometry(bbox)
         val roadsWithNames = mapData.ways.filter { it.isRoadWithName() }
 
         val result = mutableMapOf<MutableMap<String, String>, Double>()

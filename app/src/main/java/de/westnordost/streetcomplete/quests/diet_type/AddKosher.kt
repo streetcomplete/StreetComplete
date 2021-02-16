@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.diet_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 
 class AddKosher : OsmFilterQuestType<DietAvailability>() {

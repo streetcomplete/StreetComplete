@@ -14,14 +14,14 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable
-import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable
-import de.westnordost.streetcomplete.data.osm.mapdata.WayTable
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables
+import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesTable
-import de.westnordost.streetcomplete.data.osm.changes.NewOsmElementIdProviderTable
+import de.westnordost.streetcomplete.data.osm.changes.ElementEditsTable
+import de.westnordost.streetcomplete.data.osm.changes.ElementIdProviderTable
 import de.westnordost.streetcomplete.data.osm.osmquest.*
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
@@ -42,23 +42,22 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         // OSM map data
         db.execSQL(ElementGeometryTable.CREATE)
         db.execSQL(NodeTable.CREATE)
-        db.execSQL(WayTable.CREATE)
-        db.execSQL(RelationTable.CREATE)
+        db.execSQL(WayTables.CREATE)
+        db.execSQL(RelationTables.CREATE)
 
         // changes made on OSM notes
         db.execSQL(CreateNoteTable.CREATE)
         db.execSQL(CommentNoteTable.CREATE)
 
         // changes made on OSM map data
-        db.execSQL(OsmElementChangesTable.CREATE)
-        db.execSQL(NewOsmElementIdProviderTable.CREATE)
+        db.execSQL(ElementEditsTable.CREATE)
+        db.execSQL(ElementIdProviderTable.CREATE)
 
         // quests
         db.execSQL(VisibleQuestTypeTable.CREATE)
 
         // quests based on OSM elements
         db.execSQL(OsmQuestTable.CREATE)
-        db.execSQL(OsmQuestTable.MERGED_VIEW_CREATE)
         db.execSQL(OsmQuestsHiddenTable.CREATE)
 
         // quests based on OSM notes

@@ -100,6 +100,7 @@ class QuestPinLayerManager @Inject constructor(
 
     override fun onInvalidated() {
         clear()
+        onNewScreenPosition()
     }
 
     private fun updateQuestsInRect(tilesRect: TilesRect) {

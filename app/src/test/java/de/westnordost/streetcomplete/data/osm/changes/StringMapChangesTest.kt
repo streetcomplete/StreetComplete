@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.changes
 
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChanges
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Test
@@ -74,7 +76,7 @@ class StringMapChangesTest {
 
         val conflict: StringMapEntryChange = mock()
         on(conflict.conflictsWith(someMap)).thenReturn(true)
-        
+
         val changes = StringMapChanges(listOf(mock(), mock(), conflict, mock(), conflict))
 
         changes.getConflictsTo(someMap)

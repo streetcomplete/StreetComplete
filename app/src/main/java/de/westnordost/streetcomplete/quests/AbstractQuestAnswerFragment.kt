@@ -18,6 +18,7 @@ import androidx.core.os.bundleOf
 import androidx.core.text.parseAsHtml
 import androidx.core.view.isGone
 import com.google.android.flexbox.FlexboxLayout
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -110,8 +111,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         /** Called when the user chose to skip the quest  */
         fun onSkippedQuest(questId: Long, group: QuestGroup)
 
-        /** Called when the element shall be deleted */
-        fun onDeleteElement(osmQuestId: Long, element: OsmElement)
+        /** Called when the node shall be deleted */
+        fun onDeletePoiNode(osmQuestId: Long)
 
         /** Called when a new feature has been selected for an element (a shop of some kind) */
         fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>)
@@ -205,15 +206,17 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     }
 
     private fun createDeleteOrReplaceElementAnswer(): OtherAnswer? {
-        val isDeleteElementEnabled = (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
+        val isDeletePoiEnabled =
+            (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
+                && osmElement?.type == Element.Type.NODE
         val isReplaceShopEnabled = (questType as? OsmElementQuestType)?.isReplaceShopEnabled == true
-        if (!isDeleteElementEnabled && !isReplaceShopEnabled) return null
-        check(!(isDeleteElementEnabled && isReplaceShopEnabled)) {
+        if (!isDeletePoiEnabled && !isReplaceShopEnabled) return null
+        check(!(isDeletePoiEnabled && isReplaceShopEnabled)) {
             "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
         }
 
         return OtherAnswer(R.string.quest_generic_answer_does_not_exist) {
-            if (isDeleteElementEnabled) deleteElement()
+            if (isDeletePoiEnabled) deletePoiNode()
             else if (isReplaceShopEnabled) replaceShopElement()
         }
     }
@@ -379,7 +382,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
     }
 
-    protected fun deleteElement() {
+    protected fun deletePoiNode() {
         val context = context ?: return
 
         val message = (
@@ -390,7 +393,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         AlertDialog.Builder(context)
             .setMessage(message)
             .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
-                listener?.onDeleteElement(questId, osmElement!!)
+                listener?.onDeletePoiNode(questId)
             }
             .setNeutralButton(R.string.leave_note) { _, _ ->
                 composeNote()

@@ -13,10 +13,10 @@ import androidx.fragment.app.Fragment
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChange
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesController
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesSource
-import de.westnordost.streetcomplete.data.osm.mapdata.OsmElementSource
+import de.westnordost.streetcomplete.data.osm.changes.ElementEdit
+import de.westnordost.streetcomplete.data.osm.changes.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.changes.ElementEditsSource
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.ktx.popIn
@@ -33,22 +33,22 @@ import javax.inject.Inject
 class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    @Inject internal lateinit var osmElementChangesController: OsmElementChangesController
-    @Inject internal lateinit var osmElementSource: OsmElementSource
+    @Inject internal lateinit var elementEditsController: ElementEditsController
+    @Inject internal lateinit var mapDataSource: MapDataSource
     @Inject internal lateinit var uploadProgressSource: UploadProgressSource
     @Inject internal lateinit var featureDictionaryFutureTask: FutureTask<FeatureDictionary>
 
     private val undoButton get() = view as ImageButton
 
     /* undo button is not shown when there is nothing to undo */
-    private val osmElementChangesListener = object : OsmElementChangesSource.Listener {
-        override fun onAddedChange(change: OsmElementChange) {
+    private val osmElementChangesListener = object : ElementEditsSource.Listener {
+        override fun onAddedEdit(edit: ElementEdit) {
             launch(Dispatchers.Main) { animateInIfAnythingToUndo() }
         }
-        override fun onSyncedChange(change: OsmElementChange) {
+        override fun onSyncedEdit(edit: ElementEdit) {
             launch(Dispatchers.Main) { animateOutIfNothingLeftToUndo() }
         }
-        override fun onDeletedChange(change: OsmElementChange) {
+        override fun onDeletedEdit(edit: ElementEdit) {
             launch(Dispatchers.Main) { animateOutIfNothingLeftToUndo() }
         }
     }
@@ -71,7 +71,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
 
         undoButton.setOnClickListener {
             undoButton.isEnabled = false
-            val change = osmElementChangesController.getFirstUndoableChange()
+            val change = elementEditsController.getFirstUndoableEdit()
             if (change != null) confirmUndo(change)
         }
     }
@@ -80,13 +80,13 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
         super.onStart()
         updateUndoButtonVisibility()
         updateUndoButtonEnablement(true)
-        osmElementChangesController.addListener(osmElementChangesListener)
+        elementEditsController.addListener(osmElementChangesListener)
         uploadProgressSource.addUploadProgressListener(uploadProgressListener)
     }
 
     override fun onStop() {
         super.onStop()
-        osmElementChangesController.removeListener(osmElementChangesListener)
+        elementEditsController.removeListener(osmElementChangesListener)
         uploadProgressSource.removeUploadProgressListener(uploadProgressListener)
     }
 
@@ -97,21 +97,21 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
 
     /* ------------------------------------------------------------------------------------------ */
 
-    private fun confirmUndo(change: OsmElementChange) {
+    private fun confirmUndo(edit: ElementEdit) {
         val ctx = context ?: return
-        val element = osmElementSource.get(change.elementType, change.elementId)
+        val element = mapDataSource.get(edit.elementType, edit.elementId)
 
         val inner = LayoutInflater.from(ctx).inflate(R.layout.dialog_undo, null, false)
         val icon = inner.findViewById<ImageView>(R.id.icon)
-        icon.setImageResource(change.questType.icon)
+        icon.setImageResource(edit.questType.icon)
         val text = inner.findViewById<TextView>(R.id.text)
-        text.text = resources.getHtmlQuestTitle(change.questType, element, featureDictionaryFutureTask)
+        text.text = resources.getHtmlQuestTitle(edit.questType, element, featureDictionaryFutureTask)
 
         AlertDialog.Builder(ctx)
             .setTitle(R.string.undo_confirm_title)
             .setView(inner)
             .setPositiveButton(R.string.undo_confirm_positive) { _, _ ->
-                osmElementChangesController.undoChange(change.id!!)
+                elementEditsController.undoEdit(edit.id!!)
                 updateUndoButtonEnablement(true)
             }
             .setNegativeButton(R.string.undo_confirm_negative) { _, _ -> updateUndoButtonEnablement(true) }
@@ -120,7 +120,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     }
 
     private fun updateUndoButtonVisibility() {
-        view?.isGone = osmElementChangesController.getFirstUndoableChange() == null
+        view?.isGone = elementEditsController.getFirstUndoableEdit() == null
     }
 
     private fun updateUndoButtonEnablement(enable: Boolean) {
@@ -128,13 +128,13 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     }
 
     private fun animateInIfAnythingToUndo() {
-        if (!undoButton.isVisible && osmElementChangesController.getFirstUndoableChange() != null) {
+        if (!undoButton.isVisible && elementEditsController.getFirstUndoableEdit() != null) {
             undoButton.popIn()
         }
     }
 
     private fun animateOutIfNothingLeftToUndo() {
-        if (undoButton.isVisible && osmElementChangesController.getFirstUndoableChange() == null) {
+        if (undoButton.isVisible && elementEditsController.getFirstUndoableEdit() == null) {
             undoButton.popOut().withEndAction { undoButton.visibility = View.INVISIBLE }
         }
     }

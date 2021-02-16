@@ -16,7 +16,7 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
@@ -148,7 +148,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
     override fun onSkippedQuest(questId: Long, group: QuestGroup) {
         popQuestForm("Skipping quest")
     }
-    override fun onDeleteElement(osmQuestId: Long, element: OsmElement) {
+    override fun onDeletePoiNode(osmQuestId: Long) {
         popQuestForm("Deleting element")
     }
     override fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>) {

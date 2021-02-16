@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.osm.mapdata.WayTable
+import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.NAME
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.Columns.WAY_ID
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.Columns.IS_FORWARD
@@ -44,7 +44,7 @@ class WayTrafficFlowDao @Inject constructor(private val dbHelper: SQLiteOpenHelp
     }
 
     fun deleteUnreferenced() {
-        val query = "$WAY_ID NOT IN (SELECT ${WayTable.Columns.ID} AS $WAY_ID FROM ${WayTable.NAME});"
+        val query = "$WAY_ID NOT IN (SELECT ${WayTables.Columns.ID} AS $WAY_ID FROM ${WayTables.NAME});"
 
         db.delete(NAME, query, null)
     }

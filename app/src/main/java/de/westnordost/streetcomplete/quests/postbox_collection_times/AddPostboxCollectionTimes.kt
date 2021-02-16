@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.postbox_collection_times
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 

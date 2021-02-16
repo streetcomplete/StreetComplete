@@ -3,13 +3,13 @@ package de.westnordost.streetcomplete.quests.bus_stop_shelter
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.*
 
 class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
 
     override val elementFilter = """
-        nodes with 
+        nodes with
         (
           (public_transport = platform and ~bus|trolleybus|tram ~ yes)
           or

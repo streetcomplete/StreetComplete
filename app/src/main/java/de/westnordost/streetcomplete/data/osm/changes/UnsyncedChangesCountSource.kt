@@ -11,7 +11,7 @@ import javax.inject.Singleton
 @Singleton class UnsyncedChangesCountSource @Inject constructor(
     private val commentNoteDao: CommentNoteDao,
     private val createNoteDao: CreateNoteDao,
-    private val osmElementChangesSource: OsmElementChangesSource
+    private val elementEditsSource: ElementEditsSource
 ) {
     private val listeners: MutableList<UnsyncedChangesCountListener> = CopyOnWriteArrayList()
 
@@ -19,7 +19,7 @@ import javax.inject.Singleton
 
     /** count of unsynced changes that count towards the statistics. That is, unsynced note stuff
      *  doesn't count and reverts of changes count negative */
-    var solvedCount: Int = osmElementChangesSource.getChangesCountSolved()
+    var solvedCount: Int = elementEditsSource.getEditsCountSolved()
     private set
 
     private var commentNoteCount: Int = commentNoteDao.getCount()
@@ -34,7 +34,7 @@ import javax.inject.Singleton
         field = value
         onUpdate(diff)
     }
-    private var osmElementChangesCount: Int = osmElementChangesSource.getUnsyncedChangesCount()
+    private var osmElementChangesCount: Int = elementEditsSource.getUnsyncedEditsCount()
     set(value) {
         val diff = value - field
         field = value
@@ -49,25 +49,25 @@ import javax.inject.Singleton
         override fun onAddedCreateNote() { ++createNoteCount }
         override fun onDeletedCreateNote() { --createNoteCount }
     }
-    private val osmElementChangesListener = object : OsmElementChangesSource.Listener {
-        override fun onAddedChange(change: OsmElementChange) {
-            if (change.isSynced) return
+    private val osmElementChangesListener = object : ElementEditsSource.Listener {
+        override fun onAddedEdit(edit: ElementEdit) {
+            if (edit.isSynced) return
             ++osmElementChangesCount
-            if (change is IsRevert) --solvedCount else ++solvedCount
+            if (edit.action is IsRevert) --solvedCount else ++solvedCount
         }
-        override fun onSyncedChange(change: OsmElementChange) {
+        override fun onSyncedEdit(edit: ElementEdit) {
             --osmElementChangesCount
-            if (change is IsRevert) ++solvedCount else --solvedCount
+            if (edit.action is IsRevert) ++solvedCount else --solvedCount
         }
-        override fun onDeletedChange(change: OsmElementChange) {
-            if (change.isSynced) return
+        override fun onDeletedEdit(edit: ElementEdit) {
+            if (edit.isSynced) return
             --osmElementChangesCount
-            if (change is IsRevert) ++solvedCount else --solvedCount
+            if (edit.action is IsRevert) ++solvedCount else --solvedCount
         }
     }
 
     init {
-        osmElementChangesSource.addListener(osmElementChangesListener)
+        elementEditsSource.addListener(osmElementChangesListener)
         createNoteDao.addListener(createNoteListener)
         commentNoteDao.addListener(commentNoteListener)
     }

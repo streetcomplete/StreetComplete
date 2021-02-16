@@ -5,7 +5,7 @@ import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;
-import de.westnordost.streetcomplete.data.osm.upload.OsmElementChangesUploader;
+import de.westnordost.streetcomplete.data.osm.upload.ElementEditsUploader;
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNotesUploader;
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNotesUploader;
 
@@ -16,12 +16,12 @@ public class UploadModule2
 	*  and cannot provide the dependency for UploadService. So, it must stay in Java (for now) */
 	@Provides public static List<? extends Uploader> uploaders(
 			CommentNotesUploader commentNotesUploader,
-			OsmElementChangesUploader osmElementChangesUploader,
+			ElementEditsUploader elementEditsUploader,
 			CreateNotesUploader createNotesUploader
 	) {
 		return Arrays.asList(
 				commentNotesUploader,
-				osmElementChangesUploader,
+				elementEditsUploader,
 				createNotesUploader
 		);
 	}

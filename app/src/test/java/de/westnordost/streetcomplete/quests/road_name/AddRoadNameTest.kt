@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.LocalizedName
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test

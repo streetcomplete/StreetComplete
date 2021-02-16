@@ -38,7 +38,7 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuDialog
 import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
@@ -318,11 +318,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
         questController.hide(questId, group)
     }
 
-    override fun onDeleteElement(osmQuestId: Long, element: OsmElement) { launch {
+    override fun onDeletePoiNode(osmQuestId: Long) { launch {
         val quest = questController.get(osmQuestId, QuestGroup.OSM)
         if (quest != null && assureIsSurvey(quest.geometry)) {
             closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
-            if (questController.deleteOsmElement(osmQuestId, "survey")) {
+            if (questController.deletePoiElement(osmQuestId, "survey")) {
                 onQuestSolved(quest, "survey")
             }
         }

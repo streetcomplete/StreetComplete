@@ -8,11 +8,11 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
@@ -159,7 +159,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
 
     /** Just add a sidewalk if we implicitly know from the answer that there is one */
     private fun applySidewalkAnswerTo(
-        cyclewayLeft: Cycleway?, cyclewayRight: Cycleway?, changes: StringMapChangesBuilder ) {
+        cyclewayLeft: Cycleway?, cyclewayRight: Cycleway?, changes: StringMapChangesBuilder) {
 
         val hasSidewalkLeft = cyclewayLeft != null && cyclewayLeft.isOnSidewalk
         val hasSidewalkRight = cyclewayRight != null && cyclewayRight.isOnSidewalk
@@ -181,7 +181,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
     }
 
     private fun applyCyclewayAnswerTo(cycleway: Cycleway, side: Side, dir: Int,
-                                      changes: StringMapChangesBuilder ) {
+                                      changes: StringMapChangesBuilder) {
         val directionValue = when {
             dir > 0 -> "yes"
             dir < 0 -> "-1"

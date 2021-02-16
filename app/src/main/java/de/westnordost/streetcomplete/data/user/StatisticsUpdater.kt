@@ -5,8 +5,8 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.countryboundaries.getIds
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.changes.IsRevert
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChange
-import de.westnordost.streetcomplete.data.osm.changes.OsmElementChangesSource
+import de.westnordost.streetcomplete.data.osm.changes.ElementEdit
+import de.westnordost.streetcomplete.data.osm.changes.ElementEditsSource
 import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
 import java.util.*
 import java.util.concurrent.FutureTask
@@ -22,14 +22,14 @@ class StatisticsUpdater @Inject constructor(
     private val statisticsDownloader: StatisticsDownloader,
     private val countryBoundaries: FutureTask<CountryBoundaries>,
     @Named("QuestAliases") private val questAliases: List<Pair<String, String>>
-) : OsmElementChangesSource.Listener {
+) : ElementEditsSource.Listener {
 
-    override fun onSyncedChange(change: OsmElementChange) {
-        val questName = change.questType::class.simpleName!!
-        if (change is IsRevert) {
-            subtractOne(questName, change.position)
+    override fun onSyncedEdit(edit: ElementEdit) {
+        val questName = edit.questType::class.simpleName!!
+        if (edit.action is IsRevert) {
+            subtractOne(questName, edit.position)
         } else {
-            addOne(questName, change.position)
+            addOne(questName, edit.position)
         }
     }
 

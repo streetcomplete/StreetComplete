@@ -9,8 +9,8 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.verifyAnswer
