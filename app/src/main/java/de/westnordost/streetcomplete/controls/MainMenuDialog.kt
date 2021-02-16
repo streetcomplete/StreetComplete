@@ -24,8 +24,12 @@ class MainMenuDialog(
             context.startActivity(intent)
             dismiss()
         }
-        view.teamModeButton.setOnClickListener {
+        view.enableTeamModeButton.setOnClickListener {
             TeamModeDialog(context).show()
+            dismiss()
+        }
+        view.disableTeamModeButton.setOnClickListener {
+            // TODO: disable team mode
             dismiss()
         }
         view.settingsButton.setOnClickListener {
@@ -41,6 +45,16 @@ class MainMenuDialog(
         view.downloadButton.setOnClickListener {
             onClickDownload()
             dismiss()
+        }
+
+        if (false) { // TODO: if team mode is enabled
+            TeamModeColorCircle.setViewColorsAndText(
+                view.disableTeamModeButton,
+                2 // TODO: use indexInTeam variable
+            )
+            view.bigMenuItemsContainer.removeView(view.enableTeamModeButton)
+        } else {
+            view.bigMenuItemsContainer.removeView(view.disableTeamModeButton)
         }
 
         view.doOnPreDraw {
