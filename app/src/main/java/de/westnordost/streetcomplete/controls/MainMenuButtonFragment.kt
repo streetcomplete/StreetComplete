@@ -43,7 +43,21 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
     /* ------------------------------------------------------------------------------------------ */
 
     internal fun onClickMainMenu() {
-        context?.let { MainMenuDialog(it, this::onClickDownload).show() }
+        MainMenuDialog(
+            requireContext(),
+            null, // TODO: if enabled: indexInTeam, else: null
+            this::onClickDownload,
+            this::enableTeamMode,
+            this::disableTeamMode
+        ).show()
+    }
+
+    private fun enableTeamMode(teamSize: Int, indexInTeam: Int) {
+        // TODO: save preference
+    }
+
+    private fun disableTeamMode() {
+        // TODO: save preference
     }
 
     /* ------------------------------------ Download Button  ------------------------------------ */

@@ -14,7 +14,10 @@ import kotlinx.android.synthetic.main.dialog_main_menu.view.*
 /** Shows a dialog containing the main menu items */
 class MainMenuDialog(
     context: Context,
-    onClickDownload: () -> Unit
+    indexInTeam: Int?,
+    onClickDownload: () -> Unit,
+    onEnableTeamMode: (Int, Int) -> Unit,
+    onDisableTeamMode: () -> Unit,
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_main_menu, null)
@@ -25,11 +28,11 @@ class MainMenuDialog(
             dismiss()
         }
         view.enableTeamModeButton.setOnClickListener {
-            TeamModeDialog(context).show()
+            TeamModeDialog(context, onEnableTeamMode).show()
             dismiss()
         }
         view.disableTeamModeButton.setOnClickListener {
-            // TODO: disable team mode
+            onDisableTeamMode()
             dismiss()
         }
         view.settingsButton.setOnClickListener {
@@ -47,11 +50,8 @@ class MainMenuDialog(
             dismiss()
         }
 
-        if (false) { // TODO: if team mode is enabled
-            TeamModeColorCircle.setViewColorsAndText(
-                view.disableTeamModeButton,
-                2 // TODO: use indexInTeam variable
-            )
+        if (indexInTeam != null) {
+            TeamModeColorCircle.setViewColorsAndText(view.disableTeamModeButton, indexInTeam)
             view.bigMenuItemsContainer.removeView(view.enableTeamModeButton)
         } else {
             view.bigMenuItemsContainer.removeView(view.disableTeamModeButton)

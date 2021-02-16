@@ -15,7 +15,8 @@ import java.util.concurrent.CopyOnWriteArrayList
 
 /** Shows a dialog containing the team mode settings */
 class TeamModeDialog(
-    context: Context
+    context: Context,
+    onEnableTeamMode: (Int, Int) -> Unit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
     private var selectedTeamSize: Int? = null
     private var selectedIndexInTeam: Int? = null
@@ -49,7 +50,7 @@ class TeamModeDialog(
         }
 
         setButton(BUTTON_POSITIVE, context.resources.getText(android.R.string.ok)) { _, _ ->
-            // TODO: report selected numbers to calling dialog
+            onEnableTeamMode(selectedTeamSize!!, selectedIndexInTeam!!)
             dismiss()
         }
 
