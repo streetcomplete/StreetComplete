@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.max_weight.NoMaxWeightSign
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddPostboxRoyalCypherForm : AImageListQuestAnswerFragment<PostboxRoyalCypher, PostboxRoyalCypher>() {
@@ -19,7 +21,7 @@ class AddPostboxRoyalCypherForm : AImageListQuestAnswerFragment<PostboxRoyalCyph
     )
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_postboxRoyalCypher_type_none) { applyAnswer(PostboxRoyalCypher.NONE) }
+        OtherAnswer(R.string.quest_postboxRoyalCypher_type_none) { confirmNoCypher() }
     )
 
     override val itemsPerRow = 3
@@ -31,5 +33,14 @@ class AddPostboxRoyalCypherForm : AImageListQuestAnswerFragment<PostboxRoyalCyph
 
     override fun onClickOk(selectedItems: List<PostboxRoyalCypher>) {
         applyAnswer(selectedItems.single())
+    }
+
+    private fun confirmNoCypher() {
+        activity?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(PostboxRoyalCypher.NONE) }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+        }
     }
 }
