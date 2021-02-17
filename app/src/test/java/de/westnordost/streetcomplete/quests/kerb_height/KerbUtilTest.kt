@@ -177,6 +177,24 @@ class KerbUtilTest {
         assertEquals(0, mapData.findAllKerbNodes().toList().size)
     }
 
+    @Test fun `intersection with a road doesn't count`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmNode(1L, 1, 0.0,0.0, null),
+            OsmWay(1L, 1, listOf(1,2), mapOf(
+                "highway" to "footway",
+                "footway" to "crossing"
+            )),
+            OsmWay(2L, 1, listOf(1,4), mapOf(
+                "highway" to "footway",
+                "footway" to "sidewalk"
+            )),
+            OsmWay(3L, 1, listOf(5,1,3), mapOf(
+                "highway" to "secondary",
+            )),
+        ))
+        assertEquals(0, mapData.findAllKerbNodes().toList().size)
+    }
+
     @Test fun `nodes are not returned twice`() {
         val mapData = TestMapDataWithGeometry(listOf(
             OsmNode(1L, 1, 0.0,0.0, mapOf(

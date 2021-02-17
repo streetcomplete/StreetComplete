@@ -525,7 +525,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_pagoda">"Pagode"</string>
     <string name="quest_buildingType_synagogue">"Synagoge"</string>
     <string name="quest_buildingType_civic">"Öffentliches Gebäude"</string>
-    <string name="quest_buildingType_civic_description">"Gebäude für bürgerliche Einrichtungen"</string>
+    <string name="quest_buildingType_civic_description">"Gebäude für öffentliche Einrichtungen"</string>
     <string name="quest_buildingType_kindergarten">"Gebäude eines Kindergartens"</string>
     <string name="quest_buildingType_school">"Schulgebäude"</string>
     <string name="quest_buildingType_college">"Hochschulgebäude"</string>

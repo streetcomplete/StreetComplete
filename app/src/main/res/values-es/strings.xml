@@ -2401,6 +2401,16 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Seleccionar que no hay carril bici"</string>
     <string name="quest_construction_completed_at_known_date">"Estará terminado en la fecha..."</string>
     <string name="quest_construction_completion_date_title">"¿Cuándo estará terminado?"</string>
+    <string name="quest_surface_value_clay">"arcilla"</string>
     <string name="quest_surface_value_artificial_turf">"Césped artificial"</string>
     <string name="quest_surface_value_tartan">"Tartán"</string>
+    <string name="quest_pitchSurface_title_track">"¿Qué superficie tiene esta pista deportiva?"</string>
+    <string name="quest_bicycle_parking_access_title">"¿Está restringido a ciertas personas el aparcar una bici aquí?"</string>
+    <string name="quest_bicycle_parking_fee_title">"¿Hay que pagar para aparcar una bici aquí?"</string>
+    <string name="quest_buildingType_house_description2">"Vivienda unifamiliar"</string>
+    <string name="quest_drinking_water_title">"¿Es potable el agua? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Potable (señalizado)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Potable (no señalizado)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"No potable (señalizado)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"No potable (no señalizado)"</string>
 </resources>

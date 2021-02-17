@@ -17,7 +17,7 @@ class AddTrafficSignalsVibration : OsmFilterQuestType<Boolean>() {
         )
     """
 
-    override val commitMessage = "Add $VIBRATING_BUTTON tag"
+    override val commitMessage = "Add whether traffic signals have tactile indication that it's safe to cross"
     override val wikiLink = "Key:$VIBRATING_BUTTON"
     override val icon = R.drawable.ic_quest_blind_traffic_lights
 

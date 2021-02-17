@@ -1,3 +1,12 @@
+v30.1: |
+  <ul>
+  <li>Max height: Do not ask for roads that merely connect to bridges (#2555)</li>
+  <li>Kerbs: Do not ask for kerbs on nodes that are intersections with another road or path (#2564)</li>
+  <li>Roof shape: Also ask for buildings where no roof levels have been specified (#2556), by @dbdean</li>
+  <li>Check existence: Ask for parking ticket machines every few years too (#2567), by @peternewman</li>
+  <li>Traffic signal sound and vibration: Better changeset comments (#2578), by @arrival-spring</li>
+  </ul>
+
 v30.0: |
   <p>Did you already <a href="https://osmf.limequery.org/281662">take the survey</a>
   of the OpenStreetMap Foundation? It's open only till Feb 14.</p>

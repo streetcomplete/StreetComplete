@@ -40,11 +40,7 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Siga-me"</string>
-
-    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Contribuidores do OpenStreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"Outras respostas..."</string>
 
     <!-- Fuzzy -->
@@ -358,8 +354,6 @@ Contudo, antes enviar as suas alterações, a aplicação confirma com &lt;a hre
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Que tipo de estrada de serviço é esta?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"É uma rua de sentido único?"</string>
 
     <!-- Fuzzy -->
@@ -379,7 +373,7 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_name_answer_noName">"Não tem nome…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_name_answer_noName_confirmation_title">"Tem a certeza de que não tem nome?"</string>
+    <string name="quest_name_answer_noName_confirmation_title">"De certeza que não tem nome?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"Sim, não tem"</string>
@@ -1125,6 +1119,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"É uma mesa de piquenique"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Que religião é praticada neste local?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_christian">"Cristianismo"</string>
@@ -1732,6 +1727,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"Varia ao longo do trajecto..."</string>
+    <string name="quest_split_way_description">"Se houver diferenças ao longo do caminho, o primeiro passo é dividi-lo. Depois, a questão pode ser respondida para cada pedaço do caminho, separadamente. Dividir agora?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Toque na via para dividir no ponto onde a resposta é diferente. Tente ser o mais preciso possível, pode fazer zoom como habitualmente"</string>
@@ -1774,8 +1770,74 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Estas escadas têm corrimão?"</string>
+    <string name="quest_openingHours_no_name_title">"A que horas é que local abre? (%s)"</string>
+    <string name="about_summary_current_version">"Versão atual: %s"</string>
+    <string name="quest_postboxRef_title">"Qual é o número de referência desta caixa de correio?"</string>
+    <string name="quest_ref_answer_noRef">"Nenhum número de referência visível ..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"A estrada na ilustração é rodada da mesma forma que no mapa no local do alfinete."</string>
+    <string name="quest_recycling_materials_title">"O que pode ser deixado aqui para reciclagem?"</string>
+    <string name="quest_recycling_materials_note">"Se algo diferente puder ser reciclada, por favor deixa uma nota."</string>
+    <string name="quest_recycling_type_batteries">"Baterias"</string>
+    <string name="quest_recycling_type_cans">"Latas"</string>
+    <string name="quest_recycling_type_clothes">"Roupas"</string>
+    <string name="quest_recycling_type_green_waste">"Resíduos verdes"</string>
+    <string name="quest_recycling_type_glass_bottles">"Garrafas e frascos de vidro"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Garrafas e frascos"</string>
+    <string name="quest_recycling_type_paper">"Papel"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plástico"</string>
+    <string name="quest_recycling_type_plastic">"Qualquer plástico"</string>
+    <string name="quest_recycling_type_shoes">"Calçado"</string>
+    <string name="quest_recycling_type_electric_appliances">"Eletrodomésticos"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Apenas garrafas de plástico"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Apenas embalagens de plástico"</string>
+    <string name="quest_recycling_type_scrap_metal">"Ferro velho"</string>
+    <string name="quest_recycling_type_any_glass">"Qualquer vidro"</string>
+    <string name="quest_recycling_glass_title">"Só podem ser reciclados garrafas e frascos de vidro aqui, ou qualquer tipo de vidro?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Exemplos de vidros que frequentemente não são aceites: vidros temperado, janelas, louça de vidro, lâmpadas ou espelhos."</string>
+    <string name="about_title_changelog">"Histórico de versões"</string>
+    <string name="title_whats_new">"O que há de novo?"</string>
+    <string name="about_title_rate">"Avalia esta aplicação"</string>
+    <string name="about_summary_rate">"no Google Play"</string>
+    <string name="about_title_donate">"Doar"</string>
+    <string name="about_summary_donate">"Mostra o teu apreço! ❤️"</string>
+    <string name="about_description_donate">"Obrigado por apoiares esta aplicação! Para veres as doações atuais e fazeres a tua doação, toca na respetiva plataforma:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Qual é a religião pratica em %s?"</string>
+    <string name="quest_buildingType_garages_description">"Espaços separados para diferentes proprietários / inquilinos"</string>
+    <string name="quest_tourism_information_title">"Que tipo de informação turística é esta?"</string>
+    <string name="quest_tourism_information_office">"Posto turístico"</string>
+    <string name="quest_tourism_information_board">"Quadro de informações"</string>
+    <string name="quest_tourism_information_map">"Mapa"</string>
+    <string name="quest_tourism_information_guidepost">"Indicação"</string>
+    <string name="quest_recycling_materials_answer_waste">"É para resíduos em geral"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Então, este é um recipiente para qualquer resíduo, como lixo doméstico ensacado ou comercial?"</string>
+    <string name="user_profile">"O meu Perfil"</string>
+    <string name="user_achievements_title">"Conquistas"</string>
+    <string name="user_profile_title">"Perfil"</string>
+    <string name="user_statistics_quest_wiki_link">"Documentação"</string>
+    <string name="link_category_intro_title">"Introdução"</string>
+    <string name="link_category_editors_title">"Contribuindo"</string>
+    <string name="link_category_editors_description">"Editores e outras formas de contribuir para o OpenStreetMap"</string>
+    <string name="link_category_maps_title">"Mapas"</string>
+    <string name="link_cyclosm_description">"Um mapa para ciclistas"</string>
+    <string name="link_wheelmap_description">"Um mapa para encontrar lugares acessíveis a cadeiras de rodas"</string>
+    <string name="link_osm_buildings_description">"Um mapa que mostra os edifícios em 3D"</string>
+    <string name="link_openvegemap_description">"Descubra restaurantes vegetarianos e veganos na sua cidade"</string>
+    <string name="link_vespucci_description">"Editor OSM avançado para Android"</string>
+    <string name="link_learnosm_description">"Novo no OpenStreetMap? Este é um guia para iniciantes"</string>
+    <string name="achievement_bicyclist_title">"Ciclista"</string>
+    <string name="achievement_wheelchair_title">"Mobilidade"</string>
+    <string name="achievement_blind_title">"Sexto sentido"</string>
+    <string name="action_about2">"Sobre"</string>
+    <string name="map_btn_menu">"Menu"</string>
+    <string name="credits_main_contributors_title">"Contribuidores principais"</string>
+    <string name="about_title_sponsors">"Patrocinadores"</string>
+    <string name="quest_board_type_history">"História"</string>
+    <string name="quest_board_type_geology">"Geologia"</string>
+    <string name="quest_board_type_plants">"Plantas"</string>
+    <string name="quest_board_type_wildlife">"Vida selvagem"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"Internacional"</string>
     <string name="at_housename">"Nome do edifício %s:"</string>
     <string name="at_conscription_and_street_number">"Número matricial %1$s, número de orientação %2$s:"</string>
 
@@ -1783,6 +1845,32 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="at_conscription_number">"Número matricial %s:"</string>
     <string name="at_housenumber">"número de porta %s:"</string>
     <string name="quest_openingHours_name_type_title">"Qual o horário de funcionamento de %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Adicionar dias de folga"</string>
+    <string name="quest_openingHours_off_day">"Dia de folga"</string>
+    <string name="quest_openingHours_unspecified_range">"Não especificado"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) é acessível a cadeira de rodas?"</string>
+    <string name="pref_title_resurvey_intervals">"Intervalo de pesquisa"</string>
+    <string name="resurvey_intervals_less_often">"Perguntar com menos frequência"</string>
+    <string name="resurvey_intervals_default">"Padrão"</string>
+    <string name="resurvey_intervals_more_often">"Perguntar com mais frequência"</string>
     <string name="quest_traffic_signals_sound_title">"Existe aqui sinalização sonora para invisuais?"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Que tipo de barreiras existe nesta passagem de nível?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Sem barreiras"</string>
+    <string name="quest_steps_ramp_title">"Estas escada têm rampa? De que tipo?"</string>
+    <string name="quest_steps_ramp_bicycle">"Rampa para bicicleca"</string>
+    <string name="quest_steps_ramp_stroller">"Rampa para carrinho de bebé"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rampa para cadeira de rodas"</string>
+    <string name="achievement_citizen_title">"Cidadão"</string>
+    <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_buildingType_historic">"Histórico"</string>
+    <string name="quest_buildingType_abandoned">"Abandonado"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Está correto?"</string>
+    <string name="quest_construction_completion_date_title">"Quando vai estar completo?"</string>
+    <string name="quest_surface_value_clay">"Arginla"</string>
+    <string name="quest_surface_value_artificial_turf">"Relva artificial"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="quest_drinking_water_potable_signed">"Potável (sinalizado)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Potável (não sinalizado)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Impotável (sinalizado)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Impotável (não sinalizado)"</string>
 </resources>
