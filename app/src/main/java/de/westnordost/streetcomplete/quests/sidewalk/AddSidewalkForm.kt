@@ -26,7 +26,6 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
     override val contentPadding = false
 
     private var streetSideRotater: StreetSideRotater? = null
-    private var rotateTheButton: StreetSideRotater? = null
     private var leftSide: Sidewalk? = null
     private var rightSide: Sidewalk? = null
 
