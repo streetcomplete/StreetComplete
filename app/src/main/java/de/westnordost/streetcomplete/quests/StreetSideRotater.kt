@@ -11,7 +11,8 @@ import de.westnordost.streetcomplete.view.StreetRotateable
 class StreetSideRotater(
     private val puzzle: StreetRotateable,
     private val compassView: View,
-    geometry: ElementPolylinesGeometry
+    geometry: ElementPolylinesGeometry,
+    private val lastAnswerButton: StreetRotateable? = null
 ) {
     private val wayOrientationAtCenter = geometry.getOrientationAtCenterLineInDegrees()
     private val uiHandler = Handler(Looper.getMainLooper())
@@ -28,6 +29,7 @@ class StreetSideRotater(
         puzzle.setStreetRotation(wayOrientationAtCenter + rotation.toDegrees())
         compassView.rotation = rotation.toDegrees()
         compassView.rotationX = tilt.toDegrees()
+        lastAnswerButton?.setStreetRotation(wayOrientationAtCenter + rotation.toDegrees())
     }
 
     private fun Float.toDegrees() = (180 * this / Math.PI).toFloat()
