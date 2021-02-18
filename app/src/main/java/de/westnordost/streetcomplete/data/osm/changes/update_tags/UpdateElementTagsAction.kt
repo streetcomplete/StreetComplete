@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.changes.update_tags
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
+import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.changes.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.copy
 import de.westnordost.streetcomplete.util.distanceTo
 
@@ -24,12 +22,12 @@ import de.westnordost.streetcomplete.util.distanceTo
  *  the tag update made may not be correct anymore, so that is considered a conflict.
  *  */
 class UpdateElementTagsAction(
-    private val originalElement: Element,
+    private val spatialPartsOfOriginalElement: SpatialPartsOfElement,
     private val changes: StringMapChanges,
     private val questType: OsmElementQuestType<*>?
 ): ElementEditAction, IsUndoable, IsRevertable {
 
-    override val newNewElementsCount get() = NewElementsCount(0,0,0)
+    override val newElementsCount get() = NewElementsCount(0,0,0)
 
     override fun createUpdates(
         element: Element,
@@ -43,7 +41,7 @@ class UpdateElementTagsAction(
             throw ElementConflictException("Quest no longer applicable to the element")
         }
 
-        if (isGeometrySubstantiallyDifferent(originalElement, element)) {
+        if (isGeometrySubstantiallyDifferent(spatialPartsOfOriginalElement, element)) {
             throw ElementConflictException("Element geometry changed substantially")
         }
 
@@ -51,16 +49,34 @@ class UpdateElementTagsAction(
     }
 
     override fun createReverted(): ElementEditAction =
-        RevertUpdateElementTagsAction(originalElement, changes.reversed())
+        RevertUpdateElementTagsAction(spatialPartsOfOriginalElement, changes.reversed())
+
+    /** This class is as such not serializable because of that "questType" parameter which should
+     *  be serialized to a string and deserialized using the QuestTypeRegistry */
+    fun createSerializable() = Serializable(
+        spatialPartsOfOriginalElement, changes, questType?.let { it::class.simpleName }
+    )
+
+    data class Serializable(
+        private val spatialPartsOfOriginalElement: SpatialPartsOfElement,
+        private val changes: StringMapChanges,
+        private val questTypeName: String?
+    ) {
+        fun createObject(questTypeRegistry: QuestTypeRegistry) = UpdateElementTagsAction(
+            spatialPartsOfOriginalElement,
+            changes,
+            questTypeName?.let { questTypeRegistry.getByName(it)!! as OsmElementQuestType<*> }
+        )
+    }
 }
 
 /** Contains the information necessary to apply a revert of tag changes made on an element */
 class RevertUpdateElementTagsAction(
-    private val originalElement: Element,
+    private val spatialPartsOfOriginalElement: SpatialPartsOfElement,
     private val changes: StringMapChanges
 ): ElementEditAction, IsRevert {
 
-    override val newNewElementsCount get() = NewElementsCount(0,0,0)
+    override val newElementsCount get() = NewElementsCount(0,0,0)
 
     override fun createUpdates(
         element: Element,
@@ -68,7 +84,7 @@ class RevertUpdateElementTagsAction(
         idProvider: ElementIdProvider
     ): Collection<Element> {
 
-        if (isGeometrySubstantiallyDifferent(originalElement, element)) {
+        if (isGeometrySubstantiallyDifferent(spatialPartsOfOriginalElement, element)) {
             throw ElementConflictException("Element geometry changed substantially")
         }
 
@@ -98,21 +114,20 @@ private fun Element.changesApplied(changes: StringMapChanges): Element {
     return copy
 }
 
-private fun isGeometrySubstantiallyDifferent(element: Element, newElement: Element) =
+private fun isGeometrySubstantiallyDifferent(element: SpatialPartsOfElement, newElement: Element) =
     when (element) {
-        is Node -> isNodeGeometrySubstantiallyDifferent(element, newElement as Node)
-        is Way -> isWayGeometrySubstantiallyDifferent(element, newElement as Way)
-        is Relation -> isRelationGeometrySubstantiallyDifferent(element, newElement as Relation)
-        else -> false
+        is SpatialPartsOfNode -> isNodeGeometrySubstantiallyDifferent(element, newElement as Node)
+        is SpatialPartsOfWay -> isWayGeometrySubstantiallyDifferent(element, newElement as Way)
+        is SpatialPartsOfRelation -> isRelationGeometrySubstantiallyDifferent(element, newElement as Relation)
     }
 
-private fun isNodeGeometrySubstantiallyDifferent(node: Node, newNode: Node) =
+private fun isNodeGeometrySubstantiallyDifferent(node: SpatialPartsOfNode, newNode: Node) =
     /* Moving the node a distance beyond what would pass as adjusting the position within a
        building counts as substantial change. Also, the maximum distance should be not (much)
        bigger than the usual GPS inaccuracy in the city. */
     node.position.distanceTo(newNode.position) > 20
 
-private fun isWayGeometrySubstantiallyDifferent(way: Way, newWay: Way) =
+private fun isWayGeometrySubstantiallyDifferent(way: SpatialPartsOfWay, newWay: Way) =
     /* if the first or last node is different, it means that the way has either been extended or
        shortened at one end, which is counted as being substantial:
        If for example the surveyor has been asked to determine something for a certain way
@@ -121,7 +136,20 @@ private fun isWayGeometrySubstantiallyDifferent(way: Way, newWay: Way) =
     way.nodeIds.firstOrNull() != newWay.nodeIds.firstOrNull() ||
         way.nodeIds.lastOrNull() != newWay.nodeIds.lastOrNull()
 
-private fun isRelationGeometrySubstantiallyDifferent(relation: Relation, newRelation: Relation) =
+private fun isRelationGeometrySubstantiallyDifferent(relation: SpatialPartsOfRelation, newRelation: Relation) =
     /* a relation is counted as substantially different, if any member changed, even if just
        the order changed because for some relations, the order has an important meaning */
     relation.members != newRelation.members
+
+/** Only the parts of an element that are used to determine the geometry */
+sealed class SpatialPartsOfElement
+data class SpatialPartsOfNode(val position: OsmLatLon) : SpatialPartsOfElement()
+data class SpatialPartsOfWay(val nodeIds: ArrayList<Long>) : SpatialPartsOfElement()
+data class SpatialPartsOfRelation(val members: ArrayList<RelationMember>) : SpatialPartsOfElement()
+
+fun Element.getSpatialParts(): SpatialPartsOfElement = when(this) {
+    is Node -> SpatialPartsOfNode(OsmLatLon(position.latitude, position.longitude))
+    is Way -> SpatialPartsOfWay(ArrayList(nodeIds))
+    is Relation -> SpatialPartsOfRelation(ArrayList(members))
+    else -> throw IllegalArgumentException()
+}

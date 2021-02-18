@@ -15,13 +15,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME_NDS
 import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.Serializer2
+import de.westnordost.streetcomplete.util.Serializer
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM ways */
 class WayDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val serializer: Serializer2
+    private val serializer: Serializer
 ) {
     private val db get() = dbHelper.writableDatabase
 
@@ -51,7 +51,7 @@ class WayDao @Inject constructor(
                 db.replaceOrThrow(NAME, null, contentValuesOf(
                     ID to way.id,
                     VERSION to way.version,
-                    TAGS to way.tags?.let { serializer.encode(it) },
+                    TAGS to way.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
                     LAST_UPDATE to currentTimeMillis()
                 ))
             }
@@ -74,7 +74,7 @@ class WayDao @Inject constructor(
                 id,
                 c.getInt(VERSION),
                 nodeIdsByWayId.getValue(id),
-                c.getStringOrNull(TAGS)?.let { serializer.decode<HashMap<String, String>>(it) }
+                c.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) }
             )
         }
     }

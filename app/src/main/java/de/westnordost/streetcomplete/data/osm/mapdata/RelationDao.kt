@@ -17,13 +17,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.VER
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME_MEMBERS
 import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.Serializer2
+import de.westnordost.streetcomplete.util.Serializer
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM relations */
 class RelationDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val serializer: Serializer2
+    private val serializer: Serializer
 ) {
     private val db get() = dbHelper.writableDatabase
 
@@ -55,7 +55,7 @@ class RelationDao @Inject constructor(
                 db.insertOrThrow(NAME, null, contentValuesOf(
                     ID to relation.id,
                     VERSION to relation.version,
-                    TAGS to relation.tags?.let { serializer.encode(it) },
+                    TAGS to relation.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
                     LAST_UPDATE to currentTimeMillis()
                 ))
             }
@@ -82,7 +82,7 @@ class RelationDao @Inject constructor(
                 id,
                 c.getInt(VERSION),
                 membersByRelationId.getValue(id),
-                c.getStringOrNull(TAGS)?.let { serializer.decode<HashMap<String, String>>(it) }
+                c.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) }
             )
         }
     }

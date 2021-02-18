@@ -97,32 +97,35 @@ class ElementEditsMapping @Inject constructor(
             IS_SYNCED to if (obj.isSynced) 1 else 0,
             TYPE to obj::class.simpleName
         )
-        when(obj.action) {
-            is UpdateElementTagsAction       -> values.put(ACTION, serializer.toBytes(obj.changes))
-            is RevertUpdateElementTagsAction -> values.put(ACTION, serializer.toBytes(obj.changes))
-            is DeletePoiNodeAction           -> values.putNull(ACTION)
-            is SplitWayAction                -> values.put(ACTION, serializer.toBytes(obj.splits))
+        when(val action = obj.action) {
+            is UpdateElementTagsAction       -> values.put(ACTION, serializer.toBytes(action.createSerializable()))
+
+            is RevertUpdateElementTagsAction -> values.put(ACTION, serializer.toBytes(action))
+
+            is DeletePoiNodeAction           -> values.put(ACTION, serializer.toBytes(action))
+
+            is SplitWayAction                -> values.put(ACTION, serializer.toBytes(action))
         }
 
         return values
     }
 
     override fun toObject(cursor: Cursor): ElementEdit {
-        val changes = cursor.getBlobOrNull(ACTION)
+        val b = cursor.getBlobOrNull(ACTION)
         val type = cursor.getString(TYPE)
 
         val action = when(type) {
             UpdateElementTagsAction::class.simpleName ->
-                UpdateElementTagsAction(serializer.toObject(changes!!))
+                serializer.toObject<UpdateElementTagsAction.Serializable>(b!!).createObject(questTypeRegistry)
 
             RevertUpdateElementTagsAction::class.simpleName ->
-                RevertUpdateElementTagsAction( serializer.toObject(changes!!))
+                serializer.toObject<RevertUpdateElementTagsAction>(b!!)
 
             DeletePoiNodeAction::class.simpleName ->
-                DeletePoiNodeAction()
+                serializer.toObject<DeletePoiNodeAction>(b!!)
 
             SplitWayAction::class.simpleName ->
-                SplitWayAction(serializer.toObject(changes!!))
+                serializer.toObject<SplitWayAction>(b!!)
 
             else -> throw IllegalStateException("Unknown change class $type")
         }

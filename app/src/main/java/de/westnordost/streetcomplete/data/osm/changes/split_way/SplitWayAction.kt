@@ -26,8 +26,8 @@ data class SplitWayAction(
     private val originalWayLastNodeId: Long,
 ): ElementEditAction {
 
-    override val newNewElementsCount get() = NewElementsCount(
-        nodes = splits.filterIsInstance<SplitAtLinePosition>().size,
+    override val newElementsCount get() = NewElementsCount(
+        nodes = splits.count { it is SplitAtLinePosition },
         ways = splits.size,
         relations = 0
     )

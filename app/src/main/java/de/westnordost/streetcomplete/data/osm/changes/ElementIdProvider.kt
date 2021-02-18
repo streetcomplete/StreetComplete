@@ -21,9 +21,10 @@ class ElementIdProvider(elementKeys: Collection<ElementKey>) {
                 Element.Type.RELATION -> relationIds.add(key.elementId)
             }
         }
-        nodeIds.sort()
-        wayIds.sort()
-        relationIds.sort()
+        // they should be sorted -1, -2, -3, ... etc. - it's descending because all ids are negative
+        nodeIds.sortDescending()
+        wayIds.sortDescending()
+        relationIds.sortDescending()
     }
 
     fun nextNodeId(): Long = nodeIds.removeFirst()

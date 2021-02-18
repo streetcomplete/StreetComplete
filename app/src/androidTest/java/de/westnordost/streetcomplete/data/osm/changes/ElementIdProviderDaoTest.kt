@@ -52,6 +52,17 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
         assertEquals(2, relationIdSet.size)
     }
 
+    @Test fun startsWithMinus1() {
+        dao.assign(1L, 2, 2, 2)
+        val p = dao.get(1L)
+        assertEquals(-1, p.nextNodeId())
+        assertEquals(-2, p.nextNodeId())
+        assertEquals(-1, p.nextWayId())
+        assertEquals(-2, p.nextWayId())
+        assertEquals(-1, p.nextRelationId())
+        assertEquals(-2, p.nextRelationId())
+    }
+
     @Test fun delete() {
         assertEquals(0, dao.delete(1L))
         dao.assign(1L, 1,1,1)

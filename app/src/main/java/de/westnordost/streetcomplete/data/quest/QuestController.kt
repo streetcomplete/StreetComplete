@@ -4,16 +4,16 @@ import android.util.Log
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmElement
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.changes.*
-import de.westnordost.streetcomplete.data.osm.changes.DeleteOsmElement
+import de.westnordost.streetcomplete.data.osm.changes.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.changes.ChangeOsmElementTags
-import de.westnordost.streetcomplete.data.osm.changes.SplitOsmWay
 import de.westnordost.streetcomplete.data.osm.changes.update_tags.*
 import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNote
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
@@ -58,15 +58,15 @@ import javax.inject.Singleton
      */
     fun splitWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>, source: String): Boolean {
         val q = osmQuestController.get(osmQuestId) ?: return false
-        elementEditsController.addEdit(SplitOsmWay(
-            null,
+        val w = mapDataSource.get(q.elementType, q.elementId) as? Way ?: return false
+        elementEditsController.addEdit(
             q.osmElementQuestType,
             q.elementType,
             q.elementId,
             source,
             q.center,
-            splits = ArrayList(splits)
-        ))
+            SplitWayAction(ArrayList(splits), w.nodeIds.first(), w.nodeIds.last())
+        )
         return true
     }
 
@@ -75,17 +75,18 @@ import javax.inject.Singleton
      */
     fun deletePoiElement(osmQuestId: Long, source: String): Boolean {
         val q = osmQuestController.get(osmQuestId) ?: return false
+        val e = mapDataSource.get(q.elementType, q.elementId) ?: return false
 
         Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName}")
 
-        elementEditsController.addEdit(DeleteOsmElement(
-            null,
+        elementEditsController.addEdit(
             q.osmElementQuestType,
             q.elementType,
             q.elementId,
             source,
-            q.center
-        ))
+            q.center,
+            DeletePoiNodeAction(e.version)
+        )
         return true
     }
 
@@ -99,15 +100,14 @@ import javax.inject.Singleton
         val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName} with $changes")
 
-        elementEditsController.addEdit(ChangeOsmElementTags(
-            null,
+        elementEditsController.addEdit(
             q.osmElementQuestType,
             q.elementType,
             q.elementId,
             source,
             q.center,
-            changes = changes
-        ))
+            UpdateElementTagsAction(element.getSpatialParts(), changes, null)
+        )
 
         return true
     }
@@ -167,15 +167,14 @@ import javax.inject.Singleton
 
         Log.d(TAG, "Solved a ${q.type.javaClass.simpleName} quest: $changes")
 
-        elementEditsController.addEdit(ChangeOsmElementTags(
-            null,
+        elementEditsController.addEdit(
             q.osmElementQuestType,
             q.elementType,
             q.elementId,
             source,
             q.center,
-            changes = changes
-        ))
+            UpdateElementTagsAction(element.getSpatialParts(), changes, q.osmElementQuestType)
+        )
 
         return true
     }

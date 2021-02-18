@@ -42,7 +42,7 @@ import javax.inject.Singleton
         val edit = ElementEdit(null, questType, elementType, elementId, source, position, currentTimeMillis(), false, action)
         editsDB.add(edit)
         val id = edit.id!!
-        val createdElementsCount = edit.action.newNewElementsCount
+        val createdElementsCount = edit.action.newElementsCount
         elementIdProviderDB.assign(
             id,
             createdElementsCount.nodes,

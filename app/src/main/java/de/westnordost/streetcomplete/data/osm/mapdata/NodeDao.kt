@@ -16,13 +16,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
 import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.Serializer2
+import de.westnordost.streetcomplete.util.Serializer
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM nodes */
 class NodeDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val serializer: Serializer2
+    private val serializer: Serializer
 ) {
     private val db get() = dbHelper.writableDatabase
 
@@ -45,7 +45,7 @@ class NodeDao @Inject constructor(
                     VERSION to node.version,
                     LATITUDE to node.position.latitude,
                     LONGITUDE to node.position.longitude,
-                    TAGS to node.tags?.let { serializer.encode(it) },
+                    TAGS to node.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
                     LAST_UPDATE to currentTimeMillis()
                 ))
             }
@@ -60,7 +60,7 @@ class NodeDao @Inject constructor(
                 cursor.getLong(ID),
                 cursor.getInt(VERSION),
                 OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-                cursor.getStringOrNull(TAGS)?.let { serializer.decode<HashMap<String, String>>(it) }
+                cursor.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) }
             )
         }
     }

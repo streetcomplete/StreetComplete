@@ -7,7 +7,6 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("kotlin-android-extensions")
-    id("kotlinx-serialization")
 }
 
 android {
@@ -156,7 +155,6 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     implementation("com.esotericsoftware:kryo:4.0.2")
     implementation("org.objenesis:objenesis:3.1")
 

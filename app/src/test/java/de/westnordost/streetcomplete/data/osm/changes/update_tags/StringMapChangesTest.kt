@@ -1,7 +1,5 @@
-package de.westnordost.streetcomplete.data.osm.changes
+package de.westnordost.streetcomplete.data.osm.changes.update_tags
 
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChanges
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Test

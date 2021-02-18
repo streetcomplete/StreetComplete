@@ -18,7 +18,7 @@ object NodeTable {
             ${Columns.VERSION} int NOT NULL,
             ${Columns.LATITUDE} double NOT NULL,
             ${Columns.LONGITUDE} double NOT NULL,
-            ${Columns.TAGS} text,
+            ${Columns.TAGS} blob,
             ${Columns.LAST_UPDATE} int NOT NULL
         );"""
 }

@@ -100,12 +100,12 @@ class MapDataControllerTest {
         verify(listener).onUpdated(any(), eq(emptyList()))
     }
 
-    @Test fun deleteUnreferencedOlderThan() {
+    @Test fun deleteOlderThan() {
         val elementKeys = listOf(
             ElementKey(Element.Type.NODE, 1L),
             ElementKey(Element.Type.NODE, 2L),
         )
-        on(elementDB.getUnusedAndOldIds(123L)).thenReturn(elementKeys)
+        on(elementDB.getIdsOlderThan(123L)).thenReturn(elementKeys)
         val listener = mock<MapDataSource.Listener>()
 
         controller.addListener(listener)

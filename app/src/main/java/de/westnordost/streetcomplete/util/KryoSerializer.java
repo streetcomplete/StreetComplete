@@ -18,12 +18,20 @@ import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmRelationMember;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.user.User;
+import de.westnordost.streetcomplete.data.osm.changes.delete.DeletePoiNodeAction;
 import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitAtLinePosition;
 import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitAtPoint;
+import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitWayAction;
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.RevertUpdateElementTagsAction;
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.SpatialPartsOfElement;
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.SpatialPartsOfNode;
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.SpatialPartsOfRelation;
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.SpatialPartsOfWay;
 import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryDelete;
 import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryModify;
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.UpdateElementTagsAction;
 import de.westnordost.streetcomplete.quests.LocalizedName;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
@@ -66,7 +74,15 @@ public class KryoSerializer implements Serializer
 			SplitAtPoint.class,
 			SplitAtLinePosition.class,
 			OffDaysRow.class,
-			Months.class
+			Months.class,
+			DeletePoiNodeAction.class,
+			SplitWayAction.class,
+			RevertUpdateElementTagsAction.class,
+			UpdateElementTagsAction.class,
+			SpatialPartsOfElement.class,
+			SpatialPartsOfNode.class,
+			SpatialPartsOfWay.class,
+			SpatialPartsOfRelation.class
 	};
 
 
