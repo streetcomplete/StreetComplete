@@ -96,6 +96,11 @@ class QuestPinLayerManager @Inject constructor(
         updateLayer()
     }
 
+    override fun onVisibleQuestsInvalidated() {
+        clear()
+        onNewScreenPosition()
+    }
+
     private fun updateQuestsInRect(tilesRect: TilesRect) {
         // area too big -> skip (performance)
         if (tilesRect.size > 4) {

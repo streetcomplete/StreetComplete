@@ -452,6 +452,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
+    @AnyThread override fun onVisibleQuestsInvalidated() {}
+
     //endregion
 
     /* ++++++++++++++++++++++++++++++++++++++ VIEW CONTROL ++++++++++++++++++++++++++++++++++++++ */
