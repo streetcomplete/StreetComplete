@@ -46,11 +46,8 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
             if (isLeftHandTraffic) R.drawable.ic_sidewalk_unknown_l
             else                   R.drawable.ic_sidewalk_unknown
 
-        PickLastLeftRightButton.isGone = LAST_ANSWER_LEFT == null
-        if (LAST_ANSWER_LEFT != null) {
-            PickLastLeftRightButton.leftSideContainer.isClickable = false
-            PickLastLeftRightButton.rightSideContainer.isClickable = false
-
+        PickLastLeftRightButton.isGone = (LAST_ANSWER_LEFT == null).and(LAST_ANSWER_RIGHT == null)
+        if (!(LAST_ANSWER_LEFT == null).and(LAST_ANSWER_RIGHT == null)) {
             PickLastLeftRightButton.setLeftSideImage(ResImage(LAST_ANSWER_LEFT?.puzzleResId ?: defaultResId))
             PickLastLeftRightButton.setRightSideImage(ResImage(LAST_ANSWER_RIGHT?.puzzleResId ?: defaultResId))
 
@@ -64,8 +61,8 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
                     PickLastLeftRightButton.visibility = View.GONE
                 }
                 else{
-                    PickLastLeftRightButton.replaceLeftSideImage(ResImage(rightSide?.puzzleResId ?: defaultResId))
-                    PickLastLeftRightButton.replaceRightSideImage(ResImage(leftSide?.puzzleResId ?: defaultResId))
+                    PickLastLeftRightButton.setLeftSideImage(ResImage(rightSide?.puzzleResId ?: defaultResId))
+                    PickLastLeftRightButton.setRightSideImage(ResImage(leftSide?.puzzleResId ?: defaultResId))
                     LAST_ANSWER_LEFT = rightSide
                     LAST_ANSWER_RIGHT = leftSide
                 }
@@ -75,7 +72,7 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
 
         puzzleView.onClickSideListener = { isRight -> showSidewalkSelectionDialog(isRight) }
 
-        streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry, PickLastLeftRightButton)
+        streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
 
         puzzleView.setLeftSideImage(ResImage(leftSide?.puzzleResId ?: defaultResId))
         puzzleView.setRightSideImage(ResImage(rightSide?.puzzleResId ?: defaultResId))
