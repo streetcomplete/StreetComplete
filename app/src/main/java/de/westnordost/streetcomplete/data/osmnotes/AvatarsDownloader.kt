@@ -11,7 +11,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 /** Downloads and stores the OSM avatars of users */
-class OsmAvatarsDownloader @Inject constructor(
+class AvatarsDownloader @Inject constructor(
     private val userApi: UserApi,
     @Named("AvatarsCacheDirectory") private val cacheDir: File
 ) {

@@ -16,7 +16,7 @@ import org.mockito.Mockito.verify
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
-class OsmNotesDownloaderTest {
+class NotesDownloaderTest {
     private lateinit var notesApi: NotesApi
     private lateinit var noteController: NoteController
     private lateinit var userStore: UserStore
@@ -32,7 +32,7 @@ class OsmNotesDownloaderTest {
     @Test fun `calls controller with all notes coming from the notes api`() {
         val note1 = createANote()
         val noteApi = TestListBasedNotesApi(listOf(note1))
-        val dl = OsmNotesDownloader(noteApi, userStore, noteController)
+        val dl = NotesDownloader(noteApi, userStore, noteController)
         val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
         dl.download(bbox, AtomicBoolean(false))
 

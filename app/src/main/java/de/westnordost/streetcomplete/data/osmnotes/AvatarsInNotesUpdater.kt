@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 import de.westnordost.osmapi.notes.Note
 import javax.inject.Inject
 
-class OsmAvatarsInNotesUpdater @Inject constructor(private val downloader: OsmAvatarsDownloader) :
+class AvatarsInNotesUpdater @Inject constructor(private val downloader: AvatarsDownloader) :
     NoteSource.Listener {
 
     override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {

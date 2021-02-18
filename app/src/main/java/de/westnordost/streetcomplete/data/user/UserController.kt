@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.user
 import android.util.Log
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.data.UserApi
-import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownloader
+import de.westnordost.streetcomplete.data.osmnotes.AvatarsDownloader
 import de.westnordost.streetcomplete.data.user.achievements.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +20,7 @@ import javax.inject.Singleton
     private val userStore: UserStore,
     private val userAchievementsDao: UserAchievementsDao,
     private val userLinksDao: UserLinksDao,
-    private val avatarsDownloader: OsmAvatarsDownloader,
+    private val avatarsDownloader: AvatarsDownloader,
     private val statisticsUpdater: StatisticsUpdater,
     private val statisticsDao: QuestStatisticsDao,
     private val countryStatisticsDao: CountryStatisticsDao,

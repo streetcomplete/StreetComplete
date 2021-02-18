@@ -27,9 +27,9 @@ object OsmNotesModule {
 
     @Provides @Singleton fun noteSource(
         noteController: NoteController,
-        osmAvatarsInNotesUpdater: OsmAvatarsInNotesUpdater
+        avatarsInNotesUpdater: AvatarsInNotesUpdater
     ): NoteSource = noteController.apply {
         // on notes have been updated, avatar images should be downloaded (cached) referenced in note discussions
-        addListener(osmAvatarsInNotesUpdater)
+        addListener(avatarsInNotesUpdater)
     }
 }

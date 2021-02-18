@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.ktx.format
 import java.util.concurrent.atomic.AtomicBoolean
 
 /** Takes care of downloading notes and referenced avatar pictures into persistent storage */
-class OsmNotesDownloader @Inject constructor(
+class NotesDownloader @Inject constructor(
     private val notesApi: NotesApi,
     private val userStore: UserStore,
     private val noteController: NoteController
