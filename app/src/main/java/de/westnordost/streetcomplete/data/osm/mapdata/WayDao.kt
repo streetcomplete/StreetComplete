@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.NODE_ID
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME
-import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME_NDS
+import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME_NODES
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 import java.lang.System.currentTimeMillis
@@ -39,10 +39,10 @@ class WayDao @Inject constructor(
         if (ways.isEmpty()) return
         val idsString = ways.joinToString(",") { it.id.toString() }
         db.transaction {
-            db.delete(NAME_NDS, "$ID IN ($idsString)", null)
+            db.delete(NAME_NODES, "$ID IN ($idsString)", null)
             for (way in ways) {
                 way.nodeIds.forEachIndexed { index, nodeId ->
-                    db.insertOrThrow(NAME_NDS, null, contentValuesOf(
+                    db.insertOrThrow(NAME_NODES, null, contentValuesOf(
                         ID to way.id,
                         NODE_ID to nodeId,
                         INDEX to index
@@ -63,7 +63,7 @@ class WayDao @Inject constructor(
         val idsString = ids.joinToString(",")
 
         val nodeIdsByWayId = mutableMapOf<Long, MutableList<Long>>()
-        db.query(NAME_NDS, selection = "$ID IN ($idsString", orderBy = "$ID, $INDEX") { c ->
+        db.query(NAME_NODES, selection = "$ID IN ($idsString)", orderBy = "$ID, $INDEX") { c ->
             val nodeIds = nodeIdsByWayId.getOrPut(c.getLong(ID)) { ArrayList() }
             nodeIds.add(c.getLong(NODE_ID))
         }
@@ -83,14 +83,14 @@ class WayDao @Inject constructor(
         if (ids.isEmpty()) return 0
         val idsString = ids.joinToString(",")
         return db.transaction {
-            db.delete(NAME_NDS, "$ID IN ($idsString)", null)
+            db.delete(NAME_NODES, "$ID IN ($idsString)", null)
             db.delete(NAME, "$ID IN ($idsString)", null)
         }
     }
 
     fun getAllForNode(nodeId: Long): List<Way> {
         val ids = db.query(
-            NAME_NDS,
+            NAME_NODES,
             columns = arrayOf(ID),
             selection = "$NODE_ID = $nodeId"
         ) { it.getLong(0) }.toSet()

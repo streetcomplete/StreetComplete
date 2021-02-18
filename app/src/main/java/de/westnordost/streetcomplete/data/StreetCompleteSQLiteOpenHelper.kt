@@ -43,7 +43,11 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         db.execSQL(ElementGeometryTable.CREATE)
         db.execSQL(NodeTable.CREATE)
         db.execSQL(WayTables.CREATE)
+        db.execSQL(WayTables.NODES_CREATE)
+        db.execSQL(WayTables.NODES_INDEX_CREATE)
         db.execSQL(RelationTables.CREATE)
+        db.execSQL(RelationTables.MEMBERS_CREATE)
+        db.execSQL(RelationTables.MEMBERS_INDEX_CREATE)
 
         // changes made on OSM notes
         db.execSQL(CreateNoteTable.CREATE)
@@ -52,12 +56,14 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         // changes made on OSM map data
         db.execSQL(ElementEditsTable.CREATE)
         db.execSQL(ElementIdProviderTable.CREATE)
+        db.execSQL(ElementIdProviderTable.INDEX_CREATE)
 
         // quests
         db.execSQL(VisibleQuestTypeTable.CREATE)
 
         // quests based on OSM elements
         db.execSQL(OsmQuestTable.CREATE)
+        db.execSQL(OsmQuestTable.MERGED_VIEW_CREATE)
         db.execSQL(OsmQuestsHiddenTable.CREATE)
 
         // quests based on OSM notes

@@ -78,7 +78,7 @@ public class KryoSerializer implements Serializer
 			DeletePoiNodeAction.class,
 			SplitWayAction.class,
 			RevertUpdateElementTagsAction.class,
-			UpdateElementTagsAction.class,
+			UpdateElementTagsAction.Serializable.class,
 			SpatialPartsOfElement.class,
 			SpatialPartsOfNode.class,
 			SpatialPartsOfWay.class,

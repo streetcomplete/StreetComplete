@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 object WayTables {
     const val NAME = "osm_ways"
-    const val NAME_NDS = "osm_way_nodes"
+    const val NAME_NODES = "osm_way_nodes"
 
     object Columns {
         const val ID = "id"
@@ -11,7 +11,7 @@ object WayTables {
         const val LAST_UPDATE = "last_update"
 
         const val NODE_ID = "node_id"
-        const val INDEX = "index"
+        const val INDEX = "idx"
     }
 
     const val CREATE = """
@@ -21,13 +21,17 @@ object WayTables {
             ${Columns.TAGS} blob,
             ${Columns.LAST_UPDATE} int NOT NULL
         );
+    """
 
-        CREATE TABLE $NAME_NDS (
+    const val NODES_CREATE = """
+        CREATE TABLE $NAME_NODES (
             ${Columns.ID} int NOT NULL,
             ${Columns.INDEX} int NOT NULL,
             ${Columns.NODE_ID} int NOT NULL
         );
+    """
 
-        CREATE INDEX osm_way_nodes_index ON $NAME_NDS (${Columns.ID});
+    const val NODES_INDEX_CREATE = """
+        CREATE INDEX osm_way_nodes_index ON $NAME_NODES (${Columns.ID});
     """
 }

@@ -25,7 +25,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         dao = ElementEditsDao(dbHelper, ElementEditsMapping(QuestTypeRegistry(list), serializer))
     }
 
-    @Test fun addGet_ChangeOsmElementTags() {
+    @Test fun addGet_UpdateElementTagsEdit() {
         val element = createUpdateElementTagsEdit()
         dao.add(element)
         assertNotNull(element.id)
@@ -33,7 +33,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertEquals(element, dbElement)
     }
 
-    @Test fun addGet_RevertChangeOsmElementTags() {
+    @Test fun addGet_RevertUpdateElementTagsEdit() {
         val element = createRevertUpdateElementTagsEdit()
         dao.add(element)
         assertNotNull(element.id)
@@ -41,7 +41,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertEquals(element, dbElement)
     }
 
-    @Test fun addGet_DeleteOsmElement() {
+    @Test fun addGet_DeletePoiNodeEdit() {
         val element = createDeletePoiNodeEdit()
         dao.add(element)
         assertNotNull(element.id)
@@ -49,7 +49,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertEquals(element, dbElement)
     }
 
-    @Test fun addGet_SplitOsmWay() {
+    @Test fun addGet_SplitWayEdit() {
         val element = createSplitWayEdit()
         dao.add(element)
         assertNotNull(element.id)

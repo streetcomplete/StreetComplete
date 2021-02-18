@@ -42,7 +42,7 @@ class WayDaoTest : ApplicationDbTestCase() {
     @Test fun putOverwritesAlsoNodeIds() {
         dao.put(way(0, nodeIds = listOf(1,2,3)))
         dao.put(way(0, nodeIds = listOf(5,3,1,132)))
-        assertEquals(listOf(5,3,1,132), dao.get(0)!!.nodeIds)
+        assertEquals(listOf<Long>(5,3,1,132), dao.get(0)!!.nodeIds.toList())
     }
 
     @Test fun getNull() {

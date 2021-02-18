@@ -13,7 +13,7 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun assign_get() {
-        assertNull(dao.get(1L))
+        assertTrue(dao.get(1L).isEmpty())
 
         val nodeIdSet = mutableSetOf<Long>()
         val wayIdSet = mutableSetOf<Long>()
@@ -57,17 +57,17 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
         val p = dao.get(1L)
         assertEquals(-1, p.nextNodeId())
         assertEquals(-2, p.nextNodeId())
-        assertEquals(-1, p.nextWayId())
-        assertEquals(-2, p.nextWayId())
-        assertEquals(-1, p.nextRelationId())
-        assertEquals(-2, p.nextRelationId())
+        assertEquals(-3, p.nextWayId())
+        assertEquals(-4, p.nextWayId())
+        assertEquals(-5, p.nextRelationId())
+        assertEquals(-6, p.nextRelationId())
     }
 
     @Test fun delete() {
         assertEquals(0, dao.delete(1L))
         dao.assign(1L, 1,1,1)
         assertEquals(3, dao.delete(1L))
-        assertNull(dao.get(1L))
+        assertTrue(dao.get(1L).isEmpty())
     }
 
     private fun assertThrows(block: () -> Unit) {

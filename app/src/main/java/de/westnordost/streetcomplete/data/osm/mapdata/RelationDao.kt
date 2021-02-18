@@ -52,7 +52,7 @@ class RelationDao @Inject constructor(
                         ROLE to member.role.orEmpty()
                     ))
                 }
-                db.insertOrThrow(NAME, null, contentValuesOf(
+                db.replaceOrThrow(NAME, null, contentValuesOf(
                     ID to relation.id,
                     VERSION to relation.version,
                     TAGS to relation.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },

@@ -86,6 +86,7 @@ class ElementEditsMapping @Inject constructor(
 ) : ObjectRelationalMapping<ElementEdit> {
 
     override fun toContentValues(obj: ElementEdit): ContentValues {
+        val action = obj.action
         val values = contentValuesOf(
             QUEST_TYPE to obj.questType.name,
             ELEMENT_TYPE to obj.elementType.name,
@@ -95,9 +96,9 @@ class ElementEditsMapping @Inject constructor(
             LONGITUDE to obj.position.longitude,
             CREATED_TIMESTAMP to obj.createdTimestamp,
             IS_SYNCED to if (obj.isSynced) 1 else 0,
-            TYPE to obj::class.simpleName
+            TYPE to action::class.simpleName
         )
-        when(val action = obj.action) {
+        when(action) {
             is UpdateElementTagsAction       -> values.put(ACTION, serializer.toBytes(action.createSerializable()))
 
             is RevertUpdateElementTagsAction -> values.put(ACTION, serializer.toBytes(action))

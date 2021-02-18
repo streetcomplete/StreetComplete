@@ -30,4 +30,6 @@ class ElementIdProvider(elementKeys: Collection<ElementKey>) {
     fun nextNodeId(): Long = nodeIds.removeFirst()
     fun nextWayId(): Long = wayIds.removeFirst()
     fun nextRelationId(): Long = relationIds.removeFirst()
+
+    fun isEmpty(): Boolean = nodeIds.isEmpty() && wayIds.isEmpty() && relationIds.isEmpty()
 }

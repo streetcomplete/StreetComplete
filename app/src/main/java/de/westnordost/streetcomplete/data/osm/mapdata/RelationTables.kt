@@ -10,7 +10,7 @@ object RelationTables {
         const val TAGS = "tags"
         const val LAST_UPDATE = "last_update"
 
-        const val INDEX = "index"
+        const val INDEX = "idx"
         const val REF = "ref"
         const val TYPE = "type"
         const val ROLE = "role"
@@ -23,7 +23,9 @@ object RelationTables {
             ${Columns.TAGS} blob,
             ${Columns.LAST_UPDATE} int NOT NULL
         );
+    """
 
+    const val MEMBERS_CREATE = """
         CREATE TABLE $NAME_MEMBERS (
             ${Columns.ID} int NOT NULL,
             ${Columns.INDEX} int NOT NULL,
@@ -31,7 +33,9 @@ object RelationTables {
             ${Columns.TYPE} text NOT NULL,
             ${Columns.ROLE} text NOT NULL
         );
+    """
 
+    const val MEMBERS_INDEX_CREATE = """
         CREATE INDEX osm_relation_members_index ON $NAME_MEMBERS (${Columns.ID});
     """
 }

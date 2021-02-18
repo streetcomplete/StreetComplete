@@ -32,7 +32,9 @@ object OsmQuestTable {
                 ${ElementGeometryTable.Columns.ELEMENT_ID}
             )
         );
+        """
 
+    const val MERGED_VIEW_CREATE = """
         CREATE VIEW $NAME_MERGED_VIEW
         AS SELECT * FROM $NAME
         INNER JOIN ${ElementGeometryTable.NAME}

@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.ktx.*
  *  still compatible with the split action: If the updated way was shortened or extended on either
  *  end, it is not considered compatible anymore
  *  */
-data class SplitWayAction(
+class SplitWayAction(
     private val splits: ArrayList<SplitPolylineAtPosition>,
     private val originalWayFirstNodeId: Long,
     private val originalWayLastNodeId: Long,
@@ -95,6 +95,21 @@ data class SplitWayAction(
         updatedElements.addAll(updatedRelations)
 
         return updatedElements
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is SplitWayAction) return false
+        return splits == other.splits
+            && originalWayFirstNodeId == other.originalWayFirstNodeId
+            && originalWayLastNodeId == other.originalWayLastNodeId
+    }
+
+    override fun hashCode(): Int {
+        var result = splits.hashCode()
+        result = 31 * result + originalWayFirstNodeId.hashCode()
+        result = 31 * result + originalWayLastNodeId.hashCode()
+        return result
     }
 }
 

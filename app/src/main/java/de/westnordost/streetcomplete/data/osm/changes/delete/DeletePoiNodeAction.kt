@@ -50,4 +50,12 @@ class DeletePoiNodeAction(
 
         return listOf(node)
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is DeletePoiNodeAction) return false
+        return originalNodeVersion == other.originalNodeVersion
+    }
+
+    override fun hashCode(): Int = originalNodeVersion
 }

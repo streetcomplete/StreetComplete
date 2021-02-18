@@ -57,6 +57,21 @@ class UpdateElementTagsAction(
         spatialPartsOfOriginalElement, changes, questType?.let { it::class.simpleName }
     )
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is UpdateElementTagsAction) return false
+        return changes == other.changes
+            && spatialPartsOfOriginalElement == other.spatialPartsOfOriginalElement
+            && questType == other.questType
+    }
+
+    override fun hashCode(): Int {
+        var result = spatialPartsOfOriginalElement.hashCode()
+        result = 31 * result + changes.hashCode()
+        result = 31 * result + (questType?.hashCode() ?: 0)
+        return result
+    }
+
     data class Serializable(
         private val spatialPartsOfOriginalElement: SpatialPartsOfElement,
         private val changes: StringMapChanges,
@@ -89,6 +104,19 @@ class RevertUpdateElementTagsAction(
         }
 
         return listOf(element.changesApplied(changes))
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is RevertUpdateElementTagsAction) return false
+        return changes == other.changes &&
+            spatialPartsOfOriginalElement == other.spatialPartsOfOriginalElement
+    }
+
+    override fun hashCode(): Int {
+        var result = spatialPartsOfOriginalElement.hashCode()
+        result = 31 * result + changes.hashCode()
+        return result
     }
 }
 
