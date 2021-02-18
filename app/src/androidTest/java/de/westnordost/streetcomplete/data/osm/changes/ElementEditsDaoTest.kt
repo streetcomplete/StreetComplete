@@ -3,12 +3,11 @@ package de.westnordost.streetcomplete.data.osm.changes
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChanges
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.changes.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitAtPoint
+import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitWayAction
+import de.westnordost.streetcomplete.data.osm.changes.update_tags.*
 import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType
 import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType2
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -27,7 +26,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addGet_ChangeOsmElementTags() {
-        val element = createChangeOsmElementTags()
+        val element = createUpdateElementTagsEdit()
         dao.add(element)
         assertNotNull(element.id)
         val dbElement = dao.get(element.id!!)
@@ -35,7 +34,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addGet_RevertChangeOsmElementTags() {
-        val element = createRevertChangeOsmElementTags()
+        val element = createRevertUpdateElementTagsEdit()
         dao.add(element)
         assertNotNull(element.id)
         val dbElement = dao.get(element.id!!)
@@ -43,7 +42,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addGet_DeleteOsmElement() {
-        val element = createDeleteOsmElement()
+        val element = createDeletePoiNodeEdit()
         dao.add(element)
         assertNotNull(element.id)
         val dbElement = dao.get(element.id!!)
@@ -51,7 +50,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addGet_SplitOsmWay() {
-        val element = createSplitOsmWay()
+        val element = createSplitWayEdit()
         dao.add(element)
         assertNotNull(element.id)
         val dbElement = dao.get(element.id!!)
@@ -59,7 +58,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addGetDelete() {
-        val element = createChangeOsmElementTags()
+        val element = createUpdateElementTagsEdit()
         // nothing there
         assertFalse(dao.delete(1L))
         assertNull(dao.get(1L))
@@ -74,9 +73,9 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAll() {
-        val e1 = createChangeOsmElementTags(timestamp = 10)
-        val e2 = createDeleteOsmElement(timestamp = 100)
-        val e3 = createSplitOsmWay(timestamp = 1000)
+        val e1 = createUpdateElementTagsEdit(timestamp = 10)
+        val e2 = createDeletePoiNodeEdit(timestamp = 100)
+        val e3 = createSplitWayEdit(timestamp = 1000)
 
         dao.add(e2)
         dao.add(e1)
@@ -87,10 +86,10 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAllUnsynced() {
-        val e1 = createChangeOsmElementTags(timestamp = 10)
-        val e2 = createDeleteOsmElement(timestamp = 100)
-        val e3 = createSplitOsmWay(timestamp = 1000)
-        val e4 = createSplitOsmWay(timestamp = 500, isSynced = true)
+        val e1 = createUpdateElementTagsEdit(timestamp = 10)
+        val e2 = createDeletePoiNodeEdit(timestamp = 100)
+        val e3 = createSplitWayEdit(timestamp = 1000)
+        val e4 = createSplitWayEdit(timestamp = 500, isSynced = true)
 
         dao.add(e2)
         dao.add(e1)
@@ -102,7 +101,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun markSynced() {
-        val e = createChangeOsmElementTags(isSynced = false)
+        val e = createUpdateElementTagsEdit(isSynced = false)
         dao.add(e)
         dao.markSynced(e.id!!)
         assertTrue(dao.get(e.id!!)!!.isSynced)
@@ -111,19 +110,19 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     @Test fun peekUnsynced() {
         assertNull(dao.getOldestUnsynced())
 
-        val e1 = createChangeOsmElementTags(isSynced = true)
+        val e1 = createUpdateElementTagsEdit(isSynced = true)
         dao.add(e1)
         assertNull(dao.getOldestUnsynced())
 
-        val e2 = createChangeOsmElementTags(timestamp = 1000, isSynced = false)
+        val e2 = createUpdateElementTagsEdit(timestamp = 1000, isSynced = false)
         dao.add(e2)
         assertEquals(e2, dao.getOldestUnsynced())
 
-        val e3 = createChangeOsmElementTags(timestamp = 1500, isSynced = false)
+        val e3 = createUpdateElementTagsEdit(timestamp = 1500, isSynced = false)
         dao.add(e3)
         assertEquals(e2, dao.getOldestUnsynced())
 
-        val e4 = createChangeOsmElementTags(timestamp = 500, isSynced = false)
+        val e4 = createUpdateElementTagsEdit(timestamp = 500, isSynced = false)
         dao.add(e4)
         assertEquals(e4, dao.getOldestUnsynced())
     }
@@ -131,20 +130,20 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     @Test fun getUnsyncedCount() {
         assertEquals(0, dao.getUnsyncedCount())
 
-        dao.add(createChangeOsmElementTags(isSynced = true))
+        dao.add(createUpdateElementTagsEdit(isSynced = true))
         assertEquals(0, dao.getUnsyncedCount())
 
-        dao.add(createChangeOsmElementTags(isSynced = false))
+        dao.add(createUpdateElementTagsEdit(isSynced = false))
         assertEquals(1, dao.getUnsyncedCount())
 
-        dao.add(createChangeOsmElementTags(isSynced = false))
+        dao.add(createUpdateElementTagsEdit(isSynced = false))
         assertEquals(2, dao.getUnsyncedCount())
     }
 
     @Test fun deleteSyncedOlderThan() {
-        val oldEnough = createChangeOsmElementTags(timestamp = 500, isSynced = true)
-        val tooYoung = createChangeOsmElementTags(timestamp = 1000, isSynced = true)
-        val notSynced = createChangeOsmElementTags(timestamp = 500, isSynced = false)
+        val oldEnough = createUpdateElementTagsEdit(timestamp = 500, isSynced = true)
+        val tooYoung = createUpdateElementTagsEdit(timestamp = 1000, isSynced = true)
+        val notSynced = createUpdateElementTagsEdit(timestamp = 500, isSynced = false)
 
         dao.add(oldEnough)
         dao.add(tooYoung)
@@ -157,10 +156,10 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     @Test fun updateElementId() {
         assertEquals(0, dao.updateElementId(Element.Type.NODE, -5, 6))
 
-        val e1 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = -5)
-        val e2 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = -5)
-        val e3 = createChangeOsmElementTags(elementType = Element.Type.WAY, elementId = -5)
-        val e4 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = -3)
+        val e1 = createUpdateElementTagsEdit(elementType = Element.Type.NODE, elementId = -5)
+        val e2 = createUpdateElementTagsEdit(elementType = Element.Type.NODE, elementId = -5)
+        val e3 = createUpdateElementTagsEdit(elementType = Element.Type.WAY, elementId = -5)
+        val e4 = createUpdateElementTagsEdit(elementType = Element.Type.NODE, elementId = -3)
         dao.add(e1)
         dao.add(e2)
         dao.add(e3)
@@ -175,10 +174,10 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun deleteAllForElement() {
-        val e1 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = 1)
-        val e2 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = 1)
-        val e3 = createChangeOsmElementTags(elementType = Element.Type.WAY, elementId = 1)
-        val e4 = createChangeOsmElementTags(elementType = Element.Type.NODE, elementId = 2)
+        val e1 = createUpdateElementTagsEdit(elementType = Element.Type.NODE, elementId = 1)
+        val e2 = createUpdateElementTagsEdit(elementType = Element.Type.NODE, elementId = 1)
+        val e3 = createUpdateElementTagsEdit(elementType = Element.Type.WAY, elementId = 1)
+        val e4 = createUpdateElementTagsEdit(elementType = Element.Type.NODE, elementId = 2)
         dao.add(e1)
         dao.add(e2)
         dao.add(e3)
@@ -192,12 +191,12 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertNotNull(dao.get(e4.id!!))
     }
 
-    private fun createChangeOsmElementTags(
+    private fun createUpdateElementTagsEdit(
         elementType: Element.Type = Element.Type.NODE,
         elementId: Long = 1L,
         timestamp: Long = 123L,
         isSynced: Boolean = false
-    ) = ChangeOsmElementTags(
+    ) = ElementEdit(
         null,
         TEST_QUEST_TYPE,
         elementType,
@@ -206,14 +205,18 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         OsmLatLon(0.0,0.0),
         timestamp,
         isSynced,
-        StringMapChanges(listOf(
-            StringMapEntryAdd("a", "b"),
-            StringMapEntryModify("c", "d", "e"),
-            StringMapEntryDelete("f", "g"),
-        ))
+        UpdateElementTagsAction(
+            SpatialPartsOfNode(OsmLatLon(0.0,0.0)),
+            StringMapChanges(listOf(
+                StringMapEntryAdd("a", "b"),
+                StringMapEntryModify("c", "d", "e"),
+                StringMapEntryDelete("f", "g"),
+            )),
+            TEST_QUEST_TYPE
+        )
     )
 
-    private fun createRevertChangeOsmElementTags(timestamp: Long = 123L, isSynced: Boolean = false) = RevertChangeOsmElementTags(
+    private fun createRevertUpdateElementTagsEdit(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
         null,
         TEST_QUEST_TYPE,
         Element.Type.NODE,
@@ -222,14 +225,17 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         OsmLatLon(0.0,0.0),
         timestamp,
         isSynced,
-        StringMapChanges(listOf(
-            StringMapEntryAdd("a", "b"),
-            StringMapEntryModify("c", "d", "e"),
-            StringMapEntryDelete("f", "g"),
-        ))
+        RevertUpdateElementTagsAction(
+            SpatialPartsOfNode(OsmLatLon(0.0,0.0)),
+            StringMapChanges(listOf(
+                StringMapEntryAdd("a", "b"),
+                StringMapEntryModify("c", "d", "e"),
+                StringMapEntryDelete("f", "g"),
+            ))
+        )
     )
 
-    private fun createDeleteOsmElement(timestamp: Long = 123L, isSynced: Boolean = false) = DeleteOsmElement(
+    private fun createDeletePoiNodeEdit(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
         null,
         TEST_QUEST_TYPE,
         Element.Type.NODE,
@@ -237,10 +243,11 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         "survey",
         OsmLatLon(0.0,0.0),
         timestamp,
-        isSynced
+        isSynced,
+        DeletePoiNodeAction(1)
     )
 
-    private fun createSplitOsmWay(timestamp: Long = 123L, isSynced: Boolean = false) = SplitOsmWay(
+    private fun createSplitWayEdit(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
         null,
         TEST_QUEST_TYPE,
         Element.Type.WAY,
@@ -249,13 +256,17 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         OsmLatLon(0.0,0.0),
         timestamp,
         isSynced,
-        arrayListOf(
-            SplitAtPoint(OsmLatLon(0.0,0.0)),
-            SplitAtLinePosition(
-                OsmLatLon(0.0,0.0),
-                OsmLatLon(1.0,1.0),
-                0.5
-            )
+        SplitWayAction(
+            arrayListOf(
+                SplitAtPoint(OsmLatLon(0.0,0.0)),
+                SplitAtLinePosition(
+                    OsmLatLon(0.0,0.0),
+                    OsmLatLon(1.0,1.0),
+                    0.5
+                )
+            ),
+            0,
+            1
         )
     )
 }
