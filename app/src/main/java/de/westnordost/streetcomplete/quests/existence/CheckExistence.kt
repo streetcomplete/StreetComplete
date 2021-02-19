@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.containsAnyKey
 import java.util.*
 import java.util.concurrent.FutureTask
 
@@ -60,8 +61,8 @@ class CheckExistence(
     override val icon = R.drawable.ic_quest_check
 
     override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
-        return if(hasName) R.string.quest_existence_name_title else R.string.quest_existence_title
+        val hasName = tags.containsAnyKey("name", "brand")
+        return if (hasName) R.string.quest_existence_name_title else R.string.quest_existence_title
     }
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
