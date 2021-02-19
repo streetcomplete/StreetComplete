@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
 import de.westnordost.osmapi.map.ElementIdUpdate
+import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
@@ -42,7 +43,7 @@ import javax.inject.Singleton
         val edit = ElementEdit(null, questType, elementType, elementId, source, position, currentTimeMillis(), false, action)
         editsDB.add(edit)
         val id = edit.id!!
-        val createdElementsCount = edit.action.newElementsCount
+        val createdElementsCount = action.newElementsCount
         elementIdProviderDB.assign(
             id,
             createdElementsCount.nodes,
@@ -64,8 +65,7 @@ import javax.inject.Singleton
             Log.d(UPLOAD_TAG, "Uploaded a $editClassName")
             markEditSynced(edit)
             updateEditsElementIds(elementUpdates.idUpdates)
-            mapDataController.putAll(elementUpdates.updated)
-            mapDataController.deleteAll(elementUpdates.deleted)
+            mapDataController.updateAll(elementUpdates)
             // TODO broadcast id updates, broadcast element updates
             // TODO rebuild local changes: on rebuilding, check for each change if new element compatible!
             return SyncElementEditResult(true, edit)
@@ -74,7 +74,9 @@ import javax.inject.Singleton
             deleteEdit(edit)
             // TODO rebuild local changes
             if (e is ElementDeletedException) {
-                mapDataController.deleteAll(listOf(ElementKey(edit.elementType, edit.elementId)))
+                mapDataController.updateAll(ElementUpdates(
+                    deleted = listOf(ElementKey(edit.elementType, edit.elementId))
+                ))
             }
             return SyncElementEditResult(false, edit)
         }

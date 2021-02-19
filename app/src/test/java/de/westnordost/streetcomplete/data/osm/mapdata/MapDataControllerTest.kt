@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.osmapi.map.ElementIdUpdate
+import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
@@ -69,35 +71,35 @@ class MapDataControllerTest {
         assertNotNull(mapData.getGeometry(Element.Type.NODE, 2L))
     }
 
-    @Test fun deleteAll() {
-        val elementKeys = listOf(
-            ElementKey(Element.Type.NODE, 1L),
-            ElementKey(Element.Type.NODE, 2L),
+    @Test fun updateAll() {
+        val idUpdates = listOf(
+            ElementIdUpdate(Element.Type.NODE, -1, 1)
         )
-        val listener = mock<MapDataSource.Listener>()
-        controller.addListener(listener)
-        controller.deleteAll(elementKeys)
-
-        verify(geometryDB).deleteAll(elementKeys)
-        verify(elementDB).deleteAll(elementKeys)
-        verify(listener).onUpdated(any(), eq(elementKeys))
-    }
-
-    @Test fun putAll() {
+        val deleteKeys = listOf(
+            ElementKey(Element.Type.NODE, 5L),
+            ElementKey(Element.Type.NODE, 6L),
+        )
         val elements = listOf(node(1), node(2))
         val geomEntries = listOf(
             ElementGeometryEntry(Element.Type.NODE, 1L, geom()),
             ElementGeometryEntry(Element.Type.NODE, 2L, geom()),
         )
-        val listener = mock<MapDataSource.Listener>()
         on(geometryCreator.create(any(), any(), anyBoolean())).thenReturn(geom())
 
+        val listener = mock<MapDataSource.Listener>()
         controller.addListener(listener)
-        controller.putAll(elements)
+        controller.updateAll(ElementUpdates(
+            updated = elements,
+            deleted = deleteKeys,
+            idUpdates = idUpdates
+        ))
 
+        val expectedDeleteKeys = deleteKeys + idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
+        verify(geometryDB).deleteAll(expectedDeleteKeys)
+        verify(elementDB).deleteAll(expectedDeleteKeys)
         verify(elementDB).putAll(elements)
         verify(geometryDB).putAll(eq(geomEntries))
-        verify(listener).onUpdated(any(), eq(emptyList()))
+        verify(listener).onUpdated(any(), eq(expectedDeleteKeys))
     }
 
     @Test fun deleteOlderThan() {

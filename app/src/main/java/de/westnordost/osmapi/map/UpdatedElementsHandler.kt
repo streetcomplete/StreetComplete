@@ -77,9 +77,9 @@ class UpdatedElementsHandler : Handler<DiffElement> {
 }
 
 data class ElementUpdates(
-    val updated: Collection<Element>,
-    val deleted: Collection<ElementKey>,
-    val idUpdates: Collection<ElementIdUpdate>
+    val updated: Collection<Element> = emptyList(),
+    val deleted: Collection<ElementKey> = emptyList(),
+    val idUpdates: Collection<ElementIdUpdate> = emptyList()
 )
 
 data class ElementIdUpdate(

@@ -68,15 +68,15 @@ import javax.inject.Singleton
         onUpdateForBBox(bbox, mapDataWithGeometry)
     }
 
-    /** delete elements because the elements doe not exist anymore on OSM */
-    fun deleteAll(elementKeys: Collection<ElementKey>) {
-        elementDB.deleteAll(elementKeys)
-        geometryDB.deleteAll(elementKeys)
-        onUpdated(deleted = elementKeys)
-    }
+    /** update/delete elements because the elements have changed on OSM (i.e. after upload) */
+    fun updateAll(elementUpdates: ElementUpdates) {
+        val oldElementKeys = elementUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
+        val deleted = elementUpdates.deleted + oldElementKeys
+        elementDB.deleteAll(deleted)
+        geometryDB.deleteAll(deleted)
 
-    /** update elements because the elements have changed on OSM */
-    fun putAll(elements: Collection<Element>) {
+        val elements = elementUpdates.updated
+        // need mapData in order to create (updated) geometry
         val mapData = MutableMapData()
         mapData.addAll(elements)
         completeMapData(mapData)
@@ -86,12 +86,12 @@ import javax.inject.Singleton
             geometry?.let { ElementGeometryEntry(element.type, element.id, geometry) }
         }
 
-        val mapDataWithGeom = ImmutableMapDataWithGeometry(mapData, elementGeometryEntries)
-
         geometryDB.putAll(elementGeometryEntries)
         elementDB.putAll(elements)
 
-        onUpdated(updated = mapDataWithGeom)
+        val mapDataWithGeom = ImmutableMapDataWithGeometry(mapData, elementGeometryEntries)
+
+        onUpdated(updated = mapDataWithGeom, deleted = deleted)
     }
 
     private fun completeMapData(mapData: MutableMapData) {
