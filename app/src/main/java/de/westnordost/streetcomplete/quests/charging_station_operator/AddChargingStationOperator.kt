@@ -13,11 +13,11 @@ class AddChargingStationOperator : OsmFilterQuestType<String>() {
     override val icon = R.drawable.ic_quest_car_charger
     override val isDeleteElementEnabled = true
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsAnyKey("name", "brand")
-        return if (hasName) R.string.quest_charging_station_name_operator_title
-        else R.string.quest_charging_station_operator_title
-    }
+    override fun getTitle(tags: Map<String, String>): Int =
+        if (tags.containsAnyKey("name", "brand"))
+            R.string.quest_charging_station_name_operator_title
+        else
+            R.string.quest_charging_station_operator_title
 
     override fun createForm() = AddChargingStationOperatorForm()
 

@@ -60,10 +60,11 @@ class CheckExistence(
     override val wikiLink: String? = null
     override val icon = R.drawable.ic_quest_check
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsAnyKey("name", "brand", "operator")
-        return if (hasName) R.string.quest_existence_name_title else R.string.quest_existence_title
-    }
+    override fun getTitle(tags: Map<String, String>): Int =
+        if (tags.containsAnyKey("name", "brand", "operator"))
+            R.string.quest_existence_name_title
+        else
+            R.string.quest_existence_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"] ?: tags["operator"]

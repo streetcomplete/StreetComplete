@@ -63,7 +63,7 @@ class AddAcceptsCash(
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
-        return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
+        return if (name != null) arrayOf(name, featureName.value.toString()) else arrayOf()
     }
 
     override fun createForm() = YesNoQuestAnswerFragment()

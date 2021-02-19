@@ -26,12 +26,11 @@ class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
         val isTram = tags["tram"] == "yes"
-        return if (isTram) {
-            if (hasName) R.string.quest_busStopBench_tram_name_title
-            else         R.string.quest_busStopBench_tram_title
-        } else {
-            if (hasName) R.string.quest_busStopBench_name_title
-            else         R.string.quest_busStopBench_title
+        return when {
+            isTram && hasName ->    R.string.quest_busStopBench_tram_name_title
+            isTram ->               R.string.quest_busStopBench_tram_title
+            hasName ->              R.string.quest_busStopBench_name_title
+            else ->                 R.string.quest_busStopBench_title
         }
     }
 

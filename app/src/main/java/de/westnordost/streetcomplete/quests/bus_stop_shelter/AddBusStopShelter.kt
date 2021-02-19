@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswe
 class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
 
     override val elementFilter = """
-        nodes with 
+        nodes with
         (
           (public_transport = platform and ~bus|trolleybus|tram ~ yes)
           or
@@ -28,12 +28,11 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
         val isTram = tags["tram"] == "yes"
-        return if (isTram) {
-            if (hasName) R.string.quest_busStopShelter_tram_name_title
-            else         R.string.quest_busStopShelter_tram_title
-        } else {
-            if (hasName) R.string.quest_busStopShelter_name_title
-            else         R.string.quest_busStopShelter_title
+        return when {
+            isTram && hasName ->    R.string.quest_busStopShelter_tram_name_title
+            isTram ->               R.string.quest_busStopShelter_tram_title
+            hasName ->              R.string.quest_busStopShelter_name_title
+            else ->                 R.string.quest_busStopShelter_title
         }
     }
 

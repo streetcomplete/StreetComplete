@@ -24,11 +24,11 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
         (tags["name"] ?: tags["brand"] ?: tags["operator"]).asSingleArray()
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsAnyKey("name", "brand", "operator")
-        return if (hasName) R.string.quest_postboxRef_name_title
-               else         R.string.quest_postboxRef_title
-    }
+    override fun getTitle(tags: Map<String, String>): Int =
+        if (tags.containsAnyKey("name", "brand", "operator"))
+            R.string.quest_postboxRef_name_title
+        else
+            R.string.quest_postboxRef_title
 
     override fun createForm() = AddPostboxRefForm()
 

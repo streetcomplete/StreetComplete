@@ -88,12 +88,14 @@ class AddWheelchairAccessBusiness(
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) =
-        if (hasFeatureName(tags)) R.string.quest_wheelchairAccess_name_type_title
-        else                      R.string.quest_wheelchairAccess_name_title
+        if (hasFeatureName(tags))
+            R.string.quest_wheelchairAccess_name_type_title
+        else
+            R.string.quest_wheelchairAccess_name_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
-        return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
+        return if (name != null) arrayOf(name, featureName.value.toString()) else arrayOf()
     }
 
     override fun createForm() = AddWheelchairAccessBusinessForm()
