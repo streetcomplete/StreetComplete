@@ -73,3 +73,6 @@ inline fun <T> Iterable<T>.sumByFloat(selector: (T) -> Float): Float {
 
 fun <T> Collection<T>.containsExactlyInAnyOrder(other: Collection<T>): Boolean =
     other.size == size && containsAll(other)
+
+/** If null, returns an empty array. Otherwise, returns an array with the value as the only element */
+inline fun <reified T> T?.asSingleArray(): Array<T> = if (this == null) arrayOf() else arrayOf(this)

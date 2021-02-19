@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.ktx.asSingleArray
 import de.westnordost.streetcomplete.ktx.containsAny
 
 class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
@@ -20,10 +21,8 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
             "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
     )
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
-        return if (name != null) arrayOf(name) else arrayOf()
-    }
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        (tags["name"] ?: tags["brand"] ?: tags["operator"]).asSingleArray()
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.keys.containsAny(listOf("name","brand","operator"))
