@@ -22,6 +22,7 @@ CZ: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]
 DE: [soccer, tennis, equestrian]
 DO: [baseball, basketball, tennis]
 ES: [soccer, tennis, basketball, golf, paddle_tennis, pelota]
+ES-CN: [soccer, tennis, basketball, golf, paddle_tennis, pelota, wrestling, boules] # wrestling is lucha_canaria, boules is bola_canaria
 FI: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]
 FR: [soccer, tennis, basketball, boules, equestrian, rugby]
 GB: [soccer, tennis, bowls, cricket, golf, basketball, rugby]
