@@ -1,21 +1,6 @@
 package de.westnordost.osmapi.map
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.osmapi.map.handler.MapDataHandler
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-
-interface MapDataWithGeometry : MapData {
-    fun getNodeGeometry(id: Long): ElementPointGeometry?
-    fun getWayGeometry(id: Long): ElementGeometry?
-    fun getRelationGeometry(id: Long): ElementGeometry?
-
-    fun getGeometry(elementType: Element.Type, id: Long): ElementGeometry? = when(elementType) {
-        Element.Type.NODE -> getNodeGeometry(id)
-        Element.Type.WAY -> getWayGeometry(id)
-        Element.Type.RELATION -> getRelationGeometry(id)
-    }
-}
 
 interface MapData : Iterable<Element> {
     val nodes: Collection<Node>
@@ -26,60 +11,6 @@ interface MapData : Iterable<Element> {
     fun getNode(id: Long): Node?
     fun getWay(id: Long): Way?
     fun getRelation(id: Long): Relation?
-}
-
-open class MutableMapData : MapData, MapDataHandler {
-
-    protected val nodesById: MutableMap<Long, Node> = mutableMapOf()
-    protected val waysById: MutableMap<Long, Way> = mutableMapOf()
-    protected val relationsById: MutableMap<Long, Relation> = mutableMapOf()
-    override var boundingBox: BoundingBox? = null
-    protected set
-
-    override fun handle(bounds: BoundingBox) { boundingBox = bounds }
-    override fun handle(node: Node) { nodesById[node.id] = node }
-    override fun handle(way: Way) { waysById[way.id] = way }
-    override fun handle(relation: Relation) { relationsById[relation.id] = relation }
-
-    override val nodes get() = nodesById.values
-    override val ways get() = waysById.values
-    override val relations get() = relationsById.values
-
-    override fun getNode(id: Long) = nodesById[id]
-    override fun getWay(id: Long) = waysById[id]
-    override fun getRelation(id: Long) = relationsById[id]
-
-    fun addAll(elements: Iterable<Element>) {
-        for (element in elements) {
-            when(element) {
-                is Node -> nodesById[element.id] = element
-                is Way -> waysById[element.id] = element
-                is Relation -> relationsById[element.id] = element
-            }
-        }
-    }
-
-    override fun iterator(): Iterator<Element> {
-        return (nodes.asSequence() + ways.asSequence() + relations.asSequence()).iterator()
-    }
-}
-
-class EmptyMapData : MapData {
-    override val nodes = emptyList<Node>()
-    override val ways = emptyList<Way>()
-    override val relations = emptyList<Relation>()
-    override val boundingBox: BoundingBox? = null
-
-    override fun getNode(id: Long): Node? = null
-    override fun getWay(id: Long): Way? = null
-    override fun getRelation(id: Long): Relation? = null
-    override fun iterator() = emptyList<Element>().iterator()
-}
-
-class EmptyMapDataWithGeometry : MapData by EmptyMapData(), MapDataWithGeometry {
-    override fun getNodeGeometry(id: Long): ElementPointGeometry? = null
-    override fun getWayGeometry(id: Long): ElementGeometry? = null
-    override fun getRelationGeometry(id: Long): ElementGeometry? = null
 }
 
 fun MapData.isRelationComplete(id: Long): Boolean =

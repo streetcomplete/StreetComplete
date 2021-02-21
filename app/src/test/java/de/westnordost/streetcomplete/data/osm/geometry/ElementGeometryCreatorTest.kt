@@ -124,8 +124,7 @@ class ElementGeometryCreatorTest {
             OsmNode(0, 1, P0, null, null, null),
             OsmNode(1, 1, P1, null, null, null)
         )
-        val mapData = MutableMapData()
-        mapData.addAll(nodes)
+        val mapData = MutableMapData(nodes)
         val geom = create(SIMPLE_WAY1, mapData) as ElementPolylinesGeometry
         assertEquals(listOf(nodes.map { it.position }), geom.polylines)
     }
@@ -154,8 +153,7 @@ class ElementGeometryCreatorTest {
                 OsmNode(3, 1, P3, null, null, null)
             )
         )
-        val mapData = MutableMapData()
-        mapData.addAll(nodesByWayId.values.flatten() + ways)
+        val mapData = MutableMapData(nodesByWayId.values.flatten() + ways)
         val positions = listOf(P0, P1, P2, P3)
         val geom = create(relation, mapData) as ElementPolylinesGeometry
         assertEquals(listOf(positions), geom.polylines)
@@ -175,8 +173,7 @@ class ElementGeometryCreatorTest {
             OsmRelationMember(0L, "", Element.Type.WAY),
             OsmRelationMember(1L, "", Element.Type.WAY)
         ), null)
-        val mapData = MutableMapData()
-        mapData.addAll(listOf(
+        val mapData = MutableMapData(listOf(
             relation,
             OsmWay(0, 0, listOf(0,1), null),
             OsmNode(0, 0, P0, null),
@@ -192,8 +189,7 @@ class ElementGeometryCreatorTest {
             OsmRelationMember(1L, "", Element.Type.WAY)
         ), null)
         val way = OsmWay(0, 0, listOf(0,1), null)
-        val mapData = MutableMapData()
-        mapData.addAll(listOf(
+        val mapData = MutableMapData(listOf(
             relation,
             way,
             OsmNode(0, 0, P0, null),

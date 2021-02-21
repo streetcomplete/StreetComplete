@@ -5,17 +5,17 @@ import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.countryboundaries.intersects
 import de.westnordost.countryboundaries.isInAny
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osm.changes.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.data.osmnotes.NoteSource
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.format
@@ -37,7 +37,7 @@ import javax.inject.Singleton
 @Singleton class OsmQuestController @Inject internal constructor(
     private val db: OsmQuestDao,
     private val hiddenDB: OsmQuestsHiddenDao,
-    private val mapDataSource: MapDataSource,
+    private val mapDataSource: MapDataWithEditsSource,
     private val notesSource: NoteSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
@@ -50,7 +50,7 @@ import javax.inject.Singleton
 
     private val allQuestTypes get() = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
 
-    private val osmElementSourceListener = object : MapDataSource.Listener {
+    private val osmElementSourceListener = object : MapDataWithEditsSource.Listener {
 
         /** For the given elements, replace the current quests with the given ones. Called when
          *  OSM elements are updated, so the quests that reference that element need to be updated
@@ -101,9 +101,9 @@ import javax.inject.Singleton
     }
 
     private fun createQuestsForBBox(
-        bbox: BoundingBox,
-        mapDataWithGeometry: MapDataWithGeometry,
-        questTypes: Collection<OsmElementQuestType<*>>
+            bbox: BoundingBox,
+            mapDataWithGeometry: MapDataWithGeometry,
+            questTypes: Collection<OsmElementQuestType<*>>
     ): Collection<OsmQuest> {
         val time = System.currentTimeMillis()
 

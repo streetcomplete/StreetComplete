@@ -70,8 +70,8 @@ class UnsyncedChangesCountSourceTest {
 
         on(commentNoteDao.getCount()).thenReturn(2)
         on(createNoteDao.getCount()).thenReturn(3)
-        on(elementEditsSource.getUnsyncedEditsCount()).thenReturn(4)
-        on(elementEditsSource.getEditsCountSolved()).thenReturn(2)
+        on(elementEditsSource.getUnsyncedCount()).thenReturn(4)
+        on(elementEditsSource.getPositiveUnsyncedCount()).thenReturn(2)
 
         source = UnsyncedChangesCountSource(commentNoteDao, createNoteDao, elementEditsSource)
 

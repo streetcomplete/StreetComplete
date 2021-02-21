@@ -8,7 +8,6 @@ import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.changes.*
 import de.westnordost.streetcomplete.data.osm.changes.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.changes.update_tags.*
@@ -33,7 +32,7 @@ import javax.inject.Singleton
     private val elementEditsController: ElementEditsController,
     private val createNoteDB: CreateNoteDao,
     private val commentNoteDB: CommentNoteDao,
-    private val mapDataSource: MapDataSource
+    private val mapDataSource: MapDataWithEditsSource
 ): CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     /** Create a note for the given OSM Quest instead of answering it.
@@ -59,7 +58,7 @@ import javax.inject.Singleton
     fun splitWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>, source: String): Boolean {
         val q = osmQuestController.get(osmQuestId) ?: return false
         val w = mapDataSource.get(q.elementType, q.elementId) as? Way ?: return false
-        elementEditsController.addEdit(
+        elementEditsController.add(
             q.osmElementQuestType,
             q.elementType,
             q.elementId,
@@ -79,7 +78,7 @@ import javax.inject.Singleton
 
         Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName}")
 
-        elementEditsController.addEdit(
+        elementEditsController.add(
             q.osmElementQuestType,
             q.elementType,
             q.elementId,
@@ -100,7 +99,7 @@ import javax.inject.Singleton
         val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName} with $changes")
 
-        elementEditsController.addEdit(
+        elementEditsController.add(
             q.osmElementQuestType,
             q.elementType,
             q.elementId,
@@ -167,7 +166,7 @@ import javax.inject.Singleton
 
         Log.d(TAG, "Solved a ${q.type.javaClass.simpleName} quest: $changes")
 
-        elementEditsController.addEdit(
+        elementEditsController.add(
             q.osmElementQuestType,
             q.elementType,
             q.elementId,

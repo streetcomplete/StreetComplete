@@ -48,9 +48,8 @@ class SplitWayActionTest {
 
     private fun updateRepos(way: Way) {
         // let the repos return this way and all its nodes on getWayComplete
-        on(repos.getWayComplete(0)).thenReturn(MutableMapData().apply { addAll(
-            way.nodeIds.map { nodeId -> n[nodeId.toInt()] }.shuffled() + way
-        )})
+        on(repos.getWayComplete(0))
+            .thenReturn(MutableMapData(way.nodeIds.map { nodeId -> n[nodeId.toInt()] }.shuffled() + way))
         on(repos.getRelationsForWay(0)).thenReturn(listOf())
     }
 
@@ -654,7 +653,7 @@ class SplitWayActionTest {
         for (i in 1L..counts.relations) { elementKeys.add(ElementKey(RELATION, -i)) }
         val provider = ElementIdProvider(elementKeys)
         val elements = action.createUpdates(way, repos, provider)
-        return MutableMapData().apply { addAll(elements) }
+        return MutableMapData(elements)
     }
 
     private fun createWayWithNodeIds(vararg nodes: Long) = OsmWay(0, 2, nodes.toMutableList(), null)

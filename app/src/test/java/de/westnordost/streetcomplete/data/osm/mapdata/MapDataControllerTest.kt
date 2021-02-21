@@ -23,18 +23,20 @@ class MapDataControllerTest {
 
     private lateinit var nodeDB: NodeDao
     private lateinit var wayDB: WayDao
-    private lateinit var elementDB: ElementDao
+    private lateinit var relationDB: RelationDao
     private lateinit var geometryDB: ElementGeometryDao
+    private lateinit var elementDB: ElementDao
     private lateinit var controller: MapDataController
     private lateinit var geometryCreator: ElementGeometryCreator
 
     @Before fun setUp() {
         nodeDB = mock()
         wayDB = mock()
-        elementDB = mock()
+        relationDB = mock()
         geometryDB = mock()
+        elementDB = mock()
         geometryCreator = mock()
-        controller = MapDataController(elementDB, wayDB, nodeDB, geometryDB, geometryCreator)
+        controller = MapDataController(nodeDB, wayDB, relationDB, elementDB, geometryDB, geometryCreator)
     }
 
     @Test fun get() {
@@ -86,7 +88,7 @@ class MapDataControllerTest {
         )
         on(geometryCreator.create(any(), any(), anyBoolean())).thenReturn(geom())
 
-        val listener = mock<MapDataSource.Listener>()
+        val listener = mock<MapDataController.Listener>()
         controller.addListener(listener)
         controller.updateAll(ElementUpdates(
             updated = elements,
@@ -108,7 +110,7 @@ class MapDataControllerTest {
             ElementKey(Element.Type.NODE, 2L),
         )
         on(elementDB.getIdsOlderThan(123L)).thenReturn(elementKeys)
-        val listener = mock<MapDataSource.Listener>()
+        val listener = mock<MapDataController.Listener>()
 
         controller.addListener(listener)
         controller.deleteUnreferencedOlderThan(123L)
@@ -136,7 +138,7 @@ class MapDataControllerTest {
         on(geometryDB.getAllEntries(bbox)).thenReturn(emptyList())
         on(geometryCreator.create(any(), any(), anyBoolean())).thenReturn(geom())
 
-        val listener = mock<MapDataSource.Listener>()
+        val listener = mock<MapDataController.Listener>()
 
         controller.addListener(listener)
         controller.putAllForBBox(bbox, mapData)

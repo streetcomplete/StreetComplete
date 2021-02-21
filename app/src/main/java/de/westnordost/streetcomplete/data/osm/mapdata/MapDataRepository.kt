@@ -13,8 +13,8 @@ interface MapDataRepository {
     fun getWayComplete(id: Long): MapData?
     fun getRelationComplete(id: Long): MapData?
 
-    fun getWaysForNode(id: Long): List<Way>
-    fun getRelationsForNode(id: Long): List<Relation>
-    fun getRelationsForWay(id: Long): List<Relation>
-    fun getRelationsForRelation(id: Long): List<Relation>
+    fun getWaysForNode(id: Long): Collection<Way>
+    fun getRelationsForNode(id: Long): Collection<Relation>
+    fun getRelationsForWay(id: Long): Collection<Relation>
+    fun getRelationsForRelation(id: Long): Collection<Relation>
 }

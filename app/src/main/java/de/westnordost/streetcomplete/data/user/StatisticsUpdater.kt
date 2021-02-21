@@ -24,6 +24,9 @@ class StatisticsUpdater @Inject constructor(
     @Named("QuestAliases") private val questAliases: List<Pair<String, String>>
 ) : ElementEditsSource.Listener {
 
+    override fun onAddedEdit(edit: ElementEdit) {}
+    override fun onDeletedEdit(edit: ElementEdit) {}
+
     override fun onSyncedEdit(edit: ElementEdit) {
         val questName = edit.questType::class.simpleName!!
         if (edit.action is IsRevert) {
@@ -32,6 +35,7 @@ class StatisticsUpdater @Inject constructor(
             addOne(questName, edit.position)
         }
     }
+
 
     private fun addOne(questType: String, position: LatLon) {
         updateDaysActive()

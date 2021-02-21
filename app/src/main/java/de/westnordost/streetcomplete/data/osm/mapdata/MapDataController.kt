@@ -5,44 +5,39 @@ import de.westnordost.osmapi.map.*
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.geometry.*
 import de.westnordost.streetcomplete.ktx.format
+import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
 @Singleton class MapDataController @Inject internal constructor(
-    private val elementDB: ElementDao,
-    private val wayDB: WayDao,
     private val nodeDB: NodeDao,
+    private val wayDB: WayDao,
+    private val relationDB: RelationDao,
+    private val elementDB: ElementDao,
     private val geometryDB: ElementGeometryDao,
     private val elementGeometryCreator: ElementGeometryCreator
-): MapDataSource {
+) {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
-    private val listeners: MutableList<MapDataSource.Listener> = CopyOnWriteArrayList()
+    /** Interface to be notified of new or updated OSM elements */
+    interface Listener {
+        /** Called when a number of elements have been updated or deleted */
+        fun onUpdated(updated: MutableMapDataWithGeometry, deleted: Collection<ElementKey>)
 
-    override fun get(type: Element.Type, id: Long) : Element? = elementDB.get(type, id)
-
-    override fun getGeometry(type: Element.Type, id: Long) : ElementGeometry? = geometryDB.get(type, id)
-
-    override fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry {
-        val time = System.currentTimeMillis()
-        val elementGeometryEntries = geometryDB.getAllEntries(bbox)
-        val elementKeys = elementGeometryEntries.map { ElementKey(it.elementType, it.elementId) }
-        val mapData = MutableMapData()
-        mapData.addAll(elementDB.getAll(elementKeys))
-        mapData.handle(bbox)
-        val result = ImmutableMapDataWithGeometry(mapData, elementGeometryEntries)
-        Log.i(TAG, "Fetched ${elementKeys.size} elements and geometries in ${System.currentTimeMillis() - time}ms")
-        return result
+        /** Called when all elements in the given bounding box should be replaced with the elements
+         *  in the mapDataWithGeometry */
+        fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry)
     }
+    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     /** update element data because in the given bounding box, fresh data from the OSM API has been
      *  downloaded */
     fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
-        val time = System.currentTimeMillis()
+        val time = currentTimeMillis()
 
         // for incompletely downloaded relations, complete the map data (as far as possible) with
         // local data, i.e. with local nodes and ways (still) in local storage
@@ -61,14 +56,13 @@ import javax.inject.Singleton
         geometryDB.putAll(geometries)
         elementDB.putAll(mapData)
 
-        val seconds = (System.currentTimeMillis() - time) / 1000.0
+        val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG,"Persisted ${geometries.size} and deleted ${oldElementKeys.size} elements and geometries in ${seconds.format(1)}s")
 
-        val mapDataWithGeometry = ImmutableMapDataWithGeometry(mapData, geometries)
+        val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometries)
         onUpdateForBBox(bbox, mapDataWithGeometry)
     }
 
-    /** update/delete elements because the elements have changed on OSM (i.e. after upload) */
     fun updateAll(elementUpdates: ElementUpdates) {
         val oldElementKeys = elementUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
         val deleted = elementUpdates.deleted + oldElementKeys
@@ -77,8 +71,7 @@ import javax.inject.Singleton
 
         val elements = elementUpdates.updated
         // need mapData in order to create (updated) geometry
-        val mapData = MutableMapData()
-        mapData.addAll(elements)
+        val mapData = MutableMapData(elements)
         completeMapData(mapData)
 
         val elementGeometryEntries = elements.mapNotNull { element ->
@@ -89,8 +82,7 @@ import javax.inject.Singleton
         geometryDB.putAll(elementGeometryEntries)
         elementDB.putAll(elements)
 
-        val mapDataWithGeom = ImmutableMapDataWithGeometry(mapData, elementGeometryEntries)
-
+        val mapDataWithGeom = MutableMapDataWithGeometry(mapData, elementGeometryEntries)
         onUpdated(updated = mapDataWithGeom, deleted = deleted)
     }
 
@@ -121,6 +113,36 @@ import javax.inject.Singleton
         mapData.addAll(ways)
     }
 
+    fun get(type: Element.Type, id: Long) : Element? = elementDB.get(type, id)
+
+    fun getGeometry(type: Element.Type, id: Long) : ElementGeometry? = geometryDB.get(type, id)
+
+    fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
+        val time = currentTimeMillis()
+        val elementGeometryEntries = geometryDB.getAllEntries(bbox)
+        val elementKeys = elementGeometryEntries.map { ElementKey(it.elementType, it.elementId) }
+        val elements = elementDB.getAll(elementKeys)
+        val result = MutableMapDataWithGeometry(elements, elementGeometryEntries)
+        result.boundingBox = bbox
+        Log.i(TAG, "Fetched ${elementKeys.size} elements and geometries in ${currentTimeMillis() - time}ms")
+        return result
+    }
+
+    fun getNode(id: Long): Node? = nodeDB.get(id)
+    fun getWay(id: Long): Way? = wayDB.get(id)
+    fun getRelation(id: Long): Relation? = relationDB.get(id)
+
+    fun getAll(elementKeys: Iterable<ElementKey>): List<Element> = elementDB.getAll(elementKeys)
+
+    fun getNodes(ids: Collection<Long>): List<Node> = nodeDB.getAll(ids)
+    fun getWays(ids: Collection<Long>): List<Way> = wayDB.getAll(ids)
+    fun getRelations(ids: Collection<Long>): List<Relation> = relationDB.getAll(ids)
+
+    fun getWaysForNode(id: Long): List<Way> = wayDB.getAllForNode(id)
+    fun getRelationsForNode(id: Long): List<Relation> = relationDB.getAllForNode(id)
+    fun getRelationsForWay(id: Long): List<Relation> = relationDB.getAllForWay(id)
+    fun getRelationsForRelation(id: Long): List<Relation> = relationDB.getAllForRelation(id)
+
     fun deleteUnreferencedOlderThan(timestamp: Long) {
         val deletedElements = elementDB.getIdsOlderThan(timestamp)
         elementDB.deleteAll(deletedElements)
@@ -129,23 +151,21 @@ import javax.inject.Singleton
         Log.i(TAG,"Deleted ${deletedElements.size} old elements and $deletedGeometries geometries")
     }
 
-    /* ------------------------------------ Listeners ------------------------------------------- */
-
-    override fun addListener(listener: MapDataSource.Listener) {
+    fun addListener(listener: Listener) {
         this.listeners.add(listener)
     }
-    override fun removeListener(listener: MapDataSource.Listener) {
+    fun removeListener(listener: Listener) {
         this.listeners.remove(listener)
     }
 
-    private fun onUpdated(updated: MapDataWithGeometry = EmptyMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
+    private fun onUpdated(updated: MutableMapDataWithGeometry = MutableMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
         listeners.forEach { it.onUpdated(updated, deleted) }
     }
-    private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+    private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
         listeners.forEach { it.onReplacedForBBox(bbox, mapDataWithGeometry) }
     }
 
     companion object {
-        private const val TAG = "OsmElementDownload"
+        private const val TAG = "MapDataController"
     }
 }

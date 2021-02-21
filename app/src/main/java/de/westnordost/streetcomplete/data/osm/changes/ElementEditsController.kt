@@ -1,12 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.changes
 
 import android.content.SharedPreferences
-import android.util.Log
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
-import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
 import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.Element
@@ -20,8 +15,6 @@ import javax.inject.Singleton
 @Singleton class ElementEditsController @Inject constructor(
     private val editsDB: ElementEditsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
-    private val singleUploader: ElementEditUploader,
-    private val mapDataController: MapDataController,
     private val prefs: SharedPreferences
 ): ElementEditsSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -32,7 +25,7 @@ import javax.inject.Singleton
     /* ----------------------- Unsynced edits and syncing them -------------------------------- */
 
     /** Add new unsynced edit to the to-be-uploaded queue */
-    fun addEdit(
+    fun add(
         questType: OsmElementQuestType<*>,
         elementType: Element.Type,
         elementId: Long,
@@ -53,47 +46,37 @@ import javax.inject.Singleton
         onAddedEdit(edit)
     }
 
-    /** Upload the first item in the unsynced edits queue */
-    fun syncOldestEdit(): SyncElementEditResult? {
-        val edit = editsDB.getOldestUnsynced() ?: return null
-        val editClassName = edit::class.simpleName
+    fun getAllUnsynced(): List<ElementEdit> =
+        editsDB.getAllUnsynced()
 
-        try {
-            val idProvider = elementIdProviderDB.get(edit.id!!)
+    fun getOldestUnsynced(): ElementEdit? =
+        editsDB.getOldestUnsynced()
 
-            val elementUpdates = singleUploader.upload(edit, idProvider)
-            Log.d(UPLOAD_TAG, "Uploaded a $editClassName")
-            markEditSynced(edit)
-            updateEditsElementIds(elementUpdates.idUpdates)
-            mapDataController.updateAll(elementUpdates)
-            // TODO broadcast id updates, broadcast element updates
-            // TODO rebuild local changes: on rebuilding, check for each change if new element compatible!
-            return SyncElementEditResult(true, edit)
-        } catch (e: ElementConflictException) {
-            Log.d(UPLOAD_TAG, "Dropped a $editClassName: ${e.message}")
-            deleteEdit(edit)
-            // TODO rebuild local changes
-            if (e is ElementDeletedException) {
-                mapDataController.updateAll(ElementUpdates(
-                    deleted = listOf(ElementKey(edit.elementType, edit.elementId))
-                ))
-            }
-            return SyncElementEditResult(false, edit)
-        }
-    }
+    fun getIdProvider(id: Long): ElementIdProvider =
+        elementIdProviderDB.get(id)
 
     /** Delete old synced (aka uploaded) edits older than the given timestamp. Used to clear
      *  the undo history */
-    fun deleteSyncedEditsOlderThan(timestamp: Long): Int = editsDB.deleteSyncedOlderThan(timestamp)
+    fun deleteSyncedOlderThan(timestamp: Long): Int = editsDB.deleteSyncedOlderThan(timestamp)
 
-    override fun getUnsyncedEditsCount(): Int = editsDB.getUnsyncedCount()
+    override fun getUnsyncedCount(): Int = editsDB.getUnsyncedCount()
 
-    override fun getEditsCountSolved(): Int {
+    override fun getPositiveUnsyncedCount(): Int {
         val unsynced = editsDB.getAllUnsynced().map { it.action }
         return unsynced.filter { it !is IsRevert }.size - unsynced.filter { it is IsRevert }.size
     }
 
-    private fun markEditSynced(edit: ElementEdit) {
+    /** update/delete elements because the elements have changed on OSM after upload */
+    fun synced(edit: ElementEdit, elementUpdates: ElementUpdates) {
+        updateElementIds(elementUpdates.idUpdates)
+        markSynced(edit)
+    }
+
+    fun syncFailed(edit: ElementEdit) {
+        deleteEdit(edit)
+    }
+
+    private fun markSynced(edit: ElementEdit) {
         val id = edit.id!!
         elementIdProviderDB.delete(id)
         if (editsDB.markSynced(id)) {
@@ -101,7 +84,7 @@ import javax.inject.Singleton
         }
     }
 
-    private fun updateEditsElementIds(updates: Collection<ElementIdUpdate>) {
+    private fun updateElementIds(updates: Collection<ElementIdUpdate>) {
         for (update in updates) {
             editsDB.updateElementId(update.elementType, update.oldElementId, update.newElementId)
         }
@@ -109,11 +92,13 @@ import javax.inject.Singleton
 
     /* ----------------------- Undoable edits and undoing them -------------------------------- */
 
-    fun getFirstUndoableEdit(): ElementEdit? =
+    fun getMostRecentUndoableEdit(): ElementEdit? =
         editsDB.getAll().firstOrNull {
             if (it.isSynced) it.action is IsRevertable else it.action is IsUndoable
         }
 
+    /** Undo edit with the given id. If unsynced yet, will delete the edit if it is undoable. If
+     *  already synced, will add a revert of that edit as a new edit, if possible */
     fun undoEdit(id: Long) {
         val edit = editsDB.get(id) ?: return
         // already uploaded
@@ -123,7 +108,7 @@ import javax.inject.Singleton
             // need to delete the original edit from history because this should not be undoable anymore
             deleteEdit(edit)
             // ... and add a new revert to the queue
-            addEdit(edit.questType, edit.elementType, edit.elementId, edit.source, edit.position, action.createReverted())
+            add(edit.questType, edit.elementType, edit.elementId, edit.source, edit.position, action.createReverted())
         }
         // not uploaded yet
         else {
@@ -131,6 +116,8 @@ import javax.inject.Singleton
             deleteEdit(edit)
         }
     }
+
+
 
     private fun deleteEdit(edit: ElementEdit) {
         val id = edit.id!!
@@ -161,10 +148,4 @@ import javax.inject.Singleton
     private fun onDeletedEdit(edit: ElementEdit) {
         listeners.forEach { it.onDeletedEdit(edit) }
     }
-
-    companion object {
-        private const val UPLOAD_TAG = "Upload"
-    }
 }
-
-data class SyncElementEditResult(val success: Boolean, val edit: ElementEdit)

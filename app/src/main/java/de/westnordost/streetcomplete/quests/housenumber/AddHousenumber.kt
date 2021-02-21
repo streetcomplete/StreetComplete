@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.*
 
 import de.westnordost.streetcomplete.R

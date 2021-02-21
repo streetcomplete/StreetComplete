@@ -19,7 +19,7 @@ import javax.inject.Singleton
 
     /** count of unsynced changes that count towards the statistics. That is, unsynced note stuff
      *  doesn't count and reverts of changes count negative */
-    var solvedCount: Int = elementEditsSource.getEditsCountSolved()
+    var solvedCount: Int = elementEditsSource.getPositiveUnsyncedCount()
     private set
 
     private var commentNoteCount: Int = commentNoteDao.getCount()
@@ -34,7 +34,7 @@ import javax.inject.Singleton
         field = value
         onUpdate(diff)
     }
-    private var osmElementChangesCount: Int = elementEditsSource.getUnsyncedEditsCount()
+    private var osmElementChangesCount: Int = elementEditsSource.getUnsyncedCount()
     set(value) {
         val diff = value - field
         field = value

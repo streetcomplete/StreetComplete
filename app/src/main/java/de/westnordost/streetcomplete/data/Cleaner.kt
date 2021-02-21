@@ -56,7 +56,7 @@ class Cleaner @Inject constructor(
 
     private fun cleanOldHistory(timestamp: Long) = launch {
         val time = currentTimeMillis()
-        elementEditsController.deleteSyncedEditsOlderThan(timestamp)
+        elementEditsController.deleteSyncedOlderThan(timestamp)
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Cleaned old history in ${seconds.format(1)}s")
     }
