@@ -45,6 +45,7 @@ class VisibleQuestsSourceTest {
         teamModeQuestFilter = mock()
 
         on(visibleQuestTypeDao.isVisible(any())).thenReturn(true)
+        on(teamModeQuestFilter.isVisible(any())).thenReturn(true)
 
         on(osmNoteQuestController.addQuestStatusListener(any())).then { invocation: InvocationOnMock ->
             noteQuestStatusListener = (invocation.arguments[0] as OsmNoteQuestController.QuestStatusListener)
