@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.changes.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
+import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
@@ -12,7 +13,8 @@ import javax.inject.Inject
 class ElementEditsUploader @Inject constructor(
     private val elementEditsController: ElementEditsController,
     private val mapDataController: MapDataController,
-    private val singleUploader: ElementEditUploader
+    private val singleUploader: ElementEditUploader,
+    private val statisticsUpdater: StatisticsUpdater
 ): Uploader {
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
@@ -38,6 +40,12 @@ class ElementEditsUploader @Inject constructor(
 
             elementEditsController.synced(edit, updates)
             mapDataController.updateAll((updates))
+
+            if (edit.action is IsRevert) {
+                statisticsUpdater.subtractOne(questTypeName, edit.position)
+            } else {
+                statisticsUpdater.addOne(questTypeName, edit.position)
+            }
 
         } catch (e: ElementConflictException) {
             Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")

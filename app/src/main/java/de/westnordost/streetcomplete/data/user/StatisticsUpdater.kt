@@ -22,22 +22,8 @@ class StatisticsUpdater @Inject constructor(
     private val statisticsDownloader: StatisticsDownloader,
     private val countryBoundaries: FutureTask<CountryBoundaries>,
     @Named("QuestAliases") private val questAliases: List<Pair<String, String>>
-) : ElementEditsSource.Listener {
-
-    override fun onAddedEdit(edit: ElementEdit) {}
-    override fun onDeletedEdit(edit: ElementEdit) {}
-
-    override fun onSyncedEdit(edit: ElementEdit) {
-        val questName = edit.questType::class.simpleName!!
-        if (edit.action is IsRevert) {
-            subtractOne(questName, edit.position)
-        } else {
-            addOne(questName, edit.position)
-        }
-    }
-
-
-    private fun addOne(questType: String, position: LatLon) {
+) {
+    fun addOne(questType: String, position: LatLon) {
         updateDaysActive()
 
         questStatisticsDao.addOne(questType)
@@ -46,7 +32,7 @@ class StatisticsUpdater @Inject constructor(
         achievementGiver.updateQuestTypeAchievements(questType)
     }
 
-    private fun subtractOne(questType: String, position: LatLon) {
+    fun subtractOne(questType: String, position: LatLon) {
         updateDaysActive()
         questStatisticsDao.subtractOne(questType)
         getRealCountryCode(position)?.let { countryStatisticsDao.subtractOne(it) }
