@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import androidx.core.widget.addTextChangedListener
@@ -57,6 +58,8 @@ class TeamModeDialog(
         setOnShowListener {
             getButton(BUTTON_POSITIVE).isEnabled = false
         }
+
+        window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
 
         setView(view)
     }

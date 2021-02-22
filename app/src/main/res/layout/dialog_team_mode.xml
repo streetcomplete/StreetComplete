@@ -38,7 +38,9 @@
             android:inputType="numberSigned"
             android:textAlignment="center"
             android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-            android:textSize="30sp" />
+            android:textSize="30sp">
+            <requestFocus />
+        </EditText>
 
     </LinearLayout>
 
