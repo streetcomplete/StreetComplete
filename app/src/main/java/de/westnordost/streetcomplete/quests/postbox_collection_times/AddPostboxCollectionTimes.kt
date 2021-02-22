@@ -63,7 +63,7 @@ class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
                 changes.add("collection_times:signed", "no")
             }
             is CollectionTimes -> {
-                changes.updateWithCheckDate("collection_times", answer.times.joinToString(", "))
+                changes.updateWithCheckDate("collection_times", answer.times.joinToString("; "))
             }
         }
     }

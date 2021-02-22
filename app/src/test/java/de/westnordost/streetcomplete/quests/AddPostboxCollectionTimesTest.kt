@@ -19,10 +19,10 @@ class AddPostboxCollectionTimesTest {
     @Test fun `apply collection times answer`() {
         questType.verifyAnswer(
             CollectionTimes(listOf(
-                WeekdaysTimes(Weekdays(booleanArrayOf(true)), mutableListOf(60)),
+                WeekdaysTimes(Weekdays(booleanArrayOf(true)), mutableListOf(60, 65)),
                 WeekdaysTimes(Weekdays(booleanArrayOf(false, true)), mutableListOf(120))
             )),
-            StringMapEntryAdd("collection_times", "Mo 01:00, Tu 02:00")
+            StringMapEntryAdd("collection_times", "Mo 01:00,01:05; Tu 02:00")
         )
     }
 
