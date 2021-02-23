@@ -63,10 +63,9 @@ import javax.inject.Singleton
 
     override fun getPositiveUnsyncedCount(): Int {
         val unsynced = editsDB.getAllUnsynced().map { it.action }
-        return unsynced.filter { it !is IsRevert }.size - unsynced.filter { it is IsRevert }.size
+        return unsynced.filter { it !is IsRevertAction }.size - unsynced.filter { it is IsRevertAction }.size
     }
 
-    /** update/delete elements because the elements have changed on OSM after upload */
     fun synced(edit: ElementEdit, elementUpdates: ElementUpdates) {
         updateElementIds(elementUpdates.idUpdates)
         markSynced(edit)
@@ -93,9 +92,7 @@ import javax.inject.Singleton
     /* ----------------------- Undoable edits and undoing them -------------------------------- */
 
     fun getMostRecentUndoableEdit(): ElementEdit? =
-        editsDB.getAll().firstOrNull {
-            if (it.isSynced) it.action is IsRevertable else it.action is IsUndoable
-        }
+        editsDB.getAll().firstOrNull { !it.isSynced || it.action is IsActionRevertable }
 
     /** Undo edit with the given id. If unsynced yet, will delete the edit if it is undoable. If
      *  already synced, will add a revert of that edit as a new edit, if possible */
@@ -104,7 +101,7 @@ import javax.inject.Singleton
         // already uploaded
         if (edit.isSynced) {
             val action = edit.action
-            if (action !is IsRevertable) return
+            if (action !is IsActionRevertable) return
             // need to delete the original edit from history because this should not be undoable anymore
             deleteEdit(edit)
             // ... and add a new revert to the queue
@@ -112,7 +109,6 @@ import javax.inject.Singleton
         }
         // not uploaded yet
         else {
-            if (edit.action !is IsUndoable) return
             deleteEdit(edit)
         }
     }

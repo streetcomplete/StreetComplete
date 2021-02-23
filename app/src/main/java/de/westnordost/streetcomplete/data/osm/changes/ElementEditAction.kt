@@ -20,8 +20,7 @@ interface ElementEditAction {
 
 data class NewElementsCount(val nodes: Int, val ways: Int, val relations: Int)
 
-interface IsUndoable
-interface IsRevertable {
+interface IsActionRevertable {
     fun createReverted(): ElementEditAction
 }
-interface IsRevert
+interface IsRevertAction

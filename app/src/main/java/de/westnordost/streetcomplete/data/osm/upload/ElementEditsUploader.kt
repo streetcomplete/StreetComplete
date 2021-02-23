@@ -39,9 +39,9 @@ class ElementEditsUploader @Inject constructor(
             uploadedChangeListener?.onUploaded(questTypeName, edit.position)
 
             elementEditsController.synced(edit, updates)
-            mapDataController.updateAll((updates))
+            mapDataController.updateAll(updates)
 
-            if (edit.action is IsRevert) {
+            if (edit.action is IsRevertAction) {
                 statisticsUpdater.subtractOne(questTypeName, edit.position)
             } else {
                 statisticsUpdater.addOne(questTypeName, edit.position)

@@ -23,7 +23,7 @@ class UpdateElementTagsAction(
     private val spatialPartsOfOriginalElement: SpatialPartsOfElement,
     private val changes: StringMapChanges,
     private val questType: OsmElementQuestType<*>?
-): ElementEditAction, IsUndoable, IsRevertable {
+): ElementEditAction, IsActionRevertable {
 
     override val newElementsCount get() = NewElementsCount(0,0,0)
 

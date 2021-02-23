@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.changes.update_tags
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.changes.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.changes.ElementIdProvider
-import de.westnordost.streetcomplete.data.osm.changes.IsRevert
+import de.westnordost.streetcomplete.data.osm.changes.IsRevertAction
 import de.westnordost.streetcomplete.data.osm.changes.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 class RevertUpdateElementTagsAction(
     private val spatialPartsOfOriginalElement: SpatialPartsOfElement,
     private val changes: StringMapChanges
-): ElementEditAction, IsRevert {
+): ElementEditAction, IsRevertAction {
 
     override val newElementsCount get() = NewElementsCount(0,0,0)
 

@@ -4,9 +4,6 @@ import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.countryboundaries.getIds
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.data.osm.changes.IsRevert
-import de.westnordost.streetcomplete.data.osm.changes.ElementEdit
-import de.westnordost.streetcomplete.data.osm.changes.ElementEditsSource
 import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
 import java.util.*
 import java.util.concurrent.FutureTask

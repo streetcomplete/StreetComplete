@@ -53,16 +53,16 @@ import javax.inject.Singleton
         override fun onAddedEdit(edit: ElementEdit) {
             if (edit.isSynced) return
             ++osmElementChangesCount
-            if (edit.action is IsRevert) --solvedCount else ++solvedCount
+            if (edit.action is IsRevertAction) --solvedCount else ++solvedCount
         }
         override fun onSyncedEdit(edit: ElementEdit) {
             --osmElementChangesCount
-            if (edit.action is IsRevert) ++solvedCount else --solvedCount
+            if (edit.action is IsRevertAction) ++solvedCount else --solvedCount
         }
         override fun onDeletedEdit(edit: ElementEdit) {
             if (edit.isSynced) return
             --osmElementChangesCount
-            if (edit.action is IsRevert) ++solvedCount else --solvedCount
+            if (edit.action is IsRevertAction) ++solvedCount else --solvedCount
         }
     }
 
