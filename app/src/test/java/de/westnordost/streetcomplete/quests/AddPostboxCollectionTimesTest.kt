@@ -22,7 +22,7 @@ class AddPostboxCollectionTimesTest {
                 WeekdaysTimes(Weekdays(booleanArrayOf(true)), mutableListOf(60)),
                 WeekdaysTimes(Weekdays(booleanArrayOf(false, true)), mutableListOf(120))
             )),
-            // here ; would be fine as well instead of ;
+            // here ; would be fine as well instead of ,
             // see https://github.com/streetcomplete/StreetComplete/pull/2604#issuecomment-783823068
             StringMapEntryAdd("collection_times", "Mo 01:00, Tu 02:00")
         )
