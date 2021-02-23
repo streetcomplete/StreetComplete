@@ -19,7 +19,7 @@ import javax.inject.Singleton
     private val listeners: MutableList<NoteSource.Listener> = CopyOnWriteArrayList()
 
     /** Replace all notes in the given bounding box with the given notes */
-    fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
+    @Synchronized fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
         val time = System.currentTimeMillis()
 
         val oldNotesById = mutableMapOf<Long, Note>()
@@ -47,21 +47,21 @@ import javax.inject.Singleton
     override fun get(noteId: Long): Note? = dao.get(noteId)
 
     /** delete a note because the note does not exist anymore on OSM (has been closed) */
-    fun delete(noteId: Long) {
+    @Synchronized fun delete(noteId: Long) {
         if (dao.delete(noteId)) {
             onUpdated(deleted = listOf(noteId))
         }
     }
 
     /** put a note because the note has been created/changed on OSM */
-    fun put(note: Note) {
+    @Synchronized fun put(note: Note) {
         val hasNote = dao.get(note.id) != null
         dao.put(note)
         if (hasNote) onUpdated(updated = listOf(note))
         else onUpdated(added = listOf(note))
     }
 
-    fun deleteAllOlderThan(timestamp: Long): Int {
+    @Synchronized fun deleteAllOlderThan(timestamp: Long): Int {
         val ids = dao.getAllIdsOlderThan(timestamp)
         dao.deleteAll(ids)
         Log.i(TAG, "Deleted ${ids.size} old notes")

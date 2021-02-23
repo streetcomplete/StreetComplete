@@ -36,7 +36,7 @@ import javax.inject.Singleton
 
     /** update element data because in the given bounding box, fresh data from the OSM API has been
      *  downloaded */
-    fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
+    @Synchronized fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
         val time = currentTimeMillis()
 
         // for incompletely downloaded relations, complete the map data (as far as possible) with
@@ -63,7 +63,7 @@ import javax.inject.Singleton
         onUpdateForBBox(bbox, mapDataWithGeometry)
     }
 
-    fun updateAll(elementUpdates: ElementUpdates) {
+    @Synchronized fun updateAll(elementUpdates: ElementUpdates) {
         val oldElementKeys = elementUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
         val deleted = elementUpdates.deleted + oldElementKeys
         elementDB.deleteAll(deleted)
@@ -143,7 +143,7 @@ import javax.inject.Singleton
     fun getRelationsForWay(id: Long): List<Relation> = relationDB.getAllForWay(id)
     fun getRelationsForRelation(id: Long): List<Relation> = relationDB.getAllForRelation(id)
 
-    fun deleteUnreferencedOlderThan(timestamp: Long) {
+    @Synchronized fun deleteOlderThan(timestamp: Long) {
         val deletedElements = elementDB.getIdsOlderThan(timestamp)
         elementDB.deleteAll(deletedElements)
         val deletedGeometries = geometryDB.deleteAll(deletedElements)

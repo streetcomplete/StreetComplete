@@ -137,6 +137,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
         downloadedTilesDao.removeAll()
         val now = System.currentTimeMillis()
         noteController.deleteAllOlderThan(now)
-        mapDataController.deleteUnreferencedOlderThan(now)
+        mapDataController.deleteOlderThan(now)
     }
 }

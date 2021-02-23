@@ -113,7 +113,7 @@ class MapDataControllerTest {
         val listener = mock<MapDataController.Listener>()
 
         controller.addListener(listener)
-        controller.deleteUnreferencedOlderThan(123L)
+        controller.deleteOlderThan(123L)
 
         verify(elementDB).deleteAll(elementKeys)
         verify(geometryDB).deleteAll(elementKeys)

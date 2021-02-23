@@ -40,7 +40,7 @@ class Cleaner @Inject constructor(
 
     private fun cleanElements(timestamp: Long) = launch {
         val time = currentTimeMillis()
-        mapDataController.deleteUnreferencedOlderThan(timestamp)
+        mapDataController.deleteOlderThan(timestamp)
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Cleaned elements in ${seconds.format(1)}s")
     }
