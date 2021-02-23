@@ -41,4 +41,14 @@ class AddPostboxCollectionTimesTest {
         )
     }
 
+    @Test fun `require comma where this matters and conflict is between nonadjacent ranges`() {
+        questType.verifyAnswer(
+            CollectionTimes(listOf(
+                WeekdaysTimes(Weekdays(booleanArrayOf(true, true, true)), mutableListOf(60)),
+                WeekdaysTimes(Weekdays(booleanArrayOf(false, false, false, true, true, true, true)), mutableListOf(120)),
+                WeekdaysTimes(Weekdays(booleanArrayOf(true)), mutableListOf(180))
+            )),
+            StringMapEntryAdd("collection_times", "Mo-We 01:00, Th-Su 02:00, Mo 03:00")
+        )
+    }
 }
