@@ -63,7 +63,7 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
         }
     }
 
-    private fun putElement(element: Element) {
+    fun putElement(element: Element) {
         val id = element.id
         when(element) {
             is Node -> nodesById[id] = element
@@ -72,7 +72,7 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
         }
     }
 
-    private fun putGeometry(type: Element.Type, id: Long, geometry: ElementGeometry?) {
+    fun putGeometry(type: Element.Type, id: Long, geometry: ElementGeometry?) {
         when(type) {
             Element.Type.NODE -> nodeGeometriesById[id] = geometry as? ElementPointGeometry
             Element.Type.WAY -> wayGeometriesById[id] = geometry
@@ -82,5 +82,29 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
 
     override fun iterator(): Iterator<Element> {
         return (nodes.asSequence() + ways.asSequence() + relations.asSequence()).iterator()
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is MutableMapDataWithGeometry) return false
+
+        return boundingBox == other.boundingBox
+            && nodesById == other.nodesById
+            && waysById == other.waysById
+            && relationsById == other.relationsById
+            && nodeGeometriesById == other.nodeGeometriesById
+            && wayGeometriesById == other.wayGeometriesById
+            && relationGeometriesById == other.relationGeometriesById
+    }
+
+    override fun hashCode(): Int {
+        var result = nodesById.hashCode()
+        result = 31 * result + waysById.hashCode()
+        result = 31 * result + relationsById.hashCode()
+        result = 31 * result + nodeGeometriesById.hashCode()
+        result = 31 * result + wayGeometriesById.hashCode()
+        result = 31 * result + relationGeometriesById.hashCode()
+        result = 31 * result + (boundingBox?.hashCode() ?: 0)
+        return result
     }
 }

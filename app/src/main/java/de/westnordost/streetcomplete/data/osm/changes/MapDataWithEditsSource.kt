@@ -14,8 +14,6 @@ import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
 
-// TODO TEST
-
 /** Source for map data. It combines the original data downloaded with the edits made.
  *
  *  This class is threadsafe.
@@ -53,23 +51,37 @@ import javax.inject.Singleton
             val modifiedDeleted = ArrayList<ElementKey>()
             for (element in updated) {
                 val key = ElementKey(element.type, element.id)
+                // an element contained in the update that was deleted by an edit shall be deleted
                 if (deletedElements.contains(key)) {
                     modifiedDeleted.add(key)
-                } else {
+                }
+                // otherwise, update if it was modified at all
+                else {
                     val modifiedElement = updatedElements[key] ?: element
                     val modifiedGeometry = updatedGeometries[key] ?: updated.getGeometry(key.elementType, key.elementId)
                     modifiedElements.add(Pair(modifiedElement, modifiedGeometry))
                 }
             }
-            for ((element, geometry) in modifiedElements) {
-                updated.put(element, geometry)
-            }
 
             for (key in deleted) {
-                if (!updatedElements.containsKey(key)) {
+                val modifiedElement = updatedElements[key]
+                // en element that was deleted shall not be deleted but instead added to the updates if it was updated by an edit
+                if (modifiedElement != null) {
+                    modifiedElements.add(Pair(modifiedElement, updatedGeometries[key]))
+                }
+                // otherwise, pass it through
+                else {
                     modifiedDeleted.add(key)
                 }
             }
+
+            for ((element, geometry) in modifiedElements) {
+                updated.put(element, geometry)
+            }
+            for (key in modifiedDeleted) {
+                updated.remove(key.elementType, key.elementId)
+            }
+
             callOnUpdated(updated = updated, deleted = modifiedDeleted)
         }
 
@@ -92,7 +104,7 @@ import javax.inject.Singleton
                 if (element.isDeleted) {
                     elementsToDelete.add(ElementKey(element.type, element.id))
                 } else {
-                    mapData.put(element, getGeometry(edit.elementType, edit.elementId))
+                    mapData.put(element, getGeometry(element.type, element.id))
                 }
             }
 
@@ -127,6 +139,7 @@ import javax.inject.Singleton
     }
 
     init {
+        rebuildLocalChanges()
         mapDataController.addListener(mapDataListener)
         elementEditsController.addListener(elementEditsListener)
     }
@@ -159,16 +172,27 @@ import javax.inject.Singleton
 
     @Synchronized override fun getWayComplete(id: Long): MapData? {
         val way = getWay(id) ?: return null
-        val nodeIds = way.nodeIds.toSet()
-        val nodes = mapDataController.getNodes(nodeIds)
+        val nodes = getNodes(way.nodeIds)
 
+        /* If the way is (now) not complete, this is not acceptable */
+        if (nodes.size < way.nodeIds.size) return null
+
+        val mapData = MutableMapData(listOf(way))
+        mapData.addAll(nodes)
+
+        return mapData
+    }
+
+    @Synchronized private fun getNodes(ids: Collection<Long>): Collection<Node> {
+        val idsSet = ids.toSet()
+        val nodes = mapDataController.getNodes(idsSet)
         val nodesById = HashMap<Long, Node>()
         nodes.associateByTo(nodesById) { it.id }
 
         for (element in updatedElements.values) {
             if (element is Node) {
                 // if a node is part of the way, put the updated node into the map
-                if (nodeIds.contains(element.id)) {
+                if (idsSet.contains(element.id)) {
                     nodesById[element.id] = element
                 }
             }
@@ -178,42 +202,33 @@ import javax.inject.Singleton
                 nodesById.remove(key.elementId)
             }
         }
-
-        /* If the way is (now) not complete, this is not acceptable */
-        if (nodesById.size < nodeIds.size) return null
-
-        val mapData = MutableMapData(listOf(way))
-        mapData.addAll(nodesById.values)
-
-        return mapData
+        return nodesById.values
     }
 
     @Synchronized override fun getRelationComplete(id: Long): MapData? {
         val relation = getRelation(id) ?: return null
-        val referredElementKeys = relation.members.map { ElementKey(it.type, it.ref) }.toSet()
-        val referredElements = mapDataController.getAll(referredElementKeys)
 
-        val referredElementsByKey = HashMap<ElementKey, Element>()
-        referredElements.associateByTo(referredElementsByKey) { ElementKey(it.type, it.id) }
-
-        for (element in updatedElements.values) {
-            val key = ElementKey(element.type, element.id)
-            // if an element is part of the relation, put the updated one into the map
-            if (referredElementKeys.contains(key)) {
-                referredElementsByKey[key] = element
+        val elements = ArrayList<Element>()
+        elements.add(relation)
+        for (member in relation.members) {
+            /* for way members, also get their nodes */
+            if (member.type == WAY) {
+                val wayComplete = getWayComplete(member.ref)
+                if (wayComplete != null) {
+                    elements.addAll(wayComplete)
+                }
+            } else {
+                val element = get(member.type, member.ref)
+                if (element != null) {
+                    elements.add(element)
+                }
             }
-        }
-        for (key in deletedElements) {
-            referredElementsByKey.remove(key)
         }
 
         /* Even though the function name says "complete", it is acceptable for relations if after
          *  all, not all members are included */
 
-        val mapData = MutableMapData(listOf(relation))
-        mapData.addAll(referredElementsByKey.values)
-
-        return mapData
+        return MutableMapData(elements)
     }
 
     @Synchronized override fun getWaysForNode(id: Long): Collection<Way> {
@@ -282,13 +297,17 @@ import javax.inject.Singleton
     /* ------------------------------------------------------------------------------------------ */
 
     @Synchronized private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) {
-        // add the modified data if it is in the bbox
         for ((key, geometry) in updatedGeometries) {
+            // add the modified data if it is in the bbox
             if (geometry.getBounds().intersect(bbox)) {
                 val element = updatedElements[key]
                 if (element != null) {
                     mapData.put(element, geometry)
                 }
+            }
+            // or otherwise remove if it is not (anymore)
+            else {
+                mapData.remove(key.elementType, key.elementId)
             }
         }
         // and remove elements that have been deleted
