@@ -111,7 +111,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
             .setTitle(R.string.undo_confirm_title)
             .setView(inner)
             .setPositiveButton(R.string.undo_confirm_positive) { _, _ ->
-                elementEditsController.undoEdit(edit.id!!)
+                elementEditsController.undo(edit.id!!)
                 updateUndoButtonEnablement(true)
             }
             .setNegativeButton(R.string.undo_confirm_negative) { _, _ -> updateUndoButtonEnablement(true) }

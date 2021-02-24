@@ -49,6 +49,8 @@ class UpdateElementTagsAction(
     override fun createReverted(): ElementEditAction =
         RevertUpdateElementTagsAction(spatialPartsOfOriginalElement, changes.reversed())
 
+    fun isReverseOf(other: UpdateElementTagsAction): Boolean = changes.reversed() == other.changes
+
     /** This class is as such not serializable because of that "questType" parameter which should
      *  be serialized to a string and deserialized using the QuestTypeRegistry */
     fun createSerializable() = Serializable(
