@@ -19,7 +19,7 @@ class TeamModeColorCircleView @JvmOverloads constructor(
         val brightness = getColorBrightness(color)
 
         teamModeColorCircleBackground.setColorFilter(color)
-        teamModeColorCircleText.text = (index + 1).toString()
+        teamModeColorCircleText.text = (index + 'A'.toInt()).toChar().toString()
         teamModeColorCircleText.setTextColor(if (brightness > 0.7) Color.BLACK else Color.WHITE)
     }
 
