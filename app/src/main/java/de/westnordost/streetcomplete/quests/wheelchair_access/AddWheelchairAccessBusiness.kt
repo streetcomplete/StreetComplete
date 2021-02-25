@@ -4,6 +4,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import java.util.concurrent.FutureTask
 
 class AddWheelchairAccessBusiness(
@@ -79,7 +80,7 @@ class AddWheelchairAccessBusiness(
                 "winery"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
-        "\n) and !wheelchair and name"
+        "\n) and !wheelchair and (name or brand)"
 
     override val commitMessage = "Add wheelchair access"
     override val wikiLink = "Key:wheelchair"
@@ -95,7 +96,7 @@ class AddWheelchairAccessBusiness(
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
-        return if (name != null) arrayOf(name, featureName.value.toString()) else arrayOf()
+        return arrayOfNotNull(name, featureName.value)
     }
 
     override fun createForm() = AddWheelchairAccessBusinessForm()
