@@ -43,15 +43,15 @@
             android:layout_gravity="fill_vertical"
             android:padding="16dp">
 
-            <include
-                layout="@layout/cell_team_mode_color_circle"
+            <de.westnordost.streetcomplete.controls.TeamModeColorCircleView
+                android:id="@+id/teamModeColorCircle"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
                 app:layout_constraintBottom_toTopOf="@+id/disableTeamModeText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/disableTeamModeText"

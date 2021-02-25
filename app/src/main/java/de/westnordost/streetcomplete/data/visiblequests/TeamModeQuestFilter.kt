@@ -59,4 +59,8 @@ import javax.inject.Singleton
     fun removeListener(listener: TeamModeChangeListener) {
         listeners.remove(listener)
     }
+
+    companion object {
+        const val MAX_TEAM_SIZE = 12
+    }
 }

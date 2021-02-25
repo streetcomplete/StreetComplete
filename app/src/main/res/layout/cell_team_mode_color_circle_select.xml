@@ -7,8 +7,8 @@
     android:background="@drawable/image_select_cell_rounded"
     android:padding="6dp">
 
-    <include
-        layout="@layout/cell_team_mode_color_circle"
+    <de.westnordost.streetcomplete.controls.TeamModeColorCircleView
+        android:id="@+id/teamModeColorCircle"
         android:layout_width="52dp"
         android:layout_height="52dp"
         app:layout_constraintBottom_toBottomOf="parent"

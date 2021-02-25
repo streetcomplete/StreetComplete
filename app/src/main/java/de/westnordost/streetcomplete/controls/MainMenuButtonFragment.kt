@@ -34,8 +34,6 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
 
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private lateinit var teamModeColorCircle: View
-
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
     init {
@@ -46,7 +44,6 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
         super.onViewCreated(view, savedInstanceState)
 
         view.mainMenuButton.setOnClickListener { onClickMainMenu() }
-        teamModeColorCircle = view.teamModeColorCircle
 
         if (teamModeQuestFilter.isEnabled) {
             onTeamModeChanged(true)
@@ -79,12 +76,12 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
 
     override fun onTeamModeChanged(enabled: Boolean) {
         if (enabled) {
-            requireContext().toast(R.string.team_mode_enabled, Toast.LENGTH_LONG)
-            teamModeColorCircle.popIn()
-            TeamModeColorCircle.setViewColorsAndText(teamModeColorCircle, teamModeQuestFilter.indexInTeam)
+            context?.toast(R.string.team_mode_enabled, Toast.LENGTH_LONG)
+            view?.teamModeColorCircle?.popIn()
+            view?.teamModeColorCircle?.setTeamIndex(teamModeQuestFilter.indexInTeam)
         } else {
-            requireContext().toast(R.string.team_mode_disabled, Toast.LENGTH_SHORT)
-            teamModeColorCircle.popOut()
+            context?.toast(R.string.team_mode_disabled, Toast.LENGTH_SHORT)
+            view?.teamModeColorCircle?.popOut()
         }
     }
 

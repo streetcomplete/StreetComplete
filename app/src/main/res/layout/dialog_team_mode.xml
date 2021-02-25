@@ -9,7 +9,6 @@
     android:paddingRight="@dimen/dialog_horizontal_margin"
     android:showDividers="middle"
     android:divider="@drawable/space_8dp"
-    android:animateLayoutChanges="true"
     >
 
     <TextView
