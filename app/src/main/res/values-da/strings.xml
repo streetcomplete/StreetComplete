@@ -1871,13 +1871,13 @@ Del det nu?"</string>
     <string name="about_summary_rate">"på Google Play"</string>
 
     <!-- Fuzzy -->
-    <string name="about_title_donate">"Donere"</string>
+    <string name="about_title_donate">"Doner"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_donate">"Vis din påskønnelse! ❤️"</string>
 
     <!-- Fuzzy -->
-    <string name="about_description_donate">"Tak, fordi du overvejer at støtte denne app! For at se aktuelle donationer og donere dig selv, tryk på den respektive platform:"</string>
+    <string name="about_description_donate">"Tak, fordi du overvejer at støtte denne app! For at se aktuelle donationer og selv donere, tryk på den respektive platform:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Hvilken religion praktiseres ved %s?"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Skan her i stedet"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Fortsæt igangværende skanning"</string>
@@ -2167,4 +2167,13 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_surface_value_clay">"Ler"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgræs"</string>
     <string name="quest_surface_value_tartan">"Skotskternet"</string>
+    <string name="quest_pitchSurface_title_track">"Hvilken overflade har denne sportsbane?"</string>
+    <string name="quest_bicycle_parking_access_title">"Er det begrænset hvem der må parkere en cykel her?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Skal man parkere for at parkere en cykel her?"</string>
+    <string name="quest_buildingType_house_description2">"Ikke-fritliggende enfamiliehjem"</string>
+    <string name="quest_drinking_water_title">"Er vandet drikkevand her? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Drikkevand (skiltet)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Drikkevand (uskiltet)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Ikke egnet til at drikke (skiltet)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Ikke egnet til at drikke (uskiltet)"</string>
 </resources>

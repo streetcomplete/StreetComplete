@@ -9,7 +9,6 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
 import android.location.LocationManager
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -23,7 +22,6 @@ import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.getSystemService
 import androidx.core.graphics.minus
@@ -36,7 +34,7 @@ import androidx.fragment.app.commit
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.*
-import de.westnordost.streetcomplete.controls.MainMenuDialog
+import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
@@ -69,6 +67,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     MapFragment.Listener, LocationAwareMapFragment.Listener, QuestsMapFragment.Listener,
     AbstractQuestAnswerFragment.Listener,
     SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener, CreateNoteFragment.Listener,
+    MainMenuButtonFragment.Listener,
     VisibleQuestListener,
     HandlesOnBackPressed,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
@@ -92,7 +91,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private var windowInsets: Rect? = null
 
-    private var mapFragment: QuestsMapFragment? = null
+    internal var mapFragment: QuestsMapFragment? = null
+    internal var mainMenuButtonFragment: MainMenuButtonFragment? = null
     private val bottomSheetFragment: Fragment? get() = childFragmentManagerOrNull?.findFragmentByTag(BOTTOM_SHEET)
 
     private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
@@ -144,15 +144,15 @@ class MainFragment : Fragment(R.layout.fragment_main),
         gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
         zoomInButton.setOnClickListener { onClickZoomIn() }
         zoomOutButton.setOnClickListener { onClickZoomOut() }
-        mainMenuButton.setOnClickListener { onClickMainMenu() }
 
         updateMapQuestOffsets()
     }
 
     override fun onAttachFragment(childFragment: Fragment) {
         super.onAttachFragment(childFragment)
-        if (childFragment is QuestsMapFragment) {
-            mapFragment = childFragment
+        when (childFragment) {
+            is QuestsMapFragment -> mapFragment = childFragment
+            is MainMenuButtonFragment -> mainMenuButtonFragment = childFragment
         }
     }
 
@@ -281,6 +281,38 @@ class MainFragment : Fragment(R.layout.fragment_main),
             if (!f.onClickMapAt(position, clickAreaSizeInMeters))
                 f.onClickClose { closeBottomSheet() }
         }
+    }
+
+    //endregion
+
+    //region Buttons - Callbacks from the buttons in the main view
+
+    /* ---------------------------- MainMenuButtonFragment.Listener ----------------------------- */
+
+    override fun getDownloadArea(): BoundingBox? {
+        val displayArea = mapFragment?.getDisplayedArea()
+        if (displayArea == null) {
+            context?.toast(R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG)
+            return null
+        }
+
+        val enclosingBBox = displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.QUEST_TILE_ZOOM)
+        val areaInSqKm = enclosingBBox.area() / 1000000
+        if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
+            context?.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
+            return null
+        }
+
+        // below a certain threshold, it does not make sense to download, so let's enlarge it
+        if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
+            val cameraPosition = mapFragment?.cameraPosition
+            if (cameraPosition != null) {
+                val radius = sqrt(1000000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
+                return cameraPosition.position.enclosingBoundingBox(radius)
+            }
+        }
+
+        return enclosingBBox
     }
 
     //endregion
@@ -420,6 +452,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
+    @AnyThread override fun onVisibleQuestsInvalidated() {
+        mainHandler.post { closeBottomSheet() }
+    }
+
     //endregion
 
     /* ++++++++++++++++++++++++++++++++++++++ VIEW CONTROL ++++++++++++++++++++++++++++++++++++++ */
@@ -473,7 +509,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     //region Buttons - Functionality for the buttons in the main view
 
     fun onClickMainMenu() {
-        context?.let { MainMenuDialog(it, this::onClickDownload).show() }
+        mainMenuButtonFragment?.onClickMainMenu()
     }
 
     private fun onClickZoomOut() {
@@ -586,60 +622,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         freezeMap()
         showInBottomSheet(CreateNoteFragment())
-    }
-
-    /* ------------------------------------ Download Button  ------------------------------------ */
-
-    private fun onClickDownload() {
-        if (isConnected()) downloadDisplayedArea()
-        else context?.toast(R.string.offline)
-    }
-
-    private fun isConnected(): Boolean {
-        val connectivityManager = context?.getSystemService<ConnectivityManager>()
-        val activeNetworkInfo = connectivityManager?.activeNetworkInfo
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected
-    }
-
-    private fun downloadDisplayedArea() {
-        val displayArea = mapFragment?.getDisplayedArea()
-        if (displayArea == null) {
-            context?.toast(R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG)
-        } else {
-            val enclosingBBox = displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.QUEST_TILE_ZOOM)
-            val areaInSqKm = enclosingBBox.area() / 1000000
-            if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
-                context?.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
-            } else {
-                if (downloadController.isPriorityDownloadInProgress) {
-                    context?.let {
-                        AlertDialog.Builder(it)
-                            .setMessage(R.string.confirmation_cancel_prev_download_title)
-                            .setPositiveButton(R.string.confirmation_cancel_prev_download_confirmed) { _, _ ->
-                                downloadAreaConfirmed(enclosingBBox)
-                            }
-                            .setNegativeButton(R.string.confirmation_cancel_prev_download_cancel, null)
-                            .show()
-                    }
-                } else {
-                    downloadAreaConfirmed(enclosingBBox)
-                }
-            }
-        }
-    }
-
-    private fun downloadAreaConfirmed(bbox: BoundingBox) {
-        var bbox = bbox
-        val areaInSqKm = bbox.area() / 1000000
-        // below a certain threshold, it does not make sense to download, so let's enlarge it
-        if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
-            val cameraPosition = mapFragment?.cameraPosition
-            if (cameraPosition != null) {
-                val radius = sqrt( 1000000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
-                bbox = cameraPosition.position.enclosingBoundingBox(radius)
-            }
-        }
-        downloadController.download(bbox, true)
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */

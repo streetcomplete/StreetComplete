@@ -1870,7 +1870,7 @@ levels"</string>
     <string name="quest_board_type_nature">"Nature (multiples topics)"</string>
     <string name="quest_board_type_notice_board">"It is a notice board"</string>
     <string name="quest_board_type_public_transport">"Public transport"</string>
-    <string name="quest_board_type_title">"What is the topic of this information board&gt;"</string>
+    <string name="quest_board_type_title">"What is the topic of this information board?"</string>
     <string name="quest_sidewalk_separately_mapped">"Yes, displayed separately on map"</string>
     <string name="quest_board_type_map">"It is a map"</string>
     <string name="quest_board_type_map_title">"Is it just a map and only a map?"</string>

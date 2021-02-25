@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Street­Complete Dev</string>
+
+    <string name="quest_postboxRoyalCypher_type_eiir" translatable="false">E II R</string>
+    <string name="quest_postboxRoyalCypher_type_gvir" translatable="false">G VI R</string>
+    <string name="quest_postboxRoyalCypher_type_eviiir" translatable="false">E VIII R</string>
+    <string name="quest_postboxRoyalCypher_type_gr" translatable="false">G R</string>
+    <string name="quest_postboxRoyalCypher_type_eviir" translatable="false">E VII R</string>
+    <string name="quest_postboxRoyalCypher_type_vr" translatable="false">V R</string>
 </resources>

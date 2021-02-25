@@ -2278,4 +2278,12 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, zostaw wiadomość."</stri
     <string name="quest_surface_value_clay">"Glina"</string>
     <string name="quest_surface_value_artificial_turf">"Sztuczna trawa"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="quest_pitchSurface_title_track">"Jaką nawierzchnię ma ta droga rekreacyjna?"</string>
+    <string name="quest_bicycle_parking_access_title">"Czy parkować rower mogą tutaj jedynie określone osoby?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Czy parkując tutaj rower, musisz uiścić opłatę?"</string>
+    <string name="quest_drinking_water_title">"Czy woda tutaj jest pitna? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Zdatne do picia (oznaczone)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Zdatne do picia (brak oznaczenia)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Niezdatne do picia (oznaczone)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Niezdatne do picia (brak oznaczenia)"</string>
 </resources>
