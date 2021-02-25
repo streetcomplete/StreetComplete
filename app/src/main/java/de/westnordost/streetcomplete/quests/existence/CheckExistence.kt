@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 import java.util.*
 import java.util.concurrent.FutureTask
@@ -69,8 +70,7 @@ class CheckExistence(
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
-        val featureNameStr = featureName.value.toString()
-        return if (name != null) arrayOf(name, featureNameStr) else arrayOf(featureNameStr)
+        return arrayOfNotNull(name, featureName.value)
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

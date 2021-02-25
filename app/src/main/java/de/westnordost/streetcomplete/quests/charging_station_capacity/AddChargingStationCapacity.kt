@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
-import de.westnordost.streetcomplete.ktx.asSingleArray
 
 class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
 
@@ -27,7 +27,7 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
             R.string.quest_charging_station_capacity_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        (tags["name"] ?: tags["brand"] ?: tags["operator"]).asSingleArray()
+        arrayOfNotNull(tags["name"] ?: tags["brand"] ?: tags["operator"])
 
     override fun createForm() = AddChargingStationCapacityForm()
 
