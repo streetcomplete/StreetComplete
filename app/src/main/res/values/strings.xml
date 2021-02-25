@@ -793,6 +793,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_recycling_type_plastic_bottles">Plastic bottles only</string>
     <string name="quest_recycling_type_beverage_cartons">Beverage cartons only</string>
     <string name="quest_recycling_type_plastic_packaging">Plastic packaging only</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">Plastic bottles and cartons only</string>
     <string name="quest_recycling_type_scrap_metal">Scrap metal</string>
     <string name="quest_recycling_type_any_glass">Any glass</string>
     <string name="quest_recycling_type_cooking_oil">Cooking Oil</string>
