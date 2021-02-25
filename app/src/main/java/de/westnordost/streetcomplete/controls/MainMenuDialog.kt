@@ -51,7 +51,7 @@ class MainMenuDialog(
         }
 
         if (indexInTeam != null) {
-            view.teamModeColorCircle.setTeamIndex(indexInTeam)
+            view.teamModeColorCircle.setIndexInTeam(indexInTeam)
             view.bigMenuItemsContainer.removeView(view.enableTeamModeButton)
         } else {
             view.bigMenuItemsContainer.removeView(view.disableTeamModeButton)

@@ -79,7 +79,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
         if (enabled) {
             context?.toast(R.string.team_mode_active)
             view?.teamModeColorCircle?.popIn()
-            view?.teamModeColorCircle?.setTeamIndex(teamModeQuestFilter.indexInTeam)
+            view?.teamModeColorCircle?.setIndexInTeam(teamModeQuestFilter.indexInTeam)
         } else {
             context?.toast(R.string.team_mode_deactivated)
             view?.teamModeColorCircle?.popOut()

@@ -8,7 +8,7 @@ import androidx.core.view.isGone
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.GridLayoutManager
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter.Companion.MAX_TEAM_SIZE
+import de.westnordost.streetcomplete.controls.TeamModeColorCircleView.Companion.MAX_TEAM_SIZE
 import kotlinx.android.synthetic.main.dialog_team_mode.view.*
 
 /** Shows a dialog containing the team mode settings */
