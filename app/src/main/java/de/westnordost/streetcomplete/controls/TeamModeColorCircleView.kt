@@ -14,7 +14,7 @@ class TeamModeColorCircleView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-    fun setTeamIndex(index: Int) {
+    fun setIndexInTeam(index: Int) {
         val color = context.resources.getColor(colors[index])
         val brightness = getColorBrightness(color)
 
@@ -31,7 +31,7 @@ class TeamModeColorCircleView @JvmOverloads constructor(
 
     init {
         inflate(context, R.layout.view_team_mode_color_circle, this)
-        setTeamIndex(0)
+        setIndexInTeam(0)
     }
 
     companion object {

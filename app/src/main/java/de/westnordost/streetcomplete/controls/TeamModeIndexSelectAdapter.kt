@@ -72,7 +72,7 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
             }
 
         fun bind(index: Int) {
-            itemView.teamModeColorCircle.setTeamIndex(index)
+            itemView.teamModeColorCircle.setIndexInTeam(index)
         }
     }
 }
