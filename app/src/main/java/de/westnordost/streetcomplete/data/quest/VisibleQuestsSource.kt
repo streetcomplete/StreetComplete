@@ -73,7 +73,7 @@ import javax.inject.Singleton
 
     private val teamModeChangeListener = object : TeamModeQuestFilter.TeamModeChangeListener {
         override fun onTeamModeChanged(enabled: Boolean) {
-            listeners.forEach { it.onVisibleQuestsInvalidated() }
+            onVisibleQuestsInvalidated()
         }
     }
 
@@ -118,7 +118,9 @@ import javax.inject.Singleton
         val deletedQuestIds = updated.filter { !it.status.isVisible || !teamModeQuestFilter.isVisible(it) }.map { it.id!! } + deleted
         listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestIds, group) }
     }
-
+    private fun onVisibleQuestsInvalidated() {
+        listeners.forEach { it.onVisibleQuestsInvalidated() }
+    }
 }
 
 interface VisibleQuestListener {

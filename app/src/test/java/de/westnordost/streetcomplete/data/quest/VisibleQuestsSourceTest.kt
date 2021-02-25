@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -79,6 +80,15 @@ class VisibleQuestsSourceTest {
         assertEquals(3, osmQuests.size)
         val osmNoteQuests = quests.filter { it.group == QuestGroup.OSM_NOTE && it.quest is OsmNoteQuest }
         assertEquals(2, osmNoteQuests.size)
+    }
+
+    @Test fun `getAllVisible does not return those that are invisible in team mode`() {
+        on(osmQuestController.getAllVisibleInBBox(bbox, questTypes)).thenReturn(listOf(mock()))
+        on(osmNoteQuestController.getAllVisibleInBBox(bbox)).thenReturn(listOf(mock()))
+        on(teamModeQuestFilter.isVisible(any())).thenReturn(false)
+
+        val quests = source.getAllVisible(bbox, questTypes)
+        assertTrue(quests.isEmpty())
     }
 
     @Test fun `removal of new osm quest triggers listener`() {

@@ -452,7 +452,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
-    @AnyThread override fun onVisibleQuestsInvalidated() {}
+    @AnyThread override fun onVisibleQuestsInvalidated() {
+        mainHandler.post { closeBottomSheet() }
+    }
 
     //endregion
 
