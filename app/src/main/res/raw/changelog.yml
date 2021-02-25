@@ -10,7 +10,7 @@ v31.0-beta1: |
 
   <h3>New quests</h3>
   <ul>
-  <li><i>What is the royal cypher on this postbox?</i>, only in the UK (#2563, #2583), by @arrival-spring</li>
+  <li>👑 <i>What is the royal cypher on this postbox?</i>, only in the UK (#2563, #2583), by @arrival-spring</li>
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
@@ -18,6 +18,11 @@ v31.0-beta1: |
   <li>Recycling containers: Add beverage cartons as choice (#2502,  #2580)</li>
   <li>Check existence: Also ask for public bookcases</li>
   <li>Orchard produces: for the Canaries, sort choices by prevalence (#2596), by @erik55</li>
+  <li>For various quests, also display the name, brand or operator of the point of interest (#2593, #2594), by @FloEdelmann</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fall back to English when displaying untranslated feature names (#2608)</li>
   </ul>
 
 v30.1: |
