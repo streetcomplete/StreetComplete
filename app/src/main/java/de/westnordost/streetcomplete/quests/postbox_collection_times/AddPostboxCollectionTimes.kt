@@ -4,8 +4,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.ktx.containsAnyKey
 
 class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
 
@@ -44,16 +45,14 @@ class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
             // apparently mostly not in Latin America and in Arabic world and unknown in Africa
     )
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
-        return if (name != null) arrayOf(name) else arrayOf()
-    }
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["name"] ?: tags["brand"] ?: tags["operator"])
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.keys.containsAny(listOf("name","brand","operator"))
-        return if (hasName) R.string.quest_postboxCollectionTimes_name_title
-               else         R.string.quest_postboxCollectionTimes_title
-    }
+    override fun getTitle(tags: Map<String, String>): Int =
+        if (tags.containsAnyKey("name", "brand", "operator"))
+            R.string.quest_postboxCollectionTimes_name_title
+        else
+            R.string.quest_postboxCollectionTimes_title
 
     override fun createForm() = AddCollectionTimesForm()
 

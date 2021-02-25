@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.ktx.containsAnyKey
 import java.util.*
 import java.util.concurrent.FutureTask
 
@@ -60,15 +62,15 @@ class CheckExistence(
     override val wikiLink: String? = null
     override val icon = R.drawable.ic_quest_check
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
-        return if(hasName) R.string.quest_existence_name_title else R.string.quest_existence_title
-    }
+    override fun getTitle(tags: Map<String, String>): Int =
+        if (tags.containsAnyKey("name", "brand", "operator"))
+            R.string.quest_existence_name_title
+        else
+            R.string.quest_existence_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"]
-        val featureNameStr = featureName.value.toString()
-        return if (name != null) arrayOf(name, featureNameStr) else arrayOf(featureNameStr)
+        val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
+        return arrayOfNotNull(name, featureName.value)
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

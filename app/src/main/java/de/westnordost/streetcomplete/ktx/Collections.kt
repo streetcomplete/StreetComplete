@@ -73,3 +73,7 @@ inline fun <T> Iterable<T>.sumByFloat(selector: (T) -> Float): Float {
 
 fun <T> Collection<T>.containsExactlyInAnyOrder(other: Collection<T>): Boolean =
     other.size == size && containsAll(other)
+
+/** Returns a new read-only array only of those given [elements] that are not null. */
+inline fun <reified T> arrayOfNotNull(vararg elements: T?): Array<T> =
+    elements.filterNotNull().toTypedArray()

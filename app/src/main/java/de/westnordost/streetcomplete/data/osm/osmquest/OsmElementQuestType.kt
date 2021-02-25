@@ -6,14 +6,13 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 /** Quest type where each quest refers to an OSM element */
 interface OsmElementQuestType<T> : QuestType<T> {
 
-    fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"]
-        return if (name != null) arrayOf(name) else arrayOf()
-    }
+    fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["name"] ?: tags["brand"])
 
     /** the commit message to be used for this quest type */
     val commitMessage: String
