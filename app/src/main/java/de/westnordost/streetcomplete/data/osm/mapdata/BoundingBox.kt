@@ -10,7 +10,7 @@ data class BoundingBox(val min: LatLon, val max: LatLon) {
     ): this(LatLon(minLatitude, minLongitude), LatLon(maxLatitude, maxLongitude))
 
     init {
-        require(min.latitude <= max.longitude) {
+        require(min.latitude <= max.latitude) {
             "Min latitude ${min.latitude} is greater than max latitude ${max.latitude}"
         }
     }
