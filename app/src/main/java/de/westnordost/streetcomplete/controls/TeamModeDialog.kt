@@ -32,20 +32,22 @@ class TeamModeDialog(
                 getButton(BUTTON_POSITIVE).isEnabled = index != null
             }
         })
-        view.color_circles.adapter = adapter
-        view.color_circles.layoutManager = GridLayoutManager(context, 3)
+        view.colorCircles.adapter = adapter
+        view.colorCircles.layoutManager = GridLayoutManager(context, 3)
 
-        view.team_size_input.addTextChangedListener { editable ->
+        view.teamSizeInput.addTextChangedListener { editable ->
             selectedTeamSize = parseTeamSize(editable.toString())
 
             if (selectedTeamSize === null) {
-                view.team_size_hint.isGone = false
-                view.color_hint.isGone = true
-                view.color_circles.isGone = true
+                view.introText.isGone = false
+                view.teamSizeHint.isGone = false
+                view.colorHint.isGone = true
+                view.colorCircles.isGone = true
             } else {
-                view.team_size_hint.isGone = true
-                view.color_hint.isGone = false
-                view.color_circles.isGone = false
+                view.introText.isGone = true
+                view.teamSizeHint.isGone = true
+                view.colorHint.isGone = false
+                view.colorCircles.isGone = false
                 adapter.count = selectedTeamSize!!
             }
         }

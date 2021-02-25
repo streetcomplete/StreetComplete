@@ -96,6 +96,7 @@ import javax.inject.Singleton
     private val teamModeChangeListener = object : TeamModeQuestFilter.TeamModeChangeListener {
         override fun onTeamModeChanged(enabled: Boolean) {
             if (!enabled) {
+                // because other team members will have solved some of the quests already
                 downloadedTilesDao.removeAll()
                 triggerAutoDownload()
             }
