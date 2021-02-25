@@ -76,7 +76,7 @@ class CheckExistence(
 
     override fun isApplicableTo(element: Element) =
         (nodesFilter.matches(element) || nodesWaysFilter.matches(element))
-        && hasFeatureName(element.tags)
+        && hasAnyName(element.tags)
 
     override fun createForm() = CheckExistenceForm()
 
@@ -93,6 +93,6 @@ class CheckExistence(
         or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -$yearsAgo years" }}
     """.trimIndent()
 
-    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
+    private fun hasAnyName(tags: Map<String, String>?): Boolean =
         tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }
