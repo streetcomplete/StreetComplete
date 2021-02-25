@@ -30,6 +30,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     STADIUM       ("building", "stadium"),
     TRAIN_STATION ("building", "train_station"),
     TRANSPORTATION("building", "transportation"),
+    FIRE_STATION  ("building", "fire_station"),
     UNIVERSITY    ("building", "university"),
     GOVERNMENT    ("building", "government"),
 
@@ -88,7 +89,7 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
     )),
     CIVIC(BuildingType.CIVIC, listOf(
         SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION, TRANSPORTATION,
-        COLLEGE, GOVERNMENT, STADIUM
+        COLLEGE, GOVERNMENT, STADIUM, FIRE_STATION
     )),
     RELIGIOUS(BuildingType.RELIGIOUS, listOf(
         CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE
