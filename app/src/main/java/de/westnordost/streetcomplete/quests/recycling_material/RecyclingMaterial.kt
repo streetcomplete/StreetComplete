@@ -8,6 +8,7 @@ enum class RecyclingMaterial(val value: String) {
     PLASTIC("plastic"),
     PLASTIC_PACKAGING("plastic_packaging"),
     PLASTIC_BOTTLES("plastic_bottles"),
+    BEVERAGE_CARTONS("beverage_cartons"),
     CANS("cans"),
     SCRAP_METAL("scrap_metal"),
     CLOTHES("clothes"),

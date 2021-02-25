@@ -82,24 +82,38 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         }
 
         // if the user chose deliberately not "all plastic", also tag it explicitly
-        val anyPlastic = listOf("recycling:plastic", "recycling:plastic_packaging", "recycling:plastic_bottles")
+        val anyPlastic = listOf("recycling:plastic", "recycling:plastic_packaging", "recycling:plastic_bottles", "recycling:beverage_cartons")
         when {
-            selectedMaterials.contains("recycling:plastic_bottles") -> {
-                changes.addOrModify("recycling:plastic_packaging", "no")
-                changes.addOrModify("recycling:plastic", "no")
+            selectedMaterials.contains("recycling:plastic") -> {
+                changes.deleteIfExists("recycling:plastic_packaging")
+                changes.deleteIfExists("recycling:plastic_bottles")
+                changes.deleteIfExists("recycling:beverage_cartons")
             }
             selectedMaterials.contains("recycling:plastic_packaging") -> {
                 changes.addOrModify("recycling:plastic", "no")
                 changes.deleteIfExists("recycling:plastic_bottles")
+                changes.deleteIfExists("recycling:beverage_cartons")
             }
-            selectedMaterials.contains("recycling:plastic") -> {
-                changes.deleteIfExists("recycling:plastic_packaging")
-                changes.deleteIfExists("recycling:plastic_bottles")
+            selectedMaterials.contains("recycling:beverage_cartons") &&
+            selectedMaterials.contains("recycling:plastic_bottles") -> {
+                changes.addOrModify("recycling:plastic_packaging", "no")
+                changes.addOrModify("recycling:plastic", "no")
+            }
+            selectedMaterials.contains("recycling:beverage_cartons") -> {
+                changes.addOrModify("recycling:plastic_bottles", "no")
+                changes.addOrModify("recycling:plastic_packaging", "no")
+                changes.addOrModify("recycling:plastic", "no")
+            }
+            selectedMaterials.contains("recycling:plastic_bottles") -> {
+                changes.addOrModify("recycling:beverage_cartons", "no")
+                changes.addOrModify("recycling:plastic_packaging", "no")
+                changes.addOrModify("recycling:plastic", "no")
             }
             else -> {
                 changes.deleteIfExists("recycling:plastic")
                 changes.deleteIfExists("recycling:plastic_packaging")
                 changes.deleteIfExists("recycling:plastic_bottles")
+                changes.deleteIfExists("recycling:beverage_cartons")
             }
         }
 

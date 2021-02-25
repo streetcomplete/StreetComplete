@@ -10,6 +10,9 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
+import de.westnordost.streetcomplete.ktx.popIn
+import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_main_menu_button.view.*
 import kotlinx.coroutines.CoroutineScope
@@ -18,8 +21,10 @@ import javax.inject.Inject
 
 /** Fragment that shows the main menu button and manages its logic */
 class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
+    TeamModeQuestFilter.TeamModeChangeListener,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
+    @Inject internal lateinit var teamModeQuestFilter: TeamModeQuestFilter
     @Inject internal lateinit var downloadController: DownloadController
 
     interface Listener {
@@ -40,10 +45,45 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
         view.mainMenuButton.setOnClickListener { onClickMainMenu() }
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        // in onStart and not onViewCreated because the notification that team mode is active should
+        // pop in always when the app comes back from the background again
+        if (teamModeQuestFilter.isEnabled) {
+            onTeamModeChanged(true)
+        }
+
+        teamModeQuestFilter.addListener(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        teamModeQuestFilter.removeListener(this)
+    }
+
     /* ------------------------------------------------------------------------------------------ */
 
     internal fun onClickMainMenu() {
-        context?.let { MainMenuDialog(it, this::onClickDownload).show() }
+        MainMenuDialog(
+            requireContext(),
+            if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
+            this::onClickDownload,
+            teamModeQuestFilter::enableTeamMode,
+            teamModeQuestFilter::disableTeamMode
+        ).show()
+    }
+
+    override fun onTeamModeChanged(enabled: Boolean) {
+        if (enabled) {
+            context?.toast(R.string.team_mode_active)
+            view?.teamModeColorCircle?.popIn()
+            view?.teamModeColorCircle?.setTeamIndex(teamModeQuestFilter.indexInTeam)
+        } else {
+            context?.toast(R.string.team_mode_deactivated)
+            view?.teamModeColorCircle?.popOut()
+        }
     }
 
     /* ------------------------------------ Download Button  ------------------------------------ */

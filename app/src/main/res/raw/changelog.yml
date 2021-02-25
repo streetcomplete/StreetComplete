@@ -1,3 +1,25 @@
+v31.0-beta1: |
+  <h3>🤝 Team mode!</h3>
+  <p>(#2189, #2557) by @FloEdelmann</p>
+
+  <p>Lockdown fatigue? You could go on a walk together with your roommate or partner - with the team
+  mode, you can evenly divide up all quests among yourself and map together!</p>
+
+  <p>It also works for groups of up to twelve people, but maybe wait with that until the pandemic is
+  over 😷. Happy mapping!</p>
+
+  <h3>New quests</h3>
+  <ul>
+  <li><i>What is the royal cypher on this postbox?</i>, only in the UK (#2563, #2583), by @arrival-spring</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Building type: Add fire station as selection (#2476, #2579)</li>
+  <li>Recycling containers: Add beverage cartons as choice (#2502,  #2580)</li>
+  <li>Check existence: Also ask for public bookcases</li>
+  <li>Orchard produces: for the Canaries, sort choices by prevalence (#2596), by @erik55</li>
+  </ul>
+
 v30.1: |
   <ul>
   <li>Max height: Do not ask for roads that merely connect to bridges (#2555)</li>

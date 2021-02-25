@@ -113,6 +113,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
             StringMapEntryAdd("recycling:plastic_packaging", "no"),
+            StringMapEntryAdd("recycling:beverage_cartons", "no"),
             StringMapEntryAdd("recycling:plastic", "no")
         )
     }
@@ -125,6 +126,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
             StringMapEntryAdd("recycling:plastic_packaging", "no"),
+            StringMapEntryAdd("recycling:beverage_cartons", "no"),
             StringMapEntryModify("recycling:plastic", "yes", "no")
         )
     }
@@ -138,6 +140,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryModify("recycling:plastic", "no", "no"),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
+            StringMapEntryAdd("recycling:beverage_cartons", "no"),
             StringMapEntryModify("recycling:plastic_packaging", "yes", "no")
         )
     }

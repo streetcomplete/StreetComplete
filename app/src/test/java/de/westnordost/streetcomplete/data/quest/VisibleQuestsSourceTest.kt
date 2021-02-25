@@ -10,10 +10,12 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -26,6 +28,7 @@ class VisibleQuestsSourceTest {
     private lateinit var osmQuestController: OsmQuestController
     private lateinit var osmNoteQuestController: OsmNoteQuestController
     private lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
+    private lateinit var teamModeQuestFilter: TeamModeQuestFilter
     private lateinit var source: VisibleQuestsSource
 
     private lateinit var noteQuestStatusListener: OsmNoteQuestController.QuestStatusListener
@@ -40,8 +43,10 @@ class VisibleQuestsSourceTest {
         osmNoteQuestController = mock()
         osmQuestController = mock()
         visibleQuestTypeDao = mock()
+        teamModeQuestFilter = mock()
 
         on(visibleQuestTypeDao.isVisible(any())).thenReturn(true)
+        on(teamModeQuestFilter.isVisible(any())).thenReturn(true)
 
         on(osmNoteQuestController.addQuestStatusListener(any())).then { invocation: InvocationOnMock ->
             noteQuestStatusListener = (invocation.arguments[0] as OsmNoteQuestController.QuestStatusListener)
@@ -52,7 +57,7 @@ class VisibleQuestsSourceTest {
             Unit
         }
 
-        source = VisibleQuestsSource(osmQuestController, osmNoteQuestController, visibleQuestTypeDao)
+        source = VisibleQuestsSource(osmQuestController, osmNoteQuestController, visibleQuestTypeDao, teamModeQuestFilter)
 
         listener = mock()
         source.addListener(listener)
@@ -75,6 +80,15 @@ class VisibleQuestsSourceTest {
         assertEquals(3, osmQuests.size)
         val osmNoteQuests = quests.filter { it.group == QuestGroup.OSM_NOTE && it.quest is OsmNoteQuest }
         assertEquals(2, osmNoteQuests.size)
+    }
+
+    @Test fun `getAllVisible does not return those that are invisible in team mode`() {
+        on(osmQuestController.getAllVisibleInBBox(bbox, questTypes)).thenReturn(listOf(mock()))
+        on(osmNoteQuestController.getAllVisibleInBBox(bbox)).thenReturn(listOf(mock()))
+        on(teamModeQuestFilter.isVisible(any())).thenReturn(false)
+
+        val quests = source.getAllVisible(bbox, questTypes)
+        assertTrue(quests.isEmpty())
     }
 
     @Test fun `removal of new osm quest triggers listener`() {

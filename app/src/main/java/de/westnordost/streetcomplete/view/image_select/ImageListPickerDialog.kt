@@ -16,9 +16,13 @@ class ImageListPickerDialog<T>(
     onSelection: (DisplayItem<T>) -> Unit) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
     init {
+        val horizontalMargin = context.resources.getDimensionPixelOffset(R.dimen.dialog_horizontal_margin)
+        val verticalMargin = context.resources.getDimensionPixelOffset(R.dimen.dialog_vertical_margin)
+
         val recyclerView = RecyclerView(context)
         recyclerView.layoutParams = RecyclerView.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         recyclerView.layoutManager = GridLayoutManager(context, columns)
+        recyclerView.setPadding(horizontalMargin, verticalMargin, horizontalMargin, verticalMargin)
 
         setTitle(R.string.quest_select_hint)
         setView(recyclerView)
