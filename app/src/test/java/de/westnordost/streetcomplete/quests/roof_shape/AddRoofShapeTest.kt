@@ -36,6 +36,15 @@ class AddRoofShapeTest {
         ))
     }
 
+    @Test fun `not applicable to buildings with too many levels`() {
+        assertEquals(false, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "6", "roof:levels" to "1"))
+        ))
+        assertEquals(false, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "8", "roof:levels" to "2"))
+        ))
+    }
+
     @Test fun `unknown if applicable to roofs with 0 roof levels`() {
         assertEquals(null, questType.isApplicableTo(
             OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "0"))
@@ -54,6 +63,14 @@ class AddRoofShapeTest {
         val quests = questType.getApplicableElements(TestMapDataWithGeometry(listOf(element)))
 
         assertEquals(element, quests.single())
+    }
+
+    @Test fun `do not create quest for buildings with too many levels`() {
+        val element = OsmWay(1L, 1, listOf(), mapOf("building:levels" to "6", "roof:levels" to "1"))
+
+        val quests = questType.getApplicableElements(TestMapDataWithGeometry(listOf(element)))
+
+        assertEquals(true, quests.isEmpty())
     }
 
     @Test fun `create quest for 0 or null-level roofs only in countries with no flat roofs`() {
