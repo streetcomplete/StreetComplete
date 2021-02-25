@@ -17,6 +17,7 @@ v31.0-beta1: |
   <li>Building type: Add fire station as selection (#2476, #2579)</li>
   <li>Recycling containers: Add beverage cartons as choice (#2502,  #2580)</li>
   <li>Check existence: Also ask for public bookcases</li>
+  <li>Roof shape: Don't ask for high buildings (#2609)</li>
   <li>Orchard produces: for the Canaries, sort choices by prevalence (#2596), by @erik55</li>
   <li>For various quests, also display the name, brand or operator of the point of interest (#2593, #2594), by @FloEdelmann</li>
   </ul>

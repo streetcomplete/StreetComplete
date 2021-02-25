@@ -264,7 +264,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="credits_translations_title">"Übersetzungen"</string>
     <string name="credits_contributors_title">"Programmierbeiträge"</string>
     <string name="credits_author_title">"Hauptentwickler"</string>
-    <string name="credits_and_more">"und weitere..."</string>
+    <string name="credits_and_more">"und weitere…"</string>
     <string name="quest_maxspeed_answer_living_street">"Es ist eine Spielstraße"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Hier ist also so ein Schild wie dieses?"</string>
     <string name="quest_orchard_produce_title">"Was wird hier angebaut?"</string>
@@ -768,7 +768,7 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="link_openstreetcam_description">"Ein Crowdsourcing-Dienst bzw. -App für das Erstellen von Straßenfotos mit expliziter OSM-Nutzungsfreigabe"</string>
     <string name="link_openrouteservice_wheelchair_description">"Turn-by-Turn-Navigation für Rollstuhlfahrer"</string>
     <string name="link_nominatim_description">"Geocoder für OSM-Daten, genutzt von vielen Diensten"</string>
-    <string name="link_city_roads_description">"Rendering aller Straßen einer Stadt, zum Druck auf T-Shirts, Tassen, ..."</string>
+    <string name="link_city_roads_description">"Rendering aller Straßen einer Stadt, zum Druck auf T-Shirts, Tassen, …"</string>
     <string name="link_myosmatic_description">"In wenigen Schritten zur ausdruckbaren Stadtkarte, optional mit Straßenverzeichnis"</string>
     <string name="link_brouter_description">"Die vermutlich beste Routing-Engine für Radfahrer"</string>
     <string name="link_show_me_the_way_description">"OSM-Editierungen in Echtzeit verfolgen"</string>
@@ -909,7 +909,9 @@ Erfolge"</string>
     <string name="quest_steps_ramp_title">"Hat diese Treppe eine Rampe? Was für eine?"</string>
     <string name="quest_steps_ramp_none">"Keine (nutzbare) Rampe"</string>
     <string name="quest_steps_ramp_bicycle">"Rampe für Fahrräder"</string>
-    <string name="quest_steps_ramp_stroller">"Rampe für Kinderwägen"</string>
+
+    <!-- Habe mal den Plural den anderen deutschen Wörtern ("Hohe Lastwagen...") angeglichen. Der hier im Süden durchaus öfters zu hörende Plural "Wägen" ist laut Duden zudem nur "süddeutsch, österreichisch". -->
+    <string name="quest_steps_ramp_stroller">"Rampe für Kinderwagen"</string>
     <string name="quest_steps_ramp_wheelchair">"Rampe für Rollstühle"</string>
     <string name="quest_atm_operator_title">"Zu welcher Bank gehört dieser Geldautomat?"</string>
     <string name="quest_clothes_container_operator_title">"Wer sammelt Altkleider mit diesem Container?"</string>

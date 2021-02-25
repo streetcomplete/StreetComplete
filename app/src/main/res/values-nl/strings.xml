@@ -2386,7 +2386,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="default_disabled_msg_go_inside_regional_warning">"Dit type vraag is standaard uitgeschakeld omdat het in sommige regio's niet nuttig is en je waarschijnlijk ter plaatse naar binnen moet gaan om een ​​vraag van dit type te kunnen beantwoorden."</string>
     <string name="quest_dietType_kosher_name_title">"Biedt %s koosjere producten aan?"</string>
     <string name="quest_dietType_explanation_kosher">"Kosjere producten moeten worden bereid volgens speciale regels, waarbij kasjroet-certificeringsinstanties de producten in overeenstemming certificeren."</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Dit is geen fietspad."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Hier is geen fietspad."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Tik zoals gewoonlijk op de ene kant van de afbeelding, selecteer een juist antwoord en doe hetzelfde voor de andere kant. Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals een eenrichtingsweg die fietsers in beide richtingen toelaat!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecteer dat er geen fietspad is"</string>
     <string name="quest_construction_completed_at_known_date">"Dit zal gereed zijn op de datum..."</string>
@@ -2395,12 +2395,12 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_surface_value_artificial_turf">"Kunstgras"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Welke oppervlak heeft dit sportveld?"</string>
-    <string name="quest_bicycle_parking_access_title">"Is het beperkt toegestaan wie hier een fiets mag parkeren?"</string>
+    <string name="quest_bicycle_parking_access_title">"Is er een beperking wie hier een fiets mag parkeren?"</string>
     <string name="quest_bicycle_parking_fee_title">"Moet je hier betalen om een fiets te parkeren?"</string>
     <string name="quest_buildingType_house_description2">"niet-vrijstaande eengezinswoning"</string>
     <string name="quest_drinking_water_title">"Is het water hier drinkbaar? (%s)"</string>
-    <string name="quest_drinking_water_potable_signed">"Veilig om te drinken (aangekondigd)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Veilig om te drinken (onaangekondigd)"</string>
-    <string name="quest_drinking_water_not_potable_signed">"Niet veilig om te drinken (aangekondigd)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Niet veilig om te drinken (onaangekondigd)"</string>
+    <string name="quest_drinking_water_potable_signed">"Veilig om te drinken (aangegeven)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Veilig om te drinken (niet aangegeven)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Niet veilig om te drinken (aangegeven)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Niet veilig om te drinken (niet aangegeven)"</string>
 </resources>
