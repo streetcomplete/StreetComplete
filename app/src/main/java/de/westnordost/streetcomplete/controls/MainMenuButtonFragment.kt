@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.controls
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
@@ -44,14 +43,16 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
         super.onViewCreated(view, savedInstanceState)
 
         view.mainMenuButton.setOnClickListener { onClickMainMenu() }
-
-        if (teamModeQuestFilter.isEnabled) {
-            onTeamModeChanged(true)
-        }
     }
 
     override fun onStart() {
         super.onStart()
+
+        // in onStart and not onViewCreated because the notification that team mode is active should
+        // pop in always when the app comes back from the background again
+        if (teamModeQuestFilter.isEnabled) {
+            onTeamModeChanged(true)
+        }
 
         teamModeQuestFilter.addListener(this)
     }
@@ -76,11 +77,11 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
 
     override fun onTeamModeChanged(enabled: Boolean) {
         if (enabled) {
-            context?.toast(R.string.team_mode_enabled, Toast.LENGTH_LONG)
+            context?.toast(R.string.team_mode_active)
             view?.teamModeColorCircle?.popIn()
             view?.teamModeColorCircle?.setTeamIndex(teamModeQuestFilter.indexInTeam)
         } else {
-            context?.toast(R.string.team_mode_disabled, Toast.LENGTH_SHORT)
+            context?.toast(R.string.team_mode_deactivated)
             view?.teamModeColorCircle?.popOut()
         }
     }
