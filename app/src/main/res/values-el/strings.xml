@@ -2169,4 +2169,6 @@
     <string name="quest_drinking_water_potable_unsigned">"Ασφαλές για κατανάλωση (μη επισημασμένο) "</string>
     <string name="quest_drinking_water_not_potable_signed">"Μη ασφαλές για κατανάλωση (επισημασμένο) "</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Μη ασφαλές για κατανάλωση (μη επισημασμένο) "</string>
+    <string name="quest_buildingType_fire_station">"Πυροσβεστικός Σταθμός"</string>
+    <string name="quest_charging_station_name_capacity_title">"Πόσα αυτοκίνητα μπορούν να φορτιστούν σ'αυτόν τον σταθμό φόρτισης (℅s) την ίδια στιγμή;"</string>
 </resources>

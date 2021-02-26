@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Indstillinger"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Kan ikke tilgå loginserver"</string>
-
-    <!-- Fuzzy -->
     <string name="retry">"Prøv igen"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Login afbrudt: alle de beskrevne tilladelser skal gives"</string>
-
-    <!-- Fuzzy -->
     <string name="title_activity_settings">"Indstillinger"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Kommunikation"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"Visning"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
 
@@ -37,26 +23,12 @@
 
     <!-- Fuzzy -->
     <string name="pref_title_map_cache">"Kortlager størrelse"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Følg mig"</string>
-
-    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap bidragsydere"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"Andre svar…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Ikke sikker…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"Er du sikker?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"Ja, jeg er sikker"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Det vil jeg undersøge"</string>
 
     <!-- Fuzzy -->
@@ -83,7 +55,7 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Nogle gange er vejskiltet kun på den ene side af gaden. Bemærk også at der måske ikke er et ekstra vejskilt for sidegader der tilhører en større gade. For det meste har alle gader med huse et navn."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Hvis navnet kan skrives uden en forkortelse bør den det. Mange typiske forkortelser er udvidede automatisk mens to skriver, men ikke alle."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Hvis navnet kan skrives uden en forkortelse bør den det. Mange typiske forkortelser er udvidede automatisk mens du skriver, men ikke alle."</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ingen forkortelse"</string>
@@ -531,7 +503,7 @@ Informationerne du skriver sendes direkte til OpenStreetMap i dit brugernavn, ud
     <string name="dialog_session_dont_show_again">"Vis ikke igen for denne session"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Hvad overflade har vejen %s her?"</string>
+    <string name="quest_streetSurface_name_title">"Hvilken overflade har vejen %s her?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne fartgrænse lyder urealistisk."</string>
@@ -737,7 +709,7 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="produce_cherries">"Kirsebær"</string>
 
     <!-- Fuzzy -->
-    <string name="produce_chestnuts">"Kastanje"</string>
+    <string name="produce_chestnuts">"Kastanjer"</string>
 
     <!-- Fuzzy -->
     <string name="produce_coconuts">"Kokosnød"</string>
@@ -824,7 +796,7 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="produce_strawberries">"Jordbær"</string>
 
     <!-- Fuzzy -->
-    <string name="produce_tea">"The"</string>
+    <string name="produce_tea">"Te"</string>
 
     <!-- Fuzzy -->
     <string name="produce_vanilla">"Vanilje"</string>
@@ -2176,4 +2148,19 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_drinking_water_potable_unsigned">"Drikkevand (uskiltet)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Ikke egnet til at drikke (skiltet)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Ikke egnet til at drikke (uskiltet)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Hvad er det royale tegn på denne postkasse?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Intet royalt tegn synligt"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skotlands krone"</string>
+    <string name="quest_buildingType_fire_station">"Brandstation"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Kun drikkevarekartoner"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kun plastflasker og kartoner"</string>
+    <string name="quest_charging_station_name_capacity_title">"Hvor mange biler kan lades ved denne ladestation (%s) på samme tid?"</string>
+    <string name="team_mode">"Holdtilstand"</string>
+    <string name="team_mode_exit">"Afslut holdtilstand"</string>
+    <string name="team_mode_description">"Når der kortlægges i det samme område som en gruppe, kan du skifte til holdtilstand for at opdele opgaver mellem alle holdmedlemmer."</string>
+    <string name="team_mode_team_size_label">"Hvor mange mennesker er der?"</string>
+    <string name="team_mode_team_size_hint">"Holdtilstand virker for grupper fra 2 til 12 personer."</string>
+    <string name="team_mode_choose_color">"Nu kan alle i din gruppe vælge en unik farve:"</string>
+    <string name="team_mode_active">"Holdtilstand er aktiv"</string>
+    <string name="team_mode_deactivated">"Holdtilstand er deaktiveret"</string>
 </resources>

@@ -2381,4 +2381,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_surface_value_clay">"Antuka"</string>
     <string name="quest_surface_value_artificial_turf">"Umelý trávnik"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="quest_bicycle_parking_access_title">"Je obmedzené kto tu môže parkovať bickel?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Platí sa tu za parkovanie bicykla?"</string>
+    <string name="quest_postboxRoyalCypher_title">"Je na tejto poštovej schránke kráľovský znak?"</string>
+    <string name="quest_buildingType_fire_station">"Hasičská stanica"</string>
 </resources>

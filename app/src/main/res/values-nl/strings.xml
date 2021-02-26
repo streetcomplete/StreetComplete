@@ -2403,4 +2403,19 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_drinking_water_potable_unsigned">"Veilig om te drinken (niet aangegeven)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Niet veilig om te drinken (aangegeven)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Niet veilig om te drinken (niet aangegeven)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Welk Koninklijk monogram / teken staat er op deze brievenbus?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Geen koninklijk monogram / teken zichbaar"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"De kroon van schotland"</string>
+    <string name="quest_buildingType_fire_station">"Brandweerpost"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Alleen drinkverpakkingen"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Alleen plastic flessen en kartons"</string>
+    <string name="quest_charging_station_name_capacity_title">"Hoeveel auto's kunnen er tegelijkertijd worden opgeladen bij dit laadstation (%s)?"</string>
+    <string name="team_mode">"Team mode"</string>
+    <string name="team_mode_exit">"UIt Team mode"</string>
+    <string name="team_mode_description">"Als je hetzelfde gebied samen in een groep in kaart brengt, kun je de teammodus openen om vragen tussen alle teamleden op te splitsen"</string>
+    <string name="team_mode_team_size_label">"Hoeveel mensen zijn er?"</string>
+    <string name="team_mode_team_size_hint">"Team mode is geschikt voor groepen van 2 tot 12 mensen. "</string>
+    <string name="team_mode_choose_color">"Iedereen in de groep kiest een unieke kleur."</string>
+    <string name="team_mode_active">"Team mode is actief"</string>
+    <string name="team_mode_deactivated">"Team mode is uitgeschakeld"</string>
 </resources>

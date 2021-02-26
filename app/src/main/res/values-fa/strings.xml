@@ -2337,4 +2337,19 @@
     <string name="quest_drinking_water_potable_unsigned">"آب شرب (تایید نشده)"</string>
     <string name="quest_drinking_water_not_potable_signed">"آب غیر قابل شرب (تایید شده)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"آب غیر قابل شرب (تایید نشده)"</string>
+    <string name="quest_postboxRoyalCypher_title">"رمز ملی روی این صندوق پستی چیست؟"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"هیچ رمز ملی قابل مشاهده نیست"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"تاج اسکاتلند"</string>
+    <string name="quest_buildingType_fire_station">"ایستگاه آتش‌نشانی"</string>
+    <string name="quest_recycling_type_beverage_cartons">"فقط جعبههای نوشیدنی"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"فقط بطری و جعبه پلاستیکی"</string>
+    <string name="quest_charging_station_name_capacity_title">"چند خودرو در این ایستگاه شارژ (%s) به طور همزمان قابل شارژ است؟"</string>
+    <string name="team_mode">"حالت گروهی"</string>
+    <string name="team_mode_exit">"خروج از حالت گروهی"</string>
+    <string name="team_mode_description">"هنگام نقشه برداری از یک منطقه با هم در یک گروه می توانید برای تقسیم جُستارها بین همه اعضای گروه وارد حالت گروهی شوید."</string>
+    <string name="team_mode_team_size_label">"چند نفر آنجا هستند؟"</string>
+    <string name="team_mode_team_size_hint">"حالت گروهی برای گروه های ۲ تا ۱۲ نفره استفاده می‌شود."</string>
+    <string name="team_mode_choose_color">"اکنون همه افراد گروه شما رنگ منحصر به فردی را انتخاب می‌کنند:"</string>
+    <string name="team_mode_active">"حالت گروهی فعال است"</string>
+    <string name="team_mode_deactivated">"حالت گروهی عیرفعال است"</string>
 </resources>
