@@ -98,7 +98,7 @@ class QuestPinLayerManager @Inject constructor(
         if (updates > 0) updateLayer()
     }
 
-    override fun onInvalidated() {
+    override fun onVisibleQuestsInvalidated() {
         clear()
         onNewScreenPosition()
     }

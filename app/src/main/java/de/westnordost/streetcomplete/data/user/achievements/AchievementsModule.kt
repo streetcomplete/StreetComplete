@@ -411,7 +411,8 @@ object AchievementsModule {
                 "AddFerryAccessPedestrian", // 66
                 "AddFerryAccessMotorVehicle", // 103
                 "AddInformationToTourism", // 137
-                "AddBoardType" // 188
+                "AddBoardType", // 188
+                "AddPostBoxRoyalCypher"
             )),
             // levels: 3, 9, 18, 30, 45, 63, ...
             { lvl -> (lvl + 1)*3 },
@@ -547,7 +548,8 @@ object AchievementsModule {
                     "AddRoadName",
                     "AddAddressStreet",
                     "AddPostboxRef",
-                    "AddPostboxCollectionTimes"
+                    "AddPostboxCollectionTimes",
+                    "AddPostBoxRoyalCypher"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...

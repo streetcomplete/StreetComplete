@@ -551,25 +551,25 @@ Jeśli na całej ulicy nie ma znaków dotyczących podświetlonej sekcji, obowi�
     <string name="quest_wheelchairAccess_bus_station_title">"Czy ten przystanek jest dostępny dla osób na wózku?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_title">"Czy to zejście do metra jest dostępne dla osób na wózku?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">"Czy to zejście do metra jest dostępne dla osób na wózku inwalidzkim?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_title">"Czy ten przystanek kolejowy jest dostępny dla osób na wózku?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_title">"Czy to miejsce jest dostępne dla osób na wózku?"</string>
+    <string name="quest_wheelchairAccess_location_title">"Czy to miejsce jest dostępne dla osób na wózku inwalidzkim?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"Czy przystanek %s jest dostępny dla osób na wózku?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Czy zejście do metra %s jest dostępne dla osób na wózku?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Czy zejście do metra %s jest dostępne dla osób na wózku inwalidzkim?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"Czy przystanek kolejowy %s jest dostępny dla osób na wózku?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_name_title">"Czy miejsce %s jest dostępne dla osób na wózku?"</string>
+    <string name="quest_wheelchairAccess_location_name_title">"Czy miejsce %s jest dostępne dla osób na wózku inwalidzkim?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Częściowo oznacza, że trzeba pokonać co najwyżej jeden stopień, aby wejść i większość pomieszczeń w środku jest dostępna dla osób na wózku."</string>
@@ -1031,7 +1031,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="pref_title_quests_invalidation">"Wyczyść pobrane zadania"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Przydatne gdy zadania się nie są aktualne"</string>
+    <string name="pref_title_quests_invalidation_summary">"Przydatne gdy zadania nie są aktualne"</string>
 
     <!-- Fuzzy -->
     <string name="invalidate_confirmation">"Wyczyść cache"</string>
@@ -1555,7 +1555,7 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Częściowo oznacza, że nie ma więcej niż jednego stopnia prowadzącego do obiektu."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_outside_title">"Czy to miejsce jest dostępne dla osób na wózkach inwalidzkich?"</string>
+    <string name="quest_wheelchairAccess_outside_title">"Czy to miejsce jest dostępne dla osób na wózku inwalidzkich?"</string>
     <string name="quest_traffic_signals_button_title">"Czy te sygnalizatory mają przycisk żądający zielonego światła?"</string>
 
     <!-- Fuzzy -->
@@ -2208,7 +2208,9 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="achievement_outdoors_title">"Na zewnątrz"</string>
     <string name="achievement_outdoors_solved_X">"Rozwiązałeś %d zadań przydatnych ludziom na zewnątrz!"</string>
     <string name="quest_pedestrian_crossing_island">"Czy te przejście dla pieszych ma wysepkę?"</string>
-    <string name="quest_generic_answer_noSign">"Nie ma tabliczki z nazwą"</string>
+
+    <!-- Ten ciąg pojawia się w różnych zadaniach, więc tłumaczenie nie może odnosić się do któregokolwiek z nich np. znaku z nazwą lub maksymalnym tonażem -->
+    <string name="quest_generic_answer_noSign">"Nie ma znaku"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Czy rampa dla wóżków inwalidzkich jest wyświetlana jako osobna linia na mapie?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"osobno"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"nie jest pokazana osobno"</string>
@@ -2281,6 +2283,9 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, zostaw wiadomość."</stri
     <string name="quest_pitchSurface_title_track">"Jaką nawierzchnię ma ta droga rekreacyjna?"</string>
     <string name="quest_bicycle_parking_access_title">"Czy parkować rower mogą tutaj jedynie określone osoby?"</string>
     <string name="quest_bicycle_parking_fee_title">"Czy parkując tutaj rower, musisz uiścić opłatę?"</string>
+
+    <!-- https://github.com/streetcomplete/StreetComplete/issues/2572 -->
+    <string name="quest_buildingType_house_description2">"inny dom jednorodzinny"</string>
     <string name="quest_drinking_water_title">"Czy woda tutaj jest pitna? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Zdatne do picia (oznaczone)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Zdatne do picia (brak oznaczenia)"</string>

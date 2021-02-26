@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -14,13 +15,14 @@ import javax.inject.Singleton
 @Singleton class VisibleQuestsSource @Inject constructor(
     private val osmQuestSource: OsmQuestSource,
     private val osmNoteQuestSource: OsmNoteQuestSource,
-    private val visibleQuestTypeSource: VisibleQuestTypeSource
+    private val visibleQuestTypeSource: VisibleQuestTypeSource,
+    private val teamModeQuestFilter: TeamModeQuestFilter
 ) {
     interface Listener {
         /** Called when given quests in the given group have been added/removed */
         fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<Long>, group: QuestGroup)
         /** Called when something has changed which should trigger any listeners to update all */
-        fun onInvalidated()
+        fun onVisibleQuestsInvalidated()
     }
 
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
@@ -48,10 +50,17 @@ import javax.inject.Singleton
         }
     }
 
+    private val teamModeQuestFilterListener = object : TeamModeQuestFilter.TeamModeChangeListener {
+        override fun onTeamModeChanged(enabled: Boolean) {
+            invalidate()
+        }
+    }
+
     init {
         osmQuestSource.addListener(osmQuestSourceListener)
         osmNoteQuestSource.addListener(osmNoteQuestSourceListener)
         visibleQuestTypeSource.addListener(visibleQuestTypeSourceListener)
+        teamModeQuestFilter.addListener(teamModeQuestFilterListener)
     }
 
     /** Get count of all visible quests in given bounding box */
@@ -73,7 +82,8 @@ import javax.inject.Singleton
         QuestGroup.OSM_NOTE -> osmNoteQuestSource.get(questId)
     }?.takeIf(::isVisible)
 
-    private fun isVisible(quest: Quest): Boolean = visibleQuestTypeSource.isVisible(quest.type)
+    private fun isVisible(quest: Quest): Boolean =
+        visibleQuestTypeSource.isVisible(quest.type) && teamModeQuestFilter.isVisible(quest)
 
     fun addListener(listener: Listener) {
         listeners.add(listener)
@@ -88,7 +98,7 @@ import javax.inject.Singleton
     }
 
     private fun invalidate() {
-        listeners.forEach { it.onInvalidated() }
+        listeners.forEach { it.onVisibleQuestsInvalidated() }
     }
 }
 

@@ -130,10 +130,11 @@ class AddOpeningHours (
 
     override fun isApplicableTo(element: Element) : Boolean {
         if (!filter.matches(element)) return false
+        val tags = element.tags ?: return false
         // only show places that can be named somehow
-        if (!hasName(element.tags)) return false
+        if (!hasName(tags)) return false
         // no opening_hours yet -> new survey
-        val oh = element.tags?.get("opening_hours") ?: return true
+        val oh = tags["opening_hours"] ?: return true
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         val rules = oh.toOpeningHoursRules() ?: return true
         // only display supported rules
@@ -164,11 +165,11 @@ class AddOpeningHours (
         }
     }
 
-    private fun hasName(tags: Map<String, String>?) = hasProperName(tags) || hasFeatureName(tags)
+    private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
 
-    private fun hasProperName(tags: Map<String, String>?): Boolean =
-        tags?.keys?.containsAny(listOf("name", "brand")) ?: false
+    private fun hasProperName(tags: Map<String, String>): Boolean =
+        tags.keys.containsAny(listOf("name", "brand"))
 
-    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).isSuggestion(false).find().isNotEmpty() } ?: false
+    private fun hasFeatureName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }

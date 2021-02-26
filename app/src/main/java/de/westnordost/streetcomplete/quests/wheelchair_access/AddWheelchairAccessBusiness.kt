@@ -4,6 +4,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import java.util.concurrent.FutureTask
 
 class AddWheelchairAccessBusiness(
@@ -79,7 +80,7 @@ class AddWheelchairAccessBusiness(
                 "winery"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
-        "\n) and !wheelchair and name"
+        "\n) and !wheelchair and (name or brand)"
 
     override val commitMessage = "Add wheelchair access"
     override val wikiLink = "Key:wheelchair"
@@ -88,12 +89,14 @@ class AddWheelchairAccessBusiness(
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) =
-        if (hasFeatureName(tags)) R.string.quest_wheelchairAccess_name_type_title
-        else                      R.string.quest_wheelchairAccess_name_title
+        if (hasFeatureName(tags))
+            R.string.quest_wheelchairAccess_name_type_title
+        else
+            R.string.quest_wheelchairAccess_name_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
-        return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
+        return arrayOfNotNull(name, featureName.value)
     }
 
     override fun createForm() = AddWheelchairAccessBusinessForm()
@@ -102,6 +105,6 @@ class AddWheelchairAccessBusiness(
         changes.add("wheelchair", answer.osmValue)
     }
 
-    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).isSuggestion(false).find().isNotEmpty() } ?: false
+    private fun hasFeatureName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }

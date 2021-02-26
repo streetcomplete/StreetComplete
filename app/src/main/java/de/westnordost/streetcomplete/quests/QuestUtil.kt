@@ -10,7 +10,9 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.ktx.toList
 import de.westnordost.streetcomplete.ktx.toTypedArray
+import java.util.*
 import java.util.concurrent.FutureTask
 
 fun Resources.getQuestTitle(questType: QuestType<*>, element: Element?, featureDictionaryFuture: FutureTask<FeatureDictionary>?): String {
@@ -43,10 +45,17 @@ private fun findTypeName(
     localeList: LocaleListCompat
 ): String? {
     val dict = featureDictionaryFuture?.get() ?: return null
+    val locales = localeList.toList().toMutableList()
+    /* add fallback to English if (some) English is not part of the locale list already as the
+       fallback for text is also always English in this app (strings.xml) independent of, or rather
+       additionally to what is in the user's LocaleList. */
+    if (locales.none { it.language == Locale.ENGLISH.language }) {
+        locales.add(Locale.ENGLISH)
+    }
     return dict
         .byTags(tags)
         .isSuggestion(false)
-        .forLocale(*localeList.toTypedArray(), null)
+        .forLocale(*locales.toTypedArray())
         .find()
         .firstOrNull()
         ?.name

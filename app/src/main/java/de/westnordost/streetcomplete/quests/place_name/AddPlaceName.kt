@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
@@ -101,13 +102,13 @@ class AddPlaceName(
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
-        featureName.value?.let { arrayOf(it) } ?: arrayOf()
+        arrayOfNotNull(featureName.value)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element): Boolean =
-        filter.matches(element) && hasFeatureName(element.tags)
+        filter.matches(element) && hasAnyName(element.tags)
 
     override fun createForm() = AddPlaceNameForm()
 
@@ -123,6 +124,6 @@ class AddPlaceName(
         }
     }
 
-    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
+    private fun hasAnyName(tags: Map<String, String>?): Boolean =
         tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }

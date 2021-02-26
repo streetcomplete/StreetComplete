@@ -14,13 +14,11 @@ class AddFerryAccessMotorVehicle : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_ferry
     override val hasMarkersAtEnds = true
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
-        return if (hasName)
+    override fun getTitle(tags: Map<String, String>): Int =
+        if (tags.containsKey("name"))
             R.string.quest_ferry_motor_vehicle_name_title
         else
             R.string.quest_ferry_motor_vehicle_title
-    }
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

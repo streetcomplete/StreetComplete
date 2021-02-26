@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
@@ -31,10 +32,8 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val housenumber = tags["addr:streetnumber"] ?: tags["addr:housenumber"]
-        return if (housenumber != null) arrayOf(housenumber) else arrayOf()
-    }
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["addr:streetnumber"] ?: tags["addr:housenumber"])
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mutableSetOf<Long>()

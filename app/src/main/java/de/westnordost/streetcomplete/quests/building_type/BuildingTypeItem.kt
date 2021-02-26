@@ -32,6 +32,7 @@ fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
     SPORTS_CENTRE -> Item(this, R.drawable.ic_sport_volleyball, R.string.quest_buildingType_sports_centre)
     HOSPITAL -> Item(this, R.drawable.ic_building_hospital, R.string.quest_buildingType_hospital)
     STADIUM -> Item(this, R.drawable.ic_sport_volleyball, R.string.quest_buildingType_stadium)
+    FIRE_STATION -> Item(this, R.drawable.ic_building_fire_truck, R.string.quest_buildingType_fire_station)
     TRAIN_STATION -> Item(this, R.drawable.ic_building_train_station, R.string.quest_buildingType_train_station)
     TRANSPORTATION -> Item(this, R.drawable.ic_building_transportation, R.string.quest_buildingType_transportation)
     UNIVERSITY -> Item(this, R.drawable.ic_building_university, R.string.quest_buildingType_university)

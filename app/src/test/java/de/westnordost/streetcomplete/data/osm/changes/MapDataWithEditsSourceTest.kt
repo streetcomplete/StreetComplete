@@ -21,7 +21,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.verify
-import org.mockito.Mockito.verifyNoInteractions
+import org.mockito.Mockito.verifyZeroInteractions
 
 class MapDataWithEditsSourceTest {
 
@@ -791,7 +791,7 @@ class MapDataWithEditsSourceTest {
 
         editsControllerNotifiesEditedElementsAdded()
 
-        verifyNoInteractions(listener)
+        verifyZeroInteractions(listener)
     }
 
     @Test

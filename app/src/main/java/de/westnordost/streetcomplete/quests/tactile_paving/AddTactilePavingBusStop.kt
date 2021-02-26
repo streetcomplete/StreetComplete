@@ -30,12 +30,11 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
         val isTram = tags["tram"] == "yes"
-        return if (isTram) {
-            if (hasName) R.string.quest_tactilePaving_title_name_tram
-            else         R.string.quest_tactilePaving_title_tram
-        } else {
-            if (hasName) R.string.quest_tactilePaving_title_name_bus
-            else         R.string.quest_tactilePaving_title_bus
+        return when {
+            isTram && hasName ->    R.string.quest_tactilePaving_title_name_tram
+            isTram ->               R.string.quest_tactilePaving_title_tram
+            hasName ->              R.string.quest_tactilePaving_title_name_bus
+            else ->                 R.string.quest_tactilePaving_title_bus
         }
     }
 

@@ -45,7 +45,7 @@
     <string name="confirmation_discard_title">"Откажи въведеното?"</string>
     <string name="confirmation_discard_positive">"Откажи"</string>
     <string name="confirmation_discard_negative">"Обратно"</string>
-    <string name="action_download">"Сканирани за въпроси тук"</string>
+    <string name="action_download">"Сканиране за въпроси тук"</string>
     <string name="action_upload">"Качи отговори"</string>
     <string name="no_changes">"Не отговорихте на нито един въпрос"</string>
     <string name="close">"затвори"</string>
@@ -247,11 +247,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"Посетете app store"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"Ако използвате стандартната клавиатура, можете да я смените с езика, на който искате да въведете текста.
 
-Ако нямате инсталиран този език, можете да го изтеглите от съответния магазин за приложения. Популярни мултиезични клавиатури са Google Gboard, SwiftKey Keyboard, и Multiling O Keyboard."</string>
+Ако нямате инсталиран този език, можете да го изтеглите от съответния магазин за приложения. Популярни мултиезични клавиатури са Google Gboard, SwiftKey Keyboard и Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(неустановен)"</string>
     <string name="quest_fireHydrant_type_title">"Какъв вид пожарен хидрант е това?"</string>
     <string name="quest_fireHydrant_type_pillar">"Стоящ"</string>
@@ -317,7 +315,7 @@
     <string name="produce_walnuts">"Орехи"</string>
     <string name="produce_sisal">"Сизал"</string>
     <string name="quest_way_lit_title">"Този участък от пътя осветен ли е?"</string>
-    <string name="quest_way_lit_named_title">"%s осветено ли е тук?"</string>
+    <string name="quest_way_lit_named_title">"%s - осветено ли е тук?"</string>
     <string name="quest_way_lit_road_title">"Този участък от пътя осветен ли е?"</string>
     <string name="quest_way_lit_automatic">"Използва сензор за движение"</string>
     <string name="quest_way_lit_24_7">"Осветен е и през нощта и през деня"</string>
@@ -375,13 +373,9 @@
     <string name="quest_dietType_vegetarian_name_title">"Мястото %s има ли вегетарианско меню?"</string>
     <string name="quest_dietType_vegan_name_title">"Мястото %s има ли веганско меню?"</string>
     <string name="quest_hasFeature_only">"Само"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"Веган менюто не съдържа животински продукти (без месо, риба, пиле, млечни продукти, яйца...)"</string>
+    <string name="quest_dietType_explanation_vegan">"Веган менюто не съдържа животински продукти (без месо, риба, пиле, млечни продукти, яйца, мед...)"</string>
     <string name="quest_dietType_explanation_vegetarian">"Вегетарианското меню не съдържа месо или риба."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_dietType_explanation">"Отговорете с \"Да\", само ако мястото предлага подходящо меню за тази диета. "</string>
+    <string name="quest_dietType_explanation">"Отговорете с \"Да\" само ако мястото предлага подходящо меню за тази диета."</string>
     <string name="quest_carWashType_title">"Какъв вид автомивка е това?"</string>
     <string name="quest_carWashType_automated">"Автоматична"</string>
     <string name="quest_carWashType_selfService">"На самообслужване"</string>
@@ -611,8 +605,8 @@
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"под земята"</string>
-    <string name="quest_sidewalk_value_yes">"тротоар"</string>
-    <string name="quest_sidewalk_value_no">"без тротоар"</string>
+    <string name="quest_sidewalk_value_yes">"има тротоар"</string>
+    <string name="quest_sidewalk_value_no">"няма тротоар"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Забранено ли е за пешеходци по този път?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Тази улица е маркирана като улица без тротоари. Ако все пак има тротоар, но той е изобразен като отделен път, отговорете на въпроса с \"тротоар\"."</string>
     <string name="quest_buildingType_title">"Какъв вид сграда е това?"</string>
@@ -639,7 +633,7 @@
     <string name="quest_leaf_type_broadleaved">"Широколистни"</string>
     <string name="quest_leaf_type_mixed">"И два вида се срещат"</string>
     <string name="quest_cyclewayPartSurface_title">"Каква повърхност има тази велоалея?"</string>
-    <string name="quest_generic_answer_differs_along_the_way">"Различна е по дължината..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Има само на места..."</string>
     <string name="quest_split_way_description">"Ако се различава по дължината на пътя, първо разделете пътя. След това ще можете да отговорите за всяка част поотделно. Ще го разделите ли сега?"</string>
     <string name="quest_split_way_tutorial">"Докоснете пътя в точката(-ите) където отговорите се различават. Опитайте се да бъдете максимално точни. Можете да увеличите мащаба."</string>
     <string name="quest_split_way_too_imprecise">"Моля, увеличете още"</string>
@@ -833,7 +827,7 @@
     <string name="quest_board_type_notice_board">"Табло за обяви"</string>
     <string name="quest_board_type_public_transport">"Обществен транспорт"</string>
     <string name="quest_board_type_title">"Каква е темата на това информационно табло?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Да, показва се отделно на карта"</string>
+    <string name="quest_sidewalk_separately_mapped">"Да, на картата е отделен път"</string>
     <string name="quest_board_type_map">"Това е карта"</string>
     <string name="quest_board_type_map_title">"Това е само карта и нищо друго?"</string>
     <string name="quest_board_type_map_description">"Ако табелата има определена тема, укажете я, независимо от това дали съдържа карта или не. Например, таблата за обществен транспорт могат да съдържат карта на автобусните линии. Ако темата не е в списъка, по-добре оставете бележка."</string>

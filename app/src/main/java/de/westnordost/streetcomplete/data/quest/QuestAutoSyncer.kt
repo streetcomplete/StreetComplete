@@ -15,10 +15,12 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.*
 import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountListener
 import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.location.FineLocationManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,16 +34,18 @@ import javax.inject.Singleton
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
 @Singleton class QuestAutoSyncer @Inject constructor(
-        private val downloadController: DownloadController,
-        private val uploadController: UploadController,
-        private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
-        private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
-        private val context: Context,
-        private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-        private val downloadProgressSource: DownloadProgressSource,
-        private val loginStatusSource: LoginStatusSource,
-        private val prefs: SharedPreferences,
-        private val userController: UserController,
+    private val downloadController: DownloadController,
+    private val uploadController: UploadController,
+    private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
+    private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
+    private val context: Context,
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
+    private val downloadProgressSource: DownloadProgressSource,
+    private val loginStatusSource: LoginStatusSource,
+    private val prefs: SharedPreferences,
+    private val userController: UserController,
+    private val teamModeQuestFilter: TeamModeQuestFilter,
+    private val downloadedTilesDao: DownloadedTilesDao,
 ) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     private var pos: LatLon? = null
@@ -91,6 +95,16 @@ import javax.inject.Singleton
         override fun onLoggedOut() {}
     }
 
+    private val teamModeChangeListener = object : TeamModeQuestFilter.TeamModeChangeListener {
+        override fun onTeamModeChanged(enabled: Boolean) {
+            if (!enabled) {
+                // because other team members will have solved some of the quests already
+                downloadedTilesDao.removeAll()
+                triggerAutoDownload()
+            }
+        }
+    }
+
     val isAllowedByPreference: Boolean
         get() {
             val p = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!)
@@ -103,6 +117,7 @@ import javax.inject.Singleton
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
         loginStatusSource.addLoginStatusListener(userLoginStatusListener)
+        teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
@@ -123,6 +138,7 @@ import javax.inject.Singleton
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         loginStatusSource.removeLoginStatusListener(userLoginStatusListener)
+        teamModeQuestFilter.removeListener(teamModeChangeListener)
         coroutineContext.cancel()
     }
 
