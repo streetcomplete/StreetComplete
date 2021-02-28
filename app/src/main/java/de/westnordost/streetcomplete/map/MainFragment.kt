@@ -36,10 +36,10 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
 import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.location.FineLocationManager
@@ -73,7 +73,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var questController: QuestController
-    @Inject internal lateinit var downloadController: DownloadController
     @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
     @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
     @Inject internal lateinit var soundFx: SoundFx
@@ -403,7 +402,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */
 
-    override fun onCreatedNoteInstead(questId: Long, group: QuestGroup, questTitle: String, note: String, imagePaths: List<String>?) {
+    override fun onCreatedNoteInstead(questId: Long, group: QuestGroup, questTitle: String, note: String, imagePaths: List<String>) {
         closeQuestDetailsFor(questId, group)
         // the quest is deleted from DB on creating a note, so need to fetch quest before
         val quest = questController.get(questId, group)
@@ -414,7 +413,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
-    override fun onCreatedNote(note: String, imagePaths: List<String>?, screenPosition: Point) {
+    override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point) {
         closeBottomSheet()
 
         val mapFragment = mapFragment ?: return

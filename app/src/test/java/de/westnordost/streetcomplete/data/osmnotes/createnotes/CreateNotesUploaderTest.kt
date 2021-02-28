@@ -6,7 +6,7 @@ import org.junit.Test
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.notes.Note
-import de.westnordost.streetcomplete.data.osm.upload.ConflictException
+import de.westnordost.streetcomplete.data.osm.edits.upload.ConflictException
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
 

@@ -8,10 +8,9 @@ import androidx.core.os.LocaleListCompat
 import androidx.core.text.parseAsHtml
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.ktx.toList
-import de.westnordost.streetcomplete.ktx.toTypedArray
 import java.util.*
 import java.util.concurrent.FutureTask
 

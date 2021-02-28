@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_quest_answer.*
 class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDetails {
 
     interface Listener {
-        fun onCreatedNoteInstead(questId: Long, group: QuestGroup, questTitle: String, note: String, imagePaths: List<String>?)
+        fun onCreatedNoteInstead(questId: Long, group: QuestGroup, questTitle: String, note: String, imagePaths: List<String>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -38,7 +38,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
         descriptionLabel.text = null
     }
 
-    override fun onComposedNote(text: String, imagePaths: List<String>?) {
+    override fun onComposedNote(text: String, imagePaths: List<String>) {
         listener?.onCreatedNoteInstead(questId, questGroup, questTitle, text, imagePaths)
     }
 

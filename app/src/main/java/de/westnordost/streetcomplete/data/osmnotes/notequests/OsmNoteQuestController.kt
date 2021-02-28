@@ -6,7 +6,7 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.osmnotes.NoteSource
+import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.user.UserStore
@@ -16,7 +16,7 @@ import javax.inject.Singleton
 
 /** Used to get visible osm note quests */
 @Singleton class OsmNoteQuestController @Inject constructor(
-    private val noteSource: NoteSource,
+    private val noteSource: NotesWithEditsSource,
     private val noteQuestsHiddenDB: NoteQuestsHiddenDao,
     private val questType: OsmNoteQuestType,
     private val loginStatusSource: LoginStatusSource,
@@ -33,7 +33,7 @@ import javax.inject.Singleton
 
     private val userId: Long? get() = userStore.userId.takeIf { it != -1L }
 
-    private val noteUpdatesListener = object : NoteSource.Listener {
+    private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
             val hiddenNoteIds = getNoteIdsHidden()
 

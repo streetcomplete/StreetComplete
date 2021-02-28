@@ -17,8 +17,8 @@ import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osmnotes.NoteSource
-import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
+import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -41,7 +41,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     private lateinit var anonAvatar: Bitmap
 
-    @Inject internal lateinit var noteSource: NoteSource
+    @Inject internal lateinit var noteSource: NotesWithEditsSource
 
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
@@ -160,7 +160,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         }
 
         private val User.avatar: Bitmap? get() {
-            val cacheDir = OsmNotesModule.getAvatarsCacheDirectory(requireContext())
+            val cacheDir = NotesModule.getAvatarsCacheDirectory(requireContext())
             val file = File(cacheDir.toString() + File.separator + id)
             return if (file.exists()) BitmapFactory.decodeFile(file.path) else null
         }

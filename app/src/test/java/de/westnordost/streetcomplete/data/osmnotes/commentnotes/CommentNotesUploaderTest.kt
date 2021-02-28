@@ -4,7 +4,7 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
 import org.junit.Before
 
-import de.westnordost.streetcomplete.data.osm.upload.ConflictException
+import de.westnordost.streetcomplete.data.osm.edits.upload.ConflictException
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
 import org.junit.Test

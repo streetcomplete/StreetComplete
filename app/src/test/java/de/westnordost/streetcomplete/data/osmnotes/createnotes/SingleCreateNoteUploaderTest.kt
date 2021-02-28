@@ -9,7 +9,7 @@ import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.upload.ConflictException
+import de.westnordost.streetcomplete.data.osm.edits.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteWithPhotosUploader
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on

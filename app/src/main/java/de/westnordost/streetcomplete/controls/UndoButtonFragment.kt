@@ -13,10 +13,10 @@ import androidx.fragment.app.Fragment
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.ElementEdit
-import de.westnordost.streetcomplete.data.osm.changes.ElementEditsController
-import de.westnordost.streetcomplete.data.osm.changes.ElementEditsSource
-import de.westnordost.streetcomplete.data.osm.changes.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.ktx.popIn

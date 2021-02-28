@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.notifications.Notification
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
-import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException

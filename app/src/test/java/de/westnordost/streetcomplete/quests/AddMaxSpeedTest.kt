@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.max_speed.*
 import org.junit.Test
 

@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountListener
-import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountListener
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao

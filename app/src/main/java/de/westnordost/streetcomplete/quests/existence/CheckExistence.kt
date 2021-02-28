@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 import java.util.*

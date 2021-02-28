@@ -6,11 +6,11 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox

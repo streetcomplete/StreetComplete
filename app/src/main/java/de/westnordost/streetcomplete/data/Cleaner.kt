@@ -2,9 +2,10 @@ package de.westnordost.streetcomplete.data
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.osm.changes.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.format
 import kotlinx.coroutines.CoroutineScope
@@ -18,6 +19,7 @@ class Cleaner @Inject constructor(
     private val noteController: NoteController,
     private val mapDataController: MapDataController,
     private val elementEditsController: ElementEditsController,
+    private val noteEditsController: NoteEditsController,
     private val questTypeRegistry: QuestTypeRegistry
 ): CoroutineScope by CoroutineScope(Dispatchers.IO) {
 
@@ -28,7 +30,8 @@ class Cleaner @Inject constructor(
         cleanQuestMetadata(oldDataTimestamp)
 
         val undoableChangesTimestamp = currentTimeMillis() - ApplicationConstants.MAX_UNDO_HISTORY_AGE
-        cleanOldHistory(undoableChangesTimestamp)
+        cleanOldMapDataHistory(undoableChangesTimestamp)
+        cleanOldNotesHistory(undoableChangesTimestamp)
     }
 
     private fun cleanNotes(timestamp: Long) = launch {
@@ -54,9 +57,16 @@ class Cleaner @Inject constructor(
         Log.i(TAG, "Cleaned quest metadata in ${seconds.format(1)}s")
     }
 
-    private fun cleanOldHistory(timestamp: Long) = launch {
+    private fun cleanOldMapDataHistory(timestamp: Long) = launch {
         val time = currentTimeMillis()
         elementEditsController.deleteSyncedOlderThan(timestamp)
+        val seconds = (currentTimeMillis() - time) / 1000.0
+        Log.i(TAG, "Cleaned old map data history in ${seconds.format(1)}s")
+    }
+
+    private fun cleanOldNotesHistory(timestamp: Long) = launch {
+        val time = currentTimeMillis()
+        noteEditsController.deleteSyncedOlderThan(timestamp)
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Cleaned old history in ${seconds.format(1)}s")
     }

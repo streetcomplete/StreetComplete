@@ -6,10 +6,10 @@ import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.bikeway.createCyclewaySides
 import de.westnordost.streetcomplete.quests.bikeway.estimatedWidth
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
 import de.westnordost.streetcomplete.quests.parking_lanes.*
 

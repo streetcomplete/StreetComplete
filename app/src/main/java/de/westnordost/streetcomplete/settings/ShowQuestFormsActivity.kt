@@ -16,9 +16,9 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.view.ListAdapter

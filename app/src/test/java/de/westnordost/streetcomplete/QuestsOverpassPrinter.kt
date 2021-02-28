@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete
 
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.quests.QuestModule
 
 fun main() {

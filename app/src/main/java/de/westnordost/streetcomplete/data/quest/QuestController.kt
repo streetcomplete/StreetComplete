@@ -5,24 +5,24 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.osmapi.map.data.Way
-import de.westnordost.streetcomplete.data.osm.changes.*
-import de.westnordost.streetcomplete.data.osm.changes.delete.DeletePoiNodeAction
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.*
-import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitPolylineAtPosition
-import de.westnordost.streetcomplete.data.osm.changes.split_way.SplitWayAction
-import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNote
-import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
-import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
-import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osm.edits.*
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.collections.ArrayList
 
 /** Controls the workflow of quests: Solving them, hiding them instead, splitting the way instead,
  *  undoing, etc. */
@@ -30,26 +30,33 @@ import javax.inject.Singleton
     private val osmQuestController: OsmQuestController,
     private val osmNoteQuestController: OsmNoteQuestController,
     private val elementEditsController: ElementEditsController,
-    private val createNoteDB: CreateNoteDao,
-    private val commentNoteDB: CommentNoteDao,
+    private val noteEditsController: NoteEditsController,
     private val mapDataSource: MapDataWithEditsSource
 ): CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     /** Create a note for the given OSM Quest instead of answering it.
      * @return true if successful
      */
-    fun createNote(osmQuestId: Long, questTitle: String, text: String, imagePaths: List<String>?): Boolean {
+    fun createNote(osmQuestId: Long, questTitle: String, text: String, imagePaths: List<String>): Boolean {
         val q = osmQuestController.get(osmQuestId) ?: return false
-        val createNote = CreateNote(null, text, q.center, questTitle, ElementKey(q.elementType, q.elementId), imagePaths)
-        createNoteDB.add(createNote)
+
+        val lowercaseTypeName = q.elementType.name.toLowerCase(Locale.US)
+        val elementId = q.elementId
+        val fullText =
+            "Unable to answer \"$questTitle\"" +
+            " for https://osm.org/$lowercaseTypeName/$elementId" +
+            " via ${ApplicationConstants.USER_AGENT}:" +
+            "\n\n$text"
+
+        noteEditsController.add(-1, NoteEditAction.CREATE, q.center, fullText, imagePaths)
         return true
     }
 
     /** Create a note at the given position.
      */
-    fun createNote(text: String, imagePaths: List<String>?, position: LatLon) {
-        val createNote = CreateNote(null, text, position, null, null, imagePaths)
-        createNoteDB.add(createNote)
+    fun createNote(text: String, imagePaths: List<String>, position: LatLon) {
+        val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
+        noteEditsController.add(-1, NoteEditAction.CREATE, position, fullText, imagePaths)
     }
 
     /** Split a way for the given OSM Quest.
@@ -148,8 +155,8 @@ import javax.inject.Singleton
         val q = osmNoteQuestController.get(questId) ?: return false
 
         require(answer.text.isNotEmpty()) { "NoteQuest has been answered with an empty comment!" }
-        val commentNote = CommentNote(questId, q.center, answer.text, answer.imagePaths)
-        commentNoteDB.add(commentNote)
+        // for note quests: questId == noteId
+        noteEditsController.add(questId, NoteEditAction.COMMENT, q.center, answer.text, answer.imagePaths)
         return true
     }
 

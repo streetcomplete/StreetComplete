@@ -5,9 +5,9 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestSource
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType

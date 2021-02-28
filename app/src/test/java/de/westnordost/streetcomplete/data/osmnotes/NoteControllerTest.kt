@@ -50,7 +50,7 @@ class NoteControllerTest {
     @Test fun put() {
         val note = note(1)
 
-        val listener = mock<NoteSource.Listener>()
+        val listener = mock<NoteController.Listener>()
         noteController.addListener(listener)
         noteController.put(note)
 
@@ -60,7 +60,7 @@ class NoteControllerTest {
 
     @Test fun `put existing`() {
         val note = note(1)
-        val listener = mock<NoteSource.Listener>()
+        val listener = mock<NoteController.Listener>()
         on(dao.get(1L)).thenReturn(note)
 
         noteController.addListener(listener)
@@ -71,7 +71,7 @@ class NoteControllerTest {
     }
 
     @Test fun delete() {
-        val listener = mock<NoteSource.Listener>()
+        val listener = mock<NoteController.Listener>()
         on(dao.delete(1L)).thenReturn(true)
 
         noteController.addListener(listener)
@@ -81,7 +81,7 @@ class NoteControllerTest {
     }
 
     @Test fun `delete non-existing`() {
-        val listener = mock<NoteSource.Listener>()
+        val listener = mock<NoteController.Listener>()
         on(dao.delete(1L)).thenReturn(false)
 
         noteController.addListener(listener)
@@ -91,7 +91,7 @@ class NoteControllerTest {
     }
 
     @Test fun `remove listener`() {
-        val listener = mock<NoteSource.Listener>()
+        val listener = mock<NoteController.Listener>()
 
         noteController.addListener(listener)
         noteController.removeListener(listener)
@@ -102,7 +102,7 @@ class NoteControllerTest {
     @Test fun deleteAllOlderThan() {
         val ids = listOf(1L,2L,3L)
         on(dao.getAllIdsOlderThan(123L)).thenReturn(ids)
-        val listener = mock<NoteSource.Listener>()
+        val listener = mock<NoteController.Listener>()
 
         noteController.addListener(listener)
 
@@ -115,7 +115,7 @@ class NoteControllerTest {
         val bbox = BoundingBox(0.0,1.0,2.0,3.0)
         val notes = listOf(note(1), note(2), note(3))
         on(dao.getAll(bbox)).thenReturn(emptyList())
-        val listener = mock<NoteSource.Listener>()
+        val listener = mock<NoteController.Listener>()
 
         noteController.addListener(listener)
         noteController.putAllForBBox(bbox, notes)
@@ -134,7 +134,7 @@ class NoteControllerTest {
         // 1 is updated, 2 is deleted, 3 is added
         val newNotes = listOf(note1, note3)
         on(dao.getAll(bbox)).thenReturn(oldNotes)
-        val listener = mock<NoteSource.Listener>()
+        val listener = mock<NoteController.Listener>()
 
         noteController.addListener(listener)
         noteController.putAllForBBox(bbox, newNotes)

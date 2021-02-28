@@ -11,9 +11,9 @@ import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
-import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountListener
-import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.osmnotes.NotesModule
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountListener
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.*
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao
 import de.westnordost.streetcomplete.ktx.createBitmap
@@ -111,7 +111,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
     }
 
     private fun updateAvatar() {
-        val cacheDir = OsmNotesModule.getAvatarsCacheDirectory(requireContext())
+        val cacheDir = NotesModule.getAvatarsCacheDirectory(requireContext())
         val avatarFile = File(cacheDir.toString() + File.separator + userStore.userId)
         val avatar = if (avatarFile.exists()) BitmapFactory.decodeFile(avatarFile.path) else anonAvatar
         userAvatarImageView.setImageBitmap(avatar)

@@ -11,10 +11,10 @@ import de.westnordost.streetcomplete.data.download.DownloadModule
 import de.westnordost.streetcomplete.data.download.DownloadModule2
 import de.westnordost.streetcomplete.data.download.DownloadService
 import de.westnordost.streetcomplete.data.meta.MetadataModule
-import de.westnordost.streetcomplete.data.osm.changes.ElementEditsModule
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestModule
-import de.westnordost.streetcomplete.data.osm.upload.changesets.ChangesetAutoCloserWorker
-import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsModule
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestModule
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
+import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestModule
 import de.westnordost.streetcomplete.data.upload.UploadModule
 import de.westnordost.streetcomplete.data.upload.UploadService
@@ -50,7 +50,7 @@ import javax.inject.Singleton
     UploadModule2::class,
     OsmApiModule::class,
     TrafficFlowSegmentsModule::class,
-    OsmNotesModule::class,
+    NotesModule::class,
     UploadModule::class,
     DownloadModule::class,
     DownloadModule2::class,

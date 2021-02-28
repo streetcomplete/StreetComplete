@@ -8,13 +8,13 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*

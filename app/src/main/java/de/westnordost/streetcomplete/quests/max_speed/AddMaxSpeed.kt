@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.quests.max_speed
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 
 class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {

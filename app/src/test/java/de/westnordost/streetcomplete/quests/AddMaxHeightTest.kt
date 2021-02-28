@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.max_height.*
 import org.junit.Assert.assertEquals

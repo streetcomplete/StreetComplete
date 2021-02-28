@@ -12,11 +12,15 @@ import javax.inject.Singleton
 /** Manages access to the notes storage */
 @Singleton class NoteController @Inject constructor(
     private val dao: NoteDao
-): NoteSource {
+) {
     /* Must be a singleton because there is a listener that should respond to a change in the
     *  database table */
 
-    private val listeners: MutableList<NoteSource.Listener> = CopyOnWriteArrayList()
+    /** Interface to be notified of new notes, updated notes and notes that have been deleted */
+    interface Listener {
+        fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
+    }
+    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     /** Replace all notes in the given bounding box with the given notes */
     @Synchronized fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
@@ -44,7 +48,7 @@ import javax.inject.Singleton
         onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)
     }
 
-    override fun get(noteId: Long): Note? = dao.get(noteId)
+    fun get(noteId: Long): Note? = dao.get(noteId)
 
     /** delete a note because the note does not exist anymore on OSM (has been closed) */
     @Synchronized fun delete(noteId: Long) {
@@ -69,16 +73,16 @@ import javax.inject.Singleton
         return ids.size
     }
 
-    override fun getAllPositions(bbox: BoundingBox): List<LatLon> = dao.getAllPositions(bbox)
-    override fun getAll(bbox: BoundingBox): List<Note> = dao.getAll(bbox)
-    override fun getAll(noteIds: Collection<Long>): List<Note> = dao.getAll(noteIds)
+    fun getAllPositions(bbox: BoundingBox): List<LatLon> = dao.getAllPositions(bbox)
+    fun getAll(bbox: BoundingBox): List<Note> = dao.getAll(bbox)
+    fun getAll(noteIds: Collection<Long>): List<Note> = dao.getAll(noteIds)
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 
-    override fun addListener(listener: NoteSource.Listener) {
+    fun addListener(listener: Listener) {
         listeners.add(listener)
     }
-    override fun removeListener(listener: NoteSource.Listener) {
+    fun removeListener(listener: Listener) {
         listeners.remove(listener)
     }
 

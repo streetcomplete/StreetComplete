@@ -5,8 +5,8 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.changes.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.toYesNo
 
 class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {

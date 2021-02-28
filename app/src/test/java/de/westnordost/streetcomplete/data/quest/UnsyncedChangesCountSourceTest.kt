@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.osm.changes.ElementEdit
-import de.westnordost.streetcomplete.data.osm.changes.ElementEditsSource
-import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountListener
-import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestSource
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountListener
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource

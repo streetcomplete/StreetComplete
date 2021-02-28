@@ -13,8 +13,8 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.*
-import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountListener
-import de.westnordost.streetcomplete.data.osm.changes.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountListener
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
@@ -34,18 +34,18 @@ import javax.inject.Singleton
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
 @Singleton class QuestAutoSyncer @Inject constructor(
-    private val downloadController: DownloadController,
-    private val uploadController: UploadController,
-    private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
-    private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
-    private val context: Context,
-    private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val downloadProgressSource: DownloadProgressSource,
-    private val loginStatusSource: LoginStatusSource,
-    private val prefs: SharedPreferences,
-    private val userController: UserController,
-    private val teamModeQuestFilter: TeamModeQuestFilter,
-    private val downloadedTilesDao: DownloadedTilesDao,
+        private val downloadController: DownloadController,
+        private val uploadController: UploadController,
+        private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
+        private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
+        private val context: Context,
+        private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
+        private val downloadProgressSource: DownloadProgressSource,
+        private val loginStatusSource: LoginStatusSource,
+        private val prefs: SharedPreferences,
+        private val userController: UserController,
+        private val teamModeQuestFilter: TeamModeQuestFilter,
+        private val downloadedTilesDao: DownloadedTilesDao,
 ) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     private var pos: LatLon? = null
