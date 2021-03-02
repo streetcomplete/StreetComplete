@@ -103,9 +103,11 @@ class NoteEditsUploader @Inject constructor(
     }
 
     private fun uploadAndGetAttachedPhotosText(imagePaths: List<String>): String {
-        val urls = imageUploader.upload(imagePaths)
-        if (urls.isNotEmpty()) {
-            return "\n\nAttached photo(s):\n" + urls.joinToString("\n")
+        if (imagePaths.isNotEmpty()) {
+            val urls = imageUploader.upload(imagePaths)
+            if (urls.isNotEmpty()) {
+                return "\n\nAttached photo(s):\n" + urls.joinToString("\n")
+            }
         }
         return ""
     }

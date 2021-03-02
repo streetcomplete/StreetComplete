@@ -155,8 +155,8 @@ class NoteEditsUploaderTest {
         verify(noteController).put(note)
         verify(noteEditsController).synced(edit, note)
         verify(noteEditsController).imagesActivated(1L)
-        verify(imageUploader.upload(eq(listOf("x","y","z"))))
-        verify(imageUploader.activate(1L))
+        verify(imageUploader).upload(listOf("a","b","c"))
+        verify(imageUploader).activate(1L)
         verify(listener)!!.onUploaded("NOTE", pos)
     }
 
@@ -181,8 +181,8 @@ class NoteEditsUploaderTest {
         verify(noteController).put(note)
         verify(noteEditsController).synced(edit, note)
         verify(noteEditsController).imagesActivated(1L)
-        verify(imageUploader.upload(eq(listOf("x","y","z"))))
-        verify(imageUploader.activate(1L))
+        verify(imageUploader).upload(listOf("a","b","c"))
+        verify(imageUploader).activate(1L)
         verify(listener)!!.onUploaded("NOTE", pos)
     }
 
@@ -193,8 +193,8 @@ class NoteEditsUploaderTest {
 
         upload()
 
-        verify(imageUploader.activate(3))
-        verify(noteEditsController).imagesActivated(3)
+        verify(imageUploader).activate(3)
+        verify(noteEditsController).imagesActivated(1L)
     }
 
     private fun upload() {
