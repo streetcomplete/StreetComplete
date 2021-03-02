@@ -14,8 +14,9 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
 import java.util.concurrent.atomic.AtomicBoolean
+import javax.inject.Inject
 
-class NoteEditsUploader(
+class NoteEditsUploader @Inject constructor(
     private val noteEditsController: NoteEditsController,
     private val noteController: NoteController,
     private val notesApi: NotesApi,

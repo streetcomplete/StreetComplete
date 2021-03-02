@@ -88,7 +88,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     }
 
     private fun onClickOk() {
-        applyAnswer(NoteAnswer(noteText, attachPhotoFragment?.imagePaths))
+        applyAnswer(NoteAnswer(noteText, attachPhotoFragment?.imagePaths.orEmpty()))
     }
 
     override fun onDiscard() {

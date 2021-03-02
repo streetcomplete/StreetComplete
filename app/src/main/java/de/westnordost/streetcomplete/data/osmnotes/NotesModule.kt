@@ -27,9 +27,9 @@ object NotesModule {
         StreetCompleteImageUploader(ApplicationConstants.SC_PHOTO_SERVICE_URL)
 
     @Provides @Singleton fun noteController(
-        noteController: NoteController,
+        noteDao: NoteDao,
         avatarsInNotesUpdater: AvatarsInNotesUpdater
-    ): NoteController = noteController.apply {
+    ): NoteController = NoteController(noteDao).apply {
         // on notes have been updated, avatar images should be downloaded (cached) referenced in note discussions
         addListener(avatarsInNotesUpdater)
     }

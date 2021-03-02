@@ -6,36 +6,32 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountListener
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
-import de.westnordost.streetcomplete.data.osmnotes.commentnotes.CommentNoteDao
-import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.verify
-import org.mockito.Mockito.verifyZeroInteractions
+import org.mockito.Mockito.*
 import org.mockito.invocation.InvocationOnMock
 
 class UnsyncedChangesCountSourceTest {
     private lateinit var osmQuestSource: OsmQuestSource
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
-    private lateinit var createNoteDao: CreateNoteDao
-    private lateinit var commentNoteDao: CommentNoteDao
+    private lateinit var noteEditsSource: NoteEditsSource
     private lateinit var elementEditsSource: ElementEditsSource
 
     private lateinit var noteQuestListener: OsmNoteQuestSource.Listener
     private lateinit var questListener: OsmQuestSource.Listener
-    private lateinit var createNoteListener: CreateNoteDao.Listener
-    private lateinit var commentNoteListener: CommentNoteDao.Listener
+    private lateinit var noteEditsListener: NoteEditsSource.Listener
     private lateinit var elementEditsListener: ElementEditsSource.Listener
 
     private lateinit var listener: UnsyncedChangesCountListener
 
     private lateinit var source: UnsyncedChangesCountSource
 
-    private val baseCount = 2+3+4
+    private val baseCount = 3+4
 
     @Before fun setUp() {
         osmQuestSource = mock()
@@ -50,15 +46,9 @@ class UnsyncedChangesCountSourceTest {
             Unit
         }
 
-        createNoteDao = mock()
-        on(createNoteDao.addListener(any())).then { invocation: InvocationOnMock ->
-            createNoteListener = invocation.arguments[0] as CreateNoteDao.Listener
-            Unit
-        }
-
-        commentNoteDao = mock()
-        on(commentNoteDao.addListener(any())).then { invocation: InvocationOnMock ->
-            commentNoteListener = invocation.arguments[0] as CommentNoteDao.Listener
+        noteEditsSource = mock()
+        on(noteEditsSource.addListener(any())).then { invocation: InvocationOnMock ->
+            noteEditsListener = invocation.arguments[0] as NoteEditsSource.Listener
             Unit
         }
 
@@ -68,12 +58,11 @@ class UnsyncedChangesCountSourceTest {
             Unit
         }
 
-        on(commentNoteDao.getCount()).thenReturn(2)
-        on(createNoteDao.getCount()).thenReturn(3)
+        on(noteEditsSource.getUnsyncedCount()).thenReturn(3)
         on(elementEditsSource.getUnsyncedCount()).thenReturn(4)
         on(elementEditsSource.getPositiveUnsyncedCount()).thenReturn(2)
 
-        source = UnsyncedChangesCountSource(commentNoteDao, createNoteDao, elementEditsSource)
+        source = UnsyncedChangesCountSource(noteEditsSource, elementEditsSource)
 
         listener = mock()
         source.addListener(listener)
@@ -101,33 +90,28 @@ class UnsyncedChangesCountSourceTest {
         val change = mock<ElementEdit>()
         on(change.isSynced).thenReturn(true)
         elementEditsListener.onAddedEdit(change)
-        verifyZeroInteractions(listener)
+        verifyNoInteractions(listener)
     }
 
     @Test fun `remove synced element change does not trigger listener`() {
         val change = mock<ElementEdit>()
         on(change.isSynced).thenReturn(true)
         elementEditsListener.onDeletedEdit(change)
-        verifyZeroInteractions(listener)
+        verifyNoInteractions(listener)
     }
 
-    @Test fun `add create note triggers listener`() {
-        createNoteListener.onAddedCreateNote()
+    @Test fun `add note edit triggers listener`() {
+        noteEditsListener.onAddedEdit(mock())
         verifyIncreased()
     }
 
-    @Test fun `remove create note triggers listener`() {
-        createNoteListener.onDeletedCreateNote()
+    @Test fun `remove note edit triggers listener`() {
+        noteEditsListener.onDeletedEdit(mock())
         verifyDecreased()
     }
 
-    @Test fun `add comment note triggers listener`() {
-        commentNoteListener.onAddedCommentNote(mock())
-        verifyIncreased()
-    }
-
-    @Test fun `remove comment note triggers listener`() {
-        commentNoteListener.onDeletedCommentNote(0L)
+    @Test fun `markd note edit synced triggers listener`() {
+        noteEditsListener.onSyncedEdit(mock())
         verifyDecreased()
     }
 
