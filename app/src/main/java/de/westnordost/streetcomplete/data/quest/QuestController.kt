@@ -48,7 +48,7 @@ import kotlin.collections.ArrayList
             " via ${ApplicationConstants.USER_AGENT}:" +
             "\n\n$text"
 
-        noteEditsController.add(-1, NoteEditAction.CREATE, q.center, fullText, imagePaths)
+        noteEditsController.add(0, NoteEditAction.CREATE, q.center, fullText, imagePaths)
         return true
     }
 
@@ -56,7 +56,7 @@ import kotlin.collections.ArrayList
      */
     fun createNote(text: String, imagePaths: List<String>, position: LatLon) {
         val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
-        noteEditsController.add(-1, NoteEditAction.CREATE, position, fullText, imagePaths)
+        noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths)
     }
 
     /** Split a way for the given OSM Quest.

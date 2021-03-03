@@ -25,7 +25,7 @@ import javax.inject.Singleton
     ) {
 
         val edit = NoteEdit(
-            null,
+            0,
             noteId,
             position,
             currentTimeMillis(),
@@ -70,7 +70,7 @@ import javax.inject.Singleton
         if (edit.noteId != note.id) {
             editsDB.updateNoteId(edit.noteId, note.id)
         }
-        if (editsDB.markSynced(edit.id!!)) {
+        if (editsDB.markSynced(edit.id)) {
             onSyncedEdit(edit)
         }
     }
@@ -83,7 +83,7 @@ import javax.inject.Singleton
         editsDB.deleteSyncedOlderThan(timestamp)
 
     private fun delete(edit: NoteEdit) {
-        if (editsDB.delete(edit.id!!)) {
+        if (editsDB.delete(edit.id)) {
             onDeletedEdit(edit)
         }
     }

@@ -4,11 +4,12 @@ import de.westnordost.osmapi.map.data.LatLon
 
 /** Contains all necessary information to create/comment on an OSM note. */
 data class NoteEdit(
-    /** (row) id of the edit. Null if not inserted into DB yet */
-    var id: Long?,
+    /** (row) id of the edit. 0 if not inserted into DB yet */
+    var id: Long,
 
-    /** note id this edit refers to */
-    val noteId: Long,
+    /** note id this edit refers to. New notes get assigned negative ids. It may be 0 if a new
+     * note is created and it hasn't been inserted into DB yet */
+    var noteId: Long,
 
     /** position of the note */
     val position: LatLon,

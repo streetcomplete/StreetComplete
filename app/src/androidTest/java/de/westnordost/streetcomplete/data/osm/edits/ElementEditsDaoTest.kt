@@ -29,7 +29,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         val edit = updateTags()
         dao.add(edit)
         assertNotNull(edit.id)
-        val dbEdit = dao.get(edit.id!!)
+        val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
     }
 
@@ -37,7 +37,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         val edit = revertUpdateTags()
         dao.add(edit)
         assertNotNull(edit.id)
-        val dbEdit = dao.get(edit.id!!)
+        val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
     }
 
@@ -45,7 +45,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         val edit = deletePoi()
         dao.add(edit)
         assertNotNull(edit.id)
-        val dbEdit = dao.get(edit.id!!)
+        val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
     }
 
@@ -53,7 +53,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         val edit = splitWay()
         dao.add(edit)
         assertNotNull(edit.id)
-        val dbEdit = dao.get(edit.id!!)
+        val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
     }
 
@@ -65,11 +65,11 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         // now it is added
         dao.add(edit)
         assertNotNull(edit.id)
-        assertNotNull(dao.get(edit.id!!))
+        assertNotNull(dao.get(edit.id))
         // delete again -> nothing there again
-        assertTrue(dao.delete(edit.id!!))
-        assertFalse(dao.delete(edit.id!!))
-        assertNull(dao.get(edit.id!!))
+        assertTrue(dao.delete(edit.id))
+        assertFalse(dao.delete(edit.id))
+        assertNull(dao.get(edit.id))
     }
 
     @Test fun getAll() {
@@ -98,7 +98,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     @Test fun markSynced() {
         val e = updateTags(isSynced = false)
         dao.add(e)
-        val id = e.id!!
+        val id = e.id
         assertFalse(dao.get(id)!!.isSynced)
         dao.markSynced(id)
         assertTrue(dao.get(id)!!.isSynced)
@@ -160,10 +160,10 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
         assertEquals(2, dao.updateElementId(Element.Type.NODE, -5, 6))
 
-        assertEquals(6, dao.get(e1.id!!)!!.elementId)
-        assertEquals(6, dao.get(e2.id!!)!!.elementId)
-        assertEquals(-5, dao.get(e3.id!!)!!.elementId)
-        assertEquals(-3, dao.get(e4.id!!)!!.elementId)
+        assertEquals(6, dao.get(e1.id)!!.elementId)
+        assertEquals(6, dao.get(e2.id)!!.elementId)
+        assertEquals(-5, dao.get(e3.id)!!.elementId)
+        assertEquals(-3, dao.get(e4.id)!!.elementId)
     }
 }
 
@@ -175,7 +175,7 @@ private fun updateTags(
     timestamp: Long = 123L,
     isSynced: Boolean = false
 ) = ElementEdit(
-    null,
+    0,
     TEST_QUEST_TYPE,
     elementType,
     elementId,
@@ -195,7 +195,7 @@ private fun updateTags(
 )
 
 private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
-    null,
+    0,
     TEST_QUEST_TYPE,
     Element.Type.NODE,
     1L,
@@ -214,7 +214,7 @@ private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) 
 )
 
 private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
-    null,
+    0,
     TEST_QUEST_TYPE,
     Element.Type.NODE,
     1L,
@@ -226,7 +226,7 @@ private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = Eleme
 )
 
 private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
-    null,
+    0,
     TEST_QUEST_TYPE,
     Element.Type.WAY,
     1L,

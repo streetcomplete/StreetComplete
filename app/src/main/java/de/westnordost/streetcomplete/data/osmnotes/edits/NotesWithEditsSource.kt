@@ -130,7 +130,7 @@ import javax.inject.Singleton
 
         val note = Note()
         note.status = Note.Status.OPEN
-        note.id = -id!!
+        note.id = -id
         note.position = position
         note.comments = arrayListOf(comment)
         note.dateCreated = now

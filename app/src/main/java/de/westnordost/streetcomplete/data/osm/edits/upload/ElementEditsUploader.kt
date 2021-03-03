@@ -23,7 +23,7 @@ class ElementEditsUploader @Inject constructor(
         while (true) {
             if (cancelled.get()) break
             val edit = elementEditsController.getOldestUnsynced() ?: break
-            val idProvider = elementEditsController.getIdProvider(edit.id!!)
+            val idProvider = elementEditsController.getIdProvider(edit.id)
             uploadEdit(edit, idProvider)
         }
     }

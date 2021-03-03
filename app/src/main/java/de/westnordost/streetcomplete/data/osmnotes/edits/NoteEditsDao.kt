@@ -35,8 +35,9 @@ class NoteEditsDao @Inject constructor(
             if (rowId == -1L) return false
             edit.id = rowId
             // if the note id is not set, set it to the negative of the row id
-            if (edit.noteId < 0) {
+            if (edit.noteId == 0L) {
                 db.update(NAME, contentValuesOf(NOTE_ID to -rowId), "$ID = $rowId", null)
+                edit.noteId = -rowId
             }
         }
         return true

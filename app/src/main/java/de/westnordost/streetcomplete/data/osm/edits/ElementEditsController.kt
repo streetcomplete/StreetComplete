@@ -48,7 +48,7 @@ import javax.inject.Singleton
             }
         }
 
-        val edit = ElementEdit(null, questType, elementType, elementId, source, position, currentTimeMillis(), false, action)
+        val edit = ElementEdit(0, questType, elementType, elementId, source, position, currentTimeMillis(), false, action)
         add(edit)
     }
 
@@ -117,7 +117,7 @@ import javax.inject.Singleton
 
     private fun add(edit: ElementEdit) {
         editsDB.add(edit)
-        val id = edit.id!!
+        val id = edit.id
         val createdElementsCount = edit.action.newElementsCount
         elementIdProviderDB.assign(
             id,
@@ -130,7 +130,7 @@ import javax.inject.Singleton
 
 
     private fun markSynced(edit: ElementEdit) {
-        val id = edit.id!!
+        val id = edit.id
         elementIdProviderDB.delete(id)
         if (editsDB.markSynced(id)) {
             onSyncedEdit(edit)
@@ -138,7 +138,7 @@ import javax.inject.Singleton
     }
 
     private fun delete(edit: ElementEdit) {
-        val id = edit.id!!
+        val id = edit.id
         elementIdProviderDB.delete(id)
         if (editsDB.delete(id)) {
             onDeletedEdit(edit)

@@ -98,7 +98,7 @@ class NoteEditsUploader @Inject constructor(
             val edit = noteEditsController.getOldestNeedingImagesActivation() ?: break
 
             imageUploader.activate(edit.noteId)
-            noteEditsController.imagesActivated(edit.id!!)
+            noteEditsController.imagesActivated(edit.id)
         }
     }
 

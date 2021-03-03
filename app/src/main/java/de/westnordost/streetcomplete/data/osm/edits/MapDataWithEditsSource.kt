@@ -327,7 +327,7 @@ import javax.inject.Singleton
     }
 
     @Synchronized private fun applyEdit(edit: ElementEdit): Collection<Element>  {
-        val idProvider = elementEditsController.getIdProvider(edit.id!!)
+        val idProvider = elementEditsController.getIdProvider(edit.id)
         val editElement = get(edit.elementType, edit.elementId) ?: return emptyList()
 
         val elements: Collection<Element>
@@ -373,7 +373,7 @@ import javax.inject.Singleton
     /** Return the key of elements that the given edit created. May be empty. */
     private fun getCreatedElementKeys(edit: ElementEdit): List<ElementKey> {
         val counts = edit.action.newElementsCount
-        val idProvider = elementEditsController.getIdProvider(edit.id!!)
+        val idProvider = elementEditsController.getIdProvider(edit.id)
         val elementKeys = ArrayList<ElementKey>(counts.nodes + counts.ways + counts.relations)
         repeat(counts.nodes) { elementKeys.add(ElementKey(NODE, idProvider.nextNodeId())) }
         repeat(counts.ways) { elementKeys.add(ElementKey(WAY, idProvider.nextWayId())) }

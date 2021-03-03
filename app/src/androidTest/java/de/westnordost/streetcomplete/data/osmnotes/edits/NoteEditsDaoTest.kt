@@ -20,7 +20,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
         val edit = edit(noteId = 1L)
         dao.add(edit)
         assertNotNull(edit.id)
-        val dbEdit = dao.get(edit.id!!)
+        val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
     }
 
@@ -32,11 +32,11 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
         // now it is added
         dao.add(edit)
         assertNotNull(edit.id)
-        assertNotNull(dao.get(edit.id!!))
+        assertNotNull(dao.get(edit.id))
         // delete again -> nothing there again
-        assertTrue(dao.delete(edit.id!!))
-        assertFalse(dao.delete(edit.id!!))
-        assertNull(dao.get(edit.id!!))
+        assertTrue(dao.delete(edit.id))
+        assertFalse(dao.delete(edit.id))
+        assertNull(dao.get(edit.id))
     }
 
     @Test fun getAll() {
@@ -134,7 +134,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
     @Test fun markSynced() {
         val edit = edit(isSynced = false)
         dao.add(edit)
-        val id = edit.id!!
+        val id = edit.id
         assertFalse(dao.get(id)!!.isSynced)
         dao.markSynced(id)
         assertTrue(dao.get(id)!!.isSynced)
@@ -192,14 +192,14 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
         dao.addAll(e1, e2)
 
         assertEquals(2, dao.updateNoteId( -5, 6))
-        assertEquals(6, dao.get(e1.id!!)!!.noteId)
-        assertEquals(6, dao.get(e2.id!!)!!.noteId)
+        assertEquals(6, dao.get(e1.id)!!.noteId)
+        assertEquals(6, dao.get(e2.id)!!.noteId)
     }
 
     @Test fun markImagesActivated() {
         val edit = edit(isSynced = true, imagePaths = listOf("a", "b"))
         dao.add(edit)
-        val id = edit.id!!
+        val id = edit.id
         assertTrue(dao.get(id)!!.imagesNeedActivation)
         dao.markImagesActivated(id)
         assertFalse(dao.get(id)!!.imagesNeedActivation)
