@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import android.content.SharedPreferences
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -16,7 +15,7 @@ import javax.inject.Singleton
 @Singleton class ElementEditsController @Inject constructor(
     private val editsDB: ElementEditsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
-    private val prefs: SharedPreferences
+    private val lastEditTimeStore: LastEditTimeStore
 ): ElementEditsSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
@@ -155,7 +154,7 @@ import javax.inject.Singleton
     }
 
     private fun onAddedEdit(edit: ElementEdit) {
-        prefs.edit().putLong(Prefs.LAST_CHANGE_TIME, currentTimeMillis()).apply()
+        lastEditTimeStore.touch()
         listeners.forEach { it.onAddedEdit(edit) }
     }
 

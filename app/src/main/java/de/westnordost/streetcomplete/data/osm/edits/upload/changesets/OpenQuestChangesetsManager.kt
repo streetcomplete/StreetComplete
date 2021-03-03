@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
-import android.content.SharedPreferences
 import android.util.Log
 import de.westnordost.streetcomplete.data.MapDataApi
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.streetcomplete.ApplicationConstants.QUESTTYPE_TAG_KEY
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
@@ -20,7 +19,7 @@ class OpenQuestChangesetsManager @Inject constructor(
     private val mapDataApi: MapDataApi,
     private val openChangesetsDB: OpenChangesetsDao,
     private val changesetAutoCloser: ChangesetAutoCloser,
-    private val prefs: SharedPreferences
+    private val lastEditTimeStore: LastEditTimeStore
 ) {
     fun getOrCreateChangeset(questType: OsmElementQuestType<*>, source: String): Long {
         val openChangeset = openChangesetsDB.get(questType.name, source)
@@ -40,7 +39,7 @@ class OpenQuestChangesetsManager @Inject constructor(
     }
 
     @Synchronized fun closeOldChangesets() {
-        val timePassed = System.currentTimeMillis() - prefs.getLong(Prefs.LAST_CHANGE_TIME, 0)
+        val timePassed = System.currentTimeMillis() - lastEditTimeStore.get()
         if (timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
 
         for (info in openChangesetsDB.getAll()) {

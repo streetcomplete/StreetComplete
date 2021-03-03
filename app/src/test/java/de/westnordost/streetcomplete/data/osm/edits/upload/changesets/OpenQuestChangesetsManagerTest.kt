@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.mock
@@ -21,15 +21,15 @@ class OpenQuestChangesetsManagerTest {
     private lateinit var openChangesetsDB: OpenChangesetsDao
     private lateinit var changesetAutoCloser: ChangesetAutoCloser
     private lateinit var manager: OpenQuestChangesetsManager
-    private lateinit var prefs: SharedPreferences
+    private lateinit var lastEditTimeStore: LastEditTimeStore
 
     @Before fun setUp() {
         questType = TestQuestTypeA()
         mapDataApi = mock()
         openChangesetsDB = mock()
         changesetAutoCloser = mock()
-        prefs = mock()
-        manager = OpenQuestChangesetsManager(mapDataApi, openChangesetsDB, changesetAutoCloser, prefs)
+        lastEditTimeStore = mock()
+        manager = OpenQuestChangesetsManager(mapDataApi, openChangesetsDB, changesetAutoCloser, lastEditTimeStore)
     }
 
     @Test fun `create new changeset if none exists`() {
