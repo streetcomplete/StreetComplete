@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 
@@ -29,10 +28,6 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
 
 @Singleton class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onCreate(db: SQLiteDatabase) {
         // OSM notes

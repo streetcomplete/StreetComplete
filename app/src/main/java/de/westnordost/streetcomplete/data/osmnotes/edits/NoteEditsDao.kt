@@ -33,6 +33,7 @@ class NoteEditsDao @Inject constructor(
         db.transaction {
             val rowId = db.insert(NAME, null, mapping.toContentValues(edit))
             if (rowId == -1L) return false
+            edit.id = rowId
             // if the note id is not set, set it to the negative of the row id
             if (edit.noteId < 0) {
                 db.update(NAME, contentValuesOf(NOTE_ID to -rowId), "$ID = $rowId", null)

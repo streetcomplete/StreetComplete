@@ -71,13 +71,6 @@ class ElementEditsDao @Inject constructor(
             "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
             arrayOf(elementType.name, oldElementId.toString())
         )
-
-    fun deleteAllForElement(elementType: Element.Type, elementId: Long): Int =
-        db.delete(
-            NAME,
-            "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
-            arrayOf(elementType.name, elementId.toString())
-        )
 }
 
 class ElementEditsMapping @Inject constructor(

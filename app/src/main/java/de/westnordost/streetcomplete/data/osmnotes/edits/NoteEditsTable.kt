@@ -27,6 +27,6 @@ object NoteEditsTable {
             ${Columns.TEXT} text,
             ${Columns.IMAGE_PATHS} blob NOT NULL,
             ${Columns.IMAGES_NEED_ACTIVATION} int NOT NULL,
-            ${Columns.TYPE} varchar(255),
+            ${Columns.TYPE} varchar(255)
         );"""
 }
