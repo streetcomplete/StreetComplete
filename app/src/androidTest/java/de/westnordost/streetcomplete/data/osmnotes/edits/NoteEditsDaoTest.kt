@@ -237,13 +237,13 @@ private fun edit(
     timestamp: Long = 123L,
     isSynced: Boolean = false
 ) = NoteEdit(
-    1L,
-    noteId,
-    pos,
-    timestamp,
-    isSynced,
-    text,
-    imagePaths,
-    imagePaths.isNotEmpty(),
-    action
+        1L,
+        noteId,
+        pos,
+        action,
+        text,
+        imagePaths,
+        timestamp,
+        isSynced,
+        imagePaths.isNotEmpty()
 )

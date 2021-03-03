@@ -136,14 +136,14 @@ class NoteEditsMapping @Inject constructor(private val serializer: Serializer)
     )
 
     override fun toObject(cursor: Cursor) = NoteEdit(
-        cursor.getLong(ID),
-        cursor.getLong(NOTE_ID),
-        OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-        cursor.getLong(CREATED_TIMESTAMP),
-        cursor.getInt(IS_SYNCED) == 1,
-        cursor.getStringOrNull(TEXT),
-        serializer.toObject<ArrayList<String>>(cursor.getBlob(IMAGE_PATHS)),
-        cursor.getInt(IMAGES_NEED_ACTIVATION) == 1,
-        NoteEditAction.valueOf(cursor.getString(TYPE))
+            cursor.getLong(ID),
+            cursor.getLong(NOTE_ID),
+            OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
+            NoteEditAction.valueOf(cursor.getString(TYPE)),
+            cursor.getStringOrNull(TEXT),
+            serializer.toObject<ArrayList<String>>(cursor.getBlob(IMAGE_PATHS)),
+            cursor.getLong(CREATED_TIMESTAMP),
+            cursor.getInt(IS_SYNCED) == 1,
+            cursor.getInt(IMAGES_NEED_ACTIVATION) == 1
     )
 }

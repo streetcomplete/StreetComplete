@@ -209,15 +209,15 @@ private fun edit(
     imagePaths: List<String> = emptyList(),
     pos: LatLon = OsmLatLon(1.0, 1.0)
 ) = NoteEdit(
-    1L,
-    noteId,
-    pos,
-    123L,
-    false,
-    text,
-    imagePaths,
-    imagePaths.isNotEmpty(),
-    action
+        1L,
+        noteId,
+        pos,
+        action,
+        text,
+        imagePaths,
+        123L,
+        false,
+        imagePaths.isNotEmpty()
 )
 
 private fun note(id: Long = 1L): Note {

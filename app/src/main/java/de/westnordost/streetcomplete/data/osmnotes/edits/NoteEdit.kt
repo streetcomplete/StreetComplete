@@ -14,11 +14,8 @@ data class NoteEdit(
     /** position of the note */
     val position: LatLon,
 
-    /** timestamp when this edit was made. Used to order the (unsynced) edits in a queue */
-    val createdTimestamp: Long,
-
-    /** whether this edit has been uploaded already */
-    val isSynced: Boolean,
+    /** The action to perform */
+    val action: NoteEditAction,
 
     /** note comment text */
     val text: String?,
@@ -26,11 +23,14 @@ data class NoteEdit(
     /** attached photos */
     val imagePaths: List<String>,
 
-    /** Whether the images attached still need activation. Already true if imagePaths is empty */
-    val imagesNeedActivation: Boolean,
+    /** timestamp when this edit was made. Used to order the (unsynced) edits in a queue */
+    val createdTimestamp: Long,
 
-    /** The action to perform */
-    val action: NoteEditAction
+    /** whether this edit has been uploaded already */
+    val isSynced: Boolean,
+
+    /** Whether the images attached still need activation. Already true if imagePaths is empty */
+    val imagesNeedActivation: Boolean
 )
 
 enum class NoteEditAction {

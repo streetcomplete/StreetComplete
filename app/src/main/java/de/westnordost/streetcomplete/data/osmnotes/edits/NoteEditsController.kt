@@ -28,12 +28,12 @@ import javax.inject.Singleton
             0,
             noteId,
             position,
-            currentTimeMillis(),
-            false,
+            action,
             text,
             imagePaths,
-            imagePaths.isNotEmpty(),
-            action
+            currentTimeMillis(),
+            false,
+            imagePaths.isNotEmpty()
         )
         editsDB.add(edit)
         onAddedEdit(edit)
