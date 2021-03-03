@@ -27,7 +27,8 @@ import javax.inject.Singleton
     private val noteControllerListener = object : NoteController.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
             /* not include note creations: This is the update from the server, the update does not
-             * include the new notes we added ourselves */
+             * include the new notes we added ourselves. Implementation here would only need to be
+             * changed if action type "REOPEN" or "CLOSE" is implemented */
             val noteCommentEdits = noteEditsSource.getAllUnsynced().filter { it.action != CREATE }
             callOnUpdated(
                 editsAppliedToNotes(added, noteCommentEdits),
@@ -123,17 +124,15 @@ import javax.inject.Singleton
     }
 
     private fun NoteEdit.createNote(): Note {
-        val now = Date()
-
         val comment = createNoteComment()
         comment.action = NoteComment.Action.OPENED
 
         val note = Note()
         note.status = Note.Status.OPEN
-        note.id = -id
+        note.id = noteId
         note.position = position
         note.comments = arrayListOf(comment)
-        note.dateCreated = now
+        note.dateCreated = Date(createdTimestamp)
         return note
     }
 
@@ -151,7 +150,7 @@ import javax.inject.Singleton
         } else {
             comment.user = null
         }
-        comment.date = Date()
+        comment.date = Date(createdTimestamp)
         return comment
     }
 
