@@ -218,6 +218,16 @@ class AddCyclewayTest {
         )
     }
 
+    @Test fun `apply cycleway on sidewalk answer only on one side`() {
+        questType.verifyAnswer(
+            CyclewayAnswer(CyclewaySide(SIDEWALK_EXPLICIT), CyclewaySide(NONE)),
+            StringMapEntryAdd("cycleway:left", "track"),
+            StringMapEntryAdd("cycleway:right", "no"),
+            // not this: StringMapEntryAdd("sidewalk", "both"),
+            StringMapEntryAdd("cycleway:left:segregated", "no")
+        )
+    }
+
     private fun bothSidesAnswer(bothSides: Cycleway): CyclewayAnswer {
         val side = CyclewaySide(bothSides)
         return CyclewayAnswer(side, side)
