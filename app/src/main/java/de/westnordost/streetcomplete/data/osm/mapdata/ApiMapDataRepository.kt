@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.Relation
@@ -15,19 +14,8 @@ class ApiMapDataRepository(private val api: MapDataApi) : MapDataRepository {
     override fun getWay(id: Long): Way? = api.getWay(id)
     override fun getRelation(id: Long): Relation? = api.getRelation(id)
 
-    override fun getWayComplete(id: Long): MapData? =
-        try {
-            api.getWayComplete(id)
-        } catch (e: OsmNotFoundException) {
-            null
-        }
-
-    override fun getRelationComplete(id: Long): MapData? =
-        try {
-            api.getRelationComplete(id)
-        } catch (e: OsmNotFoundException) {
-            null
-        }
+    override fun getWayComplete(id: Long): MapData? = api.getWayComplete(id)
+    override fun getRelationComplete(id: Long): MapData? = api.getRelationComplete(id)
 
     override fun getWaysForNode(id: Long): List<Way> = api.getWaysForNode(id)
     override fun getRelationsForNode(id: Long): List<Relation> = api.getRelationsForNode(id)

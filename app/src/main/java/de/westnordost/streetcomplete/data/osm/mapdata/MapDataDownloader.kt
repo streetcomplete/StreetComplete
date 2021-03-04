@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.enlargedBy
+import java.lang.System.currentTimeMillis
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
@@ -23,7 +24,7 @@ class MapDataDownloader @Inject constructor(
     @Synchronized override fun download(bbox: BoundingBox, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
 
-        val time = System.currentTimeMillis()
+        val time = currentTimeMillis()
 
         val mapData = MutableMapData()
         val expandedBBox = bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
@@ -32,7 +33,7 @@ class MapDataDownloader @Inject constructor(
            split up in several, so lets set the bbox back to the bbox of the complete download */
         mapData.handle(expandedBBox)
 
-        val seconds = (System.currentTimeMillis() - time) / 1000.0
+        val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
 
         mapDataController.putAllForBBox(bbox, mapData)

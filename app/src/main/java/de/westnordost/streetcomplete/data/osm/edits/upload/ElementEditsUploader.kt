@@ -1,7 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import android.util.Log
+import de.westnordost.osmapi.map.*
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
@@ -14,6 +19,7 @@ class ElementEditsUploader @Inject constructor(
     private val elementEditsController: ElementEditsController,
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,
+    private val mapDataApi: MapDataApi,
     private val statisticsUpdater: StatisticsUpdater
 ): Uploader {
 
@@ -51,11 +57,24 @@ class ElementEditsUploader @Inject constructor(
             Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
             uploadedChangeListener?.onDiscarded(questTypeName, edit.position)
 
-            // TODO update the lement in question?!
-
             elementEditsController.syncFailed(edit)
+
+            val mapData = fetchElementComplete(edit.elementType, edit.elementId)
+            if (mapData != null) {
+                mapDataController.updateAll(ElementUpdates(updated = mapData.toList()))
+            } else {
+                val elementKey = ElementKey(edit.elementType, edit.elementId)
+                mapDataController.updateAll(ElementUpdates(deleted = listOf(elementKey)))
+            }
         }
     }
+
+    private fun fetchElementComplete(elementType: Element.Type, elementId: Long): MapData? =
+        when(elementType) {
+            NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
+            WAY -> mapDataApi.getWayComplete(elementId)
+            RELATION -> mapDataApi.getRelationComplete(elementId)
+        }
 
     companion object {
         private const val TAG = "ElementEditsUploader"
