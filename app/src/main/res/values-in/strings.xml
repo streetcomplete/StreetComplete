@@ -111,7 +111,7 @@
     <string name="about_title_authors">"Kredit"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick dan kontributor"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick dan kontributor"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Repositori Sumber"</string>
@@ -1083,8 +1083,14 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="link_qwant_maps_description">"Peta dengan tempat dan arah yang bisa dicari"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Untuk menampilkan peta, petak vektor akan diambil dari %1$s. Lihat &lt;a href=\"%2$s\"&gt;pernyataan privasi&lt;/a&gt; mereka untuk lebih lanjut.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsor"</string>
+    <string name="quest_board_type_history">"Riwayat"</string>
+    <string name="quest_board_type_geology">"Geologi"</string>
+    <string name="quest_board_type_plants">"Tanaman"</string>
+    <string name="quest_board_type_public_transport">"Transportasi publik"</string>
+    <string name="quest_sidewalk_separately_mapped">"Iya, tampilkan secara terpisah pada peta"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"internasional"</string>
     <string name="at_housename">"Nama rumah %s:"</string>
     <string name="at_conscription_and_street_number">"Nomor rumah %1$s, nomor orientasi %2$s:"</string>
 
@@ -1094,5 +1100,6 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="quest_openingHours_name_type_title">"Jam berapa %1$s (%2$s) buka?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Apakah %1$s (%2$s) ramah kursi roda?"</string>
     <string name="quest_accepts_cash_type_title">"Apa %1$s (%2$s) menerima pembayaran tunai?"</string>
+    <string name="about_title_translate">"Bantu menerjemahkan aplikasi ini"</string>
     <string name="quest_traffic_signals_sound_title">"Apa ada sinyal suara untuk tunanetra di sini?"</string>
 </resources>

@@ -169,7 +169,7 @@
     <string name="about_title_authors">"제작자들"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick와 기여자들"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick와 기여자들"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"소스 레포지토리"</string>
@@ -2167,4 +2167,19 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="quest_drinking_water_potable_unsigned">"마실 수 있음(표지판 X)"</string>
     <string name="quest_drinking_water_not_potable_signed">"마실 수 없음(표지판 O)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"마실 수 없음(표지판 X)"</string>
+    <string name="quest_postboxRoyalCypher_title">"이 우체통에는 어떤 왕실 문장이 박혀 있습니까?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"왕실 문장이 보이지 않음"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"스코틀랜드 왕관"</string>
+    <string name="quest_buildingType_fire_station">"소방서"</string>
+    <string name="quest_recycling_type_beverage_cartons">"음료수 곽만 취급"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"플라스틱 병(페트병 등)과 음료수 곽만 취급"</string>
+    <string name="quest_charging_station_name_capacity_title">"이 충전소(%s)에서 최대 몇 대의 차량이 동시에 충전할 수 있습니까?"</string>
+    <string name="team_mode">"팀 모드"</string>
+    <string name="team_mode_exit">"팀 모드 종료"</string>
+    <string name="team_mode_description">"여러 명이 그룹이 지어 동시에 한 장소를 매핑하고 싶다면, 팀 모드를 활성화해 퀘스트를 팀원들과 나눠 가지세요."</string>
+    <string name="team_mode_team_size_label">"여기에 사람이 몇 명이나 있습니까?"</string>
+    <string name="team_mode_team_size_hint">"팀 모드를 통해 2명에서 12명까지 그룹을 지어 활동할 수 있습니다."</string>
+    <string name="team_mode_choose_color">"그룹원들이 사용할 고유 색상:"</string>
+    <string name="team_mode_active">"팀 모드가 활성화되었습니다"</string>
+    <string name="team_mode_deactivated">"팀 모드가 비활성화되었습니다"</string>
 </resources>

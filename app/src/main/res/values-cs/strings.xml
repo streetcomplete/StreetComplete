@@ -170,7 +170,7 @@
     <string name="about_title_authors">"Autoři"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick a přispěvatelé"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick a přispěvatelé"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Zdrojový kód"</string>

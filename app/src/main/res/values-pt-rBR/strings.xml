@@ -30,7 +30,7 @@
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostrar todas as notas"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Também mostrando notas não formuladas como perguntas"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Também mostrar notas não formuladas como perguntas"</string>
 
     <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorando notas não formuladas como perguntas"</string>
@@ -91,10 +91,10 @@
     <string name="quest_openingHours_name_title">"Quais são os horários de funcionamento de %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_start_time">"hora que abre"</string>
+    <string name="quest_openingHours_start_time">"hora de abertura"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_end_time">"hore de encerramento"</string>
+    <string name="quest_openingHours_end_time">"hora de encerramento"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_add_months">"Adicionar meses"</string>
@@ -169,7 +169,7 @@
     <string name="about_title_authors">"Créditos"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick e contribuidores"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick e contribuidores"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Repositório de código fonte"</string>
