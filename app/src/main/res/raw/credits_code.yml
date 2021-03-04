@@ -1,33 +1,46 @@
 # contributed many quest(s) and more
-- David Dean
-- Adrien Pavie
+- David Dean (dbdean)
 # contributed quest(s) and more
-- Mark Tully
+- Adrien Pavie (PanierAvide)
+- Mark Tully (Teester)
 - Binnette
 # project-wide enhancements
 - rugk # github readme, other community and documentation stuff
-- Karl Ove Hufthammer # separate en-US from en-GB, other stuff
-- Isira Seneviratne # lint / ktx / compat stuff
+- Karl Ove Hufthammer (huftis) # separate en-US from en-GB, other stuff
+- Isira Seneviratne (Isira-Seneviratne) # lint / ktx / compat stuff
 # contributed one quest
 - Dosenpfand
-- Daniel Lublin
-- xuiqzy
-- Map3428
+- Daniel Lublin (quite)
+- xuiqzy # handrail quest
+- Map3428 # bench backrest quest
+- arrival-spring
 # enhanced/extended quest(s)
-- Peter Newman
-- Richard Finegold
+- Peter Newman (peternewman)
+- Richard Finegold (goldfndr)
 - Helium314
-- Kai Michael Poppe
-- Daniel Maxweiler
+- Kai Michael Poppe (kmpoppe)
+- Daniel Maxweiler (dmaxweiler)
+- Bruno Pezer (RiffLord)
+- Jeroen Hoek (jdhoek)
+- riQQ
+- Dominik Danielski (Etua)
 # small usability fixes and enhancements
 - smichel17 # compass mode stuff, fix on quest
-- Peter Newman
-- Hsieh Chin Fan # usability enhancements
-- Štefan Baebler # optimize bitmaps
-- Peter Storch # adaptive launcher icon
-- Aidan Pieper # antialias pointer pin
+- Peter Newman (peternewman)
+- Hsieh Chin Fan (typebrook) # usability enhancements
+- Holger Jeromin (HolgerJeromin)
+- Štefan Baebler (stefanb) # optimize bitmaps
+- Tim (tapetis)
+- Peter Storch (pstorch) # adaptive launcher icon
+- Aidan Pieper (Plastix) # antialias pointer pin
 # project setup / lint etc fixes / semi-automatic contribs
 # (ah well, I think linking to github contributors page is fair in this case)
-#- Štefan Baebler
-#- Dave Olsthoorn
-#- TacoTheDank
+#- Strubbl # just updated some deps
+#- Dave Olsthoorn (daveol)
+#- TacoTheDank # just updated some deps
+#- errolpais # all his contributions are obsolete now
+#- ServusWorld # contributed graphics - mentioned somewhere else
+#- wvanderp # had to re-do all his changes
+#- Matthias Urhahn (d4rken) # all his contributions are obsolete now
+#- Southernswampfrog # had to re-do all his changes
+
