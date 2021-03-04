@@ -13,16 +13,15 @@ import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -84,7 +83,7 @@ class ElementEditsUploaderTest {
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
-        on(singleUploader.upload(any(), any())).thenThrow(ElementConflictException())
+        on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
         on(mapDataApi.getNode(anyLong())).thenReturn(updatedNode)
 
         uploader.upload(AtomicBoolean(false))
@@ -107,7 +106,7 @@ class ElementEditsUploaderTest {
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
-        on(singleUploader.upload(any(), any())).thenThrow(ElementDeletedException())
+        on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
         on(mapDataApi.getNode(anyLong())).thenReturn(null)
 
         uploader.upload(AtomicBoolean(false))

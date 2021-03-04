@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 
 /** Contains the information necessary to apply a revert of tag changes made on an element */
 class RevertUpdateElementTagsAction(
@@ -23,7 +23,7 @@ class RevertUpdateElementTagsAction(
     ): Collection<Element> {
 
         if (isGeometrySubstantiallyDifferent(spatialPartsOfOriginalElement, element)) {
-            throw ElementConflictException("Element geometry changed substantially")
+            throw ConflictException("Element geometry changed substantially")
         }
 
         return listOf(element.changesApplied(changes))

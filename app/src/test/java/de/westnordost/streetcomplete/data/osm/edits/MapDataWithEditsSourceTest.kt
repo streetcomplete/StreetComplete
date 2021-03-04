@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -215,7 +215,7 @@ class MapDataWithEditsSourceTest {
         originalElementsAre(nd)
 
         val action = mock<ElementEditAction>()
-        on(action.createUpdates(eq(nd), any(), any())).thenThrow(ElementConflictException())
+        on(action.createUpdates(eq(nd), any(), any())).thenThrow(ConflictException())
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(
             elementType = NODE,
             elementId = 1L,

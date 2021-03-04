@@ -5,7 +5,7 @@ import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.copy
 
 /** Action that deletes a POI node.
@@ -36,7 +36,7 @@ class DeletePoiNodeAction(
     ): Collection<Element> {
         val node = element.copy() as OsmNode
 
-        if (node.version > originalNodeVersion) throw ElementConflictException()
+        if (node.version > originalNodeVersion) throw ConflictException()
 
         // delete free-floating node
         if (mapDataRepository.getWaysForNode(node.id).isEmpty() &&

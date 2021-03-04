@@ -7,7 +7,7 @@ import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
@@ -58,56 +58,56 @@ class SplitWayActionTest {
         updateRepos(way)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `raise conflict if less than two split positions on closed way`() {
         way = createWayWithNodeIds(0,1,2,0)
         doSplit(SplitAtPoint(p[1]))
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `raise conflict if way was deleted`() {
         on(repos.getWayComplete(0)).thenReturn(null)
         doSplit(SplitAtPoint(p[1]))
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `raise conflict if updated way was cut at the start`() {
         way = createWayWithNodeIds(1,2,3)
         doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `raise conflict if updated way was cut at the end`() {
         way = createWayWithNodeIds(0,1,2)
         doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `raise conflict if way has split position at its very start`() {
         doSplit(SplitAtPoint(p[0]))
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `raise conflict if way has split position at its very end`() {
         doSplit(SplitAtPoint(p[3]))
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `raise conflict if first split point of line split is not in the way`() {
         doSplit(SplitAtLinePosition(outsidePoints[0], p[1], 0.5))
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `raise conflict if second split point of line split is not in the way`() {
         doSplit(SplitAtLinePosition(p[1], outsidePoints[0], 0.5))
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `raise conflict if split point of point split is not in the way`() {
         doSplit(SplitAtPoint(outsidePoints[0]))
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `raise conflict if the second node is not directly after the first one in the updated way`() {
         doSplit(SplitAtLinePosition(p[0], p[2], 0.3))
     }

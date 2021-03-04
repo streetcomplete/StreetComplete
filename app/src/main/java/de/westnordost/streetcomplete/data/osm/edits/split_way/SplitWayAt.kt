@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.equalsInOsm
 import de.westnordost.streetcomplete.util.measuredLength
 import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
@@ -68,11 +68,11 @@ private fun SplitAtPoint.toSplitWays(positions: List<LatLon>): Collection<SplitW
      */
 
     var indicesOf = positions.osmIndicesOf(pos)
-    if (indicesOf.isEmpty()) throw ElementConflictException("To be split point has been moved")
+    if (indicesOf.isEmpty()) throw ConflictException("To be split point has been moved")
 
     indicesOf = indicesOf.filter { index -> index > 0 && index < positions.lastIndex }
     if (indicesOf.isEmpty())
-        throw ElementConflictException("Split position is now at the very start or end of the way - can't split there")
+        throw ConflictException("Split position is now at the very start or end of the way - can't split there")
 
     return indicesOf.map { indexOf -> SplitWayAtIndex(pos, indexOf) }.sorted()
 }
@@ -82,10 +82,10 @@ private fun SplitAtLinePosition.toSplitWaysAt(positions: List<LatLon>): Collecti
     // see SplitAtPoint.toSplitWay
 
     val indicesOf1 = positions.osmIndicesOf(pos1)
-    if (indicesOf1.isEmpty()) throw ElementConflictException("To be split line has been moved")
+    if (indicesOf1.isEmpty()) throw ConflictException("To be split line has been moved")
 
     val indicesOf2 = positions.osmIndicesOf(pos2)
-    if (indicesOf2.isEmpty()) throw ElementConflictException("To be split line has been moved")
+    if (indicesOf2.isEmpty()) throw ConflictException("To be split line has been moved")
 
     // ...and we need to find out which of the lines is meant
     val result = mutableListOf<SplitWayAtLinePosition>()
@@ -109,7 +109,7 @@ private fun SplitAtLinePosition.toSplitWaysAt(positions: List<LatLon>): Collecti
     if (result.isNotEmpty())
         return result.sorted()
     else
-        throw ElementConflictException("End points of the to be split line are not directly successive anymore")
+        throw ConflictException("End points of the to be split line are not directly successive anymore")
 }
 
 /** returns the indices at which the given pos is found in this list, taking into account the limited

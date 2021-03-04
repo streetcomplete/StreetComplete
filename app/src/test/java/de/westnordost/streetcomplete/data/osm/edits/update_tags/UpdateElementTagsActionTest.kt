@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.assertEquals
@@ -25,7 +25,7 @@ class UpdateElementTagsActionTest {
         on(questType.isApplicableTo(any())).thenReturn(true)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `conflict if node moved too much`() {
         val p1 = OsmLatLon(0.0, 0.0)
         val p2 = OsmLatLon(0.1,0.0)
@@ -37,7 +37,7 @@ class UpdateElementTagsActionTest {
         ).createUpdates(n, repos, provider)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `conflict if way was extended or shortened at start`() {
         val w = OsmWay(1L, 1, listOf(1,2,3), null)
         UpdateElementTagsAction(
@@ -47,7 +47,7 @@ class UpdateElementTagsActionTest {
         ).createUpdates(w, repos, provider)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `conflict if way was extended or shortened at end`() {
         val w = OsmWay(1L, 1, listOf(0,1,2), null)
         UpdateElementTagsAction(
@@ -57,7 +57,7 @@ class UpdateElementTagsActionTest {
         ).createUpdates(w, repos, provider)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `conflict if relation members were removed`() {
         val r = OsmRelation(1L, 1, listOf(
             OsmRelationMember(1L, "a", Element.Type.NODE)
@@ -72,7 +72,7 @@ class UpdateElementTagsActionTest {
         ).createUpdates(r, repos, provider)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `conflict if relation members were added`() {
         val r = OsmRelation(1L, 1, listOf(
             OsmRelationMember(1L, "a", Element.Type.NODE),
@@ -87,7 +87,7 @@ class UpdateElementTagsActionTest {
         ).createUpdates(r, repos, provider)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `conflict if order of relation members changed`() {
         val r = OsmRelation(1L, 1, listOf(
             OsmRelationMember(1L, "a", Element.Type.NODE),
@@ -103,7 +103,7 @@ class UpdateElementTagsActionTest {
         ).createUpdates(r, repos, provider)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `conflict if role of any relation member changed`() {
         val r = OsmRelation(1L, 1, listOf(
             OsmRelationMember(1L, "a", Element.Type.NODE)
@@ -118,7 +118,7 @@ class UpdateElementTagsActionTest {
     }
 
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `conflict if quest type is not applicable to element`() {
         on(questType.isApplicableTo(any())).thenReturn(false)
 
@@ -130,7 +130,7 @@ class UpdateElementTagsActionTest {
         ).createUpdates(r, repos, provider)
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `conflict if changes are not applicable`() {
         val r = OsmWay(1L, 1, listOf(1,2,3), mutableMapOf("highway" to "residential"))
         UpdateElementTagsAction(

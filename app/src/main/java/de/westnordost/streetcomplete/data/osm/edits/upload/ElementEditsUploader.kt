@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
@@ -53,7 +54,7 @@ class ElementEditsUploader @Inject constructor(
                 statisticsUpdater.addOne(questTypeName, edit.position)
             }
 
-        } catch (e: ElementConflictException) {
+        } catch (e: ConflictException) {
             Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
             uploadedChangeListener?.onDiscarded(questTypeName, edit.position)
 

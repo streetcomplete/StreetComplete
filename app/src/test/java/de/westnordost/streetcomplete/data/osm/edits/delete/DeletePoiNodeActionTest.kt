@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits.delete
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.*
@@ -39,7 +39,7 @@ class DeletePoiNodeActionTest {
         assertTrue(nd.tags.isEmpty())
     }
 
-    @Test(expected = ElementConflictException::class)
+    @Test(expected = ConflictException::class)
     fun `newer version creates conflict`() {
         DeletePoiNodeAction(1).createUpdates(e, repos, provider)
     }

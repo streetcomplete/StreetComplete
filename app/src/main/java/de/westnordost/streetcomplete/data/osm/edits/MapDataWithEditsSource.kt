@@ -8,7 +8,7 @@ import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.mapdata.*
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.intersect
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -333,7 +333,7 @@ import javax.inject.Singleton
         val elements: Collection<Element>
         try {
             elements = edit.action.createUpdates(editElement, this, idProvider)
-        } catch (e: ElementConflictException) {
+        } catch (e: ConflictException) {
             return emptyList()
         }
         for (element in elements) {

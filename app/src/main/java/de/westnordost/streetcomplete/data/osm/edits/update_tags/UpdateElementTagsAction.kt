@@ -4,7 +4,7 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 
 /** Action that updates the tags on an element.
@@ -36,11 +36,11 @@ class UpdateElementTagsAction(
         /* if after updating to the new version of the element, the quest is not applicable to
            the element anymore, drop it (#720) */
         if (questType?.isApplicableTo(element) == false) {
-            throw ElementConflictException("Quest no longer applicable to the element")
+            throw ConflictException("Quest no longer applicable to the element")
         }
 
         if (isGeometrySubstantiallyDifferent(spatialPartsOfOriginalElement, element)) {
-            throw ElementConflictException("Element geometry changed substantially")
+            throw ConflictException("Element geometry changed substantially")
         }
 
         return listOf(element.changesApplied(changes))

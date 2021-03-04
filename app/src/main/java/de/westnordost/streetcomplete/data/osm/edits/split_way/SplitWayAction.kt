@@ -7,8 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementConflictException
-import de.westnordost.streetcomplete.data.osm.edits.upload.ElementDeletedException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.*
 
 /** Action that performs a split on a way.
@@ -41,7 +40,7 @@ class SplitWayAction(
         val completeWay = mapDataRepository.getWayComplete(way.id)
 
         val updatedWay = completeWay?.getWay(way.id)
-            ?: throw ElementDeletedException("Way #${way.id} has been deleted")
+            ?: throw ConflictException("Way #${way.id} has been deleted")
 
         /* unsolvable conflict if updated way was shortened (e.g. cut in two) or extended because
         *  the already performed split may be at a similar spot than what the user selected here.
@@ -52,11 +51,11 @@ class SplitWayAction(
         )
 
         if (isGeometryDifferentNow) {
-            throw ElementConflictException("Way #${way.id} has been changed and the conflict cannot be solved automatically")
+            throw ConflictException("Way #${way.id} has been changed and the conflict cannot be solved automatically")
         }
 
         if(updatedWay.isClosed() && splits.size < 2)
-            throw ElementConflictException("Must specify at least two split positions for a closed way")
+            throw ConflictException("Must specify at least two split positions for a closed way")
 
         val updatedElements = mutableListOf<Element>()
 

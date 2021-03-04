@@ -6,7 +6,7 @@ import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.NotesApi
-import de.westnordost.streetcomplete.data.osm.edits.upload.ConflictException
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
