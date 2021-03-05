@@ -169,7 +169,7 @@
     <string name="about_title_authors">"作者"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick 和貢獻者們"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick 和貢獻者們"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"原始碼倉儲"</string>
@@ -2141,4 +2141,20 @@
     <string name="quest_surface_value_clay">"黏土"</string>
     <string name="quest_surface_value_artificial_turf">"人工草皮"</string>
     <string name="quest_surface_value_tartan">"PU表面"</string>
+    <string name="quest_bicycle_parking_access_title">"請問這裡有限制不能停腳踏車嗎？"</string>
+    <string name="quest_bicycle_parking_fee_title">"請問這裡需要付費才能停腳踏車嗎？"</string>
+    <string name="quest_drinking_water_title">"這裡的水質是否可以飲用？(%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"可以飲用（已勾選）"</string>
+    <string name="quest_drinking_water_potable_unsigned">"可以飲用（未勾選）"</string>
+    <string name="quest_drinking_water_not_potable_signed">"不能飲用（已勾選）"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"不能飲用（未勾選）"</string>
+    <string name="quest_buildingType_fire_station">"消防局"</string>
+    <string name="team_mode">"協作模式"</string>
+    <string name="team_mode_exit">"離開協作模式"</string>
+    <string name="team_mode_description">"當一群人在同一地點mapping時，您可以開啟協作模式來分配任務。"</string>
+    <string name="team_mode_team_size_label">"有多少位成員？"</string>
+    <string name="team_mode_team_size_hint">"協作模式適用於2～12位成員"</string>
+    <string name="team_mode_choose_color">"現在所有成員各需要選擇一種代表色："</string>
+    <string name="team_mode_active">"協作模式已啟用"</string>
+    <string name="team_mode_deactivated">"協作模式已停用"</string>
 </resources>

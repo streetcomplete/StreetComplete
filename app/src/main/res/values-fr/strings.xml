@@ -76,7 +76,7 @@ That is not very clear to me. Any further explanations? -->
     <string name="turn_on_location_request">"La localisation est désactivée. Ouvrir les paramètres pour l'activer maintenant ?"</string>
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes autour de vous."</string>
     <string name="about_title_authors">"Auteurs"</string>
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick et contributeurs"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick et contributeurs"</string>
     <string name="about_title_repository">"Code Source"</string>
     <string name="about_summary_repository">"sur GitHub"</string>
     <string name="about_title_report_error">"Signaler une erreur"</string>
@@ -1220,8 +1220,23 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_bicycle_parking_fee_title">"Doit-on payer pour garer son vélo ici ? "</string>
     <string name="quest_buildingType_house_description2">"maison familiale mitoyenne"</string>
     <string name="quest_drinking_water_title">"L'eau est-elle potable ici ? (%s)"</string>
-    <string name="quest_drinking_water_potable_signed">"Eau buvable (panneau)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Eau buvable (sans panneau)"</string>
-    <string name="quest_drinking_water_not_potable_signed">"Eau non buvable (panneau)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Eau non buvable (sans panneau)"</string>
+    <string name="quest_drinking_water_potable_signed">"Eau potable (panneau)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Eau potable (sans panneau)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Eau non potable (panneau)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Eau non potable (sans panneau)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Quel est le monogramme royal apposé sur cette boîte aux lettres ?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Aucun monogramme royal visible."</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"La Couronne d'Écosse"</string>
+    <string name="quest_buildingType_fire_station">"Caserne de pompiers"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Seulement des briques alimentaires en carton"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Seulement des bouteilles en plastique et des cartons"</string>
+    <string name="quest_charging_station_name_capacity_title">"Combien de véhicules peuvent être chargés simultanément à cette station de recharge (%s) ?"</string>
+    <string name="team_mode">"Mode par équipe"</string>
+    <string name="team_mode_exit">"Quitter le mode par équipe"</string>
+    <string name="team_mode_description">"Quand vous cartographiez la même zone avec un groupe, vous pouvez vous répartir les quêtes entre les différents membres de ce groupe."</string>
+    <string name="team_mode_team_size_label">"Combien y a-t'il de personnes ?"</string>
+    <string name="team_mode_team_size_hint">"Le mode par équipe fonctionne pour des groupes de 2 et 12 personnes."</string>
+    <string name="team_mode_choose_color">"Maintenant, toutes les personnes du groupe doivent choisir une couleur unique :"</string>
+    <string name="team_mode_active">"Le mode par équipe est activé"</string>
+    <string name="team_mode_deactivated">"Le mode par équipe est désactivé"</string>
 </resources>

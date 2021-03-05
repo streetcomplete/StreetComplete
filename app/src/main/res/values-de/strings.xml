@@ -59,7 +59,7 @@
     <string name="turn_on_location_request">"Standort ist aus. Jetzt in die Einstellungen gehen, um ihn anzuschalten?"</string>
     <string name="no_location_permission_warning">"Dein Standort wird benötigt, um nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="about_title_authors">"Autoren"</string>
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick und Mitwirkende"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick und Mitwirkende"</string>
     <string name="about_title_repository">"Quellcode-Repository"</string>
     <string name="about_summary_repository">"auf GitHub"</string>
     <string name="about_title_report_error">"Fehler melden"</string>
@@ -718,7 +718,7 @@ Jetzt aufspalten?"</string>
     <string name="letsgo">"Auf geht's!"</string>
     <string name="tutorial_welcome_to_osm">"Willkommen bei OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"der freien Wiki-Weltkarte"</string>
-    <string name="tutorial_intro">"Mit StreetComplete kannst du einfach einen Beitrag zur OpenStreetmap leisten. Die App sucht automatisch nach fehlenden Details in deiner Nähe: Fahrradstreifen, Hausnummern, Öffnungszeiten und mehr…"</string>
+    <string name="tutorial_intro">"Mit StreetComplete kannst du einfach einen Beitrag zur OpenStreetMap leisten. Die App sucht automatisch nach fehlenden Details in deiner Nähe: Fahrradstreifen, Hausnummern, Öffnungszeiten und mehr…"</string>
     <string name="tutorial_solving_quests">"Sobald sie gefunden wurden, tauchen die fehlenden Details als Aufgaben auf deiner Karte auf.
 
 Du kannst dann sofort anfangen, diese zu lösen. Später kannst du dich einloggen, um deine Antworten zu veröffentlichen."</string>
@@ -1002,4 +1002,19 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_drinking_water_potable_unsigned">"Trinkwasser (nicht beschildert)"</string>
     <string name="quest_drinking_water_not_potable_signed">"kein Trinkwasser (beschildert)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"kein Trinkwasser (nicht beschildert)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Welches königliche Monogramm ist auf diesem Briefkasten zu sehen?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Kein Monogramm sichtbar"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"Die Krone von Schottland"</string>
+    <string name="quest_buildingType_fire_station">"Feuerwehrhaus"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Nur Getränkekartons"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Nur Plastikflaschen und Getränkekartons"</string>
+    <string name="quest_charging_station_name_capacity_title">"Wie viele Autos können an dieser Ladestation (%s) gleichzeitig aufgeladen werden?"</string>
+    <string name="team_mode">"Team-Modus"</string>
+    <string name="team_mode_exit">"Team-Modus beenden"</string>
+    <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen."</string>
+    <string name="team_mode_team_size_label">"Wie viele Personen seid ihr?"</string>
+    <string name="team_mode_team_size_hint">"Der Team-Modus ist für Gruppen zwischen 2 und 12 Personen gemacht."</string>
+    <string name="team_mode_choose_color">"Jetzt wählen alle in eurer Gruppe eine eigene Farbe aus:"</string>
+    <string name="team_mode_active">"Team-Modus ist aktiv"</string>
+    <string name="team_mode_deactivated">"Team-Modus deaktiviert"</string>
 </resources>

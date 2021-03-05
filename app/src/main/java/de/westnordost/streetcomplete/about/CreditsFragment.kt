@@ -12,24 +12,30 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
 import kotlinx.android.synthetic.main.fragment_credits.*
+import kotlinx.coroutines.*
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
 /** Shows the credits of this app */
-class CreditsFragment : Fragment(R.layout.fragment_credits) {
+class CreditsFragment : Fragment(R.layout.fragment_credits),
+    CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        addContributorsTo(readMainContributors(), mainCredits)
-        addContributorsTo(readProjectsContributors(), projectsCredits)
-        addContributorsTo(readCodeContributors(), codeCredits)
-        addContributorsTo(readArtContributors(), artCredits)
+        launch(Dispatchers.Main) {
+            addContributorsTo(readMainContributors(), mainCredits)
+            addContributorsTo(readProjectsContributors(), projectsCredits)
+            addContributorsTo(readArtContributors(), artCredits)
+            addContributorsTo(readCodeContributors(), codeCredits)
 
-        val inflater = LayoutInflater.from(view.context)
-        for ((language, translators) in readTranslators()) {
-            val item = inflater.inflate(R.layout.row_credits_translators, translationCredits, false)
-            (item.findViewById<View>(R.id.language) as TextView).text = language
-            (item.findViewById<View>(R.id.contributors) as TextView).text = translators
-            translationCredits.addView(item)
+            val inflater = LayoutInflater.from(view.context)
+            for ((language, translators) in readTranslators()) {
+                val item = inflater.inflate(R.layout.row_credits_translators, translationCredits, false)
+                (item.findViewById<View>(R.id.language) as TextView).text = language
+                (item.findViewById<View>(R.id.contributors) as TextView).text = translators
+                translationCredits.addView(item)
+            }
         }
+
+        authorText.setHtml("Tobias Zwick (<a href=\"https://github.com/westnordost\">westnordost</a>)")
 
         val translationCreditsMore = view.findViewById<HtmlTextView>(R.id.translationCreditsMore)
         translationCreditsMore.setHtml(getString(R.string.credits_translations))
@@ -42,6 +48,11 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
         activity?.setTitle(R.string.about_title_authors)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineContext.cancel()
+    }
+
     private fun addContributorsTo(contributors: List<String>, view: ViewGroup) {
         val items = contributors.map { "<li>$it</li>" }.joinToString("")
         val textView = HtmlTextView(activity)
@@ -51,15 +62,36 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
         view.addView(textView, LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
     }
 
-    private fun readMainContributors() = resources.getYamlObject<List<String>>(R.raw.credits_main)
+    private suspend fun readMainContributors() = withContext(Dispatchers.IO) {
+        resources.getYamlObject<List<String>>(R.raw.credits_main).map(::withLinkToGithubAccount)
+    }
 
-    private fun readProjectsContributors() = resources.getYamlObject<List<String>>(R.raw.credits_projects)
+    private suspend fun readProjectsContributors() = withContext(Dispatchers.IO) {
+        resources.getYamlObject<List<String>>(R.raw.credits_projects)
+    }
 
-    private fun readCodeContributors() =
-        resources.getYamlObject<List<String>>(R.raw.credits_code) + getString(R.string.credits_and_more)
+    private suspend fun readCodeContributors() = withContext(Dispatchers.IO) {
+        resources.getYamlObject<List<String>>(R.raw.credits_code).map(::withLinkToGithubAccount) +
+            getString(R.string.credits_and_more)
+    }
 
-    private fun readArtContributors() = resources.getYamlObject<List<String>>(R.raw.credits_art)
+    private suspend fun readArtContributors() = withContext(Dispatchers.IO) {
+        resources.getYamlObject<List<String>>(R.raw.credits_art)
+    }
 
-    private fun readTranslators() =
+    private suspend fun readTranslators() = withContext(Dispatchers.IO) {
         resources.getYamlObject<LinkedHashMap<String, String>>(R.raw.credits_translations)
+    }
+}
+
+private fun withLinkToGithubAccount(contributor: String): String {
+    val regex = Regex("(.*?)\\s?(?:\\((.+)\\))?")
+    val match = regex.matchEntire(contributor)!!
+    val name = match.groupValues[1]
+    val githubName = match.groupValues[2]
+    return if (githubName.isEmpty()) {
+        "<a href=\"https://github.com/$name\">$name</a>"
+    } else {
+        "$name (<a href=\"https://github.com/$githubName\">$githubName</a>)"
+    }
 }

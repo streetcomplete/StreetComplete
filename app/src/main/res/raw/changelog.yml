@@ -1,4 +1,4 @@
-v31.0-beta1: |
+v31.0: |
   <h3>🤝 Team mode!</h3>
   <p>(#2189, #2557) by @FloEdelmann</p>
 
@@ -24,6 +24,7 @@ v31.0-beta1: |
   <h3>Fixes</h3>
   <ul>
   <li>Fall back to English when displaying untranslated feature names (#2608)</li>
+  <li>Cycleways: Do not implicitly tag a sidewalk if it is not known for both sides (#2633)</li>
   </ul>
 
 v30.1: |

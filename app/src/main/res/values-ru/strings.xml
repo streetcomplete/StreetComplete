@@ -159,7 +159,7 @@
     <string name="about_title_authors">"Участники"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Тобиас Цвик и другие"</string>
+    <string name="about_summary_authors">"© 2016–2021 Тобиас Цвик и другие"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Исходный код"</string>
@@ -2376,4 +2376,19 @@
     <string name="quest_drinking_water_potable_unsigned">"Питьевая вода (нет знака)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Не питьевая вода (есть знак)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Не питьевая вода (нет знака)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Какой Королевский шифр на этом почтовом ящике?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Королевского шифра не видно"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"Корона Шотландии"</string>
+    <string name="quest_buildingType_fire_station">"Пожарная часть"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Только картонные упаковки от напитков"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Только пластиковые бутылки и картон"</string>
+    <string name="quest_charging_station_name_capacity_title">"Сколько машин можно одновременно заряжать на этой станции зарядки (%s)?"</string>
+    <string name="team_mode">"Командный режим"</string>
+    <string name="team_mode_exit">"Отключить режим команды"</string>
+    <string name="team_mode_description">"Если вы обследуете местность вместе с группой, вы можете включить командный режим, чтобы распределить квесты между участниками."</string>
+    <string name="team_mode_team_size_label">"Сколько вас?"</string>
+    <string name="team_mode_team_size_hint">"Командный режим работает для групп от 2 до 12 человек"</string>
+    <string name="team_mode_choose_color">"Теперь каждый участник группы должен выбрать себе цвет:"</string>
+    <string name="team_mode_active">"Командный режим включен"</string>
+    <string name="team_mode_deactivated">"Командный режим отключен"</string>
 </resources>

@@ -169,7 +169,7 @@
     <string name="about_title_authors">"Ευχαριστίες"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick και συνεργάτες"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick και συνεργάτες"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Πηγή αποθήκευσης"</string>
@@ -2169,4 +2169,6 @@
     <string name="quest_drinking_water_potable_unsigned">"Ασφαλές για κατανάλωση (μη επισημασμένο) "</string>
     <string name="quest_drinking_water_not_potable_signed">"Μη ασφαλές για κατανάλωση (επισημασμένο) "</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Μη ασφαλές για κατανάλωση (μη επισημασμένο) "</string>
+    <string name="quest_buildingType_fire_station">"Πυροσβεστικός Σταθμός"</string>
+    <string name="quest_charging_station_name_capacity_title">"Πόσα αυτοκίνητα μπορούν να φορτιστούν σ'αυτόν τον σταθμό φόρτισης (℅s) την ίδια στιγμή;"</string>
 </resources>

@@ -170,7 +170,7 @@
     <string name="about_title_authors">"Autoři"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick a přispěvatelé"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick a přispěvatelé"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Zdrojový kód"</string>
@@ -2438,4 +2438,19 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_drinking_water_potable_unsigned">"Pitná voda (bez rozboru)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Nepitná voda (rozbor)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Nepitná voda (bez rozboru)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Jaký královský monogram je na této schránce?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Není vidět žádný královský monogram"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"The Crown of Scotland"</string>
+    <string name="quest_buildingType_fire_station">"Hasičská stanice"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Pouze kartonové obaly od nápojů"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Pouze plastové lahve a kartonové obaly"</string>
+    <string name="quest_charging_station_name_capacity_title">"Kolik aut lze na této nabíjecí stanici (%s) současně nabíjet?"</string>
+    <string name="team_mode">"Týmový režim"</string>
+    <string name="team_mode_exit">"Opustit týmový režim"</string>
+    <string name="team_mode_description">"Pokud mapujete tutéž oblast společně ve skupině, můžete si zapnout týmový režim a rozdělit úkoly mezi všechny členy týmu."</string>
+    <string name="team_mode_team_size_label">"Kolik lidí tu je?"</string>
+    <string name="team_mode_team_size_hint">"Týmový režim funguje pro skupiny 2 až 12 lidí."</string>
+    <string name="team_mode_choose_color">"Nyní si každý ve vaší skupině vybere unikátní barvu:"</string>
+    <string name="team_mode_active">"Týmový režim je aktivní"</string>
+    <string name="team_mode_deactivated">"Týmový režim deaktivován"</string>
 </resources>

@@ -169,7 +169,7 @@
     <string name="about_title_authors">"Cretos"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick e os contribuíntes"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick e os contribuíntes"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Repositorio do código"</string>
@@ -2415,4 +2415,17 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_drinking_water_potable_unsigned">"Seguro para beber (sen comprobar)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Non seguro para beber (comprobado)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Non seguro para beber (non comprobado)"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"A Coroa de Escocia"</string>
+    <string name="quest_buildingType_fire_station">"Estación de bombeiros"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Só cartóns de bebidas"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Só botellas de plástico e cartóns"</string>
+    <string name="quest_charging_station_name_capacity_title">"Cantos coches se poden cargar ao mesmo tempo nesta estación de carga (%s)?"</string>
+    <string name="team_mode">"Modo Equipo"</string>
+    <string name="team_mode_exit">"Saír do Modo Equipo"</string>
+    <string name="team_mode_description">"Se estades un grupo a mapear un área, podes entrar no modo equipo para repartir o traballo entre todos os membros do equipo."</string>
+    <string name="team_mode_team_size_label">"Cantas persoas sodes no grupo?"</string>
+    <string name="team_mode_team_size_hint">"O modo equipo é para grupos de 2 a 12 persoas."</string>
+    <string name="team_mode_choose_color">"Cada persoa do teu grupo escolle unha cor única:"</string>
+    <string name="team_mode_active">"O modo equipo está activado"</string>
+    <string name="team_mode_deactivated">"Modo equipo desactivado"</string>
 </resources>

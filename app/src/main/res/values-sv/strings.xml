@@ -169,7 +169,7 @@
     <string name="about_title_authors">"Tack till"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick och bidragsgivare"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick och bidragsgivare"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Källkodsarkiv"</string>
@@ -2397,4 +2397,19 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_drinking_water_potable_unsigned">"Drickbart (inte skyltat)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Inte drickbart (skyltat)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Inte drickbart (inte skyltat)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Vad är den kungliga cypheren på den här brevlådan?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Ingen kunglig cypher är synlig"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skottlands krona"</string>
+    <string name="quest_buildingType_fire_station">"Brandstation"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Endast dryckeskartonger"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Endast plastflaskor och kartonger"</string>
+    <string name="quest_charging_station_name_capacity_title">"Hur många bilar kan laddas vid den här laddstationen (%s) samtidigt?"</string>
+    <string name="team_mode">"Gruppläge"</string>
+    <string name="team_mode_exit">"Avsluta gruppläget"</string>
+    <string name="team_mode_description">"När samma område kartläggs tillsammans i en grupp kan du använda lagläget för dela upp uppdrag mellan alla gruppmedlemmar."</string>
+    <string name="team_mode_team_size_label">"Hur många personer är där?"</string>
+    <string name="team_mode_team_size_hint">"Gruppläget fungerar för grupper om 2 till 12 personer."</string>
+    <string name="team_mode_choose_color">"Nu väljer alla i din grupp en unik färg:"</string>
+    <string name="team_mode_active">"Gruppläget är aktivt"</string>
+    <string name="team_mode_deactivated">"Gruppläget inaktiverat"</string>
 </resources>

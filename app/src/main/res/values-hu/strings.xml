@@ -163,7 +163,7 @@
     <string name="about_title_authors">"Szerzők"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick és közreműködők"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick és közreműködők"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Források"</string>
@@ -2384,4 +2384,19 @@ szintek"</string>
     <string name="quest_drinking_water_potable_unsigned">"Biztonságosan iható (jelzetlen)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Nem iható biztonságosan (jelzett)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Nem iható biztonságosan (jelzetlen)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Milyen királyi monogram található ezen a postaládán?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Nem látható rajta királyi monogram"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skócia koronája"</string>
+    <string name="quest_buildingType_fire_station">"tűzoltóállomás"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Csak italoskarton"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kizárólag műanyag palack és karton"</string>
+    <string name="quest_charging_station_name_capacity_title">"Hány autót lehet egyidejűleg itt tölteni? (%s)"</string>
+    <string name="team_mode">"Csapat mód"</string>
+    <string name="team_mode_exit">"Kilépés csapat módból"</string>
+    <string name="team_mode_description">"Ha egy területen egyszerre többen szeretnének térképezni, lehetőség van \"csapat mód\"-ban felosztani a feladatokat."</string>
+    <string name="team_mode_team_size_label">"Hányan vannak a csapatban?"</string>
+    <string name="team_mode_team_size_hint">"2 és 12 tag közötti érték adható meg."</string>
+    <string name="team_mode_choose_color">"Válasszon mindenki egy egyedi színt:"</string>
+    <string name="team_mode_active">"Csapat mód aktív"</string>
+    <string name="team_mode_deactivated">"Csapat mód kikapcsolva"</string>
 </resources>

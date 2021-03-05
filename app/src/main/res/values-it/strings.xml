@@ -61,7 +61,7 @@
     <string name="turn_on_location_request">"La localizzazione è spenta. Apro le Impostazioni per abilitarla?"</string>
     <string name="no_location_permission_warning">"La tua posizione è necessaria per cercare le missioni a te vicine."</string>
     <string name="about_title_authors">"Ringraziamenti"</string>
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick e contributori"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick e contributori"</string>
     <string name="about_title_repository">"Archivi codice sorgente"</string>
     <string name="about_summary_repository">"su GitHub"</string>
     <string name="about_title_report_error">"Segnala errore"</string>
@@ -626,7 +626,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_noteDiscussion_reopen2">"Riaperta da %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Nascosto da %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Le foto che alleghi a una nota sono caricate sul mio server e cancellate alcuni giorni dopo che la nota è stata risolta. I meta-dati vengono eliminati prima del caricamento.&lt;/p&gt;"</string>
-    <string name="action_deselect_all">"Deselezionare tutto"</string>
+    <string name="action_deselect_all">"Deseleziona tutto"</string>
     <string name="quest_buildingType_retail_description">"inclusi edifici per ristoranti, bar, etc, ..."</string>
     <string name="quest_openingHours_timeSelect_next">"Prossimo"</string>
     <string name="quest_tracktype_title">"Com'è il grado di solidità della superficie di questa strada?"</string>
@@ -1034,4 +1034,20 @@ riconoscimento"</string>
     <string name="quest_drinking_water_potable_unsigned">"È sicura da bere (non presente alcuna scritta)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Non sicura da bere (è scritto così)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Non sicura da bere (non presente alcuna scritta)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Quale monogramma reale è presente su questa cassetta postale?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Non è visibile nessun monogramma reale"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"La Corona di Scozia"</string>
+    <string name="quest_buildingType_fire_station">"Centrale dei vigili del fuoco"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Solo cartoni per bevande"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo bottiglie di plastica e cartoni per bevande"</string>
+    <string name="quest_charging_station_name_capacity_title">"Quante auto possono essere caricate contemporaneamente in questa stazione di ricarica (%s)?"</string>
+    <string name="team_mode">"Modalità squadra"</string>
+    <string name="team_mode_exit">"Abbandona la modalità squadra"</string>
+    <string name="team_mode_description">"Quando mappi una stessa area insieme ad altre persone, puoi attivare la modalità squadra per suddividere le missioni tra tutte le persone.
+"</string>
+    <string name="team_mode_team_size_label">"Quante persone ci sono?"</string>
+    <string name="team_mode_team_size_hint">"La modalità squadra consente gruppi da 2 a 12 persone."</string>
+    <string name="team_mode_choose_color">"A questo punto, ciascuna persona del gruppo sceglie un colore diverso:"</string>
+    <string name="team_mode_active">"La modalità squadra è attiva"</string>
+    <string name="team_mode_deactivated">"La modalità squadra è disattivata"</string>
 </resources>

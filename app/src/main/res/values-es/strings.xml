@@ -169,7 +169,7 @@
     <string name="about_title_authors">"Agradecimientos"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick y demás colaboradores"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick y demás colaboradores"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Repositorio de código"</string>
@@ -2413,4 +2413,16 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_drinking_water_potable_unsigned">"Potable (no señalizado)"</string>
     <string name="quest_drinking_water_not_potable_signed">"No potable (señalizado)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"No potable (no señalizado)"</string>
+    <string name="quest_buildingType_fire_station">"Estación de bomberos"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Solo cajas de bebidas"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo botellas y cajas de plástico"</string>
+    <string name="quest_charging_station_name_capacity_title">"¿Cuántos coches se pueden cargar en esta estación de carga (%s) al mismo tiempo?"</string>
+    <string name="team_mode">"Modo Equipo"</string>
+    <string name="team_mode_exit">"Salir del Modo Equipo"</string>
+    <string name="team_mode_description">"Al mapear la misma área juntos en un grupo, puede ingresar al modo equipo para dividir las misiones entre todos los miembros del equipo."</string>
+    <string name="team_mode_team_size_label">"¿Cuántas personas hay?"</string>
+    <string name="team_mode_team_size_hint">"El modo equipo funciona para grupos de 2 a 12 personas."</string>
+    <string name="team_mode_choose_color">"Ahora todos en tu grupo eligen un color único:"</string>
+    <string name="team_mode_active">"El modo equipo está activo"</string>
+    <string name="team_mode_deactivated">"El modo equipo está desactivado"</string>
 </resources>

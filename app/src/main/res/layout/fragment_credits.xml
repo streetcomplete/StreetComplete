@@ -5,15 +5,16 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-                  android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:showDividers="middle"
-                  android:paddingEnd="@dimen/activity_horizontal_margin"
-                  android:paddingStart="@dimen/activity_horizontal_margin"
-                  android:paddingTop="@dimen/activity_vertical_margin"
-                  android:paddingBottom="@dimen/activity_vertical_margin"
-                  android:divider="@drawable/space_16dp">
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:showDividers="middle"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:divider="@drawable/space_16dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +29,8 @@
                 android:text="@string/credits_author_title"
                 android:textAppearance="@style/TextAppearance.Title"/>
 
-            <TextView
+            <org.sufficientlysecure.htmltextview.HtmlTextView
+                android:id="@+id/authorText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.Body"
@@ -55,7 +57,8 @@
                 android:id="@+id/mainCredits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:orientation="vertical"
+                android:animateLayoutChanges="true"/>
 
         </LinearLayout>
 
@@ -76,7 +79,8 @@
                 android:id="@+id/projectsCredits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:orientation="vertical"
+                android:animateLayoutChanges="true"/>
 
         </LinearLayout>
 
@@ -97,7 +101,8 @@
                 android:id="@+id/artCredits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:orientation="vertical"
+                android:animateLayoutChanges="true"/>
 
         </LinearLayout>
 
@@ -118,7 +123,8 @@
                 android:id="@+id/codeCredits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:orientation="vertical"
+                android:animateLayoutChanges="true"/>
 
             <org.sufficientlysecure.htmltextview.HtmlTextView
                 android:id="@+id/contributorMore"
@@ -147,7 +153,8 @@
                 android:id="@+id/translationCredits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:orientation="vertical"
+                android:animateLayoutChanges="true"/>
 
             <org.sufficientlysecure.htmltextview.HtmlTextView
                 android:id="@+id/translationCreditsMore"

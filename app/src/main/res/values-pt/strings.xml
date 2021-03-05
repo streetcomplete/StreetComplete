@@ -166,7 +166,7 @@
     <string name="about_title_authors">"Créditos"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick e colaboradores"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick e colaboradores"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Repositório do código-fonte"</string>
@@ -1802,6 +1802,8 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="about_summary_donate">"Mostra o teu apreço! ❤️"</string>
     <string name="about_description_donate">"Obrigado por apoiares esta aplicação! Para veres as doações atuais e fazeres a tua doação, toca na respetiva plataforma:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Qual é a religião pratica em %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Pesquisar antes aqui"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continuar a pesquisa atual"</string>
     <string name="quest_buildingType_garages_description">"Espaços separados para diferentes proprietários / inquilinos"</string>
     <string name="quest_tourism_information_title">"Que tipo de informação turística é esta?"</string>
     <string name="quest_tourism_information_office">"Posto turístico"</string>
@@ -1811,6 +1813,10 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_recycling_materials_answer_waste">"É para resíduos em geral"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Então, este é um recipiente para qualquer resíduo, como lixo doméstico ensacado ou comercial?"</string>
     <string name="user_profile">"O meu Perfil"</string>
+    <string name="osm_profile">"Perfil no OSM"</string>
+    <string name="next">"Seguinte"</string>
+    <string name="letsgo">"Vamos lá!"</string>
+    <string name="tutorial_welcome_to_osm">"Bem-vindo/a ao OpenStreetMap"</string>
     <string name="user_achievements_title">"Conquistas"</string>
     <string name="user_profile_title">"Perfil"</string>
     <string name="user_statistics_quest_wiki_link">"Documentação"</string>

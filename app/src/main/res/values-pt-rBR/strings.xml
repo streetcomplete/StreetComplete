@@ -30,7 +30,7 @@
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostrar todas as notas"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Também mostrando notas não formuladas como perguntas"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Também mostrar notas não formuladas como perguntas"</string>
 
     <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorando notas não formuladas como perguntas"</string>
@@ -91,10 +91,10 @@
     <string name="quest_openingHours_name_title">"Quais são os horários de funcionamento de %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_start_time">"hora que abre"</string>
+    <string name="quest_openingHours_start_time">"hora de abertura"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_end_time">"hore de encerramento"</string>
+    <string name="quest_openingHours_end_time">"hora de encerramento"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_add_months">"Adicionar meses"</string>
@@ -169,7 +169,7 @@
     <string name="about_title_authors">"Créditos"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick e contribuidores"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick e contribuidores"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Repositório de código fonte"</string>
@@ -2182,4 +2182,19 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_drinking_water_potable_unsigned">"Seguro para beber (sem assinatura)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Não é seguro beber (assinado)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Não é seguro beber (sem assinatura)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Qual é a cifra real nesta caixa de correio?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Nenhuma cifra real é visível"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"A coroa da Escócia"</string>
+    <string name="quest_buildingType_fire_station">"Corpo de Bombeiros"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Apenas embalagens para bebidas"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Apenas garrafas de plástico e caixas"</string>
+    <string name="quest_charging_station_name_capacity_title">"Quantos carros podem ser carregados nesta estação de carregamento (%s) ao mesmo tempo?"</string>
+    <string name="team_mode">"Modo de equipe"</string>
+    <string name="team_mode_exit">"Sair do modo de equipe"</string>
+    <string name="team_mode_description">"Ao mapear a mesma área juntos em um grupo, você pode entrar no modo de equipe para dividir as missões entre todos os membros da equipe."</string>
+    <string name="team_mode_team_size_label">"Quantas pessoas estão lá?"</string>
+    <string name="team_mode_team_size_hint">"O modo equipe funciona para grupos de 2 a 12 pessoas."</string>
+    <string name="team_mode_choose_color">"Agora, todos em seu grupo escolhem uma cor exclusiva:"</string>
+    <string name="team_mode_active">"O Modo de equipe está ativo"</string>
+    <string name="team_mode_deactivated">"O Modo de equipe desativado"</string>
 </resources>

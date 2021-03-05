@@ -57,7 +57,7 @@
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
     <string name="no_location_permission_warning">"Your location is needed to scan for quests in your vicinity."</string>
     <string name="about_title_authors">"Credits"</string>
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick and contributors"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_report_error">"Report error"</string>
@@ -1230,4 +1230,20 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_drinking_water_potable_unsigned">"Drinking water (no sign)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Non-potable water (with a sign)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Non-potable water (no sign)"</string>
+    <string name="quest_postboxRoyalCypher_title">"What is the royal cypher on this postbox?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"No royal cypher is visible"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"The Crown of Scotland"</string>
+    <string name="quest_buildingType_fire_station">"Fire station"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Drinks cartons only"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Plastic bottles and cartons only"</string>
+    <string name="quest_charging_station_name_capacity_title">"How many cars can be charged at this charging station (%s) at the same time?"</string>
+    <string name="team_mode">"Team Mode"</string>
+    <string name="team_mode_exit">"Exit Team Mode"</string>
+    <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members."</string>
+    <string name="team_mode_team_size_label">"How many people are there?
+"</string>
+    <string name="team_mode_team_size_hint">"Team mode works for groups of 2 to 12 people."</string>
+    <string name="team_mode_choose_color">"Now everybody in your group chooses a unique colour:"</string>
+    <string name="team_mode_active">"Team mode is active"</string>
+    <string name="team_mode_deactivated">"Team mode deactivated"</string>
 </resources>
