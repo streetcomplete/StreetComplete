@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.eq
 import org.junit.Assert.*
@@ -142,4 +141,3 @@ class NoteControllerTest {
     }
 }
 
-private fun note(id: Long) = Note().apply { this.id = id }

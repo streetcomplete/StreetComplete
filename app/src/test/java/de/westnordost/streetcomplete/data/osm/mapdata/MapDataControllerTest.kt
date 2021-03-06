@@ -43,16 +43,16 @@ class MapDataControllerTest {
     }
 
     @Test fun getGeometry() {
-        val geom = geom()
-        on(geometryDB.get(Element.Type.NODE, 5L)).thenReturn(geom)
-        assertEquals(geom, controller.getGeometry(Element.Type.NODE,5L))
+        val pGeom = pGeom()
+        on(geometryDB.get(Element.Type.NODE, 5L)).thenReturn(pGeom)
+        assertEquals(pGeom, controller.getGeometry(Element.Type.NODE,5L))
     }
 
     @Test fun getMapDataWithGeometry() {
         val bbox = bbox()
         val geomEntries = listOf(
-            ElementGeometryEntry(Element.Type.NODE, 1L, geom()),
-            ElementGeometryEntry(Element.Type.NODE, 2L, geom()),
+            ElementGeometryEntry(Element.Type.NODE, 1L, pGeom()),
+            ElementGeometryEntry(Element.Type.NODE, 2L, pGeom()),
         )
         val elementKeys = listOf(
             ElementKey(Element.Type.NODE, 1L),
@@ -80,10 +80,10 @@ class MapDataControllerTest {
         )
         val elements = listOf(node(1), node(2))
         val geomEntries = listOf(
-            ElementGeometryEntry(Element.Type.NODE, 1L, geom()),
-            ElementGeometryEntry(Element.Type.NODE, 2L, geom()),
+            ElementGeometryEntry(Element.Type.NODE, 1L, pGeom()),
+            ElementGeometryEntry(Element.Type.NODE, 2L, pGeom()),
         )
-        on(geometryCreator.create(any(), any(), anyBoolean())).thenReturn(geom())
+        on(geometryCreator.create(any(), any(), anyBoolean())).thenReturn(pGeom())
 
         val listener = mock<MapDataController.Listener>()
         controller.addListener(listener)
@@ -124,8 +124,8 @@ class MapDataControllerTest {
             node(2)
         )
         val geomEntries = listOf(
-            ElementGeometryEntry(Element.Type.NODE, 1L, geom()),
-            ElementGeometryEntry(Element.Type.NODE, 2L, geom()),
+            ElementGeometryEntry(Element.Type.NODE, 1L, pGeom()),
+            ElementGeometryEntry(Element.Type.NODE, 2L, pGeom()),
         )
         val mapData = TestMapDataWithGeometry(elements)
         mapData.nodeGeometriesById[1] = geomEntries[0].geometry as ElementPointGeometry
@@ -133,7 +133,7 @@ class MapDataControllerTest {
 
         on(geometryDB.getAllKeys(bbox)).thenReturn(emptyList())
         on(geometryDB.getAllEntries(bbox)).thenReturn(emptyList())
-        on(geometryCreator.create(any(), any(), anyBoolean())).thenReturn(geom())
+        on(geometryCreator.create(any(), any(), anyBoolean())).thenReturn(pGeom())
 
         val listener = mock<MapDataController.Listener>()
 
@@ -147,5 +147,3 @@ class MapDataControllerTest {
         verify(listener).onReplacedForBBox(eq(bbox), any())
     }
 }
-
-private fun geom() = ElementPointGeometry(p(0.0, 0.0))

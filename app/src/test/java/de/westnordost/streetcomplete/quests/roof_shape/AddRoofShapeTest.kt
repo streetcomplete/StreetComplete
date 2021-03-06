@@ -1,14 +1,10 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
-import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.way
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -84,8 +80,8 @@ class AddRoofShapeTest {
         val element2 = way(id = 2, tags = mapOf("building:levels" to "3"))
 
         val mapData = TestMapDataWithGeometry(listOf(element, element2))
-        mapData.wayGeometriesById[1L] = ElementPointGeometry(p(0.0,0.0))
-        mapData.wayGeometriesById[2L] = ElementPointGeometry(p(0.0,0.0))
+        mapData.wayGeometriesById[1L] = pGeom()
+        mapData.wayGeometriesById[2L] = pGeom()
 
         val quests = questType.getApplicableElements(mapData)
 
@@ -103,8 +99,8 @@ class AddRoofShapeTest {
         val element2 = way(id = 2, tags = mapOf("building:levels" to "3"))
 
         val mapData = TestMapDataWithGeometry(listOf(element, element2))
-        mapData.wayGeometriesById[1L] = ElementPointGeometry(p(0.0,0.0))
-        mapData.wayGeometriesById[2L] = ElementPointGeometry(p(0.0,0.0))
+        mapData.wayGeometriesById[1L] = pGeom()
+        mapData.wayGeometriesById[2L] = pGeom()
 
         val quests = questType.getApplicableElements(mapData)
 

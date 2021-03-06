@@ -2,21 +2,15 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.p
-import de.westnordost.streetcomplete.bbox
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.osmapi.user.User
-import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import java.util.*
 
 class NotesWithEditsSourceTest {
 
@@ -369,8 +363,6 @@ val edits1 = listOf(
     edit(noteId = 2, action = NoteEditAction.COMMENT, text = "abc", timestamp = 900),
 )
 
-private fun p(latitude: Double, longitude: Double) = p(latitude, longitude)
-
 private fun edit(
     id: Long = 1,
     noteId: Long = 5,
@@ -390,33 +382,6 @@ private fun edit(
     false,
     imagePaths.isNotEmpty()
 )
-
-private fun note(
-    id: Long = 5,
-    position: LatLon = p(0.0, 0.0),
-    timestamp: Long = 123L,
-    comments: List<NoteComment> = listOf(comment("test", NoteComment.Action.OPENED))
-) = Note().also {
-    it.id = id
-    it.comments = comments
-    it.dateCreated = Date(timestamp)
-    it.position = position
-    it.status = Note.Status.OPEN
-}
-
-private fun comment(
-    text: String,
-    action: NoteComment.Action = NoteComment.Action.COMMENTED,
-    timestamp: Long = 123L,
-    userId: Long? = null,
-    userName: String? = null
-) = NoteComment().also {
-    it.text = text
-    it.action = action
-    it.user = userId?.let { User(userId, userName) }
-    it.date = Date(timestamp)
-}
-
 
 private fun checkListenerCalledWith(
     listener: NotesWithEditsSource.Listener,

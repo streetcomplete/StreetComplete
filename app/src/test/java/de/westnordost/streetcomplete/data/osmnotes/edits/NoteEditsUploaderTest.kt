@@ -3,15 +3,12 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.p
-import de.westnordost.osmapi.notes.Note
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
@@ -72,7 +69,7 @@ class NoteEditsUploaderTest {
     @Test fun `upload create note`() {
         val pos = p(1.0, 13.0)
         val edit = edit(noteId = -5L, action = NoteEditAction.CREATE, text = "abc", pos = pos)
-        val note = note(id = 123L)
+        val note = note(123)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(notesApi.create(any(), any())).thenReturn(note)
@@ -89,7 +86,7 @@ class NoteEditsUploaderTest {
     @Test fun `fail uploading note comment because of a conflict`() {
         val pos = p(1.0, 13.0)
         val edit = edit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
-        val note = note(id = 1L)
+        val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(notesApi.comment(anyLong(), any())).thenThrow(OsmConflictException(403,"",""))
@@ -107,7 +104,7 @@ class NoteEditsUploaderTest {
     @Test fun `fail uploading note comment because note was deleted`() {
         val pos = p(1.0, 13.0)
         val edit = edit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
-        val note = note(id = 1L)
+        val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(notesApi.comment(anyLong(), any())).thenThrow(OsmNotFoundException(410,"",""))
@@ -143,7 +140,7 @@ class NoteEditsUploaderTest {
             pos = pos,
             imagePaths = listOf("a","b","c")
         )
-        val note = note(id = 1L)
+        val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(notesApi.comment(anyLong(), any())).thenReturn(note)
@@ -169,7 +166,7 @@ class NoteEditsUploaderTest {
             pos = pos,
             imagePaths = listOf("a","b","c")
         )
-        val note = note(id = 1L)
+        val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(notesApi.create(any(), any())).thenReturn(note)
@@ -203,7 +200,7 @@ class NoteEditsUploaderTest {
 }
 
 private fun edit(
-    noteId: Long = 1L,
+    noteId: Long = 1,
     action: NoteEditAction = NoteEditAction.COMMENT,
     text: String = "test123",
     imagePaths: List<String> = emptyList(),
@@ -219,10 +216,3 @@ private fun edit(
         false,
         imagePaths.isNotEmpty()
 )
-
-private fun note(id: Long = 1L): Note {
-    val note = Note()
-    note.id = id
-    note.position = p(1.0, 2.0)
-    return note
-}

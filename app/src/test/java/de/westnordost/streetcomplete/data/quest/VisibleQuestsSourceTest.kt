@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.p
-import de.westnordost.streetcomplete.bbox
-import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
@@ -13,9 +10,6 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
-import de.westnordost.streetcomplete.eq
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -154,7 +148,7 @@ class VisibleQuestsSourceTest {
     }
 
     private fun osmQuest(id: Long, questType: OsmElementQuestType<*> = mock()) =
-        OsmQuest(id, questType, Element.Type.NODE, 1, ElementPointGeometry(p(0.0,0.0)))
+        OsmQuest(id, questType, Element.Type.NODE, 1, pGeom())
 
     private fun osmNoteQuest(id: Long) = OsmNoteQuest(id, mock(), OsmNoteQuestType())
 }

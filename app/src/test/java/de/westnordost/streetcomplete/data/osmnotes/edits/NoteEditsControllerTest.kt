@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.streetcomplete.p
-import de.westnordost.osmapi.notes.Note
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
@@ -43,8 +40,7 @@ class NoteEditsControllerTest {
 
     @Test fun synced() {
         val edit = NoteEdit(0L, 1L, p(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
-        val note = Note()
-        note.id = 1L
+        val note = note(1)
 
         ctrl.synced(edit, note)
 
@@ -55,8 +51,7 @@ class NoteEditsControllerTest {
 
     @Test fun `synced with new id`() {
         val edit = NoteEdit(0L, -100L, p(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
-        val note = Note()
-        note.id = 123L
+        val note = note(123)
 
         ctrl.synced(edit, note)
 
