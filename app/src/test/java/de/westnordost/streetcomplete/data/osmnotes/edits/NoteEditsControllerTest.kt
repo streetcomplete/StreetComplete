@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.mock
@@ -27,14 +27,14 @@ class NoteEditsControllerTest {
     }
 
     @Test fun add() {
-        ctrl.add(1L, NoteEditAction.COMMENT, OsmLatLon(1.0, 1.0))
+        ctrl.add(1L, NoteEditAction.COMMENT, p(1.0, 1.0))
 
         verify(db).add(any())
         verify(listener).onAddedEdit(any())
     }
 
     @Test fun syncFailed() {
-        val edit = NoteEdit(0L, 1L, OsmLatLon(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
+        val edit = NoteEdit(0L, 1L, p(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
         ctrl.syncFailed(edit)
 
         verify(db).delete(anyLong())
@@ -42,7 +42,7 @@ class NoteEditsControllerTest {
     }
 
     @Test fun synced() {
-        val edit = NoteEdit(0L, 1L, OsmLatLon(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
+        val edit = NoteEdit(0L, 1L, p(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
         val note = Note()
         note.id = 1L
 
@@ -54,7 +54,7 @@ class NoteEditsControllerTest {
     }
 
     @Test fun `synced with new id`() {
-        val edit = NoteEdit(0L, -100L, OsmLatLon(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
+        val edit = NoteEdit(0L, -100L, p(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
         val note = Note()
         note.id = 123L
 

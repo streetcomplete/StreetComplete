@@ -4,6 +4,7 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.p
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -11,7 +12,7 @@ class MutableMapDataWithGeometryTest {
 
     @Test fun `put get remove node`() {
         val m = MutableMapDataWithGeometry()
-        val p = OsmLatLon(0.0,0.0)
+        val p = p(0.0,0.0)
         val node = OsmNode(1L, 1, p, null)
         val geom = ElementPointGeometry(p)
 
@@ -30,7 +31,7 @@ class MutableMapDataWithGeometryTest {
 
     @Test fun `put get remove way`() {
         val m = MutableMapDataWithGeometry()
-        val p = OsmLatLon(0.0,0.0)
+        val p = p(0.0,0.0)
         val way = OsmWay(1L, 1, listOf(), null)
         val geom = ElementPolylinesGeometry(listOf(listOf(p)), p)
 
@@ -49,7 +50,7 @@ class MutableMapDataWithGeometryTest {
 
     @Test fun `put get remove relation`() {
         val m = MutableMapDataWithGeometry()
-        val p = OsmLatLon(0.0,0.0)
+        val p = p(0.0,0.0)
         val rel = OsmRelation(1L, 1, listOf(), null)
         val geom = ElementPolygonsGeometry(listOf(listOf(p)), p)
 

@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.util
 
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import org.junit.Assert.*
 import org.junit.Test
 
 class SlippyMapMathTest {
 
     @Test fun `convert bbox to tiles rect and back results in same bbox`() {
-        val p = OsmLatLon(53.0, 9.0)
+        val p = p(53.0, 9.0)
         val tile = p.enclosingTile(15)
         val bbox = tile.asBoundingBox(15)
         assertTrue(bbox.minLatitude <= p.latitude)

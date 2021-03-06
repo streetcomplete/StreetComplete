@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
@@ -66,7 +66,7 @@ class AddRecyclingContainerMaterialsTest {
     }
 
     @Test fun `not applicable to container without recycling materials close to another container`() {
-        val pos1 = OsmLatLon(0.0,0.0)
+        val pos1 = p(0.0,0.0)
         val pos2 = pos1.translate(19.0, 45.0)
 
         val mapData = TestMapDataWithGeometry(listOf(
@@ -83,7 +83,7 @@ class AddRecyclingContainerMaterialsTest {
     }
 
     @Test fun `applicable to container without recycling materials not too close to another container`() {
-        val pos1 = OsmLatLon(0.0,0.0)
+        val pos1 = p(0.0,0.0)
         val pos2 = pos1.translate(21.0, 45.0)
 
         val mapData = TestMapDataWithGeometry(listOf(

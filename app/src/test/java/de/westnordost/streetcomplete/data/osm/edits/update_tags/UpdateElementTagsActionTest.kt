@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.p
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -27,8 +28,8 @@ class UpdateElementTagsActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if node moved too much`() {
-        val p1 = OsmLatLon(0.0, 0.0)
-        val p2 = OsmLatLon(0.1,0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(0.1,0.0)
         val n = OsmNode(1L, 2, p1, null)
         UpdateElementTagsAction(
             SpatialPartsOfNode(p2),

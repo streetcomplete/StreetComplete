@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.p
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Assert.*
@@ -193,18 +194,18 @@ class AddHousenumberTest {
     }
 }
 
-private val P1 = OsmLatLon(0.25,0.25)
-private val P2 = OsmLatLon(0.25,0.75)
-private val P3 = OsmLatLon(0.75,0.75)
-private val P4 = OsmLatLon(0.75,0.25)
+private val P1 = p(0.25,0.25)
+private val P2 = p(0.25,0.75)
+private val P3 = p(0.75,0.75)
+private val P4 = p(0.75,0.25)
 
-private val P5 = OsmLatLon(0.1,0.1)
-private val P6 = OsmLatLon(0.1,0.9)
-private val P7 = OsmLatLon(0.9,0.9)
-private val P8 = OsmLatLon(0.9,0.1)
+private val P5 = p(0.1,0.1)
+private val P6 = p(0.1,0.9)
+private val P7 = p(0.9,0.9)
+private val P8 = p(0.9,0.1)
 
-private val PO = OsmLatLon(1.5, 1.5)
-private val PC = OsmLatLon(0.5,0.5)
+private val PO = p(1.5, 1.5)
+private val PC = p(0.5,0.5)
 
 private val NODES1 = listOf<Long>(1,2,3,4,1)
 private val NODES2 = listOf<Long>(5,6,7,8,5)

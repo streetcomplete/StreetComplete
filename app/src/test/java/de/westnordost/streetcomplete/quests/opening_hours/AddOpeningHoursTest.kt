@@ -5,7 +5,7 @@ import ch.poole.openinghoursparser.TimeSpan
 import ch.poole.openinghoursparser.WeekDay
 import ch.poole.openinghoursparser.WeekDayRange
 import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
@@ -175,5 +175,5 @@ class AddOpeningHoursTest {
     }
 
     private fun createElement(tags: Map<String, String>, date: Date? = null) : Node =
-        OsmNode(1L, 1, OsmLatLon(0.0, 0.0), tags, null, date)
+        OsmNode(1L, 1, p(0.0, 0.0), tags, null, date)
 }

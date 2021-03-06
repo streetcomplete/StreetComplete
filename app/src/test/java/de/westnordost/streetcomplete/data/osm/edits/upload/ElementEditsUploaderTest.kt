@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
@@ -57,7 +57,7 @@ class ElementEditsUploaderTest {
 
     @Test fun `upload works`() {
         val action = DeletePoiNodeAction(1)
-        val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", OsmLatLon(1.0,2.0), 123L, false, action)
+        val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", p(1.0,2.0), 123L, false, action)
         val idProvider = mock<ElementIdProvider>()
         val updates = mock<ElementUpdates>()
 
@@ -77,7 +77,7 @@ class ElementEditsUploaderTest {
 
     @Test fun `upload catches conflict exception`() {
         val action = DeletePoiNodeAction(1)
-        val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", OsmLatLon(1.0,2.0), 123L, false, action)
+        val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", p(1.0,2.0), 123L, false, action)
         val idProvider = mock<ElementIdProvider>()
         val updatedNode = mock<Node>()
 
@@ -101,7 +101,7 @@ class ElementEditsUploaderTest {
 
     @Test fun `upload catches deleted element exception`() {
         val action = DeletePoiNodeAction(1)
-        val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", OsmLatLon(1.0,2.0), 123L, false, action)
+        val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", p(1.0,2.0), 123L, false, action)
         val idProvider = mock<ElementIdProvider>()
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)

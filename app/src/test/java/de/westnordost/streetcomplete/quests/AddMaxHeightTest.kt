@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -24,13 +24,13 @@ class AddMaxHeightTest {
             ))
         ))
         mapData.wayGeometriesById[1] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(-0.1,0.0),
-            OsmLatLon(+0.1,0.0),
-        )), OsmLatLon(0.0,0.0))
+            p(-0.1,0.0),
+            p(+0.1,0.0),
+        )), p(0.0,0.0))
         mapData.wayGeometriesById[2] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(0.0,-0.1),
-            OsmLatLon(0.0,+0.1),
-        )), OsmLatLon(0.0,0.0))
+            p(0.0,-0.1),
+            p(0.0,+0.1),
+        )), p(0.0,0.0))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
@@ -48,13 +48,13 @@ class AddMaxHeightTest {
             ))
         ))
         mapData.wayGeometriesById[1] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(-0.1,0.0),
-            OsmLatLon(+0.1,0.0),
-        )), OsmLatLon(0.0,0.0))
+            p(-0.1,0.0),
+            p(+0.1,0.0),
+        )), p(0.0,0.0))
         mapData.wayGeometriesById[2] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(0.0,-0.1),
-            OsmLatLon(0.0,+0.1),
-        )), OsmLatLon(0.0,0.0))
+            p(0.0,-0.1),
+            p(0.0,+0.1),
+        )), p(0.0,0.0))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
@@ -71,15 +71,15 @@ class AddMaxHeightTest {
             ))
         ))
         mapData.wayGeometriesById[1] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(-0.1,0.0),
-            OsmLatLon(0.0,0.0),
-            OsmLatLon(+0.1,0.0),
-        )), OsmLatLon(0.0,0.0))
+            p(-0.1,0.0),
+            p(0.0,0.0),
+            p(+0.1,0.0),
+        )), p(0.0,0.0))
         mapData.wayGeometriesById[2] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(0.0,-0.1),
-            OsmLatLon(0.0,0.0),
-            OsmLatLon(0.0,+0.1),
-        )), OsmLatLon(0.0,0.0))
+            p(0.0,-0.1),
+            p(0.0,0.0),
+            p(0.0,+0.1),
+        )), p(0.0,0.0))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.geometry
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.osmapi.map.data.*
+import de.westnordost.streetcomplete.p
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -217,11 +218,11 @@ private fun create(element: Element, mapData: MapData, allowIncomplete: Boolean 
 
 private val WAY_AREA = mapOf("area" to "yes")
 
-private val O: LatLon = OsmLatLon(1.0, 1.0)
-private val P0: LatLon = OsmLatLon(0.0, 2.0)
-private val P1: LatLon = OsmLatLon(0.0, 0.0)
-private val P2: LatLon = OsmLatLon(2.0, 0.0)
-private val P3: LatLon = OsmLatLon(2.0, 2.0)
+private val O = p(1.0, 1.0)
+private val P0 = p(0.0, 2.0)
+private val P1 = p(0.0, 0.0)
+private val P2 = p(2.0, 0.0)
+private val P3 = p(2.0, 2.0)
 
 private val SIMPLE_WAY1 = OsmWay(0, 0, listOf(0,1), null)
 private val SIMPLE_WAY2 = OsmWay(1, 0, listOf(1,2,3), null)

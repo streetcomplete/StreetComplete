@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.SpatialPartsOfNode
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.p
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
@@ -39,7 +40,7 @@ class ElementEditsControllerTest {
     }
 
     @Test fun add() {
-        val p = OsmLatLon(2.0,4.0)
+        val p = p(2.0,4.0)
         val action =  mock<ElementEditAction>()
         on(action.newElementsCount).thenReturn(NewElementsCount(1,2,3))
 
@@ -81,7 +82,7 @@ class ElementEditsControllerTest {
 
     @Test fun `undo unsynced`() {
         val action = UpdateElementTagsAction(
-            SpatialPartsOfNode(OsmLatLon(0.0,0.0)),
+            SpatialPartsOfNode(p(0.0,0.0)),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             QUEST_TYPE
         )
@@ -98,7 +99,7 @@ class ElementEditsControllerTest {
 
     @Test fun `undo synced`() {
         val action = UpdateElementTagsAction(
-            SpatialPartsOfNode(OsmLatLon(0.0,0.0)),
+            SpatialPartsOfNode(p(0.0,0.0)),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             QUEST_TYPE
         )
@@ -124,7 +125,7 @@ private val QUEST_TYPE = TestQuestTypeA()
 private fun edit(
     elementType: Element.Type = Element.Type.NODE,
     elementId: Long = -1L,
-    pos: OsmLatLon = OsmLatLon(0.0,0.0),
+    pos: LatLon = p(0.0,0.0),
     timestamp: Long = 123L,
     action: ElementEditAction,
     isSynced: Boolean = false

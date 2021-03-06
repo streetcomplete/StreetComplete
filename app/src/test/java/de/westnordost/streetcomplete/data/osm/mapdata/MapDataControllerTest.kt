@@ -3,15 +3,12 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import org.junit.Assert.*
 import org.junit.Before
@@ -153,4 +150,4 @@ class MapDataControllerTest {
 
 private fun node(id: Long) = OsmNode(id, 0, 0.0, 0.0, null)
 
-private fun geom() = ElementPointGeometry(OsmLatLon(0.0, 0.0))
+private fun geom() = ElementPointGeometry(p(0.0, 0.0))

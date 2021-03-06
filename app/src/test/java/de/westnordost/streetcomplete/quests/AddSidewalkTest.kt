@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -46,7 +46,7 @@ class AddSidewalkTest {
             "highway" to "footway"
         ))
         val mapData = TestMapDataWithGeometry(listOf(road, footway))
-        val p1 = OsmLatLon(0.0,0.0)
+        val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(14.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
@@ -68,7 +68,7 @@ class AddSidewalkTest {
             "highway" to "footway"
         ))
         val mapData = TestMapDataWithGeometry(listOf(road, footway))
-        val p1 = OsmLatLon(0.0,0.0)
+        val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(10.0, 135.0)
         val p4 = p3.translate(50.0, 75.0)
@@ -91,7 +91,7 @@ class AddSidewalkTest {
         ))
 
         val mapData = TestMapDataWithGeometry(listOf(road, footway))
-        val p1 = OsmLatLon(0.0,0.0)
+        val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(16.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
@@ -114,7 +114,7 @@ class AddSidewalkTest {
         ))
 
         val mapData = TestMapDataWithGeometry(listOf(road, footway))
-        val p1 = OsmLatLon(0.0,0.0)
+        val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(10.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)

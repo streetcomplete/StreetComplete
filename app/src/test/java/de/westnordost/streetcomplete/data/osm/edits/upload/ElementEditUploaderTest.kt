@@ -2,7 +2,8 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.MapDataApi
@@ -53,7 +54,7 @@ class ElementEditUploaderTest {
 
     @Test(expected = ConflictException::class)
     fun `passes on element conflict exception`() {
-        val node = OsmNode(1L, 1, OsmLatLon(0.0,0.0), null)
+        val node = OsmNode(1L, 1, p(0.0,0.0), null)
         on(mapDataApi.getNode(anyLong())).thenReturn(node)
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
@@ -65,7 +66,7 @@ class ElementEditUploaderTest {
     }
 
     @Test fun `handles changeset conflict exception`() {
-        val node = OsmNode(1L, 1, OsmLatLon(0.0,0.0), null)
+        val node = OsmNode(1L, 1, p(0.0,0.0), null)
         on(mapDataApi.getNode(anyLong())).thenReturn(node)
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
@@ -81,7 +82,7 @@ private val QUEST_TYPE = TestQuestTypeA()
 private fun edit(
     elementType: Element.Type = Element.Type.NODE,
     elementId: Long = -1L,
-    pos: OsmLatLon = OsmLatLon(0.0,0.0),
+    pos: LatLon = p(0.0,0.0),
     timestamp: Long = 123L,
     action: ElementEditAction = DeletePoiNodeAction(1),
     isSynced: Boolean = false

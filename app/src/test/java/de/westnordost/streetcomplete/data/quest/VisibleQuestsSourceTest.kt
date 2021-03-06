@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -154,7 +154,7 @@ class VisibleQuestsSourceTest {
     }
 
     private fun osmQuest(id: Long, questType: OsmElementQuestType<*> = mock()) =
-        OsmQuest(id, questType, Element.Type.NODE, 1L, ElementPointGeometry(OsmLatLon(0.0,0.0)))
+        OsmQuest(id, questType, Element.Type.NODE, 1L, ElementPointGeometry(p(0.0,0.0)))
 
     private fun osmNoteQuest(id: Long) = OsmNoteQuest(id, mock(), OsmNoteQuestType())
 }

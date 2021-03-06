@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.user.UserStore
@@ -43,7 +43,7 @@ class NotesDownloaderTest {
 private fun createANote(): Note {
     val note = Note()
     note.id = 1L
-    note.position = OsmLatLon(6.0, 7.0)
+    note.position = p(6.0, 7.0)
     note.status = Note.Status.OPEN
     note.dateCreated = Date()
     val comment = NoteComment()

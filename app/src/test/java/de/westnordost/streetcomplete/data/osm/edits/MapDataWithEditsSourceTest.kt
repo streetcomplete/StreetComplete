@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -13,8 +14,6 @@ import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.util.intersect
 import org.junit.Assert.*
 import org.junit.Before
@@ -1136,12 +1135,12 @@ private fun rel(
     tags: Map<String, String>? = null
 ) = OsmRelation(id, version, members, tags)
 
-private fun pointGeom(lat: Double, lon: Double) = ElementPointGeometry(OsmLatLon(lat, lon))
+private fun pointGeom(lat: Double, lon: Double) = ElementPointGeometry(p(lat, lon))
 
 private fun edit(
     elementType: Element.Type = NODE,
     elementId: Long = -1L,
-    pos: OsmLatLon = OsmLatLon(0.0,0.0),
+    pos: OsmLatLon = p(0.0,0.0),
     timestamp: Long = 123L,
     action: ElementEditAction
 ) = ElementEdit(

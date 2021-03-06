@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
@@ -26,7 +26,7 @@ class AddCyclewayTest {
                 "highway" to "primary"
             ))
         ))
-        val p1 = OsmLatLon(0.0,0.0)
+        val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
 
@@ -43,7 +43,7 @@ class AddCyclewayTest {
                 "highway" to "cycleway"
             ))
         ))
-        val p1 = OsmLatLon(0.0,0.0)
+        val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(14.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
@@ -64,7 +64,7 @@ class AddCyclewayTest {
                 "highway" to "cycleway"
             ))
         ))
-        val p1 = OsmLatLon(0.0,0.0)
+        val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(14.0, 135.0)
         val p4 = p3.translate(50.0, 75.0)
@@ -85,7 +85,7 @@ class AddCyclewayTest {
                 "highway" to "cycleway"
             ))
         ))
-        val p1 = OsmLatLon(0.0,0.0)
+        val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(16.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
@@ -106,7 +106,7 @@ class AddCyclewayTest {
                 "highway" to "cycleway"
             ))
         ))
-        val p1 = OsmLatLon(0.0,0.0)
+        val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(10.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -84,8 +84,8 @@ class AddRoofShapeTest {
         val element2 = OsmWay(2L, 1, listOf(), mapOf("building:levels" to "3"))
 
         val mapData = TestMapDataWithGeometry(listOf(element, element2))
-        mapData.wayGeometriesById[1L] = ElementPointGeometry(OsmLatLon(0.0,0.0))
-        mapData.wayGeometriesById[2L] = ElementPointGeometry(OsmLatLon(0.0,0.0))
+        mapData.wayGeometriesById[1L] = ElementPointGeometry(p(0.0,0.0))
+        mapData.wayGeometriesById[2L] = ElementPointGeometry(p(0.0,0.0))
 
         val quests = questType.getApplicableElements(mapData)
 
@@ -103,8 +103,8 @@ class AddRoofShapeTest {
         val element2 = OsmWay(2L, 1, listOf(), mapOf("building:levels" to "3"))
 
         val mapData = TestMapDataWithGeometry(listOf(element, element2))
-        mapData.wayGeometriesById[1L] = ElementPointGeometry(OsmLatLon(0.0,0.0))
-        mapData.wayGeometriesById[2L] = ElementPointGeometry(OsmLatLon(0.0,0.0))
+        mapData.wayGeometriesById[1L] = ElementPointGeometry(p(0.0,0.0))
+        mapData.wayGeometriesById[2L] = ElementPointGeometry(p(0.0,0.0))
 
         val quests = questType.getApplicableElements(mapData)
 

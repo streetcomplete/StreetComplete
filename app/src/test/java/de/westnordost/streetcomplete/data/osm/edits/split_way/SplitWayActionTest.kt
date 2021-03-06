@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.p
 import de.westnordost.streetcomplete.util.createTranslated
 import org.junit.Assert.*
 import org.junit.Before
@@ -22,10 +23,10 @@ class SplitWayActionTest {
     private val repos: MapDataRepository = mock()
 
     private val p = arrayOf(
-        OsmLatLon(0.0, 0.0),
-        OsmLatLon(0.0, 1.0),
-        OsmLatLon(1.0, 1.0),
-        OsmLatLon(1.0, 0.0)
+        p(0.0, 0.0),
+        p(0.0, 1.0),
+        p(1.0, 1.0),
+        p(1.0, 0.0)
     )
     private val n = arrayOf(
         OsmNode(0, 1, p[0], null),
@@ -35,8 +36,8 @@ class SplitWayActionTest {
     )
 
     private val outsidePoints = arrayOf(
-        OsmLatLon(5.0, 0.0),
-        OsmLatLon(6.0, 1.0)
+        p(5.0, 0.0),
+        p(6.0, 1.0)
     )
 
     private var way: Way = createWayWithNodeIds(0,1,2,3)

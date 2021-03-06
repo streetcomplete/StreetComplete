@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
@@ -368,7 +368,7 @@ val edits1 = listOf(
     edit(noteId = 2, action = NoteEditAction.COMMENT, text = "abc", timestamp = 900),
 )
 
-private fun p(latitude: Double, longitude: Double) = OsmLatLon(latitude, longitude)
+private fun p(latitude: Double, longitude: Double) = p(latitude, longitude)
 
 private fun edit(
     id: Long = 1,

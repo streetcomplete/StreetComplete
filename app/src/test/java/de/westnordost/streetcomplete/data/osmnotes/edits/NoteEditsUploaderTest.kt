@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.NotesApi
@@ -53,7 +53,7 @@ class NoteEditsUploaderTest {
     }
 
     @Test fun `upload note comment`() {
-        val pos = OsmLatLon(1.0, 13.0)
+        val pos = p(1.0, 13.0)
         val edit = edit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
         val note = note(id = 1L)
 
@@ -70,7 +70,7 @@ class NoteEditsUploaderTest {
     }
 
     @Test fun `upload create note`() {
-        val pos = OsmLatLon(1.0, 13.0)
+        val pos = p(1.0, 13.0)
         val edit = edit(noteId = -5L, action = NoteEditAction.CREATE, text = "abc", pos = pos)
         val note = note(id = 123L)
 
@@ -87,7 +87,7 @@ class NoteEditsUploaderTest {
     }
 
     @Test fun `fail uploading note comment because of a conflict`() {
-        val pos = OsmLatLon(1.0, 13.0)
+        val pos = p(1.0, 13.0)
         val edit = edit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
         val note = note(id = 1L)
 
@@ -105,7 +105,7 @@ class NoteEditsUploaderTest {
     }
 
     @Test fun `fail uploading note comment because note was deleted`() {
-        val pos = OsmLatLon(1.0, 13.0)
+        val pos = p(1.0, 13.0)
         val edit = edit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
         val note = note(id = 1L)
 
@@ -135,7 +135,7 @@ class NoteEditsUploaderTest {
     }
 
     @Test fun `upload note comment with attached images`() {
-        val pos = OsmLatLon(1.0, 13.0)
+        val pos = p(1.0, 13.0)
         val edit = edit(
             noteId = 1L,
             action = NoteEditAction.COMMENT,
@@ -161,7 +161,7 @@ class NoteEditsUploaderTest {
     }
 
     @Test fun `upload create note with attached images`() {
-        val pos = OsmLatLon(1.0, 13.0)
+        val pos = p(1.0, 13.0)
         val edit = edit(
             noteId = 1L,
             action = NoteEditAction.CREATE,
@@ -207,7 +207,7 @@ private fun edit(
     action: NoteEditAction = NoteEditAction.COMMENT,
     text: String = "test123",
     imagePaths: List<String> = emptyList(),
-    pos: LatLon = OsmLatLon(1.0, 1.0)
+    pos: LatLon = p(1.0, 1.0)
 ) = NoteEdit(
         1L,
         noteId,
@@ -223,6 +223,6 @@ private fun edit(
 private fun note(id: Long = 1L): Note {
     val note = Note()
     note.id = id
-    note.position = OsmLatLon(1.0, 2.0)
+    note.position = p(1.0, 2.0)
     return note
 }

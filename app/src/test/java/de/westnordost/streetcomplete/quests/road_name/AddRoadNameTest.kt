@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.p
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.LocalizedName
@@ -108,7 +108,7 @@ class AddRoadNameTest {
 
     // convenience method
     private fun roadName(vararg names: LocalizedName): RoadName {
-        val pointsList = listOf(OsmLatLon(0.0,0.0), OsmLatLon(1.0,1.0))
+        val pointsList = listOf(p(0.0,0.0), p(1.0,1.0))
         return RoadName(names.toList(), 1L, pointsList)
     }
 }

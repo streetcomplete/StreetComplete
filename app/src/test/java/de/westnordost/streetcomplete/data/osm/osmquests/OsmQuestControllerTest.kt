@@ -132,7 +132,7 @@ class OsmQuestControllerTest {
             Pair(node(42), pointGeom(1.0, 1.0))
         )
 
-        on(notesSource.getAllPositions(any())).thenReturn(listOf(OsmLatLon(2.0,2.0)))
+        on(notesSource.getAllPositions(any())).thenReturn(listOf(p(2.0,2.0)))
 
         on(hiddenDB.getAll()).thenReturn(listOf(
             // applicable!
@@ -178,8 +178,8 @@ class OsmQuestControllerTest {
     @Test fun `updates quests on notes listener update`() {
 
         val notes = listOf(
-            note(id = 1, OsmLatLon(1.0,0.0)),
-            note(id = 1, OsmLatLon(0.5, 0.5)),
+            note(id = 1, p(1.0,0.0)),
+            note(id = 1, p(0.5, 0.5)),
         )
 
         on(db.getAllIdsInBBox(any())).thenReturn(listOf(10L, 20L))
@@ -295,7 +295,7 @@ class OsmQuestControllerTest {
 
         on(db.getAllInBBox(bbox)).thenReturn(previousQuests)
 
-        on(notesSource.getAllPositions(any())).thenReturn(listOf(OsmLatLon(2.0,2.0)))
+        on(notesSource.getAllPositions(any())).thenReturn(listOf(p(2.0,2.0)))
 
         on(hiddenDB.getAll()).thenReturn(listOf(
             OsmQuestKey(Element.Type.NODE, 3L, ApplicableQuestType2::class.simpleName!!)
@@ -322,7 +322,7 @@ private fun quest(
     questType: OsmElementQuestType<*> = ApplicableQuestType,
     elementType: Element.Type = Element.Type.NODE,
     elementId: Long = 1,
-    geometry: ElementGeometry = ElementPointGeometry(OsmLatLon(1.0,1.0))
+    geometry: ElementGeometry = ElementPointGeometry(p(1.0,1.0))
 ) = OsmQuest(id, questType, elementType, elementId, geometry)
 
 private fun node(
@@ -333,14 +333,14 @@ private fun node(
     tags: Map<String,String>? = null
 ) = OsmNode(id, version, lat, lon, tags)
 
-private fun note(id: Long = 1L, position: LatLon = OsmLatLon(1.0, 2.0)): Note {
+private fun note(id: Long = 1L, position: LatLon = p(1.0, 2.0)): Note {
     val note = Note()
     note.id = id
     note.position = position
     return note
 }
 
-private fun pointGeom(lat: Double, lon: Double) = ElementPointGeometry(OsmLatLon(lat, lon))
+private fun pointGeom(lat: Double, lon: Double) = ElementPointGeometry(p(lat, lon))
 
 private object ApplicableQuestType : TestQuestTypeA() {
     override fun isApplicableTo(element: Element) = true
