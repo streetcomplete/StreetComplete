@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
 import de.westnordost.streetcomplete.node
-import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.way
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -17,7 +17,7 @@ class KerbUtilTest {
     @Test fun `barrier=kerb nodes on footways count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 2, tags = mapOf("barrier" to "kerb")),
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1, listOf(1,2,3), mapOf(
                 "highway" to "footway"
             ))
         ))
@@ -27,10 +27,10 @@ class KerbUtilTest {
     @Test fun `shared nodes between barrier=kerb ways and footways count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 2, tags = null),
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1, listOf(1,2,3), mapOf(
                 "highway" to "footway"
             )),
-            OsmWay(2L, 1, listOf(4,2,5), mapOf(
+            way(2, listOf(4,2,5), mapOf(
                 "barrier" to "kerb"
             )),
         ))
@@ -40,11 +40,11 @@ class KerbUtilTest {
     @Test fun `shared endpoints between sidewalks and crossings count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = null),
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1, listOf(1,2), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
             )),
-            OsmWay(2L, 1, listOf(1,3), mapOf(
+            way(2, listOf(1,3), mapOf(
                 "highway" to "footway",
                 "footway" to "crossing"
             )),
@@ -55,15 +55,15 @@ class KerbUtilTest {
     @Test fun `shared endpoints between sidewalks and crossings and sidewalk without endpoint don't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = null),
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1, listOf(1,2), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
             )),
-            OsmWay(2L, 1, listOf(1,3), mapOf(
+            way(2, listOf(1,3), mapOf(
                 "highway" to "footway",
                 "footway" to "crossing"
             )),
-            OsmWay(3L, 1, listOf(4,1,5), mapOf(
+            way(3, listOf(4,1,5), mapOf(
                 "highway" to "footway",
             )),
         ))
@@ -73,11 +73,11 @@ class KerbUtilTest {
     @Test fun `shared endpoints between two crossings don't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = null),
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1, listOf(1,2), mapOf(
                 "highway" to "footway",
                 "footway" to "crossing"
             )),
-            OsmWay(2L, 1, listOf(1,3), mapOf(
+            way(2, listOf(1,3), mapOf(
                 "highway" to "footway",
                 "footway" to "crossing"
             )),
@@ -88,11 +88,11 @@ class KerbUtilTest {
     @Test fun `shared endpoints between a crossing and not-endpoints of a sidewalk don't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = null),
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1, listOf(1,2), mapOf(
                 "highway" to "footway",
                 "footway" to "crossing"
             )),
-            OsmWay(2L, 1, listOf(4, 1,3), mapOf(
+            way(2, listOf(4, 1,3), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
             )),
@@ -103,15 +103,15 @@ class KerbUtilTest {
     @Test fun `shared endpoints between crossings and several sidewalks don't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = null),
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1, listOf(1,2), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
             )),
-            OsmWay(2L, 1, listOf(1,4), mapOf(
+            way(2, listOf(1,4), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
             )),
-            OsmWay(3L, 1, listOf(1,3), mapOf(
+            way(3, listOf(1,3), mapOf(
                 "highway" to "footway",
                 "footway" to "crossing"
             )),
@@ -122,14 +122,14 @@ class KerbUtilTest {
     @Test fun `shared endpoints between crossings and sidewalks, some not fully tagged, don't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(tags = null),
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1L, listOf(1,2), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
             )),
-            OsmWay(2L, 1, listOf(1,4), mapOf(
+            way(2L, listOf(1,4), mapOf(
                 "highway" to "footway",
             )),
-            OsmWay(3L, 1, listOf(1,3), mapOf(
+            way(3L, listOf(1,3), mapOf(
                 "highway" to "footway",
                 "footway" to "crossing"
             )),
@@ -140,15 +140,15 @@ class KerbUtilTest {
     @Test fun `shared endpoints between crossings and sidewalk and cycleway don't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = null),
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1, listOf(1,2), mapOf(
                 "highway" to "footway",
                 "footway" to "crossing"
             )),
-            OsmWay(2L, 1, listOf(1,4), mapOf(
+            way(2, listOf(1,4), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
             )),
-            OsmWay(3L, 1, listOf(1,3), mapOf(
+            way(3, listOf(1,3), mapOf(
                 "highway" to "cycleway",
             )),
         ))
@@ -158,15 +158,15 @@ class KerbUtilTest {
     @Test fun `shared endpoints between crossings and sidewalk and footway construction don't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = null),
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1, listOf(1,2), mapOf(
                 "highway" to "footway",
                 "footway" to "crossing"
             )),
-            OsmWay(2L, 1, listOf(1,4), mapOf(
+            way(2, listOf(1,4), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
             )),
-            OsmWay(3L, 1, listOf(1,3), mapOf(
+            way(3, listOf(1,3), mapOf(
                 "construction" to "footway",
             )),
         ))
@@ -176,15 +176,15 @@ class KerbUtilTest {
     @Test fun `intersection with a road doesn't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = null),
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1, listOf(1,2), mapOf(
                 "highway" to "footway",
                 "footway" to "crossing"
             )),
-            OsmWay(2L, 1, listOf(1,4), mapOf(
+            way(2, listOf(1,4), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
             )),
-            OsmWay(3L, 1, listOf(5,1,3), mapOf(
+            way(3, listOf(5,1,3), mapOf(
                 "highway" to "secondary",
             )),
         ))
@@ -194,13 +194,13 @@ class KerbUtilTest {
     @Test fun `nodes are not returned twice`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = mapOf("barrier" to "kerb")),
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1, listOf(1,2,3), mapOf(
                 "highway" to "footway"
             )),
-            OsmWay(2L, 1, listOf(1,4,5), mapOf(
+            way(2, listOf(1,4,5), mapOf(
                 "highway" to "footway"
             )),
-            OsmWay(2L, 1, listOf(1,6,7), mapOf(
+            way(2, listOf(1,6,7), mapOf(
                 "barrier" to "kerb"
             )),
         ))

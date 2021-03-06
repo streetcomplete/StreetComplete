@@ -9,6 +9,10 @@ import de.westnordost.osmapi.map.data.Element.Type.WAY
 import de.westnordost.osmapi.map.data.Element.Type.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.member
+import de.westnordost.streetcomplete.node
+import de.westnordost.streetcomplete.rel
+import de.westnordost.streetcomplete.way
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -41,9 +45,9 @@ class UpdatedElementsHandlerTest {
     @Test fun `updates node id and all ways containing this id`() {
         val elements = listOf<Element>(
             node(-1),
-            way(1, mutableListOf(3,2,-1)), // contains it once
-            way(2, mutableListOf(-1,2,-1,-1)), // contains it multiple times
-            way(3, mutableListOf(3,4)) // contains it not
+            way(1, listOf(3,2,-1)), // contains it once
+            way(2, listOf(-1,2,-1,-1)), // contains it multiple times
+            way(3, listOf(3,4)) // contains it not
         )
         val handler = UpdatedElementsHandler()
         handler.handleAll(
@@ -65,9 +69,9 @@ class UpdatedElementsHandlerTest {
     @Test fun `updates node id and all relations containing this id`() {
         val elements = listOf<Element>(
             node(-1),
-            relation(1, mutableListOf(member(NODE, 3), member(NODE, -1))), // contains it once
-            relation(2, mutableListOf(member(NODE, -1), member(NODE, 2), member(NODE, -1))), // contains it multiple times
-            relation(3, mutableListOf(member(WAY, -1), member(RELATION, -1), member(NODE, 1))) // contains it not
+            rel(1, listOf(member(NODE, 3), member(NODE, -1))), // contains it once
+            rel(2, listOf(member(NODE, -1), member(NODE, 2), member(NODE, -1))), // contains it multiple times
+            rel(3, listOf(member(WAY, -1), member(RELATION, -1), member(NODE, 1))) // contains it not
         )
         val handler = UpdatedElementsHandler()
         handler.handle(diff(NODE, -1, 1, 1))
@@ -99,9 +103,9 @@ class UpdatedElementsHandlerTest {
     @Test fun `deletes node id and updates all ways containing this id`() {
         val elements = listOf<Element>(
             node(1),
-            way(1, mutableListOf(3,1)), // contains it once
-            way(2, mutableListOf(1,2,1)), // contains it multiple times
-            way(3, mutableListOf(3,4)) // contains it not
+            way(1, listOf(3,1)), // contains it once
+            way(2, listOf(1,2,1)), // contains it multiple times
+            way(3, listOf(3,4)) // contains it not
         )
         val handler = UpdatedElementsHandler()
         handler.handleAll(
@@ -124,9 +128,9 @@ class UpdatedElementsHandlerTest {
     @Test fun `deletes node id and updates all relations containing this id`() {
         val elements = listOf<Element>(
             node(1),
-            relation(1, mutableListOf(member(NODE, 3), member(NODE, 1))), // contains it once
-            relation(2, mutableListOf(member(NODE, 1), member(NODE, 2), member(NODE, 1))), // contains it multiple times
-            relation(3, mutableListOf(member(WAY, 1), member(RELATION, 1), member(NODE, 2))) // contains it not
+            rel(1, listOf(member(NODE, 3), member(NODE, 1))), // contains it once
+            rel(2, listOf(member(NODE, 1), member(NODE, 2), member(NODE, 1))), // contains it multiple times
+            rel(3, listOf(member(WAY, 1), member(RELATION, 1), member(NODE, 2))) // contains it not
         )
         val handler = UpdatedElementsHandler()
         handler.handleAll(
@@ -159,8 +163,8 @@ class UpdatedElementsHandlerTest {
         val elements = listOf<Element>(
             node(-1),
             node(-2),
-            way(-3, mutableListOf()),
-            relation(-4, mutableListOf())
+            way(-3, listOf()),
+            rel(-4, listOf())
         )
         val handler = UpdatedElementsHandler()
         handler.handleAll(
@@ -181,10 +185,6 @@ class UpdatedElementsHandlerTest {
     }
 }
 
-private fun node(id: Long) = OsmNode(id, 1, 0.0, 0.0, null)
-private fun way(id: Long, nodes: MutableList<Long>) = OsmWay(id, 1, nodes, null)
-private fun relation(id: Long, members: MutableList<RelationMember>) = OsmRelation(id, 1, members, null)
-private fun member(type: Element.Type, ref: Long) = OsmRelationMember(ref, "", type)
 
 private fun diff(type: Element.Type, oldId: Long, newId: Long? = null, newVersion: Int? = null) =
     DiffElement().also {

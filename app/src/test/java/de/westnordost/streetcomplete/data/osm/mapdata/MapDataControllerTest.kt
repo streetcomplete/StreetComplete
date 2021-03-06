@@ -148,6 +148,4 @@ class MapDataControllerTest {
     }
 }
 
-private fun node(id: Long) = OsmNode(id, 0, 0.0, 0.0, null)
-
 private fun geom() = ElementPointGeometry(p(0.0, 0.0))

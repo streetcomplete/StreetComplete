@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.p
-import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sidewalk.SeparatelyMapped
 import de.westnordost.streetcomplete.quests.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.util.translate
+import de.westnordost.streetcomplete.way
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
@@ -17,7 +17,7 @@ class AddSidewalkTest {
     private val questType = AddSidewalk()
 
     @Test fun `not applicable to road with sidewalk`() {
-        val road = OsmWay(1L, 1, listOf(1,2,3), mapOf(
+        val road = way(tags = mapOf(
             "highway" to "primary",
             "sidewalk" to "both"
         ))
@@ -27,7 +27,7 @@ class AddSidewalkTest {
     }
 
     @Test fun `applicable to road with missing sidewalk`() {
-        val road = OsmWay(1L, 1, listOf(1,2,3), mapOf(
+        val road = way(tags = mapOf(
             "highway" to "primary",
             "lit" to "yes"
         ))
@@ -37,12 +37,12 @@ class AddSidewalkTest {
     }
 
     @Test fun `not applicable to road with nearby footway`() {
-        val road = OsmWay(1L, 1, listOf(1,2), mapOf(
+        val road = way(1, listOf(1,2), mapOf(
             "highway" to "primary",
             "lit" to "yes",
             "width" to "18"
         ))
-        val footway = OsmWay(2L, 1, listOf(3,4), mapOf(
+        val footway = way(2, listOf(3,4), mapOf(
             "highway" to "footway"
         ))
         val mapData = TestMapDataWithGeometry(listOf(road, footway))
@@ -59,12 +59,12 @@ class AddSidewalkTest {
     }
 
     @Test fun `applicable to road with nearby footway that is not aligned to the road`() {
-        val road = OsmWay(1L, 1, listOf(1,2), mapOf(
+        val road = way(1, listOf(1,2), mapOf(
             "highway" to "primary",
             "lit" to "yes",
             "width" to "18"
         ))
-        val footway = OsmWay(2L, 1, listOf(3,4), mapOf(
+        val footway = way(2, listOf(3,4), mapOf(
             "highway" to "footway"
         ))
         val mapData = TestMapDataWithGeometry(listOf(road, footway))
@@ -81,12 +81,12 @@ class AddSidewalkTest {
     }
 
     @Test fun `applicable to road with footway that is far away enough`() {
-        val road = OsmWay(1L, 1, listOf(1,2), mapOf(
+        val road = way(1L, listOf(1,2), mapOf(
             "highway" to "primary",
             "lit" to "yes",
             "width" to "18"
         ))
-        val footway = OsmWay(2L, 1, listOf(3,4), mapOf(
+        val footway = way(2L, listOf(3,4), mapOf(
             "highway" to "footway"
         ))
 
@@ -104,12 +104,12 @@ class AddSidewalkTest {
     }
 
     @Test fun `applicable to small road with footway that is far away enough`() {
-        val road = OsmWay(1L, 1, listOf(1,2), mapOf(
+        val road = way(1, listOf(1,2), mapOf(
             "highway" to "primary",
             "lit" to "yes",
             "lanes" to "2"
         ))
-        val footway = OsmWay(2L, 1, listOf(3,4), mapOf(
+        val footway = way(2, listOf(3,4), mapOf(
             "highway" to "cycleway"
         ))
 

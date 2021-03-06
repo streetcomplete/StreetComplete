@@ -148,27 +148,27 @@ class AddOpeningHoursTest {
 
     @Test fun `isApplicableTo returns false for unknown places`() {
         assertFalse(questType.isApplicableTo(node(
-            tags = mapOf("whatisthis" to "something")
+                tags = mapOf("whatisthis" to "something")
         )))
     }
 
     @Test fun `isApplicableTo returns true for known places`() {
         assertTrue(questType.isApplicableTo(node(
-            tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
+                tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
         )))
     }
 
     @Test fun `isApplicableTo returns true if the opening hours cannot be parsed`() {
         assertTrue(questType.isApplicableTo(node(
-            tags = mapOf("shop" to "supermarket", "name" to "Supi", "opening_hours" to "maybe open maybe closed who knows"),
-            date = "2000-11-11".toCheckDate()
+                tags = mapOf("shop" to "supermarket", "name" to "Supi", "opening_hours" to "maybe open maybe closed who knows"),
+                date = "2000-11-11".toCheckDate()
         )))
     }
 
     @Test fun `isApplicableTo returns false if the opening hours are not supported`() {
         assertFalse(questType.isApplicableTo(node(
-            tags = mapOf("shop" to "supermarket", "name" to "Supi", "opening_hours" to "1998 Mo-Fr 18:00-20:00"),
-            date = "2000-11-11".toCheckDate()
+                tags = mapOf("shop" to "supermarket", "name" to "Supi", "opening_hours" to "1998 Mo-Fr 18:00-20:00"),
+                date = "2000-11-11".toCheckDate()
         )))
     }
 }

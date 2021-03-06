@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
 import de.westnordost.osmapi.map.data.*
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.p
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Assert.*
@@ -16,14 +16,14 @@ class AddHousenumberTest {
     private val questType = AddHousenumber()
 
     @Test fun `does not create quest for generic building`() {
-        val building = OsmWay(1L, 1, NODES1, mapOf("building" to "yes"))
+        val building = way(1L, NODES1, mapOf("building" to "yes"))
         val mapData = createMapData(mapOf(building to POSITIONS1))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         assertEquals(false, questType.isApplicableTo(building))
     }
 
     @Test fun `does not create quest for building with address`() {
-        val building = OsmWay(1L, 1, NODES1, mapOf(
+        val building = way(1L, NODES1, mapOf(
             "building" to "detached",
             "addr:housenumber" to "123"
         ))
@@ -33,7 +33,7 @@ class AddHousenumberTest {
     }
 
     @Test fun `does create quest for building without address`() {
-        val building = OsmWay(1L, 1, NODES1, mapOf(
+        val building = way(1L, NODES1, mapOf(
             "building" to "detached"
         ))
         val mapData = createMapData(mapOf(building to POSITIONS1))
@@ -42,10 +42,10 @@ class AddHousenumberTest {
     }
 
     @Test fun `does not create quest for building with address node on outline`() {
-        val building = OsmWay(1L, 1, NODES1, mapOf(
+        val building = way(1, NODES1, mapOf(
             "building" to "detached"
         ))
-        val addr = OsmNode(2L, 1, P2, mapOf(
+        val addr = node(2, P2, mapOf(
             "addr:housenumber" to "123"
         ))
         val mapData = createMapData(mapOf(
@@ -57,14 +57,13 @@ class AddHousenumberTest {
     }
 
     @Test fun `does not create quest for building that is part of a relation with an address`() {
-        val building = OsmWay(1L, 1, NODES1, mapOf(
+        val building = way(1, NODES1, mapOf(
             "building" to "detached"
         ))
-        val relationWithAddr = OsmRelation(2L, 1, listOf(
-            OsmRelationMember(1L, "something", Element.Type.WAY)
-        ), mapOf(
-            "addr:housenumber" to "123"
-        ))
+        val relationWithAddr = rel(
+            members = listOf(member(Element.Type.WAY, 1)),
+            tags =  mapOf("addr:housenumber" to "123")
+        )
 
         val mapData = createMapData(mapOf(
             building to POSITIONS1,
@@ -75,10 +74,10 @@ class AddHousenumberTest {
     }
 
     @Test fun `does not create quest for building that is inside an area with an address`() {
-        val building = OsmWay(1L, 1, NODES1, mapOf(
+        val building = way(1L, NODES1, mapOf(
             "building" to "detached"
         ))
-        val areaWithAddr = OsmWay(1L, 1, NODES2, mapOf(
+        val areaWithAddr = way(1L, NODES2, mapOf(
             "addr:housenumber" to "123",
             "amenity" to "school",
         ))
@@ -91,10 +90,10 @@ class AddHousenumberTest {
     }
 
     @Test fun `does not create quest for building that contains an address node`() {
-        val building = OsmWay(1L, 1, NODES1, mapOf(
+        val building = way(1L, NODES1, mapOf(
             "building" to "detached"
         ))
-        val addr = OsmNode(1L, 1, PC, mapOf(
+        val addr = node(1L, PC, mapOf(
             "addr:housenumber" to "123"
         ))
         val mapData = createMapData(mapOf(
@@ -106,7 +105,7 @@ class AddHousenumberTest {
     }
 
     @Test fun `does not create quest for building that intersects bounding box`() {
-        val building = OsmWay(1L, 1, NODES1, mapOf(
+        val building = way(1L, NODES1, mapOf(
             "building" to "detached"
         ))
         val mapData = createMapData(mapOf(

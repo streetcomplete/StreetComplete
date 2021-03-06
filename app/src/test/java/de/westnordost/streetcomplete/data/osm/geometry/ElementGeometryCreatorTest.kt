@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.geometry
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.*
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -11,7 +11,7 @@ import org.junit.Assert.*
 class ElementGeometryCreatorTest {
 
     @Test fun `create for node`() {
-        val g = create(OsmNode(0L, 0, P0, null))
+        val g = create(node(0, P0))
         assertEquals(P0, g.center)
     }
 
@@ -43,87 +43,87 @@ class ElementGeometryCreatorTest {
     }
 
     @Test fun `create for multipolygon relation with single empty way`() {
-        val geom = create(areaRelation(outer(EMPTY_WAY)))
+        val geom = create(areaRelation(asOuters(EMPTY_WAY)))
         assertNull(geom)
     }
 
     @Test fun `create for multipolygon relation with single way with no role`() {
-        val geom = create(areaRelation(member(AREA_WAY)))
+        val geom = create(areaRelation(asMembers(AREA_WAY)))
         assertNull(geom)
     }
 
     @Test fun `create for multipolygon relation with single outer way`() {
-        val geom = create(areaRelation(outer(AREA_WAY))) as ElementPolygonsGeometry
+        val geom = create(areaRelation(asOuters(AREA_WAY))) as ElementPolygonsGeometry
         assertEquals(CCW_RING, geom.polygons.single())
         assertEquals(O, geom.center)
     }
 
     @Test fun `create for multipolygon relation with single outer clockwise way`() {
-        val geom = create(areaRelation(outer(AREA_WAY_CLOCKWISE))) as ElementPolygonsGeometry
+        val geom = create(areaRelation(asOuters(AREA_WAY_CLOCKWISE))) as ElementPolygonsGeometry
         assertEquals(CCW_RING, geom.polygons.single())
     }
 
     @Test fun `create for multipolygon relation with outer composed of several ways`() {
-        val geom = create(areaRelation(outer(SIMPLE_WAY1, SIMPLE_WAY3, SIMPLE_WAY2))) as ElementPolygonsGeometry
+        val geom = create(areaRelation(asOuters(SIMPLE_WAY1, SIMPLE_WAY3, SIMPLE_WAY2))) as ElementPolygonsGeometry
         assertEquals(CCW_RING, geom.polygons.single())
     }
 
     @Test fun `create for multipolygon relation consisting solely of a hole`() {
-        val geom = create(areaRelation(inner(AREA_WAY)))
+        val geom = create(areaRelation(asInners(AREA_WAY)))
         assertNull(geom)
     }
 
     @Test fun `create for multipolygon relation with hole consisting of single way`() {
-        val geom = create(areaRelation(outer(AREA_WAY) + inner(AREA_WAY_CLOCKWISE))) as ElementPolygonsGeometry
+        val geom = create(areaRelation(asOuters(AREA_WAY) + asInners(AREA_WAY_CLOCKWISE))) as ElementPolygonsGeometry
         assertEquals(listOf(CCW_RING, CW_RING), geom.polygons)
         assertEquals(O, geom.center)
     }
 
     @Test fun `create for multipolygon relation with hole consisting of single counterclockwise way`() {
-        val geom = create(areaRelation(outer(AREA_WAY) + inner(AREA_WAY))) as ElementPolygonsGeometry
+        val geom = create(areaRelation(asOuters(AREA_WAY) + asInners(AREA_WAY))) as ElementPolygonsGeometry
         assertEquals(listOf(CCW_RING, CW_RING), geom.polygons)
         assertEquals(O, geom.center)
     }
 
     @Test fun `create for multipolygon relation with hole consisting of several ways`() {
-        val geom = create(areaRelation(outer(AREA_WAY) + inner(SIMPLE_WAY1, SIMPLE_WAY3, SIMPLE_WAY2))) as ElementPolygonsGeometry
+        val geom = create(areaRelation(asOuters(AREA_WAY) + asInners(SIMPLE_WAY1, SIMPLE_WAY3, SIMPLE_WAY2))) as ElementPolygonsGeometry
         assertEquals(listOf(CCW_RING, CW_RING), geom.polygons)
         assertEquals(O, geom.center)
     }
 
     @Test fun `creating for multipolygon relation ignores unusable parts`() {
         val geom = create(areaRelation(
-                outer(EMPTY_WAY, AREA_WAY, SIMPLE_WAY1) +
-                        inner(EMPTY_WAY) +
-                        member(AREA_WAY))) as ElementPolygonsGeometry
+                asOuters(EMPTY_WAY, AREA_WAY, SIMPLE_WAY1) +
+                        asInners(EMPTY_WAY) +
+                        asMembers(AREA_WAY))) as ElementPolygonsGeometry
         assertEquals(CCW_RING, geom.polygons.single())
         assertEquals(O, geom.center)
     }
 
     @Test fun `create for polyline relation with single empty way`() {
-        val geom = create(relation(member(EMPTY_WAY)))
+        val geom = create(rel(members = asMembers(EMPTY_WAY)))
         assertNull(geom)
     }
 
     @Test fun `create for polyline relation with single way`() {
-        val geom = create(relation(member(AREA_WAY))) as ElementPolylinesGeometry
+        val geom = create(rel(members = asMembers(AREA_WAY))) as ElementPolylinesGeometry
         assertEquals(CCW_RING, geom.polylines.single())
     }
 
     @Test fun `create for polyline relation with two ways`() {
-        val geom = create(relation(member(AREA_WAY, SIMPLE_WAY1))) as ElementPolylinesGeometry
+        val geom = create(rel(members = asMembers(AREA_WAY, SIMPLE_WAY1))) as ElementPolylinesGeometry
         assertTrue(geom.polylines.containsAll(listOf(CCW_RING, listOf(P0, P1))))
     }
 
     @Test fun `create for polyline relation with ways joined together`() {
-        val geom = create(relation(member(SIMPLE_WAY1, SIMPLE_WAY2, SIMPLE_WAY3, WAY_DUPLICATE_NODES))) as ElementPolylinesGeometry
+        val geom = create(rel(members = asMembers(SIMPLE_WAY1, SIMPLE_WAY2, SIMPLE_WAY3, WAY_DUPLICATE_NODES))) as ElementPolylinesGeometry
         assertTrue(geom.polylines.containsAll(listOf(CCW_RING, listOf(P0, P1, P2))))
     }
 
     @Test fun `positions for way`() {
-        val nodes = listOf<Node>(
-            OsmNode(0, 1, P0, null, null, null),
-            OsmNode(1, 1, P1, null, null, null)
+        val nodes = listOf(
+            node(0, P0),
+            node(1, P1)
         )
         val mapData = MutableMapData(nodes)
         val geom = create(SIMPLE_WAY1, mapData) as ElementPolylinesGeometry
@@ -131,27 +131,27 @@ class ElementGeometryCreatorTest {
     }
 
     @Test fun `returns null for non-existent way`() {
-        val way = OsmWay(1L, 1, listOf(1,2,3), null)
+        val way = way(1, listOf(1,2,3))
         assertNull(create(way, MutableMapData()))
     }
 
     @Test fun `positions for relation`() {
-        val relation = OsmRelation(1L, 1, listOf(
-            OsmRelationMember(0L, "", Element.Type.WAY),
-            OsmRelationMember(1L, "", Element.Type.WAY),
-            OsmRelationMember(1L, "", Element.Type.NODE)
-        ), null)
+        val relation = rel(1, listOf(
+            member(Element.Type.WAY, 0),
+            member(Element.Type.WAY, 1),
+            member(Element.Type.NODE, 1)
+        ))
 
         val ways = listOf<Way>(SIMPLE_WAY1, SIMPLE_WAY2)
         val nodesByWayId = mapOf<Long, List<Node>>(
             0L to listOf(
-                OsmNode(0, 1, P0, null, null, null),
-                OsmNode(1, 1, P1, null, null, null)
+                node(0, P0),
+                node(1, P1)
             ),
             1L to listOf(
-                OsmNode(1, 1, P1, null, null, null),
-                OsmNode(2, 1, P2, null, null, null),
-                OsmNode(3, 1, P3, null, null, null)
+                node(1, P1),
+                node(2, P2),
+                node(3, P3)
             )
         )
         val mapData = MutableMapData(nodesByWayId.values.flatten() + ways)
@@ -161,40 +161,40 @@ class ElementGeometryCreatorTest {
     }
 
     @Test fun `returns null for non-existent relation`() {
-        val relation = OsmRelation(1L, 1, listOf(
-            OsmRelationMember(1L, "", Element.Type.WAY),
-            OsmRelationMember(2L, "", Element.Type.WAY),
-            OsmRelationMember(1L, "", Element.Type.NODE)
-        ), null)
+        val relation = rel(1, listOf(
+            member(Element.Type.WAY, 1),
+            member(Element.Type.WAY, 2),
+            member(Element.Type.NODE, 1)
+        ))
         assertNull(create(relation, MutableMapData()))
     }
 
     @Test fun `returns null for relation with a way that's missing from map data`() {
-        val relation = OsmRelation(1L, 1, listOf(
-            OsmRelationMember(0L, "", Element.Type.WAY),
-            OsmRelationMember(1L, "", Element.Type.WAY)
-        ), null)
+        val relation = rel(1, listOf(
+            member(Element.Type.WAY, 0),
+            member(Element.Type.WAY, 1)
+        ))
         val mapData = MutableMapData(listOf(
             relation,
-            OsmWay(0, 0, listOf(0,1), null),
-            OsmNode(0, 0, P0, null),
-            OsmNode(1, 0, P1, null)
+            way(0, listOf(0,1)),
+            node(0, P0),
+            node(1, P1)
         ))
 
         assertNull(create(relation, mapData))
     }
 
     @Test fun `does not return null for relation with a way that's missing from map data if returning incomplete geometries is ok`() {
-        val relation = OsmRelation(1L, 1, listOf(
-            OsmRelationMember(0L, "", Element.Type.WAY),
-            OsmRelationMember(1L, "", Element.Type.WAY)
-        ), null)
-        val way = OsmWay(0, 0, listOf(0,1), null)
+        val relation = rel(1, listOf(
+            member(Element.Type.WAY, 0),
+            member(Element.Type.WAY, 1)
+        ))
+        val way = way(0, listOf(0,1))
         val mapData = MutableMapData(listOf(
             relation,
             way,
-            OsmNode(0, 0, P0, null),
-            OsmNode(1, 0, P1, null)
+            node(0, P0),
+            node(1, P1)
         ))
 
         assertEquals(
@@ -224,13 +224,13 @@ private val P1 = p(0.0, 0.0)
 private val P2 = p(2.0, 0.0)
 private val P3 = p(2.0, 2.0)
 
-private val SIMPLE_WAY1 = OsmWay(0, 0, listOf(0,1), null)
-private val SIMPLE_WAY2 = OsmWay(1, 0, listOf(1,2,3), null)
-private val SIMPLE_WAY3 = OsmWay(2, 0, listOf(0,3), null)
-private val AREA_WAY = OsmWay(4, 0, listOf(0,1,2,3,0), WAY_AREA)
-private val AREA_WAY_CLOCKWISE = OsmWay(5, 0, listOf(0,3,2,1,0), WAY_AREA)
-private val WAY_DUPLICATE_NODES = OsmWay(6, 0, listOf(0,1,1,2), null)
-private val EMPTY_WAY = OsmWay(7, 0, emptyList(), null)
+private val SIMPLE_WAY1 = way(0, listOf(0,1))
+private val SIMPLE_WAY2 = way(1, listOf(1,2,3))
+private val SIMPLE_WAY3 = way(2, listOf(0,3))
+private val AREA_WAY = way(4, listOf(0,1,2,3,0), WAY_AREA)
+private val AREA_WAY_CLOCKWISE = way(5, listOf(0,3,2,1,0), WAY_AREA)
+private val WAY_DUPLICATE_NODES = way(6, listOf(0,1,1,2))
+private val EMPTY_WAY = way(7, emptyList())
 
 private val CCW_RING = listOf(P0, P1, P2, P3, P0)
 private val CW_RING = listOf(P0, P3, P2, P1, P0)
@@ -246,10 +246,8 @@ private val WAY_GEOMETRIES = mapOf(
 )
 
 private fun areaRelation(members: List<RelationMember>) =
-    OsmRelation(0,0, members, mapOf("type" to "multipolygon"))
+    rel(0, members, mapOf("type" to "multipolygon"))
 
-private fun relation(members: List<RelationMember>) = OsmRelation(0,0, members, null)
-
-private fun outer(vararg ways: Way) = ways.map { OsmRelationMember(it.id, "outer", Element.Type.WAY) }
-private fun inner(vararg ways: Way) = ways.map { OsmRelationMember(it.id, "inner", Element.Type.WAY) }
-private fun member(vararg ways: Way) = ways.map { OsmRelationMember(it.id, "", Element.Type.WAY) }
+private fun asOuters(vararg ways: Way) = ways.map { member(Element.Type.WAY, it.id, "outer") }
+private fun asInners(vararg ways: Way) = ways.map { member(Element.Type.WAY, it.id, "inner") }
+private fun asMembers(vararg ways: Way) = ways.map { member(Element.Type.WAY, it.id, "") }

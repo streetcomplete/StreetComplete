@@ -5,13 +5,9 @@ import org.junit.Test
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.node
-import de.westnordost.osmapi.map.data.OsmRelation
-import de.westnordost.osmapi.map.data.OsmRelationMember
-import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.way
+import de.westnordost.streetcomplete.rel
 import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 
 import org.mockito.Mockito.*
 
@@ -45,16 +41,12 @@ class ElementDaoTest {
     }
 
     @Test fun putWay() {
-        val way: Way = mock()
-        on(way.type).thenReturn(Element.Type.WAY)
+        val way = way()
         dao.put(way)
         verify(wayDao).put(way)
     }
 
     @Test fun getWay() {
-        val way: Way = mock()
-        on(way.id).thenReturn(1L)
-
         dao.get(Element.Type.WAY, 1L)
         verify(wayDao).get(1L)
     }
@@ -65,16 +57,12 @@ class ElementDaoTest {
     }
 
     @Test fun putRelation() {
-        val relation: Relation = mock()
-        on(relation.type).thenReturn(Element.Type.RELATION)
+        val relation = rel()
         dao.put(relation)
         verify(relationDao).put(relation)
     }
 
     @Test fun getRelation() {
-        val relation: Relation = mock()
-        on(relation.id).thenReturn(1L)
-
         dao.get(Element.Type.RELATION, 1L)
         verify(relationDao).get(1L)
     }
@@ -85,12 +73,12 @@ class ElementDaoTest {
     }
 
     @Test fun putAllRelations() {
-        dao.putAll(listOf(createARelation()))
+        dao.putAll(listOf(rel()))
         verify(relationDao).putAll(anyCollection())
     }
 
     @Test fun putAllWays() {
-        dao.putAll(listOf(createAWay()))
+        dao.putAll(listOf(way()))
         verify(wayDao).putAll(anyCollection())
     }
 
@@ -100,7 +88,7 @@ class ElementDaoTest {
     }
 
     @Test fun putAllElements() {
-        dao.putAll(listOf(node(), createAWay(), createARelation()))
+        dao.putAll(listOf(node(), way(), rel()))
 
         verify(nodeDao).putAll(anyCollection())
         verify(wayDao).putAll(anyCollection())
@@ -130,9 +118,4 @@ class ElementDaoTest {
         verify(wayDao).getAll(listOf(0L))
         verify(relationDao).getAll(listOf(0L))
     }
-
-    private fun createAWay() = OsmWay(0, 0, listOf(0L), null)
-
-    private fun createARelation() =
-        OsmRelation(0, 0, listOf(OsmRelationMember(0, "", Element.Type.NODE)), null)
 }

@@ -2,8 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
@@ -18,7 +17,6 @@ import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
@@ -79,7 +77,7 @@ class ElementEditsUploaderTest {
         val action = DeletePoiNodeAction(1)
         val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", p(1.0,2.0), 123L, false, action)
         val idProvider = mock<ElementIdProvider>()
-        val updatedNode = mock<Node>()
+        val updatedNode = node()
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)

@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.p
-import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
@@ -12,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.bikeway.*
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 import de.westnordost.streetcomplete.util.translate
+import de.westnordost.streetcomplete.way
 import org.junit.Assert.*
 import org.junit.Test
 import java.util.*
@@ -22,7 +21,7 @@ class AddCyclewayTest {
 
     @Test fun `applicable to road with missing cycleway`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1L, listOf(1,2,3), mapOf(
                 "highway" to "primary"
             ))
         ))
@@ -35,11 +34,11 @@ class AddCyclewayTest {
 
     @Test fun `not applicable to road with nearby cycleway`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1L, listOf(1,2), mapOf(
                 "highway" to "primary",
                 "width" to "18"
             )),
-            OsmWay(2L, 1, listOf(3,4), mapOf(
+            way(2L, listOf(3,4), mapOf(
                 "highway" to "cycleway"
             ))
         ))
@@ -56,11 +55,11 @@ class AddCyclewayTest {
 
     @Test fun `applicable to road with nearby cycleway that is not aligned to the road`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1L, listOf(1,2), mapOf(
                 "highway" to "primary",
                 "width" to "18"
             )),
-            OsmWay(2L, 1, listOf(3,4), mapOf(
+            way(2L, listOf(3,4), mapOf(
                 "highway" to "cycleway"
             ))
         ))
@@ -77,11 +76,11 @@ class AddCyclewayTest {
 
     @Test fun `applicable to road with cycleway that is far away enough`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1L, listOf(1,2), mapOf(
                 "highway" to "primary",
                 "width" to "18"
             )),
-            OsmWay(2L, 1, listOf(3,4), mapOf(
+            way(2L, listOf(3,4), mapOf(
                 "highway" to "cycleway"
             ))
         ))
@@ -98,11 +97,11 @@ class AddCyclewayTest {
 
     @Test fun `applicable to small road with cycleway that is far away enough`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1L, listOf(1,2), mapOf(
                 "highway" to "primary",
                 "lanes" to "2"
             )),
-            OsmWay(2L, 1, listOf(3,4), mapOf(
+            way(2L, listOf(3,4), mapOf(
                 "highway" to "cycleway"
             ))
         ))
@@ -119,32 +118,32 @@ class AddCyclewayTest {
 
     @Test fun `not applicable to road with cycleway that is not old enough`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1L, listOf(1,2,3), mapOf(
                 "highway" to "primary",
                 "cycleway" to "track"
-            ), null, Date())
+            ), date = Date())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `applicable to road with cycleway that is old enough`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1L, listOf(1,2,3), mapOf(
                 "highway" to "primary",
                 "cycleway" to "track",
                 "check_date:cycleway" to "2001-01-01"
-            ), null, Date())
+            ), date = Date())
         ))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to road with cycleway that is old enough but has unknown cycleway tagging`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1L, listOf(1,2,3), mapOf(
                 "highway" to "primary",
                 "cycleway" to "whatsthis",
                 "check_date:cycleway" to "2001-01-01"
-            ), null, Date())
+            ), date = Date())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
@@ -484,7 +483,7 @@ class AddCyclewayTest {
 
     @Test fun `isApplicableTo returns null for untagged ways`() {
         assertNull(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified"
             ))
         ))
@@ -492,99 +491,96 @@ class AddCyclewayTest {
 
     @Test fun `isApplicableTo returns true for tagged old ways`() {
         assertTrue(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway" to "track"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertTrue(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:left" to "track"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertTrue(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:right" to "track"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertTrue(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:both" to "track"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
     }
 
     @Test fun `isApplicableTo returns false for tagged new ways`() {
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway" to "track"
-            ), Date())
+            ), date = Date())
         )!!)
     }
 
     @Test fun `isApplicableTo returns false for tagged old ways with unknown cycleway values`() {
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway" to "something"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:left" to "something"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:right" to "something"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:both" to "something"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
     }
 
     @Test fun `isApplicableTo returns false for tagged old ways with unknown cycleway lane values`() {
 
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway" to "lane",
                 "cycleway:lane" to "something"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:left" to "lane",
                 "cycleway:left:lane" to "something"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:right" to "lane",
                 "cycleway:right:lane" to "something"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:both" to "lane",
                 "cycleway:both:lane" to "something"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
     }
-
-    private fun createElement(tags: Map<String, String>, date: Date? = null): Element =
-        OsmWay(0L, 1, listOf(1,2,3), tags, null, date)
 }

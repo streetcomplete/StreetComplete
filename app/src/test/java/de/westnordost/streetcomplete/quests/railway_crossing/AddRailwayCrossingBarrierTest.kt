@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.railway_crossing
 
 import de.westnordost.streetcomplete.node
-import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.way
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -26,7 +26,7 @@ class AddRailwayCrossingBarrierTest {
     @Test fun `not applicable to crossing with private road`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = mapOf("railway" to "level_crossing")),
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(nodes = listOf(1,2,3), tags = mapOf(
                 "highway" to "residential",
                 "access" to "private"
             ))

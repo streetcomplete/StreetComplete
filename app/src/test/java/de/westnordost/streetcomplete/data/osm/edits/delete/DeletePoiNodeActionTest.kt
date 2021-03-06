@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.edits.delete
 
-import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.mock
+import de.westnordost.streetcomplete.node
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.*
 import org.junit.Before
@@ -12,7 +12,7 @@ import org.junit.Test
 
 class DeletePoiNodeActionTest {
 
-    private val e = OsmNode(1L, 2, 0.0, 0.0, mutableMapOf("amenity" to "atm"))
+    private val e = node(1, tags = mutableMapOf("amenity" to "atm"), version = 2)
 
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider

@@ -4,14 +4,12 @@ import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
-import de.westnordost.streetcomplete.p
 import de.westnordost.streetcomplete.util.createTranslated
 import org.junit.Assert.*
 import org.junit.Before
@@ -29,10 +27,10 @@ class SplitWayActionTest {
         p(1.0, 0.0)
     )
     private val n = arrayOf(
-        OsmNode(0, 1, p[0], null),
-        OsmNode(1, 1, p[1], null),
-        OsmNode(2, 1, p[2], null),
-        OsmNode(3, 1, p[3], null)
+        node(0, p[0]),
+        node(1, p[1]),
+        node(2, p[2]),
+        node(3, p[3])
     )
 
     private val outsidePoints = arrayOf(
@@ -40,7 +38,7 @@ class SplitWayActionTest {
         p(6.0, 1.0)
     )
 
-    private var way: Way = createWayWithNodeIds(0,1,2,3)
+    private var way = way(0, mutableListOf(0,1,2,3))
         set(value) {
             field = value
             updateRepos(value)
@@ -61,7 +59,7 @@ class SplitWayActionTest {
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if less than two split positions on closed way`() {
-        way = createWayWithNodeIds(0,1,2,0)
+        way = way(0, mutableListOf(0,1,2,0))
         doSplit(SplitAtPoint(p[1]))
     }
 
@@ -73,13 +71,13 @@ class SplitWayActionTest {
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if updated way was cut at the start`() {
-        way = createWayWithNodeIds(1,2,3)
+        way = way(0, mutableListOf(1,2,3))
         doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if updated way was cut at the end`() {
-        way = createWayWithNodeIds(0,1,2)
+        way = way(0, mutableListOf(0,1,2))
         doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
     }
 
@@ -114,27 +112,27 @@ class SplitWayActionTest {
     }
 
     @Test fun `do not raise conflict if way was reversed`() {
-        way = createWayWithNodeIds(3,2,1,0)
+        way = way(0, mutableListOf(3,2,1,0))
         val data = doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(3,2,-1),
             listOf(-1,1,0)
         )
     }
 
     @Test fun `find node to split at from several alternatives`() {
-        way = createWayWithNodeIds(0,1,2,0,3,0,1)
+        way = way(0, mutableListOf(0,1,2,0,3,0,1))
         val data = doSplit(SplitAtPoint(p[0]))
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(0,1,2,0),
             listOf(0,3,0,1)
         )
     }
 
     @Test fun `find line to split at from several alternatives`() {
-        way = createWayWithNodeIds(0,1,2,0,3,0,1)
+        way = way(0, mutableListOf(0,1,2,0,3,0,1))
         val data = doSplit(SplitAtLinePosition(p[0], p[3], 0.25))
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(0,1,2,0,-1),
             listOf(-1,3,0,1)
         )
@@ -142,16 +140,16 @@ class SplitWayActionTest {
 
     @Test fun `the order in which SplitLineAtPosition is defined does not matter`() {
         val data = doSplit(SplitAtLinePosition(p[2], p[1], 0.5))
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(0,1,-1),
             listOf(-1,2,3)
         )
     }
 
     @Test fun `merge last and first chunk for closed ways`() {
-        way = createWayWithNodeIds(0,1,2,3,0)
+        way = way(0, mutableListOf(0,1,2,3,0))
         val data = doSplit(SplitAtPoint(p[1]), SplitAtPoint(p[2]))
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(2,3,0,1),
             listOf(1,2)
         )
@@ -162,7 +160,7 @@ class SplitWayActionTest {
             "highway" to "residential",
             "surface" to "asphalt"
         )
-        way = OsmWay(0,1, mutableListOf(0,1,2,3), tags)
+        way = way(0, mutableListOf(0,1,2,3), tags)
 
         val ways = doSplit(SplitAtPoint(p[1])).ways
         for (way in ways) {
@@ -181,7 +179,7 @@ class SplitWayActionTest {
             "capacity:fat_persons" to "1",
             "incline" to "5.1%"
         )
-        way = OsmWay(0,1, mutableListOf(0,1,2,3), tags)
+        way = way(0, mutableListOf(0,1,2,3), tags)
 
         val ways = doSplit(SplitAtPoint(p[1])).ways
         for (way in ways) {
@@ -196,7 +194,7 @@ class SplitWayActionTest {
             "steps" to "yes",
             "incline" to "up"
         )
-        way = OsmWay(0,1, mutableListOf(0,1,2,3), tags)
+        way = way(0, mutableListOf(0,1,2,3), tags)
 
         val ways = doSplit(SplitAtPoint(p[1])).ways
         for (way in ways) {
@@ -207,7 +205,7 @@ class SplitWayActionTest {
     @Test fun `split way with one split position at vertex`() {
         val data = doSplit(SplitAtPoint(p[1]))
         assertTrue(data.nodes.isEmpty()) // no nodes were added
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(0,1),
             listOf(1,2,3)
         )
@@ -225,7 +223,7 @@ class SplitWayActionTest {
                 p1.longitude + 0.5 * (p2.longitude - p1.longitude)),
             node.position
         )
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(0,1,-1),
             listOf(-1,2,3)
         )
@@ -238,7 +236,7 @@ class SplitWayActionTest {
         val data = doSplit(SplitAtPoint(p[1]), SplitAtPoint(p[2]))
 
         assertTrue(data.nodes.isEmpty()) // no nodes were added
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(0,1),
             listOf(1,2),
             listOf(2,3)
@@ -254,7 +252,7 @@ class SplitWayActionTest {
         )
 
         assertEquals(2, data.nodes.size)
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(0,1,-1),
             listOf(-1,2,-2),
             listOf(-2,3)
@@ -270,7 +268,7 @@ class SplitWayActionTest {
         )
 
         assertEquals(1, data.nodes.size)
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(0,-1),
             listOf(-1,1),
             listOf(1,2,3)
@@ -288,7 +286,7 @@ class SplitWayActionTest {
         )
 
         assertEquals(2, data.nodes.size)
-        data.checkWaysNodeIds(
+        data.checkWaysNodes(
             listOf(0,1),
             listOf(1,-1),
             listOf(-1,-2),
@@ -309,7 +307,7 @@ class SplitWayActionTest {
 
     @Test fun `insert all way chunks into relation the way is a member of`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, membersForWays(listOf(0)), null)
+            rel(0,waysAsMembers(listOf(0)))
         ))
         val data = doSplit()
 
@@ -320,8 +318,8 @@ class SplitWayActionTest {
 
     @Test fun `insert all way chunks into multiple relations the way is a member of`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, membersForWays(listOf(0)), null),
-            OsmRelation(1,1, membersForWays(listOf(0)), null)
+            rel(0,waysAsMembers(listOf(0))),
+            rel(1,waysAsMembers(listOf(0)))
         ))
         val data = doSplit()
 
@@ -332,10 +330,10 @@ class SplitWayActionTest {
     }
 
     @Test fun `insert all way chunks multiple times into relation the way is a member of multiple times`() {
-        on(repos.getWay(1)).thenReturn(OsmWay(1, 1, listOf(0,5,0), null))
-        on(repos.getWay(2)).thenReturn(OsmWay(2, 1, listOf(3,4,3), null))
+        on(repos.getWay(1)).thenReturn(way(1, mutableListOf(0,5,0)))
+        on(repos.getWay(2)).thenReturn(way(2, mutableListOf(3,4,3)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, membersForWays(listOf(0,1,0,2)), null)
+            rel(0,waysAsMembers(listOf(0,1,0,2)))
         ))
         val data = doSplit()
 
@@ -353,8 +351,8 @@ class SplitWayActionTest {
 
     @Test fun `all way chunks in updated relations have the same role as the original way`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, membersForWays(listOf(0), "cool role"), null),
-            OsmRelation(1,1, membersForWays(listOf(0), "not so cool role"), null)
+            rel(0,waysAsMembers(listOf(0), "cool role")),
+            rel(1,waysAsMembers(listOf(0), "not so cool role"))
         ))
         val data = doSplit()
 
@@ -364,10 +362,10 @@ class SplitWayActionTest {
 
     @Test fun `insert way chunks at correct position in the updated relation`() {
         // 4 5 | 0 1 2 3 | 6 7  => 4 5 | 0 1 -1 | -1 2 3 | 6 7
-        on(repos.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,5), null))
-        on(repos.getWay(2)).thenReturn(OsmWay(2, 1, listOf(6,7), null))
+        on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4,5)))
+        on(repos.getWay(2)).thenReturn(way(2, mutableListOf(6,7)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, membersForWays(listOf(1,0,2)), null)
+            rel(0, waysAsMembers(listOf(1,0,2)))
         ))
         val data = doSplit()
 
@@ -388,16 +386,16 @@ class SplitWayActionTest {
         on(repos.getWay(1)).thenReturn(null)
         on(repos.getWay(2)).thenReturn(null)
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, membersForWays(listOf(1,0,2)), null)
+            rel(0, waysAsMembers(listOf(1,0,2)))
         ))
         doSplit()
     }
 
     @Test fun `insert way chunks backwards in the updated relation as end of reverse chain`() {
         // 4 3 | 0 1 2 3  =>  4 3 | -1 2 3 | 0 1 -1
-        on(repos.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,3), null))
+        on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4,3)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, membersForWays(listOf(1,0)), null)
+            rel(0, waysAsMembers(listOf(1,0)))
         ))
         val data = doSplit()
 
@@ -412,16 +410,16 @@ class SplitWayActionTest {
 
     @Test fun `ignore non-way relation members when determining way orientation in relation`() {
         // 4 3 | 0 1 2 3  =>  4 3 | -1 2 3 | 0 1 -1
-        on(repos.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,3), null))
+        on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4,3)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, mutableListOf<RelationMember>(
-                OsmRelationMember(1, "", WAY),
-                OsmRelationMember(0, "", NODE),
-                OsmRelationMember(1, "", RELATION),
-                OsmRelationMember(0, "", WAY),
-                OsmRelationMember(0, "", NODE),
-                OsmRelationMember(1, "", RELATION)
-            ), null)
+            rel(0, mutableListOf(
+                member(WAY, 1),
+                member(NODE, 0),
+                member(RELATION, 1),
+                member(WAY, 0),
+                member(NODE, 0),
+                member(RELATION, 1)
+            ))
         ))
         val data = doSplit()
 
@@ -436,9 +434,9 @@ class SplitWayActionTest {
 
     @Test fun `insert way chunks forwards in the updated relation as end of chain`() {
         // 4 0 | 0 1 2 3  =>  4 0 | 0 1 -1 | -1 2 3
-        on(repos.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,0), null))
+        on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4,0)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, membersForWays(listOf(1,0)), null)
+            rel(0, waysAsMembers(listOf(1,0)))
         ))
         val data = doSplit()
 
@@ -453,9 +451,9 @@ class SplitWayActionTest {
 
     @Test fun `insert way chunks backwards in the updated relation as start of reverse chain`() {
         // 0 1 2 3 | 4 0  =>  -1 2 3 | 0 1 -1 | 4 0
-        on(repos.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,0), null))
+        on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4,0)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, membersForWays(listOf(0,1)), null)
+            rel(0,waysAsMembers(listOf(0,1)))
         ))
         val data = doSplit()
 
@@ -470,9 +468,9 @@ class SplitWayActionTest {
 
     @Test fun `insert way chunks forwards in the updated relation as start of chain`() {
         // 0 1 2 3 | 4 3  =>  0 1 -1 | -1 2 3 | 4 3
-        on(repos.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,3), null))
+        on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4,3)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, membersForWays(listOf(0,1)), null)
+            rel(0, waysAsMembers(listOf(0,1)))
         ))
         val data = doSplit()
 
@@ -499,12 +497,12 @@ class SplitWayActionTest {
         role: String
     ) {
         val otherRole = if (role == "from") "to" else "from"
-        on(repos.getWay(1)).thenReturn(OsmWay(1, 1, listOf(3,4), null))
+        on(repos.getWay(1)).thenReturn(way(1, mutableListOf(3,4)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, mutableListOf<RelationMember>(
-                OsmRelationMember(0, role, WAY),
-                OsmRelationMember(1, otherRole, WAY),
-                OsmRelationMember(3, via, NODE)
+            rel(0, mutableListOf(
+                member(WAY, 0, role),
+                member(WAY, 1, otherRole),
+                member(NODE, 3, via)
             ), mapOf("type" to relationType))
         ))
         val data = doSplit()
@@ -537,13 +535,13 @@ class SplitWayActionTest {
         role: String
     ) {
         val otherRole = if (role == "from") "to" else "from"
-        on(repos.getWay(1)).thenReturn(OsmWay(1, 1, listOf(5,7), null))
-        on(repos.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,4,3), null))
+        on(repos.getWay(1)).thenReturn(way(1, mutableListOf(5,7)))
+        on(repos.getWay(2)).thenReturn(way(2, mutableListOf(5,4,3)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, mutableListOf<RelationMember>(
-                OsmRelationMember(0, role, WAY),
-                OsmRelationMember(1, otherRole, WAY),
-                OsmRelationMember(2, via, WAY)
+            rel(0, mutableListOf<RelationMember>(
+                member(WAY, 0, role),
+                member(WAY, 1, otherRole),
+                member(WAY, 2, via)
             ), mapOf("type" to relationType))
         ))
         val data = doSplit()
@@ -559,16 +557,16 @@ class SplitWayActionTest {
     }
 
     @Test fun `update a restriction-like relation with split-way and multiple via ways`() {
-        on(repos.getWay(0)).thenReturn(OsmWay(0, 1, listOf(0,1,2,3), null))
-        on(repos.getWay(1)).thenReturn(OsmWay(1, 1, listOf(6,7), null))
-        on(repos.getWay(2)).thenReturn(OsmWay(2, 1, listOf(4,5,6), null))
-        on(repos.getWay(3)).thenReturn(OsmWay(3, 1, listOf(3,4), null))
+        on(repos.getWay(0)).thenReturn(way(0, mutableListOf(0,1,2,3)))
+        on(repos.getWay(1)).thenReturn(way(1, mutableListOf(6,7)))
+        on(repos.getWay(2)).thenReturn(way(2, mutableListOf(4,5,6)))
+        on(repos.getWay(3)).thenReturn(way(3, mutableListOf(3,4)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, mutableListOf<RelationMember>(
-                OsmRelationMember(0, "from", WAY),
-                OsmRelationMember(1, "to", WAY),
-                OsmRelationMember(2, "via", WAY),
-                OsmRelationMember(3, "via", WAY)
+            rel(0, mutableListOf<RelationMember>(
+                member(WAY, 0, "from"),
+                member(WAY, 1, "to"),
+                member(WAY, 2, "via"),
+                member(WAY, 3, "via")
             ), mapOf("type" to "restriction"))
         ))
         val data = doSplit(SplitAtPoint(p[2]))
@@ -585,11 +583,11 @@ class SplitWayActionTest {
 
     @Test fun `no special treatment of restriction relation if the way has another role`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, mutableListOf<RelationMember>(
-                OsmRelationMember(0, "another role", WAY),
-                OsmRelationMember(1, "from", WAY),
-                OsmRelationMember(3, "via", NODE),
-                OsmRelationMember(3, "to", WAY)
+            rel(0, mutableListOf<RelationMember>(
+                member(WAY, 0, "another role"),
+                member(WAY, 1, "from"),
+                member(NODE, 3, "via"),
+                member(WAY, 3, "to")
             ), mapOf("type" to "restriction"))
         ))
         val data = doSplit()
@@ -600,9 +598,9 @@ class SplitWayActionTest {
 
     @Test fun `no special treatment of restriction relation if there is no via`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, mutableListOf<RelationMember>(
-                OsmRelationMember(0, "from", WAY),
-                OsmRelationMember(1, "to", WAY)
+            rel(0, mutableListOf<RelationMember>(
+                member(WAY, 0, "from"),
+                member(WAY, 1, "to")
             ), mapOf("type" to "restriction"))
         ))
         val data = doSplit()
@@ -613,10 +611,10 @@ class SplitWayActionTest {
 
     @Test fun `no special treatment of restriction relation if from-way does not touch via`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            OsmRelation(0,1, mutableListOf<RelationMember>(
-                OsmRelationMember(0, "from", WAY),
-                OsmRelationMember(4, "via", NODE),
-                OsmRelationMember(3, "to", WAY)
+            rel(0, mutableListOf<RelationMember>(
+                member(WAY, 0, "from"),
+                member(NODE, 4, "via"),
+                member(WAY, 3, "to")
             ), mapOf("type" to "restriction"))
         ))
         val data = doSplit()
@@ -657,14 +655,10 @@ class SplitWayActionTest {
         return MutableMapData(elements)
     }
 
-    private fun createWayWithNodeIds(vararg nodes: Long) = OsmWay(0, 2, nodes.toMutableList(), null)
 
-    private fun MapData.checkWaysNodeIds(vararg chunks: List<Long>) {
+    private fun MapData.checkWaysNodes(vararg chunks: List<Long>) {
         assertTrue(ways.map { it.nodeIds }.containsExactlyInAnyOrder(chunks.toList()))
     }
-
-    private fun membersForWays(ids: List<Long>, role: String = ""): List<RelationMember> =
-        ids.map { id -> OsmRelationMember(id, role, WAY) }.toMutableList()
 
     private fun MapData.checkRelationWayMemberNodeIds(vararg chunksByRelationId: Pair<Long, List<List<Long>>>) {
         assertEquals(

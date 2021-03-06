@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.crossing_island
 
 import de.westnordost.streetcomplete.node
-import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.way
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -31,7 +31,7 @@ class AddCrossingIslandTest {
             "highway" to "crossing",
             "crossing" to "something"
         ))
-        val privateRoad = OsmWay(1L, 1, listOf(1,2,3), mapOf(
+        val privateRoad = way(nodes = listOf(1,2,3), tags = mapOf(
             "highway" to "residential",
             "access" to "private"
         ))

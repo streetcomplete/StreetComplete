@@ -1,14 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
-import de.westnordost.streetcomplete.p
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -30,7 +27,7 @@ class UpdateElementTagsActionTest {
     fun `conflict if node moved too much`() {
         val p1 = p(0.0, 0.0)
         val p2 = p(0.1,0.0)
-        val n = OsmNode(1L, 2, p1, null)
+        val n = node(1, p1)
         UpdateElementTagsAction(
             SpatialPartsOfNode(p2),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
@@ -40,7 +37,7 @@ class UpdateElementTagsActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if way was extended or shortened at start`() {
-        val w = OsmWay(1L, 1, listOf(1,2,3), null)
+        val w = way(1, listOf(1,2,3))
         UpdateElementTagsAction(
             SpatialPartsOfWay(arrayListOf(0,1,2,3)),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
@@ -50,7 +47,7 @@ class UpdateElementTagsActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if way was extended or shortened at end`() {
-        val w = OsmWay(1L, 1, listOf(0,1,2), null)
+        val w = way(1,listOf(0,1,2))
         UpdateElementTagsAction(
             SpatialPartsOfWay(arrayListOf(0,1,2,3)),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
@@ -60,13 +57,14 @@ class UpdateElementTagsActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if relation members were removed`() {
-        val r = OsmRelation(1L, 1, listOf(
-            OsmRelationMember(1L, "a", Element.Type.NODE)
-        ), null)
+        val r = rel(1, listOf(
+            member(Element.Type.NODE, 1)
+        ))
+
         UpdateElementTagsAction(
             SpatialPartsOfRelation(arrayListOf(
-                OsmRelationMember(1L, "a", Element.Type.NODE),
-                OsmRelationMember(2L, "a", Element.Type.NODE)
+                member(Element.Type.NODE, 1),
+                member(Element.Type.NODE, 2)
             )),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             questType
@@ -75,13 +73,13 @@ class UpdateElementTagsActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if relation members were added`() {
-        val r = OsmRelation(1L, 1, listOf(
-            OsmRelationMember(1L, "a", Element.Type.NODE),
-            OsmRelationMember(2L, "a", Element.Type.NODE)
-        ), null)
+        val r = rel(1, listOf(
+            member(Element.Type.NODE, 1),
+            member(Element.Type.NODE, 2)
+        ))
         UpdateElementTagsAction(
             SpatialPartsOfRelation(arrayListOf(
-                OsmRelationMember(1L, "a", Element.Type.NODE)
+                member(Element.Type.NODE, 1)
             )),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             questType
@@ -90,14 +88,14 @@ class UpdateElementTagsActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if order of relation members changed`() {
-        val r = OsmRelation(1L, 1, listOf(
-            OsmRelationMember(1L, "a", Element.Type.NODE),
-            OsmRelationMember(2L, "a", Element.Type.NODE)
-        ), null)
+        val r = rel(1, listOf(
+            member(Element.Type.NODE, 1),
+            member(Element.Type.NODE, 2)
+        ))
         UpdateElementTagsAction(
             SpatialPartsOfRelation(arrayListOf(
-                OsmRelationMember(2L, "a", Element.Type.NODE),
-                OsmRelationMember(1L, "a", Element.Type.NODE)
+                member(Element.Type.NODE, 2),
+                member(Element.Type.NODE, 1)
             )),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             questType
@@ -106,12 +104,12 @@ class UpdateElementTagsActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if role of any relation member changed`() {
-        val r = OsmRelation(1L, 1, listOf(
-            OsmRelationMember(1L, "a", Element.Type.NODE)
-        ), null)
+        val r = rel(1, listOf(
+            member(Element.Type.NODE, 1, "a")
+        ))
         UpdateElementTagsAction(
             SpatialPartsOfRelation(arrayListOf(
-                OsmRelationMember(1L, "b", Element.Type.NODE)
+                member(Element.Type.NODE, 1, "b")
             )),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             questType
@@ -123,32 +121,32 @@ class UpdateElementTagsActionTest {
     fun `conflict if quest type is not applicable to element`() {
         on(questType.isApplicableTo(any())).thenReturn(false)
 
-        val r = OsmWay(1L, 1, listOf(1,2,3), null)
+        val w = way(1,listOf(1,2,3))
         UpdateElementTagsAction(
             SpatialPartsOfWay(arrayListOf(1,2,3)),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             questType
-        ).createUpdates(r, repos, provider)
+        ).createUpdates(w, repos, provider)
     }
 
     @Test(expected = ConflictException::class)
     fun `conflict if changes are not applicable`() {
-        val r = OsmWay(1L, 1, listOf(1,2,3), mutableMapOf("highway" to "residential"))
+        val w = way(1, listOf(1,2,3), mutableMapOf("highway" to "residential"))
         UpdateElementTagsAction(
             SpatialPartsOfWay(arrayListOf(1,2,3)),
             StringMapChanges(listOf(StringMapEntryAdd("highway", "living_street"))),
             questType
-        ).createUpdates(r, repos, provider)
+        ).createUpdates(w, repos, provider)
     }
 
     @Test fun `apply changes`() {
-        val r = OsmWay(1L, 1, listOf(1,2,3), null)
+        val w = way(1, listOf(1,2,3))
         val action = UpdateElementTagsAction(
             SpatialPartsOfWay(arrayListOf(1,2,3)),
             StringMapChanges(listOf(StringMapEntryAdd("highway", "living_street"))),
             questType
         )
-        val data = action.createUpdates(r, repos, provider)
+        val data = action.createUpdates(w, repos, provider)
         val updatedWay = data.single() as Way
         assertEquals(mapOf("highway" to "living_street"), updatedWay.tags)
     }
