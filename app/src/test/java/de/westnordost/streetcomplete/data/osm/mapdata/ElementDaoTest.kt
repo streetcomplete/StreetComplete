@@ -4,8 +4,7 @@ import org.junit.Before
 import org.junit.Test
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.streetcomplete.node
 import de.westnordost.osmapi.map.data.OsmRelation
 import de.westnordost.osmapi.map.data.OsmRelationMember
 import de.westnordost.osmapi.map.data.OsmWay
@@ -30,15 +29,12 @@ class ElementDaoTest {
     }
 
     @Test fun putNode() {
-        val node: Node = mock()
-        on(node.type).thenReturn(Element.Type.NODE)
+        val node = node(1)
         dao.put(node)
         verify(nodeDao).put(node)
     }
 
     @Test fun getNode() {
-        val node: Node = mock()
-        on(node.id).thenReturn(1L)
         dao.get(Element.Type.NODE, 1L)
         verify(nodeDao).get(1L)
     }
@@ -99,12 +95,12 @@ class ElementDaoTest {
     }
 
     @Test fun putAllNodes() {
-        dao.putAll(listOf(createANode()))
+        dao.putAll(listOf(node()))
         verify(nodeDao).putAll(anyCollection())
     }
 
     @Test fun putAllElements() {
-        dao.putAll(listOf(createANode(), createAWay(), createARelation()))
+        dao.putAll(listOf(node(), createAWay(), createARelation()))
 
         verify(nodeDao).putAll(anyCollection())
         verify(wayDao).putAll(anyCollection())
@@ -134,8 +130,6 @@ class ElementDaoTest {
         verify(wayDao).getAll(listOf(0L))
         verify(relationDao).getAll(listOf(0L))
     }
-
-    private fun createANode() = OsmNode(0, 0, 0.0, 0.0, null)
 
     private fun createAWay() = OsmWay(0, 0, listOf(0L), null)
 

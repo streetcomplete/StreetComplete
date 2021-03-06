@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.p
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -42,7 +42,7 @@ class NoteControllerTest {
 
     @Test fun `getAllPositions in bbox`() {
         val bbox = BoundingBox(0.0,1.0,2.0,3.0)
-        val ret = listOf<LatLon>(mock(), mock(), mock())
+        val ret = listOf(p(), p(), p())
         on(dao.getAllPositions(bbox)).thenReturn(ret)
         assertEquals(ret, noteController.getAllPositions(bbox))
     }
@@ -87,7 +87,7 @@ class NoteControllerTest {
         noteController.addListener(listener)
         noteController.delete(1L)
         verify(dao).delete(1L)
-        verifyZeroInteractions(listener)
+        verifyNoInteractions(listener)
     }
 
     @Test fun `remove listener`() {
@@ -96,7 +96,7 @@ class NoteControllerTest {
         noteController.addListener(listener)
         noteController.removeListener(listener)
         noteController.put(mock())
-        verifyZeroInteractions(listener)
+        verifyNoInteractions(listener)
     }
 
     @Test fun deleteAllOlderThan() {

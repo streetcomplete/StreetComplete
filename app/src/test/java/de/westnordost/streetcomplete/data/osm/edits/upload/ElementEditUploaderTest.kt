@@ -4,7 +4,7 @@ import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.p
-import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.streetcomplete.node
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
@@ -54,7 +54,7 @@ class ElementEditUploaderTest {
 
     @Test(expected = ConflictException::class)
     fun `passes on element conflict exception`() {
-        val node = OsmNode(1L, 1, p(0.0,0.0), null)
+        val node = node(1)
         on(mapDataApi.getNode(anyLong())).thenReturn(node)
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
@@ -66,7 +66,7 @@ class ElementEditUploaderTest {
     }
 
     @Test fun `handles changeset conflict exception`() {
-        val node = OsmNode(1L, 1, p(0.0,0.0), null)
+        val node = node(1)
         on(mapDataApi.getNode(anyLong())).thenReturn(node)
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)

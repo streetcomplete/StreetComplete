@@ -229,9 +229,9 @@ class OsmQuestControllerTest {
         )
 
         val elements = listOf(
-            node(1L),
+            node(1),
             // missing geometry
-            node(2L),
+            node(2),
         )
         val geometries = listOf(
             ElementGeometryEntry(Element.Type.NODE, 1L, pointGeom(1.0,1.0))
@@ -269,13 +269,13 @@ class OsmQuestControllerTest {
     @Test fun `updates quests on map data listener replace for bbox`() {
 
         val elements = listOf(
-            node(1L),
+            node(1),
             // missing geometry
-            node(2L),
+            node(2),
             // hidden for ApplicableQuestType2
-            node(3L),
+            node(3),
             // at note position
-            node(4L),
+            node(4),
         )
         val geometries = listOf(
             ElementGeometryEntry(Element.Type.NODE, 1L, pointGeom(1.0,1.0)),
@@ -324,14 +324,6 @@ private fun quest(
     elementId: Long = 1,
     geometry: ElementGeometry = ElementPointGeometry(p(1.0,1.0))
 ) = OsmQuest(id, questType, elementType, elementId, geometry)
-
-private fun node(
-    id: Long = 1L,
-    version: Int = 1,
-    lat: Double = 1.0,
-    lon: Double = 2.0,
-    tags: Map<String,String>? = null
-) = OsmNode(id, version, lat, lon, tags)
 
 private fun note(id: Long = 1L, position: LatLon = p(1.0, 2.0)): Note {
     val note = Note()

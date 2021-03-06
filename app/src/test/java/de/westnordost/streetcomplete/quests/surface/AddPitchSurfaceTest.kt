@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import org.junit.Assert.*
 import org.junit.Test
 

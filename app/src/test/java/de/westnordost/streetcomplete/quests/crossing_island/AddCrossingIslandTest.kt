@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.crossing_island
 
-import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.streetcomplete.node
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import org.junit.Assert.*
@@ -10,16 +10,14 @@ class AddCrossingIslandTest {
     private val questType = AddCrossingIsland()
 
     @Test fun `not applicable to non-crossing`() {
-        val node = OsmNode(1L, 1, 0.0,0.0, mapOf(
-            "nub" to "dub"
-        ))
+        val node = node(tags = mapOf("nub" to "dub"))
         val mapData = TestMapDataWithGeometry(listOf(node))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         assertEquals(false, questType.isApplicableTo(node))
     }
 
     @Test fun `applicable to crossing`() {
-        val crossing = OsmNode(1L, 1, 0.0,0.0, mapOf(
+        val crossing = node(tags = mapOf(
             "highway" to "crossing",
             "crossing" to "something"
         ))
@@ -29,7 +27,7 @@ class AddCrossingIslandTest {
     }
 
     @Test fun `not applicable to crossing with private road`() {
-        val crossing = OsmNode(1L, 1, 0.0,0.0, mapOf(
+        val crossing = node(id = 1, tags = mapOf(
             "highway" to "crossing",
             "crossing" to "something"
         ))

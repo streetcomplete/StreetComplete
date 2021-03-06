@@ -38,7 +38,7 @@ class MapDataWithEditsSourceTest {
         mapDataCtrl = mock()
         mapData = MutableMapDataWithGeometry()
         // a trick to get the edit action to apply to anything
-        mapData.putElement(nd(-1L, lat = 60.0, lon = 60.0))
+        mapData.putElement(node(id = -1, pos = p(60.0, 60.0)))
 
         on(editsCtrl.getIdProvider(anyLong())).thenReturn(ElementIdProvider(listOf()))
 
@@ -144,7 +144,7 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `get returns original element`() {
-        val nd = nd(id = 1L)
+        val nd = node(id = 1L)
 
         originalElementsAre(nd)
         thereAreNoEditedElements()
@@ -155,8 +155,8 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `get returns updated element`() {
-        val nd = nd(id = 1L)
-        val nd2 = nd(id = 1L, tags = mapOf("bla" to "blub"))
+        val nd = node(id = 1L)
+        val nd2 = node(id = 1L, tags = mapOf("bla" to "blub"))
 
         originalElementsAre(nd)
         editedElementsAre(nd2)
@@ -167,9 +167,9 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `get returns updated element updated from updated element`() {
-        val nd = nd(id = 1L)
-        val nd2 = nd(id = 1L, tags = mapOf("bla" to "blub"))
-        val nd3 = nd(id = 1L, tags = mapOf("bla" to "flop"))
+        val nd = node(id = 1L)
+        val nd2 = node(id = 1L, tags = mapOf("bla" to "blub"))
+        val nd3 = node(id = 1L, tags = mapOf("bla" to "flop"))
 
         originalElementsAre(nd)
 
@@ -196,8 +196,8 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `get returns null if updated element was deleted`() {
-        val nd = nd(id = 1L)
-        val nd2 = nd(id = 1L)
+        val nd = node(id = 1L)
+        val nd2 = node(id = 1L)
         nd2.isDeleted = true
 
         originalElementsAre(nd)
@@ -209,7 +209,7 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `conflict on applying edit is ignored`() {
-        val nd = nd(id = 1L)
+        val nd = node(id = 1L)
 
         originalElementsAre(nd)
 
@@ -251,9 +251,9 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getGeometry returns updated geometry`() {
-        val nd = nd(1L, 1, 0.0, 0.0)
+        val nd = node(1, pos = p(0.0, 0.0))
         val p = pointGeom(0.0, 0.0)
-        val nd2 = nd(1L, 1, 1.0, 2.0)
+        val nd2 = node(1, pos = p(1.0, 2.0))
         val p2 = pointGeom(1.0, 2.0)
 
         originalElementsAre(nd)
@@ -266,9 +266,9 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getGeometry returns updated geometry updated from updated element`() {
-        val nd = nd(id = 1L)
-        val nd2 = nd(id = 1L, lat = 1.0, lon = 2.0)
-        val nd3 = nd(id = 1L, lat = 55.0, lon = 56.0)
+        val nd = node(id = 1L)
+        val nd2 = node(id = 1L, pos = p(1.0,2.0))
+        val nd3 = node(id = 1L, pos = p(55.0,56.0))
         val p = pointGeom(0.0, 0.0)
         val p3 = pointGeom(55.0, 56.0)
 
@@ -298,8 +298,8 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getGeometry returns null if element was deleted`() {
-        val nd = nd(id = 1L)
-        val nd2 = nd(id = 1L)
+        val nd = node(id = 1L)
+        val nd2 = node(id = 1L)
         val p = pointGeom(0.0, 0.0)
         nd2.isDeleted = true
 
@@ -328,7 +328,7 @@ class MapDataWithEditsSourceTest {
     fun `getWayComplete returns null because it is not complete`() {
         val w = way(id = 1L, nodeIds = listOf(1,2,3))
 
-        originalElementsAre(w, nd(1L), nd(2L))
+        originalElementsAre(w, node(1L), node(2L))
         thereAreNoEditedElements()
 
         val s = create()
@@ -338,9 +338,9 @@ class MapDataWithEditsSourceTest {
     @Test
     fun `getWayComplete returns original way with original node ids`() {
         val w = way(id = 1L, nodeIds = listOf(1L,2L,3L))
-        val n1 = nd(1L)
-        val n2 = nd(2L)
-        val n3 = nd(3L)
+        val n1 = node(1L)
+        val n2 = node(2L)
+        val n3 = node(3L)
 
         originalElementsAre(w, n1, n2, n3)
         thereAreNoEditedElements()
@@ -354,10 +354,10 @@ class MapDataWithEditsSourceTest {
     @Test
     fun `getWayComplete returns original way with updated node ids`() {
         val w = way(id = 1L, nodeIds = listOf(1L,2L,3L))
-        val nd1 = nd(1L)
-        val nd2 = nd(2L)
-        val nd3 = nd(3L)
-        val nd1New = nd(1L, tags = mapOf("foo" to "bar"))
+        val nd1 = node(1L)
+        val nd2 = node(2L)
+        val nd3 = node(3L)
+        val nd1New = node(1, tags = mapOf("foo" to "bar"))
 
         originalElementsAre(nd1, nd2, nd3, w)
         editedElementsAre(nd1New)
@@ -373,13 +373,13 @@ class MapDataWithEditsSourceTest {
         val w = way(id = 1L, nodeIds = listOf(1L,2L))
         val wNew = way(id = 1L, nodeIds = listOf(3L, 1L))
 
-        val nd1 = nd(1L)
-        val nd2 = nd(2L)
+        val nd1 = node(1L)
+        val nd2 = node(2L)
 
-        val nd1New = nd(1L, tags = mapOf("foo" to "bar"))
-        val nd2New = nd(2L)
+        val nd1New = node(1, tags = mapOf("foo" to "bar"))
+        val nd2New = node(2L)
         nd2New.isDeleted = true
-        val nd3New = nd(3L)
+        val nd3New = node(3L)
 
         originalElementsAre(nd1, nd2, w)
         editedElementsAre(nd1New, nd2New, nd3New, wNew)
@@ -393,8 +393,8 @@ class MapDataWithEditsSourceTest {
     @Test
     fun `getWayComplete returns null because a node of the way was deleted`() {
         val w = way(id = 1L, nodeIds = listOf(1L,2L))
-        val nd1 = nd(1L)
-        val nd1New = nd(1L)
+        val nd1 = node(1L)
+        val nd1New = node(1L)
         nd1New.isDeleted = true
 
         originalElementsAre(w, nd1)
@@ -424,8 +424,8 @@ class MapDataWithEditsSourceTest {
             OsmRelationMember(2L, "", WAY),
         ))
         val w = way(id = 1L, nodeIds = listOf(1L,2L))
-        val n1 = nd(id = 1L)
-        val n2 = nd(id = 2L)
+        val n1 = node(id = 1L)
+        val n2 = node(id = 2L)
 
         originalElementsAre(r, w, n1, n2)
         thereAreNoEditedElements()
@@ -438,11 +438,11 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getRelationComplete returns original relation with original members`() {
-        val n1 = nd(id = 1L)
-        val n2 = nd(id = 2L)
-        val n3 = nd(id = 3L)
-        val n4 = nd(id = 4L)
-        val n5 = nd(id = 5L)
+        val n1 = node(id = 1L)
+        val n2 = node(id = 2L)
+        val n3 = node(id = 3L)
+        val n4 = node(id = 4L)
+        val n5 = node(id = 5L)
 
         val w1 = way(id = 1L, nodeIds = listOf(1L,2L))
         val w2 = way(id = 2L, nodeIds = listOf(3L,4L))
@@ -469,9 +469,9 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getRelationComplete returns relation with updated members`() {
-        val n1 = nd(id = 1L)
-        val n2 = nd(id = 2L)
-        val n3 = nd(id = 3L)
+        val n1 = node(id = 1L)
+        val n2 = node(id = 2L)
+        val n3 = node(id = 3L)
 
         val w = way(id = 1L, nodeIds = listOf(1L,2L))
 
@@ -485,8 +485,8 @@ class MapDataWithEditsSourceTest {
 
         originalElementsAre(r, r2, w, n1, n2, n3)
 
-        val n4 = nd(id = 4L)
-        val n1New = nd(id = 1L, tags = mapOf("ha" to "huff"))
+        val n4 = node(id = 4L)
+        val n1New = node(id = 1L, tags = mapOf("ha" to "huff"))
         val wNew = way(id = 1L, nodeIds = listOf(1L, 4L))
         val r2New = rel(id = 2L, members = listOf())
         r2New.isDeleted = true
@@ -709,7 +709,7 @@ class MapDataWithEditsSourceTest {
     }
 
     @Test fun `getMapDataWithGeometry returns original elements`() {
-        val nd = nd(1L, lat = 0.5, lon = 0.5)
+        val nd = node(1, pos = p(0.5,0.5))
         val p = pointGeom(0.5, 0.5)
         originalElementsAre(nd)
         originalGeometriesAre(ElementGeometryEntry(NODE, 1L, p))
@@ -722,15 +722,15 @@ class MapDataWithEditsSourceTest {
     }
 
     @Test fun `getMapDataWithGeometry returns updated elements`() {
-        val nd = nd(1L, lat = -0.5, lon = 0.5)
+        val nd = node(1, pos = p(-0.5,0.5))
         val p = pointGeom(0.5, 0.5)
         originalElementsAre(nd)
         originalGeometriesAre(
             ElementGeometryEntry(NODE, 1L, p)
         )
 
-        val ndInside = nd(1L, lat = 0.1, lon = 0.1)
-        val ndOutside = nd(2L, lat = -0.5, lon = 0.1)
+        val ndInside = node(1, pos = p(0.1,0.1))
+        val ndOutside = node(2L, pos = p(-0.5,0.1))
         editedElementsAre(ndInside, ndOutside)
 
         val s = create()
@@ -741,14 +741,14 @@ class MapDataWithEditsSourceTest {
     }
 
     @Test fun `getMapDataWithGeometry returns nothing because updated element is not in bbox anymore`() {
-        val nd = nd(1L, lat = 0.5, lon = 0.5)
+        val nd = node(1, pos = p(0.5,0.5))
         val p = pointGeom(0.5, 0.5)
         originalElementsAre(nd)
         originalGeometriesAre(
             ElementGeometryEntry(NODE, 1L, p)
         )
 
-        val ndNew = nd(1L, lat = -0.1, lon = 0.1)
+        val ndNew = node(1, pos = p(-0.1,0.1))
         editedElementsAre(ndNew)
 
         val s = create()
@@ -759,14 +759,14 @@ class MapDataWithEditsSourceTest {
     }
 
     @Test fun `getMapDataWithGeometry returns nothing because element was deleted`() {
-        val nd = nd(1L, lat = 0.5, lon = 0.5)
+        val nd = node(1, pos = p(0.5,0.5))
         val p = pointGeom(0.5, 0.5)
         originalElementsAre(nd)
         originalGeometriesAre(
             ElementGeometryEntry(NODE, 1L, p)
         )
 
-        val ndNew = nd(1L, lat = -0.1, lon = 0.1)
+        val ndNew = node(1, pos = p(-0.1,0.1))
         ndNew.isDeleted = true
         editedElementsAre(ndNew)
 
@@ -798,8 +798,8 @@ class MapDataWithEditsSourceTest {
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = nd(1L, lat = 1.0, lon = 10.0)
-        val p = ElementGeometryEntry(elementType = NODE, elementId = 1L, geometry = pointGeom(lat = 1.0, lon = 10.0))
+        val n = node(1, pos = p(1.0,10.0))
+        val p = ElementGeometryEntry(elementType = NODE, elementId = 1L, geometry = pointGeom(1.0,10.0))
         editsControllerNotifiesEditedElementsAdded(n)
 
         val expectedMapData = MutableMapDataWithGeometry(
@@ -819,7 +819,7 @@ class MapDataWithEditsSourceTest {
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = nd(1L, lat = 1.0, lon = 10.0)
+        val n = node(1, pos = p(1.0,10.0))
         n.isDeleted = true
         editsControllerNotifiesEditedElementsAdded(n)
 
@@ -842,8 +842,8 @@ class MapDataWithEditsSourceTest {
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = nd(1L, lat = 1.0, lon = 10.0)
-        val p = ElementGeometryEntry(NODE, 1L, pointGeom(lat = 1.0, lon = 10.0))
+        val n = node(1, pos = p(1.0,10.0))
+        val p = ElementGeometryEntry(NODE, 1L, pointGeom(1.0,10.0))
 
         editedElementsAre(n)
 
@@ -861,8 +861,8 @@ class MapDataWithEditsSourceTest {
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = nd(1L, lat = 1.0, lon = 10.0)
-        val p = ElementGeometryEntry(NODE, 1L, pointGeom(lat = 1.0, lon = 10.0))
+        val n = node(1, pos = p(1.0,10.0))
+        val p = ElementGeometryEntry(NODE, 1L, pointGeom(1.0,10.0))
 
         val delElements = listOf(
             ElementKey(NODE, -10),
@@ -885,10 +885,10 @@ class MapDataWithEditsSourceTest {
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = nd(1L, lat = 1.0, lon = 10.0)
-        val p = ElementGeometryEntry(NODE, 1L, pointGeom(lat = 1.0, lon = 10.0))
+        val n = node(1, pos = p(1.0,10.0))
+        val p = ElementGeometryEntry(NODE, 1L, pointGeom(1.0,10.0))
 
-        val n10 = nd(-10)
+        val n10 = node(-10)
         val w10 = way(-10)
         val r10 = rel(-10)
 
@@ -913,8 +913,8 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `onUpdate passes through mapData because there are no edits`() {
-        val ndNewOriginal = nd(1L, lat = 0.2, lon = 0.0, tags = mapOf("Iam" to "server version"))
-        val pNew = ElementGeometryEntry(NODE, 1L, pointGeom(lat = 0.2, lon = 0.0))
+        val ndNewOriginal = node(1, pos = p(0.2,0.0), tags = mapOf("Iam" to "server version"))
+        val pNew = ElementGeometryEntry(NODE, 1L, pointGeom(0.2,0.0))
 
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
@@ -946,18 +946,18 @@ class MapDataWithEditsSourceTest {
         // 3 is deleted,
         // 4 was deleted but was modified to be not
 
-        val ndNewOriginal = nd(1L, lat = 0.2, lon = 0.0)
-        val pNew = ElementGeometryEntry(NODE, 1L, pointGeom(lat = 0.2, lon = 0.0))
-        val ndNewOriginal2 = nd(2L, lat = 0.2, lon = 1.0)
-        val pNew2 = ElementGeometryEntry(NODE, 1L, pointGeom(lat = 0.2, lon = 1.0))
+        val ndNewOriginal = node(1, pos = p(0.2,0.0))
+        val pNew = ElementGeometryEntry(NODE, 1L, pointGeom(0.2,0.0))
+        val ndNewOriginal2 = node(2L, pos = p(0.2,1.0))
+        val pNew2 = ElementGeometryEntry(NODE, 1L, pointGeom(0.2,1.0))
 
-        val ndModified = nd(1L, lat = 0.3, lon = 0.0)
-        val pModified = ElementGeometryEntry(NODE, 1L, pointGeom(lat = 0.3, lon = 0.0))
-        val ndModified2 = nd(2L)
+        val ndModified = node(1, pos = p(0.3,0.0))
+        val pModified = ElementGeometryEntry(NODE, 1L, pointGeom(0.3,0.0))
+        val ndModified2 = node(2L)
         ndModified2.isDeleted = true
 
-        val ndModified4 = nd(4L, lat = 0.5, lon = 0.4)
-        val pModified4 = ElementGeometryEntry(NODE, 4L, pointGeom(lat = 0.5, lon = 0.4))
+        val ndModified4 = node(4L, pos = p(0.5,0.4))
+        val pModified4 = ElementGeometryEntry(NODE, 4L, pointGeom(0.5,0.4))
 
         editedElementsAre(ndModified, ndModified2, ndModified4)
 
@@ -992,8 +992,8 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `onReplacedForBBox passes through mapData because there are no edits`() {
-        val ndNewOriginal = nd(1L, lat = 0.2, lon = 0.0, tags = mapOf("Iam" to "server version"))
-        val pNew = ElementGeometryEntry(NODE, 1L, pointGeom(lat = 0.2, lon = 0.0))
+        val ndNewOriginal = node(1, pos = p(0.2,0.0), tags = mapOf("Iam" to "server version"))
+        val pNew = ElementGeometryEntry(NODE, 1L, pointGeom(0.2,0.0))
 
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
@@ -1015,13 +1015,13 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `onReplacedForBBox applies edits on top of passed mapData`() {
-        val ndModified = nd(1L, lat = 0.3, lon = 0.2, tags = mapOf("Iam" to "modified"))
-        val pModified = ElementGeometryEntry(NODE, 1L, pointGeom(lat = 0.3, lon = 0.2))
+        val ndModified = node(1, pos = p(0.3,0.2), tags = mapOf("Iam" to "modified"))
+        val pModified = ElementGeometryEntry(NODE, 1L, pointGeom(0.3,0.2))
 
-        val ndNewOriginal = nd(1L, lat = 0.2, lon = 0.0, tags = mapOf("Iam" to "server version"))
-        val pNew = ElementGeometryEntry(NODE, 1L, pointGeom(lat = 0.2, lon = 0.0))
-        val ndNewOriginal2 = nd(2L, lat = 0.8, lon = 0.1, tags = mapOf("Iam" to "server version"))
-        val pNew2 = ElementGeometryEntry(NODE, 2L, pointGeom(lat = 0.8, lon = 0.1))
+        val ndNewOriginal = node(1, pos = p(0.2,0.0), tags = mapOf("Iam" to "server version"))
+        val pNew = ElementGeometryEntry(NODE, 1L, pointGeom(0.2,0.0))
+        val ndNewOriginal2 = node(2L, pos = p(0.8,0.1), tags = mapOf("Iam" to "server version"))
+        val pNew2 = ElementGeometryEntry(NODE, 2L, pointGeom(0.8,0.1))
 
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
@@ -1113,14 +1113,6 @@ class MapDataWithEditsSourceTest {
 
 }
 
-private fun nd(
-    id: Long = 1L,
-    version: Int = 1,
-    lat: Double = 1.0,
-    lon: Double = 2.0,
-    tags: Map<String,String>? = null
-) = OsmNode(id, version, lat, lon, tags)
-
 private fun way(
     id: Long = 1L,
     version: Int = 1,
@@ -1140,7 +1132,7 @@ private fun pointGeom(lat: Double, lon: Double) = ElementPointGeometry(p(lat, lo
 private fun edit(
     elementType: Element.Type = NODE,
     elementId: Long = -1L,
-    pos: OsmLatLon = p(0.0,0.0),
+    pos: LatLon = p(0.0,0.0),
     timestamp: Long = 123L,
     action: ElementEditAction
 ) = ElementEdit(

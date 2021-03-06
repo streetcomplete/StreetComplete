@@ -85,19 +85,19 @@ class SphericalEarthMathTest {
     /* ++++++++++++++++++++++++++++++ test distance to arc distance +++++++++++++++++++++++++++++ */
 
     @Test fun `simple distance to horizontal arc`() {
-        val start = p(0.0, -0.01)
-        val end = p(0.0, +0.01)
-        val point = p(-0.01, 0.0)
-        val intersect = p(0.0, 0.0)
+        val start = p(-0.01, 0.0)
+        val end = p(+0.01, 0.0)
+        val point = p( 0.0, -0.01)
+        val intersect = p( 0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `simple distance to vertical arc`() {
-        val start = p(-0.01, 0.0)
-        val end = p(+0.01, 0.0)
-        val point = p(0.0, 0.01)
+        val start = p(0.0, -0.01)
+        val end = p(0.0, +0.01)
+        val point = p(0.01, 0.0)
         val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
@@ -107,7 +107,7 @@ class SphericalEarthMathTest {
     @Test fun `simple distance to sloped arc`() {
         val start = p(-0.01, -0.01)
         val end = p(+0.01, +0.01)
-        val point = p(-0.01, +0.01)
+        val point = p(+0.01, -0.01)
         val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
@@ -115,19 +115,19 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `distance of point not orthogonal but before arc`() {
-        val start = p(0.0, +0.01)
-        val end = p(0.0, +0.02)
-        val point = p(-0.01, 0.0)
-        val intersect = p(0.0, 0.0)
+        val start = p(+0.01, 0.0)
+        val end = p(+0.02, 0.0)
+        val point = p(0.0, -0.01)
+        val intersect = p( 0.0, 0.0)
         assertEquals(point.distanceTo(start), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), -point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance of point not orthogonal but after arc`() {
-        val start = p(0.0, -0.02)
-        val end = p(0.0, -0.01)
-        val point = p(-0.01, 0.0)
+        val start = p(-0.02, 0.0)
+        val end = p(-0.01, 0.0)
+        val point = p(0.0, -0.01)
         val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(end), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
