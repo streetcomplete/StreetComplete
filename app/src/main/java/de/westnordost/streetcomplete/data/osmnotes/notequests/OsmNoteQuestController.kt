@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
-import android.content.SharedPreferences
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
@@ -17,21 +15,20 @@ import javax.inject.Singleton
 /** Used to get visible osm note quests */
 @Singleton class OsmNoteQuestController @Inject constructor(
     private val noteSource: NotesWithEditsSource,
-    private val noteQuestsHiddenDB: NoteQuestsHiddenDao,
-    private val questType: OsmNoteQuestType,
+    private val hiddenDB: NoteQuestsHiddenDao,
     private val loginStatusSource: LoginStatusSource,
     private val userStore: UserStore,
-    private val preferences: SharedPreferences,
+    private val notesPreferences: NotesPreferences,
 ): OsmNoteQuestSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
     private val listeners: MutableList<OsmNoteQuestSource.Listener> = CopyOnWriteArrayList()
 
-    private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
-        !preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
-
     private val userId: Long? get() = userStore.userId.takeIf { it != -1L }
+
+    private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
+        notesPreferences.showOnlyNotesPhrasedAsQuestions
 
     private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
@@ -60,9 +57,9 @@ import javax.inject.Singleton
         override fun onLoggedOut() {}
     }
 
-    private val sharedPreferencesListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
-        // a lot of notes become visible/invisible if this option is changed
-        if (key == Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) {
+    private val notesPreferencesListener = object : NotesPreferences.Listener {
+        override fun onNotesPreferencesChanged() {
+            // a lot of notes become visible/invisible if this option is changed
             onInvalidated()
         }
     }
@@ -70,7 +67,7 @@ import javax.inject.Singleton
     init {
         noteSource.addListener(noteUpdatesListener)
         loginStatusSource.addLoginStatusListener(userLoginStatusListener)
-        preferences.registerOnSharedPreferenceChangeListener(sharedPreferencesListener)
+        notesPreferences.listener = notesPreferencesListener
     }
 
     override fun get(questId: Long): OsmNoteQuest? {
@@ -83,16 +80,15 @@ import javax.inject.Singleton
     }
 
     fun hide(questId: Long) {
-        noteQuestsHiddenDB.add(questId)
+        hiddenDB.add(questId)
         onUpdated(deletedQuestIds = listOf(questId))
     }
 
     fun unhideAll(): Int {
-        val previouslyHiddenNotes = noteSource.getAll(noteQuestsHiddenDB.getAll())
-        val result = noteQuestsHiddenDB.deleteAll()
+        val previouslyHiddenNotes = noteSource.getAll(hiddenDB.getAll())
+        val result = hiddenDB.deleteAll()
 
-        val blockedNoteIds = getNoteIdsHidden()
-        val unhiddenNoteQuests = previouslyHiddenNotes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
+        val unhiddenNoteQuests = previouslyHiddenNotes.mapNotNull { createQuestForNote(it, emptySet()) }
 
         onUpdated(quests = unhiddenNoteQuests)
         return result
@@ -103,14 +99,14 @@ import javax.inject.Singleton
         return notes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
     }
 
-    private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? {
-        val shouldShowQuest = note.shouldShowAsQuest(userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds)
-        return if (shouldShowQuest) OsmNoteQuest(note, questType) else null
-    }
+    private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
+        if(note.shouldShowAsQuest(userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
+            OsmNoteQuest(note.id, note.position)
+        else null
 
-    private fun isNoteHidden(noteId: Long): Boolean = noteQuestsHiddenDB.contains(noteId)
+    private fun isNoteHidden(noteId: Long): Boolean = hiddenDB.contains(noteId)
 
-    private fun getNoteIdsHidden(): Set<Long> = noteQuestsHiddenDB.getAll().toSet()
+    private fun getNoteIdsHidden(): Set<Long> = hiddenDB.getAll().toSet()
 
     /* ---------------------------------------- Listener ---------------------------------------- */
 

@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.testutils.*
@@ -15,7 +14,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
-import org.mockito.Mockito.verifyZeroInteractions
+import org.mockito.Mockito.verifyNoInteractions
 
 class VisibleQuestsSourceTest {
 
@@ -120,7 +119,7 @@ class VisibleQuestsSourceTest {
         val quests = listOf(osmQuest(1L), osmQuest(2L))
         on(visibleQuestTypeSource.isVisible(any())).thenReturn(false)
         questListener.onUpdated(quests, emptyList())
-        verifyZeroInteractions(listener)
+        verifyNoInteractions(listener)
     }
 
     @Test fun `osm note quests added or removed triggers listener`() {
@@ -134,7 +133,7 @@ class VisibleQuestsSourceTest {
         val quests = listOf(osmNoteQuest(1L), osmNoteQuest(2L))
         on(visibleQuestTypeSource.isVisible(any())).thenReturn(false)
         noteQuestListener.onUpdated(quests, emptyList())
-        verifyZeroInteractions(listener)
+        verifyNoInteractions(listener)
     }
 
     @Test fun `trigger invalidate listener if quest type visibilities changed`() {
@@ -150,5 +149,5 @@ class VisibleQuestsSourceTest {
     private fun osmQuest(id: Long, questType: OsmElementQuestType<*> = mock()) =
         OsmQuest(id, questType, Element.Type.NODE, 1, pGeom())
 
-    private fun osmNoteQuest(id: Long) = OsmNoteQuest(id, mock(), OsmNoteQuestType())
+    private fun osmNoteQuest(id: Long) = OsmNoteQuest(id, p())
 }

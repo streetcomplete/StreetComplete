@@ -10,14 +10,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 /** Represents one task for the user to contribute to a public OSM note */
 data class OsmNoteQuest(
     override var id: Long?,
-    override val center: LatLon,
-    private val questType: OsmNoteQuestType
+    override val center: LatLon
 ) : Quest {
-
-    constructor(note: Note, osmNoteQuestType: OsmNoteQuestType)
-        : this(note.id, note.position, osmNoteQuestType)
-
-    override val type: QuestType<*> get() = questType
+    override val type: QuestType<*> get() = OsmNoteQuestType
     override val markerLocations: Collection<LatLon> get() = listOf(center)
     override val geometry: ElementGeometry get() = ElementPointGeometry(center)
 }

@@ -108,7 +108,6 @@ import javax.inject.Singleton
 @Module object QuestModule
 {
     @Provides @Singleton fun questTypeRegistry(
-        osmNoteQuestType: OsmNoteQuestType,
         trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
         trafficFlowDao: WayTrafficFlowDao,
         featureDictionaryFuture: FutureTask<FeatureDictionary>,
@@ -116,7 +115,7 @@ import javax.inject.Singleton
     ): QuestTypeRegistry = QuestTypeRegistry(listOf(
 
         // ↓ 1. notes
-        osmNoteQuestType,
+        OsmNoteQuestType,
 
         // ↓ 2. important data that is used by many data consumers
         AddRoadName(),
@@ -236,6 +235,4 @@ import javax.inject.Singleton
         AddTrafficSignalsButton(),
         AddPostboxRoyalCypher()
     ))
-
-    @Provides @Singleton fun osmNoteQuestType(): OsmNoteQuestType = OsmNoteQuestType()
 }
