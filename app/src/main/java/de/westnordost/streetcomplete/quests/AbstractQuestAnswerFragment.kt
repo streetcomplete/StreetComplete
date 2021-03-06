@@ -454,7 +454,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             ARG_QUEST_GROUP to group.name,
             ARG_ELEMENT to element,
             ARG_GEOMETRY to quest.geometry,
-            ARG_QUESTTYPE to quest.type.javaClass.simpleName,
+            ARG_QUESTTYPE to quest.type::class.simpleName!!,
             ARG_MAP_ROTATION to rotation,
             ARG_MAP_TILT to tilt
         )

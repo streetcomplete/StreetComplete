@@ -120,7 +120,7 @@ class NewOsmQuestMapping @Inject constructor(
 
     override fun toContentValues(obj: OsmQuest) = contentValuesOf(
         QUEST_ID to obj.id,
-        QUEST_TYPE to obj.type.javaClass.simpleName,
+        QUEST_TYPE to obj.type::class.simpleName!!,
         ELEMENT_TYPE to obj.elementType.name,
         ELEMENT_ID to obj.elementId
     )

@@ -29,7 +29,7 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         val q = addToDaos(TEST_QUEST_TYPE, Element.Type.NODE, 12L)
         assertNotNull(q.id)
         assertEquals(q, dao.get(q.id!!))
-        assertEquals(q, dao.get(OsmQuestKey(Element.Type.NODE, 12L, TEST_QUEST_TYPE.javaClass.simpleName)))
+        assertEquals(q, dao.get(OsmQuestKey(Element.Type.NODE, 12L, TEST_QUEST_TYPE::class.simpleName!!)))
     }
 
     @Test fun delete() {

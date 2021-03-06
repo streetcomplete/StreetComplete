@@ -90,7 +90,7 @@ class VisibleQuestsSourceTest {
         val t2 = TestQuestTypeB()
         val q1 = osmQuest(1L, t1)
         val q2 = osmQuest(2L, t2)
-        val questTypes = listOf(t2.javaClass.simpleName)
+        val questTypes = listOf(t2::class.simpleName!!)
         on(osmQuestSource.getAllVisibleInBBox(bbox, questTypes)).thenReturn(listOf(q1, q2))
         on(visibleQuestTypeSource.isVisible(t1)).thenReturn(false)
         on(visibleQuestTypeSource.isVisible(t2)).thenReturn(true)

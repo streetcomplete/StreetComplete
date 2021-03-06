@@ -124,7 +124,7 @@ import javax.inject.Singleton
         runBlocking {
             for (questType in questTypes) {
                 launch(Dispatchers.Default) {
-                    val questTypeName = questType.javaClass.simpleName
+                    val questTypeName = questType::class.simpleName!!
                     if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
                         Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
                     } else {
@@ -246,7 +246,7 @@ import javax.inject.Singleton
         // outside downloaded area: skip
         if (downloadedBoundingBox != null && !downloadedBoundingBox.contains(pos)) return false
 
-        val questKey = OsmQuestKey(element.type, element.id, questType.javaClass.simpleName)
+        val questKey = OsmQuestKey(element.type, element.id, questType::class.simpleName!!)
         if (blacklistedQuests.contains(questKey)) return false
 
         // do not create quests whose marker is at/near a blacklisted position

@@ -114,7 +114,7 @@ class QuestPinLayerManager @Inject constructor(
         }
         val minRect = tiles.minTileRect() ?: return
         val bbox = minRect.asBoundingBox(TILES_ZOOM)
-        val questTypeNames = questTypesProvider.get().map { it.javaClass.simpleName }
+        val questTypeNames = questTypesProvider.get().map { it::class.simpleName!! }
         launch(Dispatchers.IO) {
             visibleQuestsSource.getAllVisible(bbox, questTypeNames).forEach {
                 add(it.quest, it.group)

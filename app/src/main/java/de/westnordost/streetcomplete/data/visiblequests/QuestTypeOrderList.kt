@@ -62,8 +62,8 @@ import javax.inject.Singleton
     }
 
     private fun applyOrderItem(before: QuestType<*>, after: QuestType<*>) {
-        val beforeName = before.javaClass.simpleName
-        val afterName = after.javaClass.simpleName
+        val beforeName = before::class.simpleName!!
+        val afterName = after::class.simpleName!!
 
         // 1. remove after-item from the list it is in
         val afterList = findListThatContains(afterName)

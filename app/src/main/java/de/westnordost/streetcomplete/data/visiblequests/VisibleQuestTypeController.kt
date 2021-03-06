@@ -18,12 +18,12 @@ import javax.inject.Singleton
     private val listeners: MutableList<VisibleQuestTypeSource.Listener> = CopyOnWriteArrayList()
 
     @Synchronized override fun isVisible(questType: QuestType<*>): Boolean {
-        val questTypeName = questType.javaClass.simpleName
+        val questTypeName = questType::class.simpleName!!
         return cache[questTypeName] ?: (questType.defaultDisabledMessage <= 0)
     }
 
     @Synchronized fun setVisible(questType: QuestType<*>, visible: Boolean) {
-        val questTypeName = questType.javaClass.simpleName
+        val questTypeName = questType::class.simpleName!!
         db.put(questTypeName, visible)
         cache[questTypeName] = visible
         listeners.forEach { it.onQuestTypeVisibilitiesChanged() }

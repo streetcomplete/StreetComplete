@@ -83,7 +83,7 @@ import kotlin.collections.ArrayList
         val q = osmQuestController.get(osmQuestId) ?: return false
         val e = mapDataSource.get(q.elementType, q.elementId) ?: return false
 
-        Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName}")
+        Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!}")
 
         elementEditsController.add(
             q.osmElementQuestType,
@@ -104,7 +104,7 @@ import kotlin.collections.ArrayList
         val q = osmQuestController.get(osmQuestId) ?: return false
         val element = getOsmElement(q) ?: return false
         val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
-        Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.javaClass.simpleName} with $changes")
+        Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!} with $changes")
 
         elementEditsController.add(
             q.osmElementQuestType,
@@ -168,10 +168,10 @@ import kotlin.collections.ArrayList
 
         val changes = createOsmQuestChanges(q, element, answer)
         require(!changes.isEmpty()) {
-            "OsmQuest $questId (${q.type.javaClass.simpleName}) has been answered by the user but the changeset is empty!"
+            "OsmQuest $questId (${q.type::class.simpleName!!}) has been answered by the user but the changeset is empty!"
         }
 
-        Log.d(TAG, "Solved a ${q.type.javaClass.simpleName} quest: $changes")
+        Log.d(TAG, "Solved a ${q.type::class.simpleName!!} quest: $changes")
 
         elementEditsController.add(
             q.osmElementQuestType,
