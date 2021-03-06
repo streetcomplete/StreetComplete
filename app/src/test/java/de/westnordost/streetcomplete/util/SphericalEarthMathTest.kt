@@ -85,76 +85,76 @@ class SphericalEarthMathTest {
     /* ++++++++++++++++++++++++++++++ test distance to arc distance +++++++++++++++++++++++++++++ */
 
     @Test fun `simple distance to horizontal arc`() {
-        val start = OsmLatLon(0.0, -0.01)
-        val end = OsmLatLon(0.0, +0.01)
-        val point = OsmLatLon(-0.01, 0.0)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val start = p(0.0, -0.01)
+        val end = p(0.0, +0.01)
+        val point = p(-0.01, 0.0)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `simple distance to vertical arc`() {
-        val start = OsmLatLon(-0.01, 0.0)
-        val end = OsmLatLon(+0.01, 0.0)
-        val point = OsmLatLon(0.0, 0.01)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val start = p(-0.01, 0.0)
+        val end = p(+0.01, 0.0)
+        val point = p(0.0, 0.01)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `simple distance to sloped arc`() {
-        val start = OsmLatLon(-0.01, -0.01)
-        val end = OsmLatLon(+0.01, +0.01)
-        val point = OsmLatLon(-0.01, +0.01)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val start = p(-0.01, -0.01)
+        val end = p(+0.01, +0.01)
+        val point = p(-0.01, +0.01)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance of point not orthogonal but before arc`() {
-        val start = OsmLatLon(0.0, +0.01)
-        val end = OsmLatLon(0.0, +0.02)
-        val point = OsmLatLon(-0.01, 0.0)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val start = p(0.0, +0.01)
+        val end = p(0.0, +0.02)
+        val point = p(-0.01, 0.0)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(start), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), -point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance of point not orthogonal but after arc`() {
-        val start = OsmLatLon(0.0, -0.02)
-        val end = OsmLatLon(0.0, -0.01)
-        val point = OsmLatLon(-0.01, 0.0)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val start = p(0.0, -0.02)
+        val end = p(0.0, -0.01)
+        val point = p(-0.01, 0.0)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(end), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.02)
     }
 
     @Test fun `distance to horizontal arc crossing 180th meridian`() {
-        val start = OsmLatLon(0.0, 170.0)
-        val end = OsmLatLon(0.0, -170.0)
-        val point = OsmLatLon(0.01, -175.0)
-        val intersect = OsmLatLon(0.0, -175.0)
+        val start = p(170.0, 0.0)
+        val end = p(-170.0, 0.0)
+        val point = p( -175.0, 0.01)
+        val intersect = p(-175.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance to vertical arc crossing north pole`() {
-        val start = OsmLatLon(80.0, 0.0)
-        val end = OsmLatLon(0.0, 180.0)
-        val point = OsmLatLon(85.0, 179.99)
-        val intersect = OsmLatLon(85.0, 180.0)
+        val start = p( 0.0, 80.0)
+        val end = p(180.0, 0.0)
+        val point = p(179.99, 85.0)
+        val intersect = p(180.0, 85.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance to single position`() {
-        val point = OsmLatLon(0.01, 0.0)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val point = p(0.01, 0.0)
+        val intersect = p(0.0, 0.0)
         assertEquals(
             point.distanceTo(intersect),
             point.distanceToArcs(listOf(intersect)),
@@ -163,9 +163,9 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `distance to single arc`() {
-        val start = OsmLatLon(0.0, -0.01)
-        val end = OsmLatLon(0.0, +0.01)
-        val point = OsmLatLon(0.01, 0.0)
+        val start = p(0.0, -0.01)
+        val end = p(0.0, +0.01)
+        val point = p(0.01, 0.0)
         assertEquals(
             point.distanceToArc(start, end),
             point.distanceToArcs(listOf(start, end)),
@@ -174,10 +174,10 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `distance to multiple arcs`() {
-        val p0 = OsmLatLon(0.0, -0.01)
-        val p1 = OsmLatLon(0.0, +0.01)
-        val p2 = OsmLatLon(0.0, +0.02)
-        val point = OsmLatLon(0.01, 0.0)
+        val p0 = p(0.0, -0.01)
+        val p1 = p(0.0, +0.01)
+        val p2 = p(0.0, +0.02)
+        val point = p(0.01, 0.0)
         assertEquals(
             point.distanceToArc(p0, p1),
             point.distanceToArcs(listOf(p0, p1, p2)),
