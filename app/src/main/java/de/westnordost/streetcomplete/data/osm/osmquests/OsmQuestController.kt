@@ -39,7 +39,7 @@ import javax.inject.Singleton
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
-): OsmQuestSource {
+): OsmQuestSource, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
@@ -54,13 +54,16 @@ import javax.inject.Singleton
          *  OSM elements are updated, so the quests that reference that element need to be updated
          *  as well. */
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-            val quests = mutableListOf<OsmQuest>()
+            val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
             val previousQuests = mutableListOf<OsmQuest>()
-            // TODO this could actually also be parallelised
+            val hiddenQuests = getHiddenQuests()
+            var count = 0
+
             for (element in updated) {
                 previousQuests.addAll(db.getAllForElement(element.type, element.id))
                 val geometry = updated.getGeometry(element.type, element.id) ?: continue
-                quests.addAll(createQuestsForElement(element, geometry, allQuestTypes))
+                deferredQuests.addAll(createQuestsForElementDeferred(element, geometry, allQuestTypes, hiddenQuests))
+                count++
             }
 
             val deleteQuestIds = mutableListOf<Long>()
@@ -68,6 +71,10 @@ import javax.inject.Singleton
                 // quests that refer to elements that have been deleted shall be deleted
                 deleteQuestIds.addAll(db.getAllForElement(key.elementType, key.elementId).mapNotNull { it.id })
             }
+
+            val time = currentTimeMillis()
+            val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
+            Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${(currentTimeMillis() - time) / 1000}s")
 
             updateQuests(quests, previousQuests, deleteQuestIds)
         }
@@ -109,21 +116,18 @@ import javax.inject.Singleton
     private fun createQuestsForBBox(
         bbox: BoundingBox,
         mapDataWithGeometry: MapDataWithGeometry,
-        questTypes: Collection<OsmElementQuestType<*>>
+        questTypes: Collection<OsmElementQuestType<*>>,
     ): Collection<OsmQuest> {
         val time = currentTimeMillis()
 
         val quests = ConcurrentLinkedQueue<OsmQuest>()
-        val truncatedBlacklistedPositions = notesSource
-            .getAllPositions(bbox)
-            .map { it.truncateTo5Decimals() }
-            .toSet()
+        val blacklistedPositions = getBlacklistedPositions(bbox)
         val countryBoundaries = countryBoundariesFuture.get()
-        val hiddenQuests = hiddenDB.getAll().toSet()
+        val hiddenQuests = getHiddenQuests()
 
         runBlocking {
             for (questType in questTypes) {
-                launch(Dispatchers.Default) {
+                launch {
                     val questTypeName = questType::class.simpleName!!
                     if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
                         Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
@@ -131,7 +135,7 @@ import javax.inject.Singleton
                         val questTime = currentTimeMillis()
                         for (element in questType.getApplicableElements(mapDataWithGeometry)) {
                             val geometry = mapDataWithGeometry.getGeometry(element.type, element.id) ?: continue
-                            if (!mayCreateQuest(questType, element, geometry, truncatedBlacklistedPositions, hiddenQuests, bbox)) continue
+                            if (!mayCreateQuest(questType, element, geometry, blacklistedPositions, hiddenQuests, bbox)) continue
                             quests.add(OsmQuest(null, questType, element.type, element.id, geometry))
                         }
 
@@ -147,41 +151,28 @@ import javax.inject.Singleton
         return quests
     }
 
-    private fun createQuestsForElement(
+    private fun createQuestsForElementDeferred(
         element: Element,
         geometry: ElementGeometry,
-        questTypes: Collection<OsmElementQuestType<*>>
-    ): Collection<OsmQuest> {
-        val time = currentTimeMillis()
-
+        questTypes: Collection<OsmElementQuestType<*>>,
+        hiddenQuests: Set<OsmQuestKey>
+    ): List<Deferred<OsmQuest?>> {
         val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
         val lazyMapData by lazy { mapDataSource.getMapDataWithGeometry(paddedBounds) }
+        val blacklistedPositions = getBlacklistedPositions(paddedBounds)
 
-        val quests = ConcurrentLinkedQueue<OsmQuest>()
-        val truncatedBlacklistedPositions = notesSource
-            .getAllPositions(paddedBounds)
-            .map { it.truncateTo5Decimals() }
-            .toSet()
-        val hiddenQuests = hiddenDB.getAll().toSet()
+        return questTypes.map { questType ->
+            async {
+                val appliesToElement = questType.isApplicableTo(element)
+                    ?: questType.getApplicableElements(lazyMapData).any { it.id == element.id && it.type == element.type }
 
-        runBlocking {
-            for (questType in questTypes) {
-                launch(Dispatchers.Default) {
-                    val appliesToElement = questType.isApplicableTo(element)
-                        ?: questType.getApplicableElements(lazyMapData).any { it.id == element.id && it.type == element.type }
-
-                    if (appliesToElement) {
-                        if (mayCreateQuest(questType, element, geometry, truncatedBlacklistedPositions, hiddenQuests, null)) {
-                            quests.add(OsmQuest(null, questType, element.type, element.id, geometry))
-                        }
-                    }
+                if (appliesToElement && mayCreateQuest(questType, element, geometry, blacklistedPositions, hiddenQuests, null)) {
+                    OsmQuest(null, questType, element.type, element.id, geometry)
+                } else {
+                    null
                 }
             }
         }
-        val secondsSpentAnalyzing = (currentTimeMillis() - time) / 1000
-        Log.i(TAG,"Created ${quests.size} quests for ${element.type.name}#${element.id} in ${secondsSpentAnalyzing}s")
-
-        return quests
     }
 
     private fun createQuestsForQuestKeys(keys: Collection<OsmQuestKey>): List<OsmQuest> {
@@ -192,19 +183,25 @@ import javax.inject.Singleton
             questTypesByElement.getOrPut(element) { mutableListOf() }.add(questType)
         }
 
-        // TODO this could actually also be parallelised
-        val addedQuests = mutableListOf<OsmQuest>()
+        val hiddenQuests = getHiddenQuests()
+        val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
         for ((element, questTypes) in questTypesByElement) {
             val geometry = mapDataSource.getGeometry(element.type, element.id) ?: continue
-            addedQuests.addAll(createQuestsForElement(element, geometry, questTypes))
+            deferredQuests.addAll(createQuestsForElementDeferred(element, geometry, questTypes, hiddenQuests))
         }
-        return addedQuests
+
+        val time = currentTimeMillis()
+        val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
+        Log.i(TAG, "Created ${quests.size} quests for ${keys.size} updated quests in ${(currentTimeMillis() - time) / 1000}s")
+
+        return quests
     }
 
     private fun updateQuests(
         questsNow: Collection<OsmQuest>,
         questsPreviously: Collection<OsmQuest>,
-        deletedQuestIds: Collection<Long>) {
+        deletedQuestIds: Collection<Long>
+    ) {
 
         val time = currentTimeMillis()
 
@@ -265,6 +262,15 @@ import javax.inject.Singleton
         }
         return true
     }
+
+    private fun getBlacklistedPositions(bbox: BoundingBox): Set<LatLon> =
+        notesSource
+            .getAllPositions(bbox)
+            .map { it.truncateTo5Decimals() }
+            .toSet()
+
+    private fun getHiddenQuests(): Set<OsmQuestKey> =
+        hiddenDB.getAll().toSet()
 
     /** Mark the quest as hidden by user interaction */
     fun hide(quest: OsmQuest) {
