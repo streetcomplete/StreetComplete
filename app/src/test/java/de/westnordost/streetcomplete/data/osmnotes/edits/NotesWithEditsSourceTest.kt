@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.bbox
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
@@ -341,7 +342,7 @@ class NotesWithEditsSourceTest {
     //endregion
 }
 
-private val bbox = BoundingBox(0.0,0.0,1.0,1.0)
+private val bbox = bbox()
 
 val initialNotes1 = listOf(
     note(id = 1, position = p(1.0,2.0), timestamp = 10, comments = arrayListOf(

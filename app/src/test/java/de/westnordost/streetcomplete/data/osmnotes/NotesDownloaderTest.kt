@@ -3,13 +3,10 @@ package de.westnordost.streetcomplete.data.osmnotes
 import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.streetcomplete.p
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.user.UserStore
-import de.westnordost.streetcomplete.eq
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -33,7 +30,7 @@ class NotesDownloaderTest {
         val note1 = createANote()
         val noteApi = TestListBasedNotesApi(listOf(note1))
         val dl = NotesDownloader(noteApi, userStore, noteController)
-        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val bbox = bbox()
         dl.download(bbox, AtomicBoolean(false))
 
         verify(noteController).putAllForBBox(eq(bbox), eq(listOf(note1)))

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.util
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.streetcomplete.bbox
 import de.westnordost.streetcomplete.p
 import org.junit.Assert.*
 import org.junit.Test
@@ -21,7 +21,7 @@ class SlippyMapMathTest {
     }
 
     @Test fun `enclosingTilesRect of bbox that crosses 180th meridian does not`() {
-        BoundingBox(10.0, 170.0, 20.0, -170.0).enclosingTilesRect(4)
+        bbox(10.0, 170.0, 20.0, -170.0).enclosingTilesRect(4)
         // a TilesRect that is initialized crossing 180th meridian would throw an illegal argument
         // exception
     }

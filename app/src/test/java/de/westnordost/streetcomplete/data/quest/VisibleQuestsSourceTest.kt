@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.quest
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.bbox
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -38,7 +38,7 @@ class VisibleQuestsSourceTest {
 
     private lateinit var listener: VisibleQuestsSource.Listener
 
-    private val bbox = BoundingBox(0.0,0.0,1.0,1.0)
+    private val bbox = bbox(0.0,0.0,1.0,1.0)
     private val questTypes = listOf("a","b","c")
 
     @Before fun setUp() {
@@ -154,7 +154,7 @@ class VisibleQuestsSourceTest {
     }
 
     private fun osmQuest(id: Long, questType: OsmElementQuestType<*> = mock()) =
-        OsmQuest(id, questType, Element.Type.NODE, 1L, ElementPointGeometry(p(0.0,0.0)))
+        OsmQuest(id, questType, Element.Type.NODE, 1, ElementPointGeometry(p(0.0,0.0)))
 
     private fun osmNoteQuest(id: Long) = OsmNoteQuest(id, mock(), OsmNoteQuestType())
 }

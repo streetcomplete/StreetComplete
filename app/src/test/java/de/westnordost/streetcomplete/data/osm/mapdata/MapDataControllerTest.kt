@@ -49,7 +49,7 @@ class MapDataControllerTest {
     }
 
     @Test fun getMapDataWithGeometry() {
-        val bbox = BoundingBox(0.0,1.0,2.0,3.0)
+        val bbox = bbox()
         val geomEntries = listOf(
             ElementGeometryEntry(Element.Type.NODE, 1L, geom()),
             ElementGeometryEntry(Element.Type.NODE, 2L, geom()),
@@ -118,7 +118,7 @@ class MapDataControllerTest {
     }
 
     @Test fun `putAllForBBox when nothing was there before`() {
-        val bbox = BoundingBox(0.0,1.0,2.0,3.0)
+        val bbox = bbox()
         val elements = listOf(
             node(1),
             node(2)

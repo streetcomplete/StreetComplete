@@ -92,7 +92,7 @@ class OsmQuestControllerTest {
     }
 
     @Test fun getAllInBBoxCount() {
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
+        val bbox = bbox()
         on(db.getAllInBBoxCount(bbox)).thenReturn(123)
         assertEquals(123, ctrl.getAllInBBoxCount(bbox))
     }
@@ -105,7 +105,7 @@ class OsmQuestControllerTest {
 
     @Test fun getAllVisibleInBBox() {
         val quests = listOf(quest(1), quest(2), quest(3))
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
+        val bbox = bbox()
         on(db.getAllInBBox(bbox, null)).thenReturn(quests)
         assertTrue(ctrl.getAllVisibleInBBox(bbox, null).containsExactlyInAnyOrder(quests))
     }
@@ -284,7 +284,7 @@ class OsmQuestControllerTest {
         )
 
         val mapData = MutableMapDataWithGeometry(elements, geometries)
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
+        val bbox = bbox()
 
         val previousQuests = listOf(
             // already exists

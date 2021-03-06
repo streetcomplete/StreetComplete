@@ -36,6 +36,9 @@ fun member(
     role: String = ""
 ) = OsmRelationMember(ref, role, type)
 
+fun bbox(latMin: Double = 0.0, lonMin: Double = 0.0, latMax: Double = 1.0, lonMax: Double = 1.0) =
+    BoundingBox(latMin, lonMin, latMax, lonMax)
+
 fun waysAsMembers(wayIds: List<Long>, role: String = ""): List<RelationMember> =
     wayIds.map { id -> member(Element.Type.WAY, id, role) }.toMutableList()
 

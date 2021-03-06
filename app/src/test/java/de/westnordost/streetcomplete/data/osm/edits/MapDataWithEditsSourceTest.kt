@@ -681,8 +681,7 @@ class MapDataWithEditsSourceTest {
         thereAreNoOriginalGeometries()
 
         val s = create()
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
-        val data = s.getMapDataWithGeometry(bbox)
+        val data = s.getMapDataWithGeometry(bbox())
 
         assertTrue(data.toList().isEmpty())
     }
@@ -694,8 +693,7 @@ class MapDataWithEditsSourceTest {
         originalGeometriesAre(ElementGeometryEntry(NODE, 1, p))
 
         val s = create()
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
-        val data = s.getMapDataWithGeometry(bbox)
+        val data = s.getMapDataWithGeometry(bbox())
 
         assertTrue(data.nodes.containsExactlyInAnyOrder(listOf(nd)))
     }
@@ -713,8 +711,7 @@ class MapDataWithEditsSourceTest {
         editedElementsAre(ndInside, ndOutside)
 
         val s = create()
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
-        val data = s.getMapDataWithGeometry(bbox)
+        val data = s.getMapDataWithGeometry(bbox())
 
         assertTrue(data.nodes.containsExactlyInAnyOrder(listOf(ndInside)))
     }
@@ -731,8 +728,7 @@ class MapDataWithEditsSourceTest {
         editedElementsAre(ndNew)
 
         val s = create()
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
-        val data = s.getMapDataWithGeometry(bbox)
+        val data = s.getMapDataWithGeometry(bbox())
 
         assertTrue(data.nodes.isEmpty())
     }
@@ -750,8 +746,7 @@ class MapDataWithEditsSourceTest {
         editedElementsAre(ndNew)
 
         val s = create()
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
-        val data = s.getMapDataWithGeometry(bbox)
+        val data = s.getMapDataWithGeometry(bbox())
 
         assertTrue(data.nodes.isEmpty())
     }
@@ -978,7 +973,7 @@ class MapDataWithEditsSourceTest {
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
+        val bbox = bbox()
         val updatedMapData = MutableMapDataWithGeometry(
             elements = listOf(ndNewOriginal),
             geometryEntries = listOf(pNew)
@@ -1008,7 +1003,7 @@ class MapDataWithEditsSourceTest {
 
         editedElementsAre(ndModified)
 
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
+        val bbox = bbox()
         val updatedMapData = MutableMapDataWithGeometry(
             elements = listOf(ndNewOriginal, ndNewOriginal2),
             geometryEntries = listOf(pNew, pNew2)

@@ -1,11 +1,8 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.notes.Note
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.eq
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
-import de.westnordost.streetcomplete.p
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -34,14 +31,14 @@ class NoteControllerTest {
     }
 
     @Test fun `getAll in bbox`() {
-        val bbox = BoundingBox(0.0,1.0,2.0,3.0)
+        val bbox = bbox()
         val ret = listOf(note(1), note(2), note(3))
         on(dao.getAll(bbox)).thenReturn(ret)
         assertEquals(ret, noteController.getAll(bbox))
     }
 
     @Test fun `getAllPositions in bbox`() {
-        val bbox = BoundingBox(0.0,1.0,2.0,3.0)
+        val bbox = bbox()
         val ret = listOf(p(), p(), p())
         on(dao.getAllPositions(bbox)).thenReturn(ret)
         assertEquals(ret, noteController.getAllPositions(bbox))
@@ -112,7 +109,7 @@ class NoteControllerTest {
     }
 
     @Test fun `putAllForBBox when nothing was there before`() {
-        val bbox = BoundingBox(0.0,1.0,2.0,3.0)
+        val bbox = bbox()
         val notes = listOf(note(1), note(2), note(3))
         on(dao.getAll(bbox)).thenReturn(emptyList())
         val listener = mock<NoteController.Listener>()
@@ -129,7 +126,7 @@ class NoteControllerTest {
         val note1 = note(1)
         val note2 = note(2)
         val note3 = note(3)
-        val bbox = BoundingBox(0.0,1.0,2.0,3.0)
+        val bbox = bbox()
         val oldNotes = listOf(note1, note2)
         // 1 is updated, 2 is deleted, 3 is added
         val newNotes = listOf(note1, note3)
