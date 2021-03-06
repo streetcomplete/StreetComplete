@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.bbox
+import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 

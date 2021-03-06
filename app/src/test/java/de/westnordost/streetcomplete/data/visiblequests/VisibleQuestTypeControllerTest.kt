@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeDisabled
-import de.westnordost.streetcomplete.mock
+import de.westnordost.streetcomplete.testutils.mock
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before

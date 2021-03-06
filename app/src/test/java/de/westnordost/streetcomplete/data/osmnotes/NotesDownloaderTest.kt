@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.notes.Note
-import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.testutils.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify

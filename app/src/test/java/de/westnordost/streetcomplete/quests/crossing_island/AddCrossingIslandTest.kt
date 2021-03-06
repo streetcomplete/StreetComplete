@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.crossing_island
 
-import de.westnordost.streetcomplete.node
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.way
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
 

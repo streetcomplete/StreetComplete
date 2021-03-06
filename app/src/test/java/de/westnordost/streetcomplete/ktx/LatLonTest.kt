@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.ktx
 
-import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.testutils.p
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test

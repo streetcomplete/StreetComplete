@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.testutils.p
 import org.junit.Assert.*
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete
+package de.westnordost.streetcomplete.testutils
 
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.notes.Note

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.on
 import org.junit.Assert.*
 import org.junit.Test
 

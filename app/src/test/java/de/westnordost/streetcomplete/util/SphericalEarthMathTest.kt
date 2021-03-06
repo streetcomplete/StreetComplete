@@ -4,7 +4,7 @@ import org.junit.Test
 
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.bbox
+import de.westnordost.streetcomplete.testutils.bbox
 
 import org.junit.Assert.*
 import kotlin.math.PI

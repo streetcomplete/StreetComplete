@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.testutils.*
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before

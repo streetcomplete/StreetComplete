@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.util
 
-import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import org.junit.Assert.assertTrue
 

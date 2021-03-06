@@ -4,10 +4,10 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.testutils.*
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test

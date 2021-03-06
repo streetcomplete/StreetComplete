@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
-import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.pGeom
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before

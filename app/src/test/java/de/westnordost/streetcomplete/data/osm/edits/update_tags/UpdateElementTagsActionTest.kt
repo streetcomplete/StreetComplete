@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.testutils.*
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

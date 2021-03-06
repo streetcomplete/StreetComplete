@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.*
-import de.westnordost.streetcomplete.eq
+import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.testutils.eq
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test

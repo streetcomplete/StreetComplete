@@ -2,12 +2,12 @@ package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.on
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

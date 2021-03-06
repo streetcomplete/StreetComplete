@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.member
-import de.westnordost.streetcomplete.node
+import de.westnordost.streetcomplete.testutils.member
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.rel
-import de.westnordost.streetcomplete.way
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete
+package de.westnordost.streetcomplete.testutils
 
 import org.mockito.ArgumentCaptor
 import org.mockito.ArgumentMatcher

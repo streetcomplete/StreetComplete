@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.map.tangram
 
 import org.junit.Test
 
-import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.testutils.p
 
 import org.junit.Assert.*
 

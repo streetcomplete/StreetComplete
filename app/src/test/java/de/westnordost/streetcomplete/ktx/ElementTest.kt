@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.ktx
 
-import de.westnordost.streetcomplete.rel
-import de.westnordost.streetcomplete.way
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
 

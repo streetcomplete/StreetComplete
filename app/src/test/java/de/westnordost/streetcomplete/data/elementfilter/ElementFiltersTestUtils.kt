@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import de.westnordost.streetcomplete.node
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
 
 import java.text.SimpleDateFormat

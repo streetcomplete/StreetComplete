@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.LocalizedName

@@ -4,14 +4,14 @@ import ch.poole.openinghoursparser.Rule
 import ch.poole.openinghoursparser.TimeSpan
 import ch.poole.openinghoursparser.WeekDay
 import ch.poole.openinghoursparser.WeekDayRange
-import de.westnordost.streetcomplete.node
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.testutils.mock
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test

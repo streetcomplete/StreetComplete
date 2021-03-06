@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.p
-import de.westnordost.streetcomplete.node
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete

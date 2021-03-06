@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -12,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.testutils.*
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -212,11 +212,11 @@ class OsmQuestControllerTest {
 
         mapDataListener.onUpdated(MutableMapDataWithGeometry(), deleted)
 
-        verify(db).deleteAll(argThat { it.containsExactlyInAnyOrder(listOf(10,20,30)) })
+        verify(db).deleteAll(argThat { it.containsExactlyInAnyOrder(listOf(10, 20, 30)) })
         verify(db).addAll(argThat { it.isEmpty() })
         verify(listener).onUpdated(
             addedQuests = eq(emptyList()),
-            deletedQuestIds = argThat { it.containsExactlyInAnyOrder(listOf(10,20,30)) }
+            deletedQuestIds = argThat { it.containsExactlyInAnyOrder(listOf(10, 20, 30)) }
         )
     }
 

@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.geometry
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.*
+import de.westnordost.streetcomplete.testutils.*
 import org.junit.Test
 
 import org.junit.Assert.*

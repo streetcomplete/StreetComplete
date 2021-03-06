@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.data.osm.edits.delete
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.node
-import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.on
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test

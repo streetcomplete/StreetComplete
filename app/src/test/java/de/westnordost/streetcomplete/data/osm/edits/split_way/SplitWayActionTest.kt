@@ -4,12 +4,12 @@ import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
-import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.util.createTranslated
 import org.junit.Assert.*
 import org.junit.Before
@@ -307,7 +307,7 @@ class SplitWayActionTest {
 
     @Test fun `insert all way chunks into relation the way is a member of`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0,waysAsMembers(listOf(0)))
+            rel(0, waysAsMembers(listOf(0)))
         ))
         val data = doSplit()
 
@@ -318,8 +318,8 @@ class SplitWayActionTest {
 
     @Test fun `insert all way chunks into multiple relations the way is a member of`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0,waysAsMembers(listOf(0))),
-            rel(1,waysAsMembers(listOf(0)))
+            rel(0, waysAsMembers(listOf(0))),
+            rel(1, waysAsMembers(listOf(0)))
         ))
         val data = doSplit()
 
@@ -333,7 +333,7 @@ class SplitWayActionTest {
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(0,5,0)))
         on(repos.getWay(2)).thenReturn(way(2, mutableListOf(3,4,3)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0,waysAsMembers(listOf(0,1,0,2)))
+            rel(0, waysAsMembers(listOf(0,1,0,2)))
         ))
         val data = doSplit()
 
@@ -351,8 +351,8 @@ class SplitWayActionTest {
 
     @Test fun `all way chunks in updated relations have the same role as the original way`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0,waysAsMembers(listOf(0), "cool role")),
-            rel(1,waysAsMembers(listOf(0), "not so cool role"))
+            rel(0, waysAsMembers(listOf(0), "cool role")),
+            rel(1, waysAsMembers(listOf(0), "not so cool role"))
         ))
         val data = doSplit()
 
@@ -453,7 +453,7 @@ class SplitWayActionTest {
         // 0 1 2 3 | 4 0  =>  -1 2 3 | 0 1 -1 | 4 0
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4,0)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0,waysAsMembers(listOf(0,1)))
+            rel(0, waysAsMembers(listOf(0,1)))
         ))
         val data = doSplit()
 

@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.*
-import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
@@ -15,8 +13,9 @@ import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
-import de.westnordost.streetcomplete.eq
-import de.westnordost.streetcomplete.mock
+import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.eq
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong

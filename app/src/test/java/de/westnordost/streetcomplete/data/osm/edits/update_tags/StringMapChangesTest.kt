@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.on
 import org.junit.Test
 
 import org.junit.Assert.*

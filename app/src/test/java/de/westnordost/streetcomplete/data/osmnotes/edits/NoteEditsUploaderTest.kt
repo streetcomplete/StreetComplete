@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.*
-import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
+import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.testutils.any
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong

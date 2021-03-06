@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.max_height.*
-import de.westnordost.streetcomplete.way
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

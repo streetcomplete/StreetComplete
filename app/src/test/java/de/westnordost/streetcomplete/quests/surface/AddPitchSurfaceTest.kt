@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import de.westnordost.streetcomplete.way
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
 

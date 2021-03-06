@@ -9,10 +9,10 @@ import de.westnordost.osmapi.map.data.Element.Type.WAY
 import de.westnordost.osmapi.map.data.Element.Type.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.member
-import de.westnordost.streetcomplete.node
-import de.westnordost.streetcomplete.rel
-import de.westnordost.streetcomplete.way
+import de.westnordost.streetcomplete.testutils.member
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
 

@@ -4,10 +4,10 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.node
-import de.westnordost.streetcomplete.p
-import de.westnordost.streetcomplete.rel
-import de.westnordost.streetcomplete.way
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
 

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.clothing_bin_operator
 
-import de.westnordost.streetcomplete.node
+import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert.*
 import org.junit.Test
 

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.p
+import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.bikeway.*
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 import de.westnordost.streetcomplete.util.translate
-import de.westnordost.streetcomplete.way
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
 import java.util.*
