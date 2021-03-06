@@ -37,9 +37,8 @@ class OsmQuestControllerTest {
         db = mock()
         // assign ids to added quests
         on(db.addAll(any())).then { invocation ->
-            var i = 0L
             for (q in invocation.getArgument<List<OsmQuest>>(0)) {
-                q.id = ++i
+                q.id = q.elementId
             }
         }
 
@@ -162,7 +161,7 @@ class OsmQuestControllerTest {
 
         val expectedQuests = listOf(
             OsmQuest(1, ApplicableQuestType, Element.Type.NODE, 1, pGeom(1.0,1.0)),
-            OsmQuest(2, ComplexQuestTypeApplicableToNode42, Element.Type.NODE, 42, pGeom(1.0,1.0)),
+            OsmQuest(42, ComplexQuestTypeApplicableToNode42, Element.Type.NODE, 42, pGeom(1.0,1.0)),
         )
 
         verify(db).addAll(eq(expectedQuests))
@@ -303,13 +302,13 @@ class OsmQuestControllerTest {
 
         val expectedCreatedQuests = listOf(
             OsmQuest(1, ApplicableQuestType2, Element.Type.NODE, 1, pGeom(1.0,1.0)),
-            OsmQuest(2, ApplicableQuestType, Element.Type.NODE, 3, pGeom(1.0,1.0)),
+            OsmQuest(3, ApplicableQuestType, Element.Type.NODE, 3, pGeom(1.0,1.0)),
         )
 
         verify(db).deleteAll(eq(listOf(20L)))
-        verify(db).addAll(eq(expectedCreatedQuests))
+        verify(db).addAll(argThat { it.containsExactlyInAnyOrder(expectedCreatedQuests) })
         verify(listener).onUpdated(
-            addedQuests = eq(expectedCreatedQuests),
+            addedQuests = argThat { it.containsExactlyInAnyOrder(expectedCreatedQuests) },
             deletedQuestIds = eq(listOf(20L))
         )
     }
