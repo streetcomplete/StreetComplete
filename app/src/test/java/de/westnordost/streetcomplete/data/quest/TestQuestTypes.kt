@@ -15,7 +15,7 @@ open class TestQuestTypeA : OsmElementQuestType<String> {
     override val icon = 0
     override fun createForm(): AbstractQuestAnswerFragment<String> = object : AbstractQuestAnswerFragment<String>() {}
     override val commitMessage = "test me"
-    override fun getApplicableElements(mapData: MapDataWithGeometry) = emptyList<Element>()
+    override fun getApplicableElements(mapData: MapDataWithGeometry) = mapData.filter { isApplicableTo(it) == true }
     override val wikiLink: String? = null
 }
 
