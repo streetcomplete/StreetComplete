@@ -8,11 +8,13 @@ import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.Columns.ELEMENT_ID
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.Columns.QUEST_TYPE
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.NAME
 import de.westnordost.streetcomplete.ktx.getLong
 import de.westnordost.streetcomplete.ktx.getString
 import de.westnordost.streetcomplete.ktx.queryOne
 import de.westnordost.streetcomplete.ktx.query
+import java.lang.System.currentTimeMillis
 import javax.inject.Inject
 
 /** Persists which osm quests should be hidden (because the user selected so) */
@@ -32,7 +34,8 @@ class OsmQuestsHiddenDao @Inject constructor(
             arrayOf(
                 osmQuestKey.elementType.toString(),
                 osmQuestKey.elementId.toString(),
-                osmQuestKey.questTypeName)
+                osmQuestKey.questTypeName
+            )
         ) { true } ?: false
 
     fun getAll(): List<OsmQuestKey> =
@@ -46,7 +49,8 @@ class OsmQuestsHiddenMapping @Inject constructor() : ObjectRelationalMapping<Osm
     override fun toContentValues(obj: OsmQuestKey) = contentValuesOf(
         ELEMENT_TYPE to obj.elementType.name,
         ELEMENT_ID to obj.elementId,
-        QUEST_TYPE to obj.questTypeName
+        QUEST_TYPE to obj.questTypeName,
+        TIMESTAMP to currentTimeMillis()
     )
 
     override fun toObject(cursor: Cursor) = OsmQuestKey(

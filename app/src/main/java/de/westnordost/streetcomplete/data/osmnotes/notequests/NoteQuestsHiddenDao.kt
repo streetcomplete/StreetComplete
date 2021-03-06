@@ -3,9 +3,11 @@ package de.westnordost.streetcomplete.data.osmnotes.notequests
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.Columns.NOTE_ID
+import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.NAME
 import de.westnordost.streetcomplete.ktx.queryOne
 import de.westnordost.streetcomplete.ktx.query
+import java.lang.System.currentTimeMillis
 import javax.inject.Inject
 
 /** Persists which note ids should be hidden (because the user selected so) in the note quest */
@@ -13,7 +15,10 @@ class NoteQuestsHiddenDao @Inject constructor(private val dbHelper: SQLiteOpenHe
     private val db get() = dbHelper.writableDatabase
 
     fun add(noteId: Long) {
-        db.insert(NAME, null, contentValuesOf(NOTE_ID to noteId))
+        db.insert(NAME, null, contentValuesOf(
+            NOTE_ID to noteId,
+            TIMESTAMP to currentTimeMillis()
+        ))
     }
 
     fun contains(noteId: Long): Boolean =
