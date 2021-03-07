@@ -5,6 +5,9 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.ktx.format
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -13,7 +16,7 @@ import javax.inject.Singleton
 /** Manages access to the notes storage */
 @Singleton class NoteController @Inject constructor(
     private val dao: NoteDao
-) {
+) : CoroutineScope by CoroutineScope(Dispatchers.Default) {
     /* Must be a singleton because there is a listener that should respond to a change in the
     *  database table */
 
@@ -40,13 +43,14 @@ import javax.inject.Singleton
             }
             oldNotesById.remove(note.id)
         }
+
+        onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)
+
         dao.putAll(notes)
         dao.deleteAll(oldNotesById.keys)
 
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG,"Persisted ${addedNotes.size} and deleted ${oldNotesById.size} notes in ${seconds.format(1)}s")
-
-        onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)
     }
 
     fun get(noteId: Long): Note? = dao.get(noteId)
@@ -61,17 +65,22 @@ import javax.inject.Singleton
     /** put a note because the note has been created/changed on OSM */
     @Synchronized fun put(note: Note) {
         val hasNote = dao.get(note.id) != null
-        dao.put(note)
+
         if (hasNote) onUpdated(updated = listOf(note))
         else onUpdated(added = listOf(note))
+
+        dao.put(note)
     }
 
     @Synchronized fun deleteAllOlderThan(timestamp: Long): Int {
         val ids = dao.getAllIdsOlderThan(timestamp)
         if (ids.isEmpty()) return 0
+
+        onUpdated(deleted = ids)
+
         val deletedCount = dao.deleteAll(ids)
         Log.i(TAG, "Deleted $deletedCount old notes")
-        onUpdated(deleted = ids)
+
         return ids.size
     }
 
@@ -90,7 +99,8 @@ import javax.inject.Singleton
 
     private fun onUpdated(added: Collection<Note> = emptyList(), updated: Collection<Note> = emptyList(), deleted: Collection<Long> = emptyList()) {
         if (added.isEmpty() && updated.isEmpty() && deleted.isEmpty()) return
-        listeners.forEach { it.onUpdated(added, updated, deleted) }
+
+        listeners.forEach { launch { it.onUpdated(added, updated, deleted) } }
     }
 
     companion object {
