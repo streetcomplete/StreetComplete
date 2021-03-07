@@ -143,12 +143,14 @@ import javax.inject.Singleton
     fun getRelationsForWay(id: Long): List<Relation> = relationDB.getAllForWay(id)
     fun getRelationsForRelation(id: Long): List<Relation> = relationDB.getAllForRelation(id)
 
-    @Synchronized fun deleteOlderThan(timestamp: Long) {
-        val deletedElements = elementDB.getIdsOlderThan(timestamp)
-        elementDB.deleteAll(deletedElements)
-        val deletedGeometries = geometryDB.deleteAll(deletedElements)
-        onUpdated(deleted = deletedElements)
-        Log.i(TAG,"Deleted ${deletedElements.size} old elements and $deletedGeometries geometries")
+    @Synchronized fun deleteOlderThan(timestamp: Long): Int {
+        val elements = elementDB.getIdsOlderThan(timestamp)
+        if (elements.isEmpty()) return 0
+        val elementCount = elementDB.deleteAll(elements)
+        val geometryCount = geometryDB.deleteAll(elements)
+        Log.i(TAG,"Deleted $elementCount old elements and $geometryCount geometries")
+        onUpdated(deleted = elements)
+        return elementCount
     }
 
     fun addListener(listener: Listener) {
@@ -159,6 +161,7 @@ import javax.inject.Singleton
     }
 
     private fun onUpdated(updated: MutableMapDataWithGeometry = MutableMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
+        if (updated.nodes.isEmpty() && updated.ways.isEmpty() && updated.relations.isEmpty() && deleted.isEmpty()) return
         listeners.forEach { it.onUpdated(updated, deleted) }
     }
     private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {

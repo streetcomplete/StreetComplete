@@ -5,6 +5,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.ktx.format
+import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -24,7 +25,7 @@ import javax.inject.Singleton
 
     /** Replace all notes in the given bounding box with the given notes */
     @Synchronized fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
-        val time = System.currentTimeMillis()
+        val time = currentTimeMillis()
 
         val oldNotesById = mutableMapOf<Long, Note>()
         dao.getAll(bbox).associateByTo(oldNotesById) { it.id }
@@ -42,7 +43,7 @@ import javax.inject.Singleton
         dao.putAll(notes)
         dao.deleteAll(oldNotesById.keys)
 
-        val seconds = (System.currentTimeMillis() - time) / 1000.0
+        val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG,"Added ${addedNotes.size} and deleted ${oldNotesById.size} notes in ${seconds.format(1)}s")
 
         onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)
@@ -67,8 +68,9 @@ import javax.inject.Singleton
 
     @Synchronized fun deleteAllOlderThan(timestamp: Long): Int {
         val ids = dao.getAllIdsOlderThan(timestamp)
-        dao.deleteAll(ids)
-        Log.i(TAG, "Deleted ${ids.size} old notes")
+        if (ids.isEmpty()) return 0
+        val deletedCount = dao.deleteAll(ids)
+        Log.i(TAG, "Deleted $deletedCount old notes")
         onUpdated(deleted = ids)
         return ids.size
     }
@@ -87,6 +89,7 @@ import javax.inject.Singleton
     }
 
     private fun onUpdated(added: Collection<Note> = emptyList(), updated: Collection<Note> = emptyList(), deleted: Collection<Long> = emptyList()) {
+        if (added.isEmpty() && updated.isEmpty() && deleted.isEmpty()) return
         listeners.forEach { it.onUpdated(added, updated, deleted) }
     }
 

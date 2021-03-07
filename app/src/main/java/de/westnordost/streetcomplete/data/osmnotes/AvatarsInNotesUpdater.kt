@@ -7,6 +7,8 @@ class AvatarsInNotesUpdater @Inject constructor(private val downloader: AvatarsD
     NoteController.Listener {
 
     override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
+        if (added.isEmpty() && updated.isEmpty()) return
+        
         val noteCommentUserIds = (added + updated).flatMap { it.userIds }.toSet()
         downloader.download(noteCommentUserIds)
     }
