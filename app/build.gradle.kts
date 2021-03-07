@@ -137,10 +137,10 @@ dependencies {
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:2.1")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-map:1.4")
-    implementation("de.westnordost:osmapi-changesets:1.4")
-    implementation("de.westnordost:osmapi-notes:1.3")
-    implementation("de.westnordost:osmapi-user:1.3")
+    implementation("de.westnordost:osmapi-map:1.5")
+    implementation("de.westnordost:osmapi-changesets:1.5")
+    implementation("de.westnordost:osmapi-notes:1.4")
+    implementation("de.westnordost:osmapi-user:1.4")
     implementation("com.squareup.okhttp3:okhttp:3.12.12")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 
