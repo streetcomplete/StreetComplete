@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
+import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.location.FineLocationManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -158,7 +159,7 @@ import javax.inject.Singleton
         if (!isConnected) return
         if (downloadController.isDownloadInProgress) return
 
-        Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude},${pos.longitude}")
+        Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
         launch {
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
