@@ -109,7 +109,7 @@ private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox) {
 
 private fun WhereSelectionBuilder.appendQuestTypes(questTypes: Collection<String>) {
     require(questTypes.isNotEmpty()) { "questTypes must not be empty" }
-    val names = questTypes.joinToString(",") { "\"$it\"" }
+    val names = questTypes.joinToString(",") { "'$it'" }
     add("$QUEST_TYPE IN ($names)")
 }
 
