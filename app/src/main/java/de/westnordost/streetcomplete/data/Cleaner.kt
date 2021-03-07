@@ -23,52 +23,23 @@ class Cleaner @Inject constructor(
     private val questTypeRegistry: QuestTypeRegistry
 ): CoroutineScope by CoroutineScope(Dispatchers.IO) {
 
-    fun clean() {
+    fun clean() = launch {
+        val time = currentTimeMillis()
+
         val oldDataTimestamp = currentTimeMillis() - ApplicationConstants.DELETE_OLD_DATA_AFTER
-        cleanNotes(oldDataTimestamp)
-        cleanElements(oldDataTimestamp)
-        cleanQuestMetadata(oldDataTimestamp)
+        noteController.deleteAllOlderThan(oldDataTimestamp)
+        mapDataController.deleteOlderThan(oldDataTimestamp)
+        /* it makes sense to do this after cleaning map data and notes, because some metadata rely
+           on map data */
+        for (questType in questTypeRegistry.all) {
+            questType.deleteMetadataOlderThan(oldDataTimestamp)
+        }
 
         val undoableChangesTimestamp = currentTimeMillis() - ApplicationConstants.MAX_UNDO_HISTORY_AGE
-        cleanOldMapDataHistory(undoableChangesTimestamp)
-        cleanOldNotesHistory(undoableChangesTimestamp)
-    }
+        elementEditsController.deleteSyncedOlderThan(undoableChangesTimestamp)
+        noteEditsController.deleteSyncedOlderThan(undoableChangesTimestamp)
 
-    private fun cleanNotes(timestamp: Long) = launch {
-        val time = currentTimeMillis()
-        noteController.deleteAllOlderThan(timestamp)
-        val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG, "Cleaned notes in ${seconds.format(1)}s")
-    }
-
-    private fun cleanElements(timestamp: Long) = launch {
-        val time = currentTimeMillis()
-        mapDataController.deleteOlderThan(timestamp)
-        val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG, "Cleaned elements in ${seconds.format(1)}s")
-    }
-
-    private fun cleanQuestMetadata(timestamp: Long) = launch {
-        val time = currentTimeMillis()
-        for (questType in questTypeRegistry.all) {
-            questType.deleteMetadataOlderThan(timestamp)
-        }
-        val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG, "Cleaned quest metadata in ${seconds.format(1)}s")
-    }
-
-    private fun cleanOldMapDataHistory(timestamp: Long) = launch {
-        val time = currentTimeMillis()
-        elementEditsController.deleteSyncedOlderThan(timestamp)
-        val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG, "Cleaned old map data history in ${seconds.format(1)}s")
-    }
-
-    private fun cleanOldNotesHistory(timestamp: Long) = launch {
-        val time = currentTimeMillis()
-        noteEditsController.deleteSyncedOlderThan(timestamp)
-        val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG, "Cleaned old history in ${seconds.format(1)}s")
+        Log.i(TAG, "Finished cleaning old data in ${((currentTimeMillis() - time) / 1000.0).format(1)}s")
     }
 
     companion object {
