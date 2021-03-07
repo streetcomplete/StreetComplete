@@ -44,7 +44,7 @@ import javax.inject.Singleton
         dao.deleteAll(oldNotesById.keys)
 
         val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Added ${addedNotes.size} and deleted ${oldNotesById.size} notes in ${seconds.format(1)}s")
+        Log.i(TAG,"Persisted ${addedNotes.size} and deleted ${oldNotesById.size} notes in ${seconds.format(1)}s")
 
         onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)
     }

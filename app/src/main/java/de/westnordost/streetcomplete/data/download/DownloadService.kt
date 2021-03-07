@@ -120,10 +120,10 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
             } else {
                 progressListener?.onSuccess()
             }
-            progressListener?.onFinished()
-
             val seconds = (System.currentTimeMillis() - time) / 1000.0
             Log.i(TAG, "Finished download ($bboxString) in ${seconds.format(1)}s")
+
+            progressListener?.onFinished()
         }
     }
 

@@ -146,8 +146,8 @@ import javax.inject.Singleton
                 }
             }
         }
-        val secondsSpentAnalyzing = (currentTimeMillis() - time) / 1000
-        Log.i(TAG,"Created ${quests.size} quests for bbox in ${secondsSpentAnalyzing}s")
+        val seconds = (currentTimeMillis() - time) / 1000.0
+        Log.i(TAG,"Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
 
         return quests
     }
@@ -226,7 +226,7 @@ import javax.inject.Singleton
         val addedCount = db.addAll(addedQuests)
 
         val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Added $addedCount new and removed $deletedCount already resolved quests in ${seconds.format(1)}s")
+        Log.i(TAG,"Persisted $addedCount new and removed $deletedCount already resolved quests in ${seconds.format(1)}s")
 
         val reallyAddedQuests = addedQuests.filter { it.id != null }
         onUpdated(added = reallyAddedQuests, deletedIds = obsoleteQuestIds)
