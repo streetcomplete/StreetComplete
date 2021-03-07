@@ -138,9 +138,9 @@ dependencies {
     implementation("de.westnordost:osmfeatures-android:2.1")
     // talking with the OSM API
     implementation("de.westnordost:osmapi-map:1.5")
-    implementation("de.westnordost:osmapi-changesets:1.5")
+    implementation("de.westnordost:osmapi-changesets:1.6")
     implementation("de.westnordost:osmapi-notes:1.4")
-    implementation("de.westnordost:osmapi-user:1.4")
+    implementation("de.westnordost:osmapi-user:1.5")
     implementation("com.squareup.okhttp3:okhttp:3.12.12")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 
