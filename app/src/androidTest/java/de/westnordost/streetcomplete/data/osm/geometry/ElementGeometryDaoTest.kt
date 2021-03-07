@@ -108,7 +108,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
 
     @Test fun delete() {
         dao.put(ElementGeometryEntry(Element.Type.NODE, 0, createSimpleGeometry()))
-        dao.delete(Element.Type.NODE, 0)
+        assertTrue(dao.delete(Element.Type.NODE, 0))
 
         assertNull(dao.get(Element.Type.NODE, 0))
     }

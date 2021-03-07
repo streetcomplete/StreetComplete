@@ -45,11 +45,11 @@ class ElementGeometryDao @Inject constructor(
         return db.queryOne(NAME, null, where, args) { mapping.geometryMapping.toObject(it) }
     }
 
-    fun delete(type: Element.Type, id: Long) {
+    fun delete(type: Element.Type, id: Long): Boolean {
         val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
         val args = arrayOf(type.name, id.toString())
 
-        db.delete(NAME, where, args)
+        return db.delete(NAME, where, args) == 1
     }
 
     fun putAll(entries: Collection<ElementGeometryEntry>) {
@@ -77,13 +77,15 @@ class ElementGeometryDao @Inject constructor(
         return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
     }
 
-    fun deleteAll(entries: Collection<ElementKey>) {
-        if (entries.isEmpty()) return
+    fun deleteAll(entries: Collection<ElementKey>):Int {
+        if (entries.isEmpty()) return 0
+        var deletedCount = 0
         db.transaction {
             for (entry in entries) {
-                delete(entry.elementType, entry.elementId)
+                if (delete(entry.elementType, entry.elementId)) deletedCount++
             }
         }
+        return deletedCount
     }
 
     private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox): WhereSelectionBuilder {
