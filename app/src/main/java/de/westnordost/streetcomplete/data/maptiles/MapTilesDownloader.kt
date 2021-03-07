@@ -39,19 +39,21 @@ class MapTilesDownloader @Inject constructor(
         var cachedSize = 0
         val time = System.currentTimeMillis()
 
-        for (zoom in vectorTileProvider.maxZoom downTo 0) {
-            if (!cancelState.get()) {
-                val tiles = bbox.enclosingTilesRect(zoom)
-                for (tile in tiles.asTileSequence()) {
-                    launch {
-                        if (!cancelState.get()) {
-                            val result = downloadTile(zoom, tile.x, tile.y)
-                            ++tileCount
-                            when (result) {
-                                is DownloadFailure -> ++failureCount
-                                is DownloadSuccess -> {
-                                    if (result.alreadyCached) cachedSize += result.size
-                                    else downloadedSize += result.size
+        runBlocking {
+            for (zoom in vectorTileProvider.maxZoom downTo 0) {
+                if (!cancelState.get()) {
+                    val tiles = bbox.enclosingTilesRect(zoom)
+                    for (tile in tiles.asTileSequence()) {
+                        launch {
+                            if (!cancelState.get()) {
+                                val result = downloadTile(zoom, tile.x, tile.y)
+                                ++tileCount
+                                when (result) {
+                                    is DownloadFailure -> ++failureCount
+                                    is DownloadSuccess -> {
+                                        if (result.alreadyCached) cachedSize += result.size
+                                        else downloadedSize += result.size
+                                    }
                                 }
                             }
                         }

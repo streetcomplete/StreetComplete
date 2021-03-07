@@ -83,15 +83,17 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
         val tiles = intent.getSerializableExtra(ARG_TILES_RECT) as TilesRect
         val bbox = tiles.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
 
+        val bboxString = "${bbox.minLatitude.format(7)}, ${bbox.minLongitude.format(7)} -> ${bbox.maxLatitude.format(7)}, ${bbox.maxLongitude.format(7)}"
+
         if (hasDownloadedAlready(tiles)) {
-            Log.i(TAG, "Not downloading (${bbox.asLeftBottomRightTopString}), data still fresh")
+            Log.i(TAG, "Not downloading ($bboxString), data still fresh")
         } else {
             isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
             isDownloading = true
 
             progressListener?.onStarted()
 
-            Log.i(TAG, "Starting download (${bbox.asLeftBottomRightTopString})")
+            Log.i(TAG, "Starting download ($bboxString)")
             val time = System.currentTimeMillis()
 
             var error: Exception? = null
@@ -121,7 +123,7 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
             progressListener?.onFinished()
 
             val seconds = (System.currentTimeMillis() - time) / 1000.0
-            Log.i(TAG, "Finished download (${bbox.asLeftBottomRightTopString}) in ${seconds.format(1)}s")
+            Log.i(TAG, "Finished download ($bboxString) in ${seconds.format(1)}s")
         }
     }
 

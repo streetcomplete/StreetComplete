@@ -28,9 +28,13 @@ class OsmQuestDao @Inject constructor(
 ) {
     private val db get() = dbHelper.writableDatabase
 
-    fun add(quest: OsmQuest) {
+    fun add(quest: OsmQuest): Boolean {
         val rowId = db.insertWithOnConflict(NAME, null, mapping.toContentValues(quest), CONFLICT_IGNORE)
-        if (rowId != -1L) quest.id = rowId
+        if (rowId != -1L) {
+            quest.id = rowId
+            return true
+        }
+        return false
     }
 
     fun get(id: Long): OsmQuest? {
@@ -52,17 +56,19 @@ class OsmQuestDao @Inject constructor(
         return db.queryOne(NAME_MERGED_VIEW, arrayOf("COUNT(*)"), builder.where, builder.args) { it.getInt(0) } ?: 0
     }
 
-    fun delete(id: Long) {
-        db.delete(NAME, "$QUEST_ID = $id", null)
+    fun delete(id: Long): Boolean {
+        return db.delete(NAME, "$QUEST_ID = $id", null) == 1
     }
 
-    fun addAll(quests: Collection<OsmQuest>) {
-        if (quests.isEmpty()) return
+    fun addAll(quests: Collection<OsmQuest>): Int {
+        if (quests.isEmpty()) return 0
+        var addedCount = 0
         db.transaction {
             for (quest in quests) {
-                add(quest)
+                if (add(quest)) addedCount++
             }
         }
+        return addedCount
     }
 
     fun getAllForElement(elementType: Element.Type, elementId: Long): List<OsmQuest> {
@@ -89,9 +95,9 @@ class OsmQuestDao @Inject constructor(
         return db.query(NAME_MERGED_VIEW, arrayOf(QUEST_ID), builder.where, builder.args) { it.getLong(0) }
     }
 
-    fun deleteAll(ids: Collection<Long>) {
-        if (ids.isEmpty()) return
-        db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
+    fun deleteAll(ids: Collection<Long>): Int {
+        if (ids.isEmpty()) return 0
+        return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
     }
 }
 

@@ -34,9 +34,9 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
 
     @Test fun delete() {
         val q = addToDaos(TEST_QUEST_TYPE)
-        dao.delete(123L)
+        assertFalse(dao.delete(123L))
         assertNotNull(q.id)
-        dao.delete(q.id!!)
+        assertTrue(dao.delete(q.id!!))
         assertNull(dao.get(q.id!!))
     }
 
@@ -44,7 +44,7 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         val q1 = addToDaos(TEST_QUEST_TYPE)
         val q2 = addToDaos(TEST_QUEST_TYPE2)
         val q3 = addToDaos(TEST_QUEST_TYPE, elementId = 1)
-        dao.deleteAll(listOf(q1.id!!, q2.id!!))
+        assertEquals(2, dao.deleteAll(listOf(q1.id!!, q2.id!!)))
 
         assertNull(dao.get(q1.id!!))
         assertNull(dao.get(q2.id!!))

@@ -74,7 +74,8 @@ import javax.inject.Singleton
 
             val time = currentTimeMillis()
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
-            Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${(currentTimeMillis() - time) / 1000}s")
+            val seconds = (currentTimeMillis() - time) / 1000.0
+            Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
 
             updateQuests(quests, previousQuests, deleteQuestIds)
         }
@@ -192,7 +193,8 @@ import javax.inject.Singleton
 
         val time = currentTimeMillis()
         val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
-        Log.i(TAG, "Created ${quests.size} quests for ${keys.size} updated quests in ${(currentTimeMillis() - time) / 1000}s")
+        val seconds = (currentTimeMillis() - time) / 1000.0
+        Log.i(TAG, "Created ${quests.size} quests for ${keys.size} updated quests in ${seconds.format(1)}s")
 
         return quests
     }
@@ -223,8 +225,8 @@ import javax.inject.Singleton
         val deletedCount = db.deleteAll(obsoleteQuestIds)
         val addedCount = db.addAll(addedQuests)
 
-        val secondsSpentPersisting = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Added $addedCount new and removed $deletedCount already resolved quests in ${secondsSpentPersisting.format(1)}s")
+        val seconds = (currentTimeMillis() - time) / 1000.0
+        Log.i(TAG,"Added $addedCount new and removed $deletedCount already resolved quests in ${seconds.format(1)}s")
 
         val reallyAddedQuests = addedQuests.filter { it.id != null }
         onUpdated(added = reallyAddedQuests, deletedIds = obsoleteQuestIds)
