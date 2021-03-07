@@ -31,7 +31,7 @@ import javax.inject.Singleton
         notesPreferences.showOnlyNotesPhrasedAsQuestions
 
     private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
-        override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
+        @Synchronized override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
             val hiddenNoteIds = getNoteIdsHidden()
 
             val quests = mutableListOf<OsmNoteQuest>()
@@ -50,7 +50,7 @@ import javax.inject.Singleton
     }
 
     private val userLoginStatusListener = object : UserLoginStatusListener {
-        override fun onLoggedIn() {
+        @Synchronized override fun onLoggedIn() {
             // notes created by the user in this app or commented on by this user should not be shown
             onInvalidated()
         }
@@ -58,7 +58,7 @@ import javax.inject.Singleton
     }
 
     private val notesPreferencesListener = object : NotesPreferences.Listener {
-        override fun onNotesPreferencesChanged() {
+        @Synchronized override fun onNotesPreferencesChanged() {
             // a lot of notes become visible/invisible if this option is changed
             onInvalidated()
         }
@@ -79,12 +79,12 @@ import javax.inject.Singleton
         return createQuestsForNotes(noteSource.getAll(bbox))
     }
 
-    fun hide(questId: Long) {
+    @Synchronized fun hide(questId: Long) {
         hiddenDB.add(questId)
         onUpdated(deletedQuestIds = listOf(questId))
     }
 
-    fun unhideAll(): Int {
+    @Synchronized fun unhideAll(): Int {
         val previouslyHiddenNotes = noteSource.getAll(hiddenDB.getAll())
         val result = hiddenDB.deleteAll()
 

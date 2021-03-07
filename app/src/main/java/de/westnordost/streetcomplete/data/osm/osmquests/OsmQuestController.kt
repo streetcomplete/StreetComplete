@@ -53,7 +53,7 @@ import javax.inject.Singleton
         /** For the given elements, replace the current quests with the given ones. Called when
          *  OSM elements are updated, so the quests that reference that element need to be updated
          *  as well. */
-        override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
+        @Synchronized override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
             val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
             val previousQuests = mutableListOf<OsmQuest>()
             val hiddenQuests = getHiddenQuests()
@@ -82,7 +82,7 @@ import javax.inject.Singleton
 
         /** Replace all quests of the given types in the given bounding box with the given quests.
          *  Called on download of a quest type for a bounding box. */
-        override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+        @Synchronized override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
             val quests = createQuestsForBBox(bbox, mapDataWithGeometry, allQuestTypes)
             val previousQuests = db.getAllInBBox(bbox)
             updateQuests(quests, previousQuests, emptyList())
@@ -90,7 +90,7 @@ import javax.inject.Singleton
     }
 
     private val notesSourceListener = object : NotesWithEditsSource.Listener {
-        override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
+        @Synchronized override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
             /* NOTE deleted notes are not taken into account because we just get the ID here which
                is useless for us, we'd need the note position. So if the quests should be re-created
                without a new download after closing a note, the listener would need to pass
@@ -103,8 +103,8 @@ import javax.inject.Singleton
             for (pos in addedNotePositions) {
                 questIdsAtNotes.addAll(db.getAllIdsInBBox(pos.enclosingBoundingBox(1.0)))
             }
-            db.deleteAll(questIdsAtNotes)
 
+            db.deleteAll(questIdsAtNotes)
             onUpdated(deletedIds = questIdsAtNotes)
         }
     }
@@ -275,7 +275,7 @@ import javax.inject.Singleton
         hiddenDB.getAll().toSet()
 
     /** Mark the quest as hidden by user interaction */
-    fun hide(quest: OsmQuest) {
+    @Synchronized fun hide(quest: OsmQuest) {
         val questId = quest.id ?: return
         hiddenDB.add(quest.key)
         db.delete(questId)
@@ -283,7 +283,7 @@ import javax.inject.Singleton
     }
 
     /** Un-hides all previously hidden quests by user interaction */
-    fun unhideAll(): Int {
+    @Synchronized fun unhideAll(): Int {
         val previouslyHiddenQuestKeys = hiddenDB.getAll()
         /* must delete the hidden quests BEFORE recreating the quests, otherwise they would count
            as hidden again! */
@@ -321,6 +321,8 @@ import javax.inject.Singleton
         added: Collection<OsmQuest> = emptyList(),
         deletedIds: Collection<Long> = emptyList()
     ) {
+        if (added.isEmpty() && deletedIds.isEmpty()) return
+
         listeners.forEach { it.onUpdated(added, deletedIds) }
     }
 
