@@ -46,22 +46,49 @@ class ElementDao @Inject constructor(
     }
 
     fun getAll(keys: Iterable<ElementKey>): List<Element> {
-        val result = mutableListOf<Element>()
-        result.addAll(nodeDao.getAll(keys.filter { it.elementType == NODE }.map { it.elementId }))
-        result.addAll(wayDao.getAll(keys.filter { it.elementType == WAY }.map { it.elementId }))
-        result.addAll(relationDao.getAll(keys.filter { it.elementType == RELATION }.map { it.elementId }))
+        val elementIds = keys.toElementIds()
+        if (elementIds.size == 0) return emptyList()
+
+        val result = ArrayList<Element>(elementIds.size)
+        result.addAll(nodeDao.getAll(elementIds.nodes))
+        result.addAll(wayDao.getAll(elementIds.ways))
+        result.addAll(relationDao.getAll(elementIds.relations))
         return result
     }
 
-    fun deleteAll(keys: Iterable<ElementKey>) {
-        nodeDao.deleteAll(keys.filter { it.elementType == NODE }.map { it.elementId })
-        wayDao.deleteAll(keys.filter { it.elementType == WAY }.map { it.elementId })
-        relationDao.deleteAll(keys.filter { it.elementType == RELATION }.map { it.elementId })
+    fun deleteAll(keys: Iterable<ElementKey>): Int {
+        val elementIds = keys.toElementIds()
+        if (elementIds.size == 0) return 0
+
+        return nodeDao.deleteAll(elementIds.nodes) +
+            wayDao.deleteAll(elementIds.ways) +
+            relationDao.deleteAll(elementIds.relations)
     }
 
     fun getIdsOlderThan(timestamp: Long): List<ElementKey> {
-        return nodeDao.getIdsOlderThan(timestamp).map { ElementKey(NODE, it) } +
-            wayDao.getIdsOlderThan(timestamp).map { ElementKey(WAY, it) } +
-            relationDao.getIdsOlderThan(timestamp).map { ElementKey(RELATION, it) }
+        val result = mutableListOf<ElementKey>()
+        result.addAll(nodeDao.getIdsOlderThan(timestamp).map { ElementKey(NODE, it) })
+        result.addAll(wayDao.getIdsOlderThan(timestamp).map { ElementKey(WAY, it) })
+        result.addAll(relationDao.getIdsOlderThan(timestamp).map { ElementKey(RELATION, it) })
+        return result
     }
+
+}
+
+private data class ElementIds(val nodes: List<Long>, val ways: List<Long>, val relations: List<Long>) {
+    val size: Int get() = nodes.size + ways.size + relations.size
+}
+
+private fun Iterable<ElementKey>.toElementIds(): ElementIds {
+    val nodes = ArrayList<Long>()
+    val ways = ArrayList<Long>()
+    val relations = ArrayList<Long>()
+    for (key in this) {
+        when(key.elementType) {
+            NODE -> nodes.add(key.elementId)
+            WAY -> ways.add(key.elementId)
+            RELATION -> relations.add(key.elementId)
+        }
+    }
+    return ElementIds(nodes, ways, relations)
 }
