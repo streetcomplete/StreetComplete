@@ -296,7 +296,7 @@ import javax.inject.Singleton
 
     /* ------------------------------------------------------------------------------------------ */
 
-    @Synchronized private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) {
+    private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) {
         for ((key, geometry) in updatedGeometries) {
             // add the modified data if it is in the bbox
             if (geometry.getBounds().intersect(bbox)) {
@@ -344,10 +344,15 @@ import javax.inject.Singleton
                 updatedGeometries.remove(key)
             } else {
                 deletedElements.remove(key)
-                updatedElements[key] = element
                 val geometry = createGeometry(element)
-                if (geometry != null) updatedGeometries[key] = geometry
-                else updatedGeometries.remove(key)
+                if (geometry != null) {
+                    updatedGeometries[key] = geometry
+                    // only apply element update if geometry valid
+                    updatedElements[key] = element
+                } else {
+                    updatedGeometries.remove(key)
+                    updatedElements.remove(key)
+                }
             }
         }
         return elements
