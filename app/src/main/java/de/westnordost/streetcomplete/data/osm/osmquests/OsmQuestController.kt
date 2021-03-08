@@ -54,6 +54,8 @@ import javax.inject.Singleton
          *  OSM elements are updated, so the quests that reference that element need to be updated
          *  as well. */
         @Synchronized override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
+            val time = currentTimeMillis()
+
             val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
             val previousQuests = mutableListOf<OsmQuest>()
             val hiddenQuests = getHiddenQuests()
@@ -72,13 +74,13 @@ import javax.inject.Singleton
                 deleteQuestIds.addAll(db.getAllForElement(key.elementType, key.elementId).mapNotNull { it.id })
             }
 
-            val time = currentTimeMillis()
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
 
             for (quest in quests) {
                 Log.d(TAG, "Created ${quest.osmElementQuestType::class.simpleName} for ${quest.elementType.name}#${quest.elementId}")
             }
-            Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${currentTimeMillis() - time}ms")
+            val seconds = (currentTimeMillis() - time) / 1000.0
+            Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
 
             updateQuests(quests, previousQuests, deleteQuestIds)
         }
