@@ -172,10 +172,11 @@ import javax.inject.Singleton
 
     @Synchronized override fun getWayComplete(id: Long): MapData? {
         val way = getWay(id) ?: return null
-        val nodes = getNodes(way.nodeIds)
+        val ids = way.nodeIds.toSet()
+        val nodes = getNodes(ids)
 
         /* If the way is (now) not complete, this is not acceptable */
-        if (nodes.size < way.nodeIds.size) return null
+        if (nodes.size < ids.size) return null
 
         val mapData = MutableMapData(listOf(way))
         mapData.addAll(nodes)
@@ -183,16 +184,15 @@ import javax.inject.Singleton
         return mapData
     }
 
-    @Synchronized private fun getNodes(ids: Collection<Long>): Collection<Node> {
-        val idsSet = ids.toSet()
-        val nodes = mapDataController.getNodes(idsSet)
+    @Synchronized private fun getNodes(ids: Set<Long>): Collection<Node> {
+        val nodes = mapDataController.getNodes(ids)
         val nodesById = HashMap<Long, Node>()
         nodes.associateByTo(nodesById) { it.id }
 
         for (element in updatedElements.values) {
             if (element is Node) {
                 // if a node is part of the way, put the updated node into the map
-                if (idsSet.contains(element.id)) {
+                if (ids.contains(element.id)) {
                     nodesById[element.id] = element
                 }
             }
