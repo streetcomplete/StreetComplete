@@ -71,7 +71,8 @@ class AddOpeningHours (
             ),
             "office" to arrayOf(
                 // common
-                "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency"
+                "insurance", "government", "travel_agent", "tax_advisor", "religion",
+                "employment_agency", "diplomatic"
             ),
             "craft" to arrayOf(
                 // common
