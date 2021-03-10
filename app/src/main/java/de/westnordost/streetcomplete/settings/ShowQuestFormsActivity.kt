@@ -105,7 +105,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
 
         val quest = object : Quest {
             override var id: Long? = 1L
-            override val center = firstPos
+            override val position = firstPos
             override val markerLocations = listOf<LatLon>(firstPos)
             override val geometry = elementGeometry
             override val type = questType

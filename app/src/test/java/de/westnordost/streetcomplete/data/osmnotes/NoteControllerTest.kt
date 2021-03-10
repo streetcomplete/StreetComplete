@@ -6,6 +6,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.*
+import java.lang.Thread.sleep
 
 class NoteControllerTest {
     private lateinit var dao: NoteDao
@@ -51,6 +52,8 @@ class NoteControllerTest {
         noteController.put(note)
 
         verify(dao).put(note)
+
+        sleep(100)
         verify(listener).onUpdated(eq(listOf(note)), eq(emptyList()), eq(emptyList()))
     }
 
@@ -63,6 +66,8 @@ class NoteControllerTest {
         noteController.put(note)
 
         verify(dao).put(note)
+
+        sleep(100)
         verify(listener).onUpdated(eq(emptyList()), eq(listOf(note)), eq(emptyList()))
     }
 
@@ -73,6 +78,8 @@ class NoteControllerTest {
         noteController.addListener(listener)
         noteController.delete(1L)
         verify(dao).delete(1L)
+
+        sleep(100)
         verify(listener).onUpdated(eq(emptyList()), eq(emptyList()), eq(listOf(1L)))
     }
 
@@ -104,6 +111,8 @@ class NoteControllerTest {
 
         assertEquals(3, noteController.deleteAllOlderThan(123L))
         verify(dao).deleteAll(ids)
+
+        sleep(100)
         verify(listener).onUpdated(eq(emptyList()), eq(emptyList()), eq(ids))
     }
 
@@ -118,6 +127,8 @@ class NoteControllerTest {
         verify(dao).getAll(bbox)
         verify(dao).putAll(eq(notes))
         verify(dao).deleteAll(eq(emptySet()))
+
+        sleep(100)
         verify(listener).onUpdated(eq(notes), eq(emptyList()), eq(emptySet()))
     }
 
@@ -137,6 +148,8 @@ class NoteControllerTest {
         verify(dao).getAll(bbox)
         verify(dao).putAll(eq(newNotes))
         verify(dao).deleteAll(eq(setOf(2L)))
+
+        sleep(100)
         verify(listener).onUpdated(eq(listOf(note3)), eq(listOf(note1)), eq(setOf(2)))
     }
 }

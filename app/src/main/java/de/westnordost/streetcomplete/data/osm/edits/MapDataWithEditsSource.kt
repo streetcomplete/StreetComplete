@@ -7,6 +7,7 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.intersect
@@ -40,7 +41,7 @@ import javax.inject.Singleton
      * in this class) is marked synchronized */
     private val deletedElements = HashSet<ElementKey>()
     private val updatedElements = HashMap<ElementKey, Element>()
-    private val updatedGeometries = HashMap<ElementKey, ElementGeometry>()
+    private val updatedGeometries = HashMap<ElementKey, ElementGeometry?>()
 
     private val mapDataListener = object : MapDataController.Listener {
 
@@ -155,7 +156,20 @@ import javax.inject.Singleton
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
-        return updatedGeometries[key] ?: mapDataController.getGeometry(type, id)
+        return if (updatedGeometries.containsKey(key)) {
+            updatedGeometries[key]
+        } else {
+            mapDataController.getGeometry(type, id)
+        }
+    }
+
+    @Synchronized fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
+        val originalKeys = keys.filter { !deletedElements.contains(it) && !updatedGeometries.containsKey(it) }
+        val updatedGeometries = keys.mapNotNull { key ->
+            updatedGeometries[key]?.let { ElementGeometryEntry(key.elementType, key.elementId, it) }
+        }
+        val originalGeometries = mapDataController.getGeometries(originalKeys)
+        return updatedGeometries + originalGeometries
     }
 
     @Synchronized fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry {
@@ -172,16 +186,19 @@ import javax.inject.Singleton
 
     @Synchronized override fun getWayComplete(id: Long): MapData? {
         val way = getWay(id) ?: return null
+        val mapData = getWayElements(way) ?: return null
+        mapData.addAll(listOf(way))
+        return mapData
+    }
+
+    @Synchronized private fun getWayElements(way: Way): MutableMapData? {
         val ids = way.nodeIds.toSet()
         val nodes = getNodes(ids)
 
         /* If the way is (now) not complete, this is not acceptable */
         if (nodes.size < ids.size) return null
 
-        val mapData = MutableMapData(listOf(way))
-        mapData.addAll(nodes)
-
-        return mapData
+        return MutableMapData(nodes)
     }
 
     @Synchronized private fun getNodes(ids: Set<Long>): Collection<Node> {
@@ -207,9 +224,13 @@ import javax.inject.Singleton
 
     @Synchronized override fun getRelationComplete(id: Long): MapData? {
         val relation = getRelation(id) ?: return null
+        val mapData = getRelationElements(relation)
+        mapData.addAll(listOf(relation))
+        return mapData
+    }
 
+    @Synchronized private fun getRelationElements(relation: Relation): MutableMapData {
         val elements = ArrayList<Element>()
-        elements.add(relation)
         for (member in relation.members) {
             /* for way members, also get their nodes */
             if (member.type == WAY) {
@@ -299,7 +320,7 @@ import javax.inject.Singleton
     private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) {
         for ((key, geometry) in updatedGeometries) {
             // add the modified data if it is in the bbox
-            if (geometry.getBounds().intersect(bbox)) {
+            if (geometry != null && geometry.getBounds().intersect(bbox)) {
                 val element = updatedElements[key]
                 if (element != null) {
                     mapData.put(element, geometry)
@@ -330,9 +351,13 @@ import javax.inject.Singleton
         val idProvider = elementEditsController.getIdProvider(edit.id)
         val editElement = get(edit.elementType, edit.elementId) ?: return emptyList()
 
-        val elements: Collection<Element>
+        val elements: List<Element>
         try {
+            /* sorting by element type: first nodes, then ways, then relations. This is important
+               because the geometry of (new) nodes is necessary to create the geometry of ways etc
+             */
             elements = edit.action.createUpdates(editElement, this, idProvider)
+                .sortedBy { it.type.ordinal }
         } catch (e: ConflictException) {
             return emptyList()
         }
@@ -344,15 +369,8 @@ import javax.inject.Singleton
                 updatedGeometries.remove(key)
             } else {
                 deletedElements.remove(key)
-                val geometry = createGeometry(element)
-                if (geometry != null) {
-                    updatedGeometries[key] = geometry
-                    // only apply element update if geometry valid
-                    updatedElements[key] = element
-                } else {
-                    updatedGeometries.remove(key)
-                    updatedElements.remove(key)
-                }
+                updatedElements[key] = element
+                updatedGeometries[key] = createGeometry(element)
             }
         }
         return elements
@@ -364,11 +382,11 @@ import javax.inject.Singleton
                 elementGeometryCreator.create(element)
             }
             is Way -> {
-                val wayMapData = getWayComplete(element.id) ?: return null
+                val wayMapData = getWayElements(element) ?: return null
                 elementGeometryCreator.create(element, wayMapData)
             }
             is Relation -> {
-                val relationMapData = getRelationComplete(element.id) ?: return null
+                val relationMapData = getRelationElements(element)
                 elementGeometryCreator.create(element, relationMapData, true)
             }
             else -> throw IllegalStateException()

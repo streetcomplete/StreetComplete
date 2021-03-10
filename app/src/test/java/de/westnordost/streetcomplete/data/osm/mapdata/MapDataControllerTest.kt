@@ -15,6 +15,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.anyBoolean
 import org.mockito.Mockito.verify
+import java.lang.Thread.sleep
 
 class MapDataControllerTest {
 
@@ -46,6 +47,16 @@ class MapDataControllerTest {
         val pGeom = pGeom()
         on(geometryDB.get(Element.Type.NODE, 5L)).thenReturn(pGeom)
         assertEquals(pGeom, controller.getGeometry(Element.Type.NODE,5L))
+    }
+
+    @Test fun getGeometries() {
+        val pGeom = ElementGeometryEntry(Element.Type.NODE, 1, pGeom())
+        val keys = listOf(ElementKey(Element.Type.NODE,1))
+        on(geometryDB.getAllEntries(keys)).thenReturn(listOf(pGeom))
+        assertEquals(
+            listOf(pGeom),
+            controller.getGeometries(keys)
+        )
     }
 
     @Test fun getMapDataWithGeometry() {
@@ -98,6 +109,8 @@ class MapDataControllerTest {
         verify(elementDB).deleteAll(expectedDeleteKeys)
         verify(elementDB).putAll(elements)
         verify(geometryDB).putAll(eq(geomEntries))
+
+        sleep(100)
         verify(listener).onUpdated(any(), eq(expectedDeleteKeys))
     }
 
@@ -114,6 +127,8 @@ class MapDataControllerTest {
 
         verify(elementDB).deleteAll(elementKeys)
         verify(geometryDB).deleteAll(elementKeys)
+
+        sleep(100)
         verify(listener).onUpdated(any(), eq(elementKeys))
     }
 

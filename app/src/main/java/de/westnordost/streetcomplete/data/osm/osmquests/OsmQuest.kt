@@ -14,12 +14,14 @@ import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
 data class OsmQuest(
     override var id: Long?,
     val osmElementQuestType: OsmElementQuestType<*>, // underlying OSM data
-    val elementType: Element.Type,
-    val elementId: Long,
+    override val elementType: Element.Type,
+    override val elementId: Long,
     override val geometry: ElementGeometry
-) : Quest {
+) : Quest, OsmQuestDaoEntry {
 
-    override val center: LatLon get() = geometry.center
+    override val questTypeName: String get() = osmElementQuestType::class.simpleName!!
+
+    override val position: LatLon get() = geometry.center
     override val type: QuestType<*> get() = osmElementQuestType
 
     override val markerLocations: Collection<LatLon> get() {
@@ -33,6 +35,6 @@ data class OsmQuest(
                 )
             }
         }
-        return listOf(center)
+        return listOf(position)
     }
 }

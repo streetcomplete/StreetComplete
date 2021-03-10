@@ -6,3 +6,6 @@ data class OsmQuestKey(val elementType: Element.Type, val elementId: Long, val q
 
 val OsmQuest.key get() =
     OsmQuestKey(elementType, elementId, osmElementQuestType::class.simpleName!!)
+
+val OsmQuestDaoEntry.key get() =
+    OsmQuestKey(elementType, elementId, questTypeName)

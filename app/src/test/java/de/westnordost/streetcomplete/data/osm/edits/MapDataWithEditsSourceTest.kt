@@ -103,6 +103,22 @@ class MapDataWithEditsSourceTest {
                 RELATION -> mapData.getRelationGeometry(elementId)
             }
         }
+        on(mapDataCtrl.getGeometries(any())).thenAnswer { invocation ->
+            val keys = invocation.getArgument<Collection<ElementKey>>(0)!!
+            keys.mapNotNull { key ->
+                when(key.elementType) {
+                    NODE -> mapData.getNodeGeometry(key.elementId)
+                    WAY -> mapData.getWayGeometry(key.elementId)
+                    RELATION -> mapData.getRelationGeometry(key.elementId)
+                }?.let {
+                    ElementGeometryEntry(
+                        key.elementType,
+                        key.elementId,
+                        it
+                    )
+                }
+            }
+        }
         on(mapDataCtrl.getMapDataWithGeometry(any())).thenAnswer { invocation ->
             val bbox = invocation.getArgument<BoundingBox>(0)
             val result = MutableMapDataWithGeometry()
@@ -235,6 +251,8 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertNull(s.getGeometry(NODE, 1))
+
+        assertEquals(emptyList<ElementGeometryEntry>(), s.getGeometries(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -246,6 +264,11 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertEquals(p, s.getGeometry(NODE, 1))
+
+        assertEquals(
+            listOf(ElementGeometryEntry(NODE, 1, p)),
+            s.getGeometries(listOf(ElementKey(NODE, 1)))
+        )
     }
 
     @Test
@@ -261,6 +284,11 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertEquals(p2, s.getGeometry(NODE, 1))
+
+        assertEquals(
+            listOf(ElementGeometryEntry(NODE, 1, p2)),
+            s.getGeometries(listOf(ElementKey(NODE, 1)))
+        )
     }
 
     @Test
@@ -293,6 +321,11 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertEquals(p3, s.getGeometry(NODE, 1))
+
+        assertEquals(
+            listOf(ElementGeometryEntry(NODE, 1, p3)),
+            s.getGeometries(listOf(ElementKey(NODE, 1)))
+        )
     }
 
     @Test
@@ -308,6 +341,34 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertNull(s.getGeometry(NODE, 1))
+
+        assertEquals(
+            emptyList<ElementGeometryEntry>(),
+            s.getGeometries(listOf(ElementKey(NODE, 1)))
+        )
+    }
+
+    @Test
+    fun `getGeometry returns null if element was updated with invalid geometry`() {
+        val way = way(1, listOf(1,2))
+        val wayNew = way(1, listOf())
+        val p1 = pGeom(0.0, 0.0)
+        val p2 = pGeom(1.0, 0.0)
+
+        originalElementsAre(way)
+        originalGeometriesAre(
+            ElementGeometryEntry(NODE, 1, p1),
+            ElementGeometryEntry(NODE, 2, p2)
+        )
+        editedElementsAre(wayNew)
+
+        val s = create()
+        assertNull(s.getGeometry(WAY, 1))
+
+        assertEquals(
+            emptyList<ElementGeometryEntry>(),
+            s.getGeometries(listOf(ElementKey(WAY, 1)))
+        )
     }
 
     //endregion

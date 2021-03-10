@@ -5,6 +5,7 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
@@ -37,9 +38,11 @@ class OsmQuestControllerTest {
         db = mock()
         // assign ids to added quests
         on(db.addAll(any())).then { invocation ->
-            for (q in invocation.getArgument<List<OsmQuest>>(0)) {
+            val quests = invocation.getArgument<List<OsmQuest>>(0)
+            for (q in quests) {
                 q.id = q.elementId
             }
+            quests.size
         }
 
         hiddenDB = mock()
@@ -95,16 +98,48 @@ class OsmQuestControllerTest {
     }
 
     @Test fun get() {
-        val quest = quest(123)
-        on(db.get(123)).thenReturn(quest)
-        assertEquals(quest, ctrl.get(123))
+        val entry = questEntry(123, elementType = Element.Type.NODE, elementId = 1)
+        val g = ElementPointGeometry(p(0.0,0.0))
+
+        on(db.get(123)).thenReturn(entry)
+        on(mapDataSource.getGeometry(Element.Type.NODE, 1)).thenReturn(g)
+
+        val expectedQuest = OsmQuest(123, ApplicableQuestType, Element.Type.NODE, 1, g)
+        assertEquals(expectedQuest, ctrl.get(123))
     }
 
     @Test fun getAllVisibleInBBox() {
-        val quests = listOf(quest(1), quest(2), quest(3))
+        val entries = listOf(
+            questEntry(1, elementType = Element.Type.NODE, elementId = 1),
+            questEntry(2, elementType = Element.Type.NODE, elementId = 2),
+            questEntry(3, elementType = Element.Type.NODE, elementId = 3)
+        )
+        val geoms = listOf(
+            ElementPointGeometry(p()),
+            ElementPointGeometry(p()),
+            ElementPointGeometry(p()),
+        )
         val bbox = bbox()
-        on(db.getAllInBBox(bbox, null)).thenReturn(quests)
-        assertTrue(ctrl.getAllVisibleInBBox(bbox, null).containsExactlyInAnyOrder(quests))
+
+        on(db.getAllInBBox(bbox, null)).thenReturn(entries)
+        on(mapDataSource.getGeometries(argThat {
+            it.containsExactlyInAnyOrder(listOf(
+                ElementKey(Element.Type.NODE, 1),
+                ElementKey(Element.Type.NODE, 2),
+                ElementKey(Element.Type.NODE, 3),
+            ))
+        })).thenReturn(listOf(
+            ElementGeometryEntry(Element.Type.NODE, 1, geoms[0]),
+            ElementGeometryEntry(Element.Type.NODE, 2, geoms[1]),
+            ElementGeometryEntry(Element.Type.NODE, 3, geoms[2])
+        ))
+
+        val expectedQuests = listOf(
+            OsmQuest(1, ApplicableQuestType, Element.Type.NODE, 1, geoms[0]),
+            OsmQuest(2, ApplicableQuestType, Element.Type.NODE, 2, geoms[1]),
+            OsmQuest(3, ApplicableQuestType, Element.Type.NODE, 3, geoms[2]),
+        )
+        assertTrue(ctrl.getAllVisibleInBBox(bbox, null).containsExactlyInAnyOrder(expectedQuests))
     }
 
     @Test fun hide() {
@@ -313,6 +348,14 @@ class OsmQuestControllerTest {
         )
     }
 }
+
+private fun questEntry(
+    id: Long? = 1,
+    questTypeName: String = "ApplicableQuestType",
+    elementType: Element.Type = Element.Type.NODE,
+    elementId: Long = 1,
+    position: LatLon = p()
+): OsmQuestDaoEntry = BasicOsmQuestDaoEntry(id, questTypeName, elementType, elementId, position)
 
 private fun quest(
     id: Long? = 1,

@@ -23,8 +23,9 @@ import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
 import de.westnordost.streetcomplete.util.measuredLength
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.toList
 import java.lang.System.currentTimeMillis
-import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
@@ -57,7 +58,7 @@ import javax.inject.Singleton
             val time = currentTimeMillis()
 
             val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
-            val previousQuests = mutableListOf<OsmQuest>()
+            val previousQuests = mutableListOf<OsmQuestDaoEntry>()
             val hiddenQuests = getHiddenQuests()
             var count = 0
 
@@ -77,7 +78,7 @@ import javax.inject.Singleton
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
 
             for (quest in quests) {
-                Log.d(TAG, "Created ${quest.osmElementQuestType::class.simpleName} for ${quest.elementType.name}#${quest.elementId}")
+                Log.d(TAG, "Created ${quest::class.simpleName!!} for ${quest.elementType.name}#${quest.elementId}")
             }
             val seconds = (currentTimeMillis() - time) / 1000.0
             Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
@@ -126,31 +127,31 @@ import javax.inject.Singleton
     ): Collection<OsmQuest> {
         val time = currentTimeMillis()
 
-        val quests = ConcurrentLinkedQueue<OsmQuest>()
         val blacklistedPositions = getBlacklistedPositions(bbox)
         val countryBoundaries = countryBoundariesFuture.get()
         val hiddenQuests = getHiddenQuests()
 
-        runBlocking {
-            for (questType in questTypes) {
-                launch {
-                    val questTypeName = questType::class.simpleName!!
-                    if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
-                        Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
-                    } else {
-                        val questTime = currentTimeMillis()
-                        for (element in questType.getApplicableElements(mapDataWithGeometry)) {
-                            val geometry = mapDataWithGeometry.getGeometry(element.type, element.id) ?: continue
-                            if (!mayCreateQuest(questType, element, geometry, blacklistedPositions, hiddenQuests, bbox)) continue
-                            quests.add(OsmQuest(null, questType, element.type, element.id, geometry))
-                        }
-
-                        val questSeconds = currentTimeMillis() - questTime
-                        Log.d(TAG, "$questTypeName: Found ${quests.size} quests in ${questSeconds}ms")
+        val quests = runBlocking { channelFlow {
+            for (questType in questTypes) { launch {
+                val questTypeName = questType::class.simpleName!!
+                if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
+                    Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
+                } else {
+                    val questTime = currentTimeMillis()
+                    var questCount = 0
+                    for (element in questType.getApplicableElements(mapDataWithGeometry)) {
+                        val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
+                            ?: continue
+                        if (!mayCreateQuest(questType, element, geometry, blacklistedPositions, hiddenQuests, bbox)) continue
+                        send(OsmQuest(null, questType, element.type, element.id, geometry))
+                        questCount++
                     }
+
+                    val questSeconds = currentTimeMillis() - questTime
+                    Log.d(TAG, "$questTypeName: Found $questCount quests in ${questSeconds}ms")
                 }
-            }
-        }
+            } }
+        }.toList() }
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG,"Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
 
@@ -206,13 +207,13 @@ import javax.inject.Singleton
 
     private fun updateQuests(
         questsNow: Collection<OsmQuest>,
-        questsPreviously: Collection<OsmQuest>,
+        questsPreviously: Collection<OsmQuestDaoEntry>,
         deletedQuestIds: Collection<Long>
     ) {
 
         val time = currentTimeMillis()
 
-        val previousQuestsByKey = mutableMapOf<OsmQuestKey, OsmQuest>()
+        val previousQuestsByKey = mutableMapOf<OsmQuestKey, OsmQuestDaoEntry>()
         questsPreviously.associateByTo(previousQuestsByKey) { it.key }
 
         val addedQuests = mutableListOf<OsmQuest>()
@@ -305,14 +306,35 @@ import javax.inject.Singleton
         return result
     }
 
-    override fun get(questId: Long): OsmQuest? =
-        db.get(questId)
+    override fun get(questId: Long): OsmQuest? {
+        val entry = db.get(questId) ?: return null
+        val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId)
+        return createOsmQuest(entry, geometry)
+    }
 
     override fun getAllInBBoxCount(bbox: BoundingBox): Int =
         db.getAllInBBoxCount(bbox)
 
-    override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> =
-        db.getAllInBBox(bbox, questTypes)
+    override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
+        val entries = db.getAllInBBox(bbox, questTypes)
+
+        val elementKeys = HashSet<ElementKey>()
+        entries.mapTo(elementKeys) { ElementKey(it.elementType, it.elementId) }
+
+        val geometriesByKey = mapDataSource.getGeometries(elementKeys)
+            .associateBy { ElementKey(it.elementType, it.elementId) }
+
+        return entries.mapNotNull { entry ->
+            val geometryEntry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]
+            createOsmQuest(entry, geometryEntry?.geometry)
+        }
+    }
+
+    private fun createOsmQuest(entry: OsmQuestDaoEntry, geometry: ElementGeometry?): OsmQuest? {
+        if (geometry == null) return null
+        val questType = questTypeRegistry.getByName(entry.questTypeName) as? OsmElementQuestType<*> ?: return null
+        return OsmQuest(entry.id, questType, entry.elementType, entry.elementId, geometry)
+    }
 
     override fun addListener(listener: OsmQuestSource.Listener) {
         listeners.add(listener)

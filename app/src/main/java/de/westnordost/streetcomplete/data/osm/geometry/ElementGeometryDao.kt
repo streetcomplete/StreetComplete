@@ -24,6 +24,10 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Colu
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.MIN_LATITUDE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.MIN_LONGITUDE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME_TEMPORARY_LOOKUP
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME_TEMPORARY_LOOKUP_MERGED_VIEW
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.TEMPORARY_LOOKUP_CREATE
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.TEMPORARY_LOOKUP_MERGED_VIEW_CREATE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.ktx.*
 
@@ -77,6 +81,24 @@ class ElementGeometryDao @Inject constructor(
         return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
     }
 
+    fun getAllEntries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
+        val values = keys.joinToString(",") { "('${it.elementType.name}', ${it.elementId})" }
+        return db.transaction {
+            /* this looks a little complicated. Basically, this is a workaround for SQLite not
+               supporting the "SELECT id FROM foo WHERE (a,b) IN ((1,2), (3,4), (5,6))" syntax:
+               Instead, we insert the values into a temporary table and inner join on that table then
+               https://stackoverflow.com/questions/18363276/how-do-you-do-an-in-query-that-has-multiple-columns-in-sqlite
+             */
+            db.execSQL(TEMPORARY_LOOKUP_CREATE)
+            db.execSQL(TEMPORARY_LOOKUP_MERGED_VIEW_CREATE)
+            db.execSQL("INSERT OR IGNORE INTO $NAME_TEMPORARY_LOOKUP ($ELEMENT_TYPE, $ELEMENT_ID) VALUES $values;")
+            val result = db.query(NAME_TEMPORARY_LOOKUP_MERGED_VIEW) { mapping.toObject(it) }
+            db.execSQL("DROP VIEW $NAME_TEMPORARY_LOOKUP_MERGED_VIEW")
+            db.execSQL("DROP TABLE $NAME_TEMPORARY_LOOKUP")
+            result
+        }
+    }
+
     fun deleteAll(entries: Collection<ElementKey>):Int {
         if (entries.isEmpty()) return 0
         var deletedCount = 0
@@ -87,14 +109,14 @@ class ElementGeometryDao @Inject constructor(
         }
         return deletedCount
     }
+}
 
-    private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox): WhereSelectionBuilder {
-        add("$MAX_LONGITUDE >= ?", bbox.minLongitude.toString())
-        add("$MAX_LATITUDE >= ?", bbox.minLatitude.toString())
-        add("$MIN_LONGITUDE <= ?", bbox.maxLongitude.toString())
-        add("$MIN_LATITUDE <= ?", bbox.maxLatitude.toString())
-        return this
-    }
+private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox): WhereSelectionBuilder {
+    add("$MAX_LONGITUDE >= ?", bbox.minLongitude.toString())
+    add("$MAX_LATITUDE >= ?", bbox.minLatitude.toString())
+    add("$MIN_LONGITUDE <= ?", bbox.maxLongitude.toString())
+    add("$MIN_LATITUDE <= ?", bbox.maxLatitude.toString())
+    return this
 }
 
 data class ElementGeometryEntry(

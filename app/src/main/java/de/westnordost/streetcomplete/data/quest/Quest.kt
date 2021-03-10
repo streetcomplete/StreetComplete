@@ -7,7 +7,7 @@ import de.westnordost.osmapi.map.data.LatLon
 interface Quest {
     var id: Long?
 
-    val center: LatLon
+    val position: LatLon
     val markerLocations: Collection<LatLon>
     val geometry: ElementGeometry
 

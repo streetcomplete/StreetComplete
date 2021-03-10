@@ -48,7 +48,7 @@ import kotlin.collections.ArrayList
             " via ${ApplicationConstants.USER_AGENT}:" +
             "\n\n$text"
 
-        noteEditsController.add(0, NoteEditAction.CREATE, q.center, fullText, imagePaths)
+        noteEditsController.add(0, NoteEditAction.CREATE, q.position, fullText, imagePaths)
         return true
     }
 
@@ -70,7 +70,7 @@ import kotlin.collections.ArrayList
             q.elementType,
             q.elementId,
             source,
-            q.center,
+            q.position,
             SplitWayAction(ArrayList(splits), w.nodeIds.first(), w.nodeIds.last())
         )
         return true
@@ -90,7 +90,7 @@ import kotlin.collections.ArrayList
             q.elementType,
             q.elementId,
             source,
-            q.center,
+            q.position,
             DeletePoiNodeAction(e.version)
         )
         return true
@@ -111,7 +111,7 @@ import kotlin.collections.ArrayList
             q.elementType,
             q.elementId,
             source,
-            q.center,
+            q.position,
             UpdateElementTagsAction(element.getSpatialParts(), changes, null)
         )
 
@@ -156,7 +156,7 @@ import kotlin.collections.ArrayList
 
         require(answer.text.isNotEmpty()) { "NoteQuest has been answered with an empty comment!" }
         // for note quests: questId == noteId
-        noteEditsController.add(questId, NoteEditAction.COMMENT, q.center, answer.text, answer.imagePaths)
+        noteEditsController.add(questId, NoteEditAction.COMMENT, q.position, answer.text, answer.imagePaths)
         return true
     }
 
@@ -178,7 +178,7 @@ import kotlin.collections.ArrayList
             q.elementType,
             q.elementId,
             source,
-            q.center,
+            q.position,
             UpdateElementTagsAction(element.getSpatialParts(), changes, q.osmElementQuestType)
         )
 

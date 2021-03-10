@@ -56,7 +56,6 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
 
         // quests based on OSM elements
         db.execSQL(OsmQuestTable.CREATE)
-        db.execSQL(OsmQuestTable.MERGED_VIEW_CREATE)
         db.execSQL(OsmQuestsHiddenTable.CREATE)
 
         // quests based on OSM notes

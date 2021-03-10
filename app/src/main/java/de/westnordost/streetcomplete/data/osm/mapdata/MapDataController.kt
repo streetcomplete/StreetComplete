@@ -120,6 +120,9 @@ import javax.inject.Singleton
 
     fun getGeometry(type: Element.Type, id: Long) : ElementGeometry? = geometryDB.get(type, id)
 
+    fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> =
+        geometryDB.getAllEntries(keys)
+
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
         val time = currentTimeMillis()
         val elementGeometryEntries = geometryDB.getAllEntries(bbox)

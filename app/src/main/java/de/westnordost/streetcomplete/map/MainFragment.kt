@@ -35,7 +35,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
-import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -779,7 +778,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun showQuestSolvedAnimation(quest: Quest) {
         val ctx = context ?: return
         val offset = view?.getLocationInWindow() ?: return
-        val startPos = mapFragment?.getPointOf(quest.center) ?: return
+        val startPos = mapFragment?.getPointOf(quest.position) ?: return
 
         val size = 42f.toPx(ctx).toInt()
         startPos.x += offset.x - size / 2f
