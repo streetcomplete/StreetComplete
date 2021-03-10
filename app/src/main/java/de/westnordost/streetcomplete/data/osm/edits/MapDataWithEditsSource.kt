@@ -59,7 +59,7 @@ import javax.inject.Singleton
                 // otherwise, update if it was modified at all
                 else {
                     val modifiedElement = updatedElements[key] ?: element
-                    val modifiedGeometry = updatedGeometries[key] ?: updated.getGeometry(key.elementType, key.elementId)
+                    val modifiedGeometry = updatedGeometries[key] ?: updated.getGeometry(key.type, key.id)
                     modifiedElements.add(Pair(modifiedElement, modifiedGeometry))
                 }
             }
@@ -80,7 +80,7 @@ import javax.inject.Singleton
                 updated.put(element, geometry)
             }
             for (key in modifiedDeleted) {
-                updated.remove(key.elementType, key.elementId)
+                updated.remove(key.type, key.id)
             }
 
             callOnUpdated(updated = updated, deleted = modifiedDeleted)
@@ -166,7 +166,7 @@ import javax.inject.Singleton
     @Synchronized fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
         val originalKeys = keys.filter { !deletedElements.contains(it) && !updatedGeometries.containsKey(it) }
         val updatedGeometries = keys.mapNotNull { key ->
-            updatedGeometries[key]?.let { ElementGeometryEntry(key.elementType, key.elementId, it) }
+            updatedGeometries[key]?.let { ElementGeometryEntry(key.type, key.id, it) }
         }
         val originalGeometries = mapDataController.getGeometries(originalKeys)
         return updatedGeometries + originalGeometries
@@ -215,8 +215,8 @@ import javax.inject.Singleton
             }
         }
         for (key in deletedElements) {
-            if (key.elementType == NODE) {
-                nodesById.remove(key.elementId)
+            if (key.type == NODE) {
+                nodesById.remove(key.id)
             }
         }
         return nodesById.values
@@ -270,8 +270,8 @@ import javax.inject.Singleton
             }
         }
         for (key in deletedElements) {
-            if (key.elementType == WAY) {
-                waysById.remove(key.elementId)
+            if (key.type == WAY) {
+                waysById.remove(key.id)
             }
         }
 
@@ -307,8 +307,8 @@ import javax.inject.Singleton
             }
         }
         for (key in deletedElements) {
-            if (key.elementType == RELATION) {
-                relationsById.remove(key.elementId)
+            if (key.type == RELATION) {
+                relationsById.remove(key.id)
             }
         }
 
@@ -328,12 +328,12 @@ import javax.inject.Singleton
             }
             // or otherwise remove if it is not (anymore)
             else {
-                mapData.remove(key.elementType, key.elementId)
+                mapData.remove(key.type, key.id)
             }
         }
         // and remove elements that have been deleted
         for (key in deletedElements) {
-            mapData.remove(key.elementType, key.elementId)
+            mapData.remove(key.type, key.id)
         }
     }
 

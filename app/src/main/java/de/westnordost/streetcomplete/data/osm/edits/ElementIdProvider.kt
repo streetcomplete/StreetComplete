@@ -15,10 +15,10 @@ class ElementIdProvider(elementKeys: Collection<ElementKey>) {
         relationIds = ArrayList(elementKeys.size)
 
         for (key in elementKeys) {
-            when(key.elementType) {
-                Element.Type.NODE -> nodeIds.add(key.elementId)
-                Element.Type.WAY -> wayIds.add(key.elementId)
-                Element.Type.RELATION -> relationIds.add(key.elementId)
+            when(key.type) {
+                Element.Type.NODE -> nodeIds.add(key.id)
+                Element.Type.WAY -> wayIds.add(key.id)
+                Element.Type.RELATION -> relationIds.add(key.id)
             }
         }
         // they should be sorted -1, -2, -3, ... etc. - it's descending because all ids are negative

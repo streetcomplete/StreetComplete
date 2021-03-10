@@ -71,10 +71,10 @@ class MapDataWithEditsSourceTest {
         }
         on(mapDataCtrl.getAll(any())).thenAnswer { invocation ->
             invocation.getArgument<Collection<ElementKey>>(0).mapNotNull {
-                when(it.elementType) {
-                    NODE -> mapData.getNode(it.elementId)
-                    WAY -> mapData.getWay(it.elementId)
-                    RELATION -> mapData.getRelation(it.elementId)
+                when(it.type) {
+                    NODE -> mapData.getNode(it.id)
+                    WAY -> mapData.getWay(it.id)
+                    RELATION -> mapData.getRelation(it.id)
                 }
             }
         }
@@ -106,14 +106,14 @@ class MapDataWithEditsSourceTest {
         on(mapDataCtrl.getGeometries(any())).thenAnswer { invocation ->
             val keys = invocation.getArgument<Collection<ElementKey>>(0)!!
             keys.mapNotNull { key ->
-                when(key.elementType) {
-                    NODE -> mapData.getNodeGeometry(key.elementId)
-                    WAY -> mapData.getWayGeometry(key.elementId)
-                    RELATION -> mapData.getRelationGeometry(key.elementId)
+                when(key.type) {
+                    NODE -> mapData.getNodeGeometry(key.id)
+                    WAY -> mapData.getWayGeometry(key.id)
+                    RELATION -> mapData.getRelationGeometry(key.id)
                 }?.let {
                     ElementGeometryEntry(
-                        key.elementType,
-                        key.elementId,
+                        key.type,
+                        key.id,
                         it
                     )
                 }
@@ -1135,9 +1135,9 @@ class MapDataWithEditsSourceTest {
         on(editsCtrl.getIdProvider(anyLong())).thenReturn(ElementIdProvider(createdElementKeys))
         val action = mock<ElementEditAction>()
         on(action.newElementsCount).thenReturn(NewElementsCount(
-            createdElementKeys.count { it.elementType == NODE },
-            ways = createdElementKeys.count { it.elementType == WAY },
-            relations = createdElementKeys.count { it.elementType == RELATION }
+            createdElementKeys.count { it.type == NODE },
+            ways = createdElementKeys.count { it.type == WAY },
+            relations = createdElementKeys.count { it.type == RELATION }
         ))
         editsListener.onDeletedEdit(edit(
             elementType = elementType,

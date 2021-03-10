@@ -30,8 +30,8 @@ class UpdatedElementsHandlerTest {
         handler.handle(diff(NODE, 1))
 
         val deletedElementKey = handler.getElementUpdates(listOf(node(1))).deleted.single()
-        assertEquals(1, deletedElementKey.elementId)
-        assertEquals(NODE, deletedElementKey.elementType)
+        assertEquals(1, deletedElementKey.id)
+        assertEquals(NODE, deletedElementKey.type)
     }
 
     @Test fun `updates element id`() {

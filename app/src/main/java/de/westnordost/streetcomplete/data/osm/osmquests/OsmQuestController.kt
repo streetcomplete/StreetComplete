@@ -72,7 +72,7 @@ import javax.inject.Singleton
             val deleteQuestIds = mutableListOf<Long>()
             for (key in deleted) {
                 // quests that refer to elements that have been deleted shall be deleted
-                deleteQuestIds.addAll(db.getAllForElement(key.elementType, key.elementId).mapNotNull { it.id })
+                deleteQuestIds.addAll(db.getAllForElement(key.type, key.id).mapNotNull { it.id })
             }
 
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }

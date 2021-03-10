@@ -82,7 +82,7 @@ class ElementGeometryDao @Inject constructor(
     }
 
     fun getAllEntries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
-        val values = keys.joinToString(",") { "('${it.elementType.name}', ${it.elementId})" }
+        val values = keys.joinToString(",") { "('${it.type.name}', ${it.id})" }
         return db.transaction {
             /* this looks a little complicated. Basically, this is a workaround for SQLite not
                supporting the "SELECT id FROM foo WHERE (a,b) IN ((1,2), (3,4), (5,6))" syntax:
@@ -104,7 +104,7 @@ class ElementGeometryDao @Inject constructor(
         var deletedCount = 0
         db.transaction {
             for (entry in entries) {
-                if (delete(entry.elementType, entry.elementId)) deletedCount++
+                if (delete(entry.type, entry.id)) deletedCount++
             }
         }
         return deletedCount
