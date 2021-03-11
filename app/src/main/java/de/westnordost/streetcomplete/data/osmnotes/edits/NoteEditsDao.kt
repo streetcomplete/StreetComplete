@@ -6,7 +6,6 @@ import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.WhereSelectionBuilder
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.CREATED_TIMESTAMP
 import de.westnordost.streetcomplete.util.Serializer
@@ -25,13 +24,13 @@ import de.westnordost.streetcomplete.ktx.*
 
 class NoteEditsDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val mapping: NoteEditsMapping
+    private val serializer: Serializer
 ){
     private val db get() = dbHelper.writableDatabase
 
     fun add(edit: NoteEdit): Boolean {
         db.transaction {
-            val rowId = db.insert(NAME, null, mapping.toContentValues(edit))
+            val rowId = db.insert(NAME, null, edit.toContentValues())
             if (rowId == -1L) return false
             edit.id = rowId
             // if the note id is not set, set it to the negative of the row id
@@ -44,26 +43,26 @@ class NoteEditsDao @Inject constructor(
     }
 
     fun get(id: Long): NoteEdit? =
-        db.queryOne(NAME, selection = "$ID = $id") { mapping.toObject(it) }
+        db.queryOne(NAME, selection = "$ID = $id") { it.toNoteEdit() }
 
     fun getAll(): List<NoteEdit> =
-        db.query(NAME, orderBy = "$IS_SYNCED, $CREATED_TIMESTAMP") { mapping.toObject(it) }
+        db.query(NAME, orderBy = "$IS_SYNCED, $CREATED_TIMESTAMP") { it.toNoteEdit() }
 
     fun getOldestUnsynced(): NoteEdit? =
-        db.queryOne(NAME, selection = "$IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { mapping.toObject(it) }
+        db.queryOne(NAME, selection = "$IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { it.toNoteEdit() }
 
     fun getUnsyncedCount(): Int =
         db.queryOne(NAME, arrayOf("COUNT(*)"), "$IS_SYNCED = 0") { it.getInt(0) } ?: 0
 
     fun getAllUnsynced(): List<NoteEdit> =
-        db.query(NAME, selection = "$IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { mapping.toObject(it) }
+        db.query(NAME, selection = "$IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { it.toNoteEdit() }
 
     fun getAllUnsyncedForNote(noteId: Long): List<NoteEdit> =
-        db.query(NAME, selection = "$NOTE_ID = $noteId AND $IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { mapping.toObject(it) }
+        db.query(NAME, selection = "$NOTE_ID = $noteId AND $IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { it.toNoteEdit() }
 
     fun getAllUnsyncedForNotes(noteIds: Collection<Long>): List<NoteEdit> {
         val notes = noteIds.joinToString(",")
-        return db.query(NAME, selection = "$NOTE_ID IN ($notes) AND $IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { mapping.toObject(it) }
+        return db.query(NAME, selection = "$NOTE_ID IN ($notes) AND $IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { it.toNoteEdit() }
     }
 
     fun getAllUnsynced(bbox: BoundingBox): List<NoteEdit> {
@@ -74,7 +73,7 @@ class NoteEditsDao @Inject constructor(
             selection = builder.where,
             selectionArgs = builder.args,
             orderBy = CREATED_TIMESTAMP
-        ) { mapping.toObject(it) }
+        ) { it.toNoteEdit() }
     }
 
     fun getAllUnsyncedPositions(bbox: BoundingBox): List<LatLon> {
@@ -102,7 +101,7 @@ class NoteEditsDao @Inject constructor(
         db.update(NAME, contentValuesOf(NOTE_ID to newNoteId), "$NOTE_ID = $oldNoteId", null)
 
     fun getOldestNeedingImagesActivation(): NoteEdit? =
-        db.queryOne(NAME, selection = "$IS_SYNCED = 1 AND $IMAGES_NEED_ACTIVATION = 1", orderBy = CREATED_TIMESTAMP) { mapping.toObject(it) }
+        db.queryOne(NAME, selection = "$IS_SYNCED = 1 AND $IMAGES_NEED_ACTIVATION = 1", orderBy = CREATED_TIMESTAMP) { it.toNoteEdit() }
 
     fun markImagesActivated(id: Long): Boolean =
         db.update(NAME, contentValuesOf(IMAGES_NEED_ACTIVATION to 0), "$ID = $id", null) == 1
@@ -118,32 +117,28 @@ class NoteEditsDao @Inject constructor(
             bbox.maxLongitude.toString()
         )
     }
-}
 
-class NoteEditsMapping @Inject constructor(private val serializer: Serializer)
-    : ObjectRelationalMapping<NoteEdit> {
-
-    override fun toContentValues(obj: NoteEdit) = contentValuesOf(
-        NOTE_ID to obj.noteId,
-        LATITUDE to obj.position.latitude,
-        LONGITUDE to obj.position.longitude,
-        CREATED_TIMESTAMP to obj.createdTimestamp,
-        IS_SYNCED to if (obj.isSynced) 1 else 0,
-        TEXT to obj.text,
-        IMAGE_PATHS to serializer.toBytes(ArrayList<String>(obj.imagePaths)),
-        IMAGES_NEED_ACTIVATION to if (obj.imagesNeedActivation) 1 else 0,
-        TYPE to obj.action.name
+    private fun NoteEdit.toContentValues() = contentValuesOf(
+        NOTE_ID to noteId,
+        LATITUDE to position.latitude,
+        LONGITUDE to position.longitude,
+        CREATED_TIMESTAMP to createdTimestamp,
+        IS_SYNCED to if (isSynced) 1 else 0,
+        TEXT to text,
+        IMAGE_PATHS to serializer.toBytes(ArrayList<String>(imagePaths)),
+        IMAGES_NEED_ACTIVATION to if (imagesNeedActivation) 1 else 0,
+        TYPE to action.name
     )
 
-    override fun toObject(cursor: Cursor) = NoteEdit(
-            cursor.getLong(ID),
-            cursor.getLong(NOTE_ID),
-            OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-            NoteEditAction.valueOf(cursor.getString(TYPE)),
-            cursor.getStringOrNull(TEXT),
-            serializer.toObject<ArrayList<String>>(cursor.getBlob(IMAGE_PATHS)),
-            cursor.getLong(CREATED_TIMESTAMP),
-            cursor.getInt(IS_SYNCED) == 1,
-            cursor.getInt(IMAGES_NEED_ACTIVATION) == 1
+    private fun Cursor.toNoteEdit() = NoteEdit(
+        getLong(ID),
+        getLong(NOTE_ID),
+        OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
+        NoteEditAction.valueOf(getString(TYPE)),
+        getStringOrNull(TEXT),
+        serializer.toObject<ArrayList<String>>(getBlob(IMAGE_PATHS)),
+        getLong(CREATED_TIMESTAMP),
+        getInt(IS_SYNCED) == 1,
+        getInt(IMAGES_NEED_ACTIVATION) == 1
     )
 }

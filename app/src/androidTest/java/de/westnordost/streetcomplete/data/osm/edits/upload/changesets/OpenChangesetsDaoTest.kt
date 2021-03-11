@@ -15,7 +15,7 @@ class OpenChangesetsDaoTest : ApplicationDbTestCase() {
     private val SOURCE = "test"
 
     @Before fun createDao() {
-        dao = OpenChangesetsDao(dbHelper, OpenChangesetMapping())
+        dao = OpenChangesetsDao(dbHelper)
     }
 
     @Test fun deleteNonExistent() {

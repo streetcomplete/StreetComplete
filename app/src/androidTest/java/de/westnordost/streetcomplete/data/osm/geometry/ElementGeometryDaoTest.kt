@@ -14,11 +14,9 @@ import org.junit.Assert.*
 
 class ElementGeometryDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementGeometryDao
-    private lateinit var mapping: ElementGeometryEntryMapping
 
     @Before fun createDao() {
-        mapping = ElementGeometryEntryMapping(ElementGeometryMapping(serializer))
-        dao = ElementGeometryDao(dbHelper, mapping)
+        dao = ElementGeometryDao(dbHelper, serializer)
     }
 
     @Test fun testGetNull() {

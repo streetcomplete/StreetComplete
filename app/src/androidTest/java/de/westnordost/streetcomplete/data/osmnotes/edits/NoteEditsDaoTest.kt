@@ -13,7 +13,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NoteEditsDao
 
     @Before fun createDao() {
-        dao = NoteEditsDao(dbHelper, NoteEditsMapping(serializer))
+        dao = NoteEditsDao(dbHelper, serializer)
     }
 
     @Test fun addGet() {

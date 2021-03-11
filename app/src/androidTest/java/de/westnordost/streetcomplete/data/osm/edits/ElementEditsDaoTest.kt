@@ -22,7 +22,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Before fun createDao() {
         val list = listOf<QuestType<*>>(TEST_QUEST_TYPE, TEST_QUEST_TYPE2)
-        dao = ElementEditsDao(dbHelper, ElementEditsMapping(QuestTypeRegistry(list), serializer))
+        dao = ElementEditsDao(dbHelper, QuestTypeRegistry(list), serializer)
     }
 
     @Test fun addGet_UpdateElementTagsEdit() {

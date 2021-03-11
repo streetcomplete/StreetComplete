@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ACTION
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.CREATED_TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ELEMENT_ID
@@ -31,29 +30,30 @@ import javax.inject.Inject
 
 class ElementEditsDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val mapping: ElementEditsMapping
+    private val questTypeRegistry: QuestTypeRegistry,
+    private val serializer: Serializer
 ) {
     private val db get() = dbHelper.writableDatabase
 
     fun add(edit: ElementEdit) {
-        val rowId = db.insertOrThrow(NAME, null, mapping.toContentValues(edit))
+        val rowId = db.insertOrThrow(NAME, null, edit.toContentValues())
         edit.id = rowId
     }
 
     fun get(id: Long): ElementEdit? =
-        db.queryOne(NAME, selection = "$ID = $id") { mapping.toObject(it) }
+        db.queryOne(NAME, selection = "$ID = $id") { it.toElementEdit() }
 
     fun getOldestUnsynced(): ElementEdit? =
-        db.queryOne(NAME, selection = "$IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { mapping.toObject(it) }
+        db.queryOne(NAME, selection = "$IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { it.toElementEdit() }
 
     fun getUnsyncedCount(): Int =
         db.queryOne(NAME, arrayOf("COUNT(*)"), "$IS_SYNCED = 0") { it.getInt(0) } ?: 0
 
     fun getAllUnsynced(): List<ElementEdit> =
-        db.query(NAME, selection = "$IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { mapping.toObject(it) }
+        db.query(NAME, selection = "$IS_SYNCED = 0", orderBy = CREATED_TIMESTAMP) { it.toElementEdit() }
 
     fun getAll(): List<ElementEdit> =
-        db.query(NAME, orderBy = "$IS_SYNCED, $CREATED_TIMESTAMP") { mapping.toObject(it) }
+        db.query(NAME, orderBy = "$IS_SYNCED, $CREATED_TIMESTAMP") { it.toElementEdit() }
 
     fun markSynced(id: Long): Boolean =
         db.update(NAME, contentValuesOf(IS_SYNCED to 1), "$ID = $id", null) == 1
@@ -71,24 +71,17 @@ class ElementEditsDao @Inject constructor(
             "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
             arrayOf(elementType.name, oldElementId.toString())
         )
-}
 
-class ElementEditsMapping @Inject constructor(
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val serializer: Serializer
-) : ObjectRelationalMapping<ElementEdit> {
-
-    override fun toContentValues(obj: ElementEdit): ContentValues {
-        val action = obj.action
+    private fun ElementEdit.toContentValues(): ContentValues {
         val values = contentValuesOf(
-            QUEST_TYPE to obj.questType.name,
-            ELEMENT_TYPE to obj.elementType.name,
-            ELEMENT_ID to obj.elementId,
-            SOURCE to obj.source,
-            LATITUDE to obj.position.latitude,
-            LONGITUDE to obj.position.longitude,
-            CREATED_TIMESTAMP to obj.createdTimestamp,
-            IS_SYNCED to if (obj.isSynced) 1 else 0,
+            QUEST_TYPE to questType.name,
+            ELEMENT_TYPE to elementType.name,
+            ELEMENT_ID to elementId,
+            SOURCE to source,
+            LATITUDE to position.latitude,
+            LONGITUDE to position.longitude,
+            CREATED_TIMESTAMP to createdTimestamp,
+            IS_SYNCED to if (isSynced) 1 else 0,
             TYPE to action::class.simpleName
         )
         when(action) {
@@ -104,9 +97,9 @@ class ElementEditsMapping @Inject constructor(
         return values
     }
 
-    override fun toObject(cursor: Cursor): ElementEdit {
-        val b = cursor.getBlobOrNull(ACTION)
-        val type = cursor.getString(TYPE)
+    private fun Cursor.toElementEdit(): ElementEdit {
+        val b = getBlobOrNull(ACTION)
+        val type = getString(TYPE)
 
         val action = when(type) {
             UpdateElementTagsAction::class.simpleName ->
@@ -125,14 +118,14 @@ class ElementEditsMapping @Inject constructor(
         }
 
         return ElementEdit(
-            cursor.getLong(ID),
-            questTypeRegistry.getByName(cursor.getString(QUEST_TYPE)) as OsmElementQuestType<*>,
-            Element.Type.valueOf(cursor.getString(ELEMENT_TYPE)),
-            cursor.getLong(ELEMENT_ID),
-            cursor.getString(SOURCE),
-            OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-            cursor.getLong(CREATED_TIMESTAMP),
-            cursor.getInt(IS_SYNCED) == 1,
+            getLong(ID),
+            questTypeRegistry.getByName(getString(QUEST_TYPE)) as OsmElementQuestType<*>,
+            Element.Type.valueOf(getString(ELEMENT_TYPE)),
+            getLong(ELEMENT_ID),
+            getString(SOURCE),
+            OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
+            getLong(CREATED_TIMESTAMP),
+            getInt(IS_SYNCED) == 1,
             action
         )
     }

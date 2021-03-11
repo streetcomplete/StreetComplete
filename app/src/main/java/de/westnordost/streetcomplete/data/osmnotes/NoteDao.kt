@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.WhereSelectionBuilder
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CLOSED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.COMMENTS
@@ -32,16 +31,16 @@ import de.westnordost.streetcomplete.ktx.*
 /** Stores OSM notes */
 class NoteDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val mapping: NoteMapping
+    private val serializer: Serializer
 ) {
     private val db get() = dbHelper.writableDatabase
 
     fun put(note: Note) {
-        db.replaceOrThrow(NAME, null, mapping.toContentValues(note))
+        db.replaceOrThrow(NAME, null, note.toContentValues())
     }
 
     fun get(id: Long): Note? {
-        return db.queryOne(NAME, null, "$ID = $id") { mapping.toObject(it) }
+        return db.queryOne(NAME, null, "$ID = $id") { it.toNote() }
     }
 
     fun delete(id: Long): Boolean {
@@ -60,7 +59,7 @@ class NoteDao @Inject constructor(
     fun getAll(bbox: BoundingBox): List<Note> {
         val builder = WhereSelectionBuilder()
         builder.appendBounds(bbox)
-        return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
+        return db.query(NAME, null, builder.where, builder.args) { it.toNote() }
     }
 
     fun getAllPositions(bbox: BoundingBox): List<LatLon> {
@@ -72,7 +71,7 @@ class NoteDao @Inject constructor(
 
     fun getAll(ids: Collection<Long>): List<Note> {
         if (ids.isEmpty()) return emptyList()
-        return db.query(NAME, null, "$ID IN (${ids.joinToString(",")})") { mapping.toObject(it) }
+        return db.query(NAME, null, "$ID IN (${ids.joinToString(",")})") { it.toNote() }
     }
 
     fun getAllIdsOlderThan(timestamp: Long): List<Long> {
@@ -83,6 +82,27 @@ class NoteDao @Inject constructor(
         if (ids.isEmpty()) return 0
         return db.delete(NAME, "$ID IN (${ids.joinToString(",")})", null)
     }
+
+    private fun Note.toContentValues() = contentValuesOf(
+        ID to id,
+        LATITUDE to position.latitude,
+        LONGITUDE to position.longitude,
+        STATUS to status.name,
+        CREATED to dateCreated.time,
+        CLOSED to dateClosed?.time,
+        COMMENTS to serializer.toBytes(ArrayList(comments)),
+        LAST_UPDATE to Date().time
+    )
+
+    private fun Cursor.toNote() = Note().also { n ->
+        n.id = getLong(ID)
+        n.position = OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE))
+        n.dateCreated = Date(getLong(CREATED))
+        n.dateClosed = getLongOrNull(CLOSED)?.let { Date(it) }
+        n.status = Note.Status.valueOf(getString(STATUS))
+        n.comments = serializer.toObject<ArrayList<NoteComment>>(getBlob(COMMENTS))
+    }
+
 }
 
 private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox) {
@@ -97,26 +117,3 @@ private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox) {
     )
 }
 
-class NoteMapping @Inject constructor(private val serializer: Serializer)
-    : ObjectRelationalMapping<Note> {
-
-    override fun toContentValues(obj: Note) = contentValuesOf(
-        ID to obj.id,
-        LATITUDE to obj.position.latitude,
-        LONGITUDE to obj.position.longitude,
-        STATUS to obj.status.name,
-        CREATED to obj.dateCreated.time,
-        CLOSED to obj.dateClosed?.time,
-        COMMENTS to serializer.toBytes(ArrayList(obj.comments)),
-        LAST_UPDATE to Date().time
-    )
-
-    override fun toObject(cursor: Cursor) = Note().also { n ->
-        n.id = cursor.getLong(ID)
-        n.position = OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE))
-        n.dateCreated = Date(cursor.getLong(CREATED))
-        n.dateClosed = cursor.getLongOrNull(CLOSED)?.let { Date(it) }
-        n.status = Note.Status.valueOf(cursor.getString(STATUS))
-        n.comments = serializer.toObject<ArrayList<NoteComment>>(cursor.getBlob(COMMENTS))
-    }
-}

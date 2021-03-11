@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 import android.database.Cursor
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
-import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 
 import javax.inject.Inject
 
@@ -17,24 +16,21 @@ import de.westnordost.streetcomplete.ktx.query
 import de.westnordost.streetcomplete.ktx.queryOne
 
 /** Keep track of changesets and the date of the last change that has been made to them  */
-class OpenChangesetsDao @Inject constructor(
-    private val dbHelper: SQLiteOpenHelper,
-    private val mapping: OpenChangesetMapping
-) {
+class OpenChangesetsDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
     private val db get() = dbHelper.writableDatabase
 
     fun getAll(): Collection<OpenChangeset> {
-        return db.query(NAME) { mapping.toObject(it) }
+        return db.query(NAME) { it.toOpenChangeset() }
     }
 
     fun put(openChangeset: OpenChangeset) {
-        db.replaceOrThrow(NAME, null, mapping.toContentValues(openChangeset))
+        db.replaceOrThrow(NAME, null, openChangeset.toContentValues())
     }
 
     fun get(questType: String, source: String): OpenChangeset? {
         val where = "$QUEST_TYPE = ? AND $SOURCE = ?"
         val args = arrayOf(questType, source)
-        return db.queryOne(NAME, null, where, args) { mapping.toObject(it) }
+        return db.queryOne(NAME, null, where, args) { it.toOpenChangeset()  }
     }
 
     fun delete(questType: String, source: String): Boolean {
@@ -44,17 +40,14 @@ class OpenChangesetsDao @Inject constructor(
     }
 }
 
-class OpenChangesetMapping @Inject constructor(): ObjectRelationalMapping<OpenChangeset> {
+private fun OpenChangeset.toContentValues() = contentValuesOf(
+    QUEST_TYPE to questType,
+    SOURCE to source,
+    CHANGESET_ID to changesetId
+)
 
-    override fun toContentValues(obj: OpenChangeset) = contentValuesOf(
-        QUEST_TYPE to obj.questType,
-        SOURCE to obj.source,
-        CHANGESET_ID to obj.changesetId
-    )
-
-    override fun toObject(cursor: Cursor) = OpenChangeset(
-            cursor.getString(QUEST_TYPE),
-            cursor.getString(SOURCE),
-            cursor.getLong(CHANGESET_ID)
-    )
-}
+private fun Cursor.toOpenChangeset() = OpenChangeset(
+    getString(QUEST_TYPE),
+    getString(SOURCE),
+    getLong(CHANGESET_ID)
+)
