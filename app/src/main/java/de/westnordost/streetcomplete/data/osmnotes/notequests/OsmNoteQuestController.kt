@@ -179,9 +179,8 @@ private fun Note.containsSurveyRequiredMarker(): Boolean {
     return comments.any { it.text?.matches(".*$surveyRequiredMarker.*".toRegex()) == true }
 }
 
-private fun Note.containsCommentFromUser(userId: Long): Boolean {
-    return comments.any { it.isFromUser(userId) && it.isComment  }
-}
+private fun Note.containsCommentFromUser(userId: Long): Boolean =
+    comments.any { it.isFromUser(userId) && it.isComment  }
 
 private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     val firstComment = comments.first()
