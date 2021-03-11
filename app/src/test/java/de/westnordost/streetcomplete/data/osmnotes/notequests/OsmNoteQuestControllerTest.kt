@@ -122,6 +122,17 @@ class OsmNoteQuestControllerTest {
         assertEquals(OsmNoteQuest(1, p(1.0,1.0)), ctrl.get(1))
     }
 
+    @Test fun `get quest with comment containing survey required marker returns non-null`() {
+        on(noteSource.get(1)).thenReturn(note(
+            1,
+            position = p(1.0,1.0),
+            comments = listOf(comment(text = "test #surveyme"))
+        ))
+        on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
+
+        assertEquals(OsmNoteQuest(1, p(1.0,1.0)), ctrl.get(1))
+    }
+
     @Test fun `get quest not phrased as question returns non-null by preference`() {
         on(noteSource.get(1)).thenReturn(note(
             1,
