@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.content.getSystemService
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -17,15 +18,11 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /** Fragment that shows the upload button, including upload progress etc. */
-class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
 
     @Inject internal lateinit var uploadController: UploadController
     @Inject internal lateinit var userController: UserController
@@ -35,13 +32,13 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
     private val uploadButton get() = view as UploadButton
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountListener {
-        override fun onUnsyncedChangesCountIncreased() { launch(Dispatchers.Main) { updateCount() }}
-        override fun onUnsyncedChangesCountDecreased() { launch(Dispatchers.Main) { updateCount() }}
+        override fun onUnsyncedChangesCountIncreased() { lifecycleScope.launch { updateCount() }}
+        override fun onUnsyncedChangesCountDecreased() { lifecycleScope.launch { updateCount() }}
     }
 
     private val uploadProgressListener = object : UploadProgressListener {
-        override fun onStarted() { launch(Dispatchers.Main) { updateProgress(true) } }
-        override fun onFinished() { launch(Dispatchers.Main) { updateProgress(false) } }
+        override fun onStarted() { lifecycleScope.launch { updateProgress(true) } }
+        override fun onFinished() { lifecycleScope.launch { updateProgress(false) } }
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
@@ -78,11 +75,6 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
         super.onStop()
         uploadController.removeUploadProgressListener(uploadProgressListener)
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
     }
 
     // ---------------------------------------------------------------------------------------------

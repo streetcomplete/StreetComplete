@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -14,15 +15,13 @@ import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.ktx.toast
+import kotlinx.android.synthetic.main.fragment_main_menu_button.*
 import kotlinx.android.synthetic.main.fragment_main_menu_button.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /** Fragment that shows the main menu button and manages its logic */
-class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
-    TeamModeQuestFilter.TeamModeChangeListener,
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
     @Inject internal lateinit var teamModeQuestFilter: TeamModeQuestFilter
     @Inject internal lateinit var downloadController: DownloadController
@@ -32,6 +31,10 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
     }
 
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+    private val teamModeListener = object : TeamModeQuestFilter.TeamModeChangeListener {
+        override fun onTeamModeChanged(enabled: Boolean) { lifecycleScope.launch { setTeamMode(enabled) } }
+    }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
@@ -51,19 +54,29 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
         // in onStart and not onViewCreated because the notification that team mode is active should
         // pop in always when the app comes back from the background again
         if (teamModeQuestFilter.isEnabled) {
-            onTeamModeChanged(true)
+            setTeamMode(true)
         }
 
-        teamModeQuestFilter.addListener(this)
+        teamModeQuestFilter.addListener(teamModeListener)
     }
 
     override fun onStop() {
         super.onStop()
-
-        teamModeQuestFilter.removeListener(this)
+        teamModeQuestFilter.removeListener(teamModeListener)
     }
 
     /* ------------------------------------------------------------------------------------------ */
+
+    private fun setTeamMode(enabled: Boolean) {
+        if (enabled) {
+            context?.toast(R.string.team_mode_active)
+            teamModeColorCircle?.popIn()
+            teamModeColorCircle?.setIndexInTeam(teamModeQuestFilter.indexInTeam)
+        } else {
+            context?.toast(R.string.team_mode_deactivated)
+            teamModeColorCircle?.popOut()
+        }
+    }
 
     internal fun onClickMainMenu() {
         MainMenuDialog(
@@ -73,17 +86,6 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button),
             teamModeQuestFilter::enableTeamMode,
             teamModeQuestFilter::disableTeamMode
         ).show()
-    }
-
-    override fun onTeamModeChanged(enabled: Boolean) {
-        if (enabled) {
-            context?.toast(R.string.team_mode_active)
-            view?.teamModeColorCircle?.popIn()
-            view?.teamModeColorCircle?.setIndexInTeam(teamModeQuestFilter.indexInTeam)
-        } else {
-            context?.toast(R.string.team_mode_deactivated)
-            view?.teamModeColorCircle?.popOut()
-        }
     }
 
     /* ------------------------------------ Download Button  ------------------------------------ */

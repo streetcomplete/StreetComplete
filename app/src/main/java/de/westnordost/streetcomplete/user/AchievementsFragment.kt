@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
@@ -25,8 +26,7 @@ import javax.inject.Inject
 
 /** Shows the icons for all achieved achievements and opens a AchievementInfoFragment to show the
  *  details on click. */
-class AchievementsFragment : Fragment(R.layout.fragment_achievements),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
 
     @Inject internal lateinit var userAchievementsSource: UserAchievementsSource
     @Inject internal lateinit var userStore: UserStore
@@ -50,7 +50,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
         val minCellWidth = 144f.toPx(ctx)
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
 
-        launch {
+        lifecycleScope.launch {
             view.awaitPreDraw()
 
             emptyText.visibility = View.GONE
@@ -80,11 +80,6 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
         } else {
             emptyText.setText(R.string.achievements_empty)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
     }
 
     /* -------------------------------------- Interaction --------------------------------------- */

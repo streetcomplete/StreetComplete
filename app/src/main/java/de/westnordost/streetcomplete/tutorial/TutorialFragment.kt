@@ -5,24 +5,24 @@ import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.BounceInterpolator
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_tutorial.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /** Shows a short tutorial for first-time users */
 class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
-    private val mainHandler = Handler(Looper.getMainLooper())
     private var currentPage: Int = 0
 
     interface Listener {
@@ -63,7 +63,6 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
     override fun onDestroy() {
         super.onDestroy()
-        mainHandler.removeCallbacksAndMessages(null)
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
     }
 
@@ -129,7 +128,9 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .setDuration(200)
             .start()
 
-        mainHandler.postDelayed({
+        lifecycleScope.launch {
+            delay(3000)
+
             // ...and after a few seconds, stops flashing
             tutorialGpsButton?.state = LocationState.UPDATING
 
@@ -145,7 +146,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
                     .start()
             }
 
-        }, 3000L)
+        }
     }
 
     private fun step2Transition() {
@@ -183,7 +184,8 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
                 .start()
         }
 
-        mainHandler.postDelayed({
+        lifecycleScope.launch {
+            delay(1400)
             // checkmark fades in and animates
 
             checkmarkView.animate()
@@ -194,7 +196,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 (checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
             }
-        }, 1400L)
+        }
     }
 
     private fun updateIndicatorDots() {

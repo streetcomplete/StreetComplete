@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.osmapi.user.Permission
 import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.HasTitle
@@ -29,7 +30,6 @@ import javax.inject.Inject
 /** Shows only a login button and a text that clarifies that login is necessary for publishing the
  *  answers. */
 class LoginFragment : Fragment(R.layout.fragment_login),
-    CoroutineScope by CoroutineScope(Dispatchers.Main),
     HasTitle,
     BackPressedListener,
     OAuthFragment.Listener {
@@ -74,18 +74,13 @@ class LoginFragment : Fragment(R.layout.fragment_login),
         return false
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
-    }
-
     /* ------------------------------- OAuthFragment.Listener ----------------------------------- */
 
     override fun onOAuthSuccess(consumer: OAuthConsumer) {
         loginButton.visibility = View.INVISIBLE
         loginProgress.visibility = View.VISIBLE
         childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
-        launch {
+        lifecycleScope.launch {
             if (hasRequiredPermissions(consumer)) {
                 userController.logIn(consumer)
             } else {

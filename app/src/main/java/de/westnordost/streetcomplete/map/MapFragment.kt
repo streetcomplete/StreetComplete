@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.mapzen.tangram.MapView
 import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.TouchInput.*
@@ -36,9 +37,6 @@ import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.map.tangram.*
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_map.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
@@ -49,7 +47,6 @@ import javax.inject.Inject
 
 /** Manages a map that remembers its last location*/
 open class MapFragment : Fragment(),
-    CoroutineScope by CoroutineScope(Dispatchers.Main),
     TapResponder, DoubleTapResponder, LongPressResponder,
     PanResponder, ScaleResponder, ShoveResponder, RotateResponder {
 
@@ -102,7 +99,7 @@ open class MapFragment : Fragment(),
 
         attributionContainer.respectSystemInsets(View::setMargins)
 
-        launch { initMap() }
+        lifecycleScope.launch { initMap() }
     }
 
     private fun showOpenUrlDialog(url: String) {
@@ -123,7 +120,7 @@ open class MapFragment : Fragment(),
 
     override fun onStart() {
         super.onStart()
-        launch { reinitializeMapIfNecessary() }
+        lifecycleScope.launch { reinitializeMapIfNecessary() }
     }
 
     override fun onResume() {
@@ -139,10 +136,8 @@ open class MapFragment : Fragment(),
 
     override fun onDestroy() {
         super.onDestroy()
-        controller?.cancelAllCameraAnimations()
         mapView.onDestroy()
         controller = null
-        coroutineContext.cancel()
     }
 
     override fun onLowMemory() {
@@ -156,6 +151,7 @@ open class MapFragment : Fragment(),
         val ctrl = mapView.initMap(createHttpHandler())
         controller = ctrl
         if (ctrl == null) return
+        lifecycle.addObserver(ctrl)
         registerResponders()
 
         val sceneFilePath = getSceneFilePath()
@@ -371,7 +367,7 @@ open class MapFragment : Fragment(),
     set(value) {
         if (field == value) return
         field = value
-        launch {
+        lifecycleScope.launch {
             val sceneFile = loadedSceneFilePath
             if (sceneFile != null) {
                 val toggle = if (value) "true" else "false"

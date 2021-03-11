@@ -42,7 +42,6 @@ class BallPitView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr),
-    CoroutineScope by CoroutineScope(Dispatchers.Main),
     LifecycleObserver {
 
     private val sensorManager: SensorManager
@@ -56,6 +55,8 @@ class BallPitView @JvmOverloads constructor(
     private var isSceneSetup = false
 
     private val mainHandler = Handler(Looper.getMainLooper())
+
+    private val lifecycleScope = CoroutineScope(Dispatchers.Main)
 
     private val sensorEventListener = object : SensorEventListener {
         override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) { }
@@ -105,7 +106,7 @@ class BallPitView @JvmOverloads constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         physicsController.destroy()
-        coroutineContext.cancel()
+        lifecycleScope.cancel()
     }
 
     fun setViews(viewsAndSizes: List<Pair<View, Int>>) {
@@ -115,7 +116,7 @@ class BallPitView @JvmOverloads constructor(
         }
 
         val areaInMeters = max(1f, viewsAndSizes.map { it.second }.sumByFloat { getBubbleArea(it) })
-        launch {
+        lifecycleScope.launch {
             setupScene(areaInMeters / BALLPIT_FILL_FACTOR)
             addBubblesToScene(viewsAndSizes)
         }

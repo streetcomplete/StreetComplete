@@ -5,10 +5,11 @@ import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.PointF
 import android.graphics.RectF
-import android.os.Handler
-import android.os.Looper
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import com.mapzen.tangram.*
 import com.mapzen.tangram.networking.HttpHandler
 import com.mapzen.tangram.viewholder.GLSurfaceViewHolderFactory
@@ -17,6 +18,10 @@ import com.mapzen.tangram.viewholder.GLViewHolderFactory
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.util.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
@@ -38,7 +43,9 @@ import kotlin.math.pow
  *      <li>Use LatLon instead of LngLat</li>
  *  </ul>
  *  */
-class KtMapController(private val c: MapController, contentResolver: ContentResolver) {
+class KtMapController(private val c: MapController, contentResolver: ContentResolver):
+    LifecycleObserver {
+
     private val cameraManager = CameraManager(c, contentResolver)
     private val markerManager = MarkerManager(c)
     private val gestureManager = TouchGestureManager(c)
@@ -49,7 +56,8 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
     private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
     private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
 
-    private val mainHandler = Handler(Looper.getMainLooper())
+    private val lifecycleScope = CoroutineScope(Dispatchers.Main)
+
     private var mapChangingListener: MapChangingListener? = null
 
     private val flingAnimator: TimeAnimator = TimeAnimator()
@@ -97,8 +105,8 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
             override fun onViewComplete() { /* not interested*/ }
 
             override fun onRegionWillChange(animated: Boolean) {
-                // may not be called on ui thread, see https://github.com/tangrams/tangram-es/issues/2157
-                mainHandler.post {
+                // could be called not on the ui thread, see https://github.com/tangrams/tangram-es/issues/2157
+                lifecycleScope.launch {
                     calledOnMapIsChangingOnce = false
                     if (!cameraManager.isAnimating) {
                         mapChangingListener?.onMapWillChange()
@@ -108,14 +116,14 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
             }
 
             override fun onRegionIsChanging() {
-                mainHandler.post {
+                lifecycleScope.launch {
                     if (!cameraManager.isAnimating) mapChangingListener?.onMapIsChanging()
                     calledOnMapIsChangingOnce = true
                 }
             }
 
             override fun onRegionDidChange(animated: Boolean) {
-                mainHandler.post {
+                lifecycleScope.launch {
                     if (!cameraManager.isAnimating) {
                         if (!calledOnMapIsChangingOnce) mapChangingListener?.onMapIsChanging()
                         mapChangingListener?.onMapDidChange()
@@ -124,6 +132,11 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
                 }
             }
         })
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+        lifecycleScope.cancel()
+        cameraManager.cancelAllCameraAnimations()
     }
 
     /* ----------------------------- Loading and Updating Scene --------------------------------- */
@@ -167,8 +180,6 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         update.zoom = camera.zoom
         updateCameraPosition(0L, defaultInterpolator, update)
     }
-
-    fun cancelAllCameraAnimations() = cameraManager.cancelAllCameraAnimations()
 
     var cameraType: MapController.CameraType
         set(value) { c.cameraType = value }

@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.bundleOf
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
@@ -25,8 +26,7 @@ import javax.inject.Inject
 
 /** Shows the settings screen */
 class SettingsFragment : PreferenceFragmentCompat(),
-    SharedPreferences.OnSharedPreferenceChangeListener,
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Inject internal lateinit var prefs: SharedPreferences
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
@@ -58,7 +58,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 AlertDialog.Builder(it)
                     .setMessage(R.string.delete_cache_dialog_message)
                     .setPositiveButton(R.string.delete_confirmation) { _, _ ->
-                        launch { deleteCache() }
+                        lifecycleScope.launch { deleteCache() }
                     }
                     .setNegativeButton(android.R.string.cancel, null)
                     .show()
@@ -93,11 +93,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
     override fun onPause() {
         super.onPause()
         prefs.unregisterOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {

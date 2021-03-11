@@ -3,18 +3,17 @@ package de.westnordost.streetcomplete.quests.max_speed
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.getSystemService
 import androidx.core.view.children
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.numberOrNull
+import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
@@ -104,7 +103,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             speedInput?.setText(LAST_INPUT_SLOW_ZONE.toString())
         } else {
             speedInput?.requestFocus()
-            speedInput?.let { showKeyboard(it) }
+            speedInput?.showKeyboard()
         }
 
         checkIsFormComplete()
@@ -138,11 +137,6 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             child.isEnabled = false
         }
         setSpeedType(ADVISORY)
-    }
-
-    private fun showKeyboard(focus: View) {
-        val imm = activity?.getSystemService<InputMethodManager>()
-        imm?.showSoftInput(focus, InputMethodManager.SHOW_IMPLICIT)
     }
 
     private fun confirmUnusualInput(onConfirmed: () -> Unit) {

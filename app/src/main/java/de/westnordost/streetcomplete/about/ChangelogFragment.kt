@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 
@@ -16,15 +17,19 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.row_changelog.view.*
+import kotlinx.coroutines.*
 
 /** Shows the full changelog */
 class ChangelogFragment : Fragment(R.layout.fragment_changelog) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val changelog = readChangelog(resources)
         val changelogList = view.findViewById<RecyclerView>(R.id.changelogList)
         changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-        changelogList.adapter = ChangelogAdapter(changelog)
+
+        lifecycleScope.launch {
+            val changelog = readChangelog(resources)
+            changelogList.adapter = ChangelogAdapter(changelog)
+        }
     }
 
     override fun onStart() {
@@ -37,21 +42,31 @@ class ChangelogFragment : Fragment(R.layout.fragment_changelog) {
 class WhatsNewDialog(context: Context, sinceVersion: String)
     : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
-    init {
-        val fullChangelog = readChangelog(context.resources)
-        var currentVersionIndex = fullChangelog.indexOfFirst { it.title == sinceVersion }
-        // if version not found, just show the last one
-        if (currentVersionIndex == -1) currentVersionIndex = 1
-        val changelog = fullChangelog.subList(0, currentVersionIndex)
+    private val scope = CoroutineScope(Dispatchers.Main)
 
+    init {
         val view = LayoutInflater.from(context).inflate(R.layout.fragment_changelog, null, false)
         val changelogList = view.findViewById<RecyclerView>(R.id.changelogList)
         changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-        changelogList.adapter = ChangelogAdapter(changelog)
 
         setTitle(R.string.title_whats_new)
         setView(view)
         setButton(DialogInterface.BUTTON_POSITIVE, context.resources.getText(android.R.string.ok), null, null)
+
+        scope.launch {
+            val fullChangelog = readChangelog(context.resources)
+            var currentVersionIndex = fullChangelog.indexOfFirst { it.title == sinceVersion }
+            // if version not found, just show the last one
+            if (currentVersionIndex == -1) currentVersionIndex = 1
+            val changelog = fullChangelog.subList(0, currentVersionIndex)
+
+            changelogList.adapter = ChangelogAdapter(changelog)
+        }
+    }
+
+    override fun dismiss() {
+        super.dismiss()
+        scope.cancel()
     }
 }
 
@@ -63,16 +78,17 @@ class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelo
     inner class ViewHolder(itemView: View) : ListAdapter.ViewHolder<Release>(itemView) {
         override fun onBind(with: Release) {
             itemView.titleLabel.text = with.title
-            itemView.descriptionLabel.setHtml(addedLinks(with.description))
+            itemView.descriptionLabel.setHtml(with.description)
         }
     }
 }
 
 data class Release(val title: String, val description: String)
 
-private fun readChangelog(resources: Resources) =
+private suspend fun readChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
     resources.getYamlObject<LinkedHashMap<String, String>>(R.raw.changelog)
-        .map { Release(it.key, it.value) }
+        .map { Release(it.key, addedLinks(it.value)) }
+}
 
 private fun addedLinks(description: String): String {
     return description

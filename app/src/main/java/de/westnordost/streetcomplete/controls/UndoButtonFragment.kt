@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -22,16 +23,12 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
 /** Fragment that shows (and hides) the undo button, based on whether there is anything to undo */
-class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     @Inject internal lateinit var elementEditsController: ElementEditsController
     @Inject internal lateinit var mapDataSource: MapDataWithEditsSource
@@ -42,22 +39,16 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
 
     /* undo button is not shown when there is nothing to undo */
     private val osmElementChangesListener = object : ElementEditsSource.Listener {
-        override fun onAddedEdit(edit: ElementEdit) {
-            launch(Dispatchers.Main) { animateInIfAnythingToUndo() }
-        }
-        override fun onSyncedEdit(edit: ElementEdit) {
-            launch(Dispatchers.Main) { animateOutIfNothingLeftToUndo() }
-        }
-        override fun onDeletedEdit(edit: ElementEdit) {
-            launch(Dispatchers.Main) { animateOutIfNothingLeftToUndo() }
-        }
+        override fun onAddedEdit(edit: ElementEdit) { lifecycleScope.launch { animateInIfAnythingToUndo() }}
+        override fun onSyncedEdit(edit: ElementEdit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
+        override fun onDeletedEdit(edit: ElementEdit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
     }
 
     /* Don't allow undoing while uploading. Should prevent race conditions. (Undoing quest while
     *  also uploading it at the same time) */
     private val uploadProgressListener = object : UploadProgressListener {
-        override fun onStarted() { launch(Dispatchers.Main) { updateUndoButtonEnablement(false) }}
-        override fun onFinished() { launch(Dispatchers.Main) { updateUndoButtonEnablement(true) }}
+        override fun onStarted() { lifecycleScope.launch { updateUndoButtonEnablement(false) }}
+        override fun onFinished() { lifecycleScope.launch { updateUndoButtonEnablement(true) }}
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
@@ -88,11 +79,6 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
         super.onStop()
         elementEditsController.removeListener(osmElementChangesListener)
         uploadProgressSource.removeUploadProgressListener(uploadProgressListener)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
     }
 
     /* ------------------------------------------------------------------------------------------ */

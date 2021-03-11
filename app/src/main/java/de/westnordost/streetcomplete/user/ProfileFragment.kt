@@ -9,6 +9,7 @@ import android.view.View
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
@@ -25,8 +26,7 @@ import java.util.*
 import javax.inject.Inject
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
-class ProfileFragment : Fragment(R.layout.fragment_profile),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var userStore: UserStore
@@ -38,19 +38,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
     private lateinit var anonAvatar: Bitmap
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountListener {
-        override fun onUnsyncedChangesCountIncreased() { launch(Dispatchers.Main) { updateUnpublishedQuestsText() } }
-        override fun onUnsyncedChangesCountDecreased() { launch(Dispatchers.Main) { updateUnpublishedQuestsText() } }
+        override fun onUnsyncedChangesCountIncreased() { lifecycleScope.launch { updateUnpublishedQuestsText() } }
+        override fun onUnsyncedChangesCountDecreased() { lifecycleScope.launch { updateUnpublishedQuestsText() } }
     }
     private val questStatisticsDaoListener = object : QuestStatisticsDao.Listener {
-        override fun onAddedOne(questType: String) { launch(Dispatchers.Main) { updateSolvedQuestsText() }}
-        override fun onSubtractedOne(questType: String) { launch(Dispatchers.Main) { updateSolvedQuestsText() } }
-        override fun onReplacedAll() { launch(Dispatchers.Main) { updateSolvedQuestsText() } }
+        override fun onAddedOne(questType: String) { lifecycleScope.launch { updateSolvedQuestsText() }}
+        override fun onSubtractedOne(questType: String) { lifecycleScope.launch { updateSolvedQuestsText() } }
+        override fun onReplacedAll() { lifecycleScope.launch { updateSolvedQuestsText() } }
     }
     private val userStoreUpdateListener = object : UserStore.UpdateListener {
-        override fun onUserDataUpdated() { launch(Dispatchers.Main) { updateUserName() } }
+        override fun onUserDataUpdated() { lifecycleScope.launch { updateUserName() } }
     }
     private val userAvatarListener = object : UserAvatarListener {
-        override fun onUserAvatarUpdated() { launch(Dispatchers.Main) { updateAvatar() } }
+        override fun onUserAvatarUpdated() { lifecycleScope.launch { updateAvatar() } }
     }
 
     init {
@@ -76,7 +76,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
     override fun onStart() {
         super.onStart()
 
-        launch {
+        lifecycleScope.launch {
             userStore.addListener(userStoreUpdateListener)
             userController.addUserAvatarListener(userAvatarListener)
             questStatisticsDao.addListener(questStatisticsDaoListener)
@@ -99,11 +99,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
         questStatisticsDao.removeListener(questStatisticsDaoListener)
         userStore.removeListener(userStoreUpdateListener)
         userController.removeUserAvatarListener(userAvatarListener)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
     }
 
     private fun updateUserName() {
