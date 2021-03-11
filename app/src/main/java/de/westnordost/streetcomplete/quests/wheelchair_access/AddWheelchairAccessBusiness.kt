@@ -66,7 +66,8 @@ class AddWheelchairAccessBusiness(
             ),
             "office" to arrayOf(
                 // common
-                "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
+                "insurance", "government", "travel_agent", "tax_advisor", "religion",
+                "employment_agency", "diplomatic",
 
                 // name & wheelchair
                 "lawyer", "estate_agent", "political_party", "therapist"

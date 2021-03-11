@@ -222,7 +222,7 @@ object AchievementsModule {
 
         Link(
             "openrouteservice-wheelchair",
-            "https://maps.openrouteservice.org/directions?b=3",
+            "https://classic-maps.openrouteservice.org/directions?b=3",
             "Openrouteservice (Wheelchair)",
             LinkCategory.SHOWCASE,
             R.drawable.ic_link_heigit,
