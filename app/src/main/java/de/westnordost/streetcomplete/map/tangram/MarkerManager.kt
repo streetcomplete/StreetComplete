@@ -6,10 +6,10 @@ import com.mapzen.tangram.MapController
 import com.mapzen.tangram.geometry.Polygon
 import com.mapzen.tangram.geometry.Polyline
 import de.westnordost.osmapi.map.data.LatLon
+import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 /** Controls the marker management. Use in place of the Tangram MapController.addMarker, pickMarker
  *  etc. methods to enable markers that survive a scene reload.
@@ -40,8 +40,9 @@ class MarkerManager(private val c: MapController) {
         }
     }
 
-    suspend fun pickMarker(posX: Float, posY: Float): MarkerPickResult? = suspendCoroutine { cont ->
+    suspend fun pickMarker(posX: Float, posY: Float): MarkerPickResult? = suspendCancellableCoroutine { cont ->
         markerPickContinuations.offer(cont)
+        cont.invokeOnCancellation { markerPickContinuations.remove(cont) }
         c.pickMarker(posX, posY)
     }
 

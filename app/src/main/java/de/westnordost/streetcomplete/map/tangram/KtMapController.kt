@@ -18,16 +18,12 @@ import com.mapzen.tangram.viewholder.GLViewHolderFactory
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.util.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 import kotlin.math.log10
 import kotlin.math.max
 import kotlin.math.min
@@ -144,20 +140,22 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
     suspend fun loadSceneFile(
         path: String,
         sceneUpdates: List<SceneUpdate>? = null
-    ): Int = suspendCoroutine { cont ->
+    ): Int = suspendCancellableCoroutine { cont ->
         markerManager.invalidateMarkers()
         val sceneId = c.loadSceneFileAsync(path, sceneUpdates)
         sceneUpdateContinuations[sceneId] = cont
+        cont.invokeOnCancellation { sceneUpdateContinuations.remove(sceneId) }
     }
 
     suspend fun loadSceneYaml(
         yaml: String,
         resourceRoot: String,
         sceneUpdates: List<SceneUpdate>? = null
-    ): Int = suspendCoroutine { cont ->
+    ): Int = suspendCancellableCoroutine { cont ->
         markerManager.invalidateMarkers()
         val sceneId = c.loadSceneYamlAsync(yaml, resourceRoot, sceneUpdates)
         sceneUpdateContinuations[sceneId] = cont
+        cont.invokeOnCancellation { sceneUpdateContinuations.remove(sceneId) }
     }
 
     /* ----------------------------------------- Camera ----------------------------------------- */
@@ -297,15 +295,17 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
 
     fun setPickRadius(radius: Float) = c.setPickRadius(radius)
 
-    suspend fun pickLabel(posX: Float, posY: Float): LabelPickResult? = suspendCoroutine { cont ->
+    suspend fun pickLabel(posX: Float, posY: Float): LabelPickResult? = suspendCancellableCoroutine { cont ->
         pickLabelContinuations.offer(cont)
+        cont.invokeOnCancellation { pickLabelContinuations.remove(cont) }
         c.pickLabel(posX, posY)
     }
 
     suspend fun pickMarker(posX: Float, posY: Float): MarkerPickResult? = markerManager.pickMarker(posX, posY)
 
-    suspend fun pickFeature(posX: Float, posY: Float): FeaturePickResult? = suspendCoroutine { cont ->
+    suspend fun pickFeature(posX: Float, posY: Float): FeaturePickResult? = suspendCancellableCoroutine { cont ->
         featurePickContinuations.offer(cont)
+        cont.invokeOnCancellation { featurePickContinuations.remove(cont) }
         c.pickFeature(posX, posY)
     }
 
@@ -338,7 +338,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
 
     /* ------------------------------------------ Misc ------------------------------------------ */
 
-    suspend fun captureFrame(waitForCompleteView: Boolean): Bitmap = suspendCoroutine { cont ->
+    suspend fun captureFrame(waitForCompleteView: Boolean): Bitmap = suspendCancellableCoroutine { cont ->
         c.captureFrame({ bitmap -> cont.resume(bitmap) }, waitForCompleteView)
     }
 
@@ -364,15 +364,14 @@ private fun SceneError.toException() =
 
 suspend fun MapView.initMap(
     httpHandler: HttpHandler? = null,
-    glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()) =
-
-    suspendCoroutine<KtMapController?> { cont ->
-        getMapAsync(MapView.MapReadyCallback { mapController ->
-            cont.resume(mapController?.let {
-                KtMapController(it, context.contentResolver)
-            })
-        }, glViewHolderFactory, httpHandler)
-    }
+    glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()
+) = suspendCancellableCoroutine<KtMapController?> { cont ->
+    getMapAsync({ mapController ->
+        cont.resume(mapController?.let {
+            KtMapController(it, context.contentResolver)
+        })
+    }, glViewHolderFactory, httpHandler)
+}
 
 interface MapChangingListener {
     fun onMapWillChange()

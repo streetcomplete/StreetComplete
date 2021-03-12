@@ -26,7 +26,6 @@ import javax.inject.Provider
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 
 /** Fragment that manages the OAuth 1 authentication process in a webview*/
 class OAuthFragment : Fragment(R.layout.fragment_oauth),
@@ -156,7 +155,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
     private inner class OAuthWebViewClient : WebViewClient() {
 
         private var continutation: Continuation<String>? = null
-        suspend fun awaitOAuthCallback(): String = suspendCoroutine {continutation = it }
+        suspend fun awaitOAuthCallback(): String = suspendCancellableCoroutine { continutation = it }
 
         override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
             val uri = url?.toUri() ?: return false

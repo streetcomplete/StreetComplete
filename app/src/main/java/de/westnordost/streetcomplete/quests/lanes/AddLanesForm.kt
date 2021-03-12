@@ -17,8 +17,8 @@ import kotlinx.android.synthetic.main.quest_lanes_select_type.view.*
 import kotlinx.android.synthetic.main.quest_street_lanes_puzzle.view.*
 import kotlinx.android.synthetic.main.view_little_compass.view.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
@@ -256,7 +256,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         updatePuzzleView()
     }
 
-    private suspend fun showSelectMarkedLanesDialogForBothSides(selectedValue: Int?) = suspendCoroutine<Int> { cont ->
+    private suspend fun showSelectMarkedLanesDialogForBothSides(selectedValue: Int?) = suspendCancellableCoroutine<Int> { cont ->
         ValuePickerDialog(requireContext(),
             listOf(2,4,6,8,10,12,14),
             selectedValue, null,
@@ -265,7 +265,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         ).show()
     }
 
-    private suspend fun showSelectMarkedLanesDialogForOneSide(selectedValue: Int?) = suspendCoroutine<Int> { cont ->
+    private suspend fun showSelectMarkedLanesDialogForOneSide(selectedValue: Int?) = suspendCancellableCoroutine<Int> { cont ->
         ValuePickerDialog(requireContext(),
             listOf(1,2,3,4,5,6,7,8),
             selectedValue, null,

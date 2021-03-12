@@ -66,7 +66,7 @@ class MapTilesDownloader @Inject constructor(
         Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
     }
 
-    private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadResult = suspendCoroutine { cont ->
+    private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadResult = suspendCancellableCoroutine { cont ->
         /* adding trailing "&" because Tangram-ES also puts this at the end and the URL needs to be
            identical in order for the cache to work */
         val url = vectorTileProvider.getTileUrl(zoom, x, y) + "&"
@@ -100,6 +100,7 @@ class MapTilesDownloader @Inject constructor(
                 cont.resume(DownloadSuccess(alreadyCached, size))
             }
         }
+        cont.invokeOnCancellation { call.cancel() }
         call.enqueue(callback)
     }
 
