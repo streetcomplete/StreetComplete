@@ -9,7 +9,7 @@ class SlippyMapMathTest {
 
     @Test fun `convert bbox to tiles rect and back results in same bbox`() {
         val p = p(53.0, 9.0)
-        val tile = p.enclosingTile(15)
+        val tile = p.enclosingTilePos(15)
         val bbox = tile.asBoundingBox(15)
         assertTrue(bbox.minLatitude <= p.latitude)
         assertTrue(bbox.maxLatitude >= p.latitude)
@@ -28,29 +28,29 @@ class SlippyMapMathTest {
 
     @Test fun `asTileSequence returns sequence of contained tiles`() {
         assertEquals(listOf(
-            Tile(1, 1),
-            Tile(2, 1),
-            Tile(1, 2),
-            Tile(2, 2)
-        ), TilesRect(1, 1, 2, 2).asTileSequence().toList())
+            TilePos(1, 1),
+            TilePos(2, 1),
+            TilePos(1, 2),
+            TilePos(2, 2)
+        ), TilesRect(1, 1, 2, 2).asTilePosSequence().toList())
     }
 
     @Test fun `minTileRect of empty list returns null`() {
-        assertNull(listOf<Tile>().minTileRect())
+        assertNull(listOf<TilePos>().minTileRect())
     }
 
     @Test fun `minTileRect of list with one entry returns tiles rect of size 1`() {
-        assertEquals(TilesRect(1,1,1,1), listOf(Tile(1,1)).minTileRect())
+        assertEquals(TilesRect(1,1,1,1), listOf(TilePos(1,1)).minTileRect())
     }
 
     @Test fun `minTileRect returns correct minimum tiles rect`() {
         assertEquals(
             TilesRect(3, 2, 32, 15),
             listOf(
-                Tile(5, 8),
-                Tile(3, 2),
-                Tile(6, 15),
-                Tile(32, 12)
+                TilePos(5, 8),
+                TilePos(3, 2),
+                TilePos(6, 15),
+                TilePos(32, 12)
             ).minTileRect()
         )
     }

@@ -34,7 +34,7 @@ class QuestPinLayerManager @Inject constructor(
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
     // all the (zoom 14) tiles that have been retrieved from DB into memory already
-    private val retrievedTiles: MutableSet<Tile> = mutableSetOf()
+    private val retrievedTiles: MutableSet<TilePos> = mutableSetOf()
     // last displayed rect of (zoom 14) tiles
     private var lastDisplayedRect: TilesRect? = null
 
@@ -108,9 +108,9 @@ class QuestPinLayerManager @Inject constructor(
         if (tilesRect.size > 4) {
             return
         }
-        var tiles: List<Tile>
+        var tiles: List<TilePos>
         synchronized(retrievedTiles) {
-            tiles = tilesRect.asTileSequence().filter { !retrievedTiles.contains(it) }.toList()
+            tiles = tilesRect.asTilePosSequence().filter { !retrievedTiles.contains(it) }.toList()
         }
         val minRect = tiles.minTileRect() ?: return
         val bbox = minRect.asBoundingBox(TILES_ZOOM)

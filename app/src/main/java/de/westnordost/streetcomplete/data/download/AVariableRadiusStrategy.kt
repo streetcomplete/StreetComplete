@@ -26,7 +26,7 @@ abstract class AVariableRadiusStrategy(
     override fun getDownloadBoundingBox(pos: LatLon): BoundingBox? {
         val tileZoom = ApplicationConstants.DOWNLOAD_TILE_ZOOM
 
-        val thisTile = pos.enclosingTile(tileZoom)
+        val thisTile = pos.enclosingTilePos(tileZoom)
         val hasMissingQuestsForThisTile = hasMissingQuestsFor(thisTile.toTilesRect())
 
         // if at the location where we are, there is nothing yet, first download the tiniest

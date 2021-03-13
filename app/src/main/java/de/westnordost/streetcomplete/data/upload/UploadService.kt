@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.user.UserController
-import de.westnordost.streetcomplete.util.enclosingTile
+import de.westnordost.streetcomplete.util.enclosingTilePos
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */
@@ -104,7 +104,7 @@ class UploadService : IntentService(TAG) {
     private fun invalidateArea(pos: LatLon) {
         // called after a conflict. If there is a conflict, the user is not the only one in that
         // area, so best invalidate all downloaded quests here and redownload on next occasion
-        val tile = pos.enclosingTile(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
+        val tile = pos.enclosingTilePos(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
         downloadedTilesDB.remove(tile)
     }
 
