@@ -4,7 +4,9 @@ import android.app.Service
 import android.content.Intent
 import android.os.*
 import androidx.annotation.WorkerThread
-import java.util.concurrent.atomic.AtomicBoolean
+import kotlinx.coroutines.*
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 /**
  * SingleIntentService is similar to IntentService only that it cancels any previous intent when a
@@ -17,32 +19,19 @@ import java.util.concurrent.atomic.AtomicBoolean
  */
 abstract class SingleIntentService(private val name: String) : Service() {
 
-    @Volatile private lateinit var serviceLooper: Looper
-    @Volatile private lateinit var serviceHandler: ServiceHandler
-    private var cancelState: AtomicBoolean = AtomicBoolean(false)
-
-    private inner class ServiceHandler(looper: Looper) : Handler(looper) {
-        override fun handleMessage(msg: Message) {
-            cancelState = AtomicBoolean(false)
-            onHandleIntent(msg.obj as Intent, cancelState)
-            stopSelf(msg.arg1)
-        }
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-        val thread = HandlerThread("SingleIntentService[$name]")
-        thread.start()
-        serviceLooper = thread.looper
-        serviceHandler = ServiceHandler(serviceLooper)
-    }
+    private val scope = CoroutineScope(Dispatchers.Default + CoroutineName("SingleIntentService[$name]"))
+    private var currentJob: Job? = null
 
     override fun onStart(intent: Intent?, startId: Int) {
-        cancel()
-        val msg = serviceHandler.obtainMessage()
-        msg.arg1 = startId
-        msg.obj = intent
-        serviceHandler.sendMessage(msg)
+        scope.launch {
+            Mutex().withLock {
+                currentJob?.cancelAndJoin()
+                currentJob = scope.launch {
+                    onHandleIntent(intent)
+                    stopSelf(startId)
+                }
+            }
+        }
     }
 
     /**
@@ -57,8 +46,7 @@ abstract class SingleIntentService(private val name: String) : Service() {
     }
 
     override fun onDestroy() {
-        cancel()
-        serviceLooper.quit()
+        scope.cancel()
     }
 
     /**
@@ -72,7 +60,7 @@ abstract class SingleIntentService(private val name: String) : Service() {
 
     /**
      * This method is invoked on the worker thread with a request to process. The processing
-     * happens on a worker thread that runs independently from other  application logic.
+     * happens on a worker thread that runs independently from other application logic.
      * When the request has been handled, the SingleIntentService stops itself, so you should not
      * call [.stopSelf].
      *
@@ -81,10 +69,9 @@ abstract class SingleIntentService(private val name: String) : Service() {
      * its process has gone away; see [android.app.Service.onStartCommand]
      * for details.
      */
-    @WorkerThread protected abstract fun onHandleIntent(intent: Intent?, cancelState: AtomicBoolean)
+    @WorkerThread protected abstract suspend fun onHandleIntent(intent: Intent?)
 
     fun cancel() {
-        serviceHandler.removeCallbacksAndMessages(null)
-        cancelState.set(true)
+        currentJob?.cancel()
     }
 }

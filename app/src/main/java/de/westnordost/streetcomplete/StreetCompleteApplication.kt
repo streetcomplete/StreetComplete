@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import javax.inject.Inject
 
 class StreetCompleteApplication : Application(),
@@ -21,6 +22,8 @@ class StreetCompleteApplication : Application(),
     @Inject lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
     @Inject lateinit var downloadedTilesDao: DownloadedTilesDao
     @Inject lateinit var prefs: SharedPreferences
+
+    private val applicationScope = CoroutineScope(SupervisorJob())
 
     override fun onCreate() {
         super.onCreate()

@@ -8,22 +8,19 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.handler.MapDataHandler
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.enlargedBy
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.lang.System.currentTimeMillis
-import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
 /** Takes care of downloading all note and osm quests */
 class MapDataDownloader @Inject constructor(
     private val mapDataApi: MapDataApi,
     private val mapDataController: MapDataController
-) : Downloader {
-
-    @Synchronized override fun download(bbox: BoundingBox, cancelState: AtomicBoolean) {
-        if (cancelState.get()) return
-
+) {
+    suspend fun download(bbox: BoundingBox) {
         val time = currentTimeMillis()
 
         val mapData = MutableMapData()
@@ -39,7 +36,10 @@ class MapDataDownloader @Inject constructor(
         mapDataController.putAllForBBox(bbox, mapData)
     }
 
-    private fun getMapAndHandleTooBigQuery(bounds: BoundingBox, mapDataHandler: MapDataHandler) {
+    private suspend fun getMapAndHandleTooBigQuery(
+        bounds: BoundingBox,
+        mapDataHandler: MapDataHandler
+    ): Unit = withContext(Dispatchers.IO) {
         try {
             mapDataApi.getMap(bounds, mapDataHandler)
         } catch (e : OsmQueryTooBigException) {

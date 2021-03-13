@@ -7,20 +7,17 @@ import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.notes.Note
-import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.ktx.format
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.lang.System.currentTimeMillis
-import java.util.concurrent.atomic.AtomicBoolean
 
 /** Takes care of downloading notes and referenced avatar pictures into persistent storage */
 class NotesDownloader @Inject constructor(
     private val notesApi: NotesApi,
     private val noteController: NoteController
-) : Downloader {
-
-    override fun download(bbox: BoundingBox, cancelState: AtomicBoolean) {
-        if (cancelState.get()) return
-
+) {
+    suspend fun download(bbox: BoundingBox) {
         val time = currentTimeMillis()
 
         val notes = notesApi
@@ -39,8 +36,12 @@ class NotesDownloader @Inject constructor(
     }
 }
 
-private fun NotesApi.getAll(bbox: BoundingBox, limit: Int, hideClosedNoteAfter: Int): List<Note> {
+private suspend fun NotesApi.getAll(
+    bbox: BoundingBox,
+    limit: Int,
+    hideClosedNoteAfter: Int
+): List<Note> = withContext(Dispatchers.IO) {
     val notes = ArrayList<Note>()
     getAll(bbox, notes::add, limit, hideClosedNoteAfter)
-    return notes
+    notes
 }

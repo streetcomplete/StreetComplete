@@ -7,14 +7,11 @@ import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
-import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.TilesRect
 import kotlinx.coroutines.*
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
-import kotlin.math.max
+import kotlin.coroutines.coroutineContext
 
 /** Downloads all quests and tiles in a given area asynchronously. To use, start the service with
  * the appropriate parameters.
@@ -29,11 +26,12 @@ import kotlin.math.max
  * * To query for the state of the service and/or current download task, i.e. if the current
  * download job was started by the user
  */
-class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineScope(Dispatchers.IO) {
-    @Inject internal lateinit var downloaders: List<Downloader>
-    @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
+class DownloadService : SingleIntentService(TAG) {
+    @Inject internal lateinit var downloader: Downloader
 
     private lateinit var notificationController: DownloadNotificationController
+
+    private val scope = CoroutineScope(Dispatchers.IO)
 
     // interface
     private val binder = Interface()
@@ -71,75 +69,46 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
         return binder
     }
 
-    override fun onHandleIntent(intent: Intent?, cancelState: AtomicBoolean) {
-        if (cancelState.get()) return
+    override suspend fun onHandleIntent(intent: Intent?) {
         if (intent == null) return
         if (intent.getBooleanExtra(ARG_CANCEL, false)) {
             cancel()
             Log.i(TAG, "Download cancelled")
             return
         }
-
         val tiles = intent.getSerializableExtra(ARG_TILES_RECT) as TilesRect
-        val bbox = tiles.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
+        isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
 
-        val bboxString = "${bbox.minLatitude.format(7)}, ${bbox.minLongitude.format(7)} -> ${bbox.maxLatitude.format(7)}, ${bbox.maxLongitude.format(7)}"
+        isDownloading = true
 
-        if (hasDownloadedAlready(tiles)) {
-            Log.i(TAG, "Not downloading ($bboxString), data still fresh")
-        } else {
-            isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
-            isDownloading = true
+        progressListener?.onStarted()
 
-            progressListener?.onStarted()
-
-            Log.i(TAG, "Starting download ($bboxString)")
-            val time = System.currentTimeMillis()
-
-            var error: Exception? = null
-            try {
-                runBlocking {
-                    for (downloader in downloaders) {
-                        // all downloaders run concurrently
-                        launch(Dispatchers.IO) {
-                            downloader.download(bbox, cancelState)
-                        }
-                    }
-                }
-                putDownloadedAlready(tiles)
-            } catch (e: Exception) {
-                Log.e(TAG, "Unable to download", e)
-                error = e
-            } finally {
-                // downloading flags must be set to false before invoking the callbacks
-                isPriorityDownload = false
-                isDownloading = false
-            }
-            if (error != null) {
-                progressListener?.onError(error)
-            } else {
-                progressListener?.onSuccess()
-            }
-            val seconds = (System.currentTimeMillis() - time) / 1000.0
-            Log.i(TAG, "Finished download ($bboxString) in ${seconds.format(1)}s")
-
-            progressListener?.onFinished()
+        var error: Exception? = null
+        try {
+            downloader.download(tiles)
+        } catch (e: CancellationException) {
+            Log.i(TAG, "Download cancelled")
+        } catch (e: Exception) {
+            Log.e(TAG, "Unable to download", e)
+            error = e
+        } finally {
+            // downloading flags must be set to false before invoking the callbacks
+            isPriorityDownload = false
+            isDownloading = false
         }
+
+        if (error != null) {
+            progressListener?.onError(error)
+        } else {
+            progressListener?.onSuccess()
+        }
+
+        progressListener?.onFinished()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        coroutineContext.cancel()
-    }
-
-    private fun hasDownloadedAlready(tiles: TilesRect): Boolean {
-        val freshTime = ApplicationConstants.REFRESH_DATA_AFTER
-        val ignoreOlderThan = max(0, System.currentTimeMillis() - freshTime)
-        return downloadedTilesDao.get(tiles, ignoreOlderThan).contains(DownloadedTilesType.ALL)
-    }
-
-    private fun putDownloadedAlready(tiles: TilesRect) {
-        downloadedTilesDao.put(tiles, DownloadedTilesType.ALL)
+        scope.cancel()
     }
 
     /** Public interface to classes that are bound to this service  */
