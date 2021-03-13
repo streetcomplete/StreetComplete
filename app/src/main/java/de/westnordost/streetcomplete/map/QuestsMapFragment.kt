@@ -5,6 +5,7 @@ import android.graphics.RectF
 import android.os.Bundle
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import androidx.lifecycle.lifecycleScope
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.geometry.Point
@@ -104,7 +105,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     /* -------------------------------- Picking quest pins -------------------------------------- */
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
-        launch {
+        lifecycleScope.launch {
             val pickResult = controller?.pickLabel(x, y)
 
             val pickedQuestId = pickResult?.properties?.get(MARKER_QUEST_ID)?.toLong()
