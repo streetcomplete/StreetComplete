@@ -8,7 +8,8 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.Co
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.Columns.DATE
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.NAME
 import de.westnordost.streetcomplete.ktx.query
-import de.westnordost.streetcomplete.util.Tile
+import de.westnordost.streetcomplete.ktx.transaction
+import de.westnordost.streetcomplete.util.TilePos
 import de.westnordost.streetcomplete.util.TilesRect
 
 import javax.inject.Inject
@@ -21,21 +22,22 @@ class DownloadedTilesDao @Inject constructor(private val dbHelper: SQLiteOpenHel
     /** Persist that the given type has been downloaded in every tile in the given tile range  */
     fun put(tilesRect: TilesRect, typeName: String) {
         val time = System.currentTimeMillis()
-        for (tile in tilesRect.asTileSequence()) {
-            val values = contentValuesOf(
-                X to tile.x,
-                Y to tile.y,
-                TYPE to typeName,
-                DATE to time
-            )
-            db.replaceOrThrow(NAME, null, values)
+        db.transaction {
+            for (tile in tilesRect.asTilePosSequence()) {
+                db.replaceOrThrow(NAME, null, contentValuesOf(
+                    X to tile.x,
+                    Y to tile.y,
+                    TYPE to typeName,
+                    DATE to time
+                ))
+            }
         }
     }
 
     /** Invalidate all types within the given tile. (consider them as not-downloaded) */
-    fun remove(tile: Tile): Int {
-        return db.delete(NAME, "$X = ? AND $Y = ?", arrayOf(tile.x.toString(), tile.y.toString()))
-    }
+    fun remove(tile: TilePos): Int =
+        db.delete(NAME, "$X = ? AND $Y = ?", arrayOf(tile.x.toString(), tile.y.toString()))
+
 
     fun removeAll() {
         db.execSQL("DELETE FROM $NAME")
@@ -44,7 +46,7 @@ class DownloadedTilesDao @Inject constructor(private val dbHelper: SQLiteOpenHel
     /** @return a list of type names which have already been downloaded in every tile in the
      *  given tile range
      */
-    fun get(tilesRect: TilesRect, ignoreOlderThan: Long): List<String> {
+    fun get(tilesRect: TilesRect, ignoreOlderThan: Long): List<String>  {
         val tileCount = tilesRect.size
         return db.query(NAME,
             columns = arrayOf(TYPE),
