@@ -81,6 +81,7 @@ class ElementGeometryDao @Inject constructor(
     }
 
     fun getAllEntries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
+        if (keys.isEmpty()) return emptyList()
         val values = keys.joinToString(",") { "('${it.type.name}', ${it.id})" }
         return db.transaction {
             /* this looks a little complicated. Basically, this is a workaround for SQLite not
