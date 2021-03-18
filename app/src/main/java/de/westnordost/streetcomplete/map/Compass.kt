@@ -105,7 +105,7 @@ class Compass(
             R = remapToDisplayRotation(R)
             val orientation = FloatArray(3)
             SensorManager.getOrientation(R, orientation)
-            val azimut = orientation[0] - declination
+            val azimut = orientation[0] + declination
             val pitch = orientation[1]
             val roll = orientation[2]
             rotation = azimut
