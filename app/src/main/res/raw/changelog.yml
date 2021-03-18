@@ -1,3 +1,10 @@
+v31.1: |
+  <li>Fix crash issue when zooming too fast with the pinch gesture (#2601)</li>
+  <li>Always show notes on the map that contain "#surveyme" (#2641)</li>
+  <li>Do not ask if a foot+cycle path is segregated if it alreay has a sidewalk (#2644)</li>
+  <li>Ask for opening hours and wheelchair eligibility for consulates and other diplomatic offices (#2645)</li>
+  <li>Fix link to the wheelchair-routing on openrouteservice (#2646)</li>
+
 v31.0: |
   <h3>🤝 Team mode!</h3>
   <p>(#2189, #2557) by @FloEdelmann</p>
