@@ -48,6 +48,12 @@ class AddRoofShapeTest {
         ))
     }
 
+    @Test fun `not applicable to building under contruction`() {
+        assertEquals(false, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "1", "building" to "construction"))
+        ))
+    }
+
     @Test fun `applicable to roofs`() {
         assertEquals(true, questType.isApplicableTo(
             OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "1", "building" to "apartments"))
