@@ -30,35 +30,53 @@ class AddRoofShapeTest {
         ))
     }
 
+    @Test fun `not applicable to building parts`() {
+        assertEquals(false, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "1", "building:part" to "something"))
+        ))
+    }
+
+    @Test fun `not applicable to demolished building`() {
+        assertEquals(false, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "1", "demolished:building" to "something"))
+        ))
+    }
+
+    @Test fun `not applicable to negated building`() {
+        assertEquals(false, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "1", "building" to "no"))
+        ))
+    }
+
     @Test fun `applicable to roofs`() {
         assertEquals(true, questType.isApplicableTo(
-            OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "1"))
+            OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "1", "building" to "apartments"))
         ))
     }
 
     @Test fun `not applicable to buildings with too many levels`() {
         assertEquals(false, questType.isApplicableTo(
-            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "6", "roof:levels" to "1"))
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "6", "roof:levels" to "1", "building" to "apartments"))
         ))
         assertEquals(false, questType.isApplicableTo(
-            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "8", "roof:levels" to "2"))
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "8", "roof:levels" to "2", "building" to "apartments"))
         ))
     }
 
     @Test fun `unknown if applicable to roofs with 0 roof levels`() {
         assertEquals(null, questType.isApplicableTo(
-            OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "0"))
+            OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "0", "building" to "apartments"))
         ))
     }
 
     @Test fun `unknown if applicable to roofs with no roof levels tag`() {
         assertEquals(null, questType.isApplicableTo(
-            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "5"))
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "5", "building" to "apartments"))
         ))
     }
 
     @Test fun `create quest for roofs`() {
-        val element = OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "1"))
+        val element = OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "1", "building" to "apartments"))
 
         val quests = questType.getApplicableElements(TestMapDataWithGeometry(listOf(element)))
 
@@ -66,7 +84,7 @@ class AddRoofShapeTest {
     }
 
     @Test fun `do not create quest for buildings with too many levels`() {
-        val element = OsmWay(1L, 1, listOf(), mapOf("building:levels" to "6", "roof:levels" to "1"))
+        val element = OsmWay(1L, 1, listOf(), mapOf("building:levels" to "6", "roof:levels" to "1", "building" to "apartments"))
 
         val quests = questType.getApplicableElements(TestMapDataWithGeometry(listOf(element)))
 
@@ -80,8 +98,8 @@ class AddRoofShapeTest {
         field.set(noFlatRoofs, false)
 
         on(countryInfos.get(anyDouble(), anyDouble())).thenReturn(noFlatRoofs)
-        val element = OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "0"))
-        val element2 = OsmWay(2L, 1, listOf(), mapOf("building:levels" to "3"))
+        val element = OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "0", "building" to "apartments"))
+        val element2 = OsmWay(2L, 1, listOf(), mapOf("building:levels" to "3", "building" to "apartments"))
 
         val mapData = TestMapDataWithGeometry(listOf(element, element2))
         mapData.wayGeometriesById[1L] = ElementPointGeometry(OsmLatLon(0.0,0.0))
@@ -99,8 +117,8 @@ class AddRoofShapeTest {
         field.set(flatRoofs, true)
 
         on(countryInfos.get(anyDouble(), anyDouble())).thenReturn(flatRoofs)
-        val element = OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "0"))
-        val element2 = OsmWay(2L, 1, listOf(), mapOf("building:levels" to "3"))
+        val element = OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "0", "building" to "apartments"))
+        val element2 = OsmWay(2L, 1, listOf(), mapOf("building:levels" to "3", "building" to "apartments"))
 
         val mapData = TestMapDataWithGeometry(listOf(element, element2))
         mapData.wayGeometriesById[1L] = ElementPointGeometry(OsmLatLon(0.0,0.0))
