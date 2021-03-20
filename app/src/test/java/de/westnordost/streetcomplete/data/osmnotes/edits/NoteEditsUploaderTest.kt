@@ -9,11 +9,13 @@ import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.testutils.any
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.*
-import java.util.concurrent.atomic.AtomicBoolean
 
 class NoteEditsUploaderTest {
 
@@ -43,9 +45,9 @@ class NoteEditsUploaderTest {
         uploader.uploadedChangeListener = listener
     }
 
-    @Test fun `cancel upload works`() {
-        val cancelled = AtomicBoolean(true)
-        uploader.upload(cancelled)
+    @Test fun `cancel upload works`() = runBlocking {
+        val job = launch { uploader.upload() }
+        job.cancelAndJoin()
         verifyNoInteractions(noteEditsController, noteController, notesApi, imageUploader)
     }
 
@@ -194,8 +196,8 @@ class NoteEditsUploaderTest {
         verify(noteEditsController).imagesActivated(1L)
     }
 
-    private fun upload() {
-        uploader.upload(AtomicBoolean(false))
+    private fun upload() = runBlocking {
+        uploader.upload()
     }
 }
 

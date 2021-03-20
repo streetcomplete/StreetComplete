@@ -16,11 +16,13 @@ import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.eq
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.*
-import java.util.concurrent.atomic.AtomicBoolean
 
 class ElementEditsUploaderTest {
 
@@ -46,13 +48,13 @@ class ElementEditsUploaderTest {
         uploader.uploadedChangeListener = listener
     }
 
-    @Test fun `cancel upload works`() {
-        val cancelled = AtomicBoolean(true)
-        uploader.upload(cancelled)
+    @Test fun `cancel upload works`() = runBlocking {
+        val job = launch { uploader.upload() }
+        job.cancelAndJoin()
         verifyNoInteractions(elementEditsController, mapDataController, singleUploader, statisticsUpdater)
     }
 
-    @Test fun `upload works`() {
+    @Test fun `upload works`() = runBlocking {
         val action = DeletePoiNodeAction(1)
         val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", p(1.0,2.0), 123L, false, action)
         val idProvider = mock<ElementIdProvider>()
@@ -62,7 +64,7 @@ class ElementEditsUploaderTest {
         on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
         on(singleUploader.upload(any(), any())).thenReturn(updates)
 
-        uploader.upload(AtomicBoolean(false))
+        uploader.upload()
 
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onUploaded(any(), any())
@@ -72,7 +74,7 @@ class ElementEditsUploaderTest {
         verify(statisticsUpdater).addOne(any(), any())
     }
 
-    @Test fun `upload catches conflict exception`() {
+    @Test fun `upload catches conflict exception`() = runBlocking {
         val action = DeletePoiNodeAction(1)
         val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", p(1.0,2.0), 123L, false, action)
         val idProvider = mock<ElementIdProvider>()
@@ -83,7 +85,7 @@ class ElementEditsUploaderTest {
         on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
         on(mapDataApi.getNode(anyLong())).thenReturn(updatedNode)
 
-        uploader.upload(AtomicBoolean(false))
+        uploader.upload()
 
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onDiscarded(any(), any())
@@ -96,7 +98,7 @@ class ElementEditsUploaderTest {
         verify(statisticsUpdater, never()).addOne(any(), any())
     }
 
-    @Test fun `upload catches deleted element exception`() {
+    @Test fun `upload catches deleted element exception`() = runBlocking {
         val action = DeletePoiNodeAction(1)
         val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", p(1.0,2.0), 123L, false, action)
         val idProvider = mock<ElementIdProvider>()
@@ -106,7 +108,7 @@ class ElementEditsUploaderTest {
         on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
         on(mapDataApi.getNode(anyLong())).thenReturn(null)
 
-        uploader.upload(AtomicBoolean(false))
+        uploader.upload()
 
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onDiscarded(any(), any())
