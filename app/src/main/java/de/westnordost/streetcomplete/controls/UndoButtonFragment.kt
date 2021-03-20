@@ -64,18 +64,13 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
         undoButton.setOnClickListener {
             undoButton.isEnabled = false
-            lifecycleScope.launch {
-                val change = getMostRecentUndoableEdit()
-                if (change != null) confirmUndo(change)
-            }
+            lifecycleScope.launch { confirmUndo() }
         }
     }
 
     override fun onStart() {
         super.onStart()
-        lifecycleScope.launch {
-            updateUndoButtonVisibility()
-        }
+        lifecycleScope.launch { updateUndoButtonVisibility() }
         updateUndoButtonEnablement(true)
         elementEditsController.addListener(osmElementChangesListener)
         uploadProgressSource.addUploadProgressListener(uploadProgressListener)
@@ -89,8 +84,9 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     /* ------------------------------------------------------------------------------------------ */
 
-    private fun confirmUndo(edit: ElementEdit) {
+    private suspend fun confirmUndo() {
         val ctx = context ?: return
+        val edit = getMostRecentUndoableEdit() ?: return
         val element = mapDataSource.get(edit.elementType, edit.elementId)
 
         val inner = LayoutInflater.from(ctx).inflate(R.layout.dialog_undo, null, false)
@@ -103,7 +99,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
             .setTitle(R.string.undo_confirm_title)
             .setView(inner)
             .setPositiveButton(R.string.undo_confirm_positive) { _, _ ->
-                lifecycleScope.launch { withContext(Dispatchers.IO) { elementEditsController.undo(edit.id) } }
+                lifecycleScope.launch { undo(edit) }
                 updateUndoButtonEnablement(true)
             }
             .setNegativeButton(R.string.undo_confirm_negative) { _, _ -> updateUndoButtonEnablement(true) }
@@ -133,5 +129,9 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     private suspend fun getMostRecentUndoableEdit() = withContext(Dispatchers.IO) {
         elementEditsController.getMostRecentUndoableEdit()
+    }
+
+    private suspend fun undo(edit: ElementEdit) = withContext(Dispatchers.IO) {
+        elementEditsController.undo(edit.id)
     }
 }

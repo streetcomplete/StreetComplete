@@ -30,14 +30,7 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
 
     private var notificationsSourceUpdateListener = object : NotificationsSource.UpdateListener {
         override fun onNumberOfNotificationsUpdated(numberOfNotifications: Int) {
-            lifecycleScope.launch {
-                notificationButton.notificationsCount = numberOfNotifications
-                if (notificationButton.isVisible && numberOfNotifications == 0) {
-                    notificationButton.popOut()
-                } else if(!notificationButton.isVisible && numberOfNotifications > 0) {
-                    notificationButton.popIn()
-                }
-            }
+            lifecycleScope.launch { updateButtonStateAnimated(numberOfNotifications) }
         }
     }
 
@@ -47,26 +40,39 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        notificationButton.setOnClickListener {
-            val notification = notificationsSource.popNextNotification()
-            if (notification != null) {
-                listener?.onClickShowNotification(notification)
-            }
-        }
+        notificationButton.setOnClickListener { lifecycleScope.launch { onClickButton() } }
     }
 
     override fun onStart() {
         super.onStart()
         notificationsSource.addListener(notificationsSourceUpdateListener)
-        lifecycleScope.launch {
-            val numberOfNotifications = withContext(Dispatchers.IO) { notificationsSource.getNumberOfNotifications() }
-            notificationButton.notificationsCount = numberOfNotifications
-            notificationButton.isGone = numberOfNotifications <= 0
-        }
+        lifecycleScope.launch { initializeButtonState() }
     }
 
     override fun onStop() {
         super.onStop()
         notificationsSource.removeListener(notificationsSourceUpdateListener)
+    }
+
+    private suspend fun initializeButtonState() {
+        val numberOfNotifications = withContext(Dispatchers.IO) { notificationsSource.getNumberOfNotifications() }
+        notificationButton.notificationsCount = numberOfNotifications
+        notificationButton.isGone = numberOfNotifications <= 0
+    }
+
+    private fun updateButtonStateAnimated(numberOfNotifications: Int) {
+        notificationButton.notificationsCount = numberOfNotifications
+        if (notificationButton.isVisible && numberOfNotifications == 0) {
+            notificationButton.popOut()
+        } else if(!notificationButton.isVisible && numberOfNotifications > 0) {
+            notificationButton.popIn()
+        }
+    }
+
+    private suspend fun onClickButton() {
+        val notification = withContext(Dispatchers.IO) { notificationsSource.popNextNotification() }
+        if (notification != null) {
+            listener?.onClickShowNotification(notification)
+        }
     }
 }
