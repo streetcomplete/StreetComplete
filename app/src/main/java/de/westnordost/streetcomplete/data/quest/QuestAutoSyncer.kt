@@ -31,18 +31,18 @@ import javax.inject.Singleton
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
 @Singleton class QuestAutoSyncer @Inject constructor(
-        private val downloadController: DownloadController,
-        private val uploadController: UploadController,
-        private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
-        private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
-        private val context: Context,
-        private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-        private val downloadProgressSource: DownloadProgressSource,
-        private val loginStatusSource: LoginStatusSource,
-        private val prefs: SharedPreferences,
-        private val userController: UserController,
-        private val teamModeQuestFilter: TeamModeQuestFilter,
-        private val downloadedTilesDao: DownloadedTilesDao,
+    private val downloadController: DownloadController,
+    private val uploadController: UploadController,
+    private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
+    private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
+    private val context: Context,
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
+    private val downloadProgressSource: DownloadProgressSource,
+    private val loginStatusSource: LoginStatusSource,
+    private val prefs: SharedPreferences,
+    private val userController: UserController,
+    private val teamModeQuestFilter: TeamModeQuestFilter,
+    private val downloadedTilesDao: DownloadedTilesDao
 ) : LifecycleObserver {
 
     private var pos: LatLon? = null
