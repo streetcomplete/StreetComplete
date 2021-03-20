@@ -40,8 +40,8 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
     fun delete(id: Long): Boolean =
         db.delete(NAME, "$QUEST_ID = $id") == 1
 
-    fun addAll(quests: List<OsmQuestDaoEntry>) {
-        if (quests.isEmpty()) return
+    fun addAll(quests: List<OsmQuestDaoEntry>): Int {
+        if (quests.isEmpty()) return 0
         val rowIds = db.insertOrIgnoreMany(NAME,
             arrayOf(QUEST_ID, QUEST_TYPE, ELEMENT_TYPE, ELEMENT_ID, LATITUDE, LONGITUDE),
             quests.map { arrayOf(
@@ -55,9 +55,15 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
         )
         check(rowIds.size == quests.size)
         val rowIdsIt = rowIds.iterator()
+        var created = 0
         for (quest in quests) {
-            quest.id = rowIdsIt.next().takeIf { it != -1L }
+            val rowId = rowIdsIt.next()
+            if (rowId != -1L) {
+                quest.id = rowId
+                ++created
+            }
         }
+        return created
     }
 
     fun getAllForElement(elementType: Element.Type, elementId: Long): List<OsmQuestDaoEntry> =

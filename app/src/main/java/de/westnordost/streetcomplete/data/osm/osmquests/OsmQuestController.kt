@@ -23,8 +23,6 @@ import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
 import de.westnordost.streetcomplete.util.measuredLength
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.flow.toList
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
@@ -131,11 +129,13 @@ import javax.inject.Singleton
         val countryBoundaries = countryBoundariesFuture.get()
         val hiddenQuests = getHiddenQuests()
 
-        val quests = runBlocking { channelFlow {
-            for (questType in questTypes) { launch {
+        val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
+            async {
+                val questsForType = ArrayList<OsmQuest>()
                 val questTypeName = questType::class.simpleName!!
                 if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
                     Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
+                    emptyList()
                 } else {
                     val questTime = currentTimeMillis()
                     var questCount = 0
@@ -143,15 +143,18 @@ import javax.inject.Singleton
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
                             ?: continue
                         if (!mayCreateQuest(questType, element, geometry, blacklistedPositions, hiddenQuests, bbox)) continue
-                        send(OsmQuest(null, questType, element.type, element.id, geometry))
+                        questsForType.add(OsmQuest(null, questType, element.type, element.id, geometry))
                         questCount++
                     }
 
                     val questSeconds = currentTimeMillis() - questTime
                     Log.d(TAG, "$questTypeName: Found $questCount quests in ${questSeconds}ms")
+                    questsForType
                 }
-            } }
-        }.toList() }
+            }
+        }
+        val quests = runBlocking { deferredQuests.awaitAll().flatten() }
+
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG,"Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
 

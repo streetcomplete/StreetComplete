@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.*
 import de.westnordost.streetcomplete.ktx.format
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -50,8 +49,7 @@ import javax.inject.Singleton
             val geometry = elementGeometryCreator.create(element, mapData, true)
             geometry?.let { ElementGeometryEntry(element.type, element.id, it) }
         }
-        val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometries)
-        onUpdateForBBox(bbox, mapDataWithGeometry)
+
 
         val oldElementKeys = geometryDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
         for (element in mapData) {
@@ -62,8 +60,13 @@ import javax.inject.Singleton
         geometryDB.putAll(geometries)
         elementDB.putAll(mapData)
 
-        val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Persisted ${geometries.size} and deleted ${oldElementKeys.size} elements and geometries in ${seconds.format(1)}s")
+        Log.i(TAG,
+            "Persisted ${geometries.size} and deleted ${oldElementKeys.size} elements and geometries" +
+            " in ${((currentTimeMillis() - time) / 1000.0).format(1)}s"
+        )
+
+        val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometries)
+        onUpdateForBBox(bbox, mapDataWithGeometry)
     }
 
     @Synchronized fun updateAll(elementUpdates: ElementUpdates) {
@@ -81,12 +84,13 @@ import javax.inject.Singleton
         val deleted = elementUpdates.deleted + oldElementKeys
 
         val mapDataWithGeom = MutableMapDataWithGeometry(mapData, elementGeometryEntries)
-        onUpdated(updated = mapDataWithGeom, deleted = deleted)
 
         elementDB.deleteAll(deleted)
         geometryDB.deleteAll(deleted)
         geometryDB.putAll(elementGeometryEntries)
         elementDB.putAll(elements)
+
+        onUpdated(updated = mapDataWithGeom, deleted = deleted)
     }
 
     private fun completeMapData(mapData: MutableMapData) {
@@ -175,12 +179,12 @@ import javax.inject.Singleton
     ) {
         if (updated.nodes.isEmpty() && updated.ways.isEmpty() && updated.relations.isEmpty() && deleted.isEmpty()) return
 
-        listeners.forEach { launch { it.onUpdated(updated, deleted) } }
+        listeners.forEach { it.onUpdated(updated, deleted) }
     }
 
     private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
 
-        listeners.forEach { launch { it.onReplacedForBBox(bbox, mapDataWithGeometry) } }
+        listeners.forEach { it.onReplacedForBBox(bbox, mapDataWithGeometry) }
     }
 
     companion object {

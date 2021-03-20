@@ -29,6 +29,8 @@ class NotesDownloader @Inject constructor(
         Log.i(TAG, "Downloaded ${notes.size} notes in ${seconds.format(1)}s")
 
         noteController.putAllForBBox(bbox, notes)
+
+        
     }
 
     companion object {

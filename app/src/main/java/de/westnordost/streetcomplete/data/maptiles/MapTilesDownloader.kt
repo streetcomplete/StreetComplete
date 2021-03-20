@@ -29,15 +29,17 @@ class MapTilesDownloader @Inject constructor(
         var cachedSize = 0
         val time = currentTimeMillis()
 
-        for (tile in getDownloadTileSequence(bbox)) {
-            launch {
-                val result = downloadTile(tile.zoom, tile.x, tile.y)
-                ++tileCount
-                when (result) {
-                    is DownloadFailure -> ++failureCount
-                    is DownloadSuccess -> {
-                        if (result.alreadyCached) cachedSize += result.size
-                        else downloadedSize += result.size
+        coroutineScope {
+            for (tile in getDownloadTileSequence(bbox)) {
+                launch {
+                    val result = downloadTile(tile.zoom, tile.x, tile.y)
+                    ++tileCount
+                    when (result) {
+                        is DownloadFailure -> ++failureCount
+                        is DownloadSuccess -> {
+                            if (result.alreadyCached) cachedSize += result.size
+                            else downloadedSize += result.size
+                        }
                     }
                 }
             }
