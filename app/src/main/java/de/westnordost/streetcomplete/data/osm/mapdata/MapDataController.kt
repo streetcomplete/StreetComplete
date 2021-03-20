@@ -5,8 +5,6 @@ import de.westnordost.osmapi.map.*
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.geometry.*
 import de.westnordost.streetcomplete.ktx.format
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -20,7 +18,7 @@ import javax.inject.Singleton
     private val elementDB: ElementDao,
     private val geometryDB: ElementGeometryDao,
     private val elementGeometryCreator: ElementGeometryCreator
-) : CoroutineScope by CoroutineScope(Dispatchers.Default) {
+) {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */

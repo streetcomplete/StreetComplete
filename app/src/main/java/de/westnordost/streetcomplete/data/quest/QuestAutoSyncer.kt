@@ -23,10 +23,7 @@ import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.location.FineLocationManager
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -47,12 +44,14 @@ import javax.inject.Singleton
         private val userController: UserController,
         private val teamModeQuestFilter: TeamModeQuestFilter,
         private val downloadedTilesDao: DownloadedTilesDao,
-) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+) : LifecycleObserver {
 
     private var pos: LatLon? = null
 
     private var isConnected: Boolean = false
     private var isWifi: Boolean = false
+
+    private val lifecycleScope = CoroutineScope(SupervisorJob())
 
     // new location is known -> check if downloading makes sense now
     private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
@@ -140,7 +139,7 @@ import javax.inject.Singleton
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         loginStatusSource.removeLoginStatusListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
-        coroutineContext.cancel()
+        lifecycleScope.cancel()
     }
 
     @SuppressLint("MissingPermission")
@@ -161,7 +160,7 @@ import javax.inject.Singleton
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
-        launch {
+        lifecycleScope.launch {
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
             val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
             if (downloadBoundingBox != null) {

@@ -17,8 +17,6 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -32,7 +30,7 @@ import kotlin.collections.ArrayList
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
     private val mapDataSource: MapDataWithEditsSource
-): CoroutineScope by CoroutineScope(Dispatchers.Default) {
+) {
 
     /** Create a note for the given OSM Quest instead of answering it.
      * @return true if successful

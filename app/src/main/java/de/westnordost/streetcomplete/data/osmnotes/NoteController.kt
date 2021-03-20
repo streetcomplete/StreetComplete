@@ -5,8 +5,6 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.ktx.format
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -15,7 +13,7 @@ import javax.inject.Singleton
 /** Manages access to the notes storage */
 @Singleton class NoteController @Inject constructor(
     private val dao: NoteDao
-) : CoroutineScope by CoroutineScope(Dispatchers.Default) {
+) {
     /* Must be a singleton because there is a listener that should respond to a change in the
     *  database table */
 

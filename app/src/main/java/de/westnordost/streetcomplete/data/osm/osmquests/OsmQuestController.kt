@@ -38,12 +38,14 @@ import javax.inject.Singleton
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
-): OsmQuestSource, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+): OsmQuestSource {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
     private val listeners: MutableList<OsmQuestSource.Listener> = CopyOnWriteArrayList()
+
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     private val allQuestTypes get() = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
 
@@ -130,7 +132,7 @@ import javax.inject.Singleton
         val hiddenQuests = getHiddenQuests()
 
         val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
-            async {
+            scope.async {
                 val questsForType = ArrayList<OsmQuest>()
                 val questTypeName = questType::class.simpleName!!
                 if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
@@ -172,7 +174,7 @@ import javax.inject.Singleton
         val blacklistedPositions = getBlacklistedPositions(paddedBounds)
 
         return questTypes.map { questType ->
-            async {
+            scope.async {
                 val appliesToElement = questType.isApplicableTo(element)
                     ?: questType.getApplicableElements(lazyMapData).any { it.id == element.id && it.type == element.type }
 

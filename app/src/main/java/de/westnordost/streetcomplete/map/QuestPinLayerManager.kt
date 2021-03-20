@@ -15,10 +15,7 @@ import de.westnordost.streetcomplete.ktx.values
 import de.westnordost.streetcomplete.map.tangram.toLngLat
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway
 import de.westnordost.streetcomplete.util.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.util.*
 import javax.inject.Inject
 
@@ -29,7 +26,7 @@ class QuestPinLayerManager @Inject constructor(
     private val questTypesProvider: OrderedVisibleQuestTypesProvider,
     private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource
-): LifecycleObserver, VisibleQuestsSource.Listener, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+): LifecycleObserver, VisibleQuestsSource.Listener {
 
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
@@ -40,6 +37,8 @@ class QuestPinLayerManager @Inject constructor(
 
     // quest group -> ( quest Id -> [point, ...] )
     private val quests: EnumMap<QuestGroup, LongSparseArray<List<Point>>> = EnumMap(QuestGroup::class.java)
+
+    private val lifecycleScope = CoroutineScope(SupervisorJob())
 
     lateinit var mapFragment: MapFragment
 
@@ -77,7 +76,7 @@ class QuestPinLayerManager @Inject constructor(
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         questsLayer = null
         visibleQuestsSource.removeListener(this)
-        coroutineContext.cancel()
+        lifecycleScope.cancel()
     }
 
     fun onNewScreenPosition() {
@@ -115,7 +114,7 @@ class QuestPinLayerManager @Inject constructor(
         val minRect = tiles.minTileRect() ?: return
         val bbox = minRect.asBoundingBox(TILES_ZOOM)
         val questTypeNames = questTypesProvider.get().map { it::class.simpleName!! }
-        launch(Dispatchers.IO) {
+        lifecycleScope.launch(Dispatchers.IO) {
             visibleQuestsSource.getAllVisible(bbox, questTypeNames).forEach {
                 add(it.quest, it.group)
             }
