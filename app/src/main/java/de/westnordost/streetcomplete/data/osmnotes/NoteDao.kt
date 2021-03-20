@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 
-import android.database.Cursor
-import android.database.sqlite.SQLiteOpenHelper
-import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 
@@ -16,7 +13,8 @@ import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.streetcomplete.data.WhereSelectionBuilder
+import de.westnordost.streetcomplete.data.CursorPosition
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CLOSED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.COMMENTS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CREATED
@@ -27,63 +25,64 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.NAME
 import de.westnordost.streetcomplete.ktx.*
+import java.lang.System.currentTimeMillis
 
 /** Stores OSM notes */
 class NoteDao @Inject constructor(
-    private val dbHelper: SQLiteOpenHelper,
+    private val db: Database,
     private val serializer: Serializer
 ) {
-    private val db get() = dbHelper.writableDatabase
-
     fun put(note: Note) {
-        db.replaceOrThrow(NAME, null, note.toContentValues())
+        db.replace(NAME, note.toPairs())
     }
 
-    fun get(id: Long): Note? {
-        return db.queryOne(NAME, null, "$ID = $id") { it.toNote() }
-    }
+    fun get(id: Long): Note? =
+        db.queryOne(NAME, where = "$ID = $id") { it.toNote() }
 
-    fun delete(id: Long): Boolean {
-        return db.delete(NAME, "$ID = $id", null) == 1
-    }
+    fun delete(id: Long): Boolean =
+        db.delete(NAME, "$ID = $id") == 1
 
     fun putAll(notes: Collection<Note>) {
         if (notes.isEmpty()) return
-        db.transaction {
-            for (note in notes) {
-                put(note)
-            }
-        }
+
+        db.replaceMany(NAME,
+            arrayOf(ID, LATITUDE, LONGITUDE, STATUS, CREATED, CLOSED, COMMENTS, LAST_UPDATE),
+            notes.map { arrayOf(
+                it.id,
+                it.position.latitude,
+                it.position.longitude,
+                it.status.name,
+                it.dateCreated.time,
+                it.dateClosed?.time,
+                serializer.toBytes(ArrayList(it.comments)),
+                currentTimeMillis()
+            ) }
+        )
     }
 
-    fun getAll(bbox: BoundingBox): List<Note> {
-        val builder = WhereSelectionBuilder()
-        builder.appendBounds(bbox)
-        return db.query(NAME, null, builder.where, builder.args) { it.toNote() }
-    }
+    fun getAll(bbox: BoundingBox): List<Note> =
+        db.query(NAME, where = inBoundsSql(bbox)) { it.toNote() }
 
-    fun getAllPositions(bbox: BoundingBox): List<LatLon> {
-        val cols = arrayOf(LATITUDE, LONGITUDE)
-        val builder = WhereSelectionBuilder()
-        builder.appendBounds(bbox)
-        return db.query(NAME, cols, builder.where, builder.args) { OsmLatLon(it.getDouble(0), it.getDouble(1)) }
-    }
+    fun getAllPositions(bbox: BoundingBox): List<LatLon> =
+        db.query(NAME,
+            columns = arrayOf(LATITUDE, LONGITUDE),
+            where = inBoundsSql(bbox),
+        ) { OsmLatLon(it.getDouble(LATITUDE), it.getDouble(LONGITUDE)) }
 
     fun getAll(ids: Collection<Long>): List<Note> {
         if (ids.isEmpty()) return emptyList()
-        return db.query(NAME, null, "$ID IN (${ids.joinToString(",")})") { it.toNote() }
+        return db.query(NAME, where = "$ID IN (${ids.joinToString(",")})") { it.toNote() }
     }
 
-    fun getAllIdsOlderThan(timestamp: Long): List<Long> {
-        return db.query(NAME, arrayOf(ID), "$LAST_UPDATE < $timestamp", null) { it.getLong(0) }
-    }
+    fun getAllIdsOlderThan(timestamp: Long): List<Long> =
+        db.query(NAME, arrayOf(ID), "$LAST_UPDATE < $timestamp") { it.getLong(ID) }
 
     fun deleteAll(ids: Collection<Long>): Int {
         if (ids.isEmpty()) return 0
-        return db.delete(NAME, "$ID IN (${ids.joinToString(",")})", null)
+        return db.delete(NAME, "$ID IN (${ids.joinToString(",")})")
     }
 
-    private fun Note.toContentValues() = contentValuesOf(
+    private fun Note.toPairs() = listOf(
         ID to id,
         LATITUDE to position.latitude,
         LONGITUDE to position.longitude,
@@ -91,10 +90,10 @@ class NoteDao @Inject constructor(
         CREATED to dateCreated.time,
         CLOSED to dateClosed?.time,
         COMMENTS to serializer.toBytes(ArrayList(comments)),
-        LAST_UPDATE to Date().time
+        LAST_UPDATE to currentTimeMillis()
     )
 
-    private fun Cursor.toNote() = Note().also { n ->
+    private fun CursorPosition.toNote() = Note().also { n ->
         n.id = getLong(ID)
         n.position = OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE))
         n.dateCreated = Date(getLong(CREATED))
@@ -103,17 +102,9 @@ class NoteDao @Inject constructor(
         n.comments = serializer.toObject<ArrayList<NoteComment>>(getBlob(COMMENTS))
     }
 
-}
+    private fun inBoundsSql(bbox: BoundingBox): String = """
+        ($LATITUDE BETWEEN ${bbox.minLatitude} AND ${bbox.maxLatitude}) AND
+        ($LONGITUDE BETWEEN ${bbox.minLongitude} AND ${bbox.maxLongitude})
+    """.trimIndent()
 
-private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox) {
-    add("($LATITUDE BETWEEN ? AND ?)",
-        bbox.minLatitude.toString(),
-        bbox.maxLatitude.toString()
-    )
-    add(
-        "($LONGITUDE BETWEEN ? AND ?)",
-        bbox.minLongitude.toString(),
-        bbox.maxLongitude.toString()
-    )
 }
-

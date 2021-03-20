@@ -9,7 +9,7 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementIdProviderDao
 
     @Before fun createDao() {
-        dao = ElementIdProviderDao(dbHelper)
+        dao = ElementIdProviderDao(database)
     }
 
     @Test fun assign_get() {
@@ -20,7 +20,7 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
         val relationIdSet = mutableSetOf<Long>()
 
         dao.assign(1L, 2, 3, 0)
-        val p1 = dao.get(1L)!!
+        val p1 = dao.get(1L)
 
         nodeIdSet.add(p1.nextNodeId())
         nodeIdSet.add(p1.nextNodeId())
@@ -34,7 +34,7 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
         assertThrows { p1.nextRelationId() }
 
         dao.assign(2L, 1, 1, 2)
-        val p2 = dao.get(2L)!!
+        val p2 = dao.get(2L)
 
         nodeIdSet.add(p2.nextNodeId())
         assertThrows { p2.nextNodeId() }

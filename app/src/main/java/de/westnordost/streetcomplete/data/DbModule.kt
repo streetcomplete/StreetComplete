@@ -17,5 +17,8 @@ object DbModule {
     fun sqLiteOpenHelper(ctx: Context, databaseName: String): SQLiteOpenHelper =
         StreetCompleteSQLiteOpenHelper(ctx, databaseName)
 
+    @Provides @Singleton fun database(sqLiteOpenHelper: SQLiteOpenHelper): Database =
+        AndroidDatabase(sqLiteOpenHelper)
+
 	@Provides @Singleton fun serializer(): Serializer = KryoSerializer()
 }

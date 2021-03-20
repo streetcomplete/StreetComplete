@@ -14,7 +14,7 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: OsmQuestDao
 
     @Before fun createDao() {
-        dao = OsmQuestDao(dbHelper)
+        dao = OsmQuestDao(database)
     }
 
     @Test fun addGet() {

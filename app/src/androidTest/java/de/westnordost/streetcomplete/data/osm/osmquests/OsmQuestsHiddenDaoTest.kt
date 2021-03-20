@@ -11,7 +11,7 @@ class OsmQuestsHiddenDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: OsmQuestsHiddenDao
 
     @Before fun createDao() {
-        dao = OsmQuestsHiddenDao(dbHelper)
+        dao = OsmQuestsHiddenDao(database)
     }
 
     @Test fun getButNothingIsThere() {

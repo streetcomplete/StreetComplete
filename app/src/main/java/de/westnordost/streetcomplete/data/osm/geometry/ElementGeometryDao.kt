@@ -1,8 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import android.database.Cursor
-import android.database.sqlite.SQLiteOpenHelper
-import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.BoundingBox
 
 
@@ -11,7 +8,8 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.WhereSelectionBuilder
+import de.westnordost.streetcomplete.data.CursorPosition
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.ELEMENT_ID
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.GEOMETRY_POLYGONS
@@ -32,69 +30,85 @@ import de.westnordost.streetcomplete.ktx.*
 
 /** Stores the geometry of elements */
 class ElementGeometryDao @Inject constructor(
-    private val dbHelper: SQLiteOpenHelper,
+    private val db: Database,
     private val serializer: Serializer
 ) {
-    private val db get() = dbHelper.writableDatabase
-
     fun put(entry: ElementGeometryEntry) {
-        db.replaceOrThrow(NAME, null, entry.toContentValues())
+        db.replace(NAME, entry.toPairs())
     }
 
-    fun get(type: Element.Type, id: Long): ElementGeometry? {
-        val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
-        val args = arrayOf(type.name, id.toString())
+    fun get(type: Element.Type, id: Long): ElementGeometry? =
+        db.queryOne(NAME,
+            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
+            args = arrayOf(type.name, id)
+        ) { it.toElementGeometry() }
 
-        return db.queryOne(NAME, null, where, args) { it.toElementGeometry() }
-    }
-
-    fun delete(type: Element.Type, id: Long): Boolean {
-        val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
-        val args = arrayOf(type.name, id.toString())
-
-        return db.delete(NAME, where, args) == 1
-    }
+    fun delete(type: Element.Type, id: Long): Boolean =
+        db.delete(NAME,
+            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
+            args = arrayOf(type.name, id)
+        ) == 1
 
     fun putAll(entries: Collection<ElementGeometryEntry>) {
-        db.transaction {
-            for (entry in entries) {
-                put(entry)
-            }
-        }
+        if (entries.isEmpty()) return
+
+        db.replaceMany(NAME,
+            arrayOf(
+                ELEMENT_TYPE,
+                ELEMENT_ID,
+                CENTER_LATITUDE,
+                CENTER_LONGITUDE,
+                GEOMETRY_POLYGONS,
+                GEOMETRY_POLYLINES,
+                MIN_LATITUDE,
+                MIN_LONGITUDE,
+                MAX_LATITUDE,
+                MAX_LONGITUDE
+            ),
+            entries.map {
+                val bbox = it.geometry.getBounds()
+                val g = it.geometry
+                arrayOf(
+                    it.elementType.name,
+                    it.elementId,
+                    g.center.latitude,
+                    g.center.longitude,
+                    if (g is ElementPolygonsGeometry) serializer.toBytes(g.polygons) else null,
+                    if (g is ElementPolylinesGeometry) serializer.toBytes(g.polylines) else null,
+                    bbox.minLatitude,
+                    bbox.minLongitude,
+                    bbox.maxLatitude,
+                    bbox.maxLongitude
+            ) }
+        )
     }
 
-    fun getAllKeys(bbox: BoundingBox): List<ElementKey> {
-        val builder = WhereSelectionBuilder()
-        builder.appendBounds(bbox)
-        return db.query(NAME, arrayOf(ELEMENT_TYPE, ELEMENT_ID), builder.where, builder.args) {
-            ElementKey(
-                Element.Type.valueOf(it.getString(0)),
-                it.getLong(1)
-            )
-        }
-    }
+    fun getAllKeys(bbox: BoundingBox): List<ElementKey> =
+        db.query(NAME,
+            columns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
+            where = inBoundsSql(bbox)
+        ) { it.toElementKey() }
 
-    fun getAllEntries(bbox: BoundingBox): List<ElementGeometryEntry> {
-        val builder = WhereSelectionBuilder()
-        builder.appendBounds(bbox)
-        return db.query(NAME, null, builder.where, builder.args) { it.toElementGeometryEntry() }
-    }
+    fun getAllEntries(bbox: BoundingBox): List<ElementGeometryEntry> =
+        db.query(NAME, where = inBoundsSql(bbox)) { it.toElementGeometryEntry() }
 
     fun getAllEntries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
         if (keys.isEmpty()) return emptyList()
-        val values = keys.joinToString(",") { "('${it.type.name}', ${it.id})" }
         return db.transaction {
             /* this looks a little complicated. Basically, this is a workaround for SQLite not
                supporting the "SELECT id FROM foo WHERE (a,b) IN ((1,2), (3,4), (5,6))" syntax:
                Instead, we insert the values into a temporary table and inner join on that table then
                https://stackoverflow.com/questions/18363276/how-do-you-do-an-in-query-that-has-multiple-columns-in-sqlite
              */
-            db.execSQL(TEMPORARY_LOOKUP_CREATE)
-            db.execSQL(TEMPORARY_LOOKUP_MERGED_VIEW_CREATE)
-            db.execSQL("INSERT OR IGNORE INTO $NAME_TEMPORARY_LOOKUP ($ELEMENT_TYPE, $ELEMENT_ID) VALUES $values;")
+            db.exec(TEMPORARY_LOOKUP_CREATE)
+            db.exec(TEMPORARY_LOOKUP_MERGED_VIEW_CREATE)
+            db.insertOrIgnoreMany(NAME_TEMPORARY_LOOKUP,
+                arrayOf(ELEMENT_TYPE, ELEMENT_ID),
+                keys.map { arrayOf(it.type.name, it.id) }
+            )
             val result = db.query(NAME_TEMPORARY_LOOKUP_MERGED_VIEW) { it.toElementGeometryEntry() }
-            db.execSQL("DROP VIEW $NAME_TEMPORARY_LOOKUP_MERGED_VIEW")
-            db.execSQL("DROP TABLE $NAME_TEMPORARY_LOOKUP")
+            db.exec("DROP VIEW $NAME_TEMPORARY_LOOKUP_MERGED_VIEW")
+            db.exec("DROP TABLE $NAME_TEMPORARY_LOOKUP")
             result
         }
     }
@@ -110,18 +124,18 @@ class ElementGeometryDao @Inject constructor(
         return deletedCount
     }
 
-    private fun ElementGeometryEntry.toContentValues() = contentValuesOf(
+    private fun ElementGeometryEntry.toPairs() = listOf(
         ELEMENT_TYPE to elementType.name,
         ELEMENT_ID to elementId
-    ) + geometry.toContentValues()
+    ) + geometry.toPairs()
 
-    private fun Cursor.toElementGeometryEntry() = ElementGeometryEntry(
+    private fun CursorPosition.toElementGeometryEntry() = ElementGeometryEntry(
         Element.Type.valueOf(getString(ELEMENT_TYPE)),
         getLong(ELEMENT_ID),
         toElementGeometry()
     )
 
-    private fun ElementGeometry.toContentValues() = contentValuesOf(
+    private fun ElementGeometry.toPairs() = listOf(
         CENTER_LATITUDE to center.latitude,
         CENTER_LONGITUDE to center.longitude,
         GEOMETRY_POLYGONS to if (this is ElementPolygonsGeometry) serializer.toBytes(polygons) else null,
@@ -132,7 +146,7 @@ class ElementGeometryDao @Inject constructor(
         MAX_LONGITUDE to getBounds().maxLongitude
     )
 
-    private fun Cursor.toElementGeometry(): ElementGeometry {
+    private fun CursorPosition.toElementGeometry(): ElementGeometry {
         val polylines = getBlobOrNull(GEOMETRY_POLYLINES)?.let { serializer.toObject<PolyLines>(it) }
         val polygons = getBlobOrNull(GEOMETRY_POLYGONS)?.let { serializer.toObject<PolyLines>(it) }
         val center = OsmLatLon(getDouble(CENTER_LATITUDE), getDouble(CENTER_LONGITUDE))
@@ -145,13 +159,17 @@ class ElementGeometryDao @Inject constructor(
     }
 }
 
-private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox): WhereSelectionBuilder {
-    add("$MAX_LONGITUDE >= ?", bbox.minLongitude.toString())
-    add("$MAX_LATITUDE >= ?", bbox.minLatitude.toString())
-    add("$MIN_LONGITUDE <= ?", bbox.maxLongitude.toString())
-    add("$MIN_LATITUDE <= ?", bbox.maxLatitude.toString())
-    return this
-}
+private fun inBoundsSql(bbox: BoundingBox) = """
+    $MAX_LONGITUDE >= ${bbox.minLongitude} AND
+    $MAX_LATITUDE >= ${bbox.minLatitude} AND
+    $MIN_LONGITUDE <= ${bbox.maxLongitude} AND
+    $MIN_LATITUDE <= ${bbox.maxLatitude}
+""".trimIndent()
+
+private fun CursorPosition.toElementKey() = ElementKey(
+    Element.Type.valueOf(getString(ELEMENT_TYPE)),
+    getLong(ELEMENT_ID)
+)
 
 data class ElementGeometryEntry(
     val elementType: Element.Type,

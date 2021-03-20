@@ -16,7 +16,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementGeometryDao
 
     @Before fun createDao() {
-        dao = ElementGeometryDao(dbHelper, serializer)
+        dao = ElementGeometryDao(database, serializer)
     }
 
     @Test fun testGetNull() {

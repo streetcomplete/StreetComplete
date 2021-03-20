@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import android.database.sqlite.SQLiteOpenHelper
-import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.*
+import de.westnordost.streetcomplete.data.Database
 
 import javax.inject.Inject
 
@@ -22,11 +21,9 @@ import java.lang.System.currentTimeMillis
 
 /** Stores OSM relations */
 class RelationDao @Inject constructor(
-    private val dbHelper: SQLiteOpenHelper,
+    private val db: Database,
     private val serializer: Serializer
 ) {
-    private val db get() = dbHelper.writableDatabase
-
     fun put(relation: Relation) {
         putAll(listOf(relation))
     }
@@ -35,30 +32,42 @@ class RelationDao @Inject constructor(
         getAll(listOf(id)).firstOrNull()
 
     fun delete(id: Long): Boolean =
-        deleteAll(listOf(id)) > 0
+        deleteAll(listOf(id)) == 1
 
     fun putAll(relations: Collection<Relation>) {
         if (relations.isEmpty()) return
         val idsString = relations.joinToString(",") { it.id.toString() }
+
+        val time = currentTimeMillis()
+
         db.transaction {
-            db.delete(NAME_MEMBERS, "$ID IN ($idsString)", null)
-            for (relation in relations) {
-                relation.members.forEachIndexed { index, member ->
-                    db.insertOrThrow(NAME_MEMBERS, null, contentValuesOf(
-                        ID to relation.id,
-                        INDEX to index,
-                        REF to member.ref,
-                        TYPE to member.type.name,
-                        ROLE to member.role.orEmpty()
-                    ))
+            db.delete(NAME_MEMBERS, "$ID IN ($idsString)")
+
+            db.insertMany(NAME_MEMBERS,
+                arrayOf(ID, INDEX, REF, TYPE, ROLE),
+                relations.flatMap { relation ->
+                    relation.members.mapIndexed { index, member ->
+                        arrayOf(
+                            relation.id,
+                            index,
+                            member.ref,
+                            member.type.name,
+                            member.role.orEmpty()
+                        )
+                    }
                 }
-                db.replaceOrThrow(NAME, null, contentValuesOf(
-                    ID to relation.id,
-                    VERSION to relation.version,
-                    TAGS to relation.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
-                    LAST_UPDATE to currentTimeMillis()
-                ))
-            }
+            )
+            db.replaceMany(NAME,
+                arrayOf(ID, VERSION, TAGS, LAST_UPDATE),
+                relations.map { relation ->
+                    arrayOf(
+                        relation.id,
+                        relation.version,
+                        relation.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
+                        time
+                    )
+                }
+            )
         }
     }
 
@@ -67,7 +76,7 @@ class RelationDao @Inject constructor(
         val idsString = ids.joinToString(",")
 
         val membersByRelationId = mutableMapOf<Long, MutableList<RelationMember>>()
-        db.query(NAME_MEMBERS, selection = "$ID IN ($idsString)", orderBy = "$ID, $INDEX") { c ->
+        db.query(NAME_MEMBERS, where = "$ID IN ($idsString)", orderBy = "$ID, $INDEX") { c ->
             val members = membersByRelationId.getOrPut(c.getLong(ID)) { ArrayList() }
             members.add(OsmRelationMember(
                 c.getLong(REF),
@@ -76,7 +85,7 @@ class RelationDao @Inject constructor(
             ))
         }
 
-        return db.query(NAME, selection = "$ID IN ($idsString)") { c ->
+        return db.query(NAME, where = "$ID IN ($idsString)") { c ->
             val id = c.getLong(ID)
             OsmRelation(
                 id,
@@ -91,8 +100,8 @@ class RelationDao @Inject constructor(
         if (ids.isEmpty()) return 0
         val idsString = ids.joinToString(",")
         return db.transaction {
-            db.delete(NAME_MEMBERS, "$ID IN ($idsString)", null)
-            db.delete(NAME, "ID IN ($idsString)", null)
+            db.delete(NAME_MEMBERS, "$ID IN ($idsString)")
+            db.delete(NAME, "$ID IN ($idsString)")
         }
     }
 
@@ -106,14 +115,14 @@ class RelationDao @Inject constructor(
         getAllForElement(Element.Type.RELATION, relationId)
 
     fun getIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, columns = arrayOf(ID), selection = "$LAST_UPDATE < $timestamp") { it.getLong(0) }
+        db.query(NAME, columns = arrayOf(ID), where = "$LAST_UPDATE < $timestamp") { it.getLong(ID) }
 
     private fun getAllForElement(elementType: Element.Type, elementId: Long): List<Relation> {
         val ids = db.query(
             NAME_MEMBERS,
             columns = arrayOf(ID),
-            selection = "$REF = $elementId AND $TYPE = ?",
-            selectionArgs = arrayOf(elementType.name)) { it.getLong(0) }.toSet()
+            where = "$REF = $elementId AND $TYPE = ?",
+            args = arrayOf(elementType.name)) { it.getLong(ID) }.toSet()
         return getAll(ids)
     }
 }

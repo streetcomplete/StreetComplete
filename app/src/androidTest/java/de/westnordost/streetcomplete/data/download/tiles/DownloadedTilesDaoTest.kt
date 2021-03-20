@@ -13,7 +13,7 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: DownloadedTilesDao
 
     @Before fun createDao() {
-        dao = DownloadedTilesDao(dbHelper)
+        dao = DownloadedTilesDao(database)
     }
 
     @Test fun putGetOne() {

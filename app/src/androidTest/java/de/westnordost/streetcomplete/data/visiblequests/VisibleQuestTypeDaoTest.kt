@@ -11,7 +11,7 @@ class VisibleQuestTypeDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: VisibleQuestTypeDao
 
     @Before fun createDao() {
-        dao = VisibleQuestTypeDao(dbHelper)
+        dao = VisibleQuestTypeDao(database)
     }
 
     @Test fun defaultEnabledQuest() {

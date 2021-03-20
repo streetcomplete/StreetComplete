@@ -14,7 +14,7 @@ class WayDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: WayDao
 
     @Before fun createDao() {
-        dao = WayDao(dbHelper, serializer)
+        dao = WayDao(database, serializer)
     }
 
     @Test fun putGetNoTags() {

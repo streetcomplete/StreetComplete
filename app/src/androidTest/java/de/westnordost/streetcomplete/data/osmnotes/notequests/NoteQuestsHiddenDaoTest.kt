@@ -10,7 +10,7 @@ class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NoteQuestsHiddenDao
 
     @Before fun createDao() {
-        dao = NoteQuestsHiddenDao(dbHelper)
+        dao = NoteQuestsHiddenDao(database)
     }
 
     @Test fun getButNothingIsThere() {

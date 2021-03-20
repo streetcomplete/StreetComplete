@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import android.database.sqlite.SQLiteOpenHelper
-import androidx.core.content.contentValuesOf
-
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LAST_UPDATE
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LATITUDE
@@ -21,11 +19,9 @@ import java.lang.System.currentTimeMillis
 
 /** Stores OSM nodes */
 class NodeDao @Inject constructor(
-    private val dbHelper: SQLiteOpenHelper,
+    private val db: Database,
     private val serializer: Serializer
 ) {
-    private val db get() = dbHelper.writableDatabase
-
     fun put(node: Node) {
         putAll(listOf(node))
     }
@@ -38,24 +34,28 @@ class NodeDao @Inject constructor(
 
     fun putAll(nodes: Collection<Node>) {
         if (nodes.isEmpty()) return
-        db.transaction {
-            for (node in nodes) {
-                db.replaceOrThrow(NAME, null, contentValuesOf(
-                    ID to node.id,
-                    VERSION to node.version,
-                    LATITUDE to node.position.latitude,
-                    LONGITUDE to node.position.longitude,
-                    TAGS to node.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
-                    LAST_UPDATE to currentTimeMillis()
-                ))
+
+        val time = currentTimeMillis()
+
+        db.replaceMany(NAME,
+            arrayOf(ID, VERSION, LATITUDE, LONGITUDE, TAGS, LAST_UPDATE),
+            nodes.map { node ->
+                arrayOf(
+                    node.id,
+                    node.version,
+                    node.position.latitude,
+                    node.position.longitude,
+                    node.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
+                    time
+                )
             }
-        }
+        )
     }
 
     fun getAll(ids: Collection<Long>): List<Node> {
         if (ids.isEmpty()) return emptyList()
         val idsString = ids.joinToString(",")
-        return db.query(NAME, selection = "$ID IN ($idsString)") { cursor ->
+        return db.query(NAME, where = "$ID IN ($idsString)") { cursor ->
             OsmNode(
                 cursor.getLong(ID),
                 cursor.getInt(VERSION),
@@ -68,9 +68,9 @@ class NodeDao @Inject constructor(
     fun deleteAll(ids: Collection<Long>): Int {
         if (ids.isEmpty()) return 0
         val idsString = ids.joinToString(",")
-        return db.delete(NAME, "$ID IN ($idsString)", null)
+        return db.delete(NAME, "$ID IN ($idsString)")
     }
 
     fun getIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, columns = arrayOf(ID), selection = "$LAST_UPDATE < $timestamp") { it.getLong(0) }
+        db.query(NAME, columns = arrayOf(ID), where = "$LAST_UPDATE < $timestamp") { it.getLong(ID) }
 }

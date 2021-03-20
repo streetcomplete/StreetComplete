@@ -14,7 +14,7 @@ class WayTrafficFlowSegmentsApiTest : ApplicationDbTestCase() {
     private lateinit var dao: WayTrafficFlowDao
 
     @Before fun createDao() {
-        dao = WayTrafficFlowDao(dbHelper)
+        dao = WayTrafficFlowDao(database)
     }
 
     @Test fun putGetTrue() {
@@ -44,7 +44,7 @@ class WayTrafficFlowSegmentsApiTest : ApplicationDbTestCase() {
     }
 
     @Test fun deleteUnreferenced() {
-        val wayDao = WayDao(dbHelper, KryoSerializer())
+        val wayDao = WayDao(database, KryoSerializer())
 
         wayDao.put(OsmWay(1, 0, mutableListOf(), null))
         wayDao.put(OsmWay(2, 0, mutableListOf(), null))

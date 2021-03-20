@@ -10,7 +10,7 @@ class NewUserAchievementsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NewUserAchievementsDao
 
     @Before fun createDao() {
-        dao = NewUserAchievementsDao(dbHelper)
+        dao = NewUserAchievementsDao(database)
     }
 
     @Test fun addPopFirst() {
