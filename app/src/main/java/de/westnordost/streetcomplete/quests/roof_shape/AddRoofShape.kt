@@ -50,7 +50,7 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
 
     private fun isRoofProbablyVisibleFromBelow(tags: Map<String,String>?): Boolean? {
         if (tags == null) return null
-        val roofLevels = tags["roof:levels"]?.toIntOrNull() ?: return null
+        val roofLevels = tags["roof:levels"]?.toFloatOrNull() ?: 0
         val buildingLevels = tags["building:levels"]?.toIntOrNull() ?: return null
         if (roofLevels < 0 || buildingLevels < 0) return null
         return buildingLevels / (roofLevels + 2f) < 2f
