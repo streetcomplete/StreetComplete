@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.UnsyncedChangesCountListener
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
@@ -31,9 +30,9 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
 
     private val uploadButton get() = view as UploadButton
 
-    private val unsyncedChangesCountListener = object : UnsyncedChangesCountListener {
-        override fun onUnsyncedChangesCountIncreased() { lifecycleScope.launch { updateCount() }}
-        override fun onUnsyncedChangesCountDecreased() { lifecycleScope.launch { updateCount() }}
+    private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
+        override fun onIncreased() { lifecycleScope.launch { updateCount() }}
+        override fun onDecreased() { lifecycleScope.launch { updateCount() }}
     }
 
     private val uploadProgressListener = object : UploadProgressListener {

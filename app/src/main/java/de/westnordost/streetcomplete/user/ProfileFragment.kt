@@ -13,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
-import de.westnordost.streetcomplete.data.UnsyncedChangesCountListener
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.*
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao
@@ -37,9 +36,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private lateinit var anonAvatar: Bitmap
 
-    private val unsyncedChangesCountListener = object : UnsyncedChangesCountListener {
-        override fun onUnsyncedChangesCountIncreased() { lifecycleScope.launch { updateUnpublishedQuestsText() } }
-        override fun onUnsyncedChangesCountDecreased() { lifecycleScope.launch { updateUnpublishedQuestsText() } }
+    private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
+        override fun onIncreased() { lifecycleScope.launch { updateUnpublishedQuestsText() } }
+        override fun onDecreased() { lifecycleScope.launch { updateUnpublishedQuestsText() } }
     }
     private val questStatisticsDaoListener = object : QuestStatisticsDao.Listener {
         override fun onAddedOne(questType: String) { lifecycleScope.launch { updateSolvedQuestsText() }}

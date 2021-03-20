@@ -6,7 +6,6 @@ import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.UnsyncedChangesCountListener
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
@@ -29,9 +28,9 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
         override fun onFinished() { lifecycleScope.launch { updateProgress(false) } }
     }
 
-    private val unsyncedChangesCountListener = object : UnsyncedChangesCountListener {
-        override fun onUnsyncedChangesCountIncreased() { lifecycleScope.launch { updateCount(true) }}
-        override fun onUnsyncedChangesCountDecreased() { lifecycleScope.launch { updateCount(true) }}
+    private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
+        override fun onIncreased() { lifecycleScope.launch { updateCount(true) }}
+        override fun onDecreased() { lifecycleScope.launch { updateCount(true) }}
     }
 
     private val questStatisticsListener = object : QuestStatisticsDao.Listener {

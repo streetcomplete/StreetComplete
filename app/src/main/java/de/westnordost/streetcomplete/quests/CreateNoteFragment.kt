@@ -10,8 +10,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
-import android.view.inputmethod.InputMethodManager
-import androidx.core.content.getSystemService
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getLocationInWindow

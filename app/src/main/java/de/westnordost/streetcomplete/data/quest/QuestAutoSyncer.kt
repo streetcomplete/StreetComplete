@@ -13,7 +13,6 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.*
-import de.westnordost.streetcomplete.data.UnsyncedChangesCountListener
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.upload.UploadController
@@ -75,9 +74,9 @@ import javax.inject.Singleton
     }
 
     // there are unsynced changes -> try uploading now
-    private val unsyncedChangesListener = object : UnsyncedChangesCountListener {
-        override fun onUnsyncedChangesCountIncreased() { triggerAutoUpload() }
-        override fun onUnsyncedChangesCountDecreased() {}
+    private val unsyncedChangesListener = object : UnsyncedChangesCountSource.Listener {
+        override fun onIncreased() { triggerAutoUpload() }
+        override fun onDecreased() {}
     }
 
     // on download finished, should recheck conditions for download
