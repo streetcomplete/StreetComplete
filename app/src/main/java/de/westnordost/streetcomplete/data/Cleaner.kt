@@ -8,9 +8,10 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.format
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.lang.System.currentTimeMillis
 import javax.inject.Inject
 
@@ -21,11 +22,17 @@ class Cleaner @Inject constructor(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
     private val questTypeRegistry: QuestTypeRegistry
-): CoroutineScope by CoroutineScope(Dispatchers.IO) {
-
-    fun clean() = launch {
+) {
+    suspend fun clean() {
         val time = currentTimeMillis()
+        coroutineScope {
+            launch { deleteOldData() }
+            launch { deleteUndoHistory() }
+        }
+        Log.i(TAG, "Cleaning took ${((currentTimeMillis() - time) / 1000.0).format(1)}s")
+    }
 
+    private suspend fun deleteOldData() = withContext(Dispatchers.IO) {
         val oldDataTimestamp = currentTimeMillis() - ApplicationConstants.DELETE_OLD_DATA_AFTER
         noteController.deleteAllOlderThan(oldDataTimestamp)
         mapDataController.deleteOlderThan(oldDataTimestamp)
@@ -34,12 +41,12 @@ class Cleaner @Inject constructor(
         for (questType in questTypeRegistry.all) {
             questType.deleteMetadataOlderThan(oldDataTimestamp)
         }
+    }
 
+    private suspend fun deleteUndoHistory() = withContext(Dispatchers.IO) {
         val undoableChangesTimestamp = currentTimeMillis() - ApplicationConstants.MAX_UNDO_HISTORY_AGE
         elementEditsController.deleteSyncedOlderThan(undoableChangesTimestamp)
         noteEditsController.deleteSyncedOlderThan(undoableChangesTimestamp)
-
-        Log.i(TAG, "Finished cleaning old data in ${((currentTimeMillis() - time) / 1000.0).format(1)}s")
     }
 
     companion object {

@@ -8,10 +8,7 @@ import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
-import kotlinx.coroutines.CoroutineName
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 class StreetCompleteApplication : Application() {
@@ -35,8 +32,11 @@ class StreetCompleteApplication : Application() {
 
         crashReportExceptionHandler.install()
 
-        preloader.preload()
-        cleaner.clean()
+        // do these in the background
+        applicationScope.launch {
+            preloader.preload()
+            cleaner.clean()
+        }
 
         val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
         AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)

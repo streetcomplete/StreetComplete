@@ -4,7 +4,6 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import java.io.File
 import javax.inject.Named
 import javax.inject.Singleton
