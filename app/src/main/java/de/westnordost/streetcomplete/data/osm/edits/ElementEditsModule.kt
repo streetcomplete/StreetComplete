@@ -6,7 +6,7 @@ import javax.inject.Singleton
 
 @Module object ElementEditsModule {
 
-    @Provides @Singleton fun osmElementChangesSource(
+    @Provides @Singleton fun elementEditsSource(
         elementEditsController: ElementEditsController
     ): ElementEditsSource = elementEditsController
 }
