@@ -10,10 +10,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
+import kotlinx.coroutines.*
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
-import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
 class ElementEditsUploader @Inject constructor(
@@ -22,20 +23,24 @@ class ElementEditsUploader @Inject constructor(
     private val singleUploader: ElementEditUploader,
     private val mapDataApi: MapDataApi,
     private val statisticsUpdater: StatisticsUpdater
-): Uploader {
+) {
+    var uploadedChangeListener: OnUploadedChangeListener? = null
 
-    override var uploadedChangeListener: OnUploadedChangeListener? = null
+    private val mutex = Mutex()
+    private val scope = CoroutineScope(SupervisorJob() + CoroutineName("ElementEditsUploader"))
 
-    @Synchronized override fun upload(cancelled: AtomicBoolean) {
+    suspend fun upload() = mutex.withLock { withContext(Dispatchers.IO) {
         while (true) {
-            if (cancelled.get()) break
             val edit = elementEditsController.getOldestUnsynced() ?: break
             val idProvider = elementEditsController.getIdProvider(edit.id)
-            uploadEdit(edit, idProvider)
+            /* the sync of local change -> API and its response should not be cancellable because
+             * otherwise an inconsistency in the data would occur. F.e. no "star" for an uploaded
+             * change, a change could be uploaded twice etc */
+            withContext(scope.coroutineContext) { uploadEdit(edit, idProvider) }
         }
-    }
+    } }
 
-    private fun uploadEdit(edit: ElementEdit, idProvider: ElementIdProvider) {
+    private suspend fun uploadEdit(edit: ElementEdit, idProvider: ElementIdProvider) {
         val questTypeName = edit.questType::class.simpleName!!
         val editActionClassName = edit.action::class.simpleName!!
 
@@ -70,11 +75,13 @@ class ElementEditsUploader @Inject constructor(
         }
     }
 
-    private fun fetchElementComplete(elementType: Element.Type, elementId: Long): MapData? =
-        when(elementType) {
-            NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
-            WAY -> mapDataApi.getWayComplete(elementId)
-            RELATION -> mapDataApi.getRelationComplete(elementId)
+    private suspend fun fetchElementComplete(elementType: Element.Type, elementId: Long): MapData? =
+        withContext(Dispatchers.IO) {
+            when (elementType) {
+                NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
+                WAY -> mapDataApi.getWayComplete(elementId)
+                RELATION -> mapDataApi.getRelationComplete(elementId)
+            }
         }
 
     companion object {

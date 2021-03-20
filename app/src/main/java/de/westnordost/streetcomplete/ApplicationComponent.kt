@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.controls.*
 import de.westnordost.streetcomplete.data.DbModule
 import de.westnordost.streetcomplete.data.OsmApiModule
 import de.westnordost.streetcomplete.data.StreetCompleteSQLiteOpenHelper
-import de.westnordost.streetcomplete.data.upload.UploadModule2
 import de.westnordost.streetcomplete.data.download.DownloadModule
 import de.westnordost.streetcomplete.data.download.DownloadService
 import de.westnordost.streetcomplete.data.meta.MetadataModule
@@ -47,7 +46,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     ApplicationModule::class,
-    UploadModule2::class,
     OsmApiModule::class,
     TrafficFlowSegmentsModule::class,
     NotesModule::class,
