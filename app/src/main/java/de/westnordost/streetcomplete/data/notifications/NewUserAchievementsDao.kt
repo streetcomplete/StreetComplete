@@ -14,11 +14,11 @@ import javax.inject.Singleton
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
-    interface UpdateListener {
+    interface Listener {
         fun onNewUserAchievementsUpdated()
     }
 
-    private val listeners: MutableList<UpdateListener> = CopyOnWriteArrayList()
+    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     fun pop(): Pair<String, Int>? {
         var result: Pair<String, Int>? = null
@@ -51,10 +51,10 @@ import javax.inject.Singleton
         }
     }
 
-    fun addListener(listener: UpdateListener) {
+    fun addListener(listener: Listener) {
         listeners.add(listener)
     }
-    fun removeListener(listener: UpdateListener) {
+    fun removeListener(listener: Listener) {
         listeners.remove(listener)
     }
 
