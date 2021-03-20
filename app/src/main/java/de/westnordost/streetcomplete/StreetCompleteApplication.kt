@@ -8,13 +8,13 @@ import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import javax.inject.Inject
 
-class StreetCompleteApplication : Application(),
-    CoroutineScope by CoroutineScope(Dispatchers.Default) {
+class StreetCompleteApplication : Application() {
 
     @Inject lateinit var preloader: Preloader
     @Inject lateinit var cleaner: Cleaner
@@ -23,7 +23,7 @@ class StreetCompleteApplication : Application(),
     @Inject lateinit var downloadedTilesDao: DownloadedTilesDao
     @Inject lateinit var prefs: SharedPreferences
 
-    private val applicationScope = CoroutineScope(SupervisorJob())
+    private val applicationScope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
 
     override fun onCreate() {
         super.onCreate()
