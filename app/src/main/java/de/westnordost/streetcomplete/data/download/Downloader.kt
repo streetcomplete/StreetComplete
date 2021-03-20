@@ -34,7 +34,7 @@ class Downloader @Inject constructor(
 
         val time = currentTimeMillis()
 
-        withContext(Dispatchers.IO) {
+        coroutineScope {
             // all downloaders run concurrently
             launch { notesDownloader.download(bbox) }
             launch { mapDataDownloader.download(bbox) }
