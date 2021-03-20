@@ -5,6 +5,8 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import java.util.*
 
 fun p(lat: Double = 0.0, lon: Double = 0.0) = OsmLatLon(lat, lon)
@@ -72,3 +74,23 @@ fun comment(
     it.user = userId?.let { User(userId, userName) }
     it.date = Date(timestamp)
 }
+
+fun noteEdit(
+    id: Long = 1,
+    noteId: Long = 5,
+    action: NoteEditAction = NoteEditAction.COMMENT,
+    text: String = "test123",
+    timestamp: Long = 123L,
+    imagePaths: List<String> = emptyList(),
+    pos: LatLon = p(1.0, 1.0)
+) = NoteEdit(
+    id,
+    noteId,
+    pos,
+    action,
+    text,
+    imagePaths,
+    timestamp,
+    false,
+    imagePaths.isNotEmpty()
+)

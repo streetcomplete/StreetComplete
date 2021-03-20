@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
@@ -53,7 +52,7 @@ class NoteEditsUploaderTest {
 
     @Test fun `upload note comment`() {
         val pos = p(1.0, 13.0)
-        val edit = edit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
+        val edit = noteEdit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
         val note = note(id = 1L)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
@@ -70,7 +69,7 @@ class NoteEditsUploaderTest {
 
     @Test fun `upload create note`() {
         val pos = p(1.0, 13.0)
-        val edit = edit(noteId = -5L, action = NoteEditAction.CREATE, text = "abc", pos = pos)
+        val edit = noteEdit(noteId = -5L, action = NoteEditAction.CREATE, text = "abc", pos = pos)
         val note = note(123)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
@@ -87,7 +86,7 @@ class NoteEditsUploaderTest {
 
     @Test fun `fail uploading note comment because of a conflict`() {
         val pos = p(1.0, 13.0)
-        val edit = edit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
+        val edit = noteEdit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
         val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
@@ -105,7 +104,7 @@ class NoteEditsUploaderTest {
 
     @Test fun `fail uploading note comment because note was deleted`() {
         val pos = p(1.0, 13.0)
-        val edit = edit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
+        val edit = noteEdit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
         val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
@@ -122,7 +121,7 @@ class NoteEditsUploaderTest {
     }
 
     @Test fun `upload several note edits`() {
-        on(noteEditsController.getOldestUnsynced()).thenReturn(edit()).thenReturn(edit()).thenReturn(null)
+        on(noteEditsController.getOldestUnsynced()).thenReturn(noteEdit()).thenReturn(noteEdit()).thenReturn(null)
         on(notesApi.comment(anyLong(), any())).thenReturn(note())
 
         upload()
@@ -135,7 +134,7 @@ class NoteEditsUploaderTest {
 
     @Test fun `upload note comment with attached images`() {
         val pos = p(1.0, 13.0)
-        val edit = edit(
+        val edit = noteEdit(
             noteId = 1L,
             action = NoteEditAction.COMMENT,
             text = "test",
@@ -161,7 +160,7 @@ class NoteEditsUploaderTest {
 
     @Test fun `upload create note with attached images`() {
         val pos = p(1.0, 13.0)
-        val edit = edit(
+        val edit = noteEdit(
             noteId = 1L,
             action = NoteEditAction.CREATE,
             text = "test",
@@ -186,7 +185,7 @@ class NoteEditsUploaderTest {
     }
 
     @Test fun `upload missed image activations`() {
-        val edit = edit(noteId = 3)
+        val edit = noteEdit(noteId = 3)
 
         on(noteEditsController.getOldestNeedingImagesActivation()).thenReturn(edit).thenReturn(null)
 
@@ -200,21 +199,3 @@ class NoteEditsUploaderTest {
         uploader.upload()
     }
 }
-
-private fun edit(
-    noteId: Long = 1,
-    action: NoteEditAction = NoteEditAction.COMMENT,
-    text: String = "test123",
-    imagePaths: List<String> = emptyList(),
-    pos: LatLon = p(1.0, 1.0)
-) = NoteEdit(
-        1L,
-        noteId,
-        pos,
-        action,
-        text,
-        imagePaths,
-        123L,
-        false,
-        imagePaths.isNotEmpty()
-)

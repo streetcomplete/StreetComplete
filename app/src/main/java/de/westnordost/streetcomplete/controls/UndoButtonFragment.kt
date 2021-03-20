@@ -23,7 +23,9 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
@@ -62,14 +64,18 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
         undoButton.setOnClickListener {
             undoButton.isEnabled = false
-            val change = elementEditsController.getMostRecentUndoableEdit()
-            if (change != null) confirmUndo(change)
+            lifecycleScope.launch {
+                val change = getMostRecentUndoableEdit()
+                if (change != null) confirmUndo(change)
+            }
         }
     }
 
     override fun onStart() {
         super.onStart()
-        updateUndoButtonVisibility()
+        lifecycleScope.launch {
+            updateUndoButtonVisibility()
+        }
         updateUndoButtonEnablement(true)
         elementEditsController.addListener(osmElementChangesListener)
         uploadProgressSource.addUploadProgressListener(uploadProgressListener)
@@ -97,7 +103,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
             .setTitle(R.string.undo_confirm_title)
             .setView(inner)
             .setPositiveButton(R.string.undo_confirm_positive) { _, _ ->
-                elementEditsController.undo(edit.id)
+                lifecycleScope.launch { withContext(Dispatchers.IO) { elementEditsController.undo(edit.id) } }
                 updateUndoButtonEnablement(true)
             }
             .setNegativeButton(R.string.undo_confirm_negative) { _, _ -> updateUndoButtonEnablement(true) }
@@ -105,23 +111,27 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
             .show()
     }
 
-    private fun updateUndoButtonVisibility() {
-        view?.isGone = elementEditsController.getMostRecentUndoableEdit() == null
+    private suspend fun updateUndoButtonVisibility() {
+        view?.isGone = getMostRecentUndoableEdit() == null
     }
 
     private fun updateUndoButtonEnablement(enable: Boolean) {
         undoButton.isEnabled = enable && !uploadProgressSource.isUploadInProgress
     }
 
-    private fun animateInIfAnythingToUndo() {
-        if (!undoButton.isVisible && elementEditsController.getMostRecentUndoableEdit() != null) {
+    private suspend fun animateInIfAnythingToUndo() {
+        if (!undoButton.isVisible && getMostRecentUndoableEdit() != null) {
             undoButton.popIn()
         }
     }
 
-    private fun animateOutIfNothingLeftToUndo() {
-        if (undoButton.isVisible && elementEditsController.getMostRecentUndoableEdit() == null) {
+    private suspend fun animateOutIfNothingLeftToUndo() {
+        if (undoButton.isVisible && getMostRecentUndoableEdit() == null) {
             undoButton.popOut().withEndAction { undoButton.visibility = View.INVISIBLE }
         }
+    }
+
+    private suspend fun getMostRecentUndoableEdit() = withContext(Dispatchers.IO) {
+        elementEditsController.getMostRecentUndoableEdit()
     }
 }

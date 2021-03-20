@@ -23,7 +23,6 @@ import javax.inject.Singleton
         text: String? = null,
         imagePaths: List<String> = emptyList()
     ) {
-
         val edit = NoteEdit(
             0,
             noteId,

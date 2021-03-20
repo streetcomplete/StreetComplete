@@ -59,9 +59,11 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     override fun onStart() {
         super.onStart()
 
-        val unsyncedChanges = unsyncedChangesCountSource.count
-        unpublishedQuestsText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
-        unpublishedQuestsText.isGone = unsyncedChanges <= 0
+        lifecycleScope.launch {
+            val unsyncedChanges = unsyncedChangesCountSource.getCount()
+            unpublishedQuestsText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
+            unpublishedQuestsText.isGone = unsyncedChanges <= 0
+        }
     }
 
     override fun onBackPressed(): Boolean {

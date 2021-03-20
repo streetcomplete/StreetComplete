@@ -8,7 +8,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.noteEdit
 import de.westnordost.streetcomplete.testutils.on
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -67,22 +69,22 @@ class UnsyncedChangesCountSourceTest {
         source.addListener(listener)
     }
 
-    @Test fun count() {
-        assertEquals(baseCount, source.count)
+    @Test fun count() = runBlocking {
+        assertEquals(baseCount, source.getCount())
     }
 
     @Test fun `add unsynced element change triggers listener`() {
         val change = mock<ElementEdit>()
         on(change.isSynced).thenReturn(false)
         elementEditsListener.onAddedEdit(change)
-        verifyIncreased()
+        verify(listener).onIncreased()
     }
 
     @Test fun `remove unsynced element change triggers listener`() {
         val change = mock<ElementEdit>()
         on(change.isSynced).thenReturn(false)
         elementEditsListener.onDeletedEdit(change)
-        verifyDecreased()
+        verify(listener).onDecreased()
     }
 
     @Test fun `add synced element change does not trigger listener`() {
@@ -100,27 +102,17 @@ class UnsyncedChangesCountSourceTest {
     }
 
     @Test fun `add note edit triggers listener`() {
-        noteEditsListener.onAddedEdit(mock())
-        verifyIncreased()
+        noteEditsListener.onAddedEdit(noteEdit())
+        verify(listener).onIncreased()
     }
 
     @Test fun `remove note edit triggers listener`() {
-        noteEditsListener.onDeletedEdit(mock())
-        verifyDecreased()
-    }
-
-    @Test fun `markd note edit synced triggers listener`() {
-        noteEditsListener.onSyncedEdit(mock())
-        verifyDecreased()
-    }
-
-    private fun verifyDecreased() {
+        noteEditsListener.onDeletedEdit(noteEdit())
         verify(listener).onDecreased()
-        assertEquals(baseCount - 1, source.count)
     }
 
-    private fun verifyIncreased() {
-        verify(listener).onIncreased()
-        assertEquals(baseCount + 1, source.count)
+    @Test fun `marked note edit synced triggers listener`() {
+        noteEditsListener.onSyncedEdit(noteEdit())
+        verify(listener).onDecreased()
     }
 }

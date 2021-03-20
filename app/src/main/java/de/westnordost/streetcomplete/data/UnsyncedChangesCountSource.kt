@@ -2,9 +2,10 @@ package de.westnordost.streetcomplete.data
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
-import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,60 +19,29 @@ import javax.inject.Singleton
         fun onIncreased()
         fun onDecreased()
     }
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
-    val count: Int get() = unsyncedNotesCount + unsyncedElementsCount
+    private val listeners = CopyOnWriteArrayList<Listener>()
+
+    suspend fun getCount(): Int = withContext(Dispatchers.IO) {
+        elementEditsSource.getUnsyncedCount() + noteEditsSource.getUnsyncedCount()
+    }
 
     /** count of unsynced changes that count towards the statistics. That is, unsynced note stuff
      *  doesn't count and reverts of changes count negative */
-    var solvedCount: Int = elementEditsSource.getPositiveUnsyncedCount()
-    private set
-
-
-    private var unsyncedNotesCount: Int = noteEditsSource.getUnsyncedCount()
-    set(value) {
-        val diff = value - field
-        field = value
-        onUpdate(diff)
-    }
-    private var unsyncedElementsCount: Int = elementEditsSource.getUnsyncedCount()
-    set(value) {
-        val diff = value - field
-        field = value
-        onUpdate(diff)
+    suspend fun getSolvedCount(): Int = withContext(Dispatchers.IO) {
+        elementEditsSource.getPositiveUnsyncedCount()
     }
 
     private val noteEditsListener = object : NoteEditsSource.Listener {
-        override fun onAddedEdit(edit: NoteEdit) {
-            if (edit.isSynced) return
-            ++unsyncedNotesCount
-        }
-
-        override fun onSyncedEdit(edit: NoteEdit) {
-            --unsyncedNotesCount
-        }
-
-        override fun onDeletedEdit(edit: NoteEdit) {
-            if (edit.isSynced) return
-            --unsyncedNotesCount
-        }
+        override fun onAddedEdit(edit: NoteEdit) { if (!edit.isSynced) onUpdate(+1) }
+        override fun onSyncedEdit(edit: NoteEdit) { onUpdate(-1) }
+        override fun onDeletedEdit(edit: NoteEdit) { if (!edit.isSynced) onUpdate(-1) }
     }
 
     private val elementEditsListener = object : ElementEditsSource.Listener {
-        override fun onAddedEdit(edit: ElementEdit) {
-            if (edit.isSynced) return
-            ++unsyncedElementsCount
-            if (edit.action is IsRevertAction) --solvedCount else ++solvedCount
-        }
-        override fun onSyncedEdit(edit: ElementEdit) {
-            --unsyncedElementsCount
-            if (edit.action is IsRevertAction) ++solvedCount else --solvedCount
-        }
-        override fun onDeletedEdit(edit: ElementEdit) {
-            if (edit.isSynced) return
-            --unsyncedElementsCount
-            if (edit.action is IsRevertAction) ++solvedCount else --solvedCount
-        }
+        override fun onAddedEdit(edit: ElementEdit) { if (!edit.isSynced) onUpdate(+1) }
+        override fun onSyncedEdit(edit: ElementEdit) { onUpdate(-1) }
+        override fun onDeletedEdit(edit: ElementEdit) { if (!edit.isSynced) onUpdate(-1) }
     }
 
     init {

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.oneway_suspects
 import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 
 import javax.inject.Inject
 
@@ -15,6 +16,9 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowD
 import de.westnordost.streetcomplete.view.ResImage
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 import kotlinx.android.synthetic.main.view_little_compass.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AddSuspectedOnewayForm : AYesNoQuestAnswerFragment<SuspectedOnewayAnswer>() {
 
@@ -34,10 +38,14 @@ class AddSuspectedOnewayForm : AYesNoQuestAnswerFragment<SuspectedOnewayAnswer>(
 
         puzzleView.showOnlyRightSide()
 
-        puzzleView.setRightSideImage(ResImage(
-            if (db.isForward(osmElement!!.id)!!) R.drawable.ic_oneway_lane
-            else R.drawable.ic_oneway_lane_reverse
-        ))
+        lifecycleScope.launch {
+            val isForward = withContext(Dispatchers.IO) { db.isForward(osmElement!!.id)!! }
+
+            puzzleView.setRightSideImage(ResImage(
+                if (isForward) R.drawable.ic_oneway_lane
+                else R.drawable.ic_oneway_lane_reverse
+            ))
+        }
 
         streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
     }

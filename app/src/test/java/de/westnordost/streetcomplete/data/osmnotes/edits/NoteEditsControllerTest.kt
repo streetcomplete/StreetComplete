@@ -31,31 +31,31 @@ class NoteEditsControllerTest {
     }
 
     @Test fun syncFailed() {
-        val edit = NoteEdit(0L, 1L, p(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
+        val edit = noteEdit(noteId = 1)
         ctrl.syncFailed(edit)
 
-        verify(db).delete(anyLong())
+        verify(db).delete(1)
         verify(listener).onDeletedEdit(edit)
     }
 
     @Test fun synced() {
-        val edit = NoteEdit(0L, 1L, p(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
+        val edit = noteEdit(id = 3, noteId = 1)
         val note = note(1)
 
         ctrl.synced(edit, note)
 
-        verify(db).markSynced(anyLong())
+        verify(db).markSynced(3)
         verify(db, never()).updateNoteId(anyLong(), anyLong())
         verify(listener).onSyncedEdit(edit)
     }
 
     @Test fun `synced with new id`() {
-        val edit = NoteEdit(0L, -100L, p(1.0,1.0), NoteEditAction.COMMENT, null, emptyList(), 0L, false, false)
+        val edit = noteEdit(id = 3, noteId = -100)
         val note = note(123)
 
         ctrl.synced(edit, note)
 
-        verify(db).markSynced(anyLong())
+        verify(db).markSynced(3)
         verify(db).updateNoteId(-100L, 123L)
         verify(listener).onSyncedEdit(edit)
     }

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
@@ -65,7 +64,7 @@ class NotesWithEditsSourceTest {
 
         val note = note(id = 1, comments = arrayListOf(comment))
         val edits = listOf(
-            edit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500)
+            noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500)
         )
 
         on(userStore.userId).thenReturn(-1)
@@ -85,7 +84,7 @@ class NotesWithEditsSourceTest {
         )
 
         val note = note(id = 1, comments = arrayListOf(comment))
-        val edits = listOf(edit(
+        val edits = listOf(noteEdit(
             noteId = 1,
             action = NoteEditAction.COMMENT,
             text = "test2",
@@ -107,7 +106,7 @@ class NotesWithEditsSourceTest {
 
         val note = note(id = 1, comments = arrayListOf(comment1))
         val edits = listOf(
-            edit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500)
+            noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500)
         )
 
         on(userStore.userId).thenReturn(23)
@@ -126,8 +125,8 @@ class NotesWithEditsSourceTest {
 
         val note = note(id = 1, comments = arrayListOf(comment1))
         val edits = listOf(
-            edit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500),
-            edit(noteId = 1, action = NoteEditAction.COMMENT, text = "test3", timestamp = 800),
+            noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500),
+            noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test3", timestamp = 800),
         )
 
         on(userStore.userId).thenReturn(-1)
@@ -147,7 +146,7 @@ class NotesWithEditsSourceTest {
             timestamp = 123)
 
         val edits = listOf(
-            edit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123)
+            noteEdit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123)
         )
 
         on(userStore.userId).thenReturn(-1)
@@ -170,8 +169,8 @@ class NotesWithEditsSourceTest {
             timestamp = 123)
 
         val edits = listOf(
-            edit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123),
-            edit(noteId = -12, pos = p, action = NoteEditAction.COMMENT, text = "test34", timestamp = 234),
+            noteEdit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123),
+            noteEdit(noteId = -12, pos = p, action = NoteEditAction.COMMENT, text = "test34", timestamp = 234),
         )
 
         on(userStore.userId).thenReturn(-1)
@@ -238,7 +237,7 @@ class NotesWithEditsSourceTest {
         src.addListener(listener)
 
         val note = note(1)
-        val edit = edit(noteId = 1)
+        val edit = noteEdit(noteId = 1)
 
         on(noteController.get(1)).thenReturn(note)
 
@@ -251,7 +250,7 @@ class NotesWithEditsSourceTest {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
-        val edit = edit(noteId = 1)
+        val edit = noteEdit(noteId = 1)
 
         on(noteController.get(1)).thenReturn(null)
 
@@ -265,7 +264,7 @@ class NotesWithEditsSourceTest {
         src.addListener(listener)
 
         val note = note(id = 1)
-        val edit = edit(noteId = 1)
+        val edit = noteEdit(noteId = 1)
 
         on(noteController.get(1)).thenReturn(note)
 
@@ -282,7 +281,7 @@ class NotesWithEditsSourceTest {
         val expectedNote = note(id = 1, position = p, timestamp = 123L, comments = arrayListOf(
             comment("abc", NoteComment.Action.OPENED, 123L)
         ))
-        val edit = edit(noteId = 1, id = -1, action = NoteEditAction.CREATE, text = "abc", timestamp = 123L, pos = p)
+        val edit = noteEdit(noteId = 1, id = -1, action = NoteEditAction.CREATE, text = "abc", timestamp = 123L, pos = p)
 
         on(noteController.get(1)).thenReturn(null)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(listOf(edit))
@@ -358,29 +357,9 @@ val expectedNotes1 = listOf(
 )
 
 val edits1 = listOf(
-    edit(noteId = 2, action = NoteEditAction.CREATE, text = "xyz", timestamp = 300, pos = p(12.0,1.0)),
-    edit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500),
-    edit(noteId = 2, action = NoteEditAction.COMMENT, text = "abc", timestamp = 900),
-)
-
-private fun edit(
-    id: Long = 1,
-    noteId: Long = 5,
-    action: NoteEditAction = NoteEditAction.COMMENT,
-    text: String = "test123",
-    timestamp: Long = 123L,
-    imagePaths: List<String> = emptyList(),
-    pos: LatLon = p(1.0, 1.0)
-) = NoteEdit(
-    id,
-    noteId,
-    pos,
-    action,
-    text,
-    imagePaths,
-    timestamp,
-    false,
-    imagePaths.isNotEmpty()
+    noteEdit(noteId = 2, action = NoteEditAction.CREATE, text = "xyz", timestamp = 300, pos = p(12.0,1.0)),
+    noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500),
+    noteEdit(noteId = 2, action = NoteEditAction.COMMENT, text = "abc", timestamp = 900),
 )
 
 private fun checkListenerCalledWith(

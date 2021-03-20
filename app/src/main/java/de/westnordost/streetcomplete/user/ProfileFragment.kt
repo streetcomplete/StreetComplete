@@ -116,7 +116,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private suspend fun updateUnpublishedQuestsText() {
-        val unsyncedChanges = withContext(Dispatchers.IO) { unsyncedChangesCountSource.count }
+        val unsyncedChanges = unsyncedChangesCountSource.getCount()
         unpublishedQuestsText.text = getString(R.string.unsynced_quests_description, unsyncedChanges)
         unpublishedQuestsText.isGone = unsyncedChanges <= 0
     }

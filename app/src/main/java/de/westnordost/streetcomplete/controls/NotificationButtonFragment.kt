@@ -11,7 +11,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.notifications.*
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /** Handles showing a button with a little counter that shows how many unread notifications there are */
@@ -55,10 +57,12 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
 
     override fun onStart() {
         super.onStart()
-        val numberOfNotifications = notificationsSource.getNumberOfNotifications()
-        notificationButton.notificationsCount = numberOfNotifications
-        notificationButton.isGone = numberOfNotifications <= 0
         notificationsSource.addListener(notificationsSourceUpdateListener)
+        lifecycleScope.launch {
+            val numberOfNotifications = withContext(Dispatchers.IO) { notificationsSource.getNumberOfNotifications() }
+            notificationButton.notificationsCount = numberOfNotifications
+            notificationButton.isGone = numberOfNotifications <= 0
+        }
     }
 
     override fun onStop() {
