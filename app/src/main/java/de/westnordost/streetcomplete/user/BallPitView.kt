@@ -24,10 +24,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.awaitPreDraw
 import de.westnordost.streetcomplete.ktx.sumByFloat
 import kotlinx.android.synthetic.main.view_ball_pit.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.jbox2d.collision.shapes.ChainShape
 import org.jbox2d.collision.shapes.CircleShape
 import org.jbox2d.common.Vec2
@@ -56,7 +53,7 @@ class BallPitView @JvmOverloads constructor(
 
     private val mainHandler = Handler(Looper.getMainLooper())
 
-    private val lifecycleScope = CoroutineScope(Dispatchers.Main)
+    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private val sensorEventListener = object : SensorEventListener {
         override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) { }

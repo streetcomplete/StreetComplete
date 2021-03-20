@@ -19,7 +19,7 @@ class UploadService : IntentService(TAG) {
     @Inject internal lateinit var uploader: Uploader
 
     private val binder = Interface()
-    private val scope = CoroutineScope(Dispatchers.IO)
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private var isUploading: Boolean = false
     private var progressListener: UploadProgressListener? = null

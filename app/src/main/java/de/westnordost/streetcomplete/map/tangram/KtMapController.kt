@@ -52,7 +52,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
     private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
     private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
 
-    private val lifecycleScope = CoroutineScope(Dispatchers.Main)
+    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private var mapChangingListener: MapChangingListener? = null
 
