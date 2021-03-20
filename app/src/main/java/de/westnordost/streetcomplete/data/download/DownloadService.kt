@@ -9,9 +9,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.util.TilesRect
 import kotlinx.coroutines.*
-import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
-import kotlin.coroutines.coroutineContext
 
 /** Downloads all quests and tiles in a given area asynchronously. To use, start the service with
  * the appropriate parameters.
@@ -30,8 +28,6 @@ class DownloadService : SingleIntentService(TAG) {
     @Inject internal lateinit var downloader: Downloader
 
     private lateinit var notificationController: DownloadNotificationController
-
-    private val scope = CoroutineScope(Dispatchers.IO)
 
     // interface
     private val binder = Interface()
@@ -104,11 +100,6 @@ class DownloadService : SingleIntentService(TAG) {
         }
 
         progressListener?.onFinished()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        scope.cancel()
     }
 
     /** Public interface to classes that are bound to this service  */
