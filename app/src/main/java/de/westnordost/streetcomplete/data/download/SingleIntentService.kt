@@ -19,15 +19,18 @@ import kotlinx.coroutines.sync.withLock
  */
 abstract class SingleIntentService(private val name: String) : Service() {
 
-    private val scope = CoroutineScope(Dispatchers.Default + CoroutineName("SingleIntentService[$name]"))
+    private val scope = CoroutineScope(
+        SupervisorJob() + Dispatchers.Default + CoroutineName("SingleIntentService[$name]"))
     private var currentJob: Job? = null
+    private val mutex = Mutex()
 
     override fun onStart(intent: Intent?, startId: Int) {
         scope.launch {
-            Mutex().withLock {
+            mutex.withLock {
                 currentJob?.cancelAndJoin()
                 currentJob = scope.launch {
                     onHandleIntent(intent)
+                    yield()
                     stopSelf(startId)
                 }
             }
