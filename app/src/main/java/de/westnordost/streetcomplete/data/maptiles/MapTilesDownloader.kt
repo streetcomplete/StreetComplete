@@ -22,24 +22,22 @@ class MapTilesDownloader @Inject constructor(
 
     data class Tile(val zoom: Int, val x: Int, val y: Int)
 
-    suspend fun download(bbox: BoundingBox) {
+    suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
         var tileCount = 0
         var failureCount = 0
         var downloadedSize = 0
         var cachedSize = 0
         val time = currentTimeMillis()
 
-        withContext(Dispatchers.IO) {
-            for (tile in getDownloadTileSequence(bbox)) {
-                launch {
-                    val result = downloadTile(tile.zoom, tile.x, tile.y)
-                    ++tileCount
-                    when (result) {
-                        is DownloadFailure -> ++failureCount
-                        is DownloadSuccess -> {
-                            if (result.alreadyCached) cachedSize += result.size
-                            else downloadedSize += result.size
-                        }
+        for (tile in getDownloadTileSequence(bbox)) {
+            launch {
+                val result = downloadTile(tile.zoom, tile.x, tile.y)
+                ++tileCount
+                when (result) {
+                    is DownloadFailure -> ++failureCount
+                    is DownloadSuccess -> {
+                        if (result.alreadyCached) cachedSize += result.size
+                        else downloadedSize += result.size
                     }
                 }
             }

@@ -15,6 +15,7 @@ import java.lang.System.currentTimeMillis
 import javax.inject.Inject
 import kotlin.math.max
 
+/** Downloads all the things */
 class Downloader @Inject constructor(
     private val notesDownloader: NotesDownloader,
     private val mapDataDownloader: MapDataDownloader,

@@ -17,7 +17,7 @@ class NotesDownloader @Inject constructor(
     private val notesApi: NotesApi,
     private val noteController: NoteController
 ) {
-    suspend fun download(bbox: BoundingBox) {
+    suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
         val time = currentTimeMillis()
 
         val notes = notesApi

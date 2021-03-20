@@ -20,7 +20,7 @@ class MapDataDownloader @Inject constructor(
     private val mapDataApi: MapDataApi,
     private val mapDataController: MapDataController
 ) {
-    suspend fun download(bbox: BoundingBox) {
+    suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
         val time = currentTimeMillis()
 
         val mapData = MutableMapData()
@@ -36,10 +36,10 @@ class MapDataDownloader @Inject constructor(
         mapDataController.putAllForBBox(bbox, mapData)
     }
 
-    private suspend fun getMapAndHandleTooBigQuery(
+    private fun getMapAndHandleTooBigQuery(
         bounds: BoundingBox,
         mapDataHandler: MapDataHandler
-    ): Unit = withContext(Dispatchers.IO) {
+    ) {
         try {
             mapDataApi.getMap(bounds, mapDataHandler)
         } catch (e : OsmQueryTooBigException) {
