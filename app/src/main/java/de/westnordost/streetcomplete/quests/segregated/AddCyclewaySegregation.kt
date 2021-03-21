@@ -18,6 +18,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<Boolean>() {
         )
         and surface ~ ${ANYTHING_PAVED.joinToString("|")}
         and area != yes
+        and !sidewalk
         and (!segregated or segregated older today -8 years)
     """
 

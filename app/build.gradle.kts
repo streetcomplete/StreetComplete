@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
         targetSdkVersion(30)
-        versionCode = 3101
-        versionName = "31.0"
+        versionCode = 3102
+        versionName = "31.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -159,7 +159,7 @@ dependencies {
     implementation("org.objenesis:objenesis:3.1")
 
     // map and location
-    implementation("com.mapzen.tangram:tangram:0.14.1")
+    implementation("com.mapzen.tangram:tangram:0.16.0")
 
     // config files
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")
