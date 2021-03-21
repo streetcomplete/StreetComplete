@@ -60,24 +60,42 @@ class AddRoofShapeTest {
         ))
     }
 
-    @Test fun `not applicable to buildings with too many levels`() {
+    @Test fun `not applicable to buildings with many levels and few or no roof levels`() {
         assertEquals(false, questType.isApplicableTo(
-            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "6", "roof:levels" to "1", "building" to "apartments"))
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "6.5", "roof:levels" to "1", "building" to "apartments"))
         ))
         assertEquals(false, questType.isApplicableTo(
             OsmWay(1L, 1, listOf(), mapOf("building:levels" to "8", "roof:levels" to "2", "building" to "apartments"))
         ))
-    }
-
-    @Test fun `unknown if applicable to roofs with 0 roof levels`() {
-        assertEquals(null, questType.isApplicableTo(
-            OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "0", "building" to "apartments"))
+        assertEquals(false, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "5", "building" to "apartments"))
+        ))
+        assertEquals(false, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "4", "roof:levels" to "0", "building" to "apartments"))
         ))
     }
 
-    @Test fun `unknown if applicable to roofs with no roof levels tag`() {
+    @Test fun `applicable to buildings with many levels and enough roof levels to be visible from below`() {
+        assertEquals(true, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "6", "roof:levels" to "1.5", "building" to "apartments"))
+        ))
+        assertEquals(true, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "8", "roof:levels" to "3", "building" to "apartments"))
+        ))
+        assertEquals(true, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "4.5", "roof:levels" to "0.5", "building" to "apartments"))
+        ))
+    }
+
+    @Test fun `unknown if applicable to buildings with no or few levels and 0 or no roof levels`() {
         assertEquals(null, questType.isApplicableTo(
-            OsmWay(1L, 1, listOf(), mapOf("building:levels" to "5", "building" to "apartments"))
+            OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "0", "building" to "apartments"))
+        ))
+        assertEquals(null, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("roof:levels" to "0", "building" to "apartments", "building:levels" to "3"))
+        ))
+        assertEquals(null, questType.isApplicableTo(
+            OsmWay(1L, 1, listOf(), mapOf("building" to "apartments", "building:levels" to "2"))
         ))
     }
 
