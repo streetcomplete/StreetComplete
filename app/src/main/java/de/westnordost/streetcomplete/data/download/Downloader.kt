@@ -22,11 +22,11 @@ class Downloader @Inject constructor(
     private val mapTilesDownloader: MapTilesDownloader,
     private val downloadedTilesDb: DownloadedTilesDao
 ) {
-    suspend fun download(tiles: TilesRect) {
+    suspend fun download(tiles: TilesRect, ignoreCache: Boolean) {
         val bbox = tiles.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
         val bboxString = "${bbox.minLatitude.format(7)}, ${bbox.minLongitude.format(7)} -> ${bbox.maxLatitude.format(7)}, ${bbox.maxLongitude.format(7)}"
 
-        if (hasDownloadedAlready(tiles)) {
+        if (!ignoreCache && hasDownloadedAlready(tiles)) {
             Log.i(TAG, "Not downloading ($bboxString), data still fresh")
             return
         }

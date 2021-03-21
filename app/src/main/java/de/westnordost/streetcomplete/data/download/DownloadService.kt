@@ -81,7 +81,7 @@ class DownloadService : SingleIntentService(TAG) {
 
         var error: Exception? = null
         try {
-            downloader.download(tiles)
+            downloader.download(tiles, isPriorityDownload)
         } catch (e: CancellationException) {
             Log.i(TAG, "Download cancelled")
         } catch (e: Exception) {
