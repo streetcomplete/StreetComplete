@@ -52,7 +52,7 @@ This software is released under the terms of the [GNU General Public License](ht
 ## Sponsors
 
 <a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" height="220"/></a><br/>
-The <a href="https://bmbf.de/">German Federal Ministry of Education and Research</a> sponsors this project (grant code 01IS20S35) within the frame of the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a> over a period of six months. This enables Tobias Zwick to work on making this app a more powerful and efficient tool to easily contribute to OpenStreetMap.
+The <a href="https://bmbf.de/">German Federal Ministry of Education and Research</a> sponsored this project (grant code 01IS20S35) within the frame of the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a> between 09.2020 and 02.2021. This enabled Tobias Zwick to work on making this app a more powerful and efficient tool to easily contribute to OpenStreetMap.
 
 
 <a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" height="60"/> <img src=".github/images/logo_ngi0.svg" height="60"/></a><br/>
