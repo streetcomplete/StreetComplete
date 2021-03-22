@@ -15,8 +15,6 @@
 
     <!-- Fuzzy -->
     <string name="title_activity_settings">"Ajustes"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Conexión"</string>
 
     <!-- Fuzzy -->
@@ -2413,6 +2411,9 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_drinking_water_potable_unsigned">"Potable (no señalizado)"</string>
     <string name="quest_drinking_water_not_potable_signed">"No potable (señalizado)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"No potable (no señalizado)"</string>
+    <string name="quest_postboxRoyalCypher_title">"¿Qué es la cifra real en éste buzón?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"No hay cifra real visible."</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"La Corona de Escocia"</string>
     <string name="quest_buildingType_fire_station">"Estación de bomberos"</string>
     <string name="quest_recycling_type_beverage_cartons">"Solo cajas de bebidas"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo botellas y cajas de plástico"</string>

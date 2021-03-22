@@ -633,7 +633,7 @@
     <string name="quest_leaf_type_broadleaved">"Широколистни"</string>
     <string name="quest_leaf_type_mixed">"И два вида се срещат"</string>
     <string name="quest_cyclewayPartSurface_title">"Каква повърхност има тази велоалея?"</string>
-    <string name="quest_generic_answer_differs_along_the_way">"Има само на места..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Различна е по дължината на пътя..."</string>
     <string name="quest_split_way_description">"Ако се различава по дължината на пътя, първо разделете пътя. След това ще можете да отговорите за всяка част поотделно. Ще го разделите ли сега?"</string>
     <string name="quest_split_way_tutorial">"Докоснете пътя в точката(-ите) където отговорите се различават. Опитайте се да бъдете максимално точни. Можете да увеличите мащаба."</string>
     <string name="quest_split_way_too_imprecise">"Моля, увеличете още"</string>
@@ -811,7 +811,7 @@
     <string name="quest_address_street_title">"Към коя улица е сградата с номер %s?"</string>
     <string name="quest_address_street_no_named_streets">"Няма определена улица"</string>
     <string name="quest_address_street_place_name_label">"Име на място:"</string>
-    <string name="quest_address_street_description">"Докоснете пътя на картата, към който е адреса или изпишете името му без съкращения по-долу."</string>
+    <string name="quest_address_street_description">"Докоснете пътя на картата, към който е адреса или изпишете името му без съкращения по-долу:"</string>
     <string name="quest_recycling_type_cooking_oil">"Готварско олио"</string>
     <string name="quest_recycling_type_engine_oil">"Машинно масло"</string>
     <string name="link_photon_description">"Отделно разширение за Nominatim включващо удобно търсене на имена."</string>
@@ -932,7 +932,7 @@
     <string name="quest_surface_value_rock">"Камъни"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Високи камиони могат да минат"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Високи камиони не могат да минат"</string>
-    <string name="quest_address_street_hint">"Докоснете пътя на картата"</string>
+    <string name="quest_address_street_hint">"Докоснете пътя"</string>
     <string name="quest_crossing_type_marked">"Маркирано пресичане"</string>
     <string name="quest_parkingType_street_side">"Паркиране до пътя"</string>
     <string name="quest_parkingType_lane">"Паркиране на пътя"</string>
@@ -983,8 +983,8 @@
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Пластмасови бутилки и кашони само"</string>
     <string name="quest_charging_station_name_capacity_title">"Колко автомобила могат да се зареждат едновременно на тази станция (%s)"</string>
     <string name="team_mode">"Работа в екип"</string>
-    <string name="team_mode_exit">"Изход от работата в екип"</string>
-    <string name="team_mode_description">"Когато няколко човека работещи с приложението са близо, можете да включите \"работа в екип\" за да разделите работатат между участниците."</string>
+    <string name="team_mode_exit">"Прекратяване на работа в екип"</string>
+    <string name="team_mode_description">"Когато няколко човека работещи с приложението са близо, можете да включите \"работа в екип\" за да разделите работата между участниците."</string>
     <string name="team_mode_team_size_label">"Колко човека има?"</string>
     <string name="team_mode_team_size_hint">"Работа в екип за група от 2 до 12 човека"</string>
     <string name="team_mode_choose_color">"Всеки в групата избира уникален цвят:"</string>

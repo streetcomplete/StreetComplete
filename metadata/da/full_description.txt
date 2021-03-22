@@ -2,4 +2,4 @@ Hjælp med at forbedre OpenStreetMap med StreetComplete!
 
 Denne app finder ukomplette data der kan udvides i dit nærområde og viser det på et kort som markører. Hver af disse opgaver kan løses ved at svare på et simpelt spørgsmål for at få bedre data på OSM hjemmesiden.
 
-Informationerne du skriver sendes direkte til OpenStreetMap i dit brugernavn, uden du behøver at bruge et andet redigeringsværktøj.
+Informationerne du angiver sendes direkte til OpenStreetMap i dit brugernavn, uden du behøver at bruge et andet redigeringsværktøj.

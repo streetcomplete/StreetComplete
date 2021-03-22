@@ -2041,4 +2041,5 @@ Finalment, ves amb compte: para atenció al que t'envolta i no entris en propiet
     <string name="quest_buildingType_historic_description">"edifici de valor històric, contruït per a una finalitat desconeguda o no ben definida"</string>
     <string name="quest_buildingType_abandoned">"Abandonat"</string>
     <string name="quest_charging_station_capacity_title">"Quants cotxes es poden carregar en aquesta estació de forma simultània?"</string>
+    <string name="quest_shop_gone_replaced_answer_error">"No es pot reconèixer el que vols fer. Deixa una nota"</string>
 </resources>

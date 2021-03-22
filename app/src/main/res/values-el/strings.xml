@@ -2169,6 +2169,19 @@
     <string name="quest_drinking_water_potable_unsigned">"Ασφαλές για κατανάλωση (μη επισημασμένο) "</string>
     <string name="quest_drinking_water_not_potable_signed">"Μη ασφαλές για κατανάλωση (επισημασμένο) "</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Μη ασφαλές για κατανάλωση (μη επισημασμένο) "</string>
+    <string name="quest_postboxRoyalCypher_title">"Τι είναι ο βασιλικός κώδικας σε αυτό το ταχυδρομικό κουτί;"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Κανένας βασιλικός κώδικας δεν είναι ορατός"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"Το Στέμμα της Σκωτίας"</string>
     <string name="quest_buildingType_fire_station">"Πυροσβεστικός Σταθμός"</string>
-    <string name="quest_charging_station_name_capacity_title">"Πόσα αυτοκίνητα μπορούν να φορτιστούν σ'αυτόν τον σταθμό φόρτισης (℅s) την ίδια στιγμή;"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Μόνο χαρτόκουτα ποτών"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Μόνο πλαστικά μπουκάλια και χαρτόκουτα"</string>
+    <string name="quest_charging_station_name_capacity_title">"Πόσα αυτοκίνητα μπορούν να φορτιστούν σ'αυτόν τον σταθμό φόρτισης (%s) την ίδια στιγμή;"</string>
+    <string name="team_mode">"Λειτουργία ομάδας"</string>
+    <string name="team_mode_exit">"Έξοδος από τη λειτουργία ομάδας"</string>
+    <string name="team_mode_description">"Όταν χαρτογραφείτε την ίδια περιοχή μαζί σε μια ομάδα, μπορείτε να εισέλθετε σε λειτουργία ομάδας για να χωρίσετε τις αποστολές μεταξύ όλων των μελών της ομάδας."</string>
+    <string name="team_mode_team_size_label">"Πόσοι άνθρωποι είναι εκεί;"</string>
+    <string name="team_mode_team_size_hint">"Η ομαδική κατάσταση λειτουργεί για ομάδες από 2 έως 12 άτομα."</string>
+    <string name="team_mode_choose_color">"Τώρα όλοι στην ομάδα σας επιλέγουν ένα μοναδικό χρώμα:"</string>
+    <string name="team_mode_active">"Η λειτουργία ομάδας είναι ενεργή"</string>
+    <string name="team_mode_deactivated">"Η λειτουργία ομάδας απενεργοποιήθηκε"</string>
 </resources>

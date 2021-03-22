@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Paramètres"</string>
-    <string name="oauth_communication_error">"Impossible de se connecter au serveur d’autorisation"</string>
+    <string name="oauth_communication_error">"Impossible de se connecter au serveur d'authentification"</string>
     <string name="retry">"Réessayer"</string>
-    <string name="oauth_failed_permissions">"Autorisation échouée : toutes les permissions listées doivent être accordées"</string>
+    <string name="oauth_failed_permissions">"Authentification échouée : toutes les permissions listées doivent être accordées"</string>
     <string name="title_activity_settings">"Paramètres"</string>
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_display">"Affichage"</string>
@@ -16,7 +16,7 @@
     <!-- "de la cache" or "du cache" ? -->
     <string name="pref_title_map_cache">"Taille du cache de la carte"</string>
     <string name="map_btn_gps_tracking">"Me suivre"</string>
-    <string name="map_attribution_osm">"© Contributeurs OpenStreetMap"</string>
+    <string name="map_attribution_osm">"© Contributeurs d'OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Autres réponses…"</string>
     <string name="quest_generic_answer_notApplicable">"Je ne sais pas"</string>
 
@@ -77,7 +77,7 @@ That is not very clear to me. Any further explanations? -->
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes autour de vous."</string>
     <string name="about_title_authors">"Auteurs"</string>
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick et contributeurs"</string>
-    <string name="about_title_repository">"Code Source"</string>
+    <string name="about_title_repository">"Code source"</string>
     <string name="about_summary_repository">"sur GitHub"</string>
     <string name="about_title_report_error">"Signaler une erreur"</string>
     <string name="about_title_feedback">"Envoyer un commentaire"</string>
@@ -109,8 +109,8 @@ That is not very clear to me. Any further explanations? -->
     <string name="quest_openingHours_comment_description">"Soyez concis, utilisez de préférence la formulation de la pancarte, par exemple \"sur rendez-vous\". L'absence de pancarte ne signifie pas forcément qu'il n'y a pas d'horaires d'ouverture réguliers."</string>
 
     <!-- Attention : un édifice est généralement un bâtiment aux proportions importantes (ex. édifice public ou religieux). Le terme bâtiment est plus générique. -->
-    <string name="quest_buildingLevels_title">"Combien y a t-il de niveaux dans ce bâtiment ?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"Combien de niveaux comporte cette partie du bâtiment ?"</string>
+    <string name="quest_buildingLevels_title">"Combien y a t-il d'étages dans ce bâtiment ?"</string>
+    <string name="quest_buildingLevels_title_buildingPart">"Combien d'étages comporte cette partie du bâtiment ?"</string>
     <string name="quest_roofShape_title">"Quelle forme a le toit de ce bâtiment ?"</string>
 
     <!-- Fuzzy -->
@@ -152,7 +152,7 @@ Toutefois, avant de télécharger vos modifications, l'application vérifie, à 
     <string name="autosync_off">"Jamais"</string>
 
     <!-- Plus simple et plus court : "Quel est le revêtement de cette rue ?" -->
-    <string name="quest_streetSurface_title">"Quel est le revêtement de ce tronçon ?"</string>
+    <string name="quest_streetSurface_title">"Quel est le revêtement de ce tronçon de voie ?"</string>
     <string name="quest_surface_value_paved">"Avec revêtement (générique)"</string>
     <string name="quest_surface_value_unpaved">"Sans revêtement (générique)"</string>
     <string name="quest_surface_value_ground">"Sol (générique)"</string>
@@ -194,7 +194,7 @@ en:cement = fr:ciment = de:Zement -->
     <string name="quest_oneway_title">"S'agit-il d'une voie à sens unique ?"</string>
 
     <!-- "édifice" or "bâtiment" ? -->
-    <string name="quest_address_title">"Quel est le numéro de ce bâtiment ?"</string>
+    <string name="quest_address_title">"Quel est le numéro de maison de ce bâtiment ?"</string>
 
     <!-- Fuzzy -->
     <string name="store_listing_short_description">"Application d’arpentage OpenStreetMap"</string>
@@ -339,7 +339,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="credits_contributors_title">"Contributeurs au code"</string>
     <string name="credits_author_title">"Auteur et mainteneur"</string>
     <string name="credits_and_more">"et plus encore..."</string>
-    <string name="quest_maxspeed_answer_living_street">"C’est une zone résidentielle"</string>
+    <string name="quest_maxspeed_answer_living_street">"C’est une zone de rencontre"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Alors, y a-t-il un panneau comme celui-ci ?"</string>
     <string name="quest_orchard_produce_title">"Qu’est-ce qui est cultivé ici ?"</string>
     <string name="produce_grapes">"Raisins"</string>
@@ -392,7 +392,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="produce_vanilla">"Vanille"</string>
     <string name="produce_walnuts">"Noix"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_title">"Ce tronçon est-il éclairé ?"</string>
+    <string name="quest_way_lit_title">"Ce tronçon de voie est-il éclairé ?"</string>
     <string name="quest_way_lit_named_title">"Est-ce que %s est éclairé ici ?"</string>
     <string name="quest_way_lit_road_title">"Ce tronçon de route est-il éclairé ?"</string>
     <string name="quest_way_lit_automatic">"Oui, avec détection de mouvement"</string>
@@ -428,10 +428,10 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_address_house_name_label">"Nom de la maison :"</string>
 
     <!-- For the record https://wiki.openstreetmap.org/wiki/Simple_3D_buildings#Roof -->
-    <string name="quest_buildingLevels_roofLevelsLabel2">"Niveaux dans le toit"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"Étages dans le toit"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_levelsLabel2">"Niveaux (sans compter ceux du toit)"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"Étages (sans compter ceux du toit)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Diffère selon la partie du bâtiment"</string>
@@ -457,7 +457,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_cycleway_value_track_dual">"piste cyclable, dans les deux sens"</string>
 
     <!-- Does it mean "Advanced preferences" ? -->
-    <string name="pref_category_advanced">"Avancée"</string>
+    <string name="pref_category_advanced">"Avancé"</string>
     <string name="pref_title_quests">"Sélection de quête"</string>
     <string name="quest_enabled">"Activée"</string>
     <string name="quest_type">"Type de quête"</string>
@@ -1122,7 +1122,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="achievement_citizen_solved_X">"Vous avez résolu %d quêtes utiles pour la vie de tous les jours en ville !"</string>
     <string name="achievement_outdoors_title">"En plein air"</string>
     <string name="achievement_outdoors_solved_X">"Vous avez résolu %d quêtes utiles aux amateurs de plein air !"</string>
-    <string name="quest_pedestrian_crossing_island">"Est ce que ce passage piéton est équipé d'une île de refuge ?"</string>
+    <string name="quest_pedestrian_crossing_island">"Est ce que ce passage piéton est équipé d'un îlot de refuge ?"</string>
     <string name="quest_generic_answer_noSign">"Il n'y a pas de panneau"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Y a t'il une rampe pour fauteuils roulants représentée comme une voie séparée sur la carte ?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Séparée"</string>
@@ -1217,7 +1217,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Quelle est la surface de ce terrain de sport ?"</string>
     <string name="quest_bicycle_parking_access_title">"Qui peut garer un vélo ici ?"</string>
-    <string name="quest_bicycle_parking_fee_title">"Doit-on payer pour garer son vélo ici ? "</string>
+    <string name="quest_bicycle_parking_fee_title">"Doit-on payer pour garer son vélo ici ?"</string>
     <string name="quest_buildingType_house_description2">"maison familiale mitoyenne"</string>
     <string name="quest_drinking_water_title">"L'eau est-elle potable ici ? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Eau potable (panneau)"</string>

@@ -1,8 +1,10 @@
 v31.1: |
   <h3>Warning: Upload your edits!</h3>
-  <p>Due to big changes under the hood, when you upgrade to the next major version, local edits will
-  be dropped! If you have auto-sync on (the default), this does not concern you, as all edits are
-  uploaded immediately. The next major version v32.0 will be in beta not earlier than in 2 weeks.</p>
+  <p>If you have auto-sync on (the default), this does not concern you, as all edits are
+  uploaded immediately.
+  <br>Due to big changes under the hood, when you upgrade to the next major version, local edits
+  will be dropped! The next major version v32.0 will be in beta not earlier than in 2nd week of
+  April.</p>
   <h3>Fixes</h3>
   <ul>
   <li>Fix crash issue when zooming too fast with the pinch gesture (#2601)</li>
