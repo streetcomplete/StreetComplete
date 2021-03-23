@@ -13,6 +13,7 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
     private val filter by lazy { """
         ways, relations with (building:levels or roof:levels)
           and !roof:shape and !3dr:type and !3dr:roof
+          and building and building!=no and building!=construction
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add roof shapes"
@@ -32,7 +33,7 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
             filter.matches(element)
             && isRoofProbablyVisibleFromBelow(element.tags) != false
             && (
-                element.tags?.get("roof:levels")?.toIntOrNull() ?: 0 > 0
+                element.tags?.get("roof:levels")?.toFloatOrNull() ?: 0f > 0f
                 || roofsAreUsuallyFlatAt(element, mapData) == false
             )
         }
@@ -43,15 +44,15 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
         /* if it has 0 roof levels, or the roof levels aren't specified,
            the quest should only be shown in certain countries. But whether
            the element is in a certain country cannot be ascertained at this point */
-        if (element.tags?.get("roof:levels")?.toIntOrNull() ?: 0 == 0) return null
+        if (element.tags?.get("roof:levels")?.toFloatOrNull() ?: 0f == 0f) return null
         return true
     }
 
     private fun isRoofProbablyVisibleFromBelow(tags: Map<String,String>?): Boolean? {
         if (tags == null) return null
-        val roofLevels = tags["roof:levels"]?.toIntOrNull() ?: return null
-        val buildingLevels = tags["building:levels"]?.toIntOrNull() ?: return null
-        if (roofLevels < 0 || buildingLevels < 0) return null
+        val roofLevels = tags["roof:levels"]?.toFloatOrNull() ?: 0f
+        val buildingLevels = tags["building:levels"]?.toFloatOrNull() ?: return null
+        if (roofLevels < 0f || buildingLevels < 0f) return null
         return buildingLevels / (roofLevels + 2f) < 2f
     }
 

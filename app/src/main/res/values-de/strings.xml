@@ -1014,7 +1014,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen."</string>
     <string name="team_mode_team_size_label">"Wie viele Personen seid ihr?"</string>
     <string name="team_mode_team_size_hint">"Der Team-Modus ist für Gruppen zwischen 2 und 12 Personen gemacht."</string>
-    <string name="team_mode_choose_color">"Jetzt wählen alle in eurer Gruppe eine eigene Farbe aus:"</string>
+    <string name="team_mode_choose_color">"Jetzt wählen alle in eurer Gruppe eine jeweils eigene Farbe:"</string>
     <string name="team_mode_active">"Team-Modus ist aktiv"</string>
     <string name="team_mode_deactivated">"Team-Modus deaktiviert"</string>
 </resources>

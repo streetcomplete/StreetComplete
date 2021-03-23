@@ -1,11 +1,22 @@
 v31.1: |
+  <h3>Warning: Upload your edits!</h3>
+  <p>If you have auto-sync on (the default), this does not concern you, as all edits are
+  uploaded immediately.
+  <br>Due to big changes under the hood, when you upgrade to the next major version, local edits
+  will be dropped! The next major version v32.0 will be in beta not earlier than in 2nd week of
+  April.</p>
+  <h3>Fixes</h3>
   <ul>
   <li>Fix crash issue when zooming too fast with the pinch gesture (#2601)</li>
+  <li>Fix link to the wheelchair-routing on openrouteservice (#2646)</li>
+  <li>Fix roof quest would show up for too many places (#2666, #2667, #2655), by @Helium314, by @matkoniecz</li>
+  <li>Fix the correction of magnetic North to true North (#2653), thanks @pkoby</li>
+  </ul>
+  <h3>Enhancements</h3>
+  <ul>
   <li>Always show notes on the map that contain "#surveyme" (#2641)</li>
-  <li>Fix the correction of magnetic North to true North (#2653)</li>
   <li>Do not ask if a foot+cycle path is segregated if it alreay has a sidewalk (#2644)</li>
   <li>Ask for opening hours and wheelchair eligibility for consulates and other diplomatic offices (#2645)</li>
-  <li>Fix link to the wheelchair-routing on openrouteservice (#2646)</li>
   </ul>
 
 v31.0: |

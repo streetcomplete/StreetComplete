@@ -2415,6 +2415,8 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_drinking_water_potable_unsigned">"Seguro para beber (sen comprobar)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Non seguro para beber (comprobado)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Non seguro para beber (non comprobado)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Cal é o código real nesta caixa do correo?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Non hai código real visíbel"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"A Coroa de Escocia"</string>
     <string name="quest_buildingType_fire_station">"Estación de bombeiros"</string>
     <string name="quest_recycling_type_beverage_cartons">"Só cartóns de bebidas"</string>

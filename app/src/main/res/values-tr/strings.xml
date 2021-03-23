@@ -1533,8 +1533,12 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="unsynced_quests_not_logged_in_description">"Henüz yayınlanmamış %d değişikliğiniz var. Yüklemek için giriş yapmanız gerekiyor."</string>
     <string name="user_quests_title">"Çözülmüş Görevler"</string>
     <string name="user_achievements_title">"Başarımlar"</string>
+    <string name="user_links_title">"Bağlantı Koleksyonu"</string>
     <string name="user_profile_title">"Profil"</string>
     <string name="user_statistics_quest_wiki_link">"Belgelendirme"</string>
+    <string name="achievements_unlocked_link">"Kilidi Açılan Bağlantı:"</string>
+    <string name="achievements_unlocked_links">"Kilidi Açılan Bağlantılar:"</string>
+    <string name="link_category_intro_title">"Tanıtım"</string>
     <string name="link_category_intro_description">"OSM ve topluluğu hakkında daha fazla bilgi edinin"</string>
     <string name="link_category_editors_title">"Katkı"</string>
     <string name="link_category_editors_description">"Editörler ve OpenStreetMap'e katkıda bulunmanın diğer yolları"</string>
