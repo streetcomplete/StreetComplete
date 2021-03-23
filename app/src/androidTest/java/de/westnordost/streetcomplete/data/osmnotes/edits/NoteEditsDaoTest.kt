@@ -177,11 +177,12 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
         val oldEnough = edit(timestamp = 500, isSynced = true)
         val tooYoung = edit(timestamp = 1000, isSynced = true)
         val notSynced = edit(timestamp = 500, isSynced = false)
+        val imageNotActivatedSynced = edit(timestamp = 500, isSynced = true, imagePaths = listOf("a"))
 
-        dao.addAll(oldEnough, tooYoung, notSynced)
+        dao.addAll(oldEnough, tooYoung, notSynced, imageNotActivatedSynced)
 
         assertEquals(1, dao.deleteSyncedOlderThan(1000))
-        assertTrue(dao.getAll().containsExactlyInAnyOrder(listOf(tooYoung, notSynced)))
+        assertTrue(dao.getAll().containsExactlyInAnyOrder(listOf(tooYoung, notSynced, imageNotActivatedSynced)))
     }
 
     @Test fun updateNoteId() {

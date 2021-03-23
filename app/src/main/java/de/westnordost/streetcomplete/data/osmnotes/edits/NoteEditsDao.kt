@@ -98,7 +98,7 @@ class NoteEditsDao @Inject constructor(
         db.delete(NAME, "$ID = $id") == 1
 
     fun deleteSyncedOlderThan(timestamp: Long): Int =
-        db.delete(NAME, "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp")
+        db.delete(NAME, "$IS_SYNCED = 1 AND $IMAGES_NEED_ACTIVATION = 0 AND $CREATED_TIMESTAMP < $timestamp")
 
     fun updateNoteId(oldNoteId: Long, newNoteId: Long): Int =
         db.update(NAME, listOf(NOTE_ID to newNoteId), "$NOTE_ID = $oldNoteId")
