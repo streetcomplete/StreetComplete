@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -26,6 +28,14 @@ class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
         dao.add(1L)
         dao.add(2L)
         assertTrue(dao.getAll().containsExactlyInAnyOrder(listOf(1L,2L)))
+    }
+
+    @Test fun getNotOlderThan() = runBlocking {
+        dao.add(1L)
+        delay(200)
+        val time = System.currentTimeMillis()
+        dao.add(2L)
+        assertTrue(dao.getNotOlderThan(time - 100).containsExactlyInAnyOrder(listOf(2L)))
     }
 
     @Test fun deleteAll() {

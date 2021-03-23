@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -22,6 +24,18 @@ class OsmQuestsHiddenDaoTest : ApplicationDbTestCase() {
         val key = OsmQuestKey(Element.Type.NODE, 123L, "bla")
         dao.add(key)
         assertTrue(dao.contains(key))
+    }
+
+    @Test fun getNotOlderThan() = runBlocking {
+        val keys = listOf(
+            OsmQuestKey(Element.Type.NODE, 123L, "bla"),
+            OsmQuestKey(Element.Type.NODE, 124L, "bla")
+        )
+        dao.add(keys[0])
+        delay(200)
+        val time = System.currentTimeMillis()
+        dao.add(keys[1])
+        assertTrue(dao.getNotOlderThan(time - 100).containsExactlyInAnyOrder(listOf(keys[1])))
     }
 
     @Test fun getAll() {

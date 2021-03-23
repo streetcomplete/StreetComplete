@@ -20,6 +20,9 @@ class NoteQuestsHiddenDao @Inject constructor(private val db: Database) {
     fun contains(noteId: Long): Boolean =
         db.queryOne(NAME, where = "$NOTE_ID = $noteId") { true } ?: false
 
+    fun getNotOlderThan(timestamp: Long): List<Long> =
+        db.query(NAME, where = "$TIMESTAMP > $timestamp") { it.getLong(NOTE_ID) }
+
     fun getAll(): List<Long> =
         db.query(NAME) { it.getLong(NOTE_ID) }
 

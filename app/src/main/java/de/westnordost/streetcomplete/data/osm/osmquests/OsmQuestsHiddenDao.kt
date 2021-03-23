@@ -28,6 +28,9 @@ class OsmQuestsHiddenDao @Inject constructor(private val db: Database) {
             )
         ) { true } ?: false
 
+    fun getNotOlderThan(timestamp: Long): List<OsmQuestKey> =
+        db.query(NAME, where = "$TIMESTAMP > $timestamp") { it.toOsmQuestKey() }
+
     fun getAll(): List<OsmQuestKey> =
         db.query(NAME) { it.toOsmQuestKey() }
 
