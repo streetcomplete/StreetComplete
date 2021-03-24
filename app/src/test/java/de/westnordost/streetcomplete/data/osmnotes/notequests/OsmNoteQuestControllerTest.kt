@@ -67,7 +67,7 @@ class OsmNoteQuestControllerTest {
             note(1), note(2), note(3)
         )
 
-        on(hiddenDB.getAll()).thenReturn(hiddenNoteIds)
+        on(hiddenDB.getAllIds()).thenReturn(hiddenNoteIds)
         on(noteSource.getAll(hiddenNoteIds)).thenReturn(hiddenNotes)
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(false)
 
@@ -150,7 +150,7 @@ class OsmNoteQuestControllerTest {
         val bbox = bbox()
         val notes = listOf(note(1), note(2), note(3))
 
-        on(hiddenDB.getAll()).thenReturn(emptyList())
+        on(hiddenDB.getAllIds()).thenReturn(emptyList())
         on(noteSource.getAll(bbox)).thenReturn(notes)
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(false)
 
@@ -175,7 +175,7 @@ class OsmNoteQuestControllerTest {
         // note 4 is not eligible -> delete it
         // note 5 is deleted
 
-        on(hiddenDB.getAll()).thenReturn(listOf(2,4))
+        on(hiddenDB.getAllIds()).thenReturn(listOf(2,4))
 
         noteUpdatesListener.onUpdated(
             added = listOf(

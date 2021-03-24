@@ -166,7 +166,7 @@ class OsmQuestControllerTest {
 
         on(notesSource.getAllPositions(any())).thenReturn(listOf(p(2.0,2.0)))
 
-        on(hiddenDB.getAll()).thenReturn(listOf(
+        on(hiddenDB.getAllIds()).thenReturn(listOf(
             // applicable!
             OsmQuestKey(Element.Type.NODE, 1, ApplicableQuestType::class.simpleName!!),
             OsmQuestKey(Element.Type.NODE, 42, ComplexQuestTypeApplicableToNode42::class.simpleName!!),
@@ -329,7 +329,7 @@ class OsmQuestControllerTest {
 
         on(notesSource.getAllPositions(any())).thenReturn(listOf(p(2.0,2.0)))
 
-        on(hiddenDB.getAll()).thenReturn(listOf(
+        on(hiddenDB.getAllIds()).thenReturn(listOf(
             OsmQuestKey(Element.Type.NODE, 3L, ApplicableQuestType2::class.simpleName!!)
         ))
 

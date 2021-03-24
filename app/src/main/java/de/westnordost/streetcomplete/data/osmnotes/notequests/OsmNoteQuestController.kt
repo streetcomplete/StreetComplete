@@ -85,7 +85,7 @@ import javax.inject.Singleton
     }
 
     @Synchronized fun unhideAll(): Int {
-        val previouslyHiddenNotes = noteSource.getAll(hiddenDB.getAll())
+        val previouslyHiddenNotes = noteSource.getAll(hiddenDB.getAllIds())
         val result = hiddenDB.deleteAll()
 
         val unhiddenNoteQuests = previouslyHiddenNotes.mapNotNull { createQuestForNote(it, emptySet()) }
@@ -106,7 +106,7 @@ import javax.inject.Singleton
 
     private fun isNoteHidden(noteId: Long): Boolean = hiddenDB.contains(noteId)
 
-    private fun getNoteIdsHidden(): Set<Long> = hiddenDB.getAll().toSet()
+    private fun getNoteIdsHidden(): Set<Long> = hiddenDB.getAllIds().toSet()
 
     /* ---------------------------------------- Listener ---------------------------------------- */
 

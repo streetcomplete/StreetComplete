@@ -24,18 +24,26 @@ class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
         assertTrue(dao.contains(123L))
     }
 
-    @Test fun getAll() {
-        dao.add(1L)
-        dao.add(2L)
-        assertTrue(dao.getAll().containsExactlyInAnyOrder(listOf(1L,2L)))
+    @Test fun addGetDelete() {
+        assertFalse(dao.delete(123L))
+        dao.add(123L)
+        assertTrue(dao.delete(123L))
+        assertFalse(dao.contains(123L))
     }
 
-    @Test fun getNotOlderThan() = runBlocking {
+    @Test fun getAllIds() {
+        dao.add(1L)
+        dao.add(2L)
+        assertTrue(dao.getAllIds().containsExactlyInAnyOrder(listOf(1L,2L)))
+    }
+
+    @Test fun getNewerThan() = runBlocking {
         dao.add(1L)
         delay(200)
         val time = System.currentTimeMillis()
         dao.add(2L)
-        assertTrue(dao.getNotOlderThan(time - 100).containsExactlyInAnyOrder(listOf(2L)))
+        val result = dao.getNewerThan(time - 100).single()
+        assertEquals(2L, result.noteId)
     }
 
     @Test fun deleteAll() {

@@ -283,7 +283,7 @@ import javax.inject.Singleton
             .toSet()
 
     private fun getHiddenQuests(): Set<OsmQuestKey> =
-        hiddenDB.getAll().toSet()
+        hiddenDB.getAllIds().toSet()
 
     /** Mark the quest as hidden by user interaction */
     @Synchronized fun hide(quest: OsmQuest) {
@@ -295,7 +295,7 @@ import javax.inject.Singleton
 
     /** Un-hides all previously hidden quests by user interaction */
     @Synchronized fun unhideAll(): Int {
-        val previouslyHiddenQuestKeys = hiddenDB.getAll()
+        val previouslyHiddenQuestKeys = hiddenDB.getAllIds()
         /* must delete the hidden quests BEFORE recreating the quests, otherwise they would count
            as hidden again! */
         val result = hiddenDB.deleteAll()

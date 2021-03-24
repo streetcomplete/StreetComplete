@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
+import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.Columns.NOTE_ID
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.Columns.TIMESTAMP
@@ -20,12 +21,20 @@ class NoteQuestsHiddenDao @Inject constructor(private val db: Database) {
     fun contains(noteId: Long): Boolean =
         db.queryOne(NAME, where = "$NOTE_ID = $noteId") { true } ?: false
 
-    fun getNotOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, where = "$TIMESTAMP > $timestamp") { it.getLong(NOTE_ID) }
+    fun delete(noteId: Long): Boolean =
+        db.delete(NAME, where = "$NOTE_ID = $noteId") == 1
 
-    fun getAll(): List<Long> =
+    fun getNewerThan(timestamp: Long): List<HiddenNoteQuest> =
+        db.query(NAME, where = "$TIMESTAMP > $timestamp") { it.toHiddenNoteQuest() }
+
+    fun getAllIds(): List<Long> =
         db.query(NAME) { it.getLong(NOTE_ID) }
 
     fun deleteAll(): Int =
         db.delete(NAME)
 }
+
+private fun CursorPosition.toHiddenNoteQuest() =
+    HiddenNoteQuest(getLong(NOTE_ID), getLong(TIMESTAMP))
+
+data class HiddenNoteQuest(val noteId: Long, val timestamp: Long)

@@ -26,7 +26,15 @@ class OsmQuestsHiddenDaoTest : ApplicationDbTestCase() {
         assertTrue(dao.contains(key))
     }
 
-    @Test fun getNotOlderThan() = runBlocking {
+    @Test fun addGetDelete() {
+        val key = OsmQuestKey(Element.Type.NODE, 123L, "bla")
+        assertFalse(dao.delete(key))
+        dao.add(key)
+        assertTrue(dao.delete(key))
+        assertFalse(dao.contains(key))
+    }
+
+    @Test fun getNewerThan() = runBlocking {
         val keys = listOf(
             OsmQuestKey(Element.Type.NODE, 123L, "bla"),
             OsmQuestKey(Element.Type.NODE, 124L, "bla")
@@ -35,16 +43,17 @@ class OsmQuestsHiddenDaoTest : ApplicationDbTestCase() {
         delay(200)
         val time = System.currentTimeMillis()
         dao.add(keys[1])
-        assertTrue(dao.getNotOlderThan(time - 100).containsExactlyInAnyOrder(listOf(keys[1])))
+        val result = dao.getNewerThan(time - 100).single()
+        assertEquals(keys[1], result.osmQuestKey)
     }
 
-    @Test fun getAll() {
+    @Test fun getAllIds() {
         val keys = listOf(
             OsmQuestKey(Element.Type.NODE, 123L, "bla"),
             OsmQuestKey(Element.Type.NODE, 124L, "bla")
         )
         keys.forEach { dao.add(it) }
-        assertTrue(dao.getAll().containsExactlyInAnyOrder(keys))
+        assertTrue(dao.getAllIds().containsExactlyInAnyOrder(keys))
     }
 
     @Test fun deleteAll() {
