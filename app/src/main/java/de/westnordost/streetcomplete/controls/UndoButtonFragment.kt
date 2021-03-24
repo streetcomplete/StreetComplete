@@ -14,9 +14,10 @@ import androidx.lifecycle.lifecycleScope
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
+import de.westnordost.streetcomplete.data.edithistory.UndoablesSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
@@ -32,7 +33,7 @@ import javax.inject.Inject
 /** Fragment that shows (and hides) the undo button, based on whether there is anything to undo */
 class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
-    @Inject internal lateinit var elementEditsController: ElementEditsController
+    @Inject internal lateinit var editHistoryController: EditHistoryController
     @Inject internal lateinit var mapDataSource: MapDataWithEditsSource
     @Inject internal lateinit var uploadProgressSource: UploadProgressSource
     @Inject internal lateinit var featureDictionaryFutureTask: FutureTask<FeatureDictionary>
@@ -40,10 +41,10 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     private val undoButton get() = view as ImageButton
 
     /* undo button is not shown when there is nothing to undo */
-    private val osmElementChangesListener = object : ElementEditsSource.Listener {
-        override fun onAddedEdit(edit: ElementEdit) { lifecycleScope.launch { animateInIfAnythingToUndo() }}
-        override fun onSyncedEdit(edit: ElementEdit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
-        override fun onDeletedEdit(edit: ElementEdit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
+    private val editHistoryListener = object : UndoablesSource.Listener {
+        override fun onAdded(edit: Edit) { lifecycleScope.launch { animateInIfAnythingToUndo() }}
+        override fun onSynced(edit: Edit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
+        override fun onDeleted(edit: Edit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
     }
 
     /* Don't allow undoing while uploading. Should prevent race conditions. (Undoing quest while
@@ -72,13 +73,13 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
         super.onStart()
         lifecycleScope.launch { updateUndoButtonVisibility() }
         updateUndoButtonEnablement(true)
-        elementEditsController.addListener(osmElementChangesListener)
+        editHistoryController.addListener(editHistoryListener)
         uploadProgressSource.addUploadProgressListener(uploadProgressListener)
     }
 
     override fun onStop() {
         super.onStop()
-        elementEditsController.removeListener(osmElementChangesListener)
+        editHistoryController.removeListener(editHistoryListener)
         uploadProgressSource.removeUploadProgressListener(uploadProgressListener)
     }
 
@@ -86,7 +87,8 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     private suspend fun confirmUndo() {
         val ctx = context ?: return
-        val edit = getMostRecentUndoableEdit() ?: return
+        val edit = getMostRecentUndoable() ?: return
+        if (edit !is ElementEdit) return
         val element = mapDataSource.get(edit.elementType, edit.elementId)
 
         val inner = LayoutInflater.from(ctx).inflate(R.layout.dialog_undo, null, false)
@@ -108,7 +110,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     }
 
     private suspend fun updateUndoButtonVisibility() {
-        view?.isGone = getMostRecentUndoableEdit() == null
+        view?.isGone = getMostRecentUndoable() == null
     }
 
     private fun updateUndoButtonEnablement(enable: Boolean) {
@@ -116,22 +118,20 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     }
 
     private suspend fun animateInIfAnythingToUndo() {
-        if (!undoButton.isVisible && getMostRecentUndoableEdit() != null) {
+        if (!undoButton.isVisible && getMostRecentUndoable() != null) {
             undoButton.popIn()
         }
     }
 
     private suspend fun animateOutIfNothingLeftToUndo() {
-        if (undoButton.isVisible && getMostRecentUndoableEdit() == null) {
+        if (undoButton.isVisible && getMostRecentUndoable() == null) {
             undoButton.popOut().withEndAction { undoButton.visibility = View.INVISIBLE }
         }
     }
 
-    private suspend fun getMostRecentUndoableEdit() = withContext(Dispatchers.IO) {
-        elementEditsController.getMostRecentUndoableEdit()
-    }
+    private suspend fun getMostRecentUndoable(): Edit? =
+        withContext(Dispatchers.IO) { editHistoryController.getMostRecentUndoable() }
 
-    private suspend fun undo(edit: ElementEdit) = withContext(Dispatchers.IO) {
-        elementEditsController.undo(edit.id)
-    }
+    private suspend fun undo(item: Edit) =
+        withContext(Dispatchers.IO) { editHistoryController.undo(item) }
 }
