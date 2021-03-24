@@ -13,7 +13,7 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
     """
     override val commitMessage = "Add wheelchair access to outside places"
     override val wikiLink = "Key:wheelchair"
-    override val icon = R.drawable.ic_quest_wheelchair_outside
+    override val icon = R.drawable.ic_quest_toilets_wheelchair
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 
