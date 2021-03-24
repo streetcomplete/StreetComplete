@@ -41,6 +41,9 @@ import javax.inject.Singleton
     override fun getAllUnsynced(): List<NoteEdit> =
         editsDB.getAllUnsynced()
 
+    fun getAll(): List<NoteEdit> =
+        editsDB.getAll()
+
     fun getOldestUnsynced(): NoteEdit? =
         editsDB.getOldestUnsynced()
 
@@ -75,6 +78,10 @@ import javax.inject.Singleton
     }
 
     @Synchronized fun syncFailed(edit: NoteEdit) {
+        delete(edit)
+    }
+
+    @Synchronized fun undo(edit: NoteEdit) {
         delete(edit)
     }
 
