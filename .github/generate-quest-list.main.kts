@@ -50,8 +50,11 @@ data class RepoQuest(
     val wikiOrder: Int
 ) {
     val csvString: String get() {
+        val iconsPath = icon.toRelativeString(projectDirectory).replace(" ", "%20")
+        val iconUrl = "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/${iconsPath}"
+
         val wikiOrder = if (wikiOrder == -1) "\"???\"" else wikiOrder + 1
-        return "\"$name\", \"$title\", \"${icon.name}\", ${defaultPriority + 1}, $wikiOrder"
+        return "\"$name\", \"$title\", \"${iconUrl}\", ${defaultPriority + 1}, $wikiOrder"
     }
 }
 
@@ -221,7 +224,7 @@ fun writeCsvFile(repoQuests: List<RepoQuest>, wikiQuests: List<WikiQuest>) {
     val (newQuests, oldQuests) = repoQuests.partition { it.wikiOrder == -1 }
 
     val csvLines =
-        listOf("\"Quest Name\", \"Question\", \"SVG Icon File Name\", \"Default Priority\", \"Wiki Order\"") +
+        listOf("\"Quest Name\", \"Question\", \"SVG Icon URL\", \"Default Priority\", \"Wiki Order\"") +
         wikiQuests.filter { it.isOutdated(repoQuests) }.map { it.csvString } +
         listOf(",,,") +
         newQuests.map { it.csvString } +
