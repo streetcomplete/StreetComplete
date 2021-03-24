@@ -293,28 +293,50 @@ import javax.inject.Singleton
         onUpdated(deletedIds = listOf(questId))
     }
 
+    @Synchronized fun unhide(key: OsmQuestKey): Boolean {
+        if(!hiddenDB.delete(key)) return false
+        addQuestsForKeys(listOf(key))
+        return true
+    }
+
     /** Un-hides all previously hidden quests by user interaction */
     @Synchronized fun unhideAll(): Int {
         val previouslyHiddenQuestKeys = hiddenDB.getAllIds()
         /* must delete the hidden quests BEFORE recreating the quests, otherwise they would count
            as hidden again! */
         val result = hiddenDB.deleteAll()
+        addQuestsForKeys(previouslyHiddenQuestKeys)
+        return result
+    }
 
-        val createdQuests = createQuestsForQuestKeys(previouslyHiddenQuestKeys)
-
+    private fun addQuestsForKeys(keys: Collection<OsmQuestKey>) {
+        val createdQuests = createQuestsForQuestKeys(keys)
         db.addAll(createdQuests)
 
         // some quests may already be in the database
         val reallyAddedQuests = createdQuests.filter { it.id != null }
         onUpdated(added = reallyAddedQuests)
-
-        return result
     }
 
     override fun get(questId: Long): OsmQuest? {
         val entry = db.get(questId) ?: return null
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId)
         return createOsmQuest(entry, geometry)
+    }
+
+    fun getAllHiddenNewerThan(timestamp: Long): List<OsmQuestHidden> {
+        val questKeysWithTimestamp = hiddenDB.getNewerThan(timestamp)
+
+        val elementKeys = HashSet<ElementKey>()
+        questKeysWithTimestamp.map { ElementKey(it.osmQuestKey.elementType, it.osmQuestKey.elementId) }
+
+        val geometriesByKey = mapDataSource.getGeometries(elementKeys)
+            .associateBy { ElementKey(it.elementType, it.elementId) }
+
+        return questKeysWithTimestamp.mapNotNull { (key, timestamp) ->
+            val geometry = geometriesByKey[ElementKey(key.elementType, key.elementId)]?.geometry
+            createOsmQuestHidden(key, geometry, timestamp)
+        }
     }
 
     override fun getAllInBBoxCount(bbox: BoundingBox): Int =
@@ -333,6 +355,12 @@ import javax.inject.Singleton
             val geometryEntry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]
             createOsmQuest(entry, geometryEntry?.geometry)
         }
+    }
+
+    private fun createOsmQuestHidden(key: OsmQuestKey, geometry: ElementGeometry?, timestamp: Long): OsmQuestHidden? {
+        if (geometry == null) return null
+        val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: return null
+        return OsmQuestHidden(key.elementType, key.elementId, questType, geometry.center, timestamp)
     }
 
     private fun createOsmQuest(entry: OsmQuestDaoEntry, geometry: ElementGeometry?): OsmQuest? {

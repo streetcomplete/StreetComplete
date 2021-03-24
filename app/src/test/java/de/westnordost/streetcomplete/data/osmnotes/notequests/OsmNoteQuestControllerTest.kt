@@ -6,8 +6,7 @@ import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -57,6 +56,33 @@ class OsmNoteQuestControllerTest {
         verify(listener).onUpdated(
             addedQuests = eq(emptyList()),
             deletedQuestIds = eq(listOf(1))
+        )
+    }
+
+    @Test fun getAllHiddenNewerThan() {
+        val note = note(1)
+        on(hiddenDB.getNewerThan(123L)).thenReturn(listOf(
+            NoteIdWithTimestamp(1, 250),
+            NoteIdWithTimestamp(2, 300)
+        ))
+        on(noteSource.getAll(eq(listOf(1,2)))).thenReturn(listOf(note))
+
+        assertEquals(
+            listOf(
+                OsmNoteQuestHidden(note, 250)
+            ),
+            ctrl.getAllHiddenNewerThan(123L)
+        )
+    }
+
+    @Test fun unhide() {
+        on(noteSource.get(1)).thenReturn(note(1))
+        on(hiddenDB.delete(1)).thenReturn(true)
+        assertTrue(ctrl.unhide(1))
+        verify(hiddenDB).delete(1)
+        verify(listener).onUpdated(
+            addedQuests = eq(listOf(any())),
+            deletedQuestIds = eq(emptyList())
         )
     }
 

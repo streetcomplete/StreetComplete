@@ -142,6 +142,40 @@ class OsmQuestControllerTest {
         assertTrue(ctrl.getAllVisibleInBBox(bbox, null).containsExactlyInAnyOrder(expectedQuests))
     }
 
+
+    @Test fun getAllHiddenNewerThan() {
+        val geoms = listOf(
+            ElementPointGeometry(p()),
+            ElementPointGeometry(p()),
+            ElementPointGeometry(p()),
+        )
+
+        on(hiddenDB.getNewerThan(123L)).thenReturn(listOf(
+            // ok!
+            OsmQuestKeyWithTimestamp(OsmQuestKey(Element.Type.NODE, 1L, "ApplicableQuestType"), 250),
+            // unknown quest type
+            OsmQuestKeyWithTimestamp(OsmQuestKey(Element.Type.NODE, 2L, "UnknownQuestType"), 250),
+            // no geometry!
+            OsmQuestKeyWithTimestamp(OsmQuestKey(Element.Type.NODE, 3L, "ApplicableQuestType"), 250),
+        ))
+        on(mapDataSource.getGeometries(argThat {
+            it.containsExactlyInAnyOrder(listOf(
+                ElementKey(Element.Type.NODE, 1),
+                ElementKey(Element.Type.NODE, 2),
+            ))
+        })).thenReturn(listOf(
+            ElementGeometryEntry(Element.Type.NODE, 1, geoms[0]),
+            ElementGeometryEntry(Element.Type.NODE, 2, geoms[1])
+        ))
+
+        assertEquals(
+            listOf(
+                OsmQuestHidden(Element.Type.NODE, 1, ApplicableQuestType, p(), 250)
+            ),
+            ctrl.getAllHiddenNewerThan(123L)
+        )
+    }
+
     @Test fun hide() {
         val quest = quest(123)
 
@@ -152,6 +186,23 @@ class OsmQuestControllerTest {
         verify(listener).onUpdated(
             addedQuests = eq(emptyList()),
             deletedQuestIds = eq(listOf(123L))
+        )
+    }
+
+    @Test fun unhide() {
+        setUpMapDataSource(
+            Pair(node(1), pGeom(1.0,1.0))
+        )
+
+        val quest = quest(123)
+
+        assertTrue(ctrl.unhide(quest.key))
+        verify(hiddenDB).delete(quest.key)
+        verify(listener).onUpdated(
+            addedQuests = eq(listOf(
+                OsmQuest(123, ApplicableQuestType, Element.Type.NODE, 1, pGeom(1.0,1.0))
+            )),
+            deletedQuestIds = eq(emptyList())
         )
     }
 

@@ -79,21 +79,6 @@ import javax.inject.Singleton
         return createQuestsForNotes(noteSource.getAll(bbox))
     }
 
-    @Synchronized fun hide(questId: Long) {
-        hiddenDB.add(questId)
-        onUpdated(deletedQuestIds = listOf(questId))
-    }
-
-    @Synchronized fun unhideAll(): Int {
-        val previouslyHiddenNotes = noteSource.getAll(hiddenDB.getAllIds())
-        val result = hiddenDB.deleteAll()
-
-        val unhiddenNoteQuests = previouslyHiddenNotes.mapNotNull { createQuestForNote(it, emptySet()) }
-
-        onUpdated(quests = unhiddenNoteQuests)
-        return result
-    }
-
     private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> {
         val blockedNoteIds = getNoteIdsHidden()
         return notes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
@@ -103,6 +88,44 @@ import javax.inject.Singleton
         if(note.shouldShowAsQuest(userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
             OsmNoteQuest(note.id, note.position)
         else null
+
+    /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
+
+    fun getAllHiddenNewerThan(timestamp: Long): List<OsmNoteQuestHidden> {
+        val noteIdsWithTimestamp = hiddenDB.getNewerThan(timestamp)
+        val notesById = noteSource.getAll(noteIdsWithTimestamp.map { it.noteId }).associateBy { it.id }
+
+        return noteIdsWithTimestamp.mapNotNull { (noteId, timestamp) ->
+            notesById[noteId]?.let { OsmNoteQuestHidden(it, timestamp)  }
+        }
+    }
+
+    /** Mark the quest as hidden by user interaction */
+    @Synchronized fun hide(questId: Long) {
+        hiddenDB.add(questId)
+        onUpdated(deletedQuestIds = listOf(questId))
+    }
+
+    /** Un-hides a specific hidden quest by user interaction */
+    @Synchronized fun unhide(questId: Long): Boolean {
+        if (!hiddenDB.delete(questId)) return false
+        val unhiddenNoteQuest = noteSource.get(questId)?.let { createQuestForNote(it, emptySet()) }
+        if (unhiddenNoteQuest != null) {
+            onUpdated(quests = listOf(unhiddenNoteQuest))
+        }
+        return true
+    }
+
+    /** Un-hides all previously hidden quests by user interaction */
+    @Synchronized fun unhideAll(): Int {
+        val previouslyHiddenNotes = noteSource.getAll(hiddenDB.getAllIds())
+        val result = hiddenDB.deleteAll()
+
+        val unhiddenNoteQuests = previouslyHiddenNotes.mapNotNull { createQuestForNote(it, emptySet()) }
+
+        onUpdated(quests = unhiddenNoteQuests)
+        return result
+    }
 
     private fun isNoteHidden(noteId: Long): Boolean = hiddenDB.contains(noteId)
 
@@ -193,3 +216,4 @@ private val NoteComment.isComment: Boolean get() =
 
 private fun NoteComment.isFromUser(userId: Long): Boolean =
     user?.id == userId
+

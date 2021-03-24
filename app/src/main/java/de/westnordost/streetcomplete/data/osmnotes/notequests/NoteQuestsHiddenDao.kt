@@ -24,8 +24,8 @@ class NoteQuestsHiddenDao @Inject constructor(private val db: Database) {
     fun delete(noteId: Long): Boolean =
         db.delete(NAME, where = "$NOTE_ID = $noteId") == 1
 
-    fun getNewerThan(timestamp: Long): List<HiddenNoteQuest> =
-        db.query(NAME, where = "$TIMESTAMP > $timestamp") { it.toHiddenNoteQuest() }
+    fun getNewerThan(timestamp: Long): List<NoteIdWithTimestamp> =
+        db.query(NAME, where = "$TIMESTAMP > $timestamp") { it.toNoteIdWithTimestamp() }
 
     fun getAllIds(): List<Long> =
         db.query(NAME) { it.getLong(NOTE_ID) }
@@ -34,7 +34,7 @@ class NoteQuestsHiddenDao @Inject constructor(private val db: Database) {
         db.delete(NAME)
 }
 
-private fun CursorPosition.toHiddenNoteQuest() =
-    HiddenNoteQuest(getLong(NOTE_ID), getLong(TIMESTAMP))
+private fun CursorPosition.toNoteIdWithTimestamp() =
+    NoteIdWithTimestamp(getLong(NOTE_ID), getLong(TIMESTAMP))
 
-data class HiddenNoteQuest(val noteId: Long, val createdTimestamp: Long)
+data class NoteIdWithTimestamp(val noteId: Long, val timestamp: Long)

@@ -81,17 +81,19 @@ import javax.inject.Singleton
         delete(edit)
     }
 
-    @Synchronized fun undo(edit: NoteEdit) {
-        delete(edit)
+    @Synchronized fun undo(edit: NoteEdit): Boolean {
+        return delete(edit)
     }
 
     @Synchronized fun deleteSyncedOlderThan(timestamp: Long): Int =
         editsDB.deleteSyncedOlderThan(timestamp)
 
-    private fun delete(edit: NoteEdit) {
+    private fun delete(edit: NoteEdit): Boolean {
         if (editsDB.delete(edit.id)) {
             onDeletedEdit(edit)
+            return false
         }
+        return true
     }
 
     /* ------------------------------------ Listeners ------------------------------------------- */

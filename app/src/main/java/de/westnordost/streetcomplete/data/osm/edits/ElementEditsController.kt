@@ -51,6 +51,9 @@ import javax.inject.Singleton
         add(edit)
     }
 
+    fun getAll(): List<ElementEdit> =
+        editsDB.getAll()
+
     fun getAllUnsynced(): List<ElementEdit> =
         editsDB.getAllUnsynced()
 
@@ -90,17 +93,13 @@ import javax.inject.Singleton
 
     /* ----------------------- Undoable edits and undoing them -------------------------------- */
 
-    fun getMostRecentUndoableEdit(): ElementEdit? =
-        editsDB.getAll().firstOrNull { !it.isSynced || it.action is IsActionRevertable }
-
     /** Undo edit with the given id. If unsynced yet, will delete the edit if it is undoable. If
      *  already synced, will add a revert of that edit as a new edit, if possible */
-    @Synchronized fun undo(id: Long) {
-        val edit = editsDB.get(id) ?: return
+    @Synchronized fun undo(edit: ElementEdit): Boolean {
         // already uploaded
         if (edit.isSynced) {
             val action = edit.action
-            if (action !is IsActionRevertable) return
+            if (action !is IsActionRevertable) return false
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
@@ -110,6 +109,7 @@ import javax.inject.Singleton
         else {
             delete(edit)
         }
+        return true
     }
 
     /* ------------------------------------ add/sync/delete ------------------------------------- */
