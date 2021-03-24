@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 
 data class ElementEdit(
@@ -23,14 +24,16 @@ data class ElementEdit(
 
     /** (center) position of (the element) the edit refers to. Used for local statistics, i.e. to
      *  ascertain in which country the edit has been made */
-    val position: LatLon,
+    override val position: LatLon,
 
-    /** timestamp when this edit was made. Used to order the (unsynced) edits in a queue */
-    val createdTimestamp: Long,
+    /** timestamp when this edit was made. Used to order the edits in a queue */
+    override val createdTimestamp: Long,
 
     /** whether this edit has been uploaded already */
     val isSynced: Boolean,
 
     /** The action to perform */
     val action: ElementEditAction
-)
+) : Edit {
+    override val isUndoable: Boolean get() = !isSynced || action is IsActionRevertable
+}

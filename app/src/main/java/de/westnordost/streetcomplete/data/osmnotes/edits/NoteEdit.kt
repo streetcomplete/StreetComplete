@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.edithistory.Edit
 
 /** Contains all necessary information to create/comment on an OSM note. */
 data class NoteEdit(
@@ -12,7 +13,7 @@ data class NoteEdit(
     var noteId: Long,
 
     /** position of the note */
-    val position: LatLon,
+    override val position: LatLon,
 
     /** The action to perform */
     val action: NoteEditAction,
@@ -24,14 +25,16 @@ data class NoteEdit(
     val imagePaths: List<String>,
 
     /** timestamp when this edit was made. Used to order the (unsynced) edits in a queue */
-    val createdTimestamp: Long,
+    override val createdTimestamp: Long,
 
     /** whether this edit has been uploaded already */
     val isSynced: Boolean,
 
     /** Whether the images attached still need activation. Already true if imagePaths is empty */
     val imagesNeedActivation: Boolean
-)
+): Edit {
+    override val isUndoable: Boolean get() = !isSynced
+}
 
 enum class NoteEditAction {
     CREATE, COMMENT
