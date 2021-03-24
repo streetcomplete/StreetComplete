@@ -63,4 +63,4 @@ private fun CursorPosition.toOsmQuestKey() = OsmQuestKey(
 
 private fun CursorPosition.toHiddenOsmQuest() = HiddenOsmQuest(toOsmQuestKey(), getLong(TIMESTAMP))
 
-data class HiddenOsmQuest(val osmQuestKey: OsmQuestKey, val timestamp: Long)
+data class HiddenOsmQuest(val osmQuestKey: OsmQuestKey, val createdTimestamp: Long)

@@ -37,4 +37,4 @@ class NoteQuestsHiddenDao @Inject constructor(private val db: Database) {
 private fun CursorPosition.toHiddenNoteQuest() =
     HiddenNoteQuest(getLong(NOTE_ID), getLong(TIMESTAMP))
 
-data class HiddenNoteQuest(val noteId: Long, val timestamp: Long)
+data class HiddenNoteQuest(val noteId: Long, val createdTimestamp: Long)
