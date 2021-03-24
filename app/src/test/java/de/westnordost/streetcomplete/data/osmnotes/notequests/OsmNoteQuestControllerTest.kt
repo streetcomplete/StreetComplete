@@ -81,7 +81,7 @@ class OsmNoteQuestControllerTest {
         assertTrue(ctrl.unhide(1))
         verify(hiddenDB).delete(1)
         verify(listener).onUpdated(
-            addedQuests = eq(listOf(any())),
+            addedQuests = argThat { it.size == 1 },
             deletedQuestIds = eq(emptyList())
         )
     }

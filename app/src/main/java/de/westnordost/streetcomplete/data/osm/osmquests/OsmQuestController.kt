@@ -328,7 +328,9 @@ import javax.inject.Singleton
         val questKeysWithTimestamp = hiddenDB.getNewerThan(timestamp)
 
         val elementKeys = HashSet<ElementKey>()
-        questKeysWithTimestamp.map { ElementKey(it.osmQuestKey.elementType, it.osmQuestKey.elementId) }
+        questKeysWithTimestamp.mapTo(elementKeys) {
+            ElementKey(it.osmQuestKey.elementType, it.osmQuestKey.elementId)
+        }
 
         val geometriesByKey = mapDataSource.getGeometries(elementKeys)
             .associateBy { ElementKey(it.elementType, it.elementId) }

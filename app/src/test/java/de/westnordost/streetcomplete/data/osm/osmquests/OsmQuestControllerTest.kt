@@ -162,6 +162,7 @@ class OsmQuestControllerTest {
             it.containsExactlyInAnyOrder(listOf(
                 ElementKey(Element.Type.NODE, 1),
                 ElementKey(Element.Type.NODE, 2),
+                ElementKey(Element.Type.NODE, 3)
             ))
         })).thenReturn(listOf(
             ElementGeometryEntry(Element.Type.NODE, 1, geoms[0]),
@@ -193,14 +194,14 @@ class OsmQuestControllerTest {
         setUpMapDataSource(
             Pair(node(1), pGeom(1.0,1.0))
         )
-
         val quest = quest(123)
+        on(hiddenDB.delete(quest.key)).thenReturn(true)
 
         assertTrue(ctrl.unhide(quest.key))
         verify(hiddenDB).delete(quest.key)
         verify(listener).onUpdated(
             addedQuests = eq(listOf(
-                OsmQuest(123, ApplicableQuestType, Element.Type.NODE, 1, pGeom(1.0,1.0))
+                OsmQuest(1, ApplicableQuestType, Element.Type.NODE, 1, pGeom(1.0,1.0))
             )),
             deletedQuestIds = eq(emptyList())
         )

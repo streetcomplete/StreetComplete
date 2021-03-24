@@ -90,7 +90,7 @@ class ElementEditsControllerTest {
 
         on(db.get(anyLong())).thenReturn(edit)
 
-        ctrl.undo(1)
+        ctrl.undo(edit)
 
         verify(db).delete(edit.id)
         verify(idProvider).delete(edit.id)
@@ -107,7 +107,7 @@ class ElementEditsControllerTest {
 
         on(db.get(anyLong())).thenReturn(edit)
 
-        ctrl.undo(1)
+        ctrl.undo(edit)
 
         verify(db).delete(edit.id)
         verify(idProvider).delete(edit.id)
