@@ -28,19 +28,6 @@ class OsmQuestsHiddenDao @Inject constructor(private val db: Database) {
             )
         ) { true } ?: false
 
-    fun delete(osmQuestKey: OsmQuestKey): Boolean =
-        db.delete(NAME,
-            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ? AND $QUEST_TYPE = ?",
-            args = arrayOf(
-                osmQuestKey.elementType.name,
-                osmQuestKey.elementId,
-                osmQuestKey.questTypeName
-            )
-        ) == 1
-
-    fun getNewerThan(timestamp: Long): List<OsmQuestKeyWithTimestamp> =
-        db.query(NAME, where = "$TIMESTAMP > $timestamp") { it.toHiddenOsmQuest() }
-
     fun getAllIds(): List<OsmQuestKey> =
         db.query(NAME) { it.toOsmQuestKey() }
 
@@ -60,7 +47,3 @@ private fun CursorPosition.toOsmQuestKey() = OsmQuestKey(
     getLong(ELEMENT_ID),
     getString(QUEST_TYPE)
 )
-
-private fun CursorPosition.toHiddenOsmQuest() = OsmQuestKeyWithTimestamp(toOsmQuestKey(), getLong(TIMESTAMP))
-
-data class OsmQuestKeyWithTimestamp(val osmQuestKey: OsmQuestKey, val timestamp: Long)

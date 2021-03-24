@@ -91,29 +91,10 @@ import javax.inject.Singleton
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
 
-    fun getAllHiddenNewerThan(timestamp: Long): List<OsmNoteQuestHidden> {
-        val noteIdsWithTimestamp = hiddenDB.getNewerThan(timestamp)
-        val notesById = noteSource.getAll(noteIdsWithTimestamp.map { it.noteId }).associateBy { it.id }
-
-        return noteIdsWithTimestamp.mapNotNull { (noteId, timestamp) ->
-            notesById[noteId]?.let { OsmNoteQuestHidden(it, timestamp)  }
-        }
-    }
-
     /** Mark the quest as hidden by user interaction */
     @Synchronized fun hide(questId: Long) {
         hiddenDB.add(questId)
         onUpdated(deletedQuestIds = listOf(questId))
-    }
-
-    /** Un-hides a specific hidden quest by user interaction */
-    @Synchronized fun unhide(questId: Long): Boolean {
-        if (!hiddenDB.delete(questId)) return false
-        val unhiddenNoteQuest = noteSource.get(questId)?.let { createQuestForNote(it, emptySet()) }
-        if (unhiddenNoteQuest != null) {
-            onUpdated(quests = listOf(unhiddenNoteQuest))
-        }
-        return true
     }
 
     /** Un-hides all previously hidden quests by user interaction */

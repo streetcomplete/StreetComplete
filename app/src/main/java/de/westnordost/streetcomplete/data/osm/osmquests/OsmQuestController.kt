@@ -293,12 +293,6 @@ import javax.inject.Singleton
         onUpdated(deletedIds = listOf(questId))
     }
 
-    @Synchronized fun unhide(key: OsmQuestKey): Boolean {
-        if(!hiddenDB.delete(key)) return false
-        addQuestsForKeys(listOf(key))
-        return true
-    }
-
     /** Un-hides all previously hidden quests by user interaction */
     @Synchronized fun unhideAll(): Int {
         val previouslyHiddenQuestKeys = hiddenDB.getAllIds()
@@ -324,23 +318,6 @@ import javax.inject.Singleton
         return createOsmQuest(entry, geometry)
     }
 
-    fun getAllHiddenNewerThan(timestamp: Long): List<OsmQuestHidden> {
-        val questKeysWithTimestamp = hiddenDB.getNewerThan(timestamp)
-
-        val elementKeys = HashSet<ElementKey>()
-        questKeysWithTimestamp.mapTo(elementKeys) {
-            ElementKey(it.osmQuestKey.elementType, it.osmQuestKey.elementId)
-        }
-
-        val geometriesByKey = mapDataSource.getGeometries(elementKeys)
-            .associateBy { ElementKey(it.elementType, it.elementId) }
-
-        return questKeysWithTimestamp.mapNotNull { (key, timestamp) ->
-            val geometry = geometriesByKey[ElementKey(key.elementType, key.elementId)]?.geometry
-            createOsmQuestHidden(key, geometry, timestamp)
-        }
-    }
-
     override fun getAllInBBoxCount(bbox: BoundingBox): Int =
         db.getAllInBBoxCount(bbox)
 
@@ -357,12 +334,6 @@ import javax.inject.Singleton
             val geometryEntry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]
             createOsmQuest(entry, geometryEntry?.geometry)
         }
-    }
-
-    private fun createOsmQuestHidden(key: OsmQuestKey, geometry: ElementGeometry?, timestamp: Long): OsmQuestHidden? {
-        if (geometry == null) return null
-        val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: return null
-        return OsmQuestHidden(key.elementType, key.elementId, questType, geometry.center, timestamp)
     }
 
     private fun createOsmQuest(entry: OsmQuestDaoEntry, geometry: ElementGeometry?): OsmQuest? {

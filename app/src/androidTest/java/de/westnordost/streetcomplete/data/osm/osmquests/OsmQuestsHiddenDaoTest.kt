@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -24,27 +22,6 @@ class OsmQuestsHiddenDaoTest : ApplicationDbTestCase() {
         val key = OsmQuestKey(Element.Type.NODE, 123L, "bla")
         dao.add(key)
         assertTrue(dao.contains(key))
-    }
-
-    @Test fun addGetDelete() {
-        val key = OsmQuestKey(Element.Type.NODE, 123L, "bla")
-        assertFalse(dao.delete(key))
-        dao.add(key)
-        assertTrue(dao.delete(key))
-        assertFalse(dao.contains(key))
-    }
-
-    @Test fun getNewerThan() = runBlocking {
-        val keys = listOf(
-            OsmQuestKey(Element.Type.NODE, 123L, "bla"),
-            OsmQuestKey(Element.Type.NODE, 124L, "bla")
-        )
-        dao.add(keys[0])
-        delay(200)
-        val time = System.currentTimeMillis()
-        dao.add(keys[1])
-        val result = dao.getNewerThan(time - 100).single()
-        assertEquals(keys[1], result.osmQuestKey)
     }
 
     @Test fun getAllIds() {

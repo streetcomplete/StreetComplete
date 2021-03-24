@@ -1,18 +1,11 @@
 package de.westnordost.streetcomplete.data.edithistory
 
-import de.westnordost.streetcomplete.ApplicationConstants.MAX_UNDO_HISTORY_AGE
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestKey
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 
@@ -20,9 +13,7 @@ import javax.inject.Inject
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
 class EditHistoryController @Inject constructor(
     private val elementEditsController: ElementEditsController,
-    private val noteEditsController: NoteEditsController,
-    private val noteQuestController: OsmNoteQuestController,
-    private val osmQuestController: OsmQuestController
+    private val noteEditsController: NoteEditsController
 ): UndoablesSource {
 
     private val listeners: MutableList<UndoablesSource.Listener> = CopyOnWriteArrayList()
@@ -51,10 +42,6 @@ class EditHistoryController @Inject constructor(
         return when(edit) {
             is ElementEdit -> elementEditsController.undo(edit)
             is NoteEdit -> noteEditsController.undo(edit)
-            is OsmNoteQuestHidden -> noteQuestController.unhide(edit.note.id)
-            is OsmQuestHidden -> osmQuestController.unhide(
-                OsmQuestKey(edit.elementType, edit.elementId, edit.quesType::class.simpleName!!)
-            )
             else -> throw IllegalArgumentException()
         }
     }
@@ -65,14 +52,9 @@ class EditHistoryController @Inject constructor(
         getAll().firstOrNull { it.isUndoable }
 
     override fun getAll(): List<Edit> {
-        val maxAge = currentTimeMillis() - MAX_UNDO_HISTORY_AGE
-
         val result = ArrayList<Edit>()
         result += elementEditsController.getAll()
         result += noteEditsController.getAll()
-        result += noteQuestController.getAllHiddenNewerThan(maxAge)
-        result += osmQuestController.getAllHiddenNewerThan(maxAge)
-
         result.sortByDescending { it.createdTimestamp }
         return result
     }
