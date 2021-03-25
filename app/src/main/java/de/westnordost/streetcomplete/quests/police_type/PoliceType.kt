@@ -17,5 +17,5 @@ enum class PoliceOperator(val operatorName: String, val wikidata: String, val wi
     GUARDIA_DI_FINANZA("Guardia di Finanza", "Q1552861", "it:Guardia di Finanza"),
     POLIZIA_MUNICIPALE("Polizia Municipale", "Q1431981", "it:Polizia municipale"),
     POLIZIA_LOCALE("Polizia Locale", "", "it:Polizia locale (Italia)"),
-    GUARDIA_COSTIERA("Guardia Costiera","Q1552839", "it:Corpo delle capitanerie di porto - Guardia costiera")
+    GUARDIA_COSTIERA("Guardia Costiera", "Q1552839", "it:Corpo delle capitanerie di porto - Guardia costiera")
 }
