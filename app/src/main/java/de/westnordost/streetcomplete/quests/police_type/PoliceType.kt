@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.police_type
 
 enum class PoliceType(val policeName: String, val operator: PoliceOperator) {
-    CARABINIERI("Arma dei Carabinieri",PoliceOperator.ARMA_DEI_CARABINIERI),
-    GUARDIA_COSTIERA("Guardia Costiera",PoliceOperator.GUARDIA_COSTIERA),
-    GUARDIA_DI_FINANZA("Guardia di Finanza",PoliceOperator.GUARDIA_DI_FINANZA),
-    POLIZIA_DI_STATO("Polizia di Stato",PoliceOperator.POLIZIA_DI_STATO),
-    POLIZIA_MUNICIPALE("Polizia Municipale",PoliceOperator.POLIZIA_MUNICIPALE),
-    POLIZIA_LOCALE("Polizia Locale",PoliceOperator.POLIZIA_LOCALE),
-    POLIZIA_STRADALE("Polizia Stradale",PoliceOperator.POLIZIA_DI_STATO),
-    POLIZIA_FERROVIARIA("Polizia Ferroviaria",PoliceOperator.POLIZIA_DI_STATO)
+    CARABINIERI("Arma dei Carabinieri", PoliceOperator.ARMA_DEI_CARABINIERI),
+    GUARDIA_COSTIERA("Guardia Costiera", PoliceOperator.GUARDIA_COSTIERA),
+    GUARDIA_DI_FINANZA("Guardia di Finanza", PoliceOperator.GUARDIA_DI_FINANZA),
+    POLIZIA_DI_STATO("Polizia di Stato", PoliceOperator.POLIZIA_DI_STATO),
+    POLIZIA_MUNICIPALE("Polizia Municipale", PoliceOperator.POLIZIA_MUNICIPALE),
+    POLIZIA_LOCALE("Polizia Locale", PoliceOperator.POLIZIA_LOCALE),
+    POLIZIA_STRADALE("Polizia Stradale", PoliceOperator.POLIZIA_DI_STATO),
+    POLIZIA_FERROVIARIA("Polizia Ferroviaria", PoliceOperator.POLIZIA_DI_STATO)
 }
 
 enum class PoliceOperator(val operatorName: String, val wikidata: String, val wikipedia: String) {
