@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.edithistory
 
-interface UndoablesSource {
+interface EditHistorySource {
     interface Listener {
         fun onAdded(edit: Edit)
         fun onSynced(edit: Edit)

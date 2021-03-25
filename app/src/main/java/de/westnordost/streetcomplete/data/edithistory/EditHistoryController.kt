@@ -3,25 +3,31 @@ package de.westnordost.streetcomplete.data.edithistory
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
+import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 
-// TODO ADD TESTS!
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
 class EditHistoryController @Inject constructor(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController
-): UndoablesSource {
+): EditHistorySource {
 
-    private val listeners: MutableList<UndoablesSource.Listener> = CopyOnWriteArrayList()
+    private val listeners: MutableList<EditHistorySource.Listener> = CopyOnWriteArrayList()
 
     private val osmElementEditsListener = object : ElementEditsSource.Listener {
-        override fun onAddedEdit(edit: ElementEdit) { onAdded(edit) }
-        override fun onSyncedEdit(edit: ElementEdit) { onSynced(edit) }
-        override fun onDeletedEdit(edit: ElementEdit) { onDeleted(edit) }
+        override fun onAddedEdit(edit: ElementEdit) {
+            if (edit.action !is IsRevertAction) onAdded(edit)
+        }
+        override fun onSyncedEdit(edit: ElementEdit) {
+            if (edit.action !is IsRevertAction) onSynced(edit)
+        }
+        override fun onDeletedEdit(edit: ElementEdit) {
+            if (edit.action !is IsRevertAction) onDeleted(edit)
+        }
     }
 
     private val osmNoteEditsListener = object : NoteEditsSource.Listener {
@@ -29,8 +35,6 @@ class EditHistoryController @Inject constructor(
         override fun onSyncedEdit(edit: NoteEdit) { onSynced(edit) }
         override fun onDeletedEdit(edit: NoteEdit) { onDeleted(edit) }
     }
-
-    // TODO listeners on hidden quests!
 
     init {
         elementEditsController.addListener(osmElementEditsListener)
@@ -53,16 +57,16 @@ class EditHistoryController @Inject constructor(
 
     override fun getAll(): List<Edit> {
         val result = ArrayList<Edit>()
-        result += elementEditsController.getAll()
+        result += elementEditsController.getAll().filter { it.action !is IsRevertAction }
         result += noteEditsController.getAll()
         result.sortByDescending { it.createdTimestamp }
         return result
     }
 
-    override fun addListener(listener: UndoablesSource.Listener) {
+    override fun addListener(listener: EditHistorySource.Listener) {
         listeners.add(listener)
     }
-    override fun removeListener(listener: UndoablesSource.Listener) {
+    override fun removeListener(listener: EditHistorySource.Listener) {
         listeners.remove(listener)
     }
 

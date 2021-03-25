@@ -371,7 +371,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
     <string name="action_undo">Undo</string>
-    <string name="undo_confirm_title">Undo the following last answer?</string>
+    <string name="undo_confirm_title2">Undo the following edit?</string>
     <string name="quest_orchard_produce_title">What is being cultivated here?</string>
     <string name="produce_grapes">Grapes</string>
     <string name="produce_agaves">Agaves</string>
@@ -490,6 +490,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side…</string>
     <string name="map_btn_create_note">Create new note</string>
+    <string name="created_note_action_title">Created note</string>
+    <string name="commented_note_action_title">Commented note</string>
     <string name="create_new_note_unprecise">Zoom in further to create a note</string>
     <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map:</string>
     <string name="pref_title_delete_cache">Delete cache</string>

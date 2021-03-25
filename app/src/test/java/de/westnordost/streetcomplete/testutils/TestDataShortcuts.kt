@@ -4,9 +4,13 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
+import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import java.util.*
 
 fun p(lat: Double = 0.0, lon: Double = 0.0) = OsmLatLon(lat, lon)
@@ -82,7 +86,8 @@ fun noteEdit(
     text: String = "test123",
     timestamp: Long = 123L,
     imagePaths: List<String> = emptyList(),
-    pos: LatLon = p(1.0, 1.0)
+    pos: LatLon = p(1.0, 1.0),
+    isSynced: Boolean = false
 ) = NoteEdit(
     id,
     noteId,
@@ -91,6 +96,28 @@ fun noteEdit(
     text,
     imagePaths,
     timestamp,
-    false,
+    isSynced,
     imagePaths.isNotEmpty()
 )
+
+fun edit(
+    id: Long = 1L,
+    elementType: Element.Type = Element.Type.NODE,
+    elementId: Long = -1L,
+    pos: LatLon = p(0.0,0.0),
+    timestamp: Long = 123L,
+    action: ElementEditAction = DeletePoiNodeAction(1),
+    isSynced: Boolean = false
+) = ElementEdit(
+    id,
+    QUEST_TYPE,
+    elementType,
+    elementId,
+    "survey",
+    pos,
+    timestamp,
+    isSynced,
+    action
+)
+
+private val QUEST_TYPE = TestQuestTypeA()

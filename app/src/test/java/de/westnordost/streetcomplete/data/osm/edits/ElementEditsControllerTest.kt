@@ -3,17 +3,13 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.SpatialPartsOfNode
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
-import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
@@ -121,22 +117,3 @@ class ElementEditsControllerTest {
 }
 
 private val QUEST_TYPE = TestQuestTypeA()
-
-private fun edit(
-        elementType: Element.Type = Element.Type.NODE,
-        elementId: Long = -1L,
-        pos: LatLon = p(0.0,0.0),
-        timestamp: Long = 123L,
-        action: ElementEditAction,
-        isSynced: Boolean = false
-) = ElementEdit(
-    1L,
-    QUEST_TYPE,
-    elementType,
-    elementId,
-    "survey",
-    pos,
-    timestamp,
-    isSynced,
-    action
-)

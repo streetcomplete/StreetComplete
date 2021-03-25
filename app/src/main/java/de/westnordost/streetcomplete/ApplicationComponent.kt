@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.upload.UploadService
 import de.westnordost.streetcomplete.data.user.UserModule
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeModule
+import de.westnordost.streetcomplete.edithistory.UndoDialog
 import de.westnordost.streetcomplete.map.MainFragment
 import de.westnordost.streetcomplete.map.MapFragment
 import de.westnordost.streetcomplete.map.MapModule
@@ -95,6 +96,7 @@ interface ApplicationComponent {
     fun inject(userActivity: UserActivity)
     fun inject(loginFragment: LoginFragment)
     fun inject(osmUnreadMessagesFragment: OsmUnreadMessagesFragment)
+    fun inject(undoDialog: UndoDialog)
     fun inject(notificationButtonFragment: NotificationButtonFragment)
     fun inject(undoButtonFragment: UndoButtonFragment)
     fun inject(uploadButtonFragment: UploadButtonFragment)

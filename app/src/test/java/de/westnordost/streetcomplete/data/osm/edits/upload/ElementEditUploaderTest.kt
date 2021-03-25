@@ -3,9 +3,6 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.testutils.p
-import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -13,8 +10,7 @@ import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.*
 import org.junit.Before
 
 import org.junit.Test
@@ -76,24 +72,3 @@ class ElementEditUploaderTest {
         uploader.upload(edit(elementType = Element.Type.NODE, elementId = 1), mock())
     }
 }
-
-private val QUEST_TYPE = TestQuestTypeA()
-
-private fun edit(
-        elementType: Element.Type = Element.Type.NODE,
-        elementId: Long = -1L,
-        pos: LatLon = p(0.0,0.0),
-        timestamp: Long = 123L,
-        action: ElementEditAction = DeletePoiNodeAction(1),
-        isSynced: Boolean = false
-) = ElementEdit(
-    1L,
-    QUEST_TYPE,
-    elementType,
-    elementId,
-    "survey",
-    pos,
-    timestamp,
-    isSynced,
-    action
-)

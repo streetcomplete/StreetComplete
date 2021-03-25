@@ -55,8 +55,7 @@ class ElementEditsUploaderTest {
     }
 
     @Test fun `upload works`() = runBlocking {
-        val action = DeletePoiNodeAction(1)
-        val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", p(1.0,2.0), 123L, false, action)
+        val edit = edit()
         val idProvider = mock<ElementIdProvider>()
         val updates = mock<ElementUpdates>()
 
@@ -75,8 +74,7 @@ class ElementEditsUploaderTest {
     }
 
     @Test fun `upload catches conflict exception`() = runBlocking {
-        val action = DeletePoiNodeAction(1)
-        val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", p(1.0,2.0), 123L, false, action)
+        val edit = edit()
         val idProvider = mock<ElementIdProvider>()
         val updatedNode = node()
 
@@ -99,8 +97,7 @@ class ElementEditsUploaderTest {
     }
 
     @Test fun `upload catches deleted element exception`() = runBlocking {
-        val action = DeletePoiNodeAction(1)
-        val edit = ElementEdit(1, TestQuestTypeA(), Element.Type.NODE, 1L, "bla", p(1.0,2.0), 123L, false, action)
+        val edit = edit(elementId = 1)
         val idProvider = mock<ElementIdProvider>()
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)

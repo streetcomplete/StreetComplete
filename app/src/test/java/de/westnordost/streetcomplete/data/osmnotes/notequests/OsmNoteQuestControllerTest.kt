@@ -59,33 +59,6 @@ class OsmNoteQuestControllerTest {
         )
     }
 
-    @Test fun getAllHiddenNewerThan() {
-        val note = note(1)
-        on(hiddenDB.getNewerThan(123L)).thenReturn(listOf(
-            NoteIdWithTimestamp(1, 250),
-            NoteIdWithTimestamp(2, 300)
-        ))
-        on(noteSource.getAll(eq(listOf(1,2)))).thenReturn(listOf(note))
-
-        assertEquals(
-            listOf(
-                OsmNoteQuestHidden(note, 250)
-            ),
-            ctrl.getAllHiddenNewerThan(123L)
-        )
-    }
-
-    @Test fun unhide() {
-        on(noteSource.get(1)).thenReturn(note(1))
-        on(hiddenDB.delete(1)).thenReturn(true)
-        assertTrue(ctrl.unhide(1))
-        verify(hiddenDB).delete(1)
-        verify(listener).onUpdated(
-            addedQuests = argThat { it.size == 1 },
-            deletedQuestIds = eq(emptyList())
-        )
-    }
-
     @Test
     fun unhideAll() {
         val hiddenNoteIds = listOf<Long>(1,2,3)

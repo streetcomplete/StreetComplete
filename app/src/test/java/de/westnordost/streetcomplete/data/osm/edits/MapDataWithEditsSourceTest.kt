@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
@@ -1147,23 +1146,3 @@ class MapDataWithEditsSourceTest {
     }
 
 }
-
-private fun edit(
-        elementType: Element.Type = NODE,
-        elementId: Long = -1,
-        pos: LatLon = p(0.0,0.0),
-        timestamp: Long = 123,
-        action: ElementEditAction
-) = ElementEdit(
-    1,
-    TEST_QUEST_TYPE,
-    elementType,
-    elementId,
-    "survey",
-    pos,
-    timestamp,
-    false,
-    action
-)
-
-private val TEST_QUEST_TYPE = TestQuestTypeA()
