@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.OsmApiModule
 import de.westnordost.streetcomplete.data.StreetCompleteSQLiteOpenHelper
 import de.westnordost.streetcomplete.data.download.DownloadModule
 import de.westnordost.streetcomplete.data.download.DownloadService
+import de.westnordost.streetcomplete.data.edithistory.EditHistoryModule
 import de.westnordost.streetcomplete.data.meta.MetadataModule
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsModule
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestModule
@@ -54,6 +55,7 @@ import javax.inject.Singleton
     DownloadModule::class,
     QuestModule::class,
     DbModule::class,
+    EditHistoryModule::class,
     MetadataModule::class,
     UserModule::class,
     AchievementsModule::class,

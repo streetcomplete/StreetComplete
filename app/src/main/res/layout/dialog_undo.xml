@@ -10,25 +10,44 @@
     android:paddingTop="@dimen/dialog_vertical_margin"
     android:paddingBottom="@dimen/dialog_vertical_margin">
 
-    <ImageView
-        android:id="@+id/editIcon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+    <TextView
+        android:id="@+id/createdTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:text="3 minutes ago" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="@dimen/dialog_vertical_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/createdTimeText"
         tools:src="@drawable/ic_quest_street" />
+
+    <ImageView
+        android:id="@+id/overlayIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toTopOf="@+id/icon"
+        app:layout_constraintStart_toStartOf="@+id/icon"
+        tools:src="@drawable/ic_scissors" />
 
     <TextView
         android:id="@+id/titleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dialog_horizontal_margin"
-        android:layout_toEndOf="@id/editIcon"
+        android:layout_toEndOf="@id/icon"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        app:layout_constraintBottom_toBottomOf="@id/editIcon"
+        app:layout_constraintBottom_toBottomOf="@id/icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/editIcon"
-        app:layout_constraintTop_toTopOf="@id/editIcon"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toTopOf="@id/icon"
         tools:ignore="RtlSymmetry"
         tools:text="@string/quest_address_title" />
 
@@ -38,7 +57,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="@dimen/dialog_vertical_margin"
         android:background="@color/divider"
-        app:layout_constraintTop_toBottomOf="@id/editIcon"
+        app:layout_constraintTop_toBottomOf="@id/icon"
         tools:layout_editor_absoluteX="24dp" />
 
     <FrameLayout

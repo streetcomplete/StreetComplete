@@ -492,6 +492,13 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="map_btn_create_note">Create new note</string>
     <string name="created_note_action_title">Created note</string>
     <string name="commented_note_action_title">Commented note</string>
+    <string name="split_way_action_title">You split the way</string>
+    <string name="deleted_poi_action_title">You deleted the element</string>
+    <string name="added_tag_action_title">Added %s</string>
+    <string name="removed_tag_action_title">Removed %s</string>
+    <string name="changed_tag_action_title">Updated to %s</string>
+    <string name="edit_x_minutes_ago">%s minutes ago</string>
+    <string name="edit_x_hours_ago">%s hours ago</string>
     <string name="create_new_note_unprecise">Zoom in further to create a note</string>
     <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map:</string>
     <string name="pref_title_delete_cache">Delete cache</string>

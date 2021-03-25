@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
  *  */
 class UpdateElementTagsAction(
     private val spatialPartsOfOriginalElement: SpatialPartsOfElement,
-    private val changes: StringMapChanges,
+    val changes: StringMapChanges,
     private val questType: OsmElementQuestType<*>?
 ): ElementEditAction, IsActionRevertable {
 
