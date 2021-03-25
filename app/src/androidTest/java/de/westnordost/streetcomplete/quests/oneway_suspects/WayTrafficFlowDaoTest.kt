@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.util.KryoSerializer
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import java.util.Date
 
 class WayTrafficFlowDaoTest : ApplicationDbTestCase() {
 
@@ -46,8 +47,8 @@ class WayTrafficFlowDaoTest : ApplicationDbTestCase() {
     @Test fun deleteUnreferenced() {
         val wayDao = WayDao(database, KryoSerializer())
 
-        wayDao.put(OsmWay(1, 0, mutableListOf(), null))
-        wayDao.put(OsmWay(2, 0, mutableListOf(), null))
+        wayDao.put(OsmWay(1, 0, mutableListOf(), null, null, Date()))
+        wayDao.put(OsmWay(2, 0, mutableListOf(), null, null, Date()))
 
         dao.put(1, true)
         dao.put(3, true)

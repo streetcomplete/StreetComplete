@@ -9,6 +9,7 @@ import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import java.lang.System.currentTimeMillis
+import java.util.Date
 
 
 class NodeDaoTest : ApplicationDbTestCase() {
@@ -93,5 +94,6 @@ private fun nd(
     version: Int = 1,
     lat: Double = 1.0,
     lon: Double = 2.0,
-    tags: Map<String,String>? = emptyMap()
-) = OsmNode(id, version, lat, lon, tags)
+    tags: Map<String,String>? = emptyMap(),
+    timestamp: Long = 123
+) = OsmNode(id, version, lat, lon, tags, null, Date(timestamp))

@@ -8,7 +8,8 @@ object RelationTables {
         const val ID = "id"
         const val VERSION = "version"
         const val TAGS = "tags"
-        const val LAST_UPDATE = "last_update"
+        const val TIMESTAMP = "timestamp"
+        const val LAST_SYNC = "last_sync"
 
         const val INDEX = "idx"
         const val REF = "ref"
@@ -21,7 +22,8 @@ object RelationTables {
             ${Columns.ID} int PRIMARY KEY,
             ${Columns.VERSION} int NOT NULL,
             ${Columns.TAGS} blob,
-            ${Columns.LAST_UPDATE} int NOT NULL
+            ${Columns.TIMESTAMP} int NOT NULL,
+            ${Columns.LAST_SYNC} int NOT NULL
         );
     """
 

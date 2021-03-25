@@ -7,15 +7,17 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.ID
-import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LAST_UPDATE
+import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LAST_SYNC
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TAGS
+import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 import java.lang.System.currentTimeMillis
+import java.util.Date
 
 /** Stores OSM nodes */
 class NodeDao @Inject constructor(
@@ -38,7 +40,7 @@ class NodeDao @Inject constructor(
         val time = currentTimeMillis()
 
         db.replaceMany(NAME,
-            arrayOf(ID, VERSION, LATITUDE, LONGITUDE, TAGS, LAST_UPDATE),
+            arrayOf(ID, VERSION, LATITUDE, LONGITUDE, TAGS, TIMESTAMP, LAST_SYNC),
             nodes.map { node ->
                 arrayOf(
                     node.id,
@@ -46,6 +48,7 @@ class NodeDao @Inject constructor(
                     node.position.latitude,
                     node.position.longitude,
                     node.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
+                    node.dateEdited.time,
                     time
                 )
             }
@@ -60,7 +63,9 @@ class NodeDao @Inject constructor(
                 cursor.getLong(ID),
                 cursor.getInt(VERSION),
                 OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-                cursor.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) }
+                cursor.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) },
+                null,
+                Date(cursor.getLong(TIMESTAMP))
             )
         }
     }
@@ -72,5 +77,5 @@ class NodeDao @Inject constructor(
     }
 
     fun getIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, columns = arrayOf(ID), where = "$LAST_UPDATE < $timestamp") { it.getLong(ID) }
+        db.query(NAME, columns = arrayOf(ID), where = "$LAST_SYNC < $timestamp") { it.getLong(ID) }
 }

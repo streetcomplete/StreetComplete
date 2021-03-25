@@ -7,10 +7,11 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.INDEX
-import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.LAST_UPDATE
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.LAST_SYNC
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.REF
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.ROLE
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.TAGS
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.TYPE
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME
@@ -18,6 +19,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME_MEMBER
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 import java.lang.System.currentTimeMillis
+import java.util.Date
 
 /** Stores OSM relations */
 class RelationDao @Inject constructor(
@@ -58,12 +60,13 @@ class RelationDao @Inject constructor(
                 }
             )
             db.replaceMany(NAME,
-                arrayOf(ID, VERSION, TAGS, LAST_UPDATE),
+                arrayOf(ID, VERSION, TAGS, TIMESTAMP, LAST_SYNC),
                 relations.map { relation ->
                     arrayOf(
                         relation.id,
                         relation.version,
                         relation.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
+                        relation.dateEdited.time,
                         time
                     )
                 }
@@ -91,7 +94,9 @@ class RelationDao @Inject constructor(
                 id,
                 c.getInt(VERSION),
                 membersByRelationId.getValue(id),
-                c.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) }
+                c.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) },
+                null,
+                Date(c.getLong(TIMESTAMP))
             )
         }
     }
@@ -115,7 +120,7 @@ class RelationDao @Inject constructor(
         getAllForElement(Element.Type.RELATION, relationId)
 
     fun getIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, columns = arrayOf(ID), where = "$LAST_UPDATE < $timestamp") { it.getLong(ID) }
+        db.query(NAME, columns = arrayOf(ID), where = "$LAST_SYNC < $timestamp") { it.getLong(ID) }
 
     private fun getAllForElement(elementType: Element.Type, elementId: Long): List<Relation> {
         val ids = db.query(

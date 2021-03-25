@@ -7,6 +7,7 @@ import org.junit.Test
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
+import java.util.Date
 
 class RelationDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: RelationDao
@@ -150,5 +151,6 @@ private fun rel(
     id: Long = 1L,
     version: Int = 1,
     members: List<RelationMember> = listOf(OsmRelationMember(1L, "", Element.Type.NODE)),
-    tags: Map<String,String>? = emptyMap()
-) = OsmRelation(id, version, members, tags)
+    tags: Map<String,String>? = emptyMap(),
+    timestamp: Long = 123L
+) = OsmRelation(id, version, members, tags, null, Date(timestamp))

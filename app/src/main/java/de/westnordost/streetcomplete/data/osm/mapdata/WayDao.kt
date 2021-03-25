@@ -7,15 +7,17 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.INDEX
-import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.LAST_UPDATE
+import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.LAST_SYNC
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.NODE_ID
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.TAGS
+import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME_NODES
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 import java.lang.System.currentTimeMillis
+import java.util.Date
 
 /** Stores OSM ways */
 class WayDao @Inject constructor(
@@ -51,12 +53,13 @@ class WayDao @Inject constructor(
             )
 
             db.replaceMany(NAME,
-                arrayOf(ID, VERSION, TAGS, LAST_UPDATE),
+                arrayOf(ID, VERSION, TAGS, TIMESTAMP, LAST_SYNC),
                 ways.map { way ->
                     arrayOf(
                         way.id,
                         way.version,
                         way.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
+                        way.dateEdited.time,
                         time
                     )
                 }
@@ -80,7 +83,9 @@ class WayDao @Inject constructor(
                 id,
                 c.getInt(VERSION),
                 nodeIdsByWayId.getValue(id),
-                c.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) }
+                c.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) },
+                null,
+                Date(c.getLong(TIMESTAMP))
             )
         }
     }
@@ -104,5 +109,5 @@ class WayDao @Inject constructor(
     }
 
     fun getIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, columns = arrayOf(ID), where = "$LAST_UPDATE < $timestamp") { it.getLong(ID) }
+        db.query(NAME, columns = arrayOf(ID), where = "$LAST_SYNC < $timestamp") { it.getLong(ID) }
 }

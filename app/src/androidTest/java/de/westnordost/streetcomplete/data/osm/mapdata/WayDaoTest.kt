@@ -8,6 +8,7 @@ import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
+import java.util.Date
 
 
 class WayDaoTest : ApplicationDbTestCase() {
@@ -115,5 +116,6 @@ private fun way(
     id: Long = 1L,
     version: Int = 1,
     nodeIds: List<Long> = listOf(1,2,3),
-    tags: Map<String,String>? = emptyMap()
-) = OsmWay(id, version, nodeIds, tags)
+    tags: Map<String,String>? = emptyMap(),
+    timestamp: Long = 123L
+) = OsmWay(id, version, nodeIds, tags, null, Date(timestamp))
