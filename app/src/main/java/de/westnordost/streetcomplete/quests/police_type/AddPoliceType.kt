@@ -26,7 +26,7 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>() {
     override fun applyAnswerTo(answer: PoliceType, changes: StringMapChangesBuilder) {
         changes.add("name", answer.policeName);
         changes.add("operator", answer.operator.operatorName);
-        if (!answer.operator.wikidata.isNullOrEmpty()) changes.add("operator:wikidata", answer.operator.wikidata);
-        if (!answer.operator.wikipedia.isNullOrEmpty()) changes.add("operator:wikipedia", answer.operator.wikipedia);
+        changes.add("operator:wikidata", answer.operator.wikidata);
+        changes.add("operator:wikipedia", answer.operator.wikipedia);
     }
 }
