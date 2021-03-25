@@ -67,8 +67,10 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
 
         findPreference<Preference>("quests.restore.hidden")?.setOnPreferenceClickListener {
-            val hidden = questController.unhideAll()
-            context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
+            lifecycleScope.launch {
+                val hidden = questController.unhideAll()
+                context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
+            }
             true
         }
 

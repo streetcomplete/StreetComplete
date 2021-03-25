@@ -48,7 +48,9 @@ import de.westnordost.streetcomplete.quests.*
 import de.westnordost.streetcomplete.util.*
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
 import kotlin.math.PI
@@ -256,8 +258,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onClickedQuest(questGroup: QuestGroup, questId: Long) {
         if (isQuestDetailsCurrentlyDisplayedFor(questId, questGroup)) return
         val f = bottomSheetFragment
-        if (f is IsCloseableBottomSheet) f.onClickClose { showQuestDetails(questId, questGroup) }
-        else showQuestDetails(questId, questGroup)
+        if (f is IsCloseableBottomSheet) f.onClickClose {
+            lifecycleScope.launch { showQuestDetails(questId, questGroup) }
+        }
+        else lifecycleScope.launch { showQuestDetails(questId, questGroup) }
     }
 
     override fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double) {
@@ -323,18 +327,22 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onSplitWay(osmQuestId: Long) {
-        val quest = questController.get(osmQuestId, QuestGroup.OSM)!!
-        val element = questController.getOsmElement(quest as OsmQuest)
-        if (element !is Way) return
-        val geometry = quest.geometry
-        if (geometry !is ElementPolylinesGeometry) return
-        mapFragment?.isShowingQuestPins = false
-        showInBottomSheet(SplitWayFragment.create(osmQuestId, element, geometry))
+        lifecycleScope.launch {
+            val quest = questController.get(osmQuestId, QuestGroup.OSM)!!
+            val element = questController.getOsmElement(quest as OsmQuest)
+            val geometry = quest.geometry
+            if (element is Way && geometry is ElementPolylinesGeometry) {
+                mapFragment?.isShowingQuestPins = false
+                showInBottomSheet(SplitWayFragment.create(osmQuestId, element, geometry))
+            }
+        }
     }
 
     override fun onSkippedQuest(questId: Long, group: QuestGroup) {
         closeQuestDetailsFor(questId, group)
-        questController.hide(questId, group)
+        lifecycleScope.launch {
+            questController.hide(questId, group)
+        }
     }
 
     override fun onDeletePoiNode(osmQuestId: Long) {
@@ -399,9 +407,13 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onCreatedNoteInstead(questId: Long, group: QuestGroup, questTitle: String, note: String, imagePaths: List<String>) {
         closeQuestDetailsFor(questId, group)
         // the quest is deleted from DB on creating a note, so need to fetch quest before
-        val quest = questController.get(questId, group)
-        if (quest != null && questController.createNote(questId, questTitle, note, imagePaths)) {
-            onQuestSolved(quest, null)
+        lifecycleScope.launch {
+            val quest = questController.get(questId, group)
+            if (quest != null) {
+                if (questController.createNote(questId, questTitle, note, imagePaths)) {
+                    onQuestSolved(quest, null)
+                }
+            }
         }
     }
 
@@ -418,7 +430,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         notePosition.offset(-mapPosition.x, -mapPosition.y)
         val position = mapFragment.getPositionAt(notePosition) ?: throw NullPointerException()
 
-        questController.createNote(note, imagePaths, position)
+        lifecycleScope.launch { questController.createNote(note, imagePaths, position) }
 
         listener?.onCreatedNote(screenPosition)
         showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, PointF(screenPosition))
@@ -450,7 +462,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         if (f !is IsShowingQuestDetails) return
 
         lifecycleScope.launch {
-            val openQuest = visibleQuestsSource.get(f.questGroup, f.questId)
+            val openQuest = withContext(Dispatchers.IO) { visibleQuestsSource.get(f.questGroup, f.questId) }
             if (openQuest == null) {
                 closeBottomSheet()
             }
@@ -677,14 +689,14 @@ class MainFragment : Fragment(R.layout.fragment_main),
         unfreezeMap()
     }
 
-    private fun showQuestDetails(questId: Long, group: QuestGroup) {
+    private suspend fun showQuestDetails(questId: Long, group: QuestGroup) {
         val quest = questController.get(questId, group)
         if (quest != null) {
             showQuestDetails(quest, group)
         }
     }
 
-    @UiThread private fun showQuestDetails(quest: Quest, group: QuestGroup) {
+    @UiThread private suspend fun showQuestDetails(quest: Quest, group: QuestGroup) {
         val mapFragment = mapFragment ?: return
         if (isQuestDetailsCurrentlyDisplayedFor(quest.id!!, group)) return
         if (bottomSheetFragment != null) {
@@ -699,7 +711,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
 
         val f = quest.type.createForm()
-        val element = if (quest is OsmQuest) questController.getOsmElement(quest) else null
+        val element = if (quest is OsmQuest)questController.getOsmElement(quest) else null
         val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f

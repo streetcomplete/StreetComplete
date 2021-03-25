@@ -17,6 +17,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -35,8 +37,13 @@ import kotlin.collections.ArrayList
     /** Create a note for the given OSM Quest instead of answering it.
      * @return true if successful
      */
-    fun createNote(osmQuestId: Long, questTitle: String, text: String, imagePaths: List<String>): Boolean {
-        val q = osmQuestController.get(osmQuestId) ?: return false
+    suspend fun createNote(
+        osmQuestId: Long,
+        questTitle: String,
+        text: String,
+        imagePaths: List<String>
+    ): Boolean = withContext(Dispatchers.IO) {
+        val q = osmQuestController.get(osmQuestId) ?: return@withContext false
 
         val lowercaseTypeName = q.elementType.name.toLowerCase(Locale.US)
         val elementId = q.elementId
@@ -47,12 +54,17 @@ import kotlin.collections.ArrayList
             "\n\n$text"
 
         noteEditsController.add(0, NoteEditAction.CREATE, q.position, fullText, imagePaths)
-        return true
+
+        return@withContext true
     }
 
     /** Create a note at the given position.
      */
-    fun createNote(text: String, imagePaths: List<String>, position: LatLon) {
+    suspend fun createNote(
+        text: String,
+        imagePaths: List<String>,
+        position: LatLon
+    ) = withContext(Dispatchers.IO) {
         val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
         noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths)
     }
@@ -60,9 +72,13 @@ import kotlin.collections.ArrayList
     /** Split a way for the given OSM Quest.
      * @return true if successful
      */
-    fun splitWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>, source: String): Boolean {
-        val q = osmQuestController.get(osmQuestId) ?: return false
-        val w = mapDataSource.get(q.elementType, q.elementId) as? Way ?: return false
+    suspend fun splitWay(
+        osmQuestId: Long,
+        splits: List<SplitPolylineAtPosition>,
+        source: String
+    ): Boolean = withContext(Dispatchers.IO) {
+        val q = osmQuestController.get(osmQuestId) ?: return@withContext false
+        val w = mapDataSource.get(q.elementType, q.elementId) as? Way ?: return@withContext false
         elementEditsController.add(
             q.osmElementQuestType,
             q.elementType,
@@ -71,15 +87,15 @@ import kotlin.collections.ArrayList
             q.position,
             SplitWayAction(ArrayList(splits), w.nodeIds.first(), w.nodeIds.last())
         )
-        return true
+        return@withContext true
     }
 
     /** Delete the element referred to by the given OSM quest id.
      * @return true if successful
      */
-    fun deletePoiElement(osmQuestId: Long, source: String): Boolean {
-        val q = osmQuestController.get(osmQuestId) ?: return false
-        val e = mapDataSource.get(q.elementType, q.elementId) ?: return false
+    suspend fun deletePoiElement(osmQuestId: Long, source: String): Boolean = withContext(Dispatchers.IO) {
+        val q = osmQuestController.get(osmQuestId) ?: return@withContext false
+        val e = mapDataSource.get(q.elementType, q.elementId) ?: return@withContext false
 
         Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!}")
 
@@ -91,16 +107,20 @@ import kotlin.collections.ArrayList
             q.position,
             DeletePoiNodeAction(e.version)
         )
-        return true
+        return@withContext true
     }
 
     /** Replaces the previous element which is assumed to be a shop/amenity of sort with another
      *  feature.
      *  @return true if successful
      */
-    fun replaceShopElement(osmQuestId: Long, tags: Map<String, String>, source: String): Boolean {
-        val q = osmQuestController.get(osmQuestId) ?: return false
-        val element = getOsmElement(q) ?: return false
+    suspend fun replaceShopElement(
+        osmQuestId: Long,
+        tags: Map<String, String>,
+        source: String
+    ): Boolean = withContext(Dispatchers.IO) {
+        val q = osmQuestController.get(osmQuestId) ?: return@withContext false
+        val element = getOsmElement(q) ?: return@withContext false
         val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!} with $changes")
 
@@ -113,7 +133,7 @@ import kotlin.collections.ArrayList
             UpdateElementTagsAction(element.getSpatialParts(), changes, null)
         )
 
-        return true
+        return@withContext true
     }
 
     private fun createReplaceShopChanges(previousTags: Map<String, String>, newTags: Map<String, String>): StringMapChanges {
@@ -139,30 +159,31 @@ import kotlin.collections.ArrayList
     /** Apply the user's answer to the given quest.
      * @return true if successful
      */
-    fun solve(questId: Long, group: QuestGroup, answer: Any, source: String): Boolean {
+    suspend fun solve(questId: Long, group: QuestGroup, answer: Any, source: String): Boolean {
         return when(group) {
             QuestGroup.OSM -> solveOsmQuest(questId, answer, source)
             QuestGroup.OSM_NOTE -> solveOsmNoteQuest(questId, answer as NoteAnswer)
         }
     }
 
-    fun getOsmElement(quest: OsmQuest): OsmElement? =
+    suspend fun getOsmElement(quest: OsmQuest): OsmElement? = withContext(Dispatchers.IO) {
         mapDataSource.get(quest.elementType, quest.elementId) as OsmElement?
+    }
 
-    private fun solveOsmNoteQuest(questId: Long, answer: NoteAnswer): Boolean {
-        val q = osmNoteQuestController.get(questId) ?: return false
+    private suspend fun solveOsmNoteQuest(questId: Long, answer: NoteAnswer): Boolean = withContext(Dispatchers.IO) {
+        val q = osmNoteQuestController.get(questId) ?: return@withContext false
 
         require(answer.text.isNotEmpty()) { "NoteQuest has been answered with an empty comment!" }
         // for note quests: questId == noteId
         noteEditsController.add(questId, NoteEditAction.COMMENT, q.position, answer.text, answer.imagePaths)
-        return true
+        return@withContext true
     }
 
-    private fun solveOsmQuest(questId: Long, answer: Any, source: String): Boolean {
+    private suspend fun solveOsmQuest(questId: Long, answer: Any, source: String): Boolean = withContext(Dispatchers.IO) {
         // race condition: another thread (i.e. quest download thread) may have removed the
         // element already (#282). So in this case, just ignore
-        val q = osmQuestController.get(questId) ?: return false
-        val element = getOsmElement(q) ?: return false
+        val q = osmQuestController.get(questId) ?: return@withContext false
+        val element = getOsmElement(q) ?: return@withContext false
 
         val changes = createOsmQuestChanges(q, element, answer)
         require(!changes.isEmpty()) {
@@ -180,7 +201,7 @@ import kotlin.collections.ArrayList
             UpdateElementTagsAction(element.getSpatialParts(), changes, q.osmElementQuestType)
         )
 
-        return true
+        return@withContext true
     }
 
     private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any) : StringMapChanges {
@@ -190,11 +211,11 @@ import kotlin.collections.ArrayList
     }
 
     /** Make the given quest invisible (per user interaction).  */
-    fun hide(questId: Long, group: QuestGroup) {
+    suspend fun hide(questId: Long, group: QuestGroup) = withContext(Dispatchers.IO) {
         when (group) {
             QuestGroup.OSM -> {
-                val quest = osmQuestController.get(questId) ?: return
-                osmQuestController.hide(quest)
+                val quest = osmQuestController.get(questId)
+                if (quest != null) osmQuestController.hide(quest)
             }
             QuestGroup.OSM_NOTE -> {
                 osmNoteQuestController.hide(questId)
@@ -203,14 +224,16 @@ import kotlin.collections.ArrayList
     }
 
     /** Unhide all previously hidden quests */
-    fun unhideAll(): Int {
-        return osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()
+    suspend fun unhideAll(): Int = withContext(Dispatchers.IO) {
+        osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()
     }
 
     /** Retrieve the given quest from local database  */
-    fun get(questId: Long, group: QuestGroup): Quest? = when (group) {
-        QuestGroup.OSM -> osmQuestController.get(questId)
-        QuestGroup.OSM_NOTE -> osmNoteQuestController.get(questId)
+    suspend fun get(questId: Long, group: QuestGroup): Quest? = withContext(Dispatchers.IO) {
+        when (group) {
+            QuestGroup.OSM -> osmQuestController.get(questId)
+            QuestGroup.OSM_NOTE -> osmNoteQuestController.get(questId)
+        }
     }
 
     companion object {
