@@ -412,7 +412,8 @@ object AchievementsModule {
                 "AddFerryAccessMotorVehicle", // 103
                 "AddInformationToTourism", // 137
                 "AddBoardType", // 188
-                "AddPostBoxRoyalCypher"
+                "AddPostBoxRoyalCypher",
+                "AddPoliceType"
             )),
             // levels: 3, 9, 18, 30, 45, 63, ...
             { lvl -> (lvl + 1)*3 },
@@ -667,6 +668,7 @@ object AchievementsModule {
                     "AddVegetarian",
                     "AddVegan",
                     "AddKosher",
+                    "AddPoliceType",
                     // tourist related
                     "AddInformationToTourism",
                     "AddBoardType",
