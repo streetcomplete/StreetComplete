@@ -15,6 +15,7 @@ import java.net.URL
 
 val projectDirectory = File(".")
 val sourceDirectory = projectDirectory.resolve("app/src/main/java/de/westnordost/streetcomplete/")
+val iconsDirectory = projectDirectory.resolve("res/graphics/quest icons/")
 
 val csvFile = projectDirectory.resolve("quest-list.csv")
 
@@ -43,13 +44,17 @@ fun main() {
 data class RepoQuest(
     val name: String,
     val file: File,
+    val icon: File,
     val title: String,
     val defaultPriority: Int,
     val wikiOrder: Int
 ) {
     val csvString: String get() {
+        val iconsPath = icon.toRelativeString(projectDirectory).replace(" ", "%20")
+        val iconUrl = "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/${iconsPath}"
+
         val wikiOrder = if (wikiOrder == -1) "\"???\"" else wikiOrder + 1
-        return "\"$name\", \"$title\", ${defaultPriority + 1}, $wikiOrder"
+        return "\"$name\", \"$title\", \"${iconUrl}\", ${defaultPriority + 1}, $wikiOrder"
     }
 }
 
@@ -90,7 +95,7 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
 
     fun isOutdated(repoQuests: List<RepoQuest>): Boolean = !repoQuests.any { it.wikiOrder == wikiOrder }
 
-    val csvString: String get() = "\"???\", \"$question\", \"???\", ${wikiOrder + 1}"
+    val csvString: String get() = "\"???\", \"$question\", \"???\", \"???\", ${wikiOrder + 1}"
 }
 
 fun getFilesRecursively(directory: File): List<File> {
@@ -125,11 +130,12 @@ fun getQuest(
     val questFileContent = file.readText()
 
     val questions = getQuestTitleStringNames(questName, questFileContent).map { strings[it]!! }
-
     val wikiOrder = wikiQuests.indexOfFirst { questions.contains(it.question) }
     val title = if (wikiOrder > -1) wikiQuests[wikiOrder].question else questions.last()
 
-    return RepoQuest(questName, file, title, defaultPriority, wikiOrder)
+    val icon = getQuestIcon(questName, questFileContent)
+
+    return RepoQuest(questName, file, icon, title, defaultPriority, wikiOrder)
 }
 
 fun getQuestFile(questName: String, questFiles: List<File>): File {
@@ -154,6 +160,20 @@ fun getQuestTitleStringNames(questName: String, questFileContent: String): List<
     }
 
     return stringResourceNames.filter { it.contains("title") }
+}
+
+fun getQuestIcon(questName: String, questFileContent: String): File {
+    val regex = Regex("(?<=override val icon = R\\.drawable\\.ic_quest_)\\w+")
+    val iconName = regex.find(questFileContent)?.value
+        ?: throw Error("Could not find the icon reference for quest $questName")
+
+    val svgFile = iconsDirectory.resolve("$iconName.svg")
+
+    if (svgFile.exists()) {
+        return svgFile
+    }
+
+    throw Error("Could not find the SVG for icon '$iconName' (quest $questName).")
 }
 
 @Serializable
@@ -204,7 +224,7 @@ fun writeCsvFile(repoQuests: List<RepoQuest>, wikiQuests: List<WikiQuest>) {
     val (newQuests, oldQuests) = repoQuests.partition { it.wikiOrder == -1 }
 
     val csvLines =
-        listOf("\"Quest Name\", \"Question\", \"Default Priority\", \"Wiki Order\"") +
+        listOf("\"Quest Name\", \"Question\", \"SVG Icon URL\", \"Default Priority\", \"Wiki Order\"") +
         wikiQuests.filter { it.isOutdated(repoQuests) }.map { it.csvString } +
         listOf(",,,") +
         newQuests.map { it.csvString } +
