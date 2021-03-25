@@ -232,13 +232,13 @@ import javax.inject.Singleton
         AddPostboxRef(),
         AddWheelchairAccessToiletsPart(),
         AddBoardType(),
+        AddPoliceType(),
         AddPowerPolesMaterial(),
         AddCarWashType(),
         AddBenchStatusOnBusStop(),
         AddBenchBackrest(),
         AddTrafficSignalsButton(),
-        AddPostboxRoyalCypher(),
-        AddPoliceType()
+        AddPostboxRoyalCypher()
     ))
 
     @Provides @Singleton fun osmNoteQuestType(): OsmNoteQuestType = OsmNoteQuestType()
