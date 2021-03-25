@@ -130,18 +130,22 @@ import javax.inject.Singleton
 
     private fun markSynced(edit: ElementEdit) {
         val id = edit.id
-        elementIdProviderDB.delete(id)
         if (editsDB.markSynced(id)) {
             onSyncedEdit(edit)
         }
+        /* must be deleted after the callback because the callback might want to get the id provider
+           for that edit */
+        elementIdProviderDB.delete(id)
     }
 
     private fun delete(edit: ElementEdit) {
         val id = edit.id
-        elementIdProviderDB.delete(id)
         if (editsDB.delete(id)) {
             onDeletedEdit(edit)
         }
+        /* must be deleted after the callback because the callback might want to get the id provider
+           for that edit */
+        elementIdProviderDB.delete(id)
     }
 
     /* ------------------------------------ Listeners ------------------------------------------- */
