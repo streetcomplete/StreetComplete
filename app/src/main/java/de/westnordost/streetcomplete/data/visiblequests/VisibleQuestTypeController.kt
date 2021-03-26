@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.quest.QuestType
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -26,13 +28,22 @@ import javax.inject.Singleton
         val questTypeName = questType::class.simpleName!!
         db.put(questTypeName, visible)
         cache[questTypeName] = visible
-        listeners.forEach { it.onQuestTypeVisibilitiesChanged() }
+        onQuestTypeVisibilitiesChanged()
+    }
+
+    @Synchronized fun setAllVisible(questTypes: Collection<QuestType<*>>, visible: Boolean) {
+        for (questType in questTypes) {
+            val questTypeName = questType::class.simpleName!!
+            db.put(questTypeName, visible)
+            cache[questTypeName] = visible
+        }
+        onQuestTypeVisibilitiesChanged()
     }
 
     @Synchronized fun clear() {
         db.clear()
         cache.clear()
-        listeners.forEach { it.onQuestTypeVisibilitiesChanged() }
+        onQuestTypeVisibilitiesChanged()
     }
 
     override fun addListener(listener: VisibleQuestTypeSource.Listener) {
@@ -40,5 +51,8 @@ import javax.inject.Singleton
     }
     override fun removeListener(listener: VisibleQuestTypeSource.Listener) {
         listeners.remove(listener)
+    }
+    private fun onQuestTypeVisibilitiesChanged() {
+        listeners.forEach { it.onQuestTypeVisibilitiesChanged() }
     }
 }

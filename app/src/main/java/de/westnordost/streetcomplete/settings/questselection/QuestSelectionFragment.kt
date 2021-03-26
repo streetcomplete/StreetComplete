@@ -88,11 +88,7 @@ class QuestSelectionFragment
     }
 
     private fun onDeselectAll() {
-        for (questType in questTypeRegistry.all) {
-            if (questType !is OsmNoteQuestType) {
-                visibleQuestTypeController.setVisible(questType, false)
-            }
-        }
+        visibleQuestTypeController.setAllVisible(questTypeRegistry.all.filter { it !is OsmNoteQuestType }, false)
         questSelectionAdapter.list = createQuestTypeVisibilityList()
     }
 
