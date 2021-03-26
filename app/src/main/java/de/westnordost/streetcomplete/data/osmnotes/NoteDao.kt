@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CLOSED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.COMMENTS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CREATED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.ID
-import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LAST_UPDATE
+import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LAST_SYNC
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
@@ -46,7 +46,7 @@ class NoteDao @Inject constructor(
         if (notes.isEmpty()) return
 
         db.replaceMany(NAME,
-            arrayOf(ID, LATITUDE, LONGITUDE, STATUS, CREATED, CLOSED, COMMENTS, LAST_UPDATE),
+            arrayOf(ID, LATITUDE, LONGITUDE, STATUS, CREATED, CLOSED, COMMENTS, LAST_SYNC),
             notes.map { arrayOf(
                 it.id,
                 it.position.latitude,
@@ -75,7 +75,7 @@ class NoteDao @Inject constructor(
     }
 
     fun getAllIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, arrayOf(ID), "$LAST_UPDATE < $timestamp") { it.getLong(ID) }
+        db.query(NAME, arrayOf(ID), "$LAST_SYNC < $timestamp") { it.getLong(ID) }
 
     fun deleteAll(ids: Collection<Long>): Int {
         if (ids.isEmpty()) return 0
@@ -90,7 +90,7 @@ class NoteDao @Inject constructor(
         CREATED to dateCreated.time,
         CLOSED to dateClosed?.time,
         COMMENTS to serializer.toBytes(ArrayList(comments)),
-        LAST_UPDATE to currentTimeMillis()
+        LAST_SYNC to currentTimeMillis()
     )
 
     private fun CursorPosition.toNote() = Note().also { n ->
