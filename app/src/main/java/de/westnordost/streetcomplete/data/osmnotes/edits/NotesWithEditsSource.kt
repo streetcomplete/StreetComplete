@@ -143,13 +143,7 @@ import javax.inject.Singleton
         if (!imagePaths.isNullOrEmpty()) {
             comment.text += "\n\n(Photo(s) will be attached on upload)"
         }
-        val userId = userStore.userId.takeIf { it != -1L }
-        if (userId != null) {
-            val userName = userStore.userName ?: userId.toString()
-            comment.user = User(userId, userName)
-        } else {
-            comment.user = null
-        }
+        comment.user = User(userStore.userId, userStore.userName ?: "")
         comment.date = Date(createdTimestamp)
         return comment
     }

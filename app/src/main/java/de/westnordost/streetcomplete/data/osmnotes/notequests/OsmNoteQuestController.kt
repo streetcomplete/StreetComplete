@@ -25,8 +25,6 @@ import javax.inject.Singleton
 
     private val listeners: MutableList<OsmNoteQuestSource.Listener> = CopyOnWriteArrayList()
 
-    private val userId: Long? get() = userStore.userId.takeIf { it != -1L }
-
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
         notesPreferences.showOnlyNotesPhrasedAsQuestions
 
@@ -85,7 +83,7 @@ import javax.inject.Singleton
     }
 
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
-        if(note.shouldShowAsQuest(userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
+        if(note.shouldShowAsQuest(userStore.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
             OsmNoteQuest(note.id, note.position)
         else null
 
@@ -135,15 +133,13 @@ import javax.inject.Singleton
 }
 
 private fun Note.shouldShowAsQuest(
-    userId: Long?,
+    userId: Long,
     showOnlyNotesPhrasedAsQuestions: Boolean,
     blockedNoteIds: Set<Long>
 ): Boolean {
 
     // don't show a note if user already contributed to it
-    if (userId != null) {
-        if (containsCommentFromUser(userId) || probablyCreatedByUserInThisApp(userId)) return false
-    }
+    if (containsCommentFromUser(userId) || probablyCreatedByUserInThisApp(userId)) return false
     // a note comment pending to be uploaded also counts as contribution
     if (id in blockedNoteIds) return false
 
