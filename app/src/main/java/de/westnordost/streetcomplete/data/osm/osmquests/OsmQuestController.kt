@@ -266,7 +266,7 @@ import javax.inject.Singleton
         val hiddenIds = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
         val entries = db.getAllInBBox(bbox, questTypes).filter {
-            it.key !in hiddenIds && it.position !in hiddenPositions
+            it.key !in hiddenIds && it.position.truncateTo5Decimals() !in hiddenPositions
         }
 
         val elementKeys = HashSet<ElementKey>()
