@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 class AddPoliceType : OsmFilterQuestType<PoliceType>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes, ways with
           amenity = police
           and !operator
     """
