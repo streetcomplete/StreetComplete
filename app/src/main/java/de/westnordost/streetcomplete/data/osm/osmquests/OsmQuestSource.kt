@@ -6,6 +6,7 @@ interface OsmQuestSource {
 
     interface Listener {
         fun onUpdated(addedQuests: Collection<OsmQuest>, deletedQuestIds: Collection<Long>)
+        fun onInvalidated()
     }
 
     /** get single quest by id */

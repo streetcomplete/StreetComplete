@@ -31,6 +31,10 @@ import javax.inject.Singleton
         override fun onUpdated(addedQuests: Collection<OsmQuest>, deletedQuestIds: Collection<Long>) {
             updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestIds, QuestGroup.OSM)
         }
+        override fun onInvalidated() {
+            // apparently the visibility of many different quests have changed
+            invalidate()
+        }
     }
 
     private val osmNoteQuestSourceListener = object : OsmNoteQuestSource.Listener {
@@ -76,11 +80,6 @@ import javax.inject.Singleton
         return osmQuests.filter(::isVisible).map { QuestAndGroup(it, QuestGroup.OSM) } +
                osmNoteQuests.filter(::isVisible).map { QuestAndGroup(it, QuestGroup.OSM_NOTE) }
     }
-
-    fun get(questGroup: QuestGroup, questId: Long): Quest? = when (questGroup) {
-        QuestGroup.OSM -> osmQuestSource.get(questId)
-        QuestGroup.OSM_NOTE -> osmNoteQuestSource.get(questId)
-    }?.takeIf(::isVisible)
 
     private fun isVisible(quest: Quest): Boolean =
         visibleQuestTypeSource.isVisible(quest.type) && teamModeQuestFilter.isVisible(quest)

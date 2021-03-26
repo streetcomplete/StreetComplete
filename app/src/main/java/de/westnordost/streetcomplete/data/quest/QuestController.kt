@@ -229,7 +229,7 @@ import kotlin.collections.ArrayList
     }
 
     /** Retrieve the given quest from local database  */
-    suspend fun get(questId: Long, group: QuestGroup): Quest? = withContext(Dispatchers.IO) {
+    suspend fun get(group: QuestGroup, questId: Long): Quest? = withContext(Dispatchers.IO) {
         when (group) {
             QuestGroup.OSM -> osmQuestController.get(questId)
             QuestGroup.OSM_NOTE -> osmNoteQuestController.get(questId)

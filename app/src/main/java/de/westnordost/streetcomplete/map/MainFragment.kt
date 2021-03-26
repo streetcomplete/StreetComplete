@@ -312,7 +312,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any) {
         lifecycleScope.launch {
-            val quest = questController.get(questId, group)
+            val quest = questController.get(group, questId)
             if (quest != null && assureIsSurvey(quest.geometry)) {
                 closeQuestDetailsFor(questId, group)
                 if (questController.solve(questId, group, answer, "survey")) {
@@ -328,7 +328,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onSplitWay(osmQuestId: Long) {
         lifecycleScope.launch {
-            val quest = questController.get(osmQuestId, QuestGroup.OSM)!!
+            val quest = questController.get(QuestGroup.OSM, osmQuestId)!!
             val element = questController.getOsmElement(quest as OsmQuest)
             val geometry = quest.geometry
             if (element is Way && geometry is ElementPolylinesGeometry) {
@@ -347,7 +347,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onDeletePoiNode(osmQuestId: Long) {
         lifecycleScope.launch {
-            val quest = questController.get(osmQuestId, QuestGroup.OSM)
+            val quest = questController.get(QuestGroup.OSM, osmQuestId)
             if (quest != null && assureIsSurvey(quest.geometry)) {
                 closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
                 if (questController.deletePoiElement(osmQuestId, "survey")) {
@@ -359,7 +359,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>) {
         lifecycleScope.launch {
-            val quest = questController.get(osmQuestId, QuestGroup.OSM)
+            val quest = questController.get(QuestGroup.OSM, osmQuestId)
             if (quest != null && assureIsSurvey(quest.geometry)) {
                 closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
                 if (questController.replaceShopElement(osmQuestId, tags, "survey")) {
@@ -384,7 +384,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>) {
         lifecycleScope.launch {
-            val quest = questController.get(osmQuestId, QuestGroup.OSM)
+            val quest = questController.get(QuestGroup.OSM, osmQuestId)
             if (quest != null && assureIsSurvey(quest.geometry)) {
                 closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
                 if (questController.splitWay(osmQuestId, splits, "survey")) {
@@ -408,7 +408,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         closeQuestDetailsFor(questId, group)
         // the quest is deleted from DB on creating a note, so need to fetch quest before
         lifecycleScope.launch {
-            val quest = questController.get(questId, group)
+            val quest = questController.get(group, questId)
             if (quest != null) {
                 if (questController.createNote(questId, questTitle, note, imagePaths)) {
                     onQuestSolved(quest, null)
@@ -462,7 +462,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         if (f !is IsShowingQuestDetails) return
 
         lifecycleScope.launch {
-            val openQuest = withContext(Dispatchers.IO) { visibleQuestsSource.get(f.questGroup, f.questId) }
+            val openQuest = withContext(Dispatchers.IO) { questController.get(f.questGroup, f.questId) }
             if (openQuest == null) {
                 closeBottomSheet()
             }
@@ -690,7 +690,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private suspend fun showQuestDetails(questId: Long, group: QuestGroup) {
-        val quest = questController.get(questId, group)
+        val quest = questController.get(group, questId)
         if (quest != null) {
             showQuestDetails(quest, group)
         }

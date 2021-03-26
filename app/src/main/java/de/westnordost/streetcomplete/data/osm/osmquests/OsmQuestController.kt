@@ -59,13 +59,12 @@ import javax.inject.Singleton
 
             val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
             val previousQuests = mutableListOf<OsmQuestDaoEntry>()
-            val hiddenQuests = getHiddenQuests()
             var count = 0
 
             for (element in updated) {
                 previousQuests.addAll(db.getAllForElement(element.type, element.id))
                 val geometry = updated.getGeometry(element.type, element.id) ?: continue
-                deferredQuests.addAll(createQuestsForElementDeferred(element, geometry, allQuestTypes, hiddenQuests))
+                deferredQuests.addAll(createQuestsForElementDeferred(element, geometry, allQuestTypes))
                 count++
             }
 
@@ -97,21 +96,7 @@ import javax.inject.Singleton
 
     private val notesSourceListener = object : NotesWithEditsSource.Listener {
         @Synchronized override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
-            /* NOTE deleted notes are not taken into account because we just get the ID here which
-               is useless for us, we'd need the note position. So if the quests should be re-created
-               without a new download after closing a note, the listener would need to pass
-               the actual deleted note. Currently it is not possible to close notes anyway, so who
-               cares
-             */
-
-            val addedNotePositions = added.map { it.position }
-            val questIdsAtNotes = mutableSetOf<Long>()
-            for (pos in addedNotePositions) {
-                questIdsAtNotes.addAll(db.getAllIdsInBBox(pos.enclosingBoundingBox(1.0)))
-            }
-
-            db.deleteAll(questIdsAtNotes)
-            onUpdated(deletedIds = questIdsAtNotes)
+            onInvalidated()
         }
     }
 
@@ -127,9 +112,7 @@ import javax.inject.Singleton
     ): Collection<OsmQuest> {
         val time = currentTimeMillis()
 
-        val blacklistedPositions = getBlacklistedPositions(bbox)
         val countryBoundaries = countryBoundariesFuture.get()
-        val hiddenQuests = getHiddenQuests()
 
         val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
             scope.async {
@@ -144,7 +127,7 @@ import javax.inject.Singleton
                     for (element in questType.getApplicableElements(mapDataWithGeometry)) {
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
                             ?: continue
-                        if (!mayCreateQuest(questType, element, geometry, blacklistedPositions, hiddenQuests, bbox)) continue
+                        if (!mayCreateQuest(questType, geometry, bbox)) continue
                         questsForType.add(OsmQuest(null, questType, element.type, element.id, geometry))
                         questCount++
                     }
@@ -166,48 +149,23 @@ import javax.inject.Singleton
     private fun createQuestsForElementDeferred(
         element: Element,
         geometry: ElementGeometry,
-        questTypes: Collection<OsmElementQuestType<*>>,
-        hiddenQuests: Set<OsmQuestKey>
+        questTypes: Collection<OsmElementQuestType<*>>
     ): List<Deferred<OsmQuest?>> {
         val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
         val lazyMapData by lazy { mapDataSource.getMapDataWithGeometry(paddedBounds) }
-        val blacklistedPositions = getBlacklistedPositions(paddedBounds)
 
         return questTypes.map { questType ->
             scope.async {
                 val appliesToElement = questType.isApplicableTo(element)
                     ?: questType.getApplicableElements(lazyMapData).any { it.id == element.id && it.type == element.type }
 
-                if (appliesToElement && mayCreateQuest(questType, element, geometry, blacklistedPositions, hiddenQuests, null)) {
+                if (appliesToElement && mayCreateQuest(questType, geometry, null)) {
                     OsmQuest(null, questType, element.type, element.id, geometry)
                 } else {
                     null
                 }
             }
         }
-    }
-
-    private fun createQuestsForQuestKeys(keys: Collection<OsmQuestKey>): List<OsmQuest> {
-        val questTypesByElement = mutableMapOf<Element, MutableList<OsmElementQuestType<*>>>()
-        for (key in keys) {
-            val element = mapDataSource.get(key.elementType, key.elementId) ?: continue
-            val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: continue
-            questTypesByElement.getOrPut(element) { mutableListOf() }.add(questType)
-        }
-
-        val hiddenQuests = getHiddenQuests()
-        val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
-        for ((element, questTypes) in questTypesByElement) {
-            val geometry = mapDataSource.getGeometry(element.type, element.id) ?: continue
-            deferredQuests.addAll(createQuestsForElementDeferred(element, geometry, questTypes, hiddenQuests))
-        }
-
-        val time = currentTimeMillis()
-        val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
-        val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG, "Created ${quests.size} quests for ${keys.size} updated quests in ${seconds.format(1)}s")
-
-        return quests
     }
 
     private fun updateQuests(
@@ -245,22 +203,13 @@ import javax.inject.Singleton
 
     private fun mayCreateQuest(
         questType: OsmElementQuestType<*>,
-        element: Element,
         geometry: ElementGeometry,
-        blacklistedPositions: Set<LatLon>,
-        blacklistedQuests: Set<OsmQuestKey>,
         downloadedBoundingBox: BoundingBox?
     ): Boolean {
         val pos = geometry.center
 
         // outside downloaded area: skip
         if (downloadedBoundingBox != null && !downloadedBoundingBox.contains(pos)) return false
-
-        val questKey = OsmQuestKey(element.type, element.id, questType::class.simpleName!!)
-        if (blacklistedQuests.contains(questKey)) return false
-
-        // do not create quests whose marker is at/near a blacklisted position
-        if (blacklistedPositions.contains(pos.truncateTo5Decimals())) return false
 
         // do not create quests in countries where the quest is not activated
         val countries = questType.enabledInCountries
@@ -282,6 +231,9 @@ import javax.inject.Singleton
             .map { it.truncateTo5Decimals() }
             .toSet()
 
+    private fun isBlacklistedPosition(pos: LatLon): Boolean =
+        notesSource.getAllPositions(pos.enclosingBoundingBox(1.0)).isNotEmpty()
+
     private fun getHiddenQuests(): Set<OsmQuestKey> =
         hiddenDB.getAllIds().toSet()
 
@@ -289,32 +241,21 @@ import javax.inject.Singleton
     @Synchronized fun hide(quest: OsmQuest) {
         val questId = quest.id ?: return
         hiddenDB.add(quest.key)
-        db.delete(questId)
         onUpdated(deletedIds = listOf(questId))
     }
 
     /** Un-hides all previously hidden quests by user interaction */
     @Synchronized fun unhideAll(): Int {
-        val previouslyHiddenQuestKeys = hiddenDB.getAllIds()
-        /* must delete the hidden quests BEFORE recreating the quests, otherwise they would count
-           as hidden again! */
         val result = hiddenDB.deleteAll()
-        addQuestsForKeys(previouslyHiddenQuestKeys)
+        onInvalidated()
         return result
-    }
-
-    private fun addQuestsForKeys(keys: Collection<OsmQuestKey>) {
-        val createdQuests = createQuestsForQuestKeys(keys)
-        db.addAll(createdQuests)
-
-        // some quests may already be in the database
-        val reallyAddedQuests = createdQuests.filter { it.id != null }
-        onUpdated(added = reallyAddedQuests)
     }
 
     override fun get(questId: Long): OsmQuest? {
         val entry = db.get(questId) ?: return null
-        val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId)
+        if (hiddenDB.contains(entry.key)) return null
+        val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
+        if (isBlacklistedPosition(geometry.center)) return null
         return createOsmQuest(entry, geometry)
     }
 
@@ -322,7 +263,11 @@ import javax.inject.Singleton
         db.getAllInBBoxCount(bbox)
 
     override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
-        val entries = db.getAllInBBox(bbox, questTypes)
+        val hiddenIds = getHiddenQuests()
+        val hiddenPositions = getBlacklistedPositions(bbox)
+        val entries = db.getAllInBBox(bbox, questTypes).filter {
+            it.key !in hiddenIds && it.position !in hiddenPositions
+        }
 
         val elementKeys = HashSet<ElementKey>()
         entries.mapTo(elementKeys) { ElementKey(it.elementType, it.elementId) }
@@ -356,7 +301,17 @@ import javax.inject.Singleton
     ) {
         if (added.isEmpty() && deletedIds.isEmpty()) return
 
-        listeners.forEach { it.onUpdated(added, deletedIds) }
+        val visibleAdded = if (added.isNotEmpty()) {
+            val hiddenIds = getHiddenQuests()
+            added.filter { it.key !in hiddenIds && !isBlacklistedPosition(it.position) }
+        } else {
+            added
+        }
+
+        listeners.forEach { it.onUpdated(visibleAdded, deletedIds) }
+    }
+    private fun onInvalidated() {
+        listeners.forEach { it.onInvalidated() }
     }
 
     companion object {
