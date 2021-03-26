@@ -115,8 +115,9 @@ class QuestPinLayerManager @Inject constructor(
         val bbox = minRect.asBoundingBox(TILES_ZOOM)
         val questTypeNames = questTypesProvider.get().map { it::class.simpleName!! }
         lifecycleScope.launch(Dispatchers.IO) {
-            visibleQuestsSource.getAllVisible(bbox, questTypeNames).forEach {
-                add(it.quest, it.group)
+            val questsAndGroups = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox, questTypeNames) }
+            for ((quest, group) in questsAndGroups) {
+                add(quest, group)
             }
             updateLayer()
         }
