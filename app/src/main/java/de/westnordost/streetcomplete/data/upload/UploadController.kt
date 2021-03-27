@@ -36,6 +36,7 @@ import javax.inject.Singleton
 
     /** Collect and upload all changes made by the user  */
     fun upload() {
+        if (uploadService == null) return
         context.startService(UploadService.createIntent(context))
     }
 
