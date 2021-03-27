@@ -163,10 +163,16 @@ import javax.inject.Singleton
 
         return questTypes.map { questType ->
             scope.async {
+                /* shortcut: if the element has no tags, it is just part of the geometry of another
+                *  element, so no need to check for quests for that element */
+                if (element.tags.isNullOrEmpty()) return@async null
+
                 val appliesToElement = questType.isApplicableTo(element)
                     ?: questType.getApplicableElements(lazyMapData).any { it.id == element.id && it.type == element.type }
 
-                if (appliesToElement && mayCreateQuest(questType, geometry, null)) {
+                if (!appliesToElement) return@async null
+
+                if (mayCreateQuest(questType, geometry, null)) {
                     OsmQuest(null, questType, element.type, element.id, geometry)
                 } else {
                     null
