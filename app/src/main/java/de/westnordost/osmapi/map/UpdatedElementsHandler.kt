@@ -52,7 +52,7 @@ class UpdatedElementsHandler : Handler<DiffElement> {
         }
 
     private fun createUpdatedNode(node: Node, newId: Long, newVersion: Int): Node {
-        return OsmNode(newId, newVersion, node.position, node.tags?.let { HashMap(it) })
+        return OsmNode(newId, newVersion, node.position, node.tags?.let { HashMap(it) }, null, node.dateEdited)
     }
 
     private fun createUpdatedWay(way: Way, newId: Long, newVersion: Int): Way {
@@ -62,7 +62,7 @@ class UpdatedElementsHandler : Handler<DiffElement> {
             if (diff == null) newNodeIds.add(nodeId)
             else if (diff.serverId != null) newNodeIds.add(diff.serverId)
         }
-        return OsmWay(newId, newVersion, newNodeIds, way.tags?.let { HashMap(it) })
+        return OsmWay(newId, newVersion, newNodeIds, way.tags?.let { HashMap(it) }, null, way.dateEdited)
     }
 
     private fun createUpdatedRelation(relation: Relation, newId: Long, newVersion: Int): Relation {
@@ -72,7 +72,7 @@ class UpdatedElementsHandler : Handler<DiffElement> {
             if (diff == null) newRelationMembers.add(OsmRelationMember(member.ref, member.role, member.type))
             else if(diff.serverId != null) newRelationMembers.add(OsmRelationMember(diff.serverId, member.role, member.type))
         }
-        return OsmRelation(newId, newVersion, newRelationMembers, relation.tags?.let { HashMap(it) })
+        return OsmRelation(newId, newVersion, newRelationMembers, relation.tags?.let { HashMap(it) }, null, relation.dateEdited)
     }
 }
 
