@@ -33,9 +33,9 @@
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
-        app:layout_constraintTop_toTopOf="@+id/icon"
         app:layout_constraintStart_toStartOf="@+id/icon"
-        tools:src="@drawable/ic_scissors" />
+        app:layout_constraintTop_toTopOf="@+id/icon"
+        tools:src="@drawable/ic_undo_split" />
 
     <TextView
         android:id="@+id/titleText"

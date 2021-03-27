@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.quest.QuestType
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton

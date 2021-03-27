@@ -34,6 +34,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
         override fun onAdded(edit: Edit) { lifecycleScope.launch { animateInIfAnythingToUndo() }}
         override fun onSynced(edit: Edit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
         override fun onDeleted(edit: Edit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
+        override fun onInvalidated() { lifecycleScope.launch { updateUndoButtonVisibility() }}
     }
 
     /* Don't allow undoing while uploading. Should prevent race conditions. (Undoing quest while

@@ -23,6 +23,13 @@ import javax.inject.Singleton
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
+    interface HideOsmNoteQuestListener {
+        fun onHid(edit: OsmNoteQuestHidden)
+        fun onUnhid(edit: OsmNoteQuestHidden)
+        fun onUnhidAll()
+    }
+    private val hideListeners: MutableList<HideOsmNoteQuestListener> = CopyOnWriteArrayList()
+
     private val listeners: MutableList<OsmNoteQuestSource.Listener> = CopyOnWriteArrayList()
 
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
@@ -92,7 +99,19 @@ import javax.inject.Singleton
     /** Mark the quest as hidden by user interaction */
     @Synchronized fun hide(questId: Long) {
         hiddenDB.add(questId)
+        val hidden = getHidden(questId)
+        if (hidden != null) onHid(hidden)
         onUpdated(deletedQuestIds = listOf(questId))
+    }
+
+    /** Un-hides a specific hidden quest by user interaction */
+    @Synchronized fun unhide(questId: Long): Boolean {
+        val hidden = getHidden(questId)
+        if (!hiddenDB.delete(questId)) return false
+        if (hidden != null) onUnhid(hidden)
+        val quest = noteSource.get(questId)?.let { createQuestForNote(it, emptySet()) }
+        if (quest != null) onUpdated(quests = listOf(quest))
+        return true
     }
 
     /** Un-hides all previously hidden quests by user interaction */
@@ -102,8 +121,24 @@ import javax.inject.Singleton
 
         val unhiddenNoteQuests = previouslyHiddenNotes.mapNotNull { createQuestForNote(it, emptySet()) }
 
+        onUnhidAll()
         onUpdated(quests = unhiddenNoteQuests)
         return result
+    }
+
+    private fun getHidden(questId: Long): OsmNoteQuestHidden? {
+        val timestamp = hiddenDB.getTimestamp(questId) ?: return null
+        val note = noteSource.get(questId) ?: return null
+        return OsmNoteQuestHidden(note, timestamp)
+    }
+
+    fun getAllHiddenNewerThan(timestamp: Long): List<OsmNoteQuestHidden> {
+        val noteIdsWithTimestamp = hiddenDB.getNewerThan(timestamp)
+        val notesById = noteSource.getAll(noteIdsWithTimestamp.map { it.noteId }).associateBy { it.id }
+
+        return noteIdsWithTimestamp.mapNotNull { (noteId, timestamp) ->
+            notesById[noteId]?.let { OsmNoteQuestHidden(it, timestamp)  }
+        }
     }
 
     private fun isNoteHidden(noteId: Long): Boolean = hiddenDB.contains(noteId)
@@ -129,6 +164,25 @@ import javax.inject.Singleton
 
     private fun onInvalidated() {
         listeners.forEach { it.onInvalidated() }
+    }
+
+    /* ------------------------------------- Hide Listeners ------------------------------------- */
+
+    fun addHideQuestsListener(listener: HideOsmNoteQuestListener) {
+        hideListeners.add(listener)
+    }
+    fun removeHideQuestsListener(listener: HideOsmNoteQuestListener) {
+        hideListeners.remove(listener)
+    }
+
+    private fun onHid(edit: OsmNoteQuestHidden) {
+        hideListeners.forEach { it.onHid(edit) }
+    }
+    private fun onUnhid(edit: OsmNoteQuestHidden) {
+        hideListeners.forEach { it.onUnhid(edit) }
+    }
+    private fun onUnhidAll() {
+        hideListeners.forEach { it.onUnhidAll() }
     }
 }
 

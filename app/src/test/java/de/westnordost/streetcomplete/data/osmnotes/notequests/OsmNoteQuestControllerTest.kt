@@ -21,6 +21,7 @@ class OsmNoteQuestControllerTest {
 
     private lateinit var ctrl: OsmNoteQuestController
     private lateinit var listener: OsmNoteQuestSource.Listener
+    private lateinit var hideListener: OsmNoteQuestController.HideOsmNoteQuestListener
 
     private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
     private lateinit var userLoginStatusListener: UserLoginStatusListener
@@ -33,6 +34,7 @@ class OsmNoteQuestControllerTest {
         notesPreferences = mock()
 
         listener = mock()
+        hideListener = mock()
 
         on(noteSource.addListener(any())).then { invocation ->
             noteUpdatesListener = invocation.getArgument(0)
@@ -46,21 +48,44 @@ class OsmNoteQuestControllerTest {
 
         ctrl = OsmNoteQuestController(noteSource, hiddenDB, loginStatusSource, userStore, notesPreferences)
         ctrl.addListener(listener)
+        ctrl.addHideQuestsListener(hideListener)
     }
 
-    @Test
-    fun hide() {
+    @Test fun hide() {
+        val note = note(1)
+        val ts = 123L
+
+        on(hiddenDB.getTimestamp(1)).thenReturn(ts)
+        on(noteSource.get(1)).thenReturn(note)
+
         ctrl.hide(1)
 
         verify(hiddenDB).add(1)
+        verify(hideListener).onHid(eq(OsmNoteQuestHidden(note, ts)))
         verify(listener).onUpdated(
             addedQuests = eq(emptyList()),
             deletedQuestIds = eq(listOf(1))
         )
     }
 
-    @Test
-    fun unhideAll() {
+    @Test fun unhide() {
+        val note = note(1)
+        val ts = 123L
+
+        on(hiddenDB.getTimestamp(1)).thenReturn(ts)
+        on(noteSource.get(1)).thenReturn(note)
+        on(hiddenDB.delete(1)).thenReturn(true)
+
+        ctrl.unhide(1)
+
+        verify(hideListener).onUnhid(eq(OsmNoteQuestHidden(note, ts)))
+        verify(listener).onUpdated(
+            addedQuests = eq(listOf(OsmNoteQuest(1, note.position))),
+            deletedQuestIds = eq(emptyList())
+        )
+    }
+
+    @Test  fun unhideAll() {
         val hiddenNoteIds = listOf<Long>(1,2,3)
         val hiddenNotes = listOf(
             note(1), note(2), note(3)
@@ -75,9 +100,30 @@ class OsmNoteQuestControllerTest {
         val expectedQuests = hiddenNotes.map { OsmNoteQuest(it.id, it.position) }
 
         verify(hiddenDB).deleteAll()
+        verify(hideListener).onUnhidAll()
         verify(listener).onUpdated(
             addedQuests = eq(expectedQuests),
             deletedQuestIds = eq(emptyList())
+        )
+    }
+
+    @Test fun getAllHiddenNewerThan() {
+        val note1 = note(1)
+        val note2 = note(2)
+
+        on(hiddenDB.getNewerThan(123L)).thenReturn(listOf(
+            NoteIdWithTimestamp(1, 300),
+            NoteIdWithTimestamp(2, 500),
+            NoteIdWithTimestamp(3, 600), // missing note
+        ))
+        on(noteSource.getAll(eq(listOf(1L,2L,3L)))).thenReturn(listOf(note1, note2))
+
+        assertEquals(
+            listOf(
+                OsmNoteQuestHidden(note1, 300),
+                OsmNoteQuestHidden(note2, 500),
+            ),
+            ctrl.getAllHiddenNewerThan(123L)
         )
     }
 

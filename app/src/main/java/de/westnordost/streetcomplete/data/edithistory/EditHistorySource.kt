@@ -5,6 +5,7 @@ interface EditHistorySource {
         fun onAdded(edit: Edit)
         fun onSynced(edit: Edit)
         fun onDeleted(edit: Edit)
+        fun onInvalidated()
     }
 
     fun getMostRecentUndoable(): Edit?

@@ -28,7 +28,13 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
     }
 
     fun get(id: Long): OsmQuestDaoEntry? =
-        db.queryOne(NAME, null, "$QUEST_ID = $id") { it.toOsmQuestEntry() }
+        db.queryOne(NAME, where = "$QUEST_ID = $id") { it.toOsmQuestEntry() }
+
+    fun get(key: OsmQuestKey): OsmQuestDaoEntry? =
+        db.queryOne(NAME,
+            where = "$QUEST_TYPE = ? AND $ELEMENT_ID = ? AND $ELEMENT_TYPE = ?",
+            args = arrayOf(key.questTypeName, key.elementId, key.elementType.name)
+        ) { it.toOsmQuestEntry() }
 
     fun getAllInBBoxCount(bounds: BoundingBox): Int {
         return db.queryOne(NAME,
@@ -80,13 +86,6 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
             builder += " AND $QUEST_TYPE IN (${questTypesStr})"
         }
         return db.query(NAME, where = builder) { it.toOsmQuestEntry() }
-    }
-
-    fun getAllIdsInBBox(bounds: BoundingBox): List<Long> {
-        return db.query(NAME,
-            columns = arrayOf(QUEST_ID),
-            where = inBoundsSql(bounds),
-        ) { it.getLong(QUEST_ID) }
     }
 
     fun deleteAll(ids: Collection<Long>): Int {

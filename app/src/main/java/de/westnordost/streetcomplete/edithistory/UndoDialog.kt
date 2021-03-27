@@ -12,19 +12,25 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.icon
+import de.westnordost.streetcomplete.data.edithistory.overlayIcon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
@@ -84,22 +90,20 @@ class UndoDialog(
         is ElementEdit -> {
             // TODO when the edit contains the original element the edit was made with, this wouldn't be necessary
             val element = withContext(Dispatchers.IO) { mapDataSource.get(elementType, elementId) }
-            try {
-                context.resources.getHtmlQuestTitle(questType, element, featureDictionaryFutureTask)
-            } catch (e: MissingFormatArgumentException) {
-                /* The exception happens when the number of format strings in the quest title
-                 * differs from what can be "filled" by getHtmlQuestTitle. When does this happen?
-                 * It happens the element is null or otherwise is not at all what is expected by
-                 * that quest type.
-                 * So, this is the fallback for that case */
-                context.resources.getString(questType.title, *Array(10){"…"})
-            }
+            getQuestTitle(questType, element)
         }
         is NoteEdit -> {
             context.resources.getText(when(action) {
                 CREATE -> R.string.created_note_action_title
                 COMMENT -> R.string.commented_note_action_title
             })
+        }
+        is OsmQuestHidden -> {
+            val element = withContext(Dispatchers.IO) { mapDataSource.get(elementType, elementId) }
+            getQuestTitle(questType, element)
+        }
+        is OsmNoteQuestHidden -> {
+            context.resources.getText(R.string.quest_noteDiscussion_title)
         }
         else -> throw IllegalArgumentException()
     }
@@ -117,27 +121,28 @@ class UndoDialog(
         is ElementEdit -> {
             when(action) {
                 is UpdateElementTagsAction -> createListOfTagUpdates(action.changes.changes)
-                is DeletePoiNodeAction -> createTextView(ResText(R.string.deleted_poi_action_title))
-                is SplitWayAction -> createTextView(ResText(R.string.split_way_action_title))
+                is DeletePoiNodeAction -> createTextView(ResText(R.string.deleted_poi_action_description))
+                is SplitWayAction -> createTextView(ResText(R.string.split_way_action_description))
                 else -> throw IllegalArgumentException()
             }
         }
-        is NoteEdit -> {
-            createTextView(text?.let { CharSequenceText(it) })
-        }
+        is NoteEdit -> createTextView(text?.let { CharSequenceText(it) })
+        is OsmQuestHidden -> createTextView(ResText(R.string.hid_action_description))
+        is OsmNoteQuestHidden -> createTextView(ResText(R.string.hid_action_description))
         else -> throw IllegalArgumentException()
     }
 
-    val Edit.overlayIcon: Int get() = when(this) {
-        is ElementEdit -> {
-            when(action) {
-                is DeletePoiNodeAction -> R.drawable.ic_delete
-                is SplitWayAction -> R.drawable.ic_scissors
-                else -> 0
-            }
+    private fun getQuestTitle(questType: QuestType<*>, element: Element?): CharSequence =
+        try {
+            context.resources.getHtmlQuestTitle(questType, element, featureDictionaryFutureTask)
+        } catch (e: MissingFormatArgumentException) {
+            /* The exception happens when the number of format strings in the quest title
+             * differs from what can be "filled" by getHtmlQuestTitle. When does this happen?
+             * It happens the element is null or otherwise is not at all what is expected by
+             * that quest type.
+             * So, this is the fallback for that case */
+            context.resources.getString(questType.title, *Array(10){"…"})
         }
-        else -> 0
-    }
 
     private fun createTextView(text: Text?): TextView {
         val txt = TextView(context)

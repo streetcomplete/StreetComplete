@@ -19,10 +19,11 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet() {
         assertNull(dao.get(1L))
-        val q = entry()
+        val q = entry("a", Element.Type.NODE, 123L)
         dao.add(q)
         assertNotNull(q.id)
         assertEquals(q, dao.get(q.id!!))
+        assertEquals(q, dao.get(OsmQuestKey(Element.Type.NODE, 123L, "a")))
     }
 
     @Test fun delete() {

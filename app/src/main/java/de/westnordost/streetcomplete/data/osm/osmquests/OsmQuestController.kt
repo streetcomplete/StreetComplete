@@ -43,6 +43,13 @@ import javax.inject.Singleton
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
+    interface HideOsmQuestListener {
+        fun onHid(edit: OsmQuestHidden)
+        fun onUnhid(edit: OsmQuestHidden)
+        fun onUnhidAll()
+    }
+    private val hideListeners: MutableList<HideOsmQuestListener> = CopyOnWriteArrayList()
+
     private val listeners: MutableList<OsmQuestSource.Listener> = CopyOnWriteArrayList()
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
@@ -225,34 +232,13 @@ import javax.inject.Singleton
         return true
     }
 
-    private fun getBlacklistedPositions(bbox: BoundingBox): Set<LatLon> =
-        notesSource
-            .getAllPositions(bbox)
-            .map { it.truncateTo5Decimals() }
-            .toSet()
+    override fun get(questId: Long): OsmQuest? =
+        db.get(questId)?.let { get(it) }
 
-    private fun isBlacklistedPosition(pos: LatLon): Boolean =
-        notesSource.getAllPositions(pos.enclosingBoundingBox(1.0)).isNotEmpty()
+    private fun get(questKey: OsmQuestKey): OsmQuest? =
+        db.get(questKey)?.let { get(it) }
 
-    private fun getHiddenQuests(): Set<OsmQuestKey> =
-        hiddenDB.getAllIds().toSet()
-
-    /** Mark the quest as hidden by user interaction */
-    @Synchronized fun hide(quest: OsmQuest) {
-        val questId = quest.id ?: return
-        hiddenDB.add(quest.key)
-        onUpdated(deletedIds = listOf(questId))
-    }
-
-    /** Un-hides all previously hidden quests by user interaction */
-    @Synchronized fun unhideAll(): Int {
-        val result = hiddenDB.deleteAll()
-        onInvalidated()
-        return result
-    }
-
-    override fun get(questId: Long): OsmQuest? {
-        val entry = db.get(questId) ?: return null
+    private fun get(entry: OsmQuestDaoEntry): OsmQuest? {
         if (hiddenDB.contains(entry.key)) return null
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
         if (isBlacklistedPosition(geometry.center)) return null
@@ -287,10 +273,80 @@ import javax.inject.Singleton
         return OsmQuest(entry.id, questType, entry.elementType, entry.elementId, geometry)
     }
 
+    /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
+
+    private fun getBlacklistedPositions(bbox: BoundingBox): Set<LatLon> =
+        notesSource
+            .getAllPositions(bbox)
+            .map { it.truncateTo5Decimals() }
+            .toSet()
+
+    private fun isBlacklistedPosition(pos: LatLon): Boolean =
+        notesSource.getAllPositions(pos.enclosingBoundingBox(1.0)).isNotEmpty()
+
+    private fun getHiddenQuests(): Set<OsmQuestKey> =
+        hiddenDB.getAllIds().toSet()
+
+    /** Mark the quest as hidden by user interaction */
+    @Synchronized fun hide(quest: OsmQuest) {
+        val questId = quest.id ?: return
+        hiddenDB.add(quest.key)
+        val hidden = getHidden(quest.key)
+        if (hidden != null) onHid(hidden)
+        onUpdated(deletedIds = listOf(questId))
+    }
+
+    @Synchronized fun unhide(key: OsmQuestKey): Boolean {
+        val hidden = getHidden(key)
+        if (!hiddenDB.delete(key)) return false
+        if (hidden != null) onUnhid(hidden)
+        val quest = get(key)
+        if (quest != null) onUpdated(added = listOf(quest))
+        return true
+    }
+
+    /** Un-hides all previously hidden quests by user interaction */
+    @Synchronized fun unhideAll(): Int {
+        val result = hiddenDB.deleteAll()
+        onUnhidAll()
+        onInvalidated()
+        return result
+    }
+
+    private fun getHidden(key: OsmQuestKey): OsmQuestHidden? {
+        val timestamp = hiddenDB.getTimestamp(key) ?: return null
+        val pos = mapDataSource.getGeometry(key.elementType, key.elementId)?.center
+        return createOsmQuestHidden(key, pos, timestamp)
+    }
+
+    fun getAllHiddenNewerThan(timestamp: Long): List<OsmQuestHidden> {
+        val questKeysWithTimestamp = hiddenDB.getNewerThan(timestamp)
+
+        val elementKeys = HashSet<ElementKey>()
+        questKeysWithTimestamp.mapTo(elementKeys) {
+            ElementKey(it.osmQuestKey.elementType, it.osmQuestKey.elementId)
+        }
+
+        val geometriesByKey = mapDataSource.getGeometries(elementKeys)
+            .associateBy { ElementKey(it.elementType, it.elementId) }
+
+        return questKeysWithTimestamp.mapNotNull { (key, timestamp) ->
+            val pos = geometriesByKey[ElementKey(key.elementType, key.elementId)]?.geometry?.center
+            createOsmQuestHidden(key, pos, timestamp)
+        }
+    }
+
+    private fun createOsmQuestHidden(key: OsmQuestKey, position: LatLon?, timestamp: Long): OsmQuestHidden? {
+        if (position == null) return null
+        val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: return null
+        return OsmQuestHidden(key.elementType, key.elementId, questType, position, timestamp)
+    }
+
+    /* ---------------------------------------- Listeners --------------------------------------- */
+
     override fun addListener(listener: OsmQuestSource.Listener) {
         listeners.add(listener)
     }
-
     override fun removeListener(listener: OsmQuestSource.Listener) {
         listeners.remove(listener)
     }
@@ -312,6 +368,25 @@ import javax.inject.Singleton
     }
     private fun onInvalidated() {
         listeners.forEach { it.onInvalidated() }
+    }
+
+    /* ------------------------------------- Hide Listeners ------------------------------------- */
+
+    fun addHideQuestsListener(listener: HideOsmQuestListener) {
+        hideListeners.add(listener)
+    }
+    fun removeHideQuestsListener(listener: HideOsmQuestListener) {
+        hideListeners.remove(listener)
+    }
+
+    private fun onHid(edit: OsmQuestHidden) {
+        hideListeners.forEach { it.onHid(edit) }
+    }
+    private fun onUnhid(edit: OsmQuestHidden) {
+        hideListeners.forEach { it.onUnhid(edit) }
+    }
+    private fun onUnhidAll() {
+        hideListeners.forEach { it.onUnhidAll() }
     }
 
     companion object {
