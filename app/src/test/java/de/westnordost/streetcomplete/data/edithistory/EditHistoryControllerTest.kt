@@ -70,8 +70,8 @@ class EditHistoryControllerTest {
         val edit2 = noteEdit(timestamp = 20L)
         val edit3 = edit(timestamp = 50L)
         val edit4 = noteEdit(timestamp = 80L)
-        val edit5 = OsmQuestHidden(Element.Type.NODE, 1, TestQuestTypeA(), p(), 100L)
-        val edit6 = OsmNoteQuestHidden(note(), 120L)
+        val edit5 = questHidden(timestamp = 100L)
+        val edit6 = noteQuestHidden(timestamp = 120L)
 
         on(elementEditsController.getAll()).thenReturn(listOf(edit1, edit3))
         on(noteEditsController.getAll()).thenReturn(listOf(edit2, edit4))
@@ -97,13 +97,13 @@ class EditHistoryControllerTest {
     }
 
     @Test fun `undo hid quest`() {
-        val e = OsmQuestHidden(Element.Type.NODE, 1L, TestQuestTypeA(), p(), 123L)
+        val e = questHidden(Element.Type.NODE, 1L, TestQuestTypeA())
         ctrl.undo(e)
         verify(osmQuestController).unhide(OsmQuestKey(Element.Type.NODE, 1L, "TestQuestTypeA"))
     }
 
     @Test fun `undo hid note quest`() {
-        val e = OsmNoteQuestHidden(note(), 123L)
+        val e = noteQuestHidden()
         ctrl.undo(e)
         verify(osmNoteQuestController).unhide(e.note.id)
     }
@@ -145,13 +145,13 @@ class EditHistoryControllerTest {
     }
 
     @Test fun `relays hid quest`() {
-        val e = OsmQuestHidden(Element.Type.NODE, 1L, TestQuestTypeA(), p(), 123L)
+        val e = questHidden()
         hideQuestsListener.onHid(e)
         verify(listener).onAdded(e)
     }
 
     @Test fun `relays unhid quest`() {
-        val e = OsmQuestHidden(Element.Type.NODE, 1L, TestQuestTypeA(), p(), 123L)
+        val e = questHidden()
         hideQuestsListener.onUnhid(e)
         verify(listener).onDeleted(e)
     }
@@ -162,13 +162,13 @@ class EditHistoryControllerTest {
     }
 
     @Test fun `relays hid note quest`() {
-        val e = OsmNoteQuestHidden(note(), 123L)
+        val e = noteQuestHidden()
         hideNoteQuestsListener.onHid(e)
         verify(listener).onAdded(e)
     }
 
     @Test fun `relays unhid note quest`() {
-        val e = OsmNoteQuestHidden(note(), 123L)
+        val e = noteQuestHidden()
         hideNoteQuestsListener.onUnhid(e)
         verify(listener).onDeleted(e)
     }

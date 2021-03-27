@@ -8,8 +8,11 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import java.util.*
 
@@ -120,4 +123,17 @@ fun edit(
     action
 )
 
-private val QUEST_TYPE = TestQuestTypeA()
+fun questHidden(
+    elementType: Element.Type = Element.Type.NODE,
+    elementId: Long = 1L,
+    questType: OsmElementQuestType<*> = QUEST_TYPE,
+    pos: LatLon = p(),
+    timestamp: Long = 123L
+) = OsmQuestHidden(elementType, elementId, questType, pos, timestamp)
+
+fun noteQuestHidden(
+    note: Note = note(),
+    timestamp: Long = 123L
+) = OsmNoteQuestHidden(note, timestamp)
+
+val QUEST_TYPE = TestQuestTypeA()
