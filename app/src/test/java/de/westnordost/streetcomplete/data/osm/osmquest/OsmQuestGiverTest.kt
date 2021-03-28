@@ -10,13 +10,9 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
-import de.westnordost.streetcomplete.data.quest.AllCountries
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 
@@ -27,19 +23,23 @@ import java.util.concurrent.FutureTask
 
 class OsmQuestGiverTest {
 
-    private lateinit var notePositionsSource: NotePositionsSource
+    private lateinit var blacklistedPositionsSource: BlacklistedPositionsSource
+    private lateinit var blacklistedElementsSource: BlacklistedElementsSource
     private lateinit var osmQuestController: OsmQuestController
     private lateinit var questType: OsmElementQuestType<*>
     private lateinit var countryBoundaries: CountryBoundaries
     private lateinit var osmQuestGiver: OsmQuestGiver
 
     @Before fun setUp() {
-        notePositionsSource = mock()
-        on(notePositionsSource.getAllPositions(any())).thenReturn(emptyList())
+        blacklistedPositionsSource = mock()
+        on(blacklistedPositionsSource.getAllPositions(any())).thenReturn(emptyList())
+
+        blacklistedElementsSource = mock()
+        on(blacklistedElementsSource.getAll()).thenReturn(emptyList())
 
         osmQuestController = mock()
         on(osmQuestController.getAllForElement(Element.Type.NODE, 1)).thenReturn(emptyList())
-        on(osmQuestController.updateForElement(any(), any(), any(), anyLong())).thenReturn(OsmQuestController.UpdateResult(0,0))
+        on(osmQuestController.updateForElement(any(), any(), any(), any(), anyLong())).thenReturn(OsmQuestController.UpdateResult(0,0))
 
         questType = mock()
         on(questType.enabledInCountries).thenReturn(AllCountries)
@@ -49,19 +49,27 @@ class OsmQuestGiverTest {
         val future = FutureTask { countryBoundaries }
         future.run()
 
-        val questTypeProvider: OrderedVisibleQuestTypesProvider = mock()
-        on(questTypeProvider.get()).thenReturn(listOf(questType))
+        val questTypeRegistry: QuestTypeRegistry = mock()
+        on(questTypeRegistry.all).thenReturn(listOf(questType))
 
-        osmQuestGiver = OsmQuestGiver(notePositionsSource, osmQuestController, questTypeProvider, future)
+        osmQuestGiver = OsmQuestGiver(blacklistedPositionsSource, blacklistedElementsSource, osmQuestController, questTypeRegistry, future)
     }
 
     @Test fun `note blocks new quests`() {
         // there is a note at our position
-        on(notePositionsSource.getAllPositions(any())).thenReturn(listOf(POS))
+        on(blacklistedPositionsSource.getAllPositions(any())).thenReturn(listOf(POS))
 
         osmQuestGiver.updateQuests(NODE, GEOM)
 
-        verify(osmQuestController).updateForElement(emptyList(), emptyList(), NODE.type, NODE.id)
+        verify(osmQuestController).updateForElement(emptyList(), emptyList(), GEOM, NODE.type, NODE.id)
+    }
+
+    @Test fun `element blocks new quests`() {
+        on(blacklistedElementsSource.getAll()).thenReturn(listOf(ELEMENT_KEY))
+
+        osmQuestGiver.updateQuests(NODE, GEOM)
+
+        verify(osmQuestController).updateForElement(emptyList(), emptyList(), GEOM, NODE.type, NODE.id)
     }
 
     @Test fun `previous quest blocks new quest`() {
@@ -71,7 +79,7 @@ class OsmQuestGiverTest {
 
         osmQuestGiver.updateQuests(NODE, GEOM)
 
-        verify(osmQuestController).updateForElement(emptyList(), emptyList(), NODE.type, NODE.id)
+        verify(osmQuestController).updateForElement(emptyList(), emptyList(), GEOM, NODE.type, NODE.id)
     }
 
     @Test fun `not applicable blocks new quest`() {
@@ -80,7 +88,7 @@ class OsmQuestGiverTest {
 
         osmQuestGiver.updateQuests(NODE, GEOM)
 
-        verify(osmQuestController).updateForElement(emptyList(), emptyList(), NODE.type, NODE.id)
+        verify(osmQuestController).updateForElement(emptyList(), emptyList(), GEOM, NODE.type, NODE.id)
     }
 
     @Test fun `not applicable removes previous quest`() {
@@ -92,7 +100,7 @@ class OsmQuestGiverTest {
 
         osmQuestGiver.updateQuests(NODE, GEOM)
 
-        verify(osmQuestController).updateForElement(emptyList(), listOf(123L), NODE.type, NODE.id)
+        verify(osmQuestController).updateForElement(emptyList(), listOf(123L), GEOM, NODE.type, NODE.id)
     }
 
     @Test fun `applicable adds new quest`() {
@@ -100,7 +108,7 @@ class OsmQuestGiverTest {
         osmQuestGiver.updateQuests(NODE, GEOM)
 
         val expectedQuest = OsmQuest(questType, NODE.type, NODE.id, GEOM)
-        verify(osmQuestController).updateForElement(arrayListOf(expectedQuest), emptyList(), NODE.type, NODE.id)
+        verify(osmQuestController).updateForElement(arrayListOf(expectedQuest), emptyList(), GEOM, NODE.type, NODE.id)
     }
 
     @Test fun `quest is only enabled in the country the element is in`() {
@@ -110,7 +118,7 @@ class OsmQuestGiverTest {
         osmQuestGiver.updateQuests(NODE, GEOM)
 
         val expectedQuest = OsmQuest(questType, NODE.type, NODE.id, GEOM)
-        verify(osmQuestController).updateForElement(arrayListOf(expectedQuest), emptyList(), NODE.type, NODE.id)
+        verify(osmQuestController).updateForElement(arrayListOf(expectedQuest), emptyList(), GEOM, NODE.type, NODE.id)
     }
 
     @Test fun `quest is disabled in a country the element is not in`() {
@@ -119,10 +127,22 @@ class OsmQuestGiverTest {
 
         osmQuestGiver.updateQuests(NODE, GEOM)
 
-        verify(osmQuestController).updateForElement(emptyList(), emptyList(), NODE.type, NODE.id)
+        verify(osmQuestController).updateForElement(emptyList(), emptyList(), GEOM, NODE.type, NODE.id)
+    }
+
+    @Test fun `recreate quests`() {
+        val questType2: OsmElementQuestType<*> = mock()
+        osmQuestGiver.recreateQuests(NODE, GEOM, listOf(questType, questType2))
+
+        val expectedQuests = listOf(
+            OsmQuest(questType, NODE.type, NODE.id, GEOM),
+            OsmQuest(questType2, NODE.type, NODE.id, GEOM)
+        )
+        verify(osmQuestController).updateForElement(expectedQuests, emptyList(), GEOM, NODE.type, NODE.id)
     }
 }
 
 private val POS = OsmLatLon(10.0, 10.0)
 private val NODE = OsmNode(1, 0, POS, null, null, null)
+private val ELEMENT_KEY = ElementKey(Element.Type.NODE, 1)
 private val GEOM = ElementPointGeometry(POS)

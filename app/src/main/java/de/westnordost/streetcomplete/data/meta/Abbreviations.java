@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class Abbreviations
 {
 	private Map<String, String> abbreviations;
-	private Locale locale;
+	private final Locale locale;
 
 	public Abbreviations(InputStream config, Locale locale)
 	{

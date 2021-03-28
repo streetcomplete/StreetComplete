@@ -1,9 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
+centerLine: white
 isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 364
 officialLanguages: [en]
-orchardProduces: [grapefruit, banana, tomato, orange, coconut, guava, mango, mangosteen, lemon, lime,
-  avocado, papaya]
+orchardProduces: [grapefruit, banana, tomato, orange, coconut, guava, mango, mangosteen, lemon, lime, avocado, papaya]
 popularSports: [tennis, basketball, baseball]
 speedUnits: [miles per hour, kilometers per hour]

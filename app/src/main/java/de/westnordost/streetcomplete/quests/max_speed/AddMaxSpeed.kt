@@ -2,18 +2,19 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 
-class AddMaxSpeed(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
+class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways with highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
-         and !maxspeed and !maxspeed:forward and !maxspeed:backward
-         and !source:maxspeed and !zone:maxspeed and !maxspeed:type and !zone:traffic
+         and !maxspeed and !maxspeed:advisory and !maxspeed:forward and !maxspeed:backward
+         and ${MAXSPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
          and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+         and cyclestreet != yes and bicycle_road != yes
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
          and area != yes

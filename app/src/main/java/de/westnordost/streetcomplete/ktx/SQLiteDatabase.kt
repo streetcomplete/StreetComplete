@@ -70,8 +70,9 @@ fun <R> SQLiteDatabase.queryOne(
 
 
 fun SQLiteDatabase.hasColumn(tableName: String, columnName: String): Boolean {
-    val statement = compileStatement("SELECT name FROM pragma_table_info(?) WHERE name = ?")
-    statement.bindString(1, tableName)
-    statement.bindString(2, columnName)
-    return columnName == statement.simpleQueryForString()
+    return queryOne(
+        "pragma_table_info('$tableName')",
+        arrayOf("name"),
+        "name = ?",
+        arrayOf(columnName)) { it.getString(0) } != null
 }

@@ -1,21 +1,29 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddCyclewayPartSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
-    override val tagFilters = """
-        ways with
-        (
-          highway = cycleway 
+    override val elementFilter = """
+        ways with (
+          highway = cycleway
           or (highway ~ path|footway and bicycle != no)
           or (highway = bridleway and bicycle ~ designated|yes)
         )
         and segregated = yes
-        and !cycleway:surface and !surface:cycleway
+        and !sidewalk
+        and (
+          !cycleway:surface
+          or cycleway:surface older today -8 years
+          or (
+            cycleway:surface ~ paved|unpaved
+            and !cycleway:surface:note
+            and !note:cycleway:surface
+          )
+        )
     """
     override val commitMessage = "Add path surfaces"
     override val wikiLink = "Key:surface"
@@ -26,7 +34,17 @@ class AddCyclewayPartSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQ
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("cycleway:surface", answer)
+    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
+        when (answer) {
+            is SpecificSurfaceAnswer -> {
+                changes.updateWithCheckDate("cycleway:surface", answer.value.osmValue)
+                changes.deleteIfExists("cycleway:surface:note")
+            }
+            is GenericSurfaceAnswer -> {
+                changes.updateWithCheckDate("cycleway:surface", answer.value.osmValue)
+                changes.addOrModify("cycleway:surface:note", answer.note)
+            }
+        }
+        changes.deleteIfExists("source:cycleway:surface")
     }
 }

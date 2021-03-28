@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.NAME
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.QUEST_ID
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.QUEST_TYPE
+import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.QUEST_TYPES_ON_WAY
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.SOURCE
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.SPLITS
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable.Columns.WAY_ID
@@ -80,7 +81,8 @@ class OsmQuestSplitWayMapping @Inject constructor(
         QUEST_TYPE to obj.questType.javaClass.simpleName,
         WAY_ID to obj.wayId,
         SOURCE to obj.source,
-        SPLITS to serializer.toBytes(ArrayList(obj.splits))
+        SPLITS to serializer.toBytes(ArrayList(obj.splits)),
+        QUEST_TYPES_ON_WAY to obj.questTypesOnWay.joinToString(",") { it.javaClass.simpleName }
     )
 
     override fun toObject(cursor: Cursor)= OsmQuestSplitWay(
@@ -88,6 +90,10 @@ class OsmQuestSplitWayMapping @Inject constructor(
             questTypeList.getByName(cursor.getString(QUEST_TYPE)) as OsmElementQuestType<*>,
             cursor.getLong(WAY_ID),
             cursor.getString(SOURCE),
-            (serializer.toObject(cursor.getBlob(SPLITS)) as ArrayList<SplitPolylineAtPosition>)
+            (serializer.toObject(cursor.getBlob(SPLITS)) as ArrayList<SplitPolylineAtPosition>),
+            cursor.getStringOrNull(QUEST_TYPES_ON_WAY)
+                ?.split(',')
+                ?.mapNotNull { questTypeList.getByName(it) as? OsmElementQuestType<*> }
+                ?: emptyList()
     )
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m36 28v88h20v4h12v-4h20v-88z" fill="#bacfef" stroke-width="0" style="paint-order:stroke markers fill"/>
+ <rect x="36" y="28" width="52" height="4" fill="#859dbf" style="paint-order:stroke markers fill"/>
+ <rect x="36" y="56" width="52" height="3.9999" fill="#859dbf" style="paint-order:stroke markers fill"/>
+ <rect x="36" y="84" width="52" height="3.9999" fill="#859dbf" style="paint-order:stroke markers fill"/>
+ <rect x="48" y="24" width="8" height="96" fill="#6f829f" style="paint-order:stroke markers fill"/>
+ <rect x="68" y="24" width="8" height="96" fill="#6f829f" style="paint-order:stroke markers fill"/>
+ <rect x="88" y="24" width="8" height="88" fill="#6f829f" style="paint-order:stroke markers fill"/>
+ <rect x="28" y="24" width="8" height="88" fill="#6f829f" style="paint-order:stroke markers fill"/>
+ <path d="m24 20v96h24v-12h-20v-20h68v20h-20v12h24v-96h-4zm4 8h68v20h-68zm0 28h68v20h-68z" fill="#acb4c2" style="paint-order:stroke markers fill"/>
+ <rect x="32" y="12" width="60" height="8" fill="#b9c0c9" style="paint-order:stroke markers fill"/>
+</svg>

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.view_achievement_icon.view.*
 
@@ -27,7 +28,7 @@ class AchievementIconView @JvmOverloads constructor(
     var level: Int
         set(value) {
             levelText.text = value.toString()
-            levelText.visibility = if (value < 2) View.INVISIBLE else View.VISIBLE
+            levelText.isInvisible = value < 2
         }
         get() = levelText.text.toString().toIntOrNull() ?: 0
 

@@ -19,6 +19,11 @@
         />
 
     <Preference
+        android:key="translate"
+        android:title="@string/about_title_translate"
+        android:widgetLayout="@layout/widget_image_open_in_browser" />
+
+    <Preference
         android:key="license"
         android:title="@string/about_title_license"
         android:summary="@string/about_summary_license"

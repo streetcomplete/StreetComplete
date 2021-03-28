@@ -1,15 +1,20 @@
 # Do not edit. Source files are in /res/country_metadata
+centerLine: white
 firstDayOfWorkweek: Mo
 isAdvisorySpeedLimitKnown: false
+isCenterLeftTurnLaneKnown: false
 isLeftHandTraffic: false
 isLivingStreetKnown: false
 isSlowZoneKnown: false
+isUsuallyAnyGlassRecycleableInContainers: false
 lengthUnits: [meter]
 officialLanguages: [en]
 orchardProduces: []
 popularReligions: []
 popularSports: []
 regularShoppingDays: 6
+roofsAreUsuallyFlat: false
+shoulderLine: white
 speedUnits: [kilometers per hour]
 weightLimitUnits: [ton]
 workweekDays: 5

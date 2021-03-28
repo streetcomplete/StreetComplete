@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256.0" height="256.0" viewBox="0 0 256.0 256.0">
+  <path d="M128,-0h72v256h-72z" fill="#aaa"/>
+  <path d="m192,232h8m-8,-24h8m-8,-24h8m0,-24h-8m0,-24h8m-8,-24h8m-8,-24h8m-8,-24h8m-8,-24h8m-8,-24h8M128,232h16m-16,-24h16m-16,-24h16m-16,-24h16m-16,-24h16m-16,-48h16m-16,-24h16M128,16h16m-16,24h16m-16,72h16m16,120h16m-16,-24h16m-16,-24h16m-16,-24h16M160,136h16M160,88h16M160,64h16m-16,-48h16m-16,24h16M160,112h16m-32,132h16m-16,-24h16m-16,-24h16m-16,-24h16m-16,-24h16M144,124h16M144,76h16m-16,-24h16M144,4h16M144,28h16m-16,72h16M192,256V0m-16,0V256m-16,0V0m-16,0V256M176,27.42h16m-16,24h16m-16,192h16m-16,-24h16m-16,-24h16m-16,-24h16m-16,-24h16m-16,-24h16m-16,-24h16m-16,-24h16m-16,-72h16" fill="none" stroke-width="4" stroke="#999"/>
+  <path d="M120,-0h8v256h-8z" fill="#999"/>
+  <path d="M200,-0h8v256h-8z" fill="#999"/>
+  <path d="M112,-0h8v256h-8z" fill="#666"/>
+  <path d="M0,-0h112v256h-112z" fill="#808080"/>
+  <path d="M144,140l32,32l56,-64" fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="20" stroke="#3000"/>
+  <path d="M144,128l32,32l56,-64" fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="20" stroke="#3c0"/>
+</svg>

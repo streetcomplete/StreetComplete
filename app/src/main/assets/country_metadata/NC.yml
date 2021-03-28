@@ -1,3 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [BCI, OPT, Société Générale, BNC]
 officialLanguages: [fr]
 orchardProduces: [coconut, banana, guava, mango, mangosteen, orange, lemon, lime, coffee]

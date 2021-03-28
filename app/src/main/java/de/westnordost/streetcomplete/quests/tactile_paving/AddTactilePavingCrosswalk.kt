@@ -1,43 +1,51 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.toYesNo
 
-class AddTactilePavingCrosswalk(private val overpassMapDataApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<Boolean> {
+class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
+
+    private val crossingFilter by lazy { """
+        nodes with 
+          (
+            highway = traffic_signals and crossing = traffic_signals and foot != no
+            or highway = crossing and foot != no
+          )
+          and (
+            !tactile_paving
+            or tactile_paving = no and tactile_paving older today -4 years
+            or older today -8 years
+          )
+    """.toElementFilterExpression() }
+
+    private val excludedWaysFilter by lazy { """
+        ways with 
+          highway = cycleway and foot !~ yes|designated
+          or highway and access ~ private|no
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add tactile pavings on crosswalks"
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_pedestrian_crossing
-
-    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavingCrosswalk.kt
-    // #750
-    override val enabledInCountries = NoCountriesExcept(
-            // Europe
-            "NO", "SE",
-            "GB", "IE", "NL", "BE", "FR", "ES",
-            "DE", "PL", "CZ", "SK", "HU", "AT", "CH",
-            "LV", "LT", "EE", "RU",
-            // America
-            "US", "CA", "AR",
-            // Asia
-            "HK", "SG", "KR", "JP",
-            // Oceania
-            "AU", "NZ"
-    )
+    override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tactilePaving_title_crosswalk
 
-    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassMapDataApi.query(getOverpassQuery(bbox), handler)
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val excludedWayNodeIds = mutableSetOf<Long>()
+        mapData.ways
+            .filter { excludedWaysFilter.matches(it) }
+            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
+
+        return mapData.nodes
+            .filter { crossingFilter.matches(it) && it.id !in excludedWayNodeIds }
     }
 
     override fun isApplicableTo(element: Element): Boolean? = null
@@ -45,18 +53,6 @@ class AddTactilePavingCrosswalk(private val overpassMapDataApi: OverpassMapDataA
     override fun createForm() = TactilePavingForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("tactile_paving", if (answer) "yes" else "no")
+        changes.updateWithCheckDate("tactile_paving", answer.toYesNo())
     }
-
-    private fun getOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + "\n" + """
-        
-        way[highway = cycleway][foot !~ '^(yes|designated)$']; node(w) -> .exclusive_cycleway_nodes;
-        way[highway][access ~ '^(private|no)${'$'}']; node(w) -> .private_road_nodes;
-
-        node[highway = crossing][!tactile_paving][foot != no] -> .crossings;
-        
-        ((.crossings; - .private_road_nodes; ); - .exclusive_cycleway_nodes;);
-        """.trimIndent() + "\n" +
-        getQuestPrintStatement()
 }

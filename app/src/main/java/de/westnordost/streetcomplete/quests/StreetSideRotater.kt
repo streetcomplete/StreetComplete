@@ -2,34 +2,33 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Handler
 import android.os.Looper
-import androidx.annotation.AnyThread
 import android.view.View
-
+import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.util.centerLineOfPolyline
-import de.westnordost.streetcomplete.util.initialBearingTo
-import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
+import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
+import de.westnordost.streetcomplete.view.StreetRotateable
 
 class StreetSideRotater(
-    private val puzzle: StreetSideSelectPuzzle,
+    private val puzzle: StreetRotateable,
     private val compassView: View,
     geometry: ElementPolylinesGeometry
 ) {
-    private val wayOrientationAtCenter = geometry.getWayOrientationAtCenterLineInDegrees()
-    private val uiThread = Handler(Looper.getMainLooper())
+    private val wayOrientationAtCenter = geometry.getOrientationAtCenterLineInDegrees()
+    private val uiHandler = Handler(Looper.getMainLooper())
 
     @AnyThread fun onMapOrientation(rotation: Float, tilt: Float) {
-        uiThread.post {
-            puzzle.setStreetRotation(wayOrientationAtCenter + rotation.toDegrees())
-            compassView.rotation = rotation.toDegrees()
-            compassView.rotationX = tilt.toDegrees()
+        if (uiHandler.looper.thread == Thread.currentThread()) {
+            applyOrientation(rotation, tilt)
+        } else {
+            uiHandler.post { applyOrientation(rotation, tilt) }
         }
     }
 
-    private fun Float.toDegrees() = (180 * this / Math.PI).toFloat()
-
-    private fun ElementPolylinesGeometry.getWayOrientationAtCenterLineInDegrees(): Float {
-        val centerLine = polylines.first().centerLineOfPolyline()
-        return centerLine.first.initialBearingTo(centerLine.second).toFloat()
+    private fun applyOrientation(rotation: Float, tilt: Float) {
+        puzzle.setStreetRotation(wayOrientationAtCenter + rotation.toDegrees())
+        compassView.rotation = rotation.toDegrees()
+        compassView.rotationX = tilt.toDegrees()
     }
+
+    private fun Float.toDegrees() = (180 * this / Math.PI).toFloat()
 }

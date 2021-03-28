@@ -12,8 +12,8 @@ import androidx.preference.PreferenceManager
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
+import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_generic_list.*
 import java.util.*
@@ -27,11 +27,12 @@ import kotlin.math.max
 abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
 
     override val contentLayoutResId = R.layout.quest_generic_list
+    override val defaultExpanded = false
 
     protected lateinit var imageSelector: GroupedImageSelectAdapter<I>
 
-    protected abstract val allItems: List<Item<I>>
-    protected abstract val topItems: List<Item<I>>
+    protected abstract val allItems: List<GroupableDisplayItem<I>>
+    protected abstract val topItems: List<GroupableDisplayItem<I>>
 
     @Inject internal lateinit var favs: LastPickedValuesStore<I>
 
@@ -89,9 +90,9 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
         }
     }
 
-    private fun getInitialItems(): List<Item<I>> {
+    private fun getInitialItems(): List<GroupableDisplayItem<I>> {
         val items = LinkedList(topItems)
-        favs.moveLastPickedToFront(javaClass.simpleName, items, allItems)
+        favs.moveLastPickedGroupableDisplayItemToFront(javaClass.simpleName, items, allItems)
         return items
     }
 
@@ -114,14 +115,14 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
                         .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                         .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                             favs.add(javaClass.simpleName, itemValue)
-                            onClickOk(item.value)
+                            onClickOk(itemValue)
                         }
                         .show()
                 }
             }
             else {
                 favs.add(javaClass.simpleName, itemValue)
-                onClickOk(item.value)
+                onClickOk(itemValue)
             }
         }
     }

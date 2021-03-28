@@ -1,24 +1,22 @@
 package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
-
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isGone
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.FOOT_AND_INCH
+import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.METER
 import de.westnordost.streetcomplete.util.TextChangedWatcher
-
-import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.*
 
 class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
@@ -47,6 +45,10 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private fun setMaxHeightSignLayout(resourceId: Int, unit: HeightMeasurementUnit) {
         val contentView = setContentView(resourceId)
 
+        val splitWayHint = contentView.findViewById<TextView>(R.id.splitWayHint)
+        splitWayHint?.text = getString(R.string.quest_maxheight_split_way_hint, getString(R.string.quest_generic_answer_differs_along_the_way))
+        splitWayHint?.isGone = osmElement!!.type == Element.Type.NODE
+
         meterInput = contentView.findViewById(R.id.meterInput)
         feetInput = contentView.findViewById(R.id.feetInput)
         inchInput = contentView.findViewById(R.id.inchInput)
@@ -60,8 +62,8 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         feetInputSign = contentView.findViewById(R.id.feetInputSign)
 
         heightUnitSelect = contentView.findViewById(R.id.heightUnitSelect)
-        heightUnitSelect?.visibility = if (heightUnits.size == 1) View.GONE else View.VISIBLE
-        heightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, heightUnits)
+        heightUnitSelect?.isGone = heightUnits.size == 1
+        heightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, heightUnits)
         heightUnitSelect?.setSelection(0)
         heightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
@@ -85,8 +87,8 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         val isMetric = unit == METER
         val isImperial = unit == FOOT_AND_INCH
 
-        meterInputSign?.visibility = if (isMetric) View.VISIBLE else View.GONE
-        feetInputSign?.visibility = if (isImperial) View.VISIBLE else View.GONE
+        meterInputSign?.isGone = !isMetric
+        feetInputSign?.isGone = !isImperial
 
         if (isMetric) meterInput?.requestFocus()
         if (isImperial) feetInput?.requestFocus()
@@ -130,8 +132,8 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_maxheight_answer_noSign_question)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
-            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
+            .setPositiveButton(R.string.quest_maxheight_answer_noSign_question_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
+            .setNegativeButton(R.string.quest_maxheight_answer_noSign_question_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
             .show()
         }
     }

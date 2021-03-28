@@ -156,6 +156,53 @@ class SplitSingleWayUploaderTest {
         )))
     }
 
+    @Test fun `split way copies tags to all resulting elements`() {
+        val tags = mapOf(
+            "highway" to "residential",
+            "surface" to "asphalt"
+        )
+        way = OsmWay(0,1, mutableListOf(0,1,2,3), tags)
+
+        val elements = doSplit(SplitAtPoint(p[1]))
+        for (way in elements.ways) {
+            assertEquals(tags, way.tags)
+        }
+    }
+
+    @Test fun `split way deletes tags that may be wrong after split`() {
+        val tags = mapOf(
+            "seats" to "55",
+            "step_count" to "12",
+            "steps" to "4",
+            "capacity" to "33",
+            "parking:lane:both:capacity" to "5",
+            "parking:lane:both:capacity:disabled" to "1",
+            "capacity:fat_persons" to "1",
+            "incline" to "5.1%"
+        )
+        way = OsmWay(0,1, mutableListOf(0,1,2,3), tags)
+
+        val elements = doSplit(SplitAtPoint(p[1]))
+        for (way in elements.ways) {
+            assertEquals(mapOf<String, String>(), way.tags)
+        }
+    }
+
+    @Test fun `split way does not delets tags that may be wrong after split under certain conditions`() {
+        val tags = mapOf(
+            "capacityaspartofaname:yes" to "ok",
+            "aspartofanamecapacity:yes" to "ok",
+            "steps" to "yes",
+            "incline" to "up"
+        )
+        way = OsmWay(0,1, mutableListOf(0,1,2,3), tags)
+
+        val elements = doSplit(SplitAtPoint(p[1]))
+        for (way in elements.ways) {
+            assertEquals(tags, way.tags)
+        }
+    }
+
     @Test fun `split way with one split position at vertex`() {
         val elements = doSplit(SplitAtPoint(p[1]))
         assertTrue(elements.nodes.isEmpty()) // no nodes were added
@@ -257,12 +304,12 @@ class SplitSingleWayUploaderTest {
 
     @Test fun `reuse object id of longest split chunk (= second chunk)`() {
         val elements = doSplit(SplitAtPoint(p[1]))
-        assertEquals(way.id, elements.ways.maxBy { it.nodeIds.size }?.id)
+        assertEquals(way.id, elements.ways.maxByOrNull { it.nodeIds.size }?.id)
     }
 
     @Test fun `reuse object id of longest split chunk (= first chunk)`() {
         val elements = doSplit(SplitAtPoint(p[2]))
-        assertEquals(way.id, elements.ways.maxBy { it.nodeIds.size }?.id)
+        assertEquals(way.id, elements.ways.maxByOrNull { it.nodeIds.size }?.id)
     }
 
     @Test fun `insert all way chunks into relation the way is a member of`() {

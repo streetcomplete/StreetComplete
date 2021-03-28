@@ -10,6 +10,7 @@ import androidx.core.content.withStyledAttributes
 import de.westnordost.streetcomplete.R
 import kotlin.math.sqrt
 
+/** A frame layout that masks its children in a circle or oval if not square */
 open class CircularMaskFrameLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

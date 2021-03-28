@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/quest_address_answer_no_housenumber_message2"
+        android:text="@string/quest_address_answer_no_housenumber_message2b"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
 
 </LinearLayout>

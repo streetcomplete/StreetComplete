@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.opening_hours.model
 
+import kotlin.math.max
+import kotlin.math.min
+
 /** aka number range / Zahlenraum  */
 class NumberSystem(private val min: Int, private val max: Int) {
 
@@ -8,8 +11,8 @@ class NumberSystem(private val min: Int, private val max: Int) {
     }
 
     fun getSize(section: CircularSection): Int {
-        val s = Math.max(min, section.start)
-        val e = Math.min(section.end, max)
+        val s = max(min, section.start)
+        val e = min(section.end, max)
         return if (s <= e) e - s + 1 else max - s + 1 + e - min + 1
     }
 
@@ -23,7 +26,7 @@ class NumberSystem(private val min: Int, private val max: Int) {
             if (range.start > start) {
                 complementList.add(CircularSection(start, range.start - 1))
             }
-            start = Math.max(start, range.end + 1)
+            start = max(start, range.end + 1)
             if (start > max) break
         }
         if (start <= max) complementList.add(CircularSection(start, max))

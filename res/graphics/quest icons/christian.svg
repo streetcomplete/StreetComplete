@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64s-64-28.654-64-64 28.654-64 64-64 64 28.654 64 64" fill="#9bbe55" stroke-width=".2"/>
+ <path d="m55 25v24h-24v16h24v48h16v-48h24v-16h-24v-24z" fill-opacity=".2" style="paint-order:markers fill stroke"/>
+ <path id="christian" d="m55 20v24h-24v16h24v48h16v-48h24v-16h-24v-24z" fill="#9d6147" style="paint-order:markers fill stroke"/>
+</svg>

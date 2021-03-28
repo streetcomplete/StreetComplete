@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64s-64-28.654-64-64 28.654-64 64-64 64 28.654 64 64" fill="#c8c4b7" stroke-width=".2"/>
+ <path d="m2.0469 47.892c-0.91434 3.607-1.534 7.4763-1.8164 10.881v10.453c2.5663 31.714 28.236 56.893 60.168 58.666h7.2031c33.669-1.869 60.398-29.756 60.398-63.893-0.1586-5.8465-0.718-10.948-2.0468-16.107z" fill="#c5a787" stroke-width=".2"/>
+ <g transform="matrix(-.2 0 0 .2 137.58 -13.426)">
+  <path d="m366.72 606.59-120-120v-140h80v100h80v-100h80v140z" fill-opacity=".2" fill-rule="evenodd" stroke-width="8"/>
+  <path d="m216.72 506.59 150 150.62 150-150.62" fill="none" stroke="#000" stroke-linecap="square" stroke-opacity=".2" stroke-width="40"/>
+ </g>
+ <g transform="matrix(-.2 0 0 .2 137.58 -17.426)">
+  <path d="m366.72 606.59-120-120v-140h80v100h80v-100h80v140z" fill="#fff" fill-rule="evenodd" stroke-width="8"/>
+  <path d="m216.72 506.59 150 150.62 150-150.62" fill="none" stroke="#c84747" stroke-linecap="square" stroke-width="40"/>
+ </g>
+ <path d="m3.2481 43.892c-0.85932 2.5977-1.5565 5.2668-2.0801 8h125.68c-0.5236-2.7332-1.2208-5.4023-2.0801-8z" fill="#79ae54" stroke-width=".2"/>
+</svg>

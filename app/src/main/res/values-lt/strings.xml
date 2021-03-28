@@ -169,7 +169,7 @@
     <string name="about_title_authors">"Autoriai"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick ir talkininkai"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick ir talkininkai"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Išeities kodo repozitorija"</string>
@@ -201,9 +201,6 @@
 
     <!-- Fuzzy -->
     <string name="no_gps_no_quests">"Kad automatiškai ieškotumėte užduočių apie jus - įjunkite vietos nustatymą"</string>
-
-    <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Daugiau nėra užduočių"</string>
 
     <!-- Fuzzy -->
     <string name="later">"Vėliau"</string>
@@ -259,11 +256,9 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Rodyti daugiau..."</string>
 
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Jis turi kelias skirtingas formas"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Automatinė sinchronizacija"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Nutolinti"</string>
@@ -289,15 +284,9 @@ Jūsų vieta naudojama tik automatinei užduočių aplink jus paieškai. Nesijau
 
 &lt;p&gt;&lt;b&gt;Duomenų naudojimas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. Per &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; atsisiunčiamos užduotys (o tai anonimiška), o per &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; įkeliami pakeitimai.&lt;br/&gt;
-Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;paprastą tekstinį failą&lt;/a&gt; mano serveryje, kurio pagalba patikrina, ar jai nėra uždrausta įkelti pakeitimus. Tai atsargos priemonė, kad jei paaiškėja, kad kažkuri aplikacijos versija turi kritinių klaidų, jai nebūtų leista gadinti OSM duomenų.&lt;br/&gt;
+Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;paprastą tekstinį failą&lt;/a&gt; mano serveryje, kurio pagalba patikrina, ar jai nėra uždrausta įkelti pakeitimus. Tai atsargos priemonė, kad jei paaiškėja, kad kažkuri aplikacijos versija turi kritinių klaidų, jai nebūtų leista gadinti OSM duomenų.&lt;br/&gt;
 &lt;/p&gt;
-&lt;p&gt;
-Žemėlapio rodymui, vektorinės kaladėlės atsiunčiamos iš &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vektorinių kaladėlių paslaugos&lt;/a&gt;, kuri yra anoniminė. Užklausos rašomos į žurnalą, kad būtų žinoma, kurios vietovės populiarios išankstiniam sukūrimui ir greitaveikos patobulinimams. Jų platforma taipogi įrašo ir IP adresą bei paslaugas teikia per Amazon, kuri gali nustatyti, kas daroma su šia informacija.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Tai kol kas dar nepadaryta, bet noriu informuoti, kas bus artimiausiu metu:&lt;/i&gt;) Duomenys rodomi lyderių lentoje ir profilyje agreguojami iš viešai prieinamos OpenStreetMap informacijos. Duomenys imami ne iš šios aplikacijos, bet iš viešos OSM naudotojų pakeitimų istorijos.
-&lt;/p&gt;"</string>
+"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"Įjungta"</string>
@@ -369,18 +358,6 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Kokio tipo tai privažiavimas?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_title">"Kiek juostų turi šis kelias?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_description">"Jei nėra horizontalaus žymėjimo, nėra jokių juostų."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_answer_noLanes">"Neturi pažymėtų juostų"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Nurodykite, kiek apytiksliai mašinų tilps viena greta kitos šiame kelyje."</string>
 
     <!-- Fuzzy -->
     <string name="quest_oneway_title">"Ar tai vienpusis kelias?"</string>
@@ -701,7 +678,7 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="credits_contributors">"&lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;Pilnas sąrašas GitHub'e&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor projekte&lt;/a&gt; rasite pilną sąrašą."</string>
+    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor projekte&lt;/a&gt; rasite pilną sąrašą."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Vertimai"</string>
@@ -877,9 +854,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_crossing_type_signals">"Perėja su šviesoforu"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Nereguliuojama perėja"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Perėja be horizontalaus žymėjimo"</string>
     <string name="compass_north_one_letter">"Š"</string>
 
@@ -996,9 +970,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_cycleway_value_track_dual">"dviračių takas į abi puses"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_sidewalk_allowed">"nėra, bet dviratininkai gali važiuoti šaligatviu"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Išmanesni"</string>
 
     <!-- Fuzzy -->
@@ -1014,7 +985,7 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="action_reset">"Atstatyti"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Ilgai spauskite ir tempkite užduotį, kad pakeistumėte jos prioritetą atsiuntimui ir rodymui žemėlapyje."</string>
+    <string name="reorder_quest_priority_hint">"Ilgai spauskite ir tempkite užduotį, kad pakeistumėte jos prioritetą rodymui žemėlapyje."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Atšaukti"</string>
@@ -1356,9 +1327,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_buildingType_house">"Namas"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"vienos šeimos namas"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"namas kelioms šeimoms, gali turėti prekybos vietas pirmame aukšte"</string>
 
     <!-- Fuzzy -->
@@ -1377,9 +1345,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_buildingType_semi_detached_description">"pora vienos šeimos namų"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Eilės namas"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"eilė panašių vienos šeimos namų"</string>
 
     <!-- Fuzzy -->
@@ -1391,9 +1356,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Namas ant vandens"</string>
     <string name="quest_buildingType_bungalow">"Vasarnamis"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow_description">"mažas atskiras namas (vasarnamis, atostogų namas, ...)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Statinis karavanas"</string>
@@ -1547,9 +1509,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_address_answer_no_housenumber_message1">"Pastatas buvo pažymėtas kaip:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber_message2">"Ar tai tiesa ir jis nėra tik pastato dalis?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Šventykla"</string>
 
     <!-- Fuzzy -->
@@ -1627,12 +1586,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_noteDiscussion_hide2">"Paslėpė %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_title">"Kaip apsaugota ši geležinkelio pervaža?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_railway_crossing_barrier_none">"Niekaip"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Nuotraukos, kurias pridedate prie pastabos, įkeliamos į mano serverį ir ištrinamos po kelių dienų, kai pastaba išsprendžiama. Įkėlimo metu ištrinami metaduomenys.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1651,12 +1604,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_tracktype_grade1">"Tvirtas"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Daugiausia tvirtas"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Įvairus"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Daugiausia minkštas"</string>
 
     <!-- Fuzzy -->
@@ -1667,9 +1614,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Ar šis pastatas pilnai po žeme?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_traffic_signals_sound_title">"Ar čia yra garso signalai akliesiems?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Dalinai reiškia, kad yra daugiau nei vienas laiptelis priėjimui."</string>
@@ -1744,12 +1688,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="map_application_missing">"Nėra įdiegtų kitų žemėlapių programėlių"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_select">"Keisti Overpass serverį"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_overpass_url_info">"Reikalauja iš naujo paleisti programėlę. Gali išvengti cenzūros pavyzdžiui Maskvoje."</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"namo numeris"</string>
 
     <!-- Fuzzy -->
@@ -1798,7 +1736,7 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_generic_answer_differs_along_the_way">"Skirtingose vietose skirtinga..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Jei skirtingose vietose skirtinga, pirmas žingsnis yra padalinti kelią. Po to bus galima atsakyti į užduotį kiekvienai daliai atskirai. Pastebėtina, kad užduotys padalintoms dalims gali pasirodyti daug vėliau. Padalinti dabar?"</string>
+    <string name="quest_split_way_description">"Jei skirtingose vietose skirtinga, pirmas žingsnis yra padalinti kelią. Po to bus galima atsakyti į užduotį kiekvienai daliai atskirai. Padalinti dabar?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Spustelėkite ant kelio toje vietoje, kur atsakymai skiriasi. Pabandykite skirtumo vietą nurodyti kiek galima tiksliau, priartinkite kaip visada."</string>
@@ -1817,9 +1755,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Koks čia yra svorio apribojimas?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_noSign">"Čia nėra ženklo"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Svoris atrodo neįmanomas. Ar tikrai jis teisingas?"</string>
@@ -1853,9 +1788,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nematyti jokio numerio..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Spauskite klaustukus ir parinkite atsakymą nurodytai kelio pusei."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Ką čia galima palikti perdirbimui?"</string>
@@ -2271,4 +2203,16 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
 
     <!-- Fuzzy -->
     <string name="stats_are_syncing">"Jūsų statistika vis dar atnaujinama. Grįžkite čia vėliau."</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Namo pavadinimas %s:"</string>
+    <string name="at_conscription_and_street_number">"Užsakymo numeris %1$s, orientacijos numeris %2$s:"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_conscription_number">"Užsakymo numeris %s:"</string>
+    <string name="at_housenumber">"namo numeris %s:"</string>
+    <string name="quest_openingHours_name_type_title">"Koks yra %1$s (%2$s) darbo laikas?"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"Ar %1$s (%2$s) prieinamas vežimėliu?"</string>
+    <string name="quest_accepts_cash_type_title">"Ar %1$s (%2$s) priima mokėjimus grynais?"</string>
+    <string name="quest_traffic_signals_sound_title">"Ar čia yra garso signalai akliesiems?"</string>
 </resources>

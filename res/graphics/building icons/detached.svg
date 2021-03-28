@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(3.7795 0 0 3.7795 -128 -1002.5)">
+  <path d="m57.15 277.95h3.175v11.642h-3.175z" fill="#95685e" style="paint-order:stroke markers fill"/>
+  <ellipse transform="scale(-1,1)" cx="-58.69" cy="273.26" rx="5.8191" ry="4.7546" fill="#5aaa55" style="paint-order:stroke markers fill"/>
+  <ellipse transform="scale(-1,1)" cx="-55.547" cy="277.42" rx="4.7475" ry="4.7546" fill="#57a352" style="paint-order:stroke markers fill"/>
+  <ellipse transform="scale(-1,1)" cx="-61.895" cy="278.55" rx="4.7498" ry="4.7546" fill="#539c4e" style="paint-order:stroke markers fill"/>
+ </g>
+ <g transform="matrix(2.6166 0 0 2.6166 4 -655.59)">
+  <path d="m4.5861 294.88h25.988v-15.287l-13.758-9.1722-12.23 9.1722z" fill="#deb486"/>
+  <rect x="6.1148" y="265.84" width="6.1148" height="9.1722" fill="#deb486" style="paint-order:stroke markers fill"/>
+  <path d="m1.5287 281.12 15.287-13.758 16.816 13.758" fill="none" stroke="#c84747" stroke-width="4.5861"/>
+  <rect x="18.344" y="282.65" width="6.1148" height="12.23" fill="#c08268" style="paint-order:stroke markers fill"/>
+  <rect x="7.6435" y="284.18" width="7.6435" height="6.1148" fill="#95685e" style="paint-order:stroke markers fill"/>
+  <rect x="7.6435" y="282.65" width="7.6435" height="1.5287" fill="#c08268" style="paint-order:stroke markers fill"/>
+ </g>
+ <path d="m12.129 115.87c-8.9032 0-8.9032-11.777 0-11.871 5.9355-8.8095 11.871 0 11.871 0 5.9355-5.9355 11.871 0 11.871 2.9677 5.9355 0 2.9677 8.9032 0 8.9032 0.81897 0.47724-10.791 6.4482-23.742 0z" fill="#539c4e"/>
+</svg>

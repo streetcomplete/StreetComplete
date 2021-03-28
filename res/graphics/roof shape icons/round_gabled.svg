@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient5412" x1="27.781" x2="30.427" y1="278.48" y2="285.09" gradientTransform="matrix(5.178 0 0 5.178 -109.1 -1414.1)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+   <stop stop-color="#ffafaf" offset="0"/>
+   <stop stop-color="#e44848" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g fill-rule="evenodd" stroke-linejoin="bevel">
+  <path d="m16.94 27.9c9.3798 10.123 12.549 23.683 13.7 38.36v27.4l-23.29-23.29-5.5e-6 -30.14" fill="#f2eeee" stroke="#916f6f"/>
+  <path d="m4.61 42.97h2.74c0-2.74 8.22-13.7 12.33-13.7l-2.74-1.37c-4.11 0-12.33 12.33-12.33 15.07z" fill="#cd2323" stroke="#a00"/>
+  <path d="m30.64 66.26 57.54-19.18v27.4l-57.54 19.18v-27.4" fill="#e0d8d8" stroke="#916f6f" stroke-linecap="square"/>
+  <path d="m29.27 67.63 61.65-20.55c1.1e-5 -13.7-5.48-32.88-12.33-39.73l-61.65 20.55c6.85 6.85 12.33 26.03 12.33 39.73z" fill="url(#linearGradient5412)" stroke="#a00"/>
+ </g>
+</svg>

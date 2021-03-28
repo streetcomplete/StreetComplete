@@ -1,4 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [SBM, MCB, Mauritius Commercial Bank, Barclays, MCB ATM, HSBC]
+centerLine: white
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
@@ -6,3 +8,4 @@ mobileCountryCode: 617
 officialLanguages: [en, fr, mfe]
 orchardProduces: [tomato, pineapple, banana, chilli_pepper, sweet_pepper, coconut, tea, pistachio]
 popularReligions: [hindu, christian, muslim]
+shoulderLine: short white dashes

@@ -8,13 +8,12 @@ import android.graphics.drawable.Animatable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import android.view.WindowInsets
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
+import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import de.westnordost.osmapi.map.data.LatLon
@@ -34,6 +33,7 @@ import de.westnordost.streetcomplete.util.alongTrackDistanceTo
 import de.westnordost.streetcomplete.util.crossTrackDistanceTo
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -86,7 +86,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupFittingToSystemWindowInsets()
+        bottomSheetContainer.respectSystemInsets(View::setMargins)
 
         splitWayRoot.setOnTouchListener { _, event ->
             clickPos = PointF(event.x, event.y)
@@ -97,8 +97,8 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         cancelButton.setOnClickListener { activity?.onBackPressed() }
         undoButton.setOnClickListener { onClickUndo() }
 
-        undoButton.visibility = if (hasChanges) View.VISIBLE else View.INVISIBLE
-        okButton.visibility = if (isFormComplete) View.VISIBLE else View.INVISIBLE
+        undoButton.isInvisible = !hasChanges
+        okButton.isInvisible = !isFormComplete
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
@@ -112,24 +112,6 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             view.findViewById<View>(R.id.speechbubbleContentContainer).startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
-        }
-    }
-
-    private fun setupFittingToSystemWindowInsets() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            view?.setOnApplyWindowInsetsListener { v: View, insets: WindowInsets ->
-
-                bottomSheetContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    setMargins(
-                        insets.systemWindowInsetLeft,
-                        insets.systemWindowInsetTop,
-                        insets.systemWindowInsetRight,
-                        insets.systemWindowInsetBottom
-                    )
-                }
-
-                insets
-            }
         }
     }
 
@@ -189,7 +171,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             context?.toast(R.string.quest_split_way_too_imprecise)
             return true
         }
-        val splitWay = splitWayCandidates.minBy { it.pos.distanceTo(position) }!!
+        val splitWay = splitWayCandidates.minByOrNull { it.pos.distanceTo(position) }!!
         val splitPosition = splitWay.pos
 
         // new split point is too close to existing split points
@@ -245,14 +227,14 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
 
     private fun createSplitsForLines(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitAtLinePosition> {
         val result = mutableSetOf<SplitAtLinePosition>()
-        positions.forEachPair { first, second ->
+        positions.forEachLine { first, second ->
             val crossTrackDistance = abs(clickPosition.crossTrackDistanceTo(first, second))
             if (clickAreaSizeInMeters > crossTrackDistance) {
                 val alongTrackDistance = clickPosition.alongTrackDistanceTo(first, second)
                 val distance = first.distanceTo(second)
                 if (distance > alongTrackDistance && alongTrackDistance > 0) {
                     val delta = alongTrackDistance / distance
-                    result.add(SplitAtLinePosition(first, second, delta))
+                    result.add(SplitAtLinePosition(OsmLatLon(first), OsmLatLon(second), delta))
                 }
             }
         }

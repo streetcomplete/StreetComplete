@@ -21,4 +21,10 @@
         <attr name="pinRotation" format="float"/>
         <attr name="iconSrc" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="VerticalLabelView">
+        <attr name="orientationRight" format="boolean"/>
+        <attr name="android:text" format="reference"/>
+        <attr name="android:textSize" format="dimension"/>
+        <attr name="android:textColor" format="color"/>
+    </declare-styleable>
 </resources>

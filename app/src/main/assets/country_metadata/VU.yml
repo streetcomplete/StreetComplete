@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [ANZ, Westpac, Goodies]
 mobileCountryCode: 541
 officialLanguages: [bi, fr, en]
 orchardProduces: [coconut, banana, cacao, coffee]

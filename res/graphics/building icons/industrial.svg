@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m80 24h16l4 88h-24z" fill="#aaa"/>
+ <path d="m32 24h16l4 88h-24z" fill="#aaa"/>
+ <path d="m16 112h96v-60l-48 20v-20l-48 20z" fill="#b75858"/>
+ <path d="m12 76 56-24" fill="none" stroke="#333" stroke-width="12"/>
+ <rect x="80" y="80" width="24" height="32" fill="#aaa" style="paint-order:stroke markers fill"/>
+ <rect x="84" y="84" width="16" height="4" fill="#808080" style="paint-order:stroke markers fill"/>
+ <rect x="84" y="94" width="16" height="4" fill="#808080" style="paint-order:stroke markers fill"/>
+ <rect x="84" y="104" width="16" height="4" fill="#808080" style="paint-order:stroke markers fill"/>
+ <path d="m64 72 52-20" fill="none" stroke="#333" stroke-width="12"/>
+ <rect x="24" y="84" width="12" height="16" fill="#aaa" style="paint-order:normal"/>
+ <rect x="24" y="84" width="12" height="4" fill="#808080" style="paint-order:normal"/>
+ <rect x="42" y="84" width="12" height="16" fill="#aaa" style="paint-order:normal"/>
+ <rect x="42" y="84" width="12" height="4" fill="#808080" style="paint-order:normal"/>
+ <rect x="60" y="84" width="12" height="16" fill="#aaa" style="paint-order:normal"/>
+ <rect x="60" y="84" width="12" height="4" fill="#808080" style="paint-order:normal"/>
+ <rect x="32" y="16" width="16" height="8" fill="#808080" style="paint-order:normal"/>
+ <rect x="80" y="16" width="16" height="8" fill="#808080" style="paint-order:normal"/>
+ <rect x="32" y="32" width="16" height="8" fill="#808080" style="paint-order:normal"/>
+ <rect x="80" y="32" width="16" height="8" fill="#808080" style="paint-order:normal"/>
+</svg>

@@ -14,6 +14,7 @@ import androidx.core.animation.addListener
 import com.mapzen.tangram.CameraUpdateFactory
 import com.mapzen.tangram.MapController
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.LatLons
 import de.westnordost.osmapi.map.data.OsmLatLon
 import kotlin.math.PI
 
@@ -77,11 +78,6 @@ class CameraManager(private val c: MapController, private val contentResolver: C
             cancelCameraAnimations(update)
             if (duration == 0L || isAnimationsOff) {
                 applyCameraUpdate(update)
-                // workaround https://github.com/tangrams/tangram-es/issues/2129
-                mainHandler.post {
-                    listener?.onAnimating()
-                    listener?.onAnimationsEnded()
-                }
             } else {
                 animateCameraUpdate(update, duration, interpolator)
             }
@@ -171,6 +167,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     }
 
     private fun pushCameraPositionToController() {
+        LatLons.checkValidity(_tangramCamera.latitude, _tangramCamera.longitude)
         c.updateCameraPosition(CameraUpdateFactory.newCameraPosition(_tangramCamera))
     }
 

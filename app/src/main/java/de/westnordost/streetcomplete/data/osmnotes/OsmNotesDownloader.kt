@@ -62,7 +62,7 @@ class OsmNotesDownloader @Inject constructor(
          * Likely, if something is posed as a question, the reporter expects someone to
          * answer/comment on it, so let's only show these */
         val showNonQuestionNotes = preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
-        return !(quest.probablyContainsQuestion() || showNonQuestionNotes)
+        return !(quest.probablyContainsQuestion() || quest.note.containsSurveyRequiredMarker() || showNonQuestionNotes)
     }
 
     private fun shouldMakeNoteClosed(userId: Long?, note: Note): Boolean {
@@ -77,12 +77,13 @@ class OsmNotesDownloader @Inject constructor(
     }
 }
 
+private fun Note.containsSurveyRequiredMarker(): Boolean {
+    val surveyRequiredMarker = "#surveyme"
+    return comments.any { it.text?.matches(".*$surveyRequiredMarker.*".toRegex()) == true }
+}
+
 private fun Note.containsCommentFromUser(userId: Long): Boolean {
-    for (comment in comments) {
-        val isComment = comment.action == NoteComment.Action.COMMENTED
-        if (comment.isFromUser(userId) && isComment) return true
-    }
-    return false
+    return comments.any { it.isFromUser(userId) && it.isComment  }
 }
 
 private fun Note.probablyCreatedByUserInApp(userId: Long): Boolean {
@@ -91,6 +92,9 @@ private fun Note.probablyCreatedByUserInApp(userId: Long): Boolean {
     return firstComment.isFromUser(userId) && isViaApp
 }
 
-private fun NoteComment.isFromUser(userId: Long): Boolean {
-    return user != null && user.id == userId
-}
+private val NoteComment.isComment: Boolean get() =
+    action == NoteComment.Action.COMMENTED
+
+private fun NoteComment.isFromUser(userId: Long): Boolean =
+    user?.id == userId
+

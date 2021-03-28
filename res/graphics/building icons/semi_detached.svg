@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m16 104h96v-36h-96z" fill="#deb486"/>
+ <rect x="44" y="76" width="16" height="28" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="24" y="80" width="12" height="12" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="24" y="76" width="12" height="4.0001" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <path d="m8 68 8-32h96l8 32z" fill="#c84747"/>
+ <rect x="24" y="28" width="12" height="20" fill="#deb486" style="paint-order:stroke markers fill"/>
+ <rect x="68" y="76" width="16" height="28" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="92" y="80" width="12" height="12" fill="#95685e" style="paint-order:stroke markers fill"/>
+ <rect x="92" y="76" width="12" height="4" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="92" y="28" width="12" height="20" fill="#deb486" style="paint-order:stroke markers fill"/>
+ <path d="m12.129 107.87c-8.9032 0-8.9032-11.777 0-11.871 5.9355-8.8095 11.871 0 11.871 0 5.9355-5.9355 11.871 0 11.871 2.9677 5.9355 0 2.9677 8.9032 0 8.9032 0.81899 0.47724-10.791 6.4482-23.742 0z" fill="#539c4e"/>
+ <path d="m116 112c17.102-3.457 1.663-19.481-2.9583-29.696-4.6667 9.9125-16.283 30.094 2.9583 29.696z" fill="#57a352"/>
+ <path d="m105.89 113.1c-12.398-0.18369-5.4655-11.962-4.3955-17.334 8.3352 4.9313 11.619 13.08 4.3955 17.334z" fill="#539c4e"/>
+</svg>

@@ -5,6 +5,8 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -12,7 +14,9 @@ import javax.inject.Singleton
 /** Access and listen to quests visible on the map */
 @Singleton class VisibleQuestsSource @Inject constructor(
     private val osmQuestController: OsmQuestController,
-    private val osmNoteQuestController: OsmNoteQuestController
+    private val osmNoteQuestController: OsmNoteQuestController,
+    private val visibleQuestTypeDao: VisibleQuestTypeDao,
+    private val teamModeQuestFilter: TeamModeQuestFilter
 ) {
     private val listeners: MutableList<VisibleQuestListener> = CopyOnWriteArrayList()
 
@@ -32,13 +36,18 @@ import javax.inject.Singleton
         }
 
         override fun onUpdated(added: Collection<OsmQuest>, updated: Collection<OsmQuest>, deleted: Collection<Long>) {
-            onUpdatedVisibleQuests(added, updated, deleted, QuestGroup.OSM)
+            onUpdatedVisibleQuests(
+                added.filter { visibleQuestTypeDao.isVisible(it.type) },
+                updated.filter { visibleQuestTypeDao.isVisible(it.type) },
+                deleted,
+                QuestGroup.OSM
+            )
         }
     }
 
     private val osmNoteQuestStatusListener = object : OsmNoteQuestController.QuestStatusListener {
         override fun onAdded(quest: OsmNoteQuest) {
-            if(quest.status.isVisible) {
+            if (quest.status.isVisible) {
                 onQuestBecomesVisible(quest, QuestGroup.OSM_NOTE)
             }
         }
@@ -62,23 +71,30 @@ import javax.inject.Singleton
         }
     }
 
+    private val teamModeChangeListener = object : TeamModeQuestFilter.TeamModeChangeListener {
+        override fun onTeamModeChanged(enabled: Boolean) {
+            onVisibleQuestsInvalidated()
+        }
+    }
+
     init {
         osmQuestController.addQuestStatusListener(osmQuestStatusListener)
         osmNoteQuestController.addQuestStatusListener(osmNoteQuestStatusListener)
+        teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
 
-    /** Get count of all unanswered quests in given bounding box of given types */
-    fun getAllVisibleCount(bbox: BoundingBox, questTypes: Collection<String>): Int {
-        if (questTypes.isEmpty()) return 0
-        return osmQuestController.getAllVisibleInBBoxCount(bbox, questTypes) +
+    /** Get count of all unanswered quests in given bounding box */
+    fun getAllVisibleCount(bbox: BoundingBox): Int {
+        return osmQuestController.getAllVisibleInBBoxCount(bbox) +
                 osmNoteQuestController.getAllVisibleInBBoxCount(bbox)
     }
 
     /** Retrieve all visible (=new) quests in the given bounding box from local database */
     fun getAllVisible(bbox: BoundingBox, questTypes: Collection<String>): List<QuestAndGroup> {
-        val osmQuests = osmQuestController.getAllVisibleInBBox(bbox, questTypes)
-        val osmNoteQuests = osmNoteQuestController.getAllVisibleInBBox(bbox)
+        if (questTypes.isEmpty()) return listOf()
+        val osmQuests = osmQuestController.getAllVisibleInBBox(bbox, questTypes).filter { teamModeQuestFilter.isVisible(it) }
+        val osmNoteQuests = osmNoteQuestController.getAllVisibleInBBox(bbox).filter { teamModeQuestFilter.isVisible(it) }
 
         return osmQuests.map { QuestAndGroup(it, QuestGroup.OSM) } +
                 osmNoteQuests.map { QuestAndGroup(it, QuestGroup.OSM_NOTE) }
@@ -98,13 +114,19 @@ import javax.inject.Singleton
         listeners.forEach { it.onUpdatedVisibleQuests(emptyList(), listOf(questId), group) }
     }
     private fun onUpdatedVisibleQuests(added: Collection<Quest>, updated: Collection<Quest>, deleted: Collection<Long>, group: QuestGroup) {
-        val addedQuests = added.filter { it.status.isVisible } + updated.filter { it.status.isVisible }
-        val deletedQuestIds = updated.filter { !it.status.isVisible }.map { it.id!! } + deleted
+        val addedQuests = (added + updated).filter { it.status.isVisible && teamModeQuestFilter.isVisible(it) }
+        val deletedQuestIds = updated.filter { !it.status.isVisible || !teamModeQuestFilter.isVisible(it) }.map { it.id!! } + deleted
         listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestIds, group) }
     }
-
+    private fun onVisibleQuestsInvalidated() {
+        listeners.forEach { it.onVisibleQuestsInvalidated() }
+    }
 }
 
 interface VisibleQuestListener {
+    /** Called when given quests in the given group have been added/removed */
     fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<Long>, group: QuestGroup)
+
+    /** Called when something has changed which should trigger any listeners to update all */
+    fun onVisibleQuestsInvalidated()
 }

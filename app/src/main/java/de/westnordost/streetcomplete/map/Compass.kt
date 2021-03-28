@@ -105,7 +105,7 @@ class Compass(
             R = remapToDisplayRotation(R)
             val orientation = FloatArray(3)
             SensorManager.getOrientation(R, orientation)
-            val azimut = orientation[0] - declination
+            val azimut = orientation[0] + declination
             val pitch = orientation[1]
             val roll = orientation[2]
             rotation = azimut
@@ -161,7 +161,7 @@ class Compass(
     companion object {
         private const val MAX_DISPATCH_FPS = 30
         private const val SMOOTHEN_FACTOR = 0.1f
-        private const val MIN_DIFFERENCE = 0.005f
+        private const val MIN_DIFFERENCE = 0.001f
     }
 }
 

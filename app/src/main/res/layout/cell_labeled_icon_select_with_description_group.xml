@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?android:attr/selectableItemBackground">
 
     <RelativeLayout
@@ -29,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/imageView"
+            android:layout_toStartOf="@id/dropDownArrowImageView"
             android:layout_centerVertical="true"
             android:orientation="vertical">
 
@@ -47,6 +48,15 @@
                 tools:text="@string/quest_buildingType_residential_description" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/dropDownArrowImageView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:tint="@color/text"
+            android:src="@drawable/ic_arrow_right_white_96dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 

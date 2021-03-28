@@ -1,42 +1,45 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.ContextWrapper
-import androidx.annotation.AnyThread
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.PopupMenu
+import androidx.annotation.AnyThread
+import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
+import androidx.core.text.parseAsHtml
+import androidx.core.view.isGone
 import com.google.android.flexbox.FlexboxLayout
-
-import java.lang.ref.WeakReference
-import java.util.Locale
-
-import javax.inject.Inject
-
 import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.isArea
+import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
+import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import java.lang.ref.WeakReference
+import java.util.*
 import java.util.concurrent.FutureTask
+import javax.inject.Inject
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), IsShowingQuestDetails {
@@ -55,6 +58,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             return field
         }
     protected val countryInfo get() = _countryInfo!!
+
+    protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
 
     // views
     private lateinit var content: ViewGroup
@@ -89,6 +94,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     open val buttonsResId: Int? = null
     open val otherAnswers = listOf<OtherAnswer>()
     open val contentPadding = true
+    open val defaultExpanded = true
 
     interface Listener {
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
@@ -103,6 +109,12 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         /** Called when the user chose to skip the quest  */
         fun onSkippedQuest(questId: Long, group: QuestGroup)
+
+        /** Called when the element shall be deleted */
+        fun onDeleteElement(osmQuestId: Long, element: OsmElement)
+
+        /** Called when a new feature has been selected for an element (a shop of some kind) */
+        fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -136,7 +148,6 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         contentLayoutResId?.let { setContentView(it) }
         buttonsResId?.let { setButtonsView(it) }
-        if(!contentPadding) content.setPadding(0,0,0,0)
         return view
     }
 
@@ -145,12 +156,10 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
 
-        val levelLabelText = getLevelLabelText()
+        val levelLabelText = getLocationLabelText()
+        locationLabel.isGone = levelLabelText == null
         if (levelLabelText != null) {
-            levelLabel.visibility = View.VISIBLE
-            levelLabel.text = levelLabelText
-        } else {
-            levelLabel.visibility = View.GONE
+            locationLabel.text = levelLabelText
         }
 
         // no content? -> hide the content container
@@ -158,27 +167,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             content.visibility = View.GONE
         }
 
-        val answers = assembleOtherAnswers()
-        if (answers.size == 1) {
-            otherAnswersButton.setText(answers.first().titleResourceId)
-            otherAnswersButton.setOnClickListener { answers.first().action() }
-        } else {
-            otherAnswersButton.setText(R.string.quest_generic_otherAnswers)
-            otherAnswersButton.setOnClickListener {
-                val popup = PopupMenu(requireContext(), otherAnswersButton)
-                for (i in answers.indices) {
-                    val otherAnswer = answers[i]
-                    val order = answers.size - i
-                    popup.menu.add(Menu.NONE, i, order, otherAnswer.titleResourceId)
-                }
-                popup.show()
-
-                popup.setOnMenuItemClickListener { item ->
-                    answers[item.itemId].action()
-                    true
-                }
-            }
-        }
+        if (defaultExpanded) expand()
     }
 
     private fun assembleOtherAnswers() : List<OtherAnswer> {
@@ -187,26 +176,71 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
         answers.add(cantSay)
 
-        val way = osmElement as? Way
-        if (way != null) {
-            /* splitting up a closed roundabout can be very complex if it is part of a route
-               relation, so it is not supported
-               https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
-            */
-            val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
-                    way.tags?.get("junction") == "roundabout"
-            if (!isClosedRoundabout && !way.isArea()) {
-                val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
-                    onClickSplitWayAnswer()
-                }
-                answers.add(splitWay)
-            }
-        }
+        createSplitWayAnswer()?.let { answers.add(it) }
+        createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
+
         answers.addAll(otherAnswers)
         return answers
     }
 
-    private fun getLevelLabelText(): String? {
+    private fun createSplitWayAnswer(): OtherAnswer? {
+        val isSplitWayEnabled = (questType as? OsmElementQuestType)?.isSplitWayEnabled == true
+        if (!isSplitWayEnabled) return null
+
+        val way = osmElement as? Way ?: return null
+
+        /* splitting up a closed roundabout can be very complex if it is part of a route
+           relation, so it is not supported
+           https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
+        */
+        val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
+            way.tags?.get("junction") == "roundabout"
+        if (isClosedRoundabout) return null
+
+        if (way.isArea()) return null
+
+        return OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
+            onClickSplitWayAnswer()
+        }
+    }
+
+    private fun createDeleteOrReplaceElementAnswer(): OtherAnswer? {
+        val isDeleteElementEnabled = (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
+        val isReplaceShopEnabled = (questType as? OsmElementQuestType)?.isReplaceShopEnabled == true
+        if (!isDeleteElementEnabled && !isReplaceShopEnabled) return null
+        check(!(isDeleteElementEnabled && isReplaceShopEnabled)) {
+            "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
+        }
+
+        return OtherAnswer(R.string.quest_generic_answer_does_not_exist) {
+            if (isDeleteElementEnabled) deleteElement()
+            else if (isReplaceShopEnabled) replaceShopElement()
+        }
+    }
+
+    private fun showOtherAnswers() {
+        val answers = assembleOtherAnswers()
+        val popup = PopupMenu(requireContext(), otherAnswersButton)
+        for (i in answers.indices) {
+            val otherAnswer = answers[i]
+            val order = answers.size - i
+            popup.menu.add(Menu.NONE, i, order, otherAnswer.titleResourceId)
+        }
+        popup.show()
+
+        popup.setOnMenuItemClickListener { item ->
+            answers[item.itemId].action()
+            true
+        }
+    }
+
+    private fun getLocationLabelText(): CharSequence? {
+        // prefer to show the level if both are present because it is a more precise indication
+        // where it is supposed to be
+        return getLevelLabelText() ?: getHouseNumberLabelText()
+    }
+
+    private fun getLevelLabelText(): CharSequence? {
         val tags = osmElement?.tags ?: return null
         /* prefer addr:floor etc. over level as level is rather an index than how the floor is
            denominated in the building and thus may (sometimes) not coincide with it. E.g.
@@ -222,11 +256,45 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         return null
     }
 
+    private fun getHouseNumberLabelText(): CharSequence? {
+        val tags = osmElement?.tags ?: return null
+
+        val houseName = tags["addr:housename"]
+        val conscriptionNumber = tags["addr:conscriptionnumber"]
+        val streetNumber = tags["addr:streetnumber"]
+        val houseNumber = tags["addr:housenumber"]
+
+        if (houseName != null) {
+            return resources.getString(R.string.at_housename, "<i>" + Html.escapeHtml(houseName) + "</i>")
+                .parseAsHtml()
+        }
+        if (conscriptionNumber != null) {
+            if (streetNumber != null) {
+                return resources.getString(R.string.at_conscription_and_street_number, conscriptionNumber, streetNumber)
+            } else {
+                return resources.getString(R.string.at_conscription_number, conscriptionNumber)
+            }
+        }
+        if (houseNumber != null) {
+            return resources.getString(R.string.at_housenumber, houseNumber)
+        }
+        return null
+    }
+
     override fun onStart() {
         super.onStart()
         if(!startedOnce) {
             onMapOrientation(initialMapRotation, initialMapTilt)
             startedOnce = true
+        }
+
+        val answers = assembleOtherAnswers()
+        if (answers.size == 1) {
+            otherAnswersButton.setText(answers.first().titleResourceId)
+            otherAnswersButton.setOnClickListener { answers.first().action() }
+        } else {
+            otherAnswersButton.setText(R.string.quest_generic_otherAnswers)
+            otherAnswersButton.setOnClickListener { showOtherAnswers() }
         }
     }
 
@@ -292,21 +360,71 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         listener?.onSkippedQuest(questId, questGroup)
     }
 
+    protected fun replaceShopElement() {
+        val ctx = context ?: return
+        val element = osmElement ?: return
+        val isoCountryCode = countryInfo.countryCode.substringBefore('-')
+
+        if (element.isSomeKindOfShop()) {
+            ShopGoneDialog(
+                ctx,
+                element.geometryType,
+                isoCountryCode,
+                featureDictionary,
+                onSelectedFeature = { tags -> listener?.onReplaceShopElement(questId, tags) },
+                onLeaveNote = this::composeNote
+            ).show()
+        } else {
+            composeNote()
+        }
+    }
+
+    protected fun deleteElement() {
+        val context = context ?: return
+
+        val message = (
+            "<b>" + Html.escapeHtml(context.getString(R.string.osm_element_gone_warning)) + "</b>"
+            + "<br><br>" + context.getString(R.string.osm_element_gone_description)
+            ).parseAsHtml()
+
+        AlertDialog.Builder(context)
+            .setMessage(message)
+            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
+                listener?.onDeleteElement(questId, osmElement!!)
+            }
+            .setNeutralButton(R.string.leave_note) { _, _ ->
+                composeNote()
+            }.show()
+    }
+
     protected fun setContentView(resourceId: Int): View {
         if (content.childCount > 0) {
             content.removeAllViews()
         }
         content.visibility = View.VISIBLE
+        updateContentPadding()
         return layoutInflater.inflate(resourceId, content)
     }
 
-    protected fun setNoContentPadding() {
-        content.setPadding(0, 0, 0, 0)
+    private fun updateContentPadding() {
+        if(!contentPadding) {
+            content.setPadding(0,0,0,0)
+        } else {
+            val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)
+            val vertical = resources.getDimensionPixelSize(R.dimen.quest_form_vertical_padding)
+            content.setPadding(horizontal, vertical, horizontal, vertical)
+        }
     }
 
     protected fun setButtonsView(resourceId: Int) {
-        otherAnswersButton.layoutParams = FlexboxLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+        removeButtonsView()
         activity?.layoutInflater?.inflate(resourceId, buttonPanel)
+    }
+
+    protected fun removeButtonsView() {
+        if (buttonPanel.childCount > 1) {
+            buttonPanel.removeViews(1, buttonPanel.childCount - 1)
+        }
     }
 
     @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {

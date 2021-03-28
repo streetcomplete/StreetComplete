@@ -15,7 +15,7 @@ class OsmNoteWithPhotosUploader @Inject constructor(
     private val imageUploader: StreetCompleteImageUploader
 ) {
 
-    /** Creates a new note note
+    /** Creates a new note
      *
      * @throws ImageUploadException if any attached photo could not be uploaded
      */

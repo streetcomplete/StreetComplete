@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 112 112" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(0 -267.37)">
+  <circle cx="56" cy="323.37" r="55.751" fill="#fff" style="paint-order:fill markers stroke"/>
+  <path d="m56 301.37-18-18h36z"/>
+  <path d="m56 345.37 18 18h-36z"/>
+  <path d="m56 269.37c-29.691 0-54 24.309-54 54s24.309 54 54 54 54-24.309 54-54c1e-5 -29.691-24.309-54-54-54zm0 14c21.993 0 40 18.007 40 40s-18.007 40-40 40-40-18.007-40-40 18.007-40 40-40z" fill="#c1121c" style="paint-order:fill markers stroke"/>
+ </g>
+</svg>

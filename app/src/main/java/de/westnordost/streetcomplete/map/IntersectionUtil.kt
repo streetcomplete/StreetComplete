@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.map
 
 import android.graphics.PointF
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
+import androidx.core.view.isVisible
 
 fun findClosestIntersection(v: ViewGroup, target: PointF): PointF? {
     val w = v.width.toFloat()
@@ -30,7 +30,7 @@ fun findClosestIntersection(v: ViewGroup, target: PointF): PointF? {
     if (a < minA) minA = a
 
     for (child in v.children) {
-        if (child.visibility != View.VISIBLE) continue
+        if (!child.isVisible) continue
         val t = child.top.toFloat()
         val b = child.bottom.toFloat()
         val r = child.right.toFloat()

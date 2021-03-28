@@ -31,7 +31,7 @@ If you are not sure about how one condition applies to your suggestion or you ha
 ### Ideas for implementation
 <!-- If you do not have any, just delete this part. ;)  -->
 
-<!-- If you have any idea for how elements should be selected, add it here. Possibly include an overpass-api query if you are sure what you do. -->
+<!-- If you have any idea for how elements should be selected, add it here. -->
 **Element selection:** 
 
 <!-- If you have any idea whether metadata per country is needed, add it here. If you even have ideas, where to get this data from, you can of course also mention it! -->

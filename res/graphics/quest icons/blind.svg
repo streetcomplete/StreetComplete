@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 35.346 0 64 28.654 64 64" fill="#529add" stroke-width=".2"/>
+ <g transform="matrix(.2165 0 0 -.2165 -7.6799 127.4)" fill="#fff" style="paint-order:stroke fill markers">
+  <g transform="translate(8.651e-5 -18.476)" style="paint-order:stroke fill markers">
+   <path d="m165.93 137.01c59.696 52.084 64.964 101.51 69.037 159.56 50.105-53.016 63.355-100.61 73.903-159.56" fill="none" stroke="#000" stroke-linecap="round" stroke-opacity=".2" stroke-width="50.808"/>
+   <path d="m169.67 298.17c-0.38542 43.088 18.025 78.483 65.301 97.504 33.884-28.962 51.558-72.088 109.57-100.39" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".2" stroke-width="50.808"/>
+   <path transform="scale(1,-1)" d="m301.12-483.5a48.632 48.632 0 0 1-48.632 48.632 48.632 48.632 0 0 1-48.632-48.632 48.632 48.632 0 0 1 48.632-48.632 48.632 48.632 0 0 1 48.632 48.632" fill="#000" fill-opacity=".2" style="paint-order:normal"/>
+   <path d="m391.91 264.66 127.27-137.37" fill="none" stroke="#000" stroke-linecap="round" stroke-opacity=".2" stroke-width="27.714"/>
+  </g>
+  <path d="m165.93 137.01c59.696 52.084 64.964 101.51 69.037 159.56 50.105-53.016 63.355-100.61 73.903-159.56" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="50.808"/>
+  <path d="m234.97 395.67c-8.121-30.793-2.0045-72.048 3.7364-102.84" fill="none" stroke="#fff" stroke-width="55.428"/>
+  <path d="m169.67 298.17c-0.38542 43.088 18.025 78.483 65.301 97.504 33.884-28.962 51.558-72.088 109.57-100.39" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="50.808"/>
+  <path transform="scale(1,-1)" d="m301.12-483.5a48.632 48.632 0 0 1-48.632 48.632 48.632 48.632 0 0 1-48.632-48.632 48.632 48.632 0 0 1 48.632-48.632 48.632 48.632 0 0 1 48.632 48.632" fill="#fff" style="paint-order:normal"/>
+  <path d="m391.91 264.66 127.27-137.37" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="27.714"/>
+ </g>
+</svg>

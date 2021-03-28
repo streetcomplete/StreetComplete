@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.FragmentContainerActivity
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import kotlinx.coroutines.CoroutineScope
@@ -29,7 +30,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
     QuestStatisticsFragment.Listener,
     UserLoginStatusListener {
 
-    @Inject internal lateinit var userController: UserController
+    @Inject internal lateinit var loginStatusSource: LoginStatusSource
 
     private val countryDetailsFragment: CountryInfoFragment?
         get() = supportFragmentManager.findFragmentById(R.id.countryDetailsFragment) as CountryInfoFragment
@@ -51,11 +52,11 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
         if (savedInstanceState == null) {
             mainFragment = when {
                 intent.getBooleanExtra(EXTRA_LAUNCH_AUTH, false) -> LoginFragment.create(true)
-                userController.isLoggedIn -> UserFragment()
+                loginStatusSource.isLoggedIn -> UserFragment()
                 else -> LoginFragment.create()
             }
         }
-        userController.addLoginStatusListener(this)
+        loginStatusSource.addLoginStatusListener(this)
     }
 
     override fun onBackPressed() {
@@ -79,7 +80,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
 
     override fun onDestroy() {
         super.onDestroy()
-        userController.removeLoginStatusListener(this)
+        loginStatusSource.removeLoginStatusListener(this)
         coroutineContext.cancel()
     }
 
@@ -117,13 +118,13 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
 
     private fun replaceMainFragment(fragment: Fragment) {
         supportFragmentManager.popBackStack("main", FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        supportFragmentManager.beginTransaction()
-            .setCustomAnimations(
+        supportFragmentManager.commit {
+            setCustomAnimations(
                 R.anim.fade_in_from_bottom, R.anim.fade_out_to_top,
                 R.anim.fade_in_from_bottom, R.anim.fade_out_to_top
             )
-            .replace(R.id.fragment_container, fragment)
-            .commit()
+            replace(R.id.fragment_container, fragment)
+        }
     }
 
     companion object {

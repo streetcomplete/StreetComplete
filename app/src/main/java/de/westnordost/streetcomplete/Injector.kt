@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.user.UserModule
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule
 import de.westnordost.streetcomplete.map.MapModule
 import de.westnordost.streetcomplete.quests.QuestModule
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsModule
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsModule
 
 object Injector {
 

@@ -25,12 +25,14 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:gravity="top|start"
+        android:layout_marginTop="8dp"
         android:minLines="3"
-
+        android:background="@drawable/background_edittext_outline"
         />
 
     <FrameLayout
         android:id="@+id/attachPhotoFragment"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -1,0 +1,1 @@
+Kartleggingsapp for OpenStreetMap

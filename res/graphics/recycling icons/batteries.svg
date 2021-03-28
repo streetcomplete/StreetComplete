@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+ <path d="m13.614 31.105 33.742 58.443c2.6742 4.6318 14.612 3.9153 23.876-1.4331 9.2637-5.3484 15.853-15.329 13.179-19.96l-33.742-58.443z" fill="#494949" stroke-width=".77865" style="paint-order:fill markers stroke"/>
+ <path d="m13.614 31.105 11.914 20.636c2.6742 4.6318 14.612 3.9153 23.876-1.4331 9.2637-5.3484 15.853-15.329 13.179-19.96l-11.914-20.636z" fill="#6bb019" stroke-width=".77865" style="paint-order:fill markers stroke"/>
+ <ellipse transform="rotate(-30)" cx="17.631" cy="33.742" rx="21.394" ry="10.694" fill="#90e925" stroke-width=".9589" style="paint-order:fill markers stroke"/>
+ <ellipse transform="rotate(-30)" cx="17.631" cy="33.745" rx="18.719" ry="8.0226" fill="#8a8a8a" stroke-width=".97044" style="paint-order:fill markers stroke"/>
+ <g transform="matrix(.38599 -.22285 .22285 .38599 -129.2 108.57)">
+  <path d="m392.41-4.3157v12c0 6 8 12 20 12s20-6 20-12v-12z" fill="#686868" stroke-width=".87351" style="paint-order:fill markers stroke"/>
+  <ellipse cx="412.41" cy="-2.3209" rx="20" ry="10" fill="#c4c4c4" stroke-width=".89654" style="paint-order:fill markers stroke"/>
+ </g>
+ <path d="m38.129 34.7 2.0056 3.4739-3.4739 2.0056 2.0056 3.4739 3.4739-2.0056 2.0056 3.4739 3.4739-2.0056-2.0056-3.4739 3.4739-2.0056-2.0056-3.4739-3.4739 2.0056-2.0056-3.4739z" fill="#202020" style="paint-order:fill markers stroke"/>
+ <path d="m51.276 62.035 2.4152 11.803 3.6479-3.2059 3.5887 10.025 4.7529-20.34-7.2958 6.4117 0.18683-11.105z" fill="#ffcd05" style="paint-order:markers fill stroke"/>
+ <path d="m19.369 36.79 29.345 52.149c4.4165 1.5533 9.4118 1.6605 12.551 0.7071-17.209-34.174-20.739-24.967-41.896-52.856z" fill-opacity=".15152"/>
+ <path d="m52.603 17.256 29.499 50.954c-9.4251-11.297-30.508-40.558-35.899-41.71 3.8257-3.85 6.235-6.7252 6.4006-9.2442z" fill="#fff" fill-opacity=".38384"/>
+</svg>

@@ -2,14 +2,13 @@ package de.westnordost.streetcomplete.quests
 
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType
 import org.junit.Test
 
 class AddRecyclingTypeTest  {
 
-    private val questType = AddRecyclingType(mock())
+    private val questType = AddRecyclingType()
 
     @Test fun `apply recycling centre answer`() {
         questType.verifyAnswer(

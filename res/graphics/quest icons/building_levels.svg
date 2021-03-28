@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128.03 128.03" xmlns="http://www.w3.org/2000/svg">
+ <path d="m123.35 88.017c-13.255 32.767-50.563 48.584-83.33 35.33-32.767-13.255-48.584-50.563-35.33-83.33 13.255-32.767 50.563-48.584 83.33-35.33s48.584 50.563 35.33 83.33" fill="#c8c4b7" stroke-width=".2"/>
+ <path d="m63.944 32.017-32 32-0.0352 55.355c2.5737 1.4887 5.2721 2.8277 8.1074 3.9746 1.3015 0.52648 2.6137 0.99028 3.9277 1.4258v-8.791h14v11.748c2.0085 0.19222 4.0137 0.28592 6.0117 0.28712h1.2832c1.576-0.0308 3.1442-0.13278 4.7051-0.2793v-11.932h14v9.0156c4.1713-1.3694 8.191-3.1658 12-5.3555v-55.449zm-7 12h14v16h-14zm-13 24h14v16h-14zm26 0h14v16h-14zm-26 24h14v16h-14zm26 0h14v16h-14z" fill="#fff" stroke-width=".2"/>
+ <path d="m23.944 64.017 40-40 40 40" fill="none" stroke="#000" stroke-linecap="square" stroke-opacity=".2" stroke-width="11.2"/>
+ <path d="m23.944 60.281 40-40 40 40" fill="none" stroke="#c84747" stroke-linecap="square" stroke-width="11.2"/>
+ <path d="m56.944 44.017h14v4h-14z" fill-opacity=".2" style="paint-order:normal"/>
+ <path d="m43.944 68.017h14v4h-14z" fill-opacity=".2" style="paint-order:normal"/>
+ <path d="m69.944 68.017h14v4h-14z" fill-opacity=".2" style="paint-order:normal"/>
+ <path d="m43.944 92.017h14v4h-14z" fill-opacity=".2" style="paint-order:normal"/>
+ <path d="m69.944 92.017h14v4h-14z" fill-opacity=".2" style="paint-order:normal"/>
+ <path d="m43.944 115.98h14v4h-14z" fill-opacity=".2" style="paint-order:normal"/>
+ <path d="m69.944 115.81h14v4h-14z" fill-opacity=".2" style="paint-order:normal"/>
+</svg>

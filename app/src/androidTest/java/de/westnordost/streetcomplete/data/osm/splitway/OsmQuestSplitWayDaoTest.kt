@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.splitway
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType2
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import org.junit.Test
 
@@ -13,10 +14,11 @@ import org.mockito.Mockito.*
 class OsmQuestSplitWayDaoTest : ApplicationDbTestCase() {
 
     private val questType = TestQuestType()
+    private val questType2 = TestQuestType2()
     private lateinit var dao: OsmQuestSplitWayDao
 
     @Before fun createDao() {
-        val mapping = OsmQuestSplitWayMapping(serializer, QuestTypeRegistry(listOf(questType)))
+        val mapping = OsmQuestSplitWayMapping(serializer, QuestTypeRegistry(listOf(questType, questType2)))
         dao = OsmQuestSplitWayDao(dbHelper, mapping)
     }
 
@@ -42,6 +44,7 @@ class OsmQuestSplitWayDaoTest : ApplicationDbTestCase() {
         assertEquals(input.wayId, output.wayId)
         assertEquals(input.questId, output.questId)
         assertEquals(input.splits.size, output.splits.size)
+        assertEquals(input.questTypesOnWay, output.questTypesOnWay)
         val it = input.splits.listIterator()
         val ot = output.splits.listIterator()
         while(it.hasNext()) {
@@ -98,7 +101,8 @@ class OsmQuestSplitWayDaoTest : ApplicationDbTestCase() {
         val pos2 = OsmLatLon(1.0, 0.0)
         return OsmQuestSplitWay(id, questType, wayId, "test", listOf(
                 SplitAtLinePosition(pos1, pos2, 0.3),
-                SplitAtPoint(pos2))
+                SplitAtPoint(pos2)),
+                listOf(questType, questType2)
         )
     }
 }

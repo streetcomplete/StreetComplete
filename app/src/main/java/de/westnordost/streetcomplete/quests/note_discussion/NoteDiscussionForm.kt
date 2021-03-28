@@ -8,6 +8,9 @@ import android.text.format.DateUtils
 import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmapi.notes.NoteComment
@@ -34,6 +37,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_note_discussion_content
     override val buttonsResId = R.layout.quest_buttonpanel_note_discussion
+    override val defaultExpanded = false
 
     private lateinit var anonAvatar: Bitmap
 
@@ -65,9 +69,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         inflateNoteDiscussion(osmNoteQuestController.get(questId)!!.note.comments)
 
         if (savedInstanceState == null) {
-            childFragmentManager.beginTransaction()
-                .add(R.id.attachPhotoFragment, AttachPhotoFragment())
-                .commit()
+            childFragmentManager.commit { add<AttachPhotoFragment>(R.id.attachPhotoFragment) }
         }
     }
 
@@ -140,22 +142,20 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
             val userName = if (comment.user != null) comment.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
 
             val commentActionResourceId = comment.action.actionResourceId
-            if (commentActionResourceId != 0) {
-                itemView.commentStatusText.visibility = View.VISIBLE
+            val hasNoteAction = commentActionResourceId != 0
+            itemView.commentStatusText.isGone = !hasNoteAction
+            if (hasNoteAction) {
                 itemView.commentStatusText.text = getString(commentActionResourceId, userName, dateDescription)
-            } else {
-                itemView.commentStatusText.visibility = View.GONE
             }
 
-            if (!comment.text.isNullOrEmpty()) {
-                itemView.commentView.visibility = View.VISIBLE
+            val hasComment = !comment.text.isNullOrEmpty()
+            itemView.commentView.isGone = !hasComment
+            if (hasComment) {
                 itemView.commentText.text = comment.text
                 itemView.commentInfoText.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)
 
                 val bitmap = comment.user?.avatar ?: anonAvatar
                 itemView.commentAvatarImage.setImageBitmap(bitmap)
-            } else {
-                itemView.commentView.visibility = View.GONE
             }
         }
 

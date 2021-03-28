@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 20 32" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(0 -288.53)">
+  <path d="m10 292.53-6 6v21h12v-21z" fill="#e3decc"/>
+  <path d="m2 303.53 8-10 8 10" fill="none" stroke="#000003" stroke-opacity=".18824" stroke-width="4"/>
+  <path d="m2 302.53 8-10 8 10" fill="none" stroke="#c84747" stroke-width="4"/>
+  <rect x="8" y="303.53" width="4" height="5" fill="#fff" style="paint-order:fill markers stroke"/>
+  <rect x="8" y="303.53" width="4" height=".99999" fill-opacity=".2" style="paint-order:fill markers stroke"/>
+  <rect x="8" y="311.53" width="4" height="5" fill="#fff" style="paint-order:fill markers stroke"/>
+  <rect x="8" y="311.53" width="4" height=".99999" fill-opacity=".2" style="paint-order:fill markers stroke"/>
+ </g>
+</svg>

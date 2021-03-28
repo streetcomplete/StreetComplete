@@ -1,2 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [CIBC, Affinity Credit Union]
+chargingStationOperators: [Saskatoon South Hyundai, Peavey Mart, Audi Saskatoon]
 officialLanguages: [en]

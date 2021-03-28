@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
 import de.westnordost.streetcomplete.quests.building_levels.BuildingLevelsAnswer
 import org.junit.Test
 
 class AddBuildingLevelsTest {
 
-    private val questType = AddBuildingLevels(mock())
+    private val questType = AddBuildingLevels()
 
     @Test fun `apply building levels answer`() {
         questType.verifyAnswer(

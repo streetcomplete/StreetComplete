@@ -1,3 +1,5 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
-data class SidewalkAnswer(val left:Boolean, val right:Boolean)
+sealed class SidewalkAnswer
+data class SidewalkSides(val left:Boolean, val right:Boolean) : SidewalkAnswer()
+object SeparatelyMapped: SidewalkAnswer()

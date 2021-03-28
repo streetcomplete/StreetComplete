@@ -24,16 +24,6 @@ open class CircularSection(val start: Int, val end: Int) : Comparable<CircularSe
         return end - other.end
     }
 
-    fun toStringUsing(names: Array<String>, range: String): String {
-        val sb = StringBuilder()
-        sb.append(names[start])
-        if (start != end) {
-            sb.append(range)
-            sb.append(names[end])
-        }
-        return sb.toString()
-    }
-
     override fun toString() = "$start-$end"
 
     override fun equals(other: Any?): Boolean {

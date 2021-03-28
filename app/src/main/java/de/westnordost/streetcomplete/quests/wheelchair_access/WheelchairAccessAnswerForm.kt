@@ -5,17 +5,18 @@ import android.view.View
 import de.westnordost.streetcomplete.R
 
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_limited_no.*
 
-open class WheelchairAccessAnswerForm : AbstractQuestAnswerFragment<String>() {
+open class WheelchairAccessAnswerForm : AbstractQuestAnswerFragment<WheelchairAccess>() {
 
     override val buttonsResId = R.layout.quest_buttonpanel_yes_limited_no
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        yesButton.setOnClickListener { applyAnswer("yes") }
-        limitedButton.setOnClickListener { applyAnswer("limited") }
-        noButton.setOnClickListener { applyAnswer("no") }
+        yesButton.setOnClickListener { applyAnswer(YES) }
+        limitedButton.setOnClickListener { applyAnswer(LIMITED) }
+        noButton.setOnClickListener { applyAnswer(NO) }
     }
 }

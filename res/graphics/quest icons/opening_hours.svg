@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 35.346 0 64 28.654 64 64" fill="#e9a76f" stroke-width=".2"/>
+ <path d="m110.1 65.86a46.139 46.139 0 0 1-46.139 46.139 46.139 46.139 0 0 1-46.139-46.139 46.139 46.139 0 0 1 46.139-46.139 46.139 46.139 0 0 1 46.139 46.139" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".2" stroke-width="7.7222" style="paint-order:normal"/>
+ <path d="m110.21 61.976a46.139 46.139 0 0 1-46.139 46.139 46.139 46.139 0 0 1-46.139-46.139 46.139 46.139 0 0 1 46.139-46.139 46.139 46.139 0 0 1 46.139 46.139" fill="#fff" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="7.7222" style="paint-order:normal"/>
+ <path d="m64 62-23.236-13.955" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+ <path d="m91.838 44.045-27.838 17.955" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+ <path d="m72.077 62a8.0303 8.0146 0 0 1-8.0302 8.0146 8.0303 8.0146 0 0 1-8.0303-8.0146 8.0303 8.0146 0 0 1 8.0303-8.0146 8.0303 8.0146 0 0 1 8.0302 8.0146" fill="#444" style="paint-order:normal"/>
+</svg>

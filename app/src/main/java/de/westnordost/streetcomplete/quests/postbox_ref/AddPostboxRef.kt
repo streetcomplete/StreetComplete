@@ -2,34 +2,33 @@ package de.westnordost.streetcomplete.quests.postbox_ref
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.ktx.containsAnyKey
 
-class AddPostboxRef(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<PostboxRefAnswer>(o) {
+class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
-    override val tagFilters = "nodes with amenity = post_box and !ref and !ref:signed"
+    override val elementFilter = "nodes with amenity = post_box and !ref and !ref:signed"
 
     override val icon = R.drawable.ic_quest_mail_ref
     override val commitMessage = "Add postbox refs"
     override val wikiLink = "Tag:amenity=post_box"
+    override val isDeleteElementEnabled = true
 
     // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     override val enabledInCountries = NoCountriesExcept(
             "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
     )
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
-        return if (name != null) arrayOf(name) else arrayOf()
-    }
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["name"] ?: tags["brand"] ?: tags["operator"])
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.keys.containsAny(listOf("name","brand","operator"))
-        return if (hasName) R.string.quest_postboxRef_name_title
-               else         R.string.quest_postboxRef_title
-    }
+    override fun getTitle(tags: Map<String, String>): Int =
+        if (tags.containsAnyKey("name", "brand", "operator"))
+            R.string.quest_postboxRef_name_title
+        else
+            R.string.quest_postboxRef_title
 
     override fun createForm() = AddPostboxRefForm()
 

@@ -45,11 +45,14 @@ class StatisticsUpdater @Inject constructor(
 
     private fun updateDaysActive() {
         val now = Date()
+        val lastUpdateDate = Date(userStore.lastStatisticsUpdate)
+
         val cal1 = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-        cal1.time = userStore.lastStatisticsUpdate
+        cal1.time = lastUpdateDate
         val cal2 = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         cal2.time = now
-        userStore.lastStatisticsUpdate = now
+
+        userStore.lastStatisticsUpdate = now.time
         if (!cal1.isSameDay(cal2)) {
             userStore.daysActive++
             achievementGiver.updateDaysActiveAchievements()
@@ -66,7 +69,7 @@ class StatisticsUpdater @Inject constructor(
                 return
             }
 
-            val backendDataIsUpToDate = statistics.lastUpdate.time / 1000 >= userStore.lastStatisticsUpdate.time / 1000
+            val backendDataIsUpToDate = statistics.lastUpdate / 1000 >= userStore.lastStatisticsUpdate / 1000
             if (!backendDataIsUpToDate) {
                 Log.i(TAG, "Backend data is not up-to-date")
                 return

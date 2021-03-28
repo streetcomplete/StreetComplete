@@ -7,6 +7,8 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
@@ -42,7 +44,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     private val undoableOsmQuestsCountListener = object : UndoableOsmQuestsCountListener {
         override fun onUndoableOsmQuestsCountIncreased() {
             launch(Dispatchers.Main) {
-                if (undoButton.visibility != View.VISIBLE && undoableOsmQuestsSource.count > 0) {
+                if (!undoButton.isVisible && undoableOsmQuestsSource.count > 0) {
                     undoButton.popIn()
                 }
             }
@@ -50,7 +52,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
 
         override fun onUndoableOsmQuestsCountDecreased() {
             launch(Dispatchers.Main) {
-                if (undoButton.visibility == View.VISIBLE && undoableOsmQuestsSource.count == 0) {
+                if (undoButton.isVisible && undoableOsmQuestsSource.count == 0) {
                     undoButton.popOut().withEndAction { undoButton.visibility = View.INVISIBLE }
                 }
             }
@@ -125,7 +127,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     }
 
     private fun updateUndoButtonVisibility() {
-        view?.visibility = if (undoableOsmQuestsSource.count > 0) View.VISIBLE else View.GONE
+        view?.isGone = undoableOsmQuestsSource.count <= 0
     }
 
     private fun updateUndoButtonEnablement(enable: Boolean) {

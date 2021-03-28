@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.general_fee
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddGeneralFee(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
+class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes, ways, relations with 
          (tourism = museum or leisure = beach_resort or tourism = gallery)
          and access !~ private|no
@@ -24,6 +24,6 @@ class AddGeneralFee(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("fee", if (answer) "yes" else "no")
+        changes.add("fee", answer.toYesNo())
     }
 }

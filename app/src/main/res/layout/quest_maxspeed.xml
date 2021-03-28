@@ -38,6 +38,13 @@
                 android:text="@string/quest_maxspeed_answer_zone2" />
 
             <RadioButton
+                android:id="@+id/living_street"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_living_street" />
+
+            <RadioButton
                 android:id="@+id/no_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddOrchardProduce(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<List<String>>(o) {
+class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         ways, relations with landuse = orchard
         and !trees and !produce and !crop
         and orchard != meadow_orchard
@@ -20,12 +19,12 @@ class AddOrchardProduce(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
 
     override fun createForm() = AddOrchardProduceForm()
 
-    override fun applyAnswerTo(answer: List<String>, changes: StringMapChangesBuilder) {
-        changes.add("produce", answer.joinToString(";"))
+    override fun applyAnswerTo(answer: List<OrchardProduce>, changes: StringMapChangesBuilder) {
+        changes.add("produce", answer.joinToString(";") { it.osmValue })
 
-        when(answer.singleOrNull()) {
-            "grape" -> changes.modify("landuse", "vineyard")
-            "sisal" -> changes.modify("landuse", "farmland")
+        val landuse = answer.singleOrNull()?.landuse
+        if (landuse != null) {
+            changes.modify("landuse", landuse)
         }
     }
 }

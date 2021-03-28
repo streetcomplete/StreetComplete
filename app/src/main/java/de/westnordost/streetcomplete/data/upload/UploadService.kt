@@ -56,7 +56,7 @@ class UploadService : IntentService(TAG) {
         cancelState.set(false)
     }
 
-    override fun onBind(intent: Intent): IBinder? {
+    override fun onBind(intent: Intent): IBinder {
         return binder
     }
 

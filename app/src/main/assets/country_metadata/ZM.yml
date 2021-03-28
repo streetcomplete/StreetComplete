@@ -1,7 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Zanaco, FNB, Ecobank, Absa Bank, Stanbic Bank, Stanbic, Barclay's]
+centerLine: white
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 645
 officialLanguages: [en, bem, ny]
 orchardProduces: [tomato, coffee, orange, tea, banana, chilli_pepper, sweet_pepper, pepper]
 popularSports: [soccer, tennis, cricket]
+shoulderLine: yellow

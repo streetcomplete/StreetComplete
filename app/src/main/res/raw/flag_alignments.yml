@@ -45,6 +45,7 @@ BW: stretch
 BY: left
 BZ: center
 CA: center
+CR: stretch
 CC: center
 CD: left
 CF: left
@@ -95,7 +96,6 @@ GM: stretch
 GN: stretch
 GP: stretch
 GQ: left
-GQ: center
 GS: right
 GT: center
 GU: center
@@ -107,6 +107,7 @@ HN: center
 HR: center
 HT: center
 HU: stretch
+IC: stretch
 ID: stretch
 IE: stretch
 IL: center

@@ -1,13 +1,16 @@
 package de.westnordost.streetcomplete.quests.parking_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddParkingType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddParkingType : OsmFilterQuestType<ParkingType>() {
 
-    override val tagFilters = "nodes, ways, relations with amenity = parking and !parking"
+    override val elementFilter = """
+        nodes, ways, relations with
+          amenity = parking
+          and (!parking or parking = yes)
+    """
     override val commitMessage = "Add parking type"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking
@@ -16,7 +19,7 @@ class AddParkingType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
 
     override fun createForm() = AddParkingTypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("parking", answer)
+    override fun applyAnswerTo(answer: ParkingType, changes: StringMapChangesBuilder) {
+        changes.add("parking", answer.osmValue)
     }
 }

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.notifications
 
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.animation.DecelerateInterpolator
+import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import de.westnordost.streetcomplete.Injector
@@ -45,6 +45,8 @@ class OsmUnreadMessagesFragment : DialogFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // hide first, to avoid flashing
+        mailContainer.alpha = 0.0f
         dialogContainer.setOnClickListener { dismiss() }
         readMailButton.setOnClickListener {
             openUrl("https://www.openstreetmap.org/messages/inbox")
@@ -99,32 +101,32 @@ class OsmUnreadMessagesFragment : DialogFragment(),
             .withEndAction {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    (mailOpenImageView.drawable as? AnimatedVectorDrawable)?.start()
+                    (mailOpenImageView?.drawable as? AnimatedVectorDrawable)?.start()
                 }
 
-                mailFrontImageView.animate()
-                    .setDuration(100)
-                    .setStartDelay(100)
-                    .alpha(1f)
-                    .start()
+                mailFrontImageView?.animate()?.run {
+                    duration = 100
+                    startDelay = 100
+                    alpha(1f)
+                    start()
+                }
 
-
-                speechbubbleContentContainer.animate()
-                    .withStartAction {
-                        speechbubbleContentContainer.alpha = 0.4f
-                    }
-                    .setStartDelay(200)
-                    .setDuration(300)
-                    .scaleX(1f).scaleY(1f)
-                    .alpha(1f)
-                    .translationY(0f)
-                    .start()
+                speechbubbleContentContainer?.animate()?.run {
+                    withStartAction { speechbubbleContentContainer?.alpha = 0.4f }
+                    startDelay = 200
+                    duration = 300
+                    scaleX(1f)
+                    scaleY(1f)
+                    alpha(1f)
+                    translationY(0f)
+                    start()
+                }
             }
             .start()
     }
 
     private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         return tryStartActivity(intent)
     }
 

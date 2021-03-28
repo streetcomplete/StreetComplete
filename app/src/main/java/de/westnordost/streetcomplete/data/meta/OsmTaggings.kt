@@ -18,4 +18,16 @@ val ALL_ROADS = listOf(
     "unclassified", "residential", "living_street", "pedestrian",
     "service", "track", "road"
 )
+
+val ALL_PATHS = listOf(
+    "footway", "cycleway", "path", "bridleway", "steps"
+)
+
+val MAXSPEED_TYPE_KEYS = listOf(
+    "source:maxspeed",
+    "zone:maxspeed",
+    "maxspeed:type",
+    "zone:traffic"
+)
+
 const val SURVEY_MARK_KEY = "check_date"

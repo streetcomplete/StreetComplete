@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
+import de.westnordost.streetcomplete.data.osm.delete_element.DeleteOsmElementDao
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestDao
@@ -17,6 +18,7 @@ import javax.inject.Singleton
     private val osmNoteQuestController: OsmNoteQuestController,
     private val createNoteDao: CreateNoteDao,
     private val splitWayDao: OsmQuestSplitWayDao,
+    private val deleteElementDao: DeleteOsmElementDao,
     private val undoOsmQuestDao: UndoOsmQuestDao
 ) {
     private val listeners: MutableList<UnsyncedChangesCountListener> = CopyOnWriteArrayList()
@@ -26,10 +28,11 @@ import javax.inject.Singleton
             answeredOsmNoteQuestCount +
             splitWayCount +
             createNoteCount +
-            undoOsmQuestCount
+            undoOsmQuestCount +
+            deleteOsmElementCount
 
-    val questCount: Int get() = answeredOsmQuestCount + splitWayCount - undoOsmQuestCount
-    
+    val questCount: Int get() = answeredOsmQuestCount - undoOsmQuestCount + splitWayCount  + deleteOsmElementCount
+
     private var answeredOsmQuestCount: Int = osmQuestController.getAllAnsweredCount()
     set(value) {
         val diff = value - field
@@ -60,6 +63,12 @@ import javax.inject.Singleton
         field = value
         onUpdate(diff)
     }
+    private var deleteOsmElementCount: Int = deleteElementDao.getCount()
+    set(value) {
+        val diff = value - field
+        field = value
+        onUpdate(diff)
+    }
 
     private val splitWayListener = object : OsmQuestSplitWayDao.Listener {
         override fun onAddedSplitWay() { ++splitWayCount }
@@ -73,6 +82,11 @@ import javax.inject.Singleton
         override fun onAddedCreateNote() { ++createNoteCount }
         override fun onDeletedCreateNote() { --createNoteCount }
     }
+    private val deleteElementListener = object : DeleteOsmElementDao.Listener {
+        override fun onAddedDeleteOsmElement() { ++deleteOsmElementCount }
+        override fun onDeletedDeleteOsmElement() { --deleteOsmElementCount }
+    }
+
     private val noteQuestStatusListener = object : OsmNoteQuestController.QuestStatusListener {
         override fun onAdded(quest: OsmNoteQuest) {
             if (quest.status.isAnswered) { ++answeredOsmNoteQuestCount }
@@ -114,6 +128,7 @@ import javax.inject.Singleton
 
     init {
         splitWayDao.addListener(splitWayListener)
+        deleteElementDao.addListener(deleteElementListener)
         undoOsmQuestDao.addListener(undoOsmQuestListener)
         createNoteDao.addListener(createNoteListener)
         osmNoteQuestController.addQuestStatusListener(noteQuestStatusListener)

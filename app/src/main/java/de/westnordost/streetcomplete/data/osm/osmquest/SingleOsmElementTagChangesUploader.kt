@@ -44,7 +44,14 @@ class SingleOsmElementTagChangesUploader @Inject constructor(private val mapData
                 // try again (go back to beginning of loop)
                 continue
             }
-            return handler.getElementUpdates(listOf(elementWithChangesApplied)).updated.single()
+            val updatedElements = handler.getElementUpdates(listOf(elementWithChangesApplied)).updated
+            // if the uploaded change has been made on the server side EXACTLY how the diff applied
+            // would have done, the OSM server reports that 0 elements have been updated. So this
+            // case must be treated like a conflict
+            if (updatedElements.size != 1) {
+                throw ElementConflictException("Exactly these changes already applied")
+            }
+            return updatedElements.single()
         }
     }
 

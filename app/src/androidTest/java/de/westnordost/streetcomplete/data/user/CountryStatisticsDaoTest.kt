@@ -17,7 +17,7 @@ class CountryStatisticsDaoTest  : ApplicationDbTestCase() {
         dao.addOne("DE")
         dao.addOne("DE")
         dao.subtractOne("DE")
-        assertEquals(mapOf("DE" to 2), dao.getAll())
+        assertEquals(listOf(CountryStatistics("DE", 2, null)), dao.getAll())
     }
 
     @Test fun getAllReplaceAll() {

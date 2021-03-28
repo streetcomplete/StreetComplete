@@ -1,23 +1,29 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.ktx.containsAnyKey
 
-class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
+class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes with amenity = post_box
-        and !collection_times
-        and collection_times:signed != no
         and access !~ private|no
+        and collection_times:signed != no
+        and (!collection_times or collection_times older today -2 years)
     """
+
+    /* Don't ask again for postboxes without signed collection times. This is very unlikely to
+    *  change and problematic to tag clearly with the check date scheme */
+
     override val icon = R.drawable.ic_quest_mail
     override val commitMessage = "Add postbox collection times"
     override val wikiLink = "Key:collection_times"
+    override val isDeleteElementEnabled = true
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=postbox_collection_times/AddPostboxCollectionTimes.kt
     // sources:
@@ -39,16 +45,14 @@ class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryApi) : SimpleOverpa
             // apparently mostly not in Latin America and in Arabic world and unknown in Africa
     )
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
-        return if (name != null) arrayOf(name) else arrayOf()
-    }
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["name"] ?: tags["brand"] ?: tags["operator"])
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.keys.containsAny(listOf("name","brand","operator"))
-        return if (hasName) R.string.quest_postboxCollectionTimes_name_title
-               else         R.string.quest_postboxCollectionTimes_title
-    }
+    override fun getTitle(tags: Map<String, String>): Int =
+        if (tags.containsAnyKey("name", "brand", "operator"))
+            R.string.quest_postboxCollectionTimes_name_title
+        else
+            R.string.quest_postboxCollectionTimes_title
 
     override fun createForm() = AddCollectionTimesForm()
 
@@ -58,7 +62,7 @@ class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryApi) : SimpleOverpa
                 changes.add("collection_times:signed", "no")
             }
             is CollectionTimes -> {
-                changes.add("collection_times", answer.times.joinToString(", "))
+                changes.updateWithCheckDate("collection_times", answer.times.joinToString(", "))
             }
         }
     }

@@ -1,0 +1,4 @@
+# Do not edit. Source files are in /res/country_metadata
+atmOperators: [M&T Bank, Bank of America, Wells Fargo, PNC Bank, Johns Hopkins Federal Credit Union, BB&T]
+chargingStationOperators: [Tesla Motors, Volta, ChargePoint, SemaCharge, BGE, SemaConnect, EV Institute, Chargepoint, BWI Airport]
+clothesContainerOperators: [Planet Aid, JJ Recycling]

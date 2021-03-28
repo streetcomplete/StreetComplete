@@ -1,0 +1,5 @@
+Helpu plibonigi OpenStreetMap per StreetComplete!
+
+Ĉi tiu aplikaĵo trovas ne kompletan kaj plibonigeblan datumaron en via najbararo kaj montras ĝin kiel markoj. Ĉiu estas solvebla per respondo al simpla demando por kompletigi la informon je la loko.
+
+La informo, kiun vi donas estas direkte aldonata al OpenStreetMap nome de vi, sen neceso de uzo de alia redaktilo.

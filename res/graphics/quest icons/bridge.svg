@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path class="st0" d="m128 64a64 64 0 0 1-64 64 64 64 0 0 1-64-64 64 64 0 0 1 64-64 64 64 0 0 1 64 64" fill="#aaa"/>
+ <g transform="translate(-1608.1 -271.42)" fill="none" stroke="#000" stroke-linecap="square" stroke-opacity=".2" stroke-width="8">
+  <path d="m1619.3 323.39h104.82"/>
+  <path d="m1627.3 362.59s12.8-27.2 44.8-27.2 44.8 27.2 44.8 27.2"/>
+ </g>
+ <g transform="translate(-1608.1 -275.42)" stroke="#fff">
+  <path d="m1672.1 323.39v12" fill="#fff" stroke-width="4"/>
+  <path d="m1619.3 323.39h104.82" fill="none" stroke-linecap="square" stroke-width="8"/>
+  <path d="m1627.3 362.59s12.8-27.2 44.8-27.2 44.8 27.2 44.8 27.2" fill="none" stroke-linecap="square" stroke-width="8"/>
+  <path d="m1688.1 339.39v-16" fill="none" stroke-width="4"/>
+  <path d="m1656.1 339.39v-16" fill="none" stroke-width="4"/>
+  <path d="m1704.1 347.39v-24" fill="none" stroke-width="4"/>
+  <path d="m1640.1 348.55v-25.155" fill="none" stroke-width="4"/>
+  <path d="m1720.1 363.39v-40" fill="none" stroke-width="4"/>
+  <path d="m1624.1 363.39v-40" fill="none" stroke-width="4"/>
+ </g>
+</svg>

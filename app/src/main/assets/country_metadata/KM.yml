@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Exim Bank]
 mobileCountryCode: 654
 officialLanguages: [ar, fr, swb, wni, zdj, wlc]
 orchardProduces: [coconut, banana, tomato, coffee, cacao, vanilla]

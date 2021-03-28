@@ -6,11 +6,6 @@ import org.junit.Assert.*
 
 class WeekdaysTest {
 
-    @Test fun intersects() {
-        assertFalse(weekdays(0b10101010).intersects(weekdays(0b01010101)))
-        assertTrue(weekdays(0b00000010).intersects(weekdays(0b00000010)))
-    }
-
     @Test fun isSelectionEmpty() {
         assertTrue(weekdays(0b00000000).isSelectionEmpty())
         assertFalse(weekdays(0b00010000).isSelectionEmpty())

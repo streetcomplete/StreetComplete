@@ -1,6 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [FNB, First National Bank, Barclays, Standard Chartered Bank, Barclay's, Stanbic Bank, Fnb, FNB ATM]
+centerLine: white
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 652
 officialLanguages: [en, tn]
 orchardProduces: [tomato, orange]
+shoulderLine: yellow

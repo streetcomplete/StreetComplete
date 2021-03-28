@@ -1,15 +1,19 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddWheelchairAccessPublicTransport(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>() {
 
-    override val tagFilters = """
+    override val elementFilter = """
         nodes, ways, relations with (amenity = bus_station or railway ~ station|subway_entrance)
-        and !wheelchair
+        and (
+          !wheelchair
+          or wheelchair != yes and wheelchair older today -4 years
+          or wheelchair older today -8 years
+        )
     """
     override val commitMessage = "Add wheelchair access to public transport platforms"
     override val wikiLink = "Key:wheelchair"
@@ -38,7 +42,7 @@ class AddWheelchairAccessPublicTransport(o: OverpassMapDataAndGeometryApi) : Sim
 
     override fun createForm() = AddWheelchairAccessPublicTransportForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("wheelchair", answer)
+    override fun applyAnswerTo(answer: WheelchairAccess, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("wheelchair", answer.osmValue)
     }
 }

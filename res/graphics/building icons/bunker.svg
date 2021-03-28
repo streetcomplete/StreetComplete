@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m56 24c-24 0-40 16-40 32v48h96v-48c0-16-16-32-40-32z" fill="#aeaeae" style="paint-order:fill markers stroke"/>
+ <rect transform="scale(1,-1)" x="8" y="-64" width="112" height="16" fill="#c6c6c6" style="paint-order:fill markers stroke"/>
+ <rect x="56" y="80" width="16" height="24" fill="#58595b" style="paint-order:fill markers stroke"/>
+ <rect transform="scale(1,-1)" x="16" y="-72" width="96" height="8" fill="#929292" style="paint-order:fill markers stroke"/>
+</svg>

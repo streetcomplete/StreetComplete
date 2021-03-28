@@ -17,15 +17,17 @@ data class Tile(val x: Int, val y:Int) {
             tile2lon(x + 1, zoom)
         )
     }
+
+    fun toTilesRect() = TilesRect(x,y,x,y)
 }
 
 /** Returns the minimum rectangle of tiles that encloses all the tiles */
 fun Collection<Tile>.minTileRect(): TilesRect? {
     if (isEmpty()) return null
-    val right = maxBy { it.x }!!.x
-    val left = minBy { it.x }!!.x
-    val bottom = maxBy { it.y }!!.y
-    val top = minBy { it.y }!!.y
+    val right = maxByOrNull { it.x }!!.x
+    val left = minByOrNull { it.x }!!.x
+    val bottom = maxByOrNull { it.y }!!.y
+    val top = minByOrNull { it.y }!!.y
     return TilesRect(left, top, right, bottom)
 }
 
@@ -65,6 +67,27 @@ data class TilesRect(val left: Int, val top: Int, val right: Int, val bottom: In
             tile2lon(right + 1, zoom)
         )
     }
+
+    fun zoom(from: Int, to: Int): TilesRect {
+        val delta = to - from
+        return when {
+            delta > 0 -> TilesRect(
+                left shl delta,
+                top shl delta,
+                right shl delta,
+                bottom shl delta
+            )
+            delta < 0 -> TilesRect(
+                left shr -delta,
+                top shr -delta,
+                right shr -delta,
+                bottom shr -delta
+            )
+            else -> this
+        }
+    }
+
+    fun getAsLeftBottomRightTopString() = "$left,$bottom,$right,$top"
 }
 
 /** Returns the bounding box of the tile rect at the given zoom level that encloses this bounding box.

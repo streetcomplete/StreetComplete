@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <path d="m30.64 66.26v27.4l-23.29-23.29-5.4e-6 -30.14" fill="#f2eeee" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m30.64 66.26 57.54-19.18v27.4l-57.54 19.18v-27.4" fill="#e0d8d8" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m29.27 67.63 61.65-20.55-15.07-21.92-41.1 13.7z" fill="#fb6d6d" fill-rule="evenodd" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m18.31 22.42 41.1-13.7 16.44 16.44-41.1 13.7z" fill="#ffa5a5" fill-rule="evenodd" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="m29.27 67.63 5.48-28.77-16.44-16.44-13.7 20.55z" fill="#ff9191" fill-rule="evenodd" stroke="#a00" stroke-linejoin="bevel"/>
+  <path d="m90.92 47.08-28.77-23.29-57.54 19.18" fill="none" stroke="#a00" stroke-dasharray="2, 2" stroke-opacity=".50196"/>
+  <path d="m62.15 23.79-2.74-15.07" fill="none" stroke="#a00" stroke-dasharray="2, 2" stroke-opacity=".50196"/>
+ </g>
+</svg>

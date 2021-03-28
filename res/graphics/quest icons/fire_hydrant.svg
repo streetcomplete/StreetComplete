@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path class="st0" d="m128 64a64 64 0 0 1-64 64 64 64 0 0 1-64-64 64 64 0 0 1 64-64 64 64 0 0 1 64 64" fill="#aaa"/>
+ <path d="m63.992 16.08c-10.98 3.8e-4 -19.882 8.9023-19.881 19.883l0.01 8e-3h-4.1172v8h8v12h-4v-4h-8v6.0215a6.0569 6.0569 0 0 0-5.9414 6.0527 6.0569 6.0569 0 0 0 5.9414 6.0508v5.875h8v-4h4v24h-4v12h-5v8h49v-8h-4v-12h-4v-24h4v4h8v-5.7773a6.0569 6.0569 0 0 0 0.2383 0.0117 6.0569 6.0569 0 0 0 6.0566-6.0566 6.0569 6.0569 0 0 0-6.0566-6.0586 6.0569 6.0569 0 0 0-0.2383 8e-3v-6.127h-8v4h-4v-12h8v-8h-4.1348l0.01-8e-3c9e-4 -10.981-8.9003-19.882-19.881-19.883z" fill-opacity=".2" style="paint-order:markers fill stroke"/>
+ <g transform="translate(-1608.1 -275.42)">
+  <path d="m1652.1 327.39h40v16h-40z" fill="#a8493e" style="paint-order:markers fill stroke"/>
+  <path transform="translate(1480.1 275.39)" d="m191.99 12.109c-10.98 3.71e-4 -19.882 8.9023-19.881 19.883l3.8887 4.9885v55.019h32v-56l3.873-4.0078c7.1e-4 -10.981-8.9004-19.882-19.881-19.883z" fill="#cd584c" style="paint-order:markers fill stroke"/>
+  <path d="m1706.4 335.57a6.0569 6.0569 0 0 1-6.0569 6.0568 6.0569 6.0569 0 0 1-6.0568-6.0568 6.0569 6.0569 0 0 1 6.0568-6.0568 6.0569 6.0569 0 0 1 6.0569 6.0568" fill="#cd584c" style="paint-order:markers fill stroke"/>
+  <path d="m1692.1 323.39h8v24h-8z" fill="#9e3d33" style="paint-order:markers fill stroke"/>
+  <path d="m1650.3 335.47a6.0569 6.0569 0 0 1-6.0568 6.0568 6.0569 6.0569 0 0 1-6.0569-6.0568 6.0569 6.0569 0 0 1 6.0569-6.0568 6.0569 6.0569 0 0 1 6.0568 6.0568" fill="#cd584c" style="paint-order:markers fill stroke"/>
+  <path d="m1644.1 323.39h8v24h-8z" fill="#9e3d33" style="paint-order:markers fill stroke"/>
+  <path d="m1684.2 343.52a12.147 12.147 0 0 1-12.147 12.147 12.147 12.147 0 0 1-12.147-12.147 12.147 12.147 0 0 1 12.147-12.147 12.147 12.147 0 0 1 12.147 12.147" fill="#9e3d33" style="paint-order:markers fill stroke"/>
+  <path d="m1647.1 379.39h49v8h-49z" fill="#9e3d33" style="paint-order:markers fill stroke"/>
+  <path d="m1648.1 307.39h48v8h-48z" fill="#9e3d33" style="paint-order:markers fill stroke"/>
+  <path transform="rotate(15)" d="m1699.8-105.32h8.4852v8.4853h-8.4852z" fill="#cd584c" style="paint-order:markers fill stroke"/>
+  <path d="m1652.1 367.39h40v12h-40z" fill="#a8493e" style="paint-order:markers fill stroke"/>
+ </g>
+</svg>

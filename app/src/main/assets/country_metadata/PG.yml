@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [BSP, ANZ Bank]
+centerLine: white
 isLeftHandTraffic: true
 mobileCountryCode: 537
 officialLanguages: [tpi, en, ho]
-orchardProduces: [banana, coconut, coffee, cacao, pineapple, rubber, tea, tomato, vanilla, nutmeg,
-  chilli_pepper, sweet_pepper]
+orchardProduces: [banana, coconut, coffee, cacao, pineapple, rubber, tea, tomato, vanilla, nutmeg, chilli_pepper, sweet_pepper]

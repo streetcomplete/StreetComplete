@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.user
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Link
@@ -70,11 +71,10 @@ class GroupedLinksAdapter(links: List<Link>, private val onClickLink: (url: Stri
         fun onBind(with: LinkCategory) {
             itemView.linkCategoryTitleTextView.setText(with.title)
             val description = with.description
+            itemView.linkCategoryDescriptionTextView.isGone = description == null
             if (description != null) {
-                itemView.linkCategoryDescriptionTextView.visibility = View.VISIBLE
                 itemView.linkCategoryDescriptionTextView.setText(description)
             } else {
-                itemView.linkCategoryDescriptionTextView.visibility = View.GONE
                 itemView.linkCategoryDescriptionTextView.text = ""
             }
         }

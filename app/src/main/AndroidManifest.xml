@@ -16,6 +16,18 @@
     <uses-feature android:name="android.hardware.location.gps" android:required="false" />
     <uses-feature android:name="android.hardware.screen.portrait"/>
 
+    <queries>
+        <!-- take a photo to attach to a note -->
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE"/>
+        </intent>
+        <!-- open location in another app -->
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="geo"/>
+        </intent>
+    </queries>
+
     <application
         android:name=".StreetCompleteApplication"
         android:allowBackup="false"
@@ -27,7 +39,7 @@
             android:windowSoftInputMode="adjustResize"
             android:name="de.westnordost.streetcomplete.MainActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation|screenSize|uiMode">
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -49,14 +61,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".FragmentContainerActivity"/>
-        <activity android:name=".settings.AboutActivity"/>
+        <activity android:name=".about.AboutActivity"/>
         <activity android:name=".settings.ShowQuestFormsActivity"
             android:configChanges="orientation|screenSize|uiMode"/>
         <activity
             android:name=".user.UserActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <service android:name=".data.download.QuestDownloadService" />
+        <service android:name=".data.download.DownloadService" />
         <service android:name=".data.upload.UploadService" />
         <provider
             android:name="androidx.core.content.FileProvider"

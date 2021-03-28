@@ -12,11 +12,15 @@ object AchievementsModule {
     @Provides @Named("Achievements") fun achievements(): List<Achievement> = achievements
     @Provides @Named("QuestAliases") fun questAliases(): List<Pair<String, String>> = questAliases
 
+    // list of quest synonyms (this alternate name is mentioned to aid searching for this code)
     private val questAliases = listOf(
         "AddAccessibleForPedestrians"        to "AddProhibitedForPedestrians",
         "AddWheelChairAccessPublicTransport" to "AddWheelchairAccessPublicTransport",
         "AddWheelChairAccessToilets"         to "AddWheelchairAccessToilets",
-        "AddSidewalks"                       to "AddSidewalk"
+        "AddSidewalks"                       to "AddSidewalk",
+        "DetailRoadSurface"                  to "AddRoadSurface",
+        "AddTrafficSignalsBlindFeatures"     to "AddTrafficSignalsVibration",
+        "AddSuspectedOneway"                 to "AddOneway"
     )
 
     private val links = listOf(
@@ -62,8 +66,15 @@ object AchievementsModule {
             R.drawable.ic_link_neis_one,
             R.string.link_neis_one_description
         ),
+        Link(
+            "disaster.ninja",
+            "https://disaster.ninja/live/#position=11,46;zoom=3",
+            "disaster.ninja",
+            LinkCategory.INTRO,
+            R.drawable.ic_link_kontur,
+            R.string.link_disaster_ninja_description
+        ),
 
-        // TODO not sure where to put these links
         Link(
             "mapillary",
             "https://www.mapillary.com",
@@ -72,13 +83,13 @@ object AchievementsModule {
             R.drawable.ic_link_mapillary,
             R.string.link_mapillary_description
         ),
-        // TODO not sure where to put these links
+
         Link(
-            "openstreetcam",
-            "https://openstreetcam.org",
-            "OpenStreetCam",
+            "kartaview",
+            "https://kartaview.org/map/",
+            "KartaView",
             LinkCategory.INTRO,
-            R.drawable.ic_link_openstreetcam,
+            R.drawable.ic_link_kartaview,
             R.string.link_openstreetcam_description
         ),
 
@@ -190,6 +201,14 @@ object AchievementsModule {
             null,
             R.string.link_openinframap_description
         ),
+        Link(
+            "indoorequal",
+            "https://indoorequal.org",
+            "indoor=",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_indoorequal,
+            R.string.link_indoorequal_description
+        ),
 
         /* -------------------------------------- Showcase ---------------------------------------*/
         Link(
@@ -203,7 +222,7 @@ object AchievementsModule {
 
         Link(
             "openrouteservice-wheelchair",
-            "https://maps.openrouteservice.org/directions?b=3",
+            "https://classic-maps.openrouteservice.org/directions?b=3",
             "Openrouteservice (Wheelchair)",
             LinkCategory.SHOWCASE,
             R.drawable.ic_link_heigit,
@@ -346,16 +365,14 @@ object AchievementsModule {
                    and then most of all goodies and general (OSM) showcases */
                 1 to links("wiki"), // most important link
                 2 to links("welcomemat"),
-                3 to links("openstreetbrowser"),
+
                 4 to links("show_me_the_way"),
 
-                5 to links("myosmatic"),
+                6 to links("myosmatic"),
 
-                6 to links("osm-haiku"),
+                8 to links("osm-haiku"),
 
-                8 to links("umap"),
-
-                10 to links("qwant_maps")
+                10 to links("umap")
             )
         ),
 
@@ -377,8 +394,29 @@ object AchievementsModule {
                 3 to links("neis-one"), // who-is-around-me, leaderboards etc fits into "community intro"
                 4 to links("ideditor"),
                 5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
-                6 to links("vespucci", "josm") // together because both are full-featured-editors for each their platform
+                6 to links("disaster.ninja"),
+                7 to links("vespucci", "josm") // together because both are full-featured-editors for each their platform
             )
+        ),
+
+        Achievement(
+            "rare",
+            R.drawable.ic_achievement_rare,
+            R.string.achievement_rare_title,
+            R.string.achievement_rare_solved_X,
+            SolvedQuestsOfTypes(listOf(
+                "AddSummitRegister", // 1
+                "AddWheelchairAccessToiletsPart", // 38
+                "AddWheelchairAccessOutside", // 154
+                "AddFerryAccessPedestrian", // 66
+                "AddFerryAccessMotorVehicle", // 103
+                "AddInformationToTourism", // 137
+                "AddBoardType", // 188
+                "AddPostBoxRoyalCypher"
+            )),
+            // levels: 3, 9, 18, 30, 45, 63, ...
+            { lvl -> (lvl + 1)*3 },
+            mapOf()
         ),
 
         Achievement(
@@ -403,7 +441,10 @@ object AchievementsModule {
                     "AddMotorcycleParkingCapacity",
                     "AddMotorcycleParkingCover",
                     "AddFerryAccessMotorVehicle",
-                    "AddCarWashType"
+                    "AddCarWashType",
+                    "AddChargingStationOperator",
+                    "AddChargingStationCapacity",
+                    "AddLanes"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -414,7 +455,8 @@ object AchievementsModule {
 
                 5 to links("osrm"), // routing engines are not that interesting for end users
                 6 to links("openrouteservice"),
-                7 to links("graphhopper")
+                7 to links("graphhopper"),
+                12 to links("kartaview", "mapillary") // useful to OSM, but not directly OSM and interesting only to extreme enthusiasts
             )
         ),
 
@@ -446,6 +488,9 @@ object AchievementsModule {
                     "AddRoadName",
                     "AddWayLit",
                     "AddHandrail",
+                    "AddStepsIncline",
+                    "AddStepCount",
+                    "AddStepsRamp",
                     "AddFootwayPartSurface",
                     "AddBenchBackrest",
                     "AddTrafficSignalsButton",
@@ -455,14 +500,16 @@ object AchievementsModule {
                     "AddProhibitedForPedestrians",
                     "AddSidewalk",
                     "AddBusStopName",
-                    "AddBusStopShelter"
+                    "AddBusStopRef",
+                    "AddBusStopShelter",
+                    "AddBenchStatusOnBusStop",
+                    "AddCrossingIsland"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
-                1 to links("öpnvkarte"),
-                2 to links("openorienteeringmap")
+                1 to links("öpnvkarte")
             )
         ),
 
@@ -499,8 +546,10 @@ object AchievementsModule {
                 listOf(
                     "AddHousenumber",
                     "AddRoadName",
+                    "AddAddressStreet",
                     "AddPostboxRef",
-                    "AddPostboxCollectionTimes"
+                    "AddPostboxCollectionTimes",
+                    "AddPostBoxRoyalCypher"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -522,7 +571,11 @@ object AchievementsModule {
                 listOf(
                     "AddTactilePavingCrosswalk",
                     "AddTrafficSignalsSound",
-                    "AddTactilePavingBusStop"
+                    "AddTrafficSignalsVibration",
+                    "AddTactilePavingBusStop",
+                    "AddCrossingIsland",
+                    "AddKerbHeight",
+                    "AddTactilePavingKerb"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -546,7 +599,10 @@ object AchievementsModule {
                     "AddWheelchairAccessToilets",
                     "AddWheelchairAccessToiletsPart",
                     "AddFootwayPartSurface",
-                    "AddPathSurface"
+                    "AddPathSurface",
+                    "AddStepsRamp",
+                    "AddHandrail",
+                    "AddKerbHeight"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -569,8 +625,12 @@ object AchievementsModule {
                     "AddBikeParkingCapacity",
                     "AddBikeParkingCover",
                     "AddBikeParkingType",
+                    "AddBikeParkingAccess",
+                    "AddBikeParkingFee",
                     "AddCyclewaySegregation",
-                    "AddPathSurface"
+                    "AddPathSurface",
+                    "AddStepsRamp",
+                    "AddKerbHeight"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -579,16 +639,89 @@ object AchievementsModule {
                 1 to links("cyclosm"),
                 2 to links("brouter")
             )
+        ),
+
+        Achievement(
+            "citizen",
+            R.drawable.ic_achievement_citizen,
+            R.string.achievement_citizen_title,
+            R.string.achievement_citizen_solved_X,
+            SolvedQuestsOfTypes(
+                listOf(
+                    "CheckExistence",
+                    "CheckShopType",
+                    "AddSelfServiceLaundry",
+                    "AddToiletAvailability",
+                    "AddToiletsFee",
+                    "AddPlaceName",
+                    "DetermineRecyclingGlass",
+                    "AddRecyclingContainerMaterials",
+                    "AddClothingBinOperator",
+                    "AddBabyChangingTable",
+                    "AddOpeningHours",
+                    "AddAtmOperator",
+                    "AddPlaygroundAccess",
+                    "AddReligionToPlaceOfWorship",
+                    "AddRecyclingType",
+                    "AddAcceptsCash",
+                    "AddVegetarian",
+                    "AddVegan",
+                    "AddKosher",
+                    // tourist related
+                    "AddInformationToTourism",
+                    "AddBoardType",
+                    "AddInternetAccess",
+                    "AddGeneralFee"
+                )
+            ),
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("openstreetbrowser"),
+                2 to links("qwant_maps"),
+                3 to links("indoorequal")
+            )
+        ),
+
+        Achievement(
+            "outdoors",
+            R.drawable.ic_achievement_outdoors,
+            R.string.achievement_outdoors_title,
+            R.string.achievement_outdoors_solved_X,
+            SolvedQuestsOfTypes(
+                listOf(
+                    "CheckExistence",
+                    "AddSport",
+                    "AddPitchSurface",
+                    "AddSummitRegister",
+                    "AddReligionToWaysideShrine",
+                    "AddDrinkingWater",
+                    // from pedestrian
+                    "AddPathSurface",
+                    "AddCyclewaySegregation",
+                    "AddCyclewayPartSurface",
+                    "AddFootwayPartSurface",
+                    "AddBenchBackrest",
+                    // information boards
+                    "AddInformationToTourism",
+                    "AddBoardType"
+                )
+            ),
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("openorienteeringmap")
+            )
         )
+
     )
 
     private fun links(vararg linksKeys: String = emptyArray()): List<Link> =
         linksKeys.map { linksById.getValue(it) }
 
     // Quests not mentioned in any achievements:
-    // AddFireHydrantType AddGeneralFee AddSelfServiceLaundry AddReligionToWaysideShrine AddToiletsFee
-    // AddBabyChangingTable AddPlaceName AddReligionToPlaceOfWorship AddRecyclingType
-    // AddRecyclingContainerMaterials AddSport AddOpeningHours AddInternetAccess AddPlaygroundAccess
-    // AddToiletAvailability DetermineRecyclingGlass
 
+    // maybe "emergency"
+    // AddFireHydrantType AddIsDefibrillatorIndoor
+    //
 }
