@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
