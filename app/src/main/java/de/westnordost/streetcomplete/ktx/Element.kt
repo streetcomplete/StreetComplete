@@ -9,9 +9,9 @@ import java.util.ArrayList
 fun Element.copy(newId: Long = id, newVersion: Int = version): OsmElement {
     val tags = tags?.let { HashMap(it) }
     return when (this) {
-        is Node -> OsmNode(newId, newVersion, position, tags)
-        is Way -> OsmWay(newId, newVersion, ArrayList(nodeIds), tags)
-        is Relation -> OsmRelation(newId, newVersion, ArrayList(members), tags)
+        is Node -> OsmNode(newId, newVersion, position, tags, null, dateEdited)
+        is Way -> OsmWay(newId, newVersion, ArrayList(nodeIds), tags, null, dateEdited)
+        is Relation -> OsmRelation(newId, newVersion, ArrayList(members), tags, null, dateEdited)
         else -> throw RuntimeException()
     }
 }

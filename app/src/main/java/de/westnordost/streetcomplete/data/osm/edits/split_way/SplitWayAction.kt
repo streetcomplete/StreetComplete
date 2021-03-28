@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.*
+import java.util.Date
+import kotlin.collections.ArrayList
 
 /** Action that performs a split on a way.
  *
@@ -74,7 +76,7 @@ class SplitWayAction(
                     splitAtIndices.add(split.index + insertedNodeCount)
                 }
                 is SplitWayAtLinePosition -> {
-                    val splitNode = OsmNode(idProvider.nextNodeId(), 1, split.pos, null)
+                    val splitNode = OsmNode(idProvider.nextNodeId(), 1, split.pos, null, null, Date())
                     updatedElements.add(splitNode)
 
                     val nodeIndex = split.index2 + insertedNodeCount
@@ -141,10 +143,10 @@ private fun splitWayAtIndices(
 
     return nodesChunks.mapIndexed { index, nodes ->
         if(index == indexOfChunkToKeep) {
-            OsmWay(originalWay.id, originalWay.version, nodes, tags).apply { isModified = true }
+            OsmWay(originalWay.id, originalWay.version, nodes, tags, null, originalWay.dateEdited).apply { isModified = true }
         }
         else {
-            OsmWay(idProvider.nextWayId(), 0, nodes, tags)
+            OsmWay(idProvider.nextWayId(), 0, nodes, tags, null, originalWay.dateEdited)
         }
     }
 }
