@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.ktx.containsAny
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 import de.westnordost.streetcomplete.util.isNearAndAligned
@@ -111,14 +110,15 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        val tags = element.tags ?: return false
-        // can't determine for yet untagged roads by the tags alone because we need info about
-        // surrounding geometry, but for already tagged ones, we can!
-        if (!tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)) return null
+        if (!roadsFilter.matches(element)) return false
 
-        return roadsFilter.matches(element) &&
-               OLDER_THAN_4_YEARS.matches(element) &&
-               element.hasOnlyKnownCyclewayTags()
+        /* can't determine for yet untagged roads by the tags alone because we need info about
+           surrounding geometry */
+        if (untaggedRoadsFilter.matches(element)) return null
+
+        /* but if already tagged an old, we don't need to look at surrounding geometry to see if
+           it applicable or not */
+        return OLDER_THAN_4_YEARS.matches(element) && element.hasOnlyKnownCyclewayTags()
     }
 
     override fun createForm() = AddCyclewayForm()

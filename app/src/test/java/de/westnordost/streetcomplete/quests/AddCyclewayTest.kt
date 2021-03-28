@@ -516,6 +516,10 @@ class AddCyclewayTest {
         )!!)
     }
 
+    @Test fun `isApplicableTo returns false for ways having nothing to do with cycleways`() {
+        assertFalse(questType.isApplicableTo(way(tags = mapOf("waterway" to "river")))!!)
+    }
+
     @Test fun `isApplicableTo returns false for tagged new ways`() {
         assertFalse(questType.isApplicableTo(
             way(tags = mapOf(
