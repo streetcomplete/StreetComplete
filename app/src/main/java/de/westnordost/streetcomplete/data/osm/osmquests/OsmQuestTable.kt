@@ -21,7 +21,7 @@ object OsmQuestTable {
             PRIMARY KEY (
                 ${Columns.ELEMENT_TYPE},
                 ${Columns.ELEMENT_ID},
-                ${Columns.QUEST_TYPE},
+                ${Columns.QUEST_TYPE}
             )
         );
     """
