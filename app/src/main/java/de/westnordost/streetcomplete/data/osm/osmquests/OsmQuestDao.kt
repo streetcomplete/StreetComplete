@@ -41,9 +41,9 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
             args = arrayOf(key.elementType.name, key.elementId, key.questTypeName)
         ) == 1
 
-    fun replaceAll(quests: List<OsmQuestDaoEntry>) {
+    fun replaceAll(quests: Collection<OsmQuestDaoEntry>) {
         if (quests.isEmpty()) return
-        val rowIds = db.insertOrIgnoreMany(NAME,
+        db.insertOrIgnoreMany(NAME,
             arrayOf(QUEST_TYPE, ELEMENT_TYPE, ELEMENT_ID, LATITUDE, LONGITUDE),
             quests.map { arrayOf(
                 it.questTypeName,

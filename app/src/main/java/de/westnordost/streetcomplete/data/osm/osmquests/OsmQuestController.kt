@@ -196,25 +196,19 @@ import javax.inject.Singleton
         val previousQuestsByKey = mutableMapOf<OsmQuestKey, OsmQuestDaoEntry>()
         questsPreviously.associateByTo(previousQuestsByKey) { it.key }
 
-        val addedQuests = mutableListOf<OsmQuest>()
         for (quest in questsNow) {
-            val questKey = quest.key
-            if (previousQuestsByKey.containsKey(questKey)) {
-                previousQuestsByKey.remove(questKey)
-            } else {
-                addedQuests.add(quest)
-            }
+            previousQuestsByKey.remove(quest.key)
         }
         // quests that were created previously for an element but now not anymore shall be deleted
         val obsoleteQuestKeys = previousQuestsByKey.values.map { it.key } + deletedQuestKeys
 
         db.deleteAll(obsoleteQuestKeys)
-        db.replaceAll(addedQuests)
+        db.replaceAll(questsNow)
 
         val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG, "Persisted ${addedQuests.size} new and removed ${obsoleteQuestKeys.size} already resolved quests in ${seconds.format(1)}s")
+        Log.i(TAG, "Persisted ${questsNow.size} new and removed ${obsoleteQuestKeys.size} already resolved quests in ${seconds.format(1)}s")
 
-        onUpdated(added = addedQuests, deletedKeys = obsoleteQuestKeys)
+        onUpdated(added = questsNow, deletedKeys = obsoleteQuestKeys)
     }
 
     private fun mayCreateQuest(
