@@ -20,7 +20,7 @@ data class OsmQuest(
     override val geometry: ElementGeometry
 ) : Quest, OsmQuestDaoEntry {
 
-    override val key: QuestKey get() = OsmQuestKey(elementType, elementId, questTypeName)
+    override val key: OsmQuestKey get() = OsmQuestKey(elementType, elementId, questTypeName)
 
     override val questTypeName: String get() = osmElementQuestType::class.simpleName!!
 

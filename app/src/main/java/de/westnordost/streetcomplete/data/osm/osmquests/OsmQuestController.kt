@@ -203,7 +203,7 @@ import javax.inject.Singleton
         val obsoleteQuestKeys = previousQuestsByKey.values.map { it.key } + deletedQuestKeys
 
         db.deleteAll(obsoleteQuestKeys)
-        db.replaceAll(questsNow)
+        db.putAll(questsNow)
 
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Persisted ${questsNow.size} new and removed ${obsoleteQuestKeys.size} already resolved quests in ${seconds.format(1)}s")

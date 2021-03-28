@@ -18,7 +18,7 @@ import javax.inject.Inject
 /** Persists OsmQuest objects, or more specifically, OsmQuestEntry objects */
 class OsmQuestDao @Inject constructor(private val db: Database) {
 
-    fun replace(quest: OsmQuestDaoEntry) {
+    fun put(quest: OsmQuestDaoEntry) {
         db.replace(NAME, quest.toPairs())
     }
 
@@ -41,7 +41,7 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
             args = arrayOf(key.elementType.name, key.elementId, key.questTypeName)
         ) == 1
 
-    fun replaceAll(quests: Collection<OsmQuestDaoEntry>) {
+    fun putAll(quests: Collection<OsmQuestDaoEntry>) {
         if (quests.isEmpty()) return
         db.insertOrIgnoreMany(NAME,
             arrayOf(QUEST_TYPE, ELEMENT_TYPE, ELEMENT_ID, LATITUDE, LONGITUDE),
