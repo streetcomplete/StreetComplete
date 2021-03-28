@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.upload
 
-import android.app.IntentService
 import android.content.Context
 import android.content.Intent
 import android.os.Binder
@@ -11,15 +10,14 @@ import de.westnordost.osmapi.map.data.LatLon
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Injector
-import kotlinx.coroutines.*
+import de.westnordost.streetcomplete.data.download.CoroutineIntentService
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */
-class UploadService : IntentService(TAG) {
+class UploadService : CoroutineIntentService(TAG) {
     @Inject internal lateinit var uploader: Uploader
 
     private val binder = Interface()
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private var isUploading: Boolean = false
     private var progressListener: UploadProgressListener? = null
@@ -42,17 +40,12 @@ class UploadService : IntentService(TAG) {
         return binder
     }
 
-    override fun onHandleIntent(intent: Intent?) {
+    override suspend fun onHandleIntent(intent: Intent?) {
         isUploading = true
         progressListener?.onStarted()
 
         try {
-            runBlocking {
-                // launching in own scope so that if the scope is cancelled, the work can be cancelled too
-                scope.launch {
-                    uploader.upload()
-                }.join()
-            }
+            uploader.upload()
         } catch (e: Exception) {
             Log.e(TAG, "Unable to upload", e)
             progressListener?.onError(e)
@@ -60,11 +53,6 @@ class UploadService : IntentService(TAG) {
 
         isUploading = false
         progressListener?.onFinished()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        scope.cancel()
     }
 
     /** Public interface to classes that are bound to this service  */

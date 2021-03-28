@@ -24,7 +24,7 @@ import javax.inject.Inject
  * * To query for the state of the service and/or current download task, i.e. if the current
  * download job was started by the user
  */
-class DownloadService : SingleIntentService(TAG) {
+class DownloadService : CoroutineIntentService(TAG) {
     @Inject internal lateinit var downloader: Downloader
 
     private lateinit var notificationController: DownloadNotificationController
@@ -50,6 +50,8 @@ class DownloadService : SingleIntentService(TAG) {
         if (!value || !isDownloading) notificationController.hide()
         else notificationController.show()
     }
+
+    override val cancelPreviousWorkOnNewIntent: Boolean = true
 
     init {
         Injector.applicationComponent.inject(this)

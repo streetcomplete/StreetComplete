@@ -9,25 +9,25 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 /**
- * SingleIntentService is similar to IntentService only that it cancels any previous intent when a
- * new arrives.
- *
- * SingleIntentService will receive the Intent, launch a worker thread, and stop the service as
- * appropriate.
+ * CoroutineIntentService is similar to IntentService only that it is coroutines enabled and
+ * has the option to cancel any previous work when a new intent arrives.
  *
  * @see android.app.IntentService
  */
-abstract class SingleIntentService(private val name: String) : Service() {
+abstract class CoroutineIntentService(name: String) : Service() {
 
     private val scope = CoroutineScope(
-        SupervisorJob() + Dispatchers.Default + CoroutineName("SingleIntentService[$name]"))
+        SupervisorJob() + Dispatchers.Default + CoroutineName("CoroutineIntentService[$name]"))
     private var currentJob: Job? = null
     private val mutex = Mutex()
+
+    open val cancelPreviousWorkOnNewIntent: Boolean = false
 
     override fun onStart(intent: Intent?, startId: Int) {
         scope.launch {
             mutex.withLock {
-                currentJob?.cancelAndJoin()
+                if (cancelPreviousWorkOnNewIntent) currentJob?.cancel()
+                currentJob?.join()
                 currentJob = scope.launch {
                     onHandleIntent(intent)
                     yield()
