@@ -167,9 +167,12 @@ import javax.inject.Singleton
                 *  element, so no need to check for quests for that element */
                 if (element.tags.isNullOrEmpty()) return@async null
 
-                val appliesToElement = questType.isApplicableTo(element)
-                    ?: questType.getApplicableElements(lazyMapData).any { it.id == element.id && it.type == element.type }
-
+                var appliesToElement = questType.isApplicableTo(element)
+                if (appliesToElement == null) {
+                    val mapData = withContext(Dispatchers.IO) { lazyMapData }
+                    appliesToElement = questType.getApplicableElements(mapData)
+                        .any{ it.id == element.id && it.type == element.type }
+                }
                 if (!appliesToElement) return@async null
 
                 if (mayCreateQuest(questType, geometry, null)) {
