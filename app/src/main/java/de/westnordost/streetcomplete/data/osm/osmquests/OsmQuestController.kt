@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.contains
@@ -75,10 +76,10 @@ import javax.inject.Singleton
                 count++
             }
 
-            val deleteQuestIds = mutableListOf<Long>()
+            val deleteQuestKeys = mutableListOf<OsmQuestKey>()
             for (key in deleted) {
                 // quests that refer to elements that have been deleted shall be deleted
-                deleteQuestIds.addAll(db.getAllForElement(key.type, key.id).mapNotNull { it.id })
+                deleteQuestKeys.addAll(db.getAllForElement(key.type, key.id).map { it.key })
             }
 
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
@@ -89,7 +90,7 @@ import javax.inject.Singleton
             val seconds = (currentTimeMillis() - time) / 1000.0
             Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
 
-            updateQuests(quests, previousQuests, deleteQuestIds)
+            updateQuests(quests, previousQuests, deleteQuestKeys)
         }
 
         /** Replace all quests of the given types in the given bounding box with the given quests.
@@ -135,7 +136,7 @@ import javax.inject.Singleton
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
                             ?: continue
                         if (!mayCreateQuest(questType, geometry, bbox)) continue
-                        questsForType.add(OsmQuest(null, questType, element.type, element.id, geometry))
+                        questsForType.add(OsmQuest(questType, element.type, element.id, geometry))
                         questCount++
                     }
 
@@ -176,7 +177,7 @@ import javax.inject.Singleton
                 if (!appliesToElement) return@async null
 
                 if (mayCreateQuest(questType, geometry, null)) {
-                    OsmQuest(null, questType, element.type, element.id, geometry)
+                    OsmQuest(questType, element.type, element.id, geometry)
                 } else {
                     null
                 }
@@ -187,7 +188,7 @@ import javax.inject.Singleton
     private fun updateQuests(
         questsNow: Collection<OsmQuest>,
         questsPreviously: Collection<OsmQuestDaoEntry>,
-        deletedQuestIds: Collection<Long>
+        deletedQuestKeys: Collection<OsmQuestKey>
     ) {
 
         val time = currentTimeMillis()
@@ -205,16 +206,15 @@ import javax.inject.Singleton
             }
         }
         // quests that were created previously for an element but now not anymore shall be deleted
-        val obsoleteQuestIds = previousQuestsByKey.values.mapNotNull { it.id } + deletedQuestIds
+        val obsoleteQuestKeys = previousQuestsByKey.values.map { it.key } + deletedQuestKeys
 
-        val deletedCount = db.deleteAll(obsoleteQuestIds)
-        val addedCount = db.addAll(addedQuests)
+        db.deleteAll(obsoleteQuestKeys)
+        db.replaceAll(addedQuests)
 
         val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Persisted $addedCount new and removed $deletedCount already resolved quests in ${seconds.format(1)}s")
+        Log.i(TAG, "Persisted ${addedQuests.size} new and removed ${obsoleteQuestKeys.size} already resolved quests in ${seconds.format(1)}s")
 
-        val reallyAddedQuests = addedQuests.filter { it.id != null }
-        onUpdated(added = reallyAddedQuests, deletedIds = obsoleteQuestIds)
+        onUpdated(added = addedQuests, deletedKeys = obsoleteQuestKeys)
     }
 
     private fun mayCreateQuest(
@@ -241,13 +241,8 @@ import javax.inject.Singleton
         return true
     }
 
-    override fun get(questId: Long): OsmQuest? =
-        db.get(questId)?.let { get(it) }
-
-    private fun get(questKey: OsmQuestKey): OsmQuest? =
-        db.get(questKey)?.let { get(it) }
-
-    private fun get(entry: OsmQuestDaoEntry): OsmQuest? {
+    override fun get(key: OsmQuestKey): OsmQuest? {
+        val entry = db.get(key) ?: return null
         if (hiddenDB.contains(entry.key)) return null
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
         if (isBlacklistedPosition(geometry.center)) return null
@@ -279,7 +274,7 @@ import javax.inject.Singleton
     private fun createOsmQuest(entry: OsmQuestDaoEntry, geometry: ElementGeometry?): OsmQuest? {
         if (geometry == null) return null
         val questType = questTypeRegistry.getByName(entry.questTypeName) as? OsmElementQuestType<*> ?: return null
-        return OsmQuest(entry.id, questType, entry.elementType, entry.elementId, geometry)
+        return OsmQuest(questType, entry.elementType, entry.elementId, geometry)
     }
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
@@ -297,12 +292,11 @@ import javax.inject.Singleton
         hiddenDB.getAllIds().toSet()
 
     /** Mark the quest as hidden by user interaction */
-    @Synchronized fun hide(quest: OsmQuest) {
-        val questId = quest.id ?: return
-        hiddenDB.add(quest.key)
-        val hidden = getHidden(quest.key)
+    @Synchronized fun hide(key: OsmQuestKey) {
+        hiddenDB.add(key)
+        val hidden = getHidden(key)
         if (hidden != null) onHid(hidden)
-        onUpdated(deletedIds = listOf(questId))
+        onUpdated(deletedKeys = listOf(key))
     }
 
     @Synchronized fun unhide(key: OsmQuestKey): Boolean {
@@ -362,9 +356,9 @@ import javax.inject.Singleton
 
     private fun onUpdated(
         added: Collection<OsmQuest> = emptyList(),
-        deletedIds: Collection<Long> = emptyList()
+        deletedKeys: Collection<OsmQuestKey> = emptyList()
     ) {
-        if (added.isEmpty() && deletedIds.isEmpty()) return
+        if (added.isEmpty() && deletedKeys.isEmpty()) return
 
         val visibleAdded = if (added.isNotEmpty()) {
             val hiddenIds = getHiddenQuests()
@@ -373,7 +367,7 @@ import javax.inject.Singleton
             added
         }
 
-        listeners.forEach { it.onUpdated(visibleAdded, deletedIds) }
+        listeners.forEach { it.onUpdated(visibleAdded, deletedKeys) }
     }
     private fun onInvalidated() {
         listeners.forEach { it.onInvalidated() }

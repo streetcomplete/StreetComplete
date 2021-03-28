@@ -6,34 +6,26 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.QUEST_ID
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.ELEMENT_ID
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.NAME
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import javax.inject.Inject
 
 /** Persists OsmQuest objects, or more specifically, OsmQuestEntry objects */
 class OsmQuestDao @Inject constructor(private val db: Database) {
 
-    fun add(quest: OsmQuestDaoEntry): Boolean {
-        val rowId = db.insertOrIgnore(NAME, quest.toPairs())
-        if (rowId != -1L) {
-            quest.id = rowId
-            return true
-        }
-        return false
+    fun replace(quest: OsmQuestDaoEntry) {
+        db.replace(NAME, quest.toPairs())
     }
-
-    fun get(id: Long): OsmQuestDaoEntry? =
-        db.queryOne(NAME, where = "$QUEST_ID = $id") { it.toOsmQuestEntry() }
 
     fun get(key: OsmQuestKey): OsmQuestDaoEntry? =
         db.queryOne(NAME,
-            where = "$QUEST_TYPE = ? AND $ELEMENT_ID = ? AND $ELEMENT_TYPE = ?",
-            args = arrayOf(key.questTypeName, key.elementId, key.elementType.name)
+            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ? AND $QUEST_TYPE = ?",
+            args = arrayOf(key.elementType.name, key.elementId, key.questTypeName)
         ) { it.toOsmQuestEntry() }
 
     fun getAllInBBoxCount(bounds: BoundingBox): Int {
@@ -43,15 +35,17 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
         ) { it.getInt("count") } ?: 0
     }
 
-    fun delete(id: Long): Boolean =
-        db.delete(NAME, "$QUEST_ID = $id") == 1
+    fun delete(key: OsmQuestKey): Boolean =
+        db.delete(NAME,
+            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ? AND $QUEST_TYPE = ?",
+            args = arrayOf(key.elementType.name, key.elementId, key.questTypeName)
+        ) == 1
 
-    fun addAll(quests: List<OsmQuestDaoEntry>): Int {
-        if (quests.isEmpty()) return 0
+    fun replaceAll(quests: List<OsmQuestDaoEntry>) {
+        if (quests.isEmpty()) return
         val rowIds = db.insertOrIgnoreMany(NAME,
-            arrayOf(QUEST_ID, QUEST_TYPE, ELEMENT_TYPE, ELEMENT_ID, LATITUDE, LONGITUDE),
+            arrayOf(QUEST_TYPE, ELEMENT_TYPE, ELEMENT_ID, LATITUDE, LONGITUDE),
             quests.map { arrayOf(
-                it.id,
                 it.questTypeName,
                 it.elementType.name,
                 it.elementId,
@@ -59,17 +53,6 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
                 it.position.longitude
             ) }
         )
-        check(rowIds.size == quests.size)
-        val rowIdsIt = rowIds.iterator()
-        var created = 0
-        for (quest in quests) {
-            val rowId = rowIdsIt.next()
-            if (rowId != -1L) {
-                quest.id = rowId
-                ++created
-            }
-        }
-        return created
     }
 
     fun getAllForElement(elementType: Element.Type, elementId: Long): List<OsmQuestDaoEntry> =
@@ -88,9 +71,13 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
         return db.query(NAME, where = builder) { it.toOsmQuestEntry() }
     }
 
-    fun deleteAll(ids: Collection<Long>): Int {
-        if (ids.isEmpty()) return 0
-        return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})")
+    fun deleteAll(keys: Collection<OsmQuestKey>) {
+        if (keys.isEmpty()) return
+        db.transaction {
+            for(key in keys) {
+                delete(key)
+            }
+        }
     }
 }
 
@@ -100,15 +87,13 @@ private fun inBoundsSql(bbox: BoundingBox): String = """
     """.trimIndent()
 
 private fun CursorPosition.toOsmQuestEntry(): OsmQuestDaoEntry = BasicOsmQuestDaoEntry(
-    getLong(QUEST_ID),
-    getString(QUEST_TYPE),
     Element.Type.valueOf(getString(ELEMENT_TYPE)),
     getLong(ELEMENT_ID),
+    getString(QUEST_TYPE),
     OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE))
 )
 
 private fun OsmQuestDaoEntry.toPairs() = listOf(
-    QUEST_ID to id,
     QUEST_TYPE to questTypeName,
     ELEMENT_TYPE to elementType.name,
     ELEMENT_ID to elementId,
@@ -117,9 +102,8 @@ private fun OsmQuestDaoEntry.toPairs() = listOf(
 )
 
 data class BasicOsmQuestDaoEntry(
-    override var id: Long?,
-    override val questTypeName: String,
     override val elementType: Element.Type,
     override val elementId: Long,
+    override val questTypeName: String,
     override val position: LatLon
 ) : OsmQuestDaoEntry

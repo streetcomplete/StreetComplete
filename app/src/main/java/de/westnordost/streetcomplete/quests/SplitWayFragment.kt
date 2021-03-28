@@ -26,8 +26,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
-import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.alongTrackDistanceTo
@@ -48,10 +49,9 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
 
     @Inject internal lateinit var soundFx: SoundFx
 
-    override val questId: Long get() = osmQuestId
-    override val questGroup: QuestGroup get() = QuestGroup.OSM
+    override val questKey: QuestKey get() = osmQuestKey
 
-    private var osmQuestId: Long = 0L
+    private lateinit var osmQuestKey: OsmQuestKey
     private lateinit var way: Way
     private lateinit var positions: List<OsmLatLon>
     private var clickPos: PointF? = null
@@ -62,7 +62,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     interface Listener {
         fun onAddSplit(point: LatLon)
         fun onRemoveSplit(point: LatLon)
-        fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>)
+        fun onSplittedWay(osmQuestKey: OsmQuestKey, splits: List<SplitPolylineAtPosition>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -73,7 +73,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val args = requireArguments()
-        osmQuestId = args.getLong(ARG_QUEST_ID)
+        osmQuestKey = args.getSerializable(ARG_OSM_QUEST_KEY) as OsmQuestKey
         way = args.getSerializable(ARG_WAY) as Way
         val elementGeometry = args.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementPolylinesGeometry
         positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
@@ -129,7 +129,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     }
 
     private fun onSplittedWayConfirmed() {
-        listener?.onSplittedWay(osmQuestId, splits.map { it.first })
+        listener?.onSplittedWay(osmQuestKey, splits.map { it.first })
     }
 
     private fun confirmManySplits(callback: () -> (Unit)) {
@@ -257,14 +257,14 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     companion object {
         private const val CLICK_AREA_SIZE_AT_MAX_ZOOM = 2.6
 
-        private const val ARG_QUEST_ID = "questId"
+        private const val ARG_OSM_QUEST_KEY = "osmQuestKey"
         private const val ARG_WAY = "way"
         private const val ARG_ELEMENT_GEOMETRY = "elementGeometry"
 
-        fun create(osmQuestId: Long, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
+        fun create(osmQuestKey: OsmQuestKey, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
             val f = SplitWayFragment()
             f.arguments = bundleOf(
-                ARG_QUEST_ID to osmQuestId,
+                ARG_OSM_QUEST_KEY to osmQuestKey,
                 ARG_WAY to way,
                 ARG_ELEMENT_GEOMETRY to elementGeometry
             )

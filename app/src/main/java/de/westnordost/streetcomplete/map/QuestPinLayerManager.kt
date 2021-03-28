@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.map
 
 import android.content.res.Resources
 import android.os.Build
-import androidx.collection.LongSparseArray
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
@@ -11,12 +10,10 @@ import com.mapzen.tangram.geometry.Point
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
-import de.westnordost.streetcomplete.ktx.values
 import de.westnordost.streetcomplete.map.tangram.toLngLat
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway
 import de.westnordost.streetcomplete.util.*
 import kotlinx.coroutines.*
-import java.util.*
 import javax.inject.Inject
 
 /** Manages the layer of quest pins in the map view:
@@ -35,8 +32,8 @@ class QuestPinLayerManager @Inject constructor(
     // last displayed rect of (zoom 14) tiles
     private var lastDisplayedRect: TilesRect? = null
 
-    // quest group -> ( quest Id -> [point, ...] )
-    private val quests: EnumMap<QuestGroup, LongSparseArray<List<Point>>> = EnumMap(QuestGroup::class.java)
+    // quest key -> [point, ...]
+    private val quests: MutableMap<QuestKey, List<Point>> = mutableMapOf()
 
     private val lifecycleScope = CoroutineScope(SupervisorJob())
 
@@ -90,10 +87,10 @@ class QuestPinLayerManager @Inject constructor(
         }
     }
 
-    override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<Long>, group: QuestGroup) {
+    override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
         var updates = 0
-        added.forEach { if (add(it, group)) updates++ }
-        removed.forEach { if (remove(it, group)) updates++ }
+        added.forEach { if (add(it)) updates++ }
+        removed.forEach { if (remove(it)) updates++ }
         if (updates > 0) updateLayer()
     }
 
@@ -115,18 +112,19 @@ class QuestPinLayerManager @Inject constructor(
         val bbox = minRect.asBoundingBox(TILES_ZOOM)
         val questTypeNames = questTypesProvider.get().map { it::class.simpleName!! }
         lifecycleScope.launch(Dispatchers.IO) {
-            val questsAndGroups = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox, questTypeNames) }
-            for ((quest, group) in questsAndGroups) {
-                add(quest, group)
+            val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox, questTypeNames) }
+            for (quest in quests) {
+                add(quest)
             }
             updateLayer()
         }
         synchronized(retrievedTiles) { retrievedTiles.addAll(tiles) }
     }
 
-    private fun add(quest: Quest, group: QuestGroup): Boolean {
+    private fun add(quest: Quest): Boolean {
+        val questKey = quest.key
         val positions = quest.markerLocations
-        val previousPoints = synchronized(quest) { quests[group]?.get(quest.id!!) }
+        val previousPoints = synchronized(quest) { quests[questKey] }
         val previousPositions = previousPoints?.map { OsmLatLon(it.coordinateArray[1], it.coordinateArray[0]) }
         if (positions == previousPositions) return false
 
@@ -139,32 +137,40 @@ class QuestPinLayerManager @Inject constructor(
             val properties = mapOf(
                 "type" to "point",
                 "kind" to questIconName,
-                "importance" to getQuestImportance(quest).toString(),
-                MARKER_QUEST_GROUP to group.name,
-                MARKER_QUEST_ID to quest.id!!.toString()
-            )
+                "importance" to getQuestImportance(quest).toString()
+            ) + questKey.toProperties()
+
             Point(position.toLngLat(), properties)
         }
         synchronized(quests) {
-            quests.getOrPut(group, { LongSparseArray(256) }).put(quest.id!!, points)
+            quests[questKey] = points
         }
         return true
     }
 
-    private fun remove(questId: Long, group: QuestGroup): Boolean {
-        synchronized(quests) {
-            if (quests[group]?.containsKey(questId) != true) return false
+    private fun QuestKey.toProperties(): Map<String, String> = when(this) {
+        is OsmNoteQuestKey -> mapOf(
+            MARKER_NOTE_ID to noteId.toString()
+        )
+        is OsmQuestKey -> mapOf(
+            MARKER_ELEMENT_TYPE to elementType.name,
+            MARKER_ELEMENT_ID to elementId.toString(),
+            MARKER_QUEST_TYPE to questTypeName
+        )
+    }
 
-            quests[group]?.remove(questId)
+    private fun remove(questKey: QuestKey): Boolean {
+        synchronized(quests) {
+            if (!quests.containsKey(questKey)) return false
+
+            quests.remove(questKey)
             return true
         }
     }
 
     private fun clear() {
         synchronized(quests) {
-            for (value in quests.values) {
-                value.clear()
-            }
+            quests.clear()
         }
         synchronized(retrievedTiles) {
             retrievedTiles.clear()
@@ -183,9 +189,7 @@ class QuestPinLayerManager @Inject constructor(
 
     private fun getPoints(): List<Point> {
         synchronized(quests) {
-            return quests.values.flatMap { questsById ->
-                questsById.values.flatten()
-            }
+            return quests.values.flatten()
         }
     }
 
@@ -201,15 +205,17 @@ class QuestPinLayerManager @Inject constructor(
     private fun getQuestImportance(quest: Quest): Int {
         val questTypeOrder = questTypeOrders[quest.type] ?: 0
         val freeValuesForEachQuest = 100000 / questTypeOrders.size
-        /* quest ID is used to add values unique to each quest to make ordering consistent
+        /* position is used to add values unique to each quest to make ordering consistent
            freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int */
-        val hopefullyUniqueValueForQuest = ((quest.id?: 0) % freeValuesForEachQuest).toInt()
+        val hopefullyUniqueValueForQuest = quest.position.hashCode() % freeValuesForEachQuest
         return 100000 - questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
     }
 
     companion object {
-        const val MARKER_QUEST_ID = "quest_id"
-        const val MARKER_QUEST_GROUP = "quest_group"
+        const val MARKER_ELEMENT_TYPE = "element_type"
+        const val MARKER_ELEMENT_ID = "element_id"
+        const val MARKER_QUEST_TYPE = "quest_type"
+        const val MARKER_NOTE_ID = "note_id"
         private const val TILES_ZOOM = 14
     }
 }

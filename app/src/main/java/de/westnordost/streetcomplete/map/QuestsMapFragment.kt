@@ -9,19 +9,24 @@ import androidx.lifecycle.lifecycleScope
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.geometry.Point
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_GROUP
-import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_ID
+import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_ELEMENT_ID
+import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_ELEMENT_TYPE
+import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_NOTE_ID
+import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_TYPE
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.map.tangram.toLngLat
@@ -57,7 +62,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     private var cameraPositionBeforeShowingQuest: CameraPosition? = null
 
     interface Listener {
-        fun onClickedQuest(questGroup: QuestGroup, questId: Long)
+        fun onClickedQuest(questKey: QuestKey)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
@@ -106,13 +111,25 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
         lifecycleScope.launch {
-            val pickResult = controller?.pickLabel(x, y)
+            val props = controller?.pickLabel(x, y)?.properties
 
-            val pickedQuestId = pickResult?.properties?.get(MARKER_QUEST_ID)?.toLong()
-            val pickedQuestGroup = pickResult?.properties?.get(MARKER_QUEST_GROUP)?.let { QuestGroup.valueOf(it) }
+            val noteId = props?.get(MARKER_NOTE_ID)?.toLong()
+            val elementId = props?.get(MARKER_ELEMENT_ID)?.toLong()
+            val elementType = props?.get(MARKER_ELEMENT_TYPE)?.let { Element.Type.valueOf(it) }
+            val questTypeName = props?.get(MARKER_QUEST_TYPE)
 
-            if (pickedQuestId != null && pickedQuestGroup != null) {
-                listener?.onClickedQuest(pickedQuestGroup, pickedQuestId)
+            val questKey = when {
+                noteId != null -> {
+                    OsmNoteQuestKey(noteId)
+                }
+                elementId != null && elementType != null && questTypeName != null -> {
+                    OsmQuestKey(elementType, elementId, questTypeName)
+                }
+                else -> null
+            }
+
+            if (questKey != null) {
+                listener?.onClickedQuest(questKey)
             } else {
                 val pickMarkerResult = controller?.pickMarker(x,y)
                 if (pickMarkerResult == null) {

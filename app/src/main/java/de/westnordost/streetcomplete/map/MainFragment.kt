@@ -255,13 +255,13 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* ---------------------------- QuestsMapFragment.Listener --------------------------- */
 
-    override fun onClickedQuest(questGroup: QuestGroup, questId: Long) {
-        if (isQuestDetailsCurrentlyDisplayedFor(questId, questGroup)) return
+    override fun onClickedQuest(questKey: QuestKey) {
+        if (isQuestDetailsCurrentlyDisplayedFor(questKey)) return
         val f = bottomSheetFragment
         if (f is IsCloseableBottomSheet) f.onClickClose {
-            lifecycleScope.launch { showQuestDetails(questId, questGroup) }
+            lifecycleScope.launch { showQuestDetails(questKey) }
         }
-        else lifecycleScope.launch { showQuestDetails(questId, questGroup) }
+        else lifecycleScope.launch { showQuestDetails(questKey) }
     }
 
     override fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double) {
@@ -310,59 +310,59 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* -------------------------- AbstractQuestAnswerFragment.Listener -------------------------- */
 
-    override fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any) {
+    override fun onAnsweredQuest(questKey: QuestKey, answer: Any) {
         lifecycleScope.launch {
-            val quest = questController.get(group, questId)
+            val quest = questController.get(questKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(questId, group)
-                if (questController.solve(questId, group, answer, "survey")) {
+                closeQuestDetailsFor(questKey)
+                if (questController.solve(questKey, answer, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
         }
     }
 
-    override fun onComposeNote(questId: Long, group: QuestGroup, questTitle: String) {
-        showInBottomSheet(LeaveNoteInsteadFragment.create(questId, group, questTitle))
+    override fun onComposeNote(questKey: QuestKey, questTitle: String) {
+        showInBottomSheet(LeaveNoteInsteadFragment.create(questKey, questTitle))
     }
 
-    override fun onSplitWay(osmQuestId: Long) {
+    override fun onSplitWay(osmQuestKey: OsmQuestKey) {
         lifecycleScope.launch {
-            val quest = questController.get(QuestGroup.OSM, osmQuestId)!!
+            val quest = questController.get(osmQuestKey)!!
             val element = questController.getOsmElement(quest as OsmQuest)
             val geometry = quest.geometry
             if (element is Way && geometry is ElementPolylinesGeometry) {
                 mapFragment?.isShowingQuestPins = false
-                showInBottomSheet(SplitWayFragment.create(osmQuestId, element, geometry))
+                showInBottomSheet(SplitWayFragment.create(osmQuestKey, element, geometry))
             }
         }
     }
 
-    override fun onSkippedQuest(questId: Long, group: QuestGroup) {
-        closeQuestDetailsFor(questId, group)
+    override fun onSkippedQuest(questKey: QuestKey) {
+        closeQuestDetailsFor(questKey)
         lifecycleScope.launch {
-            questController.hide(questId, group)
+            questController.hide(questKey)
         }
     }
 
-    override fun onDeletePoiNode(osmQuestId: Long) {
+    override fun onDeletePoiNode(osmQuestKey: OsmQuestKey) {
         lifecycleScope.launch {
-            val quest = questController.get(QuestGroup.OSM, osmQuestId)
+            val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
-                if (questController.deletePoiElement(osmQuestId, "survey")) {
+                closeQuestDetailsFor(osmQuestKey)
+                if (questController.deletePoiElement(osmQuestKey, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
         }
     }
 
-    override fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>) {
+    override fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
         lifecycleScope.launch {
-            val quest = questController.get(QuestGroup.OSM, osmQuestId)
+            val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
-                if (questController.replaceShopElement(osmQuestId, tags, "survey")) {
+                closeQuestDetailsFor(osmQuestKey)
+                if (questController.replaceShopElement(osmQuestKey, tags, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
@@ -382,12 +382,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
 
-    override fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>) {
+    override fun onSplittedWay(osmQuestKey: OsmQuestKey, splits: List<SplitPolylineAtPosition>) {
         lifecycleScope.launch {
-            val quest = questController.get(QuestGroup.OSM, osmQuestId)
+            val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
-                if (questController.splitWay(osmQuestId, splits, "survey")) {
+                closeQuestDetailsFor(osmQuestKey)
+                if (questController.splitWay(osmQuestKey, splits, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
@@ -404,13 +404,13 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */
 
-    override fun onCreatedNoteInstead(questId: Long, group: QuestGroup, questTitle: String, note: String, imagePaths: List<String>) {
-        closeQuestDetailsFor(questId, group)
+    override fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>) {
+        closeQuestDetailsFor(questKey)
         // the quest is deleted from DB on creating a note, so need to fetch quest before
         lifecycleScope.launch {
-            val quest = questController.get(group, questId)
+            val quest = questController.get(questKey)
             if (quest != null) {
-                if (questController.createNote(questId, questTitle, note, imagePaths)) {
+                if (questController.createNote(questKey, questTitle, note, imagePaths)) {
                     onQuestSolved(quest, null)
                 }
             }
@@ -442,17 +442,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
-    @AnyThread override fun onUpdatedVisibleQuests(
-        added: Collection<Quest>,
-        removed: Collection<Long>,
-        group: QuestGroup
-    ) {
+    @AnyThread override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
         val f = bottomSheetFragment
         if (f !is IsShowingQuestDetails) return
-        if (group != f.questGroup) return
 
         // open quest does not exist anymore!
-        if (removed.contains(f.questId)) {
+        if (removed.contains(f.questKey)) {
             lifecycleScope.launch { closeBottomSheet() }
         }
     }
@@ -462,7 +457,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         if (f !is IsShowingQuestDetails) return
 
         lifecycleScope.launch {
-            val openQuest = withContext(Dispatchers.IO) { questController.get(f.questGroup, f.questId) }
+            val openQuest = withContext(Dispatchers.IO) { questController.get(f.questKey) }
             if (openQuest == null) {
                 closeBottomSheet()
             }
@@ -689,16 +684,16 @@ class MainFragment : Fragment(R.layout.fragment_main),
         unfreezeMap()
     }
 
-    private suspend fun showQuestDetails(questId: Long, group: QuestGroup) {
-        val quest = questController.get(group, questId)
+    private suspend fun showQuestDetails(questKey: QuestKey) {
+        val quest = questController.get(questKey)
         if (quest != null) {
-            showQuestDetails(quest, group)
+            showQuestDetails(quest)
         }
     }
 
-    @UiThread private suspend fun showQuestDetails(quest: Quest, group: QuestGroup) {
+    @UiThread private suspend fun showQuestDetails(quest: Quest) {
         val mapFragment = mapFragment ?: return
-        if (isQuestDetailsCurrentlyDisplayedFor(quest.id!!, group)) return
+        if (isQuestDetailsCurrentlyDisplayedFor(quest.key)) return
         if (bottomSheetFragment != null) {
             activity?.currentFocus?.hideKeyboard()
             childFragmentManager.popBackStackImmediate(BOTTOM_SHEET, POP_BACK_STACK_INCLUSIVE)
@@ -711,11 +706,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
 
         val f = quest.type.createForm()
-        val element = if (quest is OsmQuest)questController.getOsmElement(quest) else null
+        val element = if (quest is OsmQuest) questController.getOsmElement(quest) else null
         val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f
-        val args = AbstractQuestAnswerFragment.createArguments(quest, group, element, rotation, tilt)
+        val args = AbstractQuestAnswerFragment.createArguments(quest, element, rotation, tilt)
         if(f.arguments != null) {
             f.arguments!!.putAll(args)
         } else {
@@ -734,15 +729,15 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
-    private fun closeQuestDetailsFor(questId: Long, group: QuestGroup) {
-        if (isQuestDetailsCurrentlyDisplayedFor(questId, group)) {
+    private fun closeQuestDetailsFor(questKey: QuestKey) {
+        if (isQuestDetailsCurrentlyDisplayedFor(questKey)) {
             closeBottomSheet()
         }
     }
 
-    private fun isQuestDetailsCurrentlyDisplayedFor(questId: Long, group: QuestGroup): Boolean {
+    private fun isQuestDetailsCurrentlyDisplayedFor(questKey: QuestKey): Boolean {
         val f = bottomSheetFragment
-        return f is IsShowingQuestDetails && f.questId == questId && f.questGroup == group
+        return f is IsShowingQuestDetails && f.questKey == questKey
     }
 
     private fun freezeMap() {

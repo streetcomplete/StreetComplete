@@ -6,18 +6,21 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.util.measuredLength
 import de.westnordost.streetcomplete.util.pointOnPolylineFromEnd
 import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
 
 /** Represents one task for the user to complete/correct the data based on one OSM element  */
 data class OsmQuest(
-    override var id: Long?,
     val osmElementQuestType: OsmElementQuestType<*>, // underlying OSM data
     override val elementType: Element.Type,
     override val elementId: Long,
     override val geometry: ElementGeometry
 ) : Quest, OsmQuestDaoEntry {
+
+    override val key: QuestKey get() = OsmQuestKey(elementType, elementId, questTypeName)
 
     override val questTypeName: String get() = osmElementQuestType::class.simpleName!!
 
