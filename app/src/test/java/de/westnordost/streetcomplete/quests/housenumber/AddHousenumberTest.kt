@@ -79,6 +79,21 @@ class AddHousenumberTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
+    @Test fun `does not create quest for building that is inside an area with an address on its outline`() {
+        val mapData = createMapData(mapOf(
+            OsmWay(1L, 1, NODES1, mapOf(
+                "building" to "detached"
+            )) to POSITIONS1,
+            OsmWay(1L, 1, NODES2, mapOf(
+                "amenity" to "school"
+            )) to POSITIONS2,
+            OsmNode(6L, 1, P6, mapOf(
+                "addr:housenumber" to "123"
+            )) to ElementPointGeometry(P6)
+        ))
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
+
     @Test fun `does not create quest for building that contains an address node`() {
         val mapData = createMapData(mapOf(
             OsmWay(1L, 1, NODES1, mapOf(
