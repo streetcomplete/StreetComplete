@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.quest
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
@@ -78,17 +76,15 @@ class VisibleQuestsSourceTest {
 
         val quests = source.getAllVisible(bbox, questTypes)
         assertEquals(5, quests.size)
-        val osmQuests = quests.filter { it.group == QuestGroup.OSM && it.quest is OsmQuest }
-        assertEquals(3, osmQuests.size)
-        val osmNoteQuests = quests.filter { it.group == QuestGroup.OSM_NOTE && it.quest is OsmNoteQuest }
-        assertEquals(2, osmNoteQuests.size)
+        assertEquals(3, quests.filterIsInstance<OsmQuest>().size)
+        assertEquals(2, quests.filterIsInstance<OsmNoteQuest>().size)
     }
 
     @Test fun `getAllVisible returns only quests of types that are visible`() {
         val t1 = TestQuestTypeA()
         val t2 = TestQuestTypeB()
-        val q1 = osmQuest(1L, t1)
-        val q2 = osmQuest(2L, t2)
+        val q1 = osmQuest(elementId = 1, questType = t1)
+        val q2 = osmQuest(elementId = 2, questType = t2)
         val questTypes = listOf(t2::class.simpleName!!)
         on(osmQuestSource.getAllVisibleInBBox(bbox, questTypes)).thenReturn(listOf(q1, q2))
         on(visibleQuestTypeSource.isVisible(t1)).thenReturn(false)
@@ -96,7 +92,7 @@ class VisibleQuestsSourceTest {
 
 
         val quests = source.getAllVisible(bbox, questTypes)
-        assertEquals(QuestAndGroup(q2, QuestGroup.OSM), quests.single())
+        assertEquals(q2, quests.single())
     }
 
     @Test fun `getAllVisible does not return those that are invisible in team mode`() {
@@ -109,14 +105,14 @@ class VisibleQuestsSourceTest {
     }
 
     @Test fun `osm quests added or removed triggers listener`() {
-        val quests = listOf(osmQuest(1L), osmQuest(2L))
-        val deleted = listOf(3L,4L)
+        val quests = listOf(osmQuest(elementId = 1), osmQuest(elementId = 2))
+        val deleted = listOf(osmQuestKey(elementId = 3), osmQuestKey(elementId = 4))
         questListener.onUpdated(quests, deleted)
-        verify(listener).onUpdatedVisibleQuests(eq(quests), eq(deleted), eq(QuestGroup.OSM))
+        verify(listener).onUpdatedVisibleQuests(eq(quests), eq(deleted))
     }
 
     @Test fun `osm quests added of invisible type does not trigger listener`() {
-        val quests = listOf(osmQuest(1L), osmQuest(2L))
+        val quests = listOf(osmQuest(elementId = 1), osmQuest(elementId = 2))
         on(visibleQuestTypeSource.isVisible(any())).thenReturn(false)
         questListener.onUpdated(quests, emptyList())
         verifyNoInteractions(listener)
@@ -124,9 +120,9 @@ class VisibleQuestsSourceTest {
 
     @Test fun `osm note quests added or removed triggers listener`() {
         val quests = listOf(osmNoteQuest(1L), osmNoteQuest(2L))
-        val deleted = listOf(3L,4L)
-        noteQuestListener.onUpdated(quests, deleted)
-        verify(listener).onUpdatedVisibleQuests(eq(quests), eq(deleted), eq(QuestGroup.OSM_NOTE))
+        val deleted = listOf(OsmNoteQuestKey(3), OsmNoteQuestKey(4))
+        noteQuestListener.onUpdated(quests, listOf(3L, 4L))
+        verify(listener).onUpdatedVisibleQuests(eq(quests), eq(deleted))
     }
 
     @Test fun `osm note quests added of invisible type does not trigger listener`() {
@@ -145,9 +141,4 @@ class VisibleQuestsSourceTest {
         noteQuestListener.onInvalidated()
         verify(listener).onVisibleQuestsInvalidated()
     }
-
-    private fun osmQuest(id: Long, questType: OsmElementQuestType<*> = mock()) =
-        OsmQuest(id, questType, Element.Type.NODE, 1, pGeom())
-
-    private fun osmNoteQuest(id: Long) = OsmNoteQuest(id, p())
 }

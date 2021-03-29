@@ -20,7 +20,7 @@ import javax.inject.Singleton
 ) {
     interface Listener {
         /** Called when given quests in the given group have been added/removed */
-        fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<Long>, group: QuestGroup)
+        fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>)
         /** Called when something has changed which should trigger any listeners to update all */
         fun onVisibleQuestsInvalidated()
     }
@@ -28,8 +28,8 @@ import javax.inject.Singleton
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     private val osmQuestSourceListener = object : OsmQuestSource.Listener {
-        override fun onUpdated(addedQuests: Collection<OsmQuest>, deletedQuestIds: Collection<Long>) {
-            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestIds, QuestGroup.OSM)
+        override fun onUpdated(addedQuests: Collection<OsmQuest>, deletedQuestKeys: Collection<OsmQuestKey>) {
+            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestKeys)
         }
         override fun onInvalidated() {
             // apparently the visibility of many different quests have changed
@@ -39,7 +39,7 @@ import javax.inject.Singleton
 
     private val osmNoteQuestSourceListener = object : OsmNoteQuestSource.Listener {
         override fun onUpdated(addedQuests: Collection<OsmNoteQuest>, deletedQuestIds: Collection<Long>) {
-            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestIds, QuestGroup.OSM_NOTE)
+            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestIds.map { OsmNoteQuestKey(it) })
         }
         override fun onInvalidated() {
             // apparently the visibility of many different notes have changed
@@ -72,13 +72,13 @@ import javax.inject.Singleton
         osmQuestSource.getAllInBBoxCount(bbox)
 
     /** Retrieve all visible quests in the given bounding box from local database */
-    fun getAllVisible(bbox: BoundingBox, questTypes: Collection<String>): List<QuestAndGroup> {
+    fun getAllVisible(bbox: BoundingBox, questTypes: Collection<String>): List<Quest> {
         if (questTypes.isEmpty()) return listOf()
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, questTypes)
         val osmNoteQuests = osmNoteQuestSource.getAllVisibleInBBox(bbox)
 
-        return osmQuests.filter(::isVisible).map { QuestAndGroup(it, QuestGroup.OSM) } +
-               osmNoteQuests.filter(::isVisible).map { QuestAndGroup(it, QuestGroup.OSM_NOTE) }
+        return osmQuests.filter(::isVisible).map { it } +
+               osmNoteQuests.filter(::isVisible).map { it }
     }
 
     private fun isVisible(quest: Quest): Boolean =
@@ -91,9 +91,9 @@ import javax.inject.Singleton
         listeners.remove(listener)
     }
 
-    private fun updateVisibleQuests(addedQuests: Collection<Quest>, deletedQuestIds: Collection<Long>, group: QuestGroup) {
-        if (addedQuests.isEmpty() && deletedQuestIds.isEmpty()) return
-        listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestIds, group) }
+    private fun updateVisibleQuests(addedQuests: Collection<Quest>, deletedQuestKeys: Collection<QuestKey>) {
+        if (addedQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
+        listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestKeys) }
     }
 
     private fun invalidate() {

@@ -4,12 +4,10 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestKey
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.testutils.*
 import org.junit.Assert.*

@@ -60,7 +60,7 @@ class NotesWithEditsSourceTest {
     @Test
     fun `get returns updated note with anonymous user`() {
         val comment = comment("test", NoteComment.Action.OPENED, timestamp = 100)
-        val addedComment = comment("test2", NoteComment.Action.COMMENTED, timestamp = 500)
+        val addedComment = comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, -1, "")
 
         val note = note(id = 1, comments = arrayListOf(comment))
         val edits = listOf(
@@ -80,7 +80,8 @@ class NotesWithEditsSourceTest {
         val addedComment = comment(
             "test2\n\n(Photo(s) will be attached on upload)",
             NoteComment.Action.COMMENTED,
-            timestamp = 500
+            timestamp = 500,
+            -1, ""
         )
 
         val note = note(id = 1, comments = arrayListOf(comment))
@@ -120,8 +121,8 @@ class NotesWithEditsSourceTest {
     @Test
     fun `get returns note with anonymous user updated twice`() {
         val comment1 = comment("test", NoteComment.Action.OPENED, timestamp = 123)
-        val comment2 = comment("test2", NoteComment.Action.COMMENTED, timestamp = 500)
-        val comment3 = comment("test3", NoteComment.Action.COMMENTED, timestamp = 800)
+        val comment2 = comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, -1, "")
+        val comment3 = comment("test3", NoteComment.Action.COMMENTED, timestamp = 800, -1, "")
 
         val note = note(id = 1, comments = arrayListOf(comment1))
         val edits = listOf(
@@ -141,7 +142,9 @@ class NotesWithEditsSourceTest {
         val p = p(12.0, 46.0)
         val expectedNote = note(
             id = -12,
-            comments = arrayListOf(comment("test12", NoteComment.Action.OPENED, timestamp = 123)),
+            comments = arrayListOf(
+                comment("test12", NoteComment.Action.OPENED, timestamp = 123, -1, "")
+            ),
             position = p,
             timestamp = 123)
 
@@ -162,8 +165,8 @@ class NotesWithEditsSourceTest {
         val expectedNote = note(
             id = -12,
             comments = arrayListOf(
-                comment("test12", NoteComment.Action.OPENED, timestamp = 123),
-                comment("test34", NoteComment.Action.COMMENTED, timestamp = 234),
+                comment("test12", NoteComment.Action.OPENED, timestamp = 123, -1, ""),
+                comment("test34", NoteComment.Action.COMMENTED, timestamp = 234, -1, ""),
             ),
             position = p,
             timestamp = 123)
@@ -347,11 +350,11 @@ val initialNotes1 = listOf(
 val expectedNotes1 = listOf(
     note(id = 1, position = p(1.0,2.0), timestamp = 10, comments = arrayListOf(
         comment("test", NoteComment.Action.OPENED, timestamp = 100),
-        comment("test2", NoteComment.Action.COMMENTED, timestamp = 500)
+        comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, -1, "")
     )),
     note(id = 2, position = p(12.0,1.0), timestamp = 300, comments = arrayListOf(
-        comment("xyz", NoteComment.Action.OPENED, timestamp = 300),
-        comment("abc", NoteComment.Action.COMMENTED, timestamp = 900),
+        comment("xyz", NoteComment.Action.OPENED, timestamp = 300, -1, ""),
+        comment("abc", NoteComment.Action.COMMENTED, timestamp = 900, -1, ""),
     )),
     note(id = 3, position = p(0.0,3.0), timestamp = 800)
 )

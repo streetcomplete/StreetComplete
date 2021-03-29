@@ -7,12 +7,16 @@ import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import java.util.*
 
@@ -135,5 +139,24 @@ fun noteQuestHidden(
     note: Note = note(),
     timestamp: Long = 123L
 ) = OsmNoteQuestHidden(note, timestamp)
+
+fun osmQuest(
+    questType: OsmElementQuestType<*> = QUEST_TYPE,
+    elementType: Element.Type = Element.Type.NODE,
+    elementId: Long = 1L,
+    geometry: ElementGeometry = pGeom()
+) =
+    OsmQuest(questType, elementType, elementId, geometry)
+
+fun osmNoteQuest(
+    id: Long = 1L,
+    pos: LatLon = p()
+) = OsmNoteQuest(id, pos)
+
+fun osmQuestKey(
+    elementType: Element.Type = Element.Type.NODE,
+    elementId: Long = 1L,
+    questTypeName: String = QUEST_TYPE::class.simpleName!!
+) = OsmQuestKey(elementType, elementId, questTypeName)
 
 val QUEST_TYPE = TestQuestTypeA()

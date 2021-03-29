@@ -7,12 +7,12 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestKey
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
