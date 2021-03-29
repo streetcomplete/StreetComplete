@@ -143,10 +143,10 @@ private fun splitWayAtIndices(
 
     return nodesChunks.mapIndexed { index, nodes ->
         if(index == indexOfChunkToKeep) {
-            OsmWay(originalWay.id, originalWay.version, nodes, tags, null, originalWay.dateEdited).apply { isModified = true }
+            OsmWay(originalWay.id, originalWay.version, nodes, tags, null, Date()).apply { isModified = true }
         }
         else {
-            OsmWay(idProvider.nextWayId(), 0, nodes, tags, null, originalWay.dateEdited)
+            OsmWay(idProvider.nextWayId(), 0, nodes, tags, null, Date())
         }
     }
 }

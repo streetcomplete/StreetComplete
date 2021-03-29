@@ -3,9 +3,10 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.copy
+import java.util.*
 
 fun Element.changesApplied(changes: StringMapChanges): Element {
-    val copy = this.copy()
+    val copy = this.copy(newDateEdited = Date())
     try {
         if (copy.tags == null) throw ConflictException("The element has no tags")
         changes.applyTo(copy.tags)
