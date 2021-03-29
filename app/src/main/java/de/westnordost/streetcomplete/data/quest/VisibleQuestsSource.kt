@@ -77,8 +77,7 @@ import javax.inject.Singleton
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, questTypes)
         val osmNoteQuests = osmNoteQuestSource.getAllVisibleInBBox(bbox)
 
-        return osmQuests.filter(::isVisible).map { it } +
-               osmNoteQuests.filter(::isVisible).map { it }
+        return osmQuests.filter(::isVisible) + osmNoteQuests.filter(::isVisible)
     }
 
     private fun isVisible(quest: Quest): Boolean =
