@@ -1,3 +1,16 @@
+v31.2: |
+  <h3>Warning: Upload your edits!</h3>
+  <p>If you have auto-sync on (the default), this does not concern you. Unsynced edits will be
+  dropped when upgrading to the next new major version. It will be in beta not earlier than in
+  2nd week of April.</p>
+  <h3>Enhancements</h3>
+  <ul>
+  <li>Don't ask for housenumbers of buildings that are within an area that already has one tagged on its outline (#2686)</li>
+  <li>Ask periodically if various traffic calmings still exist (#2672)</li>
+  <li>Don't ask for the crossing barrier for disused railways (#2695)</li>
+  <li>Other small enhancements (#2677), by @Eginhard</li>
+  </ul>
+
 v31.1: |
   <h3>Warning: Upload your edits!</h3>
   <p>If you have auto-sync on (the default), this does not concern you, as all edits are
