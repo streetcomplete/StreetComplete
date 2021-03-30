@@ -44,7 +44,7 @@ private val IS_AREA_EXPR = """
     or (emergency and emergency !~ yes|no)
     or historic
     or landuse
-    or leisure
+    or (leisure and leisure != track)
     or office
     or place
     or public_transport
