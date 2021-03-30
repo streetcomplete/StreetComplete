@@ -40,11 +40,15 @@ class CheckExistence(
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
+            or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
+            or traffic_calming = table and !highway and !crossing
           )
           and (${lastChecked(4.0)})
         )) and access !~ no|private
     """.toElementFilterExpression()
     }
+    // traffic_calming = table is often used as a property of a crossing: we don't want the app
+    //    to delete the crossing if the table is not there anymore, so exclude that
     // postboxes are in 4 years category so that postbox collection times is asked instead more often
 
     private val nodesWaysFilter by lazy { """

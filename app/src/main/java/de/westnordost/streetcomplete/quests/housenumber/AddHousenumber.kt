@@ -1,14 +1,17 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.*
-
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.Relation
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.isCompletelyInside
 import de.westnordost.streetcomplete.util.isInMultipolygon
@@ -90,7 +93,12 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
         if (buildings.isEmpty()) return listOf()
 
-        /** exclude buildings that are contained in an area that has an address */
+        /** exclude buildings that are contained in an area that has an address tagged on itself
+         *  or on a vertex on its outline */
+
+        val areasWithAddressesOnOutline = mapData
+            .filter { notABuildingFilter.matches(it) && it.isArea() && it.containsAnyNode(addressNodeIds, mapData) }
+            .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
 
         val areasWithAddresses = mapData
             .filter { nonBuildingAreasWithAddressFilter.matches(it) }
@@ -103,7 +111,7 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
             if (buildingCenterPosition != null) buildingPositions.insert(buildingCenterPosition)
         }
 
-        for (areaWithAddress in areasWithAddresses) {
+        for (areaWithAddress in areasWithAddresses + areasWithAddressesOnOutline) {
             val nearbyBuildings = buildingPositions.getAll(areaWithAddress.getBounds())
             val buildingPositionsInArea = nearbyBuildings.filter { it.isInMultipolygon(areaWithAddress.polygons) }
             val buildingsInArea = buildingPositionsInArea.mapNotNull { buildingsByCenterPosition[it] }
@@ -140,6 +148,10 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
         }
     }
 }
+
+private val notABuildingFilter by lazy { """
+    ways, relations with !building"
+    """.toElementFilterExpression()}
 
 private val nonBuildingAreasWithAddressFilter by lazy { """
     ways, relations with
