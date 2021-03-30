@@ -46,7 +46,7 @@ import kotlin.collections.ArrayList
         val q = get(questKey) ?: return@withContext false
 
         var fullText = "Unable to answer \"$questTitle\""
-        if (q is OsmQuest) {
+        if (q is OsmQuest && q.elementId > 0) {
             val lowercaseTypeName = q.elementType.name.toLowerCase(Locale.US)
             val elementId = q.elementId
             fullText += " for https://osm.org/$lowercaseTypeName/$elementId"
