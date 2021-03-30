@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import java.util.*
 import kotlin.collections.HashMap
 
-fun Element.copy(newId: Long = id, newVersion: Int = version, newDateEdited: Date = dateEdited): OsmElement {
+fun Element.copy(newId: Long = id, newVersion: Int = version, newDateEdited: Date? = dateEdited): OsmElement {
     val tags = tags?.let { HashMap(it) }
     return when (this) {
         is Node -> OsmNode(newId, newVersion, position, tags, null, newDateEdited)

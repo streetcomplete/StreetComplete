@@ -118,21 +118,20 @@ import javax.inject.Singleton
                in MapDataSource.Listener any moment now */
         }
 
-        @Synchronized override fun onDeletedEdit(edit: ElementEdit) {
+        @Synchronized override fun onDeletedEdits(edits: List<ElementEdit>) {
             rebuildLocalChanges()
-            /* the elements that were created by the given edit must be deleted, however, some
-               other edit might have created them instead, so only delete those that are not in
-               updated elements */
-            val elementsToDelete = getCreatedElementKeys(edit).toMutableList()
-            elementsToDelete.removeAll(updatedElements.keys)
+
+            val elementsToDelete = edits.flatMap { elementEditsController.getIdProvider(it.id).getAll() }.toMutableList()
 
             val mapData = MutableMapDataWithGeometry()
-            val element = get(edit.elementType, edit.elementId)
-            if (element != null) {
-                mapData.put(element, getGeometry(edit.elementType, edit.elementId))
-            } else {
-                // element that got edited by the deleted edit not found? Hmm, okay then
-                elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
+            for (edit in edits) {
+                val element = get(edit.elementType, edit.elementId)
+                if (element != null) {
+                    mapData.put(element, getGeometry(edit.elementType, edit.elementId))
+                } else {
+                    // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
+                    elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
+                }
             }
 
             callOnUpdated(updated = mapData, deleted = elementsToDelete)
@@ -391,17 +390,6 @@ import javax.inject.Singleton
             }
             else -> throw IllegalStateException()
         }
-    }
-
-    /** Return the key of elements that the given edit created. May be empty. */
-    private fun getCreatedElementKeys(edit: ElementEdit): List<ElementKey> {
-        val counts = edit.action.newElementsCount
-        val idProvider = elementEditsController.getIdProvider(edit.id)
-        val elementKeys = ArrayList<ElementKey>(counts.nodes + counts.ways + counts.relations)
-        repeat(counts.nodes) { elementKeys.add(ElementKey(NODE, idProvider.nextNodeId())) }
-        repeat(counts.ways) { elementKeys.add(ElementKey(WAY, idProvider.nextWayId())) }
-        repeat(counts.relations) { elementKeys.add(ElementKey(RELATION, idProvider.nextRelationId())) }
-        return elementKeys
     }
 
     fun addListener(listener: Listener) {

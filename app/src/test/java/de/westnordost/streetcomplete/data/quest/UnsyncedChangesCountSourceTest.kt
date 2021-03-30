@@ -73,31 +73,31 @@ class UnsyncedChangesCountSourceTest {
         assertEquals(baseCount, source.getCount())
     }
 
-    @Test fun `add unsynced element change triggers listener`() {
-        val change = mock<ElementEdit>()
-        on(change.isSynced).thenReturn(false)
-        elementEditsListener.onAddedEdit(change)
+    @Test fun `add unsynced element edit triggers listener`() {
+        val edit = mock<ElementEdit>()
+        on(edit.isSynced).thenReturn(false)
+        elementEditsListener.onAddedEdit(edit)
         verify(listener).onIncreased()
     }
 
-    @Test fun `remove unsynced element change triggers listener`() {
-        val change = mock<ElementEdit>()
-        on(change.isSynced).thenReturn(false)
-        elementEditsListener.onDeletedEdit(change)
+    @Test fun `remove unsynced element edit triggers listener`() {
+        val edit = mock<ElementEdit>()
+        on(edit.isSynced).thenReturn(false)
+        elementEditsListener.onDeletedEdits(listOf(edit))
         verify(listener).onDecreased()
     }
 
-    @Test fun `add synced element change does not trigger listener`() {
+    @Test fun `add synced element edit does not trigger listener`() {
         val change = mock<ElementEdit>()
         on(change.isSynced).thenReturn(true)
         elementEditsListener.onAddedEdit(change)
         verifyNoInteractions(listener)
     }
 
-    @Test fun `remove synced element change does not trigger listener`() {
-        val change = mock<ElementEdit>()
-        on(change.isSynced).thenReturn(true)
-        elementEditsListener.onDeletedEdit(change)
+    @Test fun `remove synced element edit does not trigger listener`() {
+        val edit = mock<ElementEdit>()
+        on(edit.isSynced).thenReturn(true)
+        elementEditsListener.onDeletedEdits(listOf(edit))
         verifyNoInteractions(listener)
     }
 

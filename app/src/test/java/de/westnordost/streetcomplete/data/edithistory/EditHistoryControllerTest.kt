@@ -114,8 +114,8 @@ class EditHistoryControllerTest {
 
     @Test fun `relays removed element edit`() {
         val e = edit()
-        elementEditsListener.onDeletedEdit(e)
-        verify(listener).onDeleted(e)
+        elementEditsListener.onDeletedEdits(listOf(e))
+        verify(listener).onDeleted(eq(listOf(e)))
     }
 
     @Test fun `relays synced element edit`() {
@@ -133,7 +133,7 @@ class EditHistoryControllerTest {
     @Test fun `relays removed note edit`() {
         val e = noteEdit()
         noteEditsListener.onDeletedEdit(e)
-        verify(listener).onDeleted(e)
+        verify(listener).onDeleted(eq(listOf(e)))
     }
 
     @Test fun `relays synced note edit`() {
@@ -151,7 +151,7 @@ class EditHistoryControllerTest {
     @Test fun `relays unhid quest`() {
         val e = questHidden()
         hideQuestsListener.onUnhid(e)
-        verify(listener).onDeleted(e)
+        verify(listener).onDeleted(eq(listOf(e)))
     }
 
     @Test fun `relays unhid all quests`() {
@@ -168,7 +168,7 @@ class EditHistoryControllerTest {
     @Test fun `relays unhid note quest`() {
         val e = noteQuestHidden()
         hideNoteQuestsListener.onUnhid(e)
-        verify(listener).onDeleted(e)
+        verify(listener).onDeleted(eq(listOf(e)))
     }
 
     @Test fun `relays unhid all note quests`() {

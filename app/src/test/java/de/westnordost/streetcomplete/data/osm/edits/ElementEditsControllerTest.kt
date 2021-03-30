@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.testutils.*
 import org.junit.Before
@@ -51,11 +52,13 @@ class ElementEditsControllerTest {
     @Test fun syncFailed() {
         val edit = edit(action = mock())
 
+        on(idProvider.get(anyLong())).thenReturn(ElementIdProvider(listOf()))
+
         ctrl.syncFailed(edit)
 
-        verify(db).delete(edit.id)
-        verify(idProvider).delete(edit.id)
-        verify(listener).onDeletedEdit(edit)
+        verify(db).deleteAll(eq(listOf(edit.id)))
+        verify(idProvider).deleteAll(eq(listOf(edit.id)))
+        verify(listener).onDeletedEdits(listOf(edit))
     }
 
     @Test fun synced() {
@@ -77,20 +80,58 @@ class ElementEditsControllerTest {
     }
 
     @Test fun `undo unsynced`() {
-        val action = UpdateElementTagsAction(
+        val edit = edit(action = UpdateElementTagsAction(
             SpatialPartsOfNode(p(0.0,0.0)),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             QUEST_TYPE
-        )
-        val edit = edit(action = action, isSynced = false)
+        ), isSynced = false)
 
+        on(idProvider.get(anyLong())).thenReturn(ElementIdProvider(listOf()))
         on(db.get(anyLong())).thenReturn(edit)
 
         ctrl.undo(edit)
 
-        verify(db).delete(edit.id)
-        verify(idProvider).delete(edit.id)
-        verify(listener).onDeletedEdit(edit)
+        verify(db).deleteAll(eq(listOf(edit.id)))
+        verify(idProvider).deleteAll(eq(listOf(edit.id)))
+        verify(listener).onDeletedEdits(listOf(edit))
+    }
+
+    @Test fun `delete edits based on the the one being undone`() {
+
+        val edit1 =  edit(action = mock(), id = 1L)
+        val edit2 = edit(action = mock(), id = 2L)
+        val edit3 = edit(action = mock(), id = 3L)
+        val edit4 = edit(action = mock(), id = 4L)
+        val edit5 = edit(action = mock(), id = 5L)
+
+        on(idProvider.get(1L)).thenReturn(ElementIdProvider(listOf(
+            ElementKey(Element.Type.NODE, -1),
+            ElementKey(Element.Type.NODE, -2),
+        )))
+        on(idProvider.get(2L)).thenReturn(ElementIdProvider(listOf(
+            ElementKey(Element.Type.NODE, -3),
+        )))
+        on(idProvider.get(3L)).thenReturn(ElementIdProvider(listOf()))
+        on(idProvider.get(4L)).thenReturn(ElementIdProvider(listOf()))
+        on(idProvider.get(5L)).thenReturn(ElementIdProvider(listOf()))
+
+        on(db.getByElement(Element.Type.NODE, -1)).thenReturn(listOf(edit2, edit3))
+        on(db.getByElement(Element.Type.NODE, -2)).thenReturn(listOf(edit4))
+        on(db.getByElement(Element.Type.NODE, -3)).thenReturn(listOf(edit5))
+
+        on(db.get(1L)).thenReturn(edit1)
+        on(db.get(2L)).thenReturn(edit2)
+        on(db.get(3L)).thenReturn(edit3)
+        on(db.get(4L)).thenReturn(edit4)
+        on(db.get(5L)).thenReturn(edit5)
+
+        ctrl.undo(edit1)
+
+        val deletedEditIds = listOf(5L, 2L, 3L, 4L, 1L)
+
+        verify(db).deleteAll(eq(deletedEditIds))
+        verify(idProvider).deleteAll(eq(deletedEditIds))
+        verify(listener).onDeletedEdits(listOf(edit5, edit2, edit3, edit4, edit1))
     }
 
     @Test fun `undo synced`() {
@@ -102,12 +143,13 @@ class ElementEditsControllerTest {
         val edit = edit(action = action, isSynced = true)
 
         on(db.get(anyLong())).thenReturn(edit)
+        on(idProvider.get(anyLong())).thenReturn(ElementIdProvider(listOf()))
 
         ctrl.undo(edit)
 
-        verify(db).delete(edit.id)
-        verify(idProvider).delete(edit.id)
-        verify(listener).onDeletedEdit(edit)
+        verify(db).deleteAll(eq(listOf(edit.id)))
+        verify(idProvider).deleteAll(eq(listOf(edit.id)))
+        verify(listener).onDeletedEdits(listOf(edit))
 
         verify(db).add(any())
         verify(idProvider).assign(0L, 0, 0, 0)

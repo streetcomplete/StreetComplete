@@ -139,13 +139,32 @@ import javax.inject.Singleton
     }
 
     private fun delete(edit: ElementEdit) {
-        val id = edit.id
-        if (editsDB.delete(id)) {
-            onDeletedEdit(edit)
-        }
+        val edits = ArrayList<ElementEdit>()
+        edits.addAll(getEditsBasedOnElementsCreatedByEdit(edit))
+        edits.add(edit)
+
+        val ids = edits.map { it.id }
+
+        editsDB.deleteAll(ids)
+        onDeletedEdits(edits)
+
         /* must be deleted after the callback because the callback might want to get the id provider
            for that edit */
-        elementIdProviderDB.delete(id)
+        elementIdProviderDB.deleteAll(ids)
+    }
+
+    private fun getEditsBasedOnElementsCreatedByEdit(edit: ElementEdit): List<ElementEdit> {
+        val result = mutableListOf<ElementEdit>()
+
+        val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
+        val editsBasedOnThese = createdElementKeys.flatMap { editsDB.getByElement(it.type, it.id) }
+        for (e in editsBasedOnThese) {
+            result += getEditsBasedOnElementsCreatedByEdit(e)
+        }
+        // deep first
+        result += editsBasedOnThese
+
+        return result
     }
 
     /* ------------------------------------ Listeners ------------------------------------------- */
@@ -166,7 +185,7 @@ import javax.inject.Singleton
         listeners.forEach { it.onSyncedEdit(edit) }
     }
 
-    private fun onDeletedEdit(edit: ElementEdit) {
-        listeners.forEach { it.onDeletedEdit(edit) }
+    private fun onDeletedEdits(edits: List<ElementEdit>) {
+        listeners.forEach { it.onDeletedEdits(edits) }
     }
 }

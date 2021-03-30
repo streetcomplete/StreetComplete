@@ -31,5 +31,10 @@ class ElementIdProvider(elementKeys: Collection<ElementKey>) {
     fun nextWayId(): Long = wayIds.removeFirst()
     fun nextRelationId(): Long = relationIds.removeFirst()
 
+    fun getAll(): List<ElementKey> =
+        nodeIds.map { ElementKey(Element.Type.NODE, it) } +
+        wayIds.map { ElementKey(Element.Type.WAY, it) } +
+        relationIds.map { ElementKey(Element.Type.RELATION, it) }
+
     fun isEmpty(): Boolean = nodeIds.isEmpty() && wayIds.isEmpty() && relationIds.isEmpty()
 }

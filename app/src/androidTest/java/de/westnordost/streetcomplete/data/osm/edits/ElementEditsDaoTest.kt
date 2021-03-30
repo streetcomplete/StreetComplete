@@ -57,6 +57,19 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertEquals(edit, dbEdit)
     }
 
+    @Test fun getByElement() {
+        val e1 = updateTags(elementType = Element.Type.NODE, elementId = 123L)
+        val e2 = updateTags(elementType = Element.Type.NODE, elementId = 123L)
+        val e3 = updateTags(elementType = Element.Type.WAY, elementId = 123L)
+        val e4 = updateTags(elementType = Element.Type.NODE, elementId = 124L)
+        dao.addAll(e1, e2, e3, e4)
+
+        val edits = dao.getByElement(Element.Type.NODE, 123L)
+
+        assertEquals(2, edits.size)
+        assertTrue(edits.all { it.elementType == Element.Type.NODE && it.elementId == 123L })
+    }
+
     @Test fun addGetDelete() {
         val edit = updateTags()
         // nothing there
@@ -70,6 +83,24 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertTrue(dao.delete(edit.id))
         assertFalse(dao.delete(edit.id))
         assertNull(dao.get(edit.id))
+    }
+
+    @Test fun deleteAll() {
+        val e1 = updateTags()
+        val e2 = updateTags()
+        val e3 = updateTags()
+
+        dao.addAll(e1, e2, e3)
+
+        assertNotNull(dao.get(1))
+        assertNotNull(dao.get(2))
+        assertNotNull(dao.get(3))
+
+        dao.deleteAll(listOf(1,2,3))
+
+        assertNull(dao.get(1))
+        assertNull(dao.get(2))
+        assertNull(dao.get(3))
     }
 
     @Test fun getAll() {

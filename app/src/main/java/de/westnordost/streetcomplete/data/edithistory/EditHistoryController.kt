@@ -33,25 +33,25 @@ class EditHistoryController @Inject constructor(
         override fun onSyncedEdit(edit: ElementEdit) {
             if (edit.action !is IsRevertAction) onSynced(edit)
         }
-        override fun onDeletedEdit(edit: ElementEdit) {
-            if (edit.action !is IsRevertAction) onDeleted(edit)
+        override fun onDeletedEdits(edits: List<ElementEdit>) {
+            onDeleted(edits.filter { it.action !is IsRevertAction })
         }
     }
 
     private val osmNoteEditsListener = object : NoteEditsSource.Listener {
         override fun onAddedEdit(edit: NoteEdit) { onAdded(edit) }
         override fun onSyncedEdit(edit: NoteEdit) { onSynced(edit) }
-        override fun onDeletedEdit(edit: NoteEdit) { onDeleted(edit) }
+        override fun onDeletedEdit(edit: NoteEdit) { onDeleted(listOf(edit)) }
     }
 
     private val osmNoteQuestHiddenListener = object : OsmNoteQuestController.HideOsmNoteQuestListener {
         override fun onHid(edit: OsmNoteQuestHidden) { onAdded(edit) }
-        override fun onUnhid(edit: OsmNoteQuestHidden) { onDeleted(edit) }
+        override fun onUnhid(edit: OsmNoteQuestHidden) { onDeleted(listOf(edit)) }
         override fun onUnhidAll() { onInvalidated() }
     }
     private val osmQuestHiddenListener = object : OsmQuestController.HideOsmQuestListener {
         override fun onHid(edit: OsmQuestHidden) { onAdded(edit) }
-        override fun onUnhid(edit: OsmQuestHidden) { onDeleted(edit) }
+        override fun onUnhid(edit: OsmQuestHidden) { onDeleted(listOf(edit)) }
         override fun onUnhidAll() { onInvalidated() }
     }
 
@@ -106,8 +106,8 @@ class EditHistoryController @Inject constructor(
     private fun onSynced(edit: Edit) {
         listeners.forEach { it.onSynced(edit) }
     }
-    private fun onDeleted(edit: Edit) {
-        listeners.forEach { it.onDeleted(edit) }
+    private fun onDeleted(edits: List<Edit>) {
+        listeners.forEach { it.onDeleted(edits) }
     }
     private fun onInvalidated() {
         listeners.forEach { it.onInvalidated() }

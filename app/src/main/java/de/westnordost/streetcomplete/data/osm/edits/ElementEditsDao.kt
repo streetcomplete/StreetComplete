@@ -39,6 +39,13 @@ class ElementEditsDao @Inject constructor(
     fun get(id: Long): ElementEdit? =
         db.queryOne(NAME, where = "$ID = $id") { it.toElementEdit() }
 
+    fun getByElement(elementType: Element.Type, elementId: Long): List<ElementEdit> =
+        db.query(NAME,
+            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
+            args = arrayOf(elementType.name, elementId),
+            orderBy = "$IS_SYNCED, $CREATED_TIMESTAMP"
+        ) { it.toElementEdit() }
+
     fun getOldestUnsynced(): ElementEdit? =
         db.queryOne(NAME,
             where = "$IS_SYNCED = 0",
@@ -62,6 +69,9 @@ class ElementEditsDao @Inject constructor(
 
     fun delete(id: Long): Boolean =
         db.delete(NAME, "$ID = $id") == 1
+
+    fun deleteAll(ids: List<Long>): Int =
+        db.delete(NAME, "$ID in (${ids.joinToString(",")})")
 
     fun deleteSyncedOlderThan(timestamp: Long): Int =
         db.delete(NAME, "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp")

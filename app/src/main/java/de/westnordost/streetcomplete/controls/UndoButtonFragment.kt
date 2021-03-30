@@ -33,7 +33,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(edit: Edit) { lifecycleScope.launch { animateInIfAnythingToUndo() }}
         override fun onSynced(edit: Edit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
-        override fun onDeleted(edit: Edit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
+        override fun onDeleted(edits: List<Edit>) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
         override fun onInvalidated() { lifecycleScope.launch { updateUndoButtonVisibility() }}
     }
 

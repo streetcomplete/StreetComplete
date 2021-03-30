@@ -32,4 +32,7 @@ class ElementIdProviderDao @Inject constructor(private val db: Database) {
 
     fun delete(editId: Long): Int =
         db.delete(NAME, "$EDIT_ID = $editId")
+
+    fun deleteAll(editIds: List<Long>): Int =
+        db.delete(NAME, "$EDIT_ID IN (${editIds.joinToString(",")})")
 }

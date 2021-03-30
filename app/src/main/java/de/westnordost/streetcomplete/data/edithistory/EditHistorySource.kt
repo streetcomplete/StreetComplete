@@ -4,7 +4,7 @@ interface EditHistorySource {
     interface Listener {
         fun onAdded(edit: Edit)
         fun onSynced(edit: Edit)
-        fun onDeleted(edit: Edit)
+        fun onDeleted(edits: List<Edit>)
         fun onInvalidated()
     }
 

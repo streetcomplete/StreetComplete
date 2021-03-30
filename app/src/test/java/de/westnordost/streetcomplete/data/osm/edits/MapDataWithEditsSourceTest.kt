@@ -913,34 +913,6 @@ class MapDataWithEditsSourceTest {
         )
     }
 
-    @Test
-    fun `onDeletedEdit does not relay elements created by edit as deleted elements that are not edited as added elements`() {
-        val s = create()
-        val listener = mock<MapDataWithEditsSource.Listener>()
-        s.addListener(listener)
-
-        val n = node(1, p(1.0,10.0))
-        val p = ElementGeometryEntry(NODE, 1, pGeom(1.0,10.0))
-
-        val n10 = node(-10)
-        val w10 = way(-10)
-        val r10 = rel(-10)
-
-        val delElements = listOf(
-            ElementKey(NODE, -10),
-            ElementKey(WAY, -10),
-            ElementKey(RELATION, -10),
-        )
-
-        editedElementsAre(n, n10, w10, r10)
-        editsControllerNotifiesDeletedEdit(NODE, 1, delElements)
-
-        verify(listener).onUpdated(
-            updated = eq(MutableMapDataWithGeometry(listOf(n), listOf(p))),
-            deleted = eq(listOf())
-        )
-    }
-
     //endregion
 
     //region MapDataController.Listener ::onUpdate
@@ -1132,17 +1104,10 @@ class MapDataWithEditsSourceTest {
 
     private fun editsControllerNotifiesDeletedEdit(elementType: Element.Type, elementId: Long, createdElementKeys: List<ElementKey>) {
         on(editsCtrl.getIdProvider(anyLong())).thenReturn(ElementIdProvider(createdElementKeys))
-        val action = mock<ElementEditAction>()
-        on(action.newElementsCount).thenReturn(NewElementsCount(
-            createdElementKeys.count { it.type == NODE },
-            ways = createdElementKeys.count { it.type == WAY },
-            relations = createdElementKeys.count { it.type == RELATION }
-        ))
-        editsListener.onDeletedEdit(edit(
+        editsListener.onDeletedEdits(listOf(edit(
             elementType = elementType,
-            elementId = elementId,
-            action = action
-        ))
+            elementId = elementId
+        )))
     }
 
 }
