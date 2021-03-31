@@ -30,7 +30,7 @@ data class ElementEdit(
     override val createdTimestamp: Long,
 
     /** whether this edit has been uploaded already */
-    val isSynced: Boolean,
+    override val isSynced: Boolean,
 
     /** The action to perform */
     val action: ElementEditAction

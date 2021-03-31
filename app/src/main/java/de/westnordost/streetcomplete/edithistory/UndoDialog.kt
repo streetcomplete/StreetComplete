@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.edithistory
 import android.content.Context
 import android.os.Bundle
 import android.text.Html
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,6 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
@@ -63,7 +63,8 @@ class UndoDialog(
         view.findViewById<ImageView>(R.id.icon).setImageResource(edit.icon)
         val overlayResId = edit.overlayIcon
         if (overlayResId != 0) view.findViewById<ImageView>(R.id.overlayIcon).setImageResource(overlayResId)
-        view.findViewById<TextView>(R.id.createdTimeText).text = edit.getAgoString()
+        view.findViewById<TextView>(R.id.createdTimeText).text =
+            DateUtils.getRelativeTimeSpanString(edit.createdTimestamp, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)
         view.findViewById<FrameLayout>(R.id.descriptionContainer).addView(edit.descriptionView)
 
         setTitle(R.string.undo_confirm_title2)
@@ -106,15 +107,6 @@ class UndoDialog(
             context.resources.getText(R.string.quest_noteDiscussion_title)
         }
         else -> throw IllegalArgumentException()
-    }
-
-    private fun Edit.getAgoString(): String {
-        val minutesAgo = (System.currentTimeMillis() - createdTimestamp) / 1000 / 60
-        return if (minutesAgo >= 60) {
-            context.getString(R.string.edit_x_hours_ago, (minutesAgo / 60).toString())
-        } else {
-            context.getString(R.string.edit_x_minutes_ago, (minutesAgo).toString())
-        }
     }
 
     private val Edit.descriptionView: View get() = when(this) {

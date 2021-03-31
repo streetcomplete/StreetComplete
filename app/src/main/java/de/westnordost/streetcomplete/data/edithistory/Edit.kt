@@ -7,4 +7,5 @@ interface Edit {
     val createdTimestamp: Long
     val isUndoable: Boolean
     val position: LatLon
+    val isSynced: Boolean?
 }

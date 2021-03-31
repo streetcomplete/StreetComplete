@@ -28,7 +28,7 @@ data class NoteEdit(
     override val createdTimestamp: Long,
 
     /** whether this edit has been uploaded already */
-    val isSynced: Boolean,
+    override val isSynced: Boolean,
 
     /** Whether the images attached still need activation. Already true if imagePaths is empty */
     val imagesNeedActivation: Boolean

@@ -12,4 +12,5 @@ data class OsmQuestHidden(
     override val createdTimestamp: Long
 ) : Edit {
     override val isUndoable: Boolean get() = true
+    override val isSynced: Boolean? get() = null
 }
