@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.edithistory.overlayIcon
+import de.westnordost.streetcomplete.ktx.findPrevious
 import de.westnordost.streetcomplete.ktx.toast
 import java.lang.System.currentTimeMillis
+import java.text.DateFormat
 import java.util.Collections
 import kotlin.collections.ArrayList
 
@@ -47,6 +50,7 @@ class EditHistoryAdapter(
         if (insertIndex == -1) insertIndex = rows.size
 
         rows.add(insertIndex, EditItem(edit))
+        if (insertIndex < rows.size) notifyItemChanged(insertIndex)
         notifyItemInserted(insertIndex)
     }
 
@@ -76,33 +80,32 @@ class EditHistoryAdapter(
             selectedEdit = null
         }
 
-        editIndices.forEach {
-            rows.removeAt(it)
-            notifyItemRemoved(it)
+        for (index in editIndices) {
+            rows.removeAt(index)
+            notifyItemRemoved(index)
+            if (index < rows.size) notifyItemChanged(index)
         }
     }
 
     override fun getItemViewType(position: Int): Int = when(rows[position]) {
         is EditItem -> EDIT
         IsSyncedItem -> SYNCED
-        is EditTimeItem -> EDIT_TIME
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            EDIT -> EditViewHolder(inflater.inflate(R.layout.row_edit_item, parent, false))
+            EDIT   -> EditViewHolder(inflater.inflate(R.layout.row_edit_item, parent, false))
             SYNCED -> SyncedViewHolder(inflater.inflate(R.layout.row_edit_synced, parent, false))
-            EDIT_TIME -> EditTimeViewHolder(inflater.inflate(R.layout.row_edit_time, parent, false))
-            else       -> throw IllegalArgumentException("Unknown viewType $viewType")
+            else   -> throw IllegalArgumentException("Unknown viewType $viewType")
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val row = rows[position]
+        val rowAbove = rows.findPrevious(position) { it is EditItem } as EditItem?
         when(holder) {
-            is EditViewHolder -> holder.onBind((row as EditItem).edit)
-            is EditTimeViewHolder -> holder.onBind((row as EditTimeItem).timestamp)
+            is EditViewHolder -> holder.onBind((row as EditItem).edit, rowAbove?.edit)
         }
     }
 
@@ -129,8 +132,9 @@ class EditHistoryAdapter(
         private val questIcon = itemView.findViewById<ImageView>(R.id.questIcon)
         private val overlayIcon = itemView.findViewById<ImageView>(R.id.overlayIcon)
         private val undoButtonIcon = itemView.findViewById<ImageView>(R.id.undoButtonIcon)
+        private val timeText = itemView.findViewById<TextView>(R.id.timeText)
 
-        fun onBind(edit: Edit) {
+        fun onBind(edit: Edit, editAbove: Edit?) {
             undoButtonIcon.isEnabled = edit.isUndoable
             undoButtonIcon.isInvisible = selectedEdit != edit
 
@@ -139,6 +143,11 @@ class EditHistoryAdapter(
 
             if (edit.overlayIcon != 0) overlayIcon.setImageResource(edit.overlayIcon)
             else overlayIcon.setImageDrawable(null)
+
+            val aboveTimeStr = editAbove?.let { formatSameDayTime(it.createdTimestamp) }
+            val timeStr = formatSameDayTime(edit.createdTimestamp)
+            timeText.isGone = aboveTimeStr == timeStr
+            timeText.text = timeStr
 
             itemView.isEnabled = edit.isUndoable
             itemView.isSelected = edit == selectedEdit
@@ -156,27 +165,17 @@ class EditHistoryAdapter(
         }
     }
 
-    private inner class EditTimeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val abbrTimeText = itemView.findViewById<TextView>(R.id.abbrTimeText)
-
-        fun onBind(timestamp: Long) {
-            abbrTimeText.text = DateUtils.getRelativeTimeSpanString(
-                timestamp, currentTimeMillis(),
-                DateUtils.MINUTE_IN_MILLIS,
-                DateUtils.FORMAT_ABBREV_ALL
-            )
-        }
-    }
-
     private class SyncedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
+
+private fun formatSameDayTime(timestamp: Long) =
+    DateUtils.formatSameDayTime(timestamp, currentTimeMillis(), DateFormat.SHORT, DateFormat.SHORT
+)
 
 private sealed class EditHistoryItem
 
 private data class EditItem(val edit: Edit) : EditHistoryItem()
 private object IsSyncedItem : EditHistoryItem()
-private data class EditTimeItem(val timestamp: Long) : EditHistoryItem()
 
 private const val EDIT = 0
 private const val SYNCED = 1
-private const val EDIT_TIME = 2
