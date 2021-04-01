@@ -32,6 +32,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
 
         override fun onDeleted(edits: List<Edit>) {
             lifecycleScope.launch { adapter.onDeleted(edits) }
+            // TODO if empty now, close
         }
 
         override fun onInvalidated() {
@@ -39,6 +40,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
                 val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
                 adapter.setEdits(edits)
             }
+            // TODO if empty now, close
         }
     }
 
