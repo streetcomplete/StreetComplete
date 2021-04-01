@@ -13,6 +13,7 @@ v32.0-alpha1: |
     Quest answers, split ways, deleted places, hid quests, created notes and note comments (#1029, #2616)
   </li>
   <li>You can now look at your <b>edit history</b> and undo any recent edit, not just the last one</li>
+  <li>It is now shown what exactly is tagged for each edit in the edit history</li>
   </ul>
   <h3>⛰️ Improved usability and offline mode</h3>
   <ul>
