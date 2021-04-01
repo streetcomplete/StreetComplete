@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
@@ -28,8 +30,6 @@ class EditHistoryAdapter(
 
     private val rows: MutableList<EditHistoryItem> = ArrayList()
     private var selectedEdit: Edit? = null
-
-    // TODO add/manage time rows...
 
     fun setEdits(edits: List<Edit>) {
         rows.clear()
@@ -129,10 +129,12 @@ class EditHistoryAdapter(
     }
 
     private inner class EditViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val clickArea = itemView.findViewById<ViewGroup>(R.id.clickArea)
         private val questIcon = itemView.findViewById<ImageView>(R.id.questIcon)
         private val overlayIcon = itemView.findViewById<ImageView>(R.id.overlayIcon)
         private val undoButtonIcon = itemView.findViewById<ImageView>(R.id.undoButtonIcon)
         private val timeText = itemView.findViewById<TextView>(R.id.timeText)
+        private val timeTextContainer = itemView.findViewById<ViewGroup>(R.id.timeTextContainer)
 
         fun onBind(edit: Edit, editAbove: Edit?) {
             undoButtonIcon.isEnabled = edit.isUndoable
@@ -146,12 +148,12 @@ class EditHistoryAdapter(
 
             val aboveTimeStr = editAbove?.let { formatSameDayTime(it.createdTimestamp) }
             val timeStr = formatSameDayTime(edit.createdTimestamp)
-            timeText.isGone = aboveTimeStr == timeStr
+            timeTextContainer.isGone = aboveTimeStr == timeStr
             timeText.text = timeStr
 
-            itemView.isEnabled = edit.isUndoable
-            itemView.isSelected = edit == selectedEdit
-            itemView.setOnClickListener {
+            clickArea.isEnabled = edit.isUndoable
+            clickArea.isSelected = edit == selectedEdit
+            clickArea.setOnClickListener {
                 if (selectedEdit == edit) {
                     if (edit.isUndoable) {
                         undo(edit)

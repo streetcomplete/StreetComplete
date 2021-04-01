@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.controls
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import android.widget.ImageButton
+import android.widget.PopupMenu
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -29,6 +31,11 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     private val undoButton get() = view as ImageButton
 
+    interface Listener {
+        fun onClickShowEditHistory()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
     /* undo button is not shown when there is nothing to undo */
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(edit: Edit) { lifecycleScope.launch { animateInIfAnythingToUndo() }}
@@ -54,8 +61,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
         super.onViewCreated(view, savedInstanceState)
 
         undoButton.setOnClickListener {
-            undoButton.isEnabled = false
-            lifecycleScope.launch { confirmUndo() }
+            showUndoContextMenu()
         }
     }
 
@@ -75,11 +81,31 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     /* ------------------------------------------------------------------------------------------ */
 
+    private fun showUndoContextMenu() {
+        val undo = 1
+        val showHistory = 2
+
+        val popup = PopupMenu(requireContext(), undoButton)
+        popup.menu.add(Menu.NONE, undo, 2, R.string.undo_last)
+        popup.menu.add(Menu.NONE, showHistory, 1, R.string.show_edit_history)
+        popup.show()
+
+        popup.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                undo -> lifecycleScope.launch { confirmUndo() }
+                showHistory -> showEditHistory()
+            }
+            true
+        }
+    }
+
+    private fun showEditHistory() {
+        listener?.onClickShowEditHistory()
+    }
+
     private suspend fun confirmUndo() {
         val edit = getMostRecentUndoable() ?: return
-        val dlg = UndoDialog(requireContext(), edit)
-        dlg.setOnDismissListener { undoButton.isEnabled = true }
-        dlg.show()
+        UndoDialog(requireContext(), edit).show()
     }
 
     private suspend fun updateUndoButtonVisibility() {

@@ -33,11 +33,13 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
+import de.westnordost.streetcomplete.controls.UndoButtonFragment
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.*
+import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.LocationRequestFragment
@@ -65,6 +67,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener, CreateNoteFragment.Listener,
     VisibleQuestsSource.Listener,
     MainMenuButtonFragment.Listener,
+    UndoButtonFragment.Listener,
     HandlesOnBackPressed {
 
     @Inject internal lateinit var questController: QuestController
@@ -86,7 +89,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     internal var mapFragment: QuestsMapFragment? = null
     internal var mainMenuButtonFragment: MainMenuButtonFragment? = null
+
     private val bottomSheetFragment: Fragment? get() = childFragmentManagerOrNull?.findFragmentByTag(BOTTOM_SHEET)
+    private val editHistoryFragment: Fragment? get() = childFragmentManagerOrNull?.findFragmentByTag(EDIT_HISTORY)
 
     private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
 
@@ -180,11 +185,18 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /** Called by the activity when the user presses the back button.
      *  Returns true if the event should be consumed. */
     override fun onBackPressed(): Boolean {
-        val f = bottomSheetFragment
-        if (f !is IsCloseableBottomSheet) return false
+        if (editHistoryFragment != null) {
+            closeEditHistorySidebar()
+            return true
+        }
 
-        f.onClickClose { closeBottomSheet() }
-        return true
+        val f = bottomSheetFragment
+        if (f is IsCloseableBottomSheet) {
+            f.onClickClose { closeBottomSheet() }
+            return true
+        }
+
+        return false
     }
 
     override fun onStop() {
@@ -267,8 +279,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double) {
         val f = bottomSheetFragment
         if (f is IsCloseableBottomSheet) {
-            if (!f.onClickMapAt(position, clickAreaSizeInMeters))
+            if (!f.onClickMapAt(position, clickAreaSizeInMeters)) {
                 f.onClickClose { closeBottomSheet() }
+            }
+        } else if(editHistoryFragment != null) {
+            closeEditHistorySidebar()
         }
     }
 
@@ -302,6 +317,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
 
         return enclosingBBox
+    }
+
+    /* ------------------------------ UndoButtonFragment.Listener ------------------------------- */
+
+    override fun onClickShowEditHistory() {
+        showEditHistorySidebar()
     }
 
     //endregion
@@ -676,6 +697,24 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     //endregion
 
+    //region Edit History Sidebar
+
+    private fun showEditHistorySidebar() {
+        val appearAnim = R.animator.edit_history_sidebar_appear
+        val disappearAnim = R.animator.edit_history_sidebar_disappear
+        childFragmentManager.commit {
+            setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
+            replace(R.id.edit_history_container, EditHistoryFragment(), EDIT_HISTORY)
+            addToBackStack(EDIT_HISTORY)
+        }
+    }
+
+    private fun closeEditHistorySidebar() {
+        childFragmentManager.popBackStack(EDIT_HISTORY, POP_BACK_STACK_INCLUSIVE)
+    }
+
+    //endregion
+
     //region Bottom Sheet - Controlling and managing the bottom sheet contents
 
     @UiThread private fun closeBottomSheet() {
@@ -845,5 +884,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     companion object {
         private const val BOTTOM_SHEET = "bottom_sheet"
+        private const val EDIT_HISTORY = "edit_history"
     }
 }

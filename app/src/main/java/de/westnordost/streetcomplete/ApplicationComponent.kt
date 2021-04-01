@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.upload.UploadService
 import de.westnordost.streetcomplete.data.user.UserModule
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeModule
+import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.edithistory.UndoDialog
 import de.westnordost.streetcomplete.map.MainFragment
 import de.westnordost.streetcomplete.map.MapFragment
@@ -109,4 +110,5 @@ interface ApplicationComponent {
     fun inject(questStatisticsByQuestTypeFragment: QuestStatisticsByQuestTypeFragment)
     fun inject(privacyStatementFragment: PrivacyStatementFragment)
     fun inject(streetCompleteSQLiteOpenHelper: StreetCompleteSQLiteOpenHelper)
+    fun inject(editHistoryFragment: EditHistoryFragment)
 }

@@ -371,6 +371,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
     <string name="action_undo">Undo</string>
+    <string name="undo_last">Undo last edit</string>
+    <string name="show_edit_history">Show edit history</string>
     <string name="undo_confirm_title2">Undo the following edit?</string>
     <string name="toast_undo_unavailable">This edit is already synced and cannot be undone</string>
     <string name="quest_orchard_produce_title">What is being cultivated here?</string>
