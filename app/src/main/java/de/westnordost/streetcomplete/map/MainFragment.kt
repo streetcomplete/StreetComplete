@@ -34,6 +34,7 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
 import de.westnordost.streetcomplete.controls.UndoButtonFragment
+import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -62,12 +63,17 @@ import kotlin.math.sqrt
 
 /** Contains the quests map and the controls for it. */
 class MainFragment : Fragment(R.layout.fragment_main),
-    MapFragment.Listener, LocationAwareMapFragment.Listener, QuestsMapFragment.Listener,
+    MapFragment.Listener,
+    LocationAwareMapFragment.Listener,
+    QuestsMapFragment.Listener,
     AbstractQuestAnswerFragment.Listener,
-    SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener, CreateNoteFragment.Listener,
+    SplitWayFragment.Listener,
+    LeaveNoteInsteadFragment.Listener,
+    CreateNoteFragment.Listener,
     VisibleQuestsSource.Listener,
     MainMenuButtonFragment.Listener,
     UndoButtonFragment.Listener,
+    EditHistoryFragment.Listener,
     HandlesOnBackPressed {
 
     @Inject internal lateinit var questController: QuestController
@@ -482,6 +488,18 @@ class MainFragment : Fragment(R.layout.fragment_main),
                 closeBottomSheet()
             }
         }
+    }
+
+    //endregion
+
+    //region Edit History - Callbacks from the Edit History Sidebar
+
+    override fun onSelectedEdit(edit: Edit) {
+        // TODO not yet implemented
+    }
+
+    override fun onEditHistoryIsEmpty() {
+        closeEditHistorySidebar()
     }
 
     //endregion

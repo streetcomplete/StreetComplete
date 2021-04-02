@@ -19,28 +19,37 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
 
     @Inject internal lateinit var editHistorySource: EditHistorySource
 
+    interface Listener {
+        /** Called when an edit has been selected and the undo-button appeared */
+        fun onSelectedEdit(edit: Edit)
+        /** Called when the edit history is empty now */
+        fun onEditHistoryIsEmpty()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
     private val adapter = EditHistoryAdapter(this::onSelected, this::onUndo)
 
     private val editHistoryListener = object : EditHistorySource.Listener {
-        override fun onAdded(edit: Edit) {
-            lifecycleScope.launch { adapter.onAdded(edit) }
-        }
-
-        override fun onSynced(edit: Edit) {
-            lifecycleScope.launch { adapter.onSynced(edit) }
-        }
+        override fun onAdded(edit: Edit) { lifecycleScope.launch { adapter.onAdded(edit) } }
+        override fun onSynced(edit: Edit) { lifecycleScope.launch { adapter.onSynced(edit) } }
 
         override fun onDeleted(edits: List<Edit>) {
-            lifecycleScope.launch { adapter.onDeleted(edits) }
-            // TODO if empty now, close
+            lifecycleScope.launch {
+                adapter.onDeleted(edits)
+                if (editHistorySource.getCount() == 0) {
+                    listener?.onEditHistoryIsEmpty()
+                }
+            }
         }
 
         override fun onInvalidated() {
             lifecycleScope.launch {
                 val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
                 adapter.setEdits(edits)
+                if (edits.isEmpty()) {
+                    listener?.onEditHistoryIsEmpty()
+                }
             }
-            // TODO if empty now, close
         }
     }
 
@@ -72,7 +81,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
     }
 
     private fun onSelected(edit: Edit) {
-        // TODO
+        listener?.onSelectedEdit(edit)
     }
 
     private fun onUndo(edit: Edit) {

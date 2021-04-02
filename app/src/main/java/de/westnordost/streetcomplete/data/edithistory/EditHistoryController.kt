@@ -93,6 +93,10 @@ class EditHistoryController @Inject constructor(
         return result
     }
 
+    override fun getCount(): Int =
+        // could be optimized later too...
+        elementEditsController.getAll().size
+
     override fun addListener(listener: EditHistorySource.Listener) {
         listeners.add(listener)
     }

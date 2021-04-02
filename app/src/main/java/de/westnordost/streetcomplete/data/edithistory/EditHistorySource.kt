@@ -11,6 +11,7 @@ interface EditHistorySource {
     fun getMostRecentUndoable(): Edit?
 
     fun getAll(): List<Edit>
+    fun getCount(): Int
 
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)
