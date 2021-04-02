@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import androidx.core.content.edit
-import com.mapzen.tangram.SceneUpdate
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -23,7 +22,7 @@ import kotlin.math.sqrt
         private val questTypeRegistry: QuestTypeRegistry,
         private val prefs: SharedPreferences
 ) {
-    val sceneUpdates: List<SceneUpdate> by lazy {
+    val sceneUpdates: List<Pair<String, String>> by lazy {
         val isSpriteSheetCurrent = prefs.getInt(Prefs.QUEST_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
 
         val spriteSheet =
@@ -78,9 +77,9 @@ import kotlin.math.sqrt
         return questSprites
     }
 
-    private fun createSceneUpdates(questSprites: String): List<SceneUpdate> = listOf(
-        SceneUpdate("textures.quests.url", "file://${context.filesDir}/$QUEST_ICONS_FILE"),
-        SceneUpdate("textures.quests.sprites", questSprites)
+    private fun createSceneUpdates(questSprites: String): List<Pair<String, String>> = listOf(
+        "textures.quests.url" to "file://${context.filesDir}/$QUEST_ICONS_FILE",
+        "textures.quests.sprites" to questSprites
     )
 
     companion object {

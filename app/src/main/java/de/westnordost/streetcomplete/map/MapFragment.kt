@@ -2,10 +2,8 @@ package de.westnordost.streetcomplete.map
 
 import android.app.Activity
 import android.content.Intent
-import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.RectF
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +17,6 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.mapzen.tangram.MapView
-import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.TouchInput.*
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
@@ -34,6 +31,7 @@ import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.containsAll
 import de.westnordost.streetcomplete.ktx.setMargins
 import de.westnordost.streetcomplete.ktx.tryStartActivity
+import de.westnordost.streetcomplete.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.map.tangram.*
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_map.*
@@ -42,7 +40,6 @@ import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.internal.Version
-import java.util.*
 import javax.inject.Inject
 
 /** Manages a map that remembers its last location*/
@@ -53,13 +50,26 @@ open class MapFragment : Fragment(),
     protected lateinit var mapView: MapView
     private set
 
-    protected var controller: KtMapController? = null
-
     private val defaultCameraInterpolator = AccelerateDecelerateInterpolator()
 
-    private var loadedSceneFilePath: String? = null
+    protected var controller: KtMapController? = null
+    protected var sceneMapComponent: SceneMapComponent? = null
 
-    private var isMapInitialized: Boolean = false
+    var show3DBuildings: Boolean = true
+    set(value) {
+        if (field == value) return
+        field = value
+
+        val toggle = if (value) "true" else "false"
+
+        lifecycleScope.launch {
+            sceneMapComponent?.putSceneUpdates(listOf(
+                "layers.buildings.draw.buildings-style.extrude" to toggle,
+                "layers.buildings.draw.buildings-outline-style.extrude" to toggle
+            ))
+            sceneMapComponent?.loadScene()
+        }
+    }
 
     @Inject internal lateinit var vectorTileProvider: VectorTileProvider
     @Inject internal lateinit var cacheConfig: MapTilesDownloadCacheConfig
@@ -120,7 +130,7 @@ open class MapFragment : Fragment(),
 
     override fun onStart() {
         super.onStart()
-        lifecycleScope.launch { reinitializeMapIfNecessary() }
+        lifecycleScope.launch { sceneMapComponent?.loadScene() }
     }
 
     override fun onResume() {
@@ -152,39 +162,30 @@ open class MapFragment : Fragment(),
         controller = ctrl
         if (ctrl == null) return
         lifecycle.addObserver(ctrl)
-        registerResponders()
+        registerResponders(ctrl)
 
-        val sceneFilePath = getSceneFilePath()
-        ctrl.loadSceneFile(sceneFilePath, getSceneUpdates())
-        loadedSceneFilePath = sceneFilePath
+        sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider)
+
+        onBeforeLoadScene()
+
+        sceneMapComponent?.loadScene()
 
         ctrl.glViewHolder!!.view.awaitLayout()
 
         onMapReady()
+
         listener?.onMapInitialized()
     }
 
-    private suspend fun reinitializeMapIfNecessary() {
-        if (loadedSceneFilePath != null) {
-            val sceneFilePath = getSceneFilePath()
-            if (sceneFilePath != loadedSceneFilePath) {
-                controller?.loadSceneFile(sceneFilePath, getSceneUpdates())
-                loadedSceneFilePath = sceneFilePath
-            }
-        }
-    }
-
-    private fun registerResponders() {
-        controller?.setTapResponder(this)
-        controller?.setDoubleTapResponder(this)
-        controller?.setLongPressResponder(this)
-        controller?.setRotateResponder(this)
-        controller?.setPanResponder(this)
-        controller?.setScaleResponder(this)
-        controller?.setShoveResponder(this)
-
-
-        controller?.setMapChangingListener(object : MapChangingListener {
+    private fun registerResponders(ctrl: KtMapController) {
+        ctrl.setTapResponder(this)
+        ctrl.setDoubleTapResponder(this)
+        ctrl.setLongPressResponder(this)
+        ctrl.setRotateResponder(this)
+        ctrl.setPanResponder(this)
+        ctrl.setScaleResponder(this)
+        ctrl.setShoveResponder(this)
+        ctrl.setMapChangingListener(object : MapChangingListener {
             override fun onMapWillChange() {}
             override fun onMapIsChanging() {
                 val camera = cameraPosition ?: return
@@ -197,25 +198,6 @@ open class MapFragment : Fragment(),
                 listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
             }
         })
-    }
-
-    protected open suspend fun getSceneUpdates(): List<SceneUpdate> {
-        val updates = mutableListOf(
-            SceneUpdate("global.language", Locale.getDefault().language),
-            SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}"),
-            SceneUpdate("global.api_key", vectorTileProvider.apiKey)
-        )
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            updates.add(SceneUpdate("global.language_script", Locale.getDefault().script))
-        }
-        return updates
-    }
-
-    protected open fun getSceneFilePath(): String {
-        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val scene = if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
-        return "${vectorTileProvider.sceneFilePath}/$scene"
     }
 
     private fun createHttpHandler(): HttpHandler {
@@ -231,9 +213,11 @@ open class MapFragment : Fragment(),
 
     /* ----------------------------- Overrideable map callbacks --------------------------------- */
 
-    @CallSuper protected open fun onMapReady() {
+    @CallSuper protected open suspend fun onMapReady() {
         restoreMapState()
     }
+
+    @CallSuper protected open suspend fun onBeforeLoadScene() {}
 
     protected open fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {}
 
@@ -363,24 +347,6 @@ open class MapFragment : Fragment(),
         return controller?.getLatLonThatCentersLatLon(pos, offset)
     }
 
-    var show3DBuildings: Boolean = true
-    set(value) {
-        if (field == value) return
-        field = value
-        lifecycleScope.launch {
-            val sceneFile = loadedSceneFilePath
-            if (sceneFile != null) {
-                val toggle = if (value) "true" else "false"
-                controller?.loadSceneFile(
-                    sceneFile, getSceneUpdates() + listOf(
-                        SceneUpdate("layers.buildings.draw.buildings-style.extrude", toggle),
-                        SceneUpdate("layers.buildings.draw.buildings-outline-style.extrude", toggle)
-                    )
-                )
-            }
-        }
-    }
-
     fun getDisplayedArea(): BoundingBox? = controller?.screenAreaToBoundingBox(RectF())
 
     companion object {
@@ -389,7 +355,5 @@ open class MapFragment : Fragment(),
         const val PREF_ZOOM = "map_zoom"
         const val PREF_LAT = "map_lat"
         const val PREF_LON = "map_lon"
-
-        private const val TAG = "MapFragment"
     }
 }

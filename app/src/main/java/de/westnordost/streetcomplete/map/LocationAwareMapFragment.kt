@@ -83,7 +83,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
     /* ---------------------------------- Map State Callbacks ----------------------------------- */
 
-    override fun onMapReady() {
+    override suspend fun onMapReady() {
         super.onMapReady()
         restoreMapState()
 

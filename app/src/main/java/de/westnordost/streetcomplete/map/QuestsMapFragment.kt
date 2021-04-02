@@ -7,7 +7,6 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.lifecycle.lifecycleScope
 import com.mapzen.tangram.MapData
-import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.geometry.Point
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
@@ -79,7 +78,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         questPinLayerManager.mapFragment = this
     }
 
-    override fun onMapReady() {
+    override suspend fun onMapReady() {
         controller?.setPickRadius(1f)
         geometryLayer = controller?.addDataLayer(GEOMETRY_LAYER)
         questsLayer = controller?.addDataLayer(QUESTS_LAYER)
@@ -103,8 +102,10 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     /* ------------------------------------- Map setup ------------------------------------------ */
 
-    override suspend fun getSceneUpdates(): List<SceneUpdate> {
-        return super.getSceneUpdates() + withContext(Dispatchers.IO) { spriteSheet.sceneUpdates }
+    override suspend fun onBeforeLoadScene() {
+        super.onBeforeLoadScene()
+        val questSceneUpdates = withContext(Dispatchers.IO) { spriteSheet.sceneUpdates }
+        sceneMapComponent?.putSceneUpdates(questSceneUpdates)
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
