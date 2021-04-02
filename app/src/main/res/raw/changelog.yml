@@ -28,7 +28,7 @@ v32.0-alpha1: |
   </li>
   <li>When you scan for quests manually, no cache will be used: You always get the most fresh data (#2554)</li>
   <li>When unable to fully upload pictures attached to a note due to a bad connection, the app will try again later (#2102)</li>
-  <li>...and other fixes (#2521, #1821, #2628, #2691, ...)</li>
+  <li>...and other fixes (#2521, #1821, #2628, #2691, #2715...)</li>
   </ul>
 
 v31.2: |
