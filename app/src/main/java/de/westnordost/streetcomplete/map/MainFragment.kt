@@ -416,7 +416,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onAddSplit(point: LatLon) {
-        mapFragment?.putMarkerForCurrentQuest(point)
+        mapFragment?.putMarkerForCurrentQuest(point, R.drawable.crosshair_marker)
     }
 
     override fun onRemoveSplit(point: LatLon) {

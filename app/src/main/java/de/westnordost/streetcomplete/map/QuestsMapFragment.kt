@@ -5,6 +5,7 @@ import android.graphics.RectF
 import android.os.Bundle
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import androidx.annotation.DrawableRes
 import androidx.lifecycle.lifecycleScope
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Point
@@ -26,6 +27,7 @@ import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_E
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_ELEMENT_TYPE
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_NOTE_ID
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_TYPE
+import de.westnordost.streetcomplete.map.components.PointMarkersMapComponent
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.map.tangram.toLngLat
@@ -54,8 +56,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     private val questSelectionMarkers: MutableList<Marker> = mutableListOf()
 
-    // markers: LatLon -> Marker Id
-    private val markerIds: MutableMap<LatLon, Long> = HashMap()
+    private var pointMarkersMapComponent: PointMarkersMapComponent? = null
 
     // for restoring position
     private var cameraPositionBeforeShowingQuest: CameraPosition? = null
@@ -79,7 +80,9 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     }
 
     override suspend fun onMapReady() {
-        controller?.setPickRadius(1f)
+        val ctrl = controller ?: return
+        ctrl.setPickRadius(1f)
+        pointMarkersMapComponent = PointMarkersMapComponent(ctrl)
         geometryLayer = controller?.addDataLayer(GEOMETRY_LAYER)
         questsLayer = controller?.addDataLayer(QUESTS_LAYER)
         selectedQuestPinsLayer = controller?.addDataLayer(SELECTED_QUESTS_LAYER)
@@ -295,26 +298,16 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     /* -------------------------  Markers for current quest (split way) ------------------------- */
 
-    fun putMarkerForCurrentQuest(pos: LatLon) {
-        deleteMarkerForCurrentQuest(pos)
-        val marker = controller?.addMarker() ?: return
-        marker.setDrawable(R.drawable.crosshair_marker)
-        marker.setStylingFromString("{ style: 'points', color: 'white', size: 48px, order: 2000, collide: false }")
-        marker.setPoint(pos)
-        markerIds[pos] = marker.markerId
+    fun putMarkerForCurrentQuest(pos: LatLon, @DrawableRes drawableResId: Int) {
+        pointMarkersMapComponent?.put(pos, drawableResId)
     }
 
     fun deleteMarkerForCurrentQuest(pos: LatLon) {
-        val markerId = markerIds[pos] ?: return
-        controller?.removeMarker(markerId)
-        markerIds.remove(pos)
+        pointMarkersMapComponent?.delete(pos)
     }
 
     fun clearMarkersForCurrentQuest() {
-        for (markerId in markerIds.values) {
-            controller?.removeMarker(markerId)
-        }
-        markerIds.clear()
+        pointMarkersMapComponent?.clear()
     }
 
     /* --------------------------------- Position tracking -------------------------------------- */
