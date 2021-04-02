@@ -126,6 +126,13 @@ class MainFragment : Fragment(R.layout.fragment_main),
         super.onAttach(context)
 
         locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!, this::onLocationChanged)
+
+        childFragmentManager.addFragmentOnAttachListener { _, fragment ->
+            when (fragment) {
+                is QuestsMapFragment -> mapFragment = fragment
+                is MainMenuButtonFragment -> mainMenuButtonFragment = fragment
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -144,14 +151,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         zoomOutButton.setOnClickListener { onClickZoomOut() }
 
         updateMapQuestOffsets()
-    }
-
-    override fun onAttachFragment(childFragment: Fragment) {
-        super.onAttachFragment(childFragment)
-        when (childFragment) {
-            is QuestsMapFragment -> mapFragment = childFragment
-            is MainMenuButtonFragment -> mainMenuButtonFragment = childFragment
-        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
