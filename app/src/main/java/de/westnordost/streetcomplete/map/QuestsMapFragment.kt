@@ -14,8 +14,6 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -28,15 +26,11 @@ import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_E
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_NOTE_ID
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_TYPE
 import de.westnordost.streetcomplete.map.components.PointMarkersMapComponent
-import de.westnordost.streetcomplete.map.tangram.CameraPosition
-import de.westnordost.streetcomplete.map.tangram.Marker
-import de.westnordost.streetcomplete.map.tangram.toLngLat
-import de.westnordost.streetcomplete.map.tangram.toTangramGeometry
+import de.westnordost.streetcomplete.map.tangram.*
 import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
 import javax.inject.Inject
 import kotlin.math.abs
 import kotlin.math.max
@@ -186,7 +180,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         val targetZoom = min(pos.zoom, 20f)
 
         // do not zoom in if the element is already nicely in the view
-        if (screenAreaContains(g, RectF()) && targetZoom - currentPos.zoom < 2) return
+        if (controller.screenAreaContains(g, RectF()) && targetZoom - currentPos.zoom < 2) return
 
         cameraPositionBeforeShowingQuest = currentPos
 
@@ -195,20 +189,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
             position = pos.position
             zoom = targetZoom
-        }
-    }
-
-    private fun screenAreaContains(g: ElementGeometry, offset: RectF): Boolean {
-        val controller = controller ?: return false
-        val p = PointF()
-        return when (g) {
-            is ElementPolylinesGeometry -> g.polylines
-            is ElementPolygonsGeometry -> g.polygons
-            else -> listOf(listOf(g.center))
-        }.flatten().all {
-            val isContained = controller.latLonToScreenPosition(it, p, false)
-            isContained && p.x >= offset.left && p.x <= mapView.width - offset.right
-              && p.y >= offset.top  && p.y <= mapView.height - offset.bottom
         }
     }
 
