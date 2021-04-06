@@ -136,6 +136,8 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     fun startFocusEdit(edit: Edit, offset: RectF) {
         pinsMapComponent?.showSelectedPins(edit.icon, listOf(edit.position))
         geometryMapComponent?.beginFocusGeometry(ElementPointGeometry(edit.position), offset)
+        /* TODO if edits also persisted the geometry of the element at the time the edit was
+        *  created, it could be shown here. */
     }
 
     fun endFocusEdit() {
