@@ -13,6 +13,7 @@ import javax.inject.Singleton
 
 /** Access and listen to quests visible on the map */
 @Singleton class VisibleQuestsSource @Inject constructor(
+    private val questTypeRegistry: QuestTypeRegistry,
     private val osmQuestSource: OsmQuestSource,
     private val osmNoteQuestSource: OsmNoteQuestSource,
     private val visibleQuestTypeSource: VisibleQuestTypeSource,
@@ -72,9 +73,13 @@ import javax.inject.Singleton
         osmQuestSource.getAllInBBoxCount(bbox)
 
     /** Retrieve all visible quests in the given bounding box from local database */
-    fun getAllVisible(bbox: BoundingBox, questTypes: Collection<String>): List<Quest> {
-        if (questTypes.isEmpty()) return listOf()
-        val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, questTypes)
+    fun getAllVisible(bbox: BoundingBox): List<Quest> {
+        val visibleQuestTypeNames = questTypeRegistry.all
+            .filter { visibleQuestTypeSource.isVisible(it) }
+            .map { it::class.simpleName!! }
+        if (visibleQuestTypeNames.isEmpty()) return listOf()
+
+        val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypeNames)
         val osmNoteQuests = osmNoteQuestSource.getAllVisibleInBBox(bbox)
 
         return osmQuests.filter(::isVisible) + osmNoteQuests.filter(::isVisible)

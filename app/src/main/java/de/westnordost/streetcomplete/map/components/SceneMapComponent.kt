@@ -26,7 +26,8 @@ class SceneMapComponent (
 
     /** Add the given scene updates. They will overwrite previous scene updates with the same keys.
      *
-     *  It does NOT reload the scene, you need to call loadScene yourself to reload */
+     *  It does NOT reload the scene, you need to call loadScene yourself to reload. Why? Because
+     *  you might want to bundle scene updates before you triggere a (re)load of the scene. */
     fun putSceneUpdates(updates: List<Pair<String, String>>) {
         sceneUpdates.putAll(updates)
     }

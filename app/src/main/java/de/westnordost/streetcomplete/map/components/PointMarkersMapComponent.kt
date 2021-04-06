@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.map.tangram.KtMapController
 
-/** manages putting some generic point markers with a drawable on the map */
+/** Manages putting some generic point markers with a drawable on the map */
 class PointMarkersMapComponent(private val ctrl: KtMapController) {
 
     // markers: LatLon -> Marker Id

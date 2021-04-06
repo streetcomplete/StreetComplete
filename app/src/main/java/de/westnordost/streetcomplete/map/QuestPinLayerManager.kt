@@ -1,29 +1,30 @@
 package de.westnordost.streetcomplete.map
 
 import android.content.res.Resources
-import android.os.Build
+import android.graphics.RectF
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.mapzen.tangram.MapData
-import com.mapzen.tangram.geometry.Point
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.quest.*
-import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
-import de.westnordost.streetcomplete.map.tangram.toLngLat
-import de.westnordost.streetcomplete.quests.bikeway.AddCycleway
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
+import de.westnordost.streetcomplete.map.components.Pin
+import de.westnordost.streetcomplete.map.components.PinsMapComponent
+import de.westnordost.streetcomplete.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.*
 import kotlinx.coroutines.*
-import javax.inject.Inject
 
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
  *  for the bbox surrounding the area from database and holds it in memory. */
-class QuestPinLayerManager @Inject constructor(
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider,
+class QuestPinLayerManager(
+    private val ctrl: KtMapController,
+    private val pinsMapComponent: PinsMapComponent,
+    private val questTypeRegistry: QuestTypeRegistry,
+    private val questTypeOrderList: QuestTypeOrderList,
     private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource
-): LifecycleObserver, VisibleQuestsSource.Listener {
+): LifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
@@ -33,70 +34,67 @@ class QuestPinLayerManager @Inject constructor(
     private var lastDisplayedRect: TilesRect? = null
 
     // quest key -> [point, ...]
-    private val quests: MutableMap<QuestKey, List<Point>> = mutableMapOf()
+    private val quests: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
 
-    private val lifecycleScope = CoroutineScope(SupervisorJob())
-
-    lateinit var mapFragment: MapFragment
-
-    var questsLayer: MapData? = null
-        set(value) {
-            if (field === value) return
-            field = value
-            updateLayer()
-        }
+    private val lifecycleScope: CoroutineScope
 
     /** Switch visibility of quest pins layer */
     var isVisible: Boolean = true
         set(value) {
             if (field == value) return
             field = value
-            updateLayer()
+            updatePins()
         }
 
-    init {
-        visibleQuestsSource.addListener(this)
+    private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
+        override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
+            var updates = 0
+            added.forEach { if (add(it)) updates++ }
+            removed.forEach { if (remove(it)) updates++ }
+            if (updates > 0) updatePins()
+        }
+
+        override fun onVisibleQuestsInvalidated() {
+            clear()
+            onNewScreenPosition()
+        }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_START) fun onStart() {
-        /* When reentering the fragment, the database may have changed (quest download in
-        * background or change in settings), so the quests must be pulled from DB again */
+    private val questTypeOrderListener = object : QuestTypeOrderList.Listener {
+        override fun onUpdated() {
+            initializeQuestTypeOrders()
+            clear()
+            onNewScreenPosition()
+        }
+    }
+
+    init {
+        lifecycleScope = CoroutineScope(SupervisorJob())
+        visibleQuestsSource.addListener(visibleQuestsListener)
+        questTypeOrderList.addListener(questTypeOrderListener)
+
         initializeQuestTypeOrders()
-        clear()
         onNewScreenPosition()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP) fun onStop() {
-        clear()
-    }
-
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
-        questsLayer = null
-        visibleQuestsSource.removeListener(this)
+        visibleQuestsSource.removeListener(visibleQuestsListener)
+        questTypeOrderList.removeListener(questTypeOrderListener)
         lifecycleScope.cancel()
     }
 
+    fun getQuestKey(properties: Map<String, String>): QuestKey? =
+        properties.toQuestKey()
+
     fun onNewScreenPosition() {
-        val zoom = mapFragment.cameraPosition?.zoom ?: return
+        val zoom = ctrl.cameraPosition.zoom
         if (zoom < TILES_ZOOM) return
-        val displayedArea = mapFragment.getDisplayedArea() ?: return
+        val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         if (lastDisplayedRect != tilesRect) {
             lastDisplayedRect = tilesRect
             updateQuestsInRect(tilesRect)
         }
-    }
-
-    override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        var updates = 0
-        added.forEach { if (add(it)) updates++ }
-        removed.forEach { if (remove(it)) updates++ }
-        if (updates > 0) updateLayer()
-    }
-
-    override fun onVisibleQuestsInvalidated() {
-        clear()
-        onNewScreenPosition()
     }
 
     private fun updateQuestsInRect(tilesRect: TilesRect) {
@@ -110,13 +108,12 @@ class QuestPinLayerManager @Inject constructor(
         }
         val minRect = tiles.minTileRect() ?: return
         val bbox = minRect.asBoundingBox(TILES_ZOOM)
-        val questTypeNames = questTypesProvider.get().map { it::class.simpleName!! }
-        lifecycleScope.launch(Dispatchers.IO) {
-            val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox, questTypeNames) }
+        lifecycleScope.launch {
+            val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
             for (quest in quests) {
                 add(quest)
             }
-            updateLayer()
+            updatePins()
         }
         synchronized(retrievedTiles) { retrievedTiles.addAll(tiles) }
     }
@@ -124,39 +121,14 @@ class QuestPinLayerManager @Inject constructor(
     private fun add(quest: Quest): Boolean {
         val questKey = quest.key
         val positions = quest.markerLocations
-        val previousPoints = synchronized(quest) { quests[questKey] }
-        val previousPositions = previousPoints?.map { OsmLatLon(it.coordinateArray[1], it.coordinateArray[0]) }
+        val previousPositions = synchronized(quest) { quests[questKey]?.map { it.position } }
         if (positions == previousPositions) return false
 
-        // hack away cycleway quests for old Android SDK versions (#713)
-        if (quest.type is AddCycleway && Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            return false
-        }
-        val questIconName = resources.getResourceEntryName(quest.type.icon)
-        val points = positions.map { position ->
-            val properties = mapOf(
-                "type" to "point",
-                "kind" to questIconName,
-                "importance" to getQuestImportance(quest).toString()
-            ) + questKey.toProperties()
-
-            Point(position.toLngLat(), properties)
-        }
+        val pins = createQuestPins(quest)
         synchronized(quests) {
-            quests[questKey] = points
+            quests[questKey] = pins
         }
         return true
-    }
-
-    private fun QuestKey.toProperties(): Map<String, String> = when(this) {
-        is OsmNoteQuestKey -> mapOf(
-            MARKER_NOTE_ID to noteId.toString()
-        )
-        is OsmQuestKey -> mapOf(
-            MARKER_ELEMENT_TYPE to elementType.name,
-            MARKER_ELEMENT_ID to elementId.toString(),
-            MARKER_QUEST_TYPE to questTypeName
-        )
     }
 
     private fun remove(questKey: QuestKey): Boolean {
@@ -169,36 +141,35 @@ class QuestPinLayerManager @Inject constructor(
     }
 
     private fun clear() {
-        synchronized(quests) {
-            quests.clear()
-        }
-        synchronized(retrievedTiles) {
-            retrievedTiles.clear()
-        }
-        questsLayer?.clear()
+        synchronized(quests) { quests.clear() }
+        synchronized(retrievedTiles) { retrievedTiles.clear() }
+        pinsMapComponent.clearPins()
         lastDisplayedRect = null
     }
 
-    private fun updateLayer() {
+    private fun updatePins() {
         if (isVisible) {
-            questsLayer?.setFeatures(getPoints())
+            val pins = synchronized(quests) { quests.values.flatten() }
+            pinsMapComponent.showPins(pins)
         } else {
-            questsLayer?.clear()
-        }
-    }
-
-    private fun getPoints(): List<Point> {
-        synchronized(quests) {
-            return quests.values.flatten()
+            pinsMapComponent.clearPins()
         }
     }
 
     private fun initializeQuestTypeOrders() {
         // this needs to be reinitialized when the quest order changes
-        var order = 0
-        for (questType in questTypesProvider.get()) {
-            questTypeOrders[questType] = order++
+        val questTypes = questTypeRegistry.all.toMutableList()
+        questTypeOrderList.sort(questTypes)
+        questTypes.forEachIndexed { index, questType ->
+            questTypeOrders[questType] = index
         }
+    }
+
+    private fun createQuestPins(quest: Quest): List<Pin> {
+        val iconName = resources.getResourceEntryName(quest.type.icon)
+        val props = quest.key.toProperties()
+        val importance = getQuestImportance(quest)
+        return quest.markerLocations.map { Pin(it, iconName, props, importance) }
     }
 
     /** returns values from 0 to 100000, the higher the number, the more important */
@@ -212,10 +183,39 @@ class QuestPinLayerManager @Inject constructor(
     }
 
     companion object {
-        const val MARKER_ELEMENT_TYPE = "element_type"
-        const val MARKER_ELEMENT_ID = "element_id"
-        const val MARKER_QUEST_TYPE = "quest_type"
-        const val MARKER_NOTE_ID = "note_id"
         private const val TILES_ZOOM = 14
+    }
+}
+
+private const val MARKER_ELEMENT_TYPE = "element_type"
+private const val MARKER_ELEMENT_ID = "element_id"
+private const val MARKER_QUEST_TYPE = "quest_type"
+private const val MARKER_NOTE_ID = "note_id"
+
+private fun QuestKey.toProperties(): Map<String, String> = when(this) {
+    is OsmNoteQuestKey -> mapOf(
+        MARKER_NOTE_ID to noteId.toString()
+    )
+    is OsmQuestKey -> mapOf(
+        MARKER_ELEMENT_TYPE to elementType.name,
+        MARKER_ELEMENT_ID to elementId.toString(),
+        MARKER_QUEST_TYPE to questTypeName
+    )
+}
+
+private fun Map<String, String>.toQuestKey(): QuestKey? {
+    val noteId = get(MARKER_NOTE_ID)?.toLong()
+    val elementId = get(MARKER_ELEMENT_ID)?.toLong()
+    val elementType = get(MARKER_ELEMENT_TYPE)?.let { Element.Type.valueOf(it) }
+    val questTypeName = get(MARKER_QUEST_TYPE)
+
+    return when {
+        noteId != null -> {
+            OsmNoteQuestKey(noteId)
+        }
+        elementId != null && elementType != null && questTypeName != null -> {
+            OsmQuestKey(elementType, elementId, questTypeName)
+        }
+        else -> null
     }
 }

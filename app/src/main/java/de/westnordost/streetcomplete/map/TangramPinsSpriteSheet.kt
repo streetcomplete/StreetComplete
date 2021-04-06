@@ -17,17 +17,17 @@ import kotlin.math.sqrt
 
 /** From all the quest types, creates and saves a sprite sheet of quest type pin icons, provides
  *  the scene updates for tangram to access this sprite sheet  */
-@Singleton class TangramQuestSpriteSheet @Inject constructor(
-        private val context: Context,
-        private val questTypeRegistry: QuestTypeRegistry,
-        private val prefs: SharedPreferences
+@Singleton class TangramPinsSpriteSheet @Inject constructor(
+    private val context: Context,
+    private val questTypeRegistry: QuestTypeRegistry,
+    private val prefs: SharedPreferences
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
-        val isSpriteSheetCurrent = prefs.getInt(Prefs.QUEST_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
+        val isSpriteSheetCurrent = prefs.getInt(Prefs.PIN_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
 
         val spriteSheet =
             if (isSpriteSheetCurrent && !BuildConfig.DEBUG)
-                prefs.getString(Prefs.QUEST_SPRITES, "")!!
+                prefs.getString(Prefs.PIN_SPRITES, "")!!
             else
                 createSpritesheet()
 
@@ -38,7 +38,7 @@ import kotlin.math.sqrt
         val questIconResIds = questTypeRegistry.all.map { it.icon }.toSortedSet()
 
         val spriteSheetEntries: MutableList<String> = ArrayList(questIconResIds.size)
-        val questPin = context.resources.getDrawable(R.drawable.quest_pin)
+        val questPin = context.resources.getDrawable(R.drawable.pin)
         val iconSize = questPin.intrinsicWidth
         val questIconSize = 2 * iconSize / 3
         val questIconOffsetX = 56 * iconSize / 192
@@ -62,27 +62,27 @@ import kotlin.math.sqrt
             spriteSheetEntries.add("$questIconName: [$x,$y,$iconSize,$iconSize]")
         }
 
-        context.deleteFile(QUEST_ICONS_FILE)
-        val spriteSheetIconsFile = context.openFileOutput(QUEST_ICONS_FILE, Context.MODE_PRIVATE)
+        context.deleteFile(PIN_ICONS_FILE)
+        val spriteSheetIconsFile = context.openFileOutput(PIN_ICONS_FILE, Context.MODE_PRIVATE)
         spriteSheet.compress(Bitmap.CompressFormat.PNG, 0, spriteSheetIconsFile)
         spriteSheetIconsFile.close()
 
         val questSprites = "{${spriteSheetEntries.joinToString(",")}}"
 
         prefs.edit {
-            putInt(Prefs.QUEST_SPRITES_VERSION, BuildConfig.VERSION_CODE)
-            putString(Prefs.QUEST_SPRITES, questSprites)
+            putInt(Prefs.PIN_SPRITES_VERSION, BuildConfig.VERSION_CODE)
+            putString(Prefs.PIN_SPRITES, questSprites)
         }
 
         return questSprites
     }
 
-    private fun createSceneUpdates(questSprites: String): List<Pair<String, String>> = listOf(
-        "textures.quests.url" to "file://${context.filesDir}/$QUEST_ICONS_FILE",
-        "textures.quests.sprites" to questSprites
+    private fun createSceneUpdates(pinSprites: String): List<Pair<String, String>> = listOf(
+        "textures.pins.url" to "file://${context.filesDir}/$PIN_ICONS_FILE",
+        "textures.pins.sprites" to pinSprites
     )
 
     companion object {
-        private const val QUEST_ICONS_FILE = "quests.png"
+        private const val PIN_ICONS_FILE = "pins.png"
     }
 }
