@@ -187,35 +187,37 @@ class QuestPinLayerManager(
     }
 }
 
+private const val MARKER_QUEST_GROUP = "quest_group"
+
 private const val MARKER_ELEMENT_TYPE = "element_type"
 private const val MARKER_ELEMENT_ID = "element_id"
 private const val MARKER_QUEST_TYPE = "quest_type"
 private const val MARKER_NOTE_ID = "note_id"
 
+private const val QUEST_GROUP_OSM = "osm"
+private const val QUEST_GROUP_OSM_NOTE = "osm_note"
+
 private fun QuestKey.toProperties(): Map<String, String> = when(this) {
     is OsmNoteQuestKey -> mapOf(
+        MARKER_QUEST_GROUP to QUEST_GROUP_OSM,
         MARKER_NOTE_ID to noteId.toString()
     )
     is OsmQuestKey -> mapOf(
+        MARKER_QUEST_GROUP to QUEST_GROUP_OSM_NOTE,
         MARKER_ELEMENT_TYPE to elementType.name,
         MARKER_ELEMENT_ID to elementId.toString(),
         MARKER_QUEST_TYPE to questTypeName
     )
 }
 
-private fun Map<String, String>.toQuestKey(): QuestKey? {
-    val noteId = get(MARKER_NOTE_ID)?.toLong()
-    val elementId = get(MARKER_ELEMENT_ID)?.toLong()
-    val elementType = get(MARKER_ELEMENT_TYPE)?.let { Element.Type.valueOf(it) }
-    val questTypeName = get(MARKER_QUEST_TYPE)
-
-    return when {
-        noteId != null -> {
-            OsmNoteQuestKey(noteId)
-        }
-        elementId != null && elementType != null && questTypeName != null -> {
-            OsmQuestKey(elementType, elementId, questTypeName)
-        }
-        else -> null
-    }
+private fun Map<String, String>.toQuestKey(): QuestKey? = when(get(MARKER_QUEST_GROUP)) {
+    QUEST_GROUP_OSM_NOTE ->
+        OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong())
+    QUEST_GROUP_OSM ->
+        OsmQuestKey(
+            getValue(MARKER_ELEMENT_TYPE).let { Element.Type.valueOf(it) },
+            getValue(MARKER_ELEMENT_ID).toLong(),
+            getValue(MARKER_QUEST_TYPE)
+        )
+    else -> null
 }
