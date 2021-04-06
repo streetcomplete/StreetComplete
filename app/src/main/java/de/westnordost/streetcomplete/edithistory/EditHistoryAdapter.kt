@@ -24,6 +24,7 @@ import kotlin.collections.ArrayList
 /** Adapter to show the edit history in a list */
 class EditHistoryAdapter(
     val onSelected: (edit: Edit) -> Unit,
+    val onSelectionDeleted: () -> Unit,
     val onUndo: (edit: Edit) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -77,6 +78,7 @@ class EditHistoryAdapter(
 
         if (selectedEdit != null && edits.contains(selectedEdit)) {
             selectedEdit = null
+            onSelectionDeleted()
         }
 
         for (index in editIndices) {
@@ -110,7 +112,7 @@ class EditHistoryAdapter(
 
     override fun getItemCount(): Int = rows.size
 
-    private fun select(edit: Edit) {
+    fun select(edit: Edit) {
         val previousSelectedIndex = rows.indexOfFirst { it is EditItem && it.edit == selectedEdit }
         val newSelectedIndex = rows.indexOfFirst { it is EditItem && it.edit == edit }
         check(newSelectedIndex != -1)
@@ -130,6 +132,7 @@ class EditHistoryAdapter(
     private inner class EditViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val clickArea = itemView.findViewById<ViewGroup>(R.id.clickArea)
         private val questIcon = itemView.findViewById<ImageView>(R.id.questIcon)
+        private val selectionRing = itemView.findViewById<ImageView>(R.id.selectionRing)
         private val overlayIcon = itemView.findViewById<ImageView>(R.id.overlayIcon)
         private val undoButtonIcon = itemView.findViewById<ImageView>(R.id.undoButtonIcon)
         private val timeText = itemView.findViewById<TextView>(R.id.timeText)
@@ -138,6 +141,7 @@ class EditHistoryAdapter(
         fun onBind(edit: Edit, editAbove: Edit?) {
             undoButtonIcon.isEnabled = edit.isUndoable
             undoButtonIcon.isInvisible = selectedEdit != edit
+            selectionRing.isInvisible = selectedEdit != edit
 
             if (edit.icon != 0) questIcon.setImageResource(edit.icon)
             else questIcon.setImageDrawable(null)

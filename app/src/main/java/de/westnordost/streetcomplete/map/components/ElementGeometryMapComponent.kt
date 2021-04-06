@@ -53,9 +53,9 @@ class ElementGeometryMapComponent(private val ctrl: KtMapController) {
         }
     }
 
-    @Synchronized fun endFocusGeometry() {
+    @Synchronized fun endFocusGeometry(returnToPreviousPosition: Boolean = true) {
         val pos = previousCameraPosition
-        if (pos != null) {
+        if (pos != null && returnToPreviousPosition) {
             val currentPos = ctrl.cameraPosition
             val zoomTime = max(300L, (abs(currentPos.zoom - pos.zoom) * 300).roundToLong())
 

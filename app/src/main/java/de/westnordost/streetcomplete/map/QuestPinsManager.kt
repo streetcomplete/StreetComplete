@@ -17,7 +17,7 @@ import kotlinx.coroutines.*
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
  *  for the bbox surrounding the area from database and holds it in memory. */
-class QuestPinLayerManager(
+class QuestPinsManager(
     private val ctrl: KtMapController,
     private val pinsMapComponent: PinsMapComponent,
     private val questTypeRegistry: QuestTypeRegistry,
@@ -39,11 +39,11 @@ class QuestPinLayerManager(
     private val lifecycleScope: CoroutineScope
 
     /** Switch visibility of quest pins layer */
-    var isVisible: Boolean = true
+    var isActive: Boolean = false
         set(value) {
             if (field == value) return
             field = value
-            updatePins()
+            if (value) show() else hide()
         }
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
@@ -55,38 +55,50 @@ class QuestPinLayerManager(
         }
 
         override fun onVisibleQuestsInvalidated() {
-            clear()
-            onNewScreenPosition()
+            invalidate()
         }
     }
 
     private val questTypeOrderListener = object : QuestTypeOrderList.Listener {
         override fun onUpdated() {
             initializeQuestTypeOrders()
-            clear()
-            onNewScreenPosition()
+            invalidate()
         }
     }
 
     init {
         lifecycleScope = CoroutineScope(SupervisorJob())
-        visibleQuestsSource.addListener(visibleQuestsListener)
-        questTypeOrderList.addListener(questTypeOrderListener)
-
-        initializeQuestTypeOrders()
-        onNewScreenPosition()
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+        hide()
+        lifecycleScope.cancel()
+    }
+
+    private fun show() {
+        initializeQuestTypeOrders()
+        onNewScreenPosition()
+        visibleQuestsSource.addListener(visibleQuestsListener)
+        questTypeOrderList.addListener(questTypeOrderListener)
+    }
+
+    private fun hide() {
+        clear()
+        lifecycleScope.coroutineContext.cancelChildren()
         visibleQuestsSource.removeListener(visibleQuestsListener)
         questTypeOrderList.removeListener(questTypeOrderListener)
-        lifecycleScope.cancel()
+    }
+
+    private fun invalidate() {
+        clear()
+        onNewScreenPosition()
     }
 
     fun getQuestKey(properties: Map<String, String>): QuestKey? =
         properties.toQuestKey()
 
     fun onNewScreenPosition() {
+        if (!isActive) return
         val zoom = ctrl.cameraPosition.zoom
         if (zoom < TILES_ZOOM) return
         val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return
@@ -143,16 +155,14 @@ class QuestPinLayerManager(
     private fun clear() {
         synchronized(quests) { quests.clear() }
         synchronized(retrievedTiles) { retrievedTiles.clear() }
-        pinsMapComponent.clearPins()
+        pinsMapComponent.clear()
         lastDisplayedRect = null
     }
 
     private fun updatePins() {
-        if (isVisible) {
+        if (isActive) {
             val pins = synchronized(quests) { quests.values.flatten() }
             pinsMapComponent.showPins(pins)
-        } else {
-            pinsMapComponent.clearPins()
         }
     }
 
@@ -199,11 +209,11 @@ private const val QUEST_GROUP_OSM_NOTE = "osm_note"
 
 private fun QuestKey.toProperties(): Map<String, String> = when(this) {
     is OsmNoteQuestKey -> mapOf(
-        MARKER_QUEST_GROUP to QUEST_GROUP_OSM,
+        MARKER_QUEST_GROUP to QUEST_GROUP_OSM_NOTE,
         MARKER_NOTE_ID to noteId.toString()
     )
     is OsmQuestKey -> mapOf(
-        MARKER_QUEST_GROUP to QUEST_GROUP_OSM_NOTE,
+        MARKER_QUEST_GROUP to QUEST_GROUP_OSM,
         MARKER_ELEMENT_TYPE to elementType.name,
         MARKER_ELEMENT_ID to elementId.toString(),
         MARKER_QUEST_TYPE to questTypeName

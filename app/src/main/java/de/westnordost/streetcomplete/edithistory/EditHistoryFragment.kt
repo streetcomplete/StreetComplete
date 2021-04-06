@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
+import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_edit_history_list.*
 import kotlinx.coroutines.Dispatchers
@@ -23,12 +24,14 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
     interface Listener {
         /** Called when an edit has been selected and the undo-button appeared */
         fun onSelectedEdit(edit: Edit)
+        /** Called when the edit that was selected has been removed */
+        fun onDeletedSelectedEdit()
         /** Called when the edit history is empty now */
         fun onEditHistoryIsEmpty()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private val adapter = EditHistoryAdapter(this::onSelected, this::onUndo)
+    private val adapter = EditHistoryAdapter(this::onSelected, this::onSelectionDeleted, this::onUndo)
 
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(edit: Edit) { lifecycleScope.launch { adapter.onAdded(edit) } }
@@ -81,8 +84,17 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
         editHistorySource.removeListener(editHistoryListener)
     }
 
+    fun select(editKey: EditKey) {
+        val edit = editHistorySource.get(editKey) ?: return
+        adapter.select(edit)
+    }
+
     private fun onSelected(edit: Edit) {
         listener?.onSelectedEdit(edit)
+    }
+
+    private fun onSelectionDeleted() {
+        listener?.onDeletedSelectedEdit()
     }
 
     private fun onUndo(edit: Edit) {

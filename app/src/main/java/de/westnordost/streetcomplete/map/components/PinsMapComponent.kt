@@ -54,8 +54,8 @@ class PinsMapComponent(private val ctx: Context, private val ctrl: KtMapControll
         })
     }
 
-    /** Hide all pins */
-    fun clearPins() {
+    /** Hide pins */
+    private fun clearPins() {
         pinsLayer.clear()
     }
 

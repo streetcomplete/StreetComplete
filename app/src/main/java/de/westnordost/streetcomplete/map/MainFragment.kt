@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
 import de.westnordost.streetcomplete.controls.UndoButtonFragment
 import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -96,8 +97,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
     internal var mapFragment: QuestsMapFragment? = null
     internal var mainMenuButtonFragment: MainMenuButtonFragment? = null
 
-    private val bottomSheetFragment: Fragment? get() = childFragmentManagerOrNull?.findFragmentByTag(BOTTOM_SHEET)
-    private val editHistoryFragment: Fragment? get() = childFragmentManagerOrNull?.findFragmentByTag(EDIT_HISTORY)
+    private val bottomSheetFragment: Fragment? get() =
+        childFragmentManagerOrNull?.findFragmentByTag(BOTTOM_SHEET)
+
+    private val editHistoryFragment: EditHistoryFragment? get() =
+        childFragmentManagerOrNull?.findFragmentByTag(EDIT_HISTORY) as? EditHistoryFragment
 
     private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
 
@@ -281,6 +285,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
         else lifecycleScope.launch { showQuestDetails(questKey) }
     }
 
+    override fun onClickedEdit(editKey: EditKey) {
+        editHistoryFragment?.select(editKey)
+    }
+
     override fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double) {
         val f = bottomSheetFragment
         if (f is IsCloseableBottomSheet) {
@@ -358,7 +366,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
             val element = questController.getOsmElement(quest as OsmQuest)
             val geometry = quest.geometry
             if (element is Way && geometry is ElementPolylinesGeometry) {
-                mapFragment?.isShowingQuestPins = false
+                mapFragment?.pinMode = QuestsMapFragment.PinMode.NONE
                 showInBottomSheet(SplitWayFragment.create(osmQuestKey, element, geometry))
             }
         }
@@ -495,7 +503,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
     //region Edit History - Callbacks from the Edit History Sidebar
 
     override fun onSelectedEdit(edit: Edit) {
-        // TODO not yet implemented
+        mapFragment?.startFocusEdit(edit, mapOffsetWithOpenBottomSheet)
+    }
+
+    override fun onDeletedSelectedEdit() {
+        mapFragment?.endFocusEdit()
     }
 
     override fun onEditHistoryIsEmpty() {
@@ -724,10 +736,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
             replace(R.id.edit_history_container, EditHistoryFragment(), EDIT_HISTORY)
             addToBackStack(EDIT_HISTORY)
         }
+        mapFragment?.pinMode = QuestsMapFragment.PinMode.EDITS
     }
 
     private fun closeEditHistorySidebar() {
         childFragmentManager.popBackStack(EDIT_HISTORY, POP_BACK_STACK_INCLUSIVE)
+        mapFragment?.pinMode = QuestsMapFragment.PinMode.QUESTS
     }
 
     //endregion
@@ -810,7 +824,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         mapFragment.clearFocusQuest()
         mapFragment.show3DBuildings = true
-        mapFragment.isShowingQuestPins = true
+        mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
     }
 
     private fun unfreezeMap() {
@@ -820,7 +834,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mapFragment.isCompassMode = wasCompassMode
         mapFragment.endFocusQuest()
         mapFragment.show3DBuildings = true
-        mapFragment.isShowingQuestPins = true
+        mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
     }
 
     //endregion
