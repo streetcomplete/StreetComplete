@@ -126,7 +126,7 @@ import javax.inject.Singleton
         return result
     }
 
-    private fun getHidden(questId: Long): OsmNoteQuestHidden? {
+    fun getHidden(questId: Long): OsmNoteQuestHidden? {
         val timestamp = hiddenDB.getTimestamp(questId) ?: return null
         val note = noteSource.get(questId) ?: return null
         return OsmNoteQuestHidden(note, timestamp)

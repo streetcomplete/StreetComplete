@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+/** Shows a list of the edit history */
 class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
 
     @Inject internal lateinit var editHistorySource: EditHistorySource

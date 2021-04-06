@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +21,7 @@ import java.text.DateFormat
 import java.util.Collections
 import kotlin.collections.ArrayList
 
+/** Adapter to show the edit history in a list */
 class EditHistoryAdapter(
     val onSelected: (edit: Edit) -> Unit,
     val onUndo: (edit: Edit) -> Unit

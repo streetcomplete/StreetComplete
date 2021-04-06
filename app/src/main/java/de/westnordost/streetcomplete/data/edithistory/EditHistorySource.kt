@@ -8,6 +8,8 @@ interface EditHistorySource {
         fun onInvalidated()
     }
 
+    fun get(key: EditKey): Edit?
+
     fun getMostRecentUndoable(): Edit?
 
     fun getAll(): List<Edit>

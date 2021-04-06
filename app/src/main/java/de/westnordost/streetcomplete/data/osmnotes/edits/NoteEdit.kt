@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.NoteEditKey
 
 /** Contains all necessary information to create/comment on an OSM note. */
 data class NoteEdit(
@@ -34,6 +35,7 @@ data class NoteEdit(
     val imagesNeedActivation: Boolean
 ): Edit {
     override val isUndoable: Boolean get() = !isSynced
+    override val key: NoteEditKey get() = NoteEditKey(id)
 }
 
 enum class NoteEditAction {

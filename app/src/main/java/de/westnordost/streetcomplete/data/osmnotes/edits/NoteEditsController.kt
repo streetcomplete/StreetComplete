@@ -38,6 +38,9 @@ import javax.inject.Singleton
         onAddedEdit(edit)
     }
 
+    fun get(id: Long): NoteEdit? =
+        editsDB.get(id)
+
     override fun getAllUnsynced(): List<NoteEdit> =
         editsDB.getAllUnsynced()
 

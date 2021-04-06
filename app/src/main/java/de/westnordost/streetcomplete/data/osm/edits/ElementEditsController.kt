@@ -51,6 +51,9 @@ import javax.inject.Singleton
         add(edit)
     }
 
+    fun get(id: Long): ElementEdit? =
+        editsDB.get(id)
+
     fun getAll(): List<ElementEdit> =
         editsDB.getAll()
 

@@ -310,7 +310,7 @@ import javax.inject.Singleton
         return result
     }
 
-    private fun getHidden(key: OsmQuestKey): OsmQuestHidden? {
+    fun getHidden(key: OsmQuestKey): OsmQuestHidden? {
         val timestamp = hiddenDB.getTimestamp(key) ?: return null
         val pos = mapDataSource.getGeometry(key.elementType, key.elementId)?.center
         return createOsmQuestHidden(key, pos, timestamp)

@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -68,11 +67,16 @@ class EditHistoryController @Inject constructor(
             is ElementEdit -> elementEditsController.undo(edit)
             is NoteEdit -> noteEditsController.undo(edit)
             is OsmNoteQuestHidden -> noteQuestController.unhide(edit.note.id)
-            is OsmQuestHidden -> osmQuestController.unhide(
-                OsmQuestKey(edit.elementType, edit.elementId, edit.questType::class.simpleName!!)
-            )
+            is OsmQuestHidden -> osmQuestController.unhide(edit.questKey)
             else -> throw IllegalArgumentException()
         }
+    }
+
+    override fun get(key: EditKey): Edit? = when(key) {
+        is ElementEditKey -> elementEditsController.get(key.id)
+        is NoteEditKey -> noteEditsController.get(key.id)
+        is OsmNoteQuestHiddenKey -> noteQuestController.getHidden(key.osmNoteQuestKey.noteId)
+        is OsmQuestHiddenKey -> osmQuestController.getHidden(key.osmQuestKey)
     }
 
     override fun getMostRecentUndoable(): Edit? =
