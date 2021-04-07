@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours.adapter
 
 import android.content.Context
+import android.text.format.DateFormat
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -301,7 +302,7 @@ class RegularOpeningHoursAdapter(
         val startLabel = context.resources.getString(R.string.quest_openingHours_start_time)
         val endLabel = context.resources.getString(R.string.quest_openingHours_end_time)
 
-        TimeRangePickerDialog(context, startLabel, endLabel, timeRange, callback).show()
+        TimeRangePickerDialog(context, startLabel, endLabel, timeRange, DateFormat.is24HourFormat(context), callback).show()
     }
 
     companion object {

@@ -20,6 +20,7 @@ class TimeRangePickerDialog(
     startTimeLabel: CharSequence,
     endTimeLabel: CharSequence,
     timeRange: TimeRange?,
+    is24HourView: Boolean,
     private val callback: (TimeRange) -> Unit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
@@ -52,12 +53,12 @@ class TimeRangePickerDialog(
         )
 
         startPicker = inflater.inflate(R.layout.time_range_picker_start_picker, null) as TimePicker
-        startPicker.setIs24HourView(true)
+        startPicker.setIs24HourView(is24HourView)
 
         endPickerContainer = inflater.inflate(R.layout.time_range_picker_end_picker, null) as ViewGroup
         openEndCheckbox = endPickerContainer.findViewById(R.id.checkBox)
         endPicker = endPickerContainer.findViewById(R.id.picker)
-        endPicker.setIs24HourView(true)
+        endPicker.setIs24HourView(is24HourView)
         if (timeRange != null) {
             startPicker.currentHour = timeRange.start / 60
             startPicker.currentMinute = timeRange.start % 60
