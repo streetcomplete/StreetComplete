@@ -46,7 +46,16 @@ class TimeRangeTest {
     @Test fun `toString works`() {
         val openEnd = TimeRange(10, 80, true)
         assertEquals("00:10-01:20+", openEnd.toString())
-        assertEquals("00:10 till 01:20+", openEnd.toStringUsing(Locale.US, " till "))
+        assertEquals("00:10 till 01:20+", openEnd.toStringUsing(Locale.GERMANY, " till "))
         assertEquals("00:00+", TimeRange(0, 0, true).toString())
+
+        assertEquals(
+            "12:00 AM - 12:00 PM",
+            TimeRange(0, 720).toStringUsing(Locale.US, " - ")
+        )
+        assertEquals(
+            "8:25 AM - 8:25 PM",
+            TimeRange(505, 1225).toStringUsing(Locale.US, " - ")
+        )
     }
 }

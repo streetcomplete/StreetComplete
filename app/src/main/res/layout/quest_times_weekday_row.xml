@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/hoursLabel"
-        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintHorizontal_weight="2"
         android:gravity="end"
         tools:text="Mon - Tue"
         style="@style/TimesField"/>
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/weekdaysLabel"
         app:layout_constraintEnd_toStartOf="@id/deleteButton"
-        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintHorizontal_weight="3"
         tools:text="18:00 - 22:00+"
         style="@style/TimesField"/>
 
