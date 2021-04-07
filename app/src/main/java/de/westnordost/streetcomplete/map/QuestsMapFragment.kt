@@ -168,7 +168,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     fun clearFocusQuest() {
         pinsMapComponent?.clearSelectedPins()
         geometryMapComponent?.clearGeometry()
-        clearMarkersForCurrentQuest()
+        pointMarkersMapComponent?.clear()
     }
 
     fun endFocusQuest() {
@@ -187,16 +187,17 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         pointMarkersMapComponent?.delete(pos)
     }
 
-    private fun clearMarkersForCurrentQuest() {
-        pointMarkersMapComponent?.clear()
-    }
-
     /* --------------------- Switching between quests and edit history pins --------------------- */
 
     private fun updatePinMode() {
         /* both managers use the same resource (PinsMapComponent), so the newly visible manager
            may only be activated after the old has been deactivated
          */
+        pointMarkersMapComponent?.clear()
+        pinsMapComponent?.clearSelectedPins()
+        geometryMapComponent?.endFocusGeometry(returnToPreviousPosition = false)
+        geometryMapComponent?.clearGeometry()
+
         when (pinMode) {
             PinMode.QUESTS -> {
                 editHistoryPinsManager?.isActive = false
