@@ -9,17 +9,17 @@ v32.0-alpha1: |
   <h3>🔙️ Superpowered Undo</h3>
   <ul>
   <li>
-    While an edit hasn't been uploaded yet (auto-sync off), you can <b>undo any edit</b>: <br/>
+    You can now <b>undo any edit</b> that hasn't been uploaded yet: <br/>
     Quest answers, split ways, deleted places, hid quests, created notes and note comments (#1029, #2616)
   </li>
-  <li>You can now look at your <b>edit history</b> and undo any recent edit, not just the last one</li>
+  <li>You can now look at your <b>edit history</b> and undo any recent edit in any order, not just the last one</li>
   <li>It is now shown what exactly is tagged for each edit in the edit history</li>
   </ul>
   <h3>⛰️ Improved usability and offline mode</h3>
   <ul>
   <li>
   Immediately unlock new quests based on the one you just solved, <b>also when
-  offline</b>. This has been a much requested feature but was simply not possible with the old
+  offline</b>. This has been a much requested feature but was simply not possible with the previous
   architecture (#1369, #1510, #1550, #1826, #2254, #2438, #2473, #2474, #2676, ...)
   </li>
   <li>
