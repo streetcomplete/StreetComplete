@@ -10,8 +10,11 @@ import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.icon
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -136,14 +139,22 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     fun startFocusEdit(edit: Edit, offset: RectF) {
         pinsMapComponent?.showSelectedPins(edit.icon, listOf(edit.position))
         geometryMapComponent?.beginFocusGeometry(ElementPointGeometry(edit.position), offset)
-        /* TODO if edits also persisted the geometry of the element at the time the edit was
-        *  created, it could be shown here. */
+        geometryMapComponent?.showGeometry(edit.getGeometry())
     }
 
     fun endFocusEdit() {
         pinsMapComponent?.clearSelectedPins()
         geometryMapComponent?.endFocusGeometry(returnToPreviousPosition = false)
+        geometryMapComponent?.clearGeometry()
     }
+
+    private fun Edit.getGeometry(): ElementGeometry = when(this) {
+        /* TODO if edits also persisted the geometry of the element at the time the edit was
+        *   created, it could be shown here. */
+        is ElementEdit -> mapDataSource.getGeometry(elementType, elementId)
+        is OsmQuestHidden -> mapDataSource.getGeometry(elementType, elementId)
+        else -> null
+    } ?: ElementPointGeometry(position)
 
     /* --------------------------------- Focusing on quest -------------------------------------- */
 
