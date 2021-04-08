@@ -5,7 +5,8 @@ import de.westnordost.streetcomplete.testutils.any
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.*
+import org.mockito.Mockito.verify
+import org.mockito.Mockito.never
 
 class NoteEditsControllerTest {
 
@@ -35,7 +36,7 @@ class NoteEditsControllerTest {
         ctrl.syncFailed(edit)
 
         verify(db).delete(1)
-        verify(listener).onDeletedEdit(edit)
+        verify(listener).onDeletedEdits(eq(listOf(edit)))
     }
 
     @Test fun synced() {

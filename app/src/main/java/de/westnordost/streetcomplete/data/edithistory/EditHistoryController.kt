@@ -40,7 +40,7 @@ class EditHistoryController @Inject constructor(
     private val osmNoteEditsListener = object : NoteEditsSource.Listener {
         override fun onAddedEdit(edit: NoteEdit) { onAdded(edit) }
         override fun onSyncedEdit(edit: NoteEdit) { onSynced(edit) }
-        override fun onDeletedEdit(edit: NoteEdit) { onDeleted(listOf(edit)) }
+        override fun onDeletedEdits(edits: List<NoteEdit>) { onDeleted(edits) }
     }
 
     private val osmNoteQuestHiddenListener = object : OsmNoteQuestController.HideOsmNoteQuestListener {

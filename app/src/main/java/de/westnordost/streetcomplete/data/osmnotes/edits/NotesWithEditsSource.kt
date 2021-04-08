@@ -55,13 +55,11 @@ import javax.inject.Singleton
                in NoteController.Listener any moment now */
         }
 
-        override fun onDeletedEdit(edit: NoteEdit) {
-            if (edit.action == CREATE) {
-                callOnUpdated(deleted = listOf(edit.noteId))
-            } else {
-                val note = get(edit.noteId) ?: return
-                callOnUpdated(updated = listOf(note))
-            }
+        override fun onDeletedEdits(edits: List<NoteEdit>) {
+            callOnUpdated(
+                updated = edits.filter { it.action != CREATE }.mapNotNull { get(it.noteId) },
+                deleted = edits.filter { it.action == CREATE }.map { it.noteId }
+            )
         }
     }
 

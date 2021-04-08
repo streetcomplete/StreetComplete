@@ -88,12 +88,16 @@ import javax.inject.Singleton
         return delete(edit)
     }
 
-    @Synchronized fun deleteSyncedOlderThan(timestamp: Long): Int =
-        editsDB.deleteSyncedOlderThan(timestamp)
+    @Synchronized fun deleteSyncedOlderThan(timestamp: Long): Int {
+        val edits = editsDB.getSyncedOlderThan(timestamp)
+        val result = editsDB.deleteAll(edits.map { it.id })
+        onDeletedEdits(edits)
+        return result
+    }
 
     private fun delete(edit: NoteEdit): Boolean {
         if (editsDB.delete(edit.id)) {
-            onDeletedEdit(edit)
+            onDeletedEdits(listOf(edit))
             return false
         }
         return true
@@ -116,7 +120,7 @@ import javax.inject.Singleton
         listeners.forEach { it.onSyncedEdit(edit) }
     }
 
-    private fun onDeletedEdit(edit: NoteEdit) {
-        listeners.forEach { it.onDeletedEdit(edit) }
+    private fun onDeletedEdits(edits: List<NoteEdit>) {
+        listeners.forEach { it.onDeletedEdits(edits) }
     }
 }

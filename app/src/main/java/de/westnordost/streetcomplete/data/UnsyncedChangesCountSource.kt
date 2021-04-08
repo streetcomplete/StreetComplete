@@ -35,7 +35,7 @@ import javax.inject.Singleton
     private val noteEditsListener = object : NoteEditsSource.Listener {
         override fun onAddedEdit(edit: NoteEdit) { if (!edit.isSynced) onUpdate(+1) }
         override fun onSyncedEdit(edit: NoteEdit) { onUpdate(-1) }
-        override fun onDeletedEdit(edit: NoteEdit) { if (!edit.isSynced) onUpdate(-1) }
+        override fun onDeletedEdits(edits: List<NoteEdit>) { onUpdate(-edits.filter { !it.isSynced }.size) }
     }
 
     private val elementEditsListener = object : ElementEditsSource.Listener {

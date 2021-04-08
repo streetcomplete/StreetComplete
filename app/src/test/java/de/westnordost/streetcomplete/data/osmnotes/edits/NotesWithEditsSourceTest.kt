@@ -235,7 +235,7 @@ class NotesWithEditsSourceTest {
 
     //region NoteEditsSource.Listener
 
-    @Test fun `onDeletedEdit relays updated note`() {
+    @Test fun `onDeletedEdits relays updated note`() {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
@@ -244,12 +244,12 @@ class NotesWithEditsSourceTest {
 
         on(noteController.get(1)).thenReturn(note)
 
-        noteEditsListener.onDeletedEdit(edit)
+        noteEditsListener.onDeletedEdits(listOf(edit))
 
         checkListenerCalledWith(listener, updated = listOf(note))
     }
 
-    @Test fun `onDeletedEdit relays deleted note`() {
+    @Test fun `onDeletedEdits relays deleted note`() {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
@@ -257,7 +257,7 @@ class NotesWithEditsSourceTest {
 
         on(noteController.get(1)).thenReturn(null)
 
-        noteEditsListener.onDeletedEdit(edit)
+        noteEditsListener.onDeletedEdits(listOf(edit))
 
         checkListenerCalledWith(listener, deleted = listOf(1L))
     }

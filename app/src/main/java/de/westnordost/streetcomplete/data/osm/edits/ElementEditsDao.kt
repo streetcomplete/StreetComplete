@@ -73,8 +73,8 @@ class ElementEditsDao @Inject constructor(
     fun deleteAll(ids: List<Long>): Int =
         db.delete(NAME, "$ID in (${ids.joinToString(",")})")
 
-    fun deleteSyncedOlderThan(timestamp: Long): Int =
-        db.delete(NAME, "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp")
+    fun getSyncedOlderThan(timestamp: Long): List<ElementEdit> =
+        db.query(NAME, where = "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp") { it.toElementEdit() }
 
     fun updateElementId(elementType: Element.Type, oldElementId: Long, newElementId: Long): Int =
         db.update(

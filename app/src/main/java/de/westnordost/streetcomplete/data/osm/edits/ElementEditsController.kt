@@ -68,8 +68,12 @@ import javax.inject.Singleton
 
     /** Delete old synced (aka uploaded) edits older than the given timestamp. Used to clear
      *  the undo history */
-    @Synchronized fun deleteSyncedOlderThan(timestamp: Long): Int =
-        editsDB.deleteSyncedOlderThan(timestamp)
+    fun deleteSyncedOlderThan(timestamp: Long): Int {
+        val edits = editsDB.getSyncedOlderThan(timestamp)
+        val result = editsDB.deleteAll(edits.map { it.id })
+        onDeletedEdits(edits)
+        return result
+    }
 
     override fun getUnsyncedCount(): Int =
         editsDB.getUnsyncedCount()

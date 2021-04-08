@@ -132,7 +132,7 @@ class EditHistoryControllerTest {
 
     @Test fun `relays removed note edit`() {
         val e = noteEdit()
-        noteEditsListener.onDeletedEdit(e)
+        noteEditsListener.onDeletedEdits(listOf(e))
         verify(listener).onDeleted(eq(listOf(e)))
     }
 

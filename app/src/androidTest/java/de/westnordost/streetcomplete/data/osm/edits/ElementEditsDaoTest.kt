@@ -168,15 +168,14 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertEquals(2, dao.getUnsyncedCount())
     }
 
-    @Test fun deleteSyncedOlderThan() {
+    @Test fun getSyncedOlderThan() {
         val oldEnough = updateTags(timestamp = 500, isSynced = true)
         val tooYoung = updateTags(timestamp = 1000, isSynced = true)
         val notSynced = updateTags(timestamp = 500, isSynced = false)
 
         dao.addAll(oldEnough, tooYoung, notSynced)
 
-        assertEquals(1, dao.deleteSyncedOlderThan(1000))
-        assertTrue(dao.getAll().containsExactlyInAnyOrder(listOf(tooYoung, notSynced)))
+        assertEquals(listOf(oldEnough), dao.getSyncedOlderThan(1000))
     }
 
     @Test fun updateElementId() {

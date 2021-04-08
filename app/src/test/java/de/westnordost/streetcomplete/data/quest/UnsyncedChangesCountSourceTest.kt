@@ -107,7 +107,7 @@ class UnsyncedChangesCountSourceTest {
     }
 
     @Test fun `remove note edit triggers listener`() {
-        noteEditsListener.onDeletedEdit(noteEdit())
+        noteEditsListener.onDeletedEdits(listOf(noteEdit()))
         verify(listener).onDecreased()
     }
 

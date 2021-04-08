@@ -8,7 +8,7 @@ interface NoteEditsSource {
     interface Listener {
         fun onAddedEdit(edit: NoteEdit)
         fun onSyncedEdit(edit: NoteEdit)
-        fun onDeletedEdit(edit: NoteEdit)
+        fun onDeletedEdits(edits: List<NoteEdit>)
     }
 
     /** Count of unsynced a.k.a to-be-uploaded edits */

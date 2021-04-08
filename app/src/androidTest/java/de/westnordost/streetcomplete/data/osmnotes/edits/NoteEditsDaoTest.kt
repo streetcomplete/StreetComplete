@@ -39,6 +39,24 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
         assertNull(dao.get(edit.id))
     }
 
+    @Test fun deleteAll() {
+        val e1 = edit(1)
+        val e2 = edit(2)
+        val e3 = edit(3)
+
+        dao.addAll(e1, e2, e3)
+
+        assertNotNull(dao.get(1))
+        assertNotNull(dao.get(2))
+        assertNotNull(dao.get(3))
+
+        dao.deleteAll(listOf(1,2,3))
+
+        assertNull(dao.get(1))
+        assertNull(dao.get(2))
+        assertNull(dao.get(3))
+    }
+
     @Test fun getAll() {
         val e1 = edit(timestamp = 100)
         val e2 = edit(timestamp = 10)
@@ -173,7 +191,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
         assertEquals(2, dao.getUnsyncedCount())
     }
 
-    @Test fun deleteSyncedOlderThan() {
+    @Test fun getSyncedOlderThan() {
         val oldEnough = edit(timestamp = 500, isSynced = true)
         val tooYoung = edit(timestamp = 1000, isSynced = true)
         val notSynced = edit(timestamp = 500, isSynced = false)
@@ -181,8 +199,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
 
         dao.addAll(oldEnough, tooYoung, notSynced, imageNotActivatedSynced)
 
-        assertEquals(1, dao.deleteSyncedOlderThan(1000))
-        assertTrue(dao.getAll().containsExactlyInAnyOrder(listOf(tooYoung, notSynced, imageNotActivatedSynced)))
+        assertEquals(listOf(oldEnough), dao.getSyncedOlderThan(1000))
     }
 
     @Test fun updateNoteId() {
