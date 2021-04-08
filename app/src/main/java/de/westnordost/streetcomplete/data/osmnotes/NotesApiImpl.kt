@@ -5,7 +5,6 @@ import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.notes.Note as OsmApiNote
 import de.westnordost.osmapi.notes.NoteComment as OsmApiNoteComment
 import de.westnordost.osmapi.notes.NotesDao
-import de.westnordost.osmapi.notes.QueryNotesFilters
 import de.westnordost.osmapi.user.User as OsmApiUser
 import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
 import de.westnordost.osmapi.map.data.LatLon as OsmApiLatLon
@@ -22,19 +21,12 @@ class NotesApiImpl(osm: OsmConnection) : NotesApi {
 
     override fun comment(id: Long, text: String): Note = notesDao.comment(id, text).toNote()
 
-    override fun reopen(id: Long, reason: String?): Note = notesDao.reopen(id, reason).toNote()
-
-    override fun close(id: Long, reason: String?): Note = notesDao.close(id, reason).toNote()
-
     override fun get(id: Long): Note? = notesDao.get(id)?.toNote()
 
-    override fun getAll(bounds: BoundingBox, search: String?, handler: Handler<Note>,
+    override fun getAll(bounds: BoundingBox, handler: Handler<Note>,
                         limit: Int, hideClosedNoteAfter: Int) =
-        notesDao.getAll(bounds.toOsmApiBoundingBox(), search, handler.toOsmApiNoteHandler(),
+        notesDao.getAll(bounds.toOsmApiBoundingBox(), null, handler.toOsmApiNoteHandler(),
             limit, hideClosedNoteAfter)
-
-    override fun find(handler: Handler<Note>, filters: QueryNotesFilters?) =
-        notesDao.find(handler.toOsmApiNoteHandler(), filters)
 }
 
 private fun OsmApiNote.toNote() = Note(
