@@ -154,7 +154,9 @@ class EditHistoryAdapter(
             timeTextContainer.isGone = aboveTimeStr == timeStr
             timeText.text = timeStr
 
-            clickArea.isEnabled = edit.isUndoable
+            val res = itemView.context.resources
+            val bgColor = res.getColor(if (edit.isSynced == true) R.color.slightly_greyed_out else R.color.background)
+            itemView.setBackgroundColor(bgColor)
             clickArea.isSelected = edit == selectedEdit
             clickArea.setOnClickListener {
                 if (selectedEdit == edit) {
