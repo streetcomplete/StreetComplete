@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.common.errors.*
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -58,5 +57,5 @@ interface NotesApi {
      * @throws OsmQueryTooBigException if the bounds area is too large
      * @throws IllegalArgumentException if the bounds cross the 180th meridian
      */
-    fun getAll(bounds: BoundingBox, handler: Handler<Note>, limit: Int, hideClosedNoteAfter: Int)
+    fun getAll(bounds: BoundingBox, handler: (Note) -> Unit, limit: Int, hideClosedNoteAfter: Int)
 }

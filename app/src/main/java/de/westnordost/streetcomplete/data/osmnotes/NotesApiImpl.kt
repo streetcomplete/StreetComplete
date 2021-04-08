@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.osmapi.OsmConnection
-import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.notes.Note as OsmApiNote
 import de.westnordost.osmapi.notes.NoteComment as OsmApiNoteComment
 import de.westnordost.osmapi.notes.NotesDao
@@ -23,9 +22,9 @@ class NotesApiImpl(osm: OsmConnection) : NotesApi {
 
     override fun get(id: Long): Note? = notesDao.get(id)?.toNote()
 
-    override fun getAll(bounds: BoundingBox, handler: Handler<Note>,
+    override fun getAll(bounds: BoundingBox, handler: (Note) -> Unit,
                         limit: Int, hideClosedNoteAfter: Int) =
-        notesDao.getAll(bounds.toOsmApiBoundingBox(), null, handler.toOsmApiNoteHandler(),
+        notesDao.getAll(bounds.toOsmApiBoundingBox(), null, { handler(it.toNote()) },
             limit, hideClosedNoteAfter)
 }
 
@@ -44,8 +43,6 @@ private fun OsmApiNote.Status.toNoteStatus() = when(this) {
     OsmApiNote.Status.HIDDEN -> Note.Status.HIDDEN
     else -> throw NoSuchFieldError()
 }
-
-private fun Handler<Note>.toOsmApiNoteHandler() = Handler<OsmApiNote> { note -> handle(note.toNote()) }
 
 private fun OsmApiNoteComment.toNoteComment() = NoteComment(
     date.time,
