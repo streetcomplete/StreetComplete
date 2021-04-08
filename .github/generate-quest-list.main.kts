@@ -177,10 +177,10 @@ fun getQuestIcon(questName: String, questFileContent: String): File {
 }
 
 @Serializable
-data class ApiResult(val parse: ApiWikiPage)
+data class ApiWikiPage(val title: String, val pageid: Long, val wikitext: String)
 
 @Serializable
-data class ApiWikiPage(val title: String, val pageid: Long, val wikitext: String)
+data class ApiResult(val parse: ApiWikiPage)
 
 fun getWikiTableContent(): String {
     val page = "StreetComplete/Quests"
