@@ -58,10 +58,10 @@ public class KryoSerializer implements Serializer
 			StringMapEntryAdd.class,
 			StringMapEntryDelete.class,
 			StringMapEntryModify.class,
-			NoteComment.class,
-			NoteComment.Action.class,
+			NoteComment.class, // TODO(Flo): Replace this with Object.class
+			NoteComment.Action.class, // TODO(Flo): Replace this with Object.class
 			Date.class,
-			User.class,
+			User.class, // TODO(Flo): Replace this with Object.class
 			CircularSection.class,
 			TimeRange.class,
 			Weekdays.class,
@@ -82,7 +82,10 @@ public class KryoSerializer implements Serializer
 			SpatialPartsOfElement.class,
 			SpatialPartsOfNode.class,
 			SpatialPartsOfWay.class,
-			SpatialPartsOfRelation.class
+			SpatialPartsOfRelation.class,
+			de.westnordost.streetcomplete.data.osmnotes.NoteComment.class,
+			de.westnordost.streetcomplete.data.osmnotes.NoteComment.Action.class,
+			de.westnordost.streetcomplete.data.user.User.class
 	};
 
 

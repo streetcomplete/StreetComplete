@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.Node
+import de.westnordost.osmapi.map.data.Relation
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry

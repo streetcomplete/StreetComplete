@@ -11,8 +11,8 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.user.User
 
-
-class NotesApiImpl(osm: OsmConnection) : NotesApi {
+// TODO(Flo): Make parameter non-nullable
+open class NotesApiImpl(osm: OsmConnection?) : NotesApi {
     private val notesDao: NotesDao = NotesDao(osm)
 
     override fun create(pos: LatLon, text: String): Note =
@@ -62,9 +62,16 @@ private fun OsmApiNoteComment.Action.toNoteCommentAction() = when(this) {
 
 private fun OsmApiUser.toUser() = User(id, displayName)
 
-private fun LatLon.toOsmLatLon() = OsmLatLon(latitude, longitude)
+// TODO(Flo): make this private
+fun LatLon.toOsmLatLon() = OsmLatLon(latitude, longitude)
 
-private fun OsmApiLatLon.toLatLon() = LatLon(latitude, longitude)
+// TODO(Flo): make this private
+fun OsmApiLatLon.toLatLon() = LatLon(latitude, longitude)
 
-private fun BoundingBox.toOsmApiBoundingBox() =
+// TODO(Flo): make this private
+fun BoundingBox.toOsmApiBoundingBox() =
     OsmApiBoundingBox(min.latitude, min.longitude, max.latitude, max.longitude)
+
+// TODO(Flo): make this private
+fun OsmApiBoundingBox.toBoundingBox() =
+    BoundingBox(minLatitude, minLongitude, maxLatitude, maxLongitude)

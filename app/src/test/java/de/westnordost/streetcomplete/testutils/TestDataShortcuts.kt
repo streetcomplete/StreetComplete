@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.testutils
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
@@ -12,12 +9,16 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
+import de.westnordost.streetcomplete.data.osmnotes.Note
+import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
+import de.westnordost.streetcomplete.data.user.User
 import java.util.*
 
 fun p(lat: Double = 0.0, lon: Double = 0.0) = OsmLatLon(lat, lon)
@@ -65,13 +66,7 @@ fun note(
     position: LatLon = p(0.0, 0.0),
     timestamp: Long = 0,
     comments: List<NoteComment> = listOf(comment("test", NoteComment.Action.OPENED))
-) = Note().also {
-    it.id = id
-    it.comments = comments
-    it.dateCreated = Date(timestamp)
-    it.position = position
-    it.status = Note.Status.OPEN
-}
+) = Note(position.toLatLon(), id, timestamp, null, Note.Status.OPEN, comments)
 
 fun comment(
     text: String,
@@ -79,12 +74,7 @@ fun comment(
     timestamp: Long = 0,
     userId: Long? = null,
     userName: String? = null
-) = NoteComment().also {
-    it.text = text
-    it.action = action
-    it.user = userId?.let { User(userId, userName) }
-    it.date = Date(timestamp)
-}
+) = NoteComment(timestamp, action, text, User.from(userId, userName))
 
 fun noteEdit(
     id: Long = 1,

@@ -1,15 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.data.NotesApi
-import de.westnordost.osmapi.common.Handler
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.notes.Note
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.testutils.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
-import java.util.concurrent.atomic.AtomicBoolean
 
 class NotesDownloaderTest {
     private lateinit var notesApi: NotesApi
@@ -31,10 +27,10 @@ class NotesDownloaderTest {
     }
 }
 
-private class TestListBasedNotesApi(val notes: List<Note>) :  NotesApi(null) {
-    override fun getAll(bounds: BoundingBox, handler: Handler<Note>, limit: Int, hideClosedNoteAfter: Int) {
+private class TestListBasedNotesApi(val notes: List<Note>) : NotesApiImpl(null) {
+    override fun getAll(bounds: BoundingBox, handler: (Note) -> Unit, limit: Int, hideClosedNoteAfter: Int) {
         for (note in notes) {
-            handler.handle(note)
+            handler(note)
         }
     }
 }

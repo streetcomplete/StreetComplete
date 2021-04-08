@@ -5,6 +5,8 @@ import dagger.Provides
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.map.LightweightOsmMapDataFactory
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osmnotes.NotesApi
+import de.westnordost.streetcomplete.data.osmnotes.NotesApiImpl
 import de.westnordost.streetcomplete.data.user.OAuthStore
 import oauth.signpost.OAuthConsumer
 import javax.inject.Singleton
@@ -26,7 +28,7 @@ object OsmApiModule {
 
     @Provides fun userDao(osm: OsmConnection): UserApi = UserApi(osm)
 
-    @Provides fun notesDao(osm: OsmConnection): NotesApi = NotesApi(osm)
+    @Provides fun notesDao(osm: OsmConnection): NotesApi = NotesApiImpl(osm)
 
     @Provides fun mapDataDao(osm: OsmConnection): MapDataApi {
         // generally we are not interested in certain data returned by the OSM API, so we use a

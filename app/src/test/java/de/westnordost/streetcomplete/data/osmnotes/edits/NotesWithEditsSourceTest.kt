@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NoteComment
+import de.westnordost.streetcomplete.data.osmnotes.Note
+import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -396,9 +396,9 @@ private fun checkNotesEqual(expected: Collection<Note>, actual: Collection<Note>
 private fun checkNoteEqual(expected: Note, actual: Note) {
     assertEquals(expected.id, actual.id)
     assertEquals(expected.position, actual.position)
-    assertEquals(expected.dateCreated.time, actual.dateCreated.time)
+    assertEquals(expected.timestampCreated, actual.timestampCreated)
     assertEquals(expected.status, actual.status)
-    assertEquals(expected.dateClosed, actual.dateClosed)
+    assertEquals(expected.timestampClosed, actual.timestampClosed)
     checkCommentsEqual(expected.comments, actual.comments)
 }
 
@@ -410,13 +410,13 @@ private fun checkCommentsEqual(expected: List<NoteComment>, actual: List<NoteCom
         val a = actual[i]
         assertEquals(e.text, a.text)
         assertEquals(e.action, a.action)
-        assertEquals(e.date.time, a.date.time)
+        assertEquals(e.timestamp, a.timestamp)
         if (e.user == null) {
             assertNull(a.user)
         }
         else {
-            assertEquals(e.user.id, a.user.id)
-            assertEquals(e.user.displayName, a.user.displayName)
+            assertEquals(e.user?.id, a.user?.id)
+            assertEquals(e.user?.displayName, a.user?.displayName)
         }
     }
 }

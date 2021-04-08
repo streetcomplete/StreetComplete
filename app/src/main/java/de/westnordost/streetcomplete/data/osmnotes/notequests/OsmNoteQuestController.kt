@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osmnotes.Note
+import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.user.UserStore
@@ -91,7 +92,7 @@ import javax.inject.Singleton
 
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
         if(note.shouldShowAsQuest(userStore.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
-            OsmNoteQuest(note.id, note.position)
+            OsmNoteQuest(note.id, note.position.toOsmLatLon())
         else null
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
@@ -224,13 +225,13 @@ private fun Note.probablyContainsQuestion(): Boolean {
    */
     val questionMarksAroundTheWorld = "[?;;؟՞፧？]"
 
-    val text = comments?.firstOrNull()?.text
+    val text = comments.firstOrNull()?.text
     return text?.matches(".*$questionMarksAroundTheWorld.*".toRegex()) ?: false
 }
 
 private fun Note.containsSurveyRequiredMarker(): Boolean {
     val surveyRequiredMarker = "#surveyme"
-    return comments.any { it.text?.matches(".*$surveyRequiredMarker.*".toRegex()) == true }
+    return comments.any { it.text.matches(".*$surveyRequiredMarker.*".toRegex()) }
 }
 
 private fun Note.containsCommentFromUser(userId: Long): Boolean =

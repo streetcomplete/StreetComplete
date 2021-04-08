@@ -3,7 +3,11 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.Node
+import de.westnordost.osmapi.map.data.Relation
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator

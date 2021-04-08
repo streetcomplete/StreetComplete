@@ -6,7 +6,9 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.osmapi.map.data.Way
-import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.osmapi.map.data.Element.Type.NODE
+import de.westnordost.osmapi.map.data.Element.Type.RELATION
+import de.westnordost.osmapi.map.data.Element.Type.WAY
 
 /** Stores OSM elements. Actually, stores nothing, but delegates the work to a NodeDao, WayDao and
  *  a RelationDao. :-P */

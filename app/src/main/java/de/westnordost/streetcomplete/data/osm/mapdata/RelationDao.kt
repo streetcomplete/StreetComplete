@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.Relation
+import de.westnordost.osmapi.map.data.RelationMember
+import de.westnordost.osmapi.map.data.OsmRelation
+import de.westnordost.osmapi.map.data.OsmRelationMember
 import de.westnordost.streetcomplete.data.Database
 
 import javax.inject.Inject

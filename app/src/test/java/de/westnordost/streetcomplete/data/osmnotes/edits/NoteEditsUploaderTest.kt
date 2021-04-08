@@ -2,9 +2,11 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.streetcomplete.data.NotesApi
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
+import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.testutils.any
@@ -77,7 +79,7 @@ class NoteEditsUploaderTest {
 
         upload()
 
-        verify(notesApi).create(pos, "abc")
+        verify(notesApi).create(pos.toLatLon(), "abc")
         verify(noteController).put(note)
         verify(noteEditsController).synced(edit, note)
         verifyNoInteractions(imageUploader)
@@ -175,7 +177,7 @@ class NoteEditsUploaderTest {
 
         upload()
 
-        verify(notesApi).create(pos, "test\n\nAttached photo(s):\nx\ny\nz")
+        verify(notesApi).create(pos.toLatLon(), "test\n\nAttached photo(s):\nx\ny\nz")
         verify(noteController).put(note)
         verify(noteEditsController).synced(edit, note)
         verify(noteEditsController).imagesActivated(1L)

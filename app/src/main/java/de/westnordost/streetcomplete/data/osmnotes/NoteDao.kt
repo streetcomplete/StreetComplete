@@ -5,16 +5,14 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 
 import java.util.ArrayList
-import java.util.Date
 
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon as SCLatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CLOSED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.COMMENTS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CREATED
@@ -52,8 +50,8 @@ class NoteDao @Inject constructor(
                 it.position.latitude,
                 it.position.longitude,
                 it.status.name,
-                it.dateCreated.time,
-                it.dateClosed?.time,
+                it.timestampCreated,
+                it.timestampClosed,
                 serializer.toBytes(ArrayList(it.comments)),
                 currentTimeMillis()
             ) }
@@ -87,20 +85,20 @@ class NoteDao @Inject constructor(
         LATITUDE to position.latitude,
         LONGITUDE to position.longitude,
         STATUS to status.name,
-        CREATED to dateCreated.time,
-        CLOSED to dateClosed?.time,
+        CREATED to timestampCreated,
+        CLOSED to timestampClosed,
         COMMENTS to serializer.toBytes(ArrayList(comments)),
         LAST_SYNC to currentTimeMillis()
     )
 
-    private fun CursorPosition.toNote() = Note().also { n ->
-        n.id = getLong(ID)
-        n.position = OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE))
-        n.dateCreated = Date(getLong(CREATED))
-        n.dateClosed = getLongOrNull(CLOSED)?.let { Date(it) }
-        n.status = Note.Status.valueOf(getString(STATUS))
-        n.comments = serializer.toObject<ArrayList<NoteComment>>(getBlob(COMMENTS))
-    }
+    private fun CursorPosition.toNote() = Note(
+        SCLatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
+        getLong(ID),
+        getLong(CREATED),
+        getLongOrNull(CLOSED),
+        Note.Status.valueOf(getString(STATUS)),
+        serializer.toObject<ArrayList<NoteComment>>(getBlob(COMMENTS))
+    )
 
     private fun inBoundsSql(bbox: BoundingBox): String = """
         ($LATITUDE BETWEEN ${bbox.minLatitude} AND ${bbox.maxLatitude}) AND
