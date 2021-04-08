@@ -190,7 +190,7 @@ fun getWikiTableContent(): String {
 
     val jsonString = apiUrl.openStream().bufferedReader().use { it.readText() }
 
-    return Json.decodeFromString(ApiResult.serializer(), jsonString).parse.wikitext
+    return Json.decodeFromString<ApiResult>(jsonString).parse.wikitext
 }
 
 fun parseWikiTable(wikiPageContent: String): List<WikiQuest> {
