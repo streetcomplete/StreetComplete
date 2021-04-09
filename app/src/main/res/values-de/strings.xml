@@ -407,7 +407,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
 Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber sie nicht speziell für Rollstuhlfahrer angepasst ist."</string>
     <string name="map_btn_create_note">"Neue Notiz erstellen"</string>
     <string name="create_new_note_unprecise">"Zoome weiter herein, um eine Notiz zu erstellen"</string>
-    <string name="create_new_note_description">"Erstelle hier eine Notiz, um anderen Mappern Bescheid zu geben, dass es hier ein Problem gibt. Die Position der Notiz kann durch Bewegen der Karte angepasst werden:"</string>
+    <string name="create_new_note_description">"Erstelle hier eine Notiz, um anderen Mappern ein Problem zu melden. Bewege die Karte um die Position der Notiz anzupassen:"</string>
     <string name="pref_title_quests_invalidation">"Aufgabencache ungültig machen"</string>
     <string name="pref_title_quests_invalidation_summary">"Nützlich, wenn du denkst, dass einige Aufgaben veraltet sind"</string>
     <string name="invalidate_confirmation">"Ungültig machen"</string>
@@ -641,7 +641,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_ferry_motor_vehicle_title">"Kann man mit Kraftfahrzeugen diese Fährverbindung nutzen?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Ein Foto macht eine Notiz oft viel hilfreicher."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Wann wird dieser %s Postkasten geleert?"</string>
-    <string name="create_new_note_hint">"Am besten die Notiz in der lokal gesprochenen Sprache oder ansonsten auf Englisch verfassen."</string>
+    <string name="create_new_note_hint">"Verfasse sie möglichst in der lokal gesprochenen Sprache, ansonsten auf Englisch."</string>
     <string name="quest_leafType_title">"Haben die Bäume hier Nadeln oder Blätter?"</string>
     <string name="quest_leaf_type_needles">"Nadeln"</string>
     <string name="quest_leaf_type_broadleaved">"Blätter"</string>

@@ -968,7 +968,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="action_reset">"Alaphelyzetbe állítás"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Nyomd hosszan, majd mozgasd a kérdést, hogy átrendezd a prioritását a térképen való megjelenítéshez."</string>
+    <string name="reorder_quest_priority_hint">"Nyomd hosszan, majd mozgasd a kérdést a térképen való megjelenítés prioritásának módosításához."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Visszavonás"</string>
@@ -1312,7 +1312,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_apartments">"Társasház"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_detached">"Családi ház (UK)"</string>
+    <string name="quest_buildingType_detached">"Családi ház"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_detached_description">"Egyedül álló (nem iker-) ház"</string>
@@ -1332,7 +1332,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Lakóhajó"</string>
-    <string name="quest_buildingType_bungalow">"Bungaló"</string>
+    <string name="quest_buildingType_bungalow">"Kunyhó"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Rögzített lakókocsi"</string>
@@ -1599,7 +1599,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_wheelchairAccess_outside_title">"Akadálymentes ez a hely?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_button_title">"Van ezen a jelzőlámpán olyan gomb, amellyel zöld jelzést lehet kérni?"</string>
+    <string name="quest_traffic_signals_button_title">"Van ezen a jelzőlámpán olyan gomb, amellyel zöld jelzés kérhető?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"Hány motorkerékpár parkolhat itt?"</string>
@@ -1864,13 +1864,13 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_garages_description">"Külön helyek a különböző lakóknak/bérlőknek"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tourism_information_title">"Ez milyen típusú túristainformáció?"</string>
+    <string name="quest_tourism_information_title">"Ez milyen típusú turistainformáció?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tourism_information_name_title">"Ez milyen típusú túristainformáció: %s?"</string>
+    <string name="quest_tourism_information_name_title">"Ez milyen típusú turistainformáció: %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tourism_information_office">"Túristainformációs iroda"</string>
+    <string name="quest_tourism_information_office">"Turistainformációs iroda"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tourism_information_board">"Információs tábla"</string>
@@ -2272,7 +2272,7 @@ szintek"</string>
     <string name="quest_summit_register_title">"Van-e csúcsnapló itt: %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Van-e defibrillátor (AED) egy épületben?"</string>
     <string name="about_title_translate">"Segíts az alkalmazás fordításában"</string>
-    <string name="about_description_translate">"%1$s nyelvű fordítás %2$d%%-ban kész"</string>
+    <string name="about_description_translate">"a %1$s nyelvű fordítás %2$d%%-ban kész"</string>
     <string name="quest_oneway2_title">"Ez egy egyirányú utca? Melyik irányban?"</string>
     <string name="quest_oneway2_dir">"Egyirányú ebben az irányban"</string>
     <string name="quest_oneway2_no_oneway">"Nem egyerirányú"</string>
@@ -2393,9 +2393,9 @@ szintek"</string>
     <string name="quest_charging_station_name_capacity_title">"Hány autót lehet egyidejűleg itt tölteni? (%s)"</string>
     <string name="team_mode">"Csapat mód"</string>
     <string name="team_mode_exit">"Kilépés csapat módból"</string>
-    <string name="team_mode_description">"Ha egy területen egyszerre többen szeretnének térképezni, lehetőség van \"csapat mód\"-ban felosztani a feladatokat."</string>
+    <string name="team_mode_description">"Ha egy területen egyszerre többen szeretnétek térképezni, lehetőség van csapat módban felosztani a feladatokat."</string>
     <string name="team_mode_team_size_label">"Hányan vannak a csapatban?"</string>
-    <string name="team_mode_team_size_hint">"2 és 12 tag közötti érték adható meg."</string>
+    <string name="team_mode_team_size_hint">"A csapad mód 2-től 12 személyig használható."</string>
     <string name="team_mode_choose_color">"Válasszon mindenki egy egyedi színt:"</string>
     <string name="team_mode_active">"Csapat mód aktív"</string>
     <string name="team_mode_deactivated">"Csapat mód kikapcsolva"</string>

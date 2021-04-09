@@ -208,7 +208,7 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"Проверихте ли в двата края на улицата? Ако няма знаци по цялата дължина на улица, то се прилагат стандартните ограничения."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Не, няма знак"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Пътищата в застроените райони имат по-ниска разрешена скорост отколкото тези извън тях."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Застроена зона"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"В населено място"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Междуградски"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Ако на кръстовището има знак като този, то на други места няма да има знаци, тъй като знакът в началото е валиден за цялата зона."</string>
     <string name="quest_sport_softball">"Софтбол"</string>
@@ -263,7 +263,7 @@
     <string name="credits_contributors_title">"Програмисти"</string>
     <string name="credits_author_title">"Автор на проекта"</string>
     <string name="credits_and_more">"и още..."</string>
-    <string name="quest_maxspeed_answer_living_street">"Това е жилищна улица"</string>
+    <string name="quest_maxspeed_answer_living_street">"В жилищна зона - до 20 км/ч за BG"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"И има знак като този?"</string>
     <string name="quest_orchard_produce_title">"Какво се отглежда тук?"</string>
     <string name="produce_grapes">"Грозде"</string>
@@ -470,7 +470,7 @@
     <string name="quest_construction_generic_title">"Този път завършен ли е?"</string>
     <string name="quest_construction_building_title">"Тази сграда завършена ли е?"</string>
     <string name="questList_disabled_in_country">"Да не се показва в %s"</string>
-    <string name="quest_toiletAvailability_rest_area_title">"Тази зона има ли тоалетни?"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"На това място има ли тоалетни?"</string>
     <string name="quest_pathSurface_title_steps">"Каква повърхност имат стъпалата?"</string>
     <string name="quest_pathSurface_title_bridleway">"Каква повърхност има тази пътека за езда?"</string>
     <string name="quest_pathSurface_title">"Каква повърхност има тази пътека?"</string>
