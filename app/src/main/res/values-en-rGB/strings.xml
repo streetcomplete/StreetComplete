@@ -959,7 +959,7 @@ You can start solving them right away and later login to publish your answers."<
 
 Finally, remember to stay safe: Be aware of your surroundings and don't enter private property."</string>
     <string name="tutorial_happy_mapping">"Happy Mapping!"</string>
-    <string name="achievements_empty">"You have no achievments yet"</string>
+    <string name="achievements_empty">"You have no achievements yet"</string>
     <string name="links_empty">"You have no links yet"</string>
     <string name="quests_empty">"You have published no quest answers yet"</string>
     <string name="unsynced_quests_description">"plus %d not yet published changes."</string>
