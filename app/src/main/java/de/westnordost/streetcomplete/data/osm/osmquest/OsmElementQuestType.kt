@@ -42,7 +42,7 @@ interface OsmElementQuestType<T> : QuestType<T> {
      *  - to be part of a(nother) way
      *  - to house a second POI on the same element
      *  - to be a kind of element where deletion is not recommended, (f.e. a shop should rather
-     *    be set to shop=vacant until there is another one)
+     *    be set to disused:shop=yes until there is another one)
      *  ...should be deletable */
     val isDeleteElementEnabled: Boolean get() = false
 
