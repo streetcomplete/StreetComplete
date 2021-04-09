@@ -2,15 +2,11 @@ package de.westnordost.streetcomplete.quests.road_name.data
 
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
-import de.westnordost.osmapi.map.data.Element
 
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.ktx.getBlob
 import de.westnordost.streetcomplete.ktx.query
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Columns.GEOMETRY
@@ -28,7 +24,6 @@ import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTable.Column
 import de.westnordost.streetcomplete.util.distanceToArcs
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import java.util.*
-import java.util.regex.Pattern
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
@@ -114,23 +109,6 @@ class RoadNameSuggestionsDao @Inject constructor(
         val oldNameSuggestionsTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER
         db.delete(NAME, "$LAST_UPDATE < ?", arrayOf(oldNameSuggestionsTimestamp.toString()))
     }
-}
-
-/** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang)
- *  int_name becomes "international" */
-fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
-    val result = mutableMapOf<String,String>()
-    val namePattern = Pattern.compile("name(:(.*))?")
-    for ((key, value) in this) {
-        val m = namePattern.matcher(key)
-        if (m.matches()) {
-            val languageTag = m.group(2) ?: ""
-            result[languageTag] = value
-        } else if(key == "int_name") {
-            result["international"] = value
-        }
-    }
-    return if (result.isEmpty()) null else result
 }
 
 data class RoadNameSuggestionEntry(
