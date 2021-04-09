@@ -51,13 +51,23 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
  *  collection of [ways] */
 private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
     val footways = ways.filter { footwaysFilter.matches(it) }
+    val crossingEndNodesConnectionCountByIds = mutableMapOf<Long, Int>()
 
     // all nodes that are an endpoint of a way with footway=crossing will have value 1 in this map
-    val crossingEndNodesConnectionCountByIds = mutableMapOf<Long, Int>()
-    footways
+    val crossingEndNodeIds = footways
         .filter { it.tags?.get("footway") == "crossing" }
         .flatMap { it.nodeIds.firstAndLast() }
-        .associateWithTo(crossingEndNodesConnectionCountByIds) { 1 }
+
+    for (id in crossingEndNodeIds) {
+        val prevCount = crossingEndNodesConnectionCountByIds[id] ?: 0
+        if (prevCount != 0) {
+            // connected already, so invalid - putting it higher as in the end value
+            // 2 indicates valid, setting 1000 as this value can only go uo
+            crossingEndNodesConnectionCountByIds[id] = 1000
+        } else {
+            crossingEndNodesConnectionCountByIds[id] = 1
+        }
+    }
 
     // skip nodes that share an end node with a way where it is not clear if it is a sidewalk, crossing or something else
     val unknownEndNodeIds = ways

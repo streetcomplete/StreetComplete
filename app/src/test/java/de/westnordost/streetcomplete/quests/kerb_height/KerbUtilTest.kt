@@ -123,6 +123,25 @@ class KerbUtilTest {
         assertEquals(0, mapData.findAllKerbNodes().toList().size)
     }
 
+    @Test fun `shared endpoints between two crossings and sidewalk don't count`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            OsmNode(1L, 1, 0.0,0.0, null),
+            OsmWay(1L, 1, listOf(1,2), mapOf(
+                "highway" to "footway",
+                "footway" to "sidewalk"
+            )),
+            OsmWay(2L, 1, listOf(1,4), mapOf(
+                "highway" to "footway",
+                "footway" to "crossing"
+            )),
+            OsmWay(3L, 1, listOf(1,3), mapOf(
+                "highway" to "footway",
+                "footway" to "crossing"
+            )),
+        ))
+        assertEquals(0, mapData.findAllKerbNodes().toList().size)
+    }
+
     @Test fun `shared endpoints between crossings and sidewalks, some not fully tagged, don't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             OsmNode(1L, 1, 0.0,0.0, null),
