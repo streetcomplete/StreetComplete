@@ -8,7 +8,7 @@ v31.2: |
   <li>Ask periodically if various traffic calmings still exist (#2672)</li>
   <li>Don't ask for the crossing barrier for disused railways (#2695)</li>
   <li>Also ask for opening hours of shops with no signed name (#2716, #2718), by @Helium314</li>
-  <li>Vacant shops are not tagged as disused:shop=* (#2707, #2724), by @matkoniecz</li>
+  <li>Vacant shops are now tagged as disused:shop=* (#2707, #2724), by @matkoniecz</li>
   <li>Don't ask for the kerb height and type if tagging is suspect (#2654), by @matkoniecz</li>
   <li>Other small enhancements and fixes: #2723, #2677 by @Eginhard, #2699 and #2680 by @matkoniecz</li>
   </ul>
