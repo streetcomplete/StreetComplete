@@ -23,12 +23,14 @@ private val waysFilter by lazy {"""
 
 fun MapData.findAllKerbNodes(): Iterable<Node> {
     val footwayNodes = mutableSetOf<Node>()
-    ways.filter { footwaysFilter.matches(it) }
+    ways.asSequence()
+        .filter { footwaysFilter.matches(it) }
         .flatMap { it.nodeIds }
         .mapNotNullTo(footwayNodes) { getNode(it) }
 
     val kerbBarrierNodeIds = mutableSetOf<Long>()
-    ways.filter { it.tags?.get("barrier") == "kerb" }
+    ways.asSequence()
+        .filter { it.tags?.get("barrier") == "kerb" }
         .flatMapTo(kerbBarrierNodeIds) { it.nodeIds }
 
     val anyWays = ways.filter { waysFilter.matches(it) }
@@ -50,36 +52,48 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
 /** Find all node ids of end nodes of crossings that are (very probably) kerbs within the given
  *  collection of [ways] */
 private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
+    /* using asSequence in this function so to not copy potentially huge amounts (f.e. almost all
+       nodes of all ways in the data set) of data into temporary lists */
+
     val footways = ways.filter { footwaysFilter.matches(it) }
 
-    // all nodes that are an endpoint of a way with footway=crossing will have value 1 in this map
-    val crossingEndNodesConnectionCountByIds = mutableMapOf<Long, Int>()
-    footways
+    val crossingEndNodeIds = footways.asSequence()
         .filter { it.tags?.get("footway") == "crossing" }
         .flatMap { it.nodeIds.firstAndLast() }
-        .associateWithTo(crossingEndNodesConnectionCountByIds) { 1 }
 
-    // skip nodes that share an end node with a way where it is not clear if it is a sidewalk, crossing or something else
-    val unknownEndNodeIds = ways
-        .filter { it.tags?.get("footway") != "sidewalk" && it.tags?.get("footway") != "crossing" }
-        .flatMap { it.nodeIds.firstAndLast() }
-    crossingEndNodesConnectionCountByIds.keys.removeAll(unknownEndNodeIds)
+    val connectionsById = mutableMapOf<Long, Int>()
+    for (id in crossingEndNodeIds) {
+        val count = connectionsById[id] ?: 0
+        connectionsById[id] = count + 1
+    }
+    // skip nodes that have not exactly ONE connection to a crossing
+    connectionsById.entries.removeAll { it.value != 1 }
+    if (connectionsById.isEmpty()) return emptySet()
 
-    // skip nodes that share an end node with any node of a way that is not an end node
-    val waysMiddleNodeIds = ways.flatMap { it.nodeIds.subList(1, it.nodeIds.size - 1) }
-    crossingEndNodesConnectionCountByIds.keys.removeAll(waysMiddleNodeIds)
-
-    // count connections of the remaining crossing end node ids with end nodes of sidewalks
-    val sidewalkEndNodeIds = footways
+    val sidewalkEndNodeIds = footways.asSequence()
         .filter { it.tags?.get("footway") == "sidewalk" }
         .flatMap { it.nodeIds.firstAndLast() }
 
     for (id in sidewalkEndNodeIds) {
-        val prevCount = crossingEndNodesConnectionCountByIds[id] ?: 0
-        if (prevCount > 0) crossingEndNodesConnectionCountByIds[id] = prevCount + 1
+        val count = connectionsById[id] ?: continue
+        connectionsById[id] = count + 1
     }
+    // skip nodes that have not exactly ONE connection to a sidewalk (1 to crossing + 1 to sidewalk = 2)
+    connectionsById.entries.removeAll { it.value != 2 }
+    if (connectionsById.isEmpty()) return emptySet()
 
-    // if there are exactly two connections (one to crossing way, one to sidewalk way), this'll be
-    // a node where there is a kerb
-    return crossingEndNodesConnectionCountByIds.filter { it.value == 2 }.keys
+    // skip nodes that share an end node with a way where it is not clear if it is a sidewalk, crossing or something else
+    ways.asSequence()
+        .filter { it.tags?.get("footway") != "sidewalk" && it.tags?.get("footway") != "crossing" }
+        .flatMap { it.nodeIds.firstAndLast() }
+        .forEach { connectionsById.remove(it) }
+    if (connectionsById.isEmpty()) return emptySet()
+
+    // skip nodes that share an end node with any node of a way that is not an end node
+    ways.asSequence()
+        .flatMap { it.nodeIds.subList(1, it.nodeIds.size - 1) }
+        .forEach { connectionsById.remove(it) }
+    if (connectionsById.isEmpty()) return emptySet()
+
+    return connectionsById.keys
 }

@@ -50,24 +50,41 @@ class RoadNameSuggestionsSource @Inject constructor(
         return tags != null && tags.containsKey("name") && tags["highway"] in ALL_ROADS_AND_PATHS
     }
 
-    /** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang)
-     *  int_name becomes "international" */
-    private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
-        val result = mutableMapOf<String,String>()
-        val nameRegex = Regex("name(:(.*))?")
-        for ((key, value) in this) {
-            val m = nameRegex.matchEntire(key)
-            if (m != null) {
-                val languageTag = m.groupValues[2]
-                result[languageTag] = value
-            } else if(key == "int_name") {
-                result["international"] = value
-            }
-        }
-        return if (result.isEmpty()) null else result
-    }
-
     companion object {
         private val ALL_ROADS_AND_PATHS = ALL_ROADS + ALL_PATHS
     }
+}
+
+/** OSM tags to map of language code -> name.
+ *
+ *  For example:
+ *
+ *  "name:de": "Hauptstraße"
+ *  "name": "Hauptstraße"
+ *  "int_name": "main road"
+ *  "name:de-Cyrl": "Хауптстра"
+ *
+ *  becomes
+ *
+ *  "de": "Hauptstraße"
+ *  "": "Hauptstraße"
+ *  "international": "main road"
+ *  "de-Cyrl": "Хауптстра"
+ *
+ *  Tags that are not two- or three-letter ISO 639 language codes appended with an optional 4-letter
+ *  ISO 15924 code, such as name:left, name:etymology, name:source etc., are ignored
+ *  */
+internal fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
+    val result = mutableMapOf<String,String>()
+    val namePattern = Regex("name(?::([a-z]{2,3}(?:-[a-zA-Z]{4})?))?")
+    for ((key, value) in this) {
+        val m = namePattern.matchEntire(key)
+        if (m != null) {
+            val languageTag = m.groupValues[1]
+            result[languageTag] = value
+        } else if(key == "int_name") {
+            result["international"] = value
+        }
+    }
+    return if (result.isEmpty()) null else result
 }

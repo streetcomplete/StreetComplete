@@ -2203,6 +2203,11 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
 
     <!-- Fuzzy -->
     <string name="stats_are_syncing">"Jūsų statistika vis dar atnaujinama. Grįžkite čia vėliau."</string>
+    <string name="user_profile_achievement_levels">"Pasiekimų lygis"</string>
+    <string name="quest_recycling_type_engine_oil">"Variklio alyva"</string>
+    <string name="about_title_sponsors">"Rėmėjai"</string>
+    <string name="quest_board_type_history">"Istorija"</string>
+    <string name="quest_board_type_plants">"Augalai"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"Namo pavadinimas %s:"</string>

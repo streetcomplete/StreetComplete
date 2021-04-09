@@ -68,7 +68,7 @@ class ShopGoneDialog(
         getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
             when (selectedRadioButtonId) {
                 R.id.vacantRadioButton -> {
-                    onSelectedFeature(mapOf("shop" to "vacant"))
+                    onSelectedFeature(mapOf("disused:shop" to "yes"))
                     dismiss()
                 }
                 R.id.replaceRadioButton -> {
