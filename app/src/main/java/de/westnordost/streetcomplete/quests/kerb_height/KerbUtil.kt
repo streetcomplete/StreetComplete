@@ -47,25 +47,32 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     }
 }
 
+enum class Crossing {
+    MORE_THAN_ONE_CROSSING_CONNECTION,
+    NO_CROSSING_CONNECTION,
+    ONE_CROSSING_CONNECTION,
+    ONE_CROSSING_AND_ONE_SIDEWALK_CONNECTION,
+    ONE_CROSSING_AND_MORE_THAN_ONE_SIDEWALK_CONNECTION
+}
+
 /** Find all node ids of end nodes of crossings that are (very probably) kerbs within the given
  *  collection of [ways] */
 private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
     val footways = ways.filter { footwaysFilter.matches(it) }
-    val crossingEndNodesConnectionCountByIds = mutableMapOf<Long, Int>()
+    val crossingEndNodesConnectionCountByIds = mutableMapOf<Long, Crossing>()
 
-    // all nodes that are an endpoint of a way with footway=crossing will have value 1 in this map
     val crossingEndNodeIds = footways
         .filter { it.tags?.get("footway") == "crossing" }
         .flatMap { it.nodeIds.firstAndLast() }
 
     for (id in crossingEndNodeIds) {
-        val prevCount = crossingEndNodesConnectionCountByIds[id] ?: 0
-        if (prevCount != 0) {
-            // connected already, so invalid - putting it higher as in the end value
-            // 2 indicates valid, setting 1000 as this value can only go uo
-            crossingEndNodesConnectionCountByIds[id] = 1000
+        val prevState = crossingEndNodesConnectionCountByIds[id] ?: Crossing.NO_CROSSING_CONNECTION
+        if (prevState != Crossing.NO_CROSSING_CONNECTION) {
+            // connected already, so invalid - marking rather removing it from map
+            // as it may be connected to three or more crossings
+            crossingEndNodesConnectionCountByIds[id] = Crossing.MORE_THAN_ONE_CROSSING_CONNECTION
         } else {
-            crossingEndNodesConnectionCountByIds[id] = 1
+            crossingEndNodesConnectionCountByIds[id] = Crossing.ONE_CROSSING_CONNECTION
         }
     }
 
@@ -85,11 +92,15 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
         .flatMap { it.nodeIds.firstAndLast() }
 
     for (id in sidewalkEndNodeIds) {
-        val prevCount = crossingEndNodesConnectionCountByIds[id] ?: 0
-        if (prevCount > 0) crossingEndNodesConnectionCountByIds[id] = prevCount + 1
+        val prevState = crossingEndNodesConnectionCountByIds[id] ?: Crossing.NO_CROSSING_CONNECTION
+        if (prevState == Crossing.ONE_CROSSING_AND_ONE_SIDEWALK_CONNECTION) {
+            crossingEndNodesConnectionCountByIds[id] = Crossing.ONE_CROSSING_AND_MORE_THAN_ONE_SIDEWALK_CONNECTION
+        } else if (prevState == Crossing.ONE_CROSSING_CONNECTION) {
+            crossingEndNodesConnectionCountByIds[id] = Crossing.ONE_CROSSING_AND_ONE_SIDEWALK_CONNECTION
+        }
     }
 
     // if there are exactly two connections (one to crossing way, one to sidewalk way), this'll be
     // a node where there is a kerb
-    return crossingEndNodesConnectionCountByIds.filter { it.value == 2 }.keys
+    return crossingEndNodesConnectionCountByIds.filter { it.value == Crossing.ONE_CROSSING_AND_ONE_SIDEWALK_CONNECTION }.keys
 }
