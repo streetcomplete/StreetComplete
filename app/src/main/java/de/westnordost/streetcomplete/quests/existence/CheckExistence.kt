@@ -35,6 +35,7 @@ class CheckExistence(
             or amenity = bench
             or amenity = waste_basket
             or amenity = post_box
+            or amenity = grit_bin
             or leisure = picnic_table
             or leisure = firepit
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
