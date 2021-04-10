@@ -260,7 +260,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onLongPress(x: Float, y: Float) {
         val point = PointF(x, y)
         val position = mapFragment?.getPositionAt(point) ?: return
-        if (bottomSheetFragment != null) return
+        if (bottomSheetFragment != null || editHistoryFragment != null) return
 
         contextMenuView.translationX = x
         contextMenuView.translationY = y
