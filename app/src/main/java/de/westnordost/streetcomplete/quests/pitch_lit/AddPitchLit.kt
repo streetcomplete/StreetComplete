@@ -12,7 +12,7 @@ class AddPitchLit : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         ways with (leisure=pitch or leisure=track)
         and (access !~ private|no)
-        and indoor != yes and !building
+        and indoor != yes and (!building or building = no)
         and (
           !lit
           or lit = no and lit older today -8 years
