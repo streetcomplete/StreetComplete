@@ -4,8 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.ktx.toYesNo
+import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddPitchLit : OsmFilterQuestType<PitchLit>() {
+class AddPitchLit : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         ways with (leisure=pitch or leisure=track)
@@ -28,9 +30,9 @@ class AddPitchLit : OsmFilterQuestType<PitchLit>() {
         else
             R.string.quest_pitchLit_title
 
-    override fun createForm() = PitchLitForm()
+    override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: PitchLit, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("lit", answer.osmValue)
+    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("lit", answer.toYesNo())
     }
 }
