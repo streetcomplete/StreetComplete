@@ -232,7 +232,7 @@ open class MapFragment : Fragment(),
 
 
         //val prefs = activity?.getPreferences(Activity.MODE_PRIVATE)
-        scene = if (prefsShared.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") scene else "streetcomplete-satellite-style.yaml";
+        scene = if (prefsShared.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") scene else "scene-satellite.yaml";
         Log.wtf("aaa in getSceneFilePath after", scene)
         Log.wtf("aaa in getSceneFilePath after", "${vectorTileProvider.sceneFilePath}/$scene")
         return "${vectorTileProvider.sceneFilePath}/$scene"
