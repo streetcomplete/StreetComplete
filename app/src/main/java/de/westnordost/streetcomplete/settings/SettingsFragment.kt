@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.settings
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -121,6 +122,13 @@ class SettingsFragment : PreferenceFragmentCompat(),
             Prefs.THEME_SELECT -> {
                 val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
                 AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
+                activity?.recreate()
+            }
+            Prefs.THEME_BACKGROUND -> {
+                Log.wtf("aaa in onSharedPreferenceChanged", "Prefs.THEME_BACKGROUND changed")
+                Log.wtf("aaa in onSharedPreferenceChanged", prefs.getString(Prefs.THEME_BACKGROUND, "DEFAULT"))
+                //val background = Prefs.Background.valueOf(prefs.getString(Prefs.THEME_BACKGROUND, "MAP")!!)
+                //AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
                 activity?.recreate()
             }
             Prefs.RESURVEY_INTERVALS -> {

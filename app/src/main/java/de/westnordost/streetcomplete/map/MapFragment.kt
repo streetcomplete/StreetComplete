@@ -2,11 +2,13 @@ package de.westnordost.streetcomplete.map
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.RectF
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +29,7 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
 import de.westnordost.streetcomplete.ktx.awaitLayout
@@ -66,6 +69,7 @@ open class MapFragment : Fragment(),
 
     @Inject internal lateinit var vectorTileProvider: VectorTileProvider
     @Inject internal lateinit var cacheConfig: MapTilesDownloadCacheConfig
+    @Inject internal lateinit var prefsShared: SharedPreferences
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -169,6 +173,7 @@ open class MapFragment : Fragment(),
     }
 
     private suspend fun reinitializeMapIfNecessary() {
+        Log.wtf("aaa", "reinitializeMapIfNecessary running");
         if (loadedSceneFilePath != null) {
             val sceneFilePath = getSceneFilePath()
             if (sceneFilePath != loadedSceneFilePath) {
@@ -216,9 +221,20 @@ open class MapFragment : Fragment(),
     }
 
     protected open fun getSceneFilePath(): String {
+        Log.wtf("aaa", "getSceneFilePath running")
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val scene = if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
+        var scene = if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
+        Log.wtf("aaa in getSceneFilePath", prefsShared.getString(Prefs.THEME_BACKGROUND, "DEFAULT"))
+
+        Log.wtf("aaa in getSceneFilePath before", scene)
+        Log.wtf("aaa in getSceneFilePath before", "${vectorTileProvider.sceneFilePath}/$scene")
+
+
+        //val prefs = activity?.getPreferences(Activity.MODE_PRIVATE)
+        scene = if (prefsShared.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") scene else "streetcomplete-satellite-style.yaml";
+        Log.wtf("aaa in getSceneFilePath after", scene)
+        Log.wtf("aaa in getSceneFilePath after", "${vectorTileProvider.sceneFilePath}/$scene")
         return "${vectorTileProvider.sceneFilePath}/$scene"
     }
 
