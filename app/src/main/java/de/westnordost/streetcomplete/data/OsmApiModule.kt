@@ -28,7 +28,7 @@ object OsmApiModule {
 
     @Provides fun userDao(osm: OsmConnection): UserApi = UserApi(osm)
 
-    @Provides fun notesDao(osm: OsmConnection): NotesApi = NotesApiImpl(osm)
+    @Provides fun notesApi(osm: OsmConnection): NotesApi = NotesApiImpl(osm)
 
     @Provides fun mapDataDao(osm: OsmConnection): MapDataApi {
         // generally we are not interested in certain data returned by the OSM API, so we use a
