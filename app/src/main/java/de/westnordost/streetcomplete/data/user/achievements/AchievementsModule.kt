@@ -444,7 +444,8 @@ object AchievementsModule {
                     "AddCarWashType",
                     "AddChargingStationOperator",
                     "AddChargingStationCapacity",
-                    "AddLanes"
+                    "AddLanes",
+                    "AddBarrierType"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -503,7 +504,8 @@ object AchievementsModule {
                     "AddBusStopRef",
                     "AddBusStopShelter",
                     "AddBenchStatusOnBusStop",
-                    "AddCrossingIsland"
+                    "AddCrossingIsland",
+                    "AddBarrierType"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -575,7 +577,8 @@ object AchievementsModule {
                     "AddTactilePavingBusStop",
                     "AddCrossingIsland",
                     "AddKerbHeight",
-                    "AddTactilePavingKerb"
+                    "AddTactilePavingKerb",
+                    "AddBarrierType"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -602,7 +605,8 @@ object AchievementsModule {
                     "AddPathSurface",
                     "AddStepsRamp",
                     "AddHandrail",
-                    "AddKerbHeight"
+                    "AddKerbHeight",
+                    "AddBarrierType"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -630,7 +634,8 @@ object AchievementsModule {
                     "AddCyclewaySegregation",
                     "AddPathSurface",
                     "AddStepsRamp",
-                    "AddKerbHeight"
+                    "AddKerbHeight",
+                    "AddBarrierType"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -702,6 +707,7 @@ object AchievementsModule {
                     "AddCyclewayPartSurface",
                     "AddFootwayPartSurface",
                     "AddBenchBackrest",
+                    "AddBarrierType",
                     // information boards
                     "AddInformationToTourism",
                     "AddBoardType"
