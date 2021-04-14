@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.streetcomplete.ktx.format
-
 // TODO RENAME BOUNDS?
 data class BoundingBox(val min: LatLon, val max: LatLon) {
     constructor(
@@ -30,8 +28,3 @@ fun BoundingBox.splitAt180thMeridian(): List<BoundingBox> {
         )
     } else listOf(this)
 }
-
-// TODO check usages
-fun BoundingBox.getAsLeftBottomRightTopString(): String =
-    listOf(min.longitude, min.latitude, max.longitude, max.latitude)
-        .joinToString(",") { it.format(7) }

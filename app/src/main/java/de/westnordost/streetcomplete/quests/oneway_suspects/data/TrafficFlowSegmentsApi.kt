@@ -6,13 +6,21 @@ import java.net.URL
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.ktx.format
 import org.json.JSONObject
 
 /** Dao for using this API: https://github.com/ENT8R/oneway-data-api  */
 class TrafficFlowSegmentsApi(private val apiUrl: String) {
 
     fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> {
-        val url = URL("$apiUrl?bbox=${bbox.asLeftBottomRightTopString}")
+        val leftBottomRightTopString = listOf(
+            bbox.min.longitude,
+            bbox.min.latitude,
+            bbox.max.longitude,
+            bbox.max.latitude
+        ).joinToString(",") { it.format(7) }
+
+        val url = URL("$apiUrl?bbox=${leftBottomRightTopString}")
         val json = url.openConnection().getInputStream().bufferedReader().use { it.readText() }
         return parse(json)
     }
