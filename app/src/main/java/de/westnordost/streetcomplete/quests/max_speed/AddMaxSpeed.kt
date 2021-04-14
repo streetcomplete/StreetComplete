@@ -56,6 +56,16 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
                 changes.modify("highway", "living_street")
             }
             is ImplicitMaxSpeed -> {
+                if (answer.countryCode == "GB") {
+                    // nsl_restricted only gets added if the road is lit (whether already set or answered by the user in this quest)
+                    if (answer.roadType == "nsl_restricted") {
+                        changes.add("lit", "yes")
+                    }
+                    // The other answers, nsl_single and nsl_dual, only get added if the road is not lit
+                    else {
+                        changes.add("lit", "no")
+                    }
+                }
                 changes.add("maxspeed:type", answer.countryCode + ":" + answer.roadType)
             }
         }
