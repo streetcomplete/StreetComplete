@@ -2,17 +2,11 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
-import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
-import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.*
 import org.junit.Before
-
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.doThrow

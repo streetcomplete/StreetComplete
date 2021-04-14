@@ -1,11 +1,10 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.user.UserStore
@@ -92,7 +91,7 @@ import javax.inject.Singleton
 
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
         if(note.shouldShowAsQuest(userStore.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
-            OsmNoteQuest(note.id, note.position.toOsmLatLon())
+            OsmNoteQuest(note.id, note.position)
         else null
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */

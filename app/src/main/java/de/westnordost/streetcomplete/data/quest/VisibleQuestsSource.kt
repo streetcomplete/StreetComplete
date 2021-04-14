@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest

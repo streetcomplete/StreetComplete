@@ -1,11 +1,13 @@
 package de.westnordost.osmapi.map
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.BoundingBox as OsmBoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmapi.map.handler.MapDataHandler
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osmnotes.toBoundingBox
 
 open class MutableMapData() : MapData, MapDataHandler {
 
@@ -19,7 +21,8 @@ open class MutableMapData() : MapData, MapDataHandler {
     override var boundingBox: BoundingBox? = null
         protected set
 
-    override fun handle(bounds: BoundingBox) { boundingBox = bounds }
+    fun handle(bounds: BoundingBox) { boundingBox = bounds }
+    override fun handle(bounds: OsmBoundingBox) { boundingBox = bounds.toBoundingBox() }
     override fun handle(node: Node) { nodesById[node.id] = node }
     override fun handle(way: Way) { waysById[way.id] = way }
     override fun handle(relation: Relation) { relationsById[relation.id] = relation }

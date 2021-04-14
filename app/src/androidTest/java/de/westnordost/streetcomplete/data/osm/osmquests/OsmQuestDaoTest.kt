@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import org.junit.Before
@@ -75,7 +74,7 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         ))
 
         assertTrue(dao.getAllInBBox(
-            BoundingBox(0.0,0.0,1.0,1.0),
+            BoundingBox(0.0, 0.0, 1.0, 1.0),
             listOf("a")
         ).containsExactlyInAnyOrder(listOf(q1,q2,q3)))
     }
@@ -104,5 +103,5 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         pos: LatLon = p(0.0, 0.0)
     ) = BasicOsmQuestDaoEntry(elementType, elementId, questTypeName, pos)
 
-    private fun p(x: Double, y: Double): LatLon = OsmLatLon(y,x)
+    private fun p(x: Double, y: Double): LatLon = LatLon(y, x)
 }

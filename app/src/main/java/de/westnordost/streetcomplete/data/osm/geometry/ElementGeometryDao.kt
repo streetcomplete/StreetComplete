@@ -1,13 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.osmapi.map.data.BoundingBox
-
-
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.ELEMENT_ID
@@ -25,7 +21,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME_TEMPORARY_LOOKUP_MERGED_VIEW
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.TEMPORARY_LOOKUP_CREATE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.TEMPORARY_LOOKUP_MERGED_VIEW_CREATE
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.*
 
 /** Stores the geometry of elements */
@@ -75,10 +73,10 @@ class ElementGeometryDao @Inject constructor(
                     g.center.longitude,
                     if (g is ElementPolygonsGeometry) serializer.toBytes(g.polygons) else null,
                     if (g is ElementPolylinesGeometry) serializer.toBytes(g.polylines) else null,
-                    bbox.minLatitude,
-                    bbox.minLongitude,
-                    bbox.maxLatitude,
-                    bbox.maxLongitude
+                    bbox.min.latitude,
+                    bbox.min.longitude,
+                    bbox.max.latitude,
+                    bbox.max.longitude
             ) }
         )
     }
@@ -140,16 +138,16 @@ class ElementGeometryDao @Inject constructor(
         CENTER_LONGITUDE to center.longitude,
         GEOMETRY_POLYGONS to if (this is ElementPolygonsGeometry) serializer.toBytes(polygons) else null,
         GEOMETRY_POLYLINES to if (this is ElementPolylinesGeometry) serializer.toBytes(polylines) else null,
-        MIN_LATITUDE to getBounds().minLatitude,
-        MIN_LONGITUDE to getBounds().minLongitude,
-        MAX_LATITUDE to getBounds().maxLatitude,
-        MAX_LONGITUDE to getBounds().maxLongitude
+        MIN_LATITUDE to getBounds().min.latitude,
+        MIN_LONGITUDE to getBounds().min.longitude,
+        MAX_LATITUDE to getBounds().max.latitude,
+        MAX_LONGITUDE to getBounds().max.longitude
     )
 
     private fun CursorPosition.toElementGeometry(): ElementGeometry {
         val polylines = getBlobOrNull(GEOMETRY_POLYLINES)?.let { serializer.toObject<PolyLines>(it) }
         val polygons = getBlobOrNull(GEOMETRY_POLYGONS)?.let { serializer.toObject<PolyLines>(it) }
-        val center = OsmLatLon(getDouble(CENTER_LATITUDE), getDouble(CENTER_LONGITUDE))
+        val center = LatLon(getDouble(CENTER_LATITUDE), getDouble(CENTER_LONGITUDE))
 
         return when {
             polygons != null -> ElementPolygonsGeometry(polygons, center)
@@ -160,10 +158,10 @@ class ElementGeometryDao @Inject constructor(
 }
 
 private fun inBoundsSql(bbox: BoundingBox) = """
-    $MAX_LONGITUDE >= ${bbox.minLongitude} AND
-    $MAX_LATITUDE >= ${bbox.minLatitude} AND
-    $MIN_LONGITUDE <= ${bbox.maxLongitude} AND
-    $MIN_LATITUDE <= ${bbox.maxLatitude}
+    $MAX_LONGITUDE >= ${bbox.min.longitude} AND
+    $MAX_LATITUDE >= ${bbox.min.latitude} AND
+    $MIN_LONGITUDE <= ${bbox.max.longitude} AND
+    $MIN_LATITUDE <= ${bbox.max.latitude}
 """.trimIndent()
 
 private fun CursorPosition.toElementKey() = ElementKey(
@@ -177,4 +175,4 @@ data class ElementGeometryEntry(
     val geometry: ElementGeometry
 )
 
-private typealias PolyLines = ArrayList<ArrayList<OsmLatLon>>
+private typealias PolyLines = ArrayList<ArrayList<LatLon>>

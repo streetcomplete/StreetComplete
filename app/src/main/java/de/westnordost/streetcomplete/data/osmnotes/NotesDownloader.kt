@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import android.util.Log
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 
 import javax.inject.Inject
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ktx.format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -40,6 +40,6 @@ private suspend fun NotesApi.getAll(
     hideClosedNoteAfter: Int
 ): List<Note> = withContext(Dispatchers.IO) {
     val notes = ArrayList<Note>()
-    getAll(bbox.toBoundingBox(), notes::add, limit, hideClosedNoteAfter)
+    getAll(bbox, notes::add, limit, hideClosedNoteAfter)
     notes
 }

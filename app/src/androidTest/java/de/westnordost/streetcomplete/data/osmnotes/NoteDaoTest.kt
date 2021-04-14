@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import org.junit.Before
 import org.junit.Test
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.User
 

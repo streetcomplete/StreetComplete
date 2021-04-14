@@ -14,10 +14,7 @@ import javax.inject.Singleton;
 
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.Fixed1E7LatLon;
-import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmRelationMember;
-import de.westnordost.osmapi.notes.NoteComment;
-import de.westnordost.osmapi.user.User;
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction;
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition;
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint;
@@ -32,6 +29,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete;
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify;
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction;
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon;
+import de.westnordost.streetcomplete.data.osmnotes.NoteComment;
+import de.westnordost.streetcomplete.data.user.User;
 import de.westnordost.streetcomplete.quests.LocalizedName;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
@@ -58,10 +58,7 @@ public class KryoSerializer implements Serializer
 			StringMapEntryAdd.class,
 			StringMapEntryDelete.class,
 			StringMapEntryModify.class,
-			NoteComment.class, // TODO(Flo): Replace this with Object.class
-			NoteComment.Action.class, // TODO(Flo): Replace this with Object.class
 			Date.class,
-			User.class, // TODO(Flo): Replace this with Object.class
 			CircularSection.class,
 			TimeRange.class,
 			Weekdays.class,
@@ -70,7 +67,6 @@ public class KryoSerializer implements Serializer
 			OpeningWeekdaysRow.class,
 			LocalizedName.class,
 			WeekdaysTimesRow.class,
-			OsmLatLon.class,
 			SplitAtPoint.class,
 			SplitAtLinePosition.class,
 			OffDaysRow.class,
@@ -83,9 +79,10 @@ public class KryoSerializer implements Serializer
 			SpatialPartsOfNode.class,
 			SpatialPartsOfWay.class,
 			SpatialPartsOfRelation.class,
-			de.westnordost.streetcomplete.data.osmnotes.NoteComment.class,
-			de.westnordost.streetcomplete.data.osmnotes.NoteComment.Action.class,
-			de.westnordost.streetcomplete.data.user.User.class
+			NoteComment.class,
+			NoteComment.Action.class,
+			User.class,
+			LatLon.class
 	};
 
 

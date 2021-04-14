@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import android.util.Log
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.Relation

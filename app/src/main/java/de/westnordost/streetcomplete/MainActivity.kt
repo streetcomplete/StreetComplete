@@ -25,7 +25,6 @@ import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.common.errors.OsmApiReadResponseException
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException
 import de.westnordost.osmapi.common.errors.OsmConnectionException
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Injector.applicationComponent
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -34,6 +33,7 @@ import de.westnordost.streetcomplete.data.notifications.Notification
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity(),
         if ("geo" != data.scheme) return
         val geo = parseGeoUri(data) ?: return
         val zoom = if (geo.zoom == null || geo.zoom < 14)  18f else geo.zoom
-        val pos = OsmLatLon(geo.latitude, geo.longitude)
+        val pos = LatLon(geo.latitude, geo.longitude)
         mainFragment?.setCameraPosition(pos, zoom)
     }
 

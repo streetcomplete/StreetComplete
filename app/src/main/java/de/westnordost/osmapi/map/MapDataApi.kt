@@ -1,13 +1,14 @@
 package de.westnordost.osmapi.map
 
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osmnotes.toOsmApiBoundingBox
 
 fun MapDataApi.getMap(bounds: BoundingBox): MapData {
     val result = MutableMapData()
-    getMap(bounds, result)
+    getMap(bounds.toOsmApiBoundingBox(), result)
     return result
 }
 

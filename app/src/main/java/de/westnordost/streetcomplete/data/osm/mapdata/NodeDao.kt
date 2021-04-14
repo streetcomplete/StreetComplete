@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.ID
@@ -14,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
+import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 import java.lang.System.currentTimeMillis
@@ -62,7 +62,7 @@ class NodeDao @Inject constructor(
             OsmNode(
                 cursor.getLong(ID),
                 cursor.getInt(VERSION),
-                OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
+                LatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)).toOsmLatLon(),
                 cursor.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) },
                 null,
                 Date(cursor.getLong(TIMESTAMP))

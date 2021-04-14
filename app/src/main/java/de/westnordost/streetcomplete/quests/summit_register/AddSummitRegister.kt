@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
@@ -51,7 +52,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         return peaks.filter { peak ->
             hikingRoutes.any { hikingRoute ->
                 hikingRoute.polylines.any { ways ->
-                    peak.position.distanceToArcs(ways) <= 10
+                    peak.position.toLatLon().distanceToArcs(ways) <= 10
                 }
             }
         }

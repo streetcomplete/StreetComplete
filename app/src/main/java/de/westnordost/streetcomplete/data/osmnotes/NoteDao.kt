@@ -1,18 +1,14 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-
 import java.util.ArrayList
 
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.util.Serializer
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon as SCLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CLOSED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.COMMENTS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CREATED
@@ -65,7 +61,7 @@ class NoteDao @Inject constructor(
         db.query(NAME,
             columns = arrayOf(LATITUDE, LONGITUDE),
             where = inBoundsSql(bbox),
-        ) { OsmLatLon(it.getDouble(LATITUDE), it.getDouble(LONGITUDE)) }
+        ) { LatLon(it.getDouble(LATITUDE), it.getDouble(LONGITUDE)) }
 
     fun getAll(ids: Collection<Long>): List<Note> {
         if (ids.isEmpty()) return emptyList()
@@ -92,7 +88,7 @@ class NoteDao @Inject constructor(
     )
 
     private fun CursorPosition.toNote() = Note(
-        SCLatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
+        LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
         getLong(ID),
         getLong(CREATED),
         getLongOrNull(CLOSED),
@@ -101,8 +97,8 @@ class NoteDao @Inject constructor(
     )
 
     private fun inBoundsSql(bbox: BoundingBox): String = """
-        ($LATITUDE BETWEEN ${bbox.minLatitude} AND ${bbox.maxLatitude}) AND
-        ($LONGITUDE BETWEEN ${bbox.minLongitude} AND ${bbox.maxLongitude})
+        ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
+        ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
     """.trimIndent()
 
 }

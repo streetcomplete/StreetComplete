@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.CREATED_TIMESTAMP
 import de.westnordost.streetcomplete.util.Serializer
 import javax.inject.Inject
@@ -88,7 +86,7 @@ class NoteEditsDao @Inject constructor(
             columns = arrayOf(LATITUDE, LONGITUDE),
             where = "$IS_SYNCED = 0 AND " + inBoundsSql(bbox),
             orderBy = CREATED_TIMESTAMP
-        ) { OsmLatLon(it.getDouble(LATITUDE), it.getDouble(LONGITUDE)) }
+        ) { LatLon(it.getDouble(LATITUDE), it.getDouble(LONGITUDE)) }
     }
 
     fun markSynced(id: Long): Boolean =
@@ -113,8 +111,8 @@ class NoteEditsDao @Inject constructor(
         db.update(NAME, listOf(IMAGES_NEED_ACTIVATION to 0), "$ID = $id") == 1
 
     private fun inBoundsSql(bbox: BoundingBox): String = """
-        ($LATITUDE BETWEEN ${bbox.minLatitude} AND ${bbox.maxLatitude}) AND
-        ($LONGITUDE BETWEEN ${bbox.minLongitude} AND ${bbox.maxLongitude})
+        ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
+        ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
     """.trimIndent()
 
     private fun NoteEdit.toPairs() = listOf(
@@ -132,7 +130,7 @@ class NoteEditsDao @Inject constructor(
     private fun CursorPosition.toNoteEdit() = NoteEdit(
         getLong(ID),
         getLong(NOTE_ID),
-        OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
+        LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
         NoteEditAction.valueOf(getString(TYPE)),
         getStringOrNull(TEXT),
         serializer.toObject<ArrayList<String>>(getBlob(IMAGE_PATHS)),

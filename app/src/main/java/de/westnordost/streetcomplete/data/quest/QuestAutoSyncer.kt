@@ -9,12 +9,11 @@ import androidx.core.content.getSystemService
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.*
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserController
@@ -55,7 +54,7 @@ import javax.inject.Singleton
     // new location is known -> check if downloading makes sense now
     private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
         if (location.accuracy <= 300) {
-            pos = OsmLatLon(location.latitude, location.longitude)
+            pos = LatLon(location.latitude, location.longitude)
             triggerAutoDownload()
         }
     }

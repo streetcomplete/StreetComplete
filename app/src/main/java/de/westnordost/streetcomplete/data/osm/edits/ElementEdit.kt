@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.ElementEditKey
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 
 data class ElementEdit(

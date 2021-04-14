@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsModule.ONEWAY_API_URL
@@ -25,8 +25,8 @@ class TrafficFlowSegmentsApiTest {
             ]}""".trimIndent()
         )
         val expected = mapOf(
-            1L to listOf(TrafficFlowSegment(OsmLatLon(2.0, 1.0), OsmLatLon(6.0, 5.0))),
-            2L to listOf(TrafficFlowSegment(OsmLatLon(4.0, 3.0), OsmLatLon(8.0, 7.0)))
+            1L to listOf(TrafficFlowSegment(LatLon(2.0, 1.0), LatLon(6.0, 5.0))),
+            2L to listOf(TrafficFlowSegment(LatLon(4.0, 3.0), LatLon(8.0, 7.0)))
         )
         assertThat(result).containsAllEntriesOf(expected)
     }
@@ -39,8 +39,8 @@ class TrafficFlowSegmentsApiTest {
             ]}""".trimIndent()
         )
         val expected = mapOf(1L to listOf(
-            TrafficFlowSegment(OsmLatLon(2.0, 1.0), OsmLatLon(6.0, 5.0)),
-            TrafficFlowSegment(OsmLatLon(4.0, 3.0), OsmLatLon(8.0, 7.0))
+            TrafficFlowSegment(LatLon(2.0, 1.0), LatLon(6.0, 5.0)),
+            TrafficFlowSegment(LatLon(4.0, 3.0), LatLon(8.0, 7.0))
         ))
         assertThat(result).containsAllEntriesOf(expected)
     }

@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType2
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -210,11 +210,11 @@ private fun updateTags(
     elementType,
     elementId,
     "survey",
-    OsmLatLon(0.0,0.0),
+    LatLon(0.0,0.0),
     timestamp,
     isSynced,
     UpdateElementTagsAction(
-        SpatialPartsOfNode(OsmLatLon(0.0,0.0)),
+        SpatialPartsOfNode(LatLon(0.0,0.0)),
         StringMapChanges(listOf(
             StringMapEntryAdd("a", "b"),
             StringMapEntryModify("c", "d", "e"),
@@ -230,11 +230,11 @@ private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) 
     Element.Type.NODE,
     1L,
     "survey",
-    OsmLatLon(0.0,0.0),
+    LatLon(0.0,0.0),
     timestamp,
     isSynced,
     RevertUpdateElementTagsAction(
-        SpatialPartsOfNode(OsmLatLon(0.0,0.0)),
+        SpatialPartsOfNode(LatLon(0.0,0.0)),
         StringMapChanges(listOf(
             StringMapEntryAdd("a", "b"),
             StringMapEntryModify("c", "d", "e"),
@@ -249,7 +249,7 @@ private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = Eleme
     Element.Type.NODE,
     1L,
     "survey",
-    OsmLatLon(0.0,0.0),
+    LatLon(0.0,0.0),
     timestamp,
     isSynced,
     DeletePoiNodeAction(1)
@@ -261,15 +261,15 @@ private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = Elemen
     Element.Type.WAY,
     1L,
     "survey",
-    OsmLatLon(0.0,0.0),
+    LatLon(0.0,0.0),
     timestamp,
     isSynced,
     SplitWayAction(
         arrayListOf(
-            SplitAtPoint(OsmLatLon(0.0,0.0)),
+            SplitAtPoint(LatLon(0.0,0.0)),
             SplitAtLinePosition(
-                OsmLatLon(0.0,0.0),
-                OsmLatLon(1.0,1.0),
+                LatLon(0.0,0.0),
+                LatLon(1.0,1.0),
                 0.5
             )
         ),

@@ -17,8 +17,6 @@ import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.Injector
 
@@ -27,6 +25,7 @@ import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePositio
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.ktx.*
@@ -53,7 +52,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
 
     private lateinit var osmQuestKey: OsmQuestKey
     private lateinit var way: Way
-    private lateinit var positions: List<OsmLatLon>
+    private lateinit var positions: List<LatLon>
     private var clickPos: PointF? = null
 
     private val hasChanges get() = splits.isNotEmpty()
@@ -76,7 +75,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         osmQuestKey = args.getSerializable(ARG_OSM_QUEST_KEY) as OsmQuestKey
         way = args.getSerializable(ARG_WAY) as Way
         val elementGeometry = args.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementPolylinesGeometry
-        positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
+        positions = elementGeometry.polylines.single().map { LatLon(it.latitude, it.longitude) }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -226,7 +225,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
                 val distance = first.distanceTo(second)
                 if (distance > alongTrackDistance && alongTrackDistance > 0) {
                     val delta = alongTrackDistance / distance
-                    result.add(SplitAtLinePosition(OsmLatLon(first), OsmLatLon(second), delta))
+                    result.add(SplitAtLinePosition(first, second, delta))
                 }
             }
         }

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ACTION
@@ -20,6 +19,7 @@ import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.*
@@ -129,7 +129,7 @@ class ElementEditsDao @Inject constructor(
             Element.Type.valueOf(getString(ELEMENT_TYPE)),
             getLong(ELEMENT_ID),
             getString(SOURCE),
-            OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
+            LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
             getLong(CREATED_TIMESTAMP),
             getInt(IS_SYNCED) == 1,
             action

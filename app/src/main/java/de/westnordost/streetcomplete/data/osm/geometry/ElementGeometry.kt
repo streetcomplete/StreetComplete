@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import java.io.Serializable
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 
 /** Information on the geometry of a quest  */

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import org.junit.Before
@@ -115,7 +114,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
 
     @Test fun polylineGeometryPutGet() {
         val polylines = arrayListOf(createSomeLatLons(0.0))
-        val geometry = ElementPolylinesGeometry(polylines, OsmLatLon(1.0, 2.0))
+        val geometry = ElementPolylinesGeometry(polylines, LatLon(1.0, 2.0))
         dao.put(ElementGeometryEntry(Element.Type.WAY, 0, geometry))
         val dbGeometry = dao.get(Element.Type.WAY, 0)
 
@@ -124,7 +123,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
 
     @Test fun polygonGeometryPutGet() {
         val polygons = arrayListOf(createSomeLatLons(0.0), createSomeLatLons(10.0))
-        val geometry = ElementPolygonsGeometry(polygons, OsmLatLon(1.0, 2.0))
+        val geometry = ElementPolygonsGeometry(polygons, LatLon(1.0, 2.0))
         dao.put(ElementGeometryEntry(Element.Type.RELATION, 0, geometry))
         val dbGeometry = dao.get(Element.Type.RELATION, 0)
 
@@ -140,12 +139,12 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
 
     private fun createSimpleGeometry() = createPoint(50.0, 50.0)
 
-    private fun createPoint(lat: Double, lon: Double) = ElementPointGeometry(OsmLatLon(lat, lon))
+    private fun createPoint(lat: Double, lon: Double) = ElementPointGeometry(LatLon(lat, lon))
 
     private fun createSomeLatLons(start: Double): List<LatLon> {
         val result = ArrayList<LatLon>(5)
         for (i in 0..4) {
-            result.add(OsmLatLon(start + i, start + i))
+            result.add(LatLon(start + i, start + i))
         }
         return result
     }

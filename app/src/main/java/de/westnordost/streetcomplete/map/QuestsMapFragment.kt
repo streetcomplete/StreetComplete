@@ -4,7 +4,6 @@ import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
 import androidx.lifecycle.lifecycleScope
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
@@ -14,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey

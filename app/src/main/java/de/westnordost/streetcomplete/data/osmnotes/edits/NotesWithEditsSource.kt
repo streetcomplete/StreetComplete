@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
-import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserStore
 import java.util.*
@@ -128,7 +127,7 @@ import javax.inject.Singleton
     }
 
     private fun NoteEdit.createNote() = Note(
-        position.toLatLon(),
+        position,
         noteId,
         createdTimestamp,
         null,

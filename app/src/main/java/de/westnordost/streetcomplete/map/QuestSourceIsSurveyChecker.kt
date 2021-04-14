@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.widget.CheckBox
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.distanceToArcs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -54,7 +53,7 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
     ): Boolean = withContext(Dispatchers.Default) {
         // suspending because distanceToArcs is slow
         locations.any { location ->
-            val pos = OsmLatLon(location.latitude, location.longitude)
+            val pos = LatLon(location.latitude, location.longitude)
             val polylines: List<List<LatLon>> = when (geometry) {
                 is ElementPolylinesGeometry -> geometry.polylines
                 is ElementPolygonsGeometry -> geometry.polygons

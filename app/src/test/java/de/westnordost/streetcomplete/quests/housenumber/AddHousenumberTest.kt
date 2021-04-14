@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.*
@@ -102,7 +103,7 @@ class AddHousenumberTest {
             OsmWay(1L, 1, NODES2, mapOf(
                 "amenity" to "school"
             )) to POSITIONS2,
-            OsmNode(6L, 1, P6, mapOf(
+            OsmNode(6L, 1, P6.toOsmLatLon(), mapOf(
                 "addr:housenumber" to "123"
             )) to ElementPointGeometry(P6)
         ))

@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.testutils
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmapi.map.data.OsmRelation
 import de.westnordost.osmapi.map.data.OsmRelationMember
@@ -14,6 +11,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
@@ -23,13 +22,13 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.data.osmnotes.toLatLon
+import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.user.User
 import java.util.*
 
-fun p(lat: Double = 0.0, lon: Double = 0.0) = OsmLatLon(lat, lon)
+fun p(lat: Double = 0.0, lon: Double = 0.0) = LatLon(lat, lon)
 
 fun node(
     id: Long = 1,
@@ -37,7 +36,7 @@ fun node(
     tags: Map<String, String>? = null,
     version: Int = 1,
     date: Date? = null
-) = OsmNode(id, version, pos, tags, null, date)
+) = OsmNode(id, version, pos.toOsmLatLon(), tags, null, date)
 
 fun way(
     id: Long = 1,
@@ -74,7 +73,7 @@ fun note(
     position: LatLon = p(0.0, 0.0),
     timestamp: Long = 0,
     comments: List<NoteComment> = listOf(comment("test", NoteComment.Action.OPENED))
-) = Note(position.toLatLon(), id, timestamp, null, Note.Status.OPEN, comments)
+) = Note(position, id, timestamp, null, Note.Status.OPEN, comments)
 
 fun comment(
     text: String,

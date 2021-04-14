@@ -2,10 +2,11 @@ package de.westnordost.streetcomplete.data.osm.geometry
 
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.centerPointOfPolyline
@@ -44,7 +45,7 @@ class ElementGeometryCreator @Inject constructor() {
     }
 
     /** Create an ElementPointGeometry for a node. */
-    fun create(node: Node) = ElementPointGeometry(node.position)
+    fun create(node: Node) = ElementPointGeometry(node.position.toLatLon())
 
     /**
      * Create an ElementGeometry for a way
@@ -241,7 +242,7 @@ private fun MutableList<LatLon>.eliminateDuplicates() {
 private fun MapData.getNodePositions(way: Way): List<LatLon>? {
     return way.nodeIds.map { nodeId ->
         val node = getNode(nodeId) ?: return null
-        node.position
+        node.position.toLatLon()
     }
 }
 

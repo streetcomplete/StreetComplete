@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects.data
 
 import android.annotation.SuppressLint
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 import java.net.URL
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.ktx.format
 import org.json.JSONObject
 
@@ -48,6 +48,6 @@ class TrafficFlowSegmentsApi(private val apiUrl: String) {
             return result
         }
 
-        private fun parseLatLon(pos: JSONObject) = OsmLatLon(pos.getDouble("lat"), pos.getDouble("lon"))
+        private fun parseLatLon(pos: JSONObject) = LatLon(pos.getDouble("lat"), pos.getDouble("lon"))
     }
 }

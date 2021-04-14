@@ -1,15 +1,17 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osmnotes.toBoundingBox
+import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.LatLonRaster
@@ -80,7 +82,7 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
         val addressPositions = LatLonRaster(bbox, 0.0005)
         for (node in addressNodesById.values) {
-            addressPositions.insert(node.position)
+            addressPositions.insert(node.position.toLatLon())
         }
 
         buildings.removeAll { building ->

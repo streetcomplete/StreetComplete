@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
+import de.westnordost.streetcomplete.data.osmnotes.toLatLon
+import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.*
 import java.util.Date
@@ -68,7 +70,7 @@ class SplitWayAction(
         val updatedElements = mutableListOf<Element>()
 
         // step 0: convert list of SplitPolylineAtPosition to list of SplitWay
-        val positions = updatedWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position }
+        val positions = updatedWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position.toLatLon() }
         /* the splits must be sorted strictly from start to end of way because the algorithm may
            insert nodes in the way */
         val sortedSplits = splits.map { it.toSplitWayAt(positions) }.sorted()
@@ -82,7 +84,7 @@ class SplitWayAction(
                     splitAtIndices.add(split.index + insertedNodeCount)
                 }
                 is SplitWayAtLinePosition -> {
-                    val splitNode = OsmNode(idProvider.nextNodeId(), 1, split.pos, null, null, Date())
+                    val splitNode = OsmNode(idProvider.nextNodeId(), 1, split.pos.toOsmLatLon(), null, null, Date())
                     updatedElements.add(splitNode)
 
                     val nodeIndex = split.index2 + insertedNodeCount

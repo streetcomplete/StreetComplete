@@ -2,11 +2,11 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource

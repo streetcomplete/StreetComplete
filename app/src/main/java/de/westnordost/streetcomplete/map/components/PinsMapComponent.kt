@@ -6,8 +6,8 @@ import android.graphics.drawable.BitmapDrawable
 import androidx.annotation.DrawableRes
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Point
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.map.tangram.KtMapController

@@ -7,6 +7,7 @@ import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.osmapi.map.data.RelationMember
 import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.testutils.*
 import org.junit.Test
 
@@ -131,7 +132,7 @@ class ElementGeometryCreatorTest {
         )
         val mapData = MutableMapData(nodes)
         val geom = create(SIMPLE_WAY1, mapData) as ElementPolylinesGeometry
-        assertEquals(listOf(nodes.map { it.position }), geom.polylines)
+        assertEquals(listOf(nodes.map { it.position.toLatLon() }), geom.polylines)
     }
 
     @Test fun `returns null for non-existent way`() {

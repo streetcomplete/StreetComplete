@@ -8,6 +8,7 @@ import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
+import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
@@ -222,7 +223,7 @@ class SplitWayActionTest {
             createTranslated(
                 p1.latitude + 0.5 * (p2.latitude - p1.latitude),
                 p1.longitude + 0.5 * (p2.longitude - p1.longitude)),
-            node.position
+            node.position.toLatLon()
         )
         data.checkWaysNodes(
             listOf(0,1,-1),

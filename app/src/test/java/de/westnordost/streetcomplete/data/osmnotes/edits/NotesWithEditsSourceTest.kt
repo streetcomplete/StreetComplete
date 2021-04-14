@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController

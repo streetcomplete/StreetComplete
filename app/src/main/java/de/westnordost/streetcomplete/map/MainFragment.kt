@@ -30,9 +30,6 @@ import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
@@ -42,6 +39,8 @@ import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
@@ -698,7 +697,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
             locationPointerPin.visibility = View.GONE
             return
         }
-        val displayedPosition = OsmLatLon(location.latitude, location.longitude)
+        val displayedPosition = LatLon(location.latitude, location.longitude)
 
         var target = mapFragment.getClippedPointOf(displayedPosition) ?: return
         windowInsets?.let {

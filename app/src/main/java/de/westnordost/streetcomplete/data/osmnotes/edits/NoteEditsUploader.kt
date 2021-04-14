@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import android.util.Log
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
@@ -100,7 +100,7 @@ class NoteEditsUploader @Inject constructor(
     }
 
     private fun uploadCreateNote(pos: LatLon, text: String): Note =
-        notesApi.create(pos.toLatLon(), text)
+        notesApi.create(pos, text)
 
     private fun uploadCommentNote(noteId: Long, text: String): Note = try {
         notesApi.comment(noteId, text)

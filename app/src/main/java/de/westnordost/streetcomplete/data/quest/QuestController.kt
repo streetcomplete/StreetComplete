@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.quest
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -13,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController

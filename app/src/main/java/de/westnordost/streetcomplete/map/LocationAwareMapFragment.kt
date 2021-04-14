@@ -10,8 +10,7 @@ import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.map.components.CurrentLocationMapComponent
 import kotlin.math.PI
@@ -119,7 +118,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
     fun centerCurrentPosition() {
         val controller = controller ?: return
-        val targetPosition = displayedLocation?.let { OsmLatLon(it.latitude, it.longitude) } ?: return
+        val targetPosition = displayedLocation?.let { LatLon(it.latitude, it.longitude) } ?: return
         controller.updateCameraPosition(600) {
             position = targetPosition
             if (!zoomedYet) {
