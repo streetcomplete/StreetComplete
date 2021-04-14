@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import java.lang.System.currentTimeMillis
-import kotlin.collections.HashMap
 
 sealed class Element {
     abstract val id: Long
@@ -49,10 +48,16 @@ enum class ElementType { NODE, WAY, RELATION }
 
 data class LatLon(val latitude: Double, val longitude: Double) {
     init {
-        require(
-            latitude >= -90.0 && latitude <= +90 &&
-                longitude >= -180 && longitude <= +180
-        ) { "Latitude $latitude, longitude $longitude is not a valid position"}
+        checkValidity(latitude, longitude)
+    }
+
+    companion object {
+        fun checkValidity(latitude: Double, longitude: Double) {
+            require(
+                latitude >= -90.0 && latitude <= +90 &&
+                    longitude >= -180 && longitude <= +180
+            ) { "Latitude $latitude, longitude $longitude is not a valid position"}
+        }
     }
 }
 
