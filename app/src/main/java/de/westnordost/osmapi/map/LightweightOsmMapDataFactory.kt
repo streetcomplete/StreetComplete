@@ -1,7 +1,15 @@
 package de.westnordost.osmapi.map
 
 import de.westnordost.osmapi.changesets.Changeset
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.Node
+import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.osmapi.map.data.OsmRelation
+import de.westnordost.osmapi.map.data.OsmRelationMember
+import de.westnordost.osmapi.map.data.OsmWay
+import de.westnordost.osmapi.map.data.Relation
+import de.westnordost.osmapi.map.data.RelationMember
+import de.westnordost.osmapi.map.data.Way
 import java.util.*
 
 /** Same as OsmMapDataFactory only that it throws away the Changeset data included in the OSM

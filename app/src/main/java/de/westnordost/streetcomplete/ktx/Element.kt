@@ -1,7 +1,14 @@
 package de.westnordost.streetcomplete.ktx
 
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.osmapi.map.data.Node
+import de.westnordost.osmapi.map.data.OsmElement
+import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.osmapi.map.data.OsmRelation
+import de.westnordost.osmapi.map.data.OsmWay
+import de.westnordost.osmapi.map.data.Relation
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import java.util.*

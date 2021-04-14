@@ -3,10 +3,12 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.UpdatedElementsHandler
 import de.westnordost.osmapi.map.changes.DiffElement
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Element.Type.NODE
 import de.westnordost.osmapi.map.data.Element.Type.WAY
 import de.westnordost.osmapi.map.data.Element.Type.RELATION
+import de.westnordost.osmapi.map.data.Relation
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.member

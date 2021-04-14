@@ -10,7 +10,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.osmapi.map.data.OsmWay
 
 import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector

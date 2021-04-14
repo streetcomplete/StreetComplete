@@ -1,6 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.Node
+import de.westnordost.osmapi.map.data.Relation
+import de.westnordost.osmapi.map.data.RelationMember
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.util.distanceTo
 
 /** Only the parts of an element that are used to determine the geometry */

@@ -1,6 +1,14 @@
 package de.westnordost.streetcomplete.testutils
 
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.osmapi.map.data.OsmRelation
+import de.westnordost.osmapi.map.data.OsmRelationMember
+import de.westnordost.osmapi.map.data.OsmWay
+import de.westnordost.osmapi.map.data.RelationMember
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction

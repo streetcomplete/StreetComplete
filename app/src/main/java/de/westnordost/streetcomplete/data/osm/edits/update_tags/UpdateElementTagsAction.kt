@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType

@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry

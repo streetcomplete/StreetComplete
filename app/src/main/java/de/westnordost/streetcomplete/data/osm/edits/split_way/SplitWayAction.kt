@@ -1,8 +1,14 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Element.Type.NODE
 import de.westnordost.osmapi.map.data.Element.Type.WAY
+import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.osmapi.map.data.OsmRelationMember
+import de.westnordost.osmapi.map.data.OsmWay
+import de.westnordost.osmapi.map.data.Relation
+import de.westnordost.osmapi.map.data.RelationMember
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider

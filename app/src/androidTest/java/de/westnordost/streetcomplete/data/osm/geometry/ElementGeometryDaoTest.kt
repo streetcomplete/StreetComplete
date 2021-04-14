@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.OsmLatLon
 import org.junit.Before
 import org.junit.Test
 

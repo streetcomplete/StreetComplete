@@ -2,8 +2,9 @@ package de.westnordost.streetcomplete.data.osm.edits.split_way
 
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.osmapi.map.data.RelationMember
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
