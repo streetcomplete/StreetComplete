@@ -48,7 +48,6 @@ interface NotesApi {
      *
      * @param bounds the area within the notes should be queried. This is usually limited at 25
      *               square degrees. Check the server capabilities.
-     * @param handler The handler which is fed the incoming notes
      * @param limit number of entries returned at maximum. Any value between 1 and 10000
      * @param hideClosedNoteAfter number of days until a closed note should not be shown anymore.
      *                            -1 means that all notes should be returned, 0 that only open notes
@@ -56,6 +55,8 @@ interface NotesApi {
      *
      * @throws OsmQueryTooBigException if the bounds area is too large
      * @throws IllegalArgumentException if the bounds cross the 180th meridian
+     *
+     * @return the incoming notes
      */
-    fun getAll(bounds: BoundingBox, handler: (Note) -> Unit, limit: Int, hideClosedNoteAfter: Int)
+    suspend fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int): List<Note>
 }

@@ -33,13 +33,3 @@ class NotesDownloader @Inject constructor(
         private const val TAG = "NotesDownload"
     }
 }
-
-private suspend fun NotesApi.getAll(
-    bbox: BoundingBox,
-    limit: Int,
-    hideClosedNoteAfter: Int
-): List<Note> = withContext(Dispatchers.IO) {
-    val notes = ArrayList<Note>()
-    getAll(bbox, notes::add, limit, hideClosedNoteAfter)
-    notes
-}

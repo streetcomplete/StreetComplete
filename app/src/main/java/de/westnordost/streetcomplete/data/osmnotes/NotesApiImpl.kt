@@ -1,15 +1,17 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.osmapi.OsmConnection
-import de.westnordost.osmapi.notes.Note as OsmApiNote
-import de.westnordost.osmapi.notes.NoteComment as OsmApiNoteComment
-import de.westnordost.osmapi.notes.NotesDao
-import de.westnordost.osmapi.user.User as OsmApiUser
-import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
-import de.westnordost.osmapi.map.data.LatLon as OsmApiLatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.user.User
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
+import de.westnordost.osmapi.map.data.LatLon as OsmApiLatLon
+import de.westnordost.osmapi.notes.Note as OsmApiNote
+import de.westnordost.osmapi.notes.NoteComment as OsmApiNoteComment
+import de.westnordost.osmapi.user.User as OsmApiUser
 
 // TODO(Flo): Make parameter non-nullable
 open class NotesApiImpl(osm: OsmConnection?) : NotesApi {
@@ -22,10 +24,13 @@ open class NotesApiImpl(osm: OsmConnection?) : NotesApi {
 
     override fun get(id: Long): Note? = notesDao.get(id)?.toNote()
 
-    override fun getAll(bounds: BoundingBox, handler: (Note) -> Unit,
-                        limit: Int, hideClosedNoteAfter: Int) =
-        notesDao.getAll(bounds.toOsmApiBoundingBox(), null, { handler(it.toNote()) },
-            limit, hideClosedNoteAfter)
+    override suspend fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int) =
+        withContext(Dispatchers.IO) {
+            val notes = ArrayList<Note>()
+            notesDao.getAll(bounds.toOsmApiBoundingBox(), null, { notes.add(it.toNote()) },
+                limit, hideClosedNoteAfter)
+            notes
+        }
 }
 
 private fun OsmApiNote.toNote() = Note(
