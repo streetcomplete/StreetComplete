@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data
 import dagger.Module
 import dagger.Provides
 import de.westnordost.osmapi.OsmConnection
-import de.westnordost.osmapi.map.LightweightOsmMapDataFactory
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiImpl
@@ -30,9 +29,5 @@ object OsmApiModule {
 
     @Provides fun notesApi(osm: OsmConnection): NotesApi = NotesApiImpl(osm)
 
-    @Provides fun mapDataDao(osm: OsmConnection): MapDataApi {
-        // generally we are not interested in certain data returned by the OSM API, so we use a
-        // map data factory that does not include that data
-        return MapDataApi(osm, LightweightOsmMapDataFactory())
-    }
+    @Provides fun mapDataApi(osm: OsmConnection): MapDataApi = MapDataApiImpl(osm)
 }
