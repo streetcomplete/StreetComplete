@@ -84,6 +84,9 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
                         "nsl_dual" -> {
                             changes.add("maxspeed", "70 mph")
                         }
+                        "motorway" -> {
+                            changes.add("maxspeed", "70 mph")
+                        }
                     }
                 }
                 changes.add("maxspeed:type", answer.countryCode + ":" + roadType)
