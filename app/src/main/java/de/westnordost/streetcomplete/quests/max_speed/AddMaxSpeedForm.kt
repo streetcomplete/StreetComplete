@@ -225,12 +225,13 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             applyNoSignAnswer(highwayTag)
         } else {
             if (countryInfo.countryCode == "GB") {
-                determineLit(
-                    onYes = { applyNoSignAnswer("nsl_restricted_lit") },
+                askIsDualCarriageway(
+                    onYes = { applyNoSignAnswer("nsl_dual") },
                     onNo = {
-                        askIsDualCarriageway(
-                            onYes = { applyNoSignAnswer("nsl_dual_not_lit") },
-                            onNo = { applyNoSignAnswer("nsl_single_not_lit") })
+                        determineLit(
+                            onYes = { applyNoSignAnswer("nsl_restricted", true) },
+                            onNo = { applyNoSignAnswer("nsl_single", false) }
+                        )
                     }
                 )
             } else {
@@ -281,8 +282,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         }
     }
 
-    private fun applyNoSignAnswer(roadType: String) {
-        applyAnswer(ImplicitMaxSpeed(countryInfo.countryCode, roadType))
+    private fun applyNoSignAnswer(roadType: String, lit: Boolean? = null) {
+        applyAnswer(ImplicitMaxSpeed(countryInfo.countryCode, roadType, lit))
     }
 
     companion object {

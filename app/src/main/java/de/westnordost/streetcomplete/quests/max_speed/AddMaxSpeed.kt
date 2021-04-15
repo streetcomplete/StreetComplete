@@ -56,25 +56,8 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
                 changes.modify("highway", "living_street")
             }
             is ImplicitMaxSpeed -> {
-                var roadType = answer.roadType
                 if (answer.countryCode == "GB") {
                     when(answer.roadType) {
-                        // Lit is either already set or has been answered by the user, so this wouldn't change the value of the lit tag
-                        "nsl_restricted_lit" -> {
-                            roadType = "nsl_restricted"
-                            changes.add("maxspeed", "30 mph")
-                            changes.addOrModify("lit", "yes")
-                        }
-                        "nsl_single_not_lit" -> {
-                            roadType = "nsl_single"
-                            changes.add("maxspeed", "60 mph")
-                            changes.addOrModify("lit", "no")
-                        }
-                        "nsl_dual_not_lit" -> {
-                            roadType = "nsl_dual"
-                            changes.add("maxspeed", "70 mph")
-                            changes.addOrModify("lit", "no")
-                        }
                         "nsl_restricted" -> {
                             changes.add("maxspeed", "30 mph")
                         }
@@ -89,7 +72,15 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
                         }
                     }
                 }
-                changes.add("maxspeed:type", answer.countryCode + ":" + roadType)
+                changes.add("maxspeed:type", answer.countryCode + ":" + answer.roadType)
+                // Lit is either already set or has been answered by the user, so this wouldn't change the value of the lit tag
+                if (answer.lit != null) {
+                    if (answer.lit) {
+                        changes.addOrModify("lit", "yes")
+                    } else {
+                        changes.addOrModify("lit", "no")
+                    }
+                }
             }
         }
     }
