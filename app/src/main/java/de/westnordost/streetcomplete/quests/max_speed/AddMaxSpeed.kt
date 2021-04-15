@@ -56,7 +56,37 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
                 changes.modify("highway", "living_street")
             }
             is ImplicitMaxSpeed -> {
-                changes.add("maxspeed:type", answer.countryCode + ":" + answer.roadType)
+                var roadType = answer.roadType
+                if (answer.countryCode == "GB") {
+                    when(answer.roadType) {
+                        // Lit is either already set or has been answered by the user, so this wouldn't change the value of the lit tag
+                        "nsl_restricted_lit" -> {
+                            roadType = "nsl_restricted"
+                            changes.add("maxspeed", "30 mph")
+                            changes.addOrModify("lit", "yes")
+                        }
+                        "nsl_single_not_lit" -> {
+                            roadType = "nsl_single"
+                            changes.add("maxspeed", "60 mph")
+                            changes.addOrModify("lit", "no")
+                        }
+                        "nsl_dual_not_lit" -> {
+                            roadType = "nsl_dual"
+                            changes.add("maxspeed", "70 mph")
+                            changes.addOrModify("lit", "no")
+                        }
+                        "nsl_restricted" -> {
+                            changes.add("maxspeed", "30 mph")
+                        }
+                        "nsl_single" -> {
+                            changes.add("maxspeed", "60 mph")
+                        }
+                        "nsl_dual" -> {
+                            changes.add("maxspeed", "70 mph")
+                        }
+                    }
+                }
+                changes.add("maxspeed:type", answer.countryCode + ":" + roadType)
             }
         }
     }

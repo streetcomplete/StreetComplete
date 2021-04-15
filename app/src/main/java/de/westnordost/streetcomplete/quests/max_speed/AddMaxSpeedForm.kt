@@ -53,6 +53,9 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         val couldBeLivingStreet = countryInfo.isLivingStreetKnown && MAYBE_LIVING_STREET.contains(highwayTag)
         living_street.isGone = !couldBeLivingStreet
 
+        val couldBeNSL = countryInfo.countryCode == "GB"
+        nsl.isGone = !couldBeNSL
+
         speedTypeSelect.setOnCheckedChangeListener { _, checkedId -> setSpeedType(getSpeedType(checkedId)) }
     }
 
@@ -67,6 +70,10 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
                 confirmNoSign { determineImplicitMaxspeedType() }
         } else if (speedType == LIVING_STREET) {
             applyAnswer(IsLivingStreet)
+        } else if (speedType == NSL) {
+            askIsDualCarriageway(
+                onYes = { applyNoSignAnswer("nsl_dual") },
+                onNo = { applyNoSignAnswer("nsl_single") })
         } else {
             if (userSelectedUnusualSpeed())
                 confirmUnusualInput { applySpeedLimitFormAnswer() }
@@ -76,7 +83,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     override fun isFormComplete() =
-        speedType == NO_SIGN || speedType == LIVING_STREET || getSpeedFromInput() != null
+        speedType == NO_SIGN || speedType == LIVING_STREET || speedType == NSL || getSpeedFromInput() != null
 
     /* ---------------------------------------- With sign --------------------------------------- */
 
@@ -87,9 +94,12 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         speedType?.layoutResId?.let { layoutInflater.inflate(it, rightSideContainer, true) }
 
         // this is necessary because the inflated image view uses the activity context rather than
-        // the fragment / layout inflater context' resources to access it's drawable
-        val img = rightSideContainer.findViewById<ImageView>(R.id.livingStreetImage)
-        img?.setImageDrawable(resources.getDrawable(R.drawable.ic_living_street))
+        // the fragment / layout inflater context' resources to access its drawable
+        val imgLiving = rightSideContainer.findViewById<ImageView>(R.id.livingStreetImage)
+        imgLiving?.setImageDrawable(resources.getDrawable(R.drawable.ic_living_street))
+
+        val imgNSL = rightSideContainer.findViewById<ImageView>(R.id.nationalSpeedLimitImage)
+        imgNSL?.setImageDrawable(resources.getDrawable(R.drawable.ic_national_speed_limit))
 
         speedInput = rightSideContainer.findViewById(R.id.maxSpeedInput)
 
@@ -114,6 +124,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         R.id.sign          -> SIGN
         R.id.zone          -> ZONE
         R.id.living_street -> LIVING_STREET
+        R.id.nsl           -> NSL
         R.id.no_sign       -> NO_SIGN
         else -> null
     }
@@ -122,6 +133,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         SIGN          -> R.layout.quest_maxspeed_sign
         ZONE          -> R.layout.quest_maxspeed_zone_sign
         LIVING_STREET -> R.layout.quest_maxspeed_living_street_sign
+        NSL           -> R.layout.quest_maxspeed_national_speed_limit_sign
         ADVISORY      -> R.layout.quest_maxspeed_advisory
         else -> null
     }
@@ -214,11 +226,11 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         } else {
             if (countryInfo.countryCode == "GB") {
                 determineLit(
-                    onYes = { applyNoSignAnswer("nsl_restricted") },
+                    onYes = { applyNoSignAnswer("nsl_restricted_lit") },
                     onNo = {
                         askIsDualCarriageway(
-                            onYes = { applyNoSignAnswer("nsl_dual") },
-                            onNo = { applyNoSignAnswer("nsl_single") })
+                            onYes = { applyNoSignAnswer("nsl_dual_not_lit") },
+                            onNo = { applyNoSignAnswer("nsl_single_not_lit") })
                     }
                 )
             } else {
@@ -283,5 +295,5 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 }
 
 private enum class SpeedType {
-    SIGN, ZONE, LIVING_STREET, ADVISORY, NO_SIGN
+    SIGN, ZONE, LIVING_STREET, ADVISORY, NO_SIGN, NSL
 }
