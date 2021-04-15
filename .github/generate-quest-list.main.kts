@@ -7,6 +7,7 @@
 @file:DependsOn("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
 @file:Suppress("PLUGIN_IS_NOT_ENABLED")
 
+import kotlin.text.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -27,6 +28,7 @@ val wikiRowSpan2 = " rowspan=\"2\" |"
 main()
 
 fun main() {
+    println("Starting!")
     val questFileContent = sourceDirectory.resolve("quests/QuestModule.kt").readText()
     val questNameRegex = Regex("(?<=^ {8})[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
     val questNames = listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
@@ -127,7 +129,11 @@ fun getQuest(
     wikiQuests: List<WikiQuest>
 ): RepoQuest {
     val file = getQuestFile(questName, questFiles)
+    println(file)
     val questFileContent = file.readText()
+
+    println(getQuestConstants(questFileContent))
+    println(getQuestChanges(questFileContent))
 
     val questions = getQuestTitleStringNames(questName, questFileContent).map { strings[it]!! }
     val wikiOrder = wikiQuests.indexOfFirst { questions.contains(it.question) }
@@ -145,6 +151,22 @@ fun getQuestFile(questName: String, questFiles: List<File>): File {
 
     return questFiles.find { it.path.endsWith("$questName.kt") }
         ?: throw Error("Could not find quest file for quest $questName.")
+}
+
+fun getQuestConstants(questFileContent: String): Map<String, String> {
+//private const val SOUND_SIGNALS = "traffic_signals:sound"
+    val regex = Regex("const val ([^\\s]+)\\s*=\\s*(\"([^\"]+)\")")
+
+    return regex.findAll(questFileContent).map { it.groupValues[1] to it.groupValues[2] }.toMap()
+}
+
+fun getQuestChanges(questFileContent: String): List<List<String>> {
+    //val regex = Regex("changes\\.[^\\(]\"([^\"])\"")
+    //val regex = Regex("changes\\.[^\\(]+\\(\"([^\"]+)\"")
+    val regex = Regex("\\s+changes\\.([^\\(]+)\\(((?>\"[^\"]+\"|[^,\\)]+))(,\\s(?>\"[^\"]+\"|[^\\)]+)|)\\)")
+
+    //return regex.findAll(questFileContent).map { it.groupValues[1], it.groupValues[2], "" }.toList()
+    return regex.findAll(questFileContent).map { it.groupValues.drop(1) }.toList()
 }
 
 fun getQuestTitleStringNames(questName: String, questFileContent: String): List<String> {
