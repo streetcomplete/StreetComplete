@@ -125,10 +125,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 activity?.recreate()
             }
             Prefs.THEME_BACKGROUND -> {
-                Log.wtf("aaa in onSharedPreferenceChanged", "Prefs.THEME_BACKGROUND changed")
-                Log.wtf("aaa in onSharedPreferenceChanged", prefs.getString(Prefs.THEME_BACKGROUND, "DEFAULT"))
-                //val background = Prefs.Background.valueOf(prefs.getString(Prefs.THEME_BACKGROUND, "MAP")!!)
-                //AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
                 activity?.recreate()
             }
             Prefs.RESURVEY_INTERVALS -> {

@@ -173,7 +173,6 @@ open class MapFragment : Fragment(),
     }
 
     private suspend fun reinitializeMapIfNecessary() {
-        Log.wtf("aaa", "reinitializeMapIfNecessary running");
         if (loadedSceneFilePath != null) {
             val sceneFilePath = getSceneFilePath()
             if (sceneFilePath != loadedSceneFilePath) {
@@ -221,20 +220,12 @@ open class MapFragment : Fragment(),
     }
 
     protected open fun getSceneFilePath(): String {
-        Log.wtf("aaa", "getSceneFilePath running")
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
         var scene = if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
-        Log.wtf("aaa in getSceneFilePath", prefsShared.getString(Prefs.THEME_BACKGROUND, "DEFAULT"))
-
-        Log.wtf("aaa in getSceneFilePath before", scene)
-        Log.wtf("aaa in getSceneFilePath before", "${vectorTileProvider.sceneFilePath}/$scene")
-
 
         //val prefs = activity?.getPreferences(Activity.MODE_PRIVATE)
         scene = if (prefsShared.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") scene else "scene-satellite.yaml";
-        Log.wtf("aaa in getSceneFilePath after", scene)
-        Log.wtf("aaa in getSceneFilePath after", "${vectorTileProvider.sceneFilePath}/$scene")
         return "${vectorTileProvider.sceneFilePath}/$scene"
     }
 
