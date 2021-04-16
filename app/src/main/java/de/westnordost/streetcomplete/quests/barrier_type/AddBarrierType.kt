@@ -38,8 +38,6 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
             BarrierType.STILE_STEPOVER -> {
                 changes.addOrModify("stile", "stepover")
             }
-            else -> {
-            };
         }
 
     }
