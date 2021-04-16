@@ -10,6 +10,7 @@
 import kotlin.text.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
 import java.net.URL
@@ -27,6 +28,31 @@ val wikiRowSpan2 = " rowspan=\"2\" |"
 
 main()
 
+@Serializable
+data class Project(val name: String,
+                   val description: String,
+                   val project_url: String,
+                   val doc_url: String,
+                   val icon_url: String,
+                   val contact_name: String)
+
+@Serializable
+data class TaginfoTag(val key: String,
+                      val value: String,
+                      val description: String,
+                      val doc_url: String,
+                      val icon_url: String)
+
+data class TaginfoChange(val key: String,
+                         val value: String,
+                         val change: String)
+
+@Serializable
+data class Base(val data_url: String,
+                val project: Project,
+                val tags: List<TaginfoTag>,
+                val data_format: Int = 1)
+
 fun main() {
     println("Starting!")
     val questFileContent = sourceDirectory.resolve("quests/QuestModule.kt").readText()
@@ -34,13 +60,39 @@ fun main() {
     val questNames = listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
 
     val questFiles = getFilesRecursively(sourceDirectory.resolve("quests/"))
+
+    generateWikiCsv(questNames, questFiles)
+
+    generateTaginfoJson(questNames, questFiles)
+}
+
+fun generateWikiCsv(questNames: List<String>, questFiles: List<File>) {
     val strings = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
     val wikiQuests = parseWikiTable(getWikiTableContent())
     val repoQuests = questNames.mapIndexed { defaultPriority, name ->
-        getQuest(name, defaultPriority, questFiles, strings, wikiQuests)
+        getQuestWiki(name, defaultPriority, questFiles, strings, wikiQuests)
     }.sortedBy { it.wikiOrder }
 
     writeCsvFile(repoQuests, wikiQuests)
+}
+
+fun generateTaginfoJson(questNames: List<String>, questFiles: List<File>) {
+    val project = Project(
+        "StreetComplete",
+        "Surveyor app for Android",
+        "https://github.com/streetcomplete/StreetComplete",
+        "https://wiki.openstreetmap.org/wiki/StreetComplete",
+        "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+        "Peter Newman"
+    )
+
+    val strings = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
+    val taginfoTags = questNames.map { getQuestTaginfo(it, questFiles, strings) }.flatten()
+
+    // TODO(Peter): Populate this
+    val data = Base("foo.json", project, taginfoTags)
+
+    println(Json { encodeDefaults = true; prettyPrint = true }.encodeToString<Base>(data))
 }
 
 data class RepoQuest(
@@ -52,11 +104,8 @@ data class RepoQuest(
     val wikiOrder: Int
 ) {
     val csvString: String get() {
-        val iconsPath = icon.toRelativeString(projectDirectory).replace(" ", "%20")
-        val iconUrl = "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/${iconsPath}"
-
         val wikiOrder = if (wikiOrder == -1) "\"???\"" else wikiOrder + 1
-        return "\"$name\", \"$title\", \"${iconUrl}\", ${defaultPriority + 1}, $wikiOrder"
+        return "\"$name\", \"$title\", \"${getIconUrl(icon)}\", ${defaultPriority + 1}, $wikiOrder"
     }
 }
 
@@ -106,6 +155,11 @@ fun getFilesRecursively(directory: File): List<File> {
     }
 }
 
+fun getIconUrl(icon: File): String {
+        val iconsPath = icon.toRelativeString(projectDirectory).replace(" ", "%20")
+        return "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/${iconsPath}"
+}
+
 fun getStrings(stringsFile: File): Map<String, String> {
     fun normalizeString(string: String) = string
         .trim('"') // strip optional quotes around the string
@@ -121,7 +175,7 @@ fun getStrings(stringsFile: File): Map<String, String> {
     return stringRegex.findAll(stringsContent).map { it.groupValues[1] to normalizeString(it.groupValues[2]) }.toMap()
 }
 
-fun getQuest(
+fun getQuestWiki(
     questName: String,
     defaultPriority: Int,
     questFiles: List<File>,
@@ -129,11 +183,7 @@ fun getQuest(
     wikiQuests: List<WikiQuest>
 ): RepoQuest {
     val file = getQuestFile(questName, questFiles)
-    println(file)
     val questFileContent = file.readText()
-
-    println(getQuestConstants(questFileContent))
-    println(getQuestChanges(questFileContent))
 
     val questions = getQuestTitleStringNames(questName, questFileContent).map { strings[it]!! }
     val wikiOrder = wikiQuests.indexOfFirst { questions.contains(it.question) }
@@ -142,6 +192,62 @@ fun getQuest(
     val icon = getQuestIcon(questName, questFileContent)
 
     return RepoQuest(questName, file, icon, title, defaultPriority, wikiOrder)
+}
+
+fun getQuestTaginfo(
+    questName: String,
+    questFiles: List<File>,
+    strings: Map<String, String>
+): List<TaginfoTag> {
+    val file = getQuestFile(questName, questFiles)
+    println(file)
+    val questFileContent = file.readText()
+
+    val questConstants = getQuestConstants(questFileContent)
+    println(questConstants)
+    var questChanges = getQuestChanges(questFileContent)
+    println(questChanges)
+
+    val stringCheck = Regex("^\".+\"$")
+
+    val allChanges = mutableListOf<TaginfoChange>()
+    for (it in questChanges) {
+      println(it)
+      // TODO: Rather than just dropping non-quote ones, ideally we need to deal with their variable names
+      // Substitute any quest constants
+      var key = questConstants.getOrDefault(it[1], it[1])
+      if (!stringCheck.matches(key)) {
+        println(key + " is not a string")
+        continue
+      } else {
+        key = key.trim('"')
+      }
+      // Tidy up some dodgy capturing
+      // TODO(Peter): Fix this at source
+      var value = it[2].replace("^,\\s+".toRegex(), "").trim('(')
+      var change = it[0]
+      if (Regex("\\.toYesNo$").containsMatchIn(value)) {
+        // Add both variants
+        allChanges.add(TaginfoChange(key, "yes", change))
+        allChanges.add(TaginfoChange(key, "no", change))
+      } else {
+        if (!stringCheck.matches(value)) {
+          println(value + " is not a string")
+          continue
+        } else {
+          value = value.trim('"')
+        }
+        allChanges.add(TaginfoChange(key, value, change))
+      }
+    }
+    println(allChanges)
+
+    val questions = getQuestTitleStringNames(questName, questFileContent).map { strings[it]!! }
+    val title = questions.last()
+
+    val iconUrl = getIconUrl(getQuestIcon(questName, questFileContent))
+
+    return allChanges.map { TaginfoTag(it.key, it.value, it.change + " - " + title + " - " + questName, file.toString(), iconUrl)}
 }
 
 fun getQuestFile(questName: String, questFiles: List<File>): File {
@@ -157,7 +263,7 @@ fun getQuestConstants(questFileContent: String): Map<String, String> {
 //private const val SOUND_SIGNALS = "traffic_signals:sound"
     val regex = Regex("const val ([^\\s]+)\\s*=\\s*(\"([^\"]+)\")")
 
-    return regex.findAll(questFileContent).map { it.groupValues[1] to it.groupValues[2] }.toMap()
+    return regex.findAll(questFileContent).associate { it -> it.groupValues[1] to it.groupValues[2] }
 }
 
 fun getQuestChanges(questFileContent: String): List<List<String>> {
