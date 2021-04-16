@@ -125,7 +125,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 activity?.recreate()
             }
             Prefs.THEME_BACKGROUND -> {
-                activity?.recreate()
+                activity?.recreate() // is it really needed
             }
             Prefs.RESURVEY_INTERVALS -> {
                 resurveyIntervalsUpdater.update()
