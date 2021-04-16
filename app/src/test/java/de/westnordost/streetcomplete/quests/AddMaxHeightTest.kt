@@ -1,16 +1,48 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.max_height.*
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
 
 class AddMaxHeightTest {
 
     private val questType = AddMaxHeight()
+
+    @Test fun `applicable to parking entrance node that is a vertex of a road`() {
+        val parkingEntrance = OsmNode(2L, 1, OsmLatLon(0.0,0.0), mapOf(
+            "amenity" to "parking_entrance",
+            "parking" to "underground"
+        ))
+        val road = OsmWay(1L, 1, listOf(1,2), mapOf(
+            "highway" to "service"
+        ))
+
+        val mapData = TestMapDataWithGeometry(listOf(road, parkingEntrance))
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(parkingEntrance))
+    }
+
+    @Test fun `not applicable to parking entrance node that is not vertex of a road`() {
+        val parkingEntrance = OsmNode(2L, 1, OsmLatLon(0.0,0.0), mapOf(
+            "amenity" to "parking_entrance",
+            "parking" to "underground"
+        ))
+        val footway = OsmWay(1L, 1, listOf(1,2), mapOf(
+            "highway" to "footway"
+        ))
+
+        val mapData = TestMapDataWithGeometry(listOf(footway, parkingEntrance))
+
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(parkingEntrance))
+    }
 
     @Test fun `applicable to road below bridge`() {
         val mapData = TestMapDataWithGeometry(listOf(
