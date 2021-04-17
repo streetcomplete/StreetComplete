@@ -122,7 +122,7 @@ fun Relation.toOsmApiRelation(): OsmApiRelation = OsmRelation(
 // TODO(Flo): Make this private
 fun OsmApiRelation.toRelation(): Relation = Relation(
     id,
-    members.map { it.toRelationMember() },
+    members.map { it.toRelationMember() }.toMutableList(),
     tags,
     version,
     dateEdited.time

@@ -8,6 +8,9 @@ sealed class Element {
     abstract val tags: Map<String, String>
     abstract val timestampEdited: Long
     abstract val type: ElementType
+
+    var isModified: Boolean = false
+    var isDeleted: Boolean = false
 }
 
 data class Node(
@@ -34,7 +37,7 @@ data class Way(
 
 data class Relation(
     override val id: Long,
-    val members: List<RelationMember>,
+    val members: MutableList<RelationMember>,
     override val tags: Map<String, String> = HashMap(0),
     override val version: Int = 1,
     override val timestampEdited: Long = currentTimeMillis()
@@ -60,5 +63,3 @@ data class LatLon(val latitude: Double, val longitude: Double) {
         }
     }
 }
-
-// TODO is modified, isdeleted, is new
