@@ -28,7 +28,7 @@ class AddBarrierTypeForm : AImageListQuestAnswerFragment<BarrierType, BarrierTyp
         Item(STILE_SQUEEZER, R.drawable.barrier_stile_squeezer, R.string.quest_barrier_type_stile_squeezer),
         Item(STILE_LADDER, R.drawable.barrier_stile_ladder, R.string.quest_barrier_type_stile_ladder),
         Item(STILE_STEPOVER, R.drawable.barrier_stile_stepover, R.string.quest_barrier_type_stepover),
-        Item(KISSING_GATE, R.drawable.barrier_kissing_gate, R.string.quest_barrier_type_kissing_gate), //Is "kissing gate" a clear term or something deeply technical? If it should be replaced - how to describe it more clearly?
+        Item(KISSING_GATE, R.drawable.barrier_kissing_gate, R.string.quest_barrier_type_kissing_gate), // more clear short description would be better :(
         Item(BICYCLE_BARRIER, R.drawable.barrier_bicycle_barrier, R.string.quest_barrier_type_bicycle_barrier),
     )
 
