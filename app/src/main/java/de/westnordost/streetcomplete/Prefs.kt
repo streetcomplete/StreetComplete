@@ -53,11 +53,6 @@ object Prefs {
         SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
     }
 
-    /*
-    enum class Background {
-        MAP, AERIAL_ESRI
-    }
-    */
     enum class ResurveyIntervals {
         LESS_OFTEN, DEFAULT, MORE_OFTEN
     }
