@@ -223,8 +223,10 @@ open class MapFragment : Fragment(),
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
         val isAerialView = prefsShared.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
 
-        val scene = if (isAerialView) "scene-satellite.yaml" else {
-            if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
+        val scene = when {
+            isAerialView -> "scene-satellite.yaml"
+            isNightMode -> "scene-dark.yaml"
+            else -> "scene-light.yaml"
         }
 
         return "${vectorTileProvider.sceneFilePath}/$scene"
