@@ -221,10 +221,12 @@ open class MapFragment : Fragment(),
     protected open fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        var scene = if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
+        val isAerialView = prefsShared.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL_ESRI"
 
-        //val prefs = activity?.getPreferences(Activity.MODE_PRIVATE)
-        scene = if (prefsShared.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") scene else "scene-satellite.yaml";
+        val scene = if (isAerialView) "scene-satellite.yaml" else {
+            if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
+        }
+
         return "${vectorTileProvider.sceneFilePath}/$scene"
     }
 
