@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.bike_parking_type
+package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
