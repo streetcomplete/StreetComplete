@@ -124,9 +124,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
                 activity?.recreate()
             }
-            Prefs.THEME_BACKGROUND -> {
-                activity?.recreate() // is it really needed
-            }
             Prefs.RESURVEY_INTERVALS -> {
                 resurveyIntervalsUpdater.update()
             }
