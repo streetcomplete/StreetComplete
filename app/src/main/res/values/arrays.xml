@@ -43,6 +43,6 @@
 
     <string-array name="pref_entryvalues_background_type_select" translatable="false">
         <item>MAP</item>
-        <item>AERIAL_ESRI</item>
+        <item>AERIAL</item>
     </string-array>
 </resources>

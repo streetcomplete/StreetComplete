@@ -221,7 +221,7 @@ open class MapFragment : Fragment(),
     protected open fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val isAerialView = prefsShared.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL_ESRI"
+        val isAerialView = prefsShared.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
 
         val scene = if (isAerialView) "scene-satellite.yaml" else {
             if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
