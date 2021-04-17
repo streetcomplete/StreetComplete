@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.geometry
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.util.Serializer
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.ELEMENT_ID
@@ -23,6 +22,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.TEMP
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.TEMPORARY_LOOKUP_MERGED_VIEW_CREATE
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.*
 
@@ -35,13 +35,13 @@ class ElementGeometryDao @Inject constructor(
         db.replace(NAME, entry.toPairs())
     }
 
-    fun get(type: Element.Type, id: Long): ElementGeometry? =
+    fun get(type: ElementType, id: Long): ElementGeometry? =
         db.queryOne(NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
             args = arrayOf(type.name, id)
         ) { it.toElementGeometry() }
 
-    fun delete(type: Element.Type, id: Long): Boolean =
+    fun delete(type: ElementType, id: Long): Boolean =
         db.delete(NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
             args = arrayOf(type.name, id)
@@ -128,7 +128,7 @@ class ElementGeometryDao @Inject constructor(
     ) + geometry.toPairs()
 
     private fun CursorPosition.toElementGeometryEntry() = ElementGeometryEntry(
-        Element.Type.valueOf(getString(ELEMENT_TYPE)),
+        ElementType.valueOf(getString(ELEMENT_TYPE)),
         getLong(ELEMENT_ID),
         toElementGeometry()
     )
@@ -165,12 +165,12 @@ private fun inBoundsSql(bbox: BoundingBox) = """
 """.trimIndent()
 
 private fun CursorPosition.toElementKey() = ElementKey(
-    Element.Type.valueOf(getString(ELEMENT_TYPE)),
+    ElementType.valueOf(getString(ELEMENT_TYPE)),
     getLong(ELEMENT_ID)
 )
 
 data class ElementGeometryEntry(
-    val elementType: Element.Type,
+    val elementType: ElementType,
     val elementId: Long,
     val geometry: ElementGeometry
 )

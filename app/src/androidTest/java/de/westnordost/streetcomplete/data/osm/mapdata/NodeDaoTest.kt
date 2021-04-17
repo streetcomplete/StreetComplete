@@ -4,13 +4,9 @@ import org.junit.Before
 import org.junit.Test
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import java.lang.System.currentTimeMillis
-import java.util.Date
-
 
 class NodeDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NodeDao
@@ -96,4 +92,4 @@ private fun nd(
     lon: Double = 2.0,
     tags: Map<String,String>? = emptyMap(),
     timestamp: Long = 123
-) = OsmNode(id, version, lat, lon, tags, null, Date(timestamp))
+) = Node(id, LatLon(lat, lon), tags ?: emptyMap(), version, timestamp)

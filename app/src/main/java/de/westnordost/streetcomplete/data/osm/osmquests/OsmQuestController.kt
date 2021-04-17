@@ -4,15 +4,11 @@ import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.countryboundaries.intersects
 import de.westnordost.countryboundaries.isInAny
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey

@@ -1,43 +1,35 @@
 package de.westnordost.streetcomplete.ktx
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Element.Type.*
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.OsmElement
-import de.westnordost.osmapi.map.data.OsmNode
-import de.westnordost.osmapi.map.data.OsmRelation
-import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import java.util.*
-import kotlin.collections.HashMap
 
-fun Element.copy(newId: Long = id, newVersion: Int = version, newDateEdited: Date? = dateEdited): OsmElement {
-    val tags = tags?.let { HashMap(it) }
+fun Element.copy(
+    newId: Long = id,
+    newVersion: Int = version,
+    newTimestampEdited: Long = timestampEdited,
+    newTags: Map<String, String> = tags,
+): Element {
     return when (this) {
-        is Node -> OsmNode(newId, newVersion, position, tags, null, newDateEdited)
-        is Way -> OsmWay(newId, newVersion, ArrayList(nodeIds), tags, null, newDateEdited)
-        is Relation -> OsmRelation(newId, newVersion, ArrayList(members), tags, null, newDateEdited)
-        else -> throw RuntimeException()
+        is Node -> Node(newId, position, newTags, newVersion, newTimestampEdited)
+        is Way -> Way(newId, ArrayList(nodeIds), newTags, newVersion, newTimestampEdited)
+        is Relation -> Relation(newId, ArrayList(members), newTags, newVersion, newTimestampEdited)
     }
 }
 
-fun Way.isClosed() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
-
 val Element.geometryType: GeometryType get() =
     when {
-        type == NODE -> GeometryType.POINT
+        type == ElementType.NODE -> GeometryType.POINT
         isArea() -> GeometryType.AREA
-        type == RELATION -> GeometryType.RELATION
+        type == ElementType.RELATION -> GeometryType.RELATION
         else -> GeometryType.LINE
     }
 
 fun Element.isArea(): Boolean {
     return when(this) {
-        is Way -> isClosed() && IS_AREA_EXPR.matches(this)
-        is Relation -> tags?.get("type") == "multipolygon"
+        is Way -> isClosed && IS_AREA_EXPR.matches(this)
+        is Relation -> tags["type"] == "multipolygon"
         else -> false
     }
 }

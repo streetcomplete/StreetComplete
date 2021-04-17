@@ -1,10 +1,6 @@
 package de.westnordost.osmapi.map
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 
 interface MapData : Iterable<Element> {
     val nodes: Collection<Node>

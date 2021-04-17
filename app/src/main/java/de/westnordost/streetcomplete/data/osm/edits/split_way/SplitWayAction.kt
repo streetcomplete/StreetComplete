@@ -1,23 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Element.Type.NODE
-import de.westnordost.osmapi.map.data.Element.Type.WAY
-import de.westnordost.osmapi.map.data.OsmNode
-import de.westnordost.osmapi.map.data.OsmRelationMember
-import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.RelationMember
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.osmnotes.toLatLon
-import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.*
-import java.util.Date
 import kotlin.collections.ArrayList
 
 /** Action that performs a split on a way.
@@ -49,7 +37,7 @@ class SplitWayAction(
         val way = element as Way
         val completeWay = mapDataRepository.getWayComplete(way.id)
 
-        val updatedWay = completeWay?.getWay(way.id)
+        var updatedWay = completeWay?.getWay(way.id)
             ?: throw ConflictException("Way #${way.id} has been deleted")
 
         /* unsolvable conflict if updated way was shortened (e.g. cut in two) or extended because
@@ -64,13 +52,13 @@ class SplitWayAction(
             throw ConflictException("Way #${way.id} has been changed and the conflict cannot be solved automatically")
         }
 
-        if(updatedWay.isClosed() && splits.size < 2)
+        if(updatedWay.isClosed && splits.size < 2)
             throw ConflictException("Must specify at least two split positions for a closed way")
 
         val updatedElements = mutableListOf<Element>()
 
         // step 0: convert list of SplitPolylineAtPosition to list of SplitWay
-        val positions = updatedWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position.toLatLon() }
+        val positions = updatedWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position }
         /* the splits must be sorted strictly from start to end of way because the algorithm may
            insert nodes in the way */
         val sortedSplits = splits.map { it.toSplitWayAt(positions) }.sorted()
@@ -84,11 +72,13 @@ class SplitWayAction(
                     splitAtIndices.add(split.index + insertedNodeCount)
                 }
                 is SplitWayAtLinePosition -> {
-                    val splitNode = OsmNode(idProvider.nextNodeId(), 1, split.pos.toOsmLatLon(), null, null, Date())
+                    val splitNode = Node(idProvider.nextNodeId(), split.pos, emptyMap(), 1)
                     updatedElements.add(splitNode)
 
                     val nodeIndex = split.index2 + insertedNodeCount
-                    updatedWay.nodeIds.add(nodeIndex, splitNode.id)
+                    val nodeIds = updatedWay.nodeIds.toMutableList()
+                    nodeIds.add(nodeIndex, splitNode.id)
+                    updatedWay = updatedWay.copy(nodeIds = nodeIds)
                     splitAtIndices.add(nodeIndex)
                     ++insertedNodeCount
                 }
@@ -146,15 +136,15 @@ private fun splitWayAtIndices(
        way. The chunk with the most nodes is selected for this.
        This is the same behavior as JOSM and Vespucci. */
     val indexOfChunkToKeep = nodesChunks.indexOfMaxBy { it.size }
-    val tags = originalWay.tags?.toMutableMap()
-    tags?.let { removeTagsThatArePotentiallyWrongAfterSplit(tags) }
+    val tags = originalWay.tags.toMutableMap()
+    removeTagsThatArePotentiallyWrongAfterSplit(tags)
 
     return nodesChunks.mapIndexed { index, nodes ->
         if(index == indexOfChunkToKeep) {
-            OsmWay(originalWay.id, originalWay.version, nodes, tags, null, Date()).apply { isModified = true }
+            Way(originalWay.id, nodes, tags, originalWay.version).apply { isModified = true }
         }
         else {
-            OsmWay(idProvider.nextWayId(), 0, nodes, tags, null, Date())
+            Way(idProvider.nextWayId(), nodes, tags, 0)
         }
     }
 }
@@ -214,7 +204,7 @@ private fun updateRelationsWithNewWays(
            relation members list. */
         for(i in relation.members.size - 1 downTo 0) {
             val relationMember = relation.members[i]
-            if (relationMember.type == WAY && relationMember.ref == originalWay.id) {
+            if (relationMember.type == ElementType.WAY && relationMember.ref == originalWay.id) {
                 updateRelation(relation, i, originalWay, newWays, mapDataRepository)
                 result.add(relation)
             }
@@ -242,7 +232,7 @@ private fun updateRelation(
         if (viaNodeIds.isNotEmpty()) {
             val newWay = newWays.find { viaNodeIds.containsAny(it.nodeIds.firstAndLast()) }
             if (newWay != null) {
-                val newRelationMember = OsmRelationMember(newWay.id, originalWayRole, WAY)
+                val newRelationMember = RelationMember(ElementType.WAY, newWay.id, originalWayRole)
                 relation.members[indexOfWayInRelation] = newRelationMember
                 return
             }
@@ -251,7 +241,7 @@ private fun updateRelation(
     /* for any (non-special, see above) relation, the new way chunks that replace the original
        way must be all inserted into each relation.  In the correct order, if the relation is
        ordered at all. */
-    val newRelationMembers = newWays.map { way -> OsmRelationMember(way.id, originalWayRole, WAY) }.toMutableList()
+    val newRelationMembers = newWays.map { way -> RelationMember(ElementType.WAY, way.id, originalWayRole) }.toMutableList()
     val isOrientedBackwards = originalWay.isOrientedForwardInOrderedRelation(relation, indexOfWayInRelation, mapDataRepository) == false
     if (isOrientedBackwards) newRelationMembers.reverse()
 
@@ -268,9 +258,9 @@ private fun Relation.fetchViaNodeIds(mapDataRepository: MapDataRepository): Set<
     val vias = findVias()
     val nodeIds = mutableSetOf<Long>()
     for (via in vias) {
-        if (via.type == NODE) {
+        if (via.type == ElementType.NODE) {
             nodeIds.add(via.ref)
-        } else if (via.type == WAY) {
+        } else if (via.type == ElementType.WAY) {
             val way = mapDataRepository.getWay(via.ref)
             if (way != null) nodeIds.addAll(way.nodeIds.firstAndLast())
         }
@@ -284,14 +274,14 @@ private fun Way.isOrientedForwardInOrderedRelation(
     indexInRelation: Int,
     mapDataRepository: MapDataRepository
 ): Boolean? {
-    val wayIdBefore = relation.members.findPrevious(indexInRelation) { it.type == WAY }?.ref
+    val wayIdBefore = relation.members.findPrevious(indexInRelation) { it.type == ElementType.WAY }?.ref
     val wayBefore = wayIdBefore?.let { mapDataRepository.getWay(it) }
     if (wayBefore != null) {
         if (isAfterWayInChain(wayBefore)) return true
         if (isBeforeWayInChain(wayBefore)) return false
     }
 
-    val wayIdAfter = relation.members.findNext(indexInRelation+1) { it.type == WAY }?.ref
+    val wayIdAfter = relation.members.findNext(indexInRelation+1) { it.type == ElementType.WAY }?.ref
     val wayAfter = wayIdAfter?.let { mapDataRepository.getWay(it) }
     if (wayAfter != null) {
         if (isBeforeWayInChain(wayAfter)) return true
@@ -303,8 +293,8 @@ private fun Way.isOrientedForwardInOrderedRelation(
 
 /** Return all relation members that fill the "via" role in a "restriction" or similar relation */
 private fun Relation.findVias(): List<RelationMember> {
-    val type = tags?.get("type") ?: ""
-    val nodesAndWays = members.filter { it.type == NODE || it.type == WAY }
+    val type = tags["type"] ?: ""
+    val nodesAndWays = members.filter { it.type == ElementType.NODE || it.type == ElementType.WAY }
     return when (type) {
         "destination_sign" -> {
             nodesAndWays.filter { it.role == "intersection" }.takeUnless { it.isEmpty() }

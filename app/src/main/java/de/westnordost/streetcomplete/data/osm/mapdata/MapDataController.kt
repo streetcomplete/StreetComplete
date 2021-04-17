@@ -3,11 +3,8 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import android.util.Log
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.geometry.*
+import de.westnordost.streetcomplete.data.toElementType
 import de.westnordost.streetcomplete.ktx.format
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -100,10 +97,10 @@ import javax.inject.Singleton
         val missingWayIds = mutableListOf<Long>()
         for (relation in mapData.relations) {
             for (member in relation.members) {
-                if (member.type == Element.Type.NODE && mapData.getNode(member.ref) == null) {
+                if (member.type == ElementType.NODE && mapData.getNode(member.ref) == null) {
                     missingNodeIds.add(member.ref)
                 }
-                if (member.type == Element.Type.WAY && mapData.getWay(member.ref) == null) {
+                if (member.type == ElementType.WAY && mapData.getWay(member.ref) == null) {
                     missingWayIds.add(member.ref)
                 }
             }
@@ -122,9 +119,9 @@ import javax.inject.Singleton
         mapData.addAll(ways)
     }
 
-    fun get(type: Element.Type, id: Long) : Element? = elementDB.get(type, id)
+    fun get(type: ElementType, id: Long) : Element? = elementDB.get(type, id)
 
-    fun getGeometry(type: Element.Type, id: Long) : ElementGeometry? = geometryDB.get(type, id)
+    fun getGeometry(type: ElementType, id: Long) : ElementGeometry? = geometryDB.get(type, id)
 
     fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> =
         geometryDB.getAllEntries(keys)

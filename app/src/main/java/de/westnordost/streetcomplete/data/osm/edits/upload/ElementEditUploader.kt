@@ -3,12 +3,13 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ApiMapDataRepository
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import javax.inject.Inject
 
@@ -48,8 +49,8 @@ class ElementEditUploader @Inject constructor(
     }
 
     private fun ElementEdit.fetchElement() = when (elementType) {
-        Element.Type.NODE     -> mapDataApi.getNode(elementId)
-        Element.Type.WAY      -> mapDataApi.getWay(elementId)
-        Element.Type.RELATION -> mapDataApi.getRelation(elementId)
+        ElementType.NODE     -> mapDataApi.getNode(elementId)
+        ElementType.WAY      -> mapDataApi.getWay(elementId)
+        ElementType.RELATION -> mapDataApi.getRelation(elementId)
     }
 }

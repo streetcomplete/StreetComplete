@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.edits.delete
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.ktx.copy
 
 /** Action that deletes a POI node.
  *
@@ -34,18 +33,18 @@ class DeletePoiNodeAction(
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): Collection<Element> {
-        val node = element.copy() as OsmNode
+        var node = element as Node
 
         if (node.version > originalNodeVersion) throw ConflictException()
 
         // delete free-floating node
         if (mapDataRepository.getWaysForNode(node.id).isEmpty() &&
             mapDataRepository.getRelationsForNode(node.id).isEmpty()) {
-            node.isDeleted = true
+            node = node.copy().apply { isDeleted = true }
         }
         // if it is a vertex in a way or has a role in a relation: just clear the tags then
         else {
-            node.tags.clear()
+            node = node.copy(tags = emptyMap())
         }
 
         return listOf(node)

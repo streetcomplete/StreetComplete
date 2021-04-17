@@ -3,15 +3,11 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
-import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.intersect
 import java.util.concurrent.CopyOnWriteArrayList
@@ -147,14 +143,14 @@ import javax.inject.Singleton
         elementEditsController.addListener(elementEditsListener)
     }
 
-    @Synchronized fun get(type: Element.Type, id: Long): Element? {
+    @Synchronized fun get(type: ElementType, id: Long): Element? {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
         return updatedElements[key] ?: mapDataController.get(type, id)
     }
 
-    @Synchronized fun getGeometry(type: Element.Type, id: Long): ElementGeometry? {
+    @Synchronized fun getGeometry(type: ElementType, id: Long): ElementGeometry? {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
@@ -286,7 +282,7 @@ import javax.inject.Singleton
 
     override fun getRelationsForRelation(id: Long): Collection<Relation> = getRelationsForElement(RELATION, id)
 
-    @Synchronized fun getRelationsForElement(type: Element.Type, id: Long): Collection<Relation> {
+    @Synchronized fun getRelationsForElement(type: ElementType, id: Long): Collection<Relation> {
         val relationsById = HashMap<Long, Relation>()
         val relations = when(type) {
             NODE -> mapDataController.getRelationsForNode(id)
@@ -391,7 +387,6 @@ import javax.inject.Singleton
                 val relationMapData = getRelationElements(element)
                 elementGeometryCreator.create(element, relationMapData, true)
             }
-            else -> throw IllegalStateException()
         }
     }
 

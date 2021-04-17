@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import java.util.*
 
 abstract class CompareElementAge(private val dateFilter: DateFilter) : ElementFilter {
@@ -13,8 +13,8 @@ abstract class CompareElementAge(private val dateFilter: DateFilter) : ElementFi
     override fun toString() = toOverpassQLString()
 
     override fun matches(obj: Element?): Boolean {
-        val dateElementEdited = obj?.dateEdited ?: return false
-        return compareTo(dateElementEdited)
+        val timestampEdited = obj?.timestampEdited ?: return false
+        return compareTo(Date(timestampEdited))
     }
 
     abstract fun compareTo(tagValue: Date): Boolean

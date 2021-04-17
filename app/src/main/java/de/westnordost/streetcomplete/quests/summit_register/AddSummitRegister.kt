@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.summit_register
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
@@ -44,7 +43,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         if (peaks.isEmpty()) return emptyList()
 
         val hikingRoutes = mapData.relations
-            .filter { it.tags?.get("route") == "hiking" }
+            .filter { it.tags["route"] == "hiking" }
             .mapNotNull { mapData.getRelationGeometry(it.id) as? ElementPolylinesGeometry }
         if (hikingRoutes.isEmpty()) return emptyList()
 
@@ -52,7 +51,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         return peaks.filter { peak ->
             hikingRoutes.any { hikingRoute ->
                 hikingRoute.polylines.any { ways ->
-                    peak.position.toLatLon().distanceToArcs(ways) <= 10
+                    peak.position.distanceToArcs(ways) <= 10
                 }
             }
         }

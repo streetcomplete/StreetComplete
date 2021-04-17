@@ -2,13 +2,12 @@ package de.westnordost.streetcomplete.data.osm.edits.split_way
 
 import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.Element.Type.*
-import de.westnordost.osmapi.map.data.RelationMember
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.osmnotes.toLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
@@ -223,7 +222,7 @@ class SplitWayActionTest {
             createTranslated(
                 p1.latitude + 0.5 * (p2.latitude - p1.latitude),
                 p1.longitude + 0.5 * (p2.longitude - p1.longitude)),
-            node.position.toLatLon()
+            node.position
         )
         data.checkWaysNodes(
             listOf(0,1,-1),
@@ -512,7 +511,7 @@ class SplitWayActionTest {
         val relation = data.relations.single()
         assertEquals(3, relation.members.size)
 
-        val relationMember = relation.members[0]!!
+        val relationMember = relation.members[0]
         val newWay = data.getWay(relationMember.ref)!!
         assertEquals(listOf<Long>(-1,2,3), newWay.nodeIds.toList())
         assertEquals(role, relationMember.role)
@@ -551,7 +550,7 @@ class SplitWayActionTest {
         val relation = data.relations.single()
         assertEquals(3, relation.members.size)
 
-        val fromRelationMember = relation.members[0]!!
+        val fromRelationMember = relation.members[0]
         val fromWay = data.getWay(fromRelationMember.ref)!!
         assertEquals(listOf<Long>(-1,2,3), fromWay.nodeIds.toList())
         assertEquals(role, fromRelationMember.role)
@@ -576,7 +575,7 @@ class SplitWayActionTest {
         val relation = data.relations.single()
         assertEquals(4, relation.members.size)
 
-        val fromRelationMember = relation.members[0]!!
+        val fromRelationMember = relation.members[0]
         val fromWay = data.getWay(fromRelationMember.ref)!!
         assertEquals(listOf<Long>(2,3), fromWay.nodeIds.toList())
         assertEquals("from", fromRelationMember.role)

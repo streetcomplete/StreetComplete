@@ -4,9 +4,9 @@ import android.content.res.Resources
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.edithistory.*
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
@@ -125,7 +125,7 @@ private fun Map<String, String>.toEditKey(): EditKey? = when(get(MARKER_EDIT_TYP
         NoteEditKey(getValue(MARKER_ID).toLong())
     EDIT_TYPE_HIDE_OSM_QUEST ->
         OsmQuestHiddenKey(OsmQuestKey(
-            getValue(MARKER_ELEMENT_TYPE).let { Element.Type.valueOf(it) },
+            getValue(MARKER_ELEMENT_TYPE).let { ElementType.valueOf(it) },
             getValue(MARKER_ELEMENT_ID).toLong(),
             getValue(MARKER_QUEST_TYPE)
         ))

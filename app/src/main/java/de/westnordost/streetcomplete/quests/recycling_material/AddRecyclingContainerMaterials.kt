@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.recycling_material
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
@@ -10,8 +9,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
@@ -48,15 +47,15 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
          * certain materials are already recycled in that other container */
         val containerPositions = LatLonRaster(bbox, 0.0005)
         for (container in containers) {
-            containerPositions.insert(container.position.toLatLon())
+            containerPositions.insert(container.position)
         }
 
         val minDistance = 20.0
         return eligibleContainers.filter { container ->
-            val nearbyBounds = container.position.toLatLon().enclosingBoundingBox(minDistance)
+            val nearbyBounds = container.position.enclosingBoundingBox(minDistance)
             val nearbyContainerPositions = containerPositions.getAll(nearbyBounds)
             // only finds one position = only found self -> no other container is near
-            nearbyContainerPositions.count { container.position.toLatLon().distanceTo(it) <= minDistance } == 1
+            nearbyContainerPositions.count { container.position.distanceTo(it) <= minDistance } == 1
         }
     }
 

@@ -1,21 +1,21 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
-import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
-import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.eq
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.on
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -112,7 +112,7 @@ class ElementEditsUploaderTest {
 
         verify(elementEditsController).syncFailed(edit)
         verify(mapDataController).updateAll(eq(ElementUpdates(
-            deleted = listOf(ElementKey( Element.Type.NODE, 1L))
+            deleted = listOf(ElementKey( ElementType.NODE, 1L))
         )))
 
         verify(statisticsUpdater, never()).addOne(any(), any())

@@ -1,11 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.data.Way
-import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.streetcomplete.data.Database
-
 import javax.inject.Inject
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.INDEX
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.LAST_SYNC
@@ -18,7 +15,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME_NODES
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 import java.lang.System.currentTimeMillis
-import java.util.Date
 
 /** Stores OSM ways */
 class WayDao @Inject constructor(
@@ -59,8 +55,8 @@ class WayDao @Inject constructor(
                     arrayOf(
                         way.id,
                         way.version,
-                        way.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
-                        way.dateEdited.time,
+                        serializer.toBytes(HashMap<String, String>(way.tags)),
+                        way.timestampEdited,
                         time
                     )
                 }
@@ -78,15 +74,13 @@ class WayDao @Inject constructor(
             nodeIds.add(c.getLong(NODE_ID))
         }
 
-        return db.query(NAME, where = "$ID IN ($idsString)") { c ->
-            val id = c.getLong(ID)
-            OsmWay(
-                id,
-                c.getInt(VERSION),
-                nodeIdsByWayId.getValue(id),
-                c.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) },
-                null,
-                Date(c.getLong(TIMESTAMP))
+        return db.query(NAME, where = "$ID IN ($idsString)") { cursor ->
+            Way(
+                cursor.getLong(ID),
+                nodeIdsByWayId.getValue(cursor.getLong(ID)),
+                cursor.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) } ?: emptyMap(),
+                cursor.getInt(VERSION),
+                cursor.getLong(TIMESTAMP)
             )
         }
     }

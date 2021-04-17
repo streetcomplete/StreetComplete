@@ -1,13 +1,15 @@
 package de.westnordost.osmapi.map
 
-import de.westnordost.osmapi.map.data.BoundingBox as OsmBoundingBox
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
+import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
+import de.westnordost.osmapi.map.data.Node as OsmApiNode
+import de.westnordost.osmapi.map.data.Relation as OsmApiRelation
+import de.westnordost.osmapi.map.data.Way as OsmApiWay
 import de.westnordost.osmapi.map.handler.MapDataHandler
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osmnotes.toBoundingBox
+import de.westnordost.streetcomplete.data.toNode
+import de.westnordost.streetcomplete.data.toRelation
+import de.westnordost.streetcomplete.data.toWay
 
 open class MutableMapData() : MapData, MapDataHandler {
 
@@ -22,10 +24,11 @@ open class MutableMapData() : MapData, MapDataHandler {
         protected set
 
     fun handle(bounds: BoundingBox) { boundingBox = bounds }
-    override fun handle(bounds: OsmBoundingBox) { boundingBox = bounds.toBoundingBox() }
-    override fun handle(node: Node) { nodesById[node.id] = node }
-    override fun handle(way: Way) { waysById[way.id] = way }
-    override fun handle(relation: Relation) { relationsById[relation.id] = relation }
+
+    override fun handle(bounds: OsmApiBoundingBox) { boundingBox = bounds.toBoundingBox() }
+    override fun handle(node: OsmApiNode) { nodesById[node.id] = node.toNode() }
+    override fun handle(way: OsmApiWay) { waysById[way.id] = way.toWay() }
+    override fun handle(relation: OsmApiRelation) { relationsById[relation.id] = relation.toRelation() }
 
     override val nodes get() = nodesById.values
     override val ways get() = waysById.values

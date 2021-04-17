@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.NODES
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.RELATIONS
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import java.util.*
 
 /** Represents a parse result of a string in filter syntax, i.e.
@@ -17,10 +18,10 @@ class ElementFilterExpression(
     fun matches(element: Element): Boolean =
         includesElementType(element.type) && (elementExprRoot?.matches(element) ?: true)
 
-    fun includesElementType(elementType: Element.Type): Boolean = when (elementType) {
-        Element.Type.NODE -> elementsTypes.contains(NODES)
-        Element.Type.WAY -> elementsTypes.contains(WAYS)
-        Element.Type.RELATION -> elementsTypes.contains(RELATIONS)
+    fun includesElementType(elementType: ElementType): Boolean = when (elementType) {
+        ElementType.NODE -> elementsTypes.contains(NODES)
+        ElementType.WAY -> elementsTypes.contains(WAYS)
+        ElementType.RELATION -> elementsTypes.contains(RELATIONS)
         else -> false
     }
 

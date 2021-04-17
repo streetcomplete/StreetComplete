@@ -1,18 +1,17 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType2
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -58,16 +57,16 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getByElement() {
-        val e1 = updateTags(elementType = Element.Type.NODE, elementId = 123L)
-        val e2 = updateTags(elementType = Element.Type.NODE, elementId = 123L)
-        val e3 = updateTags(elementType = Element.Type.WAY, elementId = 123L)
-        val e4 = updateTags(elementType = Element.Type.NODE, elementId = 124L)
+        val e1 = updateTags(elementType = ElementType.NODE, elementId = 123L)
+        val e2 = updateTags(elementType = ElementType.NODE, elementId = 123L)
+        val e3 = updateTags(elementType = ElementType.WAY, elementId = 123L)
+        val e4 = updateTags(elementType = ElementType.NODE, elementId = 124L)
         dao.addAll(e1, e2, e3, e4)
 
-        val edits = dao.getByElement(Element.Type.NODE, 123L)
+        val edits = dao.getByElement(ElementType.NODE, 123L)
 
         assertEquals(2, edits.size)
-        assertTrue(edits.all { it.elementType == Element.Type.NODE && it.elementId == 123L })
+        assertTrue(edits.all { it.elementType == ElementType.NODE && it.elementId == 123L })
     }
 
     @Test fun addGetDelete() {
@@ -179,16 +178,16 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun updateElementId() {
-        assertEquals(0, dao.updateElementId(Element.Type.NODE, -5, 6))
+        assertEquals(0, dao.updateElementId(ElementType.NODE, -5, 6))
 
-        val e1 = updateTags(elementType = Element.Type.NODE, elementId = -5)
-        val e2 = updateTags(elementType = Element.Type.NODE, elementId = -5)
-        val e3 = updateTags(elementType = Element.Type.WAY, elementId = -5)
-        val e4 = updateTags(elementType = Element.Type.NODE, elementId = -3)
+        val e1 = updateTags(elementType = ElementType.NODE, elementId = -5)
+        val e2 = updateTags(elementType = ElementType.NODE, elementId = -5)
+        val e3 = updateTags(elementType = ElementType.WAY, elementId = -5)
+        val e4 = updateTags(elementType = ElementType.NODE, elementId = -3)
 
         dao.addAll(e1, e2, e3, e4)
 
-        assertEquals(2, dao.updateElementId(Element.Type.NODE, -5, 6))
+        assertEquals(2, dao.updateElementId(ElementType.NODE, -5, 6))
 
         assertEquals(6, dao.get(e1.id)!!.elementId)
         assertEquals(6, dao.get(e2.id)!!.elementId)
@@ -200,7 +199,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 private fun ElementEditsDao.addAll(vararg edits: ElementEdit) = edits.forEach { add(it) }
 
 private fun updateTags(
-    elementType: Element.Type = Element.Type.NODE,
+    elementType: ElementType = ElementType.NODE,
     elementId: Long = 1L,
     timestamp: Long = 123L,
     isSynced: Boolean = false
@@ -227,7 +226,7 @@ private fun updateTags(
 private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    Element.Type.NODE,
+    ElementType.NODE,
     1L,
     "survey",
     LatLon(0.0,0.0),
@@ -246,7 +245,7 @@ private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) 
 private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    Element.Type.NODE,
+    ElementType.NODE,
     1L,
     "survey",
     LatLon(0.0,0.0),
@@ -258,7 +257,7 @@ private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = Eleme
 private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    Element.Type.WAY,
+    ElementType.WAY,
     1L,
     "survey",
     LatLon(0.0,0.0),

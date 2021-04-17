@@ -17,15 +17,14 @@ import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.Injector
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.ktx.*
@@ -56,7 +55,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     private var clickPos: PointF? = null
 
     private val hasChanges get() = splits.isNotEmpty()
-    private val isFormComplete get() = splits.size >= if (way.isClosed()) 2 else 1
+    private val isFormComplete get() = splits.size >= if (way.isClosed) 2 else 1
 
     interface Listener {
         fun onAddSplit(point: LatLon)

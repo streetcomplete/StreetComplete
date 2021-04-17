@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import java.lang.System.currentTimeMillis
@@ -27,7 +27,7 @@ import javax.inject.Singleton
     /** Add new unsynced edit to the to-be-uploaded queue */
     @Synchronized fun add(
         questType: OsmElementQuestType<*>,
-        elementType: Element.Type,
+        elementType: ElementType,
         elementId: Long,
         source: String,
         position: LatLon,

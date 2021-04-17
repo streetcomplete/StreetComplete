@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.ElementEditKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 
@@ -15,7 +15,7 @@ data class ElementEdit(
     val questType: OsmElementQuestType<*>,
 
     /** element type this edit refers to */
-    val elementType: Element.Type,
+    val elementType: ElementType,
     /** element id this edit refers to */
     val elementId: Long,
 

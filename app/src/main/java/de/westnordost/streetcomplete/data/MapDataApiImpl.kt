@@ -29,7 +29,7 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
         val handler = UpdatedElementsHandler()
         val osmElements = elements.map { it.toOsmApiElement() }
         mapDataDao.uploadChanges(changesetId, osmElements, handler)
-        return handler.getElementUpdates(osmElements)
+        return handler.getElementUpdates(osmElements.map { it.toElement() })
     }
 
     override fun openChangeset(tags: Map<String, String?>): Long = mapDataDao.openChangeset(tags)
@@ -81,6 +81,14 @@ fun Element.toOsmApiElement(): OsmApiElement = when(this) {
     is Node -> toOsmApiNode()
     is Way -> toOsmApiWay()
     is Relation -> toOsmApiRelation()
+}
+
+// TODO(Flo): Make this private
+fun OsmApiElement.toElement(): Element = when(this) {
+    is OsmApiNode -> toNode()
+    is OsmApiWay -> toWay()
+    is OsmApiRelation -> toRelation()
+    else -> throw IllegalArgumentException()
 }
 
 // TODO(Flo): Make this private

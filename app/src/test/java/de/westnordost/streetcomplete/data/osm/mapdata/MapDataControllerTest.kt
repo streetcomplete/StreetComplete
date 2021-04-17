@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -39,19 +38,19 @@ class MapDataControllerTest {
 
     @Test fun get() {
         val node = node(5)
-        on(elementDB.get(Element.Type.NODE, 5L)).thenReturn(node)
-        assertEquals(node, controller.get(Element.Type.NODE,5L))
+        on(elementDB.get(ElementType.NODE, 5L)).thenReturn(node)
+        assertEquals(node, controller.get(ElementType.NODE,5L))
     }
 
     @Test fun getGeometry() {
         val pGeom = pGeom()
-        on(geometryDB.get(Element.Type.NODE, 5L)).thenReturn(pGeom)
-        assertEquals(pGeom, controller.getGeometry(Element.Type.NODE,5L))
+        on(geometryDB.get(ElementType.NODE, 5L)).thenReturn(pGeom)
+        assertEquals(pGeom, controller.getGeometry(ElementType.NODE,5L))
     }
 
     @Test fun getGeometries() {
-        val pGeom = ElementGeometryEntry(Element.Type.NODE, 1, pGeom())
-        val keys = listOf(ElementKey(Element.Type.NODE,1))
+        val pGeom = ElementGeometryEntry(ElementType.NODE, 1, pGeom())
+        val keys = listOf(ElementKey(ElementType.NODE,1))
         on(geometryDB.getAllEntries(keys)).thenReturn(listOf(pGeom))
         assertEquals(
             listOf(pGeom),
@@ -62,12 +61,12 @@ class MapDataControllerTest {
     @Test fun getMapDataWithGeometry() {
         val bbox = bbox()
         val geomEntries = listOf(
-            ElementGeometryEntry(Element.Type.NODE, 1L, pGeom()),
-            ElementGeometryEntry(Element.Type.NODE, 2L, pGeom()),
+            ElementGeometryEntry(ElementType.NODE, 1L, pGeom()),
+            ElementGeometryEntry(ElementType.NODE, 2L, pGeom()),
         )
         val elementKeys = listOf(
-            ElementKey(Element.Type.NODE, 1L),
-            ElementKey(Element.Type.NODE, 2L),
+            ElementKey(ElementType.NODE, 1L),
+            ElementKey(ElementType.NODE, 2L),
         )
         val elements = listOf(node(1), node(2))
         on(geometryDB.getAllEntries(bbox)).thenReturn(geomEntries)
@@ -77,22 +76,22 @@ class MapDataControllerTest {
         assertTrue(mapData.nodes.containsExactlyInAnyOrder(elements))
         assertEquals(0, mapData.ways.size)
         assertEquals(0, mapData.relations.size)
-        assertNotNull(mapData.getGeometry(Element.Type.NODE, 1L))
-        assertNotNull(mapData.getGeometry(Element.Type.NODE, 2L))
+        assertNotNull(mapData.getGeometry(ElementType.NODE, 1L))
+        assertNotNull(mapData.getGeometry(ElementType.NODE, 2L))
     }
 
     @Test fun updateAll() {
         val idUpdates = listOf(
-            ElementIdUpdate(Element.Type.NODE, -1, 1)
+            ElementIdUpdate(ElementType.NODE, -1, 1)
         )
         val deleteKeys = listOf(
-            ElementKey(Element.Type.NODE, 5L),
-            ElementKey(Element.Type.NODE, 6L),
+            ElementKey(ElementType.NODE, 5L),
+            ElementKey(ElementType.NODE, 6L),
         )
         val elements = listOf(node(1), node(2))
         val geomEntries = listOf(
-            ElementGeometryEntry(Element.Type.NODE, 1L, pGeom()),
-            ElementGeometryEntry(Element.Type.NODE, 2L, pGeom()),
+            ElementGeometryEntry(ElementType.NODE, 1L, pGeom()),
+            ElementGeometryEntry(ElementType.NODE, 2L, pGeom()),
         )
         on(geometryCreator.create(any(), any(), anyBoolean())).thenReturn(pGeom())
 
@@ -116,8 +115,8 @@ class MapDataControllerTest {
 
     @Test fun deleteOlderThan() {
         val elementKeys = listOf(
-            ElementKey(Element.Type.NODE, 1L),
-            ElementKey(Element.Type.NODE, 2L),
+            ElementKey(ElementType.NODE, 1L),
+            ElementKey(ElementType.NODE, 2L),
         )
         on(elementDB.getIdsOlderThan(123L)).thenReturn(elementKeys)
         val listener = mock<MapDataController.Listener>()
@@ -139,8 +138,8 @@ class MapDataControllerTest {
             node(2)
         )
         val geomEntries = listOf(
-            ElementGeometryEntry(Element.Type.NODE, 1L, pGeom()),
-            ElementGeometryEntry(Element.Type.NODE, 2L, pGeom()),
+            ElementGeometryEntry(ElementType.NODE, 1L, pGeom()),
+            ElementGeometryEntry(ElementType.NODE, 2L, pGeom()),
         )
         val mapData = TestMapDataWithGeometry(elements)
         mapData.nodeGeometriesById[1] = geomEntries[0].geometry as ElementPointGeometry

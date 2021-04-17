@@ -18,7 +18,7 @@ class NotesDownloaderTest {
 
     @Test fun `calls controller with all notes coming from the notes api`() = runBlocking {
         val note1 = note()
-        val noteApi = TestListBasedNotesApi(listOf(note1))
+        val noteApi = TestListBasedNotesApi(arrayListOf(note1))
         val dl = NotesDownloader(noteApi, noteController)
         val bbox = bbox()
         dl.download(bbox)
@@ -27,10 +27,6 @@ class NotesDownloaderTest {
     }
 }
 
-private class TestListBasedNotesApi(val notes: List<Note>) : NotesApiImpl(null) {
-    override fun getAll(bounds: BoundingBox, handler: (Note) -> Unit, limit: Int, hideClosedNoteAfter: Int) {
-        for (note in notes) {
-            handler(note)
-        }
-    }
+private class TestListBasedNotesApi(val notes: ArrayList<Note>) : NotesApiImpl(null) {
+    override suspend fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int) = notes
 }

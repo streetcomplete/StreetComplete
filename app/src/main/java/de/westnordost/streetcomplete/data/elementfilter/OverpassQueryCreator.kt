@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.*
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import java.util.*
 
 /** Create an overpass query from the given element filter expression */

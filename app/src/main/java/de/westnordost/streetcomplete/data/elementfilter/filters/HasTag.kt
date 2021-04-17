@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.elementfilter.quoteIfNecessary
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
 /** key = value */
 class HasTag(val key: String, val value: String) : ElementFilter {

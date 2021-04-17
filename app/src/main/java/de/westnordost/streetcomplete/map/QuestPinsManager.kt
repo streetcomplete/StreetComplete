@@ -5,7 +5,7 @@ import android.graphics.RectF
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.map.components.Pin
@@ -225,7 +225,7 @@ private fun Map<String, String>.toQuestKey(): QuestKey? = when(get(MARKER_QUEST_
         OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong())
     QUEST_GROUP_OSM ->
         OsmQuestKey(
-            getValue(MARKER_ELEMENT_TYPE).let { Element.Type.valueOf(it) },
+            getValue(MARKER_ELEMENT_TYPE).let { ElementType.valueOf(it) },
             getValue(MARKER_ELEMENT_ID).toLong(),
             getValue(MARKER_QUEST_TYPE)
         )

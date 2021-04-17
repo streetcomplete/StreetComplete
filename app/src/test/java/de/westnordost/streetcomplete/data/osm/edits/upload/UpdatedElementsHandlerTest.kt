@@ -3,13 +3,9 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.UpdatedElementsHandler
 import de.westnordost.osmapi.map.changes.DiffElement
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Element.Type.NODE
-import de.westnordost.osmapi.map.data.Element.Type.WAY
-import de.westnordost.osmapi.map.data.Element.Type.RELATION
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
+import de.westnordost.streetcomplete.data.toOsmElementType
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
@@ -188,9 +184,9 @@ class UpdatedElementsHandlerTest {
 }
 
 
-private fun diff(type: Element.Type, oldId: Long, newId: Long? = null, newVersion: Int? = null) =
+private fun diff(type: ElementType, oldId: Long, newId: Long? = null, newVersion: Int? = null) =
     DiffElement().also {
-        it.type = type
+        it.type = type.toOsmElementType()
         it.clientId = oldId
         it.serverId = newId
         it.serverVersion = newVersion

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 
 open class TestQuestType : OsmElementQuestType<String> {

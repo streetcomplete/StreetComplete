@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
 import android.util.Log
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmElement
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
@@ -12,7 +9,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
@@ -124,7 +123,7 @@ import kotlin.collections.ArrayList
     ): Boolean = withContext(Dispatchers.IO) {
         val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
         val element = getOsmElement(q) ?: return@withContext false
-        val changes = createReplaceShopChanges(element.tags.orEmpty(), tags)
+        val changes = createReplaceShopChanges(element.tags, tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!} with $changes")
 
         elementEditsController.add(
@@ -169,8 +168,8 @@ import kotlin.collections.ArrayList
         }
     }
 
-    suspend fun getOsmElement(quest: OsmQuest): OsmElement? = withContext(Dispatchers.IO) {
-        mapDataSource.get(quest.elementType, quest.elementId) as OsmElement?
+    suspend fun getOsmElement(quest: OsmQuest): Element? = withContext(Dispatchers.IO) {
+        mapDataSource.get(quest.elementType, quest.elementId)
     }
 
     private suspend fun solveOsmNoteQuest(questId: Long, answer: NoteAnswer): Boolean = withContext(Dispatchers.IO) {
@@ -212,7 +211,7 @@ import kotlin.collections.ArrayList
     }
 
     private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any) : StringMapChanges {
-        val changesBuilder = StringMapChangesBuilder(element.tags.orEmpty())
+        val changesBuilder = StringMapChangesBuilder(element.tags)
         quest.osmElementQuestType.applyAnswerToUnsafe(answer, changesBuilder)
         return changesBuilder.create()
     }

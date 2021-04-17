@@ -29,7 +29,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete;
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify;
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction;
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType;
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon;
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember;
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment;
 import de.westnordost.streetcomplete.data.user.User;
 import de.westnordost.streetcomplete.quests.LocalizedName;
@@ -51,9 +53,6 @@ public class KryoSerializer implements Serializer
 	{
 			HashMap.class,
 			ArrayList.class,
-			Fixed1E7LatLon.class,
-			Element.Type.class,
-			OsmRelationMember.class,
 			StringMapChanges.class,
 			StringMapEntryAdd.class,
 			StringMapEntryDelete.class,
@@ -82,7 +81,9 @@ public class KryoSerializer implements Serializer
 			NoteComment.class,
 			NoteComment.Action.class,
 			User.class,
-			LatLon.class
+			LatLon.class,
+			ElementType.class,
+			RelationMember.class
 	};
 
 

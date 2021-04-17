@@ -2,13 +2,13 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.SpatialPartsOfNode
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.testutils.*
 import org.junit.Before
@@ -41,7 +41,7 @@ class ElementEditsControllerTest {
         val action =  mock<ElementEditAction>()
         on(action.newElementsCount).thenReturn(NewElementsCount(1,2,3))
 
-        ctrl.add(QUEST_TYPE, Element.Type.NODE, 1L, "test", p, action)
+        ctrl.add(QUEST_TYPE, ElementType.NODE, 1L, "test", p, action)
 
         verify(db).add(any())
         verify(idProvider).assign(0L, 1, 2, 3)
@@ -65,15 +65,15 @@ class ElementEditsControllerTest {
         val edit = edit(action = mock())
 
         val idUpdates = listOf(
-            ElementIdUpdate(Element.Type.NODE, -1,2),
-            ElementIdUpdate(Element.Type.NODE, -8,20),
+            ElementIdUpdate(ElementType.NODE, -1,2),
+            ElementIdUpdate(ElementType.NODE, -8,20),
         )
         val updates = ElementUpdates(idUpdates = idUpdates)
 
         ctrl.synced(edit, updates)
 
-        verify(db).updateElementId(Element.Type.NODE, -1,2)
-        verify(db).updateElementId(Element.Type.NODE, -8,20)
+        verify(db).updateElementId(ElementType.NODE, -1,2)
+        verify(db).updateElementId(ElementType.NODE, -8,20)
         verify(db).markSynced(edit.id)
         verify(idProvider).delete(edit.id)
         verify(listener).onSyncedEdit(edit)
@@ -105,19 +105,19 @@ class ElementEditsControllerTest {
         val edit5 = edit(action = mock(), id = 5L)
 
         on(idProvider.get(1L)).thenReturn(ElementIdProvider(listOf(
-            ElementKey(Element.Type.NODE, -1),
-            ElementKey(Element.Type.NODE, -2),
+            ElementKey(ElementType.NODE, -1),
+            ElementKey(ElementType.NODE, -2),
         )))
         on(idProvider.get(2L)).thenReturn(ElementIdProvider(listOf(
-            ElementKey(Element.Type.NODE, -3),
+            ElementKey(ElementType.NODE, -3),
         )))
         on(idProvider.get(3L)).thenReturn(ElementIdProvider(listOf()))
         on(idProvider.get(4L)).thenReturn(ElementIdProvider(listOf()))
         on(idProvider.get(5L)).thenReturn(ElementIdProvider(listOf()))
 
-        on(db.getByElement(Element.Type.NODE, -1)).thenReturn(listOf(edit2, edit3))
-        on(db.getByElement(Element.Type.NODE, -2)).thenReturn(listOf(edit4))
-        on(db.getByElement(Element.Type.NODE, -3)).thenReturn(listOf(edit5))
+        on(db.getByElement(ElementType.NODE, -1)).thenReturn(listOf(edit2, edit3))
+        on(db.getByElement(ElementType.NODE, -2)).thenReturn(listOf(edit4))
+        on(db.getByElement(ElementType.NODE, -3)).thenReturn(listOf(edit5))
 
         on(db.get(1L)).thenReturn(edit1)
         on(db.get(2L)).thenReturn(edit2)

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
@@ -17,7 +17,7 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addGet() {
-        val q = entry(Element.Type.NODE, 123L, "a")
+        val q = entry(ElementType.NODE, 123L, "a")
         val key = q.key
         assertNull(dao.get(key))
         dao.put(q)
@@ -45,15 +45,15 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAllForElement() {
-        val q1 = entry(Element.Type.NODE, 0, "a")
-        val q2 = entry(Element.Type.NODE, 0, "b")
+        val q1 = entry(ElementType.NODE, 0, "a")
+        val q2 = entry(ElementType.NODE, 0, "b")
 
         dao.putAll(listOf(
             q1, q2,
-            entry(Element.Type.WAY, 0L, "a"),
-            entry(Element.Type.NODE, 1L, "a")
+            entry(ElementType.WAY, 0L, "a"),
+            entry(ElementType.NODE, 1L, "a")
         ))
-        assertTrue(dao.getAllForElement(Element.Type.NODE, 0L).containsExactlyInAnyOrder(listOf(q1,q2)))
+        assertTrue(dao.getAllForElement(ElementType.NODE, 0L).containsExactlyInAnyOrder(listOf(q1,q2)))
     }
 
     @Test fun getAllInBBox() {
@@ -97,7 +97,7 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
     }
 
     private fun entry(
-        elementType: Element.Type = Element.Type.NODE,
+        elementType: ElementType = ElementType.NODE,
         elementId: Long = 0L,
         questTypeName: String = "a",
         pos: LatLon = p(0.0, 0.0)

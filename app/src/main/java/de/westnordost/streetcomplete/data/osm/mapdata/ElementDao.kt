@@ -2,14 +2,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import javax.inject.Inject
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
-import de.westnordost.osmapi.map.data.Element.Type.NODE
-import de.westnordost.osmapi.map.data.Element.Type.RELATION
-import de.westnordost.osmapi.map.data.Element.Type.WAY
-
 /** Stores OSM elements. Actually, stores nothing, but delegates the work to a NodeDao, WayDao and
  *  a RelationDao. :-P */
 class ElementDao @Inject constructor(
@@ -25,19 +17,19 @@ class ElementDao @Inject constructor(
         }
     }
 
-    fun get(type: Element.Type, id: Long): Element? {
+    fun get(type: ElementType, id: Long): Element? {
         return when (type) {
-            NODE -> nodeDao.get(id)
-            WAY -> wayDao.get(id)
-            RELATION -> relationDao.get(id)
+            ElementType.NODE -> nodeDao.get(id)
+            ElementType.WAY -> wayDao.get(id)
+            ElementType.RELATION -> relationDao.get(id)
         }
     }
 
-    fun delete(type: Element.Type, id: Long) {
+    fun delete(type: ElementType, id: Long) {
         when (type) {
-            NODE -> nodeDao.delete(id)
-            WAY -> wayDao.delete(id)
-            RELATION -> relationDao.delete(id)
+            ElementType.NODE -> nodeDao.delete(id)
+            ElementType.WAY -> wayDao.delete(id)
+            ElementType.RELATION -> relationDao.delete(id)
         }
     }
 
@@ -69,9 +61,9 @@ class ElementDao @Inject constructor(
 
     fun getIdsOlderThan(timestamp: Long): List<ElementKey> {
         val result = mutableListOf<ElementKey>()
-        result.addAll(nodeDao.getIdsOlderThan(timestamp).map { ElementKey(NODE, it) })
-        result.addAll(wayDao.getIdsOlderThan(timestamp).map { ElementKey(WAY, it) })
-        result.addAll(relationDao.getIdsOlderThan(timestamp).map { ElementKey(RELATION, it) })
+        result.addAll(nodeDao.getIdsOlderThan(timestamp).map { ElementKey(ElementType.NODE, it) })
+        result.addAll(wayDao.getIdsOlderThan(timestamp).map { ElementKey(ElementType.WAY, it) })
+        result.addAll(relationDao.getIdsOlderThan(timestamp).map { ElementKey(ElementType.RELATION, it) })
         return result
     }
 
@@ -87,9 +79,9 @@ private fun Iterable<ElementKey>.toElementIds(): ElementIds {
     val relations = ArrayList<Long>()
     for (key in this) {
         when(key.type) {
-            NODE -> nodes.add(key.id)
-            WAY -> ways.add(key.id)
-            RELATION -> relations.add(key.id)
+            ElementType.NODE -> nodes.add(key.id)
+            ElementType.WAY -> ways.add(key.id)
+            ElementType.RELATION -> relations.add(key.id)
         }
     }
     return ElementIds(nodes, ways, relations)

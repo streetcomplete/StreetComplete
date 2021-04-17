@@ -40,7 +40,7 @@ class MapDataDownloader @Inject constructor(
         mapDataHandler: MapDataHandler
     ) {
         try {
-            mapDataApi.getMap(bounds.toOsmApiBoundingBox(), mapDataHandler)
+            mapDataApi.getMap(bounds, mapDataHandler)
         } catch (e : OsmQueryTooBigException) {
             for (subBounds in bounds.splitIntoFour()) {
                 getMapAndHandleTooBigQuery(subBounds, mapDataHandler)

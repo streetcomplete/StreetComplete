@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
 

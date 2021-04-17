@@ -1,15 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.copy
-import java.util.*
 
 fun Element.changesApplied(changes: StringMapChanges): Element {
-    val copy = this.copy(newDateEdited = Date())
+    val tags = tags.toMutableMap()
     try {
-        if (copy.tags == null) throw ConflictException("The element has no tags")
-        changes.applyTo(copy.tags)
+        changes.applyTo(tags)
     } catch (e: IllegalStateException) {
         throw ConflictException("Conflict while applying the changes")
     } catch (e: IllegalArgumentException) {
@@ -24,5 +22,8 @@ fun Element.changesApplied(changes: StringMapChanges): Element {
           */
         throw ConflictException("Key or value is too long")
     }
-    return copy
+    return this.copy(
+        newTimestampEdited = System.currentTimeMillis(),
+        newTags = tags
+    )
 }

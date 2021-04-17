@@ -6,8 +6,8 @@ import android.text.Spanned
 import androidx.core.os.ConfigurationCompat
 import androidx.core.os.LocaleListCompat
 import androidx.core.text.parseAsHtml
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.ktx.toList

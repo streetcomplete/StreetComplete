@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
@@ -131,7 +131,7 @@ class AddOpeningHours (
 
     override fun isApplicableTo(element: Element) : Boolean {
         if (!filter.matches(element)) return false
-        val tags = element.tags ?: return false
+        val tags = element.tags
         // only show places that can be named somehow
         if (!hasName(tags)) return false
         // no opening_hours yet -> new survey

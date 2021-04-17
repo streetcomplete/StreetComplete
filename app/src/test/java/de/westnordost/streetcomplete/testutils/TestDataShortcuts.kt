@@ -1,18 +1,11 @@
 package de.westnordost.streetcomplete.testutils
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmNode
-import de.westnordost.osmapi.map.data.OsmRelation
-import de.westnordost.osmapi.map.data.OsmRelationMember
-import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.osmapi.map.data.RelationMember
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
@@ -22,10 +15,10 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.user.User
+import java.lang.System.currentTimeMillis
 import java.util.*
 
 fun p(lat: Double = 0.0, lon: Double = 0.0) = LatLon(lat, lon)
@@ -36,7 +29,7 @@ fun node(
     tags: Map<String, String>? = null,
     version: Int = 1,
     date: Date? = null
-) = OsmNode(id, version, pos.toOsmLatLon(), tags, null, date)
+) = Node(id, pos, tags ?: emptyMap(), version, date?.time ?: currentTimeMillis())
 
 fun way(
     id: Long = 1,
@@ -44,7 +37,7 @@ fun way(
     tags: Map<String, String>? = null,
     version: Int = 1,
     date: Date? = null
-) = OsmWay(id, version, nodes, tags, null, date)
+) = Way(id, nodes, tags ?: emptyMap(), version, date?.time ?: currentTimeMillis())
 
 fun rel(
     id: Long = 1,
@@ -52,19 +45,19 @@ fun rel(
     tags: Map<String, String>? = null,
     version: Int = 1,
     date: Date? = null
-) = OsmRelation(id, version, members, tags, null, date)
+) = Relation(id, members.toMutableList(), tags ?: emptyMap(), version, date?.time ?: currentTimeMillis())
 
 fun member(
-    type: Element.Type = Element.Type.NODE,
+    type: ElementType = ElementType.NODE,
     ref: Long = 1,
     role: String = ""
-) = OsmRelationMember(ref, role, type)
+) = RelationMember(type, ref, role)
 
 fun bbox(latMin: Double = 0.0, lonMin: Double = 0.0, latMax: Double = 1.0, lonMax: Double = 1.0) =
     BoundingBox(latMin, lonMin, latMax, lonMax)
 
 fun waysAsMembers(wayIds: List<Long>, role: String = ""): List<RelationMember> =
-    wayIds.map { id -> member(Element.Type.WAY, id, role) }.toMutableList()
+    wayIds.map { id -> member(ElementType.WAY, id, role) }.toMutableList()
 
 fun pGeom(lat: Double = 0.0, lon: Double = 0.0) = ElementPointGeometry(p(lat, lon))
 
@@ -106,7 +99,7 @@ fun noteEdit(
 
 fun edit(
     id: Long = 1L,
-    elementType: Element.Type = Element.Type.NODE,
+    elementType: ElementType = ElementType.NODE,
     elementId: Long = -1L,
     pos: LatLon = p(0.0,0.0),
     timestamp: Long = 123L,
@@ -125,7 +118,7 @@ fun edit(
 )
 
 fun questHidden(
-    elementType: Element.Type = Element.Type.NODE,
+    elementType: ElementType = ElementType.NODE,
     elementId: Long = 1L,
     questType: OsmElementQuestType<*> = QUEST_TYPE,
     pos: LatLon = p(),
@@ -139,7 +132,7 @@ fun noteQuestHidden(
 
 fun osmQuest(
     questType: OsmElementQuestType<*> = QUEST_TYPE,
-    elementType: Element.Type = Element.Type.NODE,
+    elementType: ElementType = ElementType.NODE,
     elementId: Long = 1L,
     geometry: ElementGeometry = pGeom()
 ) =
@@ -151,7 +144,7 @@ fun osmNoteQuest(
 ) = OsmNoteQuest(id, pos)
 
 fun osmQuestKey(
-    elementType: Element.Type = Element.Type.NODE,
+    elementType: ElementType = ElementType.NODE,
     elementId: Long = 1L,
     questTypeName: String = QUEST_TYPE::class.simpleName!!
 ) = OsmQuestKey(elementType, elementId, questTypeName)

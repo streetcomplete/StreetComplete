@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ACTION
@@ -19,6 +18,7 @@ import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -39,7 +39,7 @@ class ElementEditsDao @Inject constructor(
     fun get(id: Long): ElementEdit? =
         db.queryOne(NAME, where = "$ID = $id") { it.toElementEdit() }
 
-    fun getByElement(elementType: Element.Type, elementId: Long): List<ElementEdit> =
+    fun getByElement(elementType: ElementType, elementId: Long): List<ElementEdit> =
         db.query(NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
             args = arrayOf(elementType.name, elementId),
@@ -76,7 +76,7 @@ class ElementEditsDao @Inject constructor(
     fun getSyncedOlderThan(timestamp: Long): List<ElementEdit> =
         db.query(NAME, where = "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp") { it.toElementEdit() }
 
-    fun updateElementId(elementType: Element.Type, oldElementId: Long, newElementId: Long): Int =
+    fun updateElementId(elementType: ElementType, oldElementId: Long, newElementId: Long): Int =
         db.update(
             NAME,
             values = listOf(ELEMENT_ID to newElementId),
@@ -126,7 +126,7 @@ class ElementEditsDao @Inject constructor(
         return ElementEdit(
             getLong(ID),
             questTypeRegistry.getByName(getString(QUEST_TYPE)) as OsmElementQuestType<*>,
-            Element.Type.valueOf(getString(ELEMENT_TYPE)),
+            ElementType.valueOf(getString(ELEMENT_TYPE)),
             getLong(ELEMENT_ID),
             getString(SOURCE),
             LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),

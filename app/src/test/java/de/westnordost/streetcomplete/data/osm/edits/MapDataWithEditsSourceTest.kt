@@ -1,14 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -43,7 +39,7 @@ class MapDataWithEditsSourceTest {
 
 
         on(mapDataCtrl.get(any(), anyLong())).thenAnswer { invocation ->
-            val elementType = invocation.getArgument<Element.Type>(0)!!
+            val elementType = invocation.getArgument<ElementType>(0)!!
             val elementId = invocation.getArgument<Long>(1)
             when(elementType) {
                 NODE -> mapData.getNode(elementId)
@@ -95,7 +91,7 @@ class MapDataWithEditsSourceTest {
             mapData.relations.filter { r -> r.members.any { it.ref == relationId && it.type == RELATION } }
         }
         on(mapDataCtrl.getGeometry(any(), anyLong())).thenAnswer { invocation ->
-            val elementType = invocation.getArgument<Element.Type>(0)!!
+            val elementType = invocation.getArgument<ElementType>(0)!!
             val elementId = invocation.getArgument<Long>(1)
             when(elementType) {
                 NODE -> mapData.getNodeGeometry(elementId)
@@ -123,7 +119,7 @@ class MapDataWithEditsSourceTest {
             val bbox = invocation.getArgument<BoundingBox>(0)
             val result = MutableMapDataWithGeometry()
             for (element in mapData) {
-                val geometry = when(element.type!!) {
+                val geometry = when(element.type) {
                     NODE -> mapData.getNodeGeometry(element.id)
                     WAY -> mapData.getWayGeometry(element.id)
                     RELATION -> mapData.getRelationGeometry(element.id)
@@ -1103,7 +1099,7 @@ class MapDataWithEditsSourceTest {
         ))
     }
 
-    private fun editsControllerNotifiesDeletedEdit(elementType: Element.Type, elementId: Long, createdElementKeys: List<ElementKey>) {
+    private fun editsControllerNotifiesDeletedEdit(elementType: ElementType, elementId: Long, createdElementKeys: List<ElementKey>) {
         on(editsCtrl.getIdProvider(anyLong())).thenReturn(ElementIdProvider(createdElementKeys))
         editsListener.onDeletedEdits(listOf(edit(
             elementType = elementType,

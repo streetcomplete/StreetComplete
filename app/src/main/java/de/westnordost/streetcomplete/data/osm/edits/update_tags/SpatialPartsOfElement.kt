@@ -1,12 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.RelationMember
-import de.westnordost.osmapi.map.data.Way
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osmnotes.toLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.util.distanceTo
 
 /** Only the parts of an element that are used to determine the geometry */
@@ -26,7 +20,7 @@ private fun isNodeGeometrySubstantiallyDifferent(node: SpatialPartsOfNode, newNo
     /* Moving the node a distance beyond what would pass as adjusting the position within a
        building counts as substantial change. Also, the maximum distance should be not (much)
        bigger than the usual GPS inaccuracy in the city. */
-    node.position.distanceTo(newNode.position.toLatLon()) > 20
+    node.position.distanceTo(newNode.position) > 20
 
 private fun isWayGeometrySubstantiallyDifferent(way: SpatialPartsOfWay, newWay: Way) =
     /* if the first or last node is different, it means that the way has either been extended or
@@ -48,5 +42,4 @@ fun Element.getSpatialParts(): SpatialPartsOfElement = when(this) {
     is Node -> SpatialPartsOfNode(LatLon(position.latitude, position.longitude))
     is Way -> SpatialPartsOfWay(ArrayList(nodeIds))
     is Relation -> SpatialPartsOfRelation(ArrayList(members))
-    else -> throw IllegalArgumentException()
 }

@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.elementfilter.quote
 import de.westnordost.streetcomplete.data.elementfilter.quoteIfNecessary
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import java.util.*
 
 abstract class CompareDateTagValue(val key: String, val dateFilter: DateFilter): ElementFilter {
