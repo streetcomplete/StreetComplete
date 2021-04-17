@@ -1,8 +1,8 @@
-package de.westnordost.streetcomplete.quests.bike_parking_type
+package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.bike_parking_type.BarrierType.*
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.*
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddBarrierTypeForm : AImageListQuestAnswerFragment<BarrierType, BarrierType>() {

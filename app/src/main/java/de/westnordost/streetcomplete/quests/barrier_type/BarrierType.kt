@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.bike_parking_type
+package de.westnordost.streetcomplete.quests.barrier_type
 
 enum class BarrierType(val osmValue: String) {
     PASSAGE("entrance"),
