@@ -39,7 +39,7 @@ interface MapDataApi {
      *                                   map (Permission.MODIFY_MAP)
      * @return the id of the changeset
      */
-    fun openChangeset(tags: Map<String, String>): Long
+    fun openChangeset(tags: Map<String, String?>): Long
 
     /**
      * Closes the given changeset.

@@ -32,7 +32,7 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
         return handler.getElementUpdates(osmElements)
     }
 
-    override fun openChangeset(tags: Map<String, String>): Long = mapDataDao.openChangeset(tags)
+    override fun openChangeset(tags: Map<String, String?>): Long = mapDataDao.openChangeset(tags)
 
     override fun closeChangeset(changesetId: Long) = mapDataDao.closeChangeset(changesetId)
 
