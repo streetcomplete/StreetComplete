@@ -48,7 +48,7 @@ class ElementEditUploaderTest {
         on(mapDataApi.getNode(anyLong())).thenReturn(node)
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
-        on(mapDataApi.uploadChanges(anyLong(), any(), any()))
+        on(mapDataApi.uploadChanges(anyLong(), any()))
             .thenThrow(OsmConflictException(1,"",""))
             .thenThrow(OsmConflictException(1,"",""))
 
@@ -61,7 +61,7 @@ class ElementEditUploaderTest {
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
         doThrow(OsmConflictException(1,"","")).doAnswer {  }
-            .on(mapDataApi).uploadChanges(anyLong(), any(), any())
+            .on(mapDataApi).uploadChanges(anyLong(), any())
 
         uploader.upload(edit(elementType = Element.Type.NODE, elementId = 1), mock())
     }

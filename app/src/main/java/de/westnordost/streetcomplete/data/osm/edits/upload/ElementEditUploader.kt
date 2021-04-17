@@ -4,7 +4,6 @@ import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.uploadChanges
 import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
