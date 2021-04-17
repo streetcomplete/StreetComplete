@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import java.util.*
 
-class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
+open class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override val elementFilter = """
         nodes, ways, relations with (

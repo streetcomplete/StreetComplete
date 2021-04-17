@@ -991,4 +991,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_drinking_water_potable_unsigned">Safe to drink (unsigned)</string>
     <string name="quest_drinking_water_not_potable_signed">Not safe to drink (signed)</string>
     <string name="quest_drinking_water_not_potable_unsigned">Not safe to drink (unsigned)</string>
+    <string name="quest_shop_type_title">What type of shop is %s?</string>
+    <string name="quest_shop_type_title_no_name">What type of shop is this?</string>
 </resources>
