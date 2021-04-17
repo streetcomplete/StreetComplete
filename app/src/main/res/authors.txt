@@ -22,7 +22,7 @@ barrier_stile_squeezer.jpg     CC-BY-SA 2.0      Mike Fowkes https://en.wikipedi
 barrier_stile_ladder.jpg       CC-BY-SA 2.0      David Gruar https://commons.wikimedia.org/wiki/File:Family_of_ladder_stiles_-_geograph.org.uk_-_42040.jpg
 barrier_stile_stepover.jpg     CC-BY-SA 2.0      Philip Halling https://commons.wikimedia.org/wiki/File:Daffodil_Way,_Dymock_-_geograph.org.uk_-_69563.jpg
 barrier_kissing_gate.jpg       CC-BY-SA 2.0      David Anstiss https://commons.wikimedia.org/wiki/File:Kissing_gate_near_Trillinghurst_Farm_-_geograph.org.uk_-_1512534.jpg
-barrier_bicycle_barrier.jpg    CC-BY-SA 3.0      Lionel Allorge https://commons.wikimedia.org/wiki/File:Stade_municipal_Claude_Daragon_%C3%A0_Pecqueuse_le_6_ao%C3%BBt_2016_-_02.jpg
+barrier_bicycle_barrier.jpg    CC0               DerDings https://commons.wikimedia.org/wiki/File:Bicycle_barrier_2.JPG
 
 bicycle_parking_type_buildi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bike_Storage_(YAUS).jpg
 bicycle_parking_type_locker... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bicycle_lockers_at_Gathurst_railway_station.JPG
