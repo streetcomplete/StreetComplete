@@ -13,7 +13,7 @@ barrier_cattle_grid.jpg        CC-BY-SA 2.5      Nachoman-au~commonswiki https:/
 barrier_block.jpg              CC-BY 3.0         Dezidor https://commons.wikimedia.org/wiki/File:Oblast_mezi_Libe%C5%88sk%C3%BDm_mostem_a_Negrelliho_viaduktem_(06).jpg
 barrier_jersey_barrier.jpg     Public Domain     CorreiaPM https://commons.wikimedia.org/wiki/File:BarreiraNewJersey.JPG
 barrier_log.jpg                CC-BY-SA 3.0      Daniel Kraft https://commons.wikimedia.org/wiki/File:Sihlwald_windthrow_Spinnerweg_20200204_1.jpg
-kerb_height_raised.jpg         CC0               Mateusz Konieczny (from kerb_height_raised_original.jpg)
+barrier_kerb.jpg               CC0               Mateusz Konieczny (from kerb_height_raised_original.jpg)
 barrier_height_restrictor.jpg  CC-BY-SA 2.0      Graham Horn https://commons.wikimedia.org/wiki/File:Works_entry_at_Barsham_Hall_-_geograph.org.uk_-_978121.jpg
 barrier_full_height_turnsti... CC-BY-SA 4.0      Ii2nmd https://commons.wikimedia.org/wiki/File:Fairmount_station_2018b.JPG
 barrier_turnstile.jpg          CC-BY-SA 4.0      MelnikovArtyom https://commons.wikimedia.org/wiki/File:%D0%A2%D1%83%D1%80%D0%BD%D0%B8%D0%BA%D0%B5%D1%82%D1%8B_%D0%B4%D0%BB%D1%8F_%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8F_%22%D0%92%D1%85%D0%BE%D0%B4-%D0%B2%D1%8B%D1%85%D0%BE%D0%B4%22.JPG
