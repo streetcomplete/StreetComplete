@@ -650,6 +650,7 @@ object AchievementsModule {
                 listOf(
                     "CheckExistence",
                     "CheckShopType",
+                    "SpecifyShopType",
                     "AddSelfServiceLaundry",
                     "AddToiletAvailability",
                     "AddToiletsFee",
