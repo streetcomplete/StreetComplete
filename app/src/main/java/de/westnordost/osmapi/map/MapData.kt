@@ -12,3 +12,18 @@ interface MapData : Iterable<Element> {
     fun getWay(id: Long): Way?
     fun getRelation(id: Long): Relation?
 }
+
+fun MapData.isRelationComplete(id: Long): Boolean =
+    getRelation(id)?.members?.all { member ->
+        when (member.type) {
+            ElementType.NODE -> getNode(member.ref) != null
+            ElementType.WAY -> getWay(member.ref) != null && isWayComplete(member.ref)
+            /* not being recursive here is deliberate. sub-relations are considered not relevant
+               for the element geometry in StreetComplete (and OSM API call to get a "complete"
+               relation also does not include sub-relations) */
+            ElementType.RELATION -> getRelation(member.ref) != null
+        }
+    } ?: false
+
+fun MapData.isWayComplete(id: Long): Boolean =
+    getWay(id)?.nodeIds?.all { getNode(it) != null } ?: false
