@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.osmapi.common.errors.*
 
-
+// TODO create own exception classes
 /** Get and upload changes to map data */
 interface MapDataApi : MapDataRepository {
 

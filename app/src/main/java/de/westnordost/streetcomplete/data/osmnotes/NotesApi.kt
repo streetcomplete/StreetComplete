@@ -4,7 +4,7 @@ import de.westnordost.osmapi.common.errors.*
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
-
+// TODO create own exception classes
 /**
  * Creates, comments, closes, reopens and search for notes.
  * All interactions with this class require an OsmConnection with a logged in user.
