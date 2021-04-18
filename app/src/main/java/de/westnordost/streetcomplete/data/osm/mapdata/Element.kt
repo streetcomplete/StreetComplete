@@ -37,7 +37,7 @@ data class Way(
 
 data class Relation(
     override val id: Long,
-    val members: MutableList<RelationMember>,
+    val members: List<RelationMember>,
     override val tags: Map<String, String> = HashMap(0),
     override val version: Int = 1,
     override val timestampEdited: Long = currentTimeMillis()

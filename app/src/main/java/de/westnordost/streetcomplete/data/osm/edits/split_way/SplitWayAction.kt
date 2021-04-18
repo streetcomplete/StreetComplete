@@ -72,7 +72,7 @@ class SplitWayAction(
                     splitAtIndices.add(split.index + insertedNodeCount)
                 }
                 is SplitWayAtLinePosition -> {
-                    val splitNode = Node(idProvider.nextNodeId(), split.pos, emptyMap(), 1)
+                    val splitNode = Node(idProvider.nextNodeId(), split.pos, emptyMap(), 1, System.currentTimeMillis())
                     updatedElements.add(splitNode)
 
                     val nodeIndex = split.index2 + insertedNodeCount
@@ -141,10 +141,12 @@ private fun splitWayAtIndices(
 
     return nodesChunks.mapIndexed { index, nodes ->
         if(index == indexOfChunkToKeep) {
-            Way(originalWay.id, nodes, tags, originalWay.version).apply { isModified = true }
+            Way(originalWay.id, nodes, tags, originalWay.version, System.currentTimeMillis()).apply {
+                isModified = true
+            }
         }
         else {
-            Way(idProvider.nextWayId(), nodes, tags, 0)
+            Way(idProvider.nextWayId(), nodes, tags, 0, System.currentTimeMillis())
         }
     }
 }
@@ -205,8 +207,7 @@ private fun updateRelationsWithNewWays(
         for(i in relation.members.size - 1 downTo 0) {
             val relationMember = relation.members[i]
             if (relationMember.type == ElementType.WAY && relationMember.ref == originalWay.id) {
-                updateRelation(relation, i, originalWay, newWays, mapDataRepository)
-                result.add(relation)
+                result.add(createUpdatedRelation(relation, i, originalWay, newWays, mapDataRepository))
             }
         }
     }
@@ -214,40 +215,52 @@ private fun updateRelationsWithNewWays(
 }
 
 /** Replace the relation member(s) that reference the original way with the new ways in the given
- *  relation. Some relation types have certain special rules for that. */
-private fun updateRelation(
-    relation: Relation,
+ *  relation. Some relation types have certain special rules for that.
+ *  Returns the updated relation. */
+private fun createUpdatedRelation(
+    originalRelation: Relation,
     indexOfWayInRelation: Int,
     originalWay: Way,
     newWays: List<Way>,
     mapDataRepository: MapDataRepository
-) {
-    val originalWayRole = relation.members[indexOfWayInRelation].role
+): Relation {
+    val originalWayRole = originalRelation.members[indexOfWayInRelation].role
+    val updatedRelationMembers = ArrayList(originalRelation.members)
 
     /* for a from-to-relation (f.e. turn restriction, destination sign, ...) only the two ways
       directly connecting with the via node/way should be kept in the relation. If one of these
       ways is split up, the correct way chunk must be selected to replace the old way. */
     if (originalWayRole == "from" || originalWayRole == "to") {
-        val viaNodeIds = relation.fetchViaNodeIds(mapDataRepository)
+        val viaNodeIds = originalRelation.fetchViaNodeIds(mapDataRepository)
         if (viaNodeIds.isNotEmpty()) {
             val newWay = newWays.find { viaNodeIds.containsAny(it.nodeIds.firstAndLast()) }
             if (newWay != null) {
                 val newRelationMember = RelationMember(ElementType.WAY, newWay.id, originalWayRole)
-                relation.members[indexOfWayInRelation] = newRelationMember
-                return
+                updatedRelationMembers[indexOfWayInRelation] = newRelationMember
             }
         }
-    }
-    /* for any (non-special, see above) relation, the new way chunks that replace the original
-       way must be all inserted into each relation.  In the correct order, if the relation is
-       ordered at all. */
-    val newRelationMembers = newWays.map { way -> RelationMember(ElementType.WAY, way.id, originalWayRole) }.toMutableList()
-    val isOrientedBackwards = originalWay.isOrientedForwardInOrderedRelation(relation, indexOfWayInRelation, mapDataRepository) == false
-    if (isOrientedBackwards) newRelationMembers.reverse()
+    } else {
+        /* for any (non-special, see above) relation, the new way chunks that replace the original
+           way must be all inserted into each relation.  In the correct order, if the relation is
+           ordered at all. */
+        val newRelationMembers = newWays
+            .map { RelationMember(ElementType.WAY, it.id, originalWayRole) }
+            .toMutableList()
+        val isOrientedBackwards = originalWay.isOrientedForwardInOrderedRelation(
+            originalRelation,
+            indexOfWayInRelation,
+            mapDataRepository
+        ) == false
+        if (isOrientedBackwards) newRelationMembers.reverse()
 
-    relation.members.removeAt(indexOfWayInRelation)
-    relation.members.addAll(indexOfWayInRelation, newRelationMembers)
-    return
+        updatedRelationMembers.removeAt(indexOfWayInRelation)
+        updatedRelationMembers.addAll(indexOfWayInRelation, newRelationMembers)
+    }
+
+    return originalRelation.copy(
+        members = updatedRelationMembers,
+        timestampEdited = System.currentTimeMillis()
+    )
 }
 
 /** Return the node ids of the "via" node(s) that connect to the ways with the "from" and "to" role
