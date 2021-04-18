@@ -26,7 +26,6 @@ class CheckExistence(
             or amenity = telephone
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or amenity = public_bookcase
-            or birds_nest = stork
           )
           and (${lastChecked(2.0)})
         ) or (
@@ -35,6 +34,7 @@ class CheckExistence(
             or amenity = bench
             or amenity = waste_basket
             or amenity = post_box
+            or amenity = grit_bin
             or leisure = picnic_table
             or leisure = firepit
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets

@@ -37,8 +37,6 @@ class StatisticsUpdater @Inject constructor(
 
     private fun getRealCountryCode(position: LatLon): String? =
         countryBoundaries.get().getIds(position).firstOrNull {
-            // skip non-countries
-            it != "FX" && it != "EU" &&
             // skip country subdivisions (f.e. US-TX)
             !it.contains('-')
         }
