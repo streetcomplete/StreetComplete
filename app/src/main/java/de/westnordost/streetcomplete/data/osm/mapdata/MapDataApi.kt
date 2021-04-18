@@ -4,7 +4,7 @@ import de.westnordost.osmapi.common.errors.*
 
 
 /** Get and upload changes to map data */
-interface MapDataApi {
+interface MapDataApi : MapDataRepository {
 
     /**
      * Upload changes into an opened changeset.
@@ -74,7 +74,7 @@ interface MapDataApi {
      *
      * @return the map data
      */
-    fun getWayComplete(id: Long): MapData?
+    override fun getWayComplete(id: Long): MapData?
 
     /**
      * Queries the relation with the given id plus all it's members and all nodes of ways that are
@@ -87,7 +87,7 @@ interface MapDataApi {
      *
      * @return the map data
      */
-    fun getRelationComplete(id: Long): MapData?
+    override fun getRelationComplete(id: Long): MapData?
 
     /**
      * Note that if not logged in, the Changeset for each returned element will be null
@@ -96,7 +96,7 @@ interface MapDataApi {
      *
      * @return the node with the given id or null if it does not exist
      */
-    fun getNode(id: Long): Node?
+    override fun getNode(id: Long): Node?
 
     /**
      * Note that if not logged in, the Changeset for each returned element will be null
@@ -105,7 +105,7 @@ interface MapDataApi {
      *
      * @return the way with the given id or null if it does not exist
      */
-    fun getWay(id: Long): Way?
+    override fun getWay(id: Long): Way?
 
     /**
      * Note that if not logged in, the Changeset for each returned element will be null
@@ -114,7 +114,7 @@ interface MapDataApi {
      *
      * @return the relation with the given id or null if it does not exist
      */
-    fun getRelation(id: Long): Relation?
+    override fun getRelation(id: Long): Relation?
 
     /**
      * Note that if not logged in, the Changeset for each returned element will be null
@@ -123,7 +123,7 @@ interface MapDataApi {
      *
      * @return all ways that reference the node with the given id. Empty if none.
      */
-    fun getWaysForNode(id: Long): List<Way>
+    override fun getWaysForNode(id: Long): List<Way>
 
     /**
      * Note that if not logged in, the Changeset for each returned element will be null
@@ -132,7 +132,7 @@ interface MapDataApi {
      *
      * @return all relations that reference the node with the given id. Empty if none.
      */
-    fun getRelationsForNode(id: Long): List<Relation>
+    override fun getRelationsForNode(id: Long): List<Relation>
 
     /**
      * Note that if not logged in, the Changeset for each returned element will be null
@@ -141,7 +141,7 @@ interface MapDataApi {
      *
      * @return all relations that reference the way with the given id. Empty if none.
      */
-    fun getRelationsForWay(id: Long): List<Relation>
+    override fun getRelationsForWay(id: Long): List<Relation>
 
     /**
      * Note that if not logged in, the Changeset for each returned element will be null
@@ -150,5 +150,5 @@ interface MapDataApi {
      *
      * @return all relations that reference the relation with the given id. Empty if none.
      */
-    fun getRelationsForRelation(id: Long): List<Relation>
+    override fun getRelationsForRelation(id: Long): List<Relation>
 }
