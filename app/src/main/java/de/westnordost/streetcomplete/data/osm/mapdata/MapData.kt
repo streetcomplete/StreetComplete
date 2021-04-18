@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.streetcomplete.data.osm.mapdata.*
-
 interface MapData : Iterable<Element> {
     val nodes: Collection<Node>
     val ways: Collection<Way>

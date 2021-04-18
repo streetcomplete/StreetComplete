@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import android.util.Log
 import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osm.geometry.*
 import de.westnordost.streetcomplete.ktx.format
 import java.lang.System.currentTimeMillis

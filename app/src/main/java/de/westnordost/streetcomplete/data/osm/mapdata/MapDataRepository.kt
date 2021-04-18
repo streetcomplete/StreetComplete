@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapData
-
 interface MapDataRepository {
     fun getNode(id: Long): Node?
     fun getWay(id: Long): Way?

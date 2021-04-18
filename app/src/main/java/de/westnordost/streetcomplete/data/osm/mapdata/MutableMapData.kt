@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.streetcomplete.data.osm.mapdata.*
-
 open class MutableMapData() : MapData {
 
     constructor(other: Iterable<Element>) : this() {
