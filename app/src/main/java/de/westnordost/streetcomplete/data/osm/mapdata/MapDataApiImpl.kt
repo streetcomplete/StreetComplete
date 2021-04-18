@@ -22,9 +22,7 @@ import java.util.Date
 
 class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
 
-    // generally we are not interested in certain data returned by the OSM API, so we use a
-    // map data factory that does not include that data
-    private val mapDataDao: MapDataDao = MapDataDao(osm, LightweightOsmMapDataFactory())
+    private val mapDataDao: MapDataDao = MapDataDao(osm)
 
     override fun uploadChanges(changesetId: Long, elements: Collection<Element>): MapDataUpdates {
         val handler = UpdatedElementsHandler()
