@@ -34,6 +34,11 @@ class AddStileType : OsmFilterQuestType<BarrierType>() {
                 changes.deleteIfExists("step_count")
                 changes.deleteIfExists("wheelchair")
                 changes.deleteIfExists("bicycle")
+                changes.deleteIfExists("dog_gate")
+                changes.deleteIfExists("material")
+                changes.deleteIfExists("height")
+                changes.deleteIfExists("width")
+                changes.deleteIfExists("stroller")
             }
         }
 
