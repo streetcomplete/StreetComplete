@@ -72,9 +72,8 @@ fun comment(
     text: String,
     action: NoteComment.Action = NoteComment.Action.COMMENTED,
     timestamp: Long = 0,
-    userId: Long? = null,
-    userName: String? = null
-) = NoteComment(timestamp, action, text, User.from(userId, userName))
+    user: User? = null
+) = NoteComment(timestamp, action, text, user)
 
 fun noteEdit(
     id: Long = 1,
