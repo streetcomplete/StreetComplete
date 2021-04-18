@@ -8,12 +8,14 @@ import de.westnordost.osmapi.map.data.Node as OsmApiNode
 import de.westnordost.osmapi.map.data.Way as OsmApiWay
 import de.westnordost.osmapi.map.data.Relation as OsmApiRelation
 import de.westnordost.osmapi.map.data.RelationMember as OsmApiRelationMember
+import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmapi.map.data.OsmRelation
 import de.westnordost.osmapi.map.data.OsmRelationMember
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.osmapi.map.handler.MapDataHandler
 import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osmnotes.toBoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.data.osmnotes.toOsmApiBoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
@@ -36,13 +38,13 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
 
     override fun closeChangeset(changesetId: Long) = mapDataDao.closeChangeset(changesetId)
 
-    override fun getMap(bounds: BoundingBox, handler: MapDataHandler) =
-        mapDataDao.getMap(bounds.toOsmApiBoundingBox(), handler)
+    override fun getMap(bounds: BoundingBox, mutableMapData: MutableMapData) =
+        mapDataDao.getMap(bounds.toOsmApiBoundingBox(), MapDataApiHandler(mutableMapData))
 
     override fun getWayComplete(id: Long): MapData? =
         try {
             val result = MutableMapData()
-            mapDataDao.getWayComplete(id, result)
+            mapDataDao.getWayComplete(id, MapDataApiHandler(result))
             result
         } catch (e: OsmNotFoundException) {
             null
@@ -51,7 +53,7 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
     override fun getRelationComplete(id: Long): MapData? =
         try {
             val result = MutableMapData()
-            mapDataDao.getRelationComplete(id, result)
+            mapDataDao.getRelationComplete(id, MapDataApiHandler(result))
             result
         } catch (e: OsmNotFoundException) {
             null
@@ -158,4 +160,11 @@ fun OsmApiElement.Type.toElementType(): ElementType = when(this) {
     OsmApiElement.Type.NODE     -> ElementType.NODE
     OsmApiElement.Type.WAY      -> ElementType.WAY
     OsmApiElement.Type.RELATION -> ElementType.RELATION
+}
+
+private class MapDataApiHandler(val data: MutableMapData) : MapDataHandler {
+    override fun handle(bounds: OsmApiBoundingBox) { data.boundingBox = bounds.toBoundingBox() }
+    override fun handle(node: OsmApiNode) { data.add(node.toNode()) }
+    override fun handle(way: OsmApiWay) { data.add(way.toWay()) }
+    override fun handle(relation: OsmApiRelation) { data.add(relation.toRelation()) }
 }

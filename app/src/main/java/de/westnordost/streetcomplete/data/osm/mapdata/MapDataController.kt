@@ -4,7 +4,6 @@ import android.util.Log
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.streetcomplete.data.osm.geometry.*
-import de.westnordost.streetcomplete.data.toElementType
 import de.westnordost.streetcomplete.ktx.format
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList

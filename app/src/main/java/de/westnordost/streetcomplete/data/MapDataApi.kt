@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data
 import de.westnordost.osmapi.common.errors.*
 import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.osmapi.map.MapData
-import de.westnordost.osmapi.map.handler.MapDataHandler
+import de.westnordost.osmapi.map.MutableMapData
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 
 
@@ -59,14 +59,14 @@ interface MapDataApi {
      *
      * @param bounds rectangle in which to query map data. May not cross the 180th meridian. This is
      * usually limited at 0.25 square degrees. Check the server capabilities.
-     * @param handler map data handler that is fed the map data
+     * @param mutableMapData mutable map data to add the add the data to
      *
      * @throws OsmQueryTooBigException if the bounds are is too large
      * @throws IllegalArgumentException if the bounds cross the 180th meridian.
      *
      * @return the map data
      */
-    fun getMap(bounds: BoundingBox, handler: MapDataHandler)
+    fun getMap(bounds: BoundingBox, mutableMapData: MutableMapData)
 
     /**
      * Queries the way with the given id plus all nodes that are in referenced by it.
