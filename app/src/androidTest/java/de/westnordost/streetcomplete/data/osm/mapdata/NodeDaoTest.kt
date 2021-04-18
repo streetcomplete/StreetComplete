@@ -16,7 +16,7 @@ class NodeDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun putGetNoTags() {
-        val node = nd(5, tags = null)
+        val node = nd(5)
         dao.put(node)
         val dbNode = dao.get(5)
 
@@ -90,6 +90,6 @@ private fun nd(
     version: Int = 1,
     lat: Double = 1.0,
     lon: Double = 2.0,
-    tags: Map<String,String>? = emptyMap(),
+    tags: Map<String,String> = emptyMap(),
     timestamp: Long = 123
-) = Node(id, LatLon(lat, lon), tags ?: emptyMap(), version, timestamp)
+) = Node(id, LatLon(lat, lon), tags, version, timestamp)
