@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import org.junit.Before
 import org.junit.Test
 
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.way
@@ -30,12 +31,12 @@ class ElementDaoTest {
     }
 
     @Test fun getNode() {
-        dao.get(ElementType.NODE, 1L)
+        dao.get(NODE, 1L)
         verify(nodeDao).get(1L)
     }
 
     @Test fun deleteNode() {
-        dao.delete(ElementType.NODE, 1L)
+        dao.delete(NODE, 1L)
         verify(nodeDao).delete(1L)
     }
 
@@ -46,12 +47,12 @@ class ElementDaoTest {
     }
 
     @Test fun getWay() {
-        dao.get(ElementType.WAY, 1L)
+        dao.get(WAY, 1L)
         verify(wayDao).get(1L)
     }
 
     @Test fun deleteWay() {
-        dao.delete(ElementType.WAY, 1L)
+        dao.delete(WAY, 1L)
         verify(wayDao).delete(1L)
     }
 
@@ -62,12 +63,12 @@ class ElementDaoTest {
     }
 
     @Test fun getRelation() {
-        dao.get(ElementType.RELATION, 1L)
+        dao.get(RELATION, 1L)
         verify(relationDao).get(1L)
     }
 
     @Test fun deleteRelation() {
-        dao.delete(ElementType.RELATION, 1L)
+        dao.delete(RELATION, 1L)
         verify(relationDao).delete(1L)
     }
 
@@ -96,9 +97,9 @@ class ElementDaoTest {
 
     @Test fun deleteAllElements() {
         dao.deleteAll(listOf(
-            ElementKey(ElementType.NODE,0),
-            ElementKey(ElementType.WAY,0),
-            ElementKey(ElementType.RELATION,0)
+            ElementKey(NODE,0),
+            ElementKey(WAY,0),
+            ElementKey(RELATION,0)
         ))
 
         verify(nodeDao).deleteAll(listOf(0L))
@@ -108,9 +109,9 @@ class ElementDaoTest {
 
     @Test fun getAllElements() {
         dao.getAll(listOf(
-            ElementKey(ElementType.NODE,0),
-            ElementKey(ElementType.WAY,0),
-            ElementKey(ElementType.RELATION,0)
+            ElementKey(NODE,0),
+            ElementKey(WAY,0),
+            ElementKey(RELATION,0)
         ))
 
         verify(nodeDao).getAll(listOf(0L))

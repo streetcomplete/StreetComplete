@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.geometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.testutils.*
 import org.junit.Test
 
@@ -137,9 +138,9 @@ class ElementGeometryCreatorTest {
 
     @Test fun `positions for relation`() {
         val relation = rel(1, listOf(
-            member(ElementType.WAY, 0),
-            member(ElementType.WAY, 1),
-            member(ElementType.NODE, 1)
+            member(WAY, 0),
+            member(WAY, 1),
+            member(NODE, 1)
         ))
 
         val ways = listOf<Way>(SIMPLE_WAY1, SIMPLE_WAY2)
@@ -162,17 +163,17 @@ class ElementGeometryCreatorTest {
 
     @Test fun `returns null for non-existent relation`() {
         val relation = rel(1, listOf(
-            member(ElementType.WAY, 1),
-            member(ElementType.WAY, 2),
-            member(ElementType.NODE, 1)
+            member(WAY, 1),
+            member(WAY, 2),
+            member(NODE, 1)
         ))
         assertNull(create(relation, MutableMapData()))
     }
 
     @Test fun `returns null for relation with a way that's missing from map data`() {
         val relation = rel(1, listOf(
-            member(ElementType.WAY, 0),
-            member(ElementType.WAY, 1)
+            member(WAY, 0),
+            member(WAY, 1)
         ))
         val mapData = MutableMapData(listOf(
             relation,
@@ -186,8 +187,8 @@ class ElementGeometryCreatorTest {
 
     @Test fun `does not return null for relation with a way that's missing from map data if returning incomplete geometries is ok`() {
         val relation = rel(1, listOf(
-            member(ElementType.WAY, 0),
-            member(ElementType.WAY, 1)
+            member(WAY, 0),
+            member(WAY, 1)
         ))
         val way = way(0, listOf(0,1))
         val mapData = MutableMapData(listOf(
@@ -248,6 +249,6 @@ private val WAY_GEOMETRIES = mapOf(
 private fun areaRelation(members: List<RelationMember>) =
     rel(0, members, mapOf("type" to "multipolygon"))
 
-private fun asOuters(vararg ways: Way) = ways.map { member(ElementType.WAY, it.id, "outer") }
-private fun asInners(vararg ways: Way) = ways.map { member(ElementType.WAY, it.id, "inner") }
-private fun asMembers(vararg ways: Way) = ways.map { member(ElementType.WAY, it.id, "") }
+private fun asOuters(vararg ways: Way) = ways.map { member(WAY, it.id, "outer") }
+private fun asInners(vararg ways: Way) = ways.map { member(WAY, it.id, "inner") }
+private fun asMembers(vararg ways: Way) = ways.map { member(WAY, it.id, "") }
