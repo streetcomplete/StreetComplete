@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import android.util.Log
-import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.streetcomplete.data.osm.geometry.*
 import de.westnordost.streetcomplete.ktx.format
 import java.lang.System.currentTimeMillis
@@ -66,8 +65,8 @@ import javax.inject.Singleton
         onUpdateForBBox(bbox, mapDataWithGeometry)
     }
 
-    @Synchronized fun updateAll(elementUpdates: ElementUpdates) {
-        val elements = elementUpdates.updated
+    @Synchronized fun updateAll(mapDataUpdates: MapDataUpdates) {
+        val elements = mapDataUpdates.updated
         // need mapData in order to create (updated) geometry
         val mapData = MutableMapData(elements)
         completeMapData(mapData)
@@ -77,8 +76,8 @@ import javax.inject.Singleton
             geometry?.let { ElementGeometryEntry(element.type, element.id, geometry) }
         }
 
-        val oldElementKeys = elementUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
-        val deleted = elementUpdates.deleted + oldElementKeys
+        val oldElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
+        val deleted = mapDataUpdates.deleted + oldElementKeys
 
         val mapDataWithGeom = MutableMapDataWithGeometry(mapData, elementGeometryEntries)
 

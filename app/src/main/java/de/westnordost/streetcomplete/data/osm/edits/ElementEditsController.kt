@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.osmapi.map.ElementIdUpdate
-import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -83,7 +83,7 @@ import javax.inject.Singleton
         return unsynced.filter { it !is IsRevertAction }.size - unsynced.filter { it is IsRevertAction }.size
     }
 
-    @Synchronized fun synced(edit: ElementEdit, elementUpdates: ElementUpdates) {
+    @Synchronized fun synced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
         updateElementIds(elementUpdates.idUpdates)
         markSynced(edit)
     }

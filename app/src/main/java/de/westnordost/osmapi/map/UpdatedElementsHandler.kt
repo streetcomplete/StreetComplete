@@ -19,7 +19,7 @@ class UpdatedElementsHandler : Handler<DiffElement> {
         }
     }
 
-    fun getElementUpdates(elements: Collection<Element>): ElementUpdates {
+    fun getElementUpdates(elements: Collection<Element>): MapDataUpdates {
         val updatedElements = mutableListOf<Element>()
         val deletedElementKeys = mutableListOf<ElementKey>()
         val idUpdates = mutableListOf<ElementIdUpdate>()
@@ -34,7 +34,7 @@ class UpdatedElementsHandler : Handler<DiffElement> {
                 idUpdates.add(ElementIdUpdate(diff.type.toElementType(), diff.clientId, diff.serverId))
             }
         }
-        return ElementUpdates(updatedElements, deletedElementKeys, idUpdates)
+        return MapDataUpdates(updatedElements, deletedElementKeys, idUpdates)
     }
 
     private fun getDiff(type: ElementType, id: Long): DiffElement? = when (type) {
@@ -74,15 +74,3 @@ class UpdatedElementsHandler : Handler<DiffElement> {
         return Relation(newId, newRelationMembers, HashMap(relation.tags), newVersion, relation.timestampEdited)
     }
 }
-
-data class ElementUpdates(
-    val updated: Collection<Element> = emptyList(),
-    val deleted: Collection<ElementKey> = emptyList(),
-    val idUpdates: Collection<ElementIdUpdate> = emptyList()
-)
-
-data class ElementIdUpdate(
-    val elementType: ElementType,
-    val oldElementId: Long,
-    val newElementId: Long
-)

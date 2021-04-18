@@ -2,14 +2,10 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.common.errors.OsmConflictException
-import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
-import de.westnordost.streetcomplete.data.osm.mapdata.ApiMapDataRepository
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import javax.inject.Inject
 
@@ -22,7 +18,7 @@ class ElementEditUploader @Inject constructor(
      *
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      *  */
-    fun upload(edit: ElementEdit, idProvider: ElementIdProvider): ElementUpdates {
+    fun upload(edit: ElementEdit, idProvider: ElementIdProvider): MapDataUpdates {
         val element = edit.fetchElement() ?: throw ConflictException()
 
         val repos = ApiMapDataRepository(mapDataApi)
@@ -38,7 +34,7 @@ class ElementEditUploader @Inject constructor(
     }
 
     /** Upload the changes for a single change. Returns the updated element(s). */
-    private fun uploadInChangeset(changesetId: Long, elements: Collection<Element>): ElementUpdates {
+    private fun uploadInChangeset(changesetId: Long, elements: Collection<Element>): MapDataUpdates {
         try {
             return mapDataApi.uploadChanges(changesetId, elements)
         } catch (e: OsmConflictException) {

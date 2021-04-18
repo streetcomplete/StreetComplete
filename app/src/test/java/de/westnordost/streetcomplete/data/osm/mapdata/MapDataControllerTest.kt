@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.ElementIdUpdate
-import de.westnordost.osmapi.map.ElementUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
@@ -98,7 +96,7 @@ class MapDataControllerTest {
 
         val listener = mock<MapDataController.Listener>()
         controller.addListener(listener)
-        controller.updateAll(ElementUpdates(
+        controller.updateAll(MapDataUpdates(
             updated = elements,
             deleted = deleteKeys,
             idUpdates = idUpdates

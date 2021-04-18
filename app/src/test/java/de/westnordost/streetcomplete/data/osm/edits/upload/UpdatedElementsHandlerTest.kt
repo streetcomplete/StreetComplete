@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.osmapi.map.ElementIdUpdate
 import de.westnordost.osmapi.map.UpdatedElementsHandler
 import de.westnordost.osmapi.map.changes.DiffElement
 import de.westnordost.streetcomplete.data.osm.mapdata.*

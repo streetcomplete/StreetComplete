@@ -1,12 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
@@ -57,7 +53,7 @@ class ElementEditsUploaderTest {
     @Test fun `upload works`() = runBlocking {
         val edit = edit()
         val idProvider = mock<ElementIdProvider>()
-        val updates = mock<ElementUpdates>()
+        val updates = mock<MapDataUpdates>()
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
@@ -89,7 +85,7 @@ class ElementEditsUploaderTest {
         verify(listener).onDiscarded(any(), any())
 
         verify(elementEditsController).syncFailed(edit)
-        verify(mapDataController).updateAll(eq(ElementUpdates(
+        verify(mapDataController).updateAll(eq(MapDataUpdates(
             updated = listOf(updatedNode)
         )))
 
@@ -111,7 +107,7 @@ class ElementEditsUploaderTest {
         verify(listener).onDiscarded(any(), any())
 
         verify(elementEditsController).syncFailed(edit)
-        verify(mapDataController).updateAll(eq(ElementUpdates(
+        verify(mapDataController).updateAll(eq(MapDataUpdates(
             deleted = listOf(ElementKey( ElementType.NODE, 1L))
         )))
 

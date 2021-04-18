@@ -1,10 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.osmapi.common.errors.*
-import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.streetcomplete.data.osm.mapdata.MapData
-import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
-import de.westnordost.streetcomplete.data.osm.mapdata.*
 
 
 /** Get and upload changes to map data */
@@ -28,7 +24,7 @@ interface MapDataApi {
      *
      * @return the updated elements
      */
-    fun uploadChanges(changesetId: Long, elements: Collection<Element>): ElementUpdates
+    fun uploadChanges(changesetId: Long, elements: Collection<Element>): MapDataUpdates
 
     /**
      * Open a new changeset with the given tags

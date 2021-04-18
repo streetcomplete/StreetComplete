@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import android.util.Log
-import de.westnordost.osmapi.map.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.mapdata.*
@@ -64,10 +63,10 @@ class ElementEditsUploader @Inject constructor(
 
             val mapData = fetchElementComplete(edit.elementType, edit.elementId)
             if (mapData != null) {
-                mapDataController.updateAll(ElementUpdates(updated = mapData.toList()))
+                mapDataController.updateAll(MapDataUpdates(updated = mapData.toList()))
             } else {
                 val elementKey = ElementKey(edit.elementType, edit.elementId)
-                mapDataController.updateAll(ElementUpdates(deleted = listOf(elementKey)))
+                mapDataController.updateAll(MapDataUpdates(deleted = listOf(elementKey)))
             }
         }
     }

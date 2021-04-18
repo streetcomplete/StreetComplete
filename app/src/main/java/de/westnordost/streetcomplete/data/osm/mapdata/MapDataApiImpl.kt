@@ -26,7 +26,7 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
     // map data factory that does not include that data
     private val mapDataDao: MapDataDao = MapDataDao(osm, LightweightOsmMapDataFactory())
 
-    override fun uploadChanges(changesetId: Long, elements: Collection<Element>): ElementUpdates {
+    override fun uploadChanges(changesetId: Long, elements: Collection<Element>): MapDataUpdates {
         val handler = UpdatedElementsHandler()
         val osmElements = elements.map { it.toOsmApiElement() }
         mapDataDao.uploadChanges(changesetId, osmElements, handler)
