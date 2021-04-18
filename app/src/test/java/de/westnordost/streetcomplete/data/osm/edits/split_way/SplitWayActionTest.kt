@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
-import de.westnordost.osmapi.map.MapData
-import de.westnordost.osmapi.map.MutableMapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*

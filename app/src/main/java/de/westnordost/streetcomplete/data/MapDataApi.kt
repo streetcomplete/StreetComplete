@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.data
 
 import de.westnordost.osmapi.common.errors.*
 import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.osmapi.map.MapData
-import de.westnordost.osmapi.map.MutableMapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 
 

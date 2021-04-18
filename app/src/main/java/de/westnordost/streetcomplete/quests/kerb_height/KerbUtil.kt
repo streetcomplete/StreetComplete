@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
-import de.westnordost.osmapi.map.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS

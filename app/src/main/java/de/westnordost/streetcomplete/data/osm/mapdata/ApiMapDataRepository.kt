@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.MapDataApi
 
 class ApiMapDataRepository(private val api: MapDataApi) : MapDataRepository {

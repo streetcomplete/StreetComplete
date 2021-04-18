@@ -1,4 +1,4 @@
-package de.westnordost.osmapi.map
+package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 
