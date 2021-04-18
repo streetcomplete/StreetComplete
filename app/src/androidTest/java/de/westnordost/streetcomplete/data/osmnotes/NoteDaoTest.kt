@@ -22,7 +22,7 @@ class NoteDaoTest : ApplicationDbTestCase() {
 
         dao.put(note)
         val dbNote = dao.get(note.id)!!
-        checkEqual(note, dbNote)
+        assertEquals(note, dbNote)
     }
 
     @Test fun putAll() {
@@ -38,7 +38,7 @@ class NoteDaoTest : ApplicationDbTestCase() {
         dao.put(note)
 
         val dbNote = dao.get(note.id)!!
-        checkEqual(note, dbNote)
+        assertEquals(note, dbNote)
     }
 
     @Test fun putGetWithClosedDate() {
@@ -46,7 +46,7 @@ class NoteDaoTest : ApplicationDbTestCase() {
 
         dao.put(note)
         val dbNote = dao.get(note.id)!!
-        checkEqual(note, dbNote)
+        assertEquals(note, dbNote)
     }
 
     @Test fun deleteButNothingIsThere() {
@@ -75,7 +75,7 @@ class NoteDaoTest : ApplicationDbTestCase() {
         dao.putAll(listOf(thisIsIn, thisIsOut))
 
         val notes = dao.getAll(BoundingBox(0.0, 0.0, 1.0, 1.0))
-        checkEqual(thisIsIn, notes.single())
+        assertEquals(thisIsIn, notes.single())
     }
 
     @Test fun getAllByIds() {
@@ -84,10 +84,7 @@ class NoteDaoTest : ApplicationDbTestCase() {
         val third = createNote(3)
         dao.putAll(listOf(first, second, third))
 
-        val notes = dao.getAll(listOf(1,2))
-        assertEquals(2, notes.size)
-        checkEqual(first, notes[0])
-        checkEqual(second, notes[1])
+        assertEquals(listOf(first, second), dao.getAll(listOf(1,2)))
     }
 
     @Test fun deleteAllByIds() {
@@ -97,30 +94,6 @@ class NoteDaoTest : ApplicationDbTestCase() {
         assertNull(dao.get(1))
         assertNull(dao.get(2))
         assertNotNull(dao.get(3))
-    }
-}
-
-private fun checkEqual(note: Note, dbNote: Note) {
-    assertEquals(note.id, dbNote.id)
-    assertEquals(note.position, dbNote.position)
-    assertEquals(note.status, dbNote.status)
-    assertEquals(note.timestampCreated, dbNote.timestampCreated)
-    assertEquals(note.timestampClosed, dbNote.timestampClosed)
-
-    assertEquals(note.comments.size, dbNote.comments.size)
-    val it: ListIterator<NoteComment>
-    val dbIt: ListIterator<NoteComment>
-    it = note.comments.listIterator()
-    dbIt = dbNote.comments.listIterator()
-
-    while (it.hasNext() && dbIt.hasNext()) {
-        val comment = it.next()
-        val dbComment = dbIt.next()
-        assertEquals(comment.action, dbComment.action)
-        assertEquals(comment.timestamp, dbComment.timestamp)
-        assertEquals(comment.text, dbComment.text)
-        assertEquals(comment.user?.displayName, dbComment.user?.displayName)
-        assertEquals(comment.user?.id, dbComment.user?.id)
     }
 }
 

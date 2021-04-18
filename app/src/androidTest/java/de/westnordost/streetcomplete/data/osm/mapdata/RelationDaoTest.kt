@@ -23,7 +23,7 @@ class RelationDaoTest : ApplicationDbTestCase() {
         dao.put(relation)
         val dbRelation = dao.get(5)
 
-        checkEqual(relation, dbRelation!!)
+        assertEquals(relation, dbRelation!!)
     }
 
     @Test fun putGetWithTags() {
@@ -35,7 +35,7 @@ class RelationDaoTest : ApplicationDbTestCase() {
         dao.put(relation)
         val dbRelation = dao.get(5)
 
-        checkEqual(relation, dbRelation!!)
+        assertEquals(relation, dbRelation!!)
     }
 
     @Test fun putOverwrites() {
@@ -136,13 +136,6 @@ class RelationDaoTest : ApplicationDbTestCase() {
         val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10)
         assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(1L, 2L, 3L)))
     }
-}
-
-private fun checkEqual(relation: Relation, dbRelation: Relation) {
-    assertEquals(relation.id, dbRelation.id)
-    assertEquals(relation.version.toLong(), dbRelation.version.toLong())
-    assertEquals(relation.tags, dbRelation.tags)
-    assertEquals(relation.members, dbRelation.members)
 }
 
 private fun rel(

@@ -20,7 +20,7 @@ class NodeDaoTest : ApplicationDbTestCase() {
         dao.put(node)
         val dbNode = dao.get(5)
 
-        checkEqual(node, dbNode!!)
+        assertEquals(node, dbNode!!)
     }
 
     @Test fun putGetWithTags() {
@@ -28,7 +28,7 @@ class NodeDaoTest : ApplicationDbTestCase() {
         dao.put(node)
         val dbNode = dao.get(5)
 
-        checkEqual(node, dbNode!!)
+        assertEquals(node, dbNode!!)
     }
 
     @Test fun putOverwrites() {
@@ -76,13 +76,6 @@ class NodeDaoTest : ApplicationDbTestCase() {
         val unusedIds = dao.getIdsOlderThan(currentTimeMillis() + 10)
         assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(1L, 2L, 3L)))
     }
-}
-
-private fun checkEqual(node: Node, dbNode: Node) {
-    assertEquals(node.id, dbNode.id)
-    assertEquals(node.version, dbNode.version)
-    assertEquals(node.position, dbNode.position)
-    assertEquals(node.tags, dbNode.tags)
 }
 
 private fun nd(

@@ -19,7 +19,7 @@ class WayDaoTest : ApplicationDbTestCase() {
         dao.put(way)
         val dbWay = dao.get(5)
 
-        checkEqual(way, dbWay!!)
+        assertEquals(way, dbWay!!)
     }
 
     @Test fun putGetWithTags() {
@@ -27,7 +27,7 @@ class WayDaoTest : ApplicationDbTestCase() {
         dao.put(way)
         val dbWay = dao.get(5)
 
-        checkEqual(way, dbWay!!)
+        assertEquals(way, dbWay!!)
     }
 
     @Test fun putOverwrites() {
@@ -99,13 +99,6 @@ class WayDaoTest : ApplicationDbTestCase() {
         val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10)
         assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(1L, 2L, 3L)))
     }
-}
-
-private fun checkEqual(way: Way, dbWay: Way) {
-    assertEquals(way.id, dbWay.id)
-    assertEquals(way.version, dbWay.version)
-    assertEquals(way.nodeIds, dbWay.nodeIds)
-    assertEquals(way.tags, dbWay.tags)
 }
 
 private fun way(
