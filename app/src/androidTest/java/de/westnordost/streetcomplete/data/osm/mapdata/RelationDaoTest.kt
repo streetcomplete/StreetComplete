@@ -5,6 +5,7 @@ import org.junit.Test
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 
 class RelationDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: RelationDao
@@ -15,8 +16,8 @@ class RelationDaoTest : ApplicationDbTestCase() {
 
     @Test fun putGetNoTags() {
         val members = listOf(
-            RelationMember(ElementType.WAY, 0, "outer"),
-            RelationMember(ElementType.WAY, 1, "inner")
+            RelationMember(WAY, 0, "outer"),
+            RelationMember(WAY, 1, "inner")
         )
         val relation = rel(5, 1, members)
         dao.put(relation)
@@ -27,8 +28,8 @@ class RelationDaoTest : ApplicationDbTestCase() {
 
     @Test fun putGetWithTags() {
         val members = listOf(
-            RelationMember(ElementType.WAY, 0, "outer"),
-            RelationMember(ElementType.WAY, 1, "inner")
+            RelationMember(WAY, 0, "outer"),
+            RelationMember(WAY, 1, "inner")
         )
         val relation = rel(5, 1, members, mapOf("a key" to "a value"))
         dao.put(relation)
@@ -45,12 +46,12 @@ class RelationDaoTest : ApplicationDbTestCase() {
 
     @Test fun putOverwritesAlsoRelationMembers() {
         val members1 = listOf(
-            RelationMember(ElementType.WAY, 0, "outer"),
-            RelationMember(ElementType.WAY, 1, "inner")
+            RelationMember(WAY, 0, "outer"),
+            RelationMember(WAY, 1, "inner")
         )
         val members2 = listOf(
-            RelationMember(ElementType.WAY, 2, "outer"),
-            RelationMember(ElementType.WAY, 3, "inner")
+            RelationMember(WAY, 2, "outer"),
+            RelationMember(WAY, 3, "inner")
         )
 
         dao.put(rel(0, members = members1))
@@ -77,14 +78,14 @@ class RelationDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAll() {
-        val e1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 0, "bla")))
+        val e1 = rel(1, members = listOf(RelationMember(NODE, 0, "bla")))
         val e2 = rel(2, members = listOf(
-            RelationMember(ElementType.NODE, 0, "bla"),
-            RelationMember(ElementType.WAY, 1, "blub"),
+            RelationMember(NODE, 0, "bla"),
+            RelationMember(WAY, 1, "blub"),
         ))
         val e3 = rel(3, members = listOf(
-            RelationMember(ElementType.RELATION, 3, "one"),
-            RelationMember(ElementType.WAY, 4, "two"),
+            RelationMember(RELATION, 3, "one"),
+            RelationMember(WAY, 4, "two"),
         ))
         dao.putAll(listOf(e1,e2,e3))
         assertEquals(
@@ -106,14 +107,14 @@ class RelationDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAllForElement() {
-        val e1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 0, "bla")))
+        val e1 = rel(1, members = listOf(RelationMember(NODE, 0, "bla")))
         val e2 = rel(2, members = listOf(
-            RelationMember(ElementType.NODE, 0, "bla"),
-            RelationMember(ElementType.WAY, 1, "blub"),
+            RelationMember(NODE, 0, "bla"),
+            RelationMember(WAY, 1, "blub"),
         ))
         val e3 = rel(3, members = listOf(
-            RelationMember(ElementType.RELATION, 3, "one"),
-            RelationMember(ElementType.WAY, 4, "two"),
+            RelationMember(RELATION, 3, "one"),
+            RelationMember(WAY, 4, "two"),
         ))
         dao.putAll(listOf(e1,e2,e3))
         assertEquals(
@@ -147,7 +148,7 @@ private fun checkEqual(relation: Relation, dbRelation: Relation) {
 private fun rel(
     id: Long = 1L,
     version: Int = 1,
-    members: List<RelationMember> = listOf(RelationMember(ElementType.NODE, 1L, "")),
+    members: List<RelationMember> = listOf(RelationMember(NODE, 1L, "")),
     tags: Map<String, String> = emptyMap(),
     timestamp: Long = 123L
 ) = Relation(id, members.toMutableList(), tags, version, timestamp)
