@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import android.util.Log
 import de.westnordost.osmapi.map.*
-import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import android.util.Log
-import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.streetcomplete.ApplicationConstants.QUESTTYPE_TAG_KEY

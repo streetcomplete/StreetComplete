@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
-import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore

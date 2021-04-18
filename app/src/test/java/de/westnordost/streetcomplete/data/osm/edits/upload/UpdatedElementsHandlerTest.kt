@@ -5,7 +5,7 @@ import de.westnordost.osmapi.map.UpdatedElementsHandler
 import de.westnordost.osmapi.map.changes.DiffElement
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
-import de.westnordost.streetcomplete.data.toOsmElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.toOsmElementType
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node

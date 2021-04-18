@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey

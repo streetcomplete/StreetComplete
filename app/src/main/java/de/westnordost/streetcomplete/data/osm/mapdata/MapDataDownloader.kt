@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import android.util.Log
 import de.westnordost.osmapi.common.errors.OsmQueryTooBigException
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.enlargedBy
 import kotlinx.coroutines.Dispatchers

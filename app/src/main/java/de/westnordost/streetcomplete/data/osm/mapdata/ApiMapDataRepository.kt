@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.streetcomplete.data.MapDataApi
-
 class ApiMapDataRepository(private val api: MapDataApi) : MapDataRepository {
 
     override fun getNode(id: Long): Node? = api.getNode(id)

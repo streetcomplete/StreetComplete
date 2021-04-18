@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
-import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.upload.ConflictException
