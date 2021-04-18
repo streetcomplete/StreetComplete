@@ -998,7 +998,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_chain">Chain</string>
     <string name="quest_barrier_type_rope">Rope</string>
     <string name="quest_barrier_type_wire_gate">Removable wire section</string>
-    <string name="quest_barrier_type_cattle_grid">Grid blocking cattle from walking over</string>
+    <string name="quest_barrier_type_cattle_grid">Grid blocking livestock from walking over</string>
     <string name="quest_barrier_type_block">Big immobile object</string>
     <string name="quest_barrier_jersey_barrier">Jersey barrier</string>
     <string name="quest_barrier_type_log">Log</string>
