@@ -411,8 +411,7 @@ object AchievementsModule {
                 "AddFerryAccessPedestrian", // 66
                 "AddFerryAccessMotorVehicle", // 103
                 "AddInformationToTourism", // 137
-                "AddBoardType", // 188
-                "AddPostBoxRoyalCypher"
+                "AddBoardType" // 188
             )),
             // levels: 3, 9, 18, 30, 45, 63, ...
             { lvl -> (lvl + 1)*3 },

@@ -33,6 +33,14 @@ fire_hydrant_wall.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/w
 ic_link_cyclosm.xml            CC-BY-SA          by Lucas Verney
 ic_trophy.xml                  SIL OFL 1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
 
+kerb_height_raised.jpg         CC0               Mateusz Konieczny
+kerb_height_raised_original... CC0               Mateusz Konieczny
+kerb_height_lowered.jpg        CC0               Mateusz Konieczny
+kerb_height_lowered_origina... CC0               Mateusz Konieczny
+kerb_height_flush.jpg          CC0               Mateusz Konieczny
+kerb_height_flush_original.jpg CC0               Mateusz Konieczny
+kerb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
+
 parking_type_lane.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:20201001-parking-streetside_01.jpg
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
 parking_type_street_side.jpg   CC0               https://wiki.openstreetmap.org/wiki/File:20200925-parking-lined-perpendicular.jpg
@@ -126,13 +134,6 @@ surface_tartan.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/w
 surface_paved_area.jpg         CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-27_13_01_48_View_across_Parkway_Avenue_(Mercer_County_Route_634)_near_the_Delaware_and_Bound_Brook_Railroad_underpass,_with_concrete_pavement_likely_dating_to_the_1950s.JPG (Famartin)
 surface_unpaved_area.jpg       CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Art_earthwork_landscape_sculpture_Woodland_Trust_Theydon_Bois_Essex_08.JPG (Acabashi)
 surface_ground_area.jpg        CC-BY 2.0         https://www.flickr.com/photos/7175652@N02/3734770583 (Danumurthi Mahendra)
-herb_height_raised.jpg         CC0               Mateusz Konieczny
-herb_height_raised_original... CC0               Mateusz Konieczny
-herb_height_lowered.jpg        CC0               Mateusz Konieczny
-herb_height_lowered_origina... CC0               Mateusz Konieczny
-herb_height_flush.jpg          CC0               Mateusz Konieczny
-herb_height_flush_original.jpg CC0               Mateusz Konieczny
-herb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
 surface_pebblestone.jpg        CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg (FrankM)
 surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:2013-08-21_12_04_26_View_south_towards_Barnegat_Lighthouse_along_the_sand_road_to_Barnegat_Inlet_in_Island_Beach_State_Park.jpg (Famartin )
 surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG (Øyvind Holmstad )
