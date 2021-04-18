@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -59,13 +59,13 @@ class UpdateElementTagsActionTest {
     @Test(expected = ConflictException::class)
     fun `conflict if relation members were removed`() {
         val r = rel(1, listOf(
-            member(ElementType.NODE, 1)
+            member(NODE, 1)
         ))
 
         UpdateElementTagsAction(
             SpatialPartsOfRelation(arrayListOf(
-                member(ElementType.NODE, 1),
-                member(ElementType.NODE, 2)
+                member(NODE, 1),
+                member(NODE, 2)
             )),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             questType
@@ -75,12 +75,12 @@ class UpdateElementTagsActionTest {
     @Test(expected = ConflictException::class)
     fun `conflict if relation members were added`() {
         val r = rel(1, listOf(
-            member(ElementType.NODE, 1),
-            member(ElementType.NODE, 2)
+            member(NODE, 1),
+            member(NODE, 2)
         ))
         UpdateElementTagsAction(
             SpatialPartsOfRelation(arrayListOf(
-                member(ElementType.NODE, 1)
+                member(NODE, 1)
             )),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             questType
@@ -90,13 +90,13 @@ class UpdateElementTagsActionTest {
     @Test(expected = ConflictException::class)
     fun `conflict if order of relation members changed`() {
         val r = rel(1, listOf(
-            member(ElementType.NODE, 1),
-            member(ElementType.NODE, 2)
+            member(NODE, 1),
+            member(NODE, 2)
         ))
         UpdateElementTagsAction(
             SpatialPartsOfRelation(arrayListOf(
-                member(ElementType.NODE, 2),
-                member(ElementType.NODE, 1)
+                member(NODE, 2),
+                member(NODE, 1)
             )),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             questType
@@ -106,11 +106,11 @@ class UpdateElementTagsActionTest {
     @Test(expected = ConflictException::class)
     fun `conflict if role of any relation member changed`() {
         val r = rel(1, listOf(
-            member(ElementType.NODE, 1, "a")
+            member(NODE, 1, "a")
         ))
         UpdateElementTagsAction(
             SpatialPartsOfRelation(arrayListOf(
-                member(ElementType.NODE, 1, "b")
+                member(NODE, 1, "b")
             )),
             StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
             questType
