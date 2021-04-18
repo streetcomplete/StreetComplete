@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -413,7 +412,7 @@ class SplitWayActionTest {
         // 4 3 | 0 1 2 3  =>  4 3 | -1 2 3 | 0 1 -1
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4,3)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf(
+            rel(0, listOf(
                 member(WAY, 1),
                 member(NODE, 0),
                 member(RELATION, 1),
@@ -500,7 +499,7 @@ class SplitWayActionTest {
         val otherRole = if (role == "from") "to" else "from"
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(3,4)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf(
+            rel(0, listOf(
                 member(WAY, 0, role),
                 member(WAY, 1, otherRole),
                 member(NODE, 3, via)
@@ -539,7 +538,7 @@ class SplitWayActionTest {
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(5,7)))
         on(repos.getWay(2)).thenReturn(way(2, mutableListOf(5,4,3)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf<RelationMember>(
+            rel(0, listOf(
                 member(WAY, 0, role),
                 member(WAY, 1, otherRole),
                 member(WAY, 2, via)
@@ -563,7 +562,7 @@ class SplitWayActionTest {
         on(repos.getWay(2)).thenReturn(way(2, mutableListOf(4,5,6)))
         on(repos.getWay(3)).thenReturn(way(3, mutableListOf(3,4)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf<RelationMember>(
+            rel(0, listOf(
                 member(WAY, 0, "from"),
                 member(WAY, 1, "to"),
                 member(WAY, 2, "via"),
@@ -584,7 +583,7 @@ class SplitWayActionTest {
 
     @Test fun `no special treatment of restriction relation if the way has another role`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf<RelationMember>(
+            rel(0, listOf(
                 member(WAY, 0, "another role"),
                 member(WAY, 1, "from"),
                 member(NODE, 3, "via"),
@@ -599,7 +598,7 @@ class SplitWayActionTest {
 
     @Test fun `no special treatment of restriction relation if there is no via`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf<RelationMember>(
+            rel(0, listOf(
                 member(WAY, 0, "from"),
                 member(WAY, 1, "to")
             ), mapOf("type" to "restriction"))
@@ -612,7 +611,7 @@ class SplitWayActionTest {
 
     @Test fun `no special treatment of restriction relation if from-way does not touch via`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf<RelationMember>(
+            rel(0, listOf(
                 member(WAY, 0, "from"),
                 member(NODE, 4, "via"),
                 member(WAY, 3, "to")
