@@ -21,6 +21,8 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
              and !tourism
              and !attraction
              and !amenity
+             and !craft
+             and !tourism
              and !leisure
           )
     """
