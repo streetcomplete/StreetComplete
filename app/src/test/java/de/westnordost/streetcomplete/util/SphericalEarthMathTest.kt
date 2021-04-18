@@ -725,7 +725,9 @@ class SphericalEarthMathTest {
         val q1 = p(0.0, 1.0)
         val q2 = p(1.0, 0.0)
 
-        assertEquals(p2, intersectionOf(p1, p2, q1, q2))
+        val i = intersectionOf(p1, p2, q1, q2)!!
+        assertEquals(p2.longitude, i.longitude, 1e-9)
+        assertEquals(p2.latitude, i.latitude, 1e-9)
     }
 
     @Test fun `two lines intersect at start points`() {
@@ -734,7 +736,9 @@ class SphericalEarthMathTest {
         val q1 = p(0.0, 0.0)
         val q2 = p(1.0, 1.0)
 
-        assertEquals(p1, intersectionOf(p1, p2, q1, q2))
+        val i = intersectionOf(p1, p2, q1, q2)!!
+        assertEquals(p1.longitude, i.longitude, 1e-9)
+        assertEquals(p1.latitude, i.latitude, 1e-9)
     }
 
     @Test fun `two lines intersect somewhere in the middle`() {
