@@ -1,6 +1,7 @@
-package de.westnordost.osmapi.map
+package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.osmapi.changesets.Changeset
+import de.westnordost.osmapi.map.MapDataFactory
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.OsmNode
