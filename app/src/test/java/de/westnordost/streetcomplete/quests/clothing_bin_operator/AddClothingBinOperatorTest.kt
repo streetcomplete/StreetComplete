@@ -8,8 +8,8 @@ class AddClothingBinOperatorTest {
 
     private val questType = AddClothingBinOperator()
 
-    @Test fun `is not applicable to null tags`() {
-        assertFalse(questType.isApplicableTo(node(tags = null)))
+    @Test fun `is not applicable to empty tags`() {
+        assertFalse(questType.isApplicableTo(node()))
     }
 
     @Test fun `is applicable to clothing container`() {

@@ -11,7 +11,7 @@ class TestMapDataWithGeometry(elements: Iterable<Element>) : MutableMapData(), M
 
     init {
         addAll(elements)
-        handle(bbox())
+        boundingBox = bbox()
     }
 
     val nodeGeometriesById: MutableMap<Long, ElementPointGeometry?> = mutableMapOf()

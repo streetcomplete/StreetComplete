@@ -239,6 +239,6 @@ private fun createMapData(elements: Map<Element, ElementGeometry?>): TestMapData
                 result.relationGeometriesById[element.id] = geometry
         }
     }
-    result.handle(bbox())
+    result.boundingBox = bbox()
     return result
 }

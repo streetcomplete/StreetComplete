@@ -26,26 +26,26 @@ fun p(lat: Double = 0.0, lon: Double = 0.0) = LatLon(lat, lon)
 fun node(
     id: Long = 1,
     pos: LatLon = p(),
-    tags: Map<String, String>? = null,
+    tags: Map<String, String> = emptyMap(),
     version: Int = 1,
     date: Date? = null
-) = Node(id, pos, tags ?: emptyMap(), version, date?.time ?: currentTimeMillis())
+) = Node(id, pos, tags, version, date?.time ?: currentTimeMillis())
 
 fun way(
     id: Long = 1,
     nodes: List<Long> = listOf(),
-    tags: Map<String, String>? = null,
+    tags: Map<String, String> = emptyMap(),
     version: Int = 1,
     date: Date? = null
-) = Way(id, nodes, tags ?: emptyMap(), version, date?.time ?: currentTimeMillis())
+) = Way(id, nodes, tags, version, date?.time ?: currentTimeMillis())
 
 fun rel(
     id: Long = 1,
     members: List<RelationMember> = listOf(),
-    tags: Map<String, String>? = null,
+    tags: Map<String, String> = emptyMap(),
     version: Int = 1,
     date: Date? = null
-) = Relation(id, members.toMutableList(), tags ?: emptyMap(), version, date?.time ?: currentTimeMillis())
+) = Relation(id, members.toMutableList(), tags, version, date?.time ?: currentTimeMillis())
 
 fun member(
     type: ElementType = ElementType.NODE,
