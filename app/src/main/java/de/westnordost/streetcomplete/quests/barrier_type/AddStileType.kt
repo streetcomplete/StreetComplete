@@ -11,7 +11,7 @@ class AddStileType : OsmFilterQuestType<BarrierType>() {
     """
     override val commitMessage = "Add specific stile type"
     override val wikiLink = "Key:stile"
-    override val icon = R.drawable.ic_quest_barrier // TODO: more specific icon
+    override val icon = R.drawable.ic_quest_cow
     override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_stile_type_title
