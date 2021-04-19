@@ -22,6 +22,13 @@ class SceneMapComponent (
     private var loadedSceneFilePath: String? = null
     private var loadedSceneUpdates: List<String>? = null
 
+    var isAerialView: Boolean = false
+    set(value) {
+        field = value
+        aerialViewChanged = true
+    }
+    private var aerialViewChanged: Boolean = false
+
     private val mutex = Mutex()
 
     /** Add the given scene updates. They will overwrite previous scene updates with the same keys.
@@ -42,10 +49,13 @@ class SceneMapComponent (
         val sceneFilePath = getSceneFilePath()
         val sceneUpdates = getAllSceneUpdates()
         val strSceneUpdates = sceneUpdates.map { it.toString() }
-        if (loadedSceneFilePath == sceneFilePath && loadedSceneUpdates == strSceneUpdates) return
+        if (loadedSceneFilePath == sceneFilePath &&
+            loadedSceneUpdates == strSceneUpdates &&
+            !aerialViewChanged) return
         ctrl.loadSceneFile(sceneFilePath, sceneUpdates)
         loadedSceneFilePath = sceneFilePath
         loadedSceneUpdates = sceneUpdates.map { it.toString() }
+        aerialViewChanged = false
     }
 
     private fun getAllSceneUpdates(): List<SceneUpdate> =
@@ -66,7 +76,11 @@ class SceneMapComponent (
     private fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val scene = if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
+        val scene = when {
+            isAerialView -> "scene-satellite.yaml"
+            isNightMode -> "scene-dark.yaml"
+            else -> "scene-light.yaml"
+        }
         return "${vectorTileProvider.sceneFilePath}/$scene"
     }
 }

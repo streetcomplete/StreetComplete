@@ -116,6 +116,33 @@ class AddCyclewayTest {
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
+    @Test fun `not applicable to road with cycleway=separate`() {
+        assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
+            way(1L, listOf(1,2,3), mapOf(
+                "highway" to "primary",
+                "cycleway" to "separate"
+            ))
+        ))).toList().isEmpty())
+        assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
+            way(1L, listOf(1,2,3), mapOf(
+                "highway" to "primary",
+                "cycleway:left" to "separate"
+            ))
+        ))).toList().isEmpty())
+        assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
+            way(1L, listOf(1,2,3), mapOf(
+                "highway" to "primary",
+                "cycleway:right" to "separate"
+            ))
+        ))).toList().isEmpty())
+        assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
+            way(1L, listOf(1,2,3), mapOf(
+                "highway" to "primary",
+                "cycleway:both" to "separate"
+            ))
+        ))).toList().isEmpty())
+    }
+
     @Test fun `not applicable to road with cycleway that is not old enough`() {
         val mapData = TestMapDataWithGeometry(listOf(
             way(1L, listOf(1,2,3), mapOf(
@@ -230,6 +257,13 @@ class AddCyclewayTest {
     private fun bothSidesAnswer(bothSides: Cycleway): CyclewayAnswer {
         val side = CyclewaySide(bothSides)
         return CyclewayAnswer(side, side)
+    }
+
+    @Test fun `apply separate cycleway answer`() {
+        questType.verifyAnswer(
+            bothSidesAnswer(SEPARATE),
+            StringMapEntryAdd("cycleway:both", "separate")
+        )
     }
 
     @Test fun `apply dual cycle track answer`() {
@@ -552,6 +586,33 @@ class AddCyclewayTest {
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:both" to "something"
+            ), date = "2000-10-10".toCheckDate())
+        )!!)
+    }
+
+    @Test fun `isApplicableTo returns false for tagged old ways with unknown cycleway=separate values`() {
+        assertFalse(questType.isApplicableTo(
+            way(tags = mapOf(
+                "highway" to "unclassified",
+                "cycleway" to "separate"
+            ), date = "2000-10-10".toCheckDate())
+        )!!)
+        assertFalse(questType.isApplicableTo(
+            way(tags = mapOf(
+                "highway" to "unclassified",
+                "cycleway:left" to "separate"
+            ), date = "2000-10-10".toCheckDate())
+        )!!)
+        assertFalse(questType.isApplicableTo(
+            way(tags = mapOf(
+                "highway" to "unclassified",
+                "cycleway:right" to "separate"
+            ), date = "2000-10-10".toCheckDate())
+        )!!)
+        assertFalse(questType.isApplicableTo(
+            way(tags = mapOf(
+                "highway" to "unclassified",
+                "cycleway:both" to "separate"
             ), date = "2000-10-10".toCheckDate())
         )!!)
     }

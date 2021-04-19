@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.map
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.PointF
 import android.graphics.RectF
 import android.os.Bundle
@@ -22,6 +23,7 @@ import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -44,7 +46,7 @@ import javax.inject.Inject
 /** Manages a map that remembers its last location*/
 open class MapFragment : Fragment(),
     TapResponder, DoubleTapResponder, LongPressResponder,
-    PanResponder, ScaleResponder, ShoveResponder, RotateResponder {
+    PanResponder, ScaleResponder, ShoveResponder, RotateResponder, SharedPreferences.OnSharedPreferenceChangeListener {
 
     protected lateinit var mapView: MapView
     private set
@@ -72,6 +74,7 @@ open class MapFragment : Fragment(),
 
     @Inject internal lateinit var vectorTileProvider: VectorTileProvider
     @Inject internal lateinit var cacheConfig: MapTilesDownloadCacheConfig
+    @Inject internal lateinit var sharedPrefs: SharedPreferences
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -91,6 +94,11 @@ open class MapFragment : Fragment(),
 
     init {
         Injector.applicationComponent.inject(this)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedPrefs.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -127,6 +135,12 @@ open class MapFragment : Fragment(),
         return tryStartActivity(intent)
     }
 
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        if (key == Prefs.THEME_BACKGROUND) {
+            sceneMapComponent?.isAerialView = sharedPrefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
+        }
+    }
+
     override fun onStart() {
         super.onStart()
         lifecycleScope.launch { sceneMapComponent?.loadScene() }
@@ -145,6 +159,7 @@ open class MapFragment : Fragment(),
 
     override fun onDestroy() {
         super.onDestroy()
+        sharedPrefs.unregisterOnSharedPreferenceChangeListener(this)
         mapView.onDestroy()
         controller = null
     }
@@ -164,6 +179,7 @@ open class MapFragment : Fragment(),
         registerResponders(ctrl)
 
         sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider)
+        sceneMapComponent?.isAerialView = sharedPrefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
 
         onBeforeLoadScene()
 
@@ -355,4 +371,5 @@ open class MapFragment : Fragment(),
         const val PREF_LAT = "map_lat"
         const val PREF_LON = "map_lon"
     }
+
 }

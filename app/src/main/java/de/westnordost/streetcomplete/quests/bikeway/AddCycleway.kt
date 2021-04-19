@@ -228,6 +228,9 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             BUSWAY -> {
                 changes.addOrModify(cyclewayKey, "share_busway")
             }
+            SEPARATE -> {
+                changes.addOrModify(cyclewayKey, "separate")
+            }
             else -> {
                 throw IllegalArgumentException("Invalid cycleway")
             }
@@ -259,7 +262,6 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
         changes.deleteIfExists("$cyclewayKey:oneway")
         changes.deleteIfExists("$cyclewayKey:segregated")
         changes.deleteIfExists("sidewalk$sideVal:bicycle")
-
     }
 
     companion object {
@@ -345,6 +347,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             "opposite_track",        // + cycleway:left=track
             "opposite_share_busway", // + cycleway:left=share_busway
             "opposite",              // + cycleway:left=no
+            // treat "separate" as unknown because we do not want to let users check that again
             // ambiguous:
             "yes",   // unclear what type
             "left",  // unclear what type; wrong tagging scheme (sidewalk=left)

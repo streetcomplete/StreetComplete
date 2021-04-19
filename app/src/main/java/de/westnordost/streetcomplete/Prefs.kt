@@ -13,6 +13,8 @@ object Prefs {
     const val KEEP_SCREEN_ON = "display.keepScreenOn"
     const val UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown"
     const val THEME_SELECT = "theme.select"
+    const val THEME_BACKGROUND = "theme.background_type"
+
     const val RESURVEY_INTERVALS = "quests.resurveyIntervals"
 
     const val OSM_USER_ID = "osm.userid"
