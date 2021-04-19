@@ -57,6 +57,14 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
             }
             is ImplicitMaxSpeed -> {
                 changes.add("maxspeed:type", answer.countryCode + ":" + answer.roadType)
+                // Lit is either already set or has been answered by the user, so this wouldn't change the value of the lit tag
+                if (answer.lit != null) {
+                    if (answer.lit) {
+                        changes.addOrModify("lit", "yes")
+                    } else {
+                        changes.addOrModify("lit", "no")
+                    }
+                }
             }
         }
     }
