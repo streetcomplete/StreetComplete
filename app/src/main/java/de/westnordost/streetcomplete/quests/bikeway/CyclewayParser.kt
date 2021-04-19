@@ -114,6 +114,7 @@ private fun createCyclewayForSide(tags: Map<String, String>, side: String?): Cyc
                 else          -> TRACK
             }
         }
+        "separate" -> SEPARATE
         "no", "none", "opposite" -> NONE
         "share_busway", "opposite_share_busway" -> BUSWAY
         null -> null

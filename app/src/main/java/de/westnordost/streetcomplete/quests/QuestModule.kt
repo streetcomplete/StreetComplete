@@ -54,6 +54,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegm
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
+import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
@@ -68,6 +69,7 @@ import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
+import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
@@ -130,6 +132,7 @@ import javax.inject.Singleton
         AddPostboxCollectionTimes(),
         CheckExistence(featureDictionaryFuture),
         AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
+        AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
         AddCycleway(), // for any cyclist routers (and cyclist maps)
         AddSidewalk(), // for any pedestrian routers
         AddBusStopName(),
@@ -223,6 +226,7 @@ import javax.inject.Singleton
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
         //      the sake of mapping it in case it makes sense later
         AddPitchSurface(),
+        AddPitchLit(),
         AddIsDefibrillatorIndoor(),
         AddSummitRegister(),
         AddCyclewayPartSurface(),
