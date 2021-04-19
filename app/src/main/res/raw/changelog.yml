@@ -20,7 +20,7 @@ v32.0-alpha1: |
   <li>
   Immediately unlock new quests based on the one you just solved, <b>also when
   offline</b>. This has been a much requested feature but was simply not possible with the previous
-  architecture (#1369, #1510, #1550, #1826, #2254, #2438, #2473, #2474, #2676, ...)
+  architecture (#1369, #1510, #1550, #1826, #2254, #2438, #2473, #2474, #2676, #2743...)
   </li>
   <li>
   The above also works when splitting a way. The quests for the split segments will be shown
