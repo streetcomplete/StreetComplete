@@ -1016,7 +1016,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_turnstile">Turnstile</string>
     <string name="quest_barrier_type_passage">Passage through wall/fence/etc</string>
     <string name="quest_barrier_type_debris_pile">Pile of debris</string>
-    <string name="quest_barrier_type_stile_squeezer">Squeezer stile</string>
+    <string name="quest_barrier_type_stile_squeezer">Squeeze stile</string>
     <string name="quest_barrier_type_stile_ladder">Ladder stile</string>
     <string name="quest_barrier_type_bicycle_barrier">Bicycle barrier</string>
     <string name="quest_barrier_type_kissing_gate">Kissing gate</string>
