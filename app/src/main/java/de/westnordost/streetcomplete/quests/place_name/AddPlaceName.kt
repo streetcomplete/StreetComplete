@@ -108,7 +108,7 @@ class AddPlaceName(
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element) =
-        filter.matches(element) && hasAnyName(element.tags)
+        filter.matches(element) && hasFeatureName(element.tags)
 
     override fun createForm() = AddPlaceNameForm()
 
@@ -124,6 +124,6 @@ class AddPlaceName(
         }
     }
 
-    private fun hasAnyName(tags: Map<String, String>?): Boolean =
+    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
         tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }

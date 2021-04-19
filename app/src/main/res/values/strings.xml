@@ -201,6 +201,8 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_streetSurface_square_name_title">"What surface does the square %s have here?"</string>
     <string name="quest_pitchSurface_title">What surface does this sport field have?</string>
     <string name="quest_pitchSurface_title_track">What surface does this sport track have?</string>
+    <string name="quest_pitchLit_title">Is this sport field lit?</string>
+    <string name="quest_pitchLit_title_track">Is this sport track lit?</string>
     <string name="quest_select_hint_most_specific">"Select the most specific one that fits:"</string>
     <string name="quest_surface_value_paved">"Paved (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
@@ -366,7 +368,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_answer_living_street">It is a living street</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
-    <string name="quest_crossing_type_signals">Crossing with traffic lights</string>
+    <string name="quest_crossing_type_signals_controlled">Crossing controlled by traffic lights</string>
     <string name="quest_crossing_type_marked">Marked crossing</string>
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
@@ -461,6 +463,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="unglue_hint">Tap to unglue view from position</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the roadways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
+    <string name="quest_cycleway_value_separate">displayed separately on map</string>
     <string name="about_category_feedback">Feedback</string>
     <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
     <string name="quest_leave_new_note_create_image_error">Unable to create file for photo</string>
@@ -991,6 +994,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_drinking_water_potable_unsigned">Safe to drink (unsigned)</string>
     <string name="quest_drinking_water_not_potable_signed">Not safe to drink (signed)</string>
     <string name="quest_drinking_water_not_potable_unsigned">Not safe to drink (unsigned)</string>
+    <string name="quest_shop_type_title">What type of shop is %s?</string>
+    <string name="quest_shop_type_title_no_name">What type of shop is this?</string>
+    <string name="pref_background_type_select">Select background type</string>
+    <string name="background_type_map">Map</string>
+    <string name="background_type_aerial_esri">Aerial (by Esri)</string>
     <string name="quest_barrier_type_title">What type of barrier is this?</string>
     <string name="quest_barrier_type_gate">Gate</string>
     <string name="quest_barrier_type_lift_gate">Boom barrier</string>
@@ -998,7 +1006,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_chain">Chain</string>
     <string name="quest_barrier_type_rope">Rope</string>
     <string name="quest_barrier_type_wire_gate">Removable wire section</string>
-    <string name="quest_barrier_type_cattle_grid">Grid blocking cattle from walking over</string>
+    <string name="quest_barrier_type_cattle_grid">Grid blocking livestock from walking over</string>
     <string name="quest_barrier_type_block">Big immobile object</string>
     <string name="quest_barrier_jersey_barrier">Jersey barrier</string>
     <string name="quest_barrier_type_log">Log</string>

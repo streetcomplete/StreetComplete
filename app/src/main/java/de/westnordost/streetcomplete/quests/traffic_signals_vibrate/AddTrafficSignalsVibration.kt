@@ -1,27 +1,51 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
 
+import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.toYesNo
 
-class AddTrafficSignalsVibration : OsmFilterQuestType<Boolean>() {
+class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
 
-    override val elementFilter = """
+    private val crossingFilter by lazy { """
         nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals and foot!=no
         and (
           !$VIBRATING_BUTTON
           or $VIBRATING_BUTTON = no and $VIBRATING_BUTTON older today -4 years
           or $VIBRATING_BUTTON older today -8 years
         )
-    """
+    """.toElementFilterExpression() }
+
+    private val excludedWaysFilter by lazy { """
+        ways with
+          highway = cycleway and foot !~ yes|designated
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add whether traffic signals have tactile indication that it's safe to cross"
     override val wikiLink = "Key:$VIBRATING_BUTTON"
     override val icon = R.drawable.ic_quest_blind_traffic_lights
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_vibrate_title
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val excludedWayNodeIds = mutableSetOf<Long>()
+        mapData.ways
+            .filter { excludedWaysFilter.matches(it) }
+            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
+
+        return mapData.nodes
+            .filter { crossingFilter.matches(it) && it.id !in excludedWayNodeIds }
+    }
+
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!crossingFilter.matches(element))
+            false
+        else
+            null
 
     override fun createForm() = AddTrafficSignalsVibrationForm()
 

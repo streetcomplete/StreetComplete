@@ -36,4 +36,13 @@
         <item>DARK</item>
     </string-array>
 
+    <string-array name="pref_entries_background_type_select" translatable="false">
+        <item>@string/background_type_map</item>
+        <item>@string/background_type_aerial_esri</item>
+    </string-array>
+
+    <string-array name="pref_entryvalues_background_type_select" translatable="false">
+        <item>MAP</item>
+        <item>AERIAL</item>
+    </string-array>
 </resources>

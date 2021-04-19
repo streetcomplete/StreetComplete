@@ -1,3 +1,39 @@
+v32.0-alpha1: |
+  <h3>🛰️ Show aerial imagery</h3>
+  <p>You can now select to have aerial imagery instead of a map (#56, #2755), by @matkoniecz</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is this sport field lit?</i> (#2639, #2737), by @eginhard</li>
+  <li><i>What type of barrier is this?</i> (#2739, #2753), by @matkoniecz</li>
+  <li><i>What type of shop is this?</i> (#2391, #2759), by @matkoniecz</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Enable answering that the cycleway is displayed separately on the map (#2525, #2665)</li>
+  <li>Some wording improvements (#2728), by @matkoniecz</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>On tablets, correctly restore the position when reentering the app (#2659, #2311), thanks @matteblair</li>
+  </ul>
+
+
+v31.3: |
+  <p><b>Remember:</b> Sync any edits before upgrading to the next major version, which will be
+  released around the end of April. If you have auto-sync on (the default), this does not concern you.</p>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Also ask for tactile pavings if explicitly set to "unknown" (#2738)</li>
+  <li>Periodically ask if grit bins still exist (#2726, #2734), by @arrival-spring</li>
+  <li>Don't ask for traffic signals features for blind people on bicycle-only crossings (#2751), by @Helium314</li>
+  <li>Don't ask for the max height of parking entrances for pedestrians (#2736)</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix error when asking checking if a bus stop still has a bench (#2746)</li>
+  <li>More fixes... (#2733 by @UKChris-osm, #2725)</li>
+  </ul>
+
 v31.2: |
   <p><b>Remember:</b> Sync any edits before upgrading to the next major version, which will be
   released around the end of April. If you have auto-sync on (the default), this does not concern you.</p>

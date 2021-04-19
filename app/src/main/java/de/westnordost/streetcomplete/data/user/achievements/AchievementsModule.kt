@@ -411,8 +411,7 @@ object AchievementsModule {
                 "AddFerryAccessPedestrian", // 66
                 "AddFerryAccessMotorVehicle", // 103
                 "AddInformationToTourism", // 137
-                "AddBoardType", // 188
-                "AddPostBoxRoyalCypher"
+                "AddBoardType" // 188
             )),
             // levels: 3, 9, 18, 30, 45, 63, ...
             { lvl -> (lvl + 1)*3 },
@@ -655,6 +654,7 @@ object AchievementsModule {
                 listOf(
                     "CheckExistence",
                     "CheckShopType",
+                    "SpecifyShopType",
                     "AddSelfServiceLaundry",
                     "AddToiletAvailability",
                     "AddToiletsFee",
@@ -698,6 +698,7 @@ object AchievementsModule {
                     "CheckExistence",
                     "AddSport",
                     "AddPitchSurface",
+                    "AddPitchLit",
                     "AddSummitRegister",
                     "AddReligionToWaysideShrine",
                     "AddDrinkingWater",
