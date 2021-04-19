@@ -227,7 +227,7 @@
     <string name="quest_wheelchairAccess_location_title">"Това място достъпно ли е за инвалидни колички?"</string>
     <string name="quest_wheelchairAccess_bus_station_name_title">"Автогарата %s достъпна ли е за инвалидни колички?"</string>
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Входът за метрото %s достъпен ли е за инвалидни колички?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"ЖП гарата %s достъпна ли е за инвалидни колички?"</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Гарата/станцията %s достъпна ли е за инвалидни колички?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Мястото %s достъпно ли е за инвалидни колички?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"\"Частично\" означава, че няма повече от едно стъпало на входа и повечето стаи вътре са достъпни за инвалидни колички."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Частично\" означава, че няма повече от едно стъпало на входа."</string>

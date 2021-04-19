@@ -42,6 +42,9 @@ enum class Cycleway {
     // none, but oneway road is not oneway for cyclists (sometimes has pictograms)
     NONE_NO_ONEWAY,
 
+    // cycleway is mapped as a separate way
+    SEPARATE,
+
     // unknown cycleway tag set
     UNKNOWN
 ;

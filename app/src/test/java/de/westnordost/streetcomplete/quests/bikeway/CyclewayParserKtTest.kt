@@ -796,6 +796,13 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun separate() {
+        assertEquals(
+            LeftAndRightCycleway(SEPARATE, SEPARATE),
+            parse( "cycleway" to "separate")
+        )
+    }
+
     @Test fun busway() {
         assertEquals(
             LeftAndRightCycleway(BUSWAY, BUSWAY),
@@ -1563,6 +1570,13 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `separate on left side`() {
+        assertEquals(
+            LeftAndRightCycleway(SEPARATE, null),
+            parse("cycleway:left" to "separate")
+        )
+    }
+
     @Test fun `busway on left side`() {
         assertEquals(
             LeftAndRightCycleway(BUSWAY, null),
@@ -2208,6 +2222,13 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `separate on right side`() {
+        assertEquals(
+            LeftAndRightCycleway(null, SEPARATE),
+            parse("cycleway:right" to "separate")
+        )
+    }
+
     @Test fun `busway on right side`() {
         assertEquals(
             LeftAndRightCycleway(null, BUSWAY),
@@ -2804,6 +2825,13 @@ class CyclewayParserKtTest {
         assertEquals(
             LeftAndRightCycleway(NONE, NONE),
             parse( "cycleway:both" to "none")
+        )
+    }
+
+    @Test fun `separate on both sides`() {
+        assertEquals(
+            LeftAndRightCycleway(SEPARATE, SEPARATE),
+            parse("cycleway:both" to "separate")
         )
     }
 
