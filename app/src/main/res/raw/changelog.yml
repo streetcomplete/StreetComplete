@@ -11,6 +11,7 @@ v32.0-alpha1: |
   <ul>
   <li>Enable answering that the cycleway is displayed separately on the map (#2525, #2665)</li>
   <li>Some wording improvements (#2728), by @matkoniecz</li>
+  <li>Enhance maxspeed collection for the United Kingdom (#2745, #2748), by @arrival-spring</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
