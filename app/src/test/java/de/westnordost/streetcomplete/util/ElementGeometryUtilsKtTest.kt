@@ -9,7 +9,7 @@ import org.junit.Test
 class ElementGeometryUtilsKtTest {
 
     @Test fun `issue2248 simple`() {
-        // https://github.com/westnordost/StreetComplete/issues/2248
+        // https://github.com/streetcomplete/StreetComplete/issues/2248
         // this is the geometry of the street and sidewalk boiled down to the necessary elements
         // to reproduce this bug
         val street19801348 = ElementPolylinesGeometry(listOf(listOf(

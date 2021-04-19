@@ -94,7 +94,7 @@ private fun addedLinks(description: String): String {
     return description
         .replace(Regex("(?<=[\\s(]|^)#(\\d+)")) { matchResult ->
             val issue = matchResult.groupValues[1]
-            "<a href=\"https://github.com/westnordost/StreetComplete/issues/$issue\">#$issue</a>"
+            "<a href=\"https://github.com/streetcomplete/StreetComplete/issues/$issue\">#$issue</a>"
         }
         .replace(Regex("(?<=[\\s(]|^)@([a-zA-Z\\d-]+)")) { matchResult ->
             val contributor = matchResult.groupValues[1]

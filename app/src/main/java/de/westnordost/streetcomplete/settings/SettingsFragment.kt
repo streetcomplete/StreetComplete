@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
@@ -12,6 +13,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
+import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
@@ -20,6 +23,7 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
+import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -54,9 +58,14 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
 
         findPreference<Preference>("delete_cache")?.setOnPreferenceClickListener {
-            context?.let {
-                AlertDialog.Builder(it)
-                    .setMessage(R.string.delete_cache_dialog_message)
+            context?.let { ctx ->
+                val view = LayoutInflater.from(ctx).inflate(R.layout.dialog_delete_cache, null) as TextView
+                view.text = resources.getString(R.string.delete_cache_dialog_message,
+                    (1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)).format(1),
+                    (1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000)).format(1)
+                )
+                AlertDialog.Builder(ctx)
+                    .setView(view)
                     .setPositiveButton(R.string.delete_confirmation) { _, _ ->
                         lifecycleScope.launch { deleteCache() }
                     }
