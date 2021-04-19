@@ -7,7 +7,7 @@ about: Suggest a new question to ask the user about
 <!--
 If you are not suggesting a new quest, please choose another issue template. Otherwise we kindly ask you to fill it out.
 
-Guidelines for quest suggestions: https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete
+Guidelines for quest suggestions: https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete
 -->
 
 ### General
