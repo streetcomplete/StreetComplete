@@ -118,25 +118,25 @@ class AddCyclewayTest {
 
     @Test fun `not applicable to road with cycleway=separate`() {
         assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1L, listOf(1,2,3), mapOf(
                 "highway" to "primary",
                 "cycleway" to "separate"
             ))
         ))).toList().isEmpty())
         assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1L, listOf(1,2,3), mapOf(
                 "highway" to "primary",
                 "cycleway:left" to "separate"
             ))
         ))).toList().isEmpty())
         assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1L, listOf(1,2,3), mapOf(
                 "highway" to "primary",
                 "cycleway:right" to "separate"
             ))
         ))).toList().isEmpty())
         assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1L, listOf(1,2,3), mapOf(
                 "highway" to "primary",
                 "cycleway:both" to "separate"
             ))
@@ -592,28 +592,28 @@ class AddCyclewayTest {
 
     @Test fun `isApplicableTo returns false for tagged old ways with unknown cycleway=separate values`() {
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway" to "separate"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:left" to "separate"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:right" to "separate"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
         assertFalse(questType.isApplicableTo(
-            createElement(mapOf(
+            way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:both" to "separate"
-            ), "2000-10-10".toCheckDate())
+            ), date = "2000-10-10".toCheckDate())
         )!!)
     }
 
