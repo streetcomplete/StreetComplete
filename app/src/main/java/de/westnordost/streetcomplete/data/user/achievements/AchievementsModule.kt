@@ -692,6 +692,7 @@ object AchievementsModule {
                     "CheckExistence",
                     "AddSport",
                     "AddPitchSurface",
+                    "AddPitchLit",
                     "AddSummitRegister",
                     "AddReligionToWaysideShrine",
                     "AddDrinkingWater",

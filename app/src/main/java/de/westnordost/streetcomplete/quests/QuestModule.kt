@@ -68,6 +68,7 @@ import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
+import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
@@ -221,6 +222,7 @@ import javax.inject.Singleton
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
         //      the sake of mapping it in case it makes sense later
         AddPitchSurface(),
+        AddPitchLit(),
         AddIsDefibrillatorIndoor(),
         AddSummitRegister(),
         AddCyclewayPartSurface(),
