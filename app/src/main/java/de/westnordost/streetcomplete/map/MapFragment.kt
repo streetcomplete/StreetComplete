@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.map
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.RectF
@@ -27,6 +28,7 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
 import de.westnordost.streetcomplete.ktx.awaitLayout
@@ -66,6 +68,7 @@ open class MapFragment : Fragment(),
 
     @Inject internal lateinit var vectorTileProvider: VectorTileProvider
     @Inject internal lateinit var cacheConfig: MapTilesDownloadCacheConfig
+    @Inject internal lateinit var prefsShared: SharedPreferences
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -218,7 +221,14 @@ open class MapFragment : Fragment(),
     protected open fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val scene = if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
+        val isAerialView = prefsShared.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
+
+        val scene = when {
+            isAerialView -> "scene-satellite.yaml"
+            isNightMode -> "scene-dark.yaml"
+            else -> "scene-light.yaml"
+        }
+
         return "${vectorTileProvider.sceneFilePath}/$scene"
     }
 
