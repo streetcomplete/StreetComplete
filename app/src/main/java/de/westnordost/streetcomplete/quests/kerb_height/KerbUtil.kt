@@ -6,6 +6,7 @@ import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
+import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.ktx.firstAndLast
 
 private val footwaysFilter by lazy {"""
@@ -21,12 +22,40 @@ private val waysFilter by lazy {"""
     ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} or construction ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
 """.toElementFilterExpression() }
 
+/* It is documented to be legal for a barrier=kerb to be mapped on the highway=crossing. See also
+ * https://taginfo.openstreetmap.org/keys/kerb#combinations . At the time of writing, 40% of
+ * all kerbs are mapped this way.
+ *
+ * This app should however not ask for details on these because the question is then confusing: It
+ * asks for "this kerb" but points to the crossing, i.e. the middle of the street.
+ *
+ * So, if the candidate has any tags that are NOT one of these, the app does not recognize this
+ * node as a kerb, even if barrier=kerb is set */
+private val allowedKeysOnKerbNode = setOf(
+    "barrier", // = kerb
+    // details on kerbs
+    "sloped_curb",
+    "tactile_paving",
+    "surface", "smoothness", "material",
+    "kerb:height", "height",
+    // access/eligibility-related
+    "wheelchair", "bicycle", "foot", "stroller",
+    // misc / meta info
+    "source", "project", "note", "mapillary"
+) + LAST_CHECK_DATE_KEYS
+
+/** Most nodes **could** be a kerb, depending on their location within a way. However, nodes that
+ *  are already something else, f.e. shop=hairdresser are definitely NOT a kerb. */
+fun Node.couldBeAKerb(): Boolean = tags.keys.all { it in allowedKeysOnKerbNode }
+
 fun MapData.findAllKerbNodes(): Iterable<Node> {
     val footwayNodes = mutableSetOf<Node>()
     ways.asSequence()
         .filter { footwaysFilter.matches(it) }
         .flatMap { it.nodeIds }
-        .mapNotNullTo(footwayNodes) { getNode(it) }
+        .mapNotNullTo(footwayNodes) { nodeId ->
+            getNode(nodeId)?.takeIf { it.couldBeAKerb() }
+        }
 
     val kerbBarrierNodeIds = mutableSetOf<Long>()
     ways.asSequence()

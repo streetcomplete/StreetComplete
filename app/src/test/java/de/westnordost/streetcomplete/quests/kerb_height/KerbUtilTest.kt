@@ -28,6 +28,21 @@ class KerbUtilTest {
         assertEquals(1, mapData.findAllKerbNodes().toList().size)
     }
 
+    @Test fun `barrier=kerb nodes that are also something else don't count`() {
+        val kerb = OsmNode(2L, 1, 0.0,0.0, mapOf(
+            "barrier" to "kerb",
+            "highway" to "crossing"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(
+            kerb,
+            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+                "highway" to "footway"
+            ))
+        ))
+        assertEquals(0, mapData.findAllKerbNodes().toList().size)
+        assertFalse(kerb.couldBeAKerb())
+    }
+
     @Test fun `shared nodes between barrier=kerb ways and footways count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             OsmNode(2L, 1, 0.0,0.0, null),

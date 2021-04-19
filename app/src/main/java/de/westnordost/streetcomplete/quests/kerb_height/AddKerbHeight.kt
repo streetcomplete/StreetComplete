@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.kerb_height
 
 import de.westnordost.osmapi.map.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.Node
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
@@ -29,7 +30,9 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
         return mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (element !is Node || !element.couldBeAKerb()) false
+        else null
 
     override fun applyAnswerTo(answer: KerbHeight, changes: StringMapChangesBuilder) {
         changes.updateWithCheckDate("kerb", answer.osmValue)
