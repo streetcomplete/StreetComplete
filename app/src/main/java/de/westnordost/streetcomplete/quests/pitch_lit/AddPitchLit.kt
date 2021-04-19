@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddPitchLit : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        ways with (leisure=pitch or leisure=track)
+        ways with (leisure = pitch or leisure = track)
         and (access !~ private|no)
         and indoor != yes and (!building or building = no)
         and (
@@ -22,10 +22,10 @@ class AddPitchLit : OsmFilterQuestType<Boolean>() {
 
     override val commitMessage = "Add whether pitch is lit"
     override val wikiLink = "Key:lit"
-    override val icon = R.drawable.ic_quest_lantern
+    override val icon = R.drawable.ic_quest_pitch_lantern
 
     override fun getTitle(tags: Map<String, String>) =
-        if (tags.get("leisure") == "track")
+        if (tags["leisure"] == "track")
             R.string.quest_pitchLit_title_track
         else
             R.string.quest_pitchLit_title
