@@ -16,8 +16,8 @@ import de.westnordost.streetcomplete.util.distanceToArcs
 class AddSummitRegister : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
-        nodes with 
-          natural = peak and name and 
+        nodes with
+          natural = peak and name and
           (!summit:register or summit:register older today -4 years)
     """.toElementFilterExpression() }
 
@@ -27,7 +27,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
 
     override val enabledInCountries = NoCountriesExcept(
         // regions gathered in
-        // https://github.com/westnordost/StreetComplete/issues/561#issuecomment-325623974
+        // https://github.com/streetcomplete/StreetComplete/issues/561#issuecomment-325623974
 
         // Europe
         "AT", "DE", "CZ", "ES", "IT", "FR", "GR", "SI", "CH", "RO", "SK",
