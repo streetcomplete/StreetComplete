@@ -54,7 +54,7 @@ class AboutFragment : PreferenceFragmentCompat() {
         }
 
         findPreference<Preference>("repository")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/westnordost/StreetComplete/")
+            openUrl("https://github.com/streetcomplete/StreetComplete/")
         }
 
         findPreference<Preference>("translate")?.summary = resources.getString(
@@ -67,7 +67,7 @@ class AboutFragment : PreferenceFragmentCompat() {
         }
 
         findPreference<Preference>("report_error")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/westnordost/StreetComplete/issues/")
+            openUrl("https://github.com/streetcomplete/StreetComplete/issues/")
         }
 
         findPreference<Preference>("email_feedback")?.setOnPreferenceClickListener {

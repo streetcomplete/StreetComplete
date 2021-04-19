@@ -36,7 +36,7 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     val anyWays = ways.filter { waysFilter.matches(it) }
     val crossingEndNodeIds = findCrossingKerbEndNodeIds(anyWays)
 
-    // Kerbs can be defined in three ways (see https://github.com/westnordost/StreetComplete/issues/1305#issuecomment-688333976):
+    // Kerbs can be defined in three ways (see https://github.com/streetcomplete/StreetComplete/issues/1305#issuecomment-688333976):
     return footwayNodes.filter {
         // 1. either as a node tagged with barrier = kerb on a footway
         it.tags?.get("barrier") == "kerb" ||

@@ -195,6 +195,7 @@ quest icons/
     car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
     cash.svg
     christian.svg
+	cow.svg                          modified from EmojiOne 2: U+1F404
     defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny
     drinking_water.svg               Florian Edelmann, parts from https://www.svgrepo.com/svg/24753/drop (License: CC0 1.0)
     ferry.svg                        modified from Twemoji: U+26F4
