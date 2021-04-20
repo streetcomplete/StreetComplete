@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
-import java.util.*
+import java.util.Queue
 import javax.inject.Inject
 
 abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {

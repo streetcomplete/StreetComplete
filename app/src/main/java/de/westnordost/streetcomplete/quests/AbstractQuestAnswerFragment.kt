@@ -35,7 +35,7 @@ import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import java.lang.ref.WeakReference
-import java.util.*
+import java.util.Locale
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 

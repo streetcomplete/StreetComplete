@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 
 import org.junit.Assert.*
-import java.util.*
+import java.util.EnumSet
 
 class ElementFilterExpressionTest {
     // Tests for toOverpassQLString are in FiltersParserTest

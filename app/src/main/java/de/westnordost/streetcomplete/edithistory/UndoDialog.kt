@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setText
 import kotlinx.coroutines.*
 import org.sufficientlysecure.htmltextview.HtmlTextView
-import java.util.*
+import java.util.MissingFormatArgumentException
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 

@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_generic_list.*
-import java.util.*
+import java.util.LinkedList
 import kotlin.math.max
 
 /**

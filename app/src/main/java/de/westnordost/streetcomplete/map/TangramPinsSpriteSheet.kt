@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.math.ceil

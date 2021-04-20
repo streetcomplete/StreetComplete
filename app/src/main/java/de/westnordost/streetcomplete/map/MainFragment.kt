@@ -57,12 +57,12 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
 import javax.inject.Inject
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
+import kotlin.random.Random
 
 /** Contains the quests map and the controls for it. */
 class MainFragment : Fragment(R.layout.fragment_main),
@@ -84,8 +84,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
     @Inject internal lateinit var soundFx: SoundFx
     @Inject internal lateinit var prefs: SharedPreferences
-
-    private val random = Random()
 
     private lateinit var locationManager: FineLocationManager
 
@@ -861,7 +859,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val view = view ?: return
 
         lifecycleScope.launch {
-            soundFx.play(resources.getIdentifier("plop" + random.nextInt(4), "raw", ctx.packageName))
+            soundFx.play(resources.getIdentifier("plop" + Random.nextInt(4), "raw", ctx.packageName))
         }
 
         val root = activity.window.decorView as ViewGroup

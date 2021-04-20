@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestContro
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.collections.ArrayList

@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.ktx
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.*
-import java.util.*
 
 fun Element.copy(
     newId: Long = id,

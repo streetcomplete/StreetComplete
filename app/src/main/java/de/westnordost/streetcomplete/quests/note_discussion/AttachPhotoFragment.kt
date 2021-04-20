@@ -31,7 +31,6 @@ import kotlinx.android.synthetic.main.fragment_attach_photo.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.util.*
 
 class AttachPhotoFragment : Fragment() {
 

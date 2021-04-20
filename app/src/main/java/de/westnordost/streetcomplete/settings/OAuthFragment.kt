@@ -19,7 +19,7 @@ import oauth.signpost.OAuthConsumer
 import oauth.signpost.OAuthProvider
 import oauth.signpost.exception.OAuthCommunicationException
 import oauth.signpost.exception.OAuthExpectationFailedException
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Provider

@@ -10,8 +10,7 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
-import java.util.*
-
+import java.util.Locale
 import javax.inject.Inject
 
 /** Manages the creation and reusage of quest-related changesets */

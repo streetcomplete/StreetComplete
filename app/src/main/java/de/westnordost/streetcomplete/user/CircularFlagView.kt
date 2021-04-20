@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
-import java.util.*
+import java.util.Locale
 import kotlin.math.min
 
 /** Show a flag of a country in a circle */

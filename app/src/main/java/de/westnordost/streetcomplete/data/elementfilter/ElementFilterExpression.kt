@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.RELAT
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import java.util.*
+import java.util.EnumSet
 
 /** Represents a parse result of a string in filter syntax, i.e.
  *  "ways with (highway = residential or highway = tertiary) and !name"  */
@@ -22,7 +22,6 @@ class ElementFilterExpression(
         ElementType.NODE -> elementsTypes.contains(NODES)
         ElementType.WAY -> elementsTypes.contains(WAYS)
         ElementType.RELATION -> elementsTypes.contains(RELATIONS)
-        else -> false
     }
 
     /** returns this expression as a Overpass query string */

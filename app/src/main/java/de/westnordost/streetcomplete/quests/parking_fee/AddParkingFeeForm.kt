@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.util.Serializer
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
 import kotlinx.android.synthetic.main.quest_fee_hours.*
-import java.util.*
 import javax.inject.Inject
 
 class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {

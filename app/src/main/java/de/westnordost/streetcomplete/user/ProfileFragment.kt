@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.ktx.tryStartActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.coroutines.*
 import java.io.File
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */

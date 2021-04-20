@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.util.DefaultTextWatcher
 import de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
-import java.util.*
+import java.util.Locale
 
 /** Carries the data language tag + name in that language  */
 data class LocalizedName(var languageTag: String, var name: String)
