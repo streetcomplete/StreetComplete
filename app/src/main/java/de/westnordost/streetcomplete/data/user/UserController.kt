@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.user
 
 import android.util.Log
 import de.westnordost.osmapi.OsmConnection
-import de.westnordost.streetcomplete.data.UserApi
+import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.data.osmnotes.AvatarsDownloader
 import de.westnordost.streetcomplete.data.user.achievements.*
 import kotlinx.coroutines.CoroutineScope
