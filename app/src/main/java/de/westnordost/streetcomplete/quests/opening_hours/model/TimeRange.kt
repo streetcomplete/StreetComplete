@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours.model
 
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
+import java.text.DateFormat
+import java.time.*
 import java.util.Locale
 
 /** A time range from [start,end). */
@@ -41,7 +40,10 @@ class TimeRange(minutesStart: Int, minutesEnd: Int, val isOpenEnded: Boolean = f
     override fun toString() = toStringUsing(Locale.GERMANY, "-")
 
     private fun timeOfDayToString(locale: Locale, minutes: Int): String {
-        val formatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).withLocale(locale)
-        return formatter.format(LocalTime.ofSecondOfDay(minutes * 60L))
+        val todayAt = LocalDateTime.of(LocalDate.now(), LocalTime.ofSecondOfDay(minutes * 60L))
+            .atZone(ZoneId.systemDefault())
+            .toInstant()
+            .toEpochMilli()
+        return DateFormat.getTimeInstance(DateFormat.SHORT, locale).format(todayAt)
     }
 }
