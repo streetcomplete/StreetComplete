@@ -24,7 +24,7 @@ data class Note(
 data class NoteComment(
     val timestamp: Long,
     val action: Action,
-    val text: String,
+    val text: String?,
     val user: User?,
 ) {
     val isAnonymous get() = user == null

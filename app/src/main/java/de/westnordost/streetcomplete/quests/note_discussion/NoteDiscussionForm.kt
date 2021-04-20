@@ -150,7 +150,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
                 itemView.commentStatusText.text = getString(commentActionResourceId, userName, dateDescription)
             }
 
-            val hasComment = comment.text.isNotEmpty()
+            val hasComment = comment.text?.isNotEmpty() == true
             itemView.commentView.isGone = !hasComment
             if (hasComment) {
                 itemView.commentText.text = comment.text

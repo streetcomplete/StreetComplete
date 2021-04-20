@@ -230,7 +230,7 @@ private fun Note.probablyContainsQuestion(): Boolean {
 
 private fun Note.containsSurveyRequiredMarker(): Boolean {
     val surveyRequiredMarker = "#surveyme"
-    return comments.any { it.text.matches(".*$surveyRequiredMarker.*".toRegex()) }
+    return comments.any { it.text?.matches(".*$surveyRequiredMarker.*".toRegex()) == true }
 }
 
 private fun Note.containsCommentFromUser(userId: Long): Boolean =
@@ -238,7 +238,7 @@ private fun Note.containsCommentFromUser(userId: Long): Boolean =
 
 private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     val firstComment = comments.first()
-    val isViaApp = firstComment.text.contains("via " + ApplicationConstants.NAME)
+    val isViaApp = firstComment.text?.contains("via " + ApplicationConstants.NAME) == true
     return firstComment.isFromUser(userId) && isViaApp
 }
 
