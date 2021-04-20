@@ -5,7 +5,9 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.countryboundaries.getIds
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
-import java.util.*
+import de.westnordost.streetcomplete.ktx.toLocalDate
+import java.time.Instant
+import java.time.LocalDate
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 import javax.inject.Named
@@ -42,16 +44,11 @@ class StatisticsUpdater @Inject constructor(
         }
 
     private fun updateDaysActive() {
-        val now = Date()
-        val lastUpdateDate = Date(userStore.lastStatisticsUpdate)
+        val today = LocalDate.now()
+        val lastUpdateDate = Instant.ofEpochMilli(userStore.lastStatisticsUpdate).toLocalDate()
 
-        val cal1 = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-        cal1.time = lastUpdateDate
-        val cal2 = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-        cal2.time = now
-
-        userStore.lastStatisticsUpdate = now.time
-        if (!cal1.isSameDay(cal2)) {
+        userStore.lastStatisticsUpdate = Instant.now().toEpochMilli()
+        if (today > lastUpdateDate) {
             userStore.daysActive++
             achievementGiver.updateDaysActiveAchievements()
         }
@@ -103,7 +100,3 @@ class StatisticsUpdater @Inject constructor(
         private const val TAG = "StatisticsUpdater"
     }
 }
-
-private fun Calendar.isSameDay(other: Calendar): Boolean =
-    get(Calendar.DAY_OF_YEAR) == other.get(Calendar.DAY_OF_YEAR) &&
-    get(Calendar.YEAR) == other.get(Calendar.YEAR)

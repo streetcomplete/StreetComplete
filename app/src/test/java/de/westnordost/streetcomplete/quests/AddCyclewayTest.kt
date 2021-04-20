@@ -7,13 +7,15 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.ktx.toEpochMilli
 import de.westnordost.streetcomplete.quests.bikeway.*
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 import de.westnordost.streetcomplete.util.translate
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
-import java.util.*
+import java.time.Instant
+import java.time.LocalDate
 
 class AddCyclewayTest {
 
@@ -148,7 +150,7 @@ class AddCyclewayTest {
             way(1L, listOf(1,2,3), mapOf(
                 "highway" to "primary",
                 "cycleway" to "track"
-            ), date = Date())
+            ), timestamp = Instant.now().toEpochMilli())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
@@ -159,7 +161,7 @@ class AddCyclewayTest {
                 "highway" to "primary",
                 "cycleway" to "track",
                 "check_date:cycleway" to "2001-01-01"
-            ), date = Date())
+            ), timestamp = Instant.now().toEpochMilli())
         ))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
@@ -170,7 +172,7 @@ class AddCyclewayTest {
                 "highway" to "primary",
                 "cycleway" to "whatsthis",
                 "check_date:cycleway" to "2001-01-01"
-            ), date = Date())
+            ), timestamp = Instant.now().toEpochMilli())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
@@ -489,7 +491,7 @@ class AddCyclewayTest {
             mapOf("cycleway:both" to "track"),
             bothSidesAnswer(TRACK),
             StringMapEntryModify("cycleway:both","track", "track"),
-            StringMapEntryAdd("check_date:cycleway", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:cycleway", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -498,7 +500,7 @@ class AddCyclewayTest {
             mapOf("cycleway:both" to "track", "check_date:cycleway" to "2000-11-11"),
             bothSidesAnswer(TRACK),
             StringMapEntryModify("cycleway:both","track", "track"),
-            StringMapEntryModify("check_date:cycleway", "2000-11-11", Date().toCheckDateString())
+            StringMapEntryModify("check_date:cycleway", "2000-11-11", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -528,25 +530,25 @@ class AddCyclewayTest {
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway" to "track"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertTrue(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:left" to "track"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertTrue(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:right" to "track"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertTrue(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:both" to "track"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
     }
 
@@ -559,7 +561,7 @@ class AddCyclewayTest {
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway" to "track"
-            ), date = Date())
+            ), timestamp = Instant.now().toEpochMilli())
         )!!)
     }
 
@@ -568,25 +570,25 @@ class AddCyclewayTest {
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway" to "something"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertFalse(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:left" to "something"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertFalse(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:right" to "something"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertFalse(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:both" to "something"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
     }
 
@@ -595,25 +597,25 @@ class AddCyclewayTest {
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway" to "separate"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertFalse(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:left" to "separate"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertFalse(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:right" to "separate"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertFalse(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:both" to "separate"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
     }
 
@@ -624,28 +626,28 @@ class AddCyclewayTest {
                 "highway" to "unclassified",
                 "cycleway" to "lane",
                 "cycleway:lane" to "something"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertFalse(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:left" to "lane",
                 "cycleway:left:lane" to "something"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertFalse(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:right" to "lane",
                 "cycleway:right:lane" to "something"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
         assertFalse(questType.isApplicableTo(
             way(tags = mapOf(
                 "highway" to "unclassified",
                 "cycleway:both" to "lane",
                 "cycleway:both:lane" to "something"
-            ), date = "2000-10-10".toCheckDate())
+            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
         )!!)
     }
 }

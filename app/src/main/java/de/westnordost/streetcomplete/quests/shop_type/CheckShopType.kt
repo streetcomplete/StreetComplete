@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import java.util.*
+import java.time.LocalDate
 
 class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
@@ -34,7 +34,7 @@ class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
         }
         when (answer) {
             is IsShopVacant -> {
-                changes.addOrModify(SURVEY_MARK_KEY, Date().toCheckDateString())
+                changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
             }
             is ShopType -> {
                 changes.deleteIfExists("disused:shop")

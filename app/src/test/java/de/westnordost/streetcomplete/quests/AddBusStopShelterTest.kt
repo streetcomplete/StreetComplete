@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer
 import org.junit.Test
-import java.util.*
+import java.time.LocalDate
 
 class AddBusStopShelterTest {
 
@@ -23,7 +23,7 @@ class AddBusStopShelterTest {
         questType.verifyAnswer(
             mapOf("shelter" to "yes"),
             BusStopShelterAnswer.SHELTER,
-            StringMapEntryAdd("check_date:shelter", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:shelter", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -38,7 +38,7 @@ class AddBusStopShelterTest {
         questType.verifyAnswer(
             mapOf("shelter" to "no"),
             BusStopShelterAnswer.NO_SHELTER,
-            StringMapEntryAdd("check_date:shelter", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:shelter", LocalDate.now().toCheckDateString())
         )
     }
 

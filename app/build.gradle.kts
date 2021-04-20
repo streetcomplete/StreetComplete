@@ -13,6 +13,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
@@ -38,6 +39,7 @@ android {
         versionCode = 3200
         versionName = "32.0-alpha1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -93,6 +95,8 @@ dependencies {
     val mockitoVersion = "3.7.7"
     val kotlinxVersion = "1.4.2"
     val daggerVersion = "2.31.2"
+
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
     // tests
     testImplementation("junit:junit:4.13.2")

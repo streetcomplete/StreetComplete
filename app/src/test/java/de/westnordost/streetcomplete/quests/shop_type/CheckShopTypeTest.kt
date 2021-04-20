@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import java.util.*
+import java.time.LocalDate
 
 class CheckShopTypeTest {
     private val questType = CheckShopType()
@@ -14,7 +14,7 @@ class CheckShopTypeTest {
     @Test fun `apply shop vacant answer`() {
         questType.verifyAnswer(
             IsShopVacant,
-            StringMapEntryAdd("check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -22,7 +22,7 @@ class CheckShopTypeTest {
         questType.verifyAnswer(
             mapOf("check_date" to "already set"),
             IsShopVacant,
-            StringMapEntryModify("check_date", "already set", Date().toCheckDateString())
+            StringMapEntryModify("check_date", "already set", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -35,7 +35,7 @@ class CheckShopTypeTest {
                 "survey_date" to "d"
             ),
             IsShopVacant,
-            StringMapEntryAdd("check_date", Date().toCheckDateString()),
+            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("lastcheck", "a"),
             StringMapEntryDelete("last_checked", "b"),
             StringMapEntryDelete("survey:date", "c"),

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.util
 
 import android.net.Uri
 import androidx.core.net.toUri
-import java.util.*
+import de.westnordost.streetcomplete.ktx.format
 
 fun parseGeoUri(uri: Uri): GeoLocation? {
     if (uri.scheme != "geo") return null
@@ -22,8 +22,10 @@ fun parseGeoUri(uri: Uri): GeoLocation? {
 }
 
 fun buildGeoUri(latitude: Double, longitude: Double, zoom: Float? = null): Uri {
-    val zoomStr = if (zoom != null) "?z=$zoom" else ""
-    val geoUri = Formatter(Locale.US).format("geo:%.5f,%.5f%s", latitude, longitude, zoomStr).toString()
+    val z = if (zoom != null) "?z=$zoom" else ""
+    val lat = latitude.format(5)
+    val lon = longitude.format(5)
+    val geoUri = "geo:$lat,$lon$z"
     return geoUri.toUri()
 }
 

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import java.util.*
+import java.time.LocalDate
 
 class CheckExistenceTest {
     private val questType = CheckExistence(mock())
@@ -15,7 +15,7 @@ class CheckExistenceTest {
     @Test fun `apply answer adds check date`() {
         questType.verifyAnswer(
             Unit,
-            StringMapEntryAdd("check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -29,7 +29,7 @@ class CheckExistenceTest {
                 "survey_date" to "d"
             ),
             Unit,
-            StringMapEntryModify("check_date", "1", Date().toCheckDateString()),
+            StringMapEntryModify("check_date", "1", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("lastcheck", "a"),
             StringMapEntryDelete("last_checked", "b"),
             StringMapEntryDelete("survey:date", "c"),

@@ -31,7 +31,7 @@ import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
 import kotlinx.android.synthetic.main.quest_note_discussion_content.*
 import kotlinx.android.synthetic.main.quest_note_discussion_item.view.*
 import java.io.File
-import java.util.*
+import java.time.Instant
 import javax.inject.Inject
 
 class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
@@ -140,7 +140,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         }
 
         override fun onBind(comment: NoteComment) {
-            val dateDescription = DateUtils.getRelativeTimeSpanString(comment.timestamp, Date().time, MINUTE_IN_MILLIS)
+            val dateDescription = DateUtils.getRelativeTimeSpanString(comment.timestamp, Instant.now().toEpochMilli(), MINUTE_IN_MILLIS)
             val userName = if (comment.user != null) comment.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
 
             val commentActionResourceId = comment.action.actionResourceId

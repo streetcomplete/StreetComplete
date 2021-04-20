@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.user.User
 import java.lang.System.currentTimeMillis
-import java.util.*
 
 fun p(lat: Double = 0.0, lon: Double = 0.0) = LatLon(lat, lon)
 
@@ -28,24 +27,24 @@ fun node(
     pos: LatLon = p(),
     tags: Map<String, String> = emptyMap(),
     version: Int = 1,
-    date: Date? = null
-) = Node(id, pos, tags, version, date?.time ?: currentTimeMillis())
+    timestamp: Long? = null
+) = Node(id, pos, tags, version, timestamp ?: currentTimeMillis())
 
 fun way(
     id: Long = 1,
     nodes: List<Long> = listOf(),
     tags: Map<String, String> = emptyMap(),
     version: Int = 1,
-    date: Date? = null
-) = Way(id, nodes, tags, version, date?.time ?: currentTimeMillis())
+    timestamp: Long? = null
+) = Way(id, nodes, tags, version, timestamp ?: currentTimeMillis())
 
 fun rel(
     id: Long = 1,
     members: List<RelationMember> = listOf(),
     tags: Map<String, String> = emptyMap(),
     version: Int = 1,
-    date: Date? = null
-) = Relation(id, members.toMutableList(), tags, version, date?.time ?: currentTimeMillis())
+    timestamp: Long? = null
+) = Relation(id, members.toMutableList(), tags, version, timestamp ?: currentTimeMillis())
 
 fun member(
     type: ElementType = ElementType.NODE,

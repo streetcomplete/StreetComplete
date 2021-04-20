@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
-import java.util.*
+import java.time.LocalDate
 import java.util.concurrent.FutureTask
 
 class CheckExistence(
@@ -87,7 +87,7 @@ class CheckExistence(
     override fun createForm() = CheckExistenceForm()
 
     override fun applyAnswerTo(answer: Unit, changes: StringMapChangesBuilder) {
-        changes.addOrModify(SURVEY_MARK_KEY, Date().toCheckDateString())
+        changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
         val otherCheckDateKeys = LAST_CHECK_DATE_KEYS.filterNot { it == SURVEY_MARK_KEY }
         for (otherCheckDateKey in otherCheckDateKeys) {
             changes.deleteIfExists(otherCheckDateKey)
