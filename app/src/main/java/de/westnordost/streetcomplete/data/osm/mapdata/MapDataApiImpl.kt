@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.*
+import de.westnordost.osmapi.map.MapDataApi as OsmapiMapDataApi
 import de.westnordost.osmapi.map.data.Element as OsmApiElement
 import de.westnordost.osmapi.map.data.Node as OsmApiNode
 import de.westnordost.osmapi.map.data.Way as OsmApiWay
@@ -18,30 +18,30 @@ import de.westnordost.streetcomplete.data.osmnotes.toBoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.toLatLon
 import de.westnordost.streetcomplete.data.osmnotes.toOsmApiBoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
-import java.util.Date
+import java.time.Instant
 
 class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
 
-    private val mapDataDao: MapDataDao = MapDataDao(osm)
+    private val api: OsmapiMapDataApi = OsmapiMapDataApi(osm)
 
     override fun uploadChanges(changesetId: Long, elements: Collection<Element>): MapDataUpdates {
         val handler = UpdatedElementsHandler()
         val osmElements = elements.map { it.toOsmApiElement() }
-        mapDataDao.uploadChanges(changesetId, osmElements, handler)
+        api.uploadChanges(changesetId, osmElements, handler)
         return handler.getElementUpdates(osmElements.map { it.toElement() })
     }
 
-    override fun openChangeset(tags: Map<String, String?>): Long = mapDataDao.openChangeset(tags)
+    override fun openChangeset(tags: Map<String, String?>): Long = api.openChangeset(tags)
 
-    override fun closeChangeset(changesetId: Long) = mapDataDao.closeChangeset(changesetId)
+    override fun closeChangeset(changesetId: Long) = api.closeChangeset(changesetId)
 
     override fun getMap(bounds: BoundingBox, mutableMapData: MutableMapData) =
-        mapDataDao.getMap(bounds.toOsmApiBoundingBox(), MapDataApiHandler(mutableMapData))
+        api.getMap(bounds.toOsmApiBoundingBox(), MapDataApiHandler(mutableMapData))
 
     override fun getWayComplete(id: Long): MapData? =
         try {
             val result = MutableMapData()
-            mapDataDao.getWayComplete(id, MapDataApiHandler(result))
+            api.getWayComplete(id, MapDataApiHandler(result))
             result
         } catch (e: OsmNotFoundException) {
             null
@@ -50,29 +50,29 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
     override fun getRelationComplete(id: Long): MapData? =
         try {
             val result = MutableMapData()
-            mapDataDao.getRelationComplete(id, MapDataApiHandler(result))
+            api.getRelationComplete(id, MapDataApiHandler(result))
             result
         } catch (e: OsmNotFoundException) {
             null
         }
 
-    override fun getNode(id: Long): Node? = mapDataDao.getNode(id)?.toNode()
+    override fun getNode(id: Long): Node? = api.getNode(id)?.toNode()
 
-    override fun getWay(id: Long): Way? = mapDataDao.getWay(id)?.toWay()
+    override fun getWay(id: Long): Way? = api.getWay(id)?.toWay()
 
-    override fun getRelation(id: Long): Relation? = mapDataDao.getRelation(id)?.toRelation()
+    override fun getRelation(id: Long): Relation? = api.getRelation(id)?.toRelation()
 
     override fun getWaysForNode(id: Long): List<Way> =
-        mapDataDao.getWaysForNode(id).map { it.toWay() }
+        api.getWaysForNode(id).map { it.toWay() }
 
     override fun getRelationsForNode(id: Long): List<Relation> =
-        mapDataDao.getRelationsForNode(id).map { it.toRelation() }
+        api.getRelationsForNode(id).map { it.toRelation() }
 
     override fun getRelationsForWay(id: Long): List<Relation> =
-        mapDataDao.getRelationsForWay(id).map { it.toRelation() }
+        api.getRelationsForWay(id).map { it.toRelation() }
 
     override fun getRelationsForRelation(id: Long): List<Relation> =
-        mapDataDao.getRelationsForRelation(id).map { it.toRelation() }
+        api.getRelationsForRelation(id).map { it.toRelation() }
 }
 
 // TODO(Flo): Make this private
@@ -97,11 +97,11 @@ fun Node.toOsmApiNode(): OsmApiNode = OsmNode(
     position.toOsmLatLon(),
     tags,
     null,
-    Date(timestampEdited)
+    Instant.ofEpochMilli(timestampEdited)
 )
 
 // TODO(Flo): Make this private
-fun OsmApiNode.toNode(): Node = Node(id, position.toLatLon(), tags, version, dateEdited.time)
+fun OsmApiNode.toNode(): Node = Node(id, position.toLatLon(), tags, version, editedAt.toEpochMilli())
 
 // TODO(Flo): Make this private
 fun Way.toOsmApiWay(): OsmApiWay = OsmWay(
@@ -110,11 +110,11 @@ fun Way.toOsmApiWay(): OsmApiWay = OsmWay(
     nodeIds,
     tags,
     null,
-    Date(timestampEdited)
+    Instant.ofEpochMilli(timestampEdited)
 )
 
 // TODO(Flo): Make this private
-fun OsmApiWay.toWay(): Way = Way(id, nodeIds, tags, version, dateEdited.time)
+fun OsmApiWay.toWay(): Way = Way(id, nodeIds, tags, version, editedAt.toEpochMilli())
 
 // TODO(Flo): Make this private
 fun Relation.toOsmApiRelation(): OsmApiRelation = OsmRelation(
@@ -123,7 +123,7 @@ fun Relation.toOsmApiRelation(): OsmApiRelation = OsmRelation(
     members.map { it.toOsmRelationMember() },
     tags,
     null,
-    Date(timestampEdited)
+    Instant.ofEpochMilli(timestampEdited)
 )
 
 // TODO(Flo): Make this private
@@ -132,7 +132,7 @@ fun OsmApiRelation.toRelation(): Relation = Relation(
     members.map { it.toRelationMember() }.toMutableList(),
     tags,
     version,
-    dateEdited.time
+    editedAt.toEpochMilli()
 )
 
 // TODO(Flo): Make this private

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data
 import dagger.Module
 import dagger.Provides
 import de.westnordost.osmapi.OsmConnection
+import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiImpl
@@ -27,7 +28,7 @@ object OsmApiModule {
         return OsmConnection(OSM_API_URL, ApplicationConstants.USER_AGENT, consumer)
     }
 
-    @Provides fun userDao(osm: OsmConnection): UserApi = UserApi(osm)
+    @Provides fun userApi(osm: OsmConnection): UserApi = UserApi(osm)
 
     @Provides fun notesApi(osm: OsmConnection): NotesApi = NotesApiImpl(osm)
 

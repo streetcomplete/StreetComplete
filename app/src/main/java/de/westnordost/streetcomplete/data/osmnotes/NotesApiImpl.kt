@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.notes.NotesDao
+import de.westnordost.osmapi.notes.NotesApi as OsmapiNotesApi
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.user.User
 import kotlinx.coroutines.Dispatchers
@@ -15,19 +15,19 @@ import de.westnordost.osmapi.user.User as OsmApiUser
 
 // TODO(Flo): Make parameter non-nullable
 open class NotesApiImpl(osm: OsmConnection?) : NotesApi {
-    private val notesDao: NotesDao = NotesDao(osm)
+    private val api: OsmapiNotesApi = OsmapiNotesApi(osm)
 
     override fun create(pos: LatLon, text: String): Note =
-        notesDao.create(pos.toOsmLatLon(), text).toNote()
+        api.create(pos.toOsmLatLon(), text).toNote()
 
-    override fun comment(id: Long, text: String): Note = notesDao.comment(id, text).toNote()
+    override fun comment(id: Long, text: String): Note = api.comment(id, text).toNote()
 
-    override fun get(id: Long): Note? = notesDao.get(id)?.toNote()
+    override fun get(id: Long): Note? = api.get(id)?.toNote()
 
     override suspend fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int) =
         withContext(Dispatchers.IO) {
             val notes = ArrayList<Note>()
-            notesDao.getAll(bounds.toOsmApiBoundingBox(), null, { notes.add(it.toNote()) },
+            api.getAll(bounds.toOsmApiBoundingBox(), null, { notes.add(it.toNote()) },
                 limit, hideClosedNoteAfter)
             notes
         }
@@ -36,8 +36,8 @@ open class NotesApiImpl(osm: OsmConnection?) : NotesApi {
 private fun OsmApiNote.toNote() = Note(
     position.toLatLon(),
     id,
-    dateCreated.time,
-    dateClosed?.time,
+    createdAt.toEpochMilli(),
+    closedAt?.toEpochMilli(),
     status.toNoteStatus(),
     comments.map { it.toNoteComment() }
 )
@@ -50,7 +50,7 @@ private fun OsmApiNote.Status.toNoteStatus() = when(this) {
 }
 
 private fun OsmApiNoteComment.toNoteComment() = NoteComment(
-    date.time,
+    date.toEpochMilli(),
     action.toNoteCommentAction(),
     text,
     user.toUser()
