@@ -17,12 +17,12 @@ import kotlin.math.min
 class CircularFlagView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0)
-    : View(context, attrs, defStyleAttr) {
+    defStyleAttr: Int = 0
+): View(context, attrs, defStyleAttr) {
 
     private val clipPath = Path()
     private var drawable: Drawable? = null
-    private var boundsOffset: Rect = Rect()
+    private var boundsOffset: Rect? = null
 
     var countryCode: String? = null
     set(value) {
@@ -64,19 +64,19 @@ class CircularFlagView @JvmOverloads constructor(
     }
 
     override fun onDraw(canvas: Canvas) {
+        val d = drawable ?: return
+        val cc = countryCode ?: return
+        var offset = boundsOffset
+        if (offset == null) {
+            offset = getBoundsOffset(d, cc)
+            boundsOffset = offset
+        }
+
         // clip it round
         canvas.clipPath(clipPath)
-        val d = drawable
-        if (d != null) {
-            d.setBounds(
-                boundsOffset.left,
-                boundsOffset.top,
-                width - boundsOffset.right,
-                height - boundsOffset.bottom
-            )
-            d.draw(canvas)
-        }
-        super.onDraw(canvas)
+        d.setBounds(offset.left, offset.top, width - offset.right, height - offset.bottom)
+        d.draw(canvas)
+
     }
 
     private fun updateCountryCode(countryCode: String?) {
@@ -84,20 +84,18 @@ class CircularFlagView @JvmOverloads constructor(
             drawable = null
         } else {
             val resId = getFlagResIdWithFallback(countryCode)
-            if (resId == 0) {
-                drawable = null
-            } else {
-                val d = resources.getDrawable(resId)
-                val alignment = get(resources, countryCode)
-                boundsOffset = if (alignment != null) {
-                    getBoundsOffset(d, alignment)
-                } else {
-                    Rect(0, 0, 0, 0)
-                }
-                drawable = d
-            }
+            drawable = if (resId != 0) resources.getDrawable(resId) else null
         }
         invalidate()
+    }
+
+    private fun getBoundsOffset(drawable: Drawable, countryCode: String): Rect {
+        val alignment = get(resources, countryCode)
+        return if (alignment != null) {
+            getBoundsOffset(drawable, alignment)
+        } else {
+            Rect(0, 0, 0, 0)
+        }
     }
 
     override fun invalidateDrawable(drawable: Drawable) {
@@ -113,10 +111,12 @@ class CircularFlagView @JvmOverloads constructor(
         val scale = width.toFloat() / min(w,h)
         val hOffset = -w * scale + width
         return when(align) {
-            FlagAlignment.CENTER -> Rect((hOffset / 2f).toInt(), 0, (hOffset / 2f).toInt(), 0)
-            FlagAlignment.LEFT -> Rect(0, 0, hOffset.toInt(), 0)
-            FlagAlignment.RIGHT -> Rect(hOffset.toInt(), 0, 0, 0)
-            FlagAlignment.STRETCH -> Rect(0, 0, 0, 0)
+            FlagAlignment.LEFT ->         Rect(0, 0, hOffset.toInt(), 0)
+            FlagAlignment.CENTER_LEFT ->  Rect((1f * hOffset / 3f).toInt(), 0, (2f * hOffset / 3f).toInt(), 0)
+            FlagAlignment.CENTER ->       Rect((hOffset / 2f).toInt(), 0, (hOffset / 2f).toInt(), 0)
+            FlagAlignment.CENTER_RIGHT -> Rect((2f * hOffset / 3f).toInt(), 0, (1f * hOffset / 3f).toInt(), 0)
+            FlagAlignment.RIGHT ->        Rect(hOffset.toInt(), 0, 0, 0)
+            FlagAlignment.STRETCH ->      Rect(0, 0, 0, 0)
         }
     }
 
@@ -151,9 +151,16 @@ class CircularFlagView @JvmOverloads constructor(
 
         private fun readFlagAlignments(resources: Resources): Map<String, FlagAlignment> =
             resources.getYamlObject<HashMap<String, String>>(R.raw.flag_alignments).map {
-                it.key to FlagAlignment.valueOf(it.value.toUpperCase(Locale.US))
+                it.key to FlagAlignment.valueOf(it.value.replace("-","_").toUpperCase(Locale.US))
             }.toMap()
     }
 
-    private enum class FlagAlignment { CENTER, LEFT, RIGHT, STRETCH }
+    private enum class FlagAlignment {
+        LEFT,
+        CENTER_LEFT,
+        CENTER,
+        CENTER_RIGHT,
+        RIGHT,
+        STRETCH
+    }
 }

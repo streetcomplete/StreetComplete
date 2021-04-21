@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.oneway
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.bikeway.createCyclewaySides
 import de.westnordost.streetcomplete.quests.bikeway.estimatedWidth
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
 import de.westnordost.streetcomplete.quests.parking_lanes.*
 
@@ -46,13 +46,8 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
                 val prevCount = connectionCountByNodeIds[nodeId] ?: 0
                 connectionCountByNodeIds[nodeId] = prevCount + 1
             }
-            if (elementFilter.matches(road)) {
-                // check if the width of the road minus the space consumed by other stuff is quite narrow
-                val width = road.tags["width"]?.toFloatOrNull()
-                val isNarrow = width != null && width <= estimatedWidthConsumedByOtherThings(road.tags) + 4f
-                if (isNarrow) {
-                    onewayCandidates.add(road)
-                }
+            if (isOnewayRoadCandidate(road)) {
+                onewayCandidates.add(road)
             }
         }
 
@@ -67,9 +62,20 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
         }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
-    /* return null because we also want to have a look at the surrounding geometry to filter out
-    *  (some) dead ends */
+    override fun isApplicableTo(element: Element): Boolean? {
+        if (!isOnewayRoadCandidate(element)) return false
+        /* return null because oneway candidate roads must also be connected on both ends with other
+           roads for which we'd need to look at surrounding geometry */
+        return null
+    }
+
+    private fun isOnewayRoadCandidate(road: Element): Boolean {
+        if (!elementFilter.matches(road)) return false
+        // check if the width of the road minus the space consumed by other stuff is quite narrow
+        val width = road.tags["width"]?.toFloatOrNull()
+        val isNarrow = width != null && width <= estimatedWidthConsumedByOtherThings(road.tags) + 4f
+        return isNarrow
+    }
 
     private fun estimatedWidthConsumedByOtherThings(tags: Map<String, String>): Float {
         return estimateWidthConsumedByParkingLanes(tags) +

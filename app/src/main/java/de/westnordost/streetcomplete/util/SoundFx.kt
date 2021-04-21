@@ -8,11 +8,13 @@ import android.os.Build
 import android.provider.Settings
 import android.util.SparseIntArray
 import androidx.annotation.RawRes
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 /** Simple wrapper to enable just playing a sound effect from raw resources */
 @Singleton class SoundFx @Inject constructor(private val context: Context) {
@@ -40,14 +42,16 @@ import kotlin.coroutines.suspendCoroutine
     }
 
     // will not return until the loading of the sound is complete
-    private suspend fun prepare(@RawRes resId: Int): Int = suspendCoroutine { cont ->
+    private suspend fun prepare(@RawRes resId: Int): Int = suspendCancellableCoroutine { cont ->
         val soundId = soundPool.load(context, resId, 1)
         loadCompleteContinuations[soundId] = cont
     }
 
-    suspend fun play(@RawRes resId: Int) {
-        if (soundIds[resId] == 0) soundIds.put(resId, prepare(resId))
+    suspend fun play(@RawRes resId: Int) = withContext(Dispatchers.IO) {
         val isTouchSoundsEnabled = Settings.System.getInt(context.contentResolver, Settings.System.SOUND_EFFECTS_ENABLED, 1) != 0
-        if (isTouchSoundsEnabled) soundPool.play(soundIds[resId], 1f, 1f, 1, 0, 1f)
+        if (isTouchSoundsEnabled) {
+            if (soundIds[resId] == 0) soundIds.put(resId, prepare(resId))
+            soundPool.play(soundIds[resId], 1f, 1f, 1, 0, 1f)
+        }
     }
 }

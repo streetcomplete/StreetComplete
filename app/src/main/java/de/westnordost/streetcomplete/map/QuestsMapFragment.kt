@@ -2,64 +2,64 @@ package de.westnordost.streetcomplete.map
 
 import android.graphics.PointF
 import android.graphics.RectF
-import android.os.Bundle
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.DecelerateInterpolator
-import com.mapzen.tangram.MapData
-import com.mapzen.tangram.SceneUpdate
-import com.mapzen.tangram.geometry.Point
+import androidx.annotation.DrawableRes
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestGroup
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
+import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.edithistory.icon
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.quest.Quest
-import de.westnordost.streetcomplete.ktx.getBitmapDrawable
-import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_GROUP
-import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_ID
-import de.westnordost.streetcomplete.map.tangram.CameraPosition
-import de.westnordost.streetcomplete.map.tangram.Marker
-import de.westnordost.streetcomplete.map.tangram.toLngLat
-import de.westnordost.streetcomplete.map.tangram.toTangramGeometry
+import de.westnordost.streetcomplete.map.components.ElementGeometryMapComponent
+import de.westnordost.streetcomplete.map.components.PinsMapComponent
+import de.westnordost.streetcomplete.map.components.PointMarkersMapComponent
 import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
 import javax.inject.Inject
-import kotlin.math.abs
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.math.roundToLong
 
 /** Manages a map that shows the quest pins, quest geometry */
 class QuestsMapFragment : LocationAwareMapFragment() {
 
-    @Inject internal lateinit var spriteSheet: TangramQuestSpriteSheet
-    @Inject internal lateinit var questPinLayerManager: QuestPinLayerManager
+    @Inject internal lateinit var spriteSheet: TangramPinsSpriteSheet
+    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
+    @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
+    @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
+    @Inject internal lateinit var editHistorySource: EditHistorySource
+    @Inject internal lateinit var mapDataSource: MapDataWithEditsSource
 
-    // layers
-    private var questsLayer: MapData? = null
-    private var geometryLayer: MapData? = null
-    private var selectedQuestPinsLayer: MapData? = null
-
-    private val questSelectionMarkers: MutableList<Marker> = mutableListOf()
-
-    // markers: LatLon -> Marker Id
-    private val markerIds: MutableMap<LatLon, Long> = HashMap()
-
-    // for restoring position
-    private var cameraPositionBeforeShowingQuest: CameraPosition? = null
+    private var pointMarkersMapComponent: PointMarkersMapComponent? = null
+    private var pinsMapComponent: PinsMapComponent? = null
+    private var geometryMapComponent: ElementGeometryMapComponent? = null
+    private var questPinsManager: QuestPinsManager? = null
+    private var editHistoryPinsManager: EditHistoryPinsManager? = null
 
     interface Listener {
-        fun onClickedQuest(questGroup: QuestGroup, questId: Long)
+        fun onClickedQuest(questKey: QuestKey)
+        fun onClickedEdit(editKey: EditKey)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+    enum class PinMode { NONE, QUESTS, EDITS }
+    var pinMode: PinMode = PinMode.QUESTS
+        set(value) {
+            if (field == value) return
+            field = value
+            updatePinMode()
+        }
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
@@ -67,56 +67,56 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         Injector.applicationComponent.inject(this)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        lifecycle.addObserver(questPinLayerManager)
-        questPinLayerManager.mapFragment = this
-    }
+    override suspend fun onMapReady() {
+        val ctrl = controller ?: return
+        ctrl.setPickRadius(1f)
+        pointMarkersMapComponent = PointMarkersMapComponent(ctrl)
+        pinsMapComponent = PinsMapComponent(requireContext(), ctrl)
+        geometryMapComponent = ElementGeometryMapComponent(ctrl)
 
-    override fun onMapReady() {
-        controller?.setPickRadius(1f)
-        geometryLayer = controller?.addDataLayer(GEOMETRY_LAYER)
-        questsLayer = controller?.addDataLayer(QUESTS_LAYER)
-        selectedQuestPinsLayer = controller?.addDataLayer(SELECTED_QUESTS_LAYER)
-        questPinLayerManager.questsLayer = questsLayer
+        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeRegistry, questTypeOrderList, resources, visibleQuestsSource)
+        lifecycle.addObserver(questPinsManager!!)
+        questPinsManager!!.isActive = pinMode == PinMode.QUESTS
+
+        editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource, resources)
+        lifecycle.addObserver(editHistoryPinsManager!!)
+        editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
+
         super.onMapReady()
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
         super.onMapIsChanging(position, rotation, tilt, zoom)
-        questPinLayerManager.onNewScreenPosition()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        geometryLayer = null
-        questsLayer = null
-        selectedQuestPinsLayer = null
-        questSelectionMarkers.clear()
+        questPinsManager?.onNewScreenPosition()
     }
 
     /* ------------------------------------- Map setup ------------------------------------------ */
 
-    override suspend fun getSceneUpdates(): List<SceneUpdate> {
-        return super.getSceneUpdates() + withContext(Dispatchers.IO) { spriteSheet.sceneUpdates }
+    override suspend fun onBeforeLoadScene() {
+        super.onBeforeLoadScene()
+        val questSceneUpdates = withContext(Dispatchers.IO) { spriteSheet.sceneUpdates }
+        sceneMapComponent?.putSceneUpdates(questSceneUpdates)
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
-        launch {
-            val pickResult = controller?.pickLabel(x, y)
+        lifecycleScope.launch {
+            val props = controller?.pickLabel(x, y)?.properties
 
-            val pickedQuestId = pickResult?.properties?.get(MARKER_QUEST_ID)?.toLong()
-            val pickedQuestGroup = pickResult?.properties?.get(MARKER_QUEST_GROUP)?.let { QuestGroup.valueOf(it) }
-
-            if (pickedQuestId != null && pickedQuestGroup != null) {
-                listener?.onClickedQuest(pickedQuestGroup, pickedQuestId)
-            } else {
-                val pickMarkerResult = controller?.pickMarker(x,y)
-                if (pickMarkerResult == null) {
-                    onClickedMap(x, y)
-                }
+            val questKey = props?.let { questPinsManager?.getQuestKey(it) }
+            if (questKey != null) {
+                listener?.onClickedQuest(questKey)
+                return@launch
+            }
+            val editKey = props?.let { editHistoryPinsManager?.getEditKey(it) }
+            if (editKey != null) {
+                listener?.onClickedEdit(editKey)
+                return@launch
+            }
+            val pickMarkerResult = controller?.pickMarker(x,y)
+            if (pickMarkerResult == null) {
+                onClickedMap(x, y)
             }
         }
         return true
@@ -134,182 +134,94 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         listener?.onClickedMapAt(clickPos, fingerRadiusInMeters)
     }
 
+    /* --------------------------------- Focusing on edit --------------------------------------- */
+
+    fun startFocusEdit(edit: Edit, offset: RectF) {
+        pinsMapComponent?.showSelectedPins(edit.icon, listOf(edit.position))
+        geometryMapComponent?.beginFocusGeometry(ElementPointGeometry(edit.position), offset)
+        geometryMapComponent?.showGeometry(edit.getGeometry())
+    }
+
+    fun endFocusEdit() {
+        pinsMapComponent?.clearSelectedPins()
+        geometryMapComponent?.endFocusGeometry(returnToPreviousPosition = false)
+        geometryMapComponent?.clearGeometry()
+    }
+
+    private fun Edit.getGeometry(): ElementGeometry = when(this) {
+        /* TODO if edits also persisted the geometry of the element at the time the edit was
+        *   created, it could be shown here. */
+        is ElementEdit -> mapDataSource.getGeometry(elementType, elementId)
+        is OsmQuestHidden -> mapDataSource.getGeometry(elementType, elementId)
+        else -> null
+    } ?: ElementPointGeometry(position)
+
     /* --------------------------------- Focusing on quest -------------------------------------- */
 
     fun startFocusQuest(quest: Quest, offset: RectF) {
-        zoomAndMoveToContain(quest.geometry, offset)
-        showQuestSelectionMarkers(quest.markerLocations)
-        putSelectedQuestPins(quest)
-        putQuestGeometry(quest.geometry)
+        geometryMapComponent?.beginFocusGeometry(quest.geometry, offset)
+        geometryMapComponent?.showGeometry(quest.geometry)
+        pinsMapComponent?.showSelectedPins(quest.type.icon, quest.markerLocations)
     }
 
     /** Clear focus on current quest but do not return to normal view yet */
     fun clearFocusQuest() {
-        removeQuestGeometry()
-        clearMarkersForCurrentQuest()
-        hideQuestSelectionMarkers()
-        removeSelectedQuestPins()
+        pinsMapComponent?.clearSelectedPins()
+        geometryMapComponent?.clearGeometry()
+        pointMarkersMapComponent?.clear()
     }
 
     fun endFocusQuest() {
         clearFocusQuest()
-        restoreCameraPosition()
+        geometryMapComponent?.endFocusGeometry()
         centerCurrentPositionIfFollowing()
-    }
-
-    private fun zoomAndMoveToContain(g: ElementGeometry, offset: RectF) {
-        val controller = controller ?: return
-        val pos = controller.getEnclosingCameraPosition(g.getBounds(), offset) ?: return
-        val currentPos = controller.cameraPosition
-        val targetZoom = min(pos.zoom, 20f)
-
-        // do not zoom in if the element is already nicely in the view
-        if (screenAreaContains(g, RectF()) && targetZoom - currentPos.zoom < 2) return
-
-        cameraPositionBeforeShowingQuest = currentPos
-
-        val zoomTime = max(450L, (abs(currentPos.zoom - targetZoom) * 300).roundToLong())
-
-        controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
-            position = pos.position
-            zoom = targetZoom
-        }
-    }
-
-    private fun screenAreaContains(g: ElementGeometry, offset: RectF): Boolean {
-        val controller = controller ?: return false
-        val p = PointF()
-        return when (g) {
-            is ElementPolylinesGeometry -> g.polylines
-            is ElementPolygonsGeometry -> g.polygons
-            else -> listOf(listOf(g.center))
-        }.flatten().all {
-            val isContained = controller.latLonToScreenPosition(it, p, false)
-            isContained && p.x >= offset.left && p.x <= mapView.width - offset.right
-              && p.y >= offset.top  && p.y <= mapView.height - offset.bottom
-        }
-    }
-
-    private fun restoreCameraPosition() {
-        val controller = controller ?: return
-
-        val pos = cameraPositionBeforeShowingQuest
-        if (pos != null) {
-            val currentPos = controller.cameraPosition
-            val zoomTime = max(300L, (abs(currentPos.zoom - pos.zoom) * 300).roundToLong())
-
-            controller.updateCameraPosition(zoomTime, AccelerateDecelerateInterpolator()) {
-                position = pos.position
-                zoom = pos.zoom
-                tilt = pos.tilt
-                rotation = pos.rotation
-            }
-        }
-        cameraPositionBeforeShowingQuest = null
-    }
-
-    /* --------------------------------------  Quest Pins --------------------------------------- */
-
-    var isShowingQuestPins: Boolean
-        get() = questPinLayerManager.isVisible
-        set(value) { questPinLayerManager.isVisible = value }
-
-    /* ---------------------------------  Selected quest pins ----------------------------------- */
-
-    private fun createQuestSelectionMarker(): Marker? {
-        val ctx = context ?: return null
-
-        val frame = ctx.resources.getBitmapDrawable(R.drawable.quest_selection_ring)
-        val w = frame.intrinsicWidth.toFloat().toDp(ctx)
-        val h = frame.intrinsicHeight.toFloat().toDp(ctx)
-
-        val marker = controller?.addMarker() ?: return null
-        marker.setStylingFromString(
-            "{ style: 'quest-selection', color: 'white', size: [${w}px, ${h}px], flat: false, collide: false, offset: ['0px', '-38px'] }"
-        )
-        marker.setDrawable(frame)
-        return marker
-    }
-
-    private fun showQuestSelectionMarkers(positions: Collection<LatLon>) {
-        while (positions.size > questSelectionMarkers.size) {
-            val marker = createQuestSelectionMarker() ?: return
-            questSelectionMarkers.add(marker)
-        }
-        positions.forEachIndexed { index, pos ->
-            val marker = questSelectionMarkers[index]
-            marker.setPoint(pos)
-            marker.isVisible = true
-        }
-    }
-
-    private fun hideQuestSelectionMarkers() {
-        questSelectionMarkers.forEach { it.isVisible = false }
-    }
-
-    private fun putSelectedQuestPins(quest: Quest) {
-        val questIconName = resources.getResourceEntryName(quest.type.icon)
-        val positions = quest.markerLocations
-        val points = positions.map { position ->
-            val properties = mapOf(
-                "type" to "point",
-                "kind" to questIconName
-            )
-            Point(position.toLngLat(), properties)
-        }
-        selectedQuestPinsLayer?.setFeatures(points)
-    }
-
-    private fun removeSelectedQuestPins() {
-        selectedQuestPinsLayer?.clear()
-    }
-
-    /* ------------------------------  Geometry for current quest ------------------------------- */
-
-    private fun putQuestGeometry(geometry: ElementGeometry) {
-        geometryLayer?.setFeatures(geometry.toTangramGeometry())
-    }
-
-    private fun removeQuestGeometry() {
-        geometryLayer?.clear()
     }
 
     /* -------------------------  Markers for current quest (split way) ------------------------- */
 
-    fun putMarkerForCurrentQuest(pos: LatLon) {
-        deleteMarkerForCurrentQuest(pos)
-        val marker = controller?.addMarker() ?: return
-        marker.setDrawable(R.drawable.crosshair_marker)
-        marker.setStylingFromString("{ style: 'points', color: 'white', size: 48px, order: 2000, collide: false }")
-        marker.setPoint(pos)
-        markerIds[pos] = marker.markerId
+    fun putMarkerForCurrentQuest(pos: LatLon, @DrawableRes drawableResId: Int) {
+        pointMarkersMapComponent?.put(pos, drawableResId)
     }
 
     fun deleteMarkerForCurrentQuest(pos: LatLon) {
-        val markerId = markerIds[pos] ?: return
-        controller?.removeMarker(markerId)
-        markerIds.remove(pos)
+        pointMarkersMapComponent?.delete(pos)
     }
 
-    fun clearMarkersForCurrentQuest() {
-        for (markerId in markerIds.values) {
-            controller?.removeMarker(markerId)
+    /* --------------------- Switching between quests and edit history pins --------------------- */
+
+    private fun updatePinMode() {
+        /* both managers use the same resource (PinsMapComponent), so the newly visible manager
+           may only be activated after the old has been deactivated
+         */
+        pointMarkersMapComponent?.clear()
+        pinsMapComponent?.clearSelectedPins()
+        geometryMapComponent?.endFocusGeometry(returnToPreviousPosition = false)
+        geometryMapComponent?.clearGeometry()
+
+        when (pinMode) {
+            PinMode.QUESTS -> {
+                editHistoryPinsManager?.isActive = false
+                questPinsManager?.isActive = true
+            }
+            PinMode.EDITS -> {
+                questPinsManager?.isActive = false
+                editHistoryPinsManager?.isActive = true
+            }
+            else -> {
+                questPinsManager?.isActive = false
+                editHistoryPinsManager?.isActive = false
+            }
         }
-        markerIds.clear()
     }
 
     /* --------------------------------- Position tracking -------------------------------------- */
 
-    override fun shouldCenterCurrentPosition(): Boolean {
+    override fun shouldCenterCurrentPosition(): Boolean =
         // don't center position while displaying a quest
-        return super.shouldCenterCurrentPosition() && cameraPositionBeforeShowingQuest == null
-    }
+        super.shouldCenterCurrentPosition() && geometryMapComponent?.isZoomedToContainGeometry != true
 
     companion object {
         // see streetcomplete.yaml for the definitions of the below layers
-        private const val GEOMETRY_LAYER = "streetcomplete_geometry"
-        private const val QUESTS_LAYER = "streetcomplete_quests"
-        private const val SELECTED_QUESTS_LAYER = "streetcomplete_selected_quests"
         private const val CLICK_AREA_SIZE_IN_DP = 48
     }
 }

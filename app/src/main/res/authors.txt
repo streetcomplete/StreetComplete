@@ -1,6 +1,29 @@
 File                           License / Source (if not given, follow link for license info)
 ===============================================================================
 
+barrier_passage.jpg            CC-BY-SA 4.0      Dominicus Johannes Bergsma https://commons.wikimedia.org/wiki/File:Doorgang_in_muur._Locatie,_Chinese_tuin_Het_Verborgen_Rijk_van_Ming._Locatie._Hortus_Haren_01.jpg
+barrier_gate.jpg               CC-BY-SA 4.0      Acabashi https://commons.wikimedia.org/wiki/File:Abbess_Roding_-_roadside_white_gate_-_Essex_England.jpg
+barrier_lift_gate.jpg          CC-BY-SA 2.5      Wfm https://commons.wikimedia.org/wiki/File:Sluitlus.jpg
+barrier_swing_gate.jpg         CC-BY 3.0         Marek Ślusarczyk https://commons.wikimedia.org/wiki/File:21_Szlaban_le%C5%9Bny_ogranicza_wjazd_samochodem_do_lasu_-_Forest_area_barrier_in_Poland,_Creative_Commons_Attribution.jpg
+barrier_bollard.jpg            CC-BY-SA 3.0      JVJohannes https://commons.wikimedia.org/wiki/File:Stilpoller_Kugelkopf.jpg
+barrier_chain.jpg              CC-BY-SA 3.0      Frank Vincentz https://commons.wikimedia.org/wiki/File:Andernach_-_Schlossstra%C3%9Fe_-_Schloss_Burg_Namedy_26_ies.jpg
+barrier_rope.jpg               CC-BY 3.0         MichaelBueker https://commons.wikimedia.org/wiki/File:Black_Red_Gold_Rope_at_German_Bundestag_in_Berlin_2010.jpg
+barrier_wire_gate.jpg          Public Domain     Montanabw https://commons.wikimedia.org/wiki/File:Wire_gate.jpg
+barrier_cattle_grid.jpg        CC-BY-SA 2.5      Nachoman-au~commonswiki https://commons.wikimedia.org/wiki/File:Cattle_grid.jpg
+barrier_block.jpg              CC-BY 3.0         Dezidor https://commons.wikimedia.org/wiki/File:Oblast_mezi_Libe%C5%88sk%C3%BDm_mostem_a_Negrelliho_viaduktem_(06).jpg
+barrier_jersey_barrier.jpg     Public Domain     CorreiaPM https://commons.wikimedia.org/wiki/File:BarreiraNewJersey.JPG
+barrier_log.jpg                CC-BY-SA 3.0      Daniel Kraft https://commons.wikimedia.org/wiki/File:Sihlwald_windthrow_Spinnerweg_20200204_1.jpg
+barrier_kerb.jpg               CC0               Mateusz Konieczny (from kerb_height_raised_original.jpg)
+barrier_height_restrictor.jpg  CC-BY-SA 2.0      Graham Horn https://commons.wikimedia.org/wiki/File:Works_entry_at_Barsham_Hall_-_geograph.org.uk_-_978121.jpg
+barrier_full_height_turnsti... CC-BY-SA 4.0      Ii2nmd https://commons.wikimedia.org/wiki/File:Fairmount_station_2018b.JPG
+barrier_turnstile.jpg          CC-BY-SA 4.0      MelnikovArtyom https://commons.wikimedia.org/wiki/File:%D0%A2%D1%83%D1%80%D0%BD%D0%B8%D0%BA%D0%B5%D1%82%D1%8B_%D0%B4%D0%BB%D1%8F_%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8F_%22%D0%92%D1%85%D0%BE%D0%B4-%D0%B2%D1%8B%D1%85%D0%BE%D0%B4%22.JPG
+barrier_debris_pile.jpg        CC-BY 2.0         Oregon Department of Transportation https://commons.wikimedia.org/wiki/File:Landslide_on_OR_42S_(46849629014).jpg
+barrier_stile_squeezer.jpg     CC-BY-SA 2.0      Mike Fowkes https://en.wikipedia.org/wiki/File:Squeezer_stile._-_geograph.org.uk_-_110502.jpg
+barrier_stile_ladder.jpg       CC-BY-SA 2.0      David Gruar https://commons.wikimedia.org/wiki/File:Family_of_ladder_stiles_-_geograph.org.uk_-_42040.jpg
+barrier_stile_stepover.jpg     CC-BY-SA 2.0      Philip Halling https://commons.wikimedia.org/wiki/File:Daffodil_Way,_Dymock_-_geograph.org.uk_-_69563.jpg
+barrier_kissing_gate.jpg       CC-BY-SA 2.0      David Anstiss https://commons.wikimedia.org/wiki/File:Kissing_gate_near_Trillinghurst_Farm_-_geograph.org.uk_-_1512534.jpg
+barrier_bicycle_barrier.jpg    CC0               DerDings https://commons.wikimedia.org/wiki/File:Bicycle_barrier_2.JPG
+
 bicycle_parking_type_buildi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bike_Storage_(YAUS).jpg
 bicycle_parking_type_locker... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bicycle_lockers_at_Gathurst_railway_station.JPG
 bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Parking_v%C3%A9los_s%C3%A9curis%C3%A9_gare_des_Martres_2015-08-20.JPG
@@ -32,6 +55,14 @@ fire_hydrant_wall.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/w
 
 ic_link_cyclosm.xml            CC-BY-SA          by Lucas Verney
 ic_trophy.xml                  SIL OFL 1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
+
+kerb_height_raised.jpg         CC0               Mateusz Konieczny
+kerb_height_raised_original... CC0               Mateusz Konieczny
+kerb_height_lowered.jpg        CC0               Mateusz Konieczny
+kerb_height_lowered_origina... CC0               Mateusz Konieczny
+kerb_height_flush.jpg          CC0               Mateusz Konieczny
+kerb_height_flush_original.jpg CC0               Mateusz Konieczny
+kerb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
 
 parking_type_lane.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:20201001-parking-streetside_01.jpg
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
@@ -126,13 +157,6 @@ surface_tartan.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/w
 surface_paved_area.jpg         CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-27_13_01_48_View_across_Parkway_Avenue_(Mercer_County_Route_634)_near_the_Delaware_and_Bound_Brook_Railroad_underpass,_with_concrete_pavement_likely_dating_to_the_1950s.JPG (Famartin)
 surface_unpaved_area.jpg       CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Art_earthwork_landscape_sculpture_Woodland_Trust_Theydon_Bois_Essex_08.JPG (Acabashi)
 surface_ground_area.jpg        CC-BY 2.0         https://www.flickr.com/photos/7175652@N02/3734770583 (Danumurthi Mahendra)
-herb_height_raised.jpg         CC0               Mateusz Konieczny
-herb_height_raised_original... CC0               Mateusz Konieczny
-herb_height_lowered.jpg        CC0               Mateusz Konieczny
-herb_height_lowered_origina... CC0               Mateusz Konieczny
-herb_height_flush.jpg          CC0               Mateusz Konieczny
-herb_height_flush_original.jpg CC0               Mateusz Konieczny
-herb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
 surface_pebblestone.jpg        CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg (FrankM)
 surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:2013-08-21_12_04_26_View_south_towards_Barnegat_Lighthouse_along_the_sand_road_to_Barnegat_Inlet_in_Island_Beach_State_Park.jpg (Famartin )
 surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG (Øyvind Holmstad )

@@ -32,6 +32,7 @@
     <color name="button_white">#fff</color>
 
     <color name="greyed_out">#66999999</color>
+    <color name="slightly_greyed_out">#33999999</color>
 
     <color name="dialog_shadow">#99000000</color>
 

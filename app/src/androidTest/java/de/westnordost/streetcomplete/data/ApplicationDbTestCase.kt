@@ -11,6 +11,7 @@ import org.junit.Test
 
 open class ApplicationDbTestCase {
     protected lateinit var dbHelper: SQLiteOpenHelper
+    protected lateinit var database: Database
     protected lateinit var serializer: Serializer
 
     @Before fun setUpHelper() {
@@ -19,6 +20,7 @@ open class ApplicationDbTestCase {
             InstrumentationRegistry.getInstrumentation().targetContext,
             DATABASE_NAME
         )
+        database = AndroidDatabase(dbHelper)
     }
 
     @Test fun databaseAvailable() {

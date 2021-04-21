@@ -959,7 +959,7 @@ You can start solving them right away and later login to publish your answers."<
 
 Finally, remember to stay safe: Be aware of your surroundings and don't enter private property."</string>
     <string name="tutorial_happy_mapping">"Happy Mapping!"</string>
-    <string name="achievements_empty">"You have no achievments yet"</string>
+    <string name="achievements_empty">"You have no achievements yet"</string>
     <string name="links_empty">"You have no links yet"</string>
     <string name="quests_empty">"You have published no quest answers yet"</string>
     <string name="unsynced_quests_description">"plus %d not yet published changes."</string>
@@ -1074,14 +1074,14 @@ levels"</string>
     <string name="quest_board_type_geology">"Geology"</string>
     <string name="quest_board_type_plants">"Plants"</string>
     <string name="quest_board_type_wildlife">"Wildlife"</string>
-    <string name="quest_board_type_nature">"Nature (multiples topics)"</string>
+    <string name="quest_board_type_nature">"Nature (multiple topics)"</string>
     <string name="quest_board_type_notice_board">"It is a notice board"</string>
     <string name="quest_board_type_public_transport">"Public transport"</string>
     <string name="quest_board_type_title">"What is the topic of this information board?"</string>
     <string name="quest_sidewalk_separately_mapped">"Yes, displayed separately on map"</string>
     <string name="quest_board_type_map">"It is a map"</string>
     <string name="quest_board_type_map_title">"Is it just a map and only a map?"</string>
-    <string name="quest_board_type_map_description">"If the boiard is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead"</string>
+    <string name="quest_board_type_map_description">"If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead."</string>
     <string name="quest_surface_detailed_answer_impossible">"Multiple surfaces..."</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Are you sure that it is impossible to specify the surface? Note the \"Differs along the way\" answer option that allows you to cut the way where the surface changes. Please use \"Can't say\" if there is a single surface but it is not available as an answer."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Please briefly specify the nature of the surface here, for example \"sandy with patches of cobblestone\". The text length is limited to 255 characters."</string>

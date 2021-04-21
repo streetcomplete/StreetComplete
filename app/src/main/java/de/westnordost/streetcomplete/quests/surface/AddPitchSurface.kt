@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
 
 class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
@@ -26,7 +26,7 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
         ways with (leisure=pitch or leisure=track)
         and sport ~ "(^|.*;)(${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")})(${'$'}|;.*)"
         and (access !~ private|no)
-        and indoor != yes and !building
+        and indoor != yes and (!building or building = no)
         and (
           !surface
           or surface older today -12 years

@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.util.intersects
 
@@ -23,13 +23,17 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
         and !maxheight and !maxheight:signed and !maxheight:physical
     """.toElementFilterExpression() }
 
-    private val wayFilter by lazy { """
+    private val roadsWithoutMaxHeightFilter by lazy { """
         ways with
         (
           highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
         and !maxheight and !maxheight:signed and !maxheight:physical
+    """.toElementFilterExpression() }
+
+    private val allRoadsFilter by lazy { """
+        ways with highway ~ ${ALL_ROADS.joinToString("|")}
     """.toElementFilterExpression() }
 
     private val tunnelFilter by lazy { """
@@ -51,7 +55,6 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
     override val isSplitWayEnabled = true
-    override val isRecreateAfterSplitEnabled = false
 
     override fun getTitle(tags: Map<String, String>): Int {
         val isParkingEntrance = tags["amenity"] == "parking_entrance"
@@ -72,14 +75,22 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        // amenity = parking_entrance nodes etc. only if they are a vertex in a road
+        val roadsNodeIds = mutableSetOf<Long>()
+        mapData.ways
+            .filter { allRoadsFilter.matches(it) }
+            .flatMapTo(roadsNodeIds) { it.nodeIds }
+
+        val nodesWithoutHeight = mapData.nodes
+            .filter { roadsNodeIds.contains(it.id) && nodeFilter.matches(it) }
+
+        val roadsWithoutHeight = mapData.ways.filter { roadsWithoutMaxHeightFilter.matches(it) }
+
+        val tunnelsWithoutHeight = roadsWithoutHeight.filter { tunnelFilter.matches(it) }
+
         val bridges = mapData.ways.filter { bridgeFilter.matches(it) }
 
-        val waysWithoutHeight = mapData.ways.filter { wayFilter.matches(it) }
-
-        val nodesWithoutHeight = mapData.nodes.filter { nodeFilter.matches(it) }
-        val tunnelsWithoutHeight = waysWithoutHeight.filter { tunnelFilter.matches(it) }
-
-        val waysBelowBridgesWithoutHeight = waysWithoutHeight.filter { way ->
+        val waysBelowBridgesWithoutHeight = roadsWithoutHeight.filter { way ->
             val layer = way.tags?.get("layer")?.toIntOrNull() ?: 0
             val geometry = mapData.getWayGeometry(way.id) as? ElementPolylinesGeometry
 
@@ -100,15 +111,16 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
         return nodesWithoutHeight + tunnelsWithoutHeight + waysBelowBridgesWithoutHeight
     }
 
-
     override fun isApplicableTo(element: Element): Boolean? {
-        if (nodeFilter.matches(element)) return true
-        if (wayFilter.matches(element)) {
+        if (roadsWithoutMaxHeightFilter.matches(element)) {
             if (tunnelFilter.matches(element)) return true
             // if it is a way but not a tunnel, we cannot determine whether it is applicable (=
             // below a bridge) just by looking at the tags
             return null
         }
+        // for nodes that may be applicable we cannot finally determine it because that node must be
+        // a vertex of a road
+        if (nodeFilter.matches(element)) return null
         return false
     }
 

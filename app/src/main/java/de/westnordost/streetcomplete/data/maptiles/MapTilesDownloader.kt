@@ -1,73 +1,62 @@
 package de.westnordost.streetcomplete.data.maptiles
 
 import android.util.Log
+import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.Downloader
+import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.map.VectorTileProvider
-import de.westnordost.streetcomplete.util.TilesRect
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import de.westnordost.streetcomplete.util.enclosingTilesRect
+import kotlinx.coroutines.*
 import okhttp3.*
 import okhttp3.internal.Version
 import java.io.IOException
-import java.util.concurrent.atomic.AtomicBoolean
+import java.lang.System.currentTimeMillis
 import javax.inject.Inject
 import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 class MapTilesDownloader @Inject constructor(
     private val vectorTileProvider: VectorTileProvider,
     private val cacheConfig: MapTilesDownloadCacheConfig
-) : Downloader, CoroutineScope by CoroutineScope(Dispatchers.IO) {
-
+) {
     private val okHttpClient = OkHttpClient.Builder().cache(cacheConfig.cache).build()
 
-    override fun download(tiles: TilesRect, cancelState: AtomicBoolean) {
-        if (cancelState.get()) return
+    data class Tile(val zoom: Int, val x: Int, val y: Int)
 
-        Log.i(TAG, "(${tiles.getAsLeftBottomRightTopString()}) Starting")
-
-        try {
-            downloadTiles(tiles, cancelState)
-        } finally {
-            Log.i(TAG, "(${tiles.getAsLeftBottomRightTopString()}) Finished")
-        }
-    }
-
-    private fun downloadTiles(tiles: TilesRect, cancelState: AtomicBoolean) = runBlocking {
+    suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
         var tileCount = 0
         var failureCount = 0
         var downloadedSize = 0
         var cachedSize = 0
-        val time = System.currentTimeMillis()
-        for (zoom in vectorTileProvider.maxZoom downTo 0) {
-            if (!cancelState.get()) {
-                val tilesAtZoom = tiles.zoom(ApplicationConstants.QUEST_TILE_ZOOM, zoom)
-                for (tile in tilesAtZoom.asTileSequence()) {
-                    launch {
-                        if (!cancelState.get()) {
-                            val result = downloadTile(zoom, tile.x, tile.y)
-                            ++tileCount
-                            when (result) {
-                                is DownloadFailure -> ++failureCount
-                                is DownloadSuccess -> {
-                                    if (result.alreadyCached) cachedSize += result.size
-                                    else downloadedSize += result.size
-                                }
-                            }
+        val time = currentTimeMillis()
+
+        coroutineScope {
+            for (tile in getDownloadTileSequence(bbox)) {
+                launch {
+                    val result = downloadTile(tile.zoom, tile.x, tile.y)
+                    ++tileCount
+                    when (result) {
+                        is DownloadFailure -> ++failureCount
+                        is DownloadSuccess -> {
+                            if (result.alreadyCached) cachedSize += result.size
+                            else downloadedSize += result.size
                         }
                     }
                 }
             }
         }
-        val seconds = (System.currentTimeMillis() - time) / 1000
+        val seconds = (currentTimeMillis() - time) / 1000.0
         val failureText = if (failureCount > 0) ". $failureCount tiles failed to download" else ""
-        Log.i(TAG, "Fetched $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds}s$failureText")
+        Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
     }
 
-    private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadResult = suspendCoroutine { cont ->
+    private fun getDownloadTileSequence(bbox: BoundingBox): Sequence<Tile> =
+        /* tiles for the highest zoom (=likely current or near current zoom) first,
+           because those are the tiles that are likely to be useful first */
+        (vectorTileProvider.maxZoom downTo 0).asSequence().flatMap { zoom ->
+            bbox.enclosingTilesRect(zoom).asTilePosSequence().map { Tile(zoom, it.x, it.y) }
+        }
+
+    private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadResult = suspendCancellableCoroutine { cont ->
         /* adding trailing "&" because Tangram-ES also puts this at the end and the URL needs to be
            identical in order for the cache to work */
         val url = vectorTileProvider.getTileUrl(zoom, x, y) + "&"
@@ -101,6 +90,7 @@ class MapTilesDownloader @Inject constructor(
                 cont.resume(DownloadSuccess(alreadyCached, size))
             }
         }
+        cont.invokeOnCancellation { call.cancel() }
         call.enqueue(callback)
     }
 

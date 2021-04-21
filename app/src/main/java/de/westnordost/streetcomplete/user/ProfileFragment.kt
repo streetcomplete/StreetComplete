@@ -9,11 +9,11 @@ import android.view.View
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountListener
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.osmnotes.NotesModule
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.*
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao
 import de.westnordost.streetcomplete.ktx.createBitmap
@@ -25,8 +25,7 @@ import java.util.*
 import javax.inject.Inject
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
-class ProfileFragment : Fragment(R.layout.fragment_profile),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var userStore: UserStore
@@ -37,20 +36,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
 
     private lateinit var anonAvatar: Bitmap
 
-    private val unsyncedChangesCountListener = object : UnsyncedChangesCountListener {
-        override fun onUnsyncedChangesCountIncreased() { launch(Dispatchers.Main) { updateUnpublishedQuestsText() } }
-        override fun onUnsyncedChangesCountDecreased() { launch(Dispatchers.Main) { updateUnpublishedQuestsText() } }
+    private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
+        override fun onIncreased() { lifecycleScope.launch { updateUnpublishedQuestsText() } }
+        override fun onDecreased() { lifecycleScope.launch { updateUnpublishedQuestsText() } }
     }
     private val questStatisticsDaoListener = object : QuestStatisticsDao.Listener {
-        override fun onAddedOne(questType: String) { launch(Dispatchers.Main) { updateSolvedQuestsText() }}
-        override fun onSubtractedOne(questType: String) { launch(Dispatchers.Main) { updateSolvedQuestsText() } }
-        override fun onReplacedAll() { launch(Dispatchers.Main) { updateSolvedQuestsText() } }
+        override fun onAddedOne(questType: String) { lifecycleScope.launch { updateSolvedQuestsText() }}
+        override fun onSubtractedOne(questType: String) { lifecycleScope.launch { updateSolvedQuestsText() } }
+        override fun onReplacedAll() { lifecycleScope.launch { updateSolvedQuestsText() } }
     }
     private val userStoreUpdateListener = object : UserStore.UpdateListener {
-        override fun onUserDataUpdated() { launch(Dispatchers.Main) { updateUserName() } }
+        override fun onUserDataUpdated() { lifecycleScope.launch { updateUserName() } }
     }
     private val userAvatarListener = object : UserAvatarListener {
-        override fun onUserAvatarUpdated() { launch(Dispatchers.Main) { updateAvatar() } }
+        override fun onUserAvatarUpdated() { lifecycleScope.launch { updateAvatar() } }
     }
 
     init {
@@ -76,7 +75,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
     override fun onStart() {
         super.onStart()
 
-        launch {
+        lifecycleScope.launch {
             userStore.addListener(userStoreUpdateListener)
             userController.addUserAvatarListener(userAvatarListener)
             questStatisticsDao.addListener(questStatisticsDaoListener)
@@ -101,17 +100,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
         userController.removeUserAvatarListener(userAvatarListener)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
-    }
-
     private fun updateUserName() {
         userNameTextView.text = userStore.userName
     }
 
     private fun updateAvatar() {
-        val cacheDir = OsmNotesModule.getAvatarsCacheDirectory(requireContext())
+        val cacheDir = NotesModule.getAvatarsCacheDirectory(requireContext())
         val avatarFile = File(cacheDir.toString() + File.separator + userStore.userId)
         val avatar = if (avatarFile.exists()) BitmapFactory.decodeFile(avatarFile.path) else anonAvatar
         userAvatarImageView.setImageBitmap(avatar)
@@ -122,7 +116,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
     }
 
     private suspend fun updateUnpublishedQuestsText() {
-        val unsyncedChanges = withContext(Dispatchers.IO) { unsyncedChangesCountSource.count }
+        val unsyncedChanges = unsyncedChangesCountSource.getCount()
         unpublishedQuestsText.text = getString(R.string.unsynced_quests_description, unsyncedChanges)
         unpublishedQuestsText.isGone = unsyncedChanges <= 0
     }

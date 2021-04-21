@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.summit_register
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
@@ -16,8 +16,8 @@ import de.westnordost.streetcomplete.util.distanceToArcs
 class AddSummitRegister : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
-        nodes with 
-          natural = peak and name and 
+        nodes with
+          natural = peak and name and
           (!summit:register or summit:register older today -4 years)
     """.toElementFilterExpression() }
 
@@ -27,7 +27,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
 
     override val enabledInCountries = NoCountriesExcept(
         // regions gathered in
-        // https://github.com/westnordost/StreetComplete/issues/561#issuecomment-325623974
+        // https://github.com/streetcomplete/StreetComplete/issues/561#issuecomment-325623974
 
         // Europe
         "AT", "DE", "CZ", "ES", "IT", "FR", "GR", "SI", "CH", "RO", "SK",
@@ -57,7 +57,8 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!filter.matches(element)) false else null
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

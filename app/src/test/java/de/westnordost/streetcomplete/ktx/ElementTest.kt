@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.ktx
 
-import de.westnordost.osmapi.map.data.OsmRelation
-import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
 
 class ElementTest {
     @Test fun `relation with no tags is no area`() {
-        assertFalse(OsmRelation(0, 0, null, null).isArea())
+        assertFalse(rel().isArea())
     }
 
     @Test fun `way is closed`() {
@@ -20,7 +19,7 @@ class ElementTest {
     }
 
     @Test fun `multipolygon relation is an area`() {
-        assertTrue(OsmRelation(0, 0, null, mapOf("type" to "multipolygon")).isArea())
+        assertTrue(rel(tags = mapOf("type" to "multipolygon")).isArea())
     }
 
     @Test fun `way with no tags is no area`() {
@@ -46,6 +45,6 @@ class ElementTest {
         assertTrue(createRing(mapOf("waterway" to "dock")).isArea())
     }
 
-    private fun createWay(tags: Map<String, String>?): Way = OsmWay(0, 0, listOf(0L, 1L), tags)
-    private fun createRing(tags: Map<String, String>?): Way = OsmWay(0, 0, listOf(0L, 1L, 0L), tags)
+    private fun createWay(tags: Map<String, String>?) = way(nodes = listOf(0L, 1L), tags = tags)
+    private fun createRing(tags: Map<String, String>?) = way(nodes = listOf(0L, 1L, 0L), tags = tags)
 }

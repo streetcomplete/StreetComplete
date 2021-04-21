@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
-import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsDao
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.user.UserStore
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.on
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -56,7 +56,7 @@ class AchievementGiverTest {
     }
 
     @Test fun `unlocks QuestType achievement`() {
-        on(questStatisticsDao.getAmount(listOf("a","b"))).thenReturn(1)
+        on(questStatisticsDao.getAmount(listOf("a", "b"))).thenReturn(1)
 
         allAchievements.addAll(listOf(achievement("questsAbc", SolvedQuestsOfTypes(listOf("a","b")))))
 

@@ -12,7 +12,7 @@ class QuestStatisticsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: QuestStatisticsDao
 
     @Before fun createDao() {
-        dao = QuestStatisticsDao(dbHelper)
+        dao = QuestStatisticsDao(database)
     }
 
     @Test fun getZero() {
@@ -83,7 +83,7 @@ class QuestStatisticsDaoTest : ApplicationDbTestCase() {
         assertEquals(mapOf(
             ONE to 2,
             TWO to 1
-        ),dao.getAll())
+        ), dao.getAll())
     }
 }
 

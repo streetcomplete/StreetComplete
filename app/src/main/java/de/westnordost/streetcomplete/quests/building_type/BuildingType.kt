@@ -98,7 +98,7 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
         GARAGE, GARAGES, CARPORT, PARKING
     )),
     FOR_FARMS(null, listOf(
-        FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK
+        FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK, SHED
     )),
     OTHER(null, listOf(
         SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER, HISTORIC, ABANDONED, RUINS

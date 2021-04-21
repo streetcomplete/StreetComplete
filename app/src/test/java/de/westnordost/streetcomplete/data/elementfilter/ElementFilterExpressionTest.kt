@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.data.elementfilter
 import org.junit.Test
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
-import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.on
 
 import org.junit.Assert.*
 import java.util.*

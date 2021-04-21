@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.map
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.graphics.PointF
 import android.hardware.SensorManager
 import android.location.Location
 import android.location.LocationManager
@@ -11,18 +10,11 @@ import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
-import com.mapzen.tangram.MapController
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.getBitmapDrawable
-import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.map.tangram.Marker
-import de.westnordost.streetcomplete.util.EARTH_CIRCUMFERENCE
+import de.westnordost.streetcomplete.map.components.CurrentLocationMapComponent
 import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.pow
 
 /** Manages a map that shows the device's GPS location and orientation as markers on the map with
  *  the option to let the screen follow the location and rotation */
@@ -31,25 +23,10 @@ open class LocationAwareMapFragment : MapFragment() {
     private lateinit var compass: Compass
     private lateinit var locationManager: FineLocationManager
 
-    // markers showing the user's location, direction and accuracy of location
-    protected var locationMarker: Marker? = null
-    private set
-    protected var accuracyMarker: Marker? = null
-    private set
-    protected var directionMarker: Marker? = null
-    private set
+    private var locationMapComponent: CurrentLocationMapComponent? = null
 
-    /** The location of the GPS location dot on the map. Null if none (yet) */
     var displayedLocation: Location? = null
-        private set
-
-    /** Whether the view rotation is displayed on the map. False if the device orientation is unknown (yet) */
-    var isShowingDirection = false
-        private set
-
-    private var directionMarkerSize: PointF? = null
-
-    private val displayedPosition: LatLon? get() = displayedLocation?.let { OsmLatLon(it.latitude, it.longitude) }
+    private var compassRotation: Double? = null
 
     /** Whether the view should automatically center on the GPS location */
     var isFollowingPosition = false
@@ -91,145 +68,48 @@ open class LocationAwareMapFragment : MapFragment() {
             context.getSystemService<WindowManager>()!!.defaultDisplay,
             this::onCompassRotationChanged
         )
-        locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!, this::onLocationChanged)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        compass.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        compass.onPause()
-        saveMapState()
+        lifecycle.addObserver(compass)
+        locationManager = FineLocationManager(
+            context.getSystemService<LocationManager>()!!,
+            this::onLocationChanged
+        )
     }
 
     override fun onStop() {
         super.onStop()
+        saveMapState()
         stopPositionTracking()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        compass.onDestroy()
-        controller = null
-        locationMarker = null
-        directionMarker = null
-        accuracyMarker = null
     }
 
     /* ---------------------------------- Map State Callbacks ----------------------------------- */
 
-    override fun onMapReady() {
+    override suspend fun onMapReady() {
         super.onMapReady()
         restoreMapState()
-        initMarkers()
+
+        val ctrl = controller ?: return
+        val ctx = context ?: return
+        locationMapComponent = CurrentLocationMapComponent(ctx, ctrl)
+        locationMapComponent?.location = displayedLocation
+
         centerCurrentPositionIfFollowing()
-        showLocation()
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
         super.onMapIsChanging(position, rotation, tilt, zoom)
-        updateAccuracy()
-    }
-
-    /* ---------------------------------------- Markers ----------------------------------------- */
-
-    private fun initMarkers() {
-        locationMarker = createLocationMarker()
-        directionMarker = createDirectionMarker()
-        accuracyMarker = createAccuracyMarker()
-    }
-
-    private fun createLocationMarker(): Marker? {
-        val ctx = context ?: return null
-
-        val dot = ctx.resources.getBitmapDrawable(R.drawable.location_dot)
-        val dotWidth = dot.intrinsicWidth.toFloat().toDp(ctx)
-        val dotHeight = dot.intrinsicHeight.toFloat().toDp(ctx)
-
-        val marker = controller?.addMarker() ?: return null
-        marker.setStylingFromString(
-            "{ style: 'points', color: 'white', size: [${dotWidth}px, ${dotHeight}px], order: 2000, flat: true, collide: false, interactive: true }"
-        )
-        marker.setDrawable(dot)
-        marker.setDrawOrder(9)
-        return marker
-    }
-
-    private fun createDirectionMarker(): Marker? {
-        val ctx = context ?: return null
-
-        val directionImg = ctx.resources.getBitmapDrawable(R.drawable.location_direction)
-        directionMarkerSize = PointF(
-            directionImg.intrinsicWidth.toFloat().toDp(ctx),
-            directionImg.intrinsicHeight.toFloat().toDp(ctx)
-        )
-
-        val marker = controller?.addMarker() ?: return null
-        marker.setDrawable(directionImg)
-        marker.setDrawOrder(2)
-        return marker
-    }
-
-    private fun createAccuracyMarker(): Marker? {
-        val ctx = context ?: return null
-        val accuracyImg = ctx.resources.getBitmapDrawable(R.drawable.accuracy_circle)
-
-        val marker = controller?.addMarker() ?: return null
-        marker.setDrawable(accuracyImg)
-        marker.setDrawOrder(1)
-        return marker
-    }
-
-    private fun showLocation() {
-        val pos = displayedPosition ?: return
-
-        accuracyMarker?.isVisible = true
-        accuracyMarker?.setPointEased(pos, 1000, MapController.EaseType.CUBIC)
-        locationMarker?.isVisible = true
-        locationMarker?.setPointEased(pos, 1000, MapController.EaseType.CUBIC)
-        directionMarker?.isVisible = isShowingDirection
-        directionMarker?.setPointEased(pos, 1000, MapController.EaseType.CUBIC)
-
-        updateAccuracy()
-    }
-
-    private fun updateAccuracy() {
-        val location = displayedLocation ?: return
-        if (accuracyMarker?.isVisible != true) return
-
-        val zoom = controller!!.cameraPosition.zoom
-        val size = location.accuracy * pixelsPerMeter(location.latitude, zoom)
-        accuracyMarker?.setStylingFromString(
-            "{ style: 'points', color: 'white', size: ${size}px, order: 2000, flat: true, collide: false }"
-        )
-    }
-
-    private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {
-        val numberOfTiles = (2.0).pow(zoom.toDouble())
-        val metersPerTile = cos(latitude * PI / 180.0) * EARTH_CIRCUMFERENCE / numberOfTiles
-        return 256 / metersPerTile
+        locationMapComponent?.currentMapZoom = zoom
     }
 
     /* --------------------------------- Position tracking -------------------------------------- */
 
     @SuppressLint("MissingPermission")
     fun startPositionTracking() {
-        zoomedYet = false
-        displayedLocation = null
+        locationMapComponent?.isVisible = true
         locationManager.requestUpdates(2000, 5f)
     }
 
     fun stopPositionTracking() {
-        locationMarker?.isVisible = false
-        accuracyMarker?.isVisible = false
-        directionMarker?.isVisible = false
-
-        displayedLocation = null
-        zoomedYet = false
-
+        locationMapComponent?.isVisible = false
         locationManager.removeUpdates()
     }
 
@@ -239,7 +119,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
     fun centerCurrentPosition() {
         val controller = controller ?: return
-        val targetPosition = displayedPosition ?: return
+        val targetPosition = displayedLocation?.let { OsmLatLon(it.latitude, it.longitude) } ?: return
         controller.updateCameraPosition(600) {
             position = targetPosition
             if (!zoomedYet) {
@@ -254,9 +134,9 @@ open class LocationAwareMapFragment : MapFragment() {
     }
 
     private fun onLocationChanged(location: Location) {
-        displayedLocation = location
+        this.displayedLocation = location
+        locationMapComponent?.location = location
         compass.setLocation(location)
-        showLocation()
         centerCurrentPositionIfFollowing()
         listener?.onLocationDidChange()
     }
@@ -264,20 +144,8 @@ open class LocationAwareMapFragment : MapFragment() {
     /* --------------------------------- Rotation tracking -------------------------------------- */
 
     private fun onCompassRotationChanged(rot: Float, tilt: Float) {
-        // we received an event from the compass, so compass is working - direction can be displayed on screen
-        isShowingDirection = true
-        if (displayedLocation != null) {
-            directionMarker?.let {
-                if (!it.isVisible) it.isVisible = true
-                val angle = rot * 180 / PI
-                val size = directionMarkerSize
-                if (size != null) {
-                    it.setStylingFromString(
-                        "{ style: 'points', color: '#cc536dfe', size: [${size.x}px, ${size.y}px], order: 2000, collide: false, flat: true, angle: $angle}"
-                    )
-                }
-            }
-        }
+        compassRotation = rot * 180 / PI
+        locationMapComponent?.rotation = compassRotation
 
         if (isCompassMode) {
             viewDirection =

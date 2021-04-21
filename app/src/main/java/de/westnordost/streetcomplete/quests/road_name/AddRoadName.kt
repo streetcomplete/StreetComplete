@@ -1,23 +1,15 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ALL_PATHS
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.LocalizedName
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionEntry
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.quests.road_name.data.toRoadNameByLanguage
 
-class AddRoadName(
-    private val roadNameSuggestionsDao: RoadNameSuggestionsDao
-) : OsmElementQuestType<RoadNameAnswer> {
+class AddRoadName : OsmElementQuestType<RoadNameAnswer> {
 
     private val filter by lazy { """
         ways with
@@ -31,12 +23,6 @@ class AddRoadName(
             access !~ private|no
             or foot and foot !~ private|no
           )
-    """.toElementFilterExpression() }
-
-    private val roadsWithNamesFilter by lazy { """
-        ways with
-          highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-          and name
     """.toElementFilterExpression() }
 
     override val enabledInCountries = AllCountriesExcept("JP")
@@ -53,24 +39,10 @@ class AddRoadName(
             R.string.quest_streetName_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        val roadsWithoutNames = mapData.ways.filter { filter.matches(it) }
-
-        if (roadsWithoutNames.isNotEmpty()) {
-            val roadsWithNames = mapData.ways
-                .filter { roadsWithNamesFilter.matches(it) }
-                .mapNotNull {
-                    val geometry = mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry
-                    val roadNamesByLanguage = it.tags?.toRoadNameByLanguage()
-                    if (geometry != null && roadNamesByLanguage != null) {
-                        RoadNameSuggestionEntry(it.id, roadNamesByLanguage, geometry.polylines.first())
-                    } else null
-                }
-            roadNameSuggestionsDao.putRoads(roadsWithNames)
-        }
-        return roadsWithoutNames
+        return mapData.ways.filter { filter.matches(it) }
     }
 
-    override fun isApplicableTo(element: Element) = filter.matches(element)
+    override fun isApplicableTo(element: Element): Boolean = filter.matches(element)
 
     override fun createForm() = AddRoadNameForm()
 
@@ -115,14 +87,6 @@ class AddRoadName(
             }
             changes.addOrModify(key, name)
         }
-        // these params are passed from the form only to update the road name suggestions so that
-        // newly input street names turn up in the suggestions as well
-        val roadNameByLanguage = answer.localizedNames.associate { it.languageTag to it.name }
-        roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, answer.wayGeometry)
-    }
-
-    override fun cleanMetadata() {
-        roadNameSuggestionsDao.cleanUp()
     }
 }
 

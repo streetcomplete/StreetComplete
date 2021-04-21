@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<de.westnordost.streetcomplete.view.SlidingRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:translationX="-100dp"
+    android:elevation="@dimen/speech_bubble_elevation">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/editHistoryList"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/row_edit_item" />
+
+</de.westnordost.streetcomplete.view.SlidingRelativeLayout>

@@ -13,17 +13,16 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.*
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
+import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.location.FineLocationManager
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -43,13 +42,15 @@ import javax.inject.Singleton
     private val prefs: SharedPreferences,
     private val userController: UserController,
     private val teamModeQuestFilter: TeamModeQuestFilter,
-    private val downloadedTilesDao: DownloadedTilesDao,
-) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+    private val downloadedTilesDao: DownloadedTilesDao
+) : LifecycleObserver {
 
     private var pos: LatLon? = null
 
     private var isConnected: Boolean = false
     private var isWifi: Boolean = false
+
+    private val lifecycleScope = CoroutineScope(SupervisorJob())
 
     // new location is known -> check if downloading makes sense now
     private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
@@ -73,9 +74,9 @@ import javax.inject.Singleton
     }
 
     // there are unsynced changes -> try uploading now
-    private val unsyncedChangesListener = object : UnsyncedChangesCountListener {
-        override fun onUnsyncedChangesCountIncreased() { triggerAutoUpload() }
-        override fun onUnsyncedChangesCountDecreased() {}
+    private val unsyncedChangesListener = object : UnsyncedChangesCountSource.Listener {
+        override fun onIncreased() { triggerAutoUpload() }
+        override fun onDecreased() {}
     }
 
     // on download finished, should recheck conditions for download
@@ -137,7 +138,7 @@ import javax.inject.Singleton
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         loginStatusSource.removeLoginStatusListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
-        coroutineContext.cancel()
+        lifecycleScope.cancel()
     }
 
     @SuppressLint("MissingPermission")
@@ -156,9 +157,9 @@ import javax.inject.Singleton
         if (!isConnected) return
         if (downloadController.isDownloadInProgress) return
 
-        Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude},${pos.longitude}")
+        Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
-        launch {
+        lifecycleScope.launch {
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
             val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
             if (downloadBoundingBox != null) {

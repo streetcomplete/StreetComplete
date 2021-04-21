@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.construction
 
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
 fun deleteTagsDescribingConstruction(changes: StringMapChangesBuilder) {
     changes.deleteIfExists("construction")

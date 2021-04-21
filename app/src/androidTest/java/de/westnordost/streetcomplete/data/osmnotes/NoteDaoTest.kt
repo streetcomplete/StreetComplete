@@ -12,10 +12,6 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestMapping
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 
 import org.junit.Assert.*
 
@@ -23,7 +19,7 @@ class NoteDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NoteDao
 
     @Before fun createDao() {
-        dao = NoteDao(dbHelper, NoteMapping(serializer))
+        dao = NoteDao(database, serializer)
     }
 
     @Test fun putGetNoClosedDate() {
@@ -59,26 +55,10 @@ class NoteDaoTest : ApplicationDbTestCase() {
         checkEqual(note, dbNote)
     }
 
-    @Test fun deleteUnreferenced() {
-        val note = createNote()
-        dao.put(note)
-        assertEquals(1, dao.deleteUnreferenced())
-        assertNull(dao.get(note.id))
-    }
-
-    @Test fun deleteUnreferencedButNothingIsUnreferenced() {
-        val note = createNote()
-        dao.put(note)
-        val noteMapping = NoteMapping(serializer)
-        val osmNoteQuestMapping = OsmNoteQuestMapping(serializer, OsmNoteQuestType(), noteMapping)
-        OsmNoteQuestDao(dbHelper, osmNoteQuestMapping).add(OsmNoteQuest(note, OsmNoteQuestType()))
-        assertEquals(0, dao.deleteUnreferenced())
-    }
-    
     @Test fun deleteButNothingIsThere() {
         assertFalse(dao.delete(1))
     }
-    
+
     @Test fun delete() {
         val note = createNote()
         dao.put(note)
@@ -87,11 +67,42 @@ class NoteDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAllPositions() {
-        dao.put(createNote(1, OsmLatLon(0.5, 0.5)))
-        dao.put(createNote(2, OsmLatLon(-0.5, 0.5)))
+        val thisIsIn = createNote(1, OsmLatLon(0.5, 0.5))
+        val thisIsOut = createNote(2, OsmLatLon(-0.5, 0.5))
+        dao.putAll(listOf(thisIsIn, thisIsOut))
 
         val positions = dao.getAllPositions(BoundingBox(0.0, 0.0, 1.0, 1.0))
         assertEquals(OsmLatLon(0.5, 0.5), positions.single())
+    }
+
+    @Test fun getAllByBbox() {
+        val thisIsIn = createNote(1, OsmLatLon(0.5, 0.5))
+        val thisIsOut = createNote(2, OsmLatLon(-0.5, 0.5))
+        dao.putAll(listOf(thisIsIn, thisIsOut))
+
+        val notes = dao.getAll(BoundingBox(0.0, 0.0, 1.0, 1.0))
+        checkEqual(thisIsIn, notes.single())
+    }
+
+    @Test fun getAllByIds() {
+        val first = createNote(1)
+        val second = createNote(2)
+        val third = createNote(3)
+        dao.putAll(listOf(first, second, third))
+
+        val notes = dao.getAll(listOf(1,2))
+        assertEquals(2, notes.size)
+        checkEqual(first, notes[0])
+        checkEqual(second, notes[1])
+    }
+
+    @Test fun deleteAllByIds() {
+        dao.putAll(listOf(createNote(1), createNote(2), createNote(3)))
+
+        assertEquals(2, dao.deleteAll(listOf(1,2)))
+        assertNull(dao.get(1))
+        assertNull(dao.get(2))
+        assertNotNull(dao.get(3))
     }
 }
 

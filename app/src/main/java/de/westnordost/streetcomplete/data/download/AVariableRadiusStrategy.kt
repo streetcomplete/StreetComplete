@@ -24,9 +24,9 @@ abstract class AVariableRadiusStrategy(
     protected abstract val desiredQuestCountInVicinity: Int
 
     override fun getDownloadBoundingBox(pos: LatLon): BoundingBox? {
-        val tileZoom = ApplicationConstants.QUEST_TILE_ZOOM
+        val tileZoom = ApplicationConstants.DOWNLOAD_TILE_ZOOM
 
-        val thisTile = pos.enclosingTile(tileZoom)
+        val thisTile = pos.enclosingTilePos(tileZoom)
         val hasMissingQuestsForThisTile = hasMissingQuestsFor(thisTile.toTilesRect())
 
         // if at the location where we are, there is nothing yet, first download the tiniest
@@ -56,15 +56,15 @@ abstract class AVariableRadiusStrategy(
     /** return the quest density in quests per m² for this given [boundingBox]*/
     private fun getQuestDensityFor(boundingBox: BoundingBox): Double {
         val areaInKm = boundingBox.area()
-        val visibleQuestCount = visibleQuestsSource.getAllVisibleCount(boundingBox)
+        val visibleQuestCount = visibleQuestsSource.getCount(boundingBox)
         return visibleQuestCount / areaInKm
     }
 
     /** return if there are any quests in the given tiles rect that haven't been downloaded yet */
     private fun hasMissingQuestsFor(tilesRect: TilesRect): Boolean {
-        val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
+        val questExpirationTime = ApplicationConstants.REFRESH_DATA_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
-        return !downloadedTilesDao.get(tilesRect, ignoreOlderThan).contains(DownloadedTilesType.QUESTS)
+        return !downloadedTilesDao.get(tilesRect, ignoreOlderThan).contains(DownloadedTilesType.ALL)
     }
 
     companion object {

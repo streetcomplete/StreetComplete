@@ -14,14 +14,14 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import java.util.*
 import javax.inject.Inject
 
 class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer>() {
     @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
-    @Inject internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
+    @Inject internal lateinit var roadNameSuggestionsSource: RoadNameSuggestionsSource
 
     private var streetNameInput: EditText? = null
     private var placeNameInput: EditText? = null
@@ -58,7 +58,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         if (isPlaceName) return super.onClickMapAt(position, clickAreaSizeInMeters)
 
         val dist = clickAreaSizeInMeters + 5
-        val namesByLocale = roadNameSuggestionsDao.getNames(listOf(position), dist).firstOrNull()
+        val namesByLocale = roadNameSuggestionsSource.getNames(listOf(position), dist).firstOrNull()
         if (namesByLocale != null) {
             // why using .keys.firstOrNull { Locale(it).language == XXX } instead of .containsKey(XXX):
             // ISO 639 is an unstable standard. For example, id == in. If the comparisons are made

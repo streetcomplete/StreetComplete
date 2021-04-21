@@ -14,10 +14,10 @@ open class UpdateNsiPresetsTask : DefaultTask() {
         val targetDir = targetDir ?: return
 
         val presetsFile = File("$targetDir/presets.json")
-        val presetsUrl = URL("https://raw.githubusercontent.com/osmlab/name-suggestion-index/main/dist/presets/nsi-id-presets.json")
+        val presetsUrl = URL("https://cdn.jsdelivr.net/npm/name-suggestion-index@5/dist/presets/nsi-id-presets.min.json")
         val nsiPresetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
         // NSI uses (atm) a slightly different format than the normal presets: The presets are in
-        // a sub-object called "presets
+        // a sub-object called "presets"
         val presets = nsiPresetsJson.obj("presets")!!
         // since we already read the JSON and it is so large, let's drop some properties that are
         // (currently) not used, to make it a bit smaller: icon, imageURL

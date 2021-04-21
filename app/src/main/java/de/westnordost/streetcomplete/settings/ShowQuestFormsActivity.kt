@@ -16,16 +16,15 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.fragment_show_quest_forms.*
 import kotlinx.android.synthetic.main.row_quest_display.view.*
 import kotlinx.android.synthetic.main.toolbar.*
-import java.util.*
 
 /** activity only used in debug, to show all the different forms for the different quests. */
 class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.Listener {
@@ -105,17 +104,15 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         val elementGeometry = ElementPolylinesGeometry(listOf(listOf(firstPos, secondPos)), centerPos)
 
         val quest = object : Quest {
-            override var id: Long? = 1L
-            override val center = firstPos
+            override val key = OsmQuestKey(element.type, element.id, questType::class.simpleName!!)
+            override val position = firstPos
             override val markerLocations = listOf<LatLon>(firstPos)
             override val geometry = elementGeometry
             override val type = questType
-            override var status = QuestStatus.NEW
-            override val lastUpdate = Date()
         }
 
         val f = questType.createForm()
-        val args = AbstractQuestAnswerFragment.createArguments(quest, QuestGroup.OSM, element, 0f, 0f)
+        val args = AbstractQuestAnswerFragment.createArguments(quest, element, 0f, 0f)
         if(f.arguments != null) {
             f.arguments!!.putAll(args)
         } else {
@@ -133,7 +130,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         }
     }
 
-    override fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any) {
+    override fun onAnsweredQuest(questKey: QuestKey, answer: Any) {
         val builder = StringMapChangesBuilder(mapOf())
         (currentQuestType as? OsmElementQuestType<Any>)?.applyAnswerTo(answer, builder)
         val tagging = builder.create().changes.joinToString("\n")
@@ -142,19 +139,19 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
             .show()
         popQuestForm()
     }
-    override fun onComposeNote(questId: Long, group: QuestGroup, questTitle: String) {
+    override fun onComposeNote(questKey: QuestKey, questTitle: String) {
         popQuestForm("Composing note")
     }
-    override fun onSplitWay(osmQuestId: Long) {
+    override fun onSplitWay(osmQuestKey: OsmQuestKey) {
         popQuestForm("Splitting way")
     }
-    override fun onSkippedQuest(questId: Long, group: QuestGroup) {
+    override fun onSkippedQuest(questKey: QuestKey) {
         popQuestForm("Skipping quest")
     }
-    override fun onDeleteElement(osmQuestId: Long, element: OsmElement) {
+    override fun onDeletePoiNode(osmQuestKey: OsmQuestKey) {
         popQuestForm("Deleting element")
     }
-    override fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>) {
+    override fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
         popQuestForm("Replacing shop element")
     }
 }

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.existence
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 import java.util.*
@@ -26,7 +26,6 @@ class CheckExistence(
             or amenity = telephone
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or amenity = public_bookcase
-            or birds_nest = stork
           )
           and (${lastChecked(2.0)})
         ) or (
@@ -35,16 +34,21 @@ class CheckExistence(
             or amenity = bench
             or amenity = waste_basket
             or amenity = post_box
+            or amenity = grit_bin
             or leisure = picnic_table
             or leisure = firepit
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
+            or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
+            or traffic_calming = table and !highway and !crossing
           )
           and (${lastChecked(4.0)})
         )) and access !~ no|private
     """.toElementFilterExpression()
     }
+    // traffic_calming = table is often used as a property of a crossing: we don't want the app
+    //    to delete the crossing if the table is not there anymore, so exclude that
     // postboxes are in 4 years category so that postbox collection times is asked instead more often
 
     private val nodesWaysFilter by lazy { """

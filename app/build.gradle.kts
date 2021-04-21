@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
         targetSdkVersion(30)
-        versionCode = 3102
-        versionName = "31.1"
+        versionCode = 3200
+        versionName = "32.0-alpha1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -90,12 +90,12 @@ configurations {
 
 dependencies {
     val kotlinVersion = "1.4.10"
-    val mockitoVersion = "2.28.2"
-    val kotlinxVersion = "1.3.8"
-    val daggerVersion = "2.14.1"
+    val mockitoVersion = "3.7.7"
+    val kotlinxVersion = "1.4.2"
+    val daggerVersion = "2.31.2"
 
     // tests
-    testImplementation("junit:junit:4.13.1")
+    testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:2.8.0")
@@ -110,14 +110,14 @@ dependencies {
     kapt("com.google.dagger:dagger-compiler:$daggerVersion")
 
     // Android stuff
-    implementation("com.google.android.material:material:1.2.1")
+    implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("androidx.annotation:annotation:1.1.0")
-    implementation("androidx.fragment:fragment-ktx:1.2.5")
+    implementation("androidx.annotation:annotation:1.2.0")
+    implementation("androidx.fragment:fragment-ktx:1.3.2")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.recyclerview:recyclerview:1.1.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.0")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
 
@@ -130,17 +130,17 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxVersion")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.4.0")
+    implementation("androidx.work:work-runtime:2.5.0")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:1.5")
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:2.1")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-map:1.4")
-    implementation("de.westnordost:osmapi-changesets:1.4")
-    implementation("de.westnordost:osmapi-notes:1.3")
-    implementation("de.westnordost:osmapi-user:1.3")
+    implementation("de.westnordost:osmapi-map:1.5")
+    implementation("de.westnordost:osmapi-changesets:1.6")
+    implementation("de.westnordost:osmapi-notes:1.4")
+    implementation("de.westnordost:osmapi-user:1.5")
     implementation("com.squareup.okhttp3:okhttp:3.12.12")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 
@@ -156,10 +156,10 @@ dependencies {
 
     // serialization
     implementation("com.esotericsoftware:kryo:4.0.2")
-    implementation("org.objenesis:objenesis:2.6")
+    implementation("org.objenesis:objenesis:3.1")
 
     // map and location
-    implementation("com.mapzen.tangram:tangram:0.16.0")
+    implementation("com.mapzen.tangram:tangram:0.16.1")
 
     // config files
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")

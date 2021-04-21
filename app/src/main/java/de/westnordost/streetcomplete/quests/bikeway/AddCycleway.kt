@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.bikeway
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
@@ -8,14 +8,13 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 import de.westnordost.streetcomplete.util.isNearAndAligned
@@ -111,14 +110,15 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        val tags = element.tags ?: return false
-        // can't determine for yet untagged roads by the tags alone because we need info about
-        // surrounding geometry, but for already tagged ones, we can!
-        if (!tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)) return null
+        if (!roadsFilter.matches(element)) return false
 
-        return roadsFilter.matches(element) &&
-               OLDER_THAN_4_YEARS.matches(element) &&
-               element.hasOnlyKnownCyclewayTags()
+        /* can't determine for yet untagged roads by the tags alone because we need info about
+           surrounding geometry */
+        if (untaggedRoadsFilter.matches(element)) return null
+
+        /* but if already tagged an old, we don't need to look at surrounding geometry to see if
+           it applicable or not */
+        return OLDER_THAN_4_YEARS.matches(element) && element.hasOnlyKnownCyclewayTags()
     }
 
     override fun createForm() = AddCyclewayForm()
@@ -157,7 +157,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
 
     /** Just add a sidewalk if we implicitly know from the answer that there is one */
     private fun applySidewalkAnswerTo(
-        cyclewayLeft: Cycleway?, cyclewayRight: Cycleway?, changes: StringMapChangesBuilder ) {
+        cyclewayLeft: Cycleway?, cyclewayRight: Cycleway?, changes: StringMapChangesBuilder) {
 
         /* only tag if we know the sidewalk value for both sides (because it is not possible in
            OSM to specify the sidewalk value only for one side. sidewalk:right/left=yes is not
@@ -172,7 +172,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
     }
 
     private fun applyCyclewayAnswerTo(cycleway: Cycleway, side: Side, dir: Int,
-                                      changes: StringMapChangesBuilder ) {
+                                      changes: StringMapChangesBuilder) {
         val directionValue = when {
             dir > 0 -> "yes"
             dir < 0 -> "-1"
@@ -228,6 +228,9 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             BUSWAY -> {
                 changes.addOrModify(cyclewayKey, "share_busway")
             }
+            SEPARATE -> {
+                changes.addOrModify(cyclewayKey, "separate")
+            }
             else -> {
                 throw IllegalArgumentException("Invalid cycleway")
             }
@@ -259,7 +262,6 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
         changes.deleteIfExists("$cyclewayKey:oneway")
         changes.deleteIfExists("$cyclewayKey:segregated")
         changes.deleteIfExists("sidewalk$sideVal:bicycle")
-
     }
 
     companion object {
@@ -272,7 +274,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
           - if already tagged, if not older than 8 years or if the cycleway tag uses some unknown value
         */
 
-        // streets what may have cycleway tagging
+        // streets that may have cycleway tagging
         private val roadsFilter by lazy { """
             ways with
               highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
@@ -345,6 +347,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             "opposite_track",        // + cycleway:left=track
             "opposite_share_busway", // + cycleway:left=share_busway
             "opposite",              // + cycleway:left=no
+            // treat "separate" as unknown because we do not want to let users check that again
             // ambiguous:
             "yes",   // unclear what type
             "left",  // unclear what type; wrong tagging scheme (sidewalk=left)

@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import de.westnordost.osmapi.map.data.OsmNode
-import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -42,12 +40,10 @@ class AddPitchSurfaceTest {
     }
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
-        assertTrue(questType.isApplicableTo(create(*pairs)))
+        assertTrue(questType.isApplicableTo(way(nodes = listOf(1,2,3), tags = mapOf(*pairs))))
     }
 
     private fun assertIsNotApplicable(vararg pairs: Pair<String, String>) {
-        assertFalse(questType.isApplicableTo(create(*pairs)))
+        assertFalse(questType.isApplicableTo(way(nodes = listOf(1,2,3), tags = mapOf(*pairs))))
     }
-
-    private fun create(vararg pairs: Pair<String, String>) = OsmWay(1L, 1, listOf(1,2,3), mapOf(*pairs))
 }

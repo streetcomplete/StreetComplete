@@ -1,32 +1,32 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.toYesNo
 
 class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
 
     private val crossingFilter by lazy { """
-        nodes with 
+        nodes with
           (
             highway = traffic_signals and crossing = traffic_signals and foot != no
             or highway = crossing and foot != no
           )
           and (
             !tactile_paving
+            or tactile_paving = unknown
             or tactile_paving = no and tactile_paving older today -4 years
-            or older today -8 years
+            or tactile_paving = yes and tactile_paving older today -8 years
           )
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
-        ways with 
+        ways with
           highway = cycleway and foot !~ yes|designated
           or highway and access ~ private|no
     """.toElementFilterExpression() }
@@ -48,7 +48,8 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
             .filter { crossingFilter.matches(it) && it.id !in excludedWayNodeIds }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!crossingFilter.matches(element)) false else null
 
     override fun createForm() = TactilePavingForm()
 

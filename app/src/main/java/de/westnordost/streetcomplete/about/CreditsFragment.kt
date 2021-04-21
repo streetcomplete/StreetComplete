@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
 import kotlinx.android.synthetic.main.fragment_credits.*
@@ -16,11 +17,10 @@ import kotlinx.coroutines.*
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
 /** Shows the credits of this app */
-class CreditsFragment : Fragment(R.layout.fragment_credits),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class CreditsFragment : Fragment(R.layout.fragment_credits) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        launch(Dispatchers.Main) {
+        lifecycleScope.launch {
             addContributorsTo(readMainContributors(), mainCredits)
             addContributorsTo(readProjectsContributors(), projectsCredits)
             addContributorsTo(readArtContributors(), artCredits)
@@ -46,11 +46,6 @@ class CreditsFragment : Fragment(R.layout.fragment_credits),
     override fun onStart() {
         super.onStart()
         activity?.setTitle(R.string.about_title_authors)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
     }
 
     private fun addContributorsTo(contributors: List<String>, view: ViewGroup) {
