@@ -85,7 +85,8 @@ import javax.inject.Singleton
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
 
             for (quest in quests) {
-                Log.d(TAG, "Created ${quest::class.simpleName!!} for ${quest.elementType.name}#${quest.elementId}")
+                val questTypeName = quest.type::class.simpleName!!
+                Log.d(TAG, "Created $questTypeName for ${quest.elementType.name}#${quest.elementId}")
             }
             val seconds = (currentTimeMillis() - time) / 1000.0
             Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
