@@ -102,10 +102,13 @@ import javax.inject.Singleton
                 if (member.type == Element.Type.WAY && mapData.getWay(member.ref) == null) {
                     missingWayIds.add(member.ref)
                 }
+                /* deliberately not recursively looking for relations of relations
+                   because that is also not how the OSM API works */
             }
         }
+
         val ways = wayDB.getAll(missingWayIds)
-        for (way in ways) {
+        for (way in mapData.ways + ways) {
             for (nodeId in way.nodeIds) {
                 if (mapData.getNode(nodeId) == null) {
                     missingNodeIds.add(nodeId)
