@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.police_type
 
-enum class PoliceType(val operator: String, val wikidata: String) {
+enum class PoliceType(val operatorName: String, val wikidata: String) {
     CARABINIERI("Arma dei Carabinieri", "Q54852"),
     POLIZIA_DI_STATO("Polizia di Stato", "Q897817"),
     GUARDIA_DI_FINANZA("Guardia di Finanza", "Q1552861"),

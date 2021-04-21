@@ -22,7 +22,7 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>() {
     override fun createForm() = AddPoliceTypeForm()
 
     override fun applyAnswerTo(answer: PoliceType, changes: StringMapChangesBuilder) {
-        changes.add("operator", answer.operator);
+        changes.add("operator", answer.operatorName);
         changes.addOrModify("operator:wikidata", answer.wikidata);
     }
 }
