@@ -367,6 +367,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
             val geometry = quest.geometry
             if (element is Way && geometry is ElementPolylinesGeometry) {
                 mapFragment?.pinMode = QuestsMapFragment.PinMode.NONE
+                mapFragment?.highlightElement(geometry)
                 showInBottomSheet(SplitWayFragment.create(osmQuestKey, element, geometry))
             }
         }
