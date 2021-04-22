@@ -75,6 +75,7 @@ import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAcces
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
 import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
 import de.westnordost.streetcomplete.quests.postbox_royal_cypher.AddPostboxRoyalCypher
+import de.westnordost.streetcomplete.quests.police_type.AddPoliceType
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier
 import de.westnordost.streetcomplete.quests.summit_register.AddSummitRegister
@@ -235,6 +236,7 @@ import javax.inject.Singleton
         AddPostboxRef(),
         AddWheelchairAccessToiletsPart(),
         AddBoardType(),
+        AddPoliceType(),
         AddPowerPolesMaterial(),
         AddCarWashType(),
         AddBenchStatusOnBusStop(),
