@@ -5,10 +5,11 @@ import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.PointF
 import android.graphics.RectF
-import android.os.Handler
-import android.os.Looper
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import com.mapzen.tangram.*
 import com.mapzen.tangram.networking.HttpHandler
 import com.mapzen.tangram.viewholder.GLSurfaceViewHolderFactory
@@ -17,12 +18,12 @@ import com.mapzen.tangram.viewholder.GLViewHolderFactory
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.util.*
+import kotlinx.coroutines.*
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 import kotlin.math.log10
 import kotlin.math.max
 import kotlin.math.min
@@ -38,7 +39,9 @@ import kotlin.math.pow
  *      <li>Use LatLon instead of LngLat</li>
  *  </ul>
  *  */
-class KtMapController(private val c: MapController, contentResolver: ContentResolver) {
+class KtMapController(private val c: MapController, contentResolver: ContentResolver):
+    LifecycleObserver {
+
     private val cameraManager = CameraManager(c, contentResolver)
     private val markerManager = MarkerManager(c)
     private val gestureManager = TouchGestureManager(c)
@@ -49,7 +52,8 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
     private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
     private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
 
-    private val mainHandler = Handler(Looper.getMainLooper())
+    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+
     private var mapChangingListener: MapChangingListener? = null
 
     private val flingAnimator: TimeAnimator = TimeAnimator()
@@ -97,8 +101,8 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
             override fun onViewComplete() { /* not interested*/ }
 
             override fun onRegionWillChange(animated: Boolean) {
-                // may not be called on ui thread, see https://github.com/tangrams/tangram-es/issues/2157
-                mainHandler.post {
+                // could be called not on the ui thread, see https://github.com/tangrams/tangram-es/issues/2157
+                lifecycleScope.launch {
                     calledOnMapIsChangingOnce = false
                     if (!cameraManager.isAnimating) {
                         mapChangingListener?.onMapWillChange()
@@ -108,14 +112,14 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
             }
 
             override fun onRegionIsChanging() {
-                mainHandler.post {
+                lifecycleScope.launch {
                     if (!cameraManager.isAnimating) mapChangingListener?.onMapIsChanging()
                     calledOnMapIsChangingOnce = true
                 }
             }
 
             override fun onRegionDidChange(animated: Boolean) {
-                mainHandler.post {
+                lifecycleScope.launch {
                     if (!cameraManager.isAnimating) {
                         if (!calledOnMapIsChangingOnce) mapChangingListener?.onMapIsChanging()
                         mapChangingListener?.onMapDidChange()
@@ -126,25 +130,32 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         })
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+        lifecycleScope.cancel()
+        cameraManager.cancelAllCameraAnimations()
+    }
+
     /* ----------------------------- Loading and Updating Scene --------------------------------- */
 
     suspend fun loadSceneFile(
         path: String,
         sceneUpdates: List<SceneUpdate>? = null
-    ): Int = suspendCoroutine { cont ->
+    ): Int = suspendCancellableCoroutine { cont ->
         markerManager.invalidateMarkers()
         val sceneId = c.loadSceneFileAsync(path, sceneUpdates)
         sceneUpdateContinuations[sceneId] = cont
+        cont.invokeOnCancellation { sceneUpdateContinuations.remove(sceneId) }
     }
 
     suspend fun loadSceneYaml(
         yaml: String,
         resourceRoot: String,
         sceneUpdates: List<SceneUpdate>? = null
-    ): Int = suspendCoroutine { cont ->
+    ): Int = suspendCancellableCoroutine { cont ->
         markerManager.invalidateMarkers()
         val sceneId = c.loadSceneYamlAsync(yaml, resourceRoot, sceneUpdates)
         sceneUpdateContinuations[sceneId] = cont
+        cont.invokeOnCancellation { sceneUpdateContinuations.remove(sceneId) }
     }
 
     /* ----------------------------------------- Camera ----------------------------------------- */
@@ -167,8 +178,6 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         update.zoom = camera.zoom
         updateCameraPosition(0L, defaultInterpolator, update)
     }
-
-    fun cancelAllCameraAnimations() = cameraManager.cancelAllCameraAnimations()
 
     var cameraType: MapController.CameraType
         set(value) { c.cameraType = value }
@@ -286,15 +295,17 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
 
     fun setPickRadius(radius: Float) = c.setPickRadius(radius)
 
-    suspend fun pickLabel(posX: Float, posY: Float): LabelPickResult? = suspendCoroutine { cont ->
+    suspend fun pickLabel(posX: Float, posY: Float): LabelPickResult? = suspendCancellableCoroutine { cont ->
         pickLabelContinuations.offer(cont)
+        cont.invokeOnCancellation { pickLabelContinuations.remove(cont) }
         c.pickLabel(posX, posY)
     }
 
     suspend fun pickMarker(posX: Float, posY: Float): MarkerPickResult? = markerManager.pickMarker(posX, posY)
 
-    suspend fun pickFeature(posX: Float, posY: Float): FeaturePickResult? = suspendCoroutine { cont ->
+    suspend fun pickFeature(posX: Float, posY: Float): FeaturePickResult? = suspendCancellableCoroutine { cont ->
         featurePickContinuations.offer(cont)
+        cont.invokeOnCancellation { featurePickContinuations.remove(cont) }
         c.pickFeature(posX, posY)
     }
 
@@ -327,7 +338,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
 
     /* ------------------------------------------ Misc ------------------------------------------ */
 
-    suspend fun captureFrame(waitForCompleteView: Boolean): Bitmap = suspendCoroutine { cont ->
+    suspend fun captureFrame(waitForCompleteView: Boolean): Bitmap = suspendCancellableCoroutine { cont ->
         c.captureFrame({ bitmap -> cont.resume(bitmap) }, waitForCompleteView)
     }
 
@@ -353,15 +364,14 @@ private fun SceneError.toException() =
 
 suspend fun MapView.initMap(
     httpHandler: HttpHandler? = null,
-    glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()) =
-
-    suspendCoroutine<KtMapController?> { cont ->
-        getMapAsync(MapView.MapReadyCallback { mapController ->
-            cont.resume(mapController?.let {
-                KtMapController(it, context.contentResolver)
-            })
-        }, glViewHolderFactory, httpHandler)
-    }
+    glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()
+) = suspendCancellableCoroutine<KtMapController?> { cont ->
+    getMapAsync({ mapController ->
+        cont.resume(mapController?.let {
+            KtMapController(it, context.contentResolver)
+        })
+    }, glViewHolderFactory, httpHandler)
+}
 
 interface MapChangingListener {
     fun onMapWillChange()

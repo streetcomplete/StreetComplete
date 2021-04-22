@@ -29,8 +29,7 @@ object Prefs {
 
     // not shown anywhere directly
     const val QUEST_ORDER = "quests.order"
-    const val QUEST_INVALIDATION = "quests.invalidation"
-    const val LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime"
+    const val LAST_EDIT_TIME = "changesets.lastChangeTime"
     const val MAP_LATITUDE = "map.latitude"
     const val MAP_LONGITUDE = "map.longitude"
     const val LAST_PICKED_PREFIX = "imageListLastPicked."
@@ -39,8 +38,8 @@ object Prefs {
     const val LAST_VERSION_DATA = "lastVersion_data"
     const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"
 
-    const val QUEST_SPRITES_VERSION = "TangramQuestSpriteSheet.version"
-    const val QUEST_SPRITES = "TangramQuestSpriteSheet.questSprites"
+    const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
+    const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"
 
     enum class Autosync {
         ON, WIFI, OFF

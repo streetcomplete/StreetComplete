@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
+import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
 import de.westnordost.osmapi.common.errors.OsmApiException
@@ -32,7 +33,7 @@ import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.notifications.Notification
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
@@ -47,6 +48,7 @@ import de.westnordost.streetcomplete.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(),
@@ -195,16 +197,15 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    private fun ensureLoggedIn() {
-        if (questAutoSyncer.isAllowedByPreference) {
-            if (!userController.isLoggedIn) {
-                // new users should not be immediately pestered to login after each change (#1446)
-                if (unsyncedChangesCountSource.count >= 3 && !dontShowRequestAuthorizationAgain) {
-                    RequestLoginDialog(this).show()
-                    dontShowRequestAuthorizationAgain = true
-                }
-            }
-        }
+    private suspend fun ensureLoggedIn() {
+        if (!questAutoSyncer.isAllowedByPreference) return
+        if (userController.isLoggedIn) return
+
+        // new users should not be immediately pestered to login after each change (#1446)
+        if (unsyncedChangesCountSource.getCount() < 3 || dontShowRequestAuthorizationAgain) return
+
+        RequestLoginDialog(this).show()
+        dontShowRequestAuthorizationAgain = true
     }
 
     private val isConnected: Boolean
@@ -281,11 +282,11 @@ class MainActivity : AppCompatActivity(),
     /* --------------------------------- MainFragment.Listener ---------------------------------- */
 
     override fun onQuestSolved(quest: Quest, source: String?) {
-        ensureLoggedIn()
+        lifecycleScope.launch { ensureLoggedIn() }
     }
 
     override fun onCreatedNote(screenPosition: Point) {
-        ensureLoggedIn()
+        lifecycleScope.launch { ensureLoggedIn() }
     }
 
     /* ------------------------------- TutorialFragment.Listener -------------------------------- */

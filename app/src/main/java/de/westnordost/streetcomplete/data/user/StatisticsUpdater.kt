@@ -19,7 +19,7 @@ class StatisticsUpdater @Inject constructor(
     private val statisticsDownloader: StatisticsDownloader,
     private val countryBoundaries: FutureTask<CountryBoundaries>,
     @Named("QuestAliases") private val questAliases: List<Pair<String, String>>
-){
+) {
     fun addOne(questType: String, position: LatLon) {
         updateDaysActive()
 

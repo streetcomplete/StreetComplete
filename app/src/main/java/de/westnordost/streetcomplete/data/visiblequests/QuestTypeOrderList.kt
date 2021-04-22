@@ -8,6 +8,7 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Singleton
 
 /** List of quest types with user-applied order */
@@ -17,6 +18,11 @@ import javax.inject.Singleton
 ) {
     /* Is a singleton because it has a in-memory cache that is synchronized with changes made on
        the DB */
+
+    interface Listener {
+        fun onUpdated()
+    }
+    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     private val orderLists: MutableList<MutableList<String>> by lazy { load() }
 
@@ -30,6 +36,7 @@ import javax.inject.Singleton
     @Synchronized fun apply(before: QuestType<*>, after: QuestType<*>) {
         applyOrderItem(before, after)
         save(orderLists)
+        onUpdated()
     }
 
     /** Sort given list by the user defined order  */
@@ -49,6 +56,7 @@ import javax.inject.Singleton
     @Synchronized fun clear() {
         orderLists.clear()
         save(orderLists)
+        onUpdated()
     }
 
     private fun load(): MutableList<MutableList<String>> {
@@ -62,8 +70,8 @@ import javax.inject.Singleton
     }
 
     private fun applyOrderItem(before: QuestType<*>, after: QuestType<*>) {
-        val beforeName = before.javaClass.simpleName
-        val afterName = after.javaClass.simpleName
+        val beforeName = before::class.simpleName!!
+        val afterName = after::class.simpleName!!
 
         // 1. remove after-item from the list it is in
         val afterList = findListThatContains(afterName)
@@ -101,6 +109,17 @@ import javax.inject.Singleton
 
     private fun findListThatContains(name: String): MutableList<String>? =
         orderLists.firstOrNull { it.contains(name) }
+
+    fun addListener(listener: Listener) {
+        listeners.add(listener)
+    }
+    fun removeListener(listener: Listener) {
+        listeners.remove(listener)
+    }
+
+    private fun onUpdated() {
+        listeners.forEach { it.onUpdated() }
+    }
 
     companion object {
         private const val DELIM1 = ";"

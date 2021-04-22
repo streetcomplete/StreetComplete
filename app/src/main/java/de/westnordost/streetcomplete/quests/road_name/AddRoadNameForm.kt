@@ -12,14 +12,13 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AddLocalizedNameAdapter
 import de.westnordost.streetcomplete.quests.LocalizedName
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import java.lang.IllegalStateException
 
 
@@ -31,7 +30,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     )
 
     @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
-    @Inject internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
+    @Inject internal lateinit var roadNameSuggestionsSource: RoadNameSuggestionsSource
 
     init {
         Injector.applicationComponent.inject(this)
@@ -50,7 +49,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
             is ElementPolygonsGeometry -> geom.polygons.first()
             is ElementPointGeometry -> listOf(geom.center)
         }
-        return roadNameSuggestionsDao.getNames(
+        return roadNameSuggestionsSource.getNames(
             listOf(polyline.first(), polyline.last()),
             MAX_DIST_FOR_ROAD_NAME_SUGGESTION
         )

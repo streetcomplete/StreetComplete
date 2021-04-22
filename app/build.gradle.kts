@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
         targetSdkVersion(30)
-        versionCode = 3104
-        versionName = "31.3"
+        versionCode = 3200
+        versionName = "32.0-alpha1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -90,9 +90,9 @@ configurations {
 
 dependencies {
     val kotlinVersion = "1.4.10"
-    val mockitoVersion = "2.28.2"
-    val kotlinxVersion = "1.3.8"
-    val daggerVersion = "2.14.1"
+    val mockitoVersion = "3.7.7"
+    val kotlinxVersion = "1.4.2"
+    val daggerVersion = "2.31.2"
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -137,10 +137,10 @@ dependencies {
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:2.1")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-map:1.4")
-    implementation("de.westnordost:osmapi-changesets:1.4")
-    implementation("de.westnordost:osmapi-notes:1.3")
-    implementation("de.westnordost:osmapi-user:1.3")
+    implementation("de.westnordost:osmapi-map:1.5")
+    implementation("de.westnordost:osmapi-changesets:1.6")
+    implementation("de.westnordost:osmapi-notes:1.4")
+    implementation("de.westnordost:osmapi-user:1.5")
     implementation("com.squareup.okhttp3:okhttp:3.12.12")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 

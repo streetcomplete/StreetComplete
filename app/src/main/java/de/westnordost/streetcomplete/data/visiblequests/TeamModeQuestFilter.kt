@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.quest.Quest
 import java.util.concurrent.CopyOnWriteArrayList
@@ -33,7 +33,7 @@ import javax.inject.Singleton
 
     private val Quest.stableId: Long get() = when(this) {
         is OsmQuest -> elementId
-        is OsmNoteQuest -> note.id
+        is OsmNoteQuest -> id!!
         else -> 0
     }
 

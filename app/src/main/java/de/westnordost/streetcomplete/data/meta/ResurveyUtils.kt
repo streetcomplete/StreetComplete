@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.meta
 
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*

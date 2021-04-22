@@ -5,24 +5,24 @@ import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.BounceInterpolator
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_tutorial.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /** Shows a short tutorial for first-time users */
 class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
-    private val mainHandler = Handler(Looper.getMainLooper())
     private var currentPage: Int = 0
 
     interface Listener {
@@ -63,11 +63,10 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
     override fun onDestroy() {
         super.onDestroy()
-        mainHandler.removeCallbacksAndMessages(null)
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
     }
 
-    private fun step1Transition() {
+    private fun step1Transition() = lifecycleScope.launch {
         val ctx = requireContext()
 
         updateIndicatorDots()
@@ -111,44 +110,50 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .withEndAction { tutorialStepIntro.visibility = View.GONE }
             .start()
 
+        delay(200)
+
+        // flashing GPS button appears
+        tutorialGpsButton.state = LocationState.SEARCHING
+        tutorialGpsButton.animate()
+            .alpha(1f)
+            .setDuration(200)
+            .start()
+
+        delay(400)
+
         // 2nd text fade in
         tutorialStepSolvingQuests.translationY = (-100f).toDp(ctx)
         tutorialStepSolvingQuests.animate()
             .withStartAction { tutorialStepSolvingQuests.visibility = View.VISIBLE }
-            .setStartDelay(400)
             .setDuration(300)
             .alpha(1f)
             .translationY(0f)
             .start()
 
-        // flashing GPS button appears
-        tutorialGpsButton.state = LocationState.SEARCHING
-        tutorialGpsButton.animate()
-            .setStartDelay(200)
-            .alpha(1f)
-            .setDuration(200)
-            .start()
 
-        mainHandler.postDelayed({
-            // ...and after a few seconds, stops flashing
-            tutorialGpsButton?.state = LocationState.UPDATING
+        delay(2400)
 
-            // quest pins fall into place
-            listOf(questPin1, questPin2, questPin3).forEachIndexed { index, pin ->
-                pin.translationY = (-200f).toDp(ctx)
-                pin.animate()
-                    .setStartDelay(1200L + index * 400L)
-                    .setInterpolator(BounceInterpolator())
-                    .setDuration(400)
-                    .translationY(0f)
-                    .alpha(1f)
-                    .start()
-            }
+        // ...and after a few seconds, stops flashing
+        tutorialGpsButton?.state = LocationState.UPDATING
 
-        }, 3000L)
+        delay(800)
+
+        // quest pins fall into place
+        listOf(questPin1, questPin2, questPin3).forEach { pin ->
+
+            delay(400)
+
+            pin.translationY = (-200f).toDp(ctx)
+            pin.animate()
+                .setInterpolator(BounceInterpolator())
+                .setDuration(400)
+                .translationY(0f)
+                .alpha(1f)
+                .start()
+        }
     }
 
-    private fun step2Transition() {
+    private fun step2Transition() = lifecycleScope.launch {
         val ctx = requireContext()
 
         updateIndicatorDots()
@@ -156,7 +161,6 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
         // 2nd text fade out
         tutorialStepSolvingQuests.animate()
-            .setStartDelay(0)
             .setDuration(300)
             .alpha(0f)
             .translationY(100f.toDp(ctx))
@@ -165,9 +169,11 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
         // 3rd text fade in
         tutorialStepStaySafe.translationY = (-100f).toDp(ctx)
+
+        delay(400)
+
         tutorialStepStaySafe.animate()
             .withStartAction { tutorialStepStaySafe.visibility = View.VISIBLE }
-            .setStartDelay(400)
             .setDuration(300)
             .alpha(1f)
             .translationY(0f)
@@ -176,25 +182,23 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         // quest pins fade out
         listOf(questPin1, questPin2, questPin3).forEach { pin ->
             pin.animate()
-                .setStartDelay(0)
                 .setInterpolator(AccelerateInterpolator())
                 .setDuration(300)
                 .alpha(0f)
                 .start()
         }
 
-        mainHandler.postDelayed({
-            // checkmark fades in and animates
+        delay(1400)
+        // checkmark fades in and animates
 
-            checkmarkView.animate()
-                .setDuration(600)
-                .alpha(1f)
-                .start()
+        checkmarkView.animate()
+            .setDuration(600)
+            .alpha(1f)
+            .start()
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                (checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
-            }
-        }, 1400L)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            (checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
+        }
     }
 
     private fun updateIndicatorDots() {

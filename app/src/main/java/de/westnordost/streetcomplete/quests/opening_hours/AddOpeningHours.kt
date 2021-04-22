@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules

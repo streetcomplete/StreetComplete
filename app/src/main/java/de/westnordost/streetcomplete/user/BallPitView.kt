@@ -24,10 +24,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.awaitPreDraw
 import de.westnordost.streetcomplete.ktx.sumByFloat
 import kotlinx.android.synthetic.main.view_ball_pit.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.jbox2d.collision.shapes.ChainShape
 import org.jbox2d.collision.shapes.CircleShape
 import org.jbox2d.common.Vec2
@@ -42,7 +39,6 @@ class BallPitView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr),
-    CoroutineScope by CoroutineScope(Dispatchers.Main),
     LifecycleObserver {
 
     private val sensorManager: SensorManager
@@ -56,6 +52,8 @@ class BallPitView @JvmOverloads constructor(
     private var isSceneSetup = false
 
     private val mainHandler = Handler(Looper.getMainLooper())
+
+    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private val sensorEventListener = object : SensorEventListener {
         override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) { }
@@ -105,7 +103,7 @@ class BallPitView @JvmOverloads constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         physicsController.destroy()
-        coroutineContext.cancel()
+        lifecycleScope.cancel()
     }
 
     fun setViews(viewsAndSizes: List<Pair<View, Int>>) {
@@ -115,7 +113,7 @@ class BallPitView @JvmOverloads constructor(
         }
 
         val areaInMeters = max(1f, viewsAndSizes.map { it.second }.sumByFloat { getBubbleArea(it) })
-        launch {
+        lifecycleScope.launch {
             setupScene(areaInMeters / BALLPIT_FILL_FACTOR)
             addBubblesToScene(viewsAndSizes)
         }

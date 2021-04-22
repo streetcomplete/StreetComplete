@@ -356,7 +356,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_fireHydrant_type_underground">Underground</string>
     <string name="quest_fireHydrant_type_wall">Wall</string>
     <string name="quest_fireHydrant_type_pond">Pond</string>
-    <string name="credits_contributors">"See the &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"See the &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
     <string name="credits_translations_title">Translations</string>
     <string name="credits_contributors_title">Code contributors</string>
@@ -373,7 +373,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
     <string name="action_undo">Undo</string>
-    <string name="undo_confirm_title">Undo the following last answer?</string>
+    <string name="undo_last">Undo last edit</string>
+    <string name="show_edit_history">Show edit history</string>
+    <string name="undo_confirm_title2">Undo the following edit?</string>
+    <string name="synced">Synced</string>
+    <string name="toast_undo_unavailable">This edit is already synced and cannot be undone</string>
     <string name="quest_orchard_produce_title">What is being cultivated here?</string>
     <string name="produce_grapes">Grapes</string>
     <string name="produce_agaves">Agaves</string>
@@ -493,12 +497,20 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side…</string>
     <string name="map_btn_create_note">Create new note</string>
+    <string name="created_note_action_title">Created note</string>
+    <string name="commented_note_action_title">Commented note</string>
+    <string name="hid_action_description">You hid it</string>
+    <string name="split_way_action_description">You split the way</string>
+    <string name="deleted_poi_action_description">You deleted it</string>
+    <string name="added_tag_action_title">Added %s</string>
+    <string name="removed_tag_action_title">Removed %s</string>
+    <string name="changed_tag_action_title">Updated to %s</string>
     <string name="create_new_note_unprecise">Zoom in further to create a note</string>
     <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map:</string>
-    <string name="pref_title_quests_invalidation">Invalidate quest cache</string>
-    <string name="pref_title_quests_invalidation_summary">Useful if you think that some quests are outdated</string>
-    <string name="invalidate_confirmation">Invalidate</string>
-    <string name="invalidation_dialog_message">Invalidating the cache causes the quests to be updated next time they are downloaded. The quest cache is invalidated automatically after one week and immediately when a quest you solved turns out to be already answered by someone else.</string>
+    <string name="pref_title_delete_cache">Delete cache</string>
+    <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
+    <string name="delete_confirmation">Delete</string>
+    <string name="delete_cache_dialog_message">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.</string>
     <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside.</string>
     <string name="quest_openingHours_no_sign">No opening hours sign</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
@@ -570,6 +582,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_postboxRoyalCypher_title">What is the royal cypher on this postbox?</string>
     <string name="quest_postboxRoyalCypher_type_none">No royal cypher is visible</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">The Crown of Scotland</string>
+    <string name="quest_policeType_title">Which type of police station is this?</string>
     <string name="quest_construction_road_title">Is this road completed?</string>
     <string name="quest_construction_cycleway_title">Is this cycleway completed?</string>
     <string name="quest_construction_footway_title">Is this footway completed?</string>
@@ -1014,9 +1027,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_height_restrictor">Height barrier</string>
     <string name="quest_barrier_full_height_turnstile">Full height turnstile</string>
     <string name="quest_barrier_type_turnstile">Turnstile</string>
-    <string name="quest_barrier_type_passage">Passage through wall/fence/etc</string>
+    <string name="quest_barrier_type_passage">Passage through wall/fence/etc.</string>
     <string name="quest_barrier_type_debris_pile">Pile of debris</string>
-    <string name="quest_barrier_type_stile_squeezer">Squeezer stile</string>
+    <string name="quest_barrier_type_stile_squeezer">Squeeze stile</string>
     <string name="quest_barrier_type_stile_ladder">Ladder stile</string>
     <string name="quest_barrier_type_bicycle_barrier">Bicycle barrier</string>
     <string name="quest_barrier_type_kissing_gate">Kissing gate</string>

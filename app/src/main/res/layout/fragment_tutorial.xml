@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="16dp"
-                android:src="@drawable/quest_pin"
+                android:src="@drawable/pin"
                 android:layout_gravity="right"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
@@ -99,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="16dp"
-                android:src="@drawable/quest_pin"
+                android:src="@drawable/pin"
                 android:layout_gravity="right"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="16dp"
-                android:src="@drawable/quest_pin"
+                android:src="@drawable/pin"
                 android:layout_gravity="right"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 

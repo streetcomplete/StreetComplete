@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 
 class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {

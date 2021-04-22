@@ -15,9 +15,4 @@ class SQLiteDatabaseKtTest : ApplicationDbTestCase() {
     @After fun tearDown() {
         dbHelper.writableDatabase.execSQL("DROP TABLE t")
     }
-
-    @Test fun hasColumn() {
-        assertFalse(dbHelper.writableDatabase.hasColumn("t", "c"))
-        assertTrue(dbHelper.writableDatabase.hasColumn("t", "a"))
-    }
 }

@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Node
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 
 class AddKerbHeight : OsmElementQuestType<KerbHeight> {
@@ -26,12 +26,11 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
     override fun createForm() = AddKerbHeightForm()
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        return mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }
-    }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if (element !is Node || !element.couldBeAKerb()) false
+        if (!eligibleKerbsFilter.matches(element) || element !is Node || !element.couldBeAKerb()) false
         else null
 
     override fun applyAnswerTo(answer: KerbHeight, changes: StringMapChangesBuilder) {

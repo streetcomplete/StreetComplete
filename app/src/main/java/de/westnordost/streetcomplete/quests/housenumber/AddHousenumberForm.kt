@@ -8,20 +8,17 @@ import android.text.method.DigitsKeyListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
-import androidx.core.content.getSystemService
 import androidx.core.view.isInvisible
-
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
-
 
 class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {
 
@@ -170,7 +167,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         })
         input.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             updateKeyboardButtonVisibility()
-            if (hasFocus) showKeyboard(input)
+            if (hasFocus) input.showKeyboard()
             val colors = houseNumberInputTextColors
             if (hasFocus && colors != null) {
                 input.text = null
@@ -209,23 +206,18 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
                 }
                 // for some reason, the cursor position gets lost first time the input type is set (#1093)
                 focus.setSelection(start, end)
-                showKeyboard(focus)
+                focus.showKeyboard()
             }
         }
         updateKeyboardButtonVisibility()
 
         val onFocusChange = View.OnFocusChangeListener { v, hasFocus ->
             updateKeyboardButtonVisibility()
-            if (hasFocus) showKeyboard(v)
+            if (hasFocus) v.showKeyboard()
         }
         houseNumberInput?.onFocusChangeListener = onFocusChange
         streetNumberInput?.onFocusChangeListener = onFocusChange
         blockNumberInput?.onFocusChangeListener = onFocusChange
-    }
-
-    private fun showKeyboard(focus: View) {
-        val imm = activity?.getSystemService<InputMethodManager>()
-        imm?.showSoftInput(focus, InputMethodManager.SHOW_IMPLICIT)
     }
 
     private fun updateKeyboardButtonVisibility() {

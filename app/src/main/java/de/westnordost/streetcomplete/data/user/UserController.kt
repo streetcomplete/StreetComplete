@@ -3,10 +3,11 @@ package de.westnordost.streetcomplete.data.user
 import android.util.Log
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.data.UserApi
-import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownloader
+import de.westnordost.streetcomplete.data.osmnotes.AvatarsDownloader
 import de.westnordost.streetcomplete.data.user.achievements.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import oauth.signpost.OAuthConsumer
 import java.util.concurrent.CopyOnWriteArrayList
@@ -20,14 +21,16 @@ import javax.inject.Singleton
     private val userStore: UserStore,
     private val userAchievementsDao: UserAchievementsDao,
     private val userLinksDao: UserLinksDao,
-    private val avatarsDownloader: OsmAvatarsDownloader,
+    private val avatarsDownloader: AvatarsDownloader,
     private val statisticsUpdater: StatisticsUpdater,
     private val statisticsDao: QuestStatisticsDao,
     private val countryStatisticsDao: CountryStatisticsDao,
     private val osmConnection: OsmConnection
-): CoroutineScope by CoroutineScope(Dispatchers.Default), LoginStatusSource, UserAvatarUpdateSource {
+): LoginStatusSource, UserAvatarUpdateSource {
     private val loginStatusListeners: MutableList<UserLoginStatusListener> = CopyOnWriteArrayList()
     private val userAvatarListeners: MutableList<UserAvatarListener> = CopyOnWriteArrayList()
+
+    private val scope = CoroutineScope(SupervisorJob())
 
     override val isLoggedIn: Boolean get() = oAuthStore.isAuthorized
 
@@ -50,7 +53,7 @@ import javax.inject.Singleton
         loginStatusListeners.forEach { it.onLoggedOut() }
     }
 
-    fun updateUser() = launch(Dispatchers.IO) {
+    fun updateUser() = scope.launch(Dispatchers.IO) {
         try {
             val userDetails = userApi.getMine()
 
@@ -66,12 +69,12 @@ import javax.inject.Singleton
         }
     }
 
-    private fun updateAvatar(userId: Long, imageUrl: String) = launch(Dispatchers.IO) {
+    private fun updateAvatar(userId: Long, imageUrl: String) = scope.launch(Dispatchers.IO) {
         avatarsDownloader.download(userId, imageUrl)
         userAvatarListeners.forEach { it.onUserAvatarUpdated() }
     }
 
-    private fun updateStatistics(userId: Long) = launch(Dispatchers.IO) {
+    private fun updateStatistics(userId: Long) = scope.launch(Dispatchers.IO) {
         statisticsUpdater.updateFromBackend(userId)
     }
 

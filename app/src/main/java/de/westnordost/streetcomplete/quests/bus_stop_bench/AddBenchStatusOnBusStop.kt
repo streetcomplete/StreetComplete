@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.bus_stop_bench
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 

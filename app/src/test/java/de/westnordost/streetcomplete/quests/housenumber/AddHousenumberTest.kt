@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.testutils.*
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -15,68 +16,77 @@ class AddHousenumberTest {
     private val questType = AddHousenumber()
 
     @Test fun `does not create quest for generic building`() {
-        val mapData = createMapData(mapOf(
-            OsmWay(1L, 1, NODES1, mapOf("building" to "yes")) to POSITIONS1
-        ))
+        val building = way(1L, NODES1, mapOf("building" to "yes"))
+        val mapData = createMapData(mapOf(building to POSITIONS1))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(false, questType.isApplicableTo(building))
     }
 
     @Test fun `does not create quest for building with address`() {
-        val mapData = createMapData(mapOf(
-            OsmWay(1L, 1, NODES1, mapOf(
-                "building" to "detached",
-                "addr:housenumber" to "123"
-            )) to POSITIONS1
+        val building = way(1L, NODES1, mapOf(
+            "building" to "detached",
+            "addr:housenumber" to "123"
         ))
+        val mapData = createMapData(mapOf(building to POSITIONS1))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(false, questType.isApplicableTo(building))
     }
 
     @Test fun `does create quest for building without address`() {
-        val mapData = createMapData(mapOf(
-            OsmWay(1L, 1, NODES1, mapOf(
-                "building" to "detached"
-            )) to POSITIONS1
+        val building = way(1L, NODES1, mapOf(
+            "building" to "detached"
         ))
+        val mapData = createMapData(mapOf(building to POSITIONS1))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(building))
     }
 
     @Test fun `does not create quest for building with address node on outline`() {
+        val building = way(1, NODES1, mapOf(
+            "building" to "detached"
+        ))
+        val addr = node(2, P2, mapOf(
+            "addr:housenumber" to "123"
+        ))
         val mapData = createMapData(mapOf(
-            OsmWay(1L, 1, NODES1, mapOf(
-                "building" to "detached"
-            )) to POSITIONS1,
-            OsmNode(2L, 1, P2, mapOf(
-                "addr:housenumber" to "123"
-            )) to ElementPointGeometry(P2)
+            building to POSITIONS1,
+            addr to ElementPointGeometry(P2)
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(building))
     }
 
     @Test fun `does not create quest for building that is part of a relation with an address`() {
+        val building = way(1, NODES1, mapOf(
+            "building" to "detached"
+        ))
+        val relationWithAddr = rel(
+            members = listOf(member(Element.Type.WAY, 1)),
+            tags =  mapOf("addr:housenumber" to "123")
+        )
+
         val mapData = createMapData(mapOf(
-            OsmWay(1L, 1, NODES1, mapOf(
-                "building" to "detached"
-            )) to POSITIONS1,
-            OsmRelation(2L, 1, listOf(
-                OsmRelationMember(1L, "something", Element.Type.WAY)
-            ), mapOf(
-                "addr:housenumber" to "123"
-            )) to ElementPointGeometry(P2)
+            building to POSITIONS1,
+            relationWithAddr to ElementPointGeometry(P2)
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(building))
     }
 
     @Test fun `does not create quest for building that is inside an area with an address`() {
+        val building = way(1L, NODES1, mapOf(
+            "building" to "detached"
+        ))
+        val areaWithAddr = way(1L, NODES2, mapOf(
+            "addr:housenumber" to "123",
+            "amenity" to "school",
+        ))
         val mapData = createMapData(mapOf(
-            OsmWay(1L, 1, NODES1, mapOf(
-                "building" to "detached"
-            )) to POSITIONS1,
-            OsmWay(1L, 1, NODES2, mapOf(
-                "addr:housenumber" to "123",
-                "amenity" to "school",
-            )) to POSITIONS2,
+            building to POSITIONS1,
+            areaWithAddr to POSITIONS2,
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(building))
     }
 
     @Test fun `does not create quest for building that is inside an area with an address on its outline`() {
@@ -95,24 +105,29 @@ class AddHousenumberTest {
     }
 
     @Test fun `does not create quest for building that contains an address node`() {
+        val building = way(1L, NODES1, mapOf(
+            "building" to "detached"
+        ))
+        val addr = node(1L, PC, mapOf(
+            "addr:housenumber" to "123"
+        ))
         val mapData = createMapData(mapOf(
-            OsmWay(1L, 1, NODES1, mapOf(
-                "building" to "detached"
-            )) to POSITIONS1,
-            OsmNode(1L, 1, PC, mapOf(
-                "addr:housenumber" to "123"
-            )) to ElementPointGeometry(PC),
+            building to POSITIONS1,
+            addr to ElementPointGeometry(PC),
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(building))
     }
 
     @Test fun `does not create quest for building that intersects bounding box`() {
+        val building = way(1L, NODES1, mapOf(
+            "building" to "detached"
+        ))
         val mapData = createMapData(mapOf(
-            OsmWay(1L, 1, NODES1, mapOf(
-                "building" to "detached"
-            )) to ElementPolygonsGeometry(listOf(listOf(P1, P2, PO, P4, P1)), PC)
+            building to ElementPolygonsGeometry(listOf(listOf(P1, P2, PO, P4, P1)), PC)
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(building))
     }
 
     @Test fun `housenumber regex`() {
@@ -193,18 +208,18 @@ class AddHousenumberTest {
     }
 }
 
-private val P1 = OsmLatLon(0.25,0.25)
-private val P2 = OsmLatLon(0.25,0.75)
-private val P3 = OsmLatLon(0.75,0.75)
-private val P4 = OsmLatLon(0.75,0.25)
+private val P1 = p(0.25,0.25)
+private val P2 = p(0.25,0.75)
+private val P3 = p(0.75,0.75)
+private val P4 = p(0.75,0.25)
 
-private val P5 = OsmLatLon(0.1,0.1)
-private val P6 = OsmLatLon(0.1,0.9)
-private val P7 = OsmLatLon(0.9,0.9)
-private val P8 = OsmLatLon(0.9,0.1)
+private val P5 = p(0.1,0.1)
+private val P6 = p(0.1,0.9)
+private val P7 = p(0.9,0.9)
+private val P8 = p(0.9,0.1)
 
-private val PO = OsmLatLon(1.5, 1.5)
-private val PC = OsmLatLon(0.5,0.5)
+private val PO = p(1.5, 1.5)
+private val PC = p(0.5,0.5)
 
 private val NODES1 = listOf<Long>(1,2,3,4,1)
 private val NODES2 = listOf<Long>(5,6,7,8,5)
@@ -224,6 +239,6 @@ private fun createMapData(elements: Map<Element, ElementGeometry?>): TestMapData
                 result.relationGeometriesById[element.id] = geometry
         }
     }
-    result.handle(BoundingBox(0.0, 0.0, 1.0, 1.0))
+    result.handle(bbox())
     return result
 }

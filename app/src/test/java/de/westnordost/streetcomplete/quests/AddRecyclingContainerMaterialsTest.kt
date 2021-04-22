@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingContainerMaterials
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterials
 import de.westnordost.streetcomplete.quests.recycling_material.IsWasteContainer
@@ -21,7 +21,7 @@ class AddRecyclingContainerMaterialsTest {
 
     @Test fun `applicable to container without recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container"
             ))
@@ -31,7 +31,7 @@ class AddRecyclingContainerMaterialsTest {
 
     @Test fun `not applicable to container with recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container",
                 "recycling:something" to "yes"
@@ -42,39 +42,39 @@ class AddRecyclingContainerMaterialsTest {
 
     @Test fun `applicable to container with old recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container",
                 "check_date:recycling" to "2001-01-01",
                 "recycling:plastic_packaging" to "yes",
                 "recycling:something_else" to "no"
-            ), null, Date())
+            ), date = Date())
         ))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to container with old but unknown recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container",
                 "check_date:recycling" to "2001-01-01",
                 "recycling:something_else" to "yes"
-            ), null, Date())
+            ), date = Date())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to container without recycling materials close to another container`() {
-        val pos1 = OsmLatLon(0.0,0.0)
+        val pos1 = p(0.0,0.0)
         val pos2 = pos1.translate(19.0, 45.0)
 
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, pos1, mapOf(
+            node(id = 1, pos = pos1, tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container"
             )),
-            OsmNode(2L, 1, pos2, mapOf(
+            node(id = 2, pos = pos2, tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container"
             ))
@@ -83,15 +83,15 @@ class AddRecyclingContainerMaterialsTest {
     }
 
     @Test fun `applicable to container without recycling materials not too close to another container`() {
-        val pos1 = OsmLatLon(0.0,0.0)
+        val pos1 = p(0.0,0.0)
         val pos2 = pos1.translate(21.0, 45.0)
 
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, pos1, mapOf(
+            node(id = 1, pos = pos1, tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container"
             )),
-            OsmNode(2L, 1, pos2, mapOf(
+            node(id = 2, pos = pos2, tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container",
                 "recycling:paper" to "yes"

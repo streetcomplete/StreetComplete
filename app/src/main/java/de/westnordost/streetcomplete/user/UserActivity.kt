@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.FragmentContainerActivity
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -12,9 +13,6 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,21 +23,24 @@ import javax.inject.Inject
  *  fragments) and the "fake" dialogs AchievementInfoFragment and QuestTypeInfoFragment.
  * */
 class UserActivity : FragmentContainerActivity(R.layout.activity_user),
-    CoroutineScope by CoroutineScope(Dispatchers.Main),
     AchievementsFragment.Listener,
-    QuestStatisticsFragment.Listener,
-    UserLoginStatusListener {
+    QuestStatisticsFragment.Listener {
 
     @Inject internal lateinit var loginStatusSource: LoginStatusSource
 
-    private val countryDetailsFragment: CountryInfoFragment?
-        get() = supportFragmentManager.findFragmentById(R.id.countryDetailsFragment) as CountryInfoFragment
+    private val countryDetailsFragment get() =
+        supportFragmentManager.findFragmentById(R.id.countryDetailsFragment) as CountryInfoFragment?
 
-    private val questTypeDetailsFragment: QuestTypeInfoFragment?
-        get() = supportFragmentManager.findFragmentById(R.id.questTypeDetailsFragment) as QuestTypeInfoFragment
+    private val questTypeDetailsFragment get() =
+        supportFragmentManager.findFragmentById(R.id.questTypeDetailsFragment) as QuestTypeInfoFragment?
 
-    private val achievementDetailsFragment: AchievementInfoFragment?
-        get() = supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment
+    private val achievementDetailsFragment get() =
+        supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment?
+
+    private val loginStatusListener = object : UserLoginStatusListener {
+        override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragment(UserFragment()) }}
+        override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragment(LoginFragment()) }}
+    }
 
     init {
         Injector.applicationComponent.inject(this)
@@ -56,7 +57,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
                 else -> LoginFragment.create()
             }
         }
-        loginStatusSource.addLoginStatusListener(this)
+        loginStatusSource.addLoginStatusListener(loginStatusListener)
     }
 
     override fun onBackPressed() {
@@ -80,22 +81,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
 
     override fun onDestroy() {
         super.onDestroy()
-        loginStatusSource.removeLoginStatusListener(this)
-        coroutineContext.cancel()
-    }
-
-    /* -------------------------------- UserLoginStatusListener --------------------------------- */
-
-    override fun onLoggedIn() {
-        launch(Dispatchers.Main) {
-            replaceMainFragment(UserFragment())
-        }
-    }
-
-    override fun onLoggedOut() {
-        launch(Dispatchers.Main) {
-            replaceMainFragment(LoginFragment())
-        }
+        loginStatusSource.removeLoginStatusListener(loginStatusListener)
     }
 
     /* ---------------------------- AchievementsFragment.Listener ------------------------------- */

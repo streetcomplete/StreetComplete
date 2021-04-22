@@ -1,0 +1,108 @@
+package de.westnordost.streetcomplete.data.osm.osmquests
+
+import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import org.junit.Assert.*
+import org.junit.Before
+import org.junit.Test
+
+class OsmQuestDaoTest : ApplicationDbTestCase() {
+    private lateinit var dao: OsmQuestDao
+
+    @Before fun createDao() {
+        dao = OsmQuestDao(database)
+    }
+
+    @Test fun addGet() {
+        val q = entry(Element.Type.NODE, 123L, "a")
+        val key = q.key
+        assertNull(dao.get(key))
+        dao.put(q)
+        assertEquals(q, dao.get(key))
+    }
+
+    @Test fun delete() {
+        val q = entry()
+        assertFalse(dao.delete(q.key))
+        dao.put(q)
+        assertTrue(dao.delete(q.key))
+        assertNull(dao.get(q.key))
+    }
+
+    @Test fun deleteAll() {
+        val q1 = entry(questTypeName = "a")
+        val q2 = entry(questTypeName = "b")
+        val q3 = entry(questTypeName = "c")
+        dao.putAll(listOf(q1, q2, q3))
+        dao.deleteAll(listOf(q1.key, q2.key))
+
+        assertNull(dao.get(q1.key))
+        assertNull(dao.get(q2.key))
+        assertEquals(q3, dao.get(q3.key))
+    }
+
+    @Test fun getAllForElement() {
+        val q1 = entry(Element.Type.NODE, 0, "a")
+        val q2 = entry(Element.Type.NODE, 0, "b")
+
+        dao.putAll(listOf(
+            q1, q2,
+            entry(Element.Type.WAY, 0L, "a"),
+            entry(Element.Type.NODE, 1L, "a")
+        ))
+        assertTrue(dao.getAllForElement(Element.Type.NODE, 0L).containsExactlyInAnyOrder(listOf(q1,q2)))
+    }
+
+    @Test fun getAllInBBox() {
+        // in
+        val q1 = entry(elementId = 0, pos = p(0.0,0.0))
+        val q2 = entry(elementId = 1, pos = p(1.0,1.0))
+        val q3 = entry(elementId = 2, pos = p(0.5,0.5))
+
+        dao.putAll(listOf(
+            q1, q2, q3,
+            // in but wrong quest type
+            entry(elementId = 3, questTypeName = "b", pos = p(0.5,0.5)),
+            // out
+            entry(elementId = 4, pos = p(-0.5,0.5)),
+            entry(elementId = 5, pos = p(0.5,-0.5)),
+            entry(elementId = 6, pos = p(0.5,1.5)),
+            entry(elementId = 7, pos = p(1.5,0.5)),
+        ))
+
+        assertTrue(dao.getAllInBBox(
+            BoundingBox(0.0,0.0,1.0,1.0),
+            listOf("a")
+        ).containsExactlyInAnyOrder(listOf(q1,q2,q3)))
+    }
+
+    @Test fun getAllInBBoxCount() {
+        // in
+        val q1 = entry(elementId = 0, pos = p(0.0,0.0))
+        val q2 = entry(elementId = 1, pos = p(1.0,1.0))
+        val q3 = entry(elementId = 2, pos = p(0.5,0.5))
+        // out
+        dao.putAll(listOf(
+            q1, q2, q3,
+            // out
+            entry(elementId = 4, pos = p(-0.5,0.5)),
+            entry(elementId = 5, pos = p(0.5,-0.5)),
+            entry(elementId = 6, pos = p(0.5,1.5)),
+            entry(elementId = 7, pos = p(1.5,0.5)),
+        ))
+        assertEquals(3, dao.getAllInBBoxCount(BoundingBox(0.0,0.0,1.0,1.0)))
+    }
+
+    private fun entry(
+        elementType: Element.Type = Element.Type.NODE,
+        elementId: Long = 0L,
+        questTypeName: String = "a",
+        pos: LatLon = p(0.0, 0.0)
+    ) = BasicOsmQuestDaoEntry(elementType, elementId, questTypeName, pos)
+
+    private fun p(x: Double, y: Double): LatLon = OsmLatLon(y,x)
+}

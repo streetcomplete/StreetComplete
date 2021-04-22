@@ -4,14 +4,15 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import java.util.ArrayList
+import java.util.*
+import kotlin.collections.HashMap
 
-fun Element.copy(newId: Long = id, newVersion: Int = version): Element {
+fun Element.copy(newId: Long = id, newVersion: Int = version, newDateEdited: Date? = dateEdited): OsmElement {
     val tags = tags?.let { HashMap(it) }
     return when (this) {
-        is Node -> OsmNode(newId, newVersion, position, tags)
-        is Way -> OsmWay(newId, newVersion, ArrayList(nodeIds), tags)
-        is Relation -> OsmRelation(newId, newVersion, ArrayList(members), tags)
+        is Node -> OsmNode(newId, newVersion, position, tags, null, newDateEdited)
+        is Way -> OsmWay(newId, newVersion, ArrayList(nodeIds), tags, null, newDateEdited)
+        is Relation -> OsmRelation(newId, newVersion, ArrayList(members), tags, null, newDateEdited)
         else -> throw RuntimeException()
     }
 }

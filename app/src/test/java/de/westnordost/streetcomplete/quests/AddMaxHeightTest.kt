@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.quests
 
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmapi.map.data.OsmWay
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.max_height.*
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
@@ -46,72 +48,72 @@ class AddMaxHeightTest {
 
     @Test fun `applicable to road below bridge`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1, listOf(1,2), mapOf(
                 "highway" to "residential",
                 "layer" to "1",
                 "bridge" to "yes"
             )),
-            OsmWay(2L, 1, listOf(3,4), mapOf(
+            way(2, listOf(3,4), mapOf(
                 "highway" to "residential"
             ))
         ))
         mapData.wayGeometriesById[1] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(-0.1,0.0),
-            OsmLatLon(+0.1,0.0),
-        )), OsmLatLon(0.0,0.0))
+            p(-0.1,0.0),
+            p(+0.1,0.0),
+        )), p(0.0,0.0))
         mapData.wayGeometriesById[2] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(0.0,-0.1),
-            OsmLatLon(0.0,+0.1),
-        )), OsmLatLon(0.0,0.0))
+            p(0.0,-0.1),
+            p(0.0,+0.1),
+        )), p(0.0,0.0))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to road on same layer as bridge, even if they intersect`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,2), mapOf(
+            way(1, listOf(1,2), mapOf(
                 "highway" to "residential",
                 "bridge" to "yes",
                 "layer" to "1"
             )),
-            OsmWay(2L, 1, listOf(3,4), mapOf(
+            way(2, listOf(3,4), mapOf(
                 "highway" to "residential",
                 "layer" to "1"
             ))
         ))
         mapData.wayGeometriesById[1] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(-0.1,0.0),
-            OsmLatLon(+0.1,0.0),
-        )), OsmLatLon(0.0,0.0))
+            p(-0.1,0.0),
+            p(+0.1,0.0),
+        )), p(0.0,0.0))
         mapData.wayGeometriesById[2] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(0.0,-0.1),
-            OsmLatLon(0.0,+0.1),
-        )), OsmLatLon(0.0,0.0))
+            p(0.0,-0.1),
+            p(0.0,+0.1),
+        )), p(0.0,0.0))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to road that shares a node with the bridge`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmWay(1L, 1, listOf(1,5,2), mapOf(
+            way(1, listOf(1,5,2), mapOf(
                 "highway" to "residential",
                 "layer" to "1",
                 "bridge" to "yes"
             )),
-            OsmWay(2L, 1, listOf(3,5,4), mapOf(
+            way(2, listOf(3,5,4), mapOf(
                 "highway" to "residential"
             ))
         ))
         mapData.wayGeometriesById[1] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(-0.1,0.0),
-            OsmLatLon(0.0,0.0),
-            OsmLatLon(+0.1,0.0),
-        )), OsmLatLon(0.0,0.0))
+            p(-0.1,0.0),
+            p(0.0,0.0),
+            p(+0.1,0.0),
+        )), p(0.0,0.0))
         mapData.wayGeometriesById[2] = ElementPolylinesGeometry(listOf(listOf(
-            OsmLatLon(0.0,-0.1),
-            OsmLatLon(0.0,0.0),
-            OsmLatLon(0.0,+0.1),
-        )), OsmLatLon(0.0,0.0))
+            p(0.0,-0.1),
+            p(0.0,0.0),
+            p(0.0,+0.1),
+        )), p(0.0,0.0))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }

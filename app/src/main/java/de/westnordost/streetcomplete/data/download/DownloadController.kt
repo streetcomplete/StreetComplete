@@ -54,7 +54,9 @@ import javax.inject.Singleton
      * puts itself in the front)
      */
     fun download(bbox: BoundingBox, isPriority: Boolean = false) {
-        val tilesRect = bbox.enclosingTilesRect(ApplicationConstants.QUEST_TILE_ZOOM)
+        if (downloadService == null) return
+
+        val tilesRect = bbox.enclosingTilesRect(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
         context.startService(DownloadService.createIntent(context, tilesRect, isPriority))
     }
 

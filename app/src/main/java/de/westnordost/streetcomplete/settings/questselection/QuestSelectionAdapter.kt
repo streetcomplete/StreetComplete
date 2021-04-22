@@ -31,7 +31,7 @@ import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept

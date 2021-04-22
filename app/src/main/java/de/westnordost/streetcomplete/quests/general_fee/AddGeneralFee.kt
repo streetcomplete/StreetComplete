@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.general_fee
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways, relations with 
+        nodes, ways, relations with
          (tourism = museum or leisure = beach_resort or tourism = gallery)
          and access !~ private|no
          and !fee

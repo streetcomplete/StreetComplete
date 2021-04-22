@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 
 class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
@@ -35,7 +35,12 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
         return forests + treeRows
     }
 
-    override fun isApplicableTo(element: Element):Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? {
+        if (wayFilter.matches(element)) return true // tree rows
+        // for areas, we don't want to show things larger than x m², we need the geometry for that
+        if (!areaFilter.matches(element)) return false
+        return null
+    }
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_leafType_title
 

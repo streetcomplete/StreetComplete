@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.steps_incline
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.*
 
 class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
 
     override val elementFilter = """
-        ways with highway = steps 
+        ways with highway = steps
          and (!indoor or indoor = no)
          and area != yes
          and access !~ private|no

@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.quests.construction
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import java.util.*
 
 class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {

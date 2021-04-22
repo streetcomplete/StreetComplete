@@ -79,9 +79,9 @@
         >
 
         <Preference
-            android:key="quests.invalidation"
-            android:title="@string/pref_title_quests_invalidation"
-            android:summary="@string/pref_title_quests_invalidation_summary"
+            android:key="delete_cache"
+            android:title="@string/pref_title_delete_cache"
+            android:summary="@string/pref_title_delete_cache_summary"
             />
 
         <Preference
@@ -103,7 +103,7 @@
             android:positiveButtonText="@android:string/ok"
             android:negativeButtonText="@android:string/cancel"
             />
-      
+
     </PreferenceCategory>
 
     <PreferenceCategory

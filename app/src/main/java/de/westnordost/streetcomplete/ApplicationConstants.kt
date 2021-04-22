@@ -8,21 +8,30 @@ object ApplicationConstants {
     const val MAX_DOWNLOADABLE_AREA_IN_SQKM = 12.0
     const val MIN_DOWNLOADABLE_AREA_IN_SQKM = 0.1
 
-    const val DATABASE_NAME = "streetcomplete.db"
+    const val DATABASE_NAME = "streetcomplete_v2.db"
+    const val OLD_DATABASE_NAME = "streetcomplete.db"
 
-    const val QUEST_TILE_ZOOM = 16
+    /** tile zoom at which the app downloads automatically and remembers which tiles have already
+     *  been downloaded */
+    const val DOWNLOAD_TILE_ZOOM = 16
+
+    /** a "best before" duration for downloaded data. OSM data, notes, a tile will not be
+     *  downloaded again before the time expired  */
+    const val REFRESH_DATA_AFTER = 12L * 60 * 60 * 1000 // 12 hours in ms
+
+    /** the duration after which OSM data, notes, quest meta data etc. will be deleted from the
+     *  database if not used anymore and have not been refreshed in the meantime  */
+    const val DELETE_OLD_DATA_AFTER = 14L * 24 * 60 * 60 * 1000 // 14 days in ms
+
     const val NOTE_MIN_ZOOM = 15
 
-    /** a "best before" duration for quests. Quests will not be downloaded again for any tile
-     * before the time expired  */
-    const val REFRESH_QUESTS_AFTER = 3L * 24 * 60 * 60 * 1000 // 3 days in ms
-
-    /** the duration after which quests (and quest meta data) will be deleted from the database if
-     * unsolved and not refreshed in the meantime  */
-    const val DELETE_UNSOLVED_QUESTS_AFTER = 14L * 24 * 60 * 60 * 1000 // 14 days in ms
-
     /** the max age of the undo history - one cannot undo changes older than X  */
-    const val MAX_QUEST_UNDO_HISTORY_AGE = 24L * 60 * 60 * 1000 // 1 day in ms
+    const val MAX_UNDO_HISTORY_AGE = 12L * 60 * 60 * 1000 // 12 hours in ms
+
+    /** The creation of some quests is dependent on surrounding geometry. This constant describes
+     *  the maximum distance surrounding elements may affect whether a quest is created or not */
+    //  f.e. AddRecyclingContainerMaterials, AddCycleway
+    const val QUEST_FILTER_PADDING = 20.0 //m
 
     const val AVATARS_CACHE_DIRECTORY = "osm_user_avatars"
 

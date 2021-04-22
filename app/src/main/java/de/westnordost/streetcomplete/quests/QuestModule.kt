@@ -5,6 +5,7 @@ import dagger.Provides
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
@@ -42,7 +43,6 @@ import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
 import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
@@ -75,6 +75,7 @@ import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAcces
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
 import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
 import de.westnordost.streetcomplete.quests.postbox_royal_cypher.AddPostboxRoyalCypher
+import de.westnordost.streetcomplete.quests.police_type.AddPoliceType
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier
 import de.westnordost.streetcomplete.quests.summit_register.AddSummitRegister
@@ -112,19 +113,17 @@ import javax.inject.Singleton
 @Module object QuestModule
 {
     @Provides @Singleton fun questTypeRegistry(
-        osmNoteQuestType: OsmNoteQuestType,
-        roadNameSuggestionsDao: RoadNameSuggestionsDao,
         trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
         trafficFlowDao: WayTrafficFlowDao,
         featureDictionaryFuture: FutureTask<FeatureDictionary>,
         countryInfos: CountryInfos
-    ): QuestTypeRegistry = QuestTypeRegistry(listOf(
+    ): QuestTypeRegistry = QuestTypeRegistry(listOf<QuestType<*>>(
 
         // ↓ 1. notes
-        osmNoteQuestType,
+        OsmNoteQuestType,
 
         // ↓ 2. important data that is used by many data consumers
-        AddRoadName(roadNameSuggestionsDao),
+        AddRoadName(),
         AddPlaceName(featureDictionaryFuture),
         AddOneway(),
         // not that useful as such, but should be shown before CheckExistence because this is
@@ -139,7 +138,7 @@ import javax.inject.Singleton
         AddBusStopRef(),
         AddIsBuildingUnderground(), //to avoid asking AddHousenumber and other for underground buildings
         AddHousenumber(),
-        AddAddressStreet(roadNameSuggestionsDao),
+        AddAddressStreet(),
         SpecifyShopType(),
         CheckShopType(),
         MarkCompletedHighwayConstruction(),
@@ -237,6 +236,7 @@ import javax.inject.Singleton
         AddPostboxRef(),
         AddWheelchairAccessToiletsPart(),
         AddBoardType(),
+        AddPoliceType(),
         AddPowerPolesMaterial(),
         AddCarWashType(),
         AddBenchStatusOnBusStop(),
@@ -244,6 +244,4 @@ import javax.inject.Singleton
         AddTrafficSignalsButton(),
         AddPostboxRoyalCypher()
     ))
-
-    @Provides @Singleton fun osmNoteQuestType(): OsmNoteQuestType = OsmNoteQuestType()
 }

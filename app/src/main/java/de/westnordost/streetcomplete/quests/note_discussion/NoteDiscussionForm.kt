@@ -17,8 +17,9 @@ import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.osmnotes.NotesModule
+import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -41,7 +42,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     private lateinit var anonAvatar: Bitmap
 
-    @Inject internal lateinit var osmNoteQuestController: OsmNoteQuestController
+    @Inject internal lateinit var noteSource: NotesWithEditsSource
 
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
@@ -66,7 +67,8 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
         anonAvatar = resources.getDrawable(R.drawable.ic_osm_anon_avatar).createBitmap()
 
-        inflateNoteDiscussion(osmNoteQuestController.get(questId)!!.note.comments)
+        val osmNoteQuestKey = questKey as OsmNoteQuestKey
+        inflateNoteDiscussion(noteSource.get(osmNoteQuestKey.noteId)!!.comments)
 
         if (savedInstanceState == null) {
             childFragmentManager.commit { add<AttachPhotoFragment>(R.id.attachPhotoFragment) }
@@ -88,7 +90,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     }
 
     private fun onClickOk() {
-        applyAnswer(NoteAnswer(noteText, attachPhotoFragment?.imagePaths))
+        applyAnswer(NoteAnswer(noteText, attachPhotoFragment?.imagePaths.orEmpty()))
     }
 
     override fun onDiscard() {
@@ -160,7 +162,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         }
 
         private val User.avatar: Bitmap? get() {
-            val cacheDir = OsmNotesModule.getAvatarsCacheDirectory(requireContext())
+            val cacheDir = NotesModule.getAvatarsCacheDirectory(requireContext())
             val file = File(cacheDir.toString() + File.separator + id)
             return if (file.exists()) BitmapFactory.decodeFile(file.path) else null
         }

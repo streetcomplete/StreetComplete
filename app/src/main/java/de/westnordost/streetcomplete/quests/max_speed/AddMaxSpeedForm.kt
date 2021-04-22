@@ -3,18 +3,17 @@ package de.westnordost.streetcomplete.quests.max_speed
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.getSystemService
 import androidx.core.view.children
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.numberOrNull
+import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
@@ -53,6 +52,9 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         val couldBeLivingStreet = countryInfo.isLivingStreetKnown && MAYBE_LIVING_STREET.contains(highwayTag)
         living_street.isGone = !couldBeLivingStreet
 
+        val couldBeNSL = countryInfo.countryCode == "GB"
+        nsl.isGone = !couldBeNSL
+
         speedTypeSelect.setOnCheckedChangeListener { _, checkedId -> setSpeedType(getSpeedType(checkedId)) }
     }
 
@@ -67,6 +69,10 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
                 confirmNoSign { determineImplicitMaxspeedType() }
         } else if (speedType == LIVING_STREET) {
             applyAnswer(IsLivingStreet)
+        } else if (speedType == NSL) {
+            askIsDualCarriageway(
+                onYes = { applyNoSignAnswer("nsl_dual") },
+                onNo = { applyNoSignAnswer("nsl_single") })
         } else {
             if (userSelectedUnusualSpeed())
                 confirmUnusualInput { applySpeedLimitFormAnswer() }
@@ -76,7 +82,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     override fun isFormComplete() =
-        speedType == NO_SIGN || speedType == LIVING_STREET || getSpeedFromInput() != null
+        speedType == NO_SIGN || speedType == LIVING_STREET || speedType == NSL || getSpeedFromInput() != null
 
     /* ---------------------------------------- With sign --------------------------------------- */
 
@@ -87,9 +93,12 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         speedType?.layoutResId?.let { layoutInflater.inflate(it, rightSideContainer, true) }
 
         // this is necessary because the inflated image view uses the activity context rather than
-        // the fragment / layout inflater context' resources to access it's drawable
-        val img = rightSideContainer.findViewById<ImageView>(R.id.livingStreetImage)
-        img?.setImageDrawable(resources.getDrawable(R.drawable.ic_living_street))
+        // the fragment / layout inflater context' resources to access its drawable
+        val imgLiving = rightSideContainer.findViewById<ImageView>(R.id.livingStreetImage)
+        imgLiving?.setImageDrawable(resources.getDrawable(R.drawable.ic_living_street))
+
+        val imgNSL = rightSideContainer.findViewById<ImageView>(R.id.nationalSpeedLimitImage)
+        imgNSL?.setImageDrawable(resources.getDrawable(R.drawable.ic_national_speed_limit))
 
         speedInput = rightSideContainer.findViewById(R.id.maxSpeedInput)
 
@@ -104,7 +113,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             speedInput?.setText(LAST_INPUT_SLOW_ZONE.toString())
         } else {
             speedInput?.requestFocus()
-            speedInput?.let { showKeyboard(it) }
+            speedInput?.showKeyboard()
         }
 
         checkIsFormComplete()
@@ -114,6 +123,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         R.id.sign          -> SIGN
         R.id.zone          -> ZONE
         R.id.living_street -> LIVING_STREET
+        R.id.nsl           -> NSL
         R.id.no_sign       -> NO_SIGN
         else -> null
     }
@@ -122,6 +132,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         SIGN          -> R.layout.quest_maxspeed_sign
         ZONE          -> R.layout.quest_maxspeed_zone_sign
         LIVING_STREET -> R.layout.quest_maxspeed_living_street_sign
+        NSL           -> R.layout.quest_maxspeed_national_speed_limit_sign
         ADVISORY      -> R.layout.quest_maxspeed_advisory
         else -> null
     }
@@ -138,11 +149,6 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             child.isEnabled = false
         }
         setSpeedType(ADVISORY)
-    }
-
-    private fun showKeyboard(focus: View) {
-        val imm = activity?.getSystemService<InputMethodManager>()
-        imm?.showSoftInput(focus, InputMethodManager.SHOW_IMPLICIT)
     }
 
     private fun confirmUnusualInput(onConfirmed: () -> Unit) {
@@ -213,12 +219,13 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             applyNoSignAnswer(highwayTag)
         } else {
             if (countryInfo.countryCode == "GB") {
-                determineLit(
-                    onYes = { applyNoSignAnswer("nsl_restricted") },
+                askIsDualCarriageway(
+                    onYes = { applyNoSignAnswer("nsl_dual") },
                     onNo = {
-                        askIsDualCarriageway(
-                            onYes = { applyNoSignAnswer("nsl_dual") },
-                            onNo = { applyNoSignAnswer("nsl_single") })
+                        determineLit(
+                            onYes = { applyNoSignAnswer("nsl_restricted", true) },
+                            onNo = { applyNoSignAnswer("nsl_single", false) }
+                        )
                     }
                 )
             } else {
@@ -269,8 +276,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         }
     }
 
-    private fun applyNoSignAnswer(roadType: String) {
-        applyAnswer(ImplicitMaxSpeed(countryInfo.countryCode, roadType))
+    private fun applyNoSignAnswer(roadType: String, lit: Boolean? = null) {
+        applyAnswer(ImplicitMaxSpeed(countryInfo.countryCode, roadType, lit))
     }
 
     companion object {
@@ -283,5 +290,5 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 }
 
 private enum class SpeedType {
-    SIGN, ZONE, LIVING_STREET, ADVISORY, NO_SIGN
+    SIGN, ZONE, LIVING_STREET, ADVISORY, NO_SIGN, NSL
 }

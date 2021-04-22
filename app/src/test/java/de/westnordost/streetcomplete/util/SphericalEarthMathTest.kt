@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.util
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import org.junit.Test
 
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.testutils.bbox
 
 import org.junit.Assert.*
 import kotlin.math.PI
@@ -85,76 +85,76 @@ class SphericalEarthMathTest {
     /* ++++++++++++++++++++++++++++++ test distance to arc distance +++++++++++++++++++++++++++++ */
 
     @Test fun `simple distance to horizontal arc`() {
-        val start = OsmLatLon(0.0, -0.01)
-        val end = OsmLatLon(0.0, +0.01)
-        val point = OsmLatLon(-0.01, 0.0)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val start = p(-0.01, 0.0)
+        val end = p(+0.01, 0.0)
+        val point = p( 0.0, -0.01)
+        val intersect = p( 0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `simple distance to vertical arc`() {
-        val start = OsmLatLon(-0.01, 0.0)
-        val end = OsmLatLon(+0.01, 0.0)
-        val point = OsmLatLon(0.0, 0.01)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val start = p(0.0, -0.01)
+        val end = p(0.0, +0.01)
+        val point = p(0.01, 0.0)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `simple distance to sloped arc`() {
-        val start = OsmLatLon(-0.01, -0.01)
-        val end = OsmLatLon(+0.01, +0.01)
-        val point = OsmLatLon(-0.01, +0.01)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val start = p(-0.01, -0.01)
+        val end = p(+0.01, +0.01)
+        val point = p(+0.01, -0.01)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance of point not orthogonal but before arc`() {
-        val start = OsmLatLon(0.0, +0.01)
-        val end = OsmLatLon(0.0, +0.02)
-        val point = OsmLatLon(-0.01, 0.0)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val start = p(+0.01, 0.0)
+        val end = p(+0.02, 0.0)
+        val point = p(0.0, -0.01)
+        val intersect = p( 0.0, 0.0)
         assertEquals(point.distanceTo(start), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), -point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance of point not orthogonal but after arc`() {
-        val start = OsmLatLon(0.0, -0.02)
-        val end = OsmLatLon(0.0, -0.01)
-        val point = OsmLatLon(-0.01, 0.0)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val start = p(-0.02, 0.0)
+        val end = p(-0.01, 0.0)
+        val point = p(0.0, -0.01)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(end), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.02)
     }
 
     @Test fun `distance to horizontal arc crossing 180th meridian`() {
-        val start = OsmLatLon(0.0, 170.0)
-        val end = OsmLatLon(0.0, -170.0)
-        val point = OsmLatLon(0.01, -175.0)
-        val intersect = OsmLatLon(0.0, -175.0)
+        val start = p(170.0, 0.0)
+        val end = p(-170.0, 0.0)
+        val point = p( -175.0, 0.01)
+        val intersect = p(-175.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance to vertical arc crossing north pole`() {
-        val start = OsmLatLon(80.0, 0.0)
-        val end = OsmLatLon(0.0, 180.0)
-        val point = OsmLatLon(85.0, 179.99)
-        val intersect = OsmLatLon(85.0, 180.0)
+        val start = p( 0.0, 80.0)
+        val end = p(180.0, 0.0)
+        val point = p(179.99, 85.0)
+        val intersect = p(180.0, 85.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance to single position`() {
-        val point = OsmLatLon(0.01, 0.0)
-        val intersect = OsmLatLon(0.0, 0.0)
+        val point = p(0.01, 0.0)
+        val intersect = p(0.0, 0.0)
         assertEquals(
             point.distanceTo(intersect),
             point.distanceToArcs(listOf(intersect)),
@@ -163,9 +163,9 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `distance to single arc`() {
-        val start = OsmLatLon(0.0, -0.01)
-        val end = OsmLatLon(0.0, +0.01)
-        val point = OsmLatLon(0.01, 0.0)
+        val start = p(0.0, -0.01)
+        val end = p(0.0, +0.01)
+        val point = p(0.01, 0.0)
         assertEquals(
             point.distanceToArc(start, end),
             point.distanceToArcs(listOf(start, end)),
@@ -174,10 +174,10 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `distance to multiple arcs`() {
-        val p0 = OsmLatLon(0.0, -0.01)
-        val p1 = OsmLatLon(0.0, +0.01)
-        val p2 = OsmLatLon(0.0, +0.02)
-        val point = OsmLatLon(0.01, 0.0)
+        val p0 = p(0.0, -0.01)
+        val p1 = p(0.0, +0.01)
+        val p2 = p(0.0, +0.02)
+        val point = p(0.01, 0.0)
         assertEquals(
             point.distanceToArc(p0, p1),
             point.distanceToArcs(listOf(p0, p1, p2)),
@@ -192,7 +192,7 @@ class SphericalEarthMathTest {
 
     /* +++++++++++++++++++++++++++++ test creation of bounding boxes ++++++++++++++++++++++++++++ */
 
-    @Test fun `enclosingBoundingBox radius`() {
+    @Test fun `enclosingbbox radius`() {
         val pos = p(0.0, 0.0)
         val bbox = pos.enclosingBoundingBox(5000.0)
 
@@ -214,18 +214,18 @@ class SphericalEarthMathTest {
         assertEquals(45, pos.initialBearingTo(bbox.max).roundToInt())
     }
 
-    @Test fun `enclosingBoundingBox crosses 180th meridian`() {
+    @Test fun `enclosingbbox crosses 180th meridian`() {
         val bbox = p(180.0, 0.0).enclosingBoundingBox(5000.0)
 
         assertTrue(bbox.crosses180thMeridian())
     }
 
     @Test(expected = IllegalArgumentException::class)
-    fun `enclosingBoundingBox fails for empty line`() {
+    fun `enclosingbbox fails for empty line`() {
         listOf<LatLon>().enclosingBoundingBox()
     }
 
-    @Test fun `enclosingBoundingBox for line`() {
+    @Test fun `enclosingbbox for line`() {
         val positions = listOf(p(0.0, -4.0), p(3.0, 12.0), p(16.0, 1.0),p(-6.0, 0.0))
         val bbox = positions.enclosingBoundingBox()
         assertEquals(-4.0, bbox.minLatitude, 0.0)
@@ -234,7 +234,7 @@ class SphericalEarthMathTest {
         assertEquals(-6.0, bbox.minLongitude, 0.0)
     }
 
-    @Test fun `enclosingBoundingBox for line crosses 180th meridian`() {
+    @Test fun `enclosingbbox for line crosses 180th meridian`() {
         val positions = listOf(p(160.0, 10.0),p(-150.0, 0.0),p(180.0, -10.0))
         val bbox = positions.enclosingBoundingBox()
         assertTrue(bbox.crosses180thMeridian())
@@ -245,7 +245,7 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `contains works`() {
-        val bbox = BoundingBox(-1.0, -2.0, 1.0, 2.0)
+        val bbox = bbox(-1.0, -2.0, 1.0, 2.0)
         assertTrue(bbox.contains(p(-2.0,-1.0)))
         assertTrue(bbox.contains(p(+2.0,-1.0)))
         assertTrue(bbox.contains(p(-2.0,+1.0)))
@@ -259,7 +259,7 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `contains works at 180th meridian`() {
-        val bbox = BoundingBox(0.0, 179.0, 1.0, -179.0)
+        val bbox = bbox(0.0, 179.0, 1.0, -179.0)
         assertTrue(bbox.contains(p(179.0,0.0)))
         assertTrue(bbox.contains(p(179.0,1.0)))
         assertTrue(bbox.contains(p(180.0,0.0)))
@@ -273,37 +273,37 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `isCompletelyInside works`() {
-        val bbox1 = BoundingBox(-1.0, -1.0, 1.0, 1.0)
-        val bbox2 = BoundingBox(-0.5, -0.5, 0.5, 1.0)
+        val bbox1 = bbox(-1.0, -1.0, 1.0, 1.0)
+        val bbox2 = bbox(-0.5, -0.5, 0.5, 1.0)
         assertTrue(bbox2.isCompletelyInside(bbox1))
         assertFalse(bbox1.isCompletelyInside(bbox2))
     }
 
     @Test fun `isCompletelyInside works at 180th meridian`() {
-        val bbox1 = BoundingBox(0.0, 179.0, 1.0, -179.0)
-        val bbox2 = BoundingBox(0.0, 179.5, 0.5, -179.5)
+        val bbox1 = bbox(0.0, 179.0, 1.0, -179.0)
+        val bbox2 = bbox(0.0, 179.5, 0.5, -179.5)
         assertTrue(bbox2.isCompletelyInside(bbox1))
         assertFalse(bbox1.isCompletelyInside(bbox2))
     }
 
     @Test fun `enlargedBy really enlarges bounding box`() {
-        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
         assertTrue(bbox.isCompletelyInside(bbox.enlargedBy(1.0)))
     }
 
     @Test fun `enlargedBy really enlarges bounding box, even at 180th meridian`() {
-        val bbox1 = BoundingBox(0.0, 179.0, 1.0, 180.0)
+        val bbox1 = bbox(0.0, 179.0, 1.0, 180.0)
         // enlarged bounding box should go over the 180th meridian
         assertTrue(bbox1.isCompletelyInside(bbox1.enlargedBy(100.0)))
         // here already bbox2 crosses the 180th meridian, maybe this makes a difference
-        val bbox2 = BoundingBox(0.0, 179.0, 1.0, -179.0)
+        val bbox2 = bbox(0.0, 179.0, 1.0, -179.0)
         assertTrue(bbox2.isCompletelyInside(bbox2.enlargedBy(100.0)))
     }
 
     @Test fun `bounding box not on same latitude do not intersect`() {
-        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
-        val above = BoundingBox(1.1, 0.0, 1.2, 1.0)
-        val below = BoundingBox(-0.2, 0.0, -0.1, 1.0)
+        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
+        val above = bbox(1.1, 0.0, 1.2, 1.0)
+        val below = bbox(-0.2, 0.0, -0.1, 1.0)
         assertFalse(bbox.intersect(above))
         assertFalse(bbox.intersect(below))
         assertFalse(above.intersect(bbox))
@@ -311,9 +311,9 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `bounding box not on same longitude do not intersect`() {
-        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
-        val left = BoundingBox(0.0, -0.2, 1.0, -0.1)
-        val right = BoundingBox(0.0, 1.1, 1.0, 1.2)
+        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
+        val left = bbox(0.0, -0.2, 1.0, -0.1)
+        val right = bbox(0.0, 1.1, 1.0, 1.2)
         assertFalse(bbox.intersect(left))
         assertFalse(bbox.intersect(right))
         assertFalse(left.intersect(bbox))
@@ -321,14 +321,14 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `intersecting bounding boxes`() {
-        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
-        val touchLeft = BoundingBox(0.0, -0.1, 1.0, 0.0)
-        val touchUpperRightCorner = BoundingBox(1.0, 1.0, 1.1, 1.1)
-        val completelyInside = BoundingBox(0.4, 0.4, 0.8, 0.8)
-        val intersectLeft = BoundingBox(0.4, -0.5, 0.5, 0.5)
-        val intersectRight = BoundingBox(0.4, 0.8, 0.5, 1.2)
-        val intersectTop = BoundingBox(0.9, 0.4, 1.1, 0.8)
-        val intersectBottom = BoundingBox(-0.2, 0.4, 0.2, 0.6)
+        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
+        val touchLeft = bbox(0.0, -0.1, 1.0, 0.0)
+        val touchUpperRightCorner = bbox(1.0, 1.0, 1.1, 1.1)
+        val completelyInside = bbox(0.4, 0.4, 0.8, 0.8)
+        val intersectLeft = bbox(0.4, -0.5, 0.5, 0.5)
+        val intersectRight = bbox(0.4, 0.8, 0.5, 1.2)
+        val intersectTop = bbox(0.9, 0.4, 1.1, 0.8)
+        val intersectBottom = bbox(-0.2, 0.4, 0.2, 0.6)
         assertTrue(bbox.intersect(touchLeft))
         assertTrue(bbox.intersect(touchUpperRightCorner))
         assertTrue(bbox.intersect(completelyInside))
@@ -347,21 +347,21 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `bounding box not on same longitude do not intersect, even on 180th meridian`() {
-        val bbox = BoundingBox(0.0, 179.0, 1.0, -179.0)
-        val other = BoundingBox(0.0, -178.0, 1.0, 178.0)
+        val bbox = bbox(0.0, 179.0, 1.0, -179.0)
+        val other = bbox(0.0, -178.0, 1.0, 178.0)
         assertFalse(bbox.intersect(other))
         assertFalse(other.intersect(bbox))
     }
 
     @Test fun `intersecting bounding boxes at 180th meridian`() {
-        val bbox = BoundingBox(0.0, 179.5, 1.0, -170.0)
-        val touchLeft = BoundingBox(0.0, 179.0, 1.0, 180.0)
-        val touchUpperRightCorner = BoundingBox(1.0, -170.0, 1.1, -169.0)
-        val completelyInside = BoundingBox(0.4, 179.9, 0.8, -179.9)
-        val intersectLeft = BoundingBox(0.4, 179.0, 0.5, 179.9)
-        val intersectRight = BoundingBox(0.4, -179.0, 0.5, -150.0)
-        val intersectTop = BoundingBox(0.9, 179.9, 1.1, -179.8)
-        val intersectBottom = BoundingBox(-0.2, 179.9, 0.2, -179.8)
+        val bbox = bbox(0.0, 179.5, 1.0, -170.0)
+        val touchLeft = bbox(0.0, 179.0, 1.0, 180.0)
+        val touchUpperRightCorner = bbox(1.0, -170.0, 1.1, -169.0)
+        val completelyInside = bbox(0.4, 179.9, 0.8, -179.9)
+        val intersectLeft = bbox(0.4, 179.0, 0.5, 179.9)
+        val intersectRight = bbox(0.4, -179.0, 0.5, -150.0)
+        val intersectTop = bbox(0.9, 179.9, 1.1, -179.8)
+        val intersectBottom = bbox(-0.2, 179.9, 0.2, -179.8)
         assertTrue(bbox.intersect(touchLeft))
         assertTrue(bbox.intersect(touchUpperRightCorner))
         assertTrue(bbox.intersect(completelyInside))

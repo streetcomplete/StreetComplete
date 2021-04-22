@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.util.intersects
 
@@ -55,7 +55,6 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
     override val isSplitWayEnabled = true
-    override val isRecreateAfterSplitEnabled = false
 
     override fun getTitle(tags: Map<String, String>): Int {
         val isParkingEntrance = tags["amenity"] == "parking_entrance"

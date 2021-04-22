@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
 class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
