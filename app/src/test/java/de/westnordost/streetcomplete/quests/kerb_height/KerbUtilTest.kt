@@ -25,13 +25,13 @@ class KerbUtilTest {
     }
 
     @Test fun `barrier=kerb nodes that are also something else don't count`() {
-        val kerb = OsmNode(2L, 1, 0.0,0.0, mapOf(
+        val kerb = node(id = 2, tags = mapOf(
             "barrier" to "kerb",
             "highway" to "crossing"
         ))
         val mapData = TestMapDataWithGeometry(listOf(
             kerb,
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1, listOf(1,2,3), mapOf(
                 "highway" to "footway"
             ))
         ))
