@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.CREATED_TIMESTAMP
-import de.westnordost.streetcomplete.util.Serializer
 import javax.inject.Inject
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.ID
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.IMAGES_NEED_ACTIVATION
@@ -18,11 +17,11 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.TYPE
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.NAME
 import de.westnordost.streetcomplete.ktx.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
-class NoteEditsDao @Inject constructor(
-    private val db: Database,
-    private val serializer: Serializer
-) {
+class NoteEditsDao @Inject constructor(private val db: Database) {
     fun add(edit: NoteEdit): Boolean =
         db.transaction {
             val rowId = db.insert(NAME, edit.toPairs())
@@ -122,7 +121,7 @@ class NoteEditsDao @Inject constructor(
         CREATED_TIMESTAMP to createdTimestamp,
         IS_SYNCED to if (isSynced) 1 else 0,
         TEXT to text,
-        IMAGE_PATHS to serializer.toBytes(ArrayList<String>(imagePaths)),
+        IMAGE_PATHS to Json.encodeToString(imagePaths),
         IMAGES_NEED_ACTIVATION to if (imagesNeedActivation) 1 else 0,
         TYPE to action.name
     )
@@ -133,7 +132,7 @@ class NoteEditsDao @Inject constructor(
         LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
         NoteEditAction.valueOf(getString(TYPE)),
         getStringOrNull(TEXT),
-        serializer.toObject<ArrayList<String>>(getBlob(IMAGE_PATHS)),
+        Json.decodeFromString(getString(IMAGE_PATHS)),
         getLong(CREATED_TIMESTAMP),
         getInt(IS_SYNCED) == 1,
         getInt(IMAGES_NEED_ACTIVATION) == 1

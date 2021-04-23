@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import kotlinx.serialization.Serializable
 
 /** Action that updates the tags on an element.
  *
@@ -53,7 +54,7 @@ class UpdateElementTagsAction(
 
     /** This class is as such not serializable because of that "questType" parameter which should
      *  be serialized to a string and deserialized using the QuestTypeRegistry */
-    fun createSerializable() = Serializable(
+    fun createSerializable() = Data(
         spatialPartsOfOriginalElement, changes, questType?.let { it::class.simpleName }
     )
 
@@ -72,7 +73,8 @@ class UpdateElementTagsAction(
         return result
     }
 
-    data class Serializable(
+    @Serializable
+    data class Data(
         private val spatialPartsOfOriginalElement: SpatialPartsOfElement,
         private val changes: StringMapChanges,
         private val questTypeName: String?

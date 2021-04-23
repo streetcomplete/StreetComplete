@@ -8,26 +8,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
 
-import java.util.ArrayList
-
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-import de.westnordost.streetcomplete.util.Serializer
-
 
 import android.view.Menu.NONE
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.*
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
 import kotlinx.android.synthetic.main.quest_opening_hours.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>() {
 
@@ -46,12 +42,6 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     private lateinit var openingHoursAdapter: RegularOpeningHoursAdapter
 
     private var isDisplayingPreviousOpeningHours: Boolean = false
-
-    @Inject internal lateinit var serializer: Serializer
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,7 +96,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     }
 
     private fun initStateFromTags() {
-        val oh = osmElement!!.tags!!["opening_hours"]
+        val oh = osmElement!!.tags["opening_hours"]
         val rows = oh?.toOpeningHoursRules()?.toOpeningHoursRows()
         if (rows != null) {
             openingHoursAdapter.rows = rows.toMutableList()
@@ -117,13 +107,14 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     }
 
     private fun onLoadInstanceState(savedInstanceState: Bundle) {
-        openingHoursAdapter.rows = serializer.toObject<ArrayList<OpeningHoursRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA)!!).toMutableList()
+        openingHoursAdapter.rows = Json.decodeFromString(savedInstanceState.getString(OPENING_HOURS_DATA)!!)
         isDisplayingPreviousOpeningHours = savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_HOURS)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(ArrayList(openingHoursAdapter.rows)))
+
+        outState.putString(OPENING_HOURS_DATA, Json.encodeToString(openingHoursAdapter.rows))
         outState.putBoolean(IS_DISPLAYING_PREVIOUS_HOURS, isDisplayingPreviousOpeningHours)
     }
 
@@ -164,7 +155,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
             }
             requireView().findViewById<View>(R.id.yesButton).setOnClickListener {
                 applyAnswer(RegularOpeningHours(
-                    osmElement!!.tags!!["opening_hours"]!!.toOpeningHoursRules()!!
+                    osmElement!!.tags["opening_hours"]!!.toOpeningHoursRules()!!
                 ))
             }
         } else {

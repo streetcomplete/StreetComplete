@@ -22,8 +22,8 @@ object ElementGeometryTable {
         CREATE TABLE $NAME (
             ${Columns.ELEMENT_TYPE} varchar(255) NOT NULL,
             ${Columns.ELEMENT_ID} int NOT NULL,
-            ${Columns.GEOMETRY_POLYLINES} blob,
-            ${Columns.GEOMETRY_POLYGONS} blob,
+            ${Columns.GEOMETRY_POLYLINES} text,
+            ${Columns.GEOMETRY_POLYGONS} text,
             ${Columns.CENTER_LATITUDE} double NOT NULL,
             ${Columns.CENTER_LONGITUDE} double NOT NULL,
             ${Columns.MIN_LATITUDE} double NOT NULL,

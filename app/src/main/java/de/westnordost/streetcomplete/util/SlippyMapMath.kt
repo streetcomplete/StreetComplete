@@ -3,10 +3,11 @@ package de.westnordost.streetcomplete.util
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.splitAt180thMeridian
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 import kotlin.math.*
 
 /** X and Y position of a tile */
+@Serializable
 data class TilePos(val x: Int, val y:Int) {
     /** Returns this tile rect as a bounding box */
     fun asBoundingBox(zoom: Int): BoundingBox {
@@ -40,7 +41,8 @@ fun LatLon.enclosingTilePos(zoom: Int): TilePos {
 }
 
 /** A rectangle that represents containing all tiles from left bottom to top right */
-data class TilesRect(val left: Int, val top: Int, val right: Int, val bottom: Int) : Serializable {
+@Serializable
+data class TilesRect(val left: Int, val top: Int, val right: Int, val bottom: Int) {
 
     init {
         require(left <= right && top <= bottom)

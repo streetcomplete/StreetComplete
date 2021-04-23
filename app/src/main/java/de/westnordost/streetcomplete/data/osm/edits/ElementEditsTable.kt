@@ -29,6 +29,6 @@ object ElementEditsTable {
             ${Columns.CREATED_TIMESTAMP} int NOT NULL,
             ${Columns.IS_SYNCED} int NOT NULL,
             ${Columns.TYPE} varchar(255),
-            ${Columns.ACTION} blob
+            ${Columns.ACTION} text
         );"""
 }

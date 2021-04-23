@@ -21,7 +21,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Before fun createDao() {
         val list = listOf<QuestType<*>>(TEST_QUEST_TYPE, TEST_QUEST_TYPE2)
-        dao = ElementEditsDao(database, QuestTypeRegistry(list), serializer)
+        dao = ElementEditsDao(database, QuestTypeRegistry(list))
     }
 
     @Test fun addGet_UpdateElementTagsEdit() {

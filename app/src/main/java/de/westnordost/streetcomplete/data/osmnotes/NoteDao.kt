@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import java.util.ArrayList
-
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -18,14 +15,13 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.NAME
-import de.westnordost.streetcomplete.ktx.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM notes */
-class NoteDao @Inject constructor(
-    private val db: Database,
-    private val serializer: Serializer
-) {
+class NoteDao @Inject constructor(private val db: Database) {
     fun put(note: Note) {
         db.replace(NAME, note.toPairs())
     }
@@ -48,7 +44,7 @@ class NoteDao @Inject constructor(
                 it.status.name,
                 it.timestampCreated,
                 it.timestampClosed,
-                serializer.toBytes(ArrayList(it.comments)),
+                Json.encodeToString(it.comments),
                 currentTimeMillis()
             ) }
         )
@@ -83,7 +79,7 @@ class NoteDao @Inject constructor(
         STATUS to status.name,
         CREATED to timestampCreated,
         CLOSED to timestampClosed,
-        COMMENTS to serializer.toBytes(ArrayList(comments)),
+        COMMENTS to Json.encodeToString(comments),
         LAST_SYNC to currentTimeMillis()
     )
 
@@ -93,7 +89,7 @@ class NoteDao @Inject constructor(
         getLong(CREATED),
         getLongOrNull(CLOSED),
         Note.Status.valueOf(getString(STATUS)),
-        serializer.toObject<ArrayList<NoteComment>>(getBlob(COMMENTS))
+        Json.decodeFromString(getString(COMMENTS))
     )
 
     private fun inBoundsSql(bbox: BoundingBox): String = """

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.geometry
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.ELEMENT_ID
@@ -24,13 +23,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.ktx.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 /** Stores the geometry of elements */
-class ElementGeometryDao @Inject constructor(
-    private val db: Database,
-    private val serializer: Serializer
-) {
+class ElementGeometryDao @Inject constructor(private val db: Database) {
     fun put(entry: ElementGeometryEntry) {
         db.replace(NAME, entry.toPairs())
     }
@@ -71,8 +69,8 @@ class ElementGeometryDao @Inject constructor(
                     it.elementId,
                     g.center.latitude,
                     g.center.longitude,
-                    if (g is ElementPolygonsGeometry) serializer.toBytes(g.polygons) else null,
-                    if (g is ElementPolylinesGeometry) serializer.toBytes(g.polylines) else null,
+                    if (g is ElementPolygonsGeometry) Json.encodeToString(g.polygons) else null,
+                    if (g is ElementPolylinesGeometry) Json.encodeToString(g.polylines) else null,
                     bbox.min.latitude,
                     bbox.min.longitude,
                     bbox.max.latitude,
@@ -136,8 +134,8 @@ class ElementGeometryDao @Inject constructor(
     private fun ElementGeometry.toPairs() = listOf(
         CENTER_LATITUDE to center.latitude,
         CENTER_LONGITUDE to center.longitude,
-        GEOMETRY_POLYGONS to if (this is ElementPolygonsGeometry) serializer.toBytes(polygons) else null,
-        GEOMETRY_POLYLINES to if (this is ElementPolylinesGeometry) serializer.toBytes(polylines) else null,
+        GEOMETRY_POLYGONS to if (this is ElementPolygonsGeometry) Json.encodeToString(polygons) else null,
+        GEOMETRY_POLYLINES to if (this is ElementPolylinesGeometry) Json.encodeToString(polylines) else null,
         MIN_LATITUDE to getBounds().min.latitude,
         MIN_LONGITUDE to getBounds().min.longitude,
         MAX_LATITUDE to getBounds().max.latitude,
@@ -145,8 +143,8 @@ class ElementGeometryDao @Inject constructor(
     )
 
     private fun CursorPosition.toElementGeometry(): ElementGeometry {
-        val polylines = getBlobOrNull(GEOMETRY_POLYLINES)?.let { serializer.toObject<PolyLines>(it) }
-        val polygons = getBlobOrNull(GEOMETRY_POLYGONS)?.let { serializer.toObject<PolyLines>(it) }
+        val polylines: PolyLines? = getStringOrNull(GEOMETRY_POLYLINES)?.let { Json.decodeFromString(it) }
+        val polygons: PolyLines? = getStringOrNull(GEOMETRY_POLYGONS)?.let { Json.decodeFromString(it)}
         val center = LatLon(getDouble(CENTER_LATITUDE), getDouble(CENTER_LONGITUDE))
 
         return when {

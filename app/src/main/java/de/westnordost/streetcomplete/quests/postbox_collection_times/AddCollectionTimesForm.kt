@@ -8,18 +8,14 @@ import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 
-import java.util.ArrayList
-
-import javax.inject.Inject
-
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-import de.westnordost.streetcomplete.util.Serializer
-import de.westnordost.streetcomplete.ktx.toObject
 import kotlinx.android.synthetic.main.quest_collection_times.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 
 class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
@@ -31,12 +27,6 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
     )
 
     private lateinit var collectionTimesAdapter: CollectionTimesAdapter
-
-    @Inject internal lateinit var serializer: Serializer
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,17 +69,12 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
         }
     }
 
-    private fun loadCollectionTimesData(savedInstanceState: Bundle?):List<WeekdaysTimesRow> =
-        if (savedInstanceState != null) {
-            serializer.toObject<ArrayList<WeekdaysTimesRow>>(savedInstanceState.getByteArray(TIMES_DATA)!!)
-        } else {
-            listOf()
-        }
+    private fun loadCollectionTimesData(savedInstanceState: Bundle?): List<WeekdaysTimesRow> =
+        savedInstanceState?.let { Json.decodeFromString(it.getString(TIMES_DATA)!!) } ?: listOf()
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val serializedTimes = serializer.toBytes(ArrayList(collectionTimesAdapter.collectionTimesRows))
-        outState.putByteArray(TIMES_DATA, serializedTimes)
+        outState.putString(TIMES_DATA, Json.encodeToString(collectionTimesAdapter.collectionTimesRows))
     }
 
     override fun onClickOk() {

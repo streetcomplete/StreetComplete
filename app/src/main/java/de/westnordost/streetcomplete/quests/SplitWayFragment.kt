@@ -36,6 +36,9 @@ import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import kotlinx.coroutines.launch
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import kotlin.math.abs
 
@@ -71,9 +74,9 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val args = requireArguments()
-        osmQuestKey = args.getSerializable(ARG_OSM_QUEST_KEY) as OsmQuestKey
-        way = args.getSerializable(ARG_WAY) as Way
-        val elementGeometry = args.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementPolylinesGeometry
+        osmQuestKey = Json.decodeFromString(args.getString(ARG_OSM_QUEST_KEY)!!)
+        way = Json.decodeFromString(args.getString(ARG_WAY)!!)
+        val elementGeometry: ElementPolylinesGeometry = Json.decodeFromString(args.getString(ARG_ELEMENT_GEOMETRY)!!)
         positions = elementGeometry.polylines.single().map { LatLon(it.latitude, it.longitude) }
     }
 
@@ -262,9 +265,9 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         fun create(osmQuestKey: OsmQuestKey, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
             val f = SplitWayFragment()
             f.arguments = bundleOf(
-                ARG_OSM_QUEST_KEY to osmQuestKey,
-                ARG_WAY to way,
-                ARG_ELEMENT_GEOMETRY to elementGeometry
+                ARG_OSM_QUEST_KEY to Json.encodeToString(osmQuestKey),
+                ARG_WAY to Json.encodeToString(way),
+                ARG_ELEMENT_GEOMETRY to Json.encodeToString(elementGeometry)
             )
             return f
         }

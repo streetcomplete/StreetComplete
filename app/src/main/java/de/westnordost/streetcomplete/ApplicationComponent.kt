@@ -33,14 +33,10 @@ import de.westnordost.streetcomplete.quests.QuestModule
 import de.westnordost.streetcomplete.quests.SplitWayFragment
 import de.westnordost.streetcomplete.quests.address.AddAddressStreetForm
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm
-import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOnewayForm
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsModule
-import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm
-import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm
-import de.westnordost.streetcomplete.quests.postbox_collection_times.AddCollectionTimesForm
 import de.westnordost.streetcomplete.settings.*
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 import de.westnordost.streetcomplete.user.*
@@ -76,15 +72,11 @@ interface ApplicationComponent {
     fun inject(changesDownloadService: DownloadService)
     fun inject(settingsFragment: SettingsFragment)
     fun inject(settingsActivity: SettingsActivity)
-    fun inject(addOpeningHoursForm: AddOpeningHoursForm)
     fun inject(addRoadNameForm: AddRoadNameForm)
     fun inject(addAddressStreetForm: AddAddressStreetForm)
-    fun inject(parkingFeeForm: AddParkingFeeForm)
     fun inject(addSuspectedOnewayForm: AddSuspectedOnewayForm)
-    fun inject(addCollectionTimesForm: AddCollectionTimesForm)
     fun inject(OAuthFragment: OAuthFragment)
     fun inject(questStatisticsFragment: QuestStatisticsFragment)
-    fun inject(fields: AAddLocalizedNameForm.InjectedFields)
     fun inject(fields: AbstractQuestAnswerFragment.InjectedFields)
     fun inject(questsMapFragment: QuestsMapFragment)
     fun inject(questSelectionFragment: QuestSelectionFragment)

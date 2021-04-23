@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class StringMapEntryDelete(val key: String, val valueBefore: String) : StringMapEntryChange {
 
     override fun toString() = "DELETE \"$key\"=\"$valueBefore\""

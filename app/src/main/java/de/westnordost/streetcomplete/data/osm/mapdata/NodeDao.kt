@@ -11,15 +11,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
-import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.Serializer
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM nodes */
-class NodeDao @Inject constructor(
-    private val db: Database,
-    private val serializer: Serializer
-) {
+class NodeDao @Inject constructor(private val db: Database) {
     fun put(node: Node) {
         putAll(listOf(node))
     }
@@ -43,7 +41,7 @@ class NodeDao @Inject constructor(
                     node.version,
                     node.position.latitude,
                     node.position.longitude,
-                    serializer.toBytes(HashMap<String, String>(node.tags)),
+                    if (node.tags.isNotEmpty()) Json.encodeToString(node.tags) else null,
                     node.timestampEdited,
                     time
                 )
@@ -58,7 +56,7 @@ class NodeDao @Inject constructor(
             Node(
                 cursor.getLong(ID),
                 LatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-                cursor.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) } ?: emptyMap(),
+                cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
                 cursor.getInt(VERSION),
                 cursor.getLong(TIMESTAMP)
             )

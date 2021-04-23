@@ -7,6 +7,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("kotlin-android-extensions")
+    kotlin("plugin.serialization") version "1.4.30"
 }
 
 android {
@@ -159,8 +160,7 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("com.esotericsoftware:kryo:4.0.2")
-    implementation("org.objenesis:objenesis:3.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.16.1")

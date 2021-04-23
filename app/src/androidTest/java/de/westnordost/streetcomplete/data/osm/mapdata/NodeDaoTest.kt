@@ -12,7 +12,7 @@ class NodeDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NodeDao
 
     @Before fun createDao() {
-        dao = NodeDao(database, serializer)
+        dao = NodeDao(database)
     }
 
     @Test fun putGetNoTags() {

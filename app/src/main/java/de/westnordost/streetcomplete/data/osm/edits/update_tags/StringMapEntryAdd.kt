@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class StringMapEntryAdd(val key: String, val value: String) : StringMapEntryChange {
 
     override fun toString() = "ADD \"$key\"=\"$value\""

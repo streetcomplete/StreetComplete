@@ -14,7 +14,7 @@ class NoteDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NoteDao
 
     @Before fun createDao() {
-        dao = NoteDao(database, serializer)
+        dao = NoteDao(database)
     }
 
     @Test fun putGetNoClosedDate() {

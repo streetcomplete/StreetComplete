@@ -2,8 +2,9 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.User
+import kotlinx.serialization.Serializable
 
-
+@Serializable
 data class Note(
     val position: LatLon,
     val id: Long,
@@ -21,6 +22,7 @@ data class Note(
     }
 }
 
+@Serializable
 data class NoteComment(
     val timestamp: Long,
     val action: Action,

@@ -14,15 +14,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.TYP
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME_MEMBERS
-import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.Serializer
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM relations */
-class RelationDao @Inject constructor(
-    private val db: Database,
-    private val serializer: Serializer
-) {
+class RelationDao @Inject constructor(private val db: Database) {
     fun put(relation: Relation) {
         putAll(listOf(relation))
     }
@@ -62,7 +60,7 @@ class RelationDao @Inject constructor(
                     arrayOf(
                         relation.id,
                         relation.version,
-                        serializer.toBytes(HashMap<String, String>(relation.tags)),
+                        if (relation.tags.isNotEmpty()) Json.encodeToString(relation.tags) else null,
                         relation.timestampEdited,
                         time
                     )
@@ -89,7 +87,7 @@ class RelationDao @Inject constructor(
             Relation(
                 cursor.getLong(ID),
                 membersByRelationId.getValue(cursor.getLong(ID)),
-                cursor.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) } ?: emptyMap(),
+                cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
                 cursor.getInt(VERSION),
                 cursor.getLong(TIMESTAMP)
             )

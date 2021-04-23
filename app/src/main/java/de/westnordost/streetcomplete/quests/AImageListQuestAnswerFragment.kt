@@ -6,13 +6,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
 import androidx.preference.PreferenceManager
 
-import java.util.ArrayList
-import java.util.LinkedList
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import kotlinx.android.synthetic.main.quest_generic_list.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Abstract class for quests with a list of images and one or several to select.
@@ -70,7 +69,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
         })
 
         showMoreButton.visibility = View.GONE
-        
+
         imageSelector.items = moveFavouritesToFront(items)
         if (savedInstanceState != null) {
             val selectedIndices = savedInstanceState.getIntegerArrayList(SELECTED_INDICES)!!

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class StringMapEntryModify(val key: String, val valueBefore: String, val value: String) : StringMapEntryChange {
 
     override fun toString() = "MODIFY \"$key\"=\"$valueBefore\" -> \"$key\"=\"$value\""

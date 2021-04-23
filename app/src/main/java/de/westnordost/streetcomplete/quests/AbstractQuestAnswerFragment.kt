@@ -34,6 +34,9 @@ import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.ref.WeakReference
 import java.util.Locale
 import java.util.concurrent.FutureTask
@@ -127,9 +130,9 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         super.onCreate(savedInstanceState)
 
         val args = requireArguments()
-        questKey = args.getSerializable(ARG_QUEST_KEY) as QuestKey
-        osmElement = args.getSerializable(ARG_ELEMENT) as Element?
-        elementGeometry = args.getSerializable(ARG_GEOMETRY) as ElementGeometry
+        questKey = Json.decodeFromString(args.getString(ARG_QUEST_KEY)!!)
+        osmElement = args.getString(ARG_ELEMENT)?.let { Json.decodeFromString(it) }
+        elementGeometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
         questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!) as QuestType<T>
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
@@ -441,9 +444,9 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         private const val ARG_MAP_TILT = "map_tilt"
 
         fun createArguments(quest: Quest, element: Element?, rotation: Float, tilt: Float) = bundleOf(
-            ARG_QUEST_KEY to quest.key,
-            ARG_ELEMENT to element,
-            ARG_GEOMETRY to quest.geometry,
+            ARG_QUEST_KEY to Json.encodeToString(quest.key),
+            ARG_ELEMENT to element?.let { Json.encodeToString(element) },
+            ARG_GEOMETRY to Json.encodeToString(quest.geometry),
             ARG_QUESTTYPE to quest.type::class.simpleName!!,
             ARG_MAP_ROTATION to rotation,
             ARG_MAP_TILT to tilt

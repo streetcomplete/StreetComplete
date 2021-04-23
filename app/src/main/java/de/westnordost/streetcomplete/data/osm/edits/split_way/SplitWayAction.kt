@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.*
+import kotlinx.serialization.Serializable
 import kotlin.collections.ArrayList
 
 /** Action that performs a split on a way.
@@ -17,8 +18,9 @@ import kotlin.collections.ArrayList
  *  still compatible with the split action: If the updated way was shortened or extended on either
  *  end, it is not considered compatible anymore
  *  */
+@Serializable
 class SplitWayAction(
-    private val splits: ArrayList<SplitPolylineAtPosition>,
+    private val splits: List<SplitPolylineAtPosition>,
     private val originalWayFirstNodeId: Long,
     private val originalWayLastNodeId: Long,
 ): ElementEditAction {

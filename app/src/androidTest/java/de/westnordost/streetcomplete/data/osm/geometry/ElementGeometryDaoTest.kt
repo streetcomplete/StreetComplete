@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.data.osm.geometry
 import org.junit.Before
 import org.junit.Test
 
-import java.util.ArrayList
-
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -15,7 +13,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementGeometryDao
 
     @Before fun createDao() {
-        dao = ElementGeometryDao(database, serializer)
+        dao = ElementGeometryDao(database)
     }
 
     @Test fun testGetNull() {

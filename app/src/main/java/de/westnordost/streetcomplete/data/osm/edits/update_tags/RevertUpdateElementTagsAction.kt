@@ -7,8 +7,10 @@ import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import kotlinx.serialization.Serializable
 
 /** Contains the information necessary to apply a revert of tag changes made on an element */
+@Serializable
 class RevertUpdateElementTagsAction(
     private val spatialPartsOfOriginalElement: SpatialPartsOfElement,
     private val changes: StringMapChanges

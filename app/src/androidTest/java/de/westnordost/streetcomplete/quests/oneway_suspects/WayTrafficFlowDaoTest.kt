@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.WayDao
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
-import de.westnordost.streetcomplete.util.KryoSerializer
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -44,7 +43,7 @@ class WayTrafficFlowDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun deleteUnreferenced() {
-        val wayDao = WayDao(database, KryoSerializer())
+        val wayDao = WayDao(database)
 
         wayDao.put(Way(1, mutableListOf(), emptyMap(), 0))
         wayDao.put(Way(2, mutableListOf(), emptyMap(), 0))

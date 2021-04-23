@@ -11,7 +11,7 @@ class RelationDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: RelationDao
 
     @Before fun createDao() {
-        dao = RelationDao(database, serializer)
+        dao = RelationDao(database)
     }
 
     @Test fun putGetNoTags() {

@@ -1,12 +1,18 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import java.io.Serializable
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-sealed class QuestKey : Serializable
+@Serializable
+sealed class QuestKey
 
+@Serializable
+@SerialName("osmnote")
 data class OsmNoteQuestKey(val noteId: Long) : QuestKey()
 
+@Serializable
+@SerialName("osm")
 data class OsmQuestKey(
     val elementType: ElementType,
     val elementId: Long,

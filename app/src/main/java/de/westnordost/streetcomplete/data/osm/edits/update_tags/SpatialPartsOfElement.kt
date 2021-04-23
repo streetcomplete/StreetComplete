@@ -2,11 +2,16 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.util.distanceTo
+import kotlinx.serialization.Serializable
 
 /** Only the parts of an element that are used to determine the geometry */
+@Serializable
 sealed class SpatialPartsOfElement
+@Serializable
 data class SpatialPartsOfNode(val position: LatLon) : SpatialPartsOfElement()
+@Serializable
 data class SpatialPartsOfWay(val nodeIds: ArrayList<Long>) : SpatialPartsOfElement()
+@Serializable
 data class SpatialPartsOfRelation(val members: ArrayList<RelationMember>) : SpatialPartsOfElement()
 
 internal fun isGeometrySubstantiallyDifferent(element: SpatialPartsOfElement, newElement: Element) =

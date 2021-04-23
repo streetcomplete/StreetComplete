@@ -5,22 +5,16 @@ import android.content.res.Resources
 import java.text.DateFormatSymbols
 
 import de.westnordost.streetcomplete.R
+import kotlinx.serialization.Serializable
 
-class Weekdays {
+@Serializable
+class Weekdays(private val data: BooleanArray = BooleanArray(OSM_ABBR_WEEKDAYS.size)) {
 
-    private val data = BooleanArray(OSM_ABBR_WEEKDAYS.size)
+    init {
+        require(data.size == OSM_ABBR_WEEKDAYS.size)
+    }
 
     val selection: BooleanArray get() = data.copyOf()
-
-    constructor()
-
-    constructor(selection: BooleanArray) {
-        var i = 0
-        while (i < selection.size && i < data.size) {
-            data[i] = selection[i]
-            ++i
-        }
-    }
 
     fun isSelectionEmpty() = data.all { !it }
 

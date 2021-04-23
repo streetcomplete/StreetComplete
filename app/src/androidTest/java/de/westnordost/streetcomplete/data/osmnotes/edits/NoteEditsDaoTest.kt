@@ -11,7 +11,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NoteEditsDao
 
     @Before fun createDao() {
-        dao = NoteEditsDao(database, serializer)
+        dao = NoteEditsDao(database)
     }
 
     @Test fun addGet() {

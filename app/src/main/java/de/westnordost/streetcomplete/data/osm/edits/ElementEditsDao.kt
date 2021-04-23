@@ -22,14 +22,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.Serializer
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 class ElementEditsDao @Inject constructor(
     private val db: Database,
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val serializer: Serializer
+    private val questTypeRegistry: QuestTypeRegistry
 ) {
     fun add(edit: ElementEdit) {
         val rowId = db.insert(NAME, edit.toPairs())
@@ -95,30 +95,30 @@ class ElementEditsDao @Inject constructor(
         IS_SYNCED to if (isSynced) 1 else 0,
         TYPE to action::class.simpleName,
         ACTION to when(action) {
-            is UpdateElementTagsAction       -> serializer.toBytes(action.createSerializable())
-            is RevertUpdateElementTagsAction -> serializer.toBytes(action)
-            is DeletePoiNodeAction           -> serializer.toBytes(action)
-            is SplitWayAction                -> serializer.toBytes(action)
+            is UpdateElementTagsAction       -> Json.encodeToString(action.createSerializable())
+            is RevertUpdateElementTagsAction -> Json.encodeToString(action)
+            is DeletePoiNodeAction           -> Json.encodeToString(action)
+            is SplitWayAction                -> Json.encodeToString(action)
             else -> null
         }
     )
 
     private fun CursorPosition.toElementEdit(): ElementEdit {
-        val b = getBlobOrNull(ACTION)
+        val s = getStringOrNull(ACTION)
         val type = getString(TYPE)
 
         val action = when(type) {
             UpdateElementTagsAction::class.simpleName ->
-                serializer.toObject<UpdateElementTagsAction.Serializable>(b!!).createObject(questTypeRegistry)
+                Json.decodeFromString<UpdateElementTagsAction.Data>(s!!).createObject(questTypeRegistry)
 
             RevertUpdateElementTagsAction::class.simpleName ->
-                serializer.toObject<RevertUpdateElementTagsAction>(b!!)
+                Json.decodeFromString<RevertUpdateElementTagsAction>(s!!)
 
             DeletePoiNodeAction::class.simpleName ->
-                serializer.toObject<DeletePoiNodeAction>(b!!)
+                Json.decodeFromString<DeletePoiNodeAction>(s!!)
 
             SplitWayAction::class.simpleName ->
-                serializer.toObject<SplitWayAction>(b!!)
+                Json.decodeFromString<SplitWayAction>(s!!)
 
             else -> throw IllegalStateException("Unknown change class $type")
         }

@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import java.lang.System.currentTimeMillis
 
+@Serializable
 sealed class Element {
     abstract val id: Long
     abstract val version: Int
@@ -13,6 +16,8 @@ sealed class Element {
     var isDeleted: Boolean = false
 }
 
+@Serializable
+@SerialName("node")
 data class Node(
     override val id: Long,
     val position: LatLon,
@@ -23,6 +28,8 @@ data class Node(
     override val type get() = ElementType.NODE
 }
 
+@Serializable
+@SerialName("way")
 data class Way(
     override val id: Long,
     val nodeIds: List<Long>,
@@ -35,6 +42,8 @@ data class Way(
     val isClosed get() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
 }
 
+@Serializable
+@SerialName("relation")
 data class Relation(
     override val id: Long,
     val members: List<RelationMember>,
@@ -45,10 +54,12 @@ data class Relation(
     override val type = ElementType.RELATION
 }
 
+@Serializable
 data class RelationMember(val type: ElementType, val ref: Long, val role: String)
 
 enum class ElementType { NODE, WAY, RELATION }
 
+@Serializable
 data class LatLon(val latitude: Double, val longitude: Double) {
     init {
         checkValidity(latitude, longitude)

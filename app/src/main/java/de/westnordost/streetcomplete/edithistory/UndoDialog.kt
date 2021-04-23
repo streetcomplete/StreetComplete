@@ -143,7 +143,7 @@ class UndoDialog(
         return txt
     }
 
-    private fun createListOfTagUpdates(changes: List<StringMapEntryChange>): HtmlTextView {
+    private fun createListOfTagUpdates(changes: Collection<StringMapEntryChange>): HtmlTextView {
         val txt = HtmlTextView(context)
         txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
 
