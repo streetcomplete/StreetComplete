@@ -169,7 +169,7 @@
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 First off, understand that with this app, you make actual and direct contributions to the OpenStreetMap.&lt;br/&gt;
-Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure, like it is the case with &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; or &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
 &lt;/p&gt;
 &lt;p&gt;
 Editing the OpenStreetMap anonymously is not possible, so any changes you make are made with your OSM user account. This means, that the date, content and implicitly the location of your changes are visible publicly on the openstreetmap website and are attributable to your account.
