@@ -732,7 +732,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun showEditHistorySidebar() {
         val appearAnim = R.animator.edit_history_sidebar_appear
         val disappearAnim = R.animator.edit_history_sidebar_disappear
-        childFragmentManager.commit {
+        childFragmentManager.commit(true) {
             setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
             replace(R.id.edit_history_container, EditHistoryFragment(), EDIT_HISTORY)
             addToBackStack(EDIT_HISTORY)
@@ -741,7 +741,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun closeEditHistorySidebar() {
-        childFragmentManager.popBackStack(EDIT_HISTORY, POP_BACK_STACK_INCLUSIVE)
+        if (editHistoryFragment != null) {
+            childFragmentManager.popBackStack(EDIT_HISTORY, POP_BACK_STACK_INCLUSIVE)
+        }
         mapFragment?.pinMode = QuestsMapFragment.PinMode.QUESTS
     }
 
@@ -751,7 +753,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     @UiThread private fun closeBottomSheet() {
         activity?.currentFocus?.hideKeyboard()
-        childFragmentManager.popBackStackImmediate(BOTTOM_SHEET, POP_BACK_STACK_INCLUSIVE)
+        if (bottomSheetFragment != null) {
+            childFragmentManager.popBackStack(BOTTOM_SHEET, POP_BACK_STACK_INCLUSIVE)
+        }
         unfreezeMap()
     }
 
@@ -767,7 +771,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         if (isQuestDetailsCurrentlyDisplayedFor(quest.key)) return
         if (bottomSheetFragment != null) {
             activity?.currentFocus?.hideKeyboard()
-            childFragmentManager.popBackStackImmediate(BOTTOM_SHEET, POP_BACK_STACK_INCLUSIVE)
+            if (bottomSheetFragment != null) {
+                childFragmentManager.popBackStack(BOTTOM_SHEET, POP_BACK_STACK_INCLUSIVE)
+            }
             resetFreezeMap()
             mapFragment.startFocusQuest(quest, mapOffsetWithOpenBottomSheet)
         } else {
@@ -793,7 +799,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun showInBottomSheet(f: Fragment) {
         val appearAnim = if (bottomSheetFragment == null) R.animator.quest_answer_form_appear else 0
         val disappearAnim = R.animator.quest_answer_form_disappear
-        childFragmentManager.commit {
+        childFragmentManager.commit(true) {
             setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
             replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
             addToBackStack(BOTTOM_SHEET)
