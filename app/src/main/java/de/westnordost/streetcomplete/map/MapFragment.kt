@@ -111,8 +111,8 @@ open class MapFragment : Fragment(),
         mapView.onCreate(savedInstanceState)
 
         openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }
-        mapTileProviderLink.text = vectorTileProvider.copyrightText
-        mapTileProviderLink.setOnClickListener { showOpenUrlDialog(vectorTileProvider.copyrightLink) }
+        mapTileProviderLink.text = vectorTileProvider.baseTileSource.copyrightText
+        mapTileProviderLink.setOnClickListener { showOpenUrlDialog(vectorTileProvider.baseTileSource.copyrightLink) }
 
         attributionContainer.respectSystemInsets(View::setMargins)
 

@@ -52,14 +52,14 @@ class MapTilesDownloader @Inject constructor(
     private fun getDownloadTileSequence(bbox: BoundingBox): Sequence<Tile> =
         /* tiles for the highest zoom (=likely current or near current zoom) first,
            because those are the tiles that are likely to be useful first */
-        (vectorTileProvider.maxZoom downTo 0).asSequence().flatMap { zoom ->
+        (vectorTileProvider.baseTileSource.maxZoom downTo 0).asSequence().flatMap { zoom ->
             bbox.enclosingTilesRect(zoom).asTilePosSequence().map { Tile(zoom, it.x, it.y) }
         }
 
     private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadResult = suspendCancellableCoroutine { cont ->
         /* adding trailing "&" because Tangram-ES also puts this at the end and the URL needs to be
            identical in order for the cache to work */
-        val url = vectorTileProvider.getTileUrl(zoom, x, y) + "&"
+        val url = vectorTileProvider.baseTileSource.getTileUrl(zoom, x, y) + "&"
         val httpUrl = HttpUrl.parse(url)
         check(httpUrl != null) { "Invalid URL: $url" }
 
