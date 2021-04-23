@@ -1,14 +1,37 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
+import de.westnordost.osmapi.map.MapDataWithGeometry
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 
-class AddStileType : OsmFilterQuestType<BarrierType>() {
+class AddStileType : OsmElementQuestType<BarrierType> {
 
-    override val elementFilter = """
+    private val stileNodes by lazy { """
         nodes with barrier=stile and !stile
-    """
+    """.toElementFilterExpression() }
+
+    private val excludedWaysFilter by lazy { """
+        ways with
+          access ~ private|no
+          and foot !~ permissive|yes|designated
+    """.toElementFilterExpression() }
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val excludedWayNodeIds = mutableSetOf<Long>()
+        mapData.ways
+            .filter { excludedWaysFilter.matches(it) }
+            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
+
+        return mapData.nodes
+            .filter { stileNodes.matches(it) && it.id !in excludedWayNodeIds }
+    }
+
+    override fun isApplicableTo(element: Element): Boolean? = null
+
     override val commitMessage = "Add specific stile type"
     override val wikiLink = "Key:stile"
     override val icon = R.drawable.ic_quest_cow
