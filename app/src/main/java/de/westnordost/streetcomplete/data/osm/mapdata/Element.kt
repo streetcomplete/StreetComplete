@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import java.io.Serializable
 import java.lang.System.currentTimeMillis
 
-sealed class Element {
+sealed class Element : Serializable {
     abstract val id: Long
     abstract val version: Int
     abstract val tags: Map<String, String>
