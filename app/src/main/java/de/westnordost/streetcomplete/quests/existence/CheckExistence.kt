@@ -42,6 +42,7 @@ class CheckExistence(
             or advertising ~ column|board|poster_box
             or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
             or traffic_calming = table and !highway and !crossing
+            or amenity = recycling and recycling_type = container
           )
           and (${lastChecked(4.0)})
         )) and access !~ no|private
