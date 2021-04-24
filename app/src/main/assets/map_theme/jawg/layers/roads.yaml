@@ -61,7 +61,7 @@ layers:
         data: { source: jawg, layer: road }
         filter: { class: [main, street, motorway_link, street_limited, service, driveway, path], not: { type: trunk } }
         draw:
-            lines:
+            lines-road-style:
                 order: 30
                 join: round
                 cap: round
@@ -71,26 +71,26 @@ layers:
         major_road:
             filter: { class: main, type: [primary, secondary] }
             draw:
-                lines:
+                lines-road-style:
                     width: [[9, 1px], [14, 2px], [16, 6px], [19, 12m]]
 
         minor_road:
             filter: [ class: street, {class: main, type: tertiary} ]
             draw:
-                lines:
+                lines-road-style:
                     width: [[11, 0.5px], [12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.5px], [16, 8m]]
 
         service_road:
             filter: { class: [service, driveway] } # jawg: tracks are in service
             draw:
-                lines:
+                lines-road-style:
                     width: [[13, 0.5px], [17, 3px], [18, 4m]]
 
         path:
             # jawg: not possible to filter out indoor paths
             filter: { class: path }
             draw:
-                lines:
+                lines-road-style:
                     color: global.path_color
                     width: [[14, 0.5px], [15, 1px], [19, 2m]]
             steps:
@@ -105,7 +105,7 @@ layers:
         road-outline:
             filter: { $zoom: { min: 15 } }
             draw:
-                lines:
+                lines-road-style:
                     outline:
                         color: global.road_outline_color
                         width: function () { return 1.5/4 * Math.log($zoom); }
@@ -114,7 +114,7 @@ layers:
         path-outline:
             filter: { $zoom: { min: 17 }, class: path }
             draw:
-                lines:
+                lines-road-style:
                     outline:
                         color: global.path_outline_color
                         width: function () { return 1/4 * Math.log($zoom); }
@@ -123,7 +123,7 @@ layers:
         private:
             filter: { access: [no, private, destination, customers, delivery, agricultural, forestry, emergency] }
             draw:
-                lines:
+                lines-road-style:
                     outline:
                         style: private-way
 
@@ -144,7 +144,7 @@ layers:
         bridges:
             filter: { structure: bridge }
             draw:
-                lines:
+                lines-road-style:
                     order: 40
                     outline:
                         cap: butt
@@ -153,7 +153,7 @@ layers:
         tunnel:
             filter: { structure: tunnel }
             draw:
-                lines:
+                lines-road-style:
                     order: 20
                     style: tunnel-way
                     color: global.tunnel_color
@@ -179,6 +179,9 @@ styles:
         dash: [0.6,0.4]
         dash_background_color: global.path_outline_color
     lines-highway-style:
+        base: lines
+        blend: opaque
+    lines-road-style:
         base: lines
         blend: opaque
     lines-railway-style:

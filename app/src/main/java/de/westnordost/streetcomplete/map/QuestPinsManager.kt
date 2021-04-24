@@ -122,10 +122,11 @@ class QuestPinsManager(
         val bbox = minRect.asBoundingBox(TILES_ZOOM)
         lifecycleScope.launch {
             val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
+            var addedAny = false
             for (quest in quests) {
-                add(quest)
+                if (add(quest)) addedAny = true
             }
-            updatePins()
+            if (addedAny) updatePins()
         }
         synchronized(retrievedTiles) { retrievedTiles.addAll(tiles) }
     }

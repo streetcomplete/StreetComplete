@@ -169,7 +169,7 @@
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 First off, understand that with this app, you make actual and direct contributions to the OpenStreetMap.&lt;br/&gt;
-Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure, like it is the case with &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; or &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
 &lt;/p&gt;
 &lt;p&gt;
 Editing the OpenStreetMap anonymously is not possible, so any changes you make are made with your OSM user account. This means, that the date, content and implicitly the location of your changes are visible publicly on the openstreetmap website and are attributable to your account.
@@ -582,6 +582,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_postboxRoyalCypher_title">What is the royal cypher on this postbox?</string>
     <string name="quest_postboxRoyalCypher_type_none">No royal cypher is visible</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">The Crown of Scotland</string>
+    <string name="quest_policeType_title">Which type of police station is this?</string>
     <string name="quest_construction_road_title">Is this road completed?</string>
     <string name="quest_construction_cycleway_title">Is this cycleway completed?</string>
     <string name="quest_construction_footway_title">Is this footway completed?</string>
@@ -1026,7 +1027,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_height_restrictor">Height barrier</string>
     <string name="quest_barrier_full_height_turnstile">Full height turnstile</string>
     <string name="quest_barrier_type_turnstile">Turnstile</string>
-    <string name="quest_barrier_type_passage">Passage through wall/fence/etc</string>
+    <string name="quest_barrier_type_passage">Passage through wall/fence/etc.</string>
     <string name="quest_barrier_type_debris_pile">Pile of debris</string>
     <string name="quest_barrier_type_stile_squeezer">Squeeze stile</string>
     <string name="quest_barrier_type_stile_ladder">Ladder stile</string>
@@ -1034,4 +1035,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_kissing_gate">Kissing gate</string>
     <string name="quest_barrier_type_stepover">Step-over stile</string>
     <string name="quest_barrier_type_swing_gate">Horizontal bar</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">Converted into a kissing gate</string>
+    <string name="quest_stile_type_title">What type of stile is this?</string>
 </resources>

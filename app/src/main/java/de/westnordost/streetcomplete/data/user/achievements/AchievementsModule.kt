@@ -672,6 +672,7 @@ object AchievementsModule {
                     "AddVegetarian",
                     "AddVegan",
                     "AddKosher",
+                    "AddPoliceType",
                     // tourist related
                     "AddInformationToTourism",
                     "AddBoardType",
@@ -709,6 +710,7 @@ object AchievementsModule {
                     "AddFootwayPartSurface",
                     "AddBenchBackrest",
                     "AddBarrierType",
+                    "AddStileType",
                     // information boards
                     "AddInformationToTourism",
                     "AddBoardType"
