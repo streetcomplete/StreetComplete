@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.SpatialPartsOfNode
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -37,11 +36,10 @@ class ElementEditsControllerTest {
     }
 
     @Test fun add() {
-        val p = p(2.0,4.0)
         val action =  mock<ElementEditAction>()
         on(action.newElementsCount).thenReturn(NewElementsCount(1,2,3))
 
-        ctrl.add(QUEST_TYPE, NODE, 1L, "test", p, action)
+        ctrl.add(QUEST_TYPE, node(1), pGeom(),"test", action)
 
         verify(db).add(any())
         verify(idProvider).assign(0L, 1, 2, 3)
@@ -80,11 +78,10 @@ class ElementEditsControllerTest {
     }
 
     @Test fun `undo unsynced`() {
-        val edit = edit(action = UpdateElementTagsAction(
-            SpatialPartsOfNode(p(0.0,0.0)),
-            StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
-            QUEST_TYPE
-        ), isSynced = false)
+        val edit = edit(
+            action = UpdateElementTagsAction(StringMapChanges(listOf(StringMapEntryAdd("a", "b")))),
+            isSynced = false
+        )
 
         on(idProvider.get(anyLong())).thenReturn(ElementIdProvider(listOf()))
         on(db.get(anyLong())).thenReturn(edit)
@@ -97,8 +94,7 @@ class ElementEditsControllerTest {
     }
 
     @Test fun `delete edits based on the the one being undone`() {
-
-        val edit1 =  edit(action = mock(), id = 1L)
+        val edit1 = edit(action = mock(), id = 1L)
         val edit2 = edit(action = mock(), id = 2L)
         val edit3 = edit(action = mock(), id = 3L)
         val edit4 = edit(action = mock(), id = 4L)
@@ -135,12 +131,10 @@ class ElementEditsControllerTest {
     }
 
     @Test fun `undo synced`() {
-        val action = UpdateElementTagsAction(
-            SpatialPartsOfNode(p(0.0,0.0)),
-            StringMapChanges(listOf(StringMapEntryAdd("a", "b"))),
-            QUEST_TYPE
+        val edit = edit(
+            action = UpdateElementTagsAction(StringMapChanges(listOf(StringMapEntryAdd("a", "b")))),
+            isSynced = true
         )
-        val edit = edit(action = action, isSynced = true)
 
         on(db.get(anyLong())).thenReturn(edit)
         on(idProvider.get(anyLong())).thenReturn(ElementIdProvider(listOf()))

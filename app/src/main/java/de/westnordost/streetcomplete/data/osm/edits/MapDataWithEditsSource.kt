@@ -354,7 +354,7 @@ import javax.inject.Singleton
             /* sorting by element type: first nodes, then ways, then relations. This is important
                because the geometry of (new) nodes is necessary to create the geometry of ways etc
              */
-            elements = edit.action.createUpdates(editElement, this, idProvider)
+            elements = edit.action.createUpdates(edit.originalElement, editElement, this, idProvider)
                 .sortedBy { it.type.ordinal }
         } catch (e: ConflictException) {
             return emptyList()

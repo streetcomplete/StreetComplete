@@ -14,7 +14,10 @@ interface ElementEditAction {
      * when applied to the given element or throw a ElementConflictException
      * */
     fun createUpdates(
-        element: Element, mapDataRepository: MapDataRepository, idProvider: ElementIdProvider
+        originalElement: Element,
+        element: Element,
+        mapDataRepository: MapDataRepository,
+        idProvider: ElementIdProvider
     ): Collection<Element>
 }
 

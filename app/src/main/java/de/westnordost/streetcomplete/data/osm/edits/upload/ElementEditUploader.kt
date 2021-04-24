@@ -21,7 +21,7 @@ class ElementEditUploader @Inject constructor(
     fun upload(edit: ElementEdit, idProvider: ElementIdProvider): MapDataUpdates {
         val element = edit.fetchElement() ?: throw ConflictException()
 
-        val uploadElements = edit.action.createUpdates(element, mapDataApi, idProvider)
+        val uploadElements = edit.action.createUpdates(edit.originalElement, element, mapDataApi, idProvider)
 
         return try {
             val changesetId = changesetManager.getOrCreateChangeset(edit.questType, edit.source)

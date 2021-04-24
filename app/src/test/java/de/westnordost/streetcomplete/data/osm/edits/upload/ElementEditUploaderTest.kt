@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.*
 import org.junit.Before
@@ -26,20 +25,20 @@ class ElementEditUploaderTest {
 
     @Test(expected = ConflictException::class)
     fun `throws deleted exception if node is no more`() {
-        on(mapDataApi.getNode(anyLong())).thenReturn(null)
-        uploader.upload(edit(elementType = ElementType.NODE, elementId = 12), mock())
+        on(mapDataApi.getNode(12)).thenReturn(null)
+        uploader.upload(edit(element = node(12)), mock())
     }
 
     @Test(expected = ConflictException::class)
     fun `throws deleted exception if way is no more`() {
-        on(mapDataApi.getWay(anyLong())).thenReturn(null)
-        uploader.upload(edit(elementType = ElementType.WAY, elementId = 12), mock())
+        on(mapDataApi.getWay(12)).thenReturn(null)
+        uploader.upload(edit(element = way(12)), mock())
     }
 
     @Test(expected = ConflictException::class)
     fun `throws deleted exception if relation is no more`() {
-        on(mapDataApi.getRelation(anyLong())).thenReturn(null)
-        uploader.upload(edit(elementType = ElementType.RELATION, elementId = 12), mock())
+        on(mapDataApi.getRelation(12)).thenReturn(null)
+        uploader.upload(edit(element = rel(12)), mock())
     }
 
     @Test(expected = ConflictException::class)
@@ -52,7 +51,7 @@ class ElementEditUploaderTest {
             .thenThrow(OsmConflictException(1, "", ""))
             .thenThrow(OsmConflictException(1, "", ""))
 
-        uploader.upload(edit(elementType = ElementType.NODE, elementId = 1), mock())
+        uploader.upload(edit(element = node(1)), mock())
     }
 
     @Test fun `handles changeset conflict exception`() {
@@ -63,6 +62,6 @@ class ElementEditUploaderTest {
         doThrow(OsmConflictException(1, "", "")).doAnswer {  }
             .on(mapDataApi).uploadChanges(anyLong(), any())
 
-        uploader.upload(edit(elementType = ElementType.NODE, elementId = 1), mock())
+        uploader.upload(edit(element = node(1)), mock())
     }
 }

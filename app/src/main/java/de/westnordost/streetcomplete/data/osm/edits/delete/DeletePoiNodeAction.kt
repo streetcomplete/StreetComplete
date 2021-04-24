@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /** Action that deletes a POI node.
@@ -26,18 +27,17 @@ import kotlinx.serialization.Serializable
  *  else now, etc.
  *  */
 @Serializable
-class DeletePoiNodeAction(
-    private val originalNodeVersion: Int,
-) : ElementEditAction {
+object DeletePoiNodeAction : ElementEditAction {
 
     override fun createUpdates(
+        originalElement: Element,
         element: Element,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): Collection<Element> {
         var node = element as Node
 
-        if (node.version > originalNodeVersion) throw ConflictException()
+        if (node.version > originalElement.version) throw ConflictException()
 
         // delete free-floating node
         if (mapDataRepository.getWaysForNode(node.id).isEmpty() &&
@@ -51,12 +51,4 @@ class DeletePoiNodeAction(
 
         return listOf(node)
     }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is DeletePoiNodeAction) return false
-        return originalNodeVersion == other.originalNodeVersion
-    }
-
-    override fun hashCode(): Int = originalNodeVersion
 }

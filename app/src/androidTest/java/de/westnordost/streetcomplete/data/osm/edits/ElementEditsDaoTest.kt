@@ -6,8 +6,10 @@ import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePositio
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType2
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -57,10 +59,10 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getByElement() {
-        val e1 = updateTags(elementType = ElementType.NODE, elementId = 123L)
-        val e2 = updateTags(elementType = ElementType.NODE, elementId = 123L)
-        val e3 = updateTags(elementType = ElementType.WAY, elementId = 123L)
-        val e4 = updateTags(elementType = ElementType.NODE, elementId = 124L)
+        val e1 = updateTags(element = Node(123, p))
+        val e2 = updateTags(element = Node(123, p))
+        val e3 = updateTags(element = Way(123, listOf()))
+        val e4 = updateTags(element = Node(124, p))
         dao.addAll(e1, e2, e3, e4)
 
         val edits = dao.getByElement(ElementType.NODE, 123L)
@@ -180,10 +182,10 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     @Test fun updateElementId() {
         assertEquals(0, dao.updateElementId(ElementType.NODE, -5, 6))
 
-        val e1 = updateTags(elementType = ElementType.NODE, elementId = -5)
-        val e2 = updateTags(elementType = ElementType.NODE, elementId = -5)
-        val e3 = updateTags(elementType = ElementType.WAY, elementId = -5)
-        val e4 = updateTags(elementType = ElementType.NODE, elementId = -3)
+        val e1 = updateTags(element = Node(-5, p))
+        val e2 = updateTags(element = Node(-5, p))
+        val e3 = updateTags(element = Way(-5, listOf()))
+        val e4 = updateTags(element = Node(-3, p))
 
         dao.addAll(e1, e2, e3, e4)
 
@@ -199,41 +201,40 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 private fun ElementEditsDao.addAll(vararg edits: ElementEdit) = edits.forEach { add(it) }
 
 private fun updateTags(
-    elementType: ElementType = ElementType.NODE,
-    elementId: Long = 1L,
+    element: Element = node,
+    geometry: ElementGeometry = geom,
     timestamp: Long = 123L,
     isSynced: Boolean = false
 ) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    elementType,
-    elementId,
+    element.type,
+    element.id,
+    element,
+    geometry,
     "survey",
-    LatLon(0.0,0.0),
     timestamp,
     isSynced,
     UpdateElementTagsAction(
-        SpatialPartsOfNode(LatLon(0.0,0.0)),
         StringMapChanges(listOf(
             StringMapEntryAdd("a", "b"),
             StringMapEntryModify("c", "d", "e"),
             StringMapEntryDelete("f", "g"),
-        )),
-        TEST_QUEST_TYPE
+        ))
     )
 )
 
 private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    ElementType.NODE,
-    1L,
+    node.type,
+    node.id,
+    node,
+    geom,
     "survey",
-    LatLon(0.0,0.0),
     timestamp,
     isSynced,
     RevertUpdateElementTagsAction(
-        SpatialPartsOfNode(LatLon(0.0,0.0)),
         StringMapChanges(listOf(
             StringMapEntryAdd("a", "b"),
             StringMapEntryModify("c", "d", "e"),
@@ -245,22 +246,24 @@ private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) 
 private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    ElementType.NODE,
-    1L,
+    node.type,
+    node.id,
+    node,
+    geom,
     "survey",
-    LatLon(0.0,0.0),
     timestamp,
     isSynced,
-    DeletePoiNodeAction(1)
+    DeletePoiNodeAction
 )
 
 private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
     ElementType.WAY,
-    1L,
+    1,
+    Way(1, listOf(0,1)),
+    ElementPolylinesGeometry(listOf(listOf(LatLon(0.0, 0.0), LatLon(1.0,1.0))), LatLon(0.5, 0.5)),
     "survey",
-    LatLon(0.0,0.0),
     timestamp,
     isSynced,
     SplitWayAction(
@@ -271,11 +274,13 @@ private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = Elemen
                 LatLon(1.0,1.0),
                 0.5
             )
-        ),
-        0,
-        1
+        )
     )
 )
+
+private val p = LatLon(0.0, 0.0)
+private val node = Node(1, p)
+private val geom = ElementPointGeometry(p)
 
 private val TEST_QUEST_TYPE = TestQuestType()
 private val TEST_QUEST_TYPE2 = TestQuestType2()

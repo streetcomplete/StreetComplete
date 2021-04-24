@@ -2,32 +2,21 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.util.distanceTo
-import kotlinx.serialization.Serializable
 
-/** Only the parts of an element that are used to determine the geometry */
-@Serializable
-sealed class SpatialPartsOfElement
-@Serializable
-data class SpatialPartsOfNode(val position: LatLon) : SpatialPartsOfElement()
-@Serializable
-data class SpatialPartsOfWay(val nodeIds: ArrayList<Long>) : SpatialPartsOfElement()
-@Serializable
-data class SpatialPartsOfRelation(val members: ArrayList<RelationMember>) : SpatialPartsOfElement()
-
-internal fun isGeometrySubstantiallyDifferent(element: SpatialPartsOfElement, newElement: Element) =
+internal fun isGeometrySubstantiallyDifferent(element: Element, newElement: Element) =
     when (element) {
-        is SpatialPartsOfNode -> isNodeGeometrySubstantiallyDifferent(element, newElement as Node)
-        is SpatialPartsOfWay -> isWayGeometrySubstantiallyDifferent(element, newElement as Way)
-        is SpatialPartsOfRelation -> isRelationGeometrySubstantiallyDifferent(element, newElement as Relation)
+        is Node -> isNodeGeometrySubstantiallyDifferent(element, newElement as Node)
+        is Way -> isWayGeometrySubstantiallyDifferent(element, newElement as Way)
+        is Relation -> isRelationGeometrySubstantiallyDifferent(element, newElement as Relation)
     }
 
-private fun isNodeGeometrySubstantiallyDifferent(node: SpatialPartsOfNode, newNode: Node) =
+private fun isNodeGeometrySubstantiallyDifferent(node: Node, newNode: Node) =
     /* Moving the node a distance beyond what would pass as adjusting the position within a
        building counts as substantial change. Also, the maximum distance should be not (much)
        bigger than the usual GPS inaccuracy in the city. */
     node.position.distanceTo(newNode.position) > 20
 
-private fun isWayGeometrySubstantiallyDifferent(way: SpatialPartsOfWay, newWay: Way) =
+private fun isWayGeometrySubstantiallyDifferent(way: Way, newWay: Way) =
     /* if the first or last node is different, it means that the way has either been extended or
        shortened at one end, which is counted as being substantial:
        If for example the surveyor has been asked to determine something for a certain way
@@ -36,15 +25,7 @@ private fun isWayGeometrySubstantiallyDifferent(way: SpatialPartsOfWay, newWay: 
     way.nodeIds.firstOrNull() != newWay.nodeIds.firstOrNull() ||
         way.nodeIds.lastOrNull() != newWay.nodeIds.lastOrNull()
 
-private fun isRelationGeometrySubstantiallyDifferent(relation: SpatialPartsOfRelation, newRelation: Relation) =
+private fun isRelationGeometrySubstantiallyDifferent(relation: Relation, newRelation: Relation) =
     /* a relation is counted as substantially different, if any member changed, even if just
        the order changed because for some relations, the order has an important meaning */
     relation.members != newRelation.members
-
-
-
-fun Element.getSpatialParts(): SpatialPartsOfElement = when(this) {
-    is Node -> SpatialPartsOfNode(LatLon(position.latitude, position.longitude))
-    is Way -> SpatialPartsOfWay(ArrayList(nodeIds))
-    is Relation -> SpatialPartsOfRelation(ArrayList(members))
-}

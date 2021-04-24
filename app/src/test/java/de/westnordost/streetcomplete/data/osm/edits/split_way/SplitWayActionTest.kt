@@ -72,13 +72,15 @@ class SplitWayActionTest {
     @Test(expected = ConflictException::class)
     fun `raise conflict if updated way was cut at the start`() {
         way = way(0, mutableListOf(1,2,3))
-        doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
+        val originalWay = way(0, mutableListOf(0,1,2,3))
+        doSplit(split, originalWay = originalWay)
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if updated way was cut at the end`() {
         way = way(0, mutableListOf(0,1,2))
-        doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
+        val originalWay = way(0, mutableListOf(0,1,2,3))
+        doSplit(split, originalWay = originalWay)
     }
 
     @Test(expected = ConflictException::class)
@@ -113,7 +115,8 @@ class SplitWayActionTest {
 
     @Test fun `do not raise conflict if way was reversed`() {
         way = way(0, mutableListOf(3,2,1,0))
-        val data = doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
+        val originalWay = way(0, mutableListOf(0,1,2,3))
+        val data = doSplit(split, originalWay = originalWay)
         data.checkWaysNodes(
             listOf(3,2,-1),
             listOf(-1,1,0)
@@ -641,17 +644,16 @@ class SplitWayActionTest {
 
     private fun doSplit(
         vararg splits: SplitPolylineAtPosition = arrayOf(split),
-        originalWayFirstNodeId: Long = way.nodeIds.first(),
-        originalWayLastNodeId: Long = way.nodeIds.last()
+        originalWay: Way = way
     ): MapData {
-        val action = SplitWayAction(ArrayList(splits.toList()), originalWayFirstNodeId, originalWayLastNodeId)
+        val action = SplitWayAction(ArrayList(splits.toList()))
         val counts = action.newElementsCount
         val elementKeys = ArrayList<ElementKey>()
         for (i in 1L..counts.nodes) { elementKeys.add(ElementKey(NODE, -i)) }
         for (i in 1L..counts.ways) { elementKeys.add(ElementKey(WAY, -i)) }
         for (i in 1L..counts.relations) { elementKeys.add(ElementKey(RELATION, -i)) }
         val provider = ElementIdProvider(elementKeys)
-        val elements = action.createUpdates(way, repos, provider)
+        val elements = action.createUpdates(originalWay, way, repos, provider)
         return MutableMapData(elements)
     }
 

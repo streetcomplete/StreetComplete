@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -78,13 +79,14 @@ import kotlin.collections.ArrayList
     ): Boolean = withContext(Dispatchers.IO) {
         val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
         val w = mapDataSource.get(q.elementType, q.elementId) as? Way ?: return@withContext false
+        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) as? ElementPolylinesGeometry ?: return@withContext false
+
         elementEditsController.add(
             q.osmElementQuestType,
-            q.elementType,
-            q.elementId,
+            w,
+            geom,
             source,
-            q.position,
-            SplitWayAction(ArrayList(splits), w.nodeIds.first(), w.nodeIds.last())
+            SplitWayAction(ArrayList(splits))
         )
         return@withContext true
     }
@@ -98,16 +100,16 @@ import kotlin.collections.ArrayList
     ): Boolean = withContext(Dispatchers.IO) {
         val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
         val e = mapDataSource.get(q.elementType, q.elementId) ?: return@withContext false
+        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) ?: return@withContext false
 
         Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!}")
 
         elementEditsController.add(
             q.osmElementQuestType,
-            q.elementType,
-            q.elementId,
+            e,
+            geom,
             source,
-            q.position,
-            DeletePoiNodeAction(e.version)
+            DeletePoiNodeAction
         )
         return@withContext true
     }
@@ -122,17 +124,18 @@ import kotlin.collections.ArrayList
         source: String
     ): Boolean = withContext(Dispatchers.IO) {
         val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
-        val element = getOsmElement(q) ?: return@withContext false
+        val element = mapDataSource.get(q.elementType, q.elementId) ?: return@withContext false
+        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) ?: return@withContext false
+
         val changes = createReplaceShopChanges(element.tags, tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!} with $changes")
 
         elementEditsController.add(
             q.osmElementQuestType,
-            q.elementType,
-            q.elementId,
+            element,
+            geom,
             source,
-            q.position,
-            UpdateElementTagsAction(element.getSpatialParts(), changes, null)
+            UpdateElementTagsAction(changes)
         )
 
         return@withContext true
@@ -186,10 +189,9 @@ import kotlin.collections.ArrayList
         answer: Any,
         source: String
     ): Boolean = withContext(Dispatchers.IO) {
-        // race condition: another thread (i.e. quest download thread) may have removed the
-        // element already (#282). So in this case, just ignore
         val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
-        val element = getOsmElement(q) ?: return@withContext false
+        val element = mapDataSource.get(q.elementType, q.elementId) ?: return@withContext false
+        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) ?: return@withContext false
 
         val changes = createOsmQuestChanges(q, element, answer)
         require(!changes.isEmpty()) {
@@ -200,11 +202,10 @@ import kotlin.collections.ArrayList
 
         elementEditsController.add(
             q.osmElementQuestType,
-            q.elementType,
-            q.elementId,
+            element,
+            geom,
             source,
-            q.position,
-            UpdateElementTagsAction(element.getSpatialParts(), changes, q.osmElementQuestType)
+            UpdateElementTagsAction(changes)
         )
 
         return@withContext true

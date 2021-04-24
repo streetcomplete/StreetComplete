@@ -97,19 +97,19 @@ fun noteEdit(
 
 fun edit(
     id: Long = 1L,
-    elementType: ElementType = ElementType.NODE,
-    elementId: Long = -1L,
-    pos: LatLon = p(0.0,0.0),
+    element: Element = node(),
+    geometry: ElementGeometry = pGeom(),
     timestamp: Long = 123L,
-    action: ElementEditAction = DeletePoiNodeAction(1),
+    action: ElementEditAction = DeletePoiNodeAction,
     isSynced: Boolean = false
 ) = ElementEdit(
     id,
     QUEST_TYPE,
-    elementType,
-    elementId,
+    element.type,
+    element.id,
+    element,
+    geometry,
     "survey",
-    pos,
     timestamp,
     isSynced,
     action

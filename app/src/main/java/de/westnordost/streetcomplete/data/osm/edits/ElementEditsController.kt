@@ -2,10 +2,8 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -27,10 +25,9 @@ import javax.inject.Singleton
     /** Add new unsynced edit to the to-be-uploaded queue */
     @Synchronized fun add(
         questType: OsmElementQuestType<*>,
-        elementType: ElementType,
-        elementId: Long,
+        element: Element,
+        geometry: ElementGeometry,
         source: String,
-        position: LatLon,
         action: ElementEditAction
     ) {
         // some hardcode here, but not sure how to generalize this:
@@ -38,7 +35,7 @@ import javax.inject.Singleton
             /* if there is an unsynced UpdateElementTagsAction that is the exact reverse of what
                shall be added now, instead of adding that, delete that reverse edit */
             val reverseEdit = getAllUnsynced().asReversed().find {
-                it.elementType == elementType && it.elementId == elementId
+                it.elementType == element.type && it.elementId == element.id
                 it.action is UpdateElementTagsAction && it.action.isReverseOf(action)
             }
             if (reverseEdit != null) {
@@ -47,7 +44,7 @@ import javax.inject.Singleton
             }
         }
 
-        val edit = ElementEdit(0, questType, elementType, elementId, source, position, currentTimeMillis(), false, action)
+        val edit = ElementEdit(0, questType, element.type, element.id, element, geometry, source, currentTimeMillis(), false, action)
         add(edit)
     }
 
@@ -110,7 +107,7 @@ import javax.inject.Singleton
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(edit.questType, edit.elementType, edit.elementId, edit.source, edit.position, action.createReverted())
+            add(edit.questType, edit.originalElement, edit.originalGeometry, edit.source, action.createReverted())
         }
         // not uploaded yet
         else {

@@ -11,36 +11,20 @@ import kotlinx.serialization.Serializable
 
 /** Contains the information necessary to apply a revert of tag changes made on an element */
 @Serializable
-class RevertUpdateElementTagsAction(
-    private val spatialPartsOfOriginalElement: SpatialPartsOfElement,
-    private val changes: StringMapChanges
-): ElementEditAction, IsRevertAction {
+data class RevertUpdateElementTagsAction(private val changes: StringMapChanges): ElementEditAction, IsRevertAction {
 
     override val newElementsCount get() = NewElementsCount(0,0,0)
 
     override fun createUpdates(
+        originalElement: Element,
         element: Element,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): Collection<Element> {
-
-        if (isGeometrySubstantiallyDifferent(spatialPartsOfOriginalElement, element)) {
+        if (isGeometrySubstantiallyDifferent(originalElement, element)) {
             throw ConflictException("Element geometry changed substantially")
         }
 
         return listOf(element.changesApplied(changes))
-    }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is RevertUpdateElementTagsAction) return false
-        return changes == other.changes &&
-            spatialPartsOfOriginalElement == other.spatialPartsOfOriginalElement
-    }
-
-    override fun hashCode(): Int {
-        var result = spatialPartsOfOriginalElement.hashCode()
-        result = 31 * result + changes.hashCode()
-        return result
     }
 }

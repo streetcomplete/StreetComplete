@@ -149,9 +149,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     }
 
     private fun Edit.getGeometry(): ElementGeometry = when(this) {
-        /* TODO if edits also persisted the geometry of the element at the time the edit was
-        *   created, it could be shown here. */
-        is ElementEdit -> mapDataSource.getGeometry(elementType, elementId)
+        is ElementEdit -> originalGeometry
         is OsmQuestHidden -> mapDataSource.getGeometry(elementType, elementId)
         else -> null
     } ?: ElementPointGeometry(position)

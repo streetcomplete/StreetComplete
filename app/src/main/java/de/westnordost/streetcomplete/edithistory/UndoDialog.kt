@@ -89,9 +89,7 @@ class UndoDialog(
 
     suspend fun Edit.getTitle(): CharSequence = when(this) {
         is ElementEdit -> {
-            // TODO when the edit contains the original element the edit was made with, this wouldn't be necessary
-            val element = withContext(Dispatchers.IO) { mapDataSource.get(elementType, elementId) }
-            getQuestTitle(questType, element)
+            getQuestTitle(questType, originalElement)
         }
         is NoteEdit -> {
             context.resources.getText(when(action) {

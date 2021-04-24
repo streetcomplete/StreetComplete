@@ -25,7 +25,7 @@ class DeletePoiNodeActionTest {
     @Test fun `delete free-floating node`() {
         on(repos.getWaysForNode(1L)).thenReturn(emptyList())
         on(repos.getRelationsForNode(1L)).thenReturn(emptyList())
-        val nd = DeletePoiNodeAction(2).createUpdates(e, repos, provider).single()
+        val nd = DeletePoiNodeAction.createUpdates(e, e, repos, provider).single()
 
         assertTrue(nd.isDeleted)
     }
@@ -33,7 +33,7 @@ class DeletePoiNodeActionTest {
     @Test fun `'delete' vertex`() {
         on(repos.getWaysForNode(1L)).thenReturn(listOf(mock()))
         on(repos.getRelationsForNode(1L)).thenReturn(emptyList())
-        val nd = DeletePoiNodeAction(2).createUpdates(e, repos, provider).single()
+        val nd = DeletePoiNodeAction.createUpdates(e, e, repos, provider).single()
 
         assertFalse(nd.isDeleted)
         assertTrue(nd.tags.isEmpty())
@@ -41,6 +41,8 @@ class DeletePoiNodeActionTest {
 
     @Test(expected = ConflictException::class)
     fun `newer version creates conflict`() {
-        DeletePoiNodeAction(1).createUpdates(e, repos, provider)
+        DeletePoiNodeAction.createUpdates(
+            e.copy(version = 1),
+            e, repos, provider)
     }
 }

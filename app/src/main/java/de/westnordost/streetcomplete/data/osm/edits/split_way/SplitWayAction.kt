@@ -19,11 +19,7 @@ import kotlin.collections.ArrayList
  *  end, it is not considered compatible anymore
  *  */
 @Serializable
-class SplitWayAction(
-    private val splits: List<SplitPolylineAtPosition>,
-    private val originalWayFirstNodeId: Long,
-    private val originalWayLastNodeId: Long,
-): ElementEditAction {
+data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>): ElementEditAction {
 
     override val newElementsCount get() = NewElementsCount(
         nodes = splits.count { it is SplitAtLinePosition },
@@ -32,11 +28,13 @@ class SplitWayAction(
     )
 
     override fun createUpdates(
+        originalElement: Element,
         element: Element,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): Collection<Element> {
         val way = element as Way
+        val originalWay = originalElement as Way
         val completeWay = mapDataRepository.getWayComplete(way.id)
 
         var updatedWay = completeWay?.getWay(way.id)
@@ -45,10 +43,9 @@ class SplitWayAction(
         /* unsolvable conflict if updated way was shortened (e.g. cut in two) or extended because
         *  the already performed split may be at a similar spot than what the user selected here.
         *  If it was just reversed, that's ok though */
-        val isGeometryDifferentNow = !(
-            updatedWay.nodeIds.first() == originalWayFirstNodeId && updatedWay.nodeIds.last() == originalWayLastNodeId ||
-            updatedWay.nodeIds.first() == originalWayLastNodeId && updatedWay.nodeIds.last() == originalWayFirstNodeId
-        )
+        val endNodeIds = updatedWay.nodeIds.firstAndLast()
+        val originalEndNodeIds = originalWay.nodeIds.firstAndLast()
+        val isGeometryDifferentNow = !(endNodeIds == originalEndNodeIds || endNodeIds == originalEndNodeIds.reversed())
 
         if (isGeometryDifferentNow) {
             throw ConflictException("Way #${way.id} has been changed and the conflict cannot be solved automatically")
@@ -96,21 +93,6 @@ class SplitWayAction(
         updatedElements.addAll(updatedRelations)
 
         return updatedElements
-    }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is SplitWayAction) return false
-        return splits == other.splits
-            && originalWayFirstNodeId == other.originalWayFirstNodeId
-            && originalWayLastNodeId == other.originalWayLastNodeId
-    }
-
-    override fun hashCode(): Int {
-        var result = splits.hashCode()
-        result = 31 * result + originalWayFirstNodeId.hashCode()
-        result = 31 * result + originalWayLastNodeId.hashCode()
-        return result
     }
 }
 

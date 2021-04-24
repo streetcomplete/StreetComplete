@@ -25,6 +25,7 @@ data class Node(
     override val version: Int = 1,
     override val timestampEdited: Long = currentTimeMillis()
 ) : Element() {
+    @SerialName("elementType")
     override val type get() = ElementType.NODE
 }
 
@@ -37,6 +38,7 @@ data class Way(
     override val version: Int = 1,
     override val timestampEdited: Long = currentTimeMillis()
 ) : Element() {
+    @SerialName("elementType")
     override val type = ElementType.WAY
 
     val isClosed get() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
@@ -51,11 +53,17 @@ data class Relation(
     override val version: Int = 1,
     override val timestampEdited: Long = currentTimeMillis()
 ) : Element() {
+    @SerialName("elementType")
     override val type = ElementType.RELATION
 }
 
 @Serializable
-data class RelationMember(val type: ElementType, val ref: Long, val role: String)
+data class RelationMember(
+    @SerialName("elementType")
+    val type: ElementType,
+    val ref: Long,
+    val role: String
+    )
 
 enum class ElementType { NODE, WAY, RELATION }
 
