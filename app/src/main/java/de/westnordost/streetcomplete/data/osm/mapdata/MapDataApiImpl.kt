@@ -82,23 +82,20 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
         api.getRelationsForRelation(id).map { it.toRelation() }
 }
 
-// TODO(Flo): Make this private
-fun Element.toOsmApiElement(): OsmApiElement = when(this) {
+private fun Element.toOsmApiElement(): OsmApiElement = when(this) {
     is Node -> toOsmApiNode()
     is Way -> toOsmApiWay()
     is Relation -> toOsmApiRelation()
 }
 
-// TODO(Flo): Make this private
-fun OsmApiElement.toElement(): Element = when(this) {
+private fun OsmApiElement.toElement(): Element = when(this) {
     is OsmApiNode -> toNode()
     is OsmApiWay -> toWay()
     is OsmApiRelation -> toRelation()
     else -> throw IllegalArgumentException()
 }
 
-// TODO(Flo): Make this private
-fun Node.toOsmApiNode(): OsmApiNode = OsmNode(
+private fun Node.toOsmApiNode(): OsmApiNode = OsmNode(
     id,
     version,
     position.toOsmLatLon(),
@@ -107,11 +104,10 @@ fun Node.toOsmApiNode(): OsmApiNode = OsmNode(
     Instant.ofEpochMilli(timestampEdited)
 )
 
-// TODO(Flo): Make this private
-fun OsmApiNode.toNode(): Node = Node(id, position.toLatLon(), tags, version, editedAt.toEpochMilli())
+private fun OsmApiNode.toNode(): Node =
+    Node(id, position.toLatLon(), tags, version, editedAt.toEpochMilli())
 
-// TODO(Flo): Make this private
-fun Way.toOsmApiWay(): OsmApiWay = OsmWay(
+private fun Way.toOsmApiWay(): OsmApiWay = OsmWay(
     id,
     version,
     nodeIds,
@@ -120,11 +116,9 @@ fun Way.toOsmApiWay(): OsmApiWay = OsmWay(
     Instant.ofEpochMilli(timestampEdited)
 )
 
-// TODO(Flo): Make this private
-fun OsmApiWay.toWay(): Way = Way(id, nodeIds, tags, version, editedAt.toEpochMilli())
+private fun OsmApiWay.toWay(): Way = Way(id, nodeIds, tags, version, editedAt.toEpochMilli())
 
-// TODO(Flo): Make this private
-fun Relation.toOsmApiRelation(): OsmApiRelation = OsmRelation(
+private fun Relation.toOsmApiRelation(): OsmApiRelation = OsmRelation(
     id,
     version,
     members.map { it.toOsmRelationMember() },
@@ -133,8 +127,7 @@ fun Relation.toOsmApiRelation(): OsmApiRelation = OsmRelation(
     Instant.ofEpochMilli(timestampEdited)
 )
 
-// TODO(Flo): Make this private
-fun OsmApiRelation.toRelation(): Relation = Relation(
+private fun OsmApiRelation.toRelation(): Relation = Relation(
     id,
     members.map { it.toRelationMember() }.toMutableList(),
     tags,
@@ -142,25 +135,22 @@ fun OsmApiRelation.toRelation(): Relation = Relation(
     editedAt.toEpochMilli()
 )
 
-// TODO(Flo): Make this private
-fun RelationMember.toOsmRelationMember(): OsmApiRelationMember = OsmRelationMember(
+private fun RelationMember.toOsmRelationMember(): OsmApiRelationMember = OsmRelationMember(
     ref,
     role,
     type.toOsmElementType()
 )
 
-// TODO(Flo): Make this private
-fun OsmApiRelationMember.toRelationMember() = RelationMember(type.toElementType(), ref, role)
+private fun OsmApiRelationMember.toRelationMember() =
+    RelationMember(type.toElementType(), ref, role)
 
-// TODO(Flo): Make this private
-fun ElementType.toOsmElementType(): OsmApiElement.Type = when(this) {
+private fun ElementType.toOsmElementType(): OsmApiElement.Type = when(this) {
     ElementType.NODE        -> OsmApiElement.Type.NODE
     ElementType.WAY         -> OsmApiElement.Type.WAY
     ElementType.RELATION    -> OsmApiElement.Type.RELATION
 }
 
-// TODO(Flo): Make this private
-fun OsmApiElement.Type.toElementType(): ElementType = when(this) {
+private fun OsmApiElement.Type.toElementType(): ElementType = when(this) {
     OsmApiElement.Type.NODE     -> ElementType.NODE
     OsmApiElement.Type.WAY      -> ElementType.WAY
     OsmApiElement.Type.RELATION -> ElementType.RELATION
