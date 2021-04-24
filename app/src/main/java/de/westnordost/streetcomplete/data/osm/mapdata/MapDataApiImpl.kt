@@ -27,7 +27,14 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
     override fun uploadChanges(changesetId: Long, elements: Collection<Element>): MapDataUpdates {
         val handler = UpdatedElementsHandler()
         val osmElements = elements.map { it.toOsmApiElement() }
-        api.uploadChanges(changesetId, osmElements, handler)
+        api.uploadChanges(changesetId, osmElements) {
+            if (it.type !== null) handler.handle(DiffElement(
+                it.type.toElementType(),
+                it.clientId,
+                it.serverId,
+                it.serverVersion
+            ))
+        }
         return handler.getElementUpdates(osmElements.map { it.toElement() })
     }
 

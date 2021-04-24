@@ -50,6 +50,13 @@ data class RelationMember(val type: ElementType, val ref: Long, val role: String
 
 enum class ElementType { NODE, WAY, RELATION }
 
+data class DiffElement(
+    val type: ElementType,
+    val clientId: Long,
+    val serverId: Long? = null,
+    val serverVersion: Int? = null
+)
+
 data class LatLon(val latitude: Double, val longitude: Double) {
     init {
         checkValidity(latitude, longitude)
