@@ -35,6 +35,7 @@ v32.0-alpha1: |
   <ul>
   <li><i>Is this sport field lit?</i> (#2639, #2737), by @eginhard</li>
   <li><i>What type of barrier is this?</i> (#2739, #2753), by @matkoniecz</li>
+  <li><i>What type of stile is this?</i> (#2749, #2766), by @matkoniecz</li>
   <li><i>What type of shop is this?</i> (#2391, #2759), by @matkoniecz</li>
   <li>Italy only: <i>Which type of police station is this?</i> (#2456, #2675), by @naposm</li>
   </ul>
