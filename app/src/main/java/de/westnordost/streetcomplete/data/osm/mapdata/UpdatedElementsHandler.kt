@@ -1,16 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.common.Handler
-import de.westnordost.osmapi.map.changes.DiffElement
-
 /** Reads the answer of an update map call on the OSM API. */
-class UpdatedElementsHandler : Handler<DiffElement> {
+class UpdatedElementsHandler {
     private val nodeDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
     private val wayDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
     private val relationDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
 
-    override fun handle(d: DiffElement) {
-        when (d.type?.toElementType() ?: return) {
+    fun handle(d: DiffElement) {
+        when (d.type) {
             ElementType.NODE -> nodeDiffs[d.clientId] = d
             ElementType.WAY -> wayDiffs[d.clientId] = d
             ElementType.RELATION -> relationDiffs[d.clientId] = d
@@ -26,10 +23,10 @@ class UpdatedElementsHandler : Handler<DiffElement> {
             if (diff.serverId != null && diff.serverVersion != null) {
                 updatedElements.add(createUpdatedElement(element, diff.serverId, diff.serverVersion))
             } else {
-                deletedElementKeys.add(ElementKey(diff.type.toElementType(), diff.clientId))
+                deletedElementKeys.add(ElementKey(diff.type, diff.clientId))
             }
             if (diff.clientId != diff.serverId && diff.serverId != null) {
-                idUpdates.add(ElementIdUpdate(diff.type.toElementType(), diff.clientId, diff.serverId))
+                idUpdates.add(ElementIdUpdate(diff.type, diff.clientId, diff.serverId))
             }
         }
         return MapDataUpdates(updatedElements, deletedElementKeys, idUpdates)

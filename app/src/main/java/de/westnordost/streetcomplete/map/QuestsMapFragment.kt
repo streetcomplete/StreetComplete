@@ -154,6 +154,12 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         else -> null
     } ?: ElementPointGeometry(position)
 
+    /* -------------------------------- Highlighting element ------------------------------------ */
+
+    fun highlightElement(geometry: ElementGeometry) {
+        geometryMapComponent?.showGeometry(geometry)
+    }
+
     /* --------------------------------- Focusing on quest -------------------------------------- */
 
     fun startFocusQuest(quest: Quest, offset: RectF) {

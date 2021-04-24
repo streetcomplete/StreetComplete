@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
+import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.testutils.*
 import kotlinx.coroutines.runBlocking
@@ -8,17 +9,17 @@ import org.junit.Test
 import org.mockito.Mockito.verify
 
 class NotesDownloaderTest {
-    private lateinit var notesApi: NotesApi
+    private lateinit var osm: OsmConnection
     private lateinit var noteController: NoteController
 
     @Before fun setUp() {
-        notesApi = mock()
+        osm = mock()
         noteController = mock()
     }
 
     @Test fun `calls controller with all notes coming from the notes api`() = runBlocking {
         val note1 = note()
-        val noteApi = TestListBasedNotesApi(arrayListOf(note1))
+        val noteApi = TestListBasedNotesApi(osm, arrayListOf(note1))
         val dl = NotesDownloader(noteApi, noteController)
         val bbox = bbox()
         dl.download(bbox)
@@ -27,6 +28,9 @@ class NotesDownloaderTest {
     }
 }
 
-private class TestListBasedNotesApi(val notes: ArrayList<Note>) : NotesApiImpl(null) {
+private class TestListBasedNotesApi(
+    osm: OsmConnection,
+    val notes: ArrayList<Note>
+) : NotesApiImpl(osm) {
     override suspend fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int) = notes
 }

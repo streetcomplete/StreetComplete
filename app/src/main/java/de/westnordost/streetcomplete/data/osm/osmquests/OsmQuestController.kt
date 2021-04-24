@@ -80,7 +80,8 @@ import javax.inject.Singleton
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
 
             for (quest in quests) {
-                Log.d(TAG, "Created ${quest::class.simpleName!!} for ${quest.elementType.name}#${quest.elementId}")
+                val questTypeName = quest.type::class.simpleName!!
+                Log.d(TAG, "Created $questTypeName for ${quest.elementType.name}#${quest.elementId}")
             }
             val seconds = (currentTimeMillis() - time) / 1000.0
             Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
@@ -165,6 +166,7 @@ import javax.inject.Singleton
 
                 var appliesToElement = questType.isApplicableTo(element)
                 if (appliesToElement == null) {
+                    Log.d(TAG, "${questType::class.simpleName!!} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
                     val mapData = withContext(Dispatchers.IO) { lazyMapData }
                     appliesToElement = questType.getApplicableElements(mapData)
                         .any{ it.id == element.id && it.type == element.type }

@@ -67,6 +67,13 @@ data class RelationMember(
 
 enum class ElementType { NODE, WAY, RELATION }
 
+data class DiffElement(
+    val type: ElementType,
+    val clientId: Long,
+    val serverId: Long? = null,
+    val serverVersion: Int? = null
+)
+
 @Serializable
 data class LatLon(val latitude: Double, val longitude: Double) {
     init {

@@ -90,6 +90,7 @@ import javax.inject.Singleton
 
     @Synchronized fun deleteSyncedOlderThan(timestamp: Long): Int {
         val edits = editsDB.getSyncedOlderThan(timestamp)
+        if (edits.isEmpty()) return 0
         val result = editsDB.deleteAll(edits.map { it.id })
         onDeletedEdits(edits)
         return result

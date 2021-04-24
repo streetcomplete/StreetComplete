@@ -161,6 +161,15 @@ parking lane graphics/
 	car4.svg
 	car5.svg
 
+police type graphics/
+    carabinieri.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_carabinieri.svg, Gigillo83, License: CC-BY-SA 3.0
+    ferroviaria.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
+    finanza.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_guardia_di_finanza.svg, Gigillo83, License: CC-BY-SA 3.0
+    locale.svg                      modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia_municipale.svg, Gigillo83, License: CC-BY-SA 3.0
+    municipale.svg                  modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia_municipale.svg, Gigillo83, License: CC-BY-SA 3.0
+    polizia.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
+    stradale.svg                    modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
+
 quest icons/
     apple.svg
     baby.svg                         modified from Twemoji: U+1F6BC

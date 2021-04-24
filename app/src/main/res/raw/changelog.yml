@@ -30,16 +30,23 @@ v32.0-alpha1: |
   <li>When unable to fully upload pictures attached to a note due to a bad connection, the app will try again later (#2102)</li>
   </ul>
   <h3>🛰️ Show aerial imagery</h3>
-  <p>You can now select to have aerial imagery instead of a map (#56, #2755), by @matkoniecz</p>
+  <p>You can now select to have aerial imagery instead of a map (#56, #2755), by @matkoniecz, @ENT8R</p>
   <h3>New Quests</h3>
   <ul>
   <li><i>Is this sport field lit?</i> (#2639, #2737), by @eginhard</li>
   <li><i>What type of barrier is this?</i> (#2739, #2753), by @matkoniecz</li>
+  <li><i>What type of stile is this?</i> (#2749, #2766), by @matkoniecz</li>
   <li><i>What type of shop is this?</i> (#2391, #2759), by @matkoniecz</li>
+  <li>Italy only: <i>Which type of police station is this?</i> (#2456, #2675), by @naposm</li>
   </ul>
-  <h3>Other Enhancements and Fixes</h3>
+  <h3>Other Enhancements</h3>
   <ul>
   <li>Enable answering that the cycleway is displayed separately on the map (#2525, #2665)</li>
+  <li>Some wording improvements (#2728), by @matkoniecz</li>
+  <li>Enhance maxspeed collection for the United Kingdom (#2745, #2748), by @arrival-spring</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
   <li>On tablets, correctly restore the position when reentering the app (#2659, #2311), thanks @matteblair</li>
   <li>...and other fixes and enhancements (#2521, #1821, #2628, #2691, #2715, #2728...)</li>
   </ul>
