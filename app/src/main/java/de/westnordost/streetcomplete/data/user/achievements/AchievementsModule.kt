@@ -710,6 +710,7 @@ object AchievementsModule {
                     "AddFootwayPartSurface",
                     "AddBenchBackrest",
                     "AddBarrierType",
+                    "AddStileType",
                     // information boards
                     "AddInformationToTourism",
                     "AddBoardType"
