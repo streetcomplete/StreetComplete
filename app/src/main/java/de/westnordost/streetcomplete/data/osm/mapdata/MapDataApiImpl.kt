@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.MapDataApi as OsmapiMapDataApi
+import de.westnordost.osmapi.map.MapDataApi as OsmApiMapDataApi
 import de.westnordost.osmapi.map.data.Element as OsmApiElement
 import de.westnordost.osmapi.map.data.Node as OsmApiNode
 import de.westnordost.osmapi.map.data.Way as OsmApiWay
@@ -22,7 +22,7 @@ import java.time.Instant
 
 class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
 
-    private val api: OsmapiMapDataApi = OsmapiMapDataApi(osm)
+    private val api: OsmApiMapDataApi = OsmApiMapDataApi(osm)
 
     override fun uploadChanges(changesetId: Long, elements: Collection<Element>): MapDataUpdates {
         val handler = UpdatedElementsHandler()

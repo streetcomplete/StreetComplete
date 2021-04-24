@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.notes.NotesApi as OsmapiNotesApi
+import de.westnordost.osmapi.notes.NotesApi as OsmApiNotesApi
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.user.User
 import kotlinx.coroutines.Dispatchers
@@ -13,9 +13,8 @@ import de.westnordost.osmapi.notes.Note as OsmApiNote
 import de.westnordost.osmapi.notes.NoteComment as OsmApiNoteComment
 import de.westnordost.osmapi.user.User as OsmApiUser
 
-// TODO(Flo): Make parameter non-nullable
-open class NotesApiImpl(osm: OsmConnection?) : NotesApi {
-    private val api: OsmapiNotesApi = OsmapiNotesApi(osm)
+open class NotesApiImpl(osm: OsmConnection) : NotesApi {
+    private val api: OsmApiNotesApi = OsmApiNotesApi(osm)
 
     override fun create(pos: LatLon, text: String): Note =
         api.create(pos.toOsmLatLon(), text).toNote()
