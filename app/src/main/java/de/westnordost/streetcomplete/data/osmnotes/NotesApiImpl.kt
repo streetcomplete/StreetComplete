@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.user.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
-import de.westnordost.osmapi.map.data.LatLon as OsmApiLatLon
 import de.westnordost.osmapi.notes.Note as OsmApiNote
 import de.westnordost.osmapi.notes.NoteComment as OsmApiNoteComment
 import de.westnordost.osmapi.user.User as OsmApiUser
@@ -17,7 +16,7 @@ open class NotesApiImpl(osm: OsmConnection) : NotesApi {
     private val api: OsmApiNotesApi = OsmApiNotesApi(osm)
 
     override fun create(pos: LatLon, text: String): Note =
-        api.create(pos.toOsmLatLon(), text).toNote()
+        api.create(OsmLatLon(pos.latitude, pos.longitude), text).toNote()
 
     override fun comment(id: Long, text: String): Note = api.comment(id, text).toNote()
 
@@ -26,14 +25,24 @@ open class NotesApiImpl(osm: OsmConnection) : NotesApi {
     override suspend fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int) =
         withContext(Dispatchers.IO) {
             val notes = ArrayList<Note>()
-            api.getAll(bounds.toOsmApiBoundingBox(), null, { notes.add(it.toNote()) },
-                limit, hideClosedNoteAfter)
+            api.getAll(
+                OsmApiBoundingBox(
+                    bounds.min.latitude,
+                    bounds.min.longitude,
+                    bounds.max.latitude,
+                    bounds.max.longitude
+                ),
+                null,
+                { notes.add(it.toNote()) },
+                limit,
+                hideClosedNoteAfter
+            )
             notes
         }
 }
 
 private fun OsmApiNote.toNote() = Note(
-    position.toLatLon(),
+    LatLon(position.latitude, position.longitude),
     id,
     createdAt.toEpochMilli(),
     closedAt?.toEpochMilli(),
@@ -65,17 +74,3 @@ private fun OsmApiNoteComment.Action.toNoteCommentAction() = when(this) {
 }
 
 private fun OsmApiUser.toUser() = User(id, displayName)
-
-// TODO(Flo): make this private
-fun LatLon.toOsmLatLon() = OsmLatLon(latitude, longitude)
-
-// TODO(Flo): make this private
-fun OsmApiLatLon.toLatLon() = LatLon(latitude, longitude)
-
-// TODO(Flo): make this private
-fun BoundingBox.toOsmApiBoundingBox() =
-    OsmApiBoundingBox(min.latitude, min.longitude, max.latitude, max.longitude)
-
-// TODO(Flo): make this private
-fun OsmApiBoundingBox.toBoundingBox() =
-    BoundingBox(minLatitude, minLongitude, maxLatitude, maxLongitude)

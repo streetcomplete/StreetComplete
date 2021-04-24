@@ -9,15 +9,12 @@ import de.westnordost.osmapi.map.data.Way as OsmApiWay
 import de.westnordost.osmapi.map.data.Relation as OsmApiRelation
 import de.westnordost.osmapi.map.data.RelationMember as OsmApiRelationMember
 import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
+import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmapi.map.data.OsmRelation
 import de.westnordost.osmapi.map.data.OsmRelationMember
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.osmapi.map.handler.MapDataHandler
-import de.westnordost.streetcomplete.data.osmnotes.toBoundingBox
-import de.westnordost.streetcomplete.data.osmnotes.toLatLon
-import de.westnordost.streetcomplete.data.osmnotes.toOsmApiBoundingBox
-import de.westnordost.streetcomplete.data.osmnotes.toOsmLatLon
 import java.time.Instant
 
 class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
@@ -42,8 +39,10 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
 
     override fun closeChangeset(changesetId: Long) = api.closeChangeset(changesetId)
 
-    override fun getMap(bounds: BoundingBox, mutableMapData: MutableMapData) =
-        api.getMap(bounds.toOsmApiBoundingBox(), MapDataApiHandler(mutableMapData))
+    override fun getMap(bounds: BoundingBox, mutableMapData: MutableMapData) = api.getMap(
+        OsmApiBoundingBox(bounds.min.latitude, bounds.min.longitude, bounds.max.latitude, bounds.max.longitude),
+        MapDataApiHandler(mutableMapData)
+    )
 
     override fun getWayComplete(id: Long): MapData? =
         try {
@@ -98,14 +97,14 @@ private fun OsmApiElement.toElement(): Element = when(this) {
 private fun Node.toOsmApiNode(): OsmApiNode = OsmNode(
     id,
     version,
-    position.toOsmLatLon(),
+    OsmLatLon(position.latitude, position.longitude),
     tags,
     null,
     Instant.ofEpochMilli(timestampEdited)
 )
 
 private fun OsmApiNode.toNode(): Node =
-    Node(id, position.toLatLon(), tags, version, editedAt.toEpochMilli())
+    Node(id, LatLon(position.latitude, position.longitude), tags, version, editedAt.toEpochMilli())
 
 private fun Way.toOsmApiWay(): OsmApiWay = OsmWay(
     id,
@@ -157,7 +156,14 @@ private fun OsmApiElement.Type.toElementType(): ElementType = when(this) {
 }
 
 private class MapDataApiHandler(val data: MutableMapData) : MapDataHandler {
-    override fun handle(bounds: OsmApiBoundingBox) { data.boundingBox = bounds.toBoundingBox() }
+    override fun handle(bounds: OsmApiBoundingBox) {
+        data.boundingBox = BoundingBox(
+            bounds.minLatitude,
+            bounds.minLongitude,
+            bounds.maxLatitude,
+            bounds.maxLongitude
+        )
+    }
     override fun handle(node: OsmApiNode) { data.add(node.toNode()) }
     override fun handle(way: OsmApiWay) { data.add(way.toWay()) }
     override fun handle(relation: OsmApiRelation) { data.add(relation.toRelation()) }
