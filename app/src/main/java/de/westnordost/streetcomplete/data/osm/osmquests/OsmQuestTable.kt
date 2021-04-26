@@ -25,4 +25,11 @@ object OsmQuestTable {
             )
         );
     """
+
+    const val SPATIAL_INDEX_CREATE = """
+        CREATE INDEX osm_quests_spatial_index ON $NAME (
+            ${Columns.LATITUDE},
+            ${Columns.LONGITUDE}
+        );
+    """
 }

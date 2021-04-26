@@ -25,4 +25,11 @@ object NoteTable {
             ${Columns.COMMENTS} blob NOT NULL,
             ${Columns.LAST_SYNC} int NOT NULL
         );"""
+
+    const val SPATIAL_INDEX_CREATE = """
+        CREATE INDEX osm_notes_spatial_index ON $NAME (
+            ${Columns.LATITUDE},
+            ${Columns.LONGITUDE}
+        );
+    """
 }

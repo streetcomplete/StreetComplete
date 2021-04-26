@@ -160,10 +160,10 @@ class ElementGeometryDao @Inject constructor(
 }
 
 private fun inBoundsSql(bbox: BoundingBox) = """
-    $MAX_LONGITUDE >= ${bbox.minLongitude} AND
+    $MIN_LATITUDE <= ${bbox.maxLatitude} AND
     $MAX_LATITUDE >= ${bbox.minLatitude} AND
     $MIN_LONGITUDE <= ${bbox.maxLongitude} AND
-    $MIN_LATITUDE <= ${bbox.maxLatitude}
+    $MAX_LONGITUDE >= ${bbox.minLongitude}
 """.trimIndent()
 
 private fun CursorPosition.toElementKey() = ElementKey(
