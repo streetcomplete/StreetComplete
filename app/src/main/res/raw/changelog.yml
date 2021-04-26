@@ -49,6 +49,7 @@ v32.0-alpha1: |
   <ul>
   <li>On tablets, correctly restore the position when reentering the app (#2659, #2311), thanks @matteblair</li>
   <li>...and other fixes and enhancements (#2521, #1821, #2628, #2691, #2715, #2728...)</li>
+  <li>Remove checking existence of grit bins, as many are removed for summer and not marked as seasonal :( (#2726), by @matkoniecz</li>
   </ul>
 
 v31.3: |
