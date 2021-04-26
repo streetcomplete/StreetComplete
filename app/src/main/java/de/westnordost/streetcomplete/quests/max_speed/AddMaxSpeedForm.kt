@@ -215,7 +215,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     private fun determineImplicitMaxspeedType() {
         val highwayTag = osmElement!!.tags["highway"]!!
-        if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag)) {
+        if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag) && !(highwayTag == "trunk" && countryInfo.countryCode == "GB")) { /*#2750*/
             applyNoSignAnswer(highwayTag)
         } else {
             if (countryInfo.countryCode == "GB") {
