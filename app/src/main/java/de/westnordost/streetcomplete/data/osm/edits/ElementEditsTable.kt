@@ -33,4 +33,11 @@ object ElementEditsTable {
             ${Columns.IS_SYNCED} int NOT NULL,
             ${Columns.ACTION} text
         );"""
+
+    const val ELEMENT_INDEX_CREATE = """
+        CREATE INDEX osm_element_edits_index ON $NAME (
+            ${Columns.ELEMENT_TYPE},
+            ${Columns.ELEMENT_ID}
+        );
+    """
 }

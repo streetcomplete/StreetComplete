@@ -36,6 +36,15 @@ object ElementGeometryTable {
             )
         );"""
 
+    const val SPATIAL_INDEX_CREATE = """
+        CREATE INDEX elements_geometry_bounds_index ON $NAME (
+            ${Columns.MIN_LATITUDE},
+            ${Columns.MAX_LATITUDE},
+            ${Columns.MIN_LONGITUDE},
+            ${Columns.MAX_LONGITUDE}
+        );
+    """
+
     const val TEMPORARY_LOOKUP_CREATE = """
         CREATE TEMPORARY TABLE $NAME_TEMPORARY_LOOKUP(
             ${Columns.ELEMENT_TYPE} varchar(255) NOT NULL,
