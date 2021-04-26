@@ -67,13 +67,13 @@ class CheckExistence(
     override val icon = R.drawable.ic_quest_check
 
     override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsAnyKey("name", "brand", "operator"))
+        if (tags.containsAnyKey("name", "brand", "ref", "operator"))
             R.string.quest_existence_name_title
         else
             R.string.quest_existence_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["ref"] ?: tags["brand"] ?: tags["operator"]
+        val name = tags["name"] ?: tags["brand"] ?: tags["ref"] ?: tags["operator"]
         return arrayOfNotNull(name, featureName.value)
     }
 
