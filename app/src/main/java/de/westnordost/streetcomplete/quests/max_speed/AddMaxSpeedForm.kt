@@ -215,10 +215,10 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     private fun determineImplicitMaxspeedType() {
         val highwayTag = osmElement!!.tags["highway"]!!
-        if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag)) {
-            applyNoSignAnswer(highwayTag)
-        } else {
-            if (countryInfo.countryCode == "GB") {
+        if (countryInfo.countryCode == "GB") {
+            if (ROADS_WITH_DEFINITE_SPEED_LIMIT_GB.contains(highwayTag)) {
+                applyNoSignAnswer(highwayTag)
+            } else {
                 askIsDualCarriageway(
                     onYes = { applyNoSignAnswer("nsl_dual") },
                     onNo = {
@@ -228,11 +228,13 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
                         )
                     }
                 )
-            } else {
-                askUrbanOrRural(
-                    onUrban = { applyNoSignAnswer("urban") },
-                    onRural = { applyNoSignAnswer("rural") })
             }
+        } else if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag) ) {
+            applyNoSignAnswer(highwayTag)
+        } else {
+            askUrbanOrRural(
+                onUrban = { applyNoSignAnswer("urban") },
+                onRural = { applyNoSignAnswer("rural") })
         }
     }
 
