@@ -35,6 +35,7 @@ class CheckExistence(
             or amenity = waste_basket
             or amenity = post_box
             or leisure = picnic_table
+            or amenity = bbq
             or leisure = firepit
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
             or tourism = information and information ~ board|terminal|map
@@ -42,6 +43,8 @@ class CheckExistence(
             or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
             or traffic_calming = table and !highway and !crossing
             or (highway = emergency_access_point or emergency = access_point) and ref
+            or emergency = life_ring
+            or emergency = phone
           )
           and (${lastChecked(4.0)})
         )) and access !~ no|private
