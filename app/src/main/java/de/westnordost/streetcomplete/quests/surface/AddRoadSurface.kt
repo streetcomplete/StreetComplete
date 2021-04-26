@@ -9,7 +9,10 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
-        ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
+        ways with (
+          highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
+          or highway = service and service !~ driveway|slipway
+        )
         and (
           !surface
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -4 years
