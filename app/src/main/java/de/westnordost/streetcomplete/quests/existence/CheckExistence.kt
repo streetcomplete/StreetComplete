@@ -38,6 +38,7 @@ class CheckExistence(
             or amenity = bbq
             or leisure = firepit
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
+            or amenity = ticket_validator
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
             or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
