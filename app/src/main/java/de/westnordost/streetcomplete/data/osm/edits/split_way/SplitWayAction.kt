@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits.split_way
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.*
@@ -40,14 +41,7 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>): El
         var updatedWay = completeWay?.getWay(way.id)
             ?: throw ConflictException("Way #${way.id} has been deleted")
 
-        /* unsolvable conflict if updated way was shortened (e.g. cut in two) or extended because
-        *  the already performed split may be at a similar spot than what the user selected here.
-        *  If it was just reversed, that's ok though */
-        val endNodeIds = updatedWay.nodeIds.firstAndLast()
-        val originalEndNodeIds = originalWay.nodeIds.firstAndLast()
-        val isGeometryDifferentNow = !(endNodeIds == originalEndNodeIds || endNodeIds == originalEndNodeIds.reversed())
-
-        if (isGeometryDifferentNow) {
+        if (isGeometrySubstantiallyDifferent(originalWay, updatedWay)) {
             throw ConflictException("Way #${way.id} has been changed and the conflict cannot be solved automatically")
         }
 

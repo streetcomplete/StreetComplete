@@ -16,14 +16,27 @@ private fun isNodeGeometrySubstantiallyDifferent(node: Node, newNode: Node) =
        bigger than the usual GPS inaccuracy in the city. */
     node.position.distanceTo(newNode.position) > 20
 
-private fun isWayGeometrySubstantiallyDifferent(way: Way, newWay: Way) =
-    /* if the first or last node is different, it means that the way has either been extended or
-       shortened at one end, which is counted as being substantial:
-       If for example the surveyor has been asked to determine something for a certain way
-       and this way is now longer, his answer does not apply to the whole way anymore, so that
-       is an unsolvable conflict. */
-    way.nodeIds.firstOrNull() != newWay.nodeIds.firstOrNull() ||
-        way.nodeIds.lastOrNull() != newWay.nodeIds.lastOrNull()
+private fun isWayGeometrySubstantiallyDifferent(way: Way, newWay: Way): Boolean {
+   /* if the first or last node is different, it means that the way has either been extended or
+      shortened at one end, which is counted as being substantial:
+      If for example the surveyor has been asked to determine something for a certain way
+      and this way is now longer, his answer does not apply to the whole way anymore, so that
+      is an unsolvable conflict.
+
+      Furthermore, if the original way's end node id is negative (=has just been created in this
+      app), don't do that check for that node.
+      See https://github.com/streetcomplete/StreetComplete/issues/2800
+      */
+    val firstNodeId = way.nodeIds.first()
+    if (firstNodeId >= 0) {
+        if (firstNodeId != newWay.nodeIds.first()) return true
+    }
+    val lastNodeId = way.nodeIds.last()
+    if (lastNodeId >= 0) {
+        if (lastNodeId != newWay.nodeIds.last()) return true
+    }
+    return false
+}
 
 private fun isRelationGeometrySubstantiallyDifferent(relation: Relation, newRelation: Relation) =
     /* a relation is counted as substantially different, if any member changed, even if just

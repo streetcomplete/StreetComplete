@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /** Action that deletes a POI node.
