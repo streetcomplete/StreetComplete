@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import android.content.Context
+import android.text.format.DateFormat
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -140,7 +141,7 @@ class CollectionTimesAdapter(
     }
 
     private fun openSetTimeDialog(minutes: Int, callback: (minutes: Int) -> Unit) {
-        TimePickerDialog(context, minutes / 60, minutes % 60, true) { hourOfDay, minute ->
+        TimePickerDialog(context, minutes / 60, minutes % 60, DateFormat.is24HourFormat(context)) { hourOfDay, minute ->
             callback(hourOfDay * 60 + minute)
         }.show()
     }
