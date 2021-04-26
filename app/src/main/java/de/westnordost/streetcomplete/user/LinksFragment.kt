@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksSource
-import de.westnordost.streetcomplete.ktx.awaitPreDraw
+import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
@@ -37,8 +37,8 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
         val minCellWidth = 280f
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.links_item_margin)
 
-        lifecycleScope.launch {
-            view.awaitPreDraw()
+        viewLifecycleOwner.lifecycleScope.launch {
+            view.awaitLayout()
 
             emptyText.visibility = View.GONE
 
