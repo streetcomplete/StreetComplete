@@ -29,7 +29,7 @@ class MapTilesDownloader @Inject constructor(
         var cachedSize = 0
         val time = currentTimeMillis()
 
-        coroutineScope {
+        supervisorScope {
             for (tile in getDownloadTileSequence(bbox)) {
                 launch {
                     val result = downloadTile(tile.zoom, tile.x, tile.y)
