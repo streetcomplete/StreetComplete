@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsSource
-import de.westnordost.streetcomplete.ktx.awaitPreDraw
+import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -50,8 +50,8 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
         val minCellWidth = 144f.toPx(ctx)
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
 
-        lifecycleScope.launch {
-            view.awaitPreDraw()
+        viewLifecycleOwner.lifecycleScope.launch {
+            view.awaitLayout()
 
             emptyText.visibility = View.GONE
 
