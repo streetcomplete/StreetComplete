@@ -61,7 +61,7 @@ private fun OsmApiNoteComment.toNoteComment() = NoteComment(
     date.toEpochMilli(),
     action.toNoteCommentAction(),
     text,
-    user.toUser()
+    user?.toUser()
 )
 
 private fun OsmApiNoteComment.Action.toNoteCommentAction() = when(this) {
