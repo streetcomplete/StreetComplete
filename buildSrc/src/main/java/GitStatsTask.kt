@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets
  *  writes the result in a YML file. */
 open class GitStatsTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
+    @get:Input lateinit var commitFileFilter: Regex
   
     @TaskAction fun run() {
         val countsByName = mutableMapOf<String, Int>()
@@ -37,7 +38,7 @@ open class GitStatsTask : DefaultTask() {
                     val splits = line.split(Regex("\\s+"))
                     val additions = splits[0].toIntOrNull() ?: continue
                     val deletions = splits[1].toIntOrNull() ?: continue
-                    if(!splits.last().matches(Regex(".*\\.(java|kt|kts)$"))) continue
+                    if (!splits.last().matches(commitFileFilter)) continue
                     val commitTotal = additions + deletions
                     if (!skipNext) {
                         countsByName[name] = commitTotal + countsByName.getOrPut(name, { 0 })
