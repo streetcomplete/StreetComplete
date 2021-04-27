@@ -70,5 +70,6 @@ tasks.register("updateStreetCompleteData") {
 tasks.register<GitStatsTask>("gitstats") {
     group = "streetcomplete"
     commitFileFilter = Regex(".*\\.(java|kt|kts)$")
+    commitSkipList = arrayOf("ae7a244dd60ccfc91cf2dc01bf9e60c8d6a81616")
     targetFile = "$projectDir/app/src/main/res/raw/commits_code.yml"
 }
