@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
@@ -44,6 +45,14 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet_DeletePoiNodeEdit() {
         val edit = deletePoi()
+        dao.add(edit)
+        assertNotNull(edit.id)
+        val dbEdit = dao.get(edit.id)
+        assertEquals(edit, dbEdit)
+    }
+
+    @Test fun addGet_RevertDeletePoiNodeEdit() {
+        val edit = revertDeletePoi()
         dao.add(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
@@ -254,6 +263,19 @@ private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = Eleme
     timestamp,
     isSynced,
     DeletePoiNodeAction
+)
+
+private fun revertDeletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
+    0,
+    TEST_QUEST_TYPE,
+    node.type,
+    node.id,
+    node,
+    geom,
+    "survey",
+    timestamp,
+    isSynced,
+    RevertDeletePoiNodeAction
 )
 
 private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(

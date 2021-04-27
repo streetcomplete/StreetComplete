@@ -380,13 +380,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     protected fun deletePoiNode() {
         val context = context ?: return
 
-        val message = (
-            "<b>" + Html.escapeHtml(context.getString(R.string.osm_element_gone_warning)) + "</b>"
-            + "<br><br>" + context.getString(R.string.osm_element_gone_description)
-            ).parseAsHtml()
-
         AlertDialog.Builder(context)
-            .setMessage(message)
+            .setMessage(R.string.osm_element_gone_description)
             .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
                 listener?.onDeletePoiNode(questKey as OsmQuestKey)
             }

@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.osm.edits.delete
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -26,17 +28,18 @@ import kotlinx.serialization.Serializable
  *  else now, etc.
  *  */
 @Serializable
-object DeletePoiNodeAction : ElementEditAction {
+object DeletePoiNodeAction : ElementEditAction, IsActionRevertable {
 
     override fun createUpdates(
         originalElement: Element,
-        element: Element,
+        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): Collection<Element> {
-        var node = element as Node
-
-        if (node.version > originalElement.version) throw ConflictException()
+        var node = element as? Node ?: throw ConflictException("Element deleted")
+        if (isGeometrySubstantiallyDifferent(originalElement, element)) {
+            throw ConflictException("Element geometry changed substantially")
+        }
 
         // delete free-floating node
         if (mapDataRepository.getWaysForNode(node.id).isEmpty() &&
@@ -50,4 +53,6 @@ object DeletePoiNodeAction : ElementEditAction {
 
         return listOf(node)
     }
+
+    override fun createReverted(): ElementEditAction = RevertDeletePoiNodeAction
 }

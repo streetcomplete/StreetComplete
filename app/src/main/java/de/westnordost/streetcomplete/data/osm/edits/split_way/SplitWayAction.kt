@@ -30,11 +30,11 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>): El
 
     override fun createUpdates(
         originalElement: Element,
-        element: Element,
+        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): Collection<Element> {
-        val way = element as Way
+        val way = element as? Way ?: throw ConflictException()
         val originalWay = originalElement as Way
         val completeWay = mapDataRepository.getWayComplete(way.id)
 

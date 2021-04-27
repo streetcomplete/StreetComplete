@@ -113,16 +113,6 @@ class SplitWayActionTest {
         doSplit(SplitAtLinePosition(p[0], p[2], 0.3))
     }
 
-    @Test fun `do not raise conflict if way was reversed`() {
-        way = way(0, mutableListOf(3,2,1,0))
-        val originalWay = way(0, mutableListOf(0,1,2,3))
-        val data = doSplit(split, originalWay = originalWay)
-        data.checkWaysNodes(
-            listOf(3,2,-1),
-            listOf(-1,1,0)
-        )
-    }
-
     @Test fun `find node to split at from several alternatives`() {
         way = way(0, mutableListOf(0,1,2,0,3,0,1))
         val data = doSplit(SplitAtPoint(p[0]))

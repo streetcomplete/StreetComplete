@@ -21,10 +21,11 @@ data class UpdateElementTagsAction(val changes: StringMapChanges): ElementEditAc
 
     override fun createUpdates(
         originalElement: Element,
-        element: Element,
+        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): Collection<Element> {
+        if (element == null) throw ConflictException("Element deleted")
         if (isGeometrySubstantiallyDifferent(originalElement, element)) {
             throw ConflictException("Element geometry changed substantially")
         }

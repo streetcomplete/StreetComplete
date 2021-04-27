@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -40,9 +41,9 @@ class DeletePoiNodeActionTest {
     }
 
     @Test(expected = ConflictException::class)
-    fun `newer version creates conflict`() {
+    fun `moved element creates conflict`() {
         DeletePoiNodeAction.createUpdates(
-            e.copy(version = 1),
+            e.copy(position = p(1.0,1.0)),
             e, repos, provider)
     }
 }

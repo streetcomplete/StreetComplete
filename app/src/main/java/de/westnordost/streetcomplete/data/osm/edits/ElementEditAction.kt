@@ -15,7 +15,7 @@ interface ElementEditAction {
      * */
     fun createUpdates(
         originalElement: Element,
-        element: Element,
+        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): Collection<Element>
