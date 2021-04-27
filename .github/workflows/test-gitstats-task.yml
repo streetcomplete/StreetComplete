@@ -13,6 +13,6 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
-      - run: gradle task gitstats
+      - run: gradle task updateGitStats
       - run: ls app/src/main/res/raw/commits_*.yml
       - run: cat app/src/main/res/raw/commits_*.yml
