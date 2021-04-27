@@ -12,8 +12,6 @@ import java.nio.charset.StandardCharsets
  *  writes the result in a YML file. */
 open class GitStatsTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
-    @get:Input lateinit var osmTag: String
-    @get:Input lateinit var sparqlQueryPart: String
   
     @TaskAction fun run() {
         val countsByName = mutableMapOf<String, Int>()
