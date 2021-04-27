@@ -26,9 +26,9 @@ class OsmQuestsHiddenDao @Inject constructor(private val db: Database) {
         db.queryOne(NAME,
             where = "$QUEST_TYPE = ? AND $ELEMENT_ID = ? AND $ELEMENT_TYPE = ?",
             args = arrayOf(
-                osmQuestKey.elementType.name,
+                osmQuestKey.questTypeName,
                 osmQuestKey.elementId,
-                osmQuestKey.questTypeName
+                osmQuestKey.elementType.name,
             )
         ) { it.getLong(TIMESTAMP) }
 
@@ -36,9 +36,9 @@ class OsmQuestsHiddenDao @Inject constructor(private val db: Database) {
         db.delete(NAME,
             where = "$QUEST_TYPE = ? AND $ELEMENT_ID = ? AND $ELEMENT_TYPE = ?",
             args = arrayOf(
-                osmQuestKey.elementType.name,
+                osmQuestKey.questTypeName,
                 osmQuestKey.elementId,
-                osmQuestKey.questTypeName
+                osmQuestKey.elementType.name,
             )
         ) == 1
 
