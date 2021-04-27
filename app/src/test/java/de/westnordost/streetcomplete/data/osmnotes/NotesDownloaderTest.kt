@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.testutils.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -9,12 +8,10 @@ import org.mockito.Mockito.anyInt
 import org.mockito.Mockito.verify
 
 class NotesDownloaderTest {
-    private lateinit var osm: OsmConnection
     private lateinit var noteController: NoteController
     private lateinit var notesApi: NotesApi
 
     @Before fun setUp() {
-        osm = mock()
         noteController = mock()
         notesApi = mock()
     }

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
@@ -35,23 +36,26 @@ object DeletePoiNodeAction : ElementEditAction, IsActionRevertable {
         element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
-    ): Collection<Element> {
-        var node = element as? Node ?: throw ConflictException("Element deleted")
+    ): MapDataChanges {
+        val node = element as? Node ?: throw ConflictException("Element deleted")
         if (isGeometrySubstantiallyDifferent(originalElement, element)) {
             throw ConflictException("Element geometry changed substantially")
         }
 
         // delete free-floating node
-        if (mapDataRepository.getWaysForNode(node.id).isEmpty() &&
-            mapDataRepository.getRelationsForNode(node.id).isEmpty()) {
-            node = node.copy().apply { isDeleted = true }
+        return if (
+            mapDataRepository.getWaysForNode(node.id).isEmpty() &&
+            mapDataRepository.getRelationsForNode(node.id).isEmpty()
+        ) {
+            MapDataChanges(deletions = listOf(node))
         }
         // if it is a vertex in a way or has a role in a relation: just clear the tags then
         else {
-            node = node.copy(tags = emptyMap())
+            MapDataChanges(modifications = listOf(node.copy(
+                tags = emptyMap(),
+                timestampEdited = System.currentTimeMillis()
+            )))
         }
-
-        return listOf(node)
     }
 
     override fun createReverted(): ElementEditAction = RevertDeletePoiNodeAction

@@ -5,15 +5,15 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 
 fun Element.copy(
-    newId: Long = id,
-    newVersion: Int = version,
-    newTimestampEdited: Long = timestampEdited,
-    newTags: Map<String, String> = tags,
+    id: Long = this.id,
+    tags: Map<String, String> = this.tags,
+    version: Int = this.version,
+    timestampEdited: Long = this.timestampEdited,
 ): Element {
     return when (this) {
-        is Node -> Node(newId, position, newTags, newVersion, newTimestampEdited)
-        is Way -> Way(newId, ArrayList(nodeIds), newTags, newVersion, newTimestampEdited)
-        is Relation -> Relation(newId, ArrayList(members), newTags, newVersion, newTimestampEdited)
+        is Node -> Node(id, position, tags, version, timestampEdited)
+        is Way -> Way(id, ArrayList(nodeIds), tags, version, timestampEdited)
+        is Relation -> Relation(id, ArrayList(members), tags, version, timestampEdited)
     }
 }
 

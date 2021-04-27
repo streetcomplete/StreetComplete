@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
+import de.westnordost.osmapi.map.data.*
+
 import de.westnordost.osmapi.map.MapDataApi as OsmApiMapDataApi
 import de.westnordost.osmapi.map.data.Element as OsmApiElement
 import de.westnordost.osmapi.map.data.Node as OsmApiNode
@@ -9,11 +11,8 @@ import de.westnordost.osmapi.map.data.Way as OsmApiWay
 import de.westnordost.osmapi.map.data.Relation as OsmApiRelation
 import de.westnordost.osmapi.map.data.RelationMember as OsmApiRelationMember
 import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.data.OsmNode
-import de.westnordost.osmapi.map.data.OsmRelation
-import de.westnordost.osmapi.map.data.OsmRelationMember
-import de.westnordost.osmapi.map.data.OsmWay
+import de.westnordost.osmapi.map.changes.DiffElement as OsmApiDiffElement
+
 import de.westnordost.osmapi.map.handler.MapDataHandler
 import java.time.Instant
 
@@ -21,18 +20,13 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
 
     private val api: OsmApiMapDataApi = OsmApiMapDataApi(osm)
 
-    override fun uploadChanges(changesetId: Long, elements: Collection<Element>): MapDataUpdates {
+    override fun uploadChanges(changesetId: Long, changes: MapDataChanges): MapDataUpdates {
         val handler = UpdatedElementsHandler()
-        val osmElements = elements.map { it.toOsmApiElement() }
-        api.uploadChanges(changesetId, osmElements) {
-            if (it.type !== null) handler.handle(DiffElement(
-                it.type.toElementType(),
-                it.clientId,
-                it.serverId,
-                it.serverVersion
-            ))
+        api.uploadChanges(changesetId, changes.toOsmApiElements()) {
+            handler.handle(it.toDiffElement())
         }
-        return handler.getElementUpdates(osmElements.map { it.toElement() })
+        val allChangedElements = changes.creations + changes.modifications + changes.deletions
+        return handler.getElementUpdates(allChangedElements)
     }
 
     override fun openChangeset(tags: Map<String, String?>): Long = api.openChangeset(tags)
@@ -81,20 +75,20 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
         api.getRelationsForRelation(id).map { it.toRelation() }
 }
 
-private fun Element.toOsmApiElement(): OsmApiElement = when(this) {
+/* --------------------------------- Element -> OsmApiElement ----------------------------------- */
+
+private fun MapDataChanges.toOsmApiElements(): List<OsmApiElement> =
+    creations.map { it.toOsmApiElement().apply { isNew = true } } +
+    modifications.map { it.toOsmApiElement().apply { isModified = true } } +
+    deletions.map { it.toOsmApiElement().apply { isDeleted = true } }
+
+private fun Element.toOsmApiElement(): OsmElement = when(this) {
     is Node -> toOsmApiNode()
     is Way -> toOsmApiWay()
     is Relation -> toOsmApiRelation()
 }
 
-private fun OsmApiElement.toElement(): Element = when(this) {
-    is OsmApiNode -> toNode()
-    is OsmApiWay -> toWay()
-    is OsmApiRelation -> toRelation()
-    else -> throw IllegalArgumentException()
-}
-
-private fun Node.toOsmApiNode(): OsmApiNode = OsmNode(
+private fun Node.toOsmApiNode() = OsmNode(
     id,
     version,
     OsmLatLon(position.latitude, position.longitude),
@@ -103,10 +97,7 @@ private fun Node.toOsmApiNode(): OsmApiNode = OsmNode(
     Instant.ofEpochMilli(timestampEdited)
 )
 
-private fun OsmApiNode.toNode(): Node =
-    Node(id, LatLon(position.latitude, position.longitude), tags, version, editedAt.toEpochMilli())
-
-private fun Way.toOsmApiWay(): OsmApiWay = OsmWay(
+private fun Way.toOsmApiWay() = OsmWay(
     id,
     version,
     nodeIds,
@@ -115,9 +106,7 @@ private fun Way.toOsmApiWay(): OsmApiWay = OsmWay(
     Instant.ofEpochMilli(timestampEdited)
 )
 
-private fun OsmApiWay.toWay(): Way = Way(id, nodeIds, tags, version, editedAt.toEpochMilli())
-
-private fun Relation.toOsmApiRelation(): OsmApiRelation = OsmRelation(
+private fun Relation.toOsmApiRelation() = OsmRelation(
     id,
     version,
     members.map { it.toOsmRelationMember() },
@@ -126,22 +115,11 @@ private fun Relation.toOsmApiRelation(): OsmApiRelation = OsmRelation(
     Instant.ofEpochMilli(timestampEdited)
 )
 
-private fun OsmApiRelation.toRelation(): Relation = Relation(
-    id,
-    members.map { it.toRelationMember() }.toMutableList(),
-    tags,
-    version,
-    editedAt.toEpochMilli()
-)
-
-private fun RelationMember.toOsmRelationMember(): OsmApiRelationMember = OsmRelationMember(
+private fun RelationMember.toOsmRelationMember() = OsmRelationMember(
     ref,
     role,
     type.toOsmElementType()
 )
-
-private fun OsmApiRelationMember.toRelationMember() =
-    RelationMember(type.toElementType(), ref, role)
 
 private fun ElementType.toOsmElementType(): OsmApiElement.Type = when(this) {
     ElementType.NODE        -> OsmApiElement.Type.NODE
@@ -149,11 +127,39 @@ private fun ElementType.toOsmElementType(): OsmApiElement.Type = when(this) {
     ElementType.RELATION    -> OsmApiElement.Type.RELATION
 }
 
+/* --------------------------------- OsmApiElement -> Element ----------------------------------- */
+
+private fun OsmApiNode.toNode() =
+    Node(id, LatLon(position.latitude, position.longitude), tags, version, editedAt.toEpochMilli())
+
+private fun OsmApiWay.toWay() =
+    Way(id, nodeIds, tags, version, editedAt.toEpochMilli())
+
+private fun OsmApiRelation.toRelation() = Relation(
+    id,
+    members.map { it.toRelationMember() }.toMutableList(),
+    tags,
+    version,
+    editedAt.toEpochMilli()
+)
+
+private fun OsmApiRelationMember.toRelationMember() =
+    RelationMember(type.toElementType(), ref, role)
+
 private fun OsmApiElement.Type.toElementType(): ElementType = when(this) {
     OsmApiElement.Type.NODE     -> ElementType.NODE
     OsmApiElement.Type.WAY      -> ElementType.WAY
     OsmApiElement.Type.RELATION -> ElementType.RELATION
 }
+
+private fun OsmApiDiffElement.toDiffElement() = DiffElement(
+    type.toElementType(),
+    clientId,
+    serverId,
+    serverVersion
+)
+
+/* ---------------------------------------------------------------------------------------------- */
 
 private class MapDataApiHandler(val data: MutableMapData) : MapDataHandler {
     override fun handle(bounds: OsmApiBoundingBox) {

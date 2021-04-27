@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import kotlinx.serialization.Serializable
@@ -20,12 +21,12 @@ data class RevertUpdateElementTagsAction(private val changes: StringMapChanges):
         element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
-    ): Collection<Element> {
+    ): MapDataChanges {
         if (element == null) throw ConflictException("Element deleted")
         if (isGeometrySubstantiallyDifferent(originalElement, element)) {
             throw ConflictException("Element geometry changed substantially")
         }
 
-        return listOf(element.changesApplied(changes))
+        return MapDataChanges(modifications = listOf(element.changesApplied(changes)))
     }
 }

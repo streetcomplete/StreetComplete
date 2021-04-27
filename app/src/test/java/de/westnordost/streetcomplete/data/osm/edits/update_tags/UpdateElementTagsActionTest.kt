@@ -121,7 +121,7 @@ class UpdateElementTagsActionTest {
         val data = UpdateElementTagsAction(
             StringMapChanges(listOf(StringMapEntryAdd("highway", "living_street")))
         ).createUpdates(w, w, repos, provider)
-        val updatedWay = data.single() as Way
+        val updatedWay = data.modifications.single() as Way
         assertEquals(mapOf("highway" to "living_street"), updatedWay.tags)
     }
 }

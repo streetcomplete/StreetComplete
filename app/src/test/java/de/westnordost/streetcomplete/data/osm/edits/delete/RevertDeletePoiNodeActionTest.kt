@@ -23,21 +23,33 @@ class RevertDeletePoiNodeActionTest {
         provider = mock()
     }
 
-    @Test fun `restore element`() {
+    @Test fun `restore deleted element`() {
         assertEquals(
             e.copy(
-                newVersion = 3,
-                newTimestampEdited = 0
+                version = 3,
+                timestampEdited = 0
             ),
-            RevertDeletePoiNodeAction.createUpdates(e, null, repos, provider)
+            RevertDeletePoiNodeAction.createUpdates(e, null, repos, provider).creations
                 .single()
-                .copy(newTimestampEdited = 0)
+                .copy(timestampEdited = 0)
+        )
+    }
+
+    @Test fun `restore element with cleared tags`() {
+        assertEquals(
+            e.copy(
+                version = 3,
+                timestampEdited = 0
+            ),
+            RevertDeletePoiNodeAction.createUpdates(e, e.copy(version = 3), repos, provider).modifications
+                .single()
+                .copy(timestampEdited = 0)
         )
     }
 
     @Test(expected = ConflictException::class)
     fun `conflict if there is already a newer version`() {
         // version 3 would be the deletion
-        RevertDeletePoiNodeAction.createUpdates(e, e.copy(newVersion = 4), repos, provider)
+        RevertDeletePoiNodeAction.createUpdates(e, e.copy(version = 4), repos, provider)
     }
 }

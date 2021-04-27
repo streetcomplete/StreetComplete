@@ -10,7 +10,7 @@ interface MapDataApi : MapDataRepository {
      * Upload changes into an opened changeset.
      *
      * @param changesetId id of the changeset to upload changes into
-     * @param elements elements to upload. No special order required
+     * @param changes changes to upload.
      *
      * @throws OsmNotFoundException if the changeset does not exist (yet) or an element in the
      *                              does not exist
@@ -24,7 +24,7 @@ interface MapDataApi : MapDataRepository {
      *
      * @return the updated elements
      */
-    fun uploadChanges(changesetId: Long, elements: Collection<Element>): MapDataUpdates
+    fun uploadChanges(changesetId: Long, changes: MapDataChanges): MapDataUpdates
 
     /**
      * Open a new changeset with the given tags
@@ -152,3 +152,24 @@ interface MapDataApi : MapDataRepository {
      */
     override fun getRelationsForRelation(id: Long): List<Relation>
 }
+
+/** Data class that contains the map data updates (updated elements, deleted elements, elements
+ *  whose id have been updated) after the modifications have been uploaded */
+data class MapDataUpdates(
+    val updated: Collection<Element> = emptyList(),
+    val deleted: Collection<ElementKey> = emptyList(),
+    val idUpdates: Collection<ElementIdUpdate> = emptyList()
+)
+
+data class ElementIdUpdate(
+    val elementType: ElementType,
+    val oldElementId: Long,
+    val newElementId: Long
+)
+
+/** Data class that contains a the request to create, modify elements and delete the given elements */
+data class MapDataChanges(
+    val creations: Collection<Element> = emptyList(),
+    val modifications: Collection<Element> = emptyList(),
+    val deletions: Collection<Element> = emptyList()
+)

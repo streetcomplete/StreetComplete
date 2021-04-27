@@ -11,9 +11,6 @@ sealed class Element {
     abstract val tags: Map<String, String>
     abstract val timestampEdited: Long
     abstract val type: ElementType
-
-    var isModified: Boolean = false
-    var isDeleted: Boolean = false
 }
 
 @Serializable

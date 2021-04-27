@@ -5,6 +5,7 @@ interface MapData : Iterable<Element> {
     val ways: Collection<Way>
     val relations: Collection<Relation>
     val boundingBox: BoundingBox?
+    val size: Int get() = nodes.size + ways.size + relations.size
 
     fun getNode(id: Long): Node?
     fun getWay(id: Long): Way?

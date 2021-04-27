@@ -3,11 +3,8 @@ package de.westnordost.streetcomplete.data.osm.edits.delete
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.ktx.copy
 import kotlinx.serialization.Serializable
 import java.lang.System.currentTimeMillis
 
@@ -24,7 +21,7 @@ object RevertDeletePoiNodeAction : ElementEditAction {
         element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
-    ): Collection<Element> {
+    ): MapDataChanges {
         if (originalElement !is Node) throw ConflictException()
 
         val newVersion = originalElement.version + 1
@@ -33,10 +30,14 @@ object RevertDeletePoiNodeAction : ElementEditAction {
             throw ConflictException("Element has been restored already")
         }
 
-        // how to restore a deleted element? Just create a new version of it!
-        return listOf(originalElement.copy(
-            newVersion = newVersion,
-            newTimestampEdited = currentTimeMillis()
-        ))
+        val newElement = originalElement.copy(
+            version = newVersion,
+            timestampEdited = currentTimeMillis()
+        )
+        return if (element != null) {
+            MapDataChanges(modifications = listOf(newElement))
+        } else {
+            MapDataChanges(creations = listOf(newElement))
+        }
     }
 }

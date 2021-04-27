@@ -21,21 +21,21 @@ class ElementEditUploader @Inject constructor(
     fun upload(edit: ElementEdit, idProvider: ElementIdProvider): MapDataUpdates {
         val element = edit.fetchElement() ?: throw ConflictException()
 
-        val uploadElements = edit.action.createUpdates(edit.originalElement, element, mapDataApi, idProvider)
+        val mapDataChanges = edit.action.createUpdates(edit.originalElement, element, mapDataApi, idProvider)
 
         return try {
             val changesetId = changesetManager.getOrCreateChangeset(edit.questType, edit.source)
-            uploadInChangeset(changesetId, uploadElements)
+            uploadInChangeset(changesetId, mapDataChanges)
         } catch (e: ConflictException) {
             val changesetId = changesetManager.createChangeset(edit.questType, edit.source)
-            uploadInChangeset(changesetId, uploadElements)
+            uploadInChangeset(changesetId, mapDataChanges)
         }
     }
 
     /** Upload the changes for a single change. Returns the updated element(s). */
-    private fun uploadInChangeset(changesetId: Long, elements: Collection<Element>): MapDataUpdates {
+    private fun uploadInChangeset(changesetId: Long, mapDataChanges: MapDataChanges): MapDataUpdates {
         try {
-            return mapDataApi.uploadChanges(changesetId, elements)
+            return mapDataApi.uploadChanges(changesetId, mapDataChanges)
         } catch (e: OsmConflictException) {
             throw ConflictException(e.message, e)
         } catch (e: OsmApiException) {
