@@ -77,6 +77,7 @@ tasks.register<GitStatsTask>("gitStatsCode") {
 tasks.register<GitStatsTask>("gitStatsPhotos") {
     group = "streetcomplete"
     commitFileFilter = Regex(".*\\.(jpe?g|png)$")
+    binaryScore = 1  // This is actually doubled due to the maths
     commitSkipList = arrayOf("ae7a244dd60ccfc91cf2dc01bf9e60c8d6a81616")
     targetFile = "$projectDir/app/src/main/res/raw/commits_photos.yml"
 }
