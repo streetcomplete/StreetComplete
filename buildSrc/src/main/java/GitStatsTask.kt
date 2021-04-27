@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets
 open class GitStatsTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
     @get:Input lateinit var commitFileFilter: Regex
-    @get:Input lateinit var commitSkipList: Array<String> = arrayOf()
+    @get:Input var commitSkipList: Array<String> = arrayOf()
   
     @TaskAction fun run() {
         val countsByName = mutableMapOf<String, Int>()
