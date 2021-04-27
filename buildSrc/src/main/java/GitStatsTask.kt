@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets
 open class GitStatsTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
     @get:Input lateinit var commitFileFilter: Regex
+    @get:Input var binaryScore: Int = 0
     @get:Input var commitSkipList: Array<String> = arrayOf()
   
     @TaskAction fun run() {
@@ -37,9 +38,9 @@ open class GitStatsTask : DefaultTask() {
                     commitNext = false
                 } else {
                     val splits = line.split(Regex("\\s+"))
-                    val additions = splits[0].toIntOrNull() ?: continue
-                    val deletions = splits[1].toIntOrNull() ?: continue
                     if (!splits.last().matches(commitFileFilter)) continue
+                    val additions = splits[0].toIntOrNull() ?: binaryScore
+                    val deletions = splits[1].toIntOrNull() ?: binaryScore
                     val commitTotal = additions + deletions
                     if (!skipNext) {
                         countsByName[name] = commitTotal + countsByName.getOrPut(name, { 0 })
