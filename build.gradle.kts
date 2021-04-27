@@ -66,3 +66,43 @@ tasks.register("updateStreetCompleteData") {
         "app:generateMetadataByCountry"
         )
 }
+
+tasks.register("gitstats") {
+    val countsByName = mutableMapOf<String, Int>()
+    val countsByCommit = mutableMapOf<String, Int>()
+    Runtime.getRuntime().exec("git log --no-merges --pretty='%an'%n%H --numstat").inputStream.bufferedReader().useLines { lines ->
+        var name = ""
+        var commit = ""
+        var commitNext = false
+        var skipNext = false
+        for(line in lines) {
+            if (line.startsWith('\'')) {
+                name = line.trim('\'')
+                skipNext = false
+                commitNext = true
+            } else if (commitNext) {
+                commit = line
+                if (line.startsWith("ae7a244dd60ccfc91cf2dc01bf9e60c8d6a81616")) {
+                  // println("Found commit " + line)
+                  skipNext = true
+                }
+                commitNext = false
+            } else {
+                val splits = line.split(Regex("\\s+"))
+                val additions = splits[0].toIntOrNull() ?: continue
+                val deletions = splits[1].toIntOrNull() ?: continue
+                if(!splits.last().matches(Regex(".*\\.(java|kt|kts)$"))) continue
+                val commitTotal = additions + deletions
+                if (!skipNext) {
+                    countsByName[name] = commitTotal + countsByName.getOrPut(name, { 0 })
+                }
+                if (commitTotal > 400) {
+                    countsByCommit[commit] = commitTotal
+                }
+            }
+        }
+    }
+    countsByCommit.entries.sortedByDescending { it.value }.forEach { println("${it.value}\t${it.key}") }
+    println("*************************************************************")
+    countsByName.entries.sortedByDescending { it.value }.forEach { println("${it.value}\t${it.key}") }
+}
