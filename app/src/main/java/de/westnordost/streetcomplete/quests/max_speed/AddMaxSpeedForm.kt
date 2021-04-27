@@ -286,6 +286,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         private val POSSIBLY_SLOWZONE_ROADS = listOf("residential", "unclassified", "tertiary" /*#1133*/)
         private val MAYBE_LIVING_STREET = listOf("residential", "unclassified")
         private val ROADS_WITH_DEFINITE_SPEED_LIMIT = listOf("trunk", "motorway", "living_street")
+        private val ROADS_WITH_DEFINITE_SPEED_LIMIT_GB = listOf("motorway", "living_street") /*#2750*/
 
         private var LAST_INPUT_SLOW_ZONE: Int? = null
     }
