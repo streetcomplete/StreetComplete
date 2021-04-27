@@ -25,18 +25,19 @@ class DeletePoiNodeActionTest {
     @Test fun `delete free-floating node`() {
         on(repos.getWaysForNode(1L)).thenReturn(emptyList())
         on(repos.getRelationsForNode(1L)).thenReturn(emptyList())
-        val nd = DeletePoiNodeAction(2).createUpdates(e, repos, provider).single()
-
-        assertTrue(nd.isDeleted)
+        val data = DeletePoiNodeAction(2).createUpdates(e, repos, provider)
+        assertTrue(data.modifications.isEmpty())
+        assertTrue(data.creations.isEmpty())
+        assertEquals(e, data.deletions.single())
     }
 
     @Test fun `'delete' vertex`() {
         on(repos.getWaysForNode(1L)).thenReturn(listOf(mock()))
         on(repos.getRelationsForNode(1L)).thenReturn(emptyList())
-        val nd = DeletePoiNodeAction(2).createUpdates(e, repos, provider).single()
-
-        assertFalse(nd.isDeleted)
-        assertTrue(nd.tags.isEmpty())
+        val data = DeletePoiNodeAction(2).createUpdates(e, repos, provider)
+        assertTrue(data.deletions.isEmpty())
+        assertTrue(data.creations.isEmpty())
+        assertTrue(data.modifications.single().tags.isEmpty())
     }
 
     @Test(expected = ConflictException::class)

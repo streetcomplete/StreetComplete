@@ -651,8 +651,8 @@ class SplitWayActionTest {
         for (i in 1L..counts.ways) { elementKeys.add(ElementKey(WAY, -i)) }
         for (i in 1L..counts.relations) { elementKeys.add(ElementKey(RELATION, -i)) }
         val provider = ElementIdProvider(elementKeys)
-        val elements = action.createUpdates(way, repos, provider)
-        return MutableMapData(elements)
+        val data = action.createUpdates(way, repos, provider)
+        return MutableMapData(data.creations + data.modifications)
     }
 
 

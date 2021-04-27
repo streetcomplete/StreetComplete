@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits.delete
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
@@ -32,22 +33,25 @@ class DeletePoiNodeAction(
         element: Element,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
-    ): Collection<Element> {
-        var node = element as Node
+    ): MapDataChanges {
+        val node = element as Node
 
         if (node.version > originalNodeVersion) throw ConflictException()
 
         // delete free-floating node
-        if (mapDataRepository.getWaysForNode(node.id).isEmpty() &&
-            mapDataRepository.getRelationsForNode(node.id).isEmpty()) {
-            node = node.copy().apply { isDeleted = true }
+        return if (
+            mapDataRepository.getWaysForNode(node.id).isEmpty() &&
+            mapDataRepository.getRelationsForNode(node.id).isEmpty()
+        ) {
+            MapDataChanges(deletions = listOf(node))
         }
         // if it is a vertex in a way or has a role in a relation: just clear the tags then
         else {
-            node = node.copy(tags = emptyMap())
+            MapDataChanges(modifications = listOf(node.copy(
+                tags = emptyMap(),
+                timestampEdited = System.currentTimeMillis()
+            )))
         }
-
-        return listOf(node)
     }
 
     override fun equals(other: Any?): Boolean {

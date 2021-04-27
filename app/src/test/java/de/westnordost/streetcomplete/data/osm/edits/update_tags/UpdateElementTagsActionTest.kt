@@ -148,7 +148,7 @@ class UpdateElementTagsActionTest {
             questType
         )
         val data = action.createUpdates(w, repos, provider)
-        val updatedWay = data.single() as Way
+        val updatedWay = data.modifications.single() as Way
         assertEquals(mapOf("highway" to "living_street"), updatedWay.tags)
     }
 }

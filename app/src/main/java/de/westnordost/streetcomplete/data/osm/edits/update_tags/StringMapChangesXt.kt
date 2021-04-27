@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.copy
+import java.lang.System.currentTimeMillis
 
 fun Element.changesApplied(changes: StringMapChanges): Element {
     val tags = tags.toMutableMap()
@@ -23,7 +24,7 @@ fun Element.changesApplied(changes: StringMapChanges): Element {
         throw ConflictException("Key or value is too long")
     }
     return this.copy(
-        newTimestampEdited = System.currentTimeMillis(),
-        newTags = tags
+        tags = tags,
+        timestampEdited = currentTimeMillis()
     )
 }

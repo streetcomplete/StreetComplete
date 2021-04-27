@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 
 interface ElementEditAction {
@@ -15,7 +16,7 @@ interface ElementEditAction {
      * */
     fun createUpdates(
         element: Element, mapDataRepository: MapDataRepository, idProvider: ElementIdProvider
-    ): Collection<Element>
+    ): MapDataChanges
 }
 
 data class NewElementsCount(val nodes: Int, val ways: Int, val relations: Int)

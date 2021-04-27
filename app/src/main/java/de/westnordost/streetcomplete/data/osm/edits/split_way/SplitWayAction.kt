@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.*
+import java.lang.System.currentTimeMillis
 import kotlin.collections.ArrayList
 
 /** Action that performs a split on a way.
@@ -33,7 +34,7 @@ class SplitWayAction(
         element: Element,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
-    ): Collection<Element> {
+    ): MapDataChanges {
         val way = element as Way
         val completeWay = mapDataRepository.getWayComplete(way.id)
 
@@ -55,7 +56,6 @@ class SplitWayAction(
         if(updatedWay.isClosed && splits.size < 2)
             throw ConflictException("Must specify at least two split positions for a closed way")
 
-        val updatedElements = mutableListOf<Element>()
 
         // step 0: convert list of SplitPolylineAtPosition to list of SplitWay
         val positions = updatedWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position }
@@ -64,6 +64,7 @@ class SplitWayAction(
         val sortedSplits = splits.map { it.toSplitWayAt(positions) }.sorted()
 
         // step 1: add split nodes into original way
+        val createdNodes = mutableListOf<Node>()
         val splitAtIndices = mutableListOf<Int>()
         var insertedNodeCount = 0
         for (split in sortedSplits) {
@@ -72,8 +73,8 @@ class SplitWayAction(
                     splitAtIndices.add(split.index + insertedNodeCount)
                 }
                 is SplitWayAtLinePosition -> {
-                    val splitNode = Node(idProvider.nextNodeId(), split.pos, emptyMap(), 1, System.currentTimeMillis())
-                    updatedElements.add(splitNode)
+                    val splitNode = Node(idProvider.nextNodeId(), split.pos, emptyMap(), 1, currentTimeMillis())
+                    createdNodes.add(splitNode)
 
                     val nodeIndex = split.index2 + insertedNodeCount
                     val nodeIds = updatedWay.nodeIds.toMutableList()
@@ -86,14 +87,15 @@ class SplitWayAction(
         }
 
         // step 2: split up the ways into several ways
-        val newWays = splitWayAtIndices(updatedWay, splitAtIndices, idProvider)
-        updatedElements.addAll(newWays)
+        val updatedWays = getSplitWayAtIndices(updatedWay, splitAtIndices, idProvider)
 
         // step 3: update all relations the original way was member of, if any
-        val updatedRelations = updateRelationsWithNewWays(updatedWay, newWays, mapDataRepository)
-        updatedElements.addAll(updatedRelations)
+        val updatedRelations = getUpdatedRelations(updatedWay, updatedWays, mapDataRepository)
 
-        return updatedElements
+        return MapDataChanges(
+            creations = createdNodes + updatedWays.filter { it.id < 0 },
+            modifications = updatedWays.filter { it.id >= 0 } + updatedRelations
+        )
     }
 
     override fun equals(other: Any?): Boolean {
@@ -116,7 +118,7 @@ class SplitWayAction(
 
 /** Split the given way at the specified indices.
  *  Returns the list of updated ways: the original but shortened way and a new way for each split */
-private fun splitWayAtIndices(
+private fun getSplitWayAtIndices(
     originalWay: Way,
     splitIndices: List<Int>,
     idProvider: ElementIdProvider
@@ -141,10 +143,10 @@ private fun splitWayAtIndices(
 
     return nodesChunks.mapIndexed { index, nodes ->
         if(index == indexOfChunkToKeep) {
-            Way(originalWay.id, nodes, tags, originalWay.version, System.currentTimeMillis()).apply { isModified = true }
+            Way(originalWay.id, nodes, tags, originalWay.version, currentTimeMillis())
         }
         else {
-            Way(idProvider.nextWayId(), nodes, tags, 0, System.currentTimeMillis())
+            Way(idProvider.nextWayId(), nodes, tags, 0, currentTimeMillis())
         }
     }
 }
@@ -188,7 +190,7 @@ private fun removeTagsThatArePotentiallyWrongAfterSplit(tags: MutableMap<String,
 
 /** Updates all relations that are referenced by the original way for when that way is split up
  *  into the the list of new ways. Returns the updated relations */
-private fun updateRelationsWithNewWays(
+private fun getUpdatedRelations(
     originalWay: Way,
     newWays: List<Way>,
     mapDataRepository: MapDataRepository
@@ -206,7 +208,10 @@ private fun updateRelationsWithNewWays(
                 updatedRelationMembers.add(relationMember)
             }
         }
-        result.add(relation.copy(members = updatedRelationMembers, timestampEdited = System.currentTimeMillis()))
+        result.add(relation.copy(
+            members = updatedRelationMembers,
+            timestampEdited = currentTimeMillis()
+        ))
     }
     return result
 }

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
@@ -31,7 +32,7 @@ class UpdateElementTagsAction(
         element: Element,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
-    ): Collection<Element> {
+    ): MapDataChanges {
 
         /* if after updating to the new version of the element, the quest is not applicable to
            the element anymore, drop it (#720) */
@@ -43,7 +44,7 @@ class UpdateElementTagsAction(
             throw ConflictException("Element geometry changed substantially")
         }
 
-        return listOf(element.changesApplied(changes))
+        return MapDataChanges(modifications = listOf(element.changesApplied(changes)))
     }
 
     override fun createReverted(): ElementEditAction =
