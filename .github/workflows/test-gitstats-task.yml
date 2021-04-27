@@ -14,3 +14,5 @@ jobs:
         with:
           java-version: 11
       - run: gradle task gitstats
+      - run: ls app/src/main/res/raw/commits_*.yml
+      - run: cat app/src/main/res/raw/commits_*.yml
