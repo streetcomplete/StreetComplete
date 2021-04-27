@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets
 open class GitStatsTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
     @get:Input lateinit var commitFileFilter: Regex
+    @get:Input lateinit var commitSkipList: Array<String> = arrayOf()
   
     @TaskAction fun run() {
         val countsByName = mutableMapOf<String, Int>()
@@ -29,8 +30,8 @@ open class GitStatsTask : DefaultTask() {
                     commitNext = true
                 } else if (commitNext) {
                     commit = line
-                    if (line.startsWith("ae7a244dd60ccfc91cf2dc01bf9e60c8d6a81616")) {
-                      // println("Found commit " + line)
+                    if (line.trim() in commitSkipList) {
+                      println("Found and skipping commit " + line)
                       skipNext = true
                     }
                     commitNext = false
