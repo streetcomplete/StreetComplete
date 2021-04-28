@@ -35,10 +35,6 @@ object RevertDeletePoiNodeAction : ElementEditAction, IsRevertAction {
             version = newVersion,
             timestampEdited = currentTimeMillis()
         )
-        return if (element != null) {
-            MapDataChanges(modifications = listOf(newElement))
-        } else {
-            MapDataChanges(creations = listOf(newElement))
-        }
+        return MapDataChanges(modifications = listOf(newElement))
     }
 }
