@@ -19,7 +19,7 @@ class ElementEditUploader @Inject constructor(
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      *  */
     fun upload(edit: ElementEdit, idProvider: ElementIdProvider): MapDataUpdates {
-        val element = edit.fetchElement() ?: throw ConflictException()
+        val element = edit.fetchElement()
 
         val mapDataChanges = edit.action.createUpdates(edit.originalElement, element, mapDataApi, idProvider)
 
