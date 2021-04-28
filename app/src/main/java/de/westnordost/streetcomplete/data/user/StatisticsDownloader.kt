@@ -5,7 +5,7 @@ import org.json.JSONObject
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
-import java.time.Instant
+import java.time.OffsetDateTime
 
 /** Downloads statistics from the backend */
 class StatisticsDownloader(private val baseUrl: String) {
@@ -51,7 +51,7 @@ class StatisticsDownloader(private val baseUrl: String) {
         val rank = obj.getInt("rank")
         val daysActive = obj.getInt("daysActive")
         val isAnalyzing = obj.getBoolean("isAnalyzing")
-        val lastUpdate = Instant.parse(obj.getString("lastUpdate"))!!
+        val lastUpdate = OffsetDateTime.parse(obj.getString("lastUpdate")).toInstant()
         return Statistics(questTypes, countriesStatistics, rank, daysActive, lastUpdate.toEpochMilli(), isAnalyzing)
     }
 }
