@@ -141,7 +141,7 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
             order: 2000,
             flat: true,
             collide: false
-        }""".trimIndent())
+        }""")
     }
 
     /** Update the marker that shows the direction in which the smartphone is held */
@@ -160,7 +160,7 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
             collide: false,
             flat: true,
             angle: $rotation
-        }""".trimIndent())
+        }""")
     }
 
     private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {
