@@ -35,7 +35,7 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>): El
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        val way = element as? Way ?: throw ConflictException()
+        val way = element as? Way ?: throw ConflictException("Element deleted")
         val originalWay = originalElement as Way
         val completeWay = mapDataRepository.getWayComplete(way.id)
 
