@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
 import android.content.DialogInterface
+import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.CheckBox
 import android.widget.TimePicker
 
@@ -79,6 +81,13 @@ class TimeRangePickerDialog(
             override fun onTabUnselected(tab: TabLayout.Tab) { }
             override fun onTabReselected(tab: TabLayout.Tab) { }
         })
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+                WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
     }
 
     private fun setCurrentTab(position: Int) {
