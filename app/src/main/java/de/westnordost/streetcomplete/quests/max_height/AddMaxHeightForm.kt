@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -47,7 +47,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
         val splitWayHint = contentView.findViewById<TextView>(R.id.splitWayHint)
         splitWayHint?.text = getString(R.string.quest_maxheight_split_way_hint, getString(R.string.quest_generic_answer_differs_along_the_way))
-        splitWayHint?.isGone = osmElement!!.type == Element.Type.NODE
+        splitWayHint?.isGone = osmElement!!.type == ElementType.NODE
 
         meterInput = contentView.findViewById(R.id.meterInput)
         feetInput = contentView.findViewById(R.id.feetInput)

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
+import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -140,7 +141,7 @@ class OsmNoteQuestControllerTest {
 
     @Test fun `get note quest with comment from user returns null`() {
         on(noteSource.get(1)).thenReturn(note(comments = listOf(
-            comment(text = "test?", userId = 1)
+            comment(text = "test?", user = User(id = 1, "Blubbi"))
         )))
         on(userStore.userId).thenReturn(1)
 

@@ -8,7 +8,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.view.CircularMaskFrameLayout
 import kotlinx.android.synthetic.main.view_icons_download_progress.view.*
-import java.util.*
+import java.util.Queue
+import java.util.LinkedList
 
 /** view that shows a queue of IconProgressViews moving in from the right and moving out to the
  *  left when they are done */

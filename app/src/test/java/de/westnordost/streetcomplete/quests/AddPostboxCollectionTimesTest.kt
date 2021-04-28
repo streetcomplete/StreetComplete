@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
+import de.westnordost.streetcomplete.quests.opening_hours.model.weekdays
 import de.westnordost.streetcomplete.quests.postbox_collection_times.*
 import org.junit.Test
 
@@ -19,8 +19,8 @@ class AddPostboxCollectionTimesTest {
     @Test fun `apply collection times answer`() {
         questType.verifyAnswer(
             CollectionTimes(listOf(
-                WeekdaysTimes(Weekdays(booleanArrayOf(true)), mutableListOf(60)),
-                WeekdaysTimes(Weekdays(booleanArrayOf(false, true)), mutableListOf(120))
+                WeekdaysTimes(weekdays(0b10000000), mutableListOf(60)),
+                WeekdaysTimes(weekdays(0b01000000), mutableListOf(120))
             )),
             // here ; would be fine as well instead of ,
             // see https://github.com/streetcomplete/StreetComplete/pull/2604#issuecomment-783823068
@@ -34,8 +34,8 @@ class AddPostboxCollectionTimesTest {
     @Test fun `require comma where this matters`() {
         questType.verifyAnswer(
             CollectionTimes(listOf(
-                WeekdaysTimes(Weekdays(booleanArrayOf(true, true, true)), mutableListOf(60)),
-                WeekdaysTimes(Weekdays(booleanArrayOf(false, true)), mutableListOf(120))
+                WeekdaysTimes(weekdays(0b11100000), mutableListOf(60)),
+                WeekdaysTimes(weekdays(0b01000000), mutableListOf(120))
             )),
             StringMapEntryAdd("collection_times", "Mo-We 01:00, Tu 02:00")
         )
@@ -44,9 +44,9 @@ class AddPostboxCollectionTimesTest {
     @Test fun `require comma where this matters and conflict is between nonadjacent ranges`() {
         questType.verifyAnswer(
             CollectionTimes(listOf(
-                WeekdaysTimes(Weekdays(booleanArrayOf(true, true, true)), mutableListOf(60)),
-                WeekdaysTimes(Weekdays(booleanArrayOf(false, false, false, true, true, true, true)), mutableListOf(120)),
-                WeekdaysTimes(Weekdays(booleanArrayOf(true)), mutableListOf(180))
+                WeekdaysTimes(weekdays(0b11100000), mutableListOf(60)),
+                WeekdaysTimes(weekdays(0b00011110), mutableListOf(120)),
+                WeekdaysTimes(weekdays(0b10000000), mutableListOf(180))
             )),
             StringMapEntryAdd("collection_times", "Mo-We 01:00, Th-Su 02:00, Mo 03:00")
         )

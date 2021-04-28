@@ -11,11 +11,11 @@ class ElementTest {
     }
 
     @Test fun `way is closed`() {
-        assertTrue(createRing(null).isClosed())
+        assertTrue(createRing().isClosed)
     }
 
     @Test fun `way is not closed`() {
-        assertFalse(createWay(null).isClosed())
+        assertFalse(createWay().isClosed)
     }
 
     @Test fun `multipolygon relation is an area`() {
@@ -23,8 +23,8 @@ class ElementTest {
     }
 
     @Test fun `way with no tags is no area`() {
-        assertFalse(createWay(null).isArea())
-        assertFalse(createRing(null).isArea())
+        assertFalse(createWay().isArea())
+        assertFalse(createRing().isArea())
     }
 
     @Test fun `simple way with area=yes tag is no area`() {
@@ -45,6 +45,6 @@ class ElementTest {
         assertTrue(createRing(mapOf("waterway" to "dock")).isArea())
     }
 
-    private fun createWay(tags: Map<String, String>?) = way(nodes = listOf(0L, 1L), tags = tags)
-    private fun createRing(tags: Map<String, String>?) = way(nodes = listOf(0L, 1L, 0L), tags = tags)
+    private fun createWay(tags: Map<String, String> = emptyMap()) = way(nodes = listOf(0L, 1L), tags = tags)
+    private fun createRing(tags: Map<String, String> = emptyMap()) = way(nodes = listOf(0L, 1L, 0L), tags = tags)
 }

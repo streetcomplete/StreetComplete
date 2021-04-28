@@ -1,11 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.ELEMENT_ID
@@ -55,7 +54,7 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
         )
     }
 
-    fun getAllForElement(elementType: Element.Type, elementId: Long): List<OsmQuestDaoEntry> =
+    fun getAllForElement(elementType: ElementType, elementId: Long): List<OsmQuestDaoEntry> =
         db.query(NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
             args = arrayOf(elementType.name, elementId)
@@ -82,15 +81,15 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
 }
 
 private fun inBoundsSql(bbox: BoundingBox): String = """
-        ($LATITUDE BETWEEN ${bbox.minLatitude} AND ${bbox.maxLatitude}) AND
-        ($LONGITUDE BETWEEN ${bbox.minLongitude} AND ${bbox.maxLongitude})
+        ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
+        ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
     """.trimIndent()
 
 private fun CursorPosition.toOsmQuestEntry(): OsmQuestDaoEntry = BasicOsmQuestDaoEntry(
-    Element.Type.valueOf(getString(ELEMENT_TYPE)),
+    ElementType.valueOf(getString(ELEMENT_TYPE)),
     getLong(ELEMENT_ID),
     getString(QUEST_TYPE),
-    OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE))
+    LatLon(getDouble(LATITUDE), getDouble(LONGITUDE))
 )
 
 private fun OsmQuestDaoEntry.toPairs() = listOf(
@@ -102,7 +101,7 @@ private fun OsmQuestDaoEntry.toPairs() = listOf(
 )
 
 data class BasicOsmQuestDaoEntry(
-    override val elementType: Element.Type,
+    override val elementType: ElementType,
     override val elementId: Long,
     override val questTypeName: String,
     override val position: LatLon

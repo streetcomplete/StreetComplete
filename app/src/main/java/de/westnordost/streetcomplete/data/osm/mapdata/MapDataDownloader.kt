@@ -2,12 +2,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import android.util.Log
 import de.westnordost.osmapi.common.errors.OsmQueryTooBigException
-import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.handler.MapDataHandler
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.enlargedBy
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +23,7 @@ class MapDataDownloader @Inject constructor(
         getMapAndHandleTooBigQuery(expandedBBox, mapData)
         /* The map data might be filled with several bboxes one after another if the download is
            split up in several, so lets set the bbox back to the bbox of the complete download */
-        mapData.handle(expandedBBox)
+        mapData.boundingBox = expandedBBox
 
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
@@ -36,15 +31,12 @@ class MapDataDownloader @Inject constructor(
         mapDataController.putAllForBBox(bbox, mapData)
     }
 
-    private fun getMapAndHandleTooBigQuery(
-        bounds: BoundingBox,
-        mapDataHandler: MapDataHandler
-    ) {
+    private fun getMapAndHandleTooBigQuery(bounds: BoundingBox, mutableMapData: MutableMapData) {
         try {
-            mapDataApi.getMap(bounds, mapDataHandler)
+            mapDataApi.getMap(bounds, mutableMapData)
         } catch (e : OsmQueryTooBigException) {
             for (subBounds in bounds.splitIntoFour()) {
-                getMapAndHandleTooBigQuery(subBounds, mapDataHandler)
+                getMapAndHandleTooBigQuery(subBounds, mutableMapData)
             }
         }
     }
@@ -55,11 +47,11 @@ class MapDataDownloader @Inject constructor(
 }
 
 private fun BoundingBox.splitIntoFour(): List<BoundingBox> {
-    val center = OsmLatLon((maxLatitude + minLatitude) / 2, (maxLongitude + minLongitude) / 2)
+    val center = LatLon((max.latitude + min.latitude) / 2, (max.longitude + min.longitude) / 2)
     return listOf(
-        BoundingBox(minLatitude,     minLongitude,     center.latitude, center.longitude),
-        BoundingBox(minLatitude,     center.longitude, center.latitude, maxLongitude),
-        BoundingBox(center.latitude, minLongitude,     maxLatitude,     center.longitude),
-        BoundingBox(center.latitude, center.longitude, maxLatitude,     maxLongitude)
+        BoundingBox(min.latitude,    min.longitude,    center.latitude, center.longitude),
+        BoundingBox(min.latitude,    center.longitude, center.latitude, max.longitude),
+        BoundingBox(center.latitude, min.longitude,    max.latitude,    center.longitude),
+        BoundingBox(center.latitude, center.longitude, max.latitude,    max.longitude)
     )
 }

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_sound
 
-import de.westnordost.osmapi.map.data.OsmNode
-import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -11,7 +11,7 @@ class AddTrafficSignalsSoundTest {
 
     @Test fun `applicable to crossing`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(tags = mapOf(
                 "highway" to "crossing",
                 "crossing" to "traffic_signals"
             ))
@@ -21,11 +21,11 @@ class AddTrafficSignalsSoundTest {
 
     @Test fun `not applicable to crossing of cycleway without foot access`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(1, tags = mapOf(
                 "highway" to "crossing",
                 "crossing" to "traffic_signals"
             )),
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1, listOf(1,2,3), mapOf(
                 "highway" to "cycleway",
                 "foot" to "no"
             ))

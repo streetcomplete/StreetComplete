@@ -257,7 +257,7 @@ private fun WeekDayRangesAndHolidays.toWeekdays(): Weekdays {
 }
 
 private fun List<DateRange>.toMonths(): Months {
-    val monthsData = BooleanArray(Months.MONTHS_COUNT) { false }
+    val monthsData = BooleanArray(Months.MONTHS_COUNT)
     for (dateRange in this) {
         val range = dateRange.toCircularSection()
         if (!range.loops) { // ranges like Jan-Feb

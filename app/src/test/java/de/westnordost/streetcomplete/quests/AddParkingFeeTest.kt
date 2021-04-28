@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.parking_fee.*
 import org.junit.Test
-import java.util.*
+import java.time.LocalDate
 
 class AddParkingFeeTest {
 
@@ -77,7 +77,7 @@ class AddParkingFeeTest {
             mapOf("fee" to "yes"),
             HasFeeExceptAtHours(openingHours),
             StringMapEntryAdd("fee:conditional", "no @ ($openingHoursString)"),
-            StringMapEntryAdd("check_date:fee", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:fee", LocalDate.now().toCheckDateString())
         )
     }
 }

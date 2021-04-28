@@ -1,43 +1,41 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.data.*
 import org.junit.Before
 import org.junit.Test
-
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
-import java.util.Date
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 
 class RelationDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: RelationDao
 
     @Before fun createDao() {
-        dao = RelationDao(database, serializer)
+        dao = RelationDao(database)
     }
 
     @Test fun putGetNoTags() {
         val members = listOf(
-            OsmRelationMember(0, "outer", Element.Type.WAY),
-            OsmRelationMember(1, "inner", Element.Type.WAY)
+            RelationMember(WAY, 0, "outer"),
+            RelationMember(WAY, 1, "inner")
         )
-        val relation = rel(5, 1, members, null)
+        val relation = rel(5, 1, members)
         dao.put(relation)
         val dbRelation = dao.get(5)
 
-        checkEqual(relation, dbRelation!!)
+        assertEquals(relation, dbRelation!!)
     }
 
     @Test fun putGetWithTags() {
         val members = listOf(
-            OsmRelationMember(0, "outer", Element.Type.WAY),
-            OsmRelationMember(1, "inner", Element.Type.WAY)
+            RelationMember(WAY, 0, "outer"),
+            RelationMember(WAY, 1, "inner")
         )
         val relation = rel(5, 1, members, mapOf("a key" to "a value"))
         dao.put(relation)
         val dbRelation = dao.get(5)
 
-        checkEqual(relation, dbRelation!!)
+        assertEquals(relation, dbRelation!!)
     }
 
     @Test fun putOverwrites() {
@@ -48,12 +46,12 @@ class RelationDaoTest : ApplicationDbTestCase() {
 
     @Test fun putOverwritesAlsoRelationMembers() {
         val members1 = listOf(
-            OsmRelationMember(0, "outer", Element.Type.WAY),
-            OsmRelationMember(1, "inner", Element.Type.WAY)
+            RelationMember(WAY, 0, "outer"),
+            RelationMember(WAY, 1, "inner")
         )
         val members2 = listOf(
-            OsmRelationMember(2, "outer", Element.Type.WAY),
-            OsmRelationMember(3, "inner", Element.Type.WAY)
+            RelationMember(WAY, 2, "outer"),
+            RelationMember(WAY, 3, "inner")
         )
 
         dao.put(rel(0, members = members1))
@@ -80,14 +78,14 @@ class RelationDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAll() {
-        val e1 = rel(1, members = listOf(OsmRelationMember(0, "bla", Element.Type.NODE)))
+        val e1 = rel(1, members = listOf(RelationMember(NODE, 0, "bla")))
         val e2 = rel(2, members = listOf(
-            OsmRelationMember(0, "bla", Element.Type.NODE),
-            OsmRelationMember(1, "blub", Element.Type.WAY),
+            RelationMember(NODE, 0, "bla"),
+            RelationMember(WAY, 1, "blub"),
         ))
         val e3 = rel(3, members = listOf(
-            OsmRelationMember(3, "one", Element.Type.RELATION),
-            OsmRelationMember(4, "two", Element.Type.WAY),
+            RelationMember(RELATION, 3, "one"),
+            RelationMember(WAY, 4, "two"),
         ))
         dao.putAll(listOf(e1,e2,e3))
         assertEquals(
@@ -109,14 +107,14 @@ class RelationDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAllForElement() {
-        val e1 = rel(1, members = listOf(OsmRelationMember(0, "bla", Element.Type.NODE)))
+        val e1 = rel(1, members = listOf(RelationMember(NODE, 0, "bla")))
         val e2 = rel(2, members = listOf(
-            OsmRelationMember(0, "bla", Element.Type.NODE),
-            OsmRelationMember(1, "blub", Element.Type.WAY),
+            RelationMember(NODE, 0, "bla"),
+            RelationMember(WAY, 1, "blub"),
         ))
         val e3 = rel(3, members = listOf(
-            OsmRelationMember(3, "one", Element.Type.RELATION),
-            OsmRelationMember(4, "two", Element.Type.WAY),
+            RelationMember(RELATION, 3, "one"),
+            RelationMember(WAY, 4, "two"),
         ))
         dao.putAll(listOf(e1,e2,e3))
         assertEquals(
@@ -140,17 +138,10 @@ class RelationDaoTest : ApplicationDbTestCase() {
     }
 }
 
-private fun checkEqual(relation: Relation, dbRelation: Relation) {
-    assertEquals(relation.id, dbRelation.id)
-    assertEquals(relation.version.toLong(), dbRelation.version.toLong())
-    assertEquals(relation.tags, dbRelation.tags)
-    assertEquals(relation.members, dbRelation.members)
-}
-
 private fun rel(
     id: Long = 1L,
     version: Int = 1,
-    members: List<RelationMember> = listOf(OsmRelationMember(1L, "", Element.Type.NODE)),
-    tags: Map<String,String>? = emptyMap(),
+    members: List<RelationMember> = listOf(RelationMember(NODE, 1L, "")),
+    tags: Map<String, String> = emptyMap(),
     timestamp: Long = 123L
-) = OsmRelation(id, version, members, tags, null, Date(timestamp))
+) = Relation(id, members.toMutableList(), tags, version, timestamp)

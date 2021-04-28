@@ -2,9 +2,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import javax.inject.Inject
 
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LAST_SYNC
@@ -14,16 +11,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
-import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.Serializer
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
-import java.util.Date
 
 /** Stores OSM nodes */
-class NodeDao @Inject constructor(
-    private val db: Database,
-    private val serializer: Serializer
-) {
+class NodeDao @Inject constructor(private val db: Database) {
     fun put(node: Node) {
         putAll(listOf(node))
     }
@@ -47,8 +41,8 @@ class NodeDao @Inject constructor(
                     node.version,
                     node.position.latitude,
                     node.position.longitude,
-                    node.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
-                    node.dateEdited.time,
+                    if (node.tags.isNotEmpty()) Json.encodeToString(node.tags) else null,
+                    node.timestampEdited,
                     time
                 )
             }
@@ -59,13 +53,12 @@ class NodeDao @Inject constructor(
         if (ids.isEmpty()) return emptyList()
         val idsString = ids.joinToString(",")
         return db.query(NAME, where = "$ID IN ($idsString)") { cursor ->
-            OsmNode(
+            Node(
                 cursor.getLong(ID),
+                LatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
+                cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
                 cursor.getInt(VERSION),
-                OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-                cursor.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) },
-                null,
-                Date(cursor.getLong(TIMESTAMP))
+                cursor.getLong(TIMESTAMP)
             )
         }
     }

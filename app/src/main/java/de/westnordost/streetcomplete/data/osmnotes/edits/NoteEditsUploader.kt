@@ -3,13 +3,9 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import android.util.Log
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.streetcomplete.data.NotesApi
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
-import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import kotlinx.coroutines.*
@@ -103,7 +99,8 @@ class NoteEditsUploader @Inject constructor(
         }
     }
 
-    private fun uploadCreateNote(pos: LatLon, text: String): Note = notesApi.create(pos, text)
+    private fun uploadCreateNote(pos: LatLon, text: String): Note =
+        notesApi.create(pos, text)
 
     private fun uploadCommentNote(noteId: Long, text: String): Note = try {
         notesApi.comment(noteId, text)

@@ -19,7 +19,7 @@ object WayTables {
         CREATE TABLE $NAME (
             ${Columns.ID} int PRIMARY KEY,
             ${Columns.VERSION} int NOT NULL,
-            ${Columns.TAGS} blob,
+            ${Columns.TAGS} text,
             ${Columns.TIMESTAMP} int NOT NULL,
             ${Columns.LAST_SYNC} int NOT NULL
         );

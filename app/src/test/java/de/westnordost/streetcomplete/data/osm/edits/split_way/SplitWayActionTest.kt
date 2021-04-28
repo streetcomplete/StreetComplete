@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
-import de.westnordost.osmapi.map.MapData
-import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.*
-import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
@@ -72,13 +72,15 @@ class SplitWayActionTest {
     @Test(expected = ConflictException::class)
     fun `raise conflict if updated way was cut at the start`() {
         way = way(0, mutableListOf(1,2,3))
-        doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
+        val originalWay = way(0, mutableListOf(0,1,2,3))
+        doSplit(split, originalWay = originalWay)
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if updated way was cut at the end`() {
         way = way(0, mutableListOf(0,1,2))
-        doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
+        val originalWay = way(0, mutableListOf(0,1,2,3))
+        doSplit(split, originalWay = originalWay)
     }
 
     @Test(expected = ConflictException::class)
@@ -109,15 +111,6 @@ class SplitWayActionTest {
     @Test(expected = ConflictException::class)
     fun `raise conflict if the second node is not directly after the first one in the updated way`() {
         doSplit(SplitAtLinePosition(p[0], p[2], 0.3))
-    }
-
-    @Test fun `do not raise conflict if way was reversed`() {
-        way = way(0, mutableListOf(3,2,1,0))
-        val data = doSplit(split, originalWayFirstNodeId = 0, originalWayLastNodeId = 3)
-        data.checkWaysNodes(
-            listOf(3,2,-1),
-            listOf(-1,1,0)
-        )
     }
 
     @Test fun `find node to split at from several alternatives`() {
@@ -412,7 +405,7 @@ class SplitWayActionTest {
         // 4 3 | 0 1 2 3  =>  4 3 | -1 2 3 | 0 1 -1
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4,3)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf(
+            rel(0, listOf(
                 member(WAY, 1),
                 member(NODE, 0),
                 member(RELATION, 1),
@@ -499,7 +492,7 @@ class SplitWayActionTest {
         val otherRole = if (role == "from") "to" else "from"
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(3,4)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf(
+            rel(0, listOf(
                 member(WAY, 0, role),
                 member(WAY, 1, otherRole),
                 member(NODE, 3, via)
@@ -510,7 +503,7 @@ class SplitWayActionTest {
         val relation = data.relations.single()
         assertEquals(3, relation.members.size)
 
-        val relationMember = relation.members[0]!!
+        val relationMember = relation.members[0]
         val newWay = data.getWay(relationMember.ref)!!
         assertEquals(listOf<Long>(-1,2,3), newWay.nodeIds.toList())
         assertEquals(role, relationMember.role)
@@ -538,7 +531,7 @@ class SplitWayActionTest {
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(5,7)))
         on(repos.getWay(2)).thenReturn(way(2, mutableListOf(5,4,3)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf<RelationMember>(
+            rel(0, listOf(
                 member(WAY, 0, role),
                 member(WAY, 1, otherRole),
                 member(WAY, 2, via)
@@ -549,7 +542,7 @@ class SplitWayActionTest {
         val relation = data.relations.single()
         assertEquals(3, relation.members.size)
 
-        val fromRelationMember = relation.members[0]!!
+        val fromRelationMember = relation.members[0]
         val fromWay = data.getWay(fromRelationMember.ref)!!
         assertEquals(listOf<Long>(-1,2,3), fromWay.nodeIds.toList())
         assertEquals(role, fromRelationMember.role)
@@ -562,7 +555,7 @@ class SplitWayActionTest {
         on(repos.getWay(2)).thenReturn(way(2, mutableListOf(4,5,6)))
         on(repos.getWay(3)).thenReturn(way(3, mutableListOf(3,4)))
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf<RelationMember>(
+            rel(0, listOf(
                 member(WAY, 0, "from"),
                 member(WAY, 1, "to"),
                 member(WAY, 2, "via"),
@@ -574,7 +567,7 @@ class SplitWayActionTest {
         val relation = data.relations.single()
         assertEquals(4, relation.members.size)
 
-        val fromRelationMember = relation.members[0]!!
+        val fromRelationMember = relation.members[0]
         val fromWay = data.getWay(fromRelationMember.ref)!!
         assertEquals(listOf<Long>(2,3), fromWay.nodeIds.toList())
         assertEquals("from", fromRelationMember.role)
@@ -583,7 +576,7 @@ class SplitWayActionTest {
 
     @Test fun `no special treatment of restriction relation if the way has another role`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf<RelationMember>(
+            rel(0, listOf(
                 member(WAY, 0, "another role"),
                 member(WAY, 1, "from"),
                 member(NODE, 3, "via"),
@@ -598,7 +591,7 @@ class SplitWayActionTest {
 
     @Test fun `no special treatment of restriction relation if there is no via`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf<RelationMember>(
+            rel(0, listOf(
                 member(WAY, 0, "from"),
                 member(WAY, 1, "to")
             ), mapOf("type" to "restriction"))
@@ -611,7 +604,7 @@ class SplitWayActionTest {
 
     @Test fun `no special treatment of restriction relation if from-way does not touch via`() {
         on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, mutableListOf<RelationMember>(
+            rel(0, listOf(
                 member(WAY, 0, "from"),
                 member(NODE, 4, "via"),
                 member(WAY, 3, "to")
@@ -641,18 +634,17 @@ class SplitWayActionTest {
 
     private fun doSplit(
         vararg splits: SplitPolylineAtPosition = arrayOf(split),
-        originalWayFirstNodeId: Long = way.nodeIds.first(),
-        originalWayLastNodeId: Long = way.nodeIds.last()
+        originalWay: Way = way
     ): MapData {
-        val action = SplitWayAction(ArrayList(splits.toList()), originalWayFirstNodeId, originalWayLastNodeId)
+        val action = SplitWayAction(ArrayList(splits.toList()))
         val counts = action.newElementsCount
         val elementKeys = ArrayList<ElementKey>()
         for (i in 1L..counts.nodes) { elementKeys.add(ElementKey(NODE, -i)) }
         for (i in 1L..counts.ways) { elementKeys.add(ElementKey(WAY, -i)) }
         for (i in 1L..counts.relations) { elementKeys.add(ElementKey(RELATION, -i)) }
         val provider = ElementIdProvider(elementKeys)
-        val elements = action.createUpdates(way, repos, provider)
-        return MutableMapData(elements)
+        val data = action.createUpdates(originalWay, way, repos, provider)
+        return MutableMapData(data.creations + data.modifications)
     }
 
 

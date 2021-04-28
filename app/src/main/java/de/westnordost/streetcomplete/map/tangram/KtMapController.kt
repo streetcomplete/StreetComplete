@@ -15,11 +15,11 @@ import com.mapzen.tangram.networking.HttpHandler
 import com.mapzen.tangram.viewholder.GLSurfaceViewHolderFactory
 import com.mapzen.tangram.viewholder.GLViewHolder
 import com.mapzen.tangram.viewholder.GLViewHolderFactory
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.*
 import kotlinx.coroutines.*
-import java.util.*
+import java.util.Locale
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
@@ -247,10 +247,10 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
             screenBounds = screenAreaToBoundingBox(padding) ?: return null
             currentZoom = cameraPosition.zoom
         }
-        val screenWidth = normalizeLongitude(screenBounds.maxLongitude - screenBounds.minLongitude)
-        val screenHeight = screenBounds.maxLatitude - screenBounds.minLatitude
-        val objectWidth = normalizeLongitude(bounds.maxLongitude - bounds.minLongitude)
-        val objectHeight = bounds.maxLatitude - bounds.minLatitude
+        val screenWidth = normalizeLongitude(screenBounds.max.longitude - screenBounds.min.longitude)
+        val screenHeight = screenBounds.max.latitude - screenBounds.min.latitude
+        val objectWidth = normalizeLongitude(bounds.max.longitude - bounds.min.longitude)
+        val objectHeight = bounds.max.latitude - bounds.min.latitude
 
         val zoomDeltaX = log10(screenWidth / objectWidth) / log10(2.0)
         val zoomDeltaY = log10(screenHeight / objectHeight) / log10(2.0)

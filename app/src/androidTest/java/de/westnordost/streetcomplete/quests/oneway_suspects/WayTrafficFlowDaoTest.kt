@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects
 
-import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.WayDao
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
-import de.westnordost.streetcomplete.util.KryoSerializer
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import java.util.Date
 
 class WayTrafficFlowDaoTest : ApplicationDbTestCase() {
 
@@ -45,10 +43,10 @@ class WayTrafficFlowDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun deleteUnreferenced() {
-        val wayDao = WayDao(database, KryoSerializer())
+        val wayDao = WayDao(database)
 
-        wayDao.put(OsmWay(1, 0, mutableListOf(), null, null, Date()))
-        wayDao.put(OsmWay(2, 0, mutableListOf(), null, null, Date()))
+        wayDao.put(Way(1, mutableListOf(), emptyMap(), 0))
+        wayDao.put(Way(2, mutableListOf(), emptyMap(), 0))
 
         dao.put(1, true)
         dao.put(3, true)

@@ -2,9 +2,9 @@
 
 package de.westnordost.streetcomplete.util
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.splitAt180thMeridian
 import de.westnordost.streetcomplete.ktx.forEachLine
 import de.westnordost.streetcomplete.util.math.arcIntersection
 import de.westnordost.streetcomplete.util.math.toLatLon
@@ -272,7 +272,7 @@ private fun List<LatLon>.pointOnPolyline(distance: Double, fromEnd: Boolean): La
                 val ratio = (d - distance) / segmentDistance
                 val lat = second.latitude - ratio * (second.latitude - first.latitude)
                 val lon = normalizeLongitude(second.longitude - ratio * normalizeLongitude(second.longitude - first.longitude))
-                return OsmLatLon(lat, lon)
+                return LatLon(lat, lon)
             }
         }
     }
@@ -306,7 +306,7 @@ fun List<LatLon>.centerPointOfPolygon(): LatLon {
     }
     area *= 3.0
 
-    return if (area == 0.0) origin else OsmLatLon(
+    return if (area == 0.0) origin else LatLon(
         lat / area + origin.latitude,
         normalizeLongitude(lon / area + origin.longitude)
     )
@@ -430,8 +430,8 @@ fun List<LatLon>.isRingDefinedClockwise(): Boolean {
 
 /** Returns the area enclosed by this bbox */
 fun BoundingBox.area(globeRadius: Double = EARTH_RADIUS): Double {
-    val minLatMaxLon = OsmLatLon(min.latitude, max.longitude)
-    val maxLatMinLon = OsmLatLon(max.latitude, min.longitude)
+    val minLatMaxLon = LatLon(min.latitude, max.longitude)
+    val maxLatMinLon = LatLon(max.latitude, min.longitude)
     return min.distanceTo(minLatMaxLon, globeRadius) * min.distanceTo(maxLatMinLon, globeRadius)
 }
 
@@ -445,7 +445,7 @@ fun BoundingBox.enlargedBy(radius: Double, globeRadius: Double = EARTH_RADIUS): 
 
 /** returns whether this bounding box contains the given position */
 fun BoundingBox.contains(pos: LatLon): Boolean {
-    return if (crosses180thMeridian()) {
+    return if (crosses180thMeridian) {
         splitAt180thMeridian().any { it.containsCanonical(pos) }
     } else {
         containsCanonical(pos)
@@ -455,8 +455,8 @@ fun BoundingBox.contains(pos: LatLon): Boolean {
 /** returns whether this bounding box contains the given position, assuming the bounding box does
  *  not cross the 180th meridian */
 private fun BoundingBox.containsCanonical(pos: LatLon): Boolean =
-    pos.longitude in minLongitude..maxLongitude &&
-    pos.latitude in minLatitude..maxLatitude
+    pos.longitude in min.longitude..max.longitude &&
+    pos.latitude in min.latitude..max.latitude
 
 /** returns whether this bounding box intersects with the other. Works if any of the bounding boxes
  *  cross the 180th meridian */
@@ -471,34 +471,34 @@ fun BoundingBox.isCompletelyInside(other: BoundingBox): Boolean =
 /** returns whether this bounding box intersects with the other, assuming both bounding boxes do
  *  not cross the 180th meridian */
 private fun BoundingBox.intersectCanonical(other: BoundingBox): Boolean =
-    maxLongitude >= other.minLongitude &&
-    minLongitude <= other.maxLongitude &&
-    maxLatitude >= other.minLatitude &&
-    minLatitude <= other.maxLatitude
+    max.longitude >= other.min.longitude &&
+    min.longitude <= other.max.longitude &&
+    max.latitude >= other.min.latitude &&
+    min.latitude <= other.max.latitude
 
 /** returns whether this bounding box is completely inside the other, assuming both bounding boxes
  *  do not cross the 180th meridian */
 private fun BoundingBox.isCompletelyInsideCanonical(other: BoundingBox): Boolean =
-    minLongitude >= other.minLongitude &&
-    minLatitude >= other.minLatitude &&
-    maxLongitude <= other.maxLongitude &&
-    maxLatitude <= other.maxLatitude
+    min.longitude >= other.min.longitude &&
+    min.latitude >= other.min.latitude &&
+    max.longitude <= other.max.longitude &&
+    max.latitude <= other.max.latitude
 
 
 private inline fun BoundingBox.checkAlignment(
     other: BoundingBox,
     canonicalCheck: (bbox1: BoundingBox, bbox2: BoundingBox) -> Boolean
 ): Boolean {
-    return if(crosses180thMeridian()) {
+    return if(crosses180thMeridian) {
         val these = splitAt180thMeridian()
-        if (other.crosses180thMeridian()) {
+        if (other.crosses180thMeridian) {
             val others = other.splitAt180thMeridian()
             these.any { a -> others.any { b -> canonicalCheck(a, b) } }
         } else {
             these.any { canonicalCheck(it, other) }
         }
     } else {
-        if (other.crosses180thMeridian()) {
+        if (other.crosses180thMeridian) {
             val others = other.splitAt180thMeridian()
             others.any { canonicalCheck(this, it) }
         } else {
@@ -524,7 +524,7 @@ fun createTranslated(latitude: Double, longitude: Double): LatLon {
         lon += 180.0
         if (lon > 180) lon -= 360.0
     }
-    return OsmLatLon(lat, lon)
+    return LatLon(lat, lon)
 }
 
 private fun Double.toRadians() = this / 180.0 * PI

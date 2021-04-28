@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -25,22 +26,25 @@ class DeletePoiNodeActionTest {
     @Test fun `delete free-floating node`() {
         on(repos.getWaysForNode(1L)).thenReturn(emptyList())
         on(repos.getRelationsForNode(1L)).thenReturn(emptyList())
-        val nd = DeletePoiNodeAction(2).createUpdates(e, repos, provider).single()
-
-        assertTrue(nd.isDeleted)
+        val data = DeletePoiNodeAction.createUpdates(e, e, repos, provider)
+        assertTrue(data.modifications.isEmpty())
+        assertTrue(data.creations.isEmpty())
+        assertEquals(e, data.deletions.single())
     }
 
     @Test fun `'delete' vertex`() {
         on(repos.getWaysForNode(1L)).thenReturn(listOf(mock()))
         on(repos.getRelationsForNode(1L)).thenReturn(emptyList())
-        val nd = DeletePoiNodeAction(2).createUpdates(e, repos, provider).single()
-
-        assertFalse(nd.isDeleted)
-        assertTrue(nd.tags.isEmpty())
+        val data = DeletePoiNodeAction.createUpdates(e, e, repos, provider)
+        assertTrue(data.deletions.isEmpty())
+        assertTrue(data.creations.isEmpty())
+        assertTrue(data.modifications.single().tags.isEmpty())
     }
 
     @Test(expected = ConflictException::class)
-    fun `newer version creates conflict`() {
-        DeletePoiNodeAction(1).createUpdates(e, repos, provider)
+    fun `moved element creates conflict`() {
+        DeletePoiNodeAction.createUpdates(
+            e.copy(position = p(1.0,1.0)),
+            e, repos, provider)
     }
 }

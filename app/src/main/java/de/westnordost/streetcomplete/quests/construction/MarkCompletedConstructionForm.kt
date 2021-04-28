@@ -2,9 +2,10 @@ package de.westnordost.streetcomplete.quests.construction
 
 import android.app.DatePickerDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.toInstant
 import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import java.util.*
+import java.time.LocalDate
 
 class MarkCompletedConstructionForm : AYesNoQuestAnswerFragment<CompletedConstructionAnswer>() {
     override val otherAnswers = listOf(
@@ -12,16 +13,12 @@ class MarkCompletedConstructionForm : AYesNoQuestAnswerFragment<CompletedConstru
     )
 
     private fun setFinishDate() {
-        val tomorrow = Calendar.getInstance()
-        tomorrow.add(Calendar.DAY_OF_MONTH, 1)
-        val year = tomorrow.get(Calendar.YEAR)
-        val month = tomorrow.get(Calendar.MONTH)
-        val day = tomorrow.get(Calendar.DAY_OF_MONTH)
-        val dpd = DatePickerDialog(requireContext(), { _, yearSelected, monthSelected, dayOfMonthSelected ->
-            applyAnswer(OpeningDateAnswer(GregorianCalendar(yearSelected, monthSelected, dayOfMonthSelected).time))
-        }, year, month, day)
+        val tomorrow = LocalDate.now().plusDays(1)
+        val dpd = DatePickerDialog(requireContext(), { _, year, month, day ->
+            applyAnswer(OpeningDateAnswer(LocalDate.of(year, month + 1, day)))
+        }, tomorrow.year, tomorrow.monthValue - 1, tomorrow.dayOfMonth)
         dpd.setTitle(resources.getString(R.string.quest_construction_completion_date_title))
-        dpd.datePicker.minDate = tomorrow.timeInMillis
+        dpd.datePicker.minDate = tomorrow.toInstant().toEpochMilli()
         dpd.show()
     }
 

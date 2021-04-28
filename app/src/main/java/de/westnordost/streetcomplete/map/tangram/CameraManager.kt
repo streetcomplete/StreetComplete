@@ -13,9 +13,7 @@ import androidx.annotation.UiThread
 import androidx.core.animation.addListener
 import com.mapzen.tangram.CameraUpdateFactory
 import com.mapzen.tangram.MapController
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.LatLons
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlin.math.PI
 
 /**
@@ -167,7 +165,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     }
 
     private fun pushCameraPositionToController() {
-        LatLons.checkValidity(_tangramCamera.latitude, _tangramCamera.longitude)
+        LatLon.checkValidity(_tangramCamera.latitude, _tangramCamera.longitude)
         c.updateCameraPosition(CameraUpdateFactory.newCameraPosition(_tangramCamera))
     }
 
@@ -222,7 +220,7 @@ data class CameraPosition(
     val tilt: Float,
     val zoom: Float) {
 
-    constructor(p: TangramCameraPosition) : this(OsmLatLon(p.latitude, p.longitude), p.rotation, p.tilt, p.zoom)
+    constructor(p: TangramCameraPosition) : this(LatLon(p.latitude, p.longitude), p.rotation, p.tilt, p.zoom)
 }
 
 private fun CameraUpdate.resolveDeltas(pos: TangramCameraPosition) {

@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
-import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.*
@@ -61,7 +61,7 @@ class AddHousenumberTest {
             "building" to "detached"
         ))
         val relationWithAddr = rel(
-            members = listOf(member(Element.Type.WAY, 1)),
+            members = listOf(member(ElementType.WAY, 1)),
             tags =  mapOf("addr:housenumber" to "123")
         )
 
@@ -91,15 +91,15 @@ class AddHousenumberTest {
 
     @Test fun `does not create quest for building that is inside an area with an address on its outline`() {
         val mapData = createMapData(mapOf(
-            OsmWay(1L, 1, NODES1, mapOf(
+            Way(1L, NODES1, mapOf(
                 "building" to "detached"
-            )) to POSITIONS1,
-            OsmWay(1L, 1, NODES2, mapOf(
+            ), 1) to POSITIONS1,
+            Way(1L, NODES2, mapOf(
                 "amenity" to "school"
-            )) to POSITIONS2,
-            OsmNode(6L, 1, P6, mapOf(
+            ), 1) to POSITIONS2,
+            Node(6L, P6, mapOf(
                 "addr:housenumber" to "123"
-            )) to ElementPointGeometry(P6)
+            ), 1) to ElementPointGeometry(P6)
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
@@ -239,6 +239,6 @@ private fun createMapData(elements: Map<Element, ElementGeometry?>): TestMapData
                 result.relationGeometriesById[element.id] = geometry
         }
     }
-    result.handle(bbox())
+    result.boundingBox = bbox()
     return result
 }

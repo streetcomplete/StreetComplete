@@ -17,16 +17,14 @@ import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.Injector
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.ktx.*
@@ -38,6 +36,9 @@ import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import kotlinx.coroutines.launch
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import kotlin.math.abs
 
@@ -53,11 +54,11 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
 
     private lateinit var osmQuestKey: OsmQuestKey
     private lateinit var way: Way
-    private lateinit var positions: List<OsmLatLon>
+    private lateinit var positions: List<LatLon>
     private var clickPos: PointF? = null
 
     private val hasChanges get() = splits.isNotEmpty()
-    private val isFormComplete get() = splits.size >= if (way.isClosed()) 2 else 1
+    private val isFormComplete get() = splits.size >= if (way.isClosed) 2 else 1
 
     interface Listener {
         fun onAddSplit(point: LatLon)
@@ -73,10 +74,10 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val args = requireArguments()
-        osmQuestKey = args.getSerializable(ARG_OSM_QUEST_KEY) as OsmQuestKey
-        way = args.getSerializable(ARG_WAY) as Way
-        val elementGeometry = args.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementPolylinesGeometry
-        positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
+        osmQuestKey = Json.decodeFromString(args.getString(ARG_OSM_QUEST_KEY)!!)
+        way = Json.decodeFromString(args.getString(ARG_WAY)!!)
+        val elementGeometry: ElementPolylinesGeometry = Json.decodeFromString(args.getString(ARG_ELEMENT_GEOMETRY)!!)
+        positions = elementGeometry.polylines.single().map { LatLon(it.latitude, it.longitude) }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -226,7 +227,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
                 val distance = first.distanceTo(second)
                 if (distance > alongTrackDistance && alongTrackDistance > 0) {
                     val delta = alongTrackDistance / distance
-                    result.add(SplitAtLinePosition(OsmLatLon(first), OsmLatLon(second), delta))
+                    result.add(SplitAtLinePosition(first, second, delta))
                 }
             }
         }
@@ -264,9 +265,9 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         fun create(osmQuestKey: OsmQuestKey, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
             val f = SplitWayFragment()
             f.arguments = bundleOf(
-                ARG_OSM_QUEST_KEY to osmQuestKey,
-                ARG_WAY to way,
-                ARG_ELEMENT_GEOMETRY to elementGeometry
+                ARG_OSM_QUEST_KEY to Json.encodeToString(osmQuestKey),
+                ARG_WAY to Json.encodeToString(way),
+                ARG_ELEMENT_GEOMETRY to Json.encodeToString(elementGeometry)
             )
             return f
         }

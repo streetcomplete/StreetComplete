@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.osmapi.map.MapData
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.centerPointOfPolyline
@@ -137,7 +137,7 @@ class ElementGeometryCreator @Inject constructor() {
         relation: Relation, wayGeometries: Map<Long, List<LatLon>>
     ): List<List<LatLon>> {
         return relation.members
-            .filter { it.type == Element.Type.WAY }
+            .filter { it.type == ElementType.WAY }
             .mapNotNull { getValidNodePositions(wayGeometries[it.ref]) }
     }
 
@@ -145,7 +145,7 @@ class ElementGeometryCreator @Inject constructor() {
         relation: Relation, withRole: String, wayGeometries: Map<Long, List<LatLon>>
     ): List<List<LatLon>> {
         return relation.members
-            .filter { it.type == Element.Type.WAY && it.role == withRole }
+            .filter { it.type == ElementType.WAY && it.role == withRole }
             .mapNotNull { getValidNodePositions(wayGeometries[it.ref]) }
     }
 
@@ -242,7 +242,7 @@ private fun MapData.getNodePositions(way: Way): List<LatLon>? {
 }
 
 private fun MapData.getWaysNodePositions(relation: Relation, allowIncomplete: Boolean = false): Map<Long, List<LatLon>>? {
-    val wayMembers = relation.members.filter { it.type == Element.Type.WAY }
+    val wayMembers = relation.members.filter { it.type == ElementType.WAY }
     val result = mutableMapOf<Long, List<LatLon>>()
     for (wayMember in wayMembers) {
         val way = getWay(wayMember.ref)

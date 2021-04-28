@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.util
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
-import java.io.Serializable
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.splitAt180thMeridian
+import kotlinx.serialization.Serializable
 import kotlin.math.*
 
 /** X and Y position of a tile */
+@Serializable
 data class TilePos(val x: Int, val y:Int) {
     /** Returns this tile rect as a bounding box */
     fun asBoundingBox(zoom: Int): BoundingBox {
@@ -40,7 +41,8 @@ fun LatLon.enclosingTilePos(zoom: Int): TilePos {
 }
 
 /** A rectangle that represents containing all tiles from left bottom to top right */
-data class TilesRect(val left: Int, val top: Int, val right: Int, val bottom: Int) : Serializable {
+@Serializable
+data class TilesRect(val left: Int, val top: Int, val right: Int, val bottom: Int) {
 
     init {
         require(left <= right && top <= bottom)
@@ -80,7 +82,7 @@ fun BoundingBox.asBoundingBoxOfEnclosingTiles(zoom: Int): BoundingBox {
 /** Returns the tile rect that enclose this bounding box at the given zoom level. If this bounding
  *  box crosses the 180th meridian, it'll take only the first half of the bounding box */
 fun BoundingBox.enclosingTilesRect(zoom: Int): TilesRect {
-    return if (crosses180thMeridian()) {
+    return if (crosses180thMeridian) {
         splitAt180thMeridian().first().enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom)
     }
     else {
@@ -95,8 +97,8 @@ private fun BoundingBox.enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom: I
      *  that exactly fits a tiles rect back to a tiles rect, it must be made smaller by the tiniest
      *  amount */
     val notTheNextTile = 1e-7
-    val min = OsmLatLon(min.latitude + notTheNextTile, min.longitude + notTheNextTile)
-    val max = OsmLatLon(max.latitude - notTheNextTile, max.longitude - notTheNextTile)
+    val min = LatLon(min.latitude + notTheNextTile, min.longitude + notTheNextTile)
+    val max = LatLon(max.latitude - notTheNextTile, max.longitude - notTheNextTile)
     val minTile = min.enclosingTilePos(zoom)
     val maxTile = max.enclosingTilePos(zoom)
     return TilesRect(minTile.x, maxTile.y, maxTile.x, minTile.y)

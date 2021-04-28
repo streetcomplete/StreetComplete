@@ -18,15 +18,15 @@ import androidx.core.os.bundleOf
 import androidx.core.text.parseAsHtml
 import androidx.core.view.isGone
 import com.google.android.flexbox.FlexboxLayout
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmElement
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.ktx.geometryType
@@ -34,8 +34,11 @@ import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.ref.WeakReference
-import java.util.*
+import java.util.Locale
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
@@ -70,7 +73,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     private lateinit var questType: QuestType<T>
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
-    protected var osmElement: OsmElement? = null
+    protected var osmElement: Element? = null
         private set
 
     private var currentContext = WeakReference<Context>(null)
@@ -127,9 +130,9 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         super.onCreate(savedInstanceState)
 
         val args = requireArguments()
-        questKey = args.getSerializable(ARG_QUEST_KEY) as QuestKey
-        osmElement = args.getSerializable(ARG_ELEMENT) as OsmElement?
-        elementGeometry = args.getSerializable(ARG_GEOMETRY) as ElementGeometry
+        questKey = Json.decodeFromString(args.getString(ARG_QUEST_KEY)!!)
+        osmElement = args.getString(ARG_ELEMENT)?.let { Json.decodeFromString(it) }
+        elementGeometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
         questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!) as QuestType<T>
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
@@ -190,7 +193,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
            https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
         */
         val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
-            way.tags?.get("junction") == "roundabout"
+            way.tags["junction"] == "roundabout"
         if (isClosedRoundabout) return null
 
         if (way.isArea()) return null
@@ -203,7 +206,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     private fun createDeleteOrReplaceElementAnswer(): OtherAnswer? {
         val isDeletePoiEnabled =
             (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
-                && osmElement?.type == Element.Type.NODE
+                && osmElement?.type == ElementType.NODE
         val isReplaceShopEnabled = (questType as? OsmElementQuestType)?.isReplaceShopEnabled == true
         if (!isDeletePoiEnabled && !isReplaceShopEnabled) return null
         check(!(isDeletePoiEnabled && isReplaceShopEnabled)) {
@@ -377,13 +380,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     protected fun deletePoiNode() {
         val context = context ?: return
 
-        val message = (
-            "<b>" + Html.escapeHtml(context.getString(R.string.osm_element_gone_warning)) + "</b>"
-            + "<br><br>" + context.getString(R.string.osm_element_gone_description)
-            ).parseAsHtml()
-
         AlertDialog.Builder(context)
-            .setMessage(message)
+            .setMessage(R.string.osm_element_gone_description)
             .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
                 listener?.onDeletePoiNode(questKey as OsmQuestKey)
             }
@@ -440,10 +438,10 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
 
-        fun createArguments(quest: Quest, element: OsmElement?, rotation: Float, tilt: Float) = bundleOf(
-            ARG_QUEST_KEY to quest.key,
-            ARG_ELEMENT to element,
-            ARG_GEOMETRY to quest.geometry,
+        fun createArguments(quest: Quest, element: Element?, rotation: Float, tilt: Float) = bundleOf(
+            ARG_QUEST_KEY to Json.encodeToString(quest.key),
+            ARG_ELEMENT to element?.let { Json.encodeToString(element) },
+            ARG_GEOMETRY to Json.encodeToString(quest.geometry),
             ARG_QUESTTYPE to quest.type::class.simpleName!!,
             ARG_MAP_ROTATION to rotation,
             ARG_MAP_TILT to tilt

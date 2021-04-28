@@ -1,13 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.osmapi.map.ElementIdUpdate
-import de.westnordost.osmapi.map.UpdatedElementsHandler
-import de.westnordost.osmapi.map.changes.DiffElement
-import de.westnordost.osmapi.map.data.*
-import de.westnordost.osmapi.map.data.Element.Type.NODE
-import de.westnordost.osmapi.map.data.Element.Type.WAY
-import de.westnordost.osmapi.map.data.Element.Type.RELATION
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.UpdatedElementsHandler
+import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
@@ -19,7 +14,7 @@ import org.junit.Test
 class UpdatedElementsHandlerTest {
     @Test fun `updates element version`() {
         val handler = UpdatedElementsHandler()
-        handler.handle(diff(NODE, 1, 1, 123))
+        handler.handle(DiffElement(NODE, 1, 1, 123))
 
         val element = handler.getElementUpdates(listOf(node(1))).updated.single()
         assertEquals(123, element.version)
@@ -27,7 +22,7 @@ class UpdatedElementsHandlerTest {
 
     @Test fun `deletes element`() {
         val handler = UpdatedElementsHandler()
-        handler.handle(diff(NODE, 1))
+        handler.handle(DiffElement(NODE, 1))
 
         val deletedElementKey = handler.getElementUpdates(listOf(node(1))).deleted.single()
         assertEquals(1, deletedElementKey.id)
@@ -36,7 +31,7 @@ class UpdatedElementsHandlerTest {
 
     @Test fun `updates element id`() {
         val handler = UpdatedElementsHandler()
-        handler.handle(diff(NODE, -1, 123456, 1))
+        handler.handle(DiffElement(NODE, -1, 123456, 1))
 
         val element = handler.getElementUpdates(listOf(node(-1))).updated.single()
         assertEquals(123456, element.id)
@@ -51,10 +46,10 @@ class UpdatedElementsHandlerTest {
         )
         val handler = UpdatedElementsHandler()
         handler.handleAll(
-            diff(NODE, -1, 1, 1),
-            diff(WAY, 1, 1, 2),
-            diff(WAY, 2, 2, 2),
-            diff(WAY, 3, 3, 2)
+            DiffElement(NODE, -1, 1, 1),
+            DiffElement(WAY, 1, 1, 2),
+            DiffElement(WAY, 2, 2, 2),
+            DiffElement(WAY, 3, 3, 2)
         )
 
         val updatedElements = handler.getElementUpdates(elements).updated
@@ -74,12 +69,12 @@ class UpdatedElementsHandlerTest {
             rel(3, listOf(member(WAY, -1), member(RELATION, -1), member(NODE, 1))) // contains it not
         )
         val handler = UpdatedElementsHandler()
-        handler.handle(diff(NODE, -1, 1, 1))
+        handler.handle(DiffElement(NODE, -1, 1, 1))
         handler.handleAll(
-            diff(NODE, -1, 1, 1),
-            diff(RELATION, 1, 1, 2),
-            diff(RELATION, 2, 2, 2),
-            diff(RELATION, 3, 3, 2)
+            DiffElement(NODE, -1, 1, 1),
+            DiffElement(RELATION, 1, 1, 2),
+            DiffElement(RELATION, 2, 2, 2),
+            DiffElement(RELATION, 3, 3, 2)
         )
 
         val updatedElements = handler.getElementUpdates(elements).updated
@@ -109,10 +104,10 @@ class UpdatedElementsHandlerTest {
         )
         val handler = UpdatedElementsHandler()
         handler.handleAll(
-            diff(NODE, 1),
-            diff(WAY, 1, 1, 2),
-            diff(WAY, 2, 2, 2),
-            diff(WAY, 3, 3, 2)
+            DiffElement(NODE, 1),
+            DiffElement(WAY, 1, 1, 2),
+            DiffElement(WAY, 2, 2, 2),
+            DiffElement(WAY, 3, 3, 2)
         )
 
         val elementUpdates = handler.getElementUpdates(elements)
@@ -134,10 +129,10 @@ class UpdatedElementsHandlerTest {
         )
         val handler = UpdatedElementsHandler()
         handler.handleAll(
-            diff(NODE, 1),
-            diff(RELATION, 1, 1, 2),
-            diff(RELATION, 2, 2, 2),
-            diff(RELATION, 3, 3, 2)
+            DiffElement(NODE, 1),
+            DiffElement(RELATION, 1, 1, 2),
+            DiffElement(RELATION, 2, 2, 2),
+            DiffElement(RELATION, 3, 3, 2)
         )
 
         val elementUpdates = handler.getElementUpdates(elements)
@@ -168,10 +163,10 @@ class UpdatedElementsHandlerTest {
         )
         val handler = UpdatedElementsHandler()
         handler.handleAll(
-            diff(NODE, -1, 11),
-            diff(NODE, -2, null),
-            diff(WAY, -3, 33),
-            diff(RELATION, -4, 44)
+            DiffElement(NODE, -1, 11),
+            DiffElement(NODE, -2, null),
+            DiffElement(WAY, -3, 33),
+            DiffElement(RELATION, -4, 44)
         )
         val updates = handler.getElementUpdates(elements)
         assertTrue(updates.idUpdates.containsExactlyInAnyOrder(listOf(
@@ -184,15 +179,6 @@ class UpdatedElementsHandlerTest {
         ))
     }
 }
-
-
-private fun diff(type: Element.Type, oldId: Long, newId: Long? = null, newVersion: Int? = null) =
-    DiffElement().also {
-        it.type = type
-        it.clientId = oldId
-        it.serverId = newId
-        it.serverVersion = newVersion
-    }
 
 private fun UpdatedElementsHandler.handleAll(vararg diffs: DiffElement) {
     diffs.forEach { handle(it) }

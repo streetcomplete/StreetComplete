@@ -8,20 +8,18 @@ import android.widget.ArrayAdapter
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.RegularOpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-import de.westnordost.streetcomplete.util.Serializer
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
 import kotlinx.android.synthetic.main.quest_fee_hours.*
-import java.util.*
-import javax.inject.Inject
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
 
@@ -45,12 +43,6 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         yesButton?.isGone = value
     }
     private var isFeeOnlyAtHours: Boolean = false
-
-    @Inject internal lateinit var serializer: Serializer
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,15 +105,11 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
     }
 
     private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningHoursRow> =
-        if (savedInstanceState != null) {
-            serializer.toObject<ArrayList<OpeningHoursRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA)!!)
-        } else {
-            listOf()
-        }
+        savedInstanceState?.let { Json.decodeFromString(it.getString(OPENING_HOURS_DATA)!!) } ?: emptyList()
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(ArrayList(openingHoursAdapter.rows)))
+        outState.putString(OPENING_HOURS_DATA, Json.encodeToString(openingHoursAdapter.rows))
         outState.putBoolean(IS_DEFINING_HOURS, isDefiningHours)
         outState.putBoolean(IS_FEE_ONLY_AT_HOURS, isFeeOnlyAtHours)
     }

@@ -15,9 +15,10 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
-class EditHistoryController @Inject constructor(
+@Singleton class EditHistoryController @Inject constructor(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
     private val noteQuestController: OsmNoteQuestController,
@@ -99,7 +100,7 @@ class EditHistoryController @Inject constructor(
 
     override fun getCount(): Int =
         // could be optimized later too...
-        elementEditsController.getAll().size
+        getAll().size
 
     override fun addListener(listener: EditHistorySource.Listener) {
         listeners.add(listener)

@@ -1,22 +1,16 @@
 package de.westnordost.streetcomplete.quests.opening_hours.model
 
+import kotlinx.serialization.Serializable
 import java.text.DateFormatSymbols
 
-class Months {
+@Serializable
+class Months(private val data: BooleanArray = BooleanArray(MONTHS_COUNT)) {
 
-    private val data = BooleanArray(MONTHS_COUNT)
+    init {
+        require(data.size == MONTHS_COUNT)
+    }
 
     val selection: BooleanArray get() = data.copyOf()
-
-    constructor()
-
-    constructor(selection: BooleanArray) {
-        var i = 0
-        while (i < selection.size && i < data.size) {
-            data[i] = selection[i]
-            ++i
-        }
-    }
 
     fun isSelectionEmpty() = data.all { !it }
 

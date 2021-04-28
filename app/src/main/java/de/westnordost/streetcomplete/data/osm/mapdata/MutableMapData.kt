@@ -1,9 +1,6 @@
-package de.westnordost.osmapi.map
+package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.data.*
-import de.westnordost.osmapi.map.handler.MapDataHandler
-
-open class MutableMapData() : MapData, MapDataHandler {
+open class MutableMapData() : MapData {
 
     constructor(other: Iterable<Element>) : this() {
         addAll(other)
@@ -13,12 +10,6 @@ open class MutableMapData() : MapData, MapDataHandler {
     protected val waysById: MutableMap<Long, Way> = mutableMapOf()
     protected val relationsById: MutableMap<Long, Relation> = mutableMapOf()
     override var boundingBox: BoundingBox? = null
-        protected set
-
-    override fun handle(bounds: BoundingBox) { boundingBox = bounds }
-    override fun handle(node: Node) { nodesById[node.id] = node }
-    override fun handle(way: Way) { waysById[way.id] = way }
-    override fun handle(relation: Relation) { relationsById[relation.id] = relation }
 
     override val nodes get() = nodesById.values
     override val ways get() = waysById.values
@@ -29,12 +20,14 @@ open class MutableMapData() : MapData, MapDataHandler {
     override fun getRelation(id: Long) = relationsById[id]
 
     fun addAll(elements: Iterable<Element>) {
-        for (element in elements) {
-            when(element) {
-                is Node -> nodesById[element.id] = element
-                is Way -> waysById[element.id] = element
-                is Relation -> relationsById[element.id] = element
-            }
+        elements.forEach(this::add)
+    }
+
+    fun add(element: Element) {
+        when(element) {
+            is Node -> nodesById[element.id] = element
+            is Way -> waysById[element.id] = element
+            is Relation -> relationsById[element.id] = element
         }
     }
 

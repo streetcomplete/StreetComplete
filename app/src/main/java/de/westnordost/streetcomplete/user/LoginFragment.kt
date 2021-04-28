@@ -11,12 +11,12 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.osmapi.user.Permission
+import de.westnordost.osmapi.user.PermissionsApi
 import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.OsmApiModule
-import de.westnordost.streetcomplete.data.PermissionsApi
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull

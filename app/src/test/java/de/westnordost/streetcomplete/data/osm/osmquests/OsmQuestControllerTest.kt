@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -75,14 +73,14 @@ class OsmQuestControllerTest {
     }
 
     @Test fun get() {
-        val key = osmQuestKey(Element.Type.NODE, 1, "ApplicableQuestType")
-        val entry = questEntry(Element.Type.NODE, 1, "ApplicableQuestType")
+        val key = osmQuestKey(NODE, 1, "ApplicableQuestType")
+        val entry = questEntry(NODE, 1, "ApplicableQuestType")
         val g = pGeom()
 
-        on(db.get(osmQuestKey(Element.Type.NODE, 1, "ApplicableQuestType"))).thenReturn(entry)
-        on(mapDataSource.getGeometry(Element.Type.NODE, 1)).thenReturn(g)
+        on(db.get(osmQuestKey(NODE, 1, "ApplicableQuestType"))).thenReturn(entry)
+        on(mapDataSource.getGeometry(NODE, 1)).thenReturn(g)
 
-        val expectedQuest = OsmQuest(ApplicableQuestType, Element.Type.NODE, 1, g)
+        val expectedQuest = OsmQuest(ApplicableQuestType, NODE, 1, g)
         assertEquals(expectedQuest, ctrl.get(key))
     }
 
@@ -90,16 +88,16 @@ class OsmQuestControllerTest {
         val notePos = p(0.5,0.5)
         val entries = listOf(
             // ok!
-            questEntry(elementType = Element.Type.NODE, elementId = 1),
+            questEntry(elementType = NODE, elementId = 1),
             // hidden!
-            questEntry(elementType = Element.Type.NODE, elementId = 2),
+            questEntry(elementType = NODE, elementId = 2),
             // blacklisted position!
-            questEntry(elementType = Element.Type.NODE, elementId = 3, position = notePos),
+            questEntry(elementType = NODE, elementId = 3, position = notePos),
             // geometry not found!
-            questEntry(elementType = Element.Type.NODE, elementId = 4),
+            questEntry(elementType = NODE, elementId = 4),
         )
         val geoms = listOf(ElementPointGeometry(p()))
-        val hiddenQuests = listOf(OsmQuestKey(Element.Type.NODE, 2, "ApplicableQuestType"))
+        val hiddenQuests = listOf(OsmQuestKey(NODE, 2, "ApplicableQuestType"))
         val bbox = bbox()
 
         on(hiddenDB.getAllIds()).thenReturn(hiddenQuests)
@@ -107,15 +105,15 @@ class OsmQuestControllerTest {
         on(db.getAllInBBox(bbox, null)).thenReturn(entries)
         on(mapDataSource.getGeometries(argThat {
             it.containsExactlyInAnyOrder(listOf(
-                ElementKey(Element.Type.NODE, 1),
-                ElementKey(Element.Type.NODE, 4),
+                ElementKey(NODE, 1),
+                ElementKey(NODE, 4),
             ))
         })).thenReturn(listOf(
-            ElementGeometryEntry(Element.Type.NODE, 1, geoms[0])
+            ElementGeometryEntry(NODE, 1, geoms[0])
         ))
 
         val expectedQuests = listOf(
-            OsmQuest(ApplicableQuestType, Element.Type.NODE, 1, geoms[0]),
+            OsmQuest(ApplicableQuestType, NODE, 1, geoms[0]),
         )
         assertTrue(ctrl.getAllVisibleInBBox(bbox, null).containsExactlyInAnyOrder(expectedQuests))
     }
@@ -130,26 +128,26 @@ class OsmQuestControllerTest {
 
         on(hiddenDB.getNewerThan(123L)).thenReturn(listOf(
             // ok!
-            OsmQuestKeyWithTimestamp(OsmQuestKey(Element.Type.NODE, 1L, "ApplicableQuestType"), 250),
+            OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 1L, "ApplicableQuestType"), 250),
             // unknown quest type
-            OsmQuestKeyWithTimestamp(OsmQuestKey(Element.Type.NODE, 2L, "UnknownQuestType"), 250),
+            OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 2L, "UnknownQuestType"), 250),
             // no geometry!
-            OsmQuestKeyWithTimestamp(OsmQuestKey(Element.Type.NODE, 3L, "ApplicableQuestType"), 250),
+            OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 3L, "ApplicableQuestType"), 250),
         ))
         on(mapDataSource.getGeometries(argThat {
             it.containsExactlyInAnyOrder(listOf(
-                ElementKey(Element.Type.NODE, 1),
-                ElementKey(Element.Type.NODE, 2),
-                ElementKey(Element.Type.NODE, 3)
+                ElementKey(NODE, 1),
+                ElementKey(NODE, 2),
+                ElementKey(NODE, 3)
             ))
         })).thenReturn(listOf(
-            ElementGeometryEntry(Element.Type.NODE, 1, geoms[0]),
-            ElementGeometryEntry(Element.Type.NODE, 2, geoms[1])
+            ElementGeometryEntry(NODE, 1, geoms[0]),
+            ElementGeometryEntry(NODE, 2, geoms[1])
         ))
 
         assertEquals(
             listOf(
-                OsmQuestHidden(Element.Type.NODE, 1, ApplicableQuestType, p(), 250)
+                OsmQuestHidden(NODE, 1, ApplicableQuestType, p(), 250)
             ),
             ctrl.getAllHiddenNewerThan(123L)
         )
@@ -211,19 +209,19 @@ class OsmQuestControllerTest {
 
     @Test fun `updates quests on map data listener update for deleted elements`() {
         val quests1 = listOf(
-            osmQuest(ApplicableQuestType, Element.Type.NODE, 1),
-            osmQuest(ComplexQuestTypeApplicableToNode42, Element.Type.NODE, 1),
+            osmQuest(ApplicableQuestType, NODE, 1),
+            osmQuest(ComplexQuestTypeApplicableToNode42, NODE, 1),
         )
         val quests2 = listOf(
-            osmQuest(ApplicableQuestType, Element.Type.NODE, 2)
+            osmQuest(ApplicableQuestType, NODE, 2)
         )
 
-        on(db.getAllForElement(Element.Type.NODE, 1)).thenReturn(quests1)
-        on(db.getAllForElement(Element.Type.NODE, 2)).thenReturn(quests2)
+        on(db.getAllForElement(NODE, 1)).thenReturn(quests1)
+        on(db.getAllForElement(NODE, 2)).thenReturn(quests2)
 
         val deleted = listOf(
-            ElementKey(Element.Type.NODE, 1),
-            ElementKey(Element.Type.NODE, 2)
+            ElementKey(NODE, 1),
+            ElementKey(NODE, 2)
         )
 
         mapDataListener.onUpdated(MutableMapDataWithGeometry(), deleted)
@@ -248,18 +246,18 @@ class OsmQuestControllerTest {
             node(2, tags = mapOf("a" to "b")),
         )
         val geometries = listOf(
-            ElementGeometryEntry(Element.Type.NODE, 1L, geom)
+            ElementGeometryEntry(NODE, 1L, geom)
         )
 
         val mapData = MutableMapDataWithGeometry(elements, geometries)
 
 
-        val existingApplicableQuest = osmQuest(ApplicableQuestType, Element.Type.NODE, 1)
-        val existingNonApplicableQuest = osmQuest(NotApplicableQuestType, Element.Type.NODE, 1)
+        val existingApplicableQuest = osmQuest(ApplicableQuestType, NODE, 1)
+        val existingNonApplicableQuest = osmQuest(NotApplicableQuestType, NODE, 1)
 
         val previousQuests = listOf(existingApplicableQuest, existingNonApplicableQuest)
 
-        on(db.getAllForElement(Element.Type.NODE, 1L)).thenReturn(previousQuests)
+        on(db.getAllForElement(NODE, 1L)).thenReturn(previousQuests)
         on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
 
         mapDataListener.onUpdated(mapData, emptyList())
@@ -268,8 +266,8 @@ class OsmQuestControllerTest {
         // unhideAll tests
 
         val expectedCreatedQuests = listOf(
-            OsmQuest(ApplicableQuestType, Element.Type.NODE, 1, geom),
-            OsmQuest(ApplicableQuestType2, Element.Type.NODE, 1, geom),
+            OsmQuest(ApplicableQuestType, NODE, 1, geom),
+            OsmQuest(ApplicableQuestType2, NODE, 1, geom),
         )
 
         val expectedDeletedQuestKeys = listOf(existingNonApplicableQuest.key)
@@ -299,16 +297,16 @@ class OsmQuestControllerTest {
         val notePosGeom = ElementPointGeometry(notePos)
 
         val geometries = listOf(
-            ElementGeometryEntry(Element.Type.NODE, 1, geom),
-            ElementGeometryEntry(Element.Type.NODE, 3, geom),
-            ElementGeometryEntry(Element.Type.NODE, 4, ElementPointGeometry(notePos)),
+            ElementGeometryEntry(NODE, 1, geom),
+            ElementGeometryEntry(NODE, 3, geom),
+            ElementGeometryEntry(NODE, 4, ElementPointGeometry(notePos)),
         )
 
         val mapData = MutableMapDataWithGeometry(elements, geometries)
         val bbox = bbox()
 
-        val existingApplicableQuest = osmQuest(ApplicableQuestType, Element.Type.NODE, 1, geom)
-        val existingNonApplicableQuest = osmQuest(NotApplicableQuestType, Element.Type.NODE, 1, geom)
+        val existingApplicableQuest = osmQuest(ApplicableQuestType, NODE, 1, geom)
+        val existingNonApplicableQuest = osmQuest(NotApplicableQuestType, NODE, 1, geom)
 
         val previousQuests = listOf(existingApplicableQuest, existingNonApplicableQuest)
 
@@ -317,21 +315,21 @@ class OsmQuestControllerTest {
         on(notesSource.getAllPositions(notePos.enclosingBoundingBox(1.0))).thenReturn(listOf(notePos))
 
         on(hiddenDB.getAllIds()).thenReturn(listOf(
-            OsmQuestKey(Element.Type.NODE, 3L, "ApplicableQuestType2")
+            OsmQuestKey(NODE, 3L, "ApplicableQuestType2")
         ))
 
         mapDataListener.onReplacedForBBox(bbox, mapData)
 
         val expectedAddedQuests = listOf(
-            OsmQuest(ApplicableQuestType, Element.Type.NODE, 1, geom),
-            OsmQuest(ApplicableQuestType2, Element.Type.NODE, 1, geom),
-            OsmQuest(ApplicableQuestType, Element.Type.NODE, 3, geom),
+            OsmQuest(ApplicableQuestType, NODE, 1, geom),
+            OsmQuest(ApplicableQuestType2, NODE, 1, geom),
+            OsmQuest(ApplicableQuestType, NODE, 3, geom),
         )
 
         val expectedCreatedQuests = expectedAddedQuests + listOf(
-            OsmQuest(ApplicableQuestType2, Element.Type.NODE, 3, geom),
-            OsmQuest(ApplicableQuestType, Element.Type.NODE, 4, notePosGeom),
-            OsmQuest(ApplicableQuestType2, Element.Type.NODE, 4, notePosGeom),
+            OsmQuest(ApplicableQuestType2, NODE, 3, geom),
+            OsmQuest(ApplicableQuestType, NODE, 4, notePosGeom),
+            OsmQuest(ApplicableQuestType2, NODE, 4, notePosGeom),
         )
 
         val expectedDeletedQuestKeys = listOf(existingNonApplicableQuest.key)
@@ -346,7 +344,7 @@ class OsmQuestControllerTest {
 }
 
 private fun questEntry(
-    elementType: Element.Type = Element.Type.NODE,
+    elementType: ElementType = NODE,
     elementId: Long = 1,
     questTypeName: String = "ApplicableQuestType",
     position: LatLon = p()

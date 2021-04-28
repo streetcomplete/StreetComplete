@@ -7,12 +7,14 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("kotlin-android-extensions")
+    kotlin("plugin.serialization") version "1.4.30"
 }
 
 android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
@@ -38,6 +40,7 @@ android {
         versionCode = 3200
         versionName = "32.0-alpha1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -94,6 +97,8 @@ dependencies {
     val kotlinxVersion = "1.4.2"
     val daggerVersion = "2.31.2"
 
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+
     // tests
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
@@ -137,10 +142,10 @@ dependencies {
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:2.1")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-map:1.5")
-    implementation("de.westnordost:osmapi-changesets:1.6")
-    implementation("de.westnordost:osmapi-notes:1.4")
-    implementation("de.westnordost:osmapi-user:1.5")
+    implementation("de.westnordost:osmapi-map:2.0")
+    implementation("de.westnordost:osmapi-changesets:2.0")
+    implementation("de.westnordost:osmapi-notes:2.0")
+    implementation("de.westnordost:osmapi-user:2.0")
     implementation("com.squareup.okhttp3:okhttp:3.12.12")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 
@@ -155,8 +160,7 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("com.esotericsoftware:kryo:4.0.2")
-    implementation("org.objenesis:objenesis:3.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.16.1")

@@ -1,12 +1,15 @@
 package de.westnordost.streetcomplete.data.osm.edits.delete
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.ktx.copy
+import kotlinx.serialization.Serializable
 
 /** Action that deletes a POI node.
  *
@@ -25,37 +28,35 @@ import de.westnordost.streetcomplete.ktx.copy
  *  corrected to reflect what the POI really is, it may have been re-purposed to be something
  *  else now, etc.
  *  */
-class DeletePoiNodeAction(
-    private val originalNodeVersion: Int,
-) : ElementEditAction {
+@Serializable
+object DeletePoiNodeAction : ElementEditAction, IsActionRevertable {
 
     override fun createUpdates(
-        element: Element,
+        originalElement: Element,
+        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
-    ): Collection<Element> {
-        val node = element.copy() as OsmNode
-
-        if (node.version > originalNodeVersion) throw ConflictException()
+    ): MapDataChanges {
+        val node = element as? Node ?: throw ConflictException("Element deleted")
+        if (isGeometrySubstantiallyDifferent(originalElement, element)) {
+            throw ConflictException("Element geometry changed substantially")
+        }
 
         // delete free-floating node
-        if (mapDataRepository.getWaysForNode(node.id).isEmpty() &&
-            mapDataRepository.getRelationsForNode(node.id).isEmpty()) {
-            node.isDeleted = true
+        return if (
+            mapDataRepository.getWaysForNode(node.id).isEmpty() &&
+            mapDataRepository.getRelationsForNode(node.id).isEmpty()
+        ) {
+            MapDataChanges(deletions = listOf(node))
         }
         // if it is a vertex in a way or has a role in a relation: just clear the tags then
         else {
-            node.tags.clear()
+            MapDataChanges(modifications = listOf(node.copy(
+                tags = emptyMap(),
+                timestampEdited = System.currentTimeMillis()
+            )))
         }
-
-        return listOf(node)
     }
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is DeletePoiNodeAction) return false
-        return originalNodeVersion == other.originalNodeVersion
-    }
-
-    override fun hashCode(): Int = originalNodeVersion
+    override fun createReverted(): ElementEditAction = RevertDeletePoiNodeAction
 }

@@ -1,13 +1,15 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.meta.getLastCheckDateKeys
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import java.util.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.ktx.toLocalDate
+import java.time.Instant
+import java.time.LocalDate
 
 abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : ElementFilter {
-    val date: Date get() = dateFilter.date
+    val date: LocalDate get() = dateFilter.date
 
     override fun toOverpassQLString(): String {
         val dateStr = date.toCheckDateString()
@@ -19,15 +21,14 @@ abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : Elem
     override fun toString() = toOverpassQLString()
 
     override fun matches(obj: Element?): Boolean {
-        val dateElementEdited = obj?.dateEdited ?: return false
-
-        if (compareTo(dateElementEdited)) return true
+        val timestampEdited = obj?.timestampEdited ?: return false
+        if (compareTo(Instant.ofEpochMilli(timestampEdited).toLocalDate())) return true
 
         return getLastCheckDateKeys(key)
             .mapNotNull { obj.tags[it]?.toCheckDate() }
             .any { compareTo(it) }
     }
 
-    abstract fun compareTo(tagValue: Date): Boolean
+    abstract fun compareTo(tagValue: LocalDate): Boolean
     abstract val operator: String
 }

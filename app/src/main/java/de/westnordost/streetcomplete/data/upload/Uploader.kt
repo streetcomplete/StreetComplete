@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.data.upload
 
 import android.util.Log
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.util.enclosingTilePos

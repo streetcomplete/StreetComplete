@@ -5,12 +5,12 @@ import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
 import android.util.Log
-import de.westnordost.osmapi.map.data.LatLon
 
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.download.CoroutineIntentService
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */

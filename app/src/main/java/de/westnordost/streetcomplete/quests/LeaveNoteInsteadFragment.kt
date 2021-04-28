@@ -8,6 +8,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import kotlinx.android.synthetic.main.form_leave_note.*
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 /** Bottom sheet fragment with which the user can leave a note instead of solving the quest */
 class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDetails {
@@ -26,7 +29,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
         super.onCreate(inState)
         val args = requireArguments()
         questTitle = args.getString(ARG_QUEST_TITLE)!!
-        questKey = args.getSerializable(ARG_QUEST_KEY) as QuestKey
+        questKey = Json.decodeFromString(args.getString(ARG_QUEST_KEY)!!)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,7 +50,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
         fun create(questKey: QuestKey, questTitle: String): LeaveNoteInsteadFragment {
             val f = LeaveNoteInsteadFragment()
             f.arguments = bundleOf(
-                ARG_QUEST_KEY to questKey,
+                ARG_QUEST_KEY to Json.encodeToString(questKey),
                 ARG_QUEST_TITLE to questTitle
             )
             return f

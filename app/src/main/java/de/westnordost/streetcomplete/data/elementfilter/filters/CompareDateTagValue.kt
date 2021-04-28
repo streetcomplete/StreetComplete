@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.elementfilter.quote
 import de.westnordost.streetcomplete.data.elementfilter.quoteIfNecessary
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import java.util.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import java.time.LocalDate
 
 abstract class CompareDateTagValue(val key: String, val dateFilter: DateFilter): ElementFilter {
-    val date: Date get() = dateFilter.date
+    val date: LocalDate get() = dateFilter.date
 
     override fun toOverpassQLString() : String {
         val strVal = date.toCheckDateString()
@@ -22,6 +22,6 @@ abstract class CompareDateTagValue(val key: String, val dateFilter: DateFilter):
         return compareTo(tagValue)
     }
 
-    abstract fun compareTo(tagValue: Date): Boolean
+    abstract fun compareTo(tagValue: LocalDate): Boolean
     abstract val operator: String
 }

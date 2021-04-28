@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.OsmNoteQuestHiddenKey
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 
 data class OsmNoteQuestHidden(

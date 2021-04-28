@@ -1,11 +1,12 @@
 package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
@@ -42,7 +43,7 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
             .flatMapTo(excludedWayNodeIds) { it.nodeIds }
 
         val associatedStreetRelations = mapData.relations.filter {
-            val type = it.tags?.get("type")
+            val type = it.tags["type"]
             type == "associatedStreet" || type == "street"
         }
 
@@ -70,6 +71,6 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
     }
 }
 
-private fun Relation.contains(elementType: Element.Type, elementId: Long) : Boolean {
+private fun Relation.contains(elementType: ElementType, elementId: Long) : Boolean {
     return members.any { it.type == elementType && it.ref == elementId }
 }

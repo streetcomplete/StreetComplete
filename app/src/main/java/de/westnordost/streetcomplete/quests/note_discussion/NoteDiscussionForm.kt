@@ -13,13 +13,13 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
+import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -31,7 +31,7 @@ import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
 import kotlinx.android.synthetic.main.quest_note_discussion_content.*
 import kotlinx.android.synthetic.main.quest_note_discussion_item.view.*
 import java.io.File
-import java.util.*
+import java.time.Instant
 import javax.inject.Inject
 
 class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
@@ -140,7 +140,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         }
 
         override fun onBind(comment: NoteComment) {
-            val dateDescription = DateUtils.getRelativeTimeSpanString(comment.date.time, Date().time, MINUTE_IN_MILLIS)
+            val dateDescription = DateUtils.getRelativeTimeSpanString(comment.timestamp, Instant.now().toEpochMilli(), MINUTE_IN_MILLIS)
             val userName = if (comment.user != null) comment.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
 
             val commentActionResourceId = comment.action.actionResourceId
@@ -150,7 +150,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
                 itemView.commentStatusText.text = getString(commentActionResourceId, userName, dateDescription)
             }
 
-            val hasComment = !comment.text.isNullOrEmpty()
+            val hasComment = comment.text?.isNotEmpty() == true
             itemView.commentView.isGone = !hasComment
             if (hasComment) {
                 itemView.commentText.text = comment.text

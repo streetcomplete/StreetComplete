@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 
 /** Quest type that's based on a simple element filter expression */
 abstract class OsmFilterQuestType<T> : OsmElementQuestType<T> {
@@ -16,9 +17,9 @@ abstract class OsmFilterQuestType<T> : OsmElementQuestType<T> {
         *  because for quests that only filter for one (or two) element types, any filter checks
         *  are completely avoided */
         return sequence {
-            if (filter.includesElementType(Element.Type.NODE)) yieldAll(mapData.nodes)
-            if (filter.includesElementType(Element.Type.WAY)) yieldAll(mapData.ways)
-            if (filter.includesElementType(Element.Type.RELATION)) yieldAll(mapData.relations)
+            if (filter.includesElementType(ElementType.NODE)) yieldAll(mapData.nodes)
+            if (filter.includesElementType(ElementType.WAY)) yieldAll(mapData.ways)
+            if (filter.includesElementType(ElementType.RELATION)) yieldAll(mapData.relations)
         }.filter { filter.matches(it) }.asIterable()
     }
 

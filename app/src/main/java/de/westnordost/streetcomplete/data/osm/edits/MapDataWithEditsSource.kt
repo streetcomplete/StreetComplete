@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.osmapi.map.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.*
-import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.intersect
 import java.util.concurrent.CopyOnWriteArrayList
@@ -96,20 +95,14 @@ import javax.inject.Singleton
 
     private val elementEditsListener = object : ElementEditsSource.Listener {
         @Synchronized override fun onAddedEdit(edit: ElementEdit) {
-            val elements = applyEdit(edit)
-            if (elements.isEmpty()) return
+            val mapDataUpdates = applyEdit(edit) ?: return
 
-            val elementsToDelete = ArrayList<ElementKey>()
             val mapData = MutableMapDataWithGeometry()
-            for (element in elements) {
-                if (element.isDeleted) {
-                    elementsToDelete.add(ElementKey(element.type, element.id))
-                } else {
-                    mapData.put(element, getGeometry(element.type, element.id))
-                }
+            for (element in mapDataUpdates.updated) {
+                mapData.put(element, getGeometry(element.type, element.id))
             }
 
-            callOnUpdated(updated = mapData, deleted = elementsToDelete)
+            callOnUpdated(updated = mapData, deleted = mapDataUpdates.deleted)
         }
 
         override fun onSyncedEdit(edit: ElementEdit) {
@@ -144,14 +137,14 @@ import javax.inject.Singleton
         elementEditsController.addListener(elementEditsListener)
     }
 
-    @Synchronized fun get(type: Element.Type, id: Long): Element? {
+    @Synchronized fun get(type: ElementType, id: Long): Element? {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
         return updatedElements[key] ?: mapDataController.get(type, id)
     }
 
-    @Synchronized fun getGeometry(type: Element.Type, id: Long): ElementGeometry? {
+    @Synchronized fun getGeometry(type: ElementType, id: Long): ElementGeometry? {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
@@ -283,7 +276,7 @@ import javax.inject.Singleton
 
     override fun getRelationsForRelation(id: Long): Collection<Relation> = getRelationsForElement(RELATION, id)
 
-    @Synchronized fun getRelationsForElement(type: Element.Type, id: Long): Collection<Relation> {
+    @Synchronized fun getRelationsForElement(type: ElementType, id: Long): Collection<Relation> {
         val relationsById = HashMap<Long, Relation>()
         val relations = when(type) {
             NODE -> mapDataController.getRelationsForNode(id)
@@ -346,33 +339,35 @@ import javax.inject.Singleton
         }
     }
 
-    @Synchronized private fun applyEdit(edit: ElementEdit): Collection<Element>  {
+    @Synchronized private fun applyEdit(edit: ElementEdit): MapDataUpdates?  {
         val idProvider = elementEditsController.getIdProvider(edit.id)
-        val editElement = get(edit.elementType, edit.elementId) ?: return emptyList()
+        val editElement = get(edit.elementType, edit.elementId) ?: return null
 
-        val elements: List<Element>
+        val mapDataChanges: MapDataChanges
         try {
-            /* sorting by element type: first nodes, then ways, then relations. This is important
-               because the geometry of (new) nodes is necessary to create the geometry of ways etc
-             */
-            elements = edit.action.createUpdates(editElement, this, idProvider)
-                .sortedBy { it.type.ordinal }
+            mapDataChanges = edit.action.createUpdates(edit.originalElement, editElement, this, idProvider)
         } catch (e: ConflictException) {
-            return emptyList()
+            return null
         }
-        for (element in elements) {
+
+        val deletedKeys = mapDataChanges.deletions.map { ElementKey(it.type, it.id) }
+        for (key in deletedKeys) {
+            deletedElements.add(key)
+            updatedElements.remove(key)
+            updatedGeometries.remove(key)
+        }
+        /* sorting by element type: first nodes, then ways, then relations. This is important
+           because the geometry of (new) nodes is necessary to create the geometry of ways etc
+         */
+        val updates = (mapDataChanges.creations + mapDataChanges.modifications).sortedBy { it.type.ordinal }
+
+        for (element in updates) {
             val key = ElementKey(element.type, element.id)
-            if (element.isDeleted) {
-                deletedElements.add(key)
-                updatedElements.remove(key)
-                updatedGeometries.remove(key)
-            } else {
-                deletedElements.remove(key)
-                updatedElements[key] = element
-                updatedGeometries[key] = createGeometry(element)
-            }
+            deletedElements.remove(key)
+            updatedElements[key] = element
+            updatedGeometries[key] = createGeometry(element)
         }
-        return elements
+        return MapDataUpdates(updated = updates, deleted = deletedKeys)
     }
 
     private fun createGeometry(element: Element): ElementGeometry? {
@@ -388,7 +383,6 @@ import javax.inject.Singleton
                 val relationMapData = getRelationElements(element)
                 elementGeometryCreator.create(element, relationMapData, true)
             }
-            else -> throw IllegalStateException()
         }
     }
 
@@ -400,9 +394,11 @@ import javax.inject.Singleton
     }
 
     private fun callOnUpdated(updated: MapDataWithGeometry = MutableMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
+        if (updated.size == 0 && deleted.isEmpty()) return
         listeners.forEach { it.onUpdated(updated, deleted) }
     }
     private fun callOnReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+        if (mapDataWithGeometry.size == 0) return
         listeners.forEach { it.onReplacedForBBox(bbox, mapDataWithGeometry) }
     }
 }

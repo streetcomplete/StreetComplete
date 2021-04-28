@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.quests.oneway_suspects
 import android.util.Log
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
@@ -98,7 +98,7 @@ class AddSuspectedOneway(
      *  If the segments point into different directions or their direction cannot be
      *  determined. returns null.
      */
-    private fun isForward(way: List<LatLon>,trafficFlowSegments: List<TrafficFlowSegment>): Boolean? {
+    private fun isForward(way: List<LatLon>, trafficFlowSegments: List<TrafficFlowSegment>): Boolean? {
         var result: Boolean? = null
         for (segment in trafficFlowSegments) {
             val fromPositionIndex = findClosestPositionIndexOf(way, segment.fromPosition)

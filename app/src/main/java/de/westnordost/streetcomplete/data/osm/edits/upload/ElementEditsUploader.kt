@@ -1,13 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import android.util.Log
-import de.westnordost.osmapi.map.*
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Element.Type.*
-import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.*
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
@@ -67,20 +63,20 @@ class ElementEditsUploader @Inject constructor(
 
             val mapData = fetchElementComplete(edit.elementType, edit.elementId)
             if (mapData != null) {
-                mapDataController.updateAll(ElementUpdates(updated = mapData.toList()))
+                mapDataController.updateAll(MapDataUpdates(updated = mapData.toList()))
             } else {
                 val elementKey = ElementKey(edit.elementType, edit.elementId)
-                mapDataController.updateAll(ElementUpdates(deleted = listOf(elementKey)))
+                mapDataController.updateAll(MapDataUpdates(deleted = listOf(elementKey)))
             }
         }
     }
 
-    private suspend fun fetchElementComplete(elementType: Element.Type, elementId: Long): MapData? =
+    private suspend fun fetchElementComplete(elementType: ElementType, elementId: Long): MapData? =
         withContext(Dispatchers.IO) {
             when (elementType) {
-                NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
-                WAY -> mapDataApi.getWayComplete(elementId)
-                RELATION -> mapDataApi.getRelationComplete(elementId)
+                ElementType.NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
+                ElementType.WAY -> mapDataApi.getWayComplete(elementId)
+                ElementType.RELATION -> mapDataApi.getRelationComplete(elementId)
             }
         }
 

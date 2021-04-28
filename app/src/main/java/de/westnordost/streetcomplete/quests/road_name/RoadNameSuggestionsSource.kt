@@ -2,12 +2,12 @@ package de.westnordost.streetcomplete.quests.road_name
 
 import javax.inject.Inject
 
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
@@ -34,7 +34,7 @@ class RoadNameSuggestionsSource @Inject constructor(
             val minDistanceToRoad = points.distanceTo(polyline)
             if (minDistanceToRoad > maxDistance) continue
 
-            val namesByLocale = road.tags?.toRoadNameByLanguage()?.toMutableMap() ?: continue
+            val namesByLocale = road.tags.toRoadNameByLanguage()?.toMutableMap() ?: continue
 
             // eliminate duplicates (same road, different segments, different distances)
             val prev = result[namesByLocale]
@@ -47,7 +47,7 @@ class RoadNameSuggestionsSource @Inject constructor(
     }
 
     private fun Way.isRoadWithName(): Boolean {
-        return tags != null && tags.containsKey("name") && tags["highway"] in ALL_ROADS_AND_PATHS
+        return tags.containsKey("name") && tags["highway"] in ALL_ROADS_AND_PATHS
     }
 
     companion object {

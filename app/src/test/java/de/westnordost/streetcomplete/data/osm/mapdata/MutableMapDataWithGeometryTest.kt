@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -27,7 +26,7 @@ class MutableMapDataWithGeometryTest {
         assertEquals(node, m.getNode(node.id))
         assertEquals(geom, m.getNodeGeometry(node.id))
 
-        m.remove(Element.Type.NODE, node.id)
+        m.remove(ElementType.NODE, node.id)
         assertNull(m.getNode(node.id))
         assertNull(m.getNodeGeometry(node.id))
     }
@@ -46,7 +45,7 @@ class MutableMapDataWithGeometryTest {
         assertEquals(way, m.getWay(way.id))
         assertEquals(geom, m.getWayGeometry(way.id))
 
-        m.remove(Element.Type.WAY, way.id)
+        m.remove(ElementType.WAY, way.id)
         assertNull(m.getWay(way.id))
         assertNull(m.getWayGeometry(way.id))
     }

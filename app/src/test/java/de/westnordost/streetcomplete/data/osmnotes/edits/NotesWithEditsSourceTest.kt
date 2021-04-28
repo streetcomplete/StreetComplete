@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NoteComment
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osmnotes.Note
+import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
+import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
@@ -60,7 +61,7 @@ class NotesWithEditsSourceTest {
     @Test
     fun `get returns updated note with anonymous user`() {
         val comment = comment("test", NoteComment.Action.OPENED, timestamp = 100)
-        val addedComment = comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, -1, "")
+        val addedComment = comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, user = user)
 
         val note = note(id = 1, comments = arrayListOf(comment))
         val edits = listOf(
@@ -71,7 +72,7 @@ class NotesWithEditsSourceTest {
         on(noteController.get(1)).thenReturn(note)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
-        checkCommentsEqual(listOf(comment, addedComment), src.get(1)!!.comments)
+        assertEquals(listOf(comment, addedComment), src.get(1)!!.comments)
     }
 
     @Test
@@ -81,7 +82,7 @@ class NotesWithEditsSourceTest {
             "test2\n\n(Photo(s) will be attached on upload)",
             NoteComment.Action.COMMENTED,
             timestamp = 500,
-            -1, ""
+            user = user
         )
 
         val note = note(id = 1, comments = arrayListOf(comment))
@@ -97,13 +98,13 @@ class NotesWithEditsSourceTest {
         on(noteController.get(1)).thenReturn(note)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
-        checkCommentsEqual(listOf(comment, addedComment), src.get(1)!!.comments)
+        assertEquals(listOf(comment, addedComment), src.get(1)!!.comments)
     }
 
     @Test
     fun `get returns updated note`() {
         val comment1 = comment("test", NoteComment.Action.OPENED, timestamp = 123)
-        val comment2 = comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, userId = 23, userName = "test user")
+        val comment2 = comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, user = User(23, "test user"))
 
         val note = note(id = 1, comments = arrayListOf(comment1))
         val edits = listOf(
@@ -115,14 +116,14 @@ class NotesWithEditsSourceTest {
         on(noteController.get(1)).thenReturn(note)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
-        checkCommentsEqual(listOf(comment1, comment2), src.get(1)!!.comments)
+        assertEquals(listOf(comment1, comment2), src.get(1)!!.comments)
     }
 
     @Test
     fun `get returns note with anonymous user updated twice`() {
         val comment1 = comment("test", NoteComment.Action.OPENED, timestamp = 123)
-        val comment2 = comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, -1, "")
-        val comment3 = comment("test3", NoteComment.Action.COMMENTED, timestamp = 800, -1, "")
+        val comment2 = comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, user = user)
+        val comment3 = comment("test3", NoteComment.Action.COMMENTED, timestamp = 800, user = user)
 
         val note = note(id = 1, comments = arrayListOf(comment1))
         val edits = listOf(
@@ -134,7 +135,7 @@ class NotesWithEditsSourceTest {
         on(noteController.get(1)).thenReturn(note)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
-        checkCommentsEqual(listOf(comment1, comment2, comment3), src.get(1)!!.comments)
+        assertEquals(listOf(comment1, comment2, comment3), src.get(1)!!.comments)
     }
 
     @Test
@@ -143,7 +144,7 @@ class NotesWithEditsSourceTest {
         val expectedNote = note(
             id = -12,
             comments = arrayListOf(
-                comment("test12", NoteComment.Action.OPENED, timestamp = 123, -1, "")
+                comment("test12", NoteComment.Action.OPENED, timestamp = 123, user = user)
             ),
             position = p,
             timestamp = 123)
@@ -156,7 +157,7 @@ class NotesWithEditsSourceTest {
         on(noteController.get(1)).thenReturn(null)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
-        checkNoteEqual(expectedNote, src.get(1)!!)
+        assertEquals(expectedNote, src.get(1)!!)
     }
 
     @Test
@@ -165,8 +166,8 @@ class NotesWithEditsSourceTest {
         val expectedNote = note(
             id = -12,
             comments = arrayListOf(
-                comment("test12", NoteComment.Action.OPENED, timestamp = 123, -1, ""),
-                comment("test34", NoteComment.Action.COMMENTED, timestamp = 234, -1, ""),
+                comment("test12", NoteComment.Action.OPENED, timestamp = 123, user = user),
+                comment("test34", NoteComment.Action.COMMENTED, timestamp = 234, user = user),
             ),
             position = p,
             timestamp = 123)
@@ -180,7 +181,7 @@ class NotesWithEditsSourceTest {
         on(noteController.get(1)).thenReturn(null)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
-        checkNoteEqual(expectedNote, src.get(1)!!)
+        assertEquals(expectedNote, src.get(1)!!)
     }
 
     //endregion
@@ -228,7 +229,7 @@ class NotesWithEditsSourceTest {
         on(noteController.getAll(any<BoundingBox>())).thenReturn(initialNotes1)
         on(noteEditsController.getAllUnsynced(any())).thenReturn(edits1)
 
-        checkNotesEqual(expectedNotes1, src.getAll(bbox))
+        assertEquals(expectedNotes1.toSet(), src.getAll(bbox).toSet())
     }
 
     //endregion
@@ -340,6 +341,8 @@ class NotesWithEditsSourceTest {
 
 private val bbox = bbox()
 
+val user = User(id = -1, displayName = "")
+
 val initialNotes1 = listOf(
     note(id = 1, position = p(1.0,2.0), timestamp = 10, comments = arrayListOf(
         comment("test", NoteComment.Action.OPENED, timestamp = 100)
@@ -350,11 +353,11 @@ val initialNotes1 = listOf(
 val expectedNotes1 = listOf(
     note(id = 1, position = p(1.0,2.0), timestamp = 10, comments = arrayListOf(
         comment("test", NoteComment.Action.OPENED, timestamp = 100),
-        comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, -1, "")
+        comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, user = user)
     )),
     note(id = 2, position = p(12.0,1.0), timestamp = 300, comments = arrayListOf(
-        comment("xyz", NoteComment.Action.OPENED, timestamp = 300, -1, ""),
-        comment("abc", NoteComment.Action.COMMENTED, timestamp = 900, -1, ""),
+        comment("xyz", NoteComment.Action.OPENED, timestamp = 300, user = user),
+        comment("abc", NoteComment.Action.COMMENTED, timestamp = 900, user = user),
     )),
     note(id = 3, position = p(0.0,3.0), timestamp = 800)
 )
@@ -364,6 +367,7 @@ val edits1 = listOf(
     noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500),
     noteEdit(noteId = 2, action = NoteEditAction.COMMENT, text = "abc", timestamp = 900),
 )
+
 
 private fun checkListenerCalledWith(
     listener: NotesWithEditsSource.Listener,
@@ -376,47 +380,8 @@ private fun checkListenerCalledWith(
         val actuallyUpdated = invocation.getArgument<Collection<Note>>(1)
         val actuallyDeleted = invocation.getArgument<Collection<Long>>(2)
 
-        checkNotesEqual(added, actuallyAdded)
-        checkNotesEqual(updated, actuallyUpdated)
+        assertEquals(added, actuallyAdded)
+        assertEquals(updated, actuallyUpdated)
         assertTrue(deleted.containsExactlyInAnyOrder(actuallyDeleted))
-    }
-}
-
-private fun checkNotesEqual(expected: Collection<Note>, actual: Collection<Note>) {
-    assertEquals(expected.size, actual.size)
-    val a = expected.sortedBy { it.id }
-    val b = actual.sortedBy { it.id }
-    for (i in a.indices) {
-        val x = a[i]
-        val y = b[i]
-        checkNoteEqual(x,y)
-    }
-}
-
-private fun checkNoteEqual(expected: Note, actual: Note) {
-    assertEquals(expected.id, actual.id)
-    assertEquals(expected.position, actual.position)
-    assertEquals(expected.dateCreated.time, actual.dateCreated.time)
-    assertEquals(expected.status, actual.status)
-    assertEquals(expected.dateClosed, actual.dateClosed)
-    checkCommentsEqual(expected.comments, actual.comments)
-}
-
-
-private fun checkCommentsEqual(expected: List<NoteComment>, actual: List<NoteComment>) {
-    assertEquals(expected.size, actual.size)
-    for (i in expected.indices) {
-        val e = expected[i]
-        val a = actual[i]
-        assertEquals(e.text, a.text)
-        assertEquals(e.action, a.action)
-        assertEquals(e.date.time, a.date.time)
-        if (e.user == null) {
-            assertNull(a.user)
-        }
-        else {
-            assertEquals(e.user.id, a.user.id)
-            assertEquals(e.user.displayName, a.user.displayName)
-        }
     }
 }

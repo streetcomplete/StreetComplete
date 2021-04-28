@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
+import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.testutils.*

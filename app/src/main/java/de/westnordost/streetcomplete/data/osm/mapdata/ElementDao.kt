@@ -2,11 +2,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import javax.inject.Inject
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
-import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 
 /** Stores OSM elements. Actually, stores nothing, but delegates the work to a NodeDao, WayDao and
  *  a RelationDao. :-P */
@@ -23,7 +19,7 @@ class ElementDao @Inject constructor(
         }
     }
 
-    fun get(type: Element.Type, id: Long): Element? {
+    fun get(type: ElementType, id: Long): Element? {
         return when (type) {
             NODE -> nodeDao.get(id)
             WAY -> wayDao.get(id)
@@ -31,7 +27,7 @@ class ElementDao @Inject constructor(
         }
     }
 
-    fun delete(type: Element.Type, id: Long) {
+    fun delete(type: ElementType, id: Long) {
         when (type) {
             NODE -> nodeDao.delete(id)
             WAY -> wayDao.delete(id)

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.edithistory
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
@@ -95,9 +95,9 @@ class EditHistoryControllerTest {
     }
 
     @Test fun `undo hid quest`() {
-        val e = questHidden(Element.Type.NODE, 1L, TestQuestTypeA())
+        val e = questHidden(ElementType.NODE, 1L, TestQuestTypeA())
         ctrl.undo(e)
-        verify(osmQuestController).unhide(OsmQuestKey(Element.Type.NODE, 1L, "TestQuestTypeA"))
+        verify(osmQuestController).unhide(OsmQuestKey(ElementType.NODE, 1L, "TestQuestTypeA"))
     }
 
     @Test fun `undo hid note quest`() {

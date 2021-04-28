@@ -8,12 +8,13 @@ import android.widget.AutoCompleteTextView
 import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.ConfigurationCompat
-import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.ktx.toTypedArray
 import kotlinx.android.synthetic.main.view_shop_type.view.*
@@ -109,7 +110,7 @@ class ShopGoneDialog(
             .forLocale(*localeList.toTypedArray())
             .find()
             .filter { feature ->
-                val fakeElement = OsmNode(-1L, 0, 0.0, 0.0, feature.tags)
+                val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
                 fakeElement.isSomeKindOfShop()
             }
     }

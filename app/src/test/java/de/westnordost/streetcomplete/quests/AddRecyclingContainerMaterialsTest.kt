@@ -13,7 +13,8 @@ import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial
 import de.westnordost.streetcomplete.util.translate
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.util.*
+import java.time.Instant
+import java.time.LocalDate
 
 class AddRecyclingContainerMaterialsTest {
 
@@ -48,7 +49,7 @@ class AddRecyclingContainerMaterialsTest {
                 "check_date:recycling" to "2001-01-01",
                 "recycling:plastic_packaging" to "yes",
                 "recycling:something_else" to "no"
-            ), date = Date())
+            ), timestamp = Instant.now().toEpochMilli())
         ))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
@@ -60,7 +61,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling_type" to "container",
                 "check_date:recycling" to "2001-01-01",
                 "recycling:something_else" to "yes"
-            ), date = Date())
+            ), timestamp = Instant.now().toEpochMilli())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
@@ -220,7 +221,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(CLOTHES, PAPER)),
             StringMapEntryModify("recycling:paper", "yes", "yes"),
             StringMapEntryModify("recycling:clothes", "yes", "yes"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", LocalDate.now().toCheckDateString())
         )
     }
 

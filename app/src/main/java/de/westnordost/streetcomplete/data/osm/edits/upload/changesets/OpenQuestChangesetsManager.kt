@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import android.util.Log
-import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.streetcomplete.ApplicationConstants.QUESTTYPE_TAG_KEY
@@ -10,8 +10,7 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
-import java.util.*
-
+import java.util.Locale
 import javax.inject.Inject
 
 /** Manages the creation and reusage of quest-related changesets */

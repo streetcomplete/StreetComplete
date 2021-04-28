@@ -7,12 +7,11 @@ import com.mapzen.tangram.geometry.Geometry
 import com.mapzen.tangram.geometry.Point
 import com.mapzen.tangram.geometry.Polygon
 import com.mapzen.tangram.geometry.Polyline
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 fun ElementGeometry.toTangramGeometry(): List<Geometry> = when(this) {
     is ElementPolylinesGeometry -> {
@@ -35,7 +34,7 @@ fun ElementGeometry.toTangramGeometry(): List<Geometry> = when(this) {
     }
 }
 
-fun LngLat.toLatLon(): LatLon = OsmLatLon(latitude, longitude)
+fun LngLat.toLatLon(): LatLon = LatLon(latitude, longitude)
 
 fun LatLon.toLngLat(): LngLat = LngLat(longitude, latitude)
 

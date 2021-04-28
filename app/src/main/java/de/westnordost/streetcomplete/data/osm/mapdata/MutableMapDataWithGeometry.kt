@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -37,17 +36,17 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
         putGeometry(element.type, element.id, geometry)
     }
 
-    fun remove(type: Element.Type, id: Long) {
+    fun remove(type: ElementType, id: Long) {
         when(type) {
-            Element.Type.NODE -> {
+            ElementType.NODE -> {
                 nodesById.remove(id)
                 nodeGeometriesById.remove(id)
             }
-            Element.Type.WAY -> {
+            ElementType.WAY -> {
                 waysById.remove(id)
                 wayGeometriesById.remove(id)
             }
-            Element.Type.RELATION -> {
+            ElementType.RELATION -> {
                 relationsById.remove(id)
                 relationGeometriesById.remove(id)
             }
@@ -72,11 +71,11 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
         }
     }
 
-    fun putGeometry(type: Element.Type, id: Long, geometry: ElementGeometry?) {
+    fun putGeometry(type: ElementType, id: Long, geometry: ElementGeometry?) {
         when(type) {
-            Element.Type.NODE -> nodeGeometriesById[id] = geometry as? ElementPointGeometry
-            Element.Type.WAY -> wayGeometriesById[id] = geometry
-            Element.Type.RELATION -> relationGeometriesById[id] = geometry
+            ElementType.NODE -> nodeGeometriesById[id] = geometry as? ElementPointGeometry
+            ElementType.WAY -> wayGeometriesById[id] = geometry
+            ElementType.RELATION -> relationGeometriesById[id] = geometry
         }
     }
 

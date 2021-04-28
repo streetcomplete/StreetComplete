@@ -13,7 +13,6 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -26,6 +25,7 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setText
 import kotlinx.coroutines.*
 import org.sufficientlysecure.htmltextview.HtmlTextView
-import java.util.*
+import java.util.MissingFormatArgumentException
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
@@ -89,9 +89,7 @@ class UndoDialog(
 
     suspend fun Edit.getTitle(): CharSequence = when(this) {
         is ElementEdit -> {
-            // TODO when the edit contains the original element the edit was made with, this wouldn't be necessary
-            val element = withContext(Dispatchers.IO) { mapDataSource.get(elementType, elementId) }
-            getQuestTitle(questType, element)
+            getQuestTitle(questType, originalElement)
         }
         is NoteEdit -> {
             context.resources.getText(when(action) {
@@ -143,7 +141,7 @@ class UndoDialog(
         return txt
     }
 
-    private fun createListOfTagUpdates(changes: List<StringMapEntryChange>): HtmlTextView {
+    private fun createListOfTagUpdates(changes: Collection<StringMapEntryChange>): HtmlTextView {
         val txt = HtmlTextView(context)
         txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
 

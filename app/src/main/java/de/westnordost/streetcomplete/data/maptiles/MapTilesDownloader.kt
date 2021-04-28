@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.maptiles
 
 import android.util.Log
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.enclosingTilesRect

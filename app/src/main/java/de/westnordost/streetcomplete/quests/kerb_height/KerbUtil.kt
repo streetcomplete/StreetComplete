@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
-import de.westnordost.osmapi.map.MapData
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.ktx.firstAndLast
 
 private val footwaysFilter by lazy {"""
@@ -59,7 +59,7 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
 
     val kerbBarrierNodeIds = mutableSetOf<Long>()
     ways.asSequence()
-        .filter { it.tags?.get("barrier") == "kerb" }
+        .filter { it.tags["barrier"] == "kerb" }
         .flatMapTo(kerbBarrierNodeIds) { it.nodeIds }
 
     val anyWays = ways.filter { waysFilter.matches(it) }
@@ -68,7 +68,7 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     // Kerbs can be defined in three ways (see https://github.com/streetcomplete/StreetComplete/issues/1305#issuecomment-688333976):
     return footwayNodes.filter {
         // 1. either as a node tagged with barrier = kerb on a footway
-        it.tags?.get("barrier") == "kerb" ||
+        it.tags["barrier"] == "kerb" ||
         // 2. or as the shared node at which a way tagged with barrier = kerb crosses a footway
         it.id in kerbBarrierNodeIds ||
         // 3. or implicitly as the shared node between a footway tagged with footway = crossing and
@@ -87,7 +87,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
     val footways = ways.filter { footwaysFilter.matches(it) }
 
     val crossingEndNodeIds = footways.asSequence()
-        .filter { it.tags?.get("footway") == "crossing" }
+        .filter { it.tags["footway"] == "crossing" }
         .flatMap { it.nodeIds.firstAndLast() }
 
     val connectionsById = mutableMapOf<Long, Int>()
@@ -100,7 +100,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
     if (connectionsById.isEmpty()) return emptySet()
 
     val sidewalkEndNodeIds = footways.asSequence()
-        .filter { it.tags?.get("footway") == "sidewalk" }
+        .filter { it.tags["footway"] == "sidewalk" }
         .flatMap { it.nodeIds.firstAndLast() }
 
     for (id in sidewalkEndNodeIds) {
@@ -113,7 +113,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
 
     // skip nodes that share an end node with a way where it is not clear if it is a sidewalk, crossing or something else
     ways.asSequence()
-        .filter { it.tags?.get("footway") != "sidewalk" && it.tags?.get("footway") != "crossing" }
+        .filter { it.tags["footway"] != "sidewalk" && it.tags["footway"] != "crossing" }
         .flatMap { it.nodeIds.firstAndLast() }
         .forEach { connectionsById.remove(it) }
     if (connectionsById.isEmpty()) return emptySet()

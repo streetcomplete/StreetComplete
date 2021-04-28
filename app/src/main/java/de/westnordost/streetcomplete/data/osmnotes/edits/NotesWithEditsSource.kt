@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.osmapi.user.User
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.Note
+import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
+import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserStore
-import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -77,7 +76,9 @@ import javax.inject.Singleton
                     if (note == null) note = noteEdit.createNote()
                 }
                 COMMENT -> {
-                    note?.comments?.add(noteEdit.createNoteComment())
+                    if (note != null) {
+                        note = note.copy(comments = note.comments + noteEdit.createNoteComment())
+                    }
                 }
             }
         }
@@ -114,36 +115,37 @@ import javax.inject.Singleton
                     if (!notesById.containsKey(id)) notesById[id] = noteEdit.createNote()
                 }
                 COMMENT -> {
-                    notesById[id]?.comments?.add(noteEdit.createNoteComment())
+                    val note = notesById[id]
+                    if (note != null) {
+                        notesById[id] = note.copy(comments = note.comments + noteEdit.createNoteComment())
+                    }
                 }
             }
         }
         return notesById.values
     }
 
-    private fun NoteEdit.createNote(): Note {
-        val comment = createNoteComment()
-        comment.action = NoteComment.Action.OPENED
+    private fun NoteEdit.createNote() = Note(
+        position,
+        noteId,
+        createdTimestamp,
+        null,
+        Note.Status.OPEN,
+        arrayListOf(createNoteComment(NoteComment.Action.OPENED))
+    )
 
-        val note = Note()
-        note.status = Note.Status.OPEN
-        note.id = noteId
-        note.position = position
-        note.comments = arrayListOf(comment)
-        note.dateCreated = Date(createdTimestamp)
-        return note
-    }
-
-    private fun NoteEdit.createNoteComment(): NoteComment {
-        val comment = NoteComment()
-        comment.action = NoteComment.Action.COMMENTED
-        comment.text = text
+    private fun NoteEdit.createNoteComment(action: NoteComment.Action = NoteComment.Action.COMMENTED): NoteComment {
+        var commentText = text ?: ""
         if (!imagePaths.isNullOrEmpty()) {
-            comment.text += "\n\n(Photo(s) will be attached on upload)"
+            commentText += "\n\n(Photo(s) will be attached on upload)"
         }
-        comment.user = User(userStore.userId, userStore.userName ?: "")
-        comment.date = Date(createdTimestamp)
-        return comment
+
+        return NoteComment(
+            createdTimestamp,
+            action,
+            commentText,
+            User(userStore.userId, userStore.userName ?: "")
+        )
     }
 
     fun addListener(listener: Listener) {

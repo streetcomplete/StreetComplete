@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osmnotes.Note
+import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
@@ -224,7 +224,7 @@ private fun Note.probablyContainsQuestion(): Boolean {
    */
     val questionMarksAroundTheWorld = "[?;;؟՞፧？]"
 
-    val text = comments?.firstOrNull()?.text
+    val text = comments.firstOrNull()?.text
     return text?.matches(".*$questionMarksAroundTheWorld.*".toRegex()) ?: false
 }
 
@@ -238,7 +238,7 @@ private fun Note.containsCommentFromUser(userId: Long): Boolean =
 
 private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     val firstComment = comments.first()
-    val isViaApp = firstComment.text.contains("via " + ApplicationConstants.NAME)
+    val isViaApp = firstComment.text?.contains("via " + ApplicationConstants.NAME) == true
     return firstComment.isFromUser(userId) && isViaApp
 }
 

@@ -2,12 +2,11 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.util.measuredLength
 import de.westnordost.streetcomplete.util.pointOnPolylineFromEnd
 import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
@@ -15,7 +14,7 @@ import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
 /** Represents one task for the user to complete/correct the data based on one OSM element  */
 data class OsmQuest(
     val osmElementQuestType: OsmElementQuestType<*>, // underlying OSM data
-    override val elementType: Element.Type,
+    override val elementType: ElementType,
     override val elementId: Long,
     override val geometry: ElementGeometry
 ) : Quest, OsmQuestDaoEntry {

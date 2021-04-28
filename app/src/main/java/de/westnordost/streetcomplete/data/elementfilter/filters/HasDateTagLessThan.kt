@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import java.util.*
+import java.time.LocalDate
 
 /** key < date */
 class HasDateTagLessThan(key: String, dateFilter: DateFilter): CompareDateTagValue(key, dateFilter) {
     override val operator = "<"
-    override fun compareTo(tagValue: Date) = tagValue < date
+    override fun compareTo(tagValue: LocalDate) = tagValue < date
 }

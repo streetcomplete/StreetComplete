@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -13,7 +11,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NoteEditsDao
 
     @Before fun createDao() {
-        dao = NoteEditsDao(database, serializer)
+        dao = NoteEditsDao(database)
     }
 
     @Test fun addGet() {
@@ -106,12 +104,12 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAllUnsyncedForBounds() {
-        val posIn1 = OsmLatLon(0.0, 0.0)
-        val posIn2 = OsmLatLon(0.5, 0.0)
-        val posOut1 = OsmLatLon(-0.5, 0.0)
-        val posOut2 = OsmLatLon(1.1, 0.5)
-        val posOut3 = OsmLatLon(0.5, 2.5)
-        val posOut4 = OsmLatLon(0.5, -0.5)
+        val posIn1 = LatLon(0.0, 0.0)
+        val posIn2 = LatLon(0.5, 0.0)
+        val posOut1 = LatLon(-0.5, 0.0)
+        val posOut2 = LatLon(1.1, 0.5)
+        val posOut3 = LatLon(0.5, 2.5)
+        val posOut4 = LatLon(0.5, -0.5)
         val e1 = edit(pos = posOut1)
         val e2 = edit(pos = posOut2)
         val e3 = edit(pos = posOut3)
@@ -128,12 +126,12 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAllUnsyncedPositionsForBounds() {
-        val posIn1 = OsmLatLon(0.0, 0.0)
-        val posIn2 = OsmLatLon(0.0, 0.0)
-        val posOut1 = OsmLatLon(-0.5, 0.0)
-        val posOut2 = OsmLatLon(1.1, 0.5)
-        val posOut3 = OsmLatLon(0.5, 2.5)
-        val posOut4 = OsmLatLon(0.5, -0.5)
+        val posIn1 = LatLon(0.0, 0.0)
+        val posIn2 = LatLon(0.0, 0.0)
+        val posOut1 = LatLon(-0.5, 0.0)
+        val posOut2 = LatLon(1.1, 0.5)
+        val posOut3 = LatLon(0.5, 2.5)
+        val posOut4 = LatLon(0.5, -0.5)
         val e1 = edit(pos = posOut1)
         val e2 = edit(pos = posOut2)
         val e3 = edit(pos = posOut3)
@@ -251,7 +249,7 @@ private fun edit(
     action: NoteEditAction = NoteEditAction.COMMENT,
     text: String = "test123",
     imagePaths: List<String> = emptyList(),
-    pos: LatLon = OsmLatLon(1.0, 1.0),
+    pos: LatLon = LatLon(1.0, 1.0),
     timestamp: Long = 123L,
     isSynced: Boolean = false
 ) = NoteEdit(

@@ -1,14 +1,10 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.Relation
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.ktx.isArea
@@ -198,7 +194,7 @@ private fun Element.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeom
 /** return whether any way contained in this relation contains any of the nodes with the given ids */
 private fun Relation.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeometry): Boolean =
     members
-        .filter { it.type == Element.Type.WAY }
+        .filter { it.type == ElementType.WAY }
         .any { member ->
             val way = mapData.getWay(member.ref)
             way?.nodeIds?.any { it in nodeIds } ?: false
@@ -206,4 +202,4 @@ private fun Relation.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeo
 
 /** return whether any of the ways with the given ids are contained in this relation */
 private fun Relation.containsWay(wayId: Long): Boolean =
-    members.any { it.type == Element.Type.WAY && wayId == it.ref }
+    members.any { it.type == ElementType.WAY && wayId == it.ref }

@@ -1,36 +1,34 @@
 package de.westnordost.streetcomplete.ktx
 
-import de.westnordost.osmapi.map.data.*
-import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import java.util.*
-import kotlin.collections.HashMap
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 
-fun Element.copy(newId: Long = id, newVersion: Int = version, newDateEdited: Date? = dateEdited): OsmElement {
-    val tags = tags?.let { HashMap(it) }
+fun Element.copy(
+    id: Long = this.id,
+    tags: Map<String, String> = this.tags,
+    version: Int = this.version,
+    timestampEdited: Long = this.timestampEdited,
+): Element {
     return when (this) {
-        is Node -> OsmNode(newId, newVersion, position, tags, null, newDateEdited)
-        is Way -> OsmWay(newId, newVersion, ArrayList(nodeIds), tags, null, newDateEdited)
-        is Relation -> OsmRelation(newId, newVersion, ArrayList(members), tags, null, newDateEdited)
-        else -> throw RuntimeException()
+        is Node -> Node(id, position, tags, version, timestampEdited)
+        is Way -> Way(id, ArrayList(nodeIds), tags, version, timestampEdited)
+        is Relation -> Relation(id, ArrayList(members), tags, version, timestampEdited)
     }
 }
 
-fun Way.isClosed() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
-
 val Element.geometryType: GeometryType get() =
     when {
-        type == NODE -> GeometryType.POINT
+        type == ElementType.NODE -> GeometryType.POINT
         isArea() -> GeometryType.AREA
-        type == RELATION -> GeometryType.RELATION
+        type == ElementType.RELATION -> GeometryType.RELATION
         else -> GeometryType.LINE
     }
 
 fun Element.isArea(): Boolean {
     return when(this) {
-        is Way -> isClosed() && IS_AREA_EXPR.matches(this)
-        is Relation -> tags?.get("type") == "multipolygon"
+        is Way -> isClosed && IS_AREA_EXPR.matches(this)
+        is Relation -> tags["type"] == "multipolygon"
         else -> false
     }
 }

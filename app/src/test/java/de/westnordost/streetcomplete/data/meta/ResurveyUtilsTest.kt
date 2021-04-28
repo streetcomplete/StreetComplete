@@ -7,22 +7,16 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import org.junit.Test
-import java.util.*
-import java.util.Calendar.MILLISECOND
+import java.time.LocalDate
 
 
 class ResurveyUtilsTest {
     @Test fun toCheckDateString() {
-        val cal = Calendar.getInstance()
-        cal.set(2007, 11, 8)
-        assertEquals("2007-12-08", cal.time.toCheckDateString())
+        assertEquals("2007-12-08", LocalDate.of(2007, 12, 8).toCheckDateString())
     }
 
     @Test fun fromCheckDateString() {
-        val cal = Calendar.getInstance()
-        cal.set(2007, 11, 8, 0, 0, 0)
-        cal.set(MILLISECOND, 0)
-        assertEquals(cal.time, "2007-12-08".toCheckDate())
+        assertEquals(LocalDate.of(2007, 12, 8), "2007-12-08".toCheckDate())
     }
 
     @Test fun `updateWithCheckDate adds new tag`() {
@@ -51,7 +45,7 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes
 
         assertEquals(listOf(
-            StringMapEntryAdd("check_date:key", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:key", LocalDate.now().toCheckDateString())
         ), changes)
     }
 
@@ -61,7 +55,7 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes
 
         assertEquals(listOf(
-            StringMapEntryModify("check_date:key", "2000-11-11", Date().toCheckDateString())
+            StringMapEntryModify("check_date:key", "2000-11-11", LocalDate.now().toCheckDateString())
         ), changes)
     }
 
@@ -126,7 +120,7 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes.toSet()
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(
-            StringMapEntryModify("check_date:key", "2000-11-01", Date().toCheckDateString()),
+            StringMapEntryModify("check_date:key", "2000-11-01", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("key:check_date", "2000-11-02"),
             StringMapEntryDelete("key:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:key", "2000-11-04"),
@@ -141,7 +135,7 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes
 
         assertEquals(listOf(
-            StringMapEntryAdd("check_date:key", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:key", LocalDate.now().toCheckDateString())
         ), changes)
     }
 
@@ -151,7 +145,7 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes
 
         assertEquals(listOf(
-            StringMapEntryModify("check_date:key", "2000-11-11", Date().toCheckDateString())
+            StringMapEntryModify("check_date:key", "2000-11-11", LocalDate.now().toCheckDateString())
         ), changes)
     }
 
@@ -168,7 +162,7 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes.toSet()
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(
-            StringMapEntryModify("check_date:key", "2000-11-01", Date().toCheckDateString()),
+            StringMapEntryModify("check_date:key", "2000-11-01", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("key:check_date", "2000-11-02"),
             StringMapEntryDelete("key:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:key", "2000-11-04"),

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import android.util.Log
-import de.westnordost.streetcomplete.data.UserApi
+import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.saveToFile
 import java.io.File

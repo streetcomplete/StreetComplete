@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.oneway
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.quests.bikeway.createCyclewaySides
 import de.westnordost.streetcomplete.quests.bikeway.estimatedWidth
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
-import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.equalsInOsm
 import de.westnordost.streetcomplete.util.measuredLength

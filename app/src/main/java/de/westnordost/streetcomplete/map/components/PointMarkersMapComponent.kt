@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.map.components
 
 import androidx.annotation.DrawableRes
-import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.map.tangram.KtMapController
 
 /** Manages putting some generic point markers with a drawable on the map */

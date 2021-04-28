@@ -21,14 +21,13 @@ import com.mapzen.tangram.MapView
 import com.mapzen.tangram.TouchInput.*
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.containsAll
 import de.westnordost.streetcomplete.ktx.setMargins
@@ -299,7 +298,7 @@ open class MapFragment : Fragment(),
         if (!prefs.containsAll(listOf(PREF_LAT, PREF_LON, PREF_ROTATION, PREF_TILT, PREF_ZOOM))) return null
 
         return CameraPosition(
-            OsmLatLon(
+            LatLon(
                 java.lang.Double.longBitsToDouble(prefs.getLong(PREF_LAT, 0)),
                 java.lang.Double.longBitsToDouble(prefs.getLong(PREF_LON, 0))
             ),

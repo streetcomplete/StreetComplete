@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.max_height
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.util.intersects
@@ -91,13 +91,13 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
         val bridges = mapData.ways.filter { bridgeFilter.matches(it) }
 
         val waysBelowBridgesWithoutHeight = roadsWithoutHeight.filter { way ->
-            val layer = way.tags?.get("layer")?.toIntOrNull() ?: 0
+            val layer = way.tags["layer"]?.toIntOrNull() ?: 0
             val geometry = mapData.getWayGeometry(way.id) as? ElementPolylinesGeometry
 
             // applicable if with any bridge...
             geometry != null && bridges.any { bridge ->
                 val bridgeGeometry = mapData.getWayGeometry(bridge.id) as? ElementPolylinesGeometry
-                val bridgeLayer = bridge.tags?.get("layer")?.toIntOrNull() ?: 0
+                val bridgeLayer = bridge.tags["layer"]?.toIntOrNull() ?: 0
 
                 // , that is in a layer above this way
                 bridgeLayer > layer

@@ -9,6 +9,9 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.util.TilesRect
 import kotlinx.coroutines.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 /** Downloads all quests and tiles in a given area asynchronously. To use, start the service with
@@ -74,7 +77,7 @@ class DownloadService : CoroutineIntentService(TAG) {
             Log.i(TAG, "Download cancelled")
             return
         }
-        val tiles = intent.getSerializableExtra(ARG_TILES_RECT) as TilesRect
+        val tiles: TilesRect = Json.decodeFromString(intent.getStringExtra(ARG_TILES_RECT)!!)
         isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
 
         isDownloading = true
@@ -125,9 +128,9 @@ class DownloadService : CoroutineIntentService(TAG) {
         const val ARG_IS_PRIORITY = "isPriority"
         const val ARG_CANCEL = "cancel"
 
-        fun createIntent(context: Context, tilesRect: TilesRect?, isPriority: Boolean): Intent {
+        fun createIntent(context: Context, tilesRect: TilesRect, isPriority: Boolean): Intent {
             val intent = Intent(context, DownloadService::class.java)
-            intent.putExtra(ARG_TILES_RECT, tilesRect)
+            intent.putExtra(ARG_TILES_RECT, Json.encodeToString(tilesRect))
             intent.putExtra(ARG_IS_PRIORITY, isPriority)
             return intent
         }

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.address
 
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
@@ -33,7 +33,7 @@ class AddAddressStreetTest {
     @Test fun `not applicable to place without street name but in a associatedStreet relation`() {
         val addr = node(1, tags = mapOf("addr:housenumber" to "123"))
         val associatedStreetRelation = rel(
-            members = listOf(member(Element.Type.NODE, 1)),
+            members = listOf(member(ElementType.NODE, 1)),
             tags = mapOf("type" to "associatedStreet")
         )
 

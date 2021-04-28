@@ -1,25 +1,20 @@
-package de.westnordost.osmapi.map
-
-import de.westnordost.osmapi.common.Handler
-import de.westnordost.osmapi.map.changes.DiffElement
-import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+package de.westnordost.streetcomplete.data.osm.mapdata
 
 /** Reads the answer of an update map call on the OSM API. */
-class UpdatedElementsHandler : Handler<DiffElement> {
+class UpdatedElementsHandler {
     private val nodeDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
     private val wayDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
     private val relationDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
 
-    override fun handle(d: DiffElement) {
-        when (d.type ?: return) {
-            Element.Type.NODE -> nodeDiffs[d.clientId] = d
-            Element.Type.WAY -> wayDiffs[d.clientId] = d
-            Element.Type.RELATION -> relationDiffs[d.clientId] = d
+    fun handle(d: DiffElement) {
+        when (d.type) {
+            ElementType.NODE -> nodeDiffs[d.clientId] = d
+            ElementType.WAY -> wayDiffs[d.clientId] = d
+            ElementType.RELATION -> relationDiffs[d.clientId] = d
         }
     }
 
-    fun getElementUpdates(elements: Collection<Element>): ElementUpdates {
+    fun getElementUpdates(elements: Collection<Element>): MapDataUpdates {
         val updatedElements = mutableListOf<Element>()
         val deletedElementKeys = mutableListOf<ElementKey>()
         val idUpdates = mutableListOf<ElementIdUpdate>()
@@ -34,13 +29,13 @@ class UpdatedElementsHandler : Handler<DiffElement> {
                 idUpdates.add(ElementIdUpdate(diff.type, diff.clientId, diff.serverId))
             }
         }
-        return ElementUpdates(updatedElements, deletedElementKeys, idUpdates)
+        return MapDataUpdates(updatedElements, deletedElementKeys, idUpdates)
     }
 
-    private fun getDiff(type: Element.Type, id: Long): DiffElement? = when (type) {
-        Element.Type.NODE -> nodeDiffs[id]
-        Element.Type.WAY -> wayDiffs[id]
-        Element.Type.RELATION -> relationDiffs[id]
+    private fun getDiff(type: ElementType, id: Long): DiffElement? = when (type) {
+        ElementType.NODE -> nodeDiffs[id]
+        ElementType.WAY -> wayDiffs[id]
+        ElementType.RELATION -> relationDiffs[id]
     }
 
     private fun createUpdatedElement(element: Element, newId: Long, newVersion: Int): Element =
@@ -48,11 +43,10 @@ class UpdatedElementsHandler : Handler<DiffElement> {
             is Node -> createUpdatedNode(element, newId, newVersion)
             is Way -> createUpdatedWay(element, newId, newVersion)
             is Relation -> createUpdatedRelation(element, newId, newVersion)
-            else -> throw RuntimeException()
         }
 
     private fun createUpdatedNode(node: Node, newId: Long, newVersion: Int): Node {
-        return OsmNode(newId, newVersion, node.position, node.tags?.let { HashMap(it) }, null, node.dateEdited)
+        return Node(newId, node.position, HashMap(node.tags), newVersion, node.timestampEdited)
     }
 
     private fun createUpdatedWay(way: Way, newId: Long, newVersion: Int): Way {
@@ -62,28 +56,16 @@ class UpdatedElementsHandler : Handler<DiffElement> {
             if (diff == null) newNodeIds.add(nodeId)
             else if (diff.serverId != null) newNodeIds.add(diff.serverId)
         }
-        return OsmWay(newId, newVersion, newNodeIds, way.tags?.let { HashMap(it) }, null, way.dateEdited)
+        return Way(newId, newNodeIds, HashMap(way.tags), newVersion, way.timestampEdited)
     }
 
     private fun createUpdatedRelation(relation: Relation, newId: Long, newVersion: Int): Relation {
         val newRelationMembers = ArrayList<RelationMember>(relation.members.size)
         for (member in relation.members) {
             val diff = getDiff(member.type, member.ref)
-            if (diff == null) newRelationMembers.add(OsmRelationMember(member.ref, member.role, member.type))
-            else if(diff.serverId != null) newRelationMembers.add(OsmRelationMember(diff.serverId, member.role, member.type))
+            if (diff == null) newRelationMembers.add(RelationMember(member.type, member.ref, member.role))
+            else if(diff.serverId != null) newRelationMembers.add(RelationMember(member.type, diff.serverId, member.role))
         }
-        return OsmRelation(newId, newVersion, newRelationMembers, relation.tags?.let { HashMap(it) }, null, relation.dateEdited)
+        return Relation(newId, newRelationMembers, HashMap(relation.tags), newVersion, relation.timestampEdited)
     }
 }
-
-data class ElementUpdates(
-    val updated: Collection<Element> = emptyList(),
-    val deleted: Collection<ElementKey> = emptyList(),
-    val idUpdates: Collection<ElementIdUpdate> = emptyList()
-)
-
-data class ElementIdUpdate(
-    val elementType: Element.Type,
-    val oldElementId: Long,
-    val newElementId: Long
-)

@@ -4,27 +4,23 @@ import org.junit.Before
 import org.junit.Test
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
 import java.lang.System.currentTimeMillis
-import java.util.Date
-
 
 class NodeDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NodeDao
 
     @Before fun createDao() {
-        dao = NodeDao(database, serializer)
+        dao = NodeDao(database)
     }
 
     @Test fun putGetNoTags() {
-        val node = nd(5, tags = null)
+        val node = nd(5)
         dao.put(node)
         val dbNode = dao.get(5)
 
-        checkEqual(node, dbNode!!)
+        assertEquals(node, dbNode!!)
     }
 
     @Test fun putGetWithTags() {
@@ -32,7 +28,7 @@ class NodeDaoTest : ApplicationDbTestCase() {
         dao.put(node)
         val dbNode = dao.get(5)
 
-        checkEqual(node, dbNode!!)
+        assertEquals(node, dbNode!!)
     }
 
     @Test fun putOverwrites() {
@@ -82,18 +78,11 @@ class NodeDaoTest : ApplicationDbTestCase() {
     }
 }
 
-private fun checkEqual(node: Node, dbNode: Node) {
-    assertEquals(node.id, dbNode.id)
-    assertEquals(node.version, dbNode.version)
-    assertEquals(node.position, dbNode.position)
-    assertEquals(node.tags, dbNode.tags)
-}
-
 private fun nd(
     id: Long = 1L,
     version: Int = 1,
     lat: Double = 1.0,
     lon: Double = 2.0,
-    tags: Map<String,String>? = emptyMap(),
+    tags: Map<String,String> = emptyMap(),
     timestamp: Long = 123
-) = OsmNode(id, version, lat, lon, tags, null, Date(timestamp))
+) = Node(id, LatLon(lat, lon), tags, version, timestamp)

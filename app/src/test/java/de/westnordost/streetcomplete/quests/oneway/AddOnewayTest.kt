@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.oneway
 
-import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertEquals
@@ -10,7 +10,7 @@ class AddOnewayTest {
     private val questType = AddOneway()
 
     @Test fun `does not apply to element without tags`() {
-        val mapData = TestMapDataWithGeometry(noDeadEndWays(null))
+        val mapData = TestMapDataWithGeometry(noDeadEndWays(emptyMap()))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
@@ -110,7 +110,7 @@ class AddOnewayTest {
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
-    private fun noDeadEndWays(tags: Map<String, String>?): List<Way> = listOf(
+    private fun noDeadEndWays(tags: Map<String, String>): List<Way> = listOf(
         way(1, listOf(1,2), mapOf("highway" to "residential")),
         way(2, listOf(2,3), tags),
         way(3, listOf(3,4), mapOf("highway" to "residential"))

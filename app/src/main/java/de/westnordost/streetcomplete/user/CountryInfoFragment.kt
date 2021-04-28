@@ -15,7 +15,7 @@ import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import kotlinx.android.synthetic.main.fragment_country_info_dialog.*
-import java.util.*
+import java.util.Locale
 import kotlin.math.min
 import kotlin.math.pow
 
