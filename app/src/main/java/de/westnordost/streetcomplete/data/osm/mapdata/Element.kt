@@ -72,7 +72,12 @@ data class DiffElement(
 )
 
 @Serializable
-data class LatLon(val latitude: Double, val longitude: Double) {
+data class LatLon(
+    @SerialName("lat")
+    val latitude: Double,
+    @SerialName("lon")
+    val longitude: Double
+) {
     init {
         checkValidity(latitude, longitude)
     }
