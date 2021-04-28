@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.osmapi.OsmConnection
-import de.westnordost.osmapi.common.errors.OsmNotFoundException
+import de.westnordost.osmapi.common.errors.*
 import de.westnordost.osmapi.map.data.*
 
 import de.westnordost.osmapi.map.MapDataApi as OsmApiMapDataApi
@@ -14,6 +14,9 @@ import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
 import de.westnordost.osmapi.map.changes.DiffElement as OsmApiDiffElement
 
 import de.westnordost.osmapi.map.handler.MapDataHandler
+import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.data.upload.QueryTooBigException
+import de.westnordost.streetcomplete.data.user.AuthorizationException
 import java.time.Instant
 
 class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
@@ -21,23 +24,47 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
     private val api: OsmApiMapDataApi = OsmApiMapDataApi(osm)
 
     override fun uploadChanges(changesetId: Long, changes: MapDataChanges): MapDataUpdates {
-        val handler = UpdatedElementsHandler()
-        api.uploadChanges(changesetId, changes.toOsmApiElements()) {
-            handler.handle(it.toDiffElement())
+        try {
+            val handler = UpdatedElementsHandler()
+            api.uploadChanges(changesetId, changes.toOsmApiElements()) {
+                handler.handle(it.toDiffElement())
+            }
+            val allChangedElements = changes.creations + changes.modifications + changes.deletions
+            return handler.getElementUpdates(allChangedElements)
+        } catch (e: OsmAuthorizationException) {
+            throw AuthorizationException(e.message, e)
+        } catch (e: OsmConflictException) {
+            throw ConflictException(e.message, e)
+        } catch (e: OsmApiException) {
+            throw ConflictException(e.message, e)
         }
-        val allChangedElements = changes.creations + changes.modifications + changes.deletions
-        return handler.getElementUpdates(allChangedElements)
     }
 
-    override fun openChangeset(tags: Map<String, String?>): Long = api.openChangeset(tags)
+    override fun openChangeset(tags: Map<String, String?>): Long =
+        try {
+            api.openChangeset(tags)
+        } catch (e: OsmAuthorizationException) {
+            throw AuthorizationException(e.message, e)
+        } catch (e: OsmConflictException) {
+            throw ConflictException(e.message, e)
+        }
 
-    override fun closeChangeset(changesetId: Long) = api.closeChangeset(changesetId)
+    override fun closeChangeset(changesetId: Long) =
+        try {
+            api.closeChangeset(changesetId)
+        } catch (e: OsmAuthorizationException) {
+            throw AuthorizationException(e.message, e)
+        }
 
     override fun getMap(bounds: BoundingBox, mutableMapData: MutableMapData, ignoreRelationTypes: Set<String?>) =
-        api.getMap(
-            bounds.toOsmApiBoundingBox(),
-            MapDataApiHandler(mutableMapData, ignoreRelationTypes)
-        )
+        try {
+            api.getMap(
+                bounds.toOsmApiBoundingBox(),
+                MapDataApiHandler(mutableMapData, ignoreRelationTypes)
+            )
+        } catch (e: OsmQueryTooBigException) {
+            throw QueryTooBigException(e.message, e)
+        }
 
     override fun getWayComplete(id: Long): MapData? =
         try {

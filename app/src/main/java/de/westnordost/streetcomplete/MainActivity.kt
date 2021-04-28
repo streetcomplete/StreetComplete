@@ -23,7 +23,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
 import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.common.errors.OsmApiReadResponseException
-import de.westnordost.osmapi.common.errors.OsmAuthorizationException
 import de.westnordost.osmapi.common.errors.OsmConnectionException
 import de.westnordost.streetcomplete.Injector.applicationComponent
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment
@@ -37,6 +36,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
+import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.location.LocationRequestFragment
@@ -237,7 +237,7 @@ class MainActivity : AppCompatActivity(),
                     // a 5xx error is not the fault of this app. Nothing we can do about it, so
                     // just notify the user
                     toast(R.string.upload_server_error, Toast.LENGTH_LONG)
-                } else if (e is OsmAuthorizationException) {
+                } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
                     userController.logOut()
                     RequestLoginDialog(this@MainActivity).show()

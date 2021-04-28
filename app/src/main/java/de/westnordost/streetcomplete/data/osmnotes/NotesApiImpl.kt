@@ -1,9 +1,14 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.osmapi.OsmConnection
+import de.westnordost.osmapi.common.errors.OsmAuthorizationException
+import de.westnordost.osmapi.common.errors.OsmConflictException
+import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.NotesApi as OsmApiNotesApi
 import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -16,9 +21,22 @@ open class NotesApiImpl(osm: OsmConnection) : NotesApi {
     private val api: OsmApiNotesApi = OsmApiNotesApi(osm)
 
     override fun create(pos: LatLon, text: String): Note =
-        api.create(OsmLatLon(pos.latitude, pos.longitude), text).toNote()
+        try {
+            api.create(OsmLatLon(pos.latitude, pos.longitude), text).toNote()
+        } catch (e: OsmAuthorizationException) {
+            throw AuthorizationException(e.message, e)
+        }
 
-    override fun comment(id: Long, text: String): Note = api.comment(id, text).toNote()
+    override fun comment(id: Long, text: String): Note =
+        try {
+            api.comment(id, text).toNote()
+        } catch (e: OsmNotFoundException) {
+            // someone else already closed the note -> our contribution is probably worthless
+            throw ConflictException(e.message, e)
+        } catch (e: OsmConflictException) {
+            // was closed by admin
+            throw ConflictException(e.message, e)
+        }
 
     override fun get(id: Long): Note? = api.get(id)?.toNote()
 
@@ -27,10 +45,8 @@ open class NotesApiImpl(osm: OsmConnection) : NotesApi {
             val notes = ArrayList<Note>()
             api.getAll(
                 OsmApiBoundingBox(
-                    bounds.min.latitude,
-                    bounds.min.longitude,
-                    bounds.max.latitude,
-                    bounds.max.longitude
+                    bounds.min.latitude, bounds.min.longitude,
+                    bounds.max.latitude, bounds.max.longitude
                 ),
                 null,
                 { notes.add(it.toNote()) },

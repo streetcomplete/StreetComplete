@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.common.errors.*
+import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.data.upload.QueryTooBigException
+import de.westnordost.streetcomplete.data.user.AuthorizationException
 
-// TODO create own exception classes
 /** Get and upload changes to map data */
 interface MapDataApi : MapDataRepository {
 
@@ -12,15 +13,11 @@ interface MapDataApi : MapDataRepository {
      * @param changesetId id of the changeset to upload changes into
      * @param changes changes to upload.
      *
-     * @throws OsmNotFoundException if the changeset does not exist (yet) or an element in the
-     *                              does not exist
-     * @throws OsmConflictException if the changeset has already been closed, there is a conflict
-     *                              for the elements being uploaded or the user who created the
-     *                              changeset is not the same as the one uploading the change
-     * @throws OsmAuthorizationException if the application does not have permission to edit the
-     *                                   map (Permission.MODIFY_MAP)
-     * @throws OsmPreconditionFailedException if the deletion of an element was uploaded but that
-     *                                        element is still referred to by another element
+     * @throws ConflictException if the changeset has already been closed, there is a conflict for
+     *                           the elements being uploaded or the user who created the changeset
+     *                           is not the same as the one uploading the change
+     * @throws AuthorizationException if the application does not have permission to edit the map
+     *                                (Permission.MODIFY_MAP)
      *
      * @return the updated elements
      */
@@ -31,8 +28,8 @@ interface MapDataApi : MapDataRepository {
      *
      * @param tags tags of this changeset. Usually it is comment and source.
      *
-     * @throws OsmAuthorizationException if the application does not have permission to edit the
-     *                                   map (Permission.MODIFY_MAP)
+     * @throws AuthorizationException if the application does not have permission to edit the map
+     *                                (Permission.MODIFY_MAP)
      * @return the id of the changeset
      */
     fun openChangeset(tags: Map<String, String?>): Long
@@ -42,10 +39,9 @@ interface MapDataApi : MapDataRepository {
      *
      * @param changesetId id of the changeset to close
      *
-     * @throws OsmConflictException if the changeset has already been closed
-     * @throws OsmNotFoundException if the changeset does not exist (yet)
-     * @throws OsmAuthorizationException if the application does not have permission to edit the
-     *                                   map (Permission.MODIFY_MAP)
+     * @throws ConflictException if the changeset has already been closed
+     * @throws AuthorizationException if the application does not have permission to edit the map
+     *                                (Permission.MODIFY_MAP)
      */
     fun closeChangeset(changesetId: Long)
 
@@ -58,8 +54,7 @@ interface MapDataApi : MapDataRepository {
      * @param mutableMapData mutable map data to add the add the data to
      * @param ignoreRelationTypes don't put any relations of the given types in the given mutableMapData
      *
-     * @throws OsmQueryTooBigException if the bounds are is too large
-     * @throws IllegalArgumentException if the bounds cross the 180th meridian.
+     * @throws QueryTooBigException if the bounds area is too large
      *
      * @return the map data
      */
@@ -71,8 +66,6 @@ interface MapDataApi : MapDataRepository {
      *
      * @param id the way's id
      *
-     * @throws OsmNotFoundException if the way with the given id does not exist
-     *
      * @return the map data
      */
     override fun getWayComplete(id: Long): MapData?
@@ -83,8 +76,6 @@ interface MapDataApi : MapDataRepository {
      * If not logged in, the Changeset for each returned element will be null
      *
      * @param id the relation's id
-     *
-     * @throws OsmNotFoundException if the relation with the given id does not exist
      *
      * @return the map data
      */
