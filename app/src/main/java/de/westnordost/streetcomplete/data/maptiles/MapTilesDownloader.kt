@@ -4,6 +4,7 @@ import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.map.TileSource
 import de.westnordost.streetcomplete.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.enclosingTilesRect
 import kotlinx.coroutines.*
@@ -30,15 +31,20 @@ class MapTilesDownloader @Inject constructor(
         val time = currentTimeMillis()
 
         supervisorScope {
-            for (tile in getDownloadTileSequence(bbox)) {
-                launch {
-                    val result = downloadTile(tile.zoom, tile.x, tile.y)
-                    ++tileCount
-                    when (result) {
-                        is DownloadFailure -> ++failureCount
-                        is DownloadSuccess -> {
-                            if (result.alreadyCached) cachedSize += result.size
-                            else downloadedSize += result.size
+            listOf(
+                vectorTileProvider.baseTileSource,
+                vectorTileProvider.aerialLayerSource
+            ).forEach { source ->
+                for (tile in getDownloadTileSequence(source, bbox)) {
+                    launch {
+                        val result = downloadTile(source, tile.zoom, tile.x, tile.y)
+                        ++tileCount
+                        when (result) {
+                            is DownloadFailure -> ++failureCount
+                            is DownloadSuccess -> {
+                                if (result.alreadyCached) cachedSize += result.size
+                                else downloadedSize += result.size
+                            }
                         }
                     }
                 }
@@ -49,17 +55,22 @@ class MapTilesDownloader @Inject constructor(
         Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
     }
 
-    private fun getDownloadTileSequence(bbox: BoundingBox): Sequence<Tile> =
+    private fun getDownloadTileSequence(source: TileSource, bbox: BoundingBox): Sequence<Tile> =
         /* tiles for the highest zoom (=likely current or near current zoom) first,
            because those are the tiles that are likely to be useful first */
-        (vectorTileProvider.baseTileSource.maxZoom downTo 0).asSequence().flatMap { zoom ->
+        (source.maxZoom downTo 0).asSequence().flatMap { zoom ->
             bbox.enclosingTilesRect(zoom).asTilePosSequence().map { Tile(zoom, it.x, it.y) }
         }
 
-    private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadResult = suspendCancellableCoroutine { cont ->
+    private suspend fun downloadTile(
+        source: TileSource,
+        zoom: Int,
+        x: Int,
+        y: Int
+    ): DownloadResult = suspendCancellableCoroutine { cont ->
         /* adding trailing "&" because Tangram-ES also puts this at the end and the URL needs to be
            identical in order for the cache to work */
-        val url = vectorTileProvider.baseTileSource.getTileUrl(zoom, x, y) + "&"
+        val url = source.getTileUrl(zoom, x, y) + if (source.title == "JawgMaps") "&" else ""
         val httpUrl = HttpUrl.parse(url)
         check(httpUrl != null) { "Invalid URL: $url" }
 
@@ -74,7 +85,7 @@ class MapTilesDownloader @Inject constructor(
         *  parallel */
         val callback = object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                Log.w(TAG, "Error retrieving tile $zoom/$x/$y: ${e.message}")
+                Log.w(TAG, "Error retrieving ${source.title} tile $zoom/$x/$y: ${e.message}")
                 cont.resume(DownloadFailure)
             }
 
@@ -86,7 +97,7 @@ class MapTilesDownloader @Inject constructor(
                 }
                 val alreadyCached = response.cacheResponse() != null
                 val logText = if (alreadyCached) "in cache" else "downloaded"
-                Log.v(TAG, "Tile $zoom/$x/$y $logText")
+                Log.v(TAG, "${source.title} tile $zoom/$x/$y $logText")
                 cont.resume(DownloadSuccess(alreadyCached, size))
             }
         }
