@@ -12,11 +12,12 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways with
           amenity = fuel
-          and ( !self_service or !automated )
+          and !self_service
+          and !automated
     """
     override val commitMessage = "Add self service information to fuel station"
     override val wikiLink = "Tag:amenity=fuel"
-    override val icon = R.drawable.ic_quest_police
+    override val icon = R.drawable.ic_quest_fuel_self_service
 
     override fun getTitle(tags: Map<String, String>) : Int {
         val hasName = tags.containsKey("name")
