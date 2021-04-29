@@ -26,7 +26,7 @@ class AddFuelFullService : OsmFilterQuestType<FuelFullService>() {
         }
     }
 
-    override val enabledInCountries = AllCountriesExcept("US-OR","US-NJ","BR","ZA") // Self service is illegal in Oregon, New Jersey, Brazil and South Africa
+    override val enabledInCountries = AllCountriesExcept("US-OR","US-NJ","BR","ZA", "AU") // Self service is illegal in Oregon, New Jersey, Brazil and South Africa
 
     override fun createForm() = AddFuelFullServiceForm()
 
