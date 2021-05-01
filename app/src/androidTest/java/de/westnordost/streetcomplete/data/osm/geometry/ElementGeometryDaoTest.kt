@@ -13,7 +13,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementGeometryDao
 
     @Before fun createDao() {
-        dao = ElementGeometryDao(database)
+        dao = ElementGeometryDao(database, PolylinesSerializer())
     }
 
     @Test fun testGetNull() {
