@@ -37,8 +37,9 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
         }
     }
 
-    override fun openChangeset(tags: Map<String, String?>): Long =
-        wrapExceptions { api.openChangeset(tags) }
+    override fun openChangeset(tags: Map<String, String?>): Long = wrapExceptions {
+        api.openChangeset(tags)
+    }
 
     override fun closeChangeset(changesetId: Long) =
         try {
@@ -47,13 +48,16 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
             throw ConflictException(e.message, e)
         }
 
-    override fun getMap(bounds: BoundingBox, mutableMapData: MutableMapData, ignoreRelationTypes: Set<String?>) =
-        wrapExceptions {
-            api.getMap(
-                bounds.toOsmApiBoundingBox(),
-                MapDataApiHandler(mutableMapData, ignoreRelationTypes)
-            )
-        }
+    override fun getMap(
+        bounds: BoundingBox,
+        mutableMapData: MutableMapData,
+        ignoreRelationTypes: Set<String?>
+    ) = wrapExceptions {
+        api.getMap(
+            bounds.toOsmApiBoundingBox(),
+            MapDataApiHandler(mutableMapData, ignoreRelationTypes)
+        )
+    }
 
     override fun getWayComplete(id: Long): MapData? =
         try {
@@ -73,26 +77,33 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
             null
         }
 
-    override fun getNode(id: Long): Node? =
-        wrapExceptions { api.getNode(id)?.toNode() }
+    override fun getNode(id: Long): Node? = wrapExceptions {
+        api.getNode(id)?.toNode()
+    }
 
-    override fun getWay(id: Long): Way? =
-        wrapExceptions { api.getWay(id)?.toWay() }
+    override fun getWay(id: Long): Way? = wrapExceptions {
+        api.getWay(id)?.toWay()
+    }
 
-    override fun getRelation(id: Long): Relation? =
-        wrapExceptions { api.getRelation(id)?.toRelation() }
+    override fun getRelation(id: Long): Relation? = wrapExceptions {
+        api.getRelation(id)?.toRelation()
+    }
 
-    override fun getWaysForNode(id: Long): List<Way> =
-        wrapExceptions { api.getWaysForNode(id).map { it.toWay() } }
+    override fun getWaysForNode(id: Long): List<Way> = wrapExceptions {
+        api.getWaysForNode(id).map { it.toWay() }
+    }
 
-    override fun getRelationsForNode(id: Long): List<Relation> =
-        wrapExceptions { api.getRelationsForNode(id).map { it.toRelation() } }
+    override fun getRelationsForNode(id: Long): List<Relation> = wrapExceptions {
+        api.getRelationsForNode(id).map { it.toRelation() }
+    }
 
-    override fun getRelationsForWay(id: Long): List<Relation> =
-        wrapExceptions { api.getRelationsForWay(id).map { it.toRelation() } }
+    override fun getRelationsForWay(id: Long): List<Relation> = wrapExceptions {
+        api.getRelationsForWay(id).map { it.toRelation() }
+    }
 
-    override fun getRelationsForRelation(id: Long): List<Relation> =
-        wrapExceptions { api.getRelationsForRelation(id).map { it.toRelation() } }
+    override fun getRelationsForRelation(id: Long): List<Relation> = wrapExceptions {
+        api.getRelationsForRelation(id).map { it.toRelation() }
+    }
 }
 
 private inline fun <T> wrapExceptions(block: () -> T): T =

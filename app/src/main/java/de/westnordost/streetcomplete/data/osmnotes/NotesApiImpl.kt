@@ -16,18 +16,17 @@ import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.User
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
 import de.westnordost.osmapi.notes.Note as OsmApiNote
 import de.westnordost.osmapi.notes.NoteComment as OsmApiNoteComment
 import de.westnordost.osmapi.user.User as OsmApiUser
 
-open class NotesApiImpl(osm: OsmConnection) : NotesApi {
+class NotesApiImpl(osm: OsmConnection) : NotesApi {
     private val api: OsmApiNotesApi = OsmApiNotesApi(osm)
 
-    override fun create(pos: LatLon, text: String): Note =
-        wrapExceptions { api.create(OsmLatLon(pos.latitude, pos.longitude), text).toNote() }
+    override fun create(pos: LatLon, text: String): Note = wrapExceptions {
+        api.create(OsmLatLon(pos.latitude, pos.longitude), text).toNote()
+    }
 
     override fun comment(id: Long, text: String): Note =
         try {
@@ -39,23 +38,20 @@ open class NotesApiImpl(osm: OsmConnection) : NotesApi {
 
     override fun get(id: Long): Note? = wrapExceptions { api.get(id)?.toNote() }
 
-    override suspend fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int) =
-        withContext(Dispatchers.IO) {
-            wrapExceptions {
-                val notes = ArrayList<Note>()
-                api.getAll(
-                    OsmApiBoundingBox(
-                        bounds.min.latitude, bounds.min.longitude,
-                        bounds.max.latitude, bounds.max.longitude
-                    ),
-                    null,
-                    { notes.add(it.toNote()) },
-                    limit,
-                    hideClosedNoteAfter
-                )
-                notes
-            }
-        }
+    override fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int) = wrapExceptions {
+        val notes = ArrayList<Note>()
+        api.getAll(
+            OsmApiBoundingBox(
+                bounds.min.latitude, bounds.min.longitude,
+                bounds.max.latitude, bounds.max.longitude
+            ),
+            null,
+            { notes.add(it.toNote()) },
+            limit,
+            hideClosedNoteAfter
+        )
+        notes
+    }
 }
 
 private inline fun <T> wrapExceptions(block: () -> T): T =
