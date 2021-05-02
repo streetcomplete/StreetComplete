@@ -44,12 +44,16 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         db.execSQL(ElementGeometryTable.SPATIAL_INDEX_CREATE)
 
         db.execSQL(NodeTable.CREATE)
+
         db.execSQL(WayTables.CREATE)
         db.execSQL(WayTables.NODES_CREATE)
         db.execSQL(WayTables.NODES_INDEX_CREATE)
+        db.execSQL(WayTables.WAYS_BY_NODE_ID_INDEX_CREATE)
+
         db.execSQL(RelationTables.CREATE)
         db.execSQL(RelationTables.MEMBERS_CREATE)
         db.execSQL(RelationTables.MEMBERS_INDEX_CREATE)
+        db.execSQL(RelationTables.MEMBERS_BY_ELEMENT_INDEX_CREATE)
 
         // changes made on OSM map data
         db.execSQL(ElementEditsTable.CREATE)
