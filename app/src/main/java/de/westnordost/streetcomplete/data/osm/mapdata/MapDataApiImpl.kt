@@ -14,6 +14,7 @@ import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
 import de.westnordost.osmapi.map.changes.DiffElement as OsmApiDiffElement
 
 import de.westnordost.osmapi.map.handler.MapDataHandler
+import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
@@ -23,53 +24,41 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
 
     private val api: OsmApiMapDataApi = OsmApiMapDataApi(osm)
 
-    override fun uploadChanges(changesetId: Long, changes: MapDataChanges): MapDataUpdates {
+    override fun uploadChanges(changesetId: Long, changes: MapDataChanges) = wrapExceptions {
         try {
             val handler = UpdatedElementsHandler()
             api.uploadChanges(changesetId, changes.toOsmApiElements()) {
                 handler.handle(it.toDiffElement())
             }
             val allChangedElements = changes.creations + changes.modifications + changes.deletions
-            return handler.getElementUpdates(allChangedElements)
-        } catch (e: OsmAuthorizationException) {
-            throw AuthorizationException(e.message, e)
-        } catch (e: OsmConflictException) {
-            throw ConflictException(e.message, e)
+            handler.getElementUpdates(allChangedElements)
         } catch (e: OsmApiException) {
             throw ConflictException(e.message, e)
         }
     }
 
     override fun openChangeset(tags: Map<String, String?>): Long =
-        try {
-            api.openChangeset(tags)
-        } catch (e: OsmAuthorizationException) {
-            throw AuthorizationException(e.message, e)
-        } catch (e: OsmConflictException) {
-            throw ConflictException(e.message, e)
-        }
+        wrapExceptions { api.openChangeset(tags) }
 
     override fun closeChangeset(changesetId: Long) =
         try {
-            api.closeChangeset(changesetId)
-        } catch (e: OsmAuthorizationException) {
-            throw AuthorizationException(e.message, e)
+            wrapExceptions { api.closeChangeset(changesetId) }
+        } catch (e: OsmNotFoundException) {
+            throw ConflictException(e.message, e)
         }
 
     override fun getMap(bounds: BoundingBox, mutableMapData: MutableMapData, ignoreRelationTypes: Set<String?>) =
-        try {
+        wrapExceptions {
             api.getMap(
                 bounds.toOsmApiBoundingBox(),
                 MapDataApiHandler(mutableMapData, ignoreRelationTypes)
             )
-        } catch (e: OsmQueryTooBigException) {
-            throw QueryTooBigException(e.message, e)
         }
 
     override fun getWayComplete(id: Long): MapData? =
         try {
             val result = MutableMapData()
-            api.getWayComplete(id, MapDataApiHandler(result))
+            wrapExceptions { api.getWayComplete(id, MapDataApiHandler(result)) }
             result
         } catch (e: OsmNotFoundException) {
             null
@@ -78,30 +67,52 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
     override fun getRelationComplete(id: Long): MapData? =
         try {
             val result = MutableMapData()
-            api.getRelationComplete(id, MapDataApiHandler(result))
+            wrapExceptions { api.getRelationComplete(id, MapDataApiHandler(result)) }
             result
         } catch (e: OsmNotFoundException) {
             null
         }
 
-    override fun getNode(id: Long): Node? = api.getNode(id)?.toNode()
+    override fun getNode(id: Long): Node? =
+        wrapExceptions { api.getNode(id)?.toNode() }
 
-    override fun getWay(id: Long): Way? = api.getWay(id)?.toWay()
+    override fun getWay(id: Long): Way? =
+        wrapExceptions { api.getWay(id)?.toWay() }
 
-    override fun getRelation(id: Long): Relation? = api.getRelation(id)?.toRelation()
+    override fun getRelation(id: Long): Relation? =
+        wrapExceptions { api.getRelation(id)?.toRelation() }
 
     override fun getWaysForNode(id: Long): List<Way> =
-        api.getWaysForNode(id).map { it.toWay() }
+        wrapExceptions { api.getWaysForNode(id).map { it.toWay() } }
 
     override fun getRelationsForNode(id: Long): List<Relation> =
-        api.getRelationsForNode(id).map { it.toRelation() }
+        wrapExceptions { api.getRelationsForNode(id).map { it.toRelation() } }
 
     override fun getRelationsForWay(id: Long): List<Relation> =
-        api.getRelationsForWay(id).map { it.toRelation() }
+        wrapExceptions { api.getRelationsForWay(id).map { it.toRelation() } }
 
     override fun getRelationsForRelation(id: Long): List<Relation> =
-        api.getRelationsForRelation(id).map { it.toRelation() }
+        wrapExceptions { api.getRelationsForRelation(id).map { it.toRelation() } }
 }
+
+private inline fun <T> wrapExceptions(block: () -> T): T =
+    try {
+        block()
+    } catch (e : OsmAuthorizationException) {
+        throw AuthorizationException(e.message, e)
+    } catch (e : OsmConflictException) {
+        throw ConflictException(e.message, e)
+    } catch (e : OsmQueryTooBigException) {
+        throw QueryTooBigException(e.message, e)
+    } catch (e : OsmConnectionException) {
+        throw ConnectionException(e.message, e)
+    } catch (e : OsmApiReadResponseException) {
+        // probably a temporary connection error
+        throw ConnectionException(e.message, e)
+    } catch (e : OsmApiException) {
+        // request timeout is a temporary connection error
+        throw if (e.errorCode == 408) ConnectionException(e.message, e) else e
+    }
 
 /* --------------------------------- Element -> OsmApiElement ----------------------------------- */
 

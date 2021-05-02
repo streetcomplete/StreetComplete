@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
@@ -18,6 +19,7 @@ interface MapDataApi : MapDataRepository {
      *                           is not the same as the one uploading the change
      * @throws AuthorizationException if the application does not have permission to edit the map
      *                                (Permission.MODIFY_MAP)
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the updated elements
      */
@@ -30,6 +32,8 @@ interface MapDataApi : MapDataRepository {
      *
      * @throws AuthorizationException if the application does not have permission to edit the map
      *                                (Permission.MODIFY_MAP)
+     * @throws ConnectionException if a temporary network connection problem occurs
+     *
      * @return the id of the changeset
      */
     fun openChangeset(tags: Map<String, String?>): Long
@@ -42,6 +46,7 @@ interface MapDataApi : MapDataRepository {
      * @throws ConflictException if the changeset has already been closed
      * @throws AuthorizationException if the application does not have permission to edit the map
      *                                (Permission.MODIFY_MAP)
+     * @throws ConnectionException if a temporary network connection problem occurs
      */
     fun closeChangeset(changesetId: Long)
 
@@ -55,6 +60,8 @@ interface MapDataApi : MapDataRepository {
      * @param ignoreRelationTypes don't put any relations of the given types in the given mutableMapData
      *
      * @throws QueryTooBigException if the bounds area is too large
+     * @throws IllegalArgumentException if the bounds cross the 180th meridian.
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the map data
      */
@@ -65,6 +72,8 @@ interface MapDataApi : MapDataRepository {
      * If not logged in, the Changeset for each returned element will be null
      *
      * @param id the way's id
+     *
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the map data
      */
@@ -77,6 +86,8 @@ interface MapDataApi : MapDataRepository {
      *
      * @param id the relation's id
      *
+     * @throws ConnectionException if a temporary network connection problem occurs
+     *
      * @return the map data
      */
     override fun getRelationComplete(id: Long): MapData?
@@ -85,6 +96,8 @@ interface MapDataApi : MapDataRepository {
      * Note that if not logged in, the Changeset for each returned element will be null
      *
      * @param id the node's id
+     *
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the node with the given id or null if it does not exist
      */
@@ -95,6 +108,8 @@ interface MapDataApi : MapDataRepository {
      *
      * @param id the way's id
      *
+     * @throws ConnectionException if a temporary network connection problem occurs
+     *
      * @return the way with the given id or null if it does not exist
      */
     override fun getWay(id: Long): Way?
@@ -103,6 +118,8 @@ interface MapDataApi : MapDataRepository {
      * Note that if not logged in, the Changeset for each returned element will be null
      *
      * @param id the relation's id
+     *
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the relation with the given id or null if it does not exist
      */
@@ -113,6 +130,8 @@ interface MapDataApi : MapDataRepository {
      *
      * @param id the node's id
      *
+     * @throws ConnectionException if a temporary network connection problem occurs
+     *
      * @return all ways that reference the node with the given id. Empty if none.
      */
     override fun getWaysForNode(id: Long): List<Way>
@@ -121,6 +140,8 @@ interface MapDataApi : MapDataRepository {
      * Note that if not logged in, the Changeset for each returned element will be null
      *
      * @param id the node's id
+     *
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return all relations that reference the node with the given id. Empty if none.
      */
@@ -131,6 +152,8 @@ interface MapDataApi : MapDataRepository {
      *
      * @param id the way's id
      *
+     * @throws ConnectionException if a temporary network connection problem occurs
+     *
      * @return all relations that reference the way with the given id. Empty if none.
      */
     override fun getRelationsForWay(id: Long): List<Relation>
@@ -139,6 +162,8 @@ interface MapDataApi : MapDataRepository {
      * Note that if not logged in, the Changeset for each returned element will be null
      *
      * @param id the relation's id
+     *
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return all relations that reference the relation with the given id. Empty if none.
      */

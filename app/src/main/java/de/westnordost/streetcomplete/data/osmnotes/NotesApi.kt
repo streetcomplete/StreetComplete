@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.download.ConnectionException
+import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 
@@ -18,6 +20,7 @@ interface NotesApi {
      *
      * @throws AuthorizationException if this application is not authorized to write notes
      *                                (Permission.WRITE_NOTES)
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the new note
      */
@@ -30,6 +33,7 @@ interface NotesApi {
      * @throws ConflictException if the note has already been closed or doesn't exist (anymore).
      * @throws AuthorizationException if this application is not authorized to write notes
      *                                (Permission.WRITE_NOTES)
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the updated commented note
      */
@@ -37,6 +41,8 @@ interface NotesApi {
 
     /**
      * @param id id of the note
+     *
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the note with the given id. null if the note with that id does not exist (anymore).
      */
@@ -51,6 +57,10 @@ interface NotesApi {
      * @param hideClosedNoteAfter number of days until a closed note should not be shown anymore.
      *                            -1 means that all notes should be returned, 0 that only open notes
      *                            are returned.
+     *
+     * @throws QueryTooBigException if the bounds area is too large
+     * @throws IllegalArgumentException if the bounds cross the 180th meridian
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the incoming notes
      */
