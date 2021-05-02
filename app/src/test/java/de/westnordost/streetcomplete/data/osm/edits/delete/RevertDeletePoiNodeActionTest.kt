@@ -29,7 +29,7 @@ class RevertDeletePoiNodeActionTest {
                 version = 3,
                 timestampEdited = 0
             ),
-            RevertDeletePoiNodeAction.createUpdates(e, null, repos, provider).creations
+            RevertDeletePoiNodeAction.createUpdates(e, null, repos, provider).modifications
                 .single()
                 .copy(timestampEdited = 0)
         )
