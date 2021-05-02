@@ -79,23 +79,6 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         ).containsExactlyInAnyOrder(listOf(q1,q2,q3)))
     }
 
-    @Test fun getAllInBBoxCount() {
-        // in
-        val q1 = entry(elementId = 0, pos = p(0.0,0.0))
-        val q2 = entry(elementId = 1, pos = p(1.0,1.0))
-        val q3 = entry(elementId = 2, pos = p(0.5,0.5))
-        // out
-        dao.putAll(listOf(
-            q1, q2, q3,
-            // out
-            entry(elementId = 4, pos = p(-0.5,0.5)),
-            entry(elementId = 5, pos = p(0.5,-0.5)),
-            entry(elementId = 6, pos = p(0.5,1.5)),
-            entry(elementId = 7, pos = p(1.5,0.5)),
-        ))
-        assertEquals(3, dao.getAllInBBoxCount(BoundingBox(0.0,0.0,1.0,1.0)))
-    }
-
     private fun entry(
         elementType: ElementType = ElementType.NODE,
         elementId: Long = 0L,

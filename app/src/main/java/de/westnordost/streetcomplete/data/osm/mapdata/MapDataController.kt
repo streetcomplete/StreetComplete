@@ -137,6 +137,16 @@ import javax.inject.Singleton
         return result
     }
 
+    data class ElementCounts(val nodes: Int, val ways: Int, val relations: Int)
+    fun getElementCounts(bbox: BoundingBox): ElementCounts {
+        val keys = geometryDB.getAllKeys(bbox)
+        return ElementCounts(
+            keys.count { it.type == ElementType.NODE },
+            keys.count { it.type == ElementType.WAY },
+            keys.count { it.type == ElementType.RELATION }
+        )
+    }
+
     fun getNode(id: Long): Node? = nodeDB.get(id)
     fun getWay(id: Long): Way? = wayDB.get(id)
     fun getRelation(id: Long): Relation? = relationDB.get(id)

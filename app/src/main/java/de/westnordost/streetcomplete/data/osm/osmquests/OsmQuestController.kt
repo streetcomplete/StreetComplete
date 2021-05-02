@@ -240,9 +240,6 @@ import javax.inject.Singleton
         return createOsmQuest(entry, geometry)
     }
 
-    override fun getAllInBBoxCount(bbox: BoundingBox): Int =
-        db.getAllInBBoxCount(bbox)
-
     override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
         val hiddenIds = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
