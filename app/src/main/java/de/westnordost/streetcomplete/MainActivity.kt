@@ -21,10 +21,6 @@ import androidx.core.content.getSystemService
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
-import de.westnordost.osmapi.common.errors.OsmApiException
-import de.westnordost.osmapi.common.errors.OsmApiReadResponseException
-import de.westnordost.osmapi.common.errors.OsmAuthorizationException
-import de.westnordost.osmapi.common.errors.OsmConnectionException
 import de.westnordost.streetcomplete.Injector.applicationComponent
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -33,10 +29,12 @@ import de.westnordost.streetcomplete.data.notifications.Notification
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
+import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.location.LocationRequestFragment
@@ -233,11 +231,11 @@ class MainActivity : AppCompatActivity(),
                         messageView.movementMethod = LinkMovementMethod.getInstance()
                         Linkify.addLinks(messageView, Linkify.WEB_URLS)
                     }
-                } else if (e is OsmConnectionException) {
-                    // a 5xx error is not the fault of this app. Nothing we can do about it, so
-                    // just notify the user
+                } else if (e is ConnectionException) {
+                    // A network connection error is not the fault of this app. Nothing we can do about
+                    // it, so it does not make sense to send an error report. Just notify the user.
                     toast(R.string.upload_server_error, Toast.LENGTH_LONG)
-                } else if (e is OsmAuthorizationException) {
+                } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
                     userController.logOut()
                     RequestLoginDialog(this@MainActivity).show()
@@ -253,15 +251,9 @@ class MainActivity : AppCompatActivity(),
     private val downloadProgressListener: DownloadProgressListener = object : DownloadProgressListener {
         @AnyThread override fun onError(e: Exception) {
             runOnUiThread {
-                // a 5xx error is not the fault of this app. Nothing we can do about it, so it does
-                // not make sense to send an error report. Just notify the user. Further, we treat
-                // the following errors the same as a (temporary) connection error:
-                // - an invalid response (OsmApiReadResponseException)
-                // - request timeout (OsmApiException with error code 408)
-                val isEnvironmentError = e is OsmConnectionException ||
-                    e is OsmApiReadResponseException ||
-                    e is OsmApiException && e.errorCode == 408
-                if (isEnvironmentError) {
+                // A network connection error is not the fault of this app. Nothing we can do about
+                // it, so it does not make sense to send an error report. Just notify the user.
+                if (e is ConnectionException) {
                     toast(R.string.download_server_error, Toast.LENGTH_LONG)
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity, R.string.download_error, e)

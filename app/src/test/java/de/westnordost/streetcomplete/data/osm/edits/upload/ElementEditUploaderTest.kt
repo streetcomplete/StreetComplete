@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
@@ -49,8 +48,8 @@ class ElementEditUploaderTest {
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
         on(mapDataApi.uploadChanges(anyLong(), any()))
-            .thenThrow(OsmConflictException(1, "", ""))
-            .thenThrow(OsmConflictException(1, "", ""))
+            .thenThrow(ConflictException())
+            .thenThrow(ConflictException())
 
         uploader.upload(edit(element = node(1)), mock())
     }
@@ -60,7 +59,7 @@ class ElementEditUploaderTest {
         on(mapDataApi.getNode(anyLong())).thenReturn(node)
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
-        doThrow(OsmConflictException(1, "", "")).doAnswer { MapDataUpdates() }
+        doThrow(ConflictException()).doAnswer { MapDataUpdates() }
             .on(mapDataApi).uploadChanges(anyLong(), any())
 
         uploader.upload(edit(element = node(1)), mock())

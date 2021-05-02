@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.osmapi.common.errors.*
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.download.ConnectionException
+import de.westnordost.streetcomplete.data.download.QueryTooBigException
+import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.data.user.AuthorizationException
 
-// TODO create own exception classes
 /**
  * Creates, comments, closes, reopens and search for notes.
  * All interactions with this class require an OsmConnection with a logged in user.
@@ -16,8 +18,9 @@ interface NotesApi {
      * @param pos position of the note.
      * @param text text for the new note. Must not be empty.
      *
-     * @throws OsmAuthorizationException if this application is not authorized to write notes
-     *                                   (Permission.WRITE_NOTES)
+     * @throws AuthorizationException if this application is not authorized to write notes
+     *                                (Permission.WRITE_NOTES)
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the new note
      */
@@ -27,10 +30,10 @@ interface NotesApi {
      * @param id id of the note
      * @param text comment to be added to the note. Must not be empty
      *
-     * @throws OsmConflictException if the note has already been closed.
-     * @throws OsmAuthorizationException if this application is not authorized to write notes
-     *                                   (Permission.WRITE_NOTES)
-     * @throws OsmNotFoundException if the note with the given id does not exist (anymore)
+     * @throws ConflictException if the note has already been closed or doesn't exist (anymore).
+     * @throws AuthorizationException if this application is not authorized to write notes
+     *                                (Permission.WRITE_NOTES)
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the updated commented note
      */
@@ -38,6 +41,8 @@ interface NotesApi {
 
     /**
      * @param id id of the note
+     *
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the note with the given id. null if the note with that id does not exist (anymore).
      */
@@ -53,8 +58,9 @@ interface NotesApi {
      *                            -1 means that all notes should be returned, 0 that only open notes
      *                            are returned.
      *
-     * @throws OsmQueryTooBigException if the bounds area is too large
+     * @throws QueryTooBigException if the bounds area is too large
      * @throws IllegalArgumentException if the bounds cross the 180th meridian
+     * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the incoming notes
      */
