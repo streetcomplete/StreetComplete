@@ -269,7 +269,7 @@
 &lt;p&gt;&lt;b&gt;Aportaciones directas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Punto número uno, con esta aplicación estás enviando contribuciones directas y totalmente reales a OpenStreetMap.&lt;br/&gt;
-Cualquier aporte realizado con esta aplicación se añade directamente al mapa sin ningún intermediario entre aplicación e infraestructura de OSM, al contrario que en proyectos como &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Cualquier aporte realizado con esta aplicación se añade directamente al mapa sin ningún intermediario entre aplicación e infraestructura de OSM.
 &lt;/p&gt;
 &lt;p&gt;
 No se pueden aportar datos anónimos a OpenStreetMap, con lo que cualquier cambio que hagas será con tu propia cuenta de usuario en OSM, por lo que aparecerán públicamente con tu nombre en la Web.
@@ -673,7 +673,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_fireHydrant_type_pond">"Estanque"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Puedes ver &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;la lista entera de colaboradores en GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Puedes ver &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;la lista entera de colaboradores en GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Échale un vistazo &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;al proyecto en POEditor&lt;/a&gt; para ver la lista completa."</string>
@@ -849,17 +849,11 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_crossing_type_title">"¿Qué tipo de cruce es?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Cruce señalizado con semáforo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruce sin señalizar"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Deshacer"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"¿Quieres deshacer la última pregunta respondida?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostino"</string>
@@ -1072,18 +1066,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Puedes dejar una nota para que otros voluntarios sepan del problema. Ajusta su posición moviendo el mapa:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Invalidar caché de tareas"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Bastante útil para poner al día las tareas antiguas"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Invalidar"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Al invalidar la caché forzarás a que las tareas se vuelvan a descargar de nuevo y estén al día. Ten en cuenta que esto ya se hace de semana en semana y cuando alguien ya haya respondido a las mismas preguntas."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Suele parecerse a esto:"</string>
@@ -1337,9 +1319,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Casa semiadosada"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"par de viviendas unifamiliares"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"una hilera de viviendas unifamiliares pegadas"</string>
@@ -2375,7 +2354,7 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_parkingType_street_side">"Estacionamiento justo al lado de la carretera"</string>
     <string name="quest_parkingType_lane">"Estacionamiento en la calzada"</string>
     <string name="quest_existence_title">"¿Sigue aquí? (%s)"</string>
-    <string name="quest_existence_name_title">"¿%1$s sigue aquí? (%2$s)"</string>
+    <string name="quest_existence_name_title">"¿%1$s (%2$s) sigue aquí?"</string>
     <string name="quest_tracktype_grade2a">"Sólido pero no pavimentado"</string>
     <string name="quest_tracktype_grade3a">"Mayormente sólido"</string>
     <string name="quest_generic_answer_does_not_exist">"Esto no existe..."</string>
@@ -2426,4 +2405,44 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="team_mode_choose_color">"Ahora todos en tu grupo eligen un color único:"</string>
     <string name="team_mode_active">"El modo equipo está activo"</string>
     <string name="team_mode_deactivated">"El modo equipo está desactivado"</string>
+    <string name="quest_pitchLit_title">"¿Esta cancha deportiva está iluminada?"</string>
+    <string name="quest_pitchLit_title_track">"¿Esta pista deportiva está iluminada?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Cruce controlado por semáforos"</string>
+    <string name="undo_last">"Deshacer la última edición"</string>
+    <string name="synced">"Sincronizado"</string>
+    <string name="toast_undo_unavailable">"Esta edición ya está sincronizada y no se puede deshacer"</string>
+    <string name="quest_cycleway_value_separate">"se muestra por separado en el mapa"</string>
+    <string name="created_note_action_title">"Nota creada"</string>
+    <string name="commented_note_action_title">"Nota comentada"</string>
+    <string name="hid_action_description">"Lo escondiste"</string>
+    <string name="split_way_action_description">"Dividiste el camino"</string>
+    <string name="deleted_poi_action_description">"Lo borraste"</string>
+    <string name="added_tag_action_title">"%s añadido"</string>
+    <string name="removed_tag_action_title">"%s eliminado"</string>
+    <string name="changed_tag_action_title">"%s actualizado"</string>
+    <string name="pref_title_delete_cache">"Borrar caché"</string>
+    <string name="delete_confirmation">"Borrar"</string>
+    <string name="delete_cache_dialog_message">"¿Eliminar todos los datos de mapas descargados, incluidas las misiones?
+Los datos se actualizan después de %1$s días y los datos no utilizados se eliminan automáticamente después de %2$s días."</string>
+    <string name="quest_shop_type_title">"¿Qué tipo de tienda es %s?"</string>
+    <string name="quest_shop_type_title_no_name">"¿Qué tipo de tienda es?"</string>
+    <string name="pref_background_type_select">"Seleccionar tipo de fondo"</string>
+    <string name="background_type_map">"Mapa"</string>
+    <string name="background_type_aerial_esri">"Aéreo (por Esri)"</string>
+    <string name="quest_barrier_type_title">"¿Qué tipo de barrera es?"</string>
+    <string name="quest_barrier_type_gate">"Puerta"</string>
+    <string name="quest_barrier_type_bollard">"Bolardo(s)"</string>
+    <string name="quest_barrier_type_chain">"Cadena"</string>
+    <string name="quest_barrier_type_rope">"Cuerda"</string>
+    <string name="quest_barrier_type_wire_gate">"Sección de cable extraíble"</string>
+    <string name="quest_barrier_type_cattle_grid">"Rejilla que bloquea el paso del ganado"</string>
+    <string name="quest_barrier_type_block">"Gran objeto inmóvil"</string>
+    <string name="quest_barrier_jersey_barrier">"Barrera New Jersey"</string>
+    <string name="quest_barrier_type_log">"Tronco"</string>
+    <string name="quest_barrier_type_kerb">"Bordillo"</string>
+    <string name="quest_barrier_type_height_restrictor">"Control de gálibo"</string>
+    <string name="quest_barrier_full_height_turnstile">"Molinete de altura completa"</string>
+    <string name="quest_barrier_type_turnstile">"Molinete"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Barrera para bicicletas"</string>
+    <string name="quest_buildingType_semi_detached_description2">"viviendas unifamiliares contiguas"</string>
 </resources>

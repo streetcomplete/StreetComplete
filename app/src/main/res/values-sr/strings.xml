@@ -140,7 +140,7 @@
 &lt;p&gt;&lt;b&gt;Директан допринос&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Пре свега, разумемо да овом апликацијом чините директан допринос OpenStreetMap картама.&lt;br/&gt;
-Шта год да директно додате на карту путем ове апликације, нема посредника између апликације и OSM инфраструктуре, као што је случај са &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; или &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Шта год да директно додате на карту путем ове апликације, нема посредника између апликације и OSM инфраструктуре.
 &lt;/p&gt;
 &lt;p&gt;
 Анонимни допринос на OpenStreetMap није могућ, јер се све промене врше путем вашег OSM корисничког налога. То значи да су датум, садржај и имплицитна локација ваших промена су јавно видљиве на openstreetmap Web локацији и додељени су вашем налогу.
@@ -330,7 +330,7 @@ As mentioned, the app directly communicates with OSM infrastructure. However, be
     <string name="quest_fireHydrant_type_underground">"Подземни"</string>
     <string name="quest_fireHydrant_type_wall">"Зидни"</string>
     <string name="quest_fireHydrant_type_pond">"Језеро"</string>
-    <string name="credits_contributors">"Погледајте &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;цео списак на GitHub-у&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Погледајте &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;цео списак на GitHub-у&lt;/a&gt;."</string>
     <string name="credits_translations">"Цео списак потражите у &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt; пројекту на POEditor-у&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Преводи"</string>
     <string name="credits_contributors_title">"Сарадници кода"</string>
@@ -394,11 +394,9 @@ As mentioned, the app directly communicates with OSM infrastructure. However, be
     <string name="quest_way_lit_24_7">"Осветљен је и ноћу и дању"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Не могу тражити овде. Покушајте још увеличати или мање нагните карту."</string>
     <string name="quest_crossing_type_title">"Какав је ово прелаз?"</string>
-    <string name="quest_crossing_type_signals">"Прелаз са семафорима"</string>
     <string name="quest_crossing_type_unmarked">"Прелаз без икаквих ознака"</string>
     <string name="compass_north_one_letter">"С"</string>
     <string name="action_undo">"Поништи"</string>
-    <string name="undo_confirm_title">"Поништи последњи одговор?"</string>
     <string name="produce_mangosteen">"Мангостан"</string>
     <string name="produce_tomatoes">"Парадајз"</string>
     <string name="produce_areca_nuts">"Арека орах"</string>
@@ -475,10 +473,6 @@ As mentioned, the app directly communicates with OSM infrastructure. However, be
     <string name="map_btn_create_note">"Оставите напомену"</string>
     <string name="create_new_note_unprecise">"Увећајте још да оставите напомену"</string>
     <string name="create_new_note_description">"Можете оставити напомену како би остали картографи знали за овај проблем. Подесите локацију напомене померањем карте:"</string>
-    <string name="pref_title_quests_invalidation">"Поништи кеш задатка"</string>
-    <string name="pref_title_quests_invalidation_summary">"Корисно ако мислите да су неки задаци застарели"</string>
-    <string name="invalidate_confirmation">"Поништи"</string>
-    <string name="invalidation_dialog_message">"Поништавање кеша изазива ажурирање задатка при следећем преузимању. Кеш задатка се аутоматски поништава након једне недеље или одмах, уколико се испостави да је неко већ решио задатак."</string>
     <string name="quest_generic_looks_like_this">"Обично изгледа овако:"</string>
     <string name="quest_surface_value_metal">"Метал"</string>
     <string name="quest_cycleway_title2">"Да ли је овде бициклистичка стаза? Каква?"</string>
@@ -564,7 +558,6 @@ As mentioned, the app directly communicates with OSM infrastructure. However, be
     <string name="quest_buildingType_detached">"Издвојена кућа"</string>
     <string name="quest_buildingType_detached_description">"издвојена породична кућа"</string>
     <string name="quest_buildingType_semi_detached">"Полу-издвојена кућа"</string>
-    <string name="quest_buildingType_semi_detached_description">"спојене две породичне куће"</string>
     <string name="quest_buildingType_terrace_description">"низ сличних породичних кућа"</string>
     <string name="quest_buildingType_hotel">"Хотелска зграда"</string>
     <string name="quest_buildingType_dormitory">"Студентски дом"</string>
@@ -1011,7 +1004,7 @@ As mentioned, the app directly communicates with OSM infrastructure. However, be
     <string name="quest_parkingType_street_side">"Паркинг крај пута"</string>
     <string name="quest_parkingType_lane">"Паркинг на путу"</string>
     <string name="quest_existence_title">"Да ли је и даље овде? (%s)"</string>
-    <string name="quest_existence_name_title">"Да ли је %1$s још увек ту? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Да ли је %1$s (%2$s) још увек ту?"</string>
     <string name="quest_tracktype_grade2a">"Чврсто, али неасфалтирано"</string>
     <string name="quest_tracktype_grade3a">"Углавном чврсто"</string>
     <string name="quest_generic_answer_does_not_exist">"Не постоји..."</string>

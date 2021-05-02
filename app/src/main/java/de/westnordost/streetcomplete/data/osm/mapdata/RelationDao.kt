@@ -119,7 +119,7 @@ class RelationDao @Inject constructor(private val db: Database) {
         val ids = db.query(
             NAME_MEMBERS,
             columns = arrayOf(ID),
-            where = "$REF = $elementId AND $TYPE = ?",
+            where = "$TYPE = ? AND $REF = $elementId",
             args = arrayOf(elementType.name)) { it.getLong(ID) }.toSet()
         return getAll(ids)
     }

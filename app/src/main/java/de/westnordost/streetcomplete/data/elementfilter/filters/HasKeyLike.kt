@@ -4,10 +4,10 @@ import de.westnordost.streetcomplete.data.elementfilter.quoteIfNecessary
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
 /** ~key(word)? */
-class HasKeyLike(key: String) : ElementFilter {
-    val key = key.toRegex()
+class HasKeyLike(val key: String) : ElementFilter {
+    private val regex = RegexOrSet.from(key)
 
-    override fun toOverpassQLString() = "[" + "~" + "^(${key.pattern})$".quoteIfNecessary() + " ~ '.*']"
+    override fun toOverpassQLString() = "[" + "~" + "^($key)$".quoteIfNecessary() + " ~ '.*']"
     override fun toString() = toOverpassQLString()
-    override fun matches(obj: Element?) = obj?.tags?.keys?.find { it.matches(key) } != null
+    override fun matches(obj: Element?) = obj?.tags?.keys?.find { regex.matches(it) } != null
 }

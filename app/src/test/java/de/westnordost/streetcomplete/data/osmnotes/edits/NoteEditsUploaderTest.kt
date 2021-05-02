@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.common.errors.OsmConflictException
-import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.testutils.any
@@ -90,7 +89,7 @@ class NoteEditsUploaderTest {
         val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
-        on(notesApi.comment(anyLong(), any())).thenThrow(OsmConflictException(403,"",""))
+        on(notesApi.comment(anyLong(), any())).thenThrow(ConflictException())
         on(notesApi.get(1L)).thenReturn(note)
 
         upload()
@@ -108,7 +107,7 @@ class NoteEditsUploaderTest {
         val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
-        on(notesApi.comment(anyLong(), any())).thenThrow(OsmNotFoundException(410,"",""))
+        on(notesApi.comment(anyLong(), any())).thenThrow(ConflictException())
         on(notesApi.get(1L)).thenReturn(null)
 
         upload()

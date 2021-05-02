@@ -271,7 +271,7 @@
 &lt;p&gt;&lt;b&gt;直接貢獻&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 首先，透過此app，你可直接向開放街圖做出貢獻。&lt;br/&gt;
-你在此app上所有貢獻會直接加到地圖上，和開放街圖設施之間不會有任何第三方管道，像 &lt;a href=\"https://wheelmap.org\"&gt;輪椅地圖&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
+你在此app上所有貢獻會直接加到地圖上，和開放街圖設施之間不會有任何第三方管道。
 &lt;/p&gt;
 &lt;p&gt;
 開放街圖是不允許匿名編輯，所以你任何編輯都是藉由你的開放街圖帳號。這表示日期、內容和你改動後產生的間接地理資訊，都會公開於開放街圖網站並標示你的帳號。
@@ -674,7 +674,7 @@
     <string name="quest_fireHydrant_type_pond">"池塘"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"&lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;在GitHub上瀏覽完整列表&lt;/a&gt;。"</string>
+    <string name="credits_contributors">"&lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;在GitHub上瀏覽完整列表&lt;/a&gt;。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 專案&lt;/a&gt;上瀏覽完整列表。"</string>
@@ -850,17 +850,11 @@
     <string name="quest_crossing_type_title">"這是哪種交叉口?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"有交通號誌的路口"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"無道路標記的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"復原"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"復原上個回答？"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"山竹"</string>
@@ -1073,18 +1067,6 @@
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"你可以留下註解，讓其他圖客知道這邊有問題。移動地圖來調整註解標注的位置："</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"無效的任務暫存"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"如果你認為有些任務過期的話則有用"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"無效"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"暫存檔無效導致需要在下載時更新任務。一週之後或是任務已經解決回答，任務暫存自動無效。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"通常長得像這樣子："</string>
@@ -1337,9 +1319,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"半獨棟房屋"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"兩個單一家庭房屋"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"一排單一家庭的房屋"</string>
@@ -2114,7 +2093,7 @@
     <string name="quest_parkingType_street_side">"路外停車"</string>
     <string name="quest_parkingType_lane">"路邊停車"</string>
     <string name="quest_existence_title">"還在這裡嗎？ (%s)"</string>
-    <string name="quest_existence_name_title">"%1$s 還在嗎？ (%2$s) "</string>
+    <string name="quest_existence_name_title">"%1$s  (%2$s) 還在嗎？"</string>
     <string name="quest_tracktype_grade2a">"堅實的但沒有舖面"</string>
     <string name="quest_tracktype_grade3a">"大部分是堅實的"</string>
     <string name="quest_generic_answer_does_not_exist">"這並不存在…"</string>

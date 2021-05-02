@@ -271,7 +271,7 @@
 &lt;p&gt;&lt;b&gt;Ekarpen zuzenak&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Hasteko, ulertu aplikazio honekin egiazko ekarpen zuzenak egiten dituzula OpenStreetMap-en.&lt;br/&gt;
-Aplikazio honetan egiten dituzun ekarpenak zuzenean mapara gehituko dira, ez dago inor zu eta OSM azpiegituraren artean, &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; edo &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt; aplikazioetan ez bezala.
+Aplikazio honetan egiten dituzun ekarpenak zuzenean mapara gehituko dira, ez dago inor zu eta OSM azpiegituraren artean.
 &lt;/p&gt;
 &lt;p&gt;
 Ezin da OpenStreetMap era anonimoan editatu, OSMra egiten dituzu aldaketa guztiak zure kontuarekin egiten dira. Honek esan nahi du data, edukia eta kokaleku inplizitua OpenStreetMap webgunean ikusgai daudela zure kontuari lotuta.
@@ -674,7 +674,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_fireHydrant_type_pond">"Urmaela"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Ikusi &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;zerrenda osoa GitHub-en&lt;/a&gt;"</string>
+    <string name="credits_contributors">"Ikusi &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;zerrenda osoa GitHub-en&lt;/a&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Ikusi &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proiektua POEditor-en&lt;/a&gt; zerrenda osorako."</string>
@@ -850,17 +850,11 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_crossing_type_title">"Zein motako bidegurutzea da hau?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Semaforoak dituen bidegurutzea"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Errepide-markarik gabeko bidegurutzea"</string>
     <string name="compass_north_one_letter">"I"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desegin"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Desegin azken erantzun hau?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostanak"</string>
@@ -1073,18 +1067,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Ohar bat sortu dezakezu beste mapa egileei hemen arazo bat dagoela jakinarazteko. Doitu oharraren posizioa mapa mugituz:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Baliogabetu erronken cachea"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Erabilgarria erronketako batzuk zaharkituta daudela uste baduzu"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Baliogabetu"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Cachea baliogabetzean denak berriro deskargatzen dira eguneratzean. Erronken cachea automatikoki baliogabetzen da astean behin eta berehala zuk erantzundako erronka bat beste inork aurretik erantzun badu."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Itxura hau izaten du:"</string>
@@ -1338,9 +1320,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Etxe bikia (adosatua)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"familia bakarreko etxebizitzen bikotea"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"familia bakarreko etxebizitza berdintsuen errenkada bat"</string>

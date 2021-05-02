@@ -242,7 +242,7 @@
 &lt;p&gt;&lt;b&gt;Contribuições diretas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Antes de mais, compreenda que com esta aplicação, está a contribuir diretamente para o OpenStreetMap.&lt;br/&gt;
-Qualquer contribuição que faça com esta aplicação, é diretamente adicionada ao mapa do OpenStreetMap e não há intermediários entre a aplicação e a infraestrutura do OpenStreetMap, como é o caso de &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; ou o &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Qualquer contribuição que faça com esta aplicação, é diretamente adicionada ao mapa do OpenStreetMap e não há intermediários entre a aplicação e a infraestrutura do OpenStreetMap.
 &lt;/p&gt;
 &lt;p&gt;
 Não é possível editar de forma anónima no OpenStreetMap, por isso, qualquer alteração que faça, é feita com a sua conta de utilizador do OpenStreetMap. Isto significa que a data, conteúdo e localização das suas alterações são visíveis publicamente no site OpenStreetMap e estão associadas à sua conta.
@@ -642,7 +642,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_fireHydrant_type_pond">"Boca seca (necessário motor)"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Veja a lista completa &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Veja a lista completa &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Para a lista completa veja o &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projeto no POEditor&lt;/a&gt;."</string>
@@ -819,17 +819,11 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_crossing_type_title">"Que tipo de passadeira é esta?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Passadeira com semáforos"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Passadeira sem qualquer tipo de marcação"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desfazer"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Desfazer a última resposta?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostim"</string>
@@ -1042,18 +1036,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Pode reportar um erro para que outros mapeadores saibam sobre o problema. Ajuste a posição do erro movendo o mapa."</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Eliminar ficheiros temporários dos desafios"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Útil se acha que alguns dos desafios podem estar desatualizados"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Eliminar"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Eliminar os ficheiros temporários dos desafios faz com que os desafios sejam atualizados da próxima vez que forem descarregados. Este ficheiros temporários de desafios são eliminados automaticamente após uma semana ou de forma imediata quando o desafio que resolveu tiver sido respondido por outra pessoa."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Normalmente tem esta aparência"</string>
@@ -1306,9 +1288,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Casa semi-separada"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"par de 2 casas unifamiliares (geminadas)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"uma série de casas similares unifamiliares em fila com paredes partilhadas"</string>

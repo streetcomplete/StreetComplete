@@ -183,7 +183,7 @@ semisal \"sesuai janji\". Jika tidak ada tandanya bukan berarti tidak ada jam bu
 &lt;p&gt;&lt;b&gt;Kontribusi Langsung&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Pertama, pahami bahwa dengan aplikasi ini, kamu membuat kontribusi langsung dan benar ke OpenStreetMap.&lt;br/&gt;
-Semua yang kamu kontribusikan di aplikasi ini langsung ditambahkan ke peta, tidak ada pihak ketiga di antara aplikasi dan infrastruktur OSM, seperti halnya pada &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; atau&lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Semua yang kamu kontribusikan di aplikasi ini langsung ditambahkan ke peta, tidak ada pihak ketiga di antara aplikasi dan infrastruktur OSM.
 &lt;/p&gt;
 &lt;p&gt;
 Mengedit OpenStreetMap secara anonim itu tidak mungkin, jadi semua perubahan yang kamu buat dibuat dengan akun OSMmu. Ini berarti, tanggal, konten, dan lokasi yang kamu ubah akan terlihat secara publik dan jelas di situs openstreetmap dan akan terkait dengan akunmu.
@@ -377,7 +377,7 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_fireHydrant_type_pond">"Kolam"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Lihat &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;daftar lengkap di Github&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Lihat &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;daftar lengkap di Github&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Lihat &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;di POEditor&lt;/a&gt; untuk daftar lengkapnya."</string>
@@ -513,15 +513,11 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat memindai di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
     <string name="quest_crossing_type_title">"Apakah tipe penyeberangan ini?"</string>
-    <string name="quest_crossing_type_signals">"Penyeberangan dengan lampu lalu lintas"</string>
     <string name="quest_crossing_type_unmarked">"Penyeberangan tanpa zebra cross"</string>
     <string name="compass_north_one_letter">"U"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Urungkan"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Urungkan jawaban terakhir?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Manggis"</string>
@@ -614,18 +610,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="map_btn_create_note">"Buat catatan baru"</string>
     <string name="create_new_note_unprecise">"Zum masuk lagi untuk membuat catatan"</string>
     <string name="create_new_note_description">"Kamu bisa meninggalkan catatan untuk memberitahu pemeta lain tentang isu di sini. Atur posisi catatan dengan menggeser peta:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Buat tembolok pencarian invalid"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Berguna jika kamu merasa beberapa pencarian sudah usang"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Invalidasi"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Invalidasi tembolok akan membuat pencarian diperbarui setelah mereka diunduh. Tembolok pencarian akan diinvalidasi otomatis setelah satu minggu dan langsung saat pencarian yang kamu selesaikan ternyata sudah dijawab orang lain"</string>
     <string name="quest_generic_looks_like_this">"Biasanya terlihat seperti ini:"</string>
     <string name="quest_surface_value_metal">"Logam"</string>
     <string name="quest_cycleway_title2">"Apa ada jalan sepeda di sini? Apa tipenya?"</string>
@@ -715,7 +699,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_detached">"Rumah terpisah"</string>
     <string name="quest_buildingType_detached_description">"Rumah berdiri sendiri satu keluarga"</string>
     <string name="quest_buildingType_semi_detached">"Rumah semi terpisah"</string>
-    <string name="quest_buildingType_semi_detached_description">"Dua pasang rumah satu keluarga"</string>
     <string name="quest_buildingType_terrace_description">"Barisan rumah yang mirip untuk rumah satu keluarga"</string>
     <string name="quest_buildingType_hotel">"Bangunan hotel"</string>
     <string name="quest_buildingType_dormitory">"Asrama"</string>

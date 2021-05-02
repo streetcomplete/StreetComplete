@@ -271,7 +271,7 @@
 &lt;p&gt;&lt;b&gt;Priame príspevky&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Hlavné je uvedomiť si, že pomocou tejto aplikácie skutočne a priamo prispievate do OpenStreetMap.&lt;br/&gt;
-Čokoľvek čím prispejete pomocou tejto aplikácie bude pridané do mapy bez toho, aby medzi aplikáciou a OSM infraštruktúrou bola tretia strana ako je to v prípade &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; alebo &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Čokoľvek čím prispejete pomocou tejto aplikácie bude pridané do mapy bez toho, aby medzi aplikáciou a OSM infraštruktúrou bola tretia strana.
 &lt;/p&gt;
 &lt;p&gt;
 OpenStreetMap nie je možné upravovať anonyne, preto sa všetky zmeny, ktoré urobíte vykonajú pod Vaším OSM účtom. To znamená, že dátum, obsah a implicitné umiestnenie Vašich zmien sú verejne viditeľné na stránke openstreetmap a sú prepojiteľné s Vašim účtom.
@@ -674,7 +674,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_fireHydrant_type_pond">"Nádrž"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Prečítajte si &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;úplný zoznam na GitHube&lt;/a&gt;. "</string>
+    <string name="credits_contributors">"Prečítajte si &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;úplný zoznam na GitHube&lt;/a&gt;. "</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Úplný zoznam nájdete v &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekte na POEditor.com&lt;/a&gt;."</string>
@@ -850,17 +850,11 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_crossing_type_title">"Akého typu je tento prechod?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Prechod so semaforom"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Prechod bez označenia na ceste"</string>
     <string name="compass_north_one_letter">"S"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Späť"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Odvolať nasledujúcu poslednú odpoveď?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostány"</string>
@@ -1074,18 +1068,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Na tomto mieste môžete zanechať poznámku pre ostatných používateľov a upozorniť ich tak na problém. Pozíciu poznámky upravíte posunutím mapy:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Zneplatniť vyrovnávaciu pamäť úloh"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Je to užitočné, ak si myslíte, že niektoré úlohy sú zastarané"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Zneplatniť"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Zneplatnenie vyrovnávacej pamäte spôsobí, že úlohy budú aktualizované pri najbližšom stiahnutí. Vyrovnávacia pamäť sa automaticky zneplatní po jednom týždni alebo keď sa ukáže, že vami vyriešená úloha už bola zodpovedaná niekým iným."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Zvyčajne vyzerá takto:"</string>
@@ -1339,9 +1321,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Čiastočne spojený dom"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"pár rodinných domov"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"radová zástavba rodinných domov"</string>
@@ -2354,7 +2333,7 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_parkingType_street_side">"Parkuje sa priamo vedľa cesty"</string>
     <string name="quest_parkingType_lane">"Parkuje sa na ceste"</string>
     <string name="quest_existence_title">"Je to tu stále? (%s)"</string>
-    <string name="quest_existence_name_title">"Je tu stále %1$s? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Je tu stále %1$s (%2$s)?"</string>
     <string name="quest_tracktype_grade2a">"Viac-menej pevný"</string>
     <string name="quest_tracktype_grade3a">"Skôr pevný"</string>
     <string name="quest_generic_answer_does_not_exist">"Neexistuje to..."</string>

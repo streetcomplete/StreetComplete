@@ -1,19 +1,17 @@
 package de.westnordost.streetcomplete.data.upload
 
 import android.util.Log
-import de.westnordost.osmapi.common.errors.OsmAuthorizationException
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
+import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.util.enclosingTilePos
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -52,7 +50,7 @@ class Uploader @Inject constructor(
 
         // let's fail early in case of no authorization
         if (!userController.isLoggedIn) {
-            throw OsmAuthorizationException(401, "Unauthorized", "User is not authorized")
+            throw AuthorizationException("User is not authorized")
         }
 
         Log.i(TAG, "Starting upload")

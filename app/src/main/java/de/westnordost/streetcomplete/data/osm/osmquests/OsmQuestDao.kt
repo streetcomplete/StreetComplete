@@ -27,13 +27,6 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
             args = arrayOf(key.elementType.name, key.elementId, key.questTypeName)
         ) { it.toOsmQuestEntry() }
 
-    fun getAllInBBoxCount(bounds: BoundingBox): Int {
-        return db.queryOne(NAME,
-            columns = arrayOf("COUNT(*) as count"),
-            where = inBoundsSql(bounds),
-        ) { it.getInt("count") } ?: 0
-    }
-
     fun delete(key: OsmQuestKey): Boolean =
         db.delete(NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ? AND $QUEST_TYPE = ?",

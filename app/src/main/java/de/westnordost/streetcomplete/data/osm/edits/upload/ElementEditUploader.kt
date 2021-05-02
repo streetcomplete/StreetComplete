@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.osmapi.common.errors.OsmApiException
-import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
@@ -25,21 +23,10 @@ class ElementEditUploader @Inject constructor(
 
         return try {
             val changesetId = changesetManager.getOrCreateChangeset(edit.questType, edit.source)
-            uploadInChangeset(changesetId, mapDataChanges)
+            mapDataApi.uploadChanges(changesetId, mapDataChanges)
         } catch (e: ConflictException) {
             val changesetId = changesetManager.createChangeset(edit.questType, edit.source)
-            uploadInChangeset(changesetId, mapDataChanges)
-        }
-    }
-
-    /** Upload the changes for a single change. Returns the updated element(s). */
-    private fun uploadInChangeset(changesetId: Long, mapDataChanges: MapDataChanges): MapDataUpdates {
-        try {
-            return mapDataApi.uploadChanges(changesetId, mapDataChanges)
-        } catch (e: OsmConflictException) {
-            throw ConflictException(e.message, e)
-        } catch (e: OsmApiException) {
-            throw ConflictException(e.message, e)
+            mapDataApi.uploadChanges(changesetId, mapDataChanges)
         }
     }
 

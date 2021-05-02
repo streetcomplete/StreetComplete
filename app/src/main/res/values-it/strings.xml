@@ -99,7 +99,7 @@
     <string name="privacy_html">"&lt;p&gt;Ah, qualcuno che s'interessa della privacy. Bello! Penso di avere solo buone notizie per te:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contributi diretti&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;Prima di tutto, va detto che con questa applicazione, tu dai dei contributi effettivi e diretti a OpenStreetMap.&lt;br/&gt;
-Qualsiasi contributo con questa applicazione viene direttamente aggiunto alla mappa, non vi è alcun intermediario fra l’app e l’infrastruttura di OSM, come invece accade nel caso di &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o di &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Qualsiasi contributo con questa applicazione viene direttamente aggiunto alla mappa, non vi è alcun intermediario fra l’app e l’infrastruttura di OSM.
 &lt;/p&gt;
 &lt;p&gt;
 La modifica anonima in OpenStreetMap non è possibile, pertanto tutte le modifiche apportate sono effettuate con l'account utente OSM, il che significa che il contenuto e la posizione delle modifiche apportate alla mappa sono visibili pubblicamente sul sito web di OpenStreetMap e tali modifiche sono attribuibili al tuo account.
@@ -271,7 +271,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_fireHydrant_type_underground">"Sotterraneo"</string>
     <string name="quest_fireHydrant_type_wall">"Muro"</string>
     <string name="quest_fireHydrant_type_pond">"Stagno"</string>
-    <string name="credits_contributors">"Vedi la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;lista completa su GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Vedi la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;lista completa su GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"Vedi il &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;progetto su POEditor&lt;/a&gt; per la lista completa."</string>
     <string name="credits_translations_title">"Traduzioni"</string>
     <string name="credits_contributors_title">"Autori"</string>
@@ -347,11 +347,9 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_way_lit_24_7">"È illuminato giorno e notte"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Non riesco ad esplorare la zona. Prova ad aumentare lo zoom o a tenere la mappa meno inclinata."</string>
     <string name="quest_crossing_type_title">"Che tipo di attraversamento pedonale è questo?"</string>
-    <string name="quest_crossing_type_signals">"Attraversamento con semafori"</string>
     <string name="quest_crossing_type_unmarked">"Attraversamento senza segnaletica stradale"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Annulla"</string>
-    <string name="undo_confirm_title">"Annullare quest'ultima risposta?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostano"</string>
@@ -446,10 +444,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="map_btn_create_note">"Crea una nuova nota"</string>
     <string name="create_new_note_unprecise">"Ingrandisci per creare una nota"</string>
     <string name="create_new_note_description">"Puoi lasciare una nota per far sapere agli altri mappatori che qui c'è un problema. Aggiusta la posizione della nota muovendo la mappa:"</string>
-    <string name="pref_title_quests_invalidation">"Invalida la cache delle missioni"</string>
-    <string name="pref_title_quests_invalidation_summary">"Utile se pensi che alcune missioni non siano aggiornate"</string>
-    <string name="invalidate_confirmation">"Invalida"</string>
-    <string name="invalidation_dialog_message">"Invalidare la cache fa sì che le missioni siano aggiornate al prossimo download. La cache delle missioni viene invalidata automaticamente dopo una settimana oppure immediatamente quando si scopre che una missione che hai risolto ha già ottenuto risposta da qualcun altro."</string>
     <string name="quest_generic_looks_like_this">"Normalmente è qualcosa tipo:"</string>
     <string name="quest_surface_value_metal">"Metallo"</string>
     <string name="quest_cycleway_title2">"C'è una pista ciclabile qui? Di che tipo?"</string>
@@ -537,7 +531,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_buildingType_detached">"Casa indipendente"</string>
     <string name="quest_buildingType_detached_description">"casa unifamiliare indipendente"</string>
     <string name="quest_buildingType_semi_detached">"Casa semi-indipendente"</string>
-    <string name="quest_buildingType_semi_detached_description">"coppia di bifamiliari"</string>
     <string name="quest_buildingType_terrace_description">"abitazioni simili e unifamiliari in fila"</string>
     <string name="quest_buildingType_hotel">"Hotel"</string>
     <string name="quest_buildingType_dormitory">"Dormitorio"</string>
@@ -998,7 +991,7 @@ riconoscimento"</string>
     <string name="quest_parkingType_street_side">"Parcheggio poco fuori dalla carreggiata"</string>
     <string name="quest_parkingType_lane">"Parcheggio sulla carreggiata"</string>
     <string name="quest_existence_title">"È ancora qui? (%s)"</string>
-    <string name="quest_existence_name_title">"%1$s è ancora qui? (%2$s)"</string>
+    <string name="quest_existence_name_title">"%1$s (%2$s) è ancora qui?"</string>
     <string name="quest_tracktype_grade2a">"Solido ma non pavimentato"</string>
     <string name="quest_tracktype_grade3a">"Per lo più solido"</string>
     <string name="quest_generic_answer_does_not_exist">"Non esiste…"</string>

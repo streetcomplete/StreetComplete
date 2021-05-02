@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import android.util.Log
-import de.westnordost.osmapi.common.errors.OsmQueryTooBigException
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.enlargedBy
 import kotlinx.coroutines.Dispatchers
@@ -33,8 +33,8 @@ class MapDataDownloader @Inject constructor(
 
     private fun getMapAndHandleTooBigQuery(bounds: BoundingBox, mutableMapData: MutableMapData) {
         try {
-            mapDataApi.getMap(bounds, mutableMapData)
-        } catch (e : OsmQueryTooBigException) {
+            mapDataApi.getMap(bounds, mutableMapData, ApplicationConstants.IGNORED_RELATION_TYPES)
+        } catch (e : QueryTooBigException) {
             for (subBounds in bounds.splitIntoFour()) {
                 getMapAndHandleTooBigQuery(subBounds, mutableMapData)
             }

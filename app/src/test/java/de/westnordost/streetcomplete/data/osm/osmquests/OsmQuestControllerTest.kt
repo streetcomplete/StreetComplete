@@ -66,12 +66,6 @@ class OsmQuestControllerTest {
         ctrl.addHideQuestsListener(hideListener)
     }
 
-    @Test fun getAllInBBoxCount() {
-        val bbox = bbox()
-        on(db.getAllInBBoxCount(bbox)).thenReturn(123)
-        assertEquals(123, ctrl.getAllInBBoxCount(bbox))
-    }
-
     @Test fun get() {
         val key = osmQuestKey(NODE, 1, "ApplicableQuestType")
         val entry = questEntry(NODE, 1, "ApplicableQuestType")

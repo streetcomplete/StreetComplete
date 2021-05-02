@@ -104,7 +104,7 @@
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 First off, understand that with this app, you make actual and direct contributions to the OpenStreetMap.&lt;br/&gt;
-Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure, like it is the case with &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; or &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
 &lt;/p&gt;
 &lt;p&gt;
 Editing the OpenStreetMap anonymously is not possible, so any changes you make are made with your OSM user account. This means, that the date, content and implicitly the location of your changes are visible publicly on the openstreetmap website and are attributable to your account.
@@ -340,11 +340,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"Wall"</string>
     <string name="quest_fireHydrant_type_pond">"Pond"</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_contributors">"See the &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
+    <string name="credits_contributors">"See the &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
     <string name="credits_translations_title">"Translations"</string>
     <string name="credits_contributors_title">"Code contributors"</string>
@@ -426,15 +422,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_title">"What kind of crossing is this?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Crossing with traffic lights"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Crossing without road markings"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Undo"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Undo the following last answer?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangosteen"</string>
@@ -546,10 +536,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="map_btn_create_note">"Create new note"</string>
     <string name="create_new_note_unprecise">"Zoom in further to create a note"</string>
     <string name="create_new_note_description">"You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map:"</string>
-    <string name="pref_title_quests_invalidation">"Invalidate quest cache"</string>
-    <string name="pref_title_quests_invalidation_summary">"Useful if you think that some quests are outdated"</string>
-    <string name="invalidate_confirmation">"Invalidate"</string>
-    <string name="invalidation_dialog_message">"Invalidating the cache causes the quests to be updated next time they are downloaded. The quest cache is invalidated automatically after one week and immediately when a quest you solved turns out to be already answered by someone else."</string>
     <string name="quest_generic_looks_like_this">"Usually looks like this:"</string>
     <string name="quest_surface_value_metal">"Metal"</string>
     <string name="quest_cycleway_title2">"Is there a cycleway here? What type?"</string>
@@ -660,8 +646,6 @@ For instance 1,3 or 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Are you sure that you can not determine it more specifically?"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;For some quests, some additional data from third parties is downloaded. In particular, the oneway quest queries an API, also hosted on westnordost.de, about likely candidates for oneways.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
 
@@ -690,9 +674,6 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_buildingType_detached">"Detached house"</string>
     <string name="quest_buildingType_detached_description">"free-standing single-family home"</string>
     <string name="quest_buildingType_semi_detached">"Semi-detached house"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"semi-detached house"</string>
     <string name="quest_buildingType_terrace_description">"multiple similar single-family homes in a linear row"</string>
     <string name="quest_buildingType_hotel">"Hotel building"</string>
 
@@ -987,7 +968,7 @@ Finally, remember to stay safe: Be aware of your surroundings and don't enter pr
     <string name="link_openvegemap_description">"Discover vegetarian and vegan restaurants in your city"</string>
     <string name="link_touch_mapper_description">"Create tactile maps easily for any address"</string>
     <string name="link_mapy_tactile_description">"Tactile maps for the visually impaired in various scales"</string>
-    <string name="link_josm_description">"Fully-featured OSM editor for the desktop. This is the power tool for regular contributors"</string>
+    <string name="link_josm_description">"Fully-featured OSM editor for the desktop. This is the power tool for regular contributors."</string>
     <string name="link_vespucci_description">"Advanced OSM editor for Android"</string>
     <string name="link_ideditor_description">"Simple OSM editor for the browser. Optimised for the desktop or large tablets"</string>
     <string name="link_umap_description">"Create maps with custom data quickly and embed them in your site"</string>
@@ -1090,12 +1071,10 @@ levels"</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
     <string name="quest_streetName_menuItem_romanized">"in Latin script"</string>
     <string name="quest_buildingType_terrace2">"Terraced houses"</string>
-    <string name="quest_oneway_tutorial">"The road in the illustration is rotated the same as on the map at the location of the pin. Note the indicated direction. "</string>
+    <string name="quest_oneway_tutorial">"The road in the illustration is rotated the same as on the map at the location of the pin. Note the indicated direction."</string>
     <string name="at_housename">"house name %s:"</string>
     <string name="at_conscription_and_street_number">"Conscription number %1$s, orientation number %2$s:"</string>
-
-    <!-- Fuzzy -->
-    <string name="at_conscription_number">"Conscription number %s:"</string>
+    <string name="at_conscription_number">"conscription number %s:"</string>
     <string name="at_housenumber">"house number %s:"</string>
     <string name="quest_openingHours_name_type_title">"What are the opening hours of %1$s (%2$s)?"</string>
     <string name="quest_openingHours_resurvey_name_title">"Are these opening hours for %s still correct?"</string>
@@ -1192,7 +1171,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_parkingType_street_side">"Parking just off the roadway"</string>
     <string name="quest_parkingType_lane">"Parking on roadway"</string>
     <string name="quest_existence_title">"Is this still here? (%s)"</string>
-    <string name="quest_existence_name_title">"Is %1$s still here? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Is %1$s (%2$s) still here?"</string>
     <string name="quest_tracktype_grade2a">"Solid but unpaved"</string>
     <string name="quest_tracktype_grade3a">"Mostly solid"</string>
     <string name="quest_generic_answer_does_not_exist">"It does not exist…"</string>
@@ -1240,10 +1219,63 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="team_mode">"Team Mode"</string>
     <string name="team_mode_exit">"Exit Team Mode"</string>
     <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members."</string>
-    <string name="team_mode_team_size_label">"How many people are there?
-"</string>
+    <string name="team_mode_team_size_label">"How many people are there?"</string>
     <string name="team_mode_team_size_hint">"Team mode works for groups of 2 to 12 people."</string>
     <string name="team_mode_choose_color">"Now everybody in your group chooses a unique colour:"</string>
     <string name="team_mode_active">"Team mode is active"</string>
     <string name="team_mode_deactivated">"Team mode deactivated"</string>
+    <string name="quest_pitchLit_title">"Is this sport field lit?"</string>
+    <string name="quest_pitchLit_title_track">"Is this sport track lit?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Crossing controlled by traffic lights"</string>
+    <string name="undo_last">"Undo last edit"</string>
+    <string name="show_edit_history">"Show edit history"</string>
+    <string name="undo_confirm_title2">"Undo the following edit?"</string>
+    <string name="synced">"Synced"</string>
+    <string name="toast_undo_unavailable">"This edit is already synced and cannot be undone"</string>
+    <string name="quest_cycleway_value_separate">"displayed separately on map"</string>
+    <string name="created_note_action_title">"Created note"</string>
+    <string name="commented_note_action_title">"Commented note"</string>
+    <string name="hid_action_description">"You hid it"</string>
+    <string name="split_way_action_description">"You split the way"</string>
+    <string name="deleted_poi_action_description">"You deleted it"</string>
+    <string name="added_tag_action_title">"Added %s"</string>
+    <string name="removed_tag_action_title">"Removed %s"</string>
+    <string name="changed_tag_action_title">"Updated to %s"</string>
+    <string name="pref_title_delete_cache">"Delete cache"</string>
+    <string name="pref_title_delete_cache_summary">"If you think some data is outdated"</string>
+    <string name="delete_confirmation">"Delete"</string>
+    <string name="delete_cache_dialog_message">"Delete all downloaded map data, including quests?
+Data is refreshed after %1$s days and unused data is deleted after %2$s days automatically."</string>
+    <string name="quest_shop_type_title">"What type of shop is %s?"</string>
+    <string name="quest_shop_type_title_no_name">"What type of shop is this?"</string>
+    <string name="pref_background_type_select">"Select background type"</string>
+    <string name="background_type_map">"Map"</string>
+    <string name="background_type_aerial_esri">"Aerial (by Esri)"</string>
+    <string name="quest_barrier_type_title">"What type of barrier is this?"</string>
+    <string name="quest_barrier_type_gate">"Gate"</string>
+    <string name="quest_barrier_type_lift_gate">"Boom barrier"</string>
+    <string name="quest_barrier_type_bollard">"Bollard(s)"</string>
+    <string name="quest_barrier_type_chain">"Chain"</string>
+    <string name="quest_barrier_type_rope">"Rope"</string>
+    <string name="quest_barrier_type_wire_gate">"Removable wire section"</string>
+    <string name="quest_barrier_type_cattle_grid">"Grid blocking livestock from walking over"</string>
+    <string name="quest_barrier_type_block">"Big immobile object"</string>
+    <string name="quest_barrier_jersey_barrier">"Jersey barrier"</string>
+    <string name="quest_barrier_type_log">"Log"</string>
+    <string name="quest_barrier_type_kerb">"Kerb"</string>
+    <string name="quest_barrier_type_height_restrictor">"Height barrier"</string>
+    <string name="quest_barrier_full_height_turnstile">"Full height turnstile"</string>
+    <string name="quest_barrier_type_turnstile">"Turnstile"</string>
+    <string name="quest_barrier_type_passage">"Passage through wall/fence/etc."</string>
+    <string name="quest_barrier_type_debris_pile">"Pile of debris"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Squeeze stile"</string>
+    <string name="quest_barrier_type_stile_ladder">"Ladder stile"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Bicycle barrier"</string>
+    <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>
+    <string name="quest_barrier_type_stepover">"Step-over stile"</string>
+    <string name="quest_barrier_type_swing_gate">"Horizontal bar"</string>
+    <string name="quest_policeType_title">"Which type of police station is this?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Converted into a kissing gate"</string>
+    <string name="quest_stile_type_title">"What type of stile is this?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"adjoined single-family home(s)"</string>
 </resources>

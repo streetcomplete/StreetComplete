@@ -92,7 +92,21 @@
     <string name="quest_roofShape_answer_many">"Det har fleire ulike former"</string>
     <string name="map_btn_zoom_out">"Zoom ut"</string>
     <string name="map_btn_zoom_in">"Zoom inn"</string>
-    <string name="privacy_html">"&lt;p&gt;Ah, nokon som bryr seg om personvern – flott! Eg trur eg berre har gode nyheiter til deg:&lt;/p&gt;&lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Merk først at du med denne appen gjev faktiske, direkte bidrag til OpenStreetMap.&lt;br/&gt;Alt du som bidreg med vert lagt direkte til kartet; det finst ikkje nokon tredjepart mellom appen og OSM-infrastrukturen, som det for eksempel finst med &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; og &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Det er ikkje mogleg å redigera OpenStreetMap anonymt, så alle endringane dine vert gjorde med OSM-brukarkontoen din. Dette medfører at tidspunktet, innhaldet og (implisitt) staden du var på, vert synleg for alle på OpenStreetMap-nettstaden og vert knytte til brukarkontoen din.&lt;/p&gt;&lt;b&gt;Posisjon&lt;/b&gt;&lt;br/&gt;&lt;p&gt;Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å automatisk søkja opp oppdrag og visa (og såleis lasta ned) kartet der du er.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Databruk&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Som nemnt kommuniserer appen direkte med OSM-infrastrukturen.&lt;br/&gt;Men før appen lastar opp endringane dine, sjekkar han via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ei enkel tekstfil&lt;/a&gt; på vevtenaren min on han er utestengd for å lasta opp endringar. Dette er ein «føre var»-funksjon for å hindra at versjonar av appen som har kritiske feil kan komma til å øydeleggja OSM-data.&lt;br/&gt;"</string>
+    <string name="privacy_html">"&lt;p&gt;Ah, nokon som bryr seg om personvern – flott! Eg trur eg berre har gode nyheiter til deg:&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+Merk først at du med denne appen gjev faktiske, direkte bidrag til OpenStreetMap.&lt;br/&gt;Alt du som bidreg med vert lagt direkte til kartet; det finst ikkje nokon tredjepart mellom appen og OSM-infrastrukturen.
+&lt;/p&gt;
+&lt;p&gt;
+Det er ikkje mogleg å redigera OpenStreetMap anonymt, så alle endringane dine vert gjorde med OSM-brukarkontoen din. Dette medfører at tidspunktet, innhaldet og (implisitt) staden du var på, vert synleg for alle på OpenStreetMap-nettstaden og vert knytte til brukarkontoen din.
+&lt;/p&gt;
+
+&lt;b&gt;Posisjon&lt;/b&gt;&lt;br/&gt;
+&lt;p&gt;
+Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å automatisk søkja opp oppdrag og visa (og såleis lasta ned) kartet der du er.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Databruk&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Som nemnt kommuniserer appen direkte med OSM-infrastrukturen.&lt;br/&gt;Men før appen lastar opp endringane dine, sjekkar han via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ei enkel tekstfil&lt;/a&gt; på vevtenaren min on han er utestengd for å lasta opp endringar. Dette er ein «føre var»-funksjon for å hindra at versjonar av appen som har kritiske feil kan komma til å øydeleggja OSM-data.&lt;br/&gt;"</string>
     <string name="autosync_on">"På"</string>
     <string name="autosync_only_on_wifi">"Berre på Wi-Fi"</string>
     <string name="autosync_off">"Av"</string>
@@ -230,7 +244,7 @@
     <string name="quest_fireHydrant_type_underground">"Underjordisk"</string>
     <string name="quest_fireHydrant_type_wall">"Veggmontert"</string>
     <string name="quest_fireHydrant_type_pond">"Røyr i innsjø"</string>
-    <string name="credits_contributors">"Sjå &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Sjå &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"Sjå &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;prosjektet på POEditor&lt;/a&gt; for ei fullstendig oversikt."</string>
     <string name="credits_translations_title">"Omsetjingar"</string>
     <string name="credits_contributors_title">"Kodebidrag"</string>
@@ -294,11 +308,9 @@
     <string name="quest_way_lit_24_7">"Lyset er på dag og natt"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikkje søkja her. Prøv å zooma lenger inn eller å ha kartet mindre på skrå."</string>
     <string name="quest_crossing_type_title">"Kva type fotgjengarovergang er dette?"</string>
-    <string name="quest_crossing_type_signals">"Overgang med trafikklys"</string>
     <string name="quest_crossing_type_unmarked">"Overgang utan vegmarkering"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Angra"</string>
-    <string name="undo_confirm_title">"Vil du angra det siste svaret ditt?"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomatar"</string>
     <string name="produce_areca_nuts">"Betelnøtter"</string>
@@ -374,10 +386,6 @@
     <string name="map_btn_create_note">"Legg til ny merknad"</string>
     <string name="create_new_note_unprecise">"Zoom lenger inn for å leggja til merknad"</string>
     <string name="create_new_note_description">"Du kan leggja att ein merknad til andre kartleggjarar om eit problem her. Flytt på plasseringa av merknaden ved å flytta kartet:"</string>
-    <string name="pref_title_quests_invalidation">"Tøm mellomlager for oppdrag"</string>
-    <string name="pref_title_quests_invalidation_summary">"Nyttig viss du mistenkjer at nokre av oppdraga er utdaterte"</string>
-    <string name="invalidate_confirmation">"Tøm"</string>
-    <string name="invalidation_dialog_message">"Viss du tømmer mellomlageret for oppdrag, vert oppdraga oppdaterte neste gong du lastar dei ned. Mellomlageret vert automatisk tømt etter éi veke eller viss eit oppdrag du har løyst, viser seg å allereie vera løyst av nokon andre."</string>
     <string name="quest_generic_looks_like_this">"Ser vanlegvis slik ut:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_cycleway_title2">"Finst det ein sykkelveg her? Kva type?"</string>
@@ -463,7 +471,6 @@
     <string name="quest_buildingType_detached">"Villa"</string>
     <string name="quest_buildingType_detached_description">"frittståande bustadhus for éin familie"</string>
     <string name="quest_buildingType_semi_detached">"Tomannsbustad"</string>
-    <string name="quest_buildingType_semi_detached_description">"eit hus delt i to, for to familiar"</string>
     <string name="quest_buildingType_terrace_description">"ei rekkje hus tett inntil kvarandre"</string>
     <string name="quest_buildingType_hotel">"Hotellbygning"</string>
     <string name="quest_buildingType_dormitory">"Studentby/internat"</string>
@@ -901,7 +908,7 @@
     <string name="quest_parkingType_street_side">"Parkering i grøftekanten"</string>
     <string name="quest_parkingType_lane">"Parkering på vegen"</string>
     <string name="quest_existence_title">"Finst denne framleis her? (%s)"</string>
-    <string name="quest_existence_name_title">"Finst %1$s framleis her? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Finst %1$s (%2$s) framleis her?"</string>
     <string name="quest_tracktype_grade2a">"Fast, men ikkje asfaltert"</string>
     <string name="quest_tracktype_grade3a">"Stort sett fast"</string>
     <string name="quest_generic_answer_does_not_exist">"Han finst ikkje …"</string>

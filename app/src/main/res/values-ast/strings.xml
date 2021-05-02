@@ -269,7 +269,7 @@
 &lt;p&gt;&lt;b&gt;Contribuciones direutes&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Puntu númberu unu, con esta aplicación tas unviando contribuciones direutes y reales dafechu a OpenStreetMap.&lt;br/&gt;
-Cualesquier contribución fecha con esta aplicación amiéstase direutamente al mapa ensin nengún intermediariu ente aplicación ya infraestructura d'OSM, al contrario qu'en proyeutos como &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Cualesquier contribución fecha con esta aplicación amiéstase direutamente al mapa ensin nengún intermediariu ente aplicación ya infraestructura d'OSM.
 &lt;/p&gt;
 &lt;p&gt;
 Nun se pue contribuyir de manera anónima a OpenStreetMap, colo que cualesquier cambéu que faigas va ser cola to cuenta d'usuariu/a n'OSM, polo que van apaecer públicamente col to nome na Web.
@@ -672,7 +672,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_fireHydrant_type_pond">"Depósitu d'agua"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Ver la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;llista completa en GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Ver la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;llista completa en GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Ver el &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proyeutu en POEditor&lt;/a&gt; pa la llista completa."</string>
@@ -848,17 +848,11 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_crossing_type_title">"¿Qué tipu de cruce ye?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Cruce señalizáu con semáforu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruce ensin señalizar"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desfacer"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"¿Quies desfacer la última entruga respondida?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostán"</string>
@@ -1071,18 +1065,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Pues dexar una nota pa qu'otres persones que collaboren sepan el problema. Axusta la so posición moviendo'l mapa:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Invalidar la caché de xeres"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Bien útil pa poner al día les xeres vieyes"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Invalidar"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"A la d'invalidar la caché vas forzar que les xeres se vuelvan a descargar otra vegada y tean al día. Has de tener en cuenta qu'esto yá se fai cada selmana y cuando daquien yá respondiera les mesmes entrugues."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Normalmente paezse a esto:"</string>
@@ -1334,9 +1316,6 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Xalé adosáu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"par de viviendes unifamiliares"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"conxuntu de viviendes unifamiliares adosaes"</string>

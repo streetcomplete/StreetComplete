@@ -271,7 +271,7 @@
 &lt;p&gt;&lt;b&gt;Contribuições diretas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Primeiramente, compreenda que com este aplicativo, você faz contribuições reais e diretas para o OpenStreetMap.&lt;br/&gt;
-Tudo o que você contribui neste aplicativo é adicionado diretamente ao mapa, não há terceiros entre o aplicativo e a infraestrutura do OSM, como é o caso do &lt;a href=\"https://wheelmap.org\"&gt; wheelmap.org &lt;/a&gt; ou &lt;a href=\"http://www.kort.ch\"&gt; Kort &lt;/a&gt;.
+Tudo o que você contribui neste aplicativo é adicionado diretamente ao mapa, não há terceiros entre o aplicativo e a infraestrutura do OSM.
 &lt;/p&gt;
 &lt;p&gt;
 A edição do OpenStreetMap anonimamente não é possível, portanto quaisquer alterações são feitas com a conta de usuário do OSM. Isso significa que a data, o conteúdo e implicitamente a localização das alterações são visíveis publicamente no site do openstreetmap e são atribuíveis à sua conta.
@@ -674,7 +674,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_fireHydrant_type_pond">"Açude"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Veja a lista completa &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;. "</string>
+    <string name="credits_contributors">"Veja a lista completa &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;. "</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Para a lista completa veja o &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projeto no POEditor&lt;/a&gt;. "</string>
@@ -850,17 +850,11 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_crossing_type_title">"Que tipo de cruzamento é esse?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Cruzamento com semáforo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruzamento sem marcação na pista"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desfazer"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Desfazer a última resposta?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostão"</string>
@@ -1074,18 +1068,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Você pode deixar uma nota para que outros mapeadores saibam sobre um problema aqui. Ajuste a posição da nota movendo o mapa."</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Invalidar cache de missões"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Útil se você achar que algumas missões estão desatualizadas"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Invalidar"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Invalidando o cache as missões elas são atualizadas na próxima vez que ocorrer o download. O cache das missões são invalidados automaticamente depois de uma semana e imediatamente quando uma missão que você completou já tinha sido respondida por outro usuário."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Normalmente se parece assim:"</string>
@@ -1337,9 +1319,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Casa semi-destacada"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"Par de casas para uma família"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"Uma fila linear de casas par uma família"</string>
@@ -2146,7 +2125,7 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_parkingType_street_side">"Estacionamento perto da estrada"</string>
     <string name="quest_parkingType_lane">"Estacionamento na estrada"</string>
     <string name="quest_existence_title">"Ainda está aqui?  (%s)"</string>
-    <string name="quest_existence_name_title">"%1$s ainda está aqui?  (%2$s)"</string>
+    <string name="quest_existence_name_title">"%1$s (%2$s) ainda está aqui?"</string>
     <string name="quest_tracktype_grade2a">"Sólido mas não pavimentado"</string>
     <string name="quest_tracktype_grade3a">"Principalmente sólido"</string>
     <string name="quest_generic_answer_does_not_exist">"Isso não existe..."</string>

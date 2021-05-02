@@ -4,7 +4,7 @@ v32.0-alpha1: |
   ended in February, however, there is one last big mega-update I can delight you with before development
   on this app must necessarily wind down:<br/>
   It may not look like a lot, but I basically replaced the whole architecture of the app (#2506, ...)
-  to do this.
+  to do this. Special thanks to @FloEdelmann for helping with the refactor.
   </p>
   <h3>🔙️ Superpowered Undo</h3>
   <ul>
@@ -14,6 +14,7 @@ v32.0-alpha1: |
   </li>
   <li>You can now look at your <b>edit history</b> and undo any recent edit in any order, not just the last one</li>
   <li>It is now shown what exactly is tagged for each edit in the edit history</li>
+  <li>You can now undo deletions of places even after you have already uploaded it (#2441)</li>
   </ul>
   <h3>⛰️ Improved usability and offline mode</h3>
   <ul>
@@ -29,8 +30,6 @@ v32.0-alpha1: |
   <li>When you scan for quests manually, no cache will be used: You always get the most fresh data (#2554)</li>
   <li>When unable to fully upload pictures attached to a note due to a bad connection, the app will try again later (#2102)</li>
   </ul>
-  <h3>🛰️ Show aerial imagery</h3>
-  <p>You can now select to have aerial imagery instead of a map (#56, #2755), by @matkoniecz, @ENT8R</p>
   <h3>New Quests</h3>
   <ul>
   <li><i>Is this sport field lit?</i> (#2639, #2737), by @eginhard</li>
@@ -42,16 +41,20 @@ v32.0-alpha1: |
   <h3>Other Enhancements</h3>
   <ul>
   <li>Enable answering that the cycleway is displayed separately on the map (#2525, #2665)</li>
-  <li>Some wording improvements (#2728), by @matkoniecz, (#2685)</li>
-  <li>Enhance maxspeed collection for the United Kingdom (#2745, #2748), by @arrival-spring</li>
+  <li>Some wording improvements (#2728), by @matkoniecz, (#2806, #2814) by @peternewman, (#2685)</li>
+  <li>Enhance maxspeed collection for the United Kingdom (#2745, #2748, #2750, #2811), by @arrival-spring</li>
   <li>Periodically ask for the existence of bbq spots, ticket validators, emergency life rings and emergency phones (#2679), thanks @arrival-spring</li>
   <li>Also ask for the surface of service roads as long as they are not driveways (#2783)</li>
+  <li>Slightly more performant compass</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
   <li>On tablets, correctly restore the position when reentering the app (#2659, #2311), thanks @matteblair</li>
-  <li>Sometimes the link collection wouldn't show (#2801, #2809) by @tapetis</li>
+  <li>Sometimes the link collection wouldn't show (#2801, #2809), by @tapetis</li>
+  <li>The keyboard would not appear in the opening hours times dialog (#2799, #2820), by @tapetis</li>
+  <li>The flags in the statics view were sometimes wrongly stretched (#2819, #2831), by @tapetis </li>
   <li>The time picker for the postbox collection times now follows the system settings (#2807)</li>
+  <li>Fix crash on trying to display opening hours that range to 24:00 (#2830)</li>
   <li>...and other fixes and enhancements (#2521, #1821, #2628, #2691, #2715, #2728...)</li>
   <li>Remove checking existence of grit bins, as many are removed for summer and not marked as seasonal :( (#2726), by @matkoniecz</li>
   </ul>

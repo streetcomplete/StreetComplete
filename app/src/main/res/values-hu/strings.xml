@@ -265,7 +265,7 @@
 &lt;p&gt;&lt;b&gt;Közvetlen közreműködések&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Először is, fontos megérteni, hogy a módosításaid valóban és közvetlenül megjelennek az OpenStreetMapben.&lt;br/&gt;
-Az alkalmazásban megadott összes módosítás közvetlenül hozzáadódik a térképhez, nincs harmadik fél az alkalmazás és az OSM infrastruktúra között, pont úgy, mint például a &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; vagy a &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt; esetében.
+Az alkalmazásban megadott összes módosítás közvetlenül hozzáadódik a térképhez, nincs harmadik fél az alkalmazás és az OSM infrastruktúra között.
 &lt;/p&gt;
 &lt;p&gt;
 Az OpenStreetMapet nem lehet névtelenül szerkeszteni, tehát minden módosítást az OSM-fiókoddal végzel. Ez azt jelenti, hogy a módosításaid időpontja, tartalma és így közvetve a helyszíne is a fiókodhoz köthető és ezeket bárki láthatja az OpenStreetMap honlapján.
@@ -663,7 +663,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_fireHydrant_type_pond">"Tó"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"&lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;A teljes lista a GitHubon&lt;/a&gt; található."</string>
+    <string name="credits_contributors">"&lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;A teljes lista a GitHubon&lt;/a&gt; található."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"A teljes lista a &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor oldalán lévő projektnél&lt;/a&gt; található."</string>
@@ -836,7 +836,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"Ez milyen típusú gyalogátkelő?"</string>
-    <string name="quest_crossing_type_signals">"Jelzőlámpás átkelő"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Útburkolati jel nélküli"</string>
@@ -844,9 +843,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
 
     <!-- Fuzzy -->
     <string name="action_undo">"Visszavonás"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Visszavonod a legutóbbi választ?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangosztán"</string>
@@ -1058,18 +1054,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Megjegyzés elhelyezésével tájékoztathatod a többi térképezőt arról, hogy itt egy probléma van. A megjegyzés helyét a térkép mozgatásával lehet beállítani:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Kérdések helyi gyorsítótárának érvénytelenítése"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Akkor hasznos, ha néhány kérdés elavult"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Érvénytelenítés"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"A gyorsítótár érvénytelenítése után a következő letöltésnél frissülnek a kérdések. A kérdések gyorsítótára automatikusan is érvénytelenül egy hét után, illetve azonnal, ha egy általad megválaszolt kérdésről kiderül, hogy már más is megoldotta."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Általában így néz ki:"</string>
@@ -1319,9 +1303,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Ikerház"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"Két családi ház egybeépítve"</string>
     <string name="quest_buildingType_terrace_description">"Hasonló, egybeépített családi házakból álló sor"</string>
 
     <!-- Fuzzy -->
@@ -2399,4 +2380,57 @@ szintek"</string>
     <string name="team_mode_choose_color">"Válasszon mindenki egy egyedi színt:"</string>
     <string name="team_mode_active">"Csapat mód aktív"</string>
     <string name="team_mode_deactivated">"Csapat mód kikapcsolva"</string>
+    <string name="quest_pitchLit_title">"Ki van világítva ez a sportpálya?"</string>
+    <string name="quest_pitchLit_title_track">"Ki van világítva ez a futópálya?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Jelzőlámpával szabályozott"</string>
+    <string name="undo_last">"Utolsó szerkesztés visszavonása"</string>
+    <string name="show_edit_history">"Szerkesztési előzmények megjelenítése"</string>
+    <string name="undo_confirm_title2">"Visszavonod a következő szerkesztést?"</string>
+    <string name="synced">"Szinkronizált"</string>
+    <string name="toast_undo_unavailable">"Ez a szerkesztés már szinkronizálásra került és nem visszavonható"</string>
+    <string name="quest_cycleway_value_separate">"a térképen külön szerepel"</string>
+    <string name="created_note_action_title">"Létrehozott megjegyzés"</string>
+    <string name="commented_note_action_title">"Kommentált megjegyzés"</string>
+    <string name="hid_action_description">"Elrejtetted"</string>
+    <string name="split_way_action_description">"Felosztottad a vonalat"</string>
+    <string name="deleted_poi_action_description">"Törötlted"</string>
+    <string name="added_tag_action_title">"%s hozzáadva"</string>
+    <string name="removed_tag_action_title">"%s eltávolítva"</string>
+    <string name="changed_tag_action_title">"Feltöltve ide: %s"</string>
+    <string name="pref_title_delete_cache">"Gyorsítótár törlése"</string>
+    <string name="pref_title_delete_cache_summary">"Ha úgy gondolod, néhány adat elavult"</string>
+    <string name="delete_confirmation">"Törlés"</string>
+    <string name="delete_cache_dialog_message">"Törlöd az összes letöltött térképadatot, beleértve a kérdéseket?
+Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap után automatikusan törlésre kerülnek."</string>
+    <string name="quest_shop_type_title">"Ez milyen bolt: %s?"</string>
+    <string name="quest_shop_type_title_no_name">"Ez milyen bolt?"</string>
+    <string name="pref_background_type_select">"Háttér kiválasztása"</string>
+    <string name="background_type_map">"Térkép"</string>
+    <string name="background_type_aerial_esri">"Légi felvétel (Esri)"</string>
+    <string name="quest_barrier_type_title">"Ez milyen típusú akadály?"</string>
+    <string name="quest_barrier_type_gate">"Kapu"</string>
+    <string name="quest_barrier_type_lift_gate">"Sorompó"</string>
+    <string name="quest_barrier_type_bollard">"Cövek(ek)"</string>
+    <string name="quest_barrier_type_chain">"Lánc"</string>
+    <string name="quest_barrier_type_rope">"Kötél"</string>
+    <string name="quest_barrier_type_wire_gate">"Drótkapu"</string>
+    <string name="quest_barrier_type_cattle_grid">"Állatok áthaladását megakadályozó rács"</string>
+    <string name="quest_barrier_type_block">"Nagy, nem mozdítható objektum"</string>
+    <string name="quest_barrier_jersey_barrier">"Beton szalagkorlát"</string>
+    <string name="quest_barrier_type_log">"Farönk"</string>
+    <string name="quest_barrier_type_kerb">"Járdaszegély"</string>
+    <string name="quest_barrier_type_height_restrictor">"Magas járműveket akadályozó"</string>
+    <string name="quest_barrier_full_height_turnstile">"Egész alakos forgókapu"</string>
+    <string name="quest_barrier_type_turnstile">"Forgókapu"</string>
+    <string name="quest_barrier_type_passage">"Átjáró falon/kerítések/egyeben"</string>
+    <string name="quest_barrier_type_debris_pile">"Törmelékhalom"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Szűk átjáró"</string>
+    <string name="quest_barrier_type_stile_ladder">"Létra átjáró"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Kerékpáros akadály"</string>
+    <string name="quest_barrier_type_kissing_gate">"Kettős kapu"</string>
+    <string name="quest_barrier_type_stepover">"Lépcsőn átjárható"</string>
+    <string name="quest_barrier_type_swing_gate">"Vízszintesen nyíló sorompó"</string>
+    <string name="quest_policeType_title">"Ez milyen típusú rendőrőrs?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Kettős kapuvá átalakítva"</string>
+    <string name="quest_stile_type_title">"Ez milyen típusú kerítés feletti átjáró?"</string>
 </resources>

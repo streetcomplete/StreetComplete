@@ -269,7 +269,7 @@
 &lt;p&gt;&lt;b&gt;직접적인 기여&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 먼저, 기여하는 법을 익히세요. StreetComplete를 이용하면 오픈스트리트맵에 직접적으로 기여할 수 있습니다.&lt;br/&gt;
-StreetComplete로 기여한 모든 것들이 바로 오픈스트리트맵에 추가됩니다. 제3자 앱의 개입은 없습니다. 이는 &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt;나 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt; 또한 마찬가지입니다.
+StreetComplete로 기여한 모든 것들이 바로 오픈스트리트맵에 추가됩니다. 제3자 앱의 개입은 없습니다.
 &lt;/p&gt;
 &lt;p&gt;
 오픈스트리트맵을 익명으로 편집하는 것은 불가능합니다. 따라서 오픈스트리트맵에 기여하려면 계정이 필요합니다. 즉, 여러분이 추가한 지물의 종류와 위치 등이 다른 사람에게 공개되고, 여러분의 이름으로 저작자 표기가 들어가게 됩니다.
@@ -672,7 +672,7 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
     <string name="quest_fireHydrant_type_pond">"호수형"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Github에서 &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;전체 목록&lt;/a&gt;을 확인하세요."</string>
+    <string name="credits_contributors">"Github에서 &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;전체 목록&lt;/a&gt;을 확인하세요."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"&lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 프로젝트&lt;/a&gt;에 들어가서 전체 목록을 확인하세요."</string>
@@ -848,17 +848,11 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
     <string name="quest_crossing_type_title">"이 횡단보도는 다음 중 어떤 횡단보도입니까?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"신호등 있는 횡단보도"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"도로에 표시가 없는 횡단보도"</string>
     <string name="compass_north_one_letter">"북"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"되돌리기"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"마지막 답변을 되돌리시겠습니까?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"망고스틴"</string>
@@ -1071,18 +1065,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"참고를 남기면 이 곳의 문제를 다른 기여자들이 알 수 있습니다. 지도를 움직여서 참고의 위치를 조정하세요."</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"퀘스트 캐시 삭제"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"너무 오래된 퀘스트가 많다고 생각할 때 사용하세요"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"삭제"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"캐시를 삭제하면 다음 번에 퀘스트를 다운로드할 때 퀘스트가 업데이트됩니다. 퀘스트 캐시는 1주일마다 자동으로 삭제되며, 당신이 해결한 퀘스트가 이미 다른 사람이 해결한 퀘스트라는 응답을 받았을 때에도 삭제됩니다."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"주로 다음과 같이 생겼습니다."</string>
@@ -1334,9 +1316,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"한쪽 벽면이 옆집과 붙어 있는 주택"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"2가구가 함께 사는 주택"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"비슷하게 생긴 1가구 집이 줄지어 있는 주택"</string>
@@ -2131,7 +2110,7 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="quest_existence_title">"이 지물이 아직도 여기 존재합니까? (%s)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_existence_name_title">"%1$s가 지금도 여기에 있습니까? (%2$s)"</string>
+    <string name="quest_existence_name_title">"%1$s  (%2$s) 가 지금도 여기에 있습니까?"</string>
     <string name="quest_tracktype_grade2a">"단단하지만 비포장임"</string>
     <string name="quest_tracktype_grade3a">"거의 단단함"</string>
     <string name="quest_generic_answer_does_not_exist">"존재하지 않습니다..."</string>
