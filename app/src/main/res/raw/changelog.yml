@@ -29,8 +29,6 @@ v32.0-alpha1: |
   <li>When you scan for quests manually, no cache will be used: You always get the most fresh data (#2554)</li>
   <li>When unable to fully upload pictures attached to a note due to a bad connection, the app will try again later (#2102)</li>
   </ul>
-  <h3>🛰️ Show aerial imagery</h3>
-  <p>You can now select to have aerial imagery instead of a map (#56, #2755), by @matkoniecz, @ENT8R</p>
   <h3>New Quests</h3>
   <ul>
   <li><i>Is this sport field lit?</i> (#2639, #2737), by @eginhard</li>
