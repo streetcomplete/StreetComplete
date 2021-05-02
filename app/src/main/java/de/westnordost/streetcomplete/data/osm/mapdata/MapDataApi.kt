@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.data.upload.QueryTooBigException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 
 /** Get and upload changes to map data */

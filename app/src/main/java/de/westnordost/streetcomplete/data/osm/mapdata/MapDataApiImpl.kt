@@ -14,8 +14,8 @@ import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
 import de.westnordost.osmapi.map.changes.DiffElement as OsmApiDiffElement
 
 import de.westnordost.osmapi.map.handler.MapDataHandler
+import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.data.upload.QueryTooBigException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import java.time.Instant
 
