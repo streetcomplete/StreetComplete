@@ -271,7 +271,7 @@
 &lt;p&gt;&lt;b&gt;直接の貢献&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 まず、このアプリで OpenStreetMap に実際に、直接貢献していることを理解してください。&lt;br/&gt;
-このアプリであなたが提供するものはすべて地図に直接追加され、&lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; や &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt; の場合のように、アプリと OSM インフラストラクチャーの間にサードパーティは存在しません
+このアプリであなたが提供するものはすべて地図に直接追加され の場合のように、アプリと OSM インフラストラクチャーの間にサードパーティは存在しません
 &lt;/p&gt;
 &lt;p&gt;
 OpenStreetMap を匿名で編集することはできないため、変更は OSM ユーザーアカウントで行います。これは、日付、コンテンツ、および暗黙的に変更した場所が openstreetmap ウェブサイトに公開され、あなたのアカウントに帰属することを意味します。
@@ -676,7 +676,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_fireHydrant_type_pond">"池"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"すべてのリストは &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; を参照してください。"</string>
+    <string name="credits_contributors">"すべてのリストは &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; を参照してください。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"すべてのリストは &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor のプロジェクト&lt;/a&gt; を参照してください。"</string>
@@ -852,17 +852,11 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_crossing_type_title">"この交差点はどのような種類ですか?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"信号機のある交差点"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"道路標示のない交差点"</string>
     <string name="compass_north_one_letter">"北"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"元に戻す"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"次の最後の回答を元に戻しますか?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"マンゴスチン"</string>
@@ -1075,18 +1069,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"ここにメモを残して、他のマッパーに問題を知らせることができます。 地図を移動してノートの位置を調整してください:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"探索キャッシュを削除する"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"一部の探索が古くなっていると思われる場合に役立ちます"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"削除する"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"キャッシュを削除すると、次回ダウンロード時に探索が更新されます。 探索キャッシュは1週間後に自動的に削除されます。解決した探索が他の誰かによってすでに回答されていると判明した場合にもすぐに削除されます。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"通常はこのように見えます:"</string>

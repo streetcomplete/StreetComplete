@@ -271,7 +271,7 @@
 &lt;p&gt;&lt;b&gt;Contribucions directes&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 En primer lloc, tingueu present que amb aquesta aplicació es fan aportacions efectives i directes a l'OpenStreetMap.&lt;br/&gt;
-Qualsevol cosa que contribuïu amb aquesta aplicació s'afegeix directament al mapa, no hi ha una tercera part entre l'aplicació i la infraestructura de l'OSM, com és el cas de &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort &lt;/a&gt;.
+Qualsevol cosa que contribuïu amb aquesta aplicació s'afegeix directament al mapa, no hi ha una tercera part entre l'aplicació i la infraestructura de l'OSM.
 &lt;/p&gt;
 &lt;p&gt;
 L'edició anònim de l'OpenStreetMap no és possible, de manera que qualsevol canvi que feu es fa amb el vostre compte d'usuari d'OSM, això també significa que els canvis en el mapa són visibles públicament al lloc web de l'OpenStreetMap.
@@ -674,7 +674,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_fireHydrant_type_pond">"Estany"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Vegeu la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;llista completa de col·laboradors a GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Vegeu la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;llista completa de col·laboradors a GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Vegeu el &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projecte a POEditor&lt;/a&gt; per la llista completa."</string>
@@ -850,17 +850,11 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_crossing_type_title">"Quina classe de encreuament és aquest?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Encreuament amb semafór"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Encreuament sense senyals horitzontals"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desfés"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Voleu desfer la darrera resposta?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostà"</string>
@@ -1073,18 +1067,6 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Podeu deixar una nota per a ajudar altres col·laboradors a saber d'un afer aquí. Ajusteu la posició de la nota movent-la al mapa:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Invalida la memòria cau de missions"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Útil si penseu que algunes missions estan sense actualitzar"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Invalida"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Si netegeu la memòria cau, les missions s'actualitzaran la propera vegada que es baixin. La memòria cau de missions s'invalida automàticament després d'una setmana i de forma immediata si algú altre ja l'ha resolta."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Habitualment sembla això:"</string>
@@ -1340,9 +1322,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Casa aparellada"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"dues cases unifamiliars"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"un filera de cases unifamiliars similars"</string>

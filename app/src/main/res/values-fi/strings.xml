@@ -176,7 +176,7 @@
 &lt;p&gt;&lt;b&gt;Suorat työpanokset&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Ensimmäiseksi, on ymmärrettävä, että olet tekemässä oikeita ja suoria täydennöksiä OpenStreetMapiin.&lt;br/&gt;
-Kaikki mitä lisäät tässä sovelluksessa lisätään suoraan kartalle, välissä ei ole mitään kolmansia osapuolia välitettäessä tietoja OpenStreetMapiin, samoin kuin tapauksissa: &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; tai &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Kaikki mitä lisäät tässä sovelluksessa lisätään suoraan kartalle, välissä ei ole mitään kolmansia osapuolia välitettäessä tietoja OpenStreetMapiin.
 &lt;/p&gt;
 &lt;p&gt;
 OpenStreetMapin muokkaaminen anonyymisti ei ole mahdollista, joten kaikki muokkaukset tehdään tililläsi. Tämä tarkoittaa että muokkauksen päivä, sisältö ja sijainti näkyvät julkisesti openstreetmap -verkkosivulla ja määritettävissä tilillesi.
@@ -479,7 +479,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_fireHydrant_type_pond">"Lammikko"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Katso &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;täydellinen lista GitHub:issa&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Katso &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;täydellinen lista GitHub:issa&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Katso &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekti POEditorissa&lt;/a&gt; nähdäksesi listan kokonaisuudessaan."</string>
@@ -617,17 +617,11 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_crossing_type_title">"Minkälainen ylityspaikka tämä on?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Ylityspaikassa liikennevalot"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Ylityspaikassa ei ole tiemerkintöjä"</string>
     <string name="compass_north_one_letter">"P"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Kumoa"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Kumoa seuraava viimeisin vastaus?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostaneja"</string>
@@ -816,18 +810,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Voit jättää ilmoituksen tänne muiden selvitettäväksi. Kohdista sijaintia siirtämällä karttaa:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Viallinen kysymys välimuistissa"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Hyödyllinen, jos ajattelet osan kysymyksistä vanhentuneen"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Tyhjennä"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Välimuistin tyhjennys johtaa siihen, että seuraavalla kerralla kysymykset ladataan uudelleen. Kysymysten välimuisti tyhjennetään automaattisesti viikon välein ja välittömästi, kun valittavissa olevaan kysymykseen on joku toinen jo vastannut. "</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Normaalisti näyttää tältä:"</string>
@@ -1048,7 +1030,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Paritalo"</string>
-    <string name="quest_buildingType_semi_detached_description">"rakennus, jossa kaksi asuinhuoneistoa jakavat seinän"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"rivi samankaltaisia yhden perheen koteja"</string>
@@ -1982,7 +1963,7 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_parkingType_street_side">"Pysäköinti tien varrella"</string>
     <string name="quest_parkingType_lane">"Pysäköinti tiellä"</string>
     <string name="quest_existence_title">"Onko tämä vielä täällä? (%s)"</string>
-    <string name="quest_existence_name_title">"Onko %1s vielä täällä? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Onko %1s (%2$s) vielä täällä?"</string>
     <string name="quest_tracktype_grade2a">"Kiinteä mutta päällystämätön"</string>
     <string name="quest_tracktype_grade3a">"Enimmäkseen kiinteä"</string>
     <string name="quest_generic_answer_does_not_exist">"Ei olemassa..."</string>

@@ -220,7 +220,7 @@
 &lt;p&gt;&lt;b&gt; مشارکت مستقیم&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 ابتدا بدانید که شما با استفاده از این برنامه، بطور مستقیم به نقشه‌متن‌باز کمک می‌کنید. &lt;br/&gt;
-هر اقدامی که شما در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت اوپن‌استریت‌مپ وجود ندارد (بر خلاف &lt;a href=\"https://wheelmap.org\"&gt; wheelmap.org &lt;/a&gt; یا &lt;a href=\"http://www.kort.ch\"&gt; کورت &lt;/a&gt;
+هر اقدامی که شما در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت اوپن‌استریت‌مپ وجود ندارد
 &lt;/p&gt;
 &lt;p&gt;
 ویرایش نقشه متن‌باز به صورت ناشناس امکان‌پذیر نیست، بنابراین هر تغییری که ایجاد می کنید با  حساب کاربری OSM شما ذخیره می شود. این بدان معنی است که تاریخ، محتوا و به طور کلی مکان تغییرات شما به طور عمومی در وبگاه OSM قابل مشاهده است و در حساب کاربری شما ذخیره می‌شود.
@@ -622,7 +622,7 @@
     <string name="quest_fireHydrant_type_pond">"مخزنی"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"این را بنگرید &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;سیاهه کامل روی GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"این را بنگرید &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;سیاهه کامل روی GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"این را بنگرید &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project on POEditor&lt;/a&gt; برای سیاهه کامل"</string>
@@ -798,17 +798,11 @@
     <string name="quest_crossing_type_title">"این تقاطع از چه نوعی چیست؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"گذرگاه عابر دارای چراغ‌ راهنمایی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"گذرگاه عابر بدون خط‌ کشی"</string>
     <string name="compass_north_one_letter">"شمال"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"برگشت"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"برگشت برای مشاهده آخرین پاسخ؟"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"ترگیل"</string>
@@ -1023,18 +1017,6 @@
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"شما می توانید یک یادداشت ایجاد کنید تا نقشه‌کش های دیگر که اطلاعاتی در این مورد دارند آنرا تکمیل کنند . محل یادداشت را با جابجایی نقشه تغییر دهید:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"خطای جستجوی حافظه‌پنهان"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"بکار ببرید، اگر فکر می کنید که برخی از جُستارها منسوخ شده‌اند"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"ابطال"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"حذف حافظه‌پنهان باعث می شود که جُستار‌های بعدی بار دیگر بارگیری شوند. حافظه‌پنهان جُستارها پس از یک هفته و بلافاصله پس از آنکه یک جُستار پاسخ داده شده توسط شما ، بار دیگر توسط شخص دیگری پاسخ داده شود، به طور خودکار باطل می گردد."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"اغلب اینگونه به نظر می رسد:"</string>
@@ -1289,9 +1271,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"خانه دو تکه"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"یک جفت خانه مشابه هم"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"ردیف خطی از خانه های مشابه هم"</string>
@@ -2352,4 +2331,58 @@
     <string name="team_mode_choose_color">"اکنون همه افراد گروه شما رنگ منحصر به فردی را انتخاب می‌کنند:"</string>
     <string name="team_mode_active">"حالت گروهی فعال است"</string>
     <string name="team_mode_deactivated">"حالت گروهی عیرفعال است"</string>
+    <string name="quest_pitchLit_title">"آیا این زمین ورزشی روشنایی دارد؟"</string>
+    <string name="quest_pitchLit_title_track">"آیا این محوطه ورزشی روشنایی دارد؟"</string>
+    <string name="quest_crossing_type_signals_controlled">"کنترل عبور و مرور با چراغ های راهنمایی"</string>
+    <string name="undo_last">"آخرین ویرایش را واگرد کنید"</string>
+    <string name="show_edit_history">"نمایش تاریخ ویرایش"</string>
+    <string name="undo_confirm_title2">"ویرایش زیر را واگرد کنید؟"</string>
+    <string name="synced">"همگام سازی شده"</string>
+    <string name="toast_undo_unavailable">"این ویرایش قبلاً همگام سازی شده است و قابل واگرد نیست"</string>
+    <string name="quest_cycleway_value_separate">"جداگانه روی نقشه نمایش داده می شود"</string>
+    <string name="created_note_action_title">"یادداشت ایجاد شد"</string>
+    <string name="commented_note_action_title">"یادداشت نظر داده شده"</string>
+    <string name="hid_action_description">"پنهانش کردی"</string>
+    <string name="split_way_action_description">"راه را تقسیم کردید"</string>
+    <string name="deleted_poi_action_description">"شما آن را حذف کردید"</string>
+    <string name="added_tag_action_title">"%s اضافه شد"</string>
+    <string name="removed_tag_action_title">"%s حذف شد"</string>
+    <string name="changed_tag_action_title">"به %s به روزرسانی شد"</string>
+    <string name="pref_title_delete_cache">"حافظه پنهان را حذف کنید"</string>
+    <string name="pref_title_delete_cache_summary">"آیا فکر می کنید برخی از داده ها منسوخ شده اند"</string>
+    <string name="delete_confirmation">"حذف"</string>
+    <string name="delete_cache_dialog_message">"تمام داده‌های نقشه بارگیری شده، از جمله جُستارها، حذف شوند؟
+داده ها پس از %1$s روز به‌روز می‌شوند و داده های استفاده نشده پس از %2$s روز به طور خودکار حذف می گردند."</string>
+    <string name="quest_shop_type_title">"%s چه نوع فروشگاهی است؟"</string>
+    <string name="quest_shop_type_title_no_name">"این چه نوع مغازه ای است؟"</string>
+    <string name="pref_background_type_select">"نوع پس زمینه را انتخاب کنید"</string>
+    <string name="background_type_map">"نقشه"</string>
+    <string name="background_type_aerial_esri">"هوایی (توسط Esri)"</string>
+    <string name="quest_barrier_type_title">"این چه نوع مانعی است؟"</string>
+    <string name="quest_barrier_type_gate">"دروازه"</string>
+    <string name="quest_barrier_type_lift_gate">"راهبند خودرویی"</string>
+    <string name="quest_barrier_type_bollard">"ستونی"</string>
+    <string name="quest_barrier_type_chain">"زنجیری"</string>
+    <string name="quest_barrier_type_rope">"طنابی"</string>
+    <string name="quest_barrier_type_wire_gate">"بخش سیم متحرک"</string>
+    <string name="quest_barrier_type_cattle_grid">"شبکه از راه رفتن دامها جلوگیری می کند"</string>
+    <string name="quest_barrier_type_block">"جسم بزرگ بی حرکت"</string>
+    <string name="quest_barrier_jersey_barrier">"دیوار نیوجرسی"</string>
+    <string name="quest_barrier_type_log">"کُنده"</string>
+    <string name="quest_barrier_type_kerb">"جدول"</string>
+    <string name="quest_barrier_type_height_restrictor">"دیوار مرتفع"</string>
+    <string name="quest_barrier_full_height_turnstile">"نرده گردان تمام قد"</string>
+    <string name="quest_barrier_type_turnstile">"نرده گردان"</string>
+    <string name="quest_barrier_type_passage">"عبور از دیوار / حصار / غیره"</string>
+    <string name="quest_barrier_type_debris_pile">"انبوهی از آوار"</string>
+    <string name="quest_barrier_type_stile_squeezer">"نرده را کنار بزنید"</string>
+    <string name="quest_barrier_type_stile_ladder">"نرده پلکان"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"مانع دوچرخه"</string>
+    <string name="quest_barrier_type_kissing_gate">"دروازه لمسی"</string>
+    <string name="quest_barrier_type_stepover">"نرده قدم به قدم"</string>
+    <string name="quest_barrier_type_swing_gate">"نوار افقی"</string>
+    <string name="quest_policeType_title">"این چه نوع پاسگاهی است؟"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"تبدیل به دروازه لمسی"</string>
+    <string name="quest_stile_type_title">"این چه نوع نرده ای است؟"</string>
+    <string name="quest_buildingType_semi_detached_description2">"خانه (های) تک واحده"</string>
 </resources>

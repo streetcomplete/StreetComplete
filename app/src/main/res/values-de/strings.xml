@@ -8,7 +8,7 @@
     <string name="pref_category_communication">"Verbindung"</string>
     <string name="pref_category_display">"Anzeige"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Größe des Caches für die Karte auf dem externen Speicher (in MB)"</string>
+    <string name="pref_tilecache_size_message">"Größe des Karten-Zwischenspeichers auf dem externen Speicher (in MB)"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Alle Notizen anzeigen"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Notizen dennoch anzeigen"</string>
 
@@ -94,11 +94,11 @@
     <string name="quest_roofShape_answer_many">"Es hat mehrere unterschiedliche"</string>
     <string name="map_btn_zoom_out">"Verkleinern"</string>
     <string name="map_btn_zoom_in">"Vergrößern"</string>
-    <string name="privacy_html">"&lt;p&gt;Ah, jemand dem Datenschutz wichtig ist, schön! Ich denke, dass ich nur gute Nachrichten für dich habe:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Ah, jemand, dem Datenschutz wichtig ist, schön! Ich denke, dass ich nur gute Nachrichten für dich habe:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte Mitwirkung&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Zuallererst solltest du wissen, dass du mit dieser App unmittelbare Beiträge zur OpenStreetMap leistest.&lt;br/&gt;
-Alle Aufgaben, die du mit dieser App löst, werden direkt auf die Karte übertragen. Es gibt keine Instanz zwischen der App und der OSM-Infrastruktur, wie es etwa mit &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; oder &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt; der Fall ist.
+Alle Aufgaben, die du mit dieser App löst, werden direkt auf die Karte übertragen. Es gibt keine Instanz zwischen der App und der OSM-Infrastruktur.
 &lt;/p&gt;
 &lt;p&gt;
 Es ist nicht möglich, die OpenStreetMap anonym zu bearbeiten, das heißt, jede Änderung, die du machst, wird deinem OSM-Benutzerkonto zugeordnet. Das bedeutet, dass die Zeit, der Inhalt und implizit der Ort der Änderungen öffentlich auf der OpenStreetMap-Website sichtbar sind und deinem Benutzerkonto zugeordnet werden können.
@@ -209,7 +209,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße %s hier?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit sieht ungewöhnlich aus."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Sicher, dass kein Schild vorhanden ist?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ende der Straße nachgeschaut?
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Hast du am anderen Ende der Straße nachgeschaut?
 Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgehobenen Abschnitt gelten, gelten die gesetzlichen Geschwindigkeitsbegrenzungen."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, kein Schild"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Innerorts gelten andere Geschwindigkeitsbegrenzungen als außerorts."</string>
@@ -239,7 +239,7 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Ist der Name %s abgekürzt?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Gibt es einen Wickeltisch in dieser Toilette?"</string>
     <string name="quest_baby_changing_table_title">"Gibt es einen Wickeltisch in %s?"</string>
-    <string name="quest_recycling_type_title">"Was für eine Recycling-Einrichtung ist dies?"</string>
+    <string name="quest_recycling_type_title">"Was für eine Recycling-Einrichtung ist das?"</string>
     <string name="recycling_centre">"Wertstoffhof"</string>
     <string name="overground_recycling_container">"Container"</string>
     <string name="underground_recycling_container">"Unterirdischer Container"</string>
@@ -253,13 +253,13 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_streetName_cantType_description">"Wenn du eine Standardtastatur verwendest, kannst du wahrscheinlich einfach das Tastaturlayout für die benötigte Sprache in den Tastatureinstellungen aktivieren.
 
 Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beliebte Tastaturen, die mehrere Sprachen unterstützen, sind Google Gboard, SwiftKey Keyboard und Multiling O Keyboard."</string>
-    <string name="quest_streetName_menuItem_nolanguage">"(unspezifiziert)"</string>
+    <string name="quest_streetName_menuItem_nolanguage">"(nicht angegeben)"</string>
     <string name="quest_fireHydrant_type_title">"Was für eine Art Hydrant ist hier?"</string>
     <string name="quest_fireHydrant_type_pillar">"Überflur"</string>
     <string name="quest_fireHydrant_type_underground">"Unterflur"</string>
     <string name="quest_fireHydrant_type_wall">"Wandanschluss"</string>
     <string name="quest_fireHydrant_type_pond">"Drucklos"</string>
-    <string name="credits_contributors">"Siehe die &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;komplette Liste auf GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Siehe die &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;komplette Liste auf GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"Für eine vollständige Liste, siehe das &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;Projekt auf POEditor&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Übersetzungen"</string>
     <string name="credits_contributors_title">"Programmierbeiträge"</string>
@@ -327,15 +327,13 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_way_lit_road_title">"Ist dieser Straßenabschnitt beleuchtet?"</string>
     <string name="quest_way_lit_automatic">"per Bewegungsmelder"</string>
     <string name="quest_way_lit_24_7">"sogar Tag und Nacht beleuchtet"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht scannen. Zoome weiter herein oder kippe die Karte weniger"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht scannen. Zoome weiter herein oder kippe die Karte weniger."</string>
     <string name="quest_crossing_type_title">"Welche Art von Fußgängerüberweg ist das?"</string>
-    <string name="quest_crossing_type_signals">"Kreuzung mit Ampeln"</string>
     <string name="quest_crossing_type_unmarked">"Kreuzung ohne Markierungen"</string>
 
     <!-- Shouldn't this be translatable="false"? -->
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Rückgängig machen"</string>
-    <string name="undo_confirm_title">"Die folgende Antwort rückgängig machen?"</string>
     <string name="produce_mangosteen">"Mangostane"</string>
     <string name="produce_tomatoes">"Tomaten"</string>
     <string name="produce_areca_nuts">"Betelnüsse"</string>
@@ -408,10 +406,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="map_btn_create_note">"Neue Notiz erstellen"</string>
     <string name="create_new_note_unprecise">"Zoome weiter herein, um eine Notiz zu erstellen"</string>
     <string name="create_new_note_description">"Erstelle hier eine Notiz, um anderen Mappern ein Problem zu melden. Bewege die Karte, um die Position der Notiz anzupassen:"</string>
-    <string name="pref_title_quests_invalidation">"Aufgabencache ungültig machen"</string>
-    <string name="pref_title_quests_invalidation_summary">"Nützlich, wenn du denkst, dass einige Aufgaben veraltet sind"</string>
-    <string name="invalidate_confirmation">"Ungültig machen"</string>
-    <string name="invalidation_dialog_message">"Wenn der Cache ungültig gemacht wird, werden die Aufgaben das nächste Mal, wenn sie jeweils heruntergeladen werden, aktualisiert. Der Aufgabencache wird automatisch nach einer Woche ungültig gemacht, und sofort, falls sich herausstellt, dass eine Aufgabe, die du beantwortet hast, schon von jemand anderem beantwortet wurde."</string>
     <string name="quest_generic_looks_like_this">"Sieht normalerweise so aus:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
@@ -485,7 +479,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_generic_hasFeature_no_leave_note">"Nein (Notiz hinterlassen)"</string>
     <string name="pref_quests_reset">"Sowohl die Aktivierung als auch die Priorität zurücksetzen?"</string>
     <string name="quest_buildingType_title2">"Als was wurde dieses Gebäude errichtet?"</string>
-    <string name="quest_generic_item_invalid_value">"Bitte triff eine genauere Auswahl"</string>
+    <string name="quest_generic_item_invalid_value">"Bitte triff eine genauere Auswahl."</string>
     <string name="quest_buildingType_answer_multiple_types">"Hat mehrere Bestimmungen"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Wähle einfach die Hauptbestimmung des Gebäudes. Wenn sich zum Beispiel im Erdgeschoss Läden befinden, aber darüber Wohnungen sind, ist es trotzdem ein Mehrfamilienhaus."</string>
     <string name="quest_buildingType_answer_construction_site">"Wird noch errichtet"</string>
@@ -500,7 +494,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <!-- Doppelhaushälfte ist der korrekte Ausdruck, es gab nachfragen OSM Dach Gruppe -->
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Doppelhaus(-hälfte)"</string>
-    <string name="quest_buildingType_semi_detached_description">"zwei aneinandergebaute Einfamilienhäuser"</string>
     <string name="quest_buildingType_terrace_description">"eine lange Reihe aus ähnlichen Einfamilienhäusern"</string>
     <string name="quest_buildingType_hotel">"Hotelgebäude"</string>
     <string name="quest_buildingType_dormitory">"Wohnheim"</string>
@@ -650,7 +643,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_generic_answer_differs_along_the_way">"Entlang des Weges unterschiedlich…"</string>
     <string name="quest_split_way_description">"Wenn es entlang des Weges unterschiedlich ist, ist der erste Schritt, den Weg aufzuspalten. Danach kann die Aufgabe für jeden Teil davon getrennt beantwortet werden.
 Jetzt aufspalten?"</string>
-    <string name="quest_split_way_tutorial">"Drücke auf den Weg, um ihn an den Punkt(en), wo die Antwort unterschiedlich ist, aufzuspalten. Versuche, möglichst genau zu sein, du kannst wie immer frei hereinzoomen."</string>
+    <string name="quest_split_way_tutorial">"Drücke auf den Weg, um ihn an den Punkt(en), wo die Antwort unterschiedlich ist, aufzuspalten. Versuche, möglichst genau zu sein. Du kannst wie immer frei hineinzoomen."</string>
     <string name="quest_split_way_too_imprecise">"Bitte zoome weiter herein"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Das sind ganz schön viele Punkte, an denen aufgespalten werden soll. Es gibt die Möglichkeit, den Weg auch später noch weiter aufzuspalten."</string>
     <string name="quest_footwayPartSurface_title">"Welche Oberfläche hat der Fußweg hier?"</string>
@@ -729,7 +722,7 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="achievements_empty">"Du hast bisher noch keine Erfolge"</string>
     <string name="links_empty">"Du hast noch keine Links"</string>
     <string name="quests_empty">"Du hast noch keine Antworten veröffentlicht"</string>
-    <string name="unsynced_quests_description">"plus %d noch nicht veröffentlichte Antworten"</string>
+    <string name="unsynced_quests_description">"plus %d noch nicht veröffentlichte Antworten."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du hast %d noch nicht veröffentlichte Antworten. Damit diese hochgeladen werden können, musst du dich anmelden."</string>
     <string name="user_quests_title">"Erledigte Aufgaben"</string>
     <string name="user_achievements_title">"Erfolge"</string>
@@ -756,7 +749,7 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="link_mapy_tactile_description">"Blindenleitsystem-Karten für sehbehinderte Menschen"</string>
     <string name="link_josm_description">"Vollwertiger Desktop-OSM-Editor. Das Werkzeug der Wahl für Stammnutzer."</string>
     <string name="link_vespucci_description">"Erweiterter OSM-Editor für Android"</string>
-    <string name="link_ideditor_description">"Einfacher OSM-Editor für Webbrowser, optimiert für Desktop oder große Tablets"</string>
+    <string name="link_ideditor_description">"Einfacher OSM-Editor für Webbrowser. Optimiert für Desktop oder große Tablets"</string>
     <string name="link_umap_description">"Erstelle Karten nach Maß und füge sie in eigene Seiten ein"</string>
     <string name="link_opnvkarte_description">"Eine Karte für ÖPNV-Routen und -Stopps"</string>
     <string name="link_pic4review_description">"Durch Ansehen von Bildern deiner Stadt zu OSM beitragen"</string>
@@ -889,8 +882,7 @@ Erfolge"</string>
     <string name="about_title_translate">"App übersetzen"</string>
 
     <!-- Was genau wird bei %1$s angezeigt ? -->
-    <string name="about_description_translate">"%1$s ist zu %2$d%% übersetzt
-"</string>
+    <string name="about_description_translate">"%1$s ist zu %2$d%% übersetzt"</string>
     <string name="quest_oneway2_title">"Ist dies eine Einbahnstraße? In welche Richtung?"</string>
     <string name="quest_oneway2_dir">"Einbahnstraße in diese Richtung"</string>
     <string name="quest_oneway2_no_oneway">"Keine Einbahnstraße"</string>
@@ -966,7 +958,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_parkingType_street_side">"Parkbuchten"</string>
     <string name="quest_parkingType_lane">"Parken auf der Straße"</string>
     <string name="quest_existence_title">"Existiert das hier noch? (%s)"</string>
-    <string name="quest_existence_name_title">"Existiert %1$s hier noch? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Existiert %1$s (%2$s) hier noch?"</string>
     <string name="quest_tracktype_grade2a">"Unbefestigt, aber fest"</string>
     <string name="quest_tracktype_grade3a">"Größtenteils fest"</string>
     <string name="quest_generic_answer_does_not_exist">"Existiert nicht…"</string>
@@ -1017,4 +1009,60 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="team_mode_choose_color">"Jetzt wählen alle in eurer Gruppe eine jeweils eigene Farbe:"</string>
     <string name="team_mode_active">"Team-Modus ist aktiv"</string>
     <string name="team_mode_deactivated">"Team-Modus deaktiviert"</string>
+    <string name="quest_pitchLit_title">"Ist dieser Sportplatz beleuchtet?"</string>
+    <string name="quest_pitchLit_title_track">"Ist diese Rennbahn beleuchtet?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Mit Ampeln geregelte Kreuzung"</string>
+    <string name="undo_last">"Letzte Bearbeitung rückgängig machen"</string>
+    <string name="show_edit_history">"Bearbeitungshistorie anzeigen"</string>
+    <string name="undo_confirm_title2">"Folgende Bearbeitung rückgängig machen?"</string>
+    <string name="synced">"Synchronisiert"</string>
+    <string name="toast_undo_unavailable">"Diese Bearbeitung wurde bereits synchronisiert und kann nicht rückgängig gemacht werden"</string>
+    <string name="quest_cycleway_value_separate">"auf Karte separat abgebildet"</string>
+    <string name="created_note_action_title">"Notiz erstellt"</string>
+    <string name="commented_note_action_title">"Notiz kommentiert"</string>
+    <string name="hid_action_description">"Versteckt von dir"</string>
+    <string name="split_way_action_description">"Weg von dir aufgespalten"</string>
+    <string name="deleted_poi_action_description">"Gelöscht von dir"</string>
+    <string name="added_tag_action_title">"%s hinzugefügt"</string>
+    <string name="removed_tag_action_title">"%s entfernt"</string>
+    <string name="changed_tag_action_title">"Geändert zu %s"</string>
+    <string name="pref_title_delete_cache">"Zwischenspeicher löschen"</string>
+    <string name="pref_title_delete_cache_summary">"Wenn du denkst, dass Daten nicht aktuell sind"</string>
+    <string name="delete_confirmation">"Löschen"</string>
+    <string name="delete_cache_dialog_message">"Alle heruntergeladenen Kartendaten löschen, einschließlich Aufgaben?
+Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %2$s Tagen automatisch gelöscht."</string>
+    <string name="quest_shop_type_title">"Was für ein Laden ist %s?"</string>
+    <string name="quest_shop_type_title_no_name">"Was für ein Laden ist das?"</string>
+    <string name="pref_background_type_select">"Hintergrund auswählen"</string>
+    <string name="background_type_map">"Karte"</string>
+    <string name="background_type_aerial_esri">"Luftbild (Esri)"</string>
+    <string name="quest_barrier_type_title">"Was für eine Barriere ist das?"</string>
+    <string name="quest_barrier_type_gate">"Tor"</string>
+    <string name="quest_barrier_type_lift_gate">"Schranke"</string>
+    <string name="quest_barrier_type_bollard">"Poller / Pfosten"</string>
+    <string name="quest_barrier_type_chain">"Kette"</string>
+    <string name="quest_barrier_type_rope">"Seil"</string>
+    <string name="quest_barrier_type_wire_gate">"Entfernbarer Drahtzaun"</string>
+    <string name="quest_barrier_type_cattle_grid">"Weiderost"</string>
+    <string name="quest_barrier_type_block">"Großes, schweres Objekt"</string>
+
+    <!-- Vielleicht „Verkehrsbarriere“? Oder ist das zu allgemein? -->
+    <string name="quest_barrier_jersey_barrier">"Modulare Barriere"</string>
+    <string name="quest_barrier_type_log">"Baumstamm"</string>
+    <string name="quest_barrier_type_kerb">"Bordstein"</string>
+    <string name="quest_barrier_type_height_restrictor">"Höhenbeschränkung"</string>
+    <string name="quest_barrier_full_height_turnstile">"Mannshohes Drehkreuz"</string>
+    <string name="quest_barrier_type_turnstile">"Drehkreuz"</string>
+    <string name="quest_barrier_type_passage">"Lücke in Mauer/Zaun/etc."</string>
+    <string name="quest_barrier_type_debris_pile">"Erdwall"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Enger Durchgang"</string>
+    <string name="quest_barrier_type_stile_ladder">"Leitertreppe"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Umlaufgitter"</string>
+    <string name="quest_barrier_type_kissing_gate">"Kissing Gate"</string>
+    <string name="quest_barrier_type_stepover">"Zauntritt"</string>
+    <string name="quest_barrier_type_swing_gate">"Drehschranke"</string>
+    <string name="quest_policeType_title">"Was für eine Polizeistation ist das?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Durch ein Kissing Gate ersetzt"</string>
+    <string name="quest_stile_type_title">"Was für ein Zauntritt ist das?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"Benachbart Einfamilienhaus(en)"</string>
 </resources>

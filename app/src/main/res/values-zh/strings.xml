@@ -271,7 +271,7 @@
 &lt;p&gt;&lt;b&gt;数据传输&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 首先，通过此APP，您可以帮助完善 OpenStreetMap。&lt;br/&gt;
-您在此APP上所提交的所有数据，均将被直接添加至 OpenStreetMap，此 APP 和 OpenStreetMap 之间不会有任何第三方介入，例如 &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
+您在此APP上所提交的所有数据，均将被直接添加至 OpenStreetMap，此 APP 和 OpenStreetMap 之间不会有任何第三方介入。
 &lt;/p&gt;
 &lt;p&gt;
 OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号。您在此 APP 中作出的数据贡献都会在 OpenStreetMap 上公开。
@@ -674,7 +674,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_fireHydrant_type_pond">"池塘"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"在 &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; 上浏览完整列表。"</string>
+    <string name="credits_contributors">"在 &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; 上浏览完整列表。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 项目页&lt;/a&gt; 上浏览完整列表。"</string>
@@ -850,17 +850,11 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_crossing_type_title">"这是哪一种交叉口？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"有红绿灯的路口"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"无道路标记的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"撤销"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"复原上一个回答？"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"山竹"</string>
@@ -1073,18 +1067,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"你可以留下笔记，让其他图客知道这边有问题。移动地图来调整注解标注的位置："</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"无效的任务缓存"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"如果你觉得有些任务已经过期的话，这个会有用"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"无效"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"无效化缓存导致需要在下载时更新任务。一周之后或是任务已经解决回答，任务缓存自动无效。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"通常长得像这样子："</string>
@@ -1337,9 +1319,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"半独栋房屋"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"两个单一家庭房屋"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"一排单一家庭的房屋"</string>

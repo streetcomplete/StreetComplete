@@ -271,7 +271,7 @@
 &lt;p&gt;&lt;b&gt;Contribución directas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Punto número un, con esta aplicación estás a enviar contribucións directas e totalmente reais ó OpenStreetMap.&lt;br/&gt;
-Calquera contribución realizada con esta aplicación engádese de xeito directo ó mapa sen ningún intermediario entre a aplicación e a infraestrutura do OSM, ó contrario do que ocorre en proxectos coma &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; ou &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Calquera contribución realizada con esta aplicación engádese de xeito directo ó mapa sen ningún intermediario entre a aplicación e a infraestrutura do OSM.
 &lt;/p&gt;
 &lt;p&gt;
 Non se poden contribuír datos de xeito anónimo ó OpenStreetMap, co que calquera mudanza que fagas será ca túa propia conta do usuario no OSM, polo que aparecerán de xeito público co teu nome na web.
@@ -675,7 +675,7 @@ Pero lembra que sempre podes descarregar aplicacións de teclado diferentes dend
     <string name="quest_fireHydrant_type_pond">"Lagoa"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Bótalle unha ollada á &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;listaxe enteira dos contribuíntes no GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Bótalle unha ollada á &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;listaxe enteira dos contribuíntes no GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Bótalle unha ollada ó &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proxecto no POEditor&lt;/a&gt; para obte-la listaxe completa."</string>
@@ -851,17 +851,11 @@ Pero lembra que sempre podes descarregar aplicacións de teclado diferentes dend
     <string name="quest_crossing_type_title">"Que tipo de cruzamento é?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Cruzamento sinalizado con semáforo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruzamento sen sinalizar"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desfacer"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Desexas desface-la última pregunta respostada?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostán"</string>
@@ -1074,18 +1068,6 @@ Pero lembra que sempre podes descarregar aplicacións de teclado diferentes dend
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Podes deixar unha nota para que outros contribuíntes teñan en conta o problema. Axusta a súa localización movendo o mapa: "</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Invalidar caché das tarefas"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Moi útil para poñer ó día as tarefas vellas"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Invalidar"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Ó invalidares a caché obrigarás a que as tarefas vólvanse a descarregar de novo e estén ó día. Pensa que isto xa se fai de semana en semana e cando alguén xa respostara ás mesmas cuestións."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Adoita semellarse a isto:"</string>
@@ -1340,9 +1322,6 @@ Por exemplo 1,3 ou 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Casa semi-adosada"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"par de vivendas unifamiliares"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"unha ringleira de vivendas adosadas unifamiliares"</string>
@@ -2379,7 +2358,7 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_parkingType_street_side">"Aparcadoiro ao carón da estrada"</string>
     <string name="quest_parkingType_lane">"Liña de aparcadoiro"</string>
     <string name="quest_existence_title">"Isto segue aquí? (%s)"</string>
-    <string name="quest_existence_name_title">"%1$s segue aquí? (%2$s)"</string>
+    <string name="quest_existence_name_title">"%1$s (%2$s) segue aquí?"</string>
     <string name="quest_tracktype_grade2a">"Sólido pero sen pavimentar"</string>
     <string name="quest_tracktype_grade3a">"Maiormente sólido"</string>
     <string name="quest_generic_answer_does_not_exist">"Non existe..."</string>

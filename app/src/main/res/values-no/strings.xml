@@ -158,7 +158,7 @@
 &lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Merk først at du med denne appen gir faktiske, dirkete bidrag til OpenStreetMap.&lt;br/&gt;
-Alt du bidrar med blir lagt direkte til kartet, det er ikke noen tredjepart mellom appen og OSM-infrastrukturen, slik det for eksempel er med &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; og &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Alt du bidrar med blir lagt direkte til kartet, det er ikke noen tredjepart mellom appen og OSM-infrastrukturen.
 &lt;/p&gt;
 &lt;p&gt;
 Det er ikke mulig å redigere OpenStreetMap anonymt, så alle endringene dine blir gjort med OSM-brukerkontoen din. Dette medfører at tidspunktet, innholdet og implisitt stedet du var på blir synlig for alle på OpenStreetMap-nettstedet, og blir knyttet til brukerkontoen din.
@@ -522,7 +522,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_fireHydrant_type_pond">"Rør i innsjø"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Se &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Se &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Se på  &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;prosjektet på POEditor&lt;/a&gt; for en komplett liste."</string>
@@ -694,17 +694,11 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_crossing_type_title">"Hva slags overgang er dette?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Med trafikklys"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Uten veimarkeringer"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Angre"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Gjør om det forrige svaret?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostan"</string>
@@ -906,18 +900,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Du kan lage en merknad så andre kartleggere får vite om problemet. Juster merknadens posisjon ved å bevege på kartet:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Tøm mellomlager for oppdrag"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Nyttig dersom noen oppdrag er utdaterte"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Tøm"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Hvis du tømmer mellomlageret for oppdrag blir oppdragene oppdatert neste gang du laster de ned. Mellomlageret blir automatisk tømt etter en uke eller hvis et oppdrag du har løst viser seg å allerede være løst av noen andre."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Ser vanligvis slik ut:"</string>
@@ -1170,9 +1152,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Tomannsbolig"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"Frittstående bolig for to husholdninger"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"En rekke med hus tett inntil hverandre"</string>
@@ -1888,7 +1867,7 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_parkingType_street_side">"Parkering ved siden av veien"</string>
     <string name="quest_parkingType_lane">"Parkering i veien"</string>
     <string name="quest_existence_title">"Er denne fortsatt her? (%s)"</string>
-    <string name="quest_existence_name_title">"Er %1$s fortsatt her? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Er %1$s (%2$s) fortsatt her?"</string>
     <string name="quest_tracktype_grade2a">"Fast, men ikke asfaltert"</string>
     <string name="quest_tracktype_grade3a">"Stort sett fast"</string>
     <string name="quest_generic_answer_does_not_exist">"Det eksisterer ikke..."</string>

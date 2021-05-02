@@ -272,7 +272,7 @@
 &lt;p&gt;&lt;b&gt; നേരിട്ടുള്ള സംഭാവനകൾ &lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 ആദ്യമായി, ഈ ആപ്ലിക്കേഷൻ ഉപയോഗിച്ച് നിങ്ങൾ ഓപ്പൺസ്ട്രീറ്റ്മാപ്പിലേക്ക് ക‍ൃത്യമായതും നേരിട്ടുള്ളതുമായ സംഭാവനകൾ നൽകുകയാണെന്ന് മനസ്സിലാക്കുക.&lt;br/&gt;
-ഈ അപ്ലിക്കേഷനിൽ നിങ്ങൾ സംഭാവന ചെയ്യുന്നതെന്തും മാപ്പിലേക്ക് നേരിട്ട് ചേർക്കുന്നു, അപ്ലിക്കേഷനും ഒ‌എസ്‌എം ഇൻഫ്രാസ്ട്രക്ചറിനുമിടയിൽ ഒരു മൂന്നാം കക്ഷിയില്ല,  &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; or &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;
+ഈ അപ്ലിക്കേഷനിൽ നിങ്ങൾ സംഭാവന ചെയ്യുന്നതെന്തും മാപ്പിലേക്ക് നേരിട്ട് ചേർക്കുന്നു, അപ്ലിക്കേഷനും ഒ‌എസ്‌എം ഇൻഫ്രാസ്ട്രക്ചറിനുമിടയിൽ ഒരു മൂന്നാം കക്ഷിയില്ല.
 &lt;/p&gt;
 &lt;p&gt;
 പേര് വെളിപ്പെടുത്താതെ ഓപ്പൺസ്ട്രീറ്റ്മാപ്പിൽ കൂട്ടിച്ചേർക്കൽ സാധ്യമല്ല, അതിനാൽ എന്തങ്കിലും മാറ്റങ്ങൾ വരുത്തുന്നതിനായി ഒഎസ്‍മിൽ ഒരു അകൗണ്ട് ഉണ്ടാക്കേണ്ടതാണ്. ഇതിനർത്ഥം, നിങ്ങൾ നടത്തിയ മാറ്റങ്ങളുടെ തീയതി, ഉള്ളടക്കം, സ്ഥലം എന്നിവ ഓപ്പൺ‌സ്ട്രീറ്റ്മാപ്പ് വെബ്‌സൈറ്റിൽ പൊതുവായി ദൃശ്യമാകുകയും അവ നിങ്ങളുടെ അകൗണ്ടിൽ തന്നെ ചേ‍ർക്കുകയും ചെയ്യുന്നു. 
@@ -659,7 +659,7 @@
     <string name="quest_fireHydrant_type_pond">"കുളം"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി ഗിത്ത്ഹബ്ബ് &lt; a href href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;കാണുക&lt;/a&gt;"</string>
+    <string name="credits_contributors">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി ഗിത്ത്ഹബ്ബ് &lt; a href href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;കാണുക&lt;/a&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;പ്രോജെക്ട് POEditor&lt;/a&gt; കാണുക"</string>
@@ -835,17 +835,11 @@
     <string name="quest_crossing_type_title">"ഇത് ഏതുതരം ക്രോസിംഗ് ആണ്?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"ട്രാഫിക് ലൈറ്റുകൾ ഉപയോഗിച്ചുള്ള ക്രോസിംഗ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"റോഡ് അടയാളങ്ങളില്ലാതെയുള്ള ക്രോസിംഗ്"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"പഴയരീതിയിലാക്കുക"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"ഇനിപ്പറയുന്ന  ഉത്തരം പഴയത് തന്നെയാക്കണോ?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"മാംഗോസ്റ്റിൻ"</string>
@@ -1058,18 +1052,6 @@
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"നിങ്ങൾക്ക് ഇവിടുത്തെ പ്രശ്നം ഒരു കുറിപ്പ് ആയി രേഖപ്പെടുത്താം. അത് മറ്റുള്ള മാപ്പർമാർക്ക് അതുവഴി ഇവിടുത്തെ പ്രശ്നം അറിയാൻ കഴിയും. കുറിപ്പിൻ്റെ സ്ഥാനം നീക്കി കൊണ്ട് മാപ്പിൽ പ്രശ്നം രേഖപ്പെടുത്താം:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"അസാധുവായ അന്വേഷണ ക്യാഷെ"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"നിങ്ങൾക്ക് അന്വേഷണ ചോദ്യങ്ങൾ കാലഹരണപ്പെട്ടത് എന്ന് തോന്നുന്നുണ്ടോ"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"അസാധുവായ"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"കാഷെ അസാധുവാക്കുന്നത് അടുത്ത തവണ ഡൗൺ‌ലോഡു ചെയ്യുമ്പോൾ അന്വേഷണങ്ങൾ അപ്‌ഡേറ്റ് ചെയ്യുന്നതിന് കാരണമാകുന്നു. ഒരാഴ്‌ചയ്‌ക്ക് ശേഷം ക്വസ്റ്റ് കാഷെ യാന്ത്രികമായനിങ്ങൾ പരിഹരിച്ച ഒരു അന്വേഷണം ഇതിനകം മറ്റൊരാളുടെ മറുപടിയായി മാറും"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"സാധാരണ ഇങ്ങനെയാണ് കാണുന്നത്:"</string>
@@ -1318,9 +1300,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"പകുതി-വെവ്വേറെയായ വീട്"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"രണ്ട് കുടുംബങ്ങൾക്ക് വേണ്ടിയുള്ള ഒരു ജോഡി ആയി സ്ഥിതി ചെയ്യുന്ന വീട്"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"അണു കുടുംബങ്ങൾക്കുള്ള ഒരേ വരിയിലുള്ള വീടുകൾ"</string>

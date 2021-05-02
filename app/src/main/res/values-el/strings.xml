@@ -271,7 +271,7 @@
 &lt;p&gt;&lt;b&gt;Άμεσες Συνεισφορές &lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Καταρχάς, κατανοήστε ότι με αυτή την εφαρμογή, κάνετε πραγματικές και άμεσες συνεισφορές στο OpenStreetMap. &lt;br/&gt;
-Οτιδήποτε συμβάλλετε σε αυτήν την εφαρμογή προστίθεται απευθείας στον χάρτη, δεν υπάρχει τρίτο μέρος μεταξύ της εφαρμογής και της υποδομής του OSM, όπως συμβαίνει με το &lt;a href=\"https://wheelmap.org\"&gt; wheelmap.org&lt;/a&gt; ή το &lt;a href=\"http://www.kort.ch\"&gt; Kort&lt;/a&gt;.
+Οτιδήποτε συμβάλλετε σε αυτήν την εφαρμογή προστίθεται απευθείας στον χάρτη, δεν υπάρχει τρίτο μέρος μεταξύ της εφαρμογής και της υποδομής του OSM.
 &lt;/p&gt;
 &lt;p&gt;
 Η επεξεργασία του OpenStreetMap ανώνυμα δεν είναι δυνατή, επομένως οι αλλαγές που κάνετε πραγματοποιούνται με τον λογαριασμό σας χρήστη OSM. Αυτό σημαίνει ότι η ημερομηνία, το περιεχόμενο και η έμμεση τοποθεσία των αλλαγών σας είναι ορατά δημοσίως στον ιστότοπο openstreetmap και οφείλονται στον λογαριασμό σας.
@@ -674,7 +674,7 @@
     <string name="quest_fireHydrant_type_pond">"Λιμνούλα"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Δείτε την &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;πλήρη λίστα στο GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Δείτε την &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;πλήρη λίστα στο GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Δείτε την &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;εργασία στο POEditor&lt;/a&gt; για μια πλήρη λίστα."</string>
@@ -850,17 +850,11 @@
     <string name="quest_crossing_type_title">"Τι είδους διασταύρωση είναι αυτή;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Διασταύρωση με φανάρια"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Διασταύρωση χωρίς οδικές σημάνσεις"</string>
     <string name="compass_north_one_letter">"Ν"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Αναίρεση"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Αναίρεση της ακόλουθης τελευταίας απάντησης;"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Μανγκοστίν"</string>
@@ -1077,18 +1071,6 @@
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Μπορείτε να αφήσετε μια σημείωση για να ενημερώσετε άλλους χαρτογράφους για ένα ζήτημα εδώ. Ρυθμίστε τη θέση της σημείωσης μετακινώντας τον χάρτη:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Ακύρωση της προσωρινής μνήμης αναζήτησης"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Χρήσιμο αν νομίζετε ότι ορισμένες αναζητήσεις είναι ξεπερασμένες"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Ακυρώνω"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Η ακύρωση της προσωρινής μνήμης προκαλεί την ενημέρωση των αναζητήσεων την επόμενη φορά που θα γίνει η λήψη τους. Η προσωρινή μνήμη αναζητήσεων ακυρώνεται αυτόματα μετά από μία εβδομάδα και αμέσως όταν μια αναζήτηση που λύσατε αποδειχθεί ότι έχει ήδη απαντηθεί από κάποιον άλλο."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Συνήθως φαίνεται έτσι:"</string>
@@ -1343,9 +1325,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Ημιτελής μονοκατοικία"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"δύο ζεύγη μονοκατοικιών"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"μια σειρά παρόμοιων μονοκατοικιών"</string>
@@ -2133,7 +2112,7 @@
     <string name="quest_parkingType_street_side">"Χώρος στάθμευσης ακριβώς έξω από το δρόμο"</string>
     <string name="quest_parkingType_lane">"Χώρος στάθμευσης σε δρόμο"</string>
     <string name="quest_existence_title">"Αυτό είναι ακόμα εδώ; (%s)"</string>
-    <string name="quest_existence_name_title">"Είναι ακόμα το %1$s εδώ; (%2$s)"</string>
+    <string name="quest_existence_name_title">"Είναι ακόμα το %1$s (%2$s) εδώ;"</string>
     <string name="quest_tracktype_grade2a">"Στερεό αλλά μη ασφαλτοστρωμένο"</string>
     <string name="quest_tracktype_grade3a">"Κυρίως στερεό"</string>
     <string name="quest_generic_answer_does_not_exist">"Δεν υπάρχει…"</string>
@@ -2184,4 +2163,47 @@
     <string name="team_mode_choose_color">"Τώρα όλοι στην ομάδα σας επιλέγουν ένα μοναδικό χρώμα:"</string>
     <string name="team_mode_active">"Η λειτουργία ομάδας είναι ενεργή"</string>
     <string name="team_mode_deactivated">"Η λειτουργία ομάδας απενεργοποιήθηκε"</string>
+    <string name="quest_pitchLit_title">"Είναι φωτισμένο αυτό το γήπεδο;"</string>
+    <string name="quest_pitchLit_title_track">"Είναι φωτισμένος αυτός ο στίβος;"</string>
+    <string name="quest_crossing_type_signals_controlled">"Η διέλευση ελέγχεται από φανάρια"</string>
+    <string name="undo_last">"Αναίρεση τελευταίας επεξεργασίας"</string>
+    <string name="show_edit_history">"Εμφάνιση ιστορικού επεξεργασίας"</string>
+    <string name="undo_confirm_title2">"Αναίρεση της ακόλουθης επεξεργασίας;"</string>
+    <string name="synced">"Συγχρονισμένο"</string>
+    <string name="toast_undo_unavailable">"Αυτή η επεξεργασία έχει ήδη συγχρονιστεί και δεν μπορεί να αναιρεθεί"</string>
+    <string name="quest_cycleway_value_separate">"εμφανίζεται ξεχωριστά στο χάρτη"</string>
+    <string name="created_note_action_title">"Δημιουργήθηκε σημείωση"</string>
+    <string name="commented_note_action_title">"Σχολιασμένη σημείωση"</string>
+    <string name="hid_action_description">"Το έκρυψες"</string>
+    <string name="split_way_action_description">"Χωρίζεις τον δρόμο"</string>
+    <string name="deleted_poi_action_description">"Το διαγράψατε"</string>
+    <string name="added_tag_action_title">"Προστέθηκε %s"</string>
+    <string name="removed_tag_action_title">"Αφαιρέθηκε %s"</string>
+    <string name="changed_tag_action_title">"Ενημερώθηκε στο %s"</string>
+    <string name="pref_title_delete_cache">"Διαγραφή προσωρινής μνήμης"</string>
+    <string name="pref_title_delete_cache_summary">"Εάν πιστεύετε ότι ορισμένα δεδομένα είναι παλιά"</string>
+    <string name="delete_confirmation">"Διαγραφή"</string>
+    <string name="delete_cache_dialog_message">"Διαγραφή όλων των ληφθέντων δεδομένων χάρτη, συμπεριλαμβανομένων των αναζητήσεων;
+Τα δεδομένα ανανεώνονται μετά από %1$s ημέρες και τα αχρησιμοποίητα δεδομένα διαγράφονται αυτόματα μετά από %2$s ημέρες."</string>
+    <string name="quest_shop_type_title">"Τι είδους κατάστημα είναι το %s;"</string>
+    <string name="quest_shop_type_title_no_name">"Τι είδους κατάστημα είναι αυτό; "</string>
+    <string name="pref_background_type_select">"Επιλέξτε τύπο φόντου"</string>
+    <string name="background_type_map">"Χάρτης"</string>
+    <string name="background_type_aerial_esri">"Εναέρια (από το Esri)"</string>
+    <string name="quest_barrier_type_title">"Τι είδους μπάρες είναι αυτές;"</string>
+    <string name="quest_barrier_type_gate">"Πύλη"</string>
+    <string name="quest_barrier_type_chain">"Αλυσίδα"</string>
+    <string name="quest_barrier_type_rope">"Σχοινί"</string>
+    <string name="quest_barrier_type_cattle_grid">"Πλέγμα που εμποδίζει τα ζώα να περπατούν"</string>
+    <string name="quest_barrier_type_block">"Μεγάλο ακίνητο αντικείμενο"</string>
+    <string name="quest_barrier_type_log">"Κορμός"</string>
+    <string name="quest_barrier_type_kerb">"Κράσπεδο"</string>
+    <string name="quest_barrier_type_height_restrictor">"Περιοριστής ύψους"</string>
+    <string name="quest_barrier_full_height_turnstile">"Περιστροφική πύλη πλήρους ύψους"</string>
+    <string name="quest_barrier_type_turnstile">"Περιστροφική πύλη"</string>
+    <string name="quest_barrier_type_passage">"Διάβαση μέσω τοίχου/φράχτη/κλπ. "</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Εμπόδιο ποδηλάτων"</string>
+    <string name="quest_barrier_type_swing_gate">"Οριζόντια μπάρα"</string>
+    <string name="quest_policeType_title">"Τι είδους αστυνομικό τμήμα είναι αυτό;"</string>
+    <string name="quest_stile_type_title">"Τι είδους πέρασμα φράχτη είναι αυτό;"</string>
 </resources>

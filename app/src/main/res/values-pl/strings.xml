@@ -242,13 +242,11 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Przybliż"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;O, dbasz o swoją prywatność, fajnie! Mam dla Ciebie tylko dobre wiadomości:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Bezpośrednie zmiany&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Po pierwsze, miej na uwadze, że używając tej aplikacji, wykonujesz rzeczywiste i bezpośrednie zmiany na OpenStreetMap.&lt;br/&gt;
-Każdy Twój wkład jest bezpośrednio nanoszony na mapę, bez żadnych pośredników między aplikacją a infrastrukturą OSM, jak w przypadku &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; czy &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Każdy Twój wkład jest bezpośrednio nanoszony na mapę, bez żadnych pośredników między aplikacją a infrastrukturą OSM.
 &lt;/p&gt;
 &lt;p&gt;
 Anonimowa edycja OpenStreetMap nie jest możliwa, zatem wszystkie Twoje zmiany muszą być wykonane z użyciem Twojego konta OSM. To oznacza, że data, treść oraz domyślnie miejsce Twoich zmian są publiczne dostępne na stronie OpenStreetMap i powiązane z Twoim kontem.
@@ -639,7 +637,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_fireHydrant_type_pond">"Staw"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Zobacz &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;pełną listę na GitHubie&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Zobacz &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;pełną listę na GitHubie&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Zobacz pełną listę w &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekcie na POEditor&lt;/a&gt;"</string>
@@ -813,17 +811,11 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_crossing_type_title">"Jaki jest to rodzaj przejścia?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Przejście ze światłami"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Przejście nieoznaczone"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Cofnij"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Cofnąć następującą ostatnią odpowiedź?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostan"</string>
@@ -1026,18 +1018,6 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Możesz zostawić wiadomość i powiadomić innych mapperów o jakiejś kwestii. Ustaw pozycję notatki, przesuwając mapę:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Wyczyść pobrane zadania"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Przydatne gdy zadania nie są aktualne"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Wyczyść cache"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Wyczyszczenie pamięci podręcznej powoduje, że zadania zostaną zaktualizowane przy następnym ich pobraniu. Pamięć podręczna jest czyszczona automatycznie po tygodniu lub natychmiast, gdy rozwiązane przez Ciebie zadanie okaże się już rozwiązane przez kogoś innego."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Zwykle wygląda to tak:"</string>
@@ -1284,9 +1264,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Dom-bliźniak"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"dom połączony jedną ścianą do innego domu"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"rząd podobnych budynków jednorodzinnych"</string>
@@ -2253,7 +2230,7 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, zostaw wiadomość."</stri
     <string name="quest_parkingType_street_side">"Miejsca parkingowe przylegające do jezdni"</string>
     <string name="quest_parkingType_lane">"Parkowanie na jezdni"</string>
     <string name="quest_existence_title">"Czy to nadal tu jest? (%s)"</string>
-    <string name="quest_existence_name_title">"Czy %1$s nadal tu jest? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Czy %1$s (%2$s) nadal tu jest?"</string>
     <string name="quest_tracktype_grade2a">"Gruntowa, dobrze utwardzona"</string>
     <string name="quest_tracktype_grade3a">"Gruntowa utwardzona"</string>
     <string name="quest_generic_answer_does_not_exist">"Nie istnieje"</string>
@@ -2307,4 +2284,54 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, zostaw wiadomość."</stri
     <string name="team_mode_choose_color">"Niech każdy wybierze unikalny kolor:"</string>
     <string name="team_mode_active">"Tryb zespołowy aktywny"</string>
     <string name="team_mode_deactivated">"Tryb zespołowy nieaktywny"</string>
+    <string name="quest_pitchLit_title">"Czy to boisko/kort/... jest oświetlony?"</string>
+    <string name="quest_pitchLit_title_track">"Czy ten tor sportowy (zazwyczaj bieżnia) jest oświetlony?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Przejście kontrolowane przez sygnalizację"</string>
+    <string name="undo_last">"Wycofaj ostatnią edycę"</string>
+    <string name="show_edit_history">"Pokaż historię edycji"</string>
+    <string name="undo_confirm_title2">"Wycofać następującą edycję?"</string>
+    <string name="synced">"Zsynchornizowane"</string>
+    <string name="toast_undo_unavailable">"Ta edycja jest już zsynchronizowana i nie można jej wycofać"</string>
+    <string name="quest_cycleway_value_separate">"Wyświetlone osobno na mapie"</string>
+    <string name="created_note_action_title">"Utworzono uwagę"</string>
+    <string name="commented_note_action_title">"Dodano komentarz do uwagi"</string>
+    <string name="hid_action_description">"Ukryłeś to"</string>
+    <string name="split_way_action_description">"Podzielono linię"</string>
+    <string name="deleted_poi_action_description">"Skasowałeś to"</string>
+    <string name="added_tag_action_title">"Dodano %s"</string>
+    <string name="removed_tag_action_title">"Usunięto %s"</string>
+    <string name="changed_tag_action_title">"Zaktualizowane do %s"</string>
+    <string name="pref_title_delete_cache">"Skasuj pamięć podręczną"</string>
+    <string name="pref_title_delete_cache_summary">"Jeśli uważasz że dane są nieaktualne"</string>
+    <string name="delete_confirmation">"Usuń"</string>
+    <string name="delete_cache_dialog_message">"Skasować wszystkie pobrane informacje, w tym zadania?
+Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automatycznie po %2$s."</string>
+    <string name="quest_shop_type_title">"Jakim typem sklepu jest %s?"</string>
+    <string name="quest_shop_type_title_no_name">"Jaki jest tu typ sklepu?"</string>
+    <string name="pref_background_type_select">"Wybierz typ tła"</string>
+    <string name="background_type_map">"Mapa"</string>
+    <string name="background_type_aerial_esri">"Zdjęcia lotnicze/satelitarne (Esri)"</string>
+    <string name="quest_barrier_type_title">"Jaki rodzaj bariery jest w tym punkcie?"</string>
+    <string name="quest_barrier_type_gate">"Brama"</string>
+    <string name="quest_barrier_type_lift_gate">"Szlaban podnoszony"</string>
+    <string name="quest_barrier_type_bollard">"Słupek/słupki"</string>
+    <string name="quest_barrier_type_chain">"Łańcuch"</string>
+    <string name="quest_barrier_type_rope">"Lina"</string>
+    <string name="quest_barrier_type_wire_gate">"Demontowalna część drutów"</string>
+    <string name="quest_barrier_type_cattle_grid">"Krata blokująca przechodzenie zwierząt gospodarskich"</string>
+    <string name="quest_barrier_type_block">"Duży nieprzesuwalny obiekt"</string>
+    <string name="quest_barrier_jersey_barrier">"Prefabrykowanych bloki"</string>
+    <string name="quest_barrier_type_log">"Kłoda"</string>
+    <string name="quest_barrier_type_kerb">"Krawężnik"</string>
+    <string name="quest_barrier_type_height_restrictor">"Ogranicznik wysokości"</string>
+    <string name="quest_barrier_full_height_turnstile">"Bramka obrotowa pełnej wysokości"</string>
+    <string name="quest_barrier_type_turnstile">"Bramka obrotowa"</string>
+    <string name="quest_barrier_type_passage">"Przejście przez mur/płot/..."</string>
+    <string name="quest_barrier_type_debris_pile">"Pryzma ziemna"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Przełaz - wąska szpara"</string>
+    <string name="quest_barrier_type_stile_ladder">"Przełaz - drabina"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Blokowanie rowerów"</string>
+    <string name="quest_barrier_type_kissing_gate">"Brama ze śluzą"</string>
+    <string name="quest_barrier_type_stepover">"Przełaz - podest"</string>
+    <string name="quest_barrier_type_swing_gate">"Szlaban rozchylany"</string>
 </resources>

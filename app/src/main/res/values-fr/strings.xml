@@ -130,7 +130,7 @@ That is not very clear to me. Any further explanations? -->
 &lt;p&gt;&lt;b&gt;Contributions directes&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Tout d'abord, comprenez qu'avec cette application, vous apportez des contributions réelles et directes au projet de cartographie collaborative OpenStreetMap.&lt;br/&gt;
-Toute contribution que vous apportez depuis cette application est directement ajoutée à la carte, il n'y a pas de tiers entre l'application et l'infrastructure d'OSM, comme c'est le cas avec &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; ou &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Toute contribution que vous apportez depuis cette application est directement ajoutée à la carte, il n'y a pas de tiers entre l'application et l'infrastructure d'OSM.
 &lt;/p&gt;
 &lt;p&gt;
 Il n'est pas possible de modifier OpenStreetMap de manière anonyme, donc toute modification que vous faites est effectuée via votre compte d'utilisateur d'OSM. Cela signifie que la date, le contenu et, implicitement, l'emplacement de vos modifications sont visibles publiquement sur le site web d'OpenStreetMap et attribuées à votre compte.
@@ -143,7 +143,7 @@ L'application ne partage votre position GPS avec personne. Elle est utilisée po
 
 &lt;p&gt;&lt;b&gt;Utilisation des données&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Comme mentionné, l'application communique directement avec l'infrastructure d'OSM. 
+Comme mentionné, l'application communique directement avec l'infrastructure d'OSM.
 Toutefois, avant de télécharger vos modifications, l'application vérifie, à l'aide d'un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fichier texte simple&lt;/a&gt; sur mon serveur, si la version de l'application n'est pas interdite de téléversement. Il s'agit d'une mesure de précaution pour éviter que les versions qui présentent des bogues critiques ne corrompent les données d'OSM.&lt;/p&gt;"</string>
     <string name="autosync_on">"Toujours"</string>
 
@@ -333,7 +333,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_fireHydrant_type_underground">"Bouche"</string>
     <string name="quest_fireHydrant_type_wall">"Murale"</string>
     <string name="quest_fireHydrant_type_pond">"Bassin"</string>
-    <string name="credits_contributors">"Voir la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;liste complète sur GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Voir la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;liste complète sur GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"Voir le &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projet sur POEditor&lt;/a&gt; pour la liste complète."</string>
     <string name="credits_translations_title">"Traductions"</string>
     <string name="credits_contributors_title">"Contributeurs au code"</string>
@@ -399,13 +399,11 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_way_lit_24_7">"Oui, c'est éclairé jour et nuit"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Impossible de rechercher ici. Essayez de zoomer ou de moins incliner la carte."</string>
     <string name="quest_crossing_type_title">"De quel type de passage piéton s'agit-il ?"</string>
-    <string name="quest_crossing_type_signals">"Passage piéton avec feux"</string>
     <string name="quest_crossing_type_unmarked">"Passage piéton sans marquage"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- "Confirmer" (EN:Confirm)? Even if it is a general word, have you an example please? -->
     <string name="action_undo">"Confirmer"</string>
-    <string name="undo_confirm_title">"Annuler la dernière réponse ?"</string>
     <string name="produce_mangosteen">"Mangoustan"</string>
     <string name="produce_tomatoes">"Tomates"</string>
     <string name="produce_areca_nuts">"Noix d’arec"</string>
@@ -499,12 +497,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="map_btn_create_note">"Ajouter une nouvelle note"</string>
     <string name="create_new_note_unprecise">"Zoomer pour créer une note"</string>
     <string name="create_new_note_description">"Vous pouvez laisser une note pour informer les autres cartographes d’un problème à cet endroit. Ajustez la position de la note en déplaçant la carte :"</string>
-    <string name="pref_title_quests_invalidation">"Invalider le cache de quêtes"</string>
-    <string name="pref_title_quests_invalidation_summary">"Utile si vous pensez que certaines quêtes sont obsolètes"</string>
-    <string name="invalidate_confirmation">"Invalider"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"L’invalidation du cache entraînera la mise à jour des quêtes lors de leur prochain téléchargement. Le cache des quête est automatiquement invalidé après une semaine et immédiatement si une quête que vous avez résolue s'avère être déjà traitée par quelqu'un d'autre."</string>
     <string name="quest_generic_looks_like_this">"En général, cela ressemble à cela :"</string>
     <string name="quest_surface_value_metal">"Métal"</string>
     <string name="quest_cycleway_title2">"Y a-t-il une voie cyclable ici ? De quel type ?"</string>
@@ -613,7 +605,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_buildingType_detached">"Maison non-mitoyenne"</string>
     <string name="quest_buildingType_detached_description">"maison unifamiliale non mitoyenne"</string>
     <string name="quest_buildingType_semi_detached">"Maison jumelée"</string>
-    <string name="quest_buildingType_semi_detached_description">"ensemble de deux maisons unifamiliales"</string>
     <string name="quest_buildingType_terrace_description">"une ligne de maisons unifamiliales similaires"</string>
     <string name="quest_buildingType_hotel">"Hôtel"</string>
     <string name="quest_buildingType_dormitory">"Résidence universitaire, foyer"</string>
@@ -804,7 +795,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_leaf_type_mixed">"Les deux sont présents"</string>
     <string name="quest_cyclewayPartSurface_title">"Quel est le revêtement de la piste cyclable ici ?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Cela varie en cours de route"</string>
-    <string name="quest_split_way_description">"S'il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon. 
+    <string name="quest_split_way_description">"S'il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon.
 Découper maintenant ?"</string>
 
     <!-- Fuzzy -->
@@ -895,7 +886,7 @@ Découper maintenant ?"</string>
 
     <!-- "StreetComplete permet de contribuer facilement à OpenStreetMap." ? -->
     <string name="tutorial_intro">"StreetComplete permet de contribuer facilement à OpenStreetMap. L'application recherche automatiquement les détails manquants autour de vous : pistes cyclables, numéros de rue, horaires d'ouverture et plus encore..."</string>
-    <string name="tutorial_solving_quests">"Une fois trouvés, ces détails manquants apparaîtront sur la carte sous forme de quêtes. 
+    <string name="tutorial_solving_quests">"Une fois trouvés, ces détails manquants apparaîtront sur la carte sous forme de quêtes.
 
 Vous pouvez d'ores et déjà commencer à les résoudre, mais vous devrez vous connecter pour que vos réponses soient publiées."</string>
     <string name="tutorial_stay_safe">"En cas de doute, vous pouvez toujours répondre \"Je ne sais pas\" et laisser une note.
@@ -1186,7 +1177,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_parkingType_street_side">"Stationnement à coté de la chaussée"</string>
     <string name="quest_parkingType_lane">"Stationnement sur la chaussée"</string>
     <string name="quest_existence_title">"Est-ce que c'est toujours ici ? (%s)"</string>
-    <string name="quest_existence_name_title">"Est-ce que %1$s est toujours ici ? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Est-ce que %1$s (%2$s) est toujours ici ?"</string>
     <string name="quest_tracktype_grade2a">"Dur mais sans revêtement"</string>
     <string name="quest_tracktype_grade3a">"Globalement dur"</string>
     <string name="quest_generic_answer_does_not_exist">"Ça n'existe pas…"</string>
@@ -1239,4 +1230,60 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="team_mode_choose_color">"Maintenant, toutes les personnes du groupe doivent choisir une couleur unique :"</string>
     <string name="team_mode_active">"Le mode par équipe est activé"</string>
     <string name="team_mode_deactivated">"Le mode par équipe est désactivé"</string>
+    <string name="quest_pitchLit_title">"Ce terrain de sport est-il éclairé ?"</string>
+    <string name="quest_pitchLit_title_track">"Cette piste de sport est-elle éclairée ?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Feux tricolores à ce passage piétion"</string>
+    <string name="undo_last">"Annuler la dernière contribution"</string>
+    <string name="show_edit_history">"Montrer l'historique de contributions"</string>
+    <string name="undo_confirm_title2">"Annuler cette contribution ?"</string>
+    <string name="synced">"Synchronisé"</string>
+    <string name="toast_undo_unavailable">"Cette contribution est déjà téléversée et ne peu têtre annulée"</string>
+    <string name="quest_cycleway_value_separate">"Affichée distinctement sur la carte"</string>
+    <string name="created_note_action_title">"Créer une note"</string>
+    <string name="commented_note_action_title">"Commenter une note"</string>
+    <string name="hid_action_description">"Vous l'avez caché"</string>
+    <string name="split_way_action_description">"Vous avez divisé cette voie"</string>
+    <string name="deleted_poi_action_description">"Vous l'avez supprimé"</string>
+    <string name="added_tag_action_title">"Ajouté %s"</string>
+    <string name="removed_tag_action_title">"Retiré %s"</string>
+    <string name="changed_tag_action_title">"Mettre à jour à %s"</string>
+    <string name="pref_title_delete_cache">"Supprimer le cache"</string>
+    <string name="pref_title_delete_cache_summary">"Si vous pensez que certaines données ne sont plus à jour"</string>
+    <string name="delete_confirmation">"Supprimer"</string>
+    <string name="delete_cache_dialog_message">"Supprimer toutes les données de cartes téléchargées, y compris les quêtes ? Les données sont automatiquement mises à jour au bout %1$s et les données inutilisées sont supprimées au bout de %2$s jours."</string>
+    <string name="quest_shop_type_title">"Quel type de commerce est %s ?"</string>
+    <string name="quest_shop_type_title_no_name">"Quel type de commerce est-ce ?"</string>
+    <string name="pref_background_type_select">"Sélectionner le type de fond "</string>
+    <string name="background_type_map">"Carte"</string>
+    <string name="background_type_aerial_esri">"Aérienne (par Esri)"</string>
+    <string name="quest_barrier_type_title">"Quel type de barrière est-ce ?"</string>
+    <string name="quest_barrier_type_gate">"Porte"</string>
+    <string name="quest_barrier_type_lift_gate">"Barrière levante"</string>
+    <string name="quest_barrier_type_bollard">"Plot(s)"</string>
+    <string name="quest_barrier_type_chain">"Chaîne"</string>
+    <string name="quest_barrier_type_rope">"Corde"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_wire_gate">"Barbelés déplaçables"</string>
+    <string name="quest_barrier_type_cattle_grid">"Grille empêchant le passage du bétail"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_block">"Grand objet immobile"</string>
+    <string name="quest_barrier_jersey_barrier">"Barrière Jersey"</string>
+    <string name="quest_barrier_type_log">"Tronc d'arbre"</string>
+    <string name="quest_barrier_type_kerb">"Bordure"</string>
+    <string name="quest_barrier_type_height_restrictor">"Portique limiteur de hauteur"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_full_height_turnstile">"Portillon d'accès pleine hauteur"</string>
+    <string name="quest_barrier_type_turnstile">"Portillon d'accès"</string>
+    <string name="quest_barrier_type_passage">"Passage à travers un mur/clôture/etc"</string>
+    <string name="quest_barrier_type_debris_pile">"Tas de débris"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Barrière à vélo"</string>
+    <string name="quest_barrier_type_kissing_gate">"Portillon anti-bétail"</string>
+    <string name="quest_barrier_type_stepover">"Echalier"</string>
+    <string name="quest_barrier_type_swing_gate">"Barre horizontale"</string>
+    <string name="quest_policeType_title">"Quel type de poste de police est-ce ?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Changer pour un portillon à chicane mobile"</string>
+    <string name="quest_stile_type_title">"Quel type d'échalier est-ce ?"</string>
 </resources>

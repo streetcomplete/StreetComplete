@@ -169,7 +169,7 @@
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 First off, understand that with this app, you make actual and direct contributions to the OpenStreetMap.&lt;br/&gt;
-Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure, like it is the case with &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; or &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
 &lt;/p&gt;
 &lt;p&gt;
 Editing the OpenStreetMap anonymously is not possible, so any changes you make are made with your OSM user account. This means, that the date, content and implicitly the location of your changes are visible publicly on the openstreetmap website and are attributable to your account.
@@ -201,6 +201,8 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_streetSurface_square_name_title">"What surface does the square %s have here?"</string>
     <string name="quest_pitchSurface_title">What surface does this sport field have?</string>
     <string name="quest_pitchSurface_title_track">What surface does this sport track have?</string>
+    <string name="quest_pitchLit_title">Is this sport field lit?</string>
+    <string name="quest_pitchLit_title_track">Is this sport track lit?</string>
     <string name="quest_select_hint_most_specific">"Select the most specific one that fits:"</string>
     <string name="quest_surface_value_paved">"Paved (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
@@ -354,7 +356,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_fireHydrant_type_underground">Underground</string>
     <string name="quest_fireHydrant_type_wall">Wall</string>
     <string name="quest_fireHydrant_type_pond">Pond</string>
-    <string name="credits_contributors">"See the &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"See the &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
     <string name="credits_translations_title">Translations</string>
     <string name="credits_contributors_title">Code contributors</string>
@@ -366,12 +368,16 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_answer_living_street">It is a living street</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
-    <string name="quest_crossing_type_signals">Crossing with traffic lights</string>
+    <string name="quest_crossing_type_signals_controlled">Crossing controlled by traffic lights</string>
     <string name="quest_crossing_type_marked">Marked crossing</string>
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
     <string name="action_undo">Undo</string>
-    <string name="undo_confirm_title">Undo the following last answer?</string>
+    <string name="undo_last">Undo last edit</string>
+    <string name="show_edit_history">Show edit history</string>
+    <string name="undo_confirm_title2">Undo the following edit?</string>
+    <string name="synced">Synced</string>
+    <string name="toast_undo_unavailable">This edit is already synced and cannot be undone</string>
     <string name="quest_orchard_produce_title">What is being cultivated here?</string>
     <string name="produce_grapes">Grapes</string>
     <string name="produce_agaves">Agaves</string>
@@ -441,7 +447,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_dietType_explanation">Only answer “yes” if the place provides a comparable choice of eating options for this diet</string>
     <string name="quest_toiletAvailability_name_title">Does %s have a restroom?</string>
     <string name="quest_existence_title">Is this still here? (%s)</string>
-    <string name="quest_existence_name_title">Is %1$s still here? (%2$s)</string>
+    <string name="quest_existence_name_title">Is %1$s (%2$s) still here?</string>
     <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
     <string name="quest_powerPolesMaterial_wood">Wood</string>
     <string name="quest_powerPolesMaterial_metal">Steel</string>
@@ -461,6 +467,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="unglue_hint">Tap to unglue view from position</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the roadways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
+    <string name="quest_cycleway_value_separate">displayed separately on map</string>
     <string name="about_category_feedback">Feedback</string>
     <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
     <string name="quest_leave_new_note_create_image_error">Unable to create file for photo</string>
@@ -490,12 +497,20 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side…</string>
     <string name="map_btn_create_note">Create new note</string>
+    <string name="created_note_action_title">Created note</string>
+    <string name="commented_note_action_title">Commented note</string>
+    <string name="hid_action_description">You hid it</string>
+    <string name="split_way_action_description">You split the way</string>
+    <string name="deleted_poi_action_description">You deleted it</string>
+    <string name="added_tag_action_title">Added %s</string>
+    <string name="removed_tag_action_title">Removed %s</string>
+    <string name="changed_tag_action_title">Updated to %s</string>
     <string name="create_new_note_unprecise">Zoom in further to create a note</string>
     <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map:</string>
-    <string name="pref_title_quests_invalidation">Invalidate quest cache</string>
-    <string name="pref_title_quests_invalidation_summary">Useful if you think that some quests are outdated</string>
-    <string name="invalidate_confirmation">Invalidate</string>
-    <string name="invalidation_dialog_message">Invalidating the cache causes the quests to be updated next time they are downloaded. The quest cache is invalidated automatically after one week and immediately when a quest you solved turns out to be already answered by someone else.</string>
+    <string name="pref_title_delete_cache">Delete cache</string>
+    <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
+    <string name="delete_confirmation">Delete</string>
+    <string name="delete_cache_dialog_message">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.</string>
     <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside.</string>
     <string name="quest_openingHours_no_sign">No opening hours sign</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
@@ -567,6 +582,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_postboxRoyalCypher_title">What is the royal cypher on this postbox?</string>
     <string name="quest_postboxRoyalCypher_type_none">No royal cypher is visible</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">The Crown of Scotland</string>
+    <string name="quest_policeType_title">Which type of police station is this?</string>
     <string name="quest_construction_road_title">Is this road completed?</string>
     <string name="quest_construction_cycleway_title">Is this cycleway completed?</string>
     <string name="quest_construction_footway_title">Is this footway completed?</string>
@@ -592,7 +608,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_detached">Detached house</string>
     <string name="quest_buildingType_detached_description">free-standing single-family home</string>
     <string name="quest_buildingType_semi_detached">Semi-detached house</string>
-    <string name="quest_buildingType_semi_detached_description">pair of two single-family homes</string>
+    <string name="quest_buildingType_semi_detached_description2">adjoined single-family home(s)</string>
     <string name="quest_buildingType_terrace2">Row houses</string>
     <string name="quest_buildingType_terrace_description">a linear row of similar single-family homes</string>
     <string name="quest_buildingType_hotel">Hotel building</string>
@@ -968,7 +984,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_kerb_height_answer_no_kerb">There is no curb on this side of crossing</string>
     <string name="quest_kerb_height_lowered_ramp">Curb ramp</string>
     <string name="quest_generic_answer_does_not_exist">It does not exist…</string>
-    <string name="osm_element_gone_warning">"Warning: This cannot be undone!</string>
     <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? When in doubt, better leave a note instead.</string>
     <string name="osm_element_gone_confirmation">It does not exist</string>
     <string name="leave_note">Leave note</string>
@@ -991,4 +1006,34 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_drinking_water_potable_unsigned">Safe to drink (unsigned)</string>
     <string name="quest_drinking_water_not_potable_signed">Not safe to drink (signed)</string>
     <string name="quest_drinking_water_not_potable_unsigned">Not safe to drink (unsigned)</string>
+    <string name="quest_shop_type_title">What type of shop is %s?</string>
+    <string name="quest_shop_type_title_no_name">What type of shop is this?</string>
+    <string name="pref_background_type_select">Select background type</string>
+    <string name="background_type_map">Map</string>
+    <string name="background_type_aerial_esri">Aerial (by Esri)</string>
+    <string name="quest_barrier_type_title">What type of barrier is this?</string>
+    <string name="quest_barrier_type_gate">Gate</string>
+    <string name="quest_barrier_type_lift_gate">Boom barrier</string>
+    <string name="quest_barrier_type_bollard">Bollard(s)</string>
+    <string name="quest_barrier_type_chain">Chain</string>
+    <string name="quest_barrier_type_rope">Rope</string>
+    <string name="quest_barrier_type_wire_gate">Removable wire section</string>
+    <string name="quest_barrier_type_cattle_grid">Grid blocking livestock from walking over</string>
+    <string name="quest_barrier_type_block">Big immobile object</string>
+    <string name="quest_barrier_jersey_barrier">Jersey barrier</string>
+    <string name="quest_barrier_type_log">Log</string>
+    <string name="quest_barrier_type_kerb">Curb</string>
+    <string name="quest_barrier_type_height_restrictor">Height barrier</string>
+    <string name="quest_barrier_full_height_turnstile">Full height turnstile</string>
+    <string name="quest_barrier_type_turnstile">Turnstile</string>
+    <string name="quest_barrier_type_passage">Passage through wall/fence/etc.</string>
+    <string name="quest_barrier_type_debris_pile">Pile of debris</string>
+    <string name="quest_barrier_type_stile_squeezer">Squeeze stile</string>
+    <string name="quest_barrier_type_stile_ladder">Ladder stile</string>
+    <string name="quest_barrier_type_bicycle_barrier">Bicycle barrier</string>
+    <string name="quest_barrier_type_kissing_gate">Kissing gate</string>
+    <string name="quest_barrier_type_stepover">Step-over stile</string>
+    <string name="quest_barrier_type_swing_gate">Horizontal bar</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">Converted into a kissing gate</string>
+    <string name="quest_stile_type_title">What type of stile is this?</string>
 </resources>
