@@ -16,5 +16,5 @@ class WifiAutoDownloadStrategy @Inject constructor(
      */
 
     override val maxDownloadAreaInKm2 = 20.0 // that's a radius of about 2.5 km
-    override val desiredScoredMapDataCountInVicinity = 9000
+    override val desiredScoredMapDataCountInVicinity = 15000
 }

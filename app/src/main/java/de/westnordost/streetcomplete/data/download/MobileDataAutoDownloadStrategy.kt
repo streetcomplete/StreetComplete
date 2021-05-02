@@ -11,5 +11,5 @@ class MobileDataAutoDownloadStrategy @Inject constructor(
 ) : AVariableRadiusStrategy(mapDataController, downloadedTilesDao) {
 
     override val maxDownloadAreaInKm2 = 10.0 // that's a radius of about 1.5 km
-    override val desiredScoredMapDataCountInVicinity = 4500
+    override val desiredScoredMapDataCountInVicinity = 7500
 }
