@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
+import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 import java.time.LocalDate
 import java.util.concurrent.FutureTask
 
@@ -77,8 +78,7 @@ class CheckExistence(
             R.string.quest_existence_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: tags["ref"] ?: tags["operator"]
-        return arrayOfNotNull(name, featureName.value)
+        return arrayOfNotNull(getNameOrBrandOrOperatorOrRef(tags), featureName.value)
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
+import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 
 class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
 
@@ -21,13 +22,13 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
     override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsAnyKey("name", "brand", "operator"))
+        if (tags.containsAnyKey("name", "brand", "operator", "ref"))
             R.string.quest_charging_station_name_capacity_title
         else
             R.string.quest_charging_station_capacity_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        arrayOfNotNull(tags["name"] ?: tags["brand"] ?: tags["operator"])
+        arrayOfNotNull(getNameOrBrandOrOperatorOrRef(tags))
 
     override fun createForm() = AddChargingStationCapacityForm()
 

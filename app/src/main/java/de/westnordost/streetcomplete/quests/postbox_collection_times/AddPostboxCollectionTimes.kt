@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
+import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 
 class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
 
@@ -46,10 +47,10 @@ class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
     )
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        arrayOfNotNull(tags["name"] ?: tags["brand"] ?: tags["operator"])
+        arrayOfNotNull(getNameOrBrandOrOperatorOrRef(tags))
 
     override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsAnyKey("name", "brand", "operator"))
+        if (tags.containsAnyKey("name", "brand", "operator", "ref"))
             R.string.quest_postboxCollectionTimes_name_title
         else
             R.string.quest_postboxCollectionTimes_title
