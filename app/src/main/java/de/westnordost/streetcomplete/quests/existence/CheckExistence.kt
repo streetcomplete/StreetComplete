@@ -103,6 +103,6 @@ class CheckExistence(
         or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -$yearsAgo years" }}
     """.trimIndent()
 
-    private fun hasAnyName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+    private fun hasAnyName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
 }
