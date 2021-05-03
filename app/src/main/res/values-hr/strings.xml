@@ -1167,7 +1167,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
 
     <!-- Fuzzy -->
     <string name="delete_cache_dialog_message">"Želite li počistiti svu predmemoriju karte, uključujući zadatke?
-Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se brišu nakon %1$s dana."</string>
+Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se brišu nakon %2$s dana."</string>
     <string name="quest_shop_type_title">"Koja vrsta trgovine je %s?"</string>
     <string name="quest_shop_type_title_no_name">"Koja je ovo vrsta trgovine?"</string>
     <string name="pref_background_type_select">"Odaberite vrstu pozadine"</string>

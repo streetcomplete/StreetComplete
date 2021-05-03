@@ -282,7 +282,7 @@ OpenStreetMap nelze upravovat anonymně, proto jsou všechny vaše změny proved
 
 &lt;b&gt;Poloha&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Aplikace s nikým nesdílí vaši GPS polohu. Vaše poloha se používá jen pro automatické vyhledávání „úkolů“ ve vašem okolí a pro vycentrování mapy (a její stahování) na základě vaší polohy. 
+Aplikace s nikým nesdílí vaši GPS polohu. Vaše poloha se používá jen pro automatické vyhledávání „úkolů“ ve vašem okolí a pro vycentrování mapy (a její stahování) na základě vaší polohy.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Použití dat&lt;/b&gt;&lt;/p&gt;
@@ -2154,7 +2154,7 @@ Pamatujte, že tato aplikace se zeptá na popisné číslo budovy až po určen�
     <!-- Fuzzy -->
     <string name="achievement_blind_title">"Šestý smysl"</string>
 
-    <!-- Is there way to write plurals correctly? In Czech language we have two groups of plurals for amount 2-4 and 5,6,7 etc... Other languages have different rules. 
+    <!-- Is there way to write plurals correctly? In Czech language we have two groups of plurals for amount 2-4 and 5,6,7 etc... Other languages have different rules.
 https://developer.android.com/guide/topics/resources/string-resource#Plurals
 
 It is not big issue, but it would be nice to have it correctly. -->
@@ -2282,7 +2282,7 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_openingHours_off_day">"Zavřeno"</string>
     <string name="quest_openingHours_unspecified_range">"Neurčeno"</string>
 
-    <!-- Could this be translated as: 
+    <!-- Could this be translated as:
 Is the situation on this cycleway still the same? -->
     <string name="quest_cycleway_resurvey_title">"Je to zde stále aktulální situace cyklostezky?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Má %1$s (%2$s) bezbariérový přístup?"</string>
@@ -2452,7 +2452,7 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="pref_title_delete_cache_summary">"Pokud si myslíte, že jsou data zastaralá"</string>
     <string name="delete_confirmation">"Smazat"</string>
     <string name="delete_cache_dialog_message">"Chcete smazat všechna stažená mapová data včetně úkolů?
-Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po %1$s dnech."</string>
+Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po %2$s dnech."</string>
     <string name="quest_shop_type_title">"Jaký druh obchodu je %s?"</string>
     <string name="quest_shop_type_title_no_name">"Jaký je tohle druh obchodu?"</string>
     <string name="pref_background_type_select">"Vyberte pozadí"</string>
