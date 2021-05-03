@@ -8,7 +8,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.quests.getQuestTitle
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.util.Locale
 import java.util.concurrent.FutureTask
@@ -38,14 +38,14 @@ class CheckExistenceTitleTest {
             "vending" to "newspapers",
             "name" to "Bild",
         ))
-        Assert.assertEquals(newspaperVendingMachineWithName, "Is Bild (Newspaper Vending Machine) still here?")
+        assertEquals(newspaperVendingMachineWithName, "Is Bild (Newspaper Vending Machine) still here?")
 
         val newspaperVendingMachineWithBrand = getQuestTitle(mapOf(
             "amenity" to "vending_machine",
             "vending" to "newspapers",
             "brand" to "Abendzeitung",
         ))
-        Assert.assertEquals(newspaperVendingMachineWithBrand, "Is Abendzeitung (Newspaper Vending Machine) still here?")
+        assertEquals(newspaperVendingMachineWithBrand, "Is Abendzeitung (Newspaper Vending Machine) still here?")
     }
 
     // https://github.com/streetcomplete/StreetComplete/issues/2640
@@ -56,7 +56,7 @@ class CheckExistenceTitleTest {
             "operator" to "Deutsche Post AG",
             "ref" to "Hauptsmoorstr. 101, 96052 Bamberg",
         ))
-        Assert.assertEquals(postBox, "Is Deutsche Post (Mail Drop Box) still here?")
+        assertEquals(postBox, "Is Deutsche Post (Mail Drop Box) still here?")
     }
 
     // https://github.com/streetcomplete/StreetComplete/issues/2806
@@ -68,12 +68,22 @@ class CheckExistenceTitleTest {
             "brand" to "Google",
             "operator" to "Google RESTful",
         ))
-        Assert.assertEquals(namedBench, "Is Sergey's Seat (Bench) still here?")
+        assertEquals(namedBench, "Is Sergey's Seat (Bench) still here?")
 
         val unnamedBench = getQuestTitle(mapOf(
             "amenity" to "bench",
         ))
-        Assert.assertEquals(unnamedBench, "Is this still here? (Bench)")
+        assertEquals(unnamedBench, "Is this still here? (Bench)")
+    }
+
+    // https://github.com/streetcomplete/StreetComplete/issues/2840#issuecomment-831245075
+    @Test fun issue2840() {
+        val schoki = getQuestTitle(mapOf(
+            "amenity" to "vending_machine",
+            "ref" to "3680",
+            "operator" to "Schoko Lädchen",
+        ))
+        assertEquals(schoki, "Is Schoko Lädchen 3680 (Vending Machine) still here?")
     }
 
     private fun getQuestTitle(tags: Map<String, String>): String {
