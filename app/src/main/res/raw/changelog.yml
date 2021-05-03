@@ -4,7 +4,8 @@ v32.0-alpha1: |
   ended in February, however, there is one last big mega-update I can delight you with before development
   on this app must necessarily wind down:<br/>
   It may not look like a lot, but I basically replaced the whole architecture of the app (#2506, ...)
-  to do this. Special thanks to @FloEdelmann for helping with the refactor.
+  to do this. Note that this required to drop most local data, such as unsynced edits, downloaded
+  quests and statistics.<br/>Special thanks to @FloEdelmann for helping with the refactor.
   </p>
   <h3>🔙️ Superpowered Undo</h3>
   <ul>
