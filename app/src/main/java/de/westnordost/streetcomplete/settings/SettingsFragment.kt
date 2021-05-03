@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.coroutines.*
+import java.util.*
 import javax.inject.Inject
 
 /** Shows the settings screen */
@@ -61,8 +62,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
             context?.let { ctx ->
                 val view = LayoutInflater.from(ctx).inflate(R.layout.dialog_delete_cache, null) as TextView
                 view.text = resources.getString(R.string.delete_cache_dialog_message,
-                    (1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)).format(1),
-                    (1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000)).format(1)
+                    (1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)).format(Locale.getDefault(), 1),
+                    (1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000)).format(Locale.getDefault(), 1)
                 )
                 AlertDialog.Builder(ctx)
                     .setView(view)
