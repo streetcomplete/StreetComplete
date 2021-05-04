@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.HasTitle
 
@@ -50,6 +51,7 @@ class QuestSelectionFragment
             layoutManager = LinearLayoutManager(context)
             adapter = questSelectionAdapter
         }
+        updateSubtitle()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -77,6 +79,11 @@ class QuestSelectionFragment
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onStop() {
+        super.onStop()
+        (requireActivity() as AppCompatActivity).supportActionBar?.subtitle = null
+    }
+
     override fun onReorderedQuests(before: QuestType<*>, after: QuestType<*>) {
         lifecycleScope.launch(Dispatchers.IO) {
             questTypeOrderList.apply(before, after)
@@ -86,6 +93,7 @@ class QuestSelectionFragment
     override fun onChangedQuestVisibility(questType: QuestType<*>, visible: Boolean) {
         lifecycleScope.launch(Dispatchers.IO) {
             visibleQuestTypeController.setVisible(questType, visible)
+            withContext(Dispatchers.Main) { updateSubtitle() }
         }
     }
 
@@ -93,14 +101,20 @@ class QuestSelectionFragment
         lifecycleScope.launch(Dispatchers.IO) {
             questTypeOrderList.clear()
             visibleQuestTypeController.clear()
-            withContext(Dispatchers.Main) { initQuestSelectionAdapter() }
+            withContext(Dispatchers.Main) {
+                initQuestSelectionAdapter()
+                updateSubtitle()
+            }
         }
     }
 
     private fun onDeselectAll() {
         lifecycleScope.launch(Dispatchers.IO) {
             visibleQuestTypeController.setAllVisible(questTypeRegistry.all.filter { it !is OsmNoteQuestType }, false)
-            withContext(Dispatchers.Main) { initQuestSelectionAdapter() }
+            withContext(Dispatchers.Main) {
+                initQuestSelectionAdapter()
+                updateSubtitle()
+            }
         }
     }
 
@@ -112,5 +126,12 @@ class QuestSelectionFragment
         val questTypes = questTypeRegistry.all.toMutableList()
         questTypeOrderList.sort(questTypes)
         return questTypes.map { QuestVisibility(it, visibleQuestTypeController.isVisible(it)) }.toMutableList()
+    }
+
+    private fun updateSubtitle() {
+        val enabledCount = questTypeRegistry.all.count { visibleQuestTypeController.isVisible(it) }
+        val totalCount = questTypeRegistry.all.size
+        val subtitle = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+        (requireActivity() as AppCompatActivity).supportActionBar?.subtitle = subtitle
     }
 }
