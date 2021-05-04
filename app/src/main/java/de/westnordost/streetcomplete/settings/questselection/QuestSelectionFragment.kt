@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.settings.questselection
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AlertDialog
@@ -129,9 +130,14 @@ class QuestSelectionFragment
     }
 
     private fun updateSubtitle() {
-        val enabledCount = questTypeRegistry.all.count { visibleQuestTypeController.isVisible(it) }
-        val totalCount = questTypeRegistry.all.size
-        val subtitle = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+        val subtitle = getSubtitle(requireContext(), questTypeRegistry, visibleQuestTypeController)
         (requireActivity() as AppCompatActivity).supportActionBar?.subtitle = subtitle
     }
+}
+
+fun getSubtitle(context: Context, questTypeRegistry: QuestTypeRegistry,
+                visibleQuestTypeController: VisibleQuestTypeController): String {
+    val enabledCount = questTypeRegistry.all.count { visibleQuestTypeController.isVisible(it) }
+    val totalCount = questTypeRegistry.all.size
+    return context.getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
 }

@@ -23,8 +23,11 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.settings.questselection.getSubtitle
 import kotlinx.coroutines.*
 import java.util.*
 import javax.inject.Inject
@@ -39,6 +42,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
     @Inject internal lateinit var mapDataController: MapDataController
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
+    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
+    @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -57,6 +62,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
             listener?.onClickedQuestSelection()
             true
         }
+        updateQuestPreferenceSummary()
 
         findPreference<Preference>("delete_cache")?.setOnPreferenceClickListener {
             context?.let { ctx ->
@@ -100,6 +106,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     override fun onResume() {
         super.onResume()
         prefs.registerOnSharedPreferenceChangeListener(this)
+        updateQuestPreferenceSummary()
     }
 
     override fun onPause() {
@@ -145,5 +152,10 @@ class SettingsFragment : PreferenceFragmentCompat(),
         val now = System.currentTimeMillis()
         noteController.deleteAllOlderThan(now)
         mapDataController.deleteOlderThan(now)
+    }
+
+    private fun updateQuestPreferenceSummary() {
+        val subtitle = getSubtitle(requireContext(), questTypeRegistry, visibleQuestTypeController)
+        findPreference<Preference>("quests")?.summary = subtitle
     }
 }
