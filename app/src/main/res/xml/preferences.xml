@@ -24,9 +24,8 @@
 
         <Preference
             android:key="quests"
-            android:title="@string/pref_title_quests"
-            android:widgetLayout="@layout/widget_image_next"
-            />
+            android:title="@string/pref_title_quests2"
+            android:widgetLayout="@layout/widget_image_next" />
 
         <ListPreference
             android:key="quests.resurveyIntervals"

@@ -34,7 +34,7 @@ class QuestSelectionFragment
     @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
     @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
 
-    override val title: String get() = getString(R.string.pref_title_quests)
+    override val title: String get() = getString(R.string.pref_title_quests2)
 
     init {
         Injector.applicationComponent.inject(this)
