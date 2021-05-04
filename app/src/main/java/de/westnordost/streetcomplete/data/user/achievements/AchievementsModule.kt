@@ -503,6 +503,7 @@ object AchievementsModule {
                     "AddBusStopRef",
                     "AddBusStopShelter",
                     "AddBenchStatusOnBusStop",
+                    "AddBusStopLit",
                     "AddCrossingIsland",
                     "AddBarrierType"
                 )
