@@ -48,7 +48,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
         }
         when (answer) {
             is IsShopVacant -> {
-                changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
+                changes.addOrModify("shop", "vacant")
             }
             is ShopType -> {
                 changes.deleteIfExists("disused:shop")
