@@ -10,24 +10,26 @@
     tools:ignore="RtlSymmetry">
 
     <ImageView
-        android:id="@+id/dragHandle"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:src="@drawable/ic_drag_vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
         android:id="@+id/questIcon"
         android:layout_width="@dimen/table_icon_size"
         android:layout_height="@dimen/table_icon_size"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
+        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dragHandle"
+        app:layout_constraintStart_toStartOf="@+id/dragHandle"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_quest_street" />
+
+    <ImageView
+        android:id="@+id/dragHandle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingEnd="24dp"
+        android:src="@drawable/ic_drag_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
