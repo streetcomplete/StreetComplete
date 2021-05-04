@@ -56,7 +56,7 @@ v32.0-alpha1: |
   <li>The flags in the statistics view were sometimes wrongly stretched (#2819, #2831), by @tapetis </li>
   <li>The time picker for the postbox collection times now follows the system settings (#2807)</li>
   <li>Fix crash on trying to display opening hours that range to 24:00 (#2830)</li>
-  <li>...and other fixes and enhancements (#2521, #1821, #2628, #2691, #2715, #2728...)</li>
+  <li>...and other fixes and enhancements (#2521, #1821, #2628, #2691, #2715...)</li>
   <li>Remove checking existence of grit bins, as many are removed for summer and not marked as seasonal :( (#2726), by @matkoniecz</li>
   </ul>
 
