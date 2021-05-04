@@ -32,8 +32,6 @@ class CheckExistence(
         ) or (
           (
             amenity = clock
-            or amenity = bench
-            or amenity = waste_basket
             or amenity = post_box
             or leisure = picnic_table
             or amenity = bbq
@@ -42,13 +40,19 @@ class CheckExistence(
             or amenity = ticket_validator
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
-            or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
-            or traffic_calming = table and !highway and !crossing
             or (highway = emergency_access_point or emergency = access_point) and ref
             or emergency = life_ring
             or emergency = phone
           )
           and (${lastChecked(4.0)})
+        ) or (
+          (
+            amenity = bench
+            or amenity = waste_basket
+            or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
+            or traffic_calming = table and !highway and !crossing
+          )
+          and (${lastChecked(6.0)})
         )) and access !~ no|private
     """.toElementFilterExpression()
     }
