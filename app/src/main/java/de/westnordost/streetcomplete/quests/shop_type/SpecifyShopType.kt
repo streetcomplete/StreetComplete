@@ -48,7 +48,8 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
         }
         when (answer) {
             is IsShopVacant -> {
-                changes.addOrModify("shop", "vacant")
+                changes.deleteIfExists("shop")
+                changes.addOrModify("disused:shop", "yes")
             }
             is ShopType -> {
                 changes.deleteIfExists("disused:shop")
