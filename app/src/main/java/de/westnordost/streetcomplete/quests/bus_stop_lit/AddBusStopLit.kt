@@ -26,7 +26,7 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
 
     override val commitMessage = "Add whether a bus stop is lit"
     override val wikiLink = "Key:lit"
-    override val icon = R.drawable.ic_quest_lantern
+    override val icon = R.drawable.ic_quest_bus_stop_lit
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
