@@ -1036,4 +1036,17 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_swing_gate">Horizontal bar</string>
     <string name="quest_barrier_type_kissing_gate_conversion">Converted into a kissing gate</string>
     <string name="quest_stile_type_title">What type of stile is this?</string>
+    <string name="bridge_structure_beam_title">Beam bridge</string>
+    <string name="bridge_structure_suspension_title">Suspension bridge</string>
+    <string name="bridge_structure_arch_title">Arch bridge</string>
+    <string name="bridge_structure_tied_arch_title">Arch bridge</string>
+    <string name="bridge_structure_truss_title">Truss bridge</string>
+    <string name="bridge_structure_cablestayed_title">Cable-stayed bridge</string>
+    <string name="bridge_structure_humpback_title">Humpback bridge</string>
+    <string name="bridge_structure_simple_suspension_title">Simple hanging bridge construction</string>
+    <string name="bridge_structure_floating_title">Pontoon bridge</string>
+    <string name="bridge_structure_beam_desc">A bridge that has no additional support between both ends</string>
+    <string name="bridge_structure_suspension_desc">A type of bridge in which the deck is hung below suspension cables on vertical suspenders</string>
+    <string name="bridge_structure_cablestayed_desc">has one or more towers (or pylons), from which cables support the bridge deck.</string>
+    <string name="bridge_structure_floating_desc">A bridge that floats on water</string>
 </resources>
