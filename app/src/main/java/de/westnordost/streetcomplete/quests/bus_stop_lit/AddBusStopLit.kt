@@ -4,6 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -29,7 +31,7 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_bus_stop_lit
 
     override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
+        val hasName = tags.containsAnyKey("name", "ref")
         val isTram = tags["tram"] == "yes"
         return when {
             isTram && hasName ->    R.string.quest_busStopLit_tram_name_title
@@ -38,6 +40,9 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
             else ->                 R.string.quest_busStopLit_title
         }
     }
+
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["name"] ?: tags["ref"])
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

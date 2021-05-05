@@ -4,6 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.*
 
 class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
@@ -26,7 +28,7 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
     override val icon = R.drawable.ic_quest_bus_stop_shelter
 
     override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
+        val hasName = tags.containsAnyKey("name", "ref")
         val isTram = tags["tram"] == "yes"
         return when {
             isTram && hasName ->    R.string.quest_busStopShelter_tram_name_title
@@ -35,6 +37,9 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
             else ->                 R.string.quest_busStopShelter_title
         }
     }
+
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["name"] ?: tags["ref"])
 
     override fun createForm() = AddBusStopShelterForm()
 
