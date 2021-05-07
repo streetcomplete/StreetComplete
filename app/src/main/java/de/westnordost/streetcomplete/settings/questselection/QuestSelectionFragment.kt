@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.quest.getVisible
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
@@ -138,7 +139,7 @@ class QuestSelectionFragment
 
 fun getSubtitle(context: Context, questTypeRegistry: QuestTypeRegistry,
                 visibleQuestTypeSource: VisibleQuestTypeSource): String {
-    val enabledCount = questTypeRegistry.all.count { visibleQuestTypeSource.isVisible(it) }
+    val enabledCount = questTypeRegistry.getVisible(visibleQuestTypeSource).count()
     val totalCount = questTypeRegistry.all.size
     return context.getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
 }
