@@ -34,7 +34,7 @@ import javax.inject.Inject
 
 /** Shows the settings screen */
 class SettingsFragment : PreferenceFragmentCompat(),
-    SharedPreferences.OnSharedPreferenceChangeListener {
+    SharedPreferences.OnSharedPreferenceChangeListener, VisibleQuestTypeSource.Listener {
 
     @Inject internal lateinit var prefs: SharedPreferences
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
@@ -62,7 +62,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
             listener?.onClickedQuestSelection()
             true
         }
-        updateQuestPreferenceSummary()
 
         findPreference<Preference>("delete_cache")?.setOnPreferenceClickListener {
             context?.let { ctx ->
@@ -101,17 +100,23 @@ class SettingsFragment : PreferenceFragmentCompat(),
     override fun onStart() {
         super.onStart()
         activity?.setTitle(R.string.action_settings)
+        visibleQuestTypeSource.addListener(this)
+        updateQuestPreferenceSummary()
     }
 
     override fun onResume() {
         super.onResume()
         prefs.registerOnSharedPreferenceChangeListener(this)
-        updateQuestPreferenceSummary()
     }
 
     override fun onPause() {
         super.onPause()
         prefs.unregisterOnSharedPreferenceChangeListener(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        visibleQuestTypeSource.removeListener(this)
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
@@ -145,6 +150,10 @@ class SettingsFragment : PreferenceFragmentCompat(),
         } else {
             super.onDisplayPreferenceDialog(preference)
         }
+    }
+
+    override fun onQuestTypeVisibilitiesChanged() {
+        updateQuestPreferenceSummary()
     }
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
