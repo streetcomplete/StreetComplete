@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.settings.questselection.getSubtitle
@@ -43,7 +43,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
+    @Inject internal lateinit var visibleQuestTypeSource: VisibleQuestTypeSource
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -155,7 +155,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     }
 
     private fun updateQuestPreferenceSummary() {
-        val subtitle = getSubtitle(requireContext(), questTypeRegistry, visibleQuestTypeController)
+        val subtitle = getSubtitle(requireContext(), questTypeRegistry, visibleQuestTypeSource)
         findPreference<Preference>("quests")?.summary = subtitle
     }
 }

@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -136,8 +137,8 @@ class QuestSelectionFragment
 }
 
 fun getSubtitle(context: Context, questTypeRegistry: QuestTypeRegistry,
-                visibleQuestTypeController: VisibleQuestTypeController): String {
-    val enabledCount = questTypeRegistry.all.count { visibleQuestTypeController.isVisible(it) }
+                visibleQuestTypeSource: VisibleQuestTypeSource): String {
+    val enabledCount = questTypeRegistry.all.count { visibleQuestTypeSource.isVisible(it) }
     val totalCount = questTypeRegistry.all.size
     return context.getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
 }
