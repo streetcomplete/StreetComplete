@@ -132,14 +132,9 @@ class QuestSelectionFragment
     }
 
     private fun updateSubtitle() {
-        val subtitle = getSubtitle(requireContext(), questTypeRegistry, visibleQuestTypeController)
+        val enabledCount = questTypeRegistry.getVisible(visibleQuestTypeController).count()
+        val totalCount = questTypeRegistry.all.size
+        val subtitle = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
         (requireActivity() as AppCompatActivity).supportActionBar?.subtitle = subtitle
     }
-}
-
-fun getSubtitle(context: Context, questTypeRegistry: QuestTypeRegistry,
-                visibleQuestTypeSource: VisibleQuestTypeSource): String {
-    val enabledCount = questTypeRegistry.getVisible(visibleQuestTypeSource).count()
-    val totalCount = questTypeRegistry.all.size
-    return context.getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
 }

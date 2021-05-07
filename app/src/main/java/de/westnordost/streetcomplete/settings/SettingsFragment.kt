@@ -24,10 +24,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.getVisible
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.settings.questselection.getSubtitle
 import kotlinx.coroutines.*
 import java.util.*
 import javax.inject.Inject
@@ -155,7 +155,9 @@ class SettingsFragment : PreferenceFragmentCompat(),
     }
 
     private fun updateQuestPreferenceSummary() {
-        val subtitle = getSubtitle(requireContext(), questTypeRegistry, visibleQuestTypeSource)
+        val enabledCount = questTypeRegistry.getVisible(visibleQuestTypeSource).count()
+        val totalCount = questTypeRegistry.all.size
+        val subtitle = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
         findPreference<Preference>("quests")?.summary = subtitle
     }
 }
