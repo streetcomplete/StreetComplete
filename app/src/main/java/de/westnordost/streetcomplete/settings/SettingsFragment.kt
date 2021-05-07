@@ -16,6 +16,7 @@ import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -33,7 +34,7 @@ import java.util.*
 import javax.inject.Inject
 
 /** Shows the settings screen */
-class SettingsFragment : PreferenceFragmentCompat(),
+class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener, VisibleQuestTypeSource.Listener {
 
     @Inject internal lateinit var prefs: SharedPreferences
@@ -53,6 +54,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
     init {
         Injector.applicationComponent.inject(this)
     }
+
+    override val title: String get() = getString(R.string.action_settings)
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences, false)
@@ -99,7 +102,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onStart() {
         super.onStart()
-        activity?.setTitle(R.string.action_settings)
         visibleQuestTypeSource.addListener(this)
         updateQuestPreferenceSummary()
     }

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 
@@ -24,6 +26,14 @@ open class FragmentContainerActivity(
             }
         }
 
+    private val fragmentLifecycleCallbacks = object : FragmentManager.FragmentLifecycleCallbacks() {
+        override fun onFragmentStarted(fragmentManager: FragmentManager, fragment: Fragment) {
+            if (fragment.id == R.id.fragment_container && fragment is HasTitle) {
+                updateTitle(fragment)
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -32,6 +42,7 @@ open class FragmentContainerActivity(
             supportActionBar!!.setDisplayShowHomeEnabled(true)
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
+        supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, false)
     }
 
     fun pushMainFragment(fragment: Fragment) {
@@ -42,12 +53,6 @@ open class FragmentContainerActivity(
             )
             replace(R.id.fragment_container, fragment)
             addToBackStack("main")
-        }
-    }
-
-    override fun onAttachFragment(fragment: Fragment) {
-        if (fragment.id == R.id.fragment_container && fragment is HasTitle) {
-            updateTitle(fragment)
         }
     }
 
