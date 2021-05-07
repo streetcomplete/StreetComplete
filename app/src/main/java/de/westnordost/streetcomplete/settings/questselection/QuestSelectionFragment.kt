@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.settings.questselection
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AlertDialog
@@ -13,6 +12,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import de.westnordost.streetcomplete.DisplaysTitle
 import de.westnordost.streetcomplete.HasTitle
 
 import javax.inject.Inject
@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.getVisible
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -38,7 +37,15 @@ class QuestSelectionFragment
     @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
     @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
 
+    private val parentTitleContainer: DisplaysTitle ? get() =
+        parentFragment as? DisplaysTitle ?: activity as? DisplaysTitle
+
     override val title: String get() = getString(R.string.pref_title_quests2)
+    override val subtitle: String get() {
+        val enabledCount = questTypeRegistry.getVisible(visibleQuestTypeController).count()
+        val totalCount = questTypeRegistry.all.size
+        return getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+    }
 
     init {
         Injector.applicationComponent.inject(this)
@@ -132,9 +139,6 @@ class QuestSelectionFragment
     }
 
     private fun updateSubtitle() {
-        val enabledCount = questTypeRegistry.getVisible(visibleQuestTypeController).count()
-        val totalCount = questTypeRegistry.all.size
-        val subtitle = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
-        (requireActivity() as AppCompatActivity).supportActionBar?.subtitle = subtitle
+        parentTitleContainer?.updateTitle(this)
     }
 }

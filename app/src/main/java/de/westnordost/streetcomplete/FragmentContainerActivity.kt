@@ -13,7 +13,7 @@ import androidx.fragment.app.commit
 /** An activity that contains one full-screen ("main") fragment */
 open class FragmentContainerActivity(
     @LayoutRes contentLayoutId: Int = R.layout.activity_fragment_container
-) : AppCompatActivity(contentLayoutId) {
+) : AppCompatActivity(contentLayoutId), DisplaysTitle {
 
     var mainFragment: Fragment?
         get() = supportFragmentManager.findFragmentById(R.id.fragment_container)
@@ -46,11 +46,14 @@ open class FragmentContainerActivity(
     }
 
     override fun onAttachFragment(fragment: Fragment) {
-        if (fragment.id == R.id.fragment_container) {
-            if (fragment is HasTitle) {
-                title = (fragment as HasTitle).title
-            }
+        if (fragment.id == R.id.fragment_container && fragment is HasTitle) {
+            updateTitle(fragment)
         }
+    }
+
+    override fun updateTitle(fragment: HasTitle) {
+        title = fragment.title
+        supportActionBar?.subtitle = fragment.subtitle
     }
 
     override fun onBackPressed() {
