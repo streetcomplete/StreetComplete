@@ -1,3 +1,24 @@
+v32.0-alpha2: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is this bus stop lit?</i> (#2383, #2846), by @TurnrDev</li>
+  </ul>
+  <h3>Other Enhancements</h3>
+  <ul>
+  <li>Improvements in the quest selection screen (#2243, #2847, #2828, #2843), by @FloEdelmann</li>
+  <li>Don't ask for building levels for industrial buildings (#2835), by @matkoniecz</li>
+  <li>Improve referring to map features by name for some quests (#2840)</li>
+  <li>Checking existence: Ask for some map features less frequently, by @matkoniecz</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fixes on specifying shop type quest, by @peternewman, @matkoniecz</li>
+  <li>Fix downloading suspected oneways for locales that use a "," as decimal mark</li>
+  <li>Fix opening a location in another app for locales that use a "," as decimal mark</li>
+  <li>Fix quests that are very close to notes could in rare cases not be opened (#2853)</li>
+  <li>Fix housenumber quest does mostly not appear (#2863)</li>
+  </ul>
+
 v32.0-alpha1: |
   <p>
   The grant from the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a>
