@@ -16,6 +16,7 @@ import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -23,6 +24,9 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.getVisible
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.coroutines.*
@@ -30,8 +34,8 @@ import java.util.*
 import javax.inject.Inject
 
 /** Shows the settings screen */
-class SettingsFragment : PreferenceFragmentCompat(),
-    SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
+    SharedPreferences.OnSharedPreferenceChangeListener, VisibleQuestTypeSource.Listener {
 
     @Inject internal lateinit var prefs: SharedPreferences
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
@@ -39,6 +43,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
     @Inject internal lateinit var mapDataController: MapDataController
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
+    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
+    @Inject internal lateinit var visibleQuestTypeSource: VisibleQuestTypeSource
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -48,6 +54,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
     init {
         Injector.applicationComponent.inject(this)
     }
+
+    override val title: String get() = getString(R.string.action_settings)
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences, false)
@@ -94,7 +102,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onStart() {
         super.onStart()
-        activity?.setTitle(R.string.action_settings)
+        visibleQuestTypeSource.addListener(this)
+        updateQuestPreferenceSummary()
     }
 
     override fun onResume() {
@@ -105,6 +114,11 @@ class SettingsFragment : PreferenceFragmentCompat(),
     override fun onPause() {
         super.onPause()
         prefs.unregisterOnSharedPreferenceChangeListener(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        visibleQuestTypeSource.removeListener(this)
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
@@ -140,10 +154,21 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
     }
 
+    override fun onQuestTypeVisibilitiesChanged() {
+        updateQuestPreferenceSummary()
+    }
+
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         downloadedTilesDao.removeAll()
         val now = System.currentTimeMillis()
         noteController.deleteAllOlderThan(now)
         mapDataController.deleteOlderThan(now)
+    }
+
+    private fun updateQuestPreferenceSummary() {
+        val enabledCount = questTypeRegistry.getVisible(visibleQuestTypeSource).count()
+        val totalCount = questTypeRegistry.all.size
+        val subtitle = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+        findPreference<Preference>("quests")?.summary = subtitle
     }
 }
