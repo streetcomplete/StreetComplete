@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
+import de.westnordost.streetcomplete.quests.opening_hours.parser.isSupported
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
 import java.util.concurrent.FutureTask
 
@@ -90,6 +90,8 @@ class AddOpeningHours (
         and opening_hours:signed != no
     """.trimIndent()).toElementFilterExpression() }
 
+    private val nameTags = listOf("name", "brand")
+
     override val commitMessage = "Add opening hours"
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
@@ -139,7 +141,7 @@ class AddOpeningHours (
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         val rules = oh.toOpeningHoursRules() ?: return true
         // only display supported rules
-        return rules.toOpeningHoursRows() != null
+        return rules.isSupported()
     }
 
     override fun createForm() = AddOpeningHoursForm()
@@ -169,7 +171,7 @@ class AddOpeningHours (
     private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
-        tags.keys.containsAny(listOf("name", "brand"))
+        tags.keys.containsAny(nameTags)
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =
         featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()

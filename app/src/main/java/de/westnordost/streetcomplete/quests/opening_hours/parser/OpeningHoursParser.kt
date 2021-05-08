@@ -25,7 +25,7 @@ fun String.toOpeningHoursRules(): OpeningHoursRuleList? {
 
 /** returns null if the list of rules cannot be displayed by the opening hours widget */
 fun OpeningHoursRuleList.toOpeningHoursRows(): List<OpeningHoursRow>? {
-    if (!rules.isSupported()) {
+    if (!isSupported()) {
         // parsable, but not supported by StreetComplete
         return null
     }
@@ -54,6 +54,8 @@ fun OpeningHoursRuleList.toOpeningHoursRows(): List<OpeningHoursRow>? {
 }
 
 /* ---------------------------------- Checks if it is supported --------------------------------- */
+
+fun OpeningHoursRuleList.isSupported(): Boolean = rules.isSupported()
 
 /** Returns true if supported by StreetComplete
  * Returns false otherwise, in cases where it is not directly representable
