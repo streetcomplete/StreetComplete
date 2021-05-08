@@ -156,11 +156,11 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 private val allKnownMaterials = RecyclingMaterial.values().map { "recycling:" + it.value }
 
 private fun Element.hasAnyRecyclingMaterials(): Boolean =
-    tags?.any { it.key.startsWith("recycling:") && it.value == "yes" } ?: false
+    tags.any { it.key.startsWith("recycling:") && it.value == "yes" }
 
 private fun Element.hasUnknownRecyclingMaterials(): Boolean =
-    tags?.any {
+    tags.any {
         it.key.startsWith("recycling:") &&
         it.key !in allKnownMaterials &&
         it.value == "yes"
-    } ?: true
+    }
