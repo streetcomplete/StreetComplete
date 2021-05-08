@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddPitchLit : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        ways with (leisure = pitch or leisure = track)
+        nodes, ways with (leisure = pitch or leisure = track)
         and (access !~ private|no)
         and indoor != yes and (!building or building = no)
         and (
