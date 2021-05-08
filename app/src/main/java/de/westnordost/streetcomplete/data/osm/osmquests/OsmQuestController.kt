@@ -269,12 +269,12 @@ import javax.inject.Singleton
 
     private fun getBlacklistedPositions(bbox: BoundingBox): Set<LatLon> =
         notesSource
-            .getAllPositions(bbox)
+            .getAllPositions(bbox.enlargedBy(1.2))
             .map { it.truncateTo5Decimals() }
             .toSet()
 
     private fun isBlacklistedPosition(pos: LatLon): Boolean =
-        notesSource.getAllPositions(pos.enclosingBoundingBox(1.0)).isNotEmpty()
+        pos.truncateTo5Decimals() in getBlacklistedPositions(BoundingBox(pos, pos))
 
     private fun getHiddenQuests(): Set<OsmQuestKey> =
         hiddenDB.getAllIds().toSet()
@@ -350,7 +350,9 @@ import javax.inject.Singleton
 
         val visibleAdded = if (added.isNotEmpty()) {
             val hiddenIds = getHiddenQuests()
-            added.filter { it.key !in hiddenIds && !isBlacklistedPosition(it.position) }
+            val bbox = added.map { it.position }.enclosingBoundingBox()
+            val hiddenPositions = getBlacklistedPositions(bbox)
+            added.filter { it.key !in hiddenIds && it.position.truncateTo5Decimals() !in hiddenPositions }
         } else {
             added
         }

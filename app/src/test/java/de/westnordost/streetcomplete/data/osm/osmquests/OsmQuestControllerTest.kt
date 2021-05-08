@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -95,7 +94,7 @@ class OsmQuestControllerTest {
         val bbox = bbox()
 
         on(hiddenDB.getAllIds()).thenReturn(hiddenQuests)
-        on(notesSource.getAllPositions(bbox)).thenReturn(listOf(notePos))
+        on(notesSource.getAllPositions(any())).thenReturn(listOf(notePos))
         on(db.getAllInBBox(bbox, null)).thenReturn(entries)
         on(mapDataSource.getGeometries(argThat {
             it.containsExactlyInAnyOrder(listOf(
@@ -306,7 +305,7 @@ class OsmQuestControllerTest {
 
         on(db.getAllInBBox(bbox)).thenReturn(previousQuests)
 
-        on(notesSource.getAllPositions(notePos.enclosingBoundingBox(1.0))).thenReturn(listOf(notePos))
+        on(notesSource.getAllPositions(any())).thenReturn(listOf(notePos))
 
         on(hiddenDB.getAllIds()).thenReturn(listOf(
             OsmQuestKey(NODE, 3L, "ApplicableQuestType2")
