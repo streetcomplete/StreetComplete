@@ -62,6 +62,7 @@ import javax.inject.Singleton
         )
 
         val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometries)
+        mapDataWithGeometry.boundingBox = mapData.boundingBox
         onUpdateForBBox(bbox, mapDataWithGeometry)
     }
 
@@ -80,6 +81,7 @@ import javax.inject.Singleton
         val deleted = mapDataUpdates.deleted + oldElementKeys
 
         val mapDataWithGeom = MutableMapDataWithGeometry(mapData, elementGeometryEntries)
+        mapDataWithGeom.boundingBox = mapData.boundingBox
 
         elementDB.deleteAll(deleted)
         geometryDB.deleteAll(deleted)
