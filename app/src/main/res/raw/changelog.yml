@@ -1,4 +1,10 @@
 v32.0-alpha2: |
+  <p><b>Remember:</b> Sync any edits before upgrading to this version from v31 or earlier. If you have
+  auto-sync on (the default), this does not concern you.</p>
+  
+  <p><b>Note:</b> Due to database upgrades in this release, previously hidden quests and the quest types
+  you have chosen to disable will be reset, you can enable/disable quests in settings again. Your quest
+  statistics will also be briefly wrong until they're re-calculated again.</p>
   <h3>New Quests</h3>
   <ul>
   <li><i>Is this bus stop lit?</i> (#2383, #2846), by @TurnrDev</li>

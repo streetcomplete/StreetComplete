@@ -51,6 +51,7 @@ class CheckExistence(
             or amenity = waste_basket
             or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
             or traffic_calming = table and !highway and !crossing
+            or amenity = recycling and recycling_type = container
           )
           and (${lastChecked(6.0)})
         )) and access !~ no|private
