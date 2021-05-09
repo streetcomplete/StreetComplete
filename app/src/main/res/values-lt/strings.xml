@@ -967,9 +967,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="pref_category_advanced">"Išmanesni"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Užduočių parinkimas"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Įjungtas"</string>
 
     <!-- Fuzzy -->

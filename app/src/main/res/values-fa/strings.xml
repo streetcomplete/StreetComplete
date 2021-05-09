@@ -914,9 +914,6 @@
     <string name="pref_category_advanced">"پیشرفته"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"انتخاب جستار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"فعالسازی"</string>
 
     <!-- Fuzzy -->
@@ -2284,7 +2281,6 @@
     <string name="quest_tracktype_grade2a">"مستحکم ولی ناهموار"</string>
     <string name="quest_tracktype_grade3a">"اغلب مستحکم"</string>
     <string name="quest_generic_answer_does_not_exist">"وجود ندارد..."</string>
-    <string name="osm_element_gone_warning">"هشدار: این عمل بازگشت‌پذیر نیست!"</string>
     <string name="osm_element_gone_description">"اطمینان دارید که وجود ندارد؟ شاید فقط موقعیت آن اندکی متفاوت باشد. اگر تردید دارید، بهتر است به جای این کار، یادداشتی بگذارید."</string>
     <string name="osm_element_gone_confirmation">"وجود ندارد"</string>
     <string name="leave_note">"درج یادداشت"</string>

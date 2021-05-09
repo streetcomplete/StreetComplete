@@ -966,9 +966,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="pref_category_advanced">"高级"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"任务选择"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"已启用"</string>
 
     <!-- Fuzzy -->

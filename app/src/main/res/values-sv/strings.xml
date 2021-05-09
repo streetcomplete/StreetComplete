@@ -372,7 +372,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_cycleway_value_lane_dual">"cykelkörfält, båda riktningarna"</string>
     <string name="quest_cycleway_value_track_dual">"separat cykelbana, båda riktningarna"</string>
     <string name="pref_category_advanced">"Avancerat"</string>
-    <string name="pref_title_quests">"Val av uppdrag"</string>
     <string name="quest_enabled">"Aktiverad"</string>
     <string name="quest_type">"Uppdrag"</string>
     <string name="action_reset">"Återställ"</string>
@@ -974,7 +973,6 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_tracktype_grade2a">"Fast men obelagd"</string>
     <string name="quest_tracktype_grade3a">"Mestadels fast"</string>
     <string name="quest_generic_answer_does_not_exist">"Den finns inte…"</string>
-    <string name="osm_element_gone_warning">"Varning: Detta kan inte ångras!"</string>
     <string name="osm_element_gone_description">"Är du säker på att den inte finns, inte ens på en någon annan plats? Om du är osäker, lämna hellre en anteckning istället."</string>
     <string name="osm_element_gone_confirmation">"Den finns inte"</string>
     <string name="leave_note">"Lämna anteckningen"</string>

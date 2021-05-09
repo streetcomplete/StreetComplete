@@ -1,65 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"설정"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"인증 서버에 접속할 수 없습니다"</string>
-
-    <!-- Fuzzy -->
     <string name="retry">"재시도"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"인증 실패: 목록에 있는 모든 권한을 허가해야 합니다"</string>
-
-    <!-- Fuzzy -->
     <string name="title_activity_settings">"설정"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_communication">"연결"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"화면"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
 
     <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"지정한 용량(MB)만큼 지도 타일 캐시가 외부 저장소에 할당됩니다"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"모든 참고 띄우기"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"질문 형식이 아닌 참고도 띄웁니다"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"질문 형식이 아닌 참고는 무시합니다"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"지도 캐시 크기"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"나를 따라다니기"</string>
-
-    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap 기여자"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_otherAnswers">"다른 답변..."</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_generic_otherAnswers">"다른 답변…"</string>
     <string name="quest_generic_answer_notApplicable">"답할 수 없음…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"확실합니까?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"네, 확실합니다"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"확인해 보겠습니다"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_error_field_empty">"이 칸이 비었습니다"</string>
 
     <!-- Fuzzy -->
@@ -425,8 +389,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
 
     <!-- Fuzzy -->
     <string name="quest_sport_answer_multi">"특정한 스포츠가 아님"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_soccer">"축구"</string>
     <string name="quest_sport_tennis">"테니스"</string>
     <string name="quest_sport_baseball">"야구"</string>
@@ -964,9 +926,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
     <string name="pref_category_advanced">"상세"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"퀘스트 선택"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"활성화됨"</string>
 
     <!-- Fuzzy -->
@@ -1247,8 +1206,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
 
     <!-- Fuzzy -->
     <string name="quest_construction_building_title">"이 건물이 공사 중이 아닙니까?"</string>
-
-    <!-- Fuzzy -->
     <string name="questList_disabled_in_country">"%s에서는 띄우지 않기"</string>
 
     <!-- Fuzzy -->
@@ -1840,8 +1797,6 @@ StreetComplete는 GPS 위치 정보를 다른 사람과 공유하지 않습니�
 
     <!-- Fuzzy -->
     <string name="about_title_donate">"기부"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_donate">"감사하는 마음을 보여주세요 ❤️"</string>
 
     <!-- Fuzzy -->
@@ -2114,7 +2069,6 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="quest_tracktype_grade2a">"단단하지만 비포장임"</string>
     <string name="quest_tracktype_grade3a">"거의 단단함"</string>
     <string name="quest_generic_answer_does_not_exist">"존재하지 않습니다..."</string>
-    <string name="osm_element_gone_warning">"경고: 이 작업은 되돌릴 수 없습니다!"</string>
     <string name="osm_element_gone_description">"정말 존재하지 않습니까? 혹시 바로 옆에 있는 것은 아닌가요? 확신이 들지 않는다면, 수정 대신 참고를 남기는 것이 좋습니다."</string>
     <string name="osm_element_gone_confirmation">"존재하지 않습니다"</string>
     <string name="leave_note">"참고 남기기"</string>
@@ -2161,4 +2115,13 @@ StreetComplete는 여러분 주변의 지도에 없는 데이터가 있는지 �
     <string name="team_mode_choose_color">"그룹원들이 사용할 고유 색상:"</string>
     <string name="team_mode_active">"팀 모드가 활성화되었습니다"</string>
     <string name="team_mode_deactivated">"팀 모드가 비활성화되었습니다"</string>
+    <string name="quest_pitchLit_title">"이 운동장에 불이 들어옵니까?"</string>
+    <string name="quest_pitchLit_title_track">"이 스포츠 트랙에 불이 들어옵니까?"</string>
+    <string name="undo_last">"마지막 편집 되돌리기"</string>
+    <string name="show_edit_history">"편집 역사 보기"</string>
+    <string name="toast_undo_unavailable">"이 편집은 이미 동기화되었으므로 되돌릴 수 없습니다"</string>
+    <string name="delete_cache_dialog_message">"퀘스트를 포함한 모든 다운로드한 맵 데이터를 삭제하겠습니까?
+데이터는 %1$s일 뒤에 새로고침되며, 사용하지 않은 데이터는 %2$s일 뒤에 자동적으로 삭제됩니다."</string>
+    <string name="quest_barrier_type_title">"이 장벽은 어떻게 생겼습니까?"</string>
+    <string name="quest_barrier_type_kerb">"연석"</string>
 </resources>

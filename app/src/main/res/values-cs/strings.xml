@@ -282,7 +282,7 @@ OpenStreetMap nelze upravovat anonymně, proto jsou všechny vaše změny proved
 
 &lt;b&gt;Poloha&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Aplikace s nikým nesdílí vaši GPS polohu. Vaše poloha se používá jen pro automatické vyhledávání „úkolů“ ve vašem okolí a pro vycentrování mapy (a její stahování) na základě vaší polohy.
+Aplikace s nikým nesdílí vaši GPS polohu. Vaše poloha se používá jen pro automatické vyhledávání „úkolů“ ve vašem okolí a pro vycentrování mapy (a její stahování) na základě vaší polohy. 
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Použití dat&lt;/b&gt;&lt;/p&gt;
@@ -971,9 +971,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Pokročilé"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests">"Podrobný výběr úkolů"</string>
 
     <!-- Fuzzy -->
     <string name="quest_enabled">"Povoleno"</string>
@@ -2154,7 +2151,7 @@ Pamatujte, že tato aplikace se zeptá na popisné číslo budovy až po určen�
     <!-- Fuzzy -->
     <string name="achievement_blind_title">"Šestý smysl"</string>
 
-    <!-- Is there way to write plurals correctly? In Czech language we have two groups of plurals for amount 2-4 and 5,6,7 etc... Other languages have different rules.
+    <!-- Is there way to write plurals correctly? In Czech language we have two groups of plurals for amount 2-4 and 5,6,7 etc... Other languages have different rules. 
 https://developer.android.com/guide/topics/resources/string-resource#Plurals
 
 It is not big issue, but it would be nice to have it correctly. -->
@@ -2282,7 +2279,7 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_openingHours_off_day">"Zavřeno"</string>
     <string name="quest_openingHours_unspecified_range">"Neurčeno"</string>
 
-    <!-- Could this be translated as:
+    <!-- Could this be translated as: 
 Is the situation on this cycleway still the same? -->
     <string name="quest_cycleway_resurvey_title">"Je to zde stále aktulální situace cyklostezky?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Má %1$s (%2$s) bezbariérový přístup?"</string>
@@ -2384,7 +2381,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_tracktype_grade2a">"Víceméně pevný"</string>
     <string name="quest_tracktype_grade3a">"Spíše pevný"</string>
     <string name="quest_generic_answer_does_not_exist">"Neexistuje to..."</string>
-    <string name="osm_element_gone_warning">"Pozor: Tato akce nelze vrátit zpět!"</string>
     <string name="osm_element_gone_description">"Jste si jistí, že to co tu bylo již neexistuje? Třeba nedaleko? Pokud jste na pochybách, je lepší zanechat k místu poznámku."</string>
     <string name="osm_element_gone_confirmation">"Neexistuje to"</string>
     <string name="leave_note">"Nechat poznámku"</string>

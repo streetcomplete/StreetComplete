@@ -713,7 +713,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Lisäasetukset"</string>
-    <string name="pref_title_quests">"Tehtävävalinnat"</string>
 
     <!-- Fuzzy -->
     <string name="quest_enabled">"Päällä"</string>
@@ -1967,7 +1966,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_tracktype_grade2a">"Kiinteä mutta päällystämätön"</string>
     <string name="quest_tracktype_grade3a">"Enimmäkseen kiinteä"</string>
     <string name="quest_generic_answer_does_not_exist">"Ei olemassa..."</string>
-    <string name="osm_element_gone_warning">"Varoitus: Tätä ei voi peruuttaa!"</string>
     <string name="osm_element_gone_description">"Oletko varma ettei tätä ole, ei edes hieman eri paikassa? Jos et ole varma, jätä ilmoitus."</string>
     <string name="osm_element_gone_confirmation">"Se ei ole olemassa"</string>
     <string name="leave_note">"Jätä ilmoitus"</string>
@@ -2014,4 +2012,57 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="team_mode_choose_color">"Nyt jokainen ryhmässäsi valitsee oman värinsä:"</string>
     <string name="team_mode_active">"Työryhmätila päällä"</string>
     <string name="team_mode_deactivated">"Työryhmätila pois päältä"</string>
+    <string name="quest_pitchLit_title">"Onko tämä urheilukenttä valaistu?"</string>
+    <string name="quest_pitchLit_title_track">"Onko tämä urheilurata valaistu?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Ylistys ohjataan liikennevaloilla"</string>
+    <string name="undo_last">"Peru viimeisin muutos"</string>
+    <string name="show_edit_history">"Näytä muokkaus historia"</string>
+    <string name="undo_confirm_title2">"Kumpaanko seuraava muutos?"</string>
+    <string name="synced">"Synkronoitu"</string>
+    <string name="toast_undo_unavailable">"Tämä muutos on synkronoitu ja sitä ei voida perua"</string>
+    <string name="quest_cycleway_value_separate">"Näykyy erillisenä kartalla"</string>
+    <string name="created_note_action_title">"Luotu ilmoitus"</string>
+    <string name="commented_note_action_title">"Kommentoitu ilmoitus"</string>
+    <string name="hid_action_description">"Piiloit sen"</string>
+    <string name="split_way_action_description">"Jaoit tien"</string>
+    <string name="deleted_poi_action_description">"Poistot sen"</string>
+    <string name="added_tag_action_title">"Lisäsit %s"</string>
+    <string name="removed_tag_action_title">"Poistit %s"</string>
+    <string name="changed_tag_action_title">"Päivitit %s"</string>
+    <string name="pref_title_delete_cache">"Poista välimuisti"</string>
+    <string name="pref_title_delete_cache_summary">"Jos arvelet jonkin tiedon olevan vanhentunutta"</string>
+    <string name="delete_confirmation">"Poista"</string>
+    <string name="delete_cache_dialog_message">"Poista kaikki ladatut karttatiedot sisältäen kysymykset? Tiedot päivitetään %1$s päivän ja käyttämättömät tiedot poistetaan %2$s päivän päästä automaattisesti."</string>
+    <string name="quest_shop_type_title">"Minkä tyyppistä kauppa %s on?"</string>
+    <string name="quest_shop_type_title_no_name">"Minkä tyyppinen kauppa tämä on?"</string>
+    <string name="pref_background_type_select">"Valitse taustan tyyli"</string>
+    <string name="background_type_map">"Kartta"</string>
+    <string name="background_type_aerial_esri">"Ilmakuva (Esti)"</string>
+    <string name="quest_barrier_type_title">"Minkä tyylinen este tämä on?"</string>
+    <string name="quest_barrier_type_gate">"Portti"</string>
+    <string name="quest_barrier_type_lift_gate">"Puomieste"</string>
+    <string name="quest_barrier_type_bollard">"Tolpat"</string>
+    <string name="quest_barrier_type_chain">"Ketju"</string>
+    <string name="quest_barrier_type_rope">"Köysi"</string>
+    <string name="quest_barrier_type_wire_gate">"Irrotettava lankaosa"</string>
+    <string name="quest_barrier_type_cattle_grid">"Ruudukko estää karjan kulkemisen"</string>
+    <string name="quest_barrier_type_block">"Suuri liikkumaton este"</string>
+    <string name="quest_barrier_jersey_barrier">"Betoniporsas"</string>
+    <string name="quest_barrier_type_log">"Hirsi"</string>
+    <string name="quest_barrier_type_kerb">"Reunakiveys"</string>
+    <string name="quest_barrier_type_height_restrictor">"Korkeuseste"</string>
+    <string name="quest_barrier_full_height_turnstile">"Täyskorkea portti"</string>
+    <string name="quest_barrier_type_turnstile">"Portti"</string>
+    <string name="quest_barrier_type_passage">"Kulku seinän/portin/tms. kautta"</string>
+    <string name="quest_barrier_type_debris_pile">"Roskakasa"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Ahdas väli"</string>
+    <string name="quest_barrier_type_stile_ladder">"Tikapuut"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Polkupyöräeste"</string>
+    <string name="quest_barrier_type_kissing_gate">"U tai V portti"</string>
+    <string name="quest_barrier_type_stepover">"Ylikiivettävä portti"</string>
+    <string name="quest_barrier_type_swing_gate">"Vaakasuora este"</string>
+    <string name="quest_policeType_title">"Minkä tyyppinen poliisiasema tämä on?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Muunnettu suudelmaportiksi (V tai U portti)"</string>
+    <string name="quest_stile_type_title">"Minkä tyyppinen porras tai portti tämä on?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"viereiset omakotitalot"</string>
 </resources>

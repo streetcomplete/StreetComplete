@@ -434,7 +434,6 @@ As mentioned, the app directly communicates with OSM infrastructure. However, be
     <string name="quest_cycleway_value_lane_dual">"бициклистичка трака, у оба смера"</string>
     <string name="quest_cycleway_value_track_dual">"бициклистичка стаза, у оба смера"</string>
     <string name="pref_category_advanced">"Напредно"</string>
-    <string name="pref_title_quests">"Одабир задатака"</string>
     <string name="quest_enabled">"Омогућено"</string>
     <string name="quest_type">"Врста задатака"</string>
     <string name="action_reset">"Врати у почетно стање"</string>
@@ -1008,7 +1007,6 @@ As mentioned, the app directly communicates with OSM infrastructure. However, be
     <string name="quest_tracktype_grade2a">"Чврсто, али неасфалтирано"</string>
     <string name="quest_tracktype_grade3a">"Углавном чврсто"</string>
     <string name="quest_generic_answer_does_not_exist">"Не постоји..."</string>
-    <string name="osm_element_gone_warning">"Упозорење: Ово није могуће опозвати!"</string>
     <string name="osm_element_gone_description">"Да ли сте сигурни да не достаје, чак ни на нешто удаљенијој локацији? Уколико нисте сигурни, боље оставите напомену."</string>
     <string name="osm_element_gone_confirmation">"Не постоји"</string>
     <string name="leave_note">"Оставите напомену"</string>

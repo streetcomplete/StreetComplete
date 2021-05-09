@@ -966,9 +966,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="pref_category_advanced">"Pokročilé"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Výber úlohy"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Povolené"</string>
 
     <!-- Fuzzy -->
@@ -2337,7 +2334,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_tracktype_grade2a">"Viac-menej pevný"</string>
     <string name="quest_tracktype_grade3a">"Skôr pevný"</string>
     <string name="quest_generic_answer_does_not_exist">"Neexistuje to..."</string>
-    <string name="osm_element_gone_warning">"Pozor: Táto akcia sa nedá vrátiť späť!"</string>
     <string name="osm_element_gone_description">"Ste si istí, že to čo tu bolo už neexistuje? Trebárs neďaleko? Ak ste na pochybách, je lepšie zanechať k miestu poznámku."</string>
     <string name="osm_element_gone_confirmation">"Neexistuje to"</string>
     <string name="leave_note">"Nechať poznámku"</string>

@@ -951,9 +951,6 @@
     <string name="pref_category_advanced">"ഉയർന്ന വിഭാഗം"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"അന്വേഷണം തിരഞ്ഞെടുക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"സാധ്യമാക്കി"</string>
 
     <!-- Fuzzy -->

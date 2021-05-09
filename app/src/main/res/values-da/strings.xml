@@ -944,9 +944,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="pref_category_advanced">"Avanceret"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Opgavevalg"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Aktiveret"</string>
 
     <!-- Fuzzy -->
@@ -2094,7 +2091,6 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_tracktype_grade2a">"Fast, men ikke asfalteret"</string>
     <string name="quest_tracktype_grade3a">"Mest fast underlag"</string>
     <string name="quest_generic_answer_does_not_exist">"Det eksisterer ikke..."</string>
-    <string name="osm_element_gone_warning">"Advarsel: denne handling kan ikke fortrydes!"</string>
     <string name="osm_element_gone_description">"Er du sikker på at dette ikke findes, heller ikke på en lokalitet i nærheden? Når du er i tvivl så er det bedre kun at efterlade en note i stedet for."</string>
     <string name="osm_element_gone_confirmation">"Dette sted finde ikke"</string>
     <string name="leave_note">"Efterlad note"</string>

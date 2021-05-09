@@ -951,9 +951,6 @@
     <string name="pref_category_advanced">"Расширенные"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Выбор квестов"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Включён"</string>
 
     <!-- Fuzzy -->
@@ -2303,7 +2300,6 @@
     <string name="quest_tracktype_grade2a">"Твёрдое но без покрытия"</string>
     <string name="quest_tracktype_grade3a">"Преимущественно твёрдое"</string>
     <string name="quest_generic_answer_does_not_exist">"Не существует..."</string>
-    <string name="osm_element_gone_warning">"Внимание: Это действие нельзя отменить!"</string>
 
     <!-- Fuzzy -->
     <string name="osm_element_gone_description">"Вы уверены, что этого места не существует, даже в ближайшей окрестности? Если есть сомнения, лучше оставить заметку."</string>

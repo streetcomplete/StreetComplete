@@ -965,9 +965,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="pref_category_advanced">"Avanzado"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Selección de tareas"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Activado"</string>
 
     <!-- Fuzzy -->
@@ -2358,7 +2355,6 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_tracktype_grade2a">"Sólido pero no pavimentado"</string>
     <string name="quest_tracktype_grade3a">"Mayormente sólido"</string>
     <string name="quest_generic_answer_does_not_exist">"Esto no existe..."</string>
-    <string name="osm_element_gone_warning">"Cuidado: ¡No puede revertirse!"</string>
     <string name="osm_element_gone_description">"¿Está seguro de que no existe, ni siquiera en un lugar un poco diferente? En caso de duda, mejor dejar una nota."</string>
     <string name="osm_element_gone_confirmation">"No existe"</string>
     <string name="leave_note">"Dejar nota"</string>
@@ -2409,6 +2405,8 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_pitchLit_title_track">"¿Esta pista deportiva está iluminada?"</string>
     <string name="quest_crossing_type_signals_controlled">"Cruce controlado por semáforos"</string>
     <string name="undo_last">"Deshacer la última edición"</string>
+    <string name="show_edit_history">"Mostrar historial de edición"</string>
+    <string name="undo_confirm_title2">"¿Deshacer la siguiente edición?"</string>
     <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edición ya está sincronizada y no se puede deshacer"</string>
     <string name="quest_cycleway_value_separate">"se muestra por separado en el mapa"</string>
@@ -2421,6 +2419,7 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="removed_tag_action_title">"%s eliminado"</string>
     <string name="changed_tag_action_title">"%s actualizado"</string>
     <string name="pref_title_delete_cache">"Borrar caché"</string>
+    <string name="pref_title_delete_cache_summary">"Si crees que algunos datos están desactualizados"</string>
     <string name="delete_confirmation">"Borrar"</string>
     <string name="delete_cache_dialog_message">"¿Eliminar todos los datos de mapas descargados, incluidas las misiones?
 Los datos se actualizan después de %1$s días y los datos no utilizados se eliminan automáticamente después de %2$s días."</string>
@@ -2431,6 +2430,7 @@ Los datos se actualizan después de %1$s días y los datos no utilizados se elim
     <string name="background_type_aerial_esri">"Aéreo (por Esri)"</string>
     <string name="quest_barrier_type_title">"¿Qué tipo de barrera es?"</string>
     <string name="quest_barrier_type_gate">"Puerta"</string>
+    <string name="quest_barrier_type_lift_gate">"Barrera levadiza"</string>
     <string name="quest_barrier_type_bollard">"Bolardo(s)"</string>
     <string name="quest_barrier_type_chain">"Cadena"</string>
     <string name="quest_barrier_type_rope">"Cuerda"</string>
@@ -2443,6 +2443,16 @@ Los datos se actualizan después de %1$s días y los datos no utilizados se elim
     <string name="quest_barrier_type_height_restrictor">"Control de gálibo"</string>
     <string name="quest_barrier_full_height_turnstile">"Molinete de altura completa"</string>
     <string name="quest_barrier_type_turnstile">"Molinete"</string>
+    <string name="quest_barrier_type_passage">"Paso a través de la pared/valla/etc."</string>
+    <string name="quest_barrier_type_debris_pile">"Montón de escombros"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Barrera para bicicletas"</string>
+    <string name="quest_barrier_type_swing_gate">"Barrera horizontal"</string>
+    <string name="quest_policeType_title">"¿Qué tipo de comisaría es esta?"</string>
     <string name="quest_buildingType_semi_detached_description2">"viviendas unifamiliares contiguas"</string>
+    <string name="pref_title_quests2">"Selección de misiones y prioridades"</string>
+    <string name="pref_subtitle_quests">"%1$d de %2$d habilitados"</string>
+    <string name="quest_busStopLit_tram_name_title">"¿Está iluminada la parada de tranvía %s?"</string>
+    <string name="quest_busStopLit_tram_title">"¿Está iluminada esta parada de tranvía?"</string>
+    <string name="quest_busStopLit_title">"¿Está iluminada esta parada de bus?"</string>
+    <string name="quest_busStopLit_name_title">"¿Está iluminada la parada de bus %s?"</string>
 </resources>

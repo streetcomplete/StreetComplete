@@ -482,7 +482,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="resurvey_intervals_less_often">Ask less often</string>
     <string name="resurvey_intervals_default">Default</string>
     <string name="resurvey_intervals_more_often">Ask more often</string>
-    <string name="pref_title_quests">Quest selection</string>
+    <string name="pref_title_quests2">Quest selection and priority</string>
+    <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
     <string name="action_reset">Reset</string>
@@ -531,6 +532,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_busStopBench_tram_title">"Does this streetcar stop have a bench?"</string>
     <string name="quest_busStopBench_title">"Does this bus stop have a bench?"</string>
     <string name="quest_busStopBench_name_title">"Does the bus stop %s have a bench?"</string>
+    <string name="quest_busStopLit_tram_name_title">"Is the streetcar stop %s lit?"</string>
+    <string name="quest_busStopLit_tram_title">"Is this streetcar stop lit?"</string>
+    <string name="quest_busStopLit_title">"Is this bus stop lit?"</string>
+    <string name="quest_busStopLit_name_title">"Is the bus stop %s lit?"</string>
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
     <string name="quest_religion_for_place_of_worship_name_title">What religion is practiced at %s?</string>

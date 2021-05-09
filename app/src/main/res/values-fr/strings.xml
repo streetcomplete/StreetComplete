@@ -143,7 +143,7 @@ L'application ne partage votre position GPS avec personne. Elle est utilisée po
 
 &lt;p&gt;&lt;b&gt;Utilisation des données&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Comme mentionné, l'application communique directement avec l'infrastructure d'OSM.
+Comme mentionné, l'application communique directement avec l'infrastructure d'OSM. 
 Toutefois, avant de télécharger vos modifications, l'application vérifie, à l'aide d'un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fichier texte simple&lt;/a&gt; sur mon serveur, si la version de l'application n'est pas interdite de téléversement. Il s'agit d'une mesure de précaution pour éviter que les versions qui présentent des bogues critiques ne corrompent les données d'OSM.&lt;/p&gt;"</string>
     <string name="autosync_on">"Toujours"</string>
 
@@ -426,10 +426,10 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_address_house_name_label">"Nom de la maison :"</string>
 
     <!-- For the record https://wiki.openstreetmap.org/wiki/Simple_3D_buildings#Roof -->
-    <string name="quest_buildingLevels_roofLevelsLabel2">"Étages dans le toit"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"étages dans le toit"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_levelsLabel2">"Étages (sans compter ceux du toit)"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"étages (sans compter ceux du toit)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Diffère selon la partie du bâtiment"</string>
@@ -456,7 +456,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
 
     <!-- Does it mean "Advanced preferences" ? -->
     <string name="pref_category_advanced">"Avancé"</string>
-    <string name="pref_title_quests">"Sélection de quête"</string>
     <string name="quest_enabled">"Activée"</string>
     <string name="quest_type">"Type de quête"</string>
     <string name="action_reset">"Réinitialiser"</string>
@@ -610,7 +609,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_buildingType_dormitory">"Résidence universitaire, foyer"</string>
     <string name="quest_buildingType_houseboat">"Maison flottante"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
-    <string name="quest_buildingType_static_caravan">"mobile-home"</string>
+    <string name="quest_buildingType_static_caravan">"Mobile-home"</string>
     <string name="quest_buildingType_commercial">"Bâtiment commercial"</string>
     <string name="quest_buildingType_commercial_generic_description">"Bâtiment où les gens travaillent, font des achats ou exercent toute autre activité professionnelle commerciale"</string>
     <string name="quest_buildingType_industrial">"Industriel"</string>
@@ -795,7 +794,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_leaf_type_mixed">"Les deux sont présents"</string>
     <string name="quest_cyclewayPartSurface_title">"Quel est le revêtement de la piste cyclable ici ?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Cela varie en cours de route"</string>
-    <string name="quest_split_way_description">"S'il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon.
+    <string name="quest_split_way_description">"S'il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon. 
 Découper maintenant ?"</string>
 
     <!-- Fuzzy -->
@@ -886,7 +885,7 @@ Découper maintenant ?"</string>
 
     <!-- "StreetComplete permet de contribuer facilement à OpenStreetMap." ? -->
     <string name="tutorial_intro">"StreetComplete permet de contribuer facilement à OpenStreetMap. L'application recherche automatiquement les détails manquants autour de vous : pistes cyclables, numéros de rue, horaires d'ouverture et plus encore..."</string>
-    <string name="tutorial_solving_quests">"Une fois trouvés, ces détails manquants apparaîtront sur la carte sous forme de quêtes.
+    <string name="tutorial_solving_quests">"Une fois trouvés, ces détails manquants apparaîtront sur la carte sous forme de quêtes. 
 
 Vous pouvez d'ores et déjà commencer à les résoudre, mais vous devrez vous connecter pour que vos réponses soient publiées."</string>
     <string name="tutorial_stay_safe">"En cas de doute, vous pouvez toujours répondre \"Je ne sais pas\" et laisser une note.
@@ -1127,11 +1126,11 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_buildingType_historic">"Monument historique"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_historic_description">"Bâtiment à valeur historique, ne présentant pas de fonction civique, religieuse ou commerciale"</string>
+    <string name="quest_buildingType_historic_description">"bâtiment à valeur historique, ne présentant pas de fonction civique, religieuse ou commerciale"</string>
     <string name="quest_buildingType_abandoned">"Abandonné"</string>
-    <string name="quest_buildingType_abandoned_description">"Bâtiment inutilisé dont la fonction originelle est inconnue"</string>
+    <string name="quest_buildingType_abandoned_description">"bâtiment inutilisé dont la fonction originelle est inconnue"</string>
     <string name="quest_buildingType_ruins">"Ruines"</string>
-    <string name="quest_buildingType_ruins_description">"Bâtiment abandonné, en ruines et non identifiable"</string>
+    <string name="quest_buildingType_ruins_description">"bâtiment abandonné, en ruines et non identifiable"</string>
     <string name="quest_charging_station_capacity_title">"Combien de véhicules peuvent être chargés simultanément à cette station de recharge ?"</string>
     <string name="link_disaster_ninja_description">"Carte montrant les catastrophes naturelles récentes, d'intérêt pour les cartographes humanitaires, ainsi que plusieurs statistiques intéressantes pour analyser l'état de la cartographie (récence, avancement, ...)"</string>
     <string name="quest_lanes_title">"Combien y a t-il de voies pour voitures sur cette route ?"</string>
@@ -1181,7 +1180,6 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_tracktype_grade2a">"Dur mais sans revêtement"</string>
     <string name="quest_tracktype_grade3a">"Globalement dur"</string>
     <string name="quest_generic_answer_does_not_exist">"Ça n'existe pas…"</string>
-    <string name="osm_element_gone_warning">"Attention : ça ne peut pas être annulé !"</string>
     <string name="osm_element_gone_description">"Êtes-vous sûr que ça n'existe pas, même pas à un endroit un peu différent ? En cas de doute, il vaut mieux laisser une note à la place."</string>
     <string name="osm_element_gone_confirmation">"Ça n'existe pas"</string>
     <string name="leave_note">"Laisser une note"</string>
@@ -1232,12 +1230,12 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="team_mode_deactivated">"Le mode par équipe est désactivé"</string>
     <string name="quest_pitchLit_title">"Ce terrain de sport est-il éclairé ?"</string>
     <string name="quest_pitchLit_title_track">"Cette piste de sport est-elle éclairée ?"</string>
-    <string name="quest_crossing_type_signals_controlled">"Feux tricolores à ce passage piétion"</string>
+    <string name="quest_crossing_type_signals_controlled">"Feux piétons bicolores"</string>
     <string name="undo_last">"Annuler la dernière contribution"</string>
     <string name="show_edit_history">"Montrer l'historique de contributions"</string>
     <string name="undo_confirm_title2">"Annuler cette contribution ?"</string>
     <string name="synced">"Synchronisé"</string>
-    <string name="toast_undo_unavailable">"Cette contribution est déjà téléversée et ne peu têtre annulée"</string>
+    <string name="toast_undo_unavailable">"Cette contribution est déjà téléversée et ne peut pas être annulée"</string>
     <string name="quest_cycleway_value_separate">"Affichée distinctement sur la carte"</string>
     <string name="created_note_action_title">"Créer une note"</string>
     <string name="commented_note_action_title">"Commenter une note"</string>
@@ -1248,12 +1246,12 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="removed_tag_action_title">"Retiré %s"</string>
     <string name="changed_tag_action_title">"Mettre à jour à %s"</string>
     <string name="pref_title_delete_cache">"Supprimer le cache"</string>
-    <string name="pref_title_delete_cache_summary">"Si vous pensez que certaines données ne sont plus à jour"</string>
+    <string name="pref_title_delete_cache_summary">"Si vous pensez que certaines données sont périmées"</string>
     <string name="delete_confirmation">"Supprimer"</string>
     <string name="delete_cache_dialog_message">"Supprimer toutes les données de cartes téléchargées, y compris les quêtes ? Les données sont automatiquement mises à jour au bout %1$s et les données inutilisées sont supprimées au bout de %2$s jours."</string>
     <string name="quest_shop_type_title">"Quel type de commerce est %s ?"</string>
     <string name="quest_shop_type_title_no_name">"Quel type de commerce est-ce ?"</string>
-    <string name="pref_background_type_select">"Sélectionner le type de fond "</string>
+    <string name="pref_background_type_select">"Sélectionner le type de fond"</string>
     <string name="background_type_map">"Carte"</string>
     <string name="background_type_aerial_esri">"Aérienne (par Esri)"</string>
     <string name="quest_barrier_type_title">"Quel type de barrière est-ce ?"</string>
@@ -1264,7 +1262,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_barrier_type_rope">"Corde"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_barrier_type_wire_gate">"Barbelés déplaçables"</string>
+    <string name="quest_barrier_type_wire_gate">"Barbelés amovibles"</string>
     <string name="quest_barrier_type_cattle_grid">"Grille empêchant le passage du bétail"</string>
 
     <!-- Fuzzy -->
@@ -1279,11 +1277,14 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_barrier_type_turnstile">"Portillon d'accès"</string>
     <string name="quest_barrier_type_passage">"Passage à travers un mur/clôture/etc"</string>
     <string name="quest_barrier_type_debris_pile">"Tas de débris"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Échalier étroit"</string>
+    <string name="quest_barrier_type_stile_ladder">"Échalier (échelle)"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Barrière à vélo"</string>
     <string name="quest_barrier_type_kissing_gate">"Portillon anti-bétail"</string>
-    <string name="quest_barrier_type_stepover">"Echalier"</string>
+    <string name="quest_barrier_type_stepover">"Échalier (marches)"</string>
     <string name="quest_barrier_type_swing_gate">"Barre horizontale"</string>
     <string name="quest_policeType_title">"Quel type de poste de police est-ce ?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Changer pour un portillon à chicane mobile"</string>
     <string name="quest_stile_type_title">"Quel type d'échalier est-ce ?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"maison(s) unifamiliale(s) contiguë(s)"</string>
 </resources>

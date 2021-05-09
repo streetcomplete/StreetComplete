@@ -397,7 +397,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_cycleway_value_lane_dual">"corsia ciclabile, entrambe le direzioni"</string>
     <string name="quest_cycleway_value_track_dual">"pista ciclabile, entrambe le direzioni"</string>
     <string name="pref_category_advanced">"Avanzate"</string>
-    <string name="pref_title_quests">"Seleziona le missioni"</string>
     <string name="quest_enabled">"Attivate"</string>
     <string name="quest_type">"Tipo di ricerca"</string>
     <string name="action_reset">"Reset"</string>
@@ -995,7 +994,6 @@ riconoscimento"</string>
     <string name="quest_tracktype_grade2a">"Solido ma non pavimentato"</string>
     <string name="quest_tracktype_grade3a">"Per lo più solido"</string>
     <string name="quest_generic_answer_does_not_exist">"Non esiste…"</string>
-    <string name="osm_element_gone_warning">"Attenzione: non può essere annullato!"</string>
     <string name="osm_element_gone_description">"Sei sicuro che non esista più, magari in una posizione leggermente differente? In caso di dubbio lascia una nota."</string>
     <string name="osm_element_gone_confirmation">"Non esiste"</string>
     <string name="leave_note">"Lascia una nota"</string>
@@ -1043,4 +1041,60 @@ riconoscimento"</string>
     <string name="team_mode_choose_color">"A questo punto, ciascuna persona del gruppo sceglie un colore diverso:"</string>
     <string name="team_mode_active">"La modalità squadra è attiva"</string>
     <string name="team_mode_deactivated">"La modalità squadra è disattivata"</string>
+    <string name="quest_pitchLit_title">"Questo campo da gioco è illuminato?"</string>
+    <string name="quest_pitchLit_title_track">"Questa pista è illuminata?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Attraversamento controllato da semafori"</string>
+    <string name="undo_last">"Annulla l'ultima modifica"</string>
+    <string name="show_edit_history">"Mostra lo storico delle modifiche"</string>
+    <string name="undo_confirm_title2">"Vuoi annullare questa modifica?"</string>
+    <string name="synced">"Sincronizzato"</string>
+    <string name="toast_undo_unavailable">"La modifica è già sincronizzata e non può essere annullata"</string>
+    <string name="quest_cycleway_value_separate">"mostrato separatamente sulla mappa"</string>
+    <string name="created_note_action_title">"Hai creato una nota"</string>
+    <string name="commented_note_action_title">"Hai commentato una nota"</string>
+    <string name="hid_action_description">"Hai nascosto"</string>
+    <string name="split_way_action_description">"Hai diviso il percorso"</string>
+    <string name="deleted_poi_action_description">"Hai eliminato"</string>
+    <string name="added_tag_action_title">"Hai aggiunto %s"</string>
+    <string name="removed_tag_action_title">"Hai rimosso %s"</string>
+    <string name="changed_tag_action_title">"Hai aggiornato in %s"</string>
+    <string name="pref_title_delete_cache">"Elimina cache"</string>
+    <string name="pref_title_delete_cache_summary">"Se pensi che alcuni dati non siano aggiornati"</string>
+    <string name="delete_confirmation">"Elimina"</string>
+    <string name="delete_cache_dialog_message">"Cancellare tutti i dai scaricati, missioni incluse?
+I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancellati automaticamente dopo %2$s giorni."</string>
+    <string name="quest_shop_type_title">"Che tipo di negozio è %s?"</string>
+    <string name="quest_shop_type_title_no_name">"Che tipo di negozio è questo?"</string>
+    <string name="pref_background_type_select">"Seleziona lo stile dello sfondo"</string>
+    <string name="background_type_map">"Mappa"</string>
+    <string name="background_type_aerial_esri">"Satellite (ESRI)"</string>
+    <string name="quest_barrier_type_title">"Che tipo di barriera è questa?"</string>
+    <string name="quest_barrier_type_gate">"Cancello"</string>
+    <string name="quest_barrier_type_lift_gate">"Barriera ad asta"</string>
+    <string name="quest_barrier_type_bollard">"Colonnina"</string>
+    <string name="quest_barrier_type_chain">"Catena"</string>
+    <string name="quest_barrier_type_rope">"Corda"</string>
+    <string name="quest_barrier_type_wire_gate">"Sezione di filo removibile"</string>
+    <string name="quest_barrier_type_cattle_grid">"Griglia che blocca il bestiame"</string>
+    <string name="quest_barrier_type_block">"Grosso oggetto inamovibile"</string>
+    <string name="quest_barrier_jersey_barrier">"Barriera Jersey"</string>
+    <string name="quest_barrier_type_log">"Tronco"</string>
+    <string name="quest_barrier_type_kerb">"Cordolo"</string>
+    <string name="quest_barrier_type_height_restrictor">"Limitatore in altezza"</string>
+    <string name="quest_barrier_full_height_turnstile">"Tornello ad altezza piena"</string>
+    <string name="quest_barrier_type_turnstile">"Tornello"</string>
+    <string name="quest_barrier_type_passage">"Passaggio attraverso un muro/cancello/ecc."</string>
+    <string name="quest_barrier_type_debris_pile">"Pila di detriti"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Strettoia"</string>
+    <string name="quest_barrier_type_stile_ladder">"Scala"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Barriera per biciclette"</string>
+    <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>
+    <string name="quest_barrier_type_stepover">"Scavalco"</string>
+    <string name="quest_barrier_type_swing_gate">"Sbarra orizzontale"</string>
+    <string name="quest_policeType_title">"Che tipo di stazione di polizia è questa?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Convertito in un kissing gate"</string>
+
+    <!-- Stile dovrebbe essere cavalcasiepe, ma non ne sono sicuro -->
+    <string name="quest_stile_type_title">"Che tipo di scaletta è questa?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"casa/e unifamiliare attigua/e"</string>
 </resources>

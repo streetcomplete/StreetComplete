@@ -966,9 +966,6 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="pref_category_advanced">"Avançat"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Selecció de cerca"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Habilitar"</string>
 
     <!-- Fuzzy -->

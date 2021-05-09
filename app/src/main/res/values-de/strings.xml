@@ -193,7 +193,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_sport_netball">"Netball"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
     <string name="quest_select_hint">"Wähle:"</string>
-    <string name="quest_sport_manySports_confirmation_description">"Ist dieses Spielfeld speziell für genau diese Sportarten vorgesehen oder als Allzweckfeld für alle möglichen Spiele?"</string>
+    <string name="quest_sport_manySports_confirmation_description">"Ist dieses Spielfeld speziell für genau diese Sportarten vorgesehen (es gibt Markierungen und Equipment) oder als Allzweckfeld für alle möglichen Spiele?"</string>
     <string name="quest_manySports_confirmation_specific">"Speziell für diese"</string>
     <string name="quest_manySports_confirmation_generic">"Allzweck"</string>
     <string name="quest_sport_manySports_confirmation_title">"Viele Sportarten ausgewählt"</string>
@@ -371,7 +371,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_cycleway_value_lane_dual">"Radfahrstreifen, beide Richtungen"</string>
     <string name="quest_cycleway_value_track_dual">"Fahrradweg, beide Richtungen"</string>
     <string name="pref_category_advanced">"Erweitert"</string>
-    <string name="pref_title_quests">"Aufgabenauswahl"</string>
     <string name="quest_enabled">"Aktiviert"</string>
     <string name="quest_type">"Aufgabentyp"</string>
     <string name="action_reset">"Zurücksetzen"</string>
@@ -383,7 +382,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_hasFeature_only">"Ausschließlich"</string>
     <string name="quest_dietType_explanation_vegan">"Veganes Essen enthält keine Tierprodukte (Fleisch, Milchprodukte, Eier, Honig, …)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Vegetarisches Essen enthält kein Fleisch."</string>
-    <string name="quest_dietType_explanation">"Nur mit „Ja“ antworten, wenn es hier eine vergleichbare Auswahl für diese Ernährung gibt."</string>
+    <string name="quest_dietType_explanation">"Nur mit „Ja“ antworten, wenn es hier eine vergleichbare Auswahl für diese Ernährung gibt"</string>
     <string name="quest_carWashType_title">"Was für eine Autowaschanlage ist das?"</string>
     <string name="quest_carWashType_automated">"Automatisiert"</string>
     <string name="quest_carWashType_selfService">"Selbstbedienung"</string>
@@ -433,7 +432,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_religion_bahai">"Bahaitum"</string>
     <string name="quest_religion_caodaist">"Caodaismus"</string>
     <string name="quest_religion_chinese_folk">"Chinesischer Volksglaube"</string>
-    <string name="quest_religion_for_wayside_shrine_title">"Welcher Religion gehört dieser Schrein an?"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"Welcher Religion gehört dieser Bildstock an?"</string>
     <string name="quest_parking_fee_title">"Fallen hier Parkgebühren an?"</string>
     <string name="quest_cycleway_value_lane_soft">"Schutzstreifen (gestrichelte Linie)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Pflaster aus unbehauenem Stein"</string>
@@ -962,7 +961,6 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_tracktype_grade2a">"Unbefestigt, aber fest"</string>
     <string name="quest_tracktype_grade3a">"Größtenteils fest"</string>
     <string name="quest_generic_answer_does_not_exist">"Existiert nicht…"</string>
-    <string name="osm_element_gone_warning">"Achtung: Das kann nicht rückgängig gemacht werden!"</string>
     <string name="osm_element_gone_description">"Bist du dir sicher, dass es nicht existiert, auch nicht an einer leicht anderen Stelle? Im Zweifelsfall hinterlasse besser eine Notiz."</string>
     <string name="osm_element_gone_confirmation">"Existiert nicht"</string>
     <string name="leave_note">"Notiz hinterlassen"</string>
@@ -986,7 +984,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_surface_value_artificial_turf">"Kunstrasen"</string>
     <string name="quest_surface_value_tartan">"Tartanbahn"</string>
     <string name="quest_pitchSurface_title_track">"Welchen Bodenbelag hat diese Rennbahn?"</string>
-    <string name="quest_bicycle_parking_access_title">"Ist es eingeschränkt, welche Fahrräder hier parken dürfen?"</string>
+    <string name="quest_bicycle_parking_access_title">"Ist es eingeschränkt, wer hier ein Fahrrad parken darf?"</string>
     <string name="quest_bicycle_parking_fee_title">"Fallen hier Parkgebühren für Fahrräder an?"</string>
     <string name="quest_buildingType_house_description2">"nicht freistehendes Einfamilienhaus"</string>
     <string name="quest_drinking_water_title">"Ist das Wasser hier trinkbar? (%s)"</string>
@@ -1064,5 +1062,11 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_policeType_title">"Was für eine Polizeistation ist das?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Durch ein Kissing Gate ersetzt"</string>
     <string name="quest_stile_type_title">"Was für ein Zauntritt ist das?"</string>
-    <string name="quest_buildingType_semi_detached_description2">"Benachbart Einfamilienhaus(en)"</string>
+    <string name="quest_buildingType_semi_detached_description2">"aneinandergrenzende Einfamilienhäuser / -haus"</string>
+    <string name="pref_title_quests2">"Aufgabenauswahl und -priorität"</string>
+    <string name="pref_subtitle_quests">"%1$d von %2$d aktiviert"</string>
+    <string name="quest_busStopLit_tram_name_title">"Ist die Straßenbahnhaltestelle %s beleuchtet?"</string>
+    <string name="quest_busStopLit_tram_title">"Ist diese Straßenbahnhaltestelle beleuchtet?"</string>
+    <string name="quest_busStopLit_title">"Ist diese Bushaltestelle beleuchtet?"</string>
+    <string name="quest_busStopLit_name_title">"Ist die Bushaltestelle %s beleuchtet?"</string>
 </resources>

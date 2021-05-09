@@ -968,9 +968,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="pref_category_advanced">"詳細"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"探求の選択"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"有効"</string>
 
     <!-- Fuzzy -->

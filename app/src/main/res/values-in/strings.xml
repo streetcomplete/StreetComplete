@@ -567,7 +567,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_cycleway_value_lane_dual">"lajur sepeda, kedua arah"</string>
     <string name="quest_cycleway_value_track_dual">"jalur sepeda, dua arah"</string>
     <string name="pref_category_advanced">"Lanjutan"</string>
-    <string name="pref_title_quests">"Pilihan pencarian"</string>
     <string name="quest_enabled">"Nyala"</string>
     <string name="quest_type">"Jenis Pencarian"</string>
     <string name="action_reset">"Reset"</string>

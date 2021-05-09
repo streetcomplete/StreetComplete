@@ -952,9 +952,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="pref_category_advanced">"Speciális"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Kérdések kiválasztása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Engedélyezve"</string>
 
     <!-- Fuzzy -->
@@ -2333,7 +2330,6 @@ szintek"</string>
     <string name="quest_tracktype_grade2a">"Szilárd, de burkolatlan"</string>
     <string name="quest_tracktype_grade3a">"Többnyire szilárd"</string>
     <string name="quest_generic_answer_does_not_exist">"Nem létezik…"</string>
-    <string name="osm_element_gone_warning">"Figyelem: Ez nem vonható vissza!"</string>
     <string name="osm_element_gone_description">"Biztos vagy benne, hogy nem létezik, akár egy kissé eltérő helyszínen? Ha nem vagy benne biztos, inkább hagyj egy megjegyzést."</string>
     <string name="osm_element_gone_confirmation">"Nem létezik"</string>
     <string name="leave_note">"Megyjegyzés írása"</string>
@@ -2418,11 +2414,11 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_barrier_type_block">"Nagy, nem mozdítható objektum"</string>
     <string name="quest_barrier_jersey_barrier">"Beton szalagkorlát"</string>
     <string name="quest_barrier_type_log">"Farönk"</string>
-    <string name="quest_barrier_type_kerb">"Járdaszegély"</string>
-    <string name="quest_barrier_type_height_restrictor">"Magas járműveket akadályozó"</string>
+    <string name="quest_barrier_type_kerb">"Szegély"</string>
+    <string name="quest_barrier_type_height_restrictor">"Magassági akadály"</string>
     <string name="quest_barrier_full_height_turnstile">"Egész alakos forgókapu"</string>
     <string name="quest_barrier_type_turnstile">"Forgókapu"</string>
-    <string name="quest_barrier_type_passage">"Átjáró falon/kerítések/egyeben"</string>
+    <string name="quest_barrier_type_passage">"Átjáró falon/kerítésen/egyeben"</string>
     <string name="quest_barrier_type_debris_pile">"Törmelékhalom"</string>
     <string name="quest_barrier_type_stile_squeezer">"Szűk átjáró"</string>
     <string name="quest_barrier_type_stile_ladder">"Létra átjáró"</string>
@@ -2433,4 +2429,5 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_policeType_title">"Ez milyen típusú rendőrőrs?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Kettős kapuvá átalakítva"</string>
     <string name="quest_stile_type_title">"Ez milyen típusú kerítés feletti átjáró?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"csatlakozó családi ház(ak)"</string>
 </resources>
