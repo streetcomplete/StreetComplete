@@ -1,7 +1,7 @@
 v32.0-alpha2: |
   <p><b>Remember:</b> Sync any edits before upgrading to this version from v31 or earlier. If you have
   auto-sync on (the default), this does not concern you.</p>
-  
+
   <p><b>Note:</b> Due to database upgrades in this release, previously hidden quests and the quest types
   you have chosen to disable will be reset, you can enable/disable quests in settings again. Your quest
   statistics will also be briefly wrong until they're re-calculated again.</p>
@@ -11,6 +11,8 @@ v32.0-alpha2: |
   </ul>
   <h3>Other Enhancements</h3>
   <ul>
+  <li>Added Arabic by Charbel Bechara and others</li>
+  <li>Added Romanian by Georgian and others</li>
   <li>Improvements in the quest selection screen (#2243, #2847, #2828, #2843), by @FloEdelmann</li>
   <li>Don't ask for building levels for industrial buildings (#2835), by @matkoniecz</li>
   <li>Improve referring to map features by name for some quests (#2840)</li>
@@ -19,6 +21,7 @@ v32.0-alpha2: |
   <h3>Fixes</h3>
   <ul>
   <li>Fixes on specifying shop type quest, by @peternewman, @matkoniecz</li>
+  <li>Possibly fix an endless download-loop in certain unknown circumstances (#2860)</li>
   <li>Fix downloading suspected oneways for locales that use a "," as decimal mark</li>
   <li>Fix opening a location in another app for locales that use a "," as decimal mark</li>
   <li>Fix quests that are very close to notes could in rare cases not be opened (#2853)</li>
