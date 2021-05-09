@@ -22,7 +22,7 @@ abstract class CoroutineIntentService(name: String) : Service() {
     private val mutex = Mutex()
 
     override fun onStart(intent: Intent?, startId: Int) {
-        val cancelPreviousIntent = intent?.getBooleanExtra(DownloadService.ARG_CANCEL, false) ?: false
+        val cancelPreviousIntent = intent?.getBooleanExtra(ARG_PREVIOUS_CANCEL, false) ?: false
         scope.launch {
             mutex.withLock {
                 if (cancelPreviousIntent) currentJob?.cancel()
