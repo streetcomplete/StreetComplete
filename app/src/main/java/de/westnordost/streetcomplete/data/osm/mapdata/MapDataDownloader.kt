@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.enlargedBy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
 import java.lang.System.currentTimeMillis
 import javax.inject.Inject
 
@@ -27,6 +28,8 @@ class MapDataDownloader @Inject constructor(
 
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
+
+        yield()
 
         mapDataController.putAllForBBox(bbox, mapData)
     }
