@@ -45,13 +45,13 @@ class Downloader @Inject constructor(
         Log.i(TAG, "Finished download ($bboxString) in ${seconds.format(1)}s")
     }
 
-    private suspend fun hasDownloadedAlready(tiles: TilesRect): Boolean {
+    private fun hasDownloadedAlready(tiles: TilesRect): Boolean {
         val freshTime = ApplicationConstants.REFRESH_DATA_AFTER
         val ignoreOlderThan = max(0, currentTimeMillis() - freshTime)
         return downloadedTilesDb.get(tiles, ignoreOlderThan).contains(DownloadedTilesType.ALL)
     }
 
-    private suspend fun putDownloadedAlready(tiles: TilesRect) {
+    private fun putDownloadedAlready(tiles: TilesRect) {
         downloadedTilesDb.put(tiles, DownloadedTilesType.ALL)
     }
 
