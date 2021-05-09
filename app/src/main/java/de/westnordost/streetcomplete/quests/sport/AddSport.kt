@@ -14,9 +14,10 @@ class AddSport : OsmFilterQuestType<List<Sport>>() {
     )
 
     override val elementFilter = """
-        nodes, ways with leisure = pitch and
-        (!sport or sport ~ ${ambiguousSportValues.joinToString("|")} )
-        and (access !~ private|no)
+        ways with
+          leisure = pitch
+          and (!sport or sport ~ ${ambiguousSportValues.joinToString("|")} )
+          and access !~ private|no
     """
     override val commitMessage = "Add pitches sport"
     override val wikiLink = "Key:sport"
