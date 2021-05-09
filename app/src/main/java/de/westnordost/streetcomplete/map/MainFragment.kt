@@ -478,20 +478,22 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
     @AnyThread override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        val f = bottomSheetFragment
-        if (f !is IsShowingQuestDetails) return
+        lifecycleScope.launch {
+            val f = bottomSheetFragment
+            if (f !is IsShowingQuestDetails) return@launch
 
-        // open quest does not exist anymore!
-        if (removed.contains(f.questKey)) {
-            lifecycleScope.launch { closeBottomSheet() }
+            // open quest does not exist anymore!
+            if (removed.contains(f.questKey)) {
+                closeBottomSheet()
+            }
         }
     }
 
     @AnyThread override fun onVisibleQuestsInvalidated() {
-        val f = bottomSheetFragment
-        if (f !is IsShowingQuestDetails) return
-
         lifecycleScope.launch {
+            val f = bottomSheetFragment
+            if (f !is IsShowingQuestDetails) return@launch
+
             val openQuest = withContext(Dispatchers.IO) { questController.get(f.questKey) }
             if (openQuest == null) {
                 closeBottomSheet()
