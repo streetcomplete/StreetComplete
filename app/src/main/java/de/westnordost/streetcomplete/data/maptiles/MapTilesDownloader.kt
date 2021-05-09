@@ -29,10 +29,14 @@ class MapTilesDownloader @Inject constructor(
         var cachedSize = 0
         val time = currentTimeMillis()
 
-        supervisorScope {
+        coroutineScope {
             for (tile in getDownloadTileSequence(bbox)) {
                 launch {
-                    val result = downloadTile(tile.zoom, tile.x, tile.y)
+                    val result = try {
+                        downloadTile(tile.zoom, tile.x, tile.y)
+                    } catch (e: Exception) {
+                        DownloadFailure
+                    }
                     ++tileCount
                     when (result) {
                         is DownloadFailure -> ++failureCount
@@ -61,7 +65,7 @@ class MapTilesDownloader @Inject constructor(
            identical in order for the cache to work */
         val url = vectorTileProvider.getTileUrl(zoom, x, y) + "&"
         val httpUrl = HttpUrl.parse(url)
-        check(httpUrl != null) { "Invalid URL: $url" }
+        require(httpUrl != null) { "Invalid URL: $url" }
 
         val builder = Request.Builder()
             .url(httpUrl)
