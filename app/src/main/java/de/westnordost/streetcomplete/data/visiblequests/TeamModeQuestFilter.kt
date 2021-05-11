@@ -29,11 +29,11 @@ import javax.inject.Singleton
     private val listeners: MutableList<TeamModeChangeListener> = CopyOnWriteArrayList()
 
     fun isVisible(quest: Quest): Boolean =
-        !isEnabled || quest.stableId % teamSize == indexInTeam.toLong()
+        !isEnabled || quest.stableId < 0 || quest.stableId % teamSize == indexInTeam.toLong()
 
     private val Quest.stableId: Long get() = when(this) {
         is OsmQuest -> elementId
-        is OsmNoteQuest -> id!!
+        is OsmNoteQuest -> id
         else -> 0
     }
 
