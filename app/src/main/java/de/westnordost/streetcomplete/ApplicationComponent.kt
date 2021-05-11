@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.download.DownloadModule
 import de.westnordost.streetcomplete.data.download.DownloadService
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryModule
 import de.westnordost.streetcomplete.data.meta.MetadataModule
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsModule
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsModule
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestModule
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
@@ -61,7 +62,8 @@ import javax.inject.Singleton
     NoteEditsModule::class,
     OsmNoteQuestModule::class,
     OsmQuestModule::class,
-    VisibleQuestTypeModule::class
+    VisibleQuestTypeModule::class,
+    CreatedElementsModule::class
 ])
 interface ApplicationComponent {
     fun inject(app: StreetCompleteApplication)
