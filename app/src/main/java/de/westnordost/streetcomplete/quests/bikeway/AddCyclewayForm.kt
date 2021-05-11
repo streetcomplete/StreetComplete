@@ -123,7 +123,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         isDefiningBothSides = savedInstanceState.getBoolean(DEFINE_BOTH_SIDES)
         savedInstanceState.getString(CYCLEWAY_RIGHT)?.let { rightSide = Cycleway.valueOf(it) }
         savedInstanceState.getString(CYCLEWAY_LEFT)?.let { leftSide = Cycleway.valueOf(it) }
-        isDisplayingPreviousCycleway = savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_CYCLEWAY)
+        setAsResurvey(savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_CYCLEWAY))
 
     }
 
