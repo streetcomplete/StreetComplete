@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.housenumber
+package de.westnordost.streetcomplete.quests.address
 
 import org.junit.Assert.*
 import org.junit.Test

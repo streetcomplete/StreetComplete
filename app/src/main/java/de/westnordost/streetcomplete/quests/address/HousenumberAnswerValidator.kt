@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.housenumber
+package de.westnordost.streetcomplete.quests.address
 
 val VALID_CONSCRIPTIONNUMBER_REGEX = Regex("\\p{N}{1,6}")
 

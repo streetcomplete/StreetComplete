@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.housenumber
+package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.data.elementfilter.StringWithCursor
 
