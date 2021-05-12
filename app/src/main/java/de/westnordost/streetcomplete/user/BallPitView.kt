@@ -98,6 +98,7 @@ class BallPitView @JvmOverloads constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE) fun onPause() {
         sensorManager.unregisterListener(sensorEventListener)
+        mainHandler.removeCallbacksAndMessages(null)
         physicsController.pause()
     }
 
