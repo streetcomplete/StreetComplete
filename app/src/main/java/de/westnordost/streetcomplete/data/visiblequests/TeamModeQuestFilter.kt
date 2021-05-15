@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsSource
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 /** Controller for filtering all quests that are hidden because they are shown to other users in
  *  team mode. Takes care of persisting team mode settings and notifying listeners about changes */
 @Singleton class TeamModeQuestFilter @Inject internal constructor(
+    private val createdElementsSource: CreatedElementsSource,
     private val prefs: SharedPreferences
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -29,7 +31,10 @@ import javax.inject.Singleton
     private val listeners: MutableList<TeamModeChangeListener> = CopyOnWriteArrayList()
 
     fun isVisible(quest: Quest): Boolean =
-        !isEnabled || quest.stableId < 0 || quest.stableId % teamSize == indexInTeam.toLong()
+        !isEnabled ||
+        quest.stableId < 0 ||
+        quest is OsmQuest && createdElementsSource.contains(quest.elementType, quest.elementId) ||
+        quest.stableId % teamSize == indexInTeam.toLong()
 
     private val Quest.stableId: Long get() = when(this) {
         is OsmQuest -> elementId

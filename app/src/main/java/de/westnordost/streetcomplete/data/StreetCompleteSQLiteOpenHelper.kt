@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProviderTable
 import de.westnordost.streetcomplete.data.osm.osmquests.*
@@ -61,6 +62,8 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         db.execSQL(ElementIdProviderTable.CREATE)
         db.execSQL(ElementIdProviderTable.INDEX_CREATE)
 
+        db.execSQL(CreatedElementsTable.CREATE)
+
         // quests
         db.execSQL(VisibleQuestTypeTable.CREATE)
 
@@ -90,8 +93,11 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // for later changes to the DB
         // ...
+        if (oldVersion == 1 && newVersion > 1) {
+            db.execSQL(CreatedElementsTable.CREATE)
+        }
     }
 
 }
 
-private const val DB_VERSION = 1
+private const val DB_VERSION = 2

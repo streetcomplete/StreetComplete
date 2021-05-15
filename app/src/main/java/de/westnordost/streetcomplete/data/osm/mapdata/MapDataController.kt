@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import android.util.Log
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsController
 import de.westnordost.streetcomplete.data.osm.geometry.*
 import de.westnordost.streetcomplete.ktx.format
 import java.lang.System.currentTimeMillis
@@ -15,7 +16,8 @@ import javax.inject.Singleton
     private val relationDB: RelationDao,
     private val elementDB: ElementDao,
     private val geometryDB: ElementGeometryDao,
-    private val elementGeometryCreator: ElementGeometryCreator
+    private val elementGeometryCreator: ElementGeometryCreator,
+    private val createdElementsController: CreatedElementsController
 ) {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -77,6 +79,7 @@ import javax.inject.Singleton
             geometry?.let { ElementGeometryEntry(element.type, element.id, geometry) }
         }
 
+        val newElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.newElementId) }
         val oldElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
         val deleted = mapDataUpdates.deleted + oldElementKeys
 
@@ -87,6 +90,7 @@ import javax.inject.Singleton
         geometryDB.deleteAll(deleted)
         geometryDB.putAll(elementGeometryEntries)
         elementDB.putAll(elements)
+        createdElementsController.putAll(newElementKeys)
 
         onUpdated(updated = mapDataWithGeom, deleted = deleted)
     }
@@ -172,6 +176,7 @@ import javax.inject.Singleton
 
         val elementCount = elementDB.deleteAll(elements)
         val geometryCount = geometryDB.deleteAll(elements)
+        createdElementsController.deleteAll(elements)
         Log.i(TAG,"Deleted $elementCount old elements and $geometryCount geometries")
 
         return elementCount
