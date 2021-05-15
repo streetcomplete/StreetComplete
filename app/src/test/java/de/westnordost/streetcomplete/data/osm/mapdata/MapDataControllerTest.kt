@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsController
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
@@ -24,6 +25,7 @@ class MapDataControllerTest {
     private lateinit var elementDB: ElementDao
     private lateinit var controller: MapDataController
     private lateinit var geometryCreator: ElementGeometryCreator
+    private lateinit var createdElementsController: CreatedElementsController
 
     @Before fun setUp() {
         nodeDB = mock()
@@ -32,7 +34,8 @@ class MapDataControllerTest {
         geometryDB = mock()
         elementDB = mock()
         geometryCreator = mock()
-        controller = MapDataController(nodeDB, wayDB, relationDB, elementDB, geometryDB, geometryCreator)
+        createdElementsController = mock()
+        controller = MapDataController(nodeDB, wayDB, relationDB, elementDB, geometryDB, geometryCreator, createdElementsController)
     }
 
     @Test fun get() {
@@ -107,6 +110,7 @@ class MapDataControllerTest {
         verify(elementDB).deleteAll(expectedDeleteKeys)
         verify(elementDB).putAll(elements)
         verify(geometryDB).putAll(eq(geomEntries))
+        verify(createdElementsController).putAll(eq(idUpdates.map { ElementKey(it.elementType, it.newElementId) }))
 
         sleep(100)
         verify(listener).onUpdated(any(), eq(expectedDeleteKeys))
@@ -125,6 +129,7 @@ class MapDataControllerTest {
 
         verify(elementDB).deleteAll(elementKeys)
         verify(geometryDB).deleteAll(elementKeys)
+        verify(createdElementsController).deleteAll(elementKeys)
 
         sleep(100)
         verify(listener).onUpdated(any(), eq(elementKeys))
