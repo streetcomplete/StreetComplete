@@ -183,15 +183,15 @@ private fun BoundingBox.toOsmApiBoundingBox() =
 /* --------------------------------- OsmApiElement -> Element ----------------------------------- */
 
 private fun OsmApiNode.toNode() =
-    Node(id, LatLon(position.latitude, position.longitude), tags, version, editedAt.toEpochMilli())
+    Node(id, LatLon(position.latitude, position.longitude), HashMap(tags), version, editedAt.toEpochMilli())
 
 private fun OsmApiWay.toWay() =
-    Way(id, nodeIds, tags, version, editedAt.toEpochMilli())
+    Way(id, ArrayList(nodeIds), HashMap(tags), version, editedAt.toEpochMilli())
 
 private fun OsmApiRelation.toRelation() = Relation(
     id,
     members.map { it.toRelationMember() }.toMutableList(),
-    tags,
+    HashMap(tags),
     version,
     editedAt.toEpochMilli()
 )
