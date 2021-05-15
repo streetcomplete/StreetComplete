@@ -191,21 +191,19 @@ private fun Note.shouldShowAsQuest(
     showOnlyNotesPhrasedAsQuestions: Boolean,
     blockedNoteIds: Set<Long>
 ): Boolean {
-
-    // don't show a note if user already contributed to it
-    if (containsCommentFromUser(userId) || probablyCreatedByUserInThisApp(userId)) return false
-    // a note comment pending to be uploaded also counts as contribution
+    // hidden notes
     if (id in blockedNoteIds) return false
+
+    // don't show notes where this user (just) commented last
+    if (comments.last().isCommentIsFromUser(userId)) return false
 
     /* many notes are created to report problems on the map that cannot be resolved
      * through an on-site survey.
      * Likely, if something is posed as a question, the reporter expects someone to
      * answer/comment on it, possibly an information on-site is missing, so let's only show these */
-    if (showOnlyNotesPhrasedAsQuestions) {
-        if (!probablyContainsQuestion() && !containsSurveyRequiredMarker()) return false
-    }
-
-    return true
+    return if (showOnlyNotesPhrasedAsQuestions) {
+        !probablyCreatedByUserInThisApp(userId) && (probablyContainsQuestion() || containsSurveyRequiredMarker())
+    } else true
 }
 
 private fun Note.probablyContainsQuestion(): Boolean {
@@ -233,14 +231,14 @@ private fun Note.containsSurveyRequiredMarker(): Boolean {
     return comments.any { it.text?.matches(".*$surveyRequiredMarker.*".toRegex()) == true }
 }
 
-private fun Note.containsCommentFromUser(userId: Long): Boolean =
-    comments.any { it.isFromUser(userId) && it.isComment  }
-
 private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     val firstComment = comments.first()
     val isViaApp = firstComment.text?.contains("via " + ApplicationConstants.NAME) == true
     return firstComment.isFromUser(userId) && isViaApp
 }
+
+private fun NoteComment.isCommentIsFromUser(userId: Long): Boolean =
+    isFromUser(userId) && isComment
 
 private val NoteComment.isComment: Boolean get() =
     action == NoteComment.Action.COMMENTED
