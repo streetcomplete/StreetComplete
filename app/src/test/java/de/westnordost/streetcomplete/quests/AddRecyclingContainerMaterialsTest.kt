@@ -240,7 +240,7 @@ class AddRecyclingContainerMaterialsTest {
         )
     }
 
-    @Test fun `apply answer removes previous check dates`() {
+    @Test fun `apply answer updates previous check dates`() {
         questType.verifyAnswer(
             mapOf(
                 "recycling:paper" to "no",
@@ -254,7 +254,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PAPER)),
             StringMapEntryModify("recycling:paper", "no", "yes"),
             StringMapEntryDelete("recycling:check_date", "2000-11-01"),
-            StringMapEntryDelete("check_date:recycling", "2000-11-02"),
+            StringMapEntryModify("check_date:recycling", "2000-11-02", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("recycling:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:recycling", "2000-11-04"),
             StringMapEntryDelete("recycling:last_checked", "2000-11-05"),

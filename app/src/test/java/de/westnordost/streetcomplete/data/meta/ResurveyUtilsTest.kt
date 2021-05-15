@@ -29,6 +29,20 @@ class ResurveyUtilsTest {
         ), changes)
     }
 
+    @Test fun hasCheckDateForKey() {
+        assertFalse(StringMapChangesBuilder(mapOf("key" to "value")).hasCheckDateForKey("key"))
+
+        assertFalse(StringMapChangesBuilder(mapOf(
+            "key" to "value",
+            "check_date:another_key" to "value"
+        )).hasCheckDateForKey("key"))
+
+        assertTrue(StringMapChangesBuilder(mapOf(
+            "key" to "value",
+            "check_date:another_key" to "value"
+        )).hasCheckDateForKey("another_key"))
+    }
+
     @Test fun `updateWithCheckDate modifies tag`() {
         val builder = StringMapChangesBuilder(mapOf("old key" to "old value"))
         builder.updateWithCheckDate("old key", "new value")
@@ -59,7 +73,7 @@ class ResurveyUtilsTest {
         ), changes)
     }
 
-    @Test fun `updateWithCheckDate removes old check dates on modifying key`() {
+    @Test fun `updateWithCheckDate modifies old check date on modifying key`() {
         val builder = StringMapChangesBuilder(mapOf(
             "key" to "old value",
             "key:check_date" to "2000-11-01",
@@ -74,8 +88,8 @@ class ResurveyUtilsTest {
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(
             StringMapEntryModify("key", "old value", "new value"),
+            StringMapEntryModify("check_date:key", "2000-11-02", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("key:check_date", "2000-11-01"),
-            StringMapEntryDelete("check_date:key", "2000-11-02"),
             StringMapEntryDelete("key:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:key", "2000-11-04"),
             StringMapEntryDelete("key:last_checked", "2000-11-05"),
@@ -83,7 +97,7 @@ class ResurveyUtilsTest {
         )))
     }
 
-    @Test fun `updateWithCheckDate removes old check dates on adding key`() {
+    @Test fun `updateWithCheckDate modifies old check dates on adding key`() {
         val builder = StringMapChangesBuilder(mapOf(
             "key:check_date" to "2000-11-01",
             "check_date:key" to "2000-11-02",
@@ -98,7 +112,7 @@ class ResurveyUtilsTest {
         assertTrue(changes.containsExactlyInAnyOrder(listOf(
             StringMapEntryAdd("key", "value"),
             StringMapEntryDelete("key:check_date", "2000-11-01"),
-            StringMapEntryDelete("check_date:key", "2000-11-02"),
+            StringMapEntryModify("check_date:key", "2000-11-02", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("key:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:key", "2000-11-04"),
             StringMapEntryDelete("key:last_checked", "2000-11-05"),

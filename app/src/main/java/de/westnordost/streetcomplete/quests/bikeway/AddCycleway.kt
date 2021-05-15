@@ -5,12 +5,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.data.meta.*
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
-import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -148,10 +145,8 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
         val isNotActuallyChangingAnything = changes.getChanges().all { change ->
             change is StringMapEntryModify && change.value == change.valueBefore
         }
-        if (isNotActuallyChangingAnything) {
+        if (isNotActuallyChangingAnything || changes.hasCheckDateForKey("cycleway")) {
             changes.updateCheckDateForKey("cycleway")
-        } else {
-            changes.deleteCheckDatesForKey("cycleway")
         }
     }
 
