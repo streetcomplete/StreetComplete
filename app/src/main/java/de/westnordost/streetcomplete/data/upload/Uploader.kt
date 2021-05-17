@@ -12,15 +12,19 @@ import de.westnordost.streetcomplete.util.enclosingTilePos
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Named
 
 class Uploader @Inject constructor(
     private val noteEditsUploader: NoteEditsUploader,
     private val elementEditsUploader: ElementEditsUploader,
     private val downloadedTilesDB: DownloadedTilesDao,
     private val userController: UserController,
-    private val versionIsBannedChecker: VersionIsBannedChecker
+    private val versionIsBannedChecker: VersionIsBannedChecker,
+    @Named("SerializeSync") private val mutex: Mutex
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -55,10 +59,12 @@ class Uploader @Inject constructor(
 
         Log.i(TAG, "Starting upload")
 
-        coroutineScope {
-            // uploaders can run concurrently
-            launch { noteEditsUploader.upload() }
-            launch { elementEditsUploader.upload() }
+        mutex.withLock {
+            coroutineScope {
+                // uploaders can run concurrently
+                launch { noteEditsUploader.upload() }
+                launch { elementEditsUploader.upload() }
+            }
         }
 
         Log.i(TAG, "Finished upload")
