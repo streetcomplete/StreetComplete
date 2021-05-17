@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 
 import java.util.Collections
 import java.util.Locale
@@ -155,6 +156,7 @@ class QuestSelectionAdapter @Inject constructor(
             visibilityCheckBox.isEnabled = item.isInteractionEnabled
             visibilityCheckBox.setOnCheckedChangeListener(this)
 
+            dragHandle.isInvisible = !item.isInteractionEnabled
             dragHandle.setOnTouchListener { v, event ->
                 when (event.actionMasked) {
                     MotionEvent.ACTION_DOWN -> itemTouchHelper.startDrag(this)
