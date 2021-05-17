@@ -57,49 +57,65 @@ import javax.inject.Singleton
         /** For the given elements, replace the current quests with the given ones. Called when
          *  OSM elements are updated, so the quests that reference that element need to be updated
          *  as well. */
-        @Synchronized override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
+        override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
             val time = currentTimeMillis()
 
             val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
-            val previousQuests = mutableListOf<OsmQuestDaoEntry>()
-            var count = 0
 
             for (element in updated) {
-                previousQuests.addAll(db.getAllForElement(element.type, element.id))
                 val geometry = updated.getGeometry(element.type, element.id) ?: continue
                 deferredQuests.addAll(createQuestsForElementDeferred(element, geometry, allQuestTypes))
-                count++
             }
-
-            val deleteQuestKeys = mutableListOf<OsmQuestKey>()
-            for (key in deleted) {
-                // quests that refer to elements that have been deleted shall be deleted
-                deleteQuestKeys.addAll(db.getAllForElement(key.type, key.id).map { it.key })
-            }
-
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
 
             for (quest in quests) {
                 val questTypeName = quest.type::class.simpleName!!
                 Log.d(TAG, "Created $questTypeName for ${quest.elementType.name}#${quest.elementId}")
             }
-            val seconds = (currentTimeMillis() - time) / 1000.0
-            Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
 
-            updateQuests(quests, previousQuests, deleteQuestKeys)
+            val obsoleteQuestKeys: List<OsmQuestKey>
+            synchronized(this) {
+                val previousQuests = mutableListOf<OsmQuestDaoEntry>()
+
+                var count = 0
+                for (element in updated) {
+                    previousQuests.addAll(db.getAllForElement(element.type, element.id))
+                    count++
+                }
+
+                val deleteQuestKeys = mutableListOf<OsmQuestKey>()
+                for (key in deleted) {
+                    // quests that refer to elements that have been deleted shall be deleted
+                    deleteQuestKeys.addAll(db.getAllForElement(key.type, key.id).map { it.key })
+                }
+
+                val seconds = (currentTimeMillis() - time) / 1000.0
+                Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
+
+                obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
+                updateQuests(quests, obsoleteQuestKeys)
+            }
+
+            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
         }
 
         /** Replace all quests of the given types in the given bounding box with the given quests.
          *  Called on download of a quest type for a bounding box. */
-        @Synchronized override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+        override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
             val quests = createQuestsForBBox(bbox, mapDataWithGeometry, allQuestTypes)
-            val previousQuests = db.getAllInBBox(bbox)
-            updateQuests(quests, previousQuests, emptyList())
+            val obsoleteQuestKeys: List<OsmQuestKey>
+            synchronized(this) {
+                val previousQuests = db.getAllInBBox(bbox)
+                obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, emptyList())
+                updateQuests(quests, obsoleteQuestKeys)
+            }
+
+            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
         }
     }
 
     private val notesSourceListener = object : NotesWithEditsSource.Listener {
-        @Synchronized override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
+        override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
             onInvalidated()
         }
     }
@@ -182,14 +198,11 @@ import javax.inject.Singleton
         }
     }
 
-    private fun updateQuests(
+    private fun getObsoleteQuestKeys(
         questsNow: Collection<OsmQuest>,
         questsPreviously: Collection<OsmQuestDaoEntry>,
         deletedQuestKeys: Collection<OsmQuestKey>
-    ) {
-
-        val time = currentTimeMillis()
-
+    ): List<OsmQuestKey> {
         val previousQuestsByKey = mutableMapOf<OsmQuestKey, OsmQuestDaoEntry>()
         questsPreviously.associateByTo(previousQuestsByKey) { it.key }
 
@@ -197,15 +210,17 @@ import javax.inject.Singleton
             previousQuestsByKey.remove(quest.key)
         }
         // quests that were created previously for an element but now not anymore shall be deleted
-        val obsoleteQuestKeys = previousQuestsByKey.values.map { it.key } + deletedQuestKeys
+        return previousQuestsByKey.values.map { it.key } + deletedQuestKeys
+    }
+
+    private fun updateQuests(questsNow: Collection<OsmQuest>, obsoleteQuestKeys: Collection<OsmQuestKey>) {
+        val time = currentTimeMillis()
 
         db.deleteAll(obsoleteQuestKeys)
         db.putAll(questsNow)
 
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Persisted ${questsNow.size} new and removed ${obsoleteQuestKeys.size} already resolved quests in ${seconds.format(1)}s")
-
-        onUpdated(added = questsNow, deletedKeys = obsoleteQuestKeys)
     }
 
     private fun mayCreateQuest(
@@ -280,16 +295,19 @@ import javax.inject.Singleton
         hiddenDB.getAllIds().toSet()
 
     /** Mark the quest as hidden by user interaction */
-    @Synchronized fun hide(key: OsmQuestKey) {
-        hiddenDB.add(key)
+    fun hide(key: OsmQuestKey) {
+        synchronized(this) { hiddenDB.add(key) }
+
         val hidden = getHidden(key)
         if (hidden != null) onHid(hidden)
         onUpdated(deletedKeys = listOf(key))
     }
 
-    @Synchronized fun unhide(key: OsmQuestKey): Boolean {
+    fun unhide(key: OsmQuestKey): Boolean {
         val hidden = getHidden(key)
-        if (!hiddenDB.delete(key)) return false
+        synchronized(this) {
+            if (!hiddenDB.delete(key)) return false
+        }
         if (hidden != null) onUnhid(hidden)
         val quest = get(key)
         if (quest != null) onUpdated(added = listOf(quest))
@@ -297,11 +315,11 @@ import javax.inject.Singleton
     }
 
     /** Un-hides all previously hidden quests by user interaction */
-    @Synchronized fun unhideAll(): Int {
-        val result = hiddenDB.deleteAll()
+    fun unhideAll(): Int {
+        val unhidCount = synchronized(this) { hiddenDB.deleteAll() }
         onUnhidAll()
         onInvalidated()
-        return result
+        return unhidCount
     }
 
     fun getHidden(key: OsmQuestKey): OsmQuestHidden? {

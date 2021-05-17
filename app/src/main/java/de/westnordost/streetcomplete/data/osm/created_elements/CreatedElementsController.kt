@@ -11,17 +11,21 @@ import javax.inject.Singleton
 
     private val cache: MutableSet<ElementKey> by lazy { db.getAll().toMutableSet() }
 
-    @Synchronized override fun contains(elementType: ElementType, elementId: Long): Boolean =
+    override fun contains(elementType: ElementType, elementId: Long): Boolean =
         cache.contains(ElementKey(elementType, elementId))
 
-    @Synchronized fun putAll(entries: Collection<ElementKey>) {
-        db.putAll(entries)
-        cache.addAll(entries)
+    fun putAll(entries: Collection<ElementKey>) {
+        synchronized(this) {
+            db.putAll(entries)
+            cache.addAll(entries)
+        }
     }
 
-    @Synchronized fun deleteAll(entries: Collection<ElementKey>) {
-        val result = db.deleteAll(entries)
-        cache.removeAll(entries)
-        return result
+    fun deleteAll(entries: Collection<ElementKey>) {
+        synchronized(this) {
+            val result = db.deleteAll(entries)
+            cache.removeAll(entries)
+            return result
+        }
     }
 }

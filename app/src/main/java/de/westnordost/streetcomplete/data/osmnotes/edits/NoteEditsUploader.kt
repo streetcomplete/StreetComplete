@@ -19,7 +19,7 @@ class NoteEditsUploader @Inject constructor(
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
     private val mutex = Mutex()
-    private val scope = CoroutineScope(SupervisorJob() + CoroutineName("ElementEditsUploader"))
+    private val scope = CoroutineScope(SupervisorJob() + CoroutineName("NoteEditsUploader"))
 
     /** Uploads all edits to notes
      *

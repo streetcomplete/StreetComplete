@@ -33,29 +33,35 @@ import javax.inject.Singleton
         }
 
     /** Apply and save a user defined order  */
-    @Synchronized fun apply(before: QuestType<*>, after: QuestType<*>) {
-        applyOrderItem(before, after)
-        save(orderLists)
+    fun apply(before: QuestType<*>, after: QuestType<*>) {
+        synchronized(this) {
+            applyOrderItem(before, after)
+            save(orderLists)
+        }
         onUpdated()
     }
 
     /** Sort given list by the user defined order  */
-    @Synchronized fun sort(questTypes: MutableList<QuestType<*>>) {
-        for (list in questTypeOrderLists) {
-            val reorderedQuestTypes = ArrayList<QuestType<*>>(list.size - 1)
-            for (questType in list.subList(1, list.size)) {
-                if (questTypes.remove(questType)) {
-                    reorderedQuestTypes.add(questType)
+    fun sort(questTypes: MutableList<QuestType<*>>) {
+        synchronized(this) {
+            for (list in questTypeOrderLists) {
+                val reorderedQuestTypes = ArrayList<QuestType<*>>(list.size - 1)
+                for (questType in list.subList(1, list.size)) {
+                    if (questTypes.remove(questType)) {
+                        reorderedQuestTypes.add(questType)
+                    }
                 }
+                val startIndex = questTypes.indexOf(list[0])
+                questTypes.addAll(startIndex + 1, reorderedQuestTypes)
             }
-            val startIndex = questTypes.indexOf(list[0])
-            questTypes.addAll(startIndex + 1, reorderedQuestTypes)
         }
     }
 
-    @Synchronized fun clear() {
-        orderLists.clear()
-        save(orderLists)
+    fun clear() {
+        synchronized(this) {
+            orderLists.clear()
+            save(orderLists)
+        }
         onUpdated()
     }
 
