@@ -417,6 +417,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
+                closeBottomSheet()
                 if (questController.splitWay(osmQuestKey, splits, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
