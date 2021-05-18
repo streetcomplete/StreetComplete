@@ -2202,4 +2202,6 @@
     <string name="quest_barrier_type_swing_gate">"Οριζόντια μπάρα"</string>
     <string name="quest_policeType_title">"Τι είδους αστυνομικό τμήμα είναι αυτό;"</string>
     <string name="quest_stile_type_title">"Τι είδους πέρασμα φράχτη είναι αυτό;"</string>
+    <string name="quest_busStopLit_title">"Αυτή η στάση λεωφορείου είναι φωτισμένη;"</string>
+    <string name="quest_busStopLit_name_title">"Η στάση λεωφορείου %s είναι φωτισμένη;"</string>
 </resources>

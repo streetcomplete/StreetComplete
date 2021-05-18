@@ -2445,9 +2445,15 @@ Los datos se actualizan después de %1$s días y los datos no utilizados se elim
     <string name="quest_barrier_type_turnstile">"Molinete"</string>
     <string name="quest_barrier_type_passage">"Paso a través de la pared/valla/etc."</string>
     <string name="quest_barrier_type_debris_pile">"Montón de escombros"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Cruce de abertura estrecha"</string>
+    <string name="quest_barrier_type_stile_ladder">"Cruce de escalera"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Barrera para bicicletas"</string>
+    <string name="quest_barrier_type_kissing_gate">"Puerta de bisagras"</string>
+    <string name="quest_barrier_type_stepover">"Cruce de peldaños"</string>
     <string name="quest_barrier_type_swing_gate">"Barrera horizontal"</string>
     <string name="quest_policeType_title">"¿Qué tipo de comisaría es esta?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Convertido en una puerta de bisagras"</string>
+    <string name="quest_stile_type_title">"¿Qué tipo de cruce tiene esta valla?"</string>
     <string name="quest_buildingType_semi_detached_description2">"viviendas unifamiliares contiguas"</string>
     <string name="pref_title_quests2">"Selección de misiones y prioridades"</string>
     <string name="pref_subtitle_quests">"%1$d de %2$d habilitados"</string>

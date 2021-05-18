@@ -1089,4 +1089,10 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_barrier_type_kissing_gate_conversion">"Omvandlad till en genomgångsgrind"</string>
     <string name="quest_stile_type_title">"Vad är detta för slags grind?"</string>
     <string name="quest_buildingType_semi_detached_description2">"enfamiljsradhus med mellanliggande byggnad (t.ex. garage)"</string>
+    <string name="pref_title_quests2">"Uppdragsval och prioritering"</string>
+    <string name="pref_subtitle_quests">"%1$d av %2$d aktiverade"</string>
+    <string name="quest_busStopLit_tram_name_title">"Är spårvagnshållplatsen %s belyst?"</string>
+    <string name="quest_busStopLit_tram_title">"Är den här spårvagnshållplatsen belyst?"</string>
+    <string name="quest_busStopLit_title">"Är den här busshållplatsen belyst?"</string>
+    <string name="quest_busStopLit_name_title">"Är busshållplatsen %s belyst?"</string>
 </resources>

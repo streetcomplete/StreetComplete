@@ -203,7 +203,7 @@ en:cement = fr:ciment = de:Zement -->
 Cette application recense les informations incomplètes et à améliorer autour de vous et les affiche sur une carte sous forme de marqueurs. L'information liée à chaque marqueur peut être complétée en répondant à une question simple.
 
 Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap, à votre nom, sans qu'il soit nécessaire d'utiliser un autre éditeur de carte."</string>
-    <string name="quest_name_answer_noName">"Cela n'a pas de nom..."</string>
+    <string name="quest_name_answer_noName">"Cela n'a pas de nom…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Vraiment aucun nom ?"</string>
     <string name="quest_name_noName_confirmation_positive">"Oui, pas de nom"</string>
     <string name="quest_openingHours_add_times">"Ajouter des horaires d’ouverture"</string>
@@ -338,7 +338,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="credits_translations_title">"Traductions"</string>
     <string name="credits_contributors_title">"Contributeurs au code"</string>
     <string name="credits_author_title">"Auteur et mainteneur"</string>
-    <string name="credits_and_more">"et plus encore..."</string>
+    <string name="credits_and_more">"et plus encore…"</string>
     <string name="quest_maxspeed_answer_living_street">"C’est une zone de rencontre"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Alors, y a-t-il un panneau comme celui-ci ?"</string>
     <string name="quest_orchard_produce_title">"Qu’est-ce qui est cultivé ici ?"</string>
@@ -1287,4 +1287,10 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_barrier_type_kissing_gate_conversion">"Changer pour un portillon à chicane mobile"</string>
     <string name="quest_stile_type_title">"Quel type d'échalier est-ce ?"</string>
     <string name="quest_buildingType_semi_detached_description2">"maison(s) unifamiliale(s) contiguë(s)"</string>
+    <string name="pref_title_quests2">"Sélection et priorité des quêtes"</string>
+    <string name="pref_subtitle_quests">"%1$d sur %2$d activées"</string>
+    <string name="quest_busStopLit_tram_name_title">"L'arrêt de tramway %s est-il éclairé ?"</string>
+    <string name="quest_busStopLit_tram_title">"Cet arrêt de tramway est-il éclairé ?"</string>
+    <string name="quest_busStopLit_title">"Cet arrêt de bus est-il éclairé ?"</string>
+    <string name="quest_busStopLit_name_title">"L'arrêt de bus %s est-il éclairé ?"</string>
 </resources>

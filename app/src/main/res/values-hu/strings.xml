@@ -2430,4 +2430,10 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_barrier_type_kissing_gate_conversion">"Kettős kapuvá átalakítva"</string>
     <string name="quest_stile_type_title">"Ez milyen típusú kerítés feletti átjáró?"</string>
     <string name="quest_buildingType_semi_detached_description2">"csatlakozó családi ház(ak)"</string>
+    <string name="pref_title_quests2">"Kérdések kiválasztása és prioritásuk"</string>
+    <string name="pref_subtitle_quests">"%1$d/%2$d engedélyezve"</string>
+    <string name="quest_busStopLit_tram_name_title">"Ez a villamosmegálló ki van világítva: %s?"</string>
+    <string name="quest_busStopLit_tram_title">"Ez a villamosmegálló ki van világítva?"</string>
+    <string name="quest_busStopLit_title">"Ez a buszmegálló ki van világítva?"</string>
+    <string name="quest_busStopLit_name_title">"Ez a buszmegálló ki van világítva: %s?"</string>
 </resources>

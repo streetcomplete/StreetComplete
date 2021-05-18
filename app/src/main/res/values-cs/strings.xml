@@ -2481,4 +2481,10 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_barrier_type_kissing_gate_conversion">"Zkonvertováno na branku proti dobytku"</string>
     <string name="quest_stile_type_title">"Jaký je tohle druh průchodu?"</string>
     <string name="quest_buildingType_semi_detached_description2">"dvojdomek(y) pro jednu rodinu"</string>
+    <string name="pref_title_quests2">"Výběr úkolů a jejich priorita"</string>
+    <string name="pref_subtitle_quests">"povolen %1$d z %2$d"</string>
+    <string name="quest_busStopLit_tram_name_title">"Je tramvajová zastávka %s osvětlena?"</string>
+    <string name="quest_busStopLit_tram_title">"Je tato tramvajová zastávka osvětlena?"</string>
+    <string name="quest_busStopLit_title">"Je tato autobusová zastávka osvětlena?"</string>
+    <string name="quest_busStopLit_name_title">"Je autobusová zastávka %s osvětlena?"</string>
 </resources>

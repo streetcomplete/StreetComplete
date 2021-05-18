@@ -83,7 +83,7 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Je nach Monat verschieden…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Keine regelmäßigen Öffnungszeiten…"</string>
     <string name="quest_openingHours_comment_title">"Öffnungszeiten beschreiben"</string>
-    <string name="quest_openingHours_comment_description">"Kurz und bündig, am besten direkt so, wie es auf dem Schild steht. Zum Beispiel „nach Vereinbarung“. Fehlt ein Schild, bedeutet dies nicht zwangsweise, dass es keine regulären Öffnungszeiten gibt."</string>
+    <string name="quest_openingHours_comment_description">"Kurz und bündig, am besten direkt so, wie es auf dem Schild steht, z.B. „nach Vereinbarung“. Fehlt ein Schild, bedeutet dies nicht zwangsweise, dass es keine regulären Öffnungszeiten gibt."</string>
     <string name="quest_buildingLevels_title">"Wie viele Stockwerke hat dieses Gebäude?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Wie viele Stockwerke hat dieser Gebäudeteil?"</string>
     <string name="quest_roofShape_title">"Welche grundlegende Dachform hat dieses Gebäude?"</string>
@@ -111,8 +111,8 @@ Diese App teilt deinen GPS-Standort mit niemandem. Er wird genutzt, um automatis
 
 &lt;p&gt;&lt;b&gt;Datennutzung&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur. Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;eine simple Textdatei&lt;/a&gt; auf meinem Server ab, um zu sehen, ob sie für den Upload gesperrt wurde. Das ist eine Vorsichtsmaßnahme, um Versionen dieser App, die möglicherweise kritische Fehler enthalten, davon abzuhalten, OSM-Daten zu korrumpieren.&lt;br/&gt;
-&lt;/p&gt;"</string>
+Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur.&lt;br/&gt;
+Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;eine simple Textdatei&lt;/a&gt; auf meinem Server ab, um zu sehen, ob sie für den Upload gesperrt wurde. Das ist eine Vorsichtsmaßnahme, um Versionen dieser App, die möglicherweise kritische Fehler enthalten, davon abzuhalten, OSM-Daten zu korrumpieren.&lt;/p&gt;"</string>
     <string name="autosync_on">"An"</string>
     <string name="autosync_only_on_wifi">"Nur bei WLAN"</string>
     <string name="autosync_off">"Aus"</string>
@@ -353,7 +353,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_address_answer_house_name">"Keine Nummer, aber ein Hausname…"</string>
     <string name="quest_address_house_name_label">"Hausname:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Dachgeschosse"</string>
-    <string name="quest_buildingLevels_levelsLabel2">"Stockwerke"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"Stockwerke (außer Dachgeschosse)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Je nach Gebäudeteil verschieden"</string>
     <string name="quest_buildingLevels_answer_description">"In diesem Fall einfach die Werte für den höchsten Gebäudeteil eingeben."</string>
     <string name="unglue_hint">"Antippen, um Ansicht von Position zu trennen"</string>
@@ -364,7 +364,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_cycleway_value_track">"Fahrradweg"</string>
     <string name="quest_cycleway_value_lane">"Radfahrstreifen"</string>
     <string name="quest_cycleway_value_none">"kein"</string>
-    <string name="quest_cycleway_value_shared">"explizit gemeinsamer Fahrstreifen mit anderen Verkehrsteilnehmern"</string>
+    <string name="quest_cycleway_value_shared">"explizit gemeinsamer Fahrstreifen mit Autos"</string>
     <string name="quest_cycleway_value_bus_lane">"auf der Busspur"</string>
     <string name="quest_cycleway_value_sidewalk">"explizite Mitbenutzung des Bürgersteigs"</string>
     <string name="quest_leave_new_note_create_image_error">"Datei für Foto kann nicht erstellt werden"</string>

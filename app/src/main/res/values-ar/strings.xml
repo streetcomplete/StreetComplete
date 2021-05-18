@@ -173,7 +173,7 @@
     <string name="about_title_authors">"فريق العمل"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"الحقوق محفوظة ٢٠١٦-٢٠٢٠ لـ توبياس زويك والمساهمين"</string>
+    <string name="about_summary_authors">"الحقوق محفوظة ٢٠١٦-٢٠٢٠ لـ توبياس تسفيك والمساهمين"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"مستودع المصدر"</string>
@@ -1158,7 +1158,124 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="link_wheelmap_description">"خريطة للعثور على أماكن يمكن الوصول إليها بواسطة الكراسي المتحركة"</string>
     <string name="link_osm_buildings_description">"خريطة توضح المباني ثلاثية الأبعاد"</string>
     <string name="link_openvegemap_description">"اكتشف المطاعم النباتية والنباتية في مدينتك"</string>
+    <string name="link_touch_mapper_description">"قم بإنشاء خرائط لمسية بسهولة لأي عنوان"</string>
+    <string name="link_mapy_tactile_description">"الخرائط اللمسية للمكفوفين بمقاييس مختلفة"</string>
+    <string name="link_josm_description">"محرر OSM كامل المواصفات للحاسوب. هذه هي أداة القوة للمساهمين المنتظمين."</string>
+    <string name="link_vespucci_description">"محرر OSM المتقدم لنظام أندرويد"</string>
+    <string name="link_ideditor_description">"محرر OSM بسيط للمتصفح. محسن للحاسوب أو الأجهزة اللوحية الكبيرة"</string>
+    <string name="link_umap_description">"أنشئ خرائط ببيانات مخصصة بسرعة وقم بتضمينها في موقعك"</string>
+    <string name="link_opnvkarte_description">"خريطة طرق النقل العام ومحطاته."</string>
+    <string name="link_pic4review_description">"ساهم في OSM ببساطة من خلال النظر إلى صور مدينتك"</string>
+    <string name="link_wiki_description">"الويكي هو نقطة دخولك لكل ما يتعلق بـ OpenStreetMap"</string>
+    <string name="link_learnosm_description">"جديد على OpenStreetMap؟ هذا دليل المبتدئين"</string>
+    <string name="link_neis_one_description">"مجموعة ضخمة من الإحصائيات للمساهمين في OpenStreetMap ، مثل أين وكيف ساهمت ، من حولك بالإضافة إلى المتصدرين"</string>
+    <string name="link_welcome_mat_description">"معلومات عامة حول OpenStreetMap وكيفية العمل مع OSM كمنظمة"</string>
+    <string name="link_mapillary_description">"تطبيق وخدمة مشاركة صور الشارع للعديد من المساهمين ، مع إذن صريح للاستخدام للمساهمة في OSM"</string>
+    <string name="link_openstreetcam_description">"تطبيق وخدمة مشاركة صور الشارع للعديد من المساهمين ، مع إذن صريح للاستخدام للمساهمة في OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"التنقل خطوة بخطوة للكراسي المتحركة"</string>
+    <string name="link_nominatim_description">"المشفر الجغرافي لبيانات OSM ، الذي تستخدمه العديد من الخدمات الأخرى"</string>
+    <string name="link_city_roads_description">"اعرض جميع طرق المدينة للطباعة على القمصان والأكواب ..."</string>
+    <string name="link_myosmatic_description">"قم بإنشاء خرائط مدينة قابلة للطباعة في بضع خطوات سهلة ، اختياريًا باستخدام دليل الشارع"</string>
+    <string name="link_brouter_description">"ربما أفضل محرك توجيه لراكبي الدراجات"</string>
+    <string name="link_show_me_the_way_description">"شاهد تعديلات OSM تحدث في الوقت الفعلي"</string>
+    <string name="link_osrm_description">"أسرع محرك ملاحة"</string>
+    <string name="link_openrouteservice_description">"التنقل لمختلف المركبات والمشاة ، ولكل منها ما يفضله. يمكن أن تظهر أيضًا خطوط متوازنة (المناطق المتاحة في غضون X دقيقة من نقطة البداية)."</string>
+    <string name="link_osm_haiku_description">"استخدام بيانات OSM لإنشاء الهايكو (نوع من الشعر الياباني)"</string>
+    <string name="link_openinframap_description">"خريطة توضح البنية التحتية للطاقة والاتصالات والغاز والنفط"</string>
+    <string name="link_openorienteeringmap_description">"إنشاء خرائط قابلة للطباعة لرياضة التوجيه"</string>
+    <string name="link_openstreetbrowser_description">"خريطة لتصفح بيانات OpenStreetMap حسب الفئة"</string>
+    <string name="link_weeklyosm_description">"مدونة الأخبار الأسبوعية حول ما يحدث في عالم OpenStreetMap"</string>
+    <string name="link_figuregrounder_description">"اصنع ملصقات من مخطط مدينة أو حي مبسط"</string>
+    <string name="achievement_first_edit_title">"تم حل المهمة الأولى"</string>
+    <string name="achievement_first_edit_description">"مرحبًا بك في مجتمع OpenStreetMap! في شاشة ملف التعريف الخاص بك ، يمكنك رؤية المزيد من المعلومات لكل نوع مهمة قمت بحلها."</string>
+    <string name="achievement_surveyor_title">"مساح أراضي"</string>
+    <string name="achievement_surveyor_solved_X">"لقد قمت بحل %d مهمة! استمر في فتح المزيد من الإنجازات التي تحتوي على روابط إلى OSM والتطبيقات والمشاريع الأخرى ذات الصلة بالخريطة!"</string>
+    <string name="achievement_regular_title">"منتظم - عادي"</string>
+    <string name="achievement_regular_description">"لقد ساهمت بـ%d أيام في OSM باستخدام هذا التطبيق! المساهمون المنتظمون هم الأساس لـ OSM ، شكرًا لتفانيكم! ❤"</string>
+    <string name="achievement_bicyclist_title">"دراج"</string>
+    <string name="achievement_bicyclist_solved_X">"لقد قمت بحل %d مهمة تساعد راكبي الدراجات!"</string>
+    <string name="achievement_wheelchair_title">"إمكانية التنقل"</string>
+    <string name="achievement_wheelchair_solved_X">"لقد قمت بحل %d من المهام التي تساعد مستخدمي الكراسي المتحركة على التجول في المدينة!"</string>
+    <string name="achievement_postman_title">"ساعي البريد"</string>
+    <string name="achievement_postman_solved_X">"لقد ساعدت في تحديد موقع %d عناوين!
+هذه البيانات ضرورية ليس فقط لساعي البريد ولكن أيضًا لأي نظام ملاحة."</string>
+    <string name="achievement_building_title">"ناطحة سحاب"</string>
+    <string name="achievement_building_solved_X">"لقد قمت بحل %d من المهام المتعلقة بالبناء.
+لاحظ أن هذا التطبيق يسأل عن رقم المنزل للمبنى فقط بعد تحديد نوعه."</string>
+    <string name="achievement_blind_title">"حاسة سادسة"</string>
+    <string name="achievement_blind_solved_X">"لقد قمت بحل %d مهمة مثيرة للاهتمام لضعاف البصر."</string>
+    <string name="achievement_pedestrian_title">"عداء"</string>
+    <string name="achievement_pedestrian_solved_X">"لقد قمت بحل٪ d مهمة مفيدة للمشاة!"</string>
+    <string name="achievement_veg_title">"لطيف مع الحيوانات"</string>
+    <string name="achievement_veg_solved_X">"لقد حللت %d من المهام التي تهم الأشخاص الذين يتبعون نظامًا غذائيًا خالٍ من اللحوم!"</string>
+    <string name="achievement_car_title">"على الطريق"</string>
+    <string name="achievement_car_solved_X">"لقد قمت بحل %d من المهام التي تعمل على تحسين التفاصيل في البنية التحتية للشوارع ، ووضع الشارع في OpenStreetMap!"</string>
+    <string name="unread_messages_message">"لديك %d رسائل غير مقروءة في علبة الوارد الخاصة بك"</string>
+    <string name="unread_messages_button">"افتح البريد الوارد"</string>
+    <string name="action_about2">"حول"</string>
+    <string name="map_btn_menu">"قائمة"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt; يتم تجميع البيانات المعروضة في ملفك الشخصي من سجل مساهماتك المتاحة للجمهور في OpenStreetMap ثم يتم استضافتها على خادمي. &lt;/ p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"يمكنك أيضًا القيام بذلك لاحقًا على شاشة ملف التعريف."</string>
+    <string name="credits_art_contributors_title">"المساهمون الفنيون"</string>
+    <string name="credits_projects_contributors_title">"المشاريع المعدة لـ StreetComplete"</string>
+    <string name="credits_main_contributors_title">"المساهمون الرئيسيون"</string>
+    <string name="stats_are_syncing">"لا تزال إحصاءاتك قيد المزامنة. تحقق من هذه الشاشة لاحقًا."</string>
+
+    <!-- Fuzzy -->
+    <string name="user_statistics_country_rank">"الترتيب في %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"بوابة الخريطة %s"</string>
+    <string name="user_statistics_filter_by_country">"حسب البلد"</string>
+    <string name="user_statistics_filter_by_quest_type">"حسب نوع المهمة"</string>
+    <string name="user_profile_global_rank">"التصنيف العالمي"</string>
+    <string name="user_profile_local_rank">"مرتبة في %s"</string>
+    <string name="user_profile_days_active">"أيام
+ناشط"</string>
+    <string name="user_profile_achievement_levels">"مستويات الإنجاز"</string>
+    <string name="quest_address_street_title">"إلى أي شارع ينتمي رقم (المنزل) %s؟"</string>
+    <string name="quest_address_street_no_named_streets">"إنه لا ينتمي إلى شارع مسمى"</string>
+    <string name="quest_address_street_place_name_label">"اسم مكان:"</string>
+    <string name="quest_address_street_description">"اضغط على الطريق التي تنتمي إليها على الخريطة أو أدخلها بدون اختصارات في الحقل أدناه:"</string>
+    <string name="quest_recycling_type_cooking_oil">"زيت الطهي"</string>
+    <string name="quest_recycling_type_engine_oil">"زيت المحرك"</string>
+    <string name="link_photon_description">"امتداد مستقل لـ Nominatim ، بما في ذلك البحث التقريبي والبحث أثناء الكتابة"</string>
+    <string name="link_graphhopper_description">"محرك توجيه مرن"</string>
+    <string name="link_qwant_maps_description">"خريطة بأماكن واتجاهات يمكن البحث فيها"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt; لعرض الخريطة ، يتم استرداد المربعات المتجهة من %1$s. راجع &lt;a href=\"%2$s\"&gt; بيان الخصوصية &lt;/a&gt; للحصول على مزيد من المعلومات. &lt;/ p&gt;"</string>
+    <string name="about_title_sponsors">"الرعاة"</string>
+    <string name="quest_board_type_history">"تاريخ"</string>
+    <string name="quest_board_type_geology">"جيولوجيا"</string>
+    <string name="quest_board_type_plants">"النباتات"</string>
+    <string name="quest_board_type_wildlife">"الحيوانات البرية"</string>
+    <string name="quest_board_type_nature">"الطبيعة (مواضيع متعددة)"</string>
+    <string name="quest_board_type_notice_board">"إنها لوحة إعلانات"</string>
+    <string name="quest_board_type_public_transport">"النقل العام"</string>
+    <string name="quest_board_type_title">"ما هو موضوع لوحة المعلومات هذه؟"</string>
+    <string name="quest_sidewalk_separately_mapped">"نعم ، يتم عرضها بشكل منفصل على الخريطة"</string>
+    <string name="quest_board_type_map">"إنها خريطة"</string>
+    <string name="quest_board_type_map_title">"هل هي مجرد خريطة وخريطة فقط؟"</string>
+    <string name="quest_board_type_map_description">"إذا كانت اللوحة تدور حول موضوع معين ، فيرجى تحديده ، بغض النظر عما إذا كان يتضمن أيضًا خريطة. على سبيل المثال ، قد تحتوي لوحة النقل العام على خريطة طريق للحافلات. إذا لم يكن الموضوع مدرجًا ضمن الإجابات المتاحة ، فيرجى التفكير في ترك ملاحظة بدلاً من ذلك."</string>
+    <string name="quest_surface_detailed_answer_impossible">"أسطح متعددة ..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"هل أنت متأكد من أنه من المستحيل تحديد المنطقة؟ لاحظ أن الاستجابة \"التغيير على طول الطريق\" تسمح لك بقطع الممر حيث يتغير السطح. إذا كان هذا سطحًا واحدًا غير مدرج ، فالرجاء استخدام \"لا يمكن الإجابة\"."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"يرجى وصف نوع السطح باختصار هنا ، على سبيل المثال \"رملي مرصوف بالحصى في بعض الأماكن\". طول النص محدد بـ 255 حرفًا."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_menuItem_language_with_script_native">"
+%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"دولي - عالمي
+"</string>
+    <string name="quest_streetName_menuItem_romanized">"بأحرف لاتينية"</string>
+    <string name="quest_buildingType_terrace2">"منازل متجاورة"</string>
+    <string name="at_housename">"اسم المنزل %s:"</string>
+    <string name="at_housenumber">"رقم المنزل %s:"</string>
     <string name="quest_openingHours_name_type_title">"ما هي عدد ساعات العمل %s ؟"</string>
+    <string name="quest_openingHours_resurvey_name_title">"هل ساعات العمل هذه لـ%s ما زالت صحيحة؟"</string>
+    <string name="quest_openingHours_unspecified_range">"غير محدد"</string>
+    <string name="pref_title_resurvey_intervals">"فترات إعادة المسح"</string>
+    <string name="resurvey_intervals_more_often">"اسأل في كثير من الأحيان"</string>
+    <string name="quest_accepts_cash_type_title">"هل يقبل %1$s  (%2$s) الدفع النقدي؟"</string>
 
     <!-- لقد حذفته -->
     <string name="deleted_poi_action_description">"قمت بحذفه"</string>

@@ -2444,4 +2444,10 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_barrier_type_kissing_gate_conversion">"Omgebouwd naar een wandelpoort"</string>
     <string name="quest_stile_type_title">"Wat voor stijl is dit?"</string>
     <string name="quest_buildingType_semi_detached_description2">"aangrenzende eengezinswoning(en)"</string>
+    <string name="pref_title_quests2">"Vraag selectie en prioriteit"</string>
+    <string name="pref_subtitle_quests">"%1$d van %2$d ingeschakeld"</string>
+    <string name="quest_busStopLit_tram_name_title">"Is de tramhalte %s verlicht?"</string>
+    <string name="quest_busStopLit_tram_title">"Is deze tramhalte verlicht?"</string>
+    <string name="quest_busStopLit_title">"Is deze bushalte verlicht?"</string>
+    <string name="quest_busStopLit_name_title">"Is de bushalte %s verlicht?"</string>
 </resources>
