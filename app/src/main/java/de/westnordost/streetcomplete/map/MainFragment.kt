@@ -348,7 +348,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(questKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(questKey)
                 if (questController.solve(questKey, answer, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -374,7 +373,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onSkippedQuest(questKey: QuestKey) {
-        closeQuestDetailsFor(questKey)
         lifecycleScope.launch {
             questController.hide(questKey)
         }
@@ -384,7 +382,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(osmQuestKey)
                 if (questController.deletePoiElement(osmQuestKey, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -396,7 +393,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(osmQuestKey)
                 if (questController.replaceShopElement(osmQuestKey, tags, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -421,7 +417,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(osmQuestKey)
                 if (questController.splitWay(osmQuestKey, splits, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -440,7 +435,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */
 
     override fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>) {
-        closeQuestDetailsFor(questKey)
         // the quest is deleted from DB on creating a note, so need to fetch quest before
         lifecycleScope.launch {
             val quest = questController.get(questKey)
@@ -805,12 +799,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
             setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
             replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
             addToBackStack(BOTTOM_SHEET)
-        }
-    }
-
-    private fun closeQuestDetailsFor(questKey: QuestKey) {
-        if (isQuestDetailsCurrentlyDisplayedFor(questKey)) {
-            closeBottomSheet()
         }
     }
 
