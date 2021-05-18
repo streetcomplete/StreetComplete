@@ -1268,14 +1268,23 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
 "</string>
     <string name="quest_streetName_menuItem_romanized">"بأحرف لاتينية"</string>
     <string name="quest_buildingType_terrace2">"منازل متجاورة"</string>
+    <string name="quest_oneway_tutorial">"يتم تدوير الطريق المعروضة في نفس الاتجاه كما هو موضح على الخريطة. لاحظ الاتجاه المشار إليه."</string>
     <string name="at_housename">"اسم المنزل %s:"</string>
+    <string name="at_conscription_and_street_number">"رقم الإشتراك %1$s ، رقم التوجه %2$s:"</string>
+    <string name="at_conscription_number">"رقم التجنيد %s:"</string>
     <string name="at_housenumber">"رقم المنزل %s:"</string>
     <string name="quest_openingHours_name_type_title">"ما هي عدد ساعات العمل %s ؟"</string>
     <string name="quest_openingHours_resurvey_name_title">"هل ساعات العمل هذه لـ%s ما زالت صحيحة؟"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"هل ساعات العمل هذه لـ%1$ s (%2$s) ما زالت صحيحة؟"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"هل ما زالت ساعات العمل هذه صحيحة (%s)؟"</string>
+    <string name="quest_openingHours_add_off_days">"أضف أيام إجازة"</string>
+    <string name="quest_openingHours_off_day">"يوم عطلة"</string>
     <string name="quest_openingHours_unspecified_range">"غير محدد"</string>
     <string name="pref_title_resurvey_intervals">"فترات إعادة المسح"</string>
     <string name="resurvey_intervals_more_often">"اسأل في كثير من الأحيان"</string>
     <string name="quest_accepts_cash_type_title">"هل يقبل %1$s  (%2$s) الدفع النقدي؟"</string>
+    <string name="about_title_translate">"ساعد في ترجمة هذا التطبيق"</string>
+    <string name="quest_oneway2_no_oneway">"ليست طريقة واحدة"</string>
 
     <!-- لقد حذفته -->
     <string name="deleted_poi_action_description">"قمت بحذفه"</string>
