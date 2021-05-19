@@ -11,7 +11,7 @@ v32.0-beta1: |
   <ul>
   <li>
     You can now <b>undo any edit</b> that hasn't been uploaded yet:<br/>
-    quest answers, split ways, deleted places, hid quests, created notes and note comments (#1029, #2616)
+    quest answers, split ways, deleted places, hidden quests, created notes and note comments (#1029, #2616)
   </li>
   <li>You can now look at your <b>edit history</b> and undo any recent edit in any order, not just the last one</li>
   <li>It is now shown what exactly is tagged for each edit in the edit history</li>
