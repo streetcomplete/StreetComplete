@@ -15,7 +15,7 @@ v32.0-beta1: |
   </li>
   <li>You can now look at your <b>edit history</b> and undo any recent edit in any order, not just the last one</li>
   <li>It is now shown what exactly is tagged for each edit in the edit history</li>
-  <li>You can now undo deletions of places even after you have already uploaded it (#2441)</li>
+  <li>You can now undo deletions of places even after you have uploaded it (#2441)</li>
   </ul>
   <h3>⛰️ Improved usability and offline mode</h3>
   <ul>
