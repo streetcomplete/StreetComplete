@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentCreditsBinding
 import de.westnordost.streetcomplete.ktx.getYamlObject
+import de.westnordost.streetcomplete.ktx.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,19 +22,7 @@ import org.sufficientlysecure.htmltextview.HtmlTextView
 /** Shows the credits of this app */
 class CreditsFragment : Fragment(R.layout.fragment_credits) {
 
-    private var _binding: FragmentCreditsBinding? = null
-
-    // This property is only valid between onCreateView and onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentCreditsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private val binding by viewBinding(FragmentCreditsBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycleScope.launch {
@@ -66,11 +55,6 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     override fun onStart() {
         super.onStart()
         activity?.setTitle(R.string.about_title_authors)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
     private fun addContributorsTo(contributors: List<String>, view: ViewGroup) {
