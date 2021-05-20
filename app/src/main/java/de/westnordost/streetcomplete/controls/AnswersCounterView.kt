@@ -16,7 +16,7 @@ class AnswersCounterView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : RelativeLayout(context, attrs, defStyleAttr) {
 
-    val binding : ViewAnswersCounterBinding
+    private val binding : ViewAnswersCounterBinding
     var uploadedCount: Int = 0
         set(value) {
             field = value

@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.user.User
+import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemBinding
 import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -113,13 +114,13 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<NoteComment> {
             return NoteCommentViewHolder(
-                layoutInflater.inflate(R.layout.quest_note_discussion_item, parent, false)
+                QuestNoteDiscussionItemBinding.inflate(layoutInflater, parent, false)
             )
         }
     }
 
-    private inner class NoteCommentViewHolder(itemView: View) :
-        ListAdapter.ViewHolder<NoteComment>(itemView) {
+    private inner class NoteCommentViewHolder(val binding: QuestNoteDiscussionItemBinding) :
+        ListAdapter.ViewHolder<NoteComment>(binding) {
 
         init {
 
@@ -127,15 +128,15 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
                 val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
                 val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
                 val marginStart = -resources.getDimensionPixelSize(R.dimen.quest_form_speech_bubble_top_margin)
-                itemView.commentStatusText.outlineProvider = RoundRectOutlineProvider(cornerRadius)
+                binding.commentStatusText.outlineProvider = RoundRectOutlineProvider(cornerRadius)
 
                 val isRTL = itemView.resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL
                 val marginLeft = if (isRTL) 0 else marginStart
                 val marginRight = if (isRTL) marginStart else 0
-                itemView.commentBubble.outlineProvider = RoundRectOutlineProvider(
+                binding.commentBubble.outlineProvider = RoundRectOutlineProvider(
                     cornerRadius, marginLeft, margin, marginRight, margin
                 )
-                itemView.commentAvatarImageContainer.outlineProvider = CircularOutlineProvider
+                binding.commentAvatarImageContainer.outlineProvider = CircularOutlineProvider
             }
         }
 
@@ -145,19 +146,19 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
             val commentActionResourceId = comment.action.actionResourceId
             val hasNoteAction = commentActionResourceId != 0
-            itemView.commentStatusText.isGone = !hasNoteAction
+            binding.commentStatusText.isGone = !hasNoteAction
             if (hasNoteAction) {
-                itemView.commentStatusText.text = getString(commentActionResourceId, userName, dateDescription)
+                binding.commentStatusText.text = getString(commentActionResourceId, userName, dateDescription)
             }
 
             val hasComment = comment.text?.isNotEmpty() == true
-            itemView.commentView.isGone = !hasComment
+            binding.commentView.isGone = !hasComment
             if (hasComment) {
-                itemView.commentText.text = comment.text
-                itemView.commentInfoText.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)
+                binding.commentText.text = comment.text
+                binding.commentInfoText.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)
 
                 val bitmap = comment.user?.avatar ?: anonAvatar
-                itemView.commentAvatarImage.setImageBitmap(bitmap)
+                binding.commentAvatarImage.setImageBitmap(bitmap)
             }
         }
 
