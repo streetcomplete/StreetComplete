@@ -131,7 +131,7 @@
                     android:layout_centerHorizontal="true"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMaxTextSize="22dp"
-                    app:autoSizeMinTextSize="16dp"
+                    app:autoSizeMinTextSize="12dp"
                     android:textColor="@color/background"
                     tools:text="#1"/>
 
@@ -167,9 +167,9 @@
                     android:layout_centerHorizontal="true"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMaxTextSize="22dp"
-                    app:autoSizeMinTextSize="16dp"
+                    app:autoSizeMinTextSize="12dp"
                     android:textColor="@color/background"
-                    tools:text="#882"/>
+                    tools:text="#123456"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -201,7 +201,7 @@
                     android:layout_centerHorizontal="true"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMaxTextSize="22dp"
-                    app:autoSizeMinTextSize="16dp"
+                    app:autoSizeMinTextSize="12dp"
                     android:textColor="@color/background"
                     tools:text="82"/>
 
@@ -235,7 +235,7 @@
                     android:layout_centerHorizontal="true"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMaxTextSize="22dp"
-                    app:autoSizeMinTextSize="16dp"
+                    app:autoSizeMinTextSize="12dp"
                     android:textColor="@color/background"
                     tools:text="123"/>
 
