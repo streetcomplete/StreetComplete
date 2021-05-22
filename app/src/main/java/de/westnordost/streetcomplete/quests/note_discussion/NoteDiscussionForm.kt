@@ -20,17 +20,17 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.user.User
+import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
+import de.westnordost.streetcomplete.databinding.QuestButtonpanelNoteDiscussionBinding
+import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionContentBinding
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemBinding
 import de.westnordost.streetcomplete.ktx.createBitmap
+import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
-import kotlinx.android.synthetic.main.fragment_quest_answer.*
-import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
-import kotlinx.android.synthetic.main.quest_note_discussion_content.*
-import kotlinx.android.synthetic.main.quest_note_discussion_item.view.*
 import java.io.File
 import java.time.Instant
 import javax.inject.Inject
@@ -41,6 +41,10 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     override val buttonsResId = R.layout.quest_buttonpanel_note_discussion
     override val defaultExpanded = false
 
+    private val questNoteBinding by viewBinding(QuestNoteDiscussionContentBinding::bind)
+    private val questButtonPanelNoteBinding by viewBinding(QuestButtonpanelNoteDiscussionBinding::bind)
+    private val fragmentQuestAnswerBinding by viewBinding(FragmentQuestAnswerBinding::bind)
+
     private lateinit var anonAvatar: Bitmap
 
     @Inject internal lateinit var noteSource: NotesWithEditsSource
@@ -48,7 +52,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
 
-    private val noteText: String get() = noteInput?.text?.toString().orEmpty().trim()
+    private val noteText: String get() = questNoteBinding.noteInput?.text?.toString().orEmpty().trim()
 
     init {
         Injector.applicationComponent.inject(this)
@@ -57,12 +61,12 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        doneButton.setOnClickListener { onClickOk() }
-        noButton.setOnClickListener { skipQuest() }
+        questButtonPanelNoteBinding.doneButton.setOnClickListener { onClickOk() }
+        questButtonPanelNoteBinding.noButton.setOnClickListener { skipQuest() }
 
-        noteInput.addTextChangedListener(TextChangedWatcher { updateDoneButtonEnablement() })
+        questNoteBinding.noteInput.addTextChangedListener(TextChangedWatcher { updateDoneButtonEnablement() })
 
-        otherAnswersButton.visibility = View.GONE
+        fragmentQuestAnswerBinding.otherAnswersButton.visibility = View.GONE
 
         updateDoneButtonEnablement()
 
@@ -77,7 +81,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     }
 
     private fun inflateNoteDiscussion(comments: List<NoteComment>) {
-        val discussionView = layoutInflater.inflate(R.layout.quest_note_discussion_items, scrollViewChild, false) as RecyclerView
+        val discussionView = layoutInflater.inflate(R.layout.quest_note_discussion_items, fragmentQuestAnswerBinding.scrollViewChild, false) as RecyclerView
 
         discussionView.isNestedScrollingEnabled = false
         discussionView.layoutManager = LinearLayoutManager(
@@ -87,7 +91,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         )
         discussionView.adapter = NoteCommentListAdapter(comments)
 
-        scrollViewChild.addView(discussionView, 0)
+        fragmentQuestAnswerBinding.scrollViewChild.addView(discussionView, 0)
     }
 
     private fun onClickOk() {
@@ -105,7 +109,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     }
 
     private fun updateDoneButtonEnablement() {
-        doneButton.isEnabled = noteText.isNotEmpty()
+        questButtonPanelNoteBinding.doneButton.isEnabled = noteText.isNotEmpty()
     }
 
 

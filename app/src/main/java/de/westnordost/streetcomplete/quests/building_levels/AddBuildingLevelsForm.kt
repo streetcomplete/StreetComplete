@@ -9,23 +9,25 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
+import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.LastPickedValuesStore
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
-import kotlinx.android.synthetic.main.quest_building_levels.*
-
 class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_building_levels
+
+    private val binding by viewBinding(QuestBuildingLevelsBinding::bind)
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
     )
 
-    private val levels get() = levelsInput?.text?.toString().orEmpty().trim()
-    private val roofLevels get() = roofLevelsInput?.text?.toString().orEmpty().trim()
+    private val levels get() = binding.levelsInput?.text?.toString().orEmpty().trim()
+    private val roofLevels get() = binding.roofLevelsInput?.text?.toString().orEmpty().trim()
 
     @Inject internal lateinit var favs: LastPickedValuesStore<String>
 
@@ -38,26 +40,26 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
 
         val onTextChangedListener = TextChangedWatcher {
             checkIsFormComplete()
-            if (isFormComplete()) pickLastButton.visibility = View.GONE
+            if (isFormComplete()) binding.pickLastButton.visibility = View.GONE
         }
 
-        levelsInput.requestFocus()
-        levelsInput.addTextChangedListener(onTextChangedListener)
-        roofLevelsInput.addTextChangedListener(onTextChangedListener)
+        binding.levelsInput.requestFocus()
+        binding.levelsInput.addTextChangedListener(onTextChangedListener)
+        binding.roofLevelsInput.addTextChangedListener(onTextChangedListener)
 
         val lastPickedStrings = favs.get(javaClass.simpleName)
         val isLastPickedStringsEmpty = lastPickedStrings.isEmpty()
-        pickLastButton.isGone = isLastPickedStringsEmpty
+        binding.pickLastButton.isGone = isLastPickedStringsEmpty
         if (!isLastPickedStringsEmpty) {
             val favValues = lastPickedStrings.first.split("#")
 
-            lastLevelsLabel.text = favValues[0]
-            lastRoofLevelsLabel.text = if (favValues.size > 1) favValues[1] else " "
+            binding.lastLevelsLabel.text = favValues[0]
+            binding.lastRoofLevelsLabel.text = if (favValues.size > 1) favValues[1] else " "
 
-            pickLastButton.setOnClickListener {
-                levelsInput.setText(lastLevelsLabel.text)
-                roofLevelsInput.setText(lastRoofLevelsLabel.text)
-                pickLastButton.visibility = View.GONE
+            binding.pickLastButton.setOnClickListener {
+                binding.levelsInput.setText(binding.lastLevelsLabel.text)
+                binding.roofLevelsInput.setText(binding.lastRoofLevelsLabel.text)
+                binding.pickLastButton.visibility = View.GONE
             }
         }
     }
