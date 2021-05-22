@@ -4,23 +4,23 @@ v32.0-beta1: |
   ended in February, however, there is one last big mega-update I can delight you with before development
   on this app must necessarily wind down:<br/>
   It may not look like a lot, but I basically replaced the whole architecture of the app (#2506, ...)
-  to do this. Note that this required to drop most local data, such as unsynced edits, downloaded
+  to do this. Note that this required dropping most local data, such as unsynced edits, downloaded
   quests and statistics.<br/>Special thanks to @FloEdelmann for helping with the refactor.
   </p>
   <h3>🔙️ Superpowered Undo</h3>
   <ul>
   <li>
-    You can now <b>undo any edit</b> that hasn't been uploaded yet: <br/>
-    Quest answers, split ways, deleted places, hid quests, created notes and note comments (#1029, #2616)
+    You can now <b>undo any edit</b> that hasn't been uploaded yet:<br/>
+    quest answers, split ways, deleted places, hidden quests, created notes and note comments (#1029, #2616)
   </li>
   <li>You can now look at your <b>edit history</b> and undo any recent edit in any order, not just the last one</li>
   <li>It is now shown what exactly is tagged for each edit in the edit history</li>
-  <li>You can now undo deletions of places even after you have already uploaded it (#2441)</li>
+  <li>You can now undo deletions of places even after you have uploaded it (#2441)</li>
   </ul>
   <h3>⛰️ Improved usability and offline mode</h3>
   <ul>
   <li>
-  Immediately unlock new quests based on the one you just solved, <b>also when
+  Immediately unlock new quests based on the one you just solved, <b>even when
   offline</b>. This has been a much requested feature but was simply not possible with the previous
   architecture (#1369, #1510, #1550, #1826, #2254, #2438, #2473, #2474, #2676, #2743...)
   </li>
@@ -28,7 +28,7 @@ v32.0-beta1: |
   The above also works when splitting a way. The quests for the split segments will be shown
   immediately
   </li>
-  <li>When you scan for quests manually, no cache will be used: You always get the most fresh data (#2554)</li>
+  <li>When you scan for quests manually, no cache will be used: you always get the freshest data (#2554)</li>
   <li>When unable to fully upload pictures attached to a note due to a bad connection, the app will try again later (#2102)</li>
   </ul>
   <h3>New Quests</h3>
@@ -44,11 +44,11 @@ v32.0-beta1: |
   <ul>
   <li>Don't ask for building levels for industrial buildings (#2835), by @matkoniecz</li>
   <li>Improve referring to map features by name for some quests (#2840)</li>
-  <li>Checking existence: Ask for some map features less frequently, by @matkoniecz</li>
+  <li>Checking existence: ask for some map features less frequently, by @matkoniecz</li>
   <li>Enable answering that the cycleway is displayed separately on the map (#2525, #2665)</li>
   <li>Some wording improvements (#2728), by @matkoniecz, (#2806, #2814) by @peternewman, (#2685)</li>
   <li>Enhance maxspeed collection for the United Kingdom (#2745, #2748, #2750, #2811), by @arrival-spring</li>
-  <li>Periodically ask for the existence of bbq spots, ticket validators, emergency life rings and emergency phones (#2679), thanks @arrival-spring</li>
+  <li>Periodically ask for the existence of BBQ spots, ticket validators, emergency life rings and emergency phones (#2679), thanks @arrival-spring</li>
   <li>Also ask for the surface of service roads as long as they are not driveways (#2783)</li>
   <li>Don't remove the check_date tag if it is already tagged, instead, update it (#2861, #2883)</li>
   </ul>
@@ -58,7 +58,7 @@ v32.0-beta1: |
   <li>Added Romanian by Georgian Iosef and others</li>
   <li>Improvements in the quest selection screen (#2243, #2847, #2828, #2843, #2887), by @FloEdelmann</li>
   <li>Slightly more performant compass</li>
-  <li>When showing all notes, really show all except those where the user last commented (#2692)</li>
+  <li>When showing all notes, really show all except those where the user commented last (#2692)</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
