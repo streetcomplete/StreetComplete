@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
@@ -243,6 +244,7 @@ import javax.inject.Singleton
         AddPowerPolesMaterial(),
         AddCarWashType(),
         AddBenchStatusOnBusStop(),
+        AddBinStatusOnBusStop(),
         AddBusStopLit(),
         AddBenchBackrest(),
         AddTrafficSignalsButton(),
