@@ -1,4 +1,4 @@
-v32.0-beta1: |
+v32.0: |
   <p>
   The grant from the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a>
   ended in February, however, there is one last big mega-update I can delight you with before development
@@ -51,6 +51,7 @@ v32.0-beta1: |
   <li>Periodically ask for the existence of BBQ spots, ticket validators, emergency life rings and emergency phones (#2679), thanks @arrival-spring</li>
   <li>Also ask for the surface of service roads as long as they are not driveways (#2783)</li>
   <li>Don't remove the check_date tag if it is already tagged, instead, update it (#2861, #2883)</li>
+  <li>Don't tag foot=use_sidepath on the road if there is a separate sidewalk (#2895)</li>
   </ul>
   <h3>Other Enhancements</h3>
   <ul>
@@ -71,7 +72,7 @@ v32.0-beta1: |
   <li>Remove checking existence of grit bins, as many are removed for summer and not marked as seasonal :( (#2726), by @matkoniecz</li>
   <li>Fix quests that are very close to notes could in rare cases not be opened (#2853)</li>
   <li>Fixes on specifying shop type quest, by @peternewman, @matkoniecz</li>
-  <li>...and other fixes and enhancements (#2521, #1821, #2628, #2691, #2715, #2870...)</li>
+  <li>...and other fixes and enhancements (#2521, #1821, #2628, #2691, #2715, #2870, #2891...)</li>
   </ul>
 
 v31.3: |

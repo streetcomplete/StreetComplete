@@ -84,7 +84,7 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"في بعض الأحيان تكون لافتة الشارع في أحد نهايتي الشارع. لاحظ أيضا أنه قد لايكون هناك أكثر من لافتة واحدة في الشوارع الجانبية المتفرعة من الشوارع الكبيرة. عادة، أي شارع به منازل له اسم."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"إذا كان يمكن تهجئة الاسم بدون اختصارات ، عندها يجب أن تكون 
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"إذا كان يمكن تهجئة الاسم بدون اختصارات ، عندها يجب أن تكون
 كتابة الاسم كاملة .
 العديد من الاختصارات الشائعة يتم إكمالها تلقائياً عندما تكتبها، ولكن ربما ليس جميعها."</string>
 
@@ -1275,16 +1275,85 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="at_housenumber">"رقم المنزل %s:"</string>
     <string name="quest_openingHours_name_type_title">"ما هي عدد ساعات العمل %s ؟"</string>
     <string name="quest_openingHours_resurvey_name_title">"هل ساعات العمل هذه لـ%s ما زالت صحيحة؟"</string>
-    <string name="quest_openingHours_resurvey_name_type_title">"هل ساعات العمل هذه لـ%1$ s (%2$s) ما زالت صحيحة؟"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"هل ساعات العمل هذه لـ%1$s (%2$s)  ما زالت صحيحة؟"</string>
     <string name="quest_openingHours_resurvey_no_name_title">"هل ما زالت ساعات العمل هذه صحيحة (%s)؟"</string>
     <string name="quest_openingHours_add_off_days">"أضف أيام إجازة"</string>
     <string name="quest_openingHours_off_day">"يوم عطلة"</string>
     <string name="quest_openingHours_unspecified_range">"غير محدد"</string>
+    <string name="quest_cycleway_resurvey_title">"هل ما زالت هذه الحالة مع مسار الدراجات؟"</string>
+    <string name="quest_wheelchairAccess_name_type_title">"هل يمكن الوصول إلى كرسي متحرك %1$s (%2$s) ؟"</string>
     <string name="pref_title_resurvey_intervals">"فترات إعادة المسح"</string>
+    <string name="resurvey_intervals_less_often">"اسأل في كثير من الأحيان"</string>
+    <string name="resurvey_intervals_default">"إفتراضي"</string>
     <string name="resurvey_intervals_more_often">"اسأل في كثير من الأحيان"</string>
     <string name="quest_accepts_cash_type_title">"هل يقبل %1$s  (%2$s) الدفع النقدي؟"</string>
+    <string name="quest_busStopBench_tram_name_title">"هل يوجد في محطة الترام %s مقعد؟"</string>
+    <string name="quest_busStopBench_tram_title">"هل هذا الترام لديه مقعد؟"</string>
+    <string name="quest_busStopBench_title">"هل يوجد في محطة الحافلات هذه مقعد؟"</string>
+    <string name="quest_busStopBench_name_title">"هل يوجد في محطة الحافلات %s مقعد؟"</string>
     <string name="about_title_translate">"ساعد في ترجمة هذا التطبيق"</string>
+    <string name="about_description_translate">"%1$s مترجم %2$d%%"</string>
+    <string name="quest_oneway2_title">"هل هذا شارع ذو اتجاه واحد؟ في أي اتجاه؟"</string>
+    <string name="quest_oneway2_dir">"على الطريق في هذا الاتجاه"</string>
     <string name="quest_oneway2_no_oneway">"ليست طريقة واحدة"</string>
+    <string name="quest_maxweight_select_sign">"حدد علامة"</string>
+    <string name="quest_steps_incline_title">"أي اتجاه يقود إلى الأعلى لهذه الخطوات؟"</string>
+    <string name="quest_step_count_title">"كم عدد الخطوات هنا؟"</string>
+    <string name="quest_traffic_signals_sound_title">"هل هناك إشارات صوتية للمكفوفين هنا؟"</string>
+    <string name="quest_traffic_signals_vibrate_title">"هل تحتوي إشارات المرور هذه على مؤشر ملموس للمكفوفين عندما يكون العبور آمنًا؟"</string>
+    <string name="quest_busStopRef_title">"ما هو الرقم المرجعي لمحطة الحافلات هذه؟"</string>
+    <string name="quest_tramStopRef_title">"ما هو الرقم المرجعي لمحطة الترام هذه؟"</string>
+    <string name="quest_railway_crossing_barrier_title2">"ما هي الحواجز المستخدمة في معبر السكة الحديد هذا؟"</string>
+    <string name="quest_railway_crossing_barrier_none2">"لا حواجز"</string>
+    <string name="quest_steps_ramp_title">"هل تحتوي هذه الخطوات على منحدر؟ اي نوع؟"</string>
+    <string name="quest_steps_ramp_none">"لا منحدر (صالح للاستخدام)"</string>
+    <string name="quest_steps_ramp_bicycle">"منحدر دراجات"</string>
+    <string name="quest_steps_ramp_stroller">"منحدر عربة"</string>
+    <string name="quest_steps_ramp_wheelchair">"منحدر للكراسي المتحركة"</string>
+    <string name="quest_atm_operator_title">"ما هو اسم البنك لجهاز الصراف الآلي هذا؟"</string>
+    <string name="quest_clothes_container_operator_title">"من يقبل التبرعات لصندوق الملابس هذا؟"</string>
+    <string name="quest_charging_station_operator_title">"من هو مشغل محطة الشحن هذه؟"</string>
+    <string name="link_indoorequal_description">"اكتشف الخرائط الداخلية للمراكز التجارية ومحطات السكك الحديدية وما إلى ذلك"</string>
+    <string name="achievement_citizen_title">"مواطن"</string>
+    <string name="achievement_citizen_solved_X">"لقد قمت بحل %d مهمة مفيدة للحياة اليومية في المدينة!"</string>
+    <string name="achievement_outdoors_title">"في الهواء الطلق"</string>
+    <string name="quest_generic_answer_noSign">"لا توجد علامة"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"منفصل"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"غير منفصل"</string>
+    <string name="pref_title_sync2">"تحميل الإجابات تلقائيًا"</string>
+    <string name="open_url">"رابط مفتوح"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_silo">"صومعة"</string>
+    <string name="quest_buildingType_historic">"تاريخي"</string>
+    <string name="quest_buildingType_historic_description">"بناء ذو قيمة تاريخية ، شيد لغرض غير معروف أو غير واضح"</string>
+    <string name="quest_buildingType_abandoned">"مهجور"</string>
+    <string name="quest_buildingType_abandoned_description">"مبنى غير مستخدم وظيفته أو غرضه الأصلي غير معروف"</string>
+    <string name="quest_kerb_height_title">"ما هو ارتفاع هذا الرصيف؟"</string>
+    <string name="quest_kerb_height_flush">"نفس مستوى سطح الطريق"</string>
+    <string name="quest_kerb_height_lowered">"أعلى قليلاً من سطح الطريق"</string>
+    <string name="quest_kerb_height_lowered_ramp">"منحدر الرصيف"</string>
+    <string name="quest_surface_value_rock">"صخر"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"يمكن للشاحنات الطويلة أن تمر"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"الشاحنات الطويلة لا تناسب"</string>
+    <string name="quest_address_street_hint">"اضغط على الطريق على الخريطة"</string>
+    <string name="quest_parkingType_street_side">"وقوف السيارات قبالة الطريق"</string>
+    <string name="quest_parkingType_lane">"موقف سيارات على الطريق"</string>
+    <string name="quest_existence_title">"هل مازال هذا هنا؟ (%s)"</string>
+    <string name="quest_existence_name_title">"هل %1$s (%2$s) لا يزال هنا؟"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"يختلف عدد الممرات لكل جانب"</string>
+    <string name="quest_dietType_kosher_name_title">"هل تقدم %s منتجات متوافقة مع الشريعة اليهودية؟"</string>
+    <string name="quest_construction_completed_at_known_date">"سينتهي في التاريخ ..."</string>
+    <string name="quest_construction_completion_date_title">"متى ستكتمل؟"</string>
+    <string name="quest_surface_value_clay">"طين"</string>
+    <string name="quest_surface_value_artificial_turf">"العشب الصناعي"</string>
+    <string name="quest_surface_value_tartan">"ترتان"</string>
+    <string name="quest_bicycle_parking_fee_title">"هل عليك أن تدفع مقابل ركن دراجة هنا؟"</string>
+    <string name="quest_buildingType_house_description2">"منزل أسرة واحدة غير منفصل"</string>
+    <string name="quest_drinking_water_title">"هل المياه صالحة للشرب هنا؟ (%s)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"آمن للشرب (بدون توقيع)"</string>
+    <string name="team_mode_team_size_label">"كم شخصا يوجد هناك؟"</string>
+    <string name="team_mode_team_size_hint">"يعمل وضع الفريق لمجموعات من 2 إلى 12 شخصًا."</string>
 
     <!-- لقد حذفته -->
     <string name="deleted_poi_action_description">"قمت بحذفه"</string>
