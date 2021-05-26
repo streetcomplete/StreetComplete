@@ -56,7 +56,7 @@ The <a href="https://bmbf.de/">German Federal Ministry of Education and Research
 
 
 <a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" height="60"/> <img src=".github/images/logo_ngi0.svg" height="60"/></a><br/>
-The <a href="https://nlnet.nl/discovery/">NGI Zero Discovery</a> is a grant program organized by the NLnet foundation. The grant enabled <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Mateusz Konieczny to work on StreetComplete</a> for about three months in 2019.
+The <a href="https://nlnet.nl/discovery/">NGI Zero Discovery</a> is a grant program organized by the NLnet foundation. The 2019 grant enabled <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Mateusz Konieczny to work on StreetComplete</a> for about three months.
 
 
 <a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" height="60"/></a><br/>
