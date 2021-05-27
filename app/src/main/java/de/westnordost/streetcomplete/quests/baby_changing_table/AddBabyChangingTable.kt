@@ -22,9 +22,9 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
     """
     override val commitMessage = "Add baby changing table"
     override val wikiLink = "Key:changing_table"
+    override val icon = R.drawable.ic_quest_baby
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val isReplaceShopEnabled = true
-    override val icon = R.drawable.ic_quest_baby
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags.containsKey("name"))

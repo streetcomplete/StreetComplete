@@ -21,9 +21,9 @@ class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
     /* Don't ask again for postboxes without signed collection times. This is very unlikely to
     *  change and problematic to tag clearly with the check date scheme */
 
-    override val icon = R.drawable.ic_quest_mail
     override val commitMessage = "Add postbox collection times"
     override val wikiLink = "Key:collection_times"
+    override val icon = R.drawable.ic_quest_mail
     override val isDeleteElementEnabled = true
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=postbox_collection_times/AddPostboxCollectionTimes.kt
