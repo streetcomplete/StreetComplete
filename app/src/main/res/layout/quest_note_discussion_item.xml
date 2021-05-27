@@ -54,10 +54,11 @@
 
                 <TextView
                     android:id="@+id/commentText"
+                    style="@style/NoteDiscussion.Comment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/NoteDiscussion.Comment"
-                    tools:text="Welcome to OpenStreetMap, the project that creates and distributes free geographic data for the world."/>
+                    android:autoLink="web"
+                    tools:text="Welcome to OpenStreetMap, the project that creates and distributes free geographic data for the world." />
 
                 <View
                     android:layout_width="match_parent"
