@@ -157,7 +157,6 @@ import javax.inject.Singleton
         AddMaxHeight(), // OSRM and other routing engines
         AddLanes(), // abstreet, certainly most routing engines
         AddRailwayCrossingBarrier(), // useful for routing
-        AddBollardType(), // useful for first responders
         AddOpeningHours(featureDictionaryFuture),
         AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
         AddOrchardProduce(),
@@ -226,6 +225,7 @@ import javax.inject.Singleton
         AddClothingBinOperator(),
         AddKosher(),
         AddStileType(),
+        AddBollardType(), // useful for first responders
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
         //      the sake of mapping it in case it makes sense later
