@@ -17,7 +17,6 @@ class AddIsDefibrillatorIndoor : OsmFilterQuestType<Boolean>() {
     override val commitMessage = "Add whether defibrillator is inside building"
     override val wikiLink = "Key:indoor"
     override val icon = R.drawable.ic_quest_defibrillator
-    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title
 
