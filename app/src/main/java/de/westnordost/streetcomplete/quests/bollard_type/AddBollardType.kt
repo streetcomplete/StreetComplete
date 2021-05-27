@@ -1,22 +1,38 @@
 package de.westnordost.streetcomplete.quests.bollard_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 
-class AddBollardType : OsmFilterQuestType<BollardType>() {
+class AddBollardType : OsmElementQuestType<BollardType> {
 
-    override val elementFilter = """
+    private val bollardNodeFilter by lazy { """
         nodes with
             barrier = bollard
             and !bollard
-    """
+    """.toElementFilterExpression() }
+
     override val commitMessage = "Add bollard type"
     override val wikiLink = "Key:bollard"
     override val icon = R.drawable.ic_quest_no_cars
     override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bollard_type_title
+
+    // exclude free-floating nodes
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val wayNodeIds = mutableSetOf<Long>()
+        mapData.ways.flatMapTo(wayNodeIds) { it.nodeIds }
+
+        return mapData.nodes
+            .filter { bollardNodeFilter.matches(it) && it.id in wayNodeIds }
+    }
+
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!bollardNodeFilter.matches(element)) false else null
 
     override fun createForm() = AddBollardTypeForm()
 
