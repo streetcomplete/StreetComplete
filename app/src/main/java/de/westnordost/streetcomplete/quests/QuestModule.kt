@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
@@ -156,6 +157,7 @@ import javax.inject.Singleton
         AddMaxHeight(), // OSRM and other routing engines
         AddLanes(), // abstreet, certainly most routing engines
         AddRailwayCrossingBarrier(), // useful for routing
+        AddBollardType(), // useful for first responders
         AddOpeningHours(featureDictionaryFuture),
         AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
         AddOrchardProduce(),
