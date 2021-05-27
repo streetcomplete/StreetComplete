@@ -25,7 +25,9 @@ class AddBollardType : OsmElementQuestType<BollardType> {
     // exclude free-floating nodes
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val wayNodeIds = mutableSetOf<Long>()
-        mapData.ways.flatMapTo(wayNodeIds) { it.nodeIds }
+        mapData.ways
+            .filter { it.tags["area"] != "yes" }
+            .flatMapTo(wayNodeIds) { it.nodeIds }
 
         return mapData.nodes
             .filter { bollardNodeFilter.matches(it) && it.id in wayNodeIds }
