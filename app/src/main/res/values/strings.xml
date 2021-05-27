@@ -1047,5 +1047,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bollard_type_removable_without_key">Removable without key</string>
     <string name="quest_bollard_type_foldable">Foldable</string>
     <string name="quest_bollard_type_flexible">Flexible</string>
-    <string name="quest_bollard_type_fixed">Fixed</string>
+    <string name="quest_bollard_type_fixed">Fixed (not removable)</string>
 </resources>
