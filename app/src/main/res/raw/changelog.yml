@@ -1428,7 +1428,7 @@ v4.0: |
   <ul>
   <li>Clearer wording of question (#768)</li>
   <li>Do not ask for a cycleway when a separately mapped sidewalk exists (#718)</li>
-  <li><a href="https://ent8r.github.io/blacklistr/?java=bikeway/AddCycleway.java" >Show only in a limited set of countries</a> (#749)</li>
+  <li><a href="https://ent8r.github.io/blacklistr/?java=cycleway/AddCycleway.java" >Show only in a limited set of countries</a> (#749)</li>
   </ul>
   <h4>Tactile Pavings Quests:</h4>
   <ul>
