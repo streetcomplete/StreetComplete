@@ -31,10 +31,10 @@ bicycle_parking_type_stand.jpg CC0               https://commons.wikimedia.org/w
 bicycle_parking_type_wheel...  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG
 
 bollard_fixed.jpg              CC-BY-SA 2.0      Chrisix https://wiki.openstreetmap.org/wiki/File:Bollard_in_residential_area.png
-bollard_flexible.jpg           CC0               Ruben Kelevra https://github.com/streetcomplete/StreetComplete/issues/2128#issuecomment-717054203
+bollard_flexible.jpg           CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Flexible_bollard.jpg
 bollard_foldable.jpg           CC-BY-SA 2.0      Hauke Stieler https://wiki.openstreetmap.org/wiki/File:Bollard_foldable.jpg
-bollard_removable_with_key.jpg CC0               Ruben Kelevra https://github.com/streetcomplete/StreetComplete/issues/2128#issuecomment-713700580
-bollard_removable_without_key… CC0               Ruben Kelevra https://github.com/streetcomplete/StreetComplete/issues/2128#issuecomment-713700580
+bollard_removable_with_key.jpg CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Bollard_removable_with_key.jpg
+bollard_removable_without_key… CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Bollard_removable_without_key_(detail).jpg
 bollard_rising.jpg             CC-BY-SA 4.0      Stolbovsky https://commons.wikimedia.org/wiki/File:Rising_bollards_in_Moscow.jpg
 
 bridge_structure_arch.jpg      Public Domain     https://commons.wikimedia.org/wiki/File:Wash_Br_Harlem_water_jeh.JPG
