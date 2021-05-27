@@ -12,9 +12,9 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
           amenity = post_box
           and !royal_cypher
     """
+    override val icon = R.drawable.ic_quest_crown
     override val commitMessage = "Add postbox royal cypher"
     override val wikiLink = "Key:royal_cypher"
-    override val icon = R.drawable.ic_quest_crown
     override val enabledInCountries = NoCountriesExcept(
         "GB"
     )
