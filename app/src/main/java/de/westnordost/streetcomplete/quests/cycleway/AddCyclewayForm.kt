@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.bikeway
+package de.westnordost.streetcomplete.quests.cycleway
 
 import android.os.Bundle
 import androidx.annotation.AnyThread
@@ -29,11 +29,11 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         if (!isDefiningBothSides && isNoRoundabout) {
             result.add(OtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
         }
-        result.add(OtherAnswer(R.string.quest_cycleway_answer_no_bicycle_infrastructure) { noBikewayHereHint() })
+        result.add(OtherAnswer(R.string.quest_cycleway_answer_no_bicycle_infrastructure) { noCyclewayHereHint() })
         return result
     }
 
-    private fun noBikewayHereHint() {
+    private fun noCyclewayHereHint() {
         activity?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_cycleway_answer_no_bicycle_infrastructure_title)
             .setMessage(R.string.quest_cycleway_answer_no_bicycle_infrastructure_explanation)

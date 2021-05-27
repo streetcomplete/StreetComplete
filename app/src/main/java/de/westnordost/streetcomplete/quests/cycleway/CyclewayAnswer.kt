@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.bikeway
+package de.westnordost.streetcomplete.quests.cycleway
 
 data class CyclewayAnswer(
     val left: CyclewaySide?,
