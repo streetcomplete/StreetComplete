@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
-import de.westnordost.streetcomplete.quests.bikeway.AddCycleway
+import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
