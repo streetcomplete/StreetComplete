@@ -19,6 +19,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
     override val commitMessage = "Add whether water is drinkable"
     override val wikiLink = "Key:drinking_water"
     override val icon = R.drawable.ic_quest_drinking_water
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_title
 

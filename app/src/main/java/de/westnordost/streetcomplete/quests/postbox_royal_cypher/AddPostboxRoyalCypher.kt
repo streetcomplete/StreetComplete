@@ -15,6 +15,7 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
     override val icon = R.drawable.ic_quest_crown
     override val commitMessage = "Add postbox royal cypher"
     override val wikiLink = "Key:royal_cypher"
+    override val isDeleteElementEnabled = true
     override val enabledInCountries = NoCountriesExcept(
         "GB"
     )
