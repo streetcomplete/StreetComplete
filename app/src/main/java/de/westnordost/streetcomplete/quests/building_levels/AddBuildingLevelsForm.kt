@@ -30,7 +30,9 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     private val levels get() = levelsInput?.text?.toString().orEmpty().trim()
     private val roofLevels get() = roofLevelsInput?.text?.toString().orEmpty().trim()
 
-    private val lastPickedStrings by lazy { favs.get(javaClass.simpleName) }
+    private val lastPickedAnswers by lazy {
+        favs.get(javaClass.simpleName).map { it.toBuildingLevelAnswer() }
+    }
 
     @Inject internal lateinit var favs: LastPickedValuesStore<String>
 
@@ -49,23 +51,18 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         levelsInput.addTextChangedListener(onTextChangedListener)
         roofLevelsInput.addTextChangedListener(onTextChangedListener)
 
-        lastPickedButtons.adapter = LastPickedAdapter(lastPickedStrings, ::onLastPickedButtonClicked)
+        lastPickedButtons.adapter = LastPickedAdapter(lastPickedAnswers, ::onLastPickedButtonClicked)
     }
 
     private fun onLastPickedButtonClicked(position: Int) {
-        val favValues = lastPickedStrings[position].split("#")
-
-        levelsInput.setText(favValues[0])
-        roofLevelsInput.setText(if (favValues.size > 1) favValues[1] else "")
+        levelsInput.setText(lastPickedAnswers[position].levels)
+        roofLevelsInput.setText(lastPickedAnswers[position].roofLevels ?: "")
     }
 
     override fun onClickOk() {
-        val buildingLevels = levels.toInt()
-        val roofLevels = if(roofLevels.isNotEmpty()) roofLevels.toInt() else null
-
-        favs.add(javaClass.simpleName,
-            listOfNotNull(buildingLevels, roofLevels).joinToString("#"), max = 6)
-        applyAnswer(BuildingLevelsAnswer(buildingLevels, roofLevels))
+        val answer = BuildingLevelsAnswer(levels, if (roofLevels.isEmpty()) null else roofLevels)
+        favs.add(javaClass.simpleName, answer.toSerializedString(), max = 6)
+        applyAnswer(answer)
     }
 
     private fun showMultipleLevelsHint() {
@@ -80,7 +77,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
 
 
     private class LastPickedAdapter(
-        private val lastPickedStrings: List<String>,
+        private val lastPickedAnswers: List<BuildingLevelsAnswer>,
         private val onItemClicked: (position: Int) -> Unit
     ) : RecyclerView.Adapter<LastPickedAdapter.ViewHolder>() {
 
@@ -108,12 +105,16 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         }
 
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-            val favValues = lastPickedStrings[position].split("#")
-
-            viewHolder.lastLevelsLabel.text = favValues[0]
-            viewHolder.lastRoofLevelsLabel.text = if (favValues.size > 1) favValues[1] else " "
+            viewHolder.lastLevelsLabel.text = lastPickedAnswers[position].levels
+            viewHolder.lastRoofLevelsLabel.text = lastPickedAnswers[position].roofLevels ?: " "
         }
 
-        override fun getItemCount() = lastPickedStrings.size
+        override fun getItemCount() = lastPickedAnswers.size
     }
 }
+
+private fun BuildingLevelsAnswer.toSerializedString() =
+    listOfNotNull(levels, roofLevels).joinToString("#")
+
+private fun String.toBuildingLevelAnswer() =
+    this.split("#").let { BuildingLevelsAnswer(it[0], it.getOrNull(1)) }
