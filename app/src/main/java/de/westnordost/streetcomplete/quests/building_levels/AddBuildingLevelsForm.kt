@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 import kotlinx.android.synthetic.main.quest_building_levels.*
+import kotlinx.android.synthetic.main.quest_building_levels_last_picked_button.lastLevelsLabel
+import kotlinx.android.synthetic.main.quest_building_levels_last_picked_button.lastRoofLevelsLabel
 
 class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnswer>() {
 
