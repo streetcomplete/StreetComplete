@@ -472,6 +472,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_category_feedback">Feedback</string>
     <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
     <string name="quest_leave_new_note_create_image_error">Unable to create file for photo</string>
+    <string name="no_camera_app">"No external camera app available. Is your pre-installed camera app disabled?"</string>
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
     <string name="quest_carWashType_selfService">Self service</string>
