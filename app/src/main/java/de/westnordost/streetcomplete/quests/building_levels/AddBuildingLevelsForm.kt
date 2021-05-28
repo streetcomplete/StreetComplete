@@ -1,9 +1,12 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import android.view.View
-import androidx.core.view.isGone
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 
 import javax.inject.Inject
 
@@ -15,8 +18,6 @@ import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 import kotlinx.android.synthetic.main.quest_building_levels.*
-import kotlinx.android.synthetic.main.quest_building_levels_last_picked_button.lastLevelsLabel
-import kotlinx.android.synthetic.main.quest_building_levels_last_picked_button.lastRoofLevelsLabel
 
 class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnswer>() {
 
@@ -29,6 +30,8 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     private val levels get() = levelsInput?.text?.toString().orEmpty().trim()
     private val roofLevels get() = roofLevelsInput?.text?.toString().orEmpty().trim()
 
+    private val lastPickedStrings by lazy { favs.get(javaClass.simpleName) }
+
     @Inject internal lateinit var favs: LastPickedValuesStore<String>
 
     init {
@@ -40,28 +43,20 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
 
         val onTextChangedListener = TextChangedWatcher {
             checkIsFormComplete()
-            if (isFormComplete()) pickLastButton.visibility = View.GONE
         }
 
         levelsInput.requestFocus()
         levelsInput.addTextChangedListener(onTextChangedListener)
         roofLevelsInput.addTextChangedListener(onTextChangedListener)
 
-        val lastPickedStrings = favs.get(javaClass.simpleName)
-        val isLastPickedStringsEmpty = lastPickedStrings.isEmpty()
-        pickLastButton.isGone = isLastPickedStringsEmpty
-        if (!isLastPickedStringsEmpty) {
-            val favValues = lastPickedStrings.first.split("#")
+        lastPickedButtons.adapter = LastPickedAdapter(lastPickedStrings, ::onLastPickedButtonClicked)
+    }
 
-            lastLevelsLabel.text = favValues[0]
-            lastRoofLevelsLabel.text = if (favValues.size > 1) favValues[1] else " "
+    private fun onLastPickedButtonClicked(position: Int) {
+        val favValues = lastPickedStrings[position].split("#")
 
-            pickLastButton.setOnClickListener {
-                levelsInput.setText(lastLevelsLabel.text)
-                roofLevelsInput.setText(lastRoofLevelsLabel.text)
-                pickLastButton.visibility = View.GONE
-            }
-        }
+        levelsInput.setText(favValues[0])
+        roofLevelsInput.setText(if (favValues.size > 1) favValues[1] else "")
     }
 
     override fun onClickOk() {
@@ -69,7 +64,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         val roofLevels = if(roofLevels.isNotEmpty()) roofLevels.toInt() else null
 
         favs.add(javaClass.simpleName,
-            listOfNotNull(buildingLevels, roofLevels).joinToString("#"), max = 1)
+            listOfNotNull(buildingLevels, roofLevels).joinToString("#"), max = 6)
         applyAnswer(BuildingLevelsAnswer(buildingLevels, roofLevels))
     }
 
@@ -82,4 +77,43 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     }
 
     override fun isFormComplete() = levels.isNotEmpty()
+
+
+    private class LastPickedAdapter(
+        private val lastPickedStrings: List<String>,
+        private val onItemClicked: (position: Int) -> Unit
+    ) : RecyclerView.Adapter<LastPickedAdapter.ViewHolder>() {
+
+        class ViewHolder(
+            view: View,
+            private val onItemClicked: (position: Int) -> Unit
+        ) : RecyclerView.ViewHolder(view), View.OnClickListener {
+            val lastLevelsLabel: TextView = view.findViewById(R.id.lastLevelsLabel)
+            val lastRoofLevelsLabel: TextView = view.findViewById(R.id.lastRoofLevelsLabel)
+
+            init {
+                itemView.setOnClickListener(this)
+            }
+
+            override fun onClick(view: View) {
+                onItemClicked(bindingAdapterPosition)
+            }
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.quest_building_levels_last_picked_button, parent, false)
+
+            return ViewHolder(view, onItemClicked)
+        }
+
+        override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+            val favValues = lastPickedStrings[position].split("#")
+
+            viewHolder.lastLevelsLabel.text = favValues[0]
+            viewHolder.lastRoofLevelsLabel.text = if (favValues.size > 1) favValues[1] else " "
+        }
+
+        override fun getItemCount() = lastPickedStrings.size
+    }
 }
