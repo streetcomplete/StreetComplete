@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.net.toUri
@@ -109,7 +108,7 @@ class AttachPhotoFragment : Fragment() {
             takePhoto.launch(photoUri)
         } catch (e: ActivityNotFoundException) {
             Log.e(TAG, "Could not find a camera app", e)
-            context?.toast(R.string.no_camera_app, Toast.LENGTH_LONG)
+            context?.toast(R.string.no_camera_app)
         } catch (e: IOException) {
             Log.e(TAG, "Unable to create file for photo", e)
             context?.toast(R.string.quest_leave_new_note_create_image_error)
