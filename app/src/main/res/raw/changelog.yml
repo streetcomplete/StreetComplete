@@ -4,6 +4,7 @@ v32.1: |
   <li>Fix possible crash when downloading on a wonky internet connection (#2912)</li>
   <li>Fix edit history sidebar does not appear when animations are off (#2904)</li>
   <li>Fix display glitch in quest statistics screen (#2906)</li>
+  <li>Fix crash when solving quest with shaky finger</li>
   </ul>
   <h3>Enhancements</h3>
   <ul>
