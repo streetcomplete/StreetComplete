@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
+import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
@@ -91,9 +92,9 @@ class MainActivity : AppCompatActivity(),
         if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
-        supportFragmentManager.beginTransaction()
-            .add(locationRequestFragment, LocationRequestFragment::class.java.simpleName)
-            .commit()
+        supportFragmentManager.commit {
+            add(locationRequestFragment, LocationRequestFragment::class.java.simpleName)
+        }
 
         setContentView(R.layout.activity_main)
 
@@ -101,10 +102,10 @@ class MainActivity : AppCompatActivity(),
         if (savedInstanceState == null) {
             val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false)
             if (!hasShownTutorial && !userController.isLoggedIn) {
-                supportFragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                    .add(R.id.fragment_container, TutorialFragment())
-                    .commit()
+                supportFragmentManager.commit {
+                    setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+                    add(R.id.fragment_container, TutorialFragment())
+                }
             }
             if (userController.isLoggedIn && isConnected) {
                 userController.updateUser()
@@ -189,10 +190,9 @@ class MainActivity : AppCompatActivity(),
         super.onConfigurationChanged(newConfig)
         findViewById<View>(R.id.main).requestLayout()
         // recreate the NotificationsContainerFragment because it should load a new layout, see #2330
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.notifications_container_fragment, NotificationsContainerFragment())
-            .commit()
+        supportFragmentManager.commit {
+            replace(R.id.notifications_container_fragment, NotificationsContainerFragment())
+        }
     }
 
     private suspend fun ensureLoggedIn() {
@@ -287,10 +287,10 @@ class MainActivity : AppCompatActivity(),
         prefs.edit().putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true).apply()
         val tutorialFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (tutorialFragment != null) {
-            supportFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                .remove(tutorialFragment)
-                .commit()
+            supportFragmentManager.commit {
+                setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+                remove(tutorialFragment)
+            }
         }
     }
 
