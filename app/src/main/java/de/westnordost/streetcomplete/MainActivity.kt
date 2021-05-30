@@ -134,11 +134,7 @@ class MainActivity : AppCompatActivity(),
         downloadController.showNotification = false
         uploadController.addUploadProgressListener(uploadProgressListener)
         downloadController.addDownloadProgressListener(downloadProgressListener)
-        if (!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false)) {
-            locationRequestFragment.startRequest()
-        } else {
-            updateLocationAvailability()
-        }
+        updateLocationAvailability()
     }
 
     override fun onBackPressed() {
@@ -283,8 +279,11 @@ class MainActivity : AppCompatActivity(),
 
     /* ------------------------------- TutorialFragment.Listener -------------------------------- */
 
-    override fun onFinishedTutorial() {
+    override fun onTutorialFinished() {
+        locationRequestFragment.startRequest()
+
         prefs.edit().putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true).apply()
+
         val tutorialFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (tutorialFragment != null) {
             supportFragmentManager.commit {
@@ -305,19 +304,20 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun onLocationRequestFinished(withLocationState: LocationState) {
-        hasAskedForLocation = true
-        val enabled = withLocationState.isEnabled
-        prefs.edit().putBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, !enabled).apply()
-        if (enabled) {
-            updateLocationAvailability()
-        } else {
-            toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
+        // if denied first time after exiting tutorial: ask again once (i.e. show rationale and ask again)
+        if (!withLocationState.isEnabled) {
+            if (!prefs.getBoolean(Prefs.FINISHED_FIRST_LOCATION_REQUEST, false)) {
+                locationRequestFragment.startRequest()
+            } else {
+                toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
+            }
         }
+        prefs.edit().putBoolean(Prefs.FINISHED_FIRST_LOCATION_REQUEST, true).apply()
+        updateLocationAvailability()
     }
 
     companion object {
         // per application start settings
-        private var hasAskedForLocation = false
         private var dontShowRequestAuthorizationAgain = false
     }
 }

@@ -219,12 +219,13 @@
                 android:gravity="top|center_horizontal"
                 android:visibility="gone">
 
-                <FrameLayout
+                <LinearLayout
                     android:layout_width="@dimen/tutorial_textbox_width"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:paddingTop="24dp"
-                    android:paddingBottom="112dp">
+                    android:paddingBottom="112dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -233,7 +234,15 @@
                         android:textAppearance="@style/TextAppearance.BigBody"
                         android:text="@string/tutorial_solving_quests"/>
 
-                </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="24dp"
+                        android:textAppearance="@style/TextAppearance.BigBody"
+                        android:text="@string/no_location_permission_warning"/>
+
+                </LinearLayout>
 
             </ScrollView>
 
