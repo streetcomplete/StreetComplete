@@ -7,7 +7,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -30,8 +29,12 @@ class LocationRequestFragment : Fragment() {
     private var inProgress = false
     private var locationProviderChangedReceiver: BroadcastReceiver? = null
 
-    private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
-    private lateinit var startActivityForResultLauncher: ActivityResultLauncher<Intent>
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission(), ::onRequestLocationPermissionsResult
+    )
+    private val startActivityForResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(), ::onRequestLocationSettingsToBeOnResult
+    )
 
     /* Lifecycle */
 
@@ -44,17 +47,6 @@ class LocationRequestFragment : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        requestPermissionLauncher = requireActivity().registerForActivityResult(
-            ActivityResultContracts.RequestPermission(),
-            ::onRequestLocationPermissionsResult
-        )
-        startActivityForResultLauncher = requireActivity().registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult(),
-            ::onRequestLocationSettingsToBeOnResult
-        )
-    }
 
     override fun onStop() {
         super.onStop()
