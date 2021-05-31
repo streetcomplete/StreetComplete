@@ -3,7 +3,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:focusable="true"
+    android:clickable="true"
     android:background="?android:attr/colorBackground">
+    <!-- clickable and focussable = true so that touch input is not passed below this fragment -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
