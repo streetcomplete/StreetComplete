@@ -55,7 +55,6 @@ import de.westnordost.streetcomplete.util.*
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -255,7 +254,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onPanBegin() {
-        setIsFollowingPosition(false)
+        /* panning only results in not following location anymore if a location is already known
+           and displayed
+         */
+        if (mapFragment?.displayedLocation != null) {
+            setIsFollowingPosition(false)
+        }
     }
 
     override fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float) { }

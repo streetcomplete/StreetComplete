@@ -25,10 +25,11 @@ open class LocationAwareMapFragment : MapFragment() {
     private var locationMapComponent: CurrentLocationMapComponent? = null
 
     var displayedLocation: Location? = null
+        private set
     private var compassRotation: Double? = null
 
     /** Whether the view should automatically center on the GPS location */
-    var isFollowingPosition = false
+    var isFollowingPosition = true
         set(value) {
             field = value
             centerCurrentPositionIfFollowing()
