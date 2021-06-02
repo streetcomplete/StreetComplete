@@ -18,12 +18,12 @@ class AddBusStopTimetable : OsmFilterQuestType<BusStopTimetable>() {
           (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
-        and (
-            (!departures_board or departures_board older today -4 years)
-            or
-            (passenger_information_display != yes or passenger_information_display older today -4 years)
-        )
+        and (!departures_board or departures_board = yes or departures_board older today -4 years)
+        and (!passenger_information_display or passenger_information_display != yes or passenger_information_display older today -4 years)
     """
+    /* If departures_board unset, old, or without detail, ask.
+    Won't ask if passenger_information_display is yes, as that implies departures_board=realtime
+     */
 
     override val commitMessage = "Add timetable type at bus stops"
     override val wikiLink = "Key:departures_board"
