@@ -10,7 +10,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
     // information about the purpose of the building, so no need to force asking it
     // same goes (more or less) for tourism, amenity, leisure. See #1854, #1891
     override val elementFilter = """
-        ways, relations with building = yes
+        ways, relations with (building = yes or building = unclassified)
          and !man_made
          and !historic
          and !military
