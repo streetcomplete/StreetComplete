@@ -161,6 +161,8 @@
 
     <!-- Fuzzy -->
     <string name="turn_on_location_request">"Localizarea este dezactivată. Deschidem setările pentru a o activa acum?"</string>
+
+    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Activarea locației este necesară pentru a  putea căuta provocări noi in aproprierea dumneavoastră."</string>
     <string name="about_title_authors">"Autori"</string>
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick și contributorii"</string>

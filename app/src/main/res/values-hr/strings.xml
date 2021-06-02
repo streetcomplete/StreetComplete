@@ -57,6 +57,8 @@
     <string name="confirmation_cancel_prev_download_title">"Zaustavi trenutnu pretragu i pokreni novu ovdje?"</string>
     <string name="notification_downloading">"Tražim zadatke..."</string>
     <string name="turn_on_location_request">"Lokacija je isključena. Želite li sada otvoriti Postavke kako biste je uključili?"</string>
+
+    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Vaša  lokacija je potrebna za pronalaženje zadataka u vašoj blizini."</string>
     <string name="about_title_authors">"Zasluge"</string>
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick i suradnici"</string>

@@ -55,6 +55,8 @@
     <string name="confirmation_cancel_prev_download_title">"Скасувати попередній пошук та спробувати пошукати тут?"</string>
     <string name="notification_downloading">"Пошук завдань…"</string>
     <string name="turn_on_location_request">"Позиціювання вимкнене. Перейти до налаштувань, щоб увімкнути?"</string>
+
+    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Позиціювання потрібне для пошуку завдань поруч з вами."</string>
     <string name="about_title_authors">"Автори"</string>
     <string name="about_summary_authors">"© 2016–2021 Тобіас Цвік та інші"</string>
