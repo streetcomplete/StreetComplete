@@ -538,6 +538,14 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_busStopLit_tram_title">"Is this streetcar stop lit?"</string>
     <string name="quest_busStopLit_title">"Is this bus stop lit?"</string>
     <string name="quest_busStopLit_name_title">"Is the bus stop %s lit?"</string>
+    <string name="quest_busStopTimetable_tram_name_title">"Does the streetcar stop %s have a timetable? What type?"</string>
+    <string name="quest_busStopTimetable_tram_title">"Does this streetcar stop have a timetable? What type?"</string>
+    <string name="quest_busStopTimetable_title">"Does this bus stop have a timetable? What type?"</string>
+    <string name="quest_busStopTimetable_name_title">"Does the bus stop %s have a timetable? What type?"</string>
+    <string name="quest_busStopTimetable_printed">"Printed timetable"</string>
+    <string name="quest_busStopTimetable_delay">"'Every x minutes'"</string>
+    <string name="quest_busStopTimetable_realtime">"Realtime board"</string>
+    <string name="quest_busStopTimetable_none">"No timetable"</string>
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
     <string name="quest_religion_for_place_of_worship_name_title">What religion is practiced at %s?</string>
