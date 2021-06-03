@@ -61,7 +61,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
 
     override fun onClickOk() {
         val answer = BuildingLevelsAnswer(levels, if (roofLevels.isEmpty()) null else roofLevels)
-        favs.add(javaClass.simpleName, answer.toSerializedString(), max = 6)
+        favs.add(javaClass.simpleName, answer.toSerializedString(), max = 5)
         applyAnswer(answer)
     }
 
