@@ -101,12 +101,16 @@ class PointerPinView @JvmOverloads constructor(
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         pointerPinBitmap?.recycle()
 
-        val size = min(width, height)
-        val bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bmp)
-        pointerPin.setBounds(0,0, size, size)
-        pointerPin.draw(canvas)
-        pointerPinBitmap = bmp
+        if (w <= 0 || h <= 0) {
+            pointerPinBitmap = null
+        } else {
+            val size = min(width, height)
+            val bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bmp)
+            pointerPin.setBounds(0, 0, size, size)
+            pointerPin.draw(canvas)
+            pointerPinBitmap = bmp
+        }
     }
 
     override fun onDraw(canvas: Canvas?) {
