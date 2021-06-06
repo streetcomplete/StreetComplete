@@ -206,7 +206,7 @@ class BallPitView @JvmOverloads constructor(
             .scaleX(1f).scaleY(1f)
             .alpha(1f)
             .setStartDelay((1600 * yPosition / worldBounds.height()).toLong())
-            .setDuration((200 + (size * 150.0).pow(0.75)).toLong())
+            .setDuration((200 + (size * 150.0).pow(0.5)).toLong())
             .setInterpolator(DecelerateInterpolator())
             .start()
     }

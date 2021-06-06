@@ -1,6 +1,6 @@
-package de.westnordost.streetcomplete.quests.bikeway
+package de.westnordost.streetcomplete.quests.cycleway
 
-import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
+import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
 
 data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
 

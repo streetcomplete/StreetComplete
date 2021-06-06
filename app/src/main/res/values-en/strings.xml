@@ -93,7 +93,8 @@
     <string name="confirmation_cancel_prev_download_cancel">"Continue current scan"</string>
     <string name="notification_downloading">"Scanning for quests…"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
-    <string name="no_location_permission_warning">"Your location is needed to scan for quests in your vicinity."</string>
+    <string name="no_location_permission_warning_title">"Location Permission"</string>
+    <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
     <string name="action_about2">"About"</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="about_title_authors">"Credits"</string>
@@ -221,6 +222,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_surface_value_rock">"Rock"</string>
     <string name="quest_surface_value_sett">"Sett"</string>
     <string name="quest_surface_value_wood">"Wood"</string>
+    <string name="quest_surface_value_woodchips">Woodchips</string>
     <string name="quest_placeName_title">"What is the name of this place?"</string>
     <string name="quest_placeName_title_name">"What is the name of this place? (%s)"</string>
     <string name="quest_sidewalk_title">"Does this street have a sidewalk?"</string>

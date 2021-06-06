@@ -1752,7 +1752,7 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_board_type_notice_board">"En oppslagstavle"</string>
     <string name="quest_board_type_public_transport">"Offentlig transport"</string>
     <string name="quest_board_type_title">"Hva er temaet for oppslagstavla?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, vist separat på et kart"</string>
+    <string name="quest_sidewalk_separately_mapped">"Ja, vist adskilt på kartet"</string>
     <string name="quest_board_type_map">"Et kart"</string>
     <string name="quest_board_type_map_title">"Er det bare et kart, og kun et kart?"</string>
     <string name="quest_board_type_map_description">"Oppgi om en informasjonstavle omhandler et spesifikt emne, uavhengig av om den også viser et kart. For eksempel kan en informasjonstavle for offentlig transport inneholde et kart over bussrutene. Hvis du ikke finner emnet blant alternativene kan du lage en merknad i stedet."</string>
@@ -1909,9 +1909,71 @@ forkortelser i feltet nedenfor:"</string>
     <string name="team_mode">"Gruppemodus"</string>
     <string name="team_mode_exit">"Avslutt gruppemodus"</string>
     <string name="team_mode_description">"Når du kartlegger det samme området sammen med en gruppe kan du starte gruppemodus for å dele oppgavene mellom dere."</string>
-    <string name="team_mode_team_size_label">"Hvor mange personer er der?"</string>
+    <string name="team_mode_team_size_label">"Hvor mange er med?"</string>
     <string name="team_mode_team_size_hint">"Gruppemodus fungerer for grupper på 2-12 personer"</string>
     <string name="team_mode_choose_color">"Nå velger alle i din gruppe en unik farge:"</string>
     <string name="team_mode_active">"Gruppemodus er aktivt"</string>
     <string name="team_mode_deactivated">"Gruppemodus er deaktivert"</string>
+    <string name="quest_pitchLit_title">"Er idrettsfeltet opplyst?"</string>
+    <string name="quest_pitchLit_title_track">"Er idrettsbanen opplyst?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Overgang kontrollert med trafikklys"</string>
+
+    <!-- Fuzzy -->
+    <string name="undo_last">"Angre siste endring"</string>
+    <string name="show_edit_history">"Vis endringslogg"</string>
+    <string name="undo_confirm_title2">"Angre følgende endring?"</string>
+    <string name="synced">"Opplastet"</string>
+    <string name="toast_undo_unavailable">"Denne endringer er lastet opp og kan ikke angres"</string>
+    <string name="quest_cycleway_value_separate">"vises adskilt på kartet"</string>
+    <string name="created_note_action_title">"Lagde notat"</string>
+    <string name="commented_note_action_title">"Kommentert notat"</string>
+    <string name="hid_action_description">"Du skjulte det"</string>
+    <string name="split_way_action_description">"Du delte veien"</string>
+    <string name="deleted_poi_action_description">"Du slettet det"</string>
+    <string name="added_tag_action_title">"La til %s"</string>
+    <string name="removed_tag_action_title">"Fjernet %s"</string>
+    <string name="changed_tag_action_title">"Endret til %s"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_title_delete_cache">"Slett mellomlager"</string>
+    <string name="pref_title_delete_cache_summary">"Hvis du tror kartdata er utdaterte"</string>
+    <string name="delete_confirmation">"Slett"</string>
+
+    <!-- Fuzzy -->
+    <string name="delete_cache_dialog_message">"Slett alle nedlastede kartdata, inkludert oppdrag?
+Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet etter %2$s dager."</string>
+    <string name="quest_shop_type_title">"Hva slags butikk er %s?"</string>
+    <string name="quest_shop_type_title_no_name">"Hva slags butikk er dette?"</string>
+    <string name="pref_background_type_select">"Velg bakgrunnstype"</string>
+    <string name="background_type_map">"Kart"</string>
+    <string name="background_type_aerial_esri">"Flyfoto (fra Esri)"</string>
+    <string name="quest_barrier_type_title">"Hva slags hindring er dette?"</string>
+    <string name="quest_barrier_type_gate">"Port"</string>
+    <string name="quest_barrier_type_lift_gate">"Løftebom"</string>
+    <string name="quest_barrier_type_bollard">"Påle(r)"</string>
+    <string name="quest_barrier_type_chain">"Kjetting"</string>
+    <string name="quest_barrier_type_rope">"Tau"</string>
+    <string name="quest_barrier_type_cattle_grid">"Ferist"</string>
+    <string name="quest_barrier_type_block">"Stort og tungt objekt"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_log">"Tømmerstokk"</string>
+    <string name="quest_barrier_type_kerb">"Kantstein"</string>
+    <string name="quest_barrier_full_height_turnstile">"Svingdør"</string>
+    <string name="quest_barrier_type_turnstile">"Rotasjonsgrind"</string>
+    <string name="quest_barrier_type_passage">"Passasje gjennom vegg, gjerde ol."</string>
+    <string name="quest_barrier_type_debris_pile">"Avfallshaug"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Trang passasje"</string>
+    <string name="quest_barrier_type_stile_ladder">"Gjerdeklyver"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Sykkelhinder"</string>
+    <string name="quest_barrier_type_kissing_gate">"Sluseport"</string>
+    <string name="quest_policeType_title">"Hva slags politistasjon er dette?"</string>
+    <string name="quest_stile_type_title">"Hva slags passeringspunkt er dette?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"Boliger sammenkoblet på én side"</string>
+    <string name="pref_title_quests2">"Oppdragsvalg og prioritet"</string>
+    <string name="pref_subtitle_quests">"%1$d av %2$d aktivert"</string>
+    <string name="quest_busStopLit_tram_name_title">"Er trikkestoppet %s opplyst?"</string>
+    <string name="quest_busStopLit_tram_title">"Er dette trikkestoppet opplyst?"</string>
+    <string name="quest_busStopLit_title">"Er busstoppet opplyst?"</string>
+    <string name="quest_busStopLit_name_title">"Er busstoppet %s opplyst?"</string>
 </resources>

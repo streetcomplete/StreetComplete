@@ -26,7 +26,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     private var currentPage: Int = 0
 
     interface Listener {
-        fun onFinishedTutorial()
+        fun onTutorialFinished()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -55,7 +55,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
                 }
                 MAX_PAGE_INDEX -> {
                     nextButton.isEnabled = false
-                    listener?.onFinishedTutorial()
+                    listener?.onTutorialFinished()
                 }
             }
         }
@@ -131,7 +131,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .start()
 
 
-        delay(2400)
+        delay(1400)
 
         // ...and after a few seconds, stops flashing
         tutorialGpsButton?.state = LocationState.UPDATING

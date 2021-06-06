@@ -21,6 +21,8 @@
     <string name="quest_generic_answer_notApplicable">"Nicht beantwortbar…"</string>
     <string name="quest_generic_confirmation_title">"Sicher?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, sicher"</string>
+
+    <!-- Ich werde das prüfen (?) -->
     <string name="quest_generic_confirmation_no">"Prüfe ich"</string>
     <string name="quest_generic_error_field_empty">"Dieses Feld wurde leer gelassen"</string>
     <string name="quest_leave_new_note_title">"Stattdessen eine Notiz hinterlassen?"</string>
@@ -57,7 +59,7 @@
     <string name="confirmation_cancel_prev_download_title">"Aktuelle Suche abbrechen und stattdessen hier suchen?"</string>
     <string name="notification_downloading">"Suche nach Aufgaben…"</string>
     <string name="turn_on_location_request">"Standort ist aus. Jetzt in die Einstellungen gehen, um ihn anzuschalten?"</string>
-    <string name="no_location_permission_warning">"Dein Standort wird benötigt, um nach Aufgaben in deiner Nähe zu suchen."</string>
+    <string name="no_location_permission_warning">"Dein Standort wird benötigt, um deine Position auf der Karte anzuzeigen und nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="about_title_authors">"Autoren"</string>
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick und Mitwirkende"</string>
     <string name="about_title_repository">"Quellcode-Repository"</string>
@@ -491,7 +493,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_detached_description">"Einfamilienhaus mit Garten rundherum"</string>
 
     <!-- Doppelhaushälfte ist der korrekte Ausdruck, es gab nachfragen OSM Dach Gruppe -->
-    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Doppelhaus(-hälfte)"</string>
     <string name="quest_buildingType_terrace_description">"eine lange Reihe aus ähnlichen Einfamilienhäusern"</string>
     <string name="quest_buildingType_hotel">"Hotelgebäude"</string>
@@ -778,6 +779,8 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="achievement_surveyor_solved_X">"Du hast %d Aufgaben gelöst, weiter so! Es winken weitere Erfolge mit Links zu OSM und anderen kartenbezogenen Apps und Projekten!"</string>
     <string name="achievement_regular_title">"Stammgast"</string>
     <string name="achievement_regular_description">"Du hast %d Tage lang mit dieser App zu OSM beigetragen! Stammnutzer sind das Rückgrat von OSM, vielen Dank für dein Engagement! ❤"</string>
+
+    <!-- Ist hier nicht "Radfahrer" gebräuchlicher? -->
     <string name="achievement_bicyclist_title">"Fahrradfahrer"</string>
     <string name="achievement_bicyclist_solved_X">"Du hast %d Aufgaben gelöst, die Radfahrern helfen!"</string>
     <string name="achievement_wheelchair_title">"Mobilität"</string>
@@ -790,6 +793,8 @@ Diese Daten sind unentbehrlich nicht nur für Postboten, sondern auch für  Navi
 Beachte, dass diese App nur Hausnummern von Gebäuden abfragt, deren Typ bereits bestimmt wurde."</string>
     <string name="achievement_blind_title">"Sechster Sinn"</string>
     <string name="achievement_blind_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Sehbehinderte sind."</string>
+
+    <!-- Wäre hier nicht "Pedestrian"/"Fußgänger" passender als "Runner"/"Läufer"? -->
     <string name="achievement_pedestrian_title">"Läufer"</string>
     <string name="achievement_pedestrian_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Fußgänger sind."</string>
     <string name="achievement_veg_title">"Tierlieb"</string>
@@ -1069,4 +1074,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_busStopLit_tram_title">"Ist diese Straßenbahnhaltestelle beleuchtet?"</string>
     <string name="quest_busStopLit_title">"Ist diese Bushaltestelle beleuchtet?"</string>
     <string name="quest_busStopLit_name_title">"Ist die Bushaltestelle %s beleuchtet?"</string>
+    <string name="no_location_permission_warning_title">"Standortzugriff"</string>
+    <string name="quest_surface_value_woodchips">"Holzschnitzel"</string>
 </resources>

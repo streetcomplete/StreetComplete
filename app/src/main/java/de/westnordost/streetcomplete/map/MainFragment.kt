@@ -64,7 +64,12 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlin.random.Random
 
-/** Contains the quests map and the controls for it. */
+/** Contains the quests map and the controls for it.
+ *
+ *  This fragment controls the main view. It does itself not contain that much logic, but it is the
+ *  place where all the logic when interacting with the map / bottom sheets / sidebars etc. comes
+ *  together, hence it implements all the listeners to communicate with its child fragments.
+ *  */
 class MainFragment : Fragment(R.layout.fragment_main),
     MapFragment.Listener,
     LocationAwareMapFragment.Listener,
@@ -149,12 +154,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         super.onViewCreated(view, savedInstanceState)
 
         mapControls.respectSystemInsets(View::setMargins)
-        view.respectSystemInsets { left, top, right, bottom ->
-            windowInsets = Rect(left, top, right, bottom)
-        }
+        view.respectSystemInsets { l, t, r, b -> windowInsets = Rect(l, t, r, b) }
 
         locationPointerPin.setOnClickListener { onClickLocationPointer() }
-
         compassView.setOnClickListener { onClickCompassButton() }
         gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
         zoomInButton.setOnClickListener { onClickZoomIn() }
@@ -252,7 +254,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onPanBegin() {
-        setIsFollowingPosition(false)
+        /* panning only results in not following location anymore if a location is already known
+           and displayed
+         */
+        if (mapFragment?.displayedLocation != null) {
+            setIsFollowingPosition(false)
+        }
     }
 
     override fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float) { }
@@ -348,6 +355,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(questKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
+                closeBottomSheet()
                 if (questController.solve(questKey, answer, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -374,6 +382,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onSkippedQuest(questKey: QuestKey) {
         lifecycleScope.launch {
+            closeBottomSheet()
             questController.hide(questKey)
         }
     }
@@ -382,6 +391,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
+                closeBottomSheet()
                 if (questController.deletePoiElement(osmQuestKey, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -393,6 +403,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
+                closeBottomSheet()
                 if (questController.replaceShopElement(osmQuestKey, tags, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -440,6 +451,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(questKey)
             if (quest != null) {
+                closeBottomSheet()
                 if (questController.createNote(questKey, questTitle, note, imagePaths)) {
                     onQuestSolved(quest, null)
                 }
