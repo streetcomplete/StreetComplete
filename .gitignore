@@ -11,3 +11,4 @@ quest-list.csv
 /keystore.properties
 /buildSrc/build/
 /buildSrc/.gradle
+/projectFilesBackup*/

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:background="?android:attr/colorBackground"
-                tools:ignore="RtlSymmetry">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/colorBackground"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    tools:ignore="RtlSymmetry">
 
     <ImageView
         android:id="@+id/questIcon"
@@ -15,33 +15,49 @@
         android:layout_height="@dimen/table_icon_size"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        tools:src="@drawable/ic_quest_street"/>
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dragHandle"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_quest_street" />
+
+    <ImageView
+        android:id="@+id/dragHandle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingEnd="24dp"
+        android:src="@drawable/ic_drag_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_toEndOf="@+id/questIcon"
-        android:layout_toStartOf="@+id/visibilityCheckBoxContainer"
-        android:layout_centerVertical="true"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:paddingEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/visibilityCheckBoxContainer"
+        app:layout_constraintStart_toEndOf="@+id/questIcon"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/questTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@string/quest_lanes_title"
             android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-            android:id="@+id/questTitle"/>
+            tools:text="@string/quest_lanes_title" />
 
         <TextView
+            android:id="@+id/countryDisabledText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:textStyle="italic"
-            tools:text="@string/questList_disabled_in_country"
             android:background="@drawable/background_quest_disabled_notice"
-            android:id="@+id/countryDisabledText"/>
+            android:textStyle="italic"
+            tools:text="@string/questList_disabled_in_country" />
 
     </LinearLayout>
 
@@ -49,19 +65,17 @@
         android:id="@+id/visibilityCheckBoxContainer"
         android:layout_width="@dimen/table_icon_size"
         android:layout_height="@dimen/table_icon_size"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <CheckBox
             android:id="@+id/visibilityCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            />
+            android:layout_gravity="center" />
 
     </FrameLayout>
 
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.util.math
 
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.normalizeRadians
 import kotlin.math.*
 
@@ -89,7 +88,7 @@ fun Vector3d.toLatLon(): LatLon {
     val n = normalize()
     val φ = atan2(n.z, sqrt(n.x * n.x + n.y * n.y))
     val λ = atan2(n.y, n.x)
-    return OsmLatLon(φ.toDegrees(), λ.toDegrees());
+    return LatLon(φ.toDegrees(), λ.toDegrees());
 }
 
 fun LatLon.toNormalOnSphere(): Vector3d {

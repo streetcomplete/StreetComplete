@@ -8,11 +8,11 @@ import org.junit.Test
 
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType
-import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType2
-import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType3
-import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType4
-import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType5
+import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType2
+import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType3
+import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType4
+import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType5
 
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import org.assertj.core.api.Assertions.*

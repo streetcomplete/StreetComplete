@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.util.math
 
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import kotlin.math.*
 
 /* The following code has been adapted from this excellent source:

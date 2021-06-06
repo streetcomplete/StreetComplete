@@ -5,20 +5,19 @@ import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.notifications.*
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /** Handles showing a button with a little counter that shows how many unread notifications there are */
-class NotificationButtonFragment : Fragment(R.layout.fragment_notification_button),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class NotificationButtonFragment : Fragment(R.layout.fragment_notification_button) {
 
     @Inject lateinit var notificationsSource: NotificationsSource
 
@@ -31,14 +30,7 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
 
     private var notificationsSourceUpdateListener = object : NotificationsSource.UpdateListener {
         override fun onNumberOfNotificationsUpdated(numberOfNotifications: Int) {
-            launch(Dispatchers.Main) {
-                notificationButton.notificationsCount = numberOfNotifications
-                if (notificationButton.isVisible && numberOfNotifications == 0) {
-                    notificationButton.popOut()
-                } else if(!notificationButton.isVisible && numberOfNotifications > 0) {
-                    notificationButton.popIn()
-                }
-            }
+            lifecycleScope.launch { updateButtonStateAnimated(numberOfNotifications) }
         }
     }
 
@@ -48,20 +40,13 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        notificationButton.setOnClickListener {
-            val notification = notificationsSource.popNextNotification()
-            if (notification != null) {
-                listener?.onClickShowNotification(notification)
-            }
-        }
+        notificationButton.setOnClickListener { lifecycleScope.launch { onClickButton() } }
     }
 
     override fun onStart() {
         super.onStart()
-        val numberOfNotifications = notificationsSource.getNumberOfNotifications()
-        notificationButton.notificationsCount = numberOfNotifications
-        notificationButton.isGone = numberOfNotifications <= 0
         notificationsSource.addListener(notificationsSourceUpdateListener)
+        lifecycleScope.launch { initializeButtonState() }
     }
 
     override fun onStop() {
@@ -69,8 +54,25 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
         notificationsSource.removeListener(notificationsSourceUpdateListener)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
+    private suspend fun initializeButtonState() {
+        val numberOfNotifications = withContext(Dispatchers.IO) { notificationsSource.getNumberOfNotifications() }
+        notificationButton.notificationsCount = numberOfNotifications
+        notificationButton.isGone = numberOfNotifications <= 0
+    }
+
+    private fun updateButtonStateAnimated(numberOfNotifications: Int) {
+        notificationButton.notificationsCount = numberOfNotifications
+        if (notificationButton.isVisible && numberOfNotifications == 0) {
+            notificationButton.popOut()
+        } else if(!notificationButton.isVisible && numberOfNotifications > 0) {
+            notificationButton.popIn()
+        }
+    }
+
+    private suspend fun onClickButton() {
+        val notification = withContext(Dispatchers.IO) { notificationsSource.popNextNotification() }
+        if (notification != null) {
+            listener?.onClickShowNotification(notification)
+        }
     }
 }

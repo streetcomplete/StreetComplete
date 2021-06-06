@@ -17,6 +17,7 @@ fun Surface.asItem(): Item<Surface> = when (this) {
     UNHEWN_COBBLESTONE -> Item(this, R.drawable.surface_cobblestone, R.string.quest_surface_value_unhewn_cobblestone)
     GRASS_PAVER -> Item(this, R.drawable.surface_grass_paver, R.string.quest_surface_value_grass_paver)
     WOOD -> Item(this, R.drawable.surface_wood, R.string.quest_surface_value_wood)
+    WOODCHIPS -> Item(this, R.drawable.surface_woodchips, R.string.quest_surface_value_woodchips)
     METAL -> Item(this, R.drawable.surface_metal, R.string.quest_surface_value_metal)
     GRAVEL -> Item(this, R.drawable.surface_gravel, R.string.quest_surface_value_gravel)
     PEBBLES -> Item(this, R.drawable.surface_pebblestone, R.string.quest_surface_value_pebblestone)

@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.sendEmail
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.cell_labeled_icon_select_right.view.*
-import java.util.*
+import java.util.Locale
 
 /** Shows the about screen */
 class AboutFragment : PreferenceFragmentCompat() {
@@ -54,7 +54,7 @@ class AboutFragment : PreferenceFragmentCompat() {
         }
 
         findPreference<Preference>("repository")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/westnordost/StreetComplete/")
+            openUrl("https://github.com/streetcomplete/StreetComplete/")
         }
 
         findPreference<Preference>("translate")?.summary = resources.getString(
@@ -67,7 +67,7 @@ class AboutFragment : PreferenceFragmentCompat() {
         }
 
         findPreference<Preference>("report_error")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/westnordost/StreetComplete/issues/")
+            openUrl("https://github.com/streetcomplete/StreetComplete/issues/")
         }
 
         findPreference<Preference>("email_feedback")?.setOnPreferenceClickListener {

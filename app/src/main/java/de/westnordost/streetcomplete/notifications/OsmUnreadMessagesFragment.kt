@@ -12,21 +12,18 @@ import android.view.animation.DecelerateInterpolator
 import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.SoundFx
 import kotlinx.android.synthetic.main.fragment_unread_osm_message.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /** Fragment that shows a notification that the user has X unread messages in his OSM inbox */
-class OsmUnreadMessagesFragment : DialogFragment(),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class OsmUnreadMessagesFragment : DialogFragment() {
 
     @Inject lateinit var soundFx: SoundFx
 
@@ -64,15 +61,10 @@ class OsmUnreadMessagesFragment : DialogFragment(),
         dialog?.window?.setLayout(MATCH_PARENT, MATCH_PARENT)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
-    }
-
     private fun startAnimation() {
         val ctx = requireContext()
 
-        launch { soundFx.play(R.raw.sliding_envelope) }
+        lifecycleScope.launch { soundFx.play(R.raw.sliding_envelope) }
 
         mailFrontImageView.alpha = 0f
 

@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.elementfilter.filters.*
 import de.westnordost.streetcomplete.data.meta.toCheckDate
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import java.lang.NumberFormatException
 import java.text.ParseException
-import java.util.*
+import java.util.EnumSet
 import kotlin.collections.ArrayList
 import kotlin.math.min
 

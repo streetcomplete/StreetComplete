@@ -9,7 +9,9 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.util.TilesRect
 import kotlinx.coroutines.*
-import java.util.concurrent.atomic.AtomicBoolean
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 /** Downloads all quests and tiles in a given area asynchronously. To use, start the service with
@@ -25,8 +27,8 @@ import javax.inject.Inject
  * * To query for the state of the service and/or current download task, i.e. if the current
  * download job was started by the user
  */
-class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineScope(Dispatchers.IO) {
-    @Inject internal lateinit var downloaders: List<Downloader>
+class DownloadService : CoroutineIntentService(TAG) {
+    @Inject internal lateinit var downloader: Downloader
 
     private lateinit var notificationController: DownloadNotificationController
 
@@ -66,52 +68,36 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
         return binder
     }
 
-    override fun onHandleIntent(intent: Intent?, cancelState: AtomicBoolean) {
-        if (cancelState.get()) return
+    override suspend fun onHandleIntent(intent: Intent?) {
         if (intent == null) return
-        if (intent.getBooleanExtra(ARG_CANCEL, false)) {
-            cancel()
-            Log.i(TAG, "Download cancelled")
-            return
-        }
+        val tiles: TilesRect = Json.decodeFromString(intent.getStringExtra(ARG_TILES_RECT)!!)
+        isPriorityDownload = intent.getBooleanExtra(ARG_IS_PRIORITY, false)
 
-        val tiles = intent.getSerializableExtra(ARG_TILES_RECT) as TilesRect
-        isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
         isDownloading = true
 
         progressListener?.onStarted()
 
-        Log.i(TAG, "Starting download")
-
         var error: Exception? = null
         try {
-            runBlocking {
-                for (downloader in downloaders) {
-                    launch(Dispatchers.IO) {
-                        if (!cancelState.get()) downloader.download(tiles, cancelState)
-                    }
-                }
-            }
+            downloader.download(tiles, isPriorityDownload)
+        } catch (e: CancellationException) {
+            Log.i(TAG, "Download cancelled")
         } catch (e: Exception) {
             Log.e(TAG, "Unable to download", e)
             error = e
+        } finally {
+            // downloading flags must be set to false before invoking the callbacks
+            isPriorityDownload = false
+            isDownloading = false
         }
-        // downloading flags must be set to false before invoking the callbacks
-        isPriorityDownload = false
-        isDownloading = false
+
         if (error != null) {
             progressListener?.onError(error)
         } else {
             progressListener?.onSuccess()
         }
+
         progressListener?.onFinished()
-
-        Log.i(TAG, "Finished download")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
     }
 
     /** Public interface to classes that are bound to this service  */
@@ -133,18 +119,13 @@ class DownloadService : SingleIntentService(TAG), CoroutineScope by CoroutineSco
         private const val TAG = "Download"
         const val ARG_TILES_RECT = "tilesRect"
         const val ARG_IS_PRIORITY = "isPriority"
-        const val ARG_CANCEL = "cancel"
 
-        fun createIntent(context: Context, tilesRect: TilesRect?, isPriority: Boolean): Intent {
+        fun createIntent(context: Context, tilesRect: TilesRect, isPriority: Boolean): Intent {
             val intent = Intent(context, DownloadService::class.java)
-            intent.putExtra(ARG_TILES_RECT, tilesRect)
+            intent.putExtra(ARG_TILES_RECT, Json.encodeToString(tilesRect))
             intent.putExtra(ARG_IS_PRIORITY, isPriority)
-            return intent
-        }
-
-        fun createCancelIntent(context: Context): Intent {
-            val intent = Intent(context, DownloadService::class.java)
-            intent.putExtra(ARG_CANCEL, true)
+            // priority download should cancel any earlier download
+            intent.putExtra(ARG_PREVIOUS_CANCEL, isPriority)
             return intent
         }
     }

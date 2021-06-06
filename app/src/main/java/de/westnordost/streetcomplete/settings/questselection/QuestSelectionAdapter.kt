@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ItemTouchHelper
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
@@ -13,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 
 import java.util.Collections
 import java.util.Locale
@@ -31,7 +33,7 @@ import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
@@ -47,6 +49,8 @@ class QuestSelectionAdapter @Inject constructor(
 ) : ListAdapter<QuestVisibility>() {
     private val currentCountryCodes: List<String>
 
+    private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
+
     interface Listener {
         fun onReorderedQuests(before: QuestType<*>, after: QuestType<*>)
         fun onChangedQuestVisibility(questType: QuestType<*>, visible: Boolean)
@@ -61,8 +65,7 @@ class QuestSelectionAdapter @Inject constructor(
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
-        val ith = ItemTouchHelper(TouchHelperCallback())
-        ith.attachToRecyclerView(recyclerView)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<QuestVisibility> {
@@ -123,6 +126,7 @@ class QuestSelectionAdapter @Inject constructor(
     private inner class QuestVisibilityViewHolder(itemView: View) :
         ListAdapter.ViewHolder<QuestVisibility>(itemView), CompoundButton.OnCheckedChangeListener {
 
+        private val dragHandle: ImageView = itemView.dragHandle
         private val questIcon: ImageView = itemView.questIcon
         private val questTitle: TextView = itemView.questTitle
         private val visibilityCheckBox: CheckBox = itemView.visibilityCheckBox
@@ -151,6 +155,15 @@ class QuestSelectionAdapter @Inject constructor(
             visibilityCheckBox.isChecked = item.visible
             visibilityCheckBox.isEnabled = item.isInteractionEnabled
             visibilityCheckBox.setOnCheckedChangeListener(this)
+
+            dragHandle.isInvisible = !item.isInteractionEnabled
+            dragHandle.setOnTouchListener { v, event ->
+                when (event.actionMasked) {
+                    MotionEvent.ACTION_DOWN -> itemTouchHelper.startDrag(this)
+                    MotionEvent.ACTION_UP -> v.performClick()
+                }
+                true
+            }
 
             countryDisabledText.isGone = isEnabledInCurrentCountry
             if (!isEnabledInCurrentCountry) {

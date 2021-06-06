@@ -5,22 +5,24 @@ import dagger.Provides
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
-import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber
+import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
-import de.westnordost.streetcomplete.quests.bikeway.AddCycleway
+import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground
 import de.westnordost.streetcomplete.quests.bus_stop_bench.AddBenchStatusOnBusStop
+import de.westnordost.streetcomplete.quests.bus_stop_lit.AddBusStopLit
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
@@ -42,7 +44,6 @@ import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
 import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
@@ -54,6 +55,9 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegm
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
+import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
+import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
@@ -68,11 +72,13 @@ import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
+import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
 import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
 import de.westnordost.streetcomplete.quests.postbox_royal_cypher.AddPostboxRoyalCypher
+import de.westnordost.streetcomplete.quests.police_type.AddPoliceType
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier
 import de.westnordost.streetcomplete.quests.summit_register.AddSummitRegister
@@ -85,6 +91,7 @@ import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
+import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
@@ -109,19 +116,17 @@ import javax.inject.Singleton
 @Module object QuestModule
 {
     @Provides @Singleton fun questTypeRegistry(
-        osmNoteQuestType: OsmNoteQuestType,
-        roadNameSuggestionsDao: RoadNameSuggestionsDao,
         trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
         trafficFlowDao: WayTrafficFlowDao,
         featureDictionaryFuture: FutureTask<FeatureDictionary>,
         countryInfos: CountryInfos
-    ): QuestTypeRegistry = QuestTypeRegistry(listOf(
+    ): QuestTypeRegistry = QuestTypeRegistry(listOf<QuestType<*>>(
 
         // ↓ 1. notes
-        osmNoteQuestType,
+        OsmNoteQuestType,
 
         // ↓ 2. important data that is used by many data consumers
-        AddRoadName(roadNameSuggestionsDao),
+        AddRoadName(),
         AddPlaceName(featureDictionaryFuture),
         AddOneway(),
         // not that useful as such, but should be shown before CheckExistence because this is
@@ -129,13 +134,15 @@ import javax.inject.Singleton
         AddPostboxCollectionTimes(),
         CheckExistence(featureDictionaryFuture),
         AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
+        AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
         AddCycleway(), // for any cyclist routers (and cyclist maps)
         AddSidewalk(), // for any pedestrian routers
         AddBusStopName(),
         AddBusStopRef(),
         AddIsBuildingUnderground(), //to avoid asking AddHousenumber and other for underground buildings
         AddHousenumber(),
-        AddAddressStreet(roadNameSuggestionsDao),
+        AddAddressStreet(),
+        SpecifyShopType(),
         CheckShopType(),
         MarkCompletedHighwayConstruction(),
         AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
@@ -217,10 +224,13 @@ import javax.inject.Singleton
         AddChargingStationOperator(),
         AddClothingBinOperator(),
         AddKosher(),
+        AddStileType(),
+        AddCameraType(),
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
         //      the sake of mapping it in case it makes sense later
         AddPitchSurface(),
+        AddPitchLit(),
         AddIsDefibrillatorIndoor(),
         AddSummitRegister(),
         AddCyclewayPartSurface(),
@@ -231,13 +241,13 @@ import javax.inject.Singleton
         AddPostboxRef(),
         AddWheelchairAccessToiletsPart(),
         AddBoardType(),
+        AddPoliceType(),
         AddPowerPolesMaterial(),
         AddCarWashType(),
         AddBenchStatusOnBusStop(),
+        AddBusStopLit(),
         AddBenchBackrest(),
         AddTrafficSignalsButton(),
         AddPostboxRoyalCypher()
     ))
-
-    @Provides @Singleton fun osmNoteQuestType(): OsmNoteQuestType = OsmNoteQuestType()
 }

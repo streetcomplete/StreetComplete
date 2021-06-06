@@ -161,6 +161,15 @@ parking lane graphics/
 	car4.svg
 	car5.svg
 
+police type graphics/
+    carabinieri.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_carabinieri.svg, Gigillo83, License: CC-BY-SA 3.0
+    ferroviaria.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
+    finanza.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_guardia_di_finanza.svg, Gigillo83, License: CC-BY-SA 3.0
+    locale.svg                      modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia_municipale.svg, Gigillo83, License: CC-BY-SA 3.0
+    municipale.svg                  modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia_municipale.svg, Gigillo83, License: CC-BY-SA 3.0
+    polizia.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
+    stradale.svg                    modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
+
 quest icons/
     apple.svg
     baby.svg                         modified from Twemoji: U+1F6BC
@@ -195,6 +204,7 @@ quest icons/
     car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
     cash.svg
     christian.svg
+	cow.svg                          modified from EmojiOne 2: U+1F404
     defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny
     drinking_water.svg               Florian Edelmann, parts from https://www.svgrepo.com/svg/24753/drop (License: CC0 1.0)
     ferry.svg                        modified from Twemoji: U+26F4

@@ -15,8 +15,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.updateMargins
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
@@ -129,7 +129,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     private fun updateCloseButtonVisibility() {
         // this is called asynchronously. It may happen that the activity is already gone when this
         // method is finally called
-        closeButton?.isGone = (bottomSheet?.top ?: 0) > 0
+        closeButton?.isInvisible = (bottomSheet?.top ?: 0) > 0
     }
 
     @UiThread override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {

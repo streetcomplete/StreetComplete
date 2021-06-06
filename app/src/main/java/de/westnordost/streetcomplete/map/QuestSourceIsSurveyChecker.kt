@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.widget.CheckBox
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.distanceToArcs
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 /** Checks if the quest was solved on a survey, either by looking at the GPS position or asking
  *  the user  */
@@ -23,11 +24,11 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
 
     suspend fun checkIsSurvey(
         context: Context, geometry: ElementGeometry, locations: List<Location>
-    ): Boolean = suspendCoroutine { cont ->
-
+    ): Boolean {
         if (dontShowAgain || isWithinSurveyDistance(geometry, locations)) {
-            cont.resume(true)
-        } else {
+            return true
+        }
+        return suspendCancellableCoroutine { cont ->
             val inner = LayoutInflater.from(context).inflate(R.layout.quest_source_dialog_layout, null, false)
             val checkBox = inner.findViewById<CheckBox>(R.id.checkBoxDontShowAgain)
             checkBox.isGone = timesShown < 1
@@ -43,23 +44,25 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
                 .setNegativeButton(android.R.string.cancel) { _, _ -> cont.resume(false) }
                 .setOnCancelListener { cont.resume(false) }
                 .show()
-            }
         }
+    }
 
-    private fun isWithinSurveyDistance(geometry: ElementGeometry, locations: List<Location>): Boolean {
-        for (location in locations) {
-            val pos = OsmLatLon(location.latitude, location.longitude)
-            val polyLines: List<List<LatLon>> = when (geometry) {
+    private suspend fun isWithinSurveyDistance(
+        geometry: ElementGeometry,
+        locations: List<Location>
+    ): Boolean = withContext(Dispatchers.Default) {
+        // suspending because distanceToArcs is slow
+        locations.any { location ->
+            val pos = LatLon(location.latitude, location.longitude)
+            val polylines: List<List<LatLon>> = when (geometry) {
                 is ElementPolylinesGeometry -> geometry.polylines
                 is ElementPolygonsGeometry -> geometry.polygons
                 else -> listOf(listOf(geometry.center))
             }
-            for (polyLine in polyLines) {
-                val distance = pos.distanceToArcs(polyLine)
-                if (distance < location.accuracy + MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY) return true
+            polylines.any { polyline ->
+                pos.distanceToArcs(polyline) < location.accuracy + MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY
             }
         }
-        return false
     }
 
     companion object {

@@ -16,4 +16,7 @@ interface QuestType<T> {
 
     /** returns the dialog in which the user can add the data */
     fun createForm(): AbstractQuestAnswerFragment<T>
+
+    /** The quest type can clean it's metadata that is older than the given timestamp here, if any  */
+    fun deleteMetadataOlderThan(timestamp: Long) {}
 }

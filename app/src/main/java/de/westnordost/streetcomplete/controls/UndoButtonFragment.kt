@@ -1,70 +1,54 @@
 package de.westnordost.streetcomplete.controls
 
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
+import android.widget.PopupMenu
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import de.westnordost.osmfeatures.FeatureDictionary
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
-import de.westnordost.streetcomplete.data.quest.QuestController
-import de.westnordost.streetcomplete.data.quest.UndoableOsmQuestsCountListener
-import de.westnordost.streetcomplete.data.quest.UndoableOsmQuestsSource
+import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
+import de.westnordost.streetcomplete.edithistory.UndoDialog
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
-import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import java.util.concurrent.FutureTask
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /** Fragment that shows (and hides) the undo button, based on whether there is anything to undo */
-class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
-    @Inject internal lateinit var undoableOsmQuestsSource: UndoableOsmQuestsSource
+    @Inject internal lateinit var editHistorySource: EditHistorySource
     @Inject internal lateinit var uploadProgressSource: UploadProgressSource
-    @Inject internal lateinit var questController: QuestController
-    @Inject internal lateinit var featureDictionaryFutureTask: FutureTask<FeatureDictionary>
 
     private val undoButton get() = view as ImageButton
 
-    /* undo button is not shown when there is nothing to undo */
-    private val undoableOsmQuestsCountListener = object : UndoableOsmQuestsCountListener {
-        override fun onUndoableOsmQuestsCountIncreased() {
-            launch(Dispatchers.Main) {
-                if (!undoButton.isVisible && undoableOsmQuestsSource.count > 0) {
-                    undoButton.popIn()
-                }
-            }
-        }
-
-        override fun onUndoableOsmQuestsCountDecreased() {
-            launch(Dispatchers.Main) {
-                if (undoButton.isVisible && undoableOsmQuestsSource.count == 0) {
-                    undoButton.popOut().withEndAction { undoButton.visibility = View.INVISIBLE }
-                }
-            }
-        }
+    interface Listener {
+        fun onClickShowEditHistory()
     }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    /* undo button is not shown when there is nothing to undo */
+    private val editHistoryListener = object : EditHistorySource.Listener {
+        override fun onAdded(edit: Edit) { lifecycleScope.launch { animateInIfAnythingToUndo() }}
+        override fun onSynced(edit: Edit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
+        override fun onDeleted(edits: List<Edit>) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
+        override fun onInvalidated() { lifecycleScope.launch { updateUndoButtonVisibility() }}
+    }
 
     /* Don't allow undoing while uploading. Should prevent race conditions. (Undoing quest while
     *  also uploading it at the same time) */
     private val uploadProgressListener = object : UploadProgressListener {
-        override fun onStarted() { launch(Dispatchers.Main) { updateUndoButtonEnablement(false) }}
-        override fun onFinished() { launch(Dispatchers.Main) { updateUndoButtonEnablement(true) }}
+        override fun onStarted() { lifecycleScope.launch { updateUndoButtonEnablement(false) }}
+        override fun onFinished() { lifecycleScope.launch { updateUndoButtonEnablement(true) }}
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
@@ -77,60 +61,73 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
         super.onViewCreated(view, savedInstanceState)
 
         undoButton.setOnClickListener {
-            undoButton.isEnabled = false
-            val quest = undoableOsmQuestsSource.getLastUndoable()
-            if (quest != null) confirmUndo(quest)
+            showUndoContextMenu()
         }
     }
 
     override fun onStart() {
         super.onStart()
-        updateUndoButtonVisibility()
+        lifecycleScope.launch { updateUndoButtonVisibility() }
         updateUndoButtonEnablement(true)
-        undoableOsmQuestsSource.addListener(undoableOsmQuestsCountListener)
+        editHistorySource.addListener(editHistoryListener)
         uploadProgressSource.addUploadProgressListener(uploadProgressListener)
     }
 
     override fun onStop() {
         super.onStop()
-        undoableOsmQuestsSource.removeListener(undoableOsmQuestsCountListener)
+        editHistorySource.removeListener(editHistoryListener)
         uploadProgressSource.removeUploadProgressListener(uploadProgressListener)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
     }
 
     /* ------------------------------------------------------------------------------------------ */
 
-    private fun confirmUndo(quest: OsmQuest) {
-        val element = questController.getOsmElement(quest) ?: return
-        val ctx = context ?: return
+    private fun showUndoContextMenu() {
+        val undo = 1
+        val showHistory = 2
 
-        val inner = LayoutInflater.from(ctx).inflate(R.layout.dialog_undo, null, false)
-        val icon = inner.findViewById<ImageView>(R.id.icon)
-        icon.setImageResource(quest.type.icon)
-        val text = inner.findViewById<TextView>(R.id.text)
-        text.text = resources.getHtmlQuestTitle(quest.type, element, featureDictionaryFutureTask)
+        val popup = PopupMenu(requireContext(), undoButton)
+        popup.menu.add(Menu.NONE, undo, 2, R.string.undo_last)
+        popup.menu.add(Menu.NONE, showHistory, 1, R.string.show_edit_history)
+        popup.show()
 
-        AlertDialog.Builder(ctx)
-            .setTitle(R.string.undo_confirm_title)
-            .setView(inner)
-            .setPositiveButton(R.string.undo_confirm_positive) { _, _ ->
-                questController.undo(quest)
-                updateUndoButtonEnablement(true)
+        popup.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                undo -> lifecycleScope.launch { confirmUndo() }
+                showHistory -> showEditHistory()
             }
-            .setNegativeButton(R.string.undo_confirm_negative) { _, _ -> updateUndoButtonEnablement(true) }
-            .setOnCancelListener { updateUndoButtonEnablement(true) }
-            .show()
+            true
+        }
     }
 
-    private fun updateUndoButtonVisibility() {
-        view?.isGone = undoableOsmQuestsSource.count <= 0
+    private fun showEditHistory() {
+        listener?.onClickShowEditHistory()
+    }
+
+    private suspend fun confirmUndo() {
+        val edit = getMostRecentUndoable() ?: return
+        UndoDialog(requireContext(), edit).show()
+    }
+
+    private suspend fun updateUndoButtonVisibility() {
+        view?.isGone = getMostRecentUndoable() == null
     }
 
     private fun updateUndoButtonEnablement(enable: Boolean) {
         undoButton.isEnabled = enable && !uploadProgressSource.isUploadInProgress
     }
+
+    private suspend fun animateInIfAnythingToUndo() {
+        if (!undoButton.isVisible && getMostRecentUndoable() != null) {
+            undoButton.popIn()
+        }
+    }
+
+    private suspend fun animateOutIfNothingLeftToUndo() {
+        if (undoButton.isVisible && getMostRecentUndoable() == null) {
+            undoButton.popOut().withEndAction { undoButton.visibility = View.INVISIBLE }
+        }
+    }
+
+    private suspend fun getMostRecentUndoable(): Edit? =
+        withContext(Dispatchers.IO) { editHistorySource.getMostRecentUndoable() }
 }

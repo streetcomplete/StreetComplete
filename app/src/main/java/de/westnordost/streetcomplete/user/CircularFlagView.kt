@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
-import java.util.*
+import java.util.Locale
 import kotlin.math.min
 
 /** Show a flag of a country in a circle */
@@ -51,6 +51,7 @@ class CircularFlagView @JvmOverloads constructor(
             if (widthMode == MeasureSpec.EXACTLY) width else height
         } else min(width, height)
         setMeasuredDimension(size, size)
+        boundsOffset = null
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {

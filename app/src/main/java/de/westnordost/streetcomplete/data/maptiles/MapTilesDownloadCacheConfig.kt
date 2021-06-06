@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.maptiles
 
 import android.content.Context
 import androidx.preference.PreferenceManager
-import de.westnordost.streetcomplete.ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER
+import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.Prefs
 import okhttp3.*
 import java.io.File
@@ -15,8 +15,8 @@ import javax.inject.Singleton
 @Singleton class MapTilesDownloadCacheConfig @Inject constructor(context: Context) {
 
     val cacheControl = CacheControl.Builder()
-        .maxAge(1, TimeUnit.DAYS)
-        .maxStale(DELETE_UNSOLVED_QUESTS_AFTER.toInt(), TimeUnit.MILLISECONDS)
+        .maxAge(12, TimeUnit.HOURS)
+        .maxStale(DELETE_OLD_DATA_AFTER.toInt(), TimeUnit.MILLISECONDS)
         .build()
 
     val cache: Cache?

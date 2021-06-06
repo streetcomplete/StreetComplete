@@ -19,13 +19,13 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
     /** Upload list of images.
      *
      *  @throws ImageUploadException if there was any error */
-    fun upload(imagePaths: List<String>?): List<String> {
+    fun upload(imagePaths: List<String>): List<String> {
         val imageLinks = ArrayList<String>()
 
-        for (path in imagePaths.orEmpty()) {
+        for (path in imagePaths) {
             val file = File(path)
-            if (!file.exists()) continue 
-        
+            if (!file.exists()) continue
+
             try {
                 val connection = createConnection("upload.php")
                 connection.requestMethod = "POST"
@@ -71,7 +71,11 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
             connection.outputStream.bufferedWriter().use { it.write("{\"osm_note_id\": $noteId}") }
 
             val status = connection.responseCode
-            if (status != HttpURLConnection.HTTP_OK) {
+            if (status == HttpURLConnection.HTTP_GONE) {
+                // it's gone if the note does not exist anymore. That's okay, it should only fail
+                // if we might want to try again later.
+            }
+            else if (status != HttpURLConnection.HTTP_OK) {
                 val error = connection.errorStream.bufferedReader().use { it.readText() }
                 throw ImageActivationException("Error code $status, Message: \"$error\"")
             }

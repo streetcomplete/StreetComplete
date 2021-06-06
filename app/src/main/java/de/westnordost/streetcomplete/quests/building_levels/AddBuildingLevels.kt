@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
 class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
@@ -34,5 +34,5 @@ private val BUILDINGS_WITH_LEVELS = arrayOf(
     "house","residential","apartments","detached","terrace","dormitory","semi",
     "semidetached_house","bungalow","school","civic","college","university","public",
     "hospital","kindergarten","transportation","train_station", "hotel","retail",
-    "commercial","office","industrial","manufacture","parking","farm","farm_auxiliary",
+    "commercial","office","manufacture","parking","farm","farm_auxiliary",
     "cabin")

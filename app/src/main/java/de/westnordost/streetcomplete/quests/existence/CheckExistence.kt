@@ -1,18 +1,19 @@
 package de.westnordost.streetcomplete.quests.existence
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
-import java.util.*
+import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
+import java.time.LocalDate
 import java.util.concurrent.FutureTask
 
 class CheckExistence(
@@ -26,25 +27,33 @@ class CheckExistence(
             or amenity = telephone
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or amenity = public_bookcase
-            or birds_nest = stork
           )
           and (${lastChecked(2.0)})
         ) or (
           (
             amenity = clock
-            or amenity = bench
-            or amenity = waste_basket
             or amenity = post_box
-            or amenity = grit_bin
             or leisure = picnic_table
+            or amenity = bbq
             or leisure = firepit
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
+            or amenity = ticket_validator
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
-            or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
-            or traffic_calming = table and !highway and !crossing
+            or (highway = emergency_access_point or emergency = access_point) and ref
+            or emergency = life_ring
+            or emergency = phone
           )
           and (${lastChecked(4.0)})
+        ) or (
+          (
+            amenity = bench
+            or amenity = waste_basket
+            or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
+            or traffic_calming = table and !highway and !crossing
+            or amenity = recycling and recycling_type = container
+          )
+          and (${lastChecked(6.0)})
         )) and access !~ no|private
     """.toElementFilterExpression()
     }
@@ -68,14 +77,13 @@ class CheckExistence(
     override val icon = R.drawable.ic_quest_check
 
     override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsAnyKey("name", "brand", "operator"))
+        if (tags.containsAnyKey("name", "brand", "ref", "operator"))
             R.string.quest_existence_name_title
         else
             R.string.quest_existence_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
-        return arrayOfNotNull(name, featureName.value)
+        return arrayOfNotNull(getNameOrBrandOrOperatorOrRef(tags), featureName.value)
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
@@ -88,7 +96,7 @@ class CheckExistence(
     override fun createForm() = CheckExistenceForm()
 
     override fun applyAnswerTo(answer: Unit, changes: StringMapChangesBuilder) {
-        changes.addOrModify(SURVEY_MARK_KEY, Date().toCheckDateString())
+        changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
         val otherCheckDateKeys = LAST_CHECK_DATE_KEYS.filterNot { it == SURVEY_MARK_KEY }
         for (otherCheckDateKey in otherCheckDateKeys) {
             changes.deleteIfExists(otherCheckDateKey)
@@ -100,6 +108,6 @@ class CheckExistence(
         or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -$yearsAgo years" }}
     """.trimIndent()
 
-    private fun hasAnyName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+    private fun hasAnyName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
 }

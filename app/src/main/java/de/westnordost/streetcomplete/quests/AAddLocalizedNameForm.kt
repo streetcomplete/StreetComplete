@@ -10,40 +10,28 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-import de.westnordost.streetcomplete.util.Serializer
-import java.util.*
-import javax.inject.Inject
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import java.util.Queue
 
 abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
     override var contentLayoutResId: Int = R.layout.quest_localizedname
 
-    private val serializer: Serializer
-
     protected lateinit var adapter: AddLocalizedNameAdapter
     private lateinit var namesList: RecyclerView
     private lateinit var addLanguageButton: View
 
-    init {
-        val fields = InjectedFields()
-        Injector.applicationComponent.inject(fields)
-        serializer = fields.serializer
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val data: ArrayList<LocalizedName>? = if (savedInstanceState != null) {
-            serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA)!!)
-        } else {
-            null
-        }
-
-        initLocalizedNameAdapter(view as ViewGroup, data)
+        initLocalizedNameAdapter(
+            view as ViewGroup,
+            savedInstanceState?.let { Json.decodeFromString(it.getString(LOCALIZED_NAMES_DATA)!!) }
+        )
     }
 
     protected fun setLayout(resId: Int) {
@@ -75,8 +63,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val serializedNames = serializer.toBytes(ArrayList(adapter.localizedNames))
-        outState.putByteArray(LOCALIZED_NAMES_DATA, serializedNames)
+        outState.putString(LOCALIZED_NAMES_DATA, Json.encodeToString(adapter.localizedNames))
     }
 
     final override fun onClickOk() {
@@ -146,11 +133,6 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     // all added name rows are not empty
     override fun isFormComplete() = adapter.localizedNames.isNotEmpty()
             && adapter.localizedNames.all { it.name.trim().isNotEmpty() }
-
-
-    class InjectedFields {
-        @Inject internal lateinit var serializer: Serializer
-    }
 
     companion object {
         private const val LOCALIZED_NAMES_DATA = "localized_names_data"

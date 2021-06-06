@@ -1,16 +1,17 @@
 package de.westnordost.streetcomplete.quests.recycling_material
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
+import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
@@ -60,7 +61,8 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     }
 
     // can't determine by tags alone because we need info about geometry surroundings
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!filter.matches(element)) false else null
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
@@ -133,10 +135,8 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         val isNotActuallyChangingAnything = changes.getChanges().all { change ->
             change is StringMapEntryModify && change.value == change.valueBefore
         }
-        if (isNotActuallyChangingAnything) {
+        if (isNotActuallyChangingAnything || changes.hasCheckDateForKey("recycling")) {
             changes.updateCheckDateForKey("recycling")
-        } else {
-            changes.deleteCheckDatesForKey("recycling")
         }
     }
 
@@ -155,11 +155,11 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 private val allKnownMaterials = RecyclingMaterial.values().map { "recycling:" + it.value }
 
 private fun Element.hasAnyRecyclingMaterials(): Boolean =
-    tags?.any { it.key.startsWith("recycling:") && it.value == "yes" } ?: false
+    tags.any { it.key.startsWith("recycling:") && it.value == "yes" }
 
 private fun Element.hasUnknownRecyclingMaterials(): Boolean =
-    tags?.any {
+    tags.any {
         it.key.startsWith("recycling:") &&
         it.key !in allKnownMaterials &&
         it.value == "yes"
-    } ?: true
+    }

@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.data.user
 
-import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
-import android.database.sqlite.SQLiteOpenHelper
-import androidx.core.content.contentValuesOf
+import de.westnordost.streetcomplete.data.CursorPosition
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable.Columns.COUNTRY_CODE
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable.Columns.RANK
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable.Columns.SUCCEEDED
@@ -10,54 +9,53 @@ import de.westnordost.streetcomplete.data.user.CountryStatisticsTable.NAME
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.ktx.*
 import javax.inject.Singleton
 
 /** Stores how many quests the user solved in which country */
-@Singleton class CountryStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
-    private val db get() = dbHelper.writableDatabase
+@Singleton class CountryStatisticsDao @Inject constructor(private val db: Database) {
 
-    fun getCountryWithBiggestSolvedCount(): CountryStatistics? {
-        return db.queryOne(NAME, orderBy = "$SUCCEEDED DESC") {
-            CountryStatistics(it.getString(COUNTRY_CODE), it.getInt(SUCCEEDED), it.getIntOrNull(RANK))
-        }
-    }
+    fun getCountryWithBiggestSolvedCount(): CountryStatistics? =
+        db.queryOne(NAME, orderBy = "$SUCCEEDED DESC") { it.toCountryStatistics() }
 
-    fun getAll(): List<CountryStatistics> {
-        return db.query(NAME) {
-            CountryStatistics(it.getString(COUNTRY_CODE), it.getInt(SUCCEEDED), it.getIntOrNull(RANK))
-        }
-    }
+    fun getAll(): List<CountryStatistics> =
+        db.query(NAME) { it.toCountryStatistics() }
 
     fun clear() {
-        db.delete(NAME, null, null)
+        db.delete(NAME)
     }
 
     fun replaceAll(countriesStatistics: Collection<CountryStatistics>) {
         db.transaction {
-            db.delete(NAME, null, null)
-            for (statistics in countriesStatistics) {
-                db.insert(NAME, null, contentValuesOf(
-                    COUNTRY_CODE to statistics.countryCode,
-                    SUCCEEDED to statistics.solvedCount,
-                    RANK to statistics.rank
-                ))
+            db.delete(NAME)
+            if (countriesStatistics.isNotEmpty()) {
+                db.replaceMany(NAME,
+                    arrayOf(COUNTRY_CODE, SUCCEEDED, RANK),
+                    countriesStatistics.map { arrayOf(it.countryCode, it.solvedCount, it.rank) }
+                )
             }
         }
     }
 
     fun addOne(countryCode: String) {
-        // first ensure the row exists
-        db.insertWithOnConflict(NAME, null, contentValuesOf(
-            COUNTRY_CODE to countryCode,
-            SUCCEEDED to 0
-        ), CONFLICT_IGNORE)
+        db.transaction {
+            // first ensure the row exists
+            db.insertOrIgnore(NAME, listOf(
+                COUNTRY_CODE to countryCode,
+                SUCCEEDED to 0
+            ))
 
-        // then increase by one
-        db.execSQL("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $COUNTRY_CODE = ?", arrayOf(countryCode))
+            // then increase by one
+            db.exec("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $COUNTRY_CODE = ?", arrayOf(countryCode))
+        }
     }
 
     fun subtractOne(countryCode: String) {
-        db.execSQL("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED - 1 WHERE $COUNTRY_CODE = ?", arrayOf(countryCode))
+        db.exec("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED - 1 WHERE $COUNTRY_CODE = ?", arrayOf(countryCode))
     }
 }
+
+fun CursorPosition.toCountryStatistics() = CountryStatistics(
+    getString(COUNTRY_CODE),
+    getInt(SUCCEEDED),
+    getIntOrNull(RANK)
+)

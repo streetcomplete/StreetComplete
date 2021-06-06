@@ -1,20 +1,17 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.getSystemService
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.numberOrNull
+import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -80,10 +77,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         val maxWeightInput = maxWeightInput ?: return
 
         maxWeightInput.requestFocus()
-        Handler(Looper.getMainLooper()).post {
-            val imm = activity?.getSystemService<InputMethodManager>()
-            imm?.showSoftInput(maxWeightInput, InputMethodManager.SHOW_IMPLICIT)
-        }
+        maxWeightInput.showKeyboard()
     }
 
     private fun showSignSelectionDialog() {

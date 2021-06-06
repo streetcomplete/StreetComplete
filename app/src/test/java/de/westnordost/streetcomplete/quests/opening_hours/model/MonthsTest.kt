@@ -18,8 +18,4 @@ class MonthsTest {
         assertEquals("Dec-Jan", months(0b100000000001).toString())
         assertEquals("Jul-May", months(0b111110111111).toString())
     }
-
-    private fun months(bits12: Int) = Months(bits12.toBitField(12))
-
-    private fun Int.toBitField(bits: Int) = (bits-1 downTo 0).map { this and (1 shl it) != 0 }.toBooleanArray()
 }
