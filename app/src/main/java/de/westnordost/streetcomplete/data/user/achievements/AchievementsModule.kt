@@ -552,7 +552,7 @@ object AchievementsModule {
                     "AddAddressStreet",
                     "AddPostboxRef",
                     "AddPostboxCollectionTimes",
-                    "AddPostBoxRoyalCypher"
+                    "AddPostboxRoyalCypher"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -664,6 +664,7 @@ object AchievementsModule {
                     "DetermineRecyclingGlass",
                     "AddRecyclingContainerMaterials",
                     "AddClothingBinOperator",
+                    "AddBinStatusOnBusStop",
                     "AddBabyChangingTable",
                     "AddOpeningHours",
                     "AddAtmOperator",

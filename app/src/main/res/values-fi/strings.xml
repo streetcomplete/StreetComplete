@@ -26,8 +26,6 @@
 
     <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Sivuutetaan ilmoitukset jotka eivät ole kysymysmuotoisia"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"Karttavälimuistin koko"</string>
     <string name="map_btn_gps_tracking">"Seuraa minua"</string>
 
@@ -56,8 +54,6 @@
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jos nimi pystytään sanomaan ilman lyhennystä, se myös kirjoitetaan ilman. Monet yleiset lyhenteet laajennetaan automaattisesti kirjoitettaessa, muttei kaikkia."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ei lyhennettä"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Mitkä ovat paikan %s aukioloajat?"</string>
     <string name="quest_openingHours_start_time">"aukeamisaika"</string>
     <string name="quest_openingHours_end_time">"sulkemisaika"</string>
@@ -836,12 +832,8 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_internet_access_no">"Ei yhteyttä"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_name_title">"Onko pysäkillä %s katos?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_title">"Onko tällä pysäkillä katos?"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Onko raitiovaunupysäkillä %s katos?"</string>
+    <string name="quest_busStopShelter_tram_title">"Onko tällä raitiovaunupysäkillä katos?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"Onko tällä penkillä selkänoja?"</string>
@@ -925,8 +917,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Mikä on tämän linja-autopysäkin nimi?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tramStopName_title">"Mikä on tämän raitiovaunupysäkin nimi?"</string>
 
     <!-- Fuzzy -->
@@ -1204,9 +1194,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_segregated_title">"Miten kevyenliikenteenväylä on jaettu jalankulkijoille ja pyöräilijöille?"</string>
-
-    <!-- Fuzzy -->
-    <string name="dialog_tutorial_upload">"Tallentaaksesi muutoksesi manuaalisesti, käytä seuraavan näköistä nappia työkalurivillä."</string>
+    <string name="dialog_tutorial_upload">"Tallentaaksesi muutoksesi manuaalisesti, käytä viereistä nappia työkalurivillä."</string>
 
     <!-- Fuzzy -->
     <string name="quest_segregated_separated">"Rinnakkain erillään toisista"</string>
@@ -1409,12 +1397,8 @@ Jaetaanko nyt?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"Onko tämän %s WC pyörätuolilla saavutettavissa?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_tram">"Onko tällä raitiovaunupysäkillä kosketuspäällysteitä?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_tram">"Onko tällä %s raitiovaunupysäkillä kosketuspäällysteitä?"</string>
+    <string name="quest_tactilePaving_title_tram">"Onko tällä raitiovaunupysäkillä kosketuspäällyste?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Onko raitiovaunupysäkillä %s kosketuspäällyste?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Mikä painorajoitus täällä on?"</string>
@@ -1872,12 +1856,12 @@ taso"</string>
     <string name="quest_openingHours_unspecified_range">"Ei määritelty"</string>
     <string name="quest_cycleway_resurvey_title">"Onko täällä edelleen pyörätietä?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Onko %1$s (%2$s) pyörätuolille sopiva?"</string>
-    <string name="pref_title_resurvey_intervals">"Uudelleen kyselyn tiheys"</string>
+    <string name="pref_title_resurvey_intervals">"Uudelleenkyselyn tiheys"</string>
     <string name="resurvey_intervals_less_often">"Kysy harvemmin"</string>
     <string name="resurvey_intervals_default">"Oletus"</string>
     <string name="resurvey_intervals_more_often">"Kysy useammin"</string>
     <string name="quest_accepts_cash_type_title">"Hyväksyykö %1$s (%2$s) käteismaksun?"</string>
-    <string name="quest_busStopBench_tram_name_title">"Onko raitiovaunupysäkillä %s penkki"</string>
+    <string name="quest_busStopBench_tram_name_title">"Onko raitiovaunupysäkki %s penkki?"</string>
     <string name="quest_busStopBench_tram_title">"Onko raitiovaunupysäkillä penkki?"</string>
     <string name="quest_busStopBench_title">"Onko bussipysäkillä penkki?"</string>
     <string name="quest_busStopBench_name_title">"Onko bussipysäkillä %s penkki?"</string>
@@ -1896,8 +1880,7 @@ taso"</string>
     <string name="quest_traffic_signals_vibrate_title">"Onko näissä liikennevaloissa tuntoindikaattori sokeille ihmisille kertomaan milloin on turvallista ylittää tie?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Vihje: Yleensä kyse on värisevästä painikeesta tai pyörivästä kartiosta liikennevalopainikkeen alapuolella."</string>
     <string name="quest_busStopRef_title">"Mikä on tämän linja-autopysäkin pysäkkinumero?"</string>
-    <string name="quest_tramStopRef_title">"Mikä on tämän raitiovaunupysäkin pysäkkinumero? 
-"</string>
+    <string name="quest_tramStopRef_title">"Mikä on tämän raitiovaunupysäkin pysäkkinumero?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"pieni omakotitalo (kesämökki, loma-asunto yms..)"</string>
@@ -2065,4 +2048,10 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Muunnettu suudelmaportiksi (V tai U portti)"</string>
     <string name="quest_stile_type_title">"Minkä tyyppinen porras tai portti tämä on?"</string>
     <string name="quest_buildingType_semi_detached_description2">"viereiset omakotitalot"</string>
+    <string name="pref_title_quests2">"Tehtävävalikoima ja tärkeysjärjestys"</string>
+    <string name="pref_subtitle_quests">"%1$d / %2$d käytössä"</string>
+    <string name="quest_busStopLit_tram_name_title">"Onko raitiovaunupysäkki %s valaistu?"</string>
+    <string name="quest_busStopLit_tram_title">"Onko tämä raitiovaunupysäkki valaistu?"</string>
+    <string name="quest_busStopLit_title">"Onko tämä bussipysäkki valaistu?"</string>
+    <string name="quest_busStopLit_name_title">"Onko bussipysäkki %s valaistu?"</string>
 </resources>

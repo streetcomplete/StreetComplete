@@ -1,8 +1,8 @@
-package de.westnordost.streetcomplete.quests.bikeway
+package de.westnordost.streetcomplete.quests.cycleway
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
+import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
 
 val Cycleway.isSupported get() = when(this) {
     UNKNOWN, UNKNOWN_SHARED_LANE, UNKNOWN_LANE, UNSPECIFIED_SHARED_LANE -> false

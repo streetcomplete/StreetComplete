@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"الإعدادات"</string>
 
     <!-- Fuzzy -->
@@ -84,7 +82,7 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"في بعض الأحيان تكون لافتة الشارع في أحد نهايتي الشارع. لاحظ أيضا أنه قد لايكون هناك أكثر من لافتة واحدة في الشوارع الجانبية المتفرعة من الشوارع الكبيرة. عادة، أي شارع به منازل له اسم."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"إذا كان يمكن تهجئة الاسم بدون اختصارات ، عندها يجب أن تكون
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"إذا كان يمكن تهجئة الاسم بدون اختصارات ، عندها يجب أن تكون 
 كتابة الاسم كاملة .
 العديد من الاختصارات الشائعة يتم إكمالها تلقائياً عندما تكتبها، ولكن ربما ليس جميعها."</string>
 
@@ -1314,6 +1312,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_clothes_container_operator_title">"من يقبل التبرعات لصندوق الملابس هذا؟"</string>
     <string name="quest_charging_station_operator_title">"من هو مشغل محطة الشحن هذه؟"</string>
     <string name="link_indoorequal_description">"اكتشف الخرائط الداخلية للمراكز التجارية ومحطات السكك الحديدية وما إلى ذلك"</string>
+    <string name="achievement_rare_title">"البحث عن الكنز"</string>
     <string name="achievement_citizen_title">"مواطن"</string>
     <string name="achievement_citizen_solved_X">"لقد قمت بحل %d مهمة مفيدة للحياة اليومية في المدينة!"</string>
     <string name="achievement_outdoors_title">"في الهواء الطلق"</string>
@@ -1329,6 +1328,8 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_buildingType_historic_description">"بناء ذو قيمة تاريخية ، شيد لغرض غير معروف أو غير واضح"</string>
     <string name="quest_buildingType_abandoned">"مهجور"</string>
     <string name="quest_buildingType_abandoned_description">"مبنى غير مستخدم وظيفته أو غرضه الأصلي غير معروف"</string>
+    <string name="quest_buildingType_ruins">"حطام"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"هل هذا صحيح؟"</string>
     <string name="quest_kerb_height_title">"ما هو ارتفاع هذا الرصيف؟"</string>
     <string name="quest_kerb_height_flush">"نفس مستوى سطح الطريق"</string>
     <string name="quest_kerb_height_lowered">"أعلى قليلاً من سطح الطريق"</string>
@@ -1341,6 +1342,13 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_parkingType_lane">"موقف سيارات على الطريق"</string>
     <string name="quest_existence_title">"هل مازال هذا هنا؟ (%s)"</string>
     <string name="quest_existence_name_title">"هل %1$s (%2$s) لا يزال هنا؟"</string>
+    <string name="quest_tracktype_grade2a">"صلبة لكن غير ممهدة"</string>
+    <string name="quest_tracktype_grade3a">"في الغالب صلبة"</string>
+    <string name="quest_generic_answer_does_not_exist">"إنه غير موجود ..."</string>
+    <string name="osm_element_gone_confirmation">"إنه غير موجود"</string>
+    <string name="leave_note">"اترك ملاحظة"</string>
+    <string name="quest_shop_gone_vacant_answer">"إنه شاغر"</string>
+    <string name="quest_shop_gone_replaced_answer_hint">"اكتب نوع المكان هنا"</string>
     <string name="quest_lanes_answer_lanes_odd2">"يختلف عدد الممرات لكل جانب"</string>
     <string name="quest_dietType_kosher_name_title">"هل تقدم %s منتجات متوافقة مع الشريعة اليهودية؟"</string>
     <string name="quest_construction_completed_at_known_date">"سينتهي في التاريخ ..."</string>
@@ -1352,13 +1360,81 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_buildingType_house_description2">"منزل أسرة واحدة غير منفصل"</string>
     <string name="quest_drinking_water_title">"هل المياه صالحة للشرب هنا؟ (%s)"</string>
     <string name="quest_drinking_water_potable_unsigned">"آمن للشرب (بدون توقيع)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"غير آمن للشرب (بدون توقيع)"</string>
+    <string name="quest_postboxRoyalCypher_title">"ما هو الرمز الملكي على هذا البريد؟"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"لا يوجد رمز ملكي مرئي"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"تاج اسكتلندا"</string>
+    <string name="quest_buildingType_fire_station">"محطة الاطفاء"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"العبوات البلاستيكية والكرتون فقط"</string>
+    <string name="quest_charging_station_name_capacity_title">"كم عدد السيارات التي يمكن شحنها في محطة الشحن هذه (%s) في نفس الوقت؟"</string>
+    <string name="team_mode">"وضع الفريق"</string>
+    <string name="team_mode_exit">"الخروج من وضع الفريق"</string>
+    <string name="team_mode_description">"عند تعيين نفس المنطقة معًا في مجموعة ، يمكنك الدخول في وضع الفريق لتقسيم المهام بين جميع أعضاء الفريق."</string>
     <string name="team_mode_team_size_label">"كم شخصا يوجد هناك؟"</string>
     <string name="team_mode_team_size_hint">"يعمل وضع الفريق لمجموعات من 2 إلى 12 شخصًا."</string>
+    <string name="team_mode_choose_color">"الآن يختار كل شخص في مجموعتك لونًا فريدًا:"</string>
+    <string name="team_mode_active">"وضع الفريق نشط"</string>
+    <string name="team_mode_deactivated">"تم إيقاف وضع الفريق"</string>
+    <string name="quest_pitchLit_title">"هل هذا المجال الرياضي مضاء؟"</string>
+    <string name="quest_pitchLit_title_track">"هل هذا المسار الرياضي مضاء؟"</string>
+    <string name="quest_crossing_type_signals_controlled">"معبر تسيطر عليه إشارات المرور"</string>
+    <string name="undo_last">"تراجع عن التعديل الأخير"</string>
+    <string name="show_edit_history">"إظهار سجل التحرير"</string>
+    <string name="undo_confirm_title2">"التراجع عن التعديل التالي؟"</string>
+    <string name="synced">"متزامن"</string>
+    <string name="toast_undo_unavailable">"تمت مزامنة هذا التعديل بالفعل ولا يمكن التراجع عنه"</string>
+    <string name="quest_cycleway_value_separate">"معروضة بشكل منفصل على الخريطة"</string>
+    <string name="created_note_action_title">"المذكرة التي تم إنشاؤها"</string>
+    <string name="commented_note_action_title">"ملاحظة مشروحة"</string>
+    <string name="hid_action_description">"لقد أخفيت ذلك"</string>
+    <string name="split_way_action_description">"أنت تقسم الطريق"</string>
 
     <!-- لقد حذفته -->
     <string name="deleted_poi_action_description">"قمت بحذفه"</string>
+    <string name="added_tag_action_title">"تمت إضافة %s"</string>
+    <string name="removed_tag_action_title">"تمت إزالة %s"</string>
+    <string name="changed_tag_action_title">"تم التحديث إلى %s"</string>
+    <string name="pref_title_delete_cache">"حذف ذاكرة التخزين المؤقت"</string>
+    <string name="pref_title_delete_cache_summary">"إذا كنت تعتقد أن بعض البيانات قديمة"</string>
+    <string name="delete_confirmation">"حذف"</string>
+    <string name="delete_cache_dialog_message">"هل تريد حذف جميع بيانات الخرائط التي تم تنزيلها ، بما في ذلك المهام؟
+يتم تحديث البيانات بعد %1$s يوم ويتم حذف البيانات غير المستخدمة بعد %2$s يومًا تلقائيًا."</string>
+    <string name="quest_shop_type_title">"ما هو نوع المتجر %s؟"</string>
+    <string name="quest_shop_type_title_no_name">"ما نوع هذا المحل؟"</string>
+    <string name="pref_background_type_select">"حدد نوع الخلفية"</string>
     <string name="background_type_map">"خريطة"</string>
+    <string name="background_type_aerial_esri">"جوي (بواسطة Esri)"</string>
+    <string name="quest_barrier_type_title">"ما نوع هذا الحاجز؟"</string>
     <string name="quest_barrier_type_gate">"بوابة"</string>
+    <string name="quest_barrier_type_lift_gate">"رفع الحاجز"</string>
+    <string name="quest_barrier_type_bollard">"العمود (الأعمدة)"</string>
     <string name="quest_barrier_type_chain">"سلسلة"</string>
+    <string name="quest_barrier_type_rope">"حبل"</string>
+    <string name="quest_barrier_type_wire_gate">"قسم الأسلاك القابلة للإزالة"</string>
+    <string name="quest_barrier_type_cattle_grid">"شبكة تمنع مرور المواشي"</string>
+    <string name="quest_barrier_type_block">"جسم ثابت كبير"</string>
+    <string name="quest_barrier_jersey_barrier">"حاجز جيرسي"</string>
+    <string name="quest_barrier_type_log">"جذع الشجرة"</string>
+    <string name="quest_barrier_type_kerb">"حدود"</string>
+    <string name="quest_barrier_type_height_restrictor">"رافعة جسرية لتحديد الارتفاع"</string>
+    <string name="quest_barrier_full_height_turnstile">"بوابة وصول كاملة الارتفاع"</string>
+    <string name="quest_barrier_type_turnstile">"حاجز دوراني"</string>
+    <string name="quest_barrier_type_passage">"المرور عبر الجدار / السياج / الخ."</string>
+    <string name="quest_barrier_type_debris_pile">"كومة من الحطام"</string>
+    <string name="quest_barrier_type_stile_squeezer">"ممر ضيق"</string>
+    <string name="quest_barrier_type_stile_ladder">"سلم"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"حاجز دراجات"</string>
     <string name="quest_barrier_type_kissing_gate">"بوابة التقبيل"</string>
+    <string name="quest_barrier_type_stepover">"الممر (خطوات)"</string>
+    <string name="quest_barrier_type_swing_gate">"عارضة أفقية"</string>
+    <string name="quest_policeType_title">"أي نوع من مراكز الشرطة هذا؟"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"تحولت إلى بوابة التقبيل"</string>
+    <string name="quest_stile_type_title">"ما نوع هذا الطراز؟"</string>
+    <string name="quest_buildingType_semi_detached_description2">"منزل (منازل) الأسرة الواحدة متجاور"</string>
+    <string name="pref_title_quests2">"اختيار المهمة والأولوية"</string>
+    <string name="pref_subtitle_quests">"تم تمكين %1$d من %2$d"</string>
+    <string name="quest_busStopLit_tram_name_title">"هل محطة الترام %s مضاءة؟"</string>
+    <string name="quest_busStopLit_tram_title">"هل محطة الترام هذه مضاءة؟"</string>
+    <string name="quest_busStopLit_title">"هل محطة الحافلات هذه مضاءة؟"</string>
+    <string name="quest_busStopLit_name_title">"هل محطة الحافلات %s مضاءة؟"</string>
 </resources>

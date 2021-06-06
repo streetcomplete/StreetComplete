@@ -1,6 +1,6 @@
-package de.westnordost.streetcomplete.quests.bikeway
+package de.westnordost.streetcomplete.quests.cycleway
 
-import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
+import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
 
 enum class Cycleway {
     // a.k.a. exclusive lane, dedicated lane or simply (proper) lane

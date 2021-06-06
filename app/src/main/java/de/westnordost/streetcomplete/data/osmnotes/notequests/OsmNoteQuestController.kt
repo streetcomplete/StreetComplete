@@ -196,19 +196,26 @@ private fun Note.shouldShowAsQuest(
     showOnlyNotesPhrasedAsQuestions: Boolean,
     blockedNoteIds: Set<Long>
 ): Boolean {
-    // hidden notes
+    // don't show notes hidden by user
     if (id in blockedNoteIds) return false
 
-    // don't show notes where this user (just) commented last
-    if (comments.last().isCommentIsFromUser(userId)) return false
+    /* don't show notes where user replied last */
+    if (comments.last().isReplyFromUser(userId)) return false
+
+    /* newly created notes by user should not be shown if it was both created in this app and has no
+       replies yet */
+    if (probablyCreatedByUserInThisApp(userId) && !hasReplies) return false
 
     /* many notes are created to report problems on the map that cannot be resolved
      * through an on-site survey.
      * Likely, if something is posed as a question, the reporter expects someone to
      * answer/comment on it, possibly an information on-site is missing, so let's only show these */
-    return if (showOnlyNotesPhrasedAsQuestions) {
-        !probablyCreatedByUserInThisApp(userId) && (probablyContainsQuestion() || containsSurveyRequiredMarker())
-    } else true
+    if (showOnlyNotesPhrasedAsQuestions &&
+        !probablyContainsQuestion() &&
+        !containsSurveyRequiredMarker()
+    ) return false
+
+    return true
 }
 
 private fun Note.probablyContainsQuestion(): Boolean {
@@ -242,12 +249,14 @@ private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     return firstComment.isFromUser(userId) && isViaApp
 }
 
-private fun NoteComment.isCommentIsFromUser(userId: Long): Boolean =
-    isFromUser(userId) && isComment
+private val Note.hasReplies: Boolean get() =
+    comments.any { it.isReply }
 
-private val NoteComment.isComment: Boolean get() =
+private fun NoteComment.isReplyFromUser(userId: Long): Boolean =
+    isFromUser(userId) && isReply
+
+private val NoteComment.isReply: Boolean get() =
     action == NoteComment.Action.COMMENTED
 
 private fun NoteComment.isFromUser(userId: Long): Boolean =
     user?.id == userId
-

@@ -157,6 +157,8 @@
 
     <!-- Fuzzy -->
     <string name="turn_on_location_request">"Helyzetmeghatározás kikapcsolva. Bekapcsolod most?"</string>
+
+    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Szükség van a pozíciódra a környéked kérdéseinek lekéréséhez."</string>
 
     <!-- Fuzzy -->

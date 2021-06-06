@@ -184,6 +184,7 @@ quest icons/
     bicycleway.svg
     bicycleway_surface.svg
     bicycleway_width.svg
+    bin_public_transport.svg         Florian Edelmann, parts from https://www.svgrepo.com/svg/187115/trash (License: CC0 1.0)
     blind.svg
     blind_bus.svg                    parts taken from Twemoji: U+1F68D
     blind_pedestrian_crossing.svg

@@ -55,6 +55,8 @@
     <string name="confirmation_cancel_prev_download_title">"Avbryt den aktuella sökningen och sök här i stället?"</string>
     <string name="notification_downloading">"Söker efter uppdrag…"</string>
     <string name="turn_on_location_request">"Plats är avstängd. Öppna inställningar för att slå på det nu?"</string>
+
+    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Plats är nödvändigt för att söka efter uppdrag i din närhet."</string>
     <string name="about_title_authors">"Tack till"</string>
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick och bidragsgivare"</string>

@@ -14,6 +14,7 @@ enum class Surface(val osmValue: String) {
     UNHEWN_COBBLESTONE("unhewn_cobblestone"),
     GRASS_PAVER("grass_paver"),
     WOOD("wood"),
+    WOODCHIPS("woodchips"),
     METAL("metal"),
     GRAVEL("gravel"),
     PEBBLES("pebblestone"),

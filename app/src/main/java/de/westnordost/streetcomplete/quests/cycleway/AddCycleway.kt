@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.bikeway
+package de.westnordost.streetcomplete.quests.cycleway
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 
-import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
+import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.util.isNearAndAligned
 
 class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
@@ -22,7 +22,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
 
-    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=bikeway/AddCycleway.kt
+    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:
     // Google Street View (driving around in virtual car)
     // https://en.wikivoyage.org/wiki/Cycling
