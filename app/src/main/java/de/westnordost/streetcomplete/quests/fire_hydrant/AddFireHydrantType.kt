@@ -10,6 +10,7 @@ class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
     override val commitMessage = "Add fire hydrant type"
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.ic_quest_fire_hydrant
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_type_title
 
