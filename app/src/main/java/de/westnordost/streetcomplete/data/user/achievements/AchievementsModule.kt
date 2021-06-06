@@ -663,6 +663,7 @@ object AchievementsModule {
                     "DetermineRecyclingGlass",
                     "AddRecyclingContainerMaterials",
                     "AddClothingBinOperator",
+                    "AddBinStatusOnBusStop",
                     "AddBabyChangingTable",
                     "AddOpeningHours",
                     "AddAtmOperator",
