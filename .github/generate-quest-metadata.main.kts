@@ -1,6 +1,6 @@
 /**
  * Note: Run from the project's root directory like this:
- * kotlinc -script -Xplugin=/path/to/kotlinx-serialization-compiler-plugin.jar .github/generate-quest-list.main.kts -- <our args>
+ * kotlinc -script -Xplugin=/path/to/kotlinx-serialization-compiler-plugin.jar .github/generate-quest-metadata.main.kts -- <our args>
  * --task wiki|json
  */
 
