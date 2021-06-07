@@ -8,9 +8,10 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 
 class AddWayLit : OsmFilterQuestType<WayLit>() {
 
-    /* Using sidewalk as a tell-tale tag for (urban) streets which reached a certain level of
-       development. I.e. non-urban streets will usually not even be lit in industrialized
-       countries.
+    /* Using sidewalk, source:maxspeed=*urban etc and a urban-like maxspeed as tell-tale tags for
+       (urban) streets which reached a certain level of development. I.e. non-urban streets will
+       usually not even be lit in industrialized countries.
+
        Also, only include paths only for those which are equal to footway/cycleway to exclude
        most hike paths and trails.
 
@@ -25,6 +26,8 @@ class AddWayLit : OsmFilterQuestType<WayLit>() {
               (
                 sidewalk ~ both|left|right|yes|separate
                 or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
+                or maxspeed <= 60
+                or maxspeed ~ "(5|10|15|20|25|30|35) mph"
               )
               or highway ~ ${LIT_WAYS.joinToString("|")}
               or highway = path and (foot = designated or bicycle = designated)
