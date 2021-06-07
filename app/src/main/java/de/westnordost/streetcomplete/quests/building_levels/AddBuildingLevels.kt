@@ -25,8 +25,8 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
     override fun createForm() = AddBuildingLevelsForm()
 
     override fun applyAnswerTo(answer: BuildingLevelsAnswer, changes: StringMapChangesBuilder) {
-        changes.add("building:levels", answer.levels)
-        answer.roofLevels?.let { changes.addOrModify("roof:levels", it) }
+        changes.add("building:levels", answer.levels.toString())
+        answer.roofLevels?.let { changes.addOrModify("roof:levels", it.toString()) }
     }
 }
 

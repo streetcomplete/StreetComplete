@@ -55,12 +55,13 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     }
 
     private fun onLastPickedButtonClicked(position: Int) {
-        levelsInput.setText(lastPickedAnswers[position].levels)
-        roofLevelsInput.setText(lastPickedAnswers[position].roofLevels ?: "")
+        levelsInput.setText(lastPickedAnswers[position].levels.toString())
+        roofLevelsInput.setText(lastPickedAnswers[position].roofLevels?.toString() ?: "")
     }
 
     override fun onClickOk() {
-        val answer = BuildingLevelsAnswer(levels, if (roofLevels.isEmpty()) null else roofLevels)
+        val roofLevelsNumber = if (roofLevels.isEmpty()) null else roofLevels.toInt()
+        val answer = BuildingLevelsAnswer(levels.toInt(), roofLevelsNumber)
         favs.add(javaClass.simpleName, answer.toSerializedString(), max = 5)
         applyAnswer(answer)
     }
@@ -101,8 +102,8 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         }
 
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-            viewHolder.lastLevelsLabel.text = lastPickedAnswers[position].levels
-            viewHolder.lastRoofLevelsLabel.text = lastPickedAnswers[position].roofLevels ?: " "
+            viewHolder.lastLevelsLabel.text = lastPickedAnswers[position].levels.toString()
+            viewHolder.lastRoofLevelsLabel.text = lastPickedAnswers[position].roofLevels?.toString() ?: " "
         }
 
         override fun getItemCount() = lastPickedAnswers.size
@@ -113,4 +114,4 @@ private fun BuildingLevelsAnswer.toSerializedString() =
     listOfNotNull(levels, roofLevels).joinToString("#")
 
 private fun String.toBuildingLevelAnswer() =
-    this.split("#").let { BuildingLevelsAnswer(it[0], it.getOrNull(1)) }
+    this.split("#").let { BuildingLevelsAnswer(it[0].toInt(), it.getOrNull(1)?.toInt()) }
