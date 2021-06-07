@@ -233,7 +233,10 @@ fun getQuestTaginfo(
       // Substitute any quest constants
       var key = questConstants.getOrDefault(questChange[1], questChange[1])
       if (!stringCheck.matches(key)) {
-        println("Key '" + key + "' is not a string")
+        println("Key '" + key + "' is not a string, skipping")
+        continue
+      } else if (key.contains("$")) {
+        println("Key '" + key + "' has unprocessed string substitution, skipping")
         continue
       } else {
         key = key.trim('"')
