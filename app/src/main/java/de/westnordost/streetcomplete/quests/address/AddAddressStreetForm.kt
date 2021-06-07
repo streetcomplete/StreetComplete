@@ -142,6 +142,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     private fun switchToPlaceNameLayout() {
         isPlaceName = true
         setLayout(R.layout.quest_housenumber_place)
+        placeNameInput?.requestFocus()
     }
 
     companion object {
