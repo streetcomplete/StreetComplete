@@ -8,8 +8,9 @@ import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.*
 class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
 
     override val elementFilter = """
-        nodes with
+        nodes, ways with
           amenity = bench
+          and (!area or area = no)
           and !backrest
           and !bench:type
     """
