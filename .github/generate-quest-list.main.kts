@@ -209,23 +209,34 @@ fun getQuestTaginfo(
     println(questChanges)
 
     val stringCheck = Regex("^\".+\"$")
+    val fieldRegex = Regex("answer\\.(.+)$")
 
     val allChanges = mutableListOf<TaginfoChange>()
-    for (it in questChanges) {
-      println(it)
+    for (questChange in questChanges) {
+      println(questChange)
+      var change = questChange[0]
+      if (change.startsWith("get")) {
+        // It's not actually a change, so discard it
+        println("Discarding a get only change " + change)
+        continue
+      }
       // TODO: Rather than just dropping non-quote ones, ideally we need to deal with their variable names
       // Substitute any quest constants
-      var key = questConstants.getOrDefault(it[1], it[1])
+      var key = questConstants.getOrDefault(questChange[1], questChange[1])
       if (!stringCheck.matches(key)) {
-        println(key + " is not a string")
+        println("Key '" + key + "' is not a string")
         continue
       } else {
         key = key.trim('"')
       }
+      if (change.startsWith("delete")) {
+        // It's a delete, so we don't expect, or care about the value
+        allChanges.add(TaginfoChange(key, "", change))
+        continue
+      }
       // Tidy up some dodgy capturing
       // TODO(Peter): Fix this at source
-      var value = it[2].replace("^,\\s+".toRegex(), "").trim('(')
-      var change = it[0]
+      var value = questChange[2].replace("^,\\s+".toRegex(), "").trim('(')
       if (Regex("\\.toYesNo$").containsMatchIn(value)) {
         // Add both variants
         allChanges.add(TaginfoChange(key, "yes", change))
@@ -240,44 +251,68 @@ fun getQuestTaginfo(
         //allChanges.add(TaginfoChange(key, "", change))
       } else {
         if (!stringCheck.matches(value)) {
-          println(value + " is not a string")
+          println("Value '" + value + "' is not a string")
+          if (value.startsWith("if (")) {
+            // TODO: Fix me!
+            println("Skipping if statement")
+            allChanges.add(TaginfoChange(key, "", change))
+            continue
+          }
           var questAnswerType = getQuestAnswerType(questFileContent)
           println(questAnswerType)
           for (it in questAnswerType) {
             println(it)
             if (it == "Boolean" || it == "String") {
               println("Skipping generic " + it + "...")
+              allChanges.add(TaginfoChange(key, "", change))
               continue
             } else if (Regex("^List<").containsMatchIn(it)) {
               println("Skipping generic List...")
+              allChanges.add(TaginfoChange(key, "", change))
               continue
             } else if (it == "SuspectedOnewayAnswer" || it == "CyclewayAnswer" || it == "SidewalkAnswer" || it == "ShopTypeAnswer" || it == "CompletedConstructionAnswer") {
               println("Skipping, it's complicated " + it + "...")
+              allChanges.add(TaginfoChange(key, "", change))
               continue
             } else if (it == "RecyclingContainerMaterialsAnswer" || it == "SurfaceAnswer" || it == "MaxSpeedAnswer" || it == "MaxHeightAnswer" || it == "LanesAnswer") {
               // TODO: Fix me!
               println("Skipping, needs investigation " + it + "...")
+              allChanges.add(TaginfoChange(key, "", change))
               continue
-            } else if (it == "BuildingType" || it == "DrinkingWater" || it == "PoliceType") {
-              // TODO: Fix me!
-              println("Skipping, complex enum " + it + "...")
-              continue
-            } else if (it == "BusStopShelterAnswer" || it == "StepsRampAnswer" || it == "BenchBackrestAnswer") {
+//            } else if (it == "BuildingType" || it == "DrinkingWater" || it == "PoliceType") {
+//              // TODO: Fix me!
+//              println("Skipping, complex enum " + it + "...")
+//              allChanges.add(TaginfoChange(key, "", change))
+//              continue
+            } else if (it == "BusStopShelterAnswer" || it == "StepsRampAnswer") {
               // TODO: Fix me!
               println("Skipping, simple enum " + it + "...")
+              allChanges.add(TaginfoChange(key, "", change))
               continue
             } else if (it == "RoadNameAnswer" || it == "PlaceNameAnswer" || it == "BusStopRefAnswer" || it == "HousenumberAnswer" || it == "PostboxRefAnswer") {
               println("Skipping just a name " + it + "...")
+              allChanges.add(TaginfoChange(key, "", change))
               continue
-            } else if (value == "answer.osmValue") {
+            } else {
               val answerFile = getQuestFile("/" + it, questFiles)
+              println("Checking " + answerFile + " for enums")
               val questAnswerTypeFileContent = answerFile.readText()
 
-              for (answerEnum in getQuestAnswerTypeEnums(questAnswerTypeFileContent).values) {
-                allChanges.add(TaginfoChange(key, answerEnum, change))
+              //println(questAnswerTypeFileContent)
+
+              if (fieldRegex.matches(value)) {
+                val fieldName = fieldRegex.find(value)!!.groupValues[1]
+                //if (fieldName != null) {
+                  for (answerEnum in getQuestAnswerTypeEnums(questAnswerTypeFileContent).values) {
+                    if (answerEnum.containsKey(fieldName)) {
+                      allChanges.add(TaginfoChange(key, answerEnum.getOrDefault(fieldName, ""), change))
+                    }
+                  }
+                //}
               }
             }
           }
+
           continue
         } else {
           value = value.trim('"')
@@ -292,7 +327,7 @@ fun getQuestTaginfo(
 
     val iconUrl = getIconUrl(getQuestIcon(questName, questFileContent))
 
-    return allChanges.map { TaginfoTag(it.key, it.value, it.change + " - " + title + " - " + questName, file.toString(), iconUrl)}
+    return allChanges.distinct().map { TaginfoTag(it.key, it.value, it.change + " - " + title + " - " + questName, file.toString(), iconUrl)}
 }
 
 fun getQuestFile(questName: String, questFiles: List<File>): File {
@@ -327,16 +362,31 @@ fun getQuestAnswerType(questFileContent: String): List<String> {
     return regex.findAll(questFileContent).map { it.groupValues[1] }.toList()
 }
 
-fun getQuestAnswerTypeEnums(questFileContent: String): Map<String, String> {
+fun getQuestAnswerTypeEnums(questFileContent: String): Map<String, Map<String, String>> {
 //enum class ParkingType(val osmValue: String) {
 //    SURFACE("surface"),
 //    MULTI_STOREY("multi-storey"),
 //}
-    val enumRegex = Regex("enum class [^\\(]+\\(val osmValue: String\\) \\{\\s*([^\\}]+)\\}")
-    val valRegex = Regex("\\s*([^\\(]+)\\(\"([^\"]+)\"\\),?")
+    val enumRegex = Regex("enum class [^\\(]+\\(([^\\)]+)\\) \\{\\s*([^\\}]+)\\}")
+    val fieldsRegex = Regex("val ([^:]+): [^,]+")
+    val valsRegex = Regex("\\s*([^\\(]+)\\(([^\\)]+)\\),?")
+    val valRegex = Regex("\\s*\"([^\"]+)\",?\\s*")
 
-    val enumVals = enumRegex.find(questFileContent)!!.groupValues[1]
-    return valRegex.findAll(enumVals).associate { it -> it.groupValues[1] to it.groupValues[2] }
+    val enumVals = enumRegex.find(questFileContent)?.groupValues
+    val data: MutableMap<String, Map<String, String>> = mutableMapOf<String, Map<String, String>>()
+    if (enumVals != null) {
+      //println(fieldsRegex.findAll(enumVals[1]).map { it.groupValues[1] }.toList())
+      for (it in valsRegex.findAll(enumVals[2])) {
+        //println(it.groupValues[1] + " = " + it.groupValues[2])
+        //println(valRegex.findAll(it.groupValues[2]).map { it.groupValues[1] }.toList())
+        data.put(it.groupValues[1],
+                 fieldsRegex.findAll(enumVals[1]).map { it.groupValues[1] }.toList().zip(
+                   valRegex.findAll(it.groupValues[2]).map { it.groupValues[1] }.toList()
+                 ).toMap())
+      }
+    }
+    println(data)
+    return data
 }
 
 fun getQuestTitleStringNames(questName: String, questFileContent: String): List<String> {
