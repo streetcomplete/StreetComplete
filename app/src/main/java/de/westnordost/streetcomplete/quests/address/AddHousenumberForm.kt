@@ -75,6 +75,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     private fun switchToHouseName() {
         isHousename = true
         setLayout(R.layout.quest_housename)
+        houseNameInput?.requestFocus()
     }
 
     private fun showMultipleNumbersHint() {

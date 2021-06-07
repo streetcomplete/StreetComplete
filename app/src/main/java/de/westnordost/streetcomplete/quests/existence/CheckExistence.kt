@@ -43,6 +43,10 @@ class CheckExistence(
             or (highway = emergency_access_point or emergency = access_point) and ref
             or emergency = life_ring
             or emergency = phone
+            or (
+              man_made = surveillance and surveillance:type = camera and surveillance ~ outdoor|public
+              and !highway
+            )
           )
           and (${lastChecked(4.0)})
         ) or (
