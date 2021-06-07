@@ -1,3 +1,22 @@
+v33.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What type of surveillance camera is this?</i> (#87, #299, #2856), by @Helium314, thanks @Binnette</li>
+  <li><i>Does this bus stop have a waste basket?</i> (#2760, #2898), by @FloEdelmann</li>
+  <li><i>What type of bollard is this?</i> (#2128, #2915), by @FloEdelmann, thanks @RubenKelevra</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix crash on using app in split screen and keyboard in other app is opened (#2949), by @tapetis</li>
+  </ul>
+  <h3>Enhancements</h3>
+  <ul>
+  <li>also ask building type for building=unclassified (#2941), by @FloEdelmann</li>
+  <li>enable the "Does not exist" answer for more quests (#2913, #2914), by @matkoniecz</li>
+  <li>also ask for building levels of buildings that already have a height tagged (#2927, #2935), by @matkoniecz</li>
+  <li>display message when camera app cannot be opened for taking a photo (#2911, #2926), by @tapetis</li>
+  </ul>
+
 v32.1: |
   <h3>Fixes</h3>
   <ul>
