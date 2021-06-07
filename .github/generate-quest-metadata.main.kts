@@ -95,7 +95,9 @@ fun generateTaginfoJson(questNames: List<String>, questFiles: List<File>) {
     )
 
     val strings = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
-    val taginfoTags = questNames.map { getQuestTaginfo(it, questFiles, strings) }.flatten()
+    val coreConstants = getQuestConstants(projectDirectory.resolve("app/src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt").readText())
+    println("Got core constants: " + coreConstants)
+    val taginfoTags = questNames.map { getQuestTaginfo(it, questFiles, strings, coreConstants) }.flatten()
 
     // TODO(Peter): Populate this
     val data = Base("foo.json", project, taginfoTags)
@@ -206,7 +208,8 @@ fun getQuestWiki(
 fun getQuestTaginfo(
     questName: String,
     questFiles: List<File>,
-    strings: Map<String, String>
+    strings: Map<String, String>,
+    coreConstants: Map<String, String>
 ): List<TaginfoTag> {
     val file = getQuestFile(questName, questFiles)
     println("Inspecting " + file)
@@ -224,14 +227,14 @@ fun getQuestTaginfo(
     for (questChange in questChanges) {
       println("Assessing quest change: " + questChange)
       var change = questChange[0]
-      if (change.startsWith("get")) {
+      if (change.startsWith("get") || change.startsWith("has")) {
         // It's not actually a change, so discard it
-        println("Discarding a get only change " + change)
+        println("Discarding a read only change " + change)
         continue
       }
       // TODO: Rather than just dropping non-quote ones, ideally we need to deal with their variable names
       // Substitute any quest constants
-      var key = questConstants.getOrDefault(questChange[1], questChange[1])
+      var key = lookupQuestConstant(coreConstants, questConstants, questChange[1])
       if (!stringCheck.matches(key)) {
         println("Key '" + key + "' is not a string, skipping")
         continue
@@ -240,6 +243,15 @@ fun getQuestTaginfo(
         continue
       } else {
         key = key.trim('"')
+      }
+      // TODO: Also add the addAndUpdateCheckDate and the remove old survey tags
+      if (change.startsWith("updateCheckDate")) {
+        // Correcting key name
+        var checkDateKey = lookupQuestConstant(coreConstants, questConstants, "SURVEY_MARK_KEY")
+        if (stringCheck.matches(checkDateKey)) {
+          checkDateKey = checkDateKey.trim('"')
+        }
+        key = checkDateKey + ":" + key
       }
       if (change.startsWith("delete")) {
         // It's a delete, so we don't expect, or care about the value
@@ -274,7 +286,7 @@ fun getQuestTaginfo(
           println("Got quest answer types: " + questAnswerType)
           for (it in questAnswerType) {
             println("Got quest answer type: " + it)
-            if (it == "Boolean" || it == "String") {
+            if (it == "Boolean" || it == "String" || it == "Unit") {
               println("Skipping generic " + it + "...")
               allChanges.add(TaginfoChange(key, "", change))
               continue
@@ -356,6 +368,10 @@ fun getQuestConstants(questFileContent: String): Map<String, String> {
     val regex = Regex("const val ([^\\s]+)\\s*=\\s*(\"([^\"]+)\")")
 
     return regex.findAll(questFileContent).associate { it -> it.groupValues[1] to it.groupValues[2] }
+}
+
+fun lookupQuestConstant(coreConstants: Map<String, String>, questConstants: Map<String, String>, constant: String): String {
+    return coreConstants.getOrDefault(constant, questConstants.getOrDefault(constant, constant))
 }
 
 fun getQuestChanges(questFileContent: String): List<List<String>> {
