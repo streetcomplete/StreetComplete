@@ -209,20 +209,20 @@ fun getQuestTaginfo(
     strings: Map<String, String>
 ): List<TaginfoTag> {
     val file = getQuestFile(questName, questFiles)
-    println(file)
+    println("Inspecting " + file)
     val questFileContent = file.readText()
 
     val questConstants = getQuestConstants(questFileContent)
-    println(questConstants)
+    println("Got quest constants: " + questConstants)
     var questChanges = getQuestChanges(questFileContent)
-    println(questChanges)
+    println("Got raw quest changes: " + questChanges)
 
     val stringCheck = Regex("^\".+\"$")
     val fieldRegex = Regex("answer\\.(.+)$")
 
     val allChanges = mutableListOf<TaginfoChange>()
     for (questChange in questChanges) {
-      println(questChange)
+      println("Assessing quest change: " + questChange)
       var change = questChange[0]
       if (change.startsWith("get")) {
         // It's not actually a change, so discard it
@@ -271,9 +271,9 @@ fun getQuestTaginfo(
             continue
           }
           var questAnswerType = getQuestAnswerType(questFileContent)
-          println(questAnswerType)
+          println("Got quest answer types: " + questAnswerType)
           for (it in questAnswerType) {
-            println(it)
+            println("Got quest answer type: " + it)
             if (it == "Boolean" || it == "String") {
               println("Skipping generic " + it + "...")
               allChanges.add(TaginfoChange(key, "", change))
@@ -332,7 +332,7 @@ fun getQuestTaginfo(
         allChanges.add(TaginfoChange(key, value, change))
       }
     }
-    println(allChanges)
+    println("Processed list of changes: " + allChanges)
 
     val questions = getQuestTitleStringNames(questName, questFileContent).map { strings[it]!! }
     val title = questions.last()
