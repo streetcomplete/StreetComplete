@@ -84,16 +84,12 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         class ViewHolder(
             view: View,
             private val onItemClicked: (position: Int) -> Unit
-        ) : RecyclerView.ViewHolder(view), View.OnClickListener {
+        ) : RecyclerView.ViewHolder(view) {
             val lastLevelsLabel: TextView = view.findViewById(R.id.lastLevelsLabel)
             val lastRoofLevelsLabel: TextView = view.findViewById(R.id.lastRoofLevelsLabel)
 
             init {
-                itemView.setOnClickListener(this)
-            }
-
-            override fun onClick(view: View) {
-                onItemClicked(bindingAdapterPosition)
+                itemView.setOnClickListener { _ -> onItemClicked(bindingAdapterPosition) }
             }
         }
 
