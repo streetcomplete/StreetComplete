@@ -230,9 +230,54 @@ fun getQuestTaginfo(
         // Add both variants
         allChanges.add(TaginfoChange(key, "yes", change))
         allChanges.add(TaginfoChange(key, "no", change))
+      } else if (Regex("\\.toString$").containsMatchIn(value) || Regex("\\.joinToString\\(").containsMatchIn(value)) {
+        // No value to add
+        // TODO: Check what value we should be setting
+        allChanges.add(TaginfoChange(key, "", change))
+      } else if (Regex("^when\\(answer").containsMatchIn(value)) {
+        // TODO: Unpick this
+        println(value + " is unknown when")
+        //allChanges.add(TaginfoChange(key, "", change))
       } else {
         if (!stringCheck.matches(value)) {
           println(value + " is not a string")
+          var questAnswerType = getQuestAnswerType(questFileContent)
+          println(questAnswerType)
+          for (it in questAnswerType) {
+            println(it)
+            if (it == "Boolean" || it == "String") {
+              println("Skipping generic " + it + "...")
+              continue
+            } else if (Regex("^List<").containsMatchIn(it)) {
+              println("Skipping generic List...")
+              continue
+            } else if (it == "SuspectedOnewayAnswer" || it == "CyclewayAnswer" || it == "SidewalkAnswer" || it == "ShopTypeAnswer" || it == "CompletedConstructionAnswer") {
+              println("Skipping, it's complicated " + it + "...")
+              continue
+            } else if (it == "RecyclingContainerMaterialsAnswer" || it == "SurfaceAnswer" || it == "MaxSpeedAnswer" || it == "MaxHeightAnswer" || it == "LanesAnswer") {
+              // TODO: Fix me!
+              println("Skipping, needs investigation " + it + "...")
+              continue
+            } else if (it == "BuildingType" || it == "DrinkingWater" || it == "PoliceType") {
+              // TODO: Fix me!
+              println("Skipping, complex enum " + it + "...")
+              continue
+            } else if (it == "BusStopShelterAnswer" || it == "StepsRampAnswer" || it == "BenchBackrestAnswer") {
+              // TODO: Fix me!
+              println("Skipping, simple enum " + it + "...")
+              continue
+            } else if (it == "RoadNameAnswer" || it == "PlaceNameAnswer" || it == "BusStopRefAnswer" || it == "HousenumberAnswer" || it == "PostboxRefAnswer") {
+              println("Skipping just a name " + it + "...")
+              continue
+            } else if (value == "answer.osmValue") {
+              val answerFile = getQuestFile("/" + it, questFiles)
+              val questAnswerTypeFileContent = answerFile.readText()
+
+              for (answerEnum in getQuestAnswerTypeEnums(questAnswerTypeFileContent).values) {
+                allChanges.add(TaginfoChange(key, answerEnum, change))
+              }
+            }
+          }
           continue
         } else {
           value = value.trim('"')
@@ -273,6 +318,25 @@ fun getQuestChanges(questFileContent: String): List<List<String>> {
 
     //return regex.findAll(questFileContent).map { it.groupValues[1], it.groupValues[2], "" }.toList()
     return regex.findAll(questFileContent).map { it.groupValues.drop(1) }.toList()
+}
+
+fun getQuestAnswerType(questFileContent: String): List<String> {
+//override fun applyAnswerTo(answer: PostboxRoyalCypher, changes: StringMapChangesBuilder) {
+    val regex = Regex("applyAnswerTo\\(answer: ([^,]+), changes: StringMapChangesBuilder\\)")
+
+    return regex.findAll(questFileContent).map { it.groupValues[1] }.toList()
+}
+
+fun getQuestAnswerTypeEnums(questFileContent: String): Map<String, String> {
+//enum class ParkingType(val osmValue: String) {
+//    SURFACE("surface"),
+//    MULTI_STOREY("multi-storey"),
+//}
+    val enumRegex = Regex("enum class [^\\(]+\\(val osmValue: String\\) \\{\\s*([^\\}]+)\\}")
+    val valRegex = Regex("\\s*([^\\(]+)\\(\"([^\"]+)\"\\),?")
+
+    val enumVals = enumRegex.find(questFileContent)!!.groupValues[1]
+    return valRegex.findAll(enumVals).associate { it -> it.groupValues[1] to it.groupValues[2] }
 }
 
 fun getQuestTitleStringNames(questName: String, questFileContent: String): List<String> {
