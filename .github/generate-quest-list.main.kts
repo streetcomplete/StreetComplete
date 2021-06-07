@@ -1,6 +1,7 @@
 /**
  * Note: Run from the project's root directory like this:
- * kotlinc -script -Xplugin=/path/to/kotlinx-serialization-compiler-plugin.jar .github/generate-quest-list.main.kts
+ * kotlinc -script -Xplugin=/path/to/kotlinx-serialization-compiler-plugin.jar .github/generate-quest-list.main.kts -- <our args>
+ * --task wiki|json
  */
 
 @file:DependsOn("org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1")
@@ -20,13 +21,14 @@ val sourceDirectory = projectDirectory.resolve("app/src/main/java/de/westnordost
 val iconsDirectory = projectDirectory.resolve("res/graphics/quest icons/")
 
 val csvFile = projectDirectory.resolve("quest-list.csv")
+val jsonFile = projectDirectory.resolve("taginfo.json")
 
 val noteQuestName = "OsmNoteQuest"
 val noteQuestFile = sourceDirectory.resolve("data/osmnotes/notequests/OsmNoteQuestType.kt")
 
 val wikiRowSpan2 = " rowspan=\"2\" |"
 
-main()
+main(args)
 
 @Serializable
 data class Project(val name: String,
@@ -53,17 +55,23 @@ data class Base(val data_url: String,
                 val tags: List<TaginfoTag>,
                 val data_format: Int = 1)
 
-fun main() {
-    println("Starting!")
+fun main(args: Array<String>) {
+    val task = if (args.contains("--task")) args[1 + args.indexOf("--task")] else "wiki"
+    println("Performing task: " + task)
+
     val questFileContent = sourceDirectory.resolve("quests/QuestModule.kt").readText()
     val questNameRegex = Regex("(?<=^ {8})[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
     val questNames = listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
 
     val questFiles = getFilesRecursively(sourceDirectory.resolve("quests/"))
 
-    generateWikiCsv(questNames, questFiles)
-
-    generateTaginfoJson(questNames, questFiles)
+    when (task) {
+      "wiki" -> generateWikiCsv(questNames, questFiles)
+      "json" -> generateTaginfoJson(questNames, questFiles)
+      else -> { // Note the block
+        println("Unknown task " + task)
+      }
+    }
 }
 
 fun generateWikiCsv(questNames: List<String>, questFiles: List<File>) {
@@ -93,6 +101,7 @@ fun generateTaginfoJson(questNames: List<String>, questFiles: List<File>) {
     val data = Base("foo.json", project, taginfoTags)
 
     println(Json { encodeDefaults = true; prettyPrint = true }.encodeToString<Base>(data))
+    jsonFile.writeText(Json { encodeDefaults = true; prettyPrint = true }.encodeToString<Base>(data))
 }
 
 data class RepoQuest(

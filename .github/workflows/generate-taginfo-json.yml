@@ -1,12 +1,12 @@
-name: Generate quest list
+name: Generate TagInfo JSON
 on:
   push:
     branches:
       - master
 
 jobs:
-  generate-quest-list:
-    name: Generate quest list
+  generate-taginfo-json:
+    name: Generate TagInfo JSON
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,8 +14,8 @@ jobs:
         with:
           java-version: 11
       - run: sudo snap install kotlin --channel=1.4/stable --classic
-      - run: kotlinc -script -Xplugin=/snap/kotlin/current/lib/kotlinx-serialization-compiler-plugin.jar .github/generate-quest-list.main.kts -- --task wiki
+      - run: kotlinc -script -Xplugin=/snap/kotlin/current/lib/kotlinx-serialization-compiler-plugin.jar .github/generate-quest-list.main.kts -- --task json
       - uses: actions/upload-artifact@v2
         with:
-          name: quest-list.csv
-          path: ./quest-list.csv
+          name: taginfo.json
+          path: ./taginfo.json
