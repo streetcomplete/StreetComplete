@@ -5,17 +5,19 @@ v33.0-beta1: |
   <li><i>Does this bus stop have a waste basket?</i> (#2760, #2898), by @FloEdelmann</li>
   <li><i>What type of bollard is this?</i> (#2128, #2915), by @FloEdelmann, thanks @RubenKelevra</li>
   </ul>
+  <h3>Enhancements</h3>
+  <li>Remember more building level quest answers (#1772, #2925), by @FloEdelmann</li>
+  <li>also ask for the backrest for benches that are mapped as a way (#2939)</li>
+  <li>enable the "Does not exist" answer option for more quests (#2913, #2914), by @matkoniecz</li>
+  <li>also ask for levels of buildings that already have a height tagged (#2927, #2935), by @matkoniecz</li>
+  <li>also ask periodically if camera surveillance is still there (#2816)</li>
+  <li>ask for more roads whether they are lit and whether they have a sidewalk (#2951)</li>
+  <li>More small quest/UI enhancements (#2941) by @FloEdelmann, (#2911, #2926) by @tapetis, (#2836)</li>
   <h3>Fixes</h3>
   <ul>
   <li>Fix crash on using app in split screen and keyboard in other app is opened (#2949), by @tapetis</li>
   </ul>
-  <h3>Enhancements</h3>
-  <ul>
-  <li>also ask building type for building=unclassified (#2941), by @FloEdelmann</li>
-  <li>enable the "Does not exist" answer for more quests (#2913, #2914), by @matkoniecz</li>
-  <li>also ask for building levels of buildings that already have a height tagged (#2927, #2935), by @matkoniecz</li>
-  <li>display message when camera app cannot be opened for taking a photo (#2911, #2926), by @tapetis</li>
-  </ul>
+
 
 v32.1: |
   <h3>Fixes</h3>
