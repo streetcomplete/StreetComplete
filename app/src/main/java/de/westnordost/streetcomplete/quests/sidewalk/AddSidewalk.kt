@@ -25,7 +25,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
     * */
     private val filter by lazy { """
         ways with
-          highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
           and area != yes
           and motorroad != yes
           and !sidewalk and !sidewalk:left and !sidewalk:right and !sidewalk:both

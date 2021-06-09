@@ -12,7 +12,7 @@ v33.0-beta1: |
   <li>enable the "Does not exist" answer option for more quests (#2913, #2914), by @matkoniecz</li>
   <li>also ask for levels of buildings that already have a height tagged (#2927, #2935), by @matkoniecz</li>
   <li>also ask periodically if camera surveillance is still there (#2816)</li>
-  <li>ask for more roads whether they are lit and whether they have a sidewalk (#2951)</li>
+  <li>ask for more roads whether they are lit and whether they have a sidewalk (#2951, #2953)</li>
   <li>More small quest/UI enhancements (#2941) by @FloEdelmann, (#2911, #2926) by @tapetis, (#2836)</li>
   </ul>
   <h3>Fixes</h3>
