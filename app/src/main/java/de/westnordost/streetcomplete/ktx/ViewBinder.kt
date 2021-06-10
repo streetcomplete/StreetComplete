@@ -50,18 +50,23 @@ class ActivityBindingPropertyDelegate<T : ViewBinding>(
 
 }
 
-inline fun <reified T : ViewBinding> Fragment.viewBinding(noinline viewBinder: (View) -> T) =
-    FragmentViewBindingPropertyDelegate(this, viewBinder)
+inline fun <reified T : ViewBinding> Fragment.viewBinding(
+    noinline viewBinder: (View) -> T,
+    noinline destroyer: ((T) -> Unit)?
+) = FragmentViewBindingPropertyDelegate(this, viewBinder, destroyer)
 
 class FragmentViewBindingPropertyDelegate<T : ViewBinding>(
     private val fragment: Fragment,
-    private val viewBinder: (View) -> T
+    private val viewBinder: (View) -> T,
+    private var destroyer: ((T) -> Unit)?
 ) : ReadOnlyProperty<Fragment, T>, LifecycleEventObserver {
 
     private var binding: T? = null
 
     override fun onStateChanged(source: LifecycleOwner, event: Event) {
         if (event == Event.ON_DESTROY) {
+            destroyer?.invoke(binding!!)
+            destroyer = null
             binding = null
             source.lifecycle.removeObserver(this)
         }
@@ -75,3 +80,11 @@ class FragmentViewBindingPropertyDelegate<T : ViewBinding>(
     }
 
 }
+
+/**
+ * you can use this in your activity like this
+ * in case of an @Activity
+ * private val binding by viewBinding(<your_activity_layout_binding>::inflate)
+ * and in case of a @Fragment
+ * private val binding by viewBinding(<your_fragment_layout_binding>::bind())
+ */
