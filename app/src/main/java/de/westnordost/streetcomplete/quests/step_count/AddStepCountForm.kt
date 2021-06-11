@@ -14,7 +14,7 @@ class AddStepCountForm : AbstractQuestFormAnswerFragment<Int>() {
 
     private val binding by viewBinding(QuestStepCountBinding::bind)
 
-    private val count get() = binding.countInput?.text?.toString().orEmpty().trim()
+    private val count get() = binding.countInput.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

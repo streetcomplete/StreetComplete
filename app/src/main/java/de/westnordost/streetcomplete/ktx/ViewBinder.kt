@@ -52,7 +52,7 @@ class ActivityBindingPropertyDelegate<T : ViewBinding>(
 
 inline fun <reified T : ViewBinding> Fragment.viewBinding(
     noinline viewBinder: (View) -> T,
-    noinline destroyer: ((T) -> Unit)?
+    noinline destroyer: ((T) -> Unit)? = null
 ) = FragmentViewBindingPropertyDelegate(this, viewBinder, destroyer)
 
 class FragmentViewBindingPropertyDelegate<T : ViewBinding>(
