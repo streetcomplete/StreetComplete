@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.components.PointMarkersMapComponent
 import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -177,7 +178,15 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     fun endFocusQuest() {
         clearFocusQuest()
-        geometryMapComponent?.endFocusGeometry()
+        lifecycleScope.launch {
+            /* small delay to wait for other animations when ending focus on quest to be done first
+               Most specifically, the map is being updated after a quest is solved, if the zoom
+               out animation already starts while the map is being updated, there can be a little
+               lag/jump which is not visually pleasing.
+             */
+            delay(150)
+            geometryMapComponent?.endFocusGeometry()
+        }
         centerCurrentPositionIfFollowing()
     }
 

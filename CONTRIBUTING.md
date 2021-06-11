@@ -28,6 +28,8 @@ After joining [main site of the POEditor](https://poeditor.com/projects/) should
 
 Before each release, translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged and do not help the project.
 
+Once 100% or close to 100% of text is translated the given language becomes enabled. Not maintained translations are removed. Typically language translated in less than 60% will be considered as not maintained and such translation will be disabled.
+
 ### iD presets
 
 Some translations are from iD presets. For example in "Is this still here (Bench)" text "Is this still here ()" will be translated as part of StreetComplete, but translation for bench is taken from iD presets.

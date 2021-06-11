@@ -55,6 +55,8 @@
     <string name="confirmation_cancel_prev_download_title">"Спри търсенето и сканирай тук?"</string>
     <string name="notification_downloading">"Сканиране за въпроси..."</string>
     <string name="turn_on_location_request">"Местоположението е изключено. Да се отворят ли Настройки, за включване?"</string>
+
+    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Местоположението ти е нужно за сканиране на въпроси наблизо."</string>
     <string name="about_title_authors">"Автор(и)"</string>
     <string name="about_summary_authors">"© 2016–2021 Тобиас Цвик и други"</string>
@@ -189,6 +191,8 @@
     <string name="quest_sport_netball">"Нетбол"</string>
     <string name="quest_sport_rugby">"Ръгби"</string>
     <string name="quest_select_hint">"Изберете:"</string>
+
+    <!-- Тази спортна площадка предназначена ли е специално за тези спортове, или може да се практикува всякакъв подобен спорт? -->
     <string name="quest_sport_manySports_confirmation_description">"Тази спортна площадка е специално предназначена за тези спортове или може да се практикува всякакъв подобен спорт."</string>
     <string name="quest_manySports_confirmation_specific">"Специално за тези"</string>
     <string name="quest_manySports_confirmation_generic">"За обща употреба"</string>

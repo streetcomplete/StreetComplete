@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -13,14 +14,18 @@ import de.westnordost.streetcomplete.util.isNearAndAligned
 class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
 
     /* the filter additionally filters out ways that are unlikely to have sidewalks:
-     * unpaved roads, roads with very low speed limits and roads that are probably not developed
-     * enough to have pavement (that are not lit).
-     * Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
-     * is mapped as a separate way
+     *
+     * + unpaved roads, roads with very low speed limits and roads that are probably not developed
+     *   enough to have sidewalk (i.e. country roads). But let's ask for urban roads at least
+     *
+     * + roads with a very low speed limit
+     *
+     * + Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
+     *   is mapped as a separate way
     * */
     private val filter by lazy { """
         ways with
-          highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
           and area != yes
           and motorroad != yes
           and !sidewalk and !sidewalk:left and !sidewalk:right and !sidewalk:both
@@ -30,7 +35,11 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
             or (maxspeed ~ ".*mph" and maxspeed !~ "[1-5] mph")
           )
           and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
-          and (lit = yes or highway = residential)
+          and (
+            lit = yes
+            or highway = residential
+            or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
+          )
           and foot != no and access !~ private|no
           and foot != use_sidepath
     """.toElementFilterExpression() }

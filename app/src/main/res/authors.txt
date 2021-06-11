@@ -30,6 +30,13 @@ bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/w
 bicycle_parking_type_stand.jpg CC0               https://commons.wikimedia.org/wiki/File:Bicycle_parking_stand_2.jpg
 bicycle_parking_type_wheel...  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG
 
+bollard_fixed.jpg              CC-BY-SA 2.0      Chrisix https://wiki.openstreetmap.org/wiki/File:Bollard_in_residential_area.png
+bollard_flexible.jpg           CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Flexible_bollard.jpg
+bollard_foldable.jpg           CC-BY-SA 2.0      Hauke Stieler https://wiki.openstreetmap.org/wiki/File:Bollard_foldable.jpg
+bollard_removable_with_key.jpg CC0               Florian Edelmann https://commons.wikimedia.org/wiki/File:Traffic_bollard_removable_with_key_on_a_footway.jpg
+bollard_removable_without_key… CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Bollard_removable_without_key_(detail).jpg
+bollard_rising.jpg             CC-BY-SA 4.0      Stolbovsky https://commons.wikimedia.org/wiki/File:Rising_bollards_in_Moscow.jpg
+
 bridge_structure_arch.jpg      Public Domain     https://commons.wikimedia.org/wiki/File:Wash_Br_Harlem_water_jeh.JPG
 bridge_structure_beam.jpg      CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Little_Bay_Bridges_02.jpg
 bridge_structure_cablestaye... CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Anzac_Bridge_5.jpg
@@ -162,6 +169,7 @@ surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/w
 surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG (Øyvind Holmstad )
 surface_unpaved.jpg            CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
 surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami)
+surface_woodchips.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Woodchips_surface.jpg (10992-osm)
 
 tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/

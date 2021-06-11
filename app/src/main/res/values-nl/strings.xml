@@ -2366,7 +2366,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_surface_value_clay">"Klei"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgras"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
-    <string name="quest_pitchSurface_title_track">"Welke oppervlak heeft dit sportveld?"</string>
+    <string name="quest_pitchSurface_title_track">"Welke oppervlak heeft deze sportbaan?"</string>
     <string name="quest_bicycle_parking_access_title">"Is er een beperking wie hier een fiets mag parkeren?"</string>
     <string name="quest_bicycle_parking_fee_title">"Moet je hier betalen om een fiets te parkeren?"</string>
     <string name="quest_buildingType_house_description2">"niet-vrijstaande eengezinswoning"</string>
@@ -2377,9 +2377,9 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_drinking_water_not_potable_unsigned">"Niet veilig om te drinken (niet aangegeven)"</string>
     <string name="quest_postboxRoyalCypher_title">"Welk Koninklijk monogram / teken staat er op deze brievenbus?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Geen koninklijk monogram / teken zichbaar"</string>
-    <string name="quest_postboxRoyalCypher_type_scottish_crown">"De kroon van schotland"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"De kroon van Schotland"</string>
     <string name="quest_buildingType_fire_station">"Brandweerpost"</string>
-    <string name="quest_recycling_type_beverage_cartons">"Alleen drinkverpakkingen"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Alleen drankverpakkingen"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Alleen plastic flessen en kartons"</string>
     <string name="quest_charging_station_name_capacity_title">"Hoeveel auto's kunnen er tegelijkertijd worden opgeladen bij dit laadstation (%s)?"</string>
     <string name="team_mode">"Team mode"</string>
@@ -2391,7 +2391,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="team_mode_active">"Team mode is actief"</string>
     <string name="team_mode_deactivated">"Team mode is uitgeschakeld"</string>
     <string name="quest_pitchLit_title">"Is dit sportveld verlicht?"</string>
-    <string name="quest_pitchLit_title_track">"Is dit sportveld verlicht?"</string>
+    <string name="quest_pitchLit_title_track">"Is deze sportbaan verlicht?"</string>
     <string name="quest_crossing_type_signals_controlled">"Oversteekplaats gecontroleerd door verkeerslichten"</string>
     <string name="undo_last">"Laatste wijziging ongedaan maken"</string>
     <string name="show_edit_history">"Toon wijzigingsgeschiedenis"</string>
@@ -2400,7 +2400,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="toast_undo_unavailable">"Deze wijziging is al gesynchroniseerd en kan niet ongedaan gemaakt worden"</string>
     <string name="quest_cycleway_value_separate">"apart weergegeven op de kaart"</string>
     <string name="created_note_action_title">"Notitie aangemaakt"</string>
-    <string name="commented_note_action_title">"Geplaatste notitie"</string>
+    <string name="commented_note_action_title">"Becommentarieerde notitie"</string>
     <string name="hid_action_description">"Je hebt het verborgen"</string>
     <string name="split_way_action_description">"Je hebt de weg gesplitst"</string>
     <string name="deleted_poi_action_description">"Je hebt het verwijderd"</string>
@@ -2408,9 +2408,9 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="removed_tag_action_title">"%s verwijderd"</string>
     <string name="changed_tag_action_title">"Geüpdate naar %s"</string>
     <string name="pref_title_delete_cache">"Verwijder cachegeheugen"</string>
-    <string name="pref_title_delete_cache_summary">"Als je denkt dat sommige gegevens niet up-to-date zijn"</string>
+    <string name="pref_title_delete_cache_summary">"Als je denkt dat sommige gegevens verouderd zijn"</string>
     <string name="delete_confirmation">"Verwijder"</string>
-    <string name="delete_cache_dialog_message">"Alle gedownloade kaart gegevens inclusief vragen verwijderen?
+    <string name="delete_cache_dialog_message">"Alle gedownloade kaartgegevens inclusief vragen verwijderen?
 Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisch verwijdert na %2$s dagen."</string>
     <string name="quest_shop_type_title">"Welke soort winkel is %s?"</string>
     <string name="quest_shop_type_title_no_name">"Welke soort winkel is dit?"</string>
@@ -2423,10 +2423,10 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_barrier_type_bollard">"Poller(s)"</string>
     <string name="quest_barrier_type_chain">"Ketting"</string>
     <string name="quest_barrier_type_rope">"Touw"</string>
-    <string name="quest_barrier_type_wire_gate">"Verwijderbaar hek"</string>
-    <string name="quest_barrier_type_cattle_grid">"Een rooster in het wegdek dat verhindert dat dieren een gebied verlaten (of binnengaan)"</string>
+    <string name="quest_barrier_type_wire_gate">"Verwijderbaar draadhek"</string>
+    <string name="quest_barrier_type_cattle_grid">"Veerooster"</string>
     <string name="quest_barrier_type_block">"Groot immobiel object"</string>
-    <string name="quest_barrier_jersey_barrier">"Jersey barrier"</string>
+    <string name="quest_barrier_jersey_barrier">"Betonblok"</string>
     <string name="quest_barrier_type_log">"Boomstam"</string>
     <string name="quest_barrier_type_kerb">"Stoeprand"</string>
     <string name="quest_barrier_type_height_restrictor">"Doorgang met hoogtelimiet"</string>
@@ -2440,9 +2440,9 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>
     <string name="quest_barrier_type_stepover">"Trap (overstap)"</string>
     <string name="quest_barrier_type_swing_gate">"Horizontale balk"</string>
-    <string name="quest_policeType_title">"Welk soort politiekantoor is dit?"</string>
-    <string name="quest_barrier_type_kissing_gate_conversion">"Omgebouwd naar een wandelpoort"</string>
-    <string name="quest_stile_type_title">"Wat voor stijl is dit?"</string>
+    <string name="quest_policeType_title">"Welk soort politiebureau is dit?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Omgebouwde kissing gate"</string>
+    <string name="quest_stile_type_title">"Wat voor soort passage is dit?"</string>
     <string name="quest_buildingType_semi_detached_description2">"aangrenzende eengezinswoning(en)"</string>
     <string name="pref_title_quests2">"Vraag selectie en prioriteit"</string>
     <string name="pref_subtitle_quests">"%1$d van %2$d ingeschakeld"</string>

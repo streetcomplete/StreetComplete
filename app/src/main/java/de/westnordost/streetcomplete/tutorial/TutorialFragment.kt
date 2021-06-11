@@ -29,7 +29,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     private val binding by viewBinding(FragmentTutorialBinding::bind)
 
     interface Listener {
-        fun onFinishedTutorial()
+        fun onTutorialFinished()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -58,7 +58,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
                 }
                 MAX_PAGE_INDEX -> {
                     binding.nextButton.isEnabled = false
-                    listener?.onFinishedTutorial()
+                    listener?.onTutorialFinished()
                 }
             }
         }
@@ -134,7 +134,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .start()
 
 
-        delay(2400)
+        delay(1400)
 
         // ...and after a few seconds, stops flashing
         binding.tutorialGpsButton?.state = LocationState.UPDATING

@@ -2330,4 +2330,14 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_barrier_type_kissing_gate">"Brama ze śluzą"</string>
     <string name="quest_barrier_type_stepover">"Przełaz - podest"</string>
     <string name="quest_barrier_type_swing_gate">"Szlaban rozchylany"</string>
+    <string name="quest_policeType_title">"Jaki rodzaj posterunku policji się tu znajduje?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Przerobione na bramkę ze śluzą"</string>
+    <string name="quest_stile_type_title">"Jaki jest to rodzaj przełazu?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"Dom-bliźniak / domy-bliźniaki"</string>
+    <string name="pref_title_quests2">"Wybór zadań i kolejność ich wyświetlania na mapie"</string>
+    <string name="pref_subtitle_quests">"%1$d z %2$d jest włączonych"</string>
+    <string name="quest_busStopLit_tram_name_title">"Czy przystanek tramwajowy %s jest oświetlony?"</string>
+    <string name="quest_busStopLit_tram_title">"Czy ten przystanek tramwajowy jest oświetlony?"</string>
+    <string name="quest_busStopLit_title">"Czy ten przystanek autobusowy jest oświetlony?"</string>
+    <string name="quest_busStopLit_name_title">"Czy przystanek autobusowy %s jest oświetlony?"</string>
 </resources>
