@@ -24,7 +24,7 @@ import dagger.Provides
         },
         aerialLayerSource = object : TileSource(
             title = "ESRI",
-            maxZoom = 16,
+            maxZoom = 17,
             copyrightText = "© Esri",
             copyrightLink = "https://wiki.openstreetmap.org/wiki/Esri",
             privacyStatementLink = "https://www.esri.com/en-us/privacy/privacy-statements",
