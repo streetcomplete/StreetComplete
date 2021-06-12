@@ -9,19 +9,20 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
-import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber
+import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
-import de.westnordost.streetcomplete.quests.bikeway.AddCycleway
+import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground
 import de.westnordost.streetcomplete.quests.bus_stop_bench.AddBenchStatusOnBusStop
+import de.westnordost.streetcomplete.quests.bus_stop_lit.AddBusStopLit
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
@@ -56,6 +57,9 @@ import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
+import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
+import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
@@ -223,6 +227,8 @@ import javax.inject.Singleton
         AddClothingBinOperator(),
         AddKosher(),
         AddStileType(),
+        AddBollardType(), // useful for first responders
+        AddCameraType(),
 
         // ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
         //      the sake of mapping it in case it makes sense later
@@ -242,6 +248,8 @@ import javax.inject.Singleton
         AddPowerPolesMaterial(),
         AddCarWashType(),
         AddBenchStatusOnBusStop(),
+        AddBinStatusOnBusStop(),
+        AddBusStopLit(),
         AddBenchBackrest(),
         AddTrafficSignalsButton(),
         AddPostboxRoyalCypher()

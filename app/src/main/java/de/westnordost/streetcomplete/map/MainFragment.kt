@@ -64,7 +64,12 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlin.random.Random
 
-/** Contains the quests map and the controls for it. */
+/** Contains the quests map and the controls for it.
+ *
+ *  This fragment controls the main view. It does itself not contain that much logic, but it is the
+ *  place where all the logic when interacting with the map / bottom sheets / sidebars etc. comes
+ *  together, hence it implements all the listeners to communicate with its child fragments.
+ *  */
 class MainFragment : Fragment(R.layout.fragment_main),
     MapFragment.Listener,
     LocationAwareMapFragment.Listener,
@@ -149,12 +154,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         super.onViewCreated(view, savedInstanceState)
 
         mapControls.respectSystemInsets(View::setMargins)
-        view.respectSystemInsets { left, top, right, bottom ->
-            windowInsets = Rect(left, top, right, bottom)
-        }
+        view.respectSystemInsets { l, t, r, b -> windowInsets = Rect(l, t, r, b) }
 
         locationPointerPin.setOnClickListener { onClickLocationPointer() }
-
         compassView.setOnClickListener { onClickCompassButton() }
         gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
         zoomInButton.setOnClickListener { onClickZoomIn() }
@@ -252,7 +254,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onPanBegin() {
-        setIsFollowingPosition(false)
+        /* panning only results in not following location anymore if a location is already known
+           and displayed
+         */
+        if (mapFragment?.displayedLocation != null) {
+            setIsFollowingPosition(false)
+        }
     }
 
     override fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float) { }
@@ -348,7 +355,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(questKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(questKey)
+                closeBottomSheet()
                 if (questController.solve(questKey, answer, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -374,8 +381,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onSkippedQuest(questKey: QuestKey) {
-        closeQuestDetailsFor(questKey)
         lifecycleScope.launch {
+            closeBottomSheet()
             questController.hide(questKey)
         }
     }
@@ -384,7 +391,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(osmQuestKey)
+                closeBottomSheet()
                 if (questController.deletePoiElement(osmQuestKey, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -396,7 +403,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(osmQuestKey)
+                closeBottomSheet()
                 if (questController.replaceShopElement(osmQuestKey, tags, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -421,7 +428,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         lifecycleScope.launch {
             val quest = questController.get(osmQuestKey)
             if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeQuestDetailsFor(osmQuestKey)
+                closeBottomSheet()
                 if (questController.splitWay(osmQuestKey, splits, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
@@ -440,11 +447,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */
 
     override fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>) {
-        closeQuestDetailsFor(questKey)
         // the quest is deleted from DB on creating a note, so need to fetch quest before
         lifecycleScope.launch {
             val quest = questController.get(questKey)
             if (quest != null) {
+                closeBottomSheet()
                 if (questController.createNote(questKey, questTitle, note, imagePaths)) {
                     onQuestSolved(quest, null)
                 }
@@ -478,20 +485,22 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
     @AnyThread override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        val f = bottomSheetFragment
-        if (f !is IsShowingQuestDetails) return
+        lifecycleScope.launch {
+            val f = bottomSheetFragment
+            if (f !is IsShowingQuestDetails) return@launch
 
-        // open quest does not exist anymore!
-        if (removed.contains(f.questKey)) {
-            lifecycleScope.launch { closeBottomSheet() }
+            // open quest does not exist anymore!
+            if (removed.contains(f.questKey)) {
+                closeBottomSheet()
+            }
         }
     }
 
     @AnyThread override fun onVisibleQuestsInvalidated() {
-        val f = bottomSheetFragment
-        if (f !is IsShowingQuestDetails) return
-
         lifecycleScope.launch {
+            val f = bottomSheetFragment
+            if (f !is IsShowingQuestDetails) return@launch
+
             val openQuest = withContext(Dispatchers.IO) { questController.get(f.questKey) }
             if (openQuest == null) {
                 closeBottomSheet()
@@ -803,12 +812,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
             setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
             replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
             addToBackStack(BOTTOM_SHEET)
-        }
-    }
-
-    private fun closeQuestDetailsFor(questKey: QuestKey) {
-        if (isQuestDetailsCurrentlyDisplayedFor(questKey)) {
-            closeBottomSheet()
         }
     }
 

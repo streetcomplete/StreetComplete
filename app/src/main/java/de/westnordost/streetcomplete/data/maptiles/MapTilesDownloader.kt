@@ -30,7 +30,7 @@ class MapTilesDownloader @Inject constructor(
         var cachedSize = 0
         val time = currentTimeMillis()
 
-        supervisorScope {
+        coroutineScope {
             listOf(
                 vectorTileProvider.baseTileSource,
                 vectorTileProvider.aerialLayerSource
@@ -72,7 +72,7 @@ class MapTilesDownloader @Inject constructor(
            identical in order for the cache to work */
         val url = source.getTileUrl(zoom, x, y) + if (source.title == "JawgMaps") "&" else ""
         val httpUrl = HttpUrl.parse(url)
-        check(httpUrl != null) { "Invalid URL: $url" }
+        require(httpUrl != null) { "Invalid URL: $url" }
 
         val builder = Request.Builder()
             .url(httpUrl)

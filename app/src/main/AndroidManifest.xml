@@ -17,10 +17,6 @@
     <uses-feature android:name="android.hardware.screen.portrait"/>
 
     <queries>
-        <!-- take a photo to attach to a note -->
-        <intent>
-            <action android:name="android.media.action.IMAGE_CAPTURE"/>
-        </intent>
         <!-- open location in another app -->
         <intent>
             <action android:name="android.intent.action.VIEW"/>

@@ -33,11 +33,15 @@ fun String.toCheckDate(): LocalDate? {
  *  tag to today instead. */
 fun StringMapChangesBuilder.updateWithCheckDate(key: String, value: String) {
     val previousValue = getPreviousValue(key)
-    if (previousValue == value) {
-        updateCheckDateForKey(key)
-    } else {
+    if (previousValue != value) {
         addOrModify(key, value)
-        deleteCheckDatesForKey(key)
+    }
+    /* if the value is changed, set the check date only if it has been set before. Behavior
+    *  before v32.0 was to delete the check date. However, this destroys data that was
+    *  previously collected by another surveyor - we don't want to destroy other people's data
+    *  */
+    if (previousValue == value || hasCheckDateForKey(key)) {
+        updateCheckDateForKey(key)
     }
 }
 
@@ -49,6 +53,10 @@ fun StringMapChangesBuilder.updateCheckDateForKey(key: String) {
         if (it != "$SURVEY_MARK_KEY:$key") deleteIfExists(it)
     }
 }
+
+/** Return whether a check date is set for the given key */
+fun StringMapChangesBuilder.hasCheckDateForKey(key: String): Boolean =
+    getLastCheckDateKeys(key).any { getPreviousValue(it) != null }
 
 /** Delete any check date keys for the given key */
 fun StringMapChangesBuilder.deleteCheckDatesForKey(key: String) {

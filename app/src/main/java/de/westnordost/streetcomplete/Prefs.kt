@@ -33,7 +33,7 @@ object Prefs {
     const val MAP_LATITUDE = "map.latitude"
     const val MAP_LONGITUDE = "map.longitude"
     const val LAST_PICKED_PREFIX = "imageListLastPicked."
-    const val LAST_LOCATION_REQUEST_DENIED = "location.denied"
+    const val FINISHED_FIRST_LOCATION_REQUEST = "location.firstPermissionRequestFinished"
     const val LAST_VERSION = "lastVersion"
     const val LAST_VERSION_DATA = "lastVersion_data"
     const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"

@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
+import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -134,10 +135,8 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         val isNotActuallyChangingAnything = changes.getChanges().all { change ->
             change is StringMapEntryModify && change.value == change.valueBefore
         }
-        if (isNotActuallyChangingAnything) {
+        if (isNotActuallyChangingAnything || changes.hasCheckDateForKey("recycling")) {
             changes.updateCheckDateForKey("recycling")
-        } else {
-            changes.deleteCheckDatesForKey("recycling")
         }
     }
 
@@ -156,11 +155,11 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 private val allKnownMaterials = RecyclingMaterial.values().map { "recycling:" + it.value }
 
 private fun Element.hasAnyRecyclingMaterials(): Boolean =
-    tags?.any { it.key.startsWith("recycling:") && it.value == "yes" } ?: false
+    tags.any { it.key.startsWith("recycling:") && it.value == "yes" }
 
 private fun Element.hasUnknownRecyclingMaterials(): Boolean =
-    tags?.any {
+    tags.any {
         it.key.startsWith("recycling:") &&
         it.key !in allKnownMaterials &&
         it.value == "yes"
-    } ?: true
+    }

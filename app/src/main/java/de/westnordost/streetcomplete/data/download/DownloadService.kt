@@ -54,8 +54,6 @@ class DownloadService : CoroutineIntentService(TAG) {
         else notificationController.show()
     }
 
-    override val cancelPreviousWorkOnNewIntent: Boolean = true
-
     init {
         Injector.applicationComponent.inject(this)
     }
@@ -72,13 +70,8 @@ class DownloadService : CoroutineIntentService(TAG) {
 
     override suspend fun onHandleIntent(intent: Intent?) {
         if (intent == null) return
-        if (intent.getBooleanExtra(ARG_CANCEL, false)) {
-            cancel()
-            Log.i(TAG, "Download cancelled")
-            return
-        }
         val tiles: TilesRect = Json.decodeFromString(intent.getStringExtra(ARG_TILES_RECT)!!)
-        isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
+        isPriorityDownload = intent.getBooleanExtra(ARG_IS_PRIORITY, false)
 
         isDownloading = true
 
@@ -126,18 +119,13 @@ class DownloadService : CoroutineIntentService(TAG) {
         private const val TAG = "Download"
         const val ARG_TILES_RECT = "tilesRect"
         const val ARG_IS_PRIORITY = "isPriority"
-        const val ARG_CANCEL = "cancel"
 
         fun createIntent(context: Context, tilesRect: TilesRect, isPriority: Boolean): Intent {
             val intent = Intent(context, DownloadService::class.java)
             intent.putExtra(ARG_TILES_RECT, Json.encodeToString(tilesRect))
             intent.putExtra(ARG_IS_PRIORITY, isPriority)
-            return intent
-        }
-
-        fun createCancelIntent(context: Context): Intent {
-            val intent = Intent(context, DownloadService::class.java)
-            intent.putExtra(ARG_CANCEL, true)
+            // priority download should cancel any earlier download
+            intent.putExtra(ARG_PREVIOUS_CANCEL, isPriority)
             return intent
         }
     }

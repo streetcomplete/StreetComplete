@@ -69,12 +69,6 @@ class VisibleQuestsSourceTest {
         source.addListener(listener)
     }
 
-    @Test fun getAllCount() {
-        on(osmQuestSource.getAllInBBoxCount(bbox)).thenReturn(3)
-
-        assertEquals(3, source.getCount(bbox))
-    }
-
     @Test fun getAllVisible() {
         on(osmQuestSource.getAllVisibleInBBox(bbox, questTypeNames)).thenReturn(listOf(mock(), mock(), mock()))
         on(osmNoteQuestSource.getAllVisibleInBBox(bbox)).thenReturn(listOf(mock(), mock()))

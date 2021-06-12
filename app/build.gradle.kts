@@ -37,8 +37,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
         targetSdkVersion(30)
-        versionCode = 3200
-        versionName = "32.0-alpha1"
+        versionCode = 3300
+        versionName = "33.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
     }
@@ -120,7 +120,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.annotation:annotation:1.2.0")
-    implementation("androidx.fragment:fragment-ktx:1.3.2")
+    implementation("androidx.fragment:fragment-ktx:1.3.3")
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.recyclerview:recyclerview:1.2.0")
     implementation("androidx.viewpager:viewpager:1.0.0")
@@ -174,9 +174,9 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor etc. */
 val bcp47ExportLanguages = setOf(
-    "ast","bg","ca","cs","da","de","el","en","en-AU","en-GB","es","eu","fa","fi","fr","gl","hr","hu",
-    "id","it", "ja","ko","lt","ml","nb","no","nl","nn","pl","pt","pt-BR","ru","sk","sr-cyrl","sv","tr",
-    "uk","zh","zh-CN","zh-HK","zh-TW"
+    "ar","ast","bg","ca","cs","da","de","el","en","en-AU","en-GB","es","eu",
+    "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
+    "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","tr","uk","zh","zh-CN","zh-HK","zh-TW"
 )
 
 tasks.register<UpdatePresetsTask>("updatePresets") {

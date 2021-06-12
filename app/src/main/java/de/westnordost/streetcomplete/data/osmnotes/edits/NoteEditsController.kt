@@ -16,7 +16,7 @@ import javax.inject.Singleton
 
     private val listeners: MutableList<NoteEditsSource.Listener> = CopyOnWriteArrayList()
 
-    @Synchronized fun add(
+    fun add(
         noteId: Long,
         action: NoteEditAction,
         position: LatLon,
@@ -34,7 +34,7 @@ import javax.inject.Singleton
             false,
             imagePaths.isNotEmpty()
         )
-        editsDB.add(edit)
+        synchronized(this) { editsDB.add(edit) }
         onAddedEdit(edit)
     }
 
@@ -68,36 +68,44 @@ import javax.inject.Singleton
     fun getOldestNeedingImagesActivation(): NoteEdit? =
         editsDB.getOldestNeedingImagesActivation()
 
-    @Synchronized fun imagesActivated(id: Long): Boolean =
-        editsDB.markImagesActivated(id)
+    fun imagesActivated(id: Long): Boolean =
+        synchronized(this) { editsDB.markImagesActivated(id) }
 
-    @Synchronized fun synced(edit: NoteEdit, note: Note) {
-        if (edit.noteId != note.id) {
-            editsDB.updateNoteId(edit.noteId, note.id)
+    fun synced(edit: NoteEdit, note: Note) {
+        val markSyncedSuccess: Boolean
+        synchronized(this) {
+            if (edit.noteId != note.id) {
+                editsDB.updateNoteId(edit.noteId, note.id)
+            }
+            markSyncedSuccess = editsDB.markSynced(edit.id)
         }
-        if (editsDB.markSynced(edit.id)) {
+
+        if (markSyncedSuccess) {
             onSyncedEdit(edit)
         }
     }
 
-    @Synchronized fun syncFailed(edit: NoteEdit) {
+    fun syncFailed(edit: NoteEdit): Boolean =
         delete(edit)
-    }
 
-    @Synchronized fun undo(edit: NoteEdit): Boolean {
-        return delete(edit)
-    }
+    fun undo(edit: NoteEdit): Boolean =
+        delete(edit)
 
-    @Synchronized fun deleteSyncedOlderThan(timestamp: Long): Int {
-        val edits = editsDB.getSyncedOlderThan(timestamp)
-        if (edits.isEmpty()) return 0
-        val result = editsDB.deleteAll(edits.map { it.id })
-        onDeletedEdits(edits)
-        return result
+    fun deleteSyncedOlderThan(timestamp: Long): Int {
+        val deletedCount: Int
+        val deleteEdits: List<NoteEdit>
+        synchronized(this) {
+            deleteEdits = editsDB.getSyncedOlderThan(timestamp)
+            if (deleteEdits.isEmpty()) return 0
+            deletedCount = editsDB.deleteAll(deleteEdits.map { it.id })
+        }
+        onDeletedEdits(deleteEdits)
+        return deletedCount
     }
 
     private fun delete(edit: NoteEdit): Boolean {
-        if (editsDB.delete(edit.id)) {
+        val deleteSuccess = synchronized(this) { editsDB.delete(edit.id) }
+        if (deleteSuccess) {
             onDeletedEdits(listOf(edit))
             return false
         }

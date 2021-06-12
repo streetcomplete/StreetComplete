@@ -10,8 +10,11 @@ import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.TilesRect
 import kotlinx.coroutines.*
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import java.lang.System.currentTimeMillis
 import javax.inject.Inject
+import javax.inject.Named
 import kotlin.math.max
 
 /** Downloads all the things */
@@ -19,7 +22,8 @@ class Downloader @Inject constructor(
     private val notesDownloader: NotesDownloader,
     private val mapDataDownloader: MapDataDownloader,
     private val mapTilesDownloader: MapTilesDownloader,
-    private val downloadedTilesDb: DownloadedTilesDao
+    private val downloadedTilesDb: DownloadedTilesDao,
+    @Named("SerializeSync") private val mutex: Mutex
 ) {
     suspend fun download(tiles: TilesRect, ignoreCache: Boolean) {
         val bbox = tiles.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
@@ -33,11 +37,13 @@ class Downloader @Inject constructor(
 
         val time = currentTimeMillis()
 
-        coroutineScope {
-            // all downloaders run concurrently
-            launch { notesDownloader.download(bbox) }
-            launch { mapDataDownloader.download(bbox) }
-            launch { mapTilesDownloader.download(bbox) }
+        mutex.withLock {
+            coroutineScope {
+                // all downloaders run concurrently
+                launch { notesDownloader.download(bbox) }
+                launch { mapDataDownloader.download(bbox) }
+                launch { mapTilesDownloader.download(bbox) }
+            }
         }
         putDownloadedAlready(tiles)
 
@@ -45,13 +51,13 @@ class Downloader @Inject constructor(
         Log.i(TAG, "Finished download ($bboxString) in ${seconds.format(1)}s")
     }
 
-    private suspend fun hasDownloadedAlready(tiles: TilesRect): Boolean {
+    private fun hasDownloadedAlready(tiles: TilesRect): Boolean {
         val freshTime = ApplicationConstants.REFRESH_DATA_AFTER
         val ignoreOlderThan = max(0, currentTimeMillis() - freshTime)
         return downloadedTilesDb.get(tiles, ignoreOlderThan).contains(DownloadedTilesType.ALL)
     }
 
-    private suspend fun putDownloadedAlready(tiles: TilesRect) {
+    private fun putDownloadedAlready(tiles: TilesRect) {
         downloadedTilesDb.put(tiles, DownloadedTilesType.ALL)
     }
 

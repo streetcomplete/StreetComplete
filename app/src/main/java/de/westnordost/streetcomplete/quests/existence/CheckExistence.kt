@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
+import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 import java.time.LocalDate
 import java.util.concurrent.FutureTask
 
@@ -31,8 +32,6 @@ class CheckExistence(
         ) or (
           (
             amenity = clock
-            or amenity = bench
-            or amenity = waste_basket
             or amenity = post_box
             or leisure = picnic_table
             or amenity = bbq
@@ -41,13 +40,24 @@ class CheckExistence(
             or amenity = ticket_validator
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
-            or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
-            or traffic_calming = table and !highway and !crossing
             or (highway = emergency_access_point or emergency = access_point) and ref
             or emergency = life_ring
             or emergency = phone
+            or (
+              man_made = surveillance and surveillance:type = camera and surveillance ~ outdoor|public
+              and !highway
+            )
           )
           and (${lastChecked(4.0)})
+        ) or (
+          (
+            amenity = bench
+            or amenity = waste_basket
+            or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
+            or traffic_calming = table and !highway and !crossing
+            or amenity = recycling and recycling_type = container
+          )
+          and (${lastChecked(6.0)})
         )) and access !~ no|private
     """.toElementFilterExpression()
     }
@@ -77,8 +87,7 @@ class CheckExistence(
             R.string.quest_existence_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: tags["ref"] ?: tags["operator"]
-        return arrayOfNotNull(name, featureName.value)
+        return arrayOfNotNull(getNameOrBrandOrOperatorOrRef(tags), featureName.value)
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
@@ -103,6 +112,6 @@ class CheckExistence(
         or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -$yearsAgo years" }}
     """.trimIndent()
 
-    private fun hasAnyName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+    private fun hasAnyName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
 }

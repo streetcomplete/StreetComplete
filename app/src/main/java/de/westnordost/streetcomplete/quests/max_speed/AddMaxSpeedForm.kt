@@ -140,7 +140,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private fun userSelectedUnusualSpeed(): Boolean {
         val speed = getSpeedFromInput() ?: return false
         val kmh = speed.toKmh()
-        return kmh > 140 || kmh > 20 && speed.toValue() % 5 != 0
+        return kmh > 140 || kmh > 20 && speed.toValue() % 5 != 0 || kmh < 10
     }
 
     private fun switchToAdvisorySpeedLimit() {

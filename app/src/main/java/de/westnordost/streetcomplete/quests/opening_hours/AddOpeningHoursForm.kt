@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
 
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
@@ -108,7 +107,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
 
     private fun onLoadInstanceState(savedInstanceState: Bundle) {
         openingHoursAdapter.rows = Json.decodeFromString(savedInstanceState.getString(OPENING_HOURS_DATA)!!)
-        isDisplayingPreviousOpeningHours = savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_HOURS)
+        setAsResurvey(savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_HOURS))
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

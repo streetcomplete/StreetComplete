@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+
 /** Every osm quest needs to be registered here.
  *
  * Could theoretically be done with Reflection, but that doesn't really work on Android
@@ -24,3 +26,6 @@ class QuestTypeRegistry(val all: List<QuestType<*>>) {
         return typeMap[typeName]
     }
 }
+
+fun QuestTypeRegistry.getVisible(visibleQuestTypeSource: VisibleQuestTypeSource): List<QuestType<*>> =
+    all.filter { visibleQuestTypeSource.isVisible(it) }

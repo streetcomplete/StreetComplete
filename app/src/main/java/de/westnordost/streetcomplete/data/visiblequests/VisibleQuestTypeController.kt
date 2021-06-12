@@ -17,20 +17,13 @@ import javax.inject.Singleton
 
     private val listeners: MutableList<VisibleQuestTypeSource.Listener> = CopyOnWriteArrayList()
 
-    @Synchronized override fun isVisible(questType: QuestType<*>): Boolean {
+    override fun isVisible(questType: QuestType<*>): Boolean {
         val questTypeName = questType::class.simpleName!!
         return cache[questTypeName] ?: (questType.defaultDisabledMessage <= 0)
     }
 
-    @Synchronized fun setVisible(questType: QuestType<*>, visible: Boolean) {
-        val questTypeName = questType::class.simpleName!!
-        db.put(questTypeName, visible)
-        cache[questTypeName] = visible
-        onQuestTypeVisibilitiesChanged()
-    }
-
-    @Synchronized fun setAllVisible(questTypes: Collection<QuestType<*>>, visible: Boolean) {
-        for (questType in questTypes) {
+    fun setVisible(questType: QuestType<*>, visible: Boolean) {
+        synchronized(this) {
             val questTypeName = questType::class.simpleName!!
             db.put(questTypeName, visible)
             cache[questTypeName] = visible
@@ -38,9 +31,22 @@ import javax.inject.Singleton
         onQuestTypeVisibilitiesChanged()
     }
 
-    @Synchronized fun clear() {
-        db.clear()
-        cache.clear()
+    fun setAllVisible(questTypes: Collection<QuestType<*>>, visible: Boolean) {
+        synchronized(this) {
+            for (questType in questTypes) {
+                val questTypeName = questType::class.simpleName!!
+                db.put(questTypeName, visible)
+                cache[questTypeName] = visible
+            }
+        }
+        onQuestTypeVisibilitiesChanged()
+    }
+
+    fun clear() {
+        synchronized(this) {
+            db.clear()
+            cache.clear()
+        }
         onQuestTypeVisibilitiesChanged()
     }
 

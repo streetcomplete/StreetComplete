@@ -23,7 +23,7 @@ import javax.inject.Singleton
     /* ----------------------- Unsynced edits and syncing them -------------------------------- */
 
     /** Add new unsynced edit to the to-be-uploaded queue */
-    @Synchronized fun add(
+    fun add(
         questType: OsmElementQuestType<*>,
         element: Element,
         geometry: ElementGeometry,
@@ -34,13 +34,15 @@ import javax.inject.Singleton
         if (action is UpdateElementTagsAction) {
             /* if there is an unsynced UpdateElementTagsAction that is the exact reverse of what
                shall be added now, instead of adding that, delete that reverse edit */
-            val reverseEdit = getAllUnsynced().asReversed().find {
-                it.elementType == element.type && it.elementId == element.id
-                it.action is UpdateElementTagsAction && it.action.isReverseOf(action)
-            }
-            if (reverseEdit != null) {
-                delete(reverseEdit)
-                return
+            synchronized(this) {
+                val reverseEdit = getAllUnsynced().asReversed().find {
+                    it.elementType == element.type && it.elementId == element.id
+                    it.action is UpdateElementTagsAction && it.action.isReverseOf(action)
+                }
+                if (reverseEdit != null) {
+                    delete(reverseEdit)
+                    return
+                }
             }
         }
 
@@ -66,11 +68,15 @@ import javax.inject.Singleton
     /** Delete old synced (aka uploaded) edits older than the given timestamp. Used to clear
      *  the undo history */
     fun deleteSyncedOlderThan(timestamp: Long): Int {
-        val edits = editsDB.getSyncedOlderThan(timestamp)
-        if (edits.isEmpty()) return 0
-        val result = editsDB.deleteAll(edits.map { it.id })
-        onDeletedEdits(edits)
-        return result
+        val deletedCount: Int
+        val deleteEdits: List<ElementEdit>
+        synchronized(this) {
+            deleteEdits = editsDB.getSyncedOlderThan(timestamp)
+            if (deleteEdits.isEmpty()) return 0
+            deletedCount = editsDB.deleteAll(deleteEdits.map { it.id })
+        }
+        onDeletedEdits(deleteEdits)
+        return deletedCount
     }
 
     override fun getUnsyncedCount(): Int =
@@ -81,26 +87,31 @@ import javax.inject.Singleton
         return unsynced.filter { it !is IsRevertAction }.size - unsynced.filter { it is IsRevertAction }.size
     }
 
-    @Synchronized fun synced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
-        updateElementIds(elementUpdates.idUpdates)
-        markSynced(edit)
+    fun synced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
+        val syncSuccess: Boolean
+        synchronized(this) {
+            for (update in elementUpdates.idUpdates) {
+                editsDB.updateElementId(update.elementType, update.oldElementId, update.newElementId)
+            }
+            syncSuccess = editsDB.markSynced(edit.id)
+        }
+        if (syncSuccess) onSyncedEdit(edit)
+
+        /* must be deleted after the callback because the callback might want to get the id provider
+           for that edit */
+        elementIdProviderDB.delete(edit.id)
     }
 
-    @Synchronized fun syncFailed(edit: ElementEdit) {
+    fun syncFailed(edit: ElementEdit) {
         delete(edit)
     }
 
-    private fun updateElementIds(updates: Collection<ElementIdUpdate>) {
-        for (update in updates) {
-            editsDB.updateElementId(update.elementType, update.oldElementId, update.newElementId)
-        }
-    }
 
     /* ----------------------- Undoable edits and undoing them -------------------------------- */
 
     /** Undo edit with the given id. If unsynced yet, will delete the edit if it is undoable. If
      *  already synced, will add a revert of that edit as a new edit, if possible */
-    @Synchronized fun undo(edit: ElementEdit): Boolean {
+    fun undo(edit: ElementEdit): Boolean {
         // already uploaded
         if (edit.isSynced) {
             val action = edit.action
@@ -120,37 +131,32 @@ import javax.inject.Singleton
     /* ------------------------------------ add/sync/delete ------------------------------------- */
 
     private fun add(edit: ElementEdit) {
-        editsDB.add(edit)
-        val id = edit.id
-        val createdElementsCount = edit.action.newElementsCount
-        elementIdProviderDB.assign(
-            id,
-            createdElementsCount.nodes,
-            createdElementsCount.ways,
-            createdElementsCount.relations
-        )
+        synchronized(this) {
+            editsDB.add(edit)
+            val id = edit.id
+            val createdElementsCount = edit.action.newElementsCount
+            elementIdProviderDB.assign(
+                id,
+                createdElementsCount.nodes,
+                createdElementsCount.ways,
+                createdElementsCount.relations
+            )
+        }
         onAddedEdit(edit)
     }
 
-
-    private fun markSynced(edit: ElementEdit) {
-        val id = edit.id
-        if (editsDB.markSynced(id)) {
-            onSyncedEdit(edit)
-        }
-        /* must be deleted after the callback because the callback might want to get the id provider
-           for that edit */
-        elementIdProviderDB.delete(id)
-    }
-
     private fun delete(edit: ElementEdit) {
-        val edits = ArrayList<ElementEdit>()
-        edits.addAll(getEditsBasedOnElementsCreatedByEdit(edit))
-        edits.add(edit)
+        val edits = mutableListOf<ElementEdit>()
+        val ids: List<Long>
+        synchronized(this) {
+            edits.addAll(getEditsBasedOnElementsCreatedByEdit(edit))
+            edits.add(edit)
 
-        val ids = edits.map { it.id }
+            ids = edits.map { it.id }
 
-        editsDB.deleteAll(ids)
+            editsDB.deleteAll(ids)
+        }
+
         onDeletedEdits(edits)
 
         /* must be deleted after the callback because the callback might want to get the id provider
@@ -175,10 +181,10 @@ import javax.inject.Singleton
     /* ------------------------------------ Listeners ------------------------------------------- */
 
     override fun addListener(listener: ElementEditsSource.Listener) {
-        this.listeners.add(listener)
+        listeners.add(listener)
     }
     override fun removeListener(listener: ElementEditsSource.Listener) {
-        this.listeners.remove(listener)
+        listeners.remove(listener)
     }
 
     private fun onAddedEdit(edit: ElementEdit) {

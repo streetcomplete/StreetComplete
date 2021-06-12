@@ -244,7 +244,7 @@
 &lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 For det første skal du forstå at med denne app laver du rigtige og direkte bidrag til OpenStreetMap.&lt;br/&gt;
-Alt hvad du bidrager med i denne app bliver direkte tilføjet til kortet, der er ingen tredjepart mellem appen og OSMs infrastruktur, som der f.eks. er i &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; og &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Alt hvad du bidrager med i denne app bliver direkte tilføjet til kortet, der er ingen tredjepart mellem appen og OSMs infrastruktur.
 &lt;/p&gt;
 &lt;p&gt;
 Redigering af OpenStreetMap anonymt er ikke muligt, så alle dine ændringer sker via din OSM konto. Dette betyder at dato, indhold og implicit lokationen af dine ændringer er synlige på openstreetmaps hjemmeside og kan attribueres din konto.
@@ -652,7 +652,7 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="quest_fireHydrant_type_pond">"Dam"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Se &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;den fulde liste på GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Se &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;den fulde liste på GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Se &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekt på POEditor&lt;/a&gt; for en komplet liste."</string>
@@ -828,17 +828,11 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="quest_crossing_type_title">"Hvilken type overgang er dette?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Overgang med traffiklys"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Overgang uden markering på vejen"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Fortryd"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Fortryd følgende sidste svar?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangosteen"</string>
@@ -950,9 +944,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="pref_category_advanced">"Avanceret"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Opgavevalg"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Aktiveret"</string>
 
     <!-- Fuzzy -->
@@ -1051,18 +1042,6 @@ Delvist betyder at kørestolsbrugeren kan bruge toilettet men der mangler håndt
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Du kan efterlade en note for at fortælle andre kortlæggere om et problem her. Juster notens position ved at flytte kortet:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Ugyldiggør opgavelager."</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Brugbart hvis du tror at nogle opgaver er forældede"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Ugyldiggør"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Ved at ugyldiggøre lageret vil opgaver blive opdateret næste gang de hentes. Opgavelageret bliver ugyldiggjort automatisk efter en uge og med det samme når en opgave du løste allerede var løst af en anden."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Normalt ser det sådan ud:"</string>
@@ -1315,9 +1294,6 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Dobbelthus"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"par af enfamiliehuse"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"en lineær række af lignende enfamiliehuse"</string>
@@ -2111,11 +2087,10 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_parkingType_street_side">"Parkering lige ved siden ad vejen"</string>
     <string name="quest_parkingType_lane">"Parkering på vejen"</string>
     <string name="quest_existence_title">"Er dette stadig her? (%s)"</string>
-    <string name="quest_existence_name_title">"Er  %1$s stadigvæk her? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Er %1$s (%2$s) stadigvæk her?"</string>
     <string name="quest_tracktype_grade2a">"Fast, men ikke asfalteret"</string>
     <string name="quest_tracktype_grade3a">"Mest fast underlag"</string>
     <string name="quest_generic_answer_does_not_exist">"Det eksisterer ikke..."</string>
-    <string name="osm_element_gone_warning">"Advarsel: denne handling kan ikke fortrydes!"</string>
     <string name="osm_element_gone_description">"Er du sikker på at dette ikke findes, heller ikke på en lokalitet i nærheden? Når du er i tvivl så er det bedre kun at efterlade en note i stedet for."</string>
     <string name="osm_element_gone_confirmation">"Dette sted finde ikke"</string>
     <string name="leave_note">"Efterlad note"</string>
@@ -2162,4 +2137,57 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="team_mode_choose_color">"Nu kan alle i din gruppe vælge en unik farve:"</string>
     <string name="team_mode_active">"Holdtilstand er aktiv"</string>
     <string name="team_mode_deactivated">"Holdtilstand er deaktiveret"</string>
+    <string name="quest_pitchLit_title">"Er dette sportsområde oplyst?"</string>
+    <string name="quest_pitchLit_title_track">"Er denne sportsbane oplyst?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Fodgængerovergang er styret af trafiklys"</string>
+    <string name="undo_last">"Fortryd sidste redigering"</string>
+    <string name="show_edit_history">"Vis redigeringshistorie"</string>
+    <string name="undo_confirm_title2">"Fortryd denne redigering?"</string>
+    <string name="synced">"Synkroniseret"</string>
+    <string name="toast_undo_unavailable">"Denne redigering er allerede synkroniseret og kan ikke fortrydes"</string>
+    <string name="quest_cycleway_value_separate">"Vis separat på kort"</string>
+    <string name="created_note_action_title">"Lavede en note"</string>
+    <string name="commented_note_action_title">"Kommenteret note"</string>
+    <string name="hid_action_description">"Du skjulte det"</string>
+    <string name="split_way_action_description">"Du delte vejen op"</string>
+    <string name="deleted_poi_action_description">"Du slettede det"</string>
+    <string name="added_tag_action_title">"Tilføjede %s"</string>
+    <string name="removed_tag_action_title">"Fjernede %s"</string>
+    <string name="changed_tag_action_title">"Opdaterede til %s"</string>
+    <string name="pref_title_delete_cache">"Tømte cachelageret"</string>
+    <string name="pref_title_delete_cache_summary">"Hvis du tror, ​​at nogle data er forældede"</string>
+    <string name="delete_confirmation">"Slet"</string>
+    <string name="delete_cache_dialog_message">"Slet alle downloadet kortdata inkl. opgaver? Data er genopdateret efter %1$s  dage og ubrugte data er slettet  automatisk efter %2$s dage."</string>
+    <string name="quest_shop_type_title">"Hvilken slags butik er %s?"</string>
+    <string name="quest_shop_type_title_no_name">"Hvilken slags butik er dette?"</string>
+    <string name="pref_background_type_select">"Vælg kortbaggrundstype"</string>
+    <string name="background_type_map">"Kortbaggrund"</string>
+    <string name="background_type_aerial_esri">"Luftfoto (af Esri)"</string>
+    <string name="quest_barrier_type_title">"Hvilken type barriere er dette?"</string>
+    <string name="quest_barrier_type_gate">"Låge"</string>
+    <string name="quest_barrier_type_lift_gate">"Bomport"</string>
+    <string name="quest_barrier_type_bollard">"Pullert(er)"</string>
+    <string name="quest_barrier_type_chain">"Kæde"</string>
+    <string name="quest_barrier_type_rope">"Reb"</string>
+    <string name="quest_barrier_type_wire_gate">"Flytbar trådhegnssektion"</string>
+    <string name="quest_barrier_type_cattle_grid">"Gitter som blokerer husdyr fra at gå over"</string>
+    <string name="quest_barrier_type_block">"Stor immobil genstand"</string>
+    <string name="quest_barrier_jersey_barrier">"Betonklods"</string>
+    <string name="quest_barrier_type_log">"Log"</string>
+    <string name="quest_barrier_type_kerb">"Kantsten"</string>
+    <string name="quest_barrier_type_height_restrictor">"Højde barriere"</string>
+    <string name="quest_barrier_full_height_turnstile">"Fuld højde drejesvingbarriere"</string>
+    <string name="quest_barrier_type_turnstile">"Drejesvingbarriere"</string>
+    <string name="quest_barrier_type_passage">"Passage gennem mur/hegn/osv."</string>
+    <string name="quest_barrier_type_debris_pile">"Bunke af affald"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Stente (gennem mur)"</string>
+    <string name="quest_barrier_type_stile_ladder">"Stente (stige)"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Cykelchikane"</string>
+    <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>
+    <string name="quest_barrier_type_stepover">"Gå over stente"</string>
+    <string name="quest_barrier_type_swing_gate">"Vandret bjælke"</string>
+    <string name="quest_policeType_title">"Hvilken slags politistation er dette?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Konverteret til kissing gate"</string>
+    <string name="quest_stile_type_title">"Hvilken slags stente er dette?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"Enkelt familierækkehuse"</string>
 </resources>

@@ -14,6 +14,7 @@ import androidx.core.animation.addListener
 import com.mapzen.tangram.CameraUpdateFactory
 import com.mapzen.tangram.MapController
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.ktx.runImmediate
 import kotlin.math.PI
 
 /**
@@ -83,7 +84,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     }
 
     @AnyThread fun cancelAllCameraAnimations() {
-        mainHandler.post {
+        mainHandler.runImmediate {
             synchronized(currentAnimations) {
                 for (animator in currentAnimations.values.toSet()) {
                     animator.cancel()
@@ -157,7 +158,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
             animator.addUpdateListener(this::animate)
             lastAnimatorEndTime = endTime
         }
-        mainHandler.post { animator.start() }
+        mainHandler.runImmediate { animator.start() }
     }
 
     private fun pullCameraPositionFromController() {
@@ -182,7 +183,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
             animator = currentAnimations[key]
             animator?.let { unassignAnimation(it) }
         }
-        mainHandler.post { animator?.cancel() }
+        mainHandler.runImmediate { animator?.cancel() }
     }
 
     @AnyThread private fun unassignAnimation(animator: Animator) {

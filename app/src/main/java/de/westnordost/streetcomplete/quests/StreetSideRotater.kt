@@ -5,6 +5,7 @@ import android.os.Looper
 import android.view.View
 import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.ktx.runImmediate
 import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.StreetRotateable
 
@@ -14,14 +15,10 @@ class StreetSideRotater(
     geometry: ElementPolylinesGeometry
 ) {
     private val wayOrientationAtCenter = geometry.getOrientationAtCenterLineInDegrees()
-    private val uiHandler = Handler(Looper.getMainLooper())
+    private val mainHandler = Handler(Looper.getMainLooper())
 
     @AnyThread fun onMapOrientation(rotation: Float, tilt: Float) {
-        if (uiHandler.looper.thread == Thread.currentThread()) {
-            applyOrientation(rotation, tilt)
-        } else {
-            uiHandler.post { applyOrientation(rotation, tilt) }
-        }
+        mainHandler.runImmediate { applyOrientation(rotation, tilt) }
     }
 
     private fun applyOrientation(rotation: Float, tilt: Float) {

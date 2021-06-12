@@ -24,9 +24,8 @@
 
         <Preference
             android:key="quests"
-            android:title="@string/pref_title_quests"
-            android:widgetLayout="@layout/widget_image_next"
-            />
+            android:title="@string/pref_title_quests2"
+            android:widgetLayout="@layout/widget_image_next" />
 
         <ListPreference
             android:key="quests.resurveyIntervals"
@@ -62,6 +61,7 @@
             android:persistent="true"
             />
 
+    <!--
         <ListPreference
             android:key="theme.background_type"
             android:title="@string/pref_background_type_select"
@@ -71,6 +71,7 @@
             android:entryValues="@array/pref_entryvalues_background_type_select"
             android:persistent="true"
             />
+    -->
     </PreferenceCategory>
 
     <PreferenceCategory

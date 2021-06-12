@@ -68,14 +68,10 @@ import javax.inject.Singleton
         teamModeQuestFilter.addListener(teamModeQuestFilterListener)
     }
 
-    /** Get count of all visible quests in given bounding box */
-    fun getCount(bbox: BoundingBox): Int =
-        osmQuestSource.getAllInBBoxCount(bbox)
-
     /** Retrieve all visible quests in the given bounding box from local database */
     fun getAllVisible(bbox: BoundingBox): List<Quest> {
-        val visibleQuestTypeNames = questTypeRegistry.all
-            .filter { visibleQuestTypeSource.isVisible(it) }
+        val visibleQuestTypeNames = questTypeRegistry
+            .getVisible(visibleQuestTypeSource)
             .map { it::class.simpleName!! }
         if (visibleQuestTypeNames.isEmpty()) return listOf()
 

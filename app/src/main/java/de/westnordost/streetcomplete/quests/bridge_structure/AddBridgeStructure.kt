@@ -7,9 +7,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>() {
 
     override val elementFilter = "ways with man_made = bridge and !bridge:structure and !bridge:movable"
-    override val icon = R.drawable.ic_quest_bridge
     override val commitMessage = "Add bridge structures"
     override val wikiLink = "Key:bridge:structure"
+    override val icon = R.drawable.ic_quest_bridge
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bridge_structure_title
 

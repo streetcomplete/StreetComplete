@@ -5,12 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    android:translationX="-100dp"
     android:elevation="@dimen/speech_bubble_elevation">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/editHistoryList"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

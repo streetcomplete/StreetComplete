@@ -8,6 +8,7 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.ktx.format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
 import java.lang.System.currentTimeMillis
 
 /** Takes care of downloading notes and referenced avatar pictures into persistent storage */
@@ -25,6 +26,8 @@ class NotesDownloader @Inject constructor(
 
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Downloaded ${notes.size} notes in ${seconds.format(1)}s")
+
+        yield()
 
         noteController.putAllForBBox(bbox, notes)
     }

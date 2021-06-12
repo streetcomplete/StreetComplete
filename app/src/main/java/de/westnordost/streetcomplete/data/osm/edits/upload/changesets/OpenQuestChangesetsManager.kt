@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import android.util.Log
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
-
-import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.streetcomplete.ApplicationConstants.QUESTTYPE_TAG_KEY
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
-import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
 import java.util.Locale
 import javax.inject.Inject
@@ -20,7 +19,7 @@ class OpenQuestChangesetsManager @Inject constructor(
     private val changesetAutoCloser: ChangesetAutoCloser,
     private val lastEditTimeStore: LastEditTimeStore
 ) {
-    fun getOrCreateChangeset(questType: OsmElementQuestType<*>, source: String): Long {
+    fun getOrCreateChangeset(questType: OsmElementQuestType<*>, source: String): Long  = synchronized(this) {
         val openChangeset = openChangesetsDB.get(questType.name, source)
         return if (openChangeset?.changesetId != null) {
             openChangeset.changesetId
@@ -29,7 +28,7 @@ class OpenQuestChangesetsManager @Inject constructor(
         }
     }
 
-    fun createChangeset(questType: OsmElementQuestType<*>, source: String): Long {
+    fun createChangeset(questType: OsmElementQuestType<*>, source: String): Long = synchronized(this) {
         val changesetId = mapDataApi.openChangeset(createChangesetTags(questType, source))
         openChangesetsDB.put(OpenChangeset(questType.name, source, changesetId))
         changesetAutoCloser.enqueue(CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
@@ -37,7 +36,7 @@ class OpenQuestChangesetsManager @Inject constructor(
         return changesetId
     }
 
-    @Synchronized fun closeOldChangesets() {
+    fun closeOldChangesets() = synchronized(this) {
         val timePassed = System.currentTimeMillis() - lastEditTimeStore.get()
         if (timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
 
@@ -45,7 +44,7 @@ class OpenQuestChangesetsManager @Inject constructor(
             try {
                 mapDataApi.closeChangeset(info.changesetId)
                 Log.i(TAG, "Closed changeset #${info.changesetId}")
-            } catch (e: OsmConflictException) {
+            } catch (e: ConflictException) {
                 Log.w(TAG, "Couldn't close changeset #${info.changesetId} because it has already been closed")
             } finally {
                 openChangesetsDB.delete(info.questType, info.source)

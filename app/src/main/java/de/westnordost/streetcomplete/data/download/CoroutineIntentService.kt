@@ -21,12 +21,11 @@ abstract class CoroutineIntentService(name: String) : Service() {
     private var currentJob: Job? = null
     private val mutex = Mutex()
 
-    open val cancelPreviousWorkOnNewIntent: Boolean = false
-
     override fun onStart(intent: Intent?, startId: Int) {
+        val cancelPreviousIntent = intent?.getBooleanExtra(ARG_PREVIOUS_CANCEL, false) ?: false
         scope.launch {
             mutex.withLock {
-                if (cancelPreviousWorkOnNewIntent) currentJob?.cancel()
+                if (cancelPreviousIntent) currentJob?.cancel()
                 currentJob?.join()
                 currentJob = scope.launch {
                     onHandleIntent(intent)
@@ -76,5 +75,9 @@ abstract class CoroutineIntentService(name: String) : Service() {
 
     fun cancel() {
         currentJob?.cancel()
+    }
+
+    companion object {
+        const val ARG_PREVIOUS_CANCEL = "cancelPrevious"
     }
 }

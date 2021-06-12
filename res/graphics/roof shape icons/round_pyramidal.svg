@@ -12,12 +12,12 @@
    <stop stop-color="#e44848" offset="1"/>
   </linearGradient>
  </defs>
- <g>
-  <path d="m30.483 66.103v27.4l-23.29-23.29-4.1e-6 -24.66" fill="#f2eeee" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
-  <path d="m30.483 66.103 57.54-19.18v27.4l-57.54 19.18v-27.4" fill="#e0d8d8" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
-  <path d="m4.4525 42.813c4.11-13.7 43.84-26.03 43.84-26.03s-17.81 36.99-19.18 50.69z" fill="url(#linearGradient5716)" fill-rule="evenodd" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
-  <path d="m89.393 44.183c-2.74-5.48-23.29-21.92-23.29-21.92-4.11-4.11-13.7-5.48-17.81-5.4802 8.22 2.7403 36.99 21.92 41.1 27.4z" fill="url(#linearGradient5766)" fill-rule="evenodd" stroke="#a00"/>
-  <path d="m90.763 46.923c-4.11-13.7-42.47-30.14-42.47-30.14s-17.81 36.99-19.18 50.69z" fill="url(#linearGradient5724)" fill-rule="evenodd" stroke="#a00" stroke-linecap="square" stroke-linejoin="bevel"/>
-  <path d="m4.4525 42.813 61.65-20.55 24.66 24.66" fill="none" stroke="#a00" stroke-dasharray="2, 2" stroke-opacity=".50196"/>
+ <g stroke-width="2">
+  <path d="m30.483 66.103v27.4l-23.29-23.29-4.1e-6 -24.66" fill="#f2eeee" stroke="#b19a9a" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="m30.483 66.103 57.54-19.18v27.4l-57.54 19.18v-27.4" fill="#e0d8d8" stroke="#b19a9a" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="m4.4525 42.813c4.11-13.7 43.84-26.03 43.84-26.03s-17.81 36.99-19.18 50.69z" fill="url(#linearGradient5716)" stroke="#b82e2e" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="m89.393 44.183c-2.74-5.48-23.29-21.92-23.29-21.92-4.11-4.11-13.7-5.48-17.81-5.4802 8.22 2.7403 36.99 21.92 41.1 27.4z" fill="url(#linearGradient5766)" stroke="#b82e2e"/>
+  <path d="m90.763 46.923c-4.11-13.7-42.47-30.14-42.47-30.14s-17.81 36.99-19.18 50.69z" fill="url(#linearGradient5724)" stroke="#b82e2e" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="m4.4525 42.813 61.65-20.55 24.66 24.66" fill="none" stroke="#b82e2e" stroke-opacity=".50196"/>
  </g>
 </svg>

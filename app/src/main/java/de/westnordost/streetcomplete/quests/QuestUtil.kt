@@ -62,3 +62,20 @@ private fun findTypeName(
 
 private fun getQuestTitleResId(questType: QuestType<*>, element: Element?) =
     (questType as? OsmElementQuestType<*>)?.getTitle(element?.tags ?: emptyMap()) ?: questType.title
+
+fun getNameOrBrandOrOperatorOrRef(tags: Map<String, String>): String? {
+    val name = tags["name"]
+    val brand = tags["brand"]
+    val ref = tags["ref"]
+    val operator = tags["operator"]
+
+    return when {
+        name != null -> name
+        brand != null -> brand
+        // special special: If both operator and ref are available, show them both
+        operator != null && ref != null -> "$operator $ref"
+        operator != null -> operator
+        ref != null -> ref
+        else -> null
+    }
+}

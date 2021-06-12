@@ -24,13 +24,22 @@ class AvatarsDownloader @Inject constructor(
 
         val time = System.currentTimeMillis()
         for (userId in userIds) {
-            val avatarUrl = userApi.get(userId)?.profileImageUrl
+            val avatarUrl = getProfileImageUrl(userId)
             if (avatarUrl != null) {
                 download(userId, avatarUrl)
             }
         }
         val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds.format(1)}s")
+    }
+
+    private fun getProfileImageUrl(userId: Long): String? {
+        return try {
+            userApi.get(userId)?.profileImageUrl
+        } catch (e : Exception) {
+            Log.w(TAG, "Unable to query info for user id $userId")
+            null
+        }
     }
 
     /** download avatar for the given user and a known avatar url */

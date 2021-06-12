@@ -44,65 +44,72 @@ import javax.inject.Singleton
 
     private val mapDataListener = object : MapDataController.Listener {
 
-        @Synchronized override fun onUpdated(updated: MutableMapDataWithGeometry, deleted: Collection<ElementKey>) {
-            rebuildLocalChanges()
-
+        override fun onUpdated(updated: MutableMapDataWithGeometry, deleted: Collection<ElementKey>) {
             val modifiedElements = ArrayList<Pair<Element, ElementGeometry?>>()
             val modifiedDeleted = ArrayList<ElementKey>()
-            for (element in updated) {
-                val key = ElementKey(element.type, element.id)
-                // an element contained in the update that was deleted by an edit shall be deleted
-                if (deletedElements.contains(key)) {
-                    modifiedDeleted.add(key)
-                }
-                // otherwise, update if it was modified at all
-                else {
-                    val modifiedElement = updatedElements[key] ?: element
-                    val modifiedGeometry = updatedGeometries[key] ?: updated.getGeometry(key.type, key.id)
-                    modifiedElements.add(Pair(modifiedElement, modifiedGeometry))
-                }
-            }
+            synchronized(this) {
+                rebuildLocalChanges()
 
-            for (key in deleted) {
-                val modifiedElement = updatedElements[key]
-                // en element that was deleted shall not be deleted but instead added to the updates if it was updated by an edit
-                if (modifiedElement != null) {
-                    modifiedElements.add(Pair(modifiedElement, updatedGeometries[key]))
+                for (element in updated) {
+                    val key = ElementKey(element.type, element.id)
+                    // an element contained in the update that was deleted by an edit shall be deleted
+                    if (deletedElements.contains(key)) {
+                        modifiedDeleted.add(key)
+                    }
+                    // otherwise, update if it was modified at all
+                    else {
+                        val modifiedElement = updatedElements[key] ?: element
+                        val modifiedGeometry = updatedGeometries[key] ?: updated.getGeometry(key.type, key.id)
+                        modifiedElements.add(Pair(modifiedElement, modifiedGeometry))
+                    }
                 }
-                // otherwise, pass it through
-                else {
-                    modifiedDeleted.add(key)
-                }
-            }
 
-            for ((element, geometry) in modifiedElements) {
-                updated.put(element, geometry)
-            }
-            for (key in modifiedDeleted) {
-                updated.remove(key.type, key.id)
+                for (key in deleted) {
+                    val modifiedElement = updatedElements[key]
+                    // en element that was deleted shall not be deleted but instead added to the updates if it was updated by an edit
+                    if (modifiedElement != null) {
+                        modifiedElements.add(Pair(modifiedElement, updatedGeometries[key]))
+                    }
+                    // otherwise, pass it through
+                    else {
+                        modifiedDeleted.add(key)
+                    }
+                }
+
+                for ((element, geometry) in modifiedElements) {
+                    updated.put(element, geometry)
+                }
+                for (key in modifiedDeleted) {
+                    updated.remove(key.type, key.id)
+                }
             }
 
             callOnUpdated(updated = updated, deleted = modifiedDeleted)
         }
 
-        @Synchronized override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
-            rebuildLocalChanges()
+        override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
+            synchronized(this) {
+                rebuildLocalChanges()
+                modifyBBoxMapData(bbox, mapDataWithGeometry)
+            }
 
-            modifyBBoxMapData(bbox, mapDataWithGeometry)
             callOnReplacedForBBox(bbox, mapDataWithGeometry)
         }
     }
 
     private val elementEditsListener = object : ElementEditsSource.Listener {
-        @Synchronized override fun onAddedEdit(edit: ElementEdit) {
-            val mapDataUpdates = applyEdit(edit) ?: return
-
+        override fun onAddedEdit(edit: ElementEdit) {
             val mapData = MutableMapDataWithGeometry()
-            for (element in mapDataUpdates.updated) {
-                mapData.put(element, getGeometry(element.type, element.id))
+            val elementsToDelete: Collection<ElementKey>
+            synchronized(this) {
+                val mapDataUpdates = applyEdit(edit) ?: return
+                elementsToDelete = mapDataUpdates.deleted
+                for (element in mapDataUpdates.updated) {
+                    mapData.put(element, getGeometry(element.type, element.id))
+                }
             }
 
-            callOnUpdated(updated = mapData, deleted = mapDataUpdates.deleted)
+            callOnUpdated(updated = mapData, deleted = elementsToDelete)
         }
 
         override fun onSyncedEdit(edit: ElementEdit) {
@@ -111,19 +118,22 @@ import javax.inject.Singleton
                in MapDataSource.Listener any moment now */
         }
 
-        @Synchronized override fun onDeletedEdits(edits: List<ElementEdit>) {
-            rebuildLocalChanges()
-
-            val elementsToDelete = edits.flatMap { elementEditsController.getIdProvider(it.id).getAll() }.toMutableList()
-
+        override fun onDeletedEdits(edits: List<ElementEdit>) {
             val mapData = MutableMapDataWithGeometry()
-            for (edit in edits) {
-                val element = get(edit.elementType, edit.elementId)
-                if (element != null) {
-                    mapData.put(element, getGeometry(edit.elementType, edit.elementId))
-                } else {
-                    // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
-                    elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
+            val elementsToDelete: MutableList<ElementKey>
+            synchronized(this) {
+                rebuildLocalChanges()
+
+                elementsToDelete = edits.flatMap { elementEditsController.getIdProvider(it.id).getAll() }.toMutableList()
+
+                for (edit in edits) {
+                    val element = get(edit.elementType, edit.elementId)
+                    if (element != null) {
+                        mapData.put(element, getGeometry(edit.elementType, edit.elementId))
+                    } else {
+                        // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
+                        elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
+                    }
                 }
             }
 
@@ -137,14 +147,14 @@ import javax.inject.Singleton
         elementEditsController.addListener(elementEditsListener)
     }
 
-    @Synchronized fun get(type: ElementType, id: Long): Element? {
+    fun get(type: ElementType, id: Long): Element? = synchronized(this) {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
         return updatedElements[key] ?: mapDataController.get(type, id)
     }
 
-    @Synchronized fun getGeometry(type: ElementType, id: Long): ElementGeometry? {
+    fun getGeometry(type: ElementType, id: Long): ElementGeometry? = synchronized(this) {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
@@ -155,7 +165,7 @@ import javax.inject.Singleton
         }
     }
 
-    @Synchronized fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
+    fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> = synchronized(this) {
         val originalKeys = keys.filter { !deletedElements.contains(it) && !updatedGeometries.containsKey(it) }
         val updatedGeometries = keys.mapNotNull { key ->
             updatedGeometries[key]?.let { ElementGeometryEntry(key.type, key.id, it) }
@@ -164,7 +174,7 @@ import javax.inject.Singleton
         return updatedGeometries + originalGeometries
     }
 
-    @Synchronized fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry {
+    fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry = synchronized(this) {
         val mapDataWithGeometry = mapDataController.getMapDataWithGeometry(bbox)
         modifyBBoxMapData(bbox, mapDataWithGeometry)
         return mapDataWithGeometry
@@ -176,14 +186,14 @@ import javax.inject.Singleton
     override fun getWay(id: Long): Way? = get(WAY, id) as? Way
     override fun getRelation(id: Long): Relation? = get(RELATION, id) as? Relation
 
-    @Synchronized override fun getWayComplete(id: Long): MapData? {
+    override fun getWayComplete(id: Long): MapData? = synchronized(this) {
         val way = getWay(id) ?: return null
         val mapData = getWayElements(way) ?: return null
         mapData.addAll(listOf(way))
         return mapData
     }
 
-    @Synchronized private fun getWayElements(way: Way): MutableMapData? {
+    private fun getWayElements(way: Way): MutableMapData? = synchronized(this) {
         val ids = way.nodeIds.toSet()
         val nodes = getNodes(ids)
 
@@ -193,7 +203,7 @@ import javax.inject.Singleton
         return MutableMapData(nodes)
     }
 
-    @Synchronized private fun getNodes(ids: Set<Long>): Collection<Node> {
+    private fun getNodes(ids: Set<Long>): Collection<Node> = synchronized(this) {
         val nodes = mapDataController.getNodes(ids)
         val nodesById = HashMap<Long, Node>()
         nodes.associateByTo(nodesById) { it.id }
@@ -214,14 +224,14 @@ import javax.inject.Singleton
         return nodesById.values
     }
 
-    @Synchronized override fun getRelationComplete(id: Long): MapData? {
+    override fun getRelationComplete(id: Long): MapData? = synchronized(this) {
         val relation = getRelation(id) ?: return null
         val mapData = getRelationElements(relation)
         mapData.addAll(listOf(relation))
         return mapData
     }
 
-    @Synchronized private fun getRelationElements(relation: Relation): MutableMapData {
+    private fun getRelationElements(relation: Relation): MutableMapData = synchronized(this) {
         val elements = ArrayList<Element>()
         for (member in relation.members) {
             /* for way members, also get their nodes */
@@ -244,7 +254,7 @@ import javax.inject.Singleton
         return MutableMapData(elements)
     }
 
-    @Synchronized override fun getWaysForNode(id: Long): Collection<Way> {
+    override fun getWaysForNode(id: Long): Collection<Way> = synchronized(this) {
         val waysById = HashMap<Long, Way>()
         mapDataController.getWaysForNode(id).associateByTo(waysById) { it.id }
 
@@ -276,7 +286,7 @@ import javax.inject.Singleton
 
     override fun getRelationsForRelation(id: Long): Collection<Relation> = getRelationsForElement(RELATION, id)
 
-    @Synchronized fun getRelationsForElement(type: ElementType, id: Long): Collection<Relation> {
+    fun getRelationsForElement(type: ElementType, id: Long): Collection<Relation> = synchronized(this) {
         val relationsById = HashMap<Long, Relation>()
         val relations = when(type) {
             NODE -> mapDataController.getRelationsForNode(id)
@@ -309,7 +319,7 @@ import javax.inject.Singleton
 
     /* ------------------------------------------------------------------------------------------ */
 
-    private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) {
+    private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) = synchronized(this) {
         for ((key, geometry) in updatedGeometries) {
             // add the modified data if it is in the bbox
             if (geometry != null && geometry.getBounds().intersect(bbox)) {
@@ -329,7 +339,7 @@ import javax.inject.Singleton
         }
     }
 
-    @Synchronized private fun rebuildLocalChanges() {
+    private fun rebuildLocalChanges() = synchronized(this) {
         deletedElements.clear()
         updatedElements.clear()
         updatedGeometries.clear()
@@ -339,7 +349,7 @@ import javax.inject.Singleton
         }
     }
 
-    @Synchronized private fun applyEdit(edit: ElementEdit): MapDataUpdates?  {
+    private fun applyEdit(edit: ElementEdit): MapDataUpdates? = synchronized(this) {
         val idProvider = elementEditsController.getIdProvider(edit.id)
         val editElement = get(edit.elementType, edit.elementId) ?: return null
 
@@ -387,10 +397,10 @@ import javax.inject.Singleton
     }
 
     fun addListener(listener: Listener) {
-        this.listeners.add(listener)
+        listeners.add(listener)
     }
     fun removeListener(listener: Listener) {
-        this.listeners.remove(listener)
+        listeners.remove(listener)
     }
 
     private fun callOnUpdated(updated: MapDataWithGeometry = MutableMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
