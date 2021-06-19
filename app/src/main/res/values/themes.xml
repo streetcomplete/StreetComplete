@@ -53,6 +53,13 @@
         <item name="android:windowAnimationStyle">@style/Animation.Dialog.Bubble</item>
         <item name="android:windowMinWidthMajor">50%</item>
         <item name="android:windowMinWidthMinor">75%</item>
+        <!-- There is a rare crash that suggests that both the listener for the positive button
+             and the listener for the cancel event is called. This may be due to a fat (or two)
+             fingers pressing both on "OK" and outside the dialog (=cancelling it).
+             Documentation is sparse, but it looks like with this setting, such multi-touch behavior
+             can be disabled for dialogs - which would be the behavior one (=the developer) would
+             expect. -->
+        <item name="android:splitMotionEvents">false</item>
     </style>
 
     <style name="Theme.Bubble.Dialog.Alert"/>
