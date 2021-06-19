@@ -115,7 +115,9 @@ class EditHistoryAdapter(
     fun select(edit: Edit) {
         val previousSelectedIndex = rows.indexOfFirst { it is EditItem && it.edit == selectedEdit }
         val newSelectedIndex = rows.indexOfFirst { it is EditItem && it.edit == edit }
-        check(newSelectedIndex != -1)
+        /* edit can in rare cases not be in adapter any more - when the edit is removed from the
+           database while it is being tapped */
+        if (newSelectedIndex == -1) return
 
         selectedEdit = edit
 
