@@ -169,7 +169,7 @@ dependencies {
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.23.0")
+    implementation("ch.poole:OpeningHoursParser:0.23.4")
 }
 
 /** Localizations that should be pulled from POEditor etc. */
