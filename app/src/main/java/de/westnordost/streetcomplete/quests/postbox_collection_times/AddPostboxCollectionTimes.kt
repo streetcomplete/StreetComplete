@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
+import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
 
 class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
 
@@ -52,11 +53,22 @@ class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
         arrayOfNotNull(getNameOrBrandOrOperatorOrRef(tags))
 
-    override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsAnyKey("name", "brand", "operator", "ref"))
-            R.string.quest_postboxCollectionTimes_name_title
-        else
-            R.string.quest_postboxCollectionTimes_title
+    override fun getTitle(tags: Map<String, String>): Int {
+        val hasName = tags.containsAnyKey("name", "brand", "operator", "ref")
+        // treat invalid collection times like it is not set at all
+        val hasValidCollectionTimes = tags["collection_times"]?.toOpeningHoursRules() != null
+        return if (hasValidCollectionTimes) {
+            when {
+                hasName -> R.string.quest_postboxCollectionTimes_resurvey_name_title
+                else    -> R.string.quest_postboxCollectionTimes_resurvey_title
+            }
+        } else {
+            when {
+                hasName -> R.string.quest_postboxCollectionTimes_name_title
+                else    -> R.string.quest_postboxCollectionTimes_title
+            }
+        }
+    }
 
     override fun createForm() = AddCollectionTimesForm()
 
@@ -66,7 +78,7 @@ class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
                 changes.add("collection_times:signed", "no")
             }
             is CollectionTimes -> {
-                changes.updateWithCheckDate("collection_times", answer.times.joinToString(", "))
+                changes.updateWithCheckDate("collection_times", answer.times.toString())
             }
         }
     }
