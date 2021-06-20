@@ -16,6 +16,7 @@ class TeamModeDialog(
     context: Context,
     onEnableTeamMode: (Int, Int) -> Unit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+
     private var selectedTeamSize: Int? = null
     private var selectedIndexInTeam: Int? = null
     private val binding : DialogTeamModeBinding
@@ -28,7 +29,7 @@ class TeamModeDialog(
         adapter.listeners.add(object : TeamModeIndexSelectAdapter.OnSelectedIndexChangedListener {
             override fun onSelectedIndexChanged(index: Int?) {
                 selectedIndexInTeam = index
-                getButton(BUTTON_POSITIVE).isEnabled = index != null
+                updateOkButtonEnablement()
             }
         })
         binding.colorCircles.adapter = adapter
@@ -36,8 +37,9 @@ class TeamModeDialog(
 
         binding.teamSizeInput.addTextChangedListener { editable ->
             selectedTeamSize = parseTeamSize(editable.toString())
+            updateOkButtonEnablement()
 
-            if (selectedTeamSize === null) {
+            if (selectedTeamSize == null) {
                 binding.introText.isGone = false
                 binding.teamSizeHint.isGone = false
                 binding.colorHint.isGone = true
@@ -56,13 +58,15 @@ class TeamModeDialog(
             dismiss()
         }
 
-        setOnShowListener {
-            getButton(BUTTON_POSITIVE).isEnabled = false
-        }
+        setOnShowListener { updateOkButtonEnablement() }
 
         window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
 
         setView(binding.root)
+    }
+
+    private fun updateOkButtonEnablement() {
+        getButton(BUTTON_POSITIVE)?.isEnabled = selectedTeamSize != null && selectedIndexInTeam != null
     }
 
     private fun parseTeamSize(string: String): Int? {

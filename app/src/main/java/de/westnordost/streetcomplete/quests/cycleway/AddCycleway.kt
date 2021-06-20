@@ -349,6 +349,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             "right", // unclear what type; wrong tagging scheme
             "both",  // unclear what type; wrong tagging scheme
             "shared" // unclear if it is shared_lane or share_busway (or shared with pedestrians)
+            //separate - deliberately excluded to prevent asking resurvey question for cycleway=separate
         )
         /* Treat the opposite_* taggings as simple synonyms which will be overwritten by the new tagging.
            Community seems to be rather in consensus that both methods are equivalent or even the

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.settings
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +16,9 @@ import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
 import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import oauth.signpost.OAuthConsumer
 import oauth.signpost.OAuthProvider
 import oauth.signpost.exception.OAuthCommunicationException
@@ -27,6 +30,7 @@ import javax.inject.Provider
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 /** Fragment that manages the OAuth 1 authentication process in a webview*/
 class OAuthFragment : Fragment(R.layout.fragment_oauth),
@@ -74,6 +78,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
         lifecycleScope.launch { continueAuthentication() }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.webView.settings.userAgentString = ApplicationConstants.USER_AGENT
@@ -158,7 +163,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
     private inner class OAuthWebViewClient : WebViewClient() {
 
         private var continutation: Continuation<String>? = null
-        suspend fun awaitOAuthCallback(): String = suspendCancellableCoroutine { continutation = it }
+        suspend fun awaitOAuthCallback(): String = suspendCoroutine { continutation = it }
 
         override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
             val uri = url?.toUri() ?: return false
