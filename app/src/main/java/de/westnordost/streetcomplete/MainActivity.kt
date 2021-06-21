@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osmnotes.HttpServerException
+import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
@@ -228,7 +228,7 @@ class MainActivity : AppCompatActivity(),
                         messageView.movementMethod = LinkMovementMethod.getInstance()
                         Linkify.addLinks(messageView, Linkify.WEB_URLS)
                     }
-                } else if (e is ConnectionException || e is HttpServerException) {
+                } else if (e is ConnectionException || e is ImageUploadServerException) {
                     /* A network connection error or server error is not the fault of this app.
                        Nothing we can do about it, so it does not make sense to send an error
                        report. Just notify the user. */
