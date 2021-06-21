@@ -19,8 +19,8 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
 
     /** Upload list of images.
      *
-     *  @throws HttpServerException when there was a server error on upload (server error)
-     *  @throws HttpClientException when the server rejected the upload request (client error)
+     *  @throws ImageUploadServerException when there was a server error on upload (server error)
+     *  @throws ImageUploadClientException when the server rejected the upload request (client error)
      *  @throws ConnectionException if it is currently not reachable (no internet etc) */
     fun upload(imagePaths: List<String>): List<String> {
         val imageLinks = ArrayList<String>()
@@ -49,14 +49,14 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
                         val url = jsonResponse.getString("future_url")
                         imageLinks.add(url)
                     } catch (e: JSONException) {
-                        throw HttpServerException("Upload Failed: Unexpected response \"$response\"")
+                        throw ImageUploadServerException("Upload Failed: Unexpected response \"$response\"")
                     }
                 } else {
                     val error = connection.errorStream.bufferedReader().use { it.readText() }.toInt()
                     if (error / 100 == 5)
-                        throw HttpServerException("Upload failed: Error code $status, Message: \"$error\"")
+                        throw ImageUploadServerException("Upload failed: Error code $status, Message: \"$error\"")
                     else
-                        throw HttpClientException("Upload failed: Error code $status, Message: \"$error\"")
+                        throw ImageUploadClientException("Upload failed: Error code $status, Message: \"$error\"")
                 }
                 connection.disconnect()
             } catch (e: IOException) {
@@ -68,8 +68,8 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
     }
 
     /** Activate the images in the given note.
-     *  @throws HttpServerException when there was a server error on upload (server error)
-     *  @throws HttpClientException when the server rejected the upload request (client error)
+     *  @throws ImageUploadServerException when there was a server error on upload (server error)
+     *  @throws ImageUploadClientException when the server rejected the upload request (client error)
      *  @throws ConnectionException if it is currently not reachable (no internet etc)  */
     fun activate(noteId: Long) {
         try {
@@ -86,9 +86,9 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
             else if (status != HttpURLConnection.HTTP_OK) {
                 val error = connection.errorStream.bufferedReader().use { it.readText() }
                 if (status / 100 == 5)
-                    throw HttpServerException("Error code $status, Message: \"$error\"")
+                    throw ImageUploadServerException("Error code $status, Message: \"$error\"")
                 else
-                    throw HttpClientException("Error code $status, Message: \"$error\"")
+                    throw ImageUploadClientException("Error code $status, Message: \"$error\"")
             }
             connection.disconnect()
         } catch (e: IOException) {
@@ -106,8 +106,8 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
     }
 }
 
-class HttpServerException(message: String? = null, cause: Throwable? = null)
+class ImageUploadServerException(message: String? = null, cause: Throwable? = null)
     : RuntimeException(message, cause)
 
-class HttpClientException(message: String? = null, cause: Throwable? = null)
+class ImageUploadClientException(message: String? = null, cause: Throwable? = null)
     : RuntimeException(message, cause)
