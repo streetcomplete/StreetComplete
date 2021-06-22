@@ -154,6 +154,14 @@ object AchievementsModule {
             R.string.link_cyclosm_description
         ),
         Link(
+            "opencampingmap",
+            "https://opencampingmap.org",
+            "opencampingmap.org",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_opencampingmap,
+            R.string.link_opencampingmap_description
+        ),
+        Link(
             "öpnvkarte",
             "https://öpnvkarte.de",
             "ÖPNVKarte",

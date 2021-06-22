@@ -959,6 +959,7 @@ Finally, remember to stay safe: Be aware of your surroundings and don't enter pr
     <string name="link_category_goodies_title">"Goodies"</string>
     <string name="link_category_goodies_description">"Interesting map-related stuff for you to try out"</string>
     <string name="link_cyclosm_description">"A map for cyclists"</string>
+    <string name="link_opencampingmap_description">"A map for campers"</string>
     <string name="link_wheelmap_description">"A map for finding wheelchair accessible places"</string>
     <string name="link_osm_buildings_description">"A map that shows the buildings in 3D"</string>
     <string name="link_openvegemap_description">"Discover vegetarian and vegan restaurants in your city"</string>
