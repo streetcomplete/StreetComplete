@@ -35,7 +35,8 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
 
     fun putAll(quests: Collection<OsmQuestDaoEntry>) {
         if (quests.isEmpty()) return
-        db.insertOrIgnoreMany(NAME,
+        // replace because even if the quest already exists in DB, the center position might have changed
+        db.replaceMany(NAME,
             arrayOf(QUEST_TYPE, ELEMENT_TYPE, ELEMENT_ID, LATITUDE, LONGITUDE),
             quests.map { arrayOf(
                 it.questTypeName,
