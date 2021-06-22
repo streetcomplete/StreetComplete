@@ -7,7 +7,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("kotlin-android-extensions")
-    kotlin("plugin.serialization") version "1.4.30"
+    kotlin("plugin.serialization") version "1.5.0"
 }
 
 android {
@@ -92,9 +92,9 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.4.10"
+    val kotlinVersion = "1.5.10"
     val mockitoVersion = "3.11.2"
-    val kotlinxVersion = "1.4.2"
+    val kotlinxVersion = "1.5.0"
     val daggerVersion = "2.31.2"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
@@ -116,13 +116,13 @@ dependencies {
 
     // Android stuff
     implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.core:core-ktx:1.5.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.annotation:annotation:1.2.0")
-    implementation("androidx.fragment:fragment-ktx:1.3.3")
+    implementation("androidx.fragment:fragment-ktx:1.3.5")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.recyclerview:recyclerview:1.2.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
 
