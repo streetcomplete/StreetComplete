@@ -93,7 +93,7 @@ configurations {
 
 dependencies {
     val kotlinVersion = "1.4.10"
-    val mockitoVersion = "3.7.7"
+    val mockitoVersion = "3.11.2"
     val kotlinxVersion = "1.4.2"
     val daggerVersion = "2.31.2"
 

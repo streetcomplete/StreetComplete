@@ -15,14 +15,11 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Colu
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.MIN_LATITUDE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.MIN_LONGITUDE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME_TEMPORARY_LOOKUP
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME_TEMPORARY_LOOKUP_MERGED_VIEW
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.TEMPORARY_LOOKUP_CREATE
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.TEMPORARY_LOOKUP_MERGED_VIEW_CREATE
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.queryIn
 
 /** Stores the geometry of elements */
 class ElementGeometryDao @Inject constructor(
@@ -90,23 +87,10 @@ class ElementGeometryDao @Inject constructor(
 
     fun getAllEntries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
         if (keys.isEmpty()) return emptyList()
-        return db.transaction {
-            /* this looks a little complicated. Basically, this is a workaround for SQLite not
-               supporting the "SELECT id FROM foo WHERE (a,b) IN ((1,2), (3,4), (5,6))" syntax:
-               Instead, we insert the values into a temporary table and inner join on that table then
-               https://stackoverflow.com/questions/18363276/how-do-you-do-an-in-query-that-has-multiple-columns-in-sqlite
-             */
-            db.exec(TEMPORARY_LOOKUP_CREATE)
-            db.exec(TEMPORARY_LOOKUP_MERGED_VIEW_CREATE)
-            db.insertOrIgnoreMany(NAME_TEMPORARY_LOOKUP,
-                arrayOf(ELEMENT_TYPE, ELEMENT_ID),
-                keys.map { arrayOf(it.type.name, it.id) }
-            )
-            val result = db.query(NAME_TEMPORARY_LOOKUP_MERGED_VIEW) { it.toElementGeometryEntry() }
-            db.exec("DROP VIEW $NAME_TEMPORARY_LOOKUP_MERGED_VIEW")
-            db.exec("DROP TABLE $NAME_TEMPORARY_LOOKUP")
-            result
-        }
+        return db.queryIn(NAME,
+            whereColumns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
+            whereArgs = keys.map { arrayOf(it.type.name, it.id) }
+        ) { it.toElementGeometryEntry() }
     }
 
     fun deleteAll(entries: Collection<ElementKey>):Int {

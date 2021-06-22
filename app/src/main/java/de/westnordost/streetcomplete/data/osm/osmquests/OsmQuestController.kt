@@ -75,22 +75,12 @@ import javax.inject.Singleton
 
             val obsoleteQuestKeys: List<OsmQuestKey>
             synchronized(this) {
-                val previousQuests = mutableListOf<OsmQuestDaoEntry>()
-
-                var count = 0
-                for (element in updated) {
-                    previousQuests.addAll(db.getAllForElement(element.type, element.id))
-                    count++
-                }
-
-                val deleteQuestKeys = mutableListOf<OsmQuestKey>()
-                for (key in deleted) {
-                    // quests that refer to elements that have been deleted shall be deleted
-                    deleteQuestKeys.addAll(db.getAllForElement(key.type, key.id).map { it.key })
-                }
+                val previousQuests = db.getAllForElements(updated.map { ElementKey(it.type, it.id) })
+                // quests that refer to elements that have been deleted shall be deleted
+                val deleteQuestKeys = db.getAllForElements(deleted).map { it.key }
 
                 val seconds = (currentTimeMillis() - time) / 1000.0
-                Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
+                Log.i(TAG,"Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
                 updateQuests(quests, obsoleteQuestKeys)
