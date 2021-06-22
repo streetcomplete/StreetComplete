@@ -2,19 +2,17 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import kotlinx.serialization.Serializable
 
-// TODO make into sealed INTERFACE as soon as Kotlin supports that (1.5)
-@Serializable
-sealed class StringMapEntryChange {
-    abstract override fun toString(): String
-    abstract override fun equals(other: Any?): Boolean
-    abstract override fun hashCode(): Int
-    abstract fun conflictsWith(map: Map<String, String>): Boolean
-    abstract fun applyTo(map: MutableMap<String, String>)
-    abstract fun reversed(): StringMapEntryChange
+sealed interface StringMapEntryChange {
+    override fun toString(): String
+    override fun equals(other: Any?): Boolean
+    override fun hashCode(): Int
+    fun conflictsWith(map: Map<String, String>): Boolean
+    fun applyTo(map: MutableMap<String, String>)
+    fun reversed(): StringMapEntryChange
 }
 
 @Serializable
-data class StringMapEntryAdd(val key: String, val value: String) : StringMapEntryChange() {
+data class StringMapEntryAdd(val key: String, val value: String) : StringMapEntryChange {
 
     override fun toString() = "ADD \"$key\"=\"$value\""
     override fun conflictsWith(map: Map<String, String>) = map.containsKey(key) && map[key] != value
@@ -23,7 +21,7 @@ data class StringMapEntryAdd(val key: String, val value: String) : StringMapEntr
 }
 
 @Serializable
-data class StringMapEntryModify(val key: String, val valueBefore: String, val value: String) : StringMapEntryChange() {
+data class StringMapEntryModify(val key: String, val valueBefore: String, val value: String) : StringMapEntryChange {
 
     override fun toString() = "MODIFY \"$key\"=\"$valueBefore\" -> \"$key\"=\"$value\""
     override fun conflictsWith(map: Map<String, String>) = map[key] != valueBefore && map[key] != value
@@ -32,7 +30,7 @@ data class StringMapEntryModify(val key: String, val valueBefore: String, val va
 }
 
 @Serializable
-data class StringMapEntryDelete(val key: String, val valueBefore: String) : StringMapEntryChange() {
+data class StringMapEntryDelete(val key: String, val valueBefore: String) : StringMapEntryChange {
 
     override fun toString() = "DELETE \"$key\"=\"$valueBefore\""
     override fun conflictsWith(map: Map<String, String>) = map.containsKey(key) && map[key] != valueBefore
