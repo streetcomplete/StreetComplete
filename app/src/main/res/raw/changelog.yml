@@ -1,11 +1,10 @@
 v32.2: |
   <h3>Fixes</h3>
   <ul>
-  <li>Fix many crashes (#2981, #2985...)</li>
-  <li>Fix quest wouldn't disappear in a certain rare situation (#2958)</li>
-  <li>Fix crash on using app in split screen and keyboard in other app is opened (#2949), by @tapetis</li>
+  <li>Fix many crashes (#2949) by @tapetis, (#2981, #2985, ...)</li>
+  <li>Fix quest wouldn't disappear in a rare situation (#2958)</li>
   <li>Only ask again whether a road is lit for road types for which the app would usually ask (#2955)</li>
-  <li>Don't ask user to send an error report if image upload failed due to a connection issue (#2984)</li>
+  <li>Don't ask user to send an error report if photo upload failed due to a connection issue (#2984)</li>
   </ul>
   <h3>Enhancements</h3>
   <ul>
