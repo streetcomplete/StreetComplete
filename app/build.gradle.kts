@@ -95,7 +95,7 @@ dependencies {
     val kotlinVersion = "1.5.10"
     val mockitoVersion = "3.11.2"
     val kotlinxVersion = "1.5.0"
-    val daggerVersion = "2.31.2"
+    val daggerVersion = "2.37"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
