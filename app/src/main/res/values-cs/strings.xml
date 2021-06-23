@@ -1,65 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Nastavení"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Nepodařilo se připojit k autorizačnímu serveru"</string>
-
-    <!-- Fuzzy -->
     <string name="retry">"Zkusit znovu"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Autorizace se nezdařila: Všechna uvedená oprávnění musí být udělena"</string>
-
-    <!-- Fuzzy -->
     <string name="title_activity_settings">"Nastavení"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Komunikace"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"Zobrazení"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"Místo v megabytech vyčleněné na externím úložišti sloužící jako mezipaměť pro mapové dlaždice"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"Zobrazit všechny poznámky"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Zobrazují se všechny poznámky z mapy OSM (i takové, které nejsou ve formě úkolu)"</string>
 
     <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Poznámky z mapy OSM, které nejsou k dispozici ve formě úkolu, jsou skryté"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"Velikost mezipaměti pro mapu"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Sledovat mě"</string>
-
-    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© přispěvatelé OpenStreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"Další odpovědi..."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Nedá se to určit…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"Opravdu?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"Ano, opravdu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Podívám se"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_error_field_empty">"Toto pole jste nechali prázdné"</string>
 
     <!-- Fuzzy -->
@@ -117,8 +81,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_title">"Můžete přispět k této poznámce?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"Ne, skrýt"</string>
 
     <!-- Fuzzy -->
@@ -126,50 +88,26 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_discard_title">"Zahodit výběr?"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"Zahodit"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_negative">"Zrušit"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Vyhledat zde úkoly"</string>
-
-    <!-- Fuzzy -->
     <string name="action_upload">"Nahrát odpovědi"</string>
 
     <!-- Fuzzy -->
     <string name="no_changes">"Nechali jste prázdný formulář"</string>
-
-    <!-- Fuzzy -->
     <string name="close">"zavřít"</string>
-
-    <!-- Fuzzy -->
     <string name="download_error">"Během vyhledávání úkolů došlo k chybě"</string>
-
-    <!-- Fuzzy -->
     <string name="upload_error">"Během nahrávání odpovědí došlo k chybě"</string>
 
     <!-- Fuzzy -->
     <string name="download_area_too_big">"Přibližte, prosím, více mapu"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Zrušit aktuální vyhledávání a hledat místo toho zde?"</string>
-
-    <!-- Fuzzy -->
     <string name="notification_downloading">"Vyhledávám úkoly..."</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Určování polohy je vypnuté. Chcete přejít na nastavení, abyste ho mohli zapnout?"</string>
 
     <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Vaše poloha se používá pro vyhledávání úkolů ve vašem okolí."</string>
-
-    <!-- Fuzzy -->
+    <string name="no_location_permission_warning">"Pro zobrazení vaší pozice v mapě a hledání úkolů ve vašem okolí je potřeba oprávnění ke zjišťování polohy."</string>
     <string name="about_title_authors">"Autoři"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick a přispěvatelé"</string>
 
     <!-- Fuzzy -->
@@ -217,8 +155,6 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_privacy_statement">"a použití dat"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"Státní svátky"</string>
 
     <!-- How short this must be? In my language the closest form is probably "St. sv.". Is it OK or too long? -->
@@ -231,42 +167,19 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_answer_247">"Otevřeno nonstop"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Liší se podle měsíce…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nepravidelná otevírací doba…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"Popište otevírací dobu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Buďte struční a v ideálním případě použijte slova z cedulky s otevírací dobou. Např.  „Otevřeno po dohodě“. Chybějící cedulka nemusí znamenat, že tu není pravidelná otevírací doba."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_title">"Kolik podlaží má tato budova?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_title_buildingPart">"Kolik podlaží má tato část budovy?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Jaký je základní tvar střechy této budovy?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"Vyberte jeden:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Zobrazit více..."</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Má několik různých tvarů"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Oddálit"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Přiblížit"</string>
 
     <!-- Fuzzy -->
@@ -289,14 +202,8 @@ Aplikace s nikým nesdílí vaši GPS polohu. Vaše poloha se používá jen pro
 &lt;p&gt;
 Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového souboru&lt;/a&gt; na mém serveru, jestli jí nebylo zakázáno nahrávání změn. To je preventivní opatření zabraňující verzím aplikace, ve kterých by mohli být kritické chyby, aby poškodili OSM data.&lt;br/&gt;
 &lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_on">"Zapnuto"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_only_on_wifi">"Jen přes WiFi"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_off">"Vypnuto"</string>
 
     <!-- Fuzzy -->
@@ -348,23 +255,11 @@ Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href
 
     <!-- Fuzzy -->
     <string name="quest_placeName_title">"Jak se jmenuje toto místo?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Je na této ulici chodník?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kde je tato silnice?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"Jaký povrch má cyklostezka v této části?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Jakého druhu je tato účelová komunikace?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Je to jednosměrka?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_title">"Jaké číslo má tato budova?"</string>
 
     <!-- Fuzzy -->
@@ -2487,4 +2382,22 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_busStopLit_tram_title">"Je tato tramvajová zastávka osvětlena?"</string>
     <string name="quest_busStopLit_title">"Je tato autobusová zastávka osvětlena?"</string>
     <string name="quest_busStopLit_name_title">"Je autobusová zastávka %s osvětlena?"</string>
+    <string name="no_location_permission_warning_title">"Oprávnění k přístupu k poloze"</string>
+    <string name="quest_surface_value_woodchips">"Štěpky"</string>
+    <string name="no_camera_app">"Žádná aplikace fotoaparátu není k dispozici "</string>
+    <string name="quest_busStopBin_tram_name_title">"Má tramvajová zastávka %s odpadkový koš?"</string>
+    <string name="quest_busStopBin_tram_title">"Má tato tramvajová zastávka odpadkový koš?"</string>
+    <string name="quest_busStopBin_title">"Má tato autobusová zastávka odpadkový koš?"</string>
+    <string name="quest_busStopBin_name_title">"Má autobusová zastávka %s odpadkový koš?"</string>
+    <string name="quest_bollard_type_title">"Jaký je to druh sloupku?"</string>
+    <string name="quest_bollard_type_rising">"Vyjíždějící"</string>
+    <string name="quest_bollard_type_removable_with_key">"Odstranitelný pomocí klíče"</string>
+    <string name="quest_bollard_type_removable_without_key">"Odstranitelný bez klíče"</string>
+    <string name="quest_bollard_type_foldable">"Skládací"</string>
+    <string name="quest_bollard_type_flexible">"Ohebný"</string>
+    <string name="quest_bollard_type_fixed">"Pevný (neodstranitelný)"</string>
+    <string name="quest_camera_type_title">"Jaký je tohle typ dohledové kamery?"</string>
+    <string name="quest_camera_type_dome">"Kupolová"</string>
+    <string name="quest_camera_type_fixed">"Pevná"</string>
+    <string name="quest_camera_type_panning">"Otočná"</string>
 </resources>

@@ -2202,6 +2202,10 @@
     <string name="quest_barrier_type_swing_gate">"Οριζόντια μπάρα"</string>
     <string name="quest_policeType_title">"Τι είδους αστυνομικό τμήμα είναι αυτό;"</string>
     <string name="quest_stile_type_title">"Τι είδους πέρασμα φράχτη είναι αυτό;"</string>
+    <string name="pref_title_quests2">"Επιλογή και προτεραιότητα αναζήτησης"</string>
     <string name="quest_busStopLit_title">"Αυτή η στάση λεωφορείου είναι φωτισμένη;"</string>
     <string name="quest_busStopLit_name_title">"Η στάση λεωφορείου %s είναι φωτισμένη;"</string>
+    <string name="no_location_permission_warning_title">"Άδεια τοποθεσίας "</string>
+    <string name="quest_surface_value_woodchips">"Ροκανίδια"</string>
+    <string name="no_camera_app">"Δεν υπάρχει διαθέσιμη εφαρμογή κάμερας"</string>
 </resources>

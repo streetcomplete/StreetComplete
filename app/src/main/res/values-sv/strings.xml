@@ -1097,4 +1097,22 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_busStopLit_tram_title">"Är den här spårvagnshållplatsen belyst?"</string>
     <string name="quest_busStopLit_title">"Är den här busshållplatsen belyst?"</string>
     <string name="quest_busStopLit_name_title">"Är busshållplatsen %s belyst?"</string>
+    <string name="no_location_permission_warning_title">"Platsbehörighet"</string>
+    <string name="quest_surface_value_woodchips">"Träspån"</string>
+    <string name="no_camera_app">"Ingen kamera-app tillgänglig"</string>
+    <string name="quest_busStopBin_tram_name_title">"Har spårvagnshållplatsen %s en papperskorg?"</string>
+    <string name="quest_busStopBin_tram_title">"Har den här spårvagnshållplatsen en papperskorg?"</string>
+    <string name="quest_busStopBin_title">"Har den här busshållplatsen en papperskorg?"</string>
+    <string name="quest_busStopBin_name_title">"Har busshållplatsen %s en papperskorg?"</string>
+    <string name="quest_bollard_type_title">"Vad för typ av pollare är detta?"</string>
+    <string name="quest_bollard_type_rising">"Höj- och sänkbar"</string>
+    <string name="quest_bollard_type_removable_with_key">"Flyttbar med nyckel"</string>
+    <string name="quest_bollard_type_removable_without_key">"Flyttbar utan nyckel"</string>
+    <string name="quest_bollard_type_foldable">"Fällbar"</string>
+    <string name="quest_bollard_type_flexible">"Flexibel"</string>
+    <string name="quest_bollard_type_fixed">"Fast"</string>
+    <string name="quest_camera_type_title">"Vad är det här för typ av övervakningskamera?"</string>
+    <string name="quest_camera_type_dome">"Dom (inkapslad)"</string>
+    <string name="quest_camera_type_fixed">"Fast"</string>
+    <string name="quest_camera_type_panning">"Panorerande"</string>
 </resources>

@@ -2356,8 +2356,14 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_surface_value_clay">"Antuka"</string>
     <string name="quest_surface_value_artificial_turf">"Umelý trávnik"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="quest_pitchSurface_title_track">"Aký povrch má táto športová trať?"</string>
     <string name="quest_bicycle_parking_access_title">"Je obmedzené kto tu môže parkovať bickel?"</string>
     <string name="quest_bicycle_parking_fee_title">"Platí sa tu za parkovanie bicykla?"</string>
+    <string name="quest_drinking_water_title">"Je táto voda pitná? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Pitná voda (značená)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Pitná voda (neznačená)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Nepitná voda (značená)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Nepitná voda (neznačená)"</string>
     <string name="quest_postboxRoyalCypher_title">"Je na tejto poštovej schránke kráľovský znak?"</string>
     <string name="quest_buildingType_fire_station">"Hasičská stanica"</string>
     <string name="quest_recycling_type_beverage_cartons">"Iba kartóny od nápojov"</string>
@@ -2365,6 +2371,10 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_charging_station_name_capacity_title">"Koľko automobilov je možné nabíjať na tejto nabíjacej stanici (%s) súčasne?"</string>
     <string name="team_mode">"Tímový režim"</string>
     <string name="team_mode_exit">"Ukončiť tímový režim"</string>
+    <string name="team_mode_description">"Keď mapujete v skupine jednu oblasť, požite tímový režim a rozdeľte si úlohy."</string>
+    <string name="team_mode_team_size_label">"Koľkí mapujete?"</string>
+    <string name="team_mode_team_size_hint">"Tímový režim je pre 2 až 12 ľudí."</string>
+    <string name="team_mode_choose_color">"Každý nech si vyberie svoju farbu:"</string>
     <string name="team_mode_active">"Tímový režim je aktívny"</string>
     <string name="team_mode_deactivated">"Tímový režim je neaktívny"</string>
 </resources>

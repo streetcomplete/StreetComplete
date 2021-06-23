@@ -2381,4 +2381,30 @@
     <string name="quest_barrier_type_kissing_gate_conversion">"تبدیل به دروازه لمسی"</string>
     <string name="quest_stile_type_title">"این چه نوع نرده ای است؟"</string>
     <string name="quest_buildingType_semi_detached_description2">"خانه (های) تک واحده"</string>
+    <string name="pref_title_quests2">"انتخاب و اولویت جُستار"</string>
+    <string name="pref_subtitle_quests">"%1$d از %2$d فعال شده
+
+"</string>
+    <string name="quest_busStopLit_tram_name_title">"آیا ایستگاه واگن برقی %s روشنایی دارد؟"</string>
+    <string name="quest_busStopLit_tram_title">"آیا این ایستگاه واگن برقی روشنایی دارد؟"</string>
+    <string name="quest_busStopLit_title">"آیا این ایستگاه اتوبوس روشنایی دار ؟"</string>
+    <string name="quest_busStopLit_name_title">"آیا این ایستگاه اتوبوس%s روشنایی دار ؟"</string>
+    <string name="no_location_permission_warning_title">"مجوز مکان"</string>
+    <string name="quest_surface_value_woodchips">"تراشه های چوبی"</string>
+    <string name="no_camera_app">"برنامه دوربین موجود نیست"</string>
+    <string name="quest_busStopBin_tram_name_title">"آیا ایستگاه واگن برقی %s سطل زباله دارد؟"</string>
+    <string name="quest_busStopBin_tram_title">"آیا این ایستگاه واگن برقی سطل زباله دارد؟"</string>
+    <string name="quest_busStopBin_title">"آیا این ایستگاه اتوبوس سطل زباله دارد؟"</string>
+    <string name="quest_busStopBin_name_title">"آیا این ایستگاه اتوبوس %s سطل زباله دارد؟"</string>
+    <string name="quest_bollard_type_title">"این چه نوع مهاربندی است؟"</string>
+    <string name="quest_bollard_type_rising">"بالارونده"</string>
+    <string name="quest_bollard_type_removable_with_key">"قابل جدا شدن با کلید"</string>
+    <string name="quest_bollard_type_removable_without_key">"قابل جدا شدن بدون کلید"</string>
+    <string name="quest_bollard_type_foldable">"تاشو"</string>
+    <string name="quest_bollard_type_flexible">"قابل انعطاف"</string>
+    <string name="quest_bollard_type_fixed">"ثابت (قابل جابجایی نیست)"</string>
+    <string name="quest_camera_type_title">"این چه نوع دوربین نظارتی است؟"</string>
+    <string name="quest_camera_type_dome">"خصوصی"</string>
+    <string name="quest_camera_type_fixed">"ثابت"</string>
+    <string name="quest_camera_type_panning">"کاذب"</string>
 </resources>

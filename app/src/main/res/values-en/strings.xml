@@ -473,6 +473,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_category_feedback">Feedback</string>
     <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
     <string name="quest_leave_new_note_create_image_error">Unable to create file for photo</string>
+    <string name="no_camera_app">No camera app available</string>
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
     <string name="quest_carWashType_selfService">Self service</string>
@@ -534,6 +535,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_busStopBench_tram_title">"Does this streetcar stop have a bench?"</string>
     <string name="quest_busStopBench_title">"Does this bus stop have a bench?"</string>
     <string name="quest_busStopBench_name_title">"Does the bus stop %s have a bench?"</string>
+    <string name="quest_busStopBin_tram_name_title">"Does the streetcar stop %s have a waste basket?"</string>
+    <string name="quest_busStopBin_tram_title">"Does this streetcar stop have a waste basket?"</string>
+    <string name="quest_busStopBin_title">"Does this bus stop have a waste basket?"</string>
+    <string name="quest_busStopBin_name_title">"Does the bus stop %s have a waste basket?"</string>
     <string name="quest_busStopLit_tram_name_title">"Is the streetcar stop %s lit?"</string>
     <string name="quest_busStopLit_tram_title">"Is this streetcar stop lit?"</string>
     <string name="quest_busStopLit_title">"Is this bus stop lit?"</string>
@@ -1043,4 +1048,15 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_swing_gate">Horizontal bar</string>
     <string name="quest_barrier_type_kissing_gate_conversion">Converted into a kissing gate</string>
     <string name="quest_stile_type_title">What type of stile is this?</string>
+    <string name="quest_bollard_type_title">What type of bollard is this?</string>
+    <string name="quest_bollard_type_rising">Rising</string>
+    <string name="quest_bollard_type_removable_with_key">Removable with key</string>
+    <string name="quest_bollard_type_removable_without_key">Removable without key</string>
+    <string name="quest_bollard_type_foldable">Foldable</string>
+    <string name="quest_bollard_type_flexible">Flexible</string>
+    <string name="quest_bollard_type_fixed">Fixed (not removable)</string>
+    <string name="quest_camera_type_title">What type of surveillance camera is this?</string>
+    <string name="quest_camera_type_dome">Dome</string>
+    <string name="quest_camera_type_fixed">Fixed</string>
+    <string name="quest_camera_type_panning">Panning</string>
 </resources>

@@ -57,7 +57,7 @@
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
 
     <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Your location is needed to scan for quests in your vicinity."</string>
+    <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
     <string name="about_title_authors">"Credits"</string>
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
@@ -1279,4 +1279,22 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_busStopLit_tram_title">"Is this tram stop lit?"</string>
     <string name="quest_busStopLit_title">"Is this bus stop lit?"</string>
     <string name="quest_busStopLit_name_title">"Is the bus stop %s lit?"</string>
+    <string name="no_location_permission_warning_title">"Location Permission"</string>
+    <string name="quest_surface_value_woodchips">"Woodchips"</string>
+    <string name="no_camera_app">"No camera app available"</string>
+    <string name="quest_busStopBin_tram_name_title">"Does the tram stop %s have a waste basket?"</string>
+    <string name="quest_busStopBin_tram_title">"Does this tram stop have a waste basket?"</string>
+    <string name="quest_busStopBin_title">"Does this bus stop have a waste basket?"</string>
+    <string name="quest_busStopBin_name_title">"Does the bus stop %s have a waste basket?"</string>
+    <string name="quest_bollard_type_title">"What type of bollard is this?"</string>
+    <string name="quest_bollard_type_rising">"Rising"</string>
+    <string name="quest_bollard_type_removable_with_key">"Removable with key"</string>
+    <string name="quest_bollard_type_removable_without_key">"Removable without key"</string>
+    <string name="quest_bollard_type_foldable">"Foldable"</string>
+    <string name="quest_bollard_type_flexible">"Flexible"</string>
+    <string name="quest_bollard_type_fixed">"Fixed (not removable)"</string>
+    <string name="quest_camera_type_title">"What type of surveillance camera is this?"</string>
+    <string name="quest_camera_type_dome">"Dome"</string>
+    <string name="quest_camera_type_fixed">"Fixed"</string>
+    <string name="quest_camera_type_panning">"Panning"</string>
 </resources>

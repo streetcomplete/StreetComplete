@@ -57,7 +57,7 @@
     <string name="turn_on_location_request">"Местоположението е изключено. Да се отворят ли Настройки, за включване?"</string>
 
     <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Местоположението ти е нужно за сканиране на въпроси наблизо."</string>
+    <string name="no_location_permission_warning">"Местоположението ти е нужно за сканиране за въпроси наблизо."</string>
     <string name="about_title_authors">"Автор(и)"</string>
     <string name="about_summary_authors">"© 2016–2021 Тобиас Цвик и други"</string>
     <string name="about_title_repository">"Източник"</string>
@@ -250,7 +250,7 @@
     <string name="quest_streetName_cantType_open_settings">"Отваряне на настройките"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_cantType_open_store">"Посетете app store"</string>
+    <string name="quest_streetName_cantType_open_store">"Посетете App Store"</string>
     <string name="quest_streetName_cantType_description">"Ако използвате стандартната клавиатура, можете да я смените с езика, на който искате да въведете текста.
 
 Ако нямате инсталиран този език, можете да го изтеглите от съответния магазин за приложения. Популярни мултиезични клавиатури са Google Gboard, SwiftKey Keyboard и Multiling O Keyboard."</string>
@@ -711,10 +711,10 @@
     <string name="user_statistics_quest_wiki_link">"Документация"</string>
 
     <!-- Fuzzy -->
-    <string name="achievements_unlocked_link">"Неотключена връзка:"</string>
+    <string name="achievements_unlocked_link">"Отключена връзка:"</string>
 
     <!-- Fuzzy -->
-    <string name="achievements_unlocked_links">"Неотключени връзки:"</string>
+    <string name="achievements_unlocked_links">"Отключени връзки:"</string>
     <string name="link_category_intro_title">"Въведение"</string>
     <string name="link_category_intro_description">"Научете повече за OSM и хората около проекта"</string>
     <string name="link_category_editors_title">"Как да допринесем"</string>
@@ -1041,4 +1041,26 @@
     <string name="quest_busStopLit_tram_title">"Тази трамвайна спирка осветена ли е?"</string>
     <string name="quest_busStopLit_title">"Тази автобусна спирка осветена ли е?"</string>
     <string name="quest_busStopLit_name_title">"Автобусната спирка %s осветена ли е?"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_location_permission_warning_title">"Разрешение за достъп до локация"</string>
+    <string name="quest_surface_value_woodchips">"Дървесни стърготини"</string>
+    <string name="no_camera_app">"Няма налично приложение за камера"</string>
+    <string name="quest_busStopBin_tram_name_title">"Трамвайна спирка %s има ли кош за боклук?"</string>
+    <string name="quest_busStopBin_tram_title">"Трамвайната спирка има ли кош за боклук?"</string>
+    <string name="quest_busStopBin_title">"Автобусната спирка има ли кош за боклук?"</string>
+    <string name="quest_busStopBin_name_title">"Автобусна спирка %s има ли кош за боклук?"</string>
+    <string name="quest_bollard_type_title">"Какъв вид болард е това?"</string>
+    <string name="quest_bollard_type_rising">"Повдигащ се"</string>
+    <string name="quest_bollard_type_removable_with_key">"Премахваема с ключ"</string>
+    <string name="quest_bollard_type_removable_without_key">"Премахваема без ключ"</string>
+    <string name="quest_bollard_type_foldable">"Сгъваем"</string>
+    <string name="quest_bollard_type_flexible">"Гъвкав"</string>
+    <string name="quest_bollard_type_fixed">"Фиксиран (не може да се мести)"</string>
+    <string name="quest_camera_type_title">"Какъв вид е тази камера?"</string>
+    <string name="quest_camera_type_dome">"Купол"</string>
+    <string name="quest_camera_type_fixed">"Фиксирана"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_camera_type_panning">"Панорамна"</string>
 </resources>
