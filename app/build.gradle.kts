@@ -79,9 +79,13 @@ if (keystorePropertiesFile.exists()) {
 }
 
 repositories {
-    mavenLocal()
-    jcenter()
-    maven { url = URI("https://jitpack.io") }
+    google()
+    mavenCentral()
+    jcenter {
+        content {
+            includeGroup("org.sufficientlysecure")
+        }
+    }
 }
 
 configurations {
@@ -146,15 +150,15 @@ dependencies {
     implementation("de.westnordost:osmapi-changesets:2.0")
     implementation("de.westnordost:osmapi-notes:2.0")
     implementation("de.westnordost:osmapi-user:2.0")
-    implementation("com.squareup.okhttp3:okhttp:3.12.12")
+    implementation("com.squareup.okhttp3:okhttp:3.12.13")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("me.grantland:autofittextview:0.2.1")
+    // html-textview not maintained anymore, only available on jcenter - should be replaced in the long term
     implementation("org.sufficientlysecure:html-textview:3.9")
-    implementation("com.duolingo.open:rtl-viewpager:2.0.0")
-    implementation("com.google.android:flexbox:2.0.1")
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
 
     // box2d view
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
