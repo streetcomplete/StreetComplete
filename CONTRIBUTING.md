@@ -88,8 +88,6 @@ If you need to find things where help is especially appreciated [have a look at 
 
 To build and test StreetComplete [download and install Android Studio](https://developer.android.com/studio/) which comes bundled with all tools needed, checkout and open the project in this application and click on the green play button on the top.
 
-See also [documentation of the program architecture](ARCHITECTURE.md).
-
 ### Developing new quests
 
 You want to contribute a new quest right away? That's great!
