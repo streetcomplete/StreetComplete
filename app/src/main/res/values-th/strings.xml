@@ -190,6 +190,7 @@
     <string name="quest_select_hint">"เลือก:"</string>
     <string name="quest_sport_manySports_confirmation_description">"สนามกีฬานี้ออกแบบมาสำหรับกีฬาเหล่านี้โดยเฉพาะหรือไม่ (มีเครื่องหมายและอุปกรณ์อยู่ที่นี่) หรือเป็นสนามกีฬาเอนกประสงค์สำหรับกีฬาทุกประเภท?"</string>
     <string name="quest_sport_manySports_confirmation_title">"คุณเลือกกีฬามากมาย"</string>
+    <string name="quest_busStopShelter_name_title">"ป้ายรถเมล์ %s มีที่หลังคาหรือไม่?"</string>
     <string name="quest_toiletsFee_title">"ห้องน้ำแห่งนี้คิดค่าบริการหรือไม่?"</string>
     <string name="quest_tactilePaving_title_bus">"ป้ายรถประจำทางที่นี่มีกระเบื้องปูพื้นนำทางคนตาบอดหรือไม่?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"ทางข้ามที่นี่มีกระเบื้องปูพื้นนำทางคนตาบอดทั้งสองข้างหรือไม่?"</string>
@@ -303,6 +304,7 @@
     <string name="quest_way_lit_automatic">"ใช้ระบบตรวจจับการเคลื่อนไหว"</string>
     <string name="quest_way_lit_24_7">"ส่องสว่างทั้งตอนกลางวันและกลางคืน"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"ไม่สามารถสแกนที่นี่ ลองซูมเข้ามาอีกหรือปรับให้มุมเอียงของแผนที่น้อยลง"</string>
+    <string name="quest_crossing_type_title">"นี่คือทางข้ามประเภทใด?"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"เลิกทำ"</string>
     <string name="produce_mangosteen">"มังคุด"</string>
@@ -334,8 +336,10 @@
     <string name="undo_confirm_positive">"เลิกทำ"</string>
     <string name="undo_confirm_negative">"ยกเลิก"</string>
     <string name="quest_hasFeature_only">"เท่านั้น"</string>
+    <string name="quest_carWashType_title">"นี่คือสถานที่ล้างรถประเภทใด?"</string>
     <string name="quest_carWashType_automated">"อัตโนมัติ"</string>
     <string name="quest_carWashType_selfService">"บริการตนเอง"</string>
+    <string name="quest_carWashType_service">"พนักงานทำความสะอาดรถ"</string>
     <string name="enable_quest_confirmation_title">"เปิดใช้งานภารกิจประเภทนี้?"</string>
     <string name="default_disabled_msg_go_inside">"ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้นเพราะคุณน่าจะต้องเข้าไปในสถานที่เพื่อที่จะตอบคำถามสำหรับภารกิจประเภทนี้"</string>
     <string name="quest_streetName_answer_noName_question">"ทำไมถึงไม่มีชื่อ?"</string>
@@ -357,6 +361,8 @@
     <string name="quest_internet_access_wired">"มีสาย (LAN)"</string>
     <string name="quest_internet_access_terminal">"คอมพิวเตอร์ที่มีการเชื่อมต่ออินเทอร์เน็ต"</string>
     <string name="quest_internet_access_no">"ไม่มีการเชื่อมต่อ"</string>
+    <string name="quest_busStopShelter_tram_name_title">"ป้ายรถราง %s มีที่หลังคาหรือไม่?"</string>
+    <string name="quest_busStopShelter_tram_title">"ป้ายรถรางที่นี่มีที่หลังคาหรือไม่?"</string>
     <string name="quest_bench_backrest_title">"ม้านั่งนี้มีพนักพิงหรือไม่?"</string>
     <string name="quest_bench_answer_picnic_table">"เป็นโต๊ะปิกนิก"</string>
     <string name="quest_religion_muslim">"อิสลาม"</string>
@@ -386,8 +392,13 @@
     <string name="quest_bicycle_parking_type_locker">"ตู้ล็อกเกอร์"</string>
     <string name="quest_bicycle_parking_type_building">"อาคาร"</string>
     <string name="quest_bicycle_parking_type_title">"เป็นที่จอดรถจักรยานประเภทใด?"</string>
+    <string name="quest_collectionTimes_add_times">"เพิ่มเวลารวบรวม"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"ไม่ได้ระบุเวลา"</string>
     <string name="quest_construction_road_title">"ถนนเส้นนี้เสร็จหรือยัง"</string>
+    <string name="quest_construction_cycleway_title">"ทางจักรยานนี้สร้างเสร็จหรือยัง?"</string>
+    <string name="quest_construction_footway_title">"ทางเท้านี้สร้างเสร็จหรือยัง​?"</string>
     <string name="quest_construction_generic_title">"ทางนี้เสร็จหรือยัง"</string>
+    <string name="quest_construction_building_title">"อาคารนี้สร้างเสร็จหรือยัง?"</string>
     <string name="questList_disabled_in_country">"ไม่แสดงใน %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"พื้นที่นี้มีห้องสุขาหรือไม่?"</string>
     <string name="quest_select_hint_most_specific">"เลือกอันที่เจาะจงที่สุดที่เหมาะสม:"</string>
@@ -519,6 +530,7 @@
     <string name="map_application_missing">"ไม่มีโปรแกรมแผนที่อื่นๆในระบบ"</string>
     <string name="label_housenumber">"หมายเลขบ้าน"</string>
     <string name="label_blocknumber">"หมายเลขช่วงตึก"</string>
+    <string name="quest_busStopShelter_covered">"ครอบคลุมพื้นที่ป้ายทั้งหมด"</string>
     <string name="create_new_note_hint">"ดีที่สุดถ้าคุณบันทึกหมายเหตุเป็นภาษาท้องถิ่น หรือไม่ก็ภาษาอังกฤษ"</string>
     <string name="quest_generic_answer_differs_along_the_way">"เปลี่ยนแปลงระหว่างทาง"</string>
     <string name="quest_split_way_description">"ถ้าเปลี่ยนแปลงระหว่างทาง ขั้นตอนแรกคือการแบ่งทางออกมา หลังจากนั้นคุณสามารถตอบคำถามสำหรับแต่ละส่วนได้
@@ -724,6 +736,8 @@
     <string name="quest_steps_ramp_stroller">"ทางลาดสำหรับรถเข็นเด็ก"</string>
     <string name="quest_steps_ramp_wheelchair">"ทางลาดวีลแชร์"</string>
     <string name="quest_atm_operator_title">"ตู้เอทีเอ็มนี้เป็นของธนาคารอะไร"</string>
+    <string name="quest_clothes_container_operator_title">"ใครรับบริจาคถังเสื้อผ้านี้บ้าง?"</string>
+    <string name="quest_charging_station_operator_title">"ใครเป็นผู้ดำเนินการสถานีชาร์จนี้?"</string>
     <string name="link_indoorequal_description">"ค้นพบแผนที่ภายในอาคารของห้าง สถานีรถไฟ ฯลฯ"</string>
     <string name="achievement_rare_title">"ล่าสมบัติ"</string>
     <string name="achievement_rare_solved_X">"คุณได้ค้นพบและบรรลุ %d ภารกิจที่คนทำสำเร็จน้อยมาก ยินดีด้วย!"</string>
@@ -753,6 +767,7 @@
     <string name="quest_tactile_paving_kerb_title">"ขอบทางเดินที่นี่มีกระเบื้องปูพื้นนำทางคนตาบอดหรือไม่?"</string>
     <string name="quest_surface_value_rock">"หิน"</string>
     <string name="quest_address_street_hint">"แตะถนนบนแผนที่"</string>
+    <string name="quest_crossing_type_marked">"ทางข้ามที่มีเครื่องหมาย"</string>
     <string name="quest_parkingType_lane">"จุดจอดรถริมถนน"</string>
     <string name="quest_existence_title">"อันนี้ยังอยู่ตรงนี้ไหม? (%s)"</string>
     <string name="quest_existence_name_title">"%1$s (%2$s) ยังอยู่ตรงนี้ไหม?"</string>
@@ -787,6 +802,7 @@
     <string name="quest_drinking_water_not_potable_signed">"ไม่ปลอดภัยที่จะดื่ม (มีป้าย)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"ไม่ปลอดภัยที่จะดื่ม (ไม่มีป้าย)"</string>
     <string name="quest_buildingType_fire_station">"สถานีดับเพลิง"</string>
+    <string name="quest_charging_station_name_capacity_title">"สถานีชาร์จแห่งนี้  (%s)  สามารถชาร์จรถยนต์ได้กี่คันในเวลาเดียวกัน?"</string>
     <string name="team_mode">"โหมดทีม"</string>
     <string name="team_mode_exit">"ออกจากโหมดทีม"</string>
     <string name="team_mode_description">"ถ้าตั้งกลุ่มทำแผนที่ในบริเวณเดียวกัน คุณสามารถเข้าทีมโหมดเพื่อที่จะแบ่งภารกิจให้กับสมาชิกกลุ่มทุกคนได้"</string>
@@ -866,4 +882,8 @@
     <string name="quest_bollard_type_foldable">"พับได้"</string>
     <string name="quest_bollard_type_flexible">"ยืดหยุ่น"</string>
     <string name="quest_bollard_type_fixed">"คงที่ (ไม่สามารถถอดออก)"</string>
+    <string name="quest_camera_type_title">"นี่คือกล้องวงจรปิดประเภทใด?"</string>
+    <string name="quest_camera_type_dome">"โดม"</string>
+    <string name="quest_camera_type_fixed">"คงที่"</string>
+    <string name="quest_camera_type_panning">"หมุนส่าย"</string>
 </resources>
