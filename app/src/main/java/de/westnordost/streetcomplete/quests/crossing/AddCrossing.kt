@@ -23,7 +23,7 @@ class AddCrossing : OsmElementQuestType<Boolean> {
 
     private val footwaysFilter by lazy { """
         ways with
-          (highway = footway or highway = path and foot ~ designated|yes)
+          (highway = footway or highway ~ path|cycleway and foot ~ designated|yes)
           and footway != sidewalk
           and area != yes
           and access !~ private|no
