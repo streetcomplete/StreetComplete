@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
+import de.westnordost.streetcomplete.quests.opening_hours.parser.toCollectionTimesRows
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
@@ -92,7 +92,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
 
     private fun initStateFromTags() {
         val ct = osmElement!!.tags["collection_times"]
-        val rows = ct?.toOpeningHoursRules()?.toOpeningHoursRows()
+        val rows = ct?.toOpeningHoursRules()?.toCollectionTimesRows()
         if (rows != null) {
             collectionTimesAdapter.collectionTimesRows = rows.toMutableList()
             setAsResurvey(true)
