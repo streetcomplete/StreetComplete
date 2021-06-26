@@ -30,7 +30,7 @@ import javax.inject.Singleton
             noteId,
             position,
             action,
-            fulltext,
+            fullText,
             imagePaths,
             currentTimeMillis(),
             false,
