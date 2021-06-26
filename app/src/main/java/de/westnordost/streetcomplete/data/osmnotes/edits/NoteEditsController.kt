@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
@@ -23,12 +24,13 @@ import javax.inject.Singleton
         text: String? = null,
         imagePaths: List<String> = emptyList()
     ) {
+        val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
         val edit = NoteEdit(
             0,
             noteId,
             position,
             action,
-            text,
+            fulltext,
             imagePaths,
             currentTimeMillis(),
             false,
