@@ -168,4 +168,19 @@ class AddCrossingTest {
         ))
         assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
     }
+
+    @Test fun `crossing at likely transition point between sidewalk-tagging-schemes do not count`() {
+        val shared = node(2, p(0.0, 0.0))
+        val mapData = TestMapDataWithGeometry(listOf(
+            node(1, p(0.0, -1.0)),
+            shared,
+            node(3, p(0.0, +1.0)),
+            node(4, p(-1.0, 0.0)),
+            node(5, p(+1.0, 0.0)),
+            way(1, nodes = listOf(1, 2), tags = mapOf("highway" to "unclassified", "sidewalk" to "both")),
+            way(2, nodes = listOf(3, 2), tags = mapOf("highway" to "unclassified")),
+            way(3, nodes = listOf(4, 2, 5), tags = mapOf("highway" to "footway")),
+        ))
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
 }

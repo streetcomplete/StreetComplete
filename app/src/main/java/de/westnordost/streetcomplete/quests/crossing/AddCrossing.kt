@@ -48,6 +48,20 @@ class AddCrossing : OsmElementQuestType<Boolean> {
          * https://www.openstreetmap.org/node/56606744 */
         roadsByNodeId.removeEndNodes()
 
+        /* require all roads at a shared node to either have no sidewalk tagging or all of them to
+         * have sidewalk tagging: If the sidewalk tagging changes at that point, it may be an
+         * indicator that this is the transition point between separate sidewalk mapping and
+         * sidewalk mapping on road-way. F.e.:
+         * https://www.openstreetmap.org/node/1839120490 */
+        val anySidewalk = setOf("both","left","right")
+        roadsByNodeId.values.removeAll { ways ->
+            if (ways.any { it.tags["sidewalk"] in anySidewalk }) {
+                !ways.all { it.tags["sidewalk"] in anySidewalk }
+            } else {
+                false
+            }
+        }
+
         val footwaysByNodeId = mapData.ways.asSequence()
             .filter { footwaysFilter.matches(it) }
             .groupByNodeIds()
