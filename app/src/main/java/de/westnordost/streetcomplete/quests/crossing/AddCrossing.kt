@@ -18,6 +18,7 @@ class AddCrossing : OsmElementQuestType<Boolean> {
         ways with
           highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
           and area != yes
+          and crossing != no
           and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
