@@ -25,7 +25,7 @@ fun String.toOpeningHoursRules(): OpeningHoursRuleList? {
 
 /** returns null if the list of rules cannot be displayed by the opening hours widget */
 fun OpeningHoursRuleList.toOpeningHoursRows(): List<OpeningHoursRow>? {
-    if (!isSupported()) {
+    if (!isSupportedOpeningHours()) {
         // parsable, but not supported by StreetComplete
         return null
     }
@@ -75,7 +75,7 @@ fun OpeningHoursRuleList.toCollectionTimesRows(): List<OpeningHoursRow>? {
 
 /* ---------------------------------- Checks if it is supported --------------------------------- */
 
-fun OpeningHoursRuleList.isSupported(): Boolean = rules.isSupported()
+fun OpeningHoursRuleList.isSupportedOpeningHours(): Boolean = rules.isSupportedOpeningHours()
 fun OpeningHoursRuleList.isSupportedCollectionTimes(): Boolean = rules.isSupportedCollectionTimes()
 
 /** Returns true if supported by StreetComplete
@@ -85,9 +85,9 @@ fun OpeningHoursRuleList.isSupportedCollectionTimes(): Boolean = rules.isSupport
  * is it possible to recreate it by taking only supported parts
  * later it checks also some additional limitations imposed by SC */
 @JvmName("isSupportedRuleList")
-fun List<Rule>.isSupported(): Boolean =
+fun List<Rule>.isSupportedOpeningHours(): Boolean =
     // all rules must be supported
-    all { it.isSupported() } &&
+    all { it.isSupportedOpeningHours() } &&
     // this kind of opening hours specification likely require fix
     // anyway, it is not representable directly by SC
     (!weekdaysCollideWithAnother())
@@ -102,7 +102,7 @@ fun List<Rule>.isSupportedCollectionTimes(): Boolean =
         // anyway, it is not representable directly by SC
         (!weekdaysCollideWithAnother())
 
-fun Rule.isSupported(): Boolean =
+fun Rule.isSupportedOpeningHours(): Boolean =
     !isEmpty &&
     // 24/7 not supported
     !isTwentyfourseven &&
@@ -123,8 +123,8 @@ fun Rule.isSupported(): Boolean =
     // all sub-elements must be supported if specified
     holidays?.all { it.isSupported() } ?: true &&
     days?.all { it.isSupported() } ?: true &&
-    times?.all { it.isSupported() } ?: true &&
-    dates?.all { it.isSupported() } ?: true
+    times?.all { it.isSupportedOpeningHours() } ?: true &&
+    dates?.all { it.isSupportedOpeningHours() } ?: true
 
 fun Rule.isSupportedCollectionTimes(): Boolean =
     !isEmpty &&
@@ -152,8 +152,8 @@ fun Rule.isSupportedCollectionTimes(): Boolean =
     // months not supported
     dates == null
 
-fun DateRange.isSupported(): Boolean =
-    startDate.isSupported() && (endDate?.isSupported() ?: true) && interval == 0
+fun DateRange.isSupportedOpeningHours(): Boolean =
+    startDate.isSupportedOpeningHours() && (endDate?.isSupportedOpeningHours() ?: true) && interval == 0
 
 fun RuleModifier.isSimpleOpen(): Boolean =
     comment == null && modifier == RuleModifier.Modifier.OPEN
@@ -161,7 +161,7 @@ fun RuleModifier.isSimpleOpen(): Boolean =
 fun RuleModifier.isSimpleOff(): Boolean =
     comment == null && (modifier == RuleModifier.Modifier.OFF || modifier == RuleModifier.Modifier.CLOSED)
 
-fun DateWithOffset.isSupported(): Boolean =
+fun DateWithOffset.isSupportedOpeningHours(): Boolean =
     // "Jan+" not supported
     !isOpenEnded &&
     // "Jan +Fr" not supported
@@ -190,7 +190,7 @@ fun WeekDayRange.isSupported(): Boolean =
     // not sure how/if this can be null, just to be sure
     startDay != null
 
-fun TimeSpan.isSupported(): Boolean =
+fun TimeSpan.isSupportedOpeningHours(): Boolean =
     // "sunrise" etc not supported
     startEvent == null && endEvent == null &&
     interval == 0 &&
@@ -345,7 +345,7 @@ private fun TimeSpan.toTimeRange() = TimeRange(
 )
 
 private fun DateRange.toCircularSection(): CircularSection {
-    require(isSupported())
+    require(isSupportedOpeningHours())
     return CircularSection(startDate.month.ordinal, (endDate ?: startDate).month.ordinal)
 }
 
