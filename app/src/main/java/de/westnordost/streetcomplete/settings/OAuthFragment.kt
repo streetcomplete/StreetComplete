@@ -75,7 +75,6 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
             authorizeUrl = null
             oAuthVerifier = null
         }
-        lifecycleScope.launch { continueAuthentication() }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -86,6 +85,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
         binding.webView.settings.allowContentAccess = true
         binding.webView.settings.setSupportZoom(false)
         binding.webView.webViewClient = webViewClient
+        lifecycleScope.launch { continueAuthentication() }
     }
 
     override fun onPause() {
