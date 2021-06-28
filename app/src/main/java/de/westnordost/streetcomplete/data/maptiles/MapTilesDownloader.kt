@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.enclosingTilesRect
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
 import okhttp3.*
 import okhttp3.internal.Version
 import java.io.IOException
@@ -20,8 +21,6 @@ class MapTilesDownloader @Inject constructor(
 ) {
     private val okHttpClient = OkHttpClient.Builder().cache(cacheConfig.cache).build()
 
-    data class Tile(val zoom: Int, val x: Int, val y: Int)
-
     suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
         var tileCount = 0
         var failureCount = 0
@@ -29,36 +28,38 @@ class MapTilesDownloader @Inject constructor(
         var cachedSize = 0
         val time = currentTimeMillis()
 
-        coroutineScope {
-            for (tile in getDownloadTileSequence(bbox)) {
-                launch {
-                    val result = try {
-                        downloadTile(tile.zoom, tile.x, tile.y)
-                    } catch (e: Exception) {
-                        DownloadFailure
-                    }
-                    ++tileCount
-                    when (result) {
-                        is DownloadFailure -> ++failureCount
-                        is DownloadSuccess -> {
-                            if (result.alreadyCached) cachedSize += result.size
-                            else downloadedSize += result.size
-                        }
-                    }
+        downloadTilesFlow(bbox).collect { result ->
+            ++tileCount
+            when (result) {
+                is DownloadFailure -> ++failureCount
+                is DownloadSuccess -> {
+                    if (result.alreadyCached) cachedSize += result.size
+                    else downloadedSize += result.size
                 }
             }
         }
+
         val seconds = (currentTimeMillis() - time) / 1000.0
         val failureText = if (failureCount > 0) ". $failureCount tiles failed to download" else ""
         Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
     }
 
-    private fun getDownloadTileSequence(bbox: BoundingBox): Sequence<Tile> =
+    private fun downloadTilesFlow(bbox: BoundingBox): Flow<DownloadResult> = channelFlow {
         /* tiles for the highest zoom (=likely current or near current zoom) first,
            because those are the tiles that are likely to be useful first */
-        (vectorTileProvider.maxZoom downTo 0).asSequence().flatMap { zoom ->
-            bbox.enclosingTilesRect(zoom).asTilePosSequence().map { Tile(zoom, it.x, it.y) }
+        (vectorTileProvider.maxZoom downTo 0).forEach { zoom ->
+            bbox.enclosingTilesRect(zoom).asTilePosSequence().forEach { (x, y) ->
+                launch {
+                    val result = try {
+                        downloadTile(zoom, x, y)
+                    } catch (e: Exception) {
+                        DownloadFailure
+                    }
+                    send(result)
+                }
+            }
         }
+    }
 
     private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadResult = suspendCancellableCoroutine { cont ->
         /* adding trailing "&" because Tangram-ES also puts this at the end and the URL needs to be
