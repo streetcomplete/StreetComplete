@@ -938,8 +938,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievement_bicyclist_solved_X">You solved %d quests that help cyclists!</string>
     <string name="achievement_wheelchair_title">Mobility</string>
     <string name="achievement_wheelchair_solved_X">You solved %d quests that help wheelchair users get around town!</string>
-    <string name="achievement_postman_title">Postman</string>
-    <string name="achievement_postman_solved_X">You helped to locate %d addresses!\nThis data is essential not only for the postman but also for any navigation system.</string>
+    <string name="achievement_postman_title">Postal Worker</string>
+    <string name="achievement_postman_solved_X">You helped to locate %d addresses!\nThis data is essential not only for postal workers but also for any navigation system.</string>
     <string name="achievement_building_title">High-Rise</string>
     <string name="achievement_building_solved_X">You solved %d building related quests.\nNote that this app asks for the housenumber of a building only after its type has been determined.</string>
     <string name="achievement_blind_title">Sixth Sense</string>
