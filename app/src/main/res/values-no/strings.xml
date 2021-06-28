@@ -1950,24 +1950,34 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_barrier_type_title">"Hva slags hindring er dette?"</string>
     <string name="quest_barrier_type_gate">"Port"</string>
     <string name="quest_barrier_type_lift_gate">"Løftebom"</string>
-    <string name="quest_barrier_type_bollard">"Påle(r)"</string>
+    <string name="quest_barrier_type_bollard">"Pullert(er)"</string>
     <string name="quest_barrier_type_chain">"Kjetting"</string>
     <string name="quest_barrier_type_rope">"Tau"</string>
+
+    <!-- https://wiki.openstreetmap.org/wiki/Tag:barrier%3Dhampshire_gate ??? -->
+    <string name="quest_barrier_type_wire_gate">"Stålport"</string>
     <string name="quest_barrier_type_cattle_grid">"Ferist"</string>
     <string name="quest_barrier_type_block">"Stort og tungt objekt"</string>
+    <string name="quest_barrier_jersey_barrier">"Veisperring"</string>
 
     <!-- Fuzzy -->
     <string name="quest_barrier_type_log">"Tømmerstokk"</string>
     <string name="quest_barrier_type_kerb">"Kantstein"</string>
+    <string name="quest_barrier_type_height_restrictor">"Høydebarriere"</string>
     <string name="quest_barrier_full_height_turnstile">"Svingdør"</string>
     <string name="quest_barrier_type_turnstile">"Rotasjonsgrind"</string>
     <string name="quest_barrier_type_passage">"Passasje gjennom vegg, gjerde ol."</string>
     <string name="quest_barrier_type_debris_pile">"Avfallshaug"</string>
     <string name="quest_barrier_type_stile_squeezer">"Trang passasje"</string>
-    <string name="quest_barrier_type_stile_ladder">"Gjerdeklyver"</string>
+    <string name="quest_barrier_type_stile_ladder">"Stiger"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Sykkelhinder"</string>
     <string name="quest_barrier_type_kissing_gate">"Sluseport"</string>
+    <string name="quest_barrier_type_stepover">"Gjerdeklyv(gjerdeovergang)"</string>
+    <string name="quest_barrier_type_swing_gate">"Svingport"</string>
     <string name="quest_policeType_title">"Hva slags politistasjon er dette?"</string>
+
+    <!-- Could you please explain where this is used and what it means? -->
+    <string name="quest_barrier_type_kissing_gate_conversion">"Omgjort til en sluseport"</string>
     <string name="quest_stile_type_title">"Hva slags passeringspunkt er dette?"</string>
     <string name="quest_buildingType_semi_detached_description2">"Boliger sammenkoblet på én side"</string>
     <string name="pref_title_quests2">"Oppdragsvalg og prioritet"</string>
@@ -1976,4 +1986,22 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_busStopLit_tram_title">"Er dette trikkestoppet opplyst?"</string>
     <string name="quest_busStopLit_title">"Er busstoppet opplyst?"</string>
     <string name="quest_busStopLit_name_title">"Er busstoppet %s opplyst?"</string>
+    <string name="no_location_permission_warning_title">"Stedstillatelse"</string>
+    <string name="quest_surface_value_woodchips">"Trefliser"</string>
+    <string name="no_camera_app">"Ingen kamera-app tilgjengelig"</string>
+    <string name="quest_busStopBin_tram_name_title">"Har trikkestoppet %s en søppelbøtte?"</string>
+    <string name="quest_busStopBin_tram_title">"Har dette trikkestoppet en søppelbøtte?"</string>
+    <string name="quest_busStopBin_title">"Har bussholdeplassen en søppelbøtte?"</string>
+    <string name="quest_busStopBin_name_title">"Har bussholdeplassen %s en søppelbøtte?"</string>
+    <string name="quest_bollard_type_title">"Hvilken type pullert er dette?"</string>
+    <string name="quest_bollard_type_rising">"Hev-senk"</string>
+    <string name="quest_bollard_type_removable_with_key">"Avtakbar med nøkkel"</string>
+    <string name="quest_bollard_type_removable_without_key">"Avtakbar uten nøkkel"</string>
+    <string name="quest_bollard_type_foldable">"Sammenleggbar"</string>
+    <string name="quest_bollard_type_flexible">"Fleksibel"</string>
+    <string name="quest_bollard_type_fixed">"Fastmontert (kan ikke fjernes)"</string>
+    <string name="quest_camera_type_title">"Hvilken type overvåkingskamera er dette?"</string>
+    <string name="quest_camera_type_dome">"Kuppel"</string>
+    <string name="quest_camera_type_fixed">"Fastmontert"</string>
+    <string name="quest_camera_type_panning">"Panorering"</string>
 </resources>

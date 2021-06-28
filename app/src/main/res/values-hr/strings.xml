@@ -57,9 +57,7 @@
     <string name="confirmation_cancel_prev_download_title">"Zaustavi trenutnu pretragu i pokreni novu ovdje?"</string>
     <string name="notification_downloading">"Tražim zadatke..."</string>
     <string name="turn_on_location_request">"Lokacija je isključena. Želite li sada otvoriti Postavke kako biste je uključili?"</string>
-
-    <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Vaša  lokacija je potrebna za pronalaženje zadataka u vašoj blizini."</string>
+    <string name="no_location_permission_warning">"Lokacija je potrebna za pronalaženje zadataka u vašoj blizini."</string>
     <string name="about_title_authors">"Zasluge"</string>
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick i suradnici"</string>
     <string name="about_title_repository">"Repozitorij izvornog koda"</string>
@@ -119,11 +117,7 @@ Međutim, prije slanja promjena, aplikacija provjerava &lt;a href=\"https://www.
     <string name="autosync_only_on_wifi">"Samo na Wi-Fi"</string>
     <string name="autosync_off">"Isključeno"</string>
     <string name="quest_streetSurface_title">"Kakvu površinu ima ovaj dio ceste?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"Popločano (općenito)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unpaved">"Nepopločano (općenito)"</string>
     <string name="quest_surface_value_ground">"Tlo (općenito)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
@@ -200,9 +194,7 @@ Podaci koje unesete se izravno dodaju u OpenStreetMap pod vašim korisničkim im
     <string name="quest_sport_rugby">"Ragbi"</string>
     <string name="quest_select_hint">"Odaberite:"</string>
     <string name="quest_sport_manySports_confirmation_description">"Je li ovo sportsko igralište namijenjeno upravo tim sportovima (prisutne su oznake i oprema) ili kao sportsko igralište opće namjene za sve vrste igara?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_manySports_confirmation_specific">"Konkretno ove"</string>
+    <string name="quest_manySports_confirmation_specific">"Konkretno ovi"</string>
     <string name="quest_manySports_confirmation_generic">"Opće namjene"</string>
     <string name="quest_sport_manySports_confirmation_title">"Označili ste mnogo sportova"</string>
     <string name="quest_busStopShelter_name_title">"Ima li autobusna stanica %s zaklon?"</string>
@@ -265,8 +257,6 @@ Ako duž cijele ulice nema znakova koji se odnose na istaknuti odjeljak, primjen
 U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne tipkovnice koje podržavaju mnoge jezike su Google Gboard, SwiftKey Keyboard i Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(neodređeno)"</string>
     <string name="quest_fireHydrant_type_title">"Koja je ovo vrsta vatrogasnog hidranta?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"Stup"</string>
     <string name="quest_fireHydrant_type_underground">"Podzemni"</string>
     <string name="quest_fireHydrant_type_wall">"Na zidu"</string>
@@ -338,8 +328,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="cannot_find_bbox_or_reduce_tilt">"Ovdje se ne može skenirati. Pokušajte dodatno približiti ili manje naginjati kartu."</string>
     <string name="quest_crossing_type_title">"Kakav je ovo pješački prijelaz?"</string>
     <string name="quest_crossing_type_unmarked">"Prijelaz bez ikakvih oznaka"</string>
-
-    <!-- Fuzzy -->
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Poništi"</string>
     <string name="produce_mangosteen">"(Mangosteen)"</string>
@@ -363,13 +351,9 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_address_answer_house_name">"Nema kućni broj nego naziv..."</string>
     <string name="quest_address_house_name_label">"Naziv kuće:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"katovi u potkrovlju"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"obični katovi (ne računajući potkrovlje)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Razlikuje se ovisno o dijelu zgrade"</string>
     <string name="quest_buildingLevels_answer_description">"U tom slučaju, jednostavno unesite vrijednosti za najviši dio zgrade."</string>
-
-    <!-- Fuzzy -->
     <string name="unglue_hint">"Dotaknite da biste odlijepili pogled od položaja"</string>
 
     <!-- Fuzzy -->
@@ -632,14 +616,8 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_retail_description">"uključujući zgrade za restorane, kafiće, ..."</string>
     <string name="quest_openingHours_timeSelect_next">"Dalje"</string>
     <string name="quest_tracktype_title">"Kakva je čvrstoća podloge ove staze?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Popločana"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Uglavnom mekana"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"Mekana"</string>
     <string name="quest_building_underground_name_title">"Je li %s potpuno pod zemljom?"</string>
     <string name="quest_building_underground_title">"Je li ova zgrada potpuno pod zemljom?"</string>
@@ -754,8 +732,6 @@ Razdvojiti put sada?"</string>
     <string name="quest_tourism_information_terminal">"Informacijski terminal"</string>
     <string name="quest_tourism_information_map">"Karta"</string>
     <string name="quest_tourism_information_guidepost">"Putokaz"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"Komunalni otpad"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Dakle, ovo je spremnik za bilo kakav otpad, kao što je kućni ili komercijalni miješani  komunalni otpad u vrećama?"</string>
     <string name="quest_accepts_cash_title">"Prihvaća li %s plaćanje gotovinom?"</string>
@@ -1220,8 +1196,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
 
     <!-- Fuzzy -->
     <string name="quest_barrier_type_stile_ladder">"Prijelaz ljestvicama"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_bicycle_barrier">"Biciklistička barijera"</string>
 
     <!-- Fuzzy -->
@@ -1248,4 +1222,22 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
     <string name="quest_busStopLit_tram_title">"Je li ova tramvajska stanica osvjetljena?"</string>
     <string name="quest_busStopLit_title">"Je li ova autobusna stanica osvjetljena?"</string>
     <string name="quest_busStopLit_name_title">"Je li autobusna stanica %s osvjetljena?"</string>
+    <string name="no_location_permission_warning_title">"Dopuštenje za lokaciju"</string>
+    <string name="quest_surface_value_woodchips">"Drvene Sječke"</string>
+    <string name="no_camera_app">"Nije dostupna niti jedna aplikacija za kameru"</string>
+    <string name="quest_busStopBin_tram_name_title">"Ima li tramvajska stanica %s koš za smeće?"</string>
+    <string name="quest_busStopBin_tram_title">"Ima li ova tramvajska stanica koš za smeće?"</string>
+    <string name="quest_busStopBin_title">"Ima li ova autobusna stanica koš za smeće?"</string>
+    <string name="quest_busStopBin_name_title">"Ima li autobusna stanica %s koš za smeće?"</string>
+    <string name="quest_bollard_type_title">"Kakva je ovo vrsta stupića?"</string>
+    <string name="quest_bollard_type_rising">"Automatski podižući"</string>
+    <string name="quest_bollard_type_removable_with_key">"Uklonjiv ključem"</string>
+    <string name="quest_bollard_type_removable_without_key">"Uklonjiv bez ključa"</string>
+    <string name="quest_bollard_type_foldable">"Sklopiv (do zemlje)"</string>
+    <string name="quest_bollard_type_flexible">"Savitljiv"</string>
+    <string name="quest_bollard_type_fixed">"Fiksni (ne može se ukloniti)"</string>
+    <string name="quest_camera_type_title">"Kakva je ovo vrsta nadzorne kamere?"</string>
+    <string name="quest_camera_type_dome">"Kupolasta"</string>
+    <string name="quest_camera_type_fixed">"Fiksna"</string>
+    <string name="quest_camera_type_panning">"Pomična"</string>
 </resources>

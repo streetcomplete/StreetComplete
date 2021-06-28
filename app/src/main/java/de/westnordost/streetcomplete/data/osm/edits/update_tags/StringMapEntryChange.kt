@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import kotlinx.serialization.Serializable
 
-// TODO make into sealed INTERFACE as soon as Kotlin supports that (1.5)
 @Serializable
 sealed class StringMapEntryChange {
     abstract override fun toString(): String

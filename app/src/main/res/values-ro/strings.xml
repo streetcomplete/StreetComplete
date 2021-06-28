@@ -426,7 +426,7 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traduceri"</string>
-    <string name="credits_contributors_title">"Contribuitori la cod"</string>
+    <string name="credits_contributors_title">"Contribuții la cod"</string>
     <string name="credits_author_title">"Autor și întreținător"</string>
     <string name="credits_and_more">"mai mult..."</string>
     <string name="quest_maxspeed_answer_living_street">"Este o stradă locuită"</string>
@@ -1073,7 +1073,7 @@ de realizări"</string>
     <string name="quest_busStopBench_name_title">"Are stația de autobuz %s o bancă?"</string>
     <string name="quest_summit_register_title">"Există un registru al summitului la %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Este un defibrilator (DEA) în interiorul unei clădiri?"</string>
-    <string name="about_title_translate">"Ajută să traduci această aplicație"</string>
+    <string name="about_title_translate">"Ajută la traducerea acestei aplicații"</string>
     <string name="about_description_translate">"%1$s este tradus %2$d%%"</string>
     <string name="quest_oneway2_title">"Este asta o stradă cu sens unic? În ce direcție?"</string>
     <string name="quest_oneway2_dir">"Sens unic în această direcție"</string>
@@ -1258,4 +1258,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_busStopLit_tram_title">"Este iluminat semnul de stop?"</string>
     <string name="quest_busStopLit_title">"Este iluminată această stație?"</string>
     <string name="quest_busStopLit_name_title">"Este stația de autobuz %s iluminată?"</string>
+    <string name="no_location_permission_warning_title">"Permisiunea de a accesa locația"</string>
+    <string name="quest_surface_value_woodchips">"Așchii de lemn"</string>
 </resources>

@@ -59,6 +59,8 @@ open class MapFragment : Fragment(),
     protected var controller: KtMapController? = null
     protected var sceneMapComponent: SceneMapComponent? = null
 
+    private var previousCameraPosition: CameraPosition? = null
+
     var show3DBuildings: Boolean = true
     set(value) {
         if (field == value) return
@@ -207,11 +209,15 @@ open class MapFragment : Fragment(),
             override fun onMapWillChange() {}
             override fun onMapIsChanging() {
                 val camera = cameraPosition ?: return
+                if (camera == previousCameraPosition) return
+                previousCameraPosition = camera
                 onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
                 listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
             }
             override fun onMapDidChange() {
                 val camera = cameraPosition ?: return
+                if (camera == previousCameraPosition) return
+                previousCameraPosition = camera
                 onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
                 listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
             }

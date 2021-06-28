@@ -1261,7 +1261,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_pathSurface_title_steps">"Wat is het oppervlak van deze trappen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_bridleway">"Welke bedekking heeft dit paardenspoor?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Welke bedekking heeft dit ruiterpad?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_pathSurface_title">"Welke bedekking heeft dit pad?"</string>
@@ -2444,10 +2444,28 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_barrier_type_kissing_gate_conversion">"Omgebouwde kissing gate"</string>
     <string name="quest_stile_type_title">"Wat voor soort passage is dit?"</string>
     <string name="quest_buildingType_semi_detached_description2">"aangrenzende eengezinswoning(en)"</string>
-    <string name="pref_title_quests2">"Vraag selectie en prioriteit"</string>
+    <string name="pref_title_quests2">"Vraagselectie en -prioriteit"</string>
     <string name="pref_subtitle_quests">"%1$d van %2$d ingeschakeld"</string>
     <string name="quest_busStopLit_tram_name_title">"Is de tramhalte %s verlicht?"</string>
     <string name="quest_busStopLit_tram_title">"Is deze tramhalte verlicht?"</string>
     <string name="quest_busStopLit_title">"Is deze bushalte verlicht?"</string>
     <string name="quest_busStopLit_name_title">"Is de bushalte %s verlicht?"</string>
+    <string name="no_location_permission_warning_title">"Locatietoestemming"</string>
+    <string name="quest_surface_value_woodchips">"Houtsnippers"</string>
+    <string name="no_camera_app">"Geen camera app beschikbaar"</string>
+    <string name="quest_busStopBin_tram_name_title">"Heeft de tramhalte  %s een afvalbak?"</string>
+    <string name="quest_busStopBin_tram_title">"Heeft deze tramhalte een afvalbak?"</string>
+    <string name="quest_busStopBin_title">"Heeft deze bushalte een afvalbak?"</string>
+    <string name="quest_busStopBin_name_title">"Heeft de bushalte  %s een afvalbak?"</string>
+    <string name="quest_bollard_type_title">"Wat voor soort verkeerspaal is dit?"</string>
+    <string name="quest_bollard_type_rising">"Inzinkbaar"</string>
+    <string name="quest_bollard_type_removable_with_key">"Verwijderbaar met sleutel"</string>
+    <string name="quest_bollard_type_removable_without_key">"Verwijderbaar zonder sleutel"</string>
+    <string name="quest_bollard_type_foldable">"Wegklapbaar"</string>
+    <string name="quest_bollard_type_flexible">"Flexibel"</string>
+    <string name="quest_bollard_type_fixed">"Vast (niet verwijderbaar)"</string>
+    <string name="quest_camera_type_title">"Welk type bewakingscamera is dit?"</string>
+    <string name="quest_camera_type_dome">"Dome"</string>
+    <string name="quest_camera_type_fixed">"Vast"</string>
+    <string name="quest_camera_type_panning">"Beweegbaar"</string>
 </resources>

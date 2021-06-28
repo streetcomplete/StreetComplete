@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import kotlinx.serialization.Serializable
 
-// TODO RENAME BOUNDS?
 @Serializable
 data class BoundingBox(val min: LatLon, val max: LatLon) {
     constructor(

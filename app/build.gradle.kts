@@ -7,7 +7,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
 //    id("kotlin-android-extensions")
-    kotlin("plugin.serialization") version "1.4.30"
+    kotlin("plugin.serialization") version "1.5.0"
 }
 
 android {
@@ -84,9 +84,13 @@ if (keystorePropertiesFile.exists()) {
 }
 
 repositories {
-    mavenLocal()
-    jcenter()
-    maven { url = URI("https://jitpack.io") }
+    google()
+    mavenCentral()
+    jcenter {
+        content {
+            includeGroup("org.sufficientlysecure")
+        }
+    }
 }
 
 configurations {
@@ -97,10 +101,10 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.4.10"
-    val mockitoVersion = "3.7.7"
-    val kotlinxVersion = "1.4.2"
-    val daggerVersion = "2.31.2"
+    val kotlinVersion = "1.5.10"
+    val mockitoVersion = "3.11.2"
+    val kotlinxVersion = "1.5.0"
+    val daggerVersion = "2.37"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
@@ -121,13 +125,13 @@ dependencies {
 
     // Android stuff
     implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.core:core-ktx:1.5.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.annotation:annotation:1.2.0")
-    implementation("androidx.fragment:fragment-ktx:1.3.3")
+    implementation("androidx.fragment:fragment-ktx:1.3.5")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.recyclerview:recyclerview:1.2.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
 
@@ -151,15 +155,15 @@ dependencies {
     implementation("de.westnordost:osmapi-changesets:2.0")
     implementation("de.westnordost:osmapi-notes:2.0")
     implementation("de.westnordost:osmapi-user:2.0")
-    implementation("com.squareup.okhttp3:okhttp:3.12.12")
+    implementation("com.squareup.okhttp3:okhttp:3.12.13")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("me.grantland:autofittextview:0.2.1")
+    // html-textview not maintained anymore, only available on jcenter - should be replaced in the long term
     implementation("org.sufficientlysecure:html-textview:3.9")
-    implementation("com.duolingo.open:rtl-viewpager:2.0.0")
-    implementation("com.google.android:flexbox:2.0.1")
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
 
     // box2d view
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
@@ -179,9 +183,9 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor etc. */
 val bcp47ExportLanguages = setOf(
-    "ar","ast","bg","ca","cs","da","de","el","en","en-AU","en-GB","es","eu",
+    "ar","ast","bg","bs","ca","cs","da","de","el","en","en-AU","en-GB","es","eu",
     "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
-    "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","tr","uk","zh","zh-CN","zh-HK","zh-TW"
+    "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
 )
 
 tasks.register<UpdatePresetsTask>("updatePresets") {

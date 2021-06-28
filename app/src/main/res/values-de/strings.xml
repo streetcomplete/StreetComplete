@@ -126,7 +126,10 @@ Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href
     <string name="quest_surface_value_compacted">"Verdichtet"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
     <string name="quest_surface_value_dirt">"Erdboden"</string>
-    <string name="quest_surface_value_fine_gravel">"Kies"</string>
+
+    <!-- „Kies“ bezeichnet durch Erosion rundgewaschene und geglättete Körner. Ohne Bindemittel ergibt das eine wenig stabile Wegoberfläche. 
+Die Beschreibung des Tags auf der englischen Wikiseite dagegen ist eine stabile Wetdecke. Die deutsche Wikiseite benutzt explizit das Wort „Splitt“, was gebrochene, kantige Steinchen bezeichnet. -->
+    <string name="quest_surface_value_fine_gravel">"Feiner Splitt"</string>
     <string name="quest_surface_value_grass">"Gras"</string>
     <string name="quest_surface_value_grass_paver">"Rasengitter"</string>
     <string name="quest_surface_value_gravel">"Schotter"</string>
@@ -329,7 +332,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_way_lit_road_title">"Ist dieser Straßenabschnitt beleuchtet?"</string>
     <string name="quest_way_lit_automatic">"per Bewegungsmelder"</string>
     <string name="quest_way_lit_24_7">"sogar Tag und Nacht beleuchtet"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht scannen. Zoome weiter herein oder kippe die Karte weniger."</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht suchen. Zoome weiter hinein oder kippe die Karte weniger."</string>
     <string name="quest_crossing_type_title">"Welche Art von Fußgängerüberweg ist das?"</string>
     <string name="quest_crossing_type_unmarked">"Kreuzung ohne Markierungen"</string>
 
@@ -355,7 +358,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_address_answer_house_name">"Keine Nummer, aber ein Hausname…"</string>
     <string name="quest_address_house_name_label">"Hausname:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Dachgeschosse"</string>
-    <string name="quest_buildingLevels_levelsLabel2">"Stockwerke (außer Dachgeschosse)"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"Stockwerke (ohne Dachgeschosse)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Je nach Gebäudeteil verschieden"</string>
     <string name="quest_buildingLevels_answer_description">"In diesem Fall einfach die Werte für den höchsten Gebäudeteil eingeben."</string>
     <string name="unglue_hint">"Antippen, um Ansicht von Position zu trennen"</string>
@@ -482,7 +485,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_title2">"Als was wurde dieses Gebäude errichtet?"</string>
     <string name="quest_generic_item_invalid_value">"Bitte triff eine genauere Auswahl."</string>
     <string name="quest_buildingType_answer_multiple_types">"Hat mehrere Bestimmungen"</string>
-    <string name="quest_buildingType_answer_multiple_types_description">"Wähle einfach die Hauptbestimmung des Gebäudes. Wenn sich zum Beispiel im Erdgeschoss Läden befinden, aber darüber Wohnungen sind, ist es trotzdem ein Mehrfamilienhaus."</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Wähle einfach die Hauptbestimmung des Gebäudes. Wenn sich z.B. im Erdgeschoss Läden befinden, aber darüber Wohnungen sind, ist es trotzdem ein Mehrfamilienhaus."</string>
     <string name="quest_buildingType_answer_construction_site">"Wird noch errichtet"</string>
     <string name="quest_buildingType_residential">"Wohngebäude"</string>
     <string name="quest_buildingType_residential_description">"Gebäude, in dem Leute wohnen"</string>
@@ -681,7 +684,7 @@ Jetzt aufspalten?"</string>
     <string name="quest_recycling_type_scrap_metal">"Altmetall"</string>
     <string name="quest_recycling_type_any_glass">"Jede Art von Glas"</string>
     <string name="quest_recycling_glass_title">"Können hier nur Glasflaschen und -gläser entsorgt werden, oder jede Art von Glas?"</string>
-    <string name="quest_determineRecyclingGlass_description_any_glass">"Beispiele von Glas das oft nicht akzeptiert wird: Sicherheitsglas, Fensterglas, Glasgeschirr, Glühbirnen oder Spiegel."</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Beispiele von Glas, das oft nicht akzeptiert wird: Sicherheitsglas, Fensterglas, Glasgeschirr, Glühbirnen oder Spiegel."</string>
     <string name="about_title_changelog">"Versionshistorie"</string>
     <string name="title_whats_new">"Was ist neu?"</string>
     <string name="about_title_rate">"Diese App bewerten"</string>
@@ -781,7 +784,7 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="achievement_regular_description">"Du hast %d Tage lang mit dieser App zu OSM beigetragen! Stammnutzer sind das Rückgrat von OSM, vielen Dank für dein Engagement! ❤"</string>
 
     <!-- Ist hier nicht "Radfahrer" gebräuchlicher? -->
-    <string name="achievement_bicyclist_title">"Fahrradfahrer"</string>
+    <string name="achievement_bicyclist_title">"Radfahrer"</string>
     <string name="achievement_bicyclist_solved_X">"Du hast %d Aufgaben gelöst, die Radfahrern helfen!"</string>
     <string name="achievement_wheelchair_title">"Mobilität"</string>
     <string name="achievement_wheelchair_solved_X">"Du hast %d Aufgaben gelöst, die Rollstuhlfahrern helfen, sich in der Stadt zurechtzufinden!"</string>
@@ -789,13 +792,13 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="achievement_postman_solved_X">"Du hast geholfen, %d Adressen zu lokalisieren!
 Diese Daten sind unentbehrlich nicht nur für Postboten, sondern auch für  Navigationssysteme."</string>
     <string name="achievement_building_title">"Hoch hinaus"</string>
-    <string name="achievement_building_solved_X">"Du hast %d Gebäude-relevante Aufgaben gelöst.
+    <string name="achievement_building_solved_X">"Du hast %d gebäudebezogene Aufgaben gelöst.
 Beachte, dass diese App nur Hausnummern von Gebäuden abfragt, deren Typ bereits bestimmt wurde."</string>
     <string name="achievement_blind_title">"Sechster Sinn"</string>
     <string name="achievement_blind_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Sehbehinderte sind."</string>
 
     <!-- Wäre hier nicht "Pedestrian"/"Fußgänger" passender als "Runner"/"Läufer"? -->
-    <string name="achievement_pedestrian_title">"Läufer"</string>
+    <string name="achievement_pedestrian_title">"Fußgänger"</string>
     <string name="achievement_pedestrian_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Fußgänger sind."</string>
     <string name="achievement_veg_title">"Tierlieb"</string>
     <string name="achievement_veg_solved_X">"Du hast %d Aufgaben gelöst, die Vegetariern und Veganen am Herzen liegen."</string>
@@ -1075,5 +1078,21 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_busStopLit_title">"Ist diese Bushaltestelle beleuchtet?"</string>
     <string name="quest_busStopLit_name_title">"Ist die Bushaltestelle %s beleuchtet?"</string>
     <string name="no_location_permission_warning_title">"Standortzugriff"</string>
-    <string name="quest_surface_value_woodchips">"Holzschnitzel"</string>
+    <string name="quest_surface_value_woodchips">"Hackschnitzel"</string>
+    <string name="no_camera_app">"Keine Kamera-App verfügbar"</string>
+    <string name="quest_busStopBin_tram_name_title">"Hat die Straßenbahnhaltestelle %s einen Mülleimer?"</string>
+    <string name="quest_busStopBin_tram_title">"Hat diese Straßenbahnhaltestelle einen Mülleimer?"</string>
+    <string name="quest_busStopBin_title">"Hat diese Bushaltestelle einen Mülleimer?"</string>
+    <string name="quest_busStopBin_name_title">"Hat die Bushaltestelle %s einen Mülleimer?"</string>
+    <string name="quest_bollard_type_title">"Was für ein Poller ist das?"</string>
+    <string name="quest_bollard_type_rising">"Versenkbar"</string>
+    <string name="quest_bollard_type_removable_with_key">"Herausnehmbar mit Schlüssel"</string>
+    <string name="quest_bollard_type_removable_without_key">"Herausnehmbar ohne Schlüssel"</string>
+    <string name="quest_bollard_type_foldable">"Umklappbar"</string>
+    <string name="quest_bollard_type_flexible">"Flexibel"</string>
+    <string name="quest_bollard_type_fixed">"Fest (nicht entfernbar)"</string>
+    <string name="quest_camera_type_title">"Welche Art von Überwachungskamera ist das?"</string>
+    <string name="quest_camera_type_dome">"Kuppel"</string>
+    <string name="quest_camera_type_fixed">"Fest"</string>
+    <string name="quest_camera_type_panning">"Schwenkend"</string>
 </resources>

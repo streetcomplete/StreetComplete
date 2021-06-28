@@ -1490,6 +1490,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="about_description_donate">"Uygulamamızı desteklemeyi düşündüğünüz için teşekkür ederiz! Mevcut bağışları görmek ve bağışyapmak için ilgili platforma dokunun:"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Burayı tarayın"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Mevcut taramaya devam et"</string>
     <string name="quest_tourism_information_title">"Bu ne tür bir turist bilgisi?"</string>
     <string name="quest_tourism_information_name_title">"%s ne tür bir turist bilgisi?"</string>
@@ -1517,7 +1518,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="user_achievements_title">"Başarımlar"</string>
     <string name="user_links_title">"Bağlantı Koleksyonu"</string>
     <string name="user_profile_title">"Profil"</string>
-    <string name="user_statistics_quest_wiki_link">"Belgelendirme"</string>
+    <string name="user_statistics_quest_wiki_link">"Dokümantasyon"</string>
     <string name="achievements_unlocked_link">"Kilidi Açılan Bağlantı:"</string>
     <string name="achievements_unlocked_links">"Kilidi Açılan Bağlantılar:"</string>
     <string name="link_category_intro_title">"Tanıtım"</string>

@@ -221,7 +221,9 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="upload_server_error">"Erreur de connexion lors de l’envoi des réponses. Réessayez plus tard."</string>
     <string name="quest_generic_hasFeature_yes">"Oui"</string>
     <string name="quest_generic_hasFeature_no">"Non"</string>
-    <string name="quest_busStopShelter_title">"Cet arrêt de bus dispose-t-il d'un abri ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_title">"Cet arrêt de bus a-t-il un abri ?"</string>
     <string name="quest_bikeParkingCapacity_title">"Combien de vélos peuvent être garés ici ?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Ce numéro de rue semble inhabituel."</string>
     <string name="quest_sport_title">"Quel est le sport pratiqué ici ?"</string>
@@ -315,7 +317,9 @@ S'il n'y a pas de panneau applicable à ce tronçon le long de la voie, les limi
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abréviation dans le nom %s ?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Ces toilettes sont-elles équipées d'une table à langer ?"</string>
-    <string name="quest_baby_changing_table_title">"Est-ce que %s dispose d'une table à langer ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"Est-ce que %s a une table à langer ?"</string>
     <string name="quest_recycling_type_title">"De quel type d'installation de recyclage s'agit-il ?"</string>
     <string name="recycling_centre">"Déchèterie"</string>
     <string name="overground_recycling_container">"Conteneur de recyclage"</string>
@@ -419,7 +423,9 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_parkingType_surface">"Parking de surface"</string>
     <string name="quest_parkingType_underground">"Parking souterrain"</string>
     <string name="quest_parkingType_multiStorage">"Parking à étages"</string>
-    <string name="quest_toiletAvailability_name_title">"Est-que %s dispose de toilettes ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_toiletAvailability_name_title">"Est-ce que %s a des toilettes ?"</string>
     <string name="quest_powerPolesMaterial_title">"De quel matériau est fait ce poteau électrique ?"</string>
     <string name="quest_powerPolesMaterial_wood">"Bois"</string>
     <string name="quest_powerPolesMaterial_metal">"Acier"</string>
@@ -512,8 +518,12 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_internet_access_wired">"Filaire"</string>
     <string name="quest_internet_access_terminal">"Ordinateur avec accès internet"</string>
     <string name="quest_internet_access_no">"Pas de connexion"</string>
-    <string name="quest_busStopShelter_tram_name_title">"L’arrêt de tramway %s dispose-t-il d'un abri ?"</string>
-    <string name="quest_busStopShelter_tram_title">"Cet arrêt de tramway dispose-t-il d'un abri ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"L'arrêt de tramway %s a-t-il un abri ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_title">"Cet arrêt de tramway a-t-il un abri ?"</string>
     <string name="quest_bench_backrest_title">"Ce banc a-t-il un dossier ?"</string>
     <string name="quest_bench_answer_picnic_table">"C’est une table de pique-nique"</string>
     <string name="quest_religion_for_place_of_worship_title">"Quelle est la religion pratiquée dans ce lieu ?"</string>
@@ -1022,8 +1032,6 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 "aux États-Unis" -->
     <string name="user_profile_local_rank">"Classement (%s)"</string>
     <string name="user_profile_days_active">"Jours actifs"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Niveaux accomplis"</string>
     <string name="quest_address_street_title">"A quelle rue appartient le bâtiment portant le numéro %s ?"</string>
     <string name="quest_address_street_no_named_streets">"Cela n'appartient pas à une rue précise"</string>
@@ -1161,21 +1169,11 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- In France there is also "bateau" which means the kerb is lowered locally but I believe that wouldn't exactly decribe the inclined state of a curb ramp. "bateau" would generally have a 2/3 cm height and be used in place where vehicles exit private property, while a ramp would be used at the intersection of a crosswalk with the curb (not really often but still)  and provide a smoother transition. -->
     <string name="quest_kerb_height_lowered_ramp">"Il s'agit d'une pente douce"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Spécifiez le nombre total de voies délimitées (dans les deux sens) utilisables pour le trafic routier. Les voies cyclables et emplacement de parking ne comptent pas. Si certaines voies sont réservées aux bus, laissez une note."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Spécifiez le nombre de voies délimitées utilisables pour le trafic routier. Les voies cyclables et emplacement de parking ne comptent pas. Si certaines voies sont réservées aux bus, laissez une note."</string>
     <string name="quest_surface_value_rock">"Rocher"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_yes">"Les grands camions peuvent passer"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Les grands camions ne rentrent pas"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_street_hint">"Tapez la rue sur le plan"</string>
     <string name="quest_crossing_type_marked">"Passage piéton marqué"</string>
     <string name="quest_parkingType_street_side">"Stationnement à coté de la chaussée"</string>
@@ -1298,4 +1296,58 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_busStopLit_tram_title">"Cet arrêt de tramway est-il éclairé ?"</string>
     <string name="quest_busStopLit_title">"Cet arrêt de bus est-il éclairé ?"</string>
     <string name="quest_busStopLit_name_title">"L'arrêt de bus %s est-il éclairé ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_location_permission_warning_title">"Autorisation de localisation"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_surface_value_woodchips">"Copeaux de bois"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_camera_app">"Pas d'application caméra disponible"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_name_title">"L'arrêt de tramway %s a-t-il une poubelle ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_title">"Cet arrêt de tramway a-t-il une poubelle ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_title">"Cet arrêt de bus a-t-il une poubelle ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_name_title">"L'arrêt de bus %s a-t-il une poubelle ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bollard_type_title">"De quel type de borne est-ce ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bollard_type_rising">"Escamotable"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bollard_type_removable_with_key">"Démontable avec une clé"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bollard_type_removable_without_key">"Démontable sans clé"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bollard_type_foldable">"Pliable"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bollard_type_flexible">"Flexible"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bollard_type_fixed">"Fixé (non démontable)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_camera_type_title">"Quel type de caméra de surveillance est-ce ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_camera_type_dome">"Dôme"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_camera_type_fixed">"Fixé"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_camera_type_panning">"Panoramique"</string>
 </resources>
