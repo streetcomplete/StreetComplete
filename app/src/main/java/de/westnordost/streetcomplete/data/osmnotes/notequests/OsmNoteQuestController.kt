@@ -199,8 +199,10 @@ private fun Note.shouldShowAsQuest(
     // don't show notes hidden by user
     if (id in blockedNoteIds) return false
 
-    /* don't show notes where user replied last */
-    if (comments.last().isReplyFromUser(userId)) return false
+    /* don't show notes where user replied last unless he wrote a survey required marker */
+    if (comments.last().isReplyFromUser(userId) &&
+        !comments.last().containsSurveyRequiredMarker()
+    ) return false
 
     /* newly created notes by user should not be shown if it was both created in this app and has no
        replies yet */
@@ -238,10 +240,11 @@ private fun Note.probablyContainsQuestion(): Boolean {
     return text?.matches(".*$questionMarksAroundTheWorld.*".toRegex()) ?: false
 }
 
-private fun Note.containsSurveyRequiredMarker(): Boolean {
-    val surveyRequiredMarker = "#surveyme"
-    return comments.any { it.text?.matches(".*$surveyRequiredMarker.*".toRegex()) == true }
-}
+private fun Note.containsSurveyRequiredMarker(): Boolean =
+    comments.any { it.containsSurveyRequiredMarker() }
+
+private fun NoteComment.containsSurveyRequiredMarker(): Boolean =
+    text?.matches(".*#surveyme.*".toRegex()) == true
 
 private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     val firstComment = comments.first()

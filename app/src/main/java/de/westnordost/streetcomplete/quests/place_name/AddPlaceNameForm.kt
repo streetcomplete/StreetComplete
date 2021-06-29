@@ -65,7 +65,7 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
         val elementFeature = getOsmElementFeature() ?: return emptyList()
         val localeList = ConfigurationCompat.getLocales(requireContext().resources.configuration)
         return featureDictionary
-            .byTerm(startsWith)
+            .byTerm(startsWith.trim())
             .forGeometry(osmElement!!.geometryType)
             .inCountry(countryInfo.countryCode)
             .forLocale(*localeList.toTypedArray())
