@@ -71,7 +71,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
     }
 
     private fun getSelectedFeature(): Feature? {
-        val input = presetsEditText.text.toString().trim()
+        val input = presetsEditText.text.toString()
         return getFeatures(input).firstOrNull()?.takeIf { it.canonicalName == StringUtils.canonicalize(input) }
     }
 
@@ -79,7 +79,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
         val context = context ?: return emptyList()
         val localeList = ConfigurationCompat.getLocales(context.resources.configuration)
         return featureDictionary
-            .byTerm(startsWith)
+            .byTerm(startsWith.trim())
             .forGeometry(osmElement!!.geometryType)
             .inCountry(countryInfo.countryCode)
             .forLocale(*localeList.toTypedArray())
