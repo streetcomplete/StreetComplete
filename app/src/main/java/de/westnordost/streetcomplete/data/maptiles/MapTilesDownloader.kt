@@ -14,6 +14,7 @@ import java.io.IOException
 import java.lang.System.currentTimeMillis
 import javax.inject.Inject
 import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
 class MapTilesDownloader @Inject constructor(
     private val vectorTileProvider: VectorTileProvider,
@@ -50,48 +51,46 @@ class MapTilesDownloader @Inject constructor(
         (vectorTileProvider.maxZoom downTo 0).forEach { zoom ->
             bbox.enclosingTilesRect(zoom).asTilePosSequence().forEach { (x, y) ->
                 launch {
-                    val result = try {
-                        downloadTile(zoom, x, y)
+                    try {
+                        val result = downloadTile(zoom, x, y)
+                        val logText = if (result.alreadyCached) "in cache" else "downloaded"
+                        Log.v(TAG, "Tile $zoom/$x/$y $logText")
+                        send(result)
                     } catch (e: Exception) {
-                        DownloadFailure
+                        Log.w(TAG, "Error retrieving tile $zoom/$x/$y: ${e.message}")
+                        send(DownloadFailure)
                     }
-                    send(result)
                 }
             }
         }
     }
 
-    private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadResult = suspendCancellableCoroutine { cont ->
+    private suspend fun downloadTile(zoom: Int, x: Int, y: Int): DownloadSuccess = suspendCancellableCoroutine { cont ->
         /* adding trailing "&" because Tangram-ES also puts this at the end and the URL needs to be
            identical in order for the cache to work */
         val url = vectorTileProvider.getTileUrl(zoom, x, y) + "&"
         val httpUrl = HttpUrl.parse(url)
         require(httpUrl != null) { "Invalid URL: $url" }
 
-        val builder = Request.Builder()
+        val request = Request.Builder()
             .url(httpUrl)
             .cacheControl(cacheConfig.cacheControl)
-        builder.header("User-Agent", ApplicationConstants.USER_AGENT + " / " + Version.userAgent())
-        val call = okHttpClient.newCall(builder.build())
+            .header("User-Agent", ApplicationConstants.USER_AGENT + " / " + Version.userAgent())
+            .build()
+        val call = okHttpClient.newCall(request)
 
         /* since we use coroutines and this is in the background anyway, why not use call.execute()?
         *  Because we want to let the OkHttp dispatcher control how many HTTP requests are made in
         *  parallel */
         val callback = object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                Log.w(TAG, "Error retrieving tile $zoom/$x/$y: ${e.message}")
-                cont.resume(DownloadFailure)
+                cont.resumeWithException(e)
             }
 
             override fun onResponse(call: Call, response: Response) {
-                var size = 0
-                response.body()?.use { body ->
-                    // just get the bytes and let the cache magic do the rest...
-                    size = body.bytes().size
-                }
+                // just get the bytes and let the cache magic do the rest...
+                val size = response.body()?.use { it.bytes().size } ?: 0
                 val alreadyCached = response.cacheResponse() != null
-                val logText = if (alreadyCached) "in cache" else "downloaded"
-                Log.v(TAG, "Tile $zoom/$x/$y $logText")
                 cont.resume(DownloadSuccess(alreadyCached, size))
             }
         }
