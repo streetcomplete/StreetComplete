@@ -23,6 +23,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
     private val excludedWaysFilter by lazy { """
         ways with
           highway and access ~ private|no
+          or railway
           or highway = service
           or highway and oneway and oneway != no
     """.toElementFilterExpression()}
