@@ -1,5 +1,4 @@
 import java.util.Properties
-import java.net.URI
 import java.io.FileInputStream
 
 plugins {

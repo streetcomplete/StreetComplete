@@ -42,7 +42,7 @@
     <string name="quest_noteDiscussion_title">"Kan du bidra till denna anteckning?"</string>
     <string name="quest_noteDiscussion_no">"Nej, dölj"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
-    <string name="confirmation_discard_title">"Ångra inmatningen?"</string>
+    <string name="confirmation_discard_title">"Släng inmatningen?"</string>
     <string name="confirmation_discard_positive">"Släng"</string>
     <string name="confirmation_discard_negative">"Avbryt"</string>
     <string name="action_download">"Sök efter uppdrag här"</string>
@@ -273,7 +273,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="credits_translations_title">"Översättningar"</string>
     <string name="credits_contributors_title">"Kodbidragsgivare"</string>
     <string name="credits_author_title">"Författare och underhållare"</string>
-    <string name="credits_and_more">"och mer…"</string>
+    <string name="credits_and_more">"och fler…"</string>
     <string name="quest_maxspeed_answer_living_street">"Det är gångfartsområde"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Så det finns en skylt som ser ut så här?"</string>
     <string name="quest_orchard_produce_title">"Vad odlas här?"</string>
@@ -356,7 +356,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_address_answer_house_name">"Inget husnummer men ett namn…"</string>
     <string name="quest_address_house_name_label">"Husnamn:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"takvåningar"</string>
-    <string name="quest_buildingLevels_levelsLabel2">"vanliga våningar (räknar inte takvåningar)"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"vanliga våningar (utan takvåningar)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Varierar mellan olika husdelar"</string>
     <string name="quest_buildingLevels_answer_description">"I sådana fall, fyll i värdet för den högsta husdelen."</string>
     <string name="unglue_hint">"Tryck för att lossa vy från position"</string>
@@ -391,7 +391,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_carWashType_selfService">"Självservice"</string>
     <string name="quest_carWashType_service">"Anställda tvättar bilen"</string>
     <string name="enable_quest_confirmation_title">"Aktivera det här uppdraget?"</string>
-    <string name="default_disabled_msg_go_inside">"Frågan är avaktiverad i utgångsläget då du troligtvis behöver gå inomhus för att svara på frågor av den här typen."</string>
+    <string name="default_disabled_msg_go_inside">"Uppdragstypen är inaktiverad som standard eftersom du troligtvis behöver gå inomhus för att kunna besvara den."</string>
     <string name="quest_housenumber_conscription_number">"Konskriptionsnummer"</string>
     <string name="quest_housenumber_street_number_optional">"Orienteringsnummer (valfritt)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Även cykelbana på andra sidan…"</string>
@@ -407,11 +407,11 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
 Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men att det inte finns stödhandtag eller anpassad tvättho."</string>
     <string name="map_btn_create_note">"Skapa en ny anteckning"</string>
     <string name="create_new_note_unprecise">"Zooma in ytterligare för att skapa en anteckning"</string>
-    <string name="create_new_note_description">"Du har möjlighet att lämna en offentlig anteckning på platsen som andra kartläggare kan kommentera och förhoppningsvis avgöra. Justera anteckningens position genom att flytta kartan."</string>
+    <string name="create_new_note_description">"Du har möjlighet att lämna en offentlig anteckning på platsen åt andra kartläggare. Justera anteckningens position genom att flytta kartan:"</string>
     <string name="quest_generic_looks_like_this">"Ser vanligtvis ut så här:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_cycleway_title2">"Finns det en cykelväg här? Vilken typ?"</string>
-    <string name="quest_bridge_structure_title">"Vilken typ av bro är det här?"</string>
+    <string name="quest_bridge_structure_title">"Vad för slags bro är det här?"</string>
     <string name="quest_internet_access_name_title">"Vilken typ av internetuppkoppling erbjuder %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Kabel (LAN)"</string>
@@ -457,18 +457,18 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_tramStopName_title">"Vad heter den här spårvagnshållplatsen?"</string>
     <string name="quest_housenumber_multiple_numbers">"Den har flera husnummer"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Du kan fylla i husnummer separerade med komman eller i intervall separerade med bindestreck. Till exempel 1,3 eller 2-6."</string>
-    <string name="quest_bicycle_parking_type_stand">"Ställ"</string>
+    <string name="quest_bicycle_parking_type_stand">"Ställ (klarar cykelram)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Framhjulsställ"</string>
     <string name="quest_bicycle_parking_type_shed">"Skjul"</string>
     <string name="quest_bicycle_parking_type_locker">"Skåp"</string>
     <string name="quest_bicycle_parking_type_building">"Byggnad"</string>
-    <string name="quest_bicycle_parking_type_title">"Vilken typ av cykelparkering är det här?"</string>
+    <string name="quest_bicycle_parking_type_title">"Vad för slags cykelparkering är det här?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_suggestion_lane">"cykelkörfält (uppmaning)"</string>
     <string name="quest_postboxCollectionTimes_title">"Vad har den här brevlådan för tömningstider?"</string>
     <string name="quest_collectionTimes_add_times">"Lägg till tömningstid"</string>
-    <string name="quest_collectionTimes_answer_no_times_specified">"Tömningstid är inte specificerad"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"Ingen tömningstid angiven"</string>
     <string name="quest_construction_road_title">"Är den här vägen färdigställd?"</string>
     <string name="quest_construction_cycleway_title">"Är den här cykelvägen färdigställd?"</string>
     <string name="quest_construction_footway_title">"Är den här gångvägen färdigställd?"</string>
@@ -528,7 +528,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_buildingType_school">"Skolbyggnad"</string>
     <string name="quest_buildingType_college">"Högskolebyggnad"</string>
     <string name="quest_buildingType_hospital">"Sjukhusbyggnad"</string>
-    <string name="quest_buildingType_stadium">"Idrottsarena"</string>
+    <string name="quest_buildingType_stadium">"Idrottsarena/stadion"</string>
     <string name="quest_buildingType_train_station">"Tågstation"</string>
     <string name="quest_buildingType_transportation">"Kollektivtrafiksbyggnad"</string>
     <string name="quest_buildingType_university">"Universitetsbyggnad"</string>
@@ -570,7 +570,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="notification_channel_download">"Hämta"</string>
     <string name="quest_playground_access_title">"Är den här lekplatsen tillgänglig för allmänheten?"</string>
     <string name="quest_segregated_title">"Hur är gångbanan och cykelvägen utformad här?"</string>
-    <string name="dialog_tutorial_upload">"För att ladda upp ändringarna manuellt, klicka på knappen som ser ut så här."</string>
+    <string name="dialog_tutorial_upload">"För att ladda upp ändringarna manuellt, använd knappen som ser ut så här."</string>
     <string name="quest_segregated_separated">"Separerade från varandra"</string>
     <string name="quest_segregated_mixed">"Cyklister och gångtrafikanter delar bana"</string>
     <string name="quest_maxheight_title">"Vad är maxhöjden här?"</string>
@@ -599,7 +599,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_traffic_signals_button_title">"Har dessa trafikljus en knapp för att begära grön gubbe?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Hur många motorcyklar kan parkeras här?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Har denna motorcykelparkering tak (skyddad från regn)?"</string>
-    <string name="default_disabled_msg_maxspeed">"Denna söktyp är inaktiverad som standard eftersom du vanligtvis måste kontrollera hela gatan efter hastighetsbegränsningsskyltar, inte bara den markerade sektionen. Detta kan ibland vara ganska överdrivet bara för att lösa ett enda uppdrag."</string>
+    <string name="default_disabled_msg_maxspeed">"Uppdragstypen är inaktiverad som standard eftersom du vanligtvis måste kontrollera hela gatan efter hastighetsbegränsningsskyltar, inte bara den markerade delen. Detta kan ibland vara ganska överdrivet bara för att lösa ett enda uppdrag."</string>
     <string name="pref_title_quests_restore_hidden">"Återställ dolda uppdrag"</string>
     <string name="restore_hidden_success">"Återställde %d dolda uppdrag"</string>
 
@@ -625,7 +625,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="action_open_location">"Öppna plats i en annan app"</string>
     <string name="map_application_missing">"Ingen annan kartapplikation installerad"</string>
     <string name="label_housenumber">"husnummer"</string>
-    <string name="label_blocknumber">"kvarternummer"</string>
+    <string name="label_blocknumber">"kvartersnummer"</string>
     <string name="quest_busStopShelter_covered">"Hela hållplatsen har tak"</string>
     <string name="quest_ferry_pedestrian_name_title">"Transporterar %s fotgängare?"</string>
     <string name="quest_ferry_pedestrian_title">"Transporterar denna färjelinje fotgängare?"</string>
@@ -691,8 +691,8 @@ Dela den nu?"</string>
     <string name="about_summary_donate">"Visa din uppskattning! ❤️"</string>
     <string name="about_description_donate">"Tack för att du överväger att stödja den här appen! För att se aktuella donationer och donera själv, tryck på respektive plattform:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Vilken religion utövas i %s?"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Skanna här istället"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Återuppta pågående skanning"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Sök här istället"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Fortsätt nuvarande sökning"</string>
     <string name="quest_buildingType_garages_description">"Separata platser för olika ägare/hyresgäster"</string>
     <string name="quest_tourism_information_title">"Vad för slags turistinformation är det här?"</string>
     <string name="quest_tourism_information_name_title">"Vad för slags turistinformation är %s?"</string>
@@ -770,7 +770,7 @@ Slutligen, kom ihåg att vara säker: var medveten om din omgivning och gå inte
     <string name="link_openstreetcam_description">"En tjänst och app för att dela gatunivå-bilder genom crowdsourcing, med uttryckligt tillstånd att använda dem för att bidra till OSM"</string>
 
     <!-- Fuzzy -->
-    <string name="link_openrouteservice_wheelchair_description">"Sväng för sväng navigering för rullstolsanvändare"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Sväng för sväng-navigering för rullstolsanvändare"</string>
 
     <!-- Fuzzy -->
     <string name="link_nominatim_description">"Geokodern för OSM-data, som används av många andra tjänster"</string>
@@ -780,18 +780,18 @@ Slutligen, kom ihåg att vara säker: var medveten om din omgivning och gå inte
     <string name="link_show_me_the_way_description">"Se OSM-ändringar i realtid"</string>
 
     <!-- Fuzzy -->
-    <string name="link_osrm_description">"Den snabbaste dirigeringsmotorn som finns"</string>
+    <string name="link_osrm_description">"Den snabbaste ruttmotorn som finns"</string>
     <string name="link_openrouteservice_description">"Ruttberäkning för en mängd olika fordon och till fots, var och en med inställningar. Kan också visa isokroner (områden som går att nå på X minuter från en utgångspunkt)."</string>
     <string name="link_osm_haiku_description">"Använder OSM-data för att skapa en haiku (en form av japansk poesi)"</string>
     <string name="link_openinframap_description">"En karta som visar el-, tele-, gas- och oljeinfrastruktur"</string>
     <string name="link_openorienteeringmap_description">"Skapa utskrivbara orienteringskartor"</string>
 
     <!-- Fuzzy -->
-    <string name="link_openstreetbrowser_description">"En karta för att bläddra i OpenStreetMap-kartfunktioner efter kategori"</string>
+    <string name="link_openstreetbrowser_description">"En karta för att bläddra bland OpenStreetMap-kartfunktioner efter kategori"</string>
     <string name="link_weeklyosm_description">"Blogg med nyheter varje vecka om vad som händer i OpenStreetMap-världen"</string>
     <string name="link_figuregrounder_description">"Skapa affischer med markfigursdiagram av en stad eller stadsdel"</string>
     <string name="achievement_first_edit_title">"Första uppdraget löst"</string>
-    <string name="achievement_first_edit_description">"Välkommen till OpenStreetMap-gemenskapen! På din profilskärm kan du se mer information för varje uppdragstyp du har löst."</string>
+    <string name="achievement_first_edit_description">"Välkommen till OpenStreetMap-gemenskapen! På din profilskärm kan du se mer information om varje uppdragstyp som du har löst."</string>
     <string name="achievement_surveyor_title">"Lantmätare"</string>
     <string name="achievement_surveyor_solved_X">"Du löste %d uppdrag! Fortsätt att låsa upp fler prestationer som innehåller länkar till OSM och andra kartrelaterade appar och projekt!"</string>
     <string name="achievement_regular_title">"Stammis"</string>
@@ -804,8 +804,8 @@ Slutligen, kom ihåg att vara säker: var medveten om din omgivning och gå inte
     <string name="achievement_postman_solved_X">"Du hjälpte till att hitta %d adresser!
 Dessa uppgifter är viktiga inte bara för brevbäraren utan också för alla navigationssystem."</string>
     <string name="achievement_building_title">"Höghus"</string>
-    <string name="achievement_building_solved_X">"Du löste %d byggrelaterade uppdrag.
-Observera att den här appen ber om husnummer för en byggnad först efter att dess typ har fastställts."</string>
+    <string name="achievement_building_solved_X">"Du löste %d byggnadsrelaterade uppdrag.
+Observera att appen ber om husnummer för en byggnad först efter att dess typ har fastställts."</string>
     <string name="achievement_blind_title">"Sjätte sinne"</string>
     <string name="achievement_blind_solved_X">"Du löste %d uppdrag som är intressanta för synskadade."</string>
     <string name="achievement_pedestrian_title">"Löpare"</string>
@@ -813,7 +813,7 @@ Observera att den här appen ber om husnummer för en byggnad först efter att d
     <string name="achievement_veg_title">"Djurvän"</string>
     <string name="achievement_veg_solved_X">"Du löste %d uppdrag som är intressanta för människor som lever på en köttfri diet!"</string>
     <string name="achievement_car_title">"På god väg"</string>
-    <string name="achievement_car_solved_X">"Du löste %d uppdrag som förbättrar detaljer på gator och vägar och är verkligen på god väg(!) till toppen!"</string>
+    <string name="achievement_car_solved_X">"Du löste %d uppdrag som förbättrar detaljer på gator och vägar och du är verkligen på god väg(!) till toppen!"</string>
     <string name="unread_messages_message">"Du har %d olästa meddelanden i inkorgen"</string>
     <string name="unread_messages_button">"Öppna inkorgen"</string>
     <string name="action_about2">"Om"</string>
@@ -843,7 +843,7 @@ nivåer"</string>
     <string name="quest_recycling_type_cooking_oil">"Matlagningsolja"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolja"</string>
     <string name="link_photon_description">"En fristående tillägg till Nominatim med luddig sökning och sök-medan-du-skriver"</string>
-    <string name="link_graphhopper_description">"En flexibel dirigeringsmotor"</string>
+    <string name="link_graphhopper_description">"En flexibel ruttmotor"</string>
     <string name="link_qwant_maps_description">"En karta med sökbara platser och vägbeskrivningar"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;För att visa kartan hämtas vektordelar från %1$s. Se deras &lt;a href=\"%2$s\"&gt;integritetspolicy&lt;/a&gt; för mer information.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsorer"</string>
@@ -854,10 +854,10 @@ nivåer"</string>
     <string name="quest_board_type_nature">"Natur (flera ämnen)"</string>
     <string name="quest_board_type_notice_board">"Det är en anslagstavla"</string>
     <string name="quest_board_type_public_transport">"Kollektivtrafik"</string>
-    <string name="quest_board_type_title">"Vad är ämnet för denna informationstavla?"</string>
+    <string name="quest_board_type_title">"Vad handlar denna informationstavla om?"</string>
     <string name="quest_sidewalk_separately_mapped">"Ja, visas separat på kartan"</string>
     <string name="quest_board_type_map">"Det är en karta"</string>
-    <string name="quest_board_type_map_title">"Är det bara en karta och endast en karta?"</string>
+    <string name="quest_board_type_map_title">"Är det en karta och enbart en karta?"</string>
     <string name="quest_board_type_map_description">"Om tavlan handlar om ett visst ämne, ange det, oavsett om det också innehåller en karta. Till exempel kan en kollektivtrafikstavla ha en bussruttkarta. Om ämnet inte är listat bland de tillgängliga svaren, överväg att lämna en anteckning istället."</string>
     <string name="quest_surface_detailed_answer_impossible">"Flera beläggningar…"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Är du säker på att det är omöjligt att ange underlaget? Notera svaralternativet \"Skiljer sig längs vägen\" som gör att du kan dela upp vägen där beläggningen skiljer sig. Använd \"Kan inte säga\" om det finns ett enda underlag men det inte är tillgängligt som svarsalternativ."</string>
@@ -892,7 +892,7 @@ nivåer"</string>
     <string name="quest_busStopBench_name_title">"Har busshållplatsen %s en bänk?"</string>
     <string name="quest_summit_register_title">"Finns det en toppbok på %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Finns det en defibrillator (hjärtstartare) i byggnaden?"</string>
-    <string name="about_title_translate">"Hjälp till med översättningen av denna app"</string>
+    <string name="about_title_translate">"Hjälp till att översätta denna app"</string>
     <string name="about_description_translate">"%1$s översätts som %2$d%%"</string>
     <string name="quest_oneway2_title">"Är detta en enkelriktad gata? I vilken riktning?"</string>
     <string name="quest_oneway2_dir">"Enkelriktad i denna riktning"</string>
@@ -904,7 +904,7 @@ nivåer"</string>
     <string name="quest_traffic_signals_sound_title">"Finns det ljudsignaler för blinda här?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Har dessa trafikljus en taktil indikation för blinda människor när det är säkert att korsa?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Tips: Ofta är detta en vibrerande knapp eller en roterande kon på undersidan av trafikljusknappen."</string>
-    <string name="quest_busStopRef_title">"Vad är referensnumret för denna busshållplats?"</string>
+    <string name="quest_busStopRef_title">"Vilket hållplatsläge har denna busshållplats?"</string>
     <string name="quest_tramStopRef_title">"Vad är referensnumret för denna spårvagnshållplats?"</string>
     <string name="quest_buildingType_bungalow_description2">"litet fristående hus (sommarstuga, semesterstuga …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Vilka hinder används vid denna järnvägsövergång?"</string>
@@ -921,7 +921,7 @@ nivåer"</string>
     <string name="achievement_rare_title">"Skattjakt"</string>
     <string name="achievement_rare_solved_X">"Du hittade och löste %d uppdrag som verkligen genomförs sällan, grattis!"</string>
     <string name="achievement_citizen_title">"Medborgare"</string>
-    <string name="achievement_citizen_solved_X">"Du löste %d uppdrag som är användbara för vardagen i stan!"</string>
+    <string name="achievement_citizen_solved_X">"Du löste %d uppdrag som är användbara i vardagslivet!"</string>
     <string name="achievement_outdoors_title">"Utomhus"</string>
     <string name="achievement_outdoors_solved_X">"Du löste %d uppdrag som är användbara för friluftsmänniskor!"</string>
     <string name="quest_pedestrian_crossing_island">"Har detta övergångsställe en refug?"</string>
@@ -940,13 +940,11 @@ nivåer"</string>
     <string name="quest_buildingType_ruins">"Ruiner"</string>
     <string name="quest_buildingType_ruins_description">"övergiven, förstörd och oidentifierbar byggnad"</string>
     <string name="quest_charging_station_capacity_title">"Hur många bilar kan laddas vid den här laddstationen samtidigt?"</string>
-    <string name="link_disaster_ninja_description">"Karta som visar de senaste naturkatastroferna, intressant för humanitära kartläggare. Visar också många intressanta statistik för att analysera hur väl kartlagda och uppdaterade platser är."</string>
+    <string name="link_disaster_ninja_description">"Karta som visar de senaste naturkatastroferna, intressant för humanitära kartläggare. Visar också mycket intressant statistik för att analysera hur väl kartlagda och uppdaterade platser är."</string>
     <string name="quest_lanes_title">"Hur många körfält för bilar har den här vägen?"</string>
     <string name="quest_lanes_answer_lanes">"Markerade körfält"</string>
     <string name="quest_lanes_answer_noLanes">"Inga markerade körfält"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Den har en tvåvägs vänsterfält"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Den har ett gemensamt svängfält i mitten"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Är detta rätt?"</string>
     <string name="quest_maxheight_below_bridge_title">"Vad är maxhöjden under bron?"</string>
     <string name="quest_maxheight_split_way_hint">"Om det inte gäller hela vägen, överväg att svara \"%s\"."</string>
@@ -957,9 +955,9 @@ nivåer"</string>
     <string name="quest_kerb_height_raised">"Hög trottoarkant"</string>
     <string name="quest_kerb_height_answer_no_kerb">"Det finns ingen trottoarkant på denna sida av korsningen"</string>
     <string name="quest_kerb_height_lowered_ramp">"Trottoarramp"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Ange det totala antalet markerade körfält (båda riktningarna) som kan användas av biltrafik. Så, cykel och särskilda parkeringsfält räknas inte.
+    <string name="quest_lanes_answer_lanes_description2">"Ange det totala antalet markerade körfält (båda riktningarna) som kan användas av biltrafik. Cykel- och parkeringsfält räknas inte.
 Om några körfält är reserverade för bussar, vänligen lämna en anteckning istället."</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">"Ange antalet markerade körfält som kan användas av biltrafik här. Så, cykel och särskilda parkeringsfält räknas inte.
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Ange antalet markerade körfält som kan användas av biltrafik här. Cykel- och parkeringsfält räknas inte.
 Om några körfält är reserverade för bussar, vänligen lämna en anteckning istället."</string>
     <string name="quest_surface_value_rock">"Sten"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Höga lastbilar kan passera"</string>
@@ -970,14 +968,14 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_crossing_type_marked">"Markerad korsning"</string>
     <string name="quest_parkingType_street_side">"Parkering precis bredvid vägen"</string>
     <string name="quest_parkingType_lane">"Parkering på väg"</string>
-    <string name="quest_existence_title">"Är detta fortfarande här? (%s)"</string>
-    <string name="quest_existence_name_title">"Är %1$s (%2$s) fortfarande här?"</string>
+    <string name="quest_existence_title">"Finns detta fortfarande här? (%s)"</string>
+    <string name="quest_existence_name_title">"Finns %1$s (%2$s) fortfarande här?"</string>
     <string name="quest_tracktype_grade2a">"Fast men obelagd"</string>
     <string name="quest_tracktype_grade3a">"Mestadels fast"</string>
     <string name="quest_generic_answer_does_not_exist">"Den finns inte…"</string>
-    <string name="osm_element_gone_description">"Är du säker på att den inte finns, inte ens på en någon annan plats? Om du är osäker, lämna hellre en anteckning istället."</string>
+    <string name="osm_element_gone_description">"Är du säker på att den inte finns, inte ens på en närliggande plats? Om du är osäker, lämna hellre en anteckning istället."</string>
     <string name="osm_element_gone_confirmation">"Den finns inte"</string>
-    <string name="leave_note">"Lämna anteckningen"</string>
+    <string name="leave_note">"Lämna anteckning"</string>
     <string name="quest_shop_gone_title">"Vad ligger här nu istället?"</string>
     <string name="quest_shop_gone_vacant_answer">"Det är ledigt"</string>
     <string name="quest_shop_gone_replaced_answer">"En/ett…"</string>
@@ -986,11 +984,11 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_shop_vacant_type_title">"Denna butik har varit ledig. Vad är här nu?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Fältantalet skiljer sig åt för varje sida"</string>
     <string name="quest_pitchSurface_title">"Vilket underlag har idrottsplanen?"</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">"Denna uppdragstyp är inaktiverad som standard eftersom den inte är användbar i vissa regioner och du kommer sannolikt att behöva ange platsen för att kunna svara på ett uppdrag av denna typ."</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Uppdragstypen är inaktiverad som standard eftersom den inte är användbar i vissa regioner och du troligtvis behöver gå inomhus för att kunna besvara den."</string>
     <string name="quest_dietType_kosher_name_title">"Erbjuder %s kosherprodukter?"</string>
     <string name="quest_dietType_explanation_kosher">"Kosherprodukter måste beredas enligt särskilda regler, med kashrut-certifieringsbyråer som märker produkter i enlighet."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ingen cykelväg alls"</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Som vanligt, tryck på ena sidan av bilden, välj ett rätt svar och gör detsamma för den andra sidan. Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en motorväg som tillåter cyklister i båda riktningar!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Som vanligt, tryck på ena sidan av bilden, välj ett rätt svar och gör detsamma för den andra sidan. Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en enkelriktad väg som tillåter cyklister i båda riktningar!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Väljer att det inte finns någon cykelväg"</string>
     <string name="quest_construction_completed_at_known_date">"Färdigställs vid datum…"</string>
     <string name="quest_construction_completion_date_title">"När kommer det att vara klart?"</string>
@@ -1038,7 +1036,7 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="added_tag_action_title">"Lade till %s"</string>
     <string name="removed_tag_action_title">"Tog bort %s"</string>
     <string name="changed_tag_action_title">"Uppdaterade till %s"</string>
-    <string name="pref_title_delete_cache">"Tog bort cache"</string>
+    <string name="pref_title_delete_cache">"Ta bort cache"</string>
     <string name="pref_title_delete_cache_summary">"Om du tror att datat är föråldrat"</string>
     <string name="delete_confirmation">"Ta bort"</string>
     <string name="delete_cache_dialog_message">"Ta bort all hämtad kartdata inklusive uppdrag?
@@ -1104,7 +1102,7 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_busStopBin_tram_title">"Har den här spårvagnshållplatsen en papperskorg?"</string>
     <string name="quest_busStopBin_title">"Har den här busshållplatsen en papperskorg?"</string>
     <string name="quest_busStopBin_name_title">"Har busshållplatsen %s en papperskorg?"</string>
-    <string name="quest_bollard_type_title">"Vad för typ av pollare är detta?"</string>
+    <string name="quest_bollard_type_title">"Vilken slags pollare är detta?"</string>
     <string name="quest_bollard_type_rising">"Höj- och sänkbar"</string>
     <string name="quest_bollard_type_removable_with_key">"Flyttbar med nyckel"</string>
     <string name="quest_bollard_type_removable_without_key">"Flyttbar utan nyckel"</string>
