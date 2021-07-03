@@ -45,6 +45,9 @@ class MapTilesDownloader @Inject constructor(
         Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
     }
 
+    // Android Studio incorrectly wants to annotate this with @ExperimentalCoroutinesApi.
+    // The type of the block is ProducerScope<T>.() -> Unit, and we use ProducerScope.send().
+    // ProducerScope is indeed experimental, but `send` is inherited from SendChannel, which isn't.
     private fun downloadTilesFlow(bbox: BoundingBox): Flow<DownloadResult> = channelFlow {
         /* tiles for the highest zoom (=likely current or near current zoom) first,
            because those are the tiles that are likely to be useful first */
