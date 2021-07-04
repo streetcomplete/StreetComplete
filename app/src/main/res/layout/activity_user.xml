@@ -15,14 +15,14 @@
         android:layout_below="@id/toolbar"
         android:layout_alignParentBottom="true"/>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:name="de.westnordost.streetcomplete.user.AchievementInfoFragment"
         android:id="@+id/achievementDetailsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="gone" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:name="de.westnordost.streetcomplete.user.QuestTypeInfoFragment"
         android:id="@+id/questTypeDetailsFragment"
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
         tools:visibility="gone"
         />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:name="de.westnordost.streetcomplete.user.CountryInfoFragment"
         android:id="@+id/countryDetailsFragment"
         android:layout_width="match_parent"
