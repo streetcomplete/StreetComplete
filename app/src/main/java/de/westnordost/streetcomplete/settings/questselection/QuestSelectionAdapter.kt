@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.settings.questselection
 
+import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
@@ -44,12 +45,43 @@ import kotlinx.android.synthetic.main.row_quest_selection.view.*
 /** Adapter for the list that in which the user can enable and disable quests as well as re-order
  *  them */
 class QuestSelectionAdapter @Inject constructor(
+    private val context: Context,
     countryBoundaries: FutureTask<CountryBoundaries>,
     prefs: SharedPreferences
-) : ListAdapter<QuestVisibility>() {
-    private val currentCountryCodes: List<String>
+) : RecyclerView.Adapter<QuestSelectionAdapter.QuestVisibilityViewHolder>() {
 
+    private val currentCountryCodes: List<String>
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
+
+    var questTypes: MutableList<QuestVisibility> = mutableListOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    var filter: String = ""
+    set(value) {
+        val n = value.trim()
+        if (n != field) {
+            field = n
+            notifyDataSetChanged()
+        }
+    }
+
+    private val shownQuestTypes: List<QuestVisibility> get() {
+        val f = filter
+        return if (f.isEmpty()) {
+            questTypes
+        } else {
+            val words = f.lowercase().split(' ')
+            questTypes.filter { questVisibility ->
+                val question = genericQuestTitle(context.resources, questVisibility.questType).lowercase()
+                words.all { filterWord -> question.contains(filterWord) }
+            }
+        }
+    }
+
+    private val isFiltered: Boolean get() = filter.isNotEmpty()
 
     interface Listener {
         fun onReorderedQuests(before: QuestType<*>, after: QuestType<*>)
@@ -68,10 +100,16 @@ class QuestSelectionAdapter @Inject constructor(
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<QuestVisibility> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestVisibilityViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.row_quest_selection, parent, false)
         return QuestVisibilityViewHolder(layout)
     }
+
+    override fun onBindViewHolder(holder: QuestVisibilityViewHolder, position: Int) {
+        holder.onBind(shownQuestTypes[position])
+    }
+
+    override fun getItemCount() = shownQuestTypes.size
 
     private inner class TouchHelperCallback : ItemTouchHelper.Callback() {
         private var draggedFrom = -1
@@ -79,14 +117,14 @@ class QuestSelectionAdapter @Inject constructor(
 
         override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
             val qv = (viewHolder as QuestVisibilityViewHolder).item
-            return if (!qv.isInteractionEnabled) 0
+            return if (!qv.isInteractionEnabled || isFiltered) 0
             else makeFlag(ACTION_STATE_IDLE, UP or DOWN) or makeFlag(ACTION_STATE_DRAG, UP or DOWN)
         }
 
         override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
             val from = viewHolder.adapterPosition
             val to = target.adapterPosition
-            Collections.swap(list, from, to)
+            Collections.swap(questTypes, from, to)
             notifyItemMoved(from, to)
             return true
         }
@@ -108,8 +146,8 @@ class QuestSelectionAdapter @Inject constructor(
                 var pos = draggedTo
                 if (draggedTo == 0) pos++
 
-                val before = list[pos - 1].questType
-                val after = list[pos].questType
+                val before = questTypes[pos - 1].questType
+                val after = questTypes[pos].questType
 
                 listener?.onReorderedQuests(before, after)
 
@@ -123,7 +161,7 @@ class QuestSelectionAdapter @Inject constructor(
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}
     }
 
-    private inner class QuestVisibilityViewHolder(itemView: View) :
+    inner class QuestVisibilityViewHolder(itemView: View) :
         ListAdapter.ViewHolder<QuestVisibility>(itemView), CompoundButton.OnCheckedChangeListener {
 
         private val dragHandle: ImageView = itemView.dragHandle
@@ -150,13 +188,13 @@ class QuestSelectionAdapter @Inject constructor(
             val colorResId = if (item.isInteractionEnabled) R.color.background else R.color.greyed_out
             itemView.setBackgroundResource(colorResId)
             questIcon.setImageResource(item.questType.icon)
-            questTitle.text = genericQuestTitle(questTitle, item.questType)
+            questTitle.text = genericQuestTitle(questTitle.resources, item.questType)
             visibilityCheckBox.setOnCheckedChangeListener(null)
             visibilityCheckBox.isChecked = item.visible
             visibilityCheckBox.isEnabled = item.isInteractionEnabled
             visibilityCheckBox.setOnCheckedChangeListener(this)
 
-            dragHandle.isInvisible = !item.isInteractionEnabled
+            dragHandle.isInvisible = !item.isInteractionEnabled || isFiltered
             dragHandle.setOnTouchListener { v, event ->
                 when (event.actionMasked) {
                     MotionEvent.ACTION_DOWN -> itemTouchHelper.startDrag(this)

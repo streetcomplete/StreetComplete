@@ -490,7 +490,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
     <string name="action_reset">Reset</string>
-    <string name="reorder_quest_priority_hint">Long-press and move a quest to reorder its priority for display on the map.</string>
     <string name="undo_confirm_positive">Undo</string>
     <string name="undo_confirm_negative">Cancel</string>
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
@@ -715,6 +714,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
+    <string name="action_search">Search</string>
     <string name="action_deselect_all">Deselect all</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
@@ -1059,4 +1059,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_camera_type_dome">Dome</string>
     <string name="quest_camera_type_fixed">Fixed</string>
     <string name="quest_camera_type_panning">Panning</string>
+    <string name="no_search_results">The what now?</string>
 </resources>
