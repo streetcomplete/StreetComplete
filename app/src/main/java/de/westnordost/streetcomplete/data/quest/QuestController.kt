@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestContro
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.collections.ArrayList
@@ -47,7 +46,7 @@ import kotlin.collections.ArrayList
 
         var fullText = "Unable to answer \"$questTitle\""
         if (q is OsmQuest && q.elementId > 0) {
-            val lowercaseTypeName = q.elementType.name.toLowerCase(Locale.US)
+            val lowercaseTypeName = q.elementType.name.lowercase()
             val elementId = q.elementId
             fullText += " for https://osm.org/$lowercaseTypeName/$elementId"
         }
