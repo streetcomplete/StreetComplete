@@ -25,6 +25,10 @@ object ApplicationConstants {
 
     const val NOTE_MIN_ZOOM = 15
 
+    /** when new quests that are appearing due to download of an area, show the hint that he can
+     *  disable quests in the settings if more than X quests did appear */
+    const val QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT = 600
+
     /** the max age of the undo history - one cannot undo changes older than X  */
     const val MAX_UNDO_HISTORY_AGE = 12L * 60 * 60 * 1000 // 12 hours in ms
 

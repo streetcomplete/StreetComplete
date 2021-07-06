@@ -1060,4 +1060,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_camera_type_fixed">Fixed</string>
     <string name="quest_camera_type_panning">Panning</string>
     <string name="no_search_results">The what now?</string>
+    <string name="quest_selection_hint_title">Too much to do?</string>
+    <string name="quest_selection_hint_message">"Contributing should primarily be fun!
+
+If you are overwhelmed by the number of quests, you can always fine-tune what quests are displayed to you and in what order in the settings.</string>
 </resources>
