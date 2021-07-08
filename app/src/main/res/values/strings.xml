@@ -63,12 +63,12 @@
     <string name="quest_openingHours_timeSelect_next">Next</string>
     <string name="quest_openingHours_add_months">"Add months"</string>
     <string name="quest_openingHours_add_hours">"Add hours"</string>
-    <string name="quest_openingHours_add_weekdays">"Add weekdays"</string>
+    <string name="quest_openingHours_add_weekdays">"Add days of the week"</string>
     <string name="quest_openingHours_add_off_days">"Add off days"</string>
     <string name="quest_openingHours_off_day">"Off day"</string>
     <string name="quest_openingHours_unspecified_range">Not specified"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
-    <string name="quest_openingHours_chooseWeekdaysTitle">"Select weekdays"</string>
+    <string name="quest_openingHours_chooseWeekdaysTitle">"Select days of the week"</string>
     <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>
     <string name="quest_noteDiscussion_title">"Can you contribute anything to this note?"</string>
     <string name="quest_noteDiscussion_no">"No, hide"</string>
