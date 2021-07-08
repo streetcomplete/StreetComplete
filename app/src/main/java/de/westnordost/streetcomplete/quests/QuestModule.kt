@@ -253,9 +253,9 @@ import javax.inject.Singleton
 
         // bike parking: would be higher up if not for bike parking capacity which is usually not solvable when moving past
         AddBikeParkingCover(), // used by OsmAnd in the object description
+        AddBikeParkingType(), // used by OsmAnd
         AddBikeParkingAccess(),
         AddBikeParkingFee(),
-        AddBikeParkingType(), // used by OsmAnd
         AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
 
         // address: usually only visible when just in front + sometimes requires to take "other answer"
@@ -319,9 +319,9 @@ import javax.inject.Singleton
 
         // shop
         AddAcceptsCash(featureDictionaryFuture),
-        AddKosher(),
         AddVegetarian(),
         AddVegan(),
+        AddKosher(),
         AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, MAPS.ME
         AddInternetAccess(), // used by OsmAnd
 
@@ -350,7 +350,7 @@ import javax.inject.Singleton
         AddBuildingType(),
         AddBuildingLevels(),
         AddRoofShape(countryInfos),
-        
+
         AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
     ))
 }
