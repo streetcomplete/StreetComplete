@@ -8,8 +8,8 @@
         android:fromYScale="50%"
         android:toXScale="100%"
         android:toYScale="100%"
-        android:pivotX="20%"
-        android:pivotY="0%"
+        android:pivotX="40%"
+        android:pivotY="20%"
         />
     <translate
         android:fromXDelta="25%"
