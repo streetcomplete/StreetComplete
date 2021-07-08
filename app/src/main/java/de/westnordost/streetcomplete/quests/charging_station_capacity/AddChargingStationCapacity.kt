@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
 
     override val elementFilter = """
-        nodes with
+        nodes, ways with
           amenity = charging_station
           and !capacity
           and bicycle != yes and scooter != yes and motorcar != no
