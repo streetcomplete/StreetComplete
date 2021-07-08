@@ -140,7 +140,7 @@ Men innan du skickar dina ändringar kontrollerar appen med en &lt;a href=\"http
     <string name="quest_surface_value_sand">"Sand"</string>
     <string name="quest_surface_value_sett">"Kullersten"</string>
     <string name="quest_surface_value_wood">"Trä"</string>
-    <string name="quest_placeName_title">"Vad är namnet på det här stället?"</string>
+    <string name="quest_placeName_title">"Vad heter det här stället?"</string>
     <string name="quest_sidewalk_title">"Finns det en trottoar längs den här gatan?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Var ligger den här gatan?"</string>
     <string name="quest_cyclewaySurface_title">"Vad har cykelvägen för underlag här?"</string>
@@ -429,13 +429,13 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_religion_shinto">"Shintoism"</string>
     <string name="quest_religion_jewish">"Judendom"</string>
     <string name="quest_religion_taoist">"Taoism"</string>
-    <string name="quest_religion_for_place_of_worship_answer_multi">"Alla religioner kan praktiseras"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"Alla religioner kan utövas"</string>
     <string name="quest_religion_sikh">"Sikhism"</string>
     <string name="quest_religion_jain">"Jainism"</string>
     <string name="quest_religion_bahai">"Bahá'í"</string>
     <string name="quest_religion_caodaist">"Cao Ðài"</string>
     <string name="quest_religion_chinese_folk">"Kinesisk folkreligion"</string>
-    <string name="quest_religion_for_wayside_shrine_title">"Vilken religion praktiseras vid den här helgedomen?"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"Vilken religion utövas vid den här helgedomen?"</string>
     <string name="quest_parking_fee_title">"Kostar det att parkera här?"</string>
     <string name="quest_cycleway_value_lane_soft">"cykelkörfält (streckad markering)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Ohuggen kullersten"</string>
@@ -720,9 +720,9 @@ Den söker automatiskt efter saknade detaljer i din närhet: cykelbanor, husnumm
     <string name="tutorial_solving_quests">"När du hittat, kommer de saknade detaljerna att visas på din karta som uppdrag.
 
 Du kan börja lösa dem direkt och senare logga in för att publicera dina svar."</string>
-    <string name="tutorial_stay_safe">"När du är osäker kan du alltid svara \"Kan inte säga\" och lämna en anteckning.
+    <string name="tutorial_stay_safe">"När du är osäker kan du alltid svara \"Svårt att säga\" och lämna en anteckning.
 
-Slutligen, kom ihåg att vara säker: var medveten om din omgivning och gå inte in på privat egendom."</string>
+Slutligen, kom ihåg att vara säker: var medveten om din omgivning och gå inte in på privat mark."</string>
     <string name="tutorial_happy_mapping">"Glad kartläggning!"</string>
     <string name="achievements_empty">"Du har inga prestationer ännu"</string>
     <string name="links_empty">"Du har inga länkar ännu"</string>
@@ -860,7 +860,7 @@ nivåer"</string>
     <string name="quest_board_type_map_title">"Är det en karta och enbart en karta?"</string>
     <string name="quest_board_type_map_description">"Om tavlan handlar om ett visst ämne, ange det, oavsett om det också innehåller en karta. Till exempel kan en kollektivtrafikstavla ha en bussruttkarta. Om ämnet inte är listat bland de tillgängliga svaren, överväg att lämna en anteckning istället."</string>
     <string name="quest_surface_detailed_answer_impossible">"Flera beläggningar…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Är du säker på att det är omöjligt att ange underlaget? Notera svaralternativet \"Skiljer sig längs vägen\" som gör att du kan dela upp vägen där beläggningen skiljer sig. Använd \"Kan inte säga\" om det finns ett enda underlag men det inte är tillgängligt som svarsalternativ."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Är du säker på att det är omöjligt att ange underlaget? Notera svaralternativet \"Skiljer sig längs vägen\" som gör att du kan dela upp vägen där beläggningen skiljer sig. Använd \"Svårt att säga\" om det finns ett enda underlag men det inte är tillgängligt som svarsalternativ."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Vänligen beskriv underlaget här, till exempel \"sand med fläckvis kullersten\". Textens längd är begränsad till 255 tecken."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -981,7 +981,7 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_shop_gone_replaced_answer">"En/ett…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Skriv typ av plats här"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Vet inte vad detta är. Överväg att lämna en anteckning."</string>
-    <string name="quest_shop_vacant_type_title">"Denna butik har varit ledig. Vad är här nu?"</string>
+    <string name="quest_shop_vacant_type_title">"Denna butik har varit ledig. Vad ligger här nu?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Fältantalet skiljer sig åt för varje sida"</string>
     <string name="quest_pitchSurface_title">"Vilket underlag har idrottsplanen?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Uppdragstypen är inaktiverad som standard eftersom den inte är användbar i vissa regioner och du troligtvis behöver gå inomhus för att kunna besvara den."</string>
@@ -1004,8 +1004,8 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_drinking_water_potable_unsigned">"Drickbart (inte skyltat)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Inte drickbart (skyltat)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Inte drickbart (inte skyltat)"</string>
-    <string name="quest_postboxRoyalCypher_title">"Vad är den kungliga cypheren på den här brevlådan?"</string>
-    <string name="quest_postboxRoyalCypher_type_none">"Ingen kunglig cypher är synlig"</string>
+    <string name="quest_postboxRoyalCypher_title">"Vad har den här brevlådan för kungligt monogram?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Det finns inget monogram"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skottlands krona"</string>
     <string name="quest_buildingType_fire_station">"Brandstation"</string>
     <string name="quest_recycling_type_beverage_cartons">"Endast dryckeskartonger"</string>

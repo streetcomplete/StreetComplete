@@ -439,7 +439,7 @@
     <string name="quest_busStopName_title">"Како се зове ова аутобуска станица?"</string>
     <string name="quest_tramStopName_title">"Како се зове ова трамвајска станица?"</string>
     <string name="quest_housenumber_multiple_numbers">"Има више кућних бројева"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Можете једноставно унети кућне бројеве одвојене зарезом или распон. Нпр 1,3 или 2–6"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Можете једноставно унети кућне бројеве одвојене зарезом или распон.\nНа пример 1,3 или 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"„П“ држач (придржава рам бицикла)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Спирала (придржава само точак)"</string>
     <string name="quest_bicycle_parking_type_shed">"Склониште"</string>
@@ -487,7 +487,7 @@
     <string name="quest_buildingType_commercial">"Пословни објекат"</string>
     <string name="quest_buildingType_commercial_generic_description">"објекат у ком људи раде, купују или обављају друге комерцијалне послове"</string>
     <string name="quest_buildingType_industrial">"Индустријски објекат"</string>
-    <string name="quest_buildingType_industrial_description">"нпр. фабрика, радионица, сервис аутомобила..."</string>
+    <string name="quest_buildingType_industrial_description">"нпр. фабрика, радионица, сервис аутомобила…"</string>
     <string name="quest_buildingType_office">"Канцеларијска зграда"</string>
     <string name="quest_buildingType_retail">"Продавница/е"</string>
     <string name="quest_buildingType_warehouse">"Складиште"</string>
@@ -698,7 +698,7 @@
     <string name="tutorial_stay_safe">"Кад год сте несигурни можете одговорити са „Нисам сигуран“ и оставити белешку.
 
 На крају, не заборавите на безбедност. Будите свесни вашег окружења и не улазите на приватне поседе."</string>
-    <string name="tutorial_happy_mapping">"Срећно мапирање!"</string>
+    <string name="tutorial_happy_mapping">"Срећно картирање!"</string>
     <string name="achievements_empty">"Још немате постигнућа"</string>
     <string name="links_empty">"Још немате веза"</string>
     <string name="quests_empty">"Још  нисте објавили ни један одговор"</string>
@@ -729,26 +729,26 @@
     <string name="link_mapy_tactile_description">"Тактилне карте за особе оштећеног вида у било којој размери"</string>
     <string name="link_josm_description">"Потпуно опремљени OSM уређивач за рачунаре. Ово је напрадан алат за редовне сараднике."</string>
     <string name="link_vespucci_description">"Напредни OSM уређивач за Android"</string>
-    <string name="link_ideditor_description">"Једноставни OSM уређивач за интернет. Прилагођен за рачунаре и веће таблете."</string>
+    <string name="link_ideditor_description">"Једноставни OSM уређивач за прегледач. Прилагођено за рачунаре и веће таблете"</string>
     <string name="link_umap_description">"Брзо направите карте са прилагођеним подацима и уградите их у ваш сајт"</string>
     <string name="link_opnvkarte_description">"Карта јавног превоза са рутама и стајалишта"</string>
     <string name="link_pic4review_description">"Допринесите OSM-у гледајући фотографије вашег града"</string>
     <string name="link_wiki_description">"Wiki је ваше полазиште за све што је везано за OpenStreetMap"</string>
     <string name="link_learnosm_description">"Нови сте на OpenStreetMap-ама? Ово је водич за почетнике"</string>
-    <string name="link_neis_one_description">"Велика збирка статистика за OpenStreetMap сараднике, нпр. како и где сте допринели, ко је у вашој околини, као и ранг листе."</string>
+    <string name="link_neis_one_description">"Велика збирка статистика за OpenStreetMap сараднике, попут, како и где сте картирали, ко је у вашој околини, као и ранг листе"</string>
     <string name="link_welcome_mat_description">"Опште информације о OpenStreetMap-у и како, као организација, радити са OSM-ом"</string>
     <string name="link_mapillary_description">"Услуга и програм за дељење фотографија са улице, са изричитом дозволом да се користе за допринос OSM-у"</string>
     <string name="link_openstreetcam_description">"Услуга и програм за дељење фотографија са улице, са изричитом дозволом да се користе за допринос OSM-у"</string>
     <string name="link_openrouteservice_wheelchair_description">"Навигација корак по корак за инвалидска колица"</string>
     <string name="link_nominatim_description">"Геокодер за OSM податке који користе многе друге услуге"</string>
-    <string name="link_city_roads_description">"Исцртајте све улице у граду, за штампу на мајицама, шољама..."</string>
+    <string name="link_city_roads_description">"Исцртајте све улице у граду, за штампу на мајицама, шољама…"</string>
     <string name="link_myosmatic_description">"У пар лаких корака направите карте града за штампу, ако желите и са каталогом улица"</string>
     <string name="link_brouter_description">"Вероватно најбоља навигација за бициклисте"</string>
     <string name="link_show_me_the_way_description">"Гледајте како се OSM измене дешавају у реалном времену"</string>
     <string name="link_osrm_description">"Најбржа навигација у окружењу"</string>
     <string name="link_openrouteservice_description">"Навигација за разна возила и пешаке, свако са својим преференцијама. Може приказати и изохроне (подручје доступно за X минута од почетне тачке)."</string>
     <string name="link_osm_haiku_description">"Употреба OSM података за стварање хаику песама (врста јапанске поезије)"</string>
-    <string name="link_openinframap_description">"Карта која показује електричну, телекомуникациону, гасну и нафтну инфраструктуру "</string>
+    <string name="link_openinframap_description">"Карта која показује електричну, телекомуникациону, гасну и нафтну инфраструктуру"</string>
     <string name="link_openorienteeringmap_description">"Направите и штампајте карте за спортску оријентацију"</string>
     <string name="link_openstreetbrowser_description">"Прегледајте OpenStreetMap детаље по категоријама"</string>
     <string name="link_weeklyosm_description">"Недељни блог о новостима из OpenStreetMap света"</string>
@@ -802,7 +802,7 @@
     <string name="quest_address_street_title">"Којој улици припада кућни број %s?"</string>
     <string name="quest_address_street_no_named_streets">"Не припада улици са именом"</string>
     <string name="quest_address_street_place_name_label">"Назив места:"</string>
-    <string name="quest_address_street_description">"Додирните на мапи пут коме припада или упишите, без скраћеница, у поље испод:"</string>
+    <string name="quest_address_street_description">"Додирните пут на карти коме кућни број припада или упишите, без скраћеница, у поље испод:"</string>
     <string name="quest_recycling_type_cooking_oil">"Јестиво уље"</string>
     <string name="quest_recycling_type_engine_oil">"Моторно уље"</string>
     <string name="link_photon_description">"Независно проширење Nominatima, које користи претрагу непотпуних података и претрагу док куцате"</string>
@@ -822,7 +822,7 @@
     <string name="quest_board_type_map">"То је карта"</string>
     <string name="quest_board_type_map_title">"Да ли је само и једино карта?"</string>
     <string name="quest_board_type_map_description">"Ако је табла о одређеној теми, наведите је, без обзира на то да ли укључује и карту. На пример, табла јавног превоза може имати карту аутобуских линија. Ако тема није наведена у неведеним одговорима, размислите да је оставите као белешку."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Различите површине..."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Различите површине…"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Да ли сте сигурни да је немогуће навести површину? Узмите у обзир да одговор „Различита у деловима“ омогућава да означите место где се површина мења. Молимо да користите „Нисам сигуран“ ако постоји јединствена површина ли није доступна као одговор."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Молимо да укратко опишете врсту површине овде, на пример „песковита са деловима калдрме“. Дужина текста је ограничена на 255 знакова."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
@@ -925,7 +925,7 @@
     <string name="quest_surface_value_rock">"Камење"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Високи камиони могу проћи"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Високи камиони не могу проћи"</string>
-    <string name="quest_address_street_hint">"Додирните пут на карти"</string>
+    <string name="quest_address_street_hint">"Додир. пут на карти"</string>
     <string name="quest_crossing_type_marked">"Обележени пешачки прелаз"</string>
     <string name="quest_parkingType_street_side">"Паркинг крај пута"</string>
     <string name="quest_parkingType_lane">"Паркинг на путу"</string>

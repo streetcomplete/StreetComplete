@@ -72,6 +72,8 @@
     <string name="version_banned_message">"StreetComplete เวอร์ชั่นนี้เก่าเกินไป โปรดอัปเดต"</string>
     <string name="no_gps_no_quests">"เปิดตำแหน่งที่ตั้งเพื่อสแกนภารกิจรอบตัวคุณโดยอัตโนมัติ"</string>
     <string name="later">"ไว้ภายหลัง"</string>
+
+    <!-- What's the context for this? -->
     <string name="quest_streetName_answer_noProperStreet_link">"มันแค่เชื่อมถนนสองเส้น"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"อื่น ๆ (ใส่หมายเหตุ)"</string>
     <string name="about_title_privacy_statement">"ประกาศความเป็นส่วนตัว"</string>
@@ -235,6 +237,7 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"ตัวอักษรย่อในชื่อ %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"ห้องน้ำนี้มีโต๊ะเปลี่ยนผ้าอ้อมเด็กหรือไม่?"</string>
     <string name="quest_baby_changing_table_title">"%s มีโต๊ะเปลี่ยนผ้าอ้อมเด็กหรือไม่"</string>
+    <string name="quest_recycling_type_title">"นี่คือสถานที่รีไซเคิลประเภทใด"</string>
     <string name="recycling_centre">"กึ่งกลาง"</string>
     <string name="overground_recycling_container">"บรรจุภัณฑ์"</string>
     <string name="underground_recycling_container">"ตู้บรรจุขยะรีไซเคิลใต้ดิน"</string>
@@ -262,6 +265,7 @@
     <string name="credits_and_more">"และอื่น ๆ…"</string>
     <string name="quest_maxspeed_answer_living_street">"เป็น living street"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"แล้วมีป้ายแบบนี้ไหม?"</string>
+    <string name="quest_orchard_produce_title">"ปลูกอะไรที่นี่?"</string>
     <string name="produce_grapes">"องุ่น"</string>
     <string name="produce_agaves">"ต้นหางจระเข้"</string>
     <string name="produce_almonds">"อัลมอนด์"</string>
@@ -326,7 +330,12 @@
     <string name="produce_sweet_peppers">"พริกหยวก"</string>
     <string name="produce_brazil_nuts">"ถั่วบราซิล"</string>
     <string name="produce_tung_nuts">"ถั่ว Tung"</string>
+    <string name="quest_parkingType_title">"ที่นี่เป็นที่จอดรถแบบใด?"</string>
+    <string name="quest_parkingType_surface">"ลานจอดรถ"</string>
+    <string name="quest_parkingType_underground">"โรงจอดรถใต้ดิน"</string>
+    <string name="quest_parkingType_multiStorage">"โรงจอดรถ"</string>
     <string name="quest_toiletAvailability_name_title">"%s มีห้องสุขาหรือไม่?"</string>
+    <string name="quest_powerPolesMaterial_title">"เสาไฟนี้ทำมาจากวัสดุอะไร?"</string>
     <string name="quest_powerPolesMaterial_wood">"ไม้"</string>
     <string name="quest_powerPolesMaterial_metal">"เหล็ก"</string>
     <string name="quest_powerPolesMaterial_concrete">"คอนกรีต"</string>
@@ -399,16 +408,27 @@
     <string name="quest_busStopShelter_tram_title">"ป้ายรถรางที่นี่มีที่หลังคาหรือไม่?"</string>
     <string name="quest_bench_backrest_title">"ม้านั่งนี้มีพนักพิงหรือไม่?"</string>
     <string name="quest_bench_answer_picnic_table">"เป็นโต๊ะปิกนิก"</string>
+    <string name="quest_religion_for_place_of_worship_title">"ที่นี่นับถือศาสนาใด?"</string>
+    <string name="quest_religion_christian">"ศาสนาคริสต์"</string>
     <string name="quest_religion_muslim">"อิสลาม"</string>
     <string name="quest_religion_hindu">"ฮินดู"</string>
+    <string name="quest_religion_buddhist">"ศาสนาพุทธ"</string>
     <string name="quest_religion_shinto">"ชินโต"</string>
     <string name="quest_religion_jewish">"ยิว"</string>
     <string name="quest_religion_taoist">"เต๋า"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"ใช้ได้โดยทุกศาสนา"</string>
     <string name="quest_religion_sikh">"ซิก"</string>
     <string name="quest_religion_jain">"เชน"</string>
+    <string name="quest_religion_bahai">"ศาสนาบาไฮ"</string>
+    <string name="quest_religion_caodaist">"ศาสนา Caodai"</string>
+    <string name="quest_religion_chinese_folk">"ศาสนาพื้นเมือนของจีน"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"ศาลเจ้านี้เป็นของศาสนาใด?"</string>
+    <string name="quest_parking_fee_title">"ต้องจ่ายค่าจอดรถที่นี่หรือไม่?"</string>
     <string name="quest_cycleway_value_lane_soft">"เลนจักรยาน (เส้นประ)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"ก้อนหินปูถนน"</string>
     <string name="quest_parking_access_title">"ที่จอดรถนี้มีการจำกัดคนเข้าจอดหรือไม่"</string>
+    <string name="quest_parking_access_private">"เป็นส่วนบุคคล"</string>
+    <string name="quest_parking_access_yes">"เปิดให้สาธารนะ (โดยที่มีหรือไม่มีค่าใช้จ่าย)"</string>
     <string name="quest_parking_access_customers">"เฉพาะลูกค้า"</string>
     <string name="quest_streetName_pedestrian_title">"ถนนคนเดินที่มีชื่ออะไร?"</string>
     <string name="quest_streetSurface_square_title">"จตุรัสที่นี่มีพื้นผิวประเภทไหน?"</string>
@@ -429,6 +449,7 @@
     <string name="quest_bicycle_parking_type_building">"อาคาร"</string>
     <string name="quest_bicycle_parking_type_title">"เป็นที่จอดรถจักรยานประเภทใด?"</string>
     <string name="quest_cycleway_value_suggestion_lane">"ทางที่แนะนำจักรยาน"</string>
+    <string name="quest_postboxCollectionTimes_title">"ตู้ไปรษณีย์นี้ เปิดตู้กี่โมง?"</string>
     <string name="quest_collectionTimes_add_times">"เพิ่มเวลารวบรวม"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"ไม่ได้ระบุเวลา"</string>
     <string name="quest_construction_road_title">"ถนนเส้นนี้เสร็จหรือยัง"</string>
@@ -438,6 +459,9 @@
     <string name="quest_construction_building_title">"อาคารนี้สร้างเสร็จหรือยัง?"</string>
     <string name="questList_disabled_in_country">"ไม่แสดงใน %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"พื้นที่นี้มีห้องสุขาหรือไม่?"</string>
+    <string name="quest_pathSurface_title_steps">"ขั้นบันไดที่นี่มีพื้นผิวอะไร?"</string>
+    <string name="quest_pathSurface_title_bridleway">"เส้นทางขี่ม้าที่นี่มีพื้นผิวอะไร?"</string>
+    <string name="quest_pathSurface_title">"เส้นทางที่นี่มีพื้นผิวอะไร?"</string>
     <string name="quest_select_hint_most_specific">"เลือกอันที่เจาะจงที่สุดที่เหมาะสม:"</string>
     <string name="quest_generic_item_confirmation">"คุณแน่ใจหรือว่าไม่สามารถระบุได้เฉพาะเจาะจงมากขึ้น?"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;สำหรับบางภารกิจ จะมีการดาวน์โหลดข้อมูลเพิ่มเติมจากบุคคลที่สาม โดยเฉพาะอย่างยิ่ง ภารกิจทางเดียวจะค้นหา API ซึ่งโฮสต์บน westnordost.de ด้วย เกี่ยวกับตัวเลือกที่มีแนวโน้มจะเป็นทางเดียว&lt;/p&gt;"</string>
@@ -525,6 +549,7 @@
     <string name="quest_buildingType_toilets">"ห้องน้ำ"</string>
     <string name="quest_maxspeed_sign_question">"ความเร็วจำกัดถูกกำหนดโดยอะไร?"</string>
     <string name="notification_channel_download">"ดาวน์โหลด"</string>
+    <string name="quest_playground_access_title">"สนามเด็กเล่นนี้ สาธารณะเข้าถึงได้โหรือไม่?"</string>
     <string name="quest_segregated_title">"ที่นี่มีการวางทางเท้าและทางจักรยานไว้อย่างไรบ้าง?"</string>
     <string name="dialog_tutorial_upload">"ถ้าจะอัปโหลดการเปลี่ยนแปลงด้วยตนเอง ใช้ปุ่มในแถบเครื่องมือที่มีหน้าตาแบบนี้"</string>
     <string name="quest_segregated_separated">"แยกออกจากกัน"</string>
@@ -577,6 +602,7 @@
     <string name="theme_light">"สว่าง"</string>
     <string name="theme_dark">"มืด"</string>
     <string name="theme_system_default">"ค่าเริ่มต้นของระบบ"</string>
+    <string name="quest_placeName_title_name">"สถานที่นี้ชื่ออะไร (%s)?"</string>
     <string name="action_open_location">"เปิดตำแหน่งในแอปอื่น"</string>
     <string name="map_application_missing">"ไม่มีโปรแกรมแผนที่อื่นๆในระบบ"</string>
     <string name="label_housenumber">"หมายเลขบ้าน"</string>
@@ -587,6 +613,7 @@
     <string name="quest_ferry_motor_vehicle_name_title">"%s ขนส่งยานยนต์หรือไม่?"</string>
     <string name="quest_ferry_motor_vehicle_title">"เรือข้ามฟากนี้ขนส่งยานยนต์หรือไม่?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"การเพิ่มรูปภาพจะทำให้หมายเหตุมีประโยชน์มากขึ้น"</string>
+    <string name="quest_postboxCollectionTimes_name_title">"ตู้ไปรษณีย์นี้ %s เปิดตู้กี่โมง?"</string>
     <string name="create_new_note_hint">"ดีที่สุดถ้าคุณบันทึกหมายเหตุเป็นภาษาท้องถิ่น หรือไม่ก็ภาษาอังกฤษ"</string>
     <string name="quest_leafType_title">"ต้นไม้ที่นี่มีเข็มหรือใบ?"</string>
     <string name="quest_leaf_type_needles">"เข็ม"</string>
@@ -612,7 +639,28 @@
     <string name="quest_handrail_title">"ขั้นบันไดเหล่านี้มีราวจับหรือไม่?"</string>
     <string name="quest_openingHours_no_name_title">"สถานที่นี้เปิดทำการกี่โมง (%s)"</string>
     <string name="about_summary_current_version">"เวอร์ชั่นปัจจุบัน: %s"</string>
+    <string name="quest_postboxRef_title">"ตู้ไปรษณีย์นี้ มีหมายเลขอ้างอิงอะไร?"</string>
+    <string name="quest_postboxRef_name_title">"ตู้ไปรษณีย์นี้ %s มีหมายเลขอ้างอิงอะไร?"</string>
+    <string name="quest_ref_answer_noRef">"ไม่เห็นหมายเลขอ้างอิง…"</string>
     <string name="quest_street_side_puzzle_tutorial">"ถนนในภาพได้หมุนไปในทิศทางเดียวกันกับแผนที่ตรงตำแหน่งหมุด"</string>
+    <string name="quest_recycling_materials_title">"ที่นี่สามารถรับอะไรเพื่อรีไซเคิลได้บ้าง?"</string>
+    <string name="quest_recycling_materials_note">"หากสิ่งใดที่สามารถรีไซเคิลได้นอกเหนือจากตัวเลือกที่มีอยู่ โปรดทิ้งหมายเหตุไว้แทน"</string>
+    <string name="quest_recycling_type_batteries">"แบตเตอรี่"</string>
+    <string name="quest_recycling_type_cans">"กระป๋อง"</string>
+    <string name="quest_recycling_type_clothes">"เสื้อผ้า"</string>
+    <string name="quest_recycling_type_green_waste">"ขยะจากสวน"</string>
+    <string name="quest_recycling_type_glass_bottles">"ขวดแก้วและขวดโหล"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"ขวดน้ำและขวดโหล"</string>
+    <string name="quest_recycling_type_paper">"กระดาษ"</string>
+    <string name="quest_recycling_type_plastic_generic">"พลาสติก"</string>
+    <string name="quest_recycling_type_plastic">"พลาสติกทุกประเภท"</string>
+    <string name="quest_recycling_type_shoes">"รองเท้า"</string>
+    <string name="quest_recycling_type_electric_appliances">"เครื่องใช้ไฟฟ้า"</string>
+    <string name="quest_recycling_type_plastic_bottles">"ขวดพลาสติกเท่านั้น"</string>
+    <string name="quest_recycling_type_plastic_packaging">"บรรจุภัณฑ์พลาสติกเท่านั้น"</string>
+    <string name="quest_recycling_type_scrap_metal">"เศษโลหะ"</string>
+    <string name="quest_recycling_type_any_glass">"แก้วทุกประเภท"</string>
+    <string name="quest_recycling_glass_title">"ที่นี่สามารถรีไซเคิลได้เฉพาะขวดแก้วและขวดโหลเท่านั้น หรือแก้วชนิดใดก็ได้?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"ตัวอย่างประเภทของแก้วที่มักถูกปฏิเสธ: กระจกนิรภัย บานหน้าต่าง เครื่องแก้ว หลอดไฟหรือกระจก"</string>
     <string name="about_title_changelog">"ประวัติเวอร์ชั่น"</string>
     <string name="title_whats_new">"มีอะไรใหม่?"</string>
@@ -621,6 +669,7 @@
     <string name="about_title_donate">"บริจาค"</string>
     <string name="about_summary_donate">"แสดงความขอบคุณ ❤️"</string>
     <string name="about_description_donate">"ขอบคุณที่พิจารณาสนับสนุนแอปนี้ ถ้าจะดูรายการการบริจาคปัจจุบันและบริจาคเอง ให้กดตรงแพลตฟอร์มที่เกี่ยวข้อง:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"ที่ %s นับถือศาสนาใด?"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"สแกนตรงนี้แทน"</string>
     <string name="confirmation_cancel_prev_download_cancel">"ดำเนินการสแกนต่อไป"</string>
     <string name="quest_buildingType_garages_description">"แยกพื้นที่สำหรับเจ้าของ/ผู้เช่แต่ละราย"</string>
@@ -631,6 +680,8 @@
     <string name="quest_tourism_information_terminal">"จอข้อมูลเทอร์มินัล"</string>
     <string name="quest_tourism_information_map">"แผนที่"</string>
     <string name="quest_tourism_information_guidepost">"ป้ายบอกทาง"</string>
+    <string name="quest_recycling_materials_answer_waste">"สำหรับขยะทั่วไป"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"นี่คือภาชนะสำหรับขยะทั่วไป เช่นถังขยะในครัวเรือนหรือเชิงพาณิชย์หรือไม่?"</string>
     <string name="quest_accepts_cash_title">"%s รับชำระด้วยเงินสดหรือไม่"</string>
     <string name="user_profile">"โปรไฟล์ของฉัน"</string>
     <string name="user_login">"เข้าสู่ระบบ"</string>
@@ -749,6 +800,8 @@
     <string name="quest_address_street_no_named_streets">"ไม่ได้เป็นของถนนที่มีชื่อ"</string>
     <string name="quest_address_street_place_name_label">"ชื่อสถานที่:"</string>
     <string name="quest_address_street_description">"แตะถนนที่เป็นที่ตั้งบนแผนที่หรือป้อนโดยไม่มีตัวย่อในช่องด้านล่าง:"</string>
+    <string name="quest_recycling_type_cooking_oil">"น้ำมันปรุงอาหาร"</string>
+    <string name="quest_recycling_type_engine_oil">"น้ำมันเครื่อง"</string>
     <string name="link_photon_description">"ส่วนขยายแยกเดี่ยวของ Nominatim ที่รองรับการค้นหาแบบ fuzzy และการค้นหา-ขณะที่-พิมพ์"</string>
     <string name="link_graphhopper_description">"เครื่องมือกำหนดเส้นทางที่ยืดหยุ่น"</string>
     <string name="link_qwant_maps_description">"แผนที่พร้อมสถานที่ที่สามารถค้นหาได้และเส้นทาง"</string>
@@ -814,6 +867,7 @@
     <string name="quest_busStopRef_title">"หมายเลขอ้างอิงของป้ายรถเมล์นี้คืออะไร?"</string>
     <string name="quest_tramStopRef_title">"หมายเลขอ้างอิงสำหรับป้ายหยุดรถรางนี้คืออะไร?"</string>
     <string name="quest_buildingType_bungalow_description2">"บ้านเดี่ยวหลังเล็ก (บ้านพักฤดูร้อน กระท่อมตากอากาศ กระท่อม …)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"ทางข้ามทางรถไฟนี้ใช้สิ่งกีดขวางประเภทใด?"</string>
     <string name="quest_railway_crossing_barrier_none2">"ไม่มีเครื่องกั้น"</string>
     <string name="quest_steps_ramp_title">"บันไดนี้มีทางลาดหรือไม่? เป็นชนิดไหน?"</string>
     <string name="quest_steps_ramp_none">"ไม่มีทางลาด (ใช้ไม่ได้)"</string>
@@ -870,6 +924,7 @@
     <string name="quest_maxheight_answer_noSign_question_no">"รถบรรทุกสูงผ่านไม่ได้"</string>
     <string name="quest_address_street_hint">"แตะถนนบนแผนที่"</string>
     <string name="quest_crossing_type_marked">"ทางข้ามที่มีเครื่องหมาย"</string>
+    <string name="quest_parkingType_street_side">"ที่จอดรถอยู่ริมถนน"</string>
     <string name="quest_parkingType_lane">"จุดจอดรถริมถนน"</string>
     <string name="quest_existence_title">"อันนี้ยังอยู่ตรงนี้ไหม? (%s)"</string>
     <string name="quest_existence_name_title">"%1$s (%2$s) ยังอยู่ตรงนี้ไหม?"</string>
@@ -898,6 +953,7 @@
     <string name="quest_surface_value_clay">"ดินเหนียว"</string>
     <string name="quest_surface_value_artificial_turf">"หญ้าเทียม"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="quest_pitchSurface_title_track">"ลานวิ่งนี้มีไฟสว่างหรือไม่?"</string>
     <string name="quest_bicycle_parking_access_title">"จำกัดผู้จอดจักรยานไหม?"</string>
     <string name="quest_bicycle_parking_fee_title">"มีค่าบริการจอดจักรยานไหม?"</string>
     <string name="quest_buildingType_house_description2">"บ้านขนาดหนึ่งครอบครัวที่เชื่อมกัน"</string>
@@ -906,7 +962,12 @@
     <string name="quest_drinking_water_potable_unsigned">"ปลอดภัยที่จะดื่ม (ไม่มีป้าย)"</string>
     <string name="quest_drinking_water_not_potable_signed">"ไม่ปลอดภัยที่จะดื่ม (มีป้าย)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"ไม่ปลอดภัยที่จะดื่ม (ไม่มีป้าย)"</string>
+    <string name="quest_postboxRoyalCypher_title">"ตู้ไปรษณีย์นี้มีตราประจำพระองค์ใด?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"ไม่มีตราประจำพระองค์บนตู้นี้"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"มงกุฎแห่งสกอตแลนด์"</string>
     <string name="quest_buildingType_fire_station">"สถานีดับเพลิง"</string>
+    <string name="quest_recycling_type_beverage_cartons">"กล่องเครื่องดื่มเท่านั้น"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"ขวดพลาสติกและกล่องเครื่องดื่มเท่านั้น"</string>
     <string name="quest_charging_station_name_capacity_title">"สถานีชาร์จแห่งนี้  (%s)  สามารถชาร์จรถยนต์ได้กี่คันในเวลาเดียวกัน?"</string>
     <string name="team_mode">"โหมดทีม"</string>
     <string name="team_mode_exit">"ออกจากโหมดทีม"</string>
@@ -916,6 +977,8 @@
     <string name="team_mode_choose_color">"ทีนี้ทุกคนในกลุ่มของคุณสามารถเลือกสีที่เป็นเอกลักษณ์ได้:"</string>
     <string name="team_mode_active">"โหมดทีมทำงานอยู่"</string>
     <string name="team_mode_deactivated">"โหมดทีมปิดใช้งาน"</string>
+    <string name="quest_pitchLit_title">"สนามกีฬาแห่งนี้มีไฟสว่างหรือไม่?"</string>
+    <string name="quest_pitchLit_title_track">"สปอร์ตแทร็คนี้มีไฟสว่างหรือไม่?"</string>
     <string name="quest_crossing_type_signals_controlled">"ทางข้ามที่มีไฟสัญญาณจราจรกำกับ"</string>
     <string name="undo_last">"ยกเลิกการแก้ไขล่าสุด"</string>
     <string name="show_edit_history">"แสดงประวัติการแก้ไข"</string>
@@ -964,6 +1027,7 @@
     <string name="quest_barrier_type_kissing_gate">"ประตู​กลกันสัตว์​เดินออก"</string>
     <string name="quest_barrier_type_stepover">"บันไดข้ามรั้ว"</string>
     <string name="quest_barrier_type_swing_gate">"แถบแนวนอน"</string>
+    <string name="quest_policeType_title">"นี่คือสถานีตำรวจประเภทใด?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"แปลงเป็นประตู​กลกันสัตว์​เดินออก"</string>
     <string name="quest_stile_type_title">"นี่คือประตูหมุนแบบไหน?"</string>
     <string name="quest_buildingType_semi_detached_description2">"บ้านเดี่ยวเชื่อมกัน"</string>

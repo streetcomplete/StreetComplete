@@ -1,3 +1,10 @@
+v33.1: |
+  <ul>
+  <li>Fix crash when tapping on an achievement in your profile screen (#3027)</li>
+  <li>Only ask for bollard type for bollards on roads (#3017)</li>
+  <li>Updated translations and other small fixes</li>
+  </ul>
+
 v33.0: |
   <h3>New Quests</h3>
   <ul>
