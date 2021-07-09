@@ -359,7 +359,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
 class LoadSceneException(message: String, val sceneUpdate: SceneUpdate) : RuntimeException(message)
 
 private fun SceneError.toException() =
-    LoadSceneException(error.name.toLowerCase(Locale.US).replace("_", " "), sceneUpdate)
+    LoadSceneException(error.name.lowercase().replace("_", " "), sceneUpdate)
 
 
 suspend fun MapView.initMap(

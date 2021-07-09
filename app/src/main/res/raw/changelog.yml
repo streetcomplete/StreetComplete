@@ -1,13 +1,25 @@
-v33.0-beta1: |
+v33.1: |
+  <ul>
+  <li>Fix crash when tapping on an achievement in your profile screen (#3027)</li>
+  <li>Only ask for bollard type for bollards on roads (#3017)</li>
+  <li>Updated translations and other small fixes</li>
+  </ul>
+
+v33.0: |
   <h3>New Quests</h3>
   <ul>
   <li><i>What type of surveillance camera is this?</i> (#87, #299, #2856), by @Helium314, thanks @Binnette</li>
   <li><i>Does this bus stop have a waste basket?</i> (#2760, #2898), by @FloEdelmann</li>
   <li><i>What type of bollard is this?</i> (#2128, #2915), by @FloEdelmann, thanks @RubenKelevra</li>
   </ul>
-  <h3>Enhancements</h3>
+  <h3>Quest Enhancements</h3>
   <ul>
   <li>Remember more building level quest answers (#1772, #2925), by @FloEdelmann</li>
+  <li>In the address quest, when answering that the building type is not correct, follow-up by asking about the building type (#3001)</li>
+  <li>A few minor improvements for various quests (#2971, #3000, #3012, #3013, #3002...)</li>
+  </ul>
+  <h3>Other Enhancements</h3>
+  <ul>
   <li>Added Bosnian translation by OSMcontributorBH</li>
   <li>Added Thai translation by Mishari, PPNplus, Kamthorn and more</li>
   </ul>

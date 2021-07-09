@@ -1,5 +1,4 @@
 import java.util.Properties
-import java.net.URI
 import java.io.FileInputStream
 
 plugins {
@@ -37,8 +36,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
         targetSdkVersion(30)
-        versionCode = 3300
-        versionName = "33.0-beta1"
+        versionCode = 3302
+        versionName = "33.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
     }

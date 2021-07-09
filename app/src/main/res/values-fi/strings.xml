@@ -959,15 +959,11 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_toiletAvailability_rest_area_title">"Onko tällä levähdysalueella vessa?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_pathSurface_title_steps">"Mikä päällyste näillä portailla on?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_bridleway">"Mikä päällyste tällä ratsastustiellä on?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"Mikä päällyste tällä polulla on?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Mikä päällyste tällä ratsastuspolulla on?"</string>
+    <string name="quest_pathSurface_title">"Mikä päällyste tällä käytävällä on?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Valitse tarkin sopiva vaihtoehto näistä:"</string>
