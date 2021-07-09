@@ -182,7 +182,7 @@ private val buildingsWithMissingAddressFilter by lazy { """
     """.toElementFilterExpression()}
 
 private val buildingTypesThatShouldHaveAddresses = listOf(
-    "house", "residential", "apartments", "detached", "terrace", "dormitory", "semi",
+    "house", "residential", "apartments", "bungalow", "detached", "terrace", "dormitory", "semi",
     "semidetached_house", "farm", "school", "civic", "college", "university", "public", "hospital",
     "kindergarten", "train_station", "hotel", "retail", "shop", "commercial"
 )
