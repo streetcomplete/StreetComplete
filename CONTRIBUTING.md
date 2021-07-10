@@ -52,7 +52,7 @@ If you experience problems, crashes or a quest is not clear to you, feel free to
 2. Remember to report map style issues [in the appropriate repository](#issues-of-dependencies).
 3. Look [whether your issue has already been reported](https://github.com/streetcomplete/StreetComplete/issues) (remember to check closed issues too, it may have already been fixed and is due to appear in the next release).
 
-### Issues with dependencies
+### Issues of dependencies
 
 StreetComplete depends on some projects for the app. Try to report them in the appropriate place.
 
