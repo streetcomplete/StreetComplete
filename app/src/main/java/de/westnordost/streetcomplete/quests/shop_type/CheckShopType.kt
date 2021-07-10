@@ -41,6 +41,7 @@ class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
                 if (!answer.tags.containsKey("shop")) {
                     changes.deleteIfExists("shop")
                 }
+                changes.deleteIfExists("name")
                 changes.deleteIfExists(SURVEY_MARK_KEY)
                 for ((key, value) in answer.tags) {
                     changes.addOrModify(key, value)
