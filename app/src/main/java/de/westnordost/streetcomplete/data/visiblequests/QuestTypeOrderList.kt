@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import android.content.SharedPreferences
-import androidx.core.content.edit
-
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import java.util.concurrent.CopyOnWriteArrayList
@@ -13,7 +9,8 @@ import javax.inject.Singleton
 
 /** List of quest types with user-applied order */
 @Singleton class QuestTypeOrderList @Inject constructor(
-    private val prefs: SharedPreferences,
+    private val selectedQuestProfileStore: SelectedQuestProfileStore,
+    private val questTypeOrderDao: QuestTypeOrderDao,
     private val questTypeRegistry: QuestTypeRegistry
 ) {
     /* Is a singleton because it has a in-memory cache that is synchronized with changes made on
@@ -23,8 +20,6 @@ import javax.inject.Singleton
         fun onUpdated()
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
-
-    private val orderLists: MutableList<MutableList<String>> by lazy { load() }
 
     private val questTypeOrderLists: List<List<QuestType<*>>> get() =
         orderLists.mapNotNull { orderList ->
@@ -59,20 +54,10 @@ import javax.inject.Singleton
 
     fun clear() {
         synchronized(this) {
-            orderLists.clear()
+            questTypeOrderDao.clear(selectedQuestProfileStore.get())
             save(orderLists)
         }
         onUpdated()
-    }
-
-    private fun load(): MutableList<MutableList<String>> {
-        val order = prefs.getString(Prefs.QUEST_ORDER, null)
-        return order?.split(DELIM1)?.map { it.split(DELIM2).toMutableList() }?.toMutableList() ?: mutableListOf()
-    }
-
-    private fun save(lists: List<List<String>>) {
-        val joined = lists.joinToString(DELIM1) { it.joinToString(DELIM2) }
-        prefs.edit { putString(Prefs.QUEST_ORDER, if (joined.isNotEmpty()) joined else null) }
     }
 
     private fun applyOrderItem(before: QuestType<*>, after: QuestType<*>) {
@@ -125,10 +110,5 @@ import javax.inject.Singleton
 
     private fun onUpdated() {
         listeners.forEach { it.onUpdated() }
-    }
-
-    companion object {
-        private const val DELIM1 = ";"
-        private const val DELIM2 = ","
     }
 }
