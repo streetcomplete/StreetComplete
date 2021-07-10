@@ -63,11 +63,7 @@ fun OpeningHoursRuleList.toCollectionTimesRows(): List<OpeningHoursRow>? {
     val result = mutableListOf<OpeningHoursRow>()
 
     for (rule in rules) {
-        if (rule.modifier != null && rule.modifier!!.isSimpleOff()) {
-            result.add(rule.createOffDays())
-        } else {
-            result.addAll(rule.createOpeningWeekdays())
-        }
+        result.addAll(rule.createOpeningWeekdays())
     }
 
     return result
@@ -138,12 +134,8 @@ fun Rule.isSupportedCollectionTimes(): Boolean =
     years == null &&
     // "05-08 08:00-11:00" not supported
     weeks == null &&
-    (
-        // for normal rules, only "Mo-Fr" not supported. "open" modifier is ok as long as it does not have a comment
-        (modifier == null || modifier!!.isSimpleOpen()) && !times.isNullOrEmpty() ||
-        // "off"/"closed" only compatible without comment and no times
-        (modifier != null && times.isNullOrEmpty() && modifier!!.isSimpleOff())
-    ) &&
+    // modifiers are not supported
+    modifier == null &&
     // all sub-elements must be supported if specified
     holidays?.all { it.isSupported() } ?: true &&
     days?.all { it.isSupported() } ?: true &&
