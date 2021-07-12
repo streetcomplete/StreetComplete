@@ -49,7 +49,7 @@ If you find such user experience problems, please report them back in the [issue
 If you experience problems, crashes or a quest is not clear to you, feel free to open an issue for that. Remember to open one issue _for one matter_, so do not open one issue "I have found several problems", but one for each problem. Before you open an issue, please consider: 
 
 1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
-2. Remember to report map style issues [in the appropriate repository](#issues-of-dependencies).
+2. Remember to report map style issues [in the appropriate repository](#issues-with-dependencies).
 3. Look [whether your issue has already been reported](https://github.com/streetcomplete/StreetComplete/issues) (remember to check closed issues too, it may have already been fixed and is due to appear in the next release).
 
 ### Issues with dependencies
@@ -82,7 +82,7 @@ If you would like to help and are able to contribute code, you are most welcome.
 
 There are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with. If you have own ideas on how to improve this app and want to make sure that the Pull Request will be merged, it is strongly suggested you **open an issue first** to discuss the feature, especially if you aim to add a new quest, [see below](#developing-new-quests).
 
-Note that StreetComplete also uses [some dependencies](#issues-of-dependencies), where contributions are likely also accepted and help StreetComplete, too.
+Note that StreetComplete also uses [some dependencies](#issues-with-dependencies), where contributions are likely also accepted and help StreetComplete, too.
 
 If you need to find things where help is especially appreciated [have a look at the issues tagged with "help wanted"](https://github.com/streetcomplete/StreetComplete/labels/help%20wanted).
 
