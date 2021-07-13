@@ -37,7 +37,7 @@
                 android:layout_weight="1"
                 android:inputType="text"
                 android:layout_marginStart="28dp"
-                android:hint="@string/quest_presets_preset_name_hint"/>
+                android:hint="@string/quest_presets_profile_name_hint"/>
 
             <ImageView
                 android:id="@+id/addButton"
