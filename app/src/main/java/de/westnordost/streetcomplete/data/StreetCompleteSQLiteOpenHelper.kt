@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.*
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
-import de.westnordost.streetcomplete.data.visiblequests.QuestProfilesTable
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
 
@@ -70,7 +70,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         db.execSQL(VisibleQuestTypeTable.CREATE)
         db.execSQL(QuestTypeOrderTable.CREATE)
         db.execSQL(QuestTypeOrderTable.INDEX_CREATE)
-        db.execSQL(QuestProfilesTable.CREATE)
+        db.execSQL(QuestPresetsTable.CREATE)
 
         // quests based on OSM elements
         db.execSQL(OsmQuestTable.CREATE)
@@ -105,14 +105,14 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
             db.execSQL(QuestTypeOrderTable.CREATE)
             db.execSQL(QuestTypeOrderTable.INDEX_CREATE)
 
-            db.execSQL(QuestProfilesTable.CREATE)
+            db.execSQL(QuestPresetsTable.CREATE)
 
             val oldName = "quest_visibility_old"
             db.execSQL("ALTER TABLE ${VisibleQuestTypeTable.NAME} RENAME TO $oldName;")
             db.execSQL(VisibleQuestTypeTable.CREATE)
             db.execSQL("""
                 INSERT INTO ${VisibleQuestTypeTable.NAME} (
-                    ${VisibleQuestTypeTable.Columns.QUEST_PROFILE_ID},
+                    ${VisibleQuestTypeTable.Columns.QUEST_PRESET_ID},
                     ${VisibleQuestTypeTable.Columns.QUEST_TYPE},
                     ${VisibleQuestTypeTable.Columns.VISIBILITY},
                 ) SELECT

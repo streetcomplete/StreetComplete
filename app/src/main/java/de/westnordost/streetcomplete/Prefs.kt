@@ -28,7 +28,7 @@ object Prefs {
     const val TEAM_MODE_TEAM_SIZE = "team_mode.team_size"
 
     // not shown anywhere directly
-    const val SELECTED_QUESTS_PROFILE = "selectedQuestsProfile"
+    const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
     const val LAST_EDIT_TIME = "changesets.lastChangeTime"
     const val MAP_LATITUDE = "map.latitude"
     const val MAP_LONGITUDE = "map.longitude"

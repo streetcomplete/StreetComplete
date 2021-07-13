@@ -5,11 +5,11 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
-class QuestProfilesDaoTest : ApplicationDbTestCase() {
-    private lateinit var dao: QuestProfilesDao
+class QuestPresetDaoTest : ApplicationDbTestCase() {
+    private lateinit var dao: QuestPresetsDao
 
     @Before fun createDao() {
-        dao = QuestProfilesDao(database)
+        dao = QuestPresetsDao(database)
     }
 
     @Test fun getEmpty() {
@@ -19,7 +19,7 @@ class QuestProfilesDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGetDelete() {
         dao.add("test")
-        assertEquals(listOf(QuestProfile(1, "test")), dao.getAll())
+        assertEquals(listOf(QuestPreset(1, "test")), dao.getAll())
         assertEquals("test", dao.getName(1))
         dao.delete(1)
         assertTrue(dao.getAll().isEmpty())
@@ -29,8 +29,8 @@ class QuestProfilesDaoTest : ApplicationDbTestCase() {
         dao.add("one")
         dao.add("two")
         assertEquals(listOf(
-            QuestProfile(1, "one"),
-            QuestProfile(2, "two")
+            QuestPreset(1, "one"),
+            QuestPreset(2, "two")
         ), dao.getAll())
     }
 }

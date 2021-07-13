@@ -16,7 +16,7 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        tools:text="@string/quest_profiles_default_name"/>
+        tools:text="@string/quest_presets_default_name"/>
 
     <ImageView
         android:id="@+id/deleteButton"

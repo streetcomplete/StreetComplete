@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.visiblequests.QuestProfilesSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
@@ -34,7 +34,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
 
     @Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var questProfilesSource: QuestProfilesSource
+    @Inject internal lateinit var questPresetsSource: QuestPresetsSource
     @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
     @Inject internal lateinit var questTypeOrderController: QuestTypeOrderController
 
@@ -96,8 +96,8 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
                 deselectAllQuests()
                 return true
             }
-            R.id.action_manage_profiles -> {
-                QuestProfilesFragment().show(childFragmentManager, QuestProfilesFragment.TAG)
+            R.id.action_manage_presets -> {
+                QuestPresetsFragment().show(childFragmentManager, QuestPresetsFragment.TAG)
                 return true
             }
         }

@@ -17,11 +17,11 @@ import org.mockito.Mockito.verify
 class VisibleQuestTypeControllerTest {
 
     private lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
-    private lateinit var questProfilesSource: QuestProfilesSource
+    private lateinit var questPresetsSource: QuestPresetsSource
     private lateinit var ctrl: VisibleQuestTypeController
     private lateinit var listener: VisibleQuestTypeSource.Listener
 
-    private lateinit var questProfilesListener: QuestProfilesSource.Listener
+    private lateinit var questPresetsListener: QuestPresetsSource.Listener
 
     private val disabledQuest = TestQuestTypeDisabled()
     private val quest1 = TestQuestTypeA()
@@ -29,16 +29,16 @@ class VisibleQuestTypeControllerTest {
 
     @Before fun setUp() {
         visibleQuestTypeDao = mock()
-        questProfilesSource = mock()
+        questPresetsSource = mock()
 
-        on(questProfilesSource.addListener(any())).then { invocation ->
-            questProfilesListener = (invocation.arguments[0] as QuestProfilesSource.Listener)
+        on(questPresetsSource.addListener(any())).then { invocation ->
+            questPresetsListener = (invocation.arguments[0] as QuestPresetsSource.Listener)
             Unit
         }
 
-        on(questProfilesSource.selectedQuestProfileId).thenReturn(0)
+        on(questPresetsSource.selectedQuestPresetId).thenReturn(0)
 
-        ctrl = VisibleQuestTypeController(visibleQuestTypeDao, questProfilesSource)
+        ctrl = VisibleQuestTypeController(visibleQuestTypeDao, questPresetsSource)
 
         listener = mock()
         ctrl.addListener(listener)
@@ -107,17 +107,17 @@ class VisibleQuestTypeControllerTest {
         verify(listener).onQuestTypeVisibilitiesChanged()
     }
 
-    @Test fun `clears visibilities of deleted quest profile`() {
-        questProfilesListener.onDeletedQuestProfile(1)
+    @Test fun `clears visibilities of deleted quest preset`() {
+        questPresetsListener.onDeletedQuestPreset(1)
         verify(visibleQuestTypeDao).clear(1)
     }
 
-    @Test fun `clears cache and notifies listener when changing quest profile`() {
+    @Test fun `clears cache and notifies listener when changing quest preset`() {
         // make sure that visibilities are queried once from DB
         on(visibleQuestTypeDao.getAll(0)).thenReturn(mutableMapOf())
         assertTrue(ctrl.isVisible(quest1))
 
-        questProfilesListener.onSelectedQuestProfileChanged()
+        questPresetsListener.onSelectedQuestPresetChanged()
         verify(listener).onQuestTypeVisibilitiesChanged()
 
         // now they should be queried again: we expect getAll to be called twice

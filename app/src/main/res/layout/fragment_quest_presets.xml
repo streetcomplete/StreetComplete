@@ -20,7 +20,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
             android:nestedScrollingEnabled="false"
-            tools:listitem="@layout/row_quest_profile"
+            tools:listitem="@layout/row_quest_preset"
             tools:itemCount="2"/>
 
         <LinearLayout
@@ -37,7 +37,7 @@
                 android:layout_weight="1"
                 android:inputType="text"
                 android:layout_marginStart="28dp"
-                android:hint="@string/quest_presets_profile_name_hint"/>
+                android:hint="@string/quest_presets_preset_name_hint"/>
 
             <ImageView
                 android:id="@+id/addButton"

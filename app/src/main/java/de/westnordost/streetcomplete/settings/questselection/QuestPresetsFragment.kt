@@ -7,21 +7,21 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.visiblequests.QuestProfilesController
-import kotlinx.android.synthetic.main.fragment_quest_profiles.view.*
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
+import kotlinx.android.synthetic.main.fragment_quest_presets.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class QuestProfilesFragment : DialogFragment(R.layout.fragment_quest_profiles) {
+class QuestPresetsFragment : DialogFragment(R.layout.fragment_quest_presets) {
 
-    @Inject internal lateinit var questProfilesController: QuestProfilesController
-    @Inject internal lateinit var questProfilesAdapter: QuestProfilesAdapter
+    @Inject internal lateinit var questPresetsController: QuestPresetsController
+    @Inject internal lateinit var questPresetsAdapter: QuestPresetsAdapter
 
     init {
         Injector.applicationComponent.inject(this)
-        lifecycle.addObserver(questProfilesAdapter)
+        lifecycle.addObserver(questPresetsAdapter)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class QuestProfilesFragment : DialogFragment(R.layout.fragment_quest_profiles) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.questProfilesList.adapter = questProfilesAdapter
+        view.questProfilesList.adapter = questPresetsAdapter
         view.nameInput.addTextChangedListener { updateAddButtonEnablement() }
         view.addButton.setOnClickListener { onClickAddProfile() }
         updateAddButtonEnablement()
@@ -47,7 +47,7 @@ class QuestProfilesFragment : DialogFragment(R.layout.fragment_quest_profiles) {
             view.addButton.isEnabled = false
             val name = view.nameInput.text.toString().trim()
             withContext(Dispatchers.IO) {
-                questProfilesController.addQuestProfile(name)
+                questPresetsController.addQuestProfile(name)
             }
             view.addButton?.isEnabled = true
             view.nameInput?.setText("")

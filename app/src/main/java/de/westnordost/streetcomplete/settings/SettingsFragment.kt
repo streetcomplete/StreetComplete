@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.visiblequests.QuestProfilesSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.toast
@@ -45,7 +45,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
     @Inject internal lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
     @Inject internal lateinit var visibleQuestTypeSource: VisibleQuestTypeSource
-    @Inject internal lateinit var questProfilesSource: QuestProfilesSource
+    @Inject internal lateinit var questPresetsSource: QuestPresetsSource
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -157,14 +157,14 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
     }
 
     private fun getQuestPreferenceSummary(): String {
-        val profileName = questProfilesSource.selectedQuestProfileName
-        val profileStr = if (profileName != null)
-            getString(R.string.pref_subtitle_quests_profile_name, profileName)+"\n" else ""
+        val presetName = questPresetsSource.selectedQuestPresetName
+        val presetStr = if (presetName != null)
+            getString(R.string.pref_subtitle_quests_preset_name, presetName) + "\n" else ""
 
         val enabledCount = questTypeRegistry.filter { visibleQuestTypeSource.isVisible(it) }.count()
         val totalCount = questTypeRegistry.size
         val enabledStr = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
 
-        return profileStr+enabledStr
+        return presetStr + enabledStr
     }
 }

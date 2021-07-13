@@ -11,11 +11,11 @@ import org.mockito.Mockito.verify
 
 class QuestTypeOrderControllerTest {
     private lateinit var questTypeOrderDao: QuestTypeOrderDao
-    private lateinit var questProfilesSource: QuestProfilesSource
+    private lateinit var questPresetsSource: QuestPresetsSource
     private lateinit var ctrl: QuestTypeOrderController
     private lateinit var listener: QuestTypeOrderSource.Listener
 
-    private lateinit var questProfilesListener: QuestProfilesSource.Listener
+    private lateinit var questPresetsListener: QuestPresetsSource.Listener
 
     private val questA = TestQuestTypeA()
     private val questB = TestQuestTypeB()
@@ -24,23 +24,23 @@ class QuestTypeOrderControllerTest {
 
     @Before fun setUp() {
         questTypeOrderDao = mock()
-        questProfilesSource = mock()
+        questPresetsSource = mock()
 
-        on(questProfilesSource.addListener(any())).then { invocation ->
-            questProfilesListener = (invocation.arguments[0] as QuestProfilesSource.Listener)
+        on(questPresetsSource.addListener(any())).then { invocation ->
+            questPresetsListener = (invocation.arguments[0] as QuestPresetsSource.Listener)
             Unit
         }
 
-        on(questProfilesSource.selectedQuestProfileId).thenReturn(0)
+        on(questPresetsSource.selectedQuestPresetId).thenReturn(0)
 
-        ctrl = QuestTypeOrderController(questTypeOrderDao, questProfilesSource)
+        ctrl = QuestTypeOrderController(questTypeOrderDao, questPresetsSource)
 
         listener = mock()
         ctrl.addListener(listener)
     }
 
-    @Test fun `notifies listener when changing quest profile`() {
-        questProfilesListener.onSelectedQuestProfileChanged()
+    @Test fun `notifies listener when changing quest preset`() {
+        questPresetsListener.onSelectedQuestPresetChanged()
         verify(listener).onQuestTypeOrdersChanged()
     }
 

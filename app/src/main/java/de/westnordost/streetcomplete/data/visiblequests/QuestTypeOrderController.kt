@@ -7,30 +7,30 @@ import javax.inject.Singleton
 
 @Singleton class QuestTypeOrderController @Inject constructor(
     private val questTypeOrderDao: QuestTypeOrderDao,
-    private val questProfilesSource: QuestProfilesSource
+    private val questPresetsSource: QuestPresetsSource
 ): QuestTypeOrderSource {
 
     private val listeners = CopyOnWriteArrayList<QuestTypeOrderSource.Listener>()
 
     init {
-        questProfilesSource.addListener(object : QuestProfilesSource.Listener {
-            override fun onSelectedQuestProfileChanged() {
+        questPresetsSource.addListener(object : QuestPresetsSource.Listener {
+            override fun onSelectedQuestPresetChanged() {
                 onQuestTypeOrderChanged()
             }
-            override fun onAddedQuestProfile(profile: QuestProfile) {}
-            override fun onDeletedQuestProfile(profileId: Long) {
-                questTypeOrderDao.clear(profileId)
+            override fun onAddedQuestPreset(preset: QuestPreset) {}
+            override fun onDeletedQuestPreset(presetId: Long) {
+                questTypeOrderDao.clear(presetId)
             }
         })
     }
 
     fun addOrderItem(item: QuestType<*>, toAfter: QuestType<*>) {
-        questTypeOrderDao.put(questProfilesSource.selectedQuestProfileId, item.name to toAfter.name)
+        questTypeOrderDao.put(questPresetsSource.selectedQuestPresetId, item.name to toAfter.name)
         onQuestTypeOrderAdded(item, toAfter)
     }
 
     override fun sort(questTypes: MutableList<QuestType<*>>) {
-        val orders = questTypeOrderDao.getAll(questProfilesSource.selectedQuestProfileId)
+        val orders = questTypeOrderDao.getAll(questPresetsSource.selectedQuestPresetId)
         for ((item, toAfter) in orders) {
             val itemIndex = questTypes.indexOfFirst { it.name == item }
             val toAfterIndex = questTypes.indexOfFirst { it.name == toAfter }
@@ -42,7 +42,7 @@ import javax.inject.Singleton
     }
 
     fun clear() {
-        questTypeOrderDao.clear(questProfilesSource.selectedQuestProfileId)
+        questTypeOrderDao.clear(questPresetsSource.selectedQuestPresetId)
         onQuestTypeOrderChanged()
     }
 

@@ -8,20 +8,20 @@ import javax.inject.Singleton
 
 @Singleton class VisibleQuestTypeController @Inject constructor(
     private val visibleQuestTypeDao: VisibleQuestTypeDao,
-    private val questProfilesSource: QuestProfilesSource
+    private val questPresetsSource: QuestPresetsSource
 ): VisibleQuestTypeSource {
 
     private val listeners = CopyOnWriteArrayList<VisibleQuestTypeSource.Listener>()
 
     init {
-        questProfilesSource.addListener(object : QuestProfilesSource.Listener {
-            override fun onSelectedQuestProfileChanged() {
+        questPresetsSource.addListener(object : QuestPresetsSource.Listener {
+            override fun onSelectedQuestPresetChanged() {
                 _visibleQuests = null
                 onQuestTypeVisibilitiesChanged()
             }
-            override fun onAddedQuestProfile(profile: QuestProfile) {}
-            override fun onDeletedQuestProfile(profileId: Long) {
-                visibleQuestTypeDao.clear(profileId)
+            override fun onAddedQuestPreset(preset: QuestPreset) {}
+            override fun onDeletedQuestPreset(presetId: Long) {
+                visibleQuestTypeDao.clear(presetId)
             }
         })
     }
@@ -33,7 +33,7 @@ import javax.inject.Singleton
             if (_visibleQuests == null) {
                 synchronized(this) {
                     if (_visibleQuests == null) {
-                        _visibleQuests = visibleQuestTypeDao.getAll(questProfilesSource.selectedQuestProfileId)
+                        _visibleQuests = visibleQuestTypeDao.getAll(questPresetsSource.selectedQuestPresetId)
                     }
                 }
             }
@@ -42,7 +42,7 @@ import javax.inject.Singleton
 
     fun setVisible(questType: QuestType<*>, visible: Boolean) {
         synchronized(this) {
-            visibleQuestTypeDao.put(questProfilesSource.selectedQuestProfileId, questType.name, visible)
+            visibleQuestTypeDao.put(questPresetsSource.selectedQuestPresetId, questType.name, visible)
             visibleQuests[questType.name] = visible
         }
         onQuestTypeVisibilityChanged(questType, visible)
@@ -51,7 +51,7 @@ import javax.inject.Singleton
     fun setAllVisible(questTypes: List<QuestType<*>>, visible: Boolean) {
         val questTypeNames = questTypes.filter { it !is OsmNoteQuestType }.map { it.name }
         synchronized(this) {
-            visibleQuestTypeDao.put(questProfilesSource.selectedQuestProfileId, questTypeNames, visible)
+            visibleQuestTypeDao.put(questPresetsSource.selectedQuestPresetId, questTypeNames, visible)
             questTypeNames.forEach { visibleQuests[it] = visible }
         }
         onQuestTypeVisibilitiesChanged()
@@ -59,7 +59,7 @@ import javax.inject.Singleton
 
     fun clear() {
         synchronized(this) {
-            visibleQuestTypeDao.clear(questProfilesSource.selectedQuestProfileId)
+            visibleQuestTypeDao.clear(questPresetsSource.selectedQuestPresetId)
             visibleQuests.clear()
         }
         onQuestTypeVisibilitiesChanged()

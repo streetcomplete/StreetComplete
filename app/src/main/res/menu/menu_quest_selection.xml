@@ -11,8 +11,8 @@
         android:orderInCategory="2"
         app:showAsAction="never" />
 
-    <item android:id="@+id/action_manage_profiles"
-        android:title="@string/action_manage_profiles"
+    <item android:id="@+id/action_manage_presets"
+        android:title="@string/action_manage_presets"
         android:orderInCategory="3"
         app:showAsAction="never" />
 
