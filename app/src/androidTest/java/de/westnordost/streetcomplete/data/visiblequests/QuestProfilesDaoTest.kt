@@ -14,11 +14,13 @@ class QuestProfilesDaoTest : ApplicationDbTestCase() {
 
     @Test fun getEmpty() {
         assertTrue(dao.getAll().isEmpty())
+        assertNull(dao.getName(123))
     }
 
-    @Test fun addDelete() {
+    @Test fun addGetDelete() {
         dao.add("test")
         assertEquals(listOf(QuestProfile(1, "test")), dao.getAll())
+        assertEquals("test", dao.getName(1))
         dao.delete(1)
         assertTrue(dao.getAll().isEmpty())
     }

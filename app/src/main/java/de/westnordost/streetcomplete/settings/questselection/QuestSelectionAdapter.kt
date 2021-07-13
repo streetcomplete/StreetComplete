@@ -16,48 +16,49 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
-
-import java.util.Collections
-import java.util.Locale
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import java.util.concurrent.FutureTask
-
 import javax.inject.Inject
-
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.ListAdapter
-
-
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AllCountries
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.data.quest.*
+import de.westnordost.streetcomplete.data.visiblequests.*
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.settings.genericQuestTitle
 import kotlinx.android.synthetic.main.row_quest_selection.view.*
+import kotlinx.coroutines.*
+import java.util.*
 
 /** Adapter for the list that in which the user can enable and disable quests as well as re-order
  *  them */
 class QuestSelectionAdapter @Inject constructor(
     private val context: Context,
+    private val visibleQuestTypeController: VisibleQuestTypeController,
+    private val questTypeOrderController: QuestTypeOrderController,
+    private val questTypeRegistry: QuestTypeRegistry,
     countryBoundaries: FutureTask<CountryBoundaries>,
     prefs: SharedPreferences
-) : RecyclerView.Adapter<QuestSelectionAdapter.QuestVisibilityViewHolder>() {
+) : RecyclerView.Adapter<QuestSelectionAdapter.QuestVisibilityViewHolder>(), LifecycleObserver {
 
     private val currentCountryCodes: List<String>
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
-    var questTypes: MutableList<QuestVisibility> = mutableListOf()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+
+    /** all quest types */
+    private var questTypes: MutableList<QuestVisibility> = mutableListOf()
+    set(value) {
+        field = value
+        notifyDataSetChanged()
+    }
 
     var filter: String = ""
     set(value) {
@@ -68,10 +69,11 @@ class QuestSelectionAdapter @Inject constructor(
         }
     }
 
-    private val shownQuestTypes: List<QuestVisibility> get() {
+    /** if a filter is active, the filtered quest types, otherwise null */
+    private val filteredQuestTypes: List<QuestVisibility>? get() {
         val f = filter
         return if (f.isEmpty()) {
-            questTypes
+            null
         } else {
             val words = f.lowercase().split(' ')
             questTypes.filter { questVisibility ->
@@ -81,18 +83,71 @@ class QuestSelectionAdapter @Inject constructor(
         }
     }
 
-    private val isFiltered: Boolean get() = filter.isNotEmpty()
+    /** during dragging, a mutable copy of the quest types. This is necessary to show the
+     *  dragging animation (where the dragged item pushes aside other items to make room while
+     *  being dragged). */
+    private var questTypesDuringDrag: MutableList<QuestVisibility>? = null
 
-    interface Listener {
-        fun onReorderedQuests(before: QuestType<*>, after: QuestType<*>)
-        fun onChangedQuestVisibility(questType: QuestType<*>, visible: Boolean)
+    private val shownQuestTypes: List<QuestVisibility> get() =
+        questTypesDuringDrag ?: filteredQuestTypes ?: questTypes
+
+    private val visibleQuestsListener = object : VisibleQuestTypeSource.Listener {
+        override fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) {
+            /* not doing anything here - we assume that this happened due to a tap on the checkbox
+             * for a quest, so the display and data was already updated :-/ */
+        }
+
+        override fun onQuestTypeVisibilitiesChanged() {
+            // all/many visibilities have changed - update the data and notify UI of changes
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    questTypes.forEach { it.visible = visibleQuestTypeController.isVisible(it.questType) }
+                }
+                notifyDataSetChanged()
+            }
+        }
     }
-    var listener: Listener? = null
+
+    private val questTypeOrderListener = object : QuestTypeOrderSource.Listener {
+        override fun onQuestTypeOrderAdded(item: QuestType<*>, toAfter: QuestType<*>) {
+            val itemIndex = questTypes.indexOfFirst { it.questType == item }
+            val toAfterIndex = questTypes.indexOfFirst { it.questType == toAfter }
+
+            val questType = questTypes.removeAt(itemIndex)
+            questTypes.add(toAfterIndex + if (itemIndex > toAfterIndex) 1 else 0, questType)
+            /* not calling notifyItemMoved here because the view change has already been performed
+               on drag&drop, we just need to update the data now */
+        }
+
+        override fun onQuestTypeOrdersChanged() {
+            // all/many quest orders have been changed - reinit list
+            lifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
+        }
+    }
 
     init {
         val lat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
         val lng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
         currentCountryCodes = countryBoundaries.get().getIds(lng, lat)
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStart() {
+        lifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
+
+        visibleQuestTypeController.addListener(visibleQuestsListener)
+        questTypeOrderController.addListener(questTypeOrderListener)
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun onStop() {
+        visibleQuestTypeController.removeListener(visibleQuestsListener)
+        questTypeOrderController.removeListener(questTypeOrderListener)
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun onDestroy() {
+        lifecycleScope.cancel()
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -111,20 +166,30 @@ class QuestSelectionAdapter @Inject constructor(
 
     override fun getItemCount() = shownQuestTypes.size
 
+    private suspend fun createQuestTypeVisibilityList() = withContext(Dispatchers.IO) {
+        val sortedQuestTypes = questTypeRegistry.toMutableList()
+        questTypeOrderController.sort(sortedQuestTypes)
+        sortedQuestTypes.map { QuestVisibility(it, visibleQuestTypeController.isVisible(it)) }.toMutableList()
+    }
+
+    /** Contains the logic for drag and drop (for reordering) */
     private inner class TouchHelperCallback : ItemTouchHelper.Callback() {
         private var draggedFrom = -1
         private var draggedTo = -1
 
         override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
             val qv = (viewHolder as QuestVisibilityViewHolder).item
-            return if (!qv.isInteractionEnabled || isFiltered) 0
-            else makeFlag(ACTION_STATE_IDLE, UP or DOWN) or makeFlag(ACTION_STATE_DRAG, UP or DOWN)
+            if (!qv.isInteractionEnabled) return 0
+
+            return makeFlag(ACTION_STATE_IDLE, UP or DOWN) or
+                   makeFlag(ACTION_STATE_DRAG, UP or DOWN)
         }
 
         override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
             val from = viewHolder.adapterPosition
             val to = target.adapterPosition
-            Collections.swap(questTypes, from, to)
+            if (questTypesDuringDrag == null) questTypesDuringDrag = shownQuestTypes.toMutableList()
+            Collections.swap(questTypesDuringDrag!!, from, to)
             notifyItemMoved(from, to)
             return true
         }
@@ -142,18 +207,27 @@ class QuestSelectionAdapter @Inject constructor(
 
         override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
             super.onSelectedChanged(viewHolder, actionState)
-            if (actionState == ACTION_STATE_IDLE && draggedTo != draggedFrom) {
-                var pos = draggedTo
-                if (draggedTo == 0) pos++
-
-                val before = questTypes[pos - 1].questType
-                val after = questTypes[pos].questType
-
-                listener?.onReorderedQuests(before, after)
-
-                draggedFrom = -1
-                draggedTo = draggedFrom
+            if (actionState == ACTION_STATE_IDLE) {
+                onDropped()
             }
+        }
+
+        private fun onDropped() {
+            val qt = questTypesDuringDrag
+            /* since we modify the quest list during move (in onMove) for the animation, the quest
+            *  type we dragged is now already at the position we want it to be. */
+            if (draggedTo != draggedFrom && draggedTo > 0 && qt != null) {
+                val item = qt[draggedTo].questType
+                val toAfter = qt[draggedTo - 1].questType
+
+                lifecycleScope.launch(Dispatchers.IO) {
+                    questTypeOrderController.addOrderItem(item, toAfter)
+                }
+            }
+
+            questTypesDuringDrag = null
+            draggedFrom = -1
+            draggedTo = -1
         }
 
         override fun isItemViewSwipeEnabled() = false
@@ -161,8 +235,9 @@ class QuestSelectionAdapter @Inject constructor(
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}
     }
 
+    /** View Holder for a single quest type */
     inner class QuestVisibilityViewHolder(itemView: View) :
-        ListAdapter.ViewHolder<QuestVisibility>(itemView), CompoundButton.OnCheckedChangeListener {
+        RecyclerView.ViewHolder(itemView), CompoundButton.OnCheckedChangeListener {
 
         private val dragHandle: ImageView = itemView.dragHandle
         private val questIcon: ImageView = itemView.questIcon
@@ -183,7 +258,7 @@ class QuestSelectionAdapter @Inject constructor(
                 return true
             }
 
-        override fun onBind(with: QuestVisibility) {
+        fun onBind(with: QuestVisibility) {
             this.item = with
             val colorResId = if (item.isInteractionEnabled) R.color.background else R.color.greyed_out
             itemView.setBackgroundResource(colorResId)
@@ -194,7 +269,7 @@ class QuestSelectionAdapter @Inject constructor(
             visibilityCheckBox.isEnabled = item.isInteractionEnabled
             visibilityCheckBox.setOnCheckedChangeListener(this)
 
-            dragHandle.isInvisible = !item.isInteractionEnabled || isFiltered
+            dragHandle.isInvisible = !item.isInteractionEnabled
             dragHandle.setOnTouchListener { v, event ->
                 when (event.actionMasked) {
                     MotionEvent.ACTION_DOWN -> itemTouchHelper.startDrag(this)
@@ -226,7 +301,9 @@ class QuestSelectionAdapter @Inject constructor(
         override fun onCheckedChanged(compoundButton: CompoundButton, b: Boolean) {
             item.visible = b
             updateSelectionStatus()
-            listener?.onChangedQuestVisibility(item.questType, item.visible)
+            lifecycleScope.launch(Dispatchers.IO) {
+                visibleQuestTypeController.setVisible(item.questType, item.visible)
+            }
             if (b && item.questType.defaultDisabledMessage > 0) {
                 AlertDialog.Builder(compoundButton.context)
                     .setTitle(R.string.enable_quest_confirmation_title)

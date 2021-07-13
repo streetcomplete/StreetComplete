@@ -38,7 +38,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
 
     init {
         Injector.applicationComponent.inject(this)
-        showQuestFormAdapter.list = questTypeRegistry.all.toMutableList()
+        showQuestFormAdapter.list = questTypeRegistry.toMutableList()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

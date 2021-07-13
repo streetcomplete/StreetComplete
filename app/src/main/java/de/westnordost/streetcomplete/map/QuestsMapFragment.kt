@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.map.components.ElementGeometryMapComponent
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
@@ -35,8 +35,8 @@ import javax.inject.Inject
 class QuestsMapFragment : LocationAwareMapFragment() {
 
     @Inject internal lateinit var spriteSheet: TangramPinsSpriteSheet
+    @Inject internal lateinit var questTypeOrderSource: QuestTypeOrderSource
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
     @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
     @Inject internal lateinit var editHistorySource: EditHistorySource
     @Inject internal lateinit var mapDataSource: MapDataWithEditsSource
@@ -75,7 +75,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         pinsMapComponent = PinsMapComponent(requireContext(), ctrl)
         geometryMapComponent = ElementGeometryMapComponent(ctrl)
 
-        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeRegistry, questTypeOrderList, resources, visibleQuestsSource)
+        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
         lifecycle.addObserver(questPinsManager!!)
         questPinsManager!!.isActive = pinMode == PinMode.QUESTS
 

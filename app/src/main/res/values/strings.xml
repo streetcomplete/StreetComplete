@@ -487,6 +487,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="resurvey_intervals_more_often">Ask more often</string>
     <string name="pref_title_quests2">Quest selection and display order</string>
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
+    <string name="pref_subtitle_quests_profile_name">Profile: %1$s</string>
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
     <string name="action_reset">Reset</string>
@@ -716,6 +717,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
     <string name="action_search">Search</string>
     <string name="action_deselect_all">Deselect all</string>
+    <string name="action_manage_profiles">Manage profiles</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
     <string name="quest_maxweight_select_sign">"Select sign"</string>
@@ -1064,4 +1066,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_selection_hint_message">"Contributing should primarily be fun!
 
 If you are overwhelmed by the number of quests, you can always fine-tune what quests are displayed to you and in what order in the settings.</string>
+    <string name="quest_presets_preset_name_hint">Preset name</string>
+    <string name="quest_profiles_default_name">Default</string>
+    <string name="quest_profiles_delete_message">Delete this profile? The quest selection and order for it will be irrevocably lost.</string>
 </resources>

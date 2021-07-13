@@ -11,6 +11,11 @@
         android:orderInCategory="2"
         app:showAsAction="never" />
 
+    <item android:id="@+id/action_manage_profiles"
+        android:title="@string/action_manage_profiles"
+        android:orderInCategory="3"
+        app:showAsAction="never" />
+
     <item android:id="@+id/action_search"
         android:title="@string/action_search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"

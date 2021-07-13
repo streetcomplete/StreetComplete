@@ -19,6 +19,9 @@ class QuestProfilesDao @Inject constructor(private val db: Database) {
         db.query(NAME, orderBy = "$QUEST_PROFILE_ID ASC") {
             QuestProfile(it.getLong(QUEST_PROFILE_ID), it.getString(QUEST_PROFILE_NAME))
         }
+
+    fun getName(profileId: Long): String? =
+        db.queryOne(NAME, where = "$QUEST_PROFILE_ID = $profileId") { it.getString(QUEST_PROFILE_NAME) }
 }
 
 data class QuestProfile(val id: Long, val name: String)

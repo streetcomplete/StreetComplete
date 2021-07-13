@@ -39,9 +39,7 @@ class VisibleQuestsSourceTest {
         osmQuestSource = mock()
         visibleQuestTypeSource = mock()
         teamModeQuestFilter = mock()
-        questTypeRegistry = mock()
-
-        on(questTypeRegistry.all).thenReturn(questTypes)
+        questTypeRegistry = QuestTypeRegistry(questTypes)
 
         on(visibleQuestTypeSource.isVisible(any())).thenReturn(true)
         on(teamModeQuestFilter.isVisible(any())).thenReturn(true)

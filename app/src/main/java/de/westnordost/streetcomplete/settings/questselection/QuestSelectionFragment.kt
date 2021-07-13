@@ -17,51 +17,46 @@ import de.westnordost.streetcomplete.DisplaysTitle
 import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.quest.getVisible
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
+import de.westnordost.streetcomplete.data.visiblequests.QuestProfilesSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import kotlinx.android.synthetic.main.fragment_quest_selection.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
-class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection),
-    HasTitle, QuestSelectionAdapter.Listener {
+class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasTitle {
 
     @Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
+    @Inject internal lateinit var questProfilesSource: QuestProfilesSource
     @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
-    @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
+    @Inject internal lateinit var questTypeOrderController: QuestTypeOrderController
 
     private val parentTitleContainer: DisplaysTitle? get() =
         parentFragment as? DisplaysTitle ?: activity as? DisplaysTitle
 
     override val title: String get() = getString(R.string.pref_title_quests2)
+
     override val subtitle: String get() {
-        val enabledCount = questTypeRegistry.getVisible(visibleQuestTypeController).count()
-        val totalCount = questTypeRegistry.all.size
+        val enabledCount = questTypeRegistry.filter { visibleQuestTypeController.isVisible(it) }.count()
+        val totalCount = questTypeRegistry.size
         return getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
     }
 
-    private val visibleQuestTypeSourceListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilitiesChanged() {
-            lifecycleScope.launch(Dispatchers.Main) {
-                parentTitleContainer?.updateTitle(this@QuestSelectionFragment)
-            }
-        }
+    private val visibleQuestTypeListener = object : VisibleQuestTypeSource.Listener {
+        override fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) { lifecycleScope.launch { updateTitle() } }
+        override fun onQuestTypeVisibilitiesChanged() { lifecycleScope.launch { updateTitle() } }
     }
 
     init {
         Injector.applicationComponent.inject(this)
-        initQuestSelectionAdapter()
-        questSelectionAdapter.listener = this
+        lifecycle.addObserver(questSelectionAdapter)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -81,7 +76,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection),
         (searchItem.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean = false
             override fun onQueryTextChange(newText: String?): Boolean {
-                onFilter(newText.orEmpty())
+                filterQuestsByString(newText.orEmpty())
                 return false
             }
         })
@@ -92,13 +87,17 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection),
             R.id.action_reset -> {
                 AlertDialog.Builder(requireContext())
                     .setMessage(R.string.pref_quests_reset)
-                    .setPositiveButton(android.R.string.ok) { _, _ -> onReset() }
+                    .setPositiveButton(android.R.string.ok) { _, _ -> resetQuestVisibilitiesAndOrder() }
                     .setNegativeButton(android.R.string.cancel, null)
                     .show()
                 return true
             }
             R.id.action_deselect_all -> {
-                onDeselectAll()
+                deselectAllQuests()
+                return true
+            }
+            R.id.action_manage_profiles -> {
+                QuestProfilesFragment().show(childFragmentManager, QuestProfilesFragment.TAG)
                 return true
             }
         }
@@ -107,55 +106,35 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection),
 
     override fun onStart() {
         super.onStart()
-        visibleQuestTypeController.addListener(visibleQuestTypeSourceListener)
+        visibleQuestTypeController.addListener(visibleQuestTypeListener)
     }
 
     override fun onStop() {
         super.onStop()
-        visibleQuestTypeController.removeListener(visibleQuestTypeSourceListener)
+        visibleQuestTypeController.removeListener(visibleQuestTypeListener)
     }
 
-    override fun onReorderedQuests(before: QuestType<*>, after: QuestType<*>) {
+    private fun resetQuestVisibilitiesAndOrder() {
         lifecycleScope.launch(Dispatchers.IO) {
-            questTypeOrderList.apply(before, after)
-        }
-    }
-
-    override fun onChangedQuestVisibility(questType: QuestType<*>, visible: Boolean) {
-        lifecycleScope.launch(Dispatchers.IO) {
-            visibleQuestTypeController.setVisible(questType, visible)
-        }
-    }
-
-    private fun onReset() {
-        lifecycleScope.launch(Dispatchers.IO) {
-            questTypeOrderList.clear()
             visibleQuestTypeController.clear()
-            withContext(Dispatchers.Main) { initQuestSelectionAdapter() }
+            questTypeOrderController.clear()
         }
     }
 
-    private fun onDeselectAll() {
+    private fun deselectAllQuests() {
         lifecycleScope.launch(Dispatchers.IO) {
-            visibleQuestTypeController.setAllVisible(questTypeRegistry.all.filter { it !is OsmNoteQuestType }, false)
-            withContext(Dispatchers.Main) { initQuestSelectionAdapter() }
+            visibleQuestTypeController.setAllVisible(questTypeRegistry, false)
         }
     }
 
-    private fun onFilter(text: String) {
+    private fun filterQuestsByString(text: String) {
         questSelectionAdapter.filter = text
         val isEmpty = questSelectionAdapter.itemCount == 0
         tableHeader.isInvisible = isEmpty
         emptyText.isInvisible = !isEmpty
     }
 
-    private fun initQuestSelectionAdapter() {
-        questSelectionAdapter.questTypes = createQuestTypeVisibilityList()
-    }
-
-    private fun createQuestTypeVisibilityList(): MutableList<QuestVisibility> {
-        val questTypes = questTypeRegistry.all.toMutableList()
-        questTypeOrderList.sort(questTypes)
-        return questTypes.map { QuestVisibility(it, visibleQuestTypeController.isVisible(it)) }.toMutableList()
+    private fun updateTitle() {
+        parentTitleContainer?.updateTitle(this)
     }
 }

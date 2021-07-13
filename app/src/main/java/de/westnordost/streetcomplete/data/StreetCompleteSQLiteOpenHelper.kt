@@ -28,7 +28,6 @@ import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestProfilesTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
-import javax.inject.Inject
 
 @Singleton class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {

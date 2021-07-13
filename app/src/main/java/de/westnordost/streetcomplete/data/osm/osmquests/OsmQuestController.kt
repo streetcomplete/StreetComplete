@@ -50,7 +50,7 @@ import javax.inject.Singleton
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
-    private val allQuestTypes get() = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
+    private val allQuestTypes get() = questTypeRegistry.filterIsInstance<OsmElementQuestType<*>>()
 
     private val mapDataSourceListener = object : MapDataWithEditsSource.Listener {
 

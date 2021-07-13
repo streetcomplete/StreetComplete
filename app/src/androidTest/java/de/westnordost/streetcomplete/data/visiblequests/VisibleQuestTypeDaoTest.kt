@@ -39,7 +39,7 @@ class VisibleQuestTypeDaoTest : ApplicationDbTestCase() {
         assertFalse(dao.get(0, "blurb"))
         assertFalse(dao.get(1, "blurb"))
         dao.clear(0)
-        assertTrue(dao.get(1, "blurb"))
+        assertTrue(dao.get(0, "blurb"))
         assertFalse(dao.get(1, "blurb"))
         dao.clear(1)
         assertTrue(dao.get(1, "blurb"))
