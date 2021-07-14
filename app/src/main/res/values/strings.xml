@@ -1068,5 +1068,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 If you are overwhelmed by the number of quests, you can always fine-tune what quests are displayed to you and in what order in the settings.</string>
     <string name="quest_presets_preset_name_hint">New preset name</string>
     <string name="quest_presets_default_name">Default</string>
-    <string name="quest_presets_delete_message">Delete this preset? The quest selection and order for it will be irrevocably lost.</string>
+    <string name="quest_presets_delete_message">"Delete preset \"%s\"? The quest selection and order for it will be irrevocably lost."</string>
 </resources>

@@ -83,7 +83,7 @@ class QuestPresetsAdapter @Inject constructor(
             }
             itemView.deleteButton.isEnabled = true
             itemView.deleteButton.isInvisible = with.id == 0L
-            itemView.deleteButton.setOnClickListener { onClickDeleteQuestPreset(with.id) }
+            itemView.deleteButton.setOnClickListener { onClickDeleteQuestPreset(with) }
         }
 
         fun onSelectQuestPreset(presetId: Long) {
@@ -92,10 +92,10 @@ class QuestPresetsAdapter @Inject constructor(
             }
         }
 
-        fun onClickDeleteQuestPreset(presetId: Long) {
-            AlertDialog.Builder(itemView.context)
-                .setMessage(R.string.quest_presets_delete_message)
-                .setPositiveButton(R.string.delete_confirmation) { _,_ -> deleteQuestPreset(presetId) }
+        fun onClickDeleteQuestPreset(preset: QuestPreset) {
+            AlertDialog.Builder(itemView.context, R.style.Theme_Bubble_Dialog_Alert)
+                .setMessage(itemView.context.getString(R.string.quest_presets_delete_message, preset.name))
+                .setPositiveButton(R.string.delete_confirmation) { _,_ -> deleteQuestPreset(preset.id) }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
         }
