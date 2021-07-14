@@ -23,7 +23,7 @@ class QuestPresetsAdapter @Inject constructor(
     private val questPresetsController: QuestPresetsController
 ) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), LifecycleObserver {
 
-    private val presets: MutableList<QuestPreset> = mutableListOf()
+    private var presets: MutableList<QuestPreset> = mutableListOf()
 
     private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
@@ -46,6 +46,7 @@ class QuestPresetsAdapter @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart() {
+        presets = mutableListOf()
         presets.add(QuestPreset(0, context.getString(R.string.quest_presets_default_name)))
         presets.addAll(questPresetsController.getAllQuestPresets())
 
