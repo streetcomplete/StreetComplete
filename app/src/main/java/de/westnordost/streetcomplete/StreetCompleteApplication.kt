@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete
 
+import android.app.Application
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.multidex.MultiDexApplication
 import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
-class StreetCompleteApplication : MultiDexApplication() {
+class StreetCompleteApplication : Application() {
 
     @Inject lateinit var preloader: Preloader
     @Inject lateinit var cleaner: Cleaner
