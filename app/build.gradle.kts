@@ -103,6 +103,9 @@ dependencies {
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
+    // only necessary for Android 4.x (KitKat etc, before Lollipop)
+    implementation("androidx.multidex:multidex:2.0.1")
+
     // tests
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
