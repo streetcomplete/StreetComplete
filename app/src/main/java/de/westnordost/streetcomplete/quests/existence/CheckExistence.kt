@@ -28,7 +28,7 @@ class CheckExistence(
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or amenity = public_bookcase
           )
-          and (${lastChecked(2.0)})
+          and (${lastChecked(2.0)}) and (!seasonal or seasonal=no)
         ) or (
           (
             amenity = clock
@@ -48,7 +48,7 @@ class CheckExistence(
               and !highway
             )
           )
-          and (${lastChecked(4.0)})
+          and (${lastChecked(4.0)}) and (!seasonal or seasonal=no)
         ) or (
           (
             amenity = bench
@@ -60,7 +60,7 @@ class CheckExistence(
             or amenity = toilets
           )
           and (${lastChecked(6.0)})
-        )) and access !~ no|private
+        )) and access !~ no|private and (!seasonal or seasonal=no)
     """.toElementFilterExpression()
     }
     // traffic_calming = table is often used as a property of a crossing: we don't want the app
