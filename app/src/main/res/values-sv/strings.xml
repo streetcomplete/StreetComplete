@@ -35,8 +35,12 @@
     <string name="quest_openingHours_end_time">"stänger"</string>
     <string name="quest_openingHours_add_months">"Lägg till månader"</string>
     <string name="quest_openingHours_add_hours">"Lägg till timmar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Lägg till veckodagar"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Välj månader"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Välj veckodagar"</string>
     <string name="quest_openingHours_24_7_confirmation">"Med andra ord, är det öppet när som helst, varje dag?"</string>
     <string name="quest_noteDiscussion_title">"Kan du bidra till denna anteckning?"</string>

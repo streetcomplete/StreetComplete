@@ -35,8 +35,12 @@
     <string name="quest_openingHours_end_time">"stengjetid"</string>
     <string name="quest_openingHours_add_months">"Legg til månadar"</string>
     <string name="quest_openingHours_add_hours">"Legg til timar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Legg til vekedagar"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Vel månadar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Vel vekedagar"</string>
     <string name="quest_openingHours_24_7_confirmation">"Med andre ord, er det ope heile døgnet, kvar dag?"</string>
     <string name="quest_noteDiscussion_title">"Kan du bidra noko til denne merknaden?"</string>

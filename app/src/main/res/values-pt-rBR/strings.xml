@@ -2213,7 +2213,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_busStopLit_tram_name_title">"A parada de bonde %s é iluminada?"</string>
     <string name="quest_busStopLit_tram_title">"Esta parada do bonde é iluminada?"</string>
     <string name="quest_busStopLit_title">"Este ponto de ônibus está iluminado?"</string>
-    <string name="quest_busStopLit_name_title">"A parada de ônibus %s está dividida?"</string>
+    <string name="quest_busStopLit_name_title">"A parada de ônibus %s possui iluminação?"</string>
     <string name="no_location_permission_warning_title">"Permissão de localização"</string>
     <string name="quest_surface_value_woodchips">"Lascas de madeira"</string>
     <string name="no_camera_app">"Nenhum app de câmera disponível"</string>

@@ -59,8 +59,12 @@
     <string name="quest_openingHours_end_time">"Время закрытия"</string>
     <string name="quest_openingHours_add_months">"Добавить месяцы"</string>
     <string name="quest_openingHours_add_hours">"Добавить часы"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Добавить дни"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Выберите месяцы"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Выберите рабочие дни"</string>
     <string name="quest_openingHours_24_7_confirmation">"Другими словами, работает круглосуточно в любой день недели?"</string>
     <string name="quest_noteDiscussion_title">"Можете что-то добавить к этой заметке?"</string>

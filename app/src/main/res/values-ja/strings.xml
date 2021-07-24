@@ -1275,6 +1275,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_temple">"寺院"</string>
     <string name="quest_buildingType_synagogue">"シナゴーグ"</string>
     <string name="quest_buildingType_civic">"公共施設"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_school">"校舎"</string>
     <string name="quest_buildingType_hospital">"病院"</string>
     <string name="quest_buildingType_stadium">"スタジアム"</string>
     <string name="quest_buildingType_train_station">"鉄道の駅"</string>
@@ -1487,6 +1490,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_drinking_water_potable_unsigned">"飲用 (表示はない)"</string>
     <string name="quest_drinking_water_not_potable_signed">"飲用ではない (水質検査を受けている)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"飲用ではない (表示はない)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_fire_station">"消防署"</string>
     <string name="quest_charging_station_name_capacity_title">"この充電ステーション (%s) では一度に何台の車を充電できますか?"</string>
     <string name="team_mode">"チームモード"</string>
     <string name="team_mode_exit">"チームモードを終了"</string>

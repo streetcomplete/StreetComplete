@@ -35,7 +35,7 @@
     <string name="quest_generic_confirmation_yes">"Kyllä, olen varma"</string>
     <string name="quest_generic_confirmation_no">"Aion tarkistaa"</string>
     <string name="quest_generic_error_field_empty">"Jätit kentän tyhjäksi"</string>
-    <string name="quest_leave_new_note_title">"Jätä ilmoitus sen sijaan?"</string>
+    <string name="quest_leave_new_note_title">"Jätä sen sijaan ilmoitus?"</string>
     <string name="quest_leave_new_note_description">"Voit jättää julkisen ilmoituksen tähän sijaintiin, jota muut kartoittajat voivat kommentoida ja toivottavasti ratkaista tai vaihtoehtoisesti piilottaa tehtävän vain itseltäsi"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Ei, piilota"</string>
@@ -55,8 +55,12 @@
     <string name="quest_openingHours_end_time">"sulkemisaika"</string>
     <string name="quest_openingHours_add_months">"Lisää kuukaudet"</string>
     <string name="quest_openingHours_add_hours">"Lisää tunnit"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Lisää viikonpäivät"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Valitse kuukaudet"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Valitse viikonpäivät"</string>
     <string name="quest_openingHours_24_7_confirmation">"Toisin sanoen, onko auki koko ajan joka päivä?"</string>
 
@@ -309,7 +313,7 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
 
     <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"Valitsit monia lajeja"</string>
-    <string name="quest_busStopShelter_name_title">"Onko bussipusäkillä %s katosta?"</string>
+    <string name="quest_busStopShelter_name_title">"Onko bussipysäkillä %s katosta?"</string>
     <string name="quest_toiletsFee_title">"Vaatiiko tämä käymälä maksun?"</string>
 
     <!-- Fuzzy -->
@@ -317,8 +321,6 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Onko tämän suojatien molemmilla puolilla kosketuspäällysteet?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"Oletko varma että tarkistit tämän paikan päällä?"</string>
 
     <!-- Vaiko "kohopainettuja päällysteitä" ? -->
@@ -327,11 +329,7 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"Vain paikanpäällä tarkistetut tiedot tulisi lähettää."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"Onko tämä pyöräpysäkki katoksellinen (suojattu sateelta)?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"Älä enää näytä tälle istunnolle."</string>
 
     <!-- Fuzzy -->
@@ -1779,14 +1777,10 @@ Lopulta, muista turvallisuus: huomio ympäristösi ja älä mene yksityisalueill
     <string name="user_statistics_country_wiki_link">"Kartoitusprortaali %s"</string>
     <string name="user_statistics_filter_by_country">"maittain"</string>
     <string name="user_statistics_filter_by_quest_type">"tehtävittäin"</string>
-
-    <!-- Fuzzy -->
-    <string name="user_profile_global_rank">"Globaali
-sija"</string>
-
-    <!-- Fuzzy -->
-    <string name="user_profile_local_rank">"%s
-sija"</string>
+    <string name="user_profile_global_rank">"Globaali-
+sijoitus"</string>
+    <string name="user_profile_local_rank">"%s-
+sijoitus"</string>
     <string name="user_profile_days_active">"Aktiivisia 
 päiviä"</string>
 

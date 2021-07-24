@@ -35,8 +35,12 @@
     <string name="quest_openingHours_end_time">"време затварања"</string>
     <string name="quest_openingHours_add_months">"Додај месеце"</string>
     <string name="quest_openingHours_add_hours">"Додај време"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Додај радне дане"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Изаберите месеце"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Изаберите радне дане"</string>
     <string name="quest_openingHours_24_7_confirmation">"Другим речима, јел отворено читавог дана, сваки дан?"</string>
     <string name="quest_noteDiscussion_title">"Можете ли ишта додати за ову напомену?"</string>
