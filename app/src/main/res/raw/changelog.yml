@@ -1,3 +1,24 @@
+v33.2: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix that the app wouldn't start on Android 4.x (#3069) which was broken since v32.0. <br/>
+      Android 4.x support will be dropped in an upcoming version.
+  </li>
+  </ul>
+  <h3>Other Enhancements</h3>
+  <ul>
+  <li>Amharic (አማርኛ) translation by Alexander and Anteneh Belayneh</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Number of lanes: Don't ask if they have been recorded for both sides individually already (#3038), by @FloEdelmann</li>
+  <li>Enable cycleways and tactile pavings quest for Croatia (#3041), by @mnalis</li>
+  <li>Allow to split the way on asking whether a set of steps has a handrail (#3037), by @peternewman</li>
+  <li>Allow answering that a place does not exist when asking whether it offers Kosher food (#3073), by @peternewman</li>
+  <li>Don't ask whether a place offers vegetarian food if it only offers vegan food (#3072, #3081), by @starsep</li>
+  <li>Don't ask for the existence of things that are seasonal, f.e. loungers that can only be found in the park during summer (#3089), by @matkoniecz</li>
+  </ul>
+
 v33.1: |
   <ul>
   <li>Fix crash when tapping on an achievement in your profile screen (#3027)</li>
