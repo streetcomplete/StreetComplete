@@ -55,6 +55,10 @@ class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
                 changes.deleteIfExists("operator")
                 changes.deleteIfExists("brand")
                 changes.deleteIfExists("brand:wikidata")
+                changes.deleteIfExists("brand:wikipedia")
+                changes.deleteIfExists("fhrs:id")
+                changes.deleteIfExists("branch")
+
                 // contact keys
                 changes.deleteIfExists("phone")
                 changes.deleteIfExists("fax")
@@ -68,6 +72,7 @@ class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
                 changes.deleteIfExists("contact:facebook")
                 changes.deleteIfExists("contact:twitter")
                 changes.deleteIfExists("contact:instagram")
+                
                 // payment keys
                 changes.deleteIfExists("payment:cash")
                 changes.deleteIfExists("payment:coins")
