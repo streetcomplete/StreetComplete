@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import java.time.LocalDate
 
 class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
@@ -43,46 +44,18 @@ class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
                 }
 
                 changes.deleteIfExists(SURVEY_MARK_KEY)
+
+                for ((key, value) in changes.getPreviousEntries()) {
+                    val isOkToRemove =
+                        KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED.none { it.matches(key) }
+                    if (isOkToRemove && !answer.tags.containsKey(key)) {
+                        changes.deleteIfExists(key)
+                    }
+                }
+
                 for ((key, value) in answer.tags) {
                     changes.addOrModify(key, value)
                 }
-
-                // Remove any tags which need resetting or resurveying now
-                changes.deleteIfExists("name")
-                changes.deleteIfExists("ref")
-                changes.deleteIfExists("loc_ref")
-                changes.deleteIfExists("opening_hours")
-                changes.deleteIfExists("operator")
-                changes.deleteIfExists("brand")
-                changes.deleteIfExists("brand:wikidata")
-                changes.deleteIfExists("brand:wikipedia")
-                changes.deleteIfExists("fhrs:id")
-                changes.deleteIfExists("branch")
-
-                // contact keys
-                changes.deleteIfExists("phone")
-                changes.deleteIfExists("fax")
-                changes.deleteIfExists("website")
-                changes.deleteIfExists("email")
-                changes.deleteIfExists("contact:phone")
-                changes.deleteIfExists("contact:mobile")
-                changes.deleteIfExists("contact:fax")
-                changes.deleteIfExists("contact:website")
-                changes.deleteIfExists("contact:email")
-                changes.deleteIfExists("contact:facebook")
-                changes.deleteIfExists("contact:twitter")
-                changes.deleteIfExists("contact:instagram")
-                
-                // payment keys
-                changes.deleteIfExists("payment:cash")
-                changes.deleteIfExists("payment:coins")
-                changes.deleteIfExists("payment:notes")
-                changes.deleteIfExists("payment:cheque")
-                changes.deleteIfExists("payment:electronic_purses")
-                changes.deleteIfExists("payment:cards")
-                changes.deleteIfExists("payment:debit_cards")
-                changes.deleteIfExists("payment:credit_cards")
-                changes.deleteIfExists("payment:contactless")
 
 
             }
