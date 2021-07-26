@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import java.time.LocalDate
 
 class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {

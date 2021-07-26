@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.quest
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.meta.KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
