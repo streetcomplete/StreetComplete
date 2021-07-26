@@ -49,7 +49,7 @@ class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
                     val isOkToRemove =
                         KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED.none { it.matches(key) }
                     if (isOkToRemove && !answer.tags.containsKey(key)) {
-                        changes.deleteIfExists(key)
+                        changes.delete(key)
                     }
                 }
 
