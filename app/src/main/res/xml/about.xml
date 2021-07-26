@@ -37,7 +37,6 @@
     <Preference
         android:key="faq"
         android:title="@string/about_title_faq"
-        android:summary="@string/about_summary_faq"
         android:widgetLayout="@layout/widget_image_open_in_browser"/>
 
     <Preference
