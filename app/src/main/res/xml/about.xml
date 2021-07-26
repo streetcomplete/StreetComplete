@@ -32,6 +32,7 @@
     <Preference
         android:key="repository"
         android:title="@string/about_title_repository"
+        android:summary="@string/about_summary_repository"
         android:widgetLayout="@layout/widget_image_open_in_browser"/>
 
     <Preference
