@@ -43,8 +43,6 @@
     <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Wochentage hinzufügen"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Monate auswählen"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Wochentage auswählen"</string>
     <string name="quest_openingHours_24_7_confirmation">"Mit anderen Worten, es hat einfach immer, jeden Tag, auf?"</string>
     <string name="quest_noteDiscussion_title">"Kannst du etwas zu dieser Notiz beitragen?"</string>

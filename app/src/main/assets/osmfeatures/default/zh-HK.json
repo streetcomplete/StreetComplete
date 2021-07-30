@@ -4355,10 +4355,6 @@
                     "name": "遠足路綫",
                     "terms": "hiking route,行山路綫,行山路線,遠足路線"
                 },
-                "type/route/horse": {
-                    "name": "策騎路線",
-                    "terms": "騎馬路線"
-                },
                 "type/route/light_rail": {
                     "name": "輕鐵路綫",
                     "terms": "light rail route,輕鐵路線"

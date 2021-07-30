@@ -106,7 +106,7 @@
                     "options": {
                         "customers": "Enbart kunder",
                         "no": "Ingen",
-                        "permissive": "Påbjuden",
+                        "permissive": "Tillåtande",
                         "permit": "Enbart med tillstånd",
                         "private": "Privat",
                         "yes": "Offentlig"
@@ -573,7 +573,7 @@
                         "turkish": "Turkisk",
                         "vietnamese": "Vitnamesisk"
                     },
-                    "terms": "mat,kök,matgrupp,regional mat,världens mat,kost,kostalternativ,meny,menyutbud"
+                    "terms": "mat,kök,matgrupp,regional mat,världens,kost,kostalternativ,meny,menyutbud"
                 },
                 "currency_multi": {
                     "label": "Valutor",
@@ -820,7 +820,7 @@
                     "options": {
                         "contact_line": "Kontaktledning",
                         "no": "Nej",
-                        "rail": "Elektrifierad räls",
+                        "rail": "Strömskena",
                         "yes": "Ja (ospecificerad)"
                     },
                     "placeholder": "Kontaktledning, elektrifierad räls...",
@@ -1047,6 +1047,14 @@
                 },
                 "historic/wreck/visible_at_low_tide": {
                     "label": "Synligt vid lågt tidvatten"
+                },
+                "holding_position/type": {
+                    "label": "Typ",
+                    "options": {
+                        "ILS": "Instrumentlandningssystem",
+                        "intermediate": "Taxiväg-taxiväg-korsning",
+                        "runway": "Start- och landningsbana"
+                    }
                 },
                 "hoops": {
                     "label": "Basketkorgar",
@@ -2057,9 +2065,9 @@
                     "label": "Typ av service",
                     "options": {
                         "crossover": "Växelförbindelse",
-                        "siding": "Sidospår",
-                        "spur": "Industrispår",
-                        "yard": "Bangård"
+                        "siding": "Förbigångsspår / avvikande huvudspår",
+                        "spur": "Anslutningsspår",
+                        "yard": "Bangårdsspår / uppställningsspår"
                     },
                     "terms": "typ av service,typ av serviceväg,service,serviceväg"
                 },
@@ -2455,9 +2463,9 @@
                 "usage_rail": {
                     "label": "Användningsområde",
                     "options": {
-                        "branch": "Sidospår",
+                        "branch": "Sidolinje",
                         "industrial": "Industrispår",
-                        "main": "Huvudspår",
+                        "main": "Huvudlinje",
                         "military": "Militärt spår",
                         "test": "Testspår",
                         "tourism": "Museijärnväg"
@@ -2492,6 +2500,9 @@
                 "vhf": {
                     "label": "VHF-kanal",
                     "terms": "vhf-kanal,vhf,radio,anropsnamn"
+                },
+                "via": {
+                    "label": "Via"
                 },
                 "video_calls": {
                     "label": "Videosamtal",
@@ -3271,7 +3282,7 @@
                 },
                 "amenity/post_box": {
                     "name": "Brevlåda",
-                    "terms": "brevlåda,postlåda,brevinkast,brevinlämning,paketinlämning,postfack,postbox"
+                    "terms": "brevlåda,postlåda,brevinkast,brevinlämning,paketinlämning,postfack,postbox,brev,post"
                 },
                 "amenity/post_depot": {
                     "name": "Postsorteringskontor",
@@ -4116,7 +4127,7 @@
                     "terms": "terrasshus"
                 },
                 "building/train_station": {
-                    "name": "Tågstationsbyggnad"
+                    "name": "Stationshus"
                 },
                 "building/transportation": {
                     "name": "Byggnad för kollektivtrafik",
@@ -4672,6 +4683,10 @@
                     "name": "Hiss",
                     "terms": "hiss"
                 },
+                "highway/elevator_line": {
+                    "name": "Snedhiss",
+                    "terms": "hiss,snedhiss,snedbanehiss,banhiss,bergbana,lift,elevator,vinsch,lutning,lutande hiss,kabelspårväg,funikular"
+                },
                 "highway/emergency_bay": {
                     "name": "Nöduppställningsplats",
                     "terms": "nöduppställningsplats,nödstopp,nödtelefon,nödstoppplats,uppställning,stopp,haveri,motorstopp"
@@ -4894,7 +4909,7 @@
                     "terms": "stamväg,huvudväg,europaväg,riksväg,motortrafikled"
                 },
                 "highway/trunk_link": {
-                    "name": "Stamvägsramp",
+                    "name": "Anslutning, stamväg",
                     "terms": "ramp,anslutning,påfart,avfart,huvudväg,europaväg"
                 },
                 "highway/turning_circle": {
@@ -5352,6 +5367,10 @@
                     "name": "Skridskobana",
                     "terms": "skridskobana,ishall,ishockey,ishockeybana,isrink,konstisbana,isbana,skridsko,skridskohall,ishockeyhall,hockey,skridskoåkning,curling"
                 },
+                "leisure/indoor_play": {
+                    "name": "Inomhuslekland",
+                    "terms": "inomhuslekland,bollhav,lekland,lekplats"
+                },
                 "leisure/marina": {
                     "name": "Marina",
                     "terms": "marina,småbåtshamn,hamn,småbåt,segelbåt,yacht,fritidsbåt,gästhamn,båt"
@@ -5479,6 +5498,10 @@
                 "leisure/playground": {
                     "name": "Lekplats",
                     "terms": "lekplats,lekområde,lekpark,lek,klätterställning,gunga"
+                },
+                "leisure/playground/indoor": {
+                    "name": "Inomhuslekplats",
+                    "terms": "inomhuslekplats,bollhav,lekland,lekplats"
                 },
                 "leisure/resort": {
                     "name": "Resort",
@@ -6441,6 +6464,14 @@
                     "name": "Solpanel",
                     "terms": "solpanel,solcell,solkraft,solcellsmodul,pv-modul,solljus,solenergi,fotovoltaik,termisk solkraft,solkraftverk,solel"
                 },
+                "power/generator/method/photovoltaic/building/roof": {
+                    "name": "Solpaneltak",
+                    "terms": "solcellstak,solmarkis,solcarport,soltak,solcell,solpanel"
+                },
+                "power/generator/method/photovoltaic/location/roof": {
+                    "name": "Solpanel på byggnad",
+                    "terms": "hemsolpanel,taksolcellsmodul,pv-modul,taksolpanel,solpanel,solcell"
+                },
                 "power/generator/source/hydro": {
                     "name": "Vattenkraftverk",
                     "terms": "vattenturbin,vattenkraft,vattenkraftverk,dam,generator,turbin"
@@ -6488,6 +6519,10 @@
                 "power/plant/source/solar": {
                     "name": "Solfarm",
                     "terms": "solfarm,solkraft,solkraftverk,ljuskraft,ljuskraftverk,solpanel,solpark"
+                },
+                "power/plant/source/waste": {
+                    "name": "Avfallsförbränningskraftverk",
+                    "terms": "avfallsförbränningskraftverk,avfallsförbränningsanläggning,förbränningsanläggning,sopförbränningsanläggning,avfall,sopor,avfallsanläggning,förbränning,förgasning,kraftverk,eldkraftverk,kraftstation,generator,graftverk"
                 },
                 "power/plant/source/wind": {
                     "name": "Vindfarm",
@@ -6683,7 +6718,7 @@
                     "name": "Järnvägsobjekt"
                 },
                 "railway/abandoned": {
-                    "name": "Riven järnväg",
+                    "name": "Uppriven spårsträcka",
                     "terms": "riven järnväg,borttagen järnväg"
                 },
                 "railway/buffer_stop": {
@@ -6691,7 +6726,7 @@
                     "terms": "stoppbock,buffert,buffertstopp,stoppblock"
                 },
                 "railway/construction": {
-                    "name": "Järnväg under konstruktion",
+                    "name": "Spår under uppbyggnad",
                     "terms": "järnväg under konstruktion,järnväg under byggnad,järnväg under uppförande,järnväg,byggarbete,bygge,byggarbetsplats,byggnation,byggnadsplats"
                 },
                 "railway/crossing": {
@@ -6703,7 +6738,7 @@
                     "terms": "spårspärr,omläggningsanordning,utspårare"
                 },
                 "railway/disused": {
-                    "name": "Oanvänd järnväg",
+                    "name": "Nedlagd spårsträcka",
                     "terms": "oanvänd järnväg,övergiven järnväg,övergiven tågbana,oanvänd tågbana"
                 },
                 "railway/funicular": {
@@ -6749,7 +6784,7 @@
                     "terms": "museijärnväg,historisk järnväg,historiskt tåg,bevarad järnväg,ångtåg,turisttåg,turistjärnväg"
                 },
                 "railway/rail": {
-                    "name": "Räls",
+                    "name": "Järnväg",
                     "terms": "räls,järnvägsspår,spår,bana"
                 },
                 "railway/rail/highspeed": {
@@ -6768,7 +6803,7 @@
                     "name": "Järnvägsstation"
                 },
                 "railway/subway": {
-                    "name": "Tunnelbanespår",
+                    "name": "Tunnelbana",
                     "terms": "tunnelbanespår,tunnelbana,t-bana,metro,underjordisk järnväg"
                 },
                 "railway/subway_entrance": {
@@ -6784,7 +6819,7 @@
                     "terms": "tågtvätt,loktvätt,tvätthall"
                 },
                 "railway/tram": {
-                    "name": "Spårvägsspår",
+                    "name": "Spårväg",
                     "terms": "spårvägsspår,spårvagn,spårväg,motorvagn"
                 },
                 "railway/tram_crossing": {
@@ -6799,7 +6834,7 @@
                     "name": "Stopposition för spårvagn"
                 },
                 "railway/yard": {
-                    "name": "Godsbangård",
+                    "name": "Bangård",
                     "terms": "godsbangård,godsvagnstopp,godstågstation,järnvägsstation,järnvägsgård,bangård,rangerbangård,kombiterminal,växlingsbangårdar"
                 },
                 "relation": {
@@ -7856,8 +7891,8 @@
                     "terms": "vandringsrutt,vandringsled,stig"
                 },
                 "type/route/horse": {
-                    "name": "Hästspår",
-                    "terms": "ridrutt,ridning,rida,häst,hästrutt,hästspår,ridspår"
+                    "name": "Ridled",
+                    "terms": "rida,ridning,häst,ridled,hästled,ridrutt,hästrutt,ridväg,hästväg,långfärdsridning,ridetapp,hästsport,ridturism"
                 },
                 "type/route/light_rail": {
                     "name": "Rutt på snabbspårväg / stadsbana",
@@ -7866,6 +7901,10 @@
                 "type/route/monorail": {
                     "name": "Monorailrutt",
                     "terms": "monorail,enskensbana,balkbana,räls,spår,kollektivtrafik,linjetrafik,transport"
+                },
+                "type/route/mtb": {
+                    "name": "Mountainbikerutt",
+                    "terms": "mountainbikerutt,mountainbike,terrängcykling,utförsåkning,enduro,freeride,mtb,trail ridning"
                 },
                 "type/route/pipeline": {
                     "name": "Rörledningsrutt",

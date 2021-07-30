@@ -132,7 +132,7 @@
     <string name="quest_surface_value_asphalt">"Асфальт"</string>
     <string name="quest_surface_value_compacted">"Втрамбоване"</string>
     <string name="quest_surface_value_concrete">"Бетон"</string>
-    <string name="quest_surface_value_dirt">"Багнюка"</string>
+    <string name="quest_surface_value_dirt">"Земля"</string>
     <string name="quest_surface_value_fine_gravel">"Дрібний гравій"</string>
     <string name="quest_surface_value_grass">"Трава"</string>
     <string name="quest_surface_value_grass_paver">"Газонна решітка"</string>

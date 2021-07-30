@@ -1678,6 +1678,11 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"这条自行车道的路面是什么材质的？"</string>
     <string name="quest_generic_answer_differs_along_the_way">"一路走来，不同的是..."</string>
+    <string name="quest_split_way_description">"如果道路有所不同，那首先要分开它们，然后任务可以分别完成。
+立即分割？"</string>
+    <string name="quest_split_way_tutorial">"点击道路上答案不一致的点来分割，尽量精确，你可以正常的放大。"</string>
+    <string name="quest_split_way_too_imprecise">"请继续放大"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"有很多分割点，你之后随时可以再进行分割。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"这条步行道的路面是什么材质的？"</string>
@@ -1705,7 +1710,9 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"是否需要付费才能进入 %s？"</string>
+    <string name="quest_laundrySelfService_title">"这家洗衣店是自助型的吗？"</string>
     <string name="quest_handrail_title">"台阶有扶手么？"</string>
+    <string name="quest_openingHours_no_name_title">"这里几点开始营业？（%s）"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"当前版本：%s"</string>
@@ -1769,6 +1776,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_recycling_glass_title">"是否只能回收玻璃瓶罐，还是能回收各种玻璃制品？"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"通常不会被接受的玻璃制品：钢化玻璃、玻璃窗、玻璃器皿、灯泡、镜子。"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_changelog">"版本历史"</string>
@@ -1787,18 +1795,44 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="about_summary_donate">"展示您对本应用的喜爱！"</string>
+    <string name="about_description_donate">"感谢您考虑支持此应用，点击下列平台可以看到当前捐赠额且可自行捐赠"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"%s 信奉什么宗教"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"在此扫描"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"继续当前扫描"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_garages_description">"拥有多个隔离空间供不同人使用，比如连起来的单车位车库"</string>
+    <string name="quest_tourism_information_title">"这个旅游服务中心的类型是什么？"</string>
+    <string name="quest_tourism_information_name_title">"%s的旅游服务中心的类型是什么？"</string>
+    <string name="quest_tourism_information_office">"游客中心"</string>
+    <string name="quest_tourism_information_board">"告示板"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"这是通用垃圾回收设施"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste_description">"所以，这是一个回收任何垃圾的设施，比如袋装的生活垃圾？"</string>
+    <string name="user_profile">"我的资料"</string>
+    <string name="user_login">"登录"</string>
+    <string name="user_logout">"登出"</string>
+    <string name="osm_profile">"OSM 资料"</string>
     <string name="next">"继续"</string>
     <string name="letsgo">"开始吧"</string>
+    <string name="tutorial_welcome_to_osm">"欢迎来到 OpenStreetMap"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"免费的维基式世界地图"</string>
+    <string name="tutorial_intro">"StreetComplete 让对 OpenStreetMap 的贡献更简单。
+它自动寻找你周围缺失的细节：自行车道、门牌号、营业时间等等。"</string>
+    <string name="tutorial_solving_quests">"一旦找到，缺失的细节会在你的地图上作为任务出现。
+
+你可以立刻解决它们，然后在登录后再发布你的答案。"</string>
+    <string name="tutorial_stay_safe">"当你无法确定的时候，你可以回复“不知道”并且留下一个注释。
+
+最后，安全第一：注意周围，不要进入私人领地"</string>
+    <string name="tutorial_happy_mapping">"快乐扫图！"</string>
+    <string name="achievements_empty">"你还没有成就"</string>
+    <string name="links_empty">"你还没有链接"</string>
+    <string name="quests_empty">"你还没有发布任何任务的答案"</string>
+    <string name="unsynced_quests_description">"还要 %d 个未推送的变更。"</string>
     <string name="achievements_unlocked_link">"解锁连接"</string>
     <string name="achievements_unlocked_links">"解锁连接"</string>
     <string name="link_category_editors_title">"贡献"</string>

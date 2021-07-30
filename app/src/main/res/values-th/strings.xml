@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"ตั้งค่า"</string>
-    <string name="oauth_communication_error">"ไม่สามารถเข้าถึงเซิร์ฟเวอร์ตรวจสอบสิทธิ์"</string>
+    <string name="oauth_communication_error">"ไม่สามารถเข้าถึงเซิร์ฟเวอร์เพื่อตรวจสอบสิทธิ์ได้"</string>
     <string name="retry">"ลองใหม่"</string>
     <string name="oauth_failed_permissions">"ตรวจสอบสิทธิ์ไม่ผ่าน: จำเป็นต้องได้รับอนุญาตสิทธิ์ทุกข้อในรายการ"</string>
     <string name="title_activity_settings">"ตั้งค่า"</string>
@@ -58,7 +58,7 @@
     <string name="download_area_too_big">"โปรดซูมเข้าไปอีก"</string>
     <string name="confirmation_cancel_prev_download_title">"ยกเลิกการค้นหาปัจจุบัน และสแกนตรงนี้แทนไหม?"</string>
     <string name="notification_downloading">"กำลังสแกนภารกิจ…"</string>
-    <string name="turn_on_location_request">"ตำแหน่งที่ตั้งปิดอยู่ เข้าไปเปิดในการตั้งค่าตอนนี้เลยไหม"</string>
+    <string name="turn_on_location_request">"การตั้งค่าตำแหน่งที่ตั้งปิดอยู่ เข้าไปเปิดในการตั้งค่าตอนนี้เลยไหม?"</string>
 
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"ต้องใช้ตำแหน่งของคุณเพื่อสแกนภารกิจในบริเวณของคุณ"</string>
@@ -82,13 +82,13 @@
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"อื่น ๆ (ใส่หมายเหตุ)"</string>
     <string name="about_title_privacy_statement">"ประกาศความเป็นส่วนตัว"</string>
     <string name="about_summary_privacy_statement">"และการใช้ข้อมูล"</string>
-    <string name="quest_openingHours_public_holidays">"วันหยุดราชการ"</string>
+    <string name="quest_openingHours_public_holidays">"วันหยุดนักขัตฤกษ์"</string>
     <string name="quest_openingHours_public_holidays_short">"วันหยุด"</string>
     <string name="quest_openingHours_open_end">"ปลายเปิด"</string>
-    <string name="quest_openingHours_answer_247">"เปิด 24/7"</string>
+    <string name="quest_openingHours_answer_247">"เปิด 24 ชั่วโมง"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"ต่างกันในแต่ละเดือน..."</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"ไม่มีเวลาเปิดปิดที่แน่นอน..."</string>
-    <string name="quest_openingHours_comment_title">"อธิบายเวลาเปิดทำการ"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"ไม่มีเวลาเปิด-ปิด ที่แน่นอน…"</string>
+    <string name="quest_openingHours_comment_title">"ระบุเวลาเปิดทำการ"</string>
     <string name="quest_openingHours_comment_description">"ให้กระชับ ควรใช้ถ้อยคำจากเครื่องหมาย เช่น \"โดยการนัดล่วงหน้าเท่านั้น\" การไม่มีป้ายไม่ได้หมายความว่าไม่มีเวลาเปิดทำการปกติเสมอไป"</string>
     <string name="quest_buildingLevels_title">"อาคารนี้มีกี่ชั้น"</string>
     <string name="quest_buildingLevels_title_buildingPart">"ส่วนนี้ของอาคารมีกี่ชั้น"</string>
@@ -151,7 +151,7 @@
 
 แอปนี้ค้นหาข้อมูลที่ขาดหายและสามารถเพิ่มเติมได้ในบริเวณของคุณ และนำมาแสดงเป็นเครื่องหมายต่าง ๆ บนแผนที่ ข้อมูลเหล่านี้"</string>
     <string name="quest_name_answer_noName">"ไม่มีชื่อ…"</string>
-    <string name="quest_name_answer_noName_confirmation_title">"ไม่มีชื่อจริง ๆ ใช่ไหม"</string>
+    <string name="quest_name_answer_noName_confirmation_title">"ไม่มีชื่อจริงๆ ใช่ไหม"</string>
     <string name="quest_name_noName_confirmation_positive">"ใช่ ไม่มีชื่อ"</string>
     <string name="quest_openingHours_add_times">"เพิ่มเวลาเปิดทำการ"</string>
     <string name="crash_message">"กรุณาส่งรายงานข้อผิดพลาดไปให้นักพัฒนา"</string>

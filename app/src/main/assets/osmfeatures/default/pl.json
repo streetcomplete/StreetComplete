@@ -68,7 +68,7 @@
                             "title": "Zejdź z pojazdu i go poprowadź"
                         },
                         "no": {
-                            "description": "Niedostępne dla ogólnego ruchu",
+                            "description": "Niedostępne do ogólnego ruchu",
                             "title": "Zabroniony"
                         },
                         "permissive": {
@@ -1048,6 +1048,14 @@
                 "historic/wreck/visible_at_low_tide": {
                     "label": "Widoczny w czasie odpływu"
                 },
+                "holding_position/type": {
+                    "label": "Rodzaj",
+                    "options": {
+                        "ILS": "ILS",
+                        "intermediate": "Drogi kołowania",
+                        "runway": "Pas startowy"
+                    }
+                },
                 "hoops": {
                     "label": "Liczba koszy",
                     "placeholder": "1, 2, 4..."
@@ -1799,7 +1807,7 @@
                     "placeholder": "Kontener, Centrum"
                 },
                 "ref": {
-                    "label": "Kod referencyjny",
+                    "label": "Kod odniesienia",
                     "terms": "kod referencyjny"
                 },
                 "ref/isil": {
@@ -2054,14 +2062,14 @@
                     "label": "Usługi"
                 },
                 "service_rail": {
-                    "label": "Typ usługi",
+                    "label": "Rodzaj toru",
                     "options": {
                         "crossover": "Rozjazd",
                         "siding": "Mijanka",
                         "spur": "Bocznica",
                         "yard": "Tor na stacji rozrządowej"
                     },
-                    "terms": "typ usługi,rodzaj usługi"
+                    "terms": "rodzaj toru,wykorzystanie toru"
                 },
                 "service_times": {
                     "label": "Czas prowadzenia usług lub nabożeństw"
@@ -2456,9 +2464,9 @@
                     "label": "Sposób użytkowania",
                     "options": {
                         "branch": "Boczny",
-                        "industrial": "Przemysłowe",
+                        "industrial": "Przemysłowy",
                         "main": "Główny",
-                        "military": "Wojskowe",
+                        "military": "Wojskowy",
                         "test": "Testowy",
                         "tourism": "Turystyka"
                     },
@@ -2492,6 +2500,9 @@
                 "vhf": {
                     "label": "Kanał VHF",
                     "terms": "kanał vhf"
+                },
+                "via": {
+                    "label": "Przez"
                 },
                 "video_calls": {
                     "label": "Rozmowy wideo",
@@ -2962,7 +2973,7 @@
                     "terms": "przychodnia,nzoz,lekarz,doktor,gabinet lekarski,centrum medyczne,klinika,poradnia,leczenie,medycyna,zdrowie,alergolog,chirurg,dermatolog,endokrynolog,geriatra,ginekolog,hematolog,internista,kardiochirurg,kardiolog,laryngolog,nefrolog,neonatolog,neurolog,okulista,onkolog,ortopeda,otorynolaryngolog,pediatra,psychiatra,reumatolog,seksuolog,urolog"
                 },
                 "amenity/dojo": {
-                    "name": "Dojo/szkoła sztuk walki",
+                    "name": "Dojo / szkoła sztuk walki",
                     "terms": "dojo,szkoła walki"
                 },
                 "amenity/dressing_room": {
@@ -3425,7 +3436,7 @@
                     "terms": "miejsce opróżniania toalety (kemping)"
                 },
                 "amenity/school": {
-                    "name": "Szkoła podstawowa/średnia – teren (nie stosować dla budynku!)",
+                    "name": "Szkoła podstawowa/średnia – teren (nie stosować na budynku!)",
                     "terms": "szkoła,szkoła podstawowa,gimnazjum,liceum,szkoła średnia,szkoła ponadpodstawowa,szkoła ponadgimnazjalna,technikum,szkoła branżowa,szkoła zawodowa,szkoła specjalna,zespół szkół,teren szkoły,tereny szkolne,edukacja"
                 },
                 "amenity/shelter": {
@@ -3654,7 +3665,7 @@
                 },
                 "amenity/veterinary": {
                     "name": "Weterynarz",
-                    "terms": "weterynarz,zakład weterynaryjny,gabinet weterynajryjny,przychodnia weterynaryjna,klinika weterynaryjna,lecznica dla zwierząt,leczenie,zwierzęta"
+                    "terms": "weterynarz,zakład weterynaryjny,gabinet weterynaryjny,przychodnia weterynaryjna,klinika weterynaryjna,lecznica dla zwierząt,leczenie,zwierzęta"
                 },
                 "amenity/waste/dog_excrement": {
                     "name": "Kosz na psie odchody",
@@ -3673,8 +3684,8 @@
                     "terms": "odpady"
                 },
                 "amenity/water_point": {
-                    "name": "Woda pitna dla kamperów",
-                    "terms": "woda pitna (kemping)"
+                    "name": "Woda pitna dla kamperów/łodzi",
+                    "terms": "woda pitna dla kamperów,woda pitna dla łodzi"
                 },
                 "amenity/watering_place": {
                     "name": "Poidło dla zwierząt",
@@ -3876,7 +3887,7 @@
                 },
                 "barrier/stile": {
                     "name": "Przełaz",
-                    "terms": "przełaz"
+                    "terms": "przełaz,otwór w murze,otwór w płocie,dziura w płocie,przejście przez płot,bariera"
                 },
                 "barrier/swing_gate": {
                     "name": "Szlaban (przesuwany w poziomie)",
@@ -4726,8 +4737,8 @@
                     "terms": "ustąp pierwszeństwa przejazdu"
                 },
                 "highway/living_street": {
-                    "name": "Droga w oznaczonej znakami D-40/D-41 strefie zamieszkania",
-                    "terms": "strefa zamieszkania,droga osiedlowa"
+                    "name": "Droga w strefie zamieszkania (piesi i zmotoryzowani są równorzędni na drodze)",
+                    "terms": "strefa zamieszkania,droga osiedlowa,droga wewnętrzna,d40,d-40"
                 },
                 "highway/milestone": {
                     "name": "Słupek pikietażowy (drogowy)",
@@ -4742,8 +4753,8 @@
                     "terms": "autostrada"
                 },
                 "highway/motorway_junction": {
-                    "name": "Wjazd/zjazd z autostrady",
-                    "terms": "wjazd/zjazd na autostradę"
+                    "name": "Węzeł autostradowy",
+                    "terms": "węzeł autostradowy,wjazd na autostradę,zjazd z autostrady,autostrada"
                 },
                 "highway/motorway_link": {
                     "name": "Autostrada – wjazd/zjazd",
@@ -4754,7 +4765,7 @@
                     "terms": "mijanka"
                 },
                 "highway/path": {
-                    "name": "Ścieżka/droga dla rowerów/chodnik",
+                    "name": "Ścieżka (niesprecyzowana)",
                     "terms": "ścieżka,dróżka"
                 },
                 "highway/path/boardwalk": {
@@ -4958,15 +4969,15 @@
                     "terms": "dwór,rezydencja"
                 },
                 "historic/memorial": {
-                    "name": "Pomnik/Miejsce pamięci",
-                    "terms": "miejsce,pamięci,pamiątkowy,memoriał,pomnik"
+                    "name": "Pomnik / Miejsce pamięci",
+                    "terms": "pomnik,miejsce pamięci,rzeźba"
                 },
                 "historic/memorial/plaque": {
                     "name": "Tablica pamiątkowa",
                     "terms": "tablica pamiątkowa,dedykacja,pamięć"
                 },
                 "historic/monument": {
-                    "name": "Duży pomnik",
+                    "name": "Monument (duży pomnik)",
                     "terms": "monument,pomnik"
                 },
                 "historic/pillory": {
@@ -5062,7 +5073,7 @@
                 },
                 "landuse/commercial": {
                     "name": "Obszar biurowo-biznesowy",
-                    "terms": "obszar biurowy,biura,biznes,obszar biznesowy"
+                    "terms": "obszar biurowy,biura,biznes,obszar biznesowy,obszar komercyjny,teren komercyjny,usługi,usługowy"
                 },
                 "landuse/construction": {
                     "name": "Plac budowy",
@@ -5072,8 +5083,8 @@
                     "name": "Użytki rolne lub podwórze gospodarcze"
                 },
                 "landuse/farmland": {
-                    "name": "Pola uprawne",
-                    "terms": "uprawy,pole"
+                    "name": "Grunty orne",
+                    "terms": "grunty orne,pole uprawne,pola uprawne,uprawa,uprawy,pole,zboże,zboża"
                 },
                 "landuse/farmyard": {
                     "name": "Teren z zabudowaniami rolniczymi",
@@ -5161,29 +5172,29 @@
                 },
                 "landuse/orchard": {
                     "name": "Sad",
-                    "terms": "sad,owoce"
+                    "terms": "sad,owoce,uprawa roślin"
                 },
                 "landuse/plant_nursery": {
                     "name": "Szkółka leśna",
-                    "terms": "szkółka roślin"
+                    "terms": "szkółka roślin,uprawa roślin"
                 },
                 "landuse/pond": {
                     "name": "Staw"
                 },
                 "landuse/quarry": {
-                    "name": "Kamieniołom",
+                    "name": "Kamieniołom / kopalnia odkrywkowa",
                     "terms": "kamieniołom,żwirownia,kruszywo,kopalnia odkrywkowa,kopalnia piasku,kopalnia,odkrywka"
                 },
                 "landuse/railway": {
                     "name": "Teren kolejowy",
-                    "terms": "tereny kolejowe"
+                    "terms": "tereny kolejowe,kolejowy,pkp,torów"
                 },
                 "landuse/recreation_ground": {
                     "name": "Park rekreacyjno-sportowy",
                     "terms": "teren rekreacyjny,teren sportowy,rekreacja,odpoczynek,sporty,zabawy,park linowy"
                 },
                 "landuse/religious": {
-                    "name": "Teren dla celów religijnych",
+                    "name": "Teren do celów religijnych",
                     "terms": "teren kościelny,teren religijny"
                 },
                 "landuse/reservoir": {
@@ -5225,8 +5236,8 @@
                     "terms": "muszla koncertowa,estrada,scena,arena,podium,występy,amfiteatr,trybuna,trybuny"
                 },
                 "leisure/beach_resort": {
-                    "name": "Resort nadmorski",
-                    "terms": "nadmorski ośrodek"
+                    "name": "Ośrodek plażowy",
+                    "terms": "ośrodek plażowy,nadmorski kurort,nadmorski ośrodek wypoczynkowy,kurort nadmorski,ośrodek nadmorski,kurort plażowy,plaża"
                 },
                 "leisure/bird_hide": {
                     "name": "Czatownia ornitologiczna",
@@ -5258,7 +5269,7 @@
                 },
                 "leisure/dog_park": {
                     "name": "Wybieg dla psów",
-                    "terms": "psi park,wybieg dla psów,park dla psów"
+                    "terms": "psi park,wybieg dla psów,park dla psów,psy"
                 },
                 "leisure/escape_game": {
                     "name": "Escape room",
@@ -5355,6 +5366,10 @@
                 "leisure/ice_rink": {
                     "name": "Lodowisko",
                     "terms": "lodowisko,ślizgawka,łyżwy,łyżwiarstwo,hokej na lodzie,curling"
+                },
+                "leisure/indoor_play": {
+                    "name": "Sala zabaw",
+                    "terms": "sala zabaw,centrum zabaw,plac zabaw,kulkoland"
                 },
                 "leisure/marina": {
                     "name": "Przystań",
@@ -5484,9 +5499,13 @@
                     "name": "Plac zabaw",
                     "terms": "plac zabaw"
                 },
+                "leisure/playground/indoor": {
+                    "name": "Plac zabaw (wewnątrz)",
+                    "terms": "plac zabaw"
+                },
                 "leisure/resort": {
                     "name": "Ośrodek wczasowy",
-                    "terms": "resort,ośrodek wczasowy"
+                    "terms": "ośrodek wczasowy,ośrodek wypoczynkowy,ośrodek nadmorski,nadmorski kurort,nadmorski ośrodek,kurort nadmorski,noclegi"
                 },
                 "leisure/sauna": {
                     "name": "Sauna",
@@ -5637,7 +5656,7 @@
                 },
                 "man_made/goods_conveyor": {
                     "name": "Przenośnik taśmowy",
-                    "terms": "przenośnik taśmowy,taśmociąg"
+                    "terms": "przenośnik taśmowy,taśmociąg,transport materiałów"
                 },
                 "man_made/groyne": {
                     "name": "Ostroga brzegowa",
@@ -5915,8 +5934,8 @@
                     "terms": "linia brzegowa"
                 },
                 "natural/fell": {
-                    "name": "Wzgórza",
-                    "terms": "pagórki"
+                    "name": "Górskie pastwisko",
+                    "terms": "górskie pastwisko,hala górska,góry,wzgórza,pagórki,wypas"
                 },
                 "natural/geyser": {
                     "name": "Gejzer",
@@ -5967,8 +5986,8 @@
                     "terms": "piasek,piaski,piach,ziemia piaszczysta"
                 },
                 "natural/scree": {
-                    "name": "Rumowisko",
-                    "terms": "rumowisko"
+                    "name": "Rumowisko skalne",
+                    "terms": "rumowisko,gołoborze,piarg,osypisko,skały"
                 },
                 "natural/scrub": {
                     "name": "Zarośla",
@@ -6060,7 +6079,7 @@
                 },
                 "noexit/yes": {
                     "name": "Brak przejścia/przejazdu",
-                    "terms": "brak przejścia,brak przejazdu,koniec drogi"
+                    "terms": "brak przejścia,brak przejazdu,koniec drogi,ślepa ulica,ślepa uliczka"
                 },
                 "office": {
                     "name": "Biuro",
@@ -6068,7 +6087,7 @@
                 },
                 "office/accountant": {
                     "name": "Biuro rachunkowe",
-                    "terms": "biuro rachunkowe,księgowy"
+                    "terms": "biuro rachunkowe,księgowy,księgowa"
                 },
                 "office/administrative": {
                     "name": "Biuro samorządowe"
@@ -6240,8 +6259,8 @@
                     "terms": "biuro geodety,geodeta"
                 },
                 "office/tax_advisor": {
-                    "name": "Biuro rachunkowe",
-                    "terms": "biuro rachunkowe,podatki"
+                    "name": "Doradca podatkowy",
+                    "terms": "doradca podatkowy,konsultant podatkowy,biuro doradcy podatkowego,podatki"
                 },
                 "office/telecommunication": {
                     "name": "Biuro firmy telekomunikacyjnej",
@@ -6306,7 +6325,7 @@
                     "terms": "kwartał,sektor,obręb"
                 },
                 "place/farm": {
-                    "name": "Farma/gospodarstwo rolne"
+                    "name": "Farma / gospodarstwo rolne"
                 },
                 "place/hamlet": {
                     "name": "Przysiółek",
@@ -6445,6 +6464,14 @@
                     "name": "Panel słoneczny",
                     "terms": "panel słoneczny,moduł fotowoltaiczny,moduł pv,światło słoneczne,energetyka,elektroenergetyka,prąd"
                 },
+                "power/generator/method/photovoltaic/building/roof": {
+                    "name": "Zadaszenie z paneli słonecznych",
+                    "terms": "zadaszenie z paneli słonecznych,panele słoneczne"
+                },
+                "power/generator/method/photovoltaic/location/roof": {
+                    "name": "Panele słoneczne na dachu",
+                    "terms": "panele słoneczne na dachu"
+                },
                 "power/generator/source/hydro": {
                     "name": "Turbina wodna",
                     "terms": "turbina wodna,tama,generator"
@@ -6492,6 +6519,10 @@
                 "power/plant/source/solar": {
                     "name": "Elektrownia słoneczna",
                     "terms": "elektrownia słoneczna,farma fotowoltaiczna"
+                },
+                "power/plant/source/waste": {
+                    "name": "Spalarnia odpadów",
+                    "terms": "spalarnia odpadów,elektrownia"
                 },
                 "power/plant/source/wind": {
                     "name": "Elektrownia wiatrowa",
@@ -7389,7 +7420,7 @@
                 },
                 "shop/sewing": {
                     "name": "Pasmanteria",
-                    "terms": "pasmanteria,sklep krawiecki,maszyny do szycia,szycie"
+                    "terms": "pasmanteria,sklep krawiecki,maszyny do szycia,szycie,tkaniny,nici,guziki"
                 },
                 "shop/shoe_repair": {
                     "name": "Szewc (naprawa obuwia)",
@@ -7413,7 +7444,7 @@
                 },
                 "shop/storage_rental": {
                     "name": "Przechowalnia rzeczy (długoterminowa)",
-                    "terms": "przechowalnia rzeczy,magazyny samoobsługowe,wynajem magazynów,komórki do wynajęcia,magazyny do wynajęcia"
+                    "terms": "przechowalnia rzeczy,magazyny samoobsługowe,magazyn samoobsługowy,wynajem magazynów,komórki do wynajęcia,magazyny do wynajęcia"
                 },
                 "shop/supermarket": {
                     "name": "Supermarket",
@@ -7558,7 +7589,7 @@
                 },
                 "tourism/artwork": {
                     "name": "Dzieło sztuki",
-                    "terms": "dzieło sztuki"
+                    "terms": "dzieło sztuki,pomnik"
                 },
                 "tourism/artwork/bust": {
                     "name": "Popiersie",
@@ -7578,7 +7609,7 @@
                 },
                 "tourism/artwork/sculpture": {
                     "name": "Rzeźba",
-                    "terms": "rzeźba,posąg,statua,figura,kształt,sylwetka,carving"
+                    "terms": "rzeźba,posąg,statua,figura,pomnik"
                 },
                 "tourism/artwork/statue": {
                     "name": "Statua",
@@ -7870,6 +7901,10 @@
                 "type/route/monorail": {
                     "name": "Trasa kolei jednoszynowej",
                     "terms": "trasa kolei jednoszynowej,kolej jednoszynowa"
+                },
+                "type/route/mtb": {
+                    "name": "Trasa dla rowerów górskich",
+                    "terms": "rowery górskie,kolarstwo górskie"
                 },
                 "type/route/pipeline": {
                     "name": "Trasa rurociągu",
