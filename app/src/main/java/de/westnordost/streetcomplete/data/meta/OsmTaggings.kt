@@ -55,5 +55,5 @@ val KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
         "geometry", "position", "shape", "outline", "location",
         // referring to building
         "building", "heritage", "height", "architect", "ele"
-    ).joinToString("|")}(:.*)?",
+    ).joinToString("|")})(:.*)?",
 ).map { it.toRegex() }
