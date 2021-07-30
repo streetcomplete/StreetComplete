@@ -2,17 +2,18 @@ package de.westnordost.streetcomplete.data.quest
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.meta.KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
@@ -241,17 +242,3 @@ import kotlin.collections.ArrayList
         private const val TAG = "QuestController"
     }
 }
-
-private val KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
-    "landuse", "historic",
-    // building/simple 3d building mapping
-    "building", "man_made", "building:.*", "roof:.*",
-    // any address
-    "addr:.*",
-    // shop can at the same time be an outline in indoor mapping
-    "level", "level:ref", "indoor", "room",
-    // geometry
-    "layer", "ele", "height", "area", "is_in",
-    // notes and fixmes
-    "FIXME", "fixme", "note"
-).map { it.toRegex() }
