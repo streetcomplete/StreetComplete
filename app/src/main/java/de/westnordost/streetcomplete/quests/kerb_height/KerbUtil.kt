@@ -37,7 +37,7 @@ private val allowedKeysOnKerbNode = setOf(
     "sloped_curb",
     "tactile_paving",
     "surface", "smoothness", "material",
-    "kerb:height", "height",
+    "kerb", "kerb:height", "height",
     // access/eligibility-related
     "wheelchair", "bicycle", "foot", "stroller",
     // misc / meta info
