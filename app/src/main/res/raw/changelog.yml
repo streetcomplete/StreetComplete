@@ -16,10 +16,11 @@ v33.2: |
   <li>Enable cycleways and tactile pavings quest for Croatia (#3041), by @mnalis</li>
   <li>Allow to split the way on asking whether a set of steps has a handrail (#3037), by @peternewman</li>
   <li>Allow answering that a place does not exist when asking whether it offers Kosher food (#3073), by @peternewman</li>
+  <li>For pubs that definitely serve food, also ask whether they have vegetarian and vegan food (#3097, #3099), by @peternewman</li>
   <li>Don't ask whether a place offers vegetarian food if it only offers vegan food (#3072, #3081), by @starsep</li>
   <li>Don't ask for the existence of things that are seasonal, f.e. loungers that can only be found in the park during summer (#3089), by @matkoniecz</li>
   <li>Periodically ask if a drinking fountain still exists (#3102)</li>
-  <li>For pubs that definitely serve food, also ask whether they have vegetarian and vegan food (#3097), by @peternewman</li>
+  <li>Clean tags from previous vacant shop when answering that there is a new shop now (#3045), by @TurnrDev</li>
   </ul>
 
 v33.1: |
