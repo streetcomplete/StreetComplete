@@ -137,7 +137,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
             .show()
         popQuestForm()
     }
-    override fun onComposeNote(questKey: QuestKey, questTitle: String) {
+    override fun onComposeNote(questKey: QuestKey, questTitle: String, initialMessage: String?) {
         popQuestForm("Composing note")
     }
     override fun onSplitWay(osmQuestKey: OsmQuestKey) {

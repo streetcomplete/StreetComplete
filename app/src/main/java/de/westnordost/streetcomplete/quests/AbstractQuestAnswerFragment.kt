@@ -103,7 +103,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         fun onAnsweredQuest(questKey: QuestKey, answer: Any)
 
         /** Called when the user chose to leave a note instead  */
-        fun onComposeNote(questKey: QuestKey, questTitle: String)
+        fun onComposeNote(questKey: QuestKey, questTitle: String, initialMessage: String?)
 
         /** Called when the user chose to split the way  */
         fun onSplitWay(osmQuestKey: OsmQuestKey)
@@ -337,10 +337,10 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
     }
 
-    protected fun composeNote() {
+    protected fun composeNote(initialMessage: String? = null) {
         if (answered++ == 0) {
             val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
-            listener?.onComposeNote(questKey, questTitle)
+            listener?.onComposeNote(questKey, questTitle, initialMessage)
         }
     }
 

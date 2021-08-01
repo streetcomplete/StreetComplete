@@ -18,18 +18,21 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
     interface Listener {
         fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>)
     }
+
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     override val layoutResId = R.layout.fragment_quest_answer
 
     private lateinit var questTitle: String
     override lateinit var questKey: QuestKey
+    private var initialMessage: String? = null
 
     override fun onCreate(inState: Bundle?) {
         super.onCreate(inState)
         val args = requireArguments()
         questTitle = args.getString(ARG_QUEST_TITLE)!!
         questKey = Json.decodeFromString(args.getString(ARG_QUEST_KEY)!!)
+        initialMessage = args.getString(ARG_INITIAL_MESSAGE)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,6 +40,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
 
         titleLabel.text = getString(R.string.map_btn_create_note)
         descriptionLabel.text = null
+        initialMessage?.let { noteInput.setText(it) }
     }
 
     override fun onComposedNote(text: String, imagePaths: List<String>) {
@@ -46,12 +50,14 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
     companion object {
         private const val ARG_QUEST_TITLE = "questTitle"
         private const val ARG_QUEST_KEY = "questKey"
+        private const val ARG_INITIAL_MESSAGE = "initialMessage"
 
-        fun create(questKey: QuestKey, questTitle: String): LeaveNoteInsteadFragment {
+        fun create(questKey: QuestKey, questTitle: String, initialMessage: String?): LeaveNoteInsteadFragment {
             val f = LeaveNoteInsteadFragment()
             f.arguments = bundleOf(
                 ARG_QUEST_KEY to Json.encodeToString(questKey),
-                ARG_QUEST_TITLE to questTitle
+                ARG_QUEST_TITLE to questTitle,
+                ARG_INITIAL_MESSAGE to initialMessage
             )
             return f
         }

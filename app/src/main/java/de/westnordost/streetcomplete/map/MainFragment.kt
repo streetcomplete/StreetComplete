@@ -363,8 +363,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
-    override fun onComposeNote(questKey: QuestKey, questTitle: String) {
-        showInBottomSheet(LeaveNoteInsteadFragment.create(questKey, questTitle))
+    override fun onComposeNote(questKey: QuestKey, questTitle: String, initialMessage: String?) {
+        showInBottomSheet(LeaveNoteInsteadFragment.create(questKey, questTitle, initialMessage))
     }
 
     override fun onSplitWay(osmQuestKey: OsmQuestKey) {
