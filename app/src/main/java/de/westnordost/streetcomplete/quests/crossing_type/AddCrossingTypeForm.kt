@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.crossing_type
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.*
@@ -18,15 +17,19 @@ class AddCrossingTypeForm : AImageListQuestAnswerFragment<CrossingType, Crossing
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_crossing_type_no_crossing) {
-            activity?.let { AlertDialog.Builder(it)
-                .setMessage(R.string.quest_crossing_type_explain_delete_crossing_note)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok) { _, _ ->
-                    composeNote("This crossing does not exist.")
-                }
-                .show()
+            activity?.let {
+                AlertDialog.Builder(it)
+                    .setMessage(R.string.quest_crossing_type_explain_delete_crossing_note)
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                        // Notes should be in English or the local language. This default value
+                        // assumes that the app's language is the local language. Hopefully users
+                        // will notice the advisory text and fix it if that's wrong.
+                        composeNote(getString(R.string.quest_crossing_type_no_crossing_note_prefill))
+                    }
+                    .show()
             }
-                                                              },
+        },
     )
 
     override val itemsPerRow = 3
