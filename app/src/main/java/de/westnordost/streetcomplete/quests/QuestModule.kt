@@ -226,9 +226,6 @@ import javax.inject.Singleton
 
         AddPlaygroundAccess(),
 
-        /* pulled up in priority to be before CheckExistence because this is basically the check
-           whether the postbox is still there in countries in which it is enabled */
-        AddPostboxCollectionTimes(),
         CheckExistence(featureDictionaryFuture),
 
         AddBoardType(),
@@ -266,6 +263,7 @@ import javax.inject.Singleton
         AddPlaceName(featureDictionaryFuture),
         SpecifyShopType(),
         CheckShopType(),
+        AddPostboxCollectionTimes(),
         AddOpeningHours(featureDictionaryFuture),
 
         AddAtmOperator(),
