@@ -14,7 +14,7 @@ v33.2: |
   <ul>
   <li>Number of lanes: Don't ask if they have been recorded for both sides individually already (#3038), by @FloEdelmann</li>
   <li>Enable cycleways and tactile pavings quest for Croatia (#3041), by @mnalis</li>
-  <li>Allow to split the way on asking whether a set of steps have a handrail (#3037), by @peternewman</li>
+  <li>Allow splitting ways when asking whether a set of steps has a handrail (#3037), by @peternewman</li>
   <li>Allow answering that a place does not exist when asking whether it offers Kosher food (#3073), by @peternewman</li>
   <li>For pubs that definitely serve food, also ask whether they have vegetarian and vegan food (#3097, #3099), by @peternewman</li>
   <li>Don't ask whether a place offers vegetarian food if it only offers vegan food (#3072, #3081), by @starsep</li>
