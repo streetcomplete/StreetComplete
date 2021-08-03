@@ -1,3 +1,9 @@
+v34.0: |
+  <ul>
+  <li>Add Animism as choice for when asked about the religion of a place (#3063)</li>
+  <li>Add more building type choices: allotment house, boathouse and grandstand (#3078)</li>
+  </ul>
+
 v33.2: |
   <h3>Fixes</h3>
   <ul>
