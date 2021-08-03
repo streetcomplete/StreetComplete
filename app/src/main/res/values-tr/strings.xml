@@ -91,6 +91,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_add_hours">"Saatleri ekle"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Hafta içi günlerini ekle"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Ayları seç"</string>
 

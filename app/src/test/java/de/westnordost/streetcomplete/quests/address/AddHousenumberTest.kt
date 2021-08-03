@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -204,6 +205,14 @@ class AddHousenumberTest {
         questType.verifyAnswer(
             NoHouseNumber,
             StringMapEntryAdd("nohousenumber", "yes")
+        )
+    }
+
+    @Test fun `apply wrong building type answer`() {
+        questType.verifyAnswer(
+            mapOf("building" to "residential"),
+            WrongBuildingType,
+            StringMapEntryModify("building", "residential", "yes")
         )
     }
 }

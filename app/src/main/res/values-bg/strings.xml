@@ -35,8 +35,12 @@
     <string name="quest_openingHours_end_time">"Време за затваряне"</string>
     <string name="quest_openingHours_add_months">"Добави месеци"</string>
     <string name="quest_openingHours_add_hours">"Добавете часове"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Добавете дни от седмицата"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Изберете месеци"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Изберете дни от седмицата"</string>
     <string name="quest_openingHours_24_7_confirmation">"С други думи, отворено ли е постоянно, всеки ден?"</string>
     <string name="quest_noteDiscussion_title">"Може ли да добавите нещо към тази бележка?"</string>

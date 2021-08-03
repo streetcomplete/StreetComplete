@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.quests.kerb_height
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ALL_PATHS
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
-import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
+import de.westnordost.streetcomplete.data.meta.*
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.ktx.firstAndLast
@@ -37,16 +35,28 @@ private val allowedKeysOnKerbNode = setOf(
     "sloped_curb",
     "tactile_paving",
     "surface", "smoothness", "material",
-    "kerb:height", "height",
+    "kerb", "kerb:height", "height", "width",
     // access/eligibility-related
     "wheelchair", "bicycle", "foot", "stroller",
     // misc / meta info
     "source", "project", "note", "mapillary"
+    // check date
 ) + LAST_CHECK_DATE_KEYS
 
+/* separating regex-enabled keys and normal keys for performance reasons. No need to regex on
+   strings that are not regexes ... */
+private val allowedKeysOnKerbNodeRegexes = getLastCheckDateKeys(".*").map { it.toRegex() }
+
 /** Most nodes **could** be a kerb, depending on their location within a way. However, nodes that
- *  are already something else, f.e. shop=hairdresser are definitely NOT a kerb. */
-fun Node.couldBeAKerb(): Boolean = tags.keys.all { it in allowedKeysOnKerbNode }
+ *  are already something else, f.e. shop=hairdresser are definitely NOT a kerb.
+ *
+ *  If any node **could** be a kerb, this would lead to an unacceptable performance hit when any
+ *  node is updated due to an answered quest. See
+ *  https://github.com/streetcomplete/StreetComplete/pull/3104#issuecomment-889833381 for more
+ *  details ony why this function exists */
+fun Node.couldBeAKerb(): Boolean = tags.keys.all { key ->
+    key in allowedKeysOnKerbNode || allowedKeysOnKerbNodeRegexes.any { regex -> regex.matches(key) }
+}
 
 fun MapData.findAllKerbNodes(): Iterable<Node> {
     val footwayNodes = mutableSetOf<Node>()

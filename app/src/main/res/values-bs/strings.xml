@@ -36,8 +36,12 @@
     <string name="quest_openingHours_end_time">"vrijeme zatvaranja"</string>
     <string name="quest_openingHours_add_months">"Dodaj mjesece"</string>
     <string name="quest_openingHours_add_hours">"Dodaj radne sate"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Dodaj radne dane"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Odaberi mjesece"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Odaberi dane"</string>
     <string name="quest_openingHours_24_7_confirmation">"Drugim rječima, je li otvoreno u bilo koje doba, svaki dan?"</string>
     <string name="quest_noteDiscussion_title">"Možete li išta doprinijeti ovoj bilješki?"</string>

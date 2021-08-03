@@ -39,8 +39,12 @@
     <string name="quest_openingHours_end_time">"orario di chiusura"</string>
     <string name="quest_openingHours_add_months">"Aggiungi mesi"</string>
     <string name="quest_openingHours_add_hours">"Aggiungi ore"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Aggiungi giorni feriali"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Seleziona mesi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Seleziona giorni feriali"</string>
     <string name="quest_openingHours_24_7_confirmation">"In altre parole, è aperto a qualsiasi ora tutti i giorni?"</string>
     <string name="quest_noteDiscussion_title">"Puoi contribuire a questa nota?"</string>

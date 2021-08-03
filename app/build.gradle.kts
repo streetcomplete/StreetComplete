@@ -1,5 +1,4 @@
 import java.util.Properties
-import java.net.URI
 import java.io.FileInputStream
 
 plugins {
@@ -37,8 +36,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdkVersion(17)
         targetSdkVersion(30)
-        versionCode = 3300
-        versionName = "33.0-beta1"
+        versionCode = 3303
+        versionName = "33.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
     }
@@ -102,6 +101,9 @@ dependencies {
     val daggerVersion = "2.37"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+
+    // only necessary for Android 4.x (KitKat etc, before Lollipop)
+    implementation("androidx.multidex:multidex:2.0.1")
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -178,7 +180,7 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor etc. */
 val bcp47ExportLanguages = setOf(
-    "ar","ast","bg","bs","ca","cs","da","de","el","en","en-AU","en-GB","es","eu",
+    "am","ar","ast","bg","bs","ca","cs","da","de","el","en","en-AU","en-GB","es","eu",
     "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
     "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
 )

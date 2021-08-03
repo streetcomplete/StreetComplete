@@ -35,8 +35,12 @@
     <string name="quest_openingHours_end_time">"hora do peche"</string>
     <string name="quest_openingHours_add_months">"Engadir meses"</string>
     <string name="quest_openingHours_add_hours">"Engadir horas"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Engadir días da semana"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Escoller meses"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Escoller días da semana"</string>
     <string name="quest_openingHours_24_7_confirmation">"Ou, dito doutro xeito, está aberto tódolos días a todas horas?"</string>
     <string name="quest_noteDiscussion_title">"Podes engadir información útil na nota?"</string>

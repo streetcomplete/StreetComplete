@@ -63,12 +63,12 @@
     <string name="quest_openingHours_timeSelect_next">Next</string>
     <string name="quest_openingHours_add_months">"Add months"</string>
     <string name="quest_openingHours_add_hours">"Add hours"</string>
-    <string name="quest_openingHours_add_weekdays">"Add weekdays"</string>
+    <string name="quest_openingHours_add_weekdays">"Add days of the week"</string>
     <string name="quest_openingHours_add_off_days">"Add off days"</string>
     <string name="quest_openingHours_off_day">"Off day"</string>
     <string name="quest_openingHours_unspecified_range">Not specified"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
-    <string name="quest_openingHours_chooseWeekdaysTitle">"Select weekdays"</string>
+    <string name="quest_openingHours_chooseWeekdaysTitle">"Select days of the week"</string>
     <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>
     <string name="quest_noteDiscussion_title">"Can you contribute anything to this note?"</string>
     <string name="quest_noteDiscussion_no">"No, hide"</string>
@@ -101,6 +101,7 @@
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
+    <string name="about_title_faq">"FAQ"</string>
     <string name="about_title_report_error">"Report error"</string>
     <string name="about_title_feedback">"Give Feedback"</string>
     <string name="about_title_license">"License"</string>
@@ -127,8 +128,8 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"No regular opening hours…"</string>
     <string name="quest_openingHours_comment_title">"Describe opening hours"</string>
     <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign, e.g. “by appointment”. The absence of a sign does not necessarily mean that there are no regular opening hours."</string>
-    <string name="quest_buildingLevels_title">"How many levels does this building have?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
+    <string name="quest_buildingLevels_title2">"How many levels above the basement does this building have?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"How many levels above the basement does this building part have?"</string>
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string><!--it is used in generic list, not only for roof shape but rename would break translations-->
@@ -558,6 +559,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_religion_sikh">Sikh</string>
     <string name="quest_religion_jain">Jain</string>
     <string name="quest_religion_bahai">Bahá’í Faith</string>
+    <string name="quest_religion_animist">Animist</string>
     <string name="quest_religion_caodaist">Caodaism</string>
     <string name="quest_religion_chinese_folk">Chinese folk religion</string>
     <string name="quest_religion_for_wayside_shrine_title">What religion is represented at this shrine?</string>
@@ -675,6 +677,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_shed">Shed</string>
+    <string name="quest_buildingType_boathouse">Boathouse</string>
+    <string name="quest_buildingType_allotment_house">Allotment house</string>
+    <string name="quest_buildingType_grandstand">Grandstand</string>
     <string name="quest_buildingType_toilets">Toilets</string>
     <string name="quest_buildingType_hut">Hut</string>
     <string name="quest_buildingType_hut_description">small, simple dwelling or shelter</string>
@@ -718,7 +723,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="action_search">Search</string>
     <string name="action_deselect_all">Deselect all</string>
     <string name="action_manage_presets">Manage presets</string>
-    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
+    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, big stores …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
     <string name="quest_maxweight_select_sign">"Select sign"</string>
     <string name="quest_generic_answer_noSign">There is no sign</string>

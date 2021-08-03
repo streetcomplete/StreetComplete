@@ -28,6 +28,7 @@ class AddReligionForm : AImageListQuestAnswerFragment<Religion, Religion>() {
         // https://en.wikipedia.org/wiki/Chinese_folk_religion
         // sorting relatively far up because there are many Chinese expats around the world
         Item(CHINESE_FOLK, R.drawable.ic_religion_chinese_folk, R.string.quest_religion_chinese_folk),
+        Item(ANIMIST,      R.drawable.ic_religion_animist,   R.string.quest_religion_animist),
         Item(BAHAI,        R.drawable.ic_religion_bahai,     R.string.quest_religion_bahai),
         Item(SIKH,         R.drawable.ic_religion_sikh,      R.string.quest_religion_sikh),
 

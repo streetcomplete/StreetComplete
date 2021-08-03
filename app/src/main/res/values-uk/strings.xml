@@ -35,8 +35,12 @@
     <string name="quest_openingHours_end_time">"кінець роботи"</string>
     <string name="quest_openingHours_add_months">"Додайте місяці"</string>
     <string name="quest_openingHours_add_hours">"Додайте години"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Додайте дні тижня"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Оберіть місяці"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Оберіть дні тижня"</string>
     <string name="quest_openingHours_24_7_confirmation">"Іншими словами, відчинено цілодобово і без вихідних?"</string>
     <string name="quest_noteDiscussion_title">"Можете якось прокоментувати цю нотатку?"</string>
@@ -128,7 +132,7 @@
     <string name="quest_surface_value_asphalt">"Асфальт"</string>
     <string name="quest_surface_value_compacted">"Втрамбоване"</string>
     <string name="quest_surface_value_concrete">"Бетон"</string>
-    <string name="quest_surface_value_dirt">"Багнюка"</string>
+    <string name="quest_surface_value_dirt">"Земля"</string>
     <string name="quest_surface_value_fine_gravel">"Дрібний гравій"</string>
     <string name="quest_surface_value_grass">"Трава"</string>
     <string name="quest_surface_value_grass_paver">"Газонна решітка"</string>
@@ -1011,6 +1015,7 @@
     <string name="toast_undo_unavailable">"Ця правка надіслана і не може бути скасована"</string>
     <string name="quest_cycleway_value_separate">"Показати окремо від карти"</string>
     <string name="created_note_action_title">"Створена точка"</string>
+    <string name="commented_note_action_title">"Закоментовано"</string>
     <string name="hid_action_description">"Ви приховали це"</string>
     <string name="split_way_action_description">"Ви розділили шлях"</string>
     <string name="deleted_poi_action_description">"Ви видаляєте це"</string>
@@ -1024,6 +1029,7 @@
 Дані оновлюються після %1$s днів, а дані, що не використовуються видаляються після %2$s днів автоматично."</string>
     <string name="quest_shop_type_title">"Який тип магазину %s?"</string>
     <string name="quest_shop_type_title_no_name">"Який це тип магазину?"</string>
+    <string name="pref_background_type_select">"Виберіть тип підкладки"</string>
     <string name="background_type_map">"Карта"</string>
     <string name="quest_barrier_type_title">"Який це тип перешкоди?"</string>
     <string name="quest_barrier_type_gate">"Ворота"</string>
@@ -1043,13 +1049,28 @@
     <string name="quest_barrier_type_debris_pile">"Купа сміття"</string>
     <string name="quest_barrier_type_stile_squeezer">"Перелаз"</string>
     <string name="quest_barrier_type_stile_ladder">"Сходинки"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Велосипедний бар’єр"</string>
     <string name="quest_barrier_type_kissing_gate">"Вузька хвіртка"</string>
     <string name="quest_barrier_type_stepover">"Перелаз"</string>
     <string name="quest_barrier_type_swing_gate">"Шлагбаум"</string>
     <string name="quest_policeType_title">"Який це тип відділку поліції?"</string>
     <string name="quest_stile_type_title">"Який це тип перелазу?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"З’єднані односімейні будинки"</string>
+    <string name="pref_title_quests2">"Вибір та пріоритет квестів"</string>
+    <string name="pref_subtitle_quests">"%1$d з %2$d доступні"</string>
+    <string name="quest_busStopLit_tram_name_title">"Зупинка %s має освітлення?"</string>
+    <string name="quest_busStopLit_tram_title">"Зупинка має освітлення?"</string>
+    <string name="quest_busStopLit_title">"Чи освітлюється ця зупинка?"</string>
+    <string name="quest_busStopLit_name_title">"Чи освітлюється зупинка %s?"</string>
     <string name="no_location_permission_warning_title">"Дозвіл розташовування"</string>
+    <string name="quest_surface_value_woodchips">"Тріски"</string>
     <string name="no_camera_app">"Немає додатку камери"</string>
+    <string name="quest_busStopBin_tram_name_title">"На цій зупинці %s є сміттєва урна?"</string>
+    <string name="quest_busStopBin_tram_title">"На цій зупинці є сміттєва урна?"</string>
+    <string name="quest_busStopBin_title">"Чи є біля цієї автобусної зупинки сміттєвий бак?"</string>
+    <string name="quest_busStopBin_name_title">"Чи є біля автобусної зупинки %s сміттєвий бак?"</string>
+    <string name="quest_bollard_type_title">"Який це тип палі?"</string>
+    <string name="quest_bollard_type_rising">"Підйом"</string>
     <string name="quest_bollard_type_removable_with_key">"Складається з ключем"</string>
     <string name="quest_bollard_type_removable_without_key">"Складається без ключа"</string>
     <string name="quest_bollard_type_foldable">"Складний"</string>

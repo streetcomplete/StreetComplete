@@ -1048,6 +1048,14 @@
                 "historic/wreck/visible_at_low_tide": {
                     "label": "退潮時可見"
                 },
+                "holding_position/type": {
+                    "label": "類型",
+                    "options": {
+                        "ILS": "儀器降落系統",
+                        "intermediate": "滑行道交叉口",
+                        "runway": "機場跑道"
+                    }
+                },
                 "hoops": {
                     "label": "藍框數量",
                     "placeholder": "1, 2, 4..."
@@ -2492,6 +2500,9 @@
                 "vhf": {
                     "label": "VHF 頻道",
                     "terms": "vhf 頻道"
+                },
+                "via": {
+                    "label": "經由"
                 },
                 "video_calls": {
                     "label": "視訊通話",
@@ -5344,6 +5355,10 @@
                     "name": "溜冰場",
                     "terms": "溜冰場"
                 },
+                "leisure/indoor_play": {
+                    "name": "室內遊樂中心",
+                    "terms": "室內遊樂中心"
+                },
                 "leisure/marina": {
                     "name": "遊艇碼頭",
                     "terms": "遊艇碼頭"
@@ -5471,6 +5486,10 @@
                 "leisure/playground": {
                     "name": "遊樂場",
                     "terms": "遊樂場"
+                },
+                "leisure/playground/indoor": {
+                    "name": "室內遊樂場",
+                    "terms": "室內遊樂場"
                 },
                 "leisure/resort": {
                     "name": "度假勝地",
@@ -6427,6 +6446,14 @@
                     "name": "太陽能板",
                     "terms": "太陽能板"
                 },
+                "power/generator/method/photovoltaic/building/roof": {
+                    "name": "太陽能板天篷",
+                    "terms": "太陽能板天篷"
+                },
+                "power/generator/method/photovoltaic/location/roof": {
+                    "name": "屋頂太陽能板",
+                    "terms": "屋頂太陽能板"
+                },
                 "power/generator/source/hydro": {
                     "name": "水利渦輪"
                 },
@@ -6473,6 +6500,10 @@
                 "power/plant/source/solar": {
                     "name": "太陽能農場",
                     "terms": "太陽能農場"
+                },
+                "power/plant/source/waste": {
+                    "name": "焚化爐發電廠",
+                    "terms": "焚化爐發電廠"
                 },
                 "power/plant/source/wind": {
                     "name": "風場",
@@ -7835,7 +7866,7 @@
                 },
                 "type/route/horse": {
                     "name": "騎馬路線",
-                    "terms": "騎馬路線,騎乘路線"
+                    "terms": "騎馬路線"
                 },
                 "type/route/light_rail": {
                     "name": "輕軌路線",
@@ -7843,6 +7874,10 @@
                 },
                 "type/route/monorail": {
                     "name": "單軌路線"
+                },
+                "type/route/mtb": {
+                    "name": "山地自行車路線",
+                    "terms": "山地自行車路線"
                 },
                 "type/route/pipeline": {
                     "name": "管道路線",
@@ -7877,7 +7912,7 @@
                     "terms": "無軌電車路線"
                 },
                 "type/route_master": {
-                    "name": "路線總纜",
+                    "name": "路線總目",
                     "terms": "路線總目"
                 },
                 "type/site": {

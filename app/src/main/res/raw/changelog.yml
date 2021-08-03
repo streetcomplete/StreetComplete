@@ -9,17 +9,59 @@ v34.0-beta1: |
   <li>Inform new users once about the possibility to change quest presets</li>
   <li>Added search/filter function for the quest presets settings (#3008)</li>
   </ul>
+  <ul>
+  <li>Add Animism as choice for when asked about the religion of a place (#3063)</li>
+  <li>Add more building type choices: allotment house, boathouse and grandstand (#3078)</li>
+  </ul>
 
-v33.0-beta1: |
+v33.2: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix that the app wouldn't start on Android 4.x (#3069) which was broken since v32.0. <br/>
+      Android 4.x support will be dropped in an upcoming version.
+  </li>
+  <li>Ask about tactile paving on kerbs also when the type of kerb is already set (#3104) by @jyasskin</li>
+  </ul>
+  <h3>Other Enhancements</h3>
+  <ul>
+  <li>Amharic (አማርኛ) translation by Anteneh Belayneh, Alexander Menk (www.AddisMap.com)</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Number of lanes: Don't ask if they have been recorded for both sides individually already (#3038), by @FloEdelmann</li>
+  <li>Enable cycleways and tactile pavings quest for Croatia (#3041), by @mnalis</li>
+  <li>Allow splitting ways when asking whether a set of steps has a handrail (#3037), by @peternewman</li>
+  <li>Allow answering that a place does not exist when asking whether it offers Kosher food (#3073), by @peternewman</li>
+  <li>For pubs that definitely serve food, also ask whether they have vegetarian and vegan food (#3097, #3099), by @peternewman</li>
+  <li>Don't ask whether a place offers vegetarian food if it only offers vegan food (#3072, #3081), by @starsep</li>
+  <li>Don't ask for the existence of things that are seasonal, f.e. loungers that can only be found in the park during summer (#3089), by @matkoniecz</li>
+  <li>Periodically ask if a drinking fountain still exists (#3102)</li>
+  <li>Clean tags from previous vacant shop when answering that there is a new shop now (#3045), by @TurnrDev</li>
+  <li>Improve illustration in building levels quest (#3092)</li>
+  </ul>
+
+v33.1: |
+  <ul>
+  <li>Fix crash when tapping on an achievement in your profile screen (#3027)</li>
+  <li>Only ask for bollard type for bollards on roads (#3017)</li>
+  <li>Updated translations and other small fixes</li>
+  </ul>
+
+v33.0: |
   <h3>New Quests</h3>
   <ul>
   <li><i>What type of surveillance camera is this?</i> (#87, #299, #2856), by @Helium314, thanks @Binnette</li>
   <li><i>Does this bus stop have a waste basket?</i> (#2760, #2898), by @FloEdelmann</li>
   <li><i>What type of bollard is this?</i> (#2128, #2915), by @FloEdelmann, thanks @RubenKelevra</li>
   </ul>
-  <h3>Enhancements</h3>
+  <h3>Quest Enhancements</h3>
   <ul>
   <li>Remember more building level quest answers (#1772, #2925), by @FloEdelmann</li>
+  <li>In the address quest, when answering that the building type is not correct, follow-up by asking about the building type (#3001)</li>
+  <li>A few minor improvements for various quests (#2971, #3000, #3012, #3013, #3002...)</li>
+  </ul>
+  <h3>Other Enhancements</h3>
+  <ul>
   <li>Added Bosnian translation by OSMcontributorBH</li>
   <li>Added Thai translation by Mishari, PPNplus, Kamthorn and more</li>
   </ul>

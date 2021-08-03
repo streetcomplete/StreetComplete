@@ -28,16 +28,18 @@
     <string name="quest_streetName_title">"What is the name of this road?"</string>
     <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Sometimes the street sign is only at one end of the street. Also, note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelt without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
     <string name="quest_openingHours_name_title">"What are the opening hours of %s?"</string>
     <string name="quest_openingHours_start_time">"opening time"</string>
     <string name="quest_openingHours_end_time">"closing time"</string>
     <string name="quest_openingHours_add_months">"Add months"</string>
     <string name="quest_openingHours_add_hours">"Add hours"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Add weekdays"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
-    <string name="quest_openingHours_chooseWeekdaysTitle">"Select weekdays"</string>
+    <string name="quest_openingHours_chooseWeekdaysTitle">"Select days of the week"</string>
     <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>
     <string name="quest_noteDiscussion_title">"Can you contribute anything to this note?"</string>
     <string name="quest_noteDiscussion_no">"No, hide"</string>
@@ -224,7 +226,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_select_hint">"Select:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_sport_manySports_confirmation_description">"Is this pitch designed for exactly these sports specifically (markings and equipment are present) or as a general purpose pitch for all kinds of games?"</string>
+    <string name="quest_sport_manySports_confirmation_description">"Is this pitch designed for exactly these sports specifically (markings and equipment are present) or as a general-purpose pitch for all kinds of games?"</string>
     <string name="quest_manySports_confirmation_specific">"Specifically these"</string>
     <string name="quest_manySports_confirmation_generic">"General purpose"</string>
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
@@ -1282,10 +1284,10 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="no_location_permission_warning_title">"Location Permission"</string>
     <string name="quest_surface_value_woodchips">"Woodchips"</string>
     <string name="no_camera_app">"No camera app available"</string>
-    <string name="quest_busStopBin_tram_name_title">"Does the tram stop %s have a waste basket?"</string>
-    <string name="quest_busStopBin_tram_title">"Does this tram stop have a waste basket?"</string>
-    <string name="quest_busStopBin_title">"Does this bus stop have a waste basket?"</string>
-    <string name="quest_busStopBin_name_title">"Does the bus stop %s have a waste basket?"</string>
+    <string name="quest_busStopBin_tram_name_title">"Does the tram stop %s have a rubbish bin?"</string>
+    <string name="quest_busStopBin_tram_title">"Does this tram stop have a rubbish bin?"</string>
+    <string name="quest_busStopBin_title">"Does this bus stop have a rubbish bin?"</string>
+    <string name="quest_busStopBin_name_title">"Does the bus stop %s have a rubbish bin?"</string>
     <string name="quest_bollard_type_title">"What type of bollard is this?"</string>
     <string name="quest_bollard_type_rising">"Rising"</string>
     <string name="quest_bollard_type_removable_with_key">"Removable with key"</string>
