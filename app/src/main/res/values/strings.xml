@@ -677,6 +677,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_shed">Shed</string>
+    <string name="quest_buildingType_boathouse">Boathouse</string>
+    <string name="quest_buildingType_allotment_house">Allotment house</string>
+    <string name="quest_buildingType_grandstand">Grandstand</string>
     <string name="quest_buildingType_toilets">Toilets</string>
     <string name="quest_buildingType_hut">Hut</string>
     <string name="quest_buildingType_hut_description">small, simple dwelling or shelter</string>
@@ -718,7 +721,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
     <string name="action_deselect_all">Deselect all</string>
-    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
+    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, big stores …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
     <string name="quest_maxweight_select_sign">"Select sign"</string>
     <string name="quest_generic_answer_noSign">There is no sign</string>
