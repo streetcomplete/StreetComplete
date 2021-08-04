@@ -678,7 +678,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_shed">Shed</string>
     <string name="quest_buildingType_boathouse">Boathouse</string>
-    <string name="quest_buildingType_allotment_house">Allotment house</string>
+    <string name="quest_buildingType_allotment_house">Garden allotment outbuilding</string>
     <string name="quest_buildingType_grandstand">Grandstand</string>
     <string name="quest_buildingType_toilets">Toilets</string>
     <string name="quest_buildingType_hut">Hut</string>
