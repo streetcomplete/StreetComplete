@@ -364,8 +364,16 @@ open class MapFragment : Fragment(),
         }
     }
 
+    fun getCurrentCenter(padding: RectF): LatLon? {
+        return controller?.screenCenterToLatLon(padding)
+    }
+
     fun getPositionThatCentersPosition(pos: LatLon, offset: RectF): LatLon? {
         return controller?.getLatLonThatCentersLatLon(pos, offset)
+    }
+
+    fun getPostrotationPositionThatCentersPosition(pos: LatLon, offset: RectF): LatLon? {
+        return controller?.getLatLonThatCentersLatLonAfterRotation(pos, offset)
     }
 
     fun getDisplayedArea(): BoundingBox? = controller?.screenAreaToBoundingBox(RectF())

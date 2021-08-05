@@ -279,6 +279,27 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         return position.translate(distanceAfterZoom, angle)
     }
 
+    fun getLatLonThatCentersLatLonAfterRotation(position: LatLon, padding: RectF, zoom: Float = cameraPosition.zoom): LatLon? {
+        val view = glViewHolder?.view ?: return null
+        val w = view.width
+        val h = view.height
+        if (w == 0 || h == 0) return null
+
+        val screenCenter = screenPositionToLatLon(PointF(w / 2f, h / 2f)) ?: return null
+        val offsetScreenCenter = screenPositionToLatLon(
+            PointF(
+                padding.left + (w - padding.left - padding.right) / 2,
+                padding.top + (h - padding.top - padding.bottom) / 2
+            )
+        ) ?: return null
+
+        val zoomDelta = zoom.toDouble() - cameraPosition.zoom
+        val distance = offsetScreenCenter.distanceTo(screenCenter)
+        val angle = 0.0
+        val distanceAfterZoom = distance * (2.0).pow(-zoomDelta)
+        return position.translate(-distanceAfterZoom, angle)
+    }
+
     /* -------------------------------------- Data Layers --------------------------------------- */
 
     fun addDataLayer(name: String, generateCentroid: Boolean = false): MapData =

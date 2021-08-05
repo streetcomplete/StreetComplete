@@ -609,9 +609,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
                     tilt = if (isFlat) PI.toFloat() / 5f else 0f
                 }
             } else {
+                val pos = mapFragment.getCurrentCenter(mapOffsetWithOpenBottomSheet)!!
+                val offsetPos = mapFragment.getPostrotationPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
                 mapFragment.updateCameraPosition(300) {
                     rotation = 0f
                     tilt = 0f
+                    position = offsetPos
                 }
             }
         }
