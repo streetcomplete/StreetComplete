@@ -46,6 +46,7 @@ import de.westnordost.streetcomplete.map.MainFragment
 import de.westnordost.streetcomplete.notifications.NotificationsContainerFragment
 import de.westnordost.streetcomplete.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.LocaleContextWrapper
 import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
@@ -113,6 +114,10 @@ class MainActivity : AppCompatActivity(),
             }
         }
         handleGeoUri()
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleContextWrapper.wrap(newBase,"am"))
     }
 
     private fun handleGeoUri() {
