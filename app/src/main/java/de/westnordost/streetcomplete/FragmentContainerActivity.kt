@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
+import de.westnordost.streetcomplete.util.LocaleContextWrapper
 
 /** An activity that contains one full-screen ("main") fragment */
 open class FragmentContainerActivity(
@@ -43,6 +44,10 @@ open class FragmentContainerActivity(
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
         supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, false)
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleContextWrapper.wrap(newBase,"am"))
     }
 
     fun pushMainFragment(fragment: Fragment) {
