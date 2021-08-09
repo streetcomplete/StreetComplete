@@ -33,7 +33,7 @@ class AboutFragment : PreferenceFragmentCompat() {
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        val context = LocaleContextWrapper.wrap(context, "am");
+        val context = LocaleContextWrapper.wrap(context);
 
         addPreferencesFromResource(R.xml.about)
 

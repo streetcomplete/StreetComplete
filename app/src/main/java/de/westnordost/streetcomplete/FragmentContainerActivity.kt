@@ -47,7 +47,7 @@ open class FragmentContainerActivity(
     }
 
     override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(LocaleContextWrapper.wrap(newBase,"am"))
+        super.attachBaseContext(LocaleContextWrapper.wrap(newBase))
     }
 
     fun pushMainFragment(fragment: Fragment) {

@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(LocaleContextWrapper.wrap(newBase,"am"))
+        super.attachBaseContext(LocaleContextWrapper.wrap(newBase))
     }
 
     private fun handleGeoUri() {

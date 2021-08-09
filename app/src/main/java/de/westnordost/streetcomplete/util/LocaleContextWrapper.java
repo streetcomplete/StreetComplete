@@ -3,10 +3,15 @@ package de.westnordost.streetcomplete.util;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 
+import androidx.preference.PreferenceManager;
+
 import java.util.Locale;
+
+import de.westnordost.streetcomplete.Prefs;
 
 /**
  * @source https://stackoverflow.com/a/40704077
@@ -18,7 +23,11 @@ public class LocaleContextWrapper extends ContextWrapper {
 	}
 
 	@SuppressWarnings("deprecation")
-	public static ContextWrapper wrap(Context context, String language) {
+	public static ContextWrapper wrap(Context context) {
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+		String language = prefs.getString(Prefs.LANGUAGE_SELECT, "");
+
 		Configuration config = context.getResources().getConfiguration();
 		Locale sysLocale = null;
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {

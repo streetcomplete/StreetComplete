@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.settings
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.icu.util.ULocale.getDisplayLanguage
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.TextView
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
@@ -92,12 +94,78 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             true
         }
 
+        buildLanguageSelector()
+
         findPreference<Preference>("debug")?.isVisible = BuildConfig.DEBUG
 
         findPreference<Preference>("debug.quests")?.setOnPreferenceClickListener {
             startActivity(Intent(context, ShowQuestFormsActivity::class.java))
             true
         }
+    }
+
+    private fun buildLanguageSelector() {
+        // FIXME: externalize to YML?
+        val entryValues = arrayOf<CharSequence>("",
+                "am",
+                "ar",
+                "ast",
+                "bg",
+                "bs",
+                "ca",
+                "cs",
+                "da",
+                "de",
+                "el",
+                "en-AU",
+                "en-GB",
+                "en",
+                "es",
+                "eu",
+                "fa",
+                "fi",
+                "fr",
+                "gl",
+                "hr",
+                "hu",
+                "in",
+                "it",
+                "ja",
+                "ko",
+                "lt",
+                "ml",
+                "nl",
+                "nn",
+                "no",
+                "pl",
+                "pt-BR",
+                "pt",
+                "ro",
+                "ru",
+                "sk",
+                "sv",
+                "th",
+                "tr",
+                "uk",
+                "zh-CN",
+                "zh-HK",
+                "zh",
+                "zh-TW"
+        );
+
+        val entries = arrayOf<CharSequence>();
+
+        entryValues.forEach {
+            if (it == "") {
+                entries.plusElement(getString(R.string.language_system_default))
+            } else {
+                val locale = Locale(it.toString())
+                entries.plusElement(locale.getDisplayLanguage(locale))
+            }
+        }
+
+        findPreference<ListPreference>("language.select")?.setEntries(entries)
+        findPreference<ListPreference>("language.select")?.setEntryValues(entryValues)
     }
 
     override fun onStart() {
