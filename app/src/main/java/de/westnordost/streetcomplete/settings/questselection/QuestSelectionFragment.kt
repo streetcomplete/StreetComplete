@@ -10,6 +10,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.lifecycle.lifecycleScope
+import de.westnordost.streetcomplete.DisplaysTitle
 import de.westnordost.streetcomplete.HasTitle
 
 import javax.inject.Inject
@@ -18,24 +20,38 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.quest.getVisible
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
-class QuestSelectionFragment
-    : Fragment(R.layout.fragment_quest_selection), HasTitle, QuestSelectionAdapter.Listener {
+class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection),
+    HasTitle, QuestSelectionAdapter.Listener, VisibleQuestTypeSource.Listener {
 
     @Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
+    @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
     @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
 
-    override val title: String get() = getString(R.string.pref_title_quests)
+    private val parentTitleContainer: DisplaysTitle? get() =
+        parentFragment as? DisplaysTitle ?: activity as? DisplaysTitle
+
+    override val title: String get() = getString(R.string.pref_title_quests2)
+    override val subtitle: String get() {
+        val enabledCount = questTypeRegistry.getVisible(visibleQuestTypeController).count()
+        val totalCount = questTypeRegistry.all.size
+        return getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+    }
 
     init {
         Injector.applicationComponent.inject(this)
-        questSelectionAdapter.list = createQuestTypeVisibilityList()
+        initQuestSelectionAdapter()
         questSelectionAdapter.listener = this
+        visibleQuestTypeController.addListener(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -73,32 +89,51 @@ class QuestSelectionFragment
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onStop() {
+        super.onStop()
+        visibleQuestTypeController.removeListener(this)
+    }
+
     override fun onReorderedQuests(before: QuestType<*>, after: QuestType<*>) {
-        questTypeOrderList.apply(before, after)
+        lifecycleScope.launch(Dispatchers.IO) {
+            questTypeOrderList.apply(before, after)
+        }
     }
 
     override fun onChangedQuestVisibility(questType: QuestType<*>, visible: Boolean) {
-        visibleQuestTypeDao.setVisible(questType, visible)
+        lifecycleScope.launch(Dispatchers.IO) {
+            visibleQuestTypeController.setVisible(questType, visible)
+        }
+    }
+
+    override fun onQuestTypeVisibilitiesChanged() {
+        lifecycleScope.launch(Dispatchers.Main) {
+            parentTitleContainer?.updateTitle(this@QuestSelectionFragment)
+        }
     }
 
     private fun onReset() {
-        questTypeOrderList.clear()
-        visibleQuestTypeDao.clear()
-        questSelectionAdapter.list = createQuestTypeVisibilityList()
+        lifecycleScope.launch(Dispatchers.IO) {
+            questTypeOrderList.clear()
+            visibleQuestTypeController.clear()
+            withContext(Dispatchers.Main) { initQuestSelectionAdapter() }
+        }
     }
 
     private fun onDeselectAll() {
-        for (questType in questTypeRegistry.all) {
-            if (questType !is OsmNoteQuestType) {
-                visibleQuestTypeDao.setVisible(questType, false)
-            }
+        lifecycleScope.launch(Dispatchers.IO) {
+            visibleQuestTypeController.setAllVisible(questTypeRegistry.all.filter { it !is OsmNoteQuestType }, false)
+            withContext(Dispatchers.Main) { initQuestSelectionAdapter() }
         }
+    }
+
+    private fun initQuestSelectionAdapter() {
         questSelectionAdapter.list = createQuestTypeVisibilityList()
     }
 
     private fun createQuestTypeVisibilityList(): MutableList<QuestVisibility> {
         val questTypes = questTypeRegistry.all.toMutableList()
         questTypeOrderList.sort(questTypes)
-        return questTypes.map { QuestVisibility(it, visibleQuestTypeDao.isVisible(it)) }.toMutableList()
+        return questTypes.map { QuestVisibility(it, visibleQuestTypeController.isVisible(it)) }.toMutableList()
     }
 }

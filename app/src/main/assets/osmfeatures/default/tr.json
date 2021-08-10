@@ -20,6 +20,9 @@
                 "category-path": {
                     "name": "Patikalar"
                 },
+                "category-playground": {
+                    "name": "Oyun Alanı Ekipmanı"
+                },
                 "category-rail": {
                     "name": "Raylar"
                 },
@@ -279,7 +282,9 @@
                 "beauty": {
                     "label": "Hizmetler",
                     "options": {
-                        "cosmetics": "Makyaj malzemeleri"
+                        "cosmetics": "Makyaj malzemeleri",
+                        "nails": "Tırnaklar",
+                        "tanning": "Bronzlaşma"
                     }
                 },
                 "bench": {
@@ -915,6 +920,9 @@
                 },
                 "geyser/height": {
                     "label": "Patlama Yüksekliği"
+                },
+                "gnis/feature_id": {
+                    "label": "Coğrafi Adlar Bilgi Sistemi nesne ID"
                 },
                 "government": {
                     "label": "Hükümet"
@@ -1900,7 +1908,8 @@
                         "alley": "Geçit",
                         "drive-through": "Arabaya servis",
                         "driveway": "Arabayla uzaklaşmak",
-                        "emergency_access": "Acil Erişim"
+                        "emergency_access": "Acil Erişim",
+                        "parking_aisle": "Park Alanı"
                     }
                 },
                 "service/bicycle": {
@@ -1951,7 +1960,7 @@
                     "label": "Site Tipi"
                 },
                 "smoking": {
-                    "label": "Sigara İçme Durumu",
+                    "label": "Sigara İçilme Durumu",
                     "options": {
                         "dedicated": "Sigara İçenlere Özel Bölme (örneğin sigara odası)",
                         "isolated": "Fiziksel Olarak Ayrılmış Sigara İçme Alanı",
@@ -1988,6 +1997,7 @@
                 "source": {
                     "label": "Kaynak",
                     "options": {
+                        "aerial imagery": "Hava Fotoğrafları",
                         "gps": "GPS",
                         "local knowledge": "Yerel Bilgi",
                         "streetlevel imagery": "Sokak Seviyesi Fotoğraflar",
@@ -2427,8 +2437,10 @@
                     "label": "Bobin Yapılandırması",
                     "options": {
                         "delta": "Delta",
+                        "leblanc": "Üçgen bağlantı",
                         "open": "Açık",
                         "open-delta": "Geniş delta",
+                        "scott": "T bağlantı",
                         "star": "Demiryolunda üçgen bağlantı",
                         "zigzag": "Zikzak"
                     }
@@ -5461,7 +5473,7 @@
                     "terms": "sulak alan,sulak arazi"
                 },
                 "natural/wood": {
-                    "name": "Doğal Odun"
+                    "name": "Doğal Orman"
                 },
                 "network/type/node_network": {
                     "name": "Eğlence ağı düğümü"
@@ -5748,14 +5760,23 @@
                 "playground/balancebeam": {
                     "name": "Denge Aleti Oyna"
                 },
+                "playground/basketrotator": {
+                    "name": "Halatlı Dönmedolap"
+                },
                 "playground/basketswing": {
                     "name": "Sepet Salıncak"
+                },
+                "playground/climbingframe": {
+                    "name": "Tırmanma Çerçevesi oyna"
                 },
                 "playground/cushion": {
                     "name": "Zıplayan Minder"
                 },
                 "playground/horizontal_bar": {
                     "name": "Barfiks Bar"
+                },
+                "playground/playhouse": {
+                    "name": "Ev oyna"
                 },
                 "playground/roundabout": {
                     "name": "Atlıkarınca"
@@ -5768,6 +5789,9 @@
                 },
                 "playground/slide": {
                     "name": "Kaydırak"
+                },
+                "playground/springy": {
+                    "name": "Zıp Zıp"
                 },
                 "playground/structure": {
                     "name": "Yapı"
@@ -5833,6 +5857,9 @@
                 },
                 "power/plant/source/nuclear": {
                     "name": "Nükleer Güç Santrali"
+                },
+                "power/plant/source/oil": {
+                    "name": "Petrol Yakıtlı Enerji Santrali"
                 },
                 "power/plant/source/solar": {
                     "name": "Güneş Paneli Çiftliği"
@@ -6622,6 +6649,9 @@
                 "shop/rental": {
                     "name": "Kiralık Dükkan"
                 },
+                "shop/repair": {
+                    "name": "Tamir Dükkanı"
+                },
                 "shop/scuba_diving": {
                     "name": "Tüple Dalış Mağazası",
                     "terms": "tüple dalış mağazası"
@@ -7032,6 +7062,9 @@
                     "name": "Güzergah",
                     "terms": "güzergah,rota"
                 },
+                "type/route/aerialway": {
+                    "name": "Araç Güzergahı"
+                },
                 "type/route/bicycle": {
                     "name": "Bisiklet Güzergahı",
                     "terms": "bisiklet güzergahı,bisiklet rotası"
@@ -7054,10 +7087,6 @@
                 "type/route/hiking": {
                     "name": "Yürüyüş Güzergahı",
                     "terms": "yürüyüş güzergahı,yürüyüş rotası"
-                },
-                "type/route/horse": {
-                    "name": "At Binme Güzergahı",
-                    "terms": "at binme güzergahı,at binme rotası"
                 },
                 "type/route/light_rail": {
                     "name": "Hafif Raylı Sistem Rotası"

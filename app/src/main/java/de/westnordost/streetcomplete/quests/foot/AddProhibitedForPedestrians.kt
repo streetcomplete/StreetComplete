@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.foot
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {
@@ -43,10 +43,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
             // the question is whether it is prohibited, so YES -> foot=no etc
             YES -> changes.add("foot", "no")
             NO -> changes.add("foot", "yes")
-            HAS_SEPARATE_SIDEWALK -> {
-                changes.add("foot", "use_sidepath")
-                changes.modify("sidewalk", "separate")
-            }
+            HAS_SEPARATE_SIDEWALK -> changes.modify("sidewalk", "separate")
             IS_LIVING_STREET -> changes.modify("highway", "living_street")
         }
     }

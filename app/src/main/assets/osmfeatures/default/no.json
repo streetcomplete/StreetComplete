@@ -20,6 +20,9 @@
                 "category-path": {
                     "name": "Stier"
                 },
+                "category-playground": {
+                    "name": "Lekeplassutstyr "
+                },
                 "category-rail": {
                     "name": "Skinner"
                 },
@@ -98,7 +101,15 @@
                     "label": "Type"
                 },
                 "access_simple": {
-                    "label": "Tillatt for"
+                    "label": "Tillatt for",
+                    "options": {
+                        "customers": "Kun kunder ",
+                        "no": "Ingen",
+                        "permissive": "Permissiv",
+                        "permit": "Kun med tillatelse ",
+                        "private": "Privat",
+                        "yes": "Offentlig "
+                    }
                 },
                 "addr/interpolation": {
                     "label": "Type",
@@ -115,6 +126,7 @@
                         "block_number": "Kvartalnummer",
                         "block_number!jp": "Kvartalno.",
                         "city": "By",
+                        "city!cn": "By / Prefektur / Liga ",
                         "city!jp": "Storby/By/Landsby/Spesielle distrikter i Tokyo",
                         "city!vn": "By/Tettsted",
                         "conscriptionnumber": "123",
@@ -122,11 +134,13 @@
                         "county": "Fylke",
                         "county!jp": "Distrikt",
                         "district": "Distrikt",
+                        "district!cn": "Distrikt / Fylke / banner ",
                         "district!vn": "Arrondissement/By/Distrikt",
                         "floor": "Gulv",
                         "hamlet": "Bosetning",
                         "housename": "Husnavn",
                         "housenumber": "123",
+                        "housenumber!jp": "Bygningsnr. / Lottnr. ",
                         "neighbourhood": "Nabolag",
                         "place": "Sted",
                         "postcode": "Postnummer",
@@ -261,7 +275,12 @@
                     "label": "Spesialitet"
                 },
                 "beauty": {
-                    "label": "Tjenester"
+                    "label": "Tjenester",
+                    "options": {
+                        "cosmetics": "Kosmetikk ",
+                        "nails": "Negler",
+                        "tanning": "Solarium"
+                    }
                 },
                 "bench": {
                     "label": "Benk",
@@ -322,11 +341,15 @@
                 "bridge/support": {
                     "label": "Type"
                 },
+                "bridge_combo": {
+                    "label": "Type"
+                },
                 "building": {
                     "label": "Bygning"
                 },
                 "building/flats": {
-                    "label": "Enheter"
+                    "label": "Enheter",
+                    "placeholder": "2, 4, 6, 8..."
                 },
                 "building/levels": {
                     "label": "Etasjer",
@@ -373,10 +396,16 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "capacity/disabled_parking": {
-                    "label": "Tilgjengelige Plasser"
+                    "label": "Tilgjengelige Plasser",
+                    "placeholder": "1, 2, 3..."
                 },
                 "capacity_parking": {
-                    "label": "Totalt Antall Plasser"
+                    "label": "Totalt Antall Plasser",
+                    "placeholder": "10, 20, 30..."
+                },
+                "capacity_volume": {
+                    "label": "Kapasitet (kubikkmeter) ",
+                    "placeholder": "50, 100, 200..."
                 },
                 "cash_in": {
                     "label": "Innskudd"
@@ -489,7 +518,31 @@
                     "label": "Fotgjenger øy"
                 },
                 "cuisine": {
-                    "label": "Kjøkken"
+                    "label": "Kjøkken",
+                    "options": {
+                        "american": "Amerikansk",
+                        "asian": "Asiatisk",
+                        "burger": "Burger",
+                        "chicken": "Kylling",
+                        "chinese": "Kinesisk",
+                        "coffee_shop": "Kafé",
+                        "french": "Fransk",
+                        "german": "Tysk",
+                        "greek": "Gresk",
+                        "ice_cream": "Iskrem",
+                        "indian": "indisk",
+                        "italian": "Italiensk",
+                        "japanese": "Japansk",
+                        "kebab": "Kebab",
+                        "mexican": "Meksikansk",
+                        "pizza": "Pizza",
+                        "regional": "Regional",
+                        "sandwich": "Smørbrød",
+                        "sushi": "Sushi",
+                        "thai": "Thailandsk",
+                        "turkish": "Tyrkisk",
+                        "vietnamese": "Vietnamesisk"
+                    }
                 },
                 "currency_multi": {
                     "label": "Valutetyper"
@@ -994,6 +1047,7 @@
                 "internet_access/fee": {
                     "label": "Internettilgang",
                     "options": {
+                        "customers": "Kun Kunder",
                         "no": "Gratis",
                         "yes": "Betalt"
                     }
@@ -1011,6 +1065,7 @@
                     "label": "Kryss",
                     "options": {
                         "circular": "Rundkjøring",
+                        "jughandle": "Jughandle",
                         "roundabout": "Rundkjøring"
                     }
                 },
@@ -1314,6 +1369,9 @@
                     "label": "Åpningstider",
                     "placeholder": "Ukjent"
                 },
+                "opening_hours/covid19": {
+                    "label": "COVID-19 Pandemiske åpningstider"
+                },
                 "operator": {
                     "label": "Betjener"
                 },
@@ -1321,7 +1379,10 @@
                     "label": "Operator Type"
                 },
                 "organic": {
+                    "label": "Organiske Produkter ",
                     "options": {
+                        "no": "Ingen",
+                        "only": "Kun",
                         "yes": "Noe"
                     }
                 },
@@ -1339,6 +1400,7 @@
                     "label": "Type",
                     "options": {
                         "carports": "Carporter",
+                        "garage_boxes": "Garasjekasser ",
                         "multi-storey": "Fler-etasjes",
                         "sheds": "Skur/utebod",
                         "surface": "Overflate",
@@ -1346,6 +1408,7 @@
                     }
                 },
                 "parking_entrance": {
+                    "label": "Type",
                     "options": {
                         "multi-storey": "Fleretasje parking",
                         "underground": "Underjordisk"
@@ -1428,7 +1491,14 @@
                         "skating": "Skøyting"
                     }
                 },
+                "piste/grooming_downhill": {
+                    "label": "Preparering",
+                    "options": {
+                        "classic": "Klassisk"
+                    }
+                },
                 "piste/grooming_hike": {
+                    "label": "Preparering",
                     "options": {
                         "backcountry": "Tur - Truger",
                         "classic": "Klassisk - Vinter Fottur"
@@ -1467,11 +1537,20 @@
                 "playground/theme": {
                     "label": "Tema"
                 },
+                "plots": {
+                    "placeholder": "10, 20, 30..."
+                },
                 "polling_station": {
                     "label": "Valglokale"
                 },
                 "population": {
                     "label": "Befolkning"
+                },
+                "portable": {
+                    "label": "Bærbar "
+                },
+                "post": {
+                    "label": "Leveringsadresse"
                 },
                 "power": {
                     "label": "Type"
@@ -1482,6 +1561,9 @@
                 "preschool": {
                     "label": "Førskole"
                 },
+                "produce": {
+                    "label": "Råvarer "
+                },
                 "product": {
                     "label": "Produkter",
                     "terms": "varer"
@@ -1490,6 +1572,7 @@
                     "label": "Type"
                 },
                 "pump": {
+                    "label": "Pumpe",
                     "options": {
                         "manual": "Manuell Håndpumpe",
                         "no": "Ingen",
@@ -1501,24 +1584,39 @@
                     "label": "Type"
                 },
                 "railway/position": {
+                    "label": "Milepælposisjon ",
                     "placeholder": "Distanse, innenfor ett desimaltall (123,4)"
                 },
                 "railway/signal/direction": {
+                    "label": "Retning Berørt ",
                     "options": {
                         "backward": "Bakover",
                         "both": "Begge/alle",
                         "forward": "Framover"
                     }
                 },
+                "ramp": {
+                    "label": "Innebygd Rampe "
+                },
                 "rating": {
                     "label": "Effektvurdering"
+                },
+                "rcn_ref": {
+                    "label": "Sykkel Lov"
+                },
+                "real_fire": {
+                    "label": "Ekte Flamme"
+                },
+                "recycling_accepts": {
+                    "label": "Godtar "
                 },
                 "recycling_type": {
                     "label": "Type",
                     "options": {
                         "centre": "Senter",
                         "container": "Container"
-                    }
+                    },
+                    "placeholder": "Beholder, Senter "
                 },
                 "ref": {
                     "label": "Referansekode"
@@ -1528,6 +1626,10 @@
                 },
                 "ref_aeroway_gate": {
                     "label": "Port Nummer"
+                },
+                "ref_golf_hole": {
+                    "label": "Hull Nummer",
+                    "placeholder": "1-18"
                 },
                 "ref_platform": {
                     "label": "Platform Nummer"
@@ -1552,6 +1654,7 @@
                     "label": "Religion"
                 },
                 "reservation": {
+                    "label": "Reservasjoner ",
                     "options": {
                         "no": "Ikke tillatt",
                         "recommended": "Anbefalt",
@@ -1589,6 +1692,12 @@
                 "route_master": {
                     "label": "Type"
                 },
+                "ruins": {
+                    "label": "Type"
+                },
+                "rwn_ref": {
+                    "label": "Fotgjenger lov"
+                },
                 "sac_scale": {
                     "label": "Fottur Vanskelighetsgrad",
                     "options": {
@@ -1603,6 +1712,9 @@
                 },
                 "salt": {
                     "label": "Salt"
+                },
+                "screen": {
+                    "placeholder": "1, 4, 8…"
                 },
                 "scuba_diving": {
                     "label": "Tjenester"
@@ -1691,6 +1803,7 @@
                     "label": "Sesongbasert"
                 },
                 "seats": {
+                    "label": "Seter",
                     "placeholder": "2, 4, 6…"
                 },
                 "second_hand": {
@@ -1699,13 +1812,20 @@
                         "no": "Nei",
                         "only": "Kun",
                         "yes": "Ja"
-                    }
+                    },
+                    "placeholder": "Ja, Nei, Kun"
                 },
                 "self_service": {
                     "label": "Selvbetjening"
                 },
                 "service": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "alley": "Bakgate",
+                        "drive-through": "Gjennomkjøring",
+                        "driveway": "innkjørsel",
+                        "emergency_access": "Nødtilgang "
+                    }
                 },
                 "service/bicycle": {
                     "label": "Tjenester"
@@ -1767,13 +1887,28 @@
                     "label": "Sport"
                 },
                 "sport_ice": {
-                    "label": "Sport"
+                    "label": "Sport",
+                    "options": {
+                        "multi": "Flere "
+                    }
                 },
                 "sport_racing_motor": {
-                    "label": "Sport"
+                    "label": "Sport",
+                    "options": {
+                        "karting": "Karting",
+                        "motocross": "Motocross",
+                        "motor": "Motorsport"
+                    }
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Sport"
+                    "label": "Sport",
+                    "options": {
+                        "bmx": "BMX",
+                        "cycling": "Sykling",
+                        "dog_racing": "Hundeløp ",
+                        "horse_racing": "Hesteløp",
+                        "running": "Løping"
+                    }
                 },
                 "stars": {
                     "label": "Stjerner"
@@ -2843,6 +2978,9 @@
                 "building/school": {
                     "name": "Skole"
                 },
+                "building/service": {
+                    "name": "Servicebygning"
+                },
                 "building/shed": {
                     "name": "Skur/naust"
                 },
@@ -3257,6 +3395,9 @@
                 "highway/primary": {
                     "name": "Primær hovedvei"
                 },
+                "highway/raceway": {
+                    "name": "Motorsport Racerbane"
+                },
                 "highway/residential": {
                     "name": "Boligvei"
                 },
@@ -3331,6 +3472,9 @@
                 },
                 "historic/boundary_stone": {
                     "name": "Grensestein"
+                },
+                "historic/building": {
+                    "name": "Historisk Bygning"
                 },
                 "historic/castle": {
                     "name": "Slott"
@@ -3476,6 +3620,9 @@
                 "landuse/vineyard": {
                     "name": "Vingård"
                 },
+                "landuse/winter_sports": {
+                    "name": "Vintersport Område"
+                },
                 "leisure/adult_gaming_centre": {
                     "name": "Spillekasino"
                 },
@@ -3602,6 +3749,9 @@
                 "leisure/slipway": {
                     "name": "Båtslipp"
                 },
+                "leisure/sports_centre": {
+                    "name": "Idrettssenter / kompleks"
+                },
                 "leisure/sports_centre/climbing": {
                     "name": "Klatresenter"
                 },
@@ -3613,6 +3763,9 @@
                 },
                 "leisure/swimming_pool": {
                     "name": "Svømmebasseng"
+                },
+                "leisure/track": {
+                    "name": "Racerbane (Ikke motorsport)"
                 },
                 "leisure/track/cycling": {
                     "name": "Sykkelbane"
@@ -3947,6 +4100,9 @@
                 "piste/downhill": {
                     "name": "Utforløype"
                 },
+                "piste/downhill/halfpipe": {
+                    "name": "Snøsport Half-Pipe"
+                },
                 "piste/hike": {
                     "name": "Truger / Vintertursti"
                 },
@@ -3955,6 +4111,9 @@
                 },
                 "piste/nordic": {
                     "name": "Langrennsløype"
+                },
+                "piste/piste": {
+                    "name": "Snøsportsti/ Piste"
                 },
                 "piste/skitour": {
                     "name": "Tur Ski Sti"
@@ -4462,6 +4621,9 @@
                 },
                 "shop/watches": {
                     "name": "Urmaker"
+                },
+                "shop/water_sports": {
+                    "name": "Vannsport/Svømmebutikk"
                 },
                 "shop/weapons": {
                     "name": "Våpenbutikk"

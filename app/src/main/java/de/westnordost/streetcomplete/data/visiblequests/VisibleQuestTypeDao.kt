@@ -1,30 +1,17 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import android.database.sqlite.SQLiteOpenHelper
-import androidx.core.content.contentValuesOf
+import de.westnordost.streetcomplete.data.Database
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable.Columns.QUEST_TYPE
-import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable.Columns.VISIBILITY
-import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable.NAME
-import de.westnordost.streetcomplete.ktx.getInt
-import de.westnordost.streetcomplete.ktx.getString
-import de.westnordost.streetcomplete.ktx.query
-import javax.inject.Singleton
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.Columns.QUEST_TYPE
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.Columns.VISIBILITY
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.NAME
 
 /** Stores which quest types are visible by user selection and which are not */
-@Singleton class VisibleQuestTypeDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
+class VisibleQuestTypeDao @Inject constructor(private val db: Database) {
 
-    /* Is a singleton because it has a in-memory cache that is synchronized with changes made on
-       the DB */
-
-    private val cache: MutableMap<String, Boolean> by lazy { loadQuestTypeVisibilities() }
-
-    private val db get() = dbHelper.writableDatabase
-
-    private fun loadQuestTypeVisibilities(): MutableMap<String, Boolean> {
+    fun getAll(): MutableMap<String, Boolean> {
         val result = mutableMapOf<String,Boolean>()
         db.query(NAME) { cursor ->
             val questTypeName = cursor.getString(QUEST_TYPE)
@@ -34,22 +21,21 @@ import javax.inject.Singleton
         return result
     }
 
-    @Synchronized fun isVisible(questType: QuestType<*>): Boolean {
-        val questTypeName = questType.javaClass.simpleName
-        return cache[questTypeName] ?: (questType.defaultDisabledMessage <= 0)
-    }
-
-    @Synchronized fun setVisible(questType: QuestType<*>, visible: Boolean) {
-        val questTypeName = questType.javaClass.simpleName
-        db.replaceOrThrow(NAME, null, contentValuesOf(
+    fun put(questTypeName: String, visible: Boolean) {
+        db.replace(NAME, listOf(
             QUEST_TYPE to questTypeName,
             VISIBILITY to if (visible) 1 else 0
         ))
-        cache[questTypeName] = visible
     }
 
-    @Synchronized fun clear() {
-        db.delete(NAME, null, null)
-        cache.clear()
+    fun get(questTypeName: String): Boolean =
+        db.queryOne(NAME,
+            columns = arrayOf(VISIBILITY),
+            where = "$QUEST_TYPE = ?",
+            args = arrayOf(questTypeName)
+        ) { it.getInt(VISIBILITY) != 0 } ?: true
+
+    fun clear() {
+        db.delete(NAME)
     }
 }

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 interface IsCloseableBottomSheet {
     /** Returns true if the bottom sheet shall consume the event */

@@ -5,8 +5,6 @@ import android.database.sqlite.SQLiteOpenHelper
 import dagger.Module
 import dagger.Provides
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.util.KryoSerializer
-import de.westnordost.streetcomplete.util.Serializer
 import javax.inject.Singleton
 
 @Module
@@ -17,5 +15,6 @@ object DbModule {
     fun sqLiteOpenHelper(ctx: Context, databaseName: String): SQLiteOpenHelper =
         StreetCompleteSQLiteOpenHelper(ctx, databaseName)
 
-	@Provides @Singleton fun serializer(): Serializer = KryoSerializer()
+    @Provides @Singleton fun database(sqLiteOpenHelper: SQLiteOpenHelper): Database =
+        AndroidDatabase(sqLiteOpenHelper)
 }

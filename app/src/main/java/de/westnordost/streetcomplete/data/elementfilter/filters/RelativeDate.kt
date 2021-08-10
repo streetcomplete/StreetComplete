@@ -1,17 +1,23 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import java.util.*
+import java.time.LocalDate
+import java.time.LocalDateTime
+import kotlin.math.absoluteValue
 
 interface DateFilter {
-    val date: Date
+    val date: LocalDate
 }
 
 /** A date relative to (start of) today (positive: future, negative: past) */
 class RelativeDate(val deltaDays: Float): DateFilter {
-    override val date: Date get() {
-        val cal: Calendar = Calendar.getInstance()
-        cal.add(Calendar.SECOND, (deltaDays * 24 * 60 * 60 * MULTIPLIER).toInt())
-        return cal.time
+    override val date: LocalDate get() {
+        val now = LocalDateTime.now()
+        val plusHours = (deltaDays * MULTIPLIER * 24).toLong()
+        val relativeDateTime = (
+            if (plusHours > 0) now.plusHours(plusHours)
+            else now.minusHours(plusHours.absoluteValue)
+        )
+        return relativeDateTime.toLocalDate()
     }
 
     companion object {
@@ -19,4 +25,4 @@ class RelativeDate(val deltaDays: Float): DateFilter {
     }
 }
 
-class FixedDate(override val date: Date): DateFilter
+class FixedDate(override val date: LocalDate): DateFilter

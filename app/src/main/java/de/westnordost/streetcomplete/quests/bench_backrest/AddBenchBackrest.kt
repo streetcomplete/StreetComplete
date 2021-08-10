@@ -1,15 +1,16 @@
 package de.westnordost.streetcomplete.quests.bench_backrest
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.*
 
 class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
 
     override val elementFilter = """
-        nodes with
+        nodes, ways with
           amenity = bench
+          and (!area or area = no)
           and !backrest
           and !bench:type
     """

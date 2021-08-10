@@ -1765,6 +1765,12 @@
                 },
                 "man_made/chimney": {
                     "name": "Tximinia"
+                },
+                "natural/hot_spring": {
+                    "name": "Iturburu termala"
+                },
+                "natural/spring": {
+                    "name": "Iturburua"
                 }
             }
         }

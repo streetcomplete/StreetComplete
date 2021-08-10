@@ -11,7 +11,7 @@ import android.view.View
 import androidx.annotation.Keep
 import androidx.appcompat.widget.AppCompatImageButton
 import de.westnordost.streetcomplete.R
-import java.util.*
+import java.util.Arrays
 
 /**
  * An image button which shows the current location state

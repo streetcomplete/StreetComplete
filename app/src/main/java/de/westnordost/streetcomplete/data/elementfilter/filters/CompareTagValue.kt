@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.elementfilter.quote
 import de.westnordost.streetcomplete.data.elementfilter.quoteIfNecessary
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
 abstract class CompareTagValue(val key: String, val value: Float): ElementFilter {
     override fun toOverpassQLString() : String {

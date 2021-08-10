@@ -6,10 +6,10 @@
    <stop stop-color="#e44848" offset="1"/>
   </linearGradient>
  </defs>
- <g fill-rule="evenodd" stroke-linejoin="bevel">
-  <path d="m88.18 26.53 1.1e-5 47.95-57.54 19.18v-47.95z" fill="#e0d8d8" stroke="#916f6f" stroke-linecap="square"/>
-  <path d="m30.64 47.08v46.58l-23.29-23.29v-27.4c12.33-4.11 23.29 1.37 23.29 4.1099z" fill="#f2eeee" stroke="#916f6f" stroke-linecap="square"/>
-  <path d="m70.37 22.42c12.33-4.11 16.44 0 20.55 4.11l-61.65 20.55c-4.11-4.11-9.59-8.22-21.92-4.11z" fill="url(#linearGradient4985)" stroke="#a00"/>
-  <path d="m7.35 42.97c-1.37 0-1.37 2.74-1.37 2.74h1.37z" fill="#da2a2a" stroke="#a00"/>
+ <g stroke-width="2" stroke-linejoin="round">
+  <path d="m88.18 26.53 1.1e-5 47.95-57.54 19.18v-47.95z" fill="#e0d8d8" stroke="#b19a9a" stroke-linecap="square"/>
+  <path d="m30.64 47.08v46.58l-23.29-23.29v-27.4c12.33-4.11 23.29 1.37 23.29 4.1099z" fill="#f2eeee" stroke="#b19a9a" stroke-linecap="square"/>
+  <path d="m70.37 22.42c12.33-4.11 16.44 0 20.55 4.11l-61.65 20.55c-4.11-4.11-9.59-8.22-21.92-4.11z" fill="url(#linearGradient4985)" stroke="#b82e2e"/>
+  <path d="m7.35 42.97c-1.37 0-1.37 2.74-1.37 2.74h1.37z" fill="#da2a2a" stroke="#b82e2e"/>
  </g>
 </svg>

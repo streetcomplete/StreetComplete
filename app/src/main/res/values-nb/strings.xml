@@ -158,7 +158,7 @@
 &lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Merk først at du med denne appen gir faktiske, dirkete bidrag til OpenStreetMap.&lt;br/&gt;
-Alt du bidrar med blir lagt direkte til kartet, det er ikke noen tredjepart mellom appen og OSM-infrastrukturen, slik det for eksempel er med &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; og &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Alt du bidrar med blir lagt direkte til kartet, det er ikke noen tredjepart mellom appen og OSM-infrastrukturen.
 &lt;/p&gt;
 &lt;p&gt;
 Det er ikke mulig å redigere OpenStreetMap anonymt, så alle endringene dine blir gjort med OSM-brukerkontoen din. Dette medfører at tidspunktet, innholdet og implisitt stedet du var på blir synlig for alle på OpenStreetMap-nettstedet, og blir knyttet til brukerkontoen din.
@@ -522,7 +522,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_fireHydrant_type_pond">"Rør i innsjø"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Se &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Se &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Se på  &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;prosjektet på POEditor&lt;/a&gt; for en komplett liste."</string>
@@ -694,17 +694,11 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_crossing_type_title">"Hva slags overgang er dette?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Med trafikklys"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Uten veimarkeringer"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Angre"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Gjør om det forrige svaret?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostan"</string>
@@ -812,9 +806,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="pref_category_advanced">"Avansert"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Oppdragsvalg"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Aktivert"</string>
 
     <!-- Fuzzy -->
@@ -906,18 +897,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Du kan lage en merknad så andre kartleggere får vite om problemet. Juster merknadens posisjon ved å bevege på kartet:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Tøm mellomlager for oppdrag"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Nyttig dersom noen oppdrag er utdaterte"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Tøm"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Hvis du tømmer mellomlageret for oppdrag blir oppdragene oppdatert neste gang du laster de ned. Mellomlageret blir automatisk tømt etter en uke eller hvis et oppdrag du har løst viser seg å allerede være løst av noen andre."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Ser vanligvis slik ut:"</string>
@@ -1170,9 +1149,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Tomannsbolig"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"Frittstående bolig for to husholdninger"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"En rekke med hus tett inntil hverandre"</string>
@@ -1776,7 +1752,7 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_board_type_notice_board">"En oppslagstavle"</string>
     <string name="quest_board_type_public_transport">"Offentlig transport"</string>
     <string name="quest_board_type_title">"Hva er temaet for oppslagstavla?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, vist separat på et kart"</string>
+    <string name="quest_sidewalk_separately_mapped">"Ja, vist adskilt på kartet"</string>
     <string name="quest_board_type_map">"Et kart"</string>
     <string name="quest_board_type_map_title">"Er det bare et kart, og kun et kart?"</string>
     <string name="quest_board_type_map_description">"Oppgi om en informasjonstavle omhandler et spesifikt emne, uavhengig av om den også viser et kart. For eksempel kan en informasjonstavle for offentlig transport inneholde et kart over bussrutene. Hvis du ikke finner emnet blant alternativene kan du lage en merknad i stedet."</string>
@@ -1888,11 +1864,10 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_parkingType_street_side">"Parkering ved siden av veien"</string>
     <string name="quest_parkingType_lane">"Parkering i veien"</string>
     <string name="quest_existence_title">"Er denne fortsatt her? (%s)"</string>
-    <string name="quest_existence_name_title">"Er %1$s fortsatt her? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Er %1$s (%2$s) fortsatt her?"</string>
     <string name="quest_tracktype_grade2a">"Fast, men ikke asfaltert"</string>
     <string name="quest_tracktype_grade3a">"Stort sett fast"</string>
     <string name="quest_generic_answer_does_not_exist">"Det eksisterer ikke..."</string>
-    <string name="osm_element_gone_warning">"Advarsel: Denne handlingen kan ikke angres!"</string>
     <string name="osm_element_gone_description">"Er du sikker på at det ikke finnes, ikke engang på en litt annen lokasjon? Bedre å legge igjen et notat om man er usikker."</string>
     <string name="osm_element_gone_confirmation">"Den finnes ikke"</string>
     <string name="leave_note">"Legg igjen notat"</string>
@@ -1934,9 +1909,99 @@ forkortelser i feltet nedenfor:"</string>
     <string name="team_mode">"Gruppemodus"</string>
     <string name="team_mode_exit">"Avslutt gruppemodus"</string>
     <string name="team_mode_description">"Når du kartlegger det samme området sammen med en gruppe kan du starte gruppemodus for å dele oppgavene mellom dere."</string>
-    <string name="team_mode_team_size_label">"Hvor mange personer er der?"</string>
+    <string name="team_mode_team_size_label">"Hvor mange er med?"</string>
     <string name="team_mode_team_size_hint">"Gruppemodus fungerer for grupper på 2-12 personer"</string>
     <string name="team_mode_choose_color">"Nå velger alle i din gruppe en unik farge:"</string>
     <string name="team_mode_active">"Gruppemodus er aktivt"</string>
     <string name="team_mode_deactivated">"Gruppemodus er deaktivert"</string>
+    <string name="quest_pitchLit_title">"Er idrettsfeltet opplyst?"</string>
+    <string name="quest_pitchLit_title_track">"Er idrettsbanen opplyst?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Overgang kontrollert med trafikklys"</string>
+
+    <!-- Fuzzy -->
+    <string name="undo_last">"Angre siste endring"</string>
+    <string name="show_edit_history">"Vis endringslogg"</string>
+    <string name="undo_confirm_title2">"Angre følgende endring?"</string>
+    <string name="synced">"Opplastet"</string>
+    <string name="toast_undo_unavailable">"Denne endringer er lastet opp og kan ikke angres"</string>
+    <string name="quest_cycleway_value_separate">"vises adskilt på kartet"</string>
+    <string name="created_note_action_title">"Lagde notat"</string>
+    <string name="commented_note_action_title">"Kommentert notat"</string>
+    <string name="hid_action_description">"Du skjulte det"</string>
+    <string name="split_way_action_description">"Du delte veien"</string>
+    <string name="deleted_poi_action_description">"Du slettet det"</string>
+    <string name="added_tag_action_title">"La til %s"</string>
+    <string name="removed_tag_action_title">"Fjernet %s"</string>
+    <string name="changed_tag_action_title">"Endret til %s"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_title_delete_cache">"Slett mellomlager"</string>
+    <string name="pref_title_delete_cache_summary">"Hvis du tror kartdata er utdaterte"</string>
+    <string name="delete_confirmation">"Slett"</string>
+
+    <!-- Fuzzy -->
+    <string name="delete_cache_dialog_message">"Slett alle nedlastede kartdata, inkludert oppdrag?
+Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet etter %2$s dager."</string>
+    <string name="quest_shop_type_title">"Hva slags butikk er %s?"</string>
+    <string name="quest_shop_type_title_no_name">"Hva slags butikk er dette?"</string>
+    <string name="pref_background_type_select">"Velg bakgrunnstype"</string>
+    <string name="background_type_map">"Kart"</string>
+    <string name="background_type_aerial_esri">"Flyfoto (fra Esri)"</string>
+    <string name="quest_barrier_type_title">"Hva slags hindring er dette?"</string>
+    <string name="quest_barrier_type_gate">"Port"</string>
+    <string name="quest_barrier_type_lift_gate">"Løftebom"</string>
+    <string name="quest_barrier_type_bollard">"Pullert(er)"</string>
+    <string name="quest_barrier_type_chain">"Kjetting"</string>
+    <string name="quest_barrier_type_rope">"Tau"</string>
+
+    <!-- https://wiki.openstreetmap.org/wiki/Tag:barrier%3Dhampshire_gate ??? -->
+    <string name="quest_barrier_type_wire_gate">"Stålport"</string>
+    <string name="quest_barrier_type_cattle_grid">"Ferist"</string>
+    <string name="quest_barrier_type_block">"Stort og tungt objekt"</string>
+    <string name="quest_barrier_jersey_barrier">"Veisperring"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_log">"Tømmerstokk"</string>
+    <string name="quest_barrier_type_kerb">"Kantstein"</string>
+    <string name="quest_barrier_type_height_restrictor">"Høydebarriere"</string>
+    <string name="quest_barrier_full_height_turnstile">"Svingdør"</string>
+    <string name="quest_barrier_type_turnstile">"Rotasjonsgrind"</string>
+    <string name="quest_barrier_type_passage">"Passasje gjennom vegg, gjerde ol."</string>
+    <string name="quest_barrier_type_debris_pile">"Avfallshaug"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Trang passasje"</string>
+    <string name="quest_barrier_type_stile_ladder">"Stiger"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Sykkelhinder"</string>
+    <string name="quest_barrier_type_kissing_gate">"Sluseport"</string>
+    <string name="quest_barrier_type_stepover">"Gjerdeklyv(gjerdeovergang)"</string>
+    <string name="quest_barrier_type_swing_gate">"Svingport"</string>
+    <string name="quest_policeType_title">"Hva slags politistasjon er dette?"</string>
+
+    <!-- Could you please explain where this is used and what it means? -->
+    <string name="quest_barrier_type_kissing_gate_conversion">"Omgjort til en sluseport"</string>
+    <string name="quest_stile_type_title">"Hva slags passeringspunkt er dette?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"Boliger sammenkoblet på én side"</string>
+    <string name="pref_title_quests2">"Oppdragsvalg og prioritet"</string>
+    <string name="pref_subtitle_quests">"%1$d av %2$d aktivert"</string>
+    <string name="quest_busStopLit_tram_name_title">"Er trikkestoppet %s opplyst?"</string>
+    <string name="quest_busStopLit_tram_title">"Er dette trikkestoppet opplyst?"</string>
+    <string name="quest_busStopLit_title">"Er busstoppet opplyst?"</string>
+    <string name="quest_busStopLit_name_title">"Er busstoppet %s opplyst?"</string>
+    <string name="no_location_permission_warning_title">"Stedstillatelse"</string>
+    <string name="quest_surface_value_woodchips">"Trefliser"</string>
+    <string name="no_camera_app">"Ingen kamera-app tilgjengelig"</string>
+    <string name="quest_busStopBin_tram_name_title">"Har trikkestoppet %s en søppelbøtte?"</string>
+    <string name="quest_busStopBin_tram_title">"Har dette trikkestoppet en søppelbøtte?"</string>
+    <string name="quest_busStopBin_title">"Har bussholdeplassen en søppelbøtte?"</string>
+    <string name="quest_busStopBin_name_title">"Har bussholdeplassen %s en søppelbøtte?"</string>
+    <string name="quest_bollard_type_title">"Hvilken type pullert er dette?"</string>
+    <string name="quest_bollard_type_rising">"Hev-senk"</string>
+    <string name="quest_bollard_type_removable_with_key">"Avtakbar med nøkkel"</string>
+    <string name="quest_bollard_type_removable_without_key">"Avtakbar uten nøkkel"</string>
+    <string name="quest_bollard_type_foldable">"Sammenleggbar"</string>
+    <string name="quest_bollard_type_flexible">"Fleksibel"</string>
+    <string name="quest_bollard_type_fixed">"Fastmontert (kan ikke fjernes)"</string>
+    <string name="quest_camera_type_title">"Hvilken type overvåkingskamera er dette?"</string>
+    <string name="quest_camera_type_dome">"Kuppel"</string>
+    <string name="quest_camera_type_fixed">"Fastmontert"</string>
+    <string name="quest_camera_type_panning">"Panorering"</string>
 </resources>

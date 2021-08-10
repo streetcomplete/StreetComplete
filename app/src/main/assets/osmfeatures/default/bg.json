@@ -587,7 +587,7 @@
                     "label": "Вид"
                 },
                 "lanes": {
-                    "label": "Платна",
+                    "label": "Ленти",
                     "placeholder": "1, 2, 3..."
                 },
                 "layer": {
@@ -990,6 +990,11 @@
                 "trail_visibility": {
                     "label": "Видимост на туристическата пътека"
                 },
+                "visibility": {
+                    "options": {
+                        "house": "До 5м (16 фута)"
+                    }
+                },
                 "water": {
                     "label": "Вид"
                 },
@@ -1005,13 +1010,19 @@
                 "wheelchair": {
                     "label": "Достъп за инвалиди"
                 },
+                "wikidata": {
+                    "label": "Уикиданни"
+                },
                 "wikipedia": {
-                    "label": "Wikipedia"
+                    "label": "Уикипедия"
                 }
             },
             "presets": {
                 "address": {
                     "name": "Адрес"
+                },
+                "advertising/billboard": {
+                    "name": "Билборд"
                 },
                 "aeroway/aerodrome": {
                     "name": "Летище"
@@ -1123,6 +1134,19 @@
                 },
                 "amenity/townhall": {
                     "name": "Кметство"
+                },
+                "amenity/vending_machine": {
+                    "name": "Автомат за стоки"
+                },
+                "amenity/vending_machine/coffee": {
+                    "name": "Автомат за кафе",
+                    "terms": "кафе-автомат"
+                },
+                "amenity/vending_machine/drinks": {
+                    "name": "Автомат за напитки"
+                },
+                "amenity/vending_machine/parking_tickets": {
+                    "name": "Автомат за талони за паркиране"
                 },
                 "amenity/waste_basket": {
                     "name": "Кош за боклук"
@@ -1484,6 +1508,18 @@
                 "power/line": {
                     "name": "Електропровод"
                 },
+                "power/plant/source/hydro": {
+                    "name": "ВЕЦ"
+                },
+                "power/plant/source/nuclear": {
+                    "name": "АЕЦ"
+                },
+                "power/plant/source/solar": {
+                    "name": "Фото-волтаична станция"
+                },
+                "power/plant/source/wind": {
+                    "name": "ВяЕЦ"
+                },
                 "power/pole": {
                     "name": "Електрически стълб"
                 },
@@ -1492,6 +1528,9 @@
                 },
                 "power/transformer": {
                     "name": "Трансформатор"
+                },
+                "public_transport/platform/bus_point": {
+                    "name": "Автобусна спирка"
                 },
                 "railway/abandoned": {
                     "name": "Изоставена железопътна линия"

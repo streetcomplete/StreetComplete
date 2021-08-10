@@ -3,13 +3,16 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
 class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
-        ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
+        ways with (
+          highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
+          or highway = service and service !~ driveway|slipway
+        )
         and (
           !surface
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -4 years

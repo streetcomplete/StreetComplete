@@ -10,22 +10,21 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-import de.westnordost.osmapi.map.data.*
-
 import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.fragment_show_quest_forms.*
 import kotlinx.android.synthetic.main.row_quest_display.view.*
 import kotlinx.android.synthetic.main.toolbar.*
-import java.util.*
 
 /** activity only used in debug, to show all the different forms for the different quests. */
 class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.Listener {
@@ -87,35 +86,31 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
     }
 
     private fun onClickQuestType(questType: QuestType<*>) {
-        val latititudeDelta = 0
+        val latitudeDelta = 0
         val longitudeDelta = 0
         val firstLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
         val firstLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
-        val firstPos = OsmLatLon(firstLat, firstLng)
-        val secondLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latititudeDelta).toBits()))
+        val firstPos = LatLon(firstLat, firstLng)
+        val secondLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latitudeDelta).toBits()))
         val secondLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, (0.0 + longitudeDelta).toBits()))
-        val secondPos = OsmLatLon(secondLat, secondLng)
-        val centerLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latititudeDelta/2).toBits()))
+        val secondPos = LatLon(secondLat, secondLng)
+        val centerLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latitudeDelta/2).toBits()))
         val centerLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, (0.0 + longitudeDelta/2).toBits()))
-        val centerPos = OsmLatLon(centerLat, centerLng)
-        val tags =  mapOf("highway" to "cycleway", "building" to "residential", "name" to "<object name>", "opening_hours" to "Mo-Fr 08:00-12:00,13:00-17:30; Sa 08:00-12:00")
-        val firstNode = OsmNode(1, 1, firstPos, tags)
-        val secondNode = OsmNode(2, 1, secondPos, tags)
-        val element = OsmWay(1, 1, mutableListOf(1, 2), tags)
+        val centerPos = LatLon(centerLat, centerLng)
+        val tags =  mapOf("highway" to "cycleway", "building" to "residential", "name" to "<object name>", "opening_hours" to "Mo-Fr 08:00-12:00,13:00-17:30; Sa 08:00-12:00", "addr:housenumber" to "176")
+        val element = Way(1, listOf(1, 2), tags, 1)
         val elementGeometry = ElementPolylinesGeometry(listOf(listOf(firstPos, secondPos)), centerPos)
 
         val quest = object : Quest {
-            override var id: Long? = 1L
-            override val center = firstPos
+            override val key = OsmQuestKey(element.type, element.id, questType::class.simpleName!!)
+            override val position = firstPos
             override val markerLocations = listOf<LatLon>(firstPos)
             override val geometry = elementGeometry
             override val type = questType
-            override var status = QuestStatus.NEW
-            override val lastUpdate = Date()
         }
 
         val f = questType.createForm()
-        val args = AbstractQuestAnswerFragment.createArguments(quest, QuestGroup.OSM, element, 0f, 0f)
+        val args = AbstractQuestAnswerFragment.createArguments(quest, element, 0f, 0f)
         if(f.arguments != null) {
             f.arguments!!.putAll(args)
         } else {
@@ -133,7 +128,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         }
     }
 
-    override fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any) {
+    override fun onAnsweredQuest(questKey: QuestKey, answer: Any) {
         val builder = StringMapChangesBuilder(mapOf())
         (currentQuestType as? OsmElementQuestType<Any>)?.applyAnswerTo(answer, builder)
         val tagging = builder.create().changes.joinToString("\n")
@@ -142,19 +137,19 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
             .show()
         popQuestForm()
     }
-    override fun onComposeNote(questId: Long, group: QuestGroup, questTitle: String) {
+    override fun onComposeNote(questKey: QuestKey, questTitle: String) {
         popQuestForm("Composing note")
     }
-    override fun onSplitWay(osmQuestId: Long) {
+    override fun onSplitWay(osmQuestKey: OsmQuestKey) {
         popQuestForm("Splitting way")
     }
-    override fun onSkippedQuest(questId: Long, group: QuestGroup) {
+    override fun onSkippedQuest(questKey: QuestKey) {
         popQuestForm("Skipping quest")
     }
-    override fun onDeleteElement(osmQuestId: Long, element: OsmElement) {
+    override fun onDeletePoiNode(osmQuestKey: OsmQuestKey) {
         popQuestForm("Deleting element")
     }
-    override fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>) {
+    override fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
         popQuestForm("Replacing shop element")
     }
 }

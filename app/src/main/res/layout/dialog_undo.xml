@@ -1,28 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:padding="@dimen/dialog_horizontal_margin">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="@dimen/dialog_horizontal_margin"
+    android:paddingRight="@dimen/dialog_horizontal_margin"
+    android:paddingTop="@dimen/dialog_vertical_margin"
+    android:paddingBottom="@dimen/dialog_vertical_margin">
+
+    <TextView
+        android:id="@+id/createdTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="3 minutes ago" />
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        tools:src="@drawable/ic_quest_street"/>
+        android:layout_marginTop="@dimen/dialog_vertical_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/createdTimeText"
+        tools:src="@drawable/ic_quest_street" />
+
+    <ImageView
+        android:id="@+id/overlayIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="@+id/icon"
+        app:layout_constraintTop_toTopOf="@+id/icon"
+        tools:src="@drawable/ic_undo_split" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/titleText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/icon"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        tools:text="@string/quest_address_title"
-        android:paddingStart="@dimen/dialog_horizontal_margin"
+        android:layout_marginStart="@dimen/dialog_horizontal_margin"
+        android:layout_toEndOf="@id/icon"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        android:id="@+id/text"
-        tools:ignore="RtlSymmetry"/>
+        app:layout_constraintBottom_toBottomOf="@id/icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toTopOf="@id/icon"
+        tools:ignore="RtlSymmetry"
+        tools:text="@string/quest_address_title" />
 
-</RelativeLayout>
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dialog_vertical_margin"
+        android:background="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/icon"
+        tools:layout_editor_absoluteX="24dp" />
+
+    <FrameLayout
+        android:id="@+id/descriptionContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_vertical_margin"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

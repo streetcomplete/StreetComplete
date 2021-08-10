@@ -5,13 +5,13 @@ import ch.poole.openinghoursparser.TimeSpan
 import ch.poole.openinghoursparser.WeekDay
 import ch.poole.openinghoursparser.WeekDayRange
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.parking_fee.*
 import org.junit.Test
-import java.util.*
+import java.time.LocalDate
 
 class AddParkingFeeTest {
 
@@ -77,7 +77,7 @@ class AddParkingFeeTest {
             mapOf("fee" to "yes"),
             HasFeeExceptAtHours(openingHours),
             StringMapEntryAdd("fee:conditional", "no @ ($openingHoursString)"),
-            StringMapEntryAdd("check_date:fee", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:fee", LocalDate.now().toCheckDateString())
         )
     }
 }

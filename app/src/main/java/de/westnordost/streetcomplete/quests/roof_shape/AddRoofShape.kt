@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 
 class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType<RoofShape> {
 
@@ -33,7 +33,7 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
             filter.matches(element)
             && isRoofProbablyVisibleFromBelow(element.tags) != false
             && (
-                element.tags?.get("roof:levels")?.toFloatOrNull() ?: 0f > 0f
+                element.tags["roof:levels"]?.toFloatOrNull() ?: 0f > 0f
                 || roofsAreUsuallyFlatAt(element, mapData) == false
             )
         }
@@ -43,13 +43,12 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
         if (isRoofProbablyVisibleFromBelow(element.tags) == false) return false
         /* if it has 0 roof levels, or the roof levels aren't specified,
            the quest should only be shown in certain countries. But whether
-           the element is in a certain country cannot be ascertained at this point */
-        if (element.tags?.get("roof:levels")?.toFloatOrNull() ?: 0f == 0f) return null
+           the element is in a certain country cannot be ascertained without the element's geometry */
+        if (element.tags["roof:levels"]?.toFloatOrNull() ?: 0f == 0f) return null
         return true
     }
 
-    private fun isRoofProbablyVisibleFromBelow(tags: Map<String,String>?): Boolean? {
-        if (tags == null) return null
+    private fun isRoofProbablyVisibleFromBelow(tags: Map<String,String>): Boolean? {
         val roofLevels = tags["roof:levels"]?.toFloatOrNull() ?: 0f
         val buildingLevels = tags["building:levels"]?.toFloatOrNull() ?: return null
         if (roofLevels < 0f || buildingLevels < 0f) return null

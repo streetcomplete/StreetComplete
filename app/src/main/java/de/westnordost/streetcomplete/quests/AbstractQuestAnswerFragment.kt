@@ -18,26 +18,27 @@ import androidx.core.os.bundleOf
 import androidx.core.text.parseAsHtml
 import androidx.core.view.isGone
 import com.google.android.flexbox.FlexboxLayout
-import de.westnordost.osmapi.map.data.OsmElement
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.Quest
-import de.westnordost.streetcomplete.data.quest.QuestGroup
-import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.ref.WeakReference
-import java.util.*
+import java.util.Locale
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
@@ -67,13 +68,12 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     private lateinit var otherAnswersButton: Button
 
     // passed in parameters
-    override var questId: Long = 0L
-    override var questGroup: QuestGroup = QuestGroup.OSM
+    override lateinit var questKey: QuestKey
     protected lateinit var elementGeometry: ElementGeometry private set
     private lateinit var questType: QuestType<T>
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
-    protected var osmElement: OsmElement? = null
+    protected var osmElement: Element? = null
         private set
 
     private var currentContext = WeakReference<Context>(null)
@@ -88,6 +88,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
 
     private var startedOnce = false
+    private var answered = 0
 
     // overridable by child classes
     open val contentLayoutResId: Int? = null
@@ -99,22 +100,22 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     interface Listener {
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
          * the dialog with which the quest was answered  */
-        fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any)
+        fun onAnsweredQuest(questKey: QuestKey, answer: Any)
 
         /** Called when the user chose to leave a note instead  */
-        fun onComposeNote(questId: Long, group: QuestGroup, questTitle: String)
+        fun onComposeNote(questKey: QuestKey, questTitle: String)
 
         /** Called when the user chose to split the way  */
-        fun onSplitWay(osmQuestId: Long)
+        fun onSplitWay(osmQuestKey: OsmQuestKey)
 
         /** Called when the user chose to skip the quest  */
-        fun onSkippedQuest(questId: Long, group: QuestGroup)
+        fun onSkippedQuest(questKey: QuestKey)
 
-        /** Called when the element shall be deleted */
-        fun onDeleteElement(osmQuestId: Long, element: OsmElement)
+        /** Called when the node shall be deleted */
+        fun onDeletePoiNode(osmQuestKey: OsmQuestKey)
 
         /** Called when a new feature has been selected for an element (a shop of some kind) */
-        fun onReplaceShopElement(osmQuestId: Long, tags: Map<String, String>)
+        fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -130,10 +131,9 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         super.onCreate(savedInstanceState)
 
         val args = requireArguments()
-        questId = args.getLong(ARG_QUEST_ID)
-        questGroup = QuestGroup.valueOf(args.getString(ARG_QUEST_GROUP)!!)
-        osmElement = args.getSerializable(ARG_ELEMENT) as OsmElement?
-        elementGeometry = args.getSerializable(ARG_GEOMETRY) as ElementGeometry
+        questKey = Json.decodeFromString(args.getString(ARG_QUEST_KEY)!!)
+        osmElement = args.getString(ARG_ELEMENT)?.let { Json.decodeFromString(it) }
+        elementGeometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
         questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!) as QuestType<T>
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
@@ -194,7 +194,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
            https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
         */
         val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
-            way.tags?.get("junction") == "roundabout"
+            way.tags["junction"] == "roundabout"
         if (isClosedRoundabout) return null
 
         if (way.isArea()) return null
@@ -205,15 +205,17 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     }
 
     private fun createDeleteOrReplaceElementAnswer(): OtherAnswer? {
-        val isDeleteElementEnabled = (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
+        val isDeletePoiEnabled =
+            (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
+                && osmElement?.type == ElementType.NODE
         val isReplaceShopEnabled = (questType as? OsmElementQuestType)?.isReplaceShopEnabled == true
-        if (!isDeleteElementEnabled && !isReplaceShopEnabled) return null
-        check(!(isDeleteElementEnabled && isReplaceShopEnabled)) {
+        if (!isDeletePoiEnabled && !isReplaceShopEnabled) return null
+        check(!(isDeletePoiEnabled && isReplaceShopEnabled)) {
             "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
         }
 
         return OtherAnswer(R.string.quest_generic_answer_does_not_exist) {
-            if (isDeleteElementEnabled) deleteElement()
+            if (isDeletePoiEnabled) deletePoiNode()
             else if (isReplaceShopEnabled) replaceShopElement()
         }
     }
@@ -336,8 +338,10 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     }
 
     protected fun composeNote() {
-        val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
-        listener?.onComposeNote(questId, questGroup, questTitle)
+        if (answered++ == 0) {
+            val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
+            listener?.onComposeNote(questKey, questTitle)
+        }
     }
 
     private fun onClickSplitWayAnswer() {
@@ -345,19 +349,18 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             .setMessage(R.string.quest_split_way_description)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                if (questGroup != QuestGroup.OSM) throw IllegalStateException()
-                listener?.onSplitWay(questId)
+                if (answered++ == 0) listener?.onSplitWay(questKey as OsmQuestKey)
             }
             .show()
         }
     }
 
     protected fun applyAnswer(data: T) {
-        listener?.onAnsweredQuest(questId, questGroup, data as Any)
+        if (answered++ == 0) listener?.onAnsweredQuest(questKey, data as Any)
     }
 
     protected fun skipQuest() {
-        listener?.onSkippedQuest(questId, questGroup)
+        if (answered++ == 0) listener?.onSkippedQuest(questKey)
     }
 
     protected fun replaceShopElement() {
@@ -371,7 +374,9 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
                 element.geometryType,
                 isoCountryCode,
                 featureDictionary,
-                onSelectedFeature = { tags -> listener?.onReplaceShopElement(questId, tags) },
+                onSelectedFeature = { tags ->
+                    if (answered++ == 0) listener?.onReplaceShopElement(questKey as OsmQuestKey, tags)
+                },
                 onLeaveNote = this::composeNote
             ).show()
         } else {
@@ -379,18 +384,13 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
     }
 
-    protected fun deleteElement() {
+    protected fun deletePoiNode() {
         val context = context ?: return
 
-        val message = (
-            "<b>" + Html.escapeHtml(context.getString(R.string.osm_element_gone_warning)) + "</b>"
-            + "<br><br>" + context.getString(R.string.osm_element_gone_description)
-            ).parseAsHtml()
-
         AlertDialog.Builder(context)
-            .setMessage(message)
+            .setMessage(R.string.osm_element_gone_description)
             .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
-                listener?.onDeleteElement(questId, osmElement!!)
+                if (answered++ == 0) listener?.onDeletePoiNode(questKey as OsmQuestKey)
             }
             .setNeutralButton(R.string.leave_note) { _, _ ->
                 composeNote()
@@ -438,20 +438,18 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     }
 
     companion object {
-        private const val ARG_QUEST_ID = "questId"
-        private const val ARG_QUEST_GROUP = "questGroup"
+        private const val ARG_QUEST_KEY = "quest_key"
         private const val ARG_ELEMENT = "element"
         private const val ARG_GEOMETRY = "geometry"
         private const val ARG_QUESTTYPE = "quest_type"
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
 
-        fun createArguments(quest: Quest, group: QuestGroup, element: OsmElement?, rotation: Float, tilt: Float) = bundleOf(
-            ARG_QUEST_ID to quest.id!!,
-            ARG_QUEST_GROUP to group.name,
-            ARG_ELEMENT to element,
-            ARG_GEOMETRY to quest.geometry,
-            ARG_QUESTTYPE to quest.type.javaClass.simpleName,
+        fun createArguments(quest: Quest, element: Element?, rotation: Float, tilt: Float) = bundleOf(
+            ARG_QUEST_KEY to Json.encodeToString(quest.key),
+            ARG_ELEMENT to element?.let { Json.encodeToString(element) },
+            ARG_GEOMETRY to Json.encodeToString(quest.geometry),
+            ARG_QUESTTYPE to quest.type::class.simpleName!!,
             ARG_MAP_ROTATION to rotation,
             ARG_MAP_TILT to tilt
         )

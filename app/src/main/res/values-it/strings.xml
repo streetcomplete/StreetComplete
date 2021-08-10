@@ -39,8 +39,12 @@
     <string name="quest_openingHours_end_time">"orario di chiusura"</string>
     <string name="quest_openingHours_add_months">"Aggiungi mesi"</string>
     <string name="quest_openingHours_add_hours">"Aggiungi ore"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Aggiungi giorni feriali"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Seleziona mesi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Seleziona giorni feriali"</string>
     <string name="quest_openingHours_24_7_confirmation">"In altre parole, è aperto a qualsiasi ora tutti i giorni?"</string>
     <string name="quest_noteDiscussion_title">"Puoi contribuire a questa nota?"</string>
@@ -59,6 +63,8 @@
     <string name="confirmation_cancel_prev_download_title">"Annullare l'attuale ricerca e invece cercare qui?"</string>
     <string name="notification_downloading">"Cerco missioni…"</string>
     <string name="turn_on_location_request">"La localizzazione è spenta. Apro le Impostazioni per abilitarla?"</string>
+
+    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"La tua posizione è necessaria per cercare le missioni a te vicine."</string>
     <string name="about_title_authors">"Ringraziamenti"</string>
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick e contributori"</string>
@@ -90,7 +96,7 @@
     <string name="quest_buildingLevels_title_buildingPart">"Quanti piani ha questa parte dell'edificio?"</string>
     <string name="quest_roofShape_title">"Che tipo di forma ha il tetto di questo edificio?"</string>
     <string name="quest_roofShape_select_one">"Selezionane una:"</string>
-    <string name="quest_roofShape_show_more">"Mostrane altre..."</string>
+    <string name="quest_roofShape_show_more">"Mostrane altre…"</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <string name="quest_roofShape_answer_many">"Ha più forme diverse"</string>
@@ -99,7 +105,7 @@
     <string name="privacy_html">"&lt;p&gt;Ah, qualcuno che s'interessa della privacy. Bello! Penso di avere solo buone notizie per te:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contributi diretti&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;Prima di tutto, va detto che con questa applicazione, tu dai dei contributi effettivi e diretti a OpenStreetMap.&lt;br/&gt;
-Qualsiasi contributo con questa applicazione viene direttamente aggiunto alla mappa, non vi è alcun intermediario fra l’app e l’infrastruttura di OSM, come invece accade nel caso di &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o di &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Qualsiasi contributo con questa applicazione viene direttamente aggiunto alla mappa, non vi è alcun intermediario fra l’app e l’infrastruttura di OSM.
 &lt;/p&gt;
 &lt;p&gt;
 La modifica anonima in OpenStreetMap non è possibile, pertanto tutte le modifiche apportate sono effettuate con l'account utente OSM, il che significa che il contenuto e la posizione delle modifiche apportate alla mappa sono visibili pubblicamente sul sito web di OpenStreetMap e tali modifiche sono attribuibili al tuo account.
@@ -262,21 +268,21 @@ Se non ci sono cartelli lungo tutta la strada che si applicano alla sezione evid
     <string name="quest_streetName_cantType_title">"Layout della tastiera mancante?"</string>
     <string name="quest_streetName_cantType_open_settings">"Apri le impostazioni"</string>
     <string name="quest_streetName_cantType_open_store">"Apri l'app store"</string>
-    <string name="quest_streetName_cantType_description">"Se si utilizza una tastiera predefinita, le probabilità sono che sia possibile abilitare semplicemente il layout della tastiera per la lingua necessaria nelle impostazioni del metodo di immissione.
+    <string name="quest_streetName_cantType_description">"Se si utilizza una tastiera predefinita, probabilmente puoi abilitare semplicemente il layout della tastiera per la lingua necessaria nelle impostazioni del metodo di immissione.
 
-Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le tastiere popolari che supportano molte lingue sono Google Gboard, SwiftKey Keyboard e Multiling O Keyboard"</string>
+Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che supportano molte lingue sono Google Gboard, SwiftKey Keyboard e Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(non specificato)"</string>
     <string name="quest_fireHydrant_type_title">"Che tipo di idrante è?"</string>
     <string name="quest_fireHydrant_type_pillar">"Colonna"</string>
     <string name="quest_fireHydrant_type_underground">"Sotterraneo"</string>
     <string name="quest_fireHydrant_type_wall">"Muro"</string>
     <string name="quest_fireHydrant_type_pond">"Stagno"</string>
-    <string name="credits_contributors">"Vedi la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;lista completa su GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Vedi la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;lista completa su GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"Vedi il &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;progetto su POEditor&lt;/a&gt; per la lista completa."</string>
     <string name="credits_translations_title">"Traduzioni"</string>
     <string name="credits_contributors_title">"Autori"</string>
     <string name="credits_author_title">"Autore e manutentore"</string>
-    <string name="credits_and_more">"e tanti altri..."</string>
+    <string name="credits_and_more">"e tanti altri…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"È una via ad uso sociale (living street)"</string>
@@ -347,11 +353,9 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_way_lit_24_7">"È illuminato giorno e notte"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Non riesco ad esplorare la zona. Prova ad aumentare lo zoom o a tenere la mappa meno inclinata."</string>
     <string name="quest_crossing_type_title">"Che tipo di attraversamento pedonale è questo?"</string>
-    <string name="quest_crossing_type_signals">"Attraversamento con semafori"</string>
     <string name="quest_crossing_type_unmarked">"Attraversamento senza segnaletica stradale"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Annulla"</string>
-    <string name="undo_confirm_title">"Annullare quest'ultima risposta?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostano"</string>
@@ -399,9 +403,8 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_cycleway_value_lane_dual">"corsia ciclabile, entrambe le direzioni"</string>
     <string name="quest_cycleway_value_track_dual">"pista ciclabile, entrambe le direzioni"</string>
     <string name="pref_category_advanced">"Avanzate"</string>
-    <string name="pref_title_quests">"Seleziona le missioni"</string>
     <string name="quest_enabled">"Attivate"</string>
-    <string name="quest_type">"Tipo di ricerca"</string>
+    <string name="quest_type">"Tipo di missione"</string>
     <string name="action_reset">"Reset"</string>
     <string name="reorder_quest_priority_hint">"Premere a lungo e spostare una missione per riordinare la sua priorità di visualizzazione sulla mappa."</string>
 
@@ -415,7 +418,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_hasFeature_only">"Soltanto"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"Il cibo vegano non contiene alcun prodotto animale (carne, pesce, pollame, latte e derivati, uova, ...)."</string>
+    <string name="quest_dietType_explanation_vegan">"Il cibo vegano non contiene alcun prodotto animale (carne, pesce, pollame, latte e derivati, uova, miele…)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Il cibo vegetariano non contiene né carne né pesce o pollame."</string>
 
     <!-- Fuzzy -->
@@ -424,8 +427,8 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_carWashType_automated">"Automatizzato"</string>
     <string name="quest_carWashType_selfService">"Self Service"</string>
     <string name="quest_carWashType_service">"Operatori puliscono l'auto"</string>
-    <string name="enable_quest_confirmation_title">"Abilitare questa ricerca?"</string>
-    <string name="default_disabled_msg_go_inside">"Questo tipo di ricerca si presenta disabilitato perché è molto probabile che dovrai entrare nel luogo per rispondere."</string>
+    <string name="enable_quest_confirmation_title">"Attivare questo tipo di missione?"</string>
+    <string name="default_disabled_msg_go_inside">"Questo tipo di missione non è attivo perché è molto probabile che dovrai entrare nel luogo per rispondere."</string>
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"Numero di coscrizione"</string>
@@ -446,15 +449,11 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="map_btn_create_note">"Crea una nuova nota"</string>
     <string name="create_new_note_unprecise">"Ingrandisci per creare una nota"</string>
     <string name="create_new_note_description">"Puoi lasciare una nota per far sapere agli altri mappatori che qui c'è un problema. Aggiusta la posizione della nota muovendo la mappa:"</string>
-    <string name="pref_title_quests_invalidation">"Invalida la cache delle missioni"</string>
-    <string name="pref_title_quests_invalidation_summary">"Utile se pensi che alcune missioni non siano aggiornate"</string>
-    <string name="invalidate_confirmation">"Invalida"</string>
-    <string name="invalidation_dialog_message">"Invalidare la cache fa sì che le missioni siano aggiornate al prossimo download. La cache delle missioni viene invalidata automaticamente dopo una settimana oppure immediatamente quando si scopre che una missione che hai risolto ha già ottenuto risposta da qualcun altro."</string>
     <string name="quest_generic_looks_like_this">"Normalmente è qualcosa tipo:"</string>
     <string name="quest_surface_value_metal">"Metallo"</string>
     <string name="quest_cycleway_title2">"C'è una pista ciclabile qui? Di che tipo?"</string>
     <string name="quest_bridge_structure_title">"Quale è la struttura di questo ponte?"</string>
-    <string name="quest_internet_access_name_title">"Che tipo di connessione internet offre %s"</string>
+    <string name="quest_internet_access_name_title">"Che tipo di connessione internet offre %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Cavo (LAN)"</string>
     <string name="quest_internet_access_terminal">"Computer con accesso ad internet"</string>
@@ -492,8 +491,8 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_streetSurface_square_name_title">"Che tipo di pavimentazione ha la piazza %s?"</string>
     <string name="quest_fee_answer_hours">"Dipende da giorno e ora…"</string>
     <string name="quest_fee_add_times">"Aggiungi orari"</string>
-    <string name="quest_fee_only_at_hours">"Sì, ma solo..."</string>
-    <string name="quest_fee_not_at_hours">"Sì, ma non..."</string>
+    <string name="quest_fee_only_at_hours">"Sì, ma solo…"</string>
+    <string name="quest_fee_not_at_hours">"Sì, ma non…"</string>
     <string name="quest_fee_hours_title">"ai seguenti orari:"</string>
     <string name="quest_busStopName_title">"Qual è il nome di questa fermata dell'autobus?"</string>
     <string name="quest_tramStopName_title">"Come si chiama questa fermata del tram?"</string>
@@ -515,7 +514,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_construction_generic_title">"Questa via è finita?"</string>
     <string name="quest_construction_building_title">"Questo edificio è finito?"</string>
     <string name="questList_disabled_in_country">"Mai mostrato in %s"</string>
-    <string name="quest_toiletAvailability_rest_area_title">"Quest' area di servizio ha un bagno?"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Quest'area di servizio ha un bagno?"</string>
     <string name="quest_pathSurface_title_steps">"Che tipo di pavimentazione hanno questi gradini?"</string>
     <string name="quest_pathSurface_title_bridleway">"Che tipo di pavimentazione ha questo percorso equestre?"</string>
     <string name="quest_pathSurface_title">"Che tipo di pavimentazione ha questo sentiero?"</string>
@@ -537,7 +536,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_buildingType_detached">"Casa indipendente"</string>
     <string name="quest_buildingType_detached_description">"casa unifamiliare indipendente"</string>
     <string name="quest_buildingType_semi_detached">"Casa semi-indipendente"</string>
-    <string name="quest_buildingType_semi_detached_description">"coppia di bifamiliari"</string>
     <string name="quest_buildingType_terrace_description">"abitazioni simili e unifamiliari in fila"</string>
     <string name="quest_buildingType_hotel">"Hotel"</string>
     <string name="quest_buildingType_dormitory">"Dormitorio"</string>
@@ -640,7 +638,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_traffic_signals_button_title">"Il semaforo ha un pulsante per richiedere il verde?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Quanti motocicli si possono parcheggiare qui?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Questo parcheggio per motocicli è coperto (protetto dalla pioggia)?"</string>
-    <string name="default_disabled_msg_maxspeed">"Questo tipo di compito è disabilitato perché generalmente è richiesto di controllare tutta la strada per cercare i segnali dei limiti di velocità, non solo nella sezione evidenziata. Questo potrebbe richiedere molto tempo solo per risolvere un singolo compito."</string>
+    <string name="default_disabled_msg_maxspeed">"Questo tipo di missione non è attivo perché generalmente è richiesto di controllare tutta la strada per cercare i segnali dei limiti di velocità, non solo nella sezione evidenziata. Questo potrebbe richiedere molto tempo solo per risolvere una singolo missione."</string>
     <string name="pref_title_quests_restore_hidden">"Ripristina le missioni nascoste"</string>
     <string name="restore_hidden_success">"Ripristinate %d missioni nascoste"</string>
 
@@ -680,7 +678,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_leaf_type_broadleaved">"Foglie larghe"</string>
     <string name="quest_leaf_type_mixed">"Sono presenti entrambi"</string>
     <string name="quest_cyclewayPartSurface_title">"Qual è la superficie di questa pista ciclabile?"</string>
-    <string name="quest_generic_answer_differs_along_the_way">"Cambia lungo il percorso..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Cambia lungo il percorso…"</string>
     <string name="quest_split_way_description">"Se cambia lungo il percorso la prima cosa da fare è suddividere il percorso. Dopo di che sarà possibile rispondere separatamente per ogni tratto.
 Suddividere?"</string>
     <string name="quest_split_way_tutorial">"Tocca il percorso da dividere dove la risposta cambia. Cerca di essere più preciso possibile; se necessario, come sempre, puoi ingrandire."</string>
@@ -692,7 +690,7 @@ Suddividere?"</string>
     <string name="quest_tactilePaving_title_name_tram">"La fermata di tram %s ha il pavimento tattile?"</string>
     <string name="quest_maxweight_title">"Qual è il limite di peso qui?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Il peso inserito sembra improbabile. Sei sicuro sia corretto?"</string>
-    <string name="quest_maxweight_answer_other_sign">"Il segnale sembra differente..."</string>
+    <string name="quest_maxweight_answer_other_sign">"Il segnale sembra differente…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vorresti lasciare una nota? Una nota con una foto permetterà ad altri mappatori di occuparsene."</string>
     <string name="quest_generalFee_title">"C'è un costo per l'ingresso a %s?"</string>
     <string name="quest_laundrySelfService_title">"Questa lavanderia è self service?"</string>
@@ -701,7 +699,7 @@ Suddividere?"</string>
     <string name="about_summary_current_version">"Versione corrente: %s"</string>
     <string name="quest_postboxRef_title">"Qual è il numero di matricola di questa cassetta postale?"</string>
     <string name="quest_postboxRef_name_title">"Qual è il numero di matricola di questa %s cassetta postale?"</string>
-    <string name="quest_ref_answer_noRef">"Nessun numero di matricola visibile..."</string>
+    <string name="quest_ref_answer_noRef">"Nessun numero di matricola visibile…"</string>
     <string name="quest_street_side_puzzle_tutorial">"La strada nell'illustrazione è ruotata come sulla mappa alla posizione della puntina."</string>
     <string name="quest_recycling_materials_title">"Cosa può essere lasciato qui per la raccolta differenziata?"</string>
     <string name="quest_recycling_materials_note">"Se può essere lasciato qualche materiale differente da quelli selezionabili, per favore lascia una nota."</string>
@@ -754,10 +752,10 @@ Suddividere?"</string>
     <string name="tutorial_welcome_to_osm">"Benvenuto in OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"la mappa wiki libera del mondo"</string>
     <string name="tutorial_intro">"StreetComplete rende semplice contribuire a OpenStreetMap.
-Cerca automaticamente per dettagli mancanti nelle tue vicinanze: corsie ciclabili, numeri civici, orari di apertura e molto altro..."</string>
-    <string name="tutorial_solving_quests">"Una volta trovati, i dettagli mancanti appariranno sulla mappa come compiti.
+Cerca automaticamente i dettagli mancanti nelle tue vicinanze: corsie ciclabili, numeri civici, orari di apertura e molto altro…"</string>
+    <string name="tutorial_solving_quests">"Una volta trovati, i dettagli mancanti appariranno sulla mappa come missioni.
 
-Puoi iniziare a risolverli subito e dopo accedere per pubblicare le tue risposte."</string>
+Puoi iniziare a risolverle subito e dopo accedere per pubblicare le tue risposte."</string>
     <string name="tutorial_stay_safe">"Se sei indeciso, puoi sempre rispondere \"Non so\" e lasciare una nota.
 
 Infine, ricorda per la sicurezza: stai attento dell'ambiente circostante e non entrare in proprietà private."</string>
@@ -767,7 +765,7 @@ Infine, ricorda per la sicurezza: stai attento dell'ambiente circostante e non e
     <string name="quests_empty">"Non hai ancora pubblicato risposte"</string>
     <string name="unsynced_quests_description">"e %d modifiche non pubblicate."</string>
     <string name="unsynced_quests_not_logged_in_description">"Hai %d modifiche non ancora pubblicate. Devi accedere per caricarle."</string>
-    <string name="user_quests_title">"Compiti risolti"</string>
+    <string name="user_quests_title">"Missioni risolte"</string>
     <string name="user_achievements_title">"Riconoscimenti"</string>
     <string name="user_links_title">"Collezione di collegamenti"</string>
     <string name="user_profile_title">"Profilo"</string>
@@ -797,7 +795,7 @@ Infine, ricorda per la sicurezza: stai attento dell'ambiente circostante e non e
     <string name="link_opnvkarte_description">"Una mappa delle fermate e del trasporto pubblico"</string>
     <string name="link_pic4review_description">"Contribuisci a OSM semplicemente guardando immagini della tua città"</string>
     <string name="link_wiki_description">"Questa wiki è il tuo punto di partenza per qualsiasi cosa legata a OpenStreetMap"</string>
-    <string name="link_learnosm_description">"Prima volta su OpenStretMap? Questa è una guida per principianti"</string>
+    <string name="link_learnosm_description">"Prima volta su OpenStreetMap? Questa è una guida per principianti"</string>
     <string name="link_neis_one_description">"Una grande collezione di statistiche per i contributori di OpenStreetMap, come dove e come hai contribuito, chi c'è vicino a te, più le classifiche"</string>
     <string name="link_welcome_mat_description">"Informazioni generali su OpenStreetMap e come lavorare con OSM come organizzazione"</string>
     <string name="link_mapillary_description">"Un servizio e un'app per condividere immagini stradali create dagli utenti, con un permesso esplicito per usarle e contribuire a OSM"</string>
@@ -818,32 +816,32 @@ Infine, ricorda per la sicurezza: stai attento dell'ambiente circostante e non e
 
     <!-- Fuzzy -->
     <string name="link_figuregrounder_description">"Crea poster con la rete stradale di una città o quartiere"</string>
-    <string name="achievement_first_edit_title">"Primo compito risolto"</string>
-    <string name="achievement_first_edit_description">"Benvenuto nella comunità di OpenStreetMap! Nel tuo profilo, puoi vedere maggiori informazioni sui compiti che hai risolto."</string>
+    <string name="achievement_first_edit_title">"Prima missione risolta"</string>
+    <string name="achievement_first_edit_description">"Benvenuto nella comunità di OpenStreetMap! Nel tuo profilo, puoi vedere maggiori informazioni sulle missioni che hai risolto."</string>
     <string name="achievement_surveyor_title">"Ispettore"</string>
-    <string name="achievement_surveyor_solved_X">"Hai risolto %d compiti! Continua così per sbloccare nuovi riconoscimenti che contengono collegamenti a OSM e altre app e progetti."</string>
+    <string name="achievement_surveyor_solved_X">"Hai risolto %d missioni! Continua così per sbloccare nuovi riconoscimenti che contengono collegamenti a OSM e altre app e progetti!"</string>
     <string name="achievement_regular_title">"Regolare"</string>
     <string name="achievement_regular_description">"Hai contribuito %d giorni a OSM con quest'app! I contributori regolari sono la spina dorsale di OSM, grazie per la dedizione! ❤"</string>
     <string name="achievement_bicyclist_title">"Ciclista"</string>
-    <string name="achievement_bicyclist_solved_X">"Hai risolto %d compiti che aiutano i ciclisti!"</string>
+    <string name="achievement_bicyclist_solved_X">"Hai risolto %d missioni che aiutano i ciclisti!"</string>
     <string name="achievement_wheelchair_title">"Mobilità"</string>
-    <string name="achievement_wheelchair_solved_X">"Hai risolto %d compiti che aiutano gli utenti in sedia a rotelle di girare le città!"</string>
+    <string name="achievement_wheelchair_solved_X">"Hai risolto %d missioni che aiutano gli utenti in sedia a rotelle a muoversi in città!"</string>
     <string name="achievement_postman_title">"Postino"</string>
     <string name="achievement_postman_solved_X">"Hai aiutato a trovare %d indirizzi!
 Questi dati sono essenziali non solo per i postini, ma anche per i servizi di navigazione"</string>
     <string name="achievement_building_title">"Verso l'alto"</string>
-    <string name="achievement_building_solved_X">"Hai risolto %d compiti legati agli edifici.
-Questa app chiede il numero civico di un edificio solo dopo che è stato determinato il suo tipo"</string>
+    <string name="achievement_building_solved_X">"Hai risolto %d missioni legate agli edifici.
+Questa app chiede il numero civico di un edificio solo dopo che è stato determinato il suo tipo."</string>
     <string name="achievement_blind_title">"Sesto senso"</string>
-    <string name="achievement_blind_solved_X">"Hai risolto %d compiti che sono importanti per i non vedenti"</string>
+    <string name="achievement_blind_solved_X">"Hai risolto %d missioni che sono importanti per i non vedenti."</string>
 
     <!-- Fuzzy -->
     <string name="achievement_pedestrian_title">"Runner"</string>
-    <string name="achievement_pedestrian_solved_X">"Hai risolto %d compiti che sono importanti per i pedoni!"</string>
+    <string name="achievement_pedestrian_solved_X">"Hai risolto %d missioni che sono importanti per i pedoni!"</string>
     <string name="achievement_veg_title">"Amico degli animali"</string>
-    <string name="achievement_veg_solved_X">"Hai risolto %d compiti che sono importanti per i vegetariani!"</string>
+    <string name="achievement_veg_solved_X">"Hai risolto %d missioni che sono importanti per i vegetariani!"</string>
     <string name="achievement_car_title">"Sulla strada"</string>
-    <string name="achievement_car_solved_X">"Hai risolto %d compiti per migliorare il dettaglio della rete stradale, aggiungendo strade su OpenStreetMap!"</string>
+    <string name="achievement_car_solved_X">"Hai risolto %d missioni per migliorare il dettaglio della rete stradale, aggiungendo strade su OpenStreetMap!"</string>
     <string name="unread_messages_message">"Hai %d messaggi non letti nella tua posta"</string>
     <string name="unread_messages_button">"Apri posta in arrivo"</string>
     <string name="action_about2">"Info"</string>
@@ -980,7 +978,7 @@ riconoscimento"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ha una corsia a doppio senso a sinistra"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"È corretto?"</string>
     <string name="quest_maxheight_below_bridge_title">"Qual è il limite d'altezza sotto al ponte?"</string>
-    <string name="quest_maxheight_split_way_hint">"Se non si applica per l'intera strada, rispondi \"%s\""</string>
+    <string name="quest_maxheight_split_way_hint">"Se non si applica per l'intera strada, rispondi \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"C'è una pavimentazione tattile su questo cordolo?"</string>
     <string name="quest_kerb_height_title">"Qual è l'altezza di questo cordolo?"</string>
     <string name="quest_kerb_height_flush">"Stessa altezza del manto stradale"</string>
@@ -998,11 +996,10 @@ riconoscimento"</string>
     <string name="quest_parkingType_street_side">"Parcheggio poco fuori dalla carreggiata"</string>
     <string name="quest_parkingType_lane">"Parcheggio sulla carreggiata"</string>
     <string name="quest_existence_title">"È ancora qui? (%s)"</string>
-    <string name="quest_existence_name_title">"%1$s è ancora qui? (%2$s)"</string>
+    <string name="quest_existence_name_title">"%1$s (%2$s) è ancora qui?"</string>
     <string name="quest_tracktype_grade2a">"Solido ma non pavimentato"</string>
     <string name="quest_tracktype_grade3a">"Per lo più solido"</string>
     <string name="quest_generic_answer_does_not_exist">"Non esiste…"</string>
-    <string name="osm_element_gone_warning">"Attenzione: non può essere annullato!"</string>
     <string name="osm_element_gone_description">"Sei sicuro che non esista più, magari in una posizione leggermente differente? In caso di dubbio lascia una nota."</string>
     <string name="osm_element_gone_confirmation">"Non esiste"</string>
     <string name="leave_note">"Lascia una nota"</string>
@@ -1014,7 +1011,7 @@ riconoscimento"</string>
     <string name="quest_shop_vacant_type_title">"Questo negozio era libero. Cosa c'è ora?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Il numero di corsie è differente su ogni lato"</string>
     <string name="quest_pitchSurface_title">"Che superficie ha questo campo sportivo?"</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">"Questo tipo di compito si presenta disabilitato perché non utile in alcune regioni e perché, per rispondere, probabilmente è necessario entrare nel luogo."</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Questo tipo di missione non è attivo perché non utile in alcune regioni e perché, per rispondere, probabilmente è necessario entrare nel luogo."</string>
     <string name="quest_dietType_kosher_name_title">"%s vende prodotti kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"I prodotti kosher devono essere preparati seguendo metodi particolari e vengono controllati da agenzie di certificazione kashrut."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nessuna pista ciclabile"</string>
@@ -1050,4 +1047,84 @@ riconoscimento"</string>
     <string name="team_mode_choose_color">"A questo punto, ciascuna persona del gruppo sceglie un colore diverso:"</string>
     <string name="team_mode_active">"La modalità squadra è attiva"</string>
     <string name="team_mode_deactivated">"La modalità squadra è disattivata"</string>
+    <string name="quest_pitchLit_title">"Questo campo da gioco è illuminato?"</string>
+    <string name="quest_pitchLit_title_track">"Questa pista è illuminata?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Attraversamento controllato da semafori"</string>
+    <string name="undo_last">"Annulla l'ultima modifica"</string>
+    <string name="show_edit_history">"Mostra lo storico delle modifiche"</string>
+    <string name="undo_confirm_title2">"Vuoi annullare questa modifica?"</string>
+    <string name="synced">"Sincronizzato"</string>
+    <string name="toast_undo_unavailable">"La modifica è già sincronizzata e non può essere annullata"</string>
+    <string name="quest_cycleway_value_separate">"mostrato separatamente sulla mappa"</string>
+    <string name="created_note_action_title">"Hai creato una nota"</string>
+    <string name="commented_note_action_title">"Hai commentato una nota"</string>
+    <string name="hid_action_description">"Hai nascosto"</string>
+    <string name="split_way_action_description">"Hai diviso il percorso"</string>
+    <string name="deleted_poi_action_description">"Hai eliminato"</string>
+    <string name="added_tag_action_title">"Hai aggiunto %s"</string>
+    <string name="removed_tag_action_title">"Hai rimosso %s"</string>
+    <string name="changed_tag_action_title">"Hai aggiornato in %s"</string>
+    <string name="pref_title_delete_cache">"Elimina cache"</string>
+    <string name="pref_title_delete_cache_summary">"Se pensi che alcuni dati non siano aggiornati"</string>
+    <string name="delete_confirmation">"Elimina"</string>
+    <string name="delete_cache_dialog_message">"Cancellare tutti i dai scaricati, missioni incluse?
+I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancellati automaticamente dopo %2$s giorni."</string>
+    <string name="quest_shop_type_title">"Che tipo di negozio è %s?"</string>
+    <string name="quest_shop_type_title_no_name">"Che tipo di negozio è questo?"</string>
+    <string name="pref_background_type_select">"Seleziona lo stile dello sfondo"</string>
+    <string name="background_type_map">"Mappa"</string>
+    <string name="background_type_aerial_esri">"Satellite (ESRI)"</string>
+    <string name="quest_barrier_type_title">"Che tipo di barriera è questa?"</string>
+    <string name="quest_barrier_type_gate">"Cancello"</string>
+    <string name="quest_barrier_type_lift_gate">"Barriera ad asta"</string>
+    <string name="quest_barrier_type_bollard">"Colonnina"</string>
+    <string name="quest_barrier_type_chain">"Catena"</string>
+    <string name="quest_barrier_type_rope">"Corda"</string>
+    <string name="quest_barrier_type_wire_gate">"Sezione di filo removibile"</string>
+    <string name="quest_barrier_type_cattle_grid">"Griglia che blocca il bestiame"</string>
+    <string name="quest_barrier_type_block">"Grosso oggetto inamovibile"</string>
+    <string name="quest_barrier_jersey_barrier">"Barriera Jersey"</string>
+    <string name="quest_barrier_type_log">"Tronco"</string>
+    <string name="quest_barrier_type_kerb">"Cordolo"</string>
+    <string name="quest_barrier_type_height_restrictor">"Limitatore in altezza"</string>
+    <string name="quest_barrier_full_height_turnstile">"Tornello ad altezza piena"</string>
+    <string name="quest_barrier_type_turnstile">"Tornello"</string>
+    <string name="quest_barrier_type_passage">"Passaggio attraverso un muro/cancello/ecc."</string>
+    <string name="quest_barrier_type_debris_pile">"Pila di detriti"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Strettoia"</string>
+    <string name="quest_barrier_type_stile_ladder">"Scala"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Barriera per biciclette"</string>
+    <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>
+    <string name="quest_barrier_type_stepover">"Scavalco"</string>
+    <string name="quest_barrier_type_swing_gate">"Sbarra orizzontale"</string>
+    <string name="quest_policeType_title">"Che tipo di stazione di polizia è questa?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Convertito in un kissing gate"</string>
+
+    <!-- Stile dovrebbe essere cavalcasiepe, ma non ne sono sicuro -->
+    <string name="quest_stile_type_title">"Che tipo di scaletta è questa?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"casa/e unifamiliare attigua/e"</string>
+    <string name="pref_title_quests2">"Selezione e priorità missioni"</string>
+    <string name="pref_subtitle_quests">"%1$d su %2$d attivate"</string>
+    <string name="quest_busStopLit_tram_name_title">"La fermata del tram %s è illuminata?"</string>
+    <string name="quest_busStopLit_tram_title">"Questa fermata del tram è illuminata?"</string>
+    <string name="quest_busStopLit_title">"Questa fermata del bus è illuminata?"</string>
+    <string name="quest_busStopLit_name_title">"La fermata del bus %s è illuminata?"</string>
+    <string name="no_location_permission_warning_title">"Permessi per la posizione"</string>
+    <string name="quest_surface_value_woodchips">"Cippato"</string>
+    <string name="no_camera_app">"Nessuna app fotocamera disponibile"</string>
+    <string name="quest_busStopBin_tram_name_title">"La fermata del tram %s ha un cestino dei rifuti?"</string>
+    <string name="quest_busStopBin_tram_title">"Questa fermata del tram ha un cestino dei rifiuti?"</string>
+    <string name="quest_busStopBin_title">"Questa fermata dell'autobus ha un cestino dei rifiuti?"</string>
+    <string name="quest_busStopBin_name_title">"La fermata dell'autobus %s ha un cestino dei rifiuti?"</string>
+    <string name="quest_bollard_type_title">"Che tipo di colonnina è questa?"</string>
+    <string name="quest_bollard_type_rising">"A scomparsa"</string>
+    <string name="quest_bollard_type_removable_with_key">"Rimovibile con chiave"</string>
+    <string name="quest_bollard_type_removable_without_key">"Rimovibile senza chiave"</string>
+    <string name="quest_bollard_type_foldable">"Pieghevole"</string>
+    <string name="quest_bollard_type_flexible">"Flessibile"</string>
+    <string name="quest_bollard_type_fixed">"Fisso (non rimovibile)"</string>
+    <string name="quest_camera_type_title">"Che tipo di telecamera di sorveglianza è questa?"</string>
+    <string name="quest_camera_type_dome">"Cupola"</string>
+    <string name="quest_camera_type_fixed">"Fissa"</string>
+    <string name="quest_camera_type_panning">"Mobile"</string>
 </resources>

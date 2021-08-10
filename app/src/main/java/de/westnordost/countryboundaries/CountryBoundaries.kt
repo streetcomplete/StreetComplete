@@ -1,7 +1,7 @@
 package de.westnordost.countryboundaries
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.Countries
@@ -23,11 +23,11 @@ fun CountryBoundaries.intersects(bbox: BoundingBox, countries: Countries) = when
 }
 
 fun CountryBoundaries.getContainingIds(bounds: BoundingBox): Set<String> = getContainingIds(
-    bounds.minLongitude, bounds.minLatitude, bounds.maxLongitude, bounds.maxLatitude
+    bounds.min.longitude, bounds.min.latitude, bounds.max.longitude, bounds.max.latitude
 )
 
 fun CountryBoundaries.getIntersectingIds(bounds: BoundingBox): Set<String> = getIntersectingIds(
-    bounds.minLongitude, bounds.minLatitude, bounds.maxLongitude, bounds.maxLatitude
+    bounds.min.longitude, bounds.min.latitude, bounds.max.longitude, bounds.max.latitude
 )
 
 fun CountryBoundaries.isInAny(pos: LatLon, ids: Collection<String>) = isInAny(

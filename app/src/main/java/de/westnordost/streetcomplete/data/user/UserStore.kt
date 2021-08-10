@@ -60,7 +60,7 @@ import javax.inject.Singleton
             putString(Prefs.OSM_USER_NAME, userDetails.displayName)
             putInt(Prefs.OSM_UNREAD_MESSAGES, userDetails.unreadMessagesCount)
         }
-        onUserDetailsUpdated()
+        listeners.forEach { it.onUserDataUpdated() }
     }
 
     fun clear() {

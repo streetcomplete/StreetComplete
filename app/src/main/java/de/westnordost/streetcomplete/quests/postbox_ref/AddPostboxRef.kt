@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.postbox_ref
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 
@@ -11,9 +11,9 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     override val elementFilter = "nodes with amenity = post_box and !ref and !ref:signed"
 
-    override val icon = R.drawable.ic_quest_mail_ref
     override val commitMessage = "Add postbox refs"
     override val wikiLink = "Tag:amenity=post_box"
+    override val icon = R.drawable.ic_quest_mail_ref
     override val isDeleteElementEnabled = true
 
     // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country

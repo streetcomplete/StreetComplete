@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import java.util.*
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import java.time.LocalDate
 
 class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
@@ -34,17 +35,28 @@ class CheckShopType : OsmFilterQuestType<ShopTypeAnswer>() {
         }
         when (answer) {
             is IsShopVacant -> {
-                changes.addOrModify(SURVEY_MARK_KEY, Date().toCheckDateString())
+                changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
             }
             is ShopType -> {
                 changes.deleteIfExists("disused:shop")
                 if (!answer.tags.containsKey("shop")) {
                     changes.deleteIfExists("shop")
                 }
+
                 changes.deleteIfExists(SURVEY_MARK_KEY)
+
+                for ((key, value) in changes.getPreviousEntries()) {
+                    val isOkToRemove =
+                        KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED.none { it.matches(key) }
+                    if (isOkToRemove && !answer.tags.containsKey(key)) {
+                        changes.delete(key)
+                    }
+                }
+
                 for ((key, value) in answer.tags) {
                     changes.addOrModify(key, value)
                 }
+
 
             }
         }

@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
-import java.util.*
 import kotlin.math.min
 
 /** Show a flag of a country in a circle */
@@ -51,6 +50,7 @@ class CircularFlagView @JvmOverloads constructor(
             if (widthMode == MeasureSpec.EXACTLY) width else height
         } else min(width, height)
         setMeasuredDimension(size, size)
+        boundsOffset = null
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -130,7 +130,7 @@ class CircularFlagView @JvmOverloads constructor(
     }
 
     private fun getFlagResId(countryCode: String): Int {
-        val lowerCaseCountryCode = countryCode.toLowerCase(Locale.US).replace('-', '_')
+        val lowerCaseCountryCode = countryCode.lowercase().replace('-', '_')
         return resources.getIdentifier("ic_flag_$lowerCaseCountryCode", "drawable", context.packageName)
     }
 
@@ -151,7 +151,7 @@ class CircularFlagView @JvmOverloads constructor(
 
         private fun readFlagAlignments(resources: Resources): Map<String, FlagAlignment> =
             resources.getYamlObject<HashMap<String, String>>(R.raw.flag_alignments).map {
-                it.key to FlagAlignment.valueOf(it.value.replace("-","_").toUpperCase(Locale.US))
+                it.key to FlagAlignment.valueOf(it.value.replace("-","_").uppercase())
             }.toMap()
     }
 

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
 class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
@@ -10,7 +10,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
     // information about the purpose of the building, so no need to force asking it
     // same goes (more or less) for tourism, amenity, leisure. See #1854, #1891
     override val elementFilter = """
-        ways, relations with building = yes
+        ways, relations with (building = yes or building = unclassified)
          and !man_made
          and !historic
          and !military
@@ -19,6 +19,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
          and !attraction
          and !amenity
          and !leisure
+         and !description
          and location != underground
          and abandoned != yes
          and abandoned != building

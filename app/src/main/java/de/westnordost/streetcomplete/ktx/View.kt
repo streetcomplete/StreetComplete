@@ -8,11 +8,9 @@ import android.view.ViewPropertyAnimator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.os.postDelayed
-import androidx.core.view.doOnLayout
-import androidx.core.view.doOnPreDraw
-import androidx.core.view.updateLayoutParams
+import androidx.core.view.*
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 
 fun View.popIn(): ViewPropertyAnimator {
@@ -32,8 +30,27 @@ fun View.popOut(): ViewPropertyAnimator {
         .withEndAction { visibility = View.GONE }
 }
 
-suspend fun View.awaitLayout() = suspendCoroutine<Unit> { cont -> doOnLayout { cont.resume(Unit) }}
-suspend fun View.awaitPreDraw() = suspendCoroutine<Unit> { cont -> doOnPreDraw { cont.resume(Unit) }}
+suspend fun View.awaitLayout()  {
+    if (!ViewCompat.isLaidOut(this) || isLayoutRequested) {
+        awaitNextLayout()
+    }
+}
+
+suspend fun View.awaitNextLayout() = suspendCancellableCoroutine<Unit> { cont ->
+    val listener = object : View.OnLayoutChangeListener {
+        override fun onLayoutChange(v: View?, left: Int, top: Int, right: Int, bottom: Int, oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int) {
+            v?.removeOnLayoutChangeListener(this)
+            cont.resume(Unit)
+        }
+    }
+    cont.invokeOnCancellation { removeOnLayoutChangeListener(listener) }
+    addOnLayoutChangeListener(listener)
+}
+
+suspend fun View.awaitPreDraw() = suspendCancellableCoroutine<Unit> { cont ->
+    val listener = OneShotPreDrawListener.add(this) { cont.resume(Unit) }
+    cont.invokeOnCancellation { listener.removeListener() }
+}
 
 fun View.getLocationInWindow(): Point {
     val mapPosition = IntArray(2)

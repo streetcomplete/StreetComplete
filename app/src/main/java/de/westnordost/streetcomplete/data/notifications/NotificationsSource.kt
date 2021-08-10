@@ -36,7 +36,7 @@ import javax.inject.Singleton
                 onNumberOfNotificationsUpdated()
             }
         })
-        newUserAchievementsDao.addListener(object : NewUserAchievementsDao.UpdateListener {
+        newUserAchievementsDao.addListener(object : NewUserAchievementsDao.Listener {
             override fun onNewUserAchievementsUpdated() {
                 onNumberOfNotificationsUpdated()
             }

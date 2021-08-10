@@ -2,15 +2,19 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
 import android.content.DialogInterface
+import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.CheckBox
+import android.widget.FrameLayout
 import android.widget.TimePicker
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
@@ -27,7 +31,7 @@ class TimeRangePickerDialog(
     private val startPicker: TimePicker
     private val endPicker: TimePicker
     private val endPickerContainer: ViewGroup
-    private val viewPager: ViewPager
+    private val viewPager: ViewPager2
     private val tabLayout: TabLayout
 
     private val openEndCheckbox: CheckBox
@@ -69,10 +73,12 @@ class TimeRangePickerDialog(
         }
 
         viewPager = view.findViewById(R.id.viewPager)
-        viewPager.adapter = CustomAdapter(startTimeLabel, endTimeLabel)
+        viewPager.adapter = TimeRangePickerAdapter()
 
         tabLayout = view.findViewById(R.id.tabLayout)
-        tabLayout.setupWithViewPager(viewPager)
+        TabLayoutMediator(tabLayout, viewPager) { tab: TabLayout.Tab, position: Int ->
+            tab.text = if(position == 0) startTimeLabel else endTimeLabel
+        }.attach()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab)   { setCurrentTab(tab.position) }
@@ -81,42 +87,38 @@ class TimeRangePickerDialog(
         })
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+                WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
+    }
+
     private fun setCurrentTab(position: Int) {
         viewPager.currentItem = position
         val buttonResId = if (position == END_TIME_TAB) android.R.string.ok else R.string.quest_openingHours_timeSelect_next
         getButton(DialogInterface.BUTTON_POSITIVE).setText(buttonResId)
     }
 
-    private inner class CustomAdapter(startTimeLabel: CharSequence, endTimeLabel: CharSequence) :
-        PagerAdapter() {
+    private inner class TimeRangePickerAdapter : RecyclerView.Adapter<TimeRangePickerAdapter.ViewHolder>() {
 
-        private val labels: Array<CharSequence> = arrayOf(startTimeLabel, endTimeLabel)
+        override fun getItemCount() = 2
 
-        override fun getCount() = labels.size
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+            ViewHolder(FrameLayout(parent.context).apply {
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            })
 
-        override fun isViewFromObject(view: View, obj: Any) =
-            when(obj) {
-                START_TIME_TAB -> view === startPicker
-                END_TIME_TAB   -> view === endPickerContainer
-                else           -> false
+            override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+                val viewGroup = (holder.itemView as FrameLayout)
+                viewGroup.removeAllViews()
+                viewGroup.addView(if (position == START_TIME_TAB) startPicker else endPickerContainer)
             }
 
-        override fun destroyItem(container: ViewGroup, position: Int, obj: Any) {
-            when(position) {
-                START_TIME_TAB -> container.removeView(startPicker)
-                END_TIME_TAB -> container.removeView(endPickerContainer)
-            }
-        }
-
-        override fun instantiateItem(container: ViewGroup, position: Int): Any {
-            when(position) {
-                START_TIME_TAB -> container.addView(startPicker)
-                END_TIME_TAB -> container.addView(endPickerContainer)
-            }
-            return position
-        }
-
-        override fun getPageTitle(position: Int) = labels[position]
+            inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     }
 
     override fun show() {

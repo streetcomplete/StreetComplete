@@ -10,11 +10,11 @@ class NewUserAchievementsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NewUserAchievementsDao
 
     @Before fun createDao() {
-        dao = NewUserAchievementsDao(dbHelper)
+        dao = NewUserAchievementsDao(database)
     }
 
     @Test fun addPopFirst() {
-        val listener: NewUserAchievementsDao.UpdateListener = mock(NewUserAchievementsDao.UpdateListener::class.java)
+        val listener: NewUserAchievementsDao.Listener = mock(NewUserAchievementsDao.Listener::class.java)
         dao.addListener(listener)
         dao.push(TWO to 2)
         dao.push(ONE to 1)
@@ -31,7 +31,7 @@ class NewUserAchievementsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addPop() {
-        val listener: NewUserAchievementsDao.UpdateListener = mock(NewUserAchievementsDao.UpdateListener::class.java)
+        val listener: NewUserAchievementsDao.Listener = mock(NewUserAchievementsDao.Listener::class.java)
         dao.addListener(listener)
 
         assertEquals(0, dao.getCount())

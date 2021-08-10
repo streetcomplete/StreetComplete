@@ -3090,8 +3090,8 @@
                     "name": "Restaurante vietnamita"
                 },
                 "amenity/sanitary_dump_station": {
-                    "name": "Depósito sanitario para caravanas",
-                    "terms": "desaugue,caravanas,desaugue de caravanas,cisterna,estanque"
+                    "name": "Depósito sanitario para autocaravanas",
+                    "terms": "desaugue,caravanas,desaugue de caravanas,cisterna,estanque,autocaravanas,desacougo autocaravanas,refugallos autocaravanas"
                 },
                 "amenity/school": {
                     "name": "Área escolar",
@@ -3309,8 +3309,8 @@
                     "name": "Estación de bombeo de augas residuais"
                 },
                 "amenity/water_point": {
-                    "name": "Auga potábel para caravanas",
-                    "terms": "casa rodante,autocaravana,caravana,motorhome,camper,auga potable,agua,auga,recarga"
+                    "name": "Auga potábel para autocaravanas",
+                    "terms": "casa rodante,autocaravana,caravana,motorhome,camper,auga potable,agua,auga,recarga,autocaravanas,fonte"
                 },
                 "amenity/watering_place": {
                     "name": "Bebedoiro de animais",
@@ -3539,7 +3539,7 @@
                 },
                 "building/cabin": {
                     "name": "Cabana",
-                    "terms": "casa,cabana,cabaña,casoupa,casoupo,chabola,barraca,cabanel,choza"
+                    "terms": "casa,cabana,cabaña,casoupa,casoupo,chabola,barraca,cabanel,choza,cacharufo,choupana"
                 },
                 "building/carport": {
                     "name": "Cocheira cuberta"
@@ -3671,7 +3671,7 @@
                 },
                 "building/shed": {
                     "name": "Pendello",
-                    "terms": "galpón,alboio,alpendre,pendello,sobeira,cuberto,chapitel,caustra,cabanel,galpon"
+                    "terms": "galpón,alboio,alpendre,pendello,sobeira,cuberto,chapitel,caustra,cabanel,galpon,palleira,palleiro,pallal,pallar,pallarega"
                 },
                 "building/stable": {
                     "name": "Establo",
@@ -3681,7 +3681,7 @@
                     "name": "Edificio do estadio"
                 },
                 "building/static_caravan": {
-                    "name": "Caravana estática"
+                    "name": "Autocaravana estática"
                 },
                 "building/temple": {
                     "name": "Edificio do templo"
@@ -4488,15 +4488,15 @@
                     "terms": "edificio,excavadora,sitio de construción,zona de construción,grúa,guindastre,demolición,desarrollo,infraestrutura,construción,desenvolvemento,área de construción,area,zona en construcion,área en construcion,área,zona"
                 },
                 "landuse/farm": {
-                    "name": "Terra de cultivo"
+                    "name": "Terra de labradío"
                 },
                 "landuse/farmland": {
-                    "name": "Terra de cultivo",
-                    "terms": "terra de cultivo,leira,veiga,agro,eido,pasto,agricultura,varcia,plantación"
+                    "name": "Terra de labradío",
+                    "terms": "cultivo,terra de cultivo,leira,veiga,agro,eido,pasto,agricultura,varcia,plantación,labrada,plantío"
                 },
                 "landuse/farmyard": {
-                    "name": "Granxa",
-                    "terms": "facenda,explotación,agrícola"
+                    "name": "Eira de granxa",
+                    "terms": "facenda,explotación,agrícola,eira,aira"
                 },
                 "landuse/flowerbed": {
                     "name": "Xardín floral",
@@ -5505,6 +5505,9 @@
                 "piste/downhill/halfpipe": {
                     "name": "Pista mediotubo de deportes de neve"
                 },
+                "piste/hike": {
+                    "name": "Raquetas de neve / Ruta de sendeirismo de inverno"
+                },
                 "piste/ice_skate": {
                     "name": "Pista de patinaxe sobre xeo",
                     "terms": "pista de xeo,patinaxe sobre xeo,pistas,patíns,skates,xeo,pista,xelo"
@@ -6418,6 +6421,9 @@
                     "name": "Tenda de artigos de costura",
                     "terms": "tenda de subministros de costura,costura,mercería,merzaría,artigos,obxectos,cosedura,confeccion,corte"
                 },
+                "shop/shoe_repair": {
+                    "name": "Tenda de arranxo de zapatos"
+                },
                 "shop/shoes": {
                     "name": "Zapataría"
                 },
@@ -6587,7 +6593,7 @@
                     "name": "Área de campamento grupal"
                 },
                 "tourism/caravan_site": {
-                    "name": "Parque de caravanas"
+                    "name": "Área de autocaravanas"
                 },
                 "tourism/chalet": {
                     "name": "Casa rural"
@@ -6788,9 +6794,6 @@
                 },
                 "type/route/hiking": {
                     "name": "Roteiro de sendeirismo"
-                },
-                "type/route/horse": {
-                    "name": "Ruta de equitación"
                 },
                 "type/route/light_rail": {
                     "name": "Ruta de tren lixeiro"

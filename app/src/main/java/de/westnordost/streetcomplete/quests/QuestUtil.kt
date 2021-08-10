@@ -6,13 +6,12 @@ import android.text.Spanned
 import androidx.core.os.ConfigurationCompat
 import androidx.core.os.LocaleListCompat
 import androidx.core.text.parseAsHtml
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.ktx.toList
-import de.westnordost.streetcomplete.ktx.toTypedArray
-import java.util.*
+import java.util.Locale
 import java.util.concurrent.FutureTask
 
 fun Resources.getQuestTitle(questType: QuestType<*>, element: Element?, featureDictionaryFuture: FutureTask<FeatureDictionary>?): String {
@@ -63,3 +62,20 @@ private fun findTypeName(
 
 private fun getQuestTitleResId(questType: QuestType<*>, element: Element?) =
     (questType as? OsmElementQuestType<*>)?.getTitle(element?.tags ?: emptyMap()) ?: questType.title
+
+fun getNameOrBrandOrOperatorOrRef(tags: Map<String, String>): String? {
+    val name = tags["name"]
+    val brand = tags["brand"]
+    val ref = tags["ref"]
+    val operator = tags["operator"]
+
+    return when {
+        name != null -> name
+        brand != null -> brand
+        // special special: If both operator and ref are available, show them both
+        operator != null && ref != null -> "$operator $ref"
+        operator != null -> operator
+        ref != null -> ref
+        else -> null
+    }
+}

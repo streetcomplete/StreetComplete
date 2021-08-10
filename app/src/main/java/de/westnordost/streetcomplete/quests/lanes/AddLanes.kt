@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.lanes
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 
 class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
@@ -18,6 +18,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
           )
           and surface ~ ${ANYTHING_PAVED.joinToString("|")}
           and (!lanes or lanes = 0)
+          and (!lanes:backward or !lanes:forward)
           and lane_markings != no
     """
     override val commitMessage = "Add road lanes"

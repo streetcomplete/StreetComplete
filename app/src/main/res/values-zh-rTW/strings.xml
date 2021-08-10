@@ -271,7 +271,7 @@
 &lt;p&gt;&lt;b&gt;直接貢獻&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 首先，透過此app，你可直接向開放街圖做出貢獻。&lt;br/&gt;
-你在此app上所有貢獻會直接加到地圖上，和開放街圖設施之間不會有任何第三方管道，像 &lt;a href=\"https://wheelmap.org\"&gt;輪椅地圖&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
+你在此app上所有貢獻會直接加到地圖上，和開放街圖設施之間不會有任何第三方管道。
 &lt;/p&gt;
 &lt;p&gt;
 開放街圖是不允許匿名編輯，所以你任何編輯都是藉由你的開放街圖帳號。這表示日期、內容和你改動後產生的間接地理資訊，都會公開於開放街圖網站並標示你的帳號。
@@ -674,7 +674,7 @@
     <string name="quest_fireHydrant_type_pond">"池塘"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"&lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;在GitHub上瀏覽完整列表&lt;/a&gt;。"</string>
+    <string name="credits_contributors">"&lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;在GitHub上瀏覽完整列表&lt;/a&gt;。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 專案&lt;/a&gt;上瀏覽完整列表。"</string>
@@ -850,17 +850,11 @@
     <string name="quest_crossing_type_title">"這是哪種交叉口?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"有交通號誌的路口"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"無道路標記的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"復原"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"復原上個回答？"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"山竹"</string>
@@ -972,9 +966,6 @@
     <string name="pref_category_advanced">"進階"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"任務選擇"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"已啟用"</string>
 
     <!-- Fuzzy -->
@@ -1073,18 +1064,6 @@
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"你可以留下註解，讓其他圖客知道這邊有問題。移動地圖來調整註解標注的位置："</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"無效的任務暫存"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"如果你認為有些任務過期的話則有用"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"無效"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"暫存檔無效導致需要在下載時更新任務。一週之後或是任務已經解決回答，任務暫存自動無效。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"通常長得像這樣子："</string>
@@ -1337,9 +1316,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"半獨棟房屋"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"兩個單一家庭房屋"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"一排單一家庭的房屋"</string>
@@ -2114,11 +2090,10 @@
     <string name="quest_parkingType_street_side">"路外停車"</string>
     <string name="quest_parkingType_lane">"路邊停車"</string>
     <string name="quest_existence_title">"還在這裡嗎？ (%s)"</string>
-    <string name="quest_existence_name_title">"%1$s 還在嗎？ (%2$s) "</string>
+    <string name="quest_existence_name_title">"%1$s  (%2$s) 還在嗎？"</string>
     <string name="quest_tracktype_grade2a">"堅實的但沒有舖面"</string>
     <string name="quest_tracktype_grade3a">"大部分是堅實的"</string>
     <string name="quest_generic_answer_does_not_exist">"這並不存在…"</string>
-    <string name="osm_element_gone_warning">"警告：這個動作將無法復原！"</string>
     <string name="osm_element_gone_description">"你確定這並不存，而且是在稍微偏離的地方也沒有嗎？如果有疑問的話，最好是留下註解。"</string>
     <string name="osm_element_gone_confirmation">"這並不存在"</string>
     <string name="leave_note">"留下註解"</string>
@@ -2141,14 +2116,22 @@
     <string name="quest_surface_value_clay">"黏土"</string>
     <string name="quest_surface_value_artificial_turf">"人工草皮"</string>
     <string name="quest_surface_value_tartan">"PU表面"</string>
+    <string name="quest_pitchSurface_title_track">"這運動跑道表面材質是什麼？"</string>
     <string name="quest_bicycle_parking_access_title">"請問這裡有限制不能停腳踏車嗎？"</string>
     <string name="quest_bicycle_parking_fee_title">"請問這裡需要付費才能停腳踏車嗎？"</string>
+    <string name="quest_buildingType_house_description2">"無連接的單一家庭房屋"</string>
     <string name="quest_drinking_water_title">"這裡的水質是否可以飲用？(%s)"</string>
     <string name="quest_drinking_water_potable_signed">"可以飲用（已勾選）"</string>
     <string name="quest_drinking_water_potable_unsigned">"可以飲用（未勾選）"</string>
     <string name="quest_drinking_water_not_potable_signed">"不能飲用（已勾選）"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"不能飲用（未勾選）"</string>
+    <string name="quest_postboxRoyalCypher_title">"這個郵筒的皇家徽章是什麼？"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"沒有看到皇家徽章"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"蘇格蘭皇冠"</string>
     <string name="quest_buildingType_fire_station">"消防局"</string>
+    <string name="quest_recycling_type_beverage_cartons">"僅限飲料紙盒"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"僅限塑膠瓶罐與盒子"</string>
+    <string name="quest_charging_station_name_capacity_title">"這個充電站 (%s) 同一時間能為幾部車子充電？"</string>
     <string name="team_mode">"協作模式"</string>
     <string name="team_mode_exit">"離開協作模式"</string>
     <string name="team_mode_description">"當一群人在同一地點mapping時，您可以開啟協作模式來分配任務。"</string>
@@ -2157,4 +2140,82 @@
     <string name="team_mode_choose_color">"現在所有成員各需要選擇一種代表色："</string>
     <string name="team_mode_active">"協作模式已啟用"</string>
     <string name="team_mode_deactivated">"協作模式已停用"</string>
+    <string name="quest_pitchLit_title">"這個運動場有照明嗎？"</string>
+    <string name="quest_pitchLit_title_track">"這個運動跑道有照明嗎？"</string>
+    <string name="quest_crossing_type_signals_controlled">"行人穿越由交通號誌控制"</string>
+    <string name="undo_last">"復原最後的編輯"</string>
+    <string name="show_edit_history">"顯示編輯歷史"</string>
+    <string name="undo_confirm_title2">"要復原接下來的編輯嗎？"</string>
+    <string name="synced">"已經同步了"</string>
+    <string name="toast_undo_unavailable">"這筆編輯已經同步，因此無法復原"</string>
+    <string name="quest_cycleway_value_separate">"在地圖上顯示分離的"</string>
+    <string name="created_note_action_title">"新增註解"</string>
+    <string name="commented_note_action_title">"在註解留言"</string>
+    <string name="hid_action_description">"你隱聝了"</string>
+    <string name="split_way_action_description">"你分割路徑了"</string>
+    <string name="deleted_poi_action_description">"你刪除了"</string>
+    <string name="added_tag_action_title">"新增 %s"</string>
+    <string name="removed_tag_action_title">"移除 %s"</string>
+    <string name="changed_tag_action_title">"更新到 %s"</string>
+    <string name="pref_title_delete_cache">"刪除快取"</string>
+    <string name="pref_title_delete_cache_summary">"如果你認為有些資料過時了"</string>
+    <string name="delete_confirmation">"刪除"</string>
+    <string name="delete_cache_dialog_message">"刪除所有已經下載的地圖資料，包括任務？
+資料將在 %1$s 天之後更新，未使用的資料會在 %2$s 天之後自動刪除。"</string>
+    <string name="quest_shop_type_title">"%s 是那種類型的商店？"</string>
+    <string name="quest_shop_type_title_no_name">"這是那種類型的商店？"</string>
+    <string name="pref_background_type_select">"選擇背景種類"</string>
+    <string name="background_type_map">"地圖"</string>
+    <string name="background_type_aerial_esri">"空照圖 (Esri 提供)"</string>
+    <string name="quest_barrier_type_title">"這是什麼樣種類的障礙物？"</string>
+    <string name="quest_barrier_type_gate">"閘門"</string>
+    <string name="quest_barrier_type_lift_gate">"柵欄"</string>
+    <string name="quest_barrier_type_bollard">"立柱"</string>
+    <string name="quest_barrier_type_chain">"鏈索"</string>
+    <string name="quest_barrier_type_rope">"繩子"</string>
+    <string name="quest_barrier_type_wire_gate">"可拆卸線段"</string>
+    <string name="quest_barrier_type_cattle_grid">"網格阻止牲畜通行"</string>
+    <string name="quest_barrier_type_block">"巨大固定式物件"</string>
+    <string name="quest_barrier_jersey_barrier">"紐澤西護欄"</string>
+    <string name="quest_barrier_type_log">"木頭"</string>
+    <string name="quest_barrier_type_kerb">"路緣"</string>
+    <string name="quest_barrier_type_height_restrictor">"高度障礙"</string>
+    <string name="quest_barrier_full_height_turnstile">"全高旋轉門"</string>
+    <string name="quest_barrier_type_turnstile">"旋轉門"</string>
+    <string name="quest_barrier_type_passage">"經由牆/圍籬等通行"</string>
+    <string name="quest_barrier_type_debris_pile">"一堆雜物"</string>
+    <string name="quest_barrier_type_stile_squeezer">"擠壓橫檔"</string>
+    <string name="quest_barrier_type_stile_ladder">"跨牆梯子"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"單車障礙物"</string>
+    <string name="quest_barrier_type_kissing_gate">"窄門"</string>
+    <string name="quest_barrier_type_stepover">"跨欄"</string>
+    <string name="quest_barrier_type_swing_gate">"單槓"</string>
+    <string name="quest_policeType_title">"這邊是什麼類型的警政單位？"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"轉換為窄門"</string>
+    <string name="quest_stile_type_title">"這是什麼類型的通行門？"</string>
+    <string name="quest_buildingType_semi_detached_description2">"連接的單一家庭房屋"</string>
+    <string name="pref_title_quests2">"任務選擇與優先度"</string>
+    <string name="pref_subtitle_quests">"%2$d 分之 %1$d 已經啟用"</string>
+    <string name="quest_busStopLit_tram_name_title">"%s 街車站有照明嗎？"</string>
+    <string name="quest_busStopLit_tram_title">"這個街車站有照明嗎？"</string>
+    <string name="quest_busStopLit_title">"這個站牌有照明嗎？"</string>
+    <string name="quest_busStopLit_name_title">"%s 站牌有照明嗎？"</string>
+    <string name="no_location_permission_warning_title">"位置資訊授權"</string>
+    <string name="quest_surface_value_woodchips">"Woodchips"</string>
+    <string name="no_camera_app">"沒有可用相機 app"</string>
+    <string name="quest_busStopBin_tram_name_title">"街車站 %s 是否有垃圾筒？"</string>
+    <string name="quest_busStopBin_tram_title">"這個街車站是否有垃圾筒？"</string>
+    <string name="quest_busStopBin_title">"這公車站是否有垃圾筒？"</string>
+    <string name="quest_busStopBin_name_title">"%s 公車站是否有垃圾筒？"</string>
+    <string name="quest_bollard_type_title">"這是什麼類型的護柱？"</string>
+    <string name="quest_bollard_type_rising">"升高"</string>
+    <string name="quest_bollard_type_removable_with_key">"可用鑰匙移動"</string>
+    <string name="quest_bollard_type_removable_without_key">"不用鑰匙就可以移動"</string>
+    <string name="quest_bollard_type_foldable">"折疊式"</string>
+    <string name="quest_bollard_type_flexible">"靈活式"</string>
+    <string name="quest_bollard_type_fixed">"固定 (無法移動)"</string>
+    <string name="quest_camera_type_title">"這是何種類型的監視鏡頭？"</string>
+    <string name="quest_camera_type_dome">"拱頂"</string>
+    <string name="quest_camera_type_fixed">"固定"</string>
+    <string name="quest_camera_type_panning">"平移"</string>
 </resources>
