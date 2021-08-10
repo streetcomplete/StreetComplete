@@ -42,11 +42,13 @@ class TeamModeDialog(
                 view.teamSizeHint.isGone = false
                 view.colorHint.isGone = true
                 view.colorCircles.isGone = true
+                view.introTextAdditionalTutorial.isGone = true
             } else {
                 view.introText.isGone = true
                 view.teamSizeHint.isGone = true
                 view.colorHint.isGone = false
                 view.colorCircles.isGone = false
+                view.introTextAdditionalTutorial.isGone = false
                 adapter.count = selectedTeamSize!!
             }
         }

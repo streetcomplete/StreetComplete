@@ -80,7 +80,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/team_mode_description_additional_tutorial"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
 
 </LinearLayout>
 
