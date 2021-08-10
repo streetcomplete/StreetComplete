@@ -293,18 +293,18 @@ private fun String.addToHouseNumber(add: Int): String? {
     when {
         add == 0 -> return this
         add > 0  -> {
-            val last = when (val it = parsed.list.last()) {
-                is HouseNumbersPartsRange -> it.end
+            val max = when (val it = parsed.list.maxOrNull()!!) {
+                is HouseNumbersPartsRange -> listOf(it.start, it.end).maxOrNull()!!
                 is SingleHouseNumbersPart -> it.single
             }
-            return (last.number + add).toString()
+            return (max.number + add).toString()
         }
         add < 0  -> {
-            val first = when (val it = parsed.list.first()) {
-                is HouseNumbersPartsRange -> it.start
+            val min = when (val it = parsed.list.minOrNull()!!) {
+                is HouseNumbersPartsRange -> listOf(it.start, it.end).minOrNull()!!
                 is SingleHouseNumbersPart -> it.single
             }
-            val result = first.number + add
+            val result = min.number + add
             return if (result < 1) null else result.toString()
         }
         else -> return null
