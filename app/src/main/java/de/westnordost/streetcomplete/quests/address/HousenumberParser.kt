@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.data.elementfilter.StringWithCursor
 
-/** parses 99999/a, 9/a, 99/9, 99a, 99 a, 9 / a, "95-98", "5,5a,6", "5d-5f, 7" etc. into an appropriate data
+/** parses 99999/a, 9/a, 99/9, 99a, 99 a, 9 / a, "95-98", "5,5a,6", "5d-5f, 7", "5-1" etc. into an appropriate data
  *  structure or return null if it cannot be parsed */
 fun parseHouseNumber(string: String): HouseNumbers? {
     return HouseNumbers(string.split(",").map { part ->
@@ -10,10 +10,15 @@ fun parseHouseNumber(string: String): HouseNumbers? {
         when (range.size) {
             1 -> SingleHouseNumbersPart(parseHouseNumberParts(range[0]) ?: return null)
             2 -> {
-                HouseNumbersPartsRange(
-                    parseHouseNumberParts(range[0]) ?: return null,
-                    parseHouseNumberParts(range[1]) ?: return null
-                )
+                val start = parseHouseNumberParts(range[0]) ?: return null
+                val end = parseHouseNumberParts(range[1]) ?: return null
+                if (start < end) {
+                    HouseNumbersPartsRange(start, end)
+                }
+                // reverse ranges are interpreted like sub-housenumbers, i.e. 4-2 is about the same as 4/2
+                else {
+                    SingleHouseNumbersPart(parseHouseNumberParts(part) ?: return null)
+                }
             }
             else -> return null
         }
@@ -25,7 +30,7 @@ private fun parseHouseNumberParts(string: String): StructuredHouseNumber? {
     val houseNumber = c.nextMatchesAndAdvance("\\p{N}{1,5}".toRegex())?.value?.toIntOrNull() ?: return null
     if (c.isAtEnd()) return SimpleHouseNumber(houseNumber)
 
-    val separatorWithNumber = c.nextMatchesAndAdvance("(\\s?/\\s?)(\\p{N})".toRegex())
+    val separatorWithNumber = c.nextMatchesAndAdvance("(\\s?[/-]\\s?)(\\p{N})".toRegex())
     if (separatorWithNumber != null) {
         if (!c.isAtEnd()) return null
         return HouseNumberWithNumber(
