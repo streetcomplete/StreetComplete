@@ -2,6 +2,7 @@ v34.0: |
   <ul>
   <li>Add Animism as choice for when asked about the religion of a place (#3063)</li>
   <li>Add more building type choices: allotment house, boathouse and grandstand (#3078)</li>
+  <li>Roof shape quest is no longer enabled by default - it can be enabled in settings like with other quests not shown by default (#3161), by @matkoniecz
   </ul>
 
 v33.2: |
