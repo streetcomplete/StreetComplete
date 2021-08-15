@@ -601,7 +601,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         // Camera cannot rotate upside down => full circle check not needed
         val isFlat = mapFragment.cameraPosition?.tilt?.let { it <= margin } ?: false
 
-        if (mapFragment.isFollowingPosition) {
+        if (mapFragment.isFollowingPosition && mapFragment.displayedLocation != null) {
             setIsCompassMode(!mapFragment.isCompassMode)
         } else {
             if (isNorthUp) {
