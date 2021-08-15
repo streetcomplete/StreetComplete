@@ -32,7 +32,6 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.filter { element ->
             filter.matches(element)
-            && isRoofProbablyVisibleFromBelow(element.tags) != false
             && (
                 element.tags["roof:levels"]?.toFloatOrNull() ?: 0f > 0f
                 || roofsAreUsuallyFlatAt(element, mapData) == false
@@ -41,19 +40,11 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!filter.matches(element)) return false
-        if (isRoofProbablyVisibleFromBelow(element.tags) == false) return false
         /* if it has 0 roof levels, or the roof levels aren't specified,
            the quest should only be shown in certain countries. But whether
            the element is in a certain country cannot be ascertained without the element's geometry */
         if (element.tags["roof:levels"]?.toFloatOrNull() ?: 0f == 0f) return null
         return true
-    }
-
-    private fun isRoofProbablyVisibleFromBelow(tags: Map<String,String>): Boolean? {
-        val roofLevels = tags["roof:levels"]?.toFloatOrNull() ?: 0f
-        val buildingLevels = tags["building:levels"]?.toFloatOrNull() ?: return null
-        if (roofLevels < 0f || buildingLevels < 0f) return null
-        return buildingLevels / (roofLevels + 2f) < 2f
     }
 
     private fun roofsAreUsuallyFlatAt(element: Element, mapData: MapDataWithGeometry): Boolean? {
