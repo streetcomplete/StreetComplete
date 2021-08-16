@@ -121,26 +121,7 @@ class AddCrossing : OsmElementQuestType<Boolean> {
              * go through X are on the same side of the road-polyline.
              * */
             val nodePos = mapData.getNode(nodeId)!!.position
-            val roadAngle1 = neighbouringRoadPositions[0].initialBearingTo(nodePos)
-            val anyFootwayCrossesAnyRoad = (1 until neighbouringRoadPositions.size).any { i ->
-                val roadAngle2 = nodePos.initialBearingTo(neighbouringRoadPositions[i])
-                val roadTakesRightTurn = (roadAngle2 - roadAngle1).normalizeDegrees(-180.0) > 0
-
-                val sides = neighbouringFootwayPositions.map {
-                    val angle = nodePos.initialBearingTo(it)
-                    val side1 = (angle - roadAngle1).normalizeDegrees(-180.0)
-                    val side2 = (angle - roadAngle2).normalizeDegrees(-180.0)
-                    if (roadTakesRightTurn) {
-                        if (side1 > 0 && side2 > 0) 1 else -1
-                    } else {
-                        if (side1 > 0 || side2 > 0) 1 else -1
-                    }
-                }
-                val anyAreOnDifferentSidesOfRoad = sides.toSet().size > 1
-                anyAreOnDifferentSidesOfRoad
-            }
-            anyFootwayCrossesAnyRoad
-        }
+            return@retainAll neighbouringFootwayPositions.anyCrossesAnyOf(neighbouringRoadPositions, nodePos)}
 
         return footwaysByNodeId.keys
             .mapNotNull { mapData.getNode(it) }
@@ -183,3 +164,14 @@ private fun Sequence<Way>.groupByNodeIds(): MutableMap<Long, MutableList<Way>> {
     }
     return result
 }
+
+/** Returns whether any of the lines spanned by any of the points in this list through the
+ *  vertex point cross any of the lines spanned by any of the points through the vertex point
+ *  from the other list */
+private fun List<LatLon>.anyCrossesAnyOf(other: List<LatLon>, vertex: LatLon): Boolean =
+    (1 until size).any { i -> other.anyAreOnDifferentSidesOf(this[0], vertex, this[i]) }
+
+/** Returns whether any of the points in this list are on different sides of the line spanned
+ *  by p0 and p1 and the line spanned by p1 and p2 */
+private fun List<LatLon>.anyAreOnDifferentSidesOf(p0: LatLon, p1: LatLon, p2: LatLon): Boolean =
+    map { it.isRightOf(p0, p1, p2) }.toSet().size > 1
