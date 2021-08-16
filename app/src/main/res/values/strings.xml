@@ -497,7 +497,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
     <string name="default_disabled_msg_go_inside">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="default_disabled_msg_go_inside_regional_warning">This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type.</string>
-    <string name="default_disabled_msg_roofShape">This quest type is disabled by default because the roof shapes are often not well visible from the street. This quest type is also quite time-consuming, while it is in most cases easier and more efficient to map this from aerial imagery at home.</string>
+    <string name="default_disabled_msg_roofShape">This quest type is disabled by default because the roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
