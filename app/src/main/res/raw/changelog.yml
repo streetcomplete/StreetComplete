@@ -1,4 +1,8 @@
 34.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is this spot suitable to cross the road and is it legal to do so here?</i> (#398, #2999)</li>
+  </ul>
   <h3>Enhancements</h3>
   <ul>
   <li>The Roof shape quest is no longer enabled by default - you can enable it in the settings (#3161), by @matkoniecz
