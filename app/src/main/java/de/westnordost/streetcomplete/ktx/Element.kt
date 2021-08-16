@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 
 fun Element.copy(
@@ -62,36 +63,5 @@ private val IS_AREA_EXPR = """
 
 fun Element.isSomeKindOfShop(): Boolean = IS_SOME_KIND_OF_SHOP_EXPR.matches(this)
 
-/** ~ tenant of a normal retail shop area.
- *  So,
- *  - no larger or purpose-built things like malls, cinemas, theatres, car washes, fuel stations,
- *    museums, galleries, zoos, aquariums, bowling alleys...
- *  - no things that are usually not found in normal retail shop areas but in offices:
- *    clinics, doctors, fitness centers, dental technicians...
- *  - nothing that is rather located in an industrial estate like car repair and other types
- *    of workshops (most craft=* other than those where people go to have something repaired or so)
- *  */
-private val IS_SOME_KIND_OF_SHOP_EXPR = ("""
-    nodes, ways, relations with
-      shop and shop !~ no|vacant|mall
-      or tourism = information and information = office
-      or """ +
-    mapOf(
-        "amenity" to arrayOf(
-            "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "nightclub",
-            "bank", "bureau_de_change", "money_transfer", "post_office", "internet_cafe",
-            "pharmacy",
-            "driving_school",
-        ),
-        "leisure" to arrayOf(
-            "amusement_arcade", "adult_gaming_centre", "tanning_salon",
-        ),
-        "office" to arrayOf(
-            "insurance", "travel_agent", "tax_advisor", "estate_agent", "political_party",
-        ),
-        "craft" to arrayOf(
-            "shoemaker", "tailor", "photographer", "watchmaker", "optician",
-            "electronics_repair", "key_cutter",
-        )
-    ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
-    ).trimIndent().toElementFilterExpression()
+private val IS_SOME_KIND_OF_SHOP_EXPR =
+    ("nodes, ways, relations with " + isKindOfShopExpression()).toElementFilterExpression()
