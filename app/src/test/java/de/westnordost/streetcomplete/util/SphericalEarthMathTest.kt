@@ -81,6 +81,40 @@ class SphericalEarthMathTest {
         if (angle2 != null) assertEquals(angle2, HH.finalBearingTo(t).roundToInt())
     }
 
+    @Test fun `point right of line`() {
+        val px = p(0.0, 0.0)
+        val p0 = p(-1.0, 0.0)
+
+        assertFalse(px.isRightOf(p0, 269.0))
+        assertTrue(px.isRightOf(p0, 270.0))
+        assertTrue(px.isRightOf(p0, 0.0))
+        assertTrue(px.isRightOf(p0, 45.0))
+        assertTrue(px.isRightOf(p0, 89.0))
+        assertFalse(px.isRightOf(p0, 90.0))
+    }
+
+    @Test fun `point right of two lines that make a right-turn`() {
+        val p0 = p(-2.0, 0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(1.0, -1.0)
+
+        assertTrue(p(0.0, -1.0).isRightOf(p0, p1, p2))
+        assertFalse(p(2.0, -1.0).isRightOf(p0, p1, p2))
+        assertFalse(p(-2.0, 1.0).isRightOf(p0, p1, p2))
+        assertFalse(p(1.0, 1.0).isRightOf(p0, p1, p2))
+    }
+
+    @Test fun `point right of two lines that make a left-turn`() {
+        val p0 = p(-2.0, 0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(0.0, 2.0)
+
+        assertTrue(p(0.0, -1.0).isRightOf(p0, p1, p2))
+        assertTrue(p(2.0, -1.0).isRightOf(p0, p1, p2))
+        assertFalse(p(-2.0, 1.0).isRightOf(p0, p1, p2))
+        assertTrue(p(1.0, 1.0).isRightOf(p0, p1, p2))
+    }
+
     /* ++++++++++++++++++++++++++++++ test distance to arc distance +++++++++++++++++++++++++++++ */
 
     @Test fun `simple distance to horizontal arc`() {
