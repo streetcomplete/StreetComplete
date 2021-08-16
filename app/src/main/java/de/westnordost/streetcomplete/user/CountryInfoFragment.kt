@@ -116,7 +116,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
     }
 
     private fun getFlagResId(countryCode: String): Int {
-        val lowerCaseCountryCode = countryCode.toLowerCase(Locale.US).replace('-', '_')
+        val lowerCaseCountryCode = countryCode.lowercase().replace('-', '_')
         return resources.getIdentifier("ic_flag_$lowerCaseCountryCode", "drawable", requireContext().packageName)
     }
 

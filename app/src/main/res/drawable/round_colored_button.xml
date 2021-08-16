@@ -4,8 +4,7 @@
     <item android:state_selected="true" android:drawable="@drawable/round_colored_button_pressed" />
     <item android:state_focused="true" android:drawable="@drawable/round_colored_button_pressed" />
     <item>
-        <inset xmlns:android="http://schemas.android.com/apk/res/android"
-               android:insetLeft="@dimen/round_button_inset"
+        <inset android:insetLeft="@dimen/round_button_inset"
                android:insetTop="@dimen/round_button_inset"
                android:insetRight="@dimen/round_button_inset"
                android:insetBottom="@dimen/round_button_inset">

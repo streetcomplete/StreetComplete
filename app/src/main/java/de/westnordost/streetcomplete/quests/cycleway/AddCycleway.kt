@@ -32,7 +32,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             "NO", "SE", "FI", "IS", "DK",
             "GB", "IE", "NL", "BE", "FR", "LU",
             "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
-            "ES", "IT",
+            "ES", "IT", "HR",
             // East Asia
             "JP", "KR", "TW",
             // some of China (East Coast)

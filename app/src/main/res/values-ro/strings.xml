@@ -1260,4 +1260,20 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_busStopLit_name_title">"Este stația de autobuz %s iluminată?"</string>
     <string name="no_location_permission_warning_title">"Permisiunea de a accesa locația"</string>
     <string name="quest_surface_value_woodchips">"Așchii de lemn"</string>
+    <string name="no_camera_app">"Nu este disponibilă aplicația pentru cameră"</string>
+    <string name="quest_busStopBin_tram_name_title">"Stația %s are coș de gunoi?"</string>
+    <string name="quest_busStopBin_tram_title">"Această stație are un coș de gunoi?"</string>
+    <string name="quest_busStopBin_title">"Această stație de autobuz are coș de gunoi?"</string>
+    <string name="quest_busStopBin_name_title">"Stația de autobuz %s are coș de gunoi?"</string>
+    <string name="quest_bollard_type_title">"Ce tip de stâlp este?"</string>
+    <string name="quest_bollard_type_rising">"Extensibil"</string>
+    <string name="quest_bollard_type_removable_with_key">"Se poate îndepărta, cu cheie"</string>
+    <string name="quest_bollard_type_removable_without_key">"Se poate îndepărta, fără cheie"</string>
+    <string name="quest_bollard_type_foldable">"Pliant"</string>
+    <string name="quest_bollard_type_flexible">"Flexibil"</string>
+    <string name="quest_bollard_type_fixed">"Fix (nu se poate îndepărta)"</string>
+    <string name="quest_camera_type_title">"Ce tip de cameră de supraveghere este aceasta?"</string>
+    <string name="quest_camera_type_dome">"Cupolă"</string>
+    <string name="quest_camera_type_fixed">"Fixă"</string>
+    <string name="quest_camera_type_panning">"Se poate orienta"</string>
 </resources>

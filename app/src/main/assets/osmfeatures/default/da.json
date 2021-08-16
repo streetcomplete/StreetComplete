@@ -20,6 +20,9 @@
                 "category-path": {
                     "name": "Stier"
                 },
+                "category-playground": {
+                    "name": "Legeredskaber"
+                },
                 "category-rail": {
                     "name": "Jernbane"
                 },
@@ -100,6 +103,14 @@
                 },
                 "access_simple": {
                     "label": "Tilladt adgang",
+                    "options": {
+                        "customers": "Kun kunder",
+                        "no": "Ingen",
+                        "permissive": "Tilladt",
+                        "permit": "Kun med tilladelse",
+                        "private": "Privat",
+                        "yes": "Offentlig"
+                    },
                     "terms": "adgang,tillad,restriktion,privat,offentlig"
                 },
                 "addr/interpolation": {
@@ -117,6 +128,7 @@
                         "block_number": "Bloknummer",
                         "block_number!jp": "Bloknr.",
                         "city": "By",
+                        "city!cn": "By/Præfektur/League",
                         "city!jp": "City/By/Landsby/Tokyo specielafdeling",
                         "city!vn": "City/By",
                         "conscriptionnumber": "123",
@@ -124,6 +136,7 @@
                         "county": "Region",
                         "county!jp": "Distrikt",
                         "district": "Bydel",
+                        "district!cn": "Distrikt/Amt/Banner",
                         "district!vn": "Arrondissement/by/distrikt",
                         "floor": "Etage",
                         "hamlet": "Lille landsby",
@@ -135,6 +148,7 @@
                         "place": "Sted",
                         "postcode": "Postnummer",
                         "province": "Landsdel",
+                        "province!cn": "Provins/Kommune/AR/SAR",
                         "province!jp": "Præfekturet",
                         "quarter": "Bydel",
                         "quarter!jp": "Ōaza/Machi",
@@ -275,7 +289,12 @@
                     "label": "Specialitet"
                 },
                 "beauty": {
-                    "label": "Skønhedsspecialitet"
+                    "label": "Skønhedsspecialitet",
+                    "options": {
+                        "cosmetics": "Kosmetik",
+                        "nails": "NEgle",
+                        "tanning": "Solbadning"
+                    }
                 },
                 "bench": {
                     "label": "Bænk",
@@ -525,6 +544,24 @@
                 },
                 "cuisine": {
                     "label": "Kogekunsttype",
+                    "options": {
+                        "american": "Amerikansk",
+                        "asian": "Asiatisk",
+                        "chicken": "Kylling",
+                        "chinese": "Kinesisk",
+                        "coffee_shop": "Kaffebar",
+                        "french": "Fransk",
+                        "german": "Tysk",
+                        "greek": "Græsk",
+                        "ice_cream": "Is",
+                        "indian": "Indisk",
+                        "italian": "Italiensk",
+                        "japanese": "Japansk",
+                        "mexican": "Mexikansk",
+                        "thai": "Thailandsk",
+                        "turkish": "Tyrkisk",
+                        "vietnamese": "Vietnamesisk"
+                    },
                     "terms": "mad,retter,køkkener"
                 },
                 "currency_multi": {
@@ -646,7 +683,14 @@
                     "placeholder": "5 mm, 10 cm, 15 in…"
                 },
                 "diet_multi": {
-                    "label": "Diæt type"
+                    "label": "Diæt type",
+                    "options": {
+                        "gluten_free": "Glutenfri",
+                        "lactose_free": "Laktosefri",
+                        "pescetarian": "Pesco-vegetarisme",
+                        "vegan": "Vegansk",
+                        "vegetarian": "Vegetarisk"
+                    }
                 },
                 "diplomatic": {
                     "label": "Type"
@@ -667,6 +711,7 @@
                     "placeholder": "45, 90, 180, 270"
                 },
                 "direction_vertex": {
+                    "label": "Påvirket retning",
                     "options": {
                         "backward": "Baglæns",
                         "both": "Begge / alle",
@@ -674,6 +719,7 @@
                     }
                 },
                 "direction_vertex_dual": {
+                    "label": "Påvirket retning",
                     "options": {
                         "backward": "Baglæns",
                         "forward": "Forlæns"
@@ -683,7 +729,11 @@
                     "label": "Receptpligtig"
                 },
                 "display": {
-                    "label": "Display"
+                    "label": "Display",
+                    "options": {
+                        "sundial": "Solur",
+                        "unorthodox": "Uortodoks"
+                    }
                 },
                 "distance": {
                     "label": "Afstand"
@@ -798,6 +848,7 @@
                     "label": "Udformning",
                     "options": {
                         "pillar": "Søjle/overjordisk",
+                        "pipe": "Rørafslutning",
                         "underground": "Underjordisk",
                         "wall": "Mur"
                     }
@@ -2375,7 +2426,8 @@
                     "name": "Donut fastfood"
                 },
                 "amenity/fast_food/fish_and_chips": {
-                    "name": "Fish & Chips fastfood"
+                    "name": "Fish & Chips fastfood",
+                    "terms": "grill,frokost,fritter,pommes,fisk"
                 },
                 "amenity/fast_food/hot_dog": {
                     "name": "Hot Dog fastfood"
@@ -2392,6 +2444,9 @@
                 },
                 "amenity/fast_food/sandwich": {
                     "name": "Sandwich fastfood"
+                },
+                "amenity/ferry_terminal": {
+                    "name": "Færgeterminal"
                 },
                 "amenity/fire_station": {
                     "name": "Brandstation"
@@ -2481,6 +2536,10 @@
                 "amenity/parking/multi-storey": {
                     "name": "Fleretagesparkering",
                     "terms": "parkeringskælder,kælder,parkeringshus"
+                },
+                "amenity/parking/park_ride": {
+                    "name": "Pendlerparkering",
+                    "terms": "pendler,parkering,samkørsel,offentlig transport,park'n'ride,parknride"
                 },
                 "amenity/parking/underground": {
                     "name": "Underjordisk parkering"
@@ -3199,8 +3258,8 @@
                     "terms": "slik,sukker,bolcher,chokolade,søde sager"
                 },
                 "craft/distillery": {
-                    "name": "Distelleri",
-                    "terms": "distellering,alkohol,sprit"
+                    "name": "Destilleri",
+                    "terms": "destillering,alkohol,sprit,drikkevare,gin,rom,whiskey"
                 },
                 "craft/dressmaker": {
                     "name": "Skrædder",
@@ -3496,8 +3555,9 @@
                     "terms": "fod,fødder,negle"
                 },
                 "healthcare/psychotherapist": {
-                    "name": "Psykoterapeut",
-                    "terms": "psyke,angst,depression,mental,sind,selvmord"
+                    "name": "Psykolog",
+                    "terms": "psykolog,terapeut,terapi,psyke,angst,depression,mental,sind,selvmord,psykoterapeut",
+                    "aliases": "Psykoterapeut"
                 },
                 "highway/bridleway": {
                     "name": "Ridesti",
@@ -3533,6 +3593,10 @@
                 "highway/cycleway": {
                     "name": "Cykelsti",
                     "terms": "cykelsti"
+                },
+                "highway/cycleway/bicycle_foot": {
+                    "name": "Cykel & gangsti",
+                    "terms": "gang,fodgænger,sti,gå,fortov,cykel,cyklist"
                 },
                 "highway/cycleway/crossing": {
                     "name": "Cykelfelt"
@@ -4885,12 +4949,27 @@
                     "name": "Sporvogn- og busstop",
                     "terms": "bus,letbane,sporvogn,platform,offentlig,transport"
                 },
+                "public_transport/platform/ferry": {
+                    "name": "Færgeplatform",
+                    "terms": "færge,båd,mole,offentlig transport,transport,offentlig,station,terminal"
+                },
+                "public_transport/platform/ferry_point": {
+                    "name": "Færgestoppested"
+                },
+                "public_transport/station_ferry": {
+                    "name": "Færgeterminal",
+                    "terms": "færge,båd,mole,offentlig transport,transport,offentlig,station,terminal"
+                },
                 "public_transport/stop_area": {
                     "name": "Stoppestedsområde",
                     "terms": "stop,stoppested,station"
                 },
                 "public_transport/stop_position_bus": {
                     "name": "Busstoppested"
+                },
+                "public_transport/stop_position_ferry": {
+                    "name": "Færgestoppested",
+                    "terms": "færge,båd,mole,offentlig transport,transport,offentlig,station,terminal"
                 },
                 "railway/abandoned": {
                     "name": "Ej brugt jernbanespor",
@@ -5127,6 +5206,10 @@
                 "shop/cosmetics": {
                     "name": "Kosmetikbutik",
                     "terms": "kosmetikbutik,kosmetikforretning"
+                },
+                "shop/craft": {
+                    "name": "Kunst & hobbybutik",
+                    "terms": "hobby,kunst,værktøj,forsyning,maling,lærred"
                 },
                 "shop/curtain": {
                     "name": "Gardinbutik",
@@ -5708,10 +5791,6 @@
                 "type/route/hiking": {
                     "name": "Vandrerute",
                     "terms": "vandrerute,vandretur,gårute"
-                },
-                "type/route/horse": {
-                    "name": "Kørerute",
-                    "terms": "kørerute"
                 },
                 "type/route/pipeline": {
                     "name": "Rørledningsnet",

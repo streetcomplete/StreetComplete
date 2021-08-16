@@ -55,8 +55,12 @@
     <string name="quest_openingHours_end_time">"Jam tutup"</string>
     <string name="quest_openingHours_add_months">"Tambahkan bulan"</string>
     <string name="quest_openingHours_add_hours">"Tambahkan jam"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Tambahkan hari kerja"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Pilih bulan"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Pilih hari kerja"</string>
     <string name="quest_openingHours_24_7_confirmation">"Dengan kata lain, apa bukanya kapan saja, setiap hari?"</string>
     <string name="quest_noteDiscussion_title">"Apa kamu bisa berkontribusi ke catatan ini?"</string>

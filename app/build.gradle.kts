@@ -1,5 +1,4 @@
 import java.util.Properties
-import java.net.URI
 import java.io.FileInputStream
 
 plugins {
@@ -26,7 +25,7 @@ android {
         }
     }
 
-    compileSdkVersion(30)
+    compileSdk = 30
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -35,10 +34,10 @@ android {
 
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
-        minSdkVersion(17)
-        targetSdkVersion(30)
-        versionCode = 3300
-        versionName = "33.0-beta1"
+        minSdk = 17
+        targetSdk = 30
+        versionCode = 3400
+        versionName = "34.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
     }
@@ -59,7 +58,7 @@ android {
         }
     }
 
-    lintOptions {
+    lint {
         disable("MissingTranslation")
         isAbortOnError = false
     }
@@ -103,14 +102,17 @@ dependencies {
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
+    // only necessary for Android 4.x (KitKat etc, before Lollipop)
+    implementation("androidx.multidex:multidex:2.0.1")
+
     // tests
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:2.8.0")
 
-    androidTestImplementation("androidx.test:runner:1.3.0")
-    androidTestImplementation("androidx.test:rules:1.3.0")
+    androidTestImplementation("androidx.test:runner:1.4.0")
+    androidTestImplementation("androidx.test:rules:1.4.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation("org.assertj:assertj-core:2.8.0")
 
@@ -119,12 +121,12 @@ dependencies {
     kapt("com.google.dagger:dagger-compiler:$daggerVersion")
 
     // Android stuff
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.core:core-ktx:1.5.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.core:core-ktx:1.6.0")
+    implementation("androidx.appcompat:appcompat:1.3.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
     implementation("androidx.annotation:annotation:1.2.0")
-    implementation("androidx.fragment:fragment-ktx:1.3.5")
+    implementation("androidx.fragment:fragment-ktx:1.3.6")
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
@@ -167,18 +169,18 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
 
     // map and location
-    implementation("com.mapzen.tangram:tangram:0.16.1")
+    implementation("com.mapzen.tangram:tangram:0.16.2")
 
     // config files
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.23.4")
+    implementation("ch.poole:OpeningHoursParser:0.25.0")
 }
 
 /** Localizations that should be pulled from POEditor etc. */
 val bcp47ExportLanguages = setOf(
-    "ar","ast","bg","bs","ca","cs","da","de","el","en","en-AU","en-GB","es","eu",
+    "am","ar","ast","bg","bs","ca","cs","da","de","el","en","en-AU","en-GB","es","eu",
     "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
     "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
 )

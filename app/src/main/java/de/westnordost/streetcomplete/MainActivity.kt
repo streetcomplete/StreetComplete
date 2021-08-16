@@ -253,6 +253,9 @@ class MainActivity : AppCompatActivity(),
                 // it, so it does not make sense to send an error report. Just notify the user.
                 if (e is ConnectionException) {
                     toast(R.string.download_server_error, Toast.LENGTH_LONG)
+                }  else if (e is AuthorizationException) {
+                    // delete secret in case it failed while already having a token -> token is invalid
+                    userController.logOut()
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity, R.string.download_error, e)
                 }

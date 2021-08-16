@@ -1003,7 +1003,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Fuzzy -->
     <string name="achievement_blind_solved_X">"Vous avez résolu %d quêtes utiles pour les déficients visuel !"</string>
-    <string name="achievement_pedestrian_title">"Courreur"</string>
+    <string name="achievement_pedestrian_title">"Coureur"</string>
     <string name="achievement_pedestrian_solved_X">"Vous avez résolu %d quêtes utiles pour les piétons !"</string>
     <string name="achievement_veg_title">"Bienveillance animale"</string>
     <string name="achievement_veg_solved_X">"Vous avez résolu %d quêtes utiles pour les personnes ne mangeant pas de viande !"</string>
@@ -1251,7 +1251,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="pref_title_delete_cache">"Supprimer le cache"</string>
     <string name="pref_title_delete_cache_summary">"Si vous pensez que certaines données sont périmées"</string>
     <string name="delete_confirmation">"Supprimer"</string>
-    <string name="delete_cache_dialog_message">"Supprimer toutes les données de cartes téléchargées, y compris les quêtes ? Les données sont automatiquement mises à jour au bout %1$s et les données inutilisées sont supprimées au bout de %2$s jours."</string>
+    <string name="delete_cache_dialog_message">"Supprimer toutes les données de cartes téléchargées, y compris les quêtes ? Les données sont automatiquement mises à jour au bout de %1$s jours et les données inutilisées sont supprimées au bout de %2$s jours."</string>
     <string name="quest_shop_type_title">"Quel type de commerce est %s ?"</string>
     <string name="quest_shop_type_title_no_name">"Quel type de commerce est-ce ?"</string>
     <string name="pref_background_type_select">"Sélectionner le type de fond"</string>

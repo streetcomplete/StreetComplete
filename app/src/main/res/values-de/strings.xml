@@ -39,6 +39,8 @@
     <string name="quest_openingHours_end_time">"schließt um"</string>
     <string name="quest_openingHours_add_months">"Monate hinzufügen"</string>
     <string name="quest_openingHours_add_hours">"Zeiten hinzufügen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Wochentage hinzufügen"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Monate auswählen"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Wochentage auswählen"</string>
@@ -992,7 +994,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_surface_value_artificial_turf">"Kunstrasen"</string>
     <string name="quest_surface_value_tartan">"Tartanbahn"</string>
     <string name="quest_pitchSurface_title_track">"Welchen Bodenbelag hat diese Rennbahn?"</string>
-    <string name="quest_bicycle_parking_access_title">"Ist es eingeschränkt, wer hier ein Fahrrad parken darf?"</string>
+    <string name="quest_bicycle_parking_access_title">"Gibt es Einschränkungen, wer hier ein Fahrrad parken darf?"</string>
     <string name="quest_bicycle_parking_fee_title">"Fallen hier Parkgebühren für Fahrräder an?"</string>
     <string name="quest_buildingType_house_description2">"nicht freistehendes Einfamilienhaus"</string>
     <string name="quest_drinking_water_title">"Ist das Wasser hier trinkbar? (%s)"</string>

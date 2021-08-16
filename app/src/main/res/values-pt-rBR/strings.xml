@@ -481,7 +481,7 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_busStopShelter_name_title">"O ponto de ônibus %s tem abrigo?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_toiletsFee_title">"Estes sanitários são pagos?"</string>
+    <string name="quest_toiletsFee_title">"Você precisa pagar para usar este banheiro?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Esta parada de ônibus tem pavimentos táteis?"</string>
@@ -1026,7 +1026,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_streetName_answer_noName_noname">"Nenhuma das opções, simplesmente não há nome"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_title">"São esses banheiros acessíveis por cadeira de rodas?"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Este banheiro é acessível para cadeiras de rodas?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_name_title">"O banheiro %s é acessível por cadeira de rodas?"</string>
@@ -2029,9 +2029,9 @@ conquista"</string>
     <string name="quest_oneway2_dir">"Direção única nesta direção"</string>
     <string name="quest_oneway2_no_oneway">"Não é uma direção única"</string>
     <string name="quest_maxweight_select_sign">"Selecione o sinal"</string>
-    <string name="quest_steps_incline_title">"Qual direção leva para cima para essas etapas?"</string>
+    <string name="quest_steps_incline_title">"Qual direção dos degraus leva para cima?"</string>
     <string name="quest_steps_incline_up">"Dessa forma"</string>
-    <string name="quest_step_count_title">"Quantas paradas estão aqui?"</string>
+    <string name="quest_step_count_title">"Quantos degraus possui aqui?"</string>
     <string name="quest_traffic_signals_sound_title">"Existe sinalização sonora para cegos aqui?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Esses semáforos têm uma indicação tátil para cegos, quando é seguro atravessar?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Dica: Frequentemente, trata-se de um botão vibratório ou cone giratório na parte inferior da caixa do botão do semáforo."</string>
@@ -2040,7 +2040,7 @@ conquista"</string>
     <string name="quest_buildingType_bungalow_description2">"pequena casa independente (casa de verão, casa de férias, cabana …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Que barreiras são usadas neste cruzamento ferroviário?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Sem barreiras"</string>
-    <string name="quest_steps_ramp_title">"Essas paradas têm rampa? Que tipo?"</string>
+    <string name="quest_steps_ramp_title">"Esses degraus possui rampa? Que tipo?"</string>
     <string name="quest_steps_ramp_none">"Sem rampa (utilizável)"</string>
     <string name="quest_steps_ramp_bicycle">"Rampa de bicicleta"</string>
     <string name="quest_steps_ramp_stroller">"Rampa de carrinho"</string>
@@ -2213,7 +2213,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_busStopLit_tram_name_title">"A parada de bonde %s é iluminada?"</string>
     <string name="quest_busStopLit_tram_title">"Esta parada do bonde é iluminada?"</string>
     <string name="quest_busStopLit_title">"Este ponto de ônibus está iluminado?"</string>
-    <string name="quest_busStopLit_name_title">"A parada de ônibus %s está dividida?"</string>
+    <string name="quest_busStopLit_name_title">"A parada de ônibus %s possui iluminação?"</string>
     <string name="no_location_permission_warning_title">"Permissão de localização"</string>
     <string name="quest_surface_value_woodchips">"Lascas de madeira"</string>
     <string name="no_camera_app">"Nenhum app de câmera disponível"</string>
