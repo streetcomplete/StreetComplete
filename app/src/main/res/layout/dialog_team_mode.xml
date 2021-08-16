@@ -61,7 +61,7 @@
         android:id="@+id/colorHint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/team_mode_choose_color"
+        android:text="@string/team_mode_choose_color2"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
         android:visibility="gone"
         tools:visibility="visible" />
