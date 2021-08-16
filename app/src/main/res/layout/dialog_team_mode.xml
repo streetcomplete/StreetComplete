@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:labelFor="@id/teamSizeInput"
-            android:text="@string/team_mode_team_size_label"
+            android:text="@string/team_mode_team_size_label2"
             android:textAppearance="@android:style/TextAppearance.Theme.Dialog" />
 
         <EditText
