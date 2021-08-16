@@ -3,14 +3,10 @@ package de.westnordost.streetcomplete.quests.crossing
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.util.initialBearingTo
-import de.westnordost.streetcomplete.util.normalizeDegrees
+import de.westnordost.streetcomplete.util.isRightOf
 
 class AddCrossing : OsmElementQuestType<Boolean> {
 
@@ -24,10 +20,15 @@ class AddCrossing : OsmElementQuestType<Boolean> {
     private val footwaysFilter by lazy { """
         ways with
           (highway ~ footway|steps or highway ~ path|cycleway and foot ~ designated|yes)
-          and footway != sidewalk
+          and footway !~ sidewalk|crossing
           and area != yes
           and access !~ private|no
     """.toElementFilterExpression() }
+
+    /* It is neither asked for sidewalks nor crossings (=separately mapped sidewalk infrastructure)
+    *  because a "no" answer would require to also delete/adapt the crossing ways, rather than just
+    *  tagging crossing=no on the vertex.
+    *  See https://github.com/streetcomplete/StreetComplete/pull/2999#discussion_r681516203 */
 
     override val commitMessage = "Add whether there is a crossing"
     override val wikiLink = "Tag:highway=crossing"
