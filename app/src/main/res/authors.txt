@@ -20,7 +20,8 @@ barrier_turnstile.jpg          CC-BY-SA 4.0      MelnikovArtyom https://commons.
 barrier_debris_pile.jpg        CC-BY 2.0         Oregon Department of Transportation https://commons.wikimedia.org/wiki/File:Landslide_on_OR_42S_(46849629014).jpg
 barrier_stile_squeezer.jpg     CC-BY-SA 2.0      Mike Fowkes https://en.wikipedia.org/wiki/File:Squeezer_stile._-_geograph.org.uk_-_110502.jpg
 barrier_stile_ladder.jpg       CC-BY-SA 2.0      David Gruar https://commons.wikimedia.org/wiki/File:Family_of_ladder_stiles_-_geograph.org.uk_-_42040.jpg
-barrier_stile_stepover.jpg     CC-BY-SA 2.0      Philip Halling https://commons.wikimedia.org/wiki/File:Daffodil_Way,_Dymock_-_geograph.org.uk_-_69563.jpg
+barrier_stile_stepover_wood... CC-BY-SA 2.0      Philip Halling https://commons.wikimedia.org/wiki/File:Daffodil_Way,_Dymock_-_geograph.org.uk_-_69563.jpg
+barrier_stile_stepover_ston... CC-BY-SA 2.0      Dave Pickersgill https://www.geograph.org.uk/photo/3634198
 barrier_kissing_gate.jpg       CC-BY-SA 2.0      David Anstiss https://commons.wikimedia.org/wiki/File:Kissing_gate_near_Trillinghurst_Farm_-_geograph.org.uk_-_1512534.jpg
 barrier_bicycle_barrier.jpg    CC0               DerDings https://commons.wikimedia.org/wiki/File:Bicycle_barrier_2.JPG
 
