@@ -2340,4 +2340,22 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_busStopLit_tram_title">"Czy ten przystanek tramwajowy jest oświetlony?"</string>
     <string name="quest_busStopLit_title">"Czy ten przystanek autobusowy jest oświetlony?"</string>
     <string name="quest_busStopLit_name_title">"Czy przystanek autobusowy %s jest oświetlony?"</string>
+    <string name="no_location_permission_warning_title">"Dostęp do położenia"</string>
+    <string name="quest_surface_value_woodchips">"Zrębki (ścinki drewniane)"</string>
+    <string name="no_camera_app">"Aplikacja do robienia zdjęć jest niedostępna"</string>
+    <string name="quest_busStopBin_tram_name_title">"Czy przystanek tramwajowy %s posiada kosz na śmieci?"</string>
+    <string name="quest_busStopBin_tram_title">"Czy ten przystanek tramwajowy posiada kosz na śmieci?"</string>
+    <string name="quest_busStopBin_title">"Czy ten przystanek autobusowy posiada kosz na śmieci?"</string>
+    <string name="quest_busStopBin_name_title">"Czy przystanek autobusowy %s posiada kosz na śmieci?"</string>
+    <string name="quest_bollard_type_title">"Jaki rodzaj słupka jest tutaj?"</string>
+    <string name="quest_bollard_type_rising">"Podnoszony"</string>
+    <string name="quest_bollard_type_removable_with_key">"Na klucz"</string>
+    <string name="quest_bollard_type_removable_without_key">"Bez klucza"</string>
+    <string name="quest_bollard_type_foldable">"Składany"</string>
+    <string name="quest_bollard_type_flexible">"Elastyczny"</string>
+    <string name="quest_bollard_type_fixed">"Stały"</string>
+    <string name="quest_camera_type_title">"Jaki rodzaj kamery jest tutaj?"</string>
+    <string name="quest_camera_type_dome">"Kopułkowa"</string>
+    <string name="quest_camera_type_fixed">"Stała"</string>
+    <string name="quest_camera_type_panning">"Panoramowa"</string>
 </resources>

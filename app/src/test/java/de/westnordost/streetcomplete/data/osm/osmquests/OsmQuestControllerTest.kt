@@ -201,16 +201,14 @@ class OsmQuestControllerTest {
     }
 
     @Test fun `updates quests on map data listener update for deleted elements`() {
-        val quests1 = listOf(
+        val quests = listOf(
             osmQuest(ApplicableQuestType, NODE, 1),
             osmQuest(ComplexQuestTypeApplicableToNode42, NODE, 1),
-        )
-        val quests2 = listOf(
             osmQuest(ApplicableQuestType, NODE, 2)
         )
 
-        on(db.getAllForElement(NODE, 1)).thenReturn(quests1)
-        on(db.getAllForElement(NODE, 2)).thenReturn(quests2)
+        val keys = listOf(ElementKey(NODE, 1), ElementKey(NODE, 2))
+        on(db.getAllForElements(eq(keys))).thenReturn(quests)
 
         val deleted = listOf(
             ElementKey(NODE, 1),
@@ -219,7 +217,7 @@ class OsmQuestControllerTest {
 
         mapDataListener.onUpdated(MutableMapDataWithGeometry(), deleted)
 
-        val expectedDeletedQuestKeys = (quests1 + quests2).map { it.key }
+        val expectedDeletedQuestKeys = quests.map { it.key }
 
         verify(db).deleteAll(argThat { it.containsExactlyInAnyOrder(expectedDeletedQuestKeys) })
         verify(db).putAll(argThat { it.isEmpty() })
@@ -244,13 +242,12 @@ class OsmQuestControllerTest {
 
         val mapData = MutableMapDataWithGeometry(elements, geometries)
 
-
         val existingApplicableQuest = osmQuest(ApplicableQuestType, NODE, 1)
         val existingNonApplicableQuest = osmQuest(NotApplicableQuestType, NODE, 1)
 
         val previousQuests = listOf(existingApplicableQuest, existingNonApplicableQuest)
 
-        on(db.getAllForElement(NODE, 1L)).thenReturn(previousQuests)
+        on(db.getAllForElements(eq(elements.map { ElementKey(it.type, it.id) }))).thenReturn(previousQuests)
         on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
 
         mapDataListener.onUpdated(mapData, emptyList())

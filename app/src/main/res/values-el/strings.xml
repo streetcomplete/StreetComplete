@@ -2175,7 +2175,7 @@
     <string name="deleted_poi_action_description">"Το διαγράψατε"</string>
     <string name="added_tag_action_title">"Προστέθηκε %s"</string>
     <string name="removed_tag_action_title">"Αφαιρέθηκε %s"</string>
-    <string name="changed_tag_action_title">"Ενημερώθηκε στο %s"</string>
+    <string name="changed_tag_action_title">"Ενημερώθηκε σε %s"</string>
     <string name="pref_title_delete_cache">"Διαγραφή προσωρινής μνήμης"</string>
     <string name="pref_title_delete_cache_summary">"Εάν πιστεύετε ότι ορισμένα δεδομένα είναι παλιά"</string>
     <string name="delete_confirmation">"Διαγραφή"</string>
@@ -2198,10 +2198,33 @@
     <string name="quest_barrier_full_height_turnstile">"Περιστροφική πύλη πλήρους ύψους"</string>
     <string name="quest_barrier_type_turnstile">"Περιστροφική πύλη"</string>
     <string name="quest_barrier_type_passage">"Διάβαση μέσω τοίχου/φράχτη/κλπ. "</string>
+    <string name="quest_barrier_type_debris_pile">"Σωρός απορριμάτων"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Εμπόδιο ποδηλάτων"</string>
     <string name="quest_barrier_type_swing_gate">"Οριζόντια μπάρα"</string>
     <string name="quest_policeType_title">"Τι είδους αστυνομικό τμήμα είναι αυτό;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_stile_type_title">"Τι είδους πέρασμα φράχτη είναι αυτό;"</string>
+    <string name="pref_title_quests2">"Επιλογή και προτεραιότητα αναζήτησης"</string>
+    <string name="pref_subtitle_quests">"%1$d από %2$d ενεργοποιήθηκαν"</string>
+    <string name="quest_busStopLit_tram_name_title">"Είναι φωτισμένη η στάση τραμ %s;"</string>
+    <string name="quest_busStopLit_tram_title">"Είναι φωτισμένη αυτή η στάση τραμ;"</string>
     <string name="quest_busStopLit_title">"Αυτή η στάση λεωφορείου είναι φωτισμένη;"</string>
     <string name="quest_busStopLit_name_title">"Η στάση λεωφορείου %s είναι φωτισμένη;"</string>
+    <string name="no_location_permission_warning_title">"Άδεια τοποθεσίας "</string>
+    <string name="quest_surface_value_woodchips">"Ροκανίδια"</string>
+    <string name="no_camera_app">"Δεν υπάρχει διαθέσιμη εφαρμογή κάμερας"</string>
+    <string name="quest_busStopBin_tram_name_title">"Έχει κάδο απορριμάτων η στάση τραμ %s;"</string>
+    <string name="quest_busStopBin_tram_title">"Έχει κάδο απορριμάτων αυτή η στάση τραμ;"</string>
+    <string name="quest_busStopBin_title">"Έχει κάδο απορριμάτων αυτή η στάση λεωφορείου;"</string>
+    <string name="quest_busStopBin_name_title">"Έχει κάδο απορριμάτων η στάση λεωφορείου %s;"</string>
+    <string name="quest_bollard_type_title">"Τί είδους κολωνάκι είναι αυτό;"</string>
+    <string name="quest_bollard_type_rising">"Αναδυόμενο"</string>
+    <string name="quest_bollard_type_removable_with_key">"Αφαιρούμενο με κλειδί"</string>
+    <string name="quest_bollard_type_removable_without_key">"Αφαιρούμενο χωρίς κλειδί"</string>
+    <string name="quest_bollard_type_foldable">"Αναδιπλούμενο"</string>
+    <string name="quest_bollard_type_flexible">"Εύκαμπτο"</string>
+    <string name="quest_bollard_type_fixed">"Σταθερό (όχι αφαιρούμενο)"</string>
+    <string name="quest_camera_type_title">"Τί είδους κάμερα παρακολούθησης είναι αυτή;"</string>
+    <string name="quest_camera_type_fixed">"Σταθερή"</string>
 </resources>

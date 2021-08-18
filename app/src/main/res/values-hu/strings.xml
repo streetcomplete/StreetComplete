@@ -868,7 +868,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_parkingType_title">"Ez milyen típusú parkoló?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parkingType_surface">"Önálló parkoló"</string>
+    <string name="quest_parkingType_surface">"Önálló parkolóhely"</string>
 
     <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"Mélygarázs"</string>
@@ -1164,7 +1164,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_streetSurface_square_title">"Milyen a burkolata ennek a térnek?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_name_title">"Milyen a burkolata ennek a térnek: %s?"</string>
+    <string name="quest_streetSurface_square_name_title">"Mi a burkolata itt a térnek: %s?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Naptól és napszaktól függ…"</string>
@@ -1244,10 +1244,10 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_pathSurface_title_steps">"Milyen a burkolata ennek a lépcsőnek?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_bridleway">"Milyen a burkolata ennek a lovaglóútnak?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Mi a burkolata itt ennek a lovaglóútnak?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"Milyen a burkolata ennek a gyalogútnak?"</string>
+    <string name="quest_pathSurface_title">"Mi a burkolata itt ennek a gyalogútnak?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Válaszd ki a leginkább rá jellemzőt:"</string>
@@ -1687,7 +1687,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_leaf_type_mixed">"Mindkettő megtalálható"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cyclewayPartSurface_title">"Milyen a burkolata itt a kerékpárútnak?"</string>
+    <string name="quest_cyclewayPartSurface_title">"Mi a burkolata itt a kerékpárútnak?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"Az út mentén változik…"</string>
@@ -1705,7 +1705,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_split_way_many_splits_confirmation_description">"Ez jó pár új darab. Később is ugyanúgy tovább oszthatod az utat."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_footwayPartSurface_title">"Mi a járda anyaga?"</string>
+    <string name="quest_footwayPartSurface_title">"Mi a burkolata itt a járdának?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"Az itt levő wc: %s kerekesszékkel is használható?"</string>
@@ -2311,16 +2311,16 @@ szintek"</string>
     <string name="quest_kerb_height_title">"Milyen magas ez a járdaszegély?"</string>
     <string name="quest_kerb_height_flush">"Az útfelülettel megegyező"</string>
     <string name="quest_kerb_height_lowered">"Valamivel magasabb az útfelületnél"</string>
-    <string name="quest_kerb_height_raised">"Magas szegély"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Nincs szegély az átkelő ezen oldalán"</string>
-    <string name="quest_kerb_height_lowered_ramp">"Szegély rámpa"</string>
+    <string name="quest_kerb_height_raised">"Megemelt járdaszegély"</string>
+    <string name="quest_kerb_height_answer_no_kerb">"Nincs járdaszegély a gyalogosátkelőnek ezen az oldalán"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Süllyesztett járdaszegély"</string>
 
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Add meg az autóforgalom számára használható, jelölt sávok számát (két irányban együttesen). A kerékpársávok és a parkolósávok nem számítanak bele. Ha vannak buszok számára fenntartott sávok is, akkor kérlek, inkább hagyj megjegyzést."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_lanes_answer_lanes_description_one_side2">"Add meg az autóforgalom számára használható, jelölt sávok számát. A kerékpársávok és a parkolósávok nem számítanak bele. Ha vannak buszok számára fenntartott sávok is, akkor kérlek, inkább hagyj megjegyzést."</string>
-    <string name="quest_surface_value_rock">"Szikla"</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Add meg az autóforgalom számára használható, jelölt sávok számát. A kerékpársávok és a parkolósávok nem számítanak bele. Ha buszsáv is van, akkor inkább írj egy megjegyzést."</string>
+    <string name="quest_surface_value_rock">"Kő"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Magas kamionok át tudnak haladni"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Magas kamionok nem férnek el"</string>
     <string name="quest_address_street_hint">"Koppints a térképen lévő útra"</string>
@@ -2342,21 +2342,21 @@ szintek"</string>
     <string name="quest_shop_gone_replaced_answer_error">"Nem tudom pontosan. Inkább megjegyzést hagyok."</string>
     <string name="quest_shop_vacant_type_title">"Ez az üzlet üresen állt. Mi található most itt?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"A sávok száma eltérő a két oldalon"</string>
-    <string name="quest_pitchSurface_title">"Milyen a burkolata ennek a sportpályának?"</string>
+    <string name="quest_pitchSurface_title">"Mi a burkolata ennek a sportpályának?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Ez a kérdéstípus alapértelmezésben ki van kapcsolva, mivel egyes régiókban kevésbé hasznos, valamint a kérdés megválaszolásához jó eséllyel be kell menni az adott helyre."</string>
     <string name="quest_dietType_kosher_name_title">"Rendelkezik a hely kóser termékekkel: %s?"</string>
     <string name="quest_dietType_explanation_kosher">"A kóser termékeknek különleges szabályok szerint kell készülniük, valamint rendelkezniük kell a megfelelő intézmények hitelesítésével."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nincs kerékpárút egyáltalán"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Sokás szerint koppints az ábra egyik oldalára, válaszd ki a megfelelő választ, majd tedd meg hasonlóan a másik oldalon is. Vedd figyelembe az összes lehetséges választ: néhány esetben nem egyértelmű, például olyan egyirányú út esetében, amelyen a kerékpárosok mindkét irányban közlekedhetnek."</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"\"Nincs kerékpárút\" válasz"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"„Nincs kerékpárút” válasz"</string>
     <string name="quest_construction_completed_at_known_date">"Ekkor lesz készen…"</string>
     <string name="quest_construction_completion_date_title">"Mikor lesz ez készen?"</string>
-    <string name="quest_surface_value_clay">"Agyag"</string>
+    <string name="quest_surface_value_clay">"Salak"</string>
     <string name="quest_surface_value_artificial_turf">"Műfű"</string>
     <string name="quest_surface_value_tartan">"Rekortán"</string>
     <string name="quest_pitchSurface_title_track">"Milyen a burkolata ennek a futópályának?"</string>
     <string name="quest_bicycle_parking_access_title">"Korlátozva van, hogy ki használhatja ezt a kerékpártárolót?"</string>
-    <string name="quest_bicycle_parking_fee_title">"Ez a kerékpártároló fizetős?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Fizetős ez a kerékpártároló?"</string>
     <string name="quest_buildingType_house_description2">"családi ház, mely egy sorház része"</string>
     <string name="quest_drinking_water_title">"Iható itt a víz? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Biztonságosan iható (jelzett)"</string>
@@ -2396,12 +2396,12 @@ szintek"</string>
     <string name="removed_tag_action_title">"%s eltávolítva"</string>
     <string name="changed_tag_action_title">"Feltöltve ide: %s"</string>
     <string name="pref_title_delete_cache">"Gyorsítótár törlése"</string>
-    <string name="pref_title_delete_cache_summary">"Ha úgy gondolod, néhány adat elavult"</string>
+    <string name="pref_title_delete_cache_summary">"Ha úgy gondolod, hogy néhány adat elavult"</string>
     <string name="delete_confirmation">"Törlés"</string>
     <string name="delete_cache_dialog_message">"Törlöd az összes letöltött térképadatot, beleértve a kérdéseket?
 Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap után automatikusan törlésre kerülnek."</string>
-    <string name="quest_shop_type_title">"Ez milyen bolt: %s?"</string>
-    <string name="quest_shop_type_title_no_name">"Ez milyen bolt?"</string>
+    <string name="quest_shop_type_title">"Milyen bolt ez: %s?"</string>
+    <string name="quest_shop_type_title_no_name">"Milyen bolt ez?"</string>
     <string name="pref_background_type_select">"Háttér kiválasztása"</string>
     <string name="background_type_map">"Térkép"</string>
     <string name="background_type_aerial_esri">"Légi felvétel (Esri)"</string>
@@ -2411,12 +2411,12 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_barrier_type_bollard">"Cövek(ek)"</string>
     <string name="quest_barrier_type_chain">"Lánc"</string>
     <string name="quest_barrier_type_rope">"Kötél"</string>
-    <string name="quest_barrier_type_wire_gate">"Drótkapu"</string>
+    <string name="quest_barrier_type_wire_gate">"Eltávolítható drótszakasz"</string>
     <string name="quest_barrier_type_cattle_grid">"Állatok áthaladását megakadályozó rács"</string>
     <string name="quest_barrier_type_block">"Nagy, nem mozdítható objektum"</string>
     <string name="quest_barrier_jersey_barrier">"Beton szalagkorlát"</string>
     <string name="quest_barrier_type_log">"Farönk"</string>
-    <string name="quest_barrier_type_kerb">"Szegély"</string>
+    <string name="quest_barrier_type_kerb">"Járdaszegély"</string>
     <string name="quest_barrier_type_height_restrictor">"Magassági akadály"</string>
     <string name="quest_barrier_full_height_turnstile">"Egész alakos forgókapu"</string>
     <string name="quest_barrier_type_turnstile">"Forgókapu"</string>
@@ -2438,4 +2438,23 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_busStopLit_tram_title">"Ez a villamosmegálló ki van világítva?"</string>
     <string name="quest_busStopLit_title">"Ez a buszmegálló ki van világítva?"</string>
     <string name="quest_busStopLit_name_title">"Ez a buszmegálló ki van világítva: %s?"</string>
+    <string name="no_location_permission_warning_title">"Helymeghatározási engedély"</string>
+    <string name="quest_surface_value_woodchips">"Faapríték"</string>
+    <string name="no_camera_app">"Kamera app hiányzik"</string>
+    <string name="quest_busStopBin_tram_name_title">"Van-e szemétkosár ebben a villamosmegállóban: %s?"</string>
+    <string name="quest_busStopBin_tram_title">"Van-e szemétkosár ebben a villamos
+megállóban?"</string>
+    <string name="quest_busStopBin_title">"Van-e szemétkosár ebben a buszmegállóban?"</string>
+    <string name="quest_busStopBin_name_title">"Van-e szemétkosár ebben a buszmegállóban: %s?"</string>
+    <string name="quest_bollard_type_title">"Milyen típusú terelőoszlop ez?"</string>
+    <string name="quest_bollard_type_rising">"Felemelkedő"</string>
+    <string name="quest_bollard_type_removable_with_key">"Kulccsal eltávolítható"</string>
+    <string name="quest_bollard_type_removable_without_key">"Kulcs nélkül eltávolítható"</string>
+    <string name="quest_bollard_type_foldable">"Lehajtható"</string>
+    <string name="quest_bollard_type_flexible">"Rugalmas"</string>
+    <string name="quest_bollard_type_fixed">"Rögzített (nem eltávolítható)"</string>
+    <string name="quest_camera_type_title">"Milyen típusú biztonsági kamera ez?"</string>
+    <string name="quest_camera_type_dome">"Kupola"</string>
+    <string name="quest_camera_type_fixed">"Rögzített"</string>
+    <string name="quest_camera_type_panning">"Pásztázó"</string>
 </resources>

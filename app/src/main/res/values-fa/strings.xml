@@ -14,7 +14,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده گرفتن یادداشت‌هایی که به عنوان پرسش تعریف نشده است"</string>
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
-    <string name="map_attribution_osm">"© مشارکت‌کنندگان در اوپن‌استریت‌مپ"</string>
+    <string name="map_attribution_osm">"© مشارکت‌کنندگان در نقشه‌متن‌باز (osm)"</string>
     <string name="quest_generic_otherAnswers">"دیگر پاسخ‌ها..."</string>
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
     <string name="quest_generic_confirmation_title">"مطمئنید؟"</string>
@@ -220,7 +220,7 @@
 &lt;p&gt;&lt;b&gt; مشارکت مستقیم&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 ابتدا بدانید که شما با استفاده از این برنامه، بطور مستقیم به نقشه‌متن‌باز کمک می‌کنید. &lt;br/&gt;
-هر اقدامی که شما در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت اوپن‌استریت‌مپ وجود ندارد
+هر اقدامی که شما در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت osm وجود ندارد
 &lt;/p&gt;
 &lt;p&gt;
 ویرایش نقشه متن‌باز به صورت ناشناس امکان‌پذیر نیست، بنابراین هر تغییری که ایجاد می کنید با  حساب کاربری OSM شما ذخیره می شود. این بدان معنی است که تاریخ، محتوا و به طور کلی مکان تغییرات شما به طور عمومی در وبگاه OSM قابل مشاهده است و در حساب کاربری شما ذخیره می‌شود.
@@ -1933,13 +1933,13 @@
     <string name="link_category_editors_title">"مشارکت"</string>
 
     <!-- Fuzzy -->
-    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در اوپن‌استریت‌مپ"</string>
+    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در نقشه‌متن‌باز (osm)"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_maps_title">"نقشه‌ها"</string>
 
     <!-- Fuzzy -->
-    <string name="link_category_maps_description">"نقشه‌های مبتنی بر اوپن‌استریت‌مپ"</string>
+    <string name="link_category_maps_description">"نقشه‌های مبتنی بر نقشه‌متن‌باز (osm)"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_showcase_title">"ويترين"</string>
@@ -2381,4 +2381,30 @@
     <string name="quest_barrier_type_kissing_gate_conversion">"تبدیل به دروازه لمسی"</string>
     <string name="quest_stile_type_title">"این چه نوع نرده ای است؟"</string>
     <string name="quest_buildingType_semi_detached_description2">"خانه (های) تک واحده"</string>
+    <string name="pref_title_quests2">"انتخاب و اولویت جُستار"</string>
+    <string name="pref_subtitle_quests">"%1$d از %2$d فعال شده
+
+"</string>
+    <string name="quest_busStopLit_tram_name_title">"آیا ایستگاه واگن برقی %s روشنایی دارد؟"</string>
+    <string name="quest_busStopLit_tram_title">"آیا این ایستگاه واگن برقی روشنایی دارد؟"</string>
+    <string name="quest_busStopLit_title">"آیا این ایستگاه اتوبوس روشنایی دار ؟"</string>
+    <string name="quest_busStopLit_name_title">"آیا این ایستگاه اتوبوس%s روشنایی دار ؟"</string>
+    <string name="no_location_permission_warning_title">"مجوز مکان"</string>
+    <string name="quest_surface_value_woodchips">"تراشه های چوبی"</string>
+    <string name="no_camera_app">"برنامه دوربین موجود نیست"</string>
+    <string name="quest_busStopBin_tram_name_title">"آیا ایستگاه واگن برقی %s سطل زباله دارد؟"</string>
+    <string name="quest_busStopBin_tram_title">"آیا این ایستگاه واگن برقی سطل زباله دارد؟"</string>
+    <string name="quest_busStopBin_title">"آیا این ایستگاه اتوبوس سطل زباله دارد؟"</string>
+    <string name="quest_busStopBin_name_title">"آیا این ایستگاه اتوبوس %s سطل زباله دارد؟"</string>
+    <string name="quest_bollard_type_title">"این چه نوع مهاربندی است؟"</string>
+    <string name="quest_bollard_type_rising">"بالارونده"</string>
+    <string name="quest_bollard_type_removable_with_key">"قابل جدا شدن با کلید"</string>
+    <string name="quest_bollard_type_removable_without_key">"قابل جدا شدن بدون کلید"</string>
+    <string name="quest_bollard_type_foldable">"تاشو"</string>
+    <string name="quest_bollard_type_flexible">"قابل انعطاف"</string>
+    <string name="quest_bollard_type_fixed">"ثابت (قابل جابجایی نیست)"</string>
+    <string name="quest_camera_type_title">"این چه نوع دوربین نظارتی است؟"</string>
+    <string name="quest_camera_type_dome">"خصوصی"</string>
+    <string name="quest_camera_type_fixed">"ثابت"</string>
+    <string name="quest_camera_type_panning">"کاذب"</string>
 </resources>

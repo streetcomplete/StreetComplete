@@ -2461,4 +2461,12 @@ Los datos se actualizan después de %1$s días y los datos no utilizados se elim
     <string name="quest_busStopLit_tram_title">"¿Está iluminada esta parada de tranvía?"</string>
     <string name="quest_busStopLit_title">"¿Está iluminada esta parada de bus?"</string>
     <string name="quest_busStopLit_name_title">"¿Está iluminada la parada de bus %s?"</string>
+    <string name="no_location_permission_warning_title">"Permiso de Localización"</string>
+    <string name="quest_surface_value_woodchips">"Virutas de madera"</string>
+    <string name="no_camera_app">"Aplicación de cámara no disponible"</string>
+    <string name="quest_bollard_type_foldable">"Plegable"</string>
+    <string name="quest_bollard_type_flexible">"Flexible"</string>
+    <string name="quest_camera_type_title">"¿Qué tipo de cámara de vigilancia es?"</string>
+    <string name="quest_camera_type_dome">"Domo"</string>
+    <string name="quest_camera_type_fixed">"Fija"</string>
 </resources>

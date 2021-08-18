@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.QUEST_TYPE
@@ -11,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.EL
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.NAME
+import de.westnordost.streetcomplete.data.queryIn
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import javax.inject.Inject
 
@@ -35,7 +37,8 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
 
     fun putAll(quests: Collection<OsmQuestDaoEntry>) {
         if (quests.isEmpty()) return
-        db.insertOrIgnoreMany(NAME,
+        // replace because even if the quest already exists in DB, the center position might have changed
+        db.replaceMany(NAME,
             arrayOf(QUEST_TYPE, ELEMENT_TYPE, ELEMENT_ID, LATITUDE, LONGITUDE),
             quests.map { arrayOf(
                 it.questTypeName,
@@ -47,11 +50,13 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
         )
     }
 
-    fun getAllForElement(elementType: ElementType, elementId: Long): List<OsmQuestDaoEntry> =
-        db.query(NAME,
-            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
-            args = arrayOf(elementType.name, elementId)
+    fun getAllForElements(keys: Collection<ElementKey>): List<OsmQuestDaoEntry> {
+        if (keys.isEmpty()) return emptyList()
+        return db.queryIn(NAME,
+            whereColumns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
+            whereArgs = keys.map { arrayOf(it.type.name, it.id) }
         ) { it.toOsmQuestEntry() }
+    }
 
     fun getAllInBBox(bounds: BoundingBox, questTypes: Collection<String>? = null): List<OsmQuestDaoEntry> {
         var builder = inBoundsSql(bounds)

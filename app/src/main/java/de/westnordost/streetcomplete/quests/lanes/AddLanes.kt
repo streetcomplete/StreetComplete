@@ -18,6 +18,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
           )
           and surface ~ ${ANYTHING_PAVED.joinToString("|")}
           and (!lanes or lanes = 0)
+          and (!lanes:backward or !lanes:forward)
           and lane_markings != no
     """
     override val commitMessage = "Add road lanes"

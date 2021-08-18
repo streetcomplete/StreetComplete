@@ -88,6 +88,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
 
     private var startedOnce = false
+    private var answered = 0
 
     // overridable by child classes
     open val contentLayoutResId: Int? = null
@@ -337,25 +338,29 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     }
 
     protected fun composeNote() {
-        val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
-        listener?.onComposeNote(questKey, questTitle)
+        if (answered++ == 0) {
+            val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
+            listener?.onComposeNote(questKey, questTitle)
+        }
     }
 
     private fun onClickSplitWayAnswer() {
         context?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_split_way_description)
             .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(android.R.string.ok) { _, _ -> listener?.onSplitWay(questKey as OsmQuestKey) }
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                if (answered++ == 0) listener?.onSplitWay(questKey as OsmQuestKey)
+            }
             .show()
         }
     }
 
     protected fun applyAnswer(data: T) {
-        listener?.onAnsweredQuest(questKey, data as Any)
+        if (answered++ == 0) listener?.onAnsweredQuest(questKey, data as Any)
     }
 
     protected fun skipQuest() {
-        listener?.onSkippedQuest(questKey)
+        if (answered++ == 0) listener?.onSkippedQuest(questKey)
     }
 
     protected fun replaceShopElement() {
@@ -369,7 +374,9 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
                 element.geometryType,
                 isoCountryCode,
                 featureDictionary,
-                onSelectedFeature = { tags -> listener?.onReplaceShopElement(questKey as OsmQuestKey, tags) },
+                onSelectedFeature = { tags ->
+                    if (answered++ == 0) listener?.onReplaceShopElement(questKey as OsmQuestKey, tags)
+                },
                 onLeaveNote = this::composeNote
             ).show()
         } else {
@@ -383,7 +390,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         AlertDialog.Builder(context)
             .setMessage(R.string.osm_element_gone_description)
             .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
-                listener?.onDeletePoiNode(questKey as OsmQuestKey)
+                if (answered++ == 0) listener?.onDeletePoiNode(questKey as OsmQuestKey)
             }
             .setNeutralButton(R.string.leave_note) { _, _ ->
                 composeNote()

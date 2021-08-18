@@ -1,0 +1,5 @@
+Palīdziet uzlabot OpenStreetMap izmantojot StreetComplete!
+
+Lietotne sameklē nepilnīgu un palašināmu informāciju jūsu apkārtnē un norāda to kartē. Visi no tiem ir atrisināmi atbildot vienkāršus jautājumus papildinot esošo informāciju.
+
+Informācija, ko jūs ievadiet tiek pievienota OpenStreetMap jūsu lietotājvārdā bez nepieciešamības izmamtot citu karšu rediģēšanas lietotni.

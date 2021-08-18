@@ -23,6 +23,9 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
 
             oldIndex?.let { notifyItemChanged(it) }
             index?.let { notifyItemChanged(it) }
+            for (listener in listeners) {
+                listener.onSelectedIndexChanged(index)
+            }
         }
 
     val listeners: MutableList<OnSelectedIndexChangedListener> = CopyOnWriteArrayList()
@@ -43,14 +46,10 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
             throw ArrayIndexOutOfBoundsException(index)
 
         selectedIndex = if (index == selectedIndex) null else index
-
-        for (listener in listeners) {
-            listener.onSelectedIndexChanged(selectedIndex)
-        }
     }
 
     private fun deselect() {
-        selectedIndex?.let { toggle(it) }
+        selectedIndex = null
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

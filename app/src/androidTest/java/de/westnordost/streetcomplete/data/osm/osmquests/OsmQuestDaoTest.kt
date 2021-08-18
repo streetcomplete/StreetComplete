@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -44,16 +45,23 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         assertEquals(q3, dao.get(q3.key))
     }
 
-    @Test fun getAllForElement() {
+    @Test fun getAllForElements() {
         val q1 = entry(ElementType.NODE, 0, "a")
         val q2 = entry(ElementType.NODE, 0, "b")
+        val q3 = entry(ElementType.NODE, 1L, "a")
 
         dao.putAll(listOf(
-            q1, q2,
+            q1, q2, q3,
             entry(ElementType.WAY, 0L, "a"),
-            entry(ElementType.NODE, 1L, "a")
+            entry(ElementType.NODE, 2L, "a")
         ))
-        assertTrue(dao.getAllForElement(ElementType.NODE, 0L).containsExactlyInAnyOrder(listOf(q1,q2)))
+
+        val keys = listOf(
+            ElementKey(ElementType.NODE, 0L),
+            ElementKey(ElementType.NODE, 1L)
+        )
+
+        assertTrue(dao.getAllForElements(keys).containsExactlyInAnyOrder(listOf(q1,q2,q3)))
     }
 
     @Test fun getAllInBBox() {

@@ -3225,10 +3225,6 @@
                     "name": "Ruta escursionista",
                     "terms": "senderismu,escursionismu"
                 },
-                "type/route/horse": {
-                    "name": "Ruta a caballu",
-                    "terms": "ruta ecuestre"
-                },
                 "type/route/light_rail": {
                     "name": "Ruta de tren llixeru"
                 },

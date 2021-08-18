@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
@@ -227,9 +228,10 @@ class MainActivity : AppCompatActivity(),
                         messageView.movementMethod = LinkMovementMethod.getInstance()
                         Linkify.addLinks(messageView, Linkify.WEB_URLS)
                     }
-                } else if (e is ConnectionException) {
-                    // A network connection error is not the fault of this app. Nothing we can do about
-                    // it, so it does not make sense to send an error report. Just notify the user.
+                } else if (e is ConnectionException || e is ImageUploadServerException) {
+                    /* A network connection error or server error is not the fault of this app.
+                       Nothing we can do about it, so it does not make sense to send an error
+                       report. Just notify the user. */
                     toast(R.string.upload_server_error, Toast.LENGTH_LONG)
                 } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
@@ -251,6 +253,9 @@ class MainActivity : AppCompatActivity(),
                 // it, so it does not make sense to send an error report. Just notify the user.
                 if (e is ConnectionException) {
                     toast(R.string.download_server_error, Toast.LENGTH_LONG)
+                }  else if (e is AuthorizationException) {
+                    // delete secret in case it failed while already having a token -> token is invalid
+                    userController.logOut()
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity, R.string.download_error, e)
                 }

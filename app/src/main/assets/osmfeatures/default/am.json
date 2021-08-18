@@ -1,0 +1,352 @@
+{
+    "am": {
+        "presets": {
+            "fields": {
+                "atm": {
+                    "label": "ፈጣን የገንዘብ ማሽን"
+                },
+                "building": {
+                    "label": "ህንፃ"
+                },
+                "clothes": {
+                    "label": "ልብስ ቤት"
+                }
+            },
+            "presets": {
+                "aeroway/aerodrome": {
+                    "name": "አየር ማረፊያ"
+                },
+                "amenity/bank": {
+                    "name": "ባንክ"
+                },
+                "amenity/bar": {
+                    "name": "ቡና ቤት"
+                },
+                "amenity/bicycle_repair_station": {
+                    "name": "ቢስክሌት ጠጋኝ"
+                },
+                "amenity/bureau_de_change": {
+                    "name": "የውጭ ምንዛሬ ቢሮ"
+                },
+                "amenity/bus_station": {
+                    "name": "አውቶቡስ መናኃሪያ"
+                },
+                "amenity/cafe": {
+                    "name": "ሻይ ቤት"
+                },
+                "amenity/car_rental": {
+                    "name": "የመኪና ማከራያ"
+                },
+                "amenity/car_sharing": {
+                    "name": "የመኪና ዕቃ መለዋወጫ መሸጫ"
+                },
+                "amenity/cinema": {
+                    "name": "ሲኒማ ቤት"
+                },
+                "amenity/clinic": {
+                    "name": "ክሊኒክ"
+                },
+                "amenity/college": {
+                    "name": "ኮሌጅ"
+                },
+                "amenity/community_centre": {
+                    "name": "የማህበረሰብ ማዕከል"
+                },
+                "amenity/courthouse": {
+                    "name": "ፍርድ ቤት"
+                },
+                "amenity/dentist": {
+                    "name": "የጥርስ ሃኪም"
+                },
+                "amenity/doctors": {
+                    "name": "ክሊኒክ"
+                },
+                "amenity/driving_school": {
+                    "name": "የመኪና ትምህርት ቤት"
+                },
+                "amenity/embassy": {
+                    "name": "ኤምባሲ"
+                },
+                "amenity/fast_food": {
+                    "name": "ፈጣን ምግብ"
+                },
+                "amenity/fire_station": {
+                    "name": "እሳትና ድንገተኛ አደጋዎች መከላከያ"
+                },
+                "amenity/grave_yard": {
+                    "name": "የቀብር ቦታ"
+                },
+                "amenity/hospital": {
+                    "name": "ሆስፒታል"
+                },
+                "amenity/ice_cream": {
+                    "name": "አይስ ክሬም"
+                },
+                "amenity/kindergarten": {
+                    "name": "ሕፃናት መዋያ"
+                },
+                "amenity/library": {
+                    "name": "ቤተ-መፃሕፍት"
+                },
+                "amenity/marketplace": {
+                    "name": "የገበያ ቦታ"
+                },
+                "amenity/music_school": {
+                    "name": "የሙዚቃ ትምህርት ቤት"
+                },
+                "amenity/nightclub": {
+                    "name": "የምሽት ክለብ"
+                },
+                "amenity/pharmacy": {
+                    "name": "መድሃኒት ቤት"
+                },
+                "amenity/place_of_worship": {
+                    "name": "የእምነት ቦታ"
+                },
+                "amenity/police": {
+                    "name": "ፖሊስ ጣቢያ"
+                },
+                "amenity/post_office": {
+                    "name": "ፖስታ ቤት"
+                },
+                "amenity/prison": {
+                    "name": "እስር ቤት"
+                },
+                "amenity/pub": {
+                    "name": "ፐብ"
+                },
+                "amenity/restaurant": {
+                    "name": "ምግብ ቤት"
+                },
+                "amenity/school": {
+                    "name": "ትምህርት ቤት"
+                },
+                "amenity/studio": {
+                    "name": "ስቱዲዮ"
+                },
+                "amenity/taxi": {
+                    "name": "ታክሲ"
+                },
+                "amenity/telephone": {
+                    "name": "የህዝብ ስልክ"
+                },
+                "amenity/theatre": {
+                    "name": "ቲያትር ቤት"
+                },
+                "amenity/toilets": {
+                    "name": "መፀዳጃ ቤት"
+                },
+                "amenity/university": {
+                    "name": "ዩኒቨርሲቲ"
+                },
+                "amenity/veterinary": {
+                    "name": "የእንስሳት መድሃኒት ቤት"
+                },
+                "building/apartments": {
+                    "name": "የመኖሪያ ቤት"
+                },
+                "building/commercial": {
+                    "name": "የንግድ ህንፃ"
+                },
+                "building/house": {
+                    "name": "የመኖሪያ ቤት"
+                },
+                "building/industrial": {
+                    "name": "የኢንዱስትሪ ቢሮ"
+                },
+                "building/public": {
+                    "name": "የህዝብ ህንፃ"
+                },
+                "building/retail": {
+                    "name": "የችርቻሮ ህንፃ"
+                },
+                "building/warehouse": {
+                    "name": "የዕቃ ቤት"
+                },
+                "highway/primary": {
+                    "name": "ዋና መንገድ"
+                },
+                "highway/residential": {
+                    "name": "የመኖሪያ አካባቢ መንገድ"
+                },
+                "highway/secondary": {
+                    "name": "ሁለተኛ መንገድ"
+                },
+                "highway/tertiary": {
+                    "name": "ተለዋጭ መንገድ"
+                },
+                "landuse/industrial": {
+                    "name": "ኢንዱስትሪ"
+                },
+                "leisure/garden": {
+                    "name": "መናፈሻ"
+                },
+                "leisure/golf_course": {
+                    "name": "የጎልፍ መጫወቻ"
+                },
+                "leisure/pitch/tennis": {
+                    "name": "ቴኒስ"
+                },
+                "leisure/stadium": {
+                    "name": "ስታዲዩም"
+                },
+                "office/accountant": {
+                    "name": "ሒሳብ ሠራተኛ"
+                },
+                "office/administrative": {
+                    "name": "አስተዳደር ቢሮ"
+                },
+                "office/advertising_agency": {
+                    "name": "የማስታወቂያ ድርጅት"
+                },
+                "office/architect": {
+                    "name": "አርኪቴክት"
+                },
+                "office/association": {
+                    "name": "ማኅበር"
+                },
+                "office/company": {
+                    "name": "ኩባንያ"
+                },
+                "office/educational_institution": {
+                    "name": "የትምህርት ተቋም"
+                },
+                "office/employment_agency": {
+                    "name": "የስራ ቅጥር ኤጀንሲ"
+                },
+                "office/estate_agent": {
+                    "name": "የሪል እስቴት ወኪል"
+                },
+                "office/foundation": {
+                    "name": "ተቋም"
+                },
+                "office/government": {
+                    "name": "የመንግስት ድርጅት"
+                },
+                "office/insurance": {
+                    "name": "ኢንሹራንስ"
+                },
+                "office/it": {
+                    "name": "አይ.ቲ."
+                },
+                "office/lawyer": {
+                    "name": "ጠበቃ"
+                },
+                "office/newspaper": {
+                    "name": "ጋዜጣ"
+                },
+                "office/ngo": {
+                    "name": "መንግስታዊ ያልሆነ ድርጅት"
+                },
+                "office/religion": {
+                    "name": "ሃይማኖት"
+                },
+                "office/research": {
+                    "name": "ምርምር ቢሮ"
+                },
+                "office/telecommunication": {
+                    "name": "ቴሌኮሙኒኬሽን"
+                },
+                "office/travel_agent": {
+                    "name": "የጉዞ ወኪል"
+                },
+                "place/city": {
+                    "name": "ከተማ"
+                },
+                "place/hamlet": {
+                    "name": "ከተማ"
+                },
+                "place/suburb": {
+                    "name": "አካባቢ"
+                },
+                "shop/beauty": {
+                    "name": "ውበት / ስፓ"
+                },
+                "shop/beverages": {
+                    "name": "የለስላሳ መጠጦች ማከፋፈያ"
+                },
+                "shop/books": {
+                    "name": "መፃሕፍት መሸጫ"
+                },
+                "shop/butcher": {
+                    "name": "ሥጋ ቤት"
+                },
+                "shop/car": {
+                    "name": "መኪና መሸጫ"
+                },
+                "shop/computer": {
+                    "name": "ኮምፒውተር"
+                },
+                "shop/department_store": {
+                    "name": "የተደራጀ ግዙፍ ማከፋፈያ"
+                },
+                "shop/electrical": {
+                    "name": "የኤሌትሪክ ዕቃዎች መሸጫ"
+                },
+                "shop/electronics": {
+                    "name": "ኤሌክትሮኒክስ መሸጫ ሱቅ"
+                },
+                "shop/florist": {
+                    "name": "የአበባ መሸጫ"
+                },
+                "shop/fuel": {
+                    "name": "ነዳጅ ማደያ"
+                },
+                "shop/furniture": {
+                    "name": "የቤትና የቢሮ ዕቃዎች መሸጫ"
+                },
+                "shop/greengrocer": {
+                    "name": "አትክልት መሸጫ ሱቆች"
+                },
+                "shop/hairdresser": {
+                    "name": "ፀጉር ቤት"
+                },
+                "shop/hardware": {
+                    "name": "ሲኒማ ቤት"
+                },
+                "shop/kiosk": {
+                    "name": "አነስተኛ ሱቅ"
+                },
+                "shop/laundry": {
+                    "name": "የልብስ ንጽህና መስጫ"
+                },
+                "shop/massage": {
+                    "name": "ማሳጅ ቤት"
+                },
+                "shop/optician": {
+                    "name": "መነፅር ቤት"
+                },
+                "shop/shoes": {
+                    "name": "ጫማ ቤት"
+                },
+                "shop/stationery": {
+                    "name": "የጽሕፈት መሳሪያ መሸጫ"
+                },
+                "shop/supermarket": {
+                    "name": "የገበያ ማዕከል"
+                },
+                "shop/video": {
+                    "name": "ቪዲዮ"
+                },
+                "tourism/guest_house": {
+                    "name": "እንግዳ ማረፊያ"
+                },
+                "tourism/hostel": {
+                    "name": "ሆስቴል"
+                },
+                "tourism/hotel": {
+                    "name": "ሆቴል"
+                },
+                "tourism/motel": {
+                    "name": "ሞቴል"
+                },
+                "tourism/museum": {
+                    "name": "ሙዚየም"
+                },
+                "tourism/zoo": {
+                    "name": "የእንስሳት ግቢ"
+                }
+            }
+        }
+    }
+}

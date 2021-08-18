@@ -824,7 +824,9 @@
     "aeroway/holding_position": {
         "icon": "temaki-plane_taxiing",
         "fields": [
-            "ref"
+            "ref",
+            "holding_position/type",
+            "ele_node"
         ],
         "geometry": [
             "vertex"
@@ -2530,6 +2532,7 @@
         "fields": [
             "name",
             "cuisine",
+            "diet_multi",
             "operator",
             "address",
             "building_area",
@@ -2544,7 +2547,6 @@
             "brand",
             "capacity",
             "delivery",
-            "diet_multi",
             "email",
             "fax",
             "gnis/feature_id",
@@ -10866,11 +10868,11 @@
             "oneway",
             "maxspeed",
             "surface",
-            "covered",
             "structure",
             "access"
         ],
         "moreFields": [
+            "covered",
             "flood_prone",
             "incline",
             "lanes",
@@ -13523,6 +13525,43 @@
             "leisure": "ice_rink"
         }
     },
+    "leisure/indoor_play": {
+        "icon": "temaki-slide",
+        "fields": [
+            "name",
+            "address",
+            "building_area",
+            "opening_hours",
+            "opening_hours/covid19",
+            "phone",
+            "website"
+        ],
+        "moreFields": [
+            "blind",
+            "brand",
+            "charge_fee",
+            "dog",
+            "email",
+            "fax",
+            "fee",
+            "gnis/feature_id",
+            "internet_access",
+            "internet_access/fee",
+            "internet_access/ssid",
+            "max_age",
+            "min_age",
+            "operator",
+            "payment_multi",
+            "wheelchair"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "leisure": "indoor_play"
+        }
+    },
     "leisure/marina": {
         "icon": "temaki-sailboat",
         "fields": [
@@ -14117,6 +14156,7 @@
             "blind",
             "dog",
             "gnis/feature_id",
+            "indoor",
             "wheelchair"
         ],
         "geometry": [
@@ -14125,6 +14165,17 @@
         ],
         "tags": {
             "leisure": "playground"
+        }
+    },
+    "leisure/playground/indoor": {
+        "icon": "maki-playground",
+        "geometry": [
+            "area",
+            "point"
+        ],
+        "tags": {
+            "leisure": "playground",
+            "indoor": "yes"
         }
     },
     "leisure/resort": {
@@ -17949,6 +18000,68 @@
             "value": "photovoltaic"
         }
     },
+    "power/generator/method/photovoltaic/building/roof": {
+        "icon": "fas-solar-panel",
+        "fields": [
+            "{power/generator/method/photovoltaic}"
+        ],
+        "moreFields": [
+            "{power/generator}"
+        ],
+        "geometry": [
+            "area",
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "power": "generator",
+            "generator:method": "photovoltaic",
+            "building": "roof"
+        },
+        "addTags": {
+            "power": "generator",
+            "generator:source": "solar",
+            "generator:method": "photovoltaic",
+            "generator:type": "solar_photovoltaic_panel",
+            "generator:output:electricity": "*",
+            "building": "roof"
+        },
+        "reference": {
+            "key": "generator:method",
+            "value": "photovoltaic"
+        }
+    },
+    "power/generator/method/photovoltaic/location/roof": {
+        "icon": "fas-solar-panel",
+        "fields": [
+            "{power/generator/method/photovoltaic}"
+        ],
+        "moreFields": [
+            "{power/generator}"
+        ],
+        "geometry": [
+            "area",
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "power": "generator",
+            "generator:method": "photovoltaic",
+            "location": "roof"
+        },
+        "addTags": {
+            "power": "generator",
+            "generator:source": "solar",
+            "generator:method": "photovoltaic",
+            "generator:type": "solar_photovoltaic_panel",
+            "generator:output:electricity": "*",
+            "location": "roof"
+        },
+        "reference": {
+            "key": "generator:method",
+            "value": "photovoltaic"
+        }
+    },
     "power/generator/source/hydro": {
         "icon": "temaki-power",
         "fields": [
@@ -18206,7 +18319,7 @@
         }
     },
     "power/plant/source/oil": {
-        "icon": "temaki-gas",
+        "icon": "fas-tint",
         "fields": [
             "name",
             "operator",
@@ -18267,6 +18380,37 @@
         "reference": {
             "key": "plant:method",
             "value": "photovoltaic"
+        }
+    },
+    "power/plant/source/waste": {
+        "icon": "fas-dumpster-fire",
+        "fields": [
+            "name",
+            "operator",
+            "address",
+            "plant/output/electricity",
+            "start_date"
+        ],
+        "moreFields": [
+            "{power/plant}"
+        ],
+        "geometry": [
+            "area"
+        ],
+        "tags": {
+            "power": "plant",
+            "plant:source": "waste"
+        },
+        "addTags": {
+            "power": "plant",
+            "landuse": "industrial",
+            "plant:source": "waste",
+            "plant:method": "combustion",
+            "plant:output:electricity": "*"
+        },
+        "reference": {
+            "key": "plant:source",
+            "value": "waste"
         }
     },
     "power/plant/source/wind": {
@@ -23581,7 +23725,8 @@
             "cycle_network",
             "network/type",
             "from",
-            "to"
+            "to",
+            "via"
         ],
         "moreFields": [
             "ascent",
@@ -23691,7 +23836,8 @@
             "network_foot",
             "network/type",
             "from",
-            "to"
+            "to",
+            "via"
         ],
         "moreFields": [
             "ascent",
@@ -23721,7 +23867,8 @@
             "network_horse",
             "network/type",
             "from",
-            "to"
+            "to",
+            "via"
         ],
         "moreFields": [
             "ascent",
@@ -23781,6 +23928,26 @@
             "value": "monorail"
         }
     },
+    "type/route/mtb": {
+        "icon": "maki-bicycle",
+        "fields": [
+            "{type/route/bicycle}"
+        ],
+        "moreFields": [
+            "{type/route/bicycle}"
+        ],
+        "geometry": [
+            "relation"
+        ],
+        "tags": {
+            "type": "route",
+            "route": "mtb"
+        },
+        "reference": {
+            "key": "route",
+            "value": "mtb"
+        }
+    },
     "type/route/pipeline": {
         "icon": "iD-pipeline-line",
         "fields": [
@@ -23809,7 +23976,8 @@
             "ref_route",
             "operator",
             "from",
-            "to"
+            "to",
+            "via"
         ],
         "moreFields": [
             "ascent",
@@ -23861,7 +24029,8 @@
             "ref_route",
             "network_road",
             "from",
-            "to"
+            "to",
+            "via"
         ],
         "moreFields": [
             "colour",
@@ -23908,7 +24077,8 @@
             "operator",
             "network",
             "from",
-            "to"
+            "to",
+            "via"
         ],
         "moreFields": [
             "colour",

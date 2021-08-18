@@ -1,0 +1,172 @@
+{
+    "th": {
+        "presets": {
+            "categories": {
+                "category-barrier": {
+                    "name": "คุณลักษณะสิ่งกีดขวาง"
+                },
+                "category-building": {
+                    "name": "คุณลักษณะอาคาร"
+                },
+                "category-landuse": {
+                    "name": "คุณลักษณะที่ดิน"
+                },
+                "category-restriction": {
+                    "name": "คุณลักษณะการปิดกั้น"
+                },
+                "category-route": {
+                    "name": "คุณลักษณะสายเดินรถ"
+                }
+            },
+            "fields": {
+                "access": {
+                    "label": "อนุญาตการเข้าถึง",
+                    "options": {
+                        "designated": {
+                            "title": "กำหนดแล้ว"
+                        },
+                        "destination": {
+                            "title": "ปลายทาง"
+                        },
+                        "dismount": {
+                            "title": "ต้องลงจากยานพาหนะ"
+                        },
+                        "no": {
+                            "title": "หวงห้าม"
+                        },
+                        "permissive": {
+                            "title": "ต้องได้รับอนุญาต"
+                        },
+                        "private": {
+                            "title": "ส่วนบุคคล"
+                        },
+                        "yes": {
+                            "title": "ได้รับอนุญาต"
+                        }
+                    },
+                    "placeholder": "ไม่ได้กำหนด",
+                    "types": {
+                        "access": "ทั้งหมด",
+                        "bicycle": "จักรยาน",
+                        "foot": "เดินเท้า",
+                        "horse": "สัตว์พาหนะ",
+                        "motor_vehicle": "ยานยนต์"
+                    }
+                },
+                "access_simple": {
+                    "label": "อนุญาตการเข้าถึง"
+                },
+                "address": {
+                    "label": "ที่อยู่",
+                    "placeholders": {
+                        "city": "แขวง/ตำบล",
+                        "conscriptionnumber": "123",
+                        "country": "ประเทศ",
+                        "district": "เขต/อำเภอ",
+                        "floor": "ชั้น",
+                        "hamlet": "ชุมชน",
+                        "housename": "ชื่อบ้าน",
+                        "housenumber": "123",
+                        "place": "สถานที่",
+                        "postcode": "รหัสไปรษณีย์",
+                        "province": "จังหวัด",
+                        "state": "รัฐ",
+                        "street": "ถนน",
+                        "subdistrict": "แขวง/ตำบล",
+                        "suburb": "ชานเมือง"
+                    }
+                },
+                "admin_level": {
+                    "label": "อำนาจการปกครอง"
+                },
+                "aerialway": {
+                    "label": "รูปแบบ"
+                },
+                "aerialway/access": {
+                    "label": "เข้าถึงได้",
+                    "options": {
+                        "both": "ทั้งสองอย่าง",
+                        "entry": "ทางเข้า",
+                        "exit": "ทางออก"
+                    }
+                },
+                "aerialway/capacity": {
+                    "label": "จำนวนคน (ต่อชั่วโมง)",
+                    "placeholder": "500, 2500, 5000..."
+                },
+                "aerialway/duration": {
+                    "label": "ระยะเวลา (นาที)",
+                    "placeholder": "1, 2, 3..."
+                },
+                "atm": {
+                    "label": "เครื่องรับจ่ายเงินอัตโนมัติ"
+                },
+                "blood_components": {
+                    "label": "องค์ประกอบของเลือด",
+                    "options": {
+                        "plasma": "พลาสมา",
+                        "platelets": "เกล็ดเลือด",
+                        "stemcells": "ตัวอย่างเซลล์ต้นกำเนิด",
+                        "whole": "เลือดล้วนๆ"
+                    }
+                },
+                "contact/webcam": {
+                    "placeholder": "http://example.com/"
+                },
+                "currency_multi": {
+                    "label": "ชนิดเงินตรา"
+                },
+                "cycleway": {
+                    "label": "เลนจักรยาน"
+                },
+                "emergency": {
+                    "label": "ฉุกเฉิน"
+                },
+                "gender": {
+                    "label": "เพศ",
+                    "options": {
+                        "female": "หญิง",
+                        "male": "ชาย",
+                        "unisex": "ชายและหญิง"
+                    },
+                    "placeholder": "ไม่ทราบ"
+                },
+                "generator/source": {
+                    "label": "แหล่งที่มา"
+                },
+                "internet_access": {
+                    "options": {
+                        "wired": "ใช้สาย",
+                        "wlan": "ไร้สาย"
+                    }
+                }
+            },
+            "presets": {
+                "area": {
+                    "name": "พื้นที่"
+                },
+                "line": {
+                    "name": "เส้น"
+                },
+                "point": {
+                    "name": "จุด"
+                },
+                "waterway/drain": {
+                    "name": "ลำราง/ทางระบายน้ำ"
+                },
+                "waterway/river": {
+                    "name": "แม่น้ำ"
+                },
+                "waterway/riverbank": {
+                    "name": "ตลิ่งแม่น้ำ"
+                },
+                "waterway/waterfall": {
+                    "name": "น้ำตก"
+                },
+                "waterway/weir": {
+                    "name": "ประตูน้ำ/ฝาย"
+                }
+            }
+        }
+    }
+}
