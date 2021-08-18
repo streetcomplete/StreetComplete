@@ -870,9 +870,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="team_mode">Team Mode</string>
     <string name="team_mode_exit">Exit Team Mode</string>
     <string name="team_mode_description">When mapping the same area together in a group, you can enter team mode to split up quests between all team members.</string>
-    <string name="team_mode_team_size_label">How many people are there?</string>
+    <string name="team_mode_team_size_label2">How many people are mapping? Enter the same number on everyone\'s phone.</string>
     <string name="team_mode_team_size_hint">Team mode works for groups of 2 to 12 people.</string>
-    <string name="team_mode_choose_color2">Now everybody in your group chooses a unique color on their phone:</string>
+    <string name="team_mode_choose_color2">Next, each person must pick a different color. Choose yours:</string>
     <string name="team_mode_active">Team mode is active</string>
     <string name="team_mode_deactivated">Team mode deactivated</string>
 
@@ -1052,7 +1052,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_stile_ladder">Ladder stile</string>
     <string name="quest_barrier_type_bicycle_barrier">Bicycle barrier</string>
     <string name="quest_barrier_type_kissing_gate">Kissing gate</string>
-    <string name="quest_barrier_type_stepover">Step-over stile</string>
+    <string name="quest_barrier_type_stepover_wooden">Wooden step-over stile</string>
+    <string name="quest_barrier_type_stepover_stone">Stone step-over stile</string>
     <string name="quest_barrier_type_swing_gate">Horizontal bar</string>
     <string name="quest_barrier_type_kissing_gate_conversion">Converted into a kissing gate</string>
     <string name="quest_stile_type_title">What type of stile is this?</string>

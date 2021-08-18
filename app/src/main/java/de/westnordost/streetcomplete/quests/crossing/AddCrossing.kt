@@ -133,9 +133,9 @@ class AddCrossing : OsmElementQuestType<Boolean> {
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         if (answer) {
-            changes.add("crossing", "no")
-        } else {
             changes.add("highway", "crossing")
+        } else {
+            changes.add("crossing", "no")
         }
     }
 }
