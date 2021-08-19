@@ -205,8 +205,13 @@ import javax.inject.Singleton
         AddBikeParkingCover(), // used by OsmAnd in the object description
         AddDrinkingWater(), // used by AnyFinder
         AddTactilePavingCrosswalk(), // Paving can be completed while waiting to cross
+        AddKerbHeight(), /* deliberately before AddTactilePavingKerb:
+        * - Also should be visible while waiting to cross
+        * - Some people are not interpreting flush or lowered kerb as a kerb on their own,
+        * and would be confused about asking about tactile status on kerb without kerb
+        * but with this quest first they are OK with such interpretation
+        */
         AddTactilePavingKerb(), // Paving can be completed while waiting to cross
-        AddKerbHeight(), // Should be visible while waiting to cross
         AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing
         AddTrafficSignalsVibration(),
         AddRoofShape(countryInfos),
