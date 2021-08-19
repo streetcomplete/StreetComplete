@@ -221,7 +221,7 @@ import javax.inject.Singleton
         AddBridgeStructure(),
         AddReligionToWaysideShrine(),
         AddCyclewaySegregation(),
-        MarkCompletedBuildingConstruction(),
+        MarkCompletedBuildingConstruction(), // unlocks AddBuildingType which unlocks address and building detail quests
         AddGeneralFee(),
         AddSelfServiceLaundry(),
         AddStepsIncline(), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past
