@@ -220,7 +220,7 @@ import javax.inject.Singleton
         AddTactilePavingBusStop(),
         AddBridgeStructure(),
         AddReligionToWaysideShrine(),
-        AddCyclewaySegregation(),
+        AddCyclewaySegregation(), //Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
         MarkCompletedBuildingConstruction(), // unlocks AddBuildingType which unlocks address and building detail quests
         AddGeneralFee(),
         AddSelfServiceLaundry(),
