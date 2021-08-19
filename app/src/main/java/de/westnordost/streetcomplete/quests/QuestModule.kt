@@ -183,9 +183,9 @@ import javax.inject.Singleton
         AddBikeParkingAccess(),
         AddBikeParkingFee(),
         AddStepsRamp(),
-        AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, MAPS.ME
+        AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, Organic Maps
         AddPlaygroundAccess(), //late as in many areas all needed access=private is already mapped
-        AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, MAPS.ME
+        AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, Organic Maps
         AddToiletAvailability(), //OSM Carto, shown in OsmAnd descriptions
         AddFerryAccessPedestrian(),
         AddFerryAccessMotorVehicle(),
