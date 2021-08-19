@@ -286,7 +286,7 @@ fun getQuestTaginfo(
           println("Got quest answer types: " + questAnswerType)
           for (it in questAnswerType) {
             println("Got quest answer type: " + it)
-            if (it == "Boolean" || it == "String" || it == "Unit") {
+            if (it in setOf("Boolean", "String", "Unit")) {
               println("Skipping generic " + it + "...")
               allChanges.add(TaginfoChange(key, "", change))
               continue
@@ -294,11 +294,11 @@ fun getQuestTaginfo(
               println("Skipping generic List...")
               allChanges.add(TaginfoChange(key, "", change))
               continue
-            } else if (it == "SuspectedOnewayAnswer" || it == "CyclewayAnswer" || it == "SidewalkAnswer" || it == "ShopTypeAnswer" || it == "CompletedConstructionAnswer") {
+            } else if (it in setOf("SuspectedOnewayAnswer", "CyclewayAnswer", "SidewalkAnswer", "ShopTypeAnswer", "CompletedConstructionAnswer")) {
               println("Skipping, it's complicated " + it + "...")
               allChanges.add(TaginfoChange(key, "", change))
               continue
-            } else if (it == "RecyclingContainerMaterialsAnswer" || it == "SurfaceAnswer" || it == "MaxSpeedAnswer" || it == "MaxHeightAnswer" || it == "LanesAnswer") {
+            } else if (it in setOf("RecyclingContainerMaterialsAnswer", "SurfaceAnswer", "MaxSpeedAnswer", "MaxHeightAnswer", "LanesAnswer")) {
               // TODO: Fix me!
               println("Skipping, needs investigation " + it + "...")
               allChanges.add(TaginfoChange(key, "", change))
@@ -308,12 +308,12 @@ fun getQuestTaginfo(
 //              println("Skipping, complex enum " + it + "...")
 //              allChanges.add(TaginfoChange(key, "", change))
 //              continue
-            } else if (it == "BusStopShelterAnswer" || it == "StepsRampAnswer") {
+            } else if (it in setOf("BusStopShelterAnswer", "StepsRampAnswer")) {
               // TODO: Fix me!
               println("Skipping, simple enum " + it + "...")
               allChanges.add(TaginfoChange(key, "", change))
               continue
-            } else if (it in setOf("RoadNameAnswer","PlaceNameAnswer","BusStopRefAnswer","HousenumberAnswer","PostboxRefAnswer") {
+            } else if (it in setOf("RoadNameAnswer", "PlaceNameAnswer", "BusStopRefAnswer", "HousenumberAnswer", "PostboxRefAnswer")) {
               println("Skipping just a name " + it + "...")
               allChanges.add(TaginfoChange(key, "", change))
               continue
