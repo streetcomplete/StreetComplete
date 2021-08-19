@@ -313,7 +313,7 @@ fun getQuestTaginfo(
               println("Skipping, simple enum " + it + "...")
               allChanges.add(TaginfoChange(key, "", change))
               continue
-            } else if (it == "RoadNameAnswer" || it == "PlaceNameAnswer" || it == "BusStopRefAnswer" || it == "HousenumberAnswer" || it == "PostboxRefAnswer") {
+            } else if (it in setOf("RoadNameAnswer","PlaceNameAnswer","BusStopRefAnswer","HousenumberAnswer","PostboxRefAnswer") {
               println("Skipping just a name " + it + "...")
               allChanges.add(TaginfoChange(key, "", change))
               continue
