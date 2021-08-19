@@ -227,7 +227,7 @@ import javax.inject.Singleton
         AddStepsIncline(), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past
         AddHandrail(), // for accessibility of pedestrian routing, can be gathered when walking past
         AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
-        AddInformationToTourism(),
+        AddInformationToTourism(), // OSM Carto
         AddAtmOperator(),
         AddChargingStationCapacity(),
         AddChargingStationOperator(),
