@@ -190,6 +190,8 @@ import javax.inject.Singleton
         AddFerryAccessPedestrian(),
         AddFerryAccessMotorVehicle(),
         AddAcceptsCash(featureDictionaryFuture),
+        AddInformationToTourism(), // OSM Carto
+        AddCyclewaySegregation(), //Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
 
         // ↓ 4. definitely shown as errors in QA tools
 
@@ -220,14 +222,12 @@ import javax.inject.Singleton
         AddTactilePavingBusStop(),
         AddBridgeStructure(),
         AddReligionToWaysideShrine(),
-        AddCyclewaySegregation(), //Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
         MarkCompletedBuildingConstruction(), // unlocks AddBuildingType which unlocks address and building detail quests
         AddGeneralFee(),
         AddSelfServiceLaundry(),
         AddStepsIncline(), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past
         AddHandrail(), // for accessibility of pedestrian routing, can be gathered when walking past
         AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
-        AddInformationToTourism(), // OSM Carto
         AddAtmOperator(),
         AddChargingStationCapacity(),
         AddChargingStationOperator(),
