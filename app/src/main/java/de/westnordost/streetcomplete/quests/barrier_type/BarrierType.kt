@@ -20,7 +20,8 @@ enum class BarrierType(val osmValue: String) {
     DEBRIS_PILE("debris"),
     STILE_SQUEEZER("stile"),
     STILE_LADDER("stile"),
-    STILE_STEPOVER("stile"),
+    STILE_STEPOVER_WOODEN("stile"),
+    STILE_STEPOVER_STONE("stile"),
     KISSING_GATE("kissing_gate"),
     BICYCLE_BARRIER("cycle_barrier")
 }

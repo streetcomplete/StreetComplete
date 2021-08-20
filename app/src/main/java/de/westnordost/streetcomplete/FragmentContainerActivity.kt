@@ -47,8 +47,8 @@ open class FragmentContainerActivity(
     fun pushMainFragment(fragment: Fragment) {
         supportFragmentManager.commit {
             setCustomAnimations(
-                R.anim.enter_from_right, R.anim.exit_to_left,
-                R.anim.enter_from_left, R.anim.exit_to_right
+                R.anim.enter_from_end, R.anim.exit_to_start,
+                R.anim.enter_from_start, R.anim.exit_to_end
             )
             replace(R.id.fragment_container, fragment)
             addToBackStack("main")

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_chevron_left_24dp" />
+</layer-list>
+<!-- could be replaced by autoMirrored on drawable when only Lollipop+ is supported-->

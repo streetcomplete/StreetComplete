@@ -35,8 +35,13 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
             BarrierType.STILE_LADDER -> {
                 changes.addOrModify("stile", "ladder")
             }
-            BarrierType.STILE_STEPOVER -> {
+            BarrierType.STILE_STEPOVER_WOODEN -> {
                 changes.addOrModify("stile", "stepover")
+                changes.addOrModify("material", "wood")
+            }
+            BarrierType.STILE_STEPOVER_STONE -> {
+                changes.addOrModify("stile", "stepover")
+                changes.addOrModify("material", "stone")
             }
         }
 
