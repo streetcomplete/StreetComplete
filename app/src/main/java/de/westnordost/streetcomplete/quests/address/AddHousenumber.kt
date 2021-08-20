@@ -184,7 +184,7 @@ private val buildingsWithMissingAddressFilter by lazy { """
 private val buildingTypesThatShouldHaveAddresses = listOf(
     "house", "residential", "apartments", "detached", "terrace", "dormitory", "semi",
     "semidetached_house", "farm", "school", "civic", "college", "university", "public", "hospital",
-    "kindergarten", "train_station", "hotel", "retail", "shop", "commercial"
+    "kindergarten", "train_station", "hotel", "retail", "shop", "commercial", "office"
 )
 
 private fun Element.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeometry): Boolean =

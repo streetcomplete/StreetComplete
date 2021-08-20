@@ -63,6 +63,7 @@ import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
+import de.westnordost.streetcomplete.quests.crossing.AddCrossing
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
@@ -211,6 +212,7 @@ import javax.inject.Singleton
         AddKerbHeight(), // Should be visible while waiting to cross
 
         // crossing quests: A little later because they are not all solvable from a distance
+        AddCrossing(),
         AddCrossingType(),
         AddCrossingIsland(),
         AddTactilePavingCrosswalk(),
