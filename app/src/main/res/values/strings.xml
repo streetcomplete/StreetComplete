@@ -497,6 +497,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
     <string name="default_disabled_msg_go_inside">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="default_disabled_msg_go_inside_regional_warning">This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type.</string>
+    <string name="default_disabled_msg_roofShape">This quest type is disabled by default because the roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
@@ -527,19 +528,19 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_internet_access_wired">Wired (LAN)</string>
     <string name="quest_internet_access_terminal">Computer with Internet access</string>
     <string name="quest_internet_access_no">No connection</string>
-    <string name="quest_busStopShelter_tram_name_title">"Does the streetcar stop %s have a shelter?"</string>
-    <string name="quest_busStopShelter_tram_title">"Does this streetcar stop have a shelter?"</string>
-    <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
-    <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Is there a shelter at the streetcar stop %s?"</string>
+    <string name="quest_busStopShelter_tram_title">"Is there a shelter at this streetcar stop?"</string>
+    <string name="quest_busStopShelter_title">"Is there a shelter at this bus stop?"</string>
+    <string name="quest_busStopShelter_name_title">"Is there a shelter at the bus stop %s?"</string>
     <string name="quest_busStopShelter_covered">Whole stop is covered</string>
-    <string name="quest_busStopBench_tram_name_title">"Does the streetcar stop %s have a bench?"</string>
-    <string name="quest_busStopBench_tram_title">"Does this streetcar stop have a bench?"</string>
-    <string name="quest_busStopBench_title">"Does this bus stop have a bench?"</string>
-    <string name="quest_busStopBench_name_title">"Does the bus stop %s have a bench?"</string>
-    <string name="quest_busStopBin_tram_name_title">"Does the streetcar stop %s have a waste basket?"</string>
-    <string name="quest_busStopBin_tram_title">"Does this streetcar stop have a waste basket?"</string>
-    <string name="quest_busStopBin_title">"Does this bus stop have a waste basket?"</string>
-    <string name="quest_busStopBin_name_title">"Does the bus stop %s have a waste basket?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Is there a bench at the streetcar stop %s?"</string>
+    <string name="quest_busStopBench_tram_title">"Is there a bench at this streetcar stop?"</string>
+    <string name="quest_busStopBench_title">"Is there a bench at this bus stop?"</string>
+    <string name="quest_busStopBench_name_title">"Is there a bench at the bus stop %s?"</string>
+    <string name="quest_busStopBin_tram_name_title">"Is there a waste basket at the streetcar stop %s?"</string>
+    <string name="quest_busStopBin_tram_title">"Is there a waste basket at this streetcar stop?"</string>
+    <string name="quest_busStopBin_title">"Is there a waste basket at this bus stop?"</string>
+    <string name="quest_busStopBin_name_title">"Is there a waste basket at the bus stop %s?"</string>
     <string name="quest_busStopLit_tram_name_title">"Is the streetcar stop %s lit?"</string>
     <string name="quest_busStopLit_tram_title">"Is this streetcar stop lit?"</string>
     <string name="quest_busStopLit_title">"Is this bus stop lit?"</string>
@@ -678,7 +679,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_shed">Shed</string>
     <string name="quest_buildingType_boathouse">Boathouse</string>
-    <string name="quest_buildingType_allotment_house">Allotment house</string>
+    <string name="quest_buildingType_allotment_house">Garden allotment outbuilding</string>
     <string name="quest_buildingType_grandstand">Grandstand</string>
     <string name="quest_buildingType_toilets">Toilets</string>
     <string name="quest_buildingType_hut">Hut</string>
@@ -872,7 +873,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="team_mode_description">When mapping the same area together in a group, you can enter team mode to split up quests between all team members.</string>
     <string name="team_mode_team_size_label">How many people are there?</string>
     <string name="team_mode_team_size_hint">Team mode works for groups of 2 to 12 people.</string>
-    <string name="team_mode_choose_color">Now everybody in your group chooses a unique color:</string>
+    <string name="team_mode_choose_color2">Now everybody in your group chooses a unique color on their phone:</string>
     <string name="team_mode_active">Team mode is active</string>
     <string name="team_mode_deactivated">Team mode deactivated</string>
 
@@ -932,6 +933,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
     <string name="link_qwant_maps_description">A map with searchable places and directions</string>
+    <string name="link_organic_maps_description">Maps app for travelers, hikers and cyclists that works offline</string>
     <string name="link_weeklyosm_description">The weekly news blog about what\'s happening in the OpenStreetMap world</string>
     <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
 
