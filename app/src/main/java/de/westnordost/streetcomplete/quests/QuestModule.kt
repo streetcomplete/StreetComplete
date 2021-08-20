@@ -174,7 +174,7 @@ import javax.inject.Singleton
 
         AddBridgeStructure(),
 
-        MarkCompletedBuildingConstruction(),
+        MarkCompletedBuildingConstruction(), // unlocks AddBuildingType which unlocks address and building detail quests
 
         // sport pitches
         AddSport(),
@@ -208,8 +208,13 @@ import javax.inject.Singleton
         AddRecyclingContainerMaterials(),
 
         // kerbs
+        AddKerbHeight(), /* deliberately before AddTactilePavingKerb:
+        * - Also should be visible while waiting to cross
+        * - Some people are not interpreting flush or lowered kerb as a kerb on their own,
+        * and would be confused about asking about tactile status on kerb without kerb
+        * but with this quest first they are OK with such interpretation
+        */
         AddTactilePavingKerb(), // Paving can be completed while waiting to cross
-        AddKerbHeight(), // Should be visible while waiting to cross
 
         // crossing quests: A little later because they are not all solvable from a distance
         AddCrossing(),
@@ -222,7 +227,7 @@ import javax.inject.Singleton
 
         /* ↓ 2.solvable when right in front of it ----------------------------------------------- */
 
-        AddInformationToTourism(),
+        AddInformationToTourism(), // OSM Carto
 
         AddPoliceType(),
 
@@ -317,14 +322,14 @@ import javax.inject.Singleton
         AddToiletsFee(), // used by OsmAnd in the object description
         AddBabyChangingTable(), // used by OsmAnd in the object description
         AddWheelchairAccessToiletsPart(),
-        AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, MAPS.ME
+        AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, Organic Maps
 
         // shop
         AddAcceptsCash(featureDictionaryFuture),
         AddVegetarian(),
         AddVegan(),
         AddKosher(),
-        AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, MAPS.ME
+        AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, Organic Maps
         AddInternetAccess(), // used by OsmAnd
 
         /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
@@ -338,7 +343,7 @@ import javax.inject.Singleton
 
         // footways
         AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
-        AddCyclewaySegregation(),
+        AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
         AddFootwayPartSurface(),
         AddCyclewayPartSurface(),
 
