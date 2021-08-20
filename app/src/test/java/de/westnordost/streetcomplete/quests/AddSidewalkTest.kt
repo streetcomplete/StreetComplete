@@ -129,7 +129,7 @@ class AddSidewalkTest {
     @Test fun `apply no sidewalk answer`() {
         questType.verifyAnswer(
             SidewalkSides(left = false, right = false),
-            StringMapEntryAdd("sidewalk", "none")
+            StringMapEntryAdd("sidewalk", "no")
         )
     }
 
