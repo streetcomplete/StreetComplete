@@ -34,6 +34,8 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
     override val icon = R.drawable.ic_quest_no_pedestrians
     override val isSplitWayEnabled = true
 
+    override val enabledInCountries = AllCountriesExcept("SE")
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title_prohibited
 
     override fun createForm() = AddProhibitedForPedestriansForm()
