@@ -114,7 +114,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
                 INSERT INTO ${VisibleQuestTypeTable.NAME} (
                     ${VisibleQuestTypeTable.Columns.QUEST_PRESET_ID},
                     ${VisibleQuestTypeTable.Columns.QUEST_TYPE},
-                    ${VisibleQuestTypeTable.Columns.VISIBILITY},
+                    ${VisibleQuestTypeTable.Columns.VISIBILITY}
                 ) SELECT
                     0,
                     ${VisibleQuestTypeTable.Columns.QUEST_TYPE},
