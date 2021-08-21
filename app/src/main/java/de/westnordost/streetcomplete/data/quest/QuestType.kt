@@ -36,6 +36,8 @@ interface QuestType<T> {
 
     /** towards which achievements ssolving a quest of this type should count */
     val questTypeAchievements: List<QuestTypeAchievement> get() = listOf()
+    /** if the quest should only be shown during day-light os night-time hours */
+    val dayNightCycle: DayNightCycle get() = DayNightCycle.DAY_AND_NIGHT
 
     fun getQuestSettingsDialog(context: Context): AlertDialog? = null
     val hasQuestSettings: Boolean get() = false

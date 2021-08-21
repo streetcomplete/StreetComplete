@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.bus_stop_lit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.quest.DayNightCycle.ONLY_NIGHT
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
@@ -28,6 +29,7 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_bus_stop_lit
     override val questTypeAchievements = listOf(PEDESTRIAN)
+    override val dayNightCycle = ONLY_NIGHT
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopLit_title2
 
