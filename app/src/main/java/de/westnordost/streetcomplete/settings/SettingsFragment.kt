@@ -15,13 +15,9 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
-import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.HasTitle
-import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
@@ -208,6 +204,10 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
                 val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
                 AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
                 activity?.recreate()
+            }
+            Prefs.LANGUAGE_SELECT -> {
+                val intent = Intent(context?.applicationContext, MainActivity::class.java)
+                this.startActivity(intent)
             }
             Prefs.RESURVEY_INTERVALS -> {
                 resurveyIntervalsUpdater.update()
