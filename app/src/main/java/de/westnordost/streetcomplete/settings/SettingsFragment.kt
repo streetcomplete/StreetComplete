@@ -106,66 +106,70 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
     private fun buildLanguageSelector() {
         // FIXME: externalize to YML?
-        val entryValues = arrayOf<CharSequence>("",
-                "am",
-                "ar",
-                "ast",
-                "bg",
-                "bs",
-                "ca",
-                "cs",
-                "da",
-                "de",
-                "el",
-                "en-AU",
-                "en-GB",
-                "en",
-                "es",
-                "eu",
-                "fa",
-                "fi",
-                "fr",
-                "gl",
-                "hr",
-                "hu",
-                "in",
-                "it",
-                "ja",
-                "ko",
-                "lt",
-                "ml",
-                "nl",
-                "nn",
-                "no",
-                "pl",
-                "pt-BR",
-                "pt",
-                "ro",
-                "ru",
-                "sk",
-                "sv",
-                "th",
-                "tr",
-                "uk",
-                "zh-CN",
-                "zh-HK",
-                "zh",
-                "zh-TW"
+        val entryValues = arrayOf<CharSequence>(
+            "",
+            "am",
+            "ar",
+            "ast",
+            "bg",
+            "bs",
+            "ca",
+            "cs",
+            "da",
+            "de",
+            "el",
+            "en-AU",
+            "en-GB",
+            "en",
+            "es",
+            "eu",
+            "fa",
+            "fi",
+            "fr",
+            "gl",
+            "hr",
+            "hu",
+            "in",
+            "it",
+            "ja",
+            "ko",
+            "lt",
+            "ml",
+            "nl",
+            "nn",
+            "no",
+            "pl",
+            "pt-BR",
+            "pt",
+            "ro",
+            "ru",
+            "sk",
+            "sv",
+            "th",
+            "tr",
+            "uk",
+            "zh-CN",
+            "zh-HK",
+            "zh",
+            "zh-TW"
         );
 
-        val entries = arrayOf<CharSequence>();
-
-        entryValues.forEach {
+        val entries = entryValues.map {
             if (it == "") {
-                entries.plusElement(getString(R.string.language_system_default))
+                getString(R.string.language_system_default)
             } else {
                 val locale = Locale(it.toString())
-                entries.plusElement(locale.getDisplayLanguage(locale))
+                val inTarget =  locale.getDisplayLanguage(locale)
+                if (inTarget != locale.displayLanguage) {
+                    inTarget + " / " + locale.displayLanguage
+                } else {
+                    inTarget
+                }
             }
         }
 
-        findPreference<ListPreference>("language.select")?.setEntries(entries)
-        findPreference<ListPreference>("language.select")?.setEntryValues(entryValues)
+        findPreference<ListPreference>("language.select")?.entries = entries.toTypedArray()
+        findPreference<ListPreference>("language.select")?.entryValues = entryValues
     }
 
     override fun onStart() {
