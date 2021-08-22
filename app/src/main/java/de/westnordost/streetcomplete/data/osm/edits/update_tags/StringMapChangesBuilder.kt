@@ -24,7 +24,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>) {
     }
 
     fun add(key: String, value: String) {
-        require(!source.containsKey(key)) { "The key '$key' already exists in the map '$source." }
+        require(!source.containsKey(key)) { "The key '$key' already exists in the map '$source'." }
         val change = StringMapEntryAdd(key, value)
         if (changes[key] == change) return
         checkDuplicate(key)
