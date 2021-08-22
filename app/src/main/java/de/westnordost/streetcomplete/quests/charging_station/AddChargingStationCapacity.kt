@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.charging_station_capacity
+package de.westnordost.streetcomplete.quests.charging_station
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate

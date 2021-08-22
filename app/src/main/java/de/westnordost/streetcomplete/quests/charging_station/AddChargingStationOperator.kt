@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.charging_station_operator
+package de.westnordost.streetcomplete.quests.charging_station
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.charging_station_operator
+package de.westnordost.streetcomplete.quests.charging_station
 
 import de.westnordost.streetcomplete.quests.ANameWithSuggestionsForm
 

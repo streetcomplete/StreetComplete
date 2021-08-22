@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.charging_station_capacity
+package de.westnordost.streetcomplete.quests.charging_station
 
 import android.os.Bundle
 import android.view.View
