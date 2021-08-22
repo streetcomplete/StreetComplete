@@ -20,8 +20,8 @@ fun isDay(pos: LatLon): Boolean {
 
     // if sunset is after midnight
     return if (sunset < sunrise) {
-        now.isAfter(sunrise) || now.isBefore(sunset)
+        now > sunrise || now < sunset
     } else {
-        now.isAfter(sunrise) && now.isBefore(sunset)
+        now > sunrise && now < sunset
     }
 }
