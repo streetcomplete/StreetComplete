@@ -46,7 +46,10 @@ enum class Cycleway {
     SEPARATE,
 
     // unknown cycleway tag set
-    UNKNOWN
+    UNKNOWN,
+
+    // definitely wrong cycleway tag (because wrong scheme, or ambiguous) set
+    INVALID
 ;
 
     val isOnSidewalk get() = this == SIDEWALK_EXPLICIT
@@ -58,6 +61,22 @@ enum class Cycleway {
         SUGGESTION_LANE, PICTOGRAMS, UNSPECIFIED_SHARED_LANE, UNKNOWN_SHARED_LANE -> true
         else -> false
     }
+
+    /** returns null if it is not possible to say if the tagging is ambiguous without information on
+     *  in which country the cycleway is located.
+     *  Unspecified lanes are only ok in Belgium (no distinction made, all lanes are dashed) */
+    fun isAmbiguous(countryCode: String) = when(this) {
+        UNSPECIFIED_SHARED_LANE -> true
+        UNSPECIFIED_LANE -> countryCode != "BE"
+        else -> false
+    }
+
+    val isUnknown get() = when(this) {
+        UNKNOWN, UNKNOWN_LANE, UNKNOWN_SHARED_LANE -> true
+        else -> false
+    }
+
+    val isInvalid get() = this == INVALID
 
     val isOneway get() = this != DUAL_LANE && this != DUAL_TRACK
 }
