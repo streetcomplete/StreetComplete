@@ -11,11 +11,12 @@
   <li>Add Animism as choice for when asked about the religion of a place (#3063)</li>
   <li>Add more building type choices: allotment house, boathouse and grandstand (#3078)</li>
   <li>Stone stiles are now more clearly selectable (#3175) by @matkoniecz</li>
-  <li>More minor quest enhancements and clarified wordings: (#3139) by @john-h-kastner, (#3117) by @smichel17, (#3165) by @yrtimiD, (#3092, #3149, #2760, ...)</li>
+  <li>More minor quest enhancements and clarified wordings: (#3139) by @john-h-kastner, (#3117) by @smichel17, (#3165) by @yrtimiD, (#3194) by @ZeLonewolf, (#3200) by @matkoniecz (#3092, #3149, #2760, ...)</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
   <li>Fix layout for right-to-left languages (Persian, Arabic) (#3181, #3184)</li>
+  <li>Fix steps ramp quest could seemingly in rare cases not be answered (#3115)</li>
   </ul>
 
 v33.2: |
