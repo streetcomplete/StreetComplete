@@ -61,10 +61,7 @@ enum class Cycleway {
         SUGGESTION_LANE, PICTOGRAMS, UNSPECIFIED_SHARED_LANE, UNKNOWN_SHARED_LANE -> true
         else -> false
     }
-
-    /** returns null if it is not possible to say if the tagging is ambiguous without information on
-     *  in which country the cycleway is located.
-     *  Unspecified lanes are only ok in Belgium (no distinction made, all lanes are dashed) */
+    
     fun isAmbiguous(countryCode: String) = when(this) {
         UNSPECIFIED_SHARED_LANE -> true
         UNSPECIFIED_LANE -> countryCode != "BE"
