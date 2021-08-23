@@ -23,7 +23,7 @@ import kotlin.math.round
     }
 
     fun isVisible(quest: Quest): Boolean {
-        return when (quest.type.dayNightCycle) {
+        return when (quest.type.dayNightVisibility) {
             DAY_AND_NIGHT -> true
             ONLY_DAY -> isDaylightAt(quest.position)
             ONLY_NIGHT -> !isDaylightAt(quest.position)

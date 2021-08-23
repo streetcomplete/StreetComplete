@@ -45,7 +45,7 @@ class AddWayLit : OsmFilterQuestType<WayLit>() {
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_lantern
     override val isSplitWayEnabled = true
-    override val dayNightCycle = ONLY_NIGHT
+    override val dayNightVisibility = ONLY_NIGHT
 
     override fun getTitle(tags: Map<String, String>): Int {
         val type = tags["highway"]

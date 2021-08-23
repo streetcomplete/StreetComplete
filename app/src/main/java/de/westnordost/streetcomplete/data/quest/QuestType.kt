@@ -21,5 +21,5 @@ interface QuestType<T> {
     fun deleteMetadataOlderThan(timestamp: Long) {}
 
     /** if the quest should only be shown during day-light or night-time hours */
-    val dayNightCycle: DayNightCycle get() = DayNightCycle.DAY_AND_NIGHT
+    val dayNightVisibility: DayNightCycle get() = DayNightCycle.DAY_AND_NIGHT
 }
