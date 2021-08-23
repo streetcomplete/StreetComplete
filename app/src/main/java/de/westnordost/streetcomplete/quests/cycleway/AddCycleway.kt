@@ -81,7 +81,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
             val minAngleToWays = 25.0
 
             if (maybeSeparatelyMappedCyclewayGeometries.isNotEmpty()) {
-                // filter out roads with missing sidewalks that are near footways
+                // filter out roads with missing cycleways that are near footways
                 roadsWithMissingCycleway.removeAll { road ->
                     val minDistToWays = estimatedWidth(road.tags) / 2.0 + 6
                     val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
