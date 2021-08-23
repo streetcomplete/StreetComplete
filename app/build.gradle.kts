@@ -176,6 +176,9 @@ dependencies {
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.25.0")
+
+    // sunset-sunrise parser for lit quests
+    implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
 }
 
 /** Localizations that should be pulled from POEditor etc. */

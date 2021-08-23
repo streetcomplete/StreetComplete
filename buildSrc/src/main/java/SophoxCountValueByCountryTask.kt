@@ -12,7 +12,7 @@ import java.net.URL
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
-/** Counts the occurance of values for a given key for a certain tag combination by country and
+/** Counts the occurrence of values for a given key for a certain tag combination by country and
  *  writes the result in a YML file.
  *
  *  So, much like for example taginfo's values page but sorted by country code plus only counting

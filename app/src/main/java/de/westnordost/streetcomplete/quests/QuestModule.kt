@@ -158,11 +158,11 @@ import javax.inject.Singleton
         /* ↓ 1. solvable from a distance or while passing by -----------------------------------  */
 
         // bus stop quests
+        AddBusStopLit(),
         AddBusStopShelter(),  // used by at least OsmAnd
         AddTactilePavingBusStop(),
         AddBenchStatusOnBusStop(),
         AddBinStatusOnBusStop(),
-        AddBusStopLit(),
         AddBusStopName(), // requires text input
         AddBusStopRef(), // requires text input
 
@@ -179,7 +179,7 @@ import javax.inject.Singleton
         // sport pitches
         AddSport(),
         AddPitchSurface(),
-        AddPitchLit(),
+        AddPitchLit(), // Not affected by new DayNight cycle because the lights are usually only on during games
 
         // parking
         AddParkingType(),
@@ -335,6 +335,7 @@ import javax.inject.Singleton
         /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 
         // roads
+        AddWayLit(), //  used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details)
         AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style...
         AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
         AddSidewalk(), // for any pedestrian routers
@@ -346,8 +347,6 @@ import javax.inject.Singleton
         AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
         AddFootwayPartSurface(),
         AddCyclewayPartSurface(),
-
-        AddWayLit(), //  used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details)
 
         /* should best be after road surface because it excludes unpaved roads, also, need to search
         *  for the sign which is one reason why it is disabled by default */
