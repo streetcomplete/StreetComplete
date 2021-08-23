@@ -355,7 +355,7 @@ fun getQuestTaginfo(
 
     val iconUrl = getIconUrl(getQuestIcon(questName, questFileContent))
 
-    return allChanges.distinct().map { TaginfoTag(it.key, it.value, it.change + " - " + title + " - " + questName, file.toString(), iconUrl)}
+    return allChanges.distinct().map { TaginfoTag(it.key, it.value, it.change + " - " + title, file.toString(), iconUrl)}
 }
 
 fun getQuestFile(questName: String, questFiles: List<File>): File {
