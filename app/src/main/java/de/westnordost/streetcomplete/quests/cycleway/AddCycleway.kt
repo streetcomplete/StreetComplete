@@ -122,8 +122,8 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
            surrounding geometry */
         if (untaggedRoadsFilter.matches(element)) return null
 
-        /* but if already tagged an old, we don't need to look at surrounding geometry to see if
-           it applicable or not */
+        /* but if already tagged and old, we don't need to look at surrounding geometry to see if
+           it is applicable or not */
         return element.hasOldInvalidOrAmbiguousCyclewayTags(null)
     }
 
