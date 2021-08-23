@@ -231,6 +231,10 @@ fun getQuestTaginfo(
         // It's not actually a change, so discard it
         println("Discarding a read only change " + change)
         continue
+      } else if (change.startsWith("delete")) {
+        // Skip the delete's at @westnordost request
+        println("Discarding a delete change " + change)
+        continue
       }
       // TODO: Rather than just dropping non-quote ones, ideally we need to deal with their variable names
       // Substitute any quest constants
