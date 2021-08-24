@@ -489,7 +489,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="resurvey_intervals_more_often">Ask more often</string>
     <string name="pref_title_quests2">Quest selection and display order</string>
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
-    <string name="pref_subtitle_quests_preset_name">Preset: %1$s</string>
+    <string name="pref_subtitle_quests_preset_name">Preset: %s</string>
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
     <string name="action_reset">Reset</string>
