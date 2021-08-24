@@ -49,9 +49,8 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
     override val title: String get() = getString(R.string.pref_title_quests2)
 
     override val subtitle: String get() {
-        val enabledCount = questTypeRegistry.filter { visibleQuestTypeController.isVisible(it) }.count()
-        val totalCount = questTypeRegistry.size
-        return getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+        val presetName = questPresetsSource.selectedQuestPresetName ?: getString(R.string.quest_presets_default_name)
+        return getString(R.string.pref_subtitle_quests_preset_name, presetName)
     }
 
     private val visibleQuestTypeListener = object : VisibleQuestTypeSource.Listener {
