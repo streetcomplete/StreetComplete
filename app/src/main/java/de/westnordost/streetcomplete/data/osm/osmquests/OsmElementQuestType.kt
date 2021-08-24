@@ -32,10 +32,10 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** returns whether the user should be able to delete this element instead. Only elements that
      *  are not expected...
      *  - to be part of a relation
-     *  - to be part of a network (f.e. roads, power lines, ...)
+     *  - to be part of a network (e.g. roads, power lines, ...)
      *  - to be part of a(nother) way
      *  - to house a second POI on the same element
-     *  - to be a kind of element where deletion is not recommended, (f.e. a shop should rather
+     *  - to be a kind of element where deletion is not recommended, (e.g. a shop should rather
      *    be set to disused:shop=yes until there is another one)
      *  ...should be deletable */
     val isDeleteElementEnabled: Boolean get() = false
@@ -55,7 +55,7 @@ interface OsmElementQuestType<T> : QuestType<T> {
     fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element>
 
     /** returns whether a quest of this quest type could be created out of the given [element]. If the
-     * element alone does not suffice to find this out (but f.e. is determined by the data around
+     * element alone does not suffice to find this out (but e.g. is determined by the data around
      * it), this should return null.
      *
      * The implications of returning null here is that this quest will never be created directly

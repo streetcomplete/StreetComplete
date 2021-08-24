@@ -171,7 +171,7 @@ fun List<LatLon>.distanceTo(polyline: List<LatLon>, globeRadius: Double = EARTH_
 }
 
 /** Returns whether this polyline intersects with the given polyline. If a polyline touches the
- *  other at an endpoint (f.e. two consecutive polylines that share one endpoint), this doesn't
+ *  other at an endpoint (e.g. two consecutive polylines that share one endpoint), this doesn't
  *  count. */
 fun List<LatLon>.intersectsWith(polyline: List<LatLon>): Boolean {
     require(size > 1 && polyline.size > 1) { "Polylines must each contain at least two elements" }

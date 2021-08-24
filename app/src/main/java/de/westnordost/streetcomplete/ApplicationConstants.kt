@@ -30,7 +30,7 @@ object ApplicationConstants {
 
     /** The creation of some quests is dependent on surrounding geometry. This constant describes
      *  the maximum distance surrounding elements may affect whether a quest is created or not */
-    //  f.e. AddRecyclingContainerMaterials, AddCycleway
+    //  e.g. AddRecyclingContainerMaterials, AddCycleway
     const val QUEST_FILTER_PADDING = 20.0 //m
 
     const val AVATARS_CACHE_DIRECTORY = "osm_user_avatars"

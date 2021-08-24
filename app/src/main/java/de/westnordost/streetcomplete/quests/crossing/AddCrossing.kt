@@ -44,7 +44,7 @@ class AddCrossing : OsmElementQuestType<Boolean> {
         val roadsByNodeId = mapData.ways.asSequence()
             .filter { roadsFilter.matches(it) }
             .groupByNodeIds()
-        /* filter out nodes of roads that are the end of a road network (dead end), f.e.
+        /* filter out nodes of roads that are the end of a road network (dead end), e.g.
          * https://www.openstreetmap.org/node/280046349 or
          * https://www.openstreetmap.org/node/56606744 */
         roadsByNodeId.removeEndNodes()
@@ -66,7 +66,7 @@ class AddCrossing : OsmElementQuestType<Boolean> {
         val footwaysByNodeId = mapData.ways.asSequence()
             .filter { footwaysFilter.matches(it) }
             .groupByNodeIds()
-        /* filter out nodes of footways that are the end of a footway, f.e.
+        /* filter out nodes of footways that are the end of a footway, e.g.
          * https://www.openstreetmap.org/node/1449039062 or
          * https://www.openstreetmap.org/node/56606744 */
         footwaysByNodeId.removeEndNodes()
@@ -79,7 +79,7 @@ class AddCrossing : OsmElementQuestType<Boolean> {
         *  There are two situations which both need to be handled:
         *
         *  1. The shared node is contained in a road way and a footway way and it is not an end
-        *     node of any of the involved ways, f.e.
+        *     node of any of the involved ways, e.g.
         *     https://www.openstreetmap.org/node/8418974983
         *
         *  2. The road way or the footway way or both actually end on the shared node but are
