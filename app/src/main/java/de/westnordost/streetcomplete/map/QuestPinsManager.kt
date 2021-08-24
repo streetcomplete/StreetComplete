@@ -174,9 +174,11 @@ class QuestPinsManager(
         // this needs to be reinitialized when the quest order changes
         val sortedQuestTypes = questTypeRegistry.toMutableList()
         questTypeOrderSource.sort(sortedQuestTypes)
-        questTypeOrders.clear()
-        sortedQuestTypes.forEachIndexed { index, questType ->
-            questTypeOrders[questType] = index
+        synchronized(questTypeOrders) {
+            questTypeOrders.clear()
+            sortedQuestTypes.forEachIndexed { index, questType ->
+                questTypeOrders[questType] = index
+            }
         }
     }
 
@@ -188,7 +190,7 @@ class QuestPinsManager(
     }
 
     /** returns values from 0 to 100000, the higher the number, the more important */
-    private fun getQuestImportance(quest: Quest): Int {
+    private fun getQuestImportance(quest: Quest): Int = synchronized(questTypeOrders) {
         val questTypeOrder = questTypeOrders[quest.type] ?: 0
         val freeValuesForEachQuest = 100000 / questTypeOrders.size
         /* position is used to add values unique to each quest to make ordering consistent
