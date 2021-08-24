@@ -38,6 +38,11 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
     @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
     @Inject internal lateinit var questTypeOrderController: QuestTypeOrderController
 
+    interface Listener {
+        fun onClickedQuestPresets()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
     private val parentTitleContainer: DisplaysTitle? get() =
         parentFragment as? DisplaysTitle ?: activity as? DisplaysTitle
 
@@ -97,7 +102,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
                 return true
             }
             R.id.action_manage_presets -> {
-                QuestPresetsFragment().show(childFragmentManager, QuestPresetsFragment.TAG)
+                listener?.onClickedQuestPresets()
                 return true
             }
         }

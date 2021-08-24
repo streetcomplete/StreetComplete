@@ -76,7 +76,7 @@ class QuestPresetsAdapter @Inject constructor(
 
     inner class QuestPresetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun onBind(with: QuestPreset) {
-            itemView.selectionRadioButton.text = with.name
+            itemView.presetTitleText.text = with.name
             itemView.selectionRadioButton.setOnCheckedChangeListener(null)
             itemView.selectionRadioButton.isChecked = questPresetsController.selectedQuestPresetId == with.id
             itemView.selectionRadioButton.setOnCheckedChangeListener { _, isChecked ->

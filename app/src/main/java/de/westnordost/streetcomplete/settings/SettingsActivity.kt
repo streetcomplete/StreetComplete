@@ -4,9 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import de.westnordost.streetcomplete.FragmentContainerActivity
+import de.westnordost.streetcomplete.settings.questselection.QuestPresetsFragment
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 
-class SettingsActivity : FragmentContainerActivity(), SettingsFragment.Listener
+class SettingsActivity : FragmentContainerActivity(), SettingsFragment.Listener, QuestSelectionFragment.Listener
 {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
@@ -21,6 +22,10 @@ class SettingsActivity : FragmentContainerActivity(), SettingsFragment.Listener
 
     override fun onClickedQuestSelection() {
         pushMainFragment(QuestSelectionFragment())
+    }
+
+    override fun onClickedQuestPresets() {
+        pushMainFragment(QuestPresetsFragment())
     }
 
     companion object {
