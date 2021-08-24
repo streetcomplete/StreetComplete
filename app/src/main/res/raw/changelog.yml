@@ -7,7 +7,7 @@ v34.0-beta1: |
      only want a solve some important quests while on a bus, or on a bike tour etc.<br/>This was
      a much requested feature: (#1301, #1654, #1746, #1987, #2054, #2069, #2279, #2565, #2308, #3034, ...)</li>
   <li>Inform new users once about the possibility to change quest presets</li>
-  <li>Added search/filter function for the quest presets settings (#3008)</li>
+  <li>Add search/filter function for the quest presets settings (#3008)</li>
   </ul>
   <h3>New Quests</h3>
   <ul>
