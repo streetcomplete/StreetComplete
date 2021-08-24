@@ -98,10 +98,10 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // for later changes to the DB
         // ...
-        if (oldVersion == 1 && newVersion > 1) {
+        if (oldVersion <= 1 && newVersion > 1) {
             db.execSQL(CreatedElementsTable.CREATE)
         }
-        if (oldVersion == 2 && newVersion > 2) {
+        if (oldVersion <= 2 && newVersion > 2) {
             db.execSQL(QuestTypeOrderTable.CREATE)
             db.execSQL(QuestTypeOrderTable.INDEX_CREATE)
 
