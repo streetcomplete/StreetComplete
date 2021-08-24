@@ -2,8 +2,8 @@ v34.0-beta1: |
   <h3>🚌🚴 Quest presets</h3>
   <ul>
   <li>Show quests that are quick and easy to solve (from a distance) first by default. This makes
-      contributing more efficient and diverse while also easier to do f.e. as a passenger (#2944, ...)</li>
-  <li>You can now save different quest presets for different situations, f.e. one preset when you
+      contributing more efficient and diverse while also easier to do as e.g. a passenger (#2944, ...)</li>
+  <li>You can now save different quest presets for different situations, e.g. one preset when you
      only want a solve some important quests while on a bus, or on a bike tour etc.<br/>This was
      a much requested feature: (#1301, #1654, #1746, #1987, #2054, #2069, #2279, #2565, #2308, #3034, ...)</li>
   <li>Inform new users once about the possibility to change quest presets</li>
