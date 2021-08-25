@@ -143,7 +143,7 @@ import javax.inject.Singleton
         AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
         AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
         AddCrossing(),
-        AddCycleway(), // for any cyclist routers (and cyclist maps)
+        AddCycleway(countryInfos), // for any cyclist routers (and cyclist maps)
         AddSidewalk(), // for any pedestrian routers
         AddBusStopName(),
         AddBusStopRef(),

@@ -1,37 +1,45 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.testutils.p
-import de.westnordost.streetcomplete.data.meta.toCheckDate
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.ktx.toEpochMilli
 import de.westnordost.streetcomplete.quests.cycleway.*
 import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.util.translate
-import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers.anyDouble
 import java.time.Instant
 import java.time.LocalDate
 
 class AddCyclewayTest {
 
-    private val questType = AddCycleway()
+    private lateinit var countryInfo: CountryInfo
+    private lateinit var countryInfos: CountryInfos
+    private lateinit var questType: AddCycleway
+
+    @Before fun setUp() {
+        countryInfo = mock()
+        countryInfos = mock()
+        on(countryInfos.get(anyDouble(), anyDouble())).thenReturn(countryInfo)
+        questType = AddCycleway(countryInfos)
+    }
 
     @Test fun `applicable to road with missing cycleway`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2,3), mapOf(
-                "highway" to "primary"
-            ))
+        val way = way(1L, listOf(1,2,3), mapOf(
+            "highway" to "primary"
         ))
-        val p1 = p(0.0,0.0)
-        val p2 = p1.translate(50.0, 45.0)
-        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
+        val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        // because geometry/surroundings are not known
+        assertNull(questType.isApplicableTo(way))
     }
 
     @Test fun `not applicable to road with nearby cycleway`() {
@@ -119,62 +127,133 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with cycleway=separate`() {
-        assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2,3), mapOf(
+        for (cyclewayKey in listOf("cycleway", "cycleway:left", "cycleway:right", "cycleway:both")) {
+            val way = way(1L, listOf(1,2,3), mapOf(
                 "highway" to "primary",
-                "cycleway" to "separate"
+                cyclewayKey to "separate"
             ))
-        ))).toList().isEmpty())
-        assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2,3), mapOf(
-                "highway" to "primary",
-                "cycleway:left" to "separate"
-            ))
-        ))).toList().isEmpty())
-        assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2,3), mapOf(
-                "highway" to "primary",
-                "cycleway:right" to "separate"
-            ))
-        ))).toList().isEmpty())
-        assertTrue(questType.getApplicableElements(TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2,3), mapOf(
-                "highway" to "primary",
-                "cycleway:both" to "separate"
-            ))
-        ))).toList().isEmpty())
+            val mapData = TestMapDataWithGeometry(listOf(way))
+
+            assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+            assertFalse(questType.isApplicableTo(way)!!)
+        }
+    }
+
+    @Test fun `not applicable to non-road`() {
+        val way = way(tags = mapOf("waterway" to "river"))
+        val mapData = TestMapDataWithGeometry(listOf(way))
+
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertFalse(questType.isApplicableTo(way)!!)
     }
 
     @Test fun `not applicable to road with cycleway that is not old enough`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2,3), mapOf(
-                "highway" to "primary",
-                "cycleway" to "track"
-            ), timestamp = Instant.now().toEpochMilli())
-        ))
+        val way = way(1L, listOf(1,2,3), mapOf(
+            "highway" to "primary",
+            "cycleway" to "track"
+        ), timestamp = Instant.now().toEpochMilli())
+        val mapData = TestMapDataWithGeometry(listOf(way))
+
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertFalse(questType.isApplicableTo(way)!!)
     }
 
     @Test fun `applicable to road with cycleway that is old enough`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2,3), mapOf(
-                "highway" to "primary",
-                "cycleway" to "track",
-                "check_date:cycleway" to "2001-01-01"
-            ), timestamp = Instant.now().toEpochMilli())
-        ))
+        val way = way(1L, listOf(1,2,3), mapOf(
+            "highway" to "primary",
+            "cycleway" to "track",
+            "check_date:cycleway" to "2001-01-01"
+        ), timestamp = Instant.now().toEpochMilli())
+        val mapData = TestMapDataWithGeometry(listOf(way))
+
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertTrue(questType.isApplicableTo(way)!!)
     }
 
     @Test fun `not applicable to road with cycleway that is old enough but has unknown cycleway tagging`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2,3), mapOf(
-                "highway" to "primary",
-                "cycleway" to "whatsthis",
-                "check_date:cycleway" to "2001-01-01"
-            ), timestamp = Instant.now().toEpochMilli())
-        ))
+        val way = way(1L, listOf(1,2,3), mapOf(
+            "highway" to "primary",
+            "cycleway" to "whatsthis",
+            "check_date:cycleway" to "2001-01-01"
+        ), timestamp = Instant.now().toEpochMilli())
+        val mapData = TestMapDataWithGeometry(listOf(way))
+
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertFalse(questType.isApplicableTo(way)!!)
+    }
+
+    @Test fun `applicable to road with cycleway that is tagged with an invalid value`() {
+        val way = way(1L, listOf(1,2,3), mapOf(
+            "highway" to "primary",
+            "cycleway" to "yes",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(way))
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertTrue(questType.isApplicableTo(way)!!)
+    }
+
+    @Test fun `not applicable to road with cycleway that is tagged with an unknown + invalid value`() {
+        val way = way(1L, listOf(1,2,3), mapOf(
+            "highway" to "primary",
+            "cycleway:left" to "yes",
+            "cycleway:right" to "doorzone",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(way))
+
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertFalse(questType.isApplicableTo(way)!!)
+    }
+
+    @Test fun `applicable to road with ambiguous cycleway value`() {
+        val way = way(1L, listOf(1,2,3), mapOf(
+            "highway" to "primary",
+            "cycleway" to "shared_lane",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(way))
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertTrue(questType.isApplicableTo(way)!!)
+    }
+
+    @Test fun `not applicable to road with ambiguous + unknown cycleway value`() {
+        val way = way(1L, listOf(1,2,3), mapOf(
+            "highway" to "primary",
+            "cycleway:left" to "shared_lane",
+            "cycleway:right" to "strange",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(way))
+
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertFalse(questType.isApplicableTo(way)!!)
+    }
+
+    @Test fun `applicable to road with ambiguous cycle lane not in Belgium`() {
+        val way = way(1L, listOf(1,2,3), mapOf(
+            "highway" to "primary",
+            "cycleway" to "lane",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(way))
+        mapData.wayGeometriesById[1L] = pGeom(0.0, 0.0)
+        on(countryInfo.countryCode).thenReturn("DE")
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        // because we don't know if we are in Belgium
+        assertNull(questType.isApplicableTo(way))
+    }
+
+    @Test fun `unspecified cycle lane is not ambiguous in Belgium`() {
+        val way = way(1L, listOf(1,2,3), mapOf(
+            "highway" to "primary",
+            "cycleway" to "lane",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(way))
+        mapData.wayGeometriesById[1L] = pGeom(0.0, 0.0)
+        on(countryInfo.countryCode).thenReturn("BE")
+
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        // because we don't know if we are in Belgium
+        assertNull(questType.isApplicableTo(way))
     }
 
     @Test fun `apply cycleway lane answer`() {
@@ -515,139 +594,5 @@ class AddCyclewayTest {
             StringMapEntryModify("cycleway:both","no", "no"),
             StringMapEntryDelete("oneway:bicycle", "no")
         )
-    }
-
-    @Test fun `isApplicableTo returns null for untagged ways`() {
-        assertNull(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified"
-            ))
-        ))
-    }
-
-    @Test fun `isApplicableTo returns true for tagged old ways`() {
-        assertTrue(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway" to "track"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertTrue(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:left" to "track"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertTrue(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:right" to "track"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertTrue(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:both" to "track"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-    }
-
-    @Test fun `isApplicableTo returns false for ways having nothing to do with cycleways`() {
-        assertFalse(questType.isApplicableTo(way(tags = mapOf("waterway" to "river")))!!)
-    }
-
-    @Test fun `isApplicableTo returns false for tagged new ways`() {
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway" to "track"
-            ), timestamp = Instant.now().toEpochMilli())
-        )!!)
-    }
-
-    @Test fun `isApplicableTo returns false for tagged old ways with unknown cycleway values`() {
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway" to "something"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:left" to "something"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:right" to "something"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:both" to "something"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-    }
-
-    @Test fun `isApplicableTo returns false for tagged old ways with unknown cycleway=separate values`() {
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway" to "separate"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:left" to "separate"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:right" to "separate"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:both" to "separate"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-    }
-
-    @Test fun `isApplicableTo returns false for tagged old ways with unknown cycleway lane values`() {
-
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway" to "lane",
-                "cycleway:lane" to "something"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "something"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "something"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
-        assertFalse(questType.isApplicableTo(
-            way(tags = mapOf(
-                "highway" to "unclassified",
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "something"
-            ), timestamp = "2000-10-10".toCheckDate()?.toEpochMilli())
-        )!!)
     }
 }
