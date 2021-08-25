@@ -1074,7 +1074,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_selection_hint_title">Too much to do?</string>
     <string name="quest_selection_hint_message">"Contributing should primarily be fun!
 
-If you are overwhelmed by the number of quests, you can always fine-tune what quests are displayed to you and in what order in the settings.</string>
+If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
     <string name="quest_presets_preset_add">Add preset</string>
     <string name="quest_presets_preset_name">Preset name</string>
     <string name="quest_presets_default_name">Default</string>
