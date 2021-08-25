@@ -118,7 +118,7 @@ class AddStepsRampTest {
                 strollerRamp = false,
                 wheelchairRamp = WheelchairRampStatus.NO
             ),
-            StringMapEntryAdd("check_date:ramp", "2021-08-22"),
+            StringMapEntryAdd("check_date:ramp", LocalDate.now().toCheckDateString()),
             StringMapEntryAdd("ramp:bicycle", "no"),
             StringMapEntryAdd("ramp:stroller", "no"),
             StringMapEntryAdd("ramp:wheelchair", "no"),
