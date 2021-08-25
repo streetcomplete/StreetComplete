@@ -61,11 +61,13 @@ enum class Cycleway {
         SUGGESTION_LANE, PICTOGRAMS, UNSPECIFIED_SHARED_LANE, UNKNOWN_SHARED_LANE -> true
         else -> false
     }
-    
+
     fun isAmbiguous(countryCode: String) = when(this) {
         UNSPECIFIED_SHARED_LANE -> true
         UNSPECIFIED_LANE -> countryCode != "BE"
-        else -> false
+        EXCLUSIVE_LANE, DUAL_LANE, ADVISORY_LANE, UNKNOWN_LANE, SUGGESTION_LANE,
+        PICTOGRAMS, UNKNOWN_SHARED_LANE, TRACK, DUAL_TRACK, BUSWAY,
+        SIDEWALK_EXPLICIT, NONE, NONE_NO_ONEWAY, SEPARATE, UNKNOWN, INVALID -> false
     }
 
     val isUnknown get() = when(this) {
