@@ -339,7 +339,7 @@ import javax.inject.Singleton
         AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style...
         AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
         AddSidewalk(), // for any pedestrian routers
-        AddCycleway(), // for any cyclist routers (and cyclist maps)
+        AddCycleway(countryInfos), // for any cyclist routers (and cyclist maps)
         AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
         // footways
