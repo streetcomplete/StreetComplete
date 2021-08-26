@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.data.upload.UploadModule
 import de.westnordost.streetcomplete.data.upload.UploadService
 import de.westnordost.streetcomplete.data.user.UserModule
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeModule
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsModule
 import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.edithistory.UndoDialog
 import de.westnordost.streetcomplete.map.MainFragment
@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOnewayForm
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsModule
 import de.westnordost.streetcomplete.settings.*
+import de.westnordost.streetcomplete.settings.questselection.QuestPresetsFragment
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 import de.westnordost.streetcomplete.user.*
 import javax.inject.Singleton
@@ -62,7 +63,7 @@ import javax.inject.Singleton
     NoteEditsModule::class,
     OsmNoteQuestModule::class,
     OsmQuestModule::class,
-    VisibleQuestTypeModule::class,
+    QuestPresetsModule::class,
     CreatedElementsModule::class
 ])
 interface ApplicationComponent {
@@ -105,4 +106,5 @@ interface ApplicationComponent {
     fun inject(privacyStatementFragment: PrivacyStatementFragment)
     fun inject(streetCompleteSQLiteOpenHelper: StreetCompleteSQLiteOpenHelper)
     fun inject(editHistoryFragment: EditHistoryFragment)
+    fun inject(questPresetsFragment: QuestPresetsFragment)
 }

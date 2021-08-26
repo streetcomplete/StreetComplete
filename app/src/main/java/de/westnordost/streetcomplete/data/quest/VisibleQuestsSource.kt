@@ -51,6 +51,11 @@ import javax.inject.Singleton
     }
 
     private val visibleQuestTypeSourceListener = object : VisibleQuestTypeSource.Listener {
+        override fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) {
+            // many different quests could become visible/invisible when this is changed
+            invalidate()
+        }
+
         override fun onQuestTypeVisibilitiesChanged() {
             // many different quests could become visible/invisible when this is changed
             invalidate()
@@ -73,7 +78,7 @@ import javax.inject.Singleton
     /** Retrieve all visible quests in the given bounding box from local database */
     fun getAllVisible(bbox: BoundingBox): List<Quest> {
         val visibleQuestTypeNames = questTypeRegistry
-            .getVisible(visibleQuestTypeSource)
+            .filter { visibleQuestTypeSource.isVisible(it) }
             .map { it::class.simpleName!! }
         if (visibleQuestTypeNames.isEmpty()) return listOf()
 

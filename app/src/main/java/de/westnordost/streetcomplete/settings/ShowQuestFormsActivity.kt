@@ -40,7 +40,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
 
     init {
         Injector.applicationComponent.inject(this)
-        showQuestFormAdapter.list = questTypeRegistry.all.toMutableList()
+        showQuestFormAdapter.list = questTypeRegistry.toMutableList()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,7 +81,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         private inner class ViewHolder(itemView: View) : ListAdapter.ViewHolder<QuestType<*>>(itemView) {
             override fun onBind(with: QuestType<*>) {
                 itemView.questIcon.setImageResource(with.icon)
-                itemView.questTitle.text = genericQuestTitle(itemView, with)
+                itemView.questTitle.text = genericQuestTitle(itemView.resources, with)
                 itemView.setOnClickListener { onClickQuestType(with) }
             }
         }
