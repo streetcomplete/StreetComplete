@@ -2,13 +2,15 @@ package de.westnordost.streetcomplete.quests.crossing
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
+import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
 import de.westnordost.streetcomplete.util.isRightOf
 
-class AddCrossing : OsmElementQuestType<Boolean> {
+class AddCrossing : OsmElementQuestType<KerbHeight> {
 
     private val roadsFilter by lazy { """
         ways with
@@ -129,13 +131,21 @@ class AddCrossing : OsmElementQuestType<Boolean> {
             .filter { it.tags.isEmpty() }
     }
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = AddKerbHeightForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        if (answer) {
+    override fun applyAnswerTo(answer: KerbHeight, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("kerb", answer.osmValue)
+        /* So, we don't assume there is a crossing here for kerb=no and kerb=raised.
+
+           As most actual crossings will have at least lowered kerbs, this is a good indicator.
+
+           When there is no kerb at all, it is likely that this is a situation where the footway
+           or road drawn in OSM are just virtual, to connect the geometry. In other words, it may be
+           just e.g. an asphalted area, which does not really classify as a crossing.
+         */
+
+        if (answer.osmValue in listOf("lowered", "flush")) {
             changes.add("highway", "crossing")
-        } else {
-            changes.add("crossing", "no")
         }
     }
 }
