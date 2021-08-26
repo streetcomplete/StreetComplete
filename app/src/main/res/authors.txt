@@ -70,6 +70,7 @@ kerb_height_lowered_origina... CC0               Mateusz Konieczny
 kerb_height_flush.jpg          CC0               Mateusz Konieczny
 kerb_height_flush_original.jpg CC0               Mateusz Konieczny
 kerb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
+kerb_height_no.jpg             Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
 
 parking_type_lane.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:20201001-parking-streetside_01.jpg
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg

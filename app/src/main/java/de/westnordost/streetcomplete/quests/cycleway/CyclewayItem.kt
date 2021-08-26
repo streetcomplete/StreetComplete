@@ -4,17 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
 
-val Cycleway.isSupported get() = when(this) {
-    UNKNOWN, UNKNOWN_SHARED_LANE, UNKNOWN_LANE, UNSPECIFIED_SHARED_LANE -> false
-    else -> true
-}
-
 fun Cycleway.isAvailableAsSelection(countryCode: String): Boolean =
-    isSupported
+    !isUnknown && !isInvalid && !isAmbiguous(countryCode) &&
     /* suggestion lanes are only known in Belgium and Netherlands */
-    && (this != SUGGESTION_LANE || countryCode in listOf("NL", "BE"))
-    /* unspecified lanes are only ok in Belgium (no distinction made, all lanes are dashed) */
-    && (this != UNSPECIFIED_LANE || countryCode == "BE")
+    (this != SUGGESTION_LANE || countryCode in listOf("NL", "BE"))
 
 fun Cycleway.asItem(isLeftHandTraffic: Boolean) =
     when(this) {

@@ -51,13 +51,13 @@ This software is released under the terms of the [GNU General Public License](ht
 
 ## Sponsors
 
-<a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" height="220"/></a><br/>
+<a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" height="180"/></a><br/>
 The <a href="https://bmbf.de/">German Federal Ministry of Education and Research</a> sponsored this project (grant code 01IS20S35) within the frame of the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a> between 09.2020 and 02.2021. This enabled Tobias Zwick to work on making this app a more powerful and efficient tool to easily contribute to OpenStreetMap.
 
 
 <a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" height="60"/> <img src=".github/images/logo_ngi0.svg" height="60"/></a><br/>
 The <a href="https://nlnet.nl/discovery/">NGI Zero Discovery</a> is a grant program organized by the NLnet foundation. The 2019 grant enabled <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Mateusz Konieczny to work on StreetComplete</a> for about three months.
-
+Furthermore, <a href="https://nlnet.nl/project/StreetComplete-Together/">another grant from the NLnet foundation</a> is enabling Tobias Zwick to work on smaller and larger features on the app in 2021/2022 for another 4-5 months!
 
 <a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" height="60"/></a><br/>
 The <a href="https://osmfoundation.org/">OpenStreetMap foundation</a> was funding the development of doing <a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">map maintenance with StreetComplete</a> in their <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">first round</a> of the <a href="https://wiki.osmfoundation.org/wiki/Microgrants">microgrant program</a> in 2020.

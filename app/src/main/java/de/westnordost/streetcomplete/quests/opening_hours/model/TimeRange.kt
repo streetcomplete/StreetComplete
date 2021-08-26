@@ -45,7 +45,8 @@ data class TimeRange(val start: Int, val end: Int, val isOpenEnded: Boolean = fa
     override fun toString() = toStringUsing(Locale.GERMANY, "-")
 
     private fun timeOfDayToString(locale: Locale, minutes: Int): String {
-        val todayAt = LocalDateTime.of(LocalDate.now(), LocalTime.ofSecondOfDay(minutes * 60L))
+        val seconds = (minutes % (24*60)) * 60L
+        val todayAt = LocalDateTime.of(LocalDate.now(), LocalTime.ofSecondOfDay(seconds))
             .atZone(ZoneId.systemDefault())
             .toInstant()
             .toEpochMilli()

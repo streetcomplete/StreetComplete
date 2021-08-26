@@ -62,23 +62,23 @@ data class HouseNumbers(val list: List<HouseNumbersPart>) {
 sealed class HouseNumbersPart: Comparable<HouseNumbersPart> {
     override fun compareTo(other: HouseNumbersPart): Int = when(this) {
         is SingleHouseNumbersPart -> when (other) {
-            // f.e. 12c < 15
+            // e.g. 12c < 15
             is SingleHouseNumbersPart -> sign(
                 single.compareTo(other.single)
             )
-            // f.e. 10 < 12-14, but 10 ≮ 8-12 (and also not bigger than)
+            // e.g. 10 < 12-14, but 10 ≮ 8-12 (and also not bigger than)
             is HouseNumbersPartsRange -> sign(
                 single.compareTo(other.start),
                 single.compareTo(other.end)
             )
         }
         is HouseNumbersPartsRange -> when (other) {
-            // f.e. 12-14 < 16a, but 12-14 ≮ 13 (and also not bigger than)
+            // e.g. 12-14 < 16a, but 12-14 ≮ 13 (and also not bigger than)
             is SingleHouseNumbersPart -> sign(
                 start.compareTo(other.single),
                 end.compareTo(other.single)
             )
-            // f.e. 8-14 < 16-18 but not if the ranges intersect
+            // e.g. 8-14 < 16-18 but not if the ranges intersect
             is HouseNumbersPartsRange -> sign(
                 start.compareTo(other.start),
                 start.compareTo(other.end),
@@ -95,7 +95,7 @@ private fun sign(vararg numbers: Int): Int = when {
     else -> 0
 }
 
-/** f.e. 5a-12, 100-20/1*/
+/** e.g. 5a-12, 100-20/1*/
 data class HouseNumbersPartsRange(
     val start: StructuredHouseNumber,
     val end: StructuredHouseNumber
@@ -129,11 +129,11 @@ sealed class StructuredHouseNumber: Comparable<StructuredHouseNumber> {
     }
 }
 
-/** f.e. 12 */
+/** e.g. 12 */
 data class SimpleHouseNumber(override val number: Int) : StructuredHouseNumber() {
     override fun toString() = number.toString()
 }
-/** f.e. 12c */
+/** e.g. 12c */
 data class HouseNumberWithLetter(
     override val number: Int,
     val separator: String,
@@ -141,7 +141,7 @@ data class HouseNumberWithLetter(
 ) : StructuredHouseNumber() {
     override fun toString() = "$number$separator$letter"
 }
-/** f.e. 12/3 */
+/** e.g. 12/3 */
 data class HouseNumberWithNumber(
     override val number: Int,
     val separator: String,

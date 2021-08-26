@@ -58,8 +58,8 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
         rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
     }
 
-    // if any rule collides with another, f.e. "Mo-Fr 10:00-12:00; We 14:00-16:00", switch to
-    // additive rules f.e. "Mo-Fr 10:00-12:00, We 14:00-16:00"
+    // if any rule collides with another, e.g. "Mo-Fr 10:00-12:00; We 14:00-16:00", switch to
+    // additive rules e.g. "Mo-Fr 10:00-12:00, We 14:00-16:00"
     if (rules.weekdaysCollideWithAnother()) {
         for (rule in rules) {
             // "off" rules stay non-additive
@@ -116,7 +116,7 @@ private fun Weekdays.toWeekDayRangesAndHolidays(): WeekDayRangesAndHolidays {
 
 private fun CircularSection.toWeekDayRanges(): List<WeekDayRange> {
     val size = NumberSystem(0, Weekdays.WEEKDAY_COUNT-1).getSize(this)
-    // if the range is very short (f.e. Mo-Tu), rather save it as Mo,Tu
+    // if the range is very short (e.g. Mo-Tu), rather save it as Mo,Tu
     return if (size == 2) {
         listOf(
             WeekDayRange().also { it.startDay = WeekDay.values()[start] },

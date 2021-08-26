@@ -15,6 +15,7 @@ v34.0-beta1: |
   </ul>
   <h3>Enhancements</h3>
   <ul>
+  <li>Ask whether a road has a cycleway the current tagging is invalid (#3206, #3148)</li>
   <li>The quests that ask whether roads, ways etc. are lit are now only shown at night (#1285, #2872), by @TurnrDev</li>
   <li>The roof shape quest is no longer enabled by default - you can enable it in the settings (#3161), by @matkoniecz</li>
   <li>Clearer wording when explaining the team mode (#3170, #3172) by @matkoniecz and @smichel17</li>
@@ -29,6 +30,7 @@ v34.0-beta1: |
   <li>Fix layout for right-to-left languages (Persian, Arabic) (#3181, #3184)</li>
   <li>Fix steps ramp quest could seemingly in rare cases not be answered (#3115)</li>
   <li>Fix tapping compass rotates map back to North even when currently searching for GPS location (#3147, #3166), by @smichel17</li>
+  <li>Fix crash when displaying opening hours whose range ended at 12 AM</li>
   </ul>
 
 v33.2: |

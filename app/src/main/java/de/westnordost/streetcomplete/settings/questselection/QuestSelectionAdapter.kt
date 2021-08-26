@@ -243,8 +243,13 @@ class QuestSelectionAdapter @Inject constructor(
         private val questIcon: ImageView = itemView.questIcon
         private val questTitle: TextView = itemView.questTitle
         private val visibilityCheckBox: CheckBox = itemView.visibilityCheckBox
-        private val countryDisabledText: TextView = itemView.countryDisabledText
+        private val disabledText: TextView = itemView.disabledText
         lateinit var item: QuestVisibility
+
+        private val isEnabledOnlyAtNight: Boolean
+            get() {
+                return item.questType.dayNightVisibility == DayNightCycle.ONLY_NIGHT
+            }
 
         private val isEnabledInCurrentCountry: Boolean
             get() {
@@ -278,12 +283,14 @@ class QuestSelectionAdapter @Inject constructor(
                 true
             }
 
-            countryDisabledText.isGone = isEnabledInCurrentCountry
+            disabledText.isGone = isEnabledInCurrentCountry && !isEnabledOnlyAtNight
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
-                countryDisabledText.text =  countryDisabledText.resources.getString(
+                disabledText.text =  disabledText.resources.getString(
                     R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
+            } else if (isEnabledOnlyAtNight) {
+                disabledText.text = disabledText.resources.getString(R.string.questList_disabled_at_day)
             }
 
             updateSelectionStatus()
