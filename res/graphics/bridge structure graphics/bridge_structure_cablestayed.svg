@@ -1,108 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 2000 1000" style="enable-background:new 0 0 2000 1000;" xml:space="preserve">
-<style type="text/css">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 320 96" xml:space="preserve"
+    width="320" height="96" xmlns="http://www.w3.org/2000/svg"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<style type="text/css" id="style1101">
 	.st0{fill:#E44848;stroke:#AA0000;stroke-width:5;stroke-miterlimit:10;}
 	.st1{fill:#E0D8D8;stroke:#916F6F;stroke-width:5;stroke-miterlimit:10;}
 </style>
-<g>
-	<g>
-		<g>
-			<g>
-				<line class="st0" x1="333" y1="89" x2="1000" y2="500"/>
-				
-					<rect x="654" y="-97.2" transform="matrix(0.5246 -0.8514 0.8514 0.5246 66.1342 707.4325)" class="st0" width="25" height="783.5"/>
-			</g>
-			<g>
-				<line class="st0" x1="333" y1="89" x2="499.8" y2="500"/>
-				
-					<rect x="403.9" y="72.7" transform="matrix(0.9266 -0.3761 0.3761 0.9266 -80.1827 178.2039)" class="st0" width="25" height="443.6"/>
-			</g>
-			<g>
-				<line class="st0" x1="333" y1="89" x2="666.5" y2="500"/>
-				
-					<rect x="487.3" y="29.9" transform="matrix(0.7765 -0.6301 0.6301 0.7765 -73.8779 380.7051)" class="st0" width="25" height="529.3"/>
-			</g>
-			<g>
-				<line class="st0" x1="833.2" y1="500" x2="333" y2="89"/>
-				
-					<rect x="570.6" y="-29.2" transform="matrix(0.6349 -0.7726 0.7726 0.6349 -14.6228 558.0592)" class="st0" width="25" height="647.4"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<line class="st0" x1="-333.5" y1="500" x2="333.5" y2="89"/>
-				
-					<rect x="-391.7" y="282" transform="matrix(0.8513 -0.5246 0.5246 0.8513 -154.4968 43.7791)" class="st0" width="783.5" height="25"/>
-			</g>
-			<g>
-				<line class="st0" x1="333.5" y1="89" x2="166.8" y2="500"/>
-				
-					<rect x="28.4" y="282" transform="matrix(0.3759 -0.9267 0.9267 0.3759 -116.7774 415.6179)" class="st0" width="443.5" height="25"/>
-			</g>
-			<g>
-				<line class="st0" x1="333.5" y1="89" x2="0" y2="500"/>
-				
-					<rect x="-97.9" y="282" transform="matrix(0.6301 -0.7765 0.7765 0.6301 -167.0038 238.4269)" class="st0" width="529.3" height="25"/>
-			</g>
-			<g>
-				<line class="st0" x1="-166.8" y1="500" x2="333.5" y2="89"/>
-				
-					<rect x="-240.4" y="282" transform="matrix(0.7727 -0.6348 0.6348 0.7727 -167.9924 119.8447)" class="st0" width="647.5" height="25"/>
-			</g>
-		</g>
-	</g>
-	<g>
-		<g>
-			<g>
-				<line class="st0" x1="1666.8" y1="89" x2="2333.8" y2="500"/>
-				
-					<rect x="1987.8" y="-97.2" transform="matrix(0.5246 -0.8514 0.8514 0.5246 700.2288 1842.9652)" class="st0" width="25" height="783.5"/>
-			</g>
-			<g>
-				<line class="st0" x1="1666.8" y1="89" x2="1833.5" y2="500"/>
-				
-					<rect x="1737.6" y="72.7" transform="matrix(0.9267 -0.3759 0.3759 0.9267 17.6361 679.4035)" class="st0" width="25" height="443.5"/>
-			</g>
-			<g>
-				<line class="st0" x1="1666.8" y1="89" x2="2000.2" y2="500"/>
-				
-					<rect x="1821" y="29.9" transform="matrix(0.7766 -0.63 0.63 0.7766 224.0547 1220.8577)" class="st0" width="25" height="529.2"/>
-			</g>
-			<g>
-				<line class="st0" x1="2167" y1="500" x2="1666.8" y2="89"/>
-				
-					<rect x="1904.4" y="-29.2" transform="matrix(0.6349 -0.7726 0.7726 0.6349 472.4119 1588.5983)" class="st0" width="25" height="647.4"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<line class="st0" x1="1000.2" y1="500" x2="1667.2" y2="89"/>
-				
-					<rect x="942" y="282" transform="matrix(0.8513 -0.5246 0.5246 0.8513 43.7653 743.4479)" class="st0" width="783.5" height="25"/>
-			</g>
-			<g>
-				<line class="st0" x1="1667.2" y1="89" x2="1500.5" y2="500"/>
-				
-					<rect x="1362.1" y="282" transform="matrix(0.3759 -0.9267 0.9267 0.3759 715.6205 1651.5146)" class="st0" width="443.5" height="25"/>
-			</g>
-			<g>
-				<line class="st0" x1="1667.2" y1="89" x2="1333.8" y2="500"/>
-				
-					<rect x="1235.9" y="282" transform="matrix(0.63 -0.7766 0.7766 0.63 326.5206 1274.2975)" class="st0" width="529.2" height="25"/>
-			</g>
-			<g>
-				<line class="st0" x1="1167" y1="500" x2="1667.2" y2="89"/>
-				
-					<rect x="1093.4" y="282" transform="matrix(0.7726 -0.6348 0.6348 0.7726 135.2312 966.5977)" class="st0" width="647.4" height="25"/>
-			</g>
-		</g>
-	</g>
-</g>
-<g>
-	<rect y="462.5" class="st1" width="2000" height="75"/>
-	<rect x="1629.5" y="67" class="st1" width="75" height="933"/>
-	<rect x="295.5" y="67" class="st1" width="75" height="933"/>
-</g>
-</svg>
+    <line class="st0" x1="77.515305" y1="8.072732" x2="160.61221" y2="59.276379" id="line1103"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="32.235916" y="70.229881" transform="rotate(-58.360219)" class="st0" width="3.1147125"
+        height="97.615089" id="rect1105"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="77.515305" y1="8.072732" x2="98.295761" y2="59.276379" id="line1109"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="67.2323" y="36.628147" transform="rotate(-22.091867)" class="st0" width="3.1146374"
+        height="55.266125" id="rect1111"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="77.515305" y1="8.072732" x2="119.06376" y2="59.276379" id="line1115"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="53.552944" y="55.11578" transform="rotate(-39.058007)" class="st0" width="3.1145432"
+        height="65.941109" id="rect1117"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="139.83176" y1="59.276379" x2="77.515305" y2="8.072732" id="line1121"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="41.420521" y="65.01741" transform="rotate(-50.587638)" class="st0" width="3.1145906"
+        height="80.655441" id="rect1123"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="-5.5193181" y1="59.276379" x2="77.577599" y2="8.072732" id="line1129"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="-35.790058" y="46.011269" transform="rotate(-31.642785)" class="st0" width="97.606789"
+        height="3.1144476" id="rect1131"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="77.577599" y1="8.072732" x2="56.809597" y2="59.276379" id="line1135"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="-33.575176" y="73.368744" transform="rotate(-67.920907)" class="st0" width="55.254631"
+        height="3.1146917" id="rect1137"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="77.577599" y1="8.072732" x2="36.02914" y2="59.276379" id="line1141"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="-23.328325" y="63.769855" transform="rotate(-50.941993)" class="st0" width="65.941109"
+        height="3.1145432" id="rect1143"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="15.248681" y1="59.276379" x2="77.577599" y2="8.072732" id="line1147"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="-25.846457" y="53.925365" transform="rotate(-39.404296)" class="st0" width="80.669014"
+        height="3.1146336" id="rect1149"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="243.68422" y1="8.072732" x2="326.78113" y2="59.276379" id="line1157"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="119.41158" y="211.69635" transform="rotate(-58.360219)" class="st0" width="3.1147125"
+        height="97.615089" id="rect1159"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="243.68422" y1="8.072732" x2="264.45221" y2="59.276379" id="line1163"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="221.22408" y="99.06723" transform="rotate(-22.079093)" class="st0" width="3.1146917"
+        height="55.254631" id="rect1165"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="243.68422" y1="8.072732" x2="285.22021" y2="59.276379" id="line1169"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="182.60229" y="159.78616" transform="rotate(-39.049947)" class="st0" width="3.1145887"
+        height="65.929619" id="rect1171"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="306.00067" y1="59.276379" x2="243.68422" y2="8.072732" id="line1175"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="146.92145" y="193.40872" transform="rotate(-50.587638)" class="st0" width="3.1145906"
+        height="80.655441" id="rect1177"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="160.63713" y1="59.276379" x2="243.73404" y2="8.072732" id="line1183"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="105.65791" y="133.17775" transform="rotate(-31.642785)" class="st0" width="97.606789"
+        height="3.1144476" id="rect1185"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="243.73404" y1="8.072732" x2="222.96605" y2="59.276379" id="line1189"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="28.887384" y="227.34236" transform="rotate(-67.920907)" class="st0" width="55.254631"
+        height="3.1146917" id="rect1191"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="243.73404" y1="8.072732" x2="202.19806" y2="59.276379" id="line1195"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="81.350914" y="192.82013" transform="rotate(-50.950053)" class="st0" width="65.929619"
+        height="3.1145887" id="rect1197"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <line class="st0" x1="181.41759" y1="59.276379" x2="243.73404" y2="8.072732" id="line1201"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="102.53193" y="159.41211" transform="rotate(-39.407934)" class="st0" width="80.650322"
+        height="3.114393" id="rect1203"
+        style="stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect y="54.629135" class="st1" width="334.1575" height="9.2944803" id="rect1213" x="-6.4420877"
+        style="stroke-width:2;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="239.00507" y="5.2997155" class="st1" width="9.4081087" height="92.812149" id="rect1215"
+        style="stroke-width:2;stroke-miterlimit:10;stroke-dasharray:none" />
+    <rect x="72.8106" y="5.2990689" class="st1" width="9.4094019" height="92.370262" id="rect1217"
+        style="stroke-width:2;stroke-miterlimit:10;stroke-dasharray:none" />
+    <metadata id="metadata1472"><rdf:RDF><cc:Work
+       rdf:about=""><dc:creator><cc:Agent><dc:title>TurnrDev</dc:title></cc:Agent></dc:creator><cc:license
+        rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" /></cc:Work><cc:License
+        rdf:about="http://creativecommons.org/publicdomain/zero/1.0/"><cc:permits
+         rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks" /></cc:License></rdf:RDF></metadata></svg>
