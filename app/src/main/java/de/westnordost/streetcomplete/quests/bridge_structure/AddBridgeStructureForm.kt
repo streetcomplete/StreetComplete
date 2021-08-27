@@ -16,7 +16,7 @@ class AddBridgeStructureForm : AImageListQuestAnswerFragment<BridgeStructure, Br
         Item(TRUSS, R.drawable.ic_bridge_structure_truss),
         Item(CABLE_STAYED, R.drawable.ic_bridge_structure_cablestayed),
         Item(HUMPBACK, R.drawable.ic_bridge_structure_humpback),
-        Item(SIMPLE_SUSPENSION, R.drawable.bridge_structure_simple_suspension),
+        Item(SIMPLE_SUSPENSION, R.drawable.ic_bridge_structure_simple_suspension),
         Item(FLOATING, R.drawable.bridge_structure_floating)
     )
 
