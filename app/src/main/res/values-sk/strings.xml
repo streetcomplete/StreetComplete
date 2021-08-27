@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Nastavenia"</string>
 
     <!-- Fuzzy -->
@@ -12,8 +10,6 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Autorizácia zlyhala: Všetky oprávnenia v zozname musia byť udelené"</string>
-
-    <!-- Fuzzy -->
     <string name="title_activity_settings">"Nastavenia"</string>
 
     <!-- Fuzzy -->
@@ -240,12 +236,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Buďte struční, v ideálnom prípade použite slová z označenia otváracej doby. Napr. \"Otvorené po rezervácii\". Chýbajúce označenie nemusí znamenať, že tu nie je pravidelná otváracia doba."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Koľko poschodí má táto budova?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Koľko poschodí má táto časť budovy?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Aký je základný tvar strechy tejto budovy?"</string>
@@ -973,9 +963,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="action_reset">"Obnoviť"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Dlho stlačte a presuňte úlohu pre zmenu jej poradia pri zobrazení na mape."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Späť"</string>
@@ -2245,9 +2232,17 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="resurvey_intervals_default">"Predvolené"</string>
     <string name="resurvey_intervals_more_often">"Pýtať sa častejšie"</string>
     <string name="quest_accepts_cash_type_title">"Prijíma %1$s (%2$s) platby v hotovosti?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"Má električková zastávka %s lavičku?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Má táto električková zastávka lavičku?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Má táto autobusová zastávka lavičku?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"Má autobusová zastávka %s lavičku?"</string>
     <string name="quest_summit_register_title">"Je na %s vrcholová kniha?"</string>
     <string name="quest_is_defibrillator_inside_title">"Je tento defibrilátor (AED) vo vnútri budovy?"</string>
@@ -2314,7 +2309,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_kerb_height_flush">"Na rovnakej úrovni s povrchom cesty"</string>
     <string name="quest_kerb_height_lowered">"Trochu vyššie ako povrch cesty"</string>
     <string name="quest_kerb_height_raised">"Vysoký obrubník (ako schod)"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Na tejto strane prechodu nie je obrubník"</string>
     <string name="quest_kerb_height_lowered_ramp">"Obrubník s nájazdom"</string>
 
     <!-- Fuzzy -->
@@ -2372,9 +2366,14 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="team_mode">"Tímový režim"</string>
     <string name="team_mode_exit">"Ukončiť tímový režim"</string>
     <string name="team_mode_description">"Keď mapujete v skupine jednu oblasť, požite tímový režim a rozdeľte si úlohy."</string>
-    <string name="team_mode_team_size_label">"Koľkí mapujete?"</string>
     <string name="team_mode_team_size_hint">"Tímový režim je pre 2 až 12 ľudí."</string>
-    <string name="team_mode_choose_color">"Každý nech si vyberie svoju farbu:"</string>
     <string name="team_mode_active">"Tímový režim je aktívny"</string>
     <string name="team_mode_deactivated">"Tímový režim je neaktívny"</string>
+    <string name="show_edit_history">"Zobraziť históriu úprav"</string>
+    <string name="delete_confirmation">"Zmazať"</string>
+    <string name="background_type_map">"Mapa"</string>
+    <string name="quest_barrier_type_gate">"Brána"</string>
+    <string name="quest_barrier_type_chain">"Reťaz"</string>
+    <string name="quest_barrier_type_rope">"Lano"</string>
+    <string name="action_search">"Hľadať"</string>
 </resources>

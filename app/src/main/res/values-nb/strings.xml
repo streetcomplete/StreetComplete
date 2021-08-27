@@ -79,7 +79,7 @@
     <string name="turn_on_location_request">"Posisjonsdeling er av. Gå til innstillinger og skru det på nå?"</string>
 
     <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Posisjonen din trengs for å lete etter oppdrag i nærheten."</string>
+    <string name="no_location_permission_warning">"Posisjonen din trengs for å vise den på kartet, og for å lete etter oppdrag i nærheten."</string>
     <string name="about_title_authors">"Bidragsytere"</string>
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick og bidragsytere"</string>
 
@@ -132,12 +132,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Vær kort og konsis. Bruk helst ordlyden fra skiltet, for eksempel «etter avtale». Merk at mangel på skilt med åpningstider ikke nødvendigvis betyr at det ikke fins faste åpningstider."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Hvor mange etasjer har denne bygningen?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Hvor mange etasjer har denne bygningsdelen?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Hvilken form har taket på denne bygningen?"</string>
@@ -813,7 +807,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="action_reset">"Nullstil"</string>
-    <string name="reorder_quest_priority_hint">"Trykk og hold for å endre rekkefølge på oppdragstypene som vises på kartet."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Angre"</string>
@@ -1666,6 +1659,8 @@ Og husk å ta vare på egen sikkerhet: Pass på hvor du setter foten, og gå ald
     <string name="link_umap_description">"Lag kjapt kart med egne data for framvisning på nettstedet ditt"</string>
     <string name="link_opnvkarte_description">"Offentlige transportruter og holdeplasser"</string>
     <string name="link_pic4review_description">"Bidra til OSM ved å se på bilder fra byen din"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"Wikien er et godt utgangspunkt for alt relatert til
 OpenStreetMap"</string>
     <string name="link_learnosm_description">"Uerfaren med OpenStreetMap? Her er en innføring."</string>
@@ -1785,9 +1780,17 @@ forkortelser i feltet nedenfor:"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spør oftere"</string>
     <string name="quest_accepts_cash_type_title">"Tar %1$s (%2$s) imot betaling med kontanter?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"Har trikkestoppet %s en benk?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Har dette trikkestoppet en benk?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Har dette busstoppet en benk?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"Har busstoppet %s en benk?"</string>
     <string name="quest_summit_register_title">"Fins det en turbok å skrive navnet sitt i på %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Er det en hjertestarter (AED) i denne bygningen?"</string>
@@ -1852,7 +1855,6 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_kerb_height_flush">"Samme nivå som veien"</string>
     <string name="quest_kerb_height_lowered">"Litt høyere enn veien"</string>
     <string name="quest_kerb_height_raised">"Høy fortauskant"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Det er ikke fortauskant på denne siden av overgangen"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampe til fortauskant"</string>
     <string name="quest_lanes_answer_lanes_description2">"Skriv inn antall oppmerkede kjørefelt (i begge regninger) som kan brukes av biler. Sykkel- og parkeringsfelt skal ikke telles med. Hvis noen av feltene er bussfelt er det bedre å legge inn en merknad."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Skriv inn antall oppmerkede kjørefelt som kan brukes av biler. Sykkel- og parkeringsfelt skal ikke telles med. Hvis noen av feltene er bussfelt er det bedre å legge inn en merknad."</string>
@@ -1909,9 +1911,7 @@ forkortelser i feltet nedenfor:"</string>
     <string name="team_mode">"Gruppemodus"</string>
     <string name="team_mode_exit">"Avslutt gruppemodus"</string>
     <string name="team_mode_description">"Når du kartlegger det samme området sammen med en gruppe kan du starte gruppemodus for å dele oppgavene mellom dere."</string>
-    <string name="team_mode_team_size_label">"Hvor mange er med?"</string>
     <string name="team_mode_team_size_hint">"Gruppemodus fungerer for grupper på 2-12 personer"</string>
-    <string name="team_mode_choose_color">"Nå velger alle i din gruppe en unik farge:"</string>
     <string name="team_mode_active">"Gruppemodus er aktivt"</string>
     <string name="team_mode_deactivated">"Gruppemodus er deaktivert"</string>
     <string name="quest_pitchLit_title">"Er idrettsfeltet opplyst?"</string>
@@ -1972,7 +1972,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_barrier_type_stile_ladder">"Stiger"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Sykkelhinder"</string>
     <string name="quest_barrier_type_kissing_gate">"Sluseport"</string>
-    <string name="quest_barrier_type_stepover">"Gjerdeklyv(gjerdeovergang)"</string>
     <string name="quest_barrier_type_swing_gate">"Svingport"</string>
     <string name="quest_policeType_title">"Hva slags politistasjon er dette?"</string>
 
@@ -1980,6 +1979,8 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_barrier_type_kissing_gate_conversion">"Omgjort til en sluseport"</string>
     <string name="quest_stile_type_title">"Hva slags passeringspunkt er dette?"</string>
     <string name="quest_buildingType_semi_detached_description2">"Boliger sammenkoblet på én side"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Oppdragsvalg og prioritet"</string>
     <string name="pref_subtitle_quests">"%1$d av %2$d aktivert"</string>
     <string name="quest_busStopLit_tram_name_title">"Er trikkestoppet %s opplyst?"</string>
@@ -1989,19 +1990,79 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="no_location_permission_warning_title">"Stedstillatelse"</string>
     <string name="quest_surface_value_woodchips">"Trefliser"</string>
     <string name="no_camera_app">"Ingen kamera-app tilgjengelig"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"Har trikkestoppet %s en søppelbøtte?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"Har dette trikkestoppet en søppelbøtte?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"Har bussholdeplassen en søppelbøtte?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"Har bussholdeplassen %s en søppelbøtte?"</string>
     <string name="quest_bollard_type_title">"Hvilken type pullert er dette?"</string>
     <string name="quest_bollard_type_rising">"Hev-senk"</string>
-    <string name="quest_bollard_type_removable_with_key">"Avtakbar med nøkkel"</string>
-    <string name="quest_bollard_type_removable_without_key">"Avtakbar uten nøkkel"</string>
-    <string name="quest_bollard_type_foldable">"Sammenleggbar"</string>
     <string name="quest_bollard_type_flexible">"Fleksibel"</string>
     <string name="quest_bollard_type_fixed">"Fastmontert (kan ikke fjernes)"</string>
     <string name="quest_camera_type_title">"Hvilken type overvåkingskamera er dette?"</string>
     <string name="quest_camera_type_dome">"Kuppel"</string>
     <string name="quest_camera_type_fixed">"Fastmontert"</string>
     <string name="quest_camera_type_panning">"Panorering"</string>
+    <string name="about_title_faq">"Ofte stilte spørsmål"</string>
+    <string name="quest_buildingLevels_title2">"Hvor mange etasjer over kjeller har denne bygningen?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etasjer over kjeller har denne bygningsdelen?"</string>
+    <string name="quest_crossing_title">"Er det kantstein hvor dette anlegget møter veien? Hvilken type?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Standardvalg: %s"</string>
+
+    <!-- Fuzzy -->
+    <string name="default_disabled_msg_roofShape">"Denne oppdragstypen blir normalt ikke vist fordi takformene er ofte vanskelig å se fra gaten.  Denne oppdragstypen er også kanske tidskrevende, i aller fleste tilfeller er det enklere og mer effektiv å kartlegge denne hjemme med flyfoto."</string>
+    <string name="quest_religion_animist">"Animisme"</string>
+    <string name="quest_construction_steps_title">"Er trappene ferdigbygget?"</string>
+
+    <!-- Fuzzy -->
+    <string name="questList_disabled_at_day">"Kun vist om natten"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_quests_deselect_all">"Opphev alle oppdrag?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_boathouse">"Naust"</string>
+    <string name="quest_buildingType_allotment_house">"Kolonihagehytte"</string>
+    <string name="quest_buildingType_grandstand">"Tribune"</string>
+
+    <!-- Fuzzy -->
+    <string name="action_search">"Søk"</string>
+    <string name="action_manage_presets">"Endre oppdragsoppsett"</string>
+
+    <!-- Fuzzy -->
+    <string name="team_mode_team_size_label2">"Hvor mange folk kartlegger nå? Tast inn det samme tallet på alle sine telefoner."</string>
+
+    <!-- Fuzzy -->
+    <string name="team_mode_choose_color2">"Etterpå, hver person må velge en egen farge.  Velg din:"</string>
+    <string name="link_organic_maps_description">"Kartapp som fungerer uten nett for reisende, turgåere og syklister"</string>
+
+    <!-- Is this option valid for both no curb at all and a curb stone that is put down in flush with areas on both side? We have this in Norway on cycle infrastructure to indicate priority to motor or cycle traffic - E.g. here: https://goo.gl/maps/6N9cgXjpou253KX76 -->
+    <string name="quest_kerb_height_no">"Ingen kantstein"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_stepover_wooden">"Gjerdeklyv i ved"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_stepover_stone">"Gjerdeklyv i stein"</string>
+    <string name="quest_bollard_type_removable">"Flyttbar (med elle uten nøkkel)"</string>
+    <string name="quest_bollard_type_foldable2">"Sammenleggbar (med eller uten nøkkel)"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_search_results">"Ingenting funnet"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_selection_hint_title">"For mye å gjøre?"</string>
+    <string name="quest_selection_hint_message">"Det skal først og fremst være morsomt å bidra! Er du overveldet av alle oppdragene kan du alltid endre på innstillingene for å begrense og prioritere det som interesserer deg."</string>
+    <string name="quest_presets_preset_add">"Legg til oppdragsoppsett"</string>
+    <string name="quest_presets_preset_name">"Navn på oppdragsoppsett"</string>
+    <string name="quest_presets_default_name">"Standard"</string>
+    <string name="quest_presets_selected">"Valgt"</string>
+    <string name="quest_presets_delete_message">"Slette oppsettet «%s»? Oppdragsoppsettet vil slettes for alltid."</string>
 </resources>

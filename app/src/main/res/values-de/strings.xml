@@ -39,8 +39,6 @@
     <string name="quest_openingHours_end_time">"schließt um"</string>
     <string name="quest_openingHours_add_months">"Monate hinzufügen"</string>
     <string name="quest_openingHours_add_hours">"Zeiten hinzufügen"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Wochentage hinzufügen"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Monate auswählen"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Wochentage auswählen"</string>
@@ -88,8 +86,6 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Keine regelmäßigen Öffnungszeiten…"</string>
     <string name="quest_openingHours_comment_title">"Öffnungszeiten beschreiben"</string>
     <string name="quest_openingHours_comment_description">"Kurz und bündig, am besten direkt so, wie es auf dem Schild steht, z.B. „nach Vereinbarung“. Fehlt ein Schild, bedeutet dies nicht zwangsweise, dass es keine regulären Öffnungszeiten gibt."</string>
-    <string name="quest_buildingLevels_title">"Wie viele Stockwerke hat dieses Gebäude?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"Wie viele Stockwerke hat dieser Gebäudeteil?"</string>
     <string name="quest_roofShape_title">"Welche grundlegende Dachform hat dieses Gebäude?"</string>
     <string name="quest_roofShape_select_one">"Wähle eine aus:"</string>
     <string name="quest_roofShape_show_more">"Weitere anzeigen…"</string>
@@ -168,7 +164,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="upload_server_error">"Fehler beim Hochladen der Antworten. Versuche es später noch einmal."</string>
     <string name="quest_generic_hasFeature_yes">"Ja"</string>
     <string name="quest_generic_hasFeature_no">"Nein"</string>
-    <string name="quest_busStopShelter_title">"Hat diese Bushaltestelle einen Unterstand?"</string>
+    <string name="quest_busStopShelter_title">"Gibt es bei dieser Bushaltestelle einen Unterstand?"</string>
     <string name="quest_bikeParkingCapacity_title">"Wie viele Räder können hier abgestellt werden?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Das sieht für eine Hausnummer sehr ungewöhnlich aus."</string>
     <string name="quest_sport_title">"Für welchen Sport ist dieses Spielfeld vorgesehen?"</string>
@@ -204,7 +200,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_manySports_confirmation_specific">"Speziell für diese"</string>
     <string name="quest_manySports_confirmation_generic">"Allzweck"</string>
     <string name="quest_sport_manySports_confirmation_title">"Viele Sportarten ausgewählt"</string>
-    <string name="quest_busStopShelter_name_title">"Hat die Haltestelle %s einen Unterstand?"</string>
+    <string name="quest_busStopShelter_name_title">"Gibt es bei der Bushaltestelle %s einen Unterstand?"</string>
     <string name="quest_toiletsFee_title">"Kostet die Benutzung dieser Toiletten etwas?"</string>
     <string name="quest_tactilePaving_title_bus">"Hat diese Bushaltestelle eine spezielle Pflasterung für Blinde?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Hat dieser Überweg eine spezielle Pflasterung für Blinde auf beiden Seiten?"</string>
@@ -381,7 +377,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_enabled">"Aktiviert"</string>
     <string name="quest_type">"Aufgabentyp"</string>
     <string name="action_reset">"Zurücksetzen"</string>
-    <string name="reorder_quest_priority_hint">"Halte und bewege eine Aufgabe, um ihre Anzeige-Priorität auf der Karte zu verändern."</string>
     <string name="undo_confirm_positive">"Rückgängig machen"</string>
     <string name="undo_confirm_negative">"Abbrechen"</string>
     <string name="quest_dietType_vegetarian_name_title">"Hat %s vegetarisches Essen auf der Karte?"</string>
@@ -421,8 +416,8 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_internet_access_wired">"per Kabel (LAN)"</string>
     <string name="quest_internet_access_terminal">"einen Computer mit Internetanschluss"</string>
     <string name="quest_internet_access_no">"keinen Internetanschluss"</string>
-    <string name="quest_busStopShelter_tram_name_title">"Hat die Straßenbahnhaltestelle %s einen Unterstand?"</string>
-    <string name="quest_busStopShelter_tram_title">"Hat diese Straßenbahnhaltestelle einen Unterstand?"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Gibt es bei der Straßenbahnhaltestelle %s einen Unterstand?"</string>
+    <string name="quest_busStopShelter_tram_title">"Gibt es bei der Straßenbahnhaltestelle einen Unterstand?"</string>
     <string name="quest_bench_backrest_title">"Hat diese Bank eine Rückenlehne?"</string>
     <string name="quest_bench_answer_picnic_table">"Das ist ein Picknicktisch"</string>
     <string name="quest_religion_for_place_of_worship_title">"Welcher Religion ist dieser Ort gewidmet?"</string>
@@ -588,7 +583,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_noteDiscussion_hide2">"Verborgen von %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotos, die an Notizen angehängt werden, werden auf meinen Server hochgeladen und einige Tage, nachdem die Notiz geschlossen wurde, gelöscht. Ihre Metadaten werden vor dem Hochladen entfernt.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Alle abwählen"</string>
-    <string name="quest_buildingType_retail_description">"inklusive Gebäude für Restaurants, Cafés, …"</string>
+    <string name="quest_buildingType_retail_description">"inklusive Gebäude für Restaurants, Cafés, große Geschäfte…"</string>
     <string name="quest_openingHours_timeSelect_next">"Weiter"</string>
     <string name="quest_tracktype_title">"Wie gut ist dieser Weg befestigt?"</string>
     <string name="quest_tracktype_grade1">"Befestigt"</string>
@@ -792,7 +787,7 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="achievement_wheelchair_solved_X">"Du hast %d Aufgaben gelöst, die Rollstuhlfahrern helfen, sich in der Stadt zurechtzufinden!"</string>
     <string name="achievement_postman_title">"Postbote"</string>
     <string name="achievement_postman_solved_X">"Du hast geholfen, %d Adressen zu lokalisieren!
-Diese Daten sind unentbehrlich nicht nur für Postboten, sondern auch für  Navigationssysteme."</string>
+Diese Daten sind nicht nur für Postboten unentbehrlich, sondern auch für Navigationssysteme."</string>
     <string name="achievement_building_title">"Hoch hinaus"</string>
     <string name="achievement_building_solved_X">"Du hast %d gebäudebezogene Aufgaben gelöst.
 Beachte, dass diese App nur Hausnummern von Gebäuden abfragt, deren Typ bereits bestimmt wurde."</string>
@@ -882,10 +877,10 @@ Erfolge"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Öfter fragen"</string>
     <string name="quest_accepts_cash_type_title">"Akzeptiert %1$s (%2$s) Bargeld?"</string>
-    <string name="quest_busStopBench_tram_name_title">"Hat die Straßenbahnhaltestelle %s eine Bank?"</string>
-    <string name="quest_busStopBench_tram_title">"Hat diese Straßenbahnhaltestelle eine Bank?"</string>
-    <string name="quest_busStopBench_title">"Hat diese Bushaltestelle eine Bank?"</string>
-    <string name="quest_busStopBench_name_title">"Hat die Haltestelle %s eine Bank?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Gibt es bei der Straßenbahnhaltestelle %s eine Bank?"</string>
+    <string name="quest_busStopBench_tram_title">"Gibt es bei dieser Straßenbahnhaltestelle eine Bank?"</string>
+    <string name="quest_busStopBench_title">"Gibt es bei dieser Bushaltestelle eine Bank?"</string>
+    <string name="quest_busStopBench_name_title">"Gibt es bei der Bushaltestelle %s eine Bank?"</string>
     <string name="quest_summit_register_title">"Gibt es bei %s ein Gipfelbuch?"</string>
     <string name="quest_is_defibrillator_inside_title">"Befindet sich dieser Defibrillator innerhalb eines Gebäudes?"</string>
     <string name="about_title_translate">"App übersetzen"</string>
@@ -953,7 +948,6 @@ Erfolge"</string>
     <string name="quest_kerb_height_flush">"bildet eine Ebene mit der Straße"</string>
     <string name="quest_kerb_height_lowered">"etwas höher als die Straße"</string>
     <string name="quest_kerb_height_raised">"hoher Bordstein"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Hier gibt es keinen Bordstein"</string>
     <string name="quest_kerb_height_lowered_ramp">"Bordsteinrampe"</string>
     <string name="quest_lanes_answer_lanes_description2">"Gib hier die Gesamtzahl (beide Richtungen) aller markierten Fahrstreifen an, die für den Autoverkehr nutzbar sind. Rad- und dedizierte Parkstreifen zählen also nicht mit.
 Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
@@ -1012,9 +1006,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="team_mode">"Team-Modus"</string>
     <string name="team_mode_exit">"Team-Modus beenden"</string>
     <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen."</string>
-    <string name="team_mode_team_size_label">"Wie viele Personen seid ihr?"</string>
     <string name="team_mode_team_size_hint">"Der Team-Modus ist für Gruppen zwischen 2 und 12 Personen gemacht."</string>
-    <string name="team_mode_choose_color">"Jetzt wählen alle in eurer Gruppe eine jeweils eigene Farbe:"</string>
     <string name="team_mode_active">"Team-Modus ist aktiv"</string>
     <string name="team_mode_deactivated">"Team-Modus deaktiviert"</string>
     <string name="quest_pitchLit_title">"Ist dieser Sportplatz beleuchtet?"</string>
@@ -1067,13 +1059,12 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_barrier_type_stile_ladder">"Leitertreppe"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Umlaufgitter"</string>
     <string name="quest_barrier_type_kissing_gate">"Kissing Gate"</string>
-    <string name="quest_barrier_type_stepover">"Zauntritt"</string>
     <string name="quest_barrier_type_swing_gate">"Drehschranke"</string>
     <string name="quest_policeType_title">"Was für eine Polizeistation ist das?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Durch ein Kissing Gate ersetzt"</string>
     <string name="quest_stile_type_title">"Was für ein Zauntritt ist das?"</string>
     <string name="quest_buildingType_semi_detached_description2">"aneinandergrenzende Einfamilienhäuser / -haus"</string>
-    <string name="pref_title_quests2">"Aufgabenauswahl und -priorität"</string>
+    <string name="pref_title_quests2">"Aufgabenauswahl und -reihenfolge"</string>
     <string name="pref_subtitle_quests">"%1$d von %2$d aktiviert"</string>
     <string name="quest_busStopLit_tram_name_title">"Ist die Straßenbahnhaltestelle %s beleuchtet?"</string>
     <string name="quest_busStopLit_tram_title">"Ist diese Straßenbahnhaltestelle beleuchtet?"</string>
@@ -1082,19 +1073,47 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="no_location_permission_warning_title">"Standortzugriff"</string>
     <string name="quest_surface_value_woodchips">"Hackschnitzel"</string>
     <string name="no_camera_app">"Keine Kamera-App verfügbar"</string>
-    <string name="quest_busStopBin_tram_name_title">"Hat die Straßenbahnhaltestelle %s einen Mülleimer?"</string>
-    <string name="quest_busStopBin_tram_title">"Hat diese Straßenbahnhaltestelle einen Mülleimer?"</string>
-    <string name="quest_busStopBin_title">"Hat diese Bushaltestelle einen Mülleimer?"</string>
-    <string name="quest_busStopBin_name_title">"Hat die Bushaltestelle %s einen Mülleimer?"</string>
+    <string name="quest_busStopBin_tram_name_title">"Gibt es bei der Straßenbahnhaltestelle %s einen Mülleimer?"</string>
+    <string name="quest_busStopBin_tram_title">"Gibt es bei dieser Straßenbahnhaltestelle einen Mülleimer?"</string>
+    <string name="quest_busStopBin_title">"Gibt es bei dieser Bushaltestelle einen Mülleimer?"</string>
+    <string name="quest_busStopBin_name_title">"Gibt es bei der Bushaltestelle %s einen Mülleimer?"</string>
     <string name="quest_bollard_type_title">"Was für ein Poller ist das?"</string>
     <string name="quest_bollard_type_rising">"Versenkbar"</string>
-    <string name="quest_bollard_type_removable_with_key">"Herausnehmbar mit Schlüssel"</string>
-    <string name="quest_bollard_type_removable_without_key">"Herausnehmbar ohne Schlüssel"</string>
-    <string name="quest_bollard_type_foldable">"Umklappbar"</string>
     <string name="quest_bollard_type_flexible">"Flexibel"</string>
     <string name="quest_bollard_type_fixed">"Fest (nicht entfernbar)"</string>
     <string name="quest_camera_type_title">"Welche Art von Überwachungskamera ist das?"</string>
     <string name="quest_camera_type_dome">"Kuppel"</string>
     <string name="quest_camera_type_fixed">"Fest"</string>
     <string name="quest_camera_type_panning">"Schwenkend"</string>
+    <string name="about_title_faq">"FAQ"</string>
+    <string name="quest_buildingLevels_title2">"Wie viele Stockwerke (ohne Keller) hat dieses Gebäude?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Wie viele Stockwerke (ohne Keller) hat dieser Gebäudeteil?"</string>
+    <string name="quest_crossing_title">"Gibt es hier wo dieser Weg auf die Straße trifft Kantsteine? Was für welche?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Voreinstellung: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil die Dachformen oft nicht gut von der Straße aus sichtbar sind. Dieser Aufgabentyp ist außerdem recht zeitaufwändig; in den meisten Fällen ist es einfacher und effizienter, diese von zuhause von Luftbildern zu erfassen."</string>
+    <string name="quest_religion_animist">"Animist"</string>
+    <string name="quest_construction_steps_title">"Ist diese Treppe fertig gebaut?"</string>
+    <string name="questList_disabled_at_day">"Nur nachts angezeigt"</string>
+    <string name="pref_quests_deselect_all">"Alle Aufgaben abwählen?"</string>
+    <string name="quest_buildingType_boathouse">"Bootshaus"</string>
+    <string name="quest_buildingType_allotment_house">"Kleingartenlaube"</string>
+    <string name="quest_buildingType_grandstand">"Tribüne"</string>
+    <string name="action_search">"Suche"</string>
+    <string name="action_manage_presets">"Voreinstellungen verwalten"</string>
+    <string name="team_mode_team_size_label2">"Wie viele Personen seid ihr? Auf jedem Gerät wird die gleiche Zahl eingegeben."</string>
+    <string name="team_mode_choose_color2">"Als nächstes wählt jede Person eine jeweils andere Farbe aus. Wähle deine:"</string>
+    <string name="link_organic_maps_description">"Karten-App für Reisende, Wanderer und Radfahrer, die offline funktioniert"</string>
+    <string name="quest_kerb_height_no">"Gar keine Kantsteine"</string>
+    <string name="quest_barrier_type_stepover_wooden">"hölzerner Zauntritt"</string>
+    <string name="quest_barrier_type_stepover_stone">"steinerner Zauntritt"</string>
+    <string name="quest_bollard_type_removable">"Herausnehmbar (mit oder ohne Schlüssel)"</string>
+    <string name="quest_bollard_type_foldable2">"Umklappbar (mit oder ohne Schlüssel)"</string>
+    <string name="no_search_results">"Nichts gefunden"</string>
+    <string name="quest_selection_hint_title">"Zu viel zu tun?"</string>
+    <string name="quest_selection_hint_message">"Bei OpenStreetMap mitzumachen soll vor allem Spaß machen! Falls du von der Flut der Aufgaben überwältigt bist, kannst du jederzeit einstellen, welche dir davon angezeigt werden."</string>
+    <string name="quest_presets_preset_add">"Voreinstellung hinzufügen"</string>
+    <string name="quest_presets_preset_name">"Name der Voreinstellung"</string>
+    <string name="quest_presets_default_name">"Default"</string>
+    <string name="quest_presets_selected">"Ausgewählt"</string>
+    <string name="quest_presets_delete_message">"Voreinstellung „%s“ löschen? Die eingestellte Auswahl und Reihenfolge der Aufgaben geht dabei unwiderruflich verloren."</string>
 </resources>

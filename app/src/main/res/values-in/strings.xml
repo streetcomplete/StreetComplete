@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Pengaturan"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Tidak dapat menjangkau server otorisasi"</string>
-
-    <!-- Fuzzy -->
     <string name="retry">"Coba lagi"</string>
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Otorisasi gagal: Semua izin yang terdaftar harus diaktifkan"</string>
-
-    <!-- Fuzzy -->
     <string name="title_activity_settings">"Pengaturan"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Komunikasi"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"Tampilan"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
 
@@ -161,8 +149,6 @@
     <string name="quest_openingHours_comment_title">"Jelaskan jam buka"</string>
     <string name="quest_openingHours_comment_description">"Ringkaskan, sebaiknya gunakan kata-kata dari tanda, 
 semisal \"sesuai janji\". Jika tidak ada tandanya bukan berarti tidak ada jam buka reguler."</string>
-    <string name="quest_buildingLevels_title">"Bangunan ini ada berapa lantai?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"Bagian dari bangunan ini ada berapa lantai?"</string>
     <string name="quest_roofShape_title">"Apa bentuk dasar dari atap bangunan ini?"</string>
     <string name="quest_roofShape_select_one">"Pilih satu:"</string>
     <string name="quest_roofShape_show_more">"Tampilkan lebih banyak..."</string>
@@ -267,6 +253,8 @@ Informasi yang dimasukkan lalu langsung ditambahkan ke OpenStreetMap atas namamu
     <string name="upload_server_error">"Gagal koneksi pada saat mengirim jawaban. Coba lagi nanti."</string>
     <string name="quest_generic_hasFeature_yes">"Ya"</string>
     <string name="quest_generic_hasFeature_no">"Tidak"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"Apakah perhentian bus ini ada tempat teduhnya?"</string>
     <string name="quest_bikeParkingCapacity_title">"Berapa banyak sepeda yang bisa diparkir di sini?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Nomor rumah ini rasanya aneh."</string>
@@ -303,6 +291,8 @@ Informasi yang dimasukkan lalu langsung ditambahkan ke OpenStreetMap atas namamu
     <string name="quest_manySports_confirmation_specific">"Dikhususkan hanya untuk ini"</string>
     <string name="quest_manySports_confirmation_generic">"Fungsi umum"</string>
     <string name="quest_sport_manySports_confirmation_title">"Kamu memilih banyak cabang olahraga"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Apa perhentian bus %s memiliki tempat teduh?"</string>
     <string name="quest_toiletsFee_title">"Apakah kamar kecil ini bayar?"</string>
     <string name="quest_tactilePaving_title_bus">"Apakah perhentian bus ini memiliki ubin pemandu?"</string>
@@ -568,9 +558,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_enabled">"Nyala"</string>
     <string name="quest_type">"Jenis Pencarian"</string>
     <string name="action_reset">"Reset"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Tekan lama dan pindahkan pencarian untuk mengurutkan ulang prioritas tampilan di peta"</string>
     <string name="undo_confirm_positive">"Urungkan"</string>
     <string name="undo_confirm_negative">"Batal"</string>
     <string name="quest_dietType_vegetarian_name_title">"Apa %s punya menu vegetarian?"</string>
@@ -616,7 +603,11 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_internet_access_wired">"Kabel (LAN)"</string>
     <string name="quest_internet_access_terminal">"Komputer dengan akses internet"</string>
     <string name="quest_internet_access_no">"Tidak ada koneksi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"Apa perhentian mobil %s ada tempat teduh?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_title">"Apa perhentian mobil ini ada tempat teduh?"</string>
     <string name="quest_bench_backrest_title">"Apakah bangku ini punya sandaran?"</string>
     <string name="quest_bench_answer_picnic_table">"ini meja piknik"</string>
@@ -783,6 +774,8 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_noteDiscussion_hide2">"Tersembunyi saat %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Foto yang kamu lampirkan ke catatan diunggah ke serverku dan dihapus beberapa hari setelah catatan diselesaikan. Metadata foto dihapus sebelum diunggah&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Batalkan pilihan"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"termasuk bangunan untuk restoran, kafe, ..."</string>
     <string name="quest_openingHours_timeSelect_next">"Lanjut"</string>
     <string name="quest_tracktype_title">"Apa tingkat kepadatan jalan ini?"</string>
@@ -968,6 +961,8 @@ Jangan lupa hati-hati: Sadar terhadap lingkungan sekitar dan jangan masuk proper
     <string name="link_umap_description">"Buat peta dengan data khusus dengan cepat dan sisipkan ke situsmu"</string>
     <string name="link_opnvkarte_description">"Peta untuk transportasi publik dan perhentian"</string>
     <string name="link_pic4review_description">"Berkontribusi ke OSM hanya dengan melihat foto di kotamu"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"Wiki ini ialah tempat awal untuk semua yang berhubungan dengan OpenStreetMap"</string>
     <string name="link_learnosm_description">"Baru di OpenStreetMap? Ini adalah panduan pemula"</string>
     <string name="link_neis_one_description">"Kumpulan statistik besar untuk kontributor OpenStreetMap, seperti di mana kamu berkontribusi, siapa lagi di sekitarmu, juga papan peringkat"</string>
@@ -1087,7 +1082,11 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="resurvey_intervals_default">"Default"</string>
     <string name="resurvey_intervals_more_often">"Tanyakan lebih sering"</string>
     <string name="quest_accepts_cash_type_title">"Apa %1$s (%2$s) menerima pembayaran tunai?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Apakah halte bus ini memiliki sebuah bangku?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"Apakah halte bus %s memiliki sebuah bangku?"</string>
     <string name="about_title_translate">"Bantu menerjemahkan aplikasi ini"</string>
     <string name="about_description_translate">"%1$s telah diterjemahkan %2$d%%"</string>
@@ -1124,7 +1123,6 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="quest_construction_completed_at_known_date">"Akan selesai pada tanggal..."</string>
     <string name="quest_construction_completion_date_title">"Kapan ini akan selesai?"</string>
     <string name="quest_buildingType_fire_station">"Stasiun Pemadam Kebakaran"</string>
-    <string name="team_mode_team_size_label">"Ada berapa orang di sini?"</string>
     <string name="synced">"Disinkronkan"</string>
     <string name="created_note_action_title">"Catatan dibuat"</string>
     <string name="deleted_poi_action_description">"Anda menghapusnya"</string>
@@ -1138,7 +1136,11 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="quest_barrier_type_rope">"Tali"</string>
     <string name="pref_subtitle_quests">"%1$d dari %2$d diaktifkan"</string>
     <string name="no_camera_app">"Tidak ada aplikasi kamera yang tersedia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"Apakah halte bus ini memiliki tempat sampah?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"Apakah halte bus %s memiliki tempat sampah?"</string>
     <string name="quest_camera_type_title">"Apa jenis kamera pengawas ini?"</string>
 </resources>

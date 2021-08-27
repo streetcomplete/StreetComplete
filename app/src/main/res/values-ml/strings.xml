@@ -243,12 +243,6 @@
     <string name="quest_openingHours_comment_description">"ചുരുക്കമായിരിക്കുക, ചിഹ്നങ്ങളിൽ നിന്ന് വാക്കുകളെ ഉപയോഗിക്കുക. അതായത് \"അപ്പോയ്ന്റ്മെന്റ് വഴി\". എന്ന ഒരു അടയാളം ഇല്ലെന്നത് തുറന്നിരിക്കുന്ന സമയമില്ലെന്ന് അർത്ഥമാക്കുന്നില്ല."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"ഈ കെട്ടിടത്തിന് എത്ര നിലകൾ ഉണ്ട് ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"ഈ കെട്ടിട ഭാഗത്തിന് എത്ര നില ഉണ്ട്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"ഈ കെട്ടിടത്തിന്റെ മേൽക്കൂരയുടെ  ആകൃതി എന്താണ് ?"</string>
 
     <!-- Fuzzy -->
@@ -958,9 +952,6 @@
 
     <!-- Fuzzy -->
     <string name="action_reset">"പുനഃക്രമീകരിക്കുക"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"മാപ്പിൽ ഡൌൺലോഡ് ചെയ്യുവാനും ഡിസ്പ്ലേ ചെയുവാനും എന്നീ ആവശ്യങ്ങൾ ക്രമീകരിക്കുവാനായി ലോങ്ങ് പ്രെസ് ചെയ്ത ശേഷം തിരയുക"</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"പഴയതിലേക്ക് തിരിച്ച പോകുക"</string>

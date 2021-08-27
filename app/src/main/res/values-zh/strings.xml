@@ -242,12 +242,6 @@
     <string name="quest_openingHours_comment_description">"理想中，标志上的文字都是言简意赅的，像是\"预约\"。标志不存在并不一定代表这里没有规律的营业时间。"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"这栋建筑有多少层？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"建筑物的这个部分有多少层？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"此建筑物的屋顶形状是？"</string>
 
     <!-- Fuzzy -->
@@ -973,9 +967,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="action_reset">"重置"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"长按和移动任务重新设定下载的优先顺序，以及显示在地图上。"</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"还原"</string>

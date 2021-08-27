@@ -242,12 +242,6 @@
     <string name="quest_openingHours_comment_description">"Izan laburra, ahal dela karteleko esaldia erabili. Adib. \"zita eskatu behar da\". errotulurik ez egoteak ez du esan nahi ordutegi erregularrik ez dutenik."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Zenbat pisu ditu eraikin honek?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Zenbat pisu ditu eraikinaren parte honek?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Zein da eraikin honen oinarrizko forma"</string>
 
     <!-- Fuzzy -->
@@ -973,9 +967,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="action_reset">"Leheneratu"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Sakatu luze eta mugitu erronka, mapan bistaratzeko lehentasuna aldatzeko."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desegin"</string>
@@ -2226,9 +2217,17 @@ mailak"</string>
     <string name="resurvey_intervals_default">"Lehenetsia"</string>
     <string name="resurvey_intervals_more_often">"Galdetu sarriago"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) (e)k eskudiruz ordaintzea onartzen du?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"%s tranbia geltokiak eserlekurik du?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Tranbia geltoki honek badu eserlekurik?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Autobus geltoki honek badu eserlekurik?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"%s autobus geltokiak eserlekurik du?"</string>
     <string name="quest_is_defibrillator_inside_title">"Desfibriladore hau (AED) eraikin baten barruan dago?"</string>
     <string name="about_title_translate">"Lagundu app hau itzultzen"</string>

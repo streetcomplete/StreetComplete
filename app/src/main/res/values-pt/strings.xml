@@ -213,12 +213,6 @@
     <string name="quest_openingHours_comment_description">"Seja preciso. O ideal é utilizar a descrição do horário afixada, por exemplo \"por marcação\". A ausência de uma afixação do horário de abertura não significa que não tenha um horário."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Quantos pisos tem este edifício?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Quantos pisos tem esta parte do edifício?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Qual a forma básica do telhado deste edifício?"</string>
 
     <!-- Fuzzy -->
@@ -943,9 +937,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="action_reset">"Repor"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Pressionar durante 1 segundo sobre uma missão para a mover, reordenando a prioridade da sua visualização no mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfazer"</string>
@@ -1818,6 +1809,8 @@ Lembre-se de se manter seguro: Tenha cuidado com o que o rodeia e não entre em 
     <string name="link_umap_description">"Criar mapas com dados prórios de forma rápida e incluí-los no seu site"</string>
     <string name="link_opnvkarte_description">"Um mapa com a rede de transportes e as suas paragens"</string>
     <string name="link_pic4review_description">"Contribuir para o OSM, visualizando fotos da sua cidade"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"A wiki é o seu ponto de partida para tudo o que esteja relacionado com o OpenStreeMap"</string>
     <string name="link_learnosm_description">"Novo no OpenStreetMap? Este é um guia para iniciantes"</string>
     <string name="link_neis_one_description">"Uma vasta coleção estatística para os contribuidores do OpenStreetMap, quer seja onde editou, como contribuiu, quem está ao seu redor e uma classificação de contribuidores"</string>
@@ -1935,9 +1928,17 @@ conquista"</string>
     <string name="resurvey_intervals_default">"Padrão"</string>
     <string name="resurvey_intervals_more_often">"Perguntar com mais frequência"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) aceita pagamentos em dinheiro?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"A paragem de elétrico %s tem um banco?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Esta paragem de elétrico tem um banco?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Esta paragem de autocarro tem um banco?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"A paragem de autocarro %s tem um banco?"</string>
     <string name="quest_summit_register_title">"Existe um marco de altitude em %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro de um edifício?"</string>
@@ -2002,7 +2003,6 @@ conquista"</string>
     <string name="quest_kerb_height_flush">"Mesmo nível da superfície da estrada"</string>
     <string name="quest_kerb_height_lowered">"Um pouco mais alto que a superfície da estrada"</string>
     <string name="quest_kerb_height_raised">"Lancil alto"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Não há lancil deste lado da travessia"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampa de lancil"</string>
     <string name="quest_lanes_answer_lanes_description2">"Indique o número total de pistas marcadas (ambas as direções) que podem ser utilizadas pelo tráfego de automóveis. Portanto, ciclovias e faixas de estacionamento exclusivas não contam.
 Se alguma faixa for reservada para autocarros, deixe uma nota."</string>
@@ -2061,9 +2061,7 @@ Se alguma faixa for reservada para autocarros, deixe uma nota."</string>
     <string name="team_mode">"Modo de equipa"</string>
     <string name="team_mode_exit">"Sair do modo de equipa"</string>
     <string name="team_mode_description">"Se estiver a mapear a mesma área como um grupo, você pode entrar no modo de equipa para dividir as missões entre todos os membros da equipa."</string>
-    <string name="team_mode_team_size_label">"Quantas pessoas estão lá?"</string>
     <string name="team_mode_team_size_hint">"O modo de equipa funciona para grupos de 2 a 12 pessoas."</string>
-    <string name="team_mode_choose_color">"Agora, todos em seu grupo escolhem uma cor exclusiva:"</string>
     <string name="team_mode_active">"O modo de equipa está ativo"</string>
     <string name="team_mode_deactivated">"Modo de equipa desativado"</string>
     <string name="quest_pitchLit_title">"Este campo desportivo tem iluminação?"</string>
@@ -2114,12 +2112,13 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_barrier_type_stile_ladder">"Tipo escada"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Barreira de bicicleta"</string>
     <string name="quest_barrier_type_kissing_gate">"Portão de beijo"</string>
-    <string name="quest_barrier_type_stepover">"De passar por cima"</string>
     <string name="quest_barrier_type_swing_gate">"Barra horizontal"</string>
     <string name="quest_policeType_title">"Que tipo de delegacia é essa?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Convertido em um portão de beijos"</string>
     <string name="quest_stile_type_title">"Que tipo de barreira é esta?"</string>
     <string name="quest_buildingType_semi_detached_description2">"casa (s) unifamiliar (is) contígua (s)"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Visibilidade e ordem das missões"</string>
     <string name="pref_subtitle_quests">"%1$d de %2$d ativados"</string>
     <string name="quest_busStopLit_tram_name_title">"A paragem de elétrico %s tem iluminação?"</string>
@@ -2129,15 +2128,20 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="no_location_permission_warning_title">"Permissão de localização"</string>
     <string name="quest_surface_value_woodchips">"Lascas de madeira"</string>
     <string name="no_camera_app">"Nenhuma aplicação de câmera disponível"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"O elétrico para %s tem um cesto de lixo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"Esta paragem de elétrico tem um cesto de lixo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"Esta paragem de autocarro tem um cesto de lixo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"A paragem de autocarro %s tem um cesto de lixo?"</string>
     <string name="quest_bollard_type_title">"Que tipo de pilarete é este?"</string>
     <string name="quest_bollard_type_rising">"Ascendente"</string>
-    <string name="quest_bollard_type_removable_with_key">"Removível com chave"</string>
-    <string name="quest_bollard_type_removable_without_key">"Removível sem chave"</string>
-    <string name="quest_bollard_type_foldable">"Dobrável"</string>
     <string name="quest_bollard_type_flexible">"Flexível"</string>
     <string name="quest_bollard_type_fixed">"Fixo (não removível)"</string>
     <string name="quest_camera_type_title">"Que tipo de câmera de vigilância é essa?"</string>

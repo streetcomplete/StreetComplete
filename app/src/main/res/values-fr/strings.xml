@@ -109,13 +109,6 @@ That is not very clear to me. Any further explanations? -->
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Soyez concis, utilisez de préférence la formulation de la pancarte, par exemple \"sur rendez-vous\". L'absence de pancarte ne signifie pas forcément qu'il n'y a pas d'horaires d'ouverture réguliers."</string>
-
-    <!-- Attention : un édifice est généralement un bâtiment aux proportions importantes (ex. édifice public ou religieux). Le terme bâtiment est plus générique. -->
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Combien y a t-il d'étages (rez-de chaussée inclus) dans ce bâtiment ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Combien d'étages (rez-de chaussée inclus) comporte cette partie du bâtiment ?"</string>
     <string name="quest_roofShape_title">"Quelle forme a le toit de ce bâtiment ?"</string>
 
     <!-- Fuzzy -->
@@ -208,7 +201,7 @@ en:cement = fr:ciment = de:Zement -->
 Cette application recense les informations incomplètes et à améliorer autour de vous et les affiche sur une carte sous forme de marqueurs. L'information liée à chaque marqueur peut être complétée en répondant à une question simple.
 
 Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap, à votre nom, sans qu'il soit nécessaire d'utiliser un autre éditeur de carte."</string>
-    <string name="quest_name_answer_noName">"Cela n'a pas de nom…"</string>
+    <string name="quest_name_answer_noName">"Il n'y a pas de nom…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Vraiment aucun nom ?"</string>
     <string name="quest_name_noName_confirmation_positive">"Oui, pas de nom"</string>
     <string name="quest_openingHours_add_times">"Ajouter des horaires d’ouverture"</string>
@@ -261,6 +254,7 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="quest_sport_manySports_confirmation_title">"Vous avez sélectionné plusieurs sports"</string>
 
     <!-- plus simple et plus court : L'arrêt de bus %s est-il abrité ? -->
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"L’arrêt de bus %s a-t-il un abri ?"</string>
     <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
     <string name="quest_tactilePaving_title_bus">"Cet arrêt de bus a-t-il un revêtement podotactile ?"</string>
@@ -425,7 +419,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_parkingType_multiStorage">"Parking à étages"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_toiletAvailability_name_title">"Est-ce que %s a des toilettes ?"</string>
+    <string name="quest_toiletAvailability_name_title">"Est-ce que %s dispose de toilettes ?"</string>
     <string name="quest_powerPolesMaterial_title">"De quel matériau est fait ce poteau électrique ?"</string>
     <string name="quest_powerPolesMaterial_wood">"Bois"</string>
     <string name="quest_powerPolesMaterial_metal">"Acier"</string>
@@ -470,7 +464,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_enabled">"Activée"</string>
     <string name="quest_type">"Type de quête"</string>
     <string name="action_reset">"Réinitialiser"</string>
-    <string name="reorder_quest_priority_hint">"Appuyez longuement sur une quête et déplacez la afin de réorganiser sa priorité d'affichage sur la carte."</string>
     <string name="undo_confirm_positive">"Annuler"</string>
 
     <!-- Attention à le différencier de undo_confirm_positive (cf. https://github.com/westnordost/StreetComplete/issues/617) -->
@@ -741,6 +734,8 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_noteDiscussion_hide2">"Caché par %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt; Les photos que vous joignez à une note sont enregistrées sur mon serveur et supprimées quelques jours après la résolution de cette note. Leurs méta-données sont effacées avant l'envoi.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Désélectionner tout"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"y compris les bâtiments pour restaurants, cafés…"</string>
     <string name="quest_openingHours_timeSelect_next">"Suivant"</string>
     <string name="quest_tracktype_title">"Quelle est la fermeté du revêtement de cette piste ?"</string>
@@ -951,6 +946,8 @@ Enfin, n'oubliez pas de rester prudent : soyez attentifs à votre environnement 
     <string name="link_umap_description">"Créez rapidement des cartes avec vos données et intégrez-les dans votre site web."</string>
     <string name="link_opnvkarte_description">"Une carte des itinéraires et des arrêts des transports en commun."</string>
     <string name="link_pic4review_description">"Contribuez simplement à OSM en visionnant des photos de votre ville"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"Le wiki est votre point d'entrée pour tout ce qui concerne OpenStreetMap"</string>
     <string name="link_learnosm_description">"Vous êtes nouveau sur OpenStreetMap ? Voici le guide pour débuter"</string>
     <string name="link_neis_one_description">"Une vaste collection de statistiques concernant les contributeurs d'OpenStreetMap telles que le lieu et la manière dont vous avez contribué, les contributeurs proches de vous ainsi que des classements"</string>
@@ -1085,9 +1082,17 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="resurvey_intervals_default">"Défaut"</string>
     <string name="resurvey_intervals_more_often">"Demander plus souvent"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accepte-t-il les paiements en espèces ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"L'arrêt de tramway %s a-t-il un banc ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Cet arrêt de tramway a-t-il un banc ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Cet arrêt de bus a-t-il un banc ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"L'arrêt de bus %s a-t-il un banc ?"</string>
 
     <!-- Fuzzy -->
@@ -1165,7 +1170,6 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Maybe there's a better wording for this, but this translate as "high as a step" which should make it crystal clear to the user -->
     <string name="quest_kerb_height_raised">"Haute"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Pas de bordure de ce côté du passage"</string>
 
     <!-- In France there is also "bateau" which means the kerb is lowered locally but I believe that wouldn't exactly decribe the inclined state of a curb ramp. "bateau" would generally have a 2/3 cm height and be used in place where vehicles exit private property, while a ramp would be used at the intersection of a crosswalk with the curb (not really often but still)  and provide a smoother transition. -->
     <string name="quest_kerb_height_lowered_ramp">"Il s'agit d'une pente douce"</string>
@@ -1226,9 +1230,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="team_mode">"Mode par équipe"</string>
     <string name="team_mode_exit">"Quitter le mode par équipe"</string>
     <string name="team_mode_description">"Quand vous cartographiez la même zone avec un groupe, vous pouvez vous répartir les quêtes entre les différents membres de ce groupe."</string>
-    <string name="team_mode_team_size_label">"Combien y a-t'il de personnes ?"</string>
     <string name="team_mode_team_size_hint">"Le mode par équipe fonctionne pour des groupes de 2 et 12 personnes."</string>
-    <string name="team_mode_choose_color">"Maintenant, toutes les personnes du groupe doivent choisir une couleur unique :"</string>
     <string name="team_mode_active">"Le mode par équipe est activé"</string>
     <string name="team_mode_deactivated">"Le mode par équipe est désactivé"</string>
     <string name="quest_pitchLit_title">"Ce terrain de sport est-il éclairé ?"</string>
@@ -1284,12 +1286,13 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_barrier_type_stile_ladder">"Échalier (échelle)"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Barrière à vélo"</string>
     <string name="quest_barrier_type_kissing_gate">"Portillon anti-bétail"</string>
-    <string name="quest_barrier_type_stepover">"Échalier (marches)"</string>
     <string name="quest_barrier_type_swing_gate">"Barre horizontale"</string>
     <string name="quest_policeType_title">"Quel type de poste de police est-ce ?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Changer pour un portillon à chicane mobile"</string>
     <string name="quest_stile_type_title">"Quel type d'échalier est-ce ?"</string>
     <string name="quest_buildingType_semi_detached_description2">"maison(s) unifamiliale(s) contiguë(s)"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Sélection et priorité des quêtes"</string>
     <string name="pref_subtitle_quests">"%1$d sur %2$d activées"</string>
     <string name="quest_busStopLit_tram_name_title">"L'arrêt de tramway %s est-il éclairé ?"</string>
@@ -1325,15 +1328,6 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_bollard_type_rising">"Escamotable"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_bollard_type_removable_with_key">"Démontable avec une clé"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_bollard_type_removable_without_key">"Démontable sans clé"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_bollard_type_foldable">"Pliable"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bollard_type_flexible">"Flexible"</string>
 
     <!-- Fuzzy -->
@@ -1350,4 +1344,29 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Fuzzy -->
     <string name="quest_camera_type_panning">"Panoramique"</string>
+    <string name="about_title_faq">"FAQ"</string>
+    <string name="quest_buildingLevels_title2">"Combien d'étages au-dessus du sous-sol compte cet bâtiment ?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Combien d'étages au-dessus du sous-sol compte cette partie du bâtiment ?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Préréglages : %s"</string>
+    <string name="default_disabled_msg_roofShape">"Ce type de quête est désactivé par défaut car la forme des toits est souvent peu visible depuis la rue. Cette quête est également très chronophage. Il est souvent plus efficace de renseigner ces informations depuis des images satellitaires."</string>
+    <string name="quest_religion_animist">"Animiste"</string>
+    <string name="questList_disabled_at_day">"Ne montrer que la nuit"</string>
+    <string name="pref_quests_deselect_all">"Désélectionner toutes les quêtes ?"</string>
+    <string name="quest_buildingType_boathouse">"Péniche"</string>
+    <string name="quest_buildingType_grandstand">"Tribune"</string>
+    <string name="action_search">"Rechercher"</string>
+    <string name="action_manage_presets">"Gérer les "</string>
+    <string name="team_mode_team_size_label2">"Combien de personnes cartographient ? Indiquez le même chiffre sur tous les téléphones."</string>
+    <string name="team_mode_choose_color2">"Ensuite, choisissez une couleur chacun. La vôtre :"</string>
+    <string name="link_organic_maps_description">"Une carte fonctionnant hors ligne pour les voyageurs, les randonneurs et cyclistes"</string>
+    <string name="quest_bollard_type_removable">"Démontable (avec ou sans clé)"</string>
+    <string name="quest_bollard_type_foldable2">"Pliable (avec ou sans clé)"</string>
+    <string name="no_search_results">"Aucun résultat"</string>
+    <string name="quest_selection_hint_title">"Trop de choses à faire ?"</string>
+    <string name="quest_selection_hint_message">"Contribuer doit rester agréable ! Si vous êtes submergé, vous pouvez choisir quelles quêtes sont affichées et dans quel ordre dans les réglages."</string>
+    <string name="quest_presets_preset_add">"Ajouter le préréglage"</string>
+    <string name="quest_presets_preset_name">"Nom du préréglage"</string>
+    <string name="quest_presets_default_name">"Par défaut"</string>
+    <string name="quest_presets_selected">"Sélectionné"</string>
+    <string name="quest_presets_delete_message">"Supprimer le préréglage « %s » ? Les quêtes sélectionnées et leur ordre sera perdu."</string>
 </resources>

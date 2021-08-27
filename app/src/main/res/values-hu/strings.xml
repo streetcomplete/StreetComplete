@@ -238,12 +238,6 @@
     <string name="quest_openingHours_comment_description">"Légy tömör, lehetőleg a táblán lévő szavakat írd le, pl. „előzetes megbeszélés alapján”. Attól, hogy nincs is kiírva, még lehet rendszeres nyitvatartás."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Hány szintes ez az épület?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Hány szintes ez az épületrész?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Milyen alapformájú ennek az épületnek a teteje?"</string>
 
     <!-- Fuzzy -->
@@ -961,9 +955,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
 
     <!-- Fuzzy -->
     <string name="action_reset">"Alaphelyzetbe állítás"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Nyomd hosszan, majd mozgasd a kérdést a térképen való megjelenítés prioritásának módosításához."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Visszavonás"</string>
@@ -2245,9 +2236,17 @@ szintek"</string>
     <string name="resurvey_intervals_default">"Alapértelmezett"</string>
     <string name="resurvey_intervals_more_often">"Kérdezzen rá gyakrabban"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) elfogad készpénzes fizetést?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"Van-e pad a(z) %s villamosmegállóban?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Van-e pad ebben a villamosmegállóban?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Van-e pad ebben a buszmegállóban?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"Van-e pad a(z) %s buszmegállóban?"</string>
     <string name="quest_summit_register_title">"Van-e csúcsnapló itt: %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Van-e defibrillátor (AED) egy épületben?"</string>
@@ -2312,7 +2311,6 @@ szintek"</string>
     <string name="quest_kerb_height_flush">"Az útfelülettel megegyező"</string>
     <string name="quest_kerb_height_lowered">"Valamivel magasabb az útfelületnél"</string>
     <string name="quest_kerb_height_raised">"Megemelt járdaszegély"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Nincs járdaszegély a gyalogosátkelőnek ezen az oldalán"</string>
     <string name="quest_kerb_height_lowered_ramp">"Süllyesztett járdaszegély"</string>
 
     <!-- Fuzzy -->
@@ -2373,9 +2371,7 @@ szintek"</string>
     <string name="team_mode">"Csapat mód"</string>
     <string name="team_mode_exit">"Kilépés csapat módból"</string>
     <string name="team_mode_description">"Ha egy területen egyszerre többen szeretnétek térképezni, lehetőség van csapat módban felosztani a feladatokat."</string>
-    <string name="team_mode_team_size_label">"Hányan vannak a csapatban?"</string>
     <string name="team_mode_team_size_hint">"A csapad mód 2-től 12 személyig használható."</string>
-    <string name="team_mode_choose_color">"Válasszon mindenki egy egyedi színt:"</string>
     <string name="team_mode_active">"Csapat mód aktív"</string>
     <string name="team_mode_deactivated">"Csapat mód kikapcsolva"</string>
     <string name="quest_pitchLit_title">"Ki van világítva ez a sportpálya?"</string>
@@ -2426,12 +2422,13 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_barrier_type_stile_ladder">"Létra átjáró"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Kerékpáros akadály"</string>
     <string name="quest_barrier_type_kissing_gate">"Kettős kapu"</string>
-    <string name="quest_barrier_type_stepover">"Lépcsőn átjárható"</string>
     <string name="quest_barrier_type_swing_gate">"Vízszintesen nyíló sorompó"</string>
     <string name="quest_policeType_title">"Ez milyen típusú rendőrőrs?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Kettős kapuvá átalakítva"</string>
     <string name="quest_stile_type_title">"Ez milyen típusú kerítés feletti átjáró?"</string>
     <string name="quest_buildingType_semi_detached_description2">"csatlakozó családi ház(ak)"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Kérdések kiválasztása és prioritásuk"</string>
     <string name="pref_subtitle_quests">"%1$d/%2$d engedélyezve"</string>
     <string name="quest_busStopLit_tram_name_title">"Ez a villamosmegálló ki van világítva: %s?"</string>
@@ -2441,20 +2438,32 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="no_location_permission_warning_title">"Helymeghatározási engedély"</string>
     <string name="quest_surface_value_woodchips">"Faapríték"</string>
     <string name="no_camera_app">"Kamera app hiányzik"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"Van-e szemétkosár ebben a villamosmegállóban: %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"Van-e szemétkosár ebben a villamos
 megállóban?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"Van-e szemétkosár ebben a buszmegállóban?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"Van-e szemétkosár ebben a buszmegállóban: %s?"</string>
     <string name="quest_bollard_type_title">"Milyen típusú terelőoszlop ez?"</string>
     <string name="quest_bollard_type_rising">"Felemelkedő"</string>
-    <string name="quest_bollard_type_removable_with_key">"Kulccsal eltávolítható"</string>
-    <string name="quest_bollard_type_removable_without_key">"Kulcs nélkül eltávolítható"</string>
-    <string name="quest_bollard_type_foldable">"Lehajtható"</string>
     <string name="quest_bollard_type_flexible">"Rugalmas"</string>
     <string name="quest_bollard_type_fixed">"Rögzített (nem eltávolítható)"</string>
     <string name="quest_camera_type_title">"Milyen típusú biztonsági kamera ez?"</string>
     <string name="quest_camera_type_dome">"Kupola"</string>
     <string name="quest_camera_type_fixed">"Rögzített"</string>
     <string name="quest_camera_type_panning">"Pásztázó"</string>
+    <string name="quest_buildingLevels_title2">"A pince fölött hány szintje van az épületnek?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"A pince fölött hány szintje van az épületrésznek?"</string>
+    <string name="action_search">"Keres"</string>
+    <string name="team_mode_team_size_label2">"Hány ember térképezik? Azonos értéket kell megadni mindenki telefonján."</string>
+    <string name="team_mode_choose_color2">"Mindenki válasszon eltérő színt. Az Öné:"</string>
+    <string name="no_search_results">"Nincs találat"</string>
+    <string name="quest_presets_selected">"Kiválasztva"</string>
 </resources>

@@ -16,7 +16,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignora le note non presentate come domande"</string>
     <string name="pref_title_map_cache">"Dimensioni della cache per la mappa"</string>
     <string name="map_btn_gps_tracking">"Seguimi"</string>
-    <string name="map_attribution_osm">"© OpenStreetMap contributori"</string>
+    <string name="map_attribution_osm">"© Contributori OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Altre risposte …"</string>
 
     <!-- Potrebbe essere più friendly "Non so dirlo"? -->
@@ -92,8 +92,6 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nessuna apertura regolare…"</string>
     <string name="quest_openingHours_comment_title">"Descrivi gli orari di apertura"</string>
     <string name="quest_openingHours_comment_description">"Sii conciso, idealmente vanno usate le parole nel cartello, es.: \"su appuntamento\". L'assenza di un cartello non significa necessariamente che non ci siano orari di apertura regolari."</string>
-    <string name="quest_buildingLevels_title">"Quanti piani ha questo edificio?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"Quanti piani ha questa parte dell'edificio?"</string>
     <string name="quest_roofShape_title">"Che tipo di forma ha il tetto di questo edificio?"</string>
     <string name="quest_roofShape_select_one">"Selezionane una:"</string>
     <string name="quest_roofShape_show_more">"Mostrane altre…"</string>
@@ -169,6 +167,8 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <string name="upload_server_error">"Errore di connessione nel caricamento delle risposte. Riprova più tardi."</string>
     <string name="quest_generic_hasFeature_yes">"Sì"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"Questa fermata ha una pensilina?"</string>
     <string name="quest_bikeParkingCapacity_title">"Quante bici possono essere parcheggiate qui?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Questo numero civico sembra molto insolito."</string>
@@ -209,6 +209,8 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <string name="quest_manySports_confirmation_specific">"Nello specifico questi"</string>
     <string name="quest_manySports_confirmation_generic">"Utilizzo generico"</string>
     <string name="quest_sport_manySports_confirmation_title">"Hai selezionato molti sport"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"La fermata dell'autobus %s ha una pensilina?"</string>
     <string name="quest_toiletsFee_title">"Questi servizi igienici sono a pagamento?"</string>
     <string name="quest_tactilePaving_title_bus">"Questa fermata dell'autobus ha un pavimento tattile?"</string>
@@ -406,7 +408,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_enabled">"Attivate"</string>
     <string name="quest_type">"Tipo di missione"</string>
     <string name="action_reset">"Reset"</string>
-    <string name="reorder_quest_priority_hint">"Premere a lungo e spostare una missione per riordinare la sua priorità di visualizzazione sulla mappa."</string>
 
     <!-- Ho modificato questa risposta positiva e quella negativa "Cancel" rispettivamente in "Annulla" e "Non annullare" così da essere simili a quelle usate dai traduttori francesi; esse sono le risposte che può dare l’utente alla domanda "Undo the following last answer?" che è stata tradotta in "Annullare quest'ultima riposta?". Vedi la nota in francese alla voce undo_confirm_negative. -->
     <string name="undo_confirm_positive">"Annulla"</string>
@@ -458,7 +459,11 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_internet_access_wired">"Cavo (LAN)"</string>
     <string name="quest_internet_access_terminal">"Computer con accesso ad internet"</string>
     <string name="quest_internet_access_no">"Nessuna connessione"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"La fermata del tram %s ha una pensilina?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_title">"Questa fermata del tram ha una pensilina?"</string>
     <string name="quest_bench_backrest_title">"Questa panchina ha lo schienale?"</string>
     <string name="quest_bench_answer_picnic_table">"È un tavolo da picnic"</string>
@@ -625,6 +630,8 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_noteDiscussion_hide2">"Nascosto da %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Le foto che alleghi a una nota sono caricate sul mio server e cancellate alcuni giorni dopo che la nota è stata risolta. I meta-dati vengono eliminati prima del caricamento.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deseleziona tutto"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"inclusi edifici per ristoranti, bar, etc, ..."</string>
     <string name="quest_openingHours_timeSelect_next">"Prossimo"</string>
     <string name="quest_tracktype_title">"Com'è il grado di solidità della superficie di questa strada?"</string>
@@ -794,6 +801,8 @@ Infine, ricorda per la sicurezza: stai attento dell'ambiente circostante e non e
     <string name="link_umap_description">"Crea mappe con dati personalizzati velocemente e inseriscile nel tuo sito"</string>
     <string name="link_opnvkarte_description">"Una mappa delle fermate e del trasporto pubblico"</string>
     <string name="link_pic4review_description">"Contribuisci a OSM semplicemente guardando immagini della tua città"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"Questa wiki è il tuo punto di partenza per qualsiasi cosa legata a OpenStreetMap"</string>
     <string name="link_learnosm_description">"Prima volta su OpenStreetMap? Questa è una guida per principianti"</string>
     <string name="link_neis_one_description">"Una grande collezione di statistiche per i contributori di OpenStreetMap, come dove e come hai contribuito, chi c'è vicino a te, più le classifiche"</string>
@@ -917,9 +926,17 @@ riconoscimento"</string>
     <string name="resurvey_intervals_default">"Predefinito"</string>
     <string name="resurvey_intervals_more_often">"Chiedi più spesso"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accetta pagamenti in denaro?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"La fermata del tram %s ha una panchina?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Questa fermata del tram ha un panchina?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Questa fermata del bus ha una panchina?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"La fermata del bus %s ha una panchina?"</string>
     <string name="quest_summit_register_title">"C’è un libro di vetta su %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Questo defibrillatore (DAE) è all’interno di un edificio?"</string>
@@ -984,7 +1001,6 @@ riconoscimento"</string>
     <string name="quest_kerb_height_flush">"Stessa altezza del manto stradale"</string>
     <string name="quest_kerb_height_lowered">"Un po' più alto del manto stradale"</string>
     <string name="quest_kerb_height_raised">"Cordolo alto"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Non c'è alcun cordolo su questo lato dell'attraversamento"</string>
     <string name="quest_kerb_height_lowered_ramp">"Cordolo a rampa"</string>
     <string name="quest_lanes_answer_lanes_description2">"Specifica il numero totale di corsie segnate (entrambe le direzioni) utilizzabili dal traffico automobilistico. Le corsie ciclabili e quelle dei parcheggi non vengono contate. Se invece qualche corsia è riservata ai bus per favore lascia un commento."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Specifica il numero totale di corsie segnate in questo tratto utilizzabili dal traffico automobilistico. Le corsie ciclabili e quelle dei parcheggi non vanno contate. Se invece qualche corsia è riservata ai bus per favore lascia un commento."</string>
@@ -1042,9 +1058,7 @@ riconoscimento"</string>
     <string name="team_mode_exit">"Abbandona la modalità squadra"</string>
     <string name="team_mode_description">"Quando mappi una stessa area insieme ad altre persone, puoi attivare la modalità squadra per suddividere le missioni tra tutte le persone.
 "</string>
-    <string name="team_mode_team_size_label">"Quante persone ci sono?"</string>
     <string name="team_mode_team_size_hint">"La modalità squadra consente gruppi da 2 a 12 persone."</string>
-    <string name="team_mode_choose_color">"A questo punto, ciascuna persona del gruppo sceglie un colore diverso:"</string>
     <string name="team_mode_active">"La modalità squadra è attiva"</string>
     <string name="team_mode_deactivated">"La modalità squadra è disattivata"</string>
     <string name="quest_pitchLit_title">"Questo campo da gioco è illuminato?"</string>
@@ -1095,7 +1109,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_barrier_type_stile_ladder">"Scala"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Barriera per biciclette"</string>
     <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>
-    <string name="quest_barrier_type_stepover">"Scavalco"</string>
     <string name="quest_barrier_type_swing_gate">"Sbarra orizzontale"</string>
     <string name="quest_policeType_title">"Che tipo di stazione di polizia è questa?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Convertito in un kissing gate"</string>
@@ -1103,6 +1116,8 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <!-- Stile dovrebbe essere cavalcasiepe, ma non ne sono sicuro -->
     <string name="quest_stile_type_title">"Che tipo di scaletta è questa?"</string>
     <string name="quest_buildingType_semi_detached_description2">"casa/e unifamiliare attigua/e"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Selezione e priorità missioni"</string>
     <string name="pref_subtitle_quests">"%1$d su %2$d attivate"</string>
     <string name="quest_busStopLit_tram_name_title">"La fermata del tram %s è illuminata?"</string>
@@ -1112,19 +1127,50 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="no_location_permission_warning_title">"Permessi per la posizione"</string>
     <string name="quest_surface_value_woodchips">"Cippato"</string>
     <string name="no_camera_app">"Nessuna app fotocamera disponibile"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"La fermata del tram %s ha un cestino dei rifuti?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"Questa fermata del tram ha un cestino dei rifiuti?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"Questa fermata dell'autobus ha un cestino dei rifiuti?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"La fermata dell'autobus %s ha un cestino dei rifiuti?"</string>
     <string name="quest_bollard_type_title">"Che tipo di colonnina è questa?"</string>
     <string name="quest_bollard_type_rising">"A scomparsa"</string>
-    <string name="quest_bollard_type_removable_with_key">"Rimovibile con chiave"</string>
-    <string name="quest_bollard_type_removable_without_key">"Rimovibile senza chiave"</string>
-    <string name="quest_bollard_type_foldable">"Pieghevole"</string>
     <string name="quest_bollard_type_flexible">"Flessibile"</string>
     <string name="quest_bollard_type_fixed">"Fisso (non rimovibile)"</string>
     <string name="quest_camera_type_title">"Che tipo di telecamera di sorveglianza è questa?"</string>
     <string name="quest_camera_type_dome">"Cupola"</string>
     <string name="quest_camera_type_fixed">"Fissa"</string>
     <string name="quest_camera_type_panning">"Mobile"</string>
+    <string name="about_title_faq">"FAQ"</string>
+    <string name="quest_buildingLevels_title2">"Quanti piani sopra il seminterrato ha questo edificio?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Quanti piani sopra il seminterrato ha questa parte di edificio?"</string>
+    <string name="quest_crossing_title">"Ci sono cordoli dove questa via incontra la strada? Di che tipo?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Preset: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Questo tipo di missione è disabilitata perché la forma del tetto non è sempre facilmente visibile dalla strada. Questo tipo di missione è anche gravosa; nella maggior parte dei casi è più facile ed efficiente mappare queste informazioni usando le immagini satellitari da casa."</string>
+    <string name="quest_religion_animist">"Animista"</string>
+    <string name="quest_construction_steps_title">"Queste scale sono complete?"</string>
+    <string name="questList_disabled_at_day">"Mostra solo di notte"</string>
+    <string name="pref_quests_deselect_all">"Cancellare tutte le missioni?"</string>
+    <string name="quest_buildingType_boathouse">"Rimessa"</string>
+    <string name="quest_buildingType_grandstand">"Tribune"</string>
+    <string name="action_search">"Cerca"</string>
+    <string name="action_manage_presets">"Gestisci preset"</string>
+    <string name="team_mode_team_size_label2">"Quante persone stanno mappando? Indica lo stesso numero su ciascun dispositivo."</string>
+    <string name="team_mode_choose_color2">"Poi, ciascuno deve scegliere un colore. Scegli il tuo:"</string>
+    <string name="link_organic_maps_description">"Applicazioni di mappe per viaggiatori, escursionisti e ciclisti che lavorano offline"</string>
+    <string name="quest_kerb_height_no">"Nessun cordolo"</string>
+    <string name="quest_bollard_type_removable">"Rimovibile (con o senza chiave)"</string>
+    <string name="quest_bollard_type_foldable2">"Pieghevole (con o senza chiave)"</string>
+    <string name="no_search_results">"Nessun risultato"</string>
+    <string name="quest_selection_hint_title">"Troppo da fare?"</string>
+    <string name="quest_selection_hint_message">"Contribuire dovrebbe essere soprattutto un divertimento! Se sei sommerso dalle missioni puoi sempre regolare finemente nelle impostazioni quali vengono visualizzate e in quale ordine."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_presets_delete_message">"Cancellare la preimpostazione \"%s\"? La selezione della missione e l'ordinamento saranno perse irrimediabilmente."</string>
 </resources>
