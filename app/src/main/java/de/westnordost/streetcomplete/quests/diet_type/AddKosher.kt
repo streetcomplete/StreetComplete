@@ -21,6 +21,7 @@ class AddKosher : OsmFilterQuestType<DietAvailability>() {
     override val commitMessage = "Add kosher status"
     override val wikiLink = "Key:diet:kosher"
     override val icon = R.drawable.ic_quest_kosher
+    override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_kosher_name_title

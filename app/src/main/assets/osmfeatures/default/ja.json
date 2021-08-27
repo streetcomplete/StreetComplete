@@ -107,6 +107,7 @@
                         "customers": "利用客専用",
                         "no": "なし",
                         "permissive": "所有者許諾あり",
+                        "permit": "要許可",
                         "private": "私有",
                         "yes": "アクセス可"
                     },
@@ -1047,6 +1048,14 @@
                 "historic/wreck/visible_at_low_tide": {
                     "label": "干潮時に出現"
                 },
+                "holding_position/type": {
+                    "label": "種類",
+                    "options": {
+                        "ILS": "ILS干渉防止",
+                        "intermediate": "誘導路",
+                        "runway": "滑走路"
+                    }
+                },
                 "hoops": {
                     "label": "輪の数",
                     "placeholder": "1, 2, 4..."
@@ -1507,7 +1516,7 @@
                     "terms": "焚き火可否,焚き火,キャンプファイア,キャンプ"
                 },
                 "opening_date": {
-                    "label": "開始予定日",
+                    "label": "完成予定日",
                     "placeholder": "YYYY-MM-DD"
                 },
                 "opening_hours": {
@@ -2350,8 +2359,8 @@
                     "terms": "位置,ポジション"
                 },
                 "toll": {
-                    "label": "料金",
-                    "terms": "料金所,料金"
+                    "label": "通行料金",
+                    "terms": "通行料金,料金"
                 },
                 "tomb": {
                     "label": "種類"
@@ -2491,6 +2500,9 @@
                 "vhf": {
                     "label": "VHFチャンネル",
                     "terms": "vhfチャンネル"
+                },
+                "via": {
+                    "label": "経由"
                 },
                 "video_calls": {
                     "label": "ビデオ",
@@ -2728,8 +2740,8 @@
                     "terms": "ヘリパッド,ヘリコプター発着所,ヘリポート"
                 },
                 "aeroway/holding_position": {
-                    "name": "停止ポイント（空港）",
-                    "terms": "停止ポイント,飛行機,空港"
+                    "name": "航空機の停止位置",
+                    "terms": "停止ポイント,停止位置標識,中間待機位置標識,飛行機,空港"
                 },
                 "aeroway/jet_bridge": {
                     "name": "ボーディング・ブリッジ",
@@ -3281,8 +3293,8 @@
                     "terms": "郵便局"
                 },
                 "amenity/prep_school": {
-                    "name": "進学予備校（欧米）",
-                    "terms": "予備校,プレップスクール,進学予備校,受験,私立学校,進学予備校（欧米）"
+                    "name": "進学予備校",
+                    "terms": "予備校,プレップスクール,進学予備校,受験,私立学校,塾"
                 },
                 "amenity/prison": {
                     "name": "刑務所（代表点または敷地）",
@@ -3883,7 +3895,7 @@
                 },
                 "barrier/toll_booth": {
                     "name": "料金所（道路、橋）",
-                    "terms": "料金所,障害物,バリア"
+                    "terms": "料金所,etc,障害物,バリア"
                 },
                 "barrier/turnstile": {
                     "name": "回転ゲート",
@@ -4365,7 +4377,7 @@
                     "name": "閉鎖施設"
                 },
                 "disused/railway": {
-                    "name": "鉄道（廃棄済み）"
+                    "name": "鉄道関連（閉鎖済み）"
                 },
                 "disused/shop": {
                     "name": "使用終了店舗"
@@ -4873,8 +4885,8 @@
                     "terms": "一般道,2車線以上,車道,公道,接続路"
                 },
                 "highway/toll_gantry": {
-                    "name": "料金ガントリー",
-                    "terms": "料金ガントリー,自動通行料金徴収装置,道路通行料,自動徴収"
+                    "name": "フリーフローETC",
+                    "terms": "フリーフローetc,料金ガントリー,自動通行料金徴収装置,道路通行料,自動徴収"
                 },
                 "highway/track": {
                     "name": "農道・林道（自動車通行可）",
@@ -5083,8 +5095,8 @@
                     "terms": "花壇,花,公園,庭,公共の花壇"
                 },
                 "landuse/forest": {
-                    "name": "人工林",
-                    "terms": "人工林,二次林,営林,保安林,鉄道林,防風林,森林（人工）,樹木,植物,林"
+                    "name": "森林（人工林）",
+                    "terms": "森林（人工林）,人工林,二次林,営林,保安林,鉄道林,防風林,森林（人工）,樹木,植物,林"
                 },
                 "landuse/garages": {
                     "name": "車庫（土地区画）",
@@ -5095,7 +5107,7 @@
                     "terms": "草地,芝生,植物"
                 },
                 "landuse/greenfield": {
-                    "name": "開発予定区画（未整備）",
+                    "name": "開発予定区画（未開発）",
                     "terms": "緑野,草原,グリーンフィールド,野原,原っぱ,原,広場,野,空き地,開発用地,用地"
                 },
                 "landuse/greenhouse_horticulture": {
@@ -5355,6 +5367,10 @@
                     "name": "アイススケート場",
                     "terms": "アイススケート,アイススケート場,アイススケートリンク,スケートリンク,スポーツ,運動,娯楽,レジャー"
                 },
+                "leisure/indoor_play": {
+                    "name": "屋内キッズスペース",
+                    "terms": "屋内キッズスペース,キッズスペース,子供,遊び,遊び場"
+                },
                 "leisure/marina": {
                     "name": "マリーナ",
                     "terms": "マリーナ,ヨットハーバー,スポーツ,運動,娯楽,レジャー"
@@ -5482,6 +5498,10 @@
                 "leisure/playground": {
                     "name": "児童公園",
                     "terms": "児童公園,遊び場,児童遊園,公園"
+                },
+                "leisure/playground/indoor": {
+                    "name": "室内遊園地",
+                    "terms": "室内遊園地,屋内遊び場,屋内児童公園,児童公園,遊園地,子供,遊び,遊び場"
                 },
                 "leisure/resort": {
                     "name": "リゾート地",
@@ -6051,7 +6071,7 @@
                 },
                 "natural/wood": {
                     "name": "森林（自然林・原生林）",
-                    "terms": "森林（自然林・原生林）,自然林,原生林,樹木"
+                    "terms": "森林（自然林・原生林）,自然林,原生林,樹木,植物,林"
                 },
                 "network/type/node_network": {
                     "name": "ノード・ネットワーク",
@@ -6444,6 +6464,14 @@
                     "name": "ソーラーパネル",
                     "terms": "ソーラーパネル,太陽光パネル"
                 },
+                "power/generator/method/photovoltaic/building/roof": {
+                    "name": "ソーラーパネル天蓋",
+                    "terms": "ソーラーパネル天蓋,ソーラーパネルキャノピー,ソーラーパネル,天蓋,キャノピー,発電,太陽光,太陽光パネル,太陽光発電"
+                },
+                "power/generator/method/photovoltaic/location/roof": {
+                    "name": "屋根置きソーラーパネル",
+                    "terms": "ソーラーパネル,太陽光パネル,屋根置きソーラーパネル,発電,太陽光発電"
+                },
                 "power/generator/source/hydro": {
                     "name": "水力発電機",
                     "terms": "水力発電機,発電機,水力,エネルギー"
@@ -6491,6 +6519,10 @@
                 "power/plant/source/solar": {
                     "name": "太陽光発電所",
                     "terms": "原子力発電所,ソーラー,電力,発電所"
+                },
+                "power/plant/source/waste": {
+                    "name": "廃棄物発電所",
+                    "terms": "廃棄物発電所,火力発電所,発電,発電所,廃棄物,電力"
                 },
                 "power/plant/source/wind": {
                     "name": "風力発電所",
@@ -7132,7 +7164,7 @@
                 },
                 "shop/funeral_directors": {
                     "name": "葬儀社",
-                    "terms": "葬儀屋,葬儀業"
+                    "terms": "葬儀屋,葬儀業,葬祭業者"
                 },
                 "shop/furniture": {
                     "name": "家具店",
@@ -7164,7 +7196,7 @@
                 },
                 "shop/hairdresser": {
                     "name": "理美容店",
-                    "terms": "理容店,床屋,美容室,美容院,散髪屋,ヘアー,ヘアーサロン,カット,パーマ"
+                    "terms": "理容店,床屋,美容室,美容院,散髪屋,理髪店,ヘアー,ヘアーサロン,カット,パーマ"
                 },
                 "shop/hairdresser_supply": {
                     "name": "理容用品店",
@@ -7272,7 +7304,7 @@
                 },
                 "shop/money_lender": {
                     "name": "消費者金融",
-                    "terms": "消費者金融,サラ金,貸金,お金,金融,マチ金,借金"
+                    "terms": "消費者金融,高利貸,サラ金,マチ金,貸金,お金,金融,借金"
                 },
                 "shop/motorcycle": {
                     "name": "バイク店",
@@ -7860,7 +7892,7 @@
                 },
                 "type/route/horse": {
                     "name": "乗馬ルート",
-                    "terms": "乗馬"
+                    "terms": "乗馬ルート"
                 },
                 "type/route/light_rail": {
                     "name": "ライトレール・ルート",
@@ -7869,6 +7901,10 @@
                 "type/route/monorail": {
                     "name": "モノレールルート",
                     "terms": "モノレールルート,モノレール,ルート"
+                },
+                "type/route/mtb": {
+                    "name": "マウンテンバイクのルート",
+                    "terms": "マウンテンバイクのルート"
                 },
                 "type/route/pipeline": {
                     "name": "パイプラインルート",

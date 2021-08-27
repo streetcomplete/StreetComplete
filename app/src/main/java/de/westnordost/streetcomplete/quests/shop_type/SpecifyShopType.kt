@@ -29,6 +29,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
     override val commitMessage = "Specify shop type"
     override val wikiLink = "Key:shop"
     override val icon = R.drawable.ic_quest_check_shop
+    override val isReplaceShopEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = when {
         hasProperName(tags)  -> R.string.quest_shop_type_title

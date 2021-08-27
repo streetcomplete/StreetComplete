@@ -16,9 +16,9 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags.containsKey("building:part"))
-            R.string.quest_buildingLevels_title_buildingPart
+            R.string.quest_buildingLevels_title_buildingPart2
         else
-            R.string.quest_buildingLevels_title
+            R.string.quest_buildingLevels_title2
 
     override fun createForm() = AddBuildingLevelsForm()
 

@@ -14,7 +14,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده گرفتن یادداشت‌هایی که به عنوان پرسش تعریف نشده است"</string>
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
-    <string name="map_attribution_osm">"© مشارکت‌کنندگان در اوپن‌استریت‌مپ"</string>
+    <string name="map_attribution_osm">"© مشارکت‌کنندگان در نقشه‌متن‌باز (osm)"</string>
     <string name="quest_generic_otherAnswers">"دیگر پاسخ‌ها..."</string>
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
     <string name="quest_generic_confirmation_title">"مطمئنید؟"</string>
@@ -191,12 +191,6 @@
     <string name="quest_openingHours_comment_description">"به صورت مختصر باشد، بهتر است از کلمات روی علائم استفاده کنید. مانند \"با تعیین وقت قبلی\". فقدان علائم لزوماً به این معنی نیست که ساعات کاری نامنظم می باشد."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"این ساختمان چند طبقه دارد؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"این قسمت از ساختمان چند طبقه دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"شکل کلی سقف این ساختمان چگونه است؟"</string>
 
     <!-- Fuzzy -->
@@ -220,7 +214,7 @@
 &lt;p&gt;&lt;b&gt; مشارکت مستقیم&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 ابتدا بدانید که شما با استفاده از این برنامه، بطور مستقیم به نقشه‌متن‌باز کمک می‌کنید. &lt;br/&gt;
-هر اقدامی که شما در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت اوپن‌استریت‌مپ وجود ندارد
+هر اقدامی که شما در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت osm وجود ندارد
 &lt;/p&gt;
 &lt;p&gt;
 ویرایش نقشه متن‌باز به صورت ناشناس امکان‌پذیر نیست، بنابراین هر تغییری که ایجاد می کنید با  حساب کاربری OSM شما ذخیره می شود. این بدان معنی است که تاریخ، محتوا و به طور کلی مکان تغییرات شما به طور عمومی در وبگاه OSM قابل مشاهده است و در حساب کاربری شما ذخیره می‌شود.
@@ -921,9 +915,6 @@
 
     <!-- Fuzzy -->
     <string name="action_reset">"بازنشانی"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"لمس ممتد و حرکت برای تغییر منطقه جُستارها و نیز بارگیری و نمایش آنها روی نقشه."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"برگشت"</string>
@@ -1933,13 +1924,13 @@
     <string name="link_category_editors_title">"مشارکت"</string>
 
     <!-- Fuzzy -->
-    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در اوپن‌استریت‌مپ"</string>
+    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در نقشه‌متن‌باز (osm)"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_maps_title">"نقشه‌ها"</string>
 
     <!-- Fuzzy -->
-    <string name="link_category_maps_description">"نقشه‌های مبتنی بر اوپن‌استریت‌مپ"</string>
+    <string name="link_category_maps_description">"نقشه‌های مبتنی بر نقشه‌متن‌باز (osm)"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_showcase_title">"ويترين"</string>
@@ -2192,9 +2183,17 @@
     <string name="resurvey_intervals_default">"پیشفرض"</string>
     <string name="resurvey_intervals_more_often">"بیشتر اوقات بپرسید"</string>
     <string name="quest_accepts_cash_type_title">"آیا %1$s (%2$s) پرداخت نقدی را قبول می کند؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"آیا توقفگاه خودرو %s نیمکت دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"آیا این توقفگاه خودرو نیمکت دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"آیا این ایستگاه اتوبوس نیمکت دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"آیا ایستگاه اتوبوس %s نیمکت دارد؟"</string>
     <string name="quest_summit_register_title">"آیا قله‌ای در %s ثبت شده است؟"</string>
     <string name="quest_is_defibrillator_inside_title">"آیا داخل ساختمان دستگاه شوک الکتریکی موجود است؟"</string>
@@ -2262,7 +2261,6 @@
     <string name="quest_kerb_height_lowered">"کمی بالاتر از سطح جاده
 "</string>
     <string name="quest_kerb_height_raised">"جدول برجسته"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"در این سمت مسیرهیچ جدولی وجود ندارد"</string>
     <string name="quest_kerb_height_lowered_ramp">"جدول شیب‌دار
 "</string>
     <string name="quest_lanes_answer_lanes_description2">"تعداد کل خطوط تردد (هر دو جهت) قابل استفاده خودروها را مشخص کنید. خطوط دوچرخه و پارکینگ اختصاصی حساب نمی شوند.
@@ -2322,9 +2320,7 @@
     <string name="team_mode">"حالت گروهی"</string>
     <string name="team_mode_exit">"خروج از حالت گروهی"</string>
     <string name="team_mode_description">"هنگام نقشه برداری از یک منطقه با هم در یک گروه می توانید برای تقسیم جُستارها بین همه اعضای گروه وارد حالت گروهی شوید."</string>
-    <string name="team_mode_team_size_label">"چند نفر آنجا هستند؟"</string>
     <string name="team_mode_team_size_hint">"حالت گروهی برای گروه های ۲ تا ۱۲ نفره استفاده می‌شود."</string>
-    <string name="team_mode_choose_color">"اکنون همه افراد گروه شما رنگ منحصر به فردی را انتخاب می‌کنند:"</string>
     <string name="team_mode_active">"حالت گروهی فعال است"</string>
     <string name="team_mode_deactivated">"حالت گروهی عیرفعال است"</string>
     <string name="quest_pitchLit_title">"آیا این زمین ورزشی روشنایی دارد؟"</string>
@@ -2375,10 +2371,42 @@
     <string name="quest_barrier_type_stile_ladder">"نرده پلکان"</string>
     <string name="quest_barrier_type_bicycle_barrier">"مانع دوچرخه"</string>
     <string name="quest_barrier_type_kissing_gate">"دروازه لمسی"</string>
-    <string name="quest_barrier_type_stepover">"نرده قدم به قدم"</string>
     <string name="quest_barrier_type_swing_gate">"نوار افقی"</string>
     <string name="quest_policeType_title">"این چه نوع پاسگاهی است؟"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"تبدیل به دروازه لمسی"</string>
     <string name="quest_stile_type_title">"این چه نوع نرده ای است؟"</string>
     <string name="quest_buildingType_semi_detached_description2">"خانه (های) تک واحده"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_title_quests2">"انتخاب و اولویت جُستار"</string>
+    <string name="pref_subtitle_quests">"%1$d از %2$d فعال شده
+
+"</string>
+    <string name="quest_busStopLit_tram_name_title">"آیا ایستگاه واگن برقی %s روشنایی دارد؟"</string>
+    <string name="quest_busStopLit_tram_title">"آیا این ایستگاه واگن برقی روشنایی دارد؟"</string>
+    <string name="quest_busStopLit_title">"آیا این ایستگاه اتوبوس روشنایی دار ؟"</string>
+    <string name="quest_busStopLit_name_title">"آیا این ایستگاه اتوبوس%s روشنایی دار ؟"</string>
+    <string name="no_location_permission_warning_title">"مجوز مکان"</string>
+    <string name="quest_surface_value_woodchips">"تراشه های چوبی"</string>
+    <string name="no_camera_app">"برنامه دوربین موجود نیست"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_name_title">"آیا ایستگاه واگن برقی %s سطل زباله دارد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_title">"آیا این ایستگاه واگن برقی سطل زباله دارد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_title">"آیا این ایستگاه اتوبوس سطل زباله دارد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_name_title">"آیا این ایستگاه اتوبوس %s سطل زباله دارد؟"</string>
+    <string name="quest_bollard_type_title">"این چه نوع مهاربندی است؟"</string>
+    <string name="quest_bollard_type_rising">"بالارونده"</string>
+    <string name="quest_bollard_type_flexible">"قابل انعطاف"</string>
+    <string name="quest_bollard_type_fixed">"ثابت (قابل جابجایی نیست)"</string>
+    <string name="quest_camera_type_title">"این چه نوع دوربین نظارتی است؟"</string>
+    <string name="quest_camera_type_dome">"خصوصی"</string>
+    <string name="quest_camera_type_fixed">"ثابت"</string>
+    <string name="quest_camera_type_panning">"کاذب"</string>
 </resources>

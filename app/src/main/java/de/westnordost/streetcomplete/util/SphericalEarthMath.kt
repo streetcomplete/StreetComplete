@@ -71,6 +71,24 @@ fun LatLon.finalBearingTo(pos: LatLon): Double {
     return bearing
 }
 
+/** Returns whether this point is right of the line spanned between start and the given bearing. */
+fun LatLon.isRightOf(lineStart: LatLon, bearing: Double): Boolean =
+    (lineStart.initialBearingTo(this) - bearing).normalizeDegrees(-180.0) > 0
+
+/** Returns whether this point is right of both the line spanned by p0 and p1 and the line
+ *  spanned by p1 and p2 */
+fun LatLon.isRightOf(p0: LatLon, p1: LatLon, p2: LatLon): Boolean {
+    val angle01 = p0.initialBearingTo(p1)
+    val angle12 = p1.initialBearingTo(p2)
+    val turnsRight = (angle12 - angle01).normalizeDegrees(-180.0) > 0
+    return if (turnsRight) {
+        isRightOf(p0, angle01) && isRightOf(p1, angle12)
+    } else {
+        isRightOf(p0, angle01) || isRightOf(p1, angle12)
+    }
+}
+
+
 /** Returns the distance from this point to the other point */
 fun LatLon.distanceTo(pos: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
     angularDistance(
@@ -153,7 +171,7 @@ fun List<LatLon>.distanceTo(polyline: List<LatLon>, globeRadius: Double = EARTH_
 }
 
 /** Returns whether this polyline intersects with the given polyline. If a polyline touches the
- *  other at an endpoint (f.e. two consecutive polylines that share one endpoint), this doesn't
+ *  other at an endpoint (e.g. two consecutive polylines that share one endpoint), this doesn't
  *  count. */
 fun List<LatLon>.intersectsWith(polyline: List<LatLon>): Boolean {
     require(size > 1 && polyline.size > 1) { "Polylines must each contain at least two elements" }

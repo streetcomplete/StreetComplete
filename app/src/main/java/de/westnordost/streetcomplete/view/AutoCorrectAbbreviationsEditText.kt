@@ -57,7 +57,7 @@ class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
             fixedReplace(s, wordStart, wordStart + lastWordBeforeCursor.length, replacement)
         } else if (lastWordBeforeCursor.length > 3) {
             val locale = abbrs.locale
-            val capital = lastWordBeforeCursor.substring(0, 1).toUpperCase(locale)
+            val capital = lastWordBeforeCursor.substring(0, 1).uppercase(locale)
             s.replace(wordStart, wordStart + 1, capital)
         }
     }

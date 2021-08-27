@@ -9,7 +9,7 @@
         android:id="@+id/mapFragment"
         android:name="de.westnordost.streetcomplete.map.QuestsMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <RelativeLayout
         android:id="@+id/mapControls"
@@ -174,14 +174,17 @@
 
     </RelativeLayout>
 
-    <FrameLayout
+    <!-- it is relative layout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
+    <RelativeLayout
         android:id="@+id/map_bottom_sheet_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipChildren="false">
-    </FrameLayout>
+        android:clipChildren="false"
+        tools:ignore="RtlHardcoded">
+    </RelativeLayout>
 
-    <FrameLayout
+    <!-- it is relative layout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
+    <RelativeLayout
         android:id="@+id/edit_history_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

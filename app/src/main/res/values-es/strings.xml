@@ -240,12 +240,6 @@
     <string name="quest_openingHours_comment_description">"Sé conciso/a, mejor transcribe las palabras del letrero. Por ejemplo; «con cita previa». La ausencia de letrero no significa necesariamente que no haya un horario de apertura habitual."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"¿Cuántos niveles tiene este edificio?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"¿Cuántos niveles tiene esta parte de edificio?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"¿Qué forma básica tiene el tejado de este edificio?"</string>
 
     <!-- Fuzzy -->
@@ -972,9 +966,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="action_reset">"Restaurar"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Mantén pulsado para arrastrar una misión y reordenarla en la lista, priorizando su destacándola en el mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Deshacer"</string>
@@ -2265,9 +2256,17 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="resurvey_intervals_default">"Por defecto"</string>
     <string name="resurvey_intervals_more_often">"Preguntar con más frecuencia"</string>
     <string name="quest_accepts_cash_type_title">"¿%1$s (%2$s) acepta pagos en efectivo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"¿La parada del tranvía %s tiene un banco?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"¿Esta parada de tranvía tiene banco?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"¿Esta parada de autobús tiene banco?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"¿La parada de autobús %s tiene banco?"</string>
     <string name="quest_summit_register_title">"¿Hay un comprobante de cumbres en %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"¿Este desfibrilador (AED) está dentro de un edificio?"</string>
@@ -2335,7 +2334,6 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
 "</string>
     <string name="quest_kerb_height_lowered">"Un poco más alto que la superficie de la calzada"</string>
     <string name="quest_kerb_height_raised">"Bordillo alto"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"No hay acera en este lado del cruce"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampa de acera"</string>
 
     <!-- Fuzzy -->
@@ -2396,9 +2394,7 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="team_mode">"Modo Equipo"</string>
     <string name="team_mode_exit">"Salir del Modo Equipo"</string>
     <string name="team_mode_description">"Al mapear la misma área juntos en un grupo, puede ingresar al modo equipo para dividir las misiones entre todos los miembros del equipo."</string>
-    <string name="team_mode_team_size_label">"¿Cuántas personas hay?"</string>
     <string name="team_mode_team_size_hint">"El modo equipo funciona para grupos de 2 a 12 personas."</string>
-    <string name="team_mode_choose_color">"Ahora todos en tu grupo eligen un color único:"</string>
     <string name="team_mode_active">"El modo equipo está activo"</string>
     <string name="team_mode_deactivated">"El modo equipo está desactivado"</string>
     <string name="quest_pitchLit_title">"¿Esta cancha deportiva está iluminada?"</string>
@@ -2449,16 +2445,50 @@ Los datos se actualizan después de %1$s días y los datos no utilizados se elim
     <string name="quest_barrier_type_stile_ladder">"Cruce de escalera"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Barrera para bicicletas"</string>
     <string name="quest_barrier_type_kissing_gate">"Puerta de bisagras"</string>
-    <string name="quest_barrier_type_stepover">"Cruce de peldaños"</string>
     <string name="quest_barrier_type_swing_gate">"Barrera horizontal"</string>
     <string name="quest_policeType_title">"¿Qué tipo de comisaría es esta?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Convertido en una puerta de bisagras"</string>
     <string name="quest_stile_type_title">"¿Qué tipo de cruce tiene esta valla?"</string>
     <string name="quest_buildingType_semi_detached_description2">"viviendas unifamiliares contiguas"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Selección de misiones y prioridades"</string>
     <string name="pref_subtitle_quests">"%1$d de %2$d habilitados"</string>
     <string name="quest_busStopLit_tram_name_title">"¿Está iluminada la parada de tranvía %s?"</string>
     <string name="quest_busStopLit_tram_title">"¿Está iluminada esta parada de tranvía?"</string>
     <string name="quest_busStopLit_title">"¿Está iluminada esta parada de bus?"</string>
     <string name="quest_busStopLit_name_title">"¿Está iluminada la parada de bus %s?"</string>
+    <string name="no_location_permission_warning_title">"Permiso de Localización"</string>
+    <string name="quest_surface_value_woodchips">"Virutas de madera"</string>
+    <string name="no_camera_app">"Aplicación de cámara no disponible"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_name_title">"¿La parada de tranvía %s tiene papelera?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_title">"¿Esta parada de tranvía tiene papelera?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_title">"¿Esta parada de autobús tiene papelera?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_name_title">"¿La parada de autobús %s tiene papelera?"</string>
+    <string name="quest_bollard_type_title">"¿Qué tipo de bolardo es este?"</string>
+
+    <!-- Context: Type of bollard that can rise. See bollard:rising at https://wiki.openstreetmap.org/wiki/Key:bollard -->
+    <string name="quest_bollard_type_rising">"Retráctil"</string>
+    <string name="quest_bollard_type_flexible">"Flexible"</string>
+    <string name="quest_bollard_type_fixed">"Fijo (no desmontable)"</string>
+    <string name="quest_camera_type_title">"¿Qué tipo de cámara de vigilancia es?"</string>
+    <string name="quest_camera_type_dome">"Domo"</string>
+    <string name="quest_camera_type_fixed">"Fija"</string>
+
+    <!-- Context: Whether a camera can be panned (moved) or not. The other options are quest_camera_type_dome and quest_camera_type_fixed) -->
+    <string name="quest_camera_type_panning">"panorámica (móvil)"</string>
+
+    <!-- Fuzzy -->
+    <string name="questList_disabled_at_day">"Solo se muestra de noche"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_selection_hint_title">"¿Demasiado que hacer?"</string>
 </resources>

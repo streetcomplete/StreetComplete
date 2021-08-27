@@ -17,6 +17,7 @@ import javax.inject.Singleton
 @Singleton class NotificationsSource @Inject constructor(
     private val userStore: UserStore,
     private val newUserAchievementsDao: NewUserAchievementsDao,
+    private val questSelectionHintController: QuestSelectionHintController,
     @Named("Achievements") achievements: List<Achievement>,
     private val prefs: SharedPreferences
 ) {
@@ -41,6 +42,11 @@ import javax.inject.Singleton
                 onNumberOfNotificationsUpdated()
             }
         })
+        questSelectionHintController.addListener(object : QuestSelectionHintController.Listener {
+            override fun onQuestSelectionHintStateChanged() {
+                onNumberOfNotificationsUpdated()
+            }
+        })
     }
 
     fun addListener(listener: UpdateListener) {
@@ -54,11 +60,13 @@ import javax.inject.Singleton
         val hasUnreadMessages = userStore.unreadMessagesCount > 0
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
+        val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
         if (lastVersion == null) {
             prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply()
         }
 
         var notifications = 0
+        if (shouldShowQuestSelectionHint) notifications++
         if (hasUnreadMessages) notifications++
         if (hasNewVersion) notifications++
         notifications += newUserAchievementsDao.getCount()
@@ -89,6 +97,12 @@ import javax.inject.Singleton
         if (unreadOsmMessages > 0) {
             userStore.unreadMessagesCount = 0
             return OsmUnreadMessagesNotification(unreadOsmMessages)
+        }
+
+        val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
+        if (shouldShowQuestSelectionHint) {
+            questSelectionHintController.state = QuestSelectionHintState.SHOWN
+            return QuestSelectionHintNotification
         }
 
         return null

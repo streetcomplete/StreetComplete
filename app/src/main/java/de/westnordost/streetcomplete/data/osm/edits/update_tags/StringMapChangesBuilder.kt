@@ -4,7 +4,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>) {
     private val changes: MutableMap<String, StringMapEntryChange> = mutableMapOf()
 
     fun delete(key: String) {
-        val valueBefore = requireNotNull(source[key]) { "The key '$key' does not exist in the map." }
+        val valueBefore = requireNotNull(source[key]) { "The key '$key' does not exist in the map '$source'." }
         val change = StringMapEntryDelete(key, valueBefore)
         if (changes[key] == change) return
         checkDuplicate(key)
@@ -24,7 +24,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>) {
     }
 
     fun add(key: String, value: String) {
-        require(!source.containsKey(key)) { "The key '$key' already exists in the map." }
+        require(!source.containsKey(key)) { "The key '$key' already exists in the map '$source'." }
         val change = StringMapEntryAdd(key, value)
         if (changes[key] == change) return
         checkDuplicate(key)
@@ -32,7 +32,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>) {
     }
 
     fun modify(key: String, value: String) {
-        val valueBefore = requireNotNull(source[key]) {"The key '$key' does not exist in the map." }
+        val valueBefore = requireNotNull(source[key]) {"The key '$key' does not exist in the map '$source'." }
         val change = StringMapEntryModify(key, valueBefore, value)
         if (changes[key] == change) return
         checkDuplicate(key)

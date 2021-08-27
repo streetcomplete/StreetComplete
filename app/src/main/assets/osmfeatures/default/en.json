@@ -1012,6 +1012,14 @@
                 "historic/wreck/visible_at_low_tide": {
                     "label": "Visible At Low Tide"
                 },
+                "holding_position/type": {
+                    "label": "Type",
+                    "options": {
+                        "runway": "Runway",
+                        "intermediate": "Taxiway-Taxiway Intersection",
+                        "ILS": "Instrument Landing System"
+                    }
+                },
                 "hoops": {
                     "label": "Hoops",
                     "placeholder": "1, 2, 4..."
@@ -2389,6 +2397,9 @@
                 "vhf": {
                     "label": "VHF Channel",
                     "terms": "call sign,very high frequency"
+                },
+                "via": {
+                    "label": "Via"
                 },
                 "video_calls": {
                     "label": "Video Calls"
@@ -5140,6 +5151,10 @@
                     "name": "Ice Rink",
                     "terms": "hockey,skating,curling"
                 },
+                "leisure/indoor_play": {
+                    "name": "Indoor Play Center",
+                    "terms": "ball pit,childrens play center,indoor playground"
+                },
                 "leisure/marina": {
                     "name": "Marina",
                     "terms": "boats,docks,harbor,harbour,moorings,yachts"
@@ -5264,6 +5279,10 @@
                 "leisure/playground": {
                     "name": "Playground",
                     "terms": "jungle gym,play area"
+                },
+                "leisure/playground/indoor": {
+                    "name": "Indoor Playground",
+                    "terms": "ball pit,play pen,play pit,indoor play area,inside playground"
                 },
                 "leisure/resort": {
                     "name": "Resort",
@@ -6176,6 +6195,14 @@
                     "name": "Solar Panel",
                     "terms": "photovoltaic module,pv module,sunlight"
                 },
+                "power/generator/method/photovoltaic/building/roof": {
+                    "name": "Solar Panel Canopy",
+                    "terms": "photovoltaic canopy,solar awning,solar carport,solar canopy"
+                },
+                "power/generator/method/photovoltaic/location/roof": {
+                    "name": "Rooftop Solar Panel",
+                    "terms": "home solar,rooftop photovoltaic module,pv module"
+                },
                 "power/generator/source/hydro": {
                     "name": "Water Turbine",
                     "terms": "dam,generator,francis turbine,hydroelectricity,kaplan turbine,pelton turbine"
@@ -6222,6 +6249,10 @@
                 "power/plant/source/solar": {
                     "name": "Solar Farm",
                     "terms": "photovoltaic power station,solar panels,solar park,utility-scale solar"
+                },
+                "power/plant/source/waste": {
+                    "name": "Waste Incineration Power Plant",
+                    "terms": "refuse incineration plant,incinerator,garbage incinerator,garbage incineration plant,waste,combustion,gasification"
                 },
                 "power/plant/source/wind": {
                     "name": "Wind Farm",
@@ -7502,13 +7533,17 @@
                     "name": "Hiking Route"
                 },
                 "type/route/horse": {
-                    "name": "Riding Route"
+                    "name": "Horse Riding Route"
                 },
                 "type/route/light_rail": {
                     "name": "Light Rail Route"
                 },
                 "type/route/monorail": {
                     "name": "Monorail Route"
+                },
+                "type/route/mtb": {
+                    "name": "Mountain Biking Route",
+                    "terms": "all mountain,cross-country cycling,downhill cycling,enduro,freeride,mountain bicycling,mountain bike route,mountain cycling,mtb,trail riding"
                 },
                 "type/route/pipeline": {
                     "name": "Pipeline Route"

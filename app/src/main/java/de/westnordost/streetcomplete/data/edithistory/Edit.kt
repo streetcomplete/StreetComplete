@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 
-// TODO make sealed as soon as kotlin supports this (1.5)
 interface Edit {
     val key: EditKey
     val createdTimestamp: Long

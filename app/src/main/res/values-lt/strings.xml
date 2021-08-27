@@ -242,12 +242,6 @@
     <string name="quest_openingHours_comment_description">"Rašykite glaustai. Stenkitės naudoti tekstą iš informacijos, pavyzdžiui „pagal susitarimą“. Jei nėra ženklo, tai nebūtinai reiškia, kad pastovaus darbo laiko nėra."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Kiek aukštų turi šis pastatas?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Kiek aukštų turi ši pastato dalis?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Kokia pagrindinė šio pastato stogo forma?"</string>
 
     <!-- Fuzzy -->
@@ -974,9 +968,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
 
     <!-- Fuzzy -->
     <string name="action_reset">"Atstatyti"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Ilgai spauskite ir tempkite užduotį, kad pakeistumėte jos prioritetą rodymui žemėlapyje."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Atšaukti"</string>
@@ -2179,11 +2170,15 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
 
     <!-- Fuzzy -->
     <string name="stats_are_syncing">"Jūsų statistika vis dar atnaujinama. Grįžkite čia vėliau."</string>
+    <string name="user_statistics_filter_by_country">"pagal šalį"</string>
     <string name="user_profile_achievement_levels">"Pasiekimų lygis"</string>
+    <string name="quest_recycling_type_cooking_oil">"Aliejus"</string>
     <string name="quest_recycling_type_engine_oil">"Variklio alyva"</string>
     <string name="about_title_sponsors">"Rėmėjai"</string>
     <string name="quest_board_type_history">"Istorija"</string>
+    <string name="quest_board_type_geology">"Geologija"</string>
     <string name="quest_board_type_plants">"Augalai"</string>
+    <string name="quest_board_type_public_transport">"Viešasis transportas"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"Namo pavadinimas %s:"</string>
@@ -2194,6 +2189,35 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="at_housenumber">"namo numeris %s:"</string>
     <string name="quest_openingHours_name_type_title">"Koks yra %1$s (%2$s) darbo laikas?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Ar %1$s (%2$s) prieinamas vežimėliu?"</string>
+    <string name="resurvey_intervals_less_often">"Klausti rečiau"</string>
+    <string name="resurvey_intervals_default">"Numatytasis"</string>
+    <string name="resurvey_intervals_more_often">"Klausti dažniau"</string>
     <string name="quest_accepts_cash_type_title">"Ar %1$s (%2$s) priima mokėjimus grynais?"</string>
+    <string name="quest_busStopBench_title">"Ar šioje autobusų stotelėje yra suoliukas?"</string>
+    <string name="quest_busStopBench_name_title">"Ar autobusų stotelėje %s yra suoliukas?"</string>
+    <string name="about_title_translate">"Padėkite išversti šią programėlę"</string>
     <string name="quest_traffic_signals_sound_title">"Ar čia yra garso signalai akliesiems?"</string>
+    <string name="achievement_citizen_title">"Pilietis"</string>
+    <string name="pref_title_sync2">"Išsiųsti atsakymus automatiškai"</string>
+    <string name="quest_buildingType_historic">"Istorinis"</string>
+    <string name="quest_buildingType_abandoned">"Apleistas"</string>
+    <string name="quest_buildingType_ruins">"Griuvėsiai"</string>
+    <string name="quest_charging_station_capacity_title">"Kiek automobilių gali būti kraunama tuo pačiu metu?"</string>
+    <string name="quest_construction_completed_at_known_date">"Bus užbaigtos..."</string>
+    <string name="quest_construction_completion_date_title">"Kada bus užbaigtos?"</string>
+    <string name="team_mode">"Komandinis režimas"</string>
+    <string name="team_mode_exit">"Palikti komandinį režimą"</string>
+    <string name="undo_last">"Atšaukti paskutinį keitimą"</string>
+    <string name="show_edit_history">"Parodyti redagavimo istoriją"</string>
+    <string name="delete_confirmation">"Ištrinti"</string>
+    <string name="quest_shop_type_title_no_name">"Koks šios parduotuvės tipas?"</string>
+    <string name="background_type_map">"Žemėlapis"</string>
+    <string name="quest_barrier_type_gate">"Vartai"</string>
+    <string name="quest_barrier_type_chain">"Grandinė"</string>
+    <string name="quest_barrier_type_rope">"Virvė"</string>
+    <string name="quest_busStopBin_title">"Ar šioje auobusų stotelėje yra šiukšliadėžė?"</string>
+    <string name="about_title_faq">"DUK"</string>
+    <string name="quest_buildingLevels_title2">"Kiek rūsio aukštų turi šis pastatas?"</string>
+    <string name="questList_disabled_at_day">"Rodyti tik naktį"</string>
+    <string name="action_search">"Ieškoti"</string>
 </resources>

@@ -7,7 +7,7 @@ Content:
    * [Translating the app](#translating-the-app)
    * [Solving notes](#solving-notes)
    * [Testing and reporting issues](#testing-and-reporting-issues)
-   * [Issues of dependencies](#issues-of-dependencies)
+   * [Issues with dependencies](#issues-with-dependencies)
    * [Suggesting new quests](#suggesting-new-quests)
    * [Improving documentation](#improving-documentation)
    * [Development](#development)
@@ -24,11 +24,11 @@ Follow [**this link** to improve the translations](https://poeditor.com/join/pro
 
 [![POEditor](https://poeditor.com/public/images/logo_small.png)](https://poeditor.com/join/project/IE4GC127Ki)
 
-After joining [main site of the POEditor](https://poeditor.com/projects/) should list StreetComplete for logged in users.
+After joining, the [main site of the POEditor](https://poeditor.com/projects/) should list StreetComplete for logged in users.
 
-Before each release, translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged and do not help the project.
+Before each release, translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged as they do not help the project.
 
-Once 100% or close to 100% of text is translated the given language becomes enabled. Not maintained translations are removed. Typically language translated in less than 60% will be considered as not maintained and such translation will be disabled.
+Once 100% or close to 100% of text is translated, the given language becomes enabled. Translations which are not maintained are removed. Typically languages which are less than 60% translated will be considered as not maintained and such translation will be disabled.
 
 ### iD presets
 
@@ -49,17 +49,17 @@ If you find such user experience problems, please report them back in the [issue
 If you experience problems, crashes or a quest is not clear to you, feel free to open an issue for that. Remember to open one issue _for one matter_, so do not open one issue "I have found several problems", but one for each problem. Before you open an issue, please consider: 
 
 1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
-2. Remember to report map style issues [in the appropriate repository](#issues-of-dependencies).
-3. Look [whether your issue has already been reported](https://github.com/streetcomplete/StreetComplete/issues).
+2. Remember to report map style issues [in the appropriate repository](#issues-with-dependencies).
+3. Look [whether your issue has already been reported](https://github.com/streetcomplete/StreetComplete/issues) (remember to check closed issues too, it may have already been fixed and is due to appear in the next release).
 
-### Issues of dependencies
+### Issues with dependencies
 
-StreetComplete depends on some projects for the app. Try to find the appropriate place for reporting them.
+StreetComplete depends on some projects for the app. Try to report them in the appropriate place.
 
 * **Map style issues** should be reported in a [separate repository](https://github.com/ENT8R/streetcomplete-mapstyle).
 Examples of such issues are missing elements on the map, display errors on the map, etc. As a rule of thumb, you can report everything that happens "behind" the quest icon markers there.
 
-Note that this app has other dependencies. For reporting issues, in these, you however have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or is an issue of Tangram-ES.
+Note that this app has other dependencies. For reporting issues in these, you have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or if it is an issue with Tangram-ES or another dependency.
 The full list of dependencies and other StreetComplete-related projects is listed [at the end of this file](#streetcomplete-related-projects).
 
 ### Suggesting new quests
@@ -71,29 +71,27 @@ If you can code, see also how to [develop your own quest](#developing-new-quests
 ## Improving documentation
 
 You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComplete. For example:
-* Add missing quests in [the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date.
+* Add missing quests in [the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date; there is a [helper action](https://github.com/streetcomplete/StreetComplete/actions/workflows/generate-quest-list.yml) which generates a CSV for this.
 * Edit [the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccurring questions.
 * Edit [the main StreetComplete page](https://wiki.openstreetmap.org/wiki/StreetComplete).
-* Edit [the JSON of all tags used by StreetComplete](https://github.com/goldfndr/StreetCompleteJSON) that is displayed on [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete).
+* Edit [the JSON of all tags used by StreetComplete](https://github.com/goldfndr/StreetCompleteJSON) that is displayed on [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete); there is a [draft Pull Request](https://github.com/streetcomplete/StreetComplete/pull/2754) to automate this).
 
 ## Development
 
 If you would like to help and are able to contribute code, you are most welcome.
 
-There are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with. If you have own ideas how to improve this app and want to make sure that the Pull Request will be merged, it is strongly suggested to **open an issue first** to discuss the feature, especially if you aim to add a new quest, [see below](#developing-new-quests).
+There are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with. If you have own ideas on how to improve this app and want to make sure that the Pull Request will be merged, it is strongly suggested you **open an issue first** to discuss the feature, especially if you aim to add a new quest, [see below](#developing-new-quests).
 
-Note that StreetComplete also uses [some dependencies](#issues-of-dependencies), where contributions are likely also accepted and help StreetComplete, too.
+Note that StreetComplete also uses [some dependencies](#issues-with-dependencies), where contributions are likely also accepted and help StreetComplete, too.
 
 If you need to find things where help is especially appreciated [have a look at the issues tagged with "help wanted"](https://github.com/streetcomplete/StreetComplete/labels/help%20wanted).
 
 To build and test StreetComplete [download and install Android Studio](https://developer.android.com/studio/) which comes bundled with all tools needed, checkout and open the project in this application and click on the green play button on the top.
 
-See also a [documentation of program architecture](ARCHITECTURE.md).
-
 ### Developing new quests
 
 You want to contribute a new quest right away? That's great!
-However, we strongly suggest to [**open an issue** discussing the quest](#suggesting-new-quests), before creating a PR, so we can see if your quest idea meets the criteria and can be included in StreetComplete.
+However, we strongly suggest you [**open an issue** discussing the quest](#suggesting-new-quests), before creating a PR, so we can see if your quest idea meets the criteria and can be included in StreetComplete.
 
 In case you **don't have an idea of a quest?** Look [at the existing issues](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22+sort%3Areactions-%2B1-desc). Sorted by 👍 reactions you can also see which are the most requested quests.
 
@@ -104,7 +102,7 @@ Always remember to pay attention to [the quest guidelines](https://github.com/st
 #### Dependencies
 
 * [Tangram-ES](https://github.com/tangrams/tangram-es/) map rendering
-* [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting, in which country a quest is (affects quest display, etc.)
+* [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting in which country a quest is (affects quest display, etc.)
 * [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
 * [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name
 
