@@ -15,7 +15,7 @@ v34.0-beta1: |
   </ul>
   <h3>Enhancements</h3>
   <ul>
-  <li>Ask whether a road has a cycleway the current tagging is invalid (#3206, #3148)</li>
+  <li>Ask whether a road has a cycleway when the current tagging is invalid (#3206, #3148)</li>
   <li>The quests that ask whether roads, ways etc. are lit are now only shown at night (#1285, #2872), by @TurnrDev</li>
   <li>The roof shape quest is no longer enabled by default - you can enable it in the settings (#3161), by @matkoniecz</li>
   <li>Clearer wording when explaining the team mode (#3170, #3172) by @matkoniecz and @smichel17</li>
