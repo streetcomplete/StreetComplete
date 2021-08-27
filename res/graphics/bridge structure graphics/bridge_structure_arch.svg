@@ -1,55 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 320 96" xml:space="preserve"
-    width="320" height="96" xmlns="http://www.w3.org/2000/svg"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<svg xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" height="96" id="Layer_1" version="1.1"
+    viewBox="0 0 320 96" width="320" x="0px"
+    xmlns="http://www.w3.org/2000/svg"
+    y="0px" xml:space="preserve">
 
-    <style type="text/css" id="style2">
-	.st0{fill:#E44848;stroke:#AA0000;stroke-width:25;}
-	.st1{fill:#E44848;stroke:#AA0000;stroke-width:2;stroke-miterlimit:10;}
-	.st2{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
+    <style id="style2" type="text/css">
+	.cables{fill:#E44848;stroke:#AA0000;stroke-width:2;}
+	.support{fill:#E44848;stroke:#AA0000;stroke-width:2;}
+	.struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
 </style>
-    <path class="st0" d="M 31.606177,41.608213 V 57.738918" id="path4"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st0" d="M 54.643913,63.112245 V 41.608213" id="path6"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st0" d="M 8.5577158,63.112245 V 41.608213" id="path8"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st0" d="M 77.681649,73.858898 V 41.608213" id="path10"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st1"
+    <path class="cables" d="M 31.606177,41.608213 V 57.738918" id="path4" />
+    <path class="cables" d="M 54.643913,63.112245 V 41.608213" id="path6" />
+    <path class="cables" d="M 8.5577158,63.112245 V 41.608213" id="path8" />
+    <path class="cables" d="M 77.681649,73.858898 V 41.608213" id="path10" />
+    <path class="cables" d="M 288.70002,41.608213 V 57.738918" id="path18" />
+    <path class="cables" d="M 311.73775,63.112245 V 41.608213" id="path20" />
+    <path class="cables" d="M 265.66228,63.112245 V 41.608213" id="path22" />
+    <path class="cables" d="M 242.61382,75.414053 V 41.608213" id="path26" />
+    <path class="cables" d="M 159.6651,42.348252 V 58.478957" id="path32" />
+    <path class="cables" d="M 182.71356,63.852284 V 42.348252" id="path34" />
+    <path class="cables" d="M 136.62736,63.852284 V 42.348252" id="path36" />
+    <path class="cables" d="M 205.7513,74.598937 V 42.348252" id="path38" />
+    <path class="cables" d="M 113.58963,76.164817 V 42.358977" id="path40" />
+    <path class="support"
         d="m -31.243512,99.695912 -7.175161,-3.625118 1.812559,-3.592943 c 0.203779,-0.396833 5.083746,-9.942263 15.905476,-19.476969 6.34932,-5.598556 13.4601298,-10.06024 21.12864997,-13.256351 9.56688103,-4.0005 20.02395403,-6.016839 31.07091303,-6.016839 11.046959,0 21.482582,2.016339 31.060188,6.006114 7.66852,3.196111 14.77933,7.657795 21.12865,13.256351 10.82173,9.545431 15.712422,19.080136 15.905476,19.476969 l 1.812561,3.592943 -7.185888,3.625118 -1.812559,-3.592943 C 92.364452,96.017168 87.881317,87.329753 78.110657,78.803217 65.154612,67.498853 49.46364,61.760869 31.4882,61.760869 c -17.97544,0 -33.6664124,5.737984 -46.622458,17.053073 -9.77066,8.526537 -14.253794,17.203226 -14.296695,17.299753 z"
-        id="path14" style="stroke-width:2;stroke-miterlimit:10;stroke-dasharray:none" />
-    <path class="st0" d="M 288.70002,41.608213 V 57.738918" id="path18"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st0" d="M 311.73775,63.112245 V 41.608213" id="path20"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st0" d="M 265.66228,63.112245 V 41.608213" id="path22"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st0" d="M 242.61382,75.414053 V 41.608213" id="path26"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st1"
+        id="path14" />
+    <path class="support"
         d="m 351.31375,99.695912 -1.81256,-3.592943 c -0.0429,-0.07508 -4.52603,-8.76249 -14.29669,-17.289027 -12.95605,-11.315089 -28.64702,-17.053073 -46.62246,-17.053073 -18.10414,0 -33.87019,5.81306 -46.87986,17.267577 -9.67413,8.526537 -14.00712,16.988722 -14.05002,17.074523 l -1.81256,3.592943 -7.18588,-3.625118 1.81256,-3.592943 c 0.20378,-0.396833 5.08374,-9.942263 15.90547,-19.476969 6.34932,-5.598556 13.46013,-10.06024 21.12865,-13.256351 9.58833,-4.0005 20.03468,-6.027564 31.08164,-6.027564 11.04696,0 21.49331,2.027064 31.07091,6.016839 7.66852,3.196111 14.77933,7.657795 21.12865,13.256351 10.82173,9.545431 15.71243,19.080136 15.90548,19.476969 l 1.81256,3.592943 z"
-        id="path28" style="stroke-width:2;stroke-miterlimit:10;stroke-dasharray:none" />
-    <path class="st0" d="M 159.6651,42.348252 V 58.478957" id="path32"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st0" d="M 182.71356,63.852284 V 42.348252" id="path34"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st0" d="M 136.62736,63.852284 V 42.348252" id="path36"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st0" d="M 205.7513,74.598937 V 42.348252" id="path38"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st0" d="M 113.58963,76.164817 V 42.358977" id="path40"
-        style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-    <path class="st1"
+        id="path28" />
+    <path class="support"
         d="m 96.815411,100.43595 -7.17516,-3.625117 1.812559,-3.592943 c 0.203779,-0.396833 5.083746,-9.942263 15.90548,-19.476969 6.34932,-5.598556 13.46013,-10.06024 21.12865,-13.256351 9.56688,-4.0005 20.02395,-6.016839 31.07091,-6.016839 11.04696,0 21.49331,2.027064 31.07091,6.016839 7.66852,3.196111 14.77933,7.657795 21.12865,13.256351 10.82173,9.545431 15.71242,19.080136 15.90548,19.476969 l 1.81256,3.592943 -7.18589,3.625117 -1.81256,-3.592942 c -0.0429,-0.07508 -4.52603,-8.76249 -14.29669,-17.289027 -12.95605,-11.315089 -28.64702,-17.053073 -46.62246,-17.053073 -17.97544,0 -33.66641,5.737984 -46.62246,17.053073 -9.77066,8.526537 -14.253793,17.203226 -14.296694,17.299753 z"
-        id="path42" style="stroke-width:2;stroke-miterlimit:10;stroke-dasharray:none" />
-    <rect x="221.01326" y="42.466228" class="st2" width="8.0439024" height="53.754719"
-        id="rect46" />
-    <rect x="91.978348" y="42.466228" class="st2" width="8.0439024" height="53.754719"
-        id="rect48" />
-    <rect x="-0.057319995" y="38.468861" class="st2" width="320.22485" height="7.9947419"
-        id="rect50" />
+        id="path42" />
+    <rect class="struct" height="53.754719" id="rect46" width="8.0439024" x="221.01326"
+        y="42.466228" />
+    <rect class="struct" height="53.754719" id="rect48" width="8.0439024" x="91.978348"
+        y="42.466228" />
+    <rect class="struct" height="7.9947419" id="rect50" width="320.22485" x="-0.057319995"
+        y="38.468861" />
     <metadata id="metadata840"><rdf:RDF><cc:Work
        rdf:about=""><dc:creator><cc:Agent><dc:title>TurnrDev</dc:title></cc:Agent></dc:creator><cc:license
         rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" /></cc:Work><cc:License
