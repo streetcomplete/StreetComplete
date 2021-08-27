@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
-        minSdk = 17
+        minSdk = 21
         targetSdk = 30
         versionCode = 3400
         versionName = "34.0-beta1"
@@ -190,8 +190,9 @@ val bcp47ExportLanguages = setOf(
 
 tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     group = "streetcomplete"
-    targetFile = "$projectDir/app/src/main/res/raw/credits_translators.yml"
+    targetFile = "$projectDir/src/main/res/raw/credits_translators.yml"
     languageCodes = bcp47ExportLanguages
+    cookie = properties["POEditorCookie"] as String
 }
 
 tasks.register<UpdatePresetsTask>("updatePresets") {
