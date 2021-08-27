@@ -95,10 +95,10 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.5.10"
-    val mockitoVersion = "3.11.2"
-    val kotlinxVersion = "1.5.0"
-    val daggerVersion = "2.37"
+    val kotlinVersion = "1.5.30"
+    val mockitoVersion = "3.12.4"
+    val kotlinxVersion = "1.5.1"
+    val daggerVersion = "2.38.1"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
@@ -133,7 +133,7 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.2")
+    implementation("androidx.exifinterface:exifinterface:1.3.3")
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
