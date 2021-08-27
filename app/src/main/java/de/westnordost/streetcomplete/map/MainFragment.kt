@@ -36,7 +36,6 @@ import de.westnordost.streetcomplete.controls.UndoButtonFragment
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -353,10 +352,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onAnsweredQuest(questKey: QuestKey, answer: Any) {
         lifecycleScope.launch {
-            val quest = questController.get(questKey)
-            if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeBottomSheet()
-                if (questController.solve(questKey, answer, "survey")) {
+            solveQuest(questKey) { quest ->
+                if (questController.solve(quest, answer, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
@@ -389,10 +386,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onDeletePoiNode(osmQuestKey: OsmQuestKey) {
         lifecycleScope.launch {
-            val quest = questController.get(osmQuestKey)
-            if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeBottomSheet()
-                if (questController.deletePoiElement(osmQuestKey, "survey")) {
+            solveQuest(osmQuestKey) { quest ->
+                if (questController.deletePoiElement(quest as OsmQuest, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
@@ -401,20 +396,27 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
         lifecycleScope.launch {
-            val quest = questController.get(osmQuestKey)
-            if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeBottomSheet()
-                if (questController.replaceShopElement(osmQuestKey, tags, "survey")) {
+            solveQuest(osmQuestKey) { quest ->
+                if (questController.replaceShopElement(quest as OsmQuest, tags, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
         }
     }
 
-    private suspend fun assureIsSurvey(elementGeometry: ElementGeometry): Boolean {
-        val ctx = context ?: return false
+    private suspend fun solveQuest(questKey: QuestKey, onIsSurvey: suspend (quest: Quest) -> Unit) {
+        val f = (bottomSheetFragment as? IsLockable)
+        f?.locked = true
+        val quest = questController.get(questKey) ?: return
+        val ctx = context ?: return
+
         val checkLocations = listOfNotNull(mapFragment?.displayedLocation, locationWhenOpenedQuest)
-        return isSurveyChecker.checkIsSurvey(ctx, elementGeometry, checkLocations)
+        if (isSurveyChecker.checkIsSurvey(ctx, quest.geometry, checkLocations)) {
+            closeBottomSheet()
+            onIsSurvey(quest)
+        } else {
+            f?.locked = false
+        }
     }
 
     private fun onQuestSolved(quest: Quest, source: String?) {
@@ -426,10 +428,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onSplittedWay(osmQuestKey: OsmQuestKey, splits: List<SplitPolylineAtPosition>) {
         lifecycleScope.launch {
-            val quest = questController.get(osmQuestKey)
-            if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeBottomSheet()
-                if (questController.splitWay(osmQuestKey, splits, "survey")) {
+            solveQuest(osmQuestKey) { quest ->
+                if (questController.splitWay(quest as OsmQuest, splits, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }

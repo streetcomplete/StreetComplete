@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import kotlinx.coroutines.Dispatchers
@@ -73,13 +74,12 @@ import kotlin.collections.ArrayList
      * @return true if successful
      */
     suspend fun splitWay(
-        osmQuestKey: OsmQuestKey,
+        q: OsmQuest,
         splits: List<SplitPolylineAtPosition>,
         source: String
     ): Boolean = withContext(Dispatchers.IO) {
-        val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
-        val w = mapDataSource.get(q.elementType, q.elementId) as? Way ?: return@withContext false
-        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) as? ElementPolylinesGeometry ?: return@withContext false
+        val w = getOsmElement(q) as? Way ?: return@withContext false
+        val geom = q.geometry as? ElementPolylinesGeometry ?: return@withContext false
 
         elementEditsController.add(
             q.osmElementQuestType,
@@ -95,19 +95,17 @@ import kotlin.collections.ArrayList
      * @return true if successful
      */
     suspend fun deletePoiElement(
-        osmQuestKey: OsmQuestKey,
+        q: OsmQuest,
         source: String
     ): Boolean = withContext(Dispatchers.IO) {
-        val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
-        val e = mapDataSource.get(q.elementType, q.elementId) ?: return@withContext false
-        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) ?: return@withContext false
+        val e = getOsmElement(q) ?: return@withContext false
 
         Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!}")
 
         elementEditsController.add(
             q.osmElementQuestType,
             e,
-            geom,
+            q.geometry,
             source,
             DeletePoiNodeAction
         )
@@ -119,21 +117,19 @@ import kotlin.collections.ArrayList
      *  @return true if successful
      */
     suspend fun replaceShopElement(
-        osmQuestKey: OsmQuestKey,
+        q: OsmQuest,
         tags: Map<String, String>,
         source: String
     ): Boolean = withContext(Dispatchers.IO) {
-        val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
-        val element = mapDataSource.get(q.elementType, q.elementId) ?: return@withContext false
-        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) ?: return@withContext false
+        val e = getOsmElement(q) ?: return@withContext false
 
-        val changes = createReplaceShopChanges(element.tags, tags)
+        val changes = createReplaceShopChanges(e.tags, tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!} with $changes")
 
         elementEditsController.add(
             q.osmElementQuestType,
-            element,
-            geom,
+            e,
+            q.geometry,
             source,
             UpdateElementTagsAction(changes)
         )
@@ -164,10 +160,11 @@ import kotlin.collections.ArrayList
     /** Apply the user's answer to the given quest.
      * @return true if successful
      */
-    suspend fun solve(questKey: QuestKey, answer: Any, source: String): Boolean {
-        return when(questKey) {
-            is OsmNoteQuestKey -> solveOsmNoteQuest(questKey.noteId, answer as NoteAnswer)
-            is OsmQuestKey -> solveOsmQuest(questKey, answer, source)
+    suspend fun solve(quest: Quest, answer: Any, source: String): Boolean {
+        return when(quest) {
+            is OsmNoteQuest -> solveOsmNoteQuest(quest, answer as NoteAnswer)
+            is OsmQuest -> solveOsmQuest(quest, answer, source)
+            else -> throw NotImplementedError()
         }
     }
 
@@ -175,35 +172,33 @@ import kotlin.collections.ArrayList
         mapDataSource.get(quest.elementType, quest.elementId)
     }
 
-    private suspend fun solveOsmNoteQuest(questId: Long, answer: NoteAnswer): Boolean = withContext(Dispatchers.IO) {
-        val q = osmNoteQuestController.get(questId) ?: return@withContext false
-
+    private suspend fun solveOsmNoteQuest(
+        q: OsmNoteQuest,
+        answer: NoteAnswer
+    ): Boolean = withContext(Dispatchers.IO) {
         require(answer.text.isNotEmpty()) { "NoteQuest has been answered with an empty comment!" }
         // for note quests: questId == noteId
-        noteEditsController.add(questId, NoteEditAction.COMMENT, q.position, answer.text, answer.imagePaths)
+        noteEditsController.add(q.id, NoteEditAction.COMMENT, q.position, answer.text, answer.imagePaths)
         return@withContext true
     }
 
     private suspend fun solveOsmQuest(
-        osmQuestKey: OsmQuestKey,
-        answer: Any,
-        source: String
+        q: OsmQuest,
+        answer: Any, source: String
     ): Boolean = withContext(Dispatchers.IO) {
-        val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
-        val element = mapDataSource.get(q.elementType, q.elementId) ?: return@withContext false
-        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) ?: return@withContext false
+        val e = getOsmElement(q) ?: return@withContext false
 
-        val changes = createOsmQuestChanges(q, element, answer)
+        val changes = createOsmQuestChanges(q, e, answer)
         require(!changes.isEmpty()) {
-            "OsmQuest $osmQuestKey has been answered by the user but the changeset is empty!"
+            "OsmQuest ${q.key} has been answered by the user but the changeset is empty!"
         }
 
         Log.d(TAG, "Solved a ${q.type::class.simpleName!!} quest: $changes")
 
         elementEditsController.add(
             q.osmElementQuestType,
-            element,
-            geom,
+            e,
+            q.geometry,
             source,
             UpdateElementTagsAction(changes)
         )
