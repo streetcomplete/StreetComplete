@@ -17,7 +17,7 @@ class AddBridgeStructureForm : AImageListQuestAnswerFragment<BridgeStructure, Br
         Item(CABLE_STAYED, R.drawable.ic_bridge_structure_cablestayed),
         Item(HUMPBACK, R.drawable.ic_bridge_structure_humpback),
         Item(SIMPLE_SUSPENSION, R.drawable.ic_bridge_structure_simple_suspension),
-        Item(FLOATING, R.drawable.bridge_structure_floating)
+        Item(FLOATING, R.drawable.ic_bridge_structure_floating)
     )
 
     override val itemsPerRow = 2
