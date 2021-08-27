@@ -97,7 +97,7 @@ open class GetTranslatorCreditsTask : DefaultTask() {
     }
 
 
-    /** returns a map of POEditor language name to number of characters translated, f.e.
+    /** returns a map of POEditor language name to number of characters translated, e.g.
      *  "Portuguese (BR)" -> 123
      *  "German" -> 12 */
     private fun queryTranslatorStats(userId: Int): Map<String, Int>? {
