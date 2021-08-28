@@ -157,9 +157,9 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
     }
 
     private fun getQuestPreferenceSummary(): String {
-        val presetName = questPresetsSource.selectedQuestPresetName
-        val presetStr = if (presetName != null)
-            getString(R.string.pref_subtitle_quests_preset_name, presetName) + "\n" else ""
+        val presetName = questPresetsSource.selectedQuestPresetName ?: getString(R.string.quest_presets_default_name)
+        val hasCustomPresets = questPresetsSource.getAllQuestPresets().isNotEmpty()
+        val presetStr = if (hasCustomPresets) getString(R.string.pref_subtitle_quests_preset_name, presetName) + "\n" else ""
 
         val enabledCount = questTypeRegistry.filter { visibleQuestTypeSource.isVisible(it) }.count()
         val totalCount = questTypeRegistry.size
