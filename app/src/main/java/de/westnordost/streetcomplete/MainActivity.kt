@@ -4,7 +4,6 @@ import android.content.*
 import android.content.res.Configuration
 import android.graphics.Point
 import android.net.ConnectivityManager
-import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.text.util.Linkify
@@ -86,10 +85,9 @@ class MainActivity : AppCompatActivity(),
         crashReportExceptionHandler.askUserToSendCrashReportIfExists(this)
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        }
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+
         if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }

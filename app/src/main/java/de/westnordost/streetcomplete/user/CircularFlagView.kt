@@ -81,7 +81,7 @@ class CircularFlagView @JvmOverloads constructor(
             drawable = null
         } else {
             val resId = getFlagResIdWithFallback(countryCode)
-            drawable = if (resId != 0) resources.getDrawable(resId) else null
+            drawable = if (resId != 0) context.getDrawable(resId) else null
         }
         invalidate()
     }

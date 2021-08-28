@@ -29,6 +29,7 @@ class PointerPinView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
+
     private val pointerPin: Drawable = context.getDrawable(R.drawable.quest_pin_pointer)!!
     private var pointerPinBitmap: Bitmap? = null
     private val antiAliasPaint: Paint = Paint().apply {
@@ -51,7 +52,7 @@ class PointerPinView @JvmOverloads constructor(
             invalidate()
         }
 
-    private fun setPinIconResource(resId: Int) {
+    fun setPinIconResource(resId: Int) {
         pinIconDrawable = context.getDrawable(resId)
     }
 
