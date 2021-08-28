@@ -30,7 +30,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
     private val animator = TimeAnimator()
 
-    private val questionMark: Drawable = context.resources.getDrawable(R.drawable.ic_lanes_unknown)
+    private val questionMark: Drawable = context.getDrawable(R.drawable.ic_lanes_unknown)!!
 
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
         set(value) {

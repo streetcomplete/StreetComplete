@@ -99,7 +99,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
-        foreground = if (enabled) null else resources.getDrawable(R.drawable.background_transparent_grey)
+        foreground = if (enabled) null else context.getDrawable(R.drawable.background_transparent_grey)
         leftSideContainer.isEnabled = enabled
         rightSideContainer.isEnabled = enabled
     }

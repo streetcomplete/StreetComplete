@@ -52,7 +52,7 @@ import kotlin.math.sqrt
             val y = i / sheetSideLength * iconSize
             questPin.setBounds(x, y, x + iconSize, y + iconSize)
             questPin.draw(canvas)
-            val questIcon = context.resources.getDrawable(questIconResId)
+            val questIcon = context.getDrawable(questIconResId)!!
             val questX = x + questIconOffsetX
             val questY = y + questIconOffsetY
             questIcon.setBounds(questX, questY, questX + questIconSize, questY + questIconSize)
