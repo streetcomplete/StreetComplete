@@ -6,9 +6,9 @@
     <path android:fillColor="#ffffff" android:pathData="M0,393.5h900v19h-900z"/>
     <path android:fillColor="#fce100" android:pathData="M0,412.5h900v187.5h-900z"/>
     <path android:fillColor="#d21034" android:pathData="M0,0V600L393.75,300z"/>
-    <path android:fillAlpha="1" android:fillColor="#fce100"
+    <path android:fillColor="#fce100"
         android:pathData="M58.161,412.5 L131.242,187.5 204.37,412.485 12.965,273.452 249.536,273.427Z" android:strokeColor="#00000000"/>
-    <path android:fillColor="#fff" android:fillType="nonZero"
+    <path android:fillColor="#fff"
         android:pathData="M67.724,352.427L120.423,352.427C124.663,357.184 134.124,359.124 143.134,352.371C159.652,343.326 191.607,352.427 191.607,352.427L197.899,345.742L182.561,295.402L177.055,289.503C177.055,289.503 165.258,282.425 142.84,284.784C120.423,287.144 112.557,283.998 112.557,283.998C112.557,283.998 92.894,286.358 87.388,289.11C86.783,289.6 81.095,295.402 81.095,295.402z"
         android:strokeColor="#000" android:strokeLineCap="round"
         android:strokeLineJoin="round" android:strokeWidth="1.25"/>
