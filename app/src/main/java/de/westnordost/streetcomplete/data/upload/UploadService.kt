@@ -9,7 +9,7 @@ import android.util.Log
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.data.download.CoroutineIntentService
+import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing

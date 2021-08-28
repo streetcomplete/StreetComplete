@@ -7,6 +7,8 @@ import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
+import de.westnordost.streetcomplete.data.sync.SyncNotificationController
 import de.westnordost.streetcomplete.util.TilesRect
 import kotlinx.coroutines.*
 import kotlinx.serialization.decodeFromString
@@ -30,7 +32,7 @@ import javax.inject.Inject
 class DownloadService : CoroutineIntentService(TAG) {
     @Inject internal lateinit var downloader: Downloader
 
-    private lateinit var notificationController: DownloadNotificationController
+    private lateinit var notificationController: SyncNotificationController
 
     // interface
     private val binder = Interface()
@@ -60,7 +62,7 @@ class DownloadService : CoroutineIntentService(TAG) {
 
     override fun onCreate() {
         super.onCreate()
-        notificationController = DownloadNotificationController(
+        notificationController = SyncNotificationController(
             this, ApplicationConstants.NOTIFICATIONS_CHANNEL_DOWNLOAD, 1)
     }
 

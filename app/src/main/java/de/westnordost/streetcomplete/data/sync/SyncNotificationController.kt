@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.download
+package de.westnordost.streetcomplete.data.sync
 
 import android.app.*
 import android.content.Intent
@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.MainActivity
 import de.westnordost.streetcomplete.R
 
-/** Shows the download progress in the Android notifications area */
-class DownloadNotificationController(
+/** Shows the notification for syncing in the Android notifications area */
+class SyncNotificationController(
     private val service: Service,
     private val notificationChannelId: String,
     private val notificationId: Int
@@ -32,9 +32,9 @@ class DownloadNotificationController(
             createNotificationChannel()
         }
         return NotificationCompat.Builder(service, notificationChannelId)
-            .setSmallIcon(R.mipmap.ic_dl_notification)
+            .setSmallIcon(R.mipmap.ic_notification)
             .setContentTitle(ApplicationConstants.NAME)
-            .setContentText(service.resources.getString(R.string.notification_downloading))
+            .setContentText(service.resources.getString(R.string.notification_syncing))
             .setContentIntent(pendingIntent)
             .setCategory(NotificationCompat.CATEGORY_PROGRESS)
     }
@@ -45,7 +45,7 @@ class DownloadNotificationController(
         mgr.createNotificationChannel(
             NotificationChannel(
                 notificationChannelId,
-                service.getString(R.string.notification_channel_download),
+                service.getString(R.string.notification_channel_sync),
                 NotificationManager.IMPORTANCE_LOW
             )
         )
