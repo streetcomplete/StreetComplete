@@ -39,7 +39,6 @@ android {
         versionCode = 3400
         versionName = "34.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled = true
     }
 
     buildTypes {
