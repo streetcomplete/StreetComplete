@@ -155,7 +155,17 @@ class AddLocalizedNameAdapter(
                 )
             }
         } else {
-            return locale.displayScript
+            if (displayLanguage == nativeDisplayLanguage) {
+                String.format(
+                    context.getString(R.string.quest_streetName_menuItem_language_with_script_simple),
+                    languageTag, displayLanguage, locale.displayScript
+                )
+            } else {
+                String.format(
+                    context.getString(R.string.quest_streetName_menuItem_language_with_script_native),
+                    languageTag, nativeDisplayLanguage, displayLanguage, locale.displayScript
+                )
+            }
         }
     }
 
