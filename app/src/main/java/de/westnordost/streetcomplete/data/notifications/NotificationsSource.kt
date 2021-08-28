@@ -57,10 +57,10 @@ import javax.inject.Singleton
     }
 
     fun getNumberOfNotifications(): Int {
+        val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
         val hasUnreadMessages = userStore.unreadMessagesCount > 0
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
-        val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
         if (lastVersion == null) {
             prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply()
         }
@@ -84,6 +84,12 @@ import javax.inject.Singleton
             }
         }
 
+        val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
+        if (shouldShowQuestSelectionHint) {
+            questSelectionHintController.state = QuestSelectionHintState.SHOWN
+            return QuestSelectionHintNotification
+        }
+
         val newAchievement = newUserAchievementsDao.pop()
         if (newAchievement != null) {
             onNumberOfNotificationsUpdated()
@@ -97,12 +103,6 @@ import javax.inject.Singleton
         if (unreadOsmMessages > 0) {
             userStore.unreadMessagesCount = 0
             return OsmUnreadMessagesNotification(unreadOsmMessages)
-        }
-
-        val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
-        if (shouldShowQuestSelectionHint) {
-            questSelectionHintController.state = QuestSelectionHintState.SHOWN
-            return QuestSelectionHintNotification
         }
 
         return null
