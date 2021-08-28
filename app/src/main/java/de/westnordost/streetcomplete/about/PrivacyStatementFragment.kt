@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.map.VectorTileProvider
 import org.sufficientlysecure.htmltextview.HtmlTextView
 import javax.inject.Inject
 
+/** Shows the privacy statement */
 class PrivacyStatementFragment : Fragment(R.layout.fragment_show_html) {
 
     @Inject internal lateinit var vectorTileProvider: VectorTileProvider

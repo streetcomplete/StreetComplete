@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.util
 
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.forEachLine
 import kotlin.math.abs
 
@@ -12,7 +12,7 @@ fun ElementPolylinesGeometry.getOrientationAtCenterLineInDegrees(): Float {
 
 /** Returns whether any individual line segment in this ElementPolylinesGeometry is both within
  *  [maxDistance]m of any line segments of [others] and also
- *  and "aligned", meaning
+ *  and "aligned", meaning the angle difference is at most the given [maxAngle]
  *
  *  Warning: This is computationally very expensive ( for normal ways, O(n³) ), avoid if possible */
 fun ElementPolylinesGeometry.isNearAndAligned(

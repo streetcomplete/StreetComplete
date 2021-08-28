@@ -3,12 +3,11 @@ package de.westnordost.streetcomplete.quests.construction
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import java.util.*
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import java.time.LocalDate
 
-class MarkCompletedBuildingConstruction : OsmFilterQuestType<Boolean>() {
+class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {
 
     override val elementFilter = """
         ways with building = construction
@@ -21,15 +20,22 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<Boolean>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_construction_building_title
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = MarkCompletedConstructionForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        if (answer) {
-            val value = changes.getPreviousValue("construction") ?: "yes"
-            changes.modify("building", value)
-            deleteTagsDescribingConstruction(changes)
-        } else {
-            changes.addOrModify(SURVEY_MARK_KEY, Date().toCheckDateString())
+    override fun applyAnswerTo(answer: CompletedConstructionAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is OpeningDateAnswer -> {
+                changes.addOrModify("opening_date", answer.date.toCheckDateString())
+            }
+            is StateAnswer -> {
+                if (answer.value) {
+                    val value = changes.getPreviousValue("construction") ?: "yes"
+                    changes.modify("building", value)
+                    deleteTagsDescribingConstruction(changes)
+                } else {
+                    changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
+                }
+            }
         }
     }
 }

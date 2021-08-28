@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.tracktype
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
-class AddTracktype : OsmFilterQuestType<String>() {
+class AddTracktype : OsmFilterQuestType<Tracktype>() {
 
     override val elementFilter = """
         ways with highway = track
@@ -29,7 +29,7 @@ class AddTracktype : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddTracktypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("tracktype", answer)
+    override fun applyAnswerTo(answer: Tracktype, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("tracktype", answer.osmValue)
     }
 }

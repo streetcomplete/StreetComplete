@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.LocalizedName
 
 sealed class RoadNameAnswer

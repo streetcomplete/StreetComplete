@@ -4,8 +4,7 @@ import org.junit.Before
 import org.junit.Test
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.util.Tile
+import de.westnordost.streetcomplete.util.TilePos
 import de.westnordost.streetcomplete.util.TilesRect
 
 import org.junit.Assert.*
@@ -14,7 +13,7 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: DownloadedTilesDao
 
     @Before fun createDao() {
-        dao = DownloadedTilesDao(dbHelper)
+        dao = DownloadedTilesDao(database)
     }
 
     @Test fun putGetOne() {
@@ -54,7 +53,7 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
         dao.put(r(0, 0, 3, 3), "Huhu")
         dao.put(r(0, 0, 0, 0), "Haha")
         dao.put(r(1, 1, 3, 3), "Hihi")
-        assertEquals(2, dao.remove(Tile(0, 0))) // removes huhu, haha at 0,0
+        assertEquals(2, dao.remove(TilePos(0, 0))) // removes huhu, haha at 0,0
     }
 
     @Test fun putSeveralQuestTypes() {

@@ -14,7 +14,7 @@ import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import kotlinx.android.synthetic.main.fragment_country_info_dialog.*
-import java.util.*
+import java.util.Locale
 import kotlin.math.min
 import kotlin.math.pow
 
@@ -75,6 +75,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         solvedQuestsContainer.visibility = View.INVISIBLE
         solvedQuestsContainer.scaleX = scale
         solvedQuestsContainer.scaleY = scale
+        solvedQuestsContainer.setOnClickListener { counterAnimation?.end() }
 
         val shouldShowRank = rank != null && rank < 500 && questCount > 50
         countryRankTextView.isGone = !shouldShowRank
@@ -112,7 +113,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
     }
 
     private fun getFlagResId(countryCode: String): Int {
-        val lowerCaseCountryCode = countryCode.toLowerCase(Locale.US).replace('-', '_')
+        val lowerCaseCountryCode = countryCode.lowercase().replace('-', '_')
         return resources.getIdentifier("ic_flag_$lowerCaseCountryCode", "drawable", requireContext().packageName)
     }
 

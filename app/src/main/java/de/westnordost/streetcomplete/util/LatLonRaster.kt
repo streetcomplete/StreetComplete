@@ -1,14 +1,15 @@
 package de.westnordost.streetcomplete.util
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.max
 import kotlin.math.min
 
-/** A spatial index implemented as a grid, based on points  */
+/** A spatial index implemented as a grid, based on points. <br>
+ *  So, you can add points to the grid and each point is sorted into exactly one box within this
+ *  grid. Thus, it is very fast to get all points within a certain bounding box. */
 class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
     private val raster: Array<ArrayList<LatLon>?>
     private val rasterWidth: Int
@@ -18,14 +19,14 @@ class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
         private set
 
     init {
-        val lonDiff = normalizeLongitude(bounds.maxLongitude - bounds.minLongitude)
-        val latDiff = bounds.maxLatitude - bounds.minLatitude
+        val lonDiff = normalizeLongitude(bounds.max.longitude - bounds.min.longitude)
+        val latDiff = bounds.max.latitude - bounds.min.latitude
         rasterWidth = ceil(lonDiff / cellSize).toInt()
         rasterHeight = ceil(latDiff / cellSize).toInt()
         raster = arrayOfNulls(rasterWidth * rasterHeight)
-        val maxLon = normalizeLongitude(bounds.minLongitude + rasterWidth * cellSize)
-        val maxLat = bounds.minLatitude + rasterHeight * cellSize
-        bbox = BoundingBox(bounds.min, OsmLatLon(maxLat, maxLon))
+        val maxLon = normalizeLongitude(bounds.min.longitude + rasterWidth * cellSize)
+        val maxLat = bounds.min.latitude + rasterHeight * cellSize
+        bbox = BoundingBox(bounds.min, LatLon(maxLat, maxLon))
     }
 
     fun insert(p: LatLon) {
@@ -42,18 +43,17 @@ class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
     }
 
     fun getAll(bounds: BoundingBox): Iterable<LatLon> {
-        val startX = max(0, min(longitudeToCellX(bounds.minLongitude), rasterWidth - 1))
-        val startY = max(0, min(latitudeToCellY(bounds.minLatitude), rasterHeight - 1))
-        val endX = max(0, min(longitudeToCellX(bounds.maxLongitude), rasterWidth - 1))
-        val endY = max(0, min(latitudeToCellY(bounds.maxLatitude), rasterHeight - 1))
-        val result = MultiIterable<LatLon>()
-        for (y in startY..endY) {
-            for (x in startX..endX) {
-                val list = raster[y * rasterWidth + x]
-                if (list != null) result.add(list)
+        val startX = max(0, min(longitudeToCellX(bounds.min.longitude), rasterWidth - 1))
+        val startY = max(0, min(latitudeToCellY(bounds.min.latitude), rasterHeight - 1))
+        val endX = max(0, min(longitudeToCellX(bounds.max.longitude), rasterWidth - 1))
+        val endY = max(0, min(latitudeToCellY(bounds.max.latitude), rasterHeight - 1))
+        return sequence {
+            for (y in startY..endY) {
+                for (x in startX..endX) {
+                    raster[y * rasterWidth + x]?.let{ yieldAll(it) }
+                }
             }
-        }
-        return result
+        }.asIterable()
     }
 
     fun remove(p: LatLon): Boolean {
@@ -70,8 +70,8 @@ class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
         x in 0 until rasterWidth && y in 0 until rasterHeight
 
     private fun longitudeToCellX(longitude: Double) =
-        floor(normalizeLongitude(longitude - bbox.minLongitude) / cellSize).toInt()
+        floor(normalizeLongitude(longitude - bbox.min.longitude) / cellSize).toInt()
 
     private fun latitudeToCellY(latitude: Double) =
-        floor((latitude - bbox.minLatitude) / cellSize).toInt()
+        floor((latitude - bbox.min.latitude) / cellSize).toInt()
 }

@@ -55,7 +55,7 @@ public class CountryInfosTest
 		assertTrue(info.getRegularShoppingDays() >= 0);
 	}
 
-	private static List<String> validWeekdays = Arrays.asList("Mo","Tu","We","Th","Fr","Sa","Su");
+	private static final List<String> validWeekdays = Arrays.asList("Mo","Tu","We","Th","Fr","Sa","Su");
 	private void checkStartOfWorkweekValid(CountryInfo info)
 	{
 		assertTrue(validWeekdays.contains(info.getFirstDayOfWorkweek()));

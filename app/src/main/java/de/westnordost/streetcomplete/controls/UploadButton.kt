@@ -7,6 +7,8 @@ import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.view_upload_button.view.*
 
+/** A view that shows an upload-icon, with a counter at the top right and an (upload) progress view
+ *  */
 class UploadButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

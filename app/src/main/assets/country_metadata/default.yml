@@ -13,6 +13,7 @@ orchardProduces: []
 popularReligions: []
 popularSports: []
 regularShoppingDays: 6
+roofsAreUsuallyFlat: false
 shoulderLine: white
 speedUnits: [kilometers per hour]
 weightLimitUnits: [ton]

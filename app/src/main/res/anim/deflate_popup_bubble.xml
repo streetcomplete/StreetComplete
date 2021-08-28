@@ -11,7 +11,7 @@
         android:fromXScale="100%"
         android:fromYScale="100%"
         android:toXScale="50%"
-        android:toYScale="0%"
+        android:toYScale="50%"
         android:pivotX="50%"
         android:pivotY="120%"
         />

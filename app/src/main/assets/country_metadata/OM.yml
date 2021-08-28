@@ -7,4 +7,5 @@ mobileCountryCode: 422
 officialLanguages: [ar]
 orchardProduces: [date, tomato, banana, guava, mango, mangosteen, chilli_pepper, sweet_pepper, lemon, lime, papaya]
 popularReligions: [muslim]
+roofsAreUsuallyFlat: true
 shoulderLine: yellow

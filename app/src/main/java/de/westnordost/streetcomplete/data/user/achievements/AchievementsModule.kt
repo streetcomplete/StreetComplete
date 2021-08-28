@@ -75,7 +75,6 @@ object AchievementsModule {
             R.string.link_disaster_ninja_description
         ),
 
-        // TODO not sure where to put these links
         Link(
             "mapillary",
             "https://www.mapillary.com",
@@ -84,13 +83,13 @@ object AchievementsModule {
             R.drawable.ic_link_mapillary,
             R.string.link_mapillary_description
         ),
-        // TODO not sure where to put these links
+
         Link(
-            "openstreetcam",
-            "https://openstreetcam.org",
-            "OpenStreetCam",
+            "kartaview",
+            "https://kartaview.org/map/",
+            "KartaView",
             LinkCategory.INTRO,
-            R.drawable.ic_link_openstreetcam,
+            R.drawable.ic_link_kartaview,
             R.string.link_openstreetcam_description
         ),
 
@@ -145,6 +144,14 @@ object AchievementsModule {
             LinkCategory.MAPS,
             R.drawable.ic_link_qwant,
             R.string.link_qwant_maps_description
+        ),
+        Link(
+            "organic_maps",
+            "https://organicmaps.app/",
+            "Organic Maps",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_organic_maps,
+            R.string.link_organic_maps_description
         ),
         Link(
             "cyclosm",
@@ -223,7 +230,7 @@ object AchievementsModule {
 
         Link(
             "openrouteservice-wheelchair",
-            "https://maps.openrouteservice.org/directions?b=3",
+            "https://classic-maps.openrouteservice.org/directions?b=3",
             "Openrouteservice (Wheelchair)",
             LinkCategory.SHOWCASE,
             R.drawable.ic_link_heigit,
@@ -335,14 +342,6 @@ object AchievementsModule {
             LinkCategory.GOODIES,
             R.drawable.ic_link_figuregrounder,
             R.string.link_figuregrounder_description
-        ),
-        Link(
-            "thenandnow",
-            "https://mvexel.github.io/thenandnow/",
-            "OSM Then And Now ",
-            LinkCategory.GOODIES,
-            null,
-            R.string.link_neis_one_description
         )
     )
 
@@ -381,9 +380,7 @@ object AchievementsModule {
 
                 8 to links("osm-haiku"),
 
-                10 to links("umap"),
-
-                12 to links("thenandnow")
+                10 to links("umap")
             )
         ),
 
@@ -454,7 +451,9 @@ object AchievementsModule {
                     "AddCarWashType",
                     "AddChargingStationOperator",
                     "AddChargingStationCapacity",
-                    "AddLanes"
+                    "AddLanes",
+                    "AddBarrierType",
+                    "AddBollardType",
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -465,7 +464,8 @@ object AchievementsModule {
 
                 5 to links("osrm"), // routing engines are not that interesting for end users
                 6 to links("openrouteservice"),
-                7 to links("graphhopper")
+                7 to links("graphhopper"),
+                12 to links("kartaview", "mapillary") // useful to OSM, but not directly OSM and interesting only to extreme enthusiasts
             )
         ),
 
@@ -512,7 +512,10 @@ object AchievementsModule {
                     "AddBusStopRef",
                     "AddBusStopShelter",
                     "AddBenchStatusOnBusStop",
-                    "AddCrossingIsland"
+                    "AddBusStopLit",
+                    "AddCrossingIsland",
+                    "AddBarrierType",
+                    "AddCrossing"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -557,7 +560,8 @@ object AchievementsModule {
                     "AddRoadName",
                     "AddAddressStreet",
                     "AddPostboxRef",
-                    "AddPostboxCollectionTimes"
+                    "AddPostboxCollectionTimes",
+                    "AddPostboxRoyalCypher"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -583,7 +587,8 @@ object AchievementsModule {
                     "AddTactilePavingBusStop",
                     "AddCrossingIsland",
                     "AddKerbHeight",
-                    "AddTactilePavingKerb"
+                    "AddTactilePavingKerb",
+                    "AddBarrierType"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -610,7 +615,8 @@ object AchievementsModule {
                     "AddPathSurface",
                     "AddStepsRamp",
                     "AddHandrail",
-                    "AddKerbHeight"
+                    "AddKerbHeight",
+                    "AddBarrierType"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -633,10 +639,13 @@ object AchievementsModule {
                     "AddBikeParkingCapacity",
                     "AddBikeParkingCover",
                     "AddBikeParkingType",
+                    "AddBikeParkingAccess",
+                    "AddBikeParkingFee",
                     "AddCyclewaySegregation",
                     "AddPathSurface",
                     "AddStepsRamp",
-                    "AddKerbHeight"
+                    "AddKerbHeight",
+                    "AddBarrierType"
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -654,6 +663,9 @@ object AchievementsModule {
             R.string.achievement_citizen_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
+                    "CheckExistence",
+                    "CheckShopType",
+                    "SpecifyShopType",
                     "AddSelfServiceLaundry",
                     "AddToiletAvailability",
                     "AddToiletsFee",
@@ -661,6 +673,7 @@ object AchievementsModule {
                     "DetermineRecyclingGlass",
                     "AddRecyclingContainerMaterials",
                     "AddClothingBinOperator",
+                    "AddBinStatusOnBusStop",
                     "AddBabyChangingTable",
                     "AddOpeningHours",
                     "AddAtmOperator",
@@ -668,6 +681,10 @@ object AchievementsModule {
                     "AddReligionToPlaceOfWorship",
                     "AddRecyclingType",
                     "AddAcceptsCash",
+                    "AddVegetarian",
+                    "AddVegan",
+                    "AddKosher",
+                    "AddPoliceType",
                     // tourist related
                     "AddInformationToTourism",
                     "AddBoardType",
@@ -680,7 +697,8 @@ object AchievementsModule {
             mapOf(
                 1 to links("openstreetbrowser"),
                 2 to links("qwant_maps"),
-                3 to links("indoorequal")
+                3 to links("organic_maps"),
+                4 to links("indoorequal")
             )
         ),
 
@@ -691,15 +709,21 @@ object AchievementsModule {
             R.string.achievement_outdoors_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
+                    "CheckExistence",
                     "AddSport",
+                    "AddPitchSurface",
+                    "AddPitchLit",
                     "AddSummitRegister",
                     "AddReligionToWaysideShrine",
+                    "AddDrinkingWater",
                     // from pedestrian
                     "AddPathSurface",
                     "AddCyclewaySegregation",
                     "AddCyclewayPartSurface",
                     "AddFootwayPartSurface",
                     "AddBenchBackrest",
+                    "AddBarrierType",
+                    "AddStileType",
                     // information boards
                     "AddInformationToTourism",
                     "AddBoardType"

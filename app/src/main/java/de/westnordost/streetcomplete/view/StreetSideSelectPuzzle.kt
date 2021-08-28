@@ -18,6 +18,13 @@ import de.westnordost.streetcomplete.ktx.showTapHint
 import kotlinx.android.synthetic.main.side_select_puzzle.view.*
 import kotlin.math.*
 
+/** A very custom view that conceptually shows the left and right side of a street. Both sides
+ *  are clickable.<br>
+ *  It is possible to set an image for the left and for the right side individually, the image set
+ *  is repeated vertically (repeated along the street). Setting a text for each side is also
+ *  possible.<br>
+ *  The whole displayed street can be rotated and it is possible to only show the right side, for
+ *  example for one-way streets. */
 class StreetSideSelectPuzzle @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

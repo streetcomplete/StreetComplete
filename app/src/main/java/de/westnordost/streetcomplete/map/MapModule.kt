@@ -5,8 +5,9 @@ import dagger.Provides
 
 @Module object MapModule {
 
-    @Provides fun jawg(): VectorTileProvider = VectorTileProvider(
+    @Provides fun jawg(): VectorTileProvider = object : VectorTileProvider(
         "JawgMaps",
+        16,
         "© JawgMaps",
         "https://www.jawg.io",
         "https://www.jawg.io/en/confidentiality/",
@@ -16,5 +17,8 @@ import dagger.Provides
             75,117,71,76,75,120,80,98,111,103,76,121,77,98,116,97,107,65,50,103,74,51,88,56,56,103,
             99,86,108,84,83,81,55,79,68,54,79,102,98,90
         ))
-    )
+    ) {
+        override fun getTileUrl(zoom: Int, x: Int, y: Int): String =
+            "https://tile.jawg.io/streets-v2/$zoom/$x/$y.pbf?access-token=$apiKey"
+    }
 }

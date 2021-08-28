@@ -6,11 +6,11 @@
    <stop stop-color="#e44848" offset="1"/>
   </radialGradient>
  </defs>
- <g>
-  <path d="m29.113 66.103v27.4l-21.92-21.92v-27.4" fill="#f2eeee" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
-  <path d="m29.113 66.103 58.91-19.18v27.4l-58.91 19.18v-27.4" fill="#e0d8d8" fill-rule="evenodd" stroke="#916f6f" stroke-linecap="square" stroke-linejoin="bevel"/>
-  <path d="m7.1925 44.183 21.92 21.92 58.91-19.18-21.92-21.92z" fill="#e3dbdb" fill-rule="evenodd" stroke="#916f6f" stroke-linejoin="bevel"/>
-  <path d="m44.183 1.7126c-4.11 8.22-9.7468 17.982-19.18 24.66-9.59 6.85-16.44 19.18-8.22 27.4 9.59 9.59 32.88 5.48 41.1 2.74s20.55-10.96 20.55-19.18c0-6.85-4.11-10.96-12.33-15.07-9.59-4.11-16.44-12.33-21.92-20.55z" fill="url(#radialGradient6010)" fill-rule="evenodd" stroke="#a00"/>
-  <path d="m18.153 55.143c-6.85-6.8501 10.96-17.81 19.18-20.55 8.22-2.74 31.51-6.8501 39.73 1.37" fill="none" stroke="#a00" stroke-dasharray="2,2" stroke-opacity=".50196"/>
+ <g stroke-width="2">
+  <path d="m29.113 66.103v27.4l-21.92-21.92v-27.4" fill="#f2eeee" stroke="#b19a9a" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="m29.113 66.103 58.91-19.18v27.4l-58.91 19.18v-27.4" fill="#e0d8d8" stroke="#b19a9a" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="m7.1925 44.183 21.92 21.92 58.91-19.18-21.92-21.92z" fill="#e3dbdb" stroke="#b19a9a" stroke-linejoin="round"/>
+  <path d="m44.183 1.7126c-4.11 8.22-9.7468 17.982-19.18 24.66-9.59 6.85-16.44 19.18-8.22 27.4 9.59 9.59 32.88 5.48 41.1 2.74s20.55-10.96 20.55-19.18c0-6.85-4.11-10.96-12.33-15.07-9.59-4.11-16.44-12.33-21.92-20.55z" fill="url(#radialGradient6010)" stroke="#b82e2e"/>
+  <path d="m18.153 55.143c-6.85-6.8501 10.96-17.81 19.18-20.55 8.22-2.74 31.51-6.8501 39.73 1.37" fill="none" stroke="#b82e2e" stroke-opacity=".50196"/>
  </g>
 </svg>

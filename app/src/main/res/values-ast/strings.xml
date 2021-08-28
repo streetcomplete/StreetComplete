@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Preferencies"</string>
 
     <!-- Fuzzy -->
@@ -169,7 +167,7 @@
     <string name="about_title_authors">"Creitos"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick y demás collaboradores"</string>
+    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick y demás collaboradores"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Depósitu de códigu"</string>
@@ -201,9 +199,6 @@
 
     <!-- Fuzzy -->
     <string name="no_gps_no_quests">"Pa buscar xeres cercanes de manera automática, activa l'allugamientu"</string>
-
-    <!-- Fuzzy -->
-    <string name="nothing_more_to_download">"Nun hai más xeres disponibles"</string>
 
     <!-- Fuzzy -->
     <string name="later">"Llueu"</string>
@@ -245,12 +240,6 @@
     <string name="quest_openingHours_comment_description">"Sé precisu/a, meyor trescribe les pallabres del lletreru. Por exemplu; «con cita previa». L'ausencia de lletreru nun significa necesariamente que nun haya un horariu d'apertura habitual."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"¿Cuántos pisos tien esti edificiu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"¿Cuántos pisos tien esta parte del edificiu?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"¿Qué forma básica tien el teyáu del edificiu?"</string>
 
     <!-- Fuzzy -->
@@ -274,7 +263,7 @@
 &lt;p&gt;&lt;b&gt;Contribuciones direutes&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Puntu númberu unu, con esta aplicación tas unviando contribuciones direutes y reales dafechu a OpenStreetMap.&lt;br/&gt;
-Cualesquier contribución fecha con esta aplicación amiéstase direutamente al mapa ensin nengún intermediariu ente aplicación ya infraestructura d'OSM, al contrario qu'en proyeutos como &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Cualesquier contribución fecha con esta aplicación amiéstase direutamente al mapa ensin nengún intermediariu ente aplicación ya infraestructura d'OSM.
 &lt;/p&gt;
 &lt;p&gt;
 Nun se pue contribuyir de manera anónima a OpenStreetMap, colo que cualesquier cambéu que faigas va ser cola to cuenta d'usuariu/a n'OSM, polo que van apaecer públicamente col to nome na Web.
@@ -677,7 +666,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_fireHydrant_type_pond">"Depósitu d'agua"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Ver la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;llista completa en GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Ver la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;llista completa en GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"Ver el &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proyeutu en POEditor&lt;/a&gt; pa la llista completa."</string>
@@ -853,20 +842,11 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_crossing_type_title">"¿Qué tipu de cruce ye?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Cruce señalizáu con semáforu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_crossing_type_uncontrolled">"Cruce señalizáu ensin semáforu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruce ensin señalizar"</string>
     <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desfacer"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"¿Quies desfacer la última entruga respondida?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostán"</string>
@@ -978,9 +958,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="pref_category_advanced">"Avanzáu"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Esbilla de xeres"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Activáu"</string>
 
     <!-- Fuzzy -->
@@ -988,9 +965,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
 
     <!-- Fuzzy -->
     <string name="action_reset">"Reaniciar"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Calca de siguío p'arrastrar una xera y reordenala na llista, priorizando la so destacándola nel mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfacer"</string>
@@ -1079,18 +1053,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Pues dexar una nota pa qu'otres persones que collaboren sepan el problema. Axusta la so posición moviendo'l mapa:"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Invalidar la caché de xeres"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Bien útil pa poner al día les xeres vieyes"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Invalidar"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"A la d'invalidar la caché vas forzar que les xeres se vuelvan a descargar otra vegada y tean al día. Has de tener en cuenta qu'esto yá se fai cada selmana y cuando daquien yá respondiera les mesmes entrugues."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Normalmente paezse a esto:"</string>
@@ -1329,9 +1291,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_buildingType_house">"Casa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description">"vivienda unifamiliar"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"edificiu de viviendes, pue tener baxos comerciales"</string>
 
     <!-- Fuzzy -->
@@ -1345,9 +1304,6 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Xalé adosáu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"par de viviendes unifamiliares"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"conxuntu de viviendes unifamiliares adosaes"</string>
@@ -1607,12 +1563,6 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Sólido"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Sólido abondo"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade3">"Mesto"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Suave abondo"</string>

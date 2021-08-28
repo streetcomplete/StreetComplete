@@ -1,13 +1,17 @@
 package de.westnordost.streetcomplete.quests.religion
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
-class AddReligionToWaysideShrine : OsmFilterQuestType<String>() {
+class AddReligionToWaysideShrine : OsmFilterQuestType<Religion>() {
 
-    override val elementFilter =
-        "nodes, ways, relations with historic = wayside_shrine and !religion and (access !~ private|no)"
+    override val elementFilter = """
+        nodes, ways, relations with
+          historic = wayside_shrine
+          and !religion
+          and access !~ private|no
+    """
     override val commitMessage = "Add religion for wayside shrine"
     override val wikiLink = "Key:religion"
     override val icon = R.drawable.ic_quest_religion
@@ -16,7 +20,7 @@ class AddReligionToWaysideShrine : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddReligionForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("religion", answer)
+    override fun applyAnswerTo(answer: Religion, changes: StringMapChangesBuilder) {
+        changes.add("religion", answer.osmValue)
     }
 }

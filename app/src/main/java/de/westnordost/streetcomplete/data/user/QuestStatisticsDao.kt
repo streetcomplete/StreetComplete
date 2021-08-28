@@ -1,21 +1,17 @@
 package de.westnordost.streetcomplete.data.user
 
-import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
-import android.database.sqlite.SQLiteOpenHelper
-import androidx.core.content.contentValuesOf
+import de.westnordost.streetcomplete.data.Database
 
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.Columns.SUCCEEDED
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.NAME
-import de.westnordost.streetcomplete.ktx.*
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Singleton
 
 /** Stores how many quests of which quest types the user solved */
-@Singleton class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
-    private val db get() = dbHelper.writableDatabase
+@Singleton class QuestStatisticsDao @Inject constructor(private val db: Database) {
 
     interface Listener {
         fun onAddedOne(questType: String)
@@ -25,63 +21,64 @@ import javax.inject.Singleton
 
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
-    fun getTotalAmount(): Int {
-        return db.queryOne(NAME, arrayOf("total($SUCCEEDED)")) { it.getInt(0) } ?: 0
-    }
+    fun getTotalAmount(): Int =
+        db.queryOne(NAME, arrayOf("total($SUCCEEDED) as count")) { it.getInt("count") } ?: 0
 
-    fun getAll(): Map<String, Int> {
-        return db.query(NAME) {
-            it.getString(QUEST_TYPE) to it.getInt(SUCCEEDED)
-        }.toMap()
-    }
+    fun getAll(): Map<String, Int> =
+        db.query(NAME) { it.getString(QUEST_TYPE) to it.getInt(SUCCEEDED) }.toMap()
 
     fun clear() {
-        db.delete(NAME, null, null)
+        db.delete(NAME)
         listeners.forEach { it.onReplacedAll() }
     }
 
     fun replaceAll(amounts: Map<String, Int>) {
         db.transaction {
-            db.delete(NAME, null, null)
-            for ((key, value) in amounts) {
-                db.insert(NAME, null, contentValuesOf(
-                    QUEST_TYPE to key,
-                    SUCCEEDED to value
-                ))
+            db.delete(NAME)
+            if (amounts.isNotEmpty()) {
+                db.replaceMany(NAME,
+                    arrayOf(QUEST_TYPE, SUCCEEDED),
+                    amounts.map { arrayOf(it.key, it.value) }
+                )
             }
         }
         listeners.forEach { it.onReplacedAll() }
     }
 
     fun addOne(questType: String) {
-        // first ensure the row exists
-        db.insertWithOnConflict(NAME, null, contentValuesOf(
-            QUEST_TYPE to questType,
-            SUCCEEDED to 0
-        ), CONFLICT_IGNORE)
+        db.transaction {
+            // first ensure the row exists
+            db.insertOrIgnore(NAME, listOf(
+                QUEST_TYPE to questType,
+                SUCCEEDED to 0
+            ))
 
-        // then increase by one
-        db.execSQL("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $QUEST_TYPE = ?", arrayOf(questType))
+            // then increase by one
+            db.exec("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $QUEST_TYPE = ?", arrayOf(questType))
+        }
+
         listeners.forEach { it.onAddedOne(questType) }
     }
 
     fun subtractOne(questType: String) {
-        db.execSQL("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED - 1 WHERE $QUEST_TYPE = ?", arrayOf(questType))
+        db.exec("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED - 1 WHERE $QUEST_TYPE = ?", arrayOf(questType))
         listeners.forEach { it.onSubtractedOne(questType) }
     }
 
-    fun getAmount(questType: String): Int {
-        return db.queryOne(NAME, arrayOf(SUCCEEDED), "$QUEST_TYPE = ?", arrayOf(questType)) {
-            it.getInt(0)
-        } ?: 0
-    }
+    fun getAmount(questType: String): Int =
+        db.queryOne(NAME,
+            columns = arrayOf(SUCCEEDED),
+            where = "$QUEST_TYPE = ?",
+            args = arrayOf(questType)
+        ) { it.getInt(SUCCEEDED) } ?: 0
 
     fun getAmount(questTypes: List<String>): Int {
         val questionMarks = Array(questTypes.size) { "?" }.joinToString(",")
-        val query = "$QUEST_TYPE in ($questionMarks)"
-        return db.queryOne(NAME, arrayOf("total($SUCCEEDED)"), query, questTypes.toTypedArray()) {
-            it.getInt(0)
-        } ?: 0
+        return db.queryOne(NAME,
+            columns = arrayOf("total($SUCCEEDED) as count"),
+            where = "$QUEST_TYPE in ($questionMarks)",
+            args = questTypes.toTypedArray()
+        ) { it.getInt("count") } ?: 0
     }
 
     fun addListener(listener: Listener) {

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.settings
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -9,15 +10,18 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_oauth.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import oauth.signpost.OAuthConsumer
 import oauth.signpost.OAuthProvider
 import oauth.signpost.exception.OAuthCommunicationException
 import oauth.signpost.exception.OAuthExpectationFailedException
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Provider
@@ -29,8 +33,7 @@ import kotlin.coroutines.suspendCoroutine
 /** Fragment that manages the OAuth 1 authentication process in a webview*/
 class OAuthFragment : Fragment(R.layout.fragment_oauth),
     BackPressedListener,
-    HasTitle,
-    CoroutineScope by CoroutineScope(Dispatchers.Main)
+    HasTitle
 {
     @Inject internal lateinit var consumerProvider: Provider<OAuthConsumer>
     @Inject internal lateinit var provider: OAuthProvider
@@ -68,9 +71,10 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
             authorizeUrl = null
             oAuthVerifier = null
         }
-        launch { continueAuthentication() }
+        lifecycleScope.launch { continueAuthentication() }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         webView.settings.userAgentString = ApplicationConstants.USER_AGENT
@@ -105,11 +109,6 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
         super.onSaveInstanceState(outState)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
-    }
-
     /* ------------------------------------------------------------------------------------------ */
 
     private suspend fun continueAuthentication() {
@@ -121,6 +120,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
                 }
                 progressView?.visibility = View.INVISIBLE
             }
+            val authorizeUrl = authorizeUrl
             if (authorizeUrl != null && oAuthVerifier == null) {
                 webView.visibility = View.VISIBLE
                 webView.loadUrl(
@@ -159,7 +159,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
     private inner class OAuthWebViewClient : WebViewClient() {
 
         private var continutation: Continuation<String>? = null
-        suspend fun awaitOAuthCallback(): String = suspendCoroutine {continutation = it }
+        suspend fun awaitOAuthCallback(): String = suspendCoroutine { continutation = it }
 
         override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
             val uri = url?.toUri() ?: return false

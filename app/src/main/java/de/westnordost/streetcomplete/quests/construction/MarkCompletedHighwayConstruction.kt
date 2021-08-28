@@ -4,12 +4,11 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import java.util.*
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import java.time.LocalDate
 
-class MarkCompletedHighwayConstruction : OsmFilterQuestType<Boolean>() {
+class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {
 
     override val elementFilter = """
         ways with highway = construction
@@ -25,24 +24,33 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<Boolean>() {
         val isRoad = ALL_ROADS.contains(tags["construction"])
         val isCycleway = tags["construction"] == "cycleway"
         val isFootway = tags["construction"] == "footway"
+        val isSteps = tags["construction"] == "steps"
 
         return when {
             isRoad -> R.string.quest_construction_road_title
             isCycleway -> R.string.quest_construction_cycleway_title
             isFootway -> R.string.quest_construction_footway_title
+            isSteps -> R.string.quest_construction_steps_title
             else -> R.string.quest_construction_generic_title
         }
     }
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = MarkCompletedConstructionForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        if (answer) {
-            val value = changes.getPreviousValue("construction") ?: "road"
-            changes.modify("highway", value)
-            deleteTagsDescribingConstruction(changes)
-        } else {
-            changes.addOrModify(SURVEY_MARK_KEY, Date().toCheckDateString())
+    override fun applyAnswerTo(answer: CompletedConstructionAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is OpeningDateAnswer -> {
+                changes.addOrModify("opening_date", answer.date.toCheckDateString())
+            }
+            is StateAnswer -> {
+                if (answer.value) {
+                    val value = changes.getPreviousValue("construction") ?: "road"
+                    changes.modify("highway", value)
+                    deleteTagsDescribingConstruction(changes)
+                } else {
+                    changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
+                }
+            }
         }
     }
 }

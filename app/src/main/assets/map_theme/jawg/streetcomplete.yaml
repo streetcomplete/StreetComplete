@@ -2,33 +2,33 @@ global:
     geometry_color: '#44D14000' # accent color + alpha
 
 textures:
-    quests:
+    pins:
         url: ''
         filtering: mipmap
         sprites: {}
-    quest_dot:
-        url: images/quest_dot@2x.png
+    pin_dot:
+        url: images/pin_dot@2x.png
         filtering: mipmap
         density: 5
 
 styles:
-    quest-selection:
+    pin-selection:
         base: points
         blend: overlay
         blend_order: 3
-    selected-quest-icons:
+    selected-pin-icons:
         base: points
-        texture: quests
+        texture: pins
         blend: overlay
         blend_order: 2
-    quest-icons:
+    pin-icons:
         base: points
-        texture: quests
+        texture: pins
         blend: overlay
         blend_order: 1
-    quest-dots:
+    pin-dots:
         base: points
-        texture: quest_dot
+        texture: pin_dot
         blend: overlay
         blend_order: 1
     geometry-lines:
@@ -42,48 +42,48 @@ styles:
         blend: overlay
 
 layers:
-    streetcomplete_selected_quests:
-        data: { source: streetcomplete_selected_quests }
+    streetcomplete_selected_pins:
+        data: { source: streetcomplete_selected_pins }
         draw:
-            selected-quest-icons:
+            selected-pin-icons:
                 size: 66px
                 sprite: function() { return feature.kind }
                 sprite_default: quest
                 collide: false
-                offset: [-17px, -66px]
-    streetcomplete_quests:
-        data: { source: streetcomplete_quests }
+                offset: [-8px, -33px]
+    streetcomplete_pins:
+        data: { source: streetcomplete_pins }
         pins:
             filter: { $zoom: { min: 14 } }
             draw:
-                quest-icons:
+                pin-icons:
                     interactive: true
                     priority: function() { return 1.0 - feature.importance / 100000.0 }
                     order: function() { return 100000 + feature.importance }
-                    repeat_group: quest_pin
+                    repeat_group: pin
                     size: 66px
                     sprite: function() { return feature.kind }
                     sprite_default: quest
-                    offset: [-17px, -66px]
+                    offset: [-8px, -33px]
         dots_no_collide:
             filter: { $zoom: { min: 16 } }
             draw:
-                quest-dots:
+                pin-dots:
                     priority: 1
                     order: 1
                     size: 16px
                     collide: false
-                    offset: [-2.5px, -22px]
+                    offset: [-1.5px, -12px]
         dots:
             filter: { $zoom: { min: 13, max: 15.999 } }
             draw:
-                quest-dots:
+                pin-dots:
                     priority: 1
                     order: 1
-                    repeat_group: quest_dot
+                    repeat_group: pin_dot
                     size: 16px
                     collide: true
-                    offset: [-2.5px, -22px]
+                    offset: [-1.5px, -12px]
     streetcomplete_geometry:
         data: { source: streetcomplete_geometry }
         line:

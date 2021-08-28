@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingContainerMaterials
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterials
 import de.westnordost.streetcomplete.quests.recycling_material.IsWasteContainer
@@ -13,7 +13,8 @@ import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial
 import de.westnordost.streetcomplete.util.translate
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.util.*
+import java.time.Instant
+import java.time.LocalDate
 
 class AddRecyclingContainerMaterialsTest {
 
@@ -21,7 +22,7 @@ class AddRecyclingContainerMaterialsTest {
 
     @Test fun `applicable to container without recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container"
             ))
@@ -31,7 +32,7 @@ class AddRecyclingContainerMaterialsTest {
 
     @Test fun `not applicable to container with recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container",
                 "recycling:something" to "yes"
@@ -42,39 +43,39 @@ class AddRecyclingContainerMaterialsTest {
 
     @Test fun `applicable to container with old recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container",
                 "check_date:recycling" to "2001-01-01",
                 "recycling:plastic_packaging" to "yes",
                 "recycling:something_else" to "no"
-            ), null, Date())
+            ), timestamp = Instant.now().toEpochMilli())
         ))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to container with old but unknown recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container",
                 "check_date:recycling" to "2001-01-01",
                 "recycling:something_else" to "yes"
-            ), null, Date())
+            ), timestamp = Instant.now().toEpochMilli())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to container without recycling materials close to another container`() {
-        val pos1 = OsmLatLon(0.0,0.0)
+        val pos1 = p(0.0,0.0)
         val pos2 = pos1.translate(19.0, 45.0)
 
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, pos1, mapOf(
+            node(id = 1, pos = pos1, tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container"
             )),
-            OsmNode(2L, 1, pos2, mapOf(
+            node(id = 2, pos = pos2, tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container"
             ))
@@ -83,15 +84,15 @@ class AddRecyclingContainerMaterialsTest {
     }
 
     @Test fun `applicable to container without recycling materials not too close to another container`() {
-        val pos1 = OsmLatLon(0.0,0.0)
+        val pos1 = p(0.0,0.0)
         val pos2 = pos1.translate(21.0, 45.0)
 
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, pos1, mapOf(
+            node(id = 1, pos = pos1, tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container"
             )),
-            OsmNode(2L, 1, pos2, mapOf(
+            node(id = 2, pos = pos2, tags = mapOf(
                 "amenity" to "recycling",
                 "recycling_type" to "container",
                 "recycling:paper" to "yes"
@@ -113,6 +114,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
             StringMapEntryAdd("recycling:plastic_packaging", "no"),
+            StringMapEntryAdd("recycling:beverage_cartons", "no"),
             StringMapEntryAdd("recycling:plastic", "no")
         )
     }
@@ -125,6 +127,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
             StringMapEntryAdd("recycling:plastic_packaging", "no"),
+            StringMapEntryAdd("recycling:beverage_cartons", "no"),
             StringMapEntryModify("recycling:plastic", "yes", "no")
         )
     }
@@ -138,6 +141,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryModify("recycling:plastic", "no", "no"),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
+            StringMapEntryAdd("recycling:beverage_cartons", "no"),
             StringMapEntryModify("recycling:plastic_packaging", "yes", "no")
         )
     }
@@ -217,7 +221,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(CLOTHES, PAPER)),
             StringMapEntryModify("recycling:paper", "yes", "yes"),
             StringMapEntryModify("recycling:clothes", "yes", "yes"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -236,7 +240,7 @@ class AddRecyclingContainerMaterialsTest {
         )
     }
 
-    @Test fun `apply answer removes previous check dates`() {
+    @Test fun `apply answer updates previous check dates`() {
         questType.verifyAnswer(
             mapOf(
                 "recycling:paper" to "no",
@@ -250,7 +254,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PAPER)),
             StringMapEntryModify("recycling:paper", "no", "yes"),
             StringMapEntryDelete("recycling:check_date", "2000-11-01"),
-            StringMapEntryDelete("check_date:recycling", "2000-11-02"),
+            StringMapEntryModify("check_date:recycling", "2000-11-02", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("recycling:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:recycling", "2000-11-04"),
             StringMapEntryDelete("recycling:last_checked", "2000-11-05"),

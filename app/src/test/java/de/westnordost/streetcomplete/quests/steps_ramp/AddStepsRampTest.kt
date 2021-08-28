@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.steps_ramp
 
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import java.util.*
+import java.time.LocalDate
 
 class AddStepsRampTest {
 
@@ -50,7 +50,7 @@ class AddStepsRampTest {
                 wheelchairRamp = WheelchairRampStatus.YES
             ),
             StringMapEntryAdd("ramp:wheelchair", "yes"),
-            StringMapEntryAdd("check_date:ramp", Date().toCheckDateString()),
+            StringMapEntryAdd("check_date:ramp", LocalDate.now().toCheckDateString()),
         )
     }
 
@@ -84,7 +84,7 @@ class AddStepsRampTest {
             StringMapEntryModify("ramp:bicycle", "yes", "yes"),
             StringMapEntryModify("ramp:stroller", "no", "yes"),
             StringMapEntryModify("ramp:wheelchair", "automatic", "yes"),
-            StringMapEntryAdd("check_date:ramp", Date().toCheckDateString()),
+            StringMapEntryAdd("check_date:ramp", LocalDate.now().toCheckDateString()),
         )
     }
 
@@ -107,11 +107,10 @@ class AddStepsRampTest {
         )
     }
 
-    @Test fun `ramp value is not set to no on updating all ramps to no if there is an unsupported rampnot tagged no`() {
+    @Test fun `ramp value is not set to no on updating all ramps to no if there is an unsupported ramp not tagged no`() {
         questType.verifyAnswer(
             mapOf(
                 "ramp:luggage" to "automatic",
-                "ramp:bicycle" to "yes",
                 "ramp" to "yes",
             ),
             StepsRampAnswer(
@@ -119,8 +118,10 @@ class AddStepsRampTest {
                 strollerRamp = false,
                 wheelchairRamp = WheelchairRampStatus.NO
             ),
-            StringMapEntryAdd("check_date:ramp", Date().toCheckDateString()),
-            StringMapEntryDelete("ramp:bicycle", "yes")
+            StringMapEntryAdd("check_date:ramp", LocalDate.now().toCheckDateString()),
+            StringMapEntryAdd("ramp:bicycle", "no"),
+            StringMapEntryAdd("ramp:stroller", "no"),
+            StringMapEntryAdd("ramp:wheelchair", "no"),
         )
     }
 

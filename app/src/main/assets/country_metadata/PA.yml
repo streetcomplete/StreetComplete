@@ -3,6 +3,5 @@ atmOperators: [Banco General, Banistmo, Global]
 centerLine: yellow
 mobileCountryCode: 714
 officialLanguages: [es]
-orchardProduces: [banana, pineapple, orange, tomato, coconut, avocado, papaya, guava, mango, mangosteen, coffee, chilli_pepper,
-   sweet_pepper, cacao]
+orchardProduces: [banana, pineapple, orange, tomato, coconut, avocado, papaya, guava, mango, mangosteen, coffee, chilli_pepper, sweet_pepper, cacao]
 popularSports: [soccer, basketball, baseball, tennis]

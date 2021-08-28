@@ -2,13 +2,13 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
-class AddWheelchairAccessToilets : OsmFilterQuestType<String>() {
+class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
-        nodes, ways with amenity = toilets 
+        nodes, ways with amenity = toilets
          and access !~ private|customers
          and (
            !wheelchair
@@ -19,6 +19,7 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<String>() {
     override val commitMessage = "Add wheelchair access to toilets"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags.containsKey("name"))
@@ -28,7 +29,7 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddWheelchairAccessToiletsForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("wheelchair", answer)
+    override fun applyAnswerTo(answer: WheelchairAccess, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("wheelchair", answer.osmValue)
     }
 }

@@ -6,13 +6,14 @@ import android.view.View
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksSource
-import de.westnordost.streetcomplete.ktx.awaitPreDraw
+import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
@@ -21,8 +22,7 @@ import kotlinx.coroutines.*
 import javax.inject.Inject
 
 /** Shows the user's unlocked links */
-class LinksFragment : Fragment(R.layout.fragment_links),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class LinksFragment : Fragment(R.layout.fragment_links) {
 
     @Inject internal lateinit var userLinksSource: UserLinksSource
     @Inject internal lateinit var userStore: UserStore
@@ -37,17 +37,15 @@ class LinksFragment : Fragment(R.layout.fragment_links),
         val minCellWidth = 280f
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.links_item_margin)
 
-        launch {
-            view.awaitPreDraw()
+        viewLifecycleOwner.lifecycleScope.launch {
+            view.awaitLayout()
 
             emptyText.visibility = View.GONE
 
             val viewWidth = view.width.toFloat().toDp(ctx)
             val spanCount = (viewWidth / minCellWidth).toInt()
 
-            val links = withContext(Dispatchers.IO) {
-                userLinksSource.getLinks()
-            }
+            val links = withContext(Dispatchers.IO) { userLinksSource.getLinks() }
             val adapter = GroupedLinksAdapter(links, this@LinksFragment::openUrl)
             // headers should span the whole width
             val spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
@@ -77,11 +75,6 @@ class LinksFragment : Fragment(R.layout.fragment_links),
         } else {
             emptyText.setText(R.string.links_empty)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
     }
 
     private fun openUrl(url: String) {

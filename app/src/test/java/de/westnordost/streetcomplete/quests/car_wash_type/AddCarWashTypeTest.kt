@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.car_wash_type
 
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.*

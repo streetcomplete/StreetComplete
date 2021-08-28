@@ -3,9 +3,11 @@ package de.westnordost.streetcomplete.quests.lanes
 import android.animation.TimeAnimator
 import android.content.Context
 import android.graphics.*
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
+import androidx.core.graphics.withRotation
 import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.Lifecycle
@@ -27,6 +29,8 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 ) : RelativeLayout(context, attrs, defStyleAttr), LifecycleObserver {
 
     private val animator = TimeAnimator()
+
+    private val questionMark: Drawable = context.resources.getDrawable(R.drawable.ic_lanes_unknown)
 
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
         set(value) {
@@ -232,6 +236,16 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         laneSeparatorLinePaint.strokeWidth = lineWidth
         laneSeparatorLinePaint.pathEffect = dashEffect
 
+        // draw question marks if nothing is selected
+        if (laneCountLeft <= 0 && !isShowingOnlyRightSide) {
+            val size = (leftLanesEnd * laneWidth).toInt()
+            canvas.drawVerticallyRepeating(questionMark, 0, size, isForwardTraffic)
+        }
+        if (laneCountRight <= 0) {
+            val left = (rightLanesStart * laneWidth).toInt()
+            canvas.drawVerticallyRepeating(questionMark, left, width - left, !isForwardTraffic)
+        }
+
         // draw background
         val streetStartX = if (laneCountLeft > 0 || isShowingOnlyRightSide) 0f else laneWidth * leftLanesEnd
         val streetEndX = if (laneCountRight > 0) width.toFloat() else laneWidth * rightLanesStart
@@ -407,6 +421,20 @@ private fun Canvas.drawCar(carState: CarState, laneIndex: Float, laneWidth: Floa
     carState.matrix.postScale(1f * carWidth / w, 1f * carHeight / h)
     carState.matrix.postTranslate(x, y)
     drawBitmap(bitmap, carState.matrix, null)
+}
+
+private fun Canvas.drawVerticallyRepeating(drawable: Drawable, left: Int, size: Int, reverseY: Boolean) {
+    var i = 0
+    while (size * i < height) {
+        val top = size * i
+        val bottom = size * (i + 1)
+        val right = left + size
+        drawable.setBounds(left, top, right, bottom)
+        withRotation(if (reverseY) 180f else 0f, left + size / 2f, top + size / 2f) {
+            drawable.draw(this)
+        }
+        i++
+    }
 }
 
 enum class LineStyle { CONTINUOUS, DASHES, SHORT_DASHES }

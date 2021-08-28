@@ -3,3 +3,4 @@ mobileCountryCode: 622
 officialLanguages: [fr, ar]
 orchardProduces: [guava, mango, mangosteen, date]
 popularReligions: [muslim]
+roofsAreUsuallyFlat: true

@@ -1,7 +1,4 @@
-import java.io.StringWriter
-import java.util.*
-
-
+import java.util.Locale
 
 // Java (and thus also Android) uses some old iso (language) codes. F.e. id -> in etc.
 // so the localized files also need to use the old iso codes
@@ -14,6 +11,7 @@ fun bcp47LanguageTagToJavaLanguageTag(bcp47: String): String {
 }
 
 fun javaLanguageTagToAndroidResCodes(languageTag: String): List<String> {
+    if (languageTag == "sr-Cyrl") return listOf("sr")
     val locale = Locale.forLanguageTag(languageTag)
     // scripts not supported by Android resource system
     if (locale.script.isNotEmpty()) return listOf()

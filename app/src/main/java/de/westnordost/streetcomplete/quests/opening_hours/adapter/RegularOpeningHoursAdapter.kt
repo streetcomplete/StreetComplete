@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours.adapter
 
 import android.content.Context
+import android.text.format.DateFormat
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -17,10 +18,15 @@ import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
+import kotlinx.serialization.Serializable
 
+@Serializable
 sealed class OpeningHoursRow
+@Serializable
 data class OpeningMonthsRow(var months: Months): OpeningHoursRow()
+@Serializable
 data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange) : OpeningHoursRow()
+@Serializable
 data class OffDaysRow(var weekdays: Weekdays): OpeningHoursRow()
 
 class RegularOpeningHoursAdapter(
@@ -284,9 +290,9 @@ class RegularOpeningHoursAdapter(
     private fun getWeekdaysSuggestion(isFirst: Boolean): Weekdays {
         if (isFirst) {
             val firstWorkDayIdx = Weekdays.getWeekdayIndex(countryInfo.firstDayOfWorkweek)
-            val result = BooleanArray(7)
+            val result = BooleanArray(Weekdays.OSM_ABBR_WEEKDAYS.size)
             for (i in 0 until countryInfo.regularShoppingDays) {
-                result[(i + firstWorkDayIdx) % 7] = true
+                result[(i + firstWorkDayIdx) % Weekdays.WEEKDAY_COUNT] = true
             }
             return Weekdays(result)
         }
@@ -301,7 +307,7 @@ class RegularOpeningHoursAdapter(
         val startLabel = context.resources.getString(R.string.quest_openingHours_start_time)
         val endLabel = context.resources.getString(R.string.quest_openingHours_end_time)
 
-        TimeRangePickerDialog(context, startLabel, endLabel, timeRange, callback).show()
+        TimeRangePickerDialog(context, startLabel, endLabel, timeRange, DateFormat.is24HourFormat(context), callback).show()
     }
 
     companion object {

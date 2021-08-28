@@ -2,8 +2,9 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 
 class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
@@ -11,8 +12,9 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
     override val elementFilter = """
         ways with highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
          and !maxspeed and !maxspeed:advisory and !maxspeed:forward and !maxspeed:backward
-         and !source:maxspeed and !zone:maxspeed and !maxspeed:type and !zone:traffic
+         and ${MAXSPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
          and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+         and cyclestreet != yes and bicycle_road != yes
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
          and area != yes
@@ -55,6 +57,14 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
             }
             is ImplicitMaxSpeed -> {
                 changes.add("maxspeed:type", answer.countryCode + ":" + answer.roadType)
+                // Lit is either already set or has been answered by the user, so this wouldn't change the value of the lit tag
+                if (answer.lit != null) {
+                    if (answer.lit) {
+                        changes.addOrModify("lit", "yes")
+                    } else {
+                        changes.addOrModify("lit", "no")
+                    }
+                }
             }
         }
     }

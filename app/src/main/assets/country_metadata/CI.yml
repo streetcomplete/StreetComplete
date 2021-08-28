@@ -2,5 +2,4 @@
 atmOperators: [NSIA Banque, BNI]
 mobileCountryCode: 612
 officialLanguages: [fr, dyu, bci, any]
-orchardProduces: [cacao, cashew_nut, rubber, banana, chilli_pepper, sweet_pepper, coconut, coffee, guava, mango, mangosteen,
-   kola_nut, pineapple, orange, tomato, avocado, grapefruit, brazil_nut]
+orchardProduces: [cacao, cashew_nut, rubber, banana, chilli_pepper, sweet_pepper, coconut, coffee, guava, mango, mangosteen, kola_nut, pineapple, orange, tomato, avocado, grapefruit, brazil_nut]

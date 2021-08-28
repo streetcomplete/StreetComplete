@@ -1,27 +1,26 @@
 package de.westnordost.streetcomplete.quests.tourism_information
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
-class AddInformationToTourism : OsmFilterQuestType<String>() {
+class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
 
     override val elementFilter = "nodes, ways, relations with tourism = information and !information"
     override val commitMessage = "Add information type to tourist information"
     override val wikiLink = "Tag:tourism=information"
     override val icon = R.drawable.ic_quest_information
+    override val isDeleteElementEnabled = true
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
-        return if (hasName)
+    override fun getTitle(tags: Map<String, String>): Int =
+        if (tags.containsKey("name"))
             R.string.quest_tourism_information_name_title
         else
             R.string.quest_tourism_information_title
-    }
 
     override fun createForm() = AddInformationForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("information", answer)
+    override fun applyAnswerTo(answer: TourismInformation, changes: StringMapChangesBuilder) {
+        changes.add("information", answer.osmValue)
     }
 }

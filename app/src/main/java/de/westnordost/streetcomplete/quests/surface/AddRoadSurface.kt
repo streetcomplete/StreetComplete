@@ -3,13 +3,16 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
 class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
-        ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
+        ways with (
+          highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
+          or highway = service and service !~ driveway|slipway
+        )
         and (
           !surface
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -4 years
@@ -30,16 +33,11 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
         val isSquare = tags["area"] == "yes"
-        return if (hasName) {
-            if (isSquare)
-                R.string.quest_streetSurface_square_name_title
-            else
-                R.string.quest_streetSurface_name_title
-        } else {
-            if (isSquare)
-                R.string.quest_streetSurface_square_title
-            else
-                R.string.quest_streetSurface_title
+        return when {
+            hasName && isSquare ->  R.string.quest_streetSurface_square_name_title
+            hasName ->              R.string.quest_streetSurface_name_title
+            isSquare ->             R.string.quest_streetSurface_square_title
+            else ->                 R.string.quest_streetSurface_title
         }
     }
 
@@ -48,11 +46,11 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is SpecificSurfaceAnswer -> {
-                changes.updateWithCheckDate("surface", answer.value)
+                changes.updateWithCheckDate("surface", answer.value.osmValue)
                 changes.deleteIfExists("surface:note")
             }
             is GenericSurfaceAnswer -> {
-                changes.updateWithCheckDate("surface", answer.value)
+                changes.updateWithCheckDate("surface", answer.value.osmValue)
                 changes.addOrModify("surface:note", answer.note)
             }
         }

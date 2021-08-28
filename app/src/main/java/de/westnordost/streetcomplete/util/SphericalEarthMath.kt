@@ -2,9 +2,9 @@
 
 package de.westnordost.streetcomplete.util
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.splitAt180thMeridian
 import de.westnordost.streetcomplete.ktx.forEachLine
 import de.westnordost.streetcomplete.util.math.arcIntersection
 import de.westnordost.streetcomplete.util.math.toLatLon
@@ -70,6 +70,24 @@ fun LatLon.finalBearingTo(pos: LatLon): Double {
     if (bearing >= 360) bearing -= 360.0
     return bearing
 }
+
+/** Returns whether this point is right of the line spanned between start and the given bearing. */
+fun LatLon.isRightOf(lineStart: LatLon, bearing: Double): Boolean =
+    (lineStart.initialBearingTo(this) - bearing).normalizeDegrees(-180.0) > 0
+
+/** Returns whether this point is right of both the line spanned by p0 and p1 and the line
+ *  spanned by p1 and p2 */
+fun LatLon.isRightOf(p0: LatLon, p1: LatLon, p2: LatLon): Boolean {
+    val angle01 = p0.initialBearingTo(p1)
+    val angle12 = p1.initialBearingTo(p2)
+    val turnsRight = (angle12 - angle01).normalizeDegrees(-180.0) > 0
+    return if (turnsRight) {
+        isRightOf(p0, angle01) && isRightOf(p1, angle12)
+    } else {
+        isRightOf(p0, angle01) || isRightOf(p1, angle12)
+    }
+}
+
 
 /** Returns the distance from this point to the other point */
 fun LatLon.distanceTo(pos: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
@@ -152,15 +170,22 @@ fun List<LatLon>.distanceTo(polyline: List<LatLon>, globeRadius: Double = EARTH_
     return minOf { it.distanceToArcs(polyline, globeRadius) }
 }
 
-/** Returns whether this polyline intersects with the given polyline */
+/** Returns whether this polyline intersects with the given polyline. If a polyline touches the
+ *  other at an endpoint (e.g. two consecutive polylines that share one endpoint), this doesn't
+ *  count. */
 fun List<LatLon>.intersectsWith(polyline: List<LatLon>): Boolean {
     require(size > 1 && polyline.size > 1) { "Polylines must each contain at least two elements" }
     val ns = map { it.toNormalOnSphere() }
     val npolyline = polyline.map { it.toNormalOnSphere() }
     ns.forEachLine { first, second ->
         npolyline.forEachLine { otherFirst, otherSecond ->
-            if (arcIntersection(first, second, otherFirst, otherSecond) != null) {
-                return true
+            val intersection = arcIntersection(first, second, otherFirst, otherSecond)
+            if (intersection != null) {
+                // touching endpoints don't count
+                if (
+                    first != npolyline.first() && first != npolyline.last() &&
+                    second != npolyline.first() && second != npolyline.last()
+                ) return true
             }
         }
     }
@@ -265,7 +290,7 @@ private fun List<LatLon>.pointOnPolyline(distance: Double, fromEnd: Boolean): La
                 val ratio = (d - distance) / segmentDistance
                 val lat = second.latitude - ratio * (second.latitude - first.latitude)
                 val lon = normalizeLongitude(second.longitude - ratio * normalizeLongitude(second.longitude - first.longitude))
-                return OsmLatLon(lat, lon)
+                return LatLon(lat, lon)
             }
         }
     }
@@ -299,7 +324,7 @@ fun List<LatLon>.centerPointOfPolygon(): LatLon {
     }
     area *= 3.0
 
-    return if (area == 0.0) origin else OsmLatLon(
+    return if (area == 0.0) origin else LatLon(
         lat / area + origin.latitude,
         normalizeLongitude(lon / area + origin.longitude)
     )
@@ -423,8 +448,8 @@ fun List<LatLon>.isRingDefinedClockwise(): Boolean {
 
 /** Returns the area enclosed by this bbox */
 fun BoundingBox.area(globeRadius: Double = EARTH_RADIUS): Double {
-    val minLatMaxLon = OsmLatLon(min.latitude, max.longitude)
-    val maxLatMinLon = OsmLatLon(max.latitude, min.longitude)
+    val minLatMaxLon = LatLon(min.latitude, max.longitude)
+    val maxLatMinLon = LatLon(max.latitude, min.longitude)
     return min.distanceTo(minLatMaxLon, globeRadius) * min.distanceTo(maxLatMinLon, globeRadius)
 }
 
@@ -435,6 +460,21 @@ fun BoundingBox.enlargedBy(radius: Double, globeRadius: Double = EARTH_RADIUS): 
         max.translate(radius, 45.0, globeRadius)
     )
 }
+
+/** returns whether this bounding box contains the given position */
+fun BoundingBox.contains(pos: LatLon): Boolean {
+    return if (crosses180thMeridian) {
+        splitAt180thMeridian().any { it.containsCanonical(pos) }
+    } else {
+        containsCanonical(pos)
+    }
+}
+
+/** returns whether this bounding box contains the given position, assuming the bounding box does
+ *  not cross the 180th meridian */
+private fun BoundingBox.containsCanonical(pos: LatLon): Boolean =
+    pos.longitude in min.longitude..max.longitude &&
+    pos.latitude in min.latitude..max.latitude
 
 /** returns whether this bounding box intersects with the other. Works if any of the bounding boxes
  *  cross the 180th meridian */
@@ -449,34 +489,34 @@ fun BoundingBox.isCompletelyInside(other: BoundingBox): Boolean =
 /** returns whether this bounding box intersects with the other, assuming both bounding boxes do
  *  not cross the 180th meridian */
 private fun BoundingBox.intersectCanonical(other: BoundingBox): Boolean =
-    maxLongitude >= other.minLongitude &&
-    minLongitude <= other.maxLongitude &&
-    maxLatitude >= other.minLatitude &&
-    minLatitude <= other.maxLatitude
+    max.longitude >= other.min.longitude &&
+    min.longitude <= other.max.longitude &&
+    max.latitude >= other.min.latitude &&
+    min.latitude <= other.max.latitude
 
 /** returns whether this bounding box is completely inside the other, assuming both bounding boxes
  *  do not cross the 180th meridian */
 private fun BoundingBox.isCompletelyInsideCanonical(other: BoundingBox): Boolean =
-    minLongitude >= other.minLongitude &&
-    minLatitude >= other.minLatitude &&
-    maxLongitude <= other.maxLongitude &&
-    maxLatitude <= other.maxLatitude
+    min.longitude >= other.min.longitude &&
+    min.latitude >= other.min.latitude &&
+    max.longitude <= other.max.longitude &&
+    max.latitude <= other.max.latitude
 
 
 private inline fun BoundingBox.checkAlignment(
     other: BoundingBox,
     canonicalCheck: (bbox1: BoundingBox, bbox2: BoundingBox) -> Boolean
 ): Boolean {
-    return if(crosses180thMeridian()) {
+    return if(crosses180thMeridian) {
         val these = splitAt180thMeridian()
-        if (other.crosses180thMeridian()) {
+        if (other.crosses180thMeridian) {
             val others = other.splitAt180thMeridian()
             these.any { a -> others.any { b -> canonicalCheck(a, b) } }
         } else {
             these.any { canonicalCheck(it, other) }
         }
     } else {
-        if (other.crosses180thMeridian()) {
+        if (other.crosses180thMeridian) {
             val others = other.splitAt180thMeridian()
             others.any { canonicalCheck(this, it) }
         } else {
@@ -502,7 +542,7 @@ fun createTranslated(latitude: Double, longitude: Double): LatLon {
         lon += 180.0
         if (lon > 180) lon -= 360.0
     }
-    return OsmLatLon(lat, lon)
+    return LatLon(lat, lon)
 }
 
 private fun Double.toRadians() = this / 180.0 * PI

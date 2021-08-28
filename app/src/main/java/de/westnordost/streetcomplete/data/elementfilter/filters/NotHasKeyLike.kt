@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
 /** !~key(word)? */
-class NotHasKeyLike(key: String) : ElementFilter {
-    val key = key.toRegex()
+class NotHasKeyLike(val key: String) : ElementFilter {
+    private val regex = RegexOrSet.from(key)
 
     override fun toOverpassQLString(): String {
         // not supported (conveniently) by overpass (yet): https://github.com/drolbr/Overpass-API/issues/589
@@ -13,5 +13,5 @@ class NotHasKeyLike(key: String) : ElementFilter {
     }
 
     override fun toString() = toOverpassQLString()
-    override fun matches(obj: Element?) = obj?.tags?.keys?.find { it.matches(key) } == null
+    override fun matches(obj: Element?) = obj?.tags?.keys?.find { regex.matches(it) } == null
 }

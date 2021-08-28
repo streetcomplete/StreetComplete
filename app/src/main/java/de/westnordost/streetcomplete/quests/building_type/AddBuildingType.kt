@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
-class AddBuildingType : OsmFilterQuestType<String>() {
+class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
     // in the case of man_made, historic, military and power, these tags already contain
     // information about the purpose of the building, so no need to force asking it
     // same goes (more or less) for tourism, amenity, leisure. See #1854, #1891
     override val elementFilter = """
-        ways, relations with building = yes
+        ways, relations with (building = yes or building = unclassified)
          and !man_made
          and !historic
          and !military
@@ -19,6 +19,7 @@ class AddBuildingType : OsmFilterQuestType<String>() {
          and !attraction
          and !amenity
          and !leisure
+         and !description
          and location != underground
          and abandoned != yes
          and abandoned != building
@@ -33,15 +34,14 @@ class AddBuildingType : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddBuildingTypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        if(answer.startsWith("man_made=")) {
-            val manMade = answer.split("=")[1]
+    override fun applyAnswerTo(answer: BuildingType, changes: StringMapChangesBuilder) {
+        if (answer.osmKey == "man_made") {
             changes.delete("building")
-            changes.add("man_made", manMade)
-        } else if (answer == "historic" || answer == "abandoned" || answer == "ruins") {
-            changes.addOrModify(answer, "yes")
+            changes.add("man_made", answer.osmValue)
+        } else if (answer.osmKey != "building") {
+            changes.addOrModify(answer.osmKey, answer.osmValue)
         } else {
-            changes.modify("building", answer)
+            changes.modify("building", answer.osmValue)
         }
     }
 }

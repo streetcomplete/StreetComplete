@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import android.content.Context
+import android.text.format.DateFormat
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,9 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
 import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class WeekdaysTimesRow(var weekdays: Weekdays, var minutes: Int)
 
 private fun List<WeekdaysTimesRow>.toWeekdaysTimesList(): List<WeekdaysTimes> {
@@ -126,9 +129,9 @@ class CollectionTimesAdapter(
     private fun getWeekdaysSuggestion(isFirst: Boolean): Weekdays {
         if (isFirst) {
             val firstWorkDayIdx = Weekdays.getWeekdayIndex(countryInfo.firstDayOfWorkweek)
-            val result = BooleanArray(7)
+            val result = BooleanArray(Weekdays.OSM_ABBR_WEEKDAYS.size)
             for (i in 0 until countryInfo.workweekDays) {
-                result[(i + firstWorkDayIdx) % 7] = true
+                result[(i + firstWorkDayIdx) % Weekdays.WEEKDAY_COUNT] = true
             }
             return Weekdays(result)
         }
@@ -140,7 +143,7 @@ class CollectionTimesAdapter(
     }
 
     private fun openSetTimeDialog(minutes: Int, callback: (minutes: Int) -> Unit) {
-        TimePickerDialog(context, minutes / 60, minutes % 60, true) { hourOfDay, minute ->
+        TimePickerDialog(context, minutes / 60, minutes % 60, DateFormat.is24HourFormat(context)) { hourOfDay, minute ->
             callback(hourOfDay * 60 + minute)
         }.show()
     }

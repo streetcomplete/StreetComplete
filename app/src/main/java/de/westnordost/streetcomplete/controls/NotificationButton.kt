@@ -7,6 +7,7 @@ import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.view_notification_button.view.*
 
+/** View that shows a notification-button with a little counter at the top right */
 class NotificationButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

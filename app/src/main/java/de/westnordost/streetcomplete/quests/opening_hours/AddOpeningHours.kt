@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
+import de.westnordost.streetcomplete.quests.opening_hours.parser.isSupported
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
 import java.util.concurrent.FutureTask
 
@@ -71,7 +71,8 @@ class AddOpeningHours (
             ),
             "office" to arrayOf(
                 // common
-                "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency"
+                "insurance", "government", "travel_agent", "tax_advisor", "religion",
+                "employment_agency", "diplomatic"
             ),
             "craft" to arrayOf(
                 // common
@@ -85,30 +86,33 @@ class AddOpeningHours (
           or opening_hours older today -1 years
         )
         and (access !~ private|no)
-        and (name or brand or noname = yes)
+        and (name or brand or noname = yes or name:signed = no)
         and opening_hours:signed != no
     """.trimIndent()).toElementFilterExpression() }
+
+    private val nameTags = listOf("name", "brand")
 
     override val commitMessage = "Add opening hours"
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
+    override val isReplaceShopEnabled = true
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasProperName = hasProperName(tags)
-        val hasNonBrandFeatureName = hasFeatureName(tags) && !tags.containsKey("brand")
+        val hasFeatureName = hasFeatureName(tags)
         // treat invalid opening hours like it is not set at all
         val hasValidOpeningHours = tags["opening_hours"]?.toOpeningHoursRules() != null
         return if (hasValidOpeningHours) {
             when {
-                !hasProperName          -> R.string.quest_openingHours_resurvey_no_name_title
-                !hasNonBrandFeatureName -> R.string.quest_openingHours_resurvey_name_title
-                else                    -> R.string.quest_openingHours_resurvey_name_type_title
+                !hasProperName  -> R.string.quest_openingHours_resurvey_no_name_title
+                !hasFeatureName -> R.string.quest_openingHours_resurvey_name_title
+                else            -> R.string.quest_openingHours_resurvey_name_type_title
             }
         } else {
             when {
-                !hasProperName          -> R.string.quest_openingHours_no_name_title
-                !hasNonBrandFeatureName -> R.string.quest_openingHours_name_title
-                else                    -> R.string.quest_openingHours_name_type_title
+                !hasProperName  -> R.string.quest_openingHours_no_name_title
+                !hasFeatureName -> R.string.quest_openingHours_name_title
+                else            -> R.string.quest_openingHours_name_type_title
             }
         }
     }
@@ -116,11 +120,11 @@ class AddOpeningHours (
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
         val hasProperName = name != null
-        val hasNonBrandFeatureName = hasFeatureName(tags) && !tags.containsKey("brand")
+        val hasFeatureName = hasFeatureName(tags)
         return when {
-            !hasProperName          -> arrayOf(featureName.value.toString())
-            !hasNonBrandFeatureName -> arrayOf(name!!)
-            else                    -> arrayOf(name!!, featureName.value.toString())
+            !hasProperName  -> arrayOf(featureName.value.toString())
+            !hasFeatureName -> arrayOf(name!!)
+            else            -> arrayOf(name!!, featureName.value.toString())
         }
     }
 
@@ -129,14 +133,15 @@ class AddOpeningHours (
 
     override fun isApplicableTo(element: Element) : Boolean {
         if (!filter.matches(element)) return false
+        val tags = element.tags
         // only show places that can be named somehow
-        if (!hasName(element.tags)) return false
+        if (!hasName(tags)) return false
         // no opening_hours yet -> new survey
-        val oh = element.tags?.get("opening_hours") ?: return true
+        val oh = tags["opening_hours"] ?: return true
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         val rules = oh.toOpeningHoursRules() ?: return true
         // only display supported rules
-        return rules.toOpeningHoursRows() != null
+        return rules.isSupported()
     }
 
     override fun createForm() = AddOpeningHoursForm()
@@ -163,11 +168,11 @@ class AddOpeningHours (
         }
     }
 
-    private fun hasName(tags: Map<String, String>?) = hasProperName(tags) || hasFeatureName(tags)
+    private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
 
-    private fun hasProperName(tags: Map<String, String>?): Boolean =
-        tags?.keys?.containsAny(listOf("name", "brand")) ?: false
+    private fun hasProperName(tags: Map<String, String>): Boolean =
+        tags.keys.containsAny(nameTags)
 
-    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+    private fun hasFeatureName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }

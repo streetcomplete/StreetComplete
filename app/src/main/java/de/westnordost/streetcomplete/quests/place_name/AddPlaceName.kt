@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.quests.place_name
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
@@ -14,12 +15,12 @@ class AddPlaceName(
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""
-        nodes, ways, relations with 
+        nodes, ways, relations with
         (
           shop and shop !~ no|vacant
           or craft
           or office
-          or tourism = information and information = office 
+          or tourism = information and information = office
           or """.trimIndent() +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -96,16 +97,17 @@ class AddPlaceName(
     override val commitMessage = "Determine place names"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
+    override val isReplaceShopEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
-        featureName.value?.let { arrayOf(it) } ?: arrayOf()
+        arrayOfNotNull(featureName.value)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
-    override fun isApplicableTo(element: Element) =
+    override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) && hasFeatureName(element.tags)
 
     override fun createForm() = AddPlaceNameForm()
@@ -114,9 +116,14 @@ class AddPlaceName(
         when(answer) {
             is NoPlaceNameSign -> changes.add("name:signed", "no")
             is PlaceName -> changes.add("name", answer.name)
+            is BrandFeature -> {
+                for ((key, value) in answer.tags.entries) {
+                    changes.addOrModify(key, value)
+                }
+            }
         }
     }
 
-    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+    private fun hasFeatureName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
 }

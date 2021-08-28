@@ -13,7 +13,7 @@ import java.lang.Runnable
 import kotlin.math.max
 
 /** Contains the physics simulation world and the physics simulation loop */
-class PhysicsWorldController(gravity: Vec2) : CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class PhysicsWorldController(gravity: Vec2) {
 
     private val world: World = World(gravity)
     private val thread: HandlerThread = HandlerThread("Physics thread")

@@ -4,8 +4,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
+import androidx.core.view.isGone
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
@@ -14,15 +16,11 @@ import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
 import kotlinx.android.synthetic.main.quest_lanes_select_type.view.*
 import kotlinx.android.synthetic.main.quest_street_lanes_puzzle.view.*
 import kotlinx.android.synthetic.main.view_little_compass.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
-class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     private var selectedLanesType: LanesType? = null
     private var leftSide: Int = 0
@@ -50,12 +48,6 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
     override val otherAnswers: List<OtherAnswer> get() {
         val answers = mutableListOf<OtherAnswer>()
 
-        if (!isOneway) {
-            answers.add(OtherAnswer(R.string.quest_lanes_answer_lanes_odd) {
-                selectedLanesType = MARKED_SIDES
-                setStreetSideLayout()
-            })
-        }
         if (!isOneway && countryInfo.isCenterLeftTurnLaneKnown) {
             answers.add(OtherAnswer(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
                 selectedLanesType = MARKED_SIDES
@@ -121,11 +113,6 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         outState.putBoolean(CENTER_LEFT_TURN_LANE, hasCenterLeftTurnLane)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
-    }
-
     //endregion
 
     //region Select lanes type
@@ -145,15 +132,26 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         }
         view.markedLanesButton.setOnClickListener {
             selectedLanesType = MARKED
+            unmarkedLanesButton.isSelected = false
+            checkIsFormComplete()
             askLanesAndSwitchToStreetSideLayout()
+        }
+        view.markedLanesOddButton.isGone = isOneway
+
+        view.markedLanesOddButton.setOnClickListener {
+            selectedLanesType = MARKED_SIDES
+            unmarkedLanesButton.isSelected = false
+            setStreetSideLayout()
         }
     }
 
-    private fun askLanesAndSwitchToStreetSideLayout() { launch {
-        val lanes = askForTotalNumberOfLanes()
-        setTotalLanesCount(lanes)
-        setStreetSideLayout()
-    }}
+    private fun askLanesAndSwitchToStreetSideLayout() {
+        lifecycleScope.launch {
+            val lanes = askForTotalNumberOfLanes()
+            setTotalLanesCount(lanes)
+            setStreetSideLayout()
+        }
+    }
 
     //endregion
 
@@ -211,9 +209,11 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
 
     //region Lane selection dialog
 
-    private fun selectNumberOfLanesOnOneSide(isRight: Boolean) { launch {
-        setLanesCount(askForNumberOfLanesOnOneSide(isRight), isRight)
-    }}
+    private fun selectNumberOfLanesOnOneSide(isRight: Boolean) {
+        lifecycleScope.launch {
+            setLanesCount(askForNumberOfLanesOnOneSide(isRight), isRight)
+        }
+    }
 
     private suspend fun askForNumberOfLanesOnOneSide(isRight: Boolean): Int {
         val currentLaneCount = if (isRight) rightSide else leftSide
@@ -226,17 +226,19 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         updatePuzzleView()
     }
 
-    private fun selectTotalNumberOfLanes() {launch {
-        setTotalLanesCount(askForTotalNumberOfLanes())
-    }}
+    private fun selectTotalNumberOfLanes() {
+        lifecycleScope.launch {
+            setTotalLanesCount(askForTotalNumberOfLanes())
+        }
+    }
 
     private suspend fun askForTotalNumberOfLanes(): Int {
         val currentLaneCount = rightSide + leftSide
         return if (selectedLanesType == MARKED) {
             if (isOneway) {
-                showSelectMarkedLanesDialogForOneSide(currentLaneCount)
+                showSelectMarkedLanesDialogForOneSide(currentLaneCount.takeIf { it > 0 })
             } else {
-                showSelectMarkedLanesDialogForBothSides(currentLaneCount)
+                showSelectMarkedLanesDialogForBothSides(currentLaneCount.takeIf { it > 0 })
             }
         } else {
             throw IllegalStateException()
@@ -254,7 +256,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         updatePuzzleView()
     }
 
-    private suspend fun showSelectMarkedLanesDialogForBothSides(selectedValue: Int?) = suspendCoroutine<Int> { cont ->
+    private suspend fun showSelectMarkedLanesDialogForBothSides(selectedValue: Int?) = suspendCancellableCoroutine<Int> { cont ->
         ValuePickerDialog(requireContext(),
             listOf(2,4,6,8,10,12,14),
             selectedValue, null,
@@ -263,7 +265,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>(),
         ).show()
     }
 
-    private suspend fun showSelectMarkedLanesDialogForOneSide(selectedValue: Int?) = suspendCoroutine<Int> { cont ->
+    private suspend fun showSelectMarkedLanesDialogForOneSide(selectedValue: Int?) = suspendCancellableCoroutine<Int> { cont ->
         ValuePickerDialog(requireContext(),
             listOf(1,2,3,4,5,6,7,8),
             selectedValue, null,

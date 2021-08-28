@@ -7,13 +7,14 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 
 /** An activity that contains one full-screen ("main") fragment */
 open class FragmentContainerActivity(
     @LayoutRes contentLayoutId: Int = R.layout.activity_fragment_container
-) : AppCompatActivity(contentLayoutId) {
+) : AppCompatActivity(contentLayoutId), DisplaysTitle {
 
     var mainFragment: Fragment?
         get() = supportFragmentManager.findFragmentById(R.id.fragment_container)
@@ -24,6 +25,14 @@ open class FragmentContainerActivity(
             }
         }
 
+    private val fragmentLifecycleCallbacks = object : FragmentManager.FragmentLifecycleCallbacks() {
+        override fun onFragmentStarted(fragmentManager: FragmentManager, fragment: Fragment) {
+            if (fragment.id == R.id.fragment_container && fragment is HasTitle) {
+                updateTitle(fragment)
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -32,25 +41,23 @@ open class FragmentContainerActivity(
             supportActionBar!!.setDisplayShowHomeEnabled(true)
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
+        supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, false)
     }
 
     fun pushMainFragment(fragment: Fragment) {
         supportFragmentManager.commit {
             setCustomAnimations(
-                R.anim.enter_from_right, R.anim.exit_to_left,
-                R.anim.enter_from_left, R.anim.exit_to_right
+                R.anim.enter_from_end, R.anim.exit_to_start,
+                R.anim.enter_from_start, R.anim.exit_to_end
             )
             replace(R.id.fragment_container, fragment)
             addToBackStack("main")
         }
     }
 
-    override fun onAttachFragment(fragment: Fragment) {
-        if (fragment.id == R.id.fragment_container) {
-            if (fragment is HasTitle) {
-                title = (fragment as HasTitle).title
-            }
-        }
+    override fun updateTitle(fragment: HasTitle) {
+        title = fragment.title
+        supportActionBar?.subtitle = fragment.subtitle
     }
 
     override fun onBackPressed() {

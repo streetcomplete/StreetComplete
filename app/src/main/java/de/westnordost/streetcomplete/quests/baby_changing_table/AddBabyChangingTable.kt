@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.baby_changing_table
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -22,8 +22,9 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
     """
     override val commitMessage = "Add baby changing table"
     override val wikiLink = "Key:changing_table"
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val icon = R.drawable.ic_quest_baby
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val isReplaceShopEnabled = true
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags.containsKey("name"))

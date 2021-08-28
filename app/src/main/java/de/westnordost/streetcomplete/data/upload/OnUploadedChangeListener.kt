@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.upload
 
-import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 interface OnUploadedChangeListener {
     fun onUploaded(questType: String, at: LatLon)

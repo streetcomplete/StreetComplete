@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
 class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
@@ -14,6 +14,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
           or (highway = bridleway and bicycle ~ designated|yes)
         )
         and segregated = yes
+        and !sidewalk
         and (
           !cycleway:surface
           or cycleway:surface older today -8 years
@@ -36,11 +37,11 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
             is SpecificSurfaceAnswer -> {
-                changes.updateWithCheckDate("cycleway:surface", answer.value)
+                changes.updateWithCheckDate("cycleway:surface", answer.value.osmValue)
                 changes.deleteIfExists("cycleway:surface:note")
             }
             is GenericSurfaceAnswer -> {
-                changes.updateWithCheckDate("cycleway:surface", answer.value)
+                changes.updateWithCheckDate("cycleway:surface", answer.value.osmValue)
                 changes.addOrModify("cycleway:surface:note", answer.note)
             }
         }

@@ -1,63 +1,36 @@
 package de.westnordost.streetcomplete.controls
 
-import android.os.Handler
-import android.os.Looper
+import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.download.DownloadItem
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.ktx.toast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress),
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+/** Fragment that takes care of showing the download progress */
+class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress) {
 
     @Inject internal lateinit var downloadProgressSource: DownloadProgressSource
 
-    private val mainHandler = Handler(Looper.getMainLooper())
-
     private val progressView get() = view as IconsDownloadProgressView
 
-    private val animateOutRunnable = Runnable { animateOutProgressView() }
-
     private val downloadProgressListener = object : DownloadProgressListener {
-        private var startedButNoQuestsYet = false
-
-        override fun onStarted() {
-            startedButNoQuestsYet = true
-            launch(Dispatchers.Main) { animateInProgressView() }
-        }
-
-        override fun onStarted(item: DownloadItem) {
-            startedButNoQuestsYet = false
-            launch(Dispatchers.Main) { progressView.enqueueIcon(requireContext().getDrawable(item.iconResId)) }
-        }
-
-        override fun onFinished(item: DownloadItem) {
-            launch(Dispatchers.Main) { progressView.pollIcon() }
-        }
-
-        override fun onFinished() {
-            mainHandler.postDelayed(animateOutRunnable, 1000)
-        }
-
-        override fun onSuccess() {
-            if (startedButNoQuestsYet && downloadProgressSource.isPriorityDownloadInProgress) {
-                mainHandler.postDelayed({ context?.toast(R.string.nothing_more_to_download) }, 600)
-            }
-        }
+        override fun onStarted() { lifecycleScope.launch { animateInProgressView() }}
+        override fun onFinished() { lifecycleScope.launch { animateOutProgressView() }}
     }
 
     init {
         Injector.applicationComponent.inject(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        progressView.setIcon(resources.getDrawable(R.drawable.ic_search_black_128dp))
     }
 
     override fun onStart() {
@@ -71,25 +44,22 @@ class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress),
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mainHandler.removeCallbacksAndMessages(null)
-        coroutineContext.cancel()
-    }
-
     private fun animateInProgressView() {
-        mainHandler.removeCallbacks(animateOutRunnable)
-        view?.visibility = View.VISIBLE
         progressView.animate()
+            .setStartDelay(1000)
+            .withStartAction { view?.visibility = View.VISIBLE }
             .translationY(0f)
             .alpha(1f)
             .scaleX(1f).scaleY(1f)
             .setDuration(IN_OUT_DURATION)
+            .withEndAction(null)
             .start()
     }
 
     private fun animateOutProgressView() {
         progressView.animate()
+            .setStartDelay(0)
+            .withStartAction(null)
             .translationY(INITIAL_Y_OFFSET.toPx(requireContext()))
             .alpha(INITIAL_ALPHA)
             .scaleX(INITIAL_SCALE).scaleY(INITIAL_SCALE)
@@ -101,10 +71,6 @@ class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress),
     private fun updateDownloadProgress() {
         if (downloadProgressSource.isDownloadInProgress) {
             showProgressView()
-            val item = downloadProgressSource.currentDownloadItem
-            if (item != null) {
-                progressView.setIcon(requireContext().getDrawable(item.iconResId))
-            }
         } else {
             hideProgressView()
         }

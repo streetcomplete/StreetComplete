@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
-import de.westnordost.osmapi.map.MapData
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.ktx.firstAndLast
 
 private val footwaysFilter by lazy {"""
@@ -11,30 +12,73 @@ private val footwaysFilter by lazy {"""
         highway ~ footway|path
         or highway = cycleway and foot ~ yes|designated
       )
+      and area != yes
       and access !~ private|no and foot !~ no
 """.toElementFilterExpression() }
 
 private val waysFilter by lazy {"""
-    ways with highway ~ footway|path|cycleway or construction ~ footway|path|cycleway
+    ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} or construction ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
 """.toElementFilterExpression() }
+
+/* It is documented to be legal for a barrier=kerb to be mapped on the highway=crossing. See also
+ * https://taginfo.openstreetmap.org/keys/kerb#combinations . At the time of writing, 40% of
+ * all kerbs are mapped this way.
+ *
+ * This app should however not ask for details on these because the question is then confusing: It
+ * asks for "this kerb" but points to the crossing, i.e. the middle of the street.
+ *
+ * So, if the candidate has any tags that are NOT one of these, the app does not recognize this
+ * node as a kerb, even if barrier=kerb is set */
+private val allowedKeysOnKerbNode = setOf(
+    "barrier", // = kerb
+    // details on kerbs
+    "sloped_curb",
+    "tactile_paving",
+    "surface", "smoothness", "material",
+    "kerb", "kerb:height", "height", "width",
+    // access/eligibility-related
+    "wheelchair", "bicycle", "foot", "stroller",
+    // misc / meta info
+    "source", "project", "note", "mapillary"
+    // check date
+) + LAST_CHECK_DATE_KEYS
+
+/* separating regex-enabled keys and normal keys for performance reasons. No need to regex on
+   strings that are not regexes ... */
+private val allowedKeysOnKerbNodeRegexes = getLastCheckDateKeys(".*").map { it.toRegex() }
+
+/** Most nodes **could** be a kerb, depending on their location within a way. However, nodes that
+ *  are already something else, e.g. shop=hairdresser are definitely NOT a kerb.
+ *
+ *  If any node **could** be a kerb, this would lead to an unacceptable performance hit when any
+ *  node is updated due to an answered quest. See
+ *  https://github.com/streetcomplete/StreetComplete/pull/3104#issuecomment-889833381 for more
+ *  details ony why this function exists */
+fun Node.couldBeAKerb(): Boolean = tags.keys.all { key ->
+    key in allowedKeysOnKerbNode || allowedKeysOnKerbNodeRegexes.any { regex -> regex.matches(key) }
+}
 
 fun MapData.findAllKerbNodes(): Iterable<Node> {
     val footwayNodes = mutableSetOf<Node>()
-    ways.filter { footwaysFilter.matches(it) }
+    ways.asSequence()
+        .filter { footwaysFilter.matches(it) }
         .flatMap { it.nodeIds }
-        .mapNotNullTo(footwayNodes) { getNode(it) }
+        .mapNotNullTo(footwayNodes) { nodeId ->
+            getNode(nodeId)?.takeIf { it.couldBeAKerb() }
+        }
 
     val kerbBarrierNodeIds = mutableSetOf<Long>()
-    ways.filter { it.tags?.get("barrier") == "kerb" }
+    ways.asSequence()
+        .filter { it.tags["barrier"] == "kerb" }
         .flatMapTo(kerbBarrierNodeIds) { it.nodeIds }
 
     val anyWays = ways.filter { waysFilter.matches(it) }
     val crossingEndNodeIds = findCrossingKerbEndNodeIds(anyWays)
 
-    // Kerbs can be defined in three ways (see https://github.com/westnordost/StreetComplete/issues/1305#issuecomment-688333976):
+    // Kerbs can be defined in three ways (see https://github.com/streetcomplete/StreetComplete/issues/1305#issuecomment-688333976):
     return footwayNodes.filter {
         // 1. either as a node tagged with barrier = kerb on a footway
-        it.tags?.get("barrier") == "kerb" ||
+        it.tags["barrier"] == "kerb" ||
         // 2. or as the shared node at which a way tagged with barrier = kerb crosses a footway
         it.id in kerbBarrierNodeIds ||
         // 3. or implicitly as the shared node between a footway tagged with footway = crossing and
@@ -47,36 +91,48 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
 /** Find all node ids of end nodes of crossings that are (very probably) kerbs within the given
  *  collection of [ways] */
 private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
+    /* using asSequence in this function so to not copy potentially huge amounts (e.g. almost all
+       nodes of all ways in the data set) of data into temporary lists */
+
     val footways = ways.filter { footwaysFilter.matches(it) }
 
-    // all nodes that are an endpoint of a way with footway=crossing will have value 1 in this map
-    val crossingEndNodesConnectionCountByIds = mutableMapOf<Long, Int>()
-    footways
-        .filter { it.tags?.get("footway") == "crossing" }
+    val crossingEndNodeIds = footways.asSequence()
+        .filter { it.tags["footway"] == "crossing" }
         .flatMap { it.nodeIds.firstAndLast() }
-        .associateWithTo(crossingEndNodesConnectionCountByIds) { 1 }
 
-    // skip nodes that share an end node with a way where it is not clear if it is a sidewalk, crossing or something else
-    val unknownEndNodeIds = ways
-        .filter { it.tags?.get("footway") != "sidewalk" && it.tags?.get("footway") != "crossing" }
-        .flatMap { it.nodeIds.firstAndLast() }
-    crossingEndNodesConnectionCountByIds.keys.removeAll(unknownEndNodeIds)
+    val connectionsById = mutableMapOf<Long, Int>()
+    for (id in crossingEndNodeIds) {
+        val count = connectionsById[id] ?: 0
+        connectionsById[id] = count + 1
+    }
+    // skip nodes that have not exactly ONE connection to a crossing
+    connectionsById.entries.removeAll { it.value != 1 }
+    if (connectionsById.isEmpty()) return emptySet()
 
-    // skip nodes that share an end node with any node of a way that is not an end node
-    val waysMiddleNodeIds = ways.flatMap { it.nodeIds.subList(1, it.nodeIds.size - 1) }
-    crossingEndNodesConnectionCountByIds.keys.removeAll(waysMiddleNodeIds)
-
-    // count connections of the remaining crossing end node ids with end nodes of sidewalks
-    val sidewalkEndNodeIds = footways
-        .filter { it.tags?.get("footway") == "sidewalk" }
+    val sidewalkEndNodeIds = footways.asSequence()
+        .filter { it.tags["footway"] == "sidewalk" }
         .flatMap { it.nodeIds.firstAndLast() }
 
     for (id in sidewalkEndNodeIds) {
-        val prevCount = crossingEndNodesConnectionCountByIds[id] ?: 0
-        if (prevCount > 0) crossingEndNodesConnectionCountByIds[id] = prevCount + 1
+        val count = connectionsById[id] ?: continue
+        connectionsById[id] = count + 1
     }
+    // skip nodes that have not exactly ONE connection to a sidewalk (1 to crossing + 1 to sidewalk = 2)
+    connectionsById.entries.removeAll { it.value != 2 }
+    if (connectionsById.isEmpty()) return emptySet()
 
-    // if there are exactly two connections (one to crossing way, one to sidewalk way), this'll be
-    // a node where there is a kerb
-    return crossingEndNodesConnectionCountByIds.filter { it.value == 2 }.keys
+    // skip nodes that share an end node with a way where it is not clear if it is a sidewalk, crossing or something else
+    ways.asSequence()
+        .filter { it.tags["footway"] != "sidewalk" && it.tags["footway"] != "crossing" }
+        .flatMap { it.nodeIds.firstAndLast() }
+        .forEach { connectionsById.remove(it) }
+    if (connectionsById.isEmpty()) return emptySet()
+
+    // skip nodes that share an end node with any node of a way that is not an end node
+    ways.asSequence()
+        .flatMap { it.nodeIds.subList(1, it.nodeIds.size - 1) }
+        .forEach { connectionsById.remove(it) }
+    if (connectionsById.isEmpty()) return emptySet()
+
+    return connectionsById.keys
 }

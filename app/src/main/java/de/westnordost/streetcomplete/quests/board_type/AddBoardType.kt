@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.board_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 
-class AddBoardType : OsmFilterQuestType<String>() {
+class AddBoardType : OsmFilterQuestType<BoardType>() {
 
     override val elementFilter = """
         nodes with information = board
@@ -14,16 +14,17 @@ class AddBoardType : OsmFilterQuestType<String>() {
     override val commitMessage = "Add board type"
     override val wikiLink = "Key:board_type"
     override val icon = R.drawable.ic_quest_board_type
+    override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_board_type_title
 
     override fun createForm() = AddBoardTypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        if(answer == "map") {
+    override fun applyAnswerTo(answer: BoardType, changes: StringMapChangesBuilder) {
+        if(answer == BoardType.MAP) {
             changes.modify("information", "map")
         } else {
-            changes.addOrModify("board_type", answer)
+            changes.addOrModify("board_type", answer.osmValue)
         }
     }
 }

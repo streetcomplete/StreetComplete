@@ -1,25 +1,35 @@
 package de.westnordost.streetcomplete.ktx
 
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import java.util.ArrayList
+import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 
-fun Element.copy(newId: Long = id, newVersion: Int = version): Element {
-    val tags = tags?.let { HashMap(it) }
+fun Element.copy(
+    id: Long = this.id,
+    tags: Map<String, String> = this.tags,
+    version: Int = this.version,
+    timestampEdited: Long = this.timestampEdited,
+): Element {
     return when (this) {
-        is Node -> OsmNode(newId, newVersion, position, tags)
-        is Way -> OsmWay(newId, newVersion, ArrayList(nodeIds), tags)
-        is Relation -> OsmRelation(newId, newVersion, ArrayList(members), tags)
-        else -> throw RuntimeException()
+        is Node -> Node(id, position, tags, version, timestampEdited)
+        is Way -> Way(id, ArrayList(nodeIds), tags, version, timestampEdited)
+        is Relation -> Relation(id, ArrayList(members), tags, version, timestampEdited)
     }
 }
 
-fun Way.isClosed() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
+val Element.geometryType: GeometryType get() =
+    when {
+        type == ElementType.NODE -> GeometryType.POINT
+        isArea() -> GeometryType.AREA
+        type == ElementType.RELATION -> GeometryType.RELATION
+        else -> GeometryType.LINE
+    }
 
 fun Element.isArea(): Boolean {
     return when(this) {
-        is Way -> isClosed() && IS_AREA_EXPR.matches(this)
-        is Relation -> tags?.get("type") == "multipolygon"
+        is Way -> isClosed && IS_AREA_EXPR.matches(this)
+        is Relation -> tags["type"] == "multipolygon"
         else -> false
     }
 }
@@ -34,7 +44,7 @@ private val IS_AREA_EXPR = """
     or (emergency and emergency !~ yes|no)
     or historic
     or landuse
-    or leisure
+    or (leisure and leisure != track)
     or office
     or place
     or public_transport
@@ -50,3 +60,8 @@ private val IS_AREA_EXPR = """
     or natural ~ wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud|water|wetland|glacier|beach|rock|sinkhole
     or man_made ~ beacon|bridge|campanile|dolphin|lighthouse|obelisk|observatory|tower|bunker_silo|chimney|gasometer|kiln|mineshaft|petroleum_well|silo|storage_tank|watermill|windmill|works|communications_tower|monitoring_station|street_cabinet|pumping_station|reservoir_covered|wastewater_plant|water_tank|water_tower|water_well|water_works
     )""".toElementFilterExpression()
+
+fun Element.isSomeKindOfShop(): Boolean = IS_SOME_KIND_OF_SHOP_EXPR.matches(this)
+
+private val IS_SOME_KIND_OF_SHOP_EXPR =
+    ("nodes, ways, relations with " + isKindOfShopExpression()).toElementFilterExpression()

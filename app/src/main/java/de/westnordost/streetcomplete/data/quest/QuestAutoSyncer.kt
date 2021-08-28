@@ -9,19 +9,19 @@ import androidx.core.content.getSystemService
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.*
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
+import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.location.FineLocationManager
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -30,7 +30,7 @@ import javax.inject.Singleton
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
 @Singleton class QuestAutoSyncer @Inject constructor(
-    private val questDownloadController: QuestDownloadController,
+    private val downloadController: DownloadController,
     private val uploadController: UploadController,
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
     private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
@@ -40,17 +40,23 @@ import javax.inject.Singleton
     private val loginStatusSource: LoginStatusSource,
     private val prefs: SharedPreferences,
     private val userController: UserController,
-) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+    private val teamModeQuestFilter: TeamModeQuestFilter,
+    private val downloadedTilesDao: DownloadedTilesDao
+) : LifecycleObserver {
 
     private var pos: LatLon? = null
 
     private var isConnected: Boolean = false
     private var isWifi: Boolean = false
 
+    private val lifecycleScope = CoroutineScope(SupervisorJob())
+
     // new location is known -> check if downloading makes sense now
     private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
-        pos = OsmLatLon(location.latitude, location.longitude)
-        triggerAutoDownload()
+        if (location.accuracy <= 300) {
+            pos = LatLon(location.latitude, location.longitude)
+            triggerAutoDownload()
+        }
     }
 
     // connection state changed -> check if downloading or uploading is allowed now
@@ -67,9 +73,9 @@ import javax.inject.Singleton
     }
 
     // there are unsynced changes -> try uploading now
-    private val unsyncedChangesListener = object : UnsyncedChangesCountListener {
-        override fun onUnsyncedChangesCountIncreased() { triggerAutoUpload() }
-        override fun onUnsyncedChangesCountDecreased() {}
+    private val unsyncedChangesListener = object : UnsyncedChangesCountSource.Listener {
+        override fun onIncreased() { triggerAutoUpload() }
+        override fun onDecreased() {}
     }
 
     // on download finished, should recheck conditions for download
@@ -87,6 +93,16 @@ import javax.inject.Singleton
         override fun onLoggedOut() {}
     }
 
+    private val teamModeChangeListener = object : TeamModeQuestFilter.TeamModeChangeListener {
+        override fun onTeamModeChanged(enabled: Boolean) {
+            if (!enabled) {
+                // because other team members will have solved some of the quests already
+                downloadedTilesDao.removeAll()
+                triggerAutoDownload()
+            }
+        }
+    }
+
     val isAllowedByPreference: Boolean
         get() {
             val p = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!)
@@ -99,6 +115,7 @@ import javax.inject.Singleton
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
         loginStatusSource.addLoginStatusListener(userLoginStatusListener)
+        teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
@@ -119,12 +136,13 @@ import javax.inject.Singleton
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         loginStatusSource.removeLoginStatusListener(userLoginStatusListener)
-        coroutineContext.cancel()
+        teamModeQuestFilter.removeListener(teamModeChangeListener)
+        lifecycleScope.cancel()
     }
 
     @SuppressLint("MissingPermission")
     fun startPositionTracking() {
-        locationManager.requestUpdates(3 * 60 * 1000L, 500f)
+        locationManager.requestUpdates(30 * 1000L, 250f)
     }
 
     fun stopPositionTracking() {
@@ -136,16 +154,16 @@ import javax.inject.Singleton
     fun triggerAutoDownload() {
         val pos = pos ?: return
         if (!isConnected) return
-        if (questDownloadController.isDownloadInProgress) return
+        if (downloadController.isDownloadInProgress) return
 
-        Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude},${pos.longitude}")
+        Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
-        launch {
+        lifecycleScope.launch {
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
             val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
             if (downloadBoundingBox != null) {
                 try {
-                    questDownloadController.download(downloadBoundingBox)
+                    downloadController.download(downloadBoundingBox)
                 } catch (e: IllegalStateException) {
                     // The Android 9 bug described here should not result in a hard crash of the app
                     // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume

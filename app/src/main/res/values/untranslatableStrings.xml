@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Street­Complete</string>
+
+    <string name="quest_postboxRoyalCypher_type_eiir" translatable="false">E II R</string>
+    <string name="quest_postboxRoyalCypher_type_gvir" translatable="false">G VI R</string>
+    <string name="quest_postboxRoyalCypher_type_eviiir" translatable="false">E VIII R</string>
+    <string name="quest_postboxRoyalCypher_type_gr" translatable="false">G R</string>
+    <string name="quest_postboxRoyalCypher_type_eviir" translatable="false">E VII R</string>
+    <string name="quest_postboxRoyalCypher_type_vr" translatable="false">V R</string>
+
+    <string name="quest_policeType_type_it_carabinieri" translatable="false">Carabinieri</string>
+    <string name="quest_policeType_type_it_guardia_costiera" translatable="false">Guardia Costiera</string>
+    <string name="quest_policeType_type_it_guardia_di_finanza" translatable="false">Guardia di Finanza</string>
+    <string name="quest_policeType_type_it_polizia_di_stato" translatable="false">Polizia di Stato</string>
+    <string name="quest_policeType_type_it_polizia_municipale" translatable="false">Polizia Municipale</string>
+    <string name="quest_policeType_type_it_polizia_locale" translatable="false">Polizia Locale</string>
+    <string name="quest_policeType_type_it_polizia_stradale" translatable="false">Polizia Stradale</string>
+    <string name="quest_policeType_type_it_polizia_ferroviaria" translatable="false">Polizia Ferroviaria</string>
+    <string name="quest_maxspeed_answer_nsl">"National Speed Limit"</string>
 </resources>

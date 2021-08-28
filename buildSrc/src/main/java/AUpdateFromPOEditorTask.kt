@@ -5,7 +5,7 @@ import org.gradle.api.tasks.Input
 import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL
-import java.util.*
+import java.util.Locale
 
 /** Base task class to pull translations and other info from POEditor crowd translation platform */
 abstract class AUpdateFromPOEditorTask : DefaultTask() {

@@ -1,17 +1,17 @@
 package de.westnordost.streetcomplete.quests.railway_crossing
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 
-class AddRailwayCrossingBarrier : OsmElementQuestType<String> {
+class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
 
     private val crossingFilter by lazy { """
-        nodes with 
+        nodes with
           railway = level_crossing
           and (!crossing:barrier or crossing:barrier older today -8 years)
     """.toElementFilterExpression() }
@@ -19,7 +19,7 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<String> {
     private val excludedWaysFilter by lazy { """
         ways with
           highway and access ~ private|no
-          or railway ~ tram|abandoned
+          or railway ~ tram|abandoned|disused
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add type of barrier for railway crossing"
@@ -38,11 +38,12 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<String> {
             .filter { crossingFilter.matches(it) && it.id !in excludedWayNodeIds }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!crossingFilter.matches(element)) false else null
 
     override fun createForm() = AddRailwayCrossingBarrierForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("crossing:barrier", answer)
+    override fun applyAnswerTo(answer: RailwayCrossingBarrier, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("crossing:barrier", answer.osmValue)
     }
 }

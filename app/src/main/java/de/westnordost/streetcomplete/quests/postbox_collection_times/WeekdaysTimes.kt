@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
-import java.util.*
+import java.util.Locale
 
 data class WeekdaysTimes(var weekdays: Weekdays, var minutesList: MutableList<Int>) {
 

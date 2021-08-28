@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.view.ViewGroup
-import android.view.WindowInsets
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
@@ -16,12 +14,14 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.updateMargins
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import kotlin.math.min
 
 /** Abstract base class for (quest) bottom sheets
  *
@@ -31,31 +31,30 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
 
-    private val mainHandler = Handler(Looper.getMainLooper())
+    private var minBottomInset = Int.MAX_VALUE
 
-    private var bottomSheetBottom: Int? = null
+    private val mainHandler = Handler(Looper.getMainLooper())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheet.addOnLayoutChangeListener { _, _, _, _, bottom, _, _, _, _ ->
+        bottomSheet.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
             // not immediately because this is called during layout change (view.getTop() == 0)
-            val previousBottom = bottomSheetBottom
-            mainHandler.post {
-                updateCloseButtonVisibility()
-                val ctx = context
-                if (previousBottom != null && ctx != null) {
-                    val diffInDp = (bottom - previousBottom).toFloat().toDp(ctx)
-                    if (diffInDp > 150) onKeyboardOpened()
-                    else if (diffInDp < -150) onKeyboardClosed()
-                }
-            }
-            bottomSheetBottom = bottom
+            mainHandler.post { updateCloseButtonVisibility() }
         }
 
         closeButton.setOnClickListener { activity?.onBackPressed() }
 
-        setupFittingToSystemWindowInsets()
+        minBottomInset = Int.MAX_VALUE
+        view.respectSystemInsets { left, top, right, bottom ->
+            scrollViewChild.updatePadding(bottom = bottom)
+            bottomSheetContainer.updateMargins(top = top, left = left, right = right)
+            okButton.updateMargins(bottom = bottom + 8f.toPx(context).toInt())
+
+            // expanding bottom sheet when keyboard is opened
+            if (minBottomInset < bottom) expand()
+            minBottomInset = min(bottom, minBottomInset)
+        }
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
@@ -120,43 +119,14 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         }
     }
 
-    private fun setupFittingToSystemWindowInsets() {
-        view?.setOnApplyWindowInsetsListener { v: View, insets: WindowInsets ->
-            scrollViewChild.updatePadding(bottom = insets.systemWindowInsetBottom)
-
-            okButton.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                val defaultMargin = 8f.toPx(v.context).toInt()
-                updateMargins(bottom = insets.systemWindowInsetBottom + defaultMargin)
-            }
-
-            bottomSheetContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                updateMargins(
-                    top = insets.systemWindowInsetTop,
-                    left = insets.systemWindowInsetLeft,
-                    right = insets.systemWindowInsetRight
-                )
-            }
-
-            insets
-        }
-    }
-
     protected fun expand() {
         bottomSheetBehavior.state = STATE_EXPANDED
-    }
-
-    private fun onKeyboardOpened() {
-        expand()
-    }
-
-    private fun onKeyboardClosed() {
-        // nothing really...
     }
 
     private fun updateCloseButtonVisibility() {
         // this is called asynchronously. It may happen that the activity is already gone when this
         // method is finally called
-        closeButton.isGone = bottomSheet.top > 0
+        closeButton?.isInvisible = (bottomSheet?.top ?: 0) > 0
     }
 
     @UiThread override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
