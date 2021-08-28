@@ -53,8 +53,7 @@
             android:id="@+id/dropDownArrowImageView"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            app:tint="@color/text"
-            android:src="@drawable/ic_arrow_right_white_96dp"
+            android:src="@drawable/ic_arrow_right_96dp"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"/>
 

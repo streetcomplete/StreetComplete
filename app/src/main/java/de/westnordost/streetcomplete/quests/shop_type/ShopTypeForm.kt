@@ -34,7 +34,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
         }
         presetsEditText.setAdapter(SearchAdapter(requireContext(), { term -> getFeatures(term) }, { it.name }))
         presetsEditText.setOnClickListener { selectRadioButton(replaceRadioButton) }
-        presetsEditText.setOnFocusChangeListener { v, hasFocus ->
+        presetsEditText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) selectRadioButton(replaceRadioButton)
         }
         presetsEditText.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })

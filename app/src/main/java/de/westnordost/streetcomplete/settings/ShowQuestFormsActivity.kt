@@ -44,7 +44,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_show_quest_forms)
-        toolbar.navigationIcon = getDrawable(R.drawable.ic_close_white_24dp)
+        toolbar.navigationIcon = getDrawable(R.drawable.ic_close_24dp)
         toolbar.setNavigationOnClickListener { onBackPressed() }
         toolbar.title = "Show Quest Forms"
 
