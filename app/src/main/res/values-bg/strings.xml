@@ -1090,7 +1090,12 @@
     <string name="about_title_faq">"ЧЗВ"</string>
     <string name="quest_buildingLevels_title2">"Колко етажа над мазето има тази сграда?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Колко етажа над мазето има тази част от сградата?"</string>
+    <string name="quest_crossing_title">"Има ли бордюр на мястото къде този път се среща с улицата? Какъв вид?"</string>
+    <string name="default_disabled_msg_roofShape">"Тази задача е изклучена по подразбиране, защото формата на покривите не е лесно видима от улицата и отнема много време. В повечето случаи е по-лесно и по-ефективно да се използват сателитни изображения."</string>
     <string name="action_search">"Търсене"</string>
     <string name="quest_kerb_height_no">"Няма бордюр"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_selection_hint_message">"Участието трябва да бъде преди всичко забавно! Ако броят на куестовете ви претоварва, винаги можете да настроите кои куестове да ви се показват и в какъв ред в настройките."</string>
     <string name="quest_presets_default_name">"По подразбиране"</string>
 </resources>

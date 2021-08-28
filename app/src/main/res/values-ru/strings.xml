@@ -6,13 +6,9 @@
     <string name="oauth_failed_permissions">"Авторизация не удалась: все указанные разрешения должны быть предоставлены"</string>
     <string name="title_activity_settings">"Настройки"</string>
     <string name="pref_category_communication">"Связь"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"Вид"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
     <string name="pref_tilecache_size_message">"Резерв для тайлов на внешнем накопителе (MB)"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"Показывать все заметки"</string>
 
     <!-- Fuzzy -->
@@ -73,8 +69,6 @@
 
     <!-- Fuzzy -->
     <string name="action_upload">"Отправить ответы"</string>
-
-    <!-- Fuzzy -->
     <string name="no_changes">"Вы оставили поле пустым"</string>
     <string name="close">"закрыть"</string>
     <string name="download_error">"Ошибка при поиске квестов"</string>
@@ -113,8 +107,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_link">"Это просто соединение двух дорог"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Что-то ещё (оставить заметку)"</string>
     <string name="about_title_privacy_statement">"Заявление о конфиденциальности"</string>
     <string name="about_summary_privacy_statement">"и использование данных"</string>

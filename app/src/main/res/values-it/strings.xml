@@ -1170,6 +1170,8 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="no_search_results">"Nessun risultato"</string>
     <string name="quest_selection_hint_title">"Troppo da fare?"</string>
     <string name="quest_selection_hint_message">"Contribuire dovrebbe essere soprattutto un divertimento! Se sei sommerso dalle missioni puoi sempre regolare finemente nelle impostazioni quali vengono visualizzate e in quale ordine."</string>
+    <string name="quest_presets_default_name">"Predefinito"</string>
+    <string name="quest_presets_selected">"Selezionato"</string>
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Cancellare la preimpostazione \"%s\"? La selezione della missione e l'ordinamento saranno perse irrimediabilmente."</string>

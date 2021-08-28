@@ -1719,6 +1719,8 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"Ar poilsio kambarys %s prieinamas neįgaliųjų vežimėliu?"</string>
+    <string name="quest_tactilePaving_title_tram">"Ar ši gatvės sustojimo vieta turi lytėjimo dangą?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Ar gatvės sustojimo vieta %s turi lytėjimo dangą?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Koks čia yra svorio apribojimas?"</string>
@@ -1755,6 +1757,7 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nematyti jokio numerio..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Kelias iliustracijoje pasuktas taip pat kaip žemėlapyje žymeklio pozicijoje."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Ką čia galima palikti perdirbimui?"</string>
@@ -2072,6 +2075,7 @@ Galų gale visada būkite atidūs: stebėkite aplinką ir neikite į privačias 
 
     <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Savaitės naujienos apie tai, kas vyksta OpenStreetMap pasaulyje"</string>
+    <string name="link_figuregrounder_description">"Kurti miesto ar rajono pastatų diagramos plakatus"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_first_edit_title">"Išspręsta pirma užduotis"</string>
@@ -2170,17 +2174,47 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
 
     <!-- Fuzzy -->
     <string name="stats_are_syncing">"Jūsų statistika vis dar atnaujinama. Grįžkite čia vėliau."</string>
+    <string name="user_statistics_country_rank">"Vieta %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Žymėjimo portalas %s"</string>
     <string name="user_statistics_filter_by_country">"pagal šalį"</string>
+    <string name="user_statistics_filter_by_quest_type">"pagal užduoties tipą"</string>
+    <string name="user_profile_global_rank">"Vieta pasaulyje"</string>
+    <string name="user_profile_local_rank">"Vieta
+%s"</string>
+    <string name="user_profile_days_active">"Aktyvumo dienų"</string>
     <string name="user_profile_achievement_levels">"Pasiekimų lygis"</string>
+    <string name="quest_address_street_title">"Kam priklauso (namo) numeris %s?"</string>
+    <string name="quest_address_street_no_named_streets">"Nepriklauso gatvei su pavadinimu"</string>
+    <string name="quest_address_street_place_name_label">"Vietos pavadinimas:"</string>
+    <string name="quest_address_street_description">"Paspauskite ant kelio, kuriam jis priklauso, žemėlapyje arba įveskite be sutrumpinimų lauke žemiau:"</string>
     <string name="quest_recycling_type_cooking_oil">"Aliejus"</string>
     <string name="quest_recycling_type_engine_oil">"Variklio alyva"</string>
+    <string name="link_photon_description">"Atskiras Nominatim plėtinys, leidžiantis apytikslę paiešką ir paiešką rašant"</string>
+    <string name="link_graphhopper_description">"Lankstus maršrutizavimo variklis"</string>
+    <string name="link_qwant_maps_description">"Žemėlapis su ieškomomis vietomis ir kryptimis"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;Žemėlapio rodymui kaladėlės atsiunčiamos iš %1$s. Daugiau informacijos rasite jų &lt;a href=\"%2$s\"&gt;privatumo aprašyme&lt;/a&gt;.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Rėmėjai"</string>
     <string name="quest_board_type_history">"Istorija"</string>
     <string name="quest_board_type_geology">"Geologija"</string>
     <string name="quest_board_type_plants">"Augalai"</string>
+    <string name="quest_board_type_wildlife">"Laukinė gamta"</string>
+    <string name="quest_board_type_nature">"Gamta (kelios temos)"</string>
+    <string name="quest_board_type_notice_board">"Tai pranešimų lenta"</string>
     <string name="quest_board_type_public_transport">"Viešasis transportas"</string>
+    <string name="quest_board_type_title">"Kokia yra šios informacinės lentos tema?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Taip, rodoma žemėlapyje atskirai"</string>
+    <string name="quest_board_type_map">"Tai žemėlapis"</string>
+    <string name="quest_board_type_map_title">"Ar tai žemėlapis ir tik žemėlapis?"</string>
+    <string name="quest_board_type_map_description">"Jei lenta yra apie konkrečią temą, prašome ją nurodyti, nepriklausomai nuo to, ar joje yra žemėlapis. Pavyzdžiui viešo transporto lentoje gali būti autobusų maršrutų žemėlapis. Jei temos nėra galimuose atsakymuose, galbūt geriau būtų palikti pastabą."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Kelios dangos…"</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Ar tikrai neįmanoma nurodyti dangos? Atkreipkite dėmesį, kad parinktis „Skirtingose vietose kitokia“ leidžia jums padalinti kelią ten, kur keičiasi danga. Prašome naudoti „Negaliu pasakyti“, jei yra viena danga, bet jos nėra tarp atsakymų."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Prašome trumpai aprašyti dangos tipą, pavyzdžiui „smėlėtas su bruko gabalais“. Teksto ilgis ribojamas 255 simboliais."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"tarptautinis"</string>
+    <string name="quest_streetName_menuItem_romanized">"Lotiniškas"</string>
+    <string name="quest_buildingType_terrace2">"Pastatų eilė"</string>
+    <string name="quest_oneway_tutorial">"Kelias iliustracijoje pasuktas taip pat kaip žemėlapyje žymeklio vietoje. Atkreipkite dėmesį į rodomą kryptį."</string>
     <string name="at_housename">"Namo pavadinimas %s:"</string>
     <string name="at_conscription_and_street_number">"Užsakymo numeris %1$s, orientacijos numeris %2$s:"</string>
 
@@ -2188,6 +2222,12 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="at_conscription_number">"Užsakymo numeris %s:"</string>
     <string name="at_housenumber">"namo numeris %s:"</string>
     <string name="quest_openingHours_name_type_title">"Koks yra %1$s (%2$s) darbo laikas?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Ar šios %s darbo valandos vis dar teisingos?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Ar šios %1$s (%2$s) darbo valandos vis dar teisingos?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Ar šios darbo valandos vis dar teisingos (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"Pridėti nedarbo dienas"</string>
+    <string name="quest_openingHours_off_day">"Nedarbo diena"</string>
+    <string name="quest_openingHours_unspecified_range">"Nenurodyta"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Ar %1$s (%2$s) prieinamas vežimėliu?"</string>
     <string name="resurvey_intervals_less_often">"Klausti rečiau"</string>
     <string name="resurvey_intervals_default">"Numatytasis"</string>

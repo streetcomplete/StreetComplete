@@ -2218,4 +2218,12 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_camera_type_dome">"Kuppel"</string>
     <string name="quest_camera_type_fixed">"Fast"</string>
     <string name="quest_camera_type_panning">"Panorering"</string>
+    <string name="quest_buildingLevels_title2">"Hvor mange etager, over jorden, har denne bygning?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etager, over jorden, har denne del af bygningen?"</string>
+    <string name="questList_disabled_at_day">"Kun vist om natten?"</string>
+    <string name="pref_quests_deselect_all">"Fjern alle"</string>
+    <string name="quest_buildingType_boathouse">"Bådhus"</string>
+    <string name="quest_buildingType_allotment_house">"Kolonihavehus"</string>
+    <string name="action_search">"Søg"</string>
+    <string name="quest_kerb_height_no">"Ingen kantsten"</string>
 </resources>

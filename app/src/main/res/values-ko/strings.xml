@@ -2160,4 +2160,16 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_camera_type_dome">"둥근형"</string>
     <string name="quest_camera_type_fixed">"고정형"</string>
     <string name="quest_camera_type_panning">"회전형"</string>
+    <string name="about_title_faq">"FAQ"</string>
+
+    <!-- Fuzzy -->
+    <string name="default_disabled_msg_roofShape">"지붕 형태를 길거리에서 보는 것이 쉽지 않기 때문에 이 과제는 기본적으로 비활성화 되어있습니다. 이 과제는 또 시간을 많이 소모합니다; 대부분의 경우 집에서 위성사진을 통해 정보를 채워넣는 게 더 쉽고 효율적입니다."</string>
+    <string name="quest_religion_animist">"애니미즘"</string>
+    <string name="questList_disabled_at_day">"밤에만 보임"</string>
+    <string name="pref_quests_deselect_all">"모든 과제를 선택 해제할까요?"</string>
+    <string name="quest_buildingType_boathouse">"선상가옥"</string>
+    <string name="action_search">"검색"</string>
+    <string name="team_mode_team_size_label2">"몇명이서 탐사하나요? 모든 사람의 폰에 같은 숫자를 입력하세요."</string>
+    <string name="quest_selection_hint_title">"할 게 너무 많나요?"</string>
+    <string name="quest_selection_hint_message">"기여는 일단 재밌어야죠! 과제 수가 너무 많아 부담스럽다면, 어떤 과제를 어떤 순서대로 볼지 설정에서 언제든지 조정할 수 있습니다."</string>
 </resources>

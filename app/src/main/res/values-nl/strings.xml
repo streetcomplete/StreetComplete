@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Instellingen"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Kan de autorisatieserver niet bereiken"</string>
 
     <!-- Fuzzy -->

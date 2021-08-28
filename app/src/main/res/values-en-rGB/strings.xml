@@ -124,8 +124,6 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_surface_value_dirt">"Dirt"</string>
     <string name="quest_surface_value_fine_gravel">"Fine gravel"</string>
     <string name="quest_surface_value_grass">"Grass"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass_paver">"Grass paver"</string>
     <string name="quest_surface_value_gravel">"Gravel"</string>
     <string name="quest_surface_value_paving_stones">"Paving stones"</string>
@@ -1044,7 +1042,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
 
     <!-- Heard this called lift gate and arm gate before, but never boom barrier! -->
     <!-- Fuzzy -->
-    <string name="quest_barrier_type_lift_gate">"Rising arm barrier"</string>
+    <string name="quest_barrier_type_lift_gate">"Boom barrier"</string>
     <string name="quest_barrier_type_bollard">"Bollard(s)"</string>
     <string name="quest_barrier_type_chain">"Chain"</string>
     <string name="quest_barrier_type_rope">"Rope"</string>

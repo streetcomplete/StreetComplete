@@ -1551,6 +1551,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="achievement_regular_description">"Bu uygulamayla OSMye %d gün katkıda bulundunuz! Düzenli olarak katkıda bulunanlar, OSMnin bel kemiğidir, bağlılığınız için teşekkürler! ❤"</string>
     <string name="achievement_bicyclist_title">"Bisikletçi"</string>
     <string name="achievement_postman_title">"Postacı"</string>
+    <string name="achievement_blind_title">"Altıncı His"</string>
     <string name="achievement_blind_solved_X">"Görme engelliler için ilginç olan %d görevi çözdünüz."</string>
     <string name="unread_messages_message">"Gelen kutunuzda %d okunmamış mesajınız var"</string>
     <string name="unread_messages_button">"Gelen Kutusunu Aç"</string>
@@ -1673,4 +1674,13 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_surface_value_clay">"Kil"</string>
     <string name="quest_surface_value_artificial_turf">"Suni çim"</string>
     <string name="quest_bicycle_parking_fee_title">"Buraya bisiklet park etmek için ödeme yapmanız gerekiyor mu?"</string>
+    <string name="undo_last">"Son düzenlemeyi geri al"</string>
+    <string name="show_edit_history">"Düzenleme geçmişini göster"</string>
+    <string name="undo_confirm_title2">"Bu düzenleme geri alınsın mı?"</string>
+    <string name="synced">"Senkron"</string>
+    <string name="no_location_permission_warning_title">"Konum İzni"</string>
+    <string name="about_title_faq">"S.S.S."</string>
+    <string name="action_search">"Ara"</string>
+    <string name="no_search_results">"Hiçbir şey bulunamadı"</string>
+    <string name="quest_presets_default_name">"Varsayılan"</string>
 </resources>
