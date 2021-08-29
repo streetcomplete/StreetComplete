@@ -21,9 +21,14 @@ class MapTilesDownloader @Inject constructor(
 ) {
     private val okHttpClient = OkHttpClient.Builder().cache(cacheConfig.cache).build()
 
-    data class Tile(val zoom: Int, val x: Int, val y: Int)
+   data class Tile(val zoom: Int, val x: Int, val y: Int)
 
     suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
+        downloadTiles(vectorTileProvider.baseTileSource, bbox)
+        downloadTiles(vectorTileProvider.aerialLayerSource, bbox)
+    }
+
+    private suspend fun downloadTiles(source: TileSource, bbox: BoundingBox) {
         var tileCount = 0
         var failureCount = 0
         var downloadedSize = 0
@@ -31,20 +36,15 @@ class MapTilesDownloader @Inject constructor(
         val time = currentTimeMillis()
 
         coroutineScope {
-            listOf(
-                vectorTileProvider.baseTileSource,
-                vectorTileProvider.aerialLayerSource
-            ).forEach { source ->
-                for (tile in getDownloadTileSequence(source, bbox)) {
-                    launch {
-                        val result = downloadTile(source, tile.zoom, tile.x, tile.y)
-                        ++tileCount
-                        when (result) {
-                            is DownloadFailure -> ++failureCount
-                            is DownloadSuccess -> {
-                                if (result.alreadyCached) cachedSize += result.size
-                                else downloadedSize += result.size
-                            }
+            for (tile in getDownloadTileSequence(source, bbox))
+                launch {
+                    val result = downloadTile(source, tile.zoom, tile.x, tile.y)
+                    ++tileCount
+                    when (result) {
+                        is DownloadFailure -> ++failureCount
+                        is DownloadSuccess -> {
+                            if (result.alreadyCached) cachedSize += result.size
+                            else downloadedSize += result.size
                         }
                     }
                 }
@@ -52,7 +52,7 @@ class MapTilesDownloader @Inject constructor(
         }
         val seconds = (currentTimeMillis() - time) / 1000.0
         val failureText = if (failureCount > 0) ". $failureCount tiles failed to download" else ""
-        Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
+        Log.i(TAG, "[${source.title}] Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
     }
 
     private fun getDownloadTileSequence(source: TileSource, bbox: BoundingBox): Sequence<Tile> =
