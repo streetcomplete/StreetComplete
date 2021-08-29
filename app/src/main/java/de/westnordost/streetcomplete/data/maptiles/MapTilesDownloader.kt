@@ -35,18 +35,24 @@ class MapTilesDownloader @Inject constructor(
         var cachedSize = 0
         val time = currentTimeMillis()
 
+        val tiles = getDownloadTileSequence(source, bbox)
+        val results = arrayOfNulls<DownloadResult>(tiles.count())
+
         coroutineScope {
-            for (tile in getDownloadTileSequence(source, bbox))
+            tiles.forEachIndexed { i, tile ->
                 launch {
-                    val result = downloadTile(source, tile.zoom, tile.x, tile.y)
-                    ++tileCount
-                    when (result) {
-                        is DownloadFailure -> ++failureCount
-                        is DownloadSuccess -> {
-                            if (result.alreadyCached) cachedSize += result.size
-                            else downloadedSize += result.size
-                        }
-                    }
+                    results[i] = downloadTile(source, tile.zoom, tile.x, tile.y)
+                }
+            }
+        }
+
+        results.forEach { result ->
+            ++tileCount
+            when (result) {
+                is DownloadFailure -> ++failureCount
+                is DownloadSuccess -> {
+                    if (result.alreadyCached) cachedSize += result.size
+                    else downloadedSize += result.size
                 }
             }
         }
