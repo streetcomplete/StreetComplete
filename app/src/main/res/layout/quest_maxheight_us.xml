@@ -71,7 +71,7 @@
             android:textStyle="bold"
             android:textSize="30dp"
             android:gravity="center"
-            android:textColor="#000000"
+            android:textColor="#000"
             tools:ignore="HardcodedText"/>
 
     </LinearLayout>

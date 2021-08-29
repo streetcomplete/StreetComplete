@@ -15,7 +15,7 @@
             <objectAnimator
                 android:propertyName="fillColor"
                 android:duration="300"
-                android:valueFrom="#ffffff"
+                android:valueFrom="#fff"
                 android:valueTo="#aaaaaa"
                 android:valueType="colorType"
                 android:interpolator="@android:anim/accelerate_decelerate_interpolator"/>

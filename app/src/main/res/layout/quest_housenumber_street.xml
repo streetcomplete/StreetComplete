@@ -28,7 +28,7 @@
             android:textSize="28dp"
             android:textAlignment="center"
             android:maxLines="1"
-            android:textColor="#ffffff"
+            android:textColor="#fff"
             android:textColorHint="#66ffffff"
             android:hint="@string/quest_address_street_hint"
             />

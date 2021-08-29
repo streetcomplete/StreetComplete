@@ -20,10 +20,7 @@
         android:fillColor="#877649"/>
     <path
         android:pathData="m12.062,7.945c-0.796,0.169 -1.267,1.127 -1.052,2.14 0.18,0.841 0.787,1.478 1.472,1.545l2.758,-3.192z"
-        android:strokeLineCap="round"
-        android:fillColor="#ceba84"
-        android:strokeWidth="1"
-        android:strokeLineJoin="bevel"/>
+        android:fillColor="#ceba84"/>
     <path
         android:pathData="m19.949,9.747c-0.807,0.108 -1.349,1.028 -1.211,2.054 0.115,0.853 0.672,1.534 1.35,1.652l1.621,0.437 0.466,-3.641z"
         android:fillColor="#ceba84"/>
