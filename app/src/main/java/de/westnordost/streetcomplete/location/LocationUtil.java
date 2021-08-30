@@ -4,29 +4,21 @@ import android.Manifest;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.provider.Settings;
+import android.location.LocationManager;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.core.location.LocationManagerCompat;
 
 public class LocationUtil
 {
-	public static boolean isLocationOn(Context context)
+	public static boolean isLocationEnabled(@NonNull Context context)
 	{
-		if(!hasLocationPermission(context)) return false;
-
-		try
-		{
-			int locationMode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
-			return locationMode != Settings.Secure.LOCATION_MODE_OFF;
-		}
-		catch(Settings.SettingNotFoundException e)
-		{
-			e.printStackTrace();
-			return false;
-		}
+		return hasLocationPermission(context) && LocationManagerCompat
+				.isLocationEnabled(ContextCompat.getSystemService(context, LocationManager.class));
 	}
 
-	public static boolean hasLocationPermission(Context context)
+	public static boolean hasLocationPermission(@NonNull Context context)
 	{
 		return ContextCompat.checkSelfPermission(context,
 				Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
@@ -34,8 +26,6 @@ public class LocationUtil
 
 	public static IntentFilter createLocationAvailabilityIntentFilter()
 	{
-		return new IntentFilter(MODE_CHANGED);
+		return new IntentFilter(LocationManager.MODE_CHANGED_ACTION);
 	}
-
-	private static final String MODE_CHANGED = "android.location.MODE_CHANGED";
 }
