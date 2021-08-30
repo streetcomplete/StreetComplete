@@ -83,7 +83,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheetContainer.respectSystemInsets(View::setMargins)
+        bottomSheetContainer.respectSystemInsets { setMargins(it.left, it.top, it.right, it.bottom) }
 
         splitWayRoot.setOnTouchListener { _, event ->
             clickPos = PointF(event.x, event.y)
