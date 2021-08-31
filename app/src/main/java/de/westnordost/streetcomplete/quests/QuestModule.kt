@@ -343,11 +343,8 @@ import javax.inject.Singleton
         AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
         // footways
-        AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
-        /* first ask for segregation and then for surface, because based on that answer, EITHER
-           path surface OR cycleway/footway part surface is asked (#3222)
-         */
         AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
+        AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
         AddFootwayPartSurface(),
         AddCyclewayPartSurface(),
 
