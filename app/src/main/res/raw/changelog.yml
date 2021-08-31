@@ -7,7 +7,7 @@ v34.0-beta2: |
   <li>Clear user statistics properly when logging out (#3168)</li>
   <li>Remove location pointer pin from UI when GPS position is lost (#3213), by @smichel17</li>
   <li>In the edit history, scroll to item when it is selected on the map (#3226)</li>
-  <li>Never ask for the lane count of road areas</li>
+  <li>Fix a few crashes</li>
   </ul>
   <h3>Enhancements</h3>
   <ul>
