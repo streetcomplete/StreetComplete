@@ -30,6 +30,7 @@ class EditHistoryAdapter(
 
     private val rows: MutableList<EditHistoryItem> = ArrayList()
     private var selectedEdit: Edit? = null
+    private var recyclerView: RecyclerView? = null
 
     fun setEdits(edits: List<Edit>) {
         rows.clear()
@@ -93,6 +94,16 @@ class EditHistoryAdapter(
         IsSyncedItem -> SYNCED
     }
 
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        this.recyclerView = recyclerView
+    }
+
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView)
+        this.recyclerView = null
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
@@ -118,6 +129,8 @@ class EditHistoryAdapter(
         /* edit can in rare cases not be in adapter any more - when the edit is removed from the
            database while it is being tapped */
         if (newSelectedIndex == -1) return
+
+        recyclerView?.scrollToPosition(newSelectedIndex)
 
         selectedEdit = edit
 
