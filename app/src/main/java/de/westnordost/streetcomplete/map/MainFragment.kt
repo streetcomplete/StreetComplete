@@ -8,7 +8,6 @@ import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -141,7 +140,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!, this::onLocationChanged)
+        locationManager = FineLocationManager(context, this::onLocationChanged)
 
         childFragmentManager.addFragmentOnAttachListener { _, fragment ->
             when (fragment) {
@@ -553,7 +552,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mapFragment!!.startPositionTracking()
 
         setIsFollowingPosition(wasFollowingPosition)
-        locationManager.requestSingleUpdate()
+        locationManager.getCurrentLocation()
     }
 
     private fun onLocationIsDisabled() {
@@ -573,9 +572,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
-    private fun onLocationChanged(location: Location) {
-        binding.gpsTrackingButton.state = LocationState.UPDATING
-        updateLocationPointerPin()
+    private fun onLocationChanged(location: Location?) {
+        if (location != null) {
+            binding.gpsTrackingButton.state = LocationState.UPDATING
+            updateLocationPointerPin()
+        }
     }
 
     //endregion

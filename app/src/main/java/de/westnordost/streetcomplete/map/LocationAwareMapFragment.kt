@@ -83,10 +83,7 @@ open class LocationAwareMapFragment : MapFragment() {
             this::onCompassRotationChanged
         )
         lifecycle.addObserver(compass)
-        locationManager = FineLocationManager(
-            context.getSystemService<LocationManager>()!!,
-            this::onLocationChanged
-        )
+        locationManager = FineLocationManager(context, this::onLocationChanged)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -186,13 +183,15 @@ open class LocationAwareMapFragment : MapFragment() {
         if (shouldCenterCurrentPosition()) centerCurrentPosition()
     }
 
-    private fun onLocationChanged(location: Location) {
-        displayedLocation = location
-        locationMapComponent?.location = location
-        addTrackLocation(location)
-        compass.setLocation(location)
-        centerCurrentPositionIfFollowing()
-        listener?.onDisplayedLocationDidChange()
+    private fun onLocationChanged(location: Location?) {
+        if (location != null) {
+            displayedLocation = location
+            locationMapComponent?.location = location
+            addTrackLocation(location)
+            compass.setLocation(location)
+            centerCurrentPositionIfFollowing()
+            listener?.onDisplayedLocationDidChange()
+        }
     }
 
     private fun addTrackLocation(location: Location) {
