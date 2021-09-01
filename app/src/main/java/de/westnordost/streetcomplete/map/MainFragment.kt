@@ -792,7 +792,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
 
         val f = quest.type.createForm()
-        val element = if (quest is OsmQuest) questController.getOsmElement(quest) else null
+        val element = if (quest is OsmQuest) {
+            questController.getOsmElement(quest) ?: return
+        } else {
+            null
+        }
         val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f
