@@ -27,7 +27,8 @@ import kotlin.math.min
 /** Abstract base class for (quest) bottom sheets
  *
  * Note: The AbstractBottomSheetFragment currently assumes that it will be inflated with the views
-   that are in fragment_quest_answer by any subclass!*/
+ * that are in fragment_quest_answer by any subclass!
+ * */
 abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
@@ -35,6 +36,9 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     private var minBottomInset = Int.MAX_VALUE
 
     private val mainHandler = Handler(Looper.getMainLooper())
+
+    // overridable by child classes
+    open val defaultExpanded = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -90,7 +94,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
             }
         })
 
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE || defaultExpanded) {
             expand()
         }
 
