@@ -1,3 +1,19 @@
+v34.0-beta2: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix new selectable building types were actually not selectable</li>
+  <li>Fix couldn't press OK anymore after pressing cancel in the dialog that asks if you are really on-site (#3198)</li>
+  <li>Fix crash when asking for the religion of a place (#3217)</li>
+  <li>Clear user statistics properly when logging out (#3168)</li>
+  <li>Remove location pointer pin from UI when GPS position is lost (#3213), by @smichel17</li>
+  <li>In the edit history, scroll to item when it is selected on the map (#3226)</li>
+  <li>Fix a few crashes</li>
+  </ul>
+  <h3>Enhancements</h3>
+  <ul>
+  <li>Some minor enhancements on the quest presets (#3216, ...) and new quest order (#3168), by @peternewman</li>
+  </ul>
+
 v34.0-beta1: |
   <h3>🚌🚴 Quest presets</h3>
   <ul>

@@ -111,6 +111,8 @@ open class LocationAwareMapFragment : MapFragment() {
     fun stopPositionTracking() {
         locationMapComponent?.isVisible = false
         locationManager.removeUpdates()
+        isCompassMode = false
+        displayedLocation = null
     }
 
     protected open fun shouldCenterCurrentPosition(): Boolean {

@@ -16,6 +16,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
               or (maxspeed ~ ".*mph" and maxspeed !~ "([1-9]|1[0-9]|20) mph")
             )
           )
+          and area != yes
           and surface ~ ${ANYTHING_PAVED.joinToString("|")}
           and (!lanes or lanes = 0)
           and (!lanes:backward or !lanes:forward)
