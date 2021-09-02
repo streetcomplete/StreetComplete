@@ -2235,4 +2235,27 @@
     <string name="quest_camera_type_title">"Τί είδους κάμερα παρακολούθησης είναι αυτή;"</string>
     <string name="quest_camera_type_dome">"Θόλου"</string>
     <string name="quest_camera_type_fixed">"Σταθερή"</string>
+    <string name="about_title_faq">"Συχνές ερωτήσεις"</string>
+    <string name="quest_buildingLevels_title2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το κτίριο;"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το τμήμα του κτιρίου;"</string>
+    <string name="pref_subtitle_quests_preset_name">"Προεπιλογή: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή συχνά το σχήμα της στέγης δεν είναι εύκολα ορατό από τον δρόμο. Αυτός ο τύπος αναζήτησης είναι επίσης αρκετά χρονοβόρος - στις περισσότερες περιπτώσεις είναι πιο εύκολο και αποτελεσματικό να γίνει η χαρτογράφηση από αεροφωτογραφίες στο σπίτι."</string>
+    <string name="quest_religion_animist">"Ανιμισμός"</string>
+    <string name="quest_construction_steps_title">"Έχουν ολοκληρωθεί αυτά τα σκαλοπάτια;"</string>
+    <string name="questList_disabled_at_day">"Εμφανίζεται μόνο τη νύχτα"</string>
+    <string name="pref_quests_deselect_all">"Αποεπιλογή όλων των αναζητήσεων;"</string>
+    <string name="quest_buildingType_allotment_house">"Σπιτάκι κήπου"</string>
+    <string name="action_search">"Αναζήτηση"</string>
+    <string name="action_manage_presets">"Διαχείριση προεπιλογών"</string>
+    <string name="team_mode_team_size_label2">"Πόσα άτομα χαρτογραφούν; Εισάγετε τον ίδιο αριθμό σε όλες τις συσκευές."</string>
+    <string name="team_mode_choose_color2">"Στη συνέχεια, κάθε άτομο πρέπει να επιλέξει διαφορετικό χρώμα. Επιλέξτε το δικό σας:"</string>
+    <string name="link_organic_maps_description">"Εφαρμογή χαρτών για ταξιδιώτες, πεζοπόρους και ποδηλάτες που λειτουργεί εκτός σύνδεσης"</string>
+    <string name="no_search_results">"Δεν βρέθηκε τίποτα"</string>
+    <string name="quest_selection_hint_title">"Έχετε πολλά να κάνετε;"</string>
+    <string name="quest_selection_hint_message">"Η συνεισφορά θα πρέπει πρωτίστως να είναι διασκεδαστική! Αν σας έχει κατακλύσει ο αριθμός των αποστολών, μπορείτε πάντα να ρυθμίσετε με ακρίβεια ποιες αποστολές θα σας εμφανίζονται και με ποια σειρά στις ρυθμίσεις."</string>
+    <string name="quest_presets_preset_add">"Προσθήκη προεπιλογής"</string>
+    <string name="quest_presets_preset_name">"Όνομα προεπιλογής"</string>
+    <string name="quest_presets_default_name">"Προεπιλογή"</string>
+    <string name="quest_presets_selected">"Επιλεγμένα"</string>
+    <string name="quest_presets_delete_message">"Διαγραφή προεπιλογής \"%s\"; Η επιλογή και η σειρά αναζήτησης για αυτήν θα χαθούν αμετάκλητα."</string>
 </resources>

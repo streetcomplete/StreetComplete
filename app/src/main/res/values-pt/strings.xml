@@ -1638,7 +1638,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_ferry_pedestrian_title">"Esta rota de ferry transporta passageiros em pé?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ferry_motor_vehicle_name_title">"%s transporto veículos motorizados?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"%s transporta veículos motorizados?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Esta rota de ferry transporta veículos motorizados?"</string>
@@ -2148,4 +2148,9 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_camera_type_dome">"cúpula"</string>
     <string name="quest_camera_type_fixed">"Fixo"</string>
     <string name="quest_camera_type_panning">"Panning"</string>
+    <string name="quest_buildingLevels_title2">"Quantos andares acima da cave tem este edifício?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Quantos andares acima da cave tem esta parte do edifício?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Predefinição: %s"</string>
+    <string name="quest_construction_steps_title">"Estes degraus estão terminados?"</string>
+    <string name="questList_disabled_at_day">"Mostrado apenas durante a noite"</string>
 </resources>

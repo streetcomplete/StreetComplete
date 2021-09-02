@@ -79,7 +79,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Den kobler bare sammen to veier"</string>
 
     <!-- Endret fra "notat" til "merknad" som er det OSM bruker på norsk. -->
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Noe annet (legg igjen merknad)"</string>
     <string name="about_title_privacy_statement">"Personvernerklæring"</string>
     <string name="about_summary_privacy_statement">"og databruk"</string>
