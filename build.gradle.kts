@@ -60,9 +60,11 @@ tasks.register("updateStreetCompleteData") {
         //"updateAtmOperators",
         "app:updatePresets",
         "app:updateNsiPresets",
+        "app:updateTranslatorCredits",
         "app:updateTranslations",
         "app:updateTranslationCompleteness",
         "app:copyDefaultStringsToEnStrings",
-        "app:generateMetadataByCountry"
+        "app:generateMetadataByCountry",
+        "app:updateTranslatorCredits"
         )
 }

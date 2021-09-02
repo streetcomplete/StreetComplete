@@ -185,6 +185,13 @@ val bcp47ExportLanguages = setOf(
     "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
 )
 
+tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
+    group = "streetcomplete"
+    targetFile = "$projectDir/src/main/res/raw/credits_translators.yml"
+    languageCodes = bcp47ExportLanguages
+    cookie = properties["POEditorCookie"] as String
+}
+
 tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
