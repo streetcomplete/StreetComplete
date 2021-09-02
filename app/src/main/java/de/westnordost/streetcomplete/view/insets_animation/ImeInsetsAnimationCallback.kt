@@ -52,7 +52,7 @@ fun View.respectSystemInsets(onNewInsets: View.(left: Int, top: Int, right: Int,
         val imeAnimationCallback = ImeInsetsAnimationCallback(this, onNewInsets)
         setOnApplyWindowInsetsListener(imeAnimationCallback)
         setWindowInsetsAnimationCallback(imeAnimationCallback)
-    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    } else {
         setOnApplyWindowInsetsListener { v, windowInsets ->
             onNewInsets(v,
                 windowInsets.systemWindowInsetLeft,

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.map.components
 
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.os.Build
 import com.mapzen.tangram.SceneUpdate
 import de.westnordost.streetcomplete.map.VectorTileProvider
 import de.westnordost.streetcomplete.map.tangram.KtMapController
@@ -61,17 +60,12 @@ class SceneMapComponent (
     private fun getAllSceneUpdates(): List<SceneUpdate> =
         getBaseSceneUpdates() + sceneUpdates.map { SceneUpdate(it.key, it.value) }
 
-    private fun getBaseSceneUpdates(): List<SceneUpdate> {
-        val updates = mutableListOf(
-            SceneUpdate("global.language", Locale.getDefault().language),
-            SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}"),
-            SceneUpdate("global.api_key", vectorTileProvider.apiKey),
-        )
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            updates.add(SceneUpdate("global.language_script", Locale.getDefault().script))
-        }
-        return updates
-    }
+    private fun getBaseSceneUpdates(): List<SceneUpdate> = listOf(
+        SceneUpdate("global.language", Locale.getDefault().language),
+        SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}"),
+        SceneUpdate("global.api_key", vectorTileProvider.apiKey),
+        SceneUpdate("global.language_script", Locale.getDefault().script)
+    )
 
     private fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK

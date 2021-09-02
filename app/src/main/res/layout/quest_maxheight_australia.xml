@@ -29,7 +29,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="CLEARANCE"
-            android:textColor="#000000"
+            android:textColor="#000"
             android:textSize="22dp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />

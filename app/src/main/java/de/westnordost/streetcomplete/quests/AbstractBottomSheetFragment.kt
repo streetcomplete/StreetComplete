@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests
 
 
 import android.content.res.Configuration
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -63,18 +62,16 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
-            val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
-            val topMargin = -resources.getDimensionPixelSize(R.dimen.quest_form_speech_bubble_top_margin)
-            speechBubbleTitleContainer.outlineProvider = RoundRectOutlineProvider(
-                cornerRadius, margin, topMargin, margin, margin
-            )
+        val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
+        val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
+        val topMargin = -resources.getDimensionPixelSize(R.dimen.quest_form_speech_bubble_top_margin)
+        speechBubbleTitleContainer.outlineProvider = RoundRectOutlineProvider(
+            cornerRadius, margin, topMargin, margin, margin
+        )
 
-            speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
-                cornerRadius, margin, margin, margin, margin
-            )
-        }
+        speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
+            cornerRadius, margin, margin, margin, margin
+        )
 
         speechBubbleTitleContainer.setOnClickListener {
             bottomSheetBehavior.apply {

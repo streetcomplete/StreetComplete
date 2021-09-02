@@ -34,12 +34,11 @@ android {
 
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
-        minSdk = 17
+        minSdk = 21
         targetSdk = 30
         versionCode = 3401
         versionName = "34.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled = true
     }
 
     buildTypes {
@@ -60,6 +59,7 @@ android {
 
     lintOptions {
         disable("MissingTranslation")
+        ignore("UseCompatLoadingForDrawables") // doesn't make sense for minSdk >= 21
         isAbortOnError = false
     }
 }
@@ -101,9 +101,6 @@ dependencies {
     val daggerVersion = "2.38.1"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
-
-    // only necessary for Android 4.x (KitKat etc, before Lollipop)
-    implementation("androidx.multidex:multidex:2.0.1")
 
     // tests
     testImplementation("junit:junit:4.13.2")

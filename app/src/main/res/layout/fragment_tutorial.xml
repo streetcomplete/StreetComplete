@@ -46,7 +46,7 @@
             android:layout_height="64dp"
             android:scaleType="center"
             style="@style/RoundWhiteButton"
-            android:src="@drawable/ic_location_24dp"
+            android:src="@drawable/ic_location_state_24dp"
             android:clickable="false"
             app:state_searching="true"
             android:layout_marginBottom="16dp"

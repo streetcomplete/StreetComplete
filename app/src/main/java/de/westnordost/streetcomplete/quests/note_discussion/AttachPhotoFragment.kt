@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.note_discussion
 import android.content.ActivityNotFoundException
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -13,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
-import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,11 +43,8 @@ class AttachPhotoFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_attach_photo, container, false)
-
-        // see #1768: Android KitKat and below do not recognize letsencrypt certificates
-        val isPreLollipop = Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP
         val hasCamera = requireActivity().packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
-        if (isPreLollipop || !hasCamera) {
+        if (!hasCamera) {
             view.visibility = View.GONE
         }
         photosListView = view.findViewById(R.id.gridView)
@@ -97,13 +92,7 @@ class AttachPhotoFragment : Fragment() {
     private fun takePhoto() {
         try {
             val photoFile = createImageFile()
-            val photoUri = if (Build.VERSION.SDK_INT > 21) {
-                // Use FileProvider for getting the content:// URI, see:
-                // https://developer.android.com/training/camera/photobasics.html#TaskPath
-                FileProvider.getUriForFile(requireContext(), getString(R.string.fileprovider_authority), photoFile)
-            } else {
-                photoFile.toUri()
-            }
+            val photoUri = FileProvider.getUriForFile(requireContext(), getString(R.string.fileprovider_authority), photoFile)
             currentImagePath = photoFile.path
             takePhoto.launch(photoUri)
         } catch (e: ActivityNotFoundException) {

@@ -61,9 +61,7 @@ fun View.getLocationInWindow(): Point {
 fun View.showTapHint(initialDelay: Long = 300, pressedDelay: Long = 600) {
     handler?.postDelayed(initialDelay) {
         // trick from https://stackoverflow.com/questions/27225014/how-to-trigger-ripple-effect-on-android-lollipop-in-specific-location-within-th
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            background?.setHotspot(width / 2f, height / 2f)
-        }
+        background?.setHotspot(width / 2f, height / 2f)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             foreground?.setHotspot(width / 2f, height / 2f)
         }

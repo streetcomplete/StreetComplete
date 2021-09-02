@@ -123,7 +123,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
     /* ----------------------------------- Animating in and out --------------------------------- */
 
     private fun bind(achievement: Achievement, level: Int, showLinks: Boolean) {
-        achievementIconView.icon = resources.getDrawable(achievement.icon)
+        achievementIconView.icon = context?.getDrawable(achievement.icon)
         achievementIconView.level = level
         achievementTitleText.setText(achievement.title)
 
