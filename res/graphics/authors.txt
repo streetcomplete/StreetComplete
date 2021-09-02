@@ -42,15 +42,15 @@ app icon/
     launcher_foreground.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
 
 bridge structure graphics/
-    arch.svg                    Jay Turner, License 
-    beam.svg                    Jay Turner, License 
-    cablestayed.svg  	        Jay Turner, License 
-    floating.svg                
-    humpback.svg                
-    simple_suspension.svg       
-    suspension.svg              Jay Turner, License 
-    tied_arch.svg               Jay Turner, License 
-    truss.svg                   
+    arch.svg                    Jay Turner, License: CC0 1.0
+    beam.svg                    Jay Turner, License: CC0 1.0
+    cablestayed.svg  	        Jay Turner, License: CC0 1.0
+    floating.svg                Tobias Zwick, License: CC0 1.0
+    humpback.svg                Tobias Zwick, License: CC0 1.0
+    simple_suspension.svg       Tobias Zwick, License: CC0 1.0
+    suspension.svg              Jay Turner, License: CC0 1.0
+    tied_arch.svg               Jay Turner, License: CC0 1.0
+    truss.svg                   Tobias Zwick, License: CC0 1.0
 
 building icons/
     apartments.svg
