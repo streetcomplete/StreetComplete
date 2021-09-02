@@ -1,27 +1,11 @@
-v34.0-beta2: |
-  <h3>Fixes</h3>
-  <ul>
-  <li>Fix new selectable building types were actually not selectable</li>
-  <li>Fix couldn't press OK anymore after pressing cancel in the dialog that asks if you are really on-site (#3198)</li>
-  <li>Fix crash when asking for the religion of a place (#3217)</li>
-  <li>Clear user statistics properly when logging out (#3168)</li>
-  <li>Remove location pointer pin from UI when GPS position is lost (#3213), by @smichel17</li>
-  <li>In the edit history, scroll to item when it is selected on the map (#3226)</li>
-  <li>Fix a few crashes</li>
-  </ul>
-  <h3>Enhancements</h3>
-  <ul>
-  <li>Some minor enhancements on the quest presets (#3216, ...) and new quest order (#3168), by @peternewman</li>
-  </ul>
-
-v34.0-beta1: |
+v34.0: |
   <h3>🚌🚴 Quest presets</h3>
   <ul>
   <li>Show quests that are quick and easy to solve (from a distance) first by default. This makes
       contributing more efficient and diverse while also easier to do as e.g. a passenger (#2944, ...)</li>
   <li>You can now save different quest presets for different situations, e.g. one preset when you
      only want a solve some important quests while on a bus, or on a bike tour etc.<br/>This was
-     a much requested feature: (#1301, #1654, #1746, #1987, #2054, #2069, #2279, #2565, #2308, #3034, ...)</li>
+     a much requested feature: (#1301, #1654, #1746, #1987, #2054, #2069, #2279, #2565, #2308, #3034, #3216, ...)</li>
   <li>Inform new users once about the possibility to change quest presets</li>
   <li>Add search/filter function for the quest presets settings (#3008)</li>
   </ul>
@@ -47,6 +31,12 @@ v34.0-beta1: |
   <li>Fix steps ramp quest could seemingly in rare cases not be answered (#3115)</li>
   <li>Fix tapping compass rotates map back to North even when currently searching for GPS location (#3147, #3166), by @smichel17</li>
   <li>Fix crash when displaying opening hours whose range ended at 12 AM</li>
+  <li>Fix couldn't press OK anymore after pressing cancel in the dialog that asks if you are really on-site (#3198)</li>
+  <li>Fix crash when asking for the religion of a place (#3217)</li>
+  <li>Clear user statistics properly when logging out (#3168)</li>
+  <li>Remove location pointer pin from UI when GPS position is lost (#3213), by @smichel17</li>
+  <li>In the edit history, scroll to item when it is selected on the map (#3226)</li>
+  <li>Fix a few more crashes</li>
   </ul>
 
 v33.2: |
