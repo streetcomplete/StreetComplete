@@ -29,7 +29,7 @@ v34.0: |
   <ul>
   <li>Fix layout for right-to-left languages (Persian, Arabic) (#3181, #3184)</li>
   <li>Fix steps ramp quest could seemingly in rare cases not be answered (#3115)</li>
-  <li>Fix tapping compass rotates map back to North even when currently searching for GPS location (#3147, #3166), by @smichel17</li>
+  <li>Fix tapping compass rotates with phone direction even when still searching for GPS location (#3147, #3166), by @smichel17</li>
   <li>Fix crash when displaying opening hours whose range ended at 12 AM</li>
   <li>Fix couldn't press OK anymore after pressing cancel in the dialog that asks if you are really on-site (#3198)</li>
   <li>Fix crash when asking for the religion of a place (#3217)</li>
