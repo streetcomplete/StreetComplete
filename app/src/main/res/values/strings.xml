@@ -1079,4 +1079,22 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_default_name">Default</string>
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset \"%s\"? The quest selection and order for it will be irrevocably lost."</string>
+    <string name="quest_smoothness_name_title">What is the smoothness of %s?</string>
+    <string name="quest_smoothness_square_title">What is the smoothness of this square?</string>
+    <string name="quest_smoothness_path_title">What is the smoothness of this path?</string>
+    <string name="quest_smoothness_road_title">What is the smoothness of this road?</string>
+    <string name="quest_smoothness_excellent">As-new smooth surface, no bumps</string>
+    <string name="quest_smoothness_good">Somewhat rough, small gaps, cracks or repairs</string>
+    <string name="quest_smoothness_intermediate_path">Some repairs, wider gaps or cracks, no problem for strollers</string>
+    <string name="quest_smoothness_intermediate_road">Some repairs, wider gaps or cracks</string>
+    <string name="quest_smoothness_bad_path">Wide gaps, bumpy, bicycles need to slow down somewhat</string>
+    <string name="quest_smoothness_bad_road">Wide gaps, bumpy, cars need to slow down</string>
+    <string name="quest_smoothness_very_bad_path">Very bumpy, not suitable for inline skates</string>
+    <string name="quest_smoothness_very_bad_road">Very bumpy, car with high clearance needed</string>
+    <string name="quest_smoothness_horrible">Off-road vehicle needed</string>
+    <string name="quest_smoothness_very_horrible">Suitable only for tractors or mountain bikes</string>
+    <string name="quest_smoothness_impassable">Impassable for vehicles (some climbing on foot)</string>
+    <string name="quest_smoothness_wrong_surface">Surface does not match shown images</string>
+    <string name="quest_smoothness_obstacle">There is an obstacle (cattle grid, speed bump, kerb, …)</string>
+    <string name="quest_smoothness_obstacle_hint">Please provide a general answer, ignoring small obstacles. (find a good text)</string>
 </resources>
