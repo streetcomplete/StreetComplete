@@ -10,7 +10,6 @@ import java.io.FileWriter
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
-import java.nio.charset.Charset
 import java.time.LocalDate
 import java.util.Locale
 
@@ -103,7 +102,7 @@ open class GetTranslatorCreditsTask : DefaultTask() {
     private fun queryTranslatorStats(userId: Int): Map<String, Int>? {
         val url = URL("https://poeditor.com/contributors/contributor_stats")
         val connection = url.openConnection() as HttpURLConnection
-        val cookieEncoded = URLEncoder.encode(cookie, Charset.forName("UTF-8"))
+        val cookieEncoded = URLEncoder.encode(cookie, "UTF-8")
         val today = LocalDate.now().toString()
         try {
             connection.doOutput = true
