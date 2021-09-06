@@ -6,6 +6,7 @@ import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
+import de.westnordost.streetcomplete.ktx.setPadding
 
 /** Make the keyboard appear and disappear smoothly. Must be set on both
  *  setOnApplyWindowInsetsListener and setWindowInsetsAnimationCallback */
@@ -46,9 +47,7 @@ class ImeInsetsAnimationCallback(
     }
 }
 
-fun View.respectSystemInsets(onNewInsets: View.(insets: Insets) -> Unit = {
-    setPadding(it.left, it.top, it.right, it.bottom)
-}) {
+fun View.respectSystemInsets(onNewInsets: View.(insets: Insets) -> Unit = View::setPadding) {
     val imeAnimationCallback = ImeInsetsAnimationCallback(this, onNewInsets)
     ViewCompat.setOnApplyWindowInsetsListener(this, imeAnimationCallback)
     ViewCompat.setWindowInsetsAnimationCallback(this, imeAnimationCallback)

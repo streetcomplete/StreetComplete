@@ -116,7 +116,7 @@ open class MapFragment : Fragment(),
         mapTileProviderLink.text = vectorTileProvider.copyrightText
         mapTileProviderLink.setOnClickListener { showOpenUrlDialog(vectorTileProvider.copyrightLink) }
 
-        attributionContainer.respectSystemInsets { setMargins(it.left, it.top, it.right, it.bottom) }
+        attributionContainer.respectSystemInsets(View::setMargins)
 
         lifecycleScope.launch { initMap() }
     }

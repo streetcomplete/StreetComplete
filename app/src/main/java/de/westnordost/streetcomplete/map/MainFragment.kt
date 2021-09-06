@@ -153,7 +153,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mapControls.respectSystemInsets { setMargins(it.left, it.top, it.right, it.bottom) }
+        mapControls.respectSystemInsets(View::setMargins)
         view.respectSystemInsets { windowInsets = it }
 
         locationPointerPin.setOnClickListener { onClickLocationPointer() }
