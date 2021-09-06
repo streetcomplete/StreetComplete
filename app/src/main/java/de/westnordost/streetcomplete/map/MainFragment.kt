@@ -532,7 +532,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     //region Location - Request location and update location status
 
     private fun updateLocationAvailability() {
-        if (LocationUtil.isLocationOn(activity)) {
+        if (LocationUtil.isLocationEnabled(requireContext())) {
             onLocationIsEnabled()
         } else {
             onLocationIsDisabled()
@@ -551,7 +551,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private fun onLocationIsDisabled() {
         gpsTrackingButton.visibility = View.VISIBLE
-        gpsTrackingButton.state = if (LocationUtil.hasLocationPermission(activity)) LocationState.ALLOWED else LocationState.DENIED
+        gpsTrackingButton.state = if (LocationUtil.hasLocationPermission(requireContext()))
+            LocationState.ALLOWED else LocationState.DENIED
         locationPointerPin.visibility = View.GONE
         mapFragment!!.stopPositionTracking()
         locationManager.removeUpdates()

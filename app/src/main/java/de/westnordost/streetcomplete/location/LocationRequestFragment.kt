@@ -124,7 +124,7 @@ class LocationRequestFragment : Fragment() {
     /* Step 1: Ask for location to be turned on */
 
     private fun checkLocationSettings() {
-        if (LocationUtil.isLocationOn(context)) {
+        if (LocationUtil.isLocationEnabled(requireContext())) {
             state = LocationState.ENABLED
             nextStep()
         } else {

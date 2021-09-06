@@ -10,7 +10,6 @@ import java.io.FileWriter
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
-import java.nio.charset.Charset
 import java.time.LocalDate
 import java.util.Locale
 

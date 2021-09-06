@@ -299,7 +299,7 @@ class MainActivity : AppCompatActivity(),
     /* ------------------------------------ Location listener ----------------------------------- */
 
     private fun updateLocationAvailability() {
-        if (LocationUtil.isLocationOn(this)) {
+        if (LocationUtil.isLocationEnabled(this)) {
             questAutoSyncer.startPositionTracking()
         } else {
             questAutoSyncer.stopPositionTracking()
