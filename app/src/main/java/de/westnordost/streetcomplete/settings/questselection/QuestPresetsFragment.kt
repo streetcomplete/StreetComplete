@@ -1,11 +1,8 @@
 package de.westnordost.streetcomplete.settings.questselection
 
 import android.os.Bundle
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.EditText
-import android.widget.FrameLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +10,6 @@ import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
-import de.westnordost.streetcomplete.ktx.setMargins
 import kotlinx.android.synthetic.main.dialog_input_text.view.*
 import kotlinx.android.synthetic.main.fragment_quest_presets.view.*
 import kotlinx.coroutines.Dispatchers

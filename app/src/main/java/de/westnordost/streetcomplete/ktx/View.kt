@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.ViewPropertyAnimator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import androidx.core.graphics.Insets
 import androidx.core.os.postDelayed
 import androidx.core.view.*
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -71,6 +72,14 @@ fun View.showTapHint(initialDelay: Long = 300, pressedDelay: Long = 600) {
             isPressed = false
         }
     }
+}
+
+fun View.setPadding(insets: Insets) {
+    setPadding(insets.left, insets.top, insets.right, insets.bottom)
+}
+
+fun View.setMargins(insets: Insets) {
+    setMargins(insets.left, insets.top, insets.right, insets.bottom)
 }
 
 fun View.setMargins(left: Int, top: Int, right: Int, bottom: Int) {

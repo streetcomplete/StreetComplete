@@ -38,7 +38,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.respectSystemInsets(View::setPadding)
+        view.respectSystemInsets()
 
         updateIndicatorDots()
 

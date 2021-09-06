@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.edithistory
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
@@ -69,9 +70,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        editHistoryList.respectSystemInsets { left, top, right, bottom ->
-            setPadding(left, top, 0, bottom)
-        }
+        editHistoryList.respectSystemInsets { updatePadding(left = it.left, top = it.top, bottom = it.bottom) }
         lifecycleScope.launch {
             val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
             adapter.setEdits(edits)

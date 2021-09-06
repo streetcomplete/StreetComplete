@@ -50,14 +50,14 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         closeButton.setOnClickListener { activity?.onBackPressed() }
 
         minBottomInset = Int.MAX_VALUE
-        view.respectSystemInsets { left, top, right, bottom ->
-            scrollViewChild.updatePadding(bottom = bottom)
-            bottomSheetContainer.updateMargins(top = top, left = left, right = right)
-            okButton.updateMargins(bottom = bottom + 8f.toPx(context).toInt())
+        view.respectSystemInsets {
+            scrollViewChild.updatePadding(bottom = it.bottom)
+            bottomSheetContainer.updateMargins(top = it.top, left = it.left, right = it.right)
+            okButton.updateMargins(bottom = it.bottom + 8f.toPx(context).toInt())
 
             // expanding bottom sheet when keyboard is opened
-            if (minBottomInset < bottom) expand()
-            minBottomInset = min(bottom, minBottomInset)
+            if (minBottomInset < it.bottom) expand()
+            minBottomInset = min(it.bottom, minBottomInset)
         }
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)

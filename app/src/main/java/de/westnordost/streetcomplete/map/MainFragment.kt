@@ -21,6 +21,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.getSystemService
+import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
@@ -96,7 +97,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private var locationWhenOpenedQuest: Location? = null
 
-    private var windowInsets: Rect? = null
+    private var windowInsets: Insets? = null
 
     internal var mapFragment: QuestsMapFragment? = null
     internal var mainMenuButtonFragment: MainMenuButtonFragment? = null
@@ -153,7 +154,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         super.onViewCreated(view, savedInstanceState)
 
         mapControls.respectSystemInsets(View::setMargins)
-        view.respectSystemInsets { l, t, r, b -> windowInsets = Rect(l, t, r, b) }
+        view.respectSystemInsets { windowInsets = it }
 
         locationPointerPin.setOnClickListener { onClickLocationPointer() }
         compassView.setOnClickListener { onClickCompassButton() }
