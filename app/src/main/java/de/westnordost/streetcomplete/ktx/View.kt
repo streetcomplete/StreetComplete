@@ -74,13 +74,11 @@ fun View.showTapHint(initialDelay: Long = 300, pressedDelay: Long = 600) {
     }
 }
 
-@Suppress("NOTHING_TO_INLINE")
-inline fun View.setPadding(insets: Insets) {
+fun View.setPadding(insets: Insets) {
     setPadding(insets.left, insets.top, insets.right, insets.bottom)
 }
 
-@Suppress("NOTHING_TO_INLINE")
-inline fun View.setMargins(insets: Insets) {
+fun View.setMargins(insets: Insets) {
     setMargins(insets.left, insets.top, insets.right, insets.bottom)
 }
 
