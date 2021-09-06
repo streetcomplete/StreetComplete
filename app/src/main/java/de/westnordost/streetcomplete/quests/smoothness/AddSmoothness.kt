@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.quests.surface.Surface
 
 class AddSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
@@ -52,7 +53,10 @@ class AddSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override fun createForm() = AddSmoothnessForm()
 
     override fun applyAnswerTo(answer: SmoothnessAnswer, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("smoothness", answer.osmValue)
+        when (answer) {
+            is SmoothnessValueAnswer -> changes.updateWithCheckDate("smoothness", answer.osmValue)
+            is WrongSurfaceAnswer -> changes.delete("surface")
+        }
     }
 }
 
