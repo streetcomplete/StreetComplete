@@ -14,7 +14,7 @@
 
     <include
         android:id="@+id/item_view"
-        layout="@layout/cell_labeled_image_select"/>
+        layout="@layout/cell_labeled_icon_select_right"/>
 
     <TextView
         android:layout_width="match_parent"

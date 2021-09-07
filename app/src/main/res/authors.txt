@@ -161,6 +161,20 @@ surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/w
 surface_unpaved.jpg            CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
 surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami)
 surface_woodchips.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Woodchips_surface.jpg (10992-osm)
+surface_asphalt_excellent.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Asphalt_-_excellent.jpg (Supaplex030)
+surface_asphalt_good.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Asphalt_-_good.jpg (Supaplex030)
+surface_asphalt_intermediate.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Asphalt_-_intermediate.jpg (Supaplex030)
+surface_asphalt_bad.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Asphalt_-_bad.jpg (Supaplex030)
+surface_asphalt_very_bad.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Asphalt_-_very_bad.jpg (Supaplex030)
+surface_sett_good.jpg               public domain         https://wiki.openstreetmap.org/wiki/File:Flattened_sett.jpg (Westnordost)
+surface_sett_bad.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Sett_-_bad.jpg (Supaplex030)
+surface_sett_very_bad.jpg               public domain         https://wiki.openstreetmap.org/wiki/File:Very_bad_sett.jpg (Westnordost)
+surface_paving_stones_good.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_good.jpg (Supaplex030)
+surface_paving_stones_bad.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_bad.jpg (Supaplex030)
+surface_compacted_intermediate.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Compacted_-_intermediate.jpg (Supaplex030)
+surface_compacted_bad.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Compacted_-_bad.jpg (Supaplex030)
+surface_gravel_bad.jpg               CC-BY-SA 4.0         https://wiki.openstreetmap.org/wiki/File:Gravel_-_bad.jpg (Supaplex030)
+surface_paving_stones_excellent.jpg               CC0         https://wiki.openstreetmap.org/wiki/File:Pretty_natural_stone_used_for_paving.jpg (Mateusz Konieczny)
 
 tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/

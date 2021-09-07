@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.smoothness
 
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
@@ -9,6 +10,7 @@ import de.westnordost.streetcomplete.quests.surface.Surface
 import de.westnordost.streetcomplete.quests.surface.asItem
 import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
+import kotlinx.android.synthetic.main.cell_panorama_select.*
 
 class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAnswer>() {
 
@@ -91,32 +93,34 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
 
     private fun getImage(smoothness: Smoothness) = when (smoothness) {
         Smoothness.EXCELLENT -> when (surfaceTag) {
-            "asphalt" -> R.drawable.surface_asphalt_excellent
-            "paving_stones" -> R.drawable.surface_paving_stones_excellent
+            "asphalt" -> R.drawable.surface_asphalt_excellent // ok
+            "paving_stones" -> R.drawable.surface_paving_stones_excellent // hmm...
             else -> R.drawable.surface_paved_area
         }
         Smoothness.GOOD -> when (surfaceTag) {
-            "asphalt", "concrete" -> R.drawable.surface_asphalt_good
-            "paving_stones" -> R.drawable.surface_paving_stones_good
-            "sett" -> R.drawable.surface_sett_stones_good
+            "asphalt", "concrete" -> R.drawable.surface_asphalt_good // ok
+            "paving_stones" -> R.drawable.surface_paving_stones_good // hmm...
             else -> R.drawable.surface_paved_area
         }
         Smoothness.INTERMEDIATE -> when (surfaceTag) {
-            "asphalt", "concrete" -> R.drawable.surface_asphalt_intermediate
-            "paving_stones" -> R.drawable.surface_paving_stones_intermediate
-            "sett" -> R.drawable.surface_sett_intermediate
+            "asphalt", "concrete" -> R.drawable.surface_asphalt_intermediate // not good
+            "paving_stones" -> R.drawable.surface_paving_stones_intermediate // hmm
+            "sett" -> R.drawable.surface_sett_intermediate // ok
+            "compacted" -> R.drawable.surface_compacted_intermediate // not good, details not visible
             else -> R.drawable.surface_paved_area
         }
         Smoothness.BAD -> when (surfaceTag) {
-            "asphalt", "concrete" -> R.drawable.surface_asphalt_bad
-            "paving_stones" -> R.drawable.surface_paving_stones_bad
-            "sett" -> R.drawable.surface_sett
+            "asphalt", "concrete" -> R.drawable.surface_asphalt_bad2 // hmm
+            "paving_stones" -> R.drawable.surface_paving_stones_bad // hmm
+            "sett" -> R.drawable.surface_sett_bad // ok
+            "gravel" -> R.drawable.surface_gravel_bad // hmm (also bad_2)
+            "compacted" -> R.drawable.surface_compacted_bad // hmm, details hard to see
             else -> R.drawable.surface_paved_area
         }
         Smoothness.VERY_BAD -> when (surfaceTag) {
-            "asphalt", "concrete" -> R.drawable.surface_asphalt_very_bad
-            "paving_stones" -> R.drawable.surface_paving_stones_very_bad
-            "sett" -> R.drawable.surface_sett_very_bad
+            "asphalt", "concrete" -> R.drawable.surface_asphalt_very_bad // not good
+            "paving_stones" -> R.drawable.surface_paving_stones_very_bad // actually this is grass paver without grass...
+            "sett" -> R.drawable.surface_sett_very_bad // ok
             else -> R.drawable.surface_paved_area
         }
         Smoothness.HORRIBLE -> when (surfaceTag) {
@@ -155,6 +159,9 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
         val inflater = LayoutInflater.from(requireContext())
         val inner = inflater.inflate(R.layout.dialog_quest_smoothness_wrong_surface, null, false)
         ItemViewHolder(inner.findViewById(R.id.item_view)).bind(surface.asItem())
+        // TODO: change layout:
+        //  if I use cell_panorama_select I need to get rid of the arrow
+        //  if I use cell_labeled_image_select (best one) it goes to the bottom and hides the buttons
 
         AlertDialog.Builder(requireContext())
             .setView(inner)
