@@ -153,7 +153,7 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
 
     private fun showWrongSurfaceDialog(surface: Surface) {
         val inflater = LayoutInflater.from(requireContext())
-        val inner = inflater.inflate(R.layout.dialog_quest_address_no_housenumber, null, false)
+        val inner = inflater.inflate(R.layout.dialog_quest_smoothness_wrong_surface, null, false)
         ItemViewHolder(inner.findViewById(R.id.item_view)).bind(surface.asItem())
 
         AlertDialog.Builder(requireContext())
