@@ -21,21 +21,15 @@ import javax.inject.Singleton
 
     val cache: Cache?
 
-    init {
-        val cacheDir = context.externalCacheDir
-        val tileCacheDir: File?
-        if (cacheDir != null) {
-            tileCacheDir = File(cacheDir, TILE_CACHE_DIR)
-            if (!tileCacheDir.exists()) tileCacheDir.mkdir()
-        } else {
-            tileCacheDir = null
+    init { 
+        val tileCacheDir: File? = context.externalCacheDir?.let { cacheDir ->
+            File(cacheDir, TILE_CACHE_DIR)
+                .also { if (!it.exists()) it.mkdir() }
+                .takeIf { it.exists() } // mkdir might fail
         }
-
-        cache = if (tileCacheDir?.exists() == true) {
+        cache = tileCacheDir?.let {
             val mbs = PreferenceManager.getDefaultSharedPreferences(context).getInt(Prefs.MAP_TILECACHE_IN_MB, 50)
-            Cache(tileCacheDir, mbs * 1000L * 1000L)
-        } else {
-            null
+            Cache(it, mbs * 1000L * 1000L)
         }
     }
 
