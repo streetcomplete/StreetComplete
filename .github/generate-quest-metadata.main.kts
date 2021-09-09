@@ -220,25 +220,23 @@ fun getQuestTaginfo(
     var questChanges = getQuestChanges(questFileContent)
     println("Got raw quest changes: " + questChanges)
 
+    // Prep some common stuff
     val stringCheck = Regex("^\".+\"$")
     val fieldRegex = Regex("answer\\.(.+)$")
+
+    var checkDateKey = lookupQuestConstant(coreConstants, questConstants, "SURVEY_MARK_KEY")
+    if (stringCheck.matches(checkDateKey)) {
+      checkDateKey = checkDateKey.trim('"')
+    }
 
     val allChanges = mutableListOf<TaginfoChange>()
     for (questChange in questChanges) {
       println("Assessing quest change: " + questChange)
-      var change = questChange[0]
-      if (change.startsWith("get") || change.startsWith("has")) {
-        // It's not actually a change, so discard it
-        println("Discarding a read only change " + change)
-        continue
-      } else if (change.startsWith("delete")) {
-        // Skip the delete's at @westnordost request
-        println("Discarding a delete change " + change)
-        continue
-      }
-      // TODO: Rather than just dropping non-quote ones, ideally we need to deal with their variable names
       // Substitute any quest constants
+      var change = questChange[0]
       var key = lookupQuestConstant(coreConstants, questConstants, questChange[1])
+
+      // TODO: Rather than just dropping non-quote ones, ideally we need to deal with their variable names
       if (!stringCheck.matches(key)) {
         println("Key '" + key + "' is not a string, skipping")
         continue
@@ -248,18 +246,31 @@ fun getQuestTaginfo(
       } else {
         key = key.trim('"')
       }
-      // TODO: Also add the addAndUpdateCheckDate and the remove old survey tags
-      if (change.startsWith("updateCheckDate")) {
+
+      if (change.startsWith("get") || change.startsWith("has")) {
+        // It's not actually a change, so discard it
+        println("Discarding a read only change: " + change)
+        continue
+      } else if (change.startsWith("delete")) {
+        // Skip the delete's at @westnordost request
+        println("Discarding a delete change: " + change)
+        continue
+      } else if (change in setOf("add", "addOrModify", "modify", "modifyIfExists")) {
+        // No Op
+      } else if (change == "addRampAnswer") {
+        // Basically add, but yes only
+        allChanges.add(TaginfoChange(key, "yes", change))
+      } else if (change in setOf("updateWithCheckDate", "addAndUpdateCheckDate")) {
+        // Add and insert/update check date
+        // Add the (addAnd)UpdateCheckDate; we don't care about the remove old survey tags
+        // We also don't care about the (timestamp) value for the update
+        allChanges.add(TaginfoChange(checkDateKey + ":" + key, "", change))
+      } else if (change == "updateCheckDateForKey") {
+        // Only sets the check date
         // Correcting key name
-        var checkDateKey = lookupQuestConstant(coreConstants, questConstants, "SURVEY_MARK_KEY")
-        if (stringCheck.matches(checkDateKey)) {
-          checkDateKey = checkDateKey.trim('"')
-        }
         key = checkDateKey + ":" + key
-      }
-      if (change.startsWith("delete")) {
-        // It's a delete, so we don't expect, or care about the value
-        allChanges.add(TaginfoChange(key, "", change))
+      } else {
+        println("Discarding an unknown change type " + change)
         continue
       }
       // Tidy up some dodgy capturing
@@ -278,72 +289,87 @@ fun getQuestTaginfo(
         println(value + " is unknown when")
         //allChanges.add(TaginfoChange(key, "", change))
       } else {
-        if (!stringCheck.matches(value)) {
+        if ((value == "") || stringCheck.matches(value)) {
+          // For a basic insert, we either need no value (e.g. an updateCheckDate), or we need a basic string
+          value = value.trim('"')
+        } else {
           println("Value '" + value + "' is not a string")
-          if (value.startsWith("if (")) {
+          if (value.startsWith("LocalDate.now")) {
+            println("Dropping value of LocalDate.now change")
+            value = ""
+          } else if (value.startsWith("if (")) {
             // TODO: Fix me!
             println("Skipping if statement")
-            allChanges.add(TaginfoChange(key, "", change))
-            continue
-          }
-          var questAnswerType = getQuestAnswerType(questFileContent)
-          println("Got quest answer types: " + questAnswerType)
-          for (it in questAnswerType) {
-            println("Got quest answer type: " + it)
-            if (it in setOf("Boolean", "String", "Unit")) {
-              println("Skipping generic " + it + "...")
-              allChanges.add(TaginfoChange(key, "", change))
-              continue
-            } else if (Regex("^List<").containsMatchIn(it)) {
-              println("Skipping generic List...")
-              allChanges.add(TaginfoChange(key, "", change))
-              continue
-            } else if (it in setOf("SuspectedOnewayAnswer", "CyclewayAnswer", "SidewalkAnswer", "ShopTypeAnswer", "CompletedConstructionAnswer")) {
-              println("Skipping, it's complicated " + it + "...")
-              allChanges.add(TaginfoChange(key, "", change))
-              continue
-            } else if (it in setOf("RecyclingContainerMaterialsAnswer", "SurfaceAnswer", "MaxSpeedAnswer", "MaxHeightAnswer", "LanesAnswer")) {
-              // TODO: Fix me!
-              println("Skipping, needs investigation " + it + "...")
-              allChanges.add(TaginfoChange(key, "", change))
-              continue
-//            } else if (it == "BuildingType" || it == "DrinkingWater" || it == "PoliceType") {
-//              // TODO: Fix me!
-//              println("Skipping, complex enum " + it + "...")
-//              allChanges.add(TaginfoChange(key, "", change))
-//              continue
-            } else if (it in setOf("BusStopShelterAnswer", "StepsRampAnswer")) {
-              // TODO: Fix me!
-              println("Skipping, simple enum " + it + "...")
-              allChanges.add(TaginfoChange(key, "", change))
-              continue
-            } else if (it in setOf("RoadNameAnswer", "PlaceNameAnswer", "BusStopRefAnswer", "HousenumberAnswer", "PostboxRefAnswer")) {
-              println("Skipping just a name " + it + "...")
-              allChanges.add(TaginfoChange(key, "", change))
-              continue
-            } else {
-              val answerFile = getQuestFile("/" + it, questFiles)
-              println("Checking " + answerFile + " for enums")
-              val questAnswerTypeFileContent = answerFile.readText()
+            value = ""
+          } else {
+            var questAnswerType = getQuestAnswerType(questFileContent)
+            println("Got quest answer types: " + questAnswerType)
+            for (it in questAnswerType) {
+              println("Got quest answer type: " + it)
+              if (it in setOf("Boolean", "String", "Unit")) {
+                println("Skipping generic " + it + "...")
+                allChanges.add(TaginfoChange(key, "", change))
+                continue
+//              } else if (Regex("^List<").containsMatchIn(it)) {
+//                println("Skipping generic List...")
+//                allChanges.add(TaginfoChange(key, "", change))
+//                continue
+              } else if (it in setOf("SuspectedOnewayAnswer", "CyclewayAnswer", "SidewalkAnswer", "ShopTypeAnswer", "CompletedConstructionAnswer")) {
+                println("Skipping, it's complicated " + it + "...")
+                allChanges.add(TaginfoChange(key, "", change))
+                continue
+              } else if (it in setOf("RecyclingContainerMaterialsAnswer", "SurfaceAnswer", "MaxSpeedAnswer", "MaxHeightAnswer", "LanesAnswer")) {
+                // TODO: Fix me!
+                println("Skipping, needs investigation " + it + "...")
+                allChanges.add(TaginfoChange(key, "", change))
+                continue
+//              } else if (it == "BuildingType" || it == "DrinkingWater" || it == "PoliceType") {
+//                // TODO: Fix me!
+//                println("Skipping, complex enum " + it + "...")
+//                allChanges.add(TaginfoChange(key, "", change))
+//                continue
+//              } else if (it in setOf("BusStopShelterAnswer", "StepsRampAnswer")) {
+//                // TODO: Fix me!
+//                // TODO: I think this has now been fixed elsewhere but wants checking...
+//                println("Skipping, simple enum " + it + "...")
+//                allChanges.add(TaginfoChange(key, "", change))
+//                continue
+              } else if (it in setOf("RoadNameAnswer", "PlaceNameAnswer", "BusStopRefAnswer", "HousenumberAnswer", "PostboxRefAnswer")) {
+                println("Skipping just a name " + it + "...")
+                allChanges.add(TaginfoChange(key, "", change))
+                continue
+              } else {
+                var answerType = it
+                // TODO: Write this regex (and the replacement, once)
+                // TODO: We still need to fix the answer value matching
+                if (Regex("^List<").containsMatchIn(answerType)) {
+                  answerType = answerType.replace(Regex("^List<([^>]+)>"), "$1") // Strip the list aspect
+                  println("Checking actual answer type " + answerType + "...")
+                }
+                val answerFile = getQuestFile("/" + answerType, questFiles)
+                println("Checking " + answerFile + " for enums")
+                val questAnswerTypeFileContent = answerFile.readText()
 
-              //println(questAnswerTypeFileContent)
+                //println(questAnswerTypeFileContent)
 
-              if (fieldRegex.matches(value)) {
-                val fieldName = fieldRegex.find(value)!!.groupValues[1]
-                //if (fieldName != null) {
+                var fieldName: String? = null
+                if (fieldRegex.matches(value)) {
+                  fieldName = fieldRegex.find(value)!!.groupValues[1]
+                } else {
+                  println("No regex match against " + value + " for enums field name")
+                }
+                if (fieldName != null) {
                   for (answerEnum in getQuestAnswerTypeEnums(questAnswerTypeFileContent).values) {
                     if (answerEnum.containsKey(fieldName)) {
                       allChanges.add(TaginfoChange(key, answerEnum.getOrDefault(fieldName, ""), change))
                     }
                   }
-                //}
+                }
               }
             }
+            // Changes either skipped or added locally
+            continue
           }
-
-          continue
-        } else {
-          value = value.trim('"')
         }
         allChanges.add(TaginfoChange(key, value, change))
       }
