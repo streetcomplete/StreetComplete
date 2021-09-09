@@ -131,7 +131,7 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_surface_value_sand">"Sabbia"</string>
     <string name="quest_surface_value_sett">"Sampietrini / Pavè"</string>
     <string name="quest_surface_value_wood">"Legno"</string>
-    <string name="quest_placeName_title">"Qual è il nome di questo posto?"</string>
+    <string name="quest_placeName_title">"Qual è il nome di questo luogo?"</string>
 
     <!-- Ho modificato la traduzione italiana di "sidewalk" da "marciapiede" a "percorso pedonale", perché in OSM vengono considerati "sidewalk" anche i portici, che in italiano non rientrano nella definizione di "marciapiede". (vedi https://github.com/streetcomplete/StreetComplete/issues/2452) -->
     <string name="quest_sidewalk_title">"Questa strada ha un  marciapiede su almeno un lato?"</string>
@@ -584,7 +584,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_noteDiscussion_hide2">"Nascosto da %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Le foto che alleghi a una nota sono caricate sul mio server e cancellate alcuni giorni dopo che la nota è stata risolta. I metadati vengono eliminati prima del caricamento.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deseleziona tutto"</string>
-    <string name="quest_buildingType_retail_description">"inclusi edifici per ristoranti, bar, negozi, etc ..."</string>
+    <string name="quest_buildingType_retail_description">"inclusi edifici per ristoranti, bar, negozi, ecc..."</string>
     <string name="quest_openingHours_timeSelect_next">"Prossimo"</string>
     <string name="quest_tracktype_title">"Com'è il grado di solidità della superficie di questa strada?"</string>
     <string name="quest_tracktype_grade1">"Solido"</string>
@@ -967,7 +967,7 @@ riconoscimento"</string>
     <string name="quest_shop_vacant_type_title">"Questo negozio era libero. Cosa c'è ora?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Il numero di corsie è differente su ogni lato"</string>
     <string name="quest_pitchSurface_title">"Che superficie ha questo campo sportivo?"</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">"Questo tipo di missione non è attivo perché non utile in alcune regioni e perché, per rispondere, probabilmente è necessario entrare nel posto."</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Questo tipo di missione non è attivo perché non utile in alcune regioni e perché, per rispondere, probabilmente è necessario entrare nel luogo."</string>
     <string name="quest_dietType_kosher_name_title">"%s vende prodotti kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"I prodotti kosher devono essere preparati seguendo metodi particolari e vengono controllati da agenzie di certificazione kashrut."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nessuna pista ciclabile"</string>

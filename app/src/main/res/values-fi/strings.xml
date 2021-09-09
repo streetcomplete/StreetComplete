@@ -2060,4 +2060,37 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_camera_type_dome">"Kupoli"</string>
     <string name="quest_camera_type_fixed">"Kiinteä"</string>
     <string name="quest_camera_type_panning">"Panoroiva"</string>
+    <string name="about_title_faq">"UKK"</string>
+    <string name="quest_buildingLevels_title2">"Kuinka monta tasoa rakennuksessa on kellarin yläpuolella?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Kuinka monta tasoa rakennuksen osassa on kellarin yläpuolella?"</string>
+    <string name="quest_crossing_title">"Onko tämän väylän ja tien välissä reunakivetys? Minkälainen?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Esiasetus: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Tämä kysymystyyppi on oletuksena pois päältä, koska kattojen muotoa ei yleensä näe helposti kadulta. Tämä kysymystyyppi vie myös melko paljon aikaa: monissa tapauksissa se on helpompaa ja tehokkaampaa tehdä kotoa ilmakuvien avulla."</string>
+    <string name="quest_religion_animist">"Animismi"</string>
+    <string name="quest_construction_steps_title">"Onko nämä askelmat rakennettu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="questList_disabled_at_day">"Näytetään yöllä"</string>
+    <string name="pref_quests_deselect_all">"Poista kaikkien kysymysten valinta?"</string>
+    <string name="quest_buildingType_boathouse">"Venevaja"</string>
+    <string name="quest_buildingType_allotment_house">"Siirtolapuutarhamökki"</string>
+    <string name="quest_buildingType_grandstand">"Katsomo"</string>
+    <string name="action_search">"Hae"</string>
+    <string name="action_manage_presets">"Hallitse esiasetuksia"</string>
+    <string name="team_mode_team_size_label2">"Kuinka monta henkilöä on kartoittamassa? Kirjoita sama numero kaikkien puhelimiin."</string>
+    <string name="team_mode_choose_color2">"Seuraavaksi jokaisen tulee valita eri väri. Valitse omasi:"</string>
+    <string name="link_organic_maps_description">"Ilman verkkoyhteyttä toimiva karttasovellus matkailijoille, retkeilijöille ja pyöräilijöille"</string>
+    <string name="quest_kerb_height_no">"Ei reunakivetystä"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Puurakenteinen ylimenevä pylväs"</string>
+    <string name="quest_barrier_type_stepover_stone">"Kivinen ylimenoporras"</string>
+    <string name="quest_bollard_type_removable">"Poistettava (avaimella tai ilman)"</string>
+    <string name="quest_bollard_type_foldable2">"Taitettava (avaimella tai ilman)"</string>
+    <string name="no_search_results">"Mitään ei löytynyt"</string>
+    <string name="quest_selection_hint_title">"Liikaa tehtävää?"</string>
+    <string name="quest_selection_hint_message">"Osallistumisen tulisi ensisijaisesti olla hauskaa! Jos kysymysten määrä häkellyttää sinua, voit aina hienosäätää asetuksista mitä kysymyksiä sinulle näytetään ja missä järjestyksessä."</string>
+    <string name="quest_presets_preset_add">"Lisää esiasetus"</string>
+    <string name="quest_presets_preset_name">"Esiasetuksen nimi"</string>
+    <string name="quest_presets_default_name">"Oletus"</string>
+    <string name="quest_presets_selected">"Valitut"</string>
+    <string name="quest_presets_delete_message">"Poista esiasetus \"%s\"? Sen kysymysten valinnat ja järjestys menetetään peruuttamattomasti."</string>
 </resources>

@@ -1019,7 +1019,7 @@
     <string name="quest_bridge_structure_title">"ساختار این پل چگونه است؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_internet_access_name_title">"چه نوعی از اتصال به شبکه در %s ارائه می دشود؟"</string>
+    <string name="quest_internet_access_name_title">"روش اتصال به شبکه در %s چگونه است؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"بی‌سیم(وایفای)"</string>
