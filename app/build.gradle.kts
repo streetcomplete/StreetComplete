@@ -163,7 +163,7 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.16.2")
