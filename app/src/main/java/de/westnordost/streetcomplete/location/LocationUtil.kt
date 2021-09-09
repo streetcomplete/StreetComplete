@@ -12,18 +12,15 @@ import androidx.core.location.LocationManagerCompat
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
-fun isLocationEnabled(context: Context): Boolean {
-    return hasLocationPermission(context) && LocationManagerCompat
-            .isLocationEnabled(ContextCompat.getSystemService(context, LocationManager::class.java)!!)
-}
+fun isLocationEnabled(context: Context): Boolean =
+    hasLocationPermission(context) && LocationManagerCompat
+        .isLocationEnabled(ContextCompat.getSystemService(context, LocationManager::class.java)!!)
 
-fun hasLocationPermission(context: Context): Boolean {
-    return ContextCompat.checkSelfPermission(context,
-            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-}
+fun hasLocationPermission(context: Context): Boolean =
+    ContextCompat.checkSelfPermission(context,
+        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
 
-fun createLocationAvailabilityIntentFilter(): IntentFilter {
-    return IntentFilter(LocationManager.MODE_CHANGED_ACTION)
-}
+fun createLocationAvailabilityIntentFilter(): IntentFilter =
+    IntentFilter(LocationManager.MODE_CHANGED_ACTION)
 
 fun Location.toLatLon(): LatLon = LatLon(latitude, longitude)
