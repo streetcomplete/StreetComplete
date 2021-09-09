@@ -123,8 +123,10 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
              * For all roads a car can go through point X, it is checked if not all footways that
              * go through X are on the same side of the road-polyline.
              * */
-            val nodePos = mapData.getNode(nodeId)!!.position
-            return@retainAll neighbouringFootwayPositions.anyCrossesAnyOf(neighbouringRoadPositions, nodePos)}
+            val nodePos = mapData.getNode(nodeId)?.position
+            return@retainAll nodePos != null &&
+                neighbouringFootwayPositions.anyCrossesAnyOf(neighbouringRoadPositions, nodePos)
+        }
 
         return footwaysByNodeId.keys
             .mapNotNull { mapData.getNode(it) }
