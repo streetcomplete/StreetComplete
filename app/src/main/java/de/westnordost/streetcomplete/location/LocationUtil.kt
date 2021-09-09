@@ -8,13 +8,15 @@ import android.location.Location
 import android.location.LocationManager
 
 import androidx.core.content.ContextCompat
-import androidx.core.location.LocationManagerCompat
+import androidx.core.location.LocationManagerCompat.isLocationEnabled
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 fun isLocationEnabled(context: Context): Boolean =
-    hasLocationPermission(context) && LocationManagerCompat
-        .isLocationEnabled(ContextCompat.getSystemService(context, LocationManager::class.java)!!)
+    hasLocationPermission(context) && isLocationEnabled(getLocationManager(context)!!)
+
+private fun getLocationManager(context: Context): LocationManager? =
+    ContextCompat.getSystemService(context, LocationManager::class.java)
 
 fun hasLocationPermission(context: Context): Boolean =
     ContextCompat.checkSelfPermission(context, ACCESS_FINE_LOCATION) == PERMISSION_GRANTED
