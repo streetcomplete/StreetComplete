@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.location
 
-import android.Manifest
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.Context
 import android.content.IntentFilter
-import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.location.Location
 import android.location.LocationManager
 
@@ -17,8 +17,7 @@ fun isLocationEnabled(context: Context): Boolean =
         .isLocationEnabled(ContextCompat.getSystemService(context, LocationManager::class.java)!!)
 
 fun hasLocationPermission(context: Context): Boolean =
-    ContextCompat.checkSelfPermission(context,
-        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    ContextCompat.checkSelfPermission(context, ACCESS_FINE_LOCATION) == PERMISSION_GRANTED
 
 fun createLocationAvailabilityIntentFilter(): IntentFilter =
     IntentFilter(LocationManager.MODE_CHANGED_ACTION)
