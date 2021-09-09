@@ -9,18 +9,16 @@ import android.location.LocationManager
 import androidx.core.content.ContextCompat
 import androidx.core.location.LocationManagerCompat
 
-object LocationUtil {
-    fun isLocationEnabled(context: Context): Boolean {
-        return hasLocationPermission(context) && LocationManagerCompat
-                .isLocationEnabled(ContextCompat.getSystemService(context, LocationManager::class.java)!!)
-    }
+fun isLocationEnabled(context: Context): Boolean {
+    return hasLocationPermission(context) && LocationManagerCompat
+            .isLocationEnabled(ContextCompat.getSystemService(context, LocationManager::class.java)!!)
+}
 
-    fun hasLocationPermission(context: Context): Boolean {
-        return ContextCompat.checkSelfPermission(context,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-    }
+fun hasLocationPermission(context: Context): Boolean {
+    return ContextCompat.checkSelfPermission(context,
+            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+}
 
-    fun createLocationAvailabilityIntentFilter(): IntentFilter {
-        return IntentFilter(LocationManager.MODE_CHANGED_ACTION)
-    }
+fun createLocationAvailabilityIntentFilter(): IntentFilter {
+    return IntentFilter(LocationManager.MODE_CHANGED_ACTION)
 }

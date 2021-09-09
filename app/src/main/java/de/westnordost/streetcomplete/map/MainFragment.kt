@@ -45,10 +45,12 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.location.createLocationAvailabilityIntentFilter
 import de.westnordost.streetcomplete.location.FineLocationManager
+import de.westnordost.streetcomplete.location.hasLocationPermission
+import de.westnordost.streetcomplete.location.isLocationEnabled
 import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
-import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
 import de.westnordost.streetcomplete.util.*
@@ -184,7 +186,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         visibleQuestsSource.addListener(this)
         requireContext().registerReceiver(
             locationAvailabilityReceiver,
-            LocationUtil.createLocationAvailabilityIntentFilter()
+            createLocationAvailabilityIntentFilter()
         )
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
             locationRequestFinishedReceiver,
@@ -532,7 +534,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     //region Location - Request location and update location status
 
     private fun updateLocationAvailability() {
-        if (LocationUtil.isLocationEnabled(requireContext())) {
+        if (isLocationEnabled(requireContext())) {
             onLocationIsEnabled()
         } else {
             onLocationIsDisabled()
@@ -551,7 +553,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private fun onLocationIsDisabled() {
         gpsTrackingButton.visibility = View.VISIBLE
-        gpsTrackingButton.state = if (LocationUtil.hasLocationPermission(requireContext()))
+        gpsTrackingButton.state = if (hasLocationPermission(requireContext()))
             LocationState.ALLOWED else LocationState.DENIED
         locationPointerPin.visibility = View.GONE
         mapFragment!!.stopPositionTracking()
