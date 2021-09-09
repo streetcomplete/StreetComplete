@@ -158,9 +158,7 @@
     <string name="upload_server_error">"خطأ في الاتصال أثناء رفع الإجابات. برجاء المحاولة لاحقا."</string>
     <string name="quest_generic_hasFeature_yes">"نعم"</string>
     <string name="quest_generic_hasFeature_no">"لا"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_title">"هل موقف الحافلات هذا يحتوي على مكان انتظار مظلل؟"</string>
+    <string name="quest_busStopShelter_title">"هل يوجد مكان انتظار مظلل في موقف الحافلات هذا؟"</string>
     <string name="quest_bikeParkingCapacity_title">"كم عدد الدراجات التي يمكن إيقافها هنا؟"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"رقم المنزل هذا يبدو لي بأنه غير صحيح على الإطلاق."</string>
     <string name="quest_sport_title">"ما نوع الرياضة التي تُلعب هنا؟"</string>
@@ -196,9 +194,7 @@
     <string name="quest_manySports_confirmation_specific">"هذه الرياضة بالتحديد"</string>
     <string name="quest_manySports_confirmation_generic">"للأغراض العامة"</string>
     <string name="quest_sport_manySports_confirmation_title">"لقد اخترت العديد من الألعاب الرياضية"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_name_title">"هل موقف %s الحافلات مظلّل؟"</string>
+    <string name="quest_busStopShelter_name_title">"هل موقف الحافلات %s هو موقف مظلّل؟"</string>
     <string name="quest_toiletsFee_title">"هل عليك أن تدفع مقابل استخدام هذا الحمام؟"</string>
     <string name="quest_tactilePaving_title_bus">"هل يحتوي موقف الحافلات هذا على علامات بارزة في الأرض لضعاف البصر؟"</string>
     <string name="quest_tactilePaving_title_crosswalk">"هل معبر المشاة هذا يحتوي على علامات بارزة في الأرض لضعاف البصر على كلا الجانبين؟"</string>
@@ -422,12 +418,8 @@
     <string name="quest_internet_access_wired">"سلكي (LAN)"</string>
     <string name="quest_internet_access_terminal">"كمبيوتر متصل بالإنترنت"</string>
     <string name="quest_internet_access_no">"لا يوجد اتصال"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_name_title">"هل يوجد مكان انتظار مظلل في محطة الترام %s؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_title">"هل يوجد مكان انتظار مظلل لمحطة الترام هذه؟"</string>
+    <string name="quest_busStopShelter_tram_name_title">"هل موقف الترام %s هو موقف مظلّل؟"</string>
+    <string name="quest_busStopShelter_tram_title">"هل يوجد مكان انتظار مظلل في موقف الترام هذا؟"</string>
     <string name="quest_bench_backrest_title">"هل هذا المقعد به مسند ظهر؟"</string>
     <string name="quest_bench_answer_picnic_table">"إنها طاولة نزهة"</string>
     <string name="quest_religion_for_place_of_worship_title">"ما هو الدين الذي يمارس في هذا المكان؟"</string>
@@ -599,9 +591,7 @@
     <string name="quest_noteDiscussion_hide2">"مخفي بواسطة %1$s, %2$,s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt; يتم رفع الصور التي ترفقها بملاحظة إلى خادمي وحذفها بعد بضعة أيام من حل هذه الملاحظة. يتم تجريد البيانات الوصفية الخاصة بهم قبل الرفع. &lt;/ p&gt;"</string>
     <string name="action_deselect_all">"الغاء تحديد الكل"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_retail_description">"بما في ذلك مباني المطاعم والمقاهي، ..."</string>
+    <string name="quest_buildingType_retail_description">"بما في ذلك مباني المطاعم والمقاهي والمتاجر الكبرى ..."</string>
     <string name="quest_openingHours_timeSelect_next">"التالي"</string>
     <string name="quest_tracktype_title">"ما مدى صلابة سطح هذا المسار؟"</string>
     <string name="quest_tracktype_grade1">"مستوي و مرصوف/معبد أو مدكوك ومضغوط بشكل قوي"</string>
@@ -768,9 +758,7 @@
     <string name="link_umap_description">"أنشئ خرائط ببيانات مخصصة بسرعة وقم بتضمينها و وضعها في موقعك"</string>
     <string name="link_opnvkarte_description">"خريطة طرق النقل العام ومحطاته."</string>
     <string name="link_pic4review_description">"ساهم في خريطة الشارع المفتوحة ببساطة من خلال النظر إلى صور مدينتك"</string>
-
-    <!-- Fuzzy -->
-    <string name="link_wiki_description">"الويكي هو نقطة دخولك لكل ما يتعلق بخريطة الشارع المفتوحة "</string>
+    <string name="link_wiki_description">"الويكي هو نقطة البداية ومفتاح كل ما يتعلق بخريطة الشارع المفتوحة من معلومات"</string>
     <string name="link_learnosm_description">"جديد على خريطة الشارع المفتوحة؟ هذا دليل المبتدئين"</string>
     <string name="link_neis_one_description">"مجموعة ضخمة من الإحصائيات للمساهمين في خريطة الشارع المفتوحة، مثل أين وكيف ساهمت، من حولك بالإضافة إلى المتصدرين وأعلى المحررين مساهمة"</string>
     <string name="link_welcome_mat_description">"معلومات عامة حول خريطة الشارع المفتوحة وكيفية العمل مع خريطة الشارع المفتوحة كمنظمة"</string>
@@ -885,18 +873,10 @@
     <string name="resurvey_intervals_default">"افتراضي"</string>
     <string name="resurvey_intervals_more_often">"اسأل في كثير من الأحيان"</string>
     <string name="quest_accepts_cash_type_title">"هل يقبل %1$s  (%2$s) الدفع النقدي؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_name_title">"هل يوجد في محطة توقف الترام %s مقعد؟"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_busStopBench_tram_name_title">"هل محطة توقف الترام %s هذه تحتوي على مقعد؟"</string>
     <string name="quest_busStopBench_tram_title">"هل يوجد في محطة توقف الترام مقعد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"هل يوجد في محطة توقف الحافلات هذه مقعد؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_name_title">"هل يوجد في محطة توقف الحافلات %s مقعد؟"</string>
+    <string name="quest_busStopBench_name_title">"هل محطة توقف الحافلات %s هذه تحتوي على مقعد؟"</string>
     <string name="quest_summit_register_title">"هل يوجد سجل زوار للقمة على %s؟"</string>
     <string name="quest_is_defibrillator_inside_title">"هل جهاز تنظيم ضربات القلب (AED) داخل المبنى؟"</string>
     <string name="about_title_translate">"ساعد في ترجمة هذا التطبيق"</string>
@@ -1077,9 +1057,7 @@
     <string name="quest_barrier_type_kissing_gate_conversion">"تحولت إلى بوابة لا تسمح بعبور الماشية"</string>
     <string name="quest_stile_type_title">"ما نوع هذا الطراز؟"</string>
     <string name="quest_buildingType_semi_detached_description2">"منزل (منازل) الأسرة الواحدة المتلاصقة"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests2">"اختيار المهمة والأولوية"</string>
+    <string name="pref_title_quests2">"اختيار المهمة وترتيب العرض"</string>
     <string name="pref_subtitle_quests">"تم تمكين %1$d من %2$d"</string>
     <string name="quest_busStopLit_tram_name_title">"هل محطة توقف الترام %s مضاءة؟"</string>
     <string name="quest_busStopLit_tram_title">"هل محطة توقف الترام هذه مضاءة؟"</string>
@@ -1088,17 +1066,9 @@
     <string name="no_location_permission_warning_title">"إذن دخول الموقع"</string>
     <string name="quest_surface_value_woodchips">"رقائق الخشب"</string>
     <string name="no_camera_app">"لا يوجد تطبيق كاميرا متاح"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_tram_name_title">"هل عربة الترام %s بها سلة مهملات؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_tram_title">"هل هذا محطة توقف الترام لديه سلة نفايات؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_title">"هل يوجد في محطة الباص هذه سلة مهملات؟"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_name_title">"هل عربة الترام هذه %s بها سلة مهملات؟"</string>
+    <string name="quest_busStopBin_tram_title">"هل توجد سلة نفايات في محطة توقف الترام هذه؟"</string>
+    <string name="quest_busStopBin_title">"هل يوجد سلة مهملات في محطة الباص هذه؟"</string>
     <string name="quest_busStopBin_name_title">"هل يوجد في محطة الحافلات %s سلة مهملات؟"</string>
     <string name="quest_bollard_type_title">"ما هو نوع مربط الحبال؟"</string>
     <string name="quest_bollard_type_rising">"ارتفاع"</string>
@@ -1108,4 +1078,35 @@
     <string name="quest_camera_type_dome">"قبة"</string>
     <string name="quest_camera_type_fixed">"مثبت"</string>
     <string name="quest_camera_type_panning">"ثابتة بمحور للدوران"</string>
+    <string name="about_title_faq">"التعليمات"</string>
+    <string name="quest_buildingLevels_title2">"كم عدد المستويات التي فوق القبو والتي يحتوي عليها هذا المبنى؟"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"كم عدد المستويات التي فوق الطابق السفلي الذي يحتويه جزء المبنى هذا؟"</string>
+    <string name="quest_crossing_title">"هل توجد حواجز في نقطة إلتقاء هذا الطريق بهذا الطريق هنا؟  ومن اي نوع؟"</string>
+    <string name="pref_subtitle_quests_preset_name">"القالب: %s"</string>
+    <string name="default_disabled_msg_roofShape">"يتم تعطيل نوع المهمة هذا افتراضيًا لأن أشكال السقف غالبًا ما تكون غير مرئية بسهولة من الشارع، كما أن هذا النوع من المهام أيضًا يستغرق وقتًا طويلاً؛ لذا في معظم الحالات ، يكون من الأسهل والأكثر كفاءة تحديد هذا الأمر من خلال الصور الجوية في المنزل."</string>
+    <string name="quest_religion_animist">"روحاني"</string>
+    <string name="quest_construction_steps_title">"هل اكتملت هذه الخطوات؟"</string>
+    <string name="questList_disabled_at_day">"تظهر فقط في الليل"</string>
+    <string name="pref_quests_deselect_all">"إلغاء تحديد كافة المهام؟"</string>
+    <string name="quest_buildingType_boathouse">"مبنى تخزين القوارب"</string>
+    <string name="quest_buildingType_allotment_house">"البناء الخارجي لـ الحدائق/المزارع المحصصة"</string>
+    <string name="quest_buildingType_grandstand">"مُدَرج"</string>
+    <string name="action_search">"بحث"</string>
+    <string name="action_manage_presets">"إدارة القوالب"</string>
+    <string name="team_mode_team_size_label2">"كم عدد الناس الذين يرسمون الخرائط؟  أدخل نفس الرقم على هاتف الجميع."</string>
+    <string name="team_mode_choose_color2">"بعد ذلك ، يجب على كل شخص اختيار لون مختلف.  اختر ما يناسبك:"</string>
+    <string name="link_organic_maps_description">"تطبيق الخرائط للمسافرين والمتنزهين وراكبي الدراجات يعمل في وضع عدم الاتصال"</string>
+    <string name="quest_kerb_height_no">"لايوجد رصيف على الإطلاق"</string>
+    <string name="quest_barrier_type_stepover_wooden">"درج حاجز خشبي"</string>
+    <string name="quest_barrier_type_stepover_stone">"درج حاجز حجري"</string>
+    <string name="quest_bollard_type_removable">"قابل للإزالة (مع أو بدون مفتاح)"</string>
+    <string name="quest_bollard_type_foldable2">"قابل للطي (مع أو بدون مفتاح)"</string>
+    <string name="no_search_results">"لم يتم العثور على شيء"</string>
+    <string name="quest_selection_hint_title">"الكثير للقيام به؟"</string>
+    <string name="quest_selection_hint_message">"يجب أن تكون المساهمة في المقام الأول ممتعة!  إذا كنت غارقًا في عدد المهام ، فيمكنك دائمًا ضبط المهام التي يتم عرضها لك وبأي ترتيب في الإعدادات."</string>
+    <string name="quest_presets_preset_add">"إضافة قالب"</string>
+    <string name="quest_presets_preset_name">"اسم القالب"</string>
+    <string name="quest_presets_default_name">"الافتراضي"</string>
+    <string name="quest_presets_selected">"محدد"</string>
+    <string name="quest_presets_delete_message">"هل تريد حذف القالب \"%s\" ؟  اختيار المهمة وترتيبها سيضيعان بشكل نهائي."</string>
 </resources>

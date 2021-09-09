@@ -2392,6 +2392,8 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="team_mode_choose_color2">"Następnie każda osoba musi wybrać inny kolor.  Wybierz swój:"</string>
     <string name="link_organic_maps_description">"Aplikacje typu mapa dla podróżników, turystów pieszych i rowerzystów, które działają w trybie offline"</string>
     <string name="quest_kerb_height_no">"Brak krawężnika"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Drewniany przełaz nad barierą"</string>
+    <string name="quest_barrier_type_stepover_stone">"Kamienny przełaz nad barierą"</string>
     <string name="quest_bollard_type_removable">"Usuwalny (z kluczem lub bez)"</string>
     <string name="quest_bollard_type_foldable2">"Składany (z kluczem lub bez)"</string>
     <string name="no_search_results">"Brak wyników"</string>
