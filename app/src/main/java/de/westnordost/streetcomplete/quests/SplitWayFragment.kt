@@ -76,7 +76,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         osmQuestKey = Json.decodeFromString(args.getString(ARG_OSM_QUEST_KEY)!!)
         way = Json.decodeFromString(args.getString(ARG_WAY)!!)
         val elementGeometry: ElementPolylinesGeometry = Json.decodeFromString(args.getString(ARG_ELEMENT_GEOMETRY)!!)
-        positions = elementGeometry.polylines.single().map { LatLon(it.latitude, it.longitude) }
+        positions = elementGeometry.polylines.single()
     }
 
     @SuppressLint("ClickableViewAccessibility")
