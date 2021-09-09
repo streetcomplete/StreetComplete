@@ -1,3 +1,15 @@
+v35.0-beta1: |
+  <h3>Enhancements</h3>
+  <ul>
+  <li>Clearer illustrations for the bridge structure quest (#2867), by @TurnrDev</li>
+  </ul>
+  <h3>App maintenance</h3>
+  <ul>
+  <li>Android 4.x support has been dropped. As a consequence, the app's download size is reduced by 40%! (#2031), thanks @Isira-Seneviratne</li>
+  <li>Translator credits are now generated automatically (#3214)</li>
+  <li>Various code maintenance and refactorings (#3274, #3223, #3259, #3273, ...), thanks @Isira-Seneviratne, @peternewman, @smichel17</li>
+  </ul>
+
 v34.1: |
   <h3>Enhancements</h3>
   <ul>
