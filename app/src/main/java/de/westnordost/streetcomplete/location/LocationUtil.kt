@@ -4,10 +4,13 @@ import android.Manifest
 import android.content.Context
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.location.Location
 import android.location.LocationManager
 
 import androidx.core.content.ContextCompat
 import androidx.core.location.LocationManagerCompat
+
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 fun isLocationEnabled(context: Context): Boolean {
     return hasLocationPermission(context) && LocationManagerCompat
@@ -22,3 +25,5 @@ fun hasLocationPermission(context: Context): Boolean {
 fun createLocationAvailabilityIntentFilter(): IntentFilter {
     return IntentFilter(LocationManager.MODE_CHANGED_ACTION)
 }
+
+fun Location.toLatLon(): LatLon = LatLon(latitude, longitude)
