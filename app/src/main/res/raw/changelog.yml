@@ -1,3 +1,15 @@
+v34.1: |
+  <h3>Enhancements</h3>
+  <ul>
+  <li>If you answer that a place has no vegetarian food, it also means that it has no vegan food (#3253) by @Helium314</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix crash when asking whether a traffic calming (etc.) still exists (#3261)</li>
+  <li>Fix crash during scanning for quests</li>
+  <li>Don't delete certain tags when selecting that a shop is now vacant (#3244)</li>
+  </ul>
+
 v34.0: |
   <h3>🚌🚴 Quest presets</h3>
   <ul>
