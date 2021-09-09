@@ -32,32 +32,33 @@ val MAXSPEED_TYPE_KEYS = setOf(
 
 const val SURVEY_MARK_KEY = "check_date"
 
-val KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
-    "landuse", "historic", "historic:.*", "heritage", "heritage:.*",
-    // building/simple 3d building mapping
-    "building", "man_made", "building:.*", "roof:.*", "architect",
-    // any address (or weird address: is_in??)
-    "addr:.*", "is_in:.*",
-    // shop can at the same time be an outline in indoor mapping
-    "level", "level:ref", "indoor", "indoor:.*", "room",
-    // geometry
-    "layer", "ele", "height", "area", "is_in",
-    // notes and fixmes
-    "FIXME", "fixme", "note",
-    // reference tags that are specific to the location and are unlikely to change when a business changes
-    // due to the multitude of these, let's keep the whole ref:.* space
-    "ref:.*",
-    "source",
-    // source tags referring to building / address / geometry (from cursory look at taginfo on "source:")
-    "source:(${listOf(
-        "date",
-        // referring to address / ref...
-        "addr", "address", "housenumber", "street", "conscriptionnumber", "streetnumber", "postcode", "postal_code", "ref",
-        // referring to geometry
-        "geometry", "position", "shape", "outline", "location",
-        // referring to building
-        "building", "heritage", "height", "architect", "ele"
-    ).joinToString("|")})(:.*)?",
+val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
+    "shop", "craft", "amenity", "shop_1", "old_shop", "craft_1",
+    "supermarket(:.*)?", "created_by", "diet:.*", "disused:.*", "was:.*",
+    "internet_access(:.*)?", "name(:.*)?", "name_1", ".*_name(:.*)?",
+    "noname", "opening_hours(:.*)?", "brand(:.*)?", "network",
+    "operator(:.*)?", "ref:vatin", "contact:.*", "website", "url",
+    "source_ref:url", "facebook", "email", "phone(:.*)?", "phone_1", "mobile",
+    "fax", "payment:.*", "branch(:.*)?", "reservation", "license:.*", "owner",
+    "takeaway(:.*)?", "tobacco", "bulk_purchase", "tailor:.*", "min_age",
+    "fuel:.*", "compressed_air", "hgv:lanes", "clothes", "service(:.*)?",
+    "motorcycle:.*", "repair", "trade", "smoking", "unisex", "male",
+    "female", "description(:.*)?", "beauty", "check_date:opening_hours",
+    "bar", "cafe", "microbrewery", "brewery", "real_ale", "distillery",
+    "drink:.*", "cocktails", "alcohol", "wine:region", "wine_region",
+    "cuisine", ".*:covid19", "organic", "second_hand", "self_service",
+    "fhrs:.*", "fvst:.*", "ncat", "nat_ref", "gnis:.*", "food", "pastry",
+    "product", "produce", "chocolate", "currency:.*", "cash_withdrawal(:.*)?",
+    "fair_trade", "operational_status", "fee", "carpenter", "caterer",
+    "furniture", "lottery", "wholesale", "sale", "sport", "dispensing",
+    "butcher", "books", "agrarian", "musical_instrument", "produced_on_site",
+    "massage", "seamark:.*", "waterway", "designation", "dog", "origin",
+    "parts", "post_office(:.*)?", "religion", "rental", "tickets:.*",
+    "winkelnummer", "attraction", "delivery", "goods_supply", "strapline",
+    ".*:repair", "electronics_repair(:.*)?", "stars", "accommodation",
+    "rooms", "beds", "capacity", "capacity:persons", "tourism",
+    "laundry_service", "damage", "source:damage", "ref", "leisure",
+    "check_date",
 ).map { it.toRegex() }
 
 /** ~ tenant of a normal retail shop area.
