@@ -43,10 +43,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     override fun createForm() = ShopTypeForm()
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, changes: StringMapChangesBuilder) {
-        val otherCheckDateKeys = LAST_CHECK_DATE_KEYS.filterNot { it == SURVEY_MARK_KEY }
-        for (otherCheckDateKey in otherCheckDateKeys) {
-            changes.deleteIfExists(otherCheckDateKey)
-        }
+        changes.deleteOtherCheckDates()
         when (answer) {
             is IsShopVacant -> {
                 changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
