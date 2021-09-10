@@ -142,7 +142,7 @@ import kotlin.collections.ArrayList
 
         // first remove old tags
         for ((key, value) in previousTags) {
-            val isOkToRemove = KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED.none { !it.matches(key) }
+            val isOkToRemove = KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED.any { it.matches(key) }
             if (isOkToRemove && !newTags.containsKey(key)) {
                 changesList.add(StringMapEntryDelete(key, value))
             }
