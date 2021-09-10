@@ -34,31 +34,33 @@ const val SURVEY_MARK_KEY = "check_date"
 
 val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "shop", "craft", "amenity", "shop_1", "old_shop", "craft_1",
-    "supermarket(:.*)?", "created_by", "diet:.*", "disused:.*", "was:.*",
-    "internet_access(:.*)?", "name(:.*)?", "name_1", ".*_name(:.*)?",
-    "noname", "opening_hours(:.*)?", "brand(:.*)?", "network",
-    "operator(:.*)?", "ref:vatin", "contact:.*", "website", "url",
-    "source_ref:url", "facebook", "email", "phone(:.*)?", "phone_1", "mobile",
-    "fax", "payment:.*", "branch(:.*)?", "reservation", "license:.*", "owner",
-    "takeaway(:.*)?", "tobacco", "bulk_purchase", "tailor:.*", "min_age",
-    "fuel:.*", "compressed_air", "hgv:lanes", "clothes", "service(:.*)?",
-    "motorcycle:.*", "repair", "trade", "smoking", "unisex", "male",
-    "female", "description(:.*)?", "beauty", "check_date:opening_hours",
-    "bar", "cafe", "microbrewery", "brewery", "real_ale", "distillery",
-    "drink:.*", "cocktails", "alcohol", "wine:region", "wine_region",
-    "cuisine", ".*:covid19", "organic", "second_hand", "self_service",
-    "fhrs:.*", "fvst:.*", "ncat", "nat_ref", "gnis:.*", "food", "pastry",
-    "product", "produce", "chocolate", "currency:.*", "cash_withdrawal(:.*)?",
-    "fair_trade", "operational_status", "fee", "carpenter", "caterer",
-    "furniture", "lottery", "wholesale", "sale", "sport", "dispensing",
-    "butcher", "books", "agrarian", "musical_instrument", "produced_on_site",
-    "massage", "seamark:.*", "waterway", "designation", "dog", "origin",
-    "parts", "post_office(:.*)?", "religion", "rental", "tickets:.*",
-    "winkelnummer", "attraction", "delivery", "goods_supply", "strapline",
-    ".*:repair", "electronics_repair(:.*)?", "stars", "accommodation",
-    "rooms", "beds", "capacity", "capacity:persons", "tourism",
-    "laundry_service", "damage", "source:damage", "ref", "leisure",
-    "check_date",
+    // obsoleted information
+    "disused:.*", "was:.*", "damage", "source:damage", "created_by", "check_date",
+    // classificatlinks to external databases
+    "fhrs:.*", "fvst:.*", "ncat", "nat_ref", "gnis:.*", "winkelnummer",
+    // names and identifications
+    "name(:.*)?", "name_1", ".*_name(:.*)?", "noname", "branch(:.*)?", "brand(:.*)?", "network", "operator(:.*)?", "ref", "ref:vatin", "designation",
+    // contacts
+    "contact:.*", "website", "facebook", "email", "phone(:.*)?", "phone_1", "mobile", "fax", "url", "source_ref:url", "owner",
+    // payments
+    "payment:.*", "currency:.*", "cash_withdrawal(:.*)?", "fee",
+    // generic shop/craft attributes
+    "opening_hours(:.*)?", "check_date:opening_hours", "internet_access(:.*)?", "second_hand", "self_service", "license:.*", "bulk_purchase", ".*:covid19", "description(:.*)?",
+    "min_age", "supermarket(:.*)?", "operational_status", "trade", "wholesale", "sale", "smoking", "origin", "attraction", "strapline", "dog",
+    // food and drink details
+    "bar", "cafe", "microbrewery", "brewery", "real_ale", "distillery", "drink:.*", "cocktails", "alcohol", "wine:region", "wine_region", "diet:.*", "cuisine",
+    "organic", "produced_on_site", "food", "pastry", "product", "produce", "chocolate", "fair_trade", "butcher", "reservation", "takeaway(:.*)?", "delivery", "caterer",
+    // fuel stations and boatbuilders
+    "fuel:.*", "compressed_air", "hgv:lanes", "seamark:.*", "waterway",
+    // related to repair shops/crafts
+    "service(:.*)?", "motorcycle:.*", "repair", ".*:repair", "electronics_repair(:.*)?",
+    // hairdresser
+    "unisex", "male", "female",
+    // accomodation & layout
+    "rooms", "stars", "accommodation", "beds", "capacity(:persons)?", "tourism", "laundry_service",
+    // misc specific attributes
+    "clothes", "beauty", "tobacco", "carpenter", "furniture", "lottery", "sport", "leisure", "dispensing", "tailor:.*",
+    "books", "agrarian", "musical_instrument", "massage", "parts", "post_office(:.*)?", "religion", "rental", "tickets:.*", "goods_supply",
 ).map { it.toRegex() }
 
 /** ~ tenant of a normal retail shop area.
