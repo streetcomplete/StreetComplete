@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.download
+package de.westnordost.streetcomplete.data.sync
 
 import android.app.Service
 import android.content.Intent

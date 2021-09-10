@@ -45,7 +45,9 @@ object ApplicationConstants {
     const val ATTACH_PHOTO_MAXWIDTH = 1280 // WXGA
     const val ATTACH_PHOTO_MAXHEIGHT = 1280 // WXGA
 
-    const val NOTIFICATIONS_CHANNEL_DOWNLOAD = "downloading"
+    // name is "downloading" for historic reasons, not sure if it has any side-effects if it is changed now
+    const val NOTIFICATIONS_CHANNEL_SYNC = "downloading"
+    const val NOTIFICATIONS_ID_SYNC = 1
 
     val IGNORED_RELATION_TYPES = setOf(
         // could be useful, but sometimes/often very very large
