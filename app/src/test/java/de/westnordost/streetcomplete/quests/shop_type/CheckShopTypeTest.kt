@@ -136,8 +136,8 @@ class CheckShopTypeTest {
         )
     }
 
-    // see KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED
-    @Test fun `apply shop with tags answer clears all tags except for a few ones`() {
+    // see KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
+    @Test fun `apply shop with tags answer clears only specified known safe-to-remove tags`() {
         questType.verifyAnswer(
             mapOf(
                 "building" to "yes", // <- should not be cleared
