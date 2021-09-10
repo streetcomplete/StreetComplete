@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
@@ -21,13 +22,16 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
         OtherAnswer(R.string.quest_smoothness_obstacle) { showObstacleHint() }
     )
 
-    val surfaceTag get() = osmElement!!.tags["surface"]
+    private val surfaceTag get() = osmElement!!.tags["surface"]
 
-    val highwayTag get() = osmElement!!.tags["highway"]
+    private val highwayTag get() = osmElement!!.tags["highway"]
 
     // show only answers that make sense for the tagged surface
     // 0-7 are excellent - impassible, ordered like SmoothnessAnswer
     override val items get() = when {
+        // paving stones on roads will not be "excellent"
+        // TODO: select the surfaces where we have details, and adjust them in SURFACES_FOR_SMOOTHNESS
+        surfaceTag == "paving_stones" && !ALL_PATHS_EXCEPT_STEPS.contains(highwayTag) -> getAnswers(1,4)
         listOf("asphalt", "paving_stones", "concrete", "metal").contains(surfaceTag) -> getAnswers(0,4)
         listOf("sett", "unhewn_cobblestone", "compacted", "grass_paver").contains(surfaceTag) -> getAnswers(2,6)
         listOf("gravel", "fine_gravel", "pebbles").contains(surfaceTag) -> getAnswers(3,6)
@@ -35,7 +39,12 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
         else -> getAnswers(0,7)
     }
 
-    override val itemsPerRow = 2
+    override val itemsPerRow = 1
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_smoothness
+    }
 
     override val moveFavoritesToFront = false
 
@@ -55,62 +64,73 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
         val answers = mutableListOf<Item<Smoothness>>()
         // this is assuming array is sorted in the order of SmoothnessAnswer (and works, at least on my phone)
         for (smoothness in Smoothness.values().sliceArray(minSmoothness..maxSmoothness))
-            answers.add(Item(smoothness, getImage(smoothness), getDescription(smoothness)))
+            answers.add(Item(smoothness, getImage(smoothness), smoothness.title, getDescription(smoothness)))
         return answers
     }
 
     private fun getDescription(smoothness: Smoothness) = when (smoothness) {
-        Smoothness.EXCELLENT -> R.string.quest_smoothness_excellent
-        Smoothness.GOOD -> when (highwayTag) {
-            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_good
-            else -> R.string.quest_smoothness_good
+        Smoothness.EXCELLENT -> when (surfaceTag) {
+            "paving_stones" -> R.string.quest_smoothness_description_excellent_paving_stones
+            else -> R.string.quest_smoothness_description_excellent
         }
-        Smoothness.INTERMEDIATE -> when (highwayTag) {
-            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_intermediate_path
-            else -> R.string.quest_smoothness_intermediate_road
+        Smoothness.GOOD -> when (surfaceTag) {
+            "paving_stones" -> R.string.quest_smoothness_description_good_paving_stones
+            else -> R.string.quest_smoothness_description_good
         }
-        Smoothness.BAD -> when (highwayTag) {
-            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_bad_path
-            else -> R.string.quest_smoothness_bad_road
+        Smoothness.INTERMEDIATE -> when (surfaceTag) {
+            "paving_stones", "sett" -> R.string.quest_smoothness_description_intermediate_paving_stones
+            "compacted" -> R.string.quest_smoothness_description_intermediate_compacted
+            else -> when (highwayTag) {
+                in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_intermediate_path
+                else -> R.string.quest_smoothness_description_intermediate
+            }
+        }
+        Smoothness.BAD -> when (surfaceTag) {
+            "sett" -> R.string.quest_smoothness_description_bad_sett
+            "paving_stones" -> R.string.quest_smoothness_description_bad_paving_stones
+            else -> when (highwayTag) {
+                in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_bad_path
+                else -> R.string.quest_smoothness_description_bad_road
+            }
         }
         Smoothness.VERY_BAD -> when (highwayTag) {
-            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_very_bad_path
-            else -> R.string.quest_smoothness_very_bad_road
+            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_very_bad_path
+            else -> R.string.quest_smoothness_description_very_bad_road
         }
         Smoothness.HORRIBLE -> when (highwayTag) {
-            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_horrible
-            else -> R.string.quest_smoothness_horrible
+            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_horrible
+            else -> R.string.quest_smoothness_description_horrible
         }
         Smoothness.VERY_HORRIBLE -> when (highwayTag) {
-            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_very_horrible
-            else -> R.string.quest_smoothness_very_horrible
+            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_very_horrible
+            else -> R.string.quest_smoothness_description_very_horrible
         }
         Smoothness.IMPASSABLE -> when (highwayTag) {
-            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_impassable
-            else -> R.string.quest_smoothness_impassable
+            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_impassable
+            else -> R.string.quest_smoothness_description_impassable
         }
     }
 
     private fun getImage(smoothness: Smoothness) = when (smoothness) {
         Smoothness.EXCELLENT -> when (surfaceTag) {
-            "asphalt" -> R.drawable.surface_asphalt_excellent // ok
+            "asphalt" -> R.drawable.surface_asphalt_excellent_400 // ok
             "paving_stones" -> R.drawable.surface_paving_stones_excellent // hmm...
             else -> R.drawable.surface_paved_area
         }
         Smoothness.GOOD -> when (surfaceTag) {
-            "asphalt", "concrete" -> R.drawable.surface_asphalt_good // ok
+            "asphalt", "concrete" -> R.drawable.surface_asphalt_good_400 // ok
             "paving_stones" -> R.drawable.surface_paving_stones_good // hmm...
             else -> R.drawable.surface_paved_area
         }
         Smoothness.INTERMEDIATE -> when (surfaceTag) {
-            "asphalt", "concrete" -> R.drawable.surface_asphalt_intermediate // not good
+            "asphalt", "concrete" -> R.drawable.surface_asphalt_intermediate_400 // not good
             "paving_stones" -> R.drawable.surface_paving_stones_intermediate // hmm
             "sett" -> R.drawable.surface_sett_intermediate // ok
             "compacted" -> R.drawable.surface_compacted_intermediate // not good, details not visible
             else -> R.drawable.surface_paved_area
         }
         Smoothness.BAD -> when (surfaceTag) {
-            "asphalt", "concrete" -> R.drawable.surface_asphalt_bad2 // hmm
+            "asphalt", "concrete" -> R.drawable.surface_asphalt_bad_400 // hmm
             "paving_stones" -> R.drawable.surface_paving_stones_bad // hmm
             "sett" -> R.drawable.surface_sett_bad // ok
             "gravel" -> R.drawable.surface_gravel_bad // hmm (also bad_2)
@@ -118,7 +138,7 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
             else -> R.drawable.surface_paved_area
         }
         Smoothness.VERY_BAD -> when (surfaceTag) {
-            "asphalt", "concrete" -> R.drawable.surface_asphalt_very_bad // not good
+            "asphalt", "concrete" -> R.drawable.surface_asphalt_very_bad_400 // not good
             "paving_stones" -> R.drawable.surface_paving_stones_very_bad // actually this is grass paver without grass...
             "sett" -> R.drawable.surface_sett_very_bad // ok
             else -> R.drawable.surface_paved_area
