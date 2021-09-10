@@ -35,12 +35,10 @@
       android:pathData="m90.762,46.923 l-28.77,-23.29 -57.54,19.18"
       android:strokeAlpha="0.50196"
       android:strokeWidth="2"
-      android:fillColor="#00000000"
       android:strokeColor="#b82e2e"/>
   <path
       android:pathData="m61.993,23.633 l-1.37,-10.96"
       android:strokeAlpha="0.50196"
       android:strokeWidth="2"
-      android:fillColor="#00000000"
       android:strokeColor="#b82e2e"/>
 </vector>

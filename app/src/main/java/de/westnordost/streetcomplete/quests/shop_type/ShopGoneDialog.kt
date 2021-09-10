@@ -49,7 +49,7 @@ class ShopGoneDialog(
 
         presetsEditText.setAdapter(SearchAdapter(context, { term -> getFeatures(term) }, { it.name }))
         presetsEditText.setOnClickListener { selectRadioButton(replaceRadioButton) }
-        presetsEditText.setOnFocusChangeListener { v, hasFocus ->
+        presetsEditText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) selectRadioButton(replaceRadioButton)
         }
 

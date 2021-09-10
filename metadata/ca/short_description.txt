@@ -1,1 +1,1 @@
-Aplicació de topografia per a l'OpenStreetMap
+Aplicació de cartògraf de camp per a l'OpenStreetMap

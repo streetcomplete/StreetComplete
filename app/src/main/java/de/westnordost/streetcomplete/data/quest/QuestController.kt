@@ -188,9 +188,23 @@ import kotlin.collections.ArrayList
     ): Boolean = withContext(Dispatchers.IO) {
         val e = getOsmElement(q) ?: return@withContext false
 
+        /** When OSM data is being updated (e.g. during download), first that data is persisted to
+         *  the database and after that, the quests are updated on the new data.
+         *
+         *  Depending on the volume of the data, this may take some seconds. So in this time, OSM
+         *  data and the quests are out of sync: If in this time, a quest is solved, the quest may
+         *  not be applicable to the element anymore. So we need to check that before trying to
+         *  apply the changes.
+         *
+         *  Why not synchronize the updating of OSM data and generated quests so that they never can
+         *  go out of sync? It was like this (since v32) initially, but it made using the app
+         *  (opening quests, solving quests) unusable and seemingly unresponsive while the app was
+         *  downloading/updating data. See issue #2876 */
+        if (q.osmElementQuestType.isApplicableTo(e) == false) return@withContext false
+
         val changes = createOsmQuestChanges(q, e, answer)
         require(!changes.isEmpty()) {
-            "OsmQuest ${q.key} has been answered by the user but the changeset is empty!"
+            "OsmQuest ${q.key} has been answered by the user but there are no changes!"
         }
 
         Log.d(TAG, "Solved a ${q.type::class.simpleName!!} quest: $changes")

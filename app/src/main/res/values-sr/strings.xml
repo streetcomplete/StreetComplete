@@ -1025,8 +1025,6 @@
     <string name="quest_barrier_type_kissing_gate_conversion">"Претворено у цик-цак препреку"</string>
     <string name="quest_stile_type_title">"Која је ово врста пролаза?"</string>
     <string name="quest_buildingType_semi_detached_description2">"најчешће дводомке"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Одабир задатака и редослед приказа"</string>
     <string name="pref_subtitle_quests">"укључено је %1$d од %2$d"</string>
     <string name="quest_busStopLit_tram_name_title">"Да ли је трамвајско стајалиште %s осветљено?"</string>
@@ -1050,21 +1048,21 @@
     <string name="quest_camera_type_panning">"Померајућа"</string>
     <string name="about_title_faq">"Честа питања"</string>
     <string name="quest_buildingLevels_title2">"Колико спратова изнад подрума има ова грађевина?"</string>
-    <string name="quest_buildingLevels_title_buildingPart2">"Колико нивоа изнад подрума има ова грађевина?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Колико спратова изнад подрума има ова грађевина?"</string>
     <string name="quest_crossing_title">"Да ли постоје ивичњаци на споју ових путева? Које врсте?"</string>
     <string name="pref_subtitle_quests_preset_name">"Група задатака: %s"</string>
     <string name="default_disabled_msg_roofShape">"Ова врста задатака је онемогућена јер се облици кровова често не виде добро са улице. Такође, одузимају доста врмена. Углавном је лакше и ефикасније кровове означити од куће, преко снимака из ваздуха."</string>
     <string name="quest_religion_animist">"Анимизам"</string>
     <string name="quest_construction_steps_title">"Да ли су ове степенице завршене?"</string>
     <string name="questList_disabled_at_day">"Приказује се само ноћу"</string>
-    <string name="pref_quests_deselect_all">"Искључи све задатке?"</string>
+    <string name="pref_quests_deselect_all">"Желите ли да искључите све задатке?"</string>
     <string name="quest_buildingType_boathouse">"„Гаража“ за чамце"</string>
     <string name="quest_buildingType_allotment_house">"Вртна кућица"</string>
     <string name="quest_buildingType_grandstand">"Трибина"</string>
     <string name="action_search">"Претражи"</string>
-    <string name="action_manage_presets">"Уреди групе задатака"</string>
+    <string name="action_manage_presets">"Управљање групама задатака"</string>
     <string name="team_mode_team_size_label2">"Колико вас има у групи? Унесите исти број на свачијем телефону."</string>
-    <string name="team_mode_choose_color2">"Сада свако мора одабрати различиту боју. Одабери своју:"</string>
+    <string name="team_mode_choose_color2">"Сада свако мора одабрати различиту боју. Одаберите своју:"</string>
     <string name="link_organic_maps_description">"Апликација са картом за путнике, планинаре и бициклисте која ради и без интернета"</string>
     <string name="quest_kerb_height_no">"Нема ивичњака"</string>
     <string name="quest_barrier_type_stepover_wooden">"Дрвени прелаз преко ограде"</string>
@@ -1073,10 +1071,10 @@
     <string name="quest_bollard_type_foldable2">"Склопив (са или без кључа)"</string>
     <string name="no_search_results">"Нема резултата"</string>
     <string name="quest_selection_hint_title">"Превише задатака?"</string>
-    <string name="quest_selection_hint_message">"Допринос пре свега треба бити забаван! Ако сте преоптерећени бројем задатака, у подешавањима увек можете изменити који се задаци приказују као и њихов редослед."</string>
+    <string name="quest_selection_hint_message">"Допринос пре свега треба бити забаван! Уколико сте преоптерећени бројем задатака, у поставкама увек можете изменити који се задаци приказују као и њихов редослед."</string>
     <string name="quest_presets_preset_add">"Додај групу задатака"</string>
     <string name="quest_presets_preset_name">"Назив групе задатака"</string>
     <string name="quest_presets_default_name">"Основно"</string>
     <string name="quest_presets_selected">"Одабрано"</string>
-    <string name="quest_presets_delete_message">"Обрисати групу задатака \"%s\"? Избор и редослед задатака у групи ће бити неповратно изгубљен."</string>
+    <string name="quest_presets_delete_message">"Желите ли да избришете групу задатака „%s“? Избор и редослед задатака у групи ће бити трајно изгубљен."</string>
 </resources>

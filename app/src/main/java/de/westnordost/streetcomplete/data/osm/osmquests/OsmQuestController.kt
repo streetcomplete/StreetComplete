@@ -229,7 +229,7 @@ import javax.inject.Singleton
 
         // do not create quests that refer to geometry that is too long for a surveyor to be expected to survey
         if (geometry is ElementPolylinesGeometry) {
-            val totalLength = geometry.polylines.sumByDouble { it.measuredLength() }
+            val totalLength = geometry.polylines.sumOf { it.measuredLength() }
             if (totalLength > MAX_GEOMETRY_LENGTH_IN_METERS) {
                 return false
             }

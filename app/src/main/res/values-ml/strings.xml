@@ -1822,5 +1822,11 @@
     <string name="at_conscription_number">"നിർബന്ധിത നമ്പർ %s:"</string>
     <string name="at_housenumber">"വീട്ട് നമ്പർ %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) തുറക്കുന്ന  സമയം എപ്പോഴാണ് ?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"തുറക്കുന്ന സമയം %s ഇപ്പോഴും ശരിയാണോ?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"തുറക്കുന്ന സമയം %1$s(%2$s) ഇപ്പോഴും ശരിയാണോ?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"തുറക്കുന്ന സമയം ഇപ്പോഴും ശരിയാണോ (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"ഒഴിവുദിനങ്ങൾ ചേർക്കുക"</string>
+    <string name="quest_openingHours_off_day">"ഒഴിവുദിനം"</string>
+    <string name="quest_openingHours_unspecified_range">"വ്യക്തമാക്കിയിട്ടില്ല"</string>
     <string name="quest_traffic_signals_sound_title">"ഇവിടെ അന്ധരായവർക്ക് വേണ്ടി ശബ്ദ സന്ദേശങ്ങൾ നൽകുന്നുണ്ടോ?\""</string>
 </resources>

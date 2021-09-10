@@ -21,6 +21,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.getSystemService
+import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
@@ -44,10 +45,12 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.location.createLocationAvailabilityIntentFilter
 import de.westnordost.streetcomplete.location.FineLocationManager
+import de.westnordost.streetcomplete.location.hasLocationPermission
+import de.westnordost.streetcomplete.location.isLocationEnabled
 import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
-import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
 import de.westnordost.streetcomplete.util.*
@@ -96,7 +99,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private var locationWhenOpenedQuest: Location? = null
 
-    private var windowInsets: Rect? = null
+    private var windowInsets: Insets? = null
 
     internal var mapFragment: QuestsMapFragment? = null
     internal var mainMenuButtonFragment: MainMenuButtonFragment? = null
@@ -153,7 +156,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         super.onViewCreated(view, savedInstanceState)
 
         mapControls.respectSystemInsets(View::setMargins)
-        view.respectSystemInsets { l, t, r, b -> windowInsets = Rect(l, t, r, b) }
+        view.respectSystemInsets { windowInsets = it }
 
         locationPointerPin.setOnClickListener { onClickLocationPointer() }
         compassView.setOnClickListener { onClickCompassButton() }
@@ -183,7 +186,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         visibleQuestsSource.addListener(this)
         requireContext().registerReceiver(
             locationAvailabilityReceiver,
-            LocationUtil.createLocationAvailabilityIntentFilter()
+            createLocationAvailabilityIntentFilter()
         )
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
             locationRequestFinishedReceiver,
@@ -531,7 +534,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     //region Location - Request location and update location status
 
     private fun updateLocationAvailability() {
-        if (LocationUtil.isLocationOn(activity)) {
+        if (isLocationEnabled(requireContext())) {
             onLocationIsEnabled()
         } else {
             onLocationIsDisabled()
@@ -550,7 +553,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private fun onLocationIsDisabled() {
         gpsTrackingButton.visibility = View.VISIBLE
-        gpsTrackingButton.state = if (LocationUtil.hasLocationPermission(activity)) LocationState.ALLOWED else LocationState.DENIED
+        gpsTrackingButton.state = if (hasLocationPermission(requireContext()))
+            LocationState.ALLOWED else LocationState.DENIED
         locationPointerPin.visibility = View.GONE
         mapFragment!!.stopPositionTracking()
         locationManager.removeUpdates()
@@ -792,7 +796,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
 
         val f = quest.type.createForm()
-        val element = if (quest is OsmQuest) questController.getOsmElement(quest) else null
+        val element = if (quest is OsmQuest) {
+            questController.getOsmElement(quest) ?: return
+        } else {
+            null
+        }
         val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f

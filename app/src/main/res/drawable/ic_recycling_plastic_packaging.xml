@@ -123,11 +123,11 @@
       android:pathData="M15.5691,41.4874a4.8413,4.8968 79.5609,1 0,9.6315 -1.7745a4.8413,4.8968 79.5609,1 0,-9.6315 1.7745z"
       android:fillColor="#6f9adb"/>
   <path
-      android:fillColor="#FF000000"
+      android:fillColor="#000"
       android:pathData="m14.7295,65.6812 l18.0059,-1.4087 -23.3739,-7.6502z"
       android:fillAlpha="0.17172"/>
   <path
-      android:fillColor="#FF000000"
+      android:fillColor="#000"
       android:pathData="m32.4851,59.9084 l21.4863,-18.5876 -18.7345,9.529z"
       android:fillAlpha="0.18182"/>
   <path

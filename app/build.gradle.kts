@@ -34,12 +34,11 @@ android {
 
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
-        minSdk = 17
+        minSdk = 21
         targetSdk = 30
-        versionCode = 3400
-        versionName = "34.0-beta1"
+        versionCode = 3500
+        versionName = "35.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled = true
     }
 
     buildTypes {
@@ -60,6 +59,7 @@ android {
 
     lintOptions {
         disable("MissingTranslation")
+        ignore("UseCompatLoadingForDrawables") // doesn't make sense for minSdk >= 21
         isAbortOnError = false
     }
 }
@@ -101,9 +101,6 @@ dependencies {
     val daggerVersion = "2.38.1"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
-
-    // only necessary for Android 4.x (KitKat etc, before Lollipop)
-    implementation("androidx.multidex:multidex:2.0.1")
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -166,7 +163,7 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.16.2")
@@ -187,6 +184,13 @@ val bcp47ExportLanguages = setOf(
     "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
     "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
 )
+
+tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
+    group = "streetcomplete"
+    targetFile = "$projectDir/src/main/res/raw/credits_translators.yml"
+    languageCodes = bcp47ExportLanguages
+    cookie = properties["POEditorCookie"] as String
+}
 
 tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"

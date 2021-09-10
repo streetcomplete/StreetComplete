@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.drawable.Animatable
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -77,7 +76,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         osmQuestKey = Json.decodeFromString(args.getString(ARG_OSM_QUEST_KEY)!!)
         way = Json.decodeFromString(args.getString(ARG_WAY)!!)
         val elementGeometry: ElementPolylinesGeometry = Json.decodeFromString(args.getString(ARG_ELEMENT_GEOMETRY)!!)
-        positions = elementGeometry.polylines.single().map { LatLon(it.latitude, it.longitude) }
+        positions = elementGeometry.polylines.single()
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -98,13 +97,11 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         undoButton.isInvisible = !hasChanges
         okButton.isInvisible = !isFormComplete
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
-            val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
-            speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
-                cornerRadius, margin, margin, margin, margin
-            )
-        }
+        val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
+        val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
+        speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
+            cornerRadius, margin, margin, margin, margin
+        )
 
         if (savedInstanceState == null) {
             view.findViewById<View>(R.id.speechbubbleContentContainer).startAnimation(

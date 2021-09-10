@@ -101,7 +101,6 @@ abstract class AbstractQuestAnswerFragment<T> :
     open val buttonsResId: Int? = null
     open val otherAnswers = listOf<OtherAnswer>()
     open val contentPadding = true
-    open val defaultExpanded = true
 
     interface Listener {
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
@@ -172,8 +171,6 @@ abstract class AbstractQuestAnswerFragment<T> :
         if (content.childCount == 0) {
             content.visibility = View.GONE
         }
-
-        if (defaultExpanded) expand()
     }
 
     private fun assembleOtherAnswers() : List<OtherAnswer> {

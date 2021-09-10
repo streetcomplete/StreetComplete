@@ -820,7 +820,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_parkingType_title">"Ez milyen típusú parkoló?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parkingType_surface">"Önálló parkolóhely"</string>
+    <string name="quest_parkingType_surface">"Önálló parkoló"</string>
 
     <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"Mélygarázs"</string>

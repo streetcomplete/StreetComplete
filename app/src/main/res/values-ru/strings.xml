@@ -51,9 +51,7 @@
     <string name="quest_openingHours_end_time">"Время закрытия"</string>
     <string name="quest_openingHours_add_months">"Добавить месяцы"</string>
     <string name="quest_openingHours_add_hours">"Добавить часы"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_openingHours_add_weekdays">"Добавить дни"</string>
+    <string name="quest_openingHours_add_weekdays">"Добавить дни недели"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Выберите месяцы"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Выберите рабочие дни"</string>
     <string name="quest_openingHours_24_7_confirmation">"Другими словами, работает круглосуточно в любой день недели?"</string>
@@ -969,9 +967,7 @@
     <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Эта улица была отмечена как не имеющая тротуара с обеих сторон. В случае, если всё-таки тротуар есть, но он нарисован как отдельная дорога, пожалуйста, ответьте \"тротуар\"."</string>
     <string name="quest_buildingType_title">"Какого типа это здание?"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_theme_select">"Выберите тему"</string>
+    <string name="pref_title_theme_select">"Выбор темы"</string>
     <string name="theme_automatic">"Автоматически"</string>
     <string name="theme_light">"Светлая"</string>
     <string name="theme_dark">"Тёмная"</string>
@@ -1082,9 +1078,7 @@
     <string name="about_summary_rate">"на Google Play"</string>
     <string name="about_title_donate">"Поддержать"</string>
     <string name="about_summary_donate">"Выразите свою признательность! ❤️"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_description_donate">"Спасибо, что решили поддержать это приложение! Чтобы увидеть текущие пожертвования и внести своё, выберите подходящую платформу:"</string>
+    <string name="about_description_donate">"Спасибо, что решили поддержать это приложение! Чтобы увидеть текущие пожертвования и внести свои, выберите подходящую платформу:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_name_title">"К какой религии относится %s?"</string>
@@ -1362,17 +1356,9 @@
     <string name="resurvey_intervals_default">"По умолчанию"</string>
     <string name="resurvey_intervals_more_often">"Спрашивать чаще"</string>
     <string name="quest_accepts_cash_type_title">"Принимают ли в %1$s (%2$s) оплату наличными?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_name_title">"Есть ли на остановке трамвая %s скамейка?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_title">"На этой остановке трамвая есть скамейка?"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_busStopBench_tram_name_title">"Есть ли на трамвайной остановке %s скамейка?"</string>
+    <string name="quest_busStopBench_tram_title">"На этой трамвайной остановке есть скамейка?"</string>
     <string name="quest_busStopBench_title">"На этой автобусной остановке есть скамейка?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"Есть ли на автобусной остановке %s скамейка?"</string>
     <string name="quest_summit_register_title">"Здесь есть книга записи посетителей на %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Дефибриллятор (AED) находится внутри здания?"</string>

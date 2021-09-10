@@ -87,7 +87,7 @@
       android:fillColor="#fff"
       android:fillAlpha="0.1"/>
   <path
-      android:fillColor="#FF000000"
+      android:fillColor="#000"
       android:pathData="m36.086,156.13 l51.914,-0.126 -24,24v72l-24,0c-4.432,0 -8,-3.568 -8,-8v-80c0,-4.432 4.086,-7.874 4.086,-7.874z"
       android:fillAlpha="0.2"/>
   <path

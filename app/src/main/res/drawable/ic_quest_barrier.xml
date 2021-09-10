@@ -13,7 +13,7 @@
       android:pathData="m79.992,32.08v93.84a64,64 0,0 0,16 -6.582v-87.258z"
       android:fillColor="#666"/>
   <path
-      android:fillColor="#FF000000"
+      android:fillColor="#000"
       android:pathData="m23.992,44.08c-4.456,0 -8.043,3.587 -8.043,8.043v31.914c0,4.456 3.587,8.043 8.043,8.043h79.914c4.456,0 8.043,-3.587 8.043,-8.043v-31.914c0,-4.456 -3.587,-8.043 -8.043,-8.043z"
       android:fillAlpha="0.2"/>
   <path
@@ -26,7 +26,6 @@
       android:pathData="m24.03,40.08h79.924c4.453,0 8.038,3.585 8.038,8.038v31.924c0,4.453 -3.585,8.038 -8.038,8.038h-79.924c-4.453,0 -8.038,-3.585 -8.038,-8.038v-31.924c0,-4.453 3.585,-8.038 8.038,-8.038z"
       android:strokeLineJoin="round"
       android:strokeWidth="4"
-      android:fillColor="#00000000"
       android:strokeColor="#555"
       android:strokeLineCap="round"/>
 </vector>
