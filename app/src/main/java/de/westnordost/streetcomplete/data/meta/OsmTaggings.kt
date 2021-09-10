@@ -36,7 +36,7 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "shop", "craft", "amenity", "shop_1", "old_shop", "craft_1",
     // obsoleted information
     "disused:.*", "was:.*", "damage", "source:damage", "created_by", "check_date",
-    // classificatlinks to external databases
+    // classifications / links to external databases
     "fhrs:.*", "fvst:.*", "ncat", "nat_ref", "gnis:.*", "winkelnummer",
     // names and identifications
     "name(:.*)?", "name_1", ".*_name(:.*)?", "noname", "branch(:.*)?", "brand(:.*)?", "network", "operator(:.*)?", "ref", "ref:vatin", "designation",
