@@ -132,6 +132,7 @@ class MainActivity : AppCompatActivity(),
             locationRequestFinishedReceiver, IntentFilter(LocationRequestFragment.ACTION_FINISHED))
 
         downloadController.showNotification = false
+        uploadController.showNotification = false
         uploadController.addUploadProgressListener(uploadProgressListener)
         downloadController.addDownloadProgressListener(downloadProgressListener)
         updateLocationAvailability()
@@ -178,6 +179,7 @@ class MainActivity : AppCompatActivity(),
         LocalBroadcastManager.getInstance(this).unregisterReceiver(locationRequestFinishedReceiver)
         unregisterReceiver(locationAvailabilityReceiver)
         downloadController.showNotification = true
+        uploadController.showNotification = true
         uploadController.removeUploadProgressListener(uploadProgressListener)
         downloadController.removeDownloadProgressListener(downloadProgressListener)
     }
