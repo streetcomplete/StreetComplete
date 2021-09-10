@@ -225,8 +225,7 @@ class ResurveyUtilsTest {
         builder.deleteOtherCheckDates()
         val changes = builder.create().changes
 
-        assertEquals(listOf(
-        ), changes)
+        assertTrue(changes.isEmpty())
     }
     
     @Test fun `deleteOtherCheckDates does not modify check date`() {
@@ -234,8 +233,7 @@ class ResurveyUtilsTest {
         builder.deleteOtherCheckDates()
         val changes = builder.create().changes
 
-        assertEquals(listOf(
-        ), changes)
+        assertTrue(changes.isEmpty())
     }
 
     @Test fun `deleteOtherCheckDates removes other check dates but does not touch check date`() {
