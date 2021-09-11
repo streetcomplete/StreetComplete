@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
+    android:layout_marginStart="0dp"
     android:padding="6dp"
     android:background="@drawable/image_select_cell_rounded">
 
@@ -37,7 +37,7 @@
             style="@style/ImageSelectDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@string/quest_smoothness_excellent" />
+            tools:text="@string/quest_smoothness_description_excellent" />
 
     </LinearLayout>
 

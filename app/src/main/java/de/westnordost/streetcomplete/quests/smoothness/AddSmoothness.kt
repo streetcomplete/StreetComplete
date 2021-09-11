@@ -60,8 +60,12 @@ class AddSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     }
 }
 
-val ALL_PATHS_EXCEPT_STEPS = listOf("footway", "cycleway", "path", "bridleway")
-private val SURFACES_FOR_SMOOTHNESS = listOf( // surfaces that are actually used in AddSmoothnessForm
-    "asphalt", "sett", "concrete", "paving_stones", "metal", "unhewn_cobblestone",
-    "compacted", "grass_paver", "gravel", "fine_gravel", "pebbles", "dirt", "grass"
+// smoothness is not asked for steps
+// "pedestrian" is in here so the path answers are shown instead of road answers (which focus on cars)
+val ALL_PATHS_EXCEPT_STEPS = listOf("footway", "cycleway", "path", "bridleway", "pedestrian")
+
+// surfaces that are actually used in AddSmoothnessForm
+// should only contain values that are in the Surface class
+private val SURFACES_FOR_SMOOTHNESS = listOf(
+    "asphalt", "sett", "paving_stones", "compacted", "gravel"
 )
