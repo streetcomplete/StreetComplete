@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.util.measuredLength
 import de.westnordost.streetcomplete.util.pointOnPolylineFromEnd
 import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
+import kotlin.math.roundToInt
 
 /** Represents one task for the user to complete/correct the data based on one OSM element  */
 data class OsmQuest(
@@ -27,16 +28,26 @@ data class OsmQuest(
     override val type: QuestType<*> get() = osmElementQuestType
 
     override val markerLocations: Collection<LatLon> get() {
-        if (osmElementQuestType.hasMarkersAtEnds && geometry is ElementPolylinesGeometry) {
+        if (geometry is ElementPolylinesGeometry) {
             val polyline = geometry.polylines[0]
             val length = polyline.measuredLength()
-            if (length > 15 * 4) {
-                return listOf(
+            if (osmElementQuestType.hasMarkersAtEnds && length > 15 * 4) {
+                return kotlin.collections.listOf(
                     polyline.pointOnPolylineFromStart(15.0)!!,
                     polyline.pointOnPolylineFromEnd(15.0)!!
                 )
+            } else if (length >= 1.5 * MAXIMUM_MARKER_DISTANCE) {
+                val markerCount = (length / MAXIMUM_MARKER_DISTANCE).roundToInt()
+                val markerDistance = length / markerCount
+                return (1..markerCount).map{
+                    polyline.pointOnPolylineFromStart(
+                        (it - 0.5) * markerDistance
+                    )!!
+                }
             }
         }
         return listOf(position)
     }
 }
+
+const val MAXIMUM_MARKER_DISTANCE = 500
