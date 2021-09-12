@@ -141,14 +141,8 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
     }
 
     private fun surfaceWrong() {
-        val surfaceType = Surface.values().find { it.osmValue == surfaceTag }
-
-        if (surfaceType != null) {
-            showWrongSurfaceDialog(surfaceType)
-        } else {
-            // this should not happen: smoothness quest is not asked for unknown surfaces
-            composeNote()
-        }
+        val surfaceType = Surface.values().find { it.osmValue == surfaceTag }!!
+        showWrongSurfaceDialog(surfaceType)
     }
 
     private fun showWrongSurfaceDialog(surface: Surface) {
