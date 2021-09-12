@@ -8,9 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.util.measuredLength
-import de.westnordost.streetcomplete.util.pointOnPolylineFromEnd
 import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
-import kotlin.math.roundToInt
+import kotlin.math.floor
 
 /** Represents one task for the user to complete/correct the data based on one OSM element  */
 data class OsmQuest(
@@ -31,17 +30,13 @@ data class OsmQuest(
         if (geometry is ElementPolylinesGeometry) {
             val polyline = geometry.polylines[0]
             val length = polyline.measuredLength()
-            if (osmElementQuestType.hasMarkersAtEnds && length > 15 * 4) {
-                return kotlin.collections.listOf(
-                    polyline.pointOnPolylineFromStart(15.0)!!,
-                    polyline.pointOnPolylineFromEnd(15.0)!!
-                )
-            } else if (length >= 1.5 * MAXIMUM_MARKER_DISTANCE) {
-                val markerCount = (length / MAXIMUM_MARKER_DISTANCE).roundToInt()
-                val markerDistance = length / markerCount
-                return (1..markerCount).map{
+            if ((osmElementQuestType.hasMarkersAtEnds && length > MARKER_FROM_END_DISTANCE * 4)
+                || (length > MAXIMUM_MARKER_DISTANCE + 2 * MARKER_FROM_END_DISTANCE)) {
+                val markerCount = 2 + (length / MAXIMUM_MARKER_DISTANCE).toInt()
+                val markerDistance = (length - (2 * MARKER_FROM_END_DISTANCE)) / (markerCount - 1)
+                return (0 until markerCount).map{
                     polyline.pointOnPolylineFromStart(
-                        (it - 0.5) * markerDistance
+                        MARKER_FROM_END_DISTANCE + (it * markerDistance)
                     )!!
                 }
             }
@@ -51,3 +46,4 @@ data class OsmQuest(
 }
 
 const val MAXIMUM_MARKER_DISTANCE = 500
+const val MARKER_FROM_END_DISTANCE = 15
