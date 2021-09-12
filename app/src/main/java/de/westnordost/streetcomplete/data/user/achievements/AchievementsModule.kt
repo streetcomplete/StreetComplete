@@ -454,6 +454,7 @@ object AchievementsModule {
                     "AddLanes",
                     "AddBarrierType",
                     "AddBollardType",
+                    "AddRoadSmoothness",
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -616,7 +617,8 @@ object AchievementsModule {
                     "AddStepsRamp",
                     "AddHandrail",
                     "AddKerbHeight",
-                    "AddBarrierType"
+                    "AddBarrierType",
+                    "AddPathSmoothness",
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -645,7 +647,8 @@ object AchievementsModule {
                     "AddPathSurface",
                     "AddStepsRamp",
                     "AddKerbHeight",
-                    "AddBarrierType"
+                    "AddBarrierType",
+                    "AddPathSmoothness",
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
