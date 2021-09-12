@@ -24,14 +24,6 @@ class AddSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
           or smoothness older today -4 years
         )
     """
-    /* resurvey:
-     * what it more/less likely to change?
-     * paved and good/intermediate might stay that way for a long time
-     * excellent might soon change to good
-     * bad roads might get repaired
-     * unpaved roads are likely to change anyway
-     * metal should stay the way it is for a long time
-     *  */
 
     override val commitMessage = "Add smoothness"
     override val wikiLink = "Key:smoothness"
