@@ -8,14 +8,15 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.surface.Surface
 
-class AddSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
+class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     // maybe exclude service roads? or driveways?
     override val elementFilter = """
         ways with highway
-        and highway ~ ${(ALL_PATHS_EXCEPT_STEPS + ALL_ROADS).joinToString("|")}
+        and highway ~ ${ALL_ROADS.joinToString("|")}
         and surface ~ ${SURFACES_FOR_SMOOTHNESS.joinToString("|")}
         and access !~ private|no
+        and segregated != yes
         and (!conveying or conveying = no)
         and (!indoor or indoor = no)
         and !cycleway:surface and !footway:surface
@@ -25,7 +26,7 @@ class AddSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
         )
     """
 
-    override val commitMessage = "Add smoothness"
+    override val commitMessage = "Add road smoothness"
     override val wikiLink = "Key:smoothness"
     override val icon = R.drawable.ic_quest_street_surface_detail
     override val isSplitWayEnabled = true
@@ -33,11 +34,9 @@ class AddSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
         val isSquare = tags["area"] == "yes"
-        val isPath = tags["highway"] in ALL_PATHS_EXCEPT_STEPS
         return when {
             hasName ->     R.string.quest_smoothness_name_title
             isSquare ->    R.string.quest_smoothness_square_title
-            isPath ->      R.string.quest_smoothness_path_title
             else ->        R.string.quest_smoothness_road_title
         }
     }
@@ -52,12 +51,8 @@ class AddSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     }
 }
 
-// smoothness is not asked for steps
-// "pedestrian" is in here so the path answers are shown instead of road answers (which focus on cars)
-val ALL_PATHS_EXCEPT_STEPS = listOf("footway", "cycleway", "path", "bridleway", "pedestrian")
-
 // surfaces that are actually used in AddSmoothnessForm
 // should only contain values that are in the Surface class
-private val SURFACES_FOR_SMOOTHNESS = listOf(
+val SURFACES_FOR_SMOOTHNESS = listOf(
     "asphalt", "sett", "paving_stones", "compacted", "gravel"
 )
