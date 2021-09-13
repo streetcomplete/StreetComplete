@@ -143,10 +143,10 @@ class CheckShopTypeTest {
                 "building" to "yes", // <- should not be cleared
                 "disused:amenity" to "yes",
                 "phone" to "123456",
-		"ref" to "1111",
-		"fee" to "yes",
-		"nycdoitt:bin" to "22222",
-		"barrier" to "wall",
+                "ref" to "1111",
+                "fee" to "yes",
+                "nycdoitt:bin" to "22222",
+                "barrier" to "wall",
                 "name" to "Juppiebude"
             ),
             ShopType(mapOf("shop" to "ice_cream")),
