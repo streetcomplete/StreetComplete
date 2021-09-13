@@ -98,10 +98,10 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         // this is necessary because the inflated image view uses the activity context rather than
         // the fragment / layout inflater context' resources to access its drawable
         val imgLiving = binding.rightSideContainer.findViewById<ImageView>(R.id.livingStreetImage)
-        imgLiving?.setImageDrawable(resources.getDrawable(R.drawable.ic_living_street))
+        imgLiving?.setImageDrawable(context?.getDrawable(R.drawable.ic_living_street))
 
         val imgNSL = binding.rightSideContainer.findViewById<ImageView>(R.id.nationalSpeedLimitImage)
-        imgNSL?.setImageDrawable(resources.getDrawable(R.drawable.ic_national_speed_limit))
+        imgNSL?.setImageDrawable(context?.getDrawable(R.drawable.ic_national_speed_limit))
 
         speedInput = binding.rightSideContainer.findViewById(R.id.maxSpeedInput)
 

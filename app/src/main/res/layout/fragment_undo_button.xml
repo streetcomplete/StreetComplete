@@ -6,5 +6,5 @@
     android:layout_height="@dimen/map_button_size"
     android:scaleType="center"
     style="@style/RoundWhiteButton"
-    android:src="@drawable/ic_undo_black_24dp"
+    android:src="@drawable/ic_undo_24dp"
     android:contentDescription="@string/action_undo" />

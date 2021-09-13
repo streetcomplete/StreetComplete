@@ -20,6 +20,9 @@
                 "category-path": {
                     "name": "Chemins"
                 },
+                "category-playground": {
+                    "name": "Jeux"
+                },
                 "category-rail": {
                     "name": "Voies ferrées"
                 },
@@ -100,6 +103,13 @@
                 },
                 "access_simple": {
                     "label": "Accès autorisé",
+                    "options": {
+                        "customers": "Réservé à la clientèle",
+                        "no": "Aucun(e)",
+                        "permissive": "Accès toléré",
+                        "private": "Privé",
+                        "yes": "Public"
+                    },
                     "terms": "permis,autorisé,privé,public,publique"
                 },
                 "addr/interpolation": {
@@ -278,7 +288,12 @@
                     "label": "Spécialité"
                 },
                 "beauty": {
-                    "label": "Services"
+                    "label": "Services",
+                    "options": {
+                        "cosmetics": "Parfumerie",
+                        "nails": "Manucure",
+                        "tanning": "Salon de bronzage"
+                    }
                 },
                 "bench": {
                     "label": "Banc",
@@ -533,6 +548,29 @@
                 },
                 "cuisine": {
                     "label": "Cuisines",
+                    "options": {
+                        "american": "Américaine",
+                        "asian": "Asiatique",
+                        "chicken": "Poulet",
+                        "chinese": "Chinoise",
+                        "coffee_shop": "Boutique de vente de cafés",
+                        "french": "Française",
+                        "german": "Allemande",
+                        "greek": "Grecque",
+                        "ice_cream": "Crème glacée",
+                        "indian": "Indienne",
+                        "italian": "Italienne",
+                        "japanese": "Japonaise",
+                        "kebab": "Kebab",
+                        "mexican": "Mexicaine",
+                        "pizza": "Pizza",
+                        "regional": "Régionale",
+                        "sandwich": "Sandwich",
+                        "sushi": "Sushi",
+                        "thai": "Thaïlandaise",
+                        "turkish": "Turque",
+                        "vietnamese": "Vietnamienne"
+                    },
                     "terms": "cuisines,types de nourriture,nourriture,type de nourriture"
                 },
                 "currency_multi": {
@@ -660,6 +698,15 @@
                 },
                 "diet_multi": {
                     "label": "Types de régimes",
+                    "options": {
+                        "gluten_free": "Sans gluten",
+                        "halal": "Halal",
+                        "kosher": "Kasher",
+                        "lactose_free": "Sans lactose",
+                        "pescetarian": "Pesco-végétarien",
+                        "vegan": "Végane",
+                        "vegetarian": "Végétarienne"
+                    },
                     "terms": "types de régimes,sans gluten,fruit,halal,kasher,sans lactose,gluten,lactose,viande,vegan,végétarien,cru"
                 },
                 "diplomatic": {
@@ -703,7 +750,11 @@
                     "label": "Peut délivrer des médicaments sous ordonnance"
                 },
                 "display": {
-                    "label": "Affichage"
+                    "label": "Affichage",
+                    "options": {
+                        "analog": "Analogique",
+                        "digital": "Numérique"
+                    }
                 },
                 "distance": {
                     "label": "Distance",
@@ -1458,7 +1509,7 @@
                 },
                 "opening_hours": {
                     "label": "Horaires d'ouverture",
-                    "placeholder": "Inconnues",
+                    "placeholder": "Inconnus",
                     "terms": "horaires,heures,horraires"
                 },
                 "opening_hours/covid19": {
@@ -1967,7 +2018,13 @@
                     "label": "Libre service"
                 },
                 "service": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "alley": "Ruelle",
+                        "driveway": "Allée",
+                        "emergency_access": "Accès d'urgence",
+                        "parking_aisle": "Allée de parking"
+                    }
                 },
                 "service/bicycle": {
                     "label": "Services"
@@ -2043,7 +2100,7 @@
                         "very_bad": "Véhicule à garde au sol élevée, véhicule tout-terrain léger",
                         "very_horrible": "Véhicule spécifique tout-terrain : tracteur, 4x4"
                     },
-                    "placeholder": "Roulettes, roues, tout-terrain, …",
+                    "placeholder": "Roulettes, roues, tout-terrain…",
                     "terms": "rugosité,lisse"
                 },
                 "sms": {
@@ -2058,6 +2115,12 @@
                 },
                 "source": {
                     "label": "Sources",
+                    "options": {
+                        "aerial imagery": "Images aériennes",
+                        "gps": "GPS",
+                        "local knowledge": "Connaissances locales",
+                        "streetlevel imagery": "Photos de la rue"
+                    },
                     "terms": "sources,références"
                 },
                 "species/wikidata": {
@@ -2068,13 +2131,24 @@
                     "label": "Sport"
                 },
                 "sport_ice": {
-                    "label": "Sports"
+                    "label": "Sports",
+                    "options": {
+                        "curling": "Curling",
+                        "ice_hockey": "Hockey sur glace",
+                        "ice_skating": "Patin à glace",
+                        "multi": "Multisport"
+                    }
                 },
                 "sport_racing_motor": {
                     "label": "Sports"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Sports"
+                    "label": "Sports",
+                    "options": {
+                        "cycling": "Cyclisme",
+                        "dog_racing": "Course de chiens",
+                        "horse_racing": "Course hippique"
+                    }
                 },
                 "stars": {
                     "label": "Étoiles",
@@ -2148,6 +2222,18 @@
                 },
                 "surface": {
                     "label": "Revêtement",
+                    "options": {
+                        "artificial_turf": "Gazon synthétique",
+                        "asphalt": "Asphalte",
+                        "concrete": "Béton",
+                        "dirt": "Terre",
+                        "grass": "Herbe",
+                        "gravel": "Graviers",
+                        "paved": "Pavé",
+                        "paving_stones": "Pavés en béton ou très réguliers",
+                        "sand": "Sable",
+                        "wood": "Bois"
+                    },
                     "terms": "surface,type de surface,revêtement,goudron,tablier,sol"
                 },
                 "surveillance": {
@@ -2540,6 +2626,10 @@
                     "name": "Téléski",
                     "terms": "téléski,teleski,remonte-pente,tire-fesses,drag lift"
                 },
+                "aerialway/gondola": {
+                    "name": "Télécabine, téléphérique",
+                    "terms": "télécabine,téléphérique"
+                },
                 "aerialway/goods": {
                     "name": "Transport par câble pour marchandises - si possible utiliser un type plus précis",
                     "terms": "téléphérique pour marchandises"
@@ -2584,7 +2674,8 @@
                     "terms": "aéroport,aérodrome,aeroport,aerodrome,altiport,héliport,airport"
                 },
                 "aeroway/apron": {
-                    "name": "Aire de stationnement d'aéroport"
+                    "name": "Aire de stationnement d'aéroport",
+                    "terms": "aire de manœuvre,tarmac"
                 },
                 "aeroway/gate": {
                     "name": "Porte d'embarquement",
@@ -2744,8 +2835,8 @@
                     "terms": "station de recharge,borne de recharge,recharge électrique,recharge,batterie,charging station"
                 },
                 "amenity/childcare": {
-                    "name": "Crèche, garde d'enfants",
-                    "terms": "crèche,crêche,creche,nurserie,garde d'enfants,halte-garderie,nourricerie,childcare,kindergarten"
+                    "name": "Nursery/Childcare",
+                    "terms": "crèche,garderie"
                 },
                 "amenity/cinema": {
                     "name": "Cinéma",
@@ -2772,7 +2863,7 @@
                     "terms": "cadran,solaire,horloge,gnomon,ombre,heure"
                 },
                 "amenity/college": {
-                    "name": "Enseignement supérieur (non universitaire) - institution ou campus",
+                    "name": "Enseignement supérieur (non universitaire) - institution ou campus (terrain)",
                     "terms": "enseignement supérieur non universitaire,enseignement supérieur,non universitaire,école supérieure,grande école,établissement d'enseignement supérieur,post-bac,post bac,institut,haute école,cegep,cégep,etablissement d'enseignement superieur,enseignement superieur,ecole superieure,grande ecole,école,ecole,college,amenity college,université,university"
                 },
                 "amenity/community_centre": {
@@ -2939,6 +3030,10 @@
                     "name": "Karaoke",
                     "terms": "karaoke,karaoké"
                 },
+                "amenity/kindergarten": {
+                    "name": "Crèche, garderie",
+                    "terms": "créche,crêche,creche,nurserie,garde d'enfants,halte-garderie,nourricerie,childcare,kindergarten,jardin d'enfants,enfant"
+                },
                 "amenity/kneipp_water_cure": {
                     "name": "Cure par l'eau Kneipp",
                     "terms": "cure,kneipp"
@@ -2990,6 +3085,9 @@
                 "amenity/motorcycle_parking": {
                     "name": "Parking pour motocyclettes",
                     "terms": "parc à motos,stationnement motos"
+                },
+                "amenity/motorcycle_rental": {
+                    "name": "Location de motos"
                 },
                 "amenity/music_school": {
                     "name": "École de musique",
@@ -3126,7 +3224,7 @@
                     "terms": "académique,école,devoirs,tests,examens,tutorat"
                 },
                 "amenity/prison": {
-                    "name": "Prison",
+                    "name": "Prison (terrain)",
                     "terms": "prison,terrains carcéraux,pénitencier,maison d'arrêt,centre correctionnel,centre de détention,geôle."
                 },
                 "amenity/pub": {
@@ -3261,7 +3359,7 @@
                     "terms": "station de vidange,sanitaires,mobilehome,camping,toilettes chimiques"
                 },
                 "amenity/school": {
-                    "name": "École élémentaire ou secondaire",
+                    "name": "École élémentaire ou secondaire (terrain)",
                     "terms": "école élémentaire,école primaire,école secondaire,collège,lycée,cycles primaires et secondaires,enseignements élémentaire et secondaire,enseignement élémentaire,enseignement secondaire,établissement d'enseignement élémentaire,établissement d'enseignement secondaire,école,écoliers,cp-ce1-ce2-cm1-cm2,ecole,college,lycee,school"
                 },
                 "amenity/shelter": {
@@ -3385,7 +3483,7 @@
                     "terms": "ludothèqe,bibliothèque,jouets,jeux"
                 },
                 "amenity/university": {
-                    "name": "Université, enseignement supérieur universitaire - institution ou campus",
+                    "name": "Université, enseignement supérieur universitaire - institution ou campus (terrain)",
                     "terms": "université,campus universitaire,campus,enseignement supérieur universitaire,enseignement supérieur,universitaire,établissement d'enseignement supérieur,post-bac,post bac,institut,etablissement d'enseignement superieur,école,ecole,university,amenity university,college,école supérieure,grande école,haute école,ecole superieure,grande ecole"
                 },
                 "amenity/vacuum_cleaner": {
@@ -3875,6 +3973,9 @@
                     "name": "Bâtiment industriel",
                     "terms": "bâtiment industriel"
                 },
+                "building/kindergarten": {
+                    "name": "Bâtiment de crèche, garderie"
+                },
                 "building/mosque": {
                     "name": "Mosquée - Bâtiment",
                     "terms": "mosquée,bâtiment,religion"
@@ -4186,6 +4287,9 @@
                 "demolished/building": {
                     "name": "Bâtiment détruit récemment"
                 },
+                "disused/railway": {
+                    "name": "Équipement ferroviaire désaffecté"
+                },
                 "disused/shop": {
                     "name": "Magasin fermé"
                 },
@@ -4281,6 +4385,9 @@
                     "name": "Entrée des urgences",
                     "terms": "urgences"
                 },
+                "entrance/main": {
+                    "name": "Entrée principale"
+                },
                 "ford": {
                     "name": "Gué",
                     "terms": "gué"
@@ -4373,7 +4480,7 @@
                     "terms": "hôpital,clinique,établissement de santé,chr,chu,chic,ch"
                 },
                 "healthcare/laboratory": {
-                    "name": "Laboratoire d'analyses médicale",
+                    "name": "Laboratoire de biologie médicale, Laboratoire d'analyses médicale",
                     "terms": "laboratoire de biologie médicale,laboratoire d'analyses médicale"
                 },
                 "healthcare/midwife": {
@@ -4482,6 +4589,9 @@
                     "name": "Ascenseur",
                     "terms": "ascenseur,élévateur,monte-charge,elevator,lift"
                 },
+                "highway/elevator_line": {
+                    "name": "Ascenseur incliné"
+                },
                 "highway/emergency_bay": {
                     "name": "Refuge pour automobile",
                     "terms": "refuge automobile,bande d'arrêt d'urgence,urgence,arrêt"
@@ -4564,8 +4674,8 @@
                     "terms": "chemin"
                 },
                 "highway/path/boardwalk": {
-                    "name": "Passerelle",
-                    "terms": "pont,passerelle,promenade"
+                    "name": "Passerelle en bois / caillebotis",
+                    "terms": "pont,passerelle,promenade,caillebotis"
                 },
                 "highway/path/informal": {
                     "name": "Chemin informel",
@@ -5082,11 +5192,11 @@
                     "terms": "salle de yoga"
                 },
                 "leisure/fitness_station": {
-                    "name": "Fitness en extérieur",
-                    "terms": "équipements de fitness en extérieur"
+                    "name": "Parcours de santé",
+                    "terms": "équipements de fitness en extérieur,atelier,parcours de santé"
                 },
                 "leisure/fitness_station/balance_beam": {
-                    "name": "Poutre (fitness en extérieur)",
+                    "name": "Poutre (parcours de santé)",
                     "terms": "poutre"
                 },
                 "leisure/fitness_station/box": {
@@ -5111,7 +5221,7 @@
                 },
                 "leisure/fitness_station/push-up": {
                     "name": "Équipement pour pompes inclinées en extérieur",
-                    "terms": "pompes inclinées,équipement,fitness,exercice"
+                    "terms": "pompes inclinées,équipement,fitness,exercice,atelier,parcours de santé"
                 },
                 "leisure/fitness_station/rings": {
                     "name": "Anneaux de gymnastique",
@@ -5119,11 +5229,11 @@
                 },
                 "leisure/fitness_station/sign": {
                     "name": "Panneau d'instruction d'un exercice",
-                    "terms": "panneau d'instruction d'un exercice,exercice,instructions,fitness"
+                    "terms": "panneau d'instruction d'un exercice,exercice,instructions,fitness,atelier,parcours de santé"
                 },
                 "leisure/fitness_station/sit-up": {
                     "name": "Équipement pour abdominaux en extérieur",
-                    "terms": "abdos,exercices,équipement sportif,abdominaux,fitness"
+                    "terms": "abdos,exercices,équipement sportif,abdominaux,fitness,atelier,parcours de santé"
                 },
                 "leisure/fitness_station/stairs": {
                     "name": "Escalier d'exercices",
@@ -5135,6 +5245,9 @@
                 },
                 "leisure/garden/botanical": {
                     "name": "Jardin botanique"
+                },
+                "leisure/garden/community": {
+                    "name": "Jardin communautaire"
                 },
                 "leisure/golf_course": {
                     "name": "Parcours de golf",
@@ -5278,6 +5391,9 @@
                 "leisure/playground": {
                     "name": "Jeux pour enfants",
                     "terms": "aire de jeu,cour de récréation"
+                },
+                "leisure/playground/indoor": {
+                    "name": "Aire de jeux en intérieur"
                 },
                 "leisure/resort": {
                     "name": "Complexe touristique , Village de vacances",
@@ -5702,7 +5818,8 @@
                     "terms": "bruyère"
                 },
                 "natural/hot_spring": {
-                    "name": "Source chaude"
+                    "name": "Source chaude",
+                    "terms": "source géothermique"
                 },
                 "natural/mud": {
                     "name": "Boue",
@@ -5817,7 +5934,8 @@
                     "terms": "zone humide,marais,marécage"
                 },
                 "natural/wood": {
-                    "name": "Bois naturel"
+                    "name": "Bois naturel",
+                    "terms": "forêt,arbre,taïga,bois"
                 },
                 "network/type/node_network": {
                     "name": "Itinéraire de ballade",
@@ -5996,6 +6114,10 @@
                     "name": "Organisme de recherche",
                     "terms": "centre de recherches"
                 },
+                "office/security": {
+                    "name": "Bureau de la Sécurité",
+                    "terms": "agent de sécurité,agent de securite,vigile"
+                },
                 "office/surveyor": {
                     "name": "Géomètre",
                     "terms": "géomètre,géomètre-expert,arpenteur,topographe."
@@ -6104,6 +6226,14 @@
                 "playground": {
                     "name": "Jeux"
                 },
+                "playground/basketswing": {
+                    "name": "Balançoire nid d'oiseau",
+                    "terms": "balançoire,balancoire"
+                },
+                "playground/climbingframe": {
+                    "name": "Jeu à grimper",
+                    "terms": "jeu avec échelle"
+                },
                 "playground/cushion": {
                     "name": "Jeu gonflable",
                     "terms": "trampoline,trampoline à eau,trampoline à air"
@@ -6112,9 +6242,18 @@
                     "name": "Barre fixe pour enfants",
                     "terms": "barre fixe"
                 },
+                "playground/playhouse": {
+                    "name": "Cabane de jeux",
+                    "terms": "cabane",
+                    "aliases": "Maison de jeux"
+                },
                 "playground/roundabout": {
                     "name": "Tourniquet",
                     "terms": "tourniquet,jeux pour enfant"
+                },
+                "playground/sandpit": {
+                    "name": "Bac à sable",
+                    "terms": "bac à sable,carré de sable"
                 },
                 "playground/seesaw": {
                     "name": "Balançoire à bascule",
@@ -6124,6 +6263,10 @@
                     "name": "Toboggan",
                     "terms": "toboggan,jeux pour enfants"
                 },
+                "playground/springy": {
+                    "name": "Jeu sur ressort",
+                    "terms": "jeu sur ressort,jeu à bascule"
+                },
                 "playground/structure": {
                     "name": "Structure (Jeu pour enfants)",
                     "terms": "structure de jeux,portique de jeux,jeux pour enfants"
@@ -6131,6 +6274,10 @@
                 "playground/swing": {
                     "name": "Balançoire",
                     "terms": "balançoire,balancelles,jeux pour enfants"
+                },
+                "playground/zipwire": {
+                    "name": "Tyrolienne",
+                    "terms": "tyrolienne"
                 },
                 "point": {
                     "name": "Point",
@@ -6158,6 +6305,14 @@
                     "name": "Panneaux solaires",
                     "terms": "panneaux solaires,centrale solaire"
                 },
+                "power/generator/method/photovoltaic/building/roof": {
+                    "name": "Panneau solaire sur canopée",
+                    "terms": "solaire,photovoltaïque,photovoltaique"
+                },
+                "power/generator/method/photovoltaic/location/roof": {
+                    "name": "Panneau solaire sur le toit",
+                    "terms": "solaire,photovoltaïque,photovoltaique"
+                },
                 "power/generator/source/hydro": {
                     "name": "Centrale hydroélectrique",
                     "terms": "centrale hydroélectrique,barrage,générateur,électricité,kaplan,pelton,turbine"
@@ -6179,7 +6334,7 @@
                     "terms": "ligne électrique mineure"
                 },
                 "power/plant": {
-                    "name": "Centrale électrique",
+                    "name": "Centrale électrique (terrain)",
                     "terms": "centrale électrique"
                 },
                 "power/plant/source/coal": {
@@ -6198,9 +6353,17 @@
                     "name": "Centrale nucléaire",
                     "terms": "centrale nucléaire,centrale nucleaire,centrale atomique"
                 },
+                "power/plant/source/oil": {
+                    "name": "Centrale au pétrole",
+                    "terms": "centrale,pétrole,petrole"
+                },
                 "power/plant/source/solar": {
                     "name": "Ferme solaire",
                     "terms": "centrale solaire,photovoltaïque,photovoltaique"
+                },
+                "power/plant/source/waste": {
+                    "name": "Usine d’incinération de déchets",
+                    "terms": "incinérateur,dechets,poubelle,ordures"
                 },
                 "power/plant/source/wind": {
                     "name": "Ferme d'éoliennes",
@@ -6244,6 +6407,9 @@
                 "public_transport/platform/bus_point": {
                     "name": "Arrêt de bus",
                     "terms": "gare de bus,gare de cars,gare,arrêt,arrêt de bus,bus station,bus,cars"
+                },
+                "public_transport/platform/bus_tram_point": {
+                    "name": "Arrêt de Bus & de Tram"
                 },
                 "public_transport/platform/ferry": {
                     "name": "Quai pour ferry",
@@ -6402,6 +6568,9 @@
                     "name": "Ligne de chemin de fer en construction",
                     "terms": "rails en construction,chemin de fer en construction,construction de rails"
                 },
+                "railway/crossing": {
+                    "name": "Passage à niveau"
+                },
                 "railway/derail": {
                     "name": "Dérailleur Ferroviaire",
                     "terms": "dérailleur ferroviaire"
@@ -6415,6 +6584,10 @@
                 },
                 "railway/halt": {
                     "name": "Gare ferroviaire (arrêt à la demande)"
+                },
+                "railway/level_crossing": {
+                    "name": "Passage à niveau",
+                    "terms": "passage à niveau (voiture)"
                 },
                 "railway/milestone": {
                     "name": "Borne kilométrique ferroviaire",
@@ -7288,6 +7461,9 @@
                     "name": "Carte",
                     "terms": "plan"
                 },
+                "tourism/information/office": {
+                    "name": "Centre d'accueil des visiteurs"
+                },
                 "tourism/information/route_marker": {
                     "name": "Repère",
                     "terms": "repère,piste,chemin,gr,pr,marqueur,randonnée"
@@ -7389,7 +7565,7 @@
                     "terms": "signalisation routière,panneau de signalisation"
                 },
                 "traffic_sign/city_limit": {
-                    "name": "Panneau de limite de commune",
+                    "name": "Panneau de limite de localité",
                     "terms": "limite de ville,ville,hameau,bord,fin de ville,début de ville"
                 },
                 "traffic_sign/maxspeed": {
@@ -7462,6 +7638,9 @@
                     "name": "Itinéraire",
                     "terms": "route,rue,chemin,sentier"
                 },
+                "type/route/aerialway": {
+                    "name": "Route aérienne"
+                },
                 "type/route/bicycle": {
                     "name": "Itinéraire cyclable",
                     "terms": "piste cyclable"
@@ -7487,8 +7666,7 @@
                     "terms": "sentier pédestre"
                 },
                 "type/route/horse": {
-                    "name": "Itinéraire équestre",
-                    "terms": "trajet équestre"
+                    "name": "Itinéraire équestre"
                 },
                 "type/route/light_rail": {
                     "name": "Itinéraire de métro léger",
@@ -7497,6 +7675,9 @@
                 "type/route/monorail": {
                     "name": "Itinéraire de monorail",
                     "terms": "monorail,itinéraire,route"
+                },
+                "type/route/mtb": {
+                    "name": "Itinéraire pour vélo de montagne"
                 },
                 "type/route/pipeline": {
                     "name": "Itinéraire de pipeline",
@@ -7541,6 +7722,9 @@
                 "type/waterway": {
                     "name": "Cours d'eau",
                     "terms": "canal,rivière,cours d'eau"
+                },
+                "waterway": {
+                    "name": "Elément du cours d'eau"
                 },
                 "waterway/boatyard": {
                     "name": "Chantier naval",

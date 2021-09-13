@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="96dp"
+        android:height="96dp"
+        android:viewportWidth="1.0"
+        android:viewportHeight="1.0">
+    <path android:fillColor="#0fff" android:fillAlpha="0" android:pathData="M0,0h1v1h-1z"/>
+    <!-- empty because there is no proper icon for that...
+         However, a completely empty vector drawable produces a crash, so let's draw an invisible
+         square... -->
+</vector>

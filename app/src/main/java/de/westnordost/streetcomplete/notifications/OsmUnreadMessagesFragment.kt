@@ -94,10 +94,7 @@ class OsmUnreadMessagesFragment : DialogFragment() {
             .alpha(1f)
             .translationX(0f).translationY(0f)
             .withEndAction {
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    (binding.mailOpenImageView?.drawable as? AnimatedVectorDrawable)?.start()
-                }
+                (binding.mailOpenImageView?.drawable as? AnimatedVectorDrawable)?.start()
 
                 binding.mailFrontImageView?.animate()?.run {
                     duration = 100

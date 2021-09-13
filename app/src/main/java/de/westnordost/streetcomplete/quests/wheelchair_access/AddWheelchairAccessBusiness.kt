@@ -62,7 +62,7 @@ class AddWheelchairAccessBusiness(
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon",
 
                 // name & wheelchair
-                "sports_centre", "stadium", "marina"
+                "sports_centre", "stadium"
             ),
             "office" to arrayOf(
                 // common

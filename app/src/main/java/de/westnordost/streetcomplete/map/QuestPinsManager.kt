@@ -7,7 +7,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.*
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.map.components.Pin
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.tangram.KtMapController
@@ -20,8 +20,8 @@ import kotlinx.coroutines.*
 class QuestPinsManager(
     private val ctrl: KtMapController,
     private val pinsMapComponent: PinsMapComponent,
+    private val questTypeOrderSource: QuestTypeOrderSource,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val questTypeOrderList: QuestTypeOrderList,
     private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource
 ): LifecycleObserver {
@@ -59,10 +59,13 @@ class QuestPinsManager(
         }
     }
 
-    private val questTypeOrderListener = object : QuestTypeOrderList.Listener {
-        override fun onUpdated() {
-            initializeQuestTypeOrders()
-            invalidate()
+    private val questTypeOrderListener = object : QuestTypeOrderSource.Listener {
+        override fun onQuestTypeOrderAdded(item: QuestType<*>, toAfter: QuestType<*>) {
+            reinitializeQuestTypeOrders()
+        }
+
+        override fun onQuestTypeOrdersChanged() {
+            reinitializeQuestTypeOrders()
         }
     }
 
@@ -79,14 +82,14 @@ class QuestPinsManager(
         initializeQuestTypeOrders()
         onNewScreenPosition()
         visibleQuestsSource.addListener(visibleQuestsListener)
-        questTypeOrderList.addListener(questTypeOrderListener)
+        questTypeOrderSource.addListener(questTypeOrderListener)
     }
 
     private fun hide() {
         clear()
         lifecycleScope.coroutineContext.cancelChildren()
         visibleQuestsSource.removeListener(visibleQuestsListener)
-        questTypeOrderList.removeListener(questTypeOrderListener)
+        questTypeOrderSource.removeListener(questTypeOrderListener)
     }
 
     private fun invalidate() {
@@ -169,10 +172,13 @@ class QuestPinsManager(
 
     private fun initializeQuestTypeOrders() {
         // this needs to be reinitialized when the quest order changes
-        val questTypes = questTypeRegistry.all.toMutableList()
-        questTypeOrderList.sort(questTypes)
-        questTypes.forEachIndexed { index, questType ->
-            questTypeOrders[questType] = index
+        val sortedQuestTypes = questTypeRegistry.toMutableList()
+        questTypeOrderSource.sort(sortedQuestTypes)
+        synchronized(questTypeOrders) {
+            questTypeOrders.clear()
+            sortedQuestTypes.forEachIndexed { index, questType ->
+                questTypeOrders[questType] = index
+            }
         }
     }
 
@@ -184,13 +190,18 @@ class QuestPinsManager(
     }
 
     /** returns values from 0 to 100000, the higher the number, the more important */
-    private fun getQuestImportance(quest: Quest): Int {
+    private fun getQuestImportance(quest: Quest): Int = synchronized(questTypeOrders) {
         val questTypeOrder = questTypeOrders[quest.type] ?: 0
         val freeValuesForEachQuest = 100000 / questTypeOrders.size
         /* position is used to add values unique to each quest to make ordering consistent
            freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int */
         val hopefullyUniqueValueForQuest = quest.position.hashCode() % freeValuesForEachQuest
         return 100000 - questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
+    }
+
+    private fun reinitializeQuestTypeOrders() {
+        initializeQuestTypeOrders()
+        invalidate()
     }
 
     companion object {

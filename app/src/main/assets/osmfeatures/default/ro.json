@@ -2128,9 +2128,6 @@
                 "type/route/hiking": {
                     "name": "Rută de Drumeție"
                 },
-                "type/route/horse": {
-                    "name": "Rută de Călărit"
-                },
                 "type/route/pipeline": {
                     "name": "Rută de Conducte"
                 },

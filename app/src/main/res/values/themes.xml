@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -20,6 +20,8 @@
         <item name="windowNoTitle">true</item>
         <item name="dividerVertical">@drawable/button_bar_divider</item>
         <item name="dividerHorizontal">@drawable/button_bar_divider</item>
+
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
 
         <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
         <item name="popupMenuStyle">@style/Theme.Bubble.Popup</item>
@@ -67,6 +69,10 @@
     <style name="Theme.CustomDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
         <item name="android:windowBackground">@color/background_transparent</item>
         <item name="android:windowAnimationStyle">@style/Animation.Dialog.Custom</item>
+    </style>
+
+    <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">?attr/colorControlNormal</item>
     </style>
 
 </resources>

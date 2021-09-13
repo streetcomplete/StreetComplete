@@ -31,7 +31,7 @@
 
             <org.sufficientlysecure.htmltextview.HtmlTextView
                 android:id="@+id/authorText"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.Body"
                 android:textStyle="bold"
@@ -155,13 +155,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:animateLayoutChanges="true"/>
-
-            <org.sufficientlysecure.htmltextview.HtmlTextView
-                android:id="@+id/translationCreditsMore"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Body"
-                android:textIsSelectable="true"/>
 
         </LinearLayout>
 

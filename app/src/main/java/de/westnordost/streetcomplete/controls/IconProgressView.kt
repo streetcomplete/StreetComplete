@@ -5,7 +5,6 @@ import android.animation.AnimatorInflater
 import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
@@ -60,9 +59,7 @@ class IconProgressView @JvmOverloads constructor(
             .alpha(1f)
             .start()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            (binding.checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
-        }
+        (binding.checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
 
         val hardcodedCheckmarkAnimationDuration = (animatorDurationScale * 650).toLong()
         mainHandler.postDelayed(onFinished, hardcodedCheckmarkAnimationDuration)

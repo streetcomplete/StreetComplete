@@ -38,7 +38,7 @@ class Cleaner @Inject constructor(
         mapDataController.deleteOlderThan(oldDataTimestamp)
         /* it makes sense to do this after cleaning map data and notes, because some metadata rely
            on map data */
-        for (questType in questTypeRegistry.all) {
+        for (questType in questTypeRegistry) {
             questType.deleteMetadataOlderThan(oldDataTimestamp)
         }
     }

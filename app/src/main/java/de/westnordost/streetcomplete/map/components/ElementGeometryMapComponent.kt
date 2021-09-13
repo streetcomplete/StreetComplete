@@ -41,7 +41,7 @@ class ElementGeometryMapComponent(private val ctrl: KtMapController) {
         val targetZoom = min(pos.zoom, 20f)
 
         // do not zoom in if the element is already nicely in the view
-        if (ctrl.screenAreaContains(g, RectF()) && targetZoom - currentPos.zoom < 2) return
+        if (ctrl.screenAreaContains(g, RectF()) && targetZoom - currentPos.zoom < 2.5) return
 
         if (previousCameraPosition == null) previousCameraPosition = currentPos
 

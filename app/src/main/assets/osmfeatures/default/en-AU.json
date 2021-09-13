@@ -5,6 +5,12 @@
                 "changing_table": {
                     "label": "Nappy Changing Table"
                 },
+                "colour": {
+                    "label": "Colour"
+                },
+                "fax": {
+                    "placeholder": "+61 2 9000 0000"
+                },
                 "height": {
                     "label": "Height (Metres)"
                 },
@@ -16,6 +22,9 @@
                 },
                 "length": {
                     "label": "Length (Metres)"
+                },
+                "phone": {
+                    "placeholder": "+61 2 9000 0000"
                 },
                 "recycling_type": {
                     "options": {
@@ -31,6 +40,10 @@
                 "amenity/arts_centre": {
                     "name": "Arts Centre"
                 },
+                "amenity/bbq": {
+                    "name": "Barbeque",
+                    "aliases": "BBQ"
+                },
                 "amenity/community_centre": {
                     "name": "Community Centre"
                 },
@@ -44,7 +57,12 @@
                     "name": "Dive Centre"
                 },
                 "amenity/fuel": {
-                    "name": "Service Station"
+                    "name": "Service Station",
+                    "aliases": "Petrol Station"
+                },
+                "amenity/parking/park_ride": {
+                    "name": "Park & Ride Car Park",
+                    "aliases": "Commuter Car Park"
                 },
                 "amenity/payment_centre": {
                     "name": "Payment Centre"
@@ -112,6 +130,9 @@
                 "highway/living_street": {
                     "name": "Shared Zone Road"
                 },
+                "highway/track": {
+                    "name": "Track Road"
+                },
                 "leisure/adult_gaming_centre": {
                     "name": "Adult Gaming Centre"
                 },
@@ -135,6 +156,9 @@
                 },
                 "shop/garden_centre": {
                     "name": "Garden Centre"
+                },
+                "shop/mall": {
+                    "name": "Shopping Centre"
                 },
                 "shop/tyres": {
                     "name": "Tyre Shop"

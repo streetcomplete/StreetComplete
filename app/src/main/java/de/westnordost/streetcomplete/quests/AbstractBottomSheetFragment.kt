@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests
 
 
 import android.content.res.Configuration
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -28,7 +27,8 @@ import kotlin.math.min
 /** Abstract base class for (quest) bottom sheets
  *
  * Note: The AbstractBottomSheetFragment currently assumes that it will be inflated with the views
-   that are in fragment_quest_answer by any subclass!*/
+ * that are in fragment_quest_answer by any subclass!
+ * */
 abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
@@ -38,6 +38,9 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     private var minBottomInset = Int.MAX_VALUE
 
     private val mainHandler = Handler(Looper.getMainLooper())
+
+    // overridable by child classes
+    open val defaultExpanded = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,30 +53,28 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         binding.closeButton.setOnClickListener { activity?.onBackPressed() }
 
         minBottomInset = Int.MAX_VALUE
-        view.respectSystemInsets { left, top, right, bottom ->
-            binding.scrollViewChild.updatePadding(bottom = bottom)
-            binding.bottomSheetContainer.updateMargins(top = top, left = left, right = right)
-            binding.okButton.updateMargins(bottom = bottom + 8f.toPx(context).toInt())
+        view.respectSystemInsets {
+            binding.scrollViewChild.updatePadding(bottom = it.bottom)
+            binding.bottomSheetContainer.updateMargins(top = it.top, left = it.left, right = it.right)
+            binding.okButton.updateMargins(bottom = it.bottom + 8f.toPx(context).toInt())
 
             // expanding bottom sheet when keyboard is opened
-            if (minBottomInset < bottom) expand()
-            minBottomInset = min(bottom, minBottomInset)
+            if (minBottomInset < it.bottom) expand()
+            minBottomInset = min(it.bottom, minBottomInset)
         }
 
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
-            val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
-            val topMargin = -resources.getDimensionPixelSize(R.dimen.quest_form_speech_bubble_top_margin)
-            binding.speechBubbleTitleContainer.outlineProvider = RoundRectOutlineProvider(
-                cornerRadius, margin, topMargin, margin, margin
-            )
+        val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
+        val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
+        val topMargin = -resources.getDimensionPixelSize(R.dimen.quest_form_speech_bubble_top_margin)
+        binding.speechBubbleTitleContainer.outlineProvider = RoundRectOutlineProvider(
+            cornerRadius, margin, topMargin, margin, margin
+        )
 
-            binding.speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
-                cornerRadius, margin, margin, margin, margin
-            )
-        }
+        binding.speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
+            cornerRadius, margin, margin, margin, margin
+        )
 
         binding.speechBubbleTitleContainer.setOnClickListener {
             bottomSheetBehavior.apply {
@@ -93,7 +94,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
             }
         })
 
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE || defaultExpanded) {
             expand()
         }
 

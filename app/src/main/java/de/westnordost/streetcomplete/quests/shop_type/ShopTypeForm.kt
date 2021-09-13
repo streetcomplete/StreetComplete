@@ -37,7 +37,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
         }
         binding.presetsEditText.setAdapter(SearchAdapter(requireContext(), { term -> getFeatures(term) }, { it.name }))
         binding.presetsEditText.setOnClickListener { selectRadioButton(binding.replaceRadioButton) }
-        binding.presetsEditText.setOnFocusChangeListener { v, hasFocus ->
+        binding.presetsEditText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) selectRadioButton(binding.replaceRadioButton)
         }
         binding.presetsEditText.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })

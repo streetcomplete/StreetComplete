@@ -18,7 +18,7 @@ class AddTrafficSignalsVibrationForm : AYesNoQuestAnswerFragment<Boolean>() {
 
         // this is necessary because the inflated image view uses the activity context rather than
         // the fragment / layout inflater context' resources to access it's drawable
-        binding.buttonIllustrationImageView.setImageDrawable(resources.getDrawable(R.drawable.vibrating_button_illustration))
+        binding.buttonIllustrationImageView.setImageDrawable(context?.getDrawable(R.drawable.vibrating_button_illustration))
     }
 
     override fun onClick(answer: Boolean) { applyAnswer(answer) }

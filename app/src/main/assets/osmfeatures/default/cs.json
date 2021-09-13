@@ -441,7 +441,7 @@
                     "label": "Stůl na výměnu plenek"
                 },
                 "charge_fee": {
-                    "label": "cena",
+                    "label": "Cena",
                     "placeholder": "1 EUR, 5 USD, 10 JPY…",
                     "terms": "cena,poplatek,sazba,platit,zaplatit,částka"
                 },
@@ -545,7 +545,7 @@
                     "label": "Typ"
                 },
                 "crossing/island": {
-                    "label": "ostrůvek pro chodce"
+                    "label": "Ostrůvek pro chodce"
                 },
                 "cuisine": {
                     "label": "Kuchyně",
@@ -1048,6 +1048,14 @@
                 "historic/wreck/visible_at_low_tide": {
                     "label": "Viditelné při odlivu"
                 },
+                "holding_position/type": {
+                    "label": "Typ",
+                    "options": {
+                        "ILS": "Instrument Landing System",
+                        "intermediate": "Křížení pojezdových drah",
+                        "runway": "Vzletová a přistávací dráha"
+                    }
+                },
                 "hoops": {
                     "label": "Počet košů",
                     "placeholder": "1, 2, 4..."
@@ -1525,7 +1533,7 @@
                     "terms": "provozovatel,majitel,správce,správa,provozní"
                 },
                 "operator/type": {
-                    "label": "druh provozovatele"
+                    "label": "Druh provozovatele"
                 },
                 "organic": {
                     "label": "Bioprodukty",
@@ -2153,13 +2161,32 @@
                     "label": "Sporty"
                 },
                 "sport_ice": {
-                    "label": "Sporty"
+                    "label": "Sporty",
+                    "options": {
+                        "curling": "Curling",
+                        "ice_hockey": "Lední hokej",
+                        "ice_skating": "Bruslení na ledu",
+                        "ice_stock": "Bavorský curling",
+                        "multi": "Více sportů"
+                    }
                 },
                 "sport_racing_motor": {
-                    "label": "Sporty"
+                    "label": "Sporty",
+                    "options": {
+                        "karting": "Motokáry",
+                        "motocross": "Motokros",
+                        "motor": "Motoristický sport"
+                    }
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Sporty"
+                    "label": "Sporty",
+                    "options": {
+                        "bmx": "BMX",
+                        "cycling": "Cyklistika",
+                        "dog_racing": "Psí běžecké závody",
+                        "horse_racing": "Dostihy",
+                        "running": "Běh"
+                    }
                 },
                 "stars": {
                     "label": "Hvězdiček",
@@ -2234,6 +2261,20 @@
                 },
                 "surface": {
                     "label": "Povrch",
+                    "options": {
+                        "artificial_turf": "Umělý trávník",
+                        "asphalt": "Asfalt",
+                        "concrete": "Beton",
+                        "dirt": "Hlína",
+                        "grass": "Tráva",
+                        "gravel": "Štěrk",
+                        "ground": "Země",
+                        "paved": "Zpevněný",
+                        "paving_stones": "Dlažba",
+                        "sand": "Písek",
+                        "unpaved": "Nezpevněný",
+                        "wood": "Dřevo"
+                    },
                     "terms": "povrch,materiál,dlažba,asfalt,dlážděno,hladké,upravené,vyježděné,hladkost,tráva,štěrk,kamení,písek,kryt,vrstva"
                 },
                 "surveillance": {
@@ -2460,6 +2501,9 @@
                     "label": "Kanál VKV",
                     "terms": "velmi krátké vlny,vkv,kanál,frekvence,kanál objektu"
                 },
+                "via": {
+                    "label": "Přes"
+                },
                 "video_calls": {
                     "label": "Videohovory",
                     "terms": "videohovory,video hovory,dálková komunikace,obrazový hovor,audiovizuální"
@@ -2668,7 +2712,7 @@
                     "name": "Lanový skluz"
                 },
                 "aeroway": {
-                    "name": "prvek letecké dopravy"
+                    "name": "Prvek letecké dopravy"
                 },
                 "aeroway/aerodrome": {
                     "name": "Letiště",
@@ -3069,6 +3113,10 @@
                 "amenity/motorcycle_parking": {
                     "name": "Parkování pro motorky",
                     "terms": "parking,parkování,garáž,motorka,motocykl"
+                },
+                "amenity/motorcycle_rental": {
+                    "name": "Půjčovna motocyklů",
+                    "terms": "půjčovna motocyklů,motorky,motorka,motocykl,moped,babeta,skůtr,silniční motocykl"
                 },
                 "amenity/music_school": {
                     "name": "Hudební škola"
@@ -3647,7 +3695,7 @@
                     "name": "Brána"
                 },
                 "barrier/guard_rail": {
-                    "name": "Zábradlí"
+                    "name": "Svodidla"
                 },
                 "barrier/hedge": {
                     "name": "Živý plot",
@@ -4194,6 +4242,10 @@
                 "emergency/life_ring": {
                     "name": "Kruh života"
                 },
+                "emergency/lifeboat_station": {
+                    "name": "Stanice záchranného člunu",
+                    "terms": "záchranný člun,záchrana,záchranáři,záchranářský člun,záchrana z lodi,plavba,loď"
+                },
                 "emergency/lifeguard": {
                     "name": "záchranný kruh"
                 },
@@ -4232,6 +4284,10 @@
                 "entrance/emergency_ward_entrance": {
                     "name": "Vstup do pohotovostní místnosti",
                     "terms": "nouze,záchrana,nouzová místnost,záchranář,pohotovost,vchod"
+                },
+                "entrance/main": {
+                    "name": "Hlavní vchod",
+                    "terms": "hlavní vchod,vchod,dveře,průchod,vstup,východ,hlavní vstup,vchodové dveře,vstupní dveře"
                 },
                 "ford": {
                     "name": "Brod",
@@ -4344,7 +4400,7 @@
                     "name": "Logoped"
                 },
                 "highway": {
-                    "name": "prvek cesty"
+                    "name": "Prvek cesty"
                 },
                 "highway/bridleway": {
                     "name": "Jezdecká stezka",
@@ -4416,6 +4472,10 @@
                 "highway/elevator": {
                     "name": "Výtah"
                 },
+                "highway/elevator_line": {
+                    "name": "Pozemní lanová dráha",
+                    "terms": "šikmý výtah,lanová dráha,pozemní lanovka,pozemní lanová dráha,šikmá kolejová dráha,lanovka na petřín"
+                },
                 "highway/emergency_bay": {
                     "name": "Místo nouzového zastavení"
                 },
@@ -4481,7 +4541,7 @@
                     "terms": "dálniční nájezd,dálniční výjezd,dálniční exit,dálniční křižovatka,křížení dálnic,nájezd,exit"
                 },
                 "highway/motorway_link": {
-                    "name": "Dálnice - nájezd",
+                    "name": "Dálnice – nájezd",
                     "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
                 },
                 "highway/passing_place": {
@@ -5136,6 +5196,10 @@
                     "name": "Dětské hřiště",
                     "terms": "hřiště,dětské hřiště,prolézačky,prolézačka,pískoviště,houpačky,houpačka,skluzavky,skluzavka"
                 },
+                "leisure/playground/indoor": {
+                    "name": "Vnitřní dětské hřiště",
+                    "terms": "dětské hřiště,děti,vnitřní hřiště,hřiště uvnitř"
+                },
                 "leisure/resort": {
                     "name": "Letovisko",
                     "terms": "turistický resort"
@@ -5780,6 +5844,10 @@
                     "name": "Výzkumný ústav",
                     "terms": "výzkumný ústav,akademie věd,akademie,ústav,vědecký ústav,vědecká instituce,věda,výzkum,vývoj,vědecké pracoviště,výzkumné pracoviště"
                 },
+                "office/security": {
+                    "name": "kancelář hlídače",
+                    "terms": "security,hlídač,ochranka,noční hlídač"
+                },
                 "office/surveyor": {
                     "name": "Zeměměřický úřad"
                 },
@@ -5901,11 +5969,19 @@
                     "name": "Houpačka (koš)",
                     "terms": "košík,houpačka,koš,košíková houpačka,houpačka s košem,houpací koš"
                 },
+                "playground/climbingframe": {
+                    "name": "Prolézačka",
+                    "terms": "prolézačka,prolejzačka,žebřík,síť,šplhání,pavučina,opičí dráha,prolízačka,lanová hrací zařízení,lanový herní prvek,lanové parkury,pyramida z lanové sítě,šplhací,děti,dětské hřiště,zařízení dětského hřiště,lanové sestavy,lanové prvky"
+                },
                 "playground/cushion": {
                     "name": "skákací polštář"
                 },
                 "playground/horizontal_bar": {
                     "name": "hrazda"
+                },
+                "playground/playhouse": {
+                    "name": "Domeček",
+                    "terms": "dětské hřiště,děti,zařízení dětského hřiště,domeček,dětský domek,domek na hraní,hrací domeček"
                 },
                 "playground/roundabout": {
                     "name": "kolotoč"
@@ -5919,6 +5995,10 @@
                 },
                 "playground/slide": {
                     "name": "Skluzavka"
+                },
+                "playground/springy": {
+                    "name": "Pružinová houpačka",
+                    "terms": "houpačka,pružina,houpačka na pružině,koník na pružině,hřiště,děti,dětské hřiště,herní prvek"
                 },
                 "playground/structure": {
                     "name": "prolézačka / větší objekt"
@@ -5986,8 +6066,16 @@
                 "power/plant/source/nuclear": {
                     "name": "jaderná elektrárna"
                 },
+                "power/plant/source/oil": {
+                    "name": "Ropná elektrárna",
+                    "terms": "elektrárna,ropa,neobnovitelné zdroje,fosilní palivo,zdroj elektřiny,spalování ropy,ropná elektrárna"
+                },
                 "power/plant/source/solar": {
                     "name": "solární elektrárna"
+                },
+                "power/plant/source/waste": {
+                    "name": "Spalovna odpadu vyrábějící elektřinu",
+                    "terms": "spalovna,spalovna odpadu,zevo,zařízení na energetické využití odpadu,zdroj elektřiny,elektrárna,spalování odpadu"
                 },
                 "power/plant/source/wind": {
                     "name": "větrná elektrárna"
@@ -6801,6 +6889,10 @@
                 "shop/rental": {
                     "name": "půjčovna"
                 },
+                "shop/repair": {
+                    "name": "Opravna",
+                    "terms": "opravna,servis,opravář,náhradní díly,dílna,oprava rozbitého"
+                },
                 "shop/scuba_diving": {
                     "name": "Potřeby pro potápěče",
                     "terms": "potápění,potápěč,scuba,potapěč,šnorchl"
@@ -7133,7 +7225,7 @@
                     "terms": "široký příčný práh,příčný práh,retardér,zpomalovací práh,ležící policajt"
                 },
                 "traffic_calming/island": {
-                    "name": "Ostrůvek",
+                    "name": "Dopravní ostrůvek",
                     "terms": "kruhák,kruháč,kulaťák,kruhový objezd,pomalu,zpomalit"
                 },
                 "traffic_calming/rumble_strip": {
@@ -7219,6 +7311,10 @@
                     "name": "Trasa",
                     "terms": "trasa,cesta,linka,stopa,značka,spojení"
                 },
+                "type/route/aerialway": {
+                    "name": "Trasa nadzemní dopravy",
+                    "terms": "lanovka,nadzemní doprava,linka,trasa,trasa lanové dráhy,lanová dráha,nadzemní linka"
+                },
                 "type/route/bicycle": {
                     "name": "Cyklotrasa",
                     "terms": "cyklotrasa,cyklistická trasa,cyklistická značka"
@@ -7244,8 +7340,7 @@
                     "terms": "pěší trasa,trasa pro pěší,turistická značka,turistická trasa,značka pro pěší,klub českých turistů,kčt"
                 },
                 "type/route/horse": {
-                    "name": "Jezdecká trasa",
-                    "terms": "jezdecká trasa,koňská trasa,jezdecká stezka,koňská stezka,kůň,koně,jezdec,jezdce"
+                    "name": "Stezka pro jízdu na koni"
                 },
                 "type/route/light_rail": {
                     "name": "Trasa lehké dráhy"
@@ -7295,7 +7390,7 @@
                     "name": "Vodní tok"
                 },
                 "waterway": {
-                    "name": "prvek vodní dopravy"
+                    "name": "Prvek vodní dopravy"
                 },
                 "waterway/boatyard": {
                     "name": "Loděnice",

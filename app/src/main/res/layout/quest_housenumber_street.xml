@@ -30,7 +30,7 @@
                 android:maxLines="1"
                 android:padding="8dp"
                 android:textAlignment="center"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 android:textColorHint="#66ffffff"
                 android:textSize="28dp" />
 

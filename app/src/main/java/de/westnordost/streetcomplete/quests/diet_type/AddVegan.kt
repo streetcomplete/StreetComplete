@@ -10,8 +10,12 @@ class AddVegan : OsmFilterQuestType<DietAvailability>() {
     override val elementFilter = """
         nodes, ways with
         (
-          amenity ~ restaurant|cafe|fast_food and diet:vegetarian ~ yes|only
-          or amenity = ice_cream
+          amenity = ice_cream
+          or diet:vegetarian ~ yes|only and
+          (
+            amenity ~ restaurant|cafe|fast_food
+            or amenity = pub and food = yes
+          )
         )
         and name and (
           !diet:vegan

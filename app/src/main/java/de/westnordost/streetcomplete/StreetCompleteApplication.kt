@@ -56,4 +56,9 @@ class StreetCompleteApplication : Application() {
         // on each new version, invalidate quest cache
         downloadedTilesDao.removeAll()
     }
+
+    override fun onTerminate() {
+        super.onTerminate()
+        applicationScope.cancel()
+    }
 }

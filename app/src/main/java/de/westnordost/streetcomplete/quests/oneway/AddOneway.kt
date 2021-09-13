@@ -91,7 +91,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
         /* left or right hand traffic is irrelevant here because we don't make a difference between
            left and right side */
         val sides = createCyclewaySides(tags, false) ?: return 0f
-        return (sides.left?.estimatedWidth ?: 0f) + (sides.left?.estimatedWidth ?: 0f)
+        return (sides.left?.estimatedWidth ?: 0f) + (sides.right?.estimatedWidth ?: 0f)
     }
 
     override fun createForm() = AddOnewayForm()

@@ -40,13 +40,13 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
 
     init {
         Injector.applicationComponent.inject(this)
-        showQuestFormAdapter.list = questTypeRegistry.all.toMutableList()
+        showQuestFormAdapter.list = questTypeRegistry.toMutableList()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_show_quest_forms)
-        binding.toolbarLayout.toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_close_white_24dp)
+        binding.toolbarLayout.toolbar.navigationIcon = getDrawable(R.drawable.ic_close_24dp)
         binding.toolbarLayout.toolbar.setNavigationOnClickListener { onBackPressed() }
         binding.toolbarLayout.toolbar.title = "Show Quest Forms"
 
@@ -81,7 +81,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         private inner class ViewHolder(val binding: RowQuestDisplayBinding) : ListAdapter.ViewHolder<QuestType<*>>(binding) {
             override fun onBind(with: QuestType<*>) {
                 binding.questIcon.setImageResource(with.icon)
-                binding.questTitle.text = genericQuestTitle(itemView, with)
+                binding.questTitle.text = genericQuestTitle(itemView.resources, with)
                 binding.root.setOnClickListener { onClickQuestType(with) }
             }
         }
@@ -99,9 +99,17 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         val centerLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latitudeDelta/2).toBits()))
         val centerLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, (0.0 + longitudeDelta/2).toBits()))
         val centerPos = LatLon(centerLat, centerLng)
+        // tags selected here are values that results in more that quests working on showing/solving debug quest form
+        // some quests expect specific tags to be set and crash without them - what is OK, but here
+        // some tag combination needs to be setup to reduce number of crashes when using test forms
         val tags =  mapOf("highway" to "cycleway", "building" to "residential", "name" to "<object name>", "opening_hours" to "Mo-Fr 08:00-12:00,13:00-17:30; Sa 08:00-12:00", "addr:housenumber" to "176")
+        // way geometry is needed by quests using clickable way display (steps direction, sidewalk quest, lane quest, cycleway quest...)
         val element = Way(1, listOf(1, 2), tags, 1)
         val elementGeometry = ElementPolylinesGeometry(listOf(listOf(firstPos, secondPos)), centerPos)
+
+        // for testing quests requiring nodes code above can be commented out and this uncommented
+        //val element = Node(1, firstPos, tags, 1)
+        //val elementGeometry = ElementPointGeometry(firstPos)
 
         val quest = object : Quest {
             override val key = OsmQuestKey(element.type, element.id, questType::class.simpleName!!)

@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        val kotlinVersion = "1.5.0"
+        val kotlinVersion = "1.5.30"
         classpath("com.android.tools.build:gradle:4.2.2")
         classpath(kotlin("gradle-plugin", version = kotlinVersion))
     }
@@ -60,9 +60,11 @@ tasks.register("updateStreetCompleteData") {
         //"updateAtmOperators",
         "app:updatePresets",
         "app:updateNsiPresets",
+        "app:updateTranslatorCredits",
         "app:updateTranslations",
         "app:updateTranslationCompleteness",
         "app:copyDefaultStringsToEnStrings",
-        "app:generateMetadataByCountry"
+        "app:generateMetadataByCountry",
+        "app:updateTranslatorCredits"
         )
 }

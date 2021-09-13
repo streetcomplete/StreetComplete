@@ -12,7 +12,7 @@
         android:insetBottom="0dp"
         android:insetLeft="0dp"
         android:insetRight="0dp"
-        app:icon="@drawable/ic_add_photo_black_24dp"
+        app:icon="@drawable/ic_add_photo_24dp"
         app:iconPadding="0dp"
         app:iconGravity="textStart"
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"

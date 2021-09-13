@@ -8,14 +8,13 @@
         android:layout_height="wrap_content"
         android:gravity="bottom">
 
-        <ImageView
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="6dp"
             android:layout_alignBottom="@+id/buildingImage"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/buildingImage"
-            android:background="@drawable/building_levels_illustration_bg_left"
-            android:scaleType="fitEnd"
+            android:background="#82a04e"
             tools:ignore="RtlHardcoded" />
 
         <ImageView
@@ -26,14 +25,14 @@
             android:scaleType="fitEnd"
             android:src="@drawable/building_levels_illustration" />
 
-        <ImageView
+        <View
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="6dp"
             android:layout_alignBottom="@+id/buildingImage"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="0.5dp"
+            android:layout_marginBottom="55dp"
             android:layout_toRightOf="@+id/buildingImage"
-            android:background="@drawable/building_levels_illustration_bg_right"
+            android:background="#82a04e"
             android:scaleType="fitEnd"
             tools:ignore="RtlHardcoded" />
 
@@ -43,42 +42,41 @@
             android:layout_alignTop="@id/buildingImage"
             android:layout_alignBottom="@id/buildingImage"
             android:layout_alignParentLeft="true"
-            android:layout_marginRight="-28dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginRight="-32dp"
+            android:layout_marginBottom="8dp"
             android:layout_toLeftOf="@+id/buildingImage"
             tools:ignore="RtlHardcoded">
 
-            <TextView
-                android:id="@+id/levelsInputLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/levelsInput"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="4dp"
-                android:gravity="bottom|right"
-                android:labelFor="@+id/levelsInput"
-                android:text="@string/quest_buildingLevels_levelsLabel2"
-                app:autoSizeMaxTextSize="16dp"
-                app:autoSizeMinTextSize="12dp"
-                app:autoSizeTextType="uniform"
-                tools:ignore="RtlHardcoded" />
+        <TextView
+            android:id="@+id/levelsInputLabel"
+            android:text="@string/quest_buildingLevels_levelsLabel2"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="16dp"
+            app:autoSizeMinTextSize="12dp"
+            android:gravity="bottom|right"
+            android:labelFor="@+id/levelsInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_above="@id/levelsInput"
+            tools:ignore="RtlHardcoded"/>
 
-            <EditText
-                android:id="@+id/levelsInput"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:ems="2"
-                android:focusable="true"
-                android:gravity="center_horizontal"
-                android:inputType="number"
-                android:maxLines="1"
-                android:nextFocusDown="@+id/roofLevelsInput"
-                android:textSize="20dp"
-                tools:ignore="RtlHardcoded,SpUsage"
-                tools:text="24" />
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="32dp"
+            tools:text="24"
+            android:ems="2"
+            android:gravity="center_horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/levelsInput"
+            android:inputType="number"
+            android:maxLines="1"
+            android:nextFocusDown="@+id/roofLevelsInput"
+            android:focusable="true"
+            tools:ignore="RtlHardcoded,SpUsage"/>
 
         </RelativeLayout>
 
@@ -89,7 +87,8 @@
         android:layout_above="@id/lastPickedButtons"
         android:layout_alignTop="@id/buildingImage"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="-34dp"
+        android:layout_marginLeft="-42dp"
+        android:layout_marginTop="15dp"
         android:layout_toRightOf="@id/buildingImage"
         android:gravity="top"
         tools:ignore="RtlHardcoded">
@@ -106,7 +105,7 @@
             android:inputType="number"
             android:maxLines="1"
             android:nextFocusUp="@+id/levelsInput"
-            android:textSize="20dp"
+            android:textSize="32dp"
             tools:ignore="SpUsage"
             tools:text="2" />
 
@@ -116,7 +115,8 @@
             android:layout_below="@+id/roofLevelsInput"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="4dp"
-            android:gravity="left"
+            android:layout_marginTop="12dp"
+            android:gravity="left|top"
             android:labelFor="@+id/roofLevelsInput"
             android:text="@string/quest_buildingLevels_roofLevelsLabel2"
             app:autoSizeMaxTextSize="16dp"

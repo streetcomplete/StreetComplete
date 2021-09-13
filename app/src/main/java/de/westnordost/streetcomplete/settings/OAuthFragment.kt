@@ -129,7 +129,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
                 binding.webView.visibility = View.VISIBLE
                 binding.webView.loadUrl(
                     authorizeUrl,
-                    mutableMapOf("Accept-Language" to Locale.getDefault().toBcp47LanguageTag())
+                    mutableMapOf("Accept-Language" to Locale.getDefault().toLanguageTag())
                 )
                 oAuthVerifier = webViewClient.awaitOAuthCallback()
                 binding.webView.visibility = View.INVISIBLE

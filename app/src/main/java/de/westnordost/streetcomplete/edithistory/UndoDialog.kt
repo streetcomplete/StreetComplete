@@ -161,12 +161,10 @@ private val StringMapEntryChange.tagString: String get() = when(this) {
     is StringMapEntryAdd -> "$key = $value"
     is StringMapEntryModify -> "$key = $value"
     is StringMapEntryDelete -> "$key = $valueBefore"
-    else -> ""
 }
 
 private val StringMapEntryChange.titleResId: Int get() = when(this) {
     is StringMapEntryAdd -> R.string.added_tag_action_title
     is StringMapEntryModify -> R.string.changed_tag_action_title
     is StringMapEntryDelete -> R.string.removed_tag_action_title
-    else -> 0
 }

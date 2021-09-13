@@ -24,11 +24,13 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
         val isRoad = ALL_ROADS.contains(tags["construction"])
         val isCycleway = tags["construction"] == "cycleway"
         val isFootway = tags["construction"] == "footway"
+        val isSteps = tags["construction"] == "steps"
 
         return when {
             isRoad -> R.string.quest_construction_road_title
             isCycleway -> R.string.quest_construction_cycleway_title
             isFootway -> R.string.quest_construction_footway_title
+            isSteps -> R.string.quest_construction_steps_title
             else -> R.string.quest_construction_generic_title
         }
     }

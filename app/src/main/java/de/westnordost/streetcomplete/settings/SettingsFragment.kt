@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
@@ -25,7 +26,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.quest.getVisible
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.toast
@@ -35,7 +36,7 @@ import javax.inject.Inject
 
 /** Shows the settings screen */
 class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
-    SharedPreferences.OnSharedPreferenceChangeListener, VisibleQuestTypeSource.Listener {
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Inject internal lateinit var prefs: SharedPreferences
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
@@ -45,6 +46,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
     @Inject internal lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
     @Inject internal lateinit var visibleQuestTypeSource: VisibleQuestTypeSource
+    @Inject internal lateinit var questPresetsSource: QuestPresetsSource
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -102,8 +104,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
     override fun onStart() {
         super.onStart()
-        visibleQuestTypeSource.addListener(this)
-        updateQuestPreferenceSummary()
+        findPreference<Preference>("quests")?.summary = getQuestPreferenceSummary()
     }
 
     override fun onResume() {
@@ -114,11 +115,6 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
     override fun onPause() {
         super.onPause()
         prefs.unregisterOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        visibleQuestTypeSource.removeListener(this)
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
@@ -135,7 +131,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             Prefs.THEME_SELECT -> {
                 val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
                 AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
-                activity?.recreate()
+                activity?.let { ActivityCompat.recreate(it) }
             }
             Prefs.RESURVEY_INTERVALS -> {
                 resurveyIntervalsUpdater.update()
@@ -154,10 +150,6 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
         }
     }
 
-    override fun onQuestTypeVisibilitiesChanged() {
-        updateQuestPreferenceSummary()
-    }
-
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         downloadedTilesDao.removeAll()
         val now = System.currentTimeMillis()
@@ -165,10 +157,15 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
         mapDataController.deleteOlderThan(now)
     }
 
-    private fun updateQuestPreferenceSummary() {
-        val enabledCount = questTypeRegistry.getVisible(visibleQuestTypeSource).count()
-        val totalCount = questTypeRegistry.all.size
-        val subtitle = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
-        findPreference<Preference>("quests")?.summary = subtitle
+    private fun getQuestPreferenceSummary(): String {
+        val presetName = questPresetsSource.selectedQuestPresetName ?: getString(R.string.quest_presets_default_name)
+        val hasCustomPresets = questPresetsSource.getAllQuestPresets().isNotEmpty()
+        val presetStr = if (hasCustomPresets) getString(R.string.pref_subtitle_quests_preset_name, presetName) + "\n" else ""
+
+        val enabledCount = questTypeRegistry.filter { visibleQuestTypeSource.isVisible(it) }.count()
+        val totalCount = questTypeRegistry.size
+        val enabledStr = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+
+        return presetStr + enabledStr
     }
 }

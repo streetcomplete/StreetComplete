@@ -13,6 +13,10 @@ enum class Religion(val osmValue: String) {
     // https://en.wikipedia.org/wiki/Chinese_folk_religion
     // sorting relatively far up because there are many Chinese expats around the world
     CHINESE_FOLK("chinese_folk"),
+    // basically the same applies to anything "Animist" because as this is not really one
+    // religion but a kind of belief. This value was added to accomodate for those spirit houses
+    // in Thailand, but really, animism is practiced all over the world
+    ANIMIST("animist"),
     BAHAI("bahai"),
     SIKH("sikh"),
 

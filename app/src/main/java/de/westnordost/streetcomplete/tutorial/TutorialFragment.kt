@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.tutorial
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -42,7 +41,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.respectSystemInsets(View::setPadding)
+        view.respectSystemInsets()
 
         updateIndicatorDots()
 
@@ -199,9 +198,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .alpha(1f)
             .start()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            (binding.checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
-        }
+        (binding.checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
     }
 
     private fun updateIndicatorDots() {

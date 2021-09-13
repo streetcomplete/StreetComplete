@@ -21,6 +21,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.getSystemService
+import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
@@ -36,7 +37,6 @@ import de.westnordost.streetcomplete.controls.UndoButtonFragment
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -47,10 +47,12 @@ import de.westnordost.streetcomplete.databinding.FragmentCreditsBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
 import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.location.createLocationAvailabilityIntentFilter
 import de.westnordost.streetcomplete.location.FineLocationManager
+import de.westnordost.streetcomplete.location.hasLocationPermission
+import de.westnordost.streetcomplete.location.isLocationEnabled
 import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
-import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
 import de.westnordost.streetcomplete.util.*
@@ -100,7 +102,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private var locationWhenOpenedQuest: Location? = null
 
-    private var windowInsets: Rect? = null
+    private var windowInsets: Insets? = null
 
     internal var mapFragment: QuestsMapFragment? = null
     internal var mainMenuButtonFragment: MainMenuButtonFragment? = null
@@ -157,7 +159,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         super.onViewCreated(view, savedInstanceState)
 
         binding.mapControls.respectSystemInsets(View::setMargins)
-        view.respectSystemInsets { l, t, r, b -> windowInsets = Rect(l, t, r, b) }
+        view.respectSystemInsets { windowInsets = it }
 
         binding.locationPointerPin.setOnClickListener { onClickLocationPointer() }
 
@@ -188,7 +190,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         visibleQuestsSource.addListener(this)
         requireContext().registerReceiver(
             locationAvailabilityReceiver,
-            LocationUtil.createLocationAvailabilityIntentFilter()
+            createLocationAvailabilityIntentFilter()
         )
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
             locationRequestFinishedReceiver,
@@ -357,10 +359,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onAnsweredQuest(questKey: QuestKey, answer: Any) {
         lifecycleScope.launch {
-            val quest = questController.get(questKey)
-            if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeBottomSheet()
-                if (questController.solve(questKey, answer, "survey")) {
+            solveQuest(questKey) { quest ->
+                if (questController.solve(quest, answer, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
@@ -393,10 +393,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onDeletePoiNode(osmQuestKey: OsmQuestKey) {
         lifecycleScope.launch {
-            val quest = questController.get(osmQuestKey)
-            if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeBottomSheet()
-                if (questController.deletePoiElement(osmQuestKey, "survey")) {
+            solveQuest(osmQuestKey) { quest ->
+                if (questController.deletePoiElement(quest as OsmQuest, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
@@ -405,20 +403,27 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
         lifecycleScope.launch {
-            val quest = questController.get(osmQuestKey)
-            if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeBottomSheet()
-                if (questController.replaceShopElement(osmQuestKey, tags, "survey")) {
+            solveQuest(osmQuestKey) { quest ->
+                if (questController.replaceShopElement(quest as OsmQuest, tags, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
         }
     }
 
-    private suspend fun assureIsSurvey(elementGeometry: ElementGeometry): Boolean {
-        val ctx = context ?: return false
+    private suspend fun solveQuest(questKey: QuestKey, onIsSurvey: suspend (quest: Quest) -> Unit) {
+        val f = (bottomSheetFragment as? IsLockable)
+        f?.locked = true
+        val quest = questController.get(questKey) ?: return
+        val ctx = context ?: return
+
         val checkLocations = listOfNotNull(mapFragment?.displayedLocation, locationWhenOpenedQuest)
-        return isSurveyChecker.checkIsSurvey(ctx, elementGeometry, checkLocations)
+        if (isSurveyChecker.checkIsSurvey(ctx, quest.geometry, checkLocations)) {
+            closeBottomSheet()
+            onIsSurvey(quest)
+        } else {
+            f?.locked = false
+        }
     }
 
     private fun onQuestSolved(quest: Quest, source: String?) {
@@ -430,10 +435,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onSplittedWay(osmQuestKey: OsmQuestKey, splits: List<SplitPolylineAtPosition>) {
         lifecycleScope.launch {
-            val quest = questController.get(osmQuestKey)
-            if (quest != null && assureIsSurvey(quest.geometry)) {
-                closeBottomSheet()
-                if (questController.splitWay(osmQuestKey, splits, "survey")) {
+            solveQuest(osmQuestKey) { quest ->
+                if (questController.splitWay(quest as OsmQuest, splits, "survey")) {
                     onQuestSolved(quest, "survey")
                 }
             }
@@ -535,7 +538,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     //region Location - Request location and update location status
 
     private fun updateLocationAvailability() {
-        if (LocationUtil.isLocationOn(activity)) {
+        if (isLocationEnabled(requireContext())) {
             onLocationIsEnabled()
         } else {
             onLocationIsDisabled()
@@ -554,7 +557,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private fun onLocationIsDisabled() {
         binding.gpsTrackingButton.visibility = View.VISIBLE
-        binding.gpsTrackingButton.state = if (LocationUtil.hasLocationPermission(activity)) LocationState.ALLOWED else LocationState.DENIED
+        binding.gpsTrackingButton.state = if (hasLocationPermission(requireContext()))
+            LocationState.ALLOWED else LocationState.DENIED
         binding.locationPointerPin.visibility = View.GONE
         mapFragment!!.stopPositionTracking()
         locationManager.removeUpdates()
@@ -605,7 +609,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         // Camera cannot rotate upside down => full circle check not needed
         val isFlat = mapFragment.cameraPosition?.tilt?.let { it <= margin } ?: false
 
-        if (mapFragment.isFollowingPosition) {
+        if (mapFragment.isFollowingPosition && mapFragment.displayedLocation != null) {
             setIsCompassMode(!mapFragment.isCompassMode)
         } else {
             if (isNorthUp) {
@@ -796,7 +800,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
 
         val f = quest.type.createForm()
-        val element = if (quest is OsmQuest) questController.getOsmElement(quest) else null
+        val element = if (quest is OsmQuest) {
+            questController.getOsmElement(quest) ?: return
+        } else {
+            null
+        }
         val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f

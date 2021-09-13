@@ -28,7 +28,7 @@ object Prefs {
     const val TEAM_MODE_TEAM_SIZE = "team_mode.team_size"
 
     // not shown anywhere directly
-    const val QUEST_ORDER = "quests.order"
+    const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
     const val LAST_EDIT_TIME = "changesets.lastChangeTime"
     const val MAP_LATITUDE = "map.latitude"
     const val MAP_LONGITUDE = "map.longitude"
@@ -37,6 +37,7 @@ object Prefs {
     const val LAST_VERSION = "lastVersion"
     const val LAST_VERSION_DATA = "lastVersion_data"
     const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"
+    const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState"
 
     const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
     const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"
