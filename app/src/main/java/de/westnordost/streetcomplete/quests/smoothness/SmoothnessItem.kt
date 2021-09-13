@@ -10,7 +10,7 @@ fun Array<Smoothness>.toItems(surface: String, highway: String) = this.mapNotNul
 fun Smoothness.asItem(surface: String, highway: String): Item<Smoothness>? {
     val imageResId = getImageResId(surface) ?: return null
     val descriptionResId = getDescriptionResId(surface, highway) ?: return null
-    return Item(this, imageResId, getTitleRedId(), descriptionResId)
+    return Item(this, imageResId, getTitleResId(), descriptionResId)
 }
 
 fun Smoothness.getTitleResId() = when (this) {
