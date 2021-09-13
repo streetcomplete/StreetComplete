@@ -13,7 +13,7 @@ fun Smoothness.asItem(surface: String, highway: String): Item<Smoothness>? {
     return Item(this, imageResId, getTitleRedId(), descriptionResId)
 }
 
-fun Smoothness.getTitleRedId() = when (this) {
+fun Smoothness.getTitleResId() = when (this) {
     EXCELLENT -> R.string.quest_smoothness_title_excellent
     GOOD -> R.string.quest_smoothness_title_good
     INTERMEDIATE -> R.string.quest_smoothness_title_intermediate
