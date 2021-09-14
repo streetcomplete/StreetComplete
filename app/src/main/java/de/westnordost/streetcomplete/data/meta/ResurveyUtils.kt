@@ -68,6 +68,12 @@ fun StringMapChangesBuilder.updateCheckDate() {
     deleteOtherCheckDates()
 }
 
+/** Delete any check date check date for the entire item */
+fun StringMapChangesBuilder.deleteCheckDates(key: String) {
+    changes.deleteIfExists(SURVEY_MARK_KEY)
+    deleteOtherCheckDates()
+}
+
 /** Delete solely the other check date for the entire item, don't touch SURVEY_MARK_KEY */
 fun StringMapChangesBuilder.deleteOtherCheckDates() {
     // remove old check dates (except the one we want to set)
