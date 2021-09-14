@@ -20,11 +20,10 @@ class AddPostboxRefForm : AbstractQuestFormAnswerFragment<PostboxRefAnswer>() {
         OtherAnswer(R.string.quest_ref_answer_noRef) { confirmNoRef() }
     )
 
-    private val ref get() = binding.refInput?.text?.toString().orEmpty().trim()
+    private val ref get() = binding.refInput.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.refInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
     }
 

@@ -10,11 +10,10 @@ import de.westnordost.streetcomplete.quests.drinking_water.DrinkingWater.*
 
 class AddDrinkingWaterForm : AbstractQuestFormAnswerFragment<DrinkingWater>() {
 
-    override val defaultExpanded = false
-
     override val contentLayoutResId = R.layout.quest_drinking_water
-
     private val binding by viewBinding(QuestDrinkingWaterBinding::bind)
+
+    override val defaultExpanded = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
-import de.westnordost.streetcomplete.databinding.ViewLittleCompassBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
@@ -23,11 +22,10 @@ import kotlinx.coroutines.withContext
 
 class AddSuspectedOnewayForm : AYesNoQuestAnswerFragment<SuspectedOnewayAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_oneway
-    override val contentPadding = false
+    override val contentLayoutResId = R.layout.quest_street_side_puzzle
+    private val binding by viewBinding(QuestStreetSidePuzzleBinding::bind)
 
-    private val questStreetSidePuzzleBinding by viewBinding(QuestStreetSidePuzzleBinding::bind)
-    private val viewLittleCompassBinding by viewBinding(ViewLittleCompassBinding::bind)
+    override val contentPadding = false
 
     private var streetSideRotater: StreetSideRotater? = null
 
@@ -40,18 +38,22 @@ class AddSuspectedOnewayForm : AYesNoQuestAnswerFragment<SuspectedOnewayAnswer>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        questStreetSidePuzzleBinding.puzzleView.showOnlyRightSide()
+        binding.puzzleView.showOnlyRightSide()
 
         lifecycleScope.launch {
             val isForward = withContext(Dispatchers.IO) { db.isForward(osmElement!!.id)!! }
 
-            questStreetSidePuzzleBinding.puzzleView.setRightSideImage(ResImage(
+            binding.puzzleView.setRightSideImage(ResImage(
                 if (isForward) R.drawable.ic_oneway_lane
                 else R.drawable.ic_oneway_lane_reverse
             ))
         }
 
-        streetSideRotater = StreetSideRotater(questStreetSidePuzzleBinding.puzzleView, viewLittleCompassBinding.compassNeedleView, elementGeometry as ElementPolylinesGeometry)
+        streetSideRotater = StreetSideRotater(
+            binding.puzzleView,
+            binding.littleCompass.compassNeedleView,
+            elementGeometry as ElementPolylinesGeometry
+        )
     }
 
     override fun onClick(answer: Boolean) {

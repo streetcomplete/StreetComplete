@@ -34,6 +34,8 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
         )
     }
 
+    /** Set custom layout. Any custom layout must have a button with the id "addLanguageButton" and
+     *  a RecyclerView with the id "namesList" */
     protected fun setLayout(resId: Int) {
         val view = setContentView(resId)
         initLocalizedNameAdapter(view as ViewGroup)

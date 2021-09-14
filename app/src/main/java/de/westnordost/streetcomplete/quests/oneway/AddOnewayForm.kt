@@ -7,9 +7,7 @@ import android.view.View
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.databinding.QuestOnewayBinding
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
-import de.westnordost.streetcomplete.databinding.ViewLittleCompassBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
@@ -24,11 +22,10 @@ import kotlin.math.PI
 
 class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_oneway
-    override val contentPadding = false
+    override val contentLayoutResId = R.layout.quest_street_side_puzzle
+    private val binding by viewBinding(QuestStreetSidePuzzleBinding::bind)
 
-    private val questStreetSidePuzzleBinding by viewBinding(QuestStreetSidePuzzleBinding::bind)
-    private val viewLittleCompassBinding by viewBinding(ViewLittleCompassBinding::bind)
+    override val contentPadding = false
 
     private var streetSideRotater: StreetSideRotater? = null
 
@@ -48,20 +45,24 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        questStreetSidePuzzleBinding.puzzleView.showOnlyRightSide()
-        questStreetSidePuzzleBinding.puzzleView.onClickSideListener = { showDirectionSelectionDialog() }
+        binding.puzzleView.showOnlyRightSide()
+        binding.puzzleView.onClickSideListener = { showDirectionSelectionDialog() }
 
         val defaultResId = R.drawable.ic_oneway_unknown
 
-        questStreetSidePuzzleBinding.puzzleView.setRightSideImage(ResImage(selection?.iconResId ?: defaultResId))
+        binding.puzzleView.setRightSideImage(ResImage(selection?.iconResId ?: defaultResId))
 
-        questStreetSidePuzzleBinding.puzzleView.setRightSideText(selection?.titleResId?.let { resources.getString(it) })
+        binding.puzzleView.setRightSideText(selection?.titleResId?.let { resources.getString(it) })
         if (selection == null && !HAS_SHOWN_TAP_HINT) {
-            questStreetSidePuzzleBinding.puzzleView.showRightSideTapHint()
+            binding.puzzleView.showRightSideTapHint()
             HAS_SHOWN_TAP_HINT = true
         }
 
-        streetSideRotater = StreetSideRotater(questStreetSidePuzzleBinding.puzzleView, viewLittleCompassBinding.compassNeedleView, elementGeometry as ElementPolylinesGeometry)
+        streetSideRotater = StreetSideRotater(
+            binding.puzzleView,
+            binding.littleCompass.compassNeedleView,
+            elementGeometry as ElementPolylinesGeometry
+        )
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -85,8 +86,8 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
         val items = OnewayAnswer.values().map { it.toItem(ctx, wayRotation + mapRotation) }
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 3) { selected ->
             val oneway = selected.value!!
-            questStreetSidePuzzleBinding.puzzleView.replaceRightSideImage(ResImage(oneway.iconResId))
-            questStreetSidePuzzleBinding.puzzleView.setRightSideText(resources.getString(oneway.titleResId))
+            binding.puzzleView.replaceRightSideImage(ResImage(oneway.iconResId))
+            binding.puzzleView.setRightSideText(resources.getString(oneway.titleResId))
             selection = oneway
             checkIsFormComplete()
         }.show()

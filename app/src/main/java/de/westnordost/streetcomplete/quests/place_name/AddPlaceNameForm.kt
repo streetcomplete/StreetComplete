@@ -27,7 +27,7 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
         OtherAnswer(R.string.quest_generic_answer_noSign) { confirmNoName() }
     )
 
-    private val placeName get() = binding.nameInput?.text?.toString().orEmpty().trim()
+    private val placeName get() = binding.nameInput.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

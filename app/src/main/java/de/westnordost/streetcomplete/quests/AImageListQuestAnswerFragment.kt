@@ -26,11 +26,12 @@ import kotlin.collections.ArrayList
 abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
 
     override val contentLayoutResId = R.layout.quest_generic_list
+
+    private val binding by viewBinding(QuestGenericListBinding::bind)
+
     override val defaultExpanded = false
 
     protected lateinit var imageSelector: ImageSelectAdapter<I>
-
-    private val binding by viewBinding(QuestGenericListBinding::bind)
 
     private lateinit var favs: LastPickedValuesStore<I>
 

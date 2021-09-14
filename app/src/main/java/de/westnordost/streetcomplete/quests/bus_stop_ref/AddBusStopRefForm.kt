@@ -14,14 +14,13 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 class AddBusStopRefForm : AbstractQuestFormAnswerFragment<BusStopRefAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_ref
-
     private val binding by viewBinding(QuestRefBinding::bind)
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_ref_answer_noRef) { confirmNoRef() }
     )
 
-    private val ref get() = binding.refInput?.text?.toString().orEmpty().trim()
+    private val ref get() = binding.refInput.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

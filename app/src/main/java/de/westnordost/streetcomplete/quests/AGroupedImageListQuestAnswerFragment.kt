@@ -28,10 +28,11 @@ import kotlin.math.max
 abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
 
     override val contentLayoutResId = R.layout.quest_generic_list
-    override val defaultExpanded = false
 
-    private val questAnswersBinding by viewBinding(FragmentQuestAnswerBinding::bind)
+    private val questAnswerBinding by viewBinding(FragmentQuestAnswerBinding::bind)
     private val questListBinding by viewBinding(QuestGenericListBinding::bind)
+
+    override val defaultExpanded = false
 
     protected lateinit var imageSelector: GroupedImageSelectAdapter<I>
 
@@ -86,10 +87,10 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
             val itemPos = IntArray(2)
             item.getLocationInWindow(itemPos)
             val scrollViewPos = IntArray(2)
-            questAnswersBinding.scrollView.getLocationInWindow(scrollViewPos)
+            questAnswerBinding.scrollView.getLocationInWindow(scrollViewPos)
 
-            questAnswersBinding.scrollView.postDelayed(250) {
-                questAnswersBinding.scrollView.smoothScrollTo(0, itemPos[1] - scrollViewPos[1])
+            questAnswerBinding.scrollView.postDelayed(250) {
+                questAnswerBinding.scrollView.smoothScrollTo(0, itemPos[1] - scrollViewPos[1])
             }
         }
     }

@@ -11,14 +11,12 @@ import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.*
 
 class DetermineRecyclingGlassForm : AbstractQuestAnswerFragment<RecyclingGlass>() {
     override val contentLayoutResId = R.layout.quest_determine_recycling_glass_explanation
-
     override val buttonsResId = R.layout.quest_buttonpanel_glass_glassbottles
-
-    private val binding by viewBinding(QuestButtonpanelGlassGlassbottlesBinding::bind)
+    private val buttonsBinding by viewBinding(QuestButtonpanelGlassGlassbottlesBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.glassButton.setOnClickListener { applyAnswer(ANY) }
-        binding.glassBottlesButton.setOnClickListener { applyAnswer(BOTTLES) }
+        buttonsBinding.glassButton.setOnClickListener { applyAnswer(ANY) }
+        buttonsBinding.glassBottlesButton.setOnClickListener { applyAnswer(BOTTLES) }
     }
 }

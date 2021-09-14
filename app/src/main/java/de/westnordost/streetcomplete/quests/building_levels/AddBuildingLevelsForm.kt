@@ -29,8 +29,8 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         OtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
     )
 
-    private val levels get() = binding.levelsInput?.text?.toString().orEmpty().trim()
-    private val roofLevels get() = binding.roofLevelsInput?.text?.toString().orEmpty().trim()
+    private val levels get() = binding.levelsInput.text?.toString().orEmpty().trim()
+    private val roofLevels get() = binding.roofLevelsInput.text?.toString().orEmpty().trim()
 
     private val lastPickedAnswers by lazy {
         favs.get(javaClass.simpleName).map { it.toBuildingLevelAnswer() }.sortedWith(

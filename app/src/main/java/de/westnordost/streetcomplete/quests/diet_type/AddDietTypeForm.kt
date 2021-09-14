@@ -16,21 +16,21 @@ class AddDietTypeForm : AbstractQuestAnswerFragment<DietAvailability>() {
     override val contentLayoutResId = R.layout.quest_diet_type_explanation
     override val buttonsResId = R.layout.quest_buttonpanel_yes_no_only
 
-    private val questDietTypeBinding by viewBinding(QuestDietTypeExplanationBinding::bind)
-    private val questButtonPanelBinding by viewBinding(QuestButtonpanelYesNoOnlyBinding::bind)
+    private val binding by viewBinding(QuestDietTypeExplanationBinding::bind)
+    private val buttonsBinding by viewBinding(QuestButtonpanelYesNoOnlyBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        questButtonPanelBinding.yesButton.setOnClickListener { applyAnswer(DIET_YES) }
-        questButtonPanelBinding.noButton.setOnClickListener { applyAnswer(DIET_NO) }
-        questButtonPanelBinding.onlyButton.setOnClickListener { applyAnswer(DIET_ONLY) }
+        buttonsBinding.yesButton.setOnClickListener { applyAnswer(DIET_YES) }
+        buttonsBinding.noButton.setOnClickListener { applyAnswer(DIET_NO) }
+        buttonsBinding.onlyButton.setOnClickListener { applyAnswer(DIET_ONLY) }
 
         val resId = arguments?.getInt(ARG_DIET) ?: 0
         if (resId > 0) {
-            questDietTypeBinding.descriptionLabel.setText(resId)
+            binding.descriptionLabel.setText(resId)
         } else {
-            questDietTypeBinding.descriptionLabel.visibility = View.GONE
+            binding.descriptionLabel.visibility = View.GONE
         }
     }
 

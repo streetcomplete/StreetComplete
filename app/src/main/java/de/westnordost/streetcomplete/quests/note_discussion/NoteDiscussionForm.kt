@@ -38,11 +38,12 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_note_discussion_content
     override val buttonsResId = R.layout.quest_buttonpanel_note_discussion
-    override val defaultExpanded = false
 
-    private val questNoteBinding by viewBinding(QuestNoteDiscussionContentBinding::bind)
-    private val questButtonPanelNoteBinding by viewBinding(QuestButtonpanelNoteDiscussionBinding::bind)
-    private val fragmentQuestAnswerBinding by viewBinding(FragmentQuestAnswerBinding::bind)
+    private val binding by viewBinding(QuestNoteDiscussionContentBinding::bind)
+    private val buttonsBinding by viewBinding(QuestButtonpanelNoteDiscussionBinding::bind)
+    private val questAnswerBinding by viewBinding(FragmentQuestAnswerBinding::bind)
+
+    override val defaultExpanded = false
 
     private lateinit var anonAvatar: Bitmap
 
@@ -51,7 +52,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
 
-    private val noteText: String get() = questNoteBinding.noteInput?.text?.toString().orEmpty().trim()
+    private val noteText: String get() = binding.noteInput.text?.toString().orEmpty().trim()
 
     init {
         Injector.applicationComponent.inject(this)
@@ -60,12 +61,12 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        questButtonPanelNoteBinding.doneButton.setOnClickListener { onClickOk() }
-        questButtonPanelNoteBinding.noButton.setOnClickListener { skipQuest() }
+        buttonsBinding.doneButton.setOnClickListener { onClickOk() }
+        buttonsBinding.noButton.setOnClickListener { skipQuest() }
 
-        questNoteBinding.noteInput.addTextChangedListener(TextChangedWatcher { updateDoneButtonEnablement() })
+        binding.noteInput.addTextChangedListener(TextChangedWatcher { updateDoneButtonEnablement() })
 
-        fragmentQuestAnswerBinding.otherAnswersButton.visibility = View.GONE
+        questAnswerBinding.otherAnswersButton.visibility = View.GONE
 
         updateDoneButtonEnablement()
 
@@ -80,7 +81,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     }
 
     private fun inflateNoteDiscussion(comments: List<NoteComment>) {
-        val discussionView = layoutInflater.inflate(R.layout.quest_note_discussion_items, fragmentQuestAnswerBinding.scrollViewChild, false) as RecyclerView
+        val discussionView = layoutInflater.inflate(R.layout.quest_note_discussion_items, questAnswerBinding.scrollViewChild, false) as RecyclerView
 
         discussionView.isNestedScrollingEnabled = false
         discussionView.layoutManager = LinearLayoutManager(
@@ -90,7 +91,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         )
         discussionView.adapter = NoteCommentListAdapter(comments)
 
-        fragmentQuestAnswerBinding.scrollViewChild.addView(discussionView, 0)
+        questAnswerBinding.scrollViewChild.addView(discussionView, 0)
     }
 
     private fun onClickOk() {
@@ -103,12 +104,12 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     override fun isRejectingClose(): Boolean {
         val f = attachPhotoFragment
-        val hasPhotos = f != null && !f.imagePaths.isEmpty()
+        val hasPhotos = f != null && f.imagePaths.isNotEmpty()
         return hasPhotos || noteText.isNotEmpty()
     }
 
     private fun updateDoneButtonEnablement() {
-        questButtonPanelNoteBinding.doneButton.isEnabled = noteText.isNotEmpty()
+        buttonsBinding.doneButton.isEnabled = noteText.isNotEmpty()
     }
 
 

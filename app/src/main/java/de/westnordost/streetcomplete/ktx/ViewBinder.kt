@@ -17,8 +17,9 @@ import kotlin.reflect.KProperty
  * at 15:49
  **/
 
-inline fun <reified T : ViewBinding> AppCompatActivity.viewBinding(noinline viewInflater: (LayoutInflater) -> T) =
-    ActivityBindingPropertyDelegate(this, viewInflater)
+inline fun <reified T : ViewBinding> AppCompatActivity.viewBinding(
+    noinline viewInflater: (LayoutInflater) -> T
+) = ActivityBindingPropertyDelegate(this, viewInflater)
 
 class ActivityBindingPropertyDelegate<T : ViewBinding>(
     private val activity: AppCompatActivity,
@@ -45,46 +46,38 @@ class ActivityBindingPropertyDelegate<T : ViewBinding>(
     }
 
     private fun getBinding(): T {
-        return binding ?: viewInflater.invoke(activity.layoutInflater).also { binding = it }
+        if (binding == null) {
+            binding = viewInflater(activity.layoutInflater)
+        }
+        return binding!!
     }
 
 }
 
 inline fun <reified T : ViewBinding> Fragment.viewBinding(
-    noinline viewBinder: (View) -> T,
-    noinline destroyer: ((T) -> Unit)? = null
-) = FragmentViewBindingPropertyDelegate(this, viewBinder, destroyer)
+    noinline viewBinder: (View) -> T
+) = FragmentViewBindingPropertyDelegate(this, viewBinder)
 
 class FragmentViewBindingPropertyDelegate<T : ViewBinding>(
     private val fragment: Fragment,
-    private val viewBinder: (View) -> T,
-    private var destroyer: ((T) -> Unit)?
+    private val viewBinder: (View) -> T
 ) : ReadOnlyProperty<Fragment, T>, LifecycleEventObserver {
 
     private var binding: T? = null
 
     override fun onStateChanged(source: LifecycleOwner, event: Event) {
         if (event == Event.ON_DESTROY) {
-            destroyer?.invoke(binding!!)
-            destroyer = null
             binding = null
             source.lifecycle.removeObserver(this)
         }
     }
 
     override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
-        return binding ?: viewBinder(thisRef.requireView()).also {
-            binding = it
+        if (binding == null) {
+            binding = viewBinder(thisRef.requireView())
             fragment.viewLifecycleOwner.lifecycle.addObserver(this)
         }
+        return binding!!
     }
 
 }
-
-/**
- * you can use this in your activity like this
- * in case of an @Activity
- * private val binding by viewBinding(<your_activity_layout_binding>::inflate)
- * and in case of a @Fragment
- * private val binding by viewBinding(<your_fragment_layout_binding>::bind())
- */

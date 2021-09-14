@@ -14,7 +14,7 @@ class AddBikeParkingCapacityForm : AbstractQuestFormAnswerFragment<Int>() {
 
     private val binding by viewBinding(QuestBikeParkingCapacityBinding::bind)
 
-    private val capacity get() = binding.capacityInput?.text?.toString().orEmpty().trim()
+    private val capacity get() = binding.capacityInput.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

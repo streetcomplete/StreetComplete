@@ -36,6 +36,8 @@
         </de.westnordost.streetcomplete.quests.lanes.StreetSideSelectRotateContainer>
 
         <!-- note the other compass in fragment_main -->
-        <include layout="@layout/view_little_compass"/>
+        <include
+            android:id="@+id/littleCompass"
+            layout="@layout/view_little_compass"/>
     </RelativeLayout>
 </LinearLayout>
