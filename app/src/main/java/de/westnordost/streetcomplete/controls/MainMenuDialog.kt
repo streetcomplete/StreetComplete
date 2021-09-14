@@ -20,7 +20,7 @@ class MainMenuDialog(
     onDisableTeamMode: () -> Unit,
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
     init {
-        val binding = DialogMainMenuBinding.bind(LayoutInflater.from(context).inflate(R.layout.dialog_main_menu, null))
+        val binding = DialogMainMenuBinding.inflate(LayoutInflater.from(context))
 
         binding.profileButton.setOnClickListener {
             val intent = Intent(context, UserActivity::class.java)

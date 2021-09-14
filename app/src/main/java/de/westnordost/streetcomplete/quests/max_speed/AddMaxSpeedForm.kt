@@ -13,6 +13,7 @@ import androidx.core.view.children
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
+import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.ktx.viewBinding
@@ -202,14 +203,14 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     private fun confirmNoSignSlowZone(onConfirmed: () -> Unit) {
         activity?.let {
-            val view = layoutInflater.inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false)
-            val input = view.findViewById<EditText>(R.id.maxSpeedInput)
-            input.setText("××")
-            input.inputType = EditorInfo.TYPE_NULL
+            val dialogBinding = QuestMaxspeedNoSignNoSlowZoneConfirmationBinding.inflate(layoutInflater)
+            val maxSpeedInput = dialogBinding.slowZoneImage.maxSpeedInput
+            maxSpeedInput.setText("××")
+            maxSpeedInput.inputType = EditorInfo.TYPE_NULL
 
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
-                .setView(view)
+                .setView(dialogBinding.root)
                 .setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive) { _, _ -> onConfirmed() }
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.databinding.RowChangelogBinding
 import de.westnordost.streetcomplete.ktx.getYamlObject
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -45,12 +46,11 @@ class WhatsNewDialog(context: Context, sinceVersion: String)
     private val scope = CoroutineScope(Dispatchers.Main)
 
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.fragment_changelog, null, false)
-        val changelogList = view.findViewById<RecyclerView>(R.id.changelogList)
-        changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        val binding = FragmentChangelogBinding.inflate(LayoutInflater.from(context))
+        binding.changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         setTitle(R.string.title_whats_new)
-        setView(view)
+        setView(binding.root)
         setButton(DialogInterface.BUTTON_POSITIVE, context.resources.getText(android.R.string.ok), null, null)
 
         scope.launch {
@@ -60,7 +60,7 @@ class WhatsNewDialog(context: Context, sinceVersion: String)
             if (currentVersionIndex == -1) currentVersionIndex = 1
             val changelog = fullChangelog.subList(0, currentVersionIndex)
 
-            changelogList.adapter = ChangelogAdapter(changelog)
+            binding.changelogList.adapter = ChangelogAdapter(changelog)
         }
     }
 

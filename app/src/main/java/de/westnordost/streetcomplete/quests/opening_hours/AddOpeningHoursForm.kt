@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.appcompat.widget.PopupMenu
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.EditText
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -16,6 +14,7 @@ import android.view.Menu.NONE
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
+import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.*
@@ -125,14 +124,13 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     }
 
     private fun showInputCommentDialog() {
-        val view = LayoutInflater.from(activity).inflate(R.layout.quest_opening_hours_comment, null)
-        val commentInput = view.findViewById<EditText>(R.id.commentInput)
+        val dialogBinding = QuestOpeningHoursCommentBinding.inflate(layoutInflater)
 
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_openingHours_comment_title)
-            .setView(view)
+            .setView(dialogBinding.root)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                val txt = commentInput.text.toString().replace("\"","").trim()
+                val txt = dialogBinding.commentInput.text.toString().replace("\"","").trim()
                 if (txt.isEmpty()) {
                     AlertDialog.Builder(requireContext())
                         .setMessage(R.string.quest_openingHours_emptyAnswer)

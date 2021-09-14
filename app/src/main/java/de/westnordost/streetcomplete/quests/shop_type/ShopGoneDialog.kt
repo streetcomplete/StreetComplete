@@ -34,12 +34,9 @@ class ShopGoneDialog(
     private val leaveNoteRadioButton: RadioButton
     private val radioButtons: List<RadioButton>
     private var selectedRadioButtonId: Int = 0
-    private val binding: DialogShopGoneBinding
+    private val binding = DialogShopGoneBinding.inflate(LayoutInflater.from(context))
 
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.dialog_shop_gone, null)
-        binding = DialogShopGoneBinding.bind(view)
-
         presetsEditText = binding.viewShopTypeLayout.presetsEditText
         vacantRadioButton = binding.viewShopTypeLayout.vacantRadioButton
         replaceRadioButton = binding.viewShopTypeLayout.replaceRadioButton
@@ -62,7 +59,7 @@ class ShopGoneDialog(
         )
 
         setTitle(context.getString(R.string.quest_shop_gone_title))
-        setView(view)
+        setView(binding.root)
     }
 
     override fun show() {

@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
 import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
@@ -99,12 +100,11 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 
     private fun showNoHousenumberDialog(buildingType: BuildingType) {
-        val inflater = LayoutInflater.from(requireContext())
-        val inner = inflater.inflate(R.layout.dialog_quest_address_no_housenumber, null, false)
-        ItemViewHolder(inner.findViewById(R.id.item_view)).bind(buildingType.asItem())
+        val dialogBinding = DialogQuestAddressNoHousenumberBinding.inflate(layoutInflater)
+        ItemViewHolder(dialogBinding.root).bind(buildingType.asItem())
 
         AlertDialog.Builder(requireContext())
-            .setView(inner)
+            .setView(dialogBinding.root)
             .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoHouseNumber) }
             .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(WrongBuildingType) }
             .show()

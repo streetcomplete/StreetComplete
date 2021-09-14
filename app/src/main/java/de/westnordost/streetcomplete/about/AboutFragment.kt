@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.about
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
@@ -10,10 +9,10 @@ import androidx.core.net.toUri
 import androidx.core.widget.TextViewCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellLabeledIconSelectRightBinding
+import de.westnordost.streetcomplete.databinding.DialogDonateBinding
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.sendEmail
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -120,13 +119,12 @@ class AboutFragment : PreferenceFragmentCompat() {
     private fun showDonateDialog() {
         val ctx = context ?: return
 
-        val view = LayoutInflater.from(ctx).inflate(R.layout.dialog_donate, null)
-        val listView = view.findViewById<RecyclerView>(R.id.donateList)
-        listView.adapter = DonationPlatformAdapter(DonationPlatform.values().asList())
+        val dialogBinding = DialogDonateBinding.inflate(layoutInflater)
+        dialogBinding.donateList.adapter = DonationPlatformAdapter(DonationPlatform.values().asList())
 
         AlertDialog.Builder(ctx)
             .setTitle(R.string.about_title_donate)
-            .setView(view)
+            .setView(dialogBinding.root)
             .show()
     }
 

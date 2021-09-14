@@ -9,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -31,6 +29,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
@@ -56,23 +55,21 @@ class UndoDialog(
     init {
         Injector.applicationComponent.inject(this)
 
-        val resources = context.resources
+        val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
 
-        val view = LayoutInflater.from(context).inflate(R.layout.dialog_undo, null, false)
-
-        view.findViewById<ImageView>(R.id.icon).setImageResource(edit.icon)
+        binding.icon.setImageResource(edit.icon)
         val overlayResId = edit.overlayIcon
-        if (overlayResId != 0) view.findViewById<ImageView>(R.id.overlayIcon).setImageResource(overlayResId)
-        view.findViewById<TextView>(R.id.createdTimeText).text =
+        if (overlayResId != 0) binding.overlayIcon.setImageResource(overlayResId)
+        binding.createdTimeText.text =
             DateUtils.getRelativeTimeSpanString(edit.createdTimestamp, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)
-        view.findViewById<FrameLayout>(R.id.descriptionContainer).addView(edit.descriptionView)
+        binding.descriptionContainer.addView(edit.descriptionView)
 
         setTitle(R.string.undo_confirm_title2)
-        setView(view)
-        setButton(BUTTON_POSITIVE, resources.getText(R.string.undo_confirm_positive), null) { _, _ ->
+        setView(binding.root)
+        setButton(BUTTON_POSITIVE, context.getText(R.string.undo_confirm_positive), null) { _, _ ->
             scope.launch(Dispatchers.IO) { editHistoryController.undo(edit) }
         }
-        setButton(BUTTON_NEGATIVE, resources.getText(R.string.undo_confirm_negative), null, null)
+        setButton(BUTTON_NEGATIVE, context.getText(R.string.undo_confirm_negative), null, null)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

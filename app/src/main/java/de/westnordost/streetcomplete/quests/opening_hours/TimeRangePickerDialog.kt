@@ -17,6 +17,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.DialogTimeRangePickerBinding
+import de.westnordost.streetcomplete.databinding.TimeRangePickerEndPickerBinding
+import de.westnordost.streetcomplete.databinding.TimeRangePickerStartPickerBinding
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 
 class TimeRangePickerDialog(
@@ -42,8 +45,9 @@ class TimeRangePickerDialog(
 
     init {
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.dialog_time_range_picker, null)
-        setView(view)
+        val binding = DialogTimeRangePickerBinding.inflate(inflater)
+
+        setView(binding.root)
 
         setButton(
             DialogInterface.BUTTON_POSITIVE,
@@ -56,12 +60,14 @@ class TimeRangePickerDialog(
             null as DialogInterface.OnClickListener?
         )
 
-        startPicker = inflater.inflate(R.layout.time_range_picker_start_picker, null) as TimePicker
+        val startPickerBinding = TimeRangePickerStartPickerBinding.inflate(inflater)
+        startPicker = startPickerBinding.root
         startPicker.setIs24HourView(is24HourView)
 
-        endPickerContainer = inflater.inflate(R.layout.time_range_picker_end_picker, null) as ViewGroup
-        openEndCheckbox = endPickerContainer.findViewById(R.id.checkBox)
-        endPicker = endPickerContainer.findViewById(R.id.picker)
+        val endPickerBinding = TimeRangePickerEndPickerBinding.inflate(inflater)
+        endPickerContainer = endPickerBinding.root
+        openEndCheckbox = endPickerBinding.checkBox
+        endPicker = endPickerBinding.picker
         endPicker.setIs24HourView(is24HourView)
         if (timeRange != null) {
             startPicker.currentHour = timeRange.start / 60
@@ -72,10 +78,10 @@ class TimeRangePickerDialog(
             openEndCheckbox.isChecked = timeRange.isOpenEnded
         }
 
-        viewPager = view.findViewById(R.id.viewPager)
+        viewPager = binding.viewPager
         viewPager.adapter = TimeRangePickerAdapter()
 
-        tabLayout = view.findViewById(R.id.tabLayout)
+        tabLayout = binding.tabLayout
         TabLayoutMediator(tabLayout, viewPager) { tab: TabLayout.Tab, position: Int ->
             tab.text = if(position == 0) startTimeLabel else endTimeLabel
         }.attach()

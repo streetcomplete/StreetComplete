@@ -19,12 +19,9 @@ class TeamModeDialog(
 
     private var selectedTeamSize: Int? = null
     private var selectedIndexInTeam: Int? = null
-    private val binding : DialogTeamModeBinding
+    private val binding = DialogTeamModeBinding.inflate(LayoutInflater.from(context))
 
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.dialog_team_mode, null)
-        binding = DialogTeamModeBinding.bind(view)
-
         val adapter = TeamModeIndexSelectAdapter()
         adapter.listeners.add(object : TeamModeIndexSelectAdapter.OnSelectedIndexChangedListener {
             override fun onSelectedIndexChanged(index: Int?) {

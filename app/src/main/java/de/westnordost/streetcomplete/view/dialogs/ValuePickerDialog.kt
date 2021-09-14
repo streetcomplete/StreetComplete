@@ -13,7 +13,8 @@ import androidx.core.view.children
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.spToPx
 
-/** A dialog in which you can select one value from a range of values  */
+/** A dialog in which you can select one value from a range of values. If a custom layout is supplied,
+ *  it must have a NumberPicker with the id "numberPicker". */
 class ValuePickerDialog<T>(
     context: Context,
     private val values: List<T>,
