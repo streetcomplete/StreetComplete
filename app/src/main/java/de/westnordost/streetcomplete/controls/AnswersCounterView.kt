@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.controls
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
@@ -16,7 +17,8 @@ class AnswersCounterView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : RelativeLayout(context, attrs, defStyleAttr) {
 
-    private val binding : ViewAnswersCounterBinding
+    private val binding = ViewAnswersCounterBinding.inflate(LayoutInflater.from(context), this)
+
     var uploadedCount: Int = 0
         set(value) {
             field = value
@@ -28,11 +30,6 @@ class AnswersCounterView @JvmOverloads constructor(
             field = value
             binding.progressView.isInvisible = !value
         }
-
-    init {
-        val view = inflate(context, R.layout.view_answers_counter, this)
-        binding = ViewAnswersCounterBinding.bind(view)
-    }
 
     fun setUploadedCount(uploadedCount: Int, animate: Boolean) {
         if (this.uploadedCount < uploadedCount && animate) {

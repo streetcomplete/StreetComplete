@@ -10,17 +10,13 @@ import android.hardware.SensorManager
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
-import android.view.GestureDetector
-import android.view.MotionEvent
-import android.view.Surface
-import android.view.View
+import android.view.*
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
 import androidx.core.content.getSystemService
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewBallPitBinding
 import de.westnordost.streetcomplete.ktx.awaitPreDraw
 import de.westnordost.streetcomplete.ktx.sumByFloat
@@ -41,7 +37,7 @@ class BallPitView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr),
     LifecycleObserver {
 
-    private val binding: ViewBallPitBinding
+    private val binding = ViewBallPitBinding.inflate(LayoutInflater.from(context), this)
     private val sensorManager: SensorManager
     private var accelerometer: Sensor? = null
 
@@ -76,12 +72,9 @@ class BallPitView @JvmOverloads constructor(
     }
 
     init {
-        val view = inflate(context, R.layout.view_ball_pit, this)
-        binding = ViewBallPitBinding.bind(view)
-
         physicsController.listener = object : PhysicsWorldController.Listener {
             override fun onWorldStep() {
-                binding.physicsView?.postInvalidate()
+                binding.physicsView.postInvalidate()
             }
         }
 
@@ -224,7 +217,7 @@ class BallPitView @JvmOverloads constructor(
     /* ---------------------------- Interaction with quest bubbles  ----------------------------- */
 
     private fun onFlingBubbleBody(body: Body, velocityX: Float, velocityY: Float) {
-        val pixelsPerMeter = binding.physicsView?.pixelsPerMeter ?: return
+        val pixelsPerMeter = binding.physicsView.pixelsPerMeter ?: return
         val vx = FLING_SPEED_FACTOR * velocityX / pixelsPerMeter
         val vy = FLING_SPEED_FACTOR * -velocityY / pixelsPerMeter
         body.linearVelocity = Vec2(vx, vy).addLocal(body.linearVelocity)

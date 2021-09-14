@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.databinding.QuestButtonpanelYesNoBinding
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -148,12 +149,9 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         binding.puzzleView.isEnabled = !resurvey
         if (resurvey) {
             setButtonsView(R.layout.quest_buttonpanel_yes_no)
-            requireView().findViewById<View>(R.id.noButton).setOnClickListener {
-                setAsResurvey(false)
-            }
-            requireView().findViewById<View>(R.id.yesButton).setOnClickListener {
-                onClickOk()
-            }
+            val buttonsBinding = QuestButtonpanelYesNoBinding.bind(requireView())
+            buttonsBinding.noButton.setOnClickListener { setAsResurvey(false) }
+            buttonsBinding.yesButton.setOnClickListener { onClickOk() }
         } else {
             removeButtonsView()
         }

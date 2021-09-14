@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import android.view.Menu.NONE
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.streetcomplete.databinding.QuestButtonpanelYesNoBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
@@ -150,10 +151,9 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         binding.addTimesButton.isGone = resurvey
         if (resurvey) {
             setButtonsView(R.layout.quest_buttonpanel_yes_no)
-            requireView().findViewById<View>(R.id.noButton).setOnClickListener {
-                setAsResurvey(false)
-            }
-            requireView().findViewById<View>(R.id.yesButton).setOnClickListener {
+            val buttonsBinding = QuestButtonpanelYesNoBinding.bind(requireView())
+            buttonsBinding.noButton.setOnClickListener { setAsResurvey(false) }
+            buttonsBinding.yesButton.setOnClickListener {
                 applyAnswer(RegularOpeningHours(
                     osmElement!!.tags["opening_hours"]!!.toOpeningHoursRules()!!
                 ))

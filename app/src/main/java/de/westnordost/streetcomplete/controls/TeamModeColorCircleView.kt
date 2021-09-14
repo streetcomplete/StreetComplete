@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.controls
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import androidx.annotation.ColorInt
 import androidx.constraintlayout.widget.ConstraintLayout
 import de.westnordost.streetcomplete.R
@@ -14,7 +15,7 @@ class TeamModeColorCircleView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-    private val binding : ViewTeamModeColorCircleBinding
+    private val binding = ViewTeamModeColorCircleBinding.inflate(LayoutInflater.from(context), this)
 
     fun setIndexInTeam(index: Int) {
         val color = context.resources.getColor(colors[index])
@@ -32,8 +33,6 @@ class TeamModeColorCircleView @JvmOverloads constructor(
     }
 
     init {
-        val view = inflate(context, R.layout.view_team_mode_color_circle, this)
-        binding = ViewTeamModeColorCircleBinding.bind(view)
         setIndexInTeam(0)
     }
 

@@ -14,7 +14,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
@@ -43,7 +42,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.*
-import de.westnordost.streetcomplete.databinding.FragmentCreditsBinding
+import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
 import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.ktx.*
@@ -575,8 +574,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private fun onLocationChanged(location: Location) {
         val isFollowingPosition = mapFragment?.isFollowingPosition ?: false
-        binding.gpsTrackingButton?.visibility = if (isFollowingPosition) View.INVISIBLE else View.VISIBLE
-        binding.gpsTrackingButton?.state = LocationState.UPDATING
+        binding.gpsTrackingButton.visibility = if (isFollowingPosition) View.INVISIBLE else View.VISIBLE
+        binding.gpsTrackingButton.state = LocationState.UPDATING
         updateLocationPointerPin()
     }
 
@@ -646,7 +645,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mapFragment.isFollowingPosition = follow
         binding.gpsTrackingButton.isActivated = follow
         val isPositionKnown = mapFragment.displayedLocation != null
-        binding.gpsTrackingButton?.visibility = if (isPositionKnown && follow) View.INVISIBLE else View.VISIBLE
+        binding.gpsTrackingButton.visibility = if (isPositionKnown && follow) View.INVISIBLE else View.VISIBLE
         if (!follow) setIsCompassMode(false)
     }
 
@@ -885,7 +884,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
 
         val root = activity.window.decorView as ViewGroup
-        val img = layoutInflater.inflate(R.layout.effect_quest_plop, root, false) as ImageView
+        val img = EffectQuestPlopBinding.inflate(layoutInflater, root, false).root
         img.x = startScreenPos.x
         img.y = startScreenPos.y
         img.setImageResource(iconResId)

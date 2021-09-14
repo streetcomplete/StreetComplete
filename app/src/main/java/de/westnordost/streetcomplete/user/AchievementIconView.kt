@@ -5,11 +5,11 @@ import android.graphics.Outline
 import android.graphics.Path
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewOutlineProvider
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isInvisible
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewAchievementIconBinding
 
 /** Shows an achievement icon with its frame and level indicator */
@@ -19,7 +19,7 @@ class AchievementIconView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr)  {
 
-    private val binding: ViewAchievementIconBinding
+    private val binding = ViewAchievementIconBinding.inflate(LayoutInflater.from(context), this)
 
     var icon: Drawable?
         set(value) { binding.iconView.setImageDrawable(value) }
@@ -33,9 +33,6 @@ class AchievementIconView @JvmOverloads constructor(
         get() = binding.levelText.text.toString().toIntOrNull() ?: 0
 
     init {
-        val view = inflate(context, R.layout.view_achievement_icon, this)
-        binding = ViewAchievementIconBinding.bind(view)
-
         outlineProvider = AchievementFrameOutlineProvider
     }
 }

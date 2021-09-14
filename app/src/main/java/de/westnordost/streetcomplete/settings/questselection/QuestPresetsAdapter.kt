@@ -65,8 +65,8 @@ class QuestPresetsAdapter @Inject constructor(
     override fun getItemCount(): Int = presets.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestPresetViewHolder {
-        return QuestPresetViewHolder(RowQuestPresetBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false))
+        val inflater = LayoutInflater.from(parent.context)
+        return QuestPresetViewHolder(RowQuestPresetBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: QuestPresetViewHolder, position: Int) {

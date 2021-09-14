@@ -29,7 +29,7 @@
         android:layout_centerVertical="true"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gridView"
+        android:id="@+id/photosList"
         android:layout_toEndOf="@id/takePhotoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

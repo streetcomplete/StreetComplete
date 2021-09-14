@@ -158,8 +158,8 @@ class QuestSelectionAdapter @Inject constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestVisibilityViewHolder {
-        return QuestVisibilityViewHolder(RowQuestSelectionBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false))
+        val inflater = LayoutInflater.from(parent.context)
+        return QuestVisibilityViewHolder(RowQuestSelectionBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: QuestVisibilityViewHolder, position: Int) {

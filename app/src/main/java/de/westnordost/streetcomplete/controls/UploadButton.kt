@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.controls
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
@@ -15,7 +16,8 @@ class UploadButton @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : RelativeLayout(context, attrs, defStyleAttr)  {
 
-    private val binding : ViewUploadButtonBinding
+    private val binding = ViewUploadButtonBinding.inflate(LayoutInflater.from(context), this)
+
     var uploadableCount: Int = 0
     set(value) {
         field = value
@@ -35,8 +37,6 @@ class UploadButton @JvmOverloads constructor(
     }
 
     init {
-        val view = inflate(context, R.layout.view_upload_button, this)
-        binding = ViewUploadButtonBinding.bind(view)
         clipToPadding = false
     }
 }

@@ -106,7 +106,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         )
 
         if (savedInstanceState == null) {
-            view.findViewById<View>(R.id.speechbubbleContentContainer).startAnimation(
+            binding.speechbubbleContentContainer.startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }

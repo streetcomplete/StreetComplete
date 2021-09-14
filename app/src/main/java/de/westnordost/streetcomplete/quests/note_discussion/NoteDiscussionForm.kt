@@ -19,10 +19,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.user.User
-import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
-import de.westnordost.streetcomplete.databinding.QuestButtonpanelNoteDiscussionBinding
-import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionContentBinding
-import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemBinding
+import de.westnordost.streetcomplete.databinding.*
 import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
@@ -81,7 +78,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     }
 
     private fun inflateNoteDiscussion(comments: List<NoteComment>) {
-        val discussionView = layoutInflater.inflate(R.layout.quest_note_discussion_items, questAnswerBinding.scrollViewChild, false) as RecyclerView
+        val discussionView = QuestNoteDiscussionItemsBinding.inflate(layoutInflater, questAnswerBinding.scrollViewChild, false).root
 
         discussionView.isNestedScrollingEnabled = false
         discussionView.layoutManager = LinearLayoutManager(

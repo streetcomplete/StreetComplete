@@ -31,7 +31,9 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr), StreetRotateable {
 
-    private val binding: SideSelectPuzzleBinding
+    private val binding: SideSelectPuzzleBinding =
+        SideSelectPuzzleBinding.inflate(LayoutInflater.from(context), this)
+
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
     set(value) {
         field = value
@@ -67,8 +69,6 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     private var onlyShowingOneSide: Boolean = false
 
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.side_select_puzzle, this, true)
-        binding = SideSelectPuzzleBinding.bind(view)
 
         doOnPreDraw {
             binding.leftSideImage.pivotX = binding.leftSideContainer.width.toFloat()

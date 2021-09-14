@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.controls
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellTeamModeColorCircleSelectBinding
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -35,7 +33,8 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = CellTeamModeColorCircleSelectBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = CellTeamModeColorCircleSelectBinding.inflate(inflater, parent, false)
         val holder = ViewHolder(binding)
         holder.onClickListener = ::toggle
         return holder

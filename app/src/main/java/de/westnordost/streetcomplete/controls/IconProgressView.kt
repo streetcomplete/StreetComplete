@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewIconProgressBinding
@@ -20,9 +21,10 @@ class IconProgressView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : RelativeLayout(context, attrs, defStyleAttr)  {
 
+    private val binding = ViewIconProgressBinding.inflate(LayoutInflater.from(context), this)
+
     private val mainHandler = Handler(Looper.getMainLooper())
     private var wobbleAnimator: Animator? = null
-    private val binding : ViewIconProgressBinding
 
     var icon: Drawable?
         set(value) { binding.iconView.setImageDrawable(value) }
@@ -63,10 +65,5 @@ class IconProgressView @JvmOverloads constructor(
 
         val hardcodedCheckmarkAnimationDuration = (animatorDurationScale * 650).toLong()
         mainHandler.postDelayed(onFinished, hardcodedCheckmarkAnimationDuration)
-    }
-
-    init {
-        val view = inflate(context, R.layout.view_icon_progress, this)
-        binding = ViewIconProgressBinding.bind(view)
     }
 }

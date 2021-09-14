@@ -112,7 +112,7 @@ open class MapFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mapView = view.findViewById(R.id.map)
+        mapView = binding.map
         mapView.onCreate(savedInstanceState)
 
         binding.openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }

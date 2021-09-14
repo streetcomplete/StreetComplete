@@ -95,7 +95,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     override var locked: Boolean = false
         set(value) {
             field = value
-            view?.findViewById<View>(R.id.glassPane)?.isGone = !locked
+            binding.glassPane.isGone = !locked
         }
 
     // overridable by child classes
@@ -149,9 +149,9 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_quest_answer, container, false)
-        content = view.findViewById(R.id.content)
-        buttonPanel = view.findViewById(R.id.buttonPanel)
-        otherAnswersButton = buttonPanel.findViewById(R.id.otherAnswersButton)
+        content = binding.content
+        buttonPanel = binding.buttonPanel
+        otherAnswersButton = binding.otherAnswersButton
 
         contentLayoutResId?.let { setContentView(it) }
         buttonsResId?.let { setButtonsView(it) }

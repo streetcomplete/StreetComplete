@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.controls
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.RelativeLayout
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewIconsDownloadProgressBinding
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.view.CircularMaskFrameLayout
@@ -19,14 +19,10 @@ class IconsDownloadProgressView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : CircularMaskFrameLayout(context, attrs, defStyleAttr)  {
 
+    private val binding = ViewIconsDownloadProgressBinding.inflate(LayoutInflater.from(context), this)
+
     private var currentView: IconProgressView? = null
     private val iconQueue: Queue<Drawable> = LinkedList()
-    private val binding : ViewIconsDownloadProgressBinding
-
-    init {
-        val view = inflate(context, R.layout.view_icons_download_progress, this)
-        binding = ViewIconsDownloadProgressBinding.bind(view)
-    }
 
     /** set the given icon and resets the queue */
     fun setIcon(icon: Drawable) = synchronized(this) {

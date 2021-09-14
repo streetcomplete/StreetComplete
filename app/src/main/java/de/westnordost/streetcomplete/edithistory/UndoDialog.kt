@@ -50,12 +50,12 @@ class UndoDialog(
     @Inject internal lateinit var featureDictionaryFutureTask: FutureTask<FeatureDictionary>
     @Inject internal lateinit var editHistoryController: EditHistoryController
 
+    private val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
+
     private val scope = CoroutineScope(Dispatchers.Main)
 
     init {
         Injector.applicationComponent.inject(this)
-
-        val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
 
         binding.icon.setImageResource(edit.icon)
         val overlayResId = edit.overlayIcon
@@ -75,7 +75,7 @@ class UndoDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         scope.launch {
-            findViewById<TextView>(R.id.titleText)!!.text = edit.getTitle()
+            binding.titleText.text = edit.getTitle()
         }
     }
 

@@ -11,25 +11,26 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.databinding.RowChangelogBinding
 import de.westnordost.streetcomplete.ktx.getYamlObject
+import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.coroutines.*
 
 /** Shows the full changelog */
 class ChangelogFragment : Fragment(R.layout.fragment_changelog) {
 
+    private val binding by viewBinding(FragmentChangelogBinding::bind)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val changelogList = view.findViewById<RecyclerView>(R.id.changelogList)
-        changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        binding.changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         lifecycleScope.launch {
             val changelog = readChangelog(resources)
-            changelogList.adapter = ChangelogAdapter(changelog)
+            binding.changelogList.adapter = ChangelogAdapter(changelog)
         }
     }
 

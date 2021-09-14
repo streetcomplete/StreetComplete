@@ -21,12 +21,12 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
     private val attachPhotoFragment: AttachPhotoFragment?
-        get() = childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as AttachPhotoFragment
+        get() = childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as AttachPhotoFragment?
 
     private val formLeaveNoteBinding by viewBinding(FormLeaveNoteBinding::bind)
-    private val questButtonpanelDoneCancelBinding by viewBinding(QuestButtonpanelDoneCancelBinding::bind)
+    private val buttonsBinding by viewBinding(QuestButtonpanelDoneCancelBinding::bind)
 
-    private val noteText get() = formLeaveNoteBinding.noteInput?.text?.toString().orEmpty().trim()
+    private val noteText get() = formLeaveNoteBinding.noteInput.text?.toString().orEmpty().trim()
 
     protected abstract val layoutResId: Int
 
@@ -58,8 +58,8 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
         formLeaveNoteBinding.noteInput.addTextChangedListener(TextChangedWatcher { updateDoneButtonEnablement() })
 
-        questButtonpanelDoneCancelBinding.cancelButton.setOnClickListener { activity?.onBackPressed() }
-        questButtonpanelDoneCancelBinding.doneButton.setOnClickListener { onClickOk() }
+        buttonsBinding.cancelButton.setOnClickListener { activity?.onBackPressed() }
+        buttonsBinding.doneButton.setOnClickListener { onClickOk() }
 
         updateDoneButtonEnablement()
     }
@@ -76,7 +76,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
         noteText.isNotEmpty() || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
 
     private fun updateDoneButtonEnablement() {
-        questButtonpanelDoneCancelBinding.doneButton.isEnabled = !noteText.isEmpty()
+        buttonsBinding.doneButton.isEnabled = !noteText.isEmpty()
     }
 
     protected abstract fun onComposedNote(text: String, imagePaths: List<String>)

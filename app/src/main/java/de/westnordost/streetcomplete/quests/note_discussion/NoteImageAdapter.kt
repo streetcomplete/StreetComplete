@@ -3,9 +3,7 @@ package de.westnordost.streetcomplete.quests.note_discussion
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.view.doOnLayout
 
 import java.io.File
@@ -23,8 +21,6 @@ class NoteImageAdapter(list: List<String>, private val context: Context) : ListA
     }
 
     private inner class NoteImageViewHolder(val binding: CellImageThumbnailBinding) : ViewHolder<String>(binding) {
-
-//        private val imageView: ImageView = itemView.findViewById(R.id.imageView)
 
         init {
             binding.imageView.setOnClickListener {
