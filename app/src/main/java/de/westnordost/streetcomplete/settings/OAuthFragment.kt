@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
-import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
 import kotlinx.coroutines.Dispatchers
@@ -33,10 +32,8 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 /** Fragment that manages the OAuth 1 authentication process in a webview*/
-class OAuthFragment : Fragment(R.layout.fragment_oauth),
-    BackPressedListener,
-    HasTitle
-{
+class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, HasTitle {
+
     @Inject internal lateinit var consumerProvider: Provider<OAuthConsumer>
     @Inject internal lateinit var provider: OAuthProvider
     @Inject @field:Named("OAuthCallbackScheme") internal lateinit var callbackScheme: String

@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.DisplaysTitle
 import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
@@ -23,7 +22,8 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
-import kotlinx.android.synthetic.main.fragment_quest_selection.*
+import de.westnordost.streetcomplete.databinding.FragmentQuestSelectionBinding
+import de.westnordost.streetcomplete.ktx.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -37,6 +37,8 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
     @Inject internal lateinit var questPresetsSource: QuestPresetsSource
     @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
     @Inject internal lateinit var questTypeOrderController: QuestTypeOrderController
+
+    private val binding by viewBinding(FragmentQuestSelectionBinding::bind)
 
     interface Listener {
         fun onClickedQuestPresets()
@@ -66,10 +68,9 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        val questSelectionList = view.findViewById<RecyclerView>(R.id.questSelectionList)
-        questSelectionList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-        questSelectionList.layoutManager = LinearLayoutManager(context)
-        questSelectionList.adapter = questSelectionAdapter
+        binding.questSelectionList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        binding.questSelectionList.layoutManager = LinearLayoutManager(context)
+        binding.questSelectionList.adapter = questSelectionAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -138,8 +139,8 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
     private fun filterQuestsByString(text: String) {
         questSelectionAdapter.filter = text
         val isEmpty = questSelectionAdapter.itemCount == 0
-        tableHeader.isInvisible = isEmpty
-        emptyText.isInvisible = !isEmpty
+        binding.tableHeader.isInvisible = isEmpty
+        binding.emptyText.isInvisible = !isEmpty
     }
 
     private fun updateTitle() {
