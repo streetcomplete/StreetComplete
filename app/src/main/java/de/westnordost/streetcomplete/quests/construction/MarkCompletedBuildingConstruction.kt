@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.construction
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
+import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import java.time.LocalDate
@@ -33,7 +33,7 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructi
                     changes.modify("building", value)
                     deleteTagsDescribingConstruction(changes)
                 } else {
-                    changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
+                    changes.updateCheckDate()
                 }
             }
         }
