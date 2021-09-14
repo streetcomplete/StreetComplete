@@ -84,8 +84,8 @@ fun StringMapChangesBuilder.deleteOtherCheckDates() {
 }
 
 /** Delete any check date for the entire item */
-fun StringMapChangesBuilder.deleteCheckDates(key: String) {
-    changes.deleteIfExists(SURVEY_MARK_KEY)
+fun StringMapChangesBuilder.deleteCheckDates() {
+    deleteIfExists(SURVEY_MARK_KEY)
     deleteOtherCheckDates()
 }
 
