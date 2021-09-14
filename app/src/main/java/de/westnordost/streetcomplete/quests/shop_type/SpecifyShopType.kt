@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
-import de.westnordost.streetcomplete.data.meta.deleteOtherCheckDates
+import de.westnordost.streetcomplete.data.meta.deleteCheckDates
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
@@ -42,7 +41,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, changes: StringMapChangesBuilder) {
-        changes.deleteOtherCheckDates()
+        changes.deleteCheckDates()
         when (answer) {
             is IsShopVacant -> {
                 changes.deleteIfExists("shop")
@@ -53,7 +52,6 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
                 if (!answer.tags.containsKey("shop")) {
                     changes.deleteIfExists("shop")
                 }
-                changes.deleteIfExists(SURVEY_MARK_KEY)
                 for ((key, value) in answer.tags) {
                     changes.addOrModify(key, value)
                 }
