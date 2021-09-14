@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Instellingen"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Kan de autorisatieserver niet bereiken"</string>
 
     <!-- Fuzzy -->
@@ -10,14 +8,8 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Autorisatie mislukt: Alle genoemde rechten moeten worden toegekend"</string>
-
-    <!-- Fuzzy -->
     <string name="title_activity_settings">"Instellingen"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Communicatie"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"Beeld"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
 
@@ -35,26 +27,14 @@
 
     <!-- Fuzzy -->
     <string name="pref_title_map_cache">"Maximaal cachegeheugen"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Volg mij"</string>
-
-    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap-auteurs"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"Andere antwoorden..."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Weet ik niet…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"Weet je het zeker?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"Ja, ik weet het zeker"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Zal ik nagaan"</string>
 
     <!-- Fuzzy -->
@@ -238,12 +218,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Wees beknopt. Gebruik zo mogelijk de woorden op het bordje, bv. \"op afspraak\". Als er geen bordje is, wil dat niet zeggen dat er geen vaste openingstijden zijn."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Hoeveel etages heeft dit gebouw?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Hoeveel etages heeft dit deel van het gebouw?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Welke basisvorm heeft het dak van dit gebouw?"</string>
@@ -971,9 +945,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
 
     <!-- Fuzzy -->
     <string name="action_reset">"Reset"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Duw lang op een vraag en verplaats hem om de prioriteit in te stellen bij tonen op de kaart."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Ongedaan maken"</string>
@@ -2251,9 +2222,17 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="resurvey_intervals_default">"Standaard"</string>
     <string name="resurvey_intervals_more_often">"Vraag vaker"</string>
     <string name="quest_accepts_cash_type_title">"Accepteert %1$s (%2$s) contant geld als betaling?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"Heeft deze halte %s een bank?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Heeft deze tramhalte een bank?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Heeft deze bushalte een bank?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"Heeft deze bushalte %s een bank?"</string>
     <string name="quest_summit_register_title">"Is er een topboek op %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Is deze defibrilator (AED) binnen een gebouw?"</string>
@@ -2322,7 +2301,6 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_kerb_height_flush">"Even hoog als de weg"</string>
     <string name="quest_kerb_height_lowered">"Iets hoger dan de weg"</string>
     <string name="quest_kerb_height_raised">"Hoge stoeprand"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Er is geen stoeprand aan deze kant van de oversteekplaats"</string>
     <string name="quest_kerb_height_lowered_ramp">"Stoeprandhelling"</string>
     <string name="quest_lanes_answer_lanes_description2">"Geef het totaal aantal gemarkeerde rijstroken (beide richtingen) die door autoverkeer gebruikt kunnen worden. Fiets- en parkeerstroken tellen dus niet mee. Als er busstroken zijn, laat dan een notitie achter."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Geef het aantal gemarkeerde rijstroken die door autoverkeer gebruikt kunnen worden. Fiets- en parkeerstroken tellen dus niet mee. Als er busstroken zijn, laat dan een notitie achter."</string>
@@ -2379,9 +2357,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="team_mode">"Team modus"</string>
     <string name="team_mode_exit">"Uit Team modus"</string>
     <string name="team_mode_description">"Als je hetzelfde gebied samen in een groep in kaart brengt, kun je de team modus activeren om vragen tussen alle teamleden te verdelen."</string>
-    <string name="team_mode_team_size_label">"Hoeveel mensen zijn er?"</string>
     <string name="team_mode_team_size_hint">"Team modus is geschikt voor groepen van 2 tot 12 mensen."</string>
-    <string name="team_mode_choose_color">"Iedereen in de groep kiest een unieke kleur."</string>
     <string name="team_mode_active">"Team modus is actief"</string>
     <string name="team_mode_deactivated">"Team modus is uitgeschakeld"</string>
     <string name="quest_pitchLit_title">"Is dit sportveld verlicht?"</string>
@@ -2432,12 +2408,13 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_barrier_type_stile_ladder">"Ladder (overstap)"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Fietsbarrière"</string>
     <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>
-    <string name="quest_barrier_type_stepover">"Trap (overstap)"</string>
     <string name="quest_barrier_type_swing_gate">"Horizontale balk"</string>
     <string name="quest_policeType_title">"Welk soort politiebureau is dit?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Omgebouwd tot een kissing gate"</string>
     <string name="quest_stile_type_title">"Wat voor soort passage is dit?"</string>
     <string name="quest_buildingType_semi_detached_description2">"aangrenzende eengezinswoning(en)"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Vraagselectie en -prioriteit"</string>
     <string name="pref_subtitle_quests">"%1$d van %2$d ingeschakeld"</string>
     <string name="quest_busStopLit_tram_name_title">"Is de tramhalte %s verlicht?"</string>
@@ -2447,19 +2424,55 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="no_location_permission_warning_title">"Locatietoestemming"</string>
     <string name="quest_surface_value_woodchips">"Houtsnippers"</string>
     <string name="no_camera_app">"Geen camera app beschikbaar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"Heeft de tramhalte  %s een afvalbak?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"Heeft deze tramhalte een afvalbak?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"Heeft deze bushalte een afvalbak?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"Heeft de bushalte  %s een afvalbak?"</string>
     <string name="quest_bollard_type_title">"Wat voor soort verkeerspaal is dit?"</string>
     <string name="quest_bollard_type_rising">"Inzinkbaar"</string>
-    <string name="quest_bollard_type_removable_with_key">"Verwijderbaar met sleutel"</string>
-    <string name="quest_bollard_type_removable_without_key">"Verwijderbaar zonder sleutel"</string>
-    <string name="quest_bollard_type_foldable">"Wegklapbaar"</string>
     <string name="quest_bollard_type_flexible">"Flexibel"</string>
     <string name="quest_bollard_type_fixed">"Vast (niet verwijderbaar)"</string>
     <string name="quest_camera_type_title">"Welk type bewakingscamera is dit?"</string>
-    <string name="quest_camera_type_dome">"Dome"</string>
+    <string name="quest_camera_type_dome">"Koepel"</string>
     <string name="quest_camera_type_fixed">"Vast"</string>
     <string name="quest_camera_type_panning">"Beweegbaar"</string>
+    <string name="about_title_faq">"Veelgestelde vragen"</string>
+    <string name="quest_buildingLevels_title2">"Hoeveel verdiepingen boven de kelder heeft dit gebouw?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Hoeveel verdiepingen boven de kelder heeft dit gebouwdeel?"</string>
+    <string name="quest_crossing_title">"Zijn er stoepranden waar dit pad de weg kruist? Welke soort?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Voorinstelling: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Dit type vraag is standaard uitgeschakeld, omdat de dakvormen vaak niet gemakkelijk te zien zijn vanaf de straat. Deze vraag kost ook veel tijd; meestal is het makkelijker en efficiënter om dit thuis met hulp van luchtfoto's aan de kaart toe te voegen"</string>
+    <string name="quest_religion_animist">"Animisme"</string>
+    <string name="quest_construction_steps_title">"Is deze trap voltooid?"</string>
+    <string name="questList_disabled_at_day">"Wordt alleen 's nachts getoond"</string>
+    <string name="pref_quests_deselect_all">"Alle vragen deselecteren?"</string>
+    <string name="quest_buildingType_boathouse">"Boothuis"</string>
+    <string name="quest_buildingType_allotment_house">"Volkstuingebouw"</string>
+    <string name="quest_buildingType_grandstand">"Tribune"</string>
+    <string name="action_search">"Zoek"</string>
+    <string name="action_manage_presets">"Voorinstellingen beheren"</string>
+    <string name="team_mode_team_size_label2">"Hoeveel mensen doen er mee? Voer hetzelfde getal in op ieders telefoon"</string>
+    <string name="team_mode_choose_color2">"Nu moet ieder persoon een verschillende kleur kiezen. Kies de jouwe:"</string>
+    <string name="link_organic_maps_description">"Kaart-app voor reizigers, wandelaars en fietsers die off-line werkt"</string>
+    <string name="quest_kerb_height_no">"Helemaal geen rand"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Houten overstap"</string>
+    <string name="quest_barrier_type_stepover_stone">"Stenen overstap"</string>
+    <string name="quest_bollard_type_removable">"Verwijderbaar (met of zonder sleutel)"</string>
+    <string name="quest_bollard_type_foldable2">"Wegklapbaar (met of zonder sleutel)"</string>
+    <string name="no_search_results">"Niets gevonden"</string>
+    <string name="quest_selection_hint_title">"Te veel te doen?"</string>
+    <string name="quest_selection_hint_message">"Bijdragen moet leuk blijven! Als het aantal vragen je te veel wordt, kun je in de instellingen kiezen welke vragen te zien zijn en in welke volgorde."</string>
+    <string name="quest_presets_preset_add">"Voeg voorinstelling toe"</string>
+    <string name="quest_presets_preset_name">"Voorinstelling naam"</string>
+    <string name="quest_presets_default_name">"Standaardnaam"</string>
+    <string name="quest_presets_selected">"Gekozen"</string>
+    <string name="quest_presets_delete_message">"Voorinstelling \"%s\" verwijderen? De vraagkeuze en -volgorde zal voorgoed verloren gaan."</string>
 </resources>

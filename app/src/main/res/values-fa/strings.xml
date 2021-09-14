@@ -191,12 +191,6 @@
     <string name="quest_openingHours_comment_description">"به صورت مختصر باشد، بهتر است از کلمات روی علائم استفاده کنید. مانند \"با تعیین وقت قبلی\". فقدان علائم لزوماً به این معنی نیست که ساعات کاری نامنظم می باشد."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"این ساختمان چند طبقه دارد؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"این قسمت از ساختمان چند طبقه دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"شکل کلی سقف این ساختمان چگونه است؟"</string>
 
     <!-- Fuzzy -->
@@ -923,9 +917,6 @@
     <string name="action_reset">"بازنشانی"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"لمس ممتد و حرکت برای تغییر منطقه جُستارها و نیز بارگیری و نمایش آنها روی نقشه."</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_positive">"برگشت"</string>
 
     <!-- Fuzzy -->
@@ -1028,7 +1019,7 @@
     <string name="quest_bridge_structure_title">"ساختار این پل چگونه است؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_internet_access_name_title">"چه نوعی از اتصال به شبکه در %s ارائه می دشود؟"</string>
+    <string name="quest_internet_access_name_title">"روش اتصال به شبکه در %s چگونه است؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"بی‌سیم(وایفای)"</string>
@@ -2192,9 +2183,17 @@
     <string name="resurvey_intervals_default">"پیشفرض"</string>
     <string name="resurvey_intervals_more_often">"بیشتر اوقات بپرسید"</string>
     <string name="quest_accepts_cash_type_title">"آیا %1$s (%2$s) پرداخت نقدی را قبول می کند؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"آیا توقفگاه خودرو %s نیمکت دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"آیا این توقفگاه خودرو نیمکت دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"آیا این ایستگاه اتوبوس نیمکت دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"آیا ایستگاه اتوبوس %s نیمکت دارد؟"</string>
     <string name="quest_summit_register_title">"آیا قله‌ای در %s ثبت شده است؟"</string>
     <string name="quest_is_defibrillator_inside_title">"آیا داخل ساختمان دستگاه شوک الکتریکی موجود است؟"</string>
@@ -2262,7 +2261,6 @@
     <string name="quest_kerb_height_lowered">"کمی بالاتر از سطح جاده
 "</string>
     <string name="quest_kerb_height_raised">"جدول برجسته"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"در این سمت مسیرهیچ جدولی وجود ندارد"</string>
     <string name="quest_kerb_height_lowered_ramp">"جدول شیب‌دار
 "</string>
     <string name="quest_lanes_answer_lanes_description2">"تعداد کل خطوط تردد (هر دو جهت) قابل استفاده خودروها را مشخص کنید. خطوط دوچرخه و پارکینگ اختصاصی حساب نمی شوند.
@@ -2322,9 +2320,7 @@
     <string name="team_mode">"حالت گروهی"</string>
     <string name="team_mode_exit">"خروج از حالت گروهی"</string>
     <string name="team_mode_description">"هنگام نقشه برداری از یک منطقه با هم در یک گروه می توانید برای تقسیم جُستارها بین همه اعضای گروه وارد حالت گروهی شوید."</string>
-    <string name="team_mode_team_size_label">"چند نفر آنجا هستند؟"</string>
     <string name="team_mode_team_size_hint">"حالت گروهی برای گروه های ۲ تا ۱۲ نفره استفاده می‌شود."</string>
-    <string name="team_mode_choose_color">"اکنون همه افراد گروه شما رنگ منحصر به فردی را انتخاب می‌کنند:"</string>
     <string name="team_mode_active">"حالت گروهی فعال است"</string>
     <string name="team_mode_deactivated">"حالت گروهی عیرفعال است"</string>
     <string name="quest_pitchLit_title">"آیا این زمین ورزشی روشنایی دارد؟"</string>
@@ -2375,12 +2371,13 @@
     <string name="quest_barrier_type_stile_ladder">"نرده پلکان"</string>
     <string name="quest_barrier_type_bicycle_barrier">"مانع دوچرخه"</string>
     <string name="quest_barrier_type_kissing_gate">"دروازه لمسی"</string>
-    <string name="quest_barrier_type_stepover">"نرده قدم به قدم"</string>
     <string name="quest_barrier_type_swing_gate">"نوار افقی"</string>
     <string name="quest_policeType_title">"این چه نوع پاسگاهی است؟"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"تبدیل به دروازه لمسی"</string>
     <string name="quest_stile_type_title">"این چه نوع نرده ای است؟"</string>
     <string name="quest_buildingType_semi_detached_description2">"خانه (های) تک واحده"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"انتخاب و اولویت جُستار"</string>
     <string name="pref_subtitle_quests">"%1$d از %2$d فعال شده
 
@@ -2392,19 +2389,55 @@
     <string name="no_location_permission_warning_title">"مجوز مکان"</string>
     <string name="quest_surface_value_woodchips">"تراشه های چوبی"</string>
     <string name="no_camera_app">"برنامه دوربین موجود نیست"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"آیا ایستگاه واگن برقی %s سطل زباله دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"آیا این ایستگاه واگن برقی سطل زباله دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"آیا این ایستگاه اتوبوس سطل زباله دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"آیا این ایستگاه اتوبوس %s سطل زباله دارد؟"</string>
     <string name="quest_bollard_type_title">"این چه نوع مهاربندی است؟"</string>
     <string name="quest_bollard_type_rising">"بالارونده"</string>
-    <string name="quest_bollard_type_removable_with_key">"قابل جدا شدن با کلید"</string>
-    <string name="quest_bollard_type_removable_without_key">"قابل جدا شدن بدون کلید"</string>
-    <string name="quest_bollard_type_foldable">"تاشو"</string>
     <string name="quest_bollard_type_flexible">"قابل انعطاف"</string>
     <string name="quest_bollard_type_fixed">"ثابت (قابل جابجایی نیست)"</string>
     <string name="quest_camera_type_title">"این چه نوع دوربین نظارتی است؟"</string>
     <string name="quest_camera_type_dome">"خصوصی"</string>
     <string name="quest_camera_type_fixed">"ثابت"</string>
     <string name="quest_camera_type_panning">"کاذب"</string>
+    <string name="about_title_faq">"پرسش"</string>
+    <string name="quest_buildingLevels_title2">"این ساختمان چند طبقه از روی سطح زمین دارد؟"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"این بخش از ساختمان چند طبقه روی زمین دارد؟"</string>
+    <string name="quest_crossing_title">"آیا جداولی وجود دارد که این مسیر در اینجا به این جاده می رسد؟ از چه نوعی؟"</string>
+    <string name="pref_subtitle_quests_preset_name">"پیشفرض: %s"</string>
+    <string name="default_disabled_msg_roofShape">"این نوع جُستار به طور پیش فرض غیرفعال است زیرا شکل سقف،معمولاً از خیابان به راحتی قابل مشاهده نیست. این نوع جُستار نیز بسیار وقت گیر است. در بیشتر موارد ترسیم آن از تصاویر هوایی در خانه آسانتر و کارآمدتر است."</string>
+    <string name="quest_religion_animist">"متحرک"</string>
+    <string name="quest_construction_steps_title">"آیا این مراحل تکمیل شده است؟"</string>
+    <string name="questList_disabled_at_day">"فقط در شب نشان داده می شود"</string>
+    <string name="pref_quests_deselect_all">"عدم انتخاب تمام جُستارها؟"</string>
+    <string name="quest_buildingType_boathouse">"قایق سواری"</string>
+    <string name="quest_buildingType_allotment_house">"ساختمان پُشتی باغ"</string>
+    <string name="quest_buildingType_grandstand">"میز غرفه"</string>
+    <string name="action_search">"جُستجو"</string>
+    <string name="action_manage_presets">"مدیریت پیشفرض‌ها"</string>
+    <string name="team_mode_team_size_label2">"چند نفر در حال نقشه‌کشی هستند؟ شماره یکسان را برای همه تلفن‌ها وارد کنید."</string>
+    <string name="team_mode_choose_color2">"در گام بعد، هر فرد باید رنگ متفاوتی را انتخاب کند. مورد خود را انتخاب کنید:"</string>
+    <string name="link_organic_maps_description">"برنامه نقشه برای مسافران، کوهنوردان و دوچرخه سواران که بصورت آفلاین کار می‌کند"</string>
+    <string name="quest_kerb_height_no">"اصلاً بدون محدودیت"</string>
+    <string name="quest_barrier_type_stepover_wooden">"چوبی پله ای روی پایه"</string>
+    <string name="quest_barrier_type_stepover_stone">"سنگ منقطع"</string>
+    <string name="quest_bollard_type_removable">"قابل جدا شدن (با یا بدون کلید)"</string>
+    <string name="quest_bollard_type_foldable2">"تاشو (با یا بدون کلید)"</string>
+    <string name="no_search_results">"موردی پیدا نشد"</string>
+    <string name="quest_selection_hint_title">"کار زیاد است؟"</string>
+    <string name="quest_selection_hint_message">"مشارکت در درجه اول باید سرگرم کننده باشد! اگر از تعداد جُستارها غافلگیر شده اید، همیشه می توانید در تنظیمات مشخص کنید که کدام جُستارها  و به چه ترتیب برای شما نمایش داده شوند."</string>
+    <string name="quest_presets_preset_add">"افزودن پیشفرض"</string>
+    <string name="quest_presets_preset_name">"نام پیشفرض"</string>
+    <string name="quest_presets_default_name">"پیشفرض"</string>
+    <string name="quest_presets_selected">"انتخابی"</string>
+    <string name="quest_presets_delete_message">"\"%s\" پیشفرض حذف شود؟ انتخاب جُستار و سفارش برای آن به طور برگشت ناپذیری از بین می رود."</string>
 </resources>

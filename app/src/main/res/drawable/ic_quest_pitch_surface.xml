@@ -15,25 +15,21 @@
   <path
       android:pathData="m64,76.25a14.222,14.222 0,0 1,-14.222 -14.222,14.222 14.222,0 0,1 14.222,-14.222 14.222,14.222 0,0 1,14.222 14.222,14.222 14.222,0 0,1 -14.222,14.222"
       android:strokeWidth="3.5556"
-      android:fillColor="#00000000"
       android:strokeColor="#fff"/>
   <path
       android:pathData="m64,29.95l-0,64"
       android:strokeWidth="4"
-      android:fillColor="#00000000"
       android:strokeColor="#fff"/>
   <path
       android:pathData="m110,45.95l-0,32l-16,0l-0,-32z"
       android:strokeWidth="4"
-      android:fillColor="#00000000"
       android:strokeColor="#fff"/>
   <path
       android:pathData="m30,45.95l-0,32l-12,0l-0,-32z"
       android:strokeWidth="4"
-      android:fillColor="#00000000"
       android:strokeColor="#fff"/>
   <path
-      android:fillColor="#FF000000"
+      android:fillColor="#000"
       android:pathData="m16,95.95h96v4h-96z"
       android:fillAlpha="0.2"/>
 </vector>

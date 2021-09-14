@@ -7,4 +7,11 @@
         android:valueTo="0"
         android:duration="250"
         android:interpolator="@android:anim/decelerate_interpolator"/>
+    <objectAnimator
+        android:propertyName="alpha"
+        android:valueType="floatType"
+        android:valueFrom="0.0"
+        android:valueTo="1.0"
+        android:duration="200"
+        android:interpolator="@android:anim/decelerate_interpolator" />
 </set>

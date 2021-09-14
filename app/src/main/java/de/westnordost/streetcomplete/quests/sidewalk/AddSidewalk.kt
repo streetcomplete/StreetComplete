@@ -110,7 +110,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
                 answer.left && answer.right -> "both"
                 answer.left -> "left"
                 answer.right -> "right"
-                else -> "none"
+                else -> "no"
             }
         }
 }

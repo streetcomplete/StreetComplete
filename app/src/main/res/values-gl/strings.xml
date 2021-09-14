@@ -86,8 +86,6 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Sen horario da apertura fixo…"</string>
     <string name="quest_openingHours_comment_title">"Describe os horarios da apertura"</string>
     <string name="quest_openingHours_comment_description">"Sé sucinto; o mellor é que transcribas as palabras do letreiro, por exemplo: «con cita previa». A ausencia do letreiro non significa necesariamente que non haxa un horario da apertura fixo."</string>
-    <string name="quest_buildingLevels_title">"Cantos andares ten este edificio?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"Cantos andares ten esta parte do edificio?"</string>
     <string name="quest_roofShape_title">"Que forma básica ten o tellado deste edificio?"</string>
     <string name="quest_roofShape_select_one">"Escolle unha forma:"</string>
     <string name="quest_roofShape_show_more">"Amosar máis…"</string>
@@ -161,6 +159,8 @@ A información engadida inclúese de xeito directo no OpenStreetMap no teu nome 
     <string name="upload_server_error">"Produciuse un erro da rede ó subi-las respostas, téntao máis tarde."</string>
     <string name="quest_generic_hasFeature_yes">"Si"</string>
     <string name="quest_generic_hasFeature_no">"Non"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"Esta paraxe do bus ten unha marquesiña?"</string>
     <string name="quest_bikeParkingCapacity_title">"Cantas bicicletas se poden aparcar aquí?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Este número de porta ten un formato un pouco estraño."</string>
@@ -197,6 +197,8 @@ A información engadida inclúese de xeito directo no OpenStreetMap no teu nome 
     <string name="quest_manySports_confirmation_specific">"Específico para eses deportes"</string>
     <string name="quest_manySports_confirmation_generic">"De propósito xeral"</string>
     <string name="quest_sport_manySports_confirmation_title">"Escolliches moitos deportes"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"A paraxe do bus %s ten marquesiña?"</string>
     <string name="quest_toiletsFee_title">"Hai que pagar para usar este aseo?"</string>
     <string name="quest_tactilePaving_title_bus">"Esta paraxe do bus ten pavimento táctil?"</string>
@@ -366,7 +368,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_enabled">"Activada"</string>
     <string name="quest_type">"Tipo da tarefa"</string>
     <string name="action_reset">"Restabelecer"</string>
-    <string name="reorder_quest_priority_hint">"Mantén premido para arrastrar unha tarefa e reordenala na listaxe, priorizando a súa visualización no mapa."</string>
     <string name="undo_confirm_positive">"Desfacer"</string>
     <string name="undo_confirm_negative">"Desbotar"</string>
     <string name="quest_dietType_vegetarian_name_title">"«%s» ten pratos vexetarianos no menú?"</string>
@@ -406,7 +407,11 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_internet_access_wired">"Cableada (LAN)"</string>
     <string name="quest_internet_access_terminal">"Computador con acceso á Internet"</string>
     <string name="quest_internet_access_no">"Sen conexión á Internet"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"Ten marquesiña a paraxe do tranvía %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_title">"Esta paraxe do tranvía ten marquesiña?"</string>
     <string name="quest_bench_backrest_title">"Ten respaldo este banco?"</string>
     <string name="quest_bench_answer_picnic_table">"É unha mesa de picnic"</string>
@@ -569,6 +574,8 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_noteDiscussion_hide2">"Agochada por %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;As imaxes que achegues nunha nota sóbense ó meu servidor e elimínanse uns días despois de que a nota se resolva. Os metadatos da imaxe elimínanse antes da subida.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deseleccionar todo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"incluíndo edificios para restaurantes, cafetarías..."</string>
     <string name="quest_openingHours_timeSelect_next">"Seguinte"</string>
     <string name="quest_tracktype_title">"Cal é a solidez da superficie deste camiño?"</string>
@@ -736,6 +743,8 @@ Finalmente, lembra estar seguro: atento á túa contorna e non entres a unha pro
     <string name="link_umap_description">"Crea mapas con datos personalizados axiña e engádeos ó teu sitio web"</string>
     <string name="link_opnvkarte_description">"Un mapa de rutas e paraxes de transporte público"</string>
     <string name="link_pic4review_description">"Contribúe ó OSM sinxelamente ollando imaxes da túa cidade"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"A wiki é o teu punto de partida para todo o relacionado co OpenStreetMap"</string>
     <string name="link_learnosm_description">"Novo no OpenStreetMap? Este é un guieiro para principiantes"</string>
     <string name="link_neis_one_description">"Unha grande colección de estatísticas para os contribuíntes do OpenStreetMap, como e onde contribuíches, quen máis está ó teu redor e táboas de clasificación"</string>
@@ -850,9 +859,17 @@ logros"</string>
     <string name="resurvey_intervals_default">"Predeterminado"</string>
     <string name="resurvey_intervals_more_often">"Preguntar máis veces"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) acepta pagamentos en efectivo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"A paraxe do tranvía %s ten un asento?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Esta paraxe do tranvía ten asento?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Esta paraxe do bus ten asento?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"A paraxe do bus %s ten asento?"</string>
     <string name="quest_summit_register_title">"Hai un rexisto de conferencias en %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro dun edificio?"</string>
@@ -917,7 +934,6 @@ logros"</string>
     <string name="quest_kerb_height_flush">"Ó mesmo nivel que a estrada"</string>
     <string name="quest_kerb_height_lowered">"Un pouco máis alto que a estrada"</string>
     <string name="quest_kerb_height_raised">"Bordo alto"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Non hai bordo neste lado do paso"</string>
     <string name="quest_kerb_height_lowered_ramp">"Bordo rebaixado (rampla)"</string>
     <string name="quest_lanes_answer_lanes_description2">"Especifica o número total de carrís marcados (en ambas direccións) utilizables para a circulación de coches. Isto quere dicir que os carrís para bicicletas e os de aparcamento non contan.
 Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
@@ -976,9 +992,7 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="team_mode">"Modo Equipo"</string>
     <string name="team_mode_exit">"Saír do Modo Equipo"</string>
     <string name="team_mode_description">"Se estades un grupo a mapear un área, podes entrar no modo equipo para repartir o traballo entre todos os membros do equipo."</string>
-    <string name="team_mode_team_size_label">"Cantas persoas sodes no grupo?"</string>
     <string name="team_mode_team_size_hint">"O modo equipo é para grupos de 2 a 12 persoas."</string>
-    <string name="team_mode_choose_color">"Cada persoa do teu grupo escolle unha cor única:"</string>
     <string name="team_mode_active">"O modo equipo está activado"</string>
     <string name="team_mode_deactivated">"Modo equipo desactivado"</string>
     <string name="quest_pitchLit_title">"Este campo deportivo está alumeado?"</string>
@@ -1029,12 +1043,13 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_barrier_type_stile_ladder">"Paso en escada"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Barreira para bicicletas"</string>
     <string name="quest_barrier_type_kissing_gate">"Porta de xiro"</string>
-    <string name="quest_barrier_type_stepover">"Paso a paso"</string>
     <string name="quest_barrier_type_swing_gate">"Barra horizontal"</string>
     <string name="quest_policeType_title">"Que tipo de comisaría é esta?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Convertido nunha porta de xiro"</string>
     <string name="quest_stile_type_title">"Que tipo de paso é?"</string>
     <string name="quest_buildingType_semi_detached_description2">"vivendas unifamiliares en ringleira"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Selección e prioridade de tarefas"</string>
     <string name="pref_subtitle_quests">"%1$d de %2$d activadas"</string>
     <string name="quest_busStopLit_tram_name_title">"Está alumeada esta parada %s?"</string>
@@ -1044,19 +1059,51 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="no_location_permission_warning_title">"Permiso de localización"</string>
     <string name="quest_surface_value_woodchips">"Labras de madeira"</string>
     <string name="no_camera_app">"Ningunha aplicación de cámara dispoñible"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"Ten a parada de tranvía %s unha papeleira?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"Ten esta parada de tranvía unha papeleira?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"Ten esta parada de autobús unha papeleira?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"Ten a parada de autobús %s unha papeleira?"</string>
     <string name="quest_bollard_type_title">"Que tipo de bolardo é este?"</string>
     <string name="quest_bollard_type_rising">"Retráctil"</string>
-    <string name="quest_bollard_type_removable_with_key">"Extraíble mediante chave"</string>
-    <string name="quest_bollard_type_removable_without_key">"Extraíble sen chave"</string>
-    <string name="quest_bollard_type_foldable">"Abatible"</string>
     <string name="quest_bollard_type_flexible">"Flexible"</string>
     <string name="quest_bollard_type_fixed">"Fixo (non extraíble)"</string>
     <string name="quest_camera_type_title">"Que tipo de cámara de seguridade é esta?"</string>
     <string name="quest_camera_type_dome">"Domo"</string>
     <string name="quest_camera_type_fixed">"Fixa"</string>
     <string name="quest_camera_type_panning">"Móbil"</string>
+    <string name="about_title_faq">"PMF"</string>
+    <string name="quest_buildingLevels_title2">"Cantos pisos por enriba do soto ten este edificio?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Cantos pisos por enriba do soto ten esta parte do edificio?"</string>
+    <string name="quest_crossing_title">"Existe bordo aquí onde este camiño se atopa coa estrada? de que tipo?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Por defecto: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Este tipo de pregunta está desactivada por defecto porque as formas dos tellados normalmente non se distinguen desde a rúa. Esta pregunta tamén consume moito tempo, é máis doado respondela desde a casa vendo imaxe aéreas."</string>
+    <string name="quest_religion_animist">"Animista"</string>
+    <string name="quest_construction_steps_title">"Completaches estos pasos?"</string>
+    <string name="questList_disabled_at_day">"Só visible pola noite"</string>
+    <string name="pref_quests_deselect_all">"Desmarcar tódalas peticións?"</string>
+    <string name="quest_buildingType_boathouse">"Casa flotante"</string>
+    <string name="quest_buildingType_grandstand">"Bancada"</string>
+    <string name="action_search">"Buscar"</string>
+    <string name="action_manage_presets">"Xestionar prestablecido"</string>
+    <string name="team_mode_team_size_label2">"Cantas persoas están mapeando? Escribide o mesmo número en tódolos móbiles."</string>
+    <string name="team_mode_choose_color2">"Seguinte, cada persoa debe elexir unha cor diferente. Elixe a túa:"</string>
+    <string name="link_organic_maps_description">"App de mapas para viaxeiras, camiñantes e ciclistas que non precisa conexión"</string>
+    <string name="quest_kerb_height_no">"Ningún tipo de bordo"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Elevada e de madeira"</string>
+    <string name="quest_barrier_type_stepover_stone">"Elevada e de pedra"</string>
+    <string name="quest_bollard_type_removable">"Elimnable (con ou sen chave)"</string>
+    <string name="quest_bollard_type_foldable2">"Pregable (con ou sen chave)"</string>
+    <string name="no_search_results">"Non atopa nada"</string>
+    <string name="quest_selection_hint_title">"Demasiadas tarefas?"</string>
+    <string name="quest_selection_hint_message">"A colaboración debería ser divertida! Se sintes que recibes demasiadas preguntas sempre podes configurar o tipo de cuestións que che plantexamos e a súa orde."</string>
+    <string name="quest_presets_default_name">"Por defecto"</string>
+    <string name="quest_presets_selected">"Seleccionado"</string>
 </resources>

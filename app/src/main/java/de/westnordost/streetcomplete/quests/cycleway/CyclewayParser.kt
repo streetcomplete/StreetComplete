@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
+import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
 
 data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
 
 /** Returns the Cycleway values for the left and right side using the given tags */
 fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): LeftAndRightCycleway? {
+    if (!tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)) return null
 
     val isForwardOneway = tags["oneway"] == "yes"
     val isReversedOneway = tags["oneway"] == "-1"
@@ -117,6 +119,7 @@ private fun createCyclewayForSide(tags: Map<String, String>, side: String?): Cyc
         "separate" -> SEPARATE
         "no", "none", "opposite" -> NONE
         "share_busway", "opposite_share_busway" -> BUSWAY
+        "yes", "right", "left", "both", "shared" -> INVALID
         null -> null
         else -> UNKNOWN
     }

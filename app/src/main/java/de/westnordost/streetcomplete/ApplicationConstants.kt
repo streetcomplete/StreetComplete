@@ -25,12 +25,16 @@ object ApplicationConstants {
 
     const val NOTE_MIN_ZOOM = 15
 
+    /** when new quests that are appearing due to download of an area, show the hint that he can
+     *  disable quests in the settings if more than X quests did appear */
+    const val QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT = 600
+
     /** the max age of the undo history - one cannot undo changes older than X  */
     const val MAX_UNDO_HISTORY_AGE = 12L * 60 * 60 * 1000 // 12 hours in ms
 
     /** The creation of some quests is dependent on surrounding geometry. This constant describes
      *  the maximum distance surrounding elements may affect whether a quest is created or not */
-    //  f.e. AddRecyclingContainerMaterials, AddCycleway
+    //  e.g. AddRecyclingContainerMaterials, AddCycleway
     const val QUEST_FILTER_PADDING = 20.0 //m
 
     const val AVATARS_CACHE_DIRECTORY = "osm_user_avatars"
@@ -41,7 +45,9 @@ object ApplicationConstants {
     const val ATTACH_PHOTO_MAXWIDTH = 1280 // WXGA
     const val ATTACH_PHOTO_MAXHEIGHT = 1280 // WXGA
 
-    const val NOTIFICATIONS_CHANNEL_DOWNLOAD = "downloading"
+    // name is "downloading" for historic reasons, not sure if it has any side-effects if it is changed now
+    const val NOTIFICATIONS_CHANNEL_SYNC = "downloading"
+    const val NOTIFICATIONS_ID_SYNC = 1
 
     val IGNORED_RELATION_TYPES = setOf(
         // could be useful, but sometimes/often very very large

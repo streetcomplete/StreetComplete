@@ -51,7 +51,7 @@
             tools:text="@string/quest_lanes_title" />
 
         <TextView
-            android:id="@+id/countryDisabledText"
+            android:id="@+id/disabledText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"

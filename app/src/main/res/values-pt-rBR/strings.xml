@@ -220,12 +220,6 @@
     <string name="quest_openingHours_comment_description">"Seja conciso, de preferência use a frase da placa, ex. “por consulta”. A ausência de uma placa não significa necessariamente que não há horários de abertura regulares."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Quantos andares este edifício tem?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Quantos andares esta parte do edifício tem?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Que forma básica tem o telhado deste edifício?"</string>
 
     <!-- Fuzzy -->
@@ -951,9 +945,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
 
     <!-- Fuzzy -->
     <string name="action_reset">"Limpar"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Pressione e mova a missão para reorganizar a prioridade de apresentação no mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfazer"</string>
@@ -1899,6 +1890,8 @@ Dividir agora?"</string>
     <string name="link_umap_description">"Crie mapas com dados personalizados rapidamente e incorpore-os ao seu site"</string>
     <string name="link_opnvkarte_description">"Um mapa de rotas e paradas de transporte público"</string>
     <string name="link_pic4review_description">"Contribua para o OSM simplesmente olhando fotos da sua cidade"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"A wiki é o seu ponto de partida para tudo relacionado ao OpenStreetMap"</string>
     <string name="link_learnosm_description">"Novo no OpenStreetMap?  Este é um guia para iniciantes"</string>
     <string name="link_neis_one_description">"Uma enorme coleção de estatísticas para os colaboradores do OpenStreetMap, como onde e como você contribuiu, quem mais está ao seu redor e tabelas de classificação"</string>
@@ -2017,9 +2010,17 @@ conquista"</string>
     <string name="resurvey_intervals_default">"Padrão"</string>
     <string name="resurvey_intervals_more_often">"Pergunte com mais frequência"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) aceita pagamento em dinheiro?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"A parada de bonde %s tem banco?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Esta parada de bonde tem banco?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Este ponto de ônibus tem um banco?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"A parada de ônibus %s tem um banco?"</string>
     <string name="quest_summit_register_title">"Existe um registro de conferência em %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro de um edifício?"</string>
@@ -2086,7 +2087,6 @@ conquista"</string>
     <string name="quest_kerb_height_flush">"Mesmo nível da superfície da estrada"</string>
     <string name="quest_kerb_height_lowered">"Um pouco mais alto que a superfície da estrada"</string>
     <string name="quest_kerb_height_raised">"Meio-fio alto"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Não há meio-fio deste lado do cruzamento"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampa de meio-fio"</string>
 
     <!-- Fuzzy -->
@@ -2149,9 +2149,7 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="team_mode">"Modo de equipe"</string>
     <string name="team_mode_exit">"Sair do modo de equipe"</string>
     <string name="team_mode_description">"Ao mapear a mesma área juntos em um grupo, você pode entrar no modo de equipe para dividir as missões entre todos os membros da equipe."</string>
-    <string name="team_mode_team_size_label">"Quantas pessoas estão lá?"</string>
     <string name="team_mode_team_size_hint">"O modo equipe funciona para grupos de 2 a 12 pessoas."</string>
-    <string name="team_mode_choose_color">"Agora, todos em seu grupo escolhem uma cor exclusiva:"</string>
     <string name="team_mode_active">"O Modo de equipe está ativo"</string>
     <string name="team_mode_deactivated">"O Modo de equipe desativado"</string>
     <string name="quest_pitchLit_title">"Este campo de esportes está iluminado?"</string>
@@ -2202,12 +2200,13 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_barrier_type_stile_ladder">"Escada"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Barreira de bicicleta"</string>
     <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>
-    <string name="quest_barrier_type_stepover">"Escada com um banco de madeira na lateral"</string>
     <string name="quest_barrier_type_swing_gate">"Barra horizontal"</string>
     <string name="quest_policeType_title">"Que tipo de delegacia é essa?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Convertido em um kissing gate"</string>
     <string name="quest_stile_type_title">"Que tipo de estilo é esse?"</string>
     <string name="quest_buildingType_semi_detached_description2">"casa unifamiliar contígua"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Seleção e prioridade da missão"</string>
     <string name="pref_subtitle_quests">"%1$d de %2$d está ativado"</string>
     <string name="quest_busStopLit_tram_name_title">"A parada de bonde %s é iluminada?"</string>
@@ -2217,19 +2216,55 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="no_location_permission_warning_title">"Permissão de localização"</string>
     <string name="quest_surface_value_woodchips">"Lascas de madeira"</string>
     <string name="no_camera_app">"Nenhum app de câmera disponível"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"A parada de bonde %s tem cesto de lixo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"Esta parada de bonde tem cesto de lixo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"Este ponto de ônibus tem um cesto de lixo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"A parada de ônibus %s tem um cesto de lixo?"</string>
     <string name="quest_bollard_type_title">"Que tipo de pilarete é este?"</string>
     <string name="quest_bollard_type_rising">"Retrátil"</string>
-    <string name="quest_bollard_type_removable_with_key">"Removível com chave"</string>
-    <string name="quest_bollard_type_removable_without_key">"Removível sem chave"</string>
-    <string name="quest_bollard_type_foldable">"Dobrável"</string>
     <string name="quest_bollard_type_flexible">"Flexível"</string>
     <string name="quest_bollard_type_fixed">"Fixo (não removível)"</string>
     <string name="quest_camera_type_title">"Que tipo de câmera de vigilância é esta?"</string>
     <string name="quest_camera_type_dome">"Cúpula"</string>
     <string name="quest_camera_type_fixed">"Fixa"</string>
     <string name="quest_camera_type_panning">"Panorâmica"</string>
+    <string name="about_title_faq">"FAQ"</string>
+    <string name="quest_buildingLevels_title2">"Quantos andares acima do porão este edifício tem?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Quantos andares acima do porão esta edificação tem?"</string>
+    <string name="quest_crossing_title">"Existem meios-fios onde este caminho encontra a estrada aqui? Que tipo?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Predefinição: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Este tipo de missão é desabilitado por padrão porque as formas do telhado geralmente não são facilmente visíveis da rua. Esse tipo de missão também consome muito tempo; na maioria dos casos, é mais fácil e eficiente mapear isso a partir de imagens aéreas em casa."</string>
+    <string name="quest_religion_animist">"Animista"</string>
+    <string name="quest_construction_steps_title">"Essas etapas foram concluídas?"</string>
+    <string name="questList_disabled_at_day">"Mostrar apenas à noite"</string>
+    <string name="pref_quests_deselect_all">"Desmarcar todas as missões?"</string>
+    <string name="quest_buildingType_boathouse">"Casa de barcos"</string>
+    <string name="quest_buildingType_allotment_house">"Dependência de loteamento de jardim"</string>
+    <string name="quest_buildingType_grandstand">"Arquibancada"</string>
+    <string name="action_search">"Busca"</string>
+    <string name="action_manage_presets">"Gerenciar predefinições"</string>
+    <string name="team_mode_team_size_label2">"Quantas pessoas estão mapeando? Digite o mesmo número no telefone de todos."</string>
+    <string name="team_mode_choose_color2">"Em seguida, cada pessoa deve escolher uma cor diferente. Escolha o seu:"</string>
+    <string name="link_organic_maps_description">"Aplicativo de mapas para viajantes, trilheiros e ciclistas que funciona off-line"</string>
+    <string name="quest_kerb_height_no">"Sem meio-fio"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Portão de madeira"</string>
+    <string name="quest_barrier_type_stepover_stone">"Escada de pedra"</string>
+    <string name="quest_bollard_type_removable">"Removível (com ou sem chave)"</string>
+    <string name="quest_bollard_type_foldable2">"Dobrável (com ou sem chave)"</string>
+    <string name="no_search_results">"Nada encontrado"</string>
+    <string name="quest_selection_hint_title">"É muito para fazer?"</string>
+    <string name="quest_selection_hint_message">"Contribuir deve ser principalmente divertido! Se você está sobrecarregado com o número de missões, você sempre pode ajustar quais missões são exibidas para você e em que ordem nas configurações."</string>
+    <string name="quest_presets_preset_add">"Adicionar predefinição"</string>
+    <string name="quest_presets_preset_name">"Nome da predefinição"</string>
+    <string name="quest_presets_default_name">"Padrão"</string>
+    <string name="quest_presets_selected">"Selecionado"</string>
+    <string name="quest_presets_delete_message">"Apagar a predefinição \"%s\"? A seleção e ordem da missão será totalmente perdida."</string>
 </resources>

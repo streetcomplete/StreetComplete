@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/compassView"
     android:layout_width="38dp"
     android:layout_height="38dp"
@@ -25,8 +25,8 @@
     android:layout_width="16dp"
     android:layout_height="16dp"
     android:layout_centerHorizontal="true"
-    android:src="@drawable/ic_compass_needle_black_24dp"
-    android:tint="#cc3333"
+    android:src="@drawable/ic_compass_needle_24dp"
+    app:tint="#cc3333"
     android:id="@+id/compassNeedleView"
     android:layout_below="@+id/compassNorth"
     />

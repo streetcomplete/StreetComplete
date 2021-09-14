@@ -15,11 +15,9 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
@@ -40,13 +38,13 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
 
     init {
         Injector.applicationComponent.inject(this)
-        showQuestFormAdapter.list = questTypeRegistry.all.toMutableList()
+        showQuestFormAdapter.list = questTypeRegistry.toMutableList()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_show_quest_forms)
-        toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_close_white_24dp)
+        toolbar.navigationIcon = getDrawable(R.drawable.ic_close_24dp)
         toolbar.setNavigationOnClickListener { onBackPressed() }
         toolbar.title = "Show Quest Forms"
 
@@ -81,7 +79,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         private inner class ViewHolder(itemView: View) : ListAdapter.ViewHolder<QuestType<*>>(itemView) {
             override fun onBind(with: QuestType<*>) {
                 itemView.questIcon.setImageResource(with.icon)
-                itemView.questTitle.text = genericQuestTitle(itemView, with)
+                itemView.questTitle.text = genericQuestTitle(itemView.resources, with)
                 itemView.setOnClickListener { onClickQuestType(with) }
             }
         }

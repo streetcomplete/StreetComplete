@@ -9,7 +9,7 @@ fun main() {
 
     val registry = QuestModule.questTypeRegistry(mock(), mock(), mock(), mock())
 
-    for (questType in registry.all) {
+    for (questType in registry) {
         if (questType is OsmElementQuestType) {
             println("### " + questType::class.simpleName!!)
             if (questType is OsmFilterQuestType) {

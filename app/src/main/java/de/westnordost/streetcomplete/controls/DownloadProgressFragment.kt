@@ -30,7 +30,7 @@ class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        progressView.setIcon(resources.getDrawable(R.drawable.ic_search_black_128dp))
+        progressView.setIcon(context?.getDrawable(R.drawable.ic_search_black_128dp)!!)
     }
 
     override fun onStart() {

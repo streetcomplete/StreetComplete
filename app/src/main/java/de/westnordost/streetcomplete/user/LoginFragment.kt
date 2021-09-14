@@ -113,8 +113,8 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     private fun pushOAuthFragment() {
         childFragmentManager.commit {
             setCustomAnimations(
-                R.anim.enter_from_right, R.anim.exit_to_left,
-                R.anim.enter_from_left, R.anim.exit_to_right
+                R.anim.enter_from_end, R.anim.exit_to_start,
+                R.anim.enter_from_start, R.anim.exit_to_end
             )
             replace<OAuthFragment>(R.id.oauthFragmentContainer)
             addToBackStack("oauth")

@@ -34,11 +34,11 @@
       android:pathData="M30.5001,26.689a6.5636,6.6388 79.5603,1 0,13.0578 -2.4059a6.5636,6.6388 79.5603,1 0,-13.0578 2.4059z"
       android:fillColor="#6f9adb"/>
   <path
-      android:fillColor="#FF000000"
+      android:fillColor="#000"
       android:pathData="m29.3622,59.4898 l24.4115,-1.9102 -31.6892,-10.3714z"
       android:fillAlpha="0.17172"/>
   <path
-      android:fillColor="#FF000000"
+      android:fillColor="#000"
       android:pathData="m53.4343,51.663 l29.1298,-25.2005 -25.3991,12.9192z"
       android:fillAlpha="0.18182"/>
   <path

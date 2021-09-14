@@ -88,8 +88,6 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Няма постоянно работно време"</string>
     <string name="quest_openingHours_comment_title">"Опишете работното време"</string>
     <string name="quest_openingHours_comment_description">"Бъдете точни, най-добре използвайте написаното на табелата напр. \"след запазен час\". Липсата на табела не означава, че няма регламентирано работно време."</string>
-    <string name="quest_buildingLevels_title">"На колко етажа е сградата?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"Колко етажа има тази част на сградата?"</string>
     <string name="quest_roofShape_title">"Каква е основната форма на покрива на тази сграда?"</string>
     <string name="quest_roofShape_select_one">"Изберете една:"</string>
     <string name="quest_roofShape_show_more">"Покажи още:"</string>
@@ -163,6 +161,8 @@
     <string name="upload_server_error">"Грешка при свързване. Опитайте отново по-късно."</string>
     <string name="quest_generic_hasFeature_yes">"Да"</string>
     <string name="quest_generic_hasFeature_no">"Не"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"Тази автобусна спирка има ли заслон?"</string>
     <string name="quest_bikeParkingCapacity_title">"Колко велосипеда могат да бъдат паркирани тук?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Този номер на къща изглежда доста странен."</string>
@@ -201,6 +201,8 @@
     <string name="quest_manySports_confirmation_specific">"Специално за тези"</string>
     <string name="quest_manySports_confirmation_generic">"За обща употреба"</string>
     <string name="quest_sport_manySports_confirmation_title">"Избрали сте много спортове"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Спирката %s има ли навес:"</string>
     <string name="quest_toiletsFee_title">"Плаща ли се за тоалетната?"</string>
     <string name="quest_tactilePaving_title_bus">"Тази спирка има ли настилка за слепи?"</string>
@@ -372,7 +374,6 @@
     <string name="quest_enabled">"Вкл."</string>
     <string name="quest_type">"Типове въпроси"</string>
     <string name="action_reset">"Нулиране"</string>
-    <string name="reorder_quest_priority_hint">"Задръжте и преместете дадена задача за да промените подредбата. "</string>
     <string name="undo_confirm_positive">"Отмяна"</string>
     <string name="undo_confirm_negative">"Прекрати"</string>
     <string name="quest_dietType_vegetarian_name_title">"Мястото %s има ли вегетарианско меню?"</string>
@@ -411,7 +412,11 @@
     <string name="quest_internet_access_wired">"Кабелен (LAN)"</string>
     <string name="quest_internet_access_terminal">"Компютър с достъп до интернет"</string>
     <string name="quest_internet_access_no">"Няма връзка"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"Трамвайната спирка %s има ли козирка?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_title">"Тази трамвайна спирка има ли козирка?"</string>
     <string name="quest_bench_backrest_title">"Тази пейка има ли облегалка?"</string>
     <string name="quest_bench_answer_picnic_table">"Това е маса за пикник"</string>
@@ -574,6 +579,8 @@
     <string name="quest_noteDiscussion_hide2">"Скрита от %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Снимките, които правите се качват на собствен сървър и се изтриват няколко дена след като бележката е била закрита. При качване не се запазват лични данни.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Нищо да не е избрано"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"включително сгради за ресторанти, кафенета..."</string>
     <string name="quest_openingHours_timeSelect_next">"Следващ"</string>
     <string name="quest_tracktype_title">"Каква е твърдостта на този черен път?"</string>
@@ -741,6 +748,8 @@
     <string name="link_umap_description">"Създайте карти с ваши добавени данни удобни за вграждане в сайт"</string>
     <string name="link_opnvkarte_description">"Карта на обществения транспорт"</string>
     <string name="link_pic4review_description">"Допринасяйте към OSM просто като разглеждате снимки от вашия град"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"Отправна точка за всичко свързано с OSM"</string>
     <string name="link_learnosm_description">"OpenStreetMap ви звучи непознато? Вижте упътването за начинаещи"</string>
     <string name="link_neis_one_description">"Голяма колекция от статистически данни относно хората допринасящи в OSM. "</string>
@@ -854,9 +863,17 @@
     <string name="resurvey_intervals_default">"По подразбиране"</string>
     <string name="resurvey_intervals_more_often">"Да се пита по-често"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) приема ли плащане в брой?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"Трамвайната спирка %s има ли пейка?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Тази трамвайна спирка има ли пейка?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Тази автобусна спирка има ли пейка?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"Автобусната спирка %s има ли пейка?"</string>
     <string name="quest_summit_register_title">"На %s има ли дневник на посетителите?"</string>
     <string name="quest_is_defibrillator_inside_title">"Има ли дефибрилатор (AED) в сградата?"</string>
@@ -921,7 +938,6 @@
     <string name="quest_kerb_height_flush">"Същото ниво като пътя"</string>
     <string name="quest_kerb_height_lowered">"Малко по-висок от пътя"</string>
     <string name="quest_kerb_height_raised">"Висок бордюр"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Няма бордюр от тази страна"</string>
     <string name="quest_kerb_height_lowered_ramp">"Скосен бордюр за колички"</string>
     <string name="quest_lanes_answer_lanes_description2">"Въведете общия брой пътни ленти (в двете посоки), които са за автомобилен трафик. Велоалеите и ленти предназначени само за паркиране не се броят. Ако има ленти запазени за автобуси, оставете бележка."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Въведете броя на маркираните пътни ленти за автомобили. Велоалеите и лентите за паркиране не се броят. Ако има бус-ленти, по-добре оставете бележка."</string>
@@ -980,9 +996,7 @@
     <string name="team_mode">"Работа в екип"</string>
     <string name="team_mode_exit">"Прекратяване на работа в екип"</string>
     <string name="team_mode_description">"Когато няколко човека работещи с приложението са близо, можете да включите \"работа в екип\" за да разделите работата между участниците."</string>
-    <string name="team_mode_team_size_label">"Колко човека има?"</string>
     <string name="team_mode_team_size_hint">"Работа в екип за група от 2 до 12 човека"</string>
-    <string name="team_mode_choose_color">"Всеки в групата избира уникален цвят:"</string>
     <string name="team_mode_active">"Работата в екип е активирана"</string>
     <string name="team_mode_deactivated">"Работата в екип е прекратена"</string>
     <string name="quest_pitchLit_title">"Осветено ли е това спортно игрище?"</string>
@@ -1033,12 +1047,13 @@
     <string name="quest_barrier_type_stile_ladder">"Стълба през ограда"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Велосипедна бариера"</string>
     <string name="quest_barrier_type_kissing_gate">"Врата \"кисинг гейт\""</string>
-    <string name="quest_barrier_type_stepover">"Стъпало за прескачане на ограда"</string>
     <string name="quest_barrier_type_swing_gate">"Хоризонтална греда"</string>
     <string name="quest_policeType_title">"Какъв вид е полицейско управление е това?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Превърната на \"кисинг гейт\""</string>
     <string name="quest_stile_type_title">"Какъв вид врата е това?"</string>
     <string name="quest_buildingType_semi_detached_description2">"Съединени еднофамилни къщи"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Избор на задачи и приоритет"</string>
     <string name="pref_subtitle_quests">"%1$d от %2$d разрешени"</string>
     <string name="quest_busStopLit_tram_name_title">"Трамвайната спирка %s осветена ли е? "</string>
@@ -1050,15 +1065,20 @@
     <string name="no_location_permission_warning_title">"Разрешение за достъп до локация"</string>
     <string name="quest_surface_value_woodchips">"Дървесни стърготини"</string>
     <string name="no_camera_app">"Няма налично приложение за камера"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"Трамвайна спирка %s има ли кош за боклук?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"Трамвайната спирка има ли кош за боклук?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"Автобусната спирка има ли кош за боклук?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"Автобусна спирка %s има ли кош за боклук?"</string>
     <string name="quest_bollard_type_title">"Какъв вид болард е това?"</string>
     <string name="quest_bollard_type_rising">"Повдигащ се"</string>
-    <string name="quest_bollard_type_removable_with_key">"Премахваема с ключ"</string>
-    <string name="quest_bollard_type_removable_without_key">"Премахваема без ключ"</string>
-    <string name="quest_bollard_type_foldable">"Сгъваем"</string>
     <string name="quest_bollard_type_flexible">"Гъвкав"</string>
     <string name="quest_bollard_type_fixed">"Фиксиран (не може да се мести)"</string>
     <string name="quest_camera_type_title">"Какъв вид е тази камера?"</string>
@@ -1067,4 +1087,15 @@
 
     <!-- Fuzzy -->
     <string name="quest_camera_type_panning">"Панорамна"</string>
+    <string name="about_title_faq">"ЧЗВ"</string>
+    <string name="quest_buildingLevels_title2">"Колко етажа над мазето има тази сграда?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Колко етажа над мазето има тази част от сградата?"</string>
+    <string name="quest_crossing_title">"Има ли бордюр на мястото къде този път се среща с улицата? Какъв вид?"</string>
+    <string name="default_disabled_msg_roofShape">"Тази задача е изклучена по подразбиране, защото формата на покривите не е лесно видима от улицата и отнема много време. В повечето случаи е по-лесно и по-ефективно да се използват сателитни изображения."</string>
+    <string name="action_search">"Търсене"</string>
+    <string name="quest_kerb_height_no">"Няма бордюр"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_selection_hint_message">"Участието трябва да бъде преди всичко забавно! Ако броят на куестовете ви претоварва, винаги можете да настроите кои куестове да ви се показват и в какъв ред в настройките."</string>
+    <string name="quest_presets_default_name">"По подразбиране"</string>
 </resources>

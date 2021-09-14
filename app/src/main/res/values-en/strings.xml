@@ -101,6 +101,7 @@
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
+    <string name="about_title_faq">"FAQ"</string>
     <string name="about_title_report_error">"Report error"</string>
     <string name="about_title_feedback">"Give Feedback"</string>
     <string name="about_title_license">"License"</string>
@@ -127,8 +128,8 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"No regular opening hours…"</string>
     <string name="quest_openingHours_comment_title">"Describe opening hours"</string>
     <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign, e.g. “by appointment”. The absence of a sign does not necessarily mean that there are no regular opening hours."</string>
-    <string name="quest_buildingLevels_title">"How many levels does this building have?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
+    <string name="quest_buildingLevels_title2">"How many levels above the basement does this building have?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"How many levels above the basement does this building part have?"</string>
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string><!--it is used in generic list, not only for roof shape but rename would break translations-->
@@ -369,6 +370,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_and_more">and more…</string>
     <string name="quest_maxspeed_answer_living_street">It is a living street</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
+    <string name="quest_crossing_title">Are there curbs where this way meets this road here? What kind?</string>
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
     <string name="quest_crossing_type_signals_controlled">Crossing controlled by traffic lights</string>
     <string name="quest_crossing_type_marked">Marked crossing</string>
@@ -485,17 +487,18 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="resurvey_intervals_less_often">Ask less often</string>
     <string name="resurvey_intervals_default">Default</string>
     <string name="resurvey_intervals_more_often">Ask more often</string>
-    <string name="pref_title_quests2">Quest selection and priority</string>
+    <string name="pref_title_quests2">Quest selection and display order</string>
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
+    <string name="pref_subtitle_quests_preset_name">Preset: %s</string>
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
     <string name="action_reset">Reset</string>
-    <string name="reorder_quest_priority_hint">Long-press and move a quest to reorder its priority for display on the map.</string>
     <string name="undo_confirm_positive">Undo</string>
     <string name="undo_confirm_negative">Cancel</string>
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
     <string name="default_disabled_msg_go_inside">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="default_disabled_msg_go_inside_regional_warning">This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type.</string>
+    <string name="default_disabled_msg_roofShape">This quest type is disabled by default because the roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
@@ -526,19 +529,19 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_internet_access_wired">Wired (LAN)</string>
     <string name="quest_internet_access_terminal">Computer with Internet access</string>
     <string name="quest_internet_access_no">No connection</string>
-    <string name="quest_busStopShelter_tram_name_title">"Does the streetcar stop %s have a shelter?"</string>
-    <string name="quest_busStopShelter_tram_title">"Does this streetcar stop have a shelter?"</string>
-    <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
-    <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Is there a shelter at the streetcar stop %s?"</string>
+    <string name="quest_busStopShelter_tram_title">"Is there a shelter at this streetcar stop?"</string>
+    <string name="quest_busStopShelter_title">"Is there a shelter at this bus stop?"</string>
+    <string name="quest_busStopShelter_name_title">"Is there a shelter at the bus stop %s?"</string>
     <string name="quest_busStopShelter_covered">Whole stop is covered</string>
-    <string name="quest_busStopBench_tram_name_title">"Does the streetcar stop %s have a bench?"</string>
-    <string name="quest_busStopBench_tram_title">"Does this streetcar stop have a bench?"</string>
-    <string name="quest_busStopBench_title">"Does this bus stop have a bench?"</string>
-    <string name="quest_busStopBench_name_title">"Does the bus stop %s have a bench?"</string>
-    <string name="quest_busStopBin_tram_name_title">"Does the streetcar stop %s have a waste basket?"</string>
-    <string name="quest_busStopBin_tram_title">"Does this streetcar stop have a waste basket?"</string>
-    <string name="quest_busStopBin_title">"Does this bus stop have a waste basket?"</string>
-    <string name="quest_busStopBin_name_title">"Does the bus stop %s have a waste basket?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Is there a bench at the streetcar stop %s?"</string>
+    <string name="quest_busStopBench_tram_title">"Is there a bench at this streetcar stop?"</string>
+    <string name="quest_busStopBench_title">"Is there a bench at this bus stop?"</string>
+    <string name="quest_busStopBench_name_title">"Is there a bench at the bus stop %s?"</string>
+    <string name="quest_busStopBin_tram_name_title">"Is there a waste basket at the streetcar stop %s?"</string>
+    <string name="quest_busStopBin_tram_title">"Is there a waste basket at this streetcar stop?"</string>
+    <string name="quest_busStopBin_title">"Is there a waste basket at this bus stop?"</string>
+    <string name="quest_busStopBin_name_title">"Is there a waste basket at the bus stop %s?"</string>
     <string name="quest_busStopLit_tram_name_title">"Is the streetcar stop %s lit?"</string>
     <string name="quest_busStopLit_tram_title">"Is this streetcar stop lit?"</string>
     <string name="quest_busStopLit_title">"Is this bus stop lit?"</string>
@@ -558,6 +561,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_religion_sikh">Sikh</string>
     <string name="quest_religion_jain">Jain</string>
     <string name="quest_religion_bahai">Bahá’í Faith</string>
+    <string name="quest_religion_animist">Animist</string>
     <string name="quest_religion_caodaist">Caodaism</string>
     <string name="quest_religion_chinese_folk">Chinese folk religion</string>
     <string name="quest_religion_for_wayside_shrine_title">What religion is represented at this shrine?</string>
@@ -598,13 +602,15 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_construction_road_title">Is this road completed?</string>
     <string name="quest_construction_cycleway_title">Is this cycleway completed?</string>
     <string name="quest_construction_footway_title">Is this footway completed?</string>
+    <string name="quest_construction_steps_title">Are these steps completed?</string>
     <string name="quest_construction_generic_title">Is this way completed?</string>
     <string name="quest_construction_building_title">Is this building completed?</string>
     <string name="questList_disabled_in_country">Never shown in %s</string>
+    <string name="questList_disabled_at_day">Only shown at night</string>
     <string name="quest_toiletAvailability_rest_area_title">Does this rest area have restroom facilities?</string>
     <string name="quest_maxspeed_name_title2">What is the speed limit for %s here?</string>
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
-
+    <string name="pref_quests_deselect_all">Deselect all quests?</string>
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_buildingType_title2">"What was this building constructed as?"</string>
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
@@ -675,6 +681,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_shed">Shed</string>
+    <string name="quest_buildingType_boathouse">Boathouse</string>
+    <string name="quest_buildingType_allotment_house">Garden allotment outbuilding</string>
+    <string name="quest_buildingType_grandstand">Grandstand</string>
     <string name="quest_buildingType_toilets">Toilets</string>
     <string name="quest_buildingType_hut">Hut</string>
     <string name="quest_buildingType_hut_description">small, simple dwelling or shelter</string>
@@ -715,8 +724,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
+    <string name="action_search">Search</string>
     <string name="action_deselect_all">Deselect all</string>
-    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
+    <string name="action_manage_presets">Manage presets</string>
+    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, big stores …</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
     <string name="quest_maxweight_select_sign">"Select sign"</string>
     <string name="quest_generic_answer_noSign">There is no sign</string>
@@ -863,9 +874,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="team_mode">Team Mode</string>
     <string name="team_mode_exit">Exit Team Mode</string>
     <string name="team_mode_description">When mapping the same area together in a group, you can enter team mode to split up quests between all team members.</string>
-    <string name="team_mode_team_size_label">How many people are there?</string>
+    <string name="team_mode_team_size_label2">How many people are mapping? Enter the same number on everyone\'s phone.</string>
     <string name="team_mode_team_size_hint">Team mode works for groups of 2 to 12 people.</string>
-    <string name="team_mode_choose_color">Now everybody in your group chooses a unique color:</string>
+    <string name="team_mode_choose_color2">Next, each person must pick a different color. Choose yours:</string>
     <string name="team_mode_active">Team mode is active</string>
     <string name="team_mode_deactivated">Team mode deactivated</string>
 
@@ -903,7 +914,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
     <string name="link_opnvkarte_description">A map of public transport routes and stops</string>
     <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
-    <string name="link_wiki_description">The wiki is your starting point to everything related OpenStreetMap</string>
+    <string name="link_wiki_description">The wiki is your starting point to everything related to OpenStreetMap</string>
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
     <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
@@ -925,6 +936,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
     <string name="link_qwant_maps_description">A map with searchable places and directions</string>
+    <string name="link_organic_maps_description">Maps app for travelers, hikers and cyclists that works offline</string>
     <string name="link_weeklyosm_description">The weekly news blog about what\'s happening in the OpenStreetMap world</string>
     <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
 
@@ -993,8 +1005,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_kerb_height_flush">Same level as road surface</string>
     <string name="quest_kerb_height_lowered">A bit higher than road surface</string>
     <string name="quest_kerb_height_raised">High curb</string>
-    <string name="quest_kerb_height_answer_no_kerb">There is no curb on this side of crossing</string>
     <string name="quest_kerb_height_lowered_ramp">Curb ramp</string>
+    <string name="quest_kerb_height_no">No curb at all</string>
     <string name="quest_generic_answer_does_not_exist">It does not exist…</string>
     <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? When in doubt, better leave a note instead.</string>
     <string name="osm_element_gone_confirmation">It does not exist</string>
@@ -1044,19 +1056,29 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_stile_ladder">Ladder stile</string>
     <string name="quest_barrier_type_bicycle_barrier">Bicycle barrier</string>
     <string name="quest_barrier_type_kissing_gate">Kissing gate</string>
-    <string name="quest_barrier_type_stepover">Step-over stile</string>
+    <string name="quest_barrier_type_stepover_wooden">Wooden step-over stile</string>
+    <string name="quest_barrier_type_stepover_stone">Stone step-over stile</string>
     <string name="quest_barrier_type_swing_gate">Horizontal bar</string>
     <string name="quest_barrier_type_kissing_gate_conversion">Converted into a kissing gate</string>
     <string name="quest_stile_type_title">What type of stile is this?</string>
     <string name="quest_bollard_type_title">What type of bollard is this?</string>
     <string name="quest_bollard_type_rising">Rising</string>
-    <string name="quest_bollard_type_removable_with_key">Removable with key</string>
-    <string name="quest_bollard_type_removable_without_key">Removable without key</string>
-    <string name="quest_bollard_type_foldable">Foldable</string>
+    <string name="quest_bollard_type_removable">Removable (with or without key)</string>
+    <string name="quest_bollard_type_foldable2">Foldable (with or without key)</string>
     <string name="quest_bollard_type_flexible">Flexible</string>
     <string name="quest_bollard_type_fixed">Fixed (not removable)</string>
     <string name="quest_camera_type_title">What type of surveillance camera is this?</string>
     <string name="quest_camera_type_dome">Dome</string>
     <string name="quest_camera_type_fixed">Fixed</string>
     <string name="quest_camera_type_panning">Panning</string>
+    <string name="no_search_results">Nothing found</string>
+    <string name="quest_selection_hint_title">Too much to do?</string>
+    <string name="quest_selection_hint_message">"Contributing should primarily be fun!
+
+If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
+    <string name="quest_presets_preset_add">Add preset</string>
+    <string name="quest_presets_preset_name">Preset name</string>
+    <string name="quest_presets_default_name">Default</string>
+    <string name="quest_presets_selected">Selected</string>
+    <string name="quest_presets_delete_message">"Delete preset \"%s\"? The quest selection and order for it will be irrevocably lost."</string>
 </resources>

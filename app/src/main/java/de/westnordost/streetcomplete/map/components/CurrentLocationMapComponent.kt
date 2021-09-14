@@ -5,9 +5,9 @@ import android.graphics.PointF
 import android.location.Location
 import com.mapzen.tangram.MapController
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.location.toLatLon
 import de.westnordost.streetcomplete.map.tangram.KtMapController
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.util.EARTH_CIRCUMFERENCE
@@ -115,7 +115,7 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
     /** Update the GPS position shown on the map */
     private fun updateLocation() {
         if (!isVisible) return
-        val pos = location?.let { LatLon(it.latitude, it.longitude) } ?: return
+        val pos = location?.toLatLon() ?: return
 
         accuracyMarker.isVisible = true
         accuracyMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC)

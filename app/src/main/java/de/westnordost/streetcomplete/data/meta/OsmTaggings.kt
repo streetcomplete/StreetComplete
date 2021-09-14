@@ -47,8 +47,10 @@ val KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     // reference tags that are specific to the location and are unlikely to change when a business changes
     // due to the multitude of these, let's keep the whole ref:.* space
     "ref:.*",
+    "source",
     // source tags referring to building / address / geometry (from cursory look at taginfo on "source:")
     "source:(${listOf(
+        "date",
         // referring to address / ref...
         "addr", "address", "housenumber", "street", "conscriptionnumber", "streetnumber", "postcode", "postal_code", "ref",
         // referring to geometry
@@ -67,7 +69,7 @@ val KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
  *  - nothing that is rather located in an industrial estate like car repair and other types
  *    of workshops (most craft=* other than those where people go to have something repaired or so)
  *
- *  It is possible to specify a prefix for the keys here, f.e. "disused", to find disused shops etc.
+ *  It is possible to specify a prefix for the keys here, e.g. "disused", to find disused shops etc.
  *  */
 fun isKindOfShopExpression(prefix: String? = null): String {
     val p = if(prefix != null) "$prefix:" else ""

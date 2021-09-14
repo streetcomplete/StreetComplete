@@ -90,8 +90,6 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"ไม่มีเวลาเปิด-ปิด ที่แน่นอน…"</string>
     <string name="quest_openingHours_comment_title">"ระบุเวลาเปิดทำการ"</string>
     <string name="quest_openingHours_comment_description">"ให้กระชับ ควรใช้ถ้อยคำจากเครื่องหมาย เช่น \"โดยการนัดล่วงหน้าเท่านั้น\" การไม่มีป้ายไม่ได้หมายความว่าไม่มีเวลาเปิดทำการปกติเสมอไป"</string>
-    <string name="quest_buildingLevels_title">"อาคารนี้มีกี่ชั้น"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"ส่วนนี้ของอาคารมีกี่ชั้น"</string>
     <string name="quest_roofShape_title">"หลังคาของอาคารนี้เป็นรูปอะไร"</string>
     <string name="quest_roofShape_select_one">"เลือกหนึ่งรายการ:"</string>
     <string name="quest_roofShape_show_more">"แสดงเพิ่มเติม…"</string>
@@ -163,6 +161,8 @@
     <string name="upload_server_error">"เกิดข้อผิดพลาดในการเชื่อมต่อขณะอัปโหลดคำตอบ ลองอีกครั้งในภายหลัง"</string>
     <string name="quest_generic_hasFeature_yes">"ใช่"</string>
     <string name="quest_generic_hasFeature_no">"ไม่"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"ป้ายรถประจำทางมีหลังคาหรือไม่?"</string>
     <string name="quest_bikeParkingCapacity_title">"สามารถจอดจักรยานได้กี่คัน?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"เลขที่บ้านนี้ดูแปลก ๆ"</string>
@@ -199,6 +199,8 @@
     <string name="quest_manySports_confirmation_specific">"โดยเฉพาะกีฬาเหล่านี้"</string>
     <string name="quest_manySports_confirmation_generic">"วัตถุประสงค์ทั่วไป"</string>
     <string name="quest_sport_manySports_confirmation_title">"คุณเลือกกีฬามากมาย"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"ป้ายรถเมล์ %s มีหลังคาหรือไม่?"</string>
     <string name="quest_toiletsFee_title">"ห้องน้ำแห่งนี้คิดค่าบริการหรือไม่?"</string>
     <string name="quest_tactilePaving_title_bus">"ป้ายรถประจำทางที่นี่มีกระเบื้องปูพื้นนำทางคนตาบอดหรือไม่?"</string>
@@ -368,7 +370,6 @@
     <string name="quest_enabled">"เปิดอยู่"</string>
     <string name="quest_type">"ประเภทภารกิจ"</string>
     <string name="action_reset">"รีเซ็ต"</string>
-    <string name="reorder_quest_priority_hint">"กดค้างและย้ายภารกิจเพื่อจัดลำดับความสำคัญใหม่เพื่อการแสดงบนแผนที่"</string>
     <string name="undo_confirm_positive">"เลิกทำ"</string>
     <string name="undo_confirm_negative">"ยกเลิก"</string>
     <string name="quest_dietType_vegetarian_name_title">"%s มีอาหารมังสวิรัติในเมนูหรือไม่?"</string>
@@ -408,7 +409,11 @@
     <string name="quest_internet_access_wired">"มีสาย (LAN)"</string>
     <string name="quest_internet_access_terminal">"คอมพิวเตอร์ที่มีการเชื่อมต่ออินเทอร์เน็ต"</string>
     <string name="quest_internet_access_no">"ไม่มีการเชื่อมต่อ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"ป้ายรถราง %s มีที่หลังคาหรือไม่?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_title">"ป้ายรถรางที่นี่มีที่หลังคาหรือไม่?"</string>
     <string name="quest_bench_backrest_title">"ม้านั่งนี้มีพนักพิงหรือไม่?"</string>
     <string name="quest_bench_answer_picnic_table">"เป็นโต๊ะปิกนิก"</string>
@@ -571,6 +576,8 @@
     <string name="quest_noteDiscussion_hide2">"ถูกซ่อนโดย %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;รูปภาพที่คุณแนบไปกับหมายเหตุจะถูกอัปโหลดไปยังเซิร์ฟเวอร์ของฉันและจะถูกลบหลังจากแก้ไขบันทึกดังกล่าวในไม่กี่วัน ข้อมูลเมตาจะถูกตัดออกก่อนที่จะทำการอัปโหลด&lt;/p&gt;"</string>
     <string name="action_deselect_all">"ยกเลิกการเลือกทั้งหมด"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"รวมถึงอาคารร้านอาหาร ร้านกาแฟ …"</string>
     <string name="quest_openingHours_timeSelect_next">"ต่อไป"</string>
     <string name="quest_tracktype_title">"ความแน่นของพื้นผิวของแทร็กนี้คืออะไร?"</string>
@@ -737,6 +744,8 @@
     <string name="link_umap_description">"สร้างแผนที่ด้วยข้อมูลที่กำหนดเองอย่างรวดเร็วและฝังลงในไซต์ของคุณ"</string>
     <string name="link_opnvkarte_description">"แผนที่สำหรับขนส่งสาธารนะ เส้นทาง กับป้ายหยุด"</string>
     <string name="link_pic4review_description">"ร่วมสมทบกับ OSM ได้ง่ายๆ เพียงดูภาพเมืองของคุณ"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"วิกิที่เป็นจุดเริ่มต้นสำหรับทุกอย่างที่เกี่ยวกับ OpenStreetMap"</string>
     <string name="link_learnosm_description">"เพิ่งเริ่มหัดทำ OpenStreetMap หรือเปล่า? นี่คือไกด์สำหรับผู้เริ่มต้น"</string>
     <string name="link_neis_one_description">"รวมสถิติสำหรับผู้สมทบ OpenStreetMap เช่น คุณสมทบในพื้นที่ไหนบ้าง รอบตัวมีใครบ้าง และตารางผู้นำ"</string>
@@ -850,9 +859,17 @@
     <string name="resurvey_intervals_default">"ค่าเริ่มต้น"</string>
     <string name="resurvey_intervals_more_often">"ถามถี่ขึ้น"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) รับชำระด้วยเงินสดหรือไม่"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"ป้ายรถราง %s มีม้านั่งไหม?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"ป้ายรถรางที่นี่มีม้านั่งไหม?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"ป้ายรถเมล์ที่นี่มีม้านั่งไหม?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"ป้ายรถเมล์ %s มีม้านั่งไหม?"</string>
     <string name="quest_summit_register_title">"มีจุดลงทะเบียนตรงยอดที่ %s หรือไม่?"</string>
     <string name="quest_is_defibrillator_inside_title">"เครื่องกระตุ้นหัวใจ (AED) นี้อยู่ภายในอาคารหรือไม่?"</string>
@@ -917,7 +934,6 @@
     <string name="quest_kerb_height_flush">"ระดับเดียวกับผิวถนน"</string>
     <string name="quest_kerb_height_lowered">"สูงกว่าผิวถนนนิดหน่อย"</string>
     <string name="quest_kerb_height_raised">"ขอบทางมีระดับสูง"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"ไม่มีขอบทางตรงฝั่งนี้ของทางข้าม"</string>
     <string name="quest_kerb_height_lowered_ramp">"ทางลาดไปขอบทาง"</string>
     <string name="quest_lanes_answer_lanes_description2">"ระบุจำนวนช่องจราจรที่รถยนต์ใช้สัญจรได้ ที่ระบุสัญลักษณ์บนพื้นถนนทั้งหมด (ทั้งสองทิศทาง)  โดยไม่นับช่องทางจักรยานและช่องสำหรับการจอดรถโดยเฉพาะ
 หากมีช่องทางใดที่สงวนไว้สำหรับรถโดยสาร โปรดระบุหมายเหตุแทน"</string>
@@ -976,9 +992,7 @@
     <string name="team_mode">"โหมดทีม"</string>
     <string name="team_mode_exit">"ออกจากโหมดทีม"</string>
     <string name="team_mode_description">"ถ้าตั้งกลุ่มทำแผนที่ในบริเวณเดียวกัน คุณสามารถเข้าทีมโหมดเพื่อที่จะแบ่งภารกิจให้กับสมาชิกกลุ่มทุกคนได้"</string>
-    <string name="team_mode_team_size_label">"มีกี่คน?"</string>
     <string name="team_mode_team_size_hint">"โหมดทีมสำหรับกลุ่ม 2 ถึง 12 คน"</string>
-    <string name="team_mode_choose_color">"ทีนี้ทุกคนในกลุ่มของคุณสามารถเลือกสีที่เป็นเอกลักษณ์ได้:"</string>
     <string name="team_mode_active">"โหมดทีมทำงานอยู่"</string>
     <string name="team_mode_deactivated">"โหมดทีมปิดใช้งาน"</string>
     <string name="quest_pitchLit_title">"สนามกีฬาแห่งนี้มีไฟสว่างหรือไม่?"</string>
@@ -1029,12 +1043,13 @@
     <string name="quest_barrier_type_stile_ladder">"บันไดพาดข้ามรั้ว"</string>
     <string name="quest_barrier_type_bicycle_barrier">"อุปสรรคจักรยาน"</string>
     <string name="quest_barrier_type_kissing_gate">"ประตู​กลกันสัตว์​เดินออก"</string>
-    <string name="quest_barrier_type_stepover">"บันไดข้ามรั้ว"</string>
     <string name="quest_barrier_type_swing_gate">"แถบแนวนอน"</string>
     <string name="quest_policeType_title">"นี่คือสถานีตำรวจประเภทใด?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"แปลงเป็นประตู​กลกันสัตว์​เดินออก"</string>
     <string name="quest_stile_type_title">"นี่คือประตูหมุนแบบไหน?"</string>
     <string name="quest_buildingType_semi_detached_description2">"บ้านเดี่ยวเชื่อมกัน"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"การเลือกภารกิจและลำดับความสำคัญ"</string>
     <string name="pref_subtitle_quests">"%1$d จาก %2$d เปิดใช้งานอยู่"</string>
     <string name="quest_busStopLit_tram_name_title">"ป้ายรถราง %s มีแสงสว่างหรือไม่?"</string>
@@ -1044,15 +1059,20 @@
     <string name="no_location_permission_warning_title">"สิทธิ์ของตำแหน่งที่ตั้ง"</string>
     <string name="quest_surface_value_woodchips">"เศษไม้"</string>
     <string name="no_camera_app">"ไม่มีแอพกล้อง"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"ป้ายรถราง %s มีถังขยะไหม?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"ป้ายรถรางที่นี่มีถังขยะไหม?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"ป้ายรถเมล์ที่นี่มีถังขยะหรือไม่?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"ป้ายรถเมล์ %s มีถังขยะหรือไม่?"</string>
     <string name="quest_bollard_type_title">"นี่คือเสาชนิดใด?"</string>
     <string name="quest_bollard_type_rising">"ขึ้นลงได้"</string>
-    <string name="quest_bollard_type_removable_with_key">"ถอดออกได้ด้วยกุญแจ"</string>
-    <string name="quest_bollard_type_removable_without_key">"ถอดได้โดยไม่ต้องใช้กุญแจ"</string>
-    <string name="quest_bollard_type_foldable">"พับได้"</string>
     <string name="quest_bollard_type_flexible">"ยืดหยุ่น"</string>
     <string name="quest_bollard_type_fixed">"คงที่ (ถอดออกไม่ได้)"</string>
     <string name="quest_camera_type_title">"นี่คือกล้องวงจรปิดประเภทใด?"</string>

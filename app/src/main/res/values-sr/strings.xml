@@ -35,12 +35,8 @@
     <string name="quest_openingHours_end_time">"време затварања"</string>
     <string name="quest_openingHours_add_months">"Додај месеце"</string>
     <string name="quest_openingHours_add_hours">"Додај време"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Додај радне дане"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Изаберите месеце"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Изаберите радне дане"</string>
     <string name="quest_openingHours_24_7_confirmation">"Другим речима, јел отворено читавог дана, сваки дан?"</string>
     <string name="quest_noteDiscussion_title">"Можете ли ишта додати за ову напомену?"</string>
@@ -86,8 +82,6 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Нема редовно радно време…"</string>
     <string name="quest_openingHours_comment_title">"Опишите радно време"</string>
     <string name="quest_openingHours_comment_description">"Будите кратки, идеално користите натпис са знака, нпр. „по договору“. Одсуство знака не значи нужно да не постоји редовно радно време."</string>
-    <string name="quest_buildingLevels_title">"Колико спратова има овај објекат?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"Колико спратова има овај део објекта?"</string>
     <string name="quest_roofShape_title">"Ког основног облика је кров ове грађевине?"</string>
     <string name="quest_roofShape_select_one">"Одабери један:"</string>
     <string name="quest_roofShape_show_more">"Прикажи више…"</string>
@@ -366,7 +360,6 @@
     <string name="quest_enabled">"Омогућено"</string>
     <string name="quest_type">"Врста задатака"</string>
     <string name="action_reset">"Врати у почетно стање"</string>
-    <string name="reorder_quest_priority_hint">"Задржите и померите задатак да измените његов приоритет приказа на карти."</string>
     <string name="undo_confirm_positive">"Поништи"</string>
     <string name="undo_confirm_negative">"Откажи"</string>
     <string name="quest_dietType_vegetarian_name_title">"Да ли %s има вегетаријаска јела у јеловнику?"</string>
@@ -505,8 +498,6 @@
     <string name="quest_buildingType_temple">"Храм"</string>
     <string name="quest_buildingType_pagoda">"Пагода"</string>
     <string name="quest_buildingType_synagogue">"Синагога"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_civic">"Јавна институција"</string>
     <string name="quest_buildingType_civic_description">"објекат који пружа неку јавну услугу"</string>
     <string name="quest_buildingType_kindergarten">"Вртић"</string>
@@ -920,7 +911,6 @@
     <string name="quest_kerb_height_flush">"Исти ниво као и пут"</string>
     <string name="quest_kerb_height_lowered">"Нешто виши од пута"</string>
     <string name="quest_kerb_height_raised">"Високи ивичњак"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Нема ивичњака на овој страни прелаза"</string>
     <string name="quest_kerb_height_lowered_ramp">"Спуштени ивичњак"</string>
     <string name="quest_lanes_answer_lanes_description2">"Наведите укупан број означених трака (у оба смера) које се користе у саобраћају. Дакле, бициклистичке стазе и паркиралишта се не рачунају.
 Ако су неке траке за јавни превоз, оставите напомену."</string>
@@ -944,8 +934,6 @@
     <string name="quest_shop_gone_title">"Шта је сада ту уместо тога?"</string>
     <string name="quest_shop_gone_vacant_answer">"Напуштено је"</string>
     <string name="quest_shop_gone_replaced_answer">"То је…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_hint">"Упишите врсту радње и сл."</string>
     <string name="quest_shop_gone_replaced_answer_error">"Не знам шта је ово. Оставите напомену."</string>
     <string name="quest_shop_vacant_type_title">"Ова продавница је напуштена. Шта је сада овде?"</string>
@@ -981,9 +969,7 @@
     <string name="team_mode">"Рад у тиму"</string>
     <string name="team_mode_exit">"Излаз из рада у тиму"</string>
     <string name="team_mode_description">"Када картирате исту регију у групи, можете да уђете у Рад у тиму и да поделите задатке међусобно."</string>
-    <string name="team_mode_team_size_label">"Колико људи је тамо?"</string>
     <string name="team_mode_team_size_hint">"Рад у тиму ради са групама од 2 до 12 људи."</string>
-    <string name="team_mode_choose_color">"Сада свако у вашој групи бира јединствену боју:"</string>
     <string name="team_mode_active">"Укључен је рад у тиму"</string>
     <string name="team_mode_deactivated">"Искључен је рад у тиму"</string>
     <string name="quest_pitchLit_title">"Да ли је игралиште осветљено?"</string>
@@ -1034,13 +1020,12 @@
     <string name="quest_barrier_type_stile_ladder">"Прелаз мердевинама"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Бициклистичка ограда"</string>
     <string name="quest_barrier_type_kissing_gate">"Цик-цак препрека"</string>
-    <string name="quest_barrier_type_stepover">"Прелаз степеником"</string>
     <string name="quest_barrier_type_swing_gate">"Хоризонтална пречка"</string>
     <string name="quest_policeType_title">"Који тип полицијске станице је ово?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Претворено у цик-цак препреку"</string>
     <string name="quest_stile_type_title">"Која је ово врста пролаза?"</string>
     <string name="quest_buildingType_semi_detached_description2">"најчешће дводомке"</string>
-    <string name="pref_title_quests2">"Бирање и приоритет задатака"</string>
+    <string name="pref_title_quests2">"Одабир задатака и редослед приказа"</string>
     <string name="pref_subtitle_quests">"укључено је %1$d од %2$d"</string>
     <string name="quest_busStopLit_tram_name_title">"Да ли је трамвајско стајалиште %s осветљено?"</string>
     <string name="quest_busStopLit_tram_title">"Да ли је ово трамвајско стајалиште осветљено?"</string>
@@ -1055,13 +1040,41 @@
     <string name="quest_busStopBin_name_title">"Да ли стајалиште %s има корпу за отпатке?"</string>
     <string name="quest_bollard_type_title">"Ког типа је овај ступчић?"</string>
     <string name="quest_bollard_type_rising">"Подижући"</string>
-    <string name="quest_bollard_type_removable_with_key">"Уклонив кључем"</string>
-    <string name="quest_bollard_type_removable_without_key">"Уклонив без кључа"</string>
-    <string name="quest_bollard_type_foldable">"Савитљив"</string>
     <string name="quest_bollard_type_flexible">"Флексибилан"</string>
     <string name="quest_bollard_type_fixed">"Фиксиран (није га могуће уклонити)"</string>
     <string name="quest_camera_type_title">"Ког типа је надзорна камера?"</string>
     <string name="quest_camera_type_dome">"Кружна"</string>
     <string name="quest_camera_type_fixed">"Фиксна"</string>
     <string name="quest_camera_type_panning">"Померајућа"</string>
+    <string name="about_title_faq">"Честа питања"</string>
+    <string name="quest_buildingLevels_title2">"Колико спратова изнад подрума има ова грађевина?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Колико спратова изнад подрума има ова грађевина?"</string>
+    <string name="quest_crossing_title">"Да ли постоје ивичњаци на споју ових путева? Које врсте?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Група задатака: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Ова врста задатака је онемогућена јер се облици кровова често не виде добро са улице. Такође, одузимају доста врмена. Углавном је лакше и ефикасније кровове означити од куће, преко снимака из ваздуха."</string>
+    <string name="quest_religion_animist">"Анимизам"</string>
+    <string name="quest_construction_steps_title">"Да ли су ове степенице завршене?"</string>
+    <string name="questList_disabled_at_day">"Приказује се само ноћу"</string>
+    <string name="pref_quests_deselect_all">"Желите ли да искључите све задатке?"</string>
+    <string name="quest_buildingType_boathouse">"„Гаража“ за чамце"</string>
+    <string name="quest_buildingType_allotment_house">"Вртна кућица"</string>
+    <string name="quest_buildingType_grandstand">"Трибина"</string>
+    <string name="action_search">"Претражи"</string>
+    <string name="action_manage_presets">"Управљање групама задатака"</string>
+    <string name="team_mode_team_size_label2">"Колико вас има у групи? Унесите исти број на свачијем телефону."</string>
+    <string name="team_mode_choose_color2">"Сада свако мора одабрати различиту боју. Одаберите своју:"</string>
+    <string name="link_organic_maps_description">"Апликација са картом за путнике, планинаре и бициклисте која ради и без интернета"</string>
+    <string name="quest_kerb_height_no">"Нема ивичњака"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Дрвени прелаз преко ограде"</string>
+    <string name="quest_barrier_type_stepover_stone">"Камени прелаз преко ограде"</string>
+    <string name="quest_bollard_type_removable">"Уклоњив (са или без кључа)"</string>
+    <string name="quest_bollard_type_foldable2">"Склопив (са или без кључа)"</string>
+    <string name="no_search_results">"Нема резултата"</string>
+    <string name="quest_selection_hint_title">"Превише задатака?"</string>
+    <string name="quest_selection_hint_message">"Допринос пре свега треба бити забаван! Уколико сте преоптерећени бројем задатака, у поставкама увек можете изменити који се задаци приказују као и њихов редослед."</string>
+    <string name="quest_presets_preset_add">"Додај групу задатака"</string>
+    <string name="quest_presets_preset_name">"Назив групе задатака"</string>
+    <string name="quest_presets_default_name">"Основно"</string>
+    <string name="quest_presets_selected">"Одабрано"</string>
+    <string name="quest_presets_delete_message">"Желите ли да избришете групу задатака „%s“? Избор и редослед задатака у групи ће бити трајно изгубљен."</string>
 </resources>

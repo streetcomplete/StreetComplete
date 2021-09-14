@@ -34,12 +34,11 @@ android {
 
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
-        minSdk = 17
+        minSdk = 21
         targetSdk = 30
-        versionCode = 3400
-        versionName = "34.0-beta1"
+        versionCode = 3500
+        versionName = "35.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled = true
     }
 
     buildTypes {
@@ -58,8 +57,9 @@ android {
         }
     }
 
-    lint {
+    lintOptions {
         disable("MissingTranslation")
+        ignore("UseCompatLoadingForDrawables") // doesn't make sense for minSdk >= 21
         isAbortOnError = false
     }
 }
@@ -95,15 +95,12 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.5.10"
-    val mockitoVersion = "3.11.2"
-    val kotlinxVersion = "1.5.0"
-    val daggerVersion = "2.37"
+    val kotlinVersion = "1.5.30"
+    val mockitoVersion = "3.12.4"
+    val kotlinxVersion = "1.5.1"
+    val daggerVersion = "2.38.1"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
-
-    // only necessary for Android 4.x (KitKat etc, before Lollipop)
-    implementation("androidx.multidex:multidex:2.0.1")
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -133,7 +130,7 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.0.0")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.2")
+    implementation("androidx.exifinterface:exifinterface:1.3.3")
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
@@ -166,7 +163,7 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.16.2")
@@ -176,6 +173,9 @@ dependencies {
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.25.0")
+
+    // sunset-sunrise parser for lit quests
+    implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
 }
 
 /** Localizations that should be pulled from POEditor etc. */
@@ -184,6 +184,13 @@ val bcp47ExportLanguages = setOf(
     "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
     "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
 )
+
+tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
+    group = "streetcomplete"
+    targetFile = "$projectDir/src/main/res/raw/credits_translators.yml"
+    languageCodes = bcp47ExportLanguages
+    cookie = properties["POEditorCookie"] as String
+}
 
 tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"

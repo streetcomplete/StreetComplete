@@ -240,12 +240,6 @@
     <string name="quest_openingHours_comment_description">"Sé precisu/a, meyor trescribe les pallabres del lletreru. Por exemplu; «con cita previa». L'ausencia de lletreru nun significa necesariamente que nun haya un horariu d'apertura habitual."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"¿Cuántos pisos tien esti edificiu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"¿Cuántos pisos tien esta parte del edificiu?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"¿Qué forma básica tien el teyáu del edificiu?"</string>
 
     <!-- Fuzzy -->
@@ -971,9 +965,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
 
     <!-- Fuzzy -->
     <string name="action_reset">"Reaniciar"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Calca de siguío p'arrastrar una xera y reordenala na llista, priorizando la so destacándola nel mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfacer"</string>

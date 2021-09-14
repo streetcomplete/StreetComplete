@@ -48,7 +48,7 @@ private val allowedKeysOnKerbNode = setOf(
 private val allowedKeysOnKerbNodeRegexes = getLastCheckDateKeys(".*").map { it.toRegex() }
 
 /** Most nodes **could** be a kerb, depending on their location within a way. However, nodes that
- *  are already something else, f.e. shop=hairdresser are definitely NOT a kerb.
+ *  are already something else, e.g. shop=hairdresser are definitely NOT a kerb.
  *
  *  If any node **could** be a kerb, this would lead to an unacceptable performance hit when any
  *  node is updated due to an answered quest. See
@@ -91,7 +91,7 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
 /** Find all node ids of end nodes of crossings that are (very probably) kerbs within the given
  *  collection of [ways] */
 private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
-    /* using asSequence in this function so to not copy potentially huge amounts (f.e. almost all
+    /* using asSequence in this function so to not copy potentially huge amounts (e.g. almost all
        nodes of all ways in the data set) of data into temporary lists */
 
     val footways = ways.filter { footwaysFilter.matches(it) }

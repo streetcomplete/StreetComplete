@@ -12,7 +12,6 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.*
-import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_oauth.*
 import kotlinx.coroutines.Dispatchers
@@ -126,7 +125,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
                 webView.visibility = View.VISIBLE
                 webView.loadUrl(
                     authorizeUrl,
-                    mutableMapOf("Accept-Language" to Locale.getDefault().toBcp47LanguageTag())
+                    mutableMapOf("Accept-Language" to Locale.getDefault().toLanguageTag())
                 )
                 oAuthVerifier = webViewClient.awaitOAuthCallback()
                 webView.visibility = View.INVISIBLE

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.oneway
 
-import android.content.res.Resources
+import android.content.Context
 import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
@@ -77,7 +77,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
     private fun showDirectionSelectionDialog() {
         val ctx = context ?: return
-        val items = OnewayAnswer.values().map { it.toItem(resources, wayRotation + mapRotation) }
+        val items = OnewayAnswer.values().map { it.toItem(ctx, wayRotation + mapRotation) }
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 3) { selected ->
             val oneway = selected.value!!
             puzzleView.replaceRightSideImage(ResImage(oneway.iconResId))
@@ -93,8 +93,8 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
     }
 }
 
-private fun OnewayAnswer.toItem(resources: Resources, rotation: Float): DisplayItem<OnewayAnswer> {
-    val drawable = RotatedCircleDrawable(resources.getDrawable(iconResId))
+private fun OnewayAnswer.toItem(context: Context, rotation: Float): DisplayItem<OnewayAnswer> {
+    val drawable = RotatedCircleDrawable(context.getDrawable(iconResId)!!)
     drawable.rotation = rotation
     return Item2(this, DrawableImage(drawable), ResText(titleResId))
 }

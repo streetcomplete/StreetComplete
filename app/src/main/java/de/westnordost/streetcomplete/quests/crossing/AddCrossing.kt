@@ -2,13 +2,15 @@ package de.westnordost.streetcomplete.quests.crossing
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
+import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
 import de.westnordost.streetcomplete.util.isRightOf
 
-class AddCrossing : OsmElementQuestType<Boolean> {
+class AddCrossing : OsmElementQuestType<KerbHeight> {
 
     private val roadsFilter by lazy { """
         ways with
@@ -44,7 +46,7 @@ class AddCrossing : OsmElementQuestType<Boolean> {
         val roadsByNodeId = mapData.ways.asSequence()
             .filter { roadsFilter.matches(it) }
             .groupByNodeIds()
-        /* filter out nodes of roads that are the end of a road network (dead end), f.e.
+        /* filter out nodes of roads that are the end of a road network (dead end), e.g.
          * https://www.openstreetmap.org/node/280046349 or
          * https://www.openstreetmap.org/node/56606744 */
         roadsByNodeId.removeEndNodes()
@@ -66,7 +68,7 @@ class AddCrossing : OsmElementQuestType<Boolean> {
         val footwaysByNodeId = mapData.ways.asSequence()
             .filter { footwaysFilter.matches(it) }
             .groupByNodeIds()
-        /* filter out nodes of footways that are the end of a footway, f.e.
+        /* filter out nodes of footways that are the end of a footway, e.g.
          * https://www.openstreetmap.org/node/1449039062 or
          * https://www.openstreetmap.org/node/56606744 */
         footwaysByNodeId.removeEndNodes()
@@ -79,7 +81,7 @@ class AddCrossing : OsmElementQuestType<Boolean> {
         *  There are two situations which both need to be handled:
         *
         *  1. The shared node is contained in a road way and a footway way and it is not an end
-        *     node of any of the involved ways, f.e.
+        *     node of any of the involved ways, e.g.
         *     https://www.openstreetmap.org/node/8418974983
         *
         *  2. The road way or the footway way or both actually end on the shared node but are
@@ -121,21 +123,31 @@ class AddCrossing : OsmElementQuestType<Boolean> {
              * For all roads a car can go through point X, it is checked if not all footways that
              * go through X are on the same side of the road-polyline.
              * */
-            val nodePos = mapData.getNode(nodeId)!!.position
-            return@retainAll neighbouringFootwayPositions.anyCrossesAnyOf(neighbouringRoadPositions, nodePos)}
+            val nodePos = mapData.getNode(nodeId)?.position
+            return@retainAll nodePos != null &&
+                neighbouringFootwayPositions.anyCrossesAnyOf(neighbouringRoadPositions, nodePos)
+        }
 
         return footwaysByNodeId.keys
             .mapNotNull { mapData.getNode(it) }
             .filter { it.tags.isEmpty() }
     }
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = AddKerbHeightForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        if (answer) {
+    override fun applyAnswerTo(answer: KerbHeight, changes: StringMapChangesBuilder) {
+        changes.updateWithCheckDate("kerb", answer.osmValue)
+        /* So, we don't assume there is a crossing here for kerb=no and kerb=raised.
+
+           As most actual crossings will have at least lowered kerbs, this is a good indicator.
+
+           When there is no kerb at all, it is likely that this is a situation where the footway
+           or road drawn in OSM are just virtual, to connect the geometry. In other words, it may be
+           just e.g. an asphalted area, which does not really classify as a crossing.
+         */
+
+        if (answer.osmValue in listOf("lowered", "flush")) {
             changes.add("highway", "crossing")
-        } else {
-            changes.add("crossing", "no")
         }
     }
 }

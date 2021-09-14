@@ -242,12 +242,6 @@
     <string name="quest_openingHours_comment_description">"理想中，在標示上的文字都是言簡意賅的，像是\"預約\"。不存在的標示並不需要代表這裡沒有規律的營業時間。"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"此棟建築物有多少層樓？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"此建築物的一部份中有多少層樓？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"此棟建築物的屋頂形狀是？"</string>
 
     <!-- Fuzzy -->
@@ -973,9 +967,6 @@
 
     <!-- Fuzzy -->
     <string name="action_reset">"重設"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"重按和移動任務重新設定下載的優先順序，以及顯示在地圖上。"</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"復原"</string>
@@ -1894,6 +1885,8 @@
     <string name="link_umap_description">"快速建立包含自訂資料的地圖並嵌入到您的網站。"</string>
     <string name="link_opnvkarte_description">"大眾運輸路線和站牌地圖"</string>
     <string name="link_pic4review_description">"藉由檢視您城市中的照片來貢獻OSM"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"這個有關開放街圖的 wiki 是你的起點"</string>
     <string name="link_learnosm_description">"開放街圖的新手？這是新使用者的導引"</string>
     <string name="link_neis_one_description">"一個OSM統計的資料庫，包含像是你在哪和如何貢獻，周遭其他人在排行榜的增加。"</string>
@@ -2009,9 +2002,17 @@
     <string name="resurvey_intervals_default">"預設"</string>
     <string name="resurvey_intervals_more_often">"詢問更多資訊"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) 接受現金支付嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"%s 街車站有椅子嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"這個街車站有椅子嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"這個公車站有椅子嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"%s 公車站有椅子嗎？"</string>
     <string name="quest_summit_register_title">"%s? 有登山登記處嗎？"</string>
     <string name="quest_is_defibrillator_inside_title">"這一個去顫器 (AED) 是在建築物裡嗎？"</string>
@@ -2076,7 +2077,6 @@
     <string name="quest_kerb_height_flush">"與路面材質一樣高度"</string>
     <string name="quest_kerb_height_lowered">"比路面材質高一些"</string>
     <string name="quest_kerb_height_raised">"高路緣"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"這一側的穿越道沒有路緣"</string>
     <string name="quest_kerb_height_lowered_ramp">"路緣斜坡"</string>
     <string name="quest_lanes_answer_lanes_description2">"具體說明所有汽車可通行標示車道 (所有方向)，所以，單車和停車場通道不算。
 如果有車道保留給公車，請留下註解。"</string>
@@ -2135,9 +2135,7 @@
     <string name="team_mode">"協作模式"</string>
     <string name="team_mode_exit">"離開協作模式"</string>
     <string name="team_mode_description">"當一群人在同一地點mapping時，您可以開啟協作模式來分配任務。"</string>
-    <string name="team_mode_team_size_label">"有多少位成員？"</string>
     <string name="team_mode_team_size_hint">"協作模式適用於2～12位成員"</string>
-    <string name="team_mode_choose_color">"現在所有成員各需要選擇一種代表色："</string>
     <string name="team_mode_active">"協作模式已啟用"</string>
     <string name="team_mode_deactivated">"協作模式已停用"</string>
     <string name="quest_pitchLit_title">"這個運動場有照明嗎？"</string>
@@ -2188,12 +2186,13 @@
     <string name="quest_barrier_type_stile_ladder">"跨牆梯子"</string>
     <string name="quest_barrier_type_bicycle_barrier">"單車障礙物"</string>
     <string name="quest_barrier_type_kissing_gate">"窄門"</string>
-    <string name="quest_barrier_type_stepover">"跨欄"</string>
     <string name="quest_barrier_type_swing_gate">"單槓"</string>
     <string name="quest_policeType_title">"這邊是什麼類型的警政單位？"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"轉換為窄門"</string>
     <string name="quest_stile_type_title">"這是什麼類型的通行門？"</string>
     <string name="quest_buildingType_semi_detached_description2">"連接的單一家庭房屋"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"任務選擇與優先度"</string>
     <string name="pref_subtitle_quests">"%2$d 分之 %1$d 已經啟用"</string>
     <string name="quest_busStopLit_tram_name_title">"%s 街車站有照明嗎？"</string>
@@ -2203,15 +2202,20 @@
     <string name="no_location_permission_warning_title">"位置資訊授權"</string>
     <string name="quest_surface_value_woodchips">"Woodchips"</string>
     <string name="no_camera_app">"沒有可用相機 app"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_name_title">"街車站 %s 是否有垃圾筒？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_tram_title">"這個街車站是否有垃圾筒？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_title">"這公車站是否有垃圾筒？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"%s 公車站是否有垃圾筒？"</string>
     <string name="quest_bollard_type_title">"這是什麼類型的護柱？"</string>
     <string name="quest_bollard_type_rising">"升高"</string>
-    <string name="quest_bollard_type_removable_with_key">"可用鑰匙移動"</string>
-    <string name="quest_bollard_type_removable_without_key">"不用鑰匙就可以移動"</string>
-    <string name="quest_bollard_type_foldable">"折疊式"</string>
     <string name="quest_bollard_type_flexible">"靈活式"</string>
     <string name="quest_bollard_type_fixed">"固定 (無法移動)"</string>
     <string name="quest_camera_type_title">"這是何種類型的監視鏡頭？"</string>

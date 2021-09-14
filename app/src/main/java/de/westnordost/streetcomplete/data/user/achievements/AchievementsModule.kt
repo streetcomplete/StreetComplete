@@ -254,7 +254,7 @@ object AchievementsModule {
         ),
         Link(
             "photon",
-            "http://photon.komoot.de/",
+            "https://photon.komoot.io",
             "Photon",
             LinkCategory.SHOWCASE,
             R.drawable.ic_link_photon,

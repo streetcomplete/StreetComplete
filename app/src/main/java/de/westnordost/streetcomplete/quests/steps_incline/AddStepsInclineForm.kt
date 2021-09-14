@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.steps_incline
 
-import android.content.res.Resources
+import android.content.Context
 import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
@@ -76,7 +76,7 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
 
     private fun showDirectionSelectionDialog() {
         val ctx = context ?: return
-        val items = StepsIncline.values().map { it.toItem(resources, wayRotation + mapRotation) }
+        val items = StepsIncline.values().map { it.toItem(ctx, wayRotation + mapRotation) }
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
             val dir = selected.value!!
             puzzleView.replaceRightSideImage(ResImage(dir.iconResId))
@@ -92,8 +92,8 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
     }
 }
 
-private fun StepsIncline.toItem(resources: Resources, rotation: Float): DisplayItem<StepsIncline> {
-    val drawable = RotatedCircleDrawable(resources.getDrawable(iconResId))
+private fun StepsIncline.toItem(context: Context, rotation: Float): DisplayItem<StepsIncline> {
+    val drawable = RotatedCircleDrawable(context.getDrawable(iconResId)!!)
     drawable.rotation = rotation
     return Item2(this, DrawableImage(drawable), ResText(titleResId))
 }

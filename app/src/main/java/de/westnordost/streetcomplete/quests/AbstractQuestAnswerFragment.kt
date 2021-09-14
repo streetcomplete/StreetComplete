@@ -43,7 +43,8 @@ import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
-abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), IsShowingQuestDetails {
+abstract class AbstractQuestAnswerFragment<T> :
+    AbstractBottomSheetFragment(), IsShowingQuestDetails, IsLockable {
 
     // dependencies
     private val countryInfos: CountryInfos
@@ -88,14 +89,18 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
 
     private var startedOnce = false
-    private var answered = 0
+
+    override var locked: Boolean = false
+        set(value) {
+            field = value
+            view?.findViewById<View>(R.id.glassPane)?.isGone = !locked
+        }
 
     // overridable by child classes
     open val contentLayoutResId: Int? = null
     open val buttonsResId: Int? = null
     open val otherAnswers = listOf<OtherAnswer>()
     open val contentPadding = true
-    open val defaultExpanded = true
 
     interface Listener {
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
@@ -166,8 +171,6 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         if (content.childCount == 0) {
             content.visibility = View.GONE
         }
-
-        if (defaultExpanded) expand()
     }
 
     private fun assembleOtherAnswers() : List<OtherAnswer> {
@@ -338,10 +341,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     }
 
     protected fun composeNote() {
-        if (answered++ == 0) {
-            val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
-            listener?.onComposeNote(questKey, questTitle)
-        }
+        val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
+        listener?.onComposeNote(questKey, questTitle)
     }
 
     private fun onClickSplitWayAnswer() {
@@ -349,18 +350,18 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             .setMessage(R.string.quest_split_way_description)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                if (answered++ == 0) listener?.onSplitWay(questKey as OsmQuestKey)
+                listener?.onSplitWay(questKey as OsmQuestKey)
             }
             .show()
         }
     }
 
     protected fun applyAnswer(data: T) {
-        if (answered++ == 0) listener?.onAnsweredQuest(questKey, data as Any)
+        listener?.onAnsweredQuest(questKey, data as Any)
     }
 
     protected fun skipQuest() {
-        if (answered++ == 0) listener?.onSkippedQuest(questKey)
+        listener?.onSkippedQuest(questKey)
     }
 
     protected fun replaceShopElement() {
@@ -375,7 +376,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
                 isoCountryCode,
                 featureDictionary,
                 onSelectedFeature = { tags ->
-                    if (answered++ == 0) listener?.onReplaceShopElement(questKey as OsmQuestKey, tags)
+                    listener?.onReplaceShopElement(questKey as OsmQuestKey, tags)
                 },
                 onLeaveNote = this::composeNote
             ).show()
@@ -390,7 +391,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         AlertDialog.Builder(context)
             .setMessage(R.string.osm_element_gone_description)
             .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
-                if (answered++ == 0) listener?.onDeletePoiNode(questKey as OsmQuestKey)
+                listener?.onDeletePoiNode(questKey as OsmQuestKey)
             }
             .setNeutralButton(R.string.leave_note) { _, _ ->
                 composeNote()
