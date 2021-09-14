@@ -2,10 +2,7 @@ package de.westnordost.streetcomplete.edithistory
 
 import android.text.format.DateUtils
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
@@ -14,6 +11,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.edithistory.overlayIcon
+import de.westnordost.streetcomplete.databinding.RowEditItemBinding
+import de.westnordost.streetcomplete.databinding.RowEditSyncedBinding
 import de.westnordost.streetcomplete.ktx.findPrevious
 import de.westnordost.streetcomplete.ktx.toast
 import java.lang.System.currentTimeMillis
@@ -107,8 +106,8 @@ class EditHistoryAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            EDIT   -> EditViewHolder(inflater.inflate(R.layout.row_edit_item, parent, false))
-            SYNCED -> SyncedViewHolder(inflater.inflate(R.layout.row_edit_synced, parent, false))
+            EDIT   -> EditViewHolder(RowEditItemBinding.inflate(inflater))
+            SYNCED -> SyncedViewHolder(RowEditSyncedBinding.inflate(inflater))
             else   -> throw IllegalArgumentException("Unknown viewType $viewType")
         }
     }
@@ -144,36 +143,31 @@ class EditHistoryAdapter(
         onUndo(edit)
     }
 
-    private inner class EditViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val clickArea = itemView.findViewById<ViewGroup>(R.id.clickArea)
-        private val questIcon = itemView.findViewById<ImageView>(R.id.questIcon)
-        private val selectionRing = itemView.findViewById<ImageView>(R.id.selectionRing)
-        private val overlayIcon = itemView.findViewById<ImageView>(R.id.overlayIcon)
-        private val undoButtonIcon = itemView.findViewById<ImageView>(R.id.undoButtonIcon)
-        private val timeText = itemView.findViewById<TextView>(R.id.timeText)
-        private val timeTextContainer = itemView.findViewById<ViewGroup>(R.id.timeTextContainer)
+    private inner class EditViewHolder(
+        private val binding: RowEditItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(edit: Edit, editAbove: Edit?) {
-            undoButtonIcon.isEnabled = edit.isUndoable
-            undoButtonIcon.isInvisible = selectedEdit != edit
-            selectionRing.isInvisible = selectedEdit != edit
+            binding.undoButtonIcon.isEnabled = edit.isUndoable
+            binding.undoButtonIcon.isInvisible = selectedEdit != edit
+            binding.selectionRing.isInvisible = selectedEdit != edit
 
-            if (edit.icon != 0) questIcon.setImageResource(edit.icon)
-            else questIcon.setImageDrawable(null)
+            if (edit.icon != 0) binding.questIcon.setImageResource(edit.icon)
+            else binding.questIcon.setImageDrawable(null)
 
-            if (edit.overlayIcon != 0) overlayIcon.setImageResource(edit.overlayIcon)
-            else overlayIcon.setImageDrawable(null)
+            if (edit.overlayIcon != 0) binding.overlayIcon.setImageResource(edit.overlayIcon)
+            else binding.overlayIcon.setImageDrawable(null)
 
             val aboveTimeStr = editAbove?.let { formatSameDayTime(it.createdTimestamp) }
             val timeStr = formatSameDayTime(edit.createdTimestamp)
-            timeTextContainer.isGone = aboveTimeStr == timeStr
-            timeText.text = timeStr
+            binding.timeTextContainer.isGone = aboveTimeStr == timeStr
+            binding.timeText.text = timeStr
 
             val res = itemView.context.resources
             val bgColor = res.getColor(if (edit.isSynced == true) R.color.slightly_greyed_out else R.color.background)
             itemView.setBackgroundColor(bgColor)
-            clickArea.isSelected = edit == selectedEdit
-            clickArea.setOnClickListener {
+            binding.clickArea.isSelected = edit == selectedEdit
+            binding.clickArea.setOnClickListener {
                 if (selectedEdit == edit) {
                     if (edit.isUndoable) {
                         undo(edit)
@@ -187,7 +181,7 @@ class EditHistoryAdapter(
         }
     }
 
-    private class SyncedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    private class SyncedViewHolder(binding: RowEditSyncedBinding) : RecyclerView.ViewHolder(binding.root)
 }
 
 private fun formatSameDayTime(timestamp: Long) =
