@@ -168,7 +168,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
         carBitmaps = CAR_RES_IDS.map { resources.getBitmapDrawable(it).bitmap }
 
-        binding = LanesSelectPuzzleBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = LanesSelectPuzzleBinding.inflate(LayoutInflater.from(context), this)
 
         animator.setTimeListener { _, _, deltaTime ->
             moveCars(deltaTime)
