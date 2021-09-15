@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /** Fragment that shows a notification that the user has X unread messages in his OSM inbox */
-class OsmUnreadMessagesFragment : DialogFragment() {
+class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_message) {
 
     @Inject lateinit var soundFx: SoundFx
 
@@ -37,10 +37,6 @@ class OsmUnreadMessagesFragment : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NO_FRAME, R.style.Theme_CustomDialog)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_unread_osm_message, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

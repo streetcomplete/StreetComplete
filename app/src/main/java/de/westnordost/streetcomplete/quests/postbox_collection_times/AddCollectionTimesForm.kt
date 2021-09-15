@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
@@ -22,8 +21,7 @@ import kotlinx.serialization.json.Json
 class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_collection_times
-
-    private val binding by viewBinding(QuestCollectionTimesBinding::bind)
+    private val binding by contentViewBinding(QuestCollectionTimesBinding::bind)
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() }

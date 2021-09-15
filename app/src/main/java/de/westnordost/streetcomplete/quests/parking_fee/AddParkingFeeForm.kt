@@ -9,7 +9,6 @@ import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.databinding.QuestButtonpanelYesNoBinding
 import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
@@ -27,9 +26,8 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
     override val contentLayoutResId = R.layout.quest_fee_hours
     override val buttonsResId = R.layout.quest_buttonpanel_yes_no
 
-    private val binding by viewBinding(QuestFeeHoursBinding::bind)
+    private val binding by contentViewBinding(QuestFeeHoursBinding::bind)
     private val buttonsBinding by viewBinding(QuestButtonpanelYesNoBinding::bind)
-    private val questAnswerBinding by viewBinding(FragmentQuestAnswerBinding::bind)
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_fee_answer_hours) { isDefiningHours = true }
@@ -66,7 +64,6 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         isFeeOnlyAtHours = savedInstanceState?.getBoolean(IS_FEE_ONLY_AT_HOURS, true) ?: true
         isDefiningHours = savedInstanceState?.getBoolean(IS_DEFINING_HOURS) ?: false
 
-        questAnswerBinding.okButton.setOnClickListener { onClickOk() }
         buttonsBinding.yesButton.setOnClickListener { onClickYesNo(true) }
         buttonsBinding.noButton.setOnClickListener { onClickYesNo(false) }
 
@@ -94,15 +91,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
 
     override fun onClickOk() {
         val times = openingHoursAdapter.createOpeningHours()
-        if (times.rules.isNotEmpty()) {
-            if(isFeeOnlyAtHours) {
-                applyAnswer(HasFeeAtHours(times))
-            } else {
-                applyAnswer(HasFeeExceptAtHours(times))
-            }
-        } else {
-            onClickYesNo(!isFeeOnlyAtHours)
-        }
+        applyAnswer(if(isFeeOnlyAtHours) HasFeeAtHours(times) else HasFeeExceptAtHours(times))
     }
 
     private fun onClickYesNo(answer: Boolean) {
@@ -118,6 +107,9 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         outState.putBoolean(IS_DEFINING_HOURS, isDefiningHours)
         outState.putBoolean(IS_FEE_ONLY_AT_HOURS, isFeeOnlyAtHours)
     }
+
+    override fun isRejectingClose() =
+        isDefiningHours && openingHoursAdapter.rows.isEmpty()
 
     override fun isFormComplete() =
         isDefiningHours && openingHoursAdapter.rows.isNotEmpty()

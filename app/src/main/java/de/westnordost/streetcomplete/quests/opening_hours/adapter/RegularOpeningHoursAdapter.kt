@@ -50,9 +50,9 @@ class RegularOpeningHoursAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            MONTHS   -> MonthsViewHolder(QuestTimesMonthRowBinding.inflate(inflater))
-            WEEKDAYS -> WeekdayViewHolder(QuestTimesWeekdayRowBinding.inflate(inflater))
-            OFFDAYS  -> OffDaysViewHolder(QuestTimesOffdayRowBinding.inflate(inflater))
+            MONTHS   -> MonthsViewHolder(QuestTimesMonthRowBinding.inflate(inflater, parent, false))
+            WEEKDAYS -> WeekdayViewHolder(QuestTimesWeekdayRowBinding.inflate(inflater, parent, false))
+            OFFDAYS  -> OffDaysViewHolder(QuestTimesOffdayRowBinding.inflate(inflater, parent, false))
             else     -> throw IllegalArgumentException("Unknown viewType $viewType")
         }
     }

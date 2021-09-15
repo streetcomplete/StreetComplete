@@ -39,6 +39,7 @@
             android:textSize="32dp"
             android:textAlignment="center"
             android:maxLines="1"
+            android:textColor="#fff"
             android:background="#000000ff"
             tools:text="Sesame Street"
             tools:ignore="RtlCompat,SpUsage" />
@@ -50,6 +51,7 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_arrow_drop_down_24dp"
+        app:tint="#fff"
         android:layout_toStartOf="@+id/deleteButton"
         android:layout_centerVertical="true"
         android:layout_marginEnd="8dp"

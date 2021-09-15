@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.ktx.showKeyboard
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
@@ -28,8 +27,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_maxspeed
-
-    private val binding by viewBinding(QuestMaxspeedBinding::bind)
+    private val binding by contentViewBinding(QuestMaxspeedBinding::bind)
 
     override val otherAnswers: List<OtherAnswer> get() {
         val result = mutableListOf<OtherAnswer>()

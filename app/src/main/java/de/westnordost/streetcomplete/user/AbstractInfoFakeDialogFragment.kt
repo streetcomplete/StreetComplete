@@ -9,7 +9,6 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
@@ -29,23 +28,16 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
     // need to keep the animators here to be able to clear them on cancel
     private val currentAnimators: MutableList<ViewPropertyAnimator> = mutableListOf()
 
-    private lateinit var dialogAndBackgroundContainer: ViewGroup
-    private lateinit var dialogBackground: View
-    private lateinit var dialogContentContainer: ViewGroup
-    private lateinit var dialogBubbleBackground: View
-    private lateinit var titleView: View
+    protected abstract val dialogAndBackgroundContainer: ViewGroup
+    protected abstract val dialogBackground: View
+    protected abstract val dialogContentContainer: ViewGroup
+    protected abstract val dialogBubbleBackground: View
+    protected abstract val titleView: View
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        dialogAndBackgroundContainer = view.findViewById(R.id.dialogAndBackgroundContainer)
-        dialogBackground = view.findViewById(R.id.dialogBackground)
-        titleView = view.findViewById(R.id.titleView)
-        dialogContentContainer = view.findViewById(R.id.dialogContentContainer)
-        dialogBubbleBackground = view.findViewById(R.id.dialogBubbleBackground)
-
         dialogAndBackgroundContainer.setOnClickListener { dismiss() }
     }
 

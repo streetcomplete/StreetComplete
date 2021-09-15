@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <AutoCompleteTextView
-        android:id="@+id/nameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:completionThreshold="2"
-        android:textSize="40sp"
-        tools:text="Bürger König" />
-</merge>
+<AutoCompleteTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nameInput"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:completionThreshold="2"
+    android:textSize="40sp"
+    tools:text="Bürger König" />

@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial
 class AddRecyclingContainerMaterialsForm
     : AImageListQuestAnswerFragment<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_recycling_materials
+    override val descriptionResId = R.string.quest_recycling_materials_note
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_recycling_materials_answer_waste) { confirmJustTrash() }

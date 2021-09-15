@@ -43,7 +43,7 @@ class CollectionTimesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(QuestTimesWeekdayRowBinding.inflate(inflater))
+        return ViewHolder(QuestTimesWeekdayRowBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

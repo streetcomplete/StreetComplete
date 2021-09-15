@@ -1,82 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:text="@string/quest_maxspeed_sign_question" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/quest_maxspeed_sign_question" />
-
-            <RadioGroup
-                android:id="@+id/speedTypeSelect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/sign"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/quest_maxspeed_answer_sign" />
-
-                <RadioButton
-                    android:id="@+id/zone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/quest_maxspeed_answer_zone2" />
-
-                <RadioButton
-                    android:id="@+id/living_street"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/quest_maxspeed_answer_living_street" />
-
-                <RadioButton
-                    android:id="@+id/nsl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/quest_maxspeed_answer_nsl" />
-
-                <RadioButton
-                    android:id="@+id/no_sign"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/quest_maxspeed_answer_noSign2" />
-
-            </RadioGroup>
-
-        </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="120dp"
+        <RadioGroup
+            android:id="@+id/speedTypeSelect"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <FrameLayout
-                android:id="@+id/rightSideContainer"
+            <RadioButton
+                android:id="@+id/sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                tools:ignore="UselessParent">
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_sign" />
 
-            </FrameLayout>
+            <RadioButton
+                android:id="@+id/zone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_zone2" />
+
+            <RadioButton
+                android:id="@+id/living_street"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_living_street" />
+
+            <RadioButton
+                android:id="@+id/nsl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_nsl" />
+
+            <RadioButton
+                android:id="@+id/no_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_noSign2" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/rightSideContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:ignore="UselessParent">
 
         </FrameLayout>
 
-    </LinearLayout>
-</merge>
+    </FrameLayout>
+
+</LinearLayout>

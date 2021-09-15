@@ -46,10 +46,10 @@ import de.westnordost.streetcomplete.util.applyTransforms
 class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
     HandlesOnBackPressed {
 
+    private val binding by viewBinding(FragmentAchievementInfoBinding::bind)
+
     /** View from which the achievement icon is animated from (and back on dismissal)*/
     private var achievementIconBubble: View? = null
-
-    private val binding by viewBinding(FragmentAchievementInfoBinding::bind)
 
     var isShowing: Boolean = false
         private set

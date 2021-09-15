@@ -16,15 +16,27 @@ import kotlinx.serialization.json.Json
 /** Bottom sheet fragment with which the user can leave a note instead of solving the quest */
 class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDetails {
 
+    override val layoutResId = R.layout.fragment_quest_answer
+
+    private val binding by viewBinding(FragmentQuestAnswerBinding::bind)
+
+    override val bottomSheetContainer get() = binding.bottomSheetContainer
+    override val bottomSheet get() = binding.bottomSheet
+    override val scrollViewChild get() = binding.scrollViewChild
+    override val bottomSheetTitle get() = binding.speechBubbleTitleContainer
+    override val bottomSheetContent get() = binding.speechbubbleContentContainer
+    override val floatingBottomView get() = binding.okButton
+    override val backButton get() = binding.closeButton
+    override val buttonPanel get() = binding.buttonPanel
+
+    private val contentBinding by viewBinding(FormLeaveNoteBinding::bind)
+
+    override val noteInput get() = contentBinding.noteInput
+
     interface Listener {
         fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
-    private val binding by viewBinding(FragmentQuestAnswerBinding::bind)
-    private val formLeaveNoteBinding by viewBinding(FormLeaveNoteBinding::bind)
-
-    override val layoutResId = R.layout.fragment_quest_answer
 
     private lateinit var questTitle: String
     override lateinit var questKey: QuestKey
@@ -40,7 +52,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
         super.onViewCreated(view, savedInstanceState)
 
         binding.titleLabel.text = getString(R.string.map_btn_create_note)
-        formLeaveNoteBinding.descriptionLabel.text = null
+        contentBinding.descriptionLabel.text = null
     }
 
     override fun onComposedNote(text: String, imagePaths: List<String>) {

@@ -10,14 +10,18 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.text.parseAsHtml
 import androidx.core.view.isGone
-import com.google.android.flexbox.FlexboxLayout
+import androidx.core.widget.NestedScrollView
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.viewbinding.ViewBinding
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -30,6 +34,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
+import de.westnordost.streetcomplete.databinding.QuestButtonpanelOtherAnswersBinding
 import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
@@ -42,16 +47,30 @@ import java.lang.ref.WeakReference
 import java.util.Locale
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
+import kotlin.properties.ReadOnlyProperty
+import kotlin.reflect.KProperty
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractQuestAnswerFragment<T> :
     AbstractBottomSheetFragment(), IsShowingQuestDetails, IsLockable {
 
+    private val binding by viewBinding(FragmentQuestAnswerBinding::bind)
+    protected lateinit var otherAnswersButton: TextView
+
+    override val bottomSheetContainer get() = binding.bottomSheetContainer
+    override val bottomSheet get() = binding.bottomSheet
+    override val scrollViewChild get() = binding.scrollViewChild
+    override val bottomSheetTitle get() = binding.speechBubbleTitleContainer
+    override val bottomSheetContent get() = binding.speechbubbleContentContainer
+    override val floatingBottomView get() = binding.okButton
+    override val backButton get() = binding.closeButton
+
+    protected val scrollView: NestedScrollView get() = binding.scrollView
+
     // dependencies
     private val countryInfos: CountryInfos
     private val questTypeRegistry: QuestTypeRegistry
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-    private val binding by viewBinding(FragmentQuestAnswerBinding::bind)
 
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
@@ -64,11 +83,6 @@ abstract class AbstractQuestAnswerFragment<T> :
     protected val countryInfo get() = _countryInfo!!
 
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
-
-    // views
-    private lateinit var content: ViewGroup
-    private lateinit var buttonPanel: FlexboxLayout
-    private lateinit var otherAnswersButton: Button
 
     // passed in parameters
     override lateinit var questKey: QuestKey
@@ -148,31 +162,28 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_quest_answer, container, false)
-        // must be findViewById because the binding is only initialized after onCreateView
-        content = view.findViewById(R.id.content)
-        buttonPanel = view.findViewById(R.id.buttonPanel)
-        otherAnswersButton = buttonPanel.findViewById(R.id.otherAnswersButton)
-
-        contentLayoutResId?.let { setContentView(it) }
-        buttonsResId?.let { setButtonsView(it) }
-        return view
+        return inflater.inflate(R.layout.fragment_quest_answer, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        contentLayoutResId?.let { setContentView(it) }
+
+        otherAnswersButton = QuestButtonpanelOtherAnswersBinding.inflate(layoutInflater, binding.buttonPanel).otherAnswersButton
+        buttonsResId?.let { setButtonsView(it) }
+
         binding.titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
 
         val levelLabelText = getLocationLabelText()
-        binding.locationLabel.isGone = levelLabelText == null
+        binding.titleHintLabel.isGone = levelLabelText == null
         if (levelLabelText != null) {
-            binding.locationLabel.text = levelLabelText
+            binding.titleHintLabel.text = levelLabelText
         }
 
         // no content? -> hide the content container
-        if (content.childCount == 0) {
-            content.visibility = View.GONE
+        if (binding.content.childCount == 0) {
+            binding.content.visibility = View.GONE
         }
     }
 
@@ -402,32 +413,32 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     protected fun setContentView(resourceId: Int): View {
-        if (content.childCount > 0) {
-            content.removeAllViews()
+        if (binding.content.childCount > 0) {
+            binding.content.removeAllViews()
         }
-        content.visibility = View.VISIBLE
+        binding.content.visibility = View.VISIBLE
         updateContentPadding()
-        return layoutInflater.inflate(resourceId, content)
+        return layoutInflater.inflate(resourceId, binding.content)
     }
 
     private fun updateContentPadding() {
         if(!contentPadding) {
-            content.setPadding(0,0,0,0)
+            binding.content.setPadding(0,0,0,0)
         } else {
             val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)
             val vertical = resources.getDimensionPixelSize(R.dimen.quest_form_vertical_padding)
-            content.setPadding(horizontal, vertical, horizontal, vertical)
+            binding.content.setPadding(horizontal, vertical, horizontal, vertical)
         }
     }
 
     protected fun setButtonsView(resourceId: Int) {
         removeButtonsView()
-        activity?.layoutInflater?.inflate(resourceId, buttonPanel)
+        layoutInflater.inflate(resourceId, binding.buttonPanel)
     }
 
     protected fun removeButtonsView() {
-        if (buttonPanel.childCount > 1) {
-            buttonPanel.removeViews(1, buttonPanel.childCount - 1)
+        if (binding.buttonPanel.childCount > 1) {
+            binding.buttonPanel.removeViews(1, binding.buttonPanel.childCount - 1)
         }
     }
 
@@ -440,6 +451,34 @@ abstract class AbstractQuestAnswerFragment<T> :
         @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
         @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>
     }
+
+    inline fun <reified T : ViewBinding> contentViewBinding(
+        noinline viewBinder: (View) -> T
+    ) = ContentViewBindingPropertyDelegate(this, viewBinder)
+
+    class ContentViewBindingPropertyDelegate<T : ViewBinding>(
+        private val fragment: AbstractQuestAnswerFragment<*>,
+        private val viewBinder: (View) -> T
+    ) : ReadOnlyProperty<AbstractQuestAnswerFragment<*>, T>, LifecycleEventObserver {
+
+        private var binding: T? = null
+
+        override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+            if (event == Lifecycle.Event.ON_DESTROY) {
+                binding = null
+                source.lifecycle.removeObserver(this)
+            }
+        }
+
+        override fun getValue(thisRef: AbstractQuestAnswerFragment<*>, property: KProperty<*>): T {
+            if (binding == null) {
+                binding = viewBinder(thisRef.binding.content.getChildAt(0))
+                fragment.viewLifecycleOwner.lifecycle.addObserver(this)
+            }
+            return binding!!
+        }
+    }
+
 
     companion object {
         private const val ARG_QUEST_KEY = "quest_key"

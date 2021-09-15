@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestPlacenameBinding
 import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.toTypedArray
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.shop_type.SearchAdapter
@@ -20,8 +19,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_placename
-
-    private val binding by viewBinding(QuestPlacenameBinding::bind)
+    private val binding by contentViewBinding(QuestPlacenameBinding::bind)
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_generic_answer_noSign) { confirmNoName() }

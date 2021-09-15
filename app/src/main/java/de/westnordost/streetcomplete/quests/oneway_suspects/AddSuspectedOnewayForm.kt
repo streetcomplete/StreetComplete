@@ -23,7 +23,7 @@ import kotlinx.coroutines.withContext
 class AddSuspectedOnewayForm : AYesNoQuestAnswerFragment<SuspectedOnewayAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
-    private val binding by viewBinding(QuestStreetSidePuzzleBinding::bind)
+    private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
 
     override val contentPadding = false
 

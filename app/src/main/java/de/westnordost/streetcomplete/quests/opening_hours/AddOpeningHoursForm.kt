@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.databinding.QuestButtonpanelYesNoBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.*
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
@@ -28,8 +27,7 @@ import kotlinx.serialization.json.Json
 class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_opening_hours
-
-    private val binding by viewBinding(QuestOpeningHoursBinding::bind)
+    private val binding by contentViewBinding(QuestOpeningHoursBinding::bind)
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_openingHours_no_sign) { confirmNoSign() },

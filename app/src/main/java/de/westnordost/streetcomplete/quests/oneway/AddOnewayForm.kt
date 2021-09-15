@@ -8,7 +8,6 @@ import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
@@ -23,7 +22,7 @@ import kotlin.math.PI
 class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
-    private val binding by viewBinding(QuestStreetSidePuzzleBinding::bind)
+    private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
 
     override val contentPadding = false
 

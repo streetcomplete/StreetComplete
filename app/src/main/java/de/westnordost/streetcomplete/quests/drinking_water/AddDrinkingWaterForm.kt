@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestDrinkingWaterBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.drinking_water.DrinkingWater.*
 
 class AddDrinkingWaterForm : AbstractQuestFormAnswerFragment<DrinkingWater>() {
 
     override val contentLayoutResId = R.layout.quest_drinking_water
-    private val binding by viewBinding(QuestDrinkingWaterBinding::bind)
+    private val binding by contentViewBinding(QuestDrinkingWaterBinding::bind)
 
     override val defaultExpanded = false
 

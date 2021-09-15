@@ -22,11 +22,17 @@ import kotlin.math.pow
 /** Shows the details for a certain quest type as a fake-dialog. */
 class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_country_info_dialog) {
 
+    private val binding by viewBinding(FragmentCountryInfoDialogBinding::bind)
+
+    override val dialogAndBackgroundContainer get() = binding.dialogAndBackgroundContainer
+    override val dialogBackground get() = binding.dialogBackground
+    override val dialogContentContainer get() = binding.dialogContentContainer
+    override val dialogBubbleBackground get() = binding.dialogBubbleBackground
+    override val titleView get() = binding.titleView
+
     // need to keep the animators here to be able to clear them on cancel
     private var counterAnimation: ValueAnimator? = null
     private var circularRevealAnimator: ObjectAnimator? = null
-
-    private val binding by viewBinding(FragmentCountryInfoDialogBinding::bind)
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
@@ -98,7 +104,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
 
         anim.doOnStart { binding.solvedQuestsContainer.visibility = View.VISIBLE }
         anim.duration = 300 + (questCount * 500.0).pow(0.6).toLong()
-        anim.addUpdateListener { binding.solvedQuestsText?.text = it.animatedValue.toString() }
+        anim.addUpdateListener { binding.solvedQuestsText.text = it.animatedValue.toString() }
         anim.interpolator = DecelerateInterpolator()
         anim.startDelay = ANIMATION_TIME_IN_MS
         anim.start()

@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/countInput"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="bottom">
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/countMultiplierLabel"
+        android:inputType="number"
+        android:maxLines="1"
+        android:minEms="1"
+        android:textSize="56dp" />
 
-        <EditText
-            android:id="@+id/countInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/countMultiplierLabel"
-            android:inputType="number"
-            android:maxLines="1"
-            android:minEms="1"
-            android:textSize="56dp" />
+    <TextView
+        android:id="@+id/countMultiplierLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="6dp"
+        android:text=" × "
+        android:textSize="38dp"
+        tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/countMultiplierLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="6dp"
-            android:text=" × "
-            android:textSize="38dp"
-            tools:ignore="HardcodedText" />
+    <ImageView
+        android:id="@+id/capacityBikeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/countMultiplierLabel"
+        android:background="@drawable/ic_step" />
 
-        <ImageView
-            android:id="@+id/capacityBikeImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/countMultiplierLabel"
-            android:background="@drawable/ic_step" />
-
-    </RelativeLayout>
-</merge>
+</RelativeLayout>

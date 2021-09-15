@@ -6,7 +6,7 @@
 
     <include android:id="@+id/markerCreateLayout"
         layout="@layout/marker_create_note"/>
-    <include android:id="@+id/fragmentQuestAnsLayout"
+    <include android:id="@+id/questAnswerLayout"
         layout="@layout/fragment_quest_answer" />
 
 </de.westnordost.streetcomplete.view.SlidingRelativeLayout>

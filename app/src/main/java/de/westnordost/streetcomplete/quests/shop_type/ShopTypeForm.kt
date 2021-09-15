@@ -13,15 +13,13 @@ import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.ktx.toTypedArray
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
 
     override val contentLayoutResId = R.layout.view_shop_type
-
-    private val binding by viewBinding(ViewShopTypeBinding::bind)
+    private val binding by contentViewBinding(ViewShopTypeBinding::bind)
 
     private lateinit var radioButtons: List<RadioButton>
     private var selectedRadioButtonId: Int = 0

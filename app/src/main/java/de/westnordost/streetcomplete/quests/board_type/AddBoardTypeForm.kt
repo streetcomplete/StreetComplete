@@ -5,19 +5,19 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestBoardTypeBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.board_type.BoardType.*
 
 class AddBoardTypeForm : AbstractQuestFormAnswerFragment<BoardType>() {
 
+    override val contentLayoutResId = R.layout.quest_board_type
+    private val binding by contentViewBinding(QuestBoardTypeBinding::bind)
+
     override val defaultExpanded = false
 
-    private val binding by viewBinding(QuestBoardTypeBinding::bind)
-
     override val otherAnswers = listOf(
-            OtherAnswer(R.string.quest_board_type_map) { confirmOnMap() }
+        OtherAnswer(R.string.quest_board_type_map) { confirmOnMap() }
     )
 
     private fun confirmOnMap() {
@@ -28,8 +28,6 @@ class AddBoardTypeForm : AbstractQuestFormAnswerFragment<BoardType>() {
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
     }
-
-    override val contentLayoutResId = R.layout.quest_board_type
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

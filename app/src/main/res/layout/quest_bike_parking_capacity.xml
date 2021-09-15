@@ -1,51 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <TextView
+        android:id="@+id/clarificationText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="@string/quest_bikeParkingCapacity_hint" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom">
+
+        <EditText
+            android:id="@+id/capacityInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/capacityMultiplierLabel"
+            android:inputType="number"
+            android:maxLines="1"
+            android:minEms="1"
+            android:textSize="48dp" />
 
         <TextView
-            android:id="@+id/clarificationText"
-            android:layout_width="match_parent"
+            android:id="@+id/capacityMultiplierLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/quest_bikeParkingCapacity_hint" />
+            android:layout_centerInParent="true"
+            android:padding="6dp"
+            android:text=" × "
+            android:textSize="38dp"
+            tools:ignore="HardcodedText" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/capacityBikeImage"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="bottom">
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/capacityMultiplierLabel"
+            android:background="@drawable/ic_bicycle" />
 
-            <EditText
-                android:id="@+id/capacityInput"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/capacityMultiplierLabel"
-                android:inputType="number"
-                android:maxLines="1"
-                android:minEms="1"
-                android:textSize="48dp" />
-
-            <TextView
-                android:id="@+id/capacityMultiplierLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:padding="6dp"
-                android:text=" × "
-                android:textSize="38dp"
-                tools:ignore="HardcodedText" />
-
-            <ImageView
-                android:id="@+id/capacityBikeImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/capacityMultiplierLabel"
-                android:background="@drawable/ic_bicycle" />
-
-        </RelativeLayout>
-    </LinearLayout>
-</merge>
+    </RelativeLayout>
+</LinearLayout>

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AlertDialog
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -14,7 +13,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 class AddBusStopRefForm : AbstractQuestFormAnswerFragment<BusStopRefAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_ref
-    private val binding by viewBinding(QuestRefBinding::bind)
+    private val binding by contentViewBinding(QuestRefBinding::bind)
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_ref_answer_noRef) { confirmNoRef() }

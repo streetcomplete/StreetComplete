@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.ktx.viewBinding
 /** Abstract base class for dialogs in which the user answers a yes/no quest  */
 abstract class AYesNoQuestAnswerFragment<T> : AbstractQuestAnswerFragment<T>() {
 
-    override val buttonsResId = R.layout.quest_buttonpanel_yes_no
+    final override val buttonsResId = R.layout.quest_buttonpanel_yes_no
 
     private val binding by viewBinding(QuestButtonpanelYesNoBinding::bind)
 

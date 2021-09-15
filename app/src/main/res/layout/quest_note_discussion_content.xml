@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/noteInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@drawable/background_edittext_outline"
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        android:maxLines="12"
+        android:minLines="3"
+        android:scrollbars="vertical" />
 
-        <EditText
-            android:id="@+id/noteInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_edittext_outline"
-            android:gravity="top|start"
-            android:inputType="textMultiLine"
-            android:maxLines="12"
-            android:minLines="3"
-            android:scrollbars="vertical" />
+    <FrameLayout
+        android:id="@+id/attachPhotoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
 
-        <FrameLayout
-            android:id="@+id/attachPhotoFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
-
-    </LinearLayout>
-</merge>
+</LinearLayout>

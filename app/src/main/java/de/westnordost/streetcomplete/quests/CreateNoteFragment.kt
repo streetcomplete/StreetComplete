@@ -21,26 +21,39 @@ import de.westnordost.streetcomplete.ktx.viewBinding
 /** Bottom sheet fragment with which the user can create a new note, including moving the note */
 class CreateNoteFragment : AbstractCreateNoteFragment() {
 
+    override val layoutResId = R.layout.fragment_create_note
+
+    private val binding by viewBinding(FragmentCreateNoteBinding::bind)
+
+    override val bottomSheetContainer get() = binding.questAnswerLayout.bottomSheetContainer
+    override val bottomSheet get() = binding.questAnswerLayout.bottomSheet
+    override val scrollViewChild get() = binding.questAnswerLayout.scrollViewChild
+    override val bottomSheetTitle get() = binding.questAnswerLayout.speechBubbleTitleContainer
+    override val bottomSheetContent get() = binding.questAnswerLayout.speechbubbleContentContainer
+    override val floatingBottomView get() = binding.questAnswerLayout.okButton
+    override val backButton get() = binding.questAnswerLayout.closeButton
+    override val buttonPanel get() = binding.questAnswerLayout.buttonPanel
+
+    private val contentBinding by viewBinding(FormLeaveNoteBinding::bind)
+
+    override val noteInput get() = contentBinding.noteInput
+
     interface Listener {
         /** Called when the user wants to leave a note which is not related to a quest  */
         fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point)
     }
     private val listener: Listener? get() = parentFragment as? Listener
             ?: activity as? Listener
-    private val binding by viewBinding(FragmentCreateNoteBinding::bind)
-    private val formLeaveNoteBinding by viewBinding(FormLeaveNoteBinding::bind)
-
-    override val layoutResId = R.layout.fragment_create_note
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         if (savedInstanceState == null) {
-            binding.markerCreateLayout.markerLayoutContainer?.startAnimation(createFallDownAnimation())
+            binding.markerCreateLayout.markerLayoutContainer.startAnimation(createFallDownAnimation())
         }
 
-        binding.fragmentQuestAnsLayout.titleLabel.text = getString(R.string.map_btn_create_note)
-        formLeaveNoteBinding.descriptionLabel.text = getString(R.string.create_new_note_description)
+        binding.questAnswerLayout.titleLabel.text = getString(R.string.map_btn_create_note)
+        contentBinding.descriptionLabel.text = getString(R.string.create_new_note_description)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -72,18 +85,18 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
     override fun onDiscard() {
         super.onDiscard()
-        binding.markerCreateLayout.markerLayoutContainer?.visibility = View.INVISIBLE
+        binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
     }
 
     override fun onComposedNote(text: String, imagePaths: List<String>) {
         /* pressing once on "OK" should first only close the keyboard, so that the user can review
            the position of the note he placed */
-        if (formLeaveNoteBinding.noteInput.hideKeyboard() == true) return
+        if (contentBinding.noteInput.hideKeyboard() == true) return
 
         val screenPos = binding.markerCreateLayout.createNoteMarker.getLocationInWindow()
         screenPos.offset(binding.markerCreateLayout.createNoteMarker.width / 2, binding.markerCreateLayout.createNoteMarker.height / 2)
 
-        binding.markerCreateLayout.markerLayoutContainer?.visibility = View.INVISIBLE
+        binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 
         listener?.onCreatedNote(text, imagePaths, screenPos)
     }

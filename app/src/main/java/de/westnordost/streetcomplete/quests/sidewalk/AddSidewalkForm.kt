@@ -7,7 +7,6 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
@@ -18,7 +17,7 @@ import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
-    private val binding by viewBinding(QuestStreetSidePuzzleBinding::bind)
+    private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
 
     override val otherAnswers = listOf(
             OtherAnswer(R.string.quest_sidewalk_separately_mapped) { confirmSeparatelyMappedSidewalk() }

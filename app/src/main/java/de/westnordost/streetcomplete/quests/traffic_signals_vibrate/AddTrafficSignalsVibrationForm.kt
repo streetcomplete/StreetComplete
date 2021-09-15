@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestTrafficLightsVibrationBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
 
 class AddTrafficSignalsVibrationForm : AYesNoQuestAnswerFragment<Boolean>() {
 
     override val contentLayoutResId = R.layout.quest_traffic_lights_vibration
-
-    private val binding by viewBinding(QuestTrafficLightsVibrationBinding::bind)
+    private val binding by contentViewBinding(QuestTrafficLightsVibrationBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -22,5 +20,4 @@ class AddTrafficSignalsVibrationForm : AYesNoQuestAnswerFragment<Boolean>() {
     }
 
     override fun onClick(answer: Boolean) { applyAnswer(answer) }
-
 }

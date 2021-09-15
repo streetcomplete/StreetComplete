@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.databinding.QuestMaxweightBinding
 import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.ktx.showKeyboard
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -22,8 +21,7 @@ import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_maxweight
-
-    private val binding by viewBinding(QuestMaxweightBinding::bind)
+    private val binding by contentViewBinding(QuestMaxweightBinding::bind)
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },

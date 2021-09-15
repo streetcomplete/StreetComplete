@@ -5,15 +5,13 @@ import android.view.View
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestParkingAccessBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.parking_access.ParkingAccess.*
 
 class AddParkingAccessForm : AbstractQuestFormAnswerFragment<ParkingAccess>() {
 
     override val contentLayoutResId = R.layout.quest_parking_access
-
-    private val binding by viewBinding(QuestParkingAccessBinding::bind)
+    private val binding by contentViewBinding(QuestParkingAccessBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
