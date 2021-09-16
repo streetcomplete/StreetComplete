@@ -42,7 +42,8 @@ fun Smoothness.getDescriptionResId(surface: String, highway: String) = when (thi
     INTERMEDIATE -> when (surface) {
         "paving_stones" -> R.string.quest_smoothness_description_intermediate_paving_stones
         "sett" -> R.string.quest_smoothness_description_intermediate_sett
-        "compacted", "gravel" -> R.string.quest_smoothness_description_intermediate_compacted
+        "compacted" -> R.string.quest_smoothness_description_intermediate_compacted
+        "gravel" -> R.string.quest_smoothness_description_intermediate_gravel
         "asphalt" -> when (highway) {
             in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_intermediate_path
             else -> R.string.quest_smoothness_description_intermediate_road
@@ -58,9 +59,12 @@ fun Smoothness.getDescriptionResId(surface: String, highway: String) = when (thi
         }
         else -> null
     }
-    VERY_BAD -> when (highway) {
-        in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_very_bad_path
-        else -> R.string.quest_smoothness_description_very_bad_road
+    VERY_BAD -> when (surface) {
+        "sett" -> R.string.quest_smoothness_description_very_bad_sett
+        else -> when (highway) {
+            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_very_bad_path
+            else -> R.string.quest_smoothness_description_very_bad_road
+        }
     }
     // split up?
     HORRIBLE -> R.string.quest_smoothness_description_horrible
@@ -83,6 +87,7 @@ fun Smoothness.getAsphaltImageResId() = when (this) {
     GOOD -> R.drawable.surface_asphalt_good
     INTERMEDIATE -> R.drawable.surface_asphalt_intermediate
     BAD -> R.drawable.surface_asphalt_bad
+    VERY_BAD -> R.drawable.surface_asphalt_very_bad
     else -> null
 }
 

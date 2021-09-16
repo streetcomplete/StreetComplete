@@ -161,23 +161,27 @@ surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/w
 surface_unpaved.jpg            CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
 surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami)
 surface_woodchips.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Woodchips_surface.jpg (10992-osm)
-surface_asphalt_bad.jpg        CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Potholes_at_the_Level_Crossing,_Barrow_Haven_-_geograph.org.uk_-_1621073.jpg (David Wright)
-surface_asphalt_excellent.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tussen_Krassolzheim_en_Ezelheim,_wegpanorama_IMG_2193_2016-08-06_12.31.jpg (Michielverbeek)
-surface_asphalt_good.jpg       CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Asphalt_-_good.jpg (Supaplex030)
-surface_asphalt_intermediat... ???               20201129_114019.jpg rhhsm
-surface_compacted_bad.jpg      need to decide    helium314
-surface_compacted_intermedi... need to decide    helium314
-surface_compacted_very_bad.jpg ???               IMG_20210530_143153188.jpg rhhsm
+surface_asphalt_bad.jpg        ???               20201129_114019.jpg (rhhsm)
+surface_asphalt_excellent.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Mala_Hrastice_2020-06-16_Ulice_z_navsi_na_nadrazi_obr05.jpg (Miloš Hlávka)
+surface_asphalt_good.jpg       public domain     helium314
+surface_asphalt_intermediat... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Nids-de-poule_sur_une_route_communale.jpg (Mathis Brancquart)
+surface_asphalt_very_bad.jpg   CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Potholes_at_the_Level_Crossing,_Barrow_Haven_-_geograph.org.uk_-_1621073.jpg (David Wright)
+surface_compacted_bad.jpg      public domain     helium314
+surface_compacted_intermedi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Saviselk%C3%A4_2.JPG (Htm)
+surface_compacted_very_bad.jpg ???               IMG_20210530_151614010.jpg (rhhsm)
 surface_gravel_bad.jpg         CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Gravel_-_bad.jpg (Supaplex030)
-surface_gravel_intermediate... need to decide    helium314
+surface_gravel_horrible.jpg    ???               IMG_20210530_151832190.jpg (rhhsm)
+surface_gravel_intermediate... public domain     https://commons.wikimedia.org/wiki/File:Tamsa.JPG (Ingvar Pärnamäe)
+surface_gravel_very_bad.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:%C5%A0t%C4%9Brkov%C3%A1_cesta_u_Pl%C3%A1%C5%A1t%C3%ADku.jpg (ŠJů)
 surface_paving_stones_bad.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_bad.jpg (Supaplex030)
-surface_paving_stones_excel... CC0               https://wiki.openstreetmap.org/wiki/File:Pretty_natural_stone_used_for_paving.jpg (Mateusz Konieczny)
+surface_paving_stones_excel... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Largo_santana-9577.jpg (Paul R. Burley)
 surface_paving_stones_good.jpg CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_good.jpg (Supaplex030)
-surface_paving_stones_inter... need to decide    helium314 (both versions)
+surface_paving_stones_inter... public domain     helium314
 surface_sett_bad.jpg           CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_-_bad.jpg (Supaplex030)
-surface_sett_intermediate.jpg  public domain     https://wiki.openstreetmap.org/wiki/File:Flattened_sett.jpg (Westnordost)
+surface_sett_intermediate.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tiled_floor_in_Porto.jpg (John Samuel)
 surface_sett_very_bad.jpg      public domain     https://wiki.openstreetmap.org/wiki/File:Very_bad_sett.jpg (Westnordost)
-surface_unpaved_horrible.jpg   ???               IMG_20210530_151832190.jpg rhhsm
+surface_unpaved_horrible.jpg   CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:The_way_home_from_Christmas_dunes_-_two_and_ahalf_hours_to_go_80_km_-_killer_ruts_(16058640321).jpg (Murray Foubister)
+surface_unpaved_impassable.jpg public domain     https://wiki.openstreetmap.org/wiki/File:Goljan_destoyed_road.JPG (Svickova)
 surface_unpaved_very_horrib... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Very_horrible_ruts.jpg (Preslav)
 
 tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
