@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/quest_generic_looks_like_this" />
+        android:text="@string/quest_generic_looks_like_this"/>
 
     <ImageView
         android:id="@+id/tactilePavingImage"

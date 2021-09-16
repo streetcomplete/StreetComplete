@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nameInput"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:completionThreshold="2"
     android:textSize="40sp"
-    tools:text="Bürger König" />
+    android:completionThreshold="2"
+    tools:text="Bürger König"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
