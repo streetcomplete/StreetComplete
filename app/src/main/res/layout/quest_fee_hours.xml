@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,32 +10,33 @@
 
         <Spinner
             android:id="@+id/selectFeeOnlyAtHours"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:textSize="16sp" />
-
-        <TextView
-            style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:textSize="16sp"/>
+
+        <TextView
             android:layout_toEndOf="@id/selectFeeOnlyAtHours"
-            android:text="@string/quest_fee_hours_title"
-            android:textSize="16sp" />
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="16sp"
+            android:text="@string/quest_fee_hours_title"/>
 
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/openingHoursList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/addTimesButton"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:text="@string/quest_fee_add_times"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quest_fee_add_times" />
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
 </LinearLayout>

@@ -14,7 +14,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.LanesSelectPuzzleBinding
+import de.westnordost.streetcomplete.databinding.ViewLanesSelectPuzzleBinding
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.showTapHint
 import de.westnordost.streetcomplete.quests.lanes.LineStyle.*
@@ -30,7 +30,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
     private val animator = TimeAnimator()
 
-    private val binding : LanesSelectPuzzleBinding
+    private val binding : ViewLanesSelectPuzzleBinding
     private val questionMark: Drawable = context.getDrawable(R.drawable.ic_lanes_unknown)!!
 
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
@@ -168,7 +168,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
         carBitmaps = CAR_RES_IDS.map { resources.getBitmapDrawable(it).bitmap }
 
-        binding = LanesSelectPuzzleBinding.inflate(LayoutInflater.from(context), this)
+        binding = ViewLanesSelectPuzzleBinding.inflate(LayoutInflater.from(context), this)
 
         animator.setTimeListener { _, _, deltaTime ->
             moveCars(deltaTime)
