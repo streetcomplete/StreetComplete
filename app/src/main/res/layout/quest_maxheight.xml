@@ -1,46 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/splitWayHint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:layout_marginBottom="@dimen/quest_form_vertical_padding"
+        android:text="@string/quest_maxheight_split_way_hint" />
 
-        <TextView
-            android:id="@+id/splitWayHint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/quest_form_vertical_padding"
-            android:text="@string/quest_maxheight_split_way_hint" />
+    <RelativeLayout
+        android:id="@+id/inputSigns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/splitWayHint"
+        android:layout_centerHorizontal="true">
 
-        <RelativeLayout
-            android:id="@+id/inputSigns"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/splitWayHint"
-            android:layout_centerHorizontal="true">
+        <include
+            android:id="@+id/meterInputSign"
+            layout="@layout/quest_maxheight_meter" />
 
-            <include
-                android:id="@+id/meterInputSign"
-                layout="@layout/quest_maxheight_meter" />
-
-            <include
-                android:id="@+id/feetInputSign"
-                layout="@layout/quest_maxheight_feet" />
-
-        </RelativeLayout>
-
-        <Spinner
-            android:id="@+id/heightUnitSelect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/inputSigns"
-            android:background="#0fff"
-            android:paddingStart="16dp"
-            android:visibility="gone"
-            tools:visibility="visible" />
+        <include
+            android:id="@+id/feetInputSign"
+            layout="@layout/quest_maxheight_feet" />
 
     </RelativeLayout>
-</merge>
+
+    <Spinner
+        android:id="@+id/heightUnitSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/inputSigns"
+        android:background="#0fff"
+        android:paddingStart="16dp"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+</RelativeLayout>

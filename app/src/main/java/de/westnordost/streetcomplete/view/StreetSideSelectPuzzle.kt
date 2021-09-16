@@ -13,7 +13,7 @@ import android.widget.RelativeLayout
 import androidx.core.view.doOnPreDraw
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.SideSelectPuzzleBinding
+import de.westnordost.streetcomplete.databinding.ViewSideSelectPuzzleBinding
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.showTapHint
 import kotlin.math.*
@@ -31,8 +31,8 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr), StreetRotateable {
 
-    private val binding: SideSelectPuzzleBinding =
-        SideSelectPuzzleBinding.inflate(LayoutInflater.from(context), this)
+    private val binding: ViewSideSelectPuzzleBinding =
+        ViewSideSelectPuzzleBinding.inflate(LayoutInflater.from(context), this)
 
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
     set(value) {

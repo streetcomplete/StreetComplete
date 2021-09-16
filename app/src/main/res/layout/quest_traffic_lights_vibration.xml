@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:divider="@drawable/space_16dp"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:showDividers="middle">
+    android:showDividers="middle"
+    android:divider="@drawable/space_16dp"
+    android:orientation="horizontal">
 
 
     <ImageView
@@ -18,8 +18,8 @@
 
     <TextView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/quest_traffic_signals_vibrate_description" />
+        android:layout_height="wrap_content"
+        android:text="@string/quest_traffic_signals_vibrate_description"/>
 
 </LinearLayout>
